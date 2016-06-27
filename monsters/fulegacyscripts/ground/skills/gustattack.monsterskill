@@ -1,0 +1,26 @@
+{
+  "name" : "gustAttack",
+  "label" : "SUPER GUST",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/fulegacyscripts/ground/skills/gustAttack.lua" ],
+    "gustAttack" : {
+      "skillTimeLimit" : 2.0,
+      "cooldownTime" : 3.0,
+
+      "approachPoints" : [ [-4.0, 0.5], [4.0, 0.5] ],
+      "startRects" : [ [-4.5, 1.5, -2.5, -1.5], [4.5, 1.5, 2.5, -1.5] ]
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "gust" : [
+        "/sfx/npc/unique/gustchime1.ogg",
+        "/sfx/npc/unique/gustchime2.ogg",
+        "/sfx/npc/unique/gustchime3.ogg"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name" : "robotRocketAttack",
+  "label" : "MISSILE SALVO",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "parameters" : {
+    "robotRocketAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "rocketswarm",
+      "range" : 22,
+      "power" : 6,
+      "speed" : 55,
+      "shots" : 3,
+      "windupTime" : 0.5,
+      "winddownTime" : 0.2,      
+      "fireInterval" : 0.35
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ "/sfx/gun/rocketblast1.ogg" ]
+    }
+  }
+}
+

@@ -1,0 +1,137 @@
+{
+  "type" : "magmagolem",
+
+  "categories" : [ "magmagolem" ],
+  "parts" : [ "body" ],
+
+  "animation" : "magmagolem.animation",
+  "colors" : "/monsters/colors.config",
+  "reversed" : false,
+
+  "dropPools" : [ "ashgolemLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/fulegacyscripts/ground/groundMonster.lua",
+      "/scripts/pathing.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+
+      "/monsters/fulegacyscripts/ground/approachState.lua",
+      "/monsters/fulegacyscripts/ground/fleeState.lua",
+      "/monsters/fulegacyscripts/ground/wanderState.lua",
+
+      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"
+    ],
+
+    "baseSkills" : [ "meleeAttack", "magmablast2Attack" ],
+    "specialSkills" : [ "magmablastAttack", "shieldSpecial", "recoverSpecial", "rushAttack" ],
+
+    "projectileSourcePosition" : [1.875, 1],
+
+    "attackStartDistance" : 3.5,
+    "attackTime" : 0.75,
+    "attackCooldownTime" : 0.5,
+
+    "aggressive" : true,
+    "territoryDistance" : 10.0,
+    "territorialTargetRadius" : 20.0,
+    "minimalTargetRadius" : 6.0,
+    "targetSearchTime" : 0.5,
+    "targetHoldTime" : 5.0,
+
+    "closeDistance" : 1.5,
+
+    "wanderTime" : [4.0, 6.0],
+    "wanderMovementTime" : [2.0, 3.0],
+
+    "jumpTargetDistance" : 6,
+    "jumpTime" : [1.4, 2.0],
+
+    "pathing" : {
+      "canOpenDoors" : false
+    },
+
+    "metaBoundBox" : [-5.0, -5.25, 3.31, 2.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-5.375,-0.188], [-2.812,-5.312], [2.375,-5.312], [3.312,2.562], [-2.375,2.75], [-3.688,0.312], [-5,0.062] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
+      "flySpeed" : 15,
+      "airForce" : 50.0,
+
+      "airFriction" : 0.0,
+      "airJumpProfile" : {
+        "jumpSpeed" : 15.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 1.0              
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-5.375,-0.188], [-2.812,-5.312], [2.375,-5.312], [3.312,2.562], [-2.375,2.75], [-3.688,0.312], [-5,0.062] ],
+      "damage" : 25,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 310
+        },
+        "protection" : {
+          "baseValue" : 52.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        },
+        "fireImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

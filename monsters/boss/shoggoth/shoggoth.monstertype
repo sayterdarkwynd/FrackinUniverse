@@ -1,0 +1,201 @@
+{
+  "type" : "shoggoth",
+
+  "categories" : [ "shoggoth" ],
+  "parts" : [  "chest", "eyebeam", "eyeglow" ],
+
+  "animation" : "shoggoth.animation",
+  "colors" : "/monsters/colors.config",
+  "reversed" : true,
+  "dropPools" : [ "shoggothFlesh" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/boss/shoggoth/bossMonster.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+      "/monsters/simpleRangedAttack.lua",
+      "/monsters/boss/shoggoth/dieState.lua",
+      "/monsters/boss/shoggoth/idleState.lua"
+    ],
+
+    "skillCount" : 6,
+    "skills" : ["tentacleSwipeAttack", "fleshBombAttack", "eyeBeamAttack", "shoggothAcidAttack", "miniShoggothSpawnAttack", "shoggothChargeAttack"],
+
+    "phases" : [
+      {
+        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack" ]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.75,
+        "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.60,
+        "skills" : [ "fleshBombAttack" ]
+      },      
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.5,
+        "enterPhase" : "miniShoggothSpawnAttack",
+        "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.35,
+        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack" ]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.25,
+        "skills" : [ "shoggothChargeAttack" ]
+      }
+    ],
+
+    "scale" : 1,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
+      "mass" : 1,
+      "walkSpeed" : 6,
+      "runSpeed" : 8,
+      "jumpSpeed" : 20,
+      "airforce" : 10
+    },
+
+    "projectileSourcePosition" : [-2.5, -1.25],
+    "projectileSourceOffset" : [7, 0],
+
+    "trackTargetDistance" : 100.0,
+    "switchTargetDistance" : 0,
+    "keepTargetInSight" : false,
+
+    "knockoutTime" : 0.5,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "alwaysAggressive" : true,
+
+
+    "jumpTargetDistance" : 0,
+    "jumpTime" : [30000, 30000],
+
+    "metaBoundBox" : [-16, -16, 10, 10],
+
+    "blockedSensors" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
+    "fallSensors" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
+
+    "touchDamage" : {
+      "poly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
+      "damage" : 140,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "statusEffects" : [ "slimefriction" ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 2000
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonImmunity" : {
+          "baseValue" : 1.0
+        },
+        "fireImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+      
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [1.0, -1.5],
+    "feetOffset" : [0, -21],
+    
+    
+    
+    "projectiles" : {
+      "deathexplosion" : {
+        "type" : "darkmatterexplosion",
+        "config" : {
+          "speed" : 0.1,
+          "power" : 2,
+
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/darkmatterexplosion/darkmatterexplosion.config"
+            },
+            {
+              "action" : "projectile",
+              "type" : "shoggothflesh",
+              "inheritDamageFactor" : 0.2,
+              "fuzzAngle" : 30,
+              "angleAdjust" : 0
+            },
+            {
+              "action" : "projectile",
+              "type" : "shoggothflesh",
+              "inheritDamageFactor" : 0.2,
+              "fuzzAngle" : 30,
+              "angleAdjust" : 45
+            },
+            {
+              "action" : "projectile",
+              "type" : "shoggothflesh",
+              "inheritDamageFactor" : 0.2,
+              "fuzzAngle" : 30,
+              "angleAdjust" : -45
+            }
+          ]
+        },
+
+        "fireTime" : 5.0,
+        "fireInterval" : 0.2,
+        "cooldown" : 0.1
+      }
+    }
+    
+    
+  }
+}
+
+
+
+
+
+
+
+    
+    

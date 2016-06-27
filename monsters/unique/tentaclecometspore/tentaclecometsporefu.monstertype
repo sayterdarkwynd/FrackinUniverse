@@ -1,0 +1,154 @@
+{
+  "type" : "tentaclecometsporefu",
+
+  "categories" : [ "tentaclecometsporefu" ],
+  "parts" : [ "chest" ],
+  "partParameters" : "tentaclecometsporefu.partparams",
+
+  "animation" : "tentaclecometsporefu.animation",
+  "reversed" : true,
+
+  "dropPools" : [
+    {
+      "default" : "shadowtopLoot",
+      "bow" : "hunting",
+      "brain" : "brain"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/unique/tentaclecometspore/behavior.lua",
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 1000,
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 60,
+      "targetOutOfSightTime" : 999,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 5,
+            "jumpYVelocity" : 5,
+            "jumpXControlForce" : 50,
+            "fallState" : "jump",
+            "moveState" : "run",
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ]
+    },
+
+    "skillCount" : 0,
+    "baseSkills" : [ ],
+
+    "knockoutTime" : 1,
+    "knockoutEffect" : "blink",
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-2.25, -1.75], [1.875, -1.75], [1.875, 1.0], [-2.25, 1.0] ],
+      "mass" : 1.0,
+      "walkSpeed" : 6,
+      "runSpeed" : 6
+    },
+
+    "metaBoundBox" : [-2.25, -1.75, 1.875, 1.0],
+
+    "touchDamage" : {
+      "poly" : [ [-2.25, -1.75], [1.875, -1.75], [1.875, 1.0], [-2.25, 1.0] ],
+      "damage" : 25,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "bite",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.0
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 5
+        },
+        "maxHealth" : {
+          "baseValue" : 44
+        },
+        "maxShield" : {
+          "baseValue" : 0.0
+        },
+        "protection" : {
+          "baseValue" : 1.45
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "shieldRegen" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        },
+        "shieldHealth" : {
+          "maxStat" : "maxShield",
+          "deltaStat" : "shieldRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

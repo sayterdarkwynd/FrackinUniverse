@@ -1,0 +1,145 @@
+{
+  "type" : "shadowhound",
+
+  "categories" : [ "shadowhound" ],
+  "parts" : [ "body" ],
+
+  "animation" : "shadowhound.animation",
+  "colors" : "/monsters/shadowhound/colors.config",
+  "reversed" : true,
+
+  "dropPools" : [ "shadowhoundLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/fulegacyscripts/ground/groundMonster.lua",
+      "/scripts/pathing.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+
+      "/monsters/fulegacyscripts/ground/approachState.lua",
+      "/monsters/fulegacyscripts/ground/fleeState.lua",
+      "/monsters/fulegacyscripts/ground/wanderState.lua",
+
+      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"
+    ],
+    
+    "baseSkills" : [ "grabAttack"],
+    "specialSkills" : [ "fuPounceAttack" ],
+
+    "projectileSourcePosition" : [1.875, 1],
+
+    "attackStartDistance" : 3.5,
+    "attackTime" : 0.75,
+    "attackCooldownTime" : 0.5,
+
+    "aggressive" : true,
+    "territoryDistance" : 10.0,
+    "territorialTargetRadius" : 20.0,
+    "minimalTargetRadius" : 6.0,
+    "targetSearchTime" : 0.5,
+    "targetHoldTime" : 5.0,
+
+    "closeDistance" : 1.5,
+
+    "wanderTime" : [4.0, 6.0],
+    "wanderMovementTime" : [2.0, 3.0],
+
+    "jumpTargetDistance" : 8,
+    "jumpTime" : [1.4, 2.0],
+    "pathing" : {
+      "canOpenDoors" : false
+    },
+    "metaBoundBox" : [-3.0, -1.0, 3.0, 1.0],
+    "scale" : 1.2,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.75, -1.0], [1.75, -1.0], [1.75, 1.0], [-1.75, 1.0] ],
+
+      "mass" : 0.35,
+      "walkSpeed" : 8,
+      "runSpeed" : 14,
+      "flySpeed" : 15,
+      "airForce" : 70.0,
+      
+      "airFriction" : 0.0,
+      "airJumpProfile" : {
+        "jumpSpeed" : 20.0,
+        "jumpInitialPercentage" : 1.3,
+        "jumpHoldTime" : 0.0              
+      }
+    },
+
+    "knockoutTime" : 1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -0.65], [1.0, -0.65], [1.0, 0.65], [-1.0, 0.65] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "bite",
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 50
+        },
+        "protection" : {
+          "baseValue" : 0.4
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+
+    "collisionSensors" : [ [1.25, 0.0] ],
+
+    "nearGroundSensor" : [ [0.0, -1.0] ],
+    "midGroundSensor" : [ [0.0, -4.0] ],
+
+    "moveTimeRange" : [2.5, 5.0],
+    "idleTimeRange" : [1.0, 3.0],
+    "idleAnimations" : [ "idle", "idle2", "idle3", "idle4" ],
+
+    "attackTargetHoldTime" : 5.0,
+    "attackDistance" : 2.0,
+    "attackHoldTime" : 2.0,
+
+    "captureHealthFraction" : 0.5,
+    "killsPerLevel" : 20,
+    "captureParticles" : "captureParticles",
+    "levelUpParticles" : "levelUp"
+  }
+}

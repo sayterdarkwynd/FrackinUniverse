@@ -1,0 +1,27 @@
+{
+  "name" : "poisonraptorAttack",
+  "label" : "POISON SPIT",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "parameters" : {
+    "poisonraptorAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "poisonraptor",
+      "arc" : "low",
+      "range" : 7,
+      "speed" : 25,
+      "power" : 1,
+      "shots" : 3,
+      "fireInterval" : 0.12,
+      "windupTime" : 0.5,
+      "winddownTime" : 0.2
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ "/sfx/npc/quadruped/arrowhead_pain2.ogg" ]
+    }
+  }
+}
+

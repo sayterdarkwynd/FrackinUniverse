@@ -1,0 +1,24 @@
+{
+  "name" : "fuspiderwalkerAttack",
+  "label" : "PLASMA BURST",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/skills/crawling/fuspiderwalkerattack.lua" ],
+    "fuspiderwalkerAttack" : {
+      "skillTimeLimit" : 1.5,
+      "cooldownTime" : 1.5,
+
+      "windupTime" : 0.25,
+      "winddownTime" : 0.25,
+      "shots" : 12,
+      "fireInterval" : 0.024,
+
+      "approachPoints" : [ [-3.5, 2.0], [3.5, 2.0] ],
+      "startRects" : [ [-4.0, -2.5, -3.0, 3.5], [4.0, -2.5, 3.0, 3.5] ],
+
+      "projectile" : "precursorshot",
+      "power" : 5
+    }
+  }
+}

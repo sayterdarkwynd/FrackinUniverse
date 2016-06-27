@@ -1,0 +1,26 @@
+{
+  "name" : "fuAcidicSpitAttack",
+  "label" : "ACIDIC SPIT",
+  "image" : "/monsters/skills/defaultpoison.png",
+
+  "parameters" : {
+    "fuAcidicSpitAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "acidspit",
+      "range" : 20,
+      "speed" : 60,
+      "power" : 16,
+      "shots" : 1,
+      "castTime" : 0.4,
+      "castEffect" : "castpoison",
+      "castAnimation" : "charge"
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ]
+    }
+  }
+}
+

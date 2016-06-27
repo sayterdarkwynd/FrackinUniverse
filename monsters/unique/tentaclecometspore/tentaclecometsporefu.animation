@@ -1,0 +1,158 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "closedIdle" : {
+            "frames" : 1
+          },
+          "idle" : {
+            "frames" : 1
+          },
+          "jump" : {
+            "frames" : 1
+          },
+          "run" : {
+            "frames" : 8,
+            "cycle" : 0.75,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 1
+          },
+          "blink" : {
+            "frames" : 3,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "open" : {
+            "frames" : 8,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "walk" : {
+            "frames" : 8,
+            "mode" : "loop"
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 0,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+
+      "chest" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "zLevel" : 2
+        },
+
+        "partStates" : {
+          "body" : {
+            "closedIdle" : {
+              "properties" : {
+                "image" : "<partImage>:open.1"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall"
+              }
+            },
+            "blink" : {
+              "properties" : {
+                "image" : "<partImage>:blink.<frame>"
+              }
+            },
+            "open" : {
+              "properties" : {
+                "image" : "<partImage>:open.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:jump"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : {"interpolated" : true},
+    "aim" : {"interpolated" : true}
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "claypotshard" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ ],
+    "deathPuff" : [ ]
+  },
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  }
+}

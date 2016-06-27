@@ -1,0 +1,137 @@
+{
+  "type" : "furaptor3",
+
+  "categories" : [ "furaptor3" ],
+  "parts" : [ "body" ],
+
+  "animation" : "furaptor3.animation",
+  "colors" : "/monsters/colors.config",
+  "reversed" : false,
+
+  "dropPools" : [ "dinoLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/fulegacyscripts/ground/groundMonster.lua",
+      "/scripts/pathing.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+      "/monsters/fulegacyscripts/ground/aggroHopState.lua",
+      "/monsters/fulegacyscripts/ground/approachState.lua",
+      "/monsters/fulegacyscripts/ground/fleeState.lua",
+      "/monsters/fulegacyscripts/ground/wanderState.lua",
+
+      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"
+    ],
+
+    "baseSkills" : [ "meleeAttack" ],
+    "specialSkills" : [ "fuPounceAttack", "raptorstrikeAttack" ],
+
+    "projectileSourcePosition" : [4.32, 0],
+
+    "attackStartDistance" : 4.5,
+    "attackTime" : 0.45,
+    "attackCooldownTime" : 0.35,
+
+    "aggressive" : true,
+    "territoryDistance" : 30.0,
+    "territorialTargetRadius" : 60.0,
+    "minimalTargetRadius" : 6.0,
+    "targetSearchTime" : 0.5,
+    "targetHoldTime" : 5.0,
+
+    "closeDistance" : 1.5,
+
+    "wanderTime" : [4.0, 6.0],
+    "wanderMovementTime" : [2.0, 3.0],
+
+    "jumpTargetDistance" : 12,
+    "jumpTime" : [1.8, 2.4],
+
+    "pathing" : {
+      "canOpenDoors" : false
+    },
+
+    "metaBoundBox" : [-4.56, -3.88, 4.75, 2.62],
+    "scale" : 1.00,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-4.625,2.5], [-4.688,-3.5], [4.062,-3.688], [3.875,2.875] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 8,
+      "runSpeed" : 14,
+      "flySpeed" : 14,
+      "airForce" : 70.0,
+
+      "airFriction" : 0.0,
+      "airJumpProfile" : {
+        "jumpSpeed" : 15.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 1.0              
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+    "meleeProjectile" : "raptorbite",
+    "touchDamage" : {
+      "poly" : [ [-4.25,1.312], [-4.625,-2.875], [4.062,-2.938], [3.688,1.812], [-2.75,1.938] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 102
+        },
+        "protection" : {
+          "baseValue" : 25.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonImmunity" : {
+          "baseValue" : 1.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        }        
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

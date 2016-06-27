@@ -1,0 +1,19 @@
+{
+  "name" : "fuSoundMeleeAttack",
+  "label" : "BASH",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/skills/ground/fuSoundMeleeAttack.lua" ],
+    "fuSoundMeleeAttack" : {
+      "skillTimeLimit" : 0.75,
+      "cooldownTime" : 0.75,
+
+      "approachPoints" : [ [-3.5, 2.0], [3.5, 2.0] ],
+      "startRects" : [ [-4.0, -2.5, -3.0, 3.5], [4.0, -2.5, 3.0, 3.5] ],
+
+      "projectile" : "chomp4", //can override this in individual .monstertype with a meleeProjectile parameter
+      "power" : 12
+    }
+  }
+}
