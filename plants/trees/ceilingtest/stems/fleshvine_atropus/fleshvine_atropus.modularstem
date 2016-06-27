@@ -1,0 +1,109 @@
+{
+  "name" : "fleshvine_atropus",
+  "shape" : "ceilingtest",
+  "health" : 10,
+  "ceiling" : true,
+  "dropConfig" : {
+    "drops" : [
+      [ { "item" : "fleshstrand", "count" : 1 } ]
+    ],
+    "particles" : {
+      "breakTree" : {
+        "density" : 3,
+        "options" : [ {
+            "image" : "/particles/treestems/vine.png",
+            "timeToLive" : 10
+          } ]
+      },
+      "hitGround" : { "density" : 3, "options" : [ { "animation" : "/animations/dusttest/dusttest.animation", "initial" : "drift", "rotation" : 3.14, "timeToLive" : 3 } ] },
+      "damageTree" : { "density" : 1, "options" : [ { "image" : "/particles/treestems/something.png", "timeToLive" : 10 } ] }
+    }
+  },
+  "base" : {
+    "base1" : {
+      "image" : "base1.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 5,
+        "y" : 0
+      }
+    },
+    "base2" : {
+      "image" : "base2.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 5,
+        "y" : 0
+      }
+    },
+    "base3" : {
+      "image" : "base3.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 5,
+        "y" : 0
+      }
+    }
+  },
+  "middle" : {
+    "middle1" : {
+      "image" : "mid1.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 7,
+        "y" : 0
+      }
+    },
+    "middle2" : {
+      "image" : "mid2.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 7,
+        "y" : 0
+      }
+    },
+    "middle3" : {
+      "image" : "mid3.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 7,
+        "y" : 0
+      }
+    }
+  },
+  "crown" : {
+    "crown1" : {
+      "image" : "end1.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "crown2" : {
+      "image" : "end2.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "crown3" : {
+      "image" : "end3.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    }
+  }
+}

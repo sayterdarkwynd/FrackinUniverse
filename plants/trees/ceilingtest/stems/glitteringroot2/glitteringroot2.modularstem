@@ -1,0 +1,91 @@
+{
+  "name" : "glitteringroot2",
+  "shape" : "ceilingtest",
+  "health" : 10,
+  "ceiling" : true,
+  "dropConfig" : {
+    "drops" : [
+      [ { "item" : "plantfibre", "count" : 3 } ]
+    ],
+    "particles" : {
+      "breakTree" : {
+        "density" : 3,
+        "options" : [ {
+            "image" : "/particles/treestems/vine.png",
+            "timeToLive" : 10
+          } ]
+      },
+      "hitGround" : { "density" : 3, "options" : [ { "animation" : "/animations/dusttest/dusttest.animation", "initial" : "drift", "rotation" : 3.14, "timeToLive" : 3 } ] },
+      "damageTree" : { "density" : 1, "options" : [ { "image" : "/particles/treestems/something.png", "timeToLive" : 10 } ] }
+    }
+  },
+  "base" : {
+    "base1" : {
+      "image" : "glitteringrootbase1.png",
+      "attachment" : {
+        "bx" : -1,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "base2" : {
+      "image" : "glitteringrootbase2.png",
+      "attachment" : {
+        "bx" : -2,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    }
+  },
+  "middle" : {
+    "middle1" : {
+      "image" : "glitteringrootmid1.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "middle2" : {
+      "image" : "glitteringrootmid2.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "middle3" : {
+      "image" : "glitteringrootmid3.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    }
+  },
+  "crown" : {
+    "crown1" : {
+      "image" : "glitteringrootend1.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "crown2" : {
+      "image" : "glitteringrootend2.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    }
+  }
+}

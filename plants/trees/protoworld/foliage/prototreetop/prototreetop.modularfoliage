@@ -1,0 +1,114 @@
+{
+  "name" : "protoleaves",
+  "shape" : "experiment1",
+
+  "dropConfig" : {
+    "drops" : [
+      [ { "item" : "protociteore", "count" : 1 }, { "item" : "sapling" }]
+    ],
+    "sounds" : {
+      "breakTree" : [
+        { "file" : "/sfx/environmental/tree_breaking.ogg" },
+        { "file" : "/sfx/environmental/tree_breaking_alt.ogg" }
+      ],
+      "hitGround" : [
+        { "file" : "/sfx/environmental/tree_hitground.ogg" },
+        { "file" : "/sfx/environmental/tree_hitground2.ogg" }
+      ]
+    },
+    "particles" : {
+      "breakTree" : {
+        "density" : 3,
+        "options" : [
+          {
+            "color" : [26, 55, 75],
+            "timeToLive" : 10
+          },
+          {
+            "color" : [51, 82, 75],
+            "timeToLive" : 10
+          },
+          {
+            "color" : [64, 109, 75],
+            "timeToLive" : 10
+          }
+        ]
+      },
+      "hitGround" : {
+        "density" : 3,
+        "options" : [
+          {
+            "color" : [26, 55, 75],
+            "timeToLive" : 10,
+            "initial" : "upwards"
+          },
+          {
+            "color" : [51, 82, 75],
+            "timeToLive" : 10,
+            "initial" : "upwards"
+          },
+          {
+            "color" : [64, 109, 75],
+            "timeToLive" : 10,
+            "initial" : "upwards"
+          }
+        ]
+      }
+    }
+  },
+
+  "parallaxFoliage" : true,
+  
+  "crownLeaves" : {
+    "crown1" : {
+      "image" : "crown1.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    },
+    "crown2" : {
+      "image" : "crown2.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    },
+    "crown3" : {
+      "image" : "crown3.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    }
+  },
+  "branchLeaves" : {
+    "branch1" : {
+      "image" : "",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    },
+    "branch2" : {
+      "image" : "",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    },
+    "branch3" : {
+      "image" : "",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    }
+  }
+}

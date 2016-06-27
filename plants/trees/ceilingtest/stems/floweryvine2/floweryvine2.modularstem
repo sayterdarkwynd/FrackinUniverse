@@ -1,0 +1,82 @@
+{
+  "name" : "floweryvine2",
+  "shape" : "ceilingtest",
+  "health" : 10,
+  "ceiling" : true,
+  "dropConfig" : {
+    "drops" : [
+      [ { "item" : "plantfibre", "count" : 3 } ]
+    ],
+    "particles" : {
+      "breakTree" : {
+        "density" : 3,
+        "options" : [ {
+            "image" : "/particles/treestems/vine.png",
+            "timeToLive" : 10
+          } ]
+      },
+      "hitGround" : { "density" : 3, "options" : [ { "animation" : "/animations/dusttest/dusttest.animation", "initial" : "drift", "rotation" : 3.14, "timeToLive" : 3 } ] },
+      "damageTree" : { "density" : 1, "options" : [ { "image" : "/particles/treestems/something.png", "timeToLive" : 10 } ] }
+    }
+  },
+  "base" : {
+    "base1" : {
+      "image" : "floweryvinebase1.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -8,
+        "x" : 5,
+        "y" : 0
+      }
+    },
+    "base2" : {
+      "image" : "floweryvinebase2.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -8,
+        "x" : 9,
+        "y" : 0
+      }
+    }
+  },
+  "middle" : {
+    "middle1" : {
+      "image" : "floweryvinemid1.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "middle2" : {
+      "image" : "floweryvinemid2.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    }
+  },
+  "crown" : {
+    "crown1" : {
+      "image" : "floweryvineend1.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -8,
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "crown2" : {
+      "image" : "floweryvineend2.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    }
+  }
+}
