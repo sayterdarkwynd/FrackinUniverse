@@ -1,0 +1,23 @@
+{
+  "projectileName" : "iceblade2",
+  "image" : "iceblade2.png",
+  "animationCycle" : 0.6,
+  "level" : 6,
+  "frameNumber" : 6,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [168,175,155],
+  "power" : 4,
+  "speed" : 65,
+  "timeToLive" : 0.6,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceexplosion2/iceexplosion2.config"
+    }
+  ],
+  "damagePoly" : [ [-64, 0], [-64, -28], [0, -28], [64, -28], [64, 0], [64, 28], [0, 28], [-64, 28] ],
+  "damageKind" : "iceplasma",
+  "physics" : "laser",
+   "statusEffects" : [ "freeze" ]
+}

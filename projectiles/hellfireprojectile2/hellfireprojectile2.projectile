@@ -1,0 +1,70 @@
+{
+  "projectileName" : "hellfireprojectile2",
+  "image" : "hellfireprojectile2.png",
+  "animationCycle" : 0.3,
+  "level" : 1,
+  "physics" : "laser",
+  "frameNumber" : 4,
+  "pointLight" : true,
+  "lightColor" : [255,141,40],
+  "speed" : 50,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/hellfireexplosion/hellfireexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : 75
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : -75
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "liquid",
+      "liquid" : "lava",
+      "quantity" : 0.4
+    }
+  ],
+  "power" : 12.0,
+  "damagePoly" : [ [-10, 0], [0, 7], [10, 10], [10, 0], [-10, -10], [0, -7] ],
+  "damageKind" : "default",
+  "emitters" : [ "fireflames" ]
+}
+
+

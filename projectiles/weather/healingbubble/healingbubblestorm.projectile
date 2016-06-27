@@ -1,0 +1,51 @@
+{
+  "projectileName" : "healingbubblestorm",
+  "image" : "healingbubble.png",
+  "animationCycle" : 0.25,
+  "level" : 3,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "lightColor" : [255, 113, 255],
+  "speed" : 30,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "healingbubble",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.001,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "healingbubble",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.001,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "healingbubble",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.001,
+      "angleAdjust" : 90
+    },
+    {
+      "action" : "liquid", 
+      "liquid" : "organicsoup", 
+      "quantity" : 20
+    }
+  ],
+  "power" : 0.01,
+  "universalDamage" : true,
+  "damageType" : "ignoresdef",
+  "damageKind" : "default"
+}
+
+
+
+

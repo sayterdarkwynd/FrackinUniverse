@@ -1,0 +1,27 @@
+{
+  "projectileName" : "spawnegg",
+  "physics" : "grenade",
+  "damageKindImage" : "icon.png",
+  "image" : "spawnegg.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "actionOnReap" : [
+    {
+      "action" : "spawnmonster",
+      "type" : "seedspawn",
+      "level" : 1,
+      "offset" : [-0.5, 0.55]
+    },
+    {
+      "action" : "projectile",
+      "type" : "slimeexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 0
+    }
+  ],
+  
+  "power" : 0,
+  "damageKind" : "default",
+  "bounces" : 1
+}

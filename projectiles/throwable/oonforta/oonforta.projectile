@@ -1,0 +1,33 @@
+{
+  "projectileName" : "oonforta",
+  "image" : "oonforta.png",
+  "animationCycle" : 1.0,
+  "level" : 1,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "physics" : "floatystickybomb",
+  "pointLight" : false,
+  "timeToLive" : 60,
+  "bounces" : 1,
+  "lightColor" : [225, 174, 24],
+  
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "biolightball",
+      "inheritDamageFactor" : 0.05,
+      "angle" : 1
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/objects/burst.ogg" ]
+    }
+  ],
+  
+  "statusEffects" : [ "glowyellow" ],
+    
+  "power" : 4,
+  "speed" : 1,
+  "damageType" : "ignoresdef",
+  "damageKind" : "poison"
+}

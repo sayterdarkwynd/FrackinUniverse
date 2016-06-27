@@ -1,0 +1,30 @@
+{
+  "projectileName" : "energyblast",
+  "image" : "energyblast.png",
+  "animationCycle" : 0.1,
+  "armorPenetration" : 3,
+  "physics" : "bullet",
+  "bounces" : 0,
+  "frameNumber" : 8,  
+  "pointLight" : false,
+  "speed" :35,
+   "lightColor" : [40, 70, 70],
+  "actionOnReap" : [
+   {
+      "action" : "config",
+      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
+    },
+	 {
+      "action" : "config",
+      "file" : "/projectiles/explosions/zapsplosion/zapsplosion.config"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/guns/energyblast/energyblastexplosion.config"
+    }
+  ],
+  "damageKind" : "slash",
+  "emitters" : [ "peglacitrail" ]
+}
+
+

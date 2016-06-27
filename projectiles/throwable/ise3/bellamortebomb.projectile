@@ -1,0 +1,26 @@
+{
+  "projectileName" : "bellamortebomb",
+  "image" : "bellamortebomb.png",
+  "animationCycle" : 0.25,
+  "level" : 4,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 4,
+  "pointLight" : false,
+  "speed" : 50,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/acidexplosion/acidexplosion.config"
+    },
+    {
+      "action" : "liquid", 
+      "liquid" : "darkwater", 
+      "quantity" : 2
+    }
+  ],
+  "power" : 115.0,
+  "statusEffects" : [ "slow" ],
+  "damageKind" : "poison"
+}
+
+

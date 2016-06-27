@@ -1,0 +1,26 @@
+{
+  "projectileName" : "fleshbomb",
+  "physics" : "bouncyball",
+  "bounces" : 2,
+  "timeToLive" : 3,
+  "image" : "fleshbomb.png",
+  "damageKindImage" : "icon.png",
+  "speed" : 19,
+  "animationCycle" : 1.0,
+  "lightColor" : [93, 10, 47],
+  "frameNumber" : 4,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/acidexplosion3/acidexplosion3.config"
+    },
+    {
+      "action" : "liquid",
+      "liquid" : "pus",
+      "quantity" : 5
+    }
+  ],
+  "power" : 50,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

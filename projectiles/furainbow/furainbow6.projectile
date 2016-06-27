@@ -1,0 +1,41 @@
+{
+  "projectileName" : "furainbow6",
+  "image" : "furainbow.png",
+  "physics" : "laser",
+  "animationCycle" : 1.0,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 1,
+  "power" : 50,
+  "speed" : 82,
+  "timeToLive" : 0.05,
+  "piercing" : false,
+  "damagePoly" : [ [-5, 3], [5, 3], [5, -3], [-5, -3] ],
+  "damageKind" : "default",
+  "lightColor" : [75, 75, 75],
+  "statusEffects" : [ "glow" ],
+  "emitters" : [ "sparklesunicorn" ], 
+  "actionOnReap" : [
+    {
+      "action" : "particle",
+      "specification" : {
+        "animation" : "/animations/lightsmoke/lightsmoke.animation",
+        "size" : 1.0,
+        "timeToLive" : 0.5,
+        "variance" : {
+          "position" : [0.5, 0]
+        }
+      }
+    },
+    {
+      "action" : "projectile",
+      "type" : "furainbow7",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.95,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/npcs/rainbow/rainbowexplosion.config"
+    }
+  ]
+}

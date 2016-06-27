@@ -1,0 +1,22 @@
+{
+  "projectileName" : "flamethrowerflame",
+  "physics" : "grenadenobounce",
+  "bounces" : -1,
+  "level" : 1,
+  "timeToLive" : 5,
+  "speed" : 10,
+  "piercing" : true,
+  "image" : "flamethrowerflame.png",
+  "animationCycle" : 0.55,
+  "lightColor" : [218, 83, 2],
+  "frameNumber" : 4,  
+  "emitters" : [ "flames" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    }
+  ],
+  "damageKind" : "fire",
+  "statusEffects" : [ "glow", "burning" ]
+}

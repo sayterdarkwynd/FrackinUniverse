@@ -1,0 +1,40 @@
+{
+  "projectileName" : "crystalbladeswoosh",
+  "image" : "crystalbladeswoosh.png",
+  "animationCycle" : 0.07,
+  "frameNumber" : 4,
+  "level" : 1,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "damagePoly" : [ [-40, 24.5], [3.5, 24.5], [15.5, 21.5], [28.5, 15.5], [36.5, 7.5], [40.5, -1.5], [40.5, -12.5], [32.5, -24.5], [-12, -24.5] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "damageKind" : "electricbroadsword",
+  "knockback" : 35,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "electro",
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.2
+    },
+    {
+      "action" : "projectile",
+      "type" : "electro",
+      "fuzzAngle" : 0,
+      "angleAdjust" : -26,
+      "inheritDamageFactor" : 0.2
+    },
+    {
+      "action" : "projectile",
+      "type" : "electro",
+      "fuzzAngle" : 0,
+      "angleAdjust" : 26,
+      "inheritDamageFactor" : 0.2
+    }
+  ],
+"statusEffects" : [ "radiationburn" ]
+}    

@@ -1,0 +1,79 @@
+{
+  "projectileName" : "fuhivebombexplosion4",
+  "image" : "fuhivebombexplosion4.png",
+  "physics" : "grenade",
+  "animationCycle" : 0,
+  "frameNumber" : 1,
+  "speed" : 5,
+  "timeToLive" : 1,
+  "fallSpeed" : 0,
+  "damagePoly" : [ ],
+  "animationLoops" : false,
+  "piercing" : false,
+  "flippable" : true,
+  "universalDamage" : true,
+  "damageKind" : "default",
+  "statusEffects" : [ "weakpoison" ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/bugswarm4.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "hiveswarm",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.01,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "hiveswarm",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.01,
+      "angleAdjust" : 45
+    },
+    {
+      "action" : "projectile",
+      "type" : "hiveswarm",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.01,
+      "angleAdjust" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "hiveswarm",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.01,
+      "angleAdjust" : 135
+    },
+    {
+      "action" : "projectile",
+      "type" : "hiveswarm",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.01,
+      "angleAdjust" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "hiveswarm",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.01,
+      "angleAdjust" : -45
+    },
+    {
+      "action" : "projectile",
+      "type" : "hiveswarm",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.01,
+      "angleAdjust" : -90
+    },
+    {
+      "action" : "projectile",
+      "type" : "hiveswarm",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.01,
+      "angleAdjust" : -135
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "projectileName" : "magmaorb",
+  "image" : "magmaorb.png",
+  "animationCycle" : 0.4,
+  "level" : 1,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [180,100,40],
+  "power" : 1,
+  "speed" : 55,
+  "timeToLive" : 1.2,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/magmaorbboom/magmaorbboom.config"
+    },
+    { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 18 },
+    { "action" : "liquid", "liquid" : "lava", "quantity" : 4 }
+  ],
+  "damagePoly" : [ [-40, 0], [-40, -12], [0, -12], [40, -12], [40, 0], [40, 12], [0, 12], [-40, 12] ],
+  "damageKind" : "fire",
+  "physics" : "grenadezbomb",
+  "emitters" : [ "flamesfast" ]
+}

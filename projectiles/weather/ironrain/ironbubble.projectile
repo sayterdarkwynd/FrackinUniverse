@@ -1,0 +1,40 @@
+{
+  "projectileName" : "ironbubble",
+  "image" : "ironbubble.png",
+  "animationCycle" : 0.25,
+  "level" : 3,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 30,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.001,
+      "angleAdjust" : -55
+    },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "metal",
+      "radius" : 2
+    },
+    {
+      "action" : "liquid", 
+      "liquid" : "fuironliquid", 
+      "quantity" : 1
+    }
+  ],
+  "power" : 20.0,
+  "damageKind" : "default"
+}
+
+
+
+

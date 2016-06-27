@@ -1,0 +1,24 @@
+{
+  "projectileName" : "caterpillarshot",
+  "image" : "caterpillarshot.png",
+  "animationCycle" : 1.0,
+  "level" : 6,
+  "frameNumber" : 11,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [36,150,160],
+  "power" : 5,
+  "speed" : 35,
+  "timeToLive" : 1.0,
+  "damagePoly" : [ [-29, 0], [-29, -32], [0, -32], [29, -32], [29, 0], [29, 32], [0, 32], [-29, 32] ],
+  "damageKind" : "electricplasma",
+  "physics" : "laser",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bioboom/bioboom.config"
+    }
+  ],
+  "effectSources" : [ "defaultgreen" ],
+  "statusEffects" : [ "weakpoison" ]
+}

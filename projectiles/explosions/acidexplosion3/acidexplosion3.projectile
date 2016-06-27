@@ -1,0 +1,25 @@
+{
+  "projectileName" : "acidexplosion3",
+  "image" : "acidexplosion3.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 5,
+  "speed" : 0,
+  "damagePoly" : [ [-16, 0], [-10, -10], [0, -16], [10, -10], [16, 0], [10, 10], [0, 16], [-10, 10] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "universalDamage" : true,
+  "damageKind" : "default",
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/acidburn.ogg" ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weather/acidburn.ogg" ]
+    }
+  ],
+  "emmiters" : [ "corrosive" ],
+  "statusEffects" : [ "weakpoison" ]
+}

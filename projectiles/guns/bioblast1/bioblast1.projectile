@@ -1,0 +1,24 @@
+{
+  "projectileName" : "bioblast1",
+  "image" : "bioblast1.png",
+  "animationCycle" : 0.8,
+  "level" : 6,
+  "frameNumber" : 12,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [0,87,0],
+  "power" : 4,
+  "speed" : 5,
+  "timeToLive" : 0.8,
+  "damagePoly" : [ [-46, 0], [-46, -20], [0, -20], [46, -20], [46, 0], [46, 20], [0, 20], [-46, 20] ],
+  "damageKind" : "poison",
+  "physics" : "gas",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bioboom/bioboom.config"
+    }
+  ],
+  "emitters" : [ "corrosive" ],
+  "statusEffects" : [ "biooozepoison2" ]
+}

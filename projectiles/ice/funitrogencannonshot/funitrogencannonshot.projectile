@@ -1,0 +1,26 @@
+{
+  "projectileName" : "funitrogencannonshot",
+  "image" : "funitrogencannonshot.png",
+  "animationCycle" : 0.6,
+  "level" : 3,
+  "frameNumber" : 3,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [25, 80, 110],
+  "power" : 6,
+  "speed" : 65,
+  "timeToLive" : 0.6,
+  "knockback" : 34,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceexplosion3/iceexplosion3.config"
+    },
+    { "action" : "liquid", "liquid" : "liquidnitrogen", "quantity" : 3 }
+  ],
+  "damageKind" : "ice",
+  "physics" : "bullet",
+  "emitters" : [ "defaultwhite" ],
+  "statusEffects" : [ "nitrogenfreeze2" ]
+}

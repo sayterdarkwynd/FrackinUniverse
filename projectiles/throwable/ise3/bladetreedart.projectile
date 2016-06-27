@@ -1,0 +1,44 @@
+{
+  "projectileName" : "bladetreedart",
+  "image" : "bladetreedart.png",
+  "animationCycle" : 0.25,
+  "physics" : "bullet",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 70,
+  "timeToLive" : 0.005,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "bladetreedart2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "bladetreedart2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 10
+    },
+    {
+      "action" : "projectile",
+      "type" : "bladetreedart2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : -10
+    }
+  ],
+
+  "power" : 100.0,
+  "damageKind" : "slash",
+  "statusEffects" : [ "booze2" ],
+  "emitters" : [ "daggerblue" ]
+}
+
+

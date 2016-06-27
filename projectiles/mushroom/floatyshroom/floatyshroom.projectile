@@ -1,0 +1,89 @@
+{
+  "projectileName" : "floatyshroom",
+  "physics" : "fu_flybug",
+  "speed" : 30,
+  "bounces" : 0,
+  "timeToLive" : 0.7,
+  "image" : "floatyshroom.png",
+  "animationCycle" : 1.5,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "lightColor" : [80, 0, 90],
+  "frameNumber" : 24,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosion.config"
+    },    
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/npc/smallbiped/bulbouseyehead_small_idle1.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_idle2.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_attack1.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_attack2.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "shroomshard",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "shroomshard",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "angleAdjust" : -180
+    },
+    {
+      "action" : "projectile",
+      "type" : "shroomshard",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "angleAdjust" : 90,
+      "inheritDamageFactor":0.33
+    },
+    {
+      "action" : "projectile",
+      "type" : "shroomshard",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "angleAdjust" : -90,
+      "inheritDamageFactor":0.33
+    },
+    {
+      "action" : "projectile",
+      "type" : "shroomshard",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "angleAdjust" : 35,
+      "inheritDamageFactor":0.33
+    },
+    {
+      "action" : "projectile",
+      "type" : "shroomshard",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "angleAdjust" : -35,
+      "inheritDamageFactor":0.33
+    },
+    {
+      "action" : "projectile",
+      "type" : "shroomshard",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "angleAdjust" : 65,
+      "inheritDamageFactor":0.33
+    },
+    {
+      "action" : "projectile",
+      "type" : "shroomshard",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "angleAdjust" : -65,
+      "inheritDamageFactor":0.33
+    }
+  ],
+  "power" : 1,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

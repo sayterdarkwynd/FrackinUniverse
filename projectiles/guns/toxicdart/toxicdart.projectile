@@ -1,0 +1,25 @@
+{
+  "projectileName" : "toxicdart",
+  "physics" : "stickybullet",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "toxicdart.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 3,
+  "power" : 50,
+  "speed" : 150,
+  "timeToLive" : 2,
+  "supportsProcessing" : true,
+  "emitters" : [ "poisonplasma" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/paintexplosiongreen/paintexplosiongreen.config"
+    }
+  ],
+  "statusEffects" : [
+    "biooozepoisonshort"
+  ],
+  "lightColor" : [67, 110, 32],
+  "damageKind" : "poisonplasma"
+}

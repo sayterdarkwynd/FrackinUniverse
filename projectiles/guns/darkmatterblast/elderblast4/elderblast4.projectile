@@ -1,0 +1,31 @@
+{
+  "projectileName" : "elderblast4",
+  "physics" : "hover",
+  "bounces" : 0,
+  "speed" : 20,
+  "timeToLive" : 0.1,
+  "lightColor" : [0, 160, 0],
+  "image" : "elderblast4.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 6,
+  "animationLoops" : false,
+  "power" : 2,
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : true,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/darkmatterboom/darkmatterboom.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "elderblast5",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.66,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "plasma",
+  "emitters" : [ "javelinred" ]
+}

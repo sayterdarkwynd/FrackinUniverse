@@ -1,0 +1,39 @@
+{
+  "projectileName" : "ironbubblestorm",
+  "image" : "ironbubble.png",
+  "animationCycle" : 0.25,
+  "level" : 3,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "lightColor" : [0, 0, 0],
+  "speed" : 40,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.001,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "metal",
+      "radius" : 2
+    },
+    {
+      "action" : "liquid", 
+      "liquid" : "fuironliquid", 
+      "quantity" : 2
+    }
+  ],
+  "power" : 10.0,
+  "universalDamage" : true,
+  "damageType" : "ignoresdef",
+  "damageKind" : "default"
+}
+
+
+
+

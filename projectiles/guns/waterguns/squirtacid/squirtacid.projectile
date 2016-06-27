@@ -1,0 +1,24 @@
+{
+  "projectileName" : "squirtacid",
+  "image" : "squirtacid.png",
+  "physics" : "squirt",
+  "animationCycle" : 1,
+  "frameNumber" : 10,
+  "power" : 50,
+  "speed" : 50,
+  "bounces" : 0,
+  "piercing" : false,
+  "damageKind" : "default",
+  "statusEffects" : [
+    "sulphuricacideffect"
+  ],
+  "actionOnReap" : [ 
+  { "action" : "liquid", "liquid" : "sulphuricacid", "quantity" : 1.65 },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weather/acidburn.ogg" ]
+    }
+  ],
+  "emitters" : [ "acidsquirt" ],
+  "hydrophobic" : true
+}

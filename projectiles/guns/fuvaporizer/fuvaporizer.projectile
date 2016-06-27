@@ -1,0 +1,25 @@
+{
+  "projectileName" : "fuvaporizer",
+  "image" : "fuvaporizer.png",
+  "physics" : "vaporizer",
+  "timeToLive" : 0.65,
+  "animationCycle" : 0.2,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 4,
+  "level" : 1,
+  "power" : 1.0,
+  "lightColor" : [40, 55, 10],
+  "speed" : 60,
+  "piercing" : true,
+  "damagePoly" : [ [0, -8], [16, -8], [16, 8], [0, 8] ],
+  "damageKind" : "plasma",
+  "emitters" : [ "lighttrailfast" ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "fuvaporizer2",
+      "inheritDamageFactor" : 0.7
+    }
+  ]
+  
+  }

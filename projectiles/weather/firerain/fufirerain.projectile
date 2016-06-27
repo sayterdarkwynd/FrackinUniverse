@@ -1,0 +1,27 @@
+{
+  "projectileName" : "fufirerain",
+  "physics" : "weather",
+  "image" : "fufirerain.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [189, 26, 0],
+  "power" : 5.0,
+  "damageKind" : "default",
+  "damageType" : "ignoresdef",
+  "damagePoly" : [ [-50, -50], [50, -50], [50, 50], [-50, 50] ],
+
+  "flippable" : true,
+  "universalDamage" : false,
+  
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "firefinish",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.001,
+      "angleAdjust" : 0
+    }
+  ]
+}

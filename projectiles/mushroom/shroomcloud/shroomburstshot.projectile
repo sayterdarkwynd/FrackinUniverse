@@ -1,0 +1,58 @@
+{
+  "projectileName" : "shroomburstshot",
+  "image" : "poisonballoon.png",
+  "physics" : "fu_flybug",
+  "animationCycle" : 1.5,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 24,
+  "power" : 1,
+  "level" : 5,
+  "speed" : 40,
+  "timeToLive" : 0.25,
+  "bounces" : -1,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [0, 100, 0],
+  "damageKind" : "poison",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "shroomcloud",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosion.config"
+    },    
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/npc/smallbiped/bulbouseyehead_small_idle1.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_idle2.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_attack1.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_attack2.ogg" ]
+    },    
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "option",
+          "options" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/fog/fog.animation",
+                "size" : 1.0,
+                "timeToLive" : 7.0,
+                "variance" : {
+                  "position" : [3, 0],
+                  "rotation" : 180
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

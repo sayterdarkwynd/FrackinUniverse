@@ -1,0 +1,31 @@
+{
+  "projectileName" : "elderburst2",
+  "physics" : "hover",
+  "bounces" : 0,
+  "speed" : 70,
+  "timeToLive" : 0.15,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [127,255,0],
+  "image" : "elderburst2.png",
+  "animationCycle" : 0.15,
+  "frameNumber" : 3,
+  "animationLoops" : false,
+  "power" : 6,
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : true,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elder/eldercarbineboom.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "elderburst3",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.8,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "cosmicdamage"
+}

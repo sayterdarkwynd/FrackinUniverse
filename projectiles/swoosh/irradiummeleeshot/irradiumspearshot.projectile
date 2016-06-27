@@ -1,0 +1,24 @@
+{
+  "projectileName" : "irradiumspearshot",
+  "image" : "irradiumspearshot.png",
+  "animationCycle" : 0.05,
+  "frameNumber" : 3,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "damagePoly" : [ [-40, 5.5], [22.5, 5.5], [22.5, -5.5], [-40, -5.5] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "damageKind" : "electricspear",
+  "lightColor" : [28, 181, 238],
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "irradiummeleeshot",
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    }
+  ],
+    "statusEffects" : [ "ffextremeradiation" ]
+}

@@ -1,0 +1,35 @@
+{
+  "projectileName" : "tentabaneshot",
+  "image" : "tentabaneexplosion.png",
+  "physics" : "fuvashta",
+  "timeToLive" : 2,
+  "animationCycle" : 1.0,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 12,
+  "level" : 1,
+  "power" : 0.1,
+  "lightColor" : [25, 25, 25],
+  "speed" : 30,
+  "piercing" : false,
+  "bounces" : 3,
+  "damagePoly" : [ [0, -8], [16, -8], [16, 8], [0, 8] ],
+  "damageKind" : "electricplasma",
+  "emitters" : [ "snowflakeshurikentrail" ], 
+  "knockback" : 7,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceexplosion2/iceexplosion2.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.045,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "iceshardsmall",
+      "fuzzAngle" : 360
+   }
+  ]
+  }

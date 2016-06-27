@@ -1,0 +1,35 @@
+{
+  "projectileName" : "burstjumpboom2",
+  "image" : "burstjumpboom.png",
+  "animationCycle" : 0.2,
+  "level" : 4,
+  "frameNumber" : 5,
+  "speed" : 0,
+  "fallSpeed" : 0,
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "pointLight" : true,
+  "lightColor" : [168,175,155],
+  "universalDamage" : true,
+  "damageKind" : "default",
+  "power" : 50,
+  "knockback" : 120,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "speed" : 0,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 0
+    }
+  ]
+}
+
+

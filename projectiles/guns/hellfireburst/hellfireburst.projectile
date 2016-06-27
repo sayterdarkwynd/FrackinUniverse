@@ -1,0 +1,56 @@
+{
+  "projectileName" : "hellfireburst",
+  "image" : "hellfireburst.png",
+  "animationCycle" : 0.9,
+  "physics" : "bullet",
+  "level" : 7,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 9,
+  "speed" : 0,
+  "lightColor" : [255,141,40],
+  "timeToLive" : 0.3,
+  "piercing" : false,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -27], [6, -6], [9, 0], [6, 6], [0, 27], [-6, 6] ],
+  "damageKind" : "fireplasma",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/hellfireexplosion/hellfireexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectile",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.32,
+      "angleAdjust" : 45
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectile",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.32,
+      "angleAdjust" : -45
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectile",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.32,
+      "angleAdjust" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectile",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.32,
+      "angleAdjust" : -90
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectile",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.32,
+      "angleAdjust" : 0
+    }
+  ]
+}

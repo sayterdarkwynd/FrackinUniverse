@@ -1,0 +1,34 @@
+{
+  "projectileName" : "hellfireprojectile",
+  "image" : "hellfireprojectile.png",
+  "animationCycle" : 0.3,
+  "level" : 1,
+  "physics" : "bullet",
+  "frameNumber" : 4,
+  "pointLight" : true,
+  "damagePoly" : [ [-28, 0], [0, 12], [16, 16], [28, 0], [-16, -16], [0, -12] ],
+  "lightColor" : [255, 113, 0],
+  "speed" : 50,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+    },
+    {
+      "action" : "liquid",
+      "liquid" : "lava",
+      "quantity" : 0.45
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.25,
+      "angleAdjust" : 35
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "fireflames" ]
+}
+
+

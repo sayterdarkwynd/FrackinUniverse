@@ -1,0 +1,22 @@
+{
+  "projectileName" : "elderflamethrowerflameff",
+  "physics" : "grenadenobounce",
+  "bounces" : -1,
+  "level" : 1,
+  "timeToLive" : 1.5,
+  "speed" : 10,
+  "piercing" : true,
+  "image" : "elderflamethrowerflameff.png",
+  "animationCycle" : 0.55,
+  "lightColor" : [0, 180, 0],
+  "frameNumber" : 4,  
+  "emitters" : [ "defaultgreen" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    }
+  ],
+  "damageKind" : "poison",
+  "statusEffects" : [ "paralysis" ]
+}

@@ -1,0 +1,49 @@
+{
+  "projectileName" : "coldblast1",
+  "image" : "coldblast1.png",
+  "physics" : "laser",
+  "animationCycle" : 0.5,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 4,
+  "speed" : 19,
+  "timeToLive" : 1.25,
+  "piercing" : false,
+  "damagePoly" : [ ],
+  "damageKind" : "iceplasma",
+  "lightColor" : [10, 20, 70],
+  "statusEffects" : [
+    "freeze"
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+	{
+      "action" : "projectile",
+      "type" : "fufreezecannonshot2",
+      "inheritDamageFactor" : 0.1,
+      "fuzzAngle" : 30,
+      "timeToLive" : 0.8,
+      "angleAdjust" : 0
+    },
+	{
+      "action" : "projectile",
+      "type" : "fufreezecannonshot2",
+      "inheritDamageFactor" : 0.1,
+      "fuzzAngle" : 10,
+      "timeToLive" : 0.8,
+      "angleAdjust" : -10
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufreezecannonshot2",
+      "inheritDamageFactor" : 0.1,
+      "fuzzAngle" : 10,
+      "timeToLive" : 0.8,
+      "angleAdjust" : 10
+    }
+  ],
+  "emitters" : [ "defaultwhite" ]
+}
+

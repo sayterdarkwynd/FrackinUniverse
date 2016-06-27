@@ -1,0 +1,47 @@
+{
+  "projectileName" : "elderplasma4green",
+  "physics" : "laser",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "elderplasma4green.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 2,
+  "power" : 50,
+  "speed" : 75,
+  "supportsProcessing" : true,
+  "lightColor" : [79, 128, 78],
+  "damageKind" : "poison",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "elderflamethrowerflameff",
+      "inheritDamageFactor" : 0.15
+    },
+    {
+      "action" : "projectile",
+      "type" : "parasiteshot",
+      "inheritDamageFactor" : 0.3,
+      "fuzzAngle" : 10,
+      "angleAdjust" : 25
+    },
+    {
+      "action" : "projectile",
+      "type" : "parasiteshot",
+      "inheritDamageFactor" : 0.3,
+      "fuzzAngle" : 10,
+      "angleAdjust" : 25
+    },
+    {
+      "action" : "projectile",
+      "type" : "parasiteshot",
+      "inheritDamageFactor" : 0.3,
+      "fuzzAngle" : 10,
+      "angleAdjust" : 0
+    }
+  ],
+  "statusEffects" : [ "paralysis" ]
+}

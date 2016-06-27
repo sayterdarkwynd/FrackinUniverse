@@ -1,0 +1,26 @@
+{
+  "projectileName" : "ffpetal",
+  "image" : "ffpetal.png",
+  "animationCycle" : 1,
+  "physics" : "stickybullet",
+  "piercing" : true,
+  "level" : 1,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "timeToLive" : 1.5,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/acidexplosion/acidexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/eldercarbine.ogg" ]
+    }
+  ],
+  //"power" : 5.0,
+  "damageKind" : "poisonplasma",
+  "emitters" : [ "defaultgreen" ],
+  "statusEffects" : [ "biooozepoisonshort" ]
+}

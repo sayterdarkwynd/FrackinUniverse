@@ -1,0 +1,35 @@
+{
+  "projectileName" : "vashtagunshot",
+  "image" : "vashtagunshot.png",
+  "physics" : "fuvashta",
+  "timeToLive" : 1,
+  "animationCycle" : 0.2,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 4,
+  "level" : 1,
+  "power" : 0.1,
+  "lightColor" : [25, 25, 25],
+  "speed" : 30,
+  "piercing" : false,
+  "bounces" : 3,
+  "damagePoly" : [ [0, -8], [16, -8], [16, 8], [0, 8] ],
+  "damageKind" : "electricplasma",
+  "emitters" : [ "snowflakeshurikentrail" ], 
+  "knockback" : 7,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion/regularexplosion.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.07,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "vashtashard",
+      "fuzzAngle" : 360
+   }
+  ]
+  }

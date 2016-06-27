@@ -1,0 +1,39 @@
+{
+  "projectileName" : "fuicecloud",
+  "image" : "fuicecloud.png",
+  "physics" : "fu_lightgas",
+  "animationCycle" : 1,
+  "speed" : 10,
+  "frameNumber" : 8,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "timeToLive" : 0.5,
+  "piercing" : false,
+  "damageKind" : "default",
+  "statusEffects" : [ "freeze" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/mediumsnowballexplosion/mediumsnowballexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuiceshot",
+      "inheritDamageFactor" : 0.333,
+      "angleAdjust" : 25
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuiceshot",
+      "inheritDamageFactor" : 0.333,
+      "angleAdjust" : -25
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuiceshot",
+      "inheritDamageFactor" : 0.333,
+      "angleAdjust" : 0
+    }
+  ],
+  "power" : 5.0
+}

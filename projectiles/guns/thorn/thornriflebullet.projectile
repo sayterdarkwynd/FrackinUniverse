@@ -1,0 +1,36 @@
+{
+  "projectileName" : "thornriflebullet",
+  "image" : "thornriflebullet.png",
+  "animationCycle" : 0.25,
+  "level" : 1,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "timeToLive" : 0.001,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "thornshot",
+      "inheritDamageFactor" : 0.4,
+      "angleAdjust" : 0.5
+    },
+    {
+      "action" : "projectile",
+      "type" : "thornshot",
+      "inheritDamageFactor" : 0.4,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "thornshot",
+      "inheritDamageFactor" : 0.4,
+      "angleAdjust" : -0.5
+	}
+  ],
+  
+  "statusEffects" : [ "weakpoison" ],
+  
+  //"power" : 5.0,
+  //"damageType" : "hitTest",
+  "damageKind" : "poison"
+}

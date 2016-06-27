@@ -1,0 +1,28 @@
+{
+  "projectileName" : "healingbubble",
+  "image" : "healingbubble.png",
+  "animationCycle" : 0.25,
+  "level" : 3,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "lightColor" : [255, 113, 255],
+  "speed" : 30,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ]
+    },  
+    {
+      "action" : "liquid", 
+      "liquid" : "organicsoup", 
+      "quantity" : 1
+    }
+  ],
+  "power" : 0.001,
+  "damageKind" : "default"
+}
+
+
+
+

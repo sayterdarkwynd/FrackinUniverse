@@ -1,0 +1,27 @@
+{
+  "projectileName" : "crystalbayonetstarter",
+  "bounces" : 0,
+  "level" : 1,
+  "damageKindImage" : "icon.png",
+  "image" : "crystalbayonetbullet.png",
+  "pierces" : true,
+  "timeToLive" : 0.0001,
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "actionOnReap" : [
+    {
+     "action" : "projectile",
+     "type" : "crystalbayonetbullet" ,
+	  "inheritDamageFactor" : 0.35
+	},
+	{
+     "action" : "projectile",
+     "type" : "crystalbayonet" ,
+	  "inheritDamageFactor" : 0.35
+	}
+
+    ],
+  //"power" : 5,
+  //"damageType" : "hitTest",
+  "damageKind" : "crystal"
+}

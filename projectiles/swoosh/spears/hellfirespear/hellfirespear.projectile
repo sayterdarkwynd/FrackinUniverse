@@ -1,0 +1,34 @@
+{
+  "projectileName" : "hellfirespear",
+  "image" : "hellfirespear.png",
+  "animationCycle" : 0.07,
+  "frameNumber" : 3,
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "speed" : 0,
+  "orientationLocked" : true,
+  "damagePoly" : [ [-35, 5.5], [22.5, 5.5], [22.5, -5.5], [-35, -5.5] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "emitters" : [ "fireswoosh" ],
+  "damageKind" : "firespear",
+  "statusEffects" : [
+    "burning"
+  ],
+  "lightColor" : [191, 103, 2],
+  "pointLight" : true,
+  "knockback" : 35,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectile2small",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.15,
+      "angleAdjust" : 0
+    }
+
+  ]
+}

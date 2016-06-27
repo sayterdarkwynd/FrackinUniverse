@@ -1,0 +1,27 @@
+{
+  "projectileName" : "insectswarm",
+  "image" : "insectswarm.png",
+  "physics" : "flame",
+  "animationCycle" : 1,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 18,
+  "power" : 0,
+  "speed" : 25,
+  "timeToLive" : 1,
+  "bounces" : 4,
+  "piercing" : false,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageKind" : "poison",
+  "actionOnReap" : [
+    {
+        "action" : "config",
+        "file" : "/projectiles/explosions/hivebombexplosion2/fuhivebombexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/hivebomb_impact.ogg" ]
+    }
+  ],
+  "statusEffects" : [ "weakpoison" ]
+}
+

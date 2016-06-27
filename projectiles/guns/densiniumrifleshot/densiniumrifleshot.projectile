@@ -1,0 +1,25 @@
+{
+  "projectileName" : "densiniumrifleshot",
+  "physics" : "laser",
+  "bounces" : 0,
+  "speed" : 5,
+  "timeToLive" : 1.4,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [0, 160, 0],
+  "image" : "densiniumrifleshot.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 6,
+  "animationLoops" : false,
+  "power" : 0,
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : true,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+    }
+  ],
+  "damageKind" : "plasma",
+  "emitters" : [ "iceplasma" ]
+}

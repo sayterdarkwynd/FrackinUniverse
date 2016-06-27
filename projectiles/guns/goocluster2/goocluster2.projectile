@@ -1,0 +1,31 @@
+{
+  "projectileName" : "goocluster2",
+  "image" : "goocluster2.png",
+  "animationCycle" : 0.5,
+  "level" : 3,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "physics" : "grenadezbomb",
+  "pointLight" : false,
+  "timeToLive" : 2,
+  "bounces" : 1,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "smallregularexplosion",
+      "inheritDamageFactor" : 0.35,
+      "angle" : 5
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ]
+    },
+    {
+      "action" : "liquid",
+      "liquid" : "slimeliquid",
+      "quantity" : 2
+    }
+  ],
+  "speed" : 15,
+  "damageKind" : "poisonplasma"
+}

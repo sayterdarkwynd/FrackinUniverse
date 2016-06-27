@@ -1,0 +1,23 @@
+{
+  "projectileName" : "slimegun",
+  "image" : "slimegun.png",
+  "physics" : "goop",
+  "animationCycle" : 1,
+  "frameNumber" : 10,
+  "power" : 50,
+  "speed" : 25,
+  "timeToLive" : 1,
+  "bounces" : -1,
+  "piercing" : false,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageKind" : "default",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "acidexplosion2",
+      "inheritDamageFactor" : 0.2
+    }
+  ],
+  "emitters" : [ "corrosive" ],
+  "statusEffects" : [ "weakpoison" ]
+}

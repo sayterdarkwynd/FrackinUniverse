@@ -1,0 +1,39 @@
+{
+  "projectileName" : "lunaribow1",
+  "image" : "lunarishot.png",
+  "animationCycle" : 0.25,
+  "physics" : "laser",
+  "frameNumber" : 2,
+  "lightColor" : [155, 147, 27],
+  "animationLoops" : true,
+  "speed" : 50,
+  "timeToLive" : 0.05,
+  "power" : 1.0,
+  "damagePoly" : [ [-2, 2], [-2, -2], [2, -2], [2, 2] ],
+  "supportsProcessing" : true,
+  "damageKind" : "electricplasma",
+  "emitters" : [ "lunariyellow" ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "lunaribow2",
+      "inheritDamageFactor" : 0.6,
+      "fuzzAngle" : 10,
+      "angleAdjust" : 25
+    },
+    {
+      "action" : "projectile",
+      "type" : "lunaribow2",
+      "inheritDamageFactor" : 0.6,
+      "fuzzAngle" : 10,
+      "angleAdjust" : -25
+    },
+    {
+      "action" : "projectile",
+      "type" : "lunaribow2",
+      "inheritDamageFactor" : 0.6,
+      "fuzzAngle" : 10,
+      "angleAdjust" : 0
+    } 
+  ]
+}

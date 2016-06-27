@@ -1,0 +1,73 @@
+{
+  "projectileName" : "fuhivebugx",
+  "physics" : "laser",
+  "speed" : 50,
+  "bounces" : 0,
+  "timeToLive" : 0.65,
+  "image" : "fuhivebugx.png",
+  "damageKindImage" : "icon.png",
+  "animationCycle" : 1.5,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "lightColor" : [80, 0, 90],
+  "frameNumber" : 24,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/npc/smallbiped/bulbouseyehead_small_idle1.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_idle2.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_attack1.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_attack2.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "xtermite2",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuhivebuggibx",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "inheritDamageFactor" : 0.15,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuhivebuggibx",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "inheritDamageFactor" : 0.15,
+      "angleAdjust" : 0
+    },    
+    {
+      "action" : "projectile",
+      "type" : "fuhiveclusterx",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "inheritDamageFactor" : 0.15,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuhiveclusterx",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "inheritDamageFactor" : 0.20,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuhiveclusterx",
+      "firePosition" : [-10, 5],
+      "fuzzAngle" : 180,
+      "inheritDamageFactor" : 0.20,
+      "angleAdjust" : 0
+    }
+  ],
+  "power" : 1.5,
+  "damageType" : "NoDamage",
+  "damageKind" : "poisonplasma",
+  "statusEffects" : [ "weakpoison" ]
+}
