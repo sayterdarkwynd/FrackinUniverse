@@ -1,0 +1,26 @@
+{
+  "name" : "caterpillarAttack",
+  "label" : "EW!",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "parameters" : {
+    "caterpillarAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "poisonballoon",
+      "range" : 9,
+      "speed" : 35,
+      "power" : 12,
+      "shots" : 3,
+      "windupTime" : 0.05,
+      "winddownTime" : 0.2,
+      "fireInterval" : 0.16
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ "/sfx/projectiles/goo_spit2.ogg" ]
+    }
+  }
+}
+

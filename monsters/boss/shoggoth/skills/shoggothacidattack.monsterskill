@@ -1,0 +1,28 @@
+{
+  "name" : "shoggothAcidAttack",
+  "label" : "Acid Attack",
+  "image" : "/monsters/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/shoggoth/skills/shoggothacidattack.lua" ],
+    "shoggothAcidAttack" : {
+      "skillTime" : 4,
+      
+      "damagePerSecond" : 2000,
+      "distanceRange" : [10,100],
+      "windupTime" : 0.5,
+      "periodTime" : 1,
+      "winddownTime" : 1.0,
+      "attacksLeft" : 3,
+      "bounces" : 1,
+      "projectile" : {
+        "type" : "acidspit",
+        "config" : {
+          "power" : 40,
+          "speed" : 40
+        },
+        "offset" : [10, -5]
+      }
+    }
+  }
+}

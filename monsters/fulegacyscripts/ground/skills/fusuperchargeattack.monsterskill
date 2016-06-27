@@ -1,0 +1,32 @@
+{
+  "name" : "fuSuperChargeAttack",
+  "label" : "CHARGE",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/fulegacyscripts/ground/skills/fusuperchargeattack.lua" ],
+    "fuSuperChargeAttack" : {
+      "skillTimeLimit" : 3.0,
+      "cooldownTime" : 0.0,
+      "windupTime" : 1.4,
+      "winddownTime" : 1.4,
+      "attackDistance" : 9.0,
+      "projectile" : null,
+
+      "crashDamageAmount" : 10.0,
+      
+      "crashStunTime" : 2.0,
+
+      "speedBonus" : 15.0,
+
+      "approachPoints" : [ [-15, 0], [15, 0] ],
+      "startRects" : [ [-16, 2.5, -11, -2.0], [16, 2.5, 11, -2.0] ]
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "chargeCrash" : [ "/sfx/melee/blunt_hit_organic.ogg" ]
+    }
+  }
+}

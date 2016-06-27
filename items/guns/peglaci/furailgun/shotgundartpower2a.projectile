@@ -1,0 +1,29 @@
+{
+  "projectileName" : "furailgunshotpower2a",  
+  "image" : "shotgundartpower.png",
+  "animationCycle" : 0.5,
+  "piercing" : true,
+  "physics" : "gas",
+  "bounces" : 0,
+  "frameNumber" : 1,  
+  "pointLight" : false,    
+  "timeToLive" : 0.01,
+  "speed" :60,
+   "lightColor" : [40, 40, 100],  
+   "actionOnReap" : [
+	{
+      "action" : "config",
+      "file" : "/items/guns/peglaci/furailgun/furailgunexplosion.config"
+    },
+	{
+      "action" : "projectile",
+      "type" : "furailgunshotpowerwait2",
+      "inheritDamageFactor" : 0.6,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "peglacitrail" ]
+}
+
+

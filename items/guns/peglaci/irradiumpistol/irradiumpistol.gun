@@ -1,0 +1,34 @@
+{
+  "itemName" : "irradiumpistol",
+  "inventoryIcon" : "irradiumpistolicon.png",
+  "dropCollision" : [-8.0, -3.0, 8.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Volatile irradium rounds, when charged, are less than pleasant for foes. ",
+  "shortdescription" : "Irradium Pistol",
+  "image" : "irradiumpistol.png:<frame>",
+  "imageFrameSelector" : "irradiumImageSelector",
+  "handPosition" : [-9, -4],
+  "firePosition" : [6, 1.5],
+  "level" : 4,
+  "itemTags" : ["weapon","ranged","pistol"],
+  "tooltipKind" : "gun",
+  "weaponType" : "Pistol",
+  "fireTime" : 0.2,
+  "twoHanded" : false,
+  "rateOfFire" : [2, 7],
+	"muzzleEffect" : {
+    "animation" : "/animations/muzzleflash/electromuzzle/electromuzzle.animation",
+    "fireSound" : [ { "file" : "/sfx/weapons/irradiumrifle.ogg" } ]
+  },
+  "fireOnRelease" : true,
+  
+   "projectileType" : "irradiumpistolshot",
+  "powerProjectileType" : "irradiumpistolshotpower",
+  "powerProjectileTime" : [0.7, 50],
+  "projectile" : {
+    "power" : 1.3,
+    "powerCurve" : "irradiumTimeMultiplier",
+    "color" : [10, 255, 10]
+	}
+}

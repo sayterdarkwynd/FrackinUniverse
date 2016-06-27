@@ -1,0 +1,54 @@
+{
+  "projectileName" : "isn_plasmabeam_starter",
+  "image" : "isn_plasmabeamshot.png",
+  "physics" : "laser",
+  "animationCycle" : 0.15,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 1,
+  "power" : 2.5,
+  "level" : 6,
+  "speed" : 100,
+  "timeToLive" : 0.01,
+  "piercing" : true,
+  "supportsProcessing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [100, 0, 0],
+  "damageKind" : "plasma",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "isn_plasmabeam_1",
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.9
+    },
+	{
+      "action" : "projectile",
+      "type" : "isn_plasmabeam_2",
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.70
+    },
+	{
+      "action" : "projectile",
+      "type" : "isn_plasmabeam_3",
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.50
+    },
+	{
+      "action" : "projectile",
+      "type" : "isn_plasmabeam_4",
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.30
+    }
+	,{
+      "action" : "projectile",
+      "type" : "isn_plasmabeam_5",
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.10
+    }
+  ]
+}

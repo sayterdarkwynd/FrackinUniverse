@@ -1,0 +1,26 @@
+{
+  "name" : "robotgaussAttack",
+  "label" : "Gauss Cannon",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "parameters" : {
+    "robotgaussAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "gausspistolshot",
+      "range" : 18,
+      "speed" : 65,
+      "power" : 10,
+      "shots" : 5,
+      "windupTime" : 0.5,
+      "winddownTime" : 0.4,
+      "fireInterval" : 0.16
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ "/sfx/gun/mech_gun.ogg" ]
+    }
+  }
+}
+

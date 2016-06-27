@@ -1,0 +1,53 @@
+{
+  "projectileName" : "fuminelayershot2",
+  "image" : "mine.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 3,
+  "physics" : "stickybomb",
+  "bounces" : 3,
+  "frameNumber" : 8,  
+  "pointLight" : false,
+  "speed" :60,
+  "lightColor" : [40, 40, 40],
+  "timeToLive" : 6,
+  "actionOnReap" : [
+   {
+      "action" : "config",
+      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
+    },
+	{
+      "action" : "projectile",
+      "type" : "fuminelayershot3",
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 180
+    },
+	{
+      "action" : "projectile",
+      "type" : "fuminelayershot3",
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 200
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuminelayershot3",
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 160
+    },
+	{
+      "action" : "projectile",
+      "type" : "fuminelayershot3",
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 170
+    },
+	{
+      "action" : "projectile",
+      "type" : "fuminelayershot3",
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 150
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "peglacitrail" ]
+}
+
+

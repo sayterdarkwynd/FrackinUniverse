@@ -1,0 +1,26 @@
+{
+  "projectileName" : "isn_irradiator2",
+  "image" : "isn_irradiatorshot.png",
+  "physics" : "grenade",
+  "animationCycle" : 0.50,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 14,
+  "power" : 1,
+  "level" : 5,
+  "speed" : 40,
+  "timeToLive" : 0.05,
+  "bounces" : -1,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [0, 100, 0],
+  "damageKind" : "plasma",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "isn_irradiator_cloud2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "type" : "furatthing2",
+
+  "categories" : [ "furatthing2" ],
+  "parts" : [ "body" ],
+  "reversed" : true,
+  "animation" : "furatthing2.animation",
+
+  "dropPools" : [ "ratthingLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/fulegacyscripts/ground/groundMonster.lua",
+      "/scripts/pathing.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+
+      "/monsters/fulegacyscripts/ground/approachState.lua",
+      "/monsters/fulegacyscripts/ground/fleeState.lua",
+      "/monsters/fulegacyscripts/ground/wanderState.lua",
+
+      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"
+    ],
+
+    "damageTeam" : 1,
+
+    "blockedSensors" : [ [1.5, -0.8], [1.5, 0.2], [1.5, 0.7] ],
+    "fallSensors" : [ [0.5, -2.5], [0.5, -3.5], [0.5, -4.5], [2.0, -2.5], [2.0, -3.5], [2.0, -4.5] ],
+
+    "baseSkills" : [ "fuSoundMeleeAttack" ],
+    "specialSkills" : [ ],
+
+    "projectileSourcePosition" : [0.5, 0],
+
+    "attackStartDistance" : 1,
+    "attackTime" : 0.75,
+    "attackCooldownTime" : 0.5,
+
+    "aggressive" : true,
+    "territoryDistance" : 10.0,
+    "territorialTargetRadius" : 20.0,
+    "minimalTargetRadius" : 6.0,
+    "targetSearchTime" : 0.5,
+    "targetHoldTime" : 5.0,
+
+    "closeDistance" : 1.5,
+
+    "wanderTime" : [4.0, 6.0],
+    "wanderMovementTime" : [2.0, 3.0],
+
+    "jumpTargetDistance" : 6,
+    "jumpTime" : [1.4, 2.0],
+
+    "pathing" : {
+      "canOpenDoors" : false
+    },
+
+    "metaBoundBox" : [-2, -0.55, 1.0, 0.75],
+    "scale" : 1.0,
+
+    "exhaustionTimer" : 3.0,
+    "exhaustionTimeout" : 3.0,
+    "exhaustionDistanceLimit" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1, -0.6], [-0.6, -1], [0.6, -1], [1, -0.6], [1, 0.6], [0.6, 1], [-0.6, 1], [-1, 0.6] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 6.0,
+      "runSpeed" : 8.0,
+      "flySpeed" : 25.0,
+      "airForce" : 50.0,
+      "airJumpProfile": {
+        "jumpSpeed" : 15.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "knockoutAnimationStates" : {
+      "movement" : "knockout",
+      "attack" : "idle"
+    },
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-4, -3], [0, -3], [0, 0], [-4, 0] ],
+      "damage" : 30,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "poisonspear",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 60
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -21]
+  }
+}

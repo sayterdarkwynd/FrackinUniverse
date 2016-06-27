@@ -1,0 +1,25 @@
+{
+  "name" : "tentacleSwipeAttack",
+  "label" : "WHAP!",
+  "image" : "/monsters/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/shoggoth/skills/tentacleSwipeAttack.lua" ],
+    "tentacleSwipeAttack" : {
+      "skillTime" : 16,
+      
+      "damagePerSecond" : 2000,
+      "distanceRange" : [0, 20],
+      "windupTime" : 0.4,
+      "winddownTime" : 1.2,
+      "projectile" : {
+        "type" : "shoggothswipe",
+        "config" : {
+          "power" : 30,
+          "speed" : 10
+        },
+        "offset" : [18, -12.5]
+      }
+    }
+  }
+}

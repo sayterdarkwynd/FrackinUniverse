@@ -1,0 +1,33 @@
+{
+  "projectileName" : "isn_plasmabeam_5",
+  "image" : "isn_plasmabeamshot.png",
+  "physics" : "laser",
+  "animationCycle" : 0.3,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 5,
+  "power" : 1,
+  "level" : 6,
+  "speed" : 125,
+  "timeToLive" : 0.25,
+  "piercing" : false,
+  "supportsProcessing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [100, 0, 0],
+  "damageKind" : "plasma",
+  
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "isn_plasmablast",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "config",
+      "file" : "/items/guns/science_mod/isn_plasmabeam/isn_plasmablast.config"
+    }
+  ],
+  "emitter" : [ "electricplasma" ]
+  
+}

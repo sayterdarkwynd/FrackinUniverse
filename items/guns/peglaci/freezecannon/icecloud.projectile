@@ -1,0 +1,46 @@
+{
+  "projectileName" : "fufreezecannonshot",
+  "image" : "icecrystal.png",
+  "animationCycle" : 1.4,
+  "frameNumber" : 8,
+  "armorPenetration" : 1,
+  "physics" : "gas",
+  "bounces" : 1,
+  "lightColor" : [0, 10, 30],
+  "speed" : 15,
+  "timeToLive" : 0.01,
+   "statusEffects" : [
+    "freeze"
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+	{
+      "action" : "projectile",
+      "type" : "fufreezecannonshot1",
+      "inheritDamageFactor" : 0.3,
+	  "fuzzAngle" : 30,
+      "angleAdjust" : 0
+    },
+	{
+      "action" : "projectile",
+      "type" : "fufreezecannonshot1",
+      "inheritDamageFactor" : 0.3,
+	  "fuzzAngle" : 10,
+      "angleAdjust" : -10
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufreezecannonshot1",
+      "inheritDamageFactor" : 0.3,
+	  "fuzzAngle" : 10,
+      "angleAdjust" : 10
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "defaultwhite" ]
+}
+
+

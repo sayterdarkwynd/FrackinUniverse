@@ -1,0 +1,26 @@
+{
+  "name" : "robotIonAttack",
+  "label" : "Ion Burst",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "parameters" : {
+    "robotIonAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "ionrifleshot",
+      "range" : 15,
+      "speed" : 65,
+      "power" : 15,
+      "shots" : 3,
+      "windupTime" : 0.5,
+      "winddownTime" : 0.2,
+      "fireInterval" : 0.25
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ "/sfx/npc/unique/robotboss_pain1.ogg" ]
+    }
+  }
+}
+

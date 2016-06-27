@@ -1,0 +1,51 @@
+{
+  "projectileName" : "fucloudgunshot2",
+  "image" : "icecloud.png",
+  "animationCycle" : 1.2,
+  "frameNumber" : 8,
+  "armorPenetration" : 3,
+  "physics" : "gas",
+  "bounces" : 3,
+  "pointLight" : false,
+   "piercing" : true,
+  "speed" :15,
+    "lightColor" : [255, 150, 0],
+	 "timeToLive" : 0.5,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "fucloudgunshot3a",
+      "inheritDamageFactor" : 0.35,
+	  "fuzzAngle" : 10,
+      "angleAdjust" : 0
+    },
+	{
+      "action" : "projectile",
+      "type" : "fucloudgunshot3",
+      "inheritDamageFactor" : 0.35,
+	  "fuzzAngle" : 10,
+      "angleAdjust" : -180
+    },
+    {
+      "action" : "projectile",
+      "type" : "fucloudgunshot3",
+      "inheritDamageFactor" : 0.35,
+	  "fuzzAngle" : 10,
+      "angleAdjust" : 90
+    },
+	{
+      "action" : "projectile",
+      "type" : "fucloudgunshot3",
+      "inheritDamageFactor" : 0.35,
+	  "fuzzAngle" : 10,
+      "angleAdjust" : -90
+    }
+  ],
+  "statusEffects" : [
+	"burning"
+	 ],
+  "damageKind" : "default",
+  "emitters" : [ "cloudtrail" ]
+}
+
+

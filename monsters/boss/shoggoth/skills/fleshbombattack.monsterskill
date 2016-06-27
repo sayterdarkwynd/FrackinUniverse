@@ -1,0 +1,26 @@
+{
+  "name" : "fleshBombAttack",
+  "label" : "Flesh Bomb",
+  "image" : "/monsters/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/shoggoth/skills/fleshBombAttack.lua" ],
+    "fleshBombAttack" : {
+      "skillTime" : 16,
+      
+      "damagePerSecond" : 2000,
+      "distanceRange" : [20,40],
+      "windupTime" : 0.5,
+      "winddownTime" : 1.0,
+      "bounces" : 1,
+      "projectile" : {
+        "type" : "fleshbomb",
+        "config" : {
+          "power" : 40,
+          "speed" : 20
+        },
+        "offset" : [0, -10]
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "itemName" : "mobiusrailgun",
+  "inventoryIcon" : "mobiusrailgun.png",
+  "dropCollision" : [-8.0, -3.0, 8.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A charge-up super version of the Sentry rifle.",
+  "shortdescription" : "Sentry Railgun",
+  "image" : "mobiusrailguncharge.png:<frame>",
+  "imageFrameSelector" : "mobiusrailgunImageSelector",
+  "handPosition" : [-9, -2],
+  "firePosition" : [25, -1],
+  "level" : 6,
+  "fireTime" : 1,
+  "twoHanded" : true,
+  "tooltipKind" : "gun",
+  "fireOnRelease" : true,
+  "walkWhileFiring" : true,
+  "itemTags" : ["weapon","ranged","rifle"],
+  "projectileType" : "mobius",
+  "powerProjectileType" : "mobiusrgun",
+  "powerProjectileTime" : [0.7, 50],
+  "projectile" : {
+    "speed" : 40,
+    "power" : 6,
+    "powerCurve" : "mobiusrailgunTimeMultiplier",
+    "color" : [10, 75, 120]
+  },
+
+  "muzzleEffect" : {
+    "fireSound" : [ { "file" : "/sfx/gun/plasma_sniper4.ogg" } ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name" : "fuFlySwarmAttack",
+  "label" : "FLY SWARM",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "fuFlySwarmAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "flyswarm",
+      "arc" : "low",
+      "range" : 10,
+      "speed" : 15,
+      "power" : 10,
+      "shots" : 4,
+      "fireInterval" : 0.2,
+      "castTime" : 0.4,
+      "castEffect" : "castpoison",
+      "castAnimation" : "charge"
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ "/sfx/projectiles/bugswarm1.ogg", "/sfx/projectiles/bugswarm2.ogg", "/sfx/projectiles/bugswarm3.ogg", "/sfx/projectiles/bugswarm4.ogg" ]
+    }
+  }
+}
+

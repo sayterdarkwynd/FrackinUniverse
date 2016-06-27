@@ -1,0 +1,32 @@
+{
+  "name" : "fuChargeAttack",
+  "label" : "CHARGE",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/fulegacyscripts/ground/skills/fuChargeAttack.lua" ],
+    "fuChargeAttack" : {
+      "skillTimeLimit" : 5.0,
+      "cooldownTime" : 0.0,
+      "windupTime" : 1.0,
+      "winddownTime" : 1.2,
+      "attackDistance" : 5.0,
+      "projectile" : null,
+
+      "crashDamageAmount" : 5.0,
+      
+      "crashStunTime" : 2.0,
+
+      "speedBonus" : 12.0,
+
+      "approachPoints" : [ [-15, 0], [15, 0] ],
+      "startRects" : [ [-16, 2.5, -11, -2.0], [16, 2.5, 11, -2.0] ]
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "chargeCrash" : [ "/sfx/melee/blunt_hit_organic.ogg" ]
+    }
+  }
+}

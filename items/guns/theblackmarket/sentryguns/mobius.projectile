@@ -1,0 +1,36 @@
+{
+  "projectileName" : "mobius",
+  "frames" : "mobius.png",
+  "animationCycle" : 0.5,
+  "timeToLive" : 5,
+  "frameNumber" : 4,
+  "power" : 5,
+  "physics" : "bullet",
+  "lightColor" : [255, 180, 0],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "electricexplosion",
+      "inheritDamageFactor" : 0.09,
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0
+    },
+	    {
+      "action" : "projectile",
+      "type" : "plasmaflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.03,
+      "timeToLive" : 0.5,
+      "angleAdjust" : 35
+    },
+		    {
+      "action" : "projectile",
+      "type" : "plasmaflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.03,
+      "timeToLive" : 0.5,
+      "angleAdjust" : -35
+    }
+  ],
+  "damageKind" : "default"
+}
