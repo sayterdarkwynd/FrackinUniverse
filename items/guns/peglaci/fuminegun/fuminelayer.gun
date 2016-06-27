@@ -1,0 +1,38 @@
+{
+  "itemName" : "fuminelayer",
+  "inventoryIcon" : "fuminelayericon.png",
+  "dropCollision" : [-8.0, -3.0, 8.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Disperses powerful mines - charge to launch a devastating adhesive charge.",
+  "shortdescription" : "Tremor Minelayer",
+  "image" : "fuminelayer.png:<frame>",
+  "imageFrameSelector" : "fuminelayerImageSelector",
+  "handPosition" : [-10, -4],
+  "firePosition" : [12, 0],
+  "level" : 5,
+  "itemTags" : ["weapon","ranged","grenadelauncher"],
+  "tooltipKind" : "gun",
+  "weaponType" : "Shotgun",
+  "fireTime" : 1.0,
+  "twoHanded" : true,
+  "recoilTime" : 0.2,
+  "hands" : [2, 2],
+  "muzzleEffect" : {
+    "animation" : "/animations/muzzleflash/electromuzzle/electromuzzle.animation",
+    "fireSound" : [ { "file" : "/sfx/gun/plasma_shotgun3.ogg" } ]
+  },
+
+  "fireOnRelease" : true,
+  
+   "projectileType" : "fuminelayershot1",
+   "powerProjectileType" : "fuminelayershotpower",
+  "powerProjectileTime" : [0.3, 50],
+  "projectile" : {
+    "power" : 6,
+    "powerCurve" : "fuminelayerTimeMultiplier",
+    "color" : [10, 40, 10]
+	}
+
+
+}

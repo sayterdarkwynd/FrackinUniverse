@@ -1,0 +1,37 @@
+{
+  "projectileName" : "isn_plasmapistol",
+  "physics" : "laser",
+  "bounces" : 0,
+  "damageKindImage" : "isn_plasmapistol_shot_icon.png",
+  "image" : "isn_plasmapistol_shot.png",
+  "animationCycle" : 0.01,
+  "frameNumber" : 4,
+  "power" : 3,
+  "speed" : 75,
+  "timeToLive" : 1,
+  "piercing" : false,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "isn_plasmapistol_dropoff",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "largeelectriccloud",
+      "fuzzAngle" : 25,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : -90
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmaboomsmall2/plasmaboomsmall2.config"
+    }
+  ],
+  "lightColor" : [35, 0, 70],
+  "damageKind" : "plasma",
+  "emitters" : [ "electricplasma" ]
+}

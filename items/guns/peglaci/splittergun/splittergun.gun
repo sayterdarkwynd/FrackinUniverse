@@ -1,0 +1,40 @@
+{
+  "itemName" : "splittergun",
+  "inventoryIcon" : "splittergunicon.png",
+  "dropCollision" : [-8.0, -3.0, 8.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "Cerulium rounds fracture and then fracture again to cover a wide area. Charge to launch in grenade form.",
+  "shortdescription" : "Fissure Splitrifle",
+  "image" : "splittergun.png:<frame>",
+  "imageFrameSelector" : "splittergunImageSelector",
+  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "handPosition" : [-5, -1],
+  "firePosition" : [12, 0],
+  "level" : 4,
+  "tooltipKind" : "gun",
+  "weaponType" : "Shotgun",
+ 
+  "fireTime" : 0.35,
+  "twoHanded" : true,
+  "recoilTime" : 0.2,
+  "hands" : [2, 2],
+  "rateOfFire" : [2, 7],
+  "muzzleEffect" : {
+    "animation" : "/animations/muzzleflash/electromuzzle/electromuzzle.animation",
+    "fireSound" : [ { "file" : "/sfx/gun/plasma_shotgun3.ogg" } ]
+  },
+
+  "fireOnRelease" : true,
+  
+   "projectileType" : "splittergunshot1",
+   "powerProjectileType" : "splittergunshotpower",
+  "powerProjectileTime" : [0.3, 50],
+  "projectile" : {
+    "power" : 3.52,
+    "powerCurve" : "splittergunTimeMultiplier",
+    "color" : [10, 255, 10]
+	}
+
+
+}

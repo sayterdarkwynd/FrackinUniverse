@@ -1,0 +1,30 @@
+{
+  "projectileName" : "isn_plasmapistol_dropoff",
+  "physics" : "grenadenobounce",
+  "bounces" : 0,
+  "damageKindImage" : "isn_plasmapistol_shot_icon.png",
+  "image" : "isn_plasmapistol_shot.png",
+  "animationCycle" : 0.01,
+  "frameNumber" : 4,
+  "power" : 3,
+  "speed" : 20,
+  "timeToLive" : 10,
+  "piercing" : false,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmaboomsmall2/plasmaboomsmall2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "largeelectriccloud",
+      "fuzzAngle" : 25,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : -90
+    }
+  ],
+  "lightColor" : [35, 0, 70],
+  "damageKind" : "plasma",
+  "emitters" : [ "electricplasma" ]
+}

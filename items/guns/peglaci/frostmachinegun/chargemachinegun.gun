@@ -1,0 +1,35 @@
+{
+  "itemName" : "chargemachinegun",
+  "inventoryIcon" : "chargemachinegunicon.png",
+  "dropCollision" : [-8.0, -3.0, 8.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "Depleted uranium rounds take down enemy armor.",
+  "shortdescription" : "Crippler Machinegun",
+  "image" : "chargemachinegun.png:<frame>",
+  "imageFrameSelector" : "chargemachinegunImageSelector",
+ "itemTags" : ["weapon","ranged","assaultrifle"],
+  "handPosition" : [-5, -1],
+  "firePosition" : [12, 0],
+  "level" : 4,
+  "tooltipKind" : "gun",
+  "weaponType" : "Assault Rifle",
+ 
+  "fireTime" : 0.1,
+  "twoHanded" : true,
+  "hands" : [2, 2],
+  "rateOfFire" : [2, 7],
+  "muzzleEffect" : {
+    "animation" : "/animations/muzzleflash/electromuzzle/electromuzzle.animation",
+    "fireSound" : [ { "file" : "/sfx/gun/plasma_shotgun3.ogg" } ]
+  },
+
+   "projectileType" : "chargemachinegunshot",
+  "projectile" : {
+    "power" : 0.67,
+    "powerCurve" : "chargemachinegunTimeMultiplier",
+    "color" : [10, 255, 10]
+	}
+
+
+}

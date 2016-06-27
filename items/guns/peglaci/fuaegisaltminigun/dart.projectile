@@ -1,0 +1,55 @@
+{
+  "projectileName" : "fuaegisaltminigunshot",
+  "image" : "dart.png",
+  "animationCycle" : 0.2,
+  "armorPenetration" : 3,
+  "physics" : "bullet",
+  "bounces" : 0,
+  "frameNumber" : 8,  
+  "pointLight" : false,
+  "speed" :5,
+  "lightColor" : [20, 70, 20],
+  "timeToLive" : 0.01,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "fuaegisaltminigunshot1",
+      "inheritDamageFactor" : 1,
+       "fuzzAngle" : 2,
+      "angleAdjust" : 0
+    },
+    //{
+    //  "action" : "projectile",
+    //  "type" : "fuaegisaltminigunshot1a",
+    //  "inheritDamageFactor" : 0.33,
+//	  "fuzzAngle" : 2,
+    //  "angleAdjust" : 90
+    //},
+    //{
+    //  "action" : "projectile",
+    //  "type" : "fuaegisaltminigunshot1b",
+    //  "inheritDamageFactor" : 0.33,
+//	  "fuzzAngle" : 2,
+    //  "angleAdjust" : -90
+    //},    
+    {
+      "action" : "projectile",
+      "type" : "fuaegisaltminiguncloud",
+      "inheritDamageFactor" : 0,
+	  "fuzzAngle" : 10,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuaegisaltminiguncloud",
+      "inheritDamageFactor" : 0,
+	  "fuzzAngle" : 10,
+      "angleAdjust" : 0
+    }
+  ],  
+    "statusEffects" : [ "defenseboostneg20" ],
+  "damageKind" : "default",
+  "emitters" : [ "peglacitrailpurple" ]
+}
+
+

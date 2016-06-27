@@ -1,0 +1,27 @@
+{
+  "projectileName" : "fuminelayershot3",
+  "image" : "poof.png",
+  "animationCycle" : 0.1,
+  "armorPenetration" : 3,
+  "physics" : "gas",
+  "bounces" : 1,
+  "frameNumber" : 4,  
+  "pointLight" : false,
+  "speed" :20,
+  "lightColor" : [40, 40, 40],
+  "timeToLive" : 0.2,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/minesplosionsmall/minesplosionsmall.config"
+    },
+	{
+      "action" : "config",
+      "file" : "/projectiles/explosions/molotovexplosion/molotovexplosion.config"
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "cloudtrail" ]
+}
+
+

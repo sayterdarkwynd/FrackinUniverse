@@ -1,0 +1,39 @@
+{
+  "itemName" : "furailgun",
+  "inventoryIcon" : "furailgunicon.png",
+  "dropCollision" : [-8.0, -3.0, 8.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Fires a quick and devastating round - charge to fire through walls.",
+  "shortdescription" : "Railgun",
+  "image" : "furailgun.png:<frame>",
+  "imageFrameSelector" : "furailgunImageSelector",
+  "handPosition" : [-87, 2],
+  "firePosition" : [-60, 0],
+  "level" : 5,
+  "itemTags" : ["weapon","ranged","sniperrifle"],
+  "tooltipKind" : "gun",
+  "weaponType" : "Coilgun",
+  "fireTime" : 0.35,
+  "twoHanded" : true,
+  "recoilTime" : 0.2,
+  "hands" : [2, 2],
+  "rateOfFire" : [2, 7],
+  "muzzleEffect" : {
+    "animation" : "/animations/muzzleflash/electromuzzle/electromuzzle.animation",
+    "fireSound" : [ { "file" : "/sfx/gun/plasma_shotgun3.ogg" } ]
+  },
+
+  "fireOnRelease" : true,
+  
+   "projectileType" : "furailgunshot",
+   "powerProjectileType" : "furailgunshotpower",
+  "powerProjectileTime" : [1.0, 50],
+  "projectile" : {
+    "power" : 3.2,
+    "powerCurve" : "furailgunTimeMultiplier",
+    "color" : [10, 10, 100]
+	}
+
+
+}

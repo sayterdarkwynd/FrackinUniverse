@@ -1,0 +1,36 @@
+{
+  "itemName" : "chargepistol",
+  "inventoryIcon" : "chargepistolicon.png",
+  "dropCollision" : [-8.0, -3.0, 8.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Durasteel components allow for greater power. Charge shots for freezing blasts. ",
+  "shortdescription" : "Glacial Pistol",
+  "image" : "chargepistol.png:<frame>",
+  "imageFrameSelector" : "chargepistolImageSelector",
+  "itemTags" : ["weapon","ranged","pistol"],
+  "handPosition" : [-5, -1],
+  "firePosition" : [6, 1.5],
+  "recoilTime" : 0.1,
+  "level" : 1,
+  "tooltipKind" : "gun",
+  "weaponType" : "Pistol",
+
+  "fireTime" : 0.35,
+  "twoHanded" : false,
+  "rateOfFire" : [2, 7],
+	"muzzleEffect" : {
+    "animation" : "/animations/muzzleflash/electromuzzle/electromuzzle.animation",
+    "fireSound" : [ { "file" : "/sfx/gun/plasma_ar2.ogg" } ]
+  },
+  "fireOnRelease" : true,
+  
+   "projectileType" : "fudart",
+  "powerProjectileType" : "fupowerdart",
+  "powerProjectileTime" : [0.7, 50],
+  "projectile" : {
+    "power" : 4.4,
+    "powerCurve" : "chargepistolTimeMultiplier",
+    "color" : [10, 255, 10]
+	}
+}

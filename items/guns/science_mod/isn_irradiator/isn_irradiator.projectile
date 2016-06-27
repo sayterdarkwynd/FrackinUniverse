@@ -1,0 +1,26 @@
+{
+  "projectileName" : "isn_irradiator",
+  "frames" : "isn_irradiatorshot.png",
+  "physics" : "laser",
+  "animationCycle" : 0.50,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 14,
+  "power" : 1,
+  "level" : 5,
+  "speed" : 40,
+  "timeToLive" : 0.25,
+  "bounces" : -1,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [0, 100, 0],
+  "damageKind" : "plasma",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "isn_irradiator_cloud",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0
+    }
+  ]
+}
