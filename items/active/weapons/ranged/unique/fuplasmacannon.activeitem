@@ -1,0 +1,83 @@
+{
+  "itemName" : "fuplasmacannon",
+  "price" : 160,
+  "inventoryIcon" : "fuplasmacannon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Utterly decimates unfortunate targets.",
+  "shortdescription" : "Plasma Eruptor",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Energy Cannon",
+  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fuplasmacannon.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/plasmamuzzle3blue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/shock_impact3.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.5, 0.15],
+  "muzzleOffset" : [2.25, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAttack" : {
+    "fireTime" : 1.5,
+    "baseDps" : 9.95,
+    "energyUsage" : 65.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fuplasmarifleblast",
+    "projectileParameters" : { 
+      "speed" : 72,
+      "knockback" : 30.5
+    }
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.025,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/plasmaburstshot/plasmaburstshot.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

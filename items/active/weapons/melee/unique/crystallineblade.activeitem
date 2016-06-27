@@ -1,0 +1,84 @@
+{
+  "itemName" : "crystallineblade",
+  "price" : 460,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Made of beautifully crafted crystal.",
+  "shortdescription" : "Crystalline Blade",
+  "tooltipKind" : "sword",
+  "weaponType" : "Broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword"],
+
+  "inventoryIcon" : "crystallineblade.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/tieredbroadsword.animation",
+  "animationParts" : {
+    "sword" : "/items/active/weapons/melee/unique/crystallineblade.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAttack" : {
+    "fireTime" : 0.83,
+    "baseDps" : 11.25,
+    "damageConfig" : {
+      "damageSourceKind" : "broadsword",
+      "statusEffects" : [ ],
+      "knockback" : 20,
+      "knockbackMode" : "facing",
+      "timeoutGroup" : "primary"
+    }
+  },
+
+  "baseWeaponRotation" : 10,
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : -10,
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "armRotation" : 90,
+      "weaponRotation" : -10,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "preslash" : {
+      "duration" : 0.025,
+      "armRotation" : 55,
+      "weaponRotation" : -45,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "fire" : {
+      "duration" : 0.4,
+      "armRotation" : -45,
+      "weaponRotation" : -55,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "palette" : "/items/active/weapons/colors/tier4melee.weaponcolors",
+
+  "altAbilitySource" : "/items/active/weapons/melee/altabilities/broadsword/spinslash/spinslash.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

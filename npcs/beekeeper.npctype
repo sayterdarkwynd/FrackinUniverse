@@ -1,0 +1,337 @@
+{
+  "type" : "beekeeper",
+  
+  "damageTeam" : 1,
+  "levelVariance" : [-1, -1],
+
+  "disableWornArmor" : false,
+
+  "scripts" : [
+    "/npcs/main.lua",
+    "/scripts/pathing.lua",
+    "/npcs/timers.lua",
+    "/scripts/sensors.lua",
+    "/scripts/stateMachine.lua",
+    "/scripts/util.lua",
+    "/scripts/vec2.lua",
+
+    "/npcs/chatState.lua",
+    "/npcs/converseState.lua",
+    "/npcs/fleeState.lua",
+    "/npcs/sitState.lua",
+    "/npcs/standingIdleState.lua"
+  ],
+  "initialScriptDelta" : 25,
+  "scriptConfig" : {
+    "doorHitPoly" : [ [2, -1], [2, 1], [0, 1], [0, -1] ],
+    "idleTimeRange" : [2.0, 10.0],
+    "gapSensor" : [ [2.0, -4.5] ],
+    "gapFarSideSensors" : [ [3.0, -4.5], [4.0, -4.5], [5.0, -4.5], [6.0, -4.5], [7.0, -4.5], [8.0, -4.5] ],
+    "gapJumpHoldTime" : 0.4,
+    //testing only
+    "trading" : {
+      "config" : "/interface/windowconfig/shop.config",
+      "filter" : [ ],
+      "titleFromEntity" : true,
+      "requiresBlueprint" : false,
+      "recipes" : [
+        {
+          "input" : [ { "name" : "money", "count" : 10 } ],
+          "output" : { "name" : "fullwood1" }
+        }
+      ]
+    },
+
+    "converse" : {
+      "waitTime" : 0.5,
+      "dialog" : {
+        "default" : [ "Bring me your extra bees, and you will be rewarded.",
+					  "Save the bees!"	]
+      }
+    },
+
+    "flee" : {
+      "reactionTimeRange" : [0.2, 1.0],
+      "safeDistance" : 100,
+      "safeDistanceWithGuards" : 40,
+      "safeTimer" : 10,
+      "stuckTime" : 4,
+      "stuckCooldown" : 10,
+      "dialogTimeRange" : [4, 10],
+
+      "dialog" : {
+        "helpme" : {
+          "default" : [
+            "Guards! Help me!",
+            "Help! Guards! Help!",
+            "Guards! I've been accosted!"
+          ],
+          "glitch" : [
+            "Fear. Guards! Help me!",
+            "Intimidated. Please don't hurt me!",
+            "Abused. Guards! I've been accosted!",
+            "Afraid. Get away from me! Guards!",
+            "Terrified. Save me!",
+            "Shocked. No! Get away from me!"
+          ],
+          "floran" : [
+            "Ssstabby time for me!",
+            "Floran being hurted!",
+            "Floran not ready for hunt!",
+            "Greenguard help Floran!"
+          ]
+        },
+        "helpthem" : {
+          "default" : [
+            "What have you done!?"
+          ],
+          "glitch" : [
+            "Fear. Guards!",
+            "Intimidated. Please don't hurt me!",
+            "Afraid. Leave me be! Guards!",
+            "Terrified. Save me!",
+            "Shocked. What have you done?!",
+            "Righteous. I will write an electronic letter in protest!"
+          ],
+          "floran" : [
+            "Ssstabby time for me!",
+            "Floran being hurted!",
+            "Floran not ready for hunt!",
+            "Greenguard help Floran!"
+          ]
+        },
+        "encourage" : {
+          "default" : [
+            "Get 'em!",
+            "Avenge me!",
+            "Stick 'em once for me!",
+            "Don't let 'em get away!"
+          ],
+          "glitch" : [
+            "Encourage. Put 'em to the sword!",
+            "Excitement. Avenge me!",
+            "Aggressive. Strike him down!",
+            "Vengeful. Don't let 'em get away!"
+          ],
+          "floran" : [
+            "Ssstabb the intruders!",
+            "Floran get revenge now!",
+            "Ssslice them!",
+            "Greenguard destroy it!"
+          ]
+        },
+        "safe" : {
+          "default" : [
+            "Phew, I think I got away.",
+            "I've escaped with my life!",
+            "Is this the safe zone?"
+          ],
+          "glitch" : [
+            "Relieved. Phew, I think I got away.",
+            "Thankful. I've escaped with my life!",
+            "Wishful. If only I could afford a keep.",
+            "Hopeful. Am I safe?",
+            "Embarrassed. I think I leaked a little oil."
+          ],
+          "floran" : [
+            "Floran sssafe now.",
+            "Floran not get ssstabbed after all.",
+            "Them lucky Floran not have weapon.",
+            "Sssalvation!"
+          ]
+        }
+      }
+    },
+
+    "sit" : {
+      "timeOfDayRanges" : [ [0.6, 1.0], [0.0, 0.2] ],
+      "moveTimeLimit" : 30,
+      "searchRadius" : 25,
+      "sitRadius" : 3,
+      "cooldown" : 60,
+      "timeRange" : [15, 240]
+    },
+
+    "sleep" : {
+      "searchRadius" : 15,
+      "lieDownRadius" : 3,
+      "moveToBedTimeLimit" : 10.0,
+      "timeOfDayRanges" : [ [ [0.7, 0.75], [0.95, 1.0] ] ],
+      "cooldown" : 30
+    },
+
+    "wander" : {
+      "timeRange" : [2.0, 10.0],
+      "chatDistance" : 4,
+      "indoorTimeOfDayRanges" : [ [0.0, 0.2], [0.5, 1.0] ],
+      "indoorSearchRadius" : 20,
+      "indoorLookaheadDistance" : 4,
+      "moveToTargetTime" : 10.0,
+      "changeDirectionCooldown" : 2,
+      "dropDownChance" : 5,
+      "cooldown" : 10
+    },
+
+    "work" : {
+      "timeOfDayRanges" : [ [0.2, 0.6] ],
+      "tools" : [ [ "hoe", 0.5, 2.0] ],
+      "toolRange" : 3.0,
+      "searchDistance" : 10.0,
+      "timeRange" : [4.0, 6.0],
+      "cooldown" : 10.0
+    },
+
+    "chat" : {
+      "distanceRange" : [2.0, 4.0],
+      "conversations" : [
+        [
+          [2, "blabbering", "idle" ],
+          [1, "idle", "laugh" ],
+          [2, "idle", "blabbering" ],
+          [1, "sad", "idle" ]
+        ],
+        [
+          [2, "idle", "blabbering" ],
+          [2, "blabbering", "happy" ],
+          [1, "wink", "laugh" ],
+          [2, "happy", "happy" ]
+        ],
+        [
+          [2, "idle", "blabbering" ],
+          [2, "blabbering", "blabbering" ],
+          [2, "blabbering", "annoyed" ],
+          [3, "shouting", "shouting" ],
+          [2, "annoyed", "annoyed" ]
+        ]
+      ],
+      "cooldown" : 10
+    }
+  },
+
+  "items" : {
+    "human" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "fubeesuithead", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "chest" : [
+              { "name" : "fubeesuitchest", "parameters" : { "colorIndex" : 1 } }
+            ],
+
+            "legs" : [
+              { "name" : "fubeesuitpants", "parameters" : { "colorIndex" : 1 } }
+			]
+          }
+        ] ]
+    ]
+
+  },
+
+  "movementControllerSettings" : {
+    "standingPoly" : [ [-0.75, -2.0], [-0.35, -2.5], [0.35, -2.5], [0.75, -2.0], [0.75, 0.65], [0.35, 1.22], [-0.35, 1.22], [-0.75, 0.65] ],
+    "crouchingPoly" : [ [-0.75, -2.0], [-0.35, -2.5], [0.35, -2.5], [0.75, -2.0], [0.75, -0.5], [0.35, 0], [-0.35, 0], [-0.75, -0.5] ],
+
+    "mass" : 0.6,
+    "airFriction": 0.0,
+    "airJumpProfile": {
+      "jumpSpeed" : 45.0,
+      "jumpInitialPercentage": 1.0,
+      "jumpHoldTime": 0.0
+    }
+  },
+
+  "humanoidTiming" : {
+    // Idle, Walk, Run, Jump, Fall, Swim, SwimIdle, Duck, Sit, Lay
+    "stateCycle" : [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],
+    "stateFrames" : [1, 8, 8, 4, 4, 7, 2, 1, 1, 1],
+
+    // EmoteIdle, Blabbering, Shouting, Happy, Sad, NEUTRAL, Laugh, Annoyed, Oh, OOOH, Blink, Wink, Eat, Sleep
+    //          , normal    , caps    , :)   , :'(, :|     , :D   ,        , :o, :O  ,      , ;)
+    "emoteCycle" : [1.0, 0.3, 0.3, 0.3, 1.0, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.3, 1],
+    "emoteFrames" : [1, 2, 2, 2, 5, 2, 2, 2, 2, 3, 3, 5, 2, 2]
+  },
+  
+  "dropPools" : [ "villagertreasure" ],
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "targetMaterialKind" : "organic"
+    },
+
+    "appliesEnvironmentStatusEffects" : false,
+    "minimumLiquidStatusEffectPercentage" : 0.1,
+
+    "primaryScriptSources" : [
+      "/stats/npc_beekeeper.lua"
+    ],
+    "primaryScriptDelta" : 5,
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+      "protection" : {
+        "baseValue" : 0.75
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      },
+      "energyRegen" : {
+        "baseValue" : 20.0
+      },
+      "shieldSuppressed" : {
+        "baseValue" : 0.0
+      },
+      "invulnerable" : {
+        "baseValue" : 0.0
+      }
+    },
+
+    "resources" : {
+      "health" : {
+        "maxStat" : "maxHealth",
+        "deltaStat" : "healthRegen",
+        "defaultPercentage" : 100
+      },
+      "energy" : {
+        "maxStat" : "maxEnergy",
+        "deltaStat" : "energyRegen",
+        "defaultPercentage" : 100
+      }
+    }
+  },
+  
+  "persistent" : true,
+
+  "splashConfig" : {
+    "splashSpeedMin" : 10.0,
+    "splashMinWaterLevel" : 0.4,
+    "splashBottomSensor" : [0, -2.0],
+    "splashTopSensor" : [0, 2.0],
+    "numSplashParticles" : 8,
+    "splashYVelocityFactor" : 0.2,
+
+    "splashParticle" : {
+      "type" : "ember",
+      "position" : [0, -1],
+      "finalVelocity" : [0, -20],
+      "approach" : [0, 50],
+      "color" : [60, 150, 224, 100],
+      "size" : 4.0,
+      "timeToLive" : 0.5,
+      "destructionAction" : "shrink",
+      "destructionTime" : 0.2
+    },
+
+    "splashParticleVariance" : {
+      "velocity" : [10, 0]
+    }
+  }
+}

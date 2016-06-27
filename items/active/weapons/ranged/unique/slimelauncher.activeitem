@@ -1,0 +1,93 @@
+{
+  "itemName" : "slimelauncher",
+  "price" : 160,
+  "inventoryIcon" : "slimelauncher.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+    "description" : "Not entirely practical, but fun.",
+    "shortdescription" : "Slime Launcher",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Bio-Weapon",
+  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "slimelauncher.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash_precursor.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.0, 0.2],
+  "muzzleOffset" : [2.645, 0.125],
+  
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAttack" : {
+    "fireTime" : 0.11,
+    "baseDps" : 0.8,
+    "energyUsage" : 5,
+    "inaccuracy" : 0.02,
+    "burstTime" : 0.025,
+    "burstCount" : 5,
+    "projectileCount" : 1,
+    "fireType" : "burst",
+
+    "projectileType" : "squirtslime",
+    "projectileParameters" : { 
+      "speed" : 40,
+      "knockback" : 2
+    }
+  },
+  
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.25,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/biogrenadelauncher/biogrenadelauncher.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

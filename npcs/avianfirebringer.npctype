@@ -1,0 +1,53 @@
+{
+  "type" : "avianfirebringer",
+  "baseType" : "outpostcivilian",
+
+  "disableWornArmor" : true,
+
+  "damageTeam" : 1,
+
+  "levelVariance" : [0, 0],
+
+  "scriptConfig" : {
+  "offeredQuests" : [ "assassinsplight1.gearup", "assassinsplight2.gearup", "assassinsplight3.gearup" ],
+  "turnInQuests" : [ "assassinsplight1.gearup", "assassinsplight2.gearup", "assassinsplight3.gearup" ],
+    "reactions" : {
+      "spontaneous" : [
+      ]
+    },
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ],
+    
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "I grew weary of watching my Apex brothers and sisters being tormented at the hands of the Miniknog, so I left."
+          ]
+        },
+        "apex" : {
+          "default" : [
+            "I grew weary of watching my Apex brothers and sisters  being tormented at the hands of the Miniknog, so I left."
+          ],
+          "apex" : [
+            "It makes me happy to see another Apex who has escaped the brutality of the Miniknog."
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ "ffskullcap" ],
+            "chest" : [ "fuexosuitchest" ],
+            "legs" : [ "fuexosuitlegs" ]
+          }
+        ] ]
+    ]
+  }
+}

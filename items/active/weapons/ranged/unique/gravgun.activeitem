@@ -1,0 +1,84 @@
+{
+  "itemName" : "gravgun",
+  "price" : 160,
+  "inventoryIcon" : "gravgun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Launches gravity-altering blasts.",
+  "shortdescription" : "Gravity Gun",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Gravity Weapon",
+  "itemTags" : ["weapon","ranged","sniperrifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "gravgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/plasmamuzzle1.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.25, 0.35],
+  "muzzleOffset" : [2.25, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAttack" : {
+    "fireTime" : 0.31,
+    "baseDps" : 0.2,
+    "energyUsage" : 5,
+    "inaccuracy" : 0.01,
+    "burstTime" : 0.065,
+    "burstCount" : 3,
+    "projectileCount" : 1,
+    "fireType" : "burst",
+
+    "projectileType" : "squirtgrav",
+    "projectileParameters" : { 
+      "speed" : 45,
+      "knockback" : 2
+    }
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.025,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/shockburstshot/shockburstshot.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

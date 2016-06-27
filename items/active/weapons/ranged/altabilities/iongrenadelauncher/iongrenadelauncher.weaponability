@@ -1,0 +1,77 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [-0.75, -0.375],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0.75, -0.125],
+          "image" : "/items/active/weapons/ranged/altabilities/grenadelauncher/grenadelauncher.png"
+        }
+      }
+    }},
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade1.ogg" ]
+    },
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [-0.25, -0.5, -0.25, -0.5],
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+
+  "altAbility" : {
+    "name" : "Grenade Launcher",
+    "type" : "grenadelauncher",
+    "scripts" : ["/items/active/weapons/ranged/altabilities/altfire.lua"],
+    
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "ocucannonshot" },
+      "fire" : { "projectileType" : "firecloudgrenade" },
+      "electric" : { "projectileType" : "electriccloudgrenade" },
+      "ice" : { "projectileType" : "icecloudgrenade" },
+      "poison" : { "projectileType" : "poisoncloudgrenade" }
+    },
+    "projectileParameters" : {},
+    "projectileCount" : 3,
+    "inaccuracy" : 0.12,
+    "baseDamage" : 2.45,
+    "energyUsage" : 70,
+    "fireTime" : 1.0,
+    "fireType" : "auto",
+
+    "firePositionPart" : "grenadelauncher",
+    "hidePrimaryMuzzleFlash" : true,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

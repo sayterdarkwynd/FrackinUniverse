@@ -1,0 +1,90 @@
+{
+  "itemName" : "gravitongun",
+  "price" : 160,
+  "inventoryIcon" : "gravitongun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Launches micro-gravity disruptions.",
+  "shortdescription" : "Graviton Gun",
+  "level" : 4,
+  "tooltipKind" : "gun",
+  "weaponType" : "Grav-Projector",
+  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "gravitongun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/plasmamuzzle1.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/gravitongun.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.0, 0.2],
+  "muzzleOffset" : [1.645, 0.225],
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAttack" : {
+    "fireTime" : 0.55,
+    "baseDps" : 6.9,
+    "energyUsage" : 18.0,
+    "inaccuracy" : 0.06,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "gravitonorb",
+    "projectileParameters" : { 
+      "speed" : 60,
+      "knockback" : 20
+    }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "smallfirecloud1", "offset" : [0.0, 0.0] },
+          { "particle" : "smallfirecloud2", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.25,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/gravitonaltshot.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

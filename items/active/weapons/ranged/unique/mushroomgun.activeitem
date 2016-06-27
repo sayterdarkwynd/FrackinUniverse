@@ -1,0 +1,90 @@
+{
+  "itemName" : "mushroomgun",
+  "price" : 160,
+  "inventoryIcon" : "mushroomgun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+    "description" : "Deadly spore clouds await.",
+  "shortdescription" : "Fungal Gun",
+  "level" : 4,
+  "tooltipKind" : "gun",
+  "weaponType" : "Grenade Launcher",
+  "itemTags" : ["weapon","ranged","grenadelauncher"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "mushroomgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/pumpgun_blast2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.8, 0.2],
+  "muzzleOffset" : [1.645, 0.125],
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAttack" : {
+    "fireTime" : 0.35,
+    "baseDps" : 5.8,
+    "energyUsage" : 18.0,
+    "inaccuracy" : 0.1,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "floatyshroom",
+    "projectileParameters" : { 
+      "speed" : 50,
+      "knockback" : 20
+    }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.25,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/mushroomgrenadelauncher/mushroomgrenadelauncher.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

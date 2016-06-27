@@ -1,0 +1,91 @@
+{
+  "itemName" : "biogun",
+  "price" : 160,
+  "inventoryIcon" : "biogun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+    "description" : "Bone-formed bioweapon.",
+    "shortdescription" : "Bio Rifle",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Bio-Weapon",
+  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "biogun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/protomuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/biolaunch.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.0, 0.2],
+  "muzzleOffset" : [2.645, 0.125],
+  
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAttack" : {
+    "fireTime" : 1.0,
+    "baseDps" : 6.8,
+    "energyUsage" : 34.0,
+    "inaccuracy" : 0.01,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "bioblast3",
+    "projectileParameters" : { 
+      "speed" : 30,
+      "knockback" : 1
+    }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.25,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/biogrenadelauncher/biogrenadelauncher.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

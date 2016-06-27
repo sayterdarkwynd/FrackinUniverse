@@ -1,0 +1,45 @@
+{
+  "type" : "crystalminer",
+  "baseType" : "guard",
+
+  "dropPools" : [ "mineTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Oh, you done started somethin' now!"
+          ]
+        },
+        "glitch" : {
+          "default" : [
+            "Curmudgeonly. You young'uns are always causin' trouble!",
+            "World-weary. Here we go again, then.",
+            "Grizzled. You'll not make a mockery of me!",
+            "Gruff. Didn't they tell ye, never aggro a smith?",
+            "Surly. Looks like I'll be messin' up me nice new weapon.",
+            "Resigned. Sigh. More disruption.",
+            "Eager. Good chance to test me weapons out.",
+            "Grumpy. Looks like I'll have to teach yeh a lesson."
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+
+            "chest" : [ { "name" : "mutantchest" } ],
+            "legs" : [ { "name" : "mutantpants" } ],
+            "primary" : [
+              "npchammer", "basicminer", "protominer"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

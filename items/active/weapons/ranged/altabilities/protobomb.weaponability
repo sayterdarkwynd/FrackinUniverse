@@ -1,0 +1,50 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade2.ogg" ]
+    }
+  },
+
+  "altAbility" : {
+    "name" : "Light Ball",
+    "type" : "protobomb",
+    "scripts" : ["/items/active/weapons/ranged/altabilities/altfire.lua"],
+
+    "projectileType" : "lightball",
+    "projectileParameters" : { 
+      "speed" : 15,
+      "knockback" : 15    
+    },
+    
+    "baseDamage" : 1,
+    "energyUsage" : 20,
+
+    "fireTime" : 1.0,
+    "projectileCount" : 1,
+    "inaccuracy" : 0,
+
+    "useParticleEmitter" : false,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

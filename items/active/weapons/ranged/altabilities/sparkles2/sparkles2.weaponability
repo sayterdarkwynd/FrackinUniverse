@@ -1,0 +1,44 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/fireworkgun_small1.ogg", "/sfx/gun/fireworkgun_small2.ogg", "/sfx/gun/fireworkgun_small3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Sparkles",
+    "type" : "sparkles",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "energyUsage" : 30,
+    "baseDps" : 1,
+    "fireTime" : 0.04,
+    "inaccuracy" : 0.15,
+    "fireType" : "auto",
+
+    "projectileType" : [ "fireworkgun3", "fireworkblue4", "fireworkgreen4", "fireworkred3", "fireworkgunyellow3" ],
+    "projectileParameters" : {
+      "speed" : 150,
+      "knockback" : 0
+    },
+
+    "usePrimaryFireSound" : false,
+    "useParticleEmitter" : false,
+    "stances" : {
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      }
+    }
+  }
+}

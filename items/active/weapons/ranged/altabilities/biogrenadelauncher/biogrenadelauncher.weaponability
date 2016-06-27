@@ -1,0 +1,76 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0, 0],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0, 0]
+        }
+      }
+    }},
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/biolaunch.ogg" ]
+    },
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [-0.25, -0.5, -0.25, -0.5],
+        "particles" : [
+          { "particle" : "yellowgas", "offset" : [0.0, 0.0] },
+          { "particle" : "yellowgas", "offset" : [0.0, 0.0] },
+          { "particle" : "yellowgas", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+
+  "altAbility" : {
+    "name" : "Bio Launcher",
+    "type" : "grenadelauncher",
+    "scripts" : ["/items/active/weapons/ranged/altabilities/altfire.lua"],
+    
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "ffslimeblob" },
+      "fire" : { "projectileType" : "napalmprojectile" },
+      "electric" : { "projectileType" : "ffteslasmall" },
+      "ice" : { "projectileType" : "fuicecloud" },
+      "poison" : { "projectileType" : "deathgas" }
+    },
+    "projectileParameters" : {},
+    "projectileCount" : 1,
+    "inaccuracy" : 0,
+    "baseDamage" : 8,
+    "energyUsage" : 30,
+    "fireTime" : 2.0,
+    "fireType" : "auto",
+
+    "firePositionPart" : "grenadelauncher",
+    "hidePrimaryMuzzleFlash" : true,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

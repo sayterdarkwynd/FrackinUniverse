@@ -1,0 +1,99 @@
+{
+  "itemName" : "tentaclegun2",
+  "level" : 4,
+  "price" : 500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "This gun contains a squirming mass of mutated alien worms.",
+  "shortdescription" : "Alien Worm Gun",
+  "tooltipKind" : "gun",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","livingweapon"],
+
+  "inventoryIcon" : "wormgun.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "wormgun.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/wormgun1.ogg", "/sfx/gun/wormgun2.ogg", "/sfx/gun/wormgun3.ogg" ],
+      "altFire" : [ "/sfx/gun/wormgun_burst.ogg" ]
+    }
+  },
+  "baseOffset" : [-0.06, 0.2],
+  "muzzleOffset" : [1.4, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "tentaclegun",
+  "primaryAbility" : {
+    "chain" : {
+      "taper" : 0.3,
+      "segmentImage" : "/items/active/weapons/other/tentaclegun/wormsegment.png",
+      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/wormend.png",
+      "segmentSize" : 1.0
+    },
+
+    "guideProjectiles" : false,
+    "maxLength" : 6,
+
+    "baseDps" : 6,
+    "fireTime" : 0.55,
+    "maxProjectiles" : 20,
+    "energyUsage" : 40,
+    "inaccuracy" : 0.01,
+
+    "projectileType" : "invisibletentaclefist",
+    "projectileParameters" : {
+      "knockback" : 12,
+      "speed" : 60,
+      "timeToLive" : 4
+    }
+  },
+
+  "altAbilityType" : "tentaclegun",
+  "altAbility" : {
+    "name" : "Tentacle Burst",
+
+    "chain" : {
+      "taper" : 0.5,
+      "segmentImage" : "/items/active/weapons/other/tentaclegun/wormsegment.png",
+      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/wormend.png",
+      "segmentSize" : 1.0
+    },
+
+    "guideProjectiles" : false,
+
+    "baseDps" : 7.5,
+
+    "fireTime" : 2.0,
+    "maxProjectiles" : 20,
+    "energyUsage" : 50,
+    "inaccuracy" : 3.14,
+
+    "fireSound" : "altFire",
+
+    "projectileCount" : 20,
+    "projectileType" : "invisibletentaclefistnosound",
+    "projectileTracksUser" : true,
+    "projectileParameters" : {
+      "knockback" : 30,
+      "knockbackDirectional" : true,
+      "speed" : 30,
+      "ignoreTerrain" : false,
+      "bounces" : 6,
+      "timeToLive" : 10,
+      "minVelocity" : 20
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

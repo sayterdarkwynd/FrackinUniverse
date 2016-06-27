@@ -1,0 +1,60 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0, 0, 0, 0],
+        "particles" : [
+          { "particle" : "cloudtrail"},
+          { "particle" : "peglacilasertrail"},
+          { "particle" : "gausssmoke"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/vashtagun.ogg" ]
+    }
+  },
+
+  "altAbility" : {
+    "name" : "Ice Shock",
+    "type" : "piercingshot",
+    "scripts" : ["/items/active/weapons/ranged/altabilities/altfire.lua"],
+
+    "projectileType" : "iceexplosion3",
+    "projectileParameters" : {
+      "piercing" : true,
+      "speed" : 12,
+      "knockback" : 22 
+    },
+    "fireTime" : 2.0,
+    "baseDps" : 2.5,
+    // use baseDps and fireTime from primary fire
+
+    "energyUsage" : 30.0,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

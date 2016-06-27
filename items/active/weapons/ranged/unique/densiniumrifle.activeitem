@@ -1,0 +1,84 @@
+{
+  "itemName" : "densiniumrifle",
+  "price" : 160,
+  "inventoryIcon" : "densiniumrifle.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+    "description" : "Fires miniaturized rifts.",
+    "shortdescription" : "Densinium Rifle",
+  "level" : 6,
+  "tooltipKind" : "gun",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","rifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "densiniumrifle.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.68, -0.22],
+  "muzzleOffset" : [2.845, 0.325],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAttack" : {
+    "fireTime" : 0.11,
+    "baseDps" : 9.95,
+    "energyUsage" : 30,
+    "inaccuracy" : 0.012,
+    "burstTime" : 0.075,
+    "burstCount" : 3,
+    "projectileCount" : 1,
+    "fireType" : "burst",
+
+    "projectileType" : "densiniumrifleshot",
+    "projectileParameters" : { 
+      "speed" : 60,
+      "knockback" : 4
+    }
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.055,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/densiniumaltshot.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

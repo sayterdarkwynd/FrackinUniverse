@@ -1,0 +1,69 @@
+{
+  "itemName" : "funeochakram",
+  "price" : 500,
+  
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Crackling with destructive energy.",
+  "shortdescription" : "Proto Chakram",
+  "tooltipKind" : "base",
+  "weaponType" : "Chakram",
+  "twoHanded" : false,
+  "itemTags" : ["weapon"],
+
+  "inventoryIcon" : "funeochakram.png",
+  "animation" : "chakram.animation",
+  "animationParts" : {
+    "chakram" : "funeochakram.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : ["/items/active/weapons/ranged/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+  
+  "projectileType" : "funeochakram",
+  "projectileParameters" : {
+    "knockback" : 7,
+    "power" : 3.25,
+    "damageRepeatTimeout" : 0.15,
+
+    "returnOnHit" : false,
+    "pickupDistance" : 1.0,
+    "maxDistance" : 25,
+    "hoverMaxDistance" : 25,
+    "hoverTime" : 0.05
+  },
+  "level" : 6,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "weaponRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "armRotation" : 70,
+      "weaponRotation" : 0,
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "armRotation" : 60,
+      "weaponRotation" : 0,
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "rotationGroup" : "weapon",
+        "emissionRate" : 8,
+        "offsetPart" : "muzzleFlash",
+        "offsetRegion" : [0.0, 0.0, 0.0, 0.0],
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0, 0.5] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0, 0.5] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0, 0.5] }
+        ]
+      }
+    },
+    "sounds" : {
+      "physicalGuided" : [ "/sfx/gun/rocket2.ogg" ],
+      "fireGuided" : [ "/sfx/gun/rocket_fire1.ogg" ],
+      "iceGuided" : [ "/sfx/gun/rocket_ice1.ogg" ],
+      "electricGuided" : [ "/sfx/gun/rocket_electric1.ogg" ],
+      "poisonGuided" : [ "/sfx/gun/rocket_poison1.ogg" ]
+    }
+  },
+
+  "altAbility" : {
+    "name" : "Plasma Rocket",
+    "type" : "guidedrocket",
+    "scripts" : ["/items/active/weapons/ranged/altabilities/guidedrocket/guidedrocket.lua"],
+
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "atomguidedrocket" },
+      "fire" : { "projectileType" : "atomguidedrocket" },
+      "electric" : { "projectileType" : "atomguidedrocket" },
+      "ice" : { "projectileType" : "atomguidedrocket" },
+      "poison" : { "projectileType" : "atomguidedrocket" }
+    },
+    "projectileParameters" : {
+          "knockback" : 20
+         },
+    "baseDps" : 6.35,
+    "energyUsage" : 44,
+    "fireTime" : 0.1,
+    "inaccuracy" : 0.1,
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.05,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  }
+}

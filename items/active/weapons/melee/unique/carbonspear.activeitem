@@ -1,0 +1,94 @@
+{
+  "itemName" : "carbonspear",
+  "price" : 160,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Excellent craftsmanship provides great striking power.",
+  "shortdescription" : "Carbon Spear",
+  "tooltipKind" : "sword",
+  "weaponType" : "Spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear"],
+
+  "inventoryIcon" : "carbonspear.png",
+
+  "animation" : "/items/active/weapons/melee/spear/tieredspear.animation",
+  "animationParts" : {
+    "blade" : "/items/active/weapons/melee/unique/carbonspear.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/spear/spear.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+  "primaryAttack" : {
+    "fireTime" : 0.7,
+    "baseDps" : 11.61,
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 30,
+      "timeoutGroup" : "primary"
+    },
+    "holdDamageMultiplier" : 0.1,
+    "holdDamageConfig" : {
+      "timeoutGroup" : "hold",
+      "timeout" : 0.5
+    }
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 0.5],
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "armRotation" : -110,
+      "weaponRotation" : 20,
+      "twoHanded" : true,
+      "weaponOffset" : [0, 0.5],
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "fire" : {
+      "duration" : 0.3,
+      "armRotation" : -20,
+      "weaponRotation" : -70,
+      "twoHanded" : true,
+      "weaponOffset" : [0, 2.5],
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "hold" : {
+      "armRotation" : -30,
+      "weaponRotation" : -60,
+      "twoHanded" : true,
+      "weaponOffset" : [0, 2.0],
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  },
+
+  "palette" : "/items/active/weapons/colors/tier6melee.weaponcolors",
+
+  "altAbilitySource" : "/items/active/weapons/melee/altabilities/spear/charge/charge.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

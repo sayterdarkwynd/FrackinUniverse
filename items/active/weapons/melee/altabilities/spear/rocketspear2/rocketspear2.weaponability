@@ -1,0 +1,130 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "chargeSwoosh" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {
+            },
+            "charge" : {
+              "frames" : 4,
+              "cycle" : 0.5,
+              "properties" : {
+                // "immediateSound" : "/sfx/melee/charge_up15.ogg"
+              }
+            },
+            "full" : {
+              "properties" : {
+                // "persistentSound" : "/sfx/gun/flamethrower.ogg"
+              }
+            }
+          }
+        }
+      },
+      "parts" : {
+        "chargeSwoosh" : {
+          "properties" : {
+            "zLevel" : 1,
+            "centered" : true,
+            "transformationGroups" : ["swoosh"],
+            "offset" : [3.75, 0.0625],
+            "fullbright" : true,
+            "damageArea" : [[-6, 0], [-3.5, 1], [-1.5, 1], [1.5, 0], [-1.5, -1], [-3.5, -1]],
+            "projectileSource" : [0,0]
+          },
+          "partStates" : {
+            "chargeSwoosh" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "charge" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/altabilities/spear/rocketspear/<elementalType>rocketcharge.png:<frame>"
+                }
+              },
+              "full" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/altabilities/spear/rocketspear/<elementalType>rocketcharge.png:4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "fireStart" : [ ],
+      "fireBlast" : [ "/sfx/melee/rocketspear_loop_fire.ogg" ],
+      "fireEnd" : [ "/sfx/melee/rocketspear_stop_fire.ogg" ],
+      "iceStart" : [ ],
+      "iceBlast" : [ "/sfx/melee/rocketspear_loop_ice.ogg" ],
+      "iceEnd" : [ "/sfx/melee/rocketspear_stop_ice.ogg" ],
+      "electricStart" : [ ],
+      "electricBlast" : [ "/sfx/melee/barrier_create_electric.ogg" ],
+      "electricEnd" : [ ],
+      "poisonStart" : [ ],
+      "poisonBlast" : [ "/sfx/melee/rocketspear_loop_poison.ogg" ],
+      "poisonEnd" : [ "/sfx/melee/rocketspear_stop_poison.ogg" ]
+    }  
+  },
+
+  "ability" : {
+    "name" : "Rocket Spear",
+    "type" : "rocketspear",
+    "scripts" : ["/items/active/weapons/melee/altabilities/spear/rocketspear/rocketspear.lua"],
+    "class" : "RocketSpear",
+
+    "energyUsage" : 60.0,
+    "cooldownTime" : 0.5,
+
+    "boostSpeed" : 60,
+    "boostForce" : 300,
+
+    "elementalConfig" : {
+      "fire" : {
+        "projectileType" : "flamethrower"
+      },
+      "ice" : {
+        "projectileType" : "icethrower"
+      },
+      "poison" : {
+        "projectileType" : "poisonthrower"
+      },
+      "electric" : {
+        "projectileType" : "lightningthrower"
+      }
+    },
+    "inaccuracy" : 0.05,
+    "projectileParameters" : {
+      "speed" : 20
+    },
+    "baseDps" : 6.0,
+    "fireTime" : 0.065,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.15,
+        "armRotation" : -100,
+        "weaponRotation" : 10,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 1.25],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  }
+}

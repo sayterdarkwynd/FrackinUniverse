@@ -1,0 +1,83 @@
+{
+  "itemName" : "blistergun",
+  "price" : 160,
+  "inventoryIcon" : "blistergun.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Fires repulsive glowy goo-globs.",
+  "shortdescription" : "Blister Gun",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Rifle",
+  "itemTags" : ["weapon","ranged","rifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "blistergun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/plasmamuzzle3pink.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/burstshot1.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.5, 0.0],
+  "muzzleOffset" : [1.645, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAttack" : {
+    "fireTime" : 1.0,
+    "baseDps" : 5,
+    "energyUsage" : 18.0,
+    "inaccuracy" : 0.008,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "blistergunshot",
+    "projectileParameters" : { 
+      "speed" : 50,
+      "knockback" : 20
+    }
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.25,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/blisteraltshot.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

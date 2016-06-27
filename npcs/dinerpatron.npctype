@@ -1,0 +1,90 @@
+{
+  "type" : "dinerpatron",
+  "baseType" : "base",
+  
+  "damageTeamType" : "friendly",
+  "damageTeam" : 1,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "persistent" : true,
+
+  "scriptConfig" : {
+    "behavior" : "follower",
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/grumble.config:tagCriteria",
+          "enclosedArea" : "/dialog/grumble.config:enclosedArea",
+          "otherDeed" : "/dialog/grumble.config:otherDeed",
+          "severe" : "/dialog/grumble.config:severe",
+          "final" : "/dialog/grumble.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/arrivedhome.config:beacon",
+          "rent" : "/dialog/arrivedhome.config:rent"
+        }
+      },
+
+      "follower" : {
+        "attack" : {
+          "default" : {
+            "default" : [
+              "Don't worry, I'll take care of this",
+              "What kind of monster is this!?"
+            ]
+          }
+        },
+        "join" : {
+          "default" : {
+            "default" : [
+              "Hello adventurer, mind if I join you?",
+              "You look strong. We're friends now."
+            ]
+          }
+        },
+        "returnFromCombat" : {
+          "default" : {
+            "default" : [
+              "Now that was a fight!",
+              "Phew, you handle yourself quite well."
+            ]
+          }
+        },
+        "wait" : {
+          "default" : {
+            "default" : [
+              "I'll just wait here."
+            ]
+          }
+        },
+        "returnFromWait" : {
+          "default" : {
+            "default" : [
+              "You came back!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "humantier1head" } ],
+            "chest" : [ { "name" : "humantier1chest" } ],
+            "legs" : [ { "name" : "humantier1pants" } ],
+            "primary" : [
+              { "name" : "generatedgun", "parameters" : { "definition" : "commonassaultrifle" } }
+            ],
+            "sheathedprimary" : [
+              { "name" : "humantier1broadsword" }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

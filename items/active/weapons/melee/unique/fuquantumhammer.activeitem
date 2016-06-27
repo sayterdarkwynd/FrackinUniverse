@@ -1,0 +1,100 @@
+{
+  "itemName" : "fuquantumhammer",
+  "price" : 160,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Straddles two universes. Amazing.",
+  "shortdescription" : "Quantum Hammer",
+  "tooltipKind" : "sword",
+  "weaponType" : "Hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer"],
+
+  "inventoryIcon" : "fuquantumhammer.png",
+
+  "animation" : "/items/active/weapons/melee/hammer/tieredhammer.animation",
+  "animationParts" : {
+    "blade" : "/items/active/weapons/melee/unique/fuquantumhammer.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/hammer/hammer.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAttack" : {
+    "fireTime" : 1.0,
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "hammer",
+      "statusEffects" : [ ],
+      "knockbackMode" : "facing",
+      "knockback" : 45
+    },
+    "smashMomentum" : [0, -45]
+  },
+
+  "baseWeaponRotation" : 10,
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : -10,
+      "weaponOffset" : [-0.125, 0.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.8,
+      "armRotation" : 90,
+      "weaponRotation" : -10,
+      "twoHanded" : true,
+      "weaponOffset" : [0, 1.75],
+
+      "allowRotate" : false,
+      "allowFlip" : true,
+
+      // Windup animation
+      "idleHammerAngle" : -20,
+      "windupHammerAngle" : 0,
+      "dropHammerAngle" : 60,
+      "bounceHammerAngle" : 55,
+      
+      "minWindup" : 0.7,
+      "windupBaseAngle" : -90,
+      "windupAngleRange" : 140
+    },
+    "preslash" : {
+      "duration" : 0.025,
+      "armRotation" : 55,
+      "weaponRotation" : -45,
+      "twoHanded" : true,
+      "weaponOffset" : [0, 2.0],
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "fire" : {
+      "duration" : 0.4,
+      "armRotation" : -35,
+      "weaponRotation" : -55,
+      "twoHanded" : true,
+      "smashTimer" : 1.5,
+      "weaponOffset" : [0, 2.0],
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "palette" : "/items/active/weapons/colors/tier4melee.weaponcolors",
+
+  "altAbilitySource" : "/items/active/weapons/melee/altabilities/hammer/groundslam/groundslam.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

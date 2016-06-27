@@ -1,0 +1,96 @@
+{
+  "itemName" : "shoggothgun",
+  "price" : 160,
+  "inventoryIcon" : "shoggothgun.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Fires organic drones and biomorphic fire.",
+  "shortdescription" : "Biomorphic Cannon",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Bio-Weapon",
+  "itemTags" : [ "weapon","ranged","assaultrifle" ],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "shoggothgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/blankmuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/splat.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.2, 0.34],
+  "muzzleOffset" : [1.445, 0.0],
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAttack" : {
+    "fireTime" : 0.35,
+    "baseDps" : 8.42,
+    "energyUsage" : 32.0,
+    "inaccuracy" : 0.01,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "corrosiveparticle",
+    "projectileParameters" : { 
+      "speed" : 52,
+      "knockback" : 8,
+    "statusEffects" : [ "weakpoison" ],
+
+    "ignoreTerrain" : false,
+    "controlForce" : 40,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 3.0,
+
+    "wobbleRate" : 1.5,
+    "wobbleIntensity" : 2.0
+    }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.25,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/shoggothburst/shoggothburst.altability",
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

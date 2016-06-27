@@ -1,0 +1,91 @@
+{
+  "itemName" : "fugaussrifle",
+  "price" : 160,
+  "inventoryIcon" : "fugaussrifle.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "A fantastic assault rifle.",
+  "shortdescription" : "Gauss Rifle",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Coilgun",
+  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fugaussrifle.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/pulserifle2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.7, 0.3],
+  "muzzleOffset" : [2.845, -0.12],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAttack" : {
+    "fireTime" : 0.154,
+    "baseDps" : 7.9,
+    "energyUsage" : 25.0,
+    "inaccuracy" : 0.03,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "gaussrifleshot",
+    "projectileParameters" : { 
+      "speed" : 72,
+      "knockback" : 4
+    }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/spray/spray.altability",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
