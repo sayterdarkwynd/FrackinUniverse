@@ -32,7 +32,9 @@
 
   "elementalType" : "poison",
 
-  "primaryAttack" : {
+  "PrimaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.35,
     "baseDps" : 6.75,
     "energyUsage" : 25.0,
@@ -45,9 +47,7 @@
     "projectileParameters" : { 
       "speed" : 62,
       "knockback" : 1.5
-    }
-  },
-
+    },
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -67,7 +67,7 @@
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.025,
+      "duration" : 0.075,
       "armRotation" : 5,
       "weaponRotation" : 5,
       "twoHanded" : true,
@@ -75,9 +75,10 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
 
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/spray/spray.altability",
+  "altAbilityType" : "spray",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

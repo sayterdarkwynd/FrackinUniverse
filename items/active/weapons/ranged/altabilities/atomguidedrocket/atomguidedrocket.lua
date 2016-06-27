@@ -2,7 +2,7 @@ require "/scripts/util.lua"
 require "/items/active/weapons/weapon.lua"
 
 function setupAltAbility(altAbilityConfig, elementalType)
-  local primary = config.getParameter("primaryAttack")
+  local primary = config.getParameter("PrimaryAbility")
   local guidedRocket = GunFire:new(sb.jsonMerge(primary, altAbilityConfig), altAbilityConfig.stances)
 
   function guidedRocket:init()

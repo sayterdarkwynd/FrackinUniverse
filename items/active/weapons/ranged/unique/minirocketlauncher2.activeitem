@@ -32,7 +32,9 @@
 
   "elementalType" : "physical",
 
-  "primaryAttack" : {
+  "PrimaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.35,
     "baseDps" : 4.87,
     "energyUsage" : 24.0,
@@ -45,16 +47,6 @@
     "projectileParameters" : { 
       "speed" : 50,
       "knockback" : 20
-    }
-  },
-    "particleEmitters" : {
-      "muzzleFlash" : {
-        "particles" : [
-          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
-          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
-          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
-        ]
-      }
     },
   "stances" : {
     "idle" : {
@@ -75,7 +67,7 @@
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.25,
+      "duration" : 0.075,
       "armRotation" : 5,
       "weaponRotation" : 5,
       "twoHanded" : true,
@@ -83,9 +75,19 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
-
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/homingrocket/homingrocket.altability",
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    
+  "altAbilityType" : "homingrocket",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -32,7 +32,9 @@
 
   "elementalType" : "ice",
 
-  "primaryAttack" : {
+  "PrimaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.72,
     "baseDps" : 8.0,
     "energyUsage" : 25.0,
@@ -45,9 +47,7 @@
     "projectileParameters" : { 
       "speed" : 50,
       "knockback" : 52
-    }
-  },
-
+    },
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -75,9 +75,10 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
 
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/iceburstshot/iceburstshot.altability",
+  "altAbilityType" : "iceburstshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

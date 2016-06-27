@@ -32,7 +32,9 @@
 
   "elementalType" : "electric",
 
-  "primaryAttack" : {
+  "PrimaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.80,
     "baseDps" : 12.4,
     "energyUsage" : 25.0,
@@ -45,9 +47,7 @@
     "projectileParameters" : { 
       "speed" : 50,
       "knockback" : 25
-    }
-  },
-
+    },
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -59,25 +59,26 @@
     },
     "fire" : {
       "duration" : 0,
-      "armRotation" : 8,
-      "weaponRotation" : 8,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
       "twoHanded" : true,
 
       "allowRotate" : false,
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.2,
-      "armRotation" : 8,
-      "weaponRotation" : 8,
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
       "twoHanded" : true,
 
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
 
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/protobomb.altability",
+  "altAbilityType" : "protobomb",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

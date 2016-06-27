@@ -31,7 +31,9 @@
 
   "elementalType" : "electric",
 
-  "primaryAttack" : {
+  "PrimaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.417,
     "baseDps" : 7.0,
     "energyUsage" : 32.0,
@@ -45,7 +47,35 @@
     "projectileParameters" : { 
       "speed" : 65,
       "knockback" : 1
-    }
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
   },
     "particleEmitters" : {
       "muzzleFlash" : {
@@ -56,36 +86,8 @@
         ]
       }
     },
-  "stances" : {
-    "idle" : {
-      "armRotation" : 0,
-      "weaponRotation" : 0,
-      "twoHanded" : true,
 
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "fire" : {
-      "duration" : 0,
-      "armRotation" : 5,
-      "weaponRotation" : 5,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : false
-    },
-    "cooldown" : {
-      "duration" : 0.02,
-      "armRotation" : 5,
-      "weaponRotation" : 5,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : false
-    }
-  },
-
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/eldergrenadelauncher/eldergrenadelauncher.altability",
+  "altAbilityType" : "eldergrenadelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
