@@ -1,0 +1,45 @@
+{
+  "materialId" : 6537,
+  "materialName" : "irradiatedtile3",
+  "particleColor" : [117, 140, 94, 255],
+  "itemDrop" : "irradiatedwall3",
+  "description" : "Yea, this definitely is NOT safe to touch.",
+  "shortdescription" : "Radioactive Rock",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+  "health" : 8,
+  "soil" : true,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "irradiatedwall3.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  
+  "liquidInteractions" : [
+    {
+      "liquidId" : 1,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6629
+    },
+    {
+      "liquidId" : 3,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 42
+    },
+    {
+      "liquidId" : 40,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6572
+    },
+    {
+      "liquidId" : 13,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6585
+    }
+  ]
+}

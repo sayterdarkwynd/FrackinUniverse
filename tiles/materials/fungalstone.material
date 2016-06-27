@@ -1,0 +1,43 @@
+{
+  "materialId" : 6563,
+  "materialName" : "fungalstone",
+  "particleColor" : [124, 167, 105, 225],
+  "itemDrop" : "fungalstonematerial",
+  "description" : "Stone covered in fungal spores.",
+  "shortdescription" : "Fungal Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+  "health" : 8,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "fungalstone.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false
+  },
+  "liquidInteractions" : [
+      {
+        "liquidId": 54,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6517
+      },
+      {
+        "liquidId": 57,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6518
+      },
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 36
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 42293
+    }
+  ] 
+}
+

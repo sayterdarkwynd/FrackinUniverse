@@ -1,0 +1,48 @@
+{
+  "materialId" : 6544,
+  "materialName" : "blackslime",
+  "particleColor" : [44, 38, 46, 255],
+  "itemDrop" : "blackslimematerial",
+  "description" : "extremely viscous black slime.",
+  "shortdescription" : "Black Slime",
+  "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+  "health" : 4,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "blackslime.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 50,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 6629
+    },
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 6541
+    },
+    {
+      "liquidId" : 55,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 6632
+    },
+    {
+      "liquidId" : 6,
+      "consumeLiquid" : 0.33,
+      "transformMaterialId" : 6646
+    },
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.33,
+      "transformMaterialId" : 6549
+    }
+  ] 
+}

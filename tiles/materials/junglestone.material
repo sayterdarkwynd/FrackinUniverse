@@ -1,0 +1,48 @@
+{
+  "materialId" : 6571,
+  "materialName" : "junglestone",
+  "particleColor" : [92, 114, 84, 225],
+  "itemDrop" : "junglestonematerial",
+  "description" : "Stone covered in vines and roots.",
+  "shortdescription" : "Jungle Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+  "health" : 8,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "junglestone.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false
+  },
+  "liquidInteractions" : [
+      {
+        "liquidId": 54,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6517
+      },
+      {
+        "liquidId": 57,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6518
+      },
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6538
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 42293
+    },
+      {
+        "liquidId": 56,
+        "consumeLiquid": 0.15,
+        "transformMaterialId": 6533
+      } 
+  ]
+}
+

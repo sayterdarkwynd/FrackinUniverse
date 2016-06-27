@@ -1,0 +1,55 @@
+{
+  "name" : "gassea",
+
+  "type" : "displacement",
+  "xType" : "perlin",
+  "xOctaves" : 2,
+  "xFreq" : 0.3,
+  "xAmp" : 2,
+  "xXInfluence" : 0,
+  "yType" : "perlin",
+  "yOctaves" : 1,
+  "yFreq" : 0.2,
+  "yAmp" : 2,
+  "yYInfluence" : 0,
+
+  "source" : {
+    "type" : "max",
+
+    "sources" : [
+      {
+        "type" : "perlin",
+        "seedBias" : 1,
+        "function" : "perlin",
+        "octaves" : 1,
+        "freq" : 0.027,
+        "amp" : 3,
+        "bias" : -0.12,
+        "xInfluence" : 0.66,
+        "yInfluence" : 1.0
+      },
+      {
+        "type" : "perlin",
+        "seedBias" : 2,
+        "function" : "perlin",
+        "octaves" : 1,
+        "freq" : 0.01,
+        "amp" : 2,
+        "bias" : -0.22,
+        "xInfluence" : 0.66,
+        "yInfluence" : 1.0
+      },
+      {
+        "type" : "perlin",
+        "seedBias" : 4,
+        "function" : "perlin",
+        "octaves" : 1,
+        "freq" : 0.0277,
+        "amp" : 3,
+        "bias" : -0.22,
+        "xInfluence" : 0.66,
+        "yInfluence" : 1.0
+      }
+    ]
+  }
+}

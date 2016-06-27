@@ -1,0 +1,36 @@
+{
+  "materialId" : 6647,
+  "materialName" : "fublueslimestone",
+  "particleColor" : [80, 236, 4, 255],
+  "itemDrop" : "jellystone",
+  "shortdescription" : "Healing Slime Stone",
+  "description" : "Unsure how this is possible, but okay.",
+  "footstepSound" : "/sfx/blocks/footstep_stone3.ogg",
+  "health" : 6,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "fublueslimestone.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "multiColored" : false,
+    "occludesBelow" : true,
+    "zLevel" : 1640,
+    "radiantLight" : [15, 35, 55]
+  },
+  
+  "liquidInteractions" : [
+    {
+      "liquidId" : 41,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 42315
+    },
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6544
+    }
+  ]
+  
+}

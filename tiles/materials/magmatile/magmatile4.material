@@ -1,0 +1,30 @@
+{
+  "materialId" : 6541,
+  "materialName" : "magmatile4",
+"particleColor" : [57, 53, 50, 255],
+  "itemDrop" : "magmawall4",
+  "description" : "Solid, unyielding stone.",
+  "shortdescription" : "Cooled Volcanic Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+   "tillableMod" : 31,
+  "soil" : true,
+  "health" : 15,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "magmatile4.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6551
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+	"materialId" : 6658,
+	"materialName" : "harrowstone",
+	"particleColor" : [55, 55, 55, 255],
+	"itemDrop" : "harrowstone",
+	"description" : "A rough, sharp and irregular stone flecked with impurities.",
+	"shortdescription" : "Rough Stone",
+	"footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+	"health" : 5.5,
+	"category": "materials",
+
+	"renderTemplate" : "/tiles/classicmaterialtemplate.config",
+	"renderParameters" : {
+		"texture" : "harrowstone.png",
+		"variants" : 5,
+		"lightTransparent" : false,
+		"multiColored" : false,
+		"occludesBelow" : true,
+		"zLevel" : 0
+	},
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6539
+    },
+    {
+      "liquidId" : 46,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 360
+    }
+  ]
+}

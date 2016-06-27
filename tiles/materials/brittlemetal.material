@@ -1,0 +1,35 @@
+{
+  "materialId" : 6524,
+  "materialName" : "brittlemetal",
+  "particleColor" : [111, 98, 90, 255],
+  "itemDrop" : "brittlemetal",
+  "description" : "Old weakened metal.",
+  "shortdescription" : "Brittle Metal",
+  "glitchdescription" : "Alarm. This metal makes me uncomfortable.",
+  "florandescription" : "Ready to sssnap.",
+  "footstepSound" : "/sfx/blocks/footstep_girder.ogg",
+  "health" : 5,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "brittlemetal.png",
+	"variants" : 3,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+	"multicolored" : true,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6641
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6641
+    }
+  ]
+}

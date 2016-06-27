@@ -1,0 +1,31 @@
+{
+  "materialId" : 6502,
+  "materialName" : "biodirt",
+  "particleColor" : [104, 0, 104, 255],
+  "itemDrop" : "biodirtmaterial",
+  "description" : "Somehow, even the dirt here is strange.",
+  "shortdescription" : "Proto Soil",
+  "footstepSound" : "/sfx/blocks/footstep_dirt.ogg",
+  "tillableMod" : 31,
+  "soil" : true,
+  "health" : 3,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "biodirt.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 1200
+  },
+
+  "liquidInteractions" : [
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6574
+    }
+  ]
+}

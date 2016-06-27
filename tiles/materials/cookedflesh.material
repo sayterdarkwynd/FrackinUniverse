@@ -1,0 +1,35 @@
+{
+  "materialId" : 6642,
+  "materialName" : "cookedflesh",
+  "particleColor" : [166, 27, 32, 255],
+  "itemDrop" : "fleshblock",
+  "description" : "A hideous, cooked block made of some kind of flesh.",
+  "shortdescription" : "Cooked Flesh Block",
+  "glitchDescription" : "Disgust. A block made of flesh.",
+  "floranDescription" : "Sssquishy meat block.",
+  "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+  "health" : 4.6,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "cookedflesh.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "multiColored" : false,
+    "occludesBelow" : true,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+      {
+        "liquidId": 3,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6583
+      },
+      {
+        "liquidId": 40,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 165
+      }  
+  ]  
+}

@@ -1,0 +1,48 @@
+{
+  "materialId" : 6628,
+  "materialName" : "jellyblock",
+  "particleColor" : [124, 145, 86, 255],
+  "frames" : "jellyblock.png",
+  "itemDrop" : "jellyblock",
+  "health" : 2,
+  "soil" : true,  
+  "description" : "A thick jelly. It's tempting to eat it.",
+  "shortdescription" : "Gelatinous Block",
+  "category": "materials",  
+  "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "jellyblock.png",
+    "variants" : 5,
+    "lightTransparent" : true,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0,
+        "radiantLight" : [3, 0, 3]
+  },
+
+  "liquidInteractions" : [
+    {
+      "liquidId" : 41,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6630
+    },
+      {
+        "liquidId": 6,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6646
+      },
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6544
+    },
+      {
+        "liquidId": 46,
+        "consumeLiquid": 0.15,
+        "transformMaterialId": 143
+      } 
+  ]
+  
+}

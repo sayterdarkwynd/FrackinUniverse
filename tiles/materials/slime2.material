@@ -1,0 +1,46 @@
+{
+  "materialId" : 6585,
+  "materialName" : "slime2",
+  "particleColor" : [81, 145, 81, 255],
+  "itemDrop" : "slime2material",
+  "description" : "A thick mucus. It's tempting to poke it.",
+  "shortdescription" : "Translucent Slime Block",
+  "glitchDescription" : "Hesitation. A vulgar, slimy block.",
+  "floranDescription" : "Ssslimy!",
+  "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+  "health" : 2,
+  "soil" : true,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "slime2.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+      {
+        "liquidId": 60,
+        "consumeLiquid": 0.34,
+        "transformMaterialId": 6544
+      },
+      {
+        "liquidId": 43,
+        "consumeLiquid": 0.55,
+        "transformMaterialId": 6628
+      },
+      {
+        "liquidId": 6,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6646
+      },
+      {
+        "liquidId": 46,
+        "consumeLiquid": 0.15,
+        "transformMaterialId": 37
+      } 
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "materialId" : 6643,
+  "materialName" : "cookedboneyflesh",
+  "particleColor" : [199, 36, 63, 225],
+  "itemDrop" : "boneyflesh",
+  "description" : "Oh boy. This is pleasant.",
+  "shortdescription" : "Boney Flesh",
+  "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+  "health" : 2,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "cookedboneyflesh.png",
+    "variants" : 10,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 1570
+  },
+  "liquidInteractions" : [
+      {
+        "liquidId": 40,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6633
+      }
+  ]
+}

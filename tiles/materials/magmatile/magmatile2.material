@@ -1,0 +1,36 @@
+{
+  "materialId" : 6539,
+  "materialName" : "magmatile2",
+"particleColor" : [57, 53, 50, 255],
+  "itemDrop" : "magmawall2",
+  "description" : "Burning-hot magma walls. You should probably not touch this.",
+  "shortdescription" : "Burning Volcanic Rock",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+  "health" : 12,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "magmatile2.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0,
+    "radiantLight" : [72, 37, 16]
+  },
+  
+  "liquidInteractions" : [
+    {
+      "liquidId" : 1,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 81
+    },
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6631
+    }
+  ]
+  
+}

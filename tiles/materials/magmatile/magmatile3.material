@@ -1,0 +1,30 @@
+{
+  "materialId" : 6540,
+  "materialName" : "magmatile3",
+  "particleColor" : [57, 53, 50, 255],
+  "itemDrop" : "magmawall3",
+  "description" : "Yay. Ash.",
+  "shortdescription" : "Volcanic Ash",
+  "footstepSound" : "/sfx/blocks/footstep_ash.ogg",
+  "tillableMod" : 31,
+  "soil" : true,
+  "health" : 2,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "magmatile3.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6552
+    }
+  ]
+}

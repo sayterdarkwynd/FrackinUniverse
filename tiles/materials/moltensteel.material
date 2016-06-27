@@ -1,0 +1,28 @@
+{
+  "materialId" : 6640,
+  "materialName" : "moltensteel",
+  "particleColor" : [185, 185, 185, 225],
+  "itemDrop" : "moltensteel",
+  "description" : "Metallic stone as hard as steel.",
+  "shortdescription" : "Steel Stone",
+  "footstepSound" : "/sfx/blocks/footstep_metallic.ogg",
+  "health" : 8,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "moltensteel.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 1,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6593
+    }
+  ]
+}
+

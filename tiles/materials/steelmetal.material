@@ -1,0 +1,35 @@
+{
+  "materialId" : 6590,
+  "materialName" : "steelmetal",
+  "particleColor" : [111, 98, 90, 255],
+  "itemDrop" : "steelmetal",
+  "description" : "Metal.",
+  "shortdescription" : "Metal",
+  "footstepSound" : "/sfx/blocks/footstep_girder.ogg",
+  "health" : 32,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "steelmetal.png",
+    "variants" : 3,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : true,
+    "zLevel" : 3000
+  },
+
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6641
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6641
+    }
+  ]
+  
+}

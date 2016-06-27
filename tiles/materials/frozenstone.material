@@ -1,0 +1,38 @@
+{
+  "materialId" : 6562,
+  "materialName" : "frozenstone",
+  "particleColor" : [190, 214, 232, 225],
+  "itemDrop" : "frozenstonematerial",
+  "description" : "Ice-covered stone.",
+  "shortdescription" : "Frozen Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+  "health" : 8,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "frozenstone.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 50,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 6629
+    },
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.65,
+      "transformMaterialId" : 31
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.65,
+      "transformMaterialId" : 31
+    }
+  ] 
+}
+

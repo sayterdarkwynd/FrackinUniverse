@@ -1,0 +1,45 @@
+{
+  "materialId" : 6575,
+  "materialName" : "penumbrastone",
+  "particleColor" : [124, 85, 154, 255],
+  "itemDrop" : "penumbrastonematerial",
+  "description" : "This stone reflects no light.",
+  "shortdescription" : "Umbral Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+  "health" : 9,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "penumbrastone.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6539
+    },
+    {
+      "liquidId" : 44,
+      "consumeLiquid" : 0.33,
+      "transformMaterialId" : 1430
+    },
+    {
+      "liquidId" : 6,
+      "consumeLiquid" : 0.33,
+      "transformMaterialId" : 6647
+    },
+    {
+      "liquidId" : 55,
+      "consumeLiquid" : 0.33,
+      "transformMaterialId" : 6549
+    }
+  ]
+  
+}

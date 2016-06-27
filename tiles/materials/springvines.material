@@ -1,0 +1,37 @@
+{
+  "materialId" : 42345,
+  "materialName" : "springvines",
+  "particleColor" : [99, 117, 82, 255],
+  "transparent" : false,
+  "itemDrop" : "springvines",
+  "shortdescription" : "Spring Vine",
+  "description" : "A thick coil of vines, with flowers. They look strong.",
+  "glitchDescription" : "Statement. Some flowering vines.",
+  "floranDescription" : "Floran like vinesss.",
+  "footstepSound" : "/sfx/blocks/footstep_wetclay.ogg",
+  "health" : 5,
+  "category": "materials",
+  "damageTable" : "/tiles/flammableDamage.config",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "springvines.png",
+    "variants" : 8,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.55,
+      "transformMaterialId" : 6540
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.55,
+      "transformMaterialId" : 6540
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "materialId" : 6570,
+  "materialName" : "jungledirt2",
+  "particleColor" : [92, 145, 86, 255],
+  "itemDrop" : "jungledirt2material",
+  "description" : "moist leafy dirt.",
+  "shortdescription" : "Jungle Soil",
+  "footstepSound" : "/sfx/blocks/footstep_dirt.ogg",
+  "tillableMod" : 31,
+  "soil" : true,
+  "health" : 4,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "jungledirt2.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+      {
+        "liquidId": 54,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6566
+      },
+      {
+        "liquidId": 57,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6580
+      },  
+    {
+      "liquidId" : 1,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6571
+    },
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6541
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6541
+    }
+  ]
+}

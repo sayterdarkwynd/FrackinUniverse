@@ -1,0 +1,41 @@
+{
+  "materialId" : 6636,
+  "materialName" : "fumossyrock",
+  "frames" : ".png",
+  "variants" : 5,
+  "particleColor" : [99, 22, 99, 255],
+  "itemDrop" : "fumossyrock",
+  "description" : "Mossy Stone",
+  "shortdescription" : "Mossy Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+  "health" : 3,
+  "damageTable" : "/tiles/flammableDamage.config",
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "fumossyrock.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 36
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 6541
+    },
+      {
+        "liquidId": 56,
+        "consumeLiquid": 0.15,
+        "transformMaterialId": 6531
+      }  
+  ] 
+}

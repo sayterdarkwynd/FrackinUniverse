@@ -1,0 +1,55 @@
+{
+  "name" : "iceclouds",
+
+  "type" : "displacement",
+  "xType" : "perlin",
+  "xOctaves" : 2,
+  "xFreq" : 0.2,
+  "xAmp" : 1,
+  "xXInfluence" : 0,
+  "yType" : "perlin",
+  "yOctaves" : 2,
+  "yFreq" : 0.2,
+  "yAmp" : 1,
+  "yYInfluence" : 0,
+
+  "source" : {
+    "type" : "max",
+
+    "sources" : [
+      {
+        "type" : "perlin",
+        "seedBias" : 1,
+        "function" : "perlin",
+        "octaves" : 1,
+        "freq" : 0.007,
+        "amp" : 1,
+        "bias" : -0.22,
+        "xInfluence" : 0.66,
+        "yInfluence" : 1.0
+      },
+      {
+        "type" : "perlin",
+        "seedBias" : 2,
+        "function" : "perlin",
+        "octaves" : 1,
+        "freq" : 0.01,
+        "amp" : 1,
+        "bias" : -0.22,
+        "xInfluence" : 0.66,
+        "yInfluence" : 1.0
+      },
+      {
+        "type" : "perlin",
+        "seedBias" : 3,
+        "function" : "perlin",
+        "octaves" : 1,
+        "freq" : 0.0177,
+        "amp" : 1,
+        "bias" : -0.22,
+        "xInfluence" : 0.66,
+        "yInfluence" : 1.0
+      }
+    ]
+  }
+}

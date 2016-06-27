@@ -1,0 +1,61 @@
+{
+  "materialId" : 6586,
+  "materialName" : "slimedirt",
+  "particleColor" : [81, 150, 81, 200],
+  "itemDrop" : "slimedirtmaterial",
+  "description" : "Ew. Slimy.",
+  "shortdescription" : "Slimey Soil",
+  "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+  "health" : 3,
+  "tillableMod" : 31,
+  "soil" : true,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "slimedirt.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6544
+    },
+    {
+      "liquidId" : 100,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6628
+    },
+      {
+        "liquidId": 59,
+        "consumeLiquid": 0.35,
+        "transformMaterialId": 6585
+      },
+      {
+        "liquidId": 43,
+        "consumeLiquid": 0.25,
+        "transformMaterialId": 6630
+      },
+      {
+        "liquidId": 40,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 165
+      },
+      {
+        "liquidId": 6,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 6645
+      },
+      {
+        "liquidId": 46,
+        "consumeLiquid": 0.15,
+        "transformMaterialId": 45
+      } 
+  ]
+}
+

@@ -1,0 +1,45 @@
+{
+  "materialId" : 6630,
+  "materialName" : "jellystone",
+  "particleColor" : [80, 236, 4, 255],
+  "itemDrop" : "jellystone",
+  "shortdescription" : "Gelatinous Stone",
+  "description" : "Unsure how this is possible, but okay.",
+  "footstepSound" : "/sfx/blocks/footstep_stone3.ogg",
+  "health" : 6,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "jellystone.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "multiColored" : false,
+    "occludesBelow" : true,
+    "zLevel" : 1640
+  },
+  
+  "liquidInteractions" : [
+    {
+      "liquidId" : 41,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 42315
+    },
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6544
+    },
+    {
+      "liquidId" : 6,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6647
+    },
+      {
+        "liquidId": 46,
+        "consumeLiquid": 0.15,
+        "transformMaterialId": 38
+      } 
+  ]
+  
+}

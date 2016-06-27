@@ -1,0 +1,30 @@
+{
+  "materialId" : 6644,
+  "materialName" : "cookedbrains",
+  "particleColor" : [110, 110, 110, 255],
+  "itemDrop" : "brains",
+  "description" : "Mmm. Delicious.",
+  "shortdescription" : "Cooked brains",
+
+
+  "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+  "health" : 2,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "cookedbrains.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : true,
+    "zLevel" : 2000
+  },
+  "liquidInteractions" : [
+      {
+        "liquidId": 40,
+        "consumeLiquid": 0.45,
+        "transformMaterialId": 40
+      }
+  ]  
+}

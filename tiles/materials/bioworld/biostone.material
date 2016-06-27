@@ -1,0 +1,30 @@
+{
+  "materialId" : 6504,
+  "materialName" : "biostone",
+  "particleColor" : [104, 0, 104, 255],
+  "itemDrop" : "biostonematerial",
+  "description" : "...organic stone?",
+  "shortdescription" : "Proto Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+  "health" : 12,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "biostone.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+
+  "liquidInteractions" : [
+    {
+      "liquidId" : 60,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6575
+    }
+  ]
+  
+}

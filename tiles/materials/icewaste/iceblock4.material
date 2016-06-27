@@ -1,0 +1,34 @@
+{
+  "materialId" : 6534,
+  "materialName" : "iceblock4",
+  "particleColor" : [209, 223, 237, 255],
+  "itemDrop" : "iceblock4material",
+  "description" : "Ancient Ice",
+  "shortdescription" : "Ancient Ice",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+  "health" : 8,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "iceblock4.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.65,
+      "transformMaterialId" : 31
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.65,
+      "transformMaterialId" : 31
+    }
+  ]
+}
+

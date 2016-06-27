@@ -1,0 +1,45 @@
+{
+  "materialId" : 6535,
+  "materialName" : "irradiatedtile",
+  "particleColor" : [117, 140, 94, 255],
+  "itemDrop" : "irradiatedwall",
+  "description" : "Probably less than fantastic as a farming soil.",
+  "shortdescription" : "Radioactive Soil",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+  "health" : 10,
+  "soil" : true,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "irradiatedwall.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 0
+  },
+  
+  "liquidInteractions" : [
+    {
+      "liquidId" : 1,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6536
+    },
+    {
+      "liquidId" : 3,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 136
+    },
+    {
+      "liquidId" : 40,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 48
+    },
+    {
+      "liquidId" : 13,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 6586
+    }
+  ]
+}

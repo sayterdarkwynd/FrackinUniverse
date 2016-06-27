@@ -1,0 +1,34 @@
+{
+  "materialId" : 6592,
+  "materialName" : "steelsand",
+  "particleColor" : [176, 174, 168, 255],
+  "itemDrop" : "steelsand",
+  "description" : "Fine grains of metal.",
+  "shortdescription" : "Steel Sand",
+  "footstepSound" : "/sfx/blocks/footstep_ash.ogg",
+  "soil" : false,
+  "health" : 2.5,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "steelsand.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "multiColored" : false,
+    "occludesBelow" : true,
+    "zLevel" : 400
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6639
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6639
+    }
+  ]
+}

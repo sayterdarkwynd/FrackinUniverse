@@ -1,0 +1,30 @@
+{
+  "materialId" : 6511,
+  "materialName" : "calichestone",
+  "particleColor" : [209, 162, 80, 255],
+  "itemDrop" : "calichewall",
+  "description" : "A rich source of Saltpeter.",
+  "shortdescription" : "Caliche Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone2.ogg",
+  "health" : 4,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/FullTemplate.config",
+  "renderParameters" : {
+    "texture" : "retexcaliche.png",
+    "variants" : 3,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 4
+  },
+  
+  "liquidInteractions" : [
+    {
+      "liquidId" : 50,
+      "consumeLiquid" : 0.25,
+      "transformMaterialId" : 6629
+    }
+  ]  
+}
+

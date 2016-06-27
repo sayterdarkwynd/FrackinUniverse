@@ -1,0 +1,28 @@
+{
+  "materialId" : 6648,
+  "materialName" : "warttile",
+  "particleColor" : [164, 81, 196, 255],
+  "itemDrop" : "warttile",
+  "description" : "Light seems to twist inside the crystals.",
+  "shortdescription" : "warts",
+  "footstepSound" : "/sfx/blocks/footstep_crystal.ogg",
+  "health" : 8,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "warttile.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 20
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 46,
+      "consumeLiquid" : 0.5,
+      "transformMaterialId" : 360
+    }
+  ]
+}
