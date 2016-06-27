@@ -1,0 +1,138 @@
+{
+  "name" : "icefire",
+  "friendlyName" : "Icefire Forest",
+  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [ 
+          [ 0.1111, "crustoise" ],     
+          [ 0.1111, "capricoat" ],
+          [ 0.1111, "gleap" ],        
+          [ 0.1111, "ringram" ],
+          [ 0.1111, "pyromantle" ],     
+          [ 0.1111, "smoglin" ],
+          [ 0.1111, "spookit" ],
+          [ 0.1111, "peblit" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "flameroach" ],
+          [ 0.3, "lavahopper" ],
+          [ 0.3, "fireygiant" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "magma",
+      "statusSettings" : {
+        "stats" : {
+          "iceslipImmunity" : {
+            "baseValue" : 1.0
+          },
+          "biomecoldImmunity" : {
+            "baseValue" : 1.0
+          },
+          "nitrogenfreezeImmunity" : {
+            "baseValue" : 1.0
+          },		  
+          "lavaImmunity" : {
+            "baseValue" : 1.0
+          },
+          "fireImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+    "mainBlock" : "iceblock3",
+    "subBlocks" : [ "magmarock", "redhotcobblestone", "iceblock4", "protorock" ],
+    "ores" : "depth3",
+
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "icegrass2" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [1, "wildcrystalplantseed" ],
+              [1, "wildmelodistarseed" ],
+              [1, "wildblizzberryseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "icespikes", "icemini", "canyonmini", "terrainfeatures", "rockclimb","rocktunnel", "frozenvolcanicmini" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "iceChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "icespherestem" ],
+          "treeFoliageList" : [ "icespherefoliage" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "icesphere1" ], [0.35, "icesphere2" ], [0.35, "icesphere3" ], [0.35, "icesphere4" ] ],
+              "parameters" : { }
+            }
+          ]
+        }
+    ]
+  }
+}
+
+
+
+
+
+
+
+

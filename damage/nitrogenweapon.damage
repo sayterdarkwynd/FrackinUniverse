@@ -1,0 +1,95 @@
+{
+  "kind" : "nitrogenweapon",
+  "effects" : {
+    "organic" : {
+      "hit" : {
+        "sounds" : [ "/sfx/melee/tesla_shock1.ogg", "/sfx/melee/tesla_shock2.ogg" ],
+        "particles" : [ 
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [65, 65, 255, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [7, 6.0],
+              "finalVelocity" : [7, -9.0],
+              "approach" : [1, 14],
+              "timeToLive" : 0.45,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [4, 4],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [65, 65, 255, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [6, 8.0],
+              "finalVelocity" : [6, -9.0],
+              "approach" : [1, 14],
+              "timeToLive" : 0.65,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [3, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [65, 65, 255, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [3, 7.0],
+              "finalVelocity" : [3, -9.0],
+              "approach" : [1, 14],
+              "timeToLive" : 0.65,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [2, 2],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [65, 65, 255, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-7, 6.0],
+              "finalVelocity" : [-7, -9.0],
+              "approach" : [1, 14],
+              "timeToLive" : 0.45,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [1, 1],
+                "timeToLive" : 1
+              }
+            }        
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/tesla_shock_kill.ogg" ],
+        "particles" : [
+        ]
+      }
+    },
+    "robotic" : {
+      "hit" : {
+        "sounds" : [ "/sfx/melee/tesla_shock1.ogg", "/sfx/melee/tesla_shock2.ogg" ],
+        "particles" : [
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/tesla_shock_kill.ogg" ],
+        "particles" : [
+        ]
+      }
+    }
+  }
+}
+
+
+

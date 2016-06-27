@@ -1,0 +1,115 @@
+{
+  "name" : "crystalplain",
+  "friendlyName" : "Crystalline Volcanic",
+  "hueShiftOptions" : [-195, -125, -40, -25, 0, 25, 40, 125, 195],
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [ 
+          [ 0.1111, "crustoise" ],     
+          [ 0.1111, "skimbus" ],
+          [ 0.1111, "narfin" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.1, "xenofly" ],
+          [ 0.1, "snowskater" ],
+          [ 0.1, "fusnowball" ],
+		  [ 0.1, "bouncercritter" ],
+		  [ 0.1, "reasonablecritter" ],
+		  [ 0.1, "snooglecritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ]
+  },
+    "mainBlock" : "violiumcrystal",
+    "subBlocks" : [ "magmarock", "obsidian" ],
+    "ores" : "ff_crystalmoonOres",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "crystalgrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 2,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 180,
+          "treeStemList" : [ "crystalline" ],
+          "treeFoliageList" : [ "crystallinenofoliage" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "wildcrystalplantseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "crystalflower", "circles", "fireflower", "pebbles" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "crystalChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 4.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "crystalflower" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "crystallinebush1" ], [0.35, "crystallinebush2" ], [0.35, "crystallinebush3" ], [0.35, "crystallinebush4" ] ],
+              "parameters" : { }
+            }
+          ]
+        }
+    ]
+  }
+}
+
+
+
+
+

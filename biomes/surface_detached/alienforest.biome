@@ -1,0 +1,446 @@
+{
+  "name" : "alienforest",
+  "friendlyName" : "alienforest",
+
+  "hueShiftOptions" : [-165, -70, -25, 0, 25, 70, 125, 165],
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [ 
+          [ 0.1111, "iguarmor" ],     
+          [ 0.1111, "pteropod" ],
+          [ 0.1111, "nutmidge" ],        
+          [ 0.1111, "mandraflora" ]
+        ]
+      },	  
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.4, "forestbee" ],
+          [ 0.3, "normalbee" ],
+		  [ 0.3, "greentip" ],
+		  [ 0.3, "blueback" ],
+		  [ 0.3, "aurorabee" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+		  [ 0.3, "fireflyspawner" ],
+          [ 0.4, "birdcritter" ],
+          [ 0.3, "bunny" ],
+          [ 0.3, "chevcritter" ],
+		  [ 0.3, "groopcritter" ],
+		  [ 0.3, "harecritter" ],
+		  [ 0.3, "hedgehogcritter" ],
+		  [ 0.3, "redbreastcritter" ],
+		  [ 0.3, "squirrelcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "forest"
+    }
+  },
+  
+    "mainBlock" : "aliensoil",
+    "subBlocks" : [ "alienrock", "eyepiles" ],
+    "ores" : "surface",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "fualiengrass", "fualiengrass2", "colourfulgrass" ],
+    "grassModDensity" : 0.8,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "protodeco1", "protodeco2", "jungleflower3" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "junglebush1" ], [0.35, "junglebush2" ], [0.35, "junglebush3" ], [0.35, "junglebush4" ], [0.35, "junglebush5" ], [0.35, "junglebush6" ], [0.35, "junglebush7" ], [0.35, "junglebush8" ], [0.35, "junglebush9" ], [0.35, "junglebush10" ], [0.35, "junglebush11" ], [0.35, "junglebush12" ], [0.35, "junglebush13" ], [0.35, "junglebush14" ], [0.35, "junglebush15" ], [0.35, "junglebush16" ], [0.35, "junglebush17" ], [0.35, "junglebush18" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.65, "wilderithianalgaeseed" ],
+              [0.65, "wildblisterbushplantseed" ],
+              [0.65, "wildighantseed" ],
+              [0.65, "wildslimeplantseed" ],
+              [0.65, "wildvextongueseed" ],
+              [0.35, "wildguamseed" ],
+              [0.35, "wilddragonsbeardseed" ],
+              [0.35, "wildlittlerascalseed" ],
+              [0.65, "wildwubstemseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+        "pool" : [ 
+              [0.50, "bioplant1" ], 
+              [0.50, "bioplant2" ],
+              [0.50, "bioplant3" ],
+              [0.50, "bioplant4" ],
+              [0.50, "bioplant5" ],
+              [0.50, "bioplant15" ],
+              [0.50, "bioplant16" ],
+              [0.50, "bioplant17" ],
+              [0.50, "bioplant18" ],
+	      [0.50, "bioplant21" ],
+	      [0.50, "bioplant22" ],
+		[0.50, "bioplant23" ],
+		[0.50, "bioplant24" ],
+		[0.50, "bioplant25" ],
+		[0.50, "bioplant26" ],
+		[0.50, "bioplant27" ],
+		[0.50, "bioplant28" ],
+		[0.50, "bioplant29" ],
+              [0.50, "waterpod" ]
+              ],
+              "parameters" : {  }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+        "pool" : [ 
+              [0.50, "bioplant11" ],
+              [0.50, "bioplant12" ],
+              [0.50, "bioplant13" ],
+              [0.50, "bioplant14" ],
+              [0.50, "bioplant6" ],
+              [0.50, "bioplant7" ],
+              [0.50, "bioplant8" ],
+              [0.50, "bioplant9" ],
+              [0.50, "bioplant10" ],
+              [0.10, "bioplant19" ],
+              [0.50, "bioplant20" ]
+              ],
+              "parameters" : {  }
+            }
+          ]
+        },       
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffprotoChest" ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 220,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "alienbubble", "alienweird", "alienstriped" ],
+          "treeFoliageList" : [ "alienbigleaf", "aliencircle", "jungly" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 300,
+          "treeStemHueShiftMax" : 300,
+          "treeStemList" : [ "bubblevine", "glitteringroot2", "vineroot2", "twistedvine2" ],
+          "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "nofoliagevine" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats", "reversepyramids" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:randomEncounter",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "newhumanmicro", "newavianmicro", "randomencounter", "treasureroom", "avianencounter", "glitchencounter", "shroomencounter" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistPlatform",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "greenplatforming" ]
+        }
+    ]
+  },
+    "undergroundPlaceables" : {
+      "grassMod" : [ "fualiengrass", "fualiengrass2" ],
+      "grassModDensity" : 0.6,
+
+      "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffprotoChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "techChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredPots",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 300,
+          "treeStemHueShiftMax" : 300,
+          "treeStemList" : [ "bubblevine", "glitteringroot2", "vineroot2", "twistedvine2" ],
+          "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "nofoliagevine" ]
+        },
+           
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:potsRare",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ [0.50, "ffbioshroom" ],[0.50, "ffbioshroom1" ],[0.50, "ffbioshroom2" ],[0.50, "ffbioshroom3" ] ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+        "pool" : [ 
+              [0.50, "bioplant1" ], 
+              [0.50, "bioplant2" ],
+              [0.50, "bioplant3" ],
+              [0.50, "bioplant4" ],
+              [0.50, "bioplant5" ],
+              [0.50, "bioplant15" ],
+              [0.50, "bioplant16" ],
+              [0.50, "bioplant17" ],
+              [0.50, "bioplant18" ],
+	      [0.50, "bioplant21" ],
+	      [0.50, "bioplant22" ],
+		[0.50, "bioplant23" ],
+		[0.50, "bioplant24" ],
+		[0.50, "bioplant25" ],
+		[0.50, "bioplant26" ],
+		[0.50, "bioplant27" ],
+		[0.50, "bioplant28" ],
+		[0.50, "bioplant29" ],
+              [0.50, "waterpod" ]
+              ],
+              "parameters" : {  }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "plynth1" ],
+              [0.35, "plynth2" ],
+              [0.35, "monolith1" ],
+              [0.35, "monolith2" ],
+              [0.35, "monolith3" ],
+              [0.35, "monolith4" ],
+              [0.35, "elderidol" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "wildalgaeseed" ],
+              [0.35, "wilderithianalgaeseed" ],
+              [0.35, "wildblisterbushplantseed" ],
+              [0.35, "wildighantseed" ],
+              [0.35, "wildpasakavineseed" ],
+              [0.35, "wildslimeplantseed" ],
+              [0.35, "wildvextongueseed" ] 
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        }
+      ]
+    }
+}
+
+

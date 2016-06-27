@@ -1,0 +1,61 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "bees" : {
+        "default" : "on",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "bees" ]
+            }
+          },
+          "on" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/buzzing/hive.ogg",
+              "particleEmittersOn" : [ "bees" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "bees" : {
+        "partStates" : {
+          "bees" : {
+            "on" : {
+              "properties" : {
+                "centered" : true,
+                "image" : "bees.png:<frameIndex>",
+                "back" : true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "bees" : {
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : "bees",
+          "offset" : [-0, 0]
+        },
+        {
+          "particle" : "gravitybubbledot",
+          "offset" : [-1, 0]
+        },
+        {
+          "particle" : "gravitybubbledot",
+          "offset" : [-2, 0]
+        }
+      ]
+    }
+  }
+}

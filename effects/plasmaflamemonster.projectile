@@ -1,0 +1,26 @@
+{
+  "projectileName" : "plasmaflamemonster",
+  "physics" : "grenadenobounce",
+  "bounces" : -1,
+  "timeToLive" : 1,
+  "speed" : 15,
+  "frames" : "plasmaflame.png",
+  "animationCycle" : 0.55,
+  "lightColor" : [235, 126, 2],
+  "frameNumber" : 4,
+  "emitters" : [ "plasmaflames" ],
+  "piercing" : true,
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    }
+  ],
+  "damageKind" : "fire",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "statusEffects" : [
+    "frozenburning"
+  ],
+  "hydrophobic" : false
+}

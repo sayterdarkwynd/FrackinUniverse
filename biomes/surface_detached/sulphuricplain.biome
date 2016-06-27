@@ -1,0 +1,142 @@
+{
+  "name" : "sulphuricplain",
+  "friendlyName" : "Sulphur Pits",
+  "hueShiftOptions" : [-10, -5, 0, 5, 10],
+
+    "mainBlock" : "sulphurdirt",
+    "subBlocks" : [ "sulphurstone", "drydirt" ],
+    "ores" : "ff_surfacesulfurOres",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [ 
+          [ 0.1111, "sulphurtroll" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "fuscorpion" ],
+          [ 0.3, "funewt" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+            "sulphuricImmunity" : {
+              "baseValue" : 1.0
+            },
+            "poisonImmunity" : {
+              "baseValue" : 1.0
+            },
+            "blacktarImmunity" : {
+              "baseValue" : 1.0
+            },            
+            "breathProtection" : {
+              "baseValue" : 1.0
+            }
+        }
+      }
+    }
+  },
+  
+  "surfacePlaceables" : {
+    "grassMod" : [ "sulphuricgrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "plynth1" ],
+              [0.35, "plynth2" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "desertrocks",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "rocklarge",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "skulls",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            }
+          ]
+        }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

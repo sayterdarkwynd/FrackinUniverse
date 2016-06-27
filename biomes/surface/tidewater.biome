@@ -1,0 +1,276 @@
+{
+  "name" : "tidewater",
+  "friendlyName" : "Rocky Tidewater",
+
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [ 
+          [ 0.1111, "nautileech" ],     
+          [ 0.1111, "lilodon" ],
+          [ 0.1111, "crabcano" ], 
+          [ 0.1111, "shadowcrab" ], 
+          [ 0.1111, "miasmop" ],
+          [ 0.1111, "pulpin" ],     
+          [ 0.1111, "snaggler" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "crabcritter" ],
+          [ 0.3, "gullcritter" ],
+          [ 0.3, "savybirdcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      },
+      {
+        "select" : 3,
+        "pool" : "generatedFlying"
+      }
+    ]
+  },
+  
+  "hueShiftOptions" : [ 0, 0, 0, 0 ],
+
+  "weather" : [
+    [0, [
+      "/weather.config:tidewater"
+    ]]
+  ],
+
+  "skyOptions" : [
+	{
+		// original tidewater biome
+		"mainColor" : [255, 255, 255],
+		
+		"morningColors" : [ [86, 121, 135], [0, 21, 147] ],
+		"dayColors" : [ [68, 115, 181], [40, 67, 106] ],
+		"eveningColors" : [ [86, 121, 135], [0, 21, 147] ],
+		"nightColors" : [ [0, 40, 60], [0, 10, 20] ],
+
+		"morningLightColor" : [86, 121, 135],
+		"dayLightColor" : [68, 115, 181],
+		"eveningLightColor" : [76, 116, 138],
+		"nightLightColor" : [24, 28, 24]
+    },
+	
+	{
+      // light muted blueish
+      "mainColor" : [255, 255, 255],
+
+      "morningColors" : [ [203, 167, 56], [203, 108, 56] ],
+      "dayColors" : [ [179, 223, 251], [190, 190, 210] ],
+      "eveningColors" : [ [201, 169, 59], [195, 47, 44] ],
+      "nightColors" : [ [17, 19, 56, 80], [17, 19, 56, 160] ],
+
+      "morningLightColor" : [158, 121, 42],
+      "dayLightColor" : [190, 190, 210],
+      "eveningLightColor" : [124, 50, 38],
+      "nightLightColor" : [17, 19, 56]
+    },
+	
+    {
+      // slight overcast
+      "mainColor" : [255, 255, 255],
+
+      "morningColors" : [ [140, 140, 180], [120, 120, 180] ],
+      "dayColors" : [ [190, 190, 210], [170, 170, 210] ],
+      "eveningColors" : [ [160, 120, 180], [140, 100, 180] ],
+      "nightColors" : [ [26, 26, 31, 80], [26, 26, 31, 160] ],
+
+      "morningLightColor" : [140, 140, 180],
+      "dayLightColor" : [190, 190, 210],
+      "eveningLightColor" : [160, 120, 180],
+      "nightLightColor" : [26, 26, 31]
+    }
+  ],
+
+  "mainBlock" : "marestone",
+  "subBlocks" : [ "clay", "coral", "oystershell", "coral2"],
+  "ores" : "surface",
+
+  "parallax" : "/parallax/surface/tidewater.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/ambiance/tidewaterambiance.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/ambiance/tidewaterambiance.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vastimmortalsuns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "clay" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "fftidewaterChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "corals", "seaweed", "waterplant2", "waterplant3" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.125, "seashell1" ], [0.125, "seashell2" ], [0.125, "seashell3" ], [0.125, "seashell4" ], [0.125, "seashell5" ], [0.125, "seashell6" ], [0.125, "seashell7" ], [0.125, "seashell8" ]]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "oceanislandsmicrodungeons" ]
+      },
+
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "cone",
+            "baseHueShiftMax" : 180,
+            "modHueShiftMax" : 180
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "coral",
+            "baseHueShiftMax" : 180,
+            "modHueShiftMax" : 180
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "seagrass",
+            "baseHueShiftMax" : 180,
+            "modHueShiftMax" : 180
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "seaweed",
+            "baseHueShiftMax" : 180,
+            "modHueShiftMax" : 180
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "spikey", "crackly", "oldwood", "palmlike", "twisty", "woody" ],
+        "treeFoliageList" : [ "scraggy", "lushy", "junglepalm", "jungleleaf" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [0.25, "wildcellpodsplant" ], 
+            [0.25, "wildkamaranpodsplant" ],
+            [0.35, "wildnakatiseed" ],
+            [0.25, "wildaquapodseed" ] 
+            ],
+            "parameters" : {
+              "startingStage" : 3
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+[
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{ 
+      
+        "select" : 4,
+        "pool" : [ 
+          [ 0.111, "brightstripe" ],          
+          [ 0.111, "vineclimber" ],
+          [ 0.111, "junglebee" ],
+          [ 0.111, "normalbee" ]
+        ]
+      }
+},
+
+	{"op":"add","path":"/surfacePlaceables/items/-","value":{
+			"mode" : "floor",
+			"priority" : 3.0,
+			"variants" : 1,
+			"distribution" : "/biomes/distributions.config:randomEncounter",
+
+			"type" : "microdungeon",
+			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
+		} 
+	},
+{"op":"add","path":"/surfacePlaceables/items/-","value":{
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+          [0.35, "wilditaseed" ],
+          [0.35, "wildbrackentreeseed" ], 
+          [0.35, "wildmutaviskseed" ], 
+          [0.35, "wildcaprioleplantseed" ],
+          [0.35, "wildbananaseed" ],
+          [0.35, "wildwartweedseed" ],
+          [0.35, "wildstranglevineseed" ],
+          [0.35, "wildguamseed" ],
+          [0.35, "wildminkocoapodseed" ],
+          [0.35, "wildlittlegoodberryseed" ],
+          [0.35, "wildcinnamonseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        }
+	}	
+]

@@ -1,0 +1,180 @@
+{
+  "name" : "badlands",
+  "friendlyName" : "Badlands",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [ 
+          [ 0.1111, "fennix" ],     
+          [ 0.1111, "fugiantscorpion" ],
+          [ 0.1111, "fuheadcrab" ],        
+          [ 0.1111, "ignome" ],
+          [ 0.1111, "pyromantle" ],     
+          [ 0.1111, "smoglin" ],
+          [ 0.1111, "trictus" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "sunskipper" ],
+          [ 0.3, "goldbuck" ],
+          [ 0.3, "sandclown" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 1, "armadillocritter" ],
+          [ 1, "mousecritter" ],
+          [ 1, "groopcritter" ],
+          [ 1, "ravencritter" ],
+          [ 1, "wurmcritter" ]   
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "desert",
+      "statusSettings" : {
+        "stats" : {
+          "ffextremeheatImmunity" : {
+            "baseValue" : 1.0
+          },
+          "lavaImmunity" : {
+            "baseValue" : 1.0
+          },
+          "fireImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+    
+
+  "hueShiftOptions" : [-90, -45, 0, 45, 90],
+
+  "mainBlock" : "retexsand2",
+  "subBlocks" : [ "drydirt", "retexsandstone01" ],
+  "ores" : "surface",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "savannahgrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "desertChest" ]
+      },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.65, "badlandsrock1" ],
+              [0.65, "badlandsrock2" ],
+              [0.65, "badlandsrock3" ],
+              [0.65, "badlandsrock4" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "wildblexplantseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wilddeathblossomseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildalgaeseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildbrackentreeseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "desertrocks",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "rocklarge",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "skulls",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "stonestack",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "wicked",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "savannahbush",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "desertpalm", "alienpalm", "bark", "beach", "blank", "cactus", "cross", "palm", "plain", "twirl" ],
+          "treeFoliageList" : [ "palmleaves", "palmy", "roseleaves", "lushleaves", "palmlush", "elegant" ]
+        }
+    ]
+  }
+}

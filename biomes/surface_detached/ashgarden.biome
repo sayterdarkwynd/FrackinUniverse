@@ -1,0 +1,65 @@
+{
+  "name" : "ashgarden",
+  "friendlyName" : "Ash Garden",
+
+  "hueShiftOptions" : [-165, -70, -25, 0, 25, 70, 165],
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [ 
+          [ 0.1111, "tintix" ],     
+          [ 0.1111, "triplod" ],
+          [ 0.1111, "scandroid" ],        
+          [ 0.1111, "bobot" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "dustmoth" ],
+          [ 0.3, "fudrone" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ]
+  },
+  
+    "mainBlock" : "ash",
+    "subBlocks" : [ "ash" ],
+    "ores" : "surface",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "ash" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 0,
+          "treeStemList" : [ "barren" ],
+          "treeFoliageList" : [ "aridblank" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 4.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseSmall",
+
+          "type" : "grass",
+          "grasses" : [ "ashlion" ]
+        }       
+    ]
+  }
+}
+
+

@@ -1,0 +1,374 @@
+{
+  "name" : "bloodstoneseafloor",
+  "friendlyName" : "Blood Ocean",
+  "airless" : true,
+  "breathable" : false,
+  
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 6,
+        "pool" : [
+          [ 0.3111, "nautileech" ],     
+          [ 0.3111, "squeem" ],
+          [ 1, "smallFishOcean1" ],
+          [ 1, "smallFishOcean2" ],
+          [ 1, "passiveLargeFish" ],
+          [ 1, "aggroLargeFish" ],
+          [ 1, "squidcritter" ],
+          [ 1, "jellycritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "poisonImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+
+
+  "parallax" : "/parallax/surface/bloodstoneseafloor.parallax",
+
+  "skyOptions" : [
+
+    {
+      "mainColor" : [225, 225, 225],
+
+      "morningColors" : [ [255, 100, 100], [255, 100, 100] ],
+      "dayColors" : [ [200, 75, 75], [200, 75, 75] ],
+      "eveningColors" : [ [150, 50, 50], [150, 50, 50] ],
+      "nightColors" : [ [100, 50, 50], [100, 50, 50] ],
+
+      "morningLightColor" : [250, 150, 110],
+      "dayLightColor" : [200, 100, 55],
+      "eveningLightColor" : [150, 50, 30],
+      "nightLightColor" : [100, 12, 0]
+    },
+    {
+      "mainColor" : [255, 50, 50],
+
+      "morningColors" : [ [255, 100, 100], [255, 100, 100] ],
+      "dayColors" : [ [200, 75, 75], [200, 75, 75] ],
+      "eveningColors" : [ [150, 50, 50], [150, 50, 50] ],
+      "nightColors" : [ [100, 50, 50], [100, 50, 50] ],
+
+      "morningLightColor" : [250, 150, 110],
+      "dayLightColor" : [200, 100, 55],
+      "eveningLightColor" : [150, 50, 30],
+      "nightLightColor" : [100, 12, 0]
+    },
+    {
+      "mainColor" : [220, 140, 140],
+
+      "morningColors" : [ [255, 100, 100], [255, 100, 100] ],
+      "dayColors" : [ [200, 75, 75], [200, 75, 75] ],
+      "eveningColors" : [ [150, 50, 50], [150, 50, 50] ],
+      "nightColors" : [ [100, 50, 50], [100, 50, 50] ],
+
+      "morningLightColor" : [250, 150, 110],
+      "dayLightColor" : [200, 100, 55],
+      "eveningLightColor" : [150, 50, 30],
+      "nightLightColor" : [100, 12, 0]
+    },
+    {
+      "mainColor" : [150, 90, 90],
+
+      "morningColors" : [ [255, 100, 100], [255, 100, 100] ],
+      "dayColors" : [ [200, 75, 75], [200, 75, 75] ],
+      "eveningColors" : [ [150, 50, 50], [150, 50, 50] ],
+      "nightColors" : [ [100, 50, 50], [100, 50, 50] ],
+
+      "morningLightColor" : [250, 150, 110],
+      "dayLightColor" : [200, 100, 55],
+      "eveningLightColor" : [150, 50, 30],
+      "nightLightColor" : [100, 12, 0]
+    },
+    {
+      "mainColor" : [110, 60, 60],
+
+      "morningColors" : [ [255, 100, 100], [255, 100, 100] ],
+      "dayColors" : [ [200, 75, 75], [200, 75, 75] ],
+      "eveningColors" : [ [150, 50, 50], [150, 50, 50] ],
+      "nightColors" : [ [100, 50, 50], [100, 50, 50] ],
+
+      "morningLightColor" : [250, 150, 110],
+      "dayLightColor" : [200, 100, 55],
+      "eveningLightColor" : [150, 50, 30],
+      "nightLightColor" : [100, 12, 0]
+    }
+  ],
+  
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vastimmortalsuns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+  
+  "hueShiftOptions" : [ 0 ],
+
+  "mainBlock" : "bloodsand",
+  "subBlocks" : [ "fleshblock", "ff_bloodstone", "brains" ],
+  "ores" : "bloodstonesurface",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "fleshgrass2", "tentaclegrass", "fleshgrass", "bloodstonegrass" ],
+    "grassModDensity" : 0.9,
+      "ceilingGrassMod" : [ "veingrowth" ],
+      "ceilingGrassModDensity" : 0.5,
+      "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.45, "wilderithianalgaeseed" ],
+              [0.45, "wildpiruseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },         
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "rockyshapes", "rods", "spikes" ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "bloodstonespike" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "bloodstonerock" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "bloodstoneplant" ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "bloodstonesprout" ]
+        },    
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "bloodstoneplant1" ] ]
+            },
+            {
+              "pool" : [ [1, "bloodstoneplant2" ] ]
+            },
+            {
+              "pool" : [ [1, "bloodstoneplant3" ] ]
+            },
+            {
+              "pool" : [ [1, "bloodstoneplant4" ] ]
+            },
+            {
+              "pool" : [ [1, "bloodstoneplant5" ] ]
+            },
+            {
+              "pool" : [ [1, "anemone1" ] ]
+            },
+            {
+	      "pool" : [ [1, "heartroot" ] ]
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 220,
+          "treeStemHueShiftMax" : 220,
+          "treeStemList" : [ "vein", "bluevein"],
+          "treeFoliageList" : [ "blueveiny", "veiny" ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "bloodkelp" ],
+        "treeFoliageList" : [ "bloodkelpy" ]
+      },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 220,
+          "treeStemHueShiftMax" : 220,
+          "treeStemList" : [ "bloodvine", "fleshvine_atropus", "fleshvine2", "podvine" ],
+          "treeFoliageList" : [ "nofoliagevine"  ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "bloodsea",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : 
+              [ 
+              [0.55, "atropus1" ], 
+              [0.55, "atropus2" ], 
+              [0.55, "atropus3" ],
+              [0.15, "fleshbush1" ], 
+              [0.15, "fleshbush2" ], 
+              [0.15, "fleshbush3" ], 
+              [0.15, "fleshbush4" ], 
+              [0.15, "fleshbush5" ], 
+              [0.15, "fleshbush6" ],
+              [0.15, "heckaltar" ], 
+              [0.15, "heckbush1" ], 
+              [0.15, "heckbush2" ], 
+              [0.15, "heckbush3" ], 
+              [0.15, "heckbush4" ], 
+              [0.15, "heckbush5" ],
+              [0.15, "heckbush6" ], 
+              [0.15, "heckbush7" ], 
+              [0.15, "heckbush8" ], 
+              [0.15, "heckbush9" ], 
+              [0.15, "heckbush10" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        }
+      ]
+    }
+}

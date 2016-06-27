@@ -1,0 +1,20 @@
+{
+  "projectileName" : "oremaker",
+  "physics" : "rain",
+  "frames" : "oremaker.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "damagePoly" : [ [-30, -30], [30, -30], [30, 30], [-30, 30] ],
+  "damageKind" : "hidden",
+  "actionOnReap" : [
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "irradium",
+      "radius" : 20
+    }
+  ],
+
+  "onlyHitTerrain" : false,
+  "hydrophobic" : false
+}

@@ -1,0 +1,44 @@
+[
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{ 
+      
+        "select" : 5,
+        "pool" : [ 
+          [ 0.111, "brightstripe" ],          
+          [ 0.111, "vineclimber" ],
+          [ 0.111, "junglebee" ],
+          [ 0.111, "nocturnalbee" ],
+          [ 0.111, "hardybee" ]
+        ]
+      }
+},
+
+	{"op":"add","path":"/surfacePlaceables/items/-","value":{
+			"mode" : "floor",
+			"priority" : 3.0,
+			"variants" : 1,
+			"distribution" : "/biomes/distributions.config:randomEncounter",
+
+			"type" : "microdungeon",
+			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
+		} 
+	},
+	{"op":"add","path":"/surfacePlaceables/items/-","value":{
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "wildbrackentreeseed" ],
+              [0.35, "wildcinnamonseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        }
+	}
+]

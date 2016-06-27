@@ -1,0 +1,62 @@
+{
+  "name" : "tidewaterunderground",
+  "friendlyName" : "tidewaterunderground",
+  
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [ 
+          [ 0.1111, "nautileech" ],     
+          [ 0.1111, "lilodon" ],
+          [ 0.1111, "crabcano" ],        
+          [ 0.1111, "miasmop" ],
+          [ 0.1111, "pulpin" ],     
+          [ 0.1111, "snaggler" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "crabcritter" ],
+          [ 0.3, "gullcritter" ],
+          [ 0.3, "savybirdcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ]
+  },
+  
+  "parallax" : "/parallax/underground/tidewaterunderground.parallax",
+
+  "mainBlock" : "marestone",
+  "subBlocks" : [ "rostone", "coral", "coral2", "mud", "clay", "rock12", "oystershell" ],
+  "ores" : "depth1",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/arid_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/arid_underground.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vastimmortalsuns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "undergroundPlaceables" : {
+    "items" : [ ]
+  },
+
+  "hueShiftOptions" : [0]
+}

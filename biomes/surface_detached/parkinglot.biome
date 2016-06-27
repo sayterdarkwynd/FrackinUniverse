@@ -1,0 +1,104 @@
+{
+  "name" : "parkinglot",
+  "friendlyName" : "Parking Lot",
+  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+
+    "mainBlock" : "asphalt",
+    "subBlocks" : [ "drysand", "rock15", "junktech" ],
+    "ores" : "surface",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "ash" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.55, "ruinslamppost" ], [0.35, "ruinsvehicle1" ], [0.35, "ruinsvehicle2" ],[0.35, "ruinsvehicle2a" ],[0.35, "ruinsvehicle2b" ],[0.35, "ruinsvehicle3" ],[0.35, "ruinsvehicle3a" ],[0.35, "ruinsvehicle3b" ],[0.35, "ruinsvehicle3c" ],[0.35, "ruinsvehicle4" ], [0.35, "ruinsvehicle5" ], [0.35, "mechruin" ] ],
+              "parameters" : { }
+            }
+          ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.5,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:randomEncounter",
+          "type" : "microdungeon",
+          "microdungeons" : [ "randomencounter" ]
+
+        }
+    ]
+  }
+}
+
+
+
+
+
+
+
+

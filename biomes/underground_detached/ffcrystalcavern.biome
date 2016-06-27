@@ -1,0 +1,158 @@
+{
+  "name" : "ffcrystalcavern",
+  "friendlyName" : "Crystal Cave",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [ 
+          [ 0.1111, "crustoise" ],     
+          [ 0.1111, "skimbus" ],
+          [ 0.1111, "narfin" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.1, "xenofly" ],
+          [ 0.1, "snowskater" ],
+          [ 0.1, "fusnowball" ],
+		  [ 0.1, "bouncercritter" ],
+		  [ 0.1, "reasonablecritter" ],
+		  [ 0.1, "snooglecritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ]
+  },
+
+  "mainBlock" : "purplecrystal",
+  "subBlocks" : [ "crystalblock", "obsidian" ],
+  "ores" : "ff_deepcrystalmoonOres",
+
+  "hueShiftOptions" : [0],
+  "parallax" : "/parallax/underground/crystalmoonunderground.parallax",
+
+  "sky" : {
+    "topColor" : [182, 204, 255],
+    "bottomColor" : [224, 239, 255],
+    "nightTopColor" : [0, 0, 30],
+    "nightBottomColor" : [0, 0, 0]
+  },
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vastimmortalsuns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "crystalgrass" ],
+    "grassModDensity" : 0.9,
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "crystalChest" ]
+      },
+
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 4,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "crystalcavebush1" ], [0.35, "crystalcavebush2" ], [0.35, "crystalcavebush3" ], [0.35, "crystalcavebush4" ], [0.35, "pillar1" ], [0.35, "pillar2" ], [0.35, "wormstatue" ], [0.35, "altar1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "crystalcavebush1" ], 
+              [0.35, "crystalcavebush2" ], 
+              [0.35, "crystalcavebush3" ],
+              [0.35, "crystalcavebush4" ],
+              [0.35, "crystalcavebush5" ], 
+              [0.35, "crystalcavebush6" ], 
+              [0.35, "crystalcavebush7" ],
+              [0.35, "crystalcavebush8" ],
+              [0.35, "crystalcavebush9" ],
+              [0.35, "crystalcavebush10" ], 
+              [0.35, "crystalcavebush11" ],
+              [0.35, "crystalcavebush12" ],
+              [0.35, "crystalcavebush13" ],
+              [0.35, "crystalcavebush14" ], 
+              [0.35, "crystalcavebush15" ],
+              [0.35, "crystalcavebush16" ],
+              [0.35, "crystalcavebush17" ],
+              [0.35, "crystallinebush1" ], 
+              [0.35, "crystallinebush2" ], 
+              [0.35, "crystallinebush3" ],
+              [0.35, "crystallinebush4" ],
+              [0.35, "crystallarge1" ], 
+              [0.35, "crystallarge2" ], 
+              [0.35, "crystallarge3" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 4.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "ceilingcrystalflower" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "crystals",
+              "baseHueShiftMax" : 225,
+              "modHueShiftMax" : 225
+            }
+          ]
+        }
+    ]
+  }
+}

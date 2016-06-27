@@ -1,0 +1,227 @@
+{
+  "name" : "rainbowforest",
+  "friendlyName" : "Rainbow Wood",
+  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+
+    "mainBlock" : "chromadirt",
+    "subBlocks" : [ "rainbowsand", "rock12" ],
+    "ores" : "surface",
+
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [ 
+          [ 0.1111, "iguarmor" ],     
+          [ 0.1111, "spookit" ],
+          [ 0.1111, "pteropod" ],
+          [ 0.1111, "nutmidge" ],        
+          [ 0.1111, "wisper" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [ 
+          [ 0.1311, "futoxicfly" ],     
+          [ 0.1311, "swarpion" ],
+          [ 0.1511, "furatthing" ],        
+          [ 0.2111, "seedspawn" ],
+	  [ 0.2411, "fumoontant" ]
+        ]
+      },	  
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.4, "forestbee" ],
+          [ 0.3, "normalbee" ],
+	  [ 0.3, "greentip" ],
+	  [ 0.3, "blueback" ],
+	  [ 0.3, "aurorabee" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+		  [ 0.3, "fireflyspawner" ],
+          [ 0.4, "birdcritter" ],
+          [ 0.3, "bunnycritter" ],
+          [ 0.3, "chevcritter" ],
+		  [ 0.3, "groopcritter" ],
+		  [ 0.3, "harecritter" ],
+		  [ 0.3, "hedgehogcritter" ],
+		  [ 0.3, "redbreastcritter" ],
+		  [ 0.3, "squirrelcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ]
+  },
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "rainbowgrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "rainbowChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "wildneonmelonseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 10,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 360,
+          "treeStemHueShiftMax" : 360,
+          "treeStemList" : [ "rainbowfleshy", "rainbowgrumpy", "rainbowpine", "rainbowslobby", "rainbowwood" ],
+          "treeFoliageList" : [ "rainbowleaves" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "flowerred" ], [0.35, "flowerblue" ], [0.35, "floweryellow" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+
+
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.5,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:randomEncounter",
+          "type" : "microdungeon",
+          "microdungeons" : [ "randomencounter" ]
+
+        },
+        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "colourfulbush1" ], [0.35, "colourfulbush2" ], [0.35, "colourfulbush3" ], [0.35, "colourfulbush4" ], [0.35, "colourfulbush5" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 4.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseSmall",
+
+          "type" : "grass",
+          "grasses" : [ "colourfulflower" ]
+        }
+    ]
+  }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,210 @@
+{
+  "name" : "cactiplace",
+  "friendlyName" : "Cactus Place",
+  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [ 
+          [ 0.111, "peblit" ],          
+          [ 0.111, "crustoise" ],
+          [ 0.111, "iguarmor" ],
+          [ 0.111, "batong" ],
+          [ 0.111, "voltip" ],
+          [ 0.111, "fennix" ],
+          [ 0.111, "ignome" ],
+          [ 0.111, "bobot" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "sunskipper" ],
+          [ 0.3, "goldbuck" ],
+          [ 0.3, "sandclown" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 1, "armadillocritter" ],
+          [ 1, "mousecritter" ],
+          [ 1, "groopcritter" ],
+          [ 1, "ravencritter" ],
+          [ 1, "wurmcritter" ]   
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "desert"
+    }
+  },
+    "mainBlock" : "cactiblock",
+    "subBlocks" : [ "sand2" ],
+    "ores" : "surface",
+
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "mossgrass2" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "thornplant" ],
+              [0.35, "wildblexplantseed" ],
+              [0.35, "wildvaranberryseed" ],
+              [0.35, "wildbrackentreeseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+ 
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 75,
+          "treeStemHueShiftMax" : 75,
+          "treeStemList" : [ "baobab" ],
+          "treeFoliageList" : [ "baobab" ]
+        },
+        {
+          "mode" : "floor",
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "vinegrass", "clawfern", "peppergrass", "mushroom", "root", "bell", "blueslime", "circles", "crisp" , "dandy", "fancy", "glowmushroom", "leafsy", "lillies", "shrooms" , "sprout", "sunflower", "thickgrass", "thickpetals" ]
+        },
+        {
+          "mode" : "ceiling",
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "ceilingflowers", "ceilinghandlike", "ceilingroots", "ceilingweeds", "ceilingweedy", "glowceiling", "ceilingmushroom"  ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+
+
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.5,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:randomEncounter",
+          "type" : "microdungeon",
+          "microdungeons" : [ "randomencounter" ]
+
+        },
+        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "testbush",
+              "baseHueShiftMax" : 50,
+              "modHueShiftMax" : 50
+            }
+          ]
+        }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

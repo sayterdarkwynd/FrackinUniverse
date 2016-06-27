@@ -1,0 +1,291 @@
+{
+  "name" : "taiga",
+  "friendlyName" : "Taiga",
+  "hueShiftOptions" : [-10, -5, 0, 5, 10],
+
+    "mainBlock" : "plantmatter",
+    "subBlocks" : [ "dirt", "mud" ],
+    "ores" : "surface",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [ 
+          [ 0.1111, "wisper" ],     
+          [ 0.1111, "lilodon" ],
+          [ 0.1111, "capricoat" ],        
+          [ 0.1111, "skimbus" ],
+          [ 0.1111, "pulpin" ],     
+          [ 0.1111, "scandroid" ],
+          [ 0.1111, "bobfae" ],
+          [ 0.1111, "bobot" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "aurorabee" ],
+          [ 0.3, "driftbell" ],
+          [ 0.3, "shardwing" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      },
+      {
+        "select" : 4,
+        "pool" : [
+          [ 1, "bunnycritter" ],
+          [ 1, "reasonablecritter" ],
+          [ 1, "crystaltortoisecritter" ],
+          [ 1, "crystalbirdcritter" ],
+          [ 1, "snowflakescritter" ],
+          [ 1, "snowymolecritter" ],
+          [ 1, "snorecritter" ],
+          [ 1, "hollowcritter" ],
+          [ 1, "poofincritter" ],
+          [ 1, "ciclesnailcritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "ice"
+    }
+  },
+  
+  "surfacePlaceables" : {
+    "grassMod" : [ "snow" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "wildalgaeseed" ],
+              [0.35, "wildtalonseedseed" ],
+              [0.35, "wildblizzberryseed" ],
+              [0.35, "wildighantseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+
+       {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+        {
+          "pool" : [ 
+          [0.15, "alienstick" ],
+          [0.15, "balliss" ],
+          [0.15, "bulbroot" ],
+          [0.15, "dasha" ],
+          [0.15, "flower2a" ],
+          [0.15, "flower2b" ],
+          [0.15, "parshflower" ],
+          [0.15, "pinkbloom" ],
+          [0.15, "waterpod" ],
+          [0.15, "jungleplant_ff1" ],
+          [0.15, "goldspiral1" ],
+          [0.15, "voltcorn" ],
+          [0.15, "voltcorn2" ],
+          [0.15, "spearleaf" ],
+          [0.15, "spearleaf2" ],
+          [0.15, "spearleaf3" ],
+          [0.15, "goldspiral3" ],
+          [0.15, "goldspiral4" ],
+          [0.15, "purpleflower1" ],
+          [0.15, "purpleflower2" ],
+          [0.15, "purpleflower3" ],
+          [0.15, "purpleflower4" ],
+          [0.15, "redcap2" ],
+          [0.15, "redcap3" ],
+          [0.15, "redcap" ],
+          [0.15, "smalltree1" ],
+          [0.15, "smalltree2" ],
+          [0.15, "smalltree3" ],
+          [0.15, "shrubby1" ],
+          [0.15, "shrubby2" ],
+          [0.15, "shrubby3" ],
+          [0.15, "orangebush" ],
+          [0.15, "bladeplant1" ],              
+          [0.15, "ferny1" ]
+          ],
+              "parameters" : { }
+            }
+          ]
+        },
+  
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "pineytree", "snowpinetree" ],
+          "treeFoliageList" : [ "pinefoliage", "snowpine" ]
+        },
+        
+        {
+          "mode" : "floor",
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "vinegrass", "clawfern", "peppergrass", "mushroom", "root", "bell", "blueslime", "circles", "crisp" , "dandy", "fancy", "glowmushroom", "leafsy", "lillies", "shrooms" , "sprout", "sunflower", "thickgrass", "thickpetals" ]
+        },
+        {
+          "mode" : "ceiling",
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "ceilingroots", "ceilingweeds", "glowceiling", "ceilingmushroom"  ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "happybush",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "alpinestone",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "testbush",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "snowbush",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "snowhappybush",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+
+
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.5,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:randomEncounter",
+          "type" : "microdungeon",
+          "microdungeons" : [ "randomencounter" ]
+
+        },
+        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures" ]
+        }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

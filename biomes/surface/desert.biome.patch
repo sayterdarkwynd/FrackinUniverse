@@ -1,0 +1,38 @@
+[
+
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{ 
+      
+        "select" : 4,
+        "pool" : [ 
+          [ 0.111, "sunskipper" ],          
+          [ 0.111, "goldbuck" ],
+          [ 0.111, "blackbeetle" ],
+          [ 0.111, "nocturnalbee" ],
+          [ 0.111, "aridbee" ]
+        ]
+      }
+},
+
+
+{"op":"add","path":"/subBlocks/-","value": "calichestone"},
+
+	{"op":"add","path":"/surfacePlaceables/items/-","value":{
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "wildbrackentreeseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        }
+	}
+
+]

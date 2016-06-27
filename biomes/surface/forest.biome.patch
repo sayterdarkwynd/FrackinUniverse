@@ -1,0 +1,81 @@
+[
+
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{ 
+      
+        "select" : 6,
+        "pool" : [ 
+          [ 0.111, "greentip" ],          
+          [ 0.111, "blueback" ],
+          [ 0.111, "forestbee" ],
+          [ 0.111, "nocturnalbee" ],
+          [ 0.111, "normalbee" ],
+          [ 0.111, "blackbeetle" ],
+          [ 0.111, "redwing" ]
+        ]
+      }
+},
+
+{"op":"add","path":"/surfacePlaceables/items/-","value":{
+			"mode" : "floor",
+			"priority" : 3.0,
+			"variants" : 1,
+			"distribution" : "/biomes/distributions.config:randomEncounter",
+
+			"type" : "microdungeon",
+			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
+		} 
+	},
+{"op":"add","path":"/surfacePlaceables/items/-","value":{
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "wildbrackentreeseed" ],
+              [0.35, "wildonionseed" ],
+              [0.35, "wildjillyrootseed" ],
+              [0.35, "wildhopsseed" ],
+              [0.35, "wildcottonseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        }
+	},
+	{"op":"add","path":"/surfacePlaceables/items/-","value":
+	  {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+            [0.35, "flowerred" ], 
+            [0.35, "flowerblue" ], 
+            [0.35, "floweryellow" ], 
+            [0.35, "flowerblack" ],
+            [0.35, "flowerbrown" ],
+            [0.35, "flowerorchid" ],
+            [0.35, "flowerorchid2" ],
+            [0.35, "flowerspring" ], 
+            [0.35, "flowergreen" ],
+            [0.35, "flowerorange" ],
+            [0.35, "flowerorchid3" ],
+            [0.35, "flowerpink" ],
+            [0.35, "flowerpurple" ],
+            [0.35, "flowerwhite" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+          }
+	}
+]

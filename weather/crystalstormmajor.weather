@@ -1,0 +1,95 @@
+{
+  "name" : "crystalstormmajor",
+  "icon" : "/interface/cockpit/weather/crystalstorm.png",
+
+  "particles" : [
+    {
+      "density" : 0.05,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/crystal/1.png",
+        "velocity" : [0, -2.5],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.005,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/crystal/2.png",
+        "velocity" : [0, -3.75],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.05,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/crystal/3.png",
+        "velocity" : [0, -1],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.005,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/crystal/4.png",
+        "velocity" : [0, -4],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "smallmeteor",
+      "parameters" : {
+        "power" : 12
+      },
+      "velocity" : [30, -30],
+      "ratePerX" : 0.0001,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.0
+    },
+    {
+      "projectile" : "icematerial",
+      "parameters" : {
+        "power" : 12
+      },
+      "velocity" : [20, -30],
+      "ratePerX" : 0.005,
+      "spawnAboveRegion" : 20,
+      "spawnHorizontalPad" : 10,
+      "windAffectAmount" : 0.5
+    },
+    {
+      "projectile" : "mistprimer",
+      "parameters" : {
+        "power" : 0
+      },
+      "velocity" : [0, -30],
+      "ratePerX" : 0.075,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    }
+  ],
+
+  "duration" : [50, 400],
+  "maximumWind" : 60.0,
+  "weatherNoises" : [ "/sfx/weather/blizzard.ogg" ]
+}

@@ -1,0 +1,25 @@
+[
+
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{ 
+      
+        "select" : 3,
+        "pool" : [ 
+          [ 0.111, "aurorabee" ],          
+          [ 0.111, "driftbell" ],
+          [ 0.111, "arcticbee" ]
+        ]
+      }
+},
+
+	{"op":"add","path":"/surfacePlaceables/items/-","value":{
+			"mode" : "floor",
+			"priority" : 3.0,
+			"variants" : 1,
+			"distribution" : "/biomes/distributions.config:randomEncounter",
+
+			"type" : "microdungeon",
+			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
+		} 
+	}
+]

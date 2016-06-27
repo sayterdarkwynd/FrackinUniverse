@@ -1,0 +1,185 @@
+{
+  "name" : "irradiatedunderground",
+  "friendlyName" : "Irradiated Cavern",
+
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [     
+          [ 0.1111, "fugiantbee" ],
+          [ 0.1111, "seedspawn2" ],        
+          [ 0.1111, "slime" ],
+          [ 0.1111, "pyromantle" ],     
+          [ 0.1111, "futoxicgolem" ],
+          [ 0.1111, "futoxicfly" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.4, "junglebee" ],
+          [ 0.3, "aridbee" ],
+          [ 0.3, "fireflyspawner" ],
+          [ 0.4, "junglebee" ],
+          [ 0.3, "aridbee" ],
+          [ 0.3, "fireflyspawner" ],
+          [ 0.4, "junglebee" ],
+          [ 0.3, "sackbagcritter" ],
+          [ 0.3, "hazmatcritter" ],
+          [ 0.4, "bowbirdcritter" ],
+          [ 0.3, "blipcritter" ],
+          [ 0.3, "toxiccrabcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+            "biooozeImmunity" : {
+              "baseValue" : 1.0
+            },
+            "poisonImmunity" : {
+              "baseValue" : 1.0
+            },
+            "ffextremeradiationImmunity" : {
+              "baseValue" : 1.0
+            },
+            "biomeradiationImmunity" : {
+              "baseValue" : 1.0
+            }
+        }
+      }
+    }
+  },
+
+    "mainBlock" : "irradiatedtile",
+    "subBlocks" : [ "irradiatedtile2", "irradiatedtile3" ],
+    "ores" : "ff_deepradioactiveOres",
+
+  "parallax" : "/parallax/underground/irradiatedunderground.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vastimmortalsuns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "crystalgrass" ],
+    "grassModDensity" : 0.9,
+    "items" : [
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:potsRare",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+              [0.50, "ceilingspike1" ],
+              [0.50, "ceilingspike2" ],
+              [0.50, "ceilingspike3" ],
+              [0.50, "ceilingspike4" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:potsRare",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+              [0.50, "groundspike1" ],
+              [0.50, "groundspike2" ],
+              [0.50, "groundspike3" ],
+              [0.50, "groundspike4" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 120,
+          "treeStemHueShiftMax" : 120,
+          "treeStemList" : [ "vine", "vine2", "vine3", "vine4" ],
+          "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
+        },
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:potsRare",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ [0.50, "ffbioshroom" ],[0.50, "ffbioshroom1" ],[0.50, "ffbioshroom2" ],[0.50, "ffbioshroom3" ] ],
+                 "parameters" : {  }
+               }
+             ]
+           },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "wildalgaeseed" ],
+              [0.35, "wilderithianalgaeseed" ],
+              [0.35, "wildblisterbushplantseed" ],
+              [0.35, "wildighantseed" ],
+              [0.35, "wildpasakavineseed" ],
+              [0.35, "wildslimeplantseed" ],
+              [0.35, "wildvextongueseed" ] 
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "viney" ]
+        }
+    ]
+  },
+    "hueShiftOptions" : [0]
+}

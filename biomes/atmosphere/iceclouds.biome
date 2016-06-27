@@ -1,0 +1,32 @@
+{
+  "name" : "iceclouds",
+  "friendlyName" : "Ice Clouds",
+
+  "mainBlock" : "ice",
+  "subBlocks" : [ "slush", "snow" ],
+  "ores" : "depth3",
+
+  "parallax" : "/parallax/atmosphere/atmosphere.parallax",
+
+  "hueShiftOptions" : [0],
+
+    "undergroundPlaceables" : {
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:rare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.1, "goldrocksmall" ], [0.1, "goldrock" ], [0.4, "platinumrocksmall" ], [0.2, "platinumrock" ], [0.14, "diamondrocksmall" ], [0.06, "diamondrock" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
+    ]
+  }
+
+}

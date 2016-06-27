@@ -1,0 +1,159 @@
+{
+  "name" : "corruptmoon",
+  "friendlyName" : "Corrupted Moon",
+
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [     
+          [ 0.1111, "fugiantbee" ],
+          [ 0.1111, "seedspawn2" ],        
+          [ 0.1111, "slime" ],
+          [ 0.1111, "pyromantle" ],     
+          [ 0.1111, "futoxicgolem" ],
+          [ 0.1111, "futoxicfly" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.4, "junglebee" ],
+          [ 0.3, "aridbee" ],
+          [ 0.3, "fireflyspawner" ],
+          [ 0.4, "junglebee" ],
+          [ 0.3, "aridbee" ],
+          [ 0.3, "fireflyspawner" ],
+          [ 0.4, "junglebee" ],
+          [ 0.3, "sackbagcritter" ],
+          [ 0.3, "hazmatcritter" ],
+          [ 0.4, "bowbirdcritter" ],
+          [ 0.3, "blipcritter" ],
+          [ 0.3, "toxiccrabcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ]
+  },
+  "mainBlock" : "corruptslime",
+  "subBlocks" : [ "darkstone", "corruptdirt" ],
+  "ores" : "ff_surfacecorruptionOres",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "tar" ],
+    "grassModDensity" : 0.4,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "hive" ],
+        "treeFoliageList" : [ "hive" ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 10,
+        "treeStemList" : [ "hivevine" ],
+        "treeFoliageList" : [ "" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "tarChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "corrupt" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "tar", "rockstacks" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "smashbones1" ], [0.35, "smashbones2" ], [0.35, "smashbones3" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "tarChest" ]
+      }
+    ]
+  }
+}

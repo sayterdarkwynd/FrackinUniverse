@@ -1,0 +1,209 @@
+{
+  "name" : "snowyforest",
+  "friendlyName" : "Winter Glade",
+  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [ 
+          [ 0.1111, "wisper" ],     
+          [ 0.1111, "lilodon" ],
+          [ 0.1111, "capricoat" ],        
+          [ 0.1111, "skimbus" ],
+          [ 0.1111, "pulpin" ],     
+          [ 0.1111, "scandroid" ],
+          [ 0.1111, "bobfae" ],
+          [ 0.1111, "bobot" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "frostfly" ],
+          [ 0.3, "icetip" ],
+          [ 0.3, "frostfleck" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 1, "bunnycritter" ],
+          [ 1, "reasonablecritter" ],
+          [ 1, "redbreastcritter" ],
+          [ 1, "yeticritter" ],
+          [ 1, "wintercritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "snow"
+    }
+  },
+    "mainBlock" : "dirt",
+    "subBlocks" : [ "snow", "cobblestone" ],
+    "ores" : "surface",
+
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "snow" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "snowman" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 50,
+          "treeStemHueShiftMax" : 50,
+          "treeStemList" : [ 
+          "snowbirch", 
+          "snowcocoa", 
+          "snowfleshy", 
+          "snowgrumpy", 
+          "snowmetal", 
+          "snowpine", 
+          "snowpinetree", 
+          "snowslimey", 
+          "snowsomething", 
+          "snowspikey", 
+          "snowtwisted", 
+          "snowwood" 
+          ],
+          "treeFoliageList" : [ 
+          "snowblank", 
+          "snowbrains", 
+          "snowbubbles", 
+          "snowcloudy",  
+          "snowfrumpy", 
+          "snowgreenleaves", 
+          "snowhanging", 
+          "snowleafy", 
+          "snowlotus", 
+          "snowpine", 
+          "snowredleaves", 
+          "snowscraggy"
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+
+        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "snowshrub1",
+              "baseHueShiftMax" : 50,
+              "modHueShiftMax" : 50
+            },
+            {
+              "name" : "snowbush",
+              "baseHueShiftMax" : 50,
+              "modHueShiftMax" : 50
+            },
+            {
+              "name" : "snowhappybush",
+              "baseHueShiftMax" : 50,
+              "modHueShiftMax" : 50
+            }
+          ]
+        }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

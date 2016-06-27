@@ -1,0 +1,207 @@
+{
+  "name" : "cloudforest",
+  "friendlyName" : "Cloud Forest",
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [ 
+          [ 1.0, "taroni" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.20, "bowbirdcritter" ],
+          [ 0.20, "sluggreencritter" ],
+          [ 0.20, "slugbluecritter" ],
+          [ 0.20, "slugcritter" ],
+          [ 0.20, "leafscabcritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "desert"
+    }
+  },
+  "hueShiftOptions" : [-225, -165, -70, -25, 0, 25, 70, 165, 225],
+
+    "mainBlock" : "cloudblock",
+    "subBlocks" : [ "raincloud" ],
+    "ores" : "surface",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "cloud" ],
+    "grassModDensity" : 0.5,
+
+    "items" : [
+         {
+           "mode" : "floor",
+           "priority" : 3.0,
+           "variants" : 1,
+           "distribution" : "/biomes/distributions.config:tiyDist",
+ 
+           "type" : "microdungeon",
+           "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+         },
+         {
+           "mode" : "floor",
+           "priority" : 1.0,
+           "variants" : 1,
+           "distribution" : "/biomes/distributions.config:potsRare",
+ 
+           "type" : "object",
+           "objectSets" : [
+             {
+               "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+               "parameters" : { }
+             }
+           ]
+         },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "wildcarrotseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildavesmingoseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildbeakseedseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildchiliseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildeggshootseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildfeathercrownseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildgrapesseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildpotatoseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildriceseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            },
+            {
+              "pool" : [ [1, "wildtomatoseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+         {
+           "mode" : "floor",
+           "priority" : 0.0,
+           "variants" : 1,
+           "distribution" : "/biomes/distributions.config:overgroundChests",
+ 
+           "type" : "treasureBox",
+           "treasureBoxSets" : [ "basicChest" ]
+         },
+         {
+           "mode" : "floor",
+           "priority" : 0.0,
+           "variants" : 1,
+           "distribution" : "/biomes/distributions.config:overgroundChests",
+ 
+           "type" : "treasureBox",
+           "treasureBoxSets" : [ "weaponChest" ]
+         },
+ 
+ 
+         {
+           "mode" : "floor",
+           "priority" : 1.0,
+           "variants" : 1,
+           "distribution" : "/biomes/distributions.config:overgroundChests",
+ 
+           "type" : "object",
+           "objectSets" : [
+             {
+               "pool" : [ [1, "statuspod" ] ],
+               "parameters" : { }
+             }
+           ]
+         },
+         {
+           "mode" : "floor",
+           "priority" : 3.0,
+           "variants" : 1,
+           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+ 
+           "type" : "microdungeon",
+           "microdungeons" : [ "terrainfeatures" ]
+         },
+         			
+         {
+           "mode" : "floor",
+           "priority" : 3.0,
+           "variants" : 1,
+           "distribution" : "/biomes/distributions.config:tiyDistPlatform",
+ 
+           "type" : "microdungeon",
+           "microdungeons" : [ "aridplatforming" ]
+         },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "cloudbush",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "grass",
+          "grasses" : [ "cloudflower", "cloudspin", "cloudspire" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "birch", "cocoa", "fleshy", "grumpy", "metal", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
+          "treeFoliageList" : [ "cloudy" ]
+        }
+    ]
+  }
+}
+
+
+
+
+

@@ -1,0 +1,207 @@
+{
+  "name" : "bloodgulch",
+  "friendlyName" : "Blood Gulch",
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [ 
+          [ 0.1111, "fubloodgolem" ],     
+          [ 0.1111, "headcrab" ],
+          [ 0.1111, "fleshleech" ],        
+          [ 0.1111, "batong" ],
+          [ 0.1111, "nautileech" ],     
+          [ 0.1111, "squeem" ],
+          [ 0.1111, "hemogoblin" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "fawnfly" ],
+          [ 0.3, "brightstripe" ],
+          [ 0.3, "bloodtoadcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "poisonImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  }, 
+  "hueShiftOptions" : [-165, -70, -25, 0, 25, 70, 165],
+
+    "mainBlock" : "bonemeal",
+    "subBlocks" : [ "mud" ],
+    "ores" : "ff_deepsurfaceshadowOres",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "bloodstonegrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 0,
+          "treeStemList" : [ "fleshstem", "alienstriped", "underwood" ],
+          "treeFoliageList" : [ "fleshfoliage", "aliencircle", "alienbigleaf", "scattered", "mossy" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 4.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseSmall",
+
+          "type" : "grass",
+          "grasses" : [ "ashlion" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "rockyshapes", "rods", "spikes" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:randomEncounter",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "randomencounter" ]
+        },
+        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistPlatform",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "greenplatforming" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "bloodstonespike" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "bloodstonerock" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "bloodstoneplant" ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "bloodstonesprout" ]
+        },    
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "bloodstoneplant1" ] ]
+            },
+            {
+              "pool" : [ [1, "bloodstoneplant2" ] ]
+            },
+            {
+              "pool" : [ [1, "bloodstoneplant3" ] ]
+            },
+            {
+              "pool" : [ [1, "bloodstoneplant4" ] ]
+            },
+            {
+              "pool" : [ [1, "bloodstoneplant5" ] ]
+            },
+            {
+              "pool" : [ [1, "anemone1" ] ]
+            },
+            {
+	      "pool" : [ [1, "heartroot" ] ]
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 220,
+          "treeStemHueShiftMax" : 220,
+          "treeStemList" : [ "bloodvine" ],
+          "treeFoliageList" : [ "nofoliagevine"  ]
+        }        
+    ]
+  }
+}
+
+
