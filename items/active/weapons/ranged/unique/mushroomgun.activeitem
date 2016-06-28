@@ -31,7 +31,9 @@
 
   "elementalType" : "poison",
 
-  "primaryAttack" : {
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.35,
     "baseDps" : 5.8,
     "energyUsage" : 18.0,
@@ -44,16 +46,6 @@
     "projectileParameters" : { 
       "speed" : 50,
       "knockback" : 20
-    }
-  },
-    "particleEmitters" : {
-      "muzzleFlash" : {
-        "particles" : [
-          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] },
-          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] },
-          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] }
-        ]
-      }
     },
   "stances" : {
     "idle" : {
@@ -74,7 +66,7 @@
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.25,
+      "duration" : 0.075,
       "armRotation" : 5,
       "weaponRotation" : 5,
       "twoHanded" : true,
@@ -82,9 +74,19 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
 
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/mushroomgrenadelauncher/mushroomgrenadelauncher.altability",
+  "altAbilityType" : "mushroomgrenadelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

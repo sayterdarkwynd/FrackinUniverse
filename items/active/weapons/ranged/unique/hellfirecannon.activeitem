@@ -40,7 +40,9 @@
 
   "elementalType" : "fire",
 
-  "primaryAttack" : {
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 2.37,
     "baseDps" : 7.5,
     "energyUsage" : 45.0,
@@ -53,9 +55,8 @@
     "projectileParameters" : { 
       "speed" : 52,
       "knockback" : 0
-    }
-  },
-
+    },
+    
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -83,9 +84,13 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
+  
   },
 
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/fuelairtrail/fuelairtrail.altability",
+
+
+  "altAbilityType" : "fuelairtrail",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

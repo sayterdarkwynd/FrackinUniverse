@@ -1,0 +1,77 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0, 0],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0.75, -0.125],
+          "image" : "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+        }
+      }
+    }},
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/eldercarbine.ogg" ]
+    },
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [-0.25, -0.5, -0.25, -0.5],
+        "particles" : [
+          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+
+  "ability" : {
+    "name" : "Omega Burst",
+    "type" : "grenadelauncher",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "impactgrenade" },
+      "fire" : { "projectileType" : "firecloudgrenade" },
+      "electric" : { "projectileType" : "elderblast1" },
+      "ice" : { "projectileType" : "icecloudgrenade" },
+      "poison" : { "projectileType" : "tentacleburst" }
+    },
+    "projectileParameters" : {},
+    "projectileCount" : 3,
+    "inaccuracy" : 0.12,
+    "baseDamage" : 2.45,
+    "energyUsage" : 70,
+    "fireTime" : 2.0,
+    "fireType" : "auto",
+
+    "firePositionPart" : "grenadelauncher",
+    "hidePrimaryMuzzleFlash" : true,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

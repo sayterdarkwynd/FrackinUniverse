@@ -33,7 +33,9 @@
 
   "elementalType" : "electric",
 
-  "primaryAttack" : {
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.025,
     "baseDps" : 9,
     "energyUsage" : 32.5,
@@ -47,39 +49,38 @@
       "knockback" : 1,
       "knockbackDirectional" : true,
       "lightColor" : [90,90,90]
-    }
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
   },
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : 0,
-      "weaponRotation" : 0,
-      "twoHanded" : true,
-
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "fire" : {
-      "duration" : 0,
-      "armRotation" : 4,
-      "weaponRotation" : 4,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : false
-    },
-    "cooldown" : {
-      "duration" : 0.023,
-      "armRotation" : 4,
-      "weaponRotation" : 4,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : false
-    }
-  },
-
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/vaporizerbomb/vaporizerbomb.altability",
+  "altAbilityType" : "vaporizerbomb",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

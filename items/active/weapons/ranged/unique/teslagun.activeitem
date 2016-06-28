@@ -32,7 +32,9 @@
 
   "elementalType" : "electric",
 
-  "primaryAttack" : {
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 1.0,
     "baseDps" : 6.95,
     "energyUsage" : 35.0,
@@ -45,9 +47,7 @@
     "projectileParameters" : { 
       "speed" : 72,
       "knockback" : 1.5
-    }
-  },
-
+    },
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -67,7 +67,7 @@
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.025,
+      "duration" : 0.075,
       "armRotation" : 5,
       "weaponRotation" : 5,
       "twoHanded" : true,
@@ -75,9 +75,10 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
 
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/shockburstshot/shockburstshot.altability",
+  "altAbilityType" : "shockburstshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

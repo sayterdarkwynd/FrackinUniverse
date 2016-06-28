@@ -32,7 +32,9 @@
 
   "elementalType" : "poison",
 
-  "primaryAttack" : {
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.72,
     "baseDps" : 8.0,
     "energyUsage" : 25.0,
@@ -45,9 +47,7 @@
     "projectileParameters" : { 
       "speed" : 90,
       "knockback" : 12.5
-    }
-  },
-
+    },
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -75,9 +75,10 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
 
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/markedshot/markedshot.altability",
+  "altAbilityType" : "markedshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

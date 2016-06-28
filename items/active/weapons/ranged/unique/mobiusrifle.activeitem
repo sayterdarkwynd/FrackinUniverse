@@ -32,7 +32,9 @@
 
   "elementalType" : "fire",
 
-  "primaryAttack" : {
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.11,
     "baseDps" : 8.5,
     "energyUsage" : 27,
@@ -46,9 +48,7 @@
     "projectileParameters" : { 
       "speed" : 60,
       "knockback" : 4
-    }
-  },
-
+    },
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -68,7 +68,7 @@
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.015,
+      "duration" : 0.075,
       "armRotation" : 5,
       "weaponRotation" : 5,
       "twoHanded" : true,
@@ -76,9 +76,10 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
 
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/mobiusaltshot.altability",
+  "altAbilityType" : "mobiusaltshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -32,7 +32,7 @@
 
   "elementalType" : "poison",
 
-  "primaryAttack" : {
+  "primaryAbility" : {
     "fireTime" : 0.57,
     "baseDps" : 7.5,
     "energyUsage" : 25.0,
@@ -45,39 +45,38 @@
     "projectileParameters" : { 
       "speed" : 92,
       "knockback" : 1.5
-    }
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
   },
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : 0,
-      "weaponRotation" : 0,
-      "twoHanded" : true,
-
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "fire" : {
-      "duration" : 0,
-      "armRotation" : 5,
-      "weaponRotation" : 5,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : false
-    },
-    "cooldown" : {
-      "duration" : 0.075,
-      "armRotation" : 5,
-      "weaponRotation" : 5,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : false
-    }
-  },
-
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/bouncingshot/bouncingshot.altability",
+  "altAbilityType" : "bouncingshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

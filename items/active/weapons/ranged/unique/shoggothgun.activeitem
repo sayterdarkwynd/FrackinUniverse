@@ -31,7 +31,9 @@
 
   "elementalType" : "poison",
 
-  "primaryAttack" : {
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
     "fireTime" : 0.35,
     "baseDps" : 8.42,
     "energyUsage" : 32.0,
@@ -53,14 +55,6 @@
 
     "wobbleRate" : 1.5,
     "wobbleIntensity" : 2.0
-    }
-  },
-    "particleEmitters" : {
-      "muzzleFlash" : {
-        "particles" : [
-          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] }
-        ]
-      }
     },
   "stances" : {
     "idle" : {
@@ -81,7 +75,7 @@
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.25,
+      "duration" : 0.075,
       "armRotation" : 5,
       "weaponRotation" : 5,
       "twoHanded" : true,
@@ -89,8 +83,16 @@
       "allowRotate" : false,
       "allowFlip" : false
     }
+  }
   },
-
-  "altAbilitySource" : "/items/active/weapons/ranged/altabilities/shoggothburst/shoggothburst.altability",
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fastrisingpoison1", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    
+  "altAbilityType" : "shoggothburst",
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

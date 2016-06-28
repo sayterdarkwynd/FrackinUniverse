@@ -1,0 +1,60 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0, 0, 0, 0],
+        "particles" : [
+          { "particle" : "largefirecloud1"},
+          { "particle" : "largefirecloud2"},
+          { "particle" : "largefirecloud3"},
+          { "particle" : "largefirecloud4"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/gravitongun.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Grav Bomb",
+    "type" : "piercingshot",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+
+    "projectileType" : "gravitonorb2",
+    "projectileParameters" : { 
+      "speed" : 50,
+      "knockback" : 80
+    },
+    "fireTime" : 1.0,
+    "baseDps" : 4.5,
+    // use baseDps and fireTime from primary fire
+
+    "energyUsage" : 80.0,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

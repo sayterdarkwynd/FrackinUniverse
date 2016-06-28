@@ -1,0 +1,61 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0, 0, 0, 0],
+        "particles" : [
+          { "particle" : "bouncyspark"},
+          { "particle" : "bouncyspark"},
+          { "particle" : "bouncyspark"},
+          { "particle" : "bouncyspark"},
+          { "particle" : "bouncyspark"},
+          { "particle" : "bouncyspark"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/projectiles/goo_spit1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Guck Spew",
+    "type" : "bouncingshot",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+
+    "projectileType" : "blistergunshot",
+    "projectileParameters" : {
+      "bounces" : 12,
+      "speed" : 100
+    },
+    
+    // use baseDps and fireTime from primary fire
+    
+    "energyUsage" : 32.0,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}
