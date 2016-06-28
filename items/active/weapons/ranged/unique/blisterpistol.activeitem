@@ -1,0 +1,82 @@
+{
+  "itemName" : "blisterpistol",
+  "price" : 500,
+  "inventoryIcon" : "blisterpistol.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "A gene-spliced living weapon.",
+  "shortdescription" : "Blister Pistol",
+  "level" : 4,
+  "category" : "uniqueWeapon",
+  "itemTags" : ["weapon","ranged","machinepistol"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "weaponType" : "Bioweapon",
+  "learnBlueprintsOnPickup" : [ "blistergun" ],
+  
+  
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "blisterpistol.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },      
+  
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [75, 0, 124] } }  
+  },
+
+  "baseOffset" : [0.7, 0.2],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.782,
+    "baseDps" : 2,
+    "energyUsage" : 5,
+    "fireType" : "auto",
+    "inaccuracy" : 0.001,
+    "projectileCount" : 1,
+    "projectileType" : "blisterpistolshot",
+    "projectileParameters" : {
+      "speed" : 32
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

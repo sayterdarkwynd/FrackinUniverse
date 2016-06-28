@@ -1,0 +1,62 @@
+{
+  "itemName" : "protobow",
+  "level" : 3,
+  "price" : 150,
+  "inventoryIcon" : "protobowicon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "tooltipKind" : "bow",
+  "weaponType" : "Bow",
+  "description" : "Protocyte, and other high quality materials. Awesome.",
+  "shortdescription" : "Protocite Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "protobow.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "lesserprotoarrow",
+    "powerProjectileType" : "protoarrow",
+    "projectileParameters" : {
+      "power" : 6.5
+    }
+  },
+
+  "altAbilityType" : "zenshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "protoarrow",
+    "projectileParameters" : {
+      "power" : 8.125
+    },
+    "splitDelay" : 0.2,
+    "splitAngle" : 2
+  },
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

@@ -1,0 +1,83 @@
+{
+  "itemName" : "furainbowgun",
+  "price" : 160,
+  "inventoryIcon" : "furainbowgun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+    "description" : "Shoots prismatic bursts that split and bounce.",
+    "shortdescription" : "Prismatic Cannon",
+  "level" : 4,
+  "tooltipKind" : "gun",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","rifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "furainbowgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/beam.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.68, -0.22],
+  "muzzleOffset" : [2.845, -0.425],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.2,
+    "baseDps" : 4.25,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "furainbow",
+    "projectileParameters" : { 
+      "speed" : 95,
+      "knockback" : 4
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 1,
+	      "weaponRotation" : 1,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0,
+	      "armRotation" : 1,
+	      "weaponRotation" : 1,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "altAbilityType" : "densiniumaltshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

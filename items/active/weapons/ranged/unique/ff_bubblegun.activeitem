@@ -1,0 +1,85 @@
+{
+  "itemName" : "ff_bubblegun",
+  "price" : 500,
+  "inventoryIcon" : "ff_bubblegunicon.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "A bubble gun! Of course, the bubbles are acid...so...yea.",
+  "shortdescription" : "Bubblegun",
+
+  "level" : 1,
+  "category" : "uniqueWeapon",
+  "itemTags" : ["weapon","ranged","tool"],
+    "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "classMultiplier" : 0.007,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "ff_bubblegun.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/swing_electric1.ogg" ]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [0, 60, 0]
+      }
+    }
+  },
+  "weaponType" : "Acid Weapon",
+  "baseOffset" : [0.75, 0.24],
+  "muzzleOffset" : [1.5, 0.225],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.09,
+    "baseDps" : 1.28,
+    "energyUsage" : 22,
+    "fireType" : "auto",
+    "inaccuracy" : 0.05,
+    "projectileCount" : 1,
+    "projectileType" : "friendlybubble",
+    "projectileParameters" : {
+      "speed" : 34
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
