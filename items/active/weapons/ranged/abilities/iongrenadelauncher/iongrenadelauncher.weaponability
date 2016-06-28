@@ -34,7 +34,8 @@
     "name" : "Grenade Launcher",
     "type" : "grenadelauncher",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    
+    "class" : "AltFireAttack",
+
     "elementalConfig" : {
       "physical" : { "projectileType" : "ocucannonshot" },
       "fire" : { "projectileType" : "firecloudgrenade" },
@@ -43,11 +44,11 @@
       "poison" : { "projectileType" : "poisoncloudgrenade" }
     },
     "projectileParameters" : {},
-    "projectileCount" : 3,
-    "inaccuracy" : 0.12,
-    "baseDamage" : 2.45,
-    "energyUsage" : 70,
-    "fireTime" : 1.0,
+    "projectileCount" : 1,
+    "inaccuracy" : 0,
+    "baseDamage" : 9,
+    "energyUsage" : 25,
+    "fireTime" : 2.0,
     "fireType" : "auto",
 
     "firePositionPart" : "grenadelauncher",
@@ -55,7 +56,7 @@
 
     "stances" : {
       "fire" : {
-        "duration" : 0.15,
+        "duration" : 0,
         "armRotation" : 5,
         "weaponRotation" : 5,
         "twoHanded" : true,
@@ -64,7 +65,7 @@
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.15,
+        "duration" : 0.11,
         "armRotation" : 5,
         "weaponRotation" : 5,
         "twoHanded" : true,
