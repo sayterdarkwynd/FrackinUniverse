@@ -1,0 +1,94 @@
+{
+  "itemName" : "goregun",
+  "price" : 160,
+  "inventoryIcon" : "goregun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Ew. Just...ew.",
+  "shortdescription" : "Gore Gun",
+  "level" : 4,
+  "tooltipKind" : "gun",
+  "weaponType" : "Gore Chucker",
+  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "goregun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/plasmamuzzle3pink.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/impact_flesh.ogg" ]
+    }
+  },
+  
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    
+  "baseOffset" : [0.4, 0.2],
+  "muzzleOffset" : [2.645, 0.225],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.08,
+    "baseDps" : 5,
+    "energyUsage" : 18.0,
+    "inaccuracy" : 0.02,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "bloodvomit",
+    "projectileParameters" : { 
+      "speed" : 50,
+      "knockback" : 20
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.015,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "altAbilityType" : "blisteraltshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
