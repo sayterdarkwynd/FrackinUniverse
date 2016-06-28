@@ -14,24 +14,22 @@
       }
     },
     "sounds" : {
-      "altFire" : [ "/sfx/gun/splat.ogg" ]
+       "altFire" : [ "/sfx/gun/splat.ogg" ]
     }
   },
 
-  "altAbility" : {
+  "ability" : {
     "name" : "Drone Swarm",
     "type" : "shoggothburst",
-    "scripts" : ["/items/active/weapons/ranged/altabilities/rocketburst/rocketburst.lua"],
+    "scripts" : ["/items/active/weapons/ranged/abilities/rocketburst/rocketburst.lua"],
+    "class" : "GuidedRocket",
 
     "projectileType" : "wormerang2",
-    "projectileParameters" : {
-      "speed" : 50,
-      "knockback" : 22    
-    },
-    "baseDps" : 8,
-    "energyUsage" : 35,
-    "fireTime" : 0.35,
-    "inaccuracy" : 0.3,
+    "projectileParameters" : {},
+    "baseDps" : 11.25,
+    "energyUsage" : 72,
+    "fireTime" : 0.25,
+    "inaccuracy" : 0.8,
 
     "fireType" : "burst",
     "burstCount" : 6,

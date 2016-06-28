@@ -8,7 +8,7 @@ function setupAltAbility(altAbilityConfig)
   function markedShot:init()
     self:reset()
 
-    activeItem.setScriptedAnimationParameter("markerImage", "/items/active/weapons/ranged/altabilities/mechgunmarkedshot/targetoverlay.png")
+    activeItem.setScriptedAnimationParameter("markerImage", "/items/active/weapons/ranged/abilities/mechgunmarkedshot/targetoverlay.png")
 
     self.cooldownTimer = self.fireTime
   end
