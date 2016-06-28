@@ -36,7 +36,6 @@
         }
       }
     },
-    "elementalType" : "electric",
     "particleEmitters" : {
       "burstShotSmoke" : {
         "active" : false,
@@ -58,7 +57,8 @@
   "ability" : {
     "name" : "Shock Blast",
     "type" : "steampunkburstshot",
-    "scripts" : ["/items/active/weapons/ranged/abilities/steampunkburstshot/steampunkburstshot.lua"],
+    "scripts" : ["/items/active/weapons/ranged/abilities/burstshot/burstshot.lua"],
+    "class" : "BurstShot",
 
     "energyUsage" : 50.0,
     "cooldownTime" : 1.0,
@@ -69,6 +69,7 @@
       "timeout" : 0.5,
       "timeoutGroup" : "alt"
     },
+
 
     "stances" : {
       "fire" : {
