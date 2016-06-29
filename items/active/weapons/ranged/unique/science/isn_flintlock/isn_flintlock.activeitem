@@ -1,0 +1,76 @@
+{
+  "itemName" : "isn_flintlock",
+  "price" : 500,
+  "inventoryIcon" : "isn_flintlock.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "An old-style sidearm with tons of stopping power.",
+  "shortdescription" : ".45 Revolver",
+  "level" : 2,
+  "category" : "uniqueWeapon",
+  "itemTags" : ["weapon","ranged","flamethrower"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_flintlock.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/revolver2.ogg" ] }  
+  },
+
+  "baseOffset" : [0.7, 0.34],
+  "muzzleOffset" : [1.5, 0.325],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.6,
+    "baseDps" : 15,
+    "energyUsage" : 35,
+    "fireType" : "auto",
+    "inaccuracy" : 0.03,
+    "projectileCount" : 1,
+    "projectileType" : "bullet-2",
+    "projectileParameters" : {
+      "speed" : 75
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,77 @@
+{
+  "itemName" : "isn_plasmapistol",
+  "price" : 500,
+  "inventoryIcon" : "isn_plasmapistol.png",
+    "maxStack" : 1,
+    "rarity" : "legendary",
+  "description" : "A nifty flame-throwing sidearm.",
+  "shortdescription" : "Incinerator",
+  "level" : 2,
+  "category" : "uniqueWeapon",
+  "itemTags" : ["weapon","ranged","machinePistol"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_plasmapistol.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_pistol1.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [160, 0, 120] } }  
+  },
+
+  "baseOffset" : [0.7, 0.34],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.415,
+    "baseDps" : 10,
+    "energyUsage" : 15,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "isn_plasmapistol",
+    "projectileParameters" : {
+      "speed" : 52
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

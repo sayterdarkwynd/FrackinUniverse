@@ -1,0 +1,89 @@
+{
+  "itemName" : "isn_microwaveray",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A weapon that fires heat waves which ignore armor.",
+  "shortdescription" : "Microwave Beam",
+  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "inventoryIcon" : "isn_microwaverayicon.png",
+  "animation" : "isn_microwaveray.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_microwaveray.png",
+    "middlefullbright" : "isn_microwaverayfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [188, 99, 0]
+    }},
+    "sounds" : {
+      "fire" : [ "/items/active/weapons/ranged/unique/science/microwavegun/isn_heatray.ogg" ]
+    }
+  },
+  "baseOffset" : [0.87, 0.35],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.1,
+    "baseDps" : 9.0,
+    "energyUsage" : 20,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : "isn_microwaveray",
+    "projectileParameters" : {
+      "knockback" : 20,
+      "speed" : 60
+    },
+    "projectileCount" : 1,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "irradiumshotgunshotpower",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

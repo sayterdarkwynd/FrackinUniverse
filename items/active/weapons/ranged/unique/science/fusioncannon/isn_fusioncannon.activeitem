@@ -1,0 +1,89 @@
+{
+  "itemName" : "isn_fusioncannon",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A very dangerous fusion weapon. Oh hey, it has a skull. Cute!",
+  "shortdescription" : "Death's Head",
+  "tooltipKind" : "gun",
+  "category" : "rocketLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "inventoryIcon" : "isn_fusioncannonicon.png",
+  "animation" : "isn_fusioncannon.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_fusioncannon.png",
+    "middlefullbright" : "isn_fusioncannonfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [10, 0, 50]
+    }},
+    "sounds" : {
+      "fire" : [ "/items/active/weapons/ranged/unique/science/fusioncannon/isn_magmacannon.wav" ]
+    }
+  },
+  "baseOffset" : [-0.35, 1.05],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 2.6,
+    "baseDps" : 22.0,
+    "energyUsage" : 20,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : "isn_fusioncannon",
+    "projectileParameters" : {
+      "knockback" : 20,
+      "speed" : 60
+    },
+    "projectileCount" : 1,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "irradiumshotgunshotpower",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
