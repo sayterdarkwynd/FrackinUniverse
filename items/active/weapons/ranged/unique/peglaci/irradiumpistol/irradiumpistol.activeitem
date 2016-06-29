@@ -1,25 +1,25 @@
 {
-  "itemName" : "fuenergymachinegun",
+  "itemName" : "irradiumpistol",
   "level" : 5,
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Violium spikes shred armor plating - stay on target to strip enemy protection.",
-  "shortdescription" : "Thresher",
+  "description" : "Volatile irradium rounds, when charged, are less than pleasant for foes. ",
+  "shortdescription" : "Irradium Pistol",
   "tooltipKind" : "gun",
-  "category" : "assaultRifle",
+  "category" : "machinePistol",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","machinePistol"],
 
   "inventoryIcon" : [
-    { "image" : "fuenergymachinegun.png:idle.1" }
+    { "image" : "irradiumpistol.png:idle.1" }
   ],
 
-  "animation" : "fuenergymachinegun.animation",
+  "animation" : "irradiumpistol.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "fuenergymachinegun.png",
-    "middlefullbright" : "fuenergymachinegunfullbright.png",
+    "middle" : "irradiumpistol.png",
+    "middlefullbright" : "irradiumpistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -27,34 +27,33 @@
     "lights" : { "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
-      "color" : [101, 52, 120]
+      "color" : [24, 0, 74]
     }},
     "sounds" : {
       "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
     }
   },
-  "baseOffset" : [1.0, 0.35],
-  "muzzleOffset" : [1.5, 0.125],
+  "baseOffset" : [0.87, 0.35],
+  "muzzleOffset" : [1.0, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "poison",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.13,
-    "baseDps" : 8.0,
+    "fireTime" : 0.3,
+    "baseDps" : 12.0,
     "energyUsage" : 20,
-    "inaccuracy" : 0.008,
+    "inaccuracy" : 0,
     "fireType" : "auto",
 
-    "projectileType" : "fuenergymachinegunshot",
+    "projectileType" : "irradiumpistolshot",
     "projectileParameters" : {
-      "knockback" : 40,
-      "speed" : 60,
-      "statusEffects" : [ "electrified" ]
+      "knockback" : 20,
+      "speed" : 60
     },
     "projectileCount" : 1,
 
@@ -88,7 +87,7 @@
     }
   },
 
-  "altAbilityType" : "shrapnelshard",
+  "altAbilityType" : "chargeshotgunbomb",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

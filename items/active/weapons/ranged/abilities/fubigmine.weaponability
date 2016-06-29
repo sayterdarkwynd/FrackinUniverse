@@ -2,25 +2,25 @@
   "animationParts" : { },
   "animationCustom" : {
     "sounds" : {
-      "altFire" : [ "/sfx/gun/fireworkgun_small1.ogg", "/sfx/gun/fireworkgun_small2.ogg", "/sfx/gun/fireworkgun_small3.ogg" ]
+      "altFire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
     }
   },
 
   "ability" : {
-    "name" : "Shrapnel",
-    "type" : "shrapnelshard",
+    "name" : "Mega Mine",
+    "type" : "fubigmine",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
 
-    "energyUsage" : 30,
-    "baseDps" : 1,
-    "fireTime" : 0.04,
-    "inaccuracy" : 0.15,
+    "energyUsage" : 50,
+    "baseDps" : 24,
+    "fireTime" : 3.0,
+    "inaccuracy" : 0.03,
     "fireType" : "auto",
 
-    "projectileType" : [ "crudebomb", "smallstone", "smallstone", "smallstone", "smallstone" ],
+    "projectileType" : [ "fuminelayershotpower" ],
     "projectileParameters" : {
-      "speed" : 150,
+      "speed" : 50,
       "knockback" : 0
     },
 

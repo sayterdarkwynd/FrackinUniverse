@@ -1,25 +1,25 @@
 {
-  "itemName" : "fuenergymachinegun",
+  "itemName" : "splittergun",
   "level" : 5,
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Violium spikes shred armor plating - stay on target to strip enemy protection.",
-  "shortdescription" : "Thresher",
+  "description" : "Cerulium rounds fracture and then fracture again to cover a wide area. Charge to launch in grenade form.",
+  "shortdescription" : "Fissure Splitrifle",
   "tooltipKind" : "gun",
-  "category" : "assaultRifle",
+  "category" : "machinePistol",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","machinePistol"],
 
   "inventoryIcon" : [
-    { "image" : "fuenergymachinegun.png:idle.1" }
+    { "image" : "splittergun.png:idle.1" }
   ],
 
-  "animation" : "fuenergymachinegun.animation",
+  "animation" : "splittergun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "fuenergymachinegun.png",
-    "middlefullbright" : "fuenergymachinegunfullbright.png",
+    "middle" : "splittergun.png",
+    "middlefullbright" : "splittergunfullbright.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -27,36 +27,35 @@
     "lights" : { "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
-      "color" : [101, 52, 120]
+      "color" : [10, 0, 50]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
     }
   },
-  "baseOffset" : [1.0, 0.35],
-  "muzzleOffset" : [1.5, 0.125],
+  "baseOffset" : [0.87, 0.35],
+  "muzzleOffset" : [1.0, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "poison",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.13,
-    "baseDps" : 8.0,
+    "fireTime" : 0.63,
+    "baseDps" : 12.0,
     "energyUsage" : 20,
-    "inaccuracy" : 0.008,
+    "inaccuracy" : 0,
     "fireType" : "auto",
 
-    "projectileType" : "fuenergymachinegunshot",
+    "projectileType" : "splittergunshot1",
     "projectileParameters" : {
-      "knockback" : 40,
-      "speed" : 60,
-      "statusEffects" : [ "electrified" ]
+      "knockback" : 20,
+      "speed" : 60
     },
-    "projectileCount" : 1,
+    "projectileCount" : 3,
 
     "stances" : {
       "idle" : {
@@ -69,17 +68,17 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "duration" : 0.15,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -88,7 +87,7 @@
     }
   },
 
-  "altAbilityType" : "shrapnelshard",
+  "altAbilityType" : "splittergunshotpower",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

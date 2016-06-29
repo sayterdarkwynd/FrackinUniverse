@@ -1,5 +1,5 @@
 {
-  "itemName" : "fuenergymachinegun",
+  "itemName" : "fuminelayer",
   "level" : 5,
   "price" : 1500,
   "maxStack" : 1,
@@ -12,14 +12,14 @@
   "itemTags" : ["weapon","ranged","assaultrifle"],
 
   "inventoryIcon" : [
-    { "image" : "fuenergymachinegun.png:idle.1" }
+    { "image" : "fuminelayer.png:idle.1" }
   ],
 
-  "animation" : "fuenergymachinegun.animation",
+  "animation" : "fuminelayer.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "fuenergymachinegun.png",
-    "middlefullbright" : "fuenergymachinegunfullbright.png",
+    "middle" : "fuminelayer.png",
+    "middlefullbright" : "fuminelayerfullbright.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -30,10 +30,10 @@
       "color" : [101, 52, 120]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
     }
   },
-  "baseOffset" : [1.0, 0.35],
+  "baseOffset" : [0.87, 0.35],
   "muzzleOffset" : [1.5, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
@@ -44,13 +44,13 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.13,
-    "baseDps" : 8.0,
+    "fireTime" : 0.7,
+    "baseDps" : 15.0,
     "energyUsage" : 20,
     "inaccuracy" : 0.008,
     "fireType" : "auto",
 
-    "projectileType" : "fuenergymachinegunshot",
+    "projectileType" : "fuminelayershot1",
     "projectileParameters" : {
       "knockback" : 40,
       "speed" : 60,
@@ -88,7 +88,7 @@
     }
   },
 
-  "altAbilityType" : "shrapnelshard",
+  "altAbilityType" : "fubigmine",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
