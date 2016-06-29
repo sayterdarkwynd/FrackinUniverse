@@ -1,0 +1,84 @@
+{
+  "itemName" : "swarmgun2",
+  "price" : 160,
+  "inventoryIcon" : "swarmgun2.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Fires swarming insects.",
+  "shortdescription" : "Swarm Gun",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Bio-Weapon",
+  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "swarmgun2.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/bulletmuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/hivebomb_impact.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.2, 0.35],
+  "muzzleOffset" : [1.25, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 2.5,
+    "baseDps" : 22,
+    "energyUsage" : 35.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fuhivebugx",
+    "projectileParameters" : { 
+      "speed" : 32,
+      "knockback" : 1
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 2,
+      "weaponRotation" : 2,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 2,
+      "weaponRotation" : 2,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "altAbilityType" : "lance",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
