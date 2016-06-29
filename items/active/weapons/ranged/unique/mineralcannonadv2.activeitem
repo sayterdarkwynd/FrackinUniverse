@@ -1,0 +1,83 @@
+{
+  "itemName" : "mineralcannonadv2",
+  "price" : 160,
+  "inventoryIcon" : "mineralcannonadv2.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "The ultimate particle weapon.",
+  "shortdescription" : "Hyperion Particle Cannon",
+  "level" : 6,
+  "tooltipKind" : "gun",
+  "weaponType" : "Rifle",
+  "itemTags" : ["weapon","ranged","rifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "mineralcannonadv2.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/plasmamuzzle3pink.png"
+  },
+  "animationCustom" : {
+    "sounds" : {"fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]},
+    "lights" : { "muzzleFlash" : {"color" : [0, 184, 0] } }     
+  },
+
+  "baseOffset" : [1.5, 0.2],
+  "muzzleOffset" : [1.145, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 2,
+    "baseDps" : 12,
+    "energyUsage" : 24.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 3,
+    "fireType" : "auto",
+
+    "projectileType" : "mineralcannonshotadv2",
+    "projectileParameters" : { 
+      "speed" : 60,
+      "knockback" : 20
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "altAbilityType" : "blisteraltshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

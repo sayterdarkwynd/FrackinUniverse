@@ -1,0 +1,85 @@
+{
+  "itemName" : "mineralpistol",
+  "price" : 160,
+  "inventoryIcon" : "mineralpistol.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+    "description" : "Eradicates matter. A trusty rapid-fire sidearm.",
+    "shortdescription" : "Particle Pistol",
+  "level" : 3,
+  "tooltipKind" : "gun",
+
+  "itemTags" : ["weapon","ranged","machinepistol"],
+  "twoHanded" : true,
+  "weaponType" : "Particle",
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "mineralpistol.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash_precursor.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/eldercarbine.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.8, 0.26],
+  "muzzleOffset" : [1.0, 0.225],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.25,
+    "baseDps" : 2,
+    "energyUsage" : 22.5,
+    "inaccuracy" : 0.03,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "mineralpistolshot2",
+    "projectileParameters" : { 
+      "speed" : 50,
+      "knockback" : 2
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "altAbilityType" : "elderpistolmarkedshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
