@@ -1,0 +1,77 @@
+{
+  "itemName" : "isn_flamethrower",
+  "price" : 500,
+  "inventoryIcon" : "isn_flamethrowericon.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "A nifty flame-throwing sidearm.",
+  "shortdescription" : "Incinerator",
+  "level" : 2,
+  "category" : "uniqueWeapon",
+  "itemTags" : ["weapon","ranged","flamethrower"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_flamethrower.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/items/active/weapons/ranged/unique/science/flamepistol/isn_flamethrower.wav" ] },
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+  },
+
+  "baseOffset" : [0.7, 0.34],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.05,
+    "baseDps" : 8,
+    "energyUsage" : 15,
+    "fireType" : "auto",
+    "inaccuracy" : 0.02,
+    "projectileCount" : 1,
+    "projectileType" : "isn_flamethrower_shot",
+    "projectileParameters" : {
+      "speed" : 32
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

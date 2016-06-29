@@ -1,0 +1,44 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/fireworkgun_small1.ogg", "/sfx/gun/fireworkgun_small2.ogg", "/sfx/gun/fireworkgun_small3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Shrapnel",
+    "type" : "shrapnelshard",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "energyUsage" : 30,
+    "baseDps" : 8,
+    "fireTime" : 0.03,
+    "inaccuracy" : 0.65,
+    "fireType" : "auto",
+
+    "projectileType" : [ "brokenglassslide" ],
+    "projectileParameters" : {
+      "speed" : 150,
+      "knockback" : 0
+    },
+
+    "usePrimaryFireSound" : false,
+    "useParticleEmitter" : false,
+    "stances" : {
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      }
+    }
+  }
+}

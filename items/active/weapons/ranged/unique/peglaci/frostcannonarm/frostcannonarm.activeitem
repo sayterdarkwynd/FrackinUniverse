@@ -1,0 +1,93 @@
+{
+  "itemName" : "frostcannonarm",
+  "price" : 160,
+  "inventoryIcon" : "frostcannonarmicon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Blasts a freezing mist - prolonged use will slow the targets movement while lowering their temperature.",
+  "shortdescription" : "Mistral Icethrower",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Ice Thrower",
+  "itemTags" : ["weapon","ranged","flamethrower"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "frostcannonarm.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/protomuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/icechucker.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.0, 0.120],
+  "muzzleOffset" : [1.645, 0.125],
+  
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1,
+    "baseDps" : 12.8,
+    "energyUsage" : 44.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "frostcannonarmshot",
+    "projectileParameters" : { 
+      "speed" : 30,
+      "knockback" : 10
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.25,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }    
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "iceshockwave", "offset" : [0.0, 0.0] },
+          { "particle" : "iceshockwave", "offset" : [0.0, 0.0] },
+          { "particle" : "iceshockwave", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+  "altAbilityType" : "freezecannon",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

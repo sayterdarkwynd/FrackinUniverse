@@ -1,0 +1,93 @@
+{
+  "itemName" : "splittergun",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Cerulium rounds fracture and then fracture again to cover a wide area. Charge to launch in grenade form.",
+  "shortdescription" : "Fissure Splitrifle",
+  "tooltipKind" : "gun",
+  "category" : "machinePistol",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","machinePistol"],
+
+  "inventoryIcon" : [
+    { "image" : "splittergun.png:idle.1" }
+  ],
+
+  "animation" : "splittergun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "splittergun.png",
+    "middlefullbright" : "splittergunfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [10, 0, 50]
+    }},
+    "sounds" : {
+      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+    }
+  },
+  "baseOffset" : [0.87, 0.35],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.63,
+    "baseDps" : 12.0,
+    "energyUsage" : 20,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : "splittergunshot1",
+    "projectileParameters" : {
+      "knockback" : 20,
+      "speed" : 60
+    },
+    "projectileCount" : 3,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "splittergunshotpower",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,89 @@
+{
+  "itemName" : "isn_irradiator",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Fires quantum-entangled soundwaves",
+  "shortdescription" : "Wave Gun",
+  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "inventoryIcon" : "isn_irradiatoricon.png",
+  "animation" : "isn_irradiator.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_irradiator.png",
+    "middlefullbright" : "isn_irradiatorfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [10, 0, 50]
+    }},
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+    }
+  },
+  "baseOffset" : [0.87, 0.35],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.6,
+    "baseDps" : 12.0,
+    "energyUsage" : 20,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : "isn_irradiator",
+    "projectileParameters" : {
+      "knockback" : 20,
+      "speed" : 60
+    },
+    "projectileCount" : 1,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "irradiumshotgunshotpower",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,77 @@
+{
+  "itemName" : "isn_napalmsprayer",
+  "price" : 500,
+  "inventoryIcon" : "isn_napalmsprayericon.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "A nasty flame weapon guaranteed to cook, or your money back.",
+  "shortdescription" : "Inferno Gun",
+  "level" : 2,
+  "category" : "uniqueWeapon",
+  "itemTags" : ["weapon","ranged","flamethrower"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_napalmsprayer.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/firearrow.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+  },
+
+  "baseOffset" : [1.4, 0.34],
+  "muzzleOffset" : [5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.2,
+    "baseDps" : 12,
+    "energyUsage" : 20,
+    "fireType" : "auto",
+    "inaccuracy" : 0.02,
+    "projectileCount" : 1,
+    "projectileType" : "isn_napalmsprayer",
+    "projectileParameters" : {
+      "speed" : 52
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
