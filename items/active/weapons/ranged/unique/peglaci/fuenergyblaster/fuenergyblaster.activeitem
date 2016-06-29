@@ -1,0 +1,94 @@
+{
+  "itemName" : "fuenergyblaster",
+  "level" : 4,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Explosive blobs of matter decrease enemy armor.",
+  "shortdescription" : "Energy Lobber",
+  "tooltipKind" : "gun",
+  "category" : "machinePistol",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","machinepistol"],
+
+  "inventoryIcon" : [
+    { "image" : "fuenergyblaster.png:idle.1" }
+  ],
+
+  "animation" : "fuenergyblaster.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fuenergyblaster.png",
+    "middlefullbright" : "fuenergyblasterfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [101, 52, 120]
+    }},
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+    }
+  },
+  "baseOffset" : [0.9, -0.35],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.2,
+    "baseDps" : 8.0,
+    "energyUsage" : 20,
+    "inaccuracy" : 0.008,
+    "fireType" : "auto",
+
+    "projectileType" : "lobbershot",
+    "projectileParameters" : {
+      "knockback" : 40,
+      "speed" : 100,
+      "statusEffects" : [ "electrified" ]
+    },
+    "projectileCount" : 1,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "markedshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

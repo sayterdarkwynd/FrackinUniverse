@@ -1,0 +1,42 @@
+{
+  "itemName" : "chargecannon",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Fires a heavy round to deal focused damage - charge to launch an explosive round.",
+  "shortdescription" : "Bomblet Launcher",
+  "tooltipKind" : "gun",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged"],
+  "level" : 1,
+  "weaponType" : "Grenade Launcher",
+  "inventoryIcon" : "chargecannonicon.png",
+
+  "animation" : "chargecannon.animation",
+  "animationParts" : {
+    "gun" : "chargecannon.png",
+    "gunfullbright" : "chargecannonfullbright.png"
+  },
+  
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+    }
+  },
+  
+  "muzzleOffset" : [1.4, 0.5],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "chargecannonfire",
+  "primaryAbility" : {
+    "fireTime" : 1,
+    "baseDps" : 11.8,
+    "energyUsage" : 34.0 //does not currently use energy. fix.
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,42 @@
+{
+  "itemName" : "chargepistol",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Fires a heavy round to deal focused damage - charge to launch an explosive round.",
+  "shortdescription" : "Glacial Pistol",
+  "tooltipKind" : "gun",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged"],
+  "level" : 1,
+  "weaponType" : "Ice Gun",
+  "inventoryIcon" : "chargepistolicon.png",
+
+  "animation" : "chargepistol.animation",
+  "animationParts" : {
+    "gun" : "chargepistol.png",
+    "gunfullbright" : "chargepistolfullbright.png"
+  },
+  
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+    }
+  },
+
+  "muzzleOffset" : [1.4, 0.5],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "chargepistolfire",
+  "primaryAbility" : {
+    "fireTime" : 0.25,
+    "baseDps" : 6.8,
+    "energyUsage" : 34.0 //does not currently use energy. fix.
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

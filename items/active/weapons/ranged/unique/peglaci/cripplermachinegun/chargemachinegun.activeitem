@@ -1,0 +1,85 @@
+{
+  "itemName" : "chargemachinegun",
+  "price" : 160,
+  "inventoryIcon" : "chargemachinegun.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Depleted uranium rounds take down enemy armor.",
+  "shortdescription" : "Crippler Machinegun",
+  "level" : 6,
+  "tooltipKind" : "gun",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","rifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "chargemachinegun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.2, 0.22],
+  "muzzleOffset" : [1, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.11,
+    "baseDps" : 9.95,
+    "energyUsage" : 30,
+    "inaccuracy" : 0.012,
+    "burstTime" : 0.075,
+    "burstCount" : 3,
+    "projectileCount" : 1,
+    "fireType" : "burst",
+
+    "projectileType" : "chargemachinegunshot",
+    "projectileParameters" : { 
+      "speed" : 60,
+      "knockback" : 4
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "altAbilityType" : "spray",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
