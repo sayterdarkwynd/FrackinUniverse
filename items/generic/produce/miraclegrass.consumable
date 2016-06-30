@@ -1,0 +1,26 @@
+{
+  "itemName" : "miraclegrass",
+  "rarity" : "Common",
+  "price" : 5,
+  "inventoryIcon" : "miraclegrass.png",
+  "description" : "Long term, weak regeneration.",
+  "shortdescription" : "Miracle Grass Clipping",
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+  "learnBlueprintsOnPickup" : [ "healingliquidgun" ],
+  "effects" : [ [
+      {
+        "effect" : "regenerationmiraclegrass",
+        "duration" : 120
+      }
+    ] ],
+  "blockingEffects" : [
+    "regenerationmiraclegrass"
+  ]
+}

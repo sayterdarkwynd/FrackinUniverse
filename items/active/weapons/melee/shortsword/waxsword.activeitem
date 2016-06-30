@@ -1,0 +1,36 @@
+{
+  "itemName" : "waxsword",
+  "price" : 150,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Useless",
+  "shortdescription" : "Wax Sword",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "waxsword.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "waxsword.png"
+  },
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.25,
+    "baseDps" : 2.5
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

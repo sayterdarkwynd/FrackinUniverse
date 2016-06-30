@@ -1,0 +1,27 @@
+{
+  "itemName" : "ighantbulb",
+  "rarity" : "Common",
+  "price" : 5,
+  "inventoryIcon" : "ighantbulb.png",
+  "description" : "Strange rubbery plant loaded with yum.",
+  "shortdescription" : "Ighant Bulb",
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+  "learnBlueprintsOnPickup" : [ "banehammer", "banespear" ],
+  "effects" : [ [
+      {
+        "effect" : "bouncy",
+        "amount" : 1.0,
+        "duration" : 20
+      }
+    ] ],
+  "blockingEffects" : [
+    "bouncy"
+  ]
+}

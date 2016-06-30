@@ -1,0 +1,22 @@
+{
+  "itemName" : "ghostmushroom",
+  "rarity" : "uncommon",
+  "price" : 10,
+  "inventoryIcon" : "ghostmushroom.png",
+  "description" : "Provides invisibility to the eater of this fungus.",
+  "shortdescription" : "Ghost Mushroom",
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+  "effects" : [ [
+      {
+        "effect" : "invisible",
+	      "duration" : 60
+      }
+    ] ]
+}

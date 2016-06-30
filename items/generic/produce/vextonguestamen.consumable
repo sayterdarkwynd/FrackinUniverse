@@ -1,0 +1,25 @@
+{
+  "itemName" : "vextonguestamen",
+  "rarity" : "Common",
+  "price" : 5,
+  "inventoryIcon" : "vextonguestamen.png",
+  "description" : "Increases healing rate.",
+  "shortdescription" : "Vextongue Stamen",
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+      "effects" : [ [
+      {
+        "effect" : "regeneration2",
+	      "duration" : 24
+      }
+    ] ],
+  "blockingEffects" : [
+    "regeneration2"
+  ]
+}

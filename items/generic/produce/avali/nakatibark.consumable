@@ -1,0 +1,30 @@
+{
+  "itemName" : "nakatibark",
+  "price" : 5,
+  "rarity" : "Common",
+  "inventoryIcon" : "avaliproduce2.png",
+  "description" : "The spicy bark of the Nakati plant. Increases defense and prevents Proto-Poison.",
+  "shortdescription" : "Nakati Bark",
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+      "effects" : [ [
+    "protoimmunity",
+    {
+        "effect" : "defense5",
+        "duration" : 45
+    },
+    {
+        "effect" : "wellfed",
+        "duration" : 75
+    }
+  ] ],
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}
