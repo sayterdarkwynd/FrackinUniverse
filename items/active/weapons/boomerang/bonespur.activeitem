@@ -1,32 +1,32 @@
 {
-  "itemName" : "shockarang",
-  "price" : 500,
+  "itemName" : "bonespur",
+  "price" : 3000,
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Zap your foes with super fun electricity!",
-  "shortdescription" : "Shock Boomerang",
+  "rarity" : "rare",
+  "category" : "boomerang",
+  "description" : "A cheery little maiming device. Keep out of children.",
+  "shortdescription" : "Bone Spur",
   "tooltipKind" : "base",
-  "weaponType" : "Boomerang",
   "twoHanded" : false,
   "itemTags" : ["weapon"],
 
-  "inventoryIcon" : "shockarang.png",
+  "inventoryIcon" : "bonespur.png",
   "animation" : "boomerang.animation",
   "animationParts" : {
-    "boomerang" : "shockarang.png"
+    "boomerang" : "bonespur.png"
   },
   "animationCustom" : { },
   "scripts" : ["boomerang.lua"],
   "fireOffset" : [1.25, 0.5],
   "fireAngleOffset" : 10,
-  
-  "projectileType" : "shockarang",
+
+  "projectileType" : "bonespur",
   "projectileParameters" : {
-    "power" : 3,
+    "power" : 6,
     "knockback" : 20,
 
     "ignoreTerrain" : false,
-    "controlForce" : 100,
+    "controlForce" : 165,
     "pickupDistance" : 1.0,
     "snapDistance" : 1.0
   },
@@ -35,27 +35,38 @@
   "stances" : {
     "idle" : {
       "armRotation" : -20,
-      "weaponRotation" : 0,
+      "animationState" : {
+        "weapon" : "visible"
+      },
       "allowRotate" : true,
       "allowFlip" : true
     },
     "windup" : {
       "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
       "armRotation" : 70,
-      "weaponRotation" : 0,
+      "animationState" : {
+        "weapon" : "visible"
+      },
       "allowRotate" : false,
       "allowFlip" : false
     },
     "throw" : {
       "armRotation" : 0,
-      "weaponRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
       "allowRotate" : true,
       "allowFlip" : true
     },
     "catch" : {
       "duration" : 0.2,
+      "transition" : "idle",
       "armRotation" : 60,
-      "weaponRotation" : 0,
+      "animationState" : {
+        "weapon" : "visible"
+      },
       "allowRotate" : false,
       "allowFlip" : true
     }
