@@ -1,0 +1,47 @@
+{
+  "name" : "protociteliquid",
+  "liquidId" : 44,
+  "description" : "An ocean of deadly lava.",
+	"tickDelta" : 2,
+	"color" : [232, 244, 102, 175],
+	"radiantLight" : [140, 120, 50],
+        "statusEffects" : [ "swimming", "energyregenfu20" ],
+        "itemDrop" : "vialproto",
+        "interactions" : [
+          {
+            "liquid" : 1,
+            "materialResult" : "slime"
+          },
+          {
+            "liquid" : 3,
+            "materialResult" : "slime2"
+          },
+          {
+            "liquid" : 8,
+            "materialResult" : "jellyblock"
+          },
+          {
+          //bioooze
+            "liquid" : 41,
+            "liquidResult" : 47
+          },    
+          {
+          //acid
+            "liquid" : 46,
+            "liquidResult" : 46
+          }, 
+          {
+          //irradium
+            "liquid" : 47,
+            "liquidResult" : 44
+          },   
+          {
+          //mercury
+            "liquid" : 48,
+            "liquidResult" : 44
+          }
+        ],
+        "texture" : "/liquids/protoliquidtex.png",
+        "bottomLightMix" : [232, 244, 102],
+        "textureMovementFactor" : 2.6      
+}
