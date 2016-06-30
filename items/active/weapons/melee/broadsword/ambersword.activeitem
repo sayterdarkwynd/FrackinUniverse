@@ -1,0 +1,36 @@
+{
+  "itemName" : "ambersword",
+  "price" : 1500,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Made from finely honed amber",
+  "shortdescription" : "Amber Blade",
+  "tooltipKind" : "sword",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword"],
+
+  "inventoryIcon" : "ambersword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ambersword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.83,
+    "baseDps" : 12.5
+  },
+
+  "altAbilityType" : "risingslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
