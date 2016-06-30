@@ -1,0 +1,78 @@
+{
+  "itemName" : "armcannonfire",
+  "price" : 500,
+  "inventoryIcon" : "armcannonfire.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Attaches to the forearm. Fires incendiary blasts.",
+  "shortdescription" : "^orange;Arm Cannon",
+  "level" : 2,
+  "category" : "uniqueWeapon",
+  "itemTags" : ["weapon","ranged","machinepistol"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "armcannonfire.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/items/active/weapons/ranged/unique/science/flamepistol/isn_flamethrower.wav" ] },
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+  },
+
+  "baseOffset" : [0.75, 0.34],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.07,
+    "baseDps" : 10,
+    "energyUsage" : 5,
+    "fireType" : "auto",
+    "inaccuracy" : 0.08,
+    "projectileCount" : 1,
+    "projectileType" : "isn_flamethrower_shot",
+    "projectileParameters" : {
+      "speed" : 65
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
