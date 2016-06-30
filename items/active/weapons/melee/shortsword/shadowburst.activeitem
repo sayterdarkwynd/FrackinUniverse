@@ -1,0 +1,36 @@
+{
+  "itemName" : "shadowburst",
+  "price" : 150,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A legendary weapon",
+  "shortdescription" : "Shadow Reaper",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "shadowburst.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "shadowburst.png"
+  },
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.83,
+    "baseDps" : 14.5
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

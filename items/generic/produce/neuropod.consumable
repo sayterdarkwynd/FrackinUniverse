@@ -1,0 +1,37 @@
+{
+  "itemName" : "neuropod",
+  "rarity" : "Common",
+  "price" : 5,
+  "inventoryIcon" : "neuropod.png",
+  "description" : "A powerhouse of effects.",
+  "shortdescription" : "Neuropod Bulb",
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+  "effects" : [ [
+      {
+        "effect" : "energyregenfu50",
+        "duration" : 35
+      },
+      {
+        "effect" : "runboost",
+        "amount" : 0.35,
+        "duration" : 35
+      },
+      {
+        "effect" : "lowgrav",
+        "amount" : 0.15,
+        "duration" : 35
+      },
+      {
+        "effect" : "jumpboost",
+        "amount" : 0.35,
+        "duration" : 35
+      }
+    ] ]
+}

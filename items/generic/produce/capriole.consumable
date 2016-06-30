@@ -1,0 +1,26 @@
+{
+  "itemName" : "capriole",
+  "rarity" : "Common",
+  "price" : 5,
+  "inventoryIcon" : "capriole.png",
+  "description" : "Muscle enhancing. Eat for jumpy goodness.",
+  "shortdescription" : "Capriole Flower",
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+  "effects" : [ [
+      {
+        "effect" : "jumpboost",
+        "amount" : 0.25,
+        "duration" : 25
+      }
+    ] ],
+  "blockingEffects" : [
+    "jumpboost"
+  ]
+}

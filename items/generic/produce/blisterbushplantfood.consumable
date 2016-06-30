@@ -1,0 +1,24 @@
+{
+  "itemName" : "blisterbushplantfood",
+  "rarity" : "Common",
+  "price" : 5,
+  "inventoryIcon" : "blisterbushplantfood.png",
+  "description" : "You can eat this if you're brave. It'll help your nightvision a great deal.",
+  "shortdescription" : "Blister Sack",
+    "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+  "effects" : [ [
+      {
+        "effect" : "glowpurple",
+        "amount" : "1.0",
+        "duration" : 120
+      }
+    ] ],
+  "learnBlueprintsOnPickup" : [ "blisterextract" ]
+}

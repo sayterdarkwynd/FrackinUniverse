@@ -1,0 +1,39 @@
+{
+  "itemName" : "coralsword2",
+  "price" : 1500,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "A sharp , jagged coral sword.",
+  "shortdescription" : "Coral Shortsword",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "coralsword2.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "coralsword2.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.73,
+    "baseDps" : 12.5
+  },
+
+  //"altAbilityType" : "risingslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+  
+  
+}

@@ -1,0 +1,34 @@
+{
+  "itemName" : "pirufrond",
+  "price" : 5,
+  "rarity" : "Common",
+  "inventoryIcon" : "avaliproduce3.png",
+  "description" : "A long, fibrous frond from a Piru barnacle. Increases swim speed and running speed.",
+  "shortdescription" : "Piru Frond",
+  "handPosition" : [7, 0],
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+      "effects" : [ [
+    {
+        "effect" : "swimboost",
+        "duration" : 60
+    },
+    {
+        "effect" : "runboost15",
+        "duration" : 60
+    },
+    {
+        "effect" : "wellfed",
+        "duration" : 75
+    }
+  ] ],
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

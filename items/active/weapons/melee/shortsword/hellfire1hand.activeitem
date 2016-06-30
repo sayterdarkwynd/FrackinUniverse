@@ -1,0 +1,36 @@
+{
+  "itemName" : "hellfire1hand",
+  "price" : 150,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Burns with volcanic rage",
+  "shortdescription" : "Hellfire Knife",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "hellfire1hand.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "hellfire1hand.png"
+  },
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.63,
+    "baseDps" : 12.5
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

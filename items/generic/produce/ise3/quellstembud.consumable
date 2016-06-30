@@ -1,0 +1,24 @@
+{
+  "itemName" : "quellstembud",
+  "rarity" : "Common",
+  "price" : 5,
+  "inventoryIcon" : "quellstembud.png",
+  "description" : "Total immunity to heat and fire.",
+  "shortdescription" : "Quellstem Bud",
+  "category" : "food",
+  "eventCategory" : "eventCrop",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.0,
+      "effects" : [ [
+      "fireimmunity","lavaimmunity",
+      {
+        "effect" : "ffextremeheatimmunity",
+        "amount" : 1.0,
+        "duration" : 60
+      }
+    ] ]
+}
