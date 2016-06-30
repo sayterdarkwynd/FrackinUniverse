@@ -49,8 +49,13 @@ function update(dt)
 end
 
 function applyTileEffects(groundMat)
+  -- sb.logInfo("groundMat: %s", groundMat)
   for i, effect in ipairs(groundMat[1]) do -- so multiple Ephemeral Effects possible from a tile
-    status.addEphemeralEffects{{effect = self.matCheck[groundMat][1][i]}}
+    -- sb.logInfo("looking at %s / %s", i, effect)
+	-- sb.logInfo("self.matCheck[groundMat[1]] = %s", self.matCheck[groundMat[1]])
+	-- effect = self.matCheck[groundMat[1][i]]
+	-- sb.logInfo("effect now %s", effect)
+    -- status.addEphemeralEffects({effect})
   end
   mcontroller.controlModifiers({
       groundMovementModifier = groundMat[2],
