@@ -1,0 +1,28 @@
+{
+  "name": "fuguard_elder",
+  "priority": 10,
+
+  "colonyTagCriteria": {
+    "light": 1,
+    "door": 1,
+    "combat" : 8,
+    "hideous" : 8
+  },
+
+  "tenants": [
+    {
+      "spawn": "npc",
+      "species": "apex",
+      "level": 1,
+      "type": "fuguardelder",
+      "overrides": {
+        "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent": {
+    "periodRange": [900.0, 1800.0],
+    "pool": "villagerGift"
+  }
+}
