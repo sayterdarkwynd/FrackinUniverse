@@ -1,0 +1,48 @@
+{
+  "objectName" : "wildwubstemseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "Provides slight energy restoration to those eating it.",
+  "shortdescription" : "Wubstem Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "soundEffect" : "/sfx/objects/wubstem.ogg",
+  "soundEffectRadius" : 15,  
+    "learnBlueprintsOnPickup" : [ "wubstemseed" ],
+  "inventoryIcon" : "wubstemseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "wubstemseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [100, 120]
+    },
+    {
+      "duration" : [100, 120]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "wubstemHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "wubstemseed", 1, { } ] ]
+  ]
+}

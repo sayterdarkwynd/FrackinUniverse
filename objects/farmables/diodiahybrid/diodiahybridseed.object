@@ -1,0 +1,43 @@
+{
+  "objectName" : "diodiahybridseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "farmable",
+  "description" : "Hybridized Diodia. Still coppery, but also energy regenerative-y.",
+  "shortdescription" : "Diodia Hybrid Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "inventoryIcon" : "diodiahybridseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "diodiahybridseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [100, 120]
+    },
+    {
+      "duration" : [100, 120]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "diodiahybridHarvest",
+      "resetToStage" : 2
+    }
+  ],
+  "learnBlueprintsOnPickup" : [ "batterystem", "greenleafseed" ],
+    "maxImmersion" : 0.125
+}

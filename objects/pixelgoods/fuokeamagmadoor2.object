@@ -1,0 +1,39 @@
+{
+  "objectName" : "fuokeamagmadoor2",
+  "colonyTags" : [ "science", "magma", "door" ],
+  "rarity" : "uncommon",
+  "category" : "door",
+  "price" : 95,
+  "race" : "human",
+  "description" : "Living Stone Door.",
+  "shortdescription" : "Living Stone Door",
+  "inventoryIcon" : "fuokeamagmadoor2icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fuokeamagmadoor2.png:closed",
+      "imagePosition" : [-20, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
+      "close" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "fuokeamagmadoor2.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inboundNodes" : [ [0, 4] ],
+  "outboundNodes" : [ [0, 0] ]
+}
+

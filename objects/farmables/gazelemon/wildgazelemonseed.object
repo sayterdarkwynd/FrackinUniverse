@@ -1,0 +1,44 @@
+{
+  "objectName" : "wildgazelemonseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "The iris is the best part. Helps eyesight in the dark.",
+  "shortdescription" : "Gazelemon Seed",
+  "objectType" : "farmable",
+    "learnBlueprintsOnPickup" : [ "blisterbushplantseed" ],
+  "inventoryIcon" : "gazelemonseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "gazelemonseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [60, 120]
+    },
+    {
+      "duration" : [60, 120]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "gazelemonHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "gazelemonseed", 1, { } ] ]
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "objectName" : "avalitechdoor",
+  "colonyTags" : [ "avali", "avalicamp", "door" ], 
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 64,
+  "printable" : false,
+  
+  "description" : "This looks like it could stop a railgun slug, but probably not a stone pickaxe.",
+  "shortdescription" : "Plated Door",
+  "race" : "avali",
+
+  "apexDescription" : "What classified technologies do they hide behind this I wonder",
+  "avianDescription" : "I can't tell if this is a wall or a door; where's the buttons?",
+  "floranDescription" : "A sturdy door isss no good, if the walls are made of canvas.",
+  "glitchDescription" : "Suspicion. I think this door is watching me...",
+  "humanDescription" : "Open sesame?",
+  "hylotlDescription" : "Could they have made this any more of an abomination of portal technology?",
+  "avaliDescription" : "The locking mechanism is accessed via augmented reality, non-avali can't normally open a door like this.",
+
+  "inventoryIcon" : "avalitechdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "avalitechdoor.png:default",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationParts" : {
+    "door" : "avalitechdoor.png"
+  },
+  "animationCustom":
+  {
+    "sounds":
+    {
+      "open": [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "close": [ "/sfx/objects/apexcooldoor_close.ogg" ]
+    }
+  },
+  "animationPosition" : [-8, 0],
+
+  "inboundNodes" : [ [-1, 4] ],
+  "outboundNodes" : [ [1, 0] ]
+}

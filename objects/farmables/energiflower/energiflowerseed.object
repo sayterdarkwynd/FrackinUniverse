@@ -1,0 +1,47 @@
+{
+  "objectName" : "energiflowerseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "An orb of glowing energy growing from a plant.",
+  "shortdescription" : "Energiflower Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "learnBlueprintsOnPickup" : [ "energiflowerseed" ],
+  "lightColor" : [100, 255, 185],
+  "flickerDistance" : 0.5,
+  "flickerStrength" : 0.1,
+  
+  "inventoryIcon" : "energiflowerseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "energiflowerseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1]],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "energiflowerHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125
+}

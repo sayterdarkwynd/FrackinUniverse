@@ -1,0 +1,64 @@
+{
+  "objectName" : "elderceilingspike4",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "category" : "trap",
+  "printable" : false,
+
+  "description" : "Watch out!",
+  "shortdescription" : "Sharp Spikes",
+  "race" : "generic",
+
+  "apexDescription" : "Sharp stone spikes.",
+  "avianDescription" : "The stone looks razor sharp.",
+  "floranDescription" : "Sssharp and pointy.",
+  "glitchDescription" : "Cautious. Sharp rock could penetrate Glitch shell.",
+  "humanDescription" : "I'd better not touch these.",
+  "hylotlDescription" : "I will gracefully avoid these.",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.1,
+    "emissionVariance" : 0.05,
+    "pixelOrigin" : [0, 0],
+
+    "particle" : {
+      "type" : "textured",
+      "image" : "/particles/hazard/hazardstat.png",
+      "size" : 1.0,
+      "color" : [75, 175, 75, 175],
+      "fade" : 0,
+      "destructionAction" : "shrink",
+      "destructionTime" : 7,
+      "initialVelocity" : [3, -4],
+      "finalVelocity" : [-3, -2],
+      "approach" : [4, 1],
+      "timeToLive" : 1,
+      "layer" : "middle"
+    }
+  },
+
+  "inventoryIcon" : "ceilingicon.png",
+  "orientations" : [
+    {
+      "image" : "elderceilingspike4.png:<color>",
+      "imagePosition" : [0, -8],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "touchDamage" : {
+    "poly" : [ [0.5, -0.5], [1.0, 1.0], [0.0, 1.0] ],
+    "damage" : 15,
+
+    "damageType" : "IgnoresDef",
+    "damageSourceKind" : "spear"
+  },
+
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "blackstoneshard" } ]
+}

@@ -1,0 +1,51 @@
+{
+  "objectName" : "deathblossomseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Rare",
+  "category" : "farmable",
+  "description" : "Deathblossoms are not what you'd call a good snack. They do kill quite well, though.",
+  "shortdescription" : "Deathblossom",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300, 
+
+  "inventoryIcon" : "deathblossomseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "deathblossomseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [240, 420]
+    },
+    {
+      "duration" : [240, 420]
+    },
+     {
+       "alts" : 3,
+       "duration" : [110, 130]
+    },
+    {
+      "alts" : 3,
+      "harvestPool" : "deathblossomHarvest",
+      "resetToStage" : 2
+    }
+  ],
+          "touchDamage" : {
+            "poly" : [ [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0] ],
+            "damage" : 8,
+
+            "damageType" : "IgnoresDef",
+            "damageSourceKind" : "poison"
+          },
+    "maxImmersion" : 0.125
+}

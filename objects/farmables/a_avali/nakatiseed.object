@@ -1,0 +1,42 @@
+{
+  "objectName" : "nakatiseed",
+  "colonyTags" : [ "nature" ], 
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "A biolumiscent ovoid, eventually this'll grow into a colony.",
+  "shortdescription" : "Nakati Ovoid",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "learnBlueprintsOnPickup" : [ "nakatiseed" ],
+  "lightColor" : [64, 128, 128],
+  "flickerDistance" : 0.05,
+  "flickerStrength" : 0.0,
+  
+  "inventoryIcon" : "avaliplant2icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "avaliplant2.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "stages" : [
+    {
+      "duration" : [240, 300]
+    },
+    {
+      "duration" : [240, 300]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "funakatiHarvest"
+    }
+  ]
+}

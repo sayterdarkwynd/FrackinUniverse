@@ -1,0 +1,52 @@
+{
+  "objectName" : "avalidarkdoor",
+  "colonyTags" : [ "avali", "avalicamp", "door" ], 
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 34,
+  "printable" : false,
+  
+  "description" : "A plain yet complex industrial door.",
+  "shortdescription" : "Interlocking Door",
+  "race" : "avali",
+
+  "apexDescription" : "Functional yet effective.",
+  "avianDescription" : "This looks a little ominous to me.",
+  "floranDescription" : "Dark metal door, what dark metal secretssss does it keep from floran?",
+  "glitchDescription" : "Bored. It is a door, how bored I must be examining this.",
+  "humanDescription" : "Why do the other races make their doors so needlessly complex?",
+  "hylotlDescription" : "...Apparently, yes. They can make even greater abominations.",
+  "avaliDescription" : "This door might look boring to the naked eye, but augmented reality will spice things up greatly.",
+
+  "inventoryIcon" : "avalidarkdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "avalidarkdoor.png:default",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationParts" : {
+    "door" : "avalidarkdoor.png"
+  },
+  "animationCustom":
+  {
+    "sounds":
+    {
+      "open": [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "close": [ "/sfx/objects/apexcooldoor_close.ogg" ]
+    }
+  },
+  "animationPosition" : [0, 0],
+
+  "inboundNodes" : [ [-1, 4] ],
+  "outboundNodes" : [ [1, 0] ]
+}

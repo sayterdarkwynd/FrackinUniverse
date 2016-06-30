@@ -1,0 +1,41 @@
+{
+  "objectName" : "wildpiruseed",
+  "colonyTags" : [ "nature" ], 
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "Small, barnacle-like colonies which grow long frond-like feeding filaments.",
+  "shortdescription" : "Piru Colony",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "learnBlueprintsOnPickup" : [ "piruseed" ],
+  "inventoryIcon" : "avaliplant3icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "avaliplant3.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [240, 300]
+    },
+    {
+      "duration" : [240, 300]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "fupiruHarvest"
+    }
+  ],
+  "breakDropOptions" : [
+    [ [ "piruseed", 1, { } ] ]
+  ]
+}

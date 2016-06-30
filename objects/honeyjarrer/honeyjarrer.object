@@ -1,0 +1,42 @@
+{
+  "objectName" : "honeyjarrer",
+  "colonyTags" : [ "bees" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "Connect it to an Industrial Centrifuge, and add empty jars!",
+  "shortdescription" : "^orange;Honey Jarring Machine^white;",
+  "subtitle" : "Fill your honey jars!",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 200,
+  "objectType" : "container",
+
+  "hydrophobic" : false,
+
+  "inventoryIcon" : "honeyjarrericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "honeyjarrer.png:<color>.<frame>",
+	  
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+	  
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "animation" : "honeyjarrer.animation",
+  "animationParts" : {
+    "jar" : "honeyjarrer.png"
+  },
+  "scripts" : [ "/objects/honeyjarrer/honeyjar.lua" ],
+  "scriptDelta" : 100,
+  "recipeGroup" : "honeyjarrer",
+  "openSounds" : [ "/sfx/objects/florancrate_open.ogg" ],
+  "slotCount" : 15,
+  "uiConfig" : "/objects/honeyjarrer/honeyjarrer.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600
+
+}

@@ -1,0 +1,37 @@
+{
+  "objectName" : "fu_solararrayscienceoutpost",
+  "rarity" : "Common",
+    "colonyTags" : [ "science" ],
+  "category" : "wire",
+  "price" : 2500,
+  "description" : "Uses sunlight to generate electricity. It can generate much more power than smaller units.",
+  "shortdescription" : "Solar Array",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "fu_solararrayscienceoutpost_icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_solararrayscienceoutpost_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_solararrayscienceoutpost.animation",
+  "animationParts" : {
+    "meter" : "fu_solararrayscienceoutpost_meter.png",
+    "base" : "fu_solararrayscienceoutpost_base.png"
+  },
+  "animationPosition" : [0, 0],
+  
+  "scripts" : [ "/objects/power/fu_solararrayscienceoutpost/fu_solararrayscienceoutpost.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 50,
+  
+  "outboundNodes" : [ [2, 1] ],
+  
+  "isn_powerSupplier" : true
+}

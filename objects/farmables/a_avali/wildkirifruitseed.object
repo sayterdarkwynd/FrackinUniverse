@@ -1,0 +1,40 @@
+{
+  "objectName" : "wildkirifruitseed",
+  "colonyTags" : [ "nature" ], 
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "The fruiting body of a subterranean slime mold. This one has already begun sporing.",
+  "shortdescription" : "Sporing Kiri Fruit",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "learnBlueprintsOnPickup" : [ "kirifruitseed" ],
+  "inventoryIcon" : "avaliplant1icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "avaliplant1.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [240, 300]
+    },
+    {
+      "duration" : [240, 300]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "fukiriHarvest"
+    }
+  ],
+  "breakDropOptions" : [
+    [ [ "kirifruitseed", 1, { } ] ]
+  ]
+}

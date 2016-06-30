@@ -1,0 +1,47 @@
+{
+  "objectName" : "campdoor",
+  "colonyTags" : [ "avali", "avalicamp", "door" ],
+  "rarity" : "Common",
+  
+  "category" : "door",
+  "price" : 8,
+  "printable" : false,
+  
+  "description" : "A canvas curtain.",
+  "shortdescription" : "Tent Door",
+  "race" : "generic",
+
+  "apexDescription" : "Despite appearances, I conjecture this door could stop a pyroclastic flow.",
+  "avianDescription" : "This reminds me of the banners grounded use.",
+  "floranDescription" : "Why issss there a towel draped acrossss the entrance?",
+  "glitchDescription" : "Observation. A robust canvas curtain.",
+  "humanDescription" : "Well, if nothing else it'll protect the modesty of those inside.",
+  "hylotlDescription" : "Decorative, but quite insufficient.",
+  "avaliDescription" : "It might look basic, but the nanocanvas weave can stop claws and fiery breath, perfect for keeping out wildlife.",
+
+  "inventoryIcon" : "campdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "campdoor.png:default",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationParts" : {
+    "door" : "campdoor.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "inboundNodes" : [ [-1, 4] ],
+  "outboundNodes" : [ [1, 0] ],
+  
+  "openSounds" : [ "/sfx/objects/bed_leave.ogg" ],
+  "closeSounds" : [ "/sfx/objects/bed_enter.ogg" ]
+}

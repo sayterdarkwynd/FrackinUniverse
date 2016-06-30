@@ -1,0 +1,42 @@
+{
+  "objectName" : "isn_battery_t2",
+  "rarity" : "Uncommon",
+    "colonyTags" : [ "science" ],
+  "category" : "wire",
+  "price" : 2500,
+  "description" : "A power storage unit. Stores up to 2500u of power and dispenses 5u when connected.",
+  "shortdescription" : "^cyan;2500u 5v Battery Unit^white;",
+  "race" : "generic",
+  "printable" : false,
+  "learnBlueprintsOnPickup" : [ "isn_battery_t3_ceru", "isn_atmoscondenser" ],
+
+  "inventoryIcon" : "isn_battery_t2_inv.png",
+  "orientations" : [
+    {
+      "dualImage" : "isn_battery_t2_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "isn_battery_t2.animation",
+  "animationParts" : {
+    "meter" : "isn_battery_t2_meter.png",
+    "base" : "isn_battery_t2_base.png"
+  },
+  "animationPosition" : [0, 0],
+  
+  "scripts" : [ "/objects/power/isn_battery.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 50,
+  
+  "outboundNodes" : [ [1, 3] ],
+  "inboundNodes" : [ [0, 1], [2, 1] ],
+  
+  "isn_powerSupplier" : true,
+  "isn_powerReciever" : true,
+  "isn_batteryCapacity" : 2500,
+  "isn_batteryVoltage" : 5
+}

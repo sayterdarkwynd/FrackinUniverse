@@ -1,0 +1,46 @@
+{
+  "objectName" : "wildgarpberryseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Rare",
+  "category" : "farmable",
+  "description" : "A strange radioactive stalk.",
+  "shortdescription" : "Garp Berry Plant",
+  "objectType" : "farmable",
+  "printable" : false, 
+  "lightColor" : [0, 66, 0],
+"learbBlueprintsOnPickup": [ "garpberryseed" ],
+  "inventoryIcon" : "garpberryseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "garpberryseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [220, 440]
+    },
+    {
+      "duration" : [220, 440]
+    },
+    {
+      "alts" : 5,
+      "duration" : [210, 430]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "garpberryHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.4,
+    "consumeSoilMoisture" : true
+  
+    
+}

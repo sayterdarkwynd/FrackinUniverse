@@ -1,0 +1,73 @@
+{
+  "objectName" : "wildhellfireplantseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Legendary",
+  "category" : "farmable",
+  "description" : "Lethal when thrown, Hellfire nodules can also be used to create weapons.",
+  "shortdescription" : "Hellfire Plant Seed",
+  "objectType" : "farmable",
+  "printable" : false, 
+    "inventoryIcon" : "hellfireplantseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "hellfireplantseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [-1, 0], [-1, 1], [-1, 2], [-1, 3], [-1, 4], [-1, 5], [-1, 6] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "particleEmitter" : {
+    "emissionRate" : 1.0,
+    "emissionVariance" : 0.5,
+    "particle" : {
+      "type" : "ember",
+      "position" : [0.5, 0.3],
+      "size" : 1.0,
+      "color" : [255, 100, 0, 255],
+      "light" : [150, 50, 50],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, 5.0],
+      "finalVelocity" : [0.0, 3.0],
+      "approach" : [0, 20],
+      "timeToLive" : 2,
+      "layer" : "middle"
+    },
+    "particleVariance" : {
+      "initialVelocity" : [0.5, 2.0],
+      "position" : [0.4, 0]
+    }
+  },
+  "stages" : [
+    {
+      "duration" : [300, 600]
+    },
+    {
+      "duration" : [300, 600]
+    },
+    {
+      "alts" : 3,
+      "duration" : [160, 330]
+    },
+    {
+      "alts" : 3,
+      "harvestPool" : "hellfireHarvest",
+      "resetToStage" : 2
+    }
+  ],
+          "touchDamage" : {
+            "poly" : [ [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0] ],
+            "damage" : 15,
+
+            "damageType" : "IgnoresDef",
+            "damageSourceKind" : "fire"
+          },
+    "maxImmersion" : 0.5,
+    "consumeSoilMoisture" : false,
+  "breakDropOptions" : [
+    [ [ "hellfireplantseed", 1, { } ] ]
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "objectName" : "wildfusnowberryseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "rare",
+  "category" : "farmable",
+  "description" : "Resistant to snow and ice.",
+  "shortdescription" : "Snowberry",
+  "objectType" : "farmable",
+    "printable" : false,
+  "learnBlueprintsOnPickup" : [ "blizzberryseed", "pekkitseed"],
+  "inventoryIcon" : "snowberryseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "snowberryseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [1, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ 
+	  [0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "fusnowberryseedHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "fusnowberryseed", 1, { } ] ]
+  ]  
+}

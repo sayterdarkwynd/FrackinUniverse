@@ -1,0 +1,49 @@
+{
+  "objectName" : "armory",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "rarity" : "uncommon",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/armory.config",
+    "filter" : [ "armory" ]
+  },
+  "printable" : false,
+  "description" : "This machine is a weapons and armor manufacturing interface. Use the Clothing Fabricator for fabric-based armors.",
+  "shortdescription" : "^orange;Armory^white;",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 600,
+  "learnBlueprintsOnPickup" : [ "moltencore" ],
+
+  "inventoryIcon" : "armoryicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "armory.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 3.2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

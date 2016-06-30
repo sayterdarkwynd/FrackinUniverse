@@ -1,0 +1,55 @@
+{
+  "objectName" : "fu_quantumgenerator",
+  "rarity" : "legendary",
+    "colonyTags" : [ "science" ],
+  "category" : "wire",
+  "objectType" : "container",
+  "price" : 2500,
+  "description" : "A hi-tech power solution. Unmatched power at 34u, but requires bio-fuels or high-end fuels to operate.",
+  "shortdescription" : "^cyan;Quantum Reactor^white;",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "fu_quantumgeneratoricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_quantumgenerator_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_quantumgenerator.animation",
+  "animationParts" : {
+    "screen" : "fu_quantumgenerator_screen.png",
+    "fans" : "fu_quantumgenerator_fans.png",
+    "base" : "fu_quantumgenerator_base.png"
+  },
+  "animationPosition" : [0, 0],
+  "soundEffect" : "/objects/power/fu_quantumgenerator/fu_quantumgenerator.ogg",
+  
+  "slotCount" : 1,
+  "uiConfig" : "/objects/power/fu_quantumgenerator/fu_quantumgenerator.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  
+  "scripts" : [ "/objects/power/fu_quantumgenerator/fu_quantumgenerator.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 70,
+  
+  "inboundNodes" : [ [2, 4] ],
+  "outboundNodes" : [ [2, 2] ],
+  
+  "isn_powerSupplier" : true,
+  "acceptablefuel" : {
+    "biofuelcannister" : 10,
+    "biofuelcannisteradv" : 20,
+    "energiflower" : 30,
+    "vialproto" : 40,
+    "biofuelcannistermax" : 50,
+    "solariumstar" : 60,
+    "liquidelderfluid" : 100
+  }
+}
