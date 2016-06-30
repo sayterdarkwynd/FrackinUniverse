@@ -1,0 +1,78 @@
+{
+  "itemName" : "armcannonshock",
+  "price" : 500,
+  "inventoryIcon" : "armcannonshock.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Attaches to the forearm. Fires electric blasts.",
+  "shortdescription" : "^#ce64de;Arm Cannon",
+  "level" : 2,
+  "category" : "uniqueWeapon",
+  "itemTags" : ["weapon","ranged","machinepistol"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "armcannonshock.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_mp2.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+  },
+
+  "baseOffset" : [0.75, 0.34],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.75,
+    "baseDps" : 10,
+    "energyUsage" : 5,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "ffteslasmall",
+    "projectileParameters" : {
+      "speed" : 65
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

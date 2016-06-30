@@ -1,0 +1,94 @@
+{
+  "itemName" : "hailstrike",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A truly deadly weapon. Made of 100% awesome.",
+  "shortdescription" : "^#bb39ce;Hail Strike",
+  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle"],
+
+  "inventoryIcon" : [
+    { "image" : "hailstrike.png:idle.1" }
+  ],
+
+  "animation" : "hailstrike.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "hailstrike.png",
+    "middlefullbright" : "hailstrikefullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [200, 12, 40]
+    }},
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+    }
+  },
+  "baseOffset" : [0, -0.55],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.13,
+    "baseDps" : 12.0,
+    "energyUsage" : 24,
+    "inaccuracy" : 0.008,
+    "fireType" : "auto",
+
+    "projectileType" : "furavager",
+    "projectileParameters" : {
+      "knockback" : 40,
+      "speed" : 60,
+      "statusEffects" : [ "electrified" ]
+    },
+    "projectileCount" : 1,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.01,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "shrapnelshard",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
