@@ -1,0 +1,9197 @@
+{
+  "metadata": {
+    "name": "glitchfarm",
+    "species": "dummy",
+    "rules": [],
+    "maxRadius": 2000,
+    "maxParts": 100,
+    "anchor": [
+      "glitchfarm"
+    ]
+  },
+  "tiles": [
+    {
+      "value": [
+        150,
+        255,
+        0,
+        255
+      ],
+      "comment": "wizard merchant",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "wizardmerchant",
+            "parameters": {
+              "persistent": true
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        150,
+        233,
+        0,
+        255
+      ],
+      "comment": "castle lord",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "castlelord",
+            "parameters": {
+              "persistent": true
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        220,
+        255
+      ],
+      "comment": "magic pinkppp, a no-op value",
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "comment": "no comment defined",
+      "brush": [
+        [
+          "clear"
+        ]
+      ],
+      "rules": [
+        [
+          "worldGenMustContainAirBackground"
+        ],
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "comment": "no comment defined",
+      "brush": [
+        [
+          "surface"
+        ]
+      ],
+      "rules": [
+        [
+          "worldGenMustContainSolidBackground"
+        ],
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        38,
+        255,
+        255
+      ],
+      "comment": "bright blue, room coupler",
+      "connector": true,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        255,
+        186,
+        255
+      ],
+      "comment": "bright aqua, alternate coupler",
+      "connector": true,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        168,
+        255,
+        0,
+        255
+      ],
+      "comment": "bright green, alternate coupler #2",
+      "connector": true,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        168,
+        0,
+        255
+      ],
+      "comment": "bright orange, alternate coupler #3",
+      "connector": true,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        32,
+        32,
+        32,
+        255
+      ],
+      "comment": "Empty hole",
+      "brush": [
+        [
+          "clear"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        48,
+        48,
+        48,
+        255
+      ],
+      "comment": "Empty hole overwritable",
+      "brush": [
+        [
+          "clear"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        128,
+        128,
+        128,
+        255
+      ],
+      "comment": "Biome tile brush",
+      "brush": [
+        [
+          "surface"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        100,
+        100,
+        100,
+        255
+      ],
+      "comment": "Biome tile brush non-overwritable",
+      "brush": [
+        [
+          "surface"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        200,
+        200,
+        200,
+        255
+      ],
+      "comment": "Biome tile background brush",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "surfacebackground"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        54,
+        63,
+        105,
+        255
+      ],
+      "comment": "water pool foreground",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "liquid", "water"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        150,
+        255,
+        0,
+        255
+      ],
+      "comment": "acid pool foreground",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "liquid", "sulphuricacid"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        232,
+        178,
+        255
+      ],
+      "comment": "background main biome block",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "surfacebackground",
+          {
+            "variant": 0
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        222,
+        178,
+        255
+      ],
+      "comment": "overwritable background main biome block",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "surfacebackground",
+          {
+            "variant": 0
+          }
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        186,
+        143,
+        255
+      ],
+      "comment": "foreground main biome block",
+      "brush": [
+        [
+          "surface",
+          {
+            "variant": 0
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        176,
+        143,
+        255
+      ],
+      "comment": "overwritable foreground main biome block",
+      "brush": [
+        [
+          "surface",
+          {
+            "variant": 0
+          }
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        178,
+        232,
+        255,
+        255
+      ],
+      "comment": "background sub biome block #1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "surfacebackground",
+          {
+            "variant": 1
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        178,
+        222,
+        255,
+        255
+      ],
+      "comment": "overwritable background sub biome block #1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "surfacebackground",
+          {
+            "variant": 1
+          }
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        143,
+        186,
+        204,
+        255
+      ],
+      "comment": "foreground sub biome block #1",
+      "brush": [
+        [
+          "surface",
+          {
+            "variant": 1
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        143,
+        176,
+        204,
+        255
+      ],
+      "comment": "overwritable foreground sub biome block #1",
+      "brush": [
+        [
+          "surface",
+          {
+            "variant": 1
+          }
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        222,
+        255,
+        178,
+        255
+      ],
+      "comment": "background sub biome block #2",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "surfacebackground",
+          {
+            "variant": 2
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        222,
+        245,
+        178,
+        255
+      ],
+      "comment": "overwritable background sub biome block #2",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "surfacebackground",
+          {
+            "variant": 2
+          }
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        177,
+        204,
+        143,
+        255
+      ],
+      "comment": "foreground sub biome block #2",
+      "brush": [
+        [
+          "surface",
+          {
+            "variant": 2
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        177,
+        194,
+        143,
+        255
+      ],
+      "comment": "overwritable foreground sub biome block #2",
+      "brush": [
+        [
+          "surface",
+          {
+            "variant": 2
+          }
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "comment": "wire #1 Red",
+      "brush": [
+        [
+          "wire",
+          {
+            "group": "group1",
+            "local": true
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "comment": "wire #2 Green",
+      "brush": [
+        [
+          "wire",
+          {
+            "group": "group2",
+            "local": true
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "comment": "wire #3 Blue",
+      "brush": [
+        [
+          "wire",
+          {
+            "group": "group3",
+            "local": true
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        77,
+        0,
+        255
+      ],
+      "comment": "biome tree",
+      "brush": [
+        [
+          "biometree"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        34,
+        102,
+        0,
+        255
+      ],
+      "comment": "biome flora",
+      "brush": [
+        [
+          "biomeitems"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        55,
+        140,
+        140,
+        255
+      ],
+      "comment": "background castlewalls1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "castlewalls1"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        40,
+        102,
+        102,
+        255
+      ],
+      "comment": "background castlewalls1 overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "castlewalls1"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        85,
+        217,
+        217,
+        255
+      ],
+      "comment": "foreground castlewalls1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "castlewalls1"
+        ],
+        [
+          "front",
+          "castlewalls1"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        70,
+        179,
+        179,
+        255
+      ],
+      "comment": "foreground castlewalls1 overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "castlewalls1"
+        ],
+        [
+          "front",
+          "castlewalls1"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        55,
+        63,
+        140,
+        255
+      ],
+      "comment": "background castlewalls2",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "castlewalls2"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        40,
+        46,
+        102,
+        255
+      ],
+      "comment": "background castlewalls2 overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "castlewalls2"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        85,
+        98,
+        217,
+        255
+      ],
+      "comment": "foreground castlewalls2",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "castlewalls2"
+        ],
+        [
+          "front",
+          "castlewalls2"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        70,
+        81,
+        179,
+        255
+      ],
+      "comment": "foreground castlewalls2 overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "castlewalls2"
+        ],
+        [
+          "front",
+          "castlewalls2"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        140,
+        55,
+        55,
+        255
+      ],
+      "comment": "background rooftiles",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "rooftiles"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        102,
+        40,
+        40,
+        255
+      ],
+      "comment": "background rooftiles overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "rooftiles"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        85,
+        85,
+        255
+      ],
+      "comment": "foreground rooftiles",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "rooftiles"
+        ],
+        [
+          "front",
+          "rooftiles"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        70,
+        70,
+        255
+      ],
+      "comment": "foreground rooftiles overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "rooftiles"
+        ],
+        [
+          "front",
+          "rooftiles"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        140,
+        65,
+        255
+      ],
+      "comment": "background darkwood",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "darkwood"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        184,
+        85,
+        255
+      ],
+      "comment": "foreground darkwood",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "darkwood"
+        ],
+        [
+          "front",
+          "darkwood"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        98,
+        166,
+        65,
+        255
+      ],
+      "comment": "background bookpiles",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "bookpiles"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        129,
+        217,
+        85,
+        255
+      ],
+      "comment": "foreground bookpiles",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "bookpiles"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        117,
+        65,
+        166,
+        255
+      ],
+      "comment": "background bars",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "bars"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        153,
+        85,
+        217,
+        255
+      ],
+      "comment": "foreground bars",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "bars"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        89,
+        65,
+        255
+      ],
+      "comment": "background crosshatch",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "crosshatch"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        115,
+        85,
+        255
+      ],
+      "comment": "foreground crosshatch",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "crosshatch"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        147,
+        166,
+        65,
+        255
+      ],
+      "comment": "background fadedblocks",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "fadedblocks"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        193,
+        217,
+        85,
+        255
+      ],
+      "comment": "foreground fadedblocks",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "fadedblocks"
+        ],
+        [
+          "front",
+          "fadedblocks"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        110,
+        65,
+        166,
+        255
+      ],
+      "comment": "background woodenwindow1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "woodenwindow1"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        144,
+        85,
+        217,
+        255
+      ],
+      "comment": "foreground woodenwindow1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "woodenwindow1"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        54,
+        31,
+        255
+      ],
+      "comment": "background thatch",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "thatch"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        70,
+        41,
+        255
+      ],
+      "comment": "foreground thatch",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "thatch"
+        ],
+        [
+          "front",
+          "thatch"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        115,
+        65,
+        255
+      ],
+      "comment": "background fence",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "fence"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        151,
+        85,
+        255
+      ],
+      "comment": "foreground fence",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "fence"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        148,
+        98,
+        255
+      ],
+      "comment": "background dirt",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "dirt"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        193,
+        128,
+        255
+      ],
+      "comment": "tilled foreground dirt",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "dirt"
+        ],
+        [
+          "front",
+          "dirt",
+          "tilled"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        115,
+        99,
+        48,
+        255
+      ],
+      "comment": "background fullwood1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "fullwood1"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        143,
+        70,
+        255
+      ],
+      "comment": "foreground fullwood1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "fullwood1"
+        ],
+        [
+          "front",
+          "fullwood1"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        65,
+        117,
+        255
+      ],
+      "comment": "background sewage",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewage"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        128,
+        50,
+        50,
+        255
+      ],
+      "comment": "background sewage overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewage"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        85,
+        153,
+        255
+      ],
+      "comment": "foreground sewage",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewage"
+        ],
+        [
+          "front",
+          "sewage"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        70,
+        126,
+        255
+      ],
+      "comment": "foreground sewage overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewage"
+        ],
+        [
+          "front",
+          "sewage"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        80,
+        144,
+        255
+      ],
+      "comment": "foreground only sewage",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "sewage"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        155,
+        166,
+        65,
+        255
+      ],
+      "comment": "background sewerpipehorizontal",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewerpipehorizontal"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        118,
+        128,
+        50,
+        255
+      ],
+      "comment": "background sewerpipehorizontal overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewerpipehorizontal"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        201,
+        217,
+        85,
+        255
+      ],
+      "comment": "foreground sewerpipehorizontal",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewerpipehorizontal"
+        ],
+        [
+          "front",
+          "sewerpipehorizontal"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        179,
+        70,
+        255
+      ],
+      "comment": "foreground sewerpipehorizontal overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewerpipehorizontal"
+        ],
+        [
+          "front",
+          "sewerpipehorizontal"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        189,
+        204,
+        80,
+        255
+      ],
+      "comment": "foreground only sewerpipehorizontal",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "sewerpipehorizontal"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        65,
+        166,
+        71,
+        255
+      ],
+      "comment": "background sewerpipevertical",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewerpipevertical"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        50,
+        128,
+        55,
+        255
+      ],
+      "comment": "background sewerpipevertical overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewerpipevertical"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        85,
+        217,
+        94,
+        255
+      ],
+      "comment": "foreground sewerpipevertical",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewerpipevertical"
+        ],
+        [
+          "front",
+          "sewerpipevertical"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        70,
+        179,
+        77,
+        255
+      ],
+      "comment": "foreground sewerpipevertical overwritable",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "sewerpipevertical"
+        ],
+        [
+          "front",
+          "sewerpipevertical"
+        ]
+      ],
+      "rules": [
+        [
+          "allowOverdrawing"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        80,
+        204,
+        88,
+        255
+      ],
+      "comment": "foreground only sewerpipevertical",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "sewerpipevertical"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        141,
+        89,
+        255
+      ],
+      "comment": "stairs/platform",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "platform"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        126,
+        89,
+        255
+      ],
+      "comment": "wooden stairs/platform",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "woodenplatform"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        112,
+        89,
+        255
+      ],
+      "comment": "copper stairs/platform",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "copperplatform"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        255,
+        217,
+        255
+      ],
+      "comment": "anvil facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "anvil",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        242,
+        206,
+        255
+      ],
+      "comment": "anvil facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "anvil",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        102,
+        26,
+        255
+      ],
+      "comment": "ballandchain facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "ballandchain",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        97,
+        24,
+        255
+      ],
+      "comment": "ballandchain facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "ballandchain",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        106,
+        26,
+        255
+      ],
+      "comment": "bannermedievallarge",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "bannermedievallarge"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        110,
+        26,
+        255
+      ],
+      "comment": "bannermedievalsmall",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "bannermedievalsmall"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        85,
+        255
+      ],
+      "comment": "barrel",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "barrel"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        77,
+        255
+      ],
+      "comment": "barrellarge",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "barrellarge"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        113,
+        26,
+        255
+      ],
+      "comment": "battlestandard facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "battlestandard",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        108,
+        24,
+        255
+      ],
+      "comment": "battlestandard facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "battlestandard",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        119,
+        89,
+        255
+      ],
+      "comment": "castledoor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "castledoor"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        134,
+        89,
+        255
+      ],
+      "comment": "castledungeondoor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "castledungeondoor"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        149,
+        89,
+        255
+      ],
+      "comment": "castlehiddendoor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "castlehiddendoor"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        140,
+        255,
+        26,
+        255
+      ],
+      "comment": "castleswitch facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "castleswitch",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        133,
+        242,
+        24,
+        255
+      ],
+      "comment": "castleswitch facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "castleswitch",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        117,
+        26,
+        255
+      ],
+      "comment": "chessbishop facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessbishop",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        111,
+        24,
+        255
+      ],
+      "comment": "chessbishop facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessbishop",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        121,
+        26,
+        255
+      ],
+      "comment": "chessking facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessking",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        115,
+        24,
+        255
+      ],
+      "comment": "chessking facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessking",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        125,
+        26,
+        255
+      ],
+      "comment": "chessknight facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessknight",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        119,
+        24,
+        255
+      ],
+      "comment": "chessknight facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessknight",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        129,
+        26,
+        255
+      ],
+      "comment": "chesspawn facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chesspawn",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        122,
+        24,
+        255
+      ],
+      "comment": "chesspawn facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chesspawn",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        133,
+        26,
+        255
+      ],
+      "comment": "chessqueen facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessqueen",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        126,
+        24,
+        255
+      ],
+      "comment": "chessqueen facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessqueen",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        136,
+        26,
+        255
+      ],
+      "comment": "chessrook facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessrook",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        130,
+        24,
+        255
+      ],
+      "comment": "chessrook facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "chessrook",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        140,
+        26,
+        255
+      ],
+      "comment": "crossroadssign facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "crossroadssign",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        133,
+        24,
+        255
+      ],
+      "comment": "crossroadssign facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "crossroadssign",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        144,
+        26,
+        255
+      ],
+      "comment": "fireplacetools facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "fireplacetools",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        137,
+        24,
+        255
+      ],
+      "comment": "fireplacetools facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "fireplacetools",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        148,
+        26,
+        255
+      ],
+      "comment": "glitchianman",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "glitchianman"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        152,
+        26,
+        255
+      ],
+      "comment": "glitchspeare",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "glitchspeare"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        156,
+        26,
+        255
+      ],
+      "comment": "hourglass",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "hourglass"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        159,
+        26,
+        255
+      ],
+      "comment": "juicekeg facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "juicekeg",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        151,
+        24,
+        255
+      ],
+      "comment": "juicekeg facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "juicekeg",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        163,
+        26,
+        255
+      ],
+      "comment": "largebell facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "largebell",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        155,
+        24,
+        255
+      ],
+      "comment": "largebell facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "largebell",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        138,
+        89,
+        255
+      ],
+      "comment": "largecastledoor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "largecastledoor"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        128,
+        0,
+        255,
+        255
+      ],
+      "comment": "largewoodencrate facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "largewoodencrate",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        121,
+        0,
+        242,
+        255
+      ],
+      "comment": "largewoodencrate facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "largewoodencrate",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        167,
+        26,
+        255
+      ],
+      "comment": "medievalarmor facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalarmor",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        159,
+        24,
+        255
+      ],
+      "comment": "medievalarmor facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalarmor",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        171,
+        26,
+        255
+      ],
+      "comment": "medievalarmorarmed facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalarmorarmed",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        162,
+        24,
+        255
+      ],
+      "comment": "medievalarmorarmed facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalarmorarmed",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        111,
+        255,
+        38,
+        255
+      ],
+      "comment": "medievalarmorswitch facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalarmorswitch",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        105,
+        242,
+        36,
+        255
+      ],
+      "comment": "medievalarmorswitch facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalarmorswitch",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        175,
+        26,
+        255
+      ],
+      "comment": "medievalaxedisplay",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalaxedisplay"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        255,
+        224,
+        255
+      ],
+      "comment": "medievalbed facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalbed",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        242,
+        213,
+        255
+      ],
+      "comment": "medievalbed facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalbed",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        68,
+        255
+      ],
+      "comment": "medievalbookcase facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalbookcase",
+          {
+            "direction": "left",
+            "parameters": {
+              "treasurePools": [
+                "glitchVillageLore"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        0,
+        65,
+        255
+      ],
+      "comment": "medievalbookcase facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalbookcase",
+          {
+            "direction": "right",
+            "parameters": {
+              "treasurePools": [
+                "glitchVillageLore"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        102,
+        255,
+        26,
+        255
+      ],
+      "comment": "medievalbookcaseswitch facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalbookcaseswitch",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        97,
+        242,
+        24,
+        255
+      ],
+      "comment": "medievalbookcaseswitch facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalbookcaseswitch",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        179,
+        26,
+        255
+      ],
+      "comment": "medievalbowl",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalbowl"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        92,
+        23,
+        255
+      ],
+      "comment": "medievalbucket",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalbucket"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        60,
+        255
+      ],
+      "comment": "medievalcabinet facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcabinet",
+          {
+            "direction": "left",
+            "parameters": {
+              "treasurePools": [
+                "glitchVillageLore"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        0,
+        57,
+        255
+      ],
+      "comment": "medievalcabinet facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcabinet",
+          {
+            "direction": "right",
+            "parameters": {
+              "treasurePools": [
+                "glitchVillageLore"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        198,
+        26,
+        255
+      ],
+      "comment": "medievalcandle facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcandle",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        188,
+        24,
+        255
+      ],
+      "comment": "medievalcandle facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcandle",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        102,
+        255,
+        255
+      ],
+      "comment": "medievalcellbed facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcellbed",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        97,
+        242,
+        255
+      ],
+      "comment": "medievalcellbed facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcellbed",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        255,
+        232,
+        255
+      ],
+      "comment": "medievalchair facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalchair",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        242,
+        220,
+        255
+      ],
+      "comment": "medievalchair facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalchair",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        217,
+        26,
+        255
+      ],
+      "comment": "medievalchandelier",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalchandelier"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        56,
+        26,
+        255
+      ],
+      "comment": "medievalchest facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalchest",
+          {
+            "direction": "left",
+            "parameters": {
+              "treasurePools": [
+                "basicTreasure"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        53,
+        24,
+        255
+      ],
+      "comment": "medievalchest facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalchest",
+          {
+            "direction": "right",
+            "parameters": {
+              "treasurePools": [
+                "basicTreasure"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        95,
+        23,
+        255
+      ],
+      "comment": "medievalclock facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalclock",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        90,
+        22,
+        255
+      ],
+      "comment": "medievalclock facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalclock",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        99,
+        23,
+        255
+      ],
+      "comment": "medievalcodex facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcodex",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        93,
+        22,
+        255
+      ],
+      "comment": "medievalcodex facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcodex",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        102,
+        23,
+        255
+      ],
+      "comment": "medievalcup facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcup",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        96,
+        22,
+        255
+      ],
+      "comment": "medievalcup facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcup",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        51,
+        255
+      ],
+      "comment": "medievaldesk facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaldesk",
+          {
+            "direction": "left",
+            "parameters": {
+              "treasurePools": [
+                "basicTreasure"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        0,
+        48,
+        255
+      ],
+      "comment": "medievaldesk facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaldesk",
+          {
+            "direction": "right",
+            "parameters": {
+              "treasurePools": [
+                "basicTreasure"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        83,
+        255,
+        255
+      ],
+      "comment": "medievaldiningtable facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaldiningtable",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        79,
+        242,
+        255
+      ],
+      "comment": "medievaldiningtable facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaldiningtable",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        149,
+        0,
+        255,
+        255
+      ],
+      "comment": "medievaldresser facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaldresser",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        141,
+        0,
+        242,
+        255
+      ],
+      "comment": "medievaldresser facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaldresser",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        236,
+        26,
+        255
+      ],
+      "comment": "medievalfireplace facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalfireplace",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        224,
+        24,
+        255
+      ],
+      "comment": "medievalfireplace facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalfireplace",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        106,
+        23,
+        255
+      ],
+      "comment": "medievalflagpole facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalflagpole",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        100,
+        22,
+        255
+      ],
+      "comment": "medievalflagpole facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalflagpole",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        109,
+        23,
+        255
+      ],
+      "comment": "medievalglobe facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalglobe",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        103,
+        22,
+        255
+      ],
+      "comment": "medievalglobe facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalglobe",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        255,
+        26,
+        255
+      ],
+      "comment": "medievallargecookingpot facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievallargecookingpot",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        242,
+        24,
+        255
+      ],
+      "comment": "medievallargecookingpot facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievallargecookingpot",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        112,
+        23,
+        255
+      ],
+      "comment": "medievalmap",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalmap"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        64,
+        255,
+        255
+      ],
+      "comment": "medievalpedestal facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalpedestal",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        61,
+        242,
+        255
+      ],
+      "comment": "medievalpedestal facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalpedestal",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        116,
+        23,
+        255
+      ],
+      "comment": "medievalplate",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalplate"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        133,
+        255,
+        26,
+        255
+      ],
+      "comment": "medievalpressureplate",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalpressureplate"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        45,
+        255,
+        255
+      ],
+      "comment": "medievalscaffolding facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalscaffolding",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        42,
+        242,
+        255
+      ],
+      "comment": "medievalscaffolding facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalscaffolding",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        119,
+        23,
+        255
+      ],
+      "comment": "medievalshelf facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalshelf",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        113,
+        22,
+        255
+      ],
+      "comment": "medievalshelf facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalshelf",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        119,
+        23,
+        255
+      ],
+      "comment": "medievalshelf facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalshelf",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        113,
+        22,
+        255
+      ],
+      "comment": "medievalshelf facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalshelf",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        123,
+        23,
+        255
+      ],
+      "comment": "medievalspikes facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalspikes",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        116,
+        22,
+        255
+      ],
+      "comment": "medievalspikes facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalspikes",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        126,
+        23,
+        255
+      ],
+      "comment": "medievalstock facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalstock",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        119,
+        22,
+        255
+      ],
+      "comment": "medievalstock facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalstock",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        125,
+        255,
+        26,
+        255
+      ],
+      "comment": "medievalswitchhidden",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalswitchhidden"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        117,
+        255,
+        26,
+        255
+      ],
+      "comment": "medievalswitchlever facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalswitchlever",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        111,
+        242,
+        24,
+        255
+      ],
+      "comment": "medievalswitchlever facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalswitchlever",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        110,
+        255,
+        26,
+        255
+      ],
+      "comment": "medievalswitchshackle facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalswitchshackle",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        104,
+        242,
+        24,
+        255
+      ],
+      "comment": "medievalswitchshackle facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalswitchshackle",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        130,
+        23,
+        255
+      ],
+      "comment": "medievalsworddisplay facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalsworddisplay",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        122,
+        22,
+        255
+      ],
+      "comment": "medievalsworddisplay facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalsworddisplay",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        26,
+        255,
+        255
+      ],
+      "comment": "medievaltable facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaltable",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        24,
+        242,
+        255
+      ],
+      "comment": "medievaltable facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaltable",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        255,
+        240,
+        255
+      ],
+      "comment": "medievaltoilet facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaltoilet",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        242,
+        228,
+        255
+      ],
+      "comment": "medievaltoilet facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaltoilet",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        236,
+        255,
+        26,
+        255
+      ],
+      "comment": "medievaltorch",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievaltorch"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        133,
+        23,
+        255
+      ],
+      "comment": "medievalweaponrack facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalweaponrack",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        126,
+        22,
+        255
+      ],
+      "comment": "medievalweaponrack facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalweaponrack",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        137,
+        23,
+        255
+      ],
+      "comment": "persistenceofpixels",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "persistenceofpixels"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        255,
+        247,
+        255
+      ],
+      "comment": "royalbed facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalbed",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        242,
+        235,
+        255
+      ],
+      "comment": "royalbed facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalbed",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        71,
+        26,
+        255
+      ],
+      "comment": "royalbookcase facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalbookcase",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        68,
+        24,
+        255
+      ],
+      "comment": "royalbookcase facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalbookcase",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        79,
+        26,
+        255
+      ],
+      "comment": "royalcabinet facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalcabinet",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        75,
+        24,
+        255
+      ],
+      "comment": "royalcabinet facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalcabinet",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        204,
+        51,
+        255
+      ],
+      "comment": "royalcandles",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalcandles"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        140,
+        23,
+        255
+      ],
+      "comment": "royalchalice facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalchalice",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        132,
+        22,
+        255
+      ],
+      "comment": "royalchalice facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalchalice",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        87,
+        26,
+        255
+      ],
+      "comment": "royalchest facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalchest",
+          {
+            "direction": "left",
+            "parameters": {
+              "treasurePools": [
+                "basicTreasure"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        82,
+        24,
+        255
+      ],
+      "comment": "royalchest facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalchest",
+          {
+            "direction": "right",
+            "parameters": {
+              "treasurePools": [
+                "basicTreasure"
+              ]
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        42,
+        255
+      ],
+      "comment": "royaldesk facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royaldesk",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        0,
+        40,
+        255
+      ],
+      "comment": "royaldesk facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royaldesk",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        255,
+        255,
+        255
+      ],
+      "comment": "royalthrone facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalthrone",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        242,
+        242,
+        255
+      ],
+      "comment": "royalthrone facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royalthrone",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        247,
+        255,
+        255
+      ],
+      "comment": "royaltoilet facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royaltoilet",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        235,
+        242,
+        255
+      ],
+      "comment": "royaltoilet facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "royaltoilet",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        178,
+        26,
+        255,
+        255
+      ],
+      "comment": "smallwoodencrate facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "smallwoodencrate",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        170,
+        24,
+        242,
+        255
+      ],
+      "comment": "smallwoodencrate facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "smallwoodencrate",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        161,
+        23,
+        255
+      ],
+      "comment": "wallshackles facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wallshackles",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        217,
+        152,
+        22,
+        255
+      ],
+      "comment": "wallshackles facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wallshackles",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        143,
+        23,
+        255
+      ],
+      "comment": "wickerbasket1",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wickerbasket1"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        147,
+        23,
+        255
+      ],
+      "comment": "wickerbasket2",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wickerbasket2"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        150,
+        23,
+        255
+      ],
+      "comment": "wickerbasket3",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wickerbasket3"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        154,
+        23,
+        255
+      ],
+      "comment": "wickerbasket4",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wickerbasket4"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        229,
+        157,
+        23,
+        255
+      ],
+      "comment": "wickerbasket5",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wickerbasket5"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        110,
+        83,
+        255
+      ],
+      "comment": "castlehiddentrapdoor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "castlehiddentrapdoor"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        143,
+        20,
+        255
+      ],
+      "comment": "woodsupport",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "woodsupport"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        82,
+        20,
+        255
+      ],
+      "comment": "burlapsack facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "burlapsack",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        77,
+        19,
+        255
+      ],
+      "comment": "burlapsack facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "burlapsack",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        85,
+        20,
+        255
+      ],
+      "comment": "farmtools facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "farmtools",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        79,
+        19,
+        255
+      ],
+      "comment": "farmtools facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "farmtools",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        88,
+        20,
+        255
+      ],
+      "comment": "garagetools facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "garagetools",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        82,
+        19,
+        255
+      ],
+      "comment": "garagetools facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "garagetools",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        240,
+        255,
+        255
+      ],
+      "comment": "haypile facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "haypile",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        228,
+        242,
+        255
+      ],
+      "comment": "haypile facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "haypile",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        91,
+        20,
+        255
+      ],
+      "comment": "hayroll facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "hayroll",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        85,
+        19,
+        255
+      ],
+      "comment": "hayroll facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "hayroll",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        94,
+        20,
+        255
+      ],
+      "comment": "haystack facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "haystack",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        88,
+        19,
+        255
+      ],
+      "comment": "haystack facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "haystack",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        97,
+        20,
+        255
+      ],
+      "comment": "kitchentools facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "kitchentools",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        91,
+        19,
+        255
+      ],
+      "comment": "kitchentools facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "kitchentools",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        45,
+        26,
+        255,
+        255
+      ],
+      "comment": "medievalcounter facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcounter",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        42,
+        24,
+        242,
+        255
+      ],
+      "comment": "medievalcounter facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalcounter",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        221,
+        51,
+        255
+      ],
+      "comment": "medievalfurnace facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalfurnace",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        210,
+        48,
+        255
+      ],
+      "comment": "medievalfurnace facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalfurnace",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        100,
+        20,
+        255
+      ],
+      "comment": "medievalregister facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalregister",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        94,
+        19,
+        255
+      ],
+      "comment": "medievalregister facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalregister",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        64,
+        26,
+        255,
+        255
+      ],
+      "comment": "medievalwallshelf facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalwallshelf",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        61,
+        24,
+        242,
+        255
+      ],
+      "comment": "medievalwallshelf facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalwallshelf",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        103,
+        20,
+        255
+      ],
+      "comment": "target facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "target",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        97,
+        19,
+        255
+      ],
+      "comment": "target facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "target",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        106,
+        20,
+        255
+      ],
+      "comment": "targetdummy facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "targetdummy",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        99,
+        19,
+        255
+      ],
+      "comment": "targetdummy facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "targetdummy",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        109,
+        20,
+        255
+      ],
+      "comment": "trough facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "trough",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        102,
+        19,
+        255
+      ],
+      "comment": "trough facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "trough",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        117,
+        83,
+        255
+      ],
+      "comment": "villagedoor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "villagedoor"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        112,
+        20,
+        255
+      ],
+      "comment": "wallshield",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wallshield"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        115,
+        20,
+        255
+      ],
+      "comment": "wellcover facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wellcover",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        108,
+        19,
+        255
+      ],
+      "comment": "wellcover facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wellcover",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        232,
+        255,
+        255
+      ],
+      "comment": "wheelbarrow facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wheelbarrow",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        220,
+        242,
+        255
+      ],
+      "comment": "wheelbarrow facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wheelbarrow",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        26,
+        224,
+        255,
+        255
+      ],
+      "comment": "woodenstool facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "woodenstool",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        24,
+        213,
+        242,
+        255
+      ],
+      "comment": "woodenstool facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "woodenstool",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        34,
+        255
+      ],
+      "comment": "yarnspinner facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "yarnspinner",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        0,
+        32,
+        255
+      ],
+      "comment": "yarnspinner facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "yarnspinner",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        238,
+        51,
+        255
+      ],
+      "comment": "medievalstreetlamp facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalstreetlamp",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        226,
+        48,
+        255
+      ],
+      "comment": "medievalstreetlamp facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievalstreetlamp",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        255,
+        51,
+        255
+      ],
+      "comment": "medievallamp facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievallamp",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        242,
+        48,
+        255
+      ],
+      "comment": "medievallamp facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "medievallamp",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        118,
+        20,
+        255
+      ],
+      "comment": "signarmorshop",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "signarmorshop"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        121,
+        20,
+        255
+      ],
+      "comment": "signforge",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "signforge"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        124,
+        20,
+        255
+      ],
+      "comment": "signinn",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "signinn"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        128,
+        20,
+        255
+      ],
+      "comment": "signlibrary",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "signlibrary"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        131,
+        20,
+        255
+      ],
+      "comment": "signproduce",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "signproduce"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        134,
+        20,
+        255
+      ],
+      "comment": "signweaponshop",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "signweaponshop"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        25,
+        255
+      ],
+      "comment": "automato crop",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "automatoseed",
+          {
+            "direction": "right",
+            "parameters": {
+              "startingStage": 2
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        1,
+        25,
+        255
+      ],
+      "comment": "wheat crop",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wheatseed",
+          {
+            "direction": "right",
+            "parameters": {
+              "startingStage": 2
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        17,
+        255
+      ],
+      "comment": "wilddiodia crop",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "diodiaseed",
+          {
+            "direction": "right",
+            "parameters": {
+              "startingStage": 2
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        0,
+        8,
+        255
+      ],
+      "comment": "wildboltbulb crop",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "boltbulbseed",
+          {
+            "direction": "right",
+            "parameters": {
+              "startingStage": 2
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        124,
+        83,
+        255
+      ],
+      "comment": "woodengate",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "woodengate"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        137,
+        20,
+        255
+      ],
+      "comment": "fireflowerpot facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "fireflowerpot",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        128,
+        19,
+        255
+      ],
+      "comment": "fireflowerpot facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "fireflowerpot",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        204,
+        140,
+        20,
+        255
+      ],
+      "comment": "wflowerpot facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wflowerpot",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        191,
+        131,
+        19,
+        255
+      ],
+      "comment": "wflowerpot facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wflowerpot",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        94,
+        26,
+        255
+      ],
+      "comment": "outhouse facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "outhouse",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        90,
+        24,
+        255
+      ],
+      "comment": "outhouse facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "outhouse",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        71,
+        18,
+        255
+      ],
+      "comment": "poisonsign facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "poisonsign",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        66,
+        17,
+        255
+      ],
+      "comment": "poisonsign facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "poisonsign",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        74,
+        18,
+        255
+      ],
+      "comment": "poop facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "poop",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        69,
+        17,
+        255
+      ],
+      "comment": "poop facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "poop",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        77,
+        18,
+        255
+      ],
+      "comment": "sewagebarrel facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewagebarrel",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        71,
+        17,
+        255
+      ],
+      "comment": "sewagebarrel facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewagebarrel",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        79,
+        18,
+        255
+      ],
+      "comment": "sewergauge",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewergauge"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        82,
+        18,
+        255
+      ],
+      "comment": "sewertank facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewertank",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        76,
+        17,
+        255
+      ],
+      "comment": "sewertank facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewertank",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        92,
+        229,
+        23,
+        255
+      ],
+      "comment": "sewervalve",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewervalve"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        85,
+        18,
+        255
+      ],
+      "comment": "sewerwallgrate facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewerwallgrate",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        79,
+        17,
+        255
+      ],
+      "comment": "sewerwallgrate facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewerwallgrate",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        87,
+        18,
+        255
+      ],
+      "comment": "toxicwastebarrel facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "toxicwastebarrel",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        81,
+        17,
+        255
+      ],
+      "comment": "toxicwastebarrel facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "toxicwastebarrel",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        102,
+        26,
+        255
+      ],
+      "comment": "trashbag facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "trashbag",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        97,
+        24,
+        255
+      ],
+      "comment": "trashbag facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "trashbag",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        255,
+        110,
+        26,
+        255
+      ],
+      "comment": "trashcan facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "trashcan",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        242,
+        97,
+        24,
+        255
+      ],
+      "comment": "trashcan facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "trashcan",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        131,
+        83,
+        255
+      ],
+      "comment": "sewerflooddoor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewerflooddoor"
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        90,
+        18,
+        255
+      ],
+      "comment": "wallpipe facing left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wallpipe",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        84,
+        17,
+        255
+      ],
+      "comment": "wallpipe facing right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "wallpipe",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        179,
+        93,
+        18,
+        255
+      ],
+      "comment": "sewergear turning left",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewergear",
+          {
+            "direction": "left"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        166,
+        86,
+        17,
+        255
+      ],
+      "comment": "sewergear turning right",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "sewergear",
+          {
+            "direction": "right"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        225,
+        0,
+        255
+      ],
+      "comment": "chicken npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "monster",
+            "typeName": "chicken",
+            "seed": "stable",
+            "parameters": {
+              "persistent": true
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        222,
+        0,
+        255
+      ],
+      "comment": "captured mutant",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "monster",
+            "typeName": "apexmutant",
+            "seed": "stable",
+            "parameters": {
+              "persistent": true
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        215,
+        0,
+        255
+      ],
+      "comment": "Alchemy Po",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "monster",
+            "typeName": "pogolem",
+            "seed": "stable",
+            "parameters": {
+              "persistent": true
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        160,
+        0,
+        200,
+        255
+      ],
+      "comment": "cultist",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "apex",
+            "typeName": "cultist",
+            "parameters": {
+              "aggressive": true
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        150,
+        255,
+        0,
+        255
+      ],
+      "comment": "Sinister Wizard",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "wizardmerchant",
+            "parameters": {
+              "persistent": true
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        175,
+        0,
+        255
+      ],
+      "comment": "passive quadruped npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "monster",
+            "typeName": "poptop",
+            "seed": "stable",
+            "parameters": {
+              "aggressive": false
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        200,
+        0,
+        255
+      ],
+      "comment": "glitch villager npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "villager",
+            "parameters": {
+              "scriptConfig": {
+                "sit": {
+                  "searchRadius": 35
+                },
+                "sleep": {
+                  "searchRadius": 10
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        175,
+        0,
+        0,
+        255
+      ],
+      "comment": "glitch food merchant npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "merchant",
+            "parameters": {
+              "scriptConfig": {
+                "noticePlayersRadius": 20.0,
+                "merchant": {
+                  "storeRadius": 15,
+                  "categories": [
+                    "glitchingredients"
+                  ],
+                  "priceVarianceRange": [
+                    0.8,
+                    1.2
+                  ],
+                  "numItems": 10
+                },
+                "sit": {
+                  "searchRadius": 10
+                },
+                "sleep": {
+                  "searchRadius": 20
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        200,
+        0,
+        0,
+        255
+      ],
+      "comment": "glitch weapons merchant npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "merchant",
+            "parameters": {
+              "scriptConfig": {
+                "noticePlayersRadius": 20.0,
+                "merchant": {
+                  "storeRadius": 15,
+                  "categories": [
+                    "glitchweaponblueprints",
+                    "randomswords"
+                  ],
+                  "priceVarianceRange": [
+                    0.8,
+                    1.2
+                  ],
+                  "numItems": 15
+                },
+                "sit": {
+                  "searchRadius": 8
+                },
+                "sleep": {
+                  "searchRadius": 20
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        200,
+        123,
+        100,
+        255
+      ],
+      "comment": "stabbercrombie sg",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "floran",
+            "typeName": "merchant",
+            "parameters": {
+              "scriptConfig": {
+                "noticePlayersRadius": 20.0,
+                "merchant": {
+                  "storeRadius": 15,
+                  "categories": [
+                    "glitchweaponblueprints",
+                    "floranweaponblueprints",
+                    "randomswords"
+                  ],
+                  "priceVarianceRange": [
+                    0.8,
+                    1.2
+                  ],
+                  "numItems": 15
+                },
+                "sit": {
+                  "searchRadius": 8
+                },
+                "sleep": {
+                  "searchRadius": 20
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        225,
+        143,
+        100,
+        255
+      ],
+      "comment": "glitch sg",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "merchant",
+            "parameters": {
+              "scriptConfig": {
+                "noticePlayersRadius": 20.0,
+                "merchant": {
+                  "storeRadius": 15,
+                  "categories": [
+                    "glitcharmorblueprints",
+                    "floranarmorblueprints",
+                    "glitchclothes",
+                    "floranclothes"
+                  ],
+                  "priceVarianceRange": [
+                    0.8,
+                    1.2
+                  ],
+                  "numItems": 25
+                },
+                "sit": {
+                  "searchRadius": 8
+                },
+                "sleep": {
+                  "searchRadius": 20
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        225,
+        0,
+        0,
+        255
+      ],
+      "comment": "glitch armor/clothes merchant npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "merchant",
+            "parameters": {
+              "scriptConfig": {
+                "noticePlayersRadius": 20.0,
+                "merchant": {
+                  "storeRadius": 15,
+                  "categories": [
+                    "glitcharmorblueprints",
+                    "glitchclothes"
+                  ],
+                  "priceVarianceRange": [
+                    0.8,
+                    1.2
+                  ],
+                  "numItems": 25
+                },
+                "sit": {
+                  "searchRadius": 8
+                },
+                "sleep": {
+                  "searchRadius": 20
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        0,
+        200,
+        255
+      ],
+      "comment": "glitch guard npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "villageguard"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        250,
+        200,
+        0,
+        255
+      ],
+      "comment": "glitch knight",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "monster",
+            "typeName": "glitchknight"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        215,
+        215,
+        255
+      ],
+      "comment": "glitch exterior castle guard npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "castleguard",
+            "parameters": {
+              "scriptConfig": {
+                "guard": {
+                  "patrolDistance": 0,
+                  "noticeDistance": 30,
+                  "hailDistance": 20,
+                  "stopDistance": 10,
+                  "attackDistance": 5,
+                  "attackSayingPercent": -1,
+                  "dialog": {
+                    "hail": {
+                      "default": [
+                        "Halt! Who goes there?"
+                      ]
+                    },
+                    "stop": {
+                      "default": [
+                        "You may go no further."
+                      ]
+                    }
+                  }
+                },
+                "meleeAttack": {
+                  "sayAttackStartDistance": -1
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        225,
+        225,
+        255
+      ],
+      "comment": "glitch castle royal guard npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "castleroyalguard"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        250,
+        250,
+        255
+      ],
+      "comment": "glitch castle lord npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "castlelord",
+            "parameters": {
+              "scriptConfig": {
+                "guard": {
+                  "patrolDistance": 5
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "value": [
+        0,
+        0,
+        225,
+        255
+      ],
+      "comment": "glitch guard captain npc",
+      "brush": [
+        [
+          "npc",
+          {
+            "kind": "npc",
+            "species": "glitch",
+            "typeName": "villageguardcaptain"
+          }
+        ]
+      ],
+      "connector": false,
+      "connector-value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "def": [
+        "image",
+        [
+          "glitchfarm.png",
+          "glitchfarmobjects.png"
+        ]
+      ],
+      "rules": [],
+      "name": "glitchfarm"
+    }
+  ]
+}

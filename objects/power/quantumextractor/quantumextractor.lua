@@ -843,7 +843,7 @@ local recipes =
 {inputs = { platinumore=1 }, outputs = { rawminerals=9 }, time = 0.1},
 {inputs = { prisiliteore=1 }, outputs = { rawminerals=10 }, time = 0.1},
 {inputs = { plutoniumore=1 }, outputs = { matteritem=6 }, time = 0.1},
-{inputs = { rubiumore=1 }, outputs = { rawminerals=8 }, time = 0.1},
+{inputs = { feroziumore=1 }, outputs = { rawminerals=8 }, time = 0.1},
 {inputs = { moonstoneore=1 }, outputs = { rawminerals=8 }, time = 0.1},
 {inputs = { solariumore=1 }, outputs = { rawminerals=8 }, time = 0.1},
 {inputs = { sulphur=1 }, outputs = { liquidsulphuricacid=4 }, time = 0.1},

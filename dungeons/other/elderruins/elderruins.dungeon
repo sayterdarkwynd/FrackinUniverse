@@ -1,0 +1,758 @@
+{
+	"metadata" : {
+		"name" : "elderruins",
+		"species" : "dummy",
+		"rules" : [],
+		"maxRadius" : 2000,
+		"maxParts" : 1,
+		"gravity" : 110,
+		"anchor" : [ "elderruin1", "elderruin2", "elderruin3", "elderruin4" ],
+		
+		"protected" : true
+	},
+	
+	// tiles //
+	
+	"tiles" : [
+
+// ELDER GOODIES
+    {
+      "value" : [222, 204, 249, 255],
+      "comment" : "floran cultistpredator npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "floran",
+            "typeName" : "cultistpredator",
+            "parameters" : {
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+		{
+			"value" : [111, 111, 0, 255],
+			"comment" : "elderurn1 2x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "elderurn1" ] ]
+		},
+		
+		{
+			"value" : [112, 111, 0, 255],
+			"comment" : "elderurn2 1x2",
+			"brush" : [ [ "clear" ], [ "object", "elderurn2" ] ]
+		},
+		
+		{
+			"value" : [113, 111, 0, 255],
+			"comment" : "elderurn3 1x2",
+			"brush" : [ [ "clear" ], [ "object", "elderurn3" ] ]
+		},
+    {
+      "value" : [138, 141, 122, 255],
+      "comment" : "background elderplatform",
+      "brush" : [ [ "clear" ], [ "front", "elderplatform" ] ]
+    },
+    {
+      "value" : [155, 173, 99, 255],
+      "comment" : "background protorock",
+      "brush" : [ [ "clear" ], [ "back", "protorock" ] ]
+    },
+    {
+      "value" : [207, 225, 80, 255],
+      "comment" : "background protorock",
+      "brush" : [ [ "clear" ], [ "front", "protorock" ] ]
+    },
+    {
+      "value" : [103, 48, 29, 255],
+      "comment" : "background elderstone",
+      "brush" : [ [ "clear" ], [ "back", "elderstone" ] ]
+    },
+    {
+      "value" : [88, 38, 21, 255],
+      "comment" : "background elderstone",
+      "brush" : [ [ "clear" ], [ "back", "elderstone2" ] ]
+    },
+    {
+      "value" : [193, 48, 29, 255],
+      "comment" : "background elderstone",
+      "brush" : [ [ "clear" ], [ "front", "elderstone" ] ]
+    },
+    {
+      "value" : [128, 38, 21, 255],
+      "comment" : "background elderstone2",
+      "brush" : [ [ "clear" ], [ "front", "elderstone2" ] ]
+    },
+    {
+      "value" : [136, 86, 69, 255],
+      "comment" : "background elderblock1",
+      "brush" : [ [ "clear" ], [ "back", "elderstone" ], [ "front", "elderstone" ] ]
+    },
+    {
+      "value" : [136, 77, 56, 255],
+      "comment" : "background elderblock2",
+      "brush" : [ [ "clear" ], [ "back", "elderstone2" ], [ "front", "elderstone2" ] ]
+    },
+    {
+      "value" : [169, 89, 79, 255],
+      "comment" : "background elderblock1",
+      "brush" : [ [ "clear" ], [ "back", "elderblock1" ], [ "front", "elderblock1" ] ]
+    },
+    {
+      "value" : [212, 78, 32, 255],
+      "comment" : "background elderblock2",
+      "brush" : [ [ "clear" ], [ "back", "elderblock2" ], [ "front", "elderblock2" ] ]
+    },
+    {
+      "value" : [236, 81, 27, 255],
+      "comment" : "background elderblock2",
+      "brush" : [ [ "clear" ], [ "front", "elderblock1" ] ]
+    },
+    {
+      "value" : [253, 103, 51, 255],
+      "comment" : "front elderblock2",
+      "brush" : [ [ "clear" ], [ "front", "elderblock2" ] ]
+    },
+    {
+      "value" : [130, 53, 26, 255],
+      "comment" : "background elderblock1",
+      "brush" : [ [ "clear" ], [ "back", "elderblock1" ] ]
+    },
+    {
+      "value" : [161, 66, 33, 255],
+      "comment" : "background elderblock2",
+      "brush" : [ [ "clear" ], [ "back", "elderblock2" ] ]
+    },
+    {
+      "value" : [243, 229, 203, 255],
+      "comment" : "bone chair",
+      "brush" : [ [ "clear" ], [ "object", "bonechair", { "direction" : "right" } ] ]
+    }, 
+    {
+      "value" : [253, 229, 205, 255],
+      "comment" : "bone chair",
+      "brush" : [ [ "clear" ], [ "object", "bonechair", { "direction" : "left" } ] ]
+    }, 
+    {
+      "value" : [241, 226, 198, 255],
+      "comment" : "bone table",
+      "brush" : [ [ "clear" ], [ "object", "bonetable", { "direction" : "right" } ] ]
+    },  
+    {
+      "value" : [242, 236, 188, 255],
+      "comment" : "bone table",
+      "brush" : [ [ "clear" ], [ "object", "bonetable", { "direction" : "left" } ] ]
+    },  
+    {
+      "value" : [220, 209, 186, 255],
+      "comment" : "elder door",
+      "brush" : [ [ "clear" ], [ "object", "elderslidingdoor", { "direction" : "right" } ] ]
+    },  
+    {
+      "value" : [80, 94, 80, 255],
+      "comment" : "cthulhu statue",
+      "brush" : [ [ "clear" ], [ "object", "elderstatue" ] ]
+    },
+    {
+      "value" : [200, 0, 200, 255],
+      "comment" : "SWITCH",
+      "brush" : [ [ "clear" ], [ "object", "huntingpressureplate" ] ]
+    },
+    {
+      "value" : [88, 98, 88, 255],
+      "comment" : "elder carving1",
+      "brush" : [ [ "clear" ], [ "object", "eldercarving1" ] ]
+    },
+    {
+      "value" : [89, 99, 89, 255],
+      "comment" : "elder carving1",
+      "brush" : [ [ "clear" ], [ "object", "eldercarving2" ] ]
+    },    
+    {
+      "value" : [87, 97, 87, 255],
+      "comment" : "elder carving1",
+      "brush" : [ [ "clear" ], [ "object", "eldercarving3" ] ]
+    },
+    {
+      "value" : [86, 96, 86, 255],
+      "comment" : "elder carving1",
+      "brush" : [ [ "clear" ], [ "object", "eldercarving4" ] ]
+    },
+    {
+      "value" : [83, 93, 83, 255],
+      "comment" : "elder bed",
+      "brush" : [ [ "clear" ], [ "object", "elderbed", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [83, 93, 82, 255],
+      "comment" : "elder bed",
+      "brush" : [ [ "clear" ], [ "object", "elderbed", { "direction" : "left" } ] ]
+    },
+    {
+      "value" : [84, 94, 84, 255],
+      "comment" : "elder bookcase",
+      "brush" : [ [ "clear" ], [ "object", "elderbookcase", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [84, 94, 84, 255],
+      "comment" : "elder bookcase",
+      "brush" : [ [ "clear" ], [ "object", "elderbookcase", { "direction" : "left" } ] ]
+    },
+    {
+      "value" : [81, 94, 81, 255],
+      "comment" : "elder chair",
+      "brush" : [ [ "clear" ], [ "object", "elderchair", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [81, 125, 81, 255],
+      "comment" : "elder chair",
+      "brush" : [ [ "clear" ], [ "object", "elderchair", { "direction" : "left" } ] ]
+    },
+    {
+      "value" : [81, 225, 81, 255],
+      "comment" : "elder pedestal",
+      "brush" : [ [ "clear" ], [ "object", "elderpedestal", { "direction" : "left" } ] ]
+    },
+    {
+      "value" : [81, 220, 81, 255],
+      "comment" : "elder pedestal",
+      "brush" : [ [ "clear" ], [ "object", "elderpedestal", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [87, 225, 87, 255],
+      "comment" : "elder pedestal",
+      "brush" : [ [ "clear" ], [ "object", "eldertable", { "direction" : "left" } ] ]
+    },
+    {
+      "value" : [87, 220, 87, 255],
+      "comment" : "elder pedestal",
+      "brush" : [ [ "clear" ], [ "object", "eldertable", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [88, 225, 35, 255],
+      "comment" : "elder pedestal",
+      "brush" : [ [ "clear" ], [ "object", "eldercabinet", { "direction" : "left" } ] ]
+    },
+    {
+      "value" : [88, 220, 35, 255],
+      "comment" : "elder pedestal",
+      "brush" : [ [ "clear" ], [ "object", "eldercabinet", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [105, 127, 135, 255],
+      "comment" : "elder chest",
+      "brush" : [ [ "clear" ], [ "object", "elderchest2", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffelderTreasure" ] } } ] ]
+    },
+    {
+      "value" : [105, 235, 185, 255],
+      "comment" : "elder altar",
+      "brush" : [ [ "clear" ], [ "object", "elderaltar", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffelderTreasure" ] } } ] ]
+    },
+    {
+      "value" : [105, 255, 135, 255],
+      "comment" : "elder altar",
+      "brush" : [ [ "clear" ], [ "object", "elderaltar", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffelderTreasure" ] } } ] ]
+    },  
+    {
+      "value" : [105, 250, 136, 255],
+      "comment" : "elder painting2",
+      "brush" : [ [ "clear" ], [ "object", "elderpainting2" ] ]
+    },
+    {
+      "value" : [105, 250, 137, 255],
+      "comment" : "elder painting1",
+      "brush" : [ [ "clear" ], [ "object", "elderpainting1" ] ]
+    },
+//normal tiles
+    {
+      "value" : [55, 140, 140, 255],
+      "comment" : "background castlewalls1",
+      "brush" : [ [ "clear" ], [ "back", "castlewalls1" ] ]
+    },
+    {
+      "value" : [166, 140, 65, 255],
+      "comment" : "background darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ] ]
+    },
+
+    {
+      "value" : [217, 184, 85, 255],
+      "comment" : "foreground darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+    {
+      "value" : [166, 89, 65, 255],
+      "comment" : "background crosshatch",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [217, 115, 85, 255],
+      "comment" : "foreground crosshatch",
+      "brush" : [ [ "clear" ], [ "front", "crosshatch" ] ]
+    },
+    {
+      "value" : [115, 99, 48, 255],
+      "comment" : "background fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "fullwood1" ] ]
+    },
+
+    {
+      "value" : [166, 143, 70, 255],
+      "comment" : "foreground fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "fullwood1" ], [ "front", "fullwood1" ] ]
+    },
+    {
+      "value" : [179, 126, 89, 255],
+      "comment" : "wooden stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "woodenplatform" ] ]
+    },    
+    {
+      "value" : [255, 0, 85, 255],
+      "comment" : "barrel",
+      "brush" : [ [ "clear" ], [ "object", "barrel" ] ]
+    },
+
+    {
+      "value" : [255, 0, 77, 255],
+      "comment" : "barrellarge",
+      "brush" : [ [ "clear" ], [ "object", "barrellarge" ] ]
+    },
+    {
+      "value" : [128, 0, 255, 255],
+      "comment" : "largewoodencrate facing left",
+      "brush" : [ [ "clear" ], [ "object", "largewoodencrate", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [121, 0, 242, 255],
+      "comment" : "largewoodencrate facing right",
+      "brush" : [ [ "clear" ], [ "object", "largewoodencrate", { "direction" : "right" } ] ]
+    },    
+    {
+      "value" : [178, 26, 255, 255],
+      "comment" : "smallwoodencrate facing left",
+      "brush" : [ [ "clear" ], [ "object", "smallwoodencrate", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [170, 24, 242, 255],
+      "comment" : "smallwoodencrate facing right",
+      "brush" : [ [ "clear" ], [ "object", "smallwoodencrate", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [229, 161, 23, 255],
+      "comment" : "wallshackles facing left",
+      "brush" : [ [ "clear" ], [ "object", "wallshackles", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 152, 22, 255],
+      "comment" : "wallshackles facing right",
+      "brush" : [ [ "clear" ], [ "object", "wallshackles", { "direction" : "right" } ] ]
+    },
+
+	    {
+			"value" : [85, 255, 0, 255],
+			"comment" : "Player Spawn",
+			"brush" : [ [ "playerstart" ] ]
+		},
+		{
+			"value" : [255, 0, 220, 255],
+			"comment" : "magic pinkppp, a no-op value",
+			"connector" : false
+		}, 
+		{
+			"value" : [0, 0, 0, 255],
+			"comment" : "sky anchor",
+			"brush" : [["clear"]],
+			"rules" : [["worldGenMustContainAirBackground"], ["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [255, 255, 255, 255],
+			"comment" : "ground anchor",
+			"brush" : [["surface"]],
+			"rules" : [["worldGenMustContainSolidBackground"], ["allowOverdrawing"]]
+		},
+		{
+			"value" : [10, 10, 10, 255],
+			"comment" : "Empty hole",
+			"brush" : [["clear"]],
+			"connector" : false
+		}, 
+		{
+			"value" : [20, 20, 20, 255],
+			"comment" : "Empty hole overwritable",
+			"brush" : [["clear"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [30, 30, 30, 255],
+			"comment" : "Biome tile brush overwritable",
+			"brush" : [["surface"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+		{
+			"value" : [40, 40, 40, 255],
+			"comment" : "Biome tile brush non-overwritable",
+			"brush" : [["surface"]]
+		}, 
+		{
+			"value" : [50, 50, 50, 255],
+			"comment" : "Biome tile background brush",
+			"brush" : [["clear"], ["surfacebackground"]]
+		}, 
+		{
+			"value" : [0, 38, 255, 255],
+			"comment" : "bright blue, room coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [255, 0, 38, 255],
+			"comment" : "bright red, entrance piece coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [38, 255, 0, 255],
+			"comment" : "bright green, entrance piece coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [34, 177, 76, 255],
+			"comment" : "background plantmatter",
+			"brush" : [ [ "clear" ], [ "back", "plantmatter" ] ]
+		},
+
+		{
+			"value" : [19, 100, 44, 255],
+			"comment" : "foreground plantmatter",
+			"brush" : [ [ "clear" ], [ "back", "plantmatter" ], [ "front", "plantmatter" ] ]
+		},
+		
+		{
+			"value" : [181, 230, 29, 255],
+			"comment" : "background vine",
+			"brush" : [ [ "clear" ], [ "back", "vine" ] ]
+		},
+
+		{
+			"value" : [156, 201, 22, 255],
+			"comment" : "foreground vine",
+			"brush" : [ [ "clear" ], [ "back", "vine" ], [ "front", "vine" ] ]
+		},
+		
+		{
+			"value" : [220, 220, 220, 255],
+			"comment" : "background fadedblocks",
+			"brush" : [ [ "clear" ], [ "back", "fadedblocks" ] ]
+		},
+
+		{
+			"value" : [187, 187, 187, 255],
+			"comment" : "foreground fadedblocks",
+			"brush" : [ [ "clear" ], [ "back", "fadedblocks" ], [ "front", "fadedblocks" ] ]
+		},
+		
+		// Flora //
+		
+		{
+			"value" : [26, 77, 0, 255],
+			"comment" : "biome tree",
+			"rules" : [ [ "allowOverdrawing" ] ],
+			"brush" : [ [ "biometree" ] ]
+		},
+
+		{
+			"value" : [34, 102, 0, 255],
+			"comment" : "biome flora",
+			"rules" : [ [ "allowOverdrawing" ] ],
+			"brush" : [ [ "biomeitems" ] ]
+		},
+		
+		{
+			"value" : [136, 0, 21, 255],
+			"comment" : "flowerblue crop, 2x2",
+			"brush" : [ [ "clear" ], [ "object", "flowerblue", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [137, 0, 21, 255],
+			"comment" : "flowerred crop",
+			"brush" : [ [ "clear" ], [ "object", "flowerred", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [138, 0, 21, 255],
+			"comment" : "floweryellow crop",
+			"brush" : [ [ "clear" ], [ "object", "floweryellow", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [225, 255, 94, 255],
+			"comment" : "mushroom crop 2x2",
+			"brush" : [ [ "clear" ], [ "object", "mushroomseed", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+
+		// Directional objects //
+		
+		{
+			"value" : [115, 230, 0, 255],
+			"comment" : "floranlamp1 left 3x4 x-3",
+			"brush" : [ [ "clear" ], [ "object", "floranlamp1", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [116, 230, 0, 255],
+			"comment" : "floranlamp1 right",
+			"brush" : [ [ "clear" ], [ "object", "floranlamp1", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [9, 230, 100, 255],
+			"comment" : "florancrate left 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [10, 230, 100, 255],
+			"comment" : "florancrate  right 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [194, 199, 209, 255],
+			"comment" : "huntingplatformrocks 6x3 x-4",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformrocks", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [195, 199, 209, 255],
+			"comment" : "huntingplatformrocks",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformrocks", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [194, 89, 209, 255],
+			"comment" : "huntingplatformleaves 7x3 x-5",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformleaves", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [195, 89, 209, 255],
+			"comment" : "huntingplatformleaves",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformleaves", { "direction" : "right" } ] ]
+		},			
+
+		// objects, no direction //
+		
+		{
+			"value" : [85, 195, 88, 255],
+			"comment" : "plantbiolight 1x1",
+			"brush" : [ [ "clear" ], [ "object", "plantbiolight" ] ]
+		},
+		
+		{
+			"value" : [51, 255, 51, 255],
+			"comment" : "floranlight 2x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "floranlight" ] ]
+		},
+		
+		{
+			"value" : [164, 0, 24, 255],
+			"comment" : "floranstove 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "floranstove" ] ]
+		},
+		
+		{
+			"value" : [174, 0, 24, 255],
+			"comment" : "plantbed4 7x2 x-4",
+			"brush" : [ [ "clear" ], [ "object", "plantbed4" ] ]
+		},
+		
+		{
+			"value" : [146, 85, 24, 255],
+			"comment" : "huntinggroundtorch 2x3 x-2",
+			"brush" : [ [ "clear" ], [ "object", "huntinggroundtorch" ] ]
+		},
+		
+		// platforms //
+		
+		{
+			"value" : [181, 181, 178, 255],
+			"comment" : "stoneplatform",
+			"brush" : [ [ "clear" ], [ "front", "stoneplatform" ] ]
+		},
+		
+		{
+			"value" : [218, 242, 145, 255],
+			"comment" : "plantplatform",
+			"brush" : [ [ "clear" ], [ "front", "plantplatform" ] ]
+		},
+		
+		// Smashables //
+
+		{
+			"value" : [111, 111, 0, 255],
+			"comment" : "elderurn1 2x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "elderurn1" ] ]
+		},
+		
+		{
+			"value" : [112, 111, 0, 255],
+			"comment" : "elderurn2 1x2",
+			"brush" : [ [ "clear" ], [ "object", "elderurn2" ] ]
+		},
+		
+		{
+			"value" : [113, 111, 0, 255],
+			"comment" : "elderurn3 1x2",
+			"brush" : [ [ "clear" ], [ "object", "elderurn3" ] ]
+		},
+		
+		{
+			"value" : [1, 201, 100, 255],
+			"comment" : "springbush1 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush1" ] ]
+		},
+		
+		{
+			"value" : [2, 201, 100, 255],
+			"comment" : "springbush2 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush2" ] ]
+		},
+		
+		{
+			"value" : [3, 201, 100, 255],
+			"comment" : "springbush3 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush3" ] ]
+		},
+    {
+      "value" : [12, 0, 0, 255],
+      "comment" : "wire #1",
+      "brush" : [ [ "wire", { "group" : "group1", "local" : true } ] ]
+    },		
+		// npcs //
+		{
+		"value" : [200, 110, 211, 255],
+		"comment" : "swarpion monster",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "swarpion",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+                                }
+			}
+			] ]
+		},
+		{
+		"value" : [100, 110, 111, 255],
+		"comment" : "starspawn monster",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "starspawn",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+                                }
+			}
+			] ]
+		},
+		{
+		"value" : [200, 100, 210, 255],
+		"comment" : "largefish monster",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "largefish",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+                                }
+			}
+			] ]
+		},
+		{
+			"value" : [152, 125, 0, 255],
+			"comment" : "miniboss quadruped npc",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "minibossquadruped",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+
+		// liquids //
+		
+		{
+			"value" : [64, 198, 255, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+		},
+		{
+			"value" : [120, 235, 209, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "elderfluid" ] ]
+		},
+		{
+			"value" : [228, 235, 120, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "sulphuricacid" ] ]
+		},
+		{
+			"value" : [229, 235, 120, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "sulphuricacid" ] ]
+		},		
+		{
+			"value" : [28, 10, 254, 255],
+			"comment" : "healing pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "healingliquid" ] ]
+		}
+		
+		],
+	
+	"parts" : [
+	
+    {
+      "name" : "elderruin1",
+      "rules" : [ ],
+      "def" : [ "image", [ "elderruins1.png", "elderruins1-objects.png", "elderruins1-liquids.png" ] ]
+    },
+    {
+      "name" : "elderruin2",
+      "rules" : [ ],
+      "def" : [ "image", [ "elderruins2.png", "elderruins2-objects.png" ] ]
+    },
+    {
+      "name" : "elderruin3",
+      "rules" : [ ],
+      "def" : [ "image", [ "elderruins3.png", "elderruins3-objects.png" ] ]
+    },
+    {
+      "name" : "elderruin4",
+      "rules" : [ ],
+      "def" : [ "image", [ "elderruins4.png", "elderruins4-objects.png" ] ]
+    }
+	
+	]
+}

@@ -1,0 +1,607 @@
+{
+	"metadata" : {
+		"name" : "newavianmicro",
+		"species" : "dummy",
+		"rules" : [],
+		"maxRadius" : 2000,
+		"maxParts" : 100,
+		"anchor" : ["avianziggurat", "aviandiner"]
+	},
+	
+	// tiles //
+	
+	"tiles" : [
+	    {
+		"value" : [85, 255, 0, 255],
+		"comment" : "Player Spawn",
+		"brush" : [ [ "playerstart" ] ]
+		},
+		{
+			"value" : [255, 0, 220, 255],
+			"comment" : "magic pinkppp, a no-op value",
+			"connector" : false
+		}, 
+		{
+			"value" : [0, 0, 0, 255],
+			"comment" : "sky anchor",
+			"brush" : [["clear"]],
+			"rules" : [["worldGenMustContainAirBackground"], ["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [255, 255, 255, 255],
+			"comment" : "ground anchor",
+			"brush" : [["surface"]],
+			"rules" : [["worldGenMustContainSolidBackground"], ["allowOverdrawing"]]
+		},
+		{
+			"value" : [10, 10, 10, 255],
+			"comment" : "Empty hole",
+			"brush" : [["clear"]],
+			"connector" : false
+		}, 
+		{
+			"value" : [20, 20, 20, 255],
+			"comment" : "Empty hole overwritable",
+			"brush" : [["clear"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [30, 30, 30, 255],
+			"comment" : "Biome tile brush overwritable",
+			"brush" : [["surface"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [40, 40, 40, 255],
+			"comment" : "Biome tile brush non-overwritable",
+			"brush" : [["surface"]]
+		}, 
+		{
+			"value" : [50, 50, 50, 255],
+			"comment" : "Biome tile background brush",
+			"brush" : [["clear"], ["surfacebackground"]]
+		}, 
+		{
+			"value" : [0, 38, 255, 255],
+			"comment" : "bright blue, room coupler",
+			"connector" : true
+		},
+		{
+			"value" : [146, 165, 247, 255],
+			"comment" : "background temple1",
+			"brush" : [ [ "clear" ], [ "back", "temple1" ] ]
+		},
+
+		{
+			"value" : [170, 146, 247, 255],
+			"comment" : "foreground temple1",
+			"brush" : [ [ "clear" ], [ "back", "temple1" ], [ "front", "temple1" ] ]
+		},
+
+		{
+			"value" : [146, 247, 241, 255],
+			"comment" : "background temple2",
+			"brush" : [ [ "clear" ], [ "back", "temple2" ] ]
+		},
+
+		{
+			"value" : [146, 210, 247, 255],
+			"comment" : "foreground temple2",
+			"brush" : [ [ "clear" ], [ "back", "temple2" ], [ "front", "temple2" ] ]
+		},
+		
+		{
+			"value" : [128, 0, 0, 255],
+			"comment" : "background woodenwindow2",
+			"brush" : [ [ "clear" ], [ "back", "woodenwindow2" ] ]
+		},
+
+		{
+			"value" : [179, 0, 0, 255],
+			"comment" : "foreground woodenwindow2",
+			"brush" : [ [ "clear" ], [ "back", "woodenwindow2" ], [ "front", "woodenwindow2" ] ]
+		},
+		
+		{
+			"value" : [206, 146, 247, 255],
+			"comment" : "background crosshatch",
+			"brush" : [ [ "clear" ], [ "back", "crosshatch" ] ]
+		},
+
+		{
+			"value" : [247, 146, 240, 255],
+			"comment" : "foreground crosshatch",
+			"brush" : [ [ "clear" ], [ "front", "crosshatch" ] ]
+		},
+		
+		// objects //
+		
+		{
+			"value" : [224, 174, 201, 255],
+			"comment" : "tribaldoor left",
+			"brush" : [ [ "clear" ], [ "object", "tribaldoor", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [225, 174, 201, 255],
+			"comment" : "tribaldoor right",
+			"brush" : [ [ "clear" ], [ "object", "tribaldoor", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [33, 177, 76, 255],
+			"comment" : "reedseed1 left",
+			"brush" : [ [ "clear" ], [ "object", "reedseed1", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [34, 177, 76, 255],
+			"comment" : "reedseed1 right",
+			"brush" : [ [ "clear" ], [ "object", "reedseed1", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [125, 192, 220, 255],
+			"comment" : "tribalbed2 facing left",
+			"brush" : [ [ "clear" ], [ "object", "tribalbed2", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [135, 192, 220, 255],
+			"comment" : "tribalbed2 facing right",
+			"brush" : [ [ "clear" ], [ "object", "tribalbed2", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [145, 192, 220, 255],
+			"comment" : "woodentalllantern facing right",
+			"brush" : [ [ "clear" ], [ "object", "woodentalllantern", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [255, 242, 0, 255],
+			"comment" : "birdgong1 facing right",
+			"brush" : [ [ "clear" ], [ "object", "birdgong1", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [202, 154, 128, 255],
+			"comment" : "curtain1 facing left",
+			"brush" : [ [ "clear" ], [ "object", "curtain1", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [202, 164, 128, 255],
+			"comment" : "curtain1 facing right",
+			"brush" : [ [ "clear" ], [ "object", "curtain1", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [67, 120, 135, 255],
+			"comment" : "avianbanner1 facing left",
+			"brush" : [ [ "clear" ], [ "object", "avianbanner1", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [75, 140, 13, 255],
+			"comment" : "tribalwallcabinet facing right",
+			"brush" : [ [ "clear" ], [ "object", "tribalwallcabinet", { "direction" : "right" } ] ]
+		},	
+		
+		{
+			"value" : [67, 0, 135, 255],
+			"comment" : "classicchair facing left",
+			"brush" : [ [ "clear" ], [ "object", "classicchair", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [77, 0, 135, 255],
+			"comment" : "classicchair facing right",
+			"brush" : [ [ "clear" ], [ "object", "classicchair", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [128, 64, 64, 255],
+			"comment" : "woodenchair facing left",
+			"brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [138, 64, 64, 255],
+			"comment" : "woodenchair facing right",
+			"brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [45, 192, 13, 255],
+			"comment" : "tribalcounter1 facing left",
+			"brush" : [ [ "clear" ], [ "object", "tribalcounter1", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [55, 192, 13, 255],
+			"comment" : "tribalcounter1 facing right",
+			"brush" : [ [ "clear" ], [ "object", "tribalcounter1", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [245, 135, 13, 255],
+			"comment" : "idolsupport facing left",
+			"brush" : [ [ "clear" ], [ "object", "idolsupport", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [255, 135, 13, 255],
+			"comment" : "idolsupport facing right",
+			"brush" : [ [ "clear" ], [ "object", "idolsupport", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [245, 145, 13, 255],
+			"comment" : "altaravian facing left",
+			"brush" : [ [ "clear" ], [ "object", "altaravian", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [255, 155, 13, 255],
+			"comment" : "altaravian facing right",
+			"brush" : [ [ "clear" ], [ "object", "altaravian", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [233, 218, 148, 255],
+			"comment" : "birddoor facing left",
+			"brush" : [ [ "clear" ], [ "object", "birddoor", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [233, 218, 149, 255],
+			"comment" : "birddoor facing right",
+			"brush" : [ [ "clear" ], [ "object", "birddoor", { "direction" : "right" } ] ]
+		},
+
+		// One direction only
+		
+		{
+			"value" : [65, 140, 13, 255],
+			"comment" : "tribalwallcabinet facing left",
+			"brush" : [ [ "clear" ], [ "object", "tribalwallcabinet", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [67, 100, 135, 255],
+			"comment" : "tribaltable facing left",
+			"brush" : [ [ "clear" ], [ "object", "tribaltable", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [252, 164, 128, 255],
+			"comment" : "woodencookingtable facing left",
+			"brush" : [ [ "clear" ], [ "object", "woodencookingtable", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [252, 123, 15, 255],
+			"comment" : "kitchentools facing left",
+			"brush" : [ [ "clear" ], [ "object", "kitchentools", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [30, 12, 120, 255],
+			"comment" : "chestmedavian1 facing left",
+			"brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure", "instrument" ] } } ] ]
+		},
+		
+		{
+			"value" : [45, 212, 3, 255],
+			"comment" : "coffeemachine facing left",
+			"brush" : [ [ "clear" ], [ "object", "coffeemachine", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [95, 212, 3, 255],
+			"comment" : "outpostfridge facing left",
+			"brush" : [ [ "clear" ], [ "object", "outpostfridge", { "direction" : "left", "parameters" : { "treasurePools" : [ "produce" ] } } ] ]
+		},
+		
+		{
+			"value" : [45, 60, 60, 255],
+			"comment" : "paintingstarrynight facing left",
+			"brush" : [ [ "clear" ], [ "object", "paintingstarrynight", { "direction" : "left" } ] ]
+		},	
+		
+		{
+			"value" : [183, 91, 0, 255],
+			"comment" : "hylotlbowl facing left",
+			"brush" : [ [ "clear" ], [ "object", "hylotlbowl", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [193, 91, 0, 255],
+			"comment" : "cider facing left",
+			"brush" : [ [ "clear" ], [ "object", "cider", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [255, 242, 10, 255],
+			"comment" : "classicchandelier facing left",
+			"brush" : [ [ "clear" ], [ "object", "classicchandelier", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [255, 242, 20, 255],
+			"comment" : "classiclight",
+			"brush" : [ [ "clear" ], [ "object", "classiclight" ] ]
+		},
+		
+		{
+			"value" : [204, 247, 247, 255],
+			"comment" : "classicglass",
+			"brush" : [ [ "clear" ], [ "object", "classicglass" ] ]
+		},
+		
+		{
+			"value" : [214, 250, 10, 255],
+			"comment" : "spearrack",
+			"brush" : [ [ "clear" ], [ "object", "spearrack" ] ]
+		},
+		
+		{
+			"value" : [181, 230, 29, 255],
+			"comment" : "flowerbed2",
+			"brush" : [ [ "clear" ], [ "object", "flowerbed2" ] ]
+		},
+		
+		{
+			"value" : [181, 30, 29, 255],
+			"comment" : "altar1",
+			"brush" : [ [ "clear" ], [ "object", "altar1" ] ]
+		},
+		
+		{
+			"value" : [181, 100, 29, 255],
+			"comment" : "birdgroundlantern",
+			"brush" : [ [ "clear" ], [ "object", "birdgroundlantern" ] ]
+		},
+		
+		{
+			"value" : [100, 100, 29, 255],
+			"comment" : "torch",
+			"brush" : [ [ "clear" ], [ "object", "torch" ] ]
+		},
+		
+		{
+			"value" : [106, 0, 53, 255],
+			"comment" : "crystaltorch",
+			"brush" : [ [ "clear" ], [ "object", "crystaltorch" ] ]
+		},
+		
+		{
+			"value" : [106, 0, 20, 255],
+			"comment" : "birdgodemblem",
+			"brush" : [ [ "clear" ], [ "object", "birdgodemblem" ] ]
+		},
+		
+		{
+			"value" : [100, 150, 129, 255],
+			"comment" : "tribalserver",
+			"brush" : [ [ "clear" ], [ "object", "tribalserver" ] ]
+		},
+		
+		// Smashable //
+		
+		{
+			"value" : [184, 143, 145, 255],
+			"comment" : "bigjar1",
+			"brush" : [ [ "clear" ], [ "object", "bigjar1" ] ]
+		},
+
+		{
+			"value" : [236, 0, 118, 255],
+			"comment" : "embercoral1 facing left",
+			"brush" : [ [ "clear" ], [ "object", "embercoral1", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [236, 0, 128, 255],
+			"comment" : "embercoral1 facing right",
+			"brush" : [ [ "clear" ], [ "object", "embercoral1", { "direction" : "right" } ] ]
+		},		
+		
+		// platforms //
+
+		{
+			"value" : [239, 228, 176, 255],
+			"comment" : "temple platform",
+			"brush" : [ [ "clear" ], [ "front", "tribalplatform" ] ]
+		},
+		
+		// wired //
+		
+		{
+			"value" : [255, 0, 3, 255],
+			"comment" : "consoletribal2",
+			"brush" : [ [ "clear" ], [ "object", "consoletribal2", { "parameters" : { "defaultState" : true } } ] ]
+		},
+		
+		{
+			"value" : [255, 0, 2, 255],
+			"comment" : "consoletribal1",
+			"brush" : [ [ "clear" ], [ "object", "consoletribal1" ] ]
+		},
+
+		{
+			"value" : [255, 0, 1, 255],
+			"comment" : "consoletribal4",
+			"brush" : [ [ "clear" ], [ "object", "consoletribal4" ] ]
+		},
+		
+		{
+			"value" : [225, 220, 241, 255],
+			"comment" : "drain",
+			"brush" : [ [ "clear" ], [ "object", "drain" ] ]
+		},
+		
+		// Wires //
+		
+		{
+			"value" : [0, 0, 255, 255],
+			"comment" : "wire #1",
+			"brush" : [ [ "wire", { "group" : "localgroup1", "local" : true } ] ]
+		},
+		
+		{
+			"value" : [1, 0, 255, 255],
+			"comment" : "wire #2",
+			"brush" : [ [ "wire", { "group" : "localgroup2", "local" : true } ] ]
+		},
+		
+		{
+			"value" : [2, 0, 255, 255],
+			"comment" : "wire #3",
+			"brush" : [ [ "wire", { "group" : "localgroup3", "local" : true } ] ]
+		},
+		
+		// npc //
+		
+		{
+			"value" : [255, 191, 191, 255],
+			"comment" : "chefmerchant",
+			"brush" : [ [ "npc",
+			
+			{
+				"kind" : "npc",
+				"species" : "avian",
+				"typeName" : "chefmerchant"
+			}
+			
+        ] ]
+		},
+		
+		{
+			"value" : [245, 191, 191, 255],
+			"comment" : "dinerpatron",
+			"brush" : [ [ "npc",
+			
+			{
+				"kind" : "npc",
+				"species" : "avian",
+				"typeName" : "dinerpatron"
+			}
+			
+        ] ]
+		},
+		
+		{
+			"value" : [235, 191, 191, 255],
+			"comment" : "dinerpatron",
+			"brush" : [ [ "npc",
+			
+			{
+				"kind" : "npc",
+				"species" : "human",
+				"typeName" : "dinerpatron"
+			}
+			
+        ] ]
+		},
+		
+		{
+			"value" : [225, 191, 191, 255],
+			"comment" : "dinerpatron",
+			"brush" : [ [ "npc",
+			
+			{
+				"kind" : "npc",
+				"species" : "apex",
+				"typeName" : "dinerpatron"
+			}
+			
+        ] ]
+		},
+		
+		{
+			"value" : [215, 191, 191, 255],
+			"comment" : "dinerpatron",
+			"brush" : [ [ "npc",
+			
+			{
+				"kind" : "npc",
+				"species" : "floran",
+				"typeName" : "dinerpatron"
+			}
+			
+        ] ]
+		},
+		
+		{
+			"value" : [0, 0, 200, 255],
+			"comment" : "avian guard npc",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "npc",
+				"species" : "avian",
+				"typeName" : "friendlyguard"
+			}
+		] ]
+		},
+		
+		{
+			"value" : [0, 10, 200, 255],
+			"comment" : "avian oremerchant npc",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "npc",
+				"species" : "avian",
+				"typeName" : "oremerchant"
+			}
+		] ]
+		},
+		
+		{
+			"value" : [14, 152, 0, 255],
+			"comment" : "fish npc #1",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "fish",
+				"seed" : "stable",
+				"parameters" : {
+				"persistent" : true
+            }
+			}
+        ] ]
+		},
+		
+		// liquids //
+
+		{
+			"value" : [54, 63, 105, 255],
+			"comment" : "lava pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "lava" ] ]
+		},
+		
+		{
+			"value" : [28, 10, 254, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "healingliquid" ] ]
+		}
+		
+		],
+	
+	"parts" : [
+	
+    {
+      "name" : "aviandiner",
+      "rules" : [ ],
+      "def" : [ "image", [ "diner.png", "dinerliquids.png", "dinerobjects.png" ] ]
+    },
+	
+    {
+      "name" : "avianziggurat",
+      "rules" : [ ],
+      "def" : [ "image", [ "avianziggurat.png", "avianzigguratobjects.png", "avianzigguratliquids.png", "avianzigguratwires.png" ] ]
+    }
+	
+	]
+}

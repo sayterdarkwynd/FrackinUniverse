@@ -1,0 +1,469 @@
+{
+	"metadata" : {
+		"name" : "minigreenruins",
+		"species" : "dummy",
+		"rules" : [],
+		"maxRadius" : 2000,
+		"maxParts" : 1,
+		"anchor" : [ "minigreenruins3", "minigreenruins2", "minigreenruins1" ]
+	},
+	
+	// tiles //
+	
+	"tiles" : [
+    {
+      "value" : [150, 255, 100, 255],
+      "comment" : "questgiver",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "primevalquestgiver"
+          }
+        ] ]
+    },
+	        {
+			"value" : [85, 255, 0, 255],
+			"comment" : "Player Spawn",
+			"brush" : [ [ "playerstart" ] ]
+		},
+		{
+			"value" : [255, 0, 220, 255],
+			"comment" : "magic pinkppp, a no-op value",
+			"connector" : false
+		}, 
+		{
+			"value" : [0, 0, 0, 255],
+			"comment" : "sky anchor",
+			"brush" : [["clear"]],
+			"rules" : [["worldGenMustContainAirBackground"], ["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [255, 255, 255, 255],
+			"comment" : "ground anchor",
+			"brush" : [["surface"]],
+			"rules" : [["worldGenMustContainSolidBackground"], ["allowOverdrawing"]]
+		},
+		{
+			"value" : [10, 10, 10, 255],
+			"comment" : "Empty hole",
+			"brush" : [["clear"]],
+			"connector" : false
+		}, 
+		{
+			"value" : [20, 20, 20, 255],
+			"comment" : "Empty hole overwritable",
+			"brush" : [["clear"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [30, 30, 30, 255],
+			"comment" : "Biome tile brush overwritable",
+			"brush" : [["surface"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [40, 40, 40, 255],
+			"comment" : "Biome tile brush non-overwritable",
+			"brush" : [["surface"]]
+		}, 
+		{
+			"value" : [50, 50, 50, 255],
+			"comment" : "Biome tile background brush",
+			"brush" : [["clear"], ["surfacebackground"]]
+		}, 
+		{
+			"value" : [0, 38, 255, 255],
+			"comment" : "bright blue, room coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [255, 0, 38, 255],
+			"comment" : "bright red, entrance piece coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [38, 255, 0, 255],
+			"comment" : "bright green, entrance piece coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [34, 177, 76, 255],
+			"comment" : "background plantmatter",
+			"brush" : [ [ "clear" ], [ "back", "plantmatter" ] ]
+		},
+
+		{
+			"value" : [19, 100, 44, 255],
+			"comment" : "foreground plantmatter",
+			"brush" : [ [ "clear" ], [ "back", "plantmatter" ], [ "front", "plantmatter" ] ]
+		},
+		
+		{
+			"value" : [181, 230, 29, 255],
+			"comment" : "background vine",
+			"brush" : [ [ "clear" ], [ "back", "vine" ] ]
+		},
+
+		{
+			"value" : [156, 201, 22, 255],
+			"comment" : "foreground vine",
+			"brush" : [ [ "clear" ], [ "back", "vine" ], [ "front", "vine" ] ]
+		},
+		
+		{
+			"value" : [220, 220, 220, 255],
+			"comment" : "background fadedblocks",
+			"brush" : [ [ "clear" ], [ "back", "fadedblocks" ] ]
+		},
+
+		{
+			"value" : [187, 187, 187, 255],
+			"comment" : "foreground fadedblocks",
+			"brush" : [ [ "clear" ], [ "back", "fadedblocks" ], [ "front", "fadedblocks" ] ]
+		},
+		
+		// Flora //
+		
+		{
+			"value" : [26, 77, 0, 255],
+			"comment" : "biome tree",
+			"rules" : [ [ "allowOverdrawing" ] ],
+			"brush" : [ [ "biometree" ] ]
+		},
+
+		{
+			"value" : [34, 102, 0, 255],
+			"comment" : "biome flora",
+			"rules" : [ [ "allowOverdrawing" ] ],
+			"brush" : [ [ "biomeitems" ] ]
+		},
+		
+		{
+			"value" : [136, 0, 21, 255],
+			"comment" : "flowerblue crop, 2x2",
+			"brush" : [ [ "clear" ], [ "object", "flowerblue", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [137, 0, 21, 255],
+			"comment" : "flowerred crop",
+			"brush" : [ [ "clear" ], [ "object", "flowerred", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [138, 0, 21, 255],
+			"comment" : "floweryellow crop",
+			"brush" : [ [ "clear" ], [ "object", "floweryellow", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [225, 255, 94, 255],
+			"comment" : "mushroom crop 2x2",
+			"brush" : [ [ "clear" ], [ "object", "mushroomseed", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+
+		// Directional objects //
+		
+		{
+			"value" : [115, 230, 0, 255],
+			"comment" : "floranlamp1 left 3x4 x-3",
+			"brush" : [ [ "clear" ], [ "object", "floranlamp1", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [116, 230, 0, 255],
+			"comment" : "floranlamp1 right",
+			"brush" : [ [ "clear" ], [ "object", "floranlamp1", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [9, 230, 100, 255],
+			"comment" : "florancrate left 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [10, 230, 100, 255],
+			"comment" : "florancrate  right 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [194, 199, 209, 255],
+			"comment" : "huntingplatformrocks 6x3 x-4",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformrocks", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [195, 199, 209, 255],
+			"comment" : "huntingplatformrocks",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformrocks", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [194, 89, 209, 255],
+			"comment" : "huntingplatformleaves 7x3 x-5",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformleaves", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [195, 89, 209, 255],
+			"comment" : "huntingplatformleaves",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformleaves", { "direction" : "right" } ] ]
+		},			
+
+		// objects, no direction //
+		
+		{
+			"value" : [85, 195, 88, 255],
+			"comment" : "plantbiolight 1x1",
+			"brush" : [ [ "clear" ], [ "object", "plantbiolight" ] ]
+		},
+		
+		{
+			"value" : [51, 255, 51, 255],
+			"comment" : "floranlight 2x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "floranlight" ] ]
+		},
+		
+		{
+			"value" : [164, 0, 24, 255],
+			"comment" : "floranstove 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "floranstove" ] ]
+		},
+		
+		{
+			"value" : [174, 0, 24, 255],
+			"comment" : "plantbed4 7x2 x-4",
+			"brush" : [ [ "clear" ], [ "object", "plantbed4" ] ]
+		},
+		
+		{
+			"value" : [146, 85, 24, 255],
+			"comment" : "huntinggroundtorch 2x3 x-2",
+			"brush" : [ [ "clear" ], [ "object", "huntinggroundtorch" ] ]
+		},
+		
+		{
+			"value" : [2, 253, 84, 255],
+			"comment" : "towerverdancemap 5x5",
+			"brush" : [ [ "clear" ], [ "object", "junglechest", { "parameters" : { "treasurePools" : [ "ffprimevalTreasure" ] } } ] ]
+		},
+		
+		// platforms //
+		
+		{
+			"value" : [181, 181, 178, 255],
+			"comment" : "stoneplatform",
+			"brush" : [ [ "clear" ], [ "front", "stoneplatform" ] ]
+		},
+		
+		{
+			"value" : [218, 242, 145, 255],
+			"comment" : "plantplatform",
+			"brush" : [ [ "clear" ], [ "front", "plantplatform" ] ]
+		},
+		
+		// Smashables //
+
+		{
+			"value" : [111, 111, 0, 255],
+			"comment" : "planturn1 2x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "planturn1" ] ]
+		},
+		
+		{
+			"value" : [112, 111, 0, 255],
+			"comment" : "planturn2 1x2",
+			"brush" : [ [ "clear" ], [ "object", "planturn2" ] ]
+		},
+		
+		{
+			"value" : [113, 111, 0, 255],
+			"comment" : "planturn3 1x2",
+			"brush" : [ [ "clear" ], [ "object", "planturn3" ] ]
+		},
+		
+		{
+			"value" : [1, 201, 100, 255],
+			"comment" : "springbush1 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush1" ] ]
+		},
+		
+		{
+			"value" : [2, 201, 100, 255],
+			"comment" : "springbush2 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush2" ] ]
+		},
+		
+		{
+			"value" : [3, 201, 100, 255],
+			"comment" : "springbush3 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush3" ] ]
+		},
+		
+		// npcs //
+		{
+		"value" : [200, 110, 211, 255],
+		"comment" : "swarpion monster",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "swarpion",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+                                }
+			}
+			] ]
+		},		
+		{
+		"value" : [200, 100, 210, 255],
+		"comment" : "largefish monster",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "largefish",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+                                }
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 160, 255],
+			"comment" : "floran wildhunter",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "wildhunter"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 161, 255],
+			"comment" : "floran wildhunter veteran",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "wildhunterveteran"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 162, 255],
+			"comment" : "floran hell prisoner",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "hellprisoner"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 163, 255],
+			"comment" : "floran floranpredator",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "floranpredator"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 164, 255],
+			"comment" : "floran floransniper",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "floransniper"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 165, 255],
+			"comment" : "floran gladiator",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "florangladiator"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [152, 125, 0, 255],
+			"comment" : "miniboss quadruped npc",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "minibossquadruped",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+
+		// liquids //
+		
+		{
+			"value" : [64, 198, 255, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+		},
+		
+		{
+			"value" : [28, 10, 254, 255],
+			"comment" : "healing pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "healingliquid" ] ]
+		}
+		
+		],
+	
+	"parts" : [
+	
+	{
+      "name" : "minigreenruins1",
+      "rules" : [ 
+	  ],
+      "def" : [ "image", [ "minigreenruins1.png", "minigreenruins1objects.png" ] ]
+    },
+	
+	{
+      "name" : "minigreenruins2",
+      "rules" : [ 
+	  ],
+      "def" : [ "image", [ "minigreenruins2.png", "minigreenruins2objects.png" ] ]
+    },
+
+    {
+		"name" : "minigreenruins3",
+		"rules" : [
+		],
+		"def" : [ "image", [ "minigreenruins3.png", "minigreenruins3objects.png" ] ],
+		"chance" : 0
+    }
+	
+	]
+}
