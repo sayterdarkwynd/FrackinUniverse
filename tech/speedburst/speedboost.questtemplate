@@ -1,0 +1,24 @@
+{
+  "id" : "speedboost.gearup",
+  "prerequisites" : [ ],
+  "title" : "^orange;Speed Booster",
+  "text" : "You've unlocked Speed Boost. This tech allows you boost rapidly left or right a fair distance.",
+  "completionText" : "This tech will be useful to get around very quickly.",
+  "speaker" : "player",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "equipTech" : ["speedboosttech"],
+    "followUp" : "",
+    "gatherRequirements" : {
+      "items" : {
+        "speedboosttechgrant" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}

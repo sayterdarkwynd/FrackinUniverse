@@ -1,0 +1,30 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+          },
+          "on" : {
+            "properties" : {
+              "immediateSound" : "/sfx/tech/tech_dashshort.ogg"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "dash",
+          "flip" : true
+        }
+      ]
+    }
+  }
+}

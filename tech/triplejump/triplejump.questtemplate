@@ -1,0 +1,24 @@
+{
+  "id" : "triplejump.gearup",
+  "prerequisites" : [ ],
+  "title" : "^orange;Triple-Jump Harness",
+  "text" : "You've unlocked the Triple-Jump Harness. This tech allows you to jump 3 times, uses short kinetic boosts.",
+  "completionText" : "You should be able to reach most high places pretty easily now.",
+  "speaker" : "player",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "equipTech" : ["triplejumptech"],
+    "followUp" : "",
+    "gatherRequirements" : {
+      "items" : {
+        "triplejumptechgrant" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
