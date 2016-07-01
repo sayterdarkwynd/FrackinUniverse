@@ -1,0 +1,29 @@
+{
+  "particleEmitters" : {
+    "bubbles" : {
+      "enabled" : true,
+      "emissionRate" : 20.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/projectiles/npcs/bubble/bubbles.png:0",
+            "size" : 0.7,
+            "fade" : 0.9,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 1],
+            "finalVelocity" : [0, 3],
+            "timeToLive" : 2,
+            "underwaterOnly" : true,
+            "layer" : "back",
+            "variance" : {
+              "size" : 0.3,
+              "initialVelocity" : [0.5, 0.5]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
