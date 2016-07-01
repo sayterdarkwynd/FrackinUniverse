@@ -1,0 +1,29 @@
+{
+  "particleEmitters" : {
+    "dust" : {
+      "enabled" : true,
+      "emissionRate" : 50.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/dust2/dust2.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 1],
+            "approach" : [0, 50],
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.85,
+            "fade" : 1,
+            "size" : 1,
+            "layer" : "front",
+            "timeToLive" : 0.5,
+            "variance" : {
+              "initialVelocity" : [0.5, 0.0]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
