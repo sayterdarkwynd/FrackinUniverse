@@ -1,0 +1,29 @@
+{
+  "particleEmitters" : {
+    "bees" : {
+      "enabled" : true,
+      "emissionRate" : 2.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/bees/bees.animation",
+            "size" : 1.0,
+            "color" : [30, 250, 30, 230],
+            "fade" : 0.9,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 1],
+            "finalVelocity" : [0, 1],
+            "approach" : [0, 1],
+            "timeToLive" : 0.85,
+            "variance" : {
+              "initialVelocity" : [0.1, 0.2]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
