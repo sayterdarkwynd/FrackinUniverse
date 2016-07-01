@@ -1,0 +1,42 @@
+{
+  "objectName" : "screenarray1",
+  "printable" : false,
+  "retainObjectParametersInItem" : true, "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 200,
+
+  "description" : "LED Screens.",
+  "shortdescription" : "LED Screens",
+  "race" : "generic",
+
+  "inventoryIcon" : "screenarray1.png",
+  "orientations" : [
+    {
+      "image" : "screenarray1.png:<color>.<frame>",
+      "imagePosition" : [-16, 0],
+      "frames" : 3,
+      "animationCycle" : 2.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "pressbutton"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "objectName" : "wildvaranberryseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "Delicious and extremely nutritious",
+  "shortdescription" : "Varan Berry Bush",
+  "objectType" : "farmable",
+  "printable" : false,
+    "learnBlueprintsOnPickup" : [ "varanberryseed" ],
+  
+  "inventoryIcon" : "varanberryseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "varanberryseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1], [0, 2] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [60, 120]
+    },
+    {
+      "duration" : [60, 120]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "varanberryHarvest",
+      "resetToStage" : 2
+    }
+  ],
+  "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "varanberryseed", 1, { } ] ]
+  ]
+}

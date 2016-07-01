@@ -1,0 +1,33 @@
+{
+  "objectName" : "hiveblob",
+  "colonyTags" : [ "hive", "bees", "insects" ],
+  "rarity" : "Common",
+  "category" : "pot",
+  "printable" : false,
+
+  "description" : "A huge bubble of honey.",
+  "shortdescription" : "Hive Blob",
+  "race" : "apex",
+
+  "inventoryIcon" : "capsulebigicon.png",
+  "orientations" : [
+    {
+      "image" : "hiveblob.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/blocks/water_swim.ogg" ],
+  "smashDropOptions" : [
+    [ [ "fu_liquidhoney", 10, { } ] ]
+  ],
+  "breakDropOptions" : [
+    [ [ "fu_liquidhoney", 10, { } ] ]
+  ]
+}

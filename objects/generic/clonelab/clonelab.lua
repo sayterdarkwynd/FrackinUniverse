@@ -1,0 +1,36 @@
+
+--[[for k, v in pairs(items) do
+    if v.name == "sapling" then]]--
+function init(args)
+	prep()
+end
+
+function prep()
+	if self.hasPrepped == false then
+	storage.heldItems = world.containerItems(entity.id())
+	self.pause = false
+	self.hasPrepped = true
+	end
+end
+
+function checkSplice(args)
+    local items = world.containerItems(entity.id())
+   --[[ world.logInfo("ITEM IS: %s", items)	for k, v in pairs(items) do
+	    world.logInfo("Item: %s", v)
+	end]]--
+    if items[1]~=null and items[2]~=null and
+       items[1].name == "sapling" and items[2].name == "sapling" then
+	local leafsample = items[1]
+	local stemsample = items[2]
+	local biomatteramount = leafsample.count + stemsample.count
+	stemsample.parameters["foliageHueShift"] = leafsample.parameters["foliageHueShift"]
+	stemsample.parameters["foliageName"] = leafsample.parameters["foliageName"]
+	world.containerTakeAll(entity.id())
+	stemsample.count = biomatteramount
+	world.containerPutItemsAt(entity.id(),stemsample,1)
+    end
+end
+
+function die()
+
+end

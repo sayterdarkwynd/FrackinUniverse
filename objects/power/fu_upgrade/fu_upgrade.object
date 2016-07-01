@@ -1,0 +1,46 @@
+{
+  "objectName" : "fu_upgrade",
+  "rarity" : "Common",
+  "category" : "crafting",
+  "price" : 3000,
+  "objectType" : "container", 
+  "description" : "Apply upgrades to any body armor. Requires 6u power. Use Upgrade Modules to upgrade pieces.",
+  "shortdescription" : "^cyan;Upgrade Station^white;",
+  "race" : "generic",
+
+  "inventoryIcon" : "fu_upgradeicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_upgrade.png:<color>",
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "inboundNodes" : [ [1, 1] ],
+  "isn_powerReciever" : true,
+  "isn_requiredPower" : 6,
+  "isn_liquidCollector" : false,
+
+  "scripts" : [ 
+                "/scripts/vec2.lua", 
+                "/objects/power/fu_upgrade/fu_upgrade.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"
+   	      ],
+   	      
+  "scriptDelta" : 120,
+  
+  "openSounds" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+  "slotCount" : 10,
+  "containerCallback": "containerCallback",
+  "uiConfig" : "/objects/power/fu_upgrade/fu_upgrade.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 36000
+
+}

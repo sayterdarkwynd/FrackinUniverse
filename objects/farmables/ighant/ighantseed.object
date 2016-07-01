@@ -1,0 +1,43 @@
+{
+  "objectName" : "ighantseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "farmable",
+  "description" : "The ighant is a curious, fast-growing plant. Provides bounce.",
+  "shortdescription" : "Ighant Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "learnBlueprintsOnPickup" : [ "springvaultseed" ],
+  "inventoryIcon" : "ighantseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "ighantseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [120, 240]
+    },
+    {
+      "duration" : [120, 240]
+    },
+    {
+      "alts" : 4,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 4,
+      "harvestPool" : "ighantHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125
+}

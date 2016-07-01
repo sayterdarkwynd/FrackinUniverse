@@ -1,0 +1,48 @@
+{
+  "objectName" : "avalilightblock",
+  "colonyTags" : [ "avali", "avalicamp", "light" ], 
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 60,
+
+  "description" : "An illuminated wall panel",
+  "shortdescription" : "Light Block",
+  "race" : "avali",
+
+  "apexDescription" : "Just an illuminated wall panel.",
+  "avianDescription" : "Must... look... away... from the light.",
+  "floranDescription" : "Floran ssssstand here, nice not-sunlight.",
+  "glitchDescription" : "Ponderingly. Why do the Avali need strong lighting when they are primarily auditory-centered?",
+  "humanDescription" : "This light is flickering and giving me a headache...",
+  "hylotlDescription" : "Boring and utilitarian lighting.",
+  "avaliDescription" : "It's a light panel... what more is there to add?",
+ 
+  "lightColor" : [229, 218, 207],
+  "flickerDistance" : 0.5,
+  "flickerStrength" : 0.0,
+
+  "inventoryIcon" : "avalilightblockicon.png",
+  "orientations" : [
+    {
+      "image" : "avalilightblock.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.01,
+      "anchors" : [ "background" ],
+    "lightPosition" : [0, 0]
+    }
+ ],
+"animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "avalilightblock.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inboundNodes" : [ [0, 0] ]
+}

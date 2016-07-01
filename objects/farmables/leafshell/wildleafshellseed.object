@@ -1,0 +1,45 @@
+{
+  "objectName" : "wildleafshellseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "A leafy egg vegetable that provides a protection boost.",
+  "shortdescription" : "Leafshell Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+    "learnBlueprintsOnPickup" : [ "wubstemseed"],
+  "inventoryIcon" : "leafshellseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "leafshellseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [120, 240]
+    },
+    {
+      "duration" : [120, 240]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "leafshellHarvest",
+     "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "leafshellseed", 1, { } ] ]
+  ]
+}

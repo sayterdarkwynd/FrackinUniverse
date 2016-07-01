@@ -1,0 +1,44 @@
+{
+  "objectName" : "caprioleplantseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "farmable",
+  "description" : "Increases your limb strength for jumping.",
+  "shortdescription" : "Capriole Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "learnBlueprintsOnPickup" : [ "triplejumptechgrant", "caprioleplantseed" ],
+  "inventoryIcon" : "caprioleplantseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "caprioleplantseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [60, 120]
+    },
+    {
+      "duration" : [60, 120]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "caprioleHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125
+}

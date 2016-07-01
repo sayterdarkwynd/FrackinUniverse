@@ -1,0 +1,46 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "centrifuge" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+          "working" : {
+            "frames" : 4,
+            "cycle" : 0.3,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/honeyjarrer/jarring.ogg"
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "centrifuge" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "centrifuge" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            },
+
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "objectName" : "shinyacornseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "Delicious nutty fruits that increase your vitality.",
+  "shortdescription" : "Shiny Acorn Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+
+  "inventoryIcon" : "shinyacornseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "shinyacornseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [240, 420]
+    },
+    {
+      "duration" : [240, 420]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "shinyacornHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125
+}

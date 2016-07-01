@@ -1,0 +1,49 @@
+{
+  "objectName" : "electronmicroscope",
+  "colonyTags" : [ "fu", "science", "discovery" ],
+  "rarity" : "Common",
+  "printable" : false,
+  "description" : "Examine things really, really close up.",
+  "shortdescription" : "Electron Microscope",
+  "race" : "generic",
+  "category" : "science!",
+  "price" : 1450,
+
+  "lightColor" : [60, 60, 60],
+  "inventoryIcon" : "electronmicroscopeicon.png",
+  "orientations" : [
+
+    {
+      "leftImage" : "electronmicroscopeleft.png",
+      "rightImage" : "electronmicroscoperight.png",
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
+
+}

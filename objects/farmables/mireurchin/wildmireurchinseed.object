@@ -1,0 +1,45 @@
+{
+  "objectName" : "wildmireurchinseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "farmable",
+  "description" : "Able to generate a static shield to repel predators.",
+  "shortdescription" : "Mireurchin Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  
+  "inventoryIcon" : "mireurchinseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "mireurchinseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 360]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "mireurchinHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "mireurchinseed", 1, { } ] ]
+  ]
+}

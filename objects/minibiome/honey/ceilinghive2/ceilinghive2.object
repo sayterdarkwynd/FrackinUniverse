@@ -1,0 +1,49 @@
+{
+  "objectName" : "ceilinghive2",
+  "colonyTags" : [ "hive", "bees", "insects" ],
+  "rarity" : "Common",
+  "category" : "other",
+  "price" : 60,
+  "printable" : false,
+
+  "description" : "This honey is falling.",
+  "shortdescription" : "Dripping Slime",
+  "race" : "generic",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.2,
+    "emissionVariance" : 0.5,
+    "pixelOrigin" : [5, -10],
+
+    "particle" : {
+      "type" : "ember",
+      "size" : 1.0,
+      "color" : [230, 196, 80, 128],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, -2],
+      "finalVelocity" : [0.0, -5],
+      "approach" : [0, 10],
+      "timeToLive" : 4.0,
+      "layer" : "back"
+    }
+  },
+
+  "inventoryIcon" : "ceilinghive2icon.png",
+  "orientations" : [
+    {
+      
+      "image" : "ceilinghive2.png:<color>",
+      "imagePosition" : [-3, -9],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+  
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/blocks/water_swim.ogg" ],
+  "smashDropOptions" : [
+    [ [ "fu_liquidhoney", 1, { } ], [ "fu_liquidhoney", 1, { } ], [ "fu_liquidhoney", 1, { } ] ]
+  ]
+}

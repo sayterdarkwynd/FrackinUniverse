@@ -1,0 +1,47 @@
+{
+  "name" : "darkwater",
+  "liquidId" : 60,
+  "description" : "This probably isn't swim-safe.",
+  "tickDelta" : 1,
+  "color" : [44, 31, 51, 225],
+  "statusEffects" : [ "swimming", "darkwaterpoison" ],
+  "itemDrop" : "liquiddarkwater",
+
+      "interactions" : [
+        //water
+		{ 
+          "liquid" : 1,
+          "materialResult" : "penumbradirt"
+		},
+	  //healingwater
+          {
+            "liquid" : 6,
+            "materialResult" : "penumbrastone"
+          },
+          {
+            "liquid" : 41,
+            "materialResult" : "corruptslime"
+          },
+          //black tar
+          {
+            "liquid" : 42,
+            "materialResult" : "tarstone"
+          },
+
+          //helium
+          {
+            "liquid" : 49,
+            "materialResult" : "retexaetherdust"
+          },
+          //shadow gas
+          {
+            "liquid" : 50,
+            "materialResult" : "retexaetherdust"
+          }   
+      ],
+      
+      
+  "texture" : "/liquids/tartex.png",
+  "bottomLightMix" : [0, 78, 255],
+  "textureMovementFactor" : 1.6
+}

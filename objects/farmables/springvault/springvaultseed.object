@@ -1,0 +1,39 @@
+{
+  "objectName" : "springvaultseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "farmable",
+  "description" : "Springvault intensifies leg-muscle effectiveness by a large amount.",
+  "shortdescription" : "Springvault Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "learnBlueprintsOnPickup" : [ "emergencybouncetechgrant", "fletchweed" ],  
+  "inventoryIcon" : "springvaultseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "springvaultseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "springvaultHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+}

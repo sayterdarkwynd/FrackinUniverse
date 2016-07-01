@@ -1,0 +1,45 @@
+{
+  "objectName" : "wildaquapodseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "It's fruit enables rapid movement when suspended in liquid.",
+  "shortdescription" : "Aquapod",
+  "objectType" : "farmable",
+  
+  "inventoryIcon" : "aquapodseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "aquapodseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [120, 240]
+    },
+    {
+      "duration" : [120, 240]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "aquapodHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "minImmersion" : 1.0,
+    "consumeSoilMoisture" : false,
+  "breakDropOptions" : [
+    [ [ "aquapodseed", 1, { } ] ]
+  ]
+}

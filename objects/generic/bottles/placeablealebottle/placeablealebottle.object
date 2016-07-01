@@ -1,0 +1,51 @@
+{
+  "objectName" : "placeablealebottle",
+  "colonyTags" : [ "drunkard", "booze" ],
+  "rarity" : "Common",
+  "description" : "Brand New! Placeable Pale Ale!",
+  "shortdescription" : "Placeable Pale Ale",
+  "race" : "generic",
+  "category" : "decorative",
+  "printable" : false,
+  
+   
+
+ 
+   "particleEmitter" : {
+    "emissionRate" : 0.1,
+    "emissionVariance" : 5,
+	"pixelOrigin" : [4, 12],
+
+    "particle" : {
+      "type" : "ember",
+      "size" : 1.0,
+      "color" : [211, 196, 135, 255],
+      "light" : [0, 0, 0],
+      "fade" : 0.2,
+      "initialVelocity" : [0.5, 5.0],
+      "finalVelocity" : [0.2, 3.0],
+      "approach" : [0, 10],
+      "timeToLive" : 0.3,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0.5, 2.0]
+    }
+  },
+
+  "inventoryIcon" : "placeablealebottleicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "placeablealebottle.png:<color>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ]
+}

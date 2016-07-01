@@ -1,0 +1,45 @@
+{
+  "name" : "lava",
+  "liquidId" : 2,
+  "description" : "Deadly molten lava!",
+  "tickDelta" : 3,
+  "color" : [255, 150, 0, 205],
+  "radiantLight" : [189, 26, 0],
+  "statusEffects" : [ "melting" ],
+  "itemDrop" : "liquidlava",
+
+  "interactions" : [
+    {
+      "liquid" : 1,
+      "materialResult" : "magmarock"
+    },
+    {
+      "liquid" : 5,
+      "materialResult" : "asphalt"
+    },
+    {
+      "liquid" : 40,
+      "materialResult" : "bloodstonetile2"
+    },
+    {
+      "liquid" : 42,
+      "materialResult" : "andesite"
+    },
+    {
+      "liquid" : 43,
+      "materialResult" : "purplecrystal"
+    },
+    {
+      "liquid" : 45,
+      "materialResult" : "sulphurstone"
+    },
+    {
+      "liquid" : 46,
+      "materialResult" : "sulphurstone"
+    }
+  ],
+
+  "texture" : "/liquids/lavatex.png",
+  "bottomLightMix" : [255, 70, 0],
+  "textureMovementFactor" : 2.6
+}

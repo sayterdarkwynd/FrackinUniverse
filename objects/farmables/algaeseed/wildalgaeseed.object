@@ -1,0 +1,41 @@
+{
+  "objectName" : "wildalgaeseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "An interesting algae type. Excellent biofuel.",
+  "shortdescription" : "Algae Pod",
+  "objectType" : "farmable",
+    "inventoryIcon" : "algaegreenicon.png",
+  "learnBlueprintsOnPickup" : [ "algaeseed", "erithianalgaeseed" ],  
+  "orientations" : [
+    {
+      "dualImage" : "algaeseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 2],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [40, 90]
+    },
+    {
+      "duration" : [40, 90]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "algaeHarvest"
+    }
+  ],
+    "maxImmersion" : 1.0,
+    "consumeSoilMoisture" : false,
+  "breakDropOptions" : [
+    [ [ "algaeseed", 1, { } ] ]
+  ]
+}

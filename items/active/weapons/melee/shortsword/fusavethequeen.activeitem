@@ -1,0 +1,36 @@
+{
+  "itemName" : "fusavethequeen",
+  "price" : 150,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Pink, but not wimpy",
+  "shortdescription" : "Queensguard",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "savethequeen.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "savethequeen.png"
+  },
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.53,
+    "baseDps" : 12.5
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

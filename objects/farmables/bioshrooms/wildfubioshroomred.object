@@ -1,0 +1,44 @@
+{
+  "objectName" : "wildfubioshroomred",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "farmable",
+  "description" : "Provides colored light.",
+  "shortdescription" : "Glowing Mushroom",
+  "objectType" : "farmable",
+  "printable" : false, 
+    "lightColor" : [175, 0, 0],
+  "inventoryIcon" : "fubioshroomredicon.png",
+  "objectItem" : "dnasample",
+  "orientations" : [
+    {
+      "dualImage" : "fubioshroomred.png:<color>.<stage>.<alt>",
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [60, 100]
+    },
+    {
+      "duration" : [100, 300]
+    },
+    {
+      "alts" : 3,
+      "harvestPool" : "fubioshroomHarvest"
+    }
+  ],
+
+  "maxImmersion" : 0.725,
+  "breakDropOptions" : [
+    [ [ "dnasample", 1, { } ] ]
+  ]
+}

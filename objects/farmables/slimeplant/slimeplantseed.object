@@ -1,0 +1,39 @@
+{
+  "objectName" : "slimeplantseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "farmable",
+  "description" : "Useful against slime and can protect against damage.",
+  "shortdescription" : "Slime Glob Bush",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+
+  "inventoryIcon" : "slimeplantseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "slimeplantseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [60, 120]
+    },
+    {
+      "duration" : [60, 120]
+    },
+    {
+      "alts" : 3,
+      "harvestPool" : "slimeplantHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+}

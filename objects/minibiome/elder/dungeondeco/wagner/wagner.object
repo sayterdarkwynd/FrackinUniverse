@@ -1,0 +1,40 @@
+{
+  "objectName" : "wagner",
+  "colonyTags" : ["fu","science","knowledge","storage"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "price" : 145,
+  "description" : "What the hell happened to this man? Something is sticking out of his pocket...",
+  "shortdescription" : "Wagner",
+  "race" : "apex",
+
+  "inventoryIcon" : "wagnericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "wagner.png:<color>",
+      "imagePosition" : [-18, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/bookcase_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/bookcase_close.ogg" ],
+  "slotCount" : 24,
+  "uiConfig" : "/interface/chests/chest%slots%.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/objects/scripts/autofill.lua" ],
+  "scriptDelta" : 240,
+
+  "autofillContents" : [ {"name" : "wagner3", "count" : 1, "parameters" : {}}, {"name" : "wagneridcard", "count" : 1, "parameters" : {}} ]
+  
+}

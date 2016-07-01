@@ -1,0 +1,41 @@
+{
+  "objectName" : "labdoor3",
+  "colonyTags" : ["door","lab"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 60,
+  "description" : "A nice, sturdy glass door.",
+  "shortdescription" : "Laboratory Door",
+  "race" : "generic",
+
+  "inventoryIcon" : "labdoor3icon.png",
+  "orientations" : [
+    {
+      "image" : "labdoor3.png:default",
+      "imagePosition" : [-20, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/wooddoor_open.ogg" ],
+      "close" : [ "/sfx/objects/wooddoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "labdoor3.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inboundNodes" : [ [-1, 4] ],
+  "outboundNodes" : [ [0, 0] ]
+}

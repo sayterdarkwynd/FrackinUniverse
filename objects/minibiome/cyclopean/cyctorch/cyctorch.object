@@ -1,0 +1,76 @@
+{
+  "objectName" : "cyctorch",
+  "colonyTags" : ["floran","floranhuntinggrounds","light","evil","bone"],
+  "rarity" : "Common",
+  "description" : "Deep shadows stretch away from this menacing torch.",
+  "shortdescription" : "Cyclopean Torch Stand",
+  "race" : "floran",
+  "category" : "light",
+  "price" : 85,
+  "printable" : false,
+
+  "maximumLiquidLevel" : 0.2,
+
+  "apexDescription" : "The torch provides warmth as well as light.",
+  "avianDescription" : "Avian temples are lit only with natural light.",
+  "floranDescription" : "Flamesss make Floran nervous.",
+  "glitchDescription" : "Stating the obvious. A torch.",
+  "humanDescription" : "An old torch.",
+  "hylotlDescription" : "The Hylotl do not light torches. Beneath the ocean, air is too precious to waste.",
+
+  "lightColor" : [191, 124, 57],
+
+  "flickerPeriod" : 0.2,
+  "flickerMinIntensity" : 0.7,
+  "flickerMaxIntensity" : 0.75,
+  "flickerPeriodVariance" : 0.05,
+  "flickerIntensityVariance" : 0.025,
+
+  "statusEffects" : [ ],
+
+  "inventoryIcon" : "cyctorchicon.png",
+  "orientations" : [
+    {
+      "image" : "cyctorch.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+    
+      "direction" : "left",
+      "flipImages" : true,
+    
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "animationPosition" : [-8, 0]
+    },
+  {
+      "image" : "cyctorch.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+    
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "animationPosition" : [-8, 0]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/torch.ogg",
+  
+  "animation" : "cyctorch.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/torch_on1.ogg", "/sfx/objects/torch_on2.ogg" ],
+      "off" : [ "/sfx/objects/torch_off1.ogg", "/sfx/objects/torch_off2.ogg", "/sfx/objects/torch_off3.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "cyctorch.png",
+    "fg" : "cyctorchlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inboundNodes" : [ [0, 1] ]
+  
+  // "interactive" : false
+}

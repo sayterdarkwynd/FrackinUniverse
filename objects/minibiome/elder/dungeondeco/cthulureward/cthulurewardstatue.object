@@ -1,0 +1,55 @@
+{
+  "objectName" : "cthulurewardstatue",
+  "colonyTags" : ["fu","science","knowledge","storage"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "price" : 145,
+  "description" : "This is more than a bit creepy. But it's holding something interesting...",
+  "shortdescription" : "Elder Artifact",
+  "race" : "apex",
+
+  "inventoryIcon" : "wagnericon.png",
+"orientations" : [
+    {
+    
+      "imageLayers" : [ { "image" : "cthulurewardstatuelit.png:<color>", "fullbright" : true }, { "image" : "cthulurewardstatue.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [-1, 1],
+
+      "imagePosition" : [-18, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+    
+      "imageLayers" : [ { "image" : "cthulurewardstatuelit.png:<color>", "fullbright" : true }, { "image" : "cthulurewardstatue.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-18, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/bookcase_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/bookcase_close.ogg" ],
+  "slotCount" : 24,
+  "uiConfig" : "/interface/chests/chest%slots%.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/objects/scripts/autofill.lua" ],
+  "scriptDelta" : 240
+}

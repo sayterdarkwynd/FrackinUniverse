@@ -1,0 +1,74 @@
+{
+  "itemName" : "shockarang",
+  "price" : 3000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "category" : "boomerang",
+  "description" : "Zap your foes with super fun electricity!",
+  "shortdescription" : "Shock Boomerang",
+  "tooltipKind" : "base",
+  "twoHanded" : false,
+  "itemTags" : ["weapon"],
+
+  "inventoryIcon" : "shockarang.png",
+  "animation" : "boomerang.animation",
+  "animationParts" : {
+    "boomerang" : "shockarang.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+  "fireAngleOffset" : 10,
+
+  "projectileType" : "shockarang",
+  "projectileParameters" : {
+    "power" : 6,
+    "knockback" : 20,
+
+    "ignoreTerrain" : false,
+    "controlForce" : 165,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 1.0
+  },
+  "level" : 5,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "objectName" : "wildrockrootseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "farmable",
+  "description" : "A very hard vegetable, capable of resisting damage.",
+  "shortdescription" : "Rockroot Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+    "learnBlueprintsOnPickup" : [ "beetlesproutseed" ],
+  "inventoryIcon" : "rockrootseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "rockrootseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [300, 600]
+    },
+    {
+      "duration" : [300, 600]
+    },
+    {
+      "alts" : 5,
+      "duration" : [110, 130]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "rockrootHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "rockrootseed", 1, { } ] ]
+  ]
+}

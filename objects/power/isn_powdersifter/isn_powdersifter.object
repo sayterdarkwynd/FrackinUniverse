@@ -1,0 +1,56 @@
+{
+  "objectName" : "isn_powdersifter",
+  "rarity" : "Common",
+    "colonyTags" : [ "science" ],
+  "description" : "Sifts through powders to find useful reagents. Requires 2u of power.",
+  "shortdescription" : "^cyan;Powder Sifter^white;",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 500,
+  "objectType" : "container",
+  "printable" : false,
+
+  "apexDescription" : "This machine can turn useless dust into valuable reagents.",
+  "avianDescription" : "Ashes to riches, dust to stuff.",
+  "floranDescription" : "Weird thing ssscrabble through garbage, find good rock. Floran throw at fishman.",
+  "glitchDescription" : "Identification. This is a high power centrifuge capable of working with powdered solids.",
+  "humanDescription" : "Instant treasure, just add useless crap!",
+  "hylotlDescription" : "A device to seek diamonds in the rough. Oddly poetic, if ultimately capitalist.",
+  
+  "scripts" : [ "/objects/power/isn_powdersifter/isn_powdersifter.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+				"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 15,
+  
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 25,
+  "uiConfig" : "/objects/power/isn_powdersifter/isn_powdersifter.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  
+  "commonOutputs" : [ "saltpeter", "ironore", "coalore", "sulphur", "rawminerals", "nutrientpaste", "copperore", "fu_salt", "ff_silicon", "lead" ],
+  "uncommonOutputs" : [ "petalred", "petalyellow", "petalblue", "bone", "crystal", "silverore", "goldore", "fu_carbon" ],
+  "rareOutputs" : [ "crystal", "icecrystal", "platinumore", "diamond" ],
+  
+  "animation" : "/objects/power/isn_powdersifter/isn_powdersifter.animation",
+
+  "animationParts" : {
+    "isn_powdersifter" : "isn_powdersifter.png"
+  },
+  "animationPosition" : [0, 0],
+  
+  "inboundNodes" : [ [1, 1] ],
+  "isn_powerReciever" : true,
+  "isn_requiredPower" : 2,
+  
+  "inventoryIcon" : "isn_powdersiftericon.png",
+  "orientations" : [
+    {
+      "image" : "isn_powdersifter.png:<color>.idle",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

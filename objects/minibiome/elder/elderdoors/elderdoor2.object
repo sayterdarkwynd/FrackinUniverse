@@ -1,0 +1,41 @@
+{
+  "objectName" : "elderdoor2",
+  "colonyTags" : ["door","elder"],
+  "printable" : false,
+  "rarity" : "rare",
+
+  "category" : "door",
+  "price" : 60,
+  "description" : "A malignant and unsettling door.",
+  "shortdescription" : "Elder Door",
+  "race" : "generic",
+
+  "inventoryIcon" : "elderdoor2icon.png",
+  "orientations" : [
+    {
+      "image" : "elderdoor2.png:default",
+      "imagePosition" : [-20, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/wooddoor_open.ogg" ],
+      "close" : [ "/sfx/objects/wooddoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "elderdoor2.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inboundNodes" : [ [-1, 4] ],
+  "outboundNodes" : [ [0, 0] ]
+}

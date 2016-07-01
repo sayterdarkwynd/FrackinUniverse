@@ -1,0 +1,114 @@
+{
+  "objectName" : "avalistriplight",
+  "colonyTags" : [ "avali", "avalicamp", "light" ], 
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 60,
+  "printable" : false,  
+  "lightColors" : {
+    "default" : [255, 228, 207],
+    "red" : [255, 127, 127],
+    "blue" : [71, 134, 255],
+    "green" : [88, 255, 0],
+    "yellow" : [255, 230, 127],
+    "orange" : [255, 179, 127],
+    "pink" : [255, 177, 255],
+    "black" : [100, 100, 100],
+    "white" : [255, 255, 255]
+  },
+  "pointLight" : true,
+  "pointBeam" : 0.6,
+  "description" : "A small inset directional light.",
+  "shortdescription" : "Inset Lighting",
+  "race" : "avali",
+
+  "apexDescription" : "It's a strip light, not much I can really add to that.",
+  "avianDescription" : "I have the inexplicable urge to stash this in my bed-nest...",
+  "floranDescription" : "Portable sunlight!",
+  "glitchDescription" : "Ambivalent. It is a fluorescent light source.",
+  "humanDescription" : "Wireless, I wonder how long the battery lasts?",
+  "hylotlDescription" : "The fuel cell on this lamp has a longer lifespan than its user.",
+
+  "inventoryIcon" : "avalistriplighticon.png",
+  "orientations" : [
+  {
+      "image" : "avalistriplight2.png:<color>.<frame>",
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "imagePosition" : [0, 0],
+    "direction" : "right",
+    
+    "animationParts" : {
+      "light" : "avalistriplight2.png"
+    },
+    "animationPosition" : [0, 0],
+
+      "spaceScan" : 0.01,
+      "anchors" : [ "left"],
+      "lightPosition" : [0, 0],
+      "beamAngle" : 0
+    },
+  {
+      "image" : "avalistriplight2.png:<color>.<frame>",
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "imagePosition" : [0, 0],
+    "direction" : "right",
+    
+    "animationParts" : {
+      "light" : "avalistriplight2.png"
+    },
+    "animationPosition" : [0, 0],
+
+      "spaceScan" : 0.01,
+      "anchors" : [ "right"],
+      "lightPosition" : [0, 0],
+      "beamAngle" : 180
+    },
+    {
+      "image" : "avalistriplight.png:<color>.<frame>",
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "imagePosition" : [0, 0],
+    
+    "animationParts" : {
+    "light" : "avalistriplight.png"
+  },
+  "animationPosition" : [0, 0],
+
+      "spaceScan" : 0.01,
+    "fgAnchors" : [ [0, -1] ],
+      "anchors" : [ "bottom" ],
+      "lightPosition" : [0, 0],
+      "beamAngle" : 90
+    },
+  {
+      "image" : "avalistriplight.png:<color>.<frame>",
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "imagePosition" : [0, 0],
+    
+    "animationParts" : {
+    "light" : "avalistriplight.png"
+    },
+    "animationPosition" : [0, 0],
+
+      "spaceScan" : 0.01,
+      "anchors" : [ "background" ],
+      "lightPosition" : [0, 0],
+      "beamAngle" : 270
+    }
+  
+  ],
+"animation" : "/objects/wired/light/lighttoggle.animation",
+    "animationParts" : {
+      "light" : "avalistriplight.png"
+    },
+    "animationPosition" : [0, 0],
+  
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inboundNodes" : [ [0, 0] ]
+}
