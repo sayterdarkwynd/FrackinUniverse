@@ -1,0 +1,651 @@
+{
+	"metadata" : {
+		"name" : "crystalcavern",
+		"species" : "dummy",
+		"rules" : [],
+		"maxRadius" : 2000,
+		"maxParts" : 18,
+		"anchor" : [ "1e", "2e" ]
+	},
+	
+	// tiles //
+	
+	"tiles" : [
+	    {
+			"value" : [85, 255, 0, 255],
+			"comment" : "Player Spawn",
+			"brush" : [ [ "playerstart" ] ]
+		},
+		{
+			"value" : [255, 0, 220, 255],
+			"comment" : "magic pinkppp, a no-op value",
+			"connector" : false
+		}, 
+		{
+			"value" : [0, 0, 0, 255],
+			"comment" : "sky anchor",
+			"brush" : [["clear"]],
+			"rules" : [["worldGenMustContainAirBackground"], ["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [255, 255, 255, 255],
+			"comment" : "ground anchor",
+			"brush" : [["surface"]],
+			"rules" : [["worldGenMustContainSolidBackground"], ["allowOverdrawing"]]
+		},
+		{
+			"value" : [10, 10, 10, 255],
+			"comment" : "Empty hole",
+			"brush" : [["clear"]],
+			"connector" : false
+		}, 
+		{
+			"value" : [20, 20, 20, 255],
+			"comment" : "Empty hole overwritable",
+			"brush" : [["clear"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [30, 30, 30, 255],
+			"comment" : "Biome tile brush overwritable",
+			"brush" : [["surface"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [40, 40, 40, 255],
+			"comment" : "Biome tile brush non-overwritable",
+			"brush" : [["surface"]]
+		}, 
+		{
+			"value" : [50, 50, 50, 255],
+			"comment" : "Biome tile background brush",
+			"brush" : [["clear"], ["surfacebackground"]]
+		}, 
+		{
+			"value" : [0, 38, 255, 255],
+			"comment" : "bright blue, room coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [240, 255, 0, 255],
+			"comment" : "bright yellow, entrance piece coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [153, 217, 234, 255],
+			"comment" : "background crystalblock",
+			"brush" : [ [ "clear" ], [ "back", "iceblock1" ] ]
+		},
+
+		{
+			"value" : [0, 162, 232, 255],
+			"comment" : "foreground crystalblock",
+			"brush" : [ [ "clear" ], [ "back", "iceblock1" ], [ "front", "iceblock1" ] ]
+		},
+		
+		{
+			"value" : [165, 126, 199, 255],
+			"comment" : "background purplecrystalmaterial",
+			"brush" : [ [ "clear" ], [ "back", "iceblock2" ] ]
+		},
+
+		{
+			"value" : [100, 60, 136, 255],
+			"comment" : "foreground purplecrystalmaterial",
+			"brush" : [ [ "clear" ], [ "back", "iceblock2" ], [ "front", "iceblock2" ] ]
+		},
+		
+		// Flora //
+		
+		{
+			"value" : [26, 77, 0, 255],
+			"comment" : "biome tree",
+			"rules" : [ [ "allowOverdrawing" ] ],
+			"brush" : [ [ "biometree" ] ]
+		},
+
+		{
+			"value" : [34, 102, 0, 255],
+			"comment" : "biome flora",
+			"rules" : [ [ "allowOverdrawing" ] ],
+			"brush" : [ [ "biomeitems" ] ]
+		},
+		
+		{
+			"value" : [136, 0, 21, 255],
+			"comment" : "flowerblue crop",
+			"brush" : [ [ "clear" ], [ "object", "flowerblue", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [137, 0, 21, 255],
+			"comment" : "flowerred crop",
+			"brush" : [ [ "clear" ], [ "object", "flowerred", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [138, 0, 21, 255],
+			"comment" : "floweryellow crop",
+			"brush" : [ [ "clear" ], [ "object", "floweryellow", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [179, 255, 94, 255],
+			"comment" : "crystalplant crop",
+			"brush" : [ [ "clear" ], [ "object", "wildcrystalplantseed", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [225, 255, 94, 255],
+			"comment" : "mushroom crop",
+			"brush" : [ [ "clear" ], [ "object", "mushroomseed", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+
+		// Directional objects //
+		
+		{
+			"value" : [226, 255, 94, 255],
+			"comment" : "agaran mushroom left",
+			"brush" : [ [ "clear" ], [ "object", "agaranmushroom", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [227, 255, 94, 255],
+			"comment" : "agaran mushroom right",
+			"brush" : [ [ "clear" ], [ "object", "agaranmushroom", { "direction" : "right" } ] ]
+		},
+		
+		// platforms //
+		
+		{
+			"value" : [181, 181, 178, 255],
+			"comment" : "stoneplatform",
+			"brush" : [ [ "clear" ], [ "front", "stoneplatform" ] ]
+		},		
+
+		// objects, no direction //
+		
+		{
+			"value" : [163, 73, 164, 255],
+			"comment" : "crystalcavebush1",
+			"brush" : [ [ "clear" ], [ "object", "crystalcavebush1" ] ]
+		},
+		
+		{
+			"value" : [164, 73, 164, 255],
+			"comment" : "crystalcavebush2",
+			"brush" : [ [ "clear" ], [ "object", "crystalcavebush2" ] ]
+		},
+		
+		{
+			"value" : [165, 73, 164, 255],
+			"comment" : "crystalcavebush3",
+			"brush" : [ [ "clear" ], [ "object", "crystalcavebush3" ] ]
+		},
+		
+		{
+			"value" : [166, 73, 164, 255],
+			"comment" : "crystalcavebush4",
+			"brush" : [ [ "clear" ], [ "object", "crystalcavebush4" ] ]
+		},
+		
+		{
+			"value" : [200, 191, 231, 255],
+			"comment" : "crystalchest",
+			"brush" : [ [ "clear" ], [ "object", "crystalchest", { "parameters" : { "treasurePools" : [ "crystalTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [201, 191, 231, 255],
+			"comment" : "crystalchest right normal treasure",
+			"brush" : [ [ "clear" ], [ "object", "crystalchest", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [119, 182, 124, 255],
+			"comment" : "tent1",
+			"brush" : [ [ "clear" ], [ "object", "tent1" ] ]
+		},
+		
+		{
+			"value" : [253, 143, 77, 255],
+			"comment" : "campfire",
+			"brush" : [ [ "clear" ], [ "object", "campfire" ] ]
+		},
+		
+		{
+			"value" : [64, 128, 128, 255],
+			"comment" : "treasurechest",
+			"brush" : [ [ "clear" ], [ "object", "treasurechest", { "parameters" : { "treasurePools" : [ "exsupertreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [65, 128, 128, 255],
+			"comment" : "woodencrategoldfilled",
+			"brush" : [ [ "clear" ], [ "object", "woodencrategoldfilled", { "parameters" : { "treasurePools" : [ "exsupertreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [66, 128, 128, 255],
+			"comment" : "goldenpedestal",
+			"brush" : [ [ "clear" ], [ "object", "goldenpedestal" ] ]
+		},
+		
+		{
+			"value" : [67, 128, 128, 255],
+			"comment" : "grail",
+			"brush" : [ [ "clear" ], [ "object", "grail" ] ]
+		},
+		
+		{
+			"value" : [68, 128, 128, 255],
+			"comment" : "diamonddisplay",
+			"brush" : [ [ "clear" ], [ "object", "diamonddisplay" ] ]
+		},
+		
+		{
+			"value" : [145, 192, 220, 255],
+			"comment" : "woodentalllantern",
+			"brush" : [ [ "clear" ], [ "object", "woodentalllantern", { "parameters" : { "defaultLightState" : false } } ] ]
+		},
+		
+		{
+			"value" : [146, 192, 220, 255],
+			"comment" : "woodentalllantern",
+			"brush" : [ [ "clear" ], [ "object", "woodentalllantern" ] ]
+		},
+		
+		{
+			"value" : [81, 143, 174, 255],
+			"comment" : "classicfountain",
+			"brush" : [ [ "clear" ], [ "object", "classicfountain" ] ]
+		},
+		
+		{
+			"value" : [26, 255, 217, 255],
+			"comment" : "bathroomstall facing left",
+			"brush" : [ [ "clear" ], [ "object", "bathroomstall", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [255, 26, 64, 255],
+			"comment" : "bathroomtrash facing left",
+			"brush" : [ [ "clear" ], [ "object", "bathroomtrash", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [255, 102, 0, 255],
+			"comment" : "fireextinguisher facing left",
+			"brush" : [ [ "clear" ], [ "object", "fireextinguisher", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [26, 255, 247, 255],
+			"comment" : "outpostbed facing left",
+			"brush" : [ [ "clear" ], [ "object", "outpostbed", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [24, 242, 235, 255],
+			"comment" : "outpostbed facing right",
+			"brush" : [ [ "clear" ], [ "object", "outpostbed", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [125, 26, 255, 255],
+			"comment" : "outpostcargocrateshort facing left",
+			"brush" : [ [ "clear" ], [ "object", "outpostcargocrateshort", { "parameters" : { "treasurePools" : [ "crystalminingtreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [117, 26, 255, 255],
+			"comment" : "outpostcargocrate facing left",
+			"brush" : [ [ "clear" ], [ "object", "outpostcargocrate", { "parameters" : { "treasurePools" : [ "crystalminingtreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [255, 217, 26, 255],
+			"comment" : "outpostceilinglight facing left",
+			"brush" : [ [ "clear" ], [ "object", "outpostceilinglight", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [255, 110, 26, 255],
+			"comment" : "miningbelt facing left",
+			"brush" : [ [ "clear" ], [ "object", "miningbelt", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [255, 117, 26, 255],
+			"comment" : "miningcrusher facing left",
+			"brush" : [ [ "clear" ], [ "object", "miningcrusher", { "direction" : "left" } ] ]
+		},
+		
+		// Obstacles //
+		
+		{
+			"value" : [0, 214, 251, 255],
+			"comment" : "icestalagmite1",
+			"brush" : [ [ "clear" ], [ "object", "icestalagmite1" ] ]
+		},
+
+		// npcs //
+		
+		{
+			"value" : [0, 152, 104, 255],
+			"comment" : "small quadruped npc",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "poptop",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+
+		{
+			"value" : [152, 0, 79, 255],
+			"comment" : "large quadruped npc",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "poptop",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+    
+		{
+			"value" : [152, 125, 0, 255],
+			"comment" : "miniboss quadruped npc",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "adultpoptop",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+    
+		{
+		"value" : [64, 0, 152, 255],
+		"comment" : "small flying npc",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "batong",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+    
+		{
+		"value" : [152, 54, 0, 255],
+		"comment" : "miniboss flying npc",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "icetroll",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+    
+		{
+		"value" : [152, 0, 0, 255],
+		"comment" : "small biped npc",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "smallbiped",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+			}
+			}
+			] ]
+		},
+
+		{
+		"value" : [0, 136, 152, 255],
+		"comment" : "large biped npc",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "largebiped",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+			}
+			}
+			] ]
+		},
+    
+		{
+		"value" : [173, 0, 179, 255],
+		"comment" : "miniboss biped npc",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "adultpoptop",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+		
+		{
+		"value" : [200, 100, 210, 255],
+		"comment" : "largefish monster",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "largefish",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+		
+		{
+			"value" : [205, 0, 0, 255],
+			"comment" : "human miner",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "human",
+					"typeName" : "crystalminer"
+			}
+			] ]
+		},
+
+		// liquids //
+
+		{
+			"value" : [54, 63, 105, 255],
+			"comment" : "lava pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "lava" ] ]
+		},
+		
+		{
+			"value" : [64, 198, 255, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+		},
+		
+		{
+			"value" : [28, 10, 254, 255],
+			"comment" : "healing pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "healingliquid" ] ]
+		}
+		
+		],
+	
+	"parts" : [
+	
+	{
+      "name" : "1e",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+      [ "doNotCombineWith", [ "2e" ] ]  
+	  ],
+      "def" : [ "image", [ "1e.png", "1eobjects.png" ] ]
+    },
+	
+    {
+      "name" : "2e",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+      [ "doNotCombineWith", [ "1e" ] ]	  
+	  ],
+      "def" : [ "image", [ "2e.png", "2eobjects.png"  ] ]
+    },
+	
+	{
+      "name" : "1",
+      "rules" : [ [ "doNotConnectToPart", [ "1" ] ] ],
+      "def" : [ "image", [ "1.png", "1objects.png" ] ]
+    },
+
+	{
+      "name" : "2",
+      "rules" : [ [ "maxSpawnCount", [1] ] ],
+      "def" : [ "image", [ "2.png", "2liquids.png", "2objects.png" ] ]
+    },
+	
+	{
+      "name" : "3",
+      "rules" : [ [ "doNotConnectToPart", [ "3" ] ] ],
+      "def" : [ "image", [ "3.png", "3objects.png", "3liquids.png" ] ]
+    },
+	
+	{
+      "name" : "4",
+      "rules" : [ [ "doNotConnectToPart", [ "4" ] ] ],
+      "def" : [ "image", [ "4.png", "4objects.png", "4liquids.png" ] ]
+    },
+	
+	{
+      "name" : "5",
+      "rules" : [ [ "maxSpawnCount", [2] ] ],
+      "def" : [ "image", [ "5.png", "5objects.png", "5liquids.png" ] ]
+    },
+	
+	{
+      "name" : "6",
+      "rules" : [ [ "maxSpawnCount", [1] ], [ "doNotConnectToPart", [ "1e", "2e" ] ] ],
+      "def" : [ "image", [ "6.png", "6objects.png", "6liquids.png" ] ]
+    },
+	
+	{
+      "name" : "7",
+      "rules" : [ [ "maxSpawnCount", [3] ] ],
+      "def" : [ "image", [ "7.png", "7objects.png" ] ]
+    },
+	
+	{
+      "name" : "8",
+      "rules" : [ [ "maxSpawnCount", [1] ] ],
+      "def" : [ "image", [ "8.png", "8objects.png" ] ]
+    },
+	
+	{
+      "name" : "9",
+     "rules" : [ [ "doNotConnectToPart", [ "9" ] ] ],
+      "def" : [ "image", [ "9.png", "9objects.png" ] ]
+    },
+	
+	{
+      "name" : "11",
+      "rules" : [ [ "doNotConnectToPart", [ "1e", "2e" ] ], [ "maxSpawnCount", [1] ] ],
+      "def" : [ "image", [ "11.png", "11objects.png" ] ]
+    },	
+
+	{
+      "name" : "11a",
+      "rules" : [ [ "doNotConnectToPart", [ "1e", "2e" ] ], [ "maxSpawnCount", [1] ] ],
+      "def" : [ "image", [ "11a.png", "11aobjects.png" ] ]
+    },
+	
+	{
+      "name" : "treasureend1",
+      "rules" : [ [ "ignorePartMaximumRule" ], [ "maxSpawnCount", [1] ] ],
+      "def" : [ "image", [ "treasureend1.png", "treasureend1objects.png" ] ],
+	  "chance" : 0
+    },
+	
+	{
+      "name" : "treasureend2",
+      "rules" : [ [ "ignorePartMaximumRule" ], [ "maxSpawnCount", [1] ] ],
+      "def" : [ "image", [ "treasureend2.png", "treasureend2liquids.png", "treasureend2objects.png" ] ],
+	  "chance" : 0
+    },
+	
+	{
+		"name" : "endup",
+		"rules" : [
+			[ "ignorePartMaximumRule" ]
+		],
+		"def" : [ "image", [ "endup.png" ] ],
+		"chance" : 0
+	},
+	
+	{
+		"name" : "enddown",
+		"rules" : [
+			[ "ignorePartMaximumRule" ]
+		],
+		"def" : [ "image", [ "enddown.png" ] ],
+		"chance" : 0
+	},
+	
+	{
+		"name" : "endleft",
+		"rules" : [
+			[ "ignorePartMaximumRule" ]
+		],
+		"def" : [ "image", [ "endleft.png" ] ],
+		"chance" : 0
+	},
+
+    {
+		"name" : "endright",
+		"rules" : [
+			[ "ignorePartMaximumRule" ]
+		],
+		"def" : [ "image", [ "endright.png" ] ],
+		"chance" : 0
+    }
+	
+	]
+}

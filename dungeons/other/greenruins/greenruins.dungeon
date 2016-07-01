@@ -1,0 +1,1296 @@
+{
+	"metadata" : {
+		"name" : "greenruins",
+		"species" : "dummy",
+		"rules" : [],
+		"maxRadius" : 2000,
+		"maxParts" : 15,
+		"gravity" : 80,
+	        "protected" : true,
+		"anchor" : [ "greenruins1", "greenruins2", "greenruins3", "greenruins4", "greenruins5", "greenruins6","greenruinse1", "greenruinse1a", "greenruinsu1", "greenruinsu1a", "greenruinsu2", "greenruinsu3", "greenruinsu4"  ]
+	},
+	
+	// tiles //
+	
+	"tiles" : [
+	    {
+			"value" : [85, 255, 0, 255],
+			"comment" : "Player Spawn",
+			"brush" : [ [ "playerstart" ] ]
+		},
+		{
+			"value" : [255, 0, 220, 255],
+			"comment" : "magic pinkppp, a no-op value",
+			"connector" : false
+		}, 
+		{
+			"value" : [0, 0, 0, 255],
+			"comment" : "sky anchor",
+			"brush" : [["clear"]],
+			"rules" : [["worldGenMustContainAirBackground"], ["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [255, 255, 255, 255],
+			"comment" : "ground anchor",
+			"brush" : [["surface"]],
+			"rules" : [["worldGenMustContainSolidBackground"], ["allowOverdrawing"]]
+		},
+		{
+			"value" : [10, 10, 10, 255],
+			"comment" : "Empty hole",
+			"brush" : [["clear"]],
+			"connector" : false
+		}, 
+		{
+			"value" : [20, 20, 20, 255],
+			"comment" : "Empty hole overwritable",
+			"brush" : [["clear"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [30, 30, 30, 255],
+			"comment" : "Biome tile brush overwritable",
+			"brush" : [["surface"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [40, 40, 40, 255],
+			"comment" : "Biome tile brush non-overwritable",
+			"brush" : [["surface"]]
+		}, 
+		{
+			"value" : [50, 50, 50, 255],
+			"comment" : "Biome tile background brush",
+			"brush" : [["clear"], ["surfacebackground"]]
+		}, 
+		{
+			"value" : [0, 38, 255, 255],
+			"comment" : "bright blue, room coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [255, 0, 38, 255],
+			"comment" : "bright red, entrance piece coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [38, 255, 0, 255],
+			"comment" : "bright green, entrance piece coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [34, 177, 76, 255],
+			"comment" : "background plantmatter",
+			"brush" : [ [ "clear" ], [ "back", "plantmatter" ] ]
+		},
+
+		{
+			"value" : [19, 100, 44, 255],
+			"comment" : "foreground plantmatter",
+			"brush" : [ [ "clear" ], [ "back", "plantmatter" ], [ "front", "plantmatter" ] ]
+		},
+		
+		{
+			"value" : [181, 230, 29, 255],
+			"comment" : "background vine",
+			"brush" : [ [ "clear" ], [ "back", "vine" ] ]
+		},
+
+		{
+			"value" : [156, 201, 22, 255],
+			"comment" : "foreground vine",
+			"brush" : [ [ "clear" ], [ "back", "vine" ], [ "front", "vine" ] ]
+		},
+		
+		{
+			"value" : [195, 195, 195, 255],
+			"comment" : "background DARKSMOOTHSTONE",
+			"brush" : [ [ "clear" ], [ "back", "darksmoothstone" ] ]
+		},
+		
+		{
+			"value" : [220, 220, 220, 255],
+			"comment" : "background fadedblocks",
+			"brush" : [ [ "clear" ], [ "back", "fadedblocks" ] ]
+		},
+
+		{
+			"value" : [187, 187, 187, 255],
+			"comment" : "foreground fadedblocks",
+			"brush" : [ [ "clear" ], [ "back", "fadedblocks" ], [ "front", "fadedblocks" ] ]
+		},
+		
+		{
+			"value" : [239, 228, 176, 255],
+			"comment" : "background fadedblocks",
+			"brush" : [ [ "clear" ], [ "back", "homewalls1" ] ]
+		},
+
+		{
+			"value" : [224, 203, 101, 255],
+			"comment" : "foreground fadedblocks",
+			"brush" : [ [ "clear" ], [ "back", "homewalls1" ], [ "front", "homewalls1" ] ]
+		},
+		
+		{
+			"value" : [185, 122, 87, 255],
+			"comment" : "foreground dirt",
+			"brush" : [ [ "clear" ], [ "back", "dirt" ], [ "front", "dirt" ] ]
+		},
+		
+		{
+			"value" : [253, 242, 0, 255],
+			"comment" : "background treasurehoard",
+			"brush" : [ [ "clear" ], [ "back", "treasurehoard" ] ]
+		},
+
+		{
+			"value" : [254, 242, 0, 255],
+			"comment" : "foreground treasurehoard",
+			"brush" : [ [ "clear" ], [ "back", "treasurehoard" ], [ "front", "treasurehoard" ] ]
+		},
+		
+		{
+			"value" : [240, 240, 243, 255],
+			"comment" : "background woodenwindow1",
+			"brush" : [ [ "clear" ], [ "back", "woodenwindow1" ] ]
+		},
+		
+		{
+			"value" : [245, 137, 142, 255],
+			"comment" : "background petalblock",
+			"brush" : [ [ "clear" ], [ "back", "petalblock" ] ]
+		},
+
+		{
+			"value" : [237, 28, 36, 255],
+			"comment" : "foreground petalblock",
+			"brush" : [ [ "clear" ], [ "back", "petalblock" ], [ "front", "petalblock" ] ]
+		},
+		
+		// Flora //
+		
+		{
+			"value" : [26, 77, 0, 255],
+			"comment" : "biome tree",
+			"rules" : [ [ "allowOverdrawing" ] ],
+			"brush" : [ [ "biometree" ] ]
+		},
+
+		{
+			"value" : [34, 102, 0, 255],
+			"comment" : "biome flora",
+			"rules" : [ [ "allowOverdrawing" ] ],
+			"brush" : [ [ "biomeitems" ] ]
+		},
+		
+		{
+			"value" : [136, 0, 21, 255],
+			"comment" : "flowerblue crop, 2x2",
+			"brush" : [ [ "clear" ], [ "object", "flowerblue", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [137, 0, 21, 255],
+			"comment" : "flowerred crop",
+			"brush" : [ [ "clear" ], [ "object", "flowerred", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [138, 0, 21, 255],
+			"comment" : "floweryellow crop",
+			"brush" : [ [ "clear" ], [ "object", "floweryellow", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [225, 255, 94, 255],
+			"comment" : "mushroom crop 2x2",
+			"brush" : [ [ "clear" ], [ "object", "mushroomseed", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+
+		// Directional objects //
+		
+		{
+			"value" : [226, 255, 94, 255],
+			"comment" : "agaran mushroom left 4x5 x-1",
+			"brush" : [ [ "clear" ], [ "object", "agaranmushroom", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [227, 255, 94, 255],
+			"comment" : "agaran mushroom right",
+			"brush" : [ [ "clear" ], [ "object", "agaranmushroom", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [115, 230, 0, 255],
+			"comment" : "floranlamp1 left 3x4 x-3",
+			"brush" : [ [ "clear" ], [ "object", "floranlamp1", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [116, 230, 0, 255],
+			"comment" : "floranlamp1 right",
+			"brush" : [ [ "clear" ], [ "object", "floranlamp1", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [123, 206, 125, 255],
+			"comment" : "chestplant1 left normal treasure 2x2 x-1",
+			"brush" : [ [ "clear" ], [ "object", "chestplant1", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [124, 206, 125, 255],
+			"comment" : "chestplant1 right normal treasure",
+			"brush" : [ [ "clear" ], [ "object", "chestplant1", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [9, 230, 100, 255],
+			"comment" : "florancrate left 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [10, 230, 100, 255],
+			"comment" : "florancrate  right 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [85, 85, 0, 255],
+			"comment" : "plantdoor2 left 5x5 x-2 y-4",
+			"brush" : [ [ "clear" ], [ "object", "plantdoor2", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [194, 199, 209, 255],
+			"comment" : "huntingplatformrocks 6x3 x-4",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformrocks", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [195, 199, 209, 255],
+			"comment" : "huntingplatformrocks",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformrocks", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [194, 89, 209, 255],
+			"comment" : "huntingplatformleaves 7x3 x-5",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformleaves", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [195, 89, 209, 255],
+			"comment" : "huntingplatformleaves",
+			"brush" : [ [ "clear" ], [ "object", "huntingplatformleaves", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [228, 233, 139, 255],
+			"comment" : "birdthrone 2x3 x-1",
+			"brush" : [ [ "clear" ], [ "object", "birdthrone", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [229, 233, 139, 255],
+			"comment" : "birdthrone 2x3 x-1",
+			"brush" : [ [ "clear" ], [ "object", "birdthrone", { "direction" : "right" } ] ]
+		},	
+		
+		{
+			"value" : [177, 90, 48, 255],
+			"comment" : "tribalbookcase1 4x5 x-3",
+			"brush" : [ [ "clear" ], [ "object", "tribalbookcase1", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [178, 90, 48, 255],
+			"comment" : "tribalbookcase1",
+			"brush" : [ [ "clear" ], [ "object", "tribalbookcase1", { "direction" : "right" } ] ]
+		},	
+		
+		{
+			"value" : [179, 90, 48, 255],
+			"comment" : "medievalbookcase 3x5 x-2",
+			"brush" : [ [ "clear" ], [ "object", "medievalbookcase", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [180, 90, 48, 255],
+			"comment" : "medievalbookcase",
+			"brush" : [ [ "clear" ], [ "object", "medievalbookcase", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [181, 90, 48, 255],
+			"comment" : "medievalcodex 2x2 x-1",
+			"brush" : [ [ "clear" ], [ "object", "medievalcodex", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [182, 90, 48, 255],
+			"comment" : "medievalcodex",
+			"brush" : [ [ "clear" ], [ "object", "medievalcodex", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [174, 94, 94, 255],
+			"comment" : "woodchair left 2x3 x-1",
+			"brush" : [ [ "clear" ], [ "object", "woodchair", { "direction" : "left" } ] ]
+		},	
+
+		{
+			"value" : [175, 94, 94, 255],
+			"comment" : "woodchair right",
+			"brush" : [ [ "clear" ], [ "object", "woodchair", { "direction" : "right" } ] ]
+		},			
+
+		// objects, no direction //
+		
+		{
+			"value" : [85, 195, 88, 255],
+			"comment" : "plantbiolight 1x1",
+			"brush" : [ [ "clear" ], [ "object", "plantbiolight" ] ]
+		},
+		
+		{
+			"value" : [0, 128, 128, 255],
+			"comment" : "plantvolcano1 3x1 x-2",
+			"brush" : [ [ "clear" ], [ "object", "plantvolcano1" ] ]
+		},
+		
+		{
+			"value" : [1, 128, 128, 255],
+			"comment" : "plantvolcano2 4x2 x-3",
+			"brush" : [ [ "clear" ], [ "object", "plantvolcano2" ] ]
+		},
+		
+		{
+			"value" : [2, 128, 128, 255],
+			"comment" : "plantvolcano3 4x2 x-3",
+			"brush" : [ [ "clear" ], [ "object", "plantvolcano3" ] ]
+		},
+		
+		{
+			"value" : [3, 128, 128, 255],
+			"comment" : "plantvolcano4 4x2 x-3",
+			"brush" : [ [ "clear" ], [ "object", "plantvolcano4" ] ]
+		},
+		
+		{
+			"value" : [4, 128, 128, 255],
+			"comment" : "plantvolcano5 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "plantvolcano5" ] ]
+		},
+		
+		{
+			"value" : [57, 155, 60, 255],
+			"comment" : "plantorb 4x3 x-3",
+			"brush" : [ [ "clear" ], [ "object", "plantorb", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [51, 255, 51, 255],
+			"comment" : "floranlight 2x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "floranlight" ] ]
+		},
+		
+		{
+			"value" : [164, 0, 24, 255],
+			"comment" : "floranstove 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "floranstove" ] ]
+		},
+		
+		{
+			"value" : [174, 0, 24, 255],
+			"comment" : "plantbed4 7x2 x-4",
+			"brush" : [ [ "clear" ], [ "object", "plantbed4" ] ]
+		},
+		
+		{
+			"value" : [40, 0, 81, 255],
+			"comment" : "wallshackles 3x3 x-2 y-3 ",
+			"brush" : [ [ "clear" ], [ "object", "wallshackles" ] ]
+		},
+		
+		{
+			"value" : [34, 98, 36, 255],
+			"comment" : "huntinglight1 2x4 x-2",
+			"brush" : [ [ "clear" ], [ "object", "huntinglight1" ] ]
+		},
+		
+		{
+			"value" : [35, 98, 36, 255],
+			"comment" : "huntinglight2 1x3",
+			"brush" : [ [ "clear" ], [ "object", "huntinglight2" ] ]
+		},
+		
+		{
+			"value" : [45, 45, 0, 255],
+			"comment" : "petalfountain 8x6 x-5",
+			"brush" : [ [ "clear" ], [ "object", "petalfountain" ] ]
+		},
+		
+		{
+			"value" : [64, 128, 128, 255],
+			"comment" : "treasurechest 3x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "treasurechest", { "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [65, 128, 128, 255],
+			"comment" : "woodencrategoldfilled 3x3 x-2",
+			"brush" : [ [ "clear" ], [ "object", "woodencrategoldfilled", { "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [66, 128, 128, 255],
+			"comment" : "barrelgoldfilled 3x4 x-2",
+			"brush" : [ [ "clear" ], [ "object", "barrelgoldfilled", { "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [222, 224, 139, 255],
+			"comment" : "sandstonestatuefloran 2x8 x-2",
+			"brush" : [ [ "clear" ], [ "object", "sandstonestatuefloran" ] ]
+		},
+		
+		{
+			"value" : [85, 170, 0, 255],
+			"comment" : "huntingbigstatue 6x11 x-4",
+			"brush" : [ [ "clear" ], [ "object", "huntingbigstatue" ] ]
+		},
+		
+		{
+			"value" : [146, 85, 24, 255],
+			"comment" : "huntinggroundtorch 2x3 x-2",
+			"brush" : [ [ "clear" ], [ "object", "huntinggroundtorch" ] ]
+		},
+		
+		{
+			"value" : [166, 138, 74, 255],
+			"comment" : "huntingbench 4x2 x-3",
+			"brush" : [ [ "clear" ], [ "object", "huntingbench" ] ]
+		},
+		
+		{
+			"value" : [6, 138, 94, 255],
+			"comment" : "flowerstatue 3x5 x-2",
+			"brush" : [ [ "clear" ], [ "object", "flowerstatue" ] ]
+		},
+		
+		{
+			"value" : [255, 117, 51, 255],
+			"comment" : "plantbrokencage 6x5 x-4",
+			"brush" : [ [ "clear" ], [ "object", "plantbrokencage" ] ]
+		},
+		
+		{
+			"value" : [84, 41, 41, 255],
+			"comment" : "floranpelt3 3x5 x-1 y-3",
+			"brush" : [ [ "clear" ], [ "object", "floranpelt3" ] ]
+		},
+		
+		{
+			"value" : [85, 41, 41, 255],
+			"comment" : "floranpelt1 3x5 x-5 y-4",
+			"brush" : [ [ "clear" ], [ "object", "floranpelt1" ] ]
+		},
+		
+		{
+			"value" : [255, 175, 201, 255],
+			"comment" : "huntingtrophy1 2x2 x-2 y-2",
+			"brush" : [ [ "clear" ], [ "object", "huntingtrophy1" ] ]
+		},
+		
+		{
+			"value" : [255, 176, 201, 255],
+			"comment" : "huntingtrophy2 2x2 x-2 y-2",
+			"brush" : [ [ "clear" ], [ "object", "huntingtrophy2" ] ]
+		},
+		
+		{
+			"value" : [255, 177, 201, 255],
+			"comment" : "huntingtrophy3 2x2 x-2 y-2",
+			"brush" : [ [ "clear" ], [ "object", "huntingtrophy3" ] ]
+		},
+		
+		{
+			"value" : [255, 178, 201, 255],
+			"comment" : "huntingpike1 2x5 x-1",
+			"brush" : [ [ "clear" ], [ "object", "huntingpike1" ] ]
+		},
+		
+		{
+			"value" : [255, 179, 201, 255],
+			"comment" : "huntingpike2 2x3 x-1",
+			"brush" : [ [ "clear" ], [ "object", "huntingpike2" ] ]
+		},
+		
+		{
+			"value" : [255, 180, 201, 255],
+			"comment" : "huntingpike3 1x4",
+			"brush" : [ [ "clear" ], [ "object", "huntingpike3" ] ]
+		},
+		
+		{
+			"value" : [189, 79, 202, 255],
+			"comment" : "hourglass 2x2 x-1",
+			"brush" : [ [ "clear" ], [ "object", "hourglass" ] ]
+		},
+		
+		{
+			"value" : [145, 145, 200, 255],
+			"comment" : "medievalarmorarmed 4x6 x-3",
+			"brush" : [ [ "clear" ], [ "object", "medievalarmorarmed" ] ]
+		},
+		
+		{
+			"value" : [87, 87, 172, 255],
+			"comment" : "largebell 6x6 x-3 y-6",
+			"brush" : [ [ "clear" ], [ "object", "largebell" ] ]
+		},
+		
+		{
+			"value" : [176, 94, 94, 255],
+			"comment" : "woodtable 4x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "woodtable" ] ]
+		},
+		
+		{
+			"value" : [1, 201, 30, 255],
+			"comment" : "venusdepixel 3x6 x-1",
+			"brush" : [ [ "clear" ], [ "object", "venusdepixel" ] ]
+		},
+		
+		{
+			"value" : [2, 201, 30, 255],
+			"comment" : "grandfatherclock 2x5 x-1",
+			"brush" : [ [ "clear" ], [ "object", "grandfatherclock" ] ]
+		},
+		
+		{
+			"value" : [0, 201, 100, 255],
+			"comment" : "flowerlamp 3x3",
+			"brush" : [ [ "clear" ], [ "object", "flowerlamp" ] ]
+		},
+		
+		{
+			"value" : [0, 202, 100, 255],
+			"comment" : "giantflowerlamp 2x2",
+			"brush" : [ [ "clear" ], [ "object", "giantflowerlamp" ] ]
+		},
+		
+		{
+			"value" : [255, 255, 6, 255],
+			"comment" : "grail 2x2 x-1",
+			"brush" : [ [ "clear" ], [ "object", "grail" ] ]
+		},
+		
+		{
+			"value" : [255, 255, 7, 255],
+			"comment" : "goldenpedestal 2x3 x-1",
+			"brush" : [ [ "clear" ], [ "object", "goldenpedestal" ] ]
+		},
+		
+		{
+			"value" : [255, 255, 8, 255],
+			"comment" : "mysteriouslight 2x2",
+			"brush" : [ [ "clear" ], [ "object", "mysteriouslight" ] ]
+		},
+		
+		{
+			"value" : [12, 214, 98, 255],
+			"comment" : "shroomstatue 3x5 x-1",
+			"brush" : [ [ "clear" ], [ "object", "shroomstatue" ] ]
+		},
+		
+		{
+			"value" : [13, 214, 98, 255],
+			"comment" : "shroomwardrobe 4x5 x-2",
+			"brush" : [ [ "clear" ], [ "object", "shroomwardrobe", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [14, 214, 98, 255],
+			"comment" : "shroombed 6x3 x-3",
+			"brush" : [ [ "clear" ], [ "object", "shroombed" ] ]
+		},
+		
+		{
+			"value" : [115, 115, 115, 255],
+			"comment" : "tombthing1 6x2 x-4",
+			"brush" : [ [ "clear" ], [ "object", "tombthing1", { "parameters" : { "treasurePools" : [ "tombtreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [116, 116, 116, 255],
+			"comment" : "tombthing2 6x2 x-4",
+			"brush" : [ [ "clear" ], [ "object", "tombthing2", { "parameters" : { "treasurePools" : [ "tombtreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [117, 117, 117, 255],
+			"comment" : "tombstone11 2x4 x-1",
+			"brush" : [ [ "clear" ], [ "object", "tombstone11" ] ]
+		},
+		
+		{
+			"value" : [118, 118, 118, 255],
+			"comment" : "tombstatueavian 4x6 x-2",
+			"brush" : [ [ "clear" ], [ "object", "tombstatueavian", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [82, 82, 82, 255],
+			"comment" : "markerwallplaque1 2x2 x-1 y-1",
+			"brush" : [ [ "clear" ], [ "object", "markerwallplaque1" ] ]
+		},
+		
+		{
+			"value" : [83, 83, 83, 255],
+			"comment" : "markerwallplaque2 2x2 x-1 y-1",
+			"brush" : [ [ "clear" ], [ "object", "markerwallplaque2" ] ]
+		},
+		
+		{
+			"value" : [80, 90, 100, 255],
+			"comment" : "ironthrone 4x6 x-3",
+			"brush" : [ [ "clear" ], [ "object", "ironthrone" ] ]
+		},
+		
+		{
+			"value" : [204, 237, 103, 255],
+			"comment" : "reedseed1 2x5",
+			"brush" : [ [ "clear" ], [ "object", "reedseed1" ] ]
+		},
+
+		{
+			"value" : [205, 237, 103, 255],
+			"comment" : "reedseed2 2x5",
+			"brush" : [ [ "clear" ], [ "object", "reedseed2" ] ]
+		},
+		
+		{
+			"value" : [206, 237, 103, 255],
+			"comment" : "reedseed3 2x5",
+			"brush" : [ [ "clear" ], [ "object", "reedseed3" ] ]
+		},
+		
+		{
+			"value" : [207, 237, 103, 255],
+			"comment" : "tallgrass1 2x2",
+			"brush" : [ [ "clear" ], [ "object", "tallgrass1" ] ]
+		},
+		
+		{
+			"value" : [208, 237, 103, 255],
+			"comment" : "tallgrass2 1x2",
+			"brush" : [ [ "clear" ], [ "object", "tallgrass2" ] ]
+		},
+		
+		// platforms //
+		
+		{
+			"value" : [181, 181, 178, 255],
+			"comment" : "stoneplatform",
+			"brush" : [ [ "clear" ], [ "front", "stoneplatform" ] ]
+		},
+		
+		{
+			"value" : [218, 242, 145, 255],
+			"comment" : "plantplatform",
+			"brush" : [ [ "clear" ], [ "front", "plantplatform" ] ]
+		},
+		
+		// Smashables //
+		
+		{
+			"value" : [163, 73, 164, 255],
+			"comment" : "crystalcavebush1",
+			"brush" : [ [ "clear" ], [ "object", "crystalcavebush1" ] ]
+		},
+
+		{
+			"value" : [111, 111, 0, 255],
+			"comment" : "planturn1 2x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "planturn1" ] ]
+		},
+		
+		{
+			"value" : [112, 111, 0, 255],
+			"comment" : "planturn2 1x2",
+			"brush" : [ [ "clear" ], [ "object", "planturn2" ] ]
+		},
+		
+		{
+			"value" : [113, 111, 0, 255],
+			"comment" : "planturn3 1x2",
+			"brush" : [ [ "clear" ], [ "object", "planturn3" ] ]
+		},
+		
+		{
+			"value" : [255, 255, 1, 255],
+			"comment" : "goldvase1 2x3 x-2",
+			"brush" : [ [ "clear" ], [ "object", "goldvase1" ] ]
+		},
+		
+		{
+			"value" : [255, 255, 2, 255],
+			"comment" : "goldvase2 2x2 x-2",
+			"brush" : [ [ "clear" ], [ "object", "goldvase2" ] ]
+		},
+		
+		{
+			"value" : [255, 255, 3, 255],
+			"comment" : "goldvase3 1x2",
+			"brush" : [ [ "clear" ], [ "object", "goldvase3" ] ]
+		},
+		
+		{
+			"value" : [255, 255, 4, 255],
+			"comment" : "goldvase4 1x2",
+			"brush" : [ [ "clear" ], [ "object", "goldvase4" ] ]
+		},
+		
+		{
+			"value" : [255, 255, 5, 255],
+			"comment" : "goldvase5 2x2",
+			"brush" : [ [ "clear" ], [ "object", "goldvase5" ] ]
+		},
+		
+		{
+			"value" : [1, 201, 100, 255],
+			"comment" : "springbush1 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush1" ] ]
+		},
+		
+		{
+			"value" : [2, 201, 100, 255],
+			"comment" : "springbush2 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush2" ] ]
+		},
+		
+		{
+			"value" : [3, 201, 100, 255],
+			"comment" : "springbush3 3x2",
+			"brush" : [ [ "clear" ], [ "object", "springbush3" ] ]
+		},
+		
+		// Obstacles //
+		
+		{
+			"value" : [134, 138, 117, 255],
+			"comment" : "sawblade 4x2 x-3 base, y-3 side",
+			"brush" : [ [ "clear" ], [ "object", "sawblade" ] ]
+		},
+		
+		// Wired, all wire positions are from placement pixel point! //
+		
+		{
+			"value" : [45, 45, 45, 255],
+			"comment" : "castlehiddentrapdoor 5x3 x-3 y-2 wires inbound -2, 1",
+			"brush" : [ [ "clear" ], [ "object", "castlehiddentrapdoor" ] ]
+		},
+		
+		{
+			"value" : [41, 0, 81, 255],
+			"comment" : "switch shackle 3x4 x-2 y-4, out 0,0 from placement point",
+			"brush" : [ [ "clear" ], [ "object", "medievalswitchshackle" ] ]
+		},
+		
+		{
+			"value" : [55, 55, 55, 255],
+			"comment" : "castleswitch 2x2 x-2 wires outbound 0,0",
+			"brush" : [ [ "clear" ], [ "object", "castleswitch" ] ]
+		},
+		
+		{
+			"value" : [56, 56, 56, 255],
+			"comment" : "medievalbookcaseswitch 3x5 x-2 wires outbound 0,0",
+			"brush" : [ [ "clear" ], [ "object", "medievalbookcaseswitch" ] ]
+		},
+
+		{
+			"value" : [115, 230, 100, 255],
+			"comment" : "classicbardoor left 5x5 x-3 inbound 1, -4",
+			"brush" : [ [ "clear" ], [ "object", "classicbardoor", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [116, 230, 100, 255],
+			"comment" : "classicbardoor  right 5x5 x-3",
+			"brush" : [ [ "clear" ], [ "object", "classicbardoor", { "direction" : "right" } ] ]
+		},
+
+		{
+			"value" : [240, 230, 220, 255],
+			"comment" : "humangenerator facing left - on state 20x4, x-11",
+			"brush" : [ [ "clear" ], [ "object", "humangenerator", { "direction" : "left", "parameters" : { "defaultState" : true } } ] ]
+		},
+		
+		{
+			"value" : [86, 52, 54, 255],
+			"comment" : "largecastledoor 7x8 x-4, inbound 0 7, outbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "largecastledoor", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [87, 52, 54, 255],
+			"comment" : "largecastledoor right",
+			"brush" : [ [ "clear" ], [ "object", "largecastledoor", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [151, 151, 151, 255],
+			"comment" : "tier1switch 2x2 x-1 outbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "tier1switch" ] ]
+		},
+		
+		{
+			"value" : [152, 152, 152, 255],
+			"comment" : "ironswitch 3x3 x-1 outbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "ironswitch" ] ]
+		},
+		
+		{
+			"value" : [0, 0, 10, 255],
+			"comment" : "and switch 2x2 x-1 y-1 inbound -1 -1, -1 0, outbound 0 -1",
+			"brush" : [ [ "clear" ], [ "object", "and" ] ]
+		},
+		
+		{
+			"value" : [168, 84, 0, 255],
+			"comment" : "royalcandles 2x5 x-1 inbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "royalcandles" ] ]
+		},
+		
+		{
+			"value" : [55, 155, 255, 255],
+			"comment" : "medievalchandelier 5x4 x-3 y-3 inbound 0 -1",
+			"brush" : [ [ "clear" ], [ "object", "medievalchandelier" ] ]
+		},
+		
+		{
+			"value" : [56, 155, 255, 255],
+			"comment" : "medievalcandle 1x1 inbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "medievalcandle" ] ]
+		},
+		
+		{
+			"value" : [146, 145, 200, 255],
+			"comment" : "medievalarmorswitch 4x6 x-3 outbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "medievalarmorswitch" ] ]
+		},
+		
+		{
+			"value" : [150, 145, 200, 255],
+			"comment" : "medievalpressureplate 3x1 x-1 outbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "medievalpressureplate" ] ]
+		},
+		
+		{
+			"value" : [151, 145, 200, 255],
+			"comment" : "tinywallswitch 1x1 outbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "tinywallswitch" ] ]
+		},
+		
+		{
+			"value" : [155, 145, 0, 255],
+			"comment" : "torch 1x2 inbound 0 0",
+			"brush" : [ [ "clear" ], [ "object", "torch" ] ]
+		},
+		
+		// Actual wires //
+
+		{
+			"value" : [1, 0, 0, 255],
+			"comment" : "global wire #1 - greenruins u1",
+			"brush" : [ [ "wire", { "group" : "group1", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [2, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins u2",
+			"brush" : [ [ "wire", { "group" : "group2", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [3, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins u1a",
+			"brush" : [ [ "wire", { "group" : "group3", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [4, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins4 door lever",
+			"brush" : [ [ "wire", { "group" : "group4", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [5, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins trapdoor lever",
+			"brush" : [ [ "wire", { "group" : "group5", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [6, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins4 final activation",
+			"brush" : [ [ "wire", { "group" : "group6", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [7, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins5 lower lights",
+			"brush" : [ [ "wire", { "group" : "group7", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [8, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins5 first level trapdoor",
+			"brush" : [ [ "wire", { "group" : "group8", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [9, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins5 to first level trapdoor and",
+			"brush" : [ [ "wire", { "group" : "group9", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [10, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins5 to first level trapdoor and",
+			"brush" : [ [ "wire", { "group" : "group10", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [11, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins5 2nd level torches",
+			"brush" : [ [ "wire", { "group" : "group11", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [12, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins5 first treasure switch",
+			"brush" : [ [ "wire", { "group" : "group12", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [13, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins5 second treasure switch",
+			"brush" : [ [ "wire", { "group" : "group13", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [14, 0, 0, 255],
+			"comment" : "global wire #2 - greenruins5 and to treasure doors",
+			"brush" : [ [ "wire", { "group" : "group14", "local" : false } ] ]
+		},
+		
+		{
+			"value" : [15, 0, 0, 255],
+			"comment" : "greenruinsu4",
+			"brush" : [ [ "wire", { "group" : "group15", "local" : false } ] ]
+		},
+		
+		// npcs //
+		
+		{
+		"value" : [200, 100, 210, 255],
+		"comment" : "largefish monster",
+		"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "largefish",
+				"seed" : "stable",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 160, 255],
+			"comment" : "floran wildhunter",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "wildhunter"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 161, 255],
+			"comment" : "floran wildhunter veteran",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "wildhunterveteran"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 162, 255],
+			"comment" : "floran hell prisoner",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "hellprisoner"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 163, 255],
+			"comment" : "floran dervish",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "floranpredator"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 164, 255],
+			"comment" : "floran shieldgunner",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "floransniper"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [0, 0, 165, 255],
+			"comment" : "floran gladiator",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "floran",
+					"typeName" : "florangladiator"
+			}
+			] ]
+		},
+		
+		{
+			"value" : [152, 125, 0, 255],
+			"comment" : "miniboss quadruped npc",
+			"brush" : [ [ "npc",
+			{
+				"kind" : "monster",
+				"typeName" : "rocktroll2",
+				"parameters" : {
+				"aggressive" : true,
+				"persistent" : true
+            }
+			}
+			] ]
+		},
+
+		// liquids //
+		
+		{
+			"value" : [206, 103, 0, 255],
+			"comment" : "poison pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "poison" ] ]
+		},
+
+		{
+			"value" : [54, 63, 105, 255],
+			"comment" : "lava pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "lava" ] ]
+		},
+		
+		{
+			"value" : [64, 198, 255, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+		},
+		
+		{
+			"value" : [28, 10, 254, 255],
+			"comment" : "healing pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "healingliquid" ] ]
+		}
+		
+		],
+	
+	"parts" : [
+	
+	{
+      "name" : "greenruinse1",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ] 
+	  ],
+      "def" : [ "image", [ "greenruinse1.png", "greenruinse1objects.png" ] ]
+    },
+	
+	{
+      "name" : "greenruinse1a",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ]
+	  ],
+      "def" : [ "image", [ "greenruinse1a.png", "greenruinse1aobjects.png" ] ]
+    },
+	
+	{
+      "name" : "greenruins1",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ]
+	  ],
+      "def" : [ "image", [ "greenruins1.png", "greenruins1objects.png" ] ]
+    },
+	
+	{
+      "name" : "greenruins2",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ]
+	  ],
+      "def" : [ "image", [ "greenruins2.png", "greenruins2objects.png" ] ]
+    },
+	
+	{
+      "name" : "greenruins3",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+	  [ "doNotCombineWith", [ "greenruins3-generator" ] ]
+	  ],
+      "def" : [ "image", [ "greenruins3.png", "greenruins3objects.png" ] ]
+    },
+	
+	{
+      "name" : "greenruins3-generator",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+	  [ "doNotCombineWith", [ "greenruins3", "greenruins4-generator", "greenruins5-generator" ] ],
+	  [ "doNotConnectToPart", [ "greenruinse1", "greenruinse1a" ] ]	  
+	  ],
+      "def" : [ "image", [ "greenruins3.png", "greenruins3objectsgenerator.png" ] ],
+	  "chance" : 500
+    },
+	
+	{
+      "name" : "greenruins4",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+	  [ "doNotCombineWith", [ "greenruins4-generator" ] ]
+	  ],
+      "def" : [ "image", [ "greenruins4.png", "greenruins4objects.png", "greenruins4wires.png" ] ]
+    },
+	
+	{
+      "name" : "greenruins4-generator",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+	  [ "doNotCombineWith", [ "greenruins3-generator", "greenruins4", "greenruins5-generator" ] ],
+	  [ "doNotConnectToPart", [ "greenruinse1", "greenruinse1a" ] ]	 
+	  ],
+      "def" : [ "image", [ "greenruins4.png", "greenruins4objectsgenerator.png", "greenruins4wires.png" ] ],
+	  "chance" : 500
+	  },
+	  
+	{
+      "name" : "greenruins5",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+	  [ "doNotCombineWith", [ "greenruins5-generator" ] ]
+	  ],
+      "def" : [ "image", [ "greenruins5.png", "greenruins5objects.png", "greenruins5wires.png" ] ]
+    },
+	
+	{
+      "name" : "greenruins5-generator",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+	  [ "doNotCombineWith", [ "greenruins3-generator", "greenruins4-generator", "greenruins5" ] ],
+	  [ "doNotConnectToPart", [ "greenruinse1", "greenruinse1a" ] ]	 
+	  ],
+      "def" : [ "image", [ "greenruins5.png", "greenruins5objectsgenerator.png", "greenruins5wires.png" ] ]
+    },
+
+	{
+      "name" : "greenruins6",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ],
+	  [ "doNotCombineWith", [ "greenruinsu1" ] ]
+	  ],
+      "def" : [ "image", [ "greenruins6.png" ] ]
+    },
+    
+	{
+      "name" : "greenruinsu1",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ]
+	  ],
+     "def" : [ "image", [ "greenruinsu1.png", "greenruinsu1objects.png", "greenruinsu1wires.png", "greenruinsu1liquids.png" ] ]
+    },
+	
+	{
+      "name" : "greenruinsu1a",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ]
+	  ],
+      "def" : [ "image", [ "greenruinsu1a.png", "greenruinsu1aobjects.png", "greenruinsu1awires.png", "greenruinsu1aliquids.png" ] ]
+    },
+	
+	{
+      "name" : "greenruinsu2",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ]
+	  ],
+      "def" : [ "image", [ "greenruinsu2.png", "greenruinsu2objects.png", "greenruinsu2wires.png" ] ]
+    },
+	
+	{
+      "name" : "greenruinsu3",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ]
+	  ],
+      "def" : [ "image", [ "greenruinsu3.png", "greenruinsu3objects.png" ] ]
+    },
+	
+	{
+      "name" : "greenruinsu4",
+      "rules" : [ 
+	  [ "maxSpawnCount", [1] ]
+	  ],
+      "def" : [ "image", [ "greenruinsu4.png", "greenruinsu4objects.png", "greenruinsu4wires.png" ] ]
+    },
+	
+	{
+		"name" : "greenruinsendcap1",
+		"rules" : [
+			[ "ignorePartMaximumRule" ]
+		],
+		"def" : [ "image", [ "greenruinsendcap1.png" ] ],
+		"chance" : 0
+	},
+
+    {
+		"name" : "greenruinsendcap2",
+		"rules" : [
+			[ "ignorePartMaximumRule" ]
+		],
+		"def" : [ "image", [ "greenruinsendcap2.png" ] ],
+		"chance" : 0
+    }
+	
+	]
+}

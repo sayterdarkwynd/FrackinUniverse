@@ -1,0 +1,301 @@
+{
+	"metadata" : {
+		"name" : "newhumanmicro",
+		"species" : "dummy",
+		"rules" : [],
+		"maxRadius" : 2000,
+		"maxParts" : 100,
+		"anchor" : ["wellhouse2", "wellhouse3", "wellhouse1" ]
+	},
+
+	
+	"tiles" : [
+	    {
+		"value" : [85, 255, 0, 255],
+		"comment" : "Player Spawn",
+		"brush" : [ [ "playerstart" ] ]
+		},
+		{
+			"value" : [255, 0, 220, 255],
+			"comment" : "magic pinkppp, a no-op value",
+			"connector" : false
+		}, 
+		{
+			"value" : [0, 0, 0, 255],
+			"comment" : "sky anchor",
+			"brush" : [["clear"]],
+			"rules" : [["worldGenMustContainAirBackground"], ["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [255, 255, 255, 255],
+			"comment" : "ground anchor",
+			"brush" : [["surface"]],
+			"rules" : [["worldGenMustContainSolidBackground"], ["allowOverdrawing"]]
+		},
+		{
+			"value" : [10, 10, 10, 255],
+			"comment" : "Empty hole",
+			"brush" : [["clear"]],
+			"connector" : false
+		}, 
+		{
+			"value" : [20, 20, 20, 255],
+			"comment" : "Empty hole overwritable",
+			"brush" : [["clear"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [30, 30, 30, 255],
+			"comment" : "Biome tile brush overwritable",
+			"brush" : [["surface"]],
+			"rules" : [["allowOverdrawing"]]
+		}, 
+		{
+			"value" : [40, 40, 40, 255],
+			"comment" : "Biome tile brush non-overwritable",
+			"brush" : [["surface"]]
+		}, 
+		{
+			"value" : [50, 50, 50, 255],
+			"comment" : "Biome tile background brush",
+			"brush" : [["clear"], ["surfacebackground"]]
+		}, 
+		{
+			"value" : [0, 38, 255, 255],
+			"comment" : "bright blue, room coupler",
+			"connector" : true
+		},
+		
+		{
+			"value" : [196, 233, 242, 255],
+			"comment" : "background woodenwindow1",
+			"brush" : [ [ "clear" ], [ "back", "woodenwindow1" ] ]
+		},
+
+		{
+			"value" : [196, 233, 243, 255],
+			"comment" : "foreground woodenwindow1",
+			"brush" : [ [ "clear" ], [ "back", "woodenwindow1" ], [ "front", "woodenwindow1" ] ]
+		},
+		
+		{
+			"value" : [211, 171, 150, 255],
+			"comment" : "background darkwood",
+			"brush" : [ [ "clear" ], [ "back", "darkwood" ] ]
+		},
+		
+		{
+			"value" : [185, 122, 87, 255],
+			"comment" : "foreground darkwood",
+			"brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+		},
+		
+		{
+			"value" : [237, 28, 36, 255],
+			"comment" : "foreground rooftiles",
+			"brush" : [ [ "clear" ], [ "back", "rooftiles" ], [ "front", "rooftiles" ] ]
+		},
+		
+		{
+			"value" : [195, 195, 195, 255],
+			"comment" : "background rockbrick",
+			"brush" : [ [ "clear" ], [ "back", "rockbrick" ] ]
+		},
+
+		{
+			"value" : [127, 127, 127, 255],
+			"comment" : "foreground rockbrick",
+			"brush" : [ [ "clear" ], [ "back", "rockbrick" ], [ "front", "rockbrick" ] ]
+		},
+		
+		{
+			"value" : [255, 242, 0, 255],
+			"comment" : "foreground treasurehoard",
+			"brush" : [ [ "clear" ], [ "back", "treasurehoard" ], [ "front", "treasurehoard" ] ]
+		},
+		
+		{
+			"value" : [217, 193, 128, 255],
+			"comment" : "tilled foreground dirt",
+			"brush" : [ [ "clear" ], [ "back", "dirt" ], [ "front", "dirt", "tilled" ] ]
+		},
+
+		
+		
+		{
+			"value" : [224, 174, 201, 255],
+			"comment" : "woodendoor left",
+			"brush" : [ [ "clear" ], [ "object", "woodendoor", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [225, 174, 201, 255],
+			"comment" : "woodendoor right",
+			"brush" : [ [ "clear" ], [ "object", "woodendoor", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [128, 64, 64, 255],
+			"comment" : "woodenchair facing left",
+			"brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "left" } ] ]
+		},
+
+		{
+			"value" : [138, 64, 64, 255],
+			"comment" : "woodenchair facing right",
+			"brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "right" } ] ]
+		},
+		
+
+
+		
+		{
+			"value" : [30, 12, 120, 255],
+			"comment" : "barrelgoldfilled facing left",
+			"brush" : [ [ "clear" ], [ "object", "barrelgoldfilled", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+		},
+		
+		{
+			"value" : [200, 100, 200, 255],
+			"comment" : "medievalcandle facing left",
+			"brush" : [ [ "clear" ], [ "object", "medievalcandle", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [201, 100, 200, 255],
+			"comment" : "farmtools facing left",
+			"brush" : [ [ "clear" ], [ "object", "farmtools", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [202, 100, 200, 255],
+			"comment" : "juicekeg facing left",
+			"brush" : [ [ "clear" ], [ "object", "juicekeg", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [239, 228, 176, 255],
+			"comment" : "haystack facing left",
+			"brush" : [ [ "clear" ], [ "object", "haystack", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [240, 228, 176, 255],
+			"comment" : "haystack facing right",
+			"brush" : [ [ "clear" ], [ "object", "haystack", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [241, 228, 176, 255],
+			"comment" : "haypile facing right",
+			"brush" : [ [ "clear" ], [ "object", "haypile", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [100, 100, 100, 255],
+			"comment" : "tier2bed facing right",
+			"brush" : [ [ "clear" ], [ "object", "tier2bed", { "direction" : "right" } ] ]
+		},
+		
+		{
+			"value" : [110, 100, 100, 255],
+			"comment" : "woodenbookcase facing left",
+			"brush" : [ [ "clear" ], [ "object", "woodenbookcase", { "direction" : "left" } ] ]
+		},
+		
+		{
+			"value" : [120, 100, 100, 255],
+			"comment" : "woodenlocker facing left",
+			"brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right", "parameters" : { "treasurePools" : [ "tool", "ore" ] } } ] ]
+		},
+		
+		{
+			"value" : [120, 110, 100, 255],
+			"comment" : "garagetools facing left",
+			"brush" : [ [ "clear" ], [ "object", "garagetools" ] ]
+		},
+		
+		{
+			"value" : [190, 110, 100, 255],
+			"comment" : "wellcover facing left",
+			"brush" : [ [ "clear" ], [ "object", "wellcover" ] ]
+		},
+		
+		{
+			"value" : [136, 121, 21, 255],
+			"comment" : "corn crop",
+			"brush" : [ [ "clear" ], [ "object", "cornseed", { "direction" : "left", "parameters" : { "startingStage" : 2 } } ] ]
+		},
+		
+		{
+			"value" : [120, 0, 0, 255],
+			"comment" : "fridge facing right",
+			"brush" : [ [ "clear" ], [ "object", "fridge", { "direction" : "right", "parameters" : { "treasurePools" : [ "produce" ] } } ] ]
+		},
+		
+		{
+			"value" : [130, 0, 0, 255],
+			"comment" : "woodencrate1 facing right",
+			"brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right", "parameters" : { "treasurePools" : [ "produce", "seed" ] } } ] ]
+		},
+		
+		{
+			"value" : [140, 0, 0, 255],
+			"comment" : "woodencrate2 facing left",
+			"brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "left", "parameters" : { "treasurePools" : [ "produce", "seed" ] } } ] ]
+		},
+		
+
+
+		{
+			"value" : [184, 145, 101, 255],
+			"comment" : "wooden stairs/platform",
+			"brush" : [ [ "clear" ], [ "front", "woodenplatform" ] ]
+		},
+		
+
+		
+		{
+			"value" : [0, 200, 0, 255],
+			"comment" : "human survivor npc",
+			"brush" : [ [ "npc",
+				{
+					"kind" : "npc",
+					"species" : "human",
+					"typeName" : "newhumansurvivor"
+				}
+				] ]
+		},
+		
+
+		
+		{
+			"value" : [28, 10, 254, 255],
+			"comment" : "water pool foreground",
+			"brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+		}
+		
+		],
+	
+	"parts" : [
+	
+    {
+      "name" : "wellhouse1",
+      "rules" : [ ],
+      "def" : [ "image", [ "wellhouse1.png", "wellhouse1liquids.png", "wellhouse1objects.png" ] ]
+    },
+	
+    {
+      "name" : "wellhouse2",
+      "rules" : [ ],
+      "def" : [ "image", [ "wellhouse2.png", "wellhouse2objects.png", "wellhouse2liquids.png" ] ]
+    },
+	
+    {
+      "name" : "wellhouse3",
+      "rules" : [ ],
+      "def" : [ "image", [ "wellhouse3.png", "wellhouse3objects.png", "wellhouse3liquids.png" ] ]
+    }
+	
+	]
+}
