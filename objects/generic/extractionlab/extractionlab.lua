@@ -845,7 +845,7 @@ local recipes =
 {inputs = { platinumore=1 }, outputs = { rawminerals=7 }, time = 0.75},
 {inputs = { prisiliteore=1 }, outputs = { rawminerals=8 }, time = 0.75},
 {inputs = { plutoniumore=1 }, outputs = { matteritem=4 }, time = 0.75},
-{inputs = { rubiumore=1 }, outputs = { rawminerals=7 }, time = 0.75},
+{inputs = { feroziumore=1 }, outputs = { rawminerals=7 }, time = 0.75},
 {inputs = { moonstoneore=1 }, outputs = { rawminerals=4 }, time = 0.75},
 {inputs = { solariumore=1 }, outputs = { rawminerals=4 }, time = 0.75},
 {inputs = { sulphur=1 }, outputs = { liquidsulphuricacid=2 }, time = 1.0},
