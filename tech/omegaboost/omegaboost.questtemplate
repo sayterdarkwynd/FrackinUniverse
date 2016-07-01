@@ -1,0 +1,24 @@
+{
+  "id" : "omegaboost.gearup",
+  "prerequisites" : [ ],
+  "title" : "^orange;Omega-Boost",
+  "text" : "You've unlocked the deadly Omega Boost. Explode upward. Kill foes. Nice.",
+  "completionText" : "I just press UP when I jump and blammo! I also get 4 seconds immunity to fall damage.",
+  "speaker" : "player",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "equipTech" : ["omegaboosttech"],
+    "followUp" : "",
+    "gatherRequirements" : {
+      "items" : {
+        "omegaboosttechgrant" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
