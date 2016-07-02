@@ -1,0 +1,57 @@
+{
+  "itemName" : "lasherwhip",
+  "price" : 1000,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A whip made from a thorny vine. Get cracking!",
+  "shortdescription" : "Vine Whip",
+  "tooltipKind" : "sword",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon"],
+
+  "inventoryIcon" : "lasherwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "lasherwhip.png",
+    "weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : {
+      "burstCount" : 3,
+      "particles" : [{"particle" : "poisonswoosh1"}]
+    }},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0.0625],
+    "length" : [2, 12],
+    "segmentImage" : "/items/active/weapons/whip/lasherwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/lasherwhipend.png",
+    "segmentSize" : 0.275
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.0,
+    "chainDps" : 1.5,
+    "crackDps" : 4.5,
+
+    "damageConfig" : {
+      "damageSourceKind" : "poisonlash"
+    },
+
+    "projectileType" : "whipcrackpoison"
+  },
+
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}
