@@ -16,6 +16,7 @@ local recipes =
 {inputs = { liquidblacktar=1 }, outputs = { liquidoil=1 }, time = 0.45},
 {inputs = { liquidbioooze=25 }, outputs = { fu_hydrogen=2 }, time = 0.45 },
 {inputs = { liquidorganicsoup=25 }, outputs = { geneticmaterial=1 }, time = 0.45 },
+{inputs = { frozenwater=50 }, outputs = { liquidwater=1 }, time = 0.45 },
 -- bees mod content
 {inputs = { darkcomb=1 }, outputs = { shadowgasliquid=2 }, time = 0.45 },
 {inputs = { normalcomb=1 }, outputs = { fu_liquidhoney=2 }, time = 0.45 },
