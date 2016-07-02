@@ -1,22 +1,22 @@
 {
-  "itemName" : "tentaclegun2",
+  "itemName" : "shadowtentaclegun",
   "level" : 4,
   "price" : 500,
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "This gun contains a squirming mass of mutated alien worms.",
-  "shortdescription" : "Alien Worm Gun",
+  "description" : "This creation fires controlled shadow threads. Weird.",
+  "shortdescription" : "Shadow Lurch",
   "tooltipKind" : "gun",
   "category" : "uniqueWeapon",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","livingweapon"],
 
-  "inventoryIcon" : "wormgun.png",
+  "inventoryIcon" : "shadowtentaclegun.png",
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "wormgun.png",
+    "middle" : "shadowtentaclegun.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -31,22 +31,22 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
-  "primaryAbilityType" : "tentaclegun",
+  "primaryAbilityType" : "shadowtentaclegun",
   "primaryAbility" : {
     "chain" : {
       "taper" : 0.3,
-      "segmentImage" : "/items/active/weapons/other/tentaclegun/wormsegment.png",
-      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/wormend.png",
+      "segmentImage" : "/items/active/weapons/other/tentaclegun/shadowsegment.png",
+      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/shadowend.png",
       "segmentSize" : 1.0
     },
 
     "guideProjectiles" : false,
-    "maxLength" : 6,
+    "maxLength" : 2,
 
     "baseDps" : 6,
-    "fireTime" : 0.55,
+    "fireTime" : 0.25,
     "maxProjectiles" : 20,
     "energyUsage" : 40,
     "inaccuracy" : 0.01,
@@ -55,18 +55,18 @@
     "projectileParameters" : {
       "knockback" : 12,
       "speed" : 60,
-      "timeToLive" : 4
+      "timeToLive" : 1
     }
   },
 
-  "altAbilityType" : "tentaclegun",
+  "altAbilityType" : "shadowtentaclegun",
   "altAbility" : {
     "name" : "Tentacle Burst",
 
     "chain" : {
       "taper" : 0.5,
-      "segmentImage" : "/items/active/weapons/other/tentaclegun/wormsegment.png",
-      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/wormend.png",
+      "segmentImage" : "/items/active/weapons/other/tentaclegun/shadowsegment.png",
+      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/shadowend.png",
       "segmentSize" : 1.0
     },
 
