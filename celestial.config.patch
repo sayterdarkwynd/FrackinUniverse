@@ -1,4 +1,25 @@
 [
+
+{ "op" : "replace", 
+  "path" : "/systemTypeBins/",
+  "value" : [
+    [-1.00, "White"],
+    [-0.80, "bluesun1"],
+    [-0.70, "bluesun2"],
+    [-0.60, "redsun1"],
+    [-0.50, "blacksun1"],
+    [-0.40, "binary1"],
+    [-0.25, "dying1"],
+    [-0.30, "Orange"],
+    [-0.12, "Yellow"],
+    [0.00, "Blue"],
+    [0.12, "Red"],
+    [0.30, ""] // dark mysteries
+    ]
+},
+
+
+
 // Celestial Graphics
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/chromatic",
@@ -951,9 +972,7 @@
     }
   },
   
-// Vanilla Biomes
 
-  
 //Stars
 
 // FU Stars
@@ -1040,15 +1059,6 @@
   "bodyProbability" : 1.0,
   "planetaryTypes" : [
   {"weight" : 1.0, "item" : "Moon"}
-  ],
-  "satelliteTypes" : []
-  },
-  {
-  "regionName" : "Gate",
-  "orbitRange" : [12, 12],
-  "bodyProbability" : 1.0,
-  "planetaryTypes" : [
-  {"weight" : 1.0, "item" : "AncientGateway"}
   ],
   "satelliteTypes" : []
   }
