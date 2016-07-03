@@ -38,23 +38,22 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "fire",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.13,
+    "fireTime" : 0.08,
     "baseDps" : 10.0,
-    "energyUsage" : 24,
-    "inaccuracy" : 0.008,
+    "energyUsage" : 26,
+    "inaccuracy" : 0.056,
     "fireType" : "auto",
 
     "projectileType" : "furavager",
     "projectileParameters" : {
-      "knockback" : 40,
-      "speed" : 60,
-      "statusEffects" : [ "electrified" ]
+      "knockback" : 1.5,
+      "speed" : 60
     },
     "projectileCount" : 1,
 
@@ -69,17 +68,17 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 2,
-        "weaponRotation" : 2,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : true,
 
         "allowRotate" : false,
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.01,
-        "armRotation" : 2,
-        "weaponRotation" : 2,
+        "duration" : 0.0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -88,7 +87,7 @@
     }
   },
 
-  "altAbilityType" : "shrapnelshard",
+  "altAbilityType" : "homingrocket",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
