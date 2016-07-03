@@ -1,0 +1,63 @@
+{
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/firearrow.ogg" ]
+    },
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0, 0, 0, 0],
+        "particles" : [ ]
+      }
+    }
+  },
+
+  "ability" : {
+    "name" : "Fusion Flame",
+    "type" : "fusionblast",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "fusionflame" },
+      "fire" : { "projectileType" : "fusionflame" },
+      "electric" : { "projectileType" : "fusionflame" },
+      "ice" : { "projectileType" : "fusionflame" },
+      "poison" : { "projectileType" : "fusionflame" }
+    },
+    "projectileParameters" : {
+      "knockback" : 10,
+      "statusEffects" : [ ] // don't inherit from primary fire
+    },
+    "projectileCount" : 1,
+    "inaccuracy" : 0,
+    "baseDps" : 5,
+    "energyUsage" : 25.0,
+    "fireTime" : 0.1,
+    "speed" : 20,
+    "fireType" : "auto",
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

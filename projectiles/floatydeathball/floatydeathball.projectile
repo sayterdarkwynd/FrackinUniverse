@@ -1,0 +1,36 @@
+{
+  "projectileName" : "floatydeathball",
+  "physics" : "floatydeath",
+  "speed" : 2,
+  "bounces" : 12,
+  "timeToLive" : 12,
+  "image" : "floatydeathball.png",
+  "animationCycle" : 1.5,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "flippable" : true,
+    "lightColor" : [160, 160, 0],
+  "frameNumber" : 2,
+  "periodicActions" : [
+    {
+      "time" : 0.1,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "plasmabullet",
+      "fuzzAngle" : 360
+   }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosion.config"
+    },    
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  ],
+  "power" : 1,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

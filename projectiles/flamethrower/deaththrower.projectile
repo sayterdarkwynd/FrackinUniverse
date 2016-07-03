@@ -1,22 +1,22 @@
 {
   "projectileName" : "deaththrower",
-  "physics" : "grenadenobounce",
+  "physics" : "arrow",
   "bounces" : -1,
   "level" : 1,
-  "timeToLive" : 5,
+  "timeToLive" : 1,
   "speed" : 10,
   "piercing" : true,
   "image" : "deaththrower.png",
   "animationCycle" : 0.55,
-  "lightColor" : [218, 83, 2],
+  "lightColor" : [150, 150, 150],
   "frameNumber" : 4,  
   "emitters" : [ "flames" ],
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/smoke/smoke.config"
+      "file" : "/projectiles/explosions/elder/eldercarbineboom.config"
     }
   ],
   "damageKind" : "fire",
-  "statusEffects" : [ "glow", "burning" ]
+  "statusEffects" : [ ]
 }
