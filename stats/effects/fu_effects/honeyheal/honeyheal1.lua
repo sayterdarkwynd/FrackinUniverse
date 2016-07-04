@@ -1,11 +1,11 @@
 function init()
   animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
-  animator.setParticleEmitterEmissionRate("healing", effect.configParameter("emissionRate", 6))
+  animator.setParticleEmitterEmissionRate("healing", config.getParameter("emissionRate", 6))
   animator.setParticleEmitterActive("healing", true)
 
   script.setUpdateDelta(5)
 
-  self.healingRate = effect.configParameter("healAmount", 1)
+  self.healingRate = config.getParameter("healAmount", 1)
 end
 
 function update(dt)

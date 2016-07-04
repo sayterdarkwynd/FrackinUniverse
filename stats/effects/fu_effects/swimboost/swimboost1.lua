@@ -5,8 +5,8 @@ function init()
   --status.addEphemeralEffect("liquidimmunity")
   self.mouthPosition = status.statusProperty("mouthPosition") or {0,0}
   self.mouthBounds = {self.mouthPosition[1], self.mouthPosition[2], self.mouthPosition[1], self.mouthPosition[2]}
-  self.boostAmount = effect.configParameter("boostAmount", 0)
-  self.riseAmount = effect.configParameter("riseAmount", 0)
+  self.boostAmount = config.getParameter("boostAmount", 0)
+  self.riseAmount = config.getParameter("riseAmount", 0)
   self.liquidMovementParameter = {
 	liquidFriction = 2,
 	airForce = 50,

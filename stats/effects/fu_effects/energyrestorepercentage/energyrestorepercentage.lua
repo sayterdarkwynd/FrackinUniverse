@@ -1,5 +1,5 @@
 function init()
-healP = effect.configParameter("healPercent", 0) -- Heal percent is the configParameter in the json statuseffects file
+healP = config.getParameter("healPercent", 0) -- Heal percent is the configParameter in the json statuseffects file
 self.healingRate = (status.resourceMax("energy") * healP) / effect.duration()
   script.setUpdateDelta(5)
 
