@@ -1,5 +1,5 @@
 function init()
-  self.gravityModifier = effect.configParameter("gravityModifier")
+  self.gravityModifier = config.getParameter("gravityModifier")
   self.movementParams = mcontroller.baseParameters()
 
   setGravityMultiplier()

@@ -1,6 +1,6 @@
 function init()
   animator.setParticleEmitterOffsetRegion("bees", mcontroller.boundBox())
-  animator.setParticleEmitterEmissionRate("bees", effect.configParameter("emissionRate", 2))
+  animator.setParticleEmitterEmissionRate("bees", config.getParameter("emissionRate", 2))
   animator.setParticleEmitterActive("bees", true)
 
   script.setUpdateDelta(5)

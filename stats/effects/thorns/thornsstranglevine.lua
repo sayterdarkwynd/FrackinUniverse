@@ -1,22 +1,22 @@
 function init()
-  self.minRange = effect.configParameter("minRange") or 0.5
+  self.minRange = config.getParameter("minRange") or 0.5
 
-  self.visualProjectileType = effect.configParameter("visualProjectileType")
-  self.visualProjectileCount = effect.configParameter("visualProjectileCount") or 20
-  self.visualProjectileSpeed = effect.configParameter("visualProjectileSpeed") or 20
-  self.visualProjectileTime = effect.configParameter("visualProjectileTime")
-  self.visualDuration = effect.configParameter("visualDuration") or 0.2
+  self.visualProjectileType = config.getParameter("visualProjectileType")
+  self.visualProjectileCount = config.getParameter("visualProjectileCount") or 20
+  self.visualProjectileSpeed = config.getParameter("visualProjectileSpeed") or 20
+  self.visualProjectileTime = config.getParameter("visualProjectileTime")
+  self.visualDuration = config.getParameter("visualDuration") or 0.2
 
-  self.damageProjectileType = effect.configParameter("damageProjectileType") or "armorthornburst"
-  self.damageMultiplier = effect.configParameter("damageMultiplier") or 0.06
-  self.fadeColor = effect.configParameter("fadeColor")
-  self.border = effect.configParameter("border")
+  self.damageProjectileType = config.getParameter("damageProjectileType") or "armorthornburst"
+  self.damageMultiplier = config.getParameter("damageMultiplier") or 0.06
+  self.fadeColor = config.getParameter("fadeColor")
+  self.border = config.getParameter("border")
 
-  self.cooldown = effect.configParameter("cooldown") or 5
+  self.cooldown = config.getParameter("cooldown") or 5
 
-  self.removeInWater = effect.configParameter("removeInWater")
+  self.removeInWater = config.getParameter("removeInWater")
 
-  self.minTriggerDamage = effect.configParameter("minTriggerDamage") or 0
+  self.minTriggerDamage = config.getParameter("minTriggerDamage") or 0
 
   resetThorns()
   self.cooldownTimer = 0

@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "rare",
     "description" : "Fires super-propelled bullets.",
-    "shortdescription" : "Kinetic Ejection Rifle",
+    "shortdescription" : "K3 Double-Tap",
   "level" : 6,
   "tooltipKind" : "gun",
   "weaponType" : "Energy",
@@ -25,7 +25,7 @@
     }
   },
 
-  "baseOffset" : [0.68, -0.22],
+  "baseOffset" : [0.78, -0.12],
   "muzzleOffset" : [2.445, 0.725],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
@@ -35,19 +35,19 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.21,
-    "baseDps" : 9.55,
+    "fireTime" : 0.18,
+    "baseDps" : 8.55,
     "energyUsage" : 24,
-    "inaccuracy" : 0.012,
+    "inaccuracy" : 0.032,
     "burstTime" : 0.075,
-    "burstCount" : 1,
+    "burstCount" : 2,
     "projectileCount" : 1,
     "fireType" : "burst",
 
     "projectileType" : "bullet-3",
     "projectileParameters" : { 
       "speed" : 80,
-      "knockback" : 15
+      "knockback" : 2
     },
 	  "stances" : {
 	    "idle" : {
@@ -80,7 +80,7 @@
   },
 
 
-  "altAbilityType" : "explosiveshot",
+  "altAbilityType" : "flashlight",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

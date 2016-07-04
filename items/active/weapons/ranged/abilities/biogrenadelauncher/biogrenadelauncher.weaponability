@@ -5,7 +5,7 @@
         "properties" : {
           "zLevel" : -1,
           "centered" : true,
-          "offset" : [0, 0],
+          "offset" : [0, -0],
           "transformationGroups" : ["muzzle"],
           "firePosition" : [0, 0]
         }
@@ -33,7 +33,8 @@
     "name" : "Bio Launcher",
     "type" : "biogrenadelauncher",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    
+    "class" : "AltFireAttack",
+
     "elementalConfig" : {
       "physical" : { "projectileType" : "ffslimeblob" },
       "fire" : { "projectileType" : "napalmprojectile" },
@@ -44,8 +45,8 @@
     "projectileParameters" : {},
     "projectileCount" : 1,
     "inaccuracy" : 0,
-    "baseDamage" : 8,
-    "energyUsage" : 30,
+    "baseDamage" : 9,
+    "energyUsage" : 25,
     "fireTime" : 2.0,
     "fireType" : "auto",
 
@@ -54,7 +55,7 @@
 
     "stances" : {
       "fire" : {
-        "duration" : 0.15,
+        "duration" : 0,
         "armRotation" : 5,
         "weaponRotation" : 5,
         "twoHanded" : true,
@@ -63,7 +64,7 @@
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.15,
+        "duration" : 0.11,
         "armRotation" : 5,
         "weaponRotation" : 5,
         "twoHanded" : true,

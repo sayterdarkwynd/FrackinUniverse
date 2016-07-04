@@ -5,8 +5,8 @@ function init()
   self.tickTimer = self.tickTime
   activateVisualEffects()
   self.timers = {} 
-  _x = effect.configParameter("defenseModifier", 0)
-  baseValue = effect.configParameter("defenseModifier",0)*(status.stat("protection"))
+  _x = config.getParameter("defenseModifier", 0)
+  baseValue = config.getParameter("defenseModifier",0)*(status.stat("protection"))
   effect.addStatModifierGroup({{stat = "protection", amount = baseValue }})
 end
 

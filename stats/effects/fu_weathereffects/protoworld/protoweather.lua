@@ -5,8 +5,8 @@ function init()
   animator.setParticleEmitterActive("coldbreath", true)
   
   --config --
-  biomeDay = effect.configParameter("biomeDay",0)
-  biomeNight = effect.configParameter("biomeNight",0)
+  biomeDay = config.getParameter("biomeDay",0)
+  biomeNight = config.getParameter("biomeNight",0)
   biomeRate = math.random(biomeDay, biomeNight)
   biomeDmg = math.random(biomeDay, biomeNight)
   world.setProperty ("biomeEffect", biomeTemp)
@@ -15,7 +15,7 @@ function init()
   biomeDate = world.day()
   local bounds = mcontroller.boundBox()
   effect.setParentDirectives("fade=ffea00=0.027")
-  baseValue = effect.configParameter("biomeDmgPerTick")
+  baseValue = config.getParameter("biomeDmgPerTick")
 end
 
 

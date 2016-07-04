@@ -8,12 +8,12 @@
         "transformationGroups" : ["muzzle"],
         "offsetRegion" : [0, 0, 0, 0],
         "particles" : [
-          { "particle" : "goo"},
-          { "particle" : "goo"},
-          { "particle" : "goo"},
-          { "particle" : "goo"},
-          { "particle" : "goo"},
-          { "particle" : "goo"}
+          { "particle" : "blood"},
+          { "particle" : "blood"},
+          { "particle" : "blood"},
+          { "particle" : "blood"},
+          { "particle" : "blood"},
+          { "particle" : "blood"}
         ]
       }
     },
@@ -24,14 +24,14 @@
 
   "ability" : {
     "name" : "Guck Spew",
-    "type" : "blisteraltshot",
+    "type" : "fleshbomb",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
     
-    "projectileType" : "blistergunshot",
+    "projectileType" : "fleshseed1",
     "projectileParameters" : {
       "bounces" : 12,
-      "speed" : 50
+      "speed" : 100
     },
     
     // use baseDps and fireTime from primary fire
