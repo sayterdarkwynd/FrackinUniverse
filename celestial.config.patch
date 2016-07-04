@@ -1,26 +1,30 @@
 [
 
-{ "op" : "replace", 
-  "path" : "/systemTypeBins/",
-  "value" : [
-    [-1.00, "White"],
-    [0.80, "bluesun1"],
-    [0.70, "bluesun2"],
-    [0.60, "redsun1"],
-    [0.50, "blacksun1"],
-    [0.40, "binary1"],
-    [0.25, "dying1"],
-    [-0.30, "Orange"],
-    [-0.12, "Yellow"],
-    [0.00, "Blue"],
-    [0.12, "Red"],
-    [0.30, ""] // dark mysteries
-    ]
+{ "op" : "add", 
+  "path" : "/systemTypeBins/-",
+  "value" : [0.80, "bluesun1"]
+},
+{ "op" : "add", 
+  "path" : "/systemTypeBins/-",
+  "value" : [0.70, "bluesun2"]
+},
+{ "op" : "add", 
+  "path" : "/systemTypeBins/-",
+  "value" : [0.60, "redsun1"]
+},
+{ "op" : "add", 
+  "path" : "/systemTypeBins/-",
+  "value" : [0.50, "blacksun1"]
+},
+{ "op" : "add", 
+  "path" : "/systemTypeBins/-",
+  "value" : [0.40, "binary1"]
+},
+{ "op" : "add", 
+  "path" : "/systemTypeBins/-",
+  "value" : [0.30, "dying1"]
 },
 
-
-
-// Celestial Graphics
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/chromatic",
   "value" : 
@@ -972,11 +976,6 @@
     }
   },
   
-
-//Stars
-
-// FU Stars
-//TEST WHITE STAR
 {
   "op" : "replace",
   "path" : "/systemTypes/White",
@@ -1014,7 +1013,7 @@
   }
   ],
   "orbitRegions" : [
-  //Starter Desert
+
   {
   "regionName" : "startDes",
   "orbitRange" : [2, 4],
@@ -1027,7 +1026,7 @@
   {"weight" : 0.7, "item" : "Tier2"}
   ]
   },
-  //Starter  Garden
+
   {
   "regionName" : "startGar",
   "orbitRange" : [5, 7],
@@ -1040,7 +1039,7 @@
   {"weight" : 0.7, "item" : "Tier2"}
   ]
   },
-  //Starter Forest
+
   {
   "regionName" : "startFor",
   "orbitRange" : [8, 10],
@@ -1065,7 +1064,7 @@
   ]
    }
 },
-//END TEST WHITE STAR
+
 {
     "op" : "add",
     "path" : "/systemTypes/bluesun2",
@@ -1881,7 +1880,7 @@
     }
 },
 
-// FU Orbits 
+
 
 {
     "op" : "add",
@@ -1921,22 +1920,22 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        },
+        {
+          "imageScale" : 0.21,
+          "smallImageScale" : 0.70,
+          "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.27,
+          "smallImageScale" : 0.75,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.32,
+          "smallImageScale" : 0.80,
+          "worldSize" : "immense"
+        }
       ]
     }
 },
@@ -1978,22 +1977,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2035,22 +2019,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2092,22 +2061,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2149,22 +2103,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2206,22 +2145,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2263,22 +2187,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2320,22 +2229,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2378,22 +2272,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2435,22 +2314,7 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
@@ -2492,27 +2356,10 @@
           "imageScale" : 0.15,
           "smallImageScale" : 0.6,
           "worldSize" : "large"
-        }//,
-        //{
-        //  "imageScale" : 0.21,
-        //  "smallImageScale" : 0.70,
-        //  "worldSize" : "huge"
-        //},
-        //{
-        //  "imageScale" : 0.27,
-        //  "smallImageScale" : 0.75,
-        //  "worldSize" : "mega"
-        //},
-        //{
-        //  "imageScale" : 0.32,
-        //  "smallImageScale" : 0.80,
-        //  "worldSize" : "immense"
-        //}
+        }
       ]
     }
 },
-// END TEST BODIES
-// FU moons
 
 {
     "op" : "add",
