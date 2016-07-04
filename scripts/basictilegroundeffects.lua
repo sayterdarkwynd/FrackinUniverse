@@ -49,12 +49,12 @@ function update(dt)
 end
 
 function applyTileEffects(groundMat)
-  -- sb.logInfo("groundMat: %s", groundMat)
+  sb.logInfo("groundMat: %s", groundMat)
   for i, effect in ipairs(groundMat[1]) do -- so multiple Ephemeral Effects possible from a tile
-    -- sb.logInfo("looking at %s / %s", i, effect)
-	-- sb.logInfo("self.matCheck[groundMat[1]] = %s", self.matCheck[groundMat[1]])
+    sb.logInfo("looking at %s / %s", i, effect)
+	sb.logInfo("self.matCheck[groundMat[1]] = %s", self.matCheck[groundMat[1]])
 	 effect = self.matCheck[groundMat[1][i]]
-	-- sb.logInfo("effect now %s", effect)
+	sb.logInfo("effect now %s", effect)
      status.addEphemeralEffects({effect})
   end
   mcontroller.controlModifiers({
@@ -121,17 +121,17 @@ function tileMaterials()
   ["rainbowsand"] = 		{{"jungleslow"}, 1,   1,   1,   14,   101,    0.5,  0,  1.2},
   ["glowingsand"] = 		{{"glow"},       1,   1,   1,   14,   101,    0.5,  0,  1.2} ,
   ["crystalsand"] = 		{{"jungleslow"}, 1,   1,   1,   14,   101,    0.5,  0,  1.9},
-  ["glasssand"] = 		        {{"jungleslow"}, 1,   1,   1,   14,   101,  0.5,    0,  1.9},
-  ["redsand"] = 		        {{"jungleslow"}, 1,   1,   1,   14,   101,  0.5,    0,  1.9},
+  ["glasssand"] = 		{{"jungleslow"}, 1,   1,   1,   14,   101,  0.5,    0,  1.9},
+  ["redsand"] = 		{{"jungleslow"}, 1,   1,   1,   14,   101,  0.5,    0,  1.9},
   ["jungledirt2"] = 		{{"jungleslow"}, 1,   1,   1,   14,   100,  0.0,    0,  1},
   ["swampdirtff"] = 		{{"jungleslow"}, 1,   1,   1,   14,   100,  0.0,    0,  1},
   ["springvines"] = 		{{"jungleslow"}, 1,   1,   1,   14,   100,  0.0,    0,  1},
   ["frozenwater"] = 		{{"iceslip"},    1,   1,   1,   14,   100,  0.0,    0,  1},
   ["ice"] = 			{{"iceslip"},    1,   1,   1,   14,   100,  0.0,    0,  1},
-  ["iceblock1"] = 		        {{"iceslip"},    1,   1,   1,   14,   100,  0.0,    0,  1},
-  ["iceblock2"] = 		        {{"iceslip"},    1,   1,   1,   14,   100,  0.0,    0,  1},
-  ["iceblock3"] = 		        {{"iceslip3"},   1,   1,   1,   14,   101,  1.0,    0,  1.2},
-  ["iceblock4"] = 		        {{"iceslip2"},   1,   1,   1,   14,   101,  1.0,    0,  1.2},
+  ["iceblock1"] = 		{{"iceslip"},    1,   1,   1,   14,   100,  0.0,    0,  1},
+  ["iceblock2"] = 		{{"iceslip"},    1,   1,   1,   14,   100,  0.0,    0,  1},
+  ["iceblock3"] = 		{{"iceslip3"},   1,   1,   1,   14,   101,  1.0,    0,  1.2},
+  ["iceblock4"] = 		{{"iceslip2"},   1,   1,   1,   14,   101,  1.0,    0,  1.2},
   ["snow"] = 			{{"snowslow"},   1,   1,   1,   14,   100,  0.0,    0,  1},
   ["slush"] = 			{{"slushslow"},  1,   1,   1,   14,   100,  0.0,    0,  1},
   ["slime"] = 			{{"slimestick"}, 1,   1,   1,   14,   101,  1.0,    1,  1.75},
@@ -139,16 +139,16 @@ function tileMaterials()
   ["jellyblock"] = 		{{"slimestick"}, 1,   1,   1,   14,   101,  1.0,    1,  1.75},
   ["jellystone"] = 		{{"jumpboost15"},1,   1,   1,   14,   100,  0.0,    1,  1},
   ["blackslime"] =    {{"slimestick","weakpoison"}, 1,   1,   1,   14,   101,  1.5,    0,  1.65},
-  ["spidersilkblock"] = 	        {{"webstick"},   1,   1,   1,   14,   101,  0.0,    0,  1.32},
+  ["spidersilkblock"] = 	{{"webstick"},   1,   1,   1,   14,   101,  0.0,    0,  1.32},
   ["irradiatedtile"] = 	      {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1},
-  ["irradiatedtile2"] =          {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1},
+  ["irradiatedtile2"] =       {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1},
   ["irradiatedtile3"] =          {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1},
   ["protorock"] = 	         {{"ffextremeradiation"},1,   1,   1,   14,   100,  0.0,    0,  1.3},
   ["bioblock"] = 	          {{"regenerationblock"},1,   1,   1,   14,   100,  0.0,    0,  1.1},
   ["bioblock2"] = 	          {{"regenerationblock"},1,   1,   1,   14,   100,  0.0,    0,  1.2},
   ["biodirt"] = 	          {{"regenerationblock"},1,   1,   1,   14,   101,  1.0,    0,  1.85},
-  ["metallic"] = 	                 {{"metalspeed"},1,   1,   1,   14,   100,  0.0,    0,  1.3},
-  ["asphalt"] = 	                 {{"metalspeed"},1,   1,   1,   14,   100,  0.0,    0,  1.4},
+  ["metallic"] = 	          {{"metalspeed"},1,   1,   1,   14,   100,  0.0,    0,  1.3},
+  ["asphalt"] = 	          {{"metalspeed"},1,   1,   1,   14,   100,  0.0,    0,  1.4},
   ["cloudblock"] = 	            {{"lowgrav"},1,   1,   1,   14,   101,  1.0,    0,  1.2},
   ["raincloud"] = 	                    {{"lowgrav"},1,   1,   1,   14,   101,  1.0,    0,  1.2},
   ["honeycombmaterial"] =            {{"honeyslow"},1,   1,   1,   14,   101,  0.0,    0,  1.7},
