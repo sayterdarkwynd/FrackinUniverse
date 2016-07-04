@@ -70,7 +70,7 @@ end
 				self.beeModifier = 60
 				return
 		end
-		if contents[19].name == "rubiumframe" then
+		if contents[19].name == "feroziumframe" then
 				self.droneModifier = 15
 				self.beeModifier = 15
 				return
