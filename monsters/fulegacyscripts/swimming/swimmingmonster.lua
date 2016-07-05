@@ -14,7 +14,7 @@ function init()
   self.slowSpeed = mcontroller.baseParameters().flySpeed / 2.0
 
   self.rotation = 0
-  entity.setAnimationState("movement", "swimSlow")
+  animator.setAnimationState("movement", "swimSlow")
 
   entity.setDeathSound("deathPuff")
   entity.setDeathParticleBurst(entity.configParameter("deathParticles"))
@@ -118,17 +118,17 @@ function move(direction, run, noRatioLimit)
   -- move
   if run ~= false then
     mcontroller.controlFly(vec2.mul({ moveDirection[1], moveDirection[2] }, 1000))
-    entity.setAnimationState("movement", "swimFast")
+    animator.setAnimationState("movement", "swimFast")
   else
     mcontroller.controlFly(vec2.mul({ moveDirection[1], moveDirection[2] }, self.slowSpeed))
-    entity.setAnimationState("movement", "swimSlow")
+    animator.setAnimationState("movement", "swimSlow")
   end
 end
 
 function collides(sensorGroup, direction)
   for i, sensor in ipairs(entity.configParameter(sensorGroup)) do
-    -- world.debugPoint(entity.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), "blue")
-    if world.pointTileCollision(entity.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), {"Dynamic", "Null", "Block"}) then
+    -- world.debugPoint(object.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), "blue")
+    if world.pointTileCollision(object.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), {"Dynamic", "Null", "Block"}) then
       return true
     end
   end

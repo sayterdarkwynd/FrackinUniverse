@@ -8,8 +8,8 @@ end
 
 function approachState.enteringState(stateData)
   stateData.prepTimer = 2.0
-  entity.setAnimationState("movement", "run")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "run")
+  animator.setAnimationState("attack", "idle")
 end
 
 function approachState.update(dt, stateData)
@@ -25,7 +25,7 @@ function approachState.update(dt, stateData)
     
     if pointWithinRect(mcontroller.position(), option.startRect) then
       --just stand around and wait, I guess...
-      entity.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle")
       faceTarget()
       return true
     else
@@ -34,7 +34,7 @@ function approachState.update(dt, stateData)
         return true
       end
 
-      entity.setAnimationState("movement", "run")
+      animator.setAnimationState("movement", "run")
 
       --TODO: how to handle separation movement?
       move(option.approachDelta, option.approachDistance >= 1.0, 0.2)

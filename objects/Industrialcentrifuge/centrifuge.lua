@@ -141,16 +141,16 @@ end
 function update(dt)
         contents = world.containerItems(entity.id())
         if not contents[17] then
-		entity.setAnimationState("cent", "idle") 
+		animator.setAnimationState("cent", "idle") 
 		return
         end
 	if contents[17] then
         deciding()
 		workingCombs()
 		honeyCheck()
-		entity.setAnimationState("cent", "working")
+		animator.setAnimationState("cent", "working")
 	else
-		entity.setAnimationState("cent", "idle")
+		animator.setAnimationState("cent", "idle")
 	end
 end
  

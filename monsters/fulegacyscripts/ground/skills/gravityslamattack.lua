@@ -12,8 +12,8 @@ function gravitySlamAttack.enter()
 end
 
 function gravitySlamAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
 
   entity.setActiveSkillName("gravitySlamAttack")
 end
@@ -31,8 +31,8 @@ end
 
 function gravitySlamAttack.run(stateData)
   mcontroller.controlFace(self.toTarget[1])
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "charge")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "charge")
 
   entity.setParticleEmitterActive("gravitySlamAttackUp", true)
 

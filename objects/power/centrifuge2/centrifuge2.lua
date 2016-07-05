@@ -28,24 +28,24 @@ function update(dt)
   if self.timer <= 0 then
 
 	if isn_hasRequiredPower() == false then
-		entity.setAnimationState("furnaceState", "idle")
+		animator.setAnimationState("furnaceState", "idle")
 		storage.activeConsumption = false
 		return
 	end
 	
 	if oreCheck() == false then 
-		entity.setAnimationState("furnaceState", "idle")
+		animator.setAnimationState("furnaceState", "idle")
 		storage.activeConsumption = false
 		return
 	end
 	
 	if storage.currentoutput == nil or clearSlotCheck(storage.currentoutput) == false then
-		entity.setAnimationState("furnaceState", "idle")
+		animator.setAnimationState("furnaceState", "idle")
 		storage.activeConsumption = false
 		return
 	end
 	
-	entity.setAnimationState("furnaceState", "active")
+	animator.setAnimationState("furnaceState", "active")
 	storage.activeConsumption = true
 	
 	if world.containerConsume(entity.id(), {name = storage.currentinput, count = 5, data={}}) then

@@ -15,8 +15,8 @@ function stompAttack.enter()
 end
 
 function stompAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
 
   entity.setActiveSkillName("stompAttack")
 end
@@ -27,11 +27,11 @@ function stompAttack.update(dt, stateData)
 end
 
 function stompAttack.run(stateData)
-  entity.setAnimationState("movement", "chargeWindup")
+  animator.setAnimationState("movement", "chargeWindup")
   mcontroller.controlFace(self.toTarget[1])
   util.wait(stompAttack.windupTime)
 
-  entity.setAnimationState("movement", "jump")
+  animator.setAnimationState("movement", "jump")
   controlJump()
   coroutine.yield(false)
 
@@ -48,10 +48,10 @@ function stompAttack.run(stateData)
   local entityId = entity.id()
   local power = stompAttack.baseDamage * entity.level() / 2
   local bounds = entity.configParameter("metaBoundBox")
-  world.spawnProjectile("defensiveexplosion", entity.toAbsolutePosition({ bounds[1] - stompAttack.projectileOffsetX, bounds[2] }), entityId, { -1, 0 }, false, { power = power })
-  world.spawnProjectile("defensiveexplosion", entity.toAbsolutePosition({ bounds[3] + stompAttack.projectileOffsetX, bounds[2] }), entityId, { 1, 0 }, false, { power = power })
+  world.spawnProjectile("defensiveexplosion", object.toAbsolutePosition({ bounds[1] - stompAttack.projectileOffsetX, bounds[2] }), entityId, { -1, 0 }, false, { power = power })
+  world.spawnProjectile("defensiveexplosion", object.toAbsolutePosition({ bounds[3] + stompAttack.projectileOffsetX, bounds[2] }), entityId, { 1, 0 }, false, { power = power })
 
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
   util.wait(stompAttack.cooldownTime)
 
   return true

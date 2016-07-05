@@ -89,7 +89,7 @@ function setAnimationState(args, output)
     state = "idle" 
   })
 
-  entity.setAnimationState(args.type, args.state)
+  animator.setAnimationState(args.type, args.state)
   return true
 end
 

@@ -29,7 +29,7 @@ end
 
 function fuFlameThrowerAttack.enteringState(stateData)
   setAggressive(true, false)
-  entity.setAnimationState("attack", "melee")
+  animator.setAnimationState("attack", "melee")
 
   stateData.projectileSourcePosition = {
       entity.configParameter("projectileSourcePosition", {0, 0})[1],
@@ -48,19 +48,19 @@ function fuFlameThrowerAttack.update(dt, stateData)
   local projectileName = entity.configParameter("fuFlameThrowerAttack.projectile")
   local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * entity.configParameter("fuFlameThrowerAttack.power")
 
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 
   --First wind up
   if stateData.windupTimer >= 0 then
     if stateData.windupTimer == entity.configParameter("fuFlameThrowerAttack.windupTime") then
-      entity.setAnimationState("attack", "windup")
+      animator.setAnimationState("attack", "windup")
     end
 
     stateData.windupTimer = stateData.windupTimer - dt
   --Then fire all projectiles
   elseif stateData.shots < entity.configParameter("fuFlameThrowerAttack.shots") then
     if stateData.fireTimer <= 0 then
-      world.spawnProjectile(projectileName, entity.toAbsolutePosition(stateData.projectileSourcePosition), entity.id(), {mcontroller.facingDirection(), 0}, false, {power = power})
+      world.spawnProjectile(projectileName, object.toAbsolutePosition(stateData.projectileSourcePosition), entity.id(), {mcontroller.facingDirection(), 0}, false, {power = power})
       stateData.shots = stateData.shots + 1
       stateData.fireTimer = stateData.fireTimer + entity.configParameter("fuFlameThrowerAttack.fireInterval")
     end
@@ -69,7 +69,7 @@ function fuFlameThrowerAttack.update(dt, stateData)
   --Then wind down
   elseif stateData.winddownTimer >= 0 then
     if stateData.winddownTimer == entity.configParameter("fuFlameThrowerAttack.winddownTime") then
-      entity.setAnimationState("attack", "winddown")
+      animator.setAnimationState("attack", "winddown")
     end
 
     stateData.winddownTimer = stateData.winddownTimer - dt

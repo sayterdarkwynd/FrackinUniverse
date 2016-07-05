@@ -48,13 +48,13 @@ function wanderState.update(dt, stateData)
 
   moveX(stateData.movement, false)
 
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("attack", "idle")
   if not mcontroller.onGround() then
-    entity.setAnimationState("movement", "jump")
+    animator.setAnimationState("movement", "jump")
   elseif stateData.movement ~= 0 then
-    entity.setAnimationState("movement", "walk")
+    animator.setAnimationState("movement", "walk")
   else
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   end
 
   if stateData.wanderMovementTimer <= 0 then

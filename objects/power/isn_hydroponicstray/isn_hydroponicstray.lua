@@ -21,10 +21,10 @@ end
 function update(dt)
 	storage.activeConsumption = false
 	if isn_hasRequiredPower() == false then
-		entity.setAnimationState("powlight", "off")
+		animator.setAnimationState("powlight", "off")
 		return
 	end
-	entity.setAnimationState("powlight", "on")
+	animator.setAnimationState("powlight", "on")
 	
 	if storage.currentseed == nil or storage.currentcrop == nil then
 		if isn_doSeedIntake() ~= true then return end
@@ -32,13 +32,13 @@ function update(dt)
 	
 	local growthperc = isn_getXPercentageOfY(storage.growth,storage.growthcap)
 	if growthperc >= 75 then
-		entity.setAnimationState("growth", "3")
+		animator.setAnimationState("growth", "3")
 	elseif growthperc >= 50 then
-		entity.setAnimationState("growth", "2")
+		animator.setAnimationState("growth", "2")
 	elseif growthperc >= 25 then
-		entity.setAnimationState("growth", "1")
+		animator.setAnimationState("growth", "1")
 	else
-		entity.setAnimationState("growth", "0")
+		animator.setAnimationState("growth", "0")
 	end
 	
 	if storage.water <= 0 and isn_doWaterIntake() ~= true then return end

@@ -30,7 +30,7 @@ function aggressState.update(dt, stateData)
     movement = calculateSeparationMovement()
   end
 
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("attack", "idle")
   move({ movement, self.toTarget[2] }, true, closeDistance)
 
   -- Keep track of when we hit the ground in aggress, and if we keep ending up

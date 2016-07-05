@@ -78,9 +78,9 @@ function circleState.update(dt, stateData)
   local movement = world.distance(destination, self.position)
 
   if movement[2] < 0 then
-    entity.setAnimationState("movement", "gliding")
+    animator.setAnimationState("movement", "gliding")
   else
-    entity.setAnimationState("movement", "flying")
+    animator.setAnimationState("movement", "flying")
   end
 
   util.debugLine(mcontroller.position(), destination, "blue")

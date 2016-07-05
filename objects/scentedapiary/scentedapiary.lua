@@ -1,7 +1,7 @@
 local contents
  
 function init(args)
-		entity.setAnimationState("bees", "off")
+		animator.setAnimationState("bees", "off")
         if not self.spawnDelay or not contents then
                 -- A gobal spawn time multiplier:
                 self.spawnDelay = 1.05
@@ -141,7 +141,7 @@ function trySpawnBee(chance,type,amount)        -- tries to spawn bees if we hav
         amount = amount or 1        -- chance is a float value between 0.00 (will never spawn) and 1.00 (will always spawn)
         if self.doBees and math.random(100)/100 <= chance then      ---math.random(100)/100 allows me to set spawns to anything from 0.00 to 1.00, so chance has to be in that range.
                 while amount>0 do
-                        world.spawnMonster(type, entity.toAbsolutePosition({ 2, 3 }), { level = 1 })
+                        world.spawnMonster(type, object.toAbsolutePosition({ 2, 3 }), { level = 1 })
                         amount = amount - 1
                 end
                 self.doBees = false
@@ -153,7 +153,7 @@ function trySpawnMutantBee(chance,type,amount)
         amount = amount or 1
         if self.doBees and math.random(100)/100 <= ( chance + self.mutationIncrease ) then
                 while amount>0 do
-                        world.spawnMonster(type, entity.toAbsolutePosition({ 2, 3 }), { level = 1 })
+                        world.spawnMonster(type, object.toAbsolutePosition({ 2, 3 }), { level = 1 })
                         amount = amount - 1
                 end
                 self.doBees = false
@@ -225,14 +225,14 @@ function expellQueens(type)   ---Checks how many queens are in the apiary, eithe
 				local queenname = contents[17].name		---sets the variable queenname to be use for queen removal
 				local queenremoval = (contents[17].count - 1) ---How many queens are we removing?
 				world.containerConsume(entity.id(), {name = queenname, count = queenremoval, data={}})  ---PEACE OUT, YA QUEENS
-				world.spawnItem(queenname, entity.toAbsolutePosition({ 1, 2 }), queenremoval)			--- Oh, hi. Why are you on the ground? SHE THREW YOU OUT? THAT BITCH!
+				world.spawnItem(queenname, object.toAbsolutePosition({ 1, 2 }), queenremoval)			--- Oh, hi. Why are you on the ground? SHE THREW YOU OUT? THAT BITCH!
 			end
 		elseif contents[18].name == queenLocate then  --is queen in slot18? (Bottom bee slot), here we go again....
 			if contents[18].count > 1 then
 				local queenname = contents[18].name
 				local queenremoval = (contents[18].count - 1)
 				world.containerConsume(entity.id(), {name = queenname, count = queenremoval, data={}})
-				world.spawnItem(queenname, entity.toAbsolutePosition({ 1, 2 }), queenremoval)
+				world.spawnItem(queenname, object.toAbsolutePosition({ 1, 2 }), queenremoval)
 			end
 		end
 end
@@ -350,7 +350,7 @@ function flowerCheck()
 	
 	if self.beePower == noFlowersYet then
 		self.beePower = -1				--- If there are no flowers for the bees... they can't do anything.
-		entity.setAnimationState("bees", "off")
+		animator.setAnimationState("bees", "off")
 		elseif self.beePower >= 60 then
 		self.beePower = 60
 	end
@@ -423,7 +423,7 @@ function miteInfection()   ---Random mite infection.
 				world.containerAddItems(entity.id(), { name="vmite", count = 60, data={}})
 				world.containerAddItems(entity.id(), { name="vmite", count = 60, data={}})
 				self.beePower = -1
-				entity.setAnimationState("bees", "off")
+				animator.setAnimationState("bees", "off")
 				return
 		end
 
@@ -447,18 +447,18 @@ function daytimeCheck()
 		end
 		if whatTimeOfDay == 2 then
 			if beeNocturnalDiurnal == "diurnal" then
-				entity.setAnimationState("bees", "off")
+				animator.setAnimationState("bees", "off")
 			end
 			if beeNocturnalDiurnal == "nocturnal" then
-				entity.setAnimationState("bees", "on")
+				animator.setAnimationState("bees", "on")
 			end
 		end
 		if whatTimeOfDay == 1 then
 			if beeNocturnalDiurnal == "nocturnal" then
-				entity.setAnimationState("bees", "off")
+				animator.setAnimationState("bees", "off")
 			end
 			if beeNocturnalDiurnal == "diurnal" then
-				entity.setAnimationState("bees", "on")
+				animator.setAnimationState("bees", "on")
 			end
 		end
 end
@@ -479,7 +479,7 @@ function update(dt)
                 else
                         -- log("sleeping")
                 end
-				entity.setAnimationState("bees", "off")
+				animator.setAnimationState("bees", "off")
                 return
         end
 		
@@ -837,7 +837,7 @@ function breedingBees()
 			end
 	end
 		beeNocturnalDiurnal = "unknown"	
-		entity.setAnimationState("bees", "off")
+		animator.setAnimationState("bees", "off")
         -- log("no bees matching: " .. contents[17].name .. " " .. contents[18].name)
         self.beePower = -1
 	return false

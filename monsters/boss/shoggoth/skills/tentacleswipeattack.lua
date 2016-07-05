@@ -20,7 +20,7 @@ end
 
 --------------------------------------------------------------------------------
 function tentacleSwipeAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 
   entity.setActiveSkillName("tentacleSwipeAttack")
 end
@@ -34,11 +34,11 @@ function tentacleSwipeAttack.update(dt, stateData)
 
   if not stateData.swiping then 
     if math.abs(toTarget[1]) > stateData.distanceRange[2] then
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
       move(toTarget, false)
     elseif math.abs(toTarget[1]) < stateData.distanceRange[1] then
       move({-toTarget[1], toTarget[2]}, false)
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
       mcontroller.controlFace(targetDir)
     else
       stateData.swiping = true
@@ -47,7 +47,7 @@ function tentacleSwipeAttack.update(dt, stateData)
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == entity.configParameter("tentacleSwipeAttack.windupTime") then
-      	entity.setAnimationState("movement", "swipe")
+      	animator.setAnimationState("movement", "swipe")
       end
       stateData.windupTimer = stateData.windupTimer - dt
     elseif stateData.winddownTimer > 0 then
@@ -74,11 +74,11 @@ function tentacleSwipeAttack.swipe(direction)
     projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", entity.level())
   end
 
-  world.spawnProjectile(projectileType, entity.toAbsolutePosition(projectileOffset), entity.id(), {direction, 0}, true, projectileConfig)
+  world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), {direction, 0}, true, projectileConfig)
 end
 
 function tentacleSwipeAttack.leavingState(stateData)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
   entity.setActiveSkillName("")
 end
 

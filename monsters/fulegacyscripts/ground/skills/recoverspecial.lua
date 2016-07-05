@@ -20,8 +20,8 @@ end
 function recoverSpecial.enteringState(stateData)
   setAggressive(true, false)
   
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
   entity.setActiveSkillName("recoverSpecial")
 
   entity.setEffectActive("recover", true) 

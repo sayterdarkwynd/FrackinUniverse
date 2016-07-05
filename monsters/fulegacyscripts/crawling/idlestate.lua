@@ -10,7 +10,7 @@ function idleState.enter()
 end
 
 function idleState.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 end
 
 function idleState.update(dt, stateData)

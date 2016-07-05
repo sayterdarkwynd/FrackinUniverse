@@ -9,13 +9,13 @@ self.timer = self.timer - dt
 if self.timer <= 0 then
 
   if isn_hasRequiredPower() == false then
-    entity.setAnimationState("machineState", "idle")
+    animator.setAnimationState("machineState", "idle")
 	return
   end
   
   if world.liquidAt(entity.position()) == true and entity.configParameter("isn_liquidCollector") == false then return end
   
-  entity.setAnimationState("machineState", "active")
+  animator.setAnimationState("machineState", "active")
   
   local output = nil
   local rarityroll = math.random(1,100)

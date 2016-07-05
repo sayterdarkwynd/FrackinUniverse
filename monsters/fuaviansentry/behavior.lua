@@ -7,12 +7,12 @@ function init()
     "attackState"
   })
   self.state.leavingState = function(stateName)
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   end
 
   entity.setAggressive(false)
   entity.setDeathParticleBurst("deathPoof")
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 end
 
 function update(dt)
@@ -25,7 +25,7 @@ function damage(args)
 end
 
 function move(direction)
-  entity.setAnimationState("movement", "move")
+  animator.setAnimationState("movement", "move")
 
   mcontroller.controlMove(direction, true)
 end
@@ -116,9 +116,9 @@ end
 
 function attackState.setAttackEnabled(enabled)
   if enabled then
-    entity.setAnimationState("movement", "attack")
+    animator.setAnimationState("movement", "attack")
   else
-    entity.setAnimationState("movement")
+    animator.setAnimationState("movement")
   end
 
   entity.setDamageOnTouch(enabled)
@@ -128,10 +128,10 @@ function attackState.setAggressive(targetId)
   self.targetId = targetId
 
   if targetId ~= nil then
-    entity.setAnimationState("movement")
+    animator.setAnimationState("movement")
     entity.setAggressive(true)
   else
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
     entity.setAggressive(false)
   end
 end

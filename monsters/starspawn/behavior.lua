@@ -10,7 +10,7 @@ function init()
     "captiveState"
   })
   self.state.leavingState = function(stateName)
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   end
 
   self.jumpHoldTime = 0
@@ -18,7 +18,7 @@ function init()
   entity.setAggressive(true)
   entity.setDamageOnTouch(true)
   entity.setDeathParticleBurst("deathPoof")
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 end
 
 --------------------------------------------------------------------------------
@@ -33,14 +33,14 @@ function update(dt)
 
   -- Update animation
   if mcontroller.onGround() then
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   else
     local velocity = mcontroller.velocity()
 
     if velocity[2] < 0 then
-      entity.setAnimationState("movement", "fall")
+      animator.setAnimationState("movement", "fall")
     else
-      entity.setAnimationState("movement", "jump")
+      animator.setAnimationState("movement", "jump")
     end
   end
 end
@@ -61,16 +61,16 @@ function die()
     local size = entity.configParameter("poSize")
 
     if size == "medium" then
-      local entityId = world.spawnMonster("microslime", entity.toAbsolutePosition({ -1, 4 }), { level = entity.level() })
+      local entityId = world.spawnMonster("microslime", object.toAbsolutePosition({ -1, 4 }), { level = entity.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", -1)
 
-      entityId = world.spawnMonster("microslime", entity.toAbsolutePosition({ 1, 4 }), { level = entity.level() })
+      entityId = world.spawnMonster("microslime", object.toAbsolutePosition({ 1, 4 }), { level = entity.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", 1)
     elseif size == "large" then
-      local entityId = world.spawnMonster("microslime", entity.toAbsolutePosition({ -1, 3 }), { level = entity.level() })
+      local entityId = world.spawnMonster("microslime", object.toAbsolutePosition({ -1, 3 }), { level = entity.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", -1)
 
-      entityId = world.spawnMonster("microslime", entity.toAbsolutePosition({ 1, 3 }), { level = entity.level() })
+      entityId = world.spawnMonster("microslime", object.toAbsolutePosition({ 1, 3 }), { level = entity.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", 1)
     end
   end

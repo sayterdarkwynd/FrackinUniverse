@@ -42,10 +42,10 @@ end
 
 function update(dt)
 	if isn_hasRequiredPower() == true then 
-	  entity.setAnimationState("anim", "on")
+	  animator.setAnimationState("anim", "on")
 	  entity.setLightColor(entity.configParameter("lightColor", {30, 50, 90}))
 	else 
-	  entity.setAnimationState("anim", "off")
+	  animator.setAnimationState("anim", "off")
 	  entity.setLightColor({0, 0, 0, 0})
 	end
 end

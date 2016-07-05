@@ -27,12 +27,12 @@ function attackState.update(dt, stateData)
       stateData.timer = entity.configParameter("attackWindupTime")
     end
   elseif stateData.stage == "windup" then
-    entity.setAnimationState("movement", "swimSlow")
+    animator.setAnimationState("movement", "swimSlow")
     setBodyDirection(toTarget)
     if stateData.timer <= 0 then
       -- world.logInfo("charging...")
       stateData.stage = "charge"
-      entity.setAnimationState("attack", "melee")
+      animator.setAnimationState("attack", "melee")
       stateData.chargeDirection = toTarget
       stateData.timer = entity.configParameter("attackChargeTime")
     end

@@ -143,13 +143,13 @@ end
 function update(dt)
         contents = world.containerItems(entity.id())
         if not contents[10] then
-				entity.setAnimationState("centrifuge", "idle")
+				animator.setAnimationState("centrifuge", "idle")
                 return
         end
 	if contents[10] then
         deciding()
 		workingCombs()
-		entity.setAnimationState("centrifuge", "working")
+		animator.setAnimationState("centrifuge", "working")
 	end
 end
  

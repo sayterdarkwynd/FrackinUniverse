@@ -24,14 +24,14 @@ function landState.update(dt, stateData)
   end
 
   if mcontroller.onGround() then
-    entity.setAnimationState("movement", "standing")
+    animator.setAnimationState("movement", "standing")
 
     stateData.restTime = stateData.restTime - dt
     if stateData.restTime < 0.0 then
       return true, entity.randomizeParameterRange("landCooldownTimeRange")
     end
   else
-    entity.setAnimationState("movement", "flying")
+    animator.setAnimationState("movement", "flying")
     mcontroller.controlFly({ 0, -mcontroller.baseParameters().flySpeed * entity.configParameter("wanderSpeedMultiplier") }, true)
   end
 

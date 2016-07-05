@@ -5,7 +5,7 @@ function init(args)
   })
 
   self.state.leavingState = function(stateName)
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   end
 
   self.initialPauseTimer = entity.configParameter("initialPauseTime")
@@ -60,7 +60,7 @@ end
 
 --------------------------------------------------------------------------------
 function move(toTarget)
-  entity.setAnimationState("movement", "walk")
+  animator.setAnimationState("movement", "walk")
 
   if math.abs(toTarget[2]) < 4.0 and isOnPlatform() then
     entity.moveDown()
@@ -86,7 +86,7 @@ end
 function idleState.update(dt, stateData)
   stateData.timer = stateData.timer - dt
   if stateData.timer <= 0 then
-    entity.setAnimationState("movement", "blink")
+    animator.setAnimationState("movement", "blink")
     stateData.timer = entity.randomizeParameterRange("idleBlinkIntervalRange")
   end
 
@@ -100,7 +100,7 @@ function attackState.enterWith(targetId)
   if targetId == nil then return nil end
 
   if isClosed() then
-    entity.setAnimationState("movement", "open")
+    animator.setAnimationState("movement", "open")
   end
 
   return {

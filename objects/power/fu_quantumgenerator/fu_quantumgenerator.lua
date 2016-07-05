@@ -21,22 +21,22 @@ end
 function update(dt)
 	-- check current power production and set the animation state accordingly
 	if storage.currentpowerprod > 90 then
-		entity.setAnimationState("screen", "slow")
+		animator.setAnimationState("screen", "slow")
                 entity.setLightColor(entity.configParameter("lightColor", {126, 206, 255}))
                 entity.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 50 then
-		entity.setAnimationState("screen", "slow")
-		entity.setAnimationState("fans", "slow")
+		animator.setAnimationState("screen", "slow")
+		animator.setAnimationState("fans", "slow")
                 entity.setLightColor(entity.configParameter("lightColor", {70, 126, 161}))		
 		entity.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 10 then
-		entity.setAnimationState("screen", "slow")
-		entity.setAnimationState("fans", "slow")
+		animator.setAnimationState("screen", "slow")
+		animator.setAnimationState("fans", "slow")
                 entity.setLightColor(entity.configParameter("lightColor", {35, 79, 87}))
 		entity.setSoundEffectEnabled(true)
 	else
-		entity.setAnimationState("screen", "off")
-		entity.setAnimationState("fans", "off")
+		animator.setAnimationState("screen", "off")
+		animator.setAnimationState("fans", "off")
 
                 entity.setLightColor({0, 0, 0, 0})		
 	end

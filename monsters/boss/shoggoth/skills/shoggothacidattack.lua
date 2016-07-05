@@ -21,7 +21,7 @@ end
 
 --------------------------------------------------------------------------------
 function shoggothAcidAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
   entity.setActiveSkillName("shoggothAcidAttack")
 end
 
@@ -39,11 +39,11 @@ function shoggothAcidAttack.update(dt, stateData)
 
   if not stateData.spitting then 
     if math.abs(toTarget[1]) > stateData.distanceRange[2] then
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
       move(toTarget, false)
     elseif math.abs(toTarget[1]) < stateData.distanceRange[1] then
       move({-toTarget[1], toTarget[2]}, false)
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
       mcontroller.controlFace(targetDir)
     else
       stateData.spitting = true
@@ -52,7 +52,7 @@ function shoggothAcidAttack.update(dt, stateData)
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == entity.configParameter("shoggothAcidAttack.windupTime") then
-      entity.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle")
       end
       stateData.windupTimer = stateData.windupTimer - dt
 
@@ -92,11 +92,11 @@ function shoggothAcidAttack.spit(direction)
   end
 
 
-  world.spawnProjectile(projectileType, entity.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
+  world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
 end
 
 function shoggothAcidAttack.leavingState(stateData)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
   entity.setActiveSkillName("")
 end
 

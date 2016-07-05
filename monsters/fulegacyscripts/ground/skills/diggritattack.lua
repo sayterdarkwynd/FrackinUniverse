@@ -14,8 +14,8 @@ end
 
 --------------------------------------------------------------------------------
 function digGritAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
 
   entity.setActiveSkillName("digGritAttack")
 end
@@ -29,7 +29,7 @@ end
 
 --------------------------------------------------------------------------------
 function digGritAttack.run(stateData)
-  entity.setAnimationState("movement", "run")
+  animator.setAnimationState("movement", "run")
 
   local feetOffset = mcontroller.boundBox()[2]
 

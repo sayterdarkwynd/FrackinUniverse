@@ -13,8 +13,8 @@ function stunState.enteringState(stateData)
 end
 
 function stunState.update(dt, stateData)
-  entity.setAnimationState("attack", "idle")
-  entity.setAnimationState("movement", "knockout")
+  animator.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "knockout")
 
   stateData.timer = stateData.timer + dt
   return stateData.timer > stateData.duration

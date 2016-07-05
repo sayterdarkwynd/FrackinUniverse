@@ -18,19 +18,19 @@ end
 function update(dt)
 
 	if storage.radiation >= 100 then
-		entity.setAnimationState("hazard", "danger")
+		animator.setAnimationState("hazard", "danger")
 	elseif storage.radiation >= 60 then
-		entity.setAnimationState("hazard", "warn")
+		animator.setAnimationState("hazard", "warn")
 	elseif storage.radiation >= 1 then
-		entity.setAnimationState("hazard", "safe")
+		animator.setAnimationState("hazard", "safe")
 	else 
-	        entity.setAnimationState("hazard", "off")
+	        animator.setAnimationState("hazard", "off")
 	end
 
 	if storage.active == false then
 		storage.radiation = storage.radiation - 5
 		storage.radiation = isn_numericRange(storage.radiation,0,100)
-		entity.setAnimationState("screen", "off")
+		animator.setAnimationState("screen", "off")
 		return
 	end
 	
@@ -41,13 +41,13 @@ function update(dt)
 	
 	local power = isn_getCurrentPowerOutput(false)
 	if power > 11 then
-	  entity.setAnimationState("screen", "on")
+	  animator.setAnimationState("screen", "on")
 	elseif power >= 6 then
-	  entity.setAnimationState("screen", "med")
+	  animator.setAnimationState("screen", "med")
 	elseif power >= 1 then 
-	  entity.setAnimationState("screen", "slow")
+	  animator.setAnimationState("screen", "slow")
 	elseif power <= 0 then
-	  entity.setAnimationState("screen", "off")
+	  animator.setAnimationState("screen", "off")
 	end
 	
 	local rads = -4

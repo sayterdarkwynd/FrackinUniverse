@@ -475,7 +475,7 @@ function update(dt)
             self.crafting = false
             self.output = {}
             self.timer = self.mintick --reset timer to a safe minimum
-            entity.setAnimationState("samplingarrayanim", "idle")
+            animator.setAnimationState("samplingarrayanim", "idle")
         end
 
         if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
@@ -497,7 +497,7 @@ function startCrafting(result)
         self.crafting = true
         self.timer = result.time
         self.output = result.outputs
-        entity.setAnimationState("samplingarrayanim", "working")
+        animator.setAnimationState("samplingarrayanim", "working")
 
         return true
     end              

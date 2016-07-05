@@ -8,7 +8,7 @@ function init(args)
     "captiveState"
   })
   self.state.leavingState = function(stateName)
-    entity.setAnimationState("movement", entity.randomizeParameter("idleAnimations"))
+    animator.setAnimationState("movement", entity.randomizeParameter("idleAnimations"))
   end
 
   entity.setAggressive(false)
@@ -17,7 +17,7 @@ function init(args)
   capturepod.onInit()
 
   self.movement = groundMovement.create(1, 1, function(animationState)
-    entity.setAnimationState("movement", "move")
+    animator.setAnimationState("movement", "move")
   end)
 end
 
@@ -126,7 +126,7 @@ end
 
 function attackState.setAttackEnabled(enabled)
   if enabled then
-    entity.setAnimationState("movement", "attack")
+    animator.setAnimationState("movement", "attack")
     self.attackHoldTimer = entity.configParameter("attackHoldTime")
   else
   end
@@ -139,7 +139,7 @@ function attackState.setAggressive(targetId)
   if targetId ~= nil then
     entity.setAggressive(true)
   else
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
     entity.setAggressive(false)
   end
 end
@@ -207,7 +207,7 @@ function captiveState.update(dt, stateData)
     end
 
     if not playingIdleAnimation then
-      entity.setAnimationState("movement", entity.randomizeParameter("idleAnimations"))
+      animator.setAnimationState("movement", entity.randomizeParameter("idleAnimations"))
     end
   end
 

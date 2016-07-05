@@ -18,7 +18,7 @@ end
 
 --------------------------------------------------------------------------------
 function fleshBombAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 
   entity.setActiveSkillName("fleshBombAttack")
 end
@@ -33,11 +33,11 @@ function fleshBombAttack.update(dt, stateData)
 
   if not stateData.bombing then 
     if math.abs(toTarget[1]) > stateData.distanceRange[2] then
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
       move(toTarget, false)
     elseif math.abs(toTarget[1]) < stateData.distanceRange[1] then
       move({-toTarget[1], toTarget[2]}, false)
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
       mcontroller.controlFace(targetDir)
     else
       stateData.bombing = true
@@ -46,7 +46,7 @@ function fleshBombAttack.update(dt, stateData)
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == entity.configParameter("fleshBombAttack.windupTime") then
-      entity.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle")
       end
       stateData.windupTimer = stateData.windupTimer - dt
     elseif stateData.winddownTimer > 0 then
@@ -76,12 +76,12 @@ function fleshBombAttack.bomb(direction)
   end
 
 
-  world.spawnProjectile(projectileType, entity.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
-  world.spawnProjectile(projectileType, entity.toAbsolutePosition(projectileOffset), entity.id(), direction2, true, projectileConfig)
+  world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
+  world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), direction2, true, projectileConfig)
 end
 
 function fleshBombAttack.leavingState(stateData)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
   entity.setActiveSkillName("")
 end
 

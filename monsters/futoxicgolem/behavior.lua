@@ -16,11 +16,11 @@ function init(args)
     self.state.shuffleStates()
   end
   self.state.leavingState = function(stateName)
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   end
 
   entity.setAggressive(false)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 end
 
 --------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ end
 
 --------------------------------------------------------------------------------
 function move(direction)
-  entity.setAnimationState("movement", "walk")
+  animator.setAnimationState("movement", "walk")
   mcontroller.controlMove(direction, true)
 end
 
@@ -114,7 +114,7 @@ function throwAttack.update(dt, stateData)
   if world.magnitude(toTarget) > entity.configParameter("throwMaxDistance") then
     move(toTarget[1])
   else
-    entity.setAnimationState("movement", "throw")
+    animator.setAnimationState("movement", "throw")
 
     stateData.timer = stateData.timer - dt
 
@@ -122,7 +122,7 @@ function throwAttack.update(dt, stateData)
       if stateData.thrown then
         return true, entity.configParameter("throwCooldown")
       else
-        local entityId = world.spawnMonster("micropo", entity.toAbsolutePosition(entity.configParameter("throwSpawnOffset")))
+        local entityId = world.spawnMonster("micropo", object.toAbsolutePosition(entity.configParameter("throwSpawnOffset")))
         world.callScriptedEntity(entityId, "setSpawnDirection", mcontroller.facingDirection())
         self.minions[stateData.minionIndex] = entityId
 
@@ -155,7 +155,7 @@ function shoutAttack.update(dt, stateData)
 
     return false
   else
-    entity.setAnimationState("movement", "ranged")
+    animator.setAnimationState("movement", "ranged")
     -- entity.setFireDirection(entity.configParameter("shoutProjectileOffset"), toTarget)
 
     local projectile = entity.animationStateProperty("movement", "projectile")

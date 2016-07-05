@@ -11,7 +11,7 @@ function update(dt)
 	local powerlevel = isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
 	if powerlevel ~= 0 then powerlevel = powerlevel / 10 end			-- why a separate statement?
 	powerlevel = isn_numericRange(powerlevel,0,10)
-	entity.setAnimationState("meter", tostring(math.floor(powerlevel)))
+	animator.setAnimationState("meter", tostring(math.floor(powerlevel)))
 	
 	local powerinput = isn_getCurrentPowerInput(true)
 	if powerinput >= 1 then

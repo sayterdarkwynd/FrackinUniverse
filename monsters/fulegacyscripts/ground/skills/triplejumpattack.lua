@@ -20,8 +20,8 @@ function tripleJumpAttack.enter()
 end
 
 function tripleJumpAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
 
   entity.setActiveSkillName("tripleJumpAttack")
 end
@@ -42,7 +42,7 @@ function tripleJumpAttack.run(stateData)
     coroutine.yield(false)
   end
 
-  entity.setAnimationState("movement", "chargeWindup")
+  animator.setAnimationState("movement", "chargeWindup")
   mcontroller.controlFace(self.toTarget[1])
   util.wait(tripleJumpAttack.windupTime)
 
@@ -58,7 +58,7 @@ function tripleJumpAttack.jump(jumpTime, moveTime, trackTarget)
   local direction = util.toDirection(self.toTarget[1])
   mcontroller.controlFace(direction)
 
-  entity.setAnimationState("movement", "jump")
+  animator.setAnimationState("movement", "jump")
   controlJump()
   coroutine.yield(false)
 

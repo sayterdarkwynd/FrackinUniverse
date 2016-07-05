@@ -4,10 +4,10 @@ end
 
 function update(dt)
 	if isn_hasRequiredPower() == false then
-		entity.setAnimationState("switchState", "off")
+		animator.setAnimationState("switchState", "off")
 		return
 	end
-	entity.setAnimationState("switchState", "on")
+	animator.setAnimationState("switchState", "on")
 	
 	--local targetlist = world.playerQuery(entity.position(),500)
 	--for key, value in pairs(targetlist) do

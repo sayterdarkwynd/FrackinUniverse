@@ -17,8 +17,8 @@ function starspawnBlinkAttack.enter()
 end
 
 function starspawnBlinkAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
 
   entity.setActiveSkillName("starspawnBlinkAttack")
 end
