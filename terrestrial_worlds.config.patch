@@ -1662,9 +1662,57 @@
    
    
    
+
+   
+     {"op" : "add", 
+    "path" : "/planetTypes/myforest",
+    "value" : 
+      {
+      "gravityRange" : [10, 80],
+      "threatRange" : [4, 7],
+      "layers" : {
+        "surface" : {
+          "primaryRegion" : [ "arboreal" ],
+          "secondaryRegions" : [ "garden" ],
+          
+          "dungeons" : [ [1.0, "apexbase"]  ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "arborealunderground" ]
+        },
+         "underground1" : {
+         "primaryRegion" : [ "arborealunderground" ],
+         "secondaryRegions" : [ "ffcrystalrealm"]
+        },
+        "underground2" : {
+         "primaryRegion" : [ "arborealunderground" ],
+         "secondaryRegions" : [  "ffcrystalrealm"  ]
+        },
+        "underground3" : {
+         "primaryRegion" : [ "arborealunderground" ],
+         "secondaryRegions" : [  "ffcrystalrealm" ]
+        },
+        "core" : {
+          "primaryRegion" : [ "mooncore" ],
+          "baseHeight" : 150
+        }
+       }
+     }
+   },
    
    
-   
+  {"op" : "add", 
+  "path" : "/regionTypes/myforest",
+  "value" : 
+  {
+      "caveLiquid" : [  "tarliquid", "blacktar", "alienjuice", "darkwater" ],
+      "blockSelector" : [ "remixedSurface", "remixedMildSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "myforest" ]]
+      ]
+    }
+  },   
    
    
    
