@@ -69,7 +69,7 @@ end
 		if contents[39].name == "plutoniumframe" then
 				self.mutationStart = self.mutationStart + 0.05
 		end
-		if contents[39].name == "rubiumframe" then
+		if contents[39].name == "feroziumframe" then
 				self.droneStart = self.droneStart + 6
 				self.beeStart = self.beeStart + 6
 		end
@@ -128,7 +128,7 @@ end
 		if contents[40].name == "plutoniumframe" then
 				self.mutationStart = self.mutationStart + 0.05
 		end
-		if contents[40].name == "rubiumframe" then
+		if contents[40].name == "feroziumframe" then
 				self.droneStart = self.droneStart + 6
 				self.beeStart = self.beeStart + 6
 		end

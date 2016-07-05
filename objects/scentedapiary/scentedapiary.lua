@@ -58,7 +58,7 @@ end
 		if contents[19].name == "plutoniumframe" then
 				self.mutationIncrease = 0.05
 		end
-		if contents[19].name == "rubiumframe" then
+		if contents[19].name == "feroziumframe" then
 				self.droneModifier = 6
 				self.beeModifier = 6
 		end
