@@ -301,12 +301,12 @@
        "layers" : {
       "atmosphere" : {
         "primaryRegion" : [ "clouds" ]
-      },
+      }, 
       "surface" : {
           "primaryRegion" : [ "arboreal" ],
           "secondaryRegions" : [ "wartfield", "fieldofbracken", "ffhive", "aliendesert", "cactiplace", "crystalswamp", "birchforest", "alienforest", "cloudforest", "rainbowforest", "swamp", "elder", "corruptedforest", "fieldofwheat", "fieldofsugar",  "fieldofpotato", "fieldofcorn",  "fieldofgrape",  "fieldoftomato", "pineforest", "flowerforest", "snowyforest", "giantflowers", "forest", "jungle", "savannah", "snow",  "tundra" ],
           "dungeonCountRange" : [2, 10],
-             "dungeons" : [ "shipwreck", "avianfloatingislands", "avianpyramid", "glitchfarm", "glitchjoust", "uscmbase", "lakes", "volcano", "greenruins", "glitchsewer", "glitchvillage", "apexresearchlab", "apextestchamber", "apextowerblock", "aviantomb", "aviantower", "avianvillage", "avianairship", "aviantemple","humanbunker", "floranhuntinggrounds", "floranvillagetower", "floranhell", "humanprison", "naturalcave" ]
+             "dungeons" : [ [1.0, "apexbase"]  ]
         },
         "subsurface" : {
           "primaryRegion" : [ "arborealunderground" ]
@@ -1662,9 +1662,57 @@
    
    
    
+
+   
+     {"op" : "add", 
+    "path" : "/planetTypes/myforest",
+    "value" : 
+      {
+      "gravityRange" : [10, 80],
+      "threatRange" : [4, 7],
+      "layers" : {
+        "surface" : {
+          "primaryRegion" : [ "arboreal" ],
+          "secondaryRegions" : [ "garden" ],
+          
+          "dungeons" : [ [1.0, "apexbase"]  ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "arborealunderground" ]
+        },
+         "underground1" : {
+         "primaryRegion" : [ "arborealunderground" ],
+         "secondaryRegions" : [ "ffcrystalrealm"]
+        },
+        "underground2" : {
+         "primaryRegion" : [ "arborealunderground" ],
+         "secondaryRegions" : [  "ffcrystalrealm"  ]
+        },
+        "underground3" : {
+         "primaryRegion" : [ "arborealunderground" ],
+         "secondaryRegions" : [  "ffcrystalrealm" ]
+        },
+        "core" : {
+          "primaryRegion" : [ "mooncore" ],
+          "baseHeight" : 150
+        }
+       }
+     }
+   },
    
    
-   
+  {"op" : "add", 
+  "path" : "/regionTypes/myforest",
+  "value" : 
+  {
+      "caveLiquid" : [  "tarliquid", "blacktar", "alienjuice", "darkwater" ],
+      "blockSelector" : [ "remixedSurface", "remixedMildSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "myforest" ]]
+      ]
+    }
+  },   
    
    
    
