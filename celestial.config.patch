@@ -3,7 +3,16 @@
   "path" : "/systemTypeBins",
   "value" : [
     [-1.00, "White"],
-    [0.30, "dying1"]
+    [-0.30, "Orange"],
+    [-0.12, "Yellow"],
+    [0.00, "Blue"],
+    [0.12, "Red"],
+    [0.30, ""], // dark mysteries
+    [0.30, "dying1"],
+    [0.30, "bluesun1"],
+    [0.30, "bluesun2"],
+    [0.30, "redsun1"],
+    [0.30, "blacksun1"]
   ]
  
 },
@@ -160,42 +169,7 @@
         }
       ]
     }
-},
-
-{
-    "op" : "add",
-    "path" : "/satelliteTypes/mutatedMoons",
-    "value" : {
-      "satelliteProbability" : 0.15,
-      "maxSatelliteCount" : 2,
-
-      "baseParameters" : {
-        "worldType" : "Terrestrial",
-        "description" : "Mutated Moons",
-        "smallImage" : "/celestial/system/planet_small.png",
-        "shadowNumber" : [1, 9],
-
-        "liquidImages" : "/celestial/system/terrestrial/liquids/<liquid>.png",
-        "shadowImages" : "/celestial/system/terrestrial/shadows/<num>.png",
-        "biomeMaskImages" : "/celestial/system/terrestrial/biomes/<biome>/maskie<num>.png",
-        "biomeMasks" : 3,
-        "dynamicsImages" : "/celestial/system/terrestrial/dynamics/<num>.png",
-        "dynamicsRange" : [1, 40],
-
-        "terrestrialType" : [ "arboreal" ]
-      },
-
-      "variationParameters" : [
-        {
-          "imageScale" : 0.075,
-          "worldSize" : "medium"
-        },
-        {
-          "imageScale" : 0.055,
-          "worldSize" : "small"
-        }
-      ]
-    }
 }
+
 
 ]
