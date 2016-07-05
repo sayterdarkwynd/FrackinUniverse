@@ -19,7 +19,7 @@ end
 
 --------------------------------------------------------------------------------
 function eyeBeamAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
   entity.setActiveSkillName("eyeBeamAttack")
 end
 
@@ -36,11 +36,11 @@ function eyeBeamAttack.update(dt, stateData)
 
   if not stateData.blasting then 
     if math.abs(toTarget[1]) > stateData.distanceRange[2] then
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
       move(toTarget, false)
     elseif math.abs(toTarget[1]) < stateData.distanceRange[1] then
       move({-toTarget[1], toTarget[2]}, false)
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
       mcontroller.controlFace(targetDir)
     else
       stateData.blasting = true
@@ -54,14 +54,14 @@ function eyeBeamAttack.update(dt, stateData)
     -- phase 1 - windup (steal underpants)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == entity.configParameter("eyeBeamAttack.windupTime") then
-      entity.setAnimationState("movement", "idle")
-      --entity.setAnimationState("firstBeams", "active")
+      animator.setAnimationState("movement", "idle")
+      --animator.setAnimationState("firstBeams", "active")
       end
       stateData.windupTimer = stateData.windupTimer - dt
       if stateData.windupTimer  < 0 then
           world.logInfo("Help, I'm stuck in windup.")
           entity.setLightActive("beam1", true)
-          entity.setAnimationState("firstBeams", "active")
+          animator.setAnimationState("firstBeams", "active")
           
           -- rotate the eyebeam animation to aim at user
           local animationAngle = math.atan(-toTargetAim[2], math.abs(toTargetAim[1]))
@@ -76,7 +76,7 @@ function eyeBeamAttack.update(dt, stateData)
       eyeBeamAttack.blast(entity.targetSnapshot)
       stateData.timer = stateData.timer - dt
       if stateData.timer < 0 then
-        entity.setAnimationState("firstBeams", "winddown")
+        animator.setAnimationState("firstBeams", "winddown")
         entity.setLightActive("beam1", false)
 
       end
@@ -105,12 +105,12 @@ function eyeBeamAttack.blast(direction)
     projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", entity.level())
   end
 
-  world.spawnProjectile(projectileType, entity.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
+  world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
 end
 
 function eyeBeamAttack.leavingState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("firstBeams", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("firstBeams", "idle")
   entity.setActiveSkillName("")
 end
 

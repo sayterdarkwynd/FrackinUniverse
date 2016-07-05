@@ -12,8 +12,8 @@ function approachState.enteringState(stateData)
   stateData.prepTimer = entity.configParameter("approachTime", 4.0)
   stateData.lastDirection = mcontroller.facingDirection()
 
-  entity.setAnimationState("movement", "run")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "run")
+  animator.setAnimationState("attack", "idle")
 end
 
 function approachState.update(dt, stateData)
@@ -30,7 +30,7 @@ function approachState.update(dt, stateData)
 
     if pointWithinRect(mcontroller.position(), option.startRect) then
       --just stand around and wait, I guess...
-      entity.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle")
       faceTarget()
       return true
     else

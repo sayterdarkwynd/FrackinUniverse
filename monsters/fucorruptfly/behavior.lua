@@ -30,9 +30,9 @@ function update(dt)
 
   if self.state.stateDesc() ~= "attackState" then
     if mcontroller.onGround() then
-      entity.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle")
     else
-      entity.setAnimationState("movement", "fly")
+      animator.setAnimationState("movement", "fly")
     end
   end
 

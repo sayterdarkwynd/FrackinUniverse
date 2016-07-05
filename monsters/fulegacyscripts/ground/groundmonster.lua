@@ -374,11 +374,11 @@ function move(delta, run, jumpThresholdX)
   end
 
   if not self.onGround then
-    entity.setAnimationState("movement", "jump")
+    animator.setAnimationState("movement", "jump")
   elseif delta[1] ~= 0 then
-    entity.setAnimationState("movement", "run")
+    animator.setAnimationState("movement", "run")
   else
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
     return false
   end
 end
@@ -760,20 +760,20 @@ end
 
 function setMovementState(running)
   if not mcontroller.onGround() then
-    entity.setAnimationState("movement", "jump")
+    animator.setAnimationState("movement", "jump")
   else
     if running then
-      entity.setAnimationState("movement", "run")
+      animator.setAnimationState("movement", "run")
     else
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
     end
   end
 end
 
 function setIdleState()
   if not mcontroller.onGround() then
-    entity.setAnimationState("movement", "jump")
+    animator.setAnimationState("movement", "jump")
   else
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   end
 end

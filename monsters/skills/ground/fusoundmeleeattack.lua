@@ -15,7 +15,7 @@ end
 
 function fuSoundMeleeAttack.enteringState(stateData)
   setAggressive(true, false)
-  entity.setAnimationState("attack", "melee")
+  animator.setAnimationState("attack", "melee")
 
   stateData.projectileSourcePosition = {
       entity.configParameter("projectileSourcePosition", {0, 0})[1] + entity.configParameter("meleeProjectileOffset", {0, 0})[1] - 1.0,
@@ -28,7 +28,7 @@ end
 function fuSoundMeleeAttack.update(dt, stateData)
   if not canContinueSkill() then return true end
 
-  entity.setAnimationState("movement", "run")
+  animator.setAnimationState("movement", "run")
 
   local attackCompletion = (entity.configParameter("fuSoundMeleeAttack.skillTimeLimit") - self.skillTimer) / entity.configParameter("fuSoundMeleeAttack.skillTimeLimit")
 
@@ -63,7 +63,7 @@ function fuSoundMeleeAttack.update(dt, stateData)
   mcontroller.controlFace(self.toTarget[1])
   
   if stateData.didAttack == false and attackCompletion >= 0.25 then
-    local projectileStartPosition = entity.toAbsolutePosition(stateData.projectileSourcePosition)
+    local projectileStartPosition = object.toAbsolutePosition(stateData.projectileSourcePosition)
     local projectileName = entity.configParameter("meleeProjectile") or entity.configParameter("fuSoundMeleeAttack.projectile")
     local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * entity.configParameter("fuSoundMeleeAttack.power")
     entity.playSound("attack")

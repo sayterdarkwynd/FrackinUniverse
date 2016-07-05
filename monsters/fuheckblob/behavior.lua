@@ -10,7 +10,7 @@ function init()
     "captiveState"
   })
   self.state.leavingState = function(stateName)
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   end
 
   self.jumpHoldTime = 0;
@@ -18,7 +18,7 @@ function init()
   entity.setAggressive(true)
   entity.setDamageOnTouch(true)
   entity.setDeathParticleBurst("deathPoof")
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 end
 
 --------------------------------------------------------------------------------
@@ -33,14 +33,14 @@ function update(dt)
 
   -- Update animation
   if mcontroller.onGround() then
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   else
     local velocity = mcontroller.velocity()
 
     if velocity[2] < 0 then
-      entity.setAnimationState("movement", "fall")
+      animator.setAnimationState("movement", "fall")
     else
-      entity.setAnimationState("movement", "jump")
+      animator.setAnimationState("movement", "jump")
     end
   end
 end

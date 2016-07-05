@@ -9,7 +9,7 @@ function gasTrailAttack.enter()
 end
 
 function gasTrailAttack.enteringState(stateData)
-  entity.setAnimationState("attack", "shooting")
+  animator.setAnimationState("attack", "shooting")
 
   entity.setActiveSkillName("gasTrailAttack")
 end
@@ -18,7 +18,7 @@ function gasTrailAttack.update(dt, stateData)
   if isBlocked() or not canContinueSkill() then return true end
 
   mcontroller.controlParameters({runSpeed=3.0})
-  entity.setAnimationState("movement", "walk")
+  animator.setAnimationState("movement", "walk")
 
   moveX(-stateData.faceDirection, true)
   mcontroller.controlFace(stateData.faceDirection)
@@ -37,7 +37,7 @@ function gasTrailAttack.leavingState(stateData)
 end
 
 function gasTrailAttack.fire()
-  local projectileStartPosition = entity.toAbsolutePosition({entity.configParameter("projectileSourcePosition", {0, 0})[1] + 1.0, entity.configParameter("projectileSourcePosition", {0, 0})[2]})
+  local projectileStartPosition = object.toAbsolutePosition({entity.configParameter("projectileSourcePosition", {0, 0})[1] + 1.0, entity.configParameter("projectileSourcePosition", {0, 0})[2]})
   local projectileName = entity.configParameter("gasTrailAttack.projectile")
   world.spawnProjectile(projectileName, projectileStartPosition, entity.id(), {mcontroller.facingDirection(), 0}, false, {speed = 0, timeToLive = 1.8, animationCycle = 1.8})
 end

@@ -64,7 +64,7 @@ function init()
   entity.setDeathParticleBurst(entity.configParameter("deathParticles"))
 
   mcontroller.controlFace(util.randomDirection())
-  entity.setAnimationState("movement", "flying")
+  animator.setAnimationState("movement", "flying")
 end
 
 function isFlyer()
@@ -114,7 +114,7 @@ function update(dt)
     --do nothing
   else
     if entity.animationState("movement") ~= "flyingAttack" and entity.animationState("movement") ~= "gliding" then
-      entity.setAnimationState("movement", "flying")
+      animator.setAnimationState("movement", "flying")
     end
 
     trackTarget()
@@ -151,9 +151,9 @@ function update(dt)
 
   if self.debug then
     if attacking() then
-      world.debugText(self.attackState.stateDesc(), entity.toAbsolutePosition({ 0, 2 }), "red")
+      world.debugText(self.attackState.stateDesc(), object.toAbsolutePosition({ 0, 2 }), "red")
     elseif self.state.hasState() then
-      world.debugText(self.state.stateDesc(), entity.toAbsolutePosition({ 0, 2 }), "blue")
+      world.debugText(self.state.stateDesc(), object.toAbsolutePosition({ 0, 2 }), "blue")
     end
 
     for i, groundSensorIndex in ipairs({ 3, 2, 1 }) do

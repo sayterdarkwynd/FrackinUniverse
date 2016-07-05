@@ -22,14 +22,14 @@ function wanderState.update(dt, stateData)
 
   local movement = { stateData.wanderDirection, 0 }
 
-  if self.sensors.upSensors.collision.any(true) or world.liquidAt(entity.toAbsolutePosition({0, -10})) then
+  if self.sensors.upSensors.collision.any(true) or world.liquidAt(object.toAbsolutePosition({0, -10})) then
     movement[2] = entity.configParameter("wanderRiseSpeed")
   elseif self.sensors.downSensors.collision.any(true) then
     movement[2] = -entity.configParameter("wanderGlideSpeed")
   elseif stateData.rising then
     stateData.phaseTimer = stateData.phaseTimer - dt
 
-    entity.setAnimationState("movement", "flying")
+    animator.setAnimationState("movement", "flying")
 
     if stateData.phaseTimer > 0 or self.sensors.groundSensors.collisionTrace[4].value then
       movement[2] = entity.configParameter("wanderRiseSpeed")
@@ -50,9 +50,9 @@ function wanderState.update(dt, stateData)
     stateData.phaseTimer = stateData.phaseTimer - dt
 
     if math.sin(stateData.phaseTimer * 2) > 0.4 then
-      entity.setAnimationState("movement", "flying")
+      animator.setAnimationState("movement", "flying")
     else
-      entity.setAnimationState("movement", "gliding")
+      animator.setAnimationState("movement", "gliding")
     end
 
     if stateData.phaseTimer > 0 and not self.sensors.groundSensors.collisionTrace[3].value then

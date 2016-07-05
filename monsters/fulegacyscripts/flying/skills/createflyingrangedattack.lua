@@ -37,10 +37,10 @@ function createRangedAttack(skillName)
     entity.setDamageOnTouch(false)
     entity.setAggressive(true)
 
-    entity.setAnimationState("movement", "flyingAttack")
+    animator.setAnimationState("movement", "flyingAttack")
 
     local sourcePosition = entity.configParameter("projectileSourcePosition") or {0, 0}
-    local toTarget = world.distance(world.entityPosition(self.target), entity.toAbsolutePosition(sourcePosition))
+    local toTarget = world.distance(world.entityPosition(self.target), object.toAbsolutePosition(sourcePosition))
     mcontroller.controlFace(toTarget[1])
 
     if stateData.fireCooldown <= 0 and stateData.shotsRemaining > 0 then
@@ -65,11 +65,11 @@ function createRangedAttack(skillName)
       speed = rangedAttack.pSpeed
     }
     local sourcePosition = entity.configParameter("projectileSourcePosition") or {0, 0}
-    world.spawnProjectile(rangedAttack.pType, entity.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
+    world.spawnProjectile(rangedAttack.pType, object.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
   end
 
   function rangedAttack.leavingState(stateData)
-    entity.setAnimationState("movement", "flying")
+    animator.setAnimationState("movement", "flying")
   end
 
   return rangedAttack

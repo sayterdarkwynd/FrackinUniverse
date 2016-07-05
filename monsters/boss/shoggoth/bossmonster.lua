@@ -324,9 +324,9 @@ function checkTerrain(direction)
   -- update self.isBlocked
   local blockLine, topLine
   if not reverse then
-    blockLine = {entity.toAbsolutePosition({boundBox[3] + 0.25, boundBox[4]}), entity.toAbsolutePosition({boundBox[3] + 0.25, boundBox[2] - 1.0})}
+    blockLine = {object.toAbsolutePosition({boundBox[3] + 0.25, boundBox[4]}), object.toAbsolutePosition({boundBox[3] + 0.25, boundBox[2] - 1.0})}
   else
-    blockLine = {entity.toAbsolutePosition({-boundBox[3] - 0.25, boundBox[4]}), entity.toAbsolutePosition({-boundBox[3] - 0.25, boundBox[2] - 1.0})}
+    blockLine = {object.toAbsolutePosition({-boundBox[3] - 0.25, boundBox[4]}), object.toAbsolutePosition({-boundBox[3] - 0.25, boundBox[2] - 1.0})}
   end
 
   local blockBlocks = world.collisionBlocksAlongLine(blockLine[1], blockLine[2])
@@ -342,7 +342,7 @@ function checkTerrain(direction)
 
       if not self.isBlocked then
         --also check if blocks above prevent us from climbing
-        topLine = {entity.toAbsolutePosition({boundBox[1], boundBox[4] + 0.5}), entity.toAbsolutePosition({boundBox[3], boundBox[4] + 0.5})}
+        topLine = {object.toAbsolutePosition({boundBox[1], boundBox[4] + 0.5}), object.toAbsolutePosition({boundBox[3], boundBox[4] + 0.5})}
         self.isBlocked = world.lineTileCollision(topLine[1], topLine[2])
       end
     end
@@ -351,9 +351,9 @@ function checkTerrain(direction)
   -- update self.willFall
   local fallLine
   if reverse then
-    fallLine = {entity.toAbsolutePosition({-0.5, boundBox[2] - 0.75}), entity.toAbsolutePosition({boundBox[3], boundBox[2] - 0.75})}
+    fallLine = {object.toAbsolutePosition({-0.5, boundBox[2] - 0.75}), object.toAbsolutePosition({boundBox[3], boundBox[2] - 0.75})}
   else
-    fallLine = {entity.toAbsolutePosition({0.5, boundBox[2] - 0.75}), entity.toAbsolutePosition({-boundBox[3], boundBox[2] - 0.75})}
+    fallLine = {object.toAbsolutePosition({0.5, boundBox[2] - 0.75}), object.toAbsolutePosition({-boundBox[3], boundBox[2] - 0.75})}
   end
   self.willFall =
       world.lineTileCollision(fallLine[1], fallLine[2]) == false and

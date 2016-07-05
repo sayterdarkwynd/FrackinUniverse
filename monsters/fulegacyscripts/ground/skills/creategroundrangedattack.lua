@@ -47,7 +47,7 @@ function createRangedAttack(skillName)
   function rangedAttack.enteringState(stateData)
     setAggressive(true, true)
 
-    rangedAttack.aim(world.distance(world.entityPosition(self.target), entity.toAbsolutePosition(entity.configParameter("projectileSourcePosition"))))
+    rangedAttack.aim(world.distance(world.entityPosition(self.target), object.toAbsolutePosition(entity.configParameter("projectileSourcePosition"))))
 
     if stateData.castTime > 0 then
       if rangedAttack.castEffect then
@@ -55,7 +55,7 @@ function createRangedAttack(skillName)
       end
 
       if rangedAttack.castAnimation then
-        entity.setAnimationState("attack", rangedAttack.castAnimation)
+        animator.setAnimationState("attack", rangedAttack.castAnimation)
       end
     end
 
@@ -72,16 +72,16 @@ function createRangedAttack(skillName)
 
     if stateData.shotsRemaining <= 0 then return false end
 
-    local toTarget = world.distance(world.entityPosition(self.target), entity.toAbsolutePosition(entity.configParameter("projectileSourcePosition")))
+    local toTarget = world.distance(world.entityPosition(self.target), object.toAbsolutePosition(entity.configParameter("projectileSourcePosition")))
 
     if toTarget[1] * mcontroller.facingDirection() < 0 then return true end
 
     if not rangedAttack.lockAim then rangedAttack.aim(toTarget) end
 
-    if not rangedAttack.fireAnimation then entity.setAnimationState("attack", "shooting") end
+    if not rangedAttack.fireAnimation then animator.setAnimationState("attack", "shooting") end
 
     if rangedAttack.fireAnimation and stateData.fireCooldown <= rangedAttack.fireAnimationTiming then
-      entity.setAnimationState("attack", rangedAttack.fireAnimation)
+      animator.setAnimationState("attack", rangedAttack.fireAnimation)
     end
 
     if stateData.fireCooldown <= 0 then
@@ -101,7 +101,7 @@ function createRangedAttack(skillName)
 
     local movement = calculateSeparationMovement()
     if movement ~= 0 then
-      entity.setAnimationState("movement", "walk")
+      animator.setAnimationState("movement", "walk")
 
       if movement > 0 then
         moveX(1, true)
@@ -109,7 +109,7 @@ function createRangedAttack(skillName)
         moveX(-1, true)
       end
     else
-      entity.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle")
     end
 
     return false
@@ -144,7 +144,7 @@ function createRangedAttack(skillName)
       sourcePosition = vec2.add(sourcePosition, sourceOffset)
     end
 
-    world.spawnProjectile(rangedAttack.pType, entity.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
+    world.spawnProjectile(rangedAttack.pType, object.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
 
     entity.playSound("rangedAttack")
   end

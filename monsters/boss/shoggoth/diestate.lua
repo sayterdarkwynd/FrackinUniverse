@@ -13,7 +13,7 @@ dieState.enterWith = function(params)
 end
 
 function dieState.enteringState(stateData)
-  entity.setAnimationState("movement", "death")
+  animator.setAnimationState("movement", "death")
 end
 
 dieState.update = function(dt, stateData)

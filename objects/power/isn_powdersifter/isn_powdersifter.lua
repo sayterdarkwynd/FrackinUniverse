@@ -5,21 +5,21 @@ end
 
 function update(dt)
   if isn_hasRequiredPower() == false then
-    entity.setAnimationState("sifterState", "idle")
+    animator.setAnimationState("sifterState", "idle")
 	storage.activeConsumption = false
 	return
   end
 
   local contents = world.containerItems(entity.id())
   if contents[1] == nil then
-    entity.setAnimationState("sifterState", "idle")
+    animator.setAnimationState("sifterState", "idle")
 	storage.activeConsumption = false
     return
   end
   
   if world.containerItemsCanFit(entity.id(), {name="fillerup",count=1,data={}}) == 1 then
     if checkforvalidinput(contents[1].name) == true then
-	  entity.setAnimationState("sifterState", "active")
+	  animator.setAnimationState("sifterState", "active")
 	  storage.activeConsumption = true
 	  local rarityroll = math.random(1,100)
 	  local itemlist = {}
@@ -35,11 +35,11 @@ function update(dt)
 	  end
 	  world.containerConsume(entity.id(), {name = contents[1].name, count = 1, data={}})
 	else
-	  entity.setAnimationState("sifterState", "idle")
+	  animator.setAnimationState("sifterState", "idle")
 	  storage.activeConsumption = false
     end
   else
-    entity.setAnimationState("sifterState", "idle")
+    animator.setAnimationState("sifterState", "idle")
 	storage.activeConsumption = false
   end
   

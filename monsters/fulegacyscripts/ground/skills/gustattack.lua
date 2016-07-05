@@ -16,8 +16,8 @@ function gustAttack.enter()
 end
 
 function gustAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
 
   entity.setActiveSkillName("gustAttack")
 end
@@ -40,8 +40,8 @@ function gustAttack.run(stateData)
     coroutine.yield(false)
   end
 
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "shooting")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "shooting")
 
   local bounds = entity.configParameter("metaBoundBox")
   local height = math.abs(bounds[2]) + math.abs(bounds[4])

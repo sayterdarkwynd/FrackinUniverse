@@ -4,7 +4,7 @@ function init(args)
 	if self.craftDelay == nil then
 		self.craftDelay = 6
 	end
-	entity.setAnimationState("jar", "idle")
+	animator.setAnimationState("jar", "idle")
 end
 
 function update(dt)
@@ -20,10 +20,10 @@ function update(dt)
 								if honeycombType ~= nil then
 									if world.containerConsume(entity.id(), { name= "emptyhoneyjar", count = 1, data={}}) == true then
 										world.containerAddItems(entity.id(), { name= honeycombType, count = 1, data={}})
-										entity.setAnimationState("jar", "working")
+										animator.setAnimationState("jar", "working")
 									end
 								else
-									entity.setAnimationState("jar", "idle")
+									animator.setAnimationState("jar", "idle")
 							end
 							self.craftDelay = 6
 						end

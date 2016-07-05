@@ -4,11 +4,11 @@ function update(dt)
   ---world.logInfo("PSRD: powerLevel is " .. powerLevel)
 
   if not powerLevel then
-    entity.setAnimationState("num", "invalid")
+    animator.setAnimationState("num", "invalid")
   elseif powerLevel <= 19 then
-    entity.setAnimationState("num", tostring(math.floor(powerLevel)))
+    animator.setAnimationState("num", tostring(math.floor(powerLevel)))
   elseif powerLevel > 19 then
-    entity.setAnimationState("num", "excess")
+    animator.setAnimationState("num", "excess")
   end
   ---world.logInfo("POWER SENSOR RUN DEBUG END")
 end

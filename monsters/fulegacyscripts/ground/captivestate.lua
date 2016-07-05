@@ -53,7 +53,7 @@ function captiveState.update(dt, stateData)
     stateData.running = true
   end
 
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("attack", "idle")
   move({ movement, toOwner[2] }, stateData.running, captiveState.closeDistance)
 
   return false

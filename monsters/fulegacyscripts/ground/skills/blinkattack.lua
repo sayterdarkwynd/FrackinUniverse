@@ -17,8 +17,8 @@ function blinkAttack.enter()
 end
 
 function blinkAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
 
   entity.setActiveSkillName("blinkAttack")
 end

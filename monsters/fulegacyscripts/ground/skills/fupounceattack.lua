@@ -37,7 +37,7 @@ function fuPounceAttack.enter()
 end
 
 function fuPounceAttack.enteringState(stateData)
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("attack", "idle")
   entity.setActiveSkillName("fuPounceAttack")
 end
 
@@ -49,12 +49,12 @@ function fuPounceAttack.update(dt, stateData)
   if stateData.windupTime > 0 then
     stateData.windupTime = stateData.windupTime - dt
 
-    entity.setAnimationState("movement", "chargeWindup")
+    animator.setAnimationState("movement", "chargeWindup")
     faceTarget()
 
   elseif not stateData.followThrough then
     setAggressive(true, true)
-    entity.setAnimationState("movement", "jump")
+    animator.setAnimationState("movement", "jump")
 
     stateData.pounceJumpHoldTime = entity.configParameter("fuPounceAttack.jumpHoldTime")
     stateData.pounceWasOffGround = false
@@ -66,12 +66,12 @@ function fuPounceAttack.update(dt, stateData)
   end
 
   if stateData.winddownTime > 0.0 then
-    entity.setAnimationState("movement", "idle")
-    entity.setAnimationState("attack", "idle")
+    animator.setAnimationState("movement", "idle")
+    animator.setAnimationState("attack", "idle")
     stateData.winddownTime = stateData.winddownTime - dt
     return stateData.winddownTime <= 0.0
   elseif stateData.followThrough then
-    entity.setAnimationState("attack", "charge")
+    animator.setAnimationState("attack", "charge")
 
     -- --re-set the velocity until we've properly left the ground to avoid the initial falloff
     if not stateData.pounceWasOffGround then

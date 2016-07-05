@@ -7,12 +7,12 @@ function init(args)
     "shootState",
   })
   self.state.leavingState = function(stateName)
-    entity.setAnimationState("default", "idle")
+    animator.setAnimationState("default", "idle")
   end
 
   entity.setDamageOnTouch(true)
   entity.setAggressive(true)
-  entity.setAnimationState("default", "idle")
+  animator.setAnimationState("default", "idle")
 end
 
 function update(dt)
@@ -39,7 +39,7 @@ function idleState.enter()
 end
 
 function idleState.update(dt, stateData)
-  entity.setAnimationState("default", "idle")
+  animator.setAnimationState("default", "idle")
 
   return true
 end
@@ -63,7 +63,7 @@ function shootState.enterWith(args)
 end
 
 function shootState.update(dt, stateData)
-  entity.setAnimationState("default", "shoot")
+  animator.setAnimationState("default", "shoot")
 
   stateData.timer = stateData.timer - dt
   if stateData.timer <= 0 then

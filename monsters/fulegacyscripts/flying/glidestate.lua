@@ -24,7 +24,7 @@ function glideState.update(dt, stateData)
   end
   stateData.timer = stateData.timer - dt
 
-  entity.setAnimationState("movement", "gliding")
+  animator.setAnimationState("movement", "gliding")
 
   local vector = {
     stateData.baseDirection,
@@ -41,7 +41,7 @@ function glideState.update(dt, stateData)
     vector[1] = -vector[1]
   end
 
-  -- util.debugLine(mcontroller.position(), entity.toAbsolutePosition(vector), "cornflowerblue")
+  -- util.debugLine(mcontroller.position(), object.toAbsolutePosition(vector), "cornflowerblue")
   mcontroller.controlFly(vec2.mul(vector, mcontroller.baseParameters().flySpeed), true)
 
   return false

@@ -15,7 +15,7 @@ end
 function flopState.enteringState(stateData)
   -- world.logInfo("Entering flop state")
   
-  entity.setAnimationState("movement", "flopping")
+  animator.setAnimationState("movement", "flopping")
 end
 
 function flopState.update(dt, stateData)

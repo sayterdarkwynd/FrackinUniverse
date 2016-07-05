@@ -14,7 +14,7 @@ end
 
 function isn_getCurrentPowerOutput(divide)
 	if isn_powerGenerationBlocked == true then
-		entity.setAnimationState("meter", "0")
+		animator.setAnimationState("meter", "0")
 		return 0
 	end
 	
@@ -34,11 +34,11 @@ function isn_getCurrentPowerOutput(divide)
 	generated = generated * genmult
 	generated = math.min(generated,4)
 	
-	if generated >= 4 then entity.setAnimationState("meter", "4")
-	elseif generated >= 3  then entity.setAnimationState("meter", "3")
-	elseif generated >= 2 then entity.setAnimationState("meter", "2")
-	elseif generated >= 1 then entity.setAnimationState("meter", "1")
-	else entity.setAnimationState("meter", "0")
+	if generated >= 4 then animator.setAnimationState("meter", "4")
+	elseif generated >= 3  then animator.setAnimationState("meter", "3")
+	elseif generated >= 2 then animator.setAnimationState("meter", "2")
+	elseif generated >= 1 then animator.setAnimationState("meter", "1")
+	else animator.setAnimationState("meter", "0")
 	end
 	
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)

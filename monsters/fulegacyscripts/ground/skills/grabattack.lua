@@ -13,8 +13,8 @@ function grabAttack.enter()
 end
 
 function grabAttack.enteringState(stateData)
-  entity.setAnimationState("movement", "idle")
-  entity.setAnimationState("attack", "idle")
+  animator.setAnimationState("movement", "idle")
+  animator.setAnimationState("attack", "idle")
 
   entity.setActiveSkillName("grabAttack")
 end
@@ -38,7 +38,7 @@ function grabAttack.run(stateData)
   local timer = grabAttack.maxMoveTime
   util.wait(grabAttack.holdTime, function()
     if not grabAttack.withinHoldDistance() then
-      entity.setAnimationState("attack", "idle")
+      animator.setAnimationState("attack", "idle")
       if timer > 0 then
         move({ self.toTarget[1], 0 }, true)
         timer = timer - script.updateDt()
@@ -47,8 +47,8 @@ function grabAttack.run(stateData)
         return true
       end
     end
-    entity.setAnimationState("movement", "idle")
-    entity.setAnimationState("attack", "shooting")
+    animator.setAnimationState("movement", "idle")
+    animator.setAnimationState("attack", "shooting")
     world.spawnProjectile("grabbed", world.entityPosition(self.target), entity.id(), { 0, 0 }, false)
   end)
 
