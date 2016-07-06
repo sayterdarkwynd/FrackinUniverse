@@ -9,7 +9,7 @@
     //[-0.20, "binary1"],
     [-0.12, "Yellow"],
     [-0.10, "dying1"],
-    [-0.05, "redsun1"],
+    //[-0.05, "redsun1"],
     [0.00, "Blue"],
     [0.10, "bluesun1"],
     [0.10, "bluesun2"],
@@ -947,7 +947,7 @@
         "description" : "Habitable Planet",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "strangesea", "eden", "forest", "desert",  "mountainous", "tidewater", "fungus", "urbanwasteland", "ocean",  "barren", "desertwastes", "atropus", "arboreal2", "savannah", "jungle", "alien", "toxic", "bog", "arboreal", "bloodstonesea", "irradiated", "protoworld", "penumbra", "slimeworld", "thickjungle", "ffunknown" ]
+        "terrestrialType" : [ "strangesea", "eden", "mountainous", "tidewater", "urbanwasteland", "desertwastes", "arboreal2", "bog", "bloodstonesea", "slimeworld", "thickjungle" ]
       },
 
       "variationParameters" : [
@@ -1249,6 +1249,69 @@
         "smallImage" : "/celestial/system/planet_small.png",
 
         "terrestrialType" : [ "chromatic", "strangesea", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"superdense","tarball", "fungus", "sulphuricocean", "frozenvolcanic",  "irradiated", "penumbra", "protoworld", "atropus", "alien", "urbanwasteland", "ffunknown" ]
+      },
+
+      "variationParameters" : [
+        {
+          "imageScale" : 0.075,
+          "worldSize" : "medium"
+        },
+        {
+          "imageScale" : 0.055,
+          "worldSize" : "small"
+        }
+      ]
+    }
+},
+
+{
+    "op" : "add",
+    "path" : "/planetaryTypes/lightlessWorlds",
+    "value" : {
+      "satelliteProbability" : 0.0,
+      "maxSatelliteCount" : 2,
+      
+      "baseParameters" : {
+        "worldType" : "Terrestrial",
+        "description" : "Lightless Planet",
+        "smallImage" : "/celestial/system/planet_small.png",
+
+        "terrestrialType" : [ "tarball", "sulphuricdark", "icewastedark", "arborealdark", "atropusdark", "shadow", "fungus", "frozenvolcanic", "penumbra", "lightless", "icemoon", "metallicmoon", "icemoon", "ffunknown" ]
+      },
+
+      "variationParameters" : [
+        {
+          "imageScale" : 0.075,
+          "smallImageScale" : 0.4,
+          "worldSize" : "small"
+        },
+        {
+          "imageScale" : 0.1,
+          "smallImageScale" : 0.5,
+          "worldSize" : "medium"
+        },
+        {
+          "imageScale" : 0.15,
+          "smallImageScale" : 0.6,
+          "worldSize" : "large"
+        }
+      ]
+    }
+},
+     
+{
+    "op" : "add",
+    "path" : "/satelliteTypes/lightlessMoons",
+    "value" : {
+      "satelliteProbability" : 0.15,
+      "maxSatelliteCount" : 2,
+
+      "baseParameters" : {
+        "worldType" : "Terrestrial",
+        "description" : "Lightless Moon",
+        "smallImage" : "/celestial/system/planet_small.png",
+
+        "terrestrialType" : [ "sulphuricdark", "icewastedark", "arborealdark", "atropusdark", "shadow", "icemoon", "metallicmoon", "ffunknown" ]
       },
 
       "variationParameters" : [
