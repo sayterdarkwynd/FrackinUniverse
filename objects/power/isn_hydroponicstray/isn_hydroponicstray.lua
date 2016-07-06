@@ -1,6 +1,6 @@
 function init(virtual)
 	if virtual == true then return end
-	entity.setInteractive(true)
+	object.setInteractive(true)
 	
 	if storage.growth == nil then storage.growth = 0 end
 	if storage.water == nil then storage.water = 0 end

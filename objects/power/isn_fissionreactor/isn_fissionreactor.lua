@@ -1,6 +1,6 @@
 function init(virtual)
 	if virtual == true then return end
-	entity.setInteractive(true)
+	object.setInteractive(true)
 	
 	if storage.radiation == nil then storage.radiation = 0 end
 	if storage.active == nil then storage.active = true end

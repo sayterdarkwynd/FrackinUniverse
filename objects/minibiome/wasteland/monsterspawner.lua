@@ -5,7 +5,7 @@ function init()
     return
   end
 
-  entity.setInteractive(self.trigger == "interact")
+  object.setInteractive(self.trigger == "interact")
   self.position = object.toAbsolutePosition(self.position)
   storage.cooldown = storage.cooldown or entity.randomizeParameterRange("spawner.frequency")
   storage.stock = storage.stock or self.stock

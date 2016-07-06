@@ -1,7 +1,7 @@
 function init(virtual)
 	if virtual == true then return end
 	
-	entity.setInteractive(true)
+	object.setInteractive(true)
 	
 	storage.currentinput = nil
 	storage.currentoutput = nil
