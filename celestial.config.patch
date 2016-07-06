@@ -6,16 +6,16 @@
 
     [-1.00, "White"],
     [-0.30, "Orange"],
-    [-0.20, "binary1"],
+    //[-0.20, "binary1"],
     [-0.12, "Yellow"],
     [-0.10, "dying1"],
-    [-0.10, "redsun1"],
+    [-0.05, "redsun1"],
     [0.00, "Blue"],
     [0.10, "bluesun1"],
     [0.10, "bluesun2"],
-    [0.10, "blacksun1"],
     [0.12, "Red"],
-    [0.30, ""] // dark mysteries
+    //[0.15, "blacksun1"],
+    [0.30, ""]
   ]
 },
 
@@ -33,33 +33,33 @@
       "variationParameters" : [
 	  {
 	  "magnitude" : 3,
-	  "description" : "Small Blue Star",
+	  "description" : "Small Binary Star",
 	  "imageScale" : 0.04,
-	  "twinkleFrames" : "/celestial/stars/star7pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
+	  "twinkleFrames" : "/celestial/stars/star11pxfubinary.png",
+	  "twinkleBackground" : "/celestial/stars/backgrounds/star11px.png",
 	  "brightness" : [1, 1]
 	  },
 	  {
 	  "magnitude" : 5,
-	  "description" : "Medium Blue Star",
+	  "description" : "Medium Binary Star",
 	  "imageScale" : 0.055,
-	  "twinkleFrames" : "/celestial/stars/star13pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
+	  "twinkleFrames" : "/celestial/stars/star15pxfubinary.png",
+	  "twinkleBackground" : "/celestial/stars/backgrounds/star15px.png",
 	  "brightness" : [1, 1]
 	  },
 	  {
 	  "magnitude" : 7,
-	  "description" : "Large Blue Star",
+	  "description" : "Large Binary Star",
 	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star17pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
+	  "twinkleFrames" : "/celestial/stars/star19pxfubinary.png",
+	  "twinkleBackground" : "/celestial/stars/backgrounds/star19px.png",
 	  "brightness" : [1, 1]
 	  },
 	  {
 	  "magnitude" : 9,
-	  "description" : "Huge Blue Star",
+	  "description" : "Huge Binary Star",
 	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star21pxfublue.png",
+	  "twinkleFrames" : "/celestial/stars/star21pxfubinary.png",
 	  "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
 	  "brightness" : [1, 1]
 	  }
@@ -140,7 +140,126 @@
       ]
     }
 },
-
+{
+    "op" : "add",
+    "path" : "/systemTypes/redsun1",
+    "value" : {
+      "selectionWeight" : 0.6,
+      "baseParameters" : {
+        "typeName" : "redsun1",
+        "image" : "/celestial/system/redsun1.png",
+        "twinkleTime" : [0.7, 1.0]
+      },
+      "variationParameters" : [
+	  {
+	  "magnitude" : 3,
+	  "description" : "Small Red Star",
+	  "imageScale" : 0.04,
+	  "twinkleFrames" : "/celestial/stars/star7pxfured.png",
+	  "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
+	  "brightness" : [1, 1]
+	  },
+	  {
+	  "magnitude" : 5,
+	  "description" : "Medium Red Star",
+	  "imageScale" : 0.055,
+	  "twinkleFrames" : "/celestial/stars/star13pxfured.png",
+	  "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
+	  "brightness" : [1, 1]
+	  },
+	  {
+	  "magnitude" : 7,
+	  "description" : "Large Red Star",
+	  "imageScale" : 0.075,
+	  "twinkleFrames" : "/celestial/stars/star17pxfured.png",
+	  "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
+	  "brightness" : [1, 1]
+	  },
+	  {
+	  "magnitude" : 9,
+	  "description" : "Huge Red Star",
+	  "imageScale" : 0.075,
+	  "twinkleFrames" : "/celestial/stars/star21pxfured.png",
+	  "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
+	  "brightness" : [1, 1]
+	  }
+      ],
+      "orbitRegions" : [
+        {
+          "regionName" : "Scorching",
+          "orbitRange" : [4, 5],
+          "bodyProbability" : 0.7,
+          "planetaryTypes" : [
+            {"weight" : 0.7, "item" : "scorchedWorlds"},
+            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.04, "item" : "AsteroidField"}
+          ],
+          "satelliteTypes" : [
+            {"weight" : 0.5, "item" : "scorchedMoons"},
+            {"weight" : 0.5, "item" : "hotMoons"},
+            {"weight" : 0.1, "item" : "Moon"}
+          ]
+        },
+        {
+          "regionName" : "Hot",
+          "orbitRange" : [7, 8],
+          "bodyProbability" : 0.7,
+          "planetaryTypes" : [
+            {"weight" : 0.7, "item" : "hotWorlds"},
+            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.04, "item" : "AsteroidField"}
+          ],
+          "satelliteTypes" : [
+            {"weight" : 0.5, "item" : "hotMoons"},
+            {"weight" : 0.5, "item" : "warmMoons"},
+            {"weight" : 0.1, "item" : "Moon"}
+          ]
+        },
+        {
+          "regionName" : "Warm",
+          "orbitRange" : [9, 9],
+          "bodyProbability" : 0.7,
+          "planetaryTypes" : [
+            {"weight" : 0.7, "item" : "warmWorlds"},
+            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.04, "item" : "AsteroidField"}
+          ],
+          "satelliteTypes" : [
+            {"weight" : 0.5, "item" : "warmMoons"},
+            {"weight" : 0.1, "item" : "Moon"}
+          ]
+        },
+        {
+          "regionName" : "Habitable",
+          "orbitRange" : [10, 10],
+          "bodyProbability" : 0.7,
+          "planetaryTypes" : [
+            {"weight" : 0.7, "item" : "habitableWorlds"},
+            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.04, "item" : "AsteroidField"}
+          ],
+          "satelliteTypes" : [
+            {"weight" : 0.5, "item" : "habitableMoons"},
+            {"weight" : 0.1, "item" : "Moon"}
+          ]
+        },
+        {
+          "regionName" : "Cold",
+          "orbitRange" : [11, 11],
+          "bodyProbability" : 0.7,
+          "planetaryTypes" : [
+            {"weight" : 0.7, "item" : "coldWorlds"},
+            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.04, "item" : "AsteroidField"}
+          ],
+          "satelliteTypes" : [
+            {"weight" : 0.5, "item" : "coldMoons"},
+            {"weight" : 0.1, "item" : "Moon"}
+          ]
+        }
+      ]
+    }
+},
 {
     "op" : "add",
     "path" : "/systemTypes/bluesun1",
@@ -926,7 +1045,7 @@
         "worldType" : "Terrestrial",
         "description" : "Cool Moon",
 
-        "terrestrialType" : [ "strangesea", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"forest", "mountainous", "tidewater", "crystalmoon", "urbanwasteland", "ocean", "tundra", "barren", "bog", "metallicmoon", "toxic", "arboreal", "arboreal2", "irradiated", "penumbra", "snow", "moon" ]
+        "terrestrialType" : [ "strangesea", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"forest", "mountainous", "tidewater",  "urbanwasteland", "ocean", "tundra", "barren", "bog", "metallicmoon", "toxic", "arboreal", "arboreal2", "irradiated", "penumbra", "snow", "moon" ]
       },
 
       "variationParameters" : [
@@ -993,7 +1112,7 @@
         "worldType" : "Terrestrial",
         "description" : "Cold Moon",
 
-        "terrestrialType" : [ "strangesea", "moon_desert", "moon_stone" ,"tidewater", "frozenvolcanic", "crystalmoon", "moon", "arboreal", "arboreal2", "snow", "tundra", "ocean", "nitrogensea", "icewaste", "icemoon" ]
+        "terrestrialType" : [ "strangesea", "moon_desert", "moon_stone" ,"tidewater", "frozenvolcanic",  "moon", "arboreal", "arboreal2", "snow", "tundra", "ocean", "nitrogensea", "icewaste", "icemoon" ]
       },
 
       "variationParameters" : [
@@ -1059,7 +1178,7 @@
         "worldType" : "Terrestrial",
         "description" : "Frozen Moon",
 
-        "terrestrialType" : [ "moon_shadow", "moon_desert", "moon_stone" ,"frozenvolcanic", "crystalmoon", "moon", "arctic", "nitrogensea", "snow", "icewaste", "icemoon" ]
+        "terrestrialType" : [ "moon_shadow", "moon_desert", "moon_stone" ,"frozenvolcanic",  "moon", "arctic", "nitrogensea", "snow", "icewaste", "icemoon" ]
       },
 
       "variationParameters" : [
@@ -1129,7 +1248,7 @@
         "description" : "Mutated Moons",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "chromatic", "strangesea", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"superdense","tarball", "fungus", "sulphuricocean", "frozenvolcanic", "crystalmoon", "irradiated", "penumbra", "protoworld", "atropus", "alien", "urbanwasteland", "ffunknown" ]
+        "terrestrialType" : [ "chromatic", "strangesea", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"superdense","tarball", "fungus", "sulphuricocean", "frozenvolcanic",  "irradiated", "penumbra", "protoworld", "atropus", "alien", "urbanwasteland", "ffunknown" ]
       },
 
       "variationParameters" : [
