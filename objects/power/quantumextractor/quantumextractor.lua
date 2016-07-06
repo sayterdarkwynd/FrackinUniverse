@@ -374,7 +374,7 @@ local recipes =
 {inputs = { tar=50 }, outputs = { liquidoil=4 }, time = 0.1},
 {inputs = { wastestone=50 }, outputs = { rawminerals=4 }, time = 0.1},
 {inputs = { wetdirt=50 }, outputs = { geneticmaterial=4 }, time = 0.1},
-{inputs = { fullwood1=10 }, outputs = { methanol=4 }, time = 0.1},
+{inputs = { logblock=10 }, outputs = { methanol=4 }, time = 0.1},
 {inputs = { shroomblockglow=50 }, outputs = { agaranichor=4 }, time = 0.1},
 {inputs = { slimedirtmaterial=50 }, outputs = { tissueculture=4 }, time = 0.1},
 {inputs = { spidersilkblock=50 }, outputs = { silk=3 }, time = 0.1},
