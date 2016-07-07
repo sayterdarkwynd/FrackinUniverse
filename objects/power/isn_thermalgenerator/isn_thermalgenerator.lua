@@ -1,6 +1,6 @@
 function init(virtual)
 	if virtual == true then return end
-	entity.setInteractive(true)
+	object.setInteractive(true)
 	entity.setSoundEffectEnabled(false)
 	
 	if storage.currentpowerprod == nil then storage.currentpowerprod = 0 end

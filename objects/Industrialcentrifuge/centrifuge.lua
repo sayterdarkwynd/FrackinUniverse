@@ -2,7 +2,7 @@ function init(args)
 	if self.craftDelay == nil then
 		self.craftDelay = 0.25
 	end
-    entity.setInteractive(true)
+    object.setInteractive(true)
  	if itemchance == nil then 
 		itemchance = 0.5
 	end

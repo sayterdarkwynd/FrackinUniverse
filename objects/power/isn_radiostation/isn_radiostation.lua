@@ -1,6 +1,6 @@
 function init(virtual)
 	if virtual == true then return end
-	entity.setInteractive(true)
+	object.setInteractive(true)
 	if storage.frequencies == nil then storage.frequencies = entity.configParameter("isn_baseFrequencies") end
 	if storage.currentconfig == nil then storage.currentconfig = storage.frequencies["isn_miningvendor"] end
 	if storage.currentkey == nil then storage.currentkey = "isn_miningvendor" end
