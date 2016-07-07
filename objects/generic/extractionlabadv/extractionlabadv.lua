@@ -294,7 +294,7 @@ local recipes =
 {inputs = { bloodstonewall2=50 }, outputs = { rawminerals=2 }, time = 0.45},
 {inputs = { bloodstonewall3=50 }, outputs = { phosphorus=1 }, time = 0.45},
 {inputs = { bloodstonematerial=50 }, outputs = { phosphorus=1 }, time = 0.45},
-{inputs = { brains=50 }, outputs = { geneticmaterial=2 }, time = 0.45},
+{inputs = { brainsblock=50 }, outputs = { geneticmaterial=2 }, time = 0.45},
 {inputs = { brick=50 }, outputs = { rawminerals=2 }, time = 0.45},
 {inputs = { castlewalls1=50 }, outputs = { rawminerals=2 }, time = 0.45},
 {inputs = { castlewalls2=50 }, outputs = { rawminerals=2 }, time = 0.45},
