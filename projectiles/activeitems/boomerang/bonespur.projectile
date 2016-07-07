@@ -1,7 +1,7 @@
 {
   "projectileName" : "bonespur",
   "image" : "bonespur.png",
-  "animationCycle" : 0.3,
+  "animationCycle" : 0.5,
   "frameNumber" : 8,
   "damageKindImage" : "icon.png",
   "pointLight" : false,
@@ -9,16 +9,20 @@
   "orientationLocked" : true,
   "actionOnReap" : [ ],
   "statusEffects" : [ ],
-  "damagePoly" : [[-4, 2], [-2, 4], [2, 4], [4, 2], [4, -2], [2, -4], [-2, -4], [-4, -2]],
-  "power" : 4.0,
-  "speed" : 20,
-  "damageKind" : "default",
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "power" : 5.0,
+  "speed" : 60,
+  "damageKind" : "physical",
   "physics" : "laser",
   "bounces" : -1,
   "piercing" : true,
-  "timeToLive" : 6,
-  //"emitters" : [ "acidsquirt" ],
-  "persistentAudio" : "/sfx/weapons/branchswoosh.ogg",
+  "timeToLive" : 5,
+  "emitters" : [ "acidsquirt" ],
+  "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
 
-  "scripts" : [ "boomerangprojectile.lua" ]
+  "scripts" : [ "boomerangprojectile.lua" ],
+  "ignoreTerrain" : false,
+  "controlForce" : 90,
+  "pickupDistance" : 2.0,
+  "snapDistance" : 12.5
 }
