@@ -1,5 +1,6 @@
 [
 
+{ "op" : "replace", "path" : "/planetDefaults/dayLengthRange", "value" : [300, 3000] },
 
 { "op" : "add", 
     "path" : "/planetSizes/huge", 
@@ -8,7 +9,9 @@
       "gravityRange" : [80, 110], 
       "layerDefaults" : { 
         "secondaryRegionPeriod" : [5000, 5000],
-        "secondaryRegionSize" : [1000, 2500],
+        "secondaryRegionSize" : [0.5, 1.3],
+        "secondaryRegionCount" : [0, 5],
+        "subRegionSize" : [0.25, 0.47],
         "dungeonCountRange" : [0, 9]
       },
       "layers" : {
@@ -23,6 +26,8 @@
     }
   }
 },
+
+
 { "op" : "add", 
     "path" : "/planetSizes/mega", 
     "value" : {
@@ -30,8 +35,10 @@
       "gravityRange" : [90, 150], 
       "layerDefaults" : { 
         "secondaryRegionPeriod" : [7000, 7000],
-        "secondaryRegionSize" : [1500, 3500],
-        "dungeonCountRange" : [0, 12]
+        "secondaryRegionSize" : [0.5, 1.5],
+        "secondaryRegionCount" : [0, 8],
+        "subRegionSize" : [0.25, 0.5],
+        "dungeonCountRange" : [0, 8]
       },
       "layers" : {
         "space"        : { "baseHeight" : 6000, "layerLevel" : 6000 },
@@ -52,8 +59,10 @@
       "dayLengthRange" : [1500, 4000],
       "layerDefaults" : {
         "secondaryRegionPeriod" : [10000, 10000],
-        "secondaryRegionSize"   : [2000, 5000],
-        "dungeonCountRange"     : [0, 18]
+        "secondaryRegionSize"   : [0.5, 0.92],
+        "secondaryRegionCount" : [0, 12],
+        "subRegionSize" : [0.25, 0.55],
+        "dungeonCountRange"     : [0, 12]
       },
       "layers" : {
         "space"        : { "baseHeight" : 7500, "layerLevel" : 7000 },
@@ -63,11 +72,6 @@
         "underground1" : { "baseHeight" : 3325, "layerLevel" : 2250 },
         "underground2" : { "baseHeight" : 2175, "layerLevel" : 1800 },
         "underground3" : { "baseHeight" : 1725, "layerLevel" : 1550 },
-        "underground4" : { "baseHeight" : 1475, "layerLevel" : 1300 },
-        "underground5" : { "baseHeight" : 1225, "layerLevel" : 1050 },
-        "underground6" : { "baseHeight" : 975,  "layerLevel" : 800  },
-        "underground7" : { "baseHeight" : 725,  "layerLevel" : 550  },
-        "underground8" : { "baseHeight" : 475,  "layerLevel" : 300  },
         "core"         : { "baseHeight" : 200,  "layerLevel" : 0    }
       }
     }
