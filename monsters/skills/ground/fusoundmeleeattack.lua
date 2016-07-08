@@ -18,8 +18,8 @@ function fuSoundMeleeAttack.enteringState(stateData)
   animator.setAnimationState("attack", "melee")
 
   stateData.projectileSourcePosition = {
-      entity.configParameter("projectileSourcePosition", {0, 0})[1] + entity.configParameter("meleeProjectileOffset", {0, 0})[1] - 1.0,
-      entity.configParameter("projectileSourcePosition", {0, 0})[2] + entity.configParameter("meleeProjectileOffset", {0, 0})[2]
+      config.getParameter("projectileSourcePosition", {0, 0})[1] + config.getParameter("meleeProjectileOffset", {0, 0})[1] - 1.0,
+      config.getParameter("projectileSourcePosition", {0, 0})[2] + config.getParameter("meleeProjectileOffset", {0, 0})[2]
     }
 
   entity.setActiveSkillName("fuSoundMeleeAttack")
@@ -30,7 +30,7 @@ function fuSoundMeleeAttack.update(dt, stateData)
 
   animator.setAnimationState("movement", "run")
 
-  local attackCompletion = (entity.configParameter("fuSoundMeleeAttack.skillTimeLimit") - self.skillTimer) / entity.configParameter("fuSoundMeleeAttack.skillTimeLimit")
+  local attackCompletion = (config.getParameter("fuSoundMeleeAttack.skillTimeLimit") - self.skillTimer) / config.getParameter("fuSoundMeleeAttack.skillTimeLimit")
 
   local baseRunSpeed = mcontroller.baseParameters().runSpeed
 
@@ -54,7 +54,7 @@ function fuSoundMeleeAttack.update(dt, stateData)
   --   entity.applyMovementParameters({runSpeed=7.0})
   -- end
 
-  if stateData.wasInRange == false and math.abs(self.toTarget[1]) > math.abs(entity.configParameter("projectileSourcePosition", {0, 0})[1]) + 1.0 then
+  if stateData.wasInRange == false and math.abs(self.toTarget[1]) > math.abs(config.getParameter("projectileSourcePosition", {0, 0})[1]) + 1.0 then
     moveX(self.toTarget[1], true)
   else
     stateData.wasInRange = true
@@ -64,8 +64,8 @@ function fuSoundMeleeAttack.update(dt, stateData)
   
   if stateData.didAttack == false and attackCompletion >= 0.25 then
     local projectileStartPosition = object.toAbsolutePosition(stateData.projectileSourcePosition)
-    local projectileName = entity.configParameter("meleeProjectile") or entity.configParameter("fuSoundMeleeAttack.projectile")
-    local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * entity.configParameter("fuSoundMeleeAttack.power")
+    local projectileName = config.getParameter("meleeProjectile") or config.getParameter("fuSoundMeleeAttack.projectile")
+    local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * config.getParameter("fuSoundMeleeAttack.power")
     entity.playSound("attack")
     world.spawnProjectile(projectileName, projectileStartPosition, entity.id(), {mcontroller.facingDirection(), 0}, true, {speed = 7.0, power = power})
     stateData.didAttack = true

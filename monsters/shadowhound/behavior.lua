@@ -82,7 +82,7 @@ function attackState.enterWith(targetId)
 
   attackState.setAggressive(targetId)
 
-  return { timer = entity.configParameter("attackTargetHoldTime") }
+  return { timer = config.getParameter("attackTargetHoldTime") }
 end
 
 function attackState.update(dt, stateData)
@@ -101,7 +101,7 @@ function attackState.update(dt, stateData)
     local position = mcontroller.position()
     local toTarget = world.distance(self.targetPosition, mcontroller.position())
 
-    if world.magnitude(toTarget) < entity.configParameter("attackDistance") then
+    if world.magnitude(toTarget) < config.getParameter("attackDistance") then
       attackState.setAttackEnabled(true)
     else
       attackState.setAttackEnabled(false)
@@ -112,7 +112,7 @@ function attackState.update(dt, stateData)
   if self.targetId == nil then
     stateData.timer = stateData.timer - dt
   else
-    stateData.timer = entity.configParameter("attackTargetHoldTime")
+    stateData.timer = config.getParameter("attackTargetHoldTime")
   end
 
   if stateData.timer <= 0 then
@@ -127,7 +127,7 @@ end
 function attackState.setAttackEnabled(enabled)
   if enabled then
     animator.setAnimationState("movement", "attack")
-    self.attackHoldTimer = entity.configParameter("attackHoldTime")
+    self.attackHoldTimer = config.getParameter("attackHoldTime")
   else
   end
 
@@ -202,7 +202,7 @@ function captiveState.update(dt, stateData)
   else
     local animation = entity.animationState("movement")
     local playingIdleAnimation = false
-    for _, idleAnimation in pairs(entity.configParameter("idleAnimations")) do
+    for _, idleAnimation in pairs(config.getParameter("idleAnimations")) do
       playingIdleAnimation = playingIdleAnimation or idleAnimation == animation
     end
 

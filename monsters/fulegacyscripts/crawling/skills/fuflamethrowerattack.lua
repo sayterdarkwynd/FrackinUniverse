@@ -7,8 +7,8 @@ function fuFlameThrowerAttack.enterWith(args)
   return { 
     didAttack = false, 
     wasInRange = false,
-    windupTimer = entity.configParameter("fuFlameThrowerAttack.windupTime"),
-    winddownTimer = entity.configParameter("fuFlameThrowerAttack.windDownTime"),
+    windupTimer = config.getParameter("fuFlameThrowerAttack.windupTime"),
+    winddownTimer = config.getParameter("fuFlameThrowerAttack.windDownTime"),
     fireTimer = 0,
     shots = 0
   }
@@ -20,8 +20,8 @@ function fuFlameThrowerAttack.enter()
   return { 
     didAttack = false, 
     wasInRange = false,
-    windupTimer = entity.configParameter("fuFlameThrowerAttack.windupTime"),
-    winddownTimer = entity.configParameter("fuFlameThrowerAttack.winddownTime"),
+    windupTimer = config.getParameter("fuFlameThrowerAttack.windupTime"),
+    winddownTimer = config.getParameter("fuFlameThrowerAttack.winddownTime"),
     fireTimer = 0,
     shots = 0
   }
@@ -32,8 +32,8 @@ function fuFlameThrowerAttack.enteringState(stateData)
   animator.setAnimationState("attack", "melee")
 
   stateData.projectileSourcePosition = {
-      entity.configParameter("projectileSourcePosition", {0, 0})[1],
-      entity.configParameter("projectileSourcePosition", {0, 0})[2]
+      config.getParameter("projectileSourcePosition", {0, 0})[1],
+      config.getParameter("projectileSourcePosition", {0, 0})[2]
     }
 
   entity.setActiveSkillName("fuFlameThrowerAttack")
@@ -45,37 +45,37 @@ function fuFlameThrowerAttack.update(dt, stateData)
   local targetPosition = world.entityPosition(self.target)
   local toTarget = world.distance(targetPosition, mcontroller.position())
 
-  local projectileName = entity.configParameter("fuFlameThrowerAttack.projectile")
-  local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * entity.configParameter("fuFlameThrowerAttack.power")
+  local projectileName = config.getParameter("fuFlameThrowerAttack.projectile")
+  local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * config.getParameter("fuFlameThrowerAttack.power")
 
   animator.setAnimationState("movement", "idle")
 
   --First wind up
   if stateData.windupTimer >= 0 then
-    if stateData.windupTimer == entity.configParameter("fuFlameThrowerAttack.windupTime") then
+    if stateData.windupTimer == config.getParameter("fuFlameThrowerAttack.windupTime") then
       animator.setAnimationState("attack", "windup")
     end
 
     stateData.windupTimer = stateData.windupTimer - dt
   --Then fire all projectiles
-  elseif stateData.shots < entity.configParameter("fuFlameThrowerAttack.shots") then
+  elseif stateData.shots < config.getParameter("fuFlameThrowerAttack.shots") then
     if stateData.fireTimer <= 0 then
       world.spawnProjectile(projectileName, object.toAbsolutePosition(stateData.projectileSourcePosition), entity.id(), {mcontroller.facingDirection(), 0}, false, {power = power})
       stateData.shots = stateData.shots + 1
-      stateData.fireTimer = stateData.fireTimer + entity.configParameter("fuFlameThrowerAttack.fireInterval")
+      stateData.fireTimer = stateData.fireTimer + config.getParameter("fuFlameThrowerAttack.fireInterval")
     end
 
     stateData.fireTimer = stateData.fireTimer - dt
   --Then wind down
   elseif stateData.winddownTimer >= 0 then
-    if stateData.winddownTimer == entity.configParameter("fuFlameThrowerAttack.winddownTime") then
+    if stateData.winddownTimer == config.getParameter("fuFlameThrowerAttack.winddownTime") then
       animator.setAnimationState("attack", "winddown")
     end
 
     stateData.winddownTimer = stateData.winddownTimer - dt
   --Then done
   else
-    return true, entity.configParameter("fuFlameThrowerAttack.cooldownTime")
+    return true, config.getParameter("fuFlameThrowerAttack.cooldownTime")
   end
 
   return false

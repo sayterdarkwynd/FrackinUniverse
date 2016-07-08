@@ -7,11 +7,11 @@ function fleshBombAttack.enter()
   end
 
   return {
-    timer = entity.configParameter("fleshBombAttack.skillTime", 16),
-    damagePerSecond = entity.configParameter("fleshBombAttack.damagePerSecond", 1600),
-    distanceRange = entity.configParameter("fleshBombAttack.distanceRange"),
-    winddownTimer = entity.configParameter("fleshBombAttack.winddownTime"),
-    windupTimer = entity.configParameter("fleshBombAttack.windupTime"),
+    timer = config.getParameter("fleshBombAttack.skillTime", 16),
+    damagePerSecond = config.getParameter("fleshBombAttack.damagePerSecond", 1600),
+    distanceRange = config.getParameter("fleshBombAttack.distanceRange"),
+    winddownTimer = config.getParameter("fleshBombAttack.winddownTime"),
+    windupTimer = config.getParameter("fleshBombAttack.windupTime"),
     bombing = false
   }
 end
@@ -45,12 +45,12 @@ function fleshBombAttack.update(dt, stateData)
   else
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
-      if stateData.windupTimer == entity.configParameter("fleshBombAttack.windupTime") then
+      if stateData.windupTimer == config.getParameter("fleshBombAttack.windupTime") then
       animator.setAnimationState("movement", "idle")
       end
       stateData.windupTimer = stateData.windupTimer - dt
     elseif stateData.winddownTimer > 0 then
-      if stateData.winddownTimer == entity.configParameter("fleshBombAttack.winddownTime") then
+      if stateData.winddownTimer == config.getParameter("fleshBombAttack.winddownTime") then
         fleshBombAttack.bomb(toTarget)
       end
       stateData.winddownTimer = stateData.winddownTimer - dt
@@ -65,9 +65,9 @@ function fleshBombAttack.update(dt, stateData)
 end
 
 function fleshBombAttack.bomb(direction)
-  local projectileType = entity.configParameter("fleshBombAttack.projectile.type")
-  local projectileConfig = entity.configParameter("fleshBombAttack.projectile.config")
-  local projectileOffset = entity.configParameter("fleshBombAttack.projectile.offset")
+  local projectileType = config.getParameter("fleshBombAttack.projectile.type")
+  local projectileConfig = config.getParameter("fleshBombAttack.projectile.config")
+  local projectileOffset = config.getParameter("fleshBombAttack.projectile.offset")
   local direction2 = vec2.add(direction, {0, 10})
   local direction3 = vec2.add(direction, {0, -10})
 

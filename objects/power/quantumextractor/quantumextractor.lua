@@ -1007,7 +1007,7 @@ function startCrafting(result)
         self.timer = result.time
         self.output = result.outputs
         animator.setAnimationState("samplingarrayanim", "working")
-        entity.setLightColor(entity.configParameter("lightColor", {100, 176, 191}))
+        entity.setLightColor(config.getParameter("lightColor", {100, 176, 191}))
 		storage.activeConsumption = true
         return true
     end              

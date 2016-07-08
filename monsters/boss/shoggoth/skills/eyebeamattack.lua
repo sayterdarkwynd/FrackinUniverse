@@ -7,11 +7,11 @@ function eyeBeamAttack.enter()
   end
 
   return {
-    timer = entity.configParameter("eyeBeamAttack.skillTime", 2),
-    damagePerSecond = entity.configParameter("eyeBeamAttack.damagePerSecond", 1600),
-    distanceRange = entity.configParameter("eyeBeamAttack.distanceRange"),
-    winddownTimer = entity.configParameter("eyeBeamAttack.winddownTime"),
-    windupTimer = entity.configParameter("eyeBeamAttack.windupTime"),
+    timer = config.getParameter("eyeBeamAttack.skillTime", 2),
+    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 1600),
+    distanceRange = config.getParameter("eyeBeamAttack.distanceRange"),
+    winddownTimer = config.getParameter("eyeBeamAttack.winddownTime"),
+    windupTimer = config.getParameter("eyeBeamAttack.windupTime"),
     targetSnapshot = {0, 0},
     blasting = false
   }
@@ -53,7 +53,7 @@ function eyeBeamAttack.update(dt, stateData)
 
     -- phase 1 - windup (steal underpants)
     if stateData.windupTimer > 0 then
-      if stateData.windupTimer == entity.configParameter("eyeBeamAttack.windupTime") then
+      if stateData.windupTimer == config.getParameter("eyeBeamAttack.windupTime") then
       animator.setAnimationState("movement", "idle")
       --animator.setAnimationState("firstBeams", "active")
       end
@@ -96,9 +96,9 @@ function eyeBeamAttack.update(dt, stateData)
 end
 
 function eyeBeamAttack.blast(direction)
-  local projectileType = entity.configParameter("eyeBeamAttack.projectile.type")
-  local projectileConfig = entity.configParameter("eyeBeamAttack.projectile.config")
-  local projectileOffset = entity.configParameter("eyeBeamAttack.projectile.offset")
+  local projectileType = config.getParameter("eyeBeamAttack.projectile.type")
+  local projectileConfig = config.getParameter("eyeBeamAttack.projectile.config")
+  local projectileOffset = config.getParameter("eyeBeamAttack.projectile.offset")
 
 
   if projectileConfig.power then

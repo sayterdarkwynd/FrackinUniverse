@@ -9,11 +9,11 @@ function shoggothChargeAttack.enter()
 
 
   return {
-    timer = entity.configParameter("shoggothChargeAttack.skillTime", 0.24),
-    damagePerSecond = entity.configParameter("shoggothChargeAttack.damagePerSecond", 5000),
-    distanceRange = entity.configParameter("shoggothChargeAttack.distanceRange"),
-    intervalTime = entity.configParameter("shoggothChargeAttack.intervalTime"),
-    currentPeriod = entity.configParameter("shoggothChargeAttack.intervalTime"),
+    timer = config.getParameter("shoggothChargeAttack.skillTime", 0.24),
+    damagePerSecond = config.getParameter("shoggothChargeAttack.damagePerSecond", 5000),
+    distanceRange = config.getParameter("shoggothChargeAttack.distanceRange"),
+    intervalTime = config.getParameter("shoggothChargeAttack.intervalTime"),
+    currentPeriod = config.getParameter("shoggothChargeAttack.intervalTime"),
     swiping = false
   }
 end
@@ -41,7 +41,7 @@ function shoggothChargeAttack.update(dt, stateData)
       -- entity.playSound("chargeCrash")
 
       local crashTiles = {}
-      local basePos = entity.configParameter("projectileSourcePosition", {0, 0})
+      local basePos = config.getParameter("projectileSourcePosition", {0, 0})
       for xOffset = 2, 22 do
         for yOffset = -14.5, 10 do
           table.insert(crashTiles, object.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
@@ -50,7 +50,7 @@ function shoggothChargeAttack.update(dt, stateData)
       entity.playSound("shoggothChomp")
       world.damageTiles(crashTiles, "foreground", object.toAbsolutePosition({10, 0}), "plantish", 20)
 
-      -- self.state.pickState({stun=true,duration=entity.configParameter("chargeAttack.crashStunTime")})
+      -- self.state.pickState({stun=true,duration=config.getParameter("chargeAttack.crashStunTime")})
     end
       -- shoggothChargeAttack.chomp(targetDir)
       stateData.currentPeriod = stateData.intervalTime
@@ -78,9 +78,9 @@ end
 
 
 function shoggothChargeAttack.chomp(direction)
-  local projectileType = entity.configParameter("shoggothChargeAttack.projectile.type")
-  local projectileConfig = entity.configParameter("shoggothChargeAttack.projectile.config")
-  local projectileOffset = entity.configParameter("shoggothChargeAttack.projectile.offset")
+  local projectileType = config.getParameter("shoggothChargeAttack.projectile.type")
+  local projectileConfig = config.getParameter("shoggothChargeAttack.projectile.config")
+  local projectileOffset = config.getParameter("shoggothChargeAttack.projectile.offset")
   world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), {direction, 0}, true, projectileConfig)
 end
 

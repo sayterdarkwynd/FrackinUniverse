@@ -3,7 +3,7 @@ function init(args)
   self.sensors = sensors.create()
 
   self.minions = {}
-  for i = 1, entity.configParameter("throwMaxMinions") do
+  for i = 1, config.getParameter("throwMaxMinions") do
     table.insert(self.minions, 0)
   end
 
@@ -27,7 +27,7 @@ end
 function update(dt)
   self.position = mcontroller.position()
 
-  if util.trackTarget(entity.configParameter("targetNoticeRadius")) then
+  if util.trackTarget(config.getParameter("targetNoticeRadius")) then
     entity.setAggressive(true)
     self.state.pickState()
   elseif self.targetId == nil then
@@ -81,7 +81,7 @@ function moveState.update(dt, stateData)
 
   stateData.timer = stateData.timer - dt
   if stateData.timer <= 0 then
-    return true, entity.configParameter("moveCooldown")
+    return true, config.getParameter("moveCooldown")
   end
 
   return false
@@ -97,7 +97,7 @@ function throwAttack.enter()
     if minionId == 0 or not world.entityExists(minionId) then
       return {
         minionIndex = minionIndex,
-        timer = entity.configParameter("throwStartTime")
+        timer = config.getParameter("throwStartTime")
       }
     end
   end
@@ -111,7 +111,7 @@ function throwAttack.update(dt, stateData)
   local toTarget = world.distance(self.targetPosition, self.position)
   mcontroller.controlFace(toTarget[1])
 
-  if world.magnitude(toTarget) > entity.configParameter("throwMaxDistance") then
+  if world.magnitude(toTarget) > config.getParameter("throwMaxDistance") then
     move(toTarget[1])
   else
     animator.setAnimationState("movement", "throw")
@@ -120,14 +120,14 @@ function throwAttack.update(dt, stateData)
 
     if stateData.timer <= 0 then
       if stateData.thrown then
-        return true, entity.configParameter("throwCooldown")
+        return true, config.getParameter("throwCooldown")
       else
-        local entityId = world.spawnMonster("micropo", object.toAbsolutePosition(entity.configParameter("throwSpawnOffset")))
+        local entityId = world.spawnMonster("micropo", object.toAbsolutePosition(config.getParameter("throwSpawnOffset")))
         world.callScriptedEntity(entityId, "setSpawnDirection", mcontroller.facingDirection())
         self.minions[stateData.minionIndex] = entityId
 
         stateData.thrown = true
-        stateData.timer = entity.configParameter("throwEndTime")
+        stateData.timer = config.getParameter("throwEndTime")
       end
     end
   end
@@ -150,13 +150,13 @@ function shoutAttack.update(dt, stateData)
   local toTarget = world.distance(self.targetPosition, self.position)
   mcontroller.controlFace(toTarget[1])
 
-  if world.magnitude(toTarget) > entity.configParameter("shoutMaxDistance") then
+  if world.magnitude(toTarget) > config.getParameter("shoutMaxDistance") then
     move(toTarget[1])
 
     return false
   else
     animator.setAnimationState("movement", "ranged")
-    -- entity.setFireDirection(entity.configParameter("shoutProjectileOffset"), toTarget)
+    -- entity.setFireDirection(config.getParameter("shoutProjectileOffset"), toTarget)
 
     local projectile = entity.animationStateProperty("movement", "projectile")
     if projectile ~= nil then

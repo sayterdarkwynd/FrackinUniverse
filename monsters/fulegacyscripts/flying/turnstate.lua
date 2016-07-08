@@ -5,7 +5,7 @@ function turnState.enter()
   if hasTarget() then return nil end
 
   return {
-    timer = entity.configParameter("turnTime"),
+    timer = config.getParameter("turnTime"),
     baseDirection = mcontroller.facingDirection()
   }
 end
@@ -14,7 +14,7 @@ function turnState.update(dt, stateData)
   if hasTarget() then return true end
   if stateData.timer < 0 then return true end
 
-  local ratio = stateData.timer / entity.configParameter("turnTime")
+  local ratio = stateData.timer / config.getParameter("turnTime")
   local phase = math.pi * (1.0 - ratio)
 
   -- Advance timer through to the next quarter of the circle if running
@@ -24,12 +24,12 @@ function turnState.update(dt, stateData)
       stateData.baseDirection = -stateData.baseDirection
     end
 
-    stateData.timer = stateData.timer - entity.configParameter("turnTime") * 0.25
+    stateData.timer = stateData.timer - config.getParameter("turnTime") * 0.25
   end
 
   local movement = {
-    math.cos(phase) * mcontroller.baseParameters().flySpeed * entity.configParameter("wanderSpeedMultiplier") * stateData.baseDirection,
-    -math.sin(phase) * mcontroller.baseParameters().flySpeed * entity.configParameter("wanderSpeedMultiplier") * entity.configParameter("turnTiltRatio")
+    math.cos(phase) * mcontroller.baseParameters().flySpeed * config.getParameter("wanderSpeedMultiplier") * stateData.baseDirection,
+    -math.sin(phase) * mcontroller.baseParameters().flySpeed * config.getParameter("wanderSpeedMultiplier") * config.getParameter("turnTiltRatio")
   }
 
   -- local toTarget = entity.distanceToEntity(self.target)
@@ -57,7 +57,7 @@ function turnState.update(dt, stateData)
 
   -- local destination = {
   --   self.position[1] + toTarget[1] + x,
-  --   self.position[2] + toTarget[2] + y + tiltRatio * entity.configParameter("circleTiltRadius")
+  --   self.position[2] + toTarget[2] + y + tiltRatio * config.getParameter("circleTiltRadius")
   -- }
 
   -- local movement = world.distance(destination, self.position)

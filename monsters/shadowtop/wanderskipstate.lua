@@ -32,13 +32,13 @@ function wanderSkipState.update(dt, stateData)
       stateData.wanderMovementTimer = entity.randomizeParameterRange("wanderMovementTime")
     end
   elseif stateData.movement ~= 0 and (willFall() or isBlocked()) then
-    if math.random() < entity.configParameter("wanderJumpProbability") then
+    if math.random() < config.getParameter("wanderJumpProbability") then
       self.jumpTimer = entity.randomizeParameterRange("jumpTime")
       controlJump()
     elseif stateData.wanderFlipTimer <= 0 then
       stateData.movement = -stateData.movement
       stateData.wanderTimer = entity.randomizeParameterRange("wanderTime")
-      stateData.wanderFlipTimer = entity.configParameter("wanderFlipTimer") or 0.5
+      stateData.wanderFlipTimer = config.getParameter("wanderFlipTimer") or 0.5
     end
   else
     if stateData.wanderTimer <= 0 then

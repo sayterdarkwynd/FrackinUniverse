@@ -17,7 +17,7 @@ function init()
   self.skillOptions = {}
   self.noOptionCount = 0
 
-  self.aggressive = entity.configParameter("aggressive", false)
+  self.aggressive = config.getParameter("aggressive", false)
   setAggressive(false, false)
 
   if capturepod ~= nil then
@@ -52,21 +52,21 @@ function init()
   self.jumpCooldown = 0
   self.jumpMaxCooldown = 1
   
-  local states = stateMachine.scanScripts(entity.configParameter("scripts"), "(%a+State)%.lua")
-  local attacks = stateMachine.scanScripts(entity.configParameter("scripts"), "(%a+Attack)%.lua")
+  local states = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+State)%.lua")
+  local attacks = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+Attack)%.lua")
   for _, attack in pairs(attacks) do
     table.insert(states, 1, attack)
   end
-  local specials = stateMachine.scanScripts(entity.configParameter("scripts"), "(%a+Special)%.lua")
+  local specials = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+Special)%.lua")
   for _, special in pairs(specials) do
     table.insert(states, 1, special)
   end
 
-  self.globalCooldown = entity.configParameter("globalCooldown", 0.75)
+  self.globalCooldown = config.getParameter("globalCooldown", 0.75)
   self.skillCooldownTimers = {}
   self.skillParameters = {}
-  for _, skillName in pairs(entity.configParameter("skills")) do
-    local params = entity.configParameter(skillName)
+  for _, skillName in pairs(config.getParameter("skills")) do
+    local params = config.getParameter(skillName)
 
     --create generic attacks from factories
     if params and params.factory then
@@ -123,7 +123,7 @@ function init()
   end
 
   entity.setDeathSound("deathPuff")
-  entity.setDeathParticleBurst(entity.configParameter("deathParticles"))
+  entity.setDeathParticleBurst(config.getParameter("deathParticles"))
 
   -- world.logInfo("Unique Parameters: %s", entity.uniqueParameters())
   entity.setGlobalTag("backwards", "")
@@ -138,16 +138,16 @@ function receiveNotification(notification)
 end
 
 --------------------------------------------------------------------------------
--- get the skill parameters from the relevant configParameter and make necessary adjustments
+-- get the skill parameters from the relevant config parameter and make necessary adjustments
 function loadSkillParameters(skillName)
   -- world.logInfo("%s %s loading parameters for skill %s", entity.type(), entity.id(), skillName)
   if type(_ENV[skillName].loadSkillParameters) == "function" then
     return _ENV[skillName].loadSkillParameters()
-  elseif entity.configParameter(skillName) then
-    local params = entity.configParameter(skillName)
+  elseif config.getParameter(skillName) then
+    local params = config.getParameter(skillName)
 
-    local xAdjust = entity.configParameter("projectileSourcePosition", {0, 0})[1]
-    local yAdjust = -(mcontroller.boundBox()[2] + 2.5) + entity.configParameter("projectileSourcePosition", {0, 0})[2]
+    local xAdjust = config.getParameter("projectileSourcePosition", {0, 0})[1]
+    local yAdjust = -(mcontroller.boundBox()[2] + 2.5) + config.getParameter("projectileSourcePosition", {0, 0})[2]
 
     for i, rect in ipairs(params.startRects) do
       local startRect = normalizeRect(rect)
@@ -204,7 +204,7 @@ function damage(args)
 
   if args.damage > 0 then
     local entityId = entity.id()
-    local damageNotificationRegion = entity.configParameter("damageNotificationRegion", { -10, -4, 10, 4 })
+    local damageNotificationRegion = config.getParameter("damageNotificationRegion", { -10, -4, 10, 4 })
     world.entityQuery(
       vec2.add({ damageNotificationRegion[1], damageNotificationRegion[2] }, self.position),
       vec2.add({ damageNotificationRegion[3], damageNotificationRegion[4] }, self.position),
@@ -352,7 +352,7 @@ function move(delta, run, jumpThresholdX)
       doJump = true
     elseif (delta[2] >= 0 and willFall() and math.abs(delta[1]) > 7) then
       doJump = true
-    elseif (math.abs(delta[1]) < jumpThresholdX and delta[2] > entity.configParameter("jumpTargetDistance")) then
+    elseif (math.abs(delta[1]) < jumpThresholdX and delta[2] > config.getParameter("jumpTargetDistance")) then
       doJump = true
     end
 
@@ -480,7 +480,7 @@ end
 
 --------------------------------------------------------------------------------
 function checkTerritory()
-  local tdist = entity.configParameter("territoryDistance")
+  local tdist = config.getParameter("territoryDistance")
   local hdist = world.distance(self.position, storage.basePosition)[1]
 
   if hdist > tdist then
@@ -499,7 +499,7 @@ function track()
   if not world.entityExists(self.target) or (not inSkill() and self.targetHoldTimer <= 0) then
     setTarget(0)
   elseif inSkill() then
-    self.targetHoldTimer = entity.configParameter("targetHoldTime")
+    self.targetHoldTimer = config.getParameter("targetHoldTime")
   end
 
   local doAggroHop = false
@@ -508,9 +508,9 @@ function track()
     -- depending on whether we are in our territory or not
     local targetId
     if self.territory == 0 then
-      targetId = entity.closestValidTarget(entity.configParameter("territorialTargetRadius"))
+      targetId = entity.closestValidTarget(config.getParameter("territorialTargetRadius"))
     else
-      targetId = entity.closestValidTarget(entity.configParameter("minimalTargetRadius"))
+      targetId = entity.closestValidTarget(config.getParameter("minimalTargetRadius"))
     end
 
     if targetId ~= 0 then
@@ -523,7 +523,7 @@ function track()
       doAggroHop = true
     end
 
-    self.targetSearchTimer = entity.configParameter("targetSearchTime")
+    self.targetSearchTimer = config.getParameter("targetSearchTime")
   end
 
   if hasTarget() then
@@ -548,7 +548,7 @@ end
 --------------------------------------------------------------------------------
 function setTarget(target)
   if target ~= 0 then
-    self.targetHoldTimer = entity.configParameter("targetHoldTime")
+    self.targetHoldTimer = config.getParameter("targetHoldTime")
   end
 
   self.target = target
@@ -557,10 +557,10 @@ end
 --------------------------------------------------------------------------------
 function setAggressive(enabled, damageOnTouch)
   if enabled then
-    entity.setAggressive(true)
+    object.setAggressive(true)
     self.aggressive = true
   else
-    entity.setAggressive(self.aggressive)
+    object.setAggressive(self.aggressive)
     if not self.aggressive then
       damageOnTouch = false
     end

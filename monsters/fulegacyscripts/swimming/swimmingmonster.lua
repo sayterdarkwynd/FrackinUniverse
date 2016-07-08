@@ -1,15 +1,15 @@
 function init()
-  local scripts = entity.configParameter("scripts")
+  local scripts = config.getParameter("scripts")
   local states = stateMachine.scanScripts(scripts, "(%a+State)%.lua")
   self.state = stateMachine.create(states)
 
-  self.aggressive = entity.configParameter("aggressive", false)
+  self.aggressive = config.getParameter("aggressive", false)
 
   self.target = false
   self.targetChangeTimer = 0
   self.targetHoldTimer = 0
 
-  self.moveRatioLimit = entity.configParameter("moveRatioLimit", false)
+  self.moveRatioLimit = config.getParameter("moveRatioLimit", false)
   self.directionChangeTimer = 0
   self.slowSpeed = mcontroller.baseParameters().flySpeed / 2.0
 
@@ -17,7 +17,7 @@ function init()
   animator.setAnimationState("movement", "swimSlow")
 
   entity.setDeathSound("deathPuff")
-  entity.setDeathParticleBurst(entity.configParameter("deathParticles"))
+  entity.setDeathParticleBurst(config.getParameter("deathParticles"))
 
   script.setUpdateDelta(10)
 end
@@ -32,7 +32,7 @@ function damage(args)
 end
 
 function findTarget()
-  local targetId = entity.closestValidTarget(entity.configParameter("targetSearchRadius"))
+  local targetId = entity.closestValidTarget(config.getParameter("targetSearchRadius"))
   if targetValid(targetId) then setTarget(targetId) end
 end
 
@@ -40,13 +40,13 @@ function targetValid(targetId)
   return
     entity.isValidTarget(targetId) and
     world.liquidAt(world.entityPosition(targetId)) and
-    vec2.mag(entity.distanceToEntity(targetId)) <= entity.configParameter("targetHoldRadius")
+    vec2.mag(entity.distanceToEntity(targetId)) <= config.getParameter("targetHoldRadius")
 end
 
 function setTarget(targetId)
   if targetId and targetId ~= 0 and self.targetChangeTimer <= 0 then
     self.target = targetId
-    self.targetChangeTimer = entity.configParameter("targetChangeCooldown")
+    self.targetChangeTimer = config.getParameter("targetChangeCooldown")
   else
     self.target = false
     self.targetChangeTimer = 0
@@ -56,7 +56,7 @@ end
 function updateTarget()
   if self.target and not world.entityExists(self.target) then
     self.target = false
-    self.aggressive = entity.configParameter("aggressive", false)
+    self.aggressive = config.getParameter("aggressive", false)
   end
 
   if not self.target and self.aggressive then
@@ -108,7 +108,7 @@ function move(direction, run, noRatioLimit)
     if self.directionChangeTimer > 0 then
       moveDirection[1] = -moveDirection[1]
     else
-      self.directionChangeTimer = entity.configParameter("directionChangeCooldown")
+      self.directionChangeTimer = config.getParameter("directionChangeCooldown")
     end
   end
 
@@ -126,7 +126,7 @@ function move(direction, run, noRatioLimit)
 end
 
 function collides(sensorGroup, direction)
-  for i, sensor in ipairs(entity.configParameter(sensorGroup)) do
+  for i, sensor in ipairs(config.getParameter(sensorGroup)) do
     -- world.debugPoint(object.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), "blue")
     if world.pointTileCollision(object.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), {"Dynamic", "Null", "Block"}) then
       return true

@@ -7,13 +7,13 @@ function miniShoggothSpawnAttack.enter()
   end
 
   return {
-    timer = entity.configParameter("miniShoggothSpawnAttack.skillTime", 16),
-    damagePerSecond = entity.configParameter("miniShoggothSpawnAttack.damagePerSecond", 1600),
-    distanceRange = entity.configParameter("miniShoggothSpawnAttack.distanceRange"),
-    winddownTimer = entity.configParameter("miniShoggothSpawnAttack.winddownTime"),
-    windupTimer = entity.configParameter("miniShoggothSpawnAttack.windupTime"),
-    periodTimer = entity.configParameter("miniShoggothSpawnAttack.periodTime"),
-    attacksLeft = entity.configParameter("miniShoggothSpawnAttack.attacksLeft"),
+    timer = config.getParameter("miniShoggothSpawnAttack.skillTime", 16),
+    damagePerSecond = config.getParameter("miniShoggothSpawnAttack.damagePerSecond", 1600),
+    distanceRange = config.getParameter("miniShoggothSpawnAttack.distanceRange"),
+    winddownTimer = config.getParameter("miniShoggothSpawnAttack.winddownTime"),
+    windupTimer = config.getParameter("miniShoggothSpawnAttack.windupTime"),
+    periodTimer = config.getParameter("miniShoggothSpawnAttack.periodTime"),
+    attacksLeft = config.getParameter("miniShoggothSpawnAttack.attacksLeft"),
     --initialPeriodTime = periodTimer,
     spitting = false
   }
@@ -47,7 +47,7 @@ function miniShoggothSpawnAttack.update(dt, stateData)
   else
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
-      if stateData.windupTimer == entity.configParameter("miniShoggothSpawnAttack.windupTime") then
+      if stateData.windupTimer == config.getParameter("miniShoggothSpawnAttack.windupTime") then
       animator.setAnimationState("movement", "idle")
       end
       stateData.windupTimer = stateData.windupTimer - dt
@@ -77,9 +77,9 @@ function miniShoggothSpawnAttack.update(dt, stateData)
 end
 
 function miniShoggothSpawnAttack.spit(direction)
-  local projectileType = entity.configParameter("miniShoggothSpawnAttack.projectile.type")
-  local projectileConfig = entity.configParameter("miniShoggothSpawnAttack.projectile.config")
-  local projectileOffset = entity.configParameter("miniShoggothSpawnAttack.projectile.offset")
+  local projectileType = config.getParameter("miniShoggothSpawnAttack.projectile.type")
+  local projectileConfig = config.getParameter("miniShoggothSpawnAttack.projectile.config")
+  local projectileOffset = config.getParameter("miniShoggothSpawnAttack.projectile.offset")
   local direction2 = vec2.add(direction, {0, 10})
   local direction3 = vec2.add(direction, {0, -10})
 

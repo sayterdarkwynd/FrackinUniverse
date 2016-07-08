@@ -9,11 +9,11 @@ function aggressState.enter()
 end
 
 function aggressState.enteringState(stateData)
-  self.exhaustionTimer = entity.configParameter("exhaustionTimer")
+  self.exhaustionTimer = config.getParameter("exhaustionTimer")
 end
 
 function aggressState.update(dt, stateData)
-  local closeDistance = entity.configParameter("closeDistance")
+  local closeDistance = config.getParameter("closeDistance")
   local movement
   if math.abs(self.toTarget[1]) < closeDistance then
     movement = 0
@@ -37,8 +37,8 @@ function aggressState.update(dt, stateData)
   -- in the same place, decrement our exhaustion timer.
   if onGround then
     local distance = world.distance(self.position, self.lastAggressGroundPosition)
-    if math.max(math.abs(distance[1]), math.abs(distance[2])) > entity.configParameter("exhaustionDistanceLimit") then
-      self.exhaustionTimer = entity.configParameter("exhaustionTimer")
+    if math.max(math.abs(distance[1]), math.abs(distance[2])) > config.getParameter("exhaustionDistanceLimit") then
+      self.exhaustionTimer = config.getParameter("exhaustionTimer")
       self.lastAggressGroundPosition = self.position
     end
   end
@@ -48,8 +48,8 @@ function aggressState.update(dt, stateData)
   self.exhaustionTimer = self.exhaustionTimer - dt
 
   if self.exhaustionTimer <= 0 then
-    self.exhaustionTimer = entity.configParameter("exhaustionTimer")
-    self.exhaustionCooldownTimer = entity.configParameter("exhaustionCooldownTimer", 0)
+    self.exhaustionTimer = config.getParameter("exhaustionTimer")
+    self.exhaustionCooldownTimer = config.getParameter("exhaustionCooldownTimer", 0)
     return true, self.exhaustionCooldownTimer
   end
 

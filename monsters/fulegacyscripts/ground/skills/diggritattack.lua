@@ -33,17 +33,17 @@ function digGritAttack.run(stateData)
 
   local feetOffset = mcontroller.boundBox()[2]
 
-  local timer, projectileTimer = digGritAttack.digTime, entity.configParameter("digGritAttack.fireInterval")
+  local timer, projectileTimer = digGritAttack.digTime, config.getParameter("digGritAttack.fireInterval")
   while timer > 0 do
     mcontroller.controlFace(-self.toTarget[1])
 
     if projectileTimer < 0 then
       local sourcePosition = vec2.add(mcontroller.position(), { 0, mcontroller.boundBox()[2] + 0.5})
       local toTarget = world.distance(world.entityPosition(self.target), sourcePosition)
-      local fireVector = util.aimVector(toTarget, entity.configParameter("digGritAttack.speed"), root.projectileGravityMultiplier("rock"), true)
+      local fireVector = util.aimVector(toTarget, config.getParameter("digGritAttack.speed"), root.projectileGravityMultiplier("rock"), true)
       world.spawnProjectile("rock", sourcePosition, entity.id(), fireVector, false, {
-        speed = entity.configParameter("digGritAttack.speed"),
-        power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * entity.configParameter("digGritAttack.power"),
+        speed = config.getParameter("digGritAttack.speed"),
+        power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * config.getParameter("digGritAttack.power"),
         physics = "bullet",
         actionOnReap = {
           {
@@ -55,7 +55,7 @@ function digGritAttack.run(stateData)
           }
         }
       })
-      projectileTimer = entity.configParameter("digGritAttack.fireInterval")
+      projectileTimer = config.getParameter("digGritAttack.fireInterval")
     end
 
     local dt = script.updateDt()

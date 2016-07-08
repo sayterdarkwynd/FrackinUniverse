@@ -23,16 +23,16 @@ end
 
 function bubbleShieldSpecial.activateShield()
   if self.skillCooldownTimers["bubbleShieldSpecial"] <= 0 then
-    bubbleShieldSpecial.duration = entity.configParameter("bubbleShieldSpecial.shieldTime")
+    bubbleShieldSpecial.duration = config.getParameter("bubbleShieldSpecial.shieldTime")
   end
 
   status.addEphemeralEffect("bubbleshield")
-  self.skillCooldownTimers["bubbleShieldSpecial"] = entity.configParameter("bubbleShieldSpecial.cooldownTime")
+  self.skillCooldownTimers["bubbleShieldSpecial"] = config.getParameter("bubbleShieldSpecial.cooldownTime")
 end
 
 function bubbleShieldSpecial.deactivateShield()
   status.removeEphemeralEffect("bubbleshield")
   if self.skillCooldownTimers["bubbleShieldSpecial"] <= 0 then
-    self.skillCooldownTimers["bubbleShieldSpecial"] = entity.configParameter("bubbleShieldSpecial.cooldownTime")
+    self.skillCooldownTimers["bubbleShieldSpecial"] = config.getParameter("bubbleShieldSpecial.cooldownTime")
   end
 end

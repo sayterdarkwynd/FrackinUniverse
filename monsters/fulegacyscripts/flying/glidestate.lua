@@ -11,7 +11,7 @@ function glideState.enter()
   end
 
   return {
-    timer = entity.configParameter("glideTime"),
+    timer = config.getParameter("glideTime"),
     baseDirection = mcontroller.facingDirection()
   }
 end
@@ -20,7 +20,7 @@ function glideState.update(dt, stateData)
   if hasTarget() then return true end
 
   if self.sensors.groundSensors.collisionTrace[2].value or stateData.timer < 0 then
-    return true, entity.configParameter("glideCooldownTime")
+    return true, config.getParameter("glideCooldownTime")
   end
   stateData.timer = stateData.timer - dt
 
@@ -28,12 +28,12 @@ function glideState.update(dt, stateData)
 
   local vector = {
     stateData.baseDirection,
-    -entity.configParameter("glideSinkingSpeed")
+    -config.getParameter("glideSinkingSpeed")
   }
 
   --don't turn around immediately before switching states
   if stateData.timer > 0.5 then
-    util.toDirection(math.sin(entity.configParameter("glideSpiralDispersion") * math.pi * 2.0 * stateData.timer))
+    util.toDirection(math.sin(config.getParameter("glideSpiralDispersion") * math.pi * 2.0 * stateData.timer))
   end
 
   if self.sensors.blockedSensors.collision.any(true) then

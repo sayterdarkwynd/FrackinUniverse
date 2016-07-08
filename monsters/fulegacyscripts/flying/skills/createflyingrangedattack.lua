@@ -4,7 +4,7 @@ function createRangedAttack(skillName)
 
   function rangedAttack.enter()
     if entity.entityInSight(self.target) then
-      local params = entity.configParameter(skillName)
+      local params = config.getParameter(skillName)
 
       rangedAttack.pType = type(params.projectile) == "table" and entity.staticRandomizeParameter(skillName..".projectile") or params.projectile
       rangedAttack.pPower = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * params.power
@@ -39,7 +39,7 @@ function createRangedAttack(skillName)
 
     animator.setAnimationState("movement", "flyingAttack")
 
-    local sourcePosition = entity.configParameter("projectileSourcePosition") or {0, 0}
+    local sourcePosition = config.getParameter("projectileSourcePosition") or {0, 0}
     local toTarget = world.distance(world.entityPosition(self.target), object.toAbsolutePosition(sourcePosition))
     mcontroller.controlFace(toTarget[1])
 
@@ -64,7 +64,7 @@ function createRangedAttack(skillName)
       power = rangedAttack.pPower,
       speed = rangedAttack.pSpeed
     }
-    local sourcePosition = entity.configParameter("projectileSourcePosition") or {0, 0}
+    local sourcePosition = config.getParameter("projectileSourcePosition") or {0, 0}
     world.spawnProjectile(rangedAttack.pType, object.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
   end
 

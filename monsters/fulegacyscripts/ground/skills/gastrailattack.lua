@@ -37,7 +37,7 @@ function gasTrailAttack.leavingState(stateData)
 end
 
 function gasTrailAttack.fire()
-  local projectileStartPosition = object.toAbsolutePosition({entity.configParameter("projectileSourcePosition", {0, 0})[1] + 1.0, entity.configParameter("projectileSourcePosition", {0, 0})[2]})
-  local projectileName = entity.configParameter("gasTrailAttack.projectile")
+  local projectileStartPosition = object.toAbsolutePosition({config.getParameter("projectileSourcePosition", {0, 0})[1] + 1.0, config.getParameter("projectileSourcePosition", {0, 0})[2]})
+  local projectileName = config.getParameter("gasTrailAttack.projectile")
   world.spawnProjectile(projectileName, projectileStartPosition, entity.id(), {mcontroller.facingDirection(), 0}, false, {speed = 0, timeToLive = 1.8, animationCycle = 1.8})
 end

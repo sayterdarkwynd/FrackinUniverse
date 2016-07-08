@@ -4,13 +4,13 @@ function burrowSpecial.enter()
   -- if hasTarget() and self.skillCooldownTimers["burrowSpecial"] <= 0 and self.onGround then
   --   if not isBlocked() then
   --     world.logInfo("Can't burrow because NOT BLOCKED")
-  --   elseif world.magnitude(self.toTarget) > entity.configParameter("burrowSpecial.maxRange") then
+  --   elseif world.magnitude(self.toTarget) > config.getParameter("burrowSpecial.maxRange") then
   --     world.logInfo("Can't burrow because TOO FAR (max)")
   --   elseif self.toTarget[2] > 5 or self.toTarget[2] < -5 then
   --     world.logInfo("Can't burrow because TOO FAR (vertical)")
   --   elseif burrowSpecial.canJumpUp() then
   --     world.logInfo("Can't burrow because CAN JUMP UP")
-  --   elseif #world.collisionBlocksAlongLine(mcontroller.position(), world.entityPosition(self.target)) > entity.configParameter("burrowSpecial.maxThickness") then
+  --   elseif #world.collisionBlocksAlongLine(mcontroller.position(), world.entityPosition(self.target)) > config.getParameter("burrowSpecial.maxThickness") then
   --     world.logInfo("Can't burrow because TOO THICKE")
   --   end
   -- end
@@ -20,9 +20,9 @@ function burrowSpecial.enter()
       or not self.onGround
       or not isBlocked()
       --or self.toTarget[2] > 5 or self.toTarget[2] < -5 --don't dig too directly into the ceiling or floor
-      or world.magnitude(self.toTarget) > entity.configParameter("burrowSpecial.maxRange")
+      or world.magnitude(self.toTarget) > config.getParameter("burrowSpecial.maxRange")
       or burrowSpecial.canJumpUp() --don't dig through short cliffs
-      or #world.collisionBlocksAlongLine(mcontroller.position(), world.entityPosition(self.target)) > entity.configParameter("burrowSpecial.maxThickness")
+      or #world.collisionBlocksAlongLine(mcontroller.position(), world.entityPosition(self.target)) > config.getParameter("burrowSpecial.maxThickness")
     then
       if self.skillCooldownTimers["burrowSpecial"] <= 0 then self.skillCooldownTimers["burrowSpecial"] = 0.2 end --don't check again immediately
       return nil
@@ -61,12 +61,12 @@ function burrowSpecial.update(dt, stateData)
   if willFall() then return true end
 
   local obstructed = isBlocked() or not entity.entityInSight(self.target)
-  if not obstructed and world.magnitude(self.toTarget) < entity.configParameter("burrowSpecial.minRange") then return true end
+  if not obstructed and world.magnitude(self.toTarget) < config.getParameter("burrowSpecial.minRange") then return true end
 
   stateData.digTimer = stateData.digTimer - dt
 
   faceTarget()
-  if math.abs(self.toTarget[1]) > entity.configParameter("burrowSpecial.minRange") then
+  if math.abs(self.toTarget[1]) > config.getParameter("burrowSpecial.minRange") then
     --approach
     moveX(self.toTarget[1], true)
   else
@@ -89,9 +89,9 @@ function burrowSpecial.update(dt, stateData)
         actionOnReap = {
           {
             action = "explosion",
-            foregroundRadius = entity.configParameter("burrowSpecial.digSize"),
+            foregroundRadius = config.getParameter("burrowSpecial.digSize"),
             backgroundRadius = 0,
-            explosiveDamageAmount = entity.configParameter("burrowSpecial.digDamage")
+            explosiveDamageAmount = config.getParameter("burrowSpecial.digDamage")
           }
         }
       }
@@ -107,11 +107,11 @@ function burrowSpecial.update(dt, stateData)
 
 
       world.spawnProjectile("invisibleprojectile", digPosition, entity.id(), {mcontroller.facingDirection(), 0}, false, pConfig)
-      stateData.digTimer = entity.configParameter("burrowSpecial.digTime")
+      stateData.digTimer = config.getParameter("burrowSpecial.digTime")
     end
 
     --rotate head
-    local timeFraction = stateData.digTimer / entity.configParameter("burrowSpecial.digTime")
+    local timeFraction = stateData.digTimer / config.getParameter("burrowSpecial.digTime")
     local maxRotate = math.pi / 180 * 30
     entity.rotateGroup("projectileAim", timeFraction * 1.5 * maxRotate - maxRotate)
   end

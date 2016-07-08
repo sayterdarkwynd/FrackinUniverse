@@ -82,7 +82,7 @@ function attackState.enterWith(targetId)
 
   attackState.setAggressive(targetId)
 
-  return { timer = entity.configParameter("attackTargetHoldTime") }
+  return { timer = config.getParameter("attackTargetHoldTime") }
 end
 
 function attackState.update(dt, stateData)
@@ -91,7 +91,7 @@ function attackState.update(dt, stateData)
   if self.targetPosition ~= nil then
     local toTarget = world.distance(self.targetPosition, mcontroller.position())
 
-    if world.magnitude(toTarget) < entity.configParameter("attackDistance") then
+    if world.magnitude(toTarget) < config.getParameter("attackDistance") then
       attackState.setAttackEnabled(true)
     else
       attackState.setAttackEnabled(false)
@@ -102,7 +102,7 @@ function attackState.update(dt, stateData)
   if self.targetId == nil then
     stateData.timer = stateData.timer - dt
   else
-    stateData.timer = entity.configParameter("attackTargetHoldTime")
+    stateData.timer = config.getParameter("attackTargetHoldTime")
   end
 
   if stateData.timer <= 0 then

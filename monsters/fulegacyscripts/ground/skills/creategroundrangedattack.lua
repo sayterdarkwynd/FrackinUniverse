@@ -2,10 +2,10 @@ function createRangedAttack(skillName)
   local rangedAttack = {}
 
   function rangedAttack.loadSkillParameters()
-    local params = entity.configParameter(skillName)
+    local params = config.getParameter(skillName)
 
     --parameters to be used within this state
-    rangedAttack.pType = type(entity.configParameter(skillName..".projectile")) == "table" and entity.staticRandomizeParameter(skillName..".projectile") or entity.configParameter(skillName..".projectile")
+    rangedAttack.pType = type(config.getParameter(skillName..".projectile")) == "table" and entity.staticRandomizeParameter(skillName..".projectile") or config.getParameter(skillName..".projectile")
     rangedAttack.pPower = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * params.power
     rangedAttack.pSpeed = params.speed
     rangedAttack.pGrav = root.projectileGravityMultiplier(rangedAttack.pType)
@@ -28,7 +28,7 @@ function createRangedAttack(skillName)
     params.cooldownTime = params.cooldownTime or 5.0
 
     --create geometry
-    local yAdjust = -(mcontroller.boundBox()[2] + 2.5) + entity.configParameter("projectileSourcePosition", {0, 0})[2]
+    local yAdjust = -(mcontroller.boundBox()[2] + 2.5) + config.getParameter("projectileSourcePosition", {0, 0})[2]
     params.approachPoints = { {-rangedAttack.range + 3, yAdjust}, {rangedAttack.range - 3, yAdjust} }
     params.startRects = {
       {-rangedAttack.range, -7 + yAdjust, math.min(-rangedAttack.range + 10.5, -1), 5 + yAdjust},
@@ -47,7 +47,7 @@ function createRangedAttack(skillName)
   function rangedAttack.enteringState(stateData)
     setAggressive(true, true)
 
-    rangedAttack.aim(world.distance(world.entityPosition(self.target), object.toAbsolutePosition(entity.configParameter("projectileSourcePosition"))))
+    rangedAttack.aim(world.distance(world.entityPosition(self.target), object.toAbsolutePosition(config.getParameter("projectileSourcePosition"))))
 
     if stateData.castTime > 0 then
       if rangedAttack.castEffect then
@@ -72,7 +72,7 @@ function createRangedAttack(skillName)
 
     if stateData.shotsRemaining <= 0 then return false end
 
-    local toTarget = world.distance(world.entityPosition(self.target), object.toAbsolutePosition(entity.configParameter("projectileSourcePosition")))
+    local toTarget = world.distance(world.entityPosition(self.target), object.toAbsolutePosition(config.getParameter("projectileSourcePosition")))
 
     if toTarget[1] * mcontroller.facingDirection() < 0 then return true end
 
@@ -136,8 +136,8 @@ function createRangedAttack(skillName)
       power = rangedAttack.pPower,
       speed = rangedAttack.pSpeed
     }
-    local sourceOffset = entity.configParameter("projectileSourceOffset")
-    local sourcePosition = entity.configParameter("projectileSourcePosition")
+    local sourceOffset = config.getParameter("projectileSourceOffset")
+    local sourcePosition = config.getParameter("projectileSourcePosition")
     if sourceOffset then
       local angle = math.atan(direction[2], math.abs(direction[1]))
       sourceOffset = vec2.rotate(sourceOffset, angle)

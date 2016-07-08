@@ -16,7 +16,7 @@ function init(args)
 end
 
 function update(dt)
-  if util.trackTarget(entity.configParameter("shoot.seedShotDistance")) then
+  if util.trackTarget(config.getParameter("shoot.seedShotDistance")) then
     self.state.pickState({ targetId = self.targetId })
   end
   self.state.update(dt)
@@ -57,8 +57,8 @@ function shootState.enterWith(args)
     targetId = args.targetId,
     targetPosition = targetPosition,
     shotFired = false,
-    timer = entity.configParameter("shoot.fireTime"),
-    recoilTimer = entity.configParameter("shoot.recoilTime"),
+    timer = config.getParameter("shoot.fireTime"),
+    recoilTimer = config.getParameter("shoot.recoilTime"),
   }
 end
 
@@ -75,7 +75,7 @@ function shootState.update(dt, stateData)
       }
       local oldTid = self.targetId
       self.targetId = nil
-      if util.trackTarget(entity.configParameter("shoot.pollenShotDistance")) then
+      if util.trackTarget(config.getParameter("shoot.pollenShotDistance")) then
          --entity.setFireDirection({0, 0}, direction)
          --entity.startFiring("pollen")
       else

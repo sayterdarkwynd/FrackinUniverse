@@ -18,7 +18,7 @@ function init()
   self.skillOptions = {}
   self.noOptionCount = 0
 
-  self.aggressive = entity.configParameter("aggressive", false)
+  self.aggressive = config.getParameter("aggressive", false)
 
   if capturepod ~= nil then
     capturepod.onInit()
@@ -39,21 +39,21 @@ function init()
 
   self.jumpTimer = 0
 
- local states = stateMachine.scanScripts(entity.configParameter("scripts"), "(%a+State)%.lua")
-  local attacks = stateMachine.scanScripts(entity.configParameter("scripts"), "(%a+Attack)%.lua")
+ local states = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+State)%.lua")
+  local attacks = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+Attack)%.lua")
   for _, attack in pairs(attacks) do
     table.insert(states, 1, attack)
   end
-  local specials = stateMachine.scanScripts(entity.configParameter("scripts"), "(%a+Special)%.lua")
+  local specials = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+Special)%.lua")
   for _, special in pairs(specials) do
     table.insert(states, 1, special)
   end
 
-  self.globalCooldown = entity.configParameter("globalCooldown", 0.75)
+  self.globalCooldown = config.getParameter("globalCooldown", 0.75)
   self.skillCooldownTimers = {}
   self.skillParameters = {}
-  for _, skillName in pairs(entity.configParameter("skills")) do
-    local params = entity.configParameter(skillName)
+  for _, skillName in pairs(config.getParameter("skills")) do
+    local params = config.getParameter(skillName)
 
     --create generic attacks from factories
     if params and params.factory then
@@ -210,11 +210,11 @@ function loadSkillParameters(skillName)
   -- world.logInfo("%s %s loading parameters for skill %s", entity.type(), entity.id(), skillName)
   if type(_ENV[skillName].loadSkillParameters) == "function" then
     return _ENV[skillName].loadSkillParameters()
-  elseif entity.configParameter(skillName) then
-    local params = entity.configParameter(skillName)
+  elseif config.getParameter(skillName) then
+    local params = config.getParameter(skillName)
 
-    local xAdjust = entity.configParameter("projectileSourcePosition", {-5.38, -1.75,})[1]
-    local yAdjust = -(mcontroller.boundBox()[2] + 2.5) + entity.configParameter("projectileSourcePosition", {-5.38, -1.75,})[2]
+    local xAdjust = config.getParameter("projectileSourcePosition", {-5.38, -1.75,})[1]
+    local yAdjust = -(mcontroller.boundBox()[2] + 2.5) + config.getParameter("projectileSourcePosition", {-5.38, -1.75,})[2]
 
     for i, rect in ipairs(params.startRects) do
       local startRect = normalizeRect(rect)
@@ -271,7 +271,7 @@ function damage(args)
 
   if args.damage > 0 then
     local entityId = entity.id()
-    local damageNotificationRegion = entity.configParameter("damageNotificationRegion", { -10, -4, 10, 4 })
+    local damageNotificationRegion = config.getParameter("damageNotificationRegion", { -10, -4, 10, 4 })
     world.entityQuery(
       vec2.add({ damageNotificationRegion[1], damageNotificationRegion[2] }, self.position),
       vec2.add({ damageNotificationRegion[3], damageNotificationRegion[4] }, self.position),
@@ -298,7 +298,7 @@ function setGroundDirection(groundDirection, immediateRotation)
   if immediateRotation == nil then immediateRotation = false end
 
   self.groundDirection = groundDirection
-  self.groundChangeCooldownTimer = entity.configParameter("changeGroundCooldown")
+  self.groundChangeCooldownTimer = config.getParameter("changeGroundCooldown")
 
   local desiredAngle = math.atan(self.groundDirection[2], self.groundDirection[1]) + math.pi / 2
   entity.rotateGroup("all", -mcontroller.facingDirection() * desiredAngle, immediateRotation)
@@ -317,7 +317,7 @@ end
 --------------------------------------------------------------------------------
 function boundingBox()
   local position = mcontroller.position()
-  local bounds = entity.configParameter("metaBoundBox")
+  local bounds = config.getParameter("metaBoundBox")
   bounds[1] = position[1] + bounds[1]
   bounds[2] = position[2] + bounds[2]
   bounds[3] = position[1] + bounds[3]
@@ -401,11 +401,11 @@ function crawl(direction, run)
   local moveSpeed = movementParameters.walkSpeed
   if run then moveSpeed = movementParameters.runSpeed end
   if self.groundDirection[1] ~= 0 then
-    moveSpeed = moveSpeed * entity.configParameter("wallWalkSpeedMultiplier")
+    moveSpeed = moveSpeed * config.getParameter("wallWalkSpeedMultiplier")
   end
 
   if self.groundChangeCooldownTimer > 0 then
-    moveSpeed = moveSpeed * entity.configParameter("cornerWalkSpeedMultiplier")
+    moveSpeed = moveSpeed * config.getParameter("cornerWalkSpeedMultiplier")
   end
 
   --util.debugLine(mcontroller.position(), vec2.add(mcontroller.position(), vec2.mul(self.groundDirection, 3)), "blue")
@@ -428,7 +428,7 @@ end
 function toGroundMovementMultiplier(heading)
   local bounds = boundingBox()
 
-  local toGroundMovementMultiplier = entity.configParameter("toGroundMovementMultiplier") or 0.5
+  local toGroundMovementMultiplier = config.getParameter("toGroundMovementMultiplier") or 0.5
 
   if self.groundChangeCooldownTimer <= 0 then
     -- Push away from the ground a bit if blocked by a one-block-high step
@@ -507,7 +507,7 @@ function move(delta, run, jumpThresholdX)
         doJump = true
       elseif (delta[2] >= 0 and willFall() and math.abs(delta[1]) > 7) then
         doJump = true
-      elseif (math.abs(delta[1]) < jumpThresholdX and delta[2] > entity.configParameter("jumpTargetDistance")) then
+      elseif (math.abs(delta[1]) < jumpThresholdX and delta[2] > config.getParameter("jumpTargetDistance")) then
         doJump = true
       end
 
@@ -652,7 +652,7 @@ end
 
 --------------------------------------------------------------------------------
 function checkTerritory()
-  local tdist = entity.configParameter("territoryDistance")
+  local tdist = config.getParameter("territoryDistance")
   local hdist = world.distance(self.position, storage.basePosition)[1]
 
   if hdist > tdist then
@@ -671,7 +671,7 @@ function track()
   if not world.entityExists(self.target) or (not inSkill() and self.targetHoldTimer <= 0) then
     setTarget(0)
   elseif inSkill() then
-    self.targetHoldTimer = entity.configParameter("targetHoldTime")
+    self.targetHoldTimer = config.getParameter("targetHoldTime")
   end
 
   if self.aggressive and self.target == 0 and self.targetSearchTimer <= 0 then
@@ -679,9 +679,9 @@ function track()
     -- depending on whether we are in our territory or not
     local targetId
     if self.territory == 0 then
-      targetId = entity.closestValidTarget(entity.configParameter("territorialTargetRadius"))
+      targetId = entity.closestValidTarget(config.getParameter("territorialTargetRadius"))
     else
-      targetId = entity.closestValidTarget(entity.configParameter("minimalTargetRadius"))
+      targetId = entity.closestValidTarget(config.getParameter("minimalTargetRadius"))
     end
 
     if targetId ~= 0 then
@@ -693,7 +693,7 @@ function track()
       setTarget(targetId)
     end
 
-    self.targetSearchTimer = entity.configParameter("targetSearchTime")
+    self.targetSearchTimer = config.getParameter("targetSearchTime")
   end
 
   if hasTarget() then
@@ -713,7 +713,7 @@ end
 --------------------------------------------------------------------------------
 function setTarget(target)
   if target ~= 0 then
-    self.targetHoldTimer = entity.configParameter("targetHoldTime")
+    self.targetHoldTimer = config.getParameter("targetHoldTime")
   end
 
   self.target = target
@@ -768,7 +768,7 @@ function updateSkillOptions()
           valid = false
         }
 
-        approachPoint = world.resolvePolyCollision(entity.configParameter("movementSettings.collisionPoly"), approachPoint, collisionTolerance)
+        approachPoint = world.resolvePolyCollision(config.getParameter("movementSettings.collisionPoly"), approachPoint, collisionTolerance)
         if approachPoint
            and pointWithinRect(approachPoint, startRect) --approachPoint hasn't been shifted out of the startRect
            and (params.requireLos == false or world.lineTileCollision(approachPoint, newTargetPosition) == false) --space is in LoS of target
@@ -781,7 +781,7 @@ function updateSkillOptions()
           --if that fails, try placing a collision poly at the bottom edge of the startRect
           if not canStand then
             local fallPoint = {approachPoint[1], startRect[2]}
-            local resolvedFallPoint = world.resolvePolyCollision(entity.configParameter("movementSettings.collisionPoly"), fallPoint, collisionTolerance)
+            local resolvedFallPoint = world.resolvePolyCollision(config.getParameter("movementSettings.collisionPoly"), fallPoint, collisionTolerance)
 
             if (resolvedFallPoint == nil) or math.abs(fallPoint[2] - resolvedFallPoint[2]) > 0.2 then
               if resolvedFallPoint and pointWithinRect(resolvedFallPoint, startRect) then approachPoint = resolvedFallPoint end
