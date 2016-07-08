@@ -13,7 +13,7 @@ if self.timer <= 0 then
 	return
   end
   
-  if world.liquidAt(entity.position()) == true and entity.configParameter("isn_liquidCollector") == false then return end
+  if world.liquidAt(entity.position()) == true and config.getParameter("isn_liquidCollector") == false then return end
   
   animator.setAnimationState("machineState", "active")
   

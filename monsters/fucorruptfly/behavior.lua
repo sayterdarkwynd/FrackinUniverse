@@ -60,7 +60,7 @@ end
 function idleState.update(dt, stateData)
   if not mcontroller.onGround() then
     if not self.sensors.idleLandSensor.collisionTrace.any(true) then
-      return true, entity.configParameter("idleCooldown")
+      return true, config.getParameter("idleCooldown")
     end
 
     mcontroller.controlFly({0,  -entity.flySpeed() / 2 })
@@ -68,7 +68,7 @@ function idleState.update(dt, stateData)
 
   stateData.timer = stateData.timer - dt
   if stateData.timer <= 0 then
-    return true, entity.configParameter("idleCooldown")
+    return true, config.getParameter("idleCooldown")
   end
 end
 

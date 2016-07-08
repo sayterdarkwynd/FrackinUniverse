@@ -14,15 +14,15 @@ function init()
   self.willFall = false
   self.hadTarge = false
 
-  self.queryTargetDistance = entity.configParameter("queryTargetDistance", 30)
-  self.trackTargetDistance = entity.configParameter("trackTargetDistance")
-  self.switchTargetDistance = entity.configParameter("switchTargetDistance")
-  self.keepTargetInSight = entity.configParameter("keepTargetInSight", true)
+  self.queryTargetDistance = config.getParameter("queryTargetDistance", 30)
+  self.trackTargetDistance = config.getParameter("trackTargetDistance")
+  self.switchTargetDistance = config.getParameter("switchTargetDistance")
+  self.keepTargetInSight = config.getParameter("keepTargetInSight", true)
 
   self.targets = {}
 
   --Non-combat states
-  local states = stateMachine.scanScripts(entity.configParameter("scripts"), "(%a+State)%.lua")
+  local states = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+State)%.lua")
   self.state = stateMachine.create(states)
 
   self.state.leavingState = function(stateName)
@@ -30,12 +30,12 @@ function init()
   end
 
   self.skillParameters = {}
-  for _, skillName in pairs(entity.configParameter("skills")) do
-    self.skillParameters[skillName] = entity.configParameter(skillName)
+  for _, skillName in pairs(config.getParameter("skills")) do
+    self.skillParameters[skillName] = config.getParameter(skillName)
   end
 
   --Load phases
-  self.phases = entity.configParameter("phases")
+  self.phases = config.getParameter("phases")
   setPhaseStates(self.phases)
 
   for skillName, params in pairs(self.skillParameters) do
@@ -292,7 +292,7 @@ function move(delta, run, jumpThresholdX)
         doJump = true
       elseif (delta[2] >= 0 and willFall() and math.abs(delta[1]) > 7) then
         doJump = true
-      elseif (math.abs(delta[1]) < jumpThresholdX and delta[2] > entity.configParameter("jumpTargetDistance")) then
+      elseif (math.abs(delta[1]) < jumpThresholdX and delta[2] > config.getParameter("jumpTargetDistance")) then
         doJump = true
       end
 

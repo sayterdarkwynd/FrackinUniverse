@@ -23,22 +23,22 @@ function wanderState.update(dt, stateData)
   local movement = { stateData.wanderDirection, 0 }
 
   if self.sensors.upSensors.collision.any(true) or world.liquidAt(object.toAbsolutePosition({0, -10})) then
-    movement[2] = entity.configParameter("wanderRiseSpeed")
+    movement[2] = config.getParameter("wanderRiseSpeed")
   elseif self.sensors.downSensors.collision.any(true) then
-    movement[2] = -entity.configParameter("wanderGlideSpeed")
+    movement[2] = -config.getParameter("wanderGlideSpeed")
   elseif stateData.rising then
     stateData.phaseTimer = stateData.phaseTimer - dt
 
     animator.setAnimationState("movement", "flying")
 
     if stateData.phaseTimer > 0 or self.sensors.groundSensors.collisionTrace[4].value then
-      movement[2] = entity.configParameter("wanderRiseSpeed")
+      movement[2] = config.getParameter("wanderRiseSpeed")
 
       --Avoid ceiling
       for i, ceilingSensorIndex in ipairs({ 3, 2, 1 }) do
         local sensor = self.sensors.ceilingSensors.collisionTrace[ceilingSensorIndex]
         if sensor.value then
-          movement[2] = movement[2] - 0.6 * entity.configParameter("wanderRiseSpeed")
+          movement[2] = movement[2] - 0.6 * config.getParameter("wanderRiseSpeed")
         end
       end
     else
@@ -56,9 +56,9 @@ function wanderState.update(dt, stateData)
     end
 
     if stateData.phaseTimer > 0 and not self.sensors.groundSensors.collisionTrace[3].value then
-      movement[2] = -entity.configParameter("wanderGlideSpeed")
+      movement[2] = -config.getParameter("wanderGlideSpeed")
     else
-      if math.random() <= entity.configParameter("wanderEndChance") then
+      if math.random() <= config.getParameter("wanderEndChance") then
         mcontroller.controlFly(movement, true)
         return true, 0.5
       else
@@ -69,7 +69,7 @@ function wanderState.update(dt, stateData)
   end
 
   movement = vec2.add(movement, wanderState.calculateSeparationMovement())
-  movement = vec2.mul(movement, mcontroller.baseParameters().flySpeed * entity.configParameter("wanderSpeedMultiplier"))
+  movement = vec2.mul(movement, mcontroller.baseParameters().flySpeed * config.getParameter("wanderSpeedMultiplier"))
 
   mcontroller.controlFly(movement, true)
 

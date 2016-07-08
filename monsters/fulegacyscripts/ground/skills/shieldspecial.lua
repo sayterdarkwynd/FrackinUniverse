@@ -31,7 +31,7 @@ function shieldSpecial.onUpdate(dt)
   --Regenerate shield when we haven't taken damage for a while
   if status.resource("shieldHealth") < shieldSpecial.lastShieldHealth then
     status.removeEphemeralEffect("shieldregen")
-    shieldSpecial.regenCooldown = entity.configParameter("shieldSpecial.regenCooldown")
+    shieldSpecial.regenCooldown = config.getParameter("shieldSpecial.regenCooldown")
   elseif shieldSpecial.regenCooldown <= 0 and status.resource("shieldHealth") < status.stat("maxShield") then
     status.addEphemeralEffect("shieldregen")
   end
@@ -47,18 +47,18 @@ end
 
 function shieldSpecial.activateShield()
   if shieldSpecial.activate then
-    shieldSpecial.duration = entity.configParameter("shieldSpecial.shieldTime")
+    shieldSpecial.duration = config.getParameter("shieldSpecial.shieldTime")
   end
 
   shieldSpecial.activate = false
   status.addEphemeralEffect("staticshield")
-  self.skillCooldownTimers["shieldSpecial"] = entity.configParameter("shieldSpecial.cooldownTime")
+  self.skillCooldownTimers["shieldSpecial"] = config.getParameter("shieldSpecial.cooldownTime")
 end
 
 function shieldSpecial.deactivateShield()
   status.removeEphemeralEffect("staticshield")
   status.removeEphemeralEffect("shieldregen")
   if self.skillCooldownTimers["shieldSpecial"] <= 0 then
-    self.skillCooldownTimers["shieldSpecial"] = entity.configParameter("shieldSpecial.cooldownTime")
+    self.skillCooldownTimers["shieldSpecial"] = config.getParameter("shieldSpecial.cooldownTime")
   end
 end

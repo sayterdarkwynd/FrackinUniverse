@@ -9,7 +9,7 @@ function approachState.enter()
 end
 
 function approachState.enteringState(stateData)
-  stateData.prepTimer = entity.configParameter("approachTime", 4.0)
+  stateData.prepTimer = config.getParameter("approachTime", 4.0)
   stateData.lastDirection = mcontroller.facingDirection()
 
   animator.setAnimationState("movement", "run")

@@ -47,7 +47,7 @@ function stompAttack.run(stateData)
 
   local entityId = entity.id()
   local power = stompAttack.baseDamage * entity.level() / 2
-  local bounds = entity.configParameter("metaBoundBox")
+  local bounds = config.getParameter("metaBoundBox")
   world.spawnProjectile("defensiveexplosion", object.toAbsolutePosition({ bounds[1] - stompAttack.projectileOffsetX, bounds[2] }), entityId, { -1, 0 }, false, { power = power })
   world.spawnProjectile("defensiveexplosion", object.toAbsolutePosition({ bounds[3] + stompAttack.projectileOffsetX, bounds[2] }), entityId, { 1, 0 }, false, { power = power })
 

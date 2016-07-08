@@ -36,7 +36,7 @@ end
 
 function isn_hasRequiredPower()
 	local power = isn_getCurrentPowerInput(true)
-	local requirement = entity.configParameter("isn_requiredPower")
+	local requirement = config.getParameter("isn_requiredPower")
 	if power == nil then return false end
 	if requirement == nil then return true end
 	
@@ -45,17 +45,17 @@ function isn_hasRequiredPower()
 end
 
 function isn_canSupplyPower()
-	if entity.configParameter("isn_powerSupplier") == true then return true
+	if config.getParameter("isn_powerSupplier") == true then return true
 	else return false end
 end
 
 function isn_canRecievePower()
-	if entity.configParameter("isn_powerReciever") == true then return true
+	if config.getParameter("isn_powerReciever") == true then return true
 	else return false end
 end
 
 function isn_doesNotConsumePower()
-	if entity.configParameter("isn_freePower") == true then return true
+	if config.getParameter("isn_freePower") == true then return true
 	else return false end
 end
 

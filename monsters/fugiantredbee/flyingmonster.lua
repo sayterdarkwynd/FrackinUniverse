@@ -6,7 +6,7 @@ function init()
   self.target = 0
   self.toTarget = {0, 0}
 
-  self.aggressive = entity.configParameter("aggressive", false)
+  self.aggressive = config.getParameter("aggressive", false)
   setAggressive(false, false)
 
   self.targetSearchTimer = 0
@@ -17,15 +17,15 @@ function init()
 
   self.debug = false
 
-  local scripts = entity.configParameter("scripts")
+  local scripts = config.getParameter("scripts")
 
   local states = stateMachine.scanScripts(scripts, "(%a+State)%.lua")
   self.state = stateMachine.create(states)
 
   local attacks = {}
   local attackStateTables = {}
-  for i, skillName in ipairs(entity.configParameter("skills")) do
-    local params = entity.configParameter(skillName)
+  for i, skillName in ipairs(config.getParameter("skills")) do
+    local params = config.getParameter(skillName)
 
     --create generic attacks from factories
     if params and params.factory then
@@ -57,11 +57,11 @@ function init()
   self.attackState.leavingState = function(state)
     setAggressive(false)
     entity.setActiveSkillName(nil)
-    self.attackCooldownTimer = entity.configParameter("attackCooldownTime")
+    self.attackCooldownTimer = config.getParameter("attackCooldownTime")
   end
 
   entity.setDeathSound("deathPuff")
-  entity.setDeathParticleBurst(entity.configParameter("deathParticles"))
+  entity.setDeathParticleBurst(config.getParameter("deathParticles"))
 
   mcontroller.controlFace(util.randomDirection())
   animator.setAnimationState("movement", "flying")
@@ -85,7 +85,7 @@ function setAggressive(enabled)
     entity.setDamageOnTouch(true)
     self.aggressive = true
   else
-    entity.setDamageOnTouch(entity.configParameter("alwaysDamageOnTouch", false))
+    entity.setDamageOnTouch(config.getParameter("alwaysDamageOnTouch", false))
     entity.setAggressive(self.aggressive)
   end
 end
@@ -122,7 +122,7 @@ function update(dt)
     -- Attacks can interrupt any normal state
     if self.target ~= 0 then
       if attacking() then
-        local attackMaxDistance = entity.configParameter("attackMaxDistance", math.huge)
+        local attackMaxDistance = config.getParameter("attackMaxDistance", math.huge)
 
         if world.magnitude(self.toTarget) > attackMaxDistance then
           self.attackState.endState()
@@ -130,7 +130,7 @@ function update(dt)
           self.attackState.update(dt)
         end
       else
-        local attackStartDistance = entity.configParameter("attackStartDistance")
+        local attackStartDistance = config.getParameter("attackStartDistance")
       local atksnd = entity.randomizeParameter("attackSound") 
       if atksnd ~= nil and entity.hasSound(atksnd) then entity.playSound(atksnd) end
         if world.magnitude(self.toTarget) <= attackStartDistance and self.attackCooldownTimer <= 0 then
@@ -178,8 +178,8 @@ function trackTarget()
   end
 
   if self.aggressive and self.target == 0 and self.targetSearchTimer <= 0 then
-    setTarget(entity.closestValidTarget(entity.configParameter("targetRadius")))
-    self.targetSearchTimer = entity.configParameter("targetSearchTime")
+    setTarget(entity.closestValidTarget(config.getParameter("targetRadius")))
+    self.targetSearchTimer = config.getParameter("targetSearchTime")
   end
 
   if self.target == 0 then
@@ -191,13 +191,13 @@ end
 
 function setTarget(target)
   if target ~= 0 then
-    self.targetHoldTimer = entity.configParameter("targetHoldTime")
+    self.targetHoldTimer = config.getParameter("targetHoldTime")
 
     if self.target ~= target then
       entity.playSound("turnHostile")
 
       -- Don't attack immediately when turning aggressive
-      self.attackCooldownTimer = entity.configParameter("attackCooldownTime")
+      self.attackCooldownTimer = config.getParameter("attackCooldownTime")
     end
   end
 

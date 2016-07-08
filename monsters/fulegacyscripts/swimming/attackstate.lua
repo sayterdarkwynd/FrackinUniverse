@@ -5,7 +5,7 @@ function attackState.enter()
     return nil
   end
 
-  return { timer = entity.configParameter("attackApproachTime"), stage = "approach" }
+  return { timer = config.getParameter("attackApproachTime"), stage = "approach" }
 end
 
 function attackState.enteringState(stateData)
@@ -21,10 +21,10 @@ function attackState.update(dt, stateData)
 
   if stateData.stage == "approach" then
     move(toTarget, true)
-    if vec2.mag(toTarget) <= entity.configParameter("attackStartDistance") then
+    if vec2.mag(toTarget) <= config.getParameter("attackStartDistance") then
       -- world.logInfo("winding up...")
       stateData.stage = "windup"
-      stateData.timer = entity.configParameter("attackWindupTime")
+      stateData.timer = config.getParameter("attackWindupTime")
     end
   elseif stateData.stage == "windup" then
     animator.setAnimationState("movement", "swimSlow")
@@ -34,14 +34,14 @@ function attackState.update(dt, stateData)
       stateData.stage = "charge"
       animator.setAnimationState("attack", "melee")
       stateData.chargeDirection = toTarget
-      stateData.timer = entity.configParameter("attackChargeTime")
+      stateData.timer = config.getParameter("attackChargeTime")
     end
   elseif stateData.stage == "charge" then
     if collides("blockedSensors") then return true end
 
     if entity.animationState("attack") == "melee" then
       entity.setDamageOnTouch(true)
-      mcontroller.controlParameters({flySpeed = entity.configParameter("attackChargeSpeed")})
+      mcontroller.controlParameters({flySpeed = config.getParameter("attackChargeSpeed")})
       move(stateData.chargeDirection, true, true)
     else
       entity.setDamageOnTouch(false)

@@ -1,7 +1,7 @@
 function init(virtual)
 	if virtual == true then return end
 	object.setInteractive(true)
-	if storage.frequencies == nil then storage.frequencies = entity.configParameter("isn_baseFrequencies") end
+	if storage.frequencies == nil then storage.frequencies = config.getParameter("isn_baseFrequencies") end
 	if storage.currentconfig == nil then storage.currentconfig = storage.frequencies["isn_miningvendor"] end
 	if storage.currentkey == nil then storage.currentkey = "isn_miningvendor" end
 	if storage.tableindex == nil then storage.tableindex = 1 end
@@ -32,7 +32,7 @@ function onInteraction(args)
 		end
 		
 		local tradingConfig = { config = storage.currentconfig, recipes = { } }
-		for key, value in pairs(entity.configParameter(storage.currentkey)) do
+		for key, value in pairs(config.getParameter(storage.currentkey)) do
 			local recipe = { input = { { name = "money", count = value } }, output = { name = key } }
 			table.insert(tradingConfig.recipes, recipe)
 		end
@@ -43,7 +43,7 @@ end
 function update(dt)
 	if isn_hasRequiredPower() == true then 
 	  animator.setAnimationState("anim", "on")
-	  entity.setLightColor(entity.configParameter("lightColor", {30, 50, 90}))
+	  entity.setLightColor(config.getParameter("lightColor", {30, 50, 90}))
 	else 
 	  animator.setAnimationState("anim", "off")
 	  entity.setLightColor({0, 0, 0, 0})

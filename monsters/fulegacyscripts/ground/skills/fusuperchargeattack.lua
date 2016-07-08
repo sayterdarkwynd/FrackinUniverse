@@ -12,7 +12,7 @@ function fuSuperChargeAttack.enter()
   mcontroller.controlFace(fuSuperChargeAttackDirection)
 
   return {
-    windupTime = entity.configParameter("fuSuperChargeAttack.windupTime"),
+    windupTime = config.getParameter("fuSuperChargeAttack.windupTime"),
     winddownTime = 0,
     fuSuperChargeAttackDirection = fuSuperChargeAttackDirection
   }
@@ -28,7 +28,7 @@ end
 function fuSuperChargeAttack.update(dt, stateData)
   if not canContinueSkill() then return true end
 
-  mcontroller.controlParameters({runSpeed=mcontroller.baseParameters().runSpeed + entity.configParameter("fuSuperChargeAttack.speedBonus")})
+  mcontroller.controlParameters({runSpeed=mcontroller.baseParameters().runSpeed + config.getParameter("fuSuperChargeAttack.speedBonus")})
 
   if stateData.windupTime > 0 then
     stateData.windupTime = stateData.windupTime - dt
@@ -42,10 +42,10 @@ function fuSuperChargeAttack.update(dt, stateData)
     if isBlocked() then
       animator.setAnimationState("movement", "idle")
     else
-      if 2 * stateData.winddownTime > entity.configParameter("fuSuperChargeAttack.winddownTime") / 3 then
+      if 2 * stateData.winddownTime > config.getParameter("fuSuperChargeAttack.winddownTime") / 3 then
         animator.setAnimationState("movement", "charge")
         moveX(stateData.fuSuperChargeAttackDirection, true)
-      elseif stateData.winddownTime > entity.configParameter("fuSuperChargeAttack.winddownTime") / 3 then
+      elseif stateData.winddownTime > config.getParameter("fuSuperChargeAttack.winddownTime") / 3 then
         animator.setAnimationState("movement", "walk")
         moveX(stateData.fuSuperChargeAttackDirection, true)
       else
@@ -65,29 +65,29 @@ function fuSuperChargeAttack.update(dt, stateData)
       entity.playSound("chargeCrash")
 
       local crashTiles = {}
-      local basePos = entity.configParameter("projectileSourcePosition", {0, 0})
+      local basePos = config.getParameter("projectileSourcePosition", {0, 0})
       for xOffset = 2, 3 do
         for yOffset = -1, 1 do
           table.insert(crashTiles, object.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
         end
       end
-      world.damageTiles(crashTiles, "foreground", object.toAbsolutePosition({10, 0}), "plantish", entity.configParameter("fuSuperChargeAttack.crashDamageAmount"))
+      world.damageTiles(crashTiles, "foreground", object.toAbsolutePosition({10, 0}), "plantish", config.getParameter("fuSuperChargeAttack.crashDamageAmount"))
 
-      self.state.pickState({stun=true,duration=entity.configParameter("fuSuperChargeAttack.crashStunTime")})
+      self.state.pickState({stun=true,duration=config.getParameter("fuSuperChargeAttack.crashStunTime")})
       return true
     end
 
     if entity.animationState("attack") ~= "fuSuperChargeAttack" then
-      if math.abs(self.toTarget[1]) < entity.configParameter("fuSuperChargeAttack.attackDistance") then
+      if math.abs(self.toTarget[1]) < config.getParameter("fuSuperChargeAttack.attackDistance") then
         animator.setAnimationState("attack", "charge")
       elseif self.toTarget[1] * mcontroller.facingDirection() > 0 then
         animator.setAnimationState("attack", "charge")
       else
-        stateData.winddownTime = entity.configParameter("fuSuperChargeAttack.winddownTime")
+        stateData.winddownTime = config.getParameter("fuSuperChargeAttack.winddownTime")
       end
     else
-      if math.abs(self.toTarget[1]) > entity.configParameter("fuSuperChargeAttack.attackDistance") then
-        stateData.winddownTime = entity.configParameter("fuSuperChargeAttack.winddownTime")
+      if math.abs(self.toTarget[1]) > config.getParameter("fuSuperChargeAttack.attackDistance") then
+        stateData.winddownTime = config.getParameter("fuSuperChargeAttack.winddownTime")
       end
     end
   end

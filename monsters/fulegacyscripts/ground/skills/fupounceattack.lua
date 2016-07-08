@@ -1,7 +1,7 @@
 fuPounceAttack = {}
 
 function fuPounceAttack.loadSkillParameters()
-  local params = entity.configParameter("fuPounceAttack")
+  local params = config.getParameter("fuPounceAttack")
 
   local jumpSpeed = fuPounceAttack.jumpSpeed()
   local maxJumpDistance = 0.8 * ( (jumpSpeed * jumpSpeed * 0.7071) / (world.gravity(mcontroller.position()) * 1.5) )
@@ -21,7 +21,7 @@ function fuPounceAttack.loadSkillParameters()
 end
 
 function fuPounceAttack.jumpSpeed()
-  return math.min(mcontroller.baseParameters().airJumpProfile.jumpSpeed * entity.configParameter("fuPounceAttack.jumpSpeedMultiplier"), entity.configParameter("fuPounceAttack.jumpSpeedMax"))
+  return math.min(mcontroller.baseParameters().airJumpProfile.jumpSpeed * config.getParameter("fuPounceAttack.jumpSpeedMultiplier"), config.getParameter("fuPounceAttack.jumpSpeedMax"))
 end
 
 function fuPounceAttack.enter()
@@ -31,7 +31,7 @@ function fuPounceAttack.enter()
 
   return {
     winddownTime = 0.0,
-    windupTime = entity.configParameter("fuPounceAttack.windupTime"),
+    windupTime = config.getParameter("fuPounceAttack.windupTime"),
     followThrough = false
   }
 end
@@ -56,7 +56,7 @@ function fuPounceAttack.update(dt, stateData)
     setAggressive(true, true)
     animator.setAnimationState("movement", "jump")
 
-    stateData.pounceJumpHoldTime = entity.configParameter("fuPounceAttack.jumpHoldTime")
+    stateData.pounceJumpHoldTime = config.getParameter("fuPounceAttack.jumpHoldTime")
     stateData.pounceWasOffGround = false
     stateData.followThrough = true
 
@@ -81,7 +81,7 @@ function fuPounceAttack.update(dt, stateData)
     -- If the monster is on the ground and was off the ground, the attack is over
     if mcontroller.onGround() then
       if stateData.pounceWasOffGround then
-        stateData.winddownTime = entity.configParameter("fuPounceAttack.winddownTime")
+        stateData.winddownTime = config.getParameter("fuPounceAttack.winddownTime")
       end
     else
       stateData.pounceWasOffGround = true

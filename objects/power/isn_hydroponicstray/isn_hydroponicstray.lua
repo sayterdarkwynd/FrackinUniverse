@@ -11,7 +11,7 @@ function init(virtual)
 	if storage.fertSpeed3 == nil then storage.fertSpeed3 = false end
 	if storage.fertYield3 == nil then storage.fertYield3 = false end
 	if storage.yield == nil then storage.yield = 0 end
-	if storage.growthcap == nil then storage.growthcap = entity.configParameter("isn_growthCap") end
+	if storage.growthcap == nil then storage.growthcap = config.getParameter("isn_growthCap") end
 	if storage.activeConsumption == nil then storage.activeConsumption = false end
 	storage.seedslot = 1
 	storage.waterslot = 2
@@ -67,7 +67,7 @@ function isn_doWaterIntake()
 	local water = contents[storage.waterslot]
 	if water == nil then return false end
 	
-	for key, value in pairs(entity.configParameter("isn_waterInputs")) do
+	for key, value in pairs(config.getParameter("isn_waterInputs")) do
 		if water.name == key then
 			storage.water = value
 			world.containerConsume(entity.id(), {name = water.name, count = 1, data={}})
@@ -85,7 +85,7 @@ function isn_doSeedIntake()
 	local seed = contents[storage.seedslot]
 	if seed == nil then return false end
 	
-	for key, value in pairs(entity.configParameter("isn_seedOutputs")) do
+	for key, value in pairs(config.getParameter("isn_seedOutputs")) do
 		if seed.name == key then
 			storage.currentseed = key
 			storage.currentcrop = value
@@ -111,7 +111,7 @@ function isn_doFertIntake()
 	local fert = contents[storage.fertslot]
 	if fert == nil then return false end
 	
-	for key, value in pairs(entity.configParameter("isn_fertInputs")) do
+	for key, value in pairs(config.getParameter("isn_fertInputs")) do
 		if fert.name == key then
 			if value == 1 then
 				storage.fertSpeed = true

@@ -22,7 +22,7 @@ function update(dt)
     entity.setLightColor({0, 0, 0, 0})
     return
   end
-  entity.setLightColor(entity.configParameter("lightColor", {100, 176, 191}))	
+  entity.setLightColor(config.getParameter("lightColor", {100, 176, 191}))	
 	if itemForUpgrade ~= nil and upgradebleItemsList[root.itemType(itemForUpgrade.name)] and itemForUpgrade.count ~= nil and itemForUpgrade.count == 1 then
 		local isUpgraded = false -- flag, upgrade is not possible or while not done
 		world.logInfo("Trying to upgrade. Name is '" .. itemForUpgrade.name .. "'. root.itemType returns '" .. root.itemType(itemForUpgrade.name) .. "'.")

@@ -79,7 +79,7 @@ function starspawnBlinkAttack.findDestination(targetPosition)
 
   local collisionPoly = mcontroller.collisionPoly()
   local direction = util.toDirection(self.toTarget[1])
-  local offsetXRange = entity.configParameter("starspawnBlinkAttack.offsetXRange")
+  local offsetXRange = config.getParameter("starspawnBlinkAttack.offsetXRange")
 
   for offsetX = offsetXRange[2], offsetXRange[1], -1 do
     local destinationPosition = {targetPosition[1] + direction * offsetX, targetPosition[2]}

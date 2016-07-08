@@ -28,5 +28,5 @@ end
 
 function applyGel(gel_position)
 	if not world.tileIsOccupied(gel_position,true,false) then return false end
-	world.placeMod(gel_position,"foreground",entity.configParameter("modToPlace"),nil,false)
+	world.placeMod(gel_position,"foreground",config.getParameter("modToPlace"),nil,false)
 end

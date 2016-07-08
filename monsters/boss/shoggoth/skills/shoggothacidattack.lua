@@ -7,13 +7,13 @@ function shoggothAcidAttack.enter()
   end
 
   return {
-    timer = entity.configParameter("shoggothAcidAttack.skillTime", 16),
-    damagePerSecond = entity.configParameter("shoggothAcidAttack.damagePerSecond", 1600),
-    distanceRange = entity.configParameter("shoggothAcidAttack.distanceRange"),
-    winddownTimer = entity.configParameter("shoggothAcidAttack.winddownTime"),
-    windupTimer = entity.configParameter("shoggothAcidAttack.windupTime"),
-    periodTimer = entity.configParameter("shoggothAcidAttack.periodTime"),
-    attacksLeft = entity.configParameter("shoggothAcidAttack.attacksLeft"),
+    timer = config.getParameter("shoggothAcidAttack.skillTime", 16),
+    damagePerSecond = config.getParameter("shoggothAcidAttack.damagePerSecond", 1600),
+    distanceRange = config.getParameter("shoggothAcidAttack.distanceRange"),
+    winddownTimer = config.getParameter("shoggothAcidAttack.winddownTime"),
+    windupTimer = config.getParameter("shoggothAcidAttack.windupTime"),
+    periodTimer = config.getParameter("shoggothAcidAttack.periodTime"),
+    attacksLeft = config.getParameter("shoggothAcidAttack.attacksLeft"),
     --initialPeriodTime = periodTimer,
     spitting = false
   }
@@ -51,7 +51,7 @@ function shoggothAcidAttack.update(dt, stateData)
   else
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
-      if stateData.windupTimer == entity.configParameter("shoggothAcidAttack.windupTime") then
+      if stateData.windupTimer == config.getParameter("shoggothAcidAttack.windupTime") then
       animator.setAnimationState("movement", "idle")
       end
       stateData.windupTimer = stateData.windupTimer - dt
@@ -81,9 +81,9 @@ function shoggothAcidAttack.update(dt, stateData)
 end
 
 function shoggothAcidAttack.spit(direction)
-  local projectileType = entity.configParameter("shoggothAcidAttack.projectile.type")
-  local projectileConfig = entity.configParameter("shoggothAcidAttack.projectile.config")
-  local projectileOffset = entity.configParameter("shoggothAcidAttack.projectile.offset")
+  local projectileType = config.getParameter("shoggothAcidAttack.projectile.type")
+  local projectileConfig = config.getParameter("shoggothAcidAttack.projectile.config")
+  local projectileOffset = config.getParameter("shoggothAcidAttack.projectile.offset")
   local direction2 = vec2.add(direction, {0, 10})
   local direction3 = vec2.add(direction, {0, -10})
 

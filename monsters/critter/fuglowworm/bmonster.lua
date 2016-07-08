@@ -19,7 +19,7 @@ function init()
   end
   BData:setPosition("spawn", storage.spawnPosition)
 
-  self.behavior = BTree:new(entity.configParameter("behavior"))
+  self.behavior = BTree:new(config.getParameter("behavior"))
 
   self.collisionPoly = mcontroller.collisionPoly()
 
@@ -45,7 +45,7 @@ function update(dt)
     collisionPoly = self.collisionPoly  
   })
 
-  if entity.configParameter("lockFacingDirection") then
+  if config.getParameter("lockFacingDirection") then
     mcontroller.controlFace(1)
   end
 end
@@ -121,7 +121,7 @@ function rotate(args, output)
     else
       angle = BData:getNumber(args.angle)
     end
-    angle = angle + entity.configParameter("rotationOffset", 0)
+    angle = angle + config.getParameter("rotationOffset", 0)
 
     entity.rotateGroup("all", angle, args.immediate)
     rotatePoly(entity.currentRotationAngle("all") or 0)

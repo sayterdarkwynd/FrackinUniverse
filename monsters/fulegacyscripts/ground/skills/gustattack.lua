@@ -43,7 +43,7 @@ function gustAttack.run(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "shooting")
 
-  local bounds = entity.configParameter("metaBoundBox")
+  local bounds = config.getParameter("metaBoundBox")
   local height = math.abs(bounds[2]) + math.abs(bounds[4])
 
   -- Make sure to stop all x-movement so the monster doesn't run into its own

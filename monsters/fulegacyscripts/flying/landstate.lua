@@ -9,7 +9,7 @@ function landState.enter()
     return nil
   end
 
-  if entity.closestValidTarget(entity.configParameter("landDisturbDistance")) ~= 0 then
+  if entity.closestValidTarget(config.getParameter("landDisturbDistance")) ~= 0 then
     return nil
   end
 
@@ -19,7 +19,7 @@ end
 function landState.update(dt, stateData)
   if hasTarget() then return true end
 
-  if entity.closestValidTarget(entity.configParameter("landDisturbDistance")) ~= 0 then
+  if entity.closestValidTarget(config.getParameter("landDisturbDistance")) ~= 0 then
     return true, entity.randomizeParameterRange("landCooldownTimeRange")
   end
 
@@ -32,7 +32,7 @@ function landState.update(dt, stateData)
     end
   else
     animator.setAnimationState("movement", "flying")
-    mcontroller.controlFly({ 0, -mcontroller.baseParameters().flySpeed * entity.configParameter("wanderSpeedMultiplier") }, true)
+    mcontroller.controlFly({ 0, -mcontroller.baseParameters().flySpeed * config.getParameter("wanderSpeedMultiplier") }, true)
   end
 
   return false

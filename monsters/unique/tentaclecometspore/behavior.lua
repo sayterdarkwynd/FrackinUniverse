@@ -8,7 +8,7 @@ function init(args)
     animator.setAnimationState("movement", "idle")
   end
 
-  self.initialPauseTimer = entity.configParameter("initialPauseTime")
+  self.initialPauseTimer = config.getParameter("initialPauseTime")
 
   entity.setDeathParticleBurst("deathPoof")
   entity.setAggressive(true)
@@ -22,7 +22,7 @@ function main()
   if self.initialPauseTimer > 0 then
     self.initialPauseTimer = self.initialPauseTimer - dt
   else
-    if util.trackTarget(entity.configParameter("targetNoticeDistance")) then
+    if util.trackTarget(config.getParameter("targetNoticeDistance")) then
       self.state.pickState(self.targetId)
     end
 
@@ -35,7 +35,7 @@ function boundingBox(offset)
   local position = entity.position()
   if offset ~= nil then vec2.add(position, offset) end
 
-  local bounds = entity.configParameter("metaBoundBox")
+  local bounds = config.getParameter("metaBoundBox")
   return {
     bounds[1] + position[1],
     bounds[2] + position[2],
@@ -104,7 +104,7 @@ function attackState.enterWith(targetId)
   end
 
   return {
-    timer = entity.configParameter("attackTargetHoldTime"),
+    timer = config.getParameter("attackTargetHoldTime"),
     targetId = targetId,
     targetPosition = world.entityPosition(targetId),
   }
@@ -120,7 +120,7 @@ function attackState.update(dt, stateData)
 
   if entity.entityInSight(stateData.targetId) then
     stateData.targetPosition = targetPosition
-    stateData.timer = entity.configParameter("attackTargetHoldTime")
+    stateData.timer = config.getParameter("attackTargetHoldTime")
   else
     stateData.timer = stateData.timer - dt
   end

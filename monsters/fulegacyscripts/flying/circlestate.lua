@@ -7,9 +7,9 @@ function circleState.enter()
   if not hasTarget() then return nil end
 
   return {
-    timer = entity.configParameter("circleTime"),
+    timer = config.getParameter("circleTime"),
     a = entity.randomizeParameterRange("circleWidthRange"),
-    b = entity.configParameter("circleHeight"),
+    b = config.getParameter("circleHeight"),
     yOffset = entity.randomizeParameterRange("circleOffsetYRange")
   }
 end
@@ -27,7 +27,7 @@ function circleState.update(dt, stateData)
   -- Advance timer through to the next quarter of the circle if running
   -- in to an impedence, which will switch the direction
   if util.blockSensorTest("blockedSensors") then
-    stateData.timer = stateData.timer - entity.configParameter("circleTime") * 0.25
+    stateData.timer = stateData.timer - config.getParameter("circleTime") * 0.25
   end
 
   --Lower circle height if we're near ceiling
@@ -49,7 +49,7 @@ function circleState.update(dt, stateData)
   local toTarget = entity.distanceToEntity(self.target)
   toTarget[2] = toTarget[2] + stateData.yOffset * self.circleYOffsetFactor
 
-  local ratio = stateData.timer / entity.configParameter("circleTime")
+  local ratio = stateData.timer / config.getParameter("circleTime")
   local phase = math.pi * 2.0 * (1.0 - ratio)
 
   local x = stateData.a * math.cos(phase)
@@ -72,7 +72,7 @@ function circleState.update(dt, stateData)
 
   local destination = {
     self.position[1] + toTarget[1] + x,
-    self.position[2] + toTarget[2] + y + tiltRatio * entity.configParameter("circleTiltRadius")
+    self.position[2] + toTarget[2] + y + tiltRatio * config.getParameter("circleTiltRadius")
   }
 
   local movement = world.distance(destination, self.position)

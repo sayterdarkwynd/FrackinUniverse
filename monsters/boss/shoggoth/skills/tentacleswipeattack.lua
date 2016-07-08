@@ -9,11 +9,11 @@ function tentacleSwipeAttack.enter()
 
 
   return {
-    timer = entity.configParameter("tentacleSwipeAttack.skillTime", 16),
-    damagePerSecond = entity.configParameter("tentacleSwipeAttack.damagePerSecond", 1600),
-    distanceRange = entity.configParameter("tentacleSwipeAttack.distanceRange"),
-    winddownTimer = entity.configParameter("tentacleSwipeAttack.winddownTime"),
-    windupTimer = entity.configParameter("tentacleSwipeAttack.windupTime"),
+    timer = config.getParameter("tentacleSwipeAttack.skillTime", 16),
+    damagePerSecond = config.getParameter("tentacleSwipeAttack.damagePerSecond", 1600),
+    distanceRange = config.getParameter("tentacleSwipeAttack.distanceRange"),
+    winddownTimer = config.getParameter("tentacleSwipeAttack.winddownTime"),
+    windupTimer = config.getParameter("tentacleSwipeAttack.windupTime"),
     swiping = false
   }
 end
@@ -46,12 +46,12 @@ function tentacleSwipeAttack.update(dt, stateData)
   else
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
-      if stateData.windupTimer == entity.configParameter("tentacleSwipeAttack.windupTime") then
+      if stateData.windupTimer == config.getParameter("tentacleSwipeAttack.windupTime") then
       	animator.setAnimationState("movement", "swipe")
       end
       stateData.windupTimer = stateData.windupTimer - dt
     elseif stateData.winddownTimer > 0 then
-      if stateData.winddownTimer == entity.configParameter("tentacleSwipeAttack.winddownTime") then
+      if stateData.winddownTimer == config.getParameter("tentacleSwipeAttack.winddownTime") then
         tentacleSwipeAttack.swipe(targetDir)
       end
       stateData.winddownTimer = stateData.winddownTimer - dt
@@ -66,9 +66,9 @@ function tentacleSwipeAttack.update(dt, stateData)
 end
 
 function tentacleSwipeAttack.swipe(direction)
-  local projectileType = entity.configParameter("tentacleSwipeAttack.projectile.type")
-  local projectileConfig = entity.configParameter("tentacleSwipeAttack.projectile.config")
-  local projectileOffset = entity.configParameter("tentacleSwipeAttack.projectile.offset")
+  local projectileType = config.getParameter("tentacleSwipeAttack.projectile.type")
+  local projectileConfig = config.getParameter("tentacleSwipeAttack.projectile.config")
+  local projectileOffset = config.getParameter("tentacleSwipeAttack.projectile.offset")
   
   if projectileConfig.power then
     projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", entity.level())

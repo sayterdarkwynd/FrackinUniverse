@@ -65,7 +65,7 @@ function oreCheck()
 	if contents[1] == nil then return false end
 	if contents[1].name == currentinput then return true end
 	
-	for key, value in pairs(entity.configParameter("inputsToOutputs")) do
+	for key, value in pairs(config.getParameter("inputsToOutputs")) do
 		if key == contents[1].name then
 			storage.currentinput = key
 			storage.currentoutput = value
@@ -86,7 +86,7 @@ function hasBonusOutputs(checkname)
 	local contents = world.containerItems(entity.id())
 	if contents[1] == nil then return false end
 	
-	for key, value in pairs(entity.configParameter("bonusOutputs")) do
+	for key, value in pairs(config.getParameter("bonusOutputs")) do
 		if key == contents[1].name then
 			storage.bonusoutputtable = value
 			return true

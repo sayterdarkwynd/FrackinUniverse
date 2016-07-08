@@ -23,7 +23,7 @@ end
 
 --------------------------------------------------------------------------------
 function update(dt)
-  util.trackTarget(entity.configParameter("noticeDistance"))
+  util.trackTarget(config.getParameter("noticeDistance"))
   if self.targetId ~= nil and not attacking() then
     self.state.pickState(self.targetId)
   end
@@ -52,13 +52,13 @@ end
 
 --------------------------------------------------------------------------------
 function setSpawnDirection(direction)
-  local spawnVelocity = entity.configParameter("spawnVelocity")
+  local spawnVelocity = config.getParameter("spawnVelocity")
   mcontroller.setVelocity({ spawnVelocity[1] * direction, spawnVelocity[2] })
 end
 
 --------------------------------------------------------------------------------
 function poSize()
-  return entity.configParameter("poSize")
+  return config.getParameter("poSize")
 end
 
 --------------------------------------------------------------------------------
@@ -74,8 +74,8 @@ function move(delta, run)
   end
 
   if mcontroller.onGround() then
-    if delta[2] > entity.configParameter("largeJumpYThreshold") then
-      self.jumpHoldTime = entity.configParameter("largeHumpHoldTime")
+    if delta[2] > config.getParameter("largeJumpYThreshold") then
+      self.jumpHoldTime = config.getParameter("largeHumpHoldTime")
     else
       self.jumpHoldTime = 0
     end
@@ -123,7 +123,7 @@ function attackState.update(dt, stateData)
 
   if self.targetId == nil then
     stateData.timer = stateData.timer + dt
-    if stateData.timer > entity.configParameter("attackSearchTime") then
+    if stateData.timer > config.getParameter("attackSearchTime") then
       return true
     end
   end
