@@ -96,7 +96,7 @@ function init()
   end
 
   self.state.leavingState = function(stateName)
-    entity.setActiveSkillName(nil)
+    monster.setActiveSkillName(nil)
     if isSkillState(stateName) then
       setAggressive(true, false)
       for k,v in pairs(self.skillCooldownTimers) do
@@ -110,7 +110,7 @@ function init()
   end
 
   animator.setAnimationState("movement", "idle")
-  entity.setDeathParticleBurst("deathPoof")
+  monster.setDeathParticleBurst("deathPoof")
   
   self.debug = false
 end
@@ -149,7 +149,7 @@ function update(dt)
   local stunned = false
   for k, v in pairs(stuns) do
     stunned = true
-    entity.setAnimationRate(0)
+    animator.setAnimationRate(0)
     break
   end
   if not stunned then
@@ -157,7 +157,7 @@ function update(dt)
     for k, v in pairs(slows) do
       animSpeed = animSpeed * v
     end
-    entity.setAnimationRate(animSpeed)
+    animator.setAnimationRate(animSpeed)
   end
   
   if stunned then
@@ -275,7 +275,7 @@ function damage(args)
         includedTypes = {"monster"},
         withoutEntityId = entityId,
         callScript = "monsterDamaged",
-        callScriptArgs = { entityId, entity.seed(), args.sourceId }
+        callScriptArgs = { entityId, monster.seed(), args.sourceId }
       }
     )
 
@@ -297,7 +297,7 @@ function setGroundDirection(groundDirection, immediateRotation)
   self.groundChangeCooldownTimer = config.getParameter("changeGroundCooldown")
 
   local desiredAngle = math.atan(self.groundDirection[2], self.groundDirection[1]) + math.pi / 2
-  entity.rotateGroup("all", -mcontroller.facingDirection() * desiredAngle, immediateRotation)
+  animator.rotateGroup("all", -mcontroller.facingDirection() * desiredAngle, immediateRotation)
 
   return true
 end
@@ -340,9 +340,9 @@ end
 function controlFace(direction)
   mcontroller.controlFace(1)
   if direction < 0 then
-    entity.setGlobalTag("flipTag", "?flipx")
+    animator.setGlobalTag("flipTag", "?flipx")
   else
-    entity.setGlobalTag("flipTag", "")
+    animator.setGlobalTag("flipTag", "")
   end
 end
 
@@ -675,9 +675,9 @@ function track()
     -- depending on whether we are in our territory or not
     local targetId
     if self.territory == 0 then
-      targetId = entity.closestValidTarget(config.getParameter("territorialTargetRadius"))
+      targetId = util.closestValidTarget(config.getParameter("territorialTargetRadius"))
     else
-      targetId = entity.closestValidTarget(config.getParameter("minimalTargetRadius"))
+      targetId = util.closestValidTarget(config.getParameter("minimalTargetRadius"))
     end
 
     if targetId ~= 0 then
@@ -718,21 +718,21 @@ end
 --------------------------------------------------------------------------------
 function setAggressive(enabled, damageOnTouch)
   if enabled then
-    entity.setAggressive(true)
+    monster.setAggressive(true)
     self.aggressive = true
   else
-    entity.setAggressive(self.aggressive)
+    monster.setAggressive(self.aggressive)
     if not self.aggressive then
       damageOnTouch = false
     end
   end
 
   if damageOnTouch then
-    entity.setDamageOnTouch(true)
-    entity.setParticleEmitterActive("damage", true)
+    monster.setDamageOnTouch(true)
+    animator.setParticleEmitterActive("damage", true)
   else
-    entity.setDamageOnTouch(false)
-    entity.setParticleEmitterActive("damage", false)
+    monster.setDamageOnTouch(false)
+    animator.setParticleEmitterActive("damage", false)
   end
 end
 

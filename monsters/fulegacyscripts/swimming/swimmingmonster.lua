@@ -16,8 +16,8 @@ function init()
   self.rotation = 0
   animator.setAnimationState("movement", "swimSlow")
 
-  entity.setDeathSound("deathPuff")
-  entity.setDeathParticleBurst(config.getParameter("deathParticles"))
+  monster.setDeathSound("deathPuff")
+  monster.setDeathParticleBurst(config.getParameter("deathParticles"))
 
   script.setUpdateDelta(10)
 end
@@ -32,7 +32,7 @@ function damage(args)
 end
 
 function findTarget()
-  local targetId = entity.closestValidTarget(config.getParameter("targetSearchRadius"))
+  local targetId = util.closestValidTarget(config.getParameter("targetSearchRadius"))
   if targetValid(targetId) then setTarget(targetId) end
 end
 
@@ -146,6 +146,6 @@ function setBodyDirection(direction)
   else
     self.rotation = 0
   end
-  entity.rotateGroup("all", self.rotation)
+  animator.rotateGroup("all", self.rotation)
   mcontroller.setRotation(mcontroller.facingDirection() > 0 and self.rotation or -self.rotation)
 end

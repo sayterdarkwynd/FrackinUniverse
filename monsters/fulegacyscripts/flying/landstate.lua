@@ -9,7 +9,7 @@ function landState.enter()
     return nil
   end
 
-  if entity.closestValidTarget(config.getParameter("landDisturbDistance")) ~= 0 then
+  if util.closestValidTarget(config.getParameter("landDisturbDistance")) ~= 0 then
     return nil
   end
 
@@ -19,7 +19,7 @@ end
 function landState.update(dt, stateData)
   if hasTarget() then return true end
 
-  if entity.closestValidTarget(config.getParameter("landDisturbDistance")) ~= 0 then
+  if util.closestValidTarget(config.getParameter("landDisturbDistance")) ~= 0 then
     return true, entity.randomizeParameterRange("landCooldownTimeRange")
   end
 

@@ -12,10 +12,10 @@ function init()
   end
 
   self.state.leavingState = function(stateName)
-    entity.setAggressive(false)
+    monster.setAggressive(false)
   end
 
-  entity.setAggressive(false)
+  monster.setAggressive(false)
 end
 
 --------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ function attackState.enterWith(args)
 end
 
 function attackState.enteringState(stateData)
-  entity.setAggressive(true)
+  monster.setAggressive(true)
 end
 
 function attackState.update(dt, stateData)

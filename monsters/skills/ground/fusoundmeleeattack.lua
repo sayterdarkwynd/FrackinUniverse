@@ -22,7 +22,7 @@ function fuSoundMeleeAttack.enteringState(stateData)
       config.getParameter("projectileSourcePosition", {0, 0})[2] + config.getParameter("meleeProjectileOffset", {0, 0})[2]
     }
 
-  entity.setActiveSkillName("fuSoundMeleeAttack")
+  monster.setActiveSkillName("fuSoundMeleeAttack")
 end
 
 function fuSoundMeleeAttack.update(dt, stateData)
@@ -66,7 +66,7 @@ function fuSoundMeleeAttack.update(dt, stateData)
     local projectileStartPosition = object.toAbsolutePosition(stateData.projectileSourcePosition)
     local projectileName = config.getParameter("meleeProjectile") or config.getParameter("fuSoundMeleeAttack.projectile")
     local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * config.getParameter("fuSoundMeleeAttack.power")
-    entity.playSound("attack")
+    animator.playSound("attack")
     world.spawnProjectile(projectileName, projectileStartPosition, entity.id(), {mcontroller.facingDirection(), 0}, true, {speed = 7.0, power = power})
     stateData.didAttack = true
   end

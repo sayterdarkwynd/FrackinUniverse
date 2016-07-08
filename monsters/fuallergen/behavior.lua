@@ -10,8 +10,8 @@ function init(args)
     animator.setAnimationState("default", "idle")
   end
 
-  entity.setDamageOnTouch(true)
-  entity.setAggressive(true)
+  monster.setDamageOnTouch(true)
+  monster.setAggressive(true)
   animator.setAnimationState("default", "idle")
 end
 

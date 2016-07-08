@@ -34,8 +34,8 @@ function createRangedAttack(skillName)
     if not entity.entityInSight(self.target) then return true end
     if stateData.timer <= 0 then return true end
 
-    entity.setDamageOnTouch(false)
-    entity.setAggressive(true)
+    monster.setDamageOnTouch(false)
+    monster.setAggressive(true)
 
     animator.setAnimationState("movement", "flyingAttack")
 
@@ -53,7 +53,7 @@ function createRangedAttack(skillName)
     stateData.fireCooldown = stateData.fireCooldown - dt
 
     --don't fall!
-    entity.flyTo(stateData.basePosition, true)
+    monster.flyTo(stateData.basePosition, true)
 
     stateData.timer = stateData.timer - dt
     return false

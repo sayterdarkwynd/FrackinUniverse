@@ -24,7 +24,7 @@ function init()
   self.collisionPoly = mcontroller.collisionPoly()
 
   if entity.hasSound("deathPuff") then    
-    entity.setDeathSound("deathPuff")
+    monster.setDeathSound("deathPuff")
   end
   entity.setLightActive("glow1", true)
   self.debug = true
@@ -123,7 +123,7 @@ function rotate(args, output)
     end
     angle = angle + config.getParameter("rotationOffset", 0)
 
-    entity.rotateGroup("all", angle, args.immediate)
+    animator.rotateGroup("all", angle, args.immediate)
     rotatePoly(entity.currentRotationAngle("all") or 0)
 
     diff = ((entity.currentRotationAngle("all") - angle) + 3.14) % 6.28 - 3.14
@@ -143,7 +143,7 @@ function burstParticleEmitter(args, output)
 
   if args.emitter == nil then return false end
 
-  entity.burstParticleEmitter(args.emitter)
+  animator.burstParticleEmitter(args.emitter)
   return true
 end
 
@@ -155,7 +155,7 @@ function setParticleEmitterActive(args, output)
   })
   if args.emitter == nil then return false end
 
-  entity.setParticleEmitterActive(args.emitter, args.active)
+  animator.setParticleEmitterActive(args.emitter, args.active)
   return true
 end
 
@@ -167,7 +167,7 @@ function playSound(args, output)
 
   if args.sound == nil then return false end
 
-  entity.playSound(args.sound)
+  animator.playSound(args.sound)
   return true
 end
 

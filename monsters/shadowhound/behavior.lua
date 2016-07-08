@@ -11,8 +11,8 @@ function init(args)
     animator.setAnimationState("movement", entity.randomizeParameter("idleAnimations"))
   end
 
-  entity.setAggressive(false)
-  entity.setDeathParticleBurst("deathPoof")
+  monster.setAggressive(false)
+  monster.setDeathParticleBurst("deathPoof")
 
   capturepod.onInit()
 
@@ -137,10 +137,10 @@ function attackState.setAggressive(targetId)
   self.targetId = targetId
 
   if targetId ~= nil then
-    entity.setAggressive(true)
+    monster.setAggressive(true)
   else
     animator.setAnimationState("movement", "idle")
-    entity.setAggressive(false)
+    monster.setAggressive(false)
   end
 end
 
@@ -200,7 +200,7 @@ function captiveState.update(dt, stateData)
   if movement ~= 0 then
     self.movement.move(position, movement, true, stateData.running)
   else
-    local animation = entity.animationState("movement")
+    local animation = animator.animationState("movement")
     local playingIdleAnimation = false
     for _, idleAnimation in pairs(config.getParameter("idleAnimations")) do
       playingIdleAnimation = playingIdleAnimation or idleAnimation == animation

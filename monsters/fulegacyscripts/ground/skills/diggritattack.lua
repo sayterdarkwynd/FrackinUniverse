@@ -17,7 +17,7 @@ function digGritAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("digGritAttack")
+  monster.setActiveSkillName("digGritAttack")
 end
 
 --------------------------------------------------------------------------------

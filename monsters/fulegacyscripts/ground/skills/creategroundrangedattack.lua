@@ -59,7 +59,7 @@ function createRangedAttack(skillName)
       end
     end
 
-    entity.setActiveSkillName(skillName)
+    monster.setActiveSkillName(skillName)
   end
 
   function rangedAttack.update(dt, stateData)
@@ -116,7 +116,7 @@ function createRangedAttack(skillName)
   end
 
   function rangedAttack.aim(direction)
-    entity.rotateGroup("projectileAim", 0)
+    animator.rotateGroup("projectileAim", 0)
     mcontroller.controlFace(util.toDirection(direction[1]))
 
     local maxRotate = math.pi / 180 * 30
@@ -128,7 +128,7 @@ function createRangedAttack(skillName)
       rotateAmount = math.max(rotateAmount, -maxRotate)
     end
 
-    entity.rotateGroup("projectileAim", rotateAmount);
+    animator.rotateGroup("projectileAim", rotateAmount);
   end
 
   function rangedAttack.fire(direction)
@@ -146,11 +146,11 @@ function createRangedAttack(skillName)
 
     world.spawnProjectile(rangedAttack.pType, object.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
 
-    entity.playSound("rangedAttack")
+    animator.playSound("rangedAttack")
   end
 
   function rangedAttack.leavingState(stateData)
-    entity.rotateGroup("projectileAim", 0)
+    animator.rotateGroup("projectileAim", 0)
   end
 
   return rangedAttack

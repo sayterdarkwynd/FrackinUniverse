@@ -36,7 +36,7 @@ function fumechspiderAttack.enteringState(stateData)
       config.getParameter("projectileSourcePosition", {0, 0})[2]
     }
 
-  entity.setActiveSkillName("fumechspiderAttack")
+  monster.setActiveSkillName("fumechspiderAttack")
 end
 
 function fumechspiderAttack.update(dt, stateData)

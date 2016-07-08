@@ -5,7 +5,7 @@ function shoggothChargeAttack.enter()
   if not hasTarget() then
     return nil
   end
-  entity.setDamageOnTouch(true)
+  monster.setDamageOnTouch(true)
 
 
   return {
@@ -22,7 +22,7 @@ end
 function shoggothChargeAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
 
-  entity.setActiveSkillName("shoggothChargeAttack")
+  monster.setActiveSkillName("shoggothChargeAttack")
 end
 
 --------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ function shoggothChargeAttack.update(dt, stateData)
     if stateData.currentPeriod < 0 then
       if isBlocked() then
       --CRASH
-      -- entity.playSound("chargeCrash")
+      -- animator.playSound("chargeCrash")
 
       local crashTiles = {}
       local basePos = config.getParameter("projectileSourcePosition", {0, 0})
@@ -47,7 +47,7 @@ function shoggothChargeAttack.update(dt, stateData)
           table.insert(crashTiles, object.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
         end
       end
-      entity.playSound("shoggothChomp")
+      animator.playSound("shoggothChomp")
       world.damageTiles(crashTiles, "foreground", object.toAbsolutePosition({10, 0}), "plantish", 20)
 
       -- self.state.pickState({stun=true,duration=config.getParameter("chargeAttack.crashStunTime")})
@@ -86,5 +86,5 @@ end
 
 function shoggothChargeAttack.leavingState(stateData)
   animator.setAnimationState("movement", "idle")
-  entity.setActiveSkillName("")
+  monster.setActiveSkillName("")
 end

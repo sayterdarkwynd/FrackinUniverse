@@ -38,7 +38,7 @@ end
 
 function fuPounceAttack.enteringState(stateData)
   animator.setAnimationState("attack", "idle")
-  entity.setActiveSkillName("fuPounceAttack")
+  monster.setActiveSkillName("fuPounceAttack")
 end
 
 function fuPounceAttack.update(dt, stateData)

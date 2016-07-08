@@ -44,7 +44,7 @@ function init()
     end
   end
 
-  entity.setDeathParticleBurst("deathPoof")
+  monster.setDeathParticleBurst("deathPoof")
 end
 
 function update(dt)
@@ -60,7 +60,7 @@ function update(dt)
 
   if hasTarget() and entity.health() > 0 then
     if self.hadTarget == false then
-      entity.playSound("turnHostile")
+      animator.playSound("turnHostile")
       self.hadTarget = true
     end
     script.setUpdateDelta(1)
@@ -95,7 +95,7 @@ function damage(args)
 
   if entity.health() <= 0 then
     local inState = self.state.stateDesc()
-    entity.playSound("deathPuff")
+    animator.playSound("deathPuff")
     if inState ~= "dieState" and not self.state.pickState({ die = true }) then
       
       self.state.endState()
@@ -123,12 +123,12 @@ function trackTargets(keepInSight, queryRange, trackingRange, switchTargetDistan
   if keepInSight == nil then keepInSight = true end
 
   if self.targetId == nil then
-    table.insert(self.targets, entity.closestValidTarget(queryRange))
+    table.insert(self.targets, util.closestValidTarget(queryRange))
   end
 
   --Move the closest target to the top of the list if it's inside the target switch range
   if switchTargetDistance then
-    local closestValid = entity.closestValidTarget(switchTargetDistance)
+    local closestValid = util.closestValidTarget(switchTargetDistance)
     local i = inTargets(closestValid)
     if i then table.remove(self.targets, i) end
     table.insert(self.targets, 1, closestValid)

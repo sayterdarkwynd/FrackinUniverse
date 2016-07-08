@@ -20,7 +20,7 @@ function starspawnBlinkAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("starspawnBlinkAttack")
+  monster.setActiveSkillName("starspawnBlinkAttack")
 end
 
 function starspawnBlinkAttack.update(dt, stateData)
@@ -49,8 +49,8 @@ function starspawnBlinkAttack.run(stateData)
     mcontroller.controlFace(self.toTarget[1])
   end
 
-  entity.burstParticleEmitter("blinkout")
-  entity.playSound("blinkSound")
+  animator.burstParticleEmitter("blinkout")
+  animator.playSound("blinkSound")
   mcontroller.setVelocity({ 0, 0 })
   mcontroller.setPosition(destination)
   coroutine.yield(false)

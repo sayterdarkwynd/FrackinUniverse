@@ -109,7 +109,7 @@ function init()
   end
 
   self.state.leavingState = function(stateName)
-    entity.setActiveSkillName(nil)
+    monster.setActiveSkillName(nil)
     if isSkillState(stateName) then
       setAggressive(true, false)
       for k,v in pairs(self.skillCooldownTimers) do
@@ -122,11 +122,11 @@ function init()
     end
   end
 
-  entity.setDeathSound("deathPuff")
-  entity.setDeathParticleBurst(config.getParameter("deathParticles"))
+  monster.setDeathSound("deathPuff")
+  monster.setDeathParticleBurst(config.getParameter("deathParticles"))
 
   -- world.logInfo("Unique Parameters: %s", entity.uniqueParameters())
-  entity.setGlobalTag("backwards", "")
+  animator.setGlobalTag("backwards", "")
 
   self.debug = false
 end
@@ -212,7 +212,7 @@ function damage(args)
         includedTypes = {"monster"},
         withoutEntityId = entityId,
         callScript = "monsterDamaged",
-        callScriptArgs = { entityId, entity.seed(), args.sourceId }
+        callScriptArgs = { entityId, monster.seed(), args.sourceId }
       }
     )
 
@@ -231,7 +231,7 @@ end
 --------------------------------------------------------------------------------
 -- Called when a nearby monster has been damaged (by anything)
 function monsterDamaged(entityId, entitySeed, damageSourceId)
-  if entitySeed == entity.seed() then
+  if entitySeed == monster.seed() then
     self.state.pickState({ familyMemberDamagedBy = damageSourceId })
   end
 end
@@ -280,7 +280,7 @@ function update(dt)
   local stunned = false
   for k, v in pairs(stuns) do
     stunned = true
-    entity.setAnimationRate(0)
+    animator.setAnimationRate(0)
     break
   end
   if not stunned then
@@ -288,7 +288,7 @@ function update(dt)
     for k, v in pairs(slows) do
       animSpeed = animSpeed * v
     end
-    entity.setAnimationRate(animSpeed)
+    animator.setAnimationRate(animSpeed)
   end
   
   if stunned then
@@ -329,9 +329,9 @@ function update(dt)
   if not self.moved and not hasTarget() then script.setUpdateDelta(self.scriptDelta) end
 
   if mcontroller.facingDirection() == mcontroller.movingDirection() then
-    entity.setGlobalTag("backwards", "")
+    animator.setGlobalTag("backwards", "")
   else
-    entity.setGlobalTag("backwards", "backwards")
+    animator.setGlobalTag("backwards", "backwards")
   end
 
   decrementTimers()
@@ -508,9 +508,9 @@ function track()
     -- depending on whether we are in our territory or not
     local targetId
     if self.territory == 0 then
-      targetId = entity.closestValidTarget(config.getParameter("territorialTargetRadius"))
+      targetId = util.closestValidTarget(config.getParameter("territorialTargetRadius"))
     else
-      targetId = entity.closestValidTarget(config.getParameter("minimalTargetRadius"))
+      targetId = util.closestValidTarget(config.getParameter("minimalTargetRadius"))
     end
 
     if targetId ~= 0 then
@@ -557,21 +557,21 @@ end
 --------------------------------------------------------------------------------
 function setAggressive(enabled, damageOnTouch)
   if enabled then
-    object.setAggressive(true)
+    monster.setAggressive(true)
     self.aggressive = true
   else
-    object.setAggressive(self.aggressive)
+    monster.setAggressive(self.aggressive)
     if not self.aggressive then
       damageOnTouch = false
     end
   end
 
   if damageOnTouch then
-    entity.setDamageOnTouch(true)
-    entity.setParticleEmitterActive("damage", true)
+    monster.setDamageOnTouch(true)
+    animator.setParticleEmitterActive("damage", true)
   else
-    entity.setDamageOnTouch(false)
-    entity.setParticleEmitterActive("damage", false)
+    monster.setDamageOnTouch(false)
+    animator.setParticleEmitterActive("damage", false)
   end
 end
 

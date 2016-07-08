@@ -108,7 +108,7 @@ function init()
 
 --lpk: attack sound
       local atksnd = entity.randomizeParameter("attackSound") 
-      if atksnd ~= nil and entity.hasSound(atksnd) then entity.playSound(atksnd) end
+      if atksnd ~= nil and entity.hasSound(atksnd) then animator.playSound(atksnd) end
 
       --increment or reset the attack chain tracker
       if self.skillChains[stateName] then
@@ -120,12 +120,12 @@ function init()
   end
 
   self.state.leavingState = function(stateName)
-    entity.setActiveSkillName(nil)
+    monster.setActiveSkillName(nil)
     if isSkillState(stateName) then
       setAggressive(true, false)
       --lpk: hostile sound
             local hstlsnd = entity.randomizeParameter("turnHostile") 
-            if hstlsnd ~= nil and entity.hasSound(hstlsnd) then entity.playSound(hstlsnd) end
+            if hstlsnd ~= nil and entity.hasSound(hstlsnd) then animator.playSound(hstlsnd) end
       for k,v in pairs(self.skillCooldownTimers) do
         if k == stateName then
           self.skillCooldownTimers[k] = self.skillParameters[k].cooldownTime
@@ -136,11 +136,11 @@ function init()
     end
   end
 
-  entity.setDeathSound("deathPuff")
-  entity.setDeathParticleBurst(config.getParameter("deathParticles"))
+  monster.setDeathSound("deathPuff")
+  monster.setDeathParticleBurst(config.getParameter("deathParticles"))
 
   -- world.logInfo("Unique Parameters: %s", entity.uniqueParameters())
-  entity.setGlobalTag("backwards", "")
+  animator.setGlobalTag("backwards", "")
 
   self.debug = false
 end
@@ -226,7 +226,7 @@ function damage(args)
         includedTypes = {"monster"},
         withoutEntityId = entityId,
         callScript = "monsterDamaged",
-        callScriptArgs = { entityId, entity.seed(), args.sourceId }
+        callScriptArgs = { entityId, monster.seed(), args.sourceId }
       }
     )
 
@@ -239,7 +239,7 @@ function damage(args)
       --lpk: pain sounds
       if self.painSoundTimer < 0 then
         local painsnd = entity.randomizeParameter("painSound")  
-        if painsnd ~= nil and entity.hasSound(painsnd) then entity.playSound(painsnd) end
+        if painsnd ~= nil and entity.hasSound(painsnd) then animator.playSound(painsnd) end
         self.painSoundTimer = config.getParameter("painSoundTime",2)
       end
     end
@@ -249,7 +249,7 @@ end
 --------------------------------------------------------------------------------
 -- Called when a nearby monster has been damaged (by anything)
 function monsterDamaged(entityId, entitySeed, damageSourceId)
-  if entitySeed == entity.seed() then
+  if entitySeed == monster.seed() then
     self.state.pickState({ familyMemberDamagedBy = damageSourceId })
   end
 end
@@ -300,7 +300,7 @@ function update(dt)
   local stunned = false
   for k, v in pairs(stuns) do
     stunned = true
-    entity.setAnimationRate(0)
+    animator.setAnimationRate(0)
     break
   end
   if not stunned then
@@ -308,7 +308,7 @@ function update(dt)
     for k, v in pairs(slows) do
       animSpeed = animSpeed * v
     end
-    entity.setAnimationRate(animSpeed)
+    animator.setAnimationRate(animSpeed)
   end
   
   if stunned then
@@ -348,7 +348,7 @@ function update(dt)
   else -- lpk: play idle sound maybe
     if self.idleSoundTimer < 0 then 
       local idlesnd = entity.randomizeParameter("idleSound")
-      if idlesnd ~= nil and entity.hasSound(idlesnd) then entity.playSound(idlesnd) end
+      if idlesnd ~= nil and entity.hasSound(idlesnd) then animator.playSound(idlesnd) end
       self.idleSoundTimer = entity.randomizeParameter("idleSoundTime") or 10
     end
   end
@@ -356,9 +356,9 @@ function update(dt)
   if not self.moved and not hasTarget() then script.setUpdateDelta(self.scriptDelta) end
 
   if mcontroller.facingDirection() == mcontroller.movingDirection() then
-    entity.setGlobalTag("backwards", "")
+    animator.setGlobalTag("backwards", "")
   else
-    entity.setGlobalTag("backwards", "backwards")
+    animator.setGlobalTag("backwards", "backwards")
   end
 
   decrementTimers()
@@ -535,9 +535,9 @@ function track()
     -- depending on whether we are in our territory or not
     local targetId
     if self.territory == 0 then
-      targetId = entity.closestValidTarget(config.getParameter("territorialTargetRadius"))
+      targetId = util.closestValidTarget(config.getParameter("territorialTargetRadius"))
     else
-      targetId = entity.closestValidTarget(config.getParameter("minimalTargetRadius"))
+      targetId = util.closestValidTarget(config.getParameter("minimalTargetRadius"))
     end
 
     if targetId ~= 0 then
@@ -584,21 +584,21 @@ end
 --------------------------------------------------------------------------------
 function setAggressive(enabled, damageOnTouch)
   if enabled then
-    entity.setAggressive(true)
+    monster.setAggressive(true)
     self.aggressive = true
   else
-    entity.setAggressive(self.aggressive)
+    monster.setAggressive(self.aggressive)
     if not self.aggressive then
       damageOnTouch = false
     end
   end
 
   if damageOnTouch then
-    entity.setDamageOnTouch(true)
-    entity.setParticleEmitterActive("damage", true)
+    monster.setDamageOnTouch(true)
+    animator.setParticleEmitterActive("damage", true)
   else
-    entity.setDamageOnTouch(false)
-    entity.setParticleEmitterActive("damage", false)
+    monster.setDamageOnTouch(false)
+    animator.setParticleEmitterActive("damage", false)
   end
 end
 

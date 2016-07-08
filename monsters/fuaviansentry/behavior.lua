@@ -10,8 +10,8 @@ function init()
     animator.setAnimationState("movement", "idle")
   end
 
-  entity.setAggressive(false)
-  entity.setDeathParticleBurst("deathPoof")
+  monster.setAggressive(false)
+  monster.setDeathParticleBurst("deathPoof")
   animator.setAnimationState("movement", "idle")
 end
 
@@ -121,7 +121,7 @@ function attackState.setAttackEnabled(enabled)
     animator.setAnimationState("movement")
   end
 
-  entity.setDamageOnTouch(enabled)
+  monster.setDamageOnTouch(enabled)
 end
 
 function attackState.setAggressive(targetId)
@@ -129,9 +129,9 @@ function attackState.setAggressive(targetId)
 
   if targetId ~= nil then
     animator.setAnimationState("movement")
-    entity.setAggressive(true)
+    monster.setAggressive(true)
   else
     animator.setAnimationState("movement", "idle")
-    entity.setAggressive(false)
+    monster.setAggressive(false)
   end
 end

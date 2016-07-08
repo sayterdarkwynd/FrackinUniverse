@@ -9,7 +9,7 @@ function aggroHopState.enterWith(params)
 end
 
 function aggroHopState.enteringState(stateData)
-  entity.playSound("turnHostile")
+  animator.playSound("turnHostile")
 end
 
 function aggroHopState.update(dt, stateData)

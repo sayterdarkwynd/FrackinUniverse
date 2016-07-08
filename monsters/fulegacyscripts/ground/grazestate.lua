@@ -38,7 +38,7 @@ function grazeState.update(dt, stateData)
     local amplitude = grazeState.headRotationAmplitude * math.pi / 180
     angle = angle + amplitude * math.sin(stateData.grazeTimer * grazeState.headRotationFrequency)
 
-    entity.rotateGroup("projectileAim", angle)
+    animator.rotateGroup("projectileAim", angle)
 
     move({ 0, 0 }, false)
 
@@ -59,7 +59,7 @@ function grazeState.update(dt, stateData)
 end
 
 function grazeState.leavingState(stateData)
-  entity.rotateGroup("projectileAim", 0)
+  animator.rotateGroup("projectileAim", 0)
 end
 
 function grazeState.findGrassPosition()

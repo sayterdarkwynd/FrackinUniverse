@@ -11,7 +11,7 @@ end
 function gasTrailAttack.enteringState(stateData)
   animator.setAnimationState("attack", "shooting")
 
-  entity.setActiveSkillName("gasTrailAttack")
+  monster.setActiveSkillName("gasTrailAttack")
 end
 
 function gasTrailAttack.update(dt, stateData)

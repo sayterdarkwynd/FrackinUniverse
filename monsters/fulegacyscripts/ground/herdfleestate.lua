@@ -42,7 +42,7 @@ function herdFleeState.update(dt, stateData)
       includedTypes = {"monster"},
       withoutEntityId = entityId,
       callScript = "entity.seed",
-      callScriptResult = entity.seed()
+      callScriptResult = monster.seed()
     })
 
     for _, familyMemberEntityId in pairs(familyMemberEntityIds) do

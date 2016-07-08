@@ -22,7 +22,7 @@ function meleeAttack.enteringState(stateData)
       config.getParameter("projectileSourcePosition", {0, 0})[2] + config.getParameter("meleeProjectileOffset", {0, 0})[2]
     }
 
-  entity.setActiveSkillName("meleeAttack")
+  monster.setActiveSkillName("meleeAttack")
 end
 
 function meleeAttack.update(dt, stateData)

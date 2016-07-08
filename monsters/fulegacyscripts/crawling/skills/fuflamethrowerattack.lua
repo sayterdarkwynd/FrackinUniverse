@@ -36,7 +36,7 @@ function fuFlameThrowerAttack.enteringState(stateData)
       config.getParameter("projectileSourcePosition", {0, 0})[2]
     }
 
-  entity.setActiveSkillName("fuFlameThrowerAttack")
+  monster.setActiveSkillName("fuFlameThrowerAttack")
 end
 
 function fuFlameThrowerAttack.update(dt, stateData)
