@@ -223,6 +223,7 @@ local recipes =
 {inputs = { redhotcobblestone=50 }, outputs = { corefragmentore=1 }, time = 0.75},
 {inputs = { andesite=50 }, outputs = { rawminerals=1 }, time = 0.75},
 {inputs = { jellyblock=50 }, outputs = { endomorphicjelly=1 }, time = 0.75},
+{inputs = { fujellyblock=50 }, outputs = { endomorphicjelly=1 }, time = 0.75},
 {inputs = { jellystone=50 }, outputs = { endomorphicjelly=1 }, time = 0.75},
 {inputs = { avalichits=50 }, outputs = { fu_carbon=1 }, time = 0.95},
 {inputs = { avalidarkmetal2=50 }, outputs = { ironore=1 }, time = 0.95},
