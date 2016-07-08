@@ -23,7 +23,7 @@ function tripleJumpAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("tripleJumpAttack")
+  monster.setActiveSkillName("tripleJumpAttack")
 end
 
 function tripleJumpAttack.update(dt, stateData)

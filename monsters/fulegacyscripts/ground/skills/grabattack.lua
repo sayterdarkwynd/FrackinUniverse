@@ -16,7 +16,7 @@ function grabAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("grabAttack")
+  monster.setActiveSkillName("grabAttack")
 end
 
 function grabAttack.update(dt, stateData)

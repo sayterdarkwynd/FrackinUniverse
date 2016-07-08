@@ -49,19 +49,19 @@ function init()
   self.attackState.autoPickState = false
 
   self.attackState.enteringState = function(state)
-    entity.setActiveSkillName(state)
+    monster.setActiveSkillName(state)
     setAggressive(true)
     self.attackState.moveStateToEnd(state)
   end
 
   self.attackState.leavingState = function(state)
     setAggressive(false)
-    entity.setActiveSkillName(nil)
+    monster.setActiveSkillName(nil)
     self.attackCooldownTimer = config.getParameter("attackCooldownTime")
   end
 
-  entity.setDeathSound("deathPuff")
-  entity.setDeathParticleBurst(config.getParameter("deathParticles"))
+  monster.setDeathSound("deathPuff")
+  monster.setDeathParticleBurst(config.getParameter("deathParticles"))
 
   mcontroller.controlFace(util.randomDirection())
   animator.setAnimationState("movement", "flying")
@@ -81,12 +81,12 @@ end
 
 function setAggressive(enabled)
   if enabled then
-    entity.setAggressive(true)
-    entity.setDamageOnTouch(true)
+    monster.setAggressive(true)
+    monster.setDamageOnTouch(true)
     self.aggressive = true
   else
-    entity.setDamageOnTouch(config.getParameter("alwaysDamageOnTouch", false))
-    entity.setAggressive(self.aggressive)
+    monster.setDamageOnTouch(config.getParameter("alwaysDamageOnTouch", false))
+    monster.setAggressive(self.aggressive)
   end
 end
 
@@ -99,7 +99,7 @@ function update(dt)
   local stunned = false
   for k, v in pairs(stuns) do
     stunned = true
-    entity.setAnimationRate(0)
+    animator.setAnimationRate(0)
     break
   end
   if not stunned then
@@ -107,13 +107,13 @@ function update(dt)
     for k, v in pairs(slows) do
       animSpeed = animSpeed * v
     end
-    entity.setAnimationRate(animSpeed)
+    animator.setAnimationRate(animSpeed)
   end
 
   if stunned then
     --do nothing
   else
-    if entity.animationState("movement") ~= "flyingAttack" and entity.animationState("movement") ~= "gliding" then
+    if animator.animationState("movement") ~= "flyingAttack" and animator.animationState("movement") ~= "gliding" then
       animator.setAnimationState("movement", "flying")
     end
 
@@ -132,7 +132,7 @@ function update(dt)
       else
         local attackStartDistance = config.getParameter("attackStartDistance")
       local atksnd = entity.randomizeParameter("attackSound") 
-      if atksnd ~= nil and entity.hasSound(atksnd) then entity.playSound(atksnd) end
+      if atksnd ~= nil and entity.hasSound(atksnd) then animator.playSound(atksnd) end
         if world.magnitude(self.toTarget) <= attackStartDistance and self.attackCooldownTimer <= 0 then
           self.attackState.pickState()
         end
@@ -178,7 +178,7 @@ function trackTarget()
   end
 
   if self.aggressive and self.target == 0 and self.targetSearchTimer <= 0 then
-    setTarget(entity.closestValidTarget(config.getParameter("targetRadius")))
+    setTarget(util.closestValidTarget(config.getParameter("targetRadius")))
     self.targetSearchTimer = config.getParameter("targetSearchTime")
   end
 
@@ -194,7 +194,7 @@ function setTarget(target)
     self.targetHoldTimer = config.getParameter("targetHoldTime")
 
     if self.target ~= target then
-      entity.playSound("turnHostile")
+      animator.playSound("turnHostile")
 
       -- Don't attack immediately when turning aggressive
       self.attackCooldownTimer = config.getParameter("attackCooldownTime")

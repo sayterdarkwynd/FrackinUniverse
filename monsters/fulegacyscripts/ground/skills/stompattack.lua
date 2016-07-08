@@ -18,7 +18,7 @@ function stompAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("stompAttack")
+  monster.setActiveSkillName("stompAttack")
 end
 
 function stompAttack.update(dt, stateData)

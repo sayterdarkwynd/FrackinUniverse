@@ -15,9 +15,9 @@ function init()
 
   self.jumpHoldTime = 0;
 
-  entity.setAggressive(true)
-  entity.setDamageOnTouch(true)
-  entity.setDeathParticleBurst("deathPoof")
+  monster.setAggressive(true)
+  monster.setDamageOnTouch(true)
+  monster.setDeathParticleBurst("deathPoof")
   animator.setAnimationState("movement", "idle")
 end
 

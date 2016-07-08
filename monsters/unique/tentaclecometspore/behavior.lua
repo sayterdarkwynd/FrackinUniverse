@@ -10,9 +10,9 @@ function init(args)
 
   self.initialPauseTimer = config.getParameter("initialPauseTime")
 
-  entity.setDeathParticleBurst("deathPoof")
-  entity.setAggressive(true)
-  entity.setDamageOnTouch(true)
+  monster.setDeathParticleBurst("deathPoof")
+  monster.setAggressive(true)
+  monster.setDamageOnTouch(true)
 end
 
 --------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ end
 
 --------------------------------------------------------------------------------
 function isClosed()
-  return entity.animationState("movement") == "closedIdle"
+  return animator.animationState("movement") == "closedIdle"
 end
 
 --------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ function attackState.enterWith(targetId)
 end
 
 function attackState.update(dt, stateData)
-  if entity.animationState("movement") == "open" then
+  if animator.animationState("movement") == "open" then
     return false
   end
 

@@ -51,13 +51,13 @@ function wanderSkipState.update(dt, stateData)
   animator.setAnimationState("attack", "idle")
   if not mcontroller.onGround() then
     animator.setAnimationState("movement", "jump")
-    entity.setParticleEmitterActive("skipnotes", false)
+    animator.setParticleEmitterActive("skipnotes", false)
   elseif stateData.movement ~= 0 then
     animator.setAnimationState("movement", "skip")
-    entity.setParticleEmitterActive("skipnotes", true)
+    animator.setParticleEmitterActive("skipnotes", true)
   else
     animator.setAnimationState("movement", "idle")
-    entity.setParticleEmitterActive("skipnotes", false)
+    animator.setParticleEmitterActive("skipnotes", false)
   end
 
   if stateData.wanderMovementTimer <= 0 then

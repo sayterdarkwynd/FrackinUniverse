@@ -20,7 +20,7 @@ function blinkAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("blinkAttack")
+  monster.setActiveSkillName("blinkAttack")
 end
 
 function blinkAttack.update(dt, stateData)
@@ -49,7 +49,7 @@ function blinkAttack.run(stateData)
     mcontroller.controlFace(self.toTarget[1])
   end
 
-  entity.burstParticleEmitter("blinkout")
+  animator.burstParticleEmitter("blinkout")
   mcontroller.setVelocity({ 0, 0 })
   mcontroller.setPosition(destination)
   coroutine.yield(false)

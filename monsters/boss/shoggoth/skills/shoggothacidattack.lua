@@ -22,7 +22,7 @@ end
 --------------------------------------------------------------------------------
 function shoggothAcidAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
-  entity.setActiveSkillName("shoggothAcidAttack")
+  monster.setActiveSkillName("shoggothAcidAttack")
 end
 
 --------------------------------------------------------------------------------
@@ -97,6 +97,6 @@ end
 
 function shoggothAcidAttack.leavingState(stateData)
   animator.setAnimationState("movement", "idle")
-  entity.setActiveSkillName("")
+  monster.setActiveSkillName("")
 end
 

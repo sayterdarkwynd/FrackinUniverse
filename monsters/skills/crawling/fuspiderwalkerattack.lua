@@ -36,7 +36,7 @@ function fuspiderwalkerAttack.enteringState(stateData)
       config.getParameter("projectileSourcePosition", {0, 0})[2]
     }
 
-  entity.setActiveSkillName("fuspiderwalkerAttack")
+  monster.setActiveSkillName("fuspiderwalkerAttack")
 end
 
 function fuspiderwalkerAttack.update(dt, stateData)

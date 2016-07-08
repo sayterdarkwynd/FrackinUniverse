@@ -84,7 +84,7 @@ function circleState.update(dt, stateData)
   end
 
   util.debugLine(mcontroller.position(), destination, "blue")
-  entity.flyTo(destination, true)
+  monster.flyTo(destination, true)
 
   stateData.timer = stateData.timer - dt
   return false

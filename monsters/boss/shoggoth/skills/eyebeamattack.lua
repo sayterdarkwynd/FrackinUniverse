@@ -20,7 +20,7 @@ end
 --------------------------------------------------------------------------------
 function eyeBeamAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
-  entity.setActiveSkillName("eyeBeamAttack")
+  monster.setActiveSkillName("eyeBeamAttack")
 end
 
 --------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ function eyeBeamAttack.update(dt, stateData)
           
           -- rotate the eyebeam animation to aim at user
           local animationAngle = math.atan(-toTargetAim[2], math.abs(toTargetAim[1]))
-          entity.rotateGroup("projectileAim", animationAngle)
+          animator.rotateGroup("projectileAim", animationAngle)
           entity.targetSnapshot = toTargetAim
 
       end
@@ -111,6 +111,6 @@ end
 function eyeBeamAttack.leavingState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("firstBeams", "idle")
-  entity.setActiveSkillName("")
+  monster.setActiveSkillName("")
 end
 

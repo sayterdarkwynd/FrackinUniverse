@@ -19,7 +19,7 @@ function init(args)
     animator.setAnimationState("movement", "idle")
   end
 
-  entity.setAggressive(false)
+  monster.setAggressive(false)
   animator.setAnimationState("movement", "idle")
 end
 
@@ -28,10 +28,10 @@ function update(dt)
   self.position = mcontroller.position()
 
   if util.trackTarget(config.getParameter("targetNoticeRadius")) then
-    entity.setAggressive(true)
+    monster.setAggressive(true)
     self.state.pickState()
   elseif self.targetId == nil then
-    entity.setAggressive(false)
+    monster.setAggressive(false)
   end
 
   self.state.update(dt)
@@ -165,6 +165,6 @@ function shoutAttack.update(dt, stateData)
       -- entity.stopFiring()
     end
 
-    return entity.animationState("movement") == "idle"
+    return animator.animationState("movement") == "idle"
   end
 end

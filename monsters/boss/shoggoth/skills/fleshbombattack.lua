@@ -20,7 +20,7 @@ end
 function fleshBombAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
 
-  entity.setActiveSkillName("fleshBombAttack")
+  monster.setActiveSkillName("fleshBombAttack")
 end
 
 --------------------------------------------------------------------------------
@@ -82,6 +82,6 @@ end
 
 function fleshBombAttack.leavingState(stateData)
   animator.setAnimationState("movement", "idle")
-  entity.setActiveSkillName("")
+  monster.setActiveSkillName("")
 end
 

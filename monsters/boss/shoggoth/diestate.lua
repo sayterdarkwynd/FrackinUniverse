@@ -5,7 +5,7 @@ dieState.enterWith = function(params)
   if not params.die then return nil end
   
   rangedAttack.setConfig(config.getParameter("projectiles.deathexplosion.type"), config.getParameter("projectiles.deathexplosion.config"), 0.2)
-  entity.playSound("turnHostile")
+  animator.playSound("turnHostile")
   return {
     timer = 6.0,
     basePosition = mcontroller.position()

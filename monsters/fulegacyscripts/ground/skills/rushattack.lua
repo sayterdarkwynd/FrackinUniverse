@@ -9,7 +9,7 @@ end
 function rushAttack.enteringState(stateData)
   setAggressive(true, true)
 
-  entity.setActiveSkillName("rushAttack")
+  monster.setActiveSkillName("rushAttack")
 end
 
 function rushAttack.update(dt, stateData)

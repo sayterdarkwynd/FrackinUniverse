@@ -5,7 +5,7 @@ function tentacleSwipeAttack.enter()
   if not hasTarget() then
     return nil
   end
-  entity.setDamageOnTouch(true)
+  monster.setDamageOnTouch(true)
 
 
   return {
@@ -22,7 +22,7 @@ end
 function tentacleSwipeAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
 
-  entity.setActiveSkillName("tentacleSwipeAttack")
+  monster.setActiveSkillName("tentacleSwipeAttack")
 end
 
 --------------------------------------------------------------------------------
@@ -79,6 +79,6 @@ end
 
 function tentacleSwipeAttack.leavingState(stateData)
   animator.setAnimationState("movement", "idle")
-  entity.setActiveSkillName("")
+  monster.setActiveSkillName("")
 end
 

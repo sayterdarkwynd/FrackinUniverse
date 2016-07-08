@@ -9,11 +9,11 @@ function init(args)
   self.state.leavingState = function(stateName)
     animator.setAnimationState("movement", "idle")
   end
-  entity.setDamageOnTouch(true)
-  entity.setAggressive(true)
-  entity.setDeathParticleBurst("deathPoof")
+  monster.setDamageOnTouch(true)
+  monster.setAggressive(true)
+  monster.setDeathParticleBurst("deathPoof")
   animator.setAnimationState("movement", "idle")
-  attackState.enterWith(entity.closestValidTarget(100))
+  attackState.enterWith(util.closestValidTarget(100))
 end
 
 function update(dt)
@@ -137,7 +137,7 @@ function attackState.setAttackEnabled(enabled)
     animator.setAnimationState("movement", "aggro")
   end
 
-  entity.setDamageOnTouch(enabled)
+  monster.setDamageOnTouch(enabled)
 end
 
 function attackState.setAggressive(targetId)
@@ -145,6 +145,6 @@ function attackState.setAggressive(targetId)
 
   if targetId ~= nil then
     animator.setAnimationState("movement", "aggro")
-    entity.setAggressive(true)
+    monster.setAggressive(true)
   end
 end

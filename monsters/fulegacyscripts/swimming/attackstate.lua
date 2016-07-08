@@ -39,12 +39,12 @@ function attackState.update(dt, stateData)
   elseif stateData.stage == "charge" then
     if collides("blockedSensors") then return true end
 
-    if entity.animationState("attack") == "melee" then
-      entity.setDamageOnTouch(true)
+    if animator.animationState("attack") == "melee" then
+      monster.setDamageOnTouch(true)
       mcontroller.controlParameters({flySpeed = config.getParameter("attackChargeSpeed")})
       move(stateData.chargeDirection, true, true)
     else
-      entity.setDamageOnTouch(false)
+      monster.setDamageOnTouch(false)
       move(stateData.chargeDirection, false)
     end
   end
@@ -53,5 +53,5 @@ function attackState.update(dt, stateData)
 end
 
 function attackState.leavingState(stateData)
-  entity.setDamageOnTouch(false)
+  monster.setDamageOnTouch(false)
 end

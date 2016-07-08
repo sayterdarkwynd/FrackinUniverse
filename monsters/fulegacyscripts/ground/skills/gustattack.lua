@@ -19,7 +19,7 @@ function gustAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("gustAttack")
+  monster.setActiveSkillName("gustAttack")
 end
 
 function gustAttack.update(dt, stateData)
@@ -29,7 +29,7 @@ function gustAttack.update(dt, stateData)
 end
 
 function gustAttack.leavingState(stateData)
-  entity.setParticleEmitterActive("gust", false)
+  animator.setParticleEmitterActive("gust", false)
 end
 
 function gustAttack.run(stateData)
@@ -50,7 +50,7 @@ function gustAttack.run(stateData)
   -- force region before stopping
   mcontroller.setVelocity({ 0, mcontroller.velocity()[2] })
 
-  entity.playSound("gust")
+  animator.playSound("gust")
 
   local gustTimer = 0
   util.wait(gustAttack.gustTime, function(dt)
@@ -79,7 +79,7 @@ function gustAttack.run(stateData)
     local gustForce = gustAttack.lerp(gustTimer, gustAttack.startGustForce, gustAttack.endGustForce)
     entity.setForceRegion(region, { gustForce * direction, gustAttack.gustLiftFactor * world.gravity(self.position) } )
 
-    entity.setParticleEmitterActive("gust", not changingDirection)
+    animator.setParticleEmitterActive("gust", not changingDirection)
 
     gustTimer = gustTimer + dt
   end)

@@ -22,7 +22,7 @@ function fuChargeAttack.enteringState(stateData)
   animator.setAnimationState("attack", "idle")
   setAggressive(true, true)
 
-  entity.setActiveSkillName("fuChargeAttack")
+  monster.setActiveSkillName("fuChargeAttack")
 end
 
 function fuChargeAttack.update(dt, stateData)
@@ -62,7 +62,7 @@ function fuChargeAttack.update(dt, stateData)
 
     if isBlocked() then
       --CRASH
-      entity.playSound("chargeCrash")
+      animator.playSound("chargeCrash")
 
       local crashTiles = {}
       local basePos = config.getParameter("projectileSourcePosition", {0, 0})
@@ -77,7 +77,7 @@ function fuChargeAttack.update(dt, stateData)
       return true
     end
 
-    if entity.animationState("attack") ~= "fuChargeAttack" then
+    if animator.animationState("attack") ~= "fuChargeAttack" then
       if math.abs(self.toTarget[1]) < config.getParameter("fuChargeAttack.attackDistance") then
         animator.setAnimationState("attack", "charge")
       elseif self.toTarget[1] * mcontroller.facingDirection() > 0 then

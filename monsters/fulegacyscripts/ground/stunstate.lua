@@ -9,7 +9,7 @@ return { timer = 0, duration = params.duration or stunState.duration }
 end
 
 function stunState.enteringState(stateData)
-  entity.setParticleEmitterActive("stun", true)
+  animator.setParticleEmitterActive("stun", true)
 end
 
 function stunState.update(dt, stateData)
@@ -21,5 +21,5 @@ function stunState.update(dt, stateData)
 end
 
 function stunState.leavingState(stateData)
-  entity.setParticleEmitterActive("stun", false)
+  animator.setParticleEmitterActive("stun", false)
 end

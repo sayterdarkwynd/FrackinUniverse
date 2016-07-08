@@ -22,7 +22,7 @@ end
 --------------------------------------------------------------------------------
 function miniShoggothSpawnAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
-  entity.setActiveSkillName("miniShoggothSpawnAttack")
+  monster.setActiveSkillName("miniShoggothSpawnAttack")
 end
 
 --------------------------------------------------------------------------------
@@ -93,6 +93,6 @@ end
 
 function miniShoggothSpawnAttack.leavingState(stateData)
   animator.setAnimationState("movement", "idle")
-  entity.setActiveSkillName("")
+  monster.setActiveSkillName("")
 end
 

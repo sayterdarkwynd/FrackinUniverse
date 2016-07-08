@@ -10,14 +10,14 @@ end
 function onInteraction(args)
 	-- Error Catching
 	if isn_hasRequiredPower() == false then
-		entity.burstParticleEmitter("noPower")
-		entity.playSound("error")
+		animator.burstParticleEmitter("noPower")
+		animator.playSound("error")
 		return
 	end
 	local fll = isn_getListLength(storage.frequencies)
 	if fll < 1 then
-		entity.burstParticleEmitter("emptySignalList")
-		entity.playSound("error")
+		animator.burstParticleEmitter("emptySignalList")
+		animator.playSound("error")
 		return
 	end
 	-- Functionality
@@ -26,8 +26,8 @@ function onInteraction(args)
 	elseif itemName == "painttool" then isn_cycleFrequency(-1)
 	else
 		if storage.currentconfig == nil or storage.currentkey == nil then
-			entity.burstParticleEmitter("noSignal")
-			entity.playSound("error")
+			animator.burstParticleEmitter("noSignal")
+			animator.playSound("error")
 			return
 		end
 		
@@ -62,8 +62,8 @@ function isn_cycleFrequency(increment)
 		if tindex == storage.tableindex then
 			storage.currentkey = key
 			storage.currentconfig = value
-			entity.burstParticleEmitter(storage.currentkey)
-			entity.playSound("cycle")
+			animator.burstParticleEmitter(storage.currentkey)
+			animator.playSound("cycle")
 			return
 		end
 		tindex = tindex + 1

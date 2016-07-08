@@ -53,7 +53,7 @@ end
 function burrowSpecial.enteringState(stateData)
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("burrowSpecial")
+  monster.setActiveSkillName("burrowSpecial")
 end
 
 function burrowSpecial.update(dt, stateData)
@@ -113,7 +113,7 @@ function burrowSpecial.update(dt, stateData)
     --rotate head
     local timeFraction = stateData.digTimer / config.getParameter("burrowSpecial.digTime")
     local maxRotate = math.pi / 180 * 30
-    entity.rotateGroup("projectileAim", timeFraction * 1.5 * maxRotate - maxRotate)
+    animator.rotateGroup("projectileAim", timeFraction * 1.5 * maxRotate - maxRotate)
   end
 
   return false

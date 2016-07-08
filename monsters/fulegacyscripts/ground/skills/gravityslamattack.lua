@@ -15,7 +15,7 @@ function gravitySlamAttack.enteringState(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
 
-  entity.setActiveSkillName("gravitySlamAttack")
+  monster.setActiveSkillName("gravitySlamAttack")
 end
 
 function gravitySlamAttack.update(dt, stateData)
@@ -25,8 +25,8 @@ function gravitySlamAttack.update(dt, stateData)
 end
 
 function gravitySlamAttack.leavingState(stateData)
-  entity.setParticleEmitterActive("gravitySlamAttackUp", false)
-  entity.setParticleEmitterActive("gravitySlamAttackDown", false)
+  animator.setParticleEmitterActive("gravitySlamAttackUp", false)
+  animator.setParticleEmitterActive("gravitySlamAttackDown", false)
 end
 
 function gravitySlamAttack.run(stateData)
@@ -34,7 +34,7 @@ function gravitySlamAttack.run(stateData)
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "charge")
 
-  entity.setParticleEmitterActive("gravitySlamAttackUp", true)
+  animator.setParticleEmitterActive("gravitySlamAttackUp", true)
 
   util.wait(0.6, function()
     world.spawnProjectile("grabbed", world.entityPosition(self.target), entity.id(), { 0, 0 }, false)
@@ -43,8 +43,8 @@ function gravitySlamAttack.run(stateData)
     gravitySlamAttack.applyVerticalForceToTarget(gravity * gravitySlamAttack.liftMultiplier)
   end)
 
-  entity.setParticleEmitterActive("gravitySlamAttackUp", false)
-  entity.setParticleEmitterActive("gravitySlamAttackDown", true)
+  animator.setParticleEmitterActive("gravitySlamAttackUp", false)
+  animator.setParticleEmitterActive("gravitySlamAttackDown", true)
 
   util.wait(0.2, function()
     world.spawnProjectile("grabbed", world.entityPosition(self.target), entity.id(), { 0, 0 }, false)
