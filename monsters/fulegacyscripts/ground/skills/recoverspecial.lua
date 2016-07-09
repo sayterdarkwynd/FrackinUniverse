@@ -2,7 +2,7 @@ recoverSpecial = {}
 
 function recoverSpecial.enter()
   if self.skillCooldownTimers["recoverSpecial"] <= 0 then
-    local healthFraction = entity.health() / entity.maxHealth()
+    local healthFraction = status.resource("health") / entity.maxHealth()
     if healthFraction <= config.getParameter("recoverSpecial.triggerHealthFraction") then
       return { healthPerSecond = (entity.maxHealth() * config.getParameter("recoverSpecial.recoverHealthFraction")) / config.getParameter("recoverSpecial.skillTimeLimit") }
     end
@@ -28,7 +28,7 @@ function recoverSpecial.enteringState(stateData)
 end
 
 function recoverSpecial.update(dt, stateData)
-  if not canContinueSkill() or entity.health() <= 0 then return true end
+  if not canContinueSkill() or status.resource("health") <= 0 then return true end
 
   entity.heal(stateData.healthPerSecond * script.updateDt())
 

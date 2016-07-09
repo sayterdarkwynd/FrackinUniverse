@@ -74,7 +74,7 @@ end
 function damage(args)
   setTarget(args.sourceId)
 
-  if entity.health() > 0 then
+  if status.resource("health") > 0 then
     self.state.endState()
   end
 end
