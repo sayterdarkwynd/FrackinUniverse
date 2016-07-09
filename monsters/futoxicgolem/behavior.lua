@@ -40,7 +40,7 @@ end
 
 --------------------------------------------------------------------------------
 function damage(args)
-  if entity.health() > 0 then
+  if status.resource("health") > 0 then
     if args.sourceId ~= self.targetId then
       self.targetId = args.sourceId
       self.targetPosition = world.entityPosition(self.targetId)

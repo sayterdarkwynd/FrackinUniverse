@@ -216,7 +216,7 @@ function damage(args)
       }
     )
 
-    if monster.health() <= 0 then
+    if status.resource("health") <= 0 then
       if world.entityType(args.sourceId) == "monster" or world.entityType(args.sourceId) == "npc" then
         world.callScriptedEntity(args.sourceId, "monsterKilled", entity.id())
       end

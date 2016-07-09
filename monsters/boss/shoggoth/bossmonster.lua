@@ -58,7 +58,7 @@ function update(dt)
     end
   end
 
-  if hasTarget() and entity.health() > 0 then
+  if hasTarget() and status.resource("health") > 0 then
     if self.hadTarget == false then
       animator.playSound("turnHostile")
       self.hadTarget = true
@@ -66,7 +66,7 @@ function update(dt)
     script.setUpdateDelta(1)
     updatePhase(dt)
   else
-    if not hasTarget() and entity.health() > 0 and self.hadTarget then
+    if not hasTarget() and status.resource("health") > 0 and self.hadTarget then
       --Lost target, reset boss
       if currentPhase() then
         self.phaseStates[currentPhase()].endState()
@@ -80,7 +80,7 @@ function update(dt)
       if bossReset then bossReset() end
     end
 
-    if entity.health() > 0 then script.setUpdateDelta(10) end
+    if status.resource("health") > 0 then script.setUpdateDelta(10) end
 
     if not self.state.update(dt) then
       self.state.pickState()
@@ -93,7 +93,7 @@ end
 function damage(args)
   self.tookDamage = true
 
-  if entity.health() <= 0 then
+  if status.resource("health") <= 0 then
     local inState = self.state.stateDesc()
     animator.playSound("deathPuff")
     if inState ~= "dieState" and not self.state.pickState({ die = true }) then

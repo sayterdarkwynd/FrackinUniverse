@@ -41,7 +41,7 @@ end
 
 --------------------------------------------------------------------------------
 function damage(args)
-  if entity.health() > 0 then
+  if status.resource("health") > 0 then
     self.state.pickState({ targetId = args.sourceId })
   end
 end

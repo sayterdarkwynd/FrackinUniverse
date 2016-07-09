@@ -46,7 +46,7 @@ end
 
 --------------------------------------------------------------------------------
 function shouldDie()
-  return self.dead or entity.health() <= 0
+  return self.dead or status.resource("health") <= 0
 end
 
 --------------------------------------------------------------------------------
