@@ -218,6 +218,7 @@ local recipes =
 {inputs = { springvines=50 }, outputs = { geneticmaterial=3 }, time = 0.1},
 {inputs = { andesite=50 }, outputs = { rawminerals=2 }, time = 0.1},
 {inputs = { jellyblock=50 }, outputs = { endomorphicjelly=2 }, time = 0.1},
+{inputs = { jellyblock=50 }, outputs = { endomorphicjelly=1 }, time = 0.1},
 {inputs = { jellystone=50 }, outputs = { endomorphicjelly=2 }, time = 0.1},
 {inputs = { redhotcobblestone=50 }, outputs = { corefragmentore=4 }, time = 0.1},
 {inputs = { retexironblock=50 }, outputs = { tungstenore=2 }, time = 0.6},

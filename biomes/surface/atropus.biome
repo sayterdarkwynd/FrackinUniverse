@@ -7,20 +7,27 @@
     "spawnProfile" : {
     "groups" : [
       {
-        "select" : 2,
+        "select" : 6,
         "pool" : [ 
-          [ 0.1111, "fubloodgolem" ],     
-          [ 0.1111, "headcrab" ],
-          [ 0.1111, "fleshleech" ],     
+          //[ 0.1111, "fubloodgolem" ],     
+          //[ 0.1111, "headcrab" ],
+          //[ 0.1111, "fleshleech" ],     
           [ 0.1111, "pteropod3" ],
 	  [ 0.1111, "snaunt2" ],
-	  [ 0.1111, "fleshreaper" ],
-	  [ 0.1111, "fleshreaper2" ],
-	  [ 0.1111, "fleshreaper3" ]
+	  //[ 0.1111, "fleshreaper" ],
+	  //[ 0.1111, "fleshreaper2" ],
+	  //[ 0.1111, "fleshreaper3" ],
+          [ 1, "tentaclecrawler" ],
+          [ 1, "tentaclegnat" ],
+          [ 1, "tentaclespawner" ],
+          [ 1, "tentaclebomb" ],
+          [ 1, "tentacleghost" ],
+          [ 1, "tentacleclam" ]
         ]
       },  
+
       {
-        "select" : 2,
+        "select" : 3,
         "pool" : [
           [ 0.4, "shardwing" ],
           [ 0.3, "stinkjack" ],
@@ -28,8 +35,13 @@
         ]
       },
       {
-        "select" : 3,
+        "select" : 5,
         "pool" : [
+          [ 1, "bigwormcritter" ],
+          [ 1, "fisheyecritter" ],
+          [ 1, "cellcritter" ],
+          [ 1, "cell2critter" ],
+          [ 1, "eggcellcritter" ],
 	  [ 0.3, "apexscabcritter" ],
           [ 0.4, "avianscabcritter" ],
           [ 0.3, "eyefriendcritter" ],
@@ -564,7 +576,7 @@
   ],
 
   "mainBlock" : "fleshblock",
-  "subBlocks" : [ "brainsblock", "rottingflesh", "boneyflesh", "hellstone" ],
+  "subBlocks" : [ "brainsblock", "rottingflesh", "boneyflesh", "tentacleblock" ],
   "ores" : "ff_surfaceatropusOres",
 
   "parallax" : "/parallax/surface/atropus.parallax",

@@ -31,6 +31,7 @@ function tileMaterials()
   self.matCheck["slime"] = 			{{"slimestick"}, 1,   1,   1,   14,   101,  1.0,    1,  1.75}
   self.matCheck["slime2"] = 			{{"slimestick"}, 1,   1,   1,   14,   101,  1.0,    1,  1.75}
   self.matCheck["jellyblock"] = 		{{"slimestick"}, 1,   1,   1,   14,   101,  1.0,    1,  1.75}
+  self.matCheck["fujellyblock"] = 		{{"slimestick"}, 1,   1,   1,   14,   101,  1.0,    1,  1.75}
   self.matCheck["jellystone"] = 		{{"jumpboost15"},1,   1,   1,   14,   100,  0.0,    1,  1}
   self.matCheck["blackslime"] =    {{"slimestick","weakpoison"}, 1,   1,   1,   14,   101,  1.5,    0,  1.65}
   self.matCheck["spidersilkblock"] = 	        {{"webstick"},   1,   1,   1,   14,   101,  0.0,    0,  1.32}

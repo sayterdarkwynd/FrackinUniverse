@@ -5,15 +5,27 @@
     "spawnProfile" : {
     "groups" : [
       {
-        "select" : 3,
+        "select" : 6,
         "pool" : [ 
-          [ 0.1111, "fleshleech" ],     
-          [ 0.1111, "paratail" ],
-	  [ 0.1111, "hemogoblin" ]
+          //[ 0.1111, "fubloodgolem" ],     
+          //[ 0.1111, "headcrab" ],
+          //[ 0.1111, "fleshleech" ],     
+          [ 0.1111, "pteropod3" ],
+	  [ 0.1111, "snaunt2" ],
+	  //[ 0.1111, "fleshreaper" ],
+	  //[ 0.1111, "fleshreaper2" ],
+	  //[ 0.1111, "fleshreaper3" ],
+          [ 1, "tentaclecrawler" ],
+          [ 1, "tentaclegnat" ],
+          [ 1, "tentaclespawner" ],
+          [ 1, "tentaclebomb" ],
+          [ 1, "tentacleghost" ],
+          [ 1, "tentacleclam" ]
         ]
       },  
+
       {
-        "select" : 2,
+        "select" : 3,
         "pool" : [
           [ 0.4, "shardwing" ],
           [ 0.3, "stinkjack" ],
@@ -21,22 +33,31 @@
         ]
       },
       {
-        "select" : 3,
+        "select" : 5,
         "pool" : [
-		  [ 0.3, "apexscabcritter" ],
+          [ 1, "bigwormcritter" ],
+          [ 1, "fisheyecritter" ],
+          [ 1, "cellcritter" ],
+          [ 1, "cell2critter" ],
+          [ 1, "eggcellcritter" ],
+	  [ 0.3, "apexscabcritter" ],
           [ 0.4, "avianscabcritter" ],
           [ 0.3, "eyefriendcritter" ],
           [ 0.3, "eyepodcritter" ],
-		  [ 0.3, "floranscabcritter" ],
-		  [ 0.3, "glitchscabcritter" ],
-		  [ 0.3, "humanscabcritter" ],
-		  [ 0.3, "hylotlscabcritter" ],
-		  [ 0.3, "maggotcritter" ]
+	  [ 0.3, "floranscabcritter" ],
+	  [ 0.3, "glitchscabcritter" ],
+	  [ 0.3, "humanscabcritter" ],
+	  [ 0.3, "hylotlscabcritter" ],
+	  [ 0.3, "maggotcritter" ]
         ]
       },
       {
         "select" : 2,
         "pool" : "generatedGround"
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedFlying"
       }
     ],
     "monsterParameters" : {
@@ -57,8 +78,8 @@
     }
   },
 
-    "mainBlock" : "fleshblock",
-    "subBlocks" : [ "boneyflesh", "brainsblock", "hellstone", "rottingflesh" ],
+    "mainBlock" : "tentacleblock",
+    "subBlocks" : [ "boneyflesh", "fleshblock", "hellstone", "rottingflesh" ],
     "ores" : "ff_deepsurfaceatropusOres",
 
   "parallax" : "/parallax/underground/atropusunderground.parallax",
