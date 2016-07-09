@@ -7,7 +7,7 @@ function createRangedAttack(skillName)
       local params = config.getParameter(skillName)
 
       rangedAttack.pType = type(params.projectile) == "table" and entity.staticRandomizeParameter(skillName..".projectile") or params.projectile
-      rangedAttack.pPower = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * params.power
+      rangedAttack.pPower = root.evalFunction("monsterLevelPowerMultiplier", monster.level()) * params.power
       rangedAttack.pSpeed = params.speed or 20.0
       rangedAttack.pGrav = root.projectileGravityMultiplier(rangedAttack.pType) or 1.0
       rangedAttack.pArc = params.arc
@@ -40,7 +40,7 @@ function createRangedAttack(skillName)
     animator.setAnimationState("movement", "flyingAttack")
 
     local sourcePosition = config.getParameter("projectileSourcePosition") or {0, 0}
-    local toTarget = world.distance(world.entityPosition(self.target), object.toAbsolutePosition(sourcePosition))
+    local toTarget = world.distance(world.entityPosition(self.target), monster.toAbsolutePosition(sourcePosition))
     mcontroller.controlFace(toTarget[1])
 
     if stateData.fireCooldown <= 0 and stateData.shotsRemaining > 0 then
@@ -65,7 +65,7 @@ function createRangedAttack(skillName)
       speed = rangedAttack.pSpeed
     }
     local sourcePosition = config.getParameter("projectileSourcePosition") or {0, 0}
-    world.spawnProjectile(rangedAttack.pType, object.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
+    world.spawnProjectile(rangedAttack.pType, monster.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
   end
 
   function rangedAttack.leavingState(stateData)

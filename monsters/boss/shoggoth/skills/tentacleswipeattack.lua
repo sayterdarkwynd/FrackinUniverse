@@ -71,10 +71,10 @@ function tentacleSwipeAttack.swipe(direction)
   local projectileOffset = config.getParameter("tentacleSwipeAttack.projectile.offset")
   
   if projectileConfig.power then
-    projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", entity.level())
+    projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
   end
 
-  world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), {direction, 0}, true, projectileConfig)
+  world.spawnProjectile(projectileType, monster.toAbsolutePosition(projectileOffset), entity.id(), {direction, 0}, true, projectileConfig)
 end
 
 function tentacleSwipeAttack.leavingState(stateData)

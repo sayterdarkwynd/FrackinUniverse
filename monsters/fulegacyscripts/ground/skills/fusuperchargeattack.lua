@@ -68,10 +68,10 @@ function fuSuperChargeAttack.update(dt, stateData)
       local basePos = config.getParameter("projectileSourcePosition", {0, 0})
       for xOffset = 2, 3 do
         for yOffset = -1, 1 do
-          table.insert(crashTiles, object.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
+          table.insert(crashTiles, monster.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
         end
       end
-      world.damageTiles(crashTiles, "foreground", object.toAbsolutePosition({10, 0}), "plantish", config.getParameter("fuSuperChargeAttack.crashDamageAmount"))
+      world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", config.getParameter("fuSuperChargeAttack.crashDamageAmount"))
 
       self.state.pickState({stun=true,duration=config.getParameter("fuSuperChargeAttack.crashStunTime")})
       return true

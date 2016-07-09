@@ -46,7 +46,7 @@ function fuFlameThrowerAttack.update(dt, stateData)
   local toTarget = world.distance(targetPosition, mcontroller.position())
 
   local projectileName = config.getParameter("fuFlameThrowerAttack.projectile")
-  local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * config.getParameter("fuFlameThrowerAttack.power")
+  local power = root.evalFunction("monsterLevelPowerMultiplier", monster.level()) * config.getParameter("fuFlameThrowerAttack.power")
 
   animator.setAnimationState("movement", "idle")
 
@@ -60,7 +60,7 @@ function fuFlameThrowerAttack.update(dt, stateData)
   --Then fire all projectiles
   elseif stateData.shots < config.getParameter("fuFlameThrowerAttack.shots") then
     if stateData.fireTimer <= 0 then
-      world.spawnProjectile(projectileName, object.toAbsolutePosition(stateData.projectileSourcePosition), entity.id(), {mcontroller.facingDirection(), 0}, false, {power = power})
+      world.spawnProjectile(projectileName, monster.toAbsolutePosition(stateData.projectileSourcePosition), entity.id(), {mcontroller.facingDirection(), 0}, false, {power = power})
       stateData.shots = stateData.shots + 1
       stateData.fireTimer = stateData.fireTimer + config.getParameter("fuFlameThrowerAttack.fireInterval")
     end

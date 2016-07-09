@@ -122,7 +122,7 @@ function throwAttack.update(dt, stateData)
       if stateData.thrown then
         return true, config.getParameter("throwCooldown")
       else
-        local entityId = world.spawnMonster("micropo", object.toAbsolutePosition(config.getParameter("throwSpawnOffset")))
+        local entityId = world.spawnMonster("micropo", monster.toAbsolutePosition(config.getParameter("throwSpawnOffset")))
         world.callScriptedEntity(entityId, "setSpawnDirection", mcontroller.facingDirection())
         self.minions[stateData.minionIndex] = entityId
 

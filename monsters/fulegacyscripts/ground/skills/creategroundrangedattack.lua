@@ -6,7 +6,7 @@ function createRangedAttack(skillName)
 
     --parameters to be used within this state
     rangedAttack.pType = type(config.getParameter(skillName..".projectile")) == "table" and entity.staticRandomizeParameter(skillName..".projectile") or config.getParameter(skillName..".projectile")
-    rangedAttack.pPower = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * params.power
+    rangedAttack.pPower = root.evalFunction("monsterLevelPowerMultiplier", monster.level()) * params.power
     rangedAttack.pSpeed = params.speed
     rangedAttack.pGrav = root.projectileGravityMultiplier(rangedAttack.pType)
     rangedAttack.pArc = params.arc
@@ -47,7 +47,7 @@ function createRangedAttack(skillName)
   function rangedAttack.enteringState(stateData)
     setAggressive(true, true)
 
-    rangedAttack.aim(world.distance(world.entityPosition(self.target), object.toAbsolutePosition(config.getParameter("projectileSourcePosition"))))
+    rangedAttack.aim(world.distance(world.entityPosition(self.target), monster.toAbsolutePosition(config.getParameter("projectileSourcePosition"))))
 
     if stateData.castTime > 0 then
       if rangedAttack.castEffect then
@@ -72,7 +72,7 @@ function createRangedAttack(skillName)
 
     if stateData.shotsRemaining <= 0 then return false end
 
-    local toTarget = world.distance(world.entityPosition(self.target), object.toAbsolutePosition(config.getParameter("projectileSourcePosition")))
+    local toTarget = world.distance(world.entityPosition(self.target), monster.toAbsolutePosition(config.getParameter("projectileSourcePosition")))
 
     if toTarget[1] * mcontroller.facingDirection() < 0 then return true end
 
@@ -144,7 +144,7 @@ function createRangedAttack(skillName)
       sourcePosition = vec2.add(sourcePosition, sourceOffset)
     end
 
-    world.spawnProjectile(rangedAttack.pType, object.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
+    world.spawnProjectile(rangedAttack.pType, monster.toAbsolutePosition(sourcePosition), entity.id(), direction, false, pConfig)
 
     animator.playSound("rangedAttack")
   end

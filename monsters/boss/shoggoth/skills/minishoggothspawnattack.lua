@@ -84,11 +84,11 @@ function miniShoggothSpawnAttack.spit(direction)
   local direction3 = vec2.add(direction, {0, -10})
 
   if projectileConfig.power then
-    projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", entity.level())
+    projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
   end
 
 
-  world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
+  world.spawnProjectile(projectileType, monster.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
 end
 
 function miniShoggothSpawnAttack.leavingState(stateData)

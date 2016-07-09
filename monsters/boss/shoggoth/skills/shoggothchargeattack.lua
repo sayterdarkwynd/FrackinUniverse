@@ -44,11 +44,11 @@ function shoggothChargeAttack.update(dt, stateData)
       local basePos = config.getParameter("projectileSourcePosition", {0, 0})
       for xOffset = 2, 22 do
         for yOffset = -14.5, 10 do
-          table.insert(crashTiles, object.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
+          table.insert(crashTiles, monster.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
         end
       end
       animator.playSound("shoggothChomp")
-      world.damageTiles(crashTiles, "foreground", object.toAbsolutePosition({10, 0}), "plantish", 20)
+      world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 20)
 
       -- self.state.pickState({stun=true,duration=config.getParameter("chargeAttack.crashStunTime")})
     end
@@ -81,7 +81,7 @@ function shoggothChargeAttack.chomp(direction)
   local projectileType = config.getParameter("shoggothChargeAttack.projectile.type")
   local projectileConfig = config.getParameter("shoggothChargeAttack.projectile.config")
   local projectileOffset = config.getParameter("shoggothChargeAttack.projectile.offset")
-  world.spawnProjectile(projectileType, object.toAbsolutePosition(projectileOffset), entity.id(), {direction, 0}, true, projectileConfig)
+  world.spawnProjectile(projectileType, monster.toAbsolutePosition(projectileOffset), entity.id(), {direction, 0}, true, projectileConfig)
 end
 
 function shoggothChargeAttack.leavingState(stateData)
