@@ -127,8 +127,8 @@ end
 
 function collides(sensorGroup, direction)
   for i, sensor in ipairs(config.getParameter(sensorGroup)) do
-    -- world.debugPoint(object.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), "blue")
-    if world.pointTileCollision(object.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), {"Dynamic", "Null", "Block"}) then
+    -- world.debugPoint(monster.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), "blue")
+    if world.pointTileCollision(monster.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), {"Dynamic", "Null", "Block"}) then
       return true
     end
   end

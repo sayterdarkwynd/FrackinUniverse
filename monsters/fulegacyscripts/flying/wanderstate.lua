@@ -22,7 +22,7 @@ function wanderState.update(dt, stateData)
 
   local movement = { stateData.wanderDirection, 0 }
 
-  if self.sensors.upSensors.collision.any(true) or world.liquidAt(object.toAbsolutePosition({0, -10})) then
+  if self.sensors.upSensors.collision.any(true) or world.liquidAt(monster.toAbsolutePosition({0, -10})) then
     movement[2] = config.getParameter("wanderRiseSpeed")
   elseif self.sensors.downSensors.collision.any(true) then
     movement[2] = -config.getParameter("wanderGlideSpeed")

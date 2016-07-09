@@ -150,9 +150,9 @@ function update(dt)
 
   if self.debug then
     if attacking() then
-      world.debugText(self.attackState.stateDesc(), object.toAbsolutePosition({ 0, 2 }), "red")
+      world.debugText(self.attackState.stateDesc(), monster.toAbsolutePosition({ 0, 2 }), "red")
     elseif self.state.hasState() then
-      world.debugText(self.state.stateDesc(), object.toAbsolutePosition({ 0, 2 }), "blue")
+      world.debugText(self.state.stateDesc(), monster.toAbsolutePosition({ 0, 2 }), "blue")
     end
 
     for i, groundSensorIndex in ipairs({ 3, 2, 1 }) do

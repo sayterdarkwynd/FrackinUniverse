@@ -41,7 +41,7 @@ function glideState.update(dt, stateData)
     vector[1] = -vector[1]
   end
 
-  -- util.debugLine(mcontroller.position(), object.toAbsolutePosition(vector), "cornflowerblue")
+  -- util.debugLine(mcontroller.position(), monster.toAbsolutePosition(vector), "cornflowerblue")
   mcontroller.controlFly(vec2.mul(vector, mcontroller.baseParameters().flySpeed), true)
 
   return false

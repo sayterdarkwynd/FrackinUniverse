@@ -46,10 +46,10 @@ function stompAttack.run(stateData)
   end)
 
   local entityId = entity.id()
-  local power = stompAttack.baseDamage * entity.level() / 2
+  local power = stompAttack.baseDamage * monster.level() / 2
   local bounds = config.getParameter("metaBoundBox")
-  world.spawnProjectile("defensiveexplosion", object.toAbsolutePosition({ bounds[1] - stompAttack.projectileOffsetX, bounds[2] }), entityId, { -1, 0 }, false, { power = power })
-  world.spawnProjectile("defensiveexplosion", object.toAbsolutePosition({ bounds[3] + stompAttack.projectileOffsetX, bounds[2] }), entityId, { 1, 0 }, false, { power = power })
+  world.spawnProjectile("defensiveexplosion", monster.toAbsolutePosition({ bounds[1] - stompAttack.projectileOffsetX, bounds[2] }), entityId, { -1, 0 }, false, { power = power })
+  world.spawnProjectile("defensiveexplosion", monster.toAbsolutePosition({ bounds[3] + stompAttack.projectileOffsetX, bounds[2] }), entityId, { 1, 0 }, false, { power = power })
 
   animator.setAnimationState("movement", "idle")
   util.wait(stompAttack.cooldownTime)

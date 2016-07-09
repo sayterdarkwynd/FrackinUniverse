@@ -63,9 +63,9 @@ function meleeAttack.update(dt, stateData)
   mcontroller.controlFace(self.toTarget[1])
   
   if stateData.didAttack == false and attackCompletion >= 0.25 then
-    local projectileStartPosition = object.toAbsolutePosition(stateData.projectileSourcePosition)
+    local projectileStartPosition = monster.toAbsolutePosition(stateData.projectileSourcePosition)
     local projectileName = config.getParameter("meleeProjectile") or config.getParameter("meleeAttack.projectile")
-    local power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * config.getParameter("meleeAttack.power")
+    local power = root.evalFunction("monsterLevelPowerMultiplier", monster.level()) * config.getParameter("meleeAttack.power")
     world.spawnProjectile(projectileName, projectileStartPosition, entity.id(), {mcontroller.facingDirection(), 0}, true, {speed = 7.0, power = power})
     stateData.didAttack = true
   end

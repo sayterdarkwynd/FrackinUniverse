@@ -43,7 +43,7 @@ function digGritAttack.run(stateData)
       local fireVector = util.aimVector(toTarget, config.getParameter("digGritAttack.speed"), root.projectileGravityMultiplier("rock"), true)
       world.spawnProjectile("rock", sourcePosition, entity.id(), fireVector, false, {
         speed = config.getParameter("digGritAttack.speed"),
-        power = root.evalFunction("monsterLevelPowerMultiplier", entity.level()) * config.getParameter("digGritAttack.power"),
+        power = root.evalFunction("monsterLevelPowerMultiplier", monster.level()) * config.getParameter("digGritAttack.power"),
         physics = "bullet",
         actionOnReap = {
           {

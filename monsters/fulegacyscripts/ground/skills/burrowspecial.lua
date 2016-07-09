@@ -37,13 +37,13 @@ function burrowSpecial.canJumpUp()
   local pos = mcontroller.position()
 
   -- world.debugLine(pos, {pos[1], pos[2] + jumpHeight() + bb[4]}, "#FF00FF")
-  -- world.debugLine({pos[1], pos[2] + jumpHeight() + bb[2]}, object.toAbsolutePosition({ bb[3] + 2, jumpHeight() + bb[2]}), "#FF00FF")
+  -- world.debugLine({pos[1], pos[2] + jumpHeight() + bb[2]}, monster.toAbsolutePosition({ bb[3] + 2, jumpHeight() + bb[2]}), "#FF00FF")
 
   local upLine = { pos, {pos[1], pos[2] + jumpHeight() + bb[4]} }
   if world.lineTileCollision(upLine[1], upLine[2]) then
     canJumpUp = false
   else
-    local overLine = { {pos[1], pos[2] + jumpHeight() + bb[2]}, object.toAbsolutePosition({ bb[3] + 2, jumpHeight() + bb[2]})  }
+    local overLine = { {pos[1], pos[2] + jumpHeight() + bb[2]}, monster.toAbsolutePosition({ bb[3] + 2, jumpHeight() + bb[2]})  }
     canJumpUp = not world.lineTileCollision(overLine[1], overLine[2])
   end
 
@@ -98,11 +98,11 @@ function burrowSpecial.update(dt, stateData)
 
       local digPosition
       if self.toTarget[2] > 1.5 then
-        digPosition = object.toAbsolutePosition({1.75, 1.0})
+        digPosition = monster.toAbsolutePosition({1.75, 1.0})
       elseif self.toTarget[2] < -1.5 then
-        digPosition = object.toAbsolutePosition({1.75, 0.0})
+        digPosition = monster.toAbsolutePosition({1.75, 0.0})
       else
-        digPosition = object.toAbsolutePosition({1.75, -1.5})
+        digPosition = monster.toAbsolutePosition({1.75, -1.5})
       end
 
 

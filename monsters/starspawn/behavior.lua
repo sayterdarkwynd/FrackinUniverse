@@ -61,16 +61,16 @@ function die()
     local size = config.getParameter("poSize")
 
     if size == "medium" then
-      local entityId = world.spawnMonster("microslime", object.toAbsolutePosition({ -1, 4 }), { level = entity.level() })
+      local entityId = world.spawnMonster("microslime", monster.toAbsolutePosition({ -1, 4 }), { level = monster.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", -1)
 
-      entityId = world.spawnMonster("microslime", object.toAbsolutePosition({ 1, 4 }), { level = entity.level() })
+      entityId = world.spawnMonster("microslime", monster.toAbsolutePosition({ 1, 4 }), { level = monster.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", 1)
     elseif size == "large" then
-      local entityId = world.spawnMonster("microslime", object.toAbsolutePosition({ -1, 3 }), { level = entity.level() })
+      local entityId = world.spawnMonster("microslime", monster.toAbsolutePosition({ -1, 3 }), { level = monster.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", -1)
 
-      entityId = world.spawnMonster("microslime", object.toAbsolutePosition({ 1, 3 }), { level = entity.level() })
+      entityId = world.spawnMonster("microslime", monster.toAbsolutePosition({ 1, 3 }), { level = monster.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", 1)
     end
   end
