@@ -1,0 +1,28 @@
+{
+  "id" : "1boozekit.gearup",
+  "title" : "^#1693d5;Making a Booze Kit",
+  "text" : "So you want to make your own booze? Great! I'll help you. You must start by crafting a ^green;Booze Kit^white;. Place it against a wall and you can start your path to becoming a Brew Master!",
+  "completionText" : "Your path to brewing enlightment has started. Before we really start with the alcohol though, you must first use the Booze Kit to craft the other stations you'll require.",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [  
+    [ [ "biospore", 5 ] ]  
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "2brew_a.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "boozekit" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

@@ -1,0 +1,23 @@
+  {
+  "id" : "shoggothunlock.gearup",
+  "requiredShipLevel" : 3,
+  "prerequisites" : [ "kelpquest.gearup" ],
+  "title" : "^#1693d5;The Dark Edge of Space",
+  "text" : "A research outpost on the edge of known space was set up to monitor and test odd readings emanating from the moon there. We've lost contact with them. I wonder, could you ^orange;Investigate and learn what happened^white;?",
+  "completionText" : "Use the coordinates to find the place. Please use caution. One never knows what lurks in the Fringe.",
+  "speaker" : "questGiver",
+  "moneyRange" : [0,0],
+  "rewards" : [ ],
+  "completionCinema" : "/cinematics/coordinates.cinematic",
+  "canBeAbandoned" : false,
+  "questGiverIndicator" : "mainquestgiver",
+  "questReceiverIndicator" : "mainquestreceiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "associatedMission" : "shoggothdungeonarrival",
+    "requireTurnIn" : false,
+    "followUp" : "shoggoth1.gearup"
+  }
+}

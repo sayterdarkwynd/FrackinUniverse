@@ -1,0 +1,24 @@
+{
+  "id" : "lazulite.gearup",
+  "title" : "^#1693d5;Lazulien",
+  "text" : "I've located some ^orange;Lazulite^white;. I can smelt or extract it to produce magnesium, and more.",
+  "completionText" : "While not essential, having a source of Lazulite can prove useful in a bind, as sometimes you just can't find Magnesite.",
+  "speaker" : "player",
+  "moneyRange" : [100, 200],
+  "rewards" : [],
+
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "requireTurnIn" : false,
+    "gatherRequirements" : {
+      "items" : {
+        "lazuliteore" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}

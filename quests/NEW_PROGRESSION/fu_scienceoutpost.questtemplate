@@ -1,0 +1,47 @@
+{
+  "id" : "fu_scienceoutpost",
+  "title" : "^green;A Voyage into Science",
+  "text" : "Greetings and salutations. You seem a wise one, perhaps a ^orange;scientist^white; looking to expand their horizons. Visit us at the ^green;Cygnus Research Laboratory^white; if you seek enlightenment.",
+  "completionText" : "You sorted him out for me? Thanks, now I'm back in business! ^green;Come speak to me if you want a ^orange;Dubloon^green; to hire a penguin merc^white;.",
+  "moneyRange" : [50, 50],
+  "rewards" : [
+    [ [ "rewardbag", 1 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/instance.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : {
+        "portrait" : [ {"image" : "/objects/outpost/penguinbar/penguinbarportrait.png"} ],
+        "title" : "Bartender"
+      },
+      "questComplete" : {
+        "portrait" : [ {"image" : "/objects/outpost/penguinbar/penguinbarportrait.png"} ],
+        "title" : "Bartender"
+      }
+    },
+
+    "descriptions" : {
+      "enterInstance" : "Talk to the ^orange;Bartender^reset; to go to ^orange;Dreadwing^reset;",
+      "findGoal" : "Defeat ^orange;Dreadwing^reset;",
+      "turnIn" : "Return to the ^orange;Bartender^reset; at the ^orange;Outpost^reset;"
+    },
+
+    "associatedMission" : "missionpenguin1",
+
+    "warpEntityUid" : "penguinbartop",
+    "warpAction" : "instanceworld:penguinmission1",
+    "warpDialog" : "/interface/confirmation/teleportconfirmation.config:penguinmission1",
+    "warpDialogPortrait" : [ {"image" : "/objects/outpost/penguinbar/penguinbarportrait.png"} ],
+
+    "goalTrigger" : "message",
+    "triggerMessage" : "dreadwingDeath",
+
+    "goalEntityUid" : "dreadwing",
+    "indicateGoal" : false,
+    "trackGoalEntity" : false,
+
+    "turnInEntityUid" : "penguinbartop"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id" : "3powersensor.gearup",
+  "prerequisites" : [ "2battery.gearup" ],
+  "title" : "^#1693d5;Sensing Power",
+  "text" : "To check your power levels you'll need a ^orange;power sensor^white;. Build one now.",
+  "completionText" : "Now ^green;press T^white; and ^orange;connect red slot on the sensor to red slot on a solar panel^white;.",
+  "speaker" : "questGiver",
+  "moneyRange" : [60, 110],
+  "rewards" : [  
+ 
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "4hydroponics.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "isn_powersensor" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

@@ -1,0 +1,39 @@
+{
+  "id" : "7distill.gearup",
+  "prerequisites" : [ "6beer.gearup" ],
+  "title" : "^#1693d5;Distillation",
+  "text" : "Let's get what we need for our next beverage. Mash some ^orange;apples, pears, grapes and peach^white;.",
+  "completionText" : "Now let's move on to something a little harder. Something with some oomph!",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "8spirits.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "applemash" : {
+          "count" : 1,
+          "consume" : false
+        },
+        "pearmash" : {
+          "count" : 1,
+          "consume" : false
+        },
+        "grapemash" : {
+          "count" : 1,
+          "consume" : false
+        },
+        "peachmash" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

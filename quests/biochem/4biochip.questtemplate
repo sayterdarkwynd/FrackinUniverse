@@ -1,0 +1,27 @@
+{
+  "id" : "4biochip.gearup",
+  "prerequisites" : [ "3fertilizer.gearup" ],
+  "title" : "^#1693d5;Bio-Chip",
+  "text" : "^orange;Bio-Chips^white; can be invaluable in crafting, as they can give biological traits to gear. ^orange;Create one in your Chem Lab^white;!",
+  "completionText" : "Good work. Keep some of these in stock, you'll need them!",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "5mutavisksilk.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "biochip" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

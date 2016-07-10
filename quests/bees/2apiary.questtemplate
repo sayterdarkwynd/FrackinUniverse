@@ -1,0 +1,27 @@
+{
+  "id" : "2apiary.gearup",
+  "prerequisites" : [ "1beestation.gearup" ],
+  "title" : "^#1693d5;House of Bees",
+  "text" : "Before you take care of bees, you need a place to put them. Build an ^orange;Apiary^white; for this.",
+  "completionText" : "The ^orange;apiary^white; is essential for a beekeeper. You'll likely want more than one. You need them to breed your little buddies.",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "3basicframe.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "normalapiary" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

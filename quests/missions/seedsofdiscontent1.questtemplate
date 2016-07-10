@@ -1,0 +1,30 @@
+{
+  "id" : "seedsofdiscontent1.gearup",
+  "prerequisites" : [ ],
+  "title" : "^#1693d5;Seeds of Discontent I",
+  "text" : "I love spicy foods, but nothing is hot enough. I'd love to try ^orange;Ignus Chili^white;. I'd be rather grateful to obtain a few seeds, so that I can try some!",
+  "completionText" : "I guess we'll see if this is hot enough.",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [  [ "ffskullcap-recipe", 1 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "seedsofdiscontent2.gearup",
+    "requireTurnIn" : true,
+    "gatherRequirements" : {
+      "items" : {
+        "ignuschiliseed" : {
+          "count" : 3,
+          "consume" : true
+        }
+      }
+    }
+  }
+}
+
+ 
+
