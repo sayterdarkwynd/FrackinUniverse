@@ -1,0 +1,31 @@
+{
+  "name" : "fuwalljump",
+  "type" : "legs",
+
+  "scripts" : ["walljump.lua"],
+  "animator" : "walljump.animation",
+
+  "description" : "Lets you slide and jump off vertical walls!",
+  "shortDescription" : "Wall Jump",
+  "rarity" : "Legendary",
+  "icon" : "/tech/walljump.png",
+
+  "chipCost" : 12,
+
+  "multiJumpCount" : 2,
+
+  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallDetectThreshold" : 1,
+
+  "wallReleaseTime" : 0.25,
+
+  "wallGrabFreezeTime" : 0.25,
+  "wallJumpXVelocity" : 20,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1.2
+    },
+    "airForce" : 0,
+    "airFriction" : 10.0
+  }
+}

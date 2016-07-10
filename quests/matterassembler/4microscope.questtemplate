@@ -1,0 +1,29 @@
+{
+  "id" : "4microscope.gearup",
+  "prerequisites" : [ "fu_intro1.gearup" ],
+  "title" : "^#1693d5;Microscope",
+  "text" : "You will need to investigate things up very, very close. What's better for that than a ^orange;microscope^white;? Build one now at the ^orange;Matter Assembler^white;.",
+  "completionText" : "That's...actually really quite an amazing quality piece right there. ^green;Keep that microscope for your ^orange;Xeno Lab^white;. Let's move on to plastic.",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [ [ "silk", 5 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "5apexpod.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "microscope" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

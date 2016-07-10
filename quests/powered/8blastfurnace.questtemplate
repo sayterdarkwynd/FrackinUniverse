@@ -1,0 +1,29 @@
+{
+  "id" : "8blastfurnace.gearup",
+  "prerequisites" : [ "7atmoscondenser.gearup" ],
+  "title" : "^#1693d5;Blast Furnace",
+  "text" : "If you really want to power-up your resource gathering, ^green;build a ^orange;Blast Furnace^white; in the assembler^white;. It's a power-hungry beast but well worth the effort to make it! Bring the completed station here. I need proof that you pulled it off!",
+  "completionText" : "While a hog on power, you can generate quite a decent supply of resources. Build its big brother the ^green;Arc Smelter^white; and you'll be even better off! You're on your own now. Good luck!",
+  "speaker" : "questGiver",
+  "moneyRange" : [90, 150],
+  "rewards" : [  
+    [ [ "isn_battery_t1" ] ]  
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "requireTurnIn" : true,
+    "gatherRequirements" : {
+      "items" : {
+        "fu_blastfurnace" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

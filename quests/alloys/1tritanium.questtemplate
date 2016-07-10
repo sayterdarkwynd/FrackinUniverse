@@ -1,0 +1,29 @@
+{
+  "id" : "1tritanium.gearup",
+  "prerequisites" : [ ],
+  "title" : "^#1693d5;Advanced Alloys I : Tritanium",
+  "text" : "You've certainly got the basics down for creating metals. So why not step it up a bit and get into some really weird stuff? Let's create your first super-alloy. Find the materials for a ^orange;Tritanium bar^white;, and make one in your ^orange;Fission Furnace^white;.",
+  "completionText" : "Not too tough...just a bit resource intensive! Trust me when I say the alloys we'll be making are very, very useful. Well worth the cost in the long-run. Let's move on to the next one!",
+  "speaker" : "questGiver",
+  "moneyRange" : [110, 330],
+  "rewards" : [
+    [ [ "helium3gasliquid", 60 ] ]  
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "2isogen.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "tritaniumbar" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

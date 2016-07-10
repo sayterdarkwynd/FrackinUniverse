@@ -1,0 +1,27 @@
+{
+  "id" : "4geneticmaterial.gearup",
+  "prerequisites" : [ "3tissueculture.gearup" ],
+  "title" : "^#1693d5;Genetic Material",
+  "text" : "^orange;Genetic Material^white; is easy enough to find, if you look at the right sources. ^orange;Seeds^white; are often the best source. ^orange;Meat^white; works well, too. Alternatively, you can hunt game.",
+  "completionText" : "Your best bets for this material will be up to you to discover. I've heard Bloodstone planets are a limitless source. You could check one out.",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "5methanol.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "geneticmaterial" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

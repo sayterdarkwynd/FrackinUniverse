@@ -1,0 +1,27 @@
+{
+  "id" : "1nutrientpaste.gearup",
+  "prerequisites" : [ "extractionlab.gearup" ],
+  "title" : "^#1693d5;Nutrient Paste",
+  "text" : "^orange;Nutrient Paste^white; is something you'll need a lot of. Fortunately, it's abundant. ^green;Dig 50 ^orange;dirt^green;, extract from it and voila^white;!",
+  "completionText" : "You'll found countless other sources for this resource in your exploration of the cosmos.",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "2rawminerals.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "nutrientpaste" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

@@ -1,0 +1,29 @@
+{
+  "id" : "1wire.gearup",
+  "prerequisites" : [ "fu_intro2.gearup" ],
+  "title" : "^#1693d5;Wire",
+  "text" : "Thanks to our communicators, I'll be able to check what you do in your lab remotely. Now, let's start working! If you're going to build the more complicated gear the ^orange;Matter Assembler^white; can handle, you'll need ^orange;5 Wire^white;. ^green;Make some^white;.",
+  "completionText" : "Without ^orange;wire^white;, you'll have serious issues creating circuits and technology. They are essential for a working laboratory. Take this mining gun. It's a great alternative to the Matter Manipulator, and you can upgrade it in a nanofabricator!",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [ [ "basicminer" ]  ] 
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "2circuitboard.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "wire" : {
+          "count" : 5,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

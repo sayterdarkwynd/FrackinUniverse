@@ -1,0 +1,26 @@
+{
+  "id" : "assassinsplight3.gearup",
+  "prerequisites" : [ "assassinsplight2.gearup" ],
+  "title" : "^#1693d5;Assassin's Plight III",
+  "text" : "Now I needss ssome armor. Can you makess me a ^orange;Graphene Helm^white;?",
+  "completionText" : "Excellentss! Thankss for your help! I promises not to killss you! But I gives you this blueprint to kills otherses!",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [ [ "biopistol-recipe", 1 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "requireTurnIn" : true,
+    "gatherRequirements" : {
+      "items" : {
+        "graphenehead" : {
+          "count" : 1,
+          "consume" : true
+        }
+      }
+    }
+  }
+}

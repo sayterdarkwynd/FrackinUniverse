@@ -1,0 +1,27 @@
+{
+  "id" : "3fertilizer.gearup",
+  "prerequisites" : [ "2mineralsample.gearup" ],
+  "title" : "^#1693d5;Fertilizer",
+  "text" : "You can't accomplish much without ^orange;Fertilizer^white;. Always have some on hand. You'll need ^orange;Ammonium sulphate^white;, ^orange;Sulphur^white;, ^orange;Salt^white; and ^orange;Methanol^white; to make it.",
+  "completionText" : "Good. Now let's make a more complex product.",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "followUp" : "5mutavisksilk.gearup",
+    "gatherRequirements" : {
+      "items" : {
+        "ff_fertilizer" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+

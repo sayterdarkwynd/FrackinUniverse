@@ -1,0 +1,29 @@
+{
+  "id" : "1copperplate.gearup",
+  "prerequisites" : [ "powerpress.gearup" ],
+  "title" : "^#1693d5;Copper Plate",
+  "text" : "It doesn't take a rocket scientist to use the Power Press. Put some copper in there and make ^orange;Copper Plate^white;. I will mock you if you fail. Loudly.",
+  "completionText" : "Good. You can put metal in a slot and press a button. Now try making other plates. There are many types to be found!",
+  "speaker" : "questGiver",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [ [ "helium3gasliquid", 60 ] ]  
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "requireTurnIn" : true,
+    "gatherRequirements" : {
+      "items" : {
+        "copperplate" : {
+          "count" : 1,
+          "consume" : false
+        }
+      }
+    }
+  }
+}
+
+ 
+
