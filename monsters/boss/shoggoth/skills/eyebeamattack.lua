@@ -59,7 +59,7 @@ function eyeBeamAttack.update(dt, stateData)
       end
       stateData.windupTimer = stateData.windupTimer - dt
       if stateData.windupTimer  < 0 then
-          world.logInfo("Help, I'm stuck in windup.")
+          --sb.logInfo("Help, I'm stuck in windup.")
           entity.setLightActive("beam1", true)
           animator.setAnimationState("firstBeams", "active")
           
@@ -72,7 +72,7 @@ function eyeBeamAttack.update(dt, stateData)
       return flase
     -- phase 2 - active (????)
     elseif stateData.timer > 0 then
-      world.logInfo("Help I'm stuck blasting")
+     -- world.logInfo("Help I'm stuck blasting")
       eyeBeamAttack.blast(entity.targetSnapshot)
       stateData.timer = stateData.timer - dt
       if stateData.timer < 0 then
