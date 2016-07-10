@@ -6,7 +6,7 @@ end
 function update(dt)
   animator.setFlipped(mcontroller.facingDirection() == -1)
   if status.resourcePercentage("health") < 0.099 then
-	world.logInfo("Rescuing!")
+	sb.logInfo("Rescuing!")
 	mcontroller.setPosition(rescuePosition)
 	status.setResourcePercentage("health", 0.100)
   end
@@ -21,7 +21,7 @@ end
 -- Dumps value as a string
 -- 
 -- Basic usage: dump(value)
--- e.g. world.logInfo(dump(_ENV))
+-- e.g. sb.logInfo(dump(_ENV))
 --
 -- @param value The value to be dumped.
 -- @param indent (optional) String used for indenting the dumped value.

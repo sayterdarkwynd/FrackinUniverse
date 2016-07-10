@@ -15,8 +15,8 @@ end
 
 function checkSplice(args)
     local items = world.containerItems(entity.id())
-   --[[ world.logInfo("ITEM IS: %s", items)	for k, v in pairs(items) do
-	    world.logInfo("Item: %s", v)
+   --[[ sb.logInfo("ITEM IS: %s", items)	for k, v in pairs(items) do
+	    sb.logInfo("Item: %s", v)
 	end]]--
     if items[1]~=null and items[2]~=null and
        items[1].name == "sapling" and items[2].name == "sapling" then

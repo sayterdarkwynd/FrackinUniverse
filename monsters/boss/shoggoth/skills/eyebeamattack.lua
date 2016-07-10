@@ -59,8 +59,8 @@ function eyeBeamAttack.update(dt, stateData)
       end
       stateData.windupTimer = stateData.windupTimer - dt
       if stateData.windupTimer  < 0 then
-          --sb.logInfo("Help, I'm stuck in windup.")
-          entity.setLightActive("beam1", true)
+          sb.logInfo("Help, I'm stuck in windup.")
+          animator.setLightActive("beam1", true)
           animator.setAnimationState("firstBeams", "active")
           
           -- rotate the eyebeam animation to aim at user
@@ -72,12 +72,12 @@ function eyeBeamAttack.update(dt, stateData)
       return flase
     -- phase 2 - active (????)
     elseif stateData.timer > 0 then
-     -- world.logInfo("Help I'm stuck blasting")
+      sb.logInfo("Help I'm stuck blasting")
       eyeBeamAttack.blast(entity.targetSnapshot)
       stateData.timer = stateData.timer - dt
       if stateData.timer < 0 then
         animator.setAnimationState("firstBeams", "winddown")
-        entity.setLightActive("beam1", false)
+        animator.setLightActive("beam1", false)
 
       end
       return false

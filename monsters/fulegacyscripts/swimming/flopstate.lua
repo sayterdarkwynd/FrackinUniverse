@@ -13,7 +13,7 @@ function flopState.enterWith(parameters)
 end
 
 function flopState.enteringState(stateData)
-  -- world.logInfo("Entering flop state")
+  -- sb.logInfo("Entering flop state")
   
   animator.setAnimationState("movement", "flopping")
 end

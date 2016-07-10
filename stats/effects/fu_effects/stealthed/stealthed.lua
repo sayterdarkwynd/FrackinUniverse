@@ -15,7 +15,7 @@ end
 function checkDamage(notifications)
   for _,notification in pairs(notifications) do
     if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
-      -- world.logInfo("break stealth")
+      -- sb.logInfo("break stealth")
       breakStealth()
       return
     end
@@ -47,7 +47,7 @@ function update(dt)
     local stealthTransparency = string.format("%X", math.max(math.floor(100 - 50*world.lightLevel(mcontroller.position())), 50))
     if string.len(stealthTransparency) == 1 then stealthTransparency = "0"..stealthTransparency end
     effect.setParentDirectives("multiply=ffffff"..stealthTransparency)
-    --world.logInfo("Light: %s, Speed: %s, Sum: %s", world.lightLevel(mcontroller.position()), vec2.mag(mcontroller.velocity()), stealthCost/args.dt)
+    --sb.logInfo("Light: %s, Speed: %s, Sum: %s", world.lightLevel(mcontroller.position()), vec2.mag(mcontroller.velocity()), stealthCost/args.dt)
 
   else  
     effect.expire()
