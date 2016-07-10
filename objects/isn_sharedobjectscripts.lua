@@ -1,32 +1,32 @@
 function isn_getAllDevicesConnectedOnNode(node,direction)
-	---world.logInfo("GENERAL GET DEVICE ON NODE DEBUG aka GGDOND")
-	---world.logInfo("GGDOND: called by " .. world.entityName(entity.id()))
+	---sb.logInfo("GENERAL GET DEVICE ON NODE DEBUG aka GGDOND")
+	---sb.logInfo("GGDOND: called by " .. world.entityName(entity.id()))
 	if node == nil then return nil end
 	
 	local nodeID
 	if direction == "outbound" then nodeID = entity.getOutboundNodeIds(node)
 	else nodeID = entity.getInboundNodeIds(node) end
 	if nodeID == nil then
-		---world.logInfo("GGDOND: Node with ID " .. node .. " does not exist, terminating with nil")
+		---sb.logInfo("GGDOND: Node with ID " .. node .. " does not exist, terminating with nil")
 		return nil
 	end
 	
 	---local counter = 0
 	local devices = { }
-	---world.logInfo("GGDOND: Iterating connected devices")
+	---sb.logInfo("GGDOND: Iterating connected devices")
 	for key, value in pairs(nodeID) do
-		---world.logInfo("GGDOND: counter at " .. counter)
-		---world.logInfo("GGDOND: key is " .. key)
+		---sb.logInfo("GGDOND: counter at " .. counter)
+		---sb.logInfo("GGDOND: key is " .. key)
 		---for key2, value2 in pairs(value) do
-		---	world.logInfo("GGDOND: value's key is " .. key2)
-		---	world.logInfo("GGDOND: value's value is " .. value2)
+		---	sb.logInfo("GGDOND: value's key is " .. key2)
+		---	sb.logInfo("GGDOND: value's value is " .. value2)
 		---end
 		---table.insert(devices,value[1])
 		table.insert(devices,key)
 		---counter = counter + 1
 	end
-	---world.logInfo("GGDOND: device count: " .. counter)
-	---world.logInfo("GENERAL GET DEVICE ON NODE DEBUG END")
+	---sb.logInfo("GGDOND: device count: " .. counter)
+	---sb.logInfo("GENERAL GET DEVICE ON NODE DEBUG END")
 	return devices
 end
 

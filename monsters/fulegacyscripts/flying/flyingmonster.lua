@@ -33,10 +33,10 @@ function init()
         if not _ENV[skillName] then
           _ENV[skillName] = _ENV[params.factory](skillName)
         else
-          world.logInfo("Failed to create attack %s from factory %s: Table %s already exists in this context", skillName, params.factory, skillName)
+          sb.logInfo("Failed to create attack %s from factory %s: Table %s already exists in this context", skillName, params.factory, skillName)
         end
       else
-        world.logInfo("Failed to create attack %s from factory %s: factory function does not exist in this context", skillName, params.factory)
+        sb.logInfo("Failed to create attack %s from factory %s: factory function does not exist in this context", skillName, params.factory)
       end
     end
 

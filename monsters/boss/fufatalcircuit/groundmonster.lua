@@ -79,10 +79,10 @@ function init()
           _ENV[skillName] = _ENV[params.factory](skillName)
           table.insert(states, 1, skillName)
         else
-          world.logInfo("Failed to create skill %s from factory %s: Table %s already exists in this context", skillName, params.factory, skillName)
+          sb.logInfo("Failed to create skill %s from factory %s: Table %s already exists in this context", skillName, params.factory, skillName)
         end
       else
-        world.logInfo("Failed to create skill %s from factory %s: factory function does not exist in this context", skillName, params.factory)
+        sb.logInfo("Failed to create skill %s from factory %s: factory function does not exist in this context", skillName, params.factory)
       end
     end
 
@@ -108,7 +108,7 @@ function init()
 
 --lpk: attack sound
       local atksnd = entity.randomizeParameter("attackSound") 
-      if atksnd ~= nil and entity.hasSound(atksnd) then animator.playSound(atksnd) end
+      if atksnd ~= nil and animator.hasSound(atksnd) then animator.playSound(atksnd) end
 
       --increment or reset the attack chain tracker
       if self.skillChains[stateName] then
@@ -125,7 +125,7 @@ function init()
       setAggressive(true, false)
       --lpk: hostile sound
             local hstlsnd = entity.randomizeParameter("turnHostile") 
-            if hstlsnd ~= nil and entity.hasSound(hstlsnd) then animator.playSound(hstlsnd) end
+            if hstlsnd ~= nil and animator.hasSound(hstlsnd) then animator.playSound(hstlsnd) end
       for k,v in pairs(self.skillCooldownTimers) do
         if k == stateName then
           self.skillCooldownTimers[k] = self.skillParameters[k].cooldownTime
@@ -139,7 +139,7 @@ function init()
   monster.setDeathSound("deathPuff")
   monster.setDeathParticleBurst(config.getParameter("deathParticles"))
 
-  -- world.logInfo("Unique Parameters: %s", entity.uniqueParameters())
+  -- sb.logInfo("Unique Parameters: %s", entity.uniqueParameters())
   animator.setGlobalTag("backwards", "")
 
   self.debug = false
@@ -154,7 +154,7 @@ end
 --------------------------------------------------------------------------------
 -- get the skill parameters from the relevant configParameter and make necessary adjustments
 function loadSkillParameters(skillName)
-  -- world.logInfo("%s %s loading parameters for skill %s", entity.type(), entity.id(), skillName)
+  -- sb.logInfo("%s %s loading parameters for skill %s", entity.type(), entity.id(), skillName)
   if type(_ENV[skillName].loadSkillParameters) == "function" then
     return _ENV[skillName].loadSkillParameters()
   elseif config.getParameter(skillName) then
@@ -199,7 +199,7 @@ function loadSkillParameters(skillName)
 
     return params
   else
-    world.logInfo("Unable to load parameters for skill %s!", skillName)
+    sb.logInfo("Unable to load parameters for skill %s!", skillName)
   end
 end
 
@@ -239,7 +239,7 @@ function damage(args)
       --lpk: pain sounds
       if self.painSoundTimer < 0 then
         local painsnd = entity.randomizeParameter("painSound")  
-        if painsnd ~= nil and entity.hasSound(painsnd) then animator.playSound(painsnd) end
+        if painsnd ~= nil and animator.hasSound(painsnd) then animator.playSound(painsnd) end
         self.painSoundTimer = config.getParameter("painSoundTime",2)
       end
     end
@@ -348,7 +348,7 @@ function update(dt)
   else -- lpk: play idle sound maybe
     if self.idleSoundTimer < 0 then 
       local idlesnd = entity.randomizeParameter("idleSound")
-      if idlesnd ~= nil and entity.hasSound(idlesnd) then animator.playSound(idlesnd) end
+      if idlesnd ~= nil and animator.hasSound(idlesnd) then animator.playSound(idlesnd) end
       self.idleSoundTimer = entity.randomizeParameter("idleSoundTime") or 10
     end
   end

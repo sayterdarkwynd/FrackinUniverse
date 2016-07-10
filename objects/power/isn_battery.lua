@@ -21,7 +21,7 @@ function update(dt)
 	local poweroutput = isn_sumPowerActiveDevicesConnectedOnOutboundNode(0)
 	if poweroutput > 0 and storage.currentstoredpower > 0 then
 		storage.currentstoredpower = storage.currentstoredpower - poweroutput
-		-- world.logInfo("Draining " .. poweroutput .. " volts, now at " .. storage.currentstoredpower .. " volts.")
+		-- sb.logInfo("Draining " .. poweroutput .. " volts, now at " .. storage.currentstoredpower .. " volts.")
 	end
 	
 	storage.currentstoredpower = math.min(storage.currentstoredpower, storage.powercapacity)

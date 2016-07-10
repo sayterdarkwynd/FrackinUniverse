@@ -125,7 +125,7 @@ function isn_doSlotDecay(slot)
 	local waste = world.containerItemAt(entity.id(),4)
 	
 	if waste ~= nil then
-		-- world.logInfo("Waste found in slot. Name is " .. waste.name)
+		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
 		if waste.name == "toxicwaste" then
 		  storage.radiation = storage.radiation + 5
 		else

@@ -1,7 +1,7 @@
 function init()
   self = config.getParameter("spawner")
   if not self then
-    world.logInfo("Monster spawner at %s is missing configuration! Prepare for some serious Lua errors!", entity.position())
+    sb.logInfo("Monster spawner at %s is missing configuration! Prepare for some serious Lua errors!", entity.position())
     return
   end
 

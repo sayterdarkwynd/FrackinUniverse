@@ -17,7 +17,7 @@ function wanderState.enter()
 end
 
 function wanderState.enteringState(stateData)
-  -- world.logInfo("Entering wander state")
+  -- sb.logInfo("Entering wander state")
 end
 
 function wanderState.update(dt, stateData)

@@ -1,7 +1,7 @@
 function update(dt)
-  ---world.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
+  ---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
   local powerLevel = isn_getCurrentPowerInput(false)
-  ---world.logInfo("PSRD: powerLevel is " .. powerLevel)
+  ---sb.logInfo("PSRD: powerLevel is " .. powerLevel)
 
   if not powerLevel then
     animator.setAnimationState("num", "invalid")
@@ -10,5 +10,5 @@ function update(dt)
   elseif powerLevel > 19 then
     animator.setAnimationState("num", "excess")
   end
-  ---world.logInfo("POWER SENSOR RUN DEBUG END")
+  ---sb.logInfo("POWER SENSOR RUN DEBUG END")
 end

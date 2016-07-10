@@ -3,15 +3,15 @@ burrowSpecial = {}
 function burrowSpecial.enter()
   -- if hasTarget() and self.skillCooldownTimers["burrowSpecial"] <= 0 and self.onGround then
   --   if not isBlocked() then
-  --     world.logInfo("Can't burrow because NOT BLOCKED")
+  --     sb.logInfo("Can't burrow because NOT BLOCKED")
   --   elseif world.magnitude(self.toTarget) > config.getParameter("burrowSpecial.maxRange") then
-  --     world.logInfo("Can't burrow because TOO FAR (max)")
+  --     sb.logInfo("Can't burrow because TOO FAR (max)")
   --   elseif self.toTarget[2] > 5 or self.toTarget[2] < -5 then
-  --     world.logInfo("Can't burrow because TOO FAR (vertical)")
+  --     sb.logInfo("Can't burrow because TOO FAR (vertical)")
   --   elseif burrowSpecial.canJumpUp() then
-  --     world.logInfo("Can't burrow because CAN JUMP UP")
+  --     sb.logInfo("Can't burrow because CAN JUMP UP")
   --   elseif #world.collisionBlocksAlongLine(mcontroller.position(), world.entityPosition(self.target)) > config.getParameter("burrowSpecial.maxThickness") then
-  --     world.logInfo("Can't burrow because TOO THICKE")
+  --     sb.logInfo("Can't burrow because TOO THICKE")
   --   end
   -- end
 

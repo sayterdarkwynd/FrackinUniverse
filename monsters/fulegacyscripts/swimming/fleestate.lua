@@ -9,7 +9,7 @@ function fleeState.enterWith(params)
 end
 
 function fleeState.enteringState(stateData)
-  -- world.logInfo("Entering flee state")
+  -- sb.logInfo("Entering flee state")
 end
 
 function fleeState.update(dt, stateData)

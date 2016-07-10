@@ -62,10 +62,10 @@ function init()
           _ENV[skillName] = _ENV[params.factory](skillName)
           table.insert(states, 1, skillName)
         else
-          world.logInfo("Failed to create skill %s from factory %s: Table %s already exists in this context", skillName, params.factory, skillName)
+          sb.logInfo("Failed to create skill %s from factory %s: Table %s already exists in this context", skillName, params.factory, skillName)
         end
       else
-        world.logInfo("Failed to create skill %s from factory %s: factory function does not exist in this context", skillName, params.factory)
+        sb.logInfo("Failed to create skill %s from factory %s: factory function does not exist in this context", skillName, params.factory)
       end
     end
 
@@ -169,7 +169,7 @@ function update(dt)
     track()
     
       local atksnd = entity.randomizeParameter("attackSound") 
-      if atksnd ~= nil and entity.hasSound(atksnd) then 
+      if atksnd ~= nil and animator.hasSound(atksnd) then 
         animator.playSound(atksnd) 
       end
      
@@ -208,7 +208,7 @@ end
 --------------------------------------------------------------------------------
 -- get the skill parameters from the relevant configParameter and make necessary adjustments
 function loadSkillParameters(skillName)
-  -- world.logInfo("%s %s loading parameters for skill %s", entity.type(), entity.id(), skillName)
+  -- sb.logInfo("%s %s loading parameters for skill %s", entity.type(), entity.id(), skillName)
   if type(_ENV[skillName].loadSkillParameters) == "function" then
     return _ENV[skillName].loadSkillParameters()
   elseif config.getParameter(skillName) then
@@ -253,7 +253,7 @@ function loadSkillParameters(skillName)
 
     return params
   else
-    world.logInfo("Unable to load parameters for skill %s!", skillName)
+    sb.logInfo("Unable to load parameters for skill %s!", skillName)
   end
 end
 

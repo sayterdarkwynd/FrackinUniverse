@@ -25,11 +25,11 @@ function update(dt)
   entity.setLightColor(config.getParameter("lightColor", {100, 176, 191}))	
 	if itemForUpgrade ~= nil and upgradebleItemsList[root.itemType(itemForUpgrade.name)] and itemForUpgrade.count ~= nil and itemForUpgrade.count == 1 then
 		local isUpgraded = false -- flag, upgrade is not possible or while not done
-		world.logInfo("Trying to upgrade. Name is '" .. itemForUpgrade.name .. "'. root.itemType returns '" .. root.itemType(itemForUpgrade.name) .. "'.")
+		sb.logInfo("Trying to upgrade. Name is '" .. itemForUpgrade.name .. "'. root.itemType returns '" .. root.itemType(itemForUpgrade.name) .. "'.")
 
 		-- Begin SHIELD Item Upgrade
 		if root.itemType(itemForUpgrade.name) == "shield" then
-			--world.logInfo("==> Shield is : %s", itemForUpgrade)
+			--sb.logInfo("==> Shield is : %s", itemForUpgrade)
 			local shieldHLTH = world.containerItemAt(entity.id(), 8)
 			if isApproved(shieldHLTH) then -- upgrade Shield Health
 				world.containerTakeAt(entity.id(), 8) -- clear slot
@@ -57,14 +57,14 @@ function update(dt)
 		-- Begin ARMOR Item Upgrade
 		if root.itemType(itemForUpgrade.name) == "headarmor" or root.itemType(itemForUpgrade.name) == "chestarmor" or root.itemType(itemForUpgrade.name) == "legsarmor" or root.itemType(itemForUpgrade.name) == "backarmor" then
 			if itemForUpgrade.parameters.statusEffects == nil then
-				world.logInfo("==> Armor is : %s", itemForUpgrade)
+				sb.logInfo("==> Armor is : %s", itemForUpgrade)
 				local itemConf = root.itemConfig(itemForUpgrade)
-				-- world.logInfo("==> ItemConf is : %s", itemConf)
+				-- sb.logInfo("==> ItemConf is : %s", itemConf)
 				if itemConf.config == nil and itemConf.statusEffects ~= nil then  -- this for Starbound Stable version 
 					itemForUpgrade.parameters.statusEffects = itemConf.statusEffects
 				elseif itemConf.config.statusEffects ~= nil then -- this for Strbound Unstable nightly version
 					itemForUpgrade.parameters.statusEffects = itemConf.config.statusEffects
-					-- world.logInfo("==> statusEffects is : %s", itemForUpgrade.parameters.statusEffects)
+					-- sb.logInfo("==> statusEffects is : %s", itemForUpgrade.parameters.statusEffects)
 				else
 					itemForUpgrade.parameters.statusEffects = {}
 				end
@@ -161,7 +161,7 @@ function update(dt)
 
 		if isUpgraded then
 			world.containerTakeAt(entity.id(), 0) -- clear Item slot
-			-- world.logInfo("==> New Item is : %s", itemForUpgrade)
+			-- sb.logInfo("==> New Item is : %s", itemForUpgrade)
 			world.containerPutItemsAt(entity.id(), itemForUpgrade, 0)
 		end
 	end
