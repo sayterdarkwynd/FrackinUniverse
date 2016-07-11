@@ -24,11 +24,11 @@ function update(dt)
 	  local rarityroll = math.random(1,100)
 	  local itemlist = {}
 	  if rarityroll == 100 then
-	    getoutput = entity.randomizeParameter("rareOutputs")
+	    getoutput = util.randomFromList(config.getParameter("rareOutputs"))
 	  elseif rarityroll >= 79 then
-	    getoutput = entity.randomizeParameter("uncommonOutputs")
+	    getoutput = util.randomFromList(config.getParameter("uncommonOutputs"))
 	  else
-	    getoutput = entity.randomizeParameter("commonOutputs")
+	    getoutput = util.randomFromList(config.getParameter("commonOutputs"))
 	  end
 	  if math.random(1,100) <= 33 then
         world.containerAddItems(entity.id(), {name = getoutput, count = 1, data={}})

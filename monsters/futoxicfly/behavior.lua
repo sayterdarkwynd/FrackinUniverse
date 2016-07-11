@@ -51,7 +51,7 @@ idleState = {}
 
 function idleState.enter()
   if mcontroller.onGround() or self.sensors.idleLandSensor.collisionTrace.any(true) then
-    return { timer = entity.randomizeParameterRange("idleTimeRange") }
+    return { timer = util.randomInRange(config.getParameter("idleTimeRange")) }
   end
 
   return nil
@@ -77,7 +77,7 @@ moveState = {}
 
 function moveState.enter()
   return {
-    timer = entity.randomizeParameterRange("moveTimeRange"),
+    timer = util.randomInRange(config.getParameter("moveTimeRange")),
     direction = util.randomDirection()
   }
 end

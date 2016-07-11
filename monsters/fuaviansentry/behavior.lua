@@ -42,7 +42,7 @@ function moveState.enter()
   end
 
   return {
-    timer = entity.randomizeParameterRange("moveTimeRange"),
+    timer = util.randomInRange(config.getParameter("moveTimeRange")),
     direction = direction
   }
 end
@@ -66,7 +66,7 @@ end
 cleanState = {}
 
 function cleanState.enter()
-  return { timer = entity.randomizeParameterRange("cleanTimeRange") }
+  return { timer = util.randomInRange(config.getParameter("cleanTimeRange")) }
 end
 
 function cleanState.update(dt, stateData)

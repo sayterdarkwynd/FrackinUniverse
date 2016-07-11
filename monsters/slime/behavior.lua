@@ -156,7 +156,7 @@ function moveState.enter()
   if capturepod.isCaptive() then return nil end
 
   return {
-    timer = entity.randomizeParameterRange("moveTimeRange"),
+    timer = util.randomInRange(config.getParameter("moveTimeRange")),
     direction = util.toDirection(math.random(100) - 50)
   }
 end
@@ -170,7 +170,7 @@ function moveState.update(dt, stateData)
 
   stateData.timer = stateData.timer - dt
   if stateData.timer <= 0 then
-    return true, entity.randomizeParameterRange("moveCooldownTimeRange")
+    return true, util.randomInRange(config.getParameter("moveCooldownTimeRange"))
   end
 
   return false

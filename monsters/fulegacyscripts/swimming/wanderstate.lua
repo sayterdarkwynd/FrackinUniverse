@@ -10,7 +10,7 @@ function wanderState.enter()
   end
 
   if self.wanderTime == nil then
-    self.wanderTime = entity.randomizeParameterRange("wanderTime")
+    self.wanderTime = util.randomInRange(config.getParameter("wanderTime"))
   end
 
   return { }
@@ -26,7 +26,7 @@ function wanderState.update(dt, stateData)
   self.wanderTime = self.wanderTime - dt
   if self.wanderTime <= 0 or util.blockSensorTest("blockedSensors", self.wanderDirection[1]) then
     self.wanderDirection[1] = -self.wanderDirection[1]
-    self.wanderTime = entity.randomizeParameterRange("wanderTime")
+    self.wanderTime = util.randomInRange(config.getParameter("wanderTime"))
   end
 
   move(self.wanderDirection, false)

@@ -8,7 +8,7 @@ function init(args)
     "captiveState"
   })
   self.state.leavingState = function(stateName)
-    animator.setAnimationState("movement", entity.randomizeParameter("idleAnimations"))
+    animator.setAnimationState("movement", util.randomFromList(config.getParameter("idleAnimations")))
   end
 
   monster.setAggressive(false)
@@ -56,7 +56,7 @@ function moveState.enter()
   if capturepod.isCaptive() then return nil end
 
   return {
-    timer = entity.randomizeParameterRange("moveTimeRange"),
+    timer = util.randomInRange(config.getParameter("moveTimeRange")),
     direction = util.randomDirection()
   }
 end
@@ -68,7 +68,7 @@ function moveState.update(dt, stateData)
 
   stateData.timer = stateData.timer - dt
   if stateData.timer <= 0 then
-    return true, entity.randomizeParameterRange("idleTimeRange")
+    return true, util.randomInRange(config.getParameter("idleTimeRange"))
   end
 
   return false
@@ -207,7 +207,7 @@ function captiveState.update(dt, stateData)
     end
 
     if not playingIdleAnimation then
-      animator.setAnimationState("movement", entity.randomizeParameter("idleAnimations"))
+      animator.setAnimationState("movement", util.randomFromList(config.getParameter("idleAnimations")))
     end
   end
 

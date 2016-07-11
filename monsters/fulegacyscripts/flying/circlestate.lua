@@ -8,9 +8,9 @@ function circleState.enter()
 
   return {
     timer = config.getParameter("circleTime"),
-    a = entity.randomizeParameterRange("circleWidthRange"),
+    a = util.randomInRange(config.getParameter("circleWidthRange")),
     b = config.getParameter("circleHeight"),
-    yOffset = entity.randomizeParameterRange("circleOffsetYRange")
+    yOffset = util.randomInRange(config.getParameter("circleOffsetYRange"))
   }
 end
 

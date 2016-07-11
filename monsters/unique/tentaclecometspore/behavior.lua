@@ -80,14 +80,14 @@ idleState = {}
 function idleState.enter()
   if isClosed() then return nil end
 
-  return { timer = entity.randomizeParameterRange("idleBlinkIntervalRange") }
+  return { timer = util.randomInRange(config.getParameter("idleBlinkIntervalRange")) }
 end
 
 function idleState.update(dt, stateData)
   stateData.timer = stateData.timer - dt
   if stateData.timer <= 0 then
     animator.setAnimationState("movement", "blink")
-    stateData.timer = entity.randomizeParameterRange("idleBlinkIntervalRange")
+    stateData.timer = util.randomInRange(config.getParameter("idleBlinkIntervalRange"))
   end
 
   return false

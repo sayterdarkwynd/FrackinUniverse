@@ -13,14 +13,14 @@ function landState.enter()
     return nil
   end
 
-  return { restTime = entity.randomizeParameterRange("landRestTimeRange") }
+  return { restTime = util.randomInRange(config.getParameter("landRestTimeRange")) }
 end
 
 function landState.update(dt, stateData)
   if hasTarget() then return true end
 
   if util.closestValidTarget(config.getParameter("landDisturbDistance")) ~= 0 then
-    return true, entity.randomizeParameterRange("landCooldownTimeRange")
+    return true, util.randomInRange(config.getParameter("landCooldownTimeRange"))
   end
 
   if mcontroller.onGround() then
@@ -28,7 +28,7 @@ function landState.update(dt, stateData)
 
     stateData.restTime = stateData.restTime - dt
     if stateData.restTime < 0.0 then
-      return true, entity.randomizeParameterRange("landCooldownTimeRange")
+      return true, util.randomInRange(config.getParameter("landCooldownTimeRange"))
     end
   else
     animator.setAnimationState("movement", "flying")
