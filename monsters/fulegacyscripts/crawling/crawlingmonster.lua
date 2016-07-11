@@ -508,7 +508,7 @@ function move(delta, run, jumpThresholdX)
       end
 
       if doJump then
-        self.jumpTimer = entity.randomizeParameterRange("jumpTime")
+        self.jumpTimer = util.randomInRange(config.getParameter("jumpTime"))
         jump()
       end
     end

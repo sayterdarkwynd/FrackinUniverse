@@ -168,7 +168,7 @@ function update(dt)
     checkTerritory()
     track()
     
-      local atksnd = entity.randomizeParameter("attackSound") 
+      local atksnd = util.randomFromList(config.getParameter("attackSound"))
       if atksnd ~= nil and animator.hasSound(atksnd) then 
         animator.playSound(atksnd) 
       end
@@ -513,7 +513,7 @@ function move(delta, run, jumpThresholdX)
       end
 
       if doJump then
-        self.jumpTimer = entity.randomizeParameterRange("jumpTime")
+        self.jumpTimer = util.randomInRange(config.getParameter("jumpTime"))
         jump()
       end
     end

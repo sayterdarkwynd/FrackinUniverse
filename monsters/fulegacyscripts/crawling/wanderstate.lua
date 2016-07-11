@@ -6,7 +6,7 @@ function wanderState.enter()
 
   return {
     direction = util.randomDirection(),
-    timer = entity.randomizeParameterRange("wander.moveTimeRange")
+    timer = util.randomInRange(config.getParameter("wander.moveTimeRange"))
   }
 end
 
@@ -22,7 +22,7 @@ function wanderState.update(dt, stateData)
 
   stateData.timer = stateData.timer - dt
   if stateData.timer <= 0 then
-    return true, entity.randomizeParameterRange("wander.moveCooldownRange")
+    return true, util.randomInRange(config.getParameter("wander.moveCooldownRange"))
   else
     return false
   end

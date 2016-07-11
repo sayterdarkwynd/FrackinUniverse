@@ -131,7 +131,7 @@ function update(dt)
         end
       else
         local attackStartDistance = config.getParameter("attackStartDistance")
-      local atksnd = entity.randomizeParameter("attackSound") 
+      local atksnd = util.randomFromList(config.getParameter("attackSound"))
       if atksnd ~= nil and animator.hasSound(atksnd) then animator.playSound(atksnd) end
         if world.magnitude(self.toTarget) <= attackStartDistance and self.attackCooldownTimer <= 0 then
           self.attackState.pickState()

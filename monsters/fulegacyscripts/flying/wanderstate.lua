@@ -8,7 +8,7 @@ function wanderState.enter()
 
   return {
     wanderDirection = mcontroller.facingDirection(),
-    phaseTimer = entity.randomizeParameterRange("wanderRiseTimeRange"),
+    phaseTimer = util.randomInRange(config.getParameter("wanderRiseTimeRange")),
     rising = true
   }
 end
@@ -44,7 +44,7 @@ function wanderState.update(dt, stateData)
     else
       --stop rising and glide
       stateData.rising = false
-      stateData.phaseTimer = entity.randomizeParameterRange("wanderGlideTimeRange")
+      stateData.phaseTimer = util.randomInRange(config.getParameter("wanderGlideTimeRange"))
     end
   else --gliding
     stateData.phaseTimer = stateData.phaseTimer - dt
@@ -63,7 +63,7 @@ function wanderState.update(dt, stateData)
         return true, 0.5
       else
         stateData.rising = true
-        stateData.phaseTimer = entity.randomizeParameterRange("wanderRiseTimeRange")
+        stateData.phaseTimer = util.randomInRange(config.getParameter("wanderRiseTimeRange"))
       end
     end
   end

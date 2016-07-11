@@ -35,7 +35,7 @@ function flopState.update(dt, stateData)
   end
 
   if stateData.jumpTimer <= 0 then
-    stateData.jumpTimer = entity.randomizeParameterRange("flopJumpInterval")
+    stateData.jumpTimer = util.randomInRange(config.getParameter("flopJumpInterval"))
   end
 
   return false

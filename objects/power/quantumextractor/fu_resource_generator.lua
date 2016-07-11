@@ -20,13 +20,13 @@ if self.timer <= 0 then
   local output = nil
   local rarityroll = math.random(1,100)
   if rarityroll == 100 then
-    output = entity.randomizeParameter("rareOutputs")
+    output = util.randomFromList(config.getParameter("rareOutputs"))
     self.timer = 0.05
   elseif rarityroll >= 79 then
-    output = entity.randomizeParameter("uncommonOutputs")
+    output = util.randomFromList(config.getParameter("uncommonOutputs"))
     self.timer = 0.05
   else
-    output = entity.randomizeParameter("commonOutputs")
+    output = util.randomFromList(config.getParameter("commonOutputs"))
     self.timer = 0.05
   end
   

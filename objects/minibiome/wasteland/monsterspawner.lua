@@ -7,7 +7,7 @@ function init()
 
   object.setInteractive(self.trigger == "interact")
   self.position = object.toAbsolutePosition(self.position)
-  storage.cooldown = storage.cooldown or entity.randomizeParameterRange("spawner.frequency")
+  storage.cooldown = storage.cooldown or util.randomInRange(config.getParameter("spawner.frequency"))
   storage.stock = storage.stock or self.stock
 end
 
@@ -23,7 +23,7 @@ function update(dt)
 
     if storage.cooldown <= 0 and ((not self.trigger) or (self.trigger == "wire" and entity.getInboundNodeLevel(0))) then
       spawn()
-      storage.cooldown = entity.randomizeParameterRange("spawner.frequency")
+      storage.cooldown = util.randomInRange(self.frequency)
     end
   end
 end
@@ -41,8 +41,8 @@ function spawn()
     end
 
     if not self.outOfSight or not world.isVisibleToPlayer({spawnPosition[1] - 3, spawnPosition[2] - 3, spawnPosition[1] + 3, spawnPosition[2] + 3}) then
-      local monsterType = entity.randomizeParameter("spawner.monsterTypes")
-      self.monsterParams.level = entity.randomizeParameterRange("spawner.monsterLevel")
+      local monsterType = util.randomFromList(self.monsterTypes)
+      self.monsterParams.level = util.randomInRange(self.monsterLevel)
 
       local monsterId = world.spawnMonster(monsterType, spawnPosition, self.monsterParams)
       if monsterId ~= 0 then

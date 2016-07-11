@@ -5,7 +5,7 @@ function idleState.enter()
   if hasTarget() then return nil end
 
   return {
-    timer = entity.randomizeParameterRange("idle.idleTimeRange")
+    timer = util.randomInRange(config.getParameter("idle.idleTimeRange"))
   }
 end
 

@@ -5,7 +5,7 @@ function fleeState.enterWith(params)
 
   local toTarget = vec2.norm(entity.distanceToEntity(self.target))
 
-  return { timer = entity.randomizeParameterRange("fleeTimeRange"), fleeDirection = {-toTarget[1], -toTarget[2]} }
+  return { timer = util.randomInRange(config.getParameter("fleeTimeRange")), fleeDirection = {-toTarget[1], -toTarget[2]} }
 end
 
 function fleeState.enteringState(stateData)

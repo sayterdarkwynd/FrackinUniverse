@@ -107,7 +107,7 @@ function init()
       self.skillTimer = self.skillParameters[stateName].skillTimeLimit
 
 --lpk: attack sound
-      local atksnd = entity.randomizeParameter("attackSound") 
+      local atksnd = util.randomFromList(config.getParameter("attackSound"))
       if atksnd ~= nil and animator.hasSound(atksnd) then animator.playSound(atksnd) end
 
       --increment or reset the attack chain tracker
@@ -124,7 +124,7 @@ function init()
     if isSkillState(stateName) then
       setAggressive(true, false)
       --lpk: hostile sound
-            local hstlsnd = entity.randomizeParameter("turnHostile") 
+            local hstlsnd = util.randomFromList(config.getParameter("turnHostile"))
             if hstlsnd ~= nil and animator.hasSound(hstlsnd) then animator.playSound(hstlsnd) end
       for k,v in pairs(self.skillCooldownTimers) do
         if k == stateName then
@@ -238,7 +238,7 @@ function damage(args)
       if args.sourceId ~= self.target and args.sourceId ~= 0 then setTarget(args.sourceId) end
       --lpk: pain sounds
       if self.painSoundTimer < 0 then
-        local painsnd = entity.randomizeParameter("painSound")  
+        local painsnd = util.randomFromList(config.getParameter("painSound"))
         if painsnd ~= nil and animator.hasSound(painsnd) then animator.playSound(painsnd) end
         self.painSoundTimer = config.getParameter("painSoundTime",2)
       end
@@ -347,9 +347,9 @@ function update(dt)
   if hasTarget() then script.setUpdateDelta(1)
   else -- lpk: play idle sound maybe
     if self.idleSoundTimer < 0 then 
-      local idlesnd = entity.randomizeParameter("idleSound")
+      local idlesnd = util.randomFromList(config.getParameter("idleSound"))
       if idlesnd ~= nil and animator.hasSound(idlesnd) then animator.playSound(idlesnd) end
-      self.idleSoundTimer = entity.randomizeParameter("idleSoundTime") or 10
+      self.idleSoundTimer = util.randomFromList(config.getParameter("idleSoundTime")) or 10
     end
   end
 

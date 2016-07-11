@@ -67,7 +67,7 @@ function moveState.enter()
   if hasTarget() then return nil end
 
   return {
-    timer = entity.randomizeParameterRange("moveTimeRange"),
+    timer = util.randomInRange(config.getParameter("moveTimeRange")),
     direction = util.randomDirection()
   }
 end

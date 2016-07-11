@@ -10,8 +10,8 @@ function wanderState.enter()
   if hasTarget() or isCaptive() then return nil end
 
   return {
-    wanderTimer = entity.randomizeParameterRange("wanderTime"),
-    wanderMovementTimer = entity.randomizeParameterRange("wanderMovementTime"),
+    wanderTimer = util.randomInRange(config.getParameter("wanderTime")),
+    wanderMovementTimer = util.randomInRange(config.getParameter("wanderMovementTime")),
     wanderFlipTimer = 0,
     movement = util.randomDirection()
   }
@@ -25,15 +25,15 @@ function wanderState.update(dt, stateData)
       storage.basePosition = self.position
     else
       stateData.movement = self.territory
-      stateData.wanderTimer = entity.randomizeParameterRange("wanderTime")
-      stateData.wanderMovementTimer = entity.randomizeParameterRange("wanderMovementTime")
+      stateData.wanderTimer = util.randomInRange(config.getParameter("wanderTime"))
+      stateData.wanderMovementTimer = util.randomInRange(config.getParameter("wanderMovementTime"))
     end
   elseif stateData.movement ~= 0 and (willFall() or isBlocked()) then
     if math.random() < config.getParameter("wanderJumpProbability", 0) then
       controlJump()
     elseif stateData.wanderFlipTimer <= 0 then
       stateData.movement = -stateData.movement
-      stateData.wanderTimer = entity.randomizeParameterRange("wanderTime")
+      stateData.wanderTimer = util.randomInRange(config.getParameter("wanderTime"))
       stateData.wanderFlipTimer = config.getParameter("wanderFlipTimer", 0.5)
     end
   else
