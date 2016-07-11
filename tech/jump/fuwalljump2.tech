@@ -1,0 +1,31 @@
+{
+  "name" : "fuwalljump2",
+  "type" : "legs",
+
+  "scripts" : ["walljump.lua"],
+  "animator" : "walljump.animation",
+
+  "description" : "Lets you slide and jump off vertical walls up to 3 times!",
+  "shortDescription" : "Supreme Wall Jump",
+  "rarity" : "Legendary",
+  "icon" : "/tech/walljump.png",
+
+  "chipCost" : 12,
+
+  "multiJumpCount" : 3,
+
+  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallDetectThreshold" : 1,
+
+  "wallReleaseTime" : 0.25,
+
+  "wallGrabFreezeTime" : 0.25,
+  "wallJumpXVelocity" : 24,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1.3
+    },
+    "airForce" : 0,
+    "airFriction" : 10.0
+  }
+}

@@ -72,9 +72,9 @@ function update(dt)
 end
 
 function isn_getCurrentPowerOutput(divide)
-	---world.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG aka TGCPOD")
+	---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG aka TGCPOD")
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
-	---world.logInfo("TGCPOD: Divisor is " .. divisor)
+	---sb.logInfo("TGCPOD: Divisor is " .. divisor)
 	if divisor < 1 then divisor = 1 end
 	
 	local powercount = 0
@@ -84,9 +84,9 @@ function isn_getCurrentPowerOutput(divide)
 	elseif storage.currentpowerprod > 30 then powercount = 12
 	elseif storage.currentpowerprod > 10 then powercount = 7
 	else powercount = 0 end
-	---world.logInfo("TGCPOD: Powercount is" .. powercount)
+	---sb.logInfo("TGCPOD: Powercount is" .. powercount)
 	
-	---world.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG END")
+	---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG END")
 	if divide == true then return powercount / divisor
 	else return powercount end
 end

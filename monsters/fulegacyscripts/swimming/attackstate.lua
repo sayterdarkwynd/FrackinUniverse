@@ -9,7 +9,7 @@ function attackState.enter()
 end
 
 function attackState.enteringState(stateData)
-  -- world.logInfo("Entering attack state")
+  -- sb.logInfo("Entering attack state")
 end
 
 function attackState.update(dt, stateData)
@@ -22,7 +22,7 @@ function attackState.update(dt, stateData)
   if stateData.stage == "approach" then
     move(toTarget, true)
     if vec2.mag(toTarget) <= config.getParameter("attackStartDistance") then
-      -- world.logInfo("winding up...")
+      -- sb.logInfo("winding up...")
       stateData.stage = "windup"
       stateData.timer = config.getParameter("attackWindupTime")
     end
@@ -30,7 +30,7 @@ function attackState.update(dt, stateData)
     animator.setAnimationState("movement", "swimSlow")
     setBodyDirection(toTarget)
     if stateData.timer <= 0 then
-      -- world.logInfo("charging...")
+      -- sb.logInfo("charging...")
       stateData.stage = "charge"
       animator.setAnimationState("attack", "melee")
       stateData.chargeDirection = toTarget

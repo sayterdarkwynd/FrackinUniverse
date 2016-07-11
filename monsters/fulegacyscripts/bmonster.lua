@@ -23,7 +23,7 @@ function init()
 
   self.collisionPoly = mcontroller.collisionPoly()
 
-  if entity.hasSound("deathPuff") then    
+  if animator.hasSound("deathPuff") then    
     monster.setDeathSound("deathPuff")
   end
   
@@ -124,9 +124,9 @@ function rotate(args, output)
     angle = angle + config.getParameter("rotationOffset", 0)
 
     animator.rotateGroup("all", angle, args.immediate)
-    rotatePoly(entity.currentRotationAngle("all") or 0)
+    rotatePoly(animator.currentRotationAngle("all") or 0)
 
-    diff = ((entity.currentRotationAngle("all") - angle) + 3.14) % 6.28 - 3.14
+    diff = ((animator.currentRotationAngle("all") - angle) + 3.14) % 6.28 - 3.14
     if math.abs(diff) < 0.02 or args.immediate then break end
     coroutine.yield("running")
   end
@@ -178,7 +178,7 @@ function setLightActive(args, output)
   })
   if light == nil or active == nil then return false end
 
-  entity.setLightActive(args.light, args.active)
+  animator.setLightActive(args.light, args.active)
   return true
 end
 
