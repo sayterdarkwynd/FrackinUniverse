@@ -16,7 +16,7 @@ local recipes =
 {inputs = { cthulureward=1, eldertome=1, elderrelic14=1 }, outputs = { deathbringer=1 }, time = 15.0 },
 {inputs = { cthulureward=1, eldertome=1, elderrelic7=1 }, outputs = { shadowburst=1 }, time = 15.0 },
 {inputs = { cthulureward=1, elderrelic6=1, elderrelic8=1 }, outputs = { elderrepeater=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic8=1, elderrelic9=1 }, outputs = { elderwhip=1 }, time = 15.0 }
+{inputs = { nocxiumbar=5, elderrelic2=1, elderrelic7=1 }, outputs = { elderwhip=1 }, time = 15.0 }
 }
 
 function init(args)

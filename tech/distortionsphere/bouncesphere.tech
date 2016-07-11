@@ -1,12 +1,12 @@
 {
-  "name" : "armorsphere",
+  "name" : "bouncesphere",
   "type" : "head",
 
-  "scripts" : ["armorsphere.lua"],
-  "animator" : "armorsphere.animation",
+  "scripts" : ["bouncesphere.lua"],
+  "animator" : "bouncesphere.animation",
 
-  "description" : "Turn into a sphere that helps protect your frail body! ^green;[F]",
-  "shortDescription" : "Armor Sphere",
+  "description" : "A mobile ball capable of great jumping! ^green;[F]",
+  "shortDescription" : "Bounce Sphere",
   "rarity" : "Uncommon",
   "icon" : "/tech/distortionsphere.png",
 
@@ -14,7 +14,7 @@
 
   "animationParts" : {
     "ballGlow" : "distortionsphereglow.png",
-    "ball" : "armorsphere.png"
+    "ball" : "bouncesphere.png"
   },
 
   "transformedMovementParameters" : {
@@ -26,10 +26,10 @@
     "slopeSlidingFactor" : 3.0,
 
     "airJumpProfile" : {
-      "jumpSpeed" : 16,
+      "jumpSpeed" : 36,
       "jumpControlForce" : 1200.0,
-      "jumpInitialPercentage" : 0.5,
-      "jumpHoldTime" : 1.0
+      "jumpInitialPercentage" : 1.2,
+      "jumpHoldTime" : 0.2
     },
 
     "liquidJumpProfile" : {
