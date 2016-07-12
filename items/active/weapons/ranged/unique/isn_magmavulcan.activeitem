@@ -12,17 +12,28 @@
   "itemTags" : ["weapon","ranged","grenadelauncher"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/isn_magmavulcan.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "isn_magmavulcan.png",
+    "middlefullbright" : "isn_magmavulcanfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/weapons/magmablast.ogg" ]
-    }
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [126, 60, 14],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
   },
 
   "baseOffset" : [-0.2, 0.62],
