@@ -13,15 +13,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "6blisterbush.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "mutaviskseed" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "mutaviskseed",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

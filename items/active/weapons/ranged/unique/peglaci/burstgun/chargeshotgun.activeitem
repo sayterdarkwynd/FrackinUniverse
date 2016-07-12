@@ -1,84 +1,60 @@
 {
   "itemName" : "chargeshotgun",
-  "price" : 160,
-  "inventoryIcon" : "chargeshotgun.png",
+  "price" : 1500,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "A reliable shotgun weapon.",
-  "shortdescription" : "Burstgun",
-  "level" : 3,
+  "description" : "A reliable charge weapon.",
+  "shortdescription" : "Scorch Burstgun",
   "tooltipKind" : "gun",
-  "weaponType" : "Shotgun",
-  "itemTags" : ["weapon","ranged","shotgun"],
+  "category" : "uniqueWeapon",
   "twoHanded" : true,
+  "itemTags" : ["weapon","ranged"],
+  "level" : 4,
+  "weaponType" : "Charge Gun",
+  "inventoryIcon" : "chargeshotgunicon.png",
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "chargeshotgun.animation",
   "animationParts" : {
-    "butt" : "",
-    "middle" : "chargeshotgun.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
+    "gun" : "chargeshotgun.png",
+    "gunfullbright" : "chargeshotgunfullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/vashtagun.ogg" ]
+      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
     }
   },
-
-  "baseOffset" : [1.0, 0.32],
-  "muzzleOffset" : [1.645, 0.325],
+  
+  "muzzleOffset" : [1.4, 0.5],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "fire",
 
+  "primaryAbilityType" : "chargefire",
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 0.65,
-    "baseDps" : 9.2,
-    "energyUsage" : 27.5,
-    "inaccuracy" : 0.10,
-
-    "projectileCount" : 3,
-    "fireType" : "auto",
-
-    "projectileType" : "fushotgundart1",
-    "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 3
-    },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
-
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
-
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
-
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+    "chargeLevels" : [
+      {
+        "time" : 0,
+        "energyCost" : 15,
+        "cooldown" : 0.1,
+        "projectileType" : "fushotgundart1",
+        "projectileParameters" : {},
+        "inaccuracy" : 0.008,
+        "baseDamage" : 1.5,
+        "fireSound" : "fire"
+      },
+      {
+        "time" : 1.0,
+        "energyCost" : 40,
+        "cooldown" : 0.5,
+        "projectileType" : "fushotgundartpower",
+        "projectileParameters" : {},
+        "inaccuracy" : 0,
+        "baseDamage" : 7,
+        "fireSound" : "fire2"
+      }
+    ]
   },
-
-  "altAbilityType" : "explosiveburst",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

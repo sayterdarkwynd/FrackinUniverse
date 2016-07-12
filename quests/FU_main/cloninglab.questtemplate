@@ -11,14 +11,17 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
-    "gatherRequirements" : {
-      "items" : {
-        "cloninglab" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "cloninglab",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

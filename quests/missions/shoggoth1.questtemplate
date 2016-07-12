@@ -10,14 +10,17 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     
-    "gatherRequirements" : {
-      "items" : {
-        "wagneridcard" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "wagneridcard",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

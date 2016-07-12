@@ -13,14 +13,17 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "hellfireplantseed" : {
-          "count" : 3,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "hellfireplantseed",
+        "count" : 3,
+        "consume" : true
       }
-    }
+    ]
   }
 }

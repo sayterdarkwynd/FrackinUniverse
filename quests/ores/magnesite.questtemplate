@@ -11,14 +11,17 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "magnesiumore" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "magnesiumore",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

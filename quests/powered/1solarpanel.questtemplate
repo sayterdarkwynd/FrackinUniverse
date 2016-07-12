@@ -13,15 +13,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "2battery.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "isn_solarpanel" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "isn_solarpanel",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

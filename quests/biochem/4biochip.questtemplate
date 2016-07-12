@@ -11,15 +11,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "5mutavisksilk.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "biochip" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "biochip",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

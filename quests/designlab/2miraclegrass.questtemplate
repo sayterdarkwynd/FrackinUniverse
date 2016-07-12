@@ -11,15 +11,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "3thornitox.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "miraclegrassseed" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "miraclegrassseed",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

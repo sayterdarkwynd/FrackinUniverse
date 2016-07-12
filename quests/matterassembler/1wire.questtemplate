@@ -13,15 +13,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "2circuitboard.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "wire" : {
-          "count" : 5,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "wire",
+        "count" : 5,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 
