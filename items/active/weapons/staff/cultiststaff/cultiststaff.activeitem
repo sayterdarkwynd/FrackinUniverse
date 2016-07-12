@@ -1,9 +1,9 @@
 {
   "itemName" : "cultiststaff",
-  "level" : 4,
   "price" : 1440,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "level" : 6,
+  "rarity" : "Legendary",
   "description" : "Fashioned from bones and petrified wood.",
   "shortdescription" : "Cultist's Staff",
   "category" : "staff",
@@ -17,18 +17,86 @@
     "stone" : "",
     "chargeEffect" : "cultiststaffglow.png"
   },
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [185, 24, 42]
+      }
+    },
+    "particleEmitters" : {
+      "physicalcharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "kluexstaff"}
+        ]
+      }
+    },
+
+    "sounds" : {
+      "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
+    }
+  },
 
   "inventoryIcon" : "cultiststaff.png",
 
   "scripts" : ["/items/active/weapons/staff/staff.lua"],
 
-  "elementalType" : "electric",
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
 
-  "primaryAbilityType" : "plasmabarrage",
-  "primaryAbility" : {
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.1,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
 
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
   },
 
-  
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "plasmabarrage",
+  "primaryAbility" : {},
+
+  "altAbilityType" : "plasmabladebarrage",
+  "altAbility" : {},
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

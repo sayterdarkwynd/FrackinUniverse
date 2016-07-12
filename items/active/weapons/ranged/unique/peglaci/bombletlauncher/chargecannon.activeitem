@@ -8,9 +8,9 @@
   "tooltipKind" : "gun",
   "category" : "uniqueWeapon",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged", "grenadelauncher"],
-  "level" : 1,
-  "weaponType" : "Grenade Launcher",
+  "itemTags" : ["weapon","ranged"],
+  "level" : 4,
+  "weaponType" : "Charge Gun",
   "inventoryIcon" : "chargecannonicon.png",
 
   "animation" : "chargecannon.animation",
@@ -18,24 +18,43 @@
     "gun" : "chargecannon.png",
     "gunfullbright" : "chargecannonfullbright.png"
   },
-  
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
     }
   },
   
+  "baseOffset" : [1.2, 0.26],
   "muzzleOffset" : [1.4, 0.5],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
-  "primaryAbilityType" : "chargecannonfire",
+  "primaryAbilityType" : "chargefire",
   "primaryAbility" : {
-    "fireTime" : 1,
-    "baseDps" : 6,
-    "energyUsage" : 34.0 //does not currently use energy. fix.
+    "chargeLevels" : [
+      {
+        "time" : 0,
+        "energyCost" : 5,
+        "cooldown" : 0.1,
+        "projectileType" : "chargecannonshot",
+        "projectileParameters" : {},
+        "inaccuracy" : 0.008,
+        "baseDamage" : 1.5,
+        "fireSound" : "fire"
+      },
+      {
+        "time" : 1.0,
+        "energyCost" : 40,
+        "cooldown" : 0.5,
+        "projectileType" : "chargecannonshotpower",
+        "projectileParameters" : {},
+        "inaccuracy" : 0,
+        "baseDamage" : 7,
+        "fireSound" : "fire2"
+      }
+    ]
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
