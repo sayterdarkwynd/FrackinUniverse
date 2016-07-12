@@ -1,0 +1,92 @@
+{
+  "type" : "oremerchant",
+  "baseType" : "merchant",
+
+  "scriptConfig" : {
+    "questGenerator" : {
+      "pools" : ["normal"]
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+      ]
+    },
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ],
+    
+    "merchant" : {
+      "waitTime" : 40,
+      "storeRadius" : 8,
+      "poolsFile" : "/npcs/merchantpools.config",
+      "categories" : {
+        "override" : ["oremerchant" ]
+      },
+      "buyFactorRange" : [ 2.0, 2.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 20,
+      "behaviorConfig" : { "sleep" : false },
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Ore Merchant",
+          "subtitle" : "  For all your crafting needs!"
+        }
+      }
+    },
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/oremerchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/oremerchant.config:enclosedArea",
+          "otherDeed" : "/dialog/oremerchant.config:otherDeed",
+          "severe" : "/dialog/oremerchant.config:severe",
+          "final" : "/dialog/oremerchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/oremerchant.config:beacon",
+          "rent" : "/dialog/oremerchant.config:rent"
+        }
+      },
+
+      "converse" : "/dialog/oremerchant.config:hail",
+
+      "merchant" : {
+        "start" : "/dialog/oremerchant.config:merchantStart",
+        "end" : "/dialog/oremerchant.config:merchantEnd",
+        "follow" : "/dialog/oremerchant.config:follow",
+        "welcome" : "/dialog/oremerchant.config:welcome",
+        "tout" : "/dialog/oremerchant.config:tout"
+      },
+
+      "flee" : {
+        "helpme" : "/dialog/oremerchant.config:helpme",
+        "helpthem" : "/dialog/oremerchant.config:helpthem",
+        "encourage" : "/dialog/oremerchant.config:encourage",
+        "safe" : "/dialog/oremerchant.config:safe"
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "minerhead", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "chest" : [
+              { "name" : "minerchest", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "legs" : [
+              { "name" : "humantier1pants", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "back" : [
+              { "name" : "lanternstickback", "parameters" : { "colorIndex" : 0 } }
+            ]
+          }
+      ]]
+    ]
+  }
+}
