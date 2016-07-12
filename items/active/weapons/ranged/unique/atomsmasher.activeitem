@@ -12,17 +12,28 @@
   "itemTags" : ["weapon","ranged","rocketlauncher"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/atomsmasher.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "atomsmasher.png",
+    "middlefullbright" : "atomsmasherfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
-    }
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [28, 92, 121],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
   },
 
   "baseOffset" : [0.0, 1.0],

@@ -15,17 +15,27 @@
   "learnBlueprintsOnPickup" : [ "blistergun" ],
   
   
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/blisterpistol.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "blisterpistol.png",
+    "middlefullbright" : "blisterpistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },      
   
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [75, 0, 124] } }  
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [108, 24, 76],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
   },
 
   "baseOffset" : [0.7, 0.2],
