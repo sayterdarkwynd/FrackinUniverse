@@ -13,15 +13,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "seedsofdiscontent3.gearup",
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "ignuschili2seed" : {
-          "count" : 3,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ignuschili2seed",
+        "count" : 3,
+        "consume" : true
       }
-    }
+    ]
   }
 }

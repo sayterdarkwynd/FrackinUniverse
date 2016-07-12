@@ -11,15 +11,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "9alveary.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "waxchunk" : {
-          "count" : 1,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "waxchunk",
+        "count" : 1,
+        "consume" : true
       }
-    }
+    ]
   }
 }
 

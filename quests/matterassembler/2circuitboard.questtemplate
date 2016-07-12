@@ -13,15 +13,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "3armory.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "circuitboard" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "circuitboard",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

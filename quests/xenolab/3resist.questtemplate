@@ -13,16 +13,19 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "4bioluminescent.gearup",
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "gene_resist" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gene_resist",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

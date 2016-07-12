@@ -11,14 +11,17 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "algaegreen" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "algaegreen",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

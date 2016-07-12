@@ -10,14 +10,17 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "zerchesiumore" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "zerchesiumore",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

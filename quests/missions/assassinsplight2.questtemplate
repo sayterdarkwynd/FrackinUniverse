@@ -13,15 +13,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "assassinsplight3.gearup",
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "thornrifle" : {
-          "count" : 1,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "thornrifle",
+        "count" : 1,
+        "consume" : true
       }
-    }
+    ]
   }
 }

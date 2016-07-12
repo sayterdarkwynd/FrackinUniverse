@@ -13,15 +13,18 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "4malt.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "hops" : {
-          "count" : 3,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "hops",
+        "count" : 3,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

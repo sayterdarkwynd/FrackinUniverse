@@ -13,14 +13,17 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
-    "gatherRequirements" : {
-      "items" : {
-        "ff_silicon" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ff_silicon",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

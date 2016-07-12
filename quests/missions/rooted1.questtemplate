@@ -13,16 +13,19 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
     "followUp" : "rooted2.gearup",
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "ff_gasmask" : {
-          "count" : 1,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ff_gasmask",
+        "count" : 1,
+        "consume" : true
       }
-    }
+    ]
   }
 }
 

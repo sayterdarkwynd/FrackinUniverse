@@ -13,14 +13,17 @@
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
-    "gatherRequirements" : {
-      "items" : {
-        "nocxiumbar" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "portraits" : {
+      "questStarted" : "questGiver"
+    },
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "nocxiumbar",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 
