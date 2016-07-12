@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "6powdersifter.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "centrifuge" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "centrifuge",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

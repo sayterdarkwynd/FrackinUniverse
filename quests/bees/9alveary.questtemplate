@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "10industrialcentrifuge.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "normalalveary" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "normalalveary",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

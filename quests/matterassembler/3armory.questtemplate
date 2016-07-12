@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "4microscope.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "armory" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "armory",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

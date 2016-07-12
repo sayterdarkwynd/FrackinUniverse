@@ -15,13 +15,13 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "protociteore" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "protociteore",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "2circuitboard.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "wire" : {
-          "count" : 5,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "wire",
+        "count" : 5,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

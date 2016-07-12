@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "4geneticmaterial.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "tissueculture" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "tissueculture",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

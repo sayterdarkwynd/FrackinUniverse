@@ -15,13 +15,13 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "eridianore" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "eridianore",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

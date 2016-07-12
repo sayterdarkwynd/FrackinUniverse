@@ -14,14 +14,14 @@
     "portraits" : {
       "questStarted" : "questGiver"
     },
-    "gatherRequirements" : {
-      "items" : {
-        "protominer" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "protominer",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

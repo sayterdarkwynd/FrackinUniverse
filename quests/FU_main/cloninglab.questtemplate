@@ -14,14 +14,14 @@
     "portraits" : {
       "questStarted" : "questGiver"
     },
-    "gatherRequirements" : {
-      "items" : {
-        "cloninglab" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "cloninglab",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

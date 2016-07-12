@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "2rawminerals.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "nutrientpaste" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "nutrientpaste",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

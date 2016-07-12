@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "8extractcombs.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "normalcomb" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "normalcomb",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

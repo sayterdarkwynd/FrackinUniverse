@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "2isogen.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "tritaniumbar" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "tritaniumbar",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "2brew_c.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "yeastwater" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "yeastwater",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

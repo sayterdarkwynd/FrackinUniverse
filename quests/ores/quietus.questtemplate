@@ -14,13 +14,13 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "quietusore" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "quietusore",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

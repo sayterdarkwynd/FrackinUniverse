@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "pyreitebar" : {
-          "count" : 5,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "pyreitebar",
+        "count" : 5,
+        "consume" : true
       }
-    }
+    ]
   }
 }
 

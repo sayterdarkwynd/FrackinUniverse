@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "fu_blastfurnace" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_blastfurnace",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

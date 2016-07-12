@@ -13,14 +13,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "2apiary.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "beestation" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "beestation",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

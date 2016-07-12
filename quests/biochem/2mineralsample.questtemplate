@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "3fertilizer.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "mineralsample" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "mineralsample",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

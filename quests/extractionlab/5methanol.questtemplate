@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "6silicon.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "methanol" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "methanol",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

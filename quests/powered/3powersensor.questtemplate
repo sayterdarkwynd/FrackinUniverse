@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "4hydroponics.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "isn_powersensor" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "isn_powersensor",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

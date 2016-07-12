@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "3tissueculture.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "rawminerals" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "rawminerals",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

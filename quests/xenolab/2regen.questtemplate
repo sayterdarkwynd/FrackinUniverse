@@ -18,14 +18,14 @@
     },
     "followUp" : "3resist.gearup",
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "gene_regen" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gene_regen",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "copperplate" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "copperplate",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

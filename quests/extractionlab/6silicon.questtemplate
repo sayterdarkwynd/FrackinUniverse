@@ -16,14 +16,14 @@
     "portraits" : {
       "questStarted" : "questGiver"
     },
-    "gatherRequirements" : {
-      "items" : {
-        "ff_silicon" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ff_silicon",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

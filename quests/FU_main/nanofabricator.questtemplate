@@ -14,14 +14,14 @@
     "portraits" : {
       "questStarted" : "questGiver"
     },
-    "gatherRequirements" : {
-      "items" : {
-        "nanofabricator" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "nanofabricator",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

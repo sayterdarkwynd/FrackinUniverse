@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "3powersensor.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "isn_battery_t1" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "isn_battery_t1",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

@@ -18,14 +18,14 @@
     },
     "followUp" : "4bioluminescent.gearup",
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "gene_resist" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gene_resist",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

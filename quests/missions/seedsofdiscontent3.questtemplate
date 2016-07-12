@@ -17,13 +17,13 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "hellfireplantseed" : {
-          "count" : 3,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "hellfireplantseed",
+        "count" : 3,
+        "consume" : true
       }
-    }
+    ]
   }
 }

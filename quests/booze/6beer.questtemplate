@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "7distill.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "beer" : {
-          "count" : 3,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "beer",
+        "count" : 3,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

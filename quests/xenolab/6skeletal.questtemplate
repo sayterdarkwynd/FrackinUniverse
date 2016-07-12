@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "gene_skeletal" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gene_skeletal",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

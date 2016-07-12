@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "9merrymead.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "spirits" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "spirits",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

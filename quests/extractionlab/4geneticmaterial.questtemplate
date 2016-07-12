@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "5methanol.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "geneticmaterial" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "geneticmaterial",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

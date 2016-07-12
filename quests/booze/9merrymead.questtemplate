@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "meadbottle" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "meadbottle",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

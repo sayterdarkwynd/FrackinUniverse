@@ -18,14 +18,14 @@
     },
     "followUp" : "rooted2.gearup",
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "ff_gasmask" : {
-          "count" : 1,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ff_gasmask",
+        "count" : 1,
+        "consume" : true
       }
-    }
+    ]
   }
 }
 

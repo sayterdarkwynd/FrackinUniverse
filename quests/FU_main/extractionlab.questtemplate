@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
   "followUp" : "1nutrientpaste.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "extractionlab" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "extractionlab",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

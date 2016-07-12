@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "prototyper" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "prototyper",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

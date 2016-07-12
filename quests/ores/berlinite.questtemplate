@@ -15,13 +15,13 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "berliniteore" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "berliniteore",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

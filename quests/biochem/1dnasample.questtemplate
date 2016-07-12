@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "2mineralsample.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "dnasample" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "dnasample",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

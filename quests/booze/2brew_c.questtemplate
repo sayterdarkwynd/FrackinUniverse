@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "2brew_d.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "grapemash" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "grapemash",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

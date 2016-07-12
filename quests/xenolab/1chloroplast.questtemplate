@@ -18,14 +18,14 @@
     },
     "followUp" : "2regen.gearup",
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "gene_chloroplast" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gene_chloroplast",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

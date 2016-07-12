@@ -15,13 +15,13 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : false,
-    "gatherRequirements" : {
-      "items" : {
-        "densiniumore" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "densiniumore",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }

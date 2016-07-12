@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "3pyreite.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "isogenbar" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "isogenbar",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

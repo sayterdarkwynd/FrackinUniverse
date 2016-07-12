@@ -17,13 +17,13 @@
       "questStarted" : "questGiver"
     },
     "requireTurnIn" : true,
-    "gatherRequirements" : {
-      "items" : {
-        "graphenehead" : {
-          "count" : 1,
-          "consume" : true
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "graphenehead",
+        "count" : 1,
+        "consume" : true
       }
-    }
+    ]
   }
 }

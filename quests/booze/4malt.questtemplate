@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "5wort.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "malt" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "malt",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

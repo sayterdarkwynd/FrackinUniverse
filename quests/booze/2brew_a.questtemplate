@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "2brew_b.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "emptybottle2" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "emptybottle2",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

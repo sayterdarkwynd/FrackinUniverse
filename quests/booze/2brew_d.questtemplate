@@ -15,14 +15,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "3hops.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "wartwine" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "wartwine",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 

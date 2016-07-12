@@ -17,14 +17,14 @@
       "questStarted" : "questGiver"
     },
     "followUp" : "5apexpod.gearup",
-    "gatherRequirements" : {
-      "items" : {
-        "microscope" : {
-          "count" : 1,
-          "consume" : false
-        }
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "microscope",
+        "count" : 1,
+        "consume" : false
       }
-    }
+    ]
   }
 }
 
