@@ -12,17 +12,28 @@
   "itemTags" : ["weapon","ranged","grenadelauncher"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "blistergun.png",
+    "middlefullbright" : "blistergunfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3pink.png"
   },
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/gun/burstshot1.ogg" ]
-    }
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [108, 24, 76],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
   },
 
   "baseOffset" : [1.5, 0.0],

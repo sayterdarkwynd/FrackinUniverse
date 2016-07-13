@@ -1,7 +1,7 @@
 {
   "itemName" : "hellfiregun",
   "price" : 500,
-  "inventoryIcon" : "hellfirepistol.png",
+  "inventoryIcon" : "hellfiregun.png",
     "maxStack" : 1,
     "rarity" : "rare",
   "description" : "Built to incinerate.",
@@ -12,16 +12,26 @@
   "itemTags" : ["weapon","ranged","machinepistol"],
   "tooltipKind" : "gun",
   "twoHanded" : false,
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/hellfiregun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "hellfirepistol.png",
+    "middle" : "hellfiregun.png",
+    "middlefullbright" : "hellfiregunfullbright.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },      
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [88, 12, 44] } }  
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [126, 60, 14],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }} 
   },
 
   "baseOffset" : [1.0, -0.2],

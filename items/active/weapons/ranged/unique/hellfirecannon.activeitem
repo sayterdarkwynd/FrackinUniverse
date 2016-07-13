@@ -12,17 +12,28 @@
   "itemTags" : ["weapon","ranged","rocketlauncher"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/hellfirecannon.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "hellfirecannon.png",
+    "middlefullbright" : "hellfirecannonfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
-    }
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [126, 60, 14],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
   },
     "particleEmitters" : {
       "muzzleFlash" : {
