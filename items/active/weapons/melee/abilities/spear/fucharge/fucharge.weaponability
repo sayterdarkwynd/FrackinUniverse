@@ -42,50 +42,52 @@
               },
               "charge" : {
                 "properties" : {
-                  "image" : "/items/active/weapons/melee/altabilities/spear/fucharge/fuchargeswoosh.png:<frame>"
+                  "image" : "/items/active/weapons/melee/abilities/spear/fucharge/chargeswoosh.png:<frame>"
                 }
               },
               "full" : {
                 "properties" : {
-                  "image" : "/items/active/weapons/melee/altabilities/spear/fucharge/fuchargeswoosh.png:4"
+                  "image" : "/items/active/weapons/melee/abilities/spear/fucharge/chargeswoosh.png:4"
                 }
               }
             }
           }
         }
       }
-    }  
+    }
   },
   "animationScripts" : [
     "/items/active/effects/lightning.lua"
   ],
 
-  "altAbility" : {
-    "name" : "Powered Charge",
-    "type" : "spearcharge",
-    "scripts" : ["/items/active/weapons/melee/altabilities/spear/fucharge/fucharge.lua"],
+  "ability" : {
+    "type" : "fucharge",
+    "scripts" : ["/items/active/weapons/melee/abilities/spear/fucharge/charge.lua"],
+    "name" : "Supercharge",
+    "class" : "Charge",
+
     "chargeTime" : 2.0,
     "minChargeTime" : 0.5,
     "chargeLevels" : 4,
     // [width, forks, branching, color]
     "lightningChargeLevels" : [
-      [1.15, 0, 0.05, [20, 20, 120, 50]],
-      [1.15, 0, 0.07, [30, 30, 185, 50]],
-      [1.15, 0, 0.09, [50, 50, 215, 50]],
-      [1.15, 0, 0.12, [60, 60, 255, 50]]
+      [1.15, 0, 0.05, [100, 100, 50, 50]],
+      [1.15, 0, 0.07, [160, 160, 185, 50]],
+      [1.15, 0, 0.09, [225, 225, 215, 50]],
+      [1.15, 0, 0.12, [255, 255, 255, 50]]
     ],
-    "dashLightning" : [1, 0, 0.12, [30, 30, 255, 50]],
+    "dashLightning" : [1, 0, 0.12, [255, 255, 255, 50]],
 
-    "dashMaxSpeed" : 260,
-    "dashControlForce" : 1800,
+    "dashMaxSpeed" : 400,
+    "dashControlForce" : 1600,
     "maxDashTime" : 0.30,
     "maxEnergyUsage" : 50,
 
-    "freezeTime" : 0.15,
+    "freezeTime" : 0.1,
 
     "damageConfig" : {
-    	"baseDamage" : 8,
-    	"timeout" : 0.45,
+    	"baseDamage" : 6,
+    	"timeout" : 0.25,
     	"timeoutGroup" : "alt"
     },
     "baseDps" : 8, // overrides baseDamage in damageConfig
