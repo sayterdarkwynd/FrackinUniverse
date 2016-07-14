@@ -1,19 +1,26 @@
 [
+
 {
     "op": "add",
     "path": "/scienceoutpost",
     "value": 
-      {"primaryDungeon":"scienceoutpost",
+      {
+      "primaryDungeon":"scienceoutpost",
+    "weatherPool" : [
+        [1.0, "storm"]
+    ],      
       "threatLevel":1,
       "gravity":100,
       "worldSize":[2000,2000],
-      "dungeonBaseHeight":1500,
-      "dungeonSurfaceHeight" : 1209,
+      "dungeonBaseHeight" : 1190,
+      "dungeonSurfaceHeight" : 1050,
       "ambientLightLevel":[200,200,200],
       "biome" : "thickjungle",
-      "musicTrack" : "/music/cygnus-x1.ogg"
+      "musicTrack" : "/music/cygnus-x1.ogg",
+      "environmentStatusEffects" : ["dontstarve"]
       }
 },
+
 {
     "op": "add",
     "path": "/shoggothdungeon",
@@ -34,7 +41,9 @@
     "op": "add",
     "path": "/eldershoggoth",
     "value": 
-      {"primaryDungeon":"eldershoggoth",
+      {
+      "primaryDungeon":"eldershoggoth",
+      
       "threatLevel":6,
       "gravity":110,
       "airless" : true,
@@ -42,6 +51,9 @@
       "dungeonBaseHeight" : 1400,
       "dungeonSurfaceHeight" : 1209,
       "ambientLightLevel":[15,10,25],
+    "weatherPool" : [
+        [1.0, "freezestorm"]
+    ],            
       "biome" : "shoggothbiome",
       "musicTrack" : "/sfx/ambiance/shoggoth.ogg"
       }
