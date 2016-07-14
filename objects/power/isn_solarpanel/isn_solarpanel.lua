@@ -24,20 +24,20 @@ function isn_getCurrentPowerOutput(divide)
 	local light = world.lightLevel(location)
 	-- sb.logInfo("solar panel location is %s", location)
 	-- sb.logInfo("light level is %s", light)
-	if light > 0.2 then generated = generated + 0.25 end
-	if light > 0.4 then generated = generated + 0.25 end
-	if light > 0.6 then generated = generated + 0.25 end
-	if light > 0.8 then generated = generated + 0.25 end
+	if light > 0.1 then generated = generated + 0.25 end
+	if light > 0.3 then generated = generated + 0.25 end
+	if light > 0.5 then generated = generated + 0.25 end
+	if light > 0.7 then generated = generated + 0.25 end
 	
 	if location[2] < 500 then genmult = 0.5
-	elseif location[2] > 800 then genmult = 1.5
-	elseif location[2] > 1000 then genmult = 2 end
+	elseif location[2] > 600 then genmult = 1.5
+	elseif location[2] > 900 then genmult = 2 end
 	
 	generated = generated * genmult
 	generated = math.min(generated,2)
+
 	local summationForDebug = "P " .. generated .. " L " .. math.floor(light * 100)/100
-	
-	world.debugText(summationForDebug,{location[1]-(string.len(summationForDebug)*0.25),location[2]-3.5},"blue")
+	world.debugText(summationForDebug,{location[1]-(string.len(summationForDebug)*0.25),location[2]-3.5},"cyan")
 	
 	if generated >= 2 then animator.setAnimationState("meter", "4")
 	elseif generated >= 1.5  then animator.setAnimationState("meter", "3")

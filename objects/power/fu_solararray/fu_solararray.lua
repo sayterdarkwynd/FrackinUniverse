@@ -22,17 +22,20 @@ function isn_getCurrentPowerOutput(divide)
 	local genmult = 1
 	local location = isn_getTruePosition()
 	local light = world.lightLevel(location)
-	if light > 0.2 then generated = generated + 0.25 end
-	if light > 0.4 then generated = generated + 0.35 end
-	if light > 0.6 then generated = generated + 0.45 end
-	if light > 0.8 then generated = generated + 0.55 end
+	if light > 0.1 then generated = generated + 0.25 end
+	if light > 0.3 then generated = generated + 0.35 end
+	if light > 0.5 then generated = generated + 0.45 end
+	if light > 0.7 then generated = generated + 0.55 end
 	
 	if location[2] < 500 then genmult = 1
-	elseif location[2] > 800 then genmult = 3
-	elseif location[2] > 1000 then genmult = 5 end
+	elseif location[2] > 700 then genmult = 3
+	elseif location[2] > 900 then genmult = 5 end
 	
 	generated = generated * genmult
 	generated = math.min(generated,4)
+	
+	local summationForDebug = "P " .. generated .. " L " .. math.floor(light * 100)/100
+	world.debugText(summationForDebug,{location[1]-(string.len(summationForDebug)*0.25),location[2]-3.5},"cyan")
 	
 	if generated >= 4 then animator.setAnimationState("meter", "4")
 	elseif generated >= 3  then animator.setAnimationState("meter", "3")
