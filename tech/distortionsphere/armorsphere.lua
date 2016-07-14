@@ -167,7 +167,9 @@ function activate()
   tech.setToolUsageSuppressed(true)
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   self.active = true
-  
+  effect.addStatModifierGroup({
+    {stat = "protection", amount = 10}
+  })  
   
 
  
@@ -189,6 +191,9 @@ function deactivate()
   status.clearPersistentEffects("movementAbility")
   self.angle = 0
   self.active = false
+  effect.addStatModifierGroup({
+    {stat = "protection", amount = 0}
+  })  
 end
 
 function minY(poly)
