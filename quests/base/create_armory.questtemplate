@@ -1,0 +1,36 @@
+{
+  "id" : "create_armory",
+  "prerequisites" : [ "create_clothingfabricator" ],
+  "title" : "^#1693d5;Armed to the Teeth",
+  "text" : "With an ^orange;Armory^reset; at your disposal you'll be unstoppable! You'll need one for ^green;astounding armor and weapons^reset;. Build one in your ^orange;Matter Assembler^reset;.",
+  "completionText" : "Thanks so very much! ",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "ffskullcap-recipe", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : true,
+    
+    "turnInDescription" : "Bring the ^green;Armory^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "armory",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id" : "create_protocite",
+  "prerequisites" : [ "create_armory" ],
+  "title" : "^#1693d5;Proto-Potency",
+  "text" : "There is a rare metal native only to ^orange;Proto Worlds^reset; that I am in dire need of for my armory project. ^orange;I need 2 protocite bars^reset;. You can smelt them in your ^orange;Fission Furnace^reset;.",
+  "completionText" : "Thanks so very much! ",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "ffskullcap-recipe", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : true,
+    
+    "turnInDescription" : "Bring the ^green;Protocite Bars^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "protocitebar",
+        "count" : 2,
+        "consume" : true
+      }
+    ]
+  }
+}
