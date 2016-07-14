@@ -1,36 +1,36 @@
 function isn_getCurrentPowerInput(divide)
-	---sb.logInfo("POWER INPUT DEBUG aka PID")
-	---sb.logInfo("called by " .. world.entityName(entity.id()))
+	-- sb.logInfo("POWER INPUT DEBUG aka PID")
+	-- sb.logInfo("called by " .. world.entityName(entity.id()))
 	local totalInput = 0
 	local iterator = 0
 	local connectedDevices
 	local output = 0
 	
 	local nodecount = object.inputNodeCount() 
-	---sb.logInfo("PID: nodecount is " .. nodecount)
+	-- sb.logInfo("PID: nodecount is " .. nodecount)
 	
 	while iterator < nodecount do
-		---sb.logInfo("PID: Iteration " .. iterator)
+		-- sb.logInfo("PID: Iteration " .. iterator)
 		if object.getInputNodeLevel(iterator) == true then
 			connectedDevices = isn_getAllDevicesConnectedOnNode(iterator,"input")
 			for key, value in pairs (connectedDevices) do
-				---sb.logInfo("PID: key is " .. key)
-				---sb.logInfo("PID: value is " .. value)
-				---sb.logInfo("PID: value ID check resolves to " .. world.entityName(value))
+				-- sb.logInfo("PID: key is " .. key)
+				-- sb.logInfo("PID: value is " .. value)
+				-- sb.logInfo("PID: value ID check resolves to " .. world.entityName(value))
 				if world.callScriptedEntity(value,"isn_canSupplyPower") == true then
 					output = world.callScriptedEntity(value,"isn_getCurrentPowerOutput",divide)
-					---sb.logInfo("PID: Power supplier detected with output of " .. output)
+					-- sb.logInfo("PID: Power supplier detected with output of " .. output)
 					if output ~= nil then totalInput = totalInput + output end
 				else
-					---sb.logInfo("PID: Detected non power-supplying device")
+					-- sb.logInfo("PID: Detected non power-supplying device")
 				end
 			end
 		end
-		---sb.logInfo("PID: total input now at " .. totalInput)
+		-- sb.logInfo("PID: total input now at " .. totalInput)
 		iterator = iterator + 1
 	end
 	
-	---sb.logInfo("GENERAL POWER INPUT DEBUG END")
+	-- sb.logInfo("GENERAL POWER INPUT DEBUG END")
 	return totalInput
 end
 

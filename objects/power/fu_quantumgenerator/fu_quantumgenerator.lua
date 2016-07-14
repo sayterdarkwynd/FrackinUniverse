@@ -9,9 +9,9 @@ function init(virtual)
 	if storage.active == nil then storage.active = true end	
 end
 
-function onInboundNodeChange(args)
-	if entity.isInboundNodeConnected(0) then
-		if entity.getInboundNodeLevel(0) == true then storage.active = true
+function onInputNodeChange(args)
+	if object.isInputNodeConnected(0) then
+		if object.getInputNodeLevel(0) == true then storage.active = true
 		else storage.active = false
 		end
 	else storage.active = true
@@ -92,6 +92,6 @@ function isn_getCurrentPowerOutput(divide)
 end
 
 function onNodeConnectionChange()
-	if isn_checkValidOutput() == true then entity.setOutboundNodeLevel(0, true)
-	else entity.setOutboundNodeLevel(0, false) end
+	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
+	else object.setOutputNodeLevel(0, false) end
 end

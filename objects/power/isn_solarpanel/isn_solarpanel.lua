@@ -22,6 +22,8 @@ function isn_getCurrentPowerOutput(divide)
 	local genmult = 1
 	local location = isn_getTruePosition()
 	local light = world.lightLevel(location)
+	-- sb.logInfo("solar panel location is %s", location)
+	-- sb.logInfo("light level is %s", light)
 	if light > 0.2 then generated = generated + 0.25 end
 	if light > 0.4 then generated = generated + 0.25 end
 	if light > 0.6 then generated = generated + 0.25 end
@@ -33,6 +35,9 @@ function isn_getCurrentPowerOutput(divide)
 	
 	generated = generated * genmult
 	generated = math.min(generated,2)
+	local summationForDebug = "P " .. generated .. " L " .. math.floor(light * 100)/100
+	
+	world.debugText(summationForDebug,{location[1]-(string.len(summationForDebug)*0.25),location[2]-3.5},"blue")
 	
 	if generated >= 2 then animator.setAnimationState("meter", "4")
 	elseif generated >= 1.5  then animator.setAnimationState("meter", "3")
@@ -49,8 +54,8 @@ function isn_getCurrentPowerOutput(divide)
 end
 
 function onNodeConnectionChange()
-	if isn_checkValidOutput() == true then entity.setOutboundNodeLevel(0, true)
-	else entity.setOutboundNodeLevel(0, false) end
+	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
+	else object.setOutputNodeLevel(0, false) end
 end
 
 function isn_powerGenerationBlocked()

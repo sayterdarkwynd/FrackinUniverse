@@ -21,7 +21,7 @@ function update(dt)
   if storage.stock ~= 0 then
     if storage.cooldown > 0 then storage.cooldown = storage.cooldown - dt end
 
-    if storage.cooldown <= 0 and ((not self.trigger) or (self.trigger == "wire" and entity.getInboundNodeLevel(0))) then
+    if storage.cooldown <= 0 and ((not self.trigger) or (self.trigger == "wire" and object.getInputNodeLevel(0))) then
       spawn()
       storage.cooldown = util.randomInRange(config.getParameter("spawner.frequency"))
     end

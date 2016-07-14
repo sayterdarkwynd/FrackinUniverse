@@ -38,13 +38,13 @@ function isn_getCurrentPowerOutput(divide)
 end
 
 function onNodeConnectionChange()
-	if isn_checkValidOutput() == true then entity.setOutboundNodeLevel(0, true)
-	else entity.setOutboundNodeLevel(0, false) end
+	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
+	else object.setOutputNodeLevel(0, false) end
 end
 
-function onInboundNodeChange(args)
-	if entity.isInboundNodeConnected(1) then
-		if entity.getInboundNodeLevel(1) == true then storage.active = true
+function onInputNodeChange(args)
+	if object.isInputNodeConnected(1) then
+		if object.getInputNodeLevel(1) == true then storage.active = true
 		else storage.active = false
 		end
 	else storage.active = true
