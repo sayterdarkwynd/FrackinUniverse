@@ -4,7 +4,7 @@ function init()
   animator.setParticleEmitterActive("healing", true)
   
   script.setUpdateDelta(5)
-  self.tickDamagePercentage = 0.05
+  self.tickDamagePercentage = 0.02
   self.tickTime = 1.0
   self.tickTimer = self.tickTime
   effect.duration()
@@ -17,7 +17,7 @@ function update(dt)
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
         damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
-        damageSourceKind = "poison",
+        damageSourceKind = "default",
         sourceEntityId = entity.id()
       })
 	  end

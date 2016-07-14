@@ -1,0 +1,36 @@
+{
+  "id" : "create_extractor",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "^#1693d5;Extraction 101",
+  "text" : "Any self-respecting scientist has an ^orange;Extraction Lab^white;. It's like sorcery! Stuff goes in, better stuff comes out! Make one in your ^orange;Matter Assembler^reset;.",
+  "completionText" : "Thanks so very much! ",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "scientistlegs", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : true,
+    
+    "turnInDescription" : "Bring the ^green;Extraction Lab^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "extractionlab",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
