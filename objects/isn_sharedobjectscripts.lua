@@ -4,8 +4,8 @@ function isn_getAllDevicesConnectedOnNode(node,direction)
 	if node == nil then return nil end
 	
 	local nodeID
-	if direction == "outbound" then nodeID = entity.getOutboundNodeIds(node)
-	else nodeID = entity.getInboundNodeIds(node) end
+	if direction == "output" then nodeID = object.getOutputNodeIds(node)
+	else nodeID = object.getInputNodeIds(node) end
 	if nodeID == nil then
 		---sb.logInfo("GGDOND: Node with ID " .. node .. " does not exist, terminating with nil")
 		return nil
@@ -39,7 +39,7 @@ end
 function isn_countDevicesConnectedOnOutboundNode(node)
 	if not node then return 0 end
 	local devicecount = 0
-	for key, value in pairs(entity.getOutboundNodeIds(node)) do
+	for key, value in pairs(object.getOutputNodeIds(node)) do
 		devicecount = devicecount + 1
 	end
 	return devicecount
