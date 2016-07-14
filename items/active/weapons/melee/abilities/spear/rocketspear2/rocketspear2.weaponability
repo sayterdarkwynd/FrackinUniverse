@@ -43,12 +43,12 @@
               },
               "charge" : {
                 "properties" : {
-                  "image" : "/items/active/weapons/melee/altabilities/spear/rocketspear/<elementalType>rocketcharge.png:<frame>"
+                  "image" : "/items/active/weapons/melee/abilities/spear/rocketspear/<elementalType>rocketcharge.png:<frame>"
                 }
               },
               "full" : {
                 "properties" : {
-                  "image" : "/items/active/weapons/melee/altabilities/spear/rocketspear/<elementalType>rocketcharge.png:4"
+                  "image" : "/items/active/weapons/melee/abilities/spear/rocketspear/<elementalType>rocketcharge.png:4"
                 }
               }
             }
@@ -57,32 +57,35 @@
       }
     },
     "sounds" : {
-      "fireStart" : [ ],
+      "fireStart" : [ "/sfx/melee/swing_spear_fire1.ogg", "/sfx/melee/swing_spear_fire2.ogg", "/sfx/melee/swing_spear_fire3.ogg" ],
       "fireBlast" : [ "/sfx/melee/rocketspear_loop_fire.ogg" ],
       "fireEnd" : [ "/sfx/melee/rocketspear_stop_fire.ogg" ],
-      "iceStart" : [ ],
+      "iceStart" : [ "/sfx/melee/swing_spear_ice1.ogg", "/sfx/melee/swing_spear_ice2.ogg", "/sfx/melee/swing_spear_ice3.ogg" ],
       "iceBlast" : [ "/sfx/melee/rocketspear_loop_ice.ogg" ],
       "iceEnd" : [ "/sfx/melee/rocketspear_stop_ice.ogg" ],
-      "electricStart" : [ ],
+      "electricStart" : [ "/sfx/melee/swing_spear_electric1.ogg", "/sfx/melee/swing_spear_electric2.ogg", "/sfx/melee/swing_spear_electric3.ogg" ],
       "electricBlast" : [ "/sfx/melee/barrier_create_electric.ogg" ],
       "electricEnd" : [ ],
-      "poisonStart" : [ ],
+      "poisonStart" : [ "/sfx/melee/swing_spear_poison1.ogg", "/sfx/melee/swing_spear_poison2.ogg", "/sfx/melee/swing_spear_poison3.ogg" ],
       "poisonBlast" : [ "/sfx/melee/rocketspear_loop_poison.ogg" ],
       "poisonEnd" : [ "/sfx/melee/rocketspear_stop_poison.ogg" ]
-    }  
+    }
   },
 
   "ability" : {
-    "name" : "Rocket Spear",
-    "type" : "rocketspear",
-    "scripts" : ["/items/active/weapons/melee/altabilities/spear/rocketspear/rocketspear.lua"],
+    "name" : "Rocket Boost",
+    "type" : "rocketspear2",
+    "scripts" : ["/items/active/weapons/melee/abilities/spear/rocketspear/rocketspear.lua"],
     "class" : "RocketSpear",
 
-    "energyUsage" : 60.0,
+    "baseDps" : 9,
     "cooldownTime" : 0.5,
+    "energyUsage" : 45,
+    "fireTime" : 0.065,
+    "inaccuracy" : 0.05,
 
-    "boostSpeed" : 60,
-    "boostForce" : 300,
+    "boostSpeed" : 20,
+    "boostForce" : 250,
 
     "elementalConfig" : {
       "fire" : {
@@ -98,12 +101,9 @@
         "projectileType" : "lightningthrower"
       }
     },
-    "inaccuracy" : 0.05,
     "projectileParameters" : {
       "speed" : 20
     },
-    "baseDps" : 6.0,
-    "fireTime" : 0.065,
 
     "stances" : {
       "windup" : {
