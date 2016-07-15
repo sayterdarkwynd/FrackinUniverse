@@ -22,23 +22,23 @@ function update(dt)
 	-- check current power production and set the animation state accordingly
 	if storage.currentpowerprod > 90 then
 		animator.setAnimationState("screen", "slow")
-                entity.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
+                object.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
                 entity.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 50 then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
-                entity.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
+                object.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
 		entity.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 10 then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
-                entity.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
+                object.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
 		entity.setSoundEffectEnabled(true)
 	else
 		animator.setAnimationState("screen", "off")
 		animator.setAnimationState("fans", "off")
 
-                entity.setLightColor({0, 0, 0, 0})		
+                object.setLightColor({0, 0, 0, 0})		
 	end
 
 	if storage.fueledticks > 0 then -- if we're currently fueled up
