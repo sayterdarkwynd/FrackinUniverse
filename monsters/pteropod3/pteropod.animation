@@ -5,6 +5,14 @@
         "priority" : 0,
         "default" : "idle",
         "states" : {
+          "idle" : {
+            "frames" : 8,
+            "cycle" : 0.75,
+            "mode" : "loop",
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
+            }
+          },
           "fly" : {
             "frames" : 8,
             "cycle" : 0.75,
@@ -13,21 +21,21 @@
               "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
             }
           },
-          "firewinddown" : {
+          "firewindup" : {
             "frames" : 4,
             "cycle" : 0.375,
             "mode" : "transition",
-            "transition" : "fly",
+            "transition" : "winduploop",
             "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
+              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "" ]
             }
           },
-          "firewindup" : {
-            "frames" : 8,
-            "cycle" : 0.75,
+          "winduploop" : {
+            "frames" : 4,
+            "cycle" : 0.375,
             "mode" : "loop",
             "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
+              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
             },
             "properties" : {
               "persistentSound" : "/sfx/npc/monsters/pteropod_windup.ogg"
@@ -36,15 +44,8 @@
           "fire" : {
             "frames" : 4,
             "cycle" : 0.375,
-            "mode" : "loop"
-          },
-          "hurt" : {
-            "frames" : 8,
-            "cycle" : 0.75,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap3.ogg", "", "", "", "/sfx/npc/monsters/batong_flap3.ogg", "", "" ]
-            }
+            "mode" : "transition",
+            "transition" : "idle"
           }
         }
       },
@@ -64,6 +65,26 @@
             }
           }
         }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
       }
     },
 
@@ -75,6 +96,11 @@
         },
         "partStates" : {
           "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
             "fly" : {
               "properties" : {
                 "image" : "<partImage>:fly.<frame>"
@@ -85,9 +111,9 @@
                 "image" : "<partImage>:windup.<frame>"
               }
             },
-            "firewinddown" : {
+            "winduploop" : {
               "properties" : {
-                "image" : "<partImage>:winddown.<frame>"
+                "image" : "<partImage>:winduploop.<frame>"
               }
             },
             "fire" : {
@@ -124,6 +150,14 @@
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisonswoosh3" },
+        { "particle" : "poisonswoosh3" },
+        { "particle" : "poisonswoosh3" },
+        { "particle" : "poisonswoosh3" },
+        { "particle" : "poisonswoosh3" },
         { "particle" : "deathember" },
         { "particle" : "deathember" },
         { "particle" : "deathember" },
@@ -140,6 +174,31 @@
         { "particle" : "deathfizz3right" },
         { "particle" : "deathfizz4left" },
         { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
       ]
     }
   },

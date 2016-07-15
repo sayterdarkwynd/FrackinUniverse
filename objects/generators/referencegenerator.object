@@ -1,0 +1,84 @@
+{
+  "objectName" : "referencegenerator",
+  "colonyTags" : ["human","electronic"],
+  "rarity" : "Legendary",
+  "description" : "A shield generator. Protective!",
+  "shortdescription" : "Shield Generator",
+  "race" : "human",
+  "price" : 1000,
+  "lightColor" : [78, 111, 128],
+  "category" : "wire",
+  "printable" : false,
+
+  "apexDescription" : "A shield generator.",
+  "avianDescription" : "This generates a shield.",
+  "floranDescription" : "Shieldsss!",
+  "glitchDescription" : "Comforted. A shield generator.",
+  "humanDescription" : "This'll keep me safe!",
+  "hylotlDescription" : "A crude protection device.",
+  "novakidDescription" : "Who needs a shield anyhow?",
+
+  "inventoryIcon" : "referencegeneratoricon.png",
+  "orientations" : [
+    {
+      "image" : "referencegenerator.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+
+      "imagePosition" : [-80, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [-2, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "referencegenerator.png:<color>.<frame>",
+      "direction" : "right",
+
+      "imagePosition" : [-80, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [1, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "referencegenerator.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/apexconsole2switch.ogg" ],
+      "off" : [ "/sfx/objects/apexconsole2switch.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "referencegenerator.png",
+    "fg" : "referencegeneratorlit.png"
+  },
+
+  "animationPosition" : [-80, 0],
+
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/melee/kill_robotic1.ogg" ],
+  "health" : 250,
+  "interactive" : false,
+
+  "smashParticles" : [ { "count" : 50, "particle" : "generatorshard" }, { "count" : 50, "particle" : "generatorredshard" }, { "count" : 10, "particle" : "generatorglassshard" } ],
+  "smashDropPool" : "empty",
+  "breakDropPool" : "empty",
+
+  "scripts" : [ "/objects/wired/shieldgenerator/shieldgenerator.lua" ],
+  "scriptDelta" : 5,
+
+  "outputNodes" : [ [0, 0] ],
+  "inputNodes" : [ [0, 2] ],
+
+  "explodeOnSmash" : true,
+  "explosionProjectile" : "explosivegenerator",
+  "explosionOffset" : [1, 2]
+}

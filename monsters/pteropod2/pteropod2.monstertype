@@ -1,10 +1,12 @@
 {
   "type" : "pteropod2",
+  "shortdescription" : "Pteropod",
+  "description" : "It brews a toxic paste in its pod made from fermented fruit.",
 
   "categories" : [ "pteropod2" ],
   "parts" : [ "body" ],
 
-  "animation" : "pteropod2.animation",
+  "animation" : "pteropod.animation",
 
   "dropPools" : [ { "default" : "pteropodTreasure", "bow" : "pteropodHunting" } ],
 
@@ -20,9 +22,8 @@
 
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
-      "targetEntityTypes" : [ "player", "npc", "monster" ],
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
+      "keepTargetInRange" : 12,
       "targetOutOfSightTime" : 5.0,
 
       "foundTargetActions" : [ ],
@@ -32,27 +33,32 @@
       "hostileActions" : [ 
        {
           "name" : "action-fire",
-          "cooldown" : 4,
+          "cooldown" : 0.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 5,
+            "maximumRange" : 12,
+            "minimumRange" : 2,
             "windupState" : "firewindup",
-            "windupTime" : 0.25,
-            
-            "projectileCount" : 6,
+            "windupTime" : 0.8,
+
+            "projectileType" : "fuvaporizer",
+            "projectileCount" : 5,
             "projectileInterval" : 0.005,
             "inaccuracy" : 0,
-            "projectileType" : "fuvaporizer",
-            "power" : 6,
-            "fireOffset" : [2, 0],
+            "power" : 10,
+            "fireOffset" : [0.75, 0.25],
             "aimAtTarget" : true,
             "onGround" : false,
             "fireState" : "fire",
             "fireSound" : "fire",
+            "fireDelay" : 0.1,
 
-            "winddownState" : "firewinddown",
-            "winddownTime" : 1.5
+            "fireArc": true,
+            "projectileSpeed": 50,
+            "gravityMultiplier": 0.6,
+
+            "winddownState" : "",
+            "winddownTime" : 1.0
           }
         }
       ],
@@ -62,14 +68,22 @@
 
       "approachActions" : [
         {
-          "name" : "wander-fly",
+          "name" : "approach-fly",
           "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
+            "minRange" : 4,
+            "maxRange" : 8
           }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly"
         }
       ],
 
@@ -112,8 +126,8 @@
       "runSpeed" : 12,
       "gravityEnabled" : false,
 
-      "airFriction" : 2,
-      "airForce" : 20,
+      "airFriction" : 4,
+      "airForce" : 40,
       "flySpeed" : 15
     },
 
@@ -141,7 +155,7 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.5
         },
         "knockbackThreshold" : {
           "baseValue" : 9
@@ -155,7 +169,10 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
-        "poisonImmunity" : {
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
           "baseValue" : 1.0
         }
       },
@@ -174,6 +191,9 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
   }
 }
