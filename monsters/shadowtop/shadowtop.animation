@@ -87,7 +87,97 @@
     },
 
     "parts" : {
+
       "body" : {
+        "properties" : {
+          "zLevel" : 10,
+          "transformationGroups" : [ "body" ],
+          "offset" : [0, 0],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "movement" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "skip" : {
+              "properties" : {
+                "image" : "<partImage>:skip.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:run.<frame>"
+              }
+            },
+            "chargeWindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "knockback" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "knockout" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            }
+          },
+
+          "attack" : {
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
+              }
+            },
+
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:melee.1"
+              }
+            },
+            "chargeAttack" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
+              }
+            }
+          },
+
+          "portrait" : {
+            "portrait" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            }
+          }
+        }
+      },
+      "bodyfullbright" : {
+        "properties" : {
+          "zLevel" : 20,
+          "transformationGroups" : [ "body" ],
+          "offset" : [0, 0]
+        },
         "partStates" : {
           "movement" : {
             "idle" : {
@@ -165,9 +255,13 @@
           }
         }
       }
-    }
-  },
 
+    }
+},
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+  
   "particleEmitters" : {
     "damage" : {
       "emissionRate" : 0.7,
@@ -201,7 +295,7 @@
       ]
     }
   },
-
+  
   "sounds" : {
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
     "turnHostile" : [ ]
