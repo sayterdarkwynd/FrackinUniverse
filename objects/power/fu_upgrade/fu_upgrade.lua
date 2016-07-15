@@ -19,10 +19,10 @@ end
 function update(dt)
 	local itemForUpgrade = world.containerItemAt(entity.id(), 0)
   if isn_hasRequiredPower() == false then
-    entity.setLightColor({0, 0, 0, 0})
+    object.setLightColor({0, 0, 0, 0})
     return
   end
-  entity.setLightColor(config.getParameter("lightColor", {100, 176, 191}))	
+  object.setLightColor(config.getParameter("lightColor", {100, 176, 191}))	
 	if itemForUpgrade ~= nil and upgradebleItemsList[root.itemType(itemForUpgrade.name)] and itemForUpgrade.count ~= nil and itemForUpgrade.count == 1 then
 		local isUpgraded = false -- flag, upgrade is not possible or while not done
 		sb.logInfo("Trying to upgrade. Name is '" .. itemForUpgrade.name .. "'. root.itemType returns '" .. root.itemType(itemForUpgrade.name) .. "'.")

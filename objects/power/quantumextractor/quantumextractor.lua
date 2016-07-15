@@ -959,7 +959,7 @@ end
 function update(dt)
   if isn_hasRequiredPower() == false then
     animator.setAnimationState("samplingarrayanim", "idle")
-    entity.setLightColor({0, 0, 0, 0})
+    object.setLightColor({0, 0, 0, 0})
 	storage.activeConsumption = false
 	return
   end
@@ -984,7 +984,7 @@ function update(dt)
             self.output = {}
             self.timer = self.mintick --reset timer to a safe minimum
             animator.setAnimationState("samplingarrayanim", "idle")
-            entity.setLightColor({0, 0, 0, 0})
+            object.setLightColor({0, 0, 0, 0})
 			storage.activeConsumption = false
         end
 
@@ -1008,7 +1008,7 @@ function startCrafting(result)
         self.timer = result.time
         self.output = result.outputs
         animator.setAnimationState("samplingarrayanim", "working")
-        entity.setLightColor(config.getParameter("lightColor", {100, 176, 191}))
+        object.setLightColor(config.getParameter("lightColor", {100, 176, 191}))
 		storage.activeConsumption = true
         return true
     end              
