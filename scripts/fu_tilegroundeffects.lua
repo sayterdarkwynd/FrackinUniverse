@@ -2,7 +2,7 @@ local oldtileMaterials = tileMaterials
 
 function tileMaterials()
   oldtileMaterials()
-  sb.logInfo("fu_tilematerials has loaded")
+  -- sb.logInfo("fu_tilematerials has loaded")
   -- ["materialName"] = {{EphemeralEffects to apply},
   --  groundMovementModifier, runModifier, jumpModifier,      <-- mcontroller.controlModifiers
   --  normalGroundFriction, groundForce, slopeSlidingFactor,  <-- mcontroller.controlParameters 
