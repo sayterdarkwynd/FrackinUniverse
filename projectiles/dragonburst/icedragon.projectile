@@ -1,0 +1,33 @@
+{
+  "projectileName" : "icedragon",
+  "image" : "icedragon.png",
+  "animationCycle" : 0.5,
+  "timeToLive" : 2,
+  "frameNumber" : 3,
+  "power" : 5,
+  "speed" : 50,
+  "physics" : "laser",
+  "flippable" : true,
+  "lightColor" : [40, 62, 178],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "icedragon2",
+      "inheritDamageFactor" : 1,
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "ice",
+  "statusEffects" : [ "freeze" ],
+  "periodicActions" : [
+    {
+      "time" : 0.35,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "icecloudburst",
+      "fuzzAngle" : 360
+   }
+  ],
+  "emitters" : [ "largeicecloud" ]
+}
