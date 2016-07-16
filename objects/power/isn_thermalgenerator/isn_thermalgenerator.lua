@@ -1,7 +1,7 @@
 function init(virtual)
 	if virtual == true then return end
 	object.setInteractive(true)
-	entity.setSoundEffectEnabled(false)
+	object.setSoundEffectEnabled(false)
 	
 	if storage.currentpowerprod == nil then storage.currentpowerprod = 0 end
 	if storage.fueledticks == nil then storage.fueledticks = 0 end
@@ -11,6 +11,7 @@ end
 
 function onInputNodeChange(args)
 	if object.isInputNodeConnected(0) then
+		-- sb.logInfo("input node is connected. node level is %s", object.getInputNodeLevel(0))
 		if object.getInputNodeLevel(0) == true then storage.active = true
 		else storage.active = false
 		end
@@ -27,12 +28,12 @@ function update(dt)
 		animator.setAnimationState("screen", "med")
 		animator.setAnimationState("fans", "fast")
 		object.setLightColor(config.getParameter("lightColor", {100, 100, 100}))
-		entity.setSoundEffectEnabled(true)
+		object.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 10 then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
 		object.setLightColor(config.getParameter("lightColor", {50, 50, 50}))
-		entity.setSoundEffectEnabled(false)
+		object.setSoundEffectEnabled(false)
 	else
 		animator.setAnimationState("screen", "off")
 		animator.setAnimationState("fans", "off")
