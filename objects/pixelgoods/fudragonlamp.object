@@ -1,0 +1,57 @@
+{
+  "objectName" : "fudragonlamp",
+  "colonyTags" : ["science","bone"],
+  "rarity" : "Common",
+  "description" : "Boney, yet tasteful.",
+  "shortdescription" : "Bone Brazier",
+  "race" : "apex",
+
+  "maximumLiquidLevel" : 0.9,
+
+  "category" : "light",
+  "price" : 85,
+  
+  "lightColor" : [225, 149, 107],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.85,
+  "flickerMaxIntensity" : 0.9,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "statusEffects" : [ ],
+
+  "inventoryIcon" : "fudragonlampicon.png",
+  "orientations" : [
+    {
+      "image" : "fudragonlamp.png:<color>.<frame>",
+      "imagePosition" : [-9, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "lightPosition" : [0, 1],
+      "animationPosition" : [-9, 0],
+      "spaces" : [ [-1, 0], [-1, 1], [-1, 2], [0, 0], [0, 1], [0, 2] ],
+      "fgAnchors" : [ [-1, -1], [0, -1] ]
+    },
+    {
+      "image" : "fudragonlamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+      "animationPosition" : [-8, 0],
+      "spaces" : [ [-1, 0], [-1, 1], [-1, 2], [0, 0], [0, 1], [0, 2] ],
+      "fgAnchors" : [ [-1, -1], [0, -1] ]
+    }
+  ],
+
+  "animation" : "fudragonlamp.animation",
+  "animationParts" : {
+    "bg" : "fudragonlamp.png",
+    "fg" : "fudragonlamplit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}
