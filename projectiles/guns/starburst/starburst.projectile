@@ -9,6 +9,16 @@
   "speed" : 45,
   "timeToLive" : 0.7,
   "bounces" : 0,
+  "lightColor" : [155, 147, 27],
   "piercing" : false,
-  "damageKind" : "slash"
+  "damageKind" : "ice",
+  "periodicActions" : [
+    {
+      "time" : 0.1,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "lunarishot",
+      "fuzzAngle" : 360
+   }
+  ]
 }

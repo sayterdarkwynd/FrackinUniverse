@@ -2,23 +2,23 @@
   "animationParts" : { },
   "animationCustom" : {
     "sounds" : {
-      "altFire" : [ "/sfx/gun/grenade2.ogg" ]
+      "altFire" : [ "/sfx/weapons/illusion.wav" ]
     }
   },
 
   "ability" : {
-    "name" : "Caustic Burst",
+    "name" : "Starburst",
     "type" : "lunarishrapnelbomb",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
-    "projectileType" : "protocluster",
-    "projectileParameters" : { },
+    "projectileType" : "starburst",
+    "projectileParameters" : { "speed" : 25 },
     
-    "baseDamage" : 1,
+    "baseDamage" : 7,
     "energyUsage" : 40,
 
     "fireTime" : 2.0,
-    "projectileCount" : 3,
+    "projectileCount" : 1,
     "inaccuracy" : 0.1,
 
     "useParticleEmitter" : false,
