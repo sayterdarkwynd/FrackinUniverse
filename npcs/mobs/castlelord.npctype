@@ -1,0 +1,71 @@
+{
+  "type" : "castlelord",
+  "baseType" : "hostile",
+
+  "movementParameters" : {
+    "runSpeed" : 16
+  },
+  
+  "dropPools" : [ "castleguardtreasure" ],
+
+  "scriptConfig" : {
+
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Guards! To me!"
+          ]
+        },
+        "glitch" : [
+          "Alarmed. Guards! To me!",
+          "Afraid. A brigand! Guards!",
+          "Petrified. I'm too young to be repurposed!",
+          "Referential. Hark, a vagrant!",
+          "Defiant. Guards, hack this scoundrel apart!",
+          "Brave. I'd take you down myself, but I have guards for that!",
+          "Incensed. You'll rue the day you invaded, rogue!",
+          "Brazen. You'll leave this place... in pieces!"
+        ]
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "glitchroyalhead", "parameters" : { "colorIndex" : 6 } } ],
+            "chest" : [ { "name" : "glitchtier4chest", "parameters" : { "colorIndex" : 6 } } ],
+            "legs" : [ { "name" : "glitchtier4pants", "parameters" : { "colorIndex" : 6 } } ],
+            "back" : [ { "name" : "simplecapeback", "parameters" : { "colorIndex" : 4 } } ],
+            "primary" : [
+              "npchammer",
+              "npcbroadsword",
+              "npcaxe"
+            ],
+            "sheathedprimary" : [
+              "npcassaultrifle"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 130.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}
