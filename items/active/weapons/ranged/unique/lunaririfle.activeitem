@@ -3,12 +3,12 @@
   "price" : 160,
   "inventoryIcon" : "lunaririfle.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "rare",
     "description" : "Fires wonderful crystal blasts.",
     "shortdescription" : "Lunari Rifle",
-  "level" : 3,
+  "level" : 2,
   "tooltipKind" : "gun",
-  "weaponType" : "Crystalline Shotgun",
+  "weaponType" : "Crystalline Rifle",
   "itemTags" : ["weapon","ranged","assaultrifle"],
   "twoHanded" : true,
 
@@ -16,7 +16,8 @@
   "animationParts" : {
     "butt" : "",
     "middle" : "lunaririfle.png",
-    "barrel" : ""
+    "barrel" : "",
+    "muzzleFlash" : ""
   },
   "animationCustom" : {
     "sounds" : {
@@ -25,8 +26,8 @@
   },
 
   "baseOffset" : [0.56, 0.2],
-  "muzzleOffset" : [2.645, 0.225],
-
+  "muzzleOffset" : [1.445, 0.125],
+  
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
@@ -35,7 +36,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.36,
-    "baseDps" : 9.6,
+    "baseDps" : 8,
     "energyUsage" : 24.7,
     "inaccuracy" : 0.085,
 
@@ -76,7 +77,16 @@
 	    }
 	  }
   },
-
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "smallfirecloud1", "offset" : [0.0, 0.0] },
+          { "particle" : "smallfirecloud2", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    
   "altAbilityType" : "lunarishrapnelbomb",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

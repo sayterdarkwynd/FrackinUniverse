@@ -11,7 +11,7 @@
   "category" : "uniqueWeapon",
   "itemTags" : ["weapon","ranged","machinepistol"],
   "tooltipKind" : "gun",
-  "twoHanded" : false,
+  "twoHanded" : true,
   "animation" : "/items/active/weapons/ranged/unique/hellfiregun.animation",
   "animationParts" : {
     "butt" : "",
@@ -83,6 +83,18 @@
       }
     }
   },
-
+  
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "firestormflame", "offset" : [0.0, 0.0] },
+          { "particle" : "firesmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "firestormflame2", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },  
+    
+  "altAbilityType" : "hellfiregunalt",
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
