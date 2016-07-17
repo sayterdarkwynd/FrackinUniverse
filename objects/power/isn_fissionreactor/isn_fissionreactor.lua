@@ -24,7 +24,7 @@ function update(dt)
 	elseif storage.radiation >= 1 then
 		animator.setAnimationState("hazard", "safe")
 	else 
-	        animator.setAnimationState("hazard", "off")
+		animator.setAnimationState("hazard", "off")
 	end
 
 	if storage.active == false then
@@ -34,10 +34,10 @@ function update(dt)
 		return
 	end
 	
-	if isn_slotDecayCheck(0,5) == true then isn_doSlotDecay(0) end
-	if isn_slotDecayCheck(1,5) == true then isn_doSlotDecay(1) end
-	if isn_slotDecayCheck(2,5) == true then isn_doSlotDecay(2) end
-	if isn_slotDecayCheck(3,5) == true then isn_doSlotDecay(3) end
+	if isn_slotDecayCheck(0,1) == true then isn_doSlotDecay(0) end
+	if isn_slotDecayCheck(1,1) == true then isn_doSlotDecay(1) end
+	if isn_slotDecayCheck(2,1) == true then isn_doSlotDecay(2) end
+	if isn_slotDecayCheck(3,1) == true then isn_doSlotDecay(3) end
 	
 	local power = isn_getCurrentPowerOutput(false)
 	if power > 11 then
@@ -58,7 +58,10 @@ function update(dt)
 		rads = rads + 5
 	end
 	storage.radiation = storage.radiation + rads
-	storage.radiation = isn_numericRange(storage.radiation,0,100)
+	storage.radiation = isn_numericRange(storage.radiation,0,120)
+
+	local myLocation = entity.position()
+	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red"); 
 
 	if storage.radiation >= 50 then
 		isn_projectileAllInRange("isn_fissionrads",4)
@@ -93,26 +96,28 @@ function isn_powerSlotCheck(slotnum)
 	elseif slotContent.name == "thoriumrod" then return 4
 	elseif slotContent.name == "solariumstar" then return 4
 	elseif slotContent.name == "ultronium" then return 5
-	else return 0 end	
+	else return 0 end
 end
 
 function isn_slotDecayCheck(slot, chance)
 	local contents = world.containerItems(entity.id())
 	local slotContent = world.containerItemAt(entity.id(),slot)
+	local myLocation = entity.position()
 
+	world.debugText("CHECK",{myLocation[1]-1,myLocation[2]-3.5},"cyan")
 
 	if slotContent == nil then return false end
 
 	if slotContent.name == "biofuelcannister" or slotContent.name == "biofuelcannisteradv" or slotContent.name == "biofuelcannistermax" then
-		if math.random(1,60) <= chance then return true end
+		if math.random(1,60) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end
 	
-	if slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" then
-		if math.random(1,80) <= chance then return true end
+	if slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "thoriumrod" then
+		if math.random(1,80) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end	
 	
-	if slotContent.name == "solariumstar" or slotContent.name == "enricheduranium" or slotContent.name == "enrichedplutonium" or slotContent.name == "ultronium" then
-		if math.random(1,100) <= chance then return true end
+	if slotContent.name == "solariumstar" or slotContent.name == "neptuniumrod" or slotContent.name == "enricheduranium" or slotContent.name == "enrichedplutonium" or slotContent.name == "ultronium" then
+		if math.random(1,100) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end	
 	
 	return false
@@ -127,8 +132,10 @@ function isn_doSlotDecay(slot)
 	if waste ~= nil then
 		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
 		if waste.name == "toxicwaste" then
+		  -- sb.logInfo("increasing storage.radiation")
 		  storage.radiation = storage.radiation + 5
 		else
+		  -- sb.logInfo("not toxic waste, ejecting")
 		  world.containerConsumeAt(entity.id(),4,waste.count) --delete waste
 		  world.spawnItem(waste.name,entity.position(),waste.count) --drop it on the ground
 		end
@@ -137,12 +144,16 @@ function isn_doSlotDecay(slot)
 	local wastestack
 	
 	if waste == nil then
+		-- sb.logInfo("Nothing there, adding waste")
 		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	elseif waste.name == "toxicwaste" then
+		-- sb.logInfo("adding waste")
 		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
+		-- sb.logInfo("wastestack now %s",wastestack)
 	end
 	
-	if wastestack ~= nil then
+	if wastestack.count > 0 then
+		-- sb.logInfo("drop that stack like an ugly baby")
 		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
 		storage.radiation = storage.radiation + 5
 	end
