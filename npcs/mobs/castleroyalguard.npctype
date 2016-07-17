@@ -1,0 +1,45 @@
+{
+  "type" : "castleroyalguard",
+  "baseType" : "hostile",
+
+  "movementParameters" : {
+    "runSpeed" : 16
+  },
+  
+  "dropPools" : [ "castleguardtreasure" ],
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "glitchtier4head", "parameters" : { "colorIndex" : 2 } } ],
+            "chest" : [ { "name" : "glitchtier4chest", "parameters" : { "colorIndex" : 2 } } ],
+            "legs" : [ { "name" : "glitchtier4pants", "parameters" : { "colorIndex" : 2 } } ],
+            "primary" : [
+              "npcshortsword"
+            ],
+            "alt" : [
+              "commonlargeshield"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.5
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}
