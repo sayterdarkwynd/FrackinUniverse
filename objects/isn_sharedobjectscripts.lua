@@ -57,10 +57,18 @@ function isn_getListLength(arg)
 	return listlength
 end
 
+function isn_effectAllInRange(effect,tilerange)
+	local targetlist = world.playerQuery(entity.position(),tilerange)
+	sb.logInfo("targetlist = %s",targetlist)
+	for key, value in pairs(targetlist) do
+		world.callScriptedEntity(value,"status.addEphemeralEffect",effect)
+	end
+end
+
 function isn_projectileAllInRange(projtype,tilerange)
 	local targetlist = world.playerQuery(entity.position(),tilerange)
 	for key, value in pairs(targetlist) do
-		world.spawnProjectile(projtype,world.entityPosition(value))
+		world.spawnProjectile(projtype, world.entityPosition(value), entity.id())
 	end
 end
 
