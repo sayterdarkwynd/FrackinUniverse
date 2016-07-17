@@ -1,0 +1,48 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Flame Blast",
+    "type" : "hellfireblast",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+    
+    "projectileType" : "hellfireburst",
+    "projectileParameters" : { "speed" : 30 },
+    
+    "baseDamage" : 7,
+    "energyUsage" : 70,
+
+    "fireTime" : 3,
+    "projectileCount" : 1,
+    "inaccuracy" : 0.03,
+
+    "useParticleEmitter" : false,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

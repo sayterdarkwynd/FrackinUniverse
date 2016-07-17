@@ -3,7 +3,7 @@
   "price" : 160,
   "inventoryIcon" : "hellfirecannon.png",
   "maxStack" : 1,
-  "rarity" : "common",
+  "rarity" : "rare",
   "description" : "Built to incinerate.",
   "shortdescription" : "Hellfire Ejector",
   "level" : 6,
@@ -45,7 +45,7 @@
       }
     },
   "baseOffset" : [1.7, 0.2],
-  "muzzleOffset" : [2.945, 0.325],
+  "muzzleOffset" : [1.6, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -54,7 +54,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 2.37,
+    "fireTime" : 0.7,
     "baseDps" : 7.5,
     "energyUsage" : 45.0,
     "inaccuracy" : 0,
@@ -62,7 +62,7 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "hellfireburst",
+    "projectileType" : "phoenixblast",
     "projectileParameters" : { 
       "speed" : 52,
       "knockback" : 20
@@ -101,7 +101,7 @@
 
 
 
-  "altAbilityType" : "fuelairtrail",
+  "altAbilityType" : "hellfireblast",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,0 +1,51 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/charging.wav" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Plasma Burst",
+    "type" : "fuplasmaburst",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+    
+    "projectileType" : "plasmablast",
+    "projectileParameters" : { 
+      "speed" : 35,
+      "knockback" : 15    
+    },
+    
+    "baseDamage" : 1,
+    "energyUsage" : 20,
+
+    "fireTime" : 2.0,
+    "projectileCount" : 1,
+    "inaccuracy" : 0.03,
+
+    "useParticleEmitter" : false,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}
