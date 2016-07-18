@@ -1,3 +1,5 @@
+require "/scripts/util.lua"
+
 function init(args)
   object.setInteractive(true)
   storage.activeConsumption = false

@@ -1,3 +1,5 @@
+require "/scripts/util.lua"
+
 function init(args)
   self.dead = false
   self.targetId = nil
