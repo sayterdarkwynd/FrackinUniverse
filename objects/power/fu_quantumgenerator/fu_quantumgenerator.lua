@@ -20,25 +20,29 @@ end
 
 function update(dt)
 	-- check current power production and set the animation state accordingly
-	if storage.currentpowerprod > 90 then
+	if storage.currentpowerprod > 90 and storage.active then
 		animator.setAnimationState("screen", "slow")
-                object.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
-                object.setSoundEffectEnabled(true)
-	elseif storage.currentpowerprod > 50 then
+        object.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
+        object.setSoundEffectEnabled(true)
+	elseif storage.currentpowerprod > 50 and storage.active then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
-                object.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
+        object.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
 		object.setSoundEffectEnabled(true)
-	elseif storage.currentpowerprod > 10 then
+	elseif storage.currentpowerprod > 10 and storage.active then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
-                object.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
+        object.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
 		object.setSoundEffectEnabled(true)
 	else
 		animator.setAnimationState("screen", "off")
 		animator.setAnimationState("fans", "off")
+		object.setSoundEffectEnabled(false)
+        object.setLightColor({0, 0, 0, 0})		
+	end
 
-                object.setLightColor({0, 0, 0, 0})		
+	if not storage.active then
+		return
 	end
 
 	if storage.fueledticks > 0 then -- if we're currently fueled up
