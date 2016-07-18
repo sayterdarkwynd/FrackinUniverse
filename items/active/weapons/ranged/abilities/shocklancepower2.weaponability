@@ -1,0 +1,44 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Focused Blast",
+    "type" : "shocklancepower2",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "energyUsage" : 50,
+    "baseDps" : 8,
+    "fireTime" : 3.0,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : [ "shockblast" ],
+    "projectileParameters" : {
+      "speed" : 35,
+      "knockback" : 0
+    },
+
+    "usePrimaryFireSound" : false,
+    "useParticleEmitter" : false,
+    "stances" : {
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      }
+    }
+  }
+}

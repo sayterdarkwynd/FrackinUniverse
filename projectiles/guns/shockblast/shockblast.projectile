@@ -3,12 +3,40 @@
   "image" : "shockblast.png",
   "physics" : "bullet",
   "animationCycle" : 0.9,
-  "damageKindImage" : "icon.png",
   "frameNumber" : 9,
   "power" : 5,
   "level" : 10,
   "speed" : 35,
   "timeToLive" : 0.9,
   "lightColor" : [255, 180, 0],
-  "damageKind" : "electric"
+  "damageKind" : "electric",
+  "piercing" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/electricexplosion/electricexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "electro",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "electro",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "electro",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -35
+    }
+  ],
+  "emitters" : [ "electricswoosh" ]
 }
