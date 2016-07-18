@@ -1,5 +1,6 @@
 -- modified groundmonster.lua for fatal circuit
 -- by LoPhatKao
+require "/scripts/util.lua"
 
 function init()
   self.position = {0, 0}

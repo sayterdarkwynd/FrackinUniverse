@@ -1,3 +1,5 @@
+require "/scripts/util.lua"
+
 function init()
   self = config.getParameter("spawner")
   if not self then
