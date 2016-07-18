@@ -27,6 +27,10 @@ function update(dt)
 	storage.currentstoredpower = math.min(storage.currentstoredpower, storage.powercapacity)
 end
 
+function isn_getCurrentPowerStorage()
+	return isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
+end
+
 function isn_getCurrentPowerOutput(divide)
 	if storage.active == false then return 0 end
 	if storage.currentstoredpower <= 0 then return 0 end
