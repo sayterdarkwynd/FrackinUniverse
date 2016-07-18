@@ -4,6 +4,7 @@ function init(virtual)
 	
 	if storage.radiation == nil then storage.radiation = 0 end
 	if storage.active == nil then storage.active = true end
+	if storage.batteryHold == nil then storage.batteryHold = false end
 end
 
 function onInputNodeChange(args)
@@ -17,6 +18,36 @@ end
 
 function update(dt)
 
+	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
+	-- sb.logInfo("devices found: %s", devices)
+	local fullBattery = false
+	local spendingPower = false
+	for key,value in pairs(devices) do
+		-- sb.logInfo("Checking device %s", value)
+		if world.callScriptedEntity(value, "isn_isBattery") then
+			local currentBatteryStorage = world.callScriptedEntity(value, "isn_getCurrentPowerStorage")
+			if currentBatteryStorage > 98 then
+				fullBattery = true
+			else
+				if storage.batteryHold and currentBatteryStorage > 90 then
+					fullBattery = true
+				else
+					spendingPower = true
+				end
+			end
+		else
+			if not world.callScriptedEntity(value, "isn_doesNotConsumePower") then
+				spendingPower = true
+			end
+		end
+	end
+	if fullBattery and not spendingPower then
+		storage.batteryHold = true
+		-- sb.logInfo("Battery full and no other consumers connected, shutting down")
+	else
+		storage.batteryHold = false
+	end
+
 	if storage.radiation >= 100 then
 		animator.setAnimationState("hazard", "danger")
 	elseif storage.radiation >= 60 then
@@ -27,9 +58,9 @@ function update(dt)
 		animator.setAnimationState("hazard", "off")
 	end
 
-	if storage.active == false then
+	if not storage.active or storage.batteryHold then
 		storage.radiation = storage.radiation - 5
-		storage.radiation = isn_numericRange(storage.radiation,0,100)
+		storage.radiation = isn_numericRange(storage.radiation,0,120)
 		animator.setAnimationState("screen", "off")
 		return
 	end
@@ -112,11 +143,11 @@ function isn_slotDecayCheck(slot, chance)
 		if math.random(1,60) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end
 	
-	if slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "thoriumrod" then
+	if slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "neptuniumrod" then
 		if math.random(1,80) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end	
 	
-	if slotContent.name == "solariumstar" or slotContent.name == "neptuniumrod" or slotContent.name == "enricheduranium" or slotContent.name == "enrichedplutonium" or slotContent.name == "ultronium" then
+	if slotContent.name == "solariumstar" or slotContent.name == "thoriumrod" or slotContent.name == "enricheduranium" or slotContent.name == "enrichedplutonium" or slotContent.name == "ultronium" then
 		if math.random(1,100) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end	
 	
@@ -160,11 +191,11 @@ function isn_doSlotDecay(slot)
 end
 
 function isn_getCurrentPowerOutput(divide)
-	if storage.active == false then return 0 end
-	
+	if storage.batteryHold or not storage.active then return 0 end
+
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
 	if divisor < 1 then divisor = 1 end
-	
+
 	local powercount = 0
 	powercount = powercount + isn_powerSlotCheck(0)
 	powercount = powercount + isn_powerSlotCheck(1)

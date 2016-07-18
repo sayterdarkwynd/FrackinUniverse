@@ -63,6 +63,12 @@ function isn_doesNotConsumePower()
 	else return false end
 end
 
+function isn_isBattery()
+	local capacity = config.getParameter("isn_batteryCapacity")
+	if capacity ~= nil and capacity > 0 then return true
+	else return false end
+end
+
 function isn_activeConsumption()
 	return storage.activeConsumption == nil or storage.activeConsumption		-- shim in place for uncorrected stations
 end

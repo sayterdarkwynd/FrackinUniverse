@@ -1,7 +1,7 @@
 function init(virtual)
 	if virtual == true then return end
 	object.setInteractive(true)
-	entity.setSoundEffectEnabled(false)
+	object.setSoundEffectEnabled(false)
 	
 	if storage.currentpowerprod == nil then storage.currentpowerprod = 0 end
 	if storage.fueledticks == nil then storage.fueledticks = 0 end
@@ -23,17 +23,17 @@ function update(dt)
 	if storage.currentpowerprod > 90 then
 		animator.setAnimationState("screen", "slow")
                 object.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
-                entity.setSoundEffectEnabled(true)
+                object.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 50 then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
                 object.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
-		entity.setSoundEffectEnabled(true)
+		object.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 10 then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
                 object.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
-		entity.setSoundEffectEnabled(true)
+		object.setSoundEffectEnabled(true)
 	else
 		animator.setAnimationState("screen", "off")
 		animator.setAnimationState("fans", "off")
