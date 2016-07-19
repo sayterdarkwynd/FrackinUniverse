@@ -1,22 +1,21 @@
 [
-  {"op" : "replace", 
-  "path" : "/spawnGroups/generatedFlying",
-  "value" : {
-    [0.5, "passiveSmallFlyingDay"],
+  {"op" : "add", 
+  "path" : "/spawnGroups/generatedFlying/-",
+  "value" : [
     [0.4, "aggroSmallFlyingDay"],
     [0.2, "passiveLargeFlying"],
     [0.2, "aggroLargeFlying"],
-    [0.1, "aggroLargeFlyingMiniboss"]
-  }
+    [0.05, "aggroLargeFlyingMiniboss"]
+    ]
+  
   
   }, 
-  {"op" : "replace", 
-  "path" : "/spawnGroups/generatedGround",
-  "value" : {
-    [0.5, "passiveSmallBipedDay"],
-    [0.5, "passiveSmallQuadrupedDay"]
-    [0.1, "aggroLargeBossQuadruped"],
-    [0.1, "aggroLargeBossBiped"]
-  }
+  {"op" : "add", 
+  "path" : "/spawnGroups/generatedGround/-",
+  "value" : [
+    [0.05, "aggroLargeBossQuadruped"],
+    [0.05, "aggroLargeBossBiped"]
+    ]
+  
   } 
 ]
