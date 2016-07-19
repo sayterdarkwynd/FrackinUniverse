@@ -2,7 +2,7 @@ function init()
   _x = config.getParameter("healthDown", 0)
 baseValue = config.getParameter("healthDown",0)*(status.resourceMax("energy"))
 
-  if (status.resourceMax("energy")) * _x >= 100.0 then
+  if (status.resourceMax("health")) * _x >= 100.0 then
      effect.addStatModifierGroup({{stat = "maxEnergy", amount = baseValue }})
      else
      effect.addStatModifierGroup({{stat = "maxEnergy", amount = baseValue }})
@@ -24,7 +24,7 @@ function update(dt)
     self.tickTimer = self.tickTime
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
-        damage = math.floor(status.resourceMax("energy") * self.tickDamagePercentage) + 1,
+        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
         damageSourceKind = "poison",
         sourceEntityId = entity.id()
       })
