@@ -1,8 +1,8 @@
---------------------------------------------------------------------------------
+require "/scripts/companions/capturable.lua"
+require "/scripts/util.lua"
+
 function init()
   self.sensors = sensors.create()
-
-  capturepod.onInit()
 
   self.state = stateMachine.create({
     "attackState",
@@ -46,19 +46,13 @@ function update(dt)
 end
 
 --------------------------------------------------------------------------------
-function damage(args)
-  capturepod.onDamage(args)
-end
-
---------------------------------------------------------------------------------
 function shouldDie()
-  return self.dead or status.resource("health") <= 0
+  return self.dead or not status.resourcePositive("health") or capturable.justCaptured
 end
 
 --------------------------------------------------------------------------------
 function die()
-  if not capturepod.onDie() then
-    local size = config.getParameter("poSize")
+  local size = config.getParameter("poSize")
 
     if size == "medium" then
       local entityId = world.spawnMonster("microslime", monster.toAbsolutePosition({ -1, 4 }), { level = monster.level() })
@@ -73,7 +67,6 @@ function die()
       entityId = world.spawnMonster("microslime", monster.toAbsolutePosition({ 1, 3 }), { level = monster.level() })
       world.callScriptedEntity(entityId, "setSpawnDirection", 1)
     end
-  end
 end
 
 --------------------------------------------------------------------------------
@@ -119,7 +112,7 @@ function move(delta, run)
   mcontroller.controlMove(delta[1], true)
 end
 
---Check if entity is on solid ground (not platforms) 
+--Check if entity is on solid ground (not platforms)
 function onSolidGround()
   local position = mcontroller.position()
   local bounds = boundingBox()
@@ -153,8 +146,6 @@ end
 moveState = {}
 
 function moveState.enter()
-  if capturepod.isCaptive() then return nil end
-
   return {
     timer = util.randomInRange(config.getParameter("moveTimeRange")),
     direction = util.toDirection(math.random(100) - 50)
@@ -206,7 +197,7 @@ captiveState = {
 }
 
 function captiveState.enter()
-  if not capturepod.isCaptive() or self.targetId ~= nil then return nil end
+  if not capturable or not capturable.ownerUuid() or self.targetId ~= nil then return nil end
 
   return { running = false }
 end
