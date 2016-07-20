@@ -12,7 +12,6 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/capturepod.lua",
       "/monsters/slime/behavior.lua",
 
       "/scripts/sensors.lua",
@@ -42,7 +41,7 @@
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 1,
+    "knockoutTime" : 0.1,
     "knockoutEffect" : "blink",
     "deathParticles" : "deathPoof",
 
@@ -90,6 +89,10 @@
       },
 
       "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
         "health" : {
           "maxStat" : "maxHealth",
           "deltaStat" : "healthRegen",
@@ -115,8 +118,6 @@
 
     "poSize" : "small",
 
-    "spawnVelocity" : [2, 30],
-
-    "captureHealthFraction" : 0.5
+    "spawnVelocity" : [2, 30]
   }
 }
