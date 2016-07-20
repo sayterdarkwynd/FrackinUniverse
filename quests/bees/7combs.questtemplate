@@ -1,20 +1,24 @@
 {
-  "id" : "7combs.gearup",
-  "prerequisites" : [ "6centrifuge.gearup" ],
+  "id" : "7combs",
+  "prerequisites" : [ "6centrifuge" ],
   "title" : "^#1693d5;Honeycombs",
   "text" : "Once your bees have been busy a while ^orange;collect the combs from your apiary^white;.",
   "completionText" : "Now you'll need another station to process this resource. Shall we continue?",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
   "speaker" : "questGiver",
-  "moneyRange" : [0, 0],
-  "rewards" : [],
-
+  
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+
     "portraits" : {
-      "questStarted" : "questGiver"
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
     },
-    "followUp" : "8extractcombs.gearup",
+    
+    "requireTurnIn" : false,
+
     "conditions" : [
       {
         "type" : "gatherItem",
@@ -25,6 +29,3 @@
     ]
   }
 }
-
- 
-

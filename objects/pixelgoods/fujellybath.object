@@ -16,19 +16,35 @@
   "sitAngle" : 0,
   "sitCoverImage" : "/objects/pixelgoods/fujellybathoverlay.png",
   "sitEmote" : "happy",
-  "sitStatusEffects" : [
-    "regeneration2",
-    "nude"
-  ],
+  "sitStatusEffects" : [ "regeneration2", "nude" ],
   "sitEffectEmitters" : [  ],
-
+  
+"particleEmitter" : {
+    "emissionRate" : 3.5,
+    "emissionVariance" : 5.5,
+    "pixelOrigin" : [12, 16],
+    "particle" : {
+      "type" : "ember",
+      "size" : 1.0,
+      "color" : [175, 100, 200, 255],
+      "light" : [0, 0, 0],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, 3.0],
+      "finalVelocity" : [0.0, 1.5],
+      "approach" : [0, 20],
+      "timeToLive" : 2,
+      "layer" : "middle"
+    },
+    "particleVariance" : { "initialVelocity" : [2.5, 2.0] }
+  },
+  
   "inventoryIcon" : "fujellybathicon.png",
   "orientations" : [
     {
-      "dualImage" : "fujellybath.png:<color>",
+      "dualImage" : "fujellybath.png:<color>.<frame>",
 
       "imagePosition" : [-32, 0],
-      "frames" : 4,
+      "frames" : 8,
       "animationCycle" : 1.0,
 
       "spaceScan" : 0.1,

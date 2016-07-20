@@ -1,20 +1,24 @@
 {
-  "id" : "2brew_d.gearup",
-  "prerequisites" : [ "2brew_c.gearup" ],
+  "id" : "2brew_d",
+  "prerequisites" : [ "2brew_c" ],
   "title" : "^#1693d5;Brewing IV",
   "text" : "And now let's make some ^green;Wartwine^white;. Combine an ^orange;Empty Glass Bottle^white;, ^orange;Yeast Water^white;, 2 ^orange;Wartweed^white;, and 2 ^orange;Grape Mash^white; in the ^orange;Fermenter^white;.",
   "completionText" : "Excellent! It looks tasty, doesn't it? But this is just the beginning. You'll craft even more glorious alcohol soon!",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
   "speaker" : "questGiver",
-  "moneyRange" : [0, 0],
-  "rewards" : [],
-
+  
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+
     "portraits" : {
-      "questStarted" : "questGiver"
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
     },
-    "followUp" : "3hops.gearup",
+
+    "requireTurnIn" : false,
+
     "conditions" : [
       {
         "type" : "gatherItem",
@@ -25,6 +29,3 @@
     ]
   }
 }
-
- 
-
