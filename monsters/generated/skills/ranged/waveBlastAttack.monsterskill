@@ -1,0 +1,42 @@
+{
+  "name" : "waveBlastAttack",
+  "label" : "WATER BLAST",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "waterBlastAttack",
+
+          "maximumRange" : 12,
+          "minimumRange" : 2,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "waterblast2",
+          "projectileParameters" : {
+            "speed" : 35
+          },
+          "power" : 5,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 3,
+          "projectileInterval" : 0.066,
+
+          "fireArc" : true,
+          "projectileSpeed" : 35
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/bloodvomit1.ogg", "/sfx/projectiles/bloodvomit2.ogg", "/sfx/projectiles/bloodvomit3.ogg", "/sfx/projectiles/bloodvomit4.ogg", "/sfx/projectiles/bloodvomit5.ogg", "/sfx/projectiles/bloodvomit6.ogg", "/sfx/projectiles/bloodvomit7.ogg" ]
+    }
+  }
+}
+
