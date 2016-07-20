@@ -1,30 +1,31 @@
 {
-  "id" : "8extractcombs.gearup",
-  "prerequisites" : [ "7combs.gearup" ],
+  "id" : "8extractcombs",
+  "prerequisites" : [ "7combs" ],
   "title" : "^#1693d5;Wax and Wane",
   "text" : "Place the combs within your ^orange;wooden centrifuge^white; and collect the ^orange;wax chunks^white; from within.",
   "completionText" : "Different combs contain very different resources.Experimentation is part of the challenge!",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
   "speaker" : "questGiver",
-  "moneyRange" : [0, 0],
- "rewards" : [],
-
+  
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
+
     "portraits" : {
-      "questStarted" : "questGiver"
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
     },
-    "followUp" : "9alveary.gearup",
+    
+    "requireTurnIn" : false,
+
     "conditions" : [
       {
         "type" : "gatherItem",
         "itemName" : "waxchunk",
         "count" : 1,
-        "consume" : true
+        "consume" : false
       }
     ]
   }
 }
-
- 
-
