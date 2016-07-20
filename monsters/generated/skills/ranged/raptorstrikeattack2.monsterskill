@@ -1,0 +1,38 @@
+{
+  "name" : "raptorstrikeAttack2",
+  "label" : "NASTY BITE",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "raptorstrikeAttack2",
+
+          "maximumRange" : 5,
+          "minimumRange" : 1,
+          "windupEffect" : "castphysical",
+          "projectileCount" : 1,
+          "projectileInterval" : 0.1,
+        
+          "fireDelay" : 0.1,
+          "projectileType" : "raptorbite",
+          "projectileParameters" : {
+            "speed" : 20
+          },
+          "power" : 7,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/npc/quadruped/arrowhead_pain2.ogg", "/sfx/melee/bite.ogg" ]
+    }
+  }
+}
+

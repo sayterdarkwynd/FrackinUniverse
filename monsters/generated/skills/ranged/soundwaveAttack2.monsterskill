@@ -1,0 +1,38 @@
+{
+  "name" : "soundwaveAttack2",
+  "label" : "SONIC BURST",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "soundwaveAttack2",
+
+          "maximumRange" : 8,
+          "minimumRange" : 1,
+          "windupEffect" : "castphysical",
+          "projectileCount" : 3,
+          "projectileInterval" : 0.03,
+        
+          "fireDelay" : 0.1,
+          "projectileType" : "fusoundwave",
+          "projectileParameters" : {
+            "speed" : 40
+          },
+          "power" : 8,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+    }
+  }
+}
+

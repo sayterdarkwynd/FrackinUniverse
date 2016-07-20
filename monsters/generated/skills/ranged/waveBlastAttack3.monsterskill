@@ -1,22 +1,22 @@
 {
   "name" : "waveBlastAttack3",
   "label" : "WATER BLAST",
-  "image" : "/monsters/generated/flying/skills/default.png",
+  "image" : "/monsters/generated/skills/defaultwater.png",
 
   "config" : {
     "hostileActions" : [
       {
         "name" : "action-fire",
-        "cooldown" : 4,
+        "cooldown" : 5,
         "parameters" : {
           "skillName" : "waterBlastAttack2",
 
-          "maximumRange" : 12,
+          "maximumRange" : 15,
           "minimumRange" : 2,
-          "windupEffect" : "castpoison",
+          "windupEffect" : "cultistshield",
           
-          "fireDelay" : 0.1,
-          "projectileType" : "waterblast3",
+          "fireDelay" : 0.35,
+          "projectileType" : "waterblast2",
           "projectileParameters" : {
             "speed" : 35
           },
