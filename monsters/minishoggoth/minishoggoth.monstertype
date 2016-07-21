@@ -17,7 +17,7 @@
     ],
 
     "behavior" : "monster",
-
+    "deathBehavior" : "monster-death",
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -27,7 +27,9 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
 
-      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+      "foundTargetActions" : [ 
+        { "name" : "action-aggrohop" } 
+      ],
 
       "fleeActions" : [],
 
@@ -101,7 +103,9 @@
         }
       ],
 
-      "periodicActions" : [],
+      "periodicActions" : [
+
+      ],
 
       "approachActions" : [
         {
@@ -143,6 +147,22 @@
           "cooldown" : 6.0,
           "parameters" : {
             "wanderTime" : [5, 15]
+          }
+        }
+      ],
+
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "puswater",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 1]
           }
         }
       ]

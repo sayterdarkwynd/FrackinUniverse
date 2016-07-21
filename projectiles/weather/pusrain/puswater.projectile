@@ -1,0 +1,26 @@
+{
+  "projectileName" : "puswater",
+  "physics" : "rain",
+  "image" : "puswater.png",
+  "timeToLive" : 0.2,
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "damagePoly" : [ [-30, -30], [30, -30], [30, 30], [-30, 30] ],
+  "damageKind" : "hidden",
+  "actionOnReap" : [
+    {
+      "action" : "liquid",
+      "liquid" : "pus",
+      "quantity" : 6
+    },
+    {
+      "action" : "applySurfaceMod",
+      "newMod" : "tentaclegrass",
+      "radius" : 4
+    }
+  ],
+
+  "onlyHitTerrain" : true,
+  "hydrophobic" : true,
+  "masterOnly" : true
+}

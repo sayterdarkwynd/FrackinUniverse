@@ -1,92 +1,175 @@
 {
   "type" : "rocktroll2",
+  "shortdescription" : "Rock Troll",
+  "description" : "I'm positive that it doesn't want to be my friend.",
 
   "categories" : [ "rocktroll2" ],
   "parts" : [ "body" ],
 
   "animation" : "rocktroll2.animation",
-  "colors" : "/monsters/colors.config",
-  "reversed" : true,
 
   "dropPools" : [ "rocktrollLoot" ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/fulegacyscripts/ground/groundMonster.lua",
-      "/scripts/pathing.lua",
-      "/scripts/stateMachine.lua",
-      "/scripts/util.lua",
-      "/scripts/vec2.lua",
-      "/monsters/fulegacyscripts/ground/aggroHopState.lua",
-      "/monsters/fulegacyscripts/ground/approachState.lua",
-      "/monsters/fulegacyscripts/ground/fleeState.lua",
-      "/monsters/fulegacyscripts/ground/wanderState.lua",
-
-      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"
+      "/monsters/monster.lua"
     ],
 
-    "baseSkills" : [ "meleeAttack"],
-    "specialSkills" : [ "fuChargeAttack", "stompAttack" ],
+    "behavior" : "monster",
 
-    "projectileSourcePosition" : [4.75, 1.0],
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
 
-    "attackStartDistance" : 3.5,
-    "attackTime" : 0.75,
-    "attackCooldownTime" : 0.5,
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+      "hurtTime": 0.10,
+      "hurtWaitForGround": false,
+      "hurtWaitForGroundTime": 0.1,
 
-    "aggressive" : true,
-    "territoryDistance" : 10.0,
-    "territorialTargetRadius" : 20.0,
-    "minimalTargetRadius" : 6.0,
-    "targetSearchTime" : 0.5,
-    "targetHoldTime" : 5.0,
+      "foundTargetActions" : [  ],
 
-    "closeDistance" : 1.5,
+      "fleeActions" : [],
 
-    "wanderTime" : [4.0, 6.0],
-    "wanderMovementTime" : [2.0, 3.0],
+      "hostileActions" : [
+        {
+          "name" : "action-animate",
+          "cooldown" : 15,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 0.53
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "maximumRange" : 20,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.3,
 
-    "jumpTargetDistance" : 6,
-    "jumpTime" : [1.4, 2.0],
+            "chargeTime" : 0.2,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 1600,
+            "chargeState" : "charge",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
 
-    "pathing" : {
-      "canOpenDoors" : false
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 1000,
+            "winddownState" : "chargewinddown"
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ],
+
+      "concurrentActions" : [
+        {
+          "name" : "action-spawncompanions",
+          "parameters" : {
+            "maxCount" : 3,
+            "spawnCooldown" : 5.0,
+            "monsterType" : "poptop"
+          }
+        }
+      ]
     },
 
-    "metaBoundBox" : [-3.12, -4.62, 2.60, 1.12],
-    "scale" : 1.2,
+    "damageParts" : {
+      "body" : {
+        "damage" : 13,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 20,
+        "statusEffects" : [ ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+      "damage" : 13,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.4,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-3.125,0.25], [-3.125,-4.125], [-0.75,-4.5], [1.25,-4.625], [2.625,-4.375], [3,-2], [1.25,0.25], [-0.5,0.75], [-1.875,1.375] ],
+      "collisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
 
-      "mass" : 1.0,
-      "walkSpeed" : 3,
-      "runSpeed" : 6,
-      "flySpeed" : 15,
-      "airForce" : 70.0,
+      "mass" : 2.5,
+      "walkSpeed" : 9,
+      "runSpeed" : 11,
 
-      "airFriction" : 0.0,
+      "airFriction" : 0,
+
       "airJumpProfile" : {
-        "jumpSpeed" : 15.0,
-        "jumpInitialPercentage" : 2.6,
-        "jumpHoldTime" : 1.0              
+        "jumpSpeed" : 35.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
       }
     },
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 1,
-    "knockoutEffect" : "blink",
-    "deathParticles" : "deathPoof",
-    "meleeProjectile" : "rocktrollswoosh2",
-    "touchDamage" : {
-      "poly" : [ [-3.125,0.25], [-3.125,-4.125], [-0.75,-4.5], [1.25,-4.625], [2.625,-4.375], [3,-2], [1.25,0.25], [-0.5,0.75], [-1.875,1.375] ],
-      "damage" : 25,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "lash",
-      "statusEffects" : [ ]
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
     },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
 
     "statusSettings" : {
       "statusProperties" : {
@@ -99,27 +182,34 @@
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
       ],
-      "primaryScriptDelta" : 0,
+      "primaryScriptDelta" : 5,
 
       "stats" : {
-        "grit" : {
-          "baseValue" : 1.0
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 180
+          "baseValue" : 320
         },
         "protection" : {
-          "baseValue" : 30.0
-        },
-        "healthRegen" : {
           "baseValue" : 0.0
         },
-        "poisonImmunity" : {
-          "baseValue" : 1.0
+        "healthRegen" : {
+          "baseValue" : 0.05
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.62
         }
       },
 
       "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
         "health" : {
           "maxStat" : "maxHealth",
           "deltaStat" : "healthRegen",
@@ -129,6 +219,11 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.24,
+    "capturedMonsterName" : "Rock Troll",
+    "capturedMonsterType" : "newtroll", // turn into an adultpoptop when captured
+    "nametagColor" : [64, 200, 255]
   }
 }
