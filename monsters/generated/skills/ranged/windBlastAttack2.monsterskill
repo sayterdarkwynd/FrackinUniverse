@@ -1,0 +1,38 @@
+{
+  "name" : "windBlastAttack2",
+  "label" : "SONIC BURST",
+  "image" : "/monsters/generated/skills/defaultphysical.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "windBlastAttack2",
+
+          "maximumRange" : 16,
+          "minimumRange" : 5,
+          "windupEffect" : "castphysical",
+          "projectileCount" : 1,
+          "projectileInterval" : 0.03,
+        
+          "fireDelay" : 0.2,
+          "projectileType" : "windblast",
+          "projectileParameters" : {
+            "speed" : 40
+          },
+          "power" : 14,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/vashtagun.ogg" ]
+    }
+  }
+}
+
