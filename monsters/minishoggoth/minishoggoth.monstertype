@@ -7,7 +7,6 @@
   "parts" : [ "body" ],
 
   "animation" : "minishoggoth.animation",
-  "reversed" : true,
 
   "dropPools" : [ { "default" : "minishoggothLoot", "bow" : "hemogoblinHunting" } ],
 
@@ -17,6 +16,7 @@
     ],
 
     "behavior" : "monster",
+    "facingMode" : "transformation",
     "deathBehavior" : "monster-death",
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -56,7 +56,7 @@
         },
         {
           "name" : "action-fire",
-	  "cooldown" : 2,
+	      "cooldown" : 2,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 12,
@@ -80,7 +80,7 @@
         },
         {
           "name" : "action-fire",
-	  "cooldown" : 1,
+		  "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 5,
@@ -109,15 +109,9 @@
 
       "approachActions" : [
         {
-          "name" : "approach-walk",
+          "name" : "approach-crawl",
           "parameters" : {
-            "canJump" : true,
-            "maxJumps" : 6,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10,
-            "run" : true
+            "resetHeading" : false
           }
         }
       ],
@@ -129,28 +123,28 @@
           }
         },
         {
-          "name" : "approach-walk",
+          "name" : "approach-crawl",
           "parameters" : {
-            "canJump" : true,
-            "maxJumps" : 6,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10
+            "resetHeading" : false
           }
         }
       ],
 
       "wanderActions" : [
         {
-          "name" : "wander-walk",
-          "cooldown" : 6.0,
+          "name" : "wander-crawl",
           "parameters" : {
             "wanderTime" : [5, 15]
           }
         }
       ],
 
+      "concurrentActions" : [
+        ],
+
+      "concurrentHostileActions" : [
+        { "name" : "idle-crawl" }
+		],
 
       "deathActions" : [
         {
