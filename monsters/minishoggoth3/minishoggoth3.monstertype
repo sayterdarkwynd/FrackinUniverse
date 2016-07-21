@@ -64,7 +64,7 @@
 
             "projectileType" : "pusvomit4",
             "power" : 9,
-            "fireOffset" : [2.5, -1],
+            "fireOffset" : [3.0, -1],
             "aimAtTarget" : true,
             "projectileCount" : 5,
             "projectileInterval" : 0.01,
@@ -73,6 +73,29 @@
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.65
+          }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 5,
+            "minimumRange" : 1,
+            "windupState" : "fire",
+            "windupTime" : 0.2,
+
+            "projectileType" : "chomp",
+            "power" : 10,
+            "fireOffset" : [3.5, -1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "range": 5,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.1
           }
         }
       ],
