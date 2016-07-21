@@ -514,6 +514,38 @@
    },
 
    {"op" : "add", 
+   "path" : "/planetTypes/tabularasa",
+   "value" : 
+     {
+       "gravityRange" : [40, 90],
+       "threatRange" : [1, 6],
+       "layers" : {
+		"atmosphere" : {
+          "primaryRegion" : [ "clouds" ]
+		},
+        "surface" : {
+          "primaryRegion" : [ "tabularasa" ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "arborealunderground" ]
+        },
+        "underground1" : {
+          "secondaryRegions" : [ "zen", "shroomcave", "colorfulcave",  "luminouscaves",  "minivillageunderground", "mushroomunderground", "wildernessunderground" ]
+        },
+        "underground2" : {
+          "secondaryRegions" : [ "zen", "shroomcave", "colorfulcave", "luminouscaves",  "minivillageunderground", "mushroomunderground", "wildernessunderground" ]
+        },
+        "underground3" : {
+          "secondaryRegions" : [ "zen", "shroomcave", "colorfulcave", "ffspidernest", "luminouscaves",  "minivillageunderground", "mushroomunderground", "wildernessunderground" ]
+        },
+        "core" : {
+          "primaryRegion" : [ "core" ]
+        } 
+       }
+     }
+   },
+   
+   {"op" : "add", 
    "path" : "/planetTypes/barren",
    "value" : 
      {
@@ -3135,6 +3167,21 @@
     }
   }, 
   
+  {"op" : "add", 
+  "path" : "/regionTypes/tabularasa",
+  "value" : 
+  {
+	  "caveLiquid" : [ "water", "healingliquid" ],
+      "caveLiquidChanceRange" : [20, 100],
+      "blockSelector" : [ "flatsSurface" ],
+      "fgCaveSelector" : [ "empty" ],
+	  "bgCaveSelector" : [ "empty" ],
+      "biome" : [
+        [0, [ "tabularasa" ]]
+      ]
+    }
+  },
+
   {"op" : "add", 
   "path" : "/regionTypes/tarball",
   "value" : 
