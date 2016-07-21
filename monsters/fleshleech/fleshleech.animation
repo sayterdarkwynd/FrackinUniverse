@@ -1,7 +1,7 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "movement" : {
+      "body" : {
         "priority" : 0,
         "default" : "idle",
         "states" : {
@@ -26,60 +26,26 @@
             "cycle" : 0.5,
             "mode" : "loop"
           },
-          "chargeWindup" : {
+          "fireWindup" : {
             "frames" : 4,
             "cycle" : 0.375,
             "mode" : "loop"
           },
-          "charge" : {
+          "fire" : {
             "frames" : 4,
             "cycle" : 0.275,
             "mode" : "loop"
-          },
-          "knockback" : {
-            "frames" : 1
-          },
-          "knockout" : {
-            "frames" : 1
           }
         }
       },
-
-      "attack" : {
-        "priority" : 1,
-        "default" : "idle",
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
         "states" : {
-          "idle" : {
-            "frames" : 4,
-            "mode" : "loop"
+          "none" : {
+            "frames" : 1
           },
-          "melee" : {
-            "frames" : 4,
-            "mode" : "end"
-          },
-          "shooting" : {
-            "frames" : 4,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "charge" : {
-            "frames" : 4,
-            "cycle" : 0.8,
-            "mode" : "loop"
-          },
-          "chargeAttack" : {
-            "frames" : 4,
-            "cycle" : 0.6,
-            "mode" : "loop"
-          }
-        }
-      },
-
-      "portrait" : {
-        "priority" : -1,
-        "default" : "portrait",
-        "states" : {
-          "portrait" : {
+          "stunned" : {
             "frames" : 1
           }
         }
@@ -88,8 +54,12 @@
 
     "parts" : {
       "body" : {
+        "properties" : {
+          "transformationGroups" : [ "facing", "body" ],
+          "offset" : [0.0, 0.0]
+        },
         "partStates" : {
-          "movement" : {
+          "body" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -105,9 +75,9 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
-            "charge" : {
+            "fire" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:fire.<frame>"
               }
             },
             "jump" : {
@@ -120,50 +90,16 @@
                 "image" : "<partImage>:jump.<frame>"
               }
             },
-            "chargeWindup" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "knockback" : {
-              "properties" : {
-                "image" : "<partImage>:idle.<frame>"
-              }
-            },
-            "knockout" : {
+            "fireWindup" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             }
           },
-
-          "attack" : {
-            "melee" : {
+          "damage" : {
+            "stunned" : {
               "properties" : {
-                "image" : "<partImage>:throw.<frame>"
-              }
-            },
-            "shooting" : {
-              "properties" : {
-                "image" : "<partImage>:ranged.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "chargeAttack" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            }
-          },
-
-          "portrait" : {
-            "portrait" : {
-              "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:idle.<frame>"
               }
             }
           }
@@ -172,6 +108,11 @@
     }
   },
   
+  "transformationGroups" : {
+    "body" : { "interpolated" : true },
+    "facing" : { "interpolated" : false }
+	},
+
   "rotationGroups" : {
     "projectileAim" : {
       "angularVelocity" : 1.5
@@ -376,7 +317,10 @@
   },
 
   "sounds" : {
-    "turnHostile" : [ ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+    "turnHostile" : [ "/sfx/npc/quadruped/bulbouseyehead_turnhostile.ogg" ],
+    "aggroHop" : [ "/sfx/npc/quadruped/bulbouseyehead_turnhostile.ogg" ],
+    "deathPuff" : [ "/sfx/npc/smallbiped/arrowhead_small_death.ogg" ],
+    "attack" : [ "/sfx/npc/smallbiped/arrowhead_small_attack1.ogg" ],
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ]
   }
 }
