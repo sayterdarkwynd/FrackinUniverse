@@ -54,6 +54,10 @@
 
     "parts" : {
       "body" : {
+        "properties" : {
+          "transformationGroups" : [ "facing", "body" ],
+          "offset" : [0.0, 0.0]
+        },
         "partStates" : {
           "body" : {
             "idle" : {
@@ -104,6 +108,11 @@
     }
   },
   
+  "transformationGroups" : {
+    "body" : { "interpolated" : true },
+    "facing" : { "interpolated" : false }
+	},
+
   "rotationGroups" : {
     "projectileAim" : {
       "angularVelocity" : 1.5
