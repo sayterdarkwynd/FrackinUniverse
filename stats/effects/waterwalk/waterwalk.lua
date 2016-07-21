@@ -1,11 +1,13 @@
 function init()
   local bounds = mcontroller.boundBox()
+  self.liquidMovementParameter = {
+	liquidBuoyancy = 3
+  }
 end
 
 function update(dt)
-  mcontroller.controlModifiers({
-      runModifier = 1.10
-    })
+mcontroller.controlParameters(self.liquidMovementParameter)
+   
 end
 
 function uninit()
