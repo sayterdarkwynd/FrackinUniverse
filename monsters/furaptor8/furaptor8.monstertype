@@ -1,12 +1,12 @@
 {
-  "type" : "furaptor5",
-  "shortdescription" : "furaptor5",
+  "type" : "furaptor8",
+  "shortdescription" : "furaptor8",
   "description" : "It's a freakin' dinosaur!",
 
-  "categories" : [ "furaptor5" ],
+  "categories" : [ "furaptor8" ],
   "parts" : [ "body" ],
 
-  "animation" : "furaptor5.animation",
+  "animation" : "furaptor8.animation",
 
   "dropPools" : [ "dinoLoot" ],
 
@@ -44,30 +44,6 @@
           }
         },
         {
-          "name" : "action-fire",
-	  "cooldown" : 10,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 6,
-            "minimumRange" : 3,
-            "windupState" : "fire",
-            "windupTime" : 0.8,
-
-            "projectileType" : "poisonraptor",
-            "power" : 9,
-            
-            "fireOffset" : [5.5, 1],
-            "aimAtTarget" : true,
-            "projectileCount" : 3,
-            "projectileInterval" : 0.01,
-            "fireSound" : "fire",
-            "range": 8,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.65
-          }
-        },        
-        {
           "name" : "action-charge",
           "cooldown" : 6.0,
           "parameters" : {
@@ -76,8 +52,8 @@
             "windupTime" : 0.3,
 
             "chargeTime" : 0.2,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 1000,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 1600,
             "chargeState" : "charge",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
@@ -119,7 +95,7 @@
 
             "projectileType" : "raptorbite",
             "power" : 11,
-            "fireOffset" : [5.5, 0],
+            "fireOffset" : [5.5, 1],
             "aimAtTarget" : false,
             "projectileCount" : 1,
             "projectileInterval" : 0.01,
@@ -183,12 +159,12 @@
     },
 
     "metaBoundBox" : [-3.38, -4.0, 4.50, 0.75],
-    "scale" : 0.5,
+    "scale" : 1.0,
 
     "movementSettings" : {
 	"collisionPoly" : [ [-2, -3.9], [1.75, -3.9], [1.75, 0.0], [-2, 0.0] ],
       "mass" : 1.0,
-      "walkSpeed" : 12,
+      "walkSpeed" : 10,
       "runSpeed" : 14,
       "flySpeed" : 15,
       "airForce" : 50.0,
@@ -228,16 +204,16 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 32
+          "baseValue" : 76
         },
         "protection" : {
           "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
-        },       
+        },
         "powerMultiplier" : {
-          "baseValue" : 1.0
+          "baseValue" : 1.2
         }
       },
 
