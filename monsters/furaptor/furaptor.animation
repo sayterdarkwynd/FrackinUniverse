@@ -31,14 +31,14 @@
             "frames" : 5,
             "cycle" : 0.5,
             "properties" : {
-              "persistentSound" : "/sfx/raptor/dino-chew.wav",
+              "persistentSound" : "/sfx/raptor/raptor4.ogg",
               "persistentSoundStopTime" : 2.2,
               "particleEmittersOff" : [ "spindust" ]
             }
           },
           "chargewinddown" : {
             "frames" : 5,
-            "cycle" : 0.1,
+            "cycle" : 0.2,
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
@@ -49,19 +49,19 @@
           },        
           "charge" : {
             "frames" : 6,
-            "cycle" : 0.3,
+            "cycle" : 1.0,
             "properties" : {
               "persistentSound" : "/sfx/raptor/raptor1.ogg",
               "persistentSoundStopTime" : 2.0,
-              "immediateSound" : "/sfx/raptor/raptor3.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }
           },
           "fire" : {
             "frames" : 5,
-            "cycle" : 0.3,
+            "cycle" : 0.5,
             "properties" : {
               "immediateSound" : "/sfx/raptor/raptor3.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
               "particleEmittersOff" : [ "spindust" ]
             }
           },          
@@ -71,8 +71,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/raptor/dino-roar.wav",
-              "persistentSoundStopTime" : 1.25
+              "immediateSound" : "/sfx/raptor/raptor2.ogg"            
             },
             "frameProperties" : {
               "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
