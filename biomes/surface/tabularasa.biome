@@ -6,7 +6,7 @@
   
     "weather" : [
       [0, [
-        "/weather.config:forest"
+        "/weather.config:garden"
       ]]
   ],
   
@@ -88,7 +88,7 @@
   "subBlocks" : [ "cobblestone", "clay", "mud" ],
   "ores" : "ff_surfacearborealOres",
 
-  "parallax" : "/parallax/surface/forest.parallax",
+  "parallax" : "/parallax/surface/garden.parallax",
 
 
   "ambientNoises" : {
@@ -102,10 +102,10 @@
 
     "musicTrack" : {
       "day" : {
-        "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+        "tracks" : [ "music/casiopeia.ogg", "/music/planetarium.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/i-was-the-sun.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/on-the-beach-at-night.ogg" ]
       },
       "night" : {
-        "tracks" : [ "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+        "tracks" : [ "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg", "the-eternal-tide.ogg" ]
       }
      },
 
@@ -154,9 +154,6 @@
         {
           "pool" : [ 
           [0.35, "jungleplant_ff1" ],
-          [0.35, "shimbush1" ],
-          [0.35, "shimbush2" ],
-          [0.35, "shimbush3" ],
           [0.35, "goldspiral3" ],
           [0.35, "goldspiral4" ],
           [0.35, "purpleflower1" ],
@@ -320,23 +317,9 @@
         },
         {
           "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [1, "statuspod" ] ],
-              "parameters" : { }
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -349,15 +332,6 @@
         
           "type" : "microdungeon",
           "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel", "blockpile", "loops", "flats", "canyonmini" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistPlatform",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "greenplatforming" ]
         }
       ]
     },
