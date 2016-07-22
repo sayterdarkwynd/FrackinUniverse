@@ -36,16 +36,16 @@
       "hostileActions" : [
         {
           "name" : "action-animate",
-          "cooldown" : 15,
+          "cooldown" : 5,
           "parameters" : {
             "stateType" : "body",
             "state" : "roar",
-            "animationTime" : 0.53
+            "animationTime" : 2.0
           }
         },
         {
           "name" : "action-charge",
-          "cooldown" : 7.0,
+          "cooldown" : 6.0,
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup",
@@ -73,7 +73,7 @@
             "windupTime" : 0.3,
             "windupState" : "idle",
 
-            "leapVelocity" : 25,
+            "leapVelocity" : 45,
             "collisionCheck" : true,
             "highArc" : true,
             "leapState" : "jump",
@@ -85,7 +85,7 @@
         },
         {
           "name" : "action-fire",
-	  "cooldown" : 4,
+	  "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 5,
