@@ -1,5 +1,5 @@
 function init()
-   effect.addStatModifierGroup({{stat = "poisonImmunity", amount = 1}})
+   effect.addStatModifierGroup({{stat = "poisonStatusImmunity", amount = 1}})
 
    script.setUpdateDelta(0)
 end
