@@ -3,7 +3,7 @@ function init()
   animator.setParticleEmitterActive("sparkles", true)
   effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
   effect.addStatModifierGroup({
-    {stat = "fireImmunity", amount = 1},
+    {stat = "fireStatusImmunity", amount = 1},
     {stat = "breathProtection", amount = 1},
     {stat = "slushslowImmunity", amount = 1},
     {stat = "protoImmunity", amount = 1},

@@ -1,6 +1,6 @@
 function init()
   effect.addStatModifierGroup({
-    {stat = "fireImmunity", amount = 1}
+    {stat = "fireStatusImmunity", amount = 1}
   })
 end
 
