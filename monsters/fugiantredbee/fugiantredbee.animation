@@ -1,46 +1,47 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "movement" : {
+      "body" : {
         "priority" : 0,
-        "default" : "standing",
-
+        "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 3
-          },
-          "standing" : {
-            "frames" : 1
-          },
-          "flying" : {
             "frames" : 3,
-            "cycle" : 0.30,
+            "cycle" : 0.5,
             "mode" : "loop"
           },
-          "knockback" : {
-            "frames" : 3
-          },
-          "knockout" : {
-            "frames" : 3
-          },
-          "gliding" : {
-            "frames" : 3,
-            "cycle" : 0.30,
-            "mode" : "loop"
-          },
-          "flyingAttack" : {
+          "fire" : {
             "frames" : 5,
-            "cycle" : 0.25,
+            "cycle" : 0.5,
             "mode" : "loop"
+          },   
+          "swoopwindup" : {
+            "frames" : 3,
+            "cycle" : 0.6
+          },
+          "swoop" : {
+            "frames" : 5
+          },
+          "fly" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/bobfae_fly.ogg",
+              "persistentSoundStopTime" : 0.15,
+              "persistentSoundRangeMultiplier" : 0.5
+            }
           }
         }
       },
-
-      "portrait" : {
-        "priority" : -1,
-        "default" : "portrait",
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
         "states" : {
-          "portrait" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
             "frames" : 1
           }
         }
@@ -49,264 +50,140 @@
 
     "parts" : {
       "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.25, 0.875]
+        },
         "partStates" : {
-          "movement" : {
-            "standing" : {
-              "properties" : {
-                "image" : "<partImage>:ground"
-              }
-            },
-            
-            "flying" : {
-              "properties" : {
-                "image" : "<partImage>:fly.<frame>"
-              }
-            },
-
-            "knockback" : {
+          "body" : {
+            "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             },
-
-            "knockout" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            }, 
+            "swoopwindup" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             },
-
-            "gliding" : {
+            "swoop" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },            
+            "fly" : {
               "properties" : {
                 "image" : "<partImage>:fly.<frame>"
-              }
-            },
-
-            "flyingAttack" : {
-              "properties" : {
-                "image" : "<partImage>:attack.<frame>"
               }
             }
           },
-
-          "portrait" : {
-            "portrait" : {
+          "damage" : {
+            "stunned" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
-          }      
+          }
         }
       }
     }
   },
 
-  "rotationGroups" : {
-    "head" : {
-      "rotationCenter" : [0.625, -0.25],
-      "angularVelocity" : 1.5
-    }
-  },
-
-  "particleEmitters" : {
-    "damage" : {
-      "emissionRate" : 0.7,
-      "particles" : [
-      ]
-    },
-
-    "deathPoof" : {
-      "particles" : [
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/puff2c/puff2c.animation",
-            "size" : 1,
-            "angularVelocity" : 35,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [0, 0],
-            "finalVelocity" : [0, 0],
-            "approach" : [1, 1],
-            "timeToLive" : 0.4,
-            "layer" : "middle"
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz1/fizz1.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz1/fizz1.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz2/fizz2.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz2/fizz2.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz3/fizz3.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz3/fizz3.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz4/fizz4.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz4/fizz4.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        }
-      ]
-    }
-  },
-
-  "sounds" : {
-    "attackSound" : [ "/sfx/bees/beebuzz.ogg", "/sfx/buzzing/sting.ogg" ],
-    "turnHostile" : [ "/sfx/buzzing/sting.ogg" ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
   },
 
   "effects" : {
     "blink" : {
       "type" : "flash",
-      "time" : 0.25,
+      "time" : 0,
       "directives" : "fade=ffffff;0.5"
     }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "drips" : {
+      "enabled" : true,
+      "emissionRate" : 5.0,
+      "offsetRegion" : [ -0.6875, -1.1875, 0.6875, 1.1875],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [80, 221, 254, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
 }

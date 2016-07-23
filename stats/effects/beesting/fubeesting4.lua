@@ -8,8 +8,8 @@ end
 
 
 function activateVisualEffects()
-  animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
-  animator.setParticleEmitterActive("drips", true)
+  animator.setParticleEmitterOffsetRegion("bees", mcontroller.boundBox())
+  animator.setParticleEmitterActive("bees", true)
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
