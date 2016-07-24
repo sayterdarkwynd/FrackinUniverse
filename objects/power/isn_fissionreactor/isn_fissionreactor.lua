@@ -173,7 +173,7 @@ function isn_doSlotDecay(slot)
 	end
 
 	local wastestack
-	
+	-- sb.logInfo("waste is %s", waste)
 	if waste == nil then
 		-- sb.logInfo("Nothing there, adding waste")
 		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
@@ -182,8 +182,8 @@ function isn_doSlotDecay(slot)
 		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 		-- sb.logInfo("wastestack now %s",wastestack)
 	end
-	
-	if wastestack.count > 0 then
+	-- sb.logInfo("wastestack now %s", wastestack)
+	if wastestack ~= nil and wastestack.count > 0 then
 		-- sb.logInfo("drop that stack like an ugly baby")
 		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
 		storage.radiation = storage.radiation + 5
