@@ -1,0 +1,37 @@
+{
+  "projectileName" : "magmadeath",
+  "image" : "lavabubble.png",
+  "animationCycle" : 0.25,
+  "level" : 3,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "lightColor" : [255, 113, 0],
+  "speed" : 30,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/magmastormexplosion/magmastormexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.001,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "liquid", 
+      "liquid" : "lava", 
+      "quantity" : 12
+    }
+  ],
+  "power" : 15.0,
+  "universalDamage" : true,
+  "damageType" : "ignoresdef",
+  "damageKind" : "default"
+}
+
+
+
+
