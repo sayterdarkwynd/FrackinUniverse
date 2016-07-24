@@ -8,7 +8,12 @@
 
   "animation" : "futinybee.animation",
 
-  "dropPools" : [ "beeLoot" ],
+  "dropPools" : [ 
+    {
+      "default" : "beeLoot",
+      "bugnet" : "normalqueen"
+    }
+    ],
 
   "baseParameters" : {
     "scripts" : [
@@ -160,7 +165,7 @@
 
     "touchDamage" : {
       "poly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
-      "damage" : 10,
+      "damage" : 1,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
