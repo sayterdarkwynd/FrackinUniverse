@@ -13,7 +13,7 @@ function update(dt)
   animator.setParticleEmitterActive("dust", mcontroller.onGround() and mcontroller.running())
   mcontroller.controlModifiers({
       runModifier = config.getParameter("runmodifiervalue", 30),
-	  jumpModifier = config.getParameter("jumpmodifiervalue", 30)
+	  airJumpModifier = config.getParameter("jumpmodifiervalue", 30)
     })
 end
 
