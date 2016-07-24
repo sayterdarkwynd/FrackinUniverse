@@ -13,7 +13,11 @@ function init()
    script.setUpdateDelta(5)
 end
 
+
+-- world.liquidAt( entity.position() )
+
 function update(dt)
+
 local inLiquid = mcontroller.liquidPercentage() > 0.01
     if inLiquid then
       mcontroller.controlParameters(self.liquidMovementParameter)
