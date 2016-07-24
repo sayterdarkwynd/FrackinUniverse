@@ -10,11 +10,11 @@ function init()
     {stat = "biooozeImmunity", amount = 1},
     {stat = "shadowgasImmunity", amount = 1},
     {stat = "sulphuricImmunity", amount = 1},
-    {stat = "fireImmunity", amount = 1},
+    {stat = "fireStatusImmunity", amount = 1},
     {stat = "fumudslowImmunity", amount = 1},
     {stat = "nitrogenfreezeImmunity", amount = 1},
     {stat = "breathProtection", amount = 1},
-    {stat = "poisonImmunity", amount = 1},
+    {stat = "poisonStatusImmunity", amount = 1},
     {stat = "slushslowImmunity", amount = 1},
     {stat = "snowslowImmunity", amount = 1}
   })

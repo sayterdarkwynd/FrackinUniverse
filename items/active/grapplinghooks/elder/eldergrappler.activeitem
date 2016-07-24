@@ -1,11 +1,12 @@
 {
   "itemName" : "eldergrappler",
-  "price" : 1000,
+  "price" : 3000,
   "inventoryIcon" : "lasherhookicon.png",
   "rarity" : "Legendary",
   "maxStack" : 1,
-  "description" : "A tough, long ranged grappling solution. Also ancient and creepy.",
-  "shortdescription" : "Elder Claw",
+  "description" : "Though creepy, this is a fun thing to play with.",
+  "shortdescription" : "Elder Hook",
+  "largeImage" : "lasherhookbig.png",
   "category" : "Tool",
   "fireTime" : 0,
   "twoHanded" : false,
@@ -15,25 +16,27 @@
 
   "animation" : "eldergrappler.animation",
 
-  "fireOffset" : [0, 0.3],
-  "ropeOffset" : [-0.5, 0.3],
+  "fireOffset" : [0, 0],
+  "ropeOffset" : [-1.75, 0],
+  "ropeVisualOffset" : [0.75, 0],
 
   "consumeOnUse" : false,
 
   "projectileType" : "grapplehook",
   "projectileParameters" : {
-    "speed" : 110,
-    "timeToLive" : 1.0
+    "speed" : 100,
+    "timeToLive" : 0.65
   },
 
-  "ropeWidth" : 1,
-  "ropeColor" : [0, 222, 30, 255],
+  "ropeWidth" : 0.8,
+  "ropeColor" : [0, 220, 30, 255],
 
-  "reelOutLength" : 110,
-  "breakLength" : 120,
+  "reelInDistance" : 2.5,
+  "reelOutLength" : 60,
+  "breakLength" : 220,
 
-  "reelSpeed" : 55,
+  "reelSpeed" : 25,
   "controlForce" : 1600,
 
-  "groundLagTime" : 0.08
+  "groundLagTime" : 0.2
 }
