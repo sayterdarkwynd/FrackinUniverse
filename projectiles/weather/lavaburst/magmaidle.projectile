@@ -1,0 +1,34 @@
+{
+  "projectileName" : "magmaidle",
+  "image" : "lavabubble.png",
+  "animationCycle" : 0.25,
+  "level" : 3,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "lightColor" : [255, 113, 0],
+  "timeToLive" : 0.01,
+  "speed" : 30,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.001,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "liquid", 
+      "liquid" : "lava", 
+      "quantity" : 4
+    }
+  ],
+  "power" : 15.0,
+  "universalDamage" : true,
+  "damageType" : "ignoresdef",
+  "damageKind" : "default"
+}
+
+
+
+

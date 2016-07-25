@@ -75,16 +75,40 @@
             "projectileType" : "hellfireburst2",
             "power" : 22,
             "speed": 50,
-            "fireOffset" : [5.5, 1],
+            "fireOffset" : [6, 0],
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "fireSound" : "fire",
             "range": 30,
             "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.65
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.2
           }
-        },
+        },        
+        {
+          "name" : "action-fire",
+	  "cooldown" : 9,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 10,
+            "minimumRange" : 3,
+            "windupState" : "firewindup",
+            "windupTime" : 0.7,
+
+            "projectileType" : "napalm2",
+            "power" : 8,
+            "speed": 50,
+            "fireOffset" : [6.2, 0],
+            "aimAtTarget" : true,
+            "projectileCount" : 8,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "range": 10,
+            "fireState" : "fire",
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.2
+          }
+        },        
         {
           "name" : "action-fire",
 	  "cooldown" : 2,
@@ -92,25 +116,25 @@
             "requireLineOfSight" : false,
             "maximumRange" : 50,
             "minimumRange" : 0,
-            "windupState" : "roar",
-            "windupTime" : 0.2,
+            "windupState" : "idle",
+            "windupTime" : 0.4,
 
-            "projectileType" : "molotovflame",
-            "power" : 21,
-            "fireOffset" : [5.5, 2],
+            "projectileType" : "magmaidle",
+            "power" : 5,
+            "fireOffset" : [6.5, 0],
             "aimAtTarget" : false,
             "projectileCount" : 1,
             "projectileInterval" : 0.01,
             "fireSound" : "fire",
             "range": 5,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.1
+            "fireState" : "idle",
+            "winddownState" : "idle",
+            "winddownTime" : 0.4
           }
         }, 
         {
           "name" : "action-fire",
-	  "cooldown" : 4,
+	  "cooldown" : 12,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 30,
@@ -119,7 +143,7 @@
             "windupTime" : 0.7,
 
             "projectileType" : "hellfireprojectile",
-            "power" : 12,
+            "power" : 15,
             "speed": 50,
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : true,
@@ -127,8 +151,8 @@
             "fireSound" : "fire",
             "range": 30,
             "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.65
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.2
           }
         }        
       ],
@@ -144,24 +168,7 @@
             "jumpXVelocity" : 12,
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
-            "minXRange" : 10,
-            "requireLineOfSight" : false,
-            "maximumRange" : 50,
-            "minimumRange" : 0,
-            "windupState" : "roar",
-            "windupTime" : 0.05,
-
-            "projectileType" : "molotovflame",
-            "power" : 21,
-            "fireOffset" : [5.5, 2],
-            "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "projectileInterval" : 0.01,
-            "fireSound" : "fire",
-            "range": 5,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.1
+            "minXRange" : 10
           }
         }
       ],
@@ -207,7 +214,7 @@
           "parameters" : {
             "maxCount" : 3,
             "spawnCooldown" : 5.0,
-            "monsterType" : "swarpion",
+            "monsterType" : "ignome",
             "state" : "roar"
           }
         }
