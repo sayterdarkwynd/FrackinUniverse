@@ -134,7 +134,7 @@ local recipes =
 {inputs = { wavebird=1 }, outputs = { geneticmaterial=1 }, time = 0.1},
 {inputs = { xenofly=1 }, outputs = { geneticmaterial=1 }, time = 0.1},
 ---- resources
-{inputs = { rottenfood=1 }, outputs = { mulch=3 }, time = 0.1 },
+{inputs = { rottenfood=1 }, outputs = { fu_mulch=3 }, time = 0.1 },
 {inputs = { toxicwaste=5 }, outputs = { uraniumore=1 }, time = 0.1},
 {inputs = { energywood=5 }, outputs = { fu_oxygen=5 }, time = 0.1},
 {inputs = { alienweirdwood=1 }, outputs = { tissueculture=4 }, time = 0.1},
