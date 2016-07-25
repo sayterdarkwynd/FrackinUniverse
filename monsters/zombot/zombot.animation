@@ -1,86 +1,143 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "movement" : {
+      "body" : {
         "priority" : 0,
         "default" : "idle",
         "states" : {
           "idle" : {
             "frames" : 4,
-            "mode" : "loop"
-          },
-          "jump" : {
-            "frames" : 3,
-            "mode" : "loop"
-          },
-          "fall" : {
-            "frames" : 3,
-            "mode" : "loop"
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "zapaura" ], [], [], [], [], [], [], ["zapaura"] ],
+              "particleEmittersOn" : [ [], [], ["zapaura"], [], [], [], [], [] ]
+            }               
           },
           "walk" : {
             "frames" : 5,
-            "mode" : "loop"
+            "cycle" : 0.65,
+            "mode" : "loop"             
           },
-          "run" : {
-            "frames" : 5,
-            "cycle" : 0.5,
-            "mode" : "loop"
+          "jump" : {
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/monster_hop.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            }
           },
-          "chargeWindup" : {
-            "frames" : 5,
-            "cycle" : 0.375,
-            "mode" : "loop"
+          "sleep" : {
+            "frames" : 8
+          },          
+          "awaken" : {
+            "frames" : 7
           },
-          "charge" : {
-            "frames" : 5,
-            "cycle" : 0.275,
-            "mode" : "loop"
-          },
-          "knockback" : {
+          "hurt" : {
+            "frames" : 3,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "zapaura" ], [], [], [], [], [], [], ["zapaura"] ],
+              "particleEmittersOn" : [ [], [], ["zapaura"], [], [], [], [], [] ]
+            }               
+          },          
+          "fall" : {
             "frames" : 3
           },
-          "knockout" : {
-            "frames" : 7
-          }
-        }
-      },
-
-      "attack" : {
-        "priority" : 1,
-        "default" : "idle",
-        "states" : {
-          "idle" : {
-            "frames" : 4,
-            "mode" : "loop"
+          "invulnerablewindup" : {
+            "frames" : 7,
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/unique/robotboss_pain2.ogg", "" ]
+            },
+            "properties" : {
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+            }               
           },
-          "melee" : {
-            "frames" : 5,
-            "mode" : "end"
+          "fire" : {
+            "frames" : 7,
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/unique/robotboss_pain3.ogg", "" ]
+            },
+            "properties" : {
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+            }               
           },
-          "shooting" : {
+          
+          "chargewindup" : {
             "frames" : 3,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/unique/robotboss_pain1.ogg", "" ]
+            },
+            "properties" : {
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+            }               
+          },    
+          "chargewinddown" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/unique/robotboss_pain2.ogg", "" ]
+            }
+          },          
           "charge" : {
             "frames" : 5,
             "cycle" : 0.8,
-            "mode" : "loop"
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/unique/robotboss_pain3.ogg", "" ]
+            },
+            "properties" : {
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+            }               
+          },          
+          "invulnerablewinddown" : {
+            "frames" : 7,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+            }               
           },
-          "chargeAttack" : {
-            "frames" : 5,
-            "cycle" : 0.6,
-            "mode" : "loop"
+          "invulnerable" : {
+            "frames" : 1,
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "zapaura" ], [], [], [], [], [], [], ["zapaura"] ],
+              "particleEmittersOn" : [ [], [], ["zapaura"], [], [], [], [], [] ]
+            }               
           }
         }
       },
-
-      "portrait" : {
-        "priority" : -1,
-        "default" : "portrait",
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
         "states" : {
-          "portrait" : {
+          "none" : {
             "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
           }
         }
       }
@@ -88,8 +145,12 @@
 
     "parts" : {
       "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.0625, 0.6875]
+        },
         "partStates" : {
-          "movement" : {
+          "body" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -100,283 +161,148 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
-            "run" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:ranged.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
-            "fall" : {
-              "properties" : {
-                "image" : "<partImage>:ranged.<frame>"
-              }
-            },
-            "chargeWindup" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "knockback" : {
-              "properties" : {
-                "image" : "<partImage>:idle.<frame>"
-              }
-            },
-            "knockout" : {
+            "invulnerablewindup" : {
               "properties" : {
                 "image" : "<partImage>:sleep.<frame>"
               }
-            }
-          },
-
-          "attack" : {
-            "melee" : {
+            },
+            "invulnerablewinddown" : {
               "properties" : {
-                "image" : "<partImage>:attack.<frame>"
+                "image" : "<partImage>:awaken.<frame>"
               }
             },
-            "shooting" : {
+            "invulnerable" : {
               "properties" : {
-                "image" : "<partImage>:ranged.<frame>"
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },                
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
               }
             },
             "charge" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:charge.<frame>"
               }
-            },
-            "chargeAttack" : {
+            },             
+            "fire" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:charge.<frame>"
               }
-            }
+            }            
           },
-
-          "portrait" : {
-            "portrait" : {
+          "damage" : {
+            "stunned" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           }
         }
-      }
-    }
-  },
-  
-  "rotationGroups" : {
-    "projectileAim" : {
-      "angularVelocity" : 1.5
+      }    
     }
   },
 
-  "particleEmitters" : {
-    "damage" : {
-      "emissionRate" : 0.7,
-      "particles" : [
-      ]
-    },
-
-    "deathPoof" : {
-      "particles" : [
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/puff2c/puff2c.animation",
-            "size" : 1,
-            "angularVelocity" : 35,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [0, 0],
-            "finalVelocity" : [0, 0],
-            "approach" : [1, 1],
-            "timeToLive" : 0.4,
-            "layer" : "middle"
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz1/fizz1.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz1/fizz1.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz2/fizz2.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz2/fizz2.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz3/fizz3.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz3/fizz3.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz4/fizz4.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz4/fizz4.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        }
-      ]
-    }
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
   },
 
   "effects" : {
     "blink" : {
       "type" : "flash",
-      "time" : 0.25,
+      "time" : 0,
       "directives" : "fade=ffffff;0.5"
     }
   },
 
+  "particleEmitters" : {
+    "zapaura" : {
+      "emissionRate" : 4,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+        { "particle" : "energy" },
+        { "particle" : "energy" }
+        
+      ]
+    },  
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud2" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud2" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud2" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud2" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
   "sounds" : {
-    "turnHostile" : [ "/sfx/npc/unique/robotboss_attack1.ogg" ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+    "turnHostile" : [ "/sfx/npc/unique/robotboss_turnhostile.ogg" ],
+    "idle" :["/sfx/npc/unique/robotboss_idle1.ogg"],
+    "fire" :["/sfx/weapons/explosion2.ogg"],
+    "chestgun" :["/sfx/weapons/energypew.ogg"],
+    "dualgun" :["/sfx/weapons/k3.ogg"],
+    "melee" :["/sfx/monsters/toss1.ogg"],
+    "shooting" :["/sfx/monsters/toss1.ogg"],
+    "deathPuff" :["/sfx/npc/unique/robotboss_pain1.ogg"],
+    "attackSound" :["/sfx/npc/unique/robotboss_pain2.ogg"],
+    "aggroHop" :["/sfx/npc/unique/robotboss_pain3.ogg"]
   }
 }
