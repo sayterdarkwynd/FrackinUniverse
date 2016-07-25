@@ -13,10 +13,7 @@
           "walk" : {
             "frames" : 10,
             "cycle" : 1,
-            "mode" :"loop",
-            "properties" : {
-            "particleEmittersOff" : [ "spindust" ]
-            }
+            "mode" :"loop"
           },
           "fire" : {
             "frames" : 15,
@@ -44,9 +41,12 @@
             "cycle" : 0.35,
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/lion_attack2.ogg",
-              "persistentSoundStopTime" : 2.2,
-              "particleEmittersOff" : [ "spindust" ]
-            }
+              "persistentSoundStopTime" : 2.2
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }            
           },
           "chargewinddown" : {
             "frames" : 4,
@@ -55,9 +55,12 @@
             "transition" : "idle",
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/lion_idle2.ogg",
-              "persistentSoundStopTime" : 2.2,
-              "particleEmittersOff" : [ "spindust" ]
-            }
+              "persistentSoundStopTime" : 2.2
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }            
           },        
           "charge" : {
             "frames" : 6,
@@ -65,9 +68,12 @@
             "properties" : {
               "persistentSound" : "/sfx/troll/troll3.ogg",
               "persistentSoundStopTime" : 2.0,
-              "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg",
-              "particleEmittersOff" : [ "spindust" ]
-            }
+              "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg"
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }            
           },
           "roar" : {
             "frames" : 16,
@@ -79,8 +85,8 @@
               "persistentSoundStopTime" : 1.25
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
-              "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [] ]
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
             }
           }
         }
@@ -231,11 +237,17 @@
   },
   
   "particleEmitters" : {
-    "spindust" : {
+    "fireaura" : {
       "emissionRate" : 15,
       "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
       "particles" : [
-        { "particle" : "firestormflame" }
+        { "particle" : "firestormflame" },
+        { "particle" : "firestormflame" },
+        { "particle" : "smallfirecloud1" },
+        { "particle" : "smallfirecloud2" },
+        { "particle" : "fireaura" },
+        { "particle" : "fireaura" }
+        
       ]
     },
     "deathPoof" : {
