@@ -1,0 +1,25 @@
+{
+  "projectileName" : "tarrain2",
+  "physics" : "weather",
+  "image" : "tarrain.png",
+  "animationCycle" : 0.25,
+  "level" : 3,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "damageKind" : "default",
+  "damageType" : "ignoresdef",
+  "damagePoly" : [ [-50, -50], [50, -50], [50, 50], [-50, 50] ],
+
+  "flippable" : true,
+  "universalDamage" : true,
+
+  "actionOnReap" : [ 
+  { "action" : "liquid", "liquid" : "blacktar", "quantity" : 25 },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "blackslimegrass",
+      "radius" : 2
+    }   
+  ]
+}
