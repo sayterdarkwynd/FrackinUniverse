@@ -28,7 +28,15 @@
       "targetOutOfSightTime" : 2.5,
 
       "foundTargetActions" : [ 
-       
+        {
+          "name" : "action-animate",
+          "cooldown" : 12,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "eat",
+            "animationTime" : 2.2
+          }
+        }       
       ],
 
       "fleeActions" : [],
@@ -36,11 +44,11 @@
       "hostileActions" : [
         {
           "name" : "action-animate",
-          "cooldown" : 5,
+          "cooldown" : 12,
           "parameters" : {
             "stateType" : "body",
             "state" : "roar",
-            "animationTime" : 2.0
+            "animationTime" : 1.6
           }
         },
         {
@@ -90,7 +98,7 @@
             "requireLineOfSight" : true,
             "maximumRange" : 5,
             "minimumRange" : 0,
-            "windupState" : "roar",
+            "windupState" : "idle",
             "windupTime" : 0.05,
 
             "projectileType" : "raptorbite",
