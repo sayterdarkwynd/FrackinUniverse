@@ -34,14 +34,23 @@
   "scriptDelta" : 5,
 
   "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bed_leave.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bed_leave.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
   "animationParts" : {
     "door" : "campdoor.png"
   },
   "animationPosition" : [-8, 0],
 
   "inputNodes" : [ [-1, 4] ],
-  "outputNodes" : [ [1, 0] ],
-  
-  "openSounds" : [ "/sfx/objects/bed_leave.ogg" ],
-  "closeSounds" : [ "/sfx/objects/bed_enter.ogg" ]
+  "outputNodes" : [ [1, 0] ]
 }

@@ -34,16 +34,20 @@
   "scriptDelta" : 5,
 
   "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
   "animationParts" : {
     "door" : "avalidarkdoor.png"
-  },
-  "animationCustom":
-  {
-    "sounds":
-    {
-      "open": [ "/sfx/objects/apexcooldoor_open.ogg" ],
-      "close": [ "/sfx/objects/apexcooldoor_close.ogg" ]
-    }
   },
   "animationPosition" : [0, 0],
 

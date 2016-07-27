@@ -1,17 +1,29 @@
 {
   "objectName" : "avalikitchenstove",
   "colonyTags" : [ "avali", "avalicamp", "cooking" ], 
-  "rarity" : "Common",
-  "objectType" : "container",
-  "category" : "light",
+  "printable" : false,
+  "rarity" : "Uncommon",
+  "category" : "crafting",
   "price" : 140,
-  "retainObjectParametersInItem" : true, 
+  "description" : "It's a combi gas-fan-microwave-oven-stove!",
+  "shortdescription" : "^orange;Avali Cooker^white;",
+  "race" : "avali",
+  
+  "maximumLiquidLevel" : 0.2,
   "lightColor" : [64, 64, 64],
 
-  "description" : "It's a combi gas-fan-microwave-oven-stove!",
-  "shortdescription" : "Avali Cooker",
-  "race" : "avali",
-
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingcampfire.config",
+    "filter" : [ "campfire" ],
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " Avali Kitchen",
+        "subtitle" : " Yum, yum"
+      }
+    }
+  },
+  
   "apexDescription" : "Interesting, the gas rings on this pump oxygen, not methane.",
   "avianDescription" : "It's got a way to properly cook almost anything here!",
   "floranDescription" : "Floran put wood in box, then heats 'till it bursssts into flame. Campfire for sssstupidss.",
@@ -34,10 +46,7 @@
 
     }
   ],
-  "recipeGroup" : "cooking",
   "openSounds" : [ "/sfx/objects/campfire_use.ogg" ],
-  "slotCount" : 2,
-  "uiConfig" : "/interface/objectcrafting/campfire.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600
 }
