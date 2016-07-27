@@ -16,7 +16,8 @@ function init()
     {stat = "breathProtection", amount = 1},
     {stat = "poisonStatusImmunity", amount = 1},
     {stat = "slushslowImmunity", amount = 1},
-    {stat = "snowslowImmunity", amount = 1}
+    {stat = "snowslowImmunity", amount = 1},
+    {stat = "protoImmunity", amount = 1}
   })
 end
 
