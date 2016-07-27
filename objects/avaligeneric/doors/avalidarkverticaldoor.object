@@ -19,26 +19,32 @@
 
   "inventoryIcon" : "avalidarkverticaldooricon.png",
 
-  "scripts" : [ "/objects/wired/door/door.lua" ],
+    "scripts" : [ "/objects/wired/door/door.lua" ],
   "scriptDelta" : 5,
 
   "animation" : "/objects/wired/door/door.animation",
   "animationCustom" : {
     "sounds" : {
-      "open" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
-      "close" : [ "/sfx/objects/apexcooldoor_close.ogg" ]
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
     }
   },
   "animationParts" : {
     "door" : "avalidarkverticaldoor.png"
   },
-  "animationPosition" : [-16, 0],
   
   "orientations" : [
     {
       "image" : "avalidarkverticaldoor.png:default",
-      "imagePosition" : [-16, 0],
-      "animationPosition" : [-16, 0],
+      "imagePosition" : [-16, -6],
+      "renderLayer" : "Object+5",
+      "animationPosition" : [-16, -6],
       "flipImages" : true,
       "direction" : "left",
 
@@ -47,8 +53,9 @@
     },
     {
       "image" : "avalidarkverticaldoor.png:default",
-      "imagePosition" : [-16, 0],
-      "animationPosition" : [-16, 0],
+      "imagePosition" : [-16, -6],
+      "renderLayer" : "Object+5",
+      "animationPosition" : [-16, -6],
       "direction" : "right",
 
       "spaceScan" : 0.1,
