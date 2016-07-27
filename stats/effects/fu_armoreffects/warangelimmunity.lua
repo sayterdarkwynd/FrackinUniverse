@@ -7,16 +7,11 @@ function init()
     {stat = "biomeheatImmunity", amount = 1},
     {stat = "ffextremecoldImmunity", amount = 1},
     {stat = "biomecoldImmunity", amount = 1},
-    {stat = "biooozeImmunity", amount = 1},
-    {stat = "shadowgasImmunity", amount = 1},
     {stat = "sulphuricImmunity", amount = 1},
     {stat = "fireStatusImmunity", amount = 1},
-    {stat = "fumudslowImmunity", amount = 1},
     {stat = "nitrogenfreezeImmunity", amount = 1},
     {stat = "breathProtection", amount = 1},
-    {stat = "poisonStatusImmunity", amount = 1},
-    {stat = "slushslowImmunity", amount = 1},
-    {stat = "snowslowImmunity", amount = 1}
+    {stat = "poisonStatusImmunity", amount = 1}
   })
 end
 

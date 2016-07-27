@@ -3,11 +3,11 @@
   "rarity" : "Common",
   "price" : 5,
   "inventoryIcon" : "vextonguestamen.png",
-  "description" : "Increases healing rate.",
+  "description" : "Low rege. Also immune to proto-poison.",
   "shortdescription" : "Vextongue Stamen",
   "category" : "food",
   "eventCategory" : "eventCrop",
-  "foodValue" : 10,
+  "foodValue" : 2,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
   "maxStack" : 100,
@@ -16,10 +16,11 @@
       "effects" : [ [
       {
         "effect" : "regeneration2",
-	      "duration" : 24
-      }
+	"duration" : 24
+      },
+      "protoimmunity"
     ] ],
   "blockingEffects" : [
-    "regeneration2"
+    "regeneration2","protoimmunity"
   ]
 }

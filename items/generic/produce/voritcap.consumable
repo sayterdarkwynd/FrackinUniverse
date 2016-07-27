@@ -3,17 +3,21 @@
   "rarity" : "Common",
   "price" : 5,
   "inventoryIcon" : "voritcap.png",
-  "description" : "Greatly increases swimming speed.",
+  "description" : "Greatly increases swimming speed and gives air.",
   "shortdescription" : "Vorit Cap",
   "category" : "food",
   "eventCategory" : "eventCrop",
-  "foodValue" : 10,
+  "foodValue" : 1,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
   "maxStack" : 100,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 3.0,
       "effects" : [ [
-  "swimboost3"
+      {
+        "effect" : "breathProtection",
+	      "duration" : 60
+      },      
+      "swimboost3"
     ] ]
 }
