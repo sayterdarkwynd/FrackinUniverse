@@ -13,11 +13,12 @@ function prep()
 	end
 end
 
-function checkSplice(args)
+function containerCallback()
     local items = world.containerItems(entity.id())
-   --[[ sb.logInfo("ITEM IS: %s", items)	for k, v in pairs(items) do
-	    sb.logInfo("Item: %s", v)
-	end]]--
+    -- sb.logInfo("ITEM IS: %s", items)
+	-- for k, v in pairs(items) do
+	   -- sb.logInfo("Item: %s", v)
+	-- end
     if items[1]~=null and items[2]~=null and
        items[1].name == "sapling" and items[2].name == "sapling" then
 	local leafsample = items[1]
