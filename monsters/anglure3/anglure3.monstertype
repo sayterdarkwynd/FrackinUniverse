@@ -1,12 +1,12 @@
 {
-  "type" : "anglure2",
-  "shortdescription" : "Rot Anglure",
+  "type" : "anglure3",
+  "shortdescription" : "Tar Anglure",
   "description" : "At night, all you can see of the Anglure is its light.",
 
-  "categories" : [ "anglure2" ],
+  "categories" : [ "anglure3" ],
   "parts" : [ "body" ],
 
-  "animation" : "anglure2.animation",
+  "animation" : "anglure3.animation",
 
   "dropPools" : [ { "default" : "anglureTreasure", "bow" : "anglureHunting" } ],
 
@@ -42,41 +42,16 @@
             "maxYRange" : 4,
             "windupTime" : 0.6,
 
-            "aimAtTarget" : false,
-            "projectileType" : "oonfortagas",
+            "aimAtTarget" : true,
+            "projectileType" : "bubbles2",
             "power" : 7,
             "aimDirection" : [0.7, 0.4],
             "fireOffset" : [0.25, 0.0],
-            "projectileCount" : 5,
+            "projectileCount" : 12,
             "projectileInterval" : 0.1,
             "projectileParameters" : {
-              "speed": 5,
-              "timeToLive" : 5
+              "speed": 20
             },
-            "fireState" : "fire",
-            "fireSound" : "fire",
-
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.3
-          }
-        },      
-        {
-          "name" : "action-fire",
-          "cooldown" : 24.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 4,
-            "maxYRange" : 4,
-            "windupTime" : 0.6,
-
-            "aimAtTarget" : false,
-            "projectileType" : "gravburststat",
-            "power" : 7,
-            "aimDirection" : [0.7, 0.4],
-            "fireOffset" : [0.25, 0.0],
-            "projectileCount" : 5,
-            "projectileInterval" : 0.1,
             "fireState" : "fire",
             "fireSound" : "fire",
 
