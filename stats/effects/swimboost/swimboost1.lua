@@ -2,15 +2,13 @@ function init()
   local bounds = mcontroller.boundBox()
   animator.setParticleEmitterOffsetRegion("bubbles", mcontroller.boundBox())
   animator.setParticleEmitterActive("bubbles", true)
-  --status.addEphemeralEffect("liquidimmunity")
   self.mouthPosition = status.statusProperty("mouthPosition") or {0,0}
   self.mouthBounds = {self.mouthPosition[1], self.mouthPosition[2], self.mouthPosition[1], self.mouthPosition[2]}
   self.boostAmount = config.getParameter("boostAmount", 0)
   self.riseAmount = config.getParameter("riseAmount", 0)
   self.liquidMovementParameter = {
-	liquidFriction = 2,
-	airForce = 50,
-	liquidForce = 100,
+	airForce = 150,
+	liquidForce = 150
   }
 end
 
@@ -26,10 +24,9 @@ function update(dt)
   local liquidAtMouth = world.liquidAt(worldMouthPosition)
   if liquidAtMouth and (liquidAtMouth[1] == 1 or liquidAtMouth[1] == 2) then 
      mcontroller.controlModifiers({
-      runModifier = self.boostAmount,
-      jumpModifier = self.riseAmount
+      speedModifier = self.boostAmount,
+      liquidJumpModifier = self.riseAmount
     })
-	
   animator.setParticleEmitterActive("bubbles", mcontroller.running())
   else
   
