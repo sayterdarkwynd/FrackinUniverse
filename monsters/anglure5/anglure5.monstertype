@@ -1,12 +1,12 @@
 {
-  "type" : "anglure2",
-  "shortdescription" : "Rot Anglure",
+  "type" : "anglure5",
+  "shortdescription" : "Dusk Anglure",
   "description" : "At night, all you can see of the Anglure is its light.",
 
-  "categories" : [ "anglure2" ],
+  "categories" : [ "anglure5" ],
   "parts" : [ "body" ],
 
-  "animation" : "anglure2.animation",
+  "animation" : "anglure5.animation",
 
   "dropPools" : [ { "default" : "anglureTreasure", "bow" : "anglureHunting" } ],
 
@@ -34,7 +34,7 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 5.0,
+          "cooldown" : 3.0,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 25,
@@ -43,16 +43,13 @@
             "windupTime" : 0.6,
 
             "aimAtTarget" : false,
-            "projectileType" : "oonfortagas",
-            "power" : 7,
+            "projectileType" : "darkgas",
+            "power" : 8,
             "aimDirection" : [0.7, 0.4],
             "fireOffset" : [0.25, 0.0],
-            "projectileCount" : 5,
-            "projectileInterval" : 0.1,
-            "projectileParameters" : {
-              "speed": 5,
-              "timeToLive" : 5
-            },
+            "projectileCount" : 4,
+            "projectileInterval" : 0.15,
+            "projectileParameters" : { "speed": 15, "physics" : "gas" },
             "fireState" : "fire",
             "fireSound" : "fire",
 
@@ -62,7 +59,7 @@
         },      
         {
           "name" : "action-fire",
-          "cooldown" : 24.0,
+          "cooldown" : 3.0,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 15,
@@ -70,13 +67,14 @@
             "maxYRange" : 4,
             "windupTime" : 0.6,
 
-            "aimAtTarget" : false,
-            "projectileType" : "gravburststat",
-            "power" : 7,
+            "aimAtTarget" : true,
+            "projectileType" : "cellblast",
+            "power" : 12,
             "aimDirection" : [0.7, 0.4],
             "fireOffset" : [0.25, 0.0],
-            "projectileCount" : 5,
-            "projectileInterval" : 0.1,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.08,
+            "projectileParameters" : { "physics" : "flame", "speed" : 30 },
             "fireState" : "fire",
             "fireSound" : "fire",
 
