@@ -67,13 +67,13 @@
           "name" : "action-leap", 
           "cooldown" : 0.5,
           "parameters" : {
-            "minimumRange" : 0,
-            "maximumRange" : 10,
-            "maxXRange" : 9,
+            "minimumRange" : 2,
+            "maximumRange" : 12,
+            "maxXRange" : 20,
             "windupTime" : 0.3,
             "windupState" : "idle",
 
-            "leapVelocity" : 25,
+            "leapVelocity" : 45,
             "collisionCheck" : true,
             "highArc" : true,
             "leapState" : "jump",
@@ -167,10 +167,11 @@
       "walkSpeed" : 10,
       "runSpeed" : 14,
       "flySpeed" : 15,
-      "airForce" : 50.0,
-
+      "airForce" : 90.0,
+      "liquidBuoyancy" : 2,
       "airJumpProfile" : {
-        "jumpSpeed" : 15.0            
+        "jumpSpeed" : 65.0,
+        "jumpHoldTime" : 0.1            
       }
     },
 

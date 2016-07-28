@@ -22,6 +22,11 @@
             "cycle" : 0.5,
             "mode" : "loop"
           },
+          "leap" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },          
           "fall" : {
             "frames" : 2,
             "cycle" : 0.5,
@@ -57,6 +62,36 @@
               "particleEmittersOff" : [ "spindust" ]
             }
           },
+           "fire" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "properties" : {
+              "persistentSound" : "/sfx/troll/troll3.ogg",
+              "persistentSoundStopTime" : 2.0,
+              "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg",
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },  
+          "firewindup" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/lion_attack2.ogg",
+              "persistentSoundStopTime" : 2.2,
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "firewinddown" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/lion_idle2.ogg",
+              "persistentSoundStopTime" : 2.2,
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },           
           "roar" : {
             "frames" : 7,
             "cycle" : 0.53,
@@ -127,12 +162,17 @@
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
+            "leap" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },            
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:fall.<frame>"
               }
             },
             "roarwindup" : {
@@ -166,12 +206,22 @@
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
             },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },            
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:charge.<frame>",
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
-            }            
+            }              
           },
           "damage" : {
             "stunned" : {
@@ -256,7 +306,9 @@
   "sounds" : {
     "aggroHop" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg", "/sfx/troll/troll2.ogg", "/sfx/troll/troll2.ogg" ],
+    "wallCrashSound" : [ "/sfx/melee/blunt_hit_metal6.ogg" ],
     "turnHostile" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
-    "attackSound" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ]
+    "attackSound" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
+    "fire" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ]
   }
 }
