@@ -44,8 +44,80 @@
           }
         },
         {
+          "name" : "action-leap", 
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 2,
+            "maximumRange" : 12,
+            "maxXRange" : 20,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 45,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 1.5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 4,
+            "minimumRange" : 1,
+            "maxYRange" : 5,
+            "windupTime" : 0.35,
+
+            "aimAtTarget" : true,
+            "projectileType" : "bugnet",
+            "power" : 9,
+            "aimDirection" : [0.7, 0.4],
+            "fireOffset" : [0.25, 0.0],
+            "projectileCount" : 1,
+            "projectileParameters" : {
+              "speed": 25
+            },
+            "fireState" : "fire",
+            "fireSound" : "fire",
+
+            "winddownState" : "roar",
+            "winddownTime" : 0.3
+          }
+        },         
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 4,
+            "minimumRange" : 1,
+            "maxYRange" : 5,
+            "windupTime" : 0.35,
+
+            "aimAtTarget" : true,
+            "projectileType" : "rocktrollswoosh",
+            "power" : 15,
+            "aimDirection" : [0.7, 0.4],
+            "fireOffset" : [0.25, 0.0],
+            "projectileCount" : 1,
+            "projectileParameters" : {
+              "speed": 25
+            },
+            "fireState" : "fire",
+            "fireSound" : "fire",
+
+            "winddownState" : "roar",
+            "winddownTime" : 0.3
+          }
+        },        
+        {
           "name" : "action-charge",
-          "cooldown" : 2.0,
+          "cooldown" : 8.0,
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup",
@@ -162,9 +234,9 @@
       "airFriction" : 0,
 
       "airJumpProfile" : {
-        "jumpSpeed" : 35.0,
+        "jumpSpeed" : 55.0,
         "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.0
+        "jumpHoldTime" : 0.1
       }
     },
 
