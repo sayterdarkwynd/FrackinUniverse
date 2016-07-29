@@ -1,0 +1,51 @@
+{
+  "name" : "funball",
+  "type" : "head",
+
+  "scripts" : ["funball.lua"],
+  "animator" : "funball.animation",
+
+  "description" : "Nearly useless, but fun! ^green;[F]",
+  "shortDescription" : "Doofus Sphere",
+  "rarity" : "legendary",
+  "icon" : "/tech/distortionsphere.png",
+
+  "chipCost" : 8,
+
+  "animationParts" : {
+    "ballGlow" : "funballglow.png",
+    "ball" : "funball.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+    "runModifier" : 1,
+    "groundForce" : 800.0,
+    "normalGroundFriction" : 2,
+    "ambulatingGroundFriction" : 0.25,
+    "slopeSlidingFactor" : 0,
+    "bounceFactor" : 0.85,
+    
+    "airJumpProfile" : {
+      "jumpSpeed" : 86,
+      "jumpControlForce" : 1200.0,
+      "jumpInitialPercentage" : 1.2,
+      "jumpHoldTime" : 1.4
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 2.0,
+      "jumpControlForce" : 3.5,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ballSpeed" : 20,
+
+  "energyCost" : 30,
+
+  "ballRadius" : 1,
+  "ballFrames" : 8
+}
