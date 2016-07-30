@@ -45,6 +45,8 @@ function init()
   end
 
   monster.setDeathParticleBurst("deathPoof")
+  monster.setName("The Shoggoth, Formless Horror")
+  monster.setDamageBar("special")
 end
 
 function update(dt)
