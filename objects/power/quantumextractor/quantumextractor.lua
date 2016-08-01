@@ -398,6 +398,8 @@ local recipes =
 {inputs = { energywood=50 }, outputs = { penumbriteore=2 }, time = 0.1},
 {inputs = { vine=50 }, outputs = { plantfibre=4, fu_oxygen=1 }, time = 0.1},
 -- seeds
+{inputs = { cocoaseed=1 }, outputs = { tissueculture=3 }, time = 0.1},
+{inputs = { wildcocoaseed=1 }, outputs = { tissueculture=3 }, time = 0.1},
 {inputs = { cottonseed=1 }, outputs = { tissueculture=4 }, time = 0.1},
 {inputs = { cinnamonseed=1 }, outputs = { fu_nitrogen=4 }, time = 0.1},
 {inputs = { algaeseed=1 }, outputs = { geneticmaterial=5 }, time = 0.1},

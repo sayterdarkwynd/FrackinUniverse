@@ -13,6 +13,8 @@ local recipes = {
 {inputs = { cottonseed=1 }, outputs = { gene_energy=1 }, time = 5.5},
 {inputs = { wildcottonseed=1 }, outputs = { gene_energy=1 }, time = 5.5},
 {inputs = { shroomblockglow=50 }, outputs = { gene_bioluminescent=1 }, time = 5.5},
+{inputs = { cocoaseed=1 }, outputs = { gene_energy=1 }, time = 5.5},
+{inputs = { wildcocoaseed=1 }, outputs = { gene_energy=1 }, time = 5.5},
 {inputs = { biospore=4 }, outputs = { gene_bioluminescent=1 }, time = 5.5},
 {inputs = { hopsseed=1 }, outputs = { gene_stimulant=1 }, time = 5.5},
 {inputs = { cinnamonseed=1 }, outputs = { gene_stimulant=1 }, time = 5.5},
