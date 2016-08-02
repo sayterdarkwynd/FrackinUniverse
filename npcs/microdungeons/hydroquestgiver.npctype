@@ -1,0 +1,54 @@
+{
+  "type" : "hydroquestgiver",
+  "baseType" : "outpostcivilian",
+
+  "disableWornArmor" : true,
+
+  "damageTeam" : 1,
+
+  "levelVariance" : [0, 0],
+
+  "scriptConfig" : {
+  "offeredQuests" : [ "create_hydroponicstray" ],
+  "turnInQuests" : [ "create_hydroponicstray" ],
+    "reactions" : {
+      "spontaneous" : [
+      ]
+    },
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ],
+    
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "I grew weary of watching Jersey Shore like all the other idiots out there. I turned to murder, instead."
+          ]
+        },
+        "apex" : {
+          "default" : [
+            "I've never seen a unicorn that farts fire before. Have you?"
+          ],
+          "apex" : [
+            "I don't think anyone should eat thumbtacks."
+          ]
+        }
+      }
+    }
+  },
+
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [ "fubonusarmorchest" ],
+            "legs" : [ "fubonusarmorpants" ]
+          }
+        ] ]
+    ]
+  }
+}
+
