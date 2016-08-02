@@ -1,0 +1,37 @@
+{
+  "type" : "radioactivequestgiver",
+  "baseType" : "outpostcivilian",
+
+  "disableWornArmor" : true,
+
+  "damageTeam" : 1,
+
+  "levelVariance" : [0, 0],
+
+  "scriptConfig" : {
+  "offeredQuests" : [ "create_energyassault" ],
+  "turnInQuests" : [ "create_energyassault" ],
+    "reactions" : {
+      "spontaneous" : [
+      ]
+    },
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ]
+  },
+
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ "ff_gasmask" ],
+            "chest" : [ "fuoperativechest" ],
+            "legs" : [ "fuoperativelegs" ]
+          }
+        ] ]
+    ]
+  }
+}
+

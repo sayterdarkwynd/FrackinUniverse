@@ -1,0 +1,36 @@
+{
+  "type" : "icequestgiver",
+  "baseType" : "outpostcivilian",
+
+  "disableWornArmor" : true,
+
+  "damageTeam" : 1,
+
+  "levelVariance" : [0, 0],
+
+  "scriptConfig" : {
+  "offeredQuests" : [ "create_densinium" ],
+  "turnInQuests" : [ "create_densinium" ],
+    "reactions" : {
+      "spontaneous" : [
+      ]
+    },
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ]
+  },
+
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [ "fureconchest2" ],
+            "legs" : [ "fureconpants2" ]
+          }
+        ] ]
+    ]
+  }
+}
+
