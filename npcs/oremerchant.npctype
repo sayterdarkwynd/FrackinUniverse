@@ -21,7 +21,7 @@
       "storeRadius" : 8,
       "poolsFile" : "/npcs/merchantpools.config",
       "categories" : {
-        "override" : ["oremerchant" ]
+        "override" : ["humaningredients" ]
       },
       "buyFactorRange" : [ 2.0, 2.0 ],
       "sellFactorRange" : [ 0.2, 0.2 ],
@@ -38,33 +38,33 @@
     "dialog" : {
       "tenant" : {
         "grumbles" : {
-          "tagCriteria" : "/dialog/oremerchant.config:tagCriteria",
-          "enclosedArea" : "/dialog/oremerchant.config:enclosedArea",
-          "otherDeed" : "/dialog/oremerchant.config:otherDeed",
-          "severe" : "/dialog/oremerchant.config:severe",
-          "final" : "/dialog/oremerchant.config:final"
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
         },
         "arrivedHome" : {
-          "beacon" : "/dialog/oremerchant.config:beacon",
-          "rent" : "/dialog/oremerchant.config:rent"
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
         }
       },
 
-      "converse" : "/dialog/oremerchant.config:hail",
+      "converse" : "/dialog/merchant.config:hail",
 
       "merchant" : {
-        "start" : "/dialog/oremerchant.config:merchantStart",
-        "end" : "/dialog/oremerchant.config:merchantEnd",
-        "follow" : "/dialog/oremerchant.config:follow",
-        "welcome" : "/dialog/oremerchant.config:welcome",
-        "tout" : "/dialog/oremerchant.config:tout"
+        "start" : "/dialog/merchant.config:merchantStart",
+        "end" : "/dialog/merchant.config:merchantEnd",
+        "follow" : "/dialog/merchant.config:follow",
+        "welcome" : "/dialog/merchant.config:welcome",
+        "tout" : "/dialog/merchant.config:tout"
       },
 
       "flee" : {
-        "helpme" : "/dialog/oremerchant.config:helpme",
-        "helpthem" : "/dialog/oremerchant.config:helpthem",
-        "encourage" : "/dialog/oremerchant.config:encourage",
-        "safe" : "/dialog/oremerchant.config:safe"
+        "helpme" : "/dialog/merchant.config:helpme",
+        "helpthem" : "/dialog/merchant.config:helpthem",
+        "encourage" : "/dialog/merchant.config:encourage",
+        "safe" : "/dialog/merchant.config:safe"
       }
     }
   },
