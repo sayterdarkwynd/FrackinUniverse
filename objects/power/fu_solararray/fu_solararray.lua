@@ -19,7 +19,7 @@ function isn_getCurrentPowerOutput(divide)
 	end
 	
 	local generated = 0
-	local genmult = 2
+	local genmult = 1
 	local location = isn_getTruePosition()
 	local light = world.lightLevel(location)
 	if light > 0.1 then generated = generated + 0.25 end
