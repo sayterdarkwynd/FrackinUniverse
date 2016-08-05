@@ -240,6 +240,7 @@ local recipes =
 {inputs = { shadowblock=50 }, outputs = { rawminerals=3 }, time = 0.75},
 {inputs = { concretematerial=50 }, outputs = { rawminerals=2 }, time = 0.75},
 {inputs = { honeycombmaterial=50 }, outputs = { fu_liquidhoney=2 }, time = 0.75},
+{inputs = { redhoneycombmaterial=50 }, outputs = { fu_liquidhoney=2 }, time = 0.75},
 {inputs = { fu_honeycombblock=50 }, outputs = { fu_liquidhoney=2 }, time = 0.75},
 {inputs = { fu_redhoneycombblock=50 }, outputs = { fu_liquidhoney=2 }, time = 0.75},
 {inputs = { grassy=50 }, outputs = { geneticmaterial=2 }, time = 0.75},
