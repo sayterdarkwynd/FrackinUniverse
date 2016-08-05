@@ -383,7 +383,7 @@ local recipes =
 {inputs = { supermatter=4 }, outputs = { liquidfuel=5 }, time = 0.1},
 {inputs = { coralmaterial=50 }, outputs = { coralfragment=3 }, time = 0.1},
 {inputs = { coral2material=50 }, outputs = { coralfragment=3 }, time = 0.1},
-{inputs = { diamondblockmaterial=1 }, outputs = { diamond=1 }, time = 0.1},
+{inputs = { diamondblockmaterial=10 }, outputs = { diamond=1 }, time = 0.1},
 {inputs = { sulphurdirtmaterial=50 }, outputs = { rawminerals=5 }, time = 0.1},
 {inputs = { brittlejunk=50 }, outputs = { rawminerals=3 }, time = 0.1},
 {inputs = { brittlemetal=50 }, outputs = { rawminerals=4 }, time = 0.1},
