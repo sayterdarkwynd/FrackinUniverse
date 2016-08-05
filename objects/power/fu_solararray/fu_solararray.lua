@@ -28,6 +28,7 @@ function isn_getCurrentPowerOutput(divide)
 	if light > 0.7 then generated = generated + 0.55 end
 	
 	if location[2] < 500 then genmult = 1
+	elseif location[2] > 500 then genmult = 2 
 	elseif location[2] > 700 then genmult = 3
 	elseif location[2] > 900 then genmult = 5 end
 	
