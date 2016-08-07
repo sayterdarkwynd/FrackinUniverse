@@ -828,6 +828,7 @@ local recipes =
 {inputs = { cookedtentacle=1 }, outputs = { geneticmaterial=5 }, time = 0.1},
 {inputs = { meatchunks=1 }, outputs = { geneticmaterial=5 }, time = 0.1},
 {inputs = { offal=1 }, outputs = { geneticmaterial=5 }, time = 0.1},
+{inputs = { rawpoultry=1 }, outputs = { geneticmaterial=4 }, time = 0.1},
 {inputs = { rawbacon=1 }, outputs = { geneticmaterial=5 }, time = 0.1},
 {inputs = { rawfish=1 }, outputs = { geneticmaterial=5 }, time = 0.1},
 {inputs = { rawfleshlump=1 }, outputs = { geneticmaterial=8 }, time = 0.1},
