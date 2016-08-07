@@ -3,7 +3,8 @@ function init()
   effect.addStatModifierGroup({
     {stat = "liquidnitrogenImmunity", amount = 1},
     {stat = "nitrogenfreezeImmunity", amount = 1},
-    {stat = "protoImmunity", amount = 1}
+    {stat = "protoImmunity", amount = 1},
+    {stat = "ffextremecoldImmunity", amount = 1}
   })
 end
 
