@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "eppAugment",
   "inventoryIcon" : "breathaugment1.png",
-  "description" : "An EPP module that recycles air at 100% efficiency.",
+  "description" : "An EPP module that recycles air at 100% efficiency. ^cyan;Immune: Breathing^reset;",
   "shortdescription" : "Re-Breather",
 
   "augment" : {
@@ -12,10 +12,16 @@
     "name" : "fubreathaugment1",
     "displayName" : "Re-Breather",
     "displayIcon" : "/items/augments/back/environment/breathaugment1.png",
-    "effects" : [ {
+    "effects" : [ 
+    {
       "stat" : "breathProtection",
       "amount" : 1.0
-    } ]
+    },
+    {
+      "stat" : "waterbreathProtection",
+      "amount" : 1.0
+    }     
+    ]
   },
 
   "radioMessagesOnPickup" : [ "pickupaugment" ],
