@@ -1,5 +1,5 @@
 function init()
-  status.setPersistentEffects("fu_protoprotection", {{stat = "protoImmunity", amount = 1}}
+  status.setPersistentEffects("fu_protoprotection", {{stat = "protoImmunity", amount = 1}})
   status.setPersistentEffects("isn_airprotection2", {{stat = "waterbreathProtection", amount = 1}})
   status.setPersistentEffects("isn_airprotection", {{stat = "breathProtection", amount = 1}})
   status.setPersistentEffects("isn_radsprotection", {{stat = "biomeradiationImmunity", amount = 1}})
