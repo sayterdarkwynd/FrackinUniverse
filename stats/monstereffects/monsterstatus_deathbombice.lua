@@ -4,7 +4,7 @@ local fu_monsters_uninit = uninit
  
 function init()
   fu_monsters_init()
- status.addEphemeralEffect("deathbombice",math.huge)
+ status.addEphemeralEffect("deathbombicefu",math.huge)
 end
  
  
