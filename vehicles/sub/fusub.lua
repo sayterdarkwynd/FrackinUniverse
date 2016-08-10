@@ -304,7 +304,7 @@ function updateDriving()
 
 --[[    can't read passenger input?!
     if self.hornTimer < 0 then
- --     for i = 1,4,1 do
+ --     for i = 1,2,1 do
         if vehicle.controlHeld("passenger1", "primaryFire") then
 --          animator.setSoundPitch("hornLoop",2-(i/4),0.5)
           animator.playSound("hornLoop")
@@ -481,7 +481,7 @@ function updatePassengers(healthFactor)
         damageStateIndex = maxDamageState
         damageStateIndex = (maxDamageState - math.ceil(healthFactor * maxDamageState))+1
         vehicle.setLoungeEmote("drivingSeat",self.damageStateDriverEmotes[damageStateIndex])
-        for n = 1,4,1 do
+        for n = 1,2,1 do
         vehicle.setLoungeEmote("passenger"..n,self.damageStateDriverEmotes[damageStateIndex])
         end
       end
@@ -534,7 +534,7 @@ function setDamageEmotes()
   local damageTakenEmote=configParameter("damageTakenEmote")
   self.damageEmoteTimer=configParameter("damageEmoteTime")
   vehicle.setLoungeEmote("drivingSeat",damageTakenEmote)
-  for n = 1,4,1 do 
+  for n = 1,2,1 do 
   vehicle.setLoungeEmote("passenger"..n,damageTakenEmote)
   end
 end
