@@ -1,0 +1,34 @@
+{
+  "itemName" : "fusubcontroller",
+  "level" : 1,
+  "price" : 35000,
+  "rarity" : "legendary",
+  "category" : "vehicleController",
+  "shortdescription" : "Triton Sub Control",
+  "description" : "Create a submarine from stored nanites.",
+  "twoHanded" : true,
+  "maxStack" : 1,
+  "itemTags" : ["vehiclecontroller"],
+
+  "animation" : "vehiclecontroller.animation",
+  "scripts" : ["vehiclecontroller.lua"],
+  "animationScripts" : ["vehiclecursor.lua"],
+  "filled" : true,
+  "tooltipKind" : "vehicle",
+  "largeImage" : "fusub.png",
+
+  "respawnTime" : 1.0,
+
+  //=============Item specifc bits.
+  "vehicleType" : "fusub",
+  "vehicleBoundingBox" : [-8, -4, 8, 4],
+  "vehicleImage" : "/vehicles/sub/fusubwarp.png:warp.7",
+
+  "animationParts" : {
+    "casing" : "fusubcontroller.png"
+  },
+
+  "inventoryIcon" : "fusubcontroller.png:full",
+  "emptyInventoryIcon" : "/items/active/vehiclecontroller/fusubcontroller.png:empty",
+  "filledInventoryIcon" : "/items/active/vehiclecontroller/fusubcontroller.png:full"
+}
