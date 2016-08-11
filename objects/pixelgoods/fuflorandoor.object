@@ -1,19 +1,24 @@
 {
   "objectName" : "fuflorandoor",
-  "colonyTags" : [ "science", "", "door" ],
+  "colonyTags" : ["floran","floranvillage","door"],
   "rarity" : "Common",
 
   "category" : "door",
   "price" : 95,
-  "description" : "Not incredibly sturdy, but also not ugly.",
+  "description" : "This door is hardly suitable for keeping the weather out.",
   "shortdescription" : "Leafy Door",
-  "race" : "human",
+  "race" : "floran",
 
   "inventoryIcon" : "fuflorandooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "fuflorandoor.png:right",
+  
   "orientations" : [
     {
-      "dualImage" : "fuflorandoor.png:closed",
-      "imagePosition" : [0, 0],
+      "dualImage" : "fuflorandoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom", "top" ]
@@ -26,14 +31,20 @@
   "animation" : "/objects/wired/door/door.animation",
   "animationCustom" : {
     "sounds" : {
-      "open" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
-      "close" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ]
+      "open" : {
+        "pool" : [ "/sfx/objects/woodendoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/woodendoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
     }
   },
   "animationParts" : {
     "door" : "fuflorandoor.png"
   },
-  "animationPosition" : [0, 0],
+  "animationPosition" : [-16, 0],
 
   "inputNodes" : [ [0, 4] ],
   "outputNodes" : [ [0, 0] ]
