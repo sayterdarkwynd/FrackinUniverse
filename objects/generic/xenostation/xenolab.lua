@@ -48,7 +48,7 @@ local recipes = {
 {inputs = { flowerpink=1 }, outputs = { gene_aquahomeo=1 }, time = 5.5},
 {inputs = { flowerpurple=1 }, outputs = { gene_assimilate=1 }, time = 5.5},
 {inputs = { flowerwhite=1 }, outputs = { gene_mimetic=1 }, time = 5.5},
-{inputs = { flowerred=1 }, outputs = { gene_stimulant=1 }, time = 5.5},
+{inputs = { flowerred=1 }, outputs = { gene_regen=1 }, time = 5.5},
 {inputs = { floweryellow=1 }, outputs = { gene_reproductive=1 }, time = 5.5},
 {inputs = { flowerspring=1 }, outputs = { gene_reproductive=1 }, time = 5.5},
 {inputs = { grapesseed=1 }, outputs = { gene_resist=1 }, time = 5.5},
