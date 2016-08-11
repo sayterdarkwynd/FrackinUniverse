@@ -41,7 +41,7 @@
       "part" : "foreground",
       "partAnchor" : "drivingSeatPosition",
       "orientation" : "sit",
-      "statusEffects" : ["highprotection"],
+      "statusEffects" : ["highprotection", "lowgrav"],
       "emote" : "happy",
       "dance" : "warmhands"
     },
@@ -49,7 +49,7 @@
       "part" : "foreground",
       "partAnchor" : "passengerSeatPosition",
       "orientation" : "sit",
-      "statusEffects" : ["maxprotection"],
+      "statusEffects" : ["maxprotection" , "lowgrav"],
       "emote" : "neutral",
       "dance" : "typing"
     }
@@ -59,19 +59,19 @@
   "angleApproachFactor" : 0.025,
   "maxGroundSearchDistance" : 10,
   "maxAngle" : 60,
-  "hoverTargetDistance" : 8,
-  "hoverVelocityFactor" : 25,
+  "hoverTargetDistance" : 2,
+  "hoverVelocityFactor" : 22,
   "hoverControlForce" : 950,
   "targetHorizontalVelocity" : 80,
-  "horizontalControlForce" : 120,
+  "horizontalControlForce" : 320,
 
-  "nearGroundDistance" : 20,
+  "nearGroundDistance" : 12,
   "jumpVelocity" : 40,
-  "jumpTimeout" : 0.25,
+  "jumpTimeout" : 0.01,
 
   //Health and damage
-  "protection" : 50,
-  "maxHealth" : 1000,
+  "protection" : 70,
+  "maxHealth" : 2000,
 
   "damageStateNames" : ["undamaged","scratched","dented","wrecked"],
 
@@ -94,7 +94,7 @@
 
   "minNotificationCollisionAccel" : 15,
   "minDamageCollisionAccel" : 45,
-  "terrainCollisionDamage" : 10,
+  "terrainCollisionDamage" : 15,
 
 
   //Damage visual effects
