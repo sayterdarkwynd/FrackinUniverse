@@ -1,0 +1,43 @@
+{
+  "type" : "crewmembersciencecold",
+  "baseType" : "crewmemberscience",
+
+  "scriptConfig" : {
+    "crew" : {
+      "role" : {
+    "defaultUniform" : {
+	"head" : "sciencefuhead",
+    	"chest" : "sciencefuchest",
+   	"legs" : "armoredsnowpants"
+  	},
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "biomecoldImmunity",
+            "duration" : 180
+          },         
+          {
+            // Persistent effects are active while on the ship
+            "type" : "PersistentEffect",
+            "effect" : "regeneration01"
+          }
+        ]
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "sciencefuhead" } ],
+            "chest" : [ { "name" : "sciencefuchest" } ],
+            "legs" : [ { "name" : "armoredsnowpants" } ],
+            "primary" : [ "molotov" ],
+            "sheathedprimary" : [ "chargepistol" ]
+          }
+        ] ]
+    ]
+  }
+}

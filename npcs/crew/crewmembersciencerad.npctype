@@ -1,0 +1,45 @@
+{
+  "type" : "crewmembersciencerad",
+  "baseType" : "crewmemberscience",
+
+  "scriptConfig" : {
+    "crew" : {
+      "role" : {
+    "defaultUniform" : {
+	"head" : "hazmathead",
+    	"chest" : "hazmatchest",
+   	"legs" : "hazmatlegs",
+   	"back" : "hzmatback"
+  	},
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "biomeradiationImmunity",
+            "duration" : 180
+          },         
+          {
+            // Persistent effects are active while on the ship
+            "type" : "PersistentEffect",
+            "effect" : "regeneration01"
+          }
+        ]
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "hazmathead" } ],
+            "chest" : [ { "name" : "hazmatchest" } ],
+            "legs" : [ { "name" : "hazmatlegs" } ],
+            "back" : [ { "name" : "hazmatback" } ],
+            "primary" : [ "molotov" ],
+            "sheathedprimary" : [ "isn_flintlock" ]
+          }
+        ] ]
+    ]
+  }
+}

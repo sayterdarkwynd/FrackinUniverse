@@ -1,0 +1,49 @@
+{
+  "type" : "crewmemberscience1",
+  "baseType" : "crewmemberscience",
+
+  "scriptConfig" : {
+    "crew" : {
+      "role" : {
+    "defaultUniform" : {
+	"head" : "scientisthead",
+    	"chest" : "scientistchest",
+   	"legs" : "scientistpants"
+  	},
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "runboost10",
+            "duration" : 30
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "jumpboost15",
+            "duration" : 30
+          },          
+          {
+            // Persistent effects are active while on the ship
+            "type" : "PersistentEffect",
+            "effect" : "regeneration01"
+          }
+        ]
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "scientisthead" } ],
+            "chest" : [ { "name" : "scientistchest" } ],
+            "legs" : [ { "name" : "scientistpants" } ],
+            "primary" : [ "orangestim" ],
+            "sheathedprimary" : [ "mechpistol" ]
+          }
+        ] ]
+    ]
+  }
+}

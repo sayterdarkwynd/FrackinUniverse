@@ -1,0 +1,43 @@
+{
+  "type" : "crewmemberscience2",
+  "baseType" : "crewmemberscience",
+
+  "scriptConfig" : {
+    "crew" : {
+      "role" : {
+    "defaultUniform" : {
+	"head" : "ff_gasmask",
+    	"chest" : "scientistchest",
+   	"legs" : "scientistpants"
+  	},
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "shadowgasimmunity",
+            "duration" : 30
+          },         
+          {
+            // Persistent effects are active while on the ship
+            "type" : "PersistentEffect",
+            "effect" : "regeneration01"
+          }
+        ]
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "ff_gasmask" } ],
+            "chest" : [ { "name" : "scientistchest" } ],
+            "legs" : [ { "name" : "scientistpants" } ],
+            "primary" : [ "molotov" ],
+            "sheathedprimary" : [ "npcwrench" ]
+          }
+        ] ]
+    ]
+  }
+}
