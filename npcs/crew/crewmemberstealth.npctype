@@ -1,5 +1,5 @@
 {
-  "type" : "crewmembervolcanologist",
+  "type" : "crewmemberstealth",
   "baseType" : "crewmember",
 
   // This npctype is used just as a base for the other crewmemberchemist*
@@ -12,15 +12,21 @@
 
     "crew" : {
     "defaultUniform" : {
-	"head" : "pathfinderhead",
-    	"chest" : "pathfinderchest",
-   	"legs" : "pathfinderlegs"
+	"head" : "fudarkrobeshelmet",
+    	"chest" : "fudarkrobeschest",
+   	"legs" : "fudarkrobespants"
   	},
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
-            "effect" : "biomeheatImmunity",
+            "effect" : "poisonStatusImmunity",
+            "duration" : 280
+          },  
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "biooozeImmunity",
             "duration" : 280
           },         
           {
@@ -31,9 +37,9 @@
         ],
       "role" : {
         "type" : "chemist",
-        "name" : "Volcanology",
-        "field" : "Volcanology",
-        "uniformColorIndex" : 3
+        "name" : "Assassin",
+        "field" : "Poisons",
+        "uniformColorIndex" : 6
       }
     },
 
@@ -79,8 +85,8 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "molotov" ],
-            "sheathedprimary" : [ "chargepistol" ]          
+            "primary" : [ "thornrifle" ],
+            "sheathedprimary" : [ "spikesword" ]          
           }
         ] ]
     ]

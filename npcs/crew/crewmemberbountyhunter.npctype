@@ -36,7 +36,7 @@
 
       "role" : {
         "type" : "soldier",
-        "name" : "Bounty Hunter",
+        "name" : "Beast Hunter",
         "field" : "Killer",
         "uniformColorIndex" : 1
       },
@@ -95,7 +95,7 @@
         "chest" : "fuoperativechest",
         "legs" : "fuoperativelegs"
       },
-      "uniformSlots" : ["chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+      "uniformSlots" : ["head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
     },
 
     "questGenerator" : {
@@ -400,14 +400,14 @@
             "chest" : [ { "name" : "fuoperativechest" } ],
             "legs" : [ { "name" : "fuoperativelegs" } ],
             "primary" : [ "carbonblade" ],
-            "sheathedprimary" : [ "fugausspistol" ]
+            "sheathedprimary" : [ "longarm" ]
           },
           {
             "head" : [ { "name" : "fieldscientisthead" } ],
             "chest" : [ { "name" : "deckardchest" } ],
             "legs" : [ { "name" : "deckardpants" } ],
             "primary" : [ "carbonblade" ],
-            "sheathedprimary" : [ "biopistol" ]
+            "sheathedprimary" : [ "irradiumrifle" ]
           }
         ] ]
     ]
@@ -416,8 +416,8 @@
   "statusControllerSettings" : {
     "statusProperties" : {
       "hitInvulnerability" : true,
-      "hitInvulnerabilityThreshold" : 0.0333,
-      "hitInvulnerabilityTime" : 1,
+      "hitInvulnerabilityThreshold" : 0.0233,
+      "hitInvulnerabilityTime" : 0.7,
       "hitInvulnerabilityFlash" : 0.15,
       "damageFlashOnDirectives" : "",
       "damageFlashOffDirectives" : ""
@@ -425,13 +425,13 @@
 
     "stats" : {
       "maxHealth" : {
-        "baseValue" : 400.0
+        "baseValue" : 300.0
       },
       "powerMultiplier" : {
-        "baseValue" : 0.55
+        "baseValue" : 0.75
       },
       "healthRegen" : {
-        "baseValue" : 2.25
+        "baseValue" : 2.3
       }
     }
   }
