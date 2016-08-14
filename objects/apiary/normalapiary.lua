@@ -270,8 +270,10 @@ end
 
 
 function beeSting()
+	-- sb.logInfo("Apiary: Aggressive bees trying to sting")
 	if math.random(5) == 2 then
-	world.spawnProjectile("stingstatusprojectile", entity.position())
+	-- sb.logInfo("Apiary: STING!")
+	world.spawnProjectile("stingstatusprojectile", entity.position(), entity.id())
 	end
 end
 

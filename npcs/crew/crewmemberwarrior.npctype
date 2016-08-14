@@ -7,7 +7,7 @@
   "damageTeamType" : "friendly",
 
   // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : 5} ], 
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.5} ], 
 
   "persistent" : true,
 
@@ -96,7 +96,7 @@
         "chest" : "copperarmorchest",
         "legs" : "copperarmorpants"
       },
-      "uniformSlots" : ["chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
     },
 
     "questGenerator" : {
@@ -430,7 +430,7 @@
         "baseValue" : 350.0
       },
       "powerMultiplier" : {
-        "baseValue" : 0.35
+        "baseValue" : 0.15
       },
       "healthRegen" : {
         "baseValue" : 2.2

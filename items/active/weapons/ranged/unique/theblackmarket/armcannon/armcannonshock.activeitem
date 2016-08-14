@@ -19,7 +19,7 @@
     "muzzleFlash" : ""
   },      
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/gun/plasma_mp2.ogg" ] },
+    "sounds" : { "fire" : [ "/sfx/weapons/shock_impact3.ogg" ] },
     "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
   },
 
@@ -34,15 +34,15 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.75,
-    "baseDps" : 8,
-    "energyUsage" : 25,
+    "fireTime" : 0.125,
+    "baseDps" : 4.5,
+    "energyUsage" : 24,
     "fireType" : "auto",
     "inaccuracy" : 0,
     "projectileCount" : 1,
-    "projectileType" : "ffteslasmall",
+    "projectileType" : "teslaboltsmall",
     "projectileParameters" : {
-      "speed" : 65
+      "speed" : 35
     },
     "stances" : {
       "idle" : {
