@@ -320,7 +320,8 @@ end
 
 function beeSting()
 	if math.random(2) == 2 then
-	world.spawnProjectile("stingstatusprojectile", entity.position())
+	local location = entity.position()
+	world.spawnProjectile("stingstatusprojectile", {location[1]+3, location[2]+2.5}, entity.id())
 	end
 end
 
