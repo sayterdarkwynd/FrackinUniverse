@@ -1,0 +1,39 @@
+{
+  "name" : "shockingBoltAttack",
+  "label" : "SHOCKING BOLT",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "shockingBoltAttack",
+
+          "maximumRange" : 12,
+          "minimumRange" : 3,
+          "windupEffect" : "castelectric",
+          
+          "fireDelay" : 0.22,
+          "projectileType" : "lightning",
+          "projectileParameters" : {
+            "speed" : 45
+          },
+          "power" : 6,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 10,
+          "projectileInterval" : 0.1
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

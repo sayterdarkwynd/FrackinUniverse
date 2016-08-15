@@ -1,0 +1,38 @@
+{
+  "name" : "doubleBarbSprayAttack",
+  "label" : "BARB SPRAY",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "doubleBarbSprayAttack",
+
+          "maximumRange" : 20,
+          "minimumRange" : 5,
+          "windupEffect" : "castphysical",
+          
+          "fireDelay" : 0.2,
+          "projectileType" : "doublethorns",
+          "projectileParameters" : {
+          },
+          "power" : 7,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 6,
+          "projectileInterval" : 0.1
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

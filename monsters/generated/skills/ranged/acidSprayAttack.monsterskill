@@ -1,0 +1,39 @@
+{
+  "name" : "acidSprayAttack",
+  "label" : "ACID SPLATTER",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "acidSprayAttack",
+
+          "maximumRange" : 19,
+          "minimumRange" : 5,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "clustergoo",
+          "projectileParameters" : {
+            "speed" : 45
+          },
+          "power" : 7,
+          "aimAtTarget" : true,
+
+          "fireArc" : true,
+          "projectileSpeed" : 45
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/goo_spit1.ogg", "/sfx/projectiles/goo_spit2.ogg" ]
+    }
+  }
+}
+

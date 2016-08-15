@@ -1,0 +1,36 @@
+{
+  "name" : "plasmaTorpedoAttack",
+  "label" : "PLASMA TORPEDO",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "plasmaTorpedoAttack",
+
+          "maximumRange" : 20,
+          "minimumRange" : 5,
+          "windupEffect" : "castelectric",
+          
+          "fireDelay" : 0.13,
+          "projectileType" : "plasmatorpedo",
+          "projectileParameters" : {
+            "speed" : 80
+          },
+          "power" : 9,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

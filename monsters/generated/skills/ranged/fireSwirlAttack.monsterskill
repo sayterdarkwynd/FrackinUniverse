@@ -1,0 +1,36 @@
+{
+  "name" : "fireSwirlAttack",
+  "label" : "FIRESWIRL",
+  "image" : "/monsters/generated/skills/defaultfire.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "fireSwirlAttack",
+
+          "maximumRange" : 12,
+          "minimumRange" : 3,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.2,
+          "projectileType" : "fireswirl",
+          "projectileParameters" : {
+            "speed" : 50
+          },
+          "power" : 9,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+  
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

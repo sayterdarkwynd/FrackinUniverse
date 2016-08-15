@@ -1,30 +1,30 @@
 {
-  "name" : "poisonVomitAttack2",
-  "label" : "VOMIT BLAST",
-  "image" : "/monsters/generated/skills/defaultpoison.png",
+  "name" : "inkSprayAttack",
+  "label" : "INK SPRAY",
+  "image" : "/monsters/generated/flying/skills/default.png",
 
   "config" : {
     "hostileActions" : [
       {
         "name" : "action-fire",
-        "cooldown" : 5,
+        "cooldown" : 4,
         "parameters" : {
-          "skillName" : "waterBlastAttack",
+          "skillName" : "inkSprayAttack",
 
           "maximumRange" : 12,
-          "minimumRange" : 1,
+          "minimumRange" : 2,
           "windupEffect" : "castpoison",
           
           "fireDelay" : 0.12,
-          "projectileType" : "poisonvomit",
+          "projectileType" : "inkspray",
           "projectileParameters" : {
             "speed" : 35
           },
-          "power" : 7,
+          "power" : 5,
           "aimAtTarget" : true,
 
-          "projectileCount" : 4,
-          "projectileInterval" : 0.060,
+          "projectileCount" : 6,
+          "projectileInterval" : 0.066,
 
           "fireArc" : true,
           "projectileSpeed" : 35

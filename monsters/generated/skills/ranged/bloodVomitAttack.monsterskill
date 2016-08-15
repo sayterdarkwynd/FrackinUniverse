@@ -1,33 +1,34 @@
 {
-  "name" : "poisonVomitAttack2",
-  "label" : "VOMIT BLAST",
+  "name" : "bloodVomitAttack",
+  "label" : "BLOODY VOMIT",
   "image" : "/monsters/generated/skills/defaultpoison.png",
 
   "config" : {
-    "hostileActions" : [
+    "hostileActions" : [ 
       {
         "name" : "action-fire",
-        "cooldown" : 5,
+        "cooldown" : 4,
         "parameters" : {
-          "skillName" : "waterBlastAttack",
+          "skillName" : "bloodVomitAttack",
 
           "maximumRange" : 12,
-          "minimumRange" : 1,
+          "minimumRange" : 3,
           "windupEffect" : "castpoison",
           
-          "fireDelay" : 0.12,
-          "projectileType" : "poisonvomit",
+          "fireDelay" : 0.1,
+          "projectileType" : "bloodvomit",
           "projectileParameters" : {
-            "speed" : 35
+            "speed" : 30
           },
-          "power" : 7,
+          "power" : 4,
           "aimAtTarget" : true,
 
-          "projectileCount" : 4,
-          "projectileInterval" : 0.060,
+          "projectileCount" : 6,
+          "projectileInterval" : 0.066,
 
           "fireArc" : true,
-          "projectileSpeed" : 35
+          "highArc" : false,
+          "projectileSpeed" : 30
         }
       }
     ]

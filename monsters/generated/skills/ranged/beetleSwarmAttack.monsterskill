@@ -1,0 +1,42 @@
+{
+  "name" : "beetleSwarmAttack",
+  "label" : "BEETLE SWARM",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "beetleSwarmAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 3,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "beetle",
+          "projectileParameters" : {
+            "speed" : 25
+          },
+          "power" : 7,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 3,
+          "projectileInterval" : 0.3,
+
+          "fireArc" : true,
+          "projectileSpeed" : 25
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/beetle1.ogg", "/sfx/projectiles/beetle2.ogg", "/sfx/projectiles/beetle3.ogg", "/sfx/projectiles/beetle4.ogg" ]
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+{
+  "name" : "plasmaSweepAttack",
+  "label" : "PLASMA SWEEP",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "plasmaSweepAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 5,
+          "windupEffect" : "castelectric",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "plasmasweep",
+          "projectileParameters" : {
+            "speed" : 70
+          },
+          "power" : 9,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

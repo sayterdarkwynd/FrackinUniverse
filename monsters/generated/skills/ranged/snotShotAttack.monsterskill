@@ -1,0 +1,39 @@
+{
+  "name" : "snotShotAttack",
+  "label" : "BLOB SHOT",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "snotShotAttack",
+
+          "maximumRange" : 20,
+          "minimumRange" : 3,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.2,
+          "projectileType" : "snotblock",
+          "projectileParameters" : {
+            "speed" : 35
+          },
+          "power" : 11,
+          "aimAtTarget" : true,
+
+          "fireArc" : true,
+          "projectileSpeed" : 35
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+{
+  "name" : "burninghaloAttack",
+  "label" : "BURNING HALO",
+  "image" : "/monsters/generated/skills/defaultfire.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "burninghaloAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 5,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "burninghalo",
+          "projectileParameters" : {
+            "speed" : 10
+          },
+          "power" : 10,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/fireball_spit.ogg" ]
+    }
+  }
+}
+

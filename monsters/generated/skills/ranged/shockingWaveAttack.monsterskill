@@ -1,0 +1,37 @@
+{
+  "name" : "shockingWaveAttack",
+  "label" : "SHOCKING WAVE",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "shockingWaveAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 5,
+          "windupEffect" : "castelectric",
+
+          "projectileType" : "sonic",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 7,
+          "aimAtTarget" : true,
+          "fireDelay" : 0.3
+        }
+      }
+    ]
+  },
+
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+
