@@ -1,0 +1,39 @@
+{
+  "name" : "spiceCloudAttack",
+  "label" : "SPICE CLOUD",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "spiceCloudAttack",
+
+          "maximumRange" : 8,
+          "minimumRange" : 2,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "spicecloud",
+          "projectileParameters" : {
+            "speed" : 12
+          },
+          "power" : 7,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 3,
+          "projectileInterval" : 0.2
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

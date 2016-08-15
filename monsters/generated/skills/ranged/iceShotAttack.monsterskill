@@ -1,0 +1,36 @@
+{
+  "name" : "iceShotAttack",
+  "label" : "ICESHOT",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "iceShotAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 5,
+          "windupEffect" : "castice",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "iceshot",
+          "projectileParameters" : {
+            "speed" : 25
+          },
+          "power" : 8,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

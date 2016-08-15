@@ -1,0 +1,43 @@
+{
+  "name" : "eyeballSprayAttack",
+  "label" : "OPTIC BLAST",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "eyeballSprayAttack",
+
+          "maximumRange" : 12,
+          "minimumRange" : 3,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "eyeballspray",
+          "projectileParameters" : {
+            "speed" : 25
+          },
+          "power" : 5,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 5,
+          "projectileInterval" : 0.1,
+
+          "fireArc" : true,
+          "highArc" : false,
+          "projectileSpeed" : 25
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

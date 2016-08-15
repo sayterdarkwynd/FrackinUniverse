@@ -1,0 +1,52 @@
+{
+  "name" : "putridWaveAttack",
+  "label" : "PUTRID WAVE",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "putridWaveAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 3,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "sonicwave",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 10,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "parameters" : {
+    "putridWaveAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "sonicwave",
+      "range" : 18,
+      "speed" : 30,
+      "power" : 10,
+      "shots" : 1,
+      "windupTime" : 0.05,
+      "winddownTime" : 0.2,
+      "castTime" : 0.4,
+      "castEffect" : "castpoison",
+      "castAnimation" : "charge"
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+{
+  "name" : "smokeRingAttack",
+  "label" : "TOBOLD'S REVENGE",
+  "image" : "/monsters/generated/skills/defaultfire.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "smokeRingAttack",
+
+          "maximumRange" : 16,
+          "minimumRange" : 3,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "smokering",
+          "projectileParameters" : {
+            "speed" : 50
+          },
+          "power" : 10,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

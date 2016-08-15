@@ -1,0 +1,36 @@
+{
+  "name" : "miniDragonBreathAttack",
+  "label" : "WYRMLING BREATH",
+  "image" : "/monsters/generated/skills/defaultfire.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "miniDragonBreathAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 5,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "minidragon",
+          "projectileParameters" : {
+            "speed" : 50
+          },
+          "power" : 8,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

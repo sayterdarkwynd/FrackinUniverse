@@ -1,0 +1,36 @@
+{
+  "name" : "orbOfZotsAttack",
+  "label" : "Orb of Zots",
+  "image" : "/monsters/generated/skills/defaultfire.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "orbOfZotsAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 3,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "orbofzots",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 9,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

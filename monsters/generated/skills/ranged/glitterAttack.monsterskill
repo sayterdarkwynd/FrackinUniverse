@@ -1,0 +1,39 @@
+{
+  "name" : "glitterAttack",
+  "label" : "SPARK SPRAY",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "glitterAttack",
+
+          "maximumRange" : 10,
+          "minimumRange" : 2,
+          "windupEffect" : "castelectric",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "glitterspray",
+          "projectileParameters" : {
+            "speed" : 22
+          },
+          "power" : 8,
+          "aimAtTarget" : true,
+
+          "fireArc" : true,
+          "projectileSpeed" : 22
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

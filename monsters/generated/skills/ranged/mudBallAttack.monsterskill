@@ -1,0 +1,55 @@
+{
+  "name" : "mudBallAttack",
+  "label" : "PUTRID PELT",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "mudBallAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 5,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "mudball",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 10,
+          "aimAtTarget" : true,
+
+          "fireArc" : true,
+          "projectileSpeed" : 30
+        }
+      }
+    ]
+  },
+
+  "parameters" : {
+    "mudBallAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "mudball",
+      "arc" : "low",
+      "range" : 18,
+      "speed" : 30,
+      "power" : 8,
+      "shots" : 1,
+      "cooldownTime" : 3,
+      "castTime" : 0.4,
+      "castEffect" : "castpoison",
+      "castAnimation" : "charge"
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

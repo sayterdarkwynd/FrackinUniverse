@@ -1,0 +1,36 @@
+{
+  "name" : "sonicWaveAttack",
+  "label" : "SONIC WAVE",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "sonicWaveAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 4,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "sonicwave",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 10,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+  
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

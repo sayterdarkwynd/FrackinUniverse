@@ -1,0 +1,39 @@
+{
+  "name" : "gasBelchAttack",
+  "label" : "GAS BELCH",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "gasBelchAttack",
+
+          "maximumRange" : 9,
+          "minimumRange" : 2,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "gas",
+          "projectileParameters" : {
+            "speed" : 20
+          },
+          "power" : 7,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 4,
+          "projectileInterval" : 0.2
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

@@ -1,0 +1,39 @@
+{
+  "name" : "eyeballShotAttack",
+  "label" : "SNIPER'S EYE",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "eyeballShotAttack",
+
+          "maximumRange" : 24,
+          "minimumRange" : 5,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "eyeball",
+          "projectileParameters" : {
+            "speed" : 45
+          },
+          "power" : 10,
+          "aimAtTarget" : true,
+
+          "fireArc" : true,
+          "projectileSpeed" : 45
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

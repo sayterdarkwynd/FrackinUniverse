@@ -1,0 +1,42 @@
+{
+  "name" : "shardSprayAttack",
+  "label" : "ICE SHARD SPRAY",
+  "image" : "/monsters/generated/skills/defaultice.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "shardSprayAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 3,
+          "windupEffect" : "castice",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "multirockshard",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 7,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 5,
+          "projectileInterval" : 0.1,
+
+          "fireArc" : true,
+          "projectileSpeed" : 30
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

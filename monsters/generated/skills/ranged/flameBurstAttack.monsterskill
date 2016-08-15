@@ -1,0 +1,58 @@
+{
+  "name" : "flameBurstAttack",
+  "label" : "FLAME BURST",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "flameBurstAttack",
+
+          "maximumRange" : 13,
+          "minimumRange" : 3,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "flame",
+          "projectileParameters" : {
+            "speed" : 25
+          },
+          "power" : 5,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 10,
+          "projectileInterval" : 0.066,
+
+          "fireArc" : true,
+          "projectileSpeed" : 25
+        }
+      }
+    ]
+  },
+
+  "parameters" : {
+    "flameBurstAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "flame",
+      "arc" : "low",
+      "range" : 13,
+      "speed" : 25,
+      "power" : 10,
+      "shots" : 10,
+      "fireInterval" : 0.066,
+      "castTime" : 0.4,
+      "castEffect" : "castfire",
+      "castAnimation" : "charge"
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

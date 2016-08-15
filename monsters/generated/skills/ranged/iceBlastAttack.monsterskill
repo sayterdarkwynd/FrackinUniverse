@@ -1,0 +1,39 @@
+{
+  "name" : "iceBlastAttack",
+  "label" : "ICE BLAST",
+  "image" : "/monsters/generated/skills/defaultice.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "iceBlastAttack",
+
+          "maximumRange" : 8,
+          "minimumRange" : 2,
+          "windupEffect" : "castice",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "icebreath",
+          "projectileParameters" : {
+            "speed" : 20
+          },
+          "power" : 9,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 8,
+          "projectileInterval" : 0.15
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

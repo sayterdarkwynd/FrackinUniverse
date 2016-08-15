@@ -1,0 +1,36 @@
+{
+  "name" : "boneRainAttack",
+  "label" : "BONE RAIN",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "boneRainAttack",
+
+          "maximumRange" : 16,
+          "minimumRange" : 3,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "multibone",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 7,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+  
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/bonerain_throw1.ogg", "/sfx/projectiles/bonerain_throw2.ogg" ]
+    }
+  }
+}
+

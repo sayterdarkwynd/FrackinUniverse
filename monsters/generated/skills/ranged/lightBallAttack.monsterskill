@@ -1,0 +1,36 @@
+{
+  "name" : "lightBallAttack",
+  "label" : "LIGHT BALL",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "lightBallAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 5,
+          "windupEffect" : "castelectric",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "lightball",
+          "projectileParameters" : {
+            "speed" : 20
+          },
+          "power" : 6,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+{
+  "name" : "rangedChompAttack",
+  "label" : "AIR CHOMP",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "rangedChompAttack",
+
+          "maximumRange" : 10,
+          "minimumRange" : 2,
+          "windupEffect" : "castphysical",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "chomp",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 8,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+  
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/npc/monsters/monster_bite2.ogg" ]
+    }
+  }
+}
+

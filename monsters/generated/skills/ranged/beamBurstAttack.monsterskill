@@ -1,0 +1,35 @@
+{
+  "name" : "beamBurstAttack",
+  "label" : "BEAM BURST",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "beamBurstAttack",
+
+          "maximumRange" : 13,
+          "minimumRange" : 3,
+          "windupEffect" : "castelectric",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "preshortbeam",
+          "projectileParameters" : {
+          },
+          "power" : 6,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+  
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/charge_up15.ogg" ]
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+{
+  "name" : "leafyGustAttack",
+  "label" : "LEAFY GUST",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "leafyGustAttack",
+
+          "maximumRange" : 16,
+          "minimumRange" : 2,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "leafgust",
+          "projectileParameters" : {
+            "speed" : 30
+          },
+          "power" : 8,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+
