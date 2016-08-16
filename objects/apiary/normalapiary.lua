@@ -196,7 +196,6 @@ end
 function trySpawnDrone(chance,type,amount)
 		droneBonus = 0
 		droneStarter()
-        -- analog to trySpawnBee() for items (like goldensand)
         amount = (math.random(2) + droneBonus)
 			if self.doDrone and math.random(100)/100 <= chance then
 					world.containerAddItems(entity.id(), { name=type .. "drone", count = amount, data={}})
@@ -219,7 +218,6 @@ end
 
 
 function trySpawnMutantDrone(chance,type,amount)
-        -- analog to trySpawnBee() for items (like goldensand)
         amount = amount or 1
 				if self.doDrone and math.random(100)/100 <= ( chance + self.mutationIncrease ) then
 						world.containerAddItems(entity.id(), { name=type .. "drone", count = amount, data={}})
@@ -271,7 +269,7 @@ end
 
 function beeSting()
 	-- sb.logInfo("Apiary: Aggressive bees trying to sting")
-	if math.random(5) == 2 then
+	if math.random(5) == 1 then
 	-- sb.logInfo("Apiary: STING!")
 	world.spawnProjectile("stingstatusprojectile", entity.position(), entity.id())
 	end
@@ -487,7 +485,8 @@ function miteInfection()   ---Random mite infection.
 
 	
 		---initial infection. with a 500ms polling rate, this runs at once per 60 minutes per apiary, an infection should happen.
-		if math.random(6000) == 600 then
+		---The previous comment doesn't actually make sense. It's not your imagination. -renbear
+		if math.random(1000) < 6 then
 			if vmiteFitCheck == true then
 				world.containerAddItems(entity.id(), { name="vmite", count = 64, data={}})
 			end
@@ -544,7 +543,7 @@ function daytimeCheck()
 		end
 end
 
-function ammendBeeName()
+function amendBeeName()
 	local removeDrone1 = string.gsub(contents[17].name, "drone", "")  	 ----remove "drone" from the item name and set a variable
 	bee1Type = string.gsub(removeDrone1, "queen", "")				 ----remove "queen" from the item name and set a variable
 	---one time for each slot. (Queen and Drone)
@@ -760,7 +759,7 @@ function workingBees()
 	end
 		
 --- In case temp gets added back to Starbound. (Everything Bees)-----------------------------------------------------------------
-		
+		-- ... huh? -renbear
 ----- Nocturnal Bees ------
 	if whatTimeOfDay == 2 then	
 			if equippedBees("moon") then					--MOON
@@ -797,7 +796,7 @@ function breedingBees()
 					["metalsun"] = "mythical",
 				}
 	
-	ammendBeeName()   ----removes queen and drone from the item names. equippedBees() also does this, but this function is a simple version.
+	amendBeeName()   ----removes queen and drone from the item names. equippedBees() also does this, but this function is a simple version.
 	local speciesFinder = (bee1Type .. bee2Type)
 	if whatTimeOfDay == 1 then
 		if beeComboList[speciesFinder] ~= nil then   ---If we still have a result...

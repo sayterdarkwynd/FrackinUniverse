@@ -250,7 +250,6 @@ end
 function trySpawnDrone(chance,type,amount)
 		droneBonus = 0
 		droneStarter()
-        -- analog to trySpawnBee() for items (like goldensand)
         amount = (math.random(2) + droneBonus)
 			if self.doDrone and math.random(100)/100 <= chance then
 						world.containerAddItems(entity.id(), { name=type .. "drone", count = amount, data={}})
@@ -269,7 +268,6 @@ function trySpawnItems(chance,type,amount)
 end
 
 function trySpawnMutantDrone(chance,type,amount)
-        -- analog to trySpawnBee() for items (like goldensand)
         amount = amount or 1
 				if self.doDrone and math.random(100)/100 <= ( chance + self.mutationIncrease ) then
 						world.containerAddItems(entity.id(), { name=type .. "drone", count = amount, data={}})
@@ -319,7 +317,7 @@ function spawnHoneyDronesBees(type)  ---condenses the functions that every breed
 end
 
 function beeSting()
-	if math.random(2) == 2 then
+	if math.random(5) == 1 then
 	local location = entity.position()
 	world.spawnProjectile("stingstatusprojectile", {location[1]+3, location[2]+2.5}, entity.id())
 	end
@@ -532,13 +530,14 @@ function miteInfection()   ---Random mite infection.
 
 	
 		---initial infection. with a 500ms polling rate, this runs at once per 60 minutes per apiary, an infection should happen.
-		if math.random(7200) == 600 then
+		-- Nonsensical Comments R Us. -renbear
+		if math.random(1000) < 6 then
 			if vmiteFitCheck == true then
 				world.containerAddItems(entity.id(), { name="vmite", count = 64, data={}})
 			end
 		end
 	
-		---Infection clears if the frame is the anti-mite frame.
+		---Infection clears if a frame is the anti-mite frame.
 		if contents[39] and contents[39].name == "amite" then
 				world.containerConsume(entity.id(), { name= "vmite", count = 10, data={}})
 				world.containerConsume(entity.id(), { name= "vmite", count = 5, data={}})
