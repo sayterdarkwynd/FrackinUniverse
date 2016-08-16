@@ -1,0 +1,42 @@
+{
+  "name" : "flySwarmAttack",
+  "label" : "FLY SWARM",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "flySwarmAttack",
+
+          "maximumRange" : 10,
+          "minimumRange" : 2,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.14,
+          "projectileType" : "flyswarm",
+          "projectileParameters" : {
+            "speed" : 15
+          },
+          "power" : 5,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 4,
+          "projectileInterval" : 0.2,
+
+          "fireArc" : true,
+          "projectileSpeed" : 15
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/bugswarm1.ogg", "/sfx/projectiles/bugswarm2.ogg", "/sfx/projectiles/bugswarm3.ogg", "/sfx/projectiles/bugswarm4.ogg" ]
+    }
+  }
+}
+

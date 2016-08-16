@@ -1,0 +1,50 @@
+{
+  "name" : "cellBlastAttack",
+  "label" : "CELL SHOCK",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "cellBlastAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 3,
+          "windupEffect" : "castelectric",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "cellblast",
+          "projectileParameters" : {
+            "speed" : 40
+          },
+          "power" : 10,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "parameters" : {
+    "cellBlastAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "cellblast",
+      "range" : 18,
+      "speed" : 40,
+      "power" : 15,
+      "shots" : 1,
+      "castTime" : 0.4,
+      "castEffect" : "castelectric",
+      "castAnimation" : "charge"
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ "/sfx/gun/lightningcoil1.ogg" ]
+    }
+  }
+}
+

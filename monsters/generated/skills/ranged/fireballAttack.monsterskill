@@ -1,0 +1,39 @@
+{
+  "name" : "fireballAttack",
+  "label" : "BOUNCING COAL",
+  "image" : "/monsters/generated/skills/defaultfire.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "fireballAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 5,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.25,
+          "projectileType" : "fireball",
+          "projectileParameters" : {
+            "speed" : 25
+          },
+          "power" : 9,
+          "aimAtTarget" : true,
+
+          "fireArc" : true,
+          "highArc" : false,
+          "projectileSpeed" : 25
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}

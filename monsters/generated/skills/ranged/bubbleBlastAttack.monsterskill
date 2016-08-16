@@ -1,0 +1,42 @@
+{
+  "name" : "bubbleBlastAttack",
+  "label" : "BUBBLE BLAST",
+  "image" : "/monsters/generated/skills/defaultice.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "bubbleBlastAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 3,
+          "windupEffect" : "castice",
+          
+          "fireDelay" : 0.1,
+          "projectileType" : "bubbles",
+          "projectileParameters" : {
+            "speed" : 25
+          },
+          "power" : 7,
+          "aimAtTarget" : true,
+          "projectileCount" : 10,
+          "projectileInterval" : 0.12,
+
+          "fireArc" : true,
+          "highArc" : false,
+          "projectileSpeed" : 25
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/bubble_blow1.ogg", "/sfx/projectiles/bubble_blow2.ogg", "/sfx/projectiles/bubble_blow3.ogg" ]
+    }
+  }
+}
+

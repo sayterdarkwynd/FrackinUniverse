@@ -52,6 +52,9 @@ function update(dt)
 
 		world.containerAddItems(entity.id(), {name = storage.currentoutput, count = self.orerandom, data={}})
 		self.timer = 0.25
+	else
+		storage.activeConsumption = false
+		animator.setAnimationState("furnaceState", "idle")
 	end
   end	
 end

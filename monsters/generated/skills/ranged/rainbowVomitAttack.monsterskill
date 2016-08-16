@@ -1,0 +1,43 @@
+{
+  "name" : "rainbowVomitAttack",
+  "label" : "CHROMATIC PURGE",
+  "image" : "/monsters/generated/skills/defaultfire.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "rainbowVomitAttack",
+
+          "maximumRange" : 18,
+          "minimumRange" : 5,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.17,
+          "projectileType" : "rainbow",
+          "projectileParameters" : {
+            "speed" : 25
+          },
+          "power" : 5,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 20,
+          "projectileInterval" : 0.01,
+
+          "fireArc" : true,
+          "highArc" : false,
+          "projectileSpeed" : 25
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+

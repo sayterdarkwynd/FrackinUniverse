@@ -1,0 +1,51 @@
+{
+  "name" : "darkGravityBallAttack",
+  "label" : "FROZEN GRAVITY BALL",
+  "image" : "/monsters/generated/skills/defaultice.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "darkGravityBallAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 5,
+          "windupEffect" : "castice",
+          
+          "fireDelay" : 0.15,
+          "projectileType" : "frozengravityball",
+          "projectileParameters" : {
+            "speed" : 15
+          },
+          "power" : 7,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "parameters" : {
+    "darkGravityBallAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "frozengravityball",
+      "range" : 15,
+      "speed" : 15,
+      "power" : 16,
+      "shots" : 1,
+      "winddownTime" : 0.5,
+      "castTime" : 0.4,
+      "castEffect" : "castice",
+      "castAnimation" : "charge"
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "rangedAttack" : [ ]
+    }
+  }
+}
+

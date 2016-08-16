@@ -1,0 +1,54 @@
+{
+  "name" : "darkGasAttack",
+  "label" : "SHADOWY VAPORS",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : 4,
+        "parameters" : {
+          "skillName" : "darkGasAttack",
+
+          "maximumRange" : 8,
+          "minimumRange" : 2,
+          "windupEffect" : "castpoison",
+          
+          "fireDelay" : 0.2,
+          "projectileType" : "darkgas",
+          "projectileParameters" : {
+            "speed" : 16
+          },
+          "power" : 8,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 8,
+          "projectileInterval" : 0.15
+        }
+      }
+    ]
+  },
+
+  "parameters" : {
+    "darkGasAttack" : {
+      "factory" : "createRangedAttack",
+      "projectile" : "darkgas",
+      "range" : 8,
+      "speed" :16,
+      "power" : 14,
+      "shots" : 8,
+      "fireInterval" : 0.15,
+      "castTime" : 0.4,
+      "castEffect" : "castpoison",
+      "castAnimation" : "charge"
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ ]
+    }
+  }
+}
+
