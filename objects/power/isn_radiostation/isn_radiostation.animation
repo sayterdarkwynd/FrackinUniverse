@@ -6,7 +6,13 @@
     },
 
     "parts" : {
-      "anim" : {"properties" : {"centered" : false}, "partStates" : { "anim" : { "off" : {"properties" : {"image" : "<partImage>:off"}},"on" : {"properties" : {"image" : "<partImage>:on.<frame>"}}}}},
+      "anim" : {
+      "properties" : {
+	"zLevel" : 3,
+	"centered" : false,
+	"fullbright" : true 
+      }, 
+      "partStates" : { "anim" : { "off" : {"properties" : {"image" : "<partImage>:off"}},"on" : {"properties" : {"image" : "<partImage>:on.<frame>"}}}}},
 	  "base" : {"properties" : {"centered" : false}, "partStates" : { "base" : { "base" : {"properties" : {"image" : "<partImage>:base"}}}}}
 	}
   },
