@@ -1,12 +1,13 @@
 {
-  "type" : "crewmemberbountyhunter",
+  "type" : "crewmemberfuhunter",
   "baseType" : "base",
 
   "dropPools" : [ "villagertreasure" ],
 
   "damageTeamType" : "friendly",
 
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": 5 }, {"stat" : "powerMultiplier", "amount" : 0} ], 
+  // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.5} ], 
 
   "persistent" : true,
 
@@ -16,10 +17,10 @@
       "emptyHands" : false,
 
       // Wander behavior config
-      "wanderTime" : 1,
-      "idleTime" : 10,
+      "wanderTime" : 5,
+      "idleTime" : 20,
       "outerHomeRange" : 20,
-      "innerHomeRange" : 15,
+      "innerHomeRange" : 25,
 
       "hostileDamageTeam" : {"type" : "friendly", "team" : 1}
     },
@@ -33,11 +34,43 @@
       },
 
       "powerMultiplierExponent" : 1.0,
-
+      
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "fireStatusImmunity",
+            "duration" : 280
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "jungleslowImmunity",
+            "duration" : 280
+          },           
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "protoImmunity",
+            "duration" : 280
+          },           
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "fumudslowImmunity",
+            "duration" : 280
+          },           
+          {
+            // Persistent effects are active while on the ship
+            "type" : "PersistentEffect",
+            "effect" : "defense4"
+          }
+        ],
+        
       "role" : {
         "type" : "soldier",
-        "name" : "Demolitionist",
-        "field" : "Explosives",
+        "name" : "Beast Hunter",
+        "field" : "Hunter/Gatherer",
         "uniformColorIndex" : 1
       },
 
@@ -91,11 +124,11 @@
       ],
 
       "defaultUniform" : {
-        "head" : "fieldscientisthead",
-        "chest" : "fuoperativechest",
-        "legs" : "fuoperativelegs"
+	"head" : "headbandhead",
+    	"chest" : "toughchest",
+   	"legs" : "toughlegs"
       },
-      "uniformSlots" : ["head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
     },
 
     "questGenerator" : {
@@ -389,17 +422,26 @@
   },
 
   "movementParameters" : {
-    "runSpeed" : 16.0
+    // Run at the same speed as the player
+    "runSpeed" : 14.0
   },
 
   "items" : {
     "default" : [
       [0, [
           {
-            "chest" : [ { "name" : "fuoperativechestnpc" } ],
-            "legs" : [ { "name" : "fuoperativelegsnpc" } ],
-            "primary" : [ "carbonblade" ],
-            "sheathedprimary" : [ "npcrocketlauncher" ]
+            "head" : [ { "name" : "headbandhead" } ],
+            "chest" : [ { "name" : "toughchest" } ],
+            "legs" : [ { "name" : "toughlegs" } ],
+            "primary" : [ "npclongarm" ],
+            "sheathedprimary" : [ "npchuntingspear" ]            
+          },
+          {
+            "head" : [ { "name" : "headbandhead" } ],
+            "chest" : [ { "name" : "toughchest" } ],
+            "legs" : [ { "name" : "toughlegs" } ],
+            "primary" : [ "npclongarm" ],
+            "sheathedprimary" : [ "npchuntingspear" ] 
           }
         ] ]
     ]
@@ -409,21 +451,21 @@
     "statusProperties" : {
       "hitInvulnerability" : true,
       "hitInvulnerabilityThreshold" : 0.0233,
-      "hitInvulnerabilityTime" : 0.7,
-      "hitInvulnerabilityFlash" : 0.15,
+      "hitInvulnerabilityTime" : 0.5,
+      "hitInvulnerabilityFlash" : 0.25,
       "damageFlashOnDirectives" : "",
       "damageFlashOffDirectives" : ""
     },
 
     "stats" : {
       "maxHealth" : {
-        "baseValue" : 300.0
+        "baseValue" : 260.0
       },
       "powerMultiplier" : {
-        "baseValue" : 0.25
+        "baseValue" : 0.65
       },
       "healthRegen" : {
-        "baseValue" : 2.3
+        "baseValue" : 2.5
       }
     }
   }
