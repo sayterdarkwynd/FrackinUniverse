@@ -41,7 +41,7 @@ end
   
 function update(dt)
       biomeTimer = biomeTimer - dt
-      if biomeTimer <= 0 then
+      if biomeTimer <= 0 and status.stat("powerMultiplier") >= 1 then
         effect.addStatModifierGroup({{stat = "powerMultiplier", amount = baseValue* (-1) }})
 	biomeTimer = 20	
 	makeAlert()
