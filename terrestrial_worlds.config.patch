@@ -565,7 +565,7 @@
              ]
         },
         "subsurface" : {
-          "primaryRegion" : [ "arborealunderground" ]
+          "primaryRegion" : [ "arboreal2underground" ]
         },
         "underground1" : {
           "secondaryRegions" : [ "ffhiveunderground", "zen", "shroomcave", "colorfulcave", "ffspidernest", "luminouscaves",  "minivillageunderground", "mushroomunderground", "wildernessunderground", "ffvolcanic", "ffsilvermine", "ffcoalmine", "ffgoldmine", "ffcoppermine" ]
@@ -4510,6 +4510,19 @@
       "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "arborealunderground"]]
+      ]
+    }
+  },
+
+  {"op" : "add", 
+  "path" : "/regionTypes/arboreal2underground",
+  "value" : 
+  {
+      "caveLiquid" : [ "wastewater", "lava", "blacktar" ],
+      "caveLiquidChanceRange" : [75, 95],
+      "fgCaveSelector" : [ "denseCaves", "acidPoolCaves" ],
+      "biome" : [
+        [0, [ "arboreal2underground"]]
       ]
     }
   },
