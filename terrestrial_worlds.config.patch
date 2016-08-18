@@ -2388,11 +2388,11 @@
       "layers" : {
         "surface" : {
           "primaryRegion" : [ "tidewater" ], 
-	  "secondaryRegions" : [ "sulphuricmagma", "breakwater", "corrupt", "estuary", "magma" ]
+	  "secondaryRegions" : [ "sulphuricocean", "breakwater", "corrupt", "rotwater", "estuary", "magma" ]
         },
         "subsurface" : {
           "primaryRegion" : [ "tidewaterfloor" ],
-	  "secondaryRegions" : [ "deepseavent", "coralreef", "kelpforest" ]		  
+	  "secondaryRegions" : [ "rotwater", "deepseavent", "coralreef", "kelpforest" ]		  
         },
         "underground1" : {
 	  "primaryRegion" : [ "tidewaterunderground" ], 
@@ -4479,9 +4479,9 @@
  "path": "/regionTypes/strangesea",
  "value" : 
  	{
-       "oceanLiquid" : [ "crystalliquid", "bloodliquid", "bio_ooze", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater" ],
+       "oceanLiquid" : [ "fuhoney", "fuhoneyred", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater" ],
        "oceanLevelOffset" : 0, 
-       "caveLiquid" : [ "crystalliquid", "bloodliquid", "bio_ooze", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "fuhoney", "helium3gas", "shadowgas", "wastewater", "poison", "lava" ],
+       "caveLiquid" : [ "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "fuhoney", "helium3gas", "shadowgas", "wastewater", "poison", "lava" ],
        "caveLiquidChanceRange" : [100, 100],
        "blockSelector" : [ "remixedIslandsSurface", "submergedIslandsSurface", "spikeIslandsSurface" ],
        "fgCaveSelector" : [ "surfaceCaves" ],
@@ -4503,6 +4503,21 @@
 
        "biome" : [
          [0, [ "breakwater" ]]
+       ]
+ 	}
+ },
+
+ {"op" : "add",
+ "path": "/regionTypes/rotwater",
+ "value" : 
+ 	{
+       "oceanLiquid" : [ "pus" ],
+       "oceanLevelOffset" : 0, 
+       "blockSelector" : [ "breakwaterIslandsSurface" ],
+       "fgCaveSelector" : [ "moonCaves" ],
+
+       "biome" : [
+         [0, [ "estuary" ]]
        ]
  	}
  },
