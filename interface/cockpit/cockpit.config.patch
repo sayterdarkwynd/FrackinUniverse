@@ -63,17 +63,34 @@
 
   {
     "op" : "replace",
+    "path" : "/threatLevelToColor",
+    "value" : [
+    [ 0, 170, 233], //TL 1
+    [ 0, 233, 148], //TL 2
+    [ 16, 233, 0 ], //TL 3
+    [ 194, 235, 0 ], //TL 4
+    [ 235, 171, 0], //TL 5
+    [ 235, 100, 0], //TL 6
+    [ 230, 49, 0], //TL 7
+    [ 192, 32, 0], //TL 8
+    [ 255, 0, 0], //TL 9
+    [ 160, 160, 160] //TL 10
+]
+  },
+  
+  {
+    "op" : "replace",
     "path" : "/threatLevelToText",
     "value" : [
-    "Safe (I)",
+    "Harmless (I)",
     "Low (II)",
-    "Moderate (III)",
+    "Moderate (III)", 
     "Risky (IV)",
     "Dangerous (V)",
     "Extreme (VI)",
     "Lethal (VII)",
-    "***",
-    "***",
+    "Impossible (VIII)",
+    "Immeasurable (IX)",
     "Unknown"
 ]
   },
