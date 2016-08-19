@@ -1,0 +1,77 @@
+{
+  "objectName" : "lavarooftrap",
+  "colonyTags" : [ "trap" ],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An automated fire spitting sprinkler.",
+  "shortdescription" : "Fire Trap",
+
+  "category" : "wire",
+  "price" : 200,
+
+  "inventoryIcon" : "lavarooftrapicon.png",
+  "orientations" : [
+    {
+      "image" : "lavarooftrap.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationPosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "lavarooftrap.png",
+        "fg" : "lavarooftrap.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0, 0.7],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "lavarooftrap.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "animationPosition" : [0, 0],
+      "animationParts" : {
+        "bg" : "lavarooftrap.png",
+        "fg" : "lavarooftrap.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [1, 0.7],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/generic/sprinklerroof/projectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ "/sfx/projectiles/fire_out.ogg" ],
+      "on" : [ "/sfx/projectiles/burning_loop.ogg"  ],
+      "off" : [ ]
+    }
+  },
+
+  "inputNodes" : [ [0, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [190, 110, 40], // light color to emit when the object is 'on'
+
+  "fireTime" : 0.42, // rate of fire
+  "fireTimeVariance" : 0.2, // variation in rate of fire
+  "inaccuracy" : 0.35,
+  "projectile" : "firerain", // name of projectile (required)
+  "projectileConfig" : { // extra configuration overrides for projectile
+    "damageTeam" : { "type" : "indiscriminate" },
+    "power" : 5,
+    "speed" : 25
+  }
+}

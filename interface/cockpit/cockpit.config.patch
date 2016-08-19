@@ -60,6 +60,43 @@
     "value" : "Red Star"
   }, 
 
+
+  {
+    "op" : "replace",
+    "path" : "/threatLevelToColor",
+    "value" : [
+    [ 0, 170, 233], //TL 1
+    [ 16, 233, 0], //TL 2
+    [ 194, 233, 0 ], //TL 3
+    [ 235, 171, 0 ], //TL 4
+    [ 235, 100, 0], //TL 5
+    [ 235, 49, 0], //TL 6
+    [ 192, 32, 0], //TL 7
+    [ 255, 32, 50], //TL 8
+    [ 255, 0, 0], //TL 9
+    [ 160, 160, 160] //TL 10
+]
+  },
+  
+  
+  {
+    "op" : "replace",
+    "path" : "/threatLevelToText",
+    "value" : [
+    "Harmless (I)",
+    "Low (II)",
+    "Moderate (III)", 
+    "Risky (IV)",
+    "Dangerous (V)",
+    "Extreme (VI)",
+    "Lethal (VII)",
+    "Impossible (VIII)",
+    "Immeasurable (IX)",
+    "Unknown"
+]
+  },
+  
+  
   {"op":"add","path":"/planetTypeToDescription/tabularasa",
 "value":["Some hideous catastrophe has resulted in this planet becoming a ^#59a849;Tabula Rasa^reset;. A doomsday virus? Maybe you can find out.",
 "Some hideous catastrophe has resulted in this planet becoming a ^#59a849;Tabula Rasa^reset;. A long-ago nuclear armageddon? Who knows?",
@@ -277,6 +314,47 @@
 "This unusually ^#914560;super-dense^reset; planet has gravity ^orange;far above normal^reset;. Be very careful. ^red;Falling means certain death^reset;.",
 "A ^#914560;Super-dense^reset; world with a much higher gravitational force than other planets of the same size. ^red;Very dangerous. Tread carefully."]},
 
+//------------
+{"op":"add","path":"/planetTypeToDescription/arcticdark",
+"value":["^red;Temperatures at the landing site are dangerously low.^white; You will be beaming onto a small island surrounded by ^#00ffe4;frigid ocean^white;. I strongly advise you to wear a scarf.",
+                "The beam site is ^red;intensely cold^white;: a tiny island in a ^#00ffe4;frigid ocean^white;. There is a 0.025% chance you will mis-beam into the water, quickly succumbing to the awful chill.",
+                "A site of ^red;dangerously low temperatures^white;. There are few animals here, and no plant-life at all - just forsaken islands in a ^#00ffe4;frigid ocean^white;."]},
+
+{"op":"add","path":"/planetTypeToDescription/desertwastesdark",
+"value":["The majority of the planet's surface is a scorching ^#c80000;red desert^reset;. Bio-scans reveal interesting flora and fauna. ^cyan;Recommend: Deadly Heat protection^reset;",
+"Bring extreme heat protection when exploring this ^#c80000;red desert^reset; as exposure for prolonged periods will prove 100% fatal. ^cyan;Recommend: Deadly Heat protection^reset;",
+"A ^#c80000;red desert^reset; stretches across almost the entire circumference of this exceptionally hot world. ^cyan;Recommend: Deadly Heat protection^reset;"]},
+
+
+{"op":"add","path":"/planetTypeToDescription/infernusdark",
+"value":["Volatile lava and extreme deadly heat await on ^#cd5d02;infernus^reset; worlds. Protection recommended. ^#d16fff;Densinium ore^reset; detected. ^cyan;Recommend: Deadly Heat protection^reset;",
+"A hellish ^#cd5d02;infernus^reset; planet covered in ^red;lava^reset; and ^red;lethal temperatures^reset;. Bring extreme heat protection. ^cyan;Recommend: Deadly Heat protection^reset;",
+"^#cd5d02;Infernus^reset; worlds are ^red;exceptionally deadly^reset; and not to be undertaken without protection. ^#d16fff;Densinium ore^reset; detected. ^cyan;Recommend: Deadly Heat protection^reset;"]},
+
+
+{"op":"add","path":"/planetTypeToDescription/magmadark",
+"value":["This ^red;dangerously hot^white; planet is chiefly composed of ^#ff1818;magma^white;. Remember, your resilient spirit is admirable, but it is not flame retardant.",
+               "The planet surface is ^red;dangerously hot^white;. Few creatures eek out an existence amongst the planet's vast oceans of ^#ff1818;magma^white;.",
+               "The beam site is a tiny island isolated in a sea of ^#ff1818;magma^white;. That you would consider visiting this ^red;searingly hot^white; planet speaks volumes of your fortitude."]},
+
+
+
+{"op":"add","path":"/planetTypeToDescription/protoworlddark",
+"value":["A ^#517f51;proto world^reset;. Mutated flora and unusual life-signs detected. Scanners have also located caches of ^#e2ef55;Protocite Ore^reset;. ^cyan;Recommend: Proto-Poison protection^reset;",
+"I am detecting unusual life signs on this ^#517f51;proto world^reset;. It appears this life has been purposefully mutated. ^#e2ef55;Unusual ores^reset; detected. ^cyan;Recommend: Proto-Poison protection^reset;",
+"Mutated life runs rampant here on this ^#517f51;proto world^reset;. Valuable ^#e2ef55;protocite^reset; is found in abundance. ^cyan;Recommend: Proto-Poison protection^reset;"]},
+
+
+{"op":"add","path":"/planetTypeToDescription/snowdark",
+"value":["This chilly landing site is laden with ^#69f1fd;snow^white;. Sundry trees grow here and various animals also thrive in the cold conditions. An excellent place to make snowballs.",
+              "The landing location is cold, but not perilously so. ^#69f1fd;Snow^white; covers the area and blizzards are a possibility. A hat and gloves may be advisable.",
+              "This location is relatively chill, and ^#69f1fd;snow^white; lies thickly on the ground. My sensors indicate that there are critters scampering through the soft blanket of white." ]},
+
+
+{"op":"add","path":"/planetTypeToDescription/tundradark",
+"value":["A ^#61ffe3;frozen^white; place, formed of ice - the permafrost runs deep here. Snow storms are common, and ^red;temperatures are dangerously low^white;.",
+                "This ^red;dangerously cold.^white; landing site is ^#61ffe3;frozen^white; solid. High likelihood of accidental self-cryopreservation. Protect yourself from the cold.",
+                "^red;Temperatures at the beam site are dangerously low^white;. The area is ^#61ffe3;frozen^white;, and inhabited only by flora and fauna that are extremely resistant to the cold. "]},
 
 
 
