@@ -1,0 +1,77 @@
+{
+  "objectName" : "slimerooftrap",
+  "colonyTags" : [ "trap" ],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An automated slime spitting sprinkler.",
+  "shortdescription" : "Slime Trap",
+
+  "category" : "wire",
+  "price" : 200,
+
+  "inventoryIcon" : "slimerooftrapicon.png",
+  "orientations" : [
+    {
+      "image" : "slimerooftrap.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationPosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "slimerooftrap.png",
+        "fg" : "slimerooftrap.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0, 0.7],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "slimerooftrap.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "animationPosition" : [0, 0],
+      "animationParts" : {
+        "bg" : "slimerooftrap.png",
+        "fg" : "slimerooftrap.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [1, 0.7],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/generic/sprinklerroof/projectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [  ],
+      "on" : [   ],
+      "off" : [ ]
+    }
+  },
+
+  "inputNodes" : [ [0, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [190, 110, 40], // light color to emit when the object is 'on'
+
+  "fireTime" : 1.72, // rate of fire
+  "fireTimeVariance" : 0.3, // variation in rate of fire
+  "inaccuracy" : 0.03,
+  "projectile" : "squirtacid", // name of projectile (required)
+  "projectileConfig" : { // extra configuration overrides for projectile
+    "damageTeam" : { "type" : "indiscriminate" },
+    "power" : 7,
+    "speed" : 25
+  }
+}
