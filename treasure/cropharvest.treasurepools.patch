@@ -885,10 +885,68 @@
 },
 
 {"op":"add","path":"/beeflowerHarvest","value":[[0,{"fill":[{"item":"beeflower"}],"pool":[{"weight":1,"item":"beeflowerhead"},{"weight":0.3,"item":"beeflower"}],"poolRounds":[[1,1],[1,1]]}]]},
-{"op":"replace","path":"/flowerredHarvest/0","value":[0,{"pool":[{"weight":0.5,"item":"petalred"},{"weight":0.3,"item":"flowerred"},{"weight":0.15,"item":"flowerred"},{"weight":0.05,"item":"flowerspring"}],"poolRounds":[[0.5,2],[0.4,3],[0.1,4]]}]},
-{"op":"replace","path":"/flowerblueHarvest/0","value":[0,{"pool":[{"weight":0.5,"item":"petalblue"},{"weight":0.3,"item":"flowerblue"},{"weight":0.15,"item":"flowerblue"},{"weight":0.05,"item":"floweryellow"}],"poolRounds":[[0.5,2],[0.4,3],[0.1,4]]}]},
-{"op":"replace","path":"/flowerspringHarvest/0","value":[0,{"pool":[{"weight":0.5,"item":"petalblue"},{"weight":0.3,"item":"flowerspring"},{"weight":0.15,"item":"flowerspring"},{"weight":0.05,"item":"flowerblue"}],"poolRounds":[[0.5,2],[0.4,3],[0.1,4]]}]},
-{"op":"replace","path":"/floweryellowHarvest/0","value":[0,{"pool":[{"weight":0.5,"item":"petalyellow"},{"weight":0.3,"item":"floweryellow"},{"weight":0.15,"item":"floweryellow"},{"weight":0.05,"item":"flowerred"}],"poolRounds":[[0.5,2],[0.4,3],[0.1,4]]}]},
+
+
+{   
+    "op":"replace",
+    "path":"/flowerredHarvest",
+    "value": [ [0, {
+        "fill": [
+            {"item":"petalred"}
+        ],
+        "pool": [
+            {"weight":0.90,"item":"petalred"},
+            {"weight":0.08,"item":"flowerred"},
+            {"weight":0.02,"item":"flowerspring"}],
+        "poolRounds":[[0.5,1],[0.4,2],[0.1,3]]
+        } ] ]
+},
+
+{
+    "op":"replace",
+    "path":"/flowerblueHarvest",
+    "value": [ [0, { 
+        "fill": [
+            {"item":"petalblue"}
+        ],
+        "pool": [ 
+            {"weight":0.90,"item":"petalblue"},
+            {"weight":0.08,"item":"flowerblue"},
+            {"weight":0.02,"item":"floweryellow"}],
+        "poolRounds":[[0.5,1],[0.4,2],[0.1,3]]
+    }] ]
+},
+
+{
+    "op":"replace",
+    "path":"/flowerspringHarvest",
+    "value": [ [0, { 
+        "fill": [
+            {"item":"petalblue"}
+        ],
+        "pool": [ 
+            {"weight":0.90,"item":"petalblue"},
+            {"weight":0.08,"item":"flowerspring"},
+            {"weight":0.02,"item":"flowerblue"}
+            ],
+        "poolRounds":[[0.5,1],[0.4,2],[0.1,3]] 
+    } ] ]
+},
+
+{
+    "op":"replace",
+    "path":"/floweryellowHarvest",
+    "value": [ [0, { 
+        "fill": [
+            {"item":"petalyellow"}
+        ],
+        "pool": [ 
+            {"weight":0.90,"item":"petalyellow"},
+            {"weight":0.08,"item":"floweryellow"},
+            {"weight":0.02,"item":"flowerred"}],
+        "poolRounds":[[0.5,1],[0.4,2],[0.1,3]]
+    } ] ]
+},
 
 
 

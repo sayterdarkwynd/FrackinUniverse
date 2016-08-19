@@ -23,11 +23,11 @@
 
     "parts" : {
       "screen" : {
-	    "properties" : {
-	"zLevel" : 3,
+	"properties" : {
+	"zLevel" : 2,
 	"centered" : false,
 	"fullbright" : true 
-	    },
+	},
         "partStates" : {
           "screen" : {
             "off" : {"properties" : {"image" : "<partImage>:off"}},
@@ -36,7 +36,10 @@
         }
       },
       "fans" : {
-	    "properties" : {"centered" : false},
+	"properties" : {
+	"zLevel" : 3,
+	"centered" : false
+	},
         "partStates" : {
           "fans" : {
             "off" : {"properties" : {"image" : "<partImage>:off"}},
@@ -44,8 +47,11 @@
           }
         }
       },
-	  "base" : {
-	    "properties" : {"centered" : false},
+      "base" : {
+	"properties" : {
+	"zLevel" : 1,
+	"centered" : false
+	},
         "partStates" : {
           "base" : { "base" : {"properties" : {"image" : "<partImage>:base"}}}
 		}
