@@ -5,11 +5,19 @@ function init(args)
         if not self.spawnDelay or not contents then
                 -- A gobal spawn time multiplier:
                 self.spawnDelay = 0.8
-                -- basic spawn variance:
-                self.spawnBeeBrake = 350
-                self.spawnItemBrake = 150
-                self.spawnHoneyBrake = 300
-                self.spawnDroneBrake = 250
+
+				-- original, oddly high values, here for posterity in case they were needed for some strange reason -renbear
+                -- -- basic spawn variance:
+                -- self.spawnBeeBrake = 350
+                -- self.spawnItemBrake = 150
+                -- self.spawnHoneyBrake = 300
+                -- self.spawnDroneBrake = 250
+
+                self.spawnBeeBrake = 200     -- Individual spawn rates
+                self.spawnItemBrake = 125	 --
+                self.spawnHoneyBrake = 150   --
+                self.spawnDroneBrake = 150   --
+
 				-- modifiers for frames, higher means faster production:
 				self.honeyModifier = 0
 				self.itemModifier = 0
@@ -481,7 +489,8 @@ function deciding()
         if self.beePower == -1 then   ---if the apiary doesn't have bees, then stop.
                 return
         end
-		
+		local location = entity.position()
+		world.debugText("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown,{location[1],location[2]-0.5},"orange")
         -- counting down and looking for events like spawning a bee, an item or honey
         -- also applies the effects if something has to spawn (increasing cooldown, slowing things down)
         if self.spawnBeeCooldown <= 0 then

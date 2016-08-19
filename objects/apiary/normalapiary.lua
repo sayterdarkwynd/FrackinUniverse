@@ -3,9 +3,9 @@ local contents
 function init(args)
 		animator.setAnimationState("bees", "off")
         if not self.spawnDelay or not contents then
-                self.spawnDelay = 1.00			 -- A global spawn rate multiplier. Higher is slower.
-                self.spawnBeeBrake = 200      -- Individual spawn rates
-                self.spawnItemBrake = 125	  --
+                self.spawnDelay = 1.00		 -- A global spawn rate multiplier. Higher is slower.
+                self.spawnBeeBrake = 200     -- Individual spawn rates
+                self.spawnItemBrake = 125	 --
                 self.spawnHoneyBrake = 150   --
                 self.spawnDroneBrake = 150   --
 				self.honeyModifier = 0		-- modifiers for frames, higher means faster production
@@ -436,7 +436,8 @@ function deciding()
         if self.beePower == -1 then   ---if the apiary doesn't have bees, then stop.
                 return
         end
-		
+		local location = entity.position()
+		world.debugText("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown,{location[1],location[2]-0.5},"orange")
         -- counting down and looking for events like spawning a bee, an item or honey
         -- also applies the effects if something has to spawn (increasing cooldown, slowing things down)
         if self.spawnBeeCooldown <= 0 then
