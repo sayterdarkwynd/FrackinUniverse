@@ -429,6 +429,10 @@ function flowerCheck()
 		elseif self.beePower >= 60 then
 		self.beePower = 60
 	end
+	local beePowerSay = "FC:bP = " .. self.beePower
+	local location = entity.position()
+	world.debugText(beePowerSay,{location[1],location[2]-0.5},"orange")
+	-- object.say(beePowerSay)
 end
 
 
@@ -438,6 +442,7 @@ function deciding()
         end
 		local location = entity.position()
 		world.debugText("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown,{location[1],location[2]-0.5},"orange")
+		-- object.say("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/ D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown)
         -- counting down and looking for events like spawning a bee, an item or honey
         -- also applies the effects if something has to spawn (increasing cooldown, slowing things down)
         if self.spawnBeeCooldown <= 0 then
@@ -450,7 +455,7 @@ function deciding()
         end
 		
         if self.spawnDroneCooldown <= 0 then
-                self.spawnDroneBrake = self.spawnDroneBrake + 10
+                -- self.spawnDroneBrake = self.spawnDroneBrake + 10
                 self.doDrone = true
                 self.spawnDroneCooldown = ( self.spawnDelay * self.spawnDroneBrake ) - self.droneModifier
         else
@@ -459,7 +464,7 @@ function deciding()
         end
  
         if self.spawnItemCooldown <= 0 then
-                self.spawnItemBrake = self.spawnItemBrake + 10
+                -- self.spawnItemBrake = self.spawnItemBrake + 10
                 self.doItems = true
                 self.spawnItemCooldown = ( self.spawnDelay * self.spawnItemBrake ) - self.itemModifier
         else
@@ -468,7 +473,7 @@ function deciding()
         end
 		
         if self.spawnHoneyCooldown <= 0 then
-                self.spawnHoneyBrake = self.spawnHoneyBrake + 10
+                -- self.spawnHoneyBrake = self.spawnHoneyBrake + 10
                 self.doHoney = true
                 self.spawnHoneyCooldown = ( self.spawnDelay * self.spawnHoneyBrake ) - self.honeyModifier
         else

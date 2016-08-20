@@ -17,7 +17,7 @@ function init(args)
                 self.spawnItemBrake = 125	 --
                 self.spawnHoneyBrake = 150   --
                 self.spawnDroneBrake = 150   --
-
+				-- sb.logInfo("Alveary: reset brakes (init)")
 				-- modifiers for frames, higher means faster production:
 				self.honeyModifier = 0
 				self.itemModifier = 0
@@ -30,6 +30,7 @@ end
  
  
 function reset()   ---When bees are not present, this sets a slightly increased timer for when bees are added again.
+		-- sb.logInfo("Alveary: reset cooldowns and beePower (reset)")
         self.spawnBeeCooldown = self.spawnBeeBrake * 2
         self.spawnItemCooldown = self.spawnItemBrake * 2
         self.spawnHoneyCooldown = self.spawnHoneyBrake * 2
@@ -56,8 +57,8 @@ end
 --- Check the type of frame. Adjust variables. (This large apiary holds 2 frames)		
 	if contents[39] then
 		if contents[39].name == "basicframe" then
-				self.honeyStart = self.honeyStart + 6				---A basic reduction to the number of times the apiary has to reduce a cooldown to spawn honey.
-		end											---A 600 cooldown, with 30 beepower, is now reduced to a 570 cooldown. 30 beepower = 60 reduced per second, or 9.5 seconds, instead of 10.
+				self.honeyStart = self.honeyStart + 6 ---A basic reduction to the number of times the apiary has to reduce a cooldown to spawn honey.
+		end						---A 600 cooldown, with 30 beepower, is now reduced to a 570 cooldown. 30 beepower = 60 reduced per second, or 9.5 seconds, instead of 10.
 		if contents[39].name == "goldenframe" then
 				self.honeyStart = self.honeyStart +  8
 		end
@@ -482,6 +483,10 @@ function flowerCheck()
 		elseif self.beePower >= 60 then
 		self.beePower = 60
 	end
+	local beePowerSay = "FC:bP = " .. self.beePower
+	local location = entity.position()
+	world.debugText(beePowerSay,{location[1],location[2]-0.5},"orange")
+	-- object.say(beePowerSay)
 end
 
 
@@ -491,42 +496,43 @@ function deciding()
         end
 		local location = entity.position()
 		world.debugText("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown,{location[1],location[2]-0.5},"orange")
+		-- object.say("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/ D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown)
         -- counting down and looking for events like spawning a bee, an item or honey
         -- also applies the effects if something has to spawn (increasing cooldown, slowing things down)
         if self.spawnBeeCooldown <= 0 then
-                self.spawnBeeBrake = self.spawnBeeBrake * 2    	---each time a bee is spawned, the next bee takes longer, unless the world reloads. (Reduce Lag)
+                self.spawnBeeBrake = self.spawnBeeBrake * 2   ---each time a bee is spawned, the next bee takes longer, unless the world reloads. (Reduce Lag)
                 self.doBees = true
                 self.spawnBeeCooldown = ( self.spawnBeeBrake * self.spawnDelay ) - self.honeyModifier   ----these self.xModifiers reduce the cooldown by a static amount, only increased by frames.
         else
                 self.doBees = false
-                self.spawnBeeCooldown = self.spawnBeeCooldown - math.ceil( self.beePower )      ---beepower sets how much the cool down reduces each tick.
+                self.spawnBeeCooldown = self.spawnBeeCooldown - self.beePower * 2      ---beepower sets how much the cool down reduces each tick.
         end
 		
         if self.spawnDroneCooldown <= 0 then
-                self.spawnDroneBrake = self.spawnDroneBrake + 20
+                -- self.spawnDroneBrake = self.spawnDroneBrake + 20
                 self.doDrone = true
                 self.spawnDroneCooldown = ( self.spawnDelay * self.spawnDroneBrake ) - self.droneModifier
         else
                 self.doDrone = false
-                self.spawnDroneCooldown = self.spawnDroneCooldown - math.ceil( self.beePower )
+                self.spawnDroneCooldown = self.spawnDroneCooldown - self.beePower * 2
         end
  
         if self.spawnItemCooldown <= 0 then
-                self.spawnItemBrake = self.spawnItemBrake + 20
+                -- self.spawnItemBrake = self.spawnItemBrake + 20
                 self.doItems = true
                 self.spawnItemCooldown = ( self.spawnDelay * self.spawnItemBrake ) - self.itemModifier
         else
                 self.doItems = false
-                self.spawnItemCooldown = self.spawnItemCooldown - self.beePower
+                self.spawnItemCooldown = self.spawnItemCooldown - self.beePower * 2
         end
 		
         if self.spawnHoneyCooldown <= 0 then
-                self.spawnHoneyBrake = self.spawnHoneyBrake + 20
+                -- self.spawnHoneyBrake = self.spawnHoneyBrake + 20
                 self.doHoney = true
                 self.spawnHoneyCooldown = ( self.spawnDelay * self.spawnHoneyBrake ) - self.honeyModifier
         else
                 self.doHoney = false
-                self.spawnHoneyCooldown = self.spawnHoneyCooldown - self.beePower
+                self.spawnHoneyCooldown = self.spawnHoneyCooldown - self.beePower * 2
         end
 end
 
@@ -618,12 +624,11 @@ function update(dt)
 		contents = world.containerItems(entity.id())
 
 		daytimeCheck()
-		flowerCheck()
-		frame()   ---Checks to see if a frame in installed.		
 		
         if not contents[37] or not contents[38] then
                 -- removing bees will reset the timers
                 if self.beePower ~= 0 then
+						-- object.say("No objects, bP=" .. self.beePower)
                         reset()
 						frame()
                         -- log("going noop")
@@ -633,7 +638,9 @@ function update(dt)
 				animator.setAnimationState("bees", "off")
                 return
         end
-		
+
+		frame()   ---Checks to see if a frame in installed.		
+		flowerCheck()
         deciding()
 		
         if not self.doBees and not self.doItems and not self.doHoney and not self.doDrone then
