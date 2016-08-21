@@ -7,6 +7,7 @@ function init(virtual)
 	if storage.fueledticks == nil then storage.fueledticks = 0 end
 	if storage.decayrate == nil then storage.decayrate = 5 end
 	if storage.active == nil then storage.active = true end	
+	if storage.batteryHold == nil then storage.batteryHold = false end
 end
 
 function onInputNodeChange(args)
@@ -19,17 +20,48 @@ function onInputNodeChange(args)
 end
 
 function update(dt)
+
+	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
+	-- sb.logInfo("devices found: %s", devices)
+	local fullBattery = false
+	local spendingPower = false
+	for key,value in pairs(devices) do
+		-- sb.logInfo("Checking device %s", value)
+		if world.callScriptedEntity(value, "isn_isBattery") then
+			local currentBatteryStorage = world.callScriptedEntity(value, "isn_getCurrentPowerStorage")
+			if currentBatteryStorage > 98 then
+				fullBattery = true
+			else
+				if storage.batteryHold and currentBatteryStorage > 90 then
+					fullBattery = true
+				else
+					spendingPower = true
+				end
+			end
+		else
+			if not world.callScriptedEntity(value, "isn_doesNotConsumePower") then
+				spendingPower = true
+			end
+		end
+	end
+	if fullBattery and not spendingPower then
+		storage.batteryHold = true
+		-- sb.logInfo("Battery full and no other consumers connected, shutting down")
+	else
+		storage.batteryHold = false
+	end
+
 	-- check current power production and set the animation state accordingly
-	if storage.currentpowerprod > 90 and storage.active then
+	if storage.currentpowerprod > 90 and storage.active and not storage.batteryHold then
 		animator.setAnimationState("screen", "slow")
         object.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
         object.setSoundEffectEnabled(true)
-	elseif storage.currentpowerprod > 50 and storage.active then
+	elseif storage.currentpowerprod > 50 and storage.active and not storage.batteryHold then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
         object.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
 		object.setSoundEffectEnabled(true)
-	elseif storage.currentpowerprod > 10 and storage.active then
+	elseif storage.currentpowerprod > 10 and storage.active and not storage.batteryHold then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
         object.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
@@ -41,7 +73,7 @@ function update(dt)
         object.setLightColor({0, 0, 0, 0})		
 	end
 
-	if not storage.active then
+	if not storage.active or storage.batteryHold then
 		return
 	end
 
@@ -51,7 +83,7 @@ function update(dt)
 		storage.currentpowerprod = isn_numericRange((storage.currentpowerprod + storage.decayrate),0,100)
 	else -- oh no we've got no fuel
 		-- if the generator isn't active don't bother trying to refuel
-		if storage.active == true then
+		if storage.active then
 			-- try to get some fuel
 			local contents = world.containerItems(entity.id())
 			if contents[1] == nil then
@@ -76,17 +108,20 @@ function update(dt)
 end
 
 function isn_getCurrentPowerOutput(divide)
+
+	if storage.batteryHold or not storage.active then return 0 end
+
 	---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG aka TGCPOD")
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
 	---sb.logInfo("TGCPOD: Divisor is " .. divisor)
 	if divisor < 1 then divisor = 1 end
 	
 	local powercount = 0
-	if storage.currentpowerprod > 90 then powercount = 34
-	elseif storage.currentpowerprod > 70 then powercount = 24
-	elseif storage.currentpowerprod > 50 then powercount = 18
-	elseif storage.currentpowerprod > 30 then powercount = 12
-	elseif storage.currentpowerprod > 10 then powercount = 7
+	if storage.currentpowerprod > 90 then powercount = 40
+	elseif storage.currentpowerprod > 70 then powercount = 32
+	elseif storage.currentpowerprod > 50 then powercount = 24
+	elseif storage.currentpowerprod > 30 then powercount = 18
+	elseif storage.currentpowerprod > 10 then powercount = 9
 	else powercount = 0 end
 	---sb.logInfo("TGCPOD: Powercount is" .. powercount)
 	
