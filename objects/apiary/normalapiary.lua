@@ -1,21 +1,21 @@
 local contents
  
-function init(args)
-		animator.setAnimationState("bees", "off")
-        if not self.spawnDelay or not contents then
-                self.spawnDelay = 1.00		 -- A global spawn rate multiplier. Higher is slower.
-                self.spawnBeeBrake = 200     -- Individual spawn rates
-                self.spawnItemBrake = 125	 --
-                self.spawnHoneyBrake = 150   --
-                self.spawnDroneBrake = 150   --
-				self.honeyModifier = 0		-- modifiers for frames, higher means faster production
-				self.itemModifier = 0		--
-				self.beeModifier = 0		--
-				self.droneModifier = 0		--
-				self.mutationIncrease = 0   --
-                reset()
-        end
-		
+function init(virtual)
+	if virtual == true then return end
+	animator.setAnimationState("bees", "off")
+    if not self.spawnDelay or not contents then
+        self.spawnDelay = config.getParameter("spawnDelay") -- A global spawn rate multiplier. Higher is slower.
+        self.spawnBeeBrake = config.getParameter("spawnBeeBrake") -- Individual spawn rates
+        self.spawnItemBrake = config.getParameter("spawnItemBrake")
+        self.spawnHoneyBrake = config.getParameter("spawnHoneyBrake")
+        self.spawnDroneBrake = config.getParameter("spawnDroneBrake")
+		self.honeyModifier = 0		-- modifiers for frames, higher means faster production
+		self.itemModifier = 0		--
+		self.beeModifier = 0		--
+		self.droneModifier = 0		--
+		self.mutationIncrease = 0   --
+        reset()
+    end
 
 end
  
@@ -360,37 +360,37 @@ function flowerCheck()
 	
 	---FrackinUniverse---
 	if flowerBlack ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerBlack) / 2)
 	end	
 	if flowerBrown ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerBrown) / 2)
 	end	
 	if flowerGreen ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerGreen) / 2)
 	end	
 	if flowerGrey ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerGrey) / 2)
 	end
 	if flowerOrange ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerOrange) / 2)
 	end	
 	if flowerOrchid ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerOrchid) / 2)
 	end
 	if flowerOrchid2 ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerOrchid2) / 2)
 	end
 	if flowerOrchid3 ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerOrchid3) / 2)
 	end
 	if flowerPink ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerPink) / 2)
 	end
 	if flowerPurple ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerPurple) / 2)
 	end
 	if flowerWhite ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerWhite) / 2)
 	end	
 	if FFenergiflower ~= nil then	
 		self.beePower = self.beePower + math.ceil(math.sqrt(#FFenergiflower) / 2)
