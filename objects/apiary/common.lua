@@ -338,7 +338,7 @@ function deciding()
 	end
 
 	local location = entity.position()
-	world.debugText("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown,{location[1],location[2]-0.5},"orange")
+	world.debugText("H:" .. (self.spawnHoneyCooldown or 'nil').. "/I:" .. (self.spawnItemCooldown or 'nil') .. "/D:" .. (self.spawnDroneCooldown or 'nil') .. "/B:" .. (self.spawnBeeCooldown or 'nil'),{location[1],location[2]-0.5},"orange")
 	-- object.say("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/ D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown)
 
 	-- counting down and looking for events like spawning a bee, an item or honey
