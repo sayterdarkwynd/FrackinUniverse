@@ -69,7 +69,32 @@ function isn_isBattery()
 	else return false end
 end
 
+function isn_areActivePowerDevicesConnectedOnOutboundNode(node)
+	if node == nil then return false end
+	local devicelist = isn_getAllDevicesConnectedOnNode(node,"output")
+	if devicelist == nil then return false end
+	for key, value in pairs(devicelist) do
+		if world.callScriptedEntity(value,"isn_canRecievePower") then
+			if not world.callScriptedEntity(value,"isn_doesNotConsumePower") then
+				if world.callScriptedEntity(value,"isn_activeConsumption") then
+					return true
+				end
+			end
+		end
+	end
+	return false
+end
+
 function isn_activeConsumption()
+	if config.getParameter("isn_powerPassthrough") then
+		local nodecount = object.outputNodeCount()
+		local iterator = 0
+		while iterator < nodecount do
+			if isn_areActivePowerDevicesConnectedOnOutboundNode(iterator) then return true end
+			iterator = iterator + 1
+		end
+		return false
+	end
 	return storage.activeConsumption == nil or storage.activeConsumption		-- shim in place for uncorrected stations
 end
 

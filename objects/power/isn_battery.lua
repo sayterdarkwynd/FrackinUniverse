@@ -32,12 +32,12 @@ function isn_getCurrentPowerStorage()
 end
 
 function isn_getCurrentPowerOutput(divide)
-	if not storage.active then return 0 end
+	if not storage.active then return 0 end  -- This might be pointless. Need to think about it. -r
 	if storage.currentstoredpower <= 0 then return 0 end
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
 	
-	if divisor < 1 then return 0 end
-	if divide then return storage.voltage / divisor
+	-- if divisor < 1 then return 0 end
+	if divide and divisor > 0 then return storage.voltage / divisor
 	else return storage.voltage end
 end
 
