@@ -86,7 +86,7 @@ function isn_areActivePowerDevicesConnectedOnOutboundNode(node)
 end
 
 function isn_activeConsumption()
-	if config.getParameter("isn_powerPassthrough") then
+	if config.getParameter("isn_powerPassthrough") then -- It's a conduit (or similar device), better check what downstream says -r
 		local nodecount = object.outputNodeCount()
 		local iterator = 0
 		while iterator < nodecount do

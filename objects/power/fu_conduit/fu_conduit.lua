@@ -15,10 +15,11 @@ function isn_getCurrentPowerOutput(divide)
 end
 
 function onNodeConnectionChange()
-	if isn_checkValidOutput() then object.setOutputNodeLevel(0, true)
+	if isn_checkValidOutput() and storage.active then object.setOutputNodeLevel(0, true)
 	else object.setOutputNodeLevel(0, false) end
 end
 
 function onInputNodeChange(args)
-	storage.active = object.isInputNodeConnected(0) and object.getInputNodeLevel(0)
+	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
+	animator.setAnimationState("switchState",(storage.active and "on") or "off")
 end
