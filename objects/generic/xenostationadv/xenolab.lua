@@ -1,4 +1,5 @@
 local recipes = {
+{inputs = { mushroomseed=1 }, outputs = { gene_regen=1 }, time = 1.2},
 {inputs = { kirifruitseed=1 }, outputs = { gene_energy=1 }, time = 1.2},
 {inputs = { nakatiseed=1 }, outputs = { gene_defense=1 }, time = 1.2},
 {inputs = { piruseed=1 }, outputs = { gene_agility=1 }, time = 1.2},
