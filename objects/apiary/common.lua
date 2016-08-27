@@ -1,27 +1,32 @@
 local contents
 
-function apiary_init(queen, drone, ...) -- Returns true if it sets default values
+function init(virtual)
 	if virtual == true then return end
 
 	animator.setAnimationState("bees", "off")
-	self.queenSlot = queen
-	self.droneSlot = drone
-	self.frameSlots = { ... }
 
 	if not self.spawnDelay or not contents then
+		self.queenSlot = config.getParameter ("queenSlot")				-- Apiary inventory slot number (indexed from 1)
+		self.droneSlot = config.getParameter ("droneSlot")				--
+		self.frameSlots = config.getParameter ("frameSlots")			--
+
 		self.spawnDelay = config.getParameter("spawnDelay")				-- A global spawn rate multiplier. Higher is slower.
 		self.spawnBeeBrake = config.getParameter("spawnBeeBrake")   	-- Individual spawn rates. Set to nil if none to be spawned.
 		self.spawnItemBrake = config.getParameter("spawnItemBrake")		--
 		self.spawnHoneyBrake = config.getParameter("spawnHoneyBrake")	--
 		self.spawnDroneBrake = config.getParameter("spawnDroneBrake")	--
+		self.limitDroneCount = config.getParameter("limitDroneCount")	-- whether to limit the number of drones
+
+		self.beeStingChance = config.getParameter("beeStingChance")		-- chance of being stung by the aggressive varieties
+		self.beeStingOffset = config.getParameter("beeStingOffset")		-- spawn offset of the sting object (0,0 if not set)
+
+		self.beePowerScaling = config.getParameter("beePowerScaling")	-- scaling factor for cooldown modification in deciding()
+
 		self.honeyModifier = 0		-- modifiers for frames, higher means faster production
 		self.itemModifier = 0		--
 		self.droneModifier = 0		--
 		self.mutationIncrease = 0   --
-		self.beeStingChance = 0.2	-- chance of being stung by the aggressive varieties
-		--self.beeStingOffset = {x, y} -- spawn offset of the sting object (0,0 if not set)
-		self.limitDroneCount = true	-- whether to limit the number of drones
-		self.beePowerScaling = 1	-- scaling factor for cooldown modification in deciding()
+
 		reset()
 		return true
 	end
