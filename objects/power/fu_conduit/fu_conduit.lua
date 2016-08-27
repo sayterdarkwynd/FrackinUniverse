@@ -4,7 +4,7 @@ function init(virtual)
 end
 
 function update(dt)
-
+	checkOutputsSetLevels()
 end
 
 function isn_getCurrentPowerOutput(divide)
@@ -14,12 +14,17 @@ function isn_getCurrentPowerOutput(divide)
 	else return voltage end
 end
 
-function onNodeConnectionChange()
+function checkOutputsSetLevels()
+	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
+	animator.setAnimationState("switchState",(storage.active and "on") or "off")
 	if isn_checkValidOutput() and storage.active then object.setOutputNodeLevel(0, true)
 	else object.setOutputNodeLevel(0, false) end
 end
 
+function onNodeConnectionChange()
+	checkOutputsSetLevels()
+end
+
 function onInputNodeChange(args)
-	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
-	animator.setAnimationState("switchState",(storage.active and "on") or "off")
+	checkOutputsSetLevels()
 end
