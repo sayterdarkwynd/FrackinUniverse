@@ -1,24 +1,27 @@
 local contents
 
 function apiary_init(queen, drone, ...) -- Returns true if it sets default values
+	if virtual == true then return end
+
 	animator.setAnimationState("bees", "off")
 	self.queenSlot = queen
 	self.droneSlot = drone
 	self.frameSlots = { ... }
 
 	if not self.spawnDelay or not contents then
-		self.spawnDelay = 1.00		-- A global spawn rate multiplier. Higher is slower.
-		self.spawnBeeBrake = 200    -- Individual spawn rates. Set to nil if none to be spawned.
-		self.spawnItemBrake = 125	--
-		self.spawnHoneyBrake = 150  --
-		self.spawnDroneBrake = 150  --
+		self.spawnDelay = config.getParameter("spawnDelay")				-- A global spawn rate multiplier. Higher is slower.
+		self.spawnBeeBrake = config.getParameter("spawnBeeBrake")   	-- Individual spawn rates. Set to nil if none to be spawned.
+		self.spawnItemBrake = config.getParameter("spawnItemBrake")		--
+		self.spawnHoneyBrake = config.getParameter("spawnHoneyBrake")	--
+		self.spawnDroneBrake = config.getParameter("spawnDroneBrake")	--
 		self.honeyModifier = 0		-- modifiers for frames, higher means faster production
 		self.itemModifier = 0		--
 		self.droneModifier = 0		--
 		self.mutationIncrease = 0   --
-		self.beeStingChance = 0.2   -- chance of being stung by the aggressive varieties
+		self.beeStingChance = 0.2	-- chance of being stung by the aggressive varieties
 		--self.beeStingOffset = {x, y} -- spawn offset of the sting object (0,0 if not set)
-		self.limitDroneCount = true -- whether to limit the number of drones
+		self.limitDroneCount = true	-- whether to limit the number of drones
+		self.beePowerScaling = 1	-- scaling factor for cooldown modification in deciding()
 		reset()
 		return true
 	end
@@ -70,6 +73,7 @@ function apiary_doFrame(mods, item)
 	if item then
 		name = item.name
 		-- Production quantity modifier frames
+		-- Large apiary and scented apiary used 6, 8, 0.02. 0.05 instead of 15, 25, 0.04, 0.08.
 		if     name == "basicframe" then
 			mods.honeyModifier = (mods.honeyModifier or 0) + 15
 		elseif name == "sweetframe" then
@@ -316,7 +320,10 @@ function flowerCheck()
 		self.beePower = 60
 	end
 
---	sb.logInfo ('apiary ' .. entity.id() .. ': bee power ' .. self.beePower)
+	local beePowerSay = "FC:bP = " .. self.beePower
+	local location = entity.position()
+	world.debugText(beePowerSay,{location[1],location[2]-0.5},"orange")
+	-- object.say(beePowerSay)
 end
 
 
@@ -324,6 +331,10 @@ function deciding()
 	if self.beePower < 0 then   ---if the apiary doesn't have bees, then stop.
 		return
 	end
+
+	local location = entity.position()
+	world.debugText("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown,{location[1],location[2]-0.5},"orange")
+	-- object.say("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/ D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown)
 
 	-- counting down and looking for events like spawning a bee, an item or honey
 	-- also applies the effects if something has to spawn (increasing cooldown, slowing things down)
@@ -338,43 +349,43 @@ function deciding()
 			self.spawnBeeCooldown = ( self.spawnBeeBrake * self.spawnDelay ) - self.honeyModifier   ----these self.xModifiers reduce the cooldown by a static amount, only increased by frames.
 		else
 			self.doBees = false
-			self.spawnBeeCooldown = self.spawnBeeCooldown - math.ceil( self.beePower )      ---beepower sets how much the cool down reduces each tick.
+			self.spawnBeeCooldown = self.spawnBeeCooldown - self.beePower * self.beePowerScaling      ---beepower sets how much the cool down reduces each tick.
 		end
 	end
 
 	if self.spawnDroneBrake then
 		if self.spawnDroneCooldown <= 0 then
-			self.spawnDroneBrake = self.spawnDroneBrake + 10
+			-- self.spawnDroneBrake = self.spawnDroneBrake + 10
 			self.doDrone = true
 --			sb.logInfo('Chance of spawning a drone')
 			self.spawnDroneCooldown = ( self.spawnDelay * self.spawnDroneBrake ) - self.droneModifier
 		else
 			self.doDrone = false
-			self.spawnDroneCooldown = self.spawnDroneCooldown - math.ceil( self.beePower )
+			self.spawnDroneCooldown = self.spawnDroneCooldown - self.beePower * self.beePowerScaling
 		end
 	end
 
 	if self.spawnItemBrake then
 		if self.spawnItemCooldown <= 0 then
-			self.spawnItemBrake = self.spawnItemBrake + 10
+			-- self.spawnItemBrake = self.spawnItemBrake + 10
 			self.doItems = true
 --			sb.logInfo('Chance of spawning an item')
 			self.spawnItemCooldown = ( self.spawnDelay * self.spawnItemBrake ) - self.itemModifier
 		else
 			self.doItems = false
-			self.spawnItemCooldown = self.spawnItemCooldown - self.beePower
+			self.spawnItemCooldown = self.spawnItemCooldown - self.beePower * self.beePowerScaling
 		end
 	end
 
 	if self.spawnHoneyBrake then
 		if self.spawnHoneyCooldown <= 0 then
-			self.spawnHoneyBrake = self.spawnHoneyBrake + 10
+			-- self.spawnHoneyBrake = self.spawnHoneyBrake + 10
 			self.doHoney = true
 --			sb.logInfo('Chance of spawning honey')
 			self.spawnHoneyCooldown = ( self.spawnDelay * self.spawnHoneyBrake ) - self.honeyModifier
 		else
 			self.doHoney = false
-			self.spawnHoneyCooldown = self.spawnHoneyCooldown - self.beePower
+			self.spawnHoneyCooldown = self.spawnHoneyCooldown - self.beePower * self.beePowerScaling
 		end
 	end
 end
@@ -439,7 +450,6 @@ end
 function update(dt)
 	contents = world.containerItems(entity.id())
 	daytimeCheck()
-	flowerCheck()
 
 	if not contents[self.queenSlot] or not contents[self.droneSlot] then
 		-- removing bees will reset the timers
@@ -451,7 +461,8 @@ function update(dt)
 		end
 	end
 
-	frame()
+	frame()   ---Checks to see if a frame in installed.
+	flowerCheck()
 	deciding()
 
 	if not self.doBees and not self.doItems and not self.doHoney and not self.doDrone then
