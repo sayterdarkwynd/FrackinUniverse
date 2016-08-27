@@ -11,13 +11,13 @@ function isn_getCurrentPowerInput(divide)
 	
 	while iterator < nodecount do
 		-- sb.logInfo("PID: Iteration " .. iterator)
-		if object.getInputNodeLevel(iterator) == true then
+		if object.getInputNodeLevel(iterator) then
 			connectedDevices = isn_getAllDevicesConnectedOnNode(iterator,"input")
 			for key, value in pairs (connectedDevices) do
 				-- sb.logInfo("PID: key is " .. key)
 				-- sb.logInfo("PID: value is " .. value)
 				-- sb.logInfo("PID: value ID check resolves to " .. world.entityName(value))
-				if world.callScriptedEntity(value,"isn_canSupplyPower") == true then
+				if world.callScriptedEntity(value,"isn_canSupplyPower") then
 					output = world.callScriptedEntity(value,"isn_getCurrentPowerOutput",divide)
 					-- sb.logInfo("PID: Power supplier detected with output of " .. output)
 					if output ~= nil then totalInput = totalInput + output end
@@ -49,17 +49,17 @@ function isn_requiredPowerValue()
 end
 
 function isn_canSupplyPower()
-	if config.getParameter("isn_powerSupplier") == true then return true
+	if config.getParameter("isn_powerSupplier") then return true
 	else return false end
 end
 
 function isn_canRecievePower()
-	if config.getParameter("isn_powerReciever") == true then return true
+	if config.getParameter("isn_powerReciever") then return true
 	else return false end
 end
 
 function isn_doesNotConsumePower()
-	if config.getParameter("isn_freePower") == true then return true
+	if config.getParameter("isn_freePower") then return true
 	else return false end
 end
 
@@ -69,7 +69,32 @@ function isn_isBattery()
 	else return false end
 end
 
+function isn_areActivePowerDevicesConnectedOnOutboundNode(node)
+	if node == nil then return false end
+	local devicelist = isn_getAllDevicesConnectedOnNode(node,"output")
+	if devicelist == nil then return false end
+	for key, value in pairs(devicelist) do
+		if world.callScriptedEntity(value,"isn_canRecievePower") then
+			if not world.callScriptedEntity(value,"isn_doesNotConsumePower") then
+				if world.callScriptedEntity(value,"isn_activeConsumption") then
+					return true
+				end
+			end
+		end
+	end
+	return false
+end
+
 function isn_activeConsumption()
+	if config.getParameter("isn_powerPassthrough") then -- It's a conduit (or similar device), better check what downstream says -r
+		local nodecount = object.outputNodeCount()
+		local iterator = 0
+		while iterator < nodecount do
+			if isn_areActivePowerDevicesConnectedOnOutboundNode(iterator) then return true end
+			iterator = iterator + 1
+		end
+		return false
+	end
 	return storage.activeConsumption == nil or storage.activeConsumption		-- shim in place for uncorrected stations
 end
 
@@ -77,7 +102,7 @@ function isn_checkValidOutput()
 	local connectedDevices = isn_getAllDevicesConnectedOnNode(0,"output")
 	if connectedDevices == nil then return false end
 	for key, value in pairs(connectedDevices) do
-		if world.callScriptedEntity(value,"isn_canRecievePower") == false then return false end
+		if not world.callScriptedEntity(value,"isn_canRecievePower") then return false end
 	end
 	return true
 end
@@ -98,8 +123,8 @@ function isn_countPowerDevicesConnectedOnOutboundNode(node)
 		---else
 			---sb.logInfo("PDCDB: value resolves to " .. devicecheck)
 		---end
-		if world.callScriptedEntity(value,"isn_canRecievePower") == true then
-			if world.callScriptedEntity(value,"isn_doesNotConsumePower") == false then
+		if world.callScriptedEntity(value,"isn_canRecievePower") then
+			if not world.callScriptedEntity(value,"isn_doesNotConsumePower") then
 				---sb.logInfo("PDCDB: power-consuming device detected and added to count")
 				devicecount = devicecount + 1
 			end
@@ -115,9 +140,9 @@ function isn_sumPowerActiveDevicesConnectedOnOutboundNode(node)
 	local devicelist = isn_getAllDevicesConnectedOnNode(node,"output")
 	if devicelist == nil then return 0 end
 	for key, value in pairs(devicelist) do
-		if world.callScriptedEntity(value,"isn_canRecievePower") == true then
-			if world.callScriptedEntity(value,"isn_doesNotConsumePower") == false then
-				if world.callScriptedEntity(value,"isn_activeConsumption") == true then
+		if world.callScriptedEntity(value,"isn_canRecievePower") then
+			if not world.callScriptedEntity(value,"isn_doesNotConsumePower") then
+				if world.callScriptedEntity(value,"isn_activeConsumption") then
 					voltagecount = voltagecount + world.callScriptedEntity(value,"isn_requiredPowerValue")
 					-- sb.logInfo("Found a consumer, " .. value .. ", total increased to " .. voltagecount)
 				end
