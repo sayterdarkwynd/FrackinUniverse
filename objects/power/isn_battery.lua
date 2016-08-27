@@ -47,5 +47,5 @@ function onNodeConnectionChange()
 end
 
 function onInputNodeChange(args)
-	storage.active = (object.isInputNodeConnected(0) or object.isInputNodeConnected(1)) and (object.getInputNodeLevel(0) or object.getInputNodeLevel(1))
+	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
 end
