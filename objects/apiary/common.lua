@@ -54,7 +54,7 @@ function frame()
 		daytime = mods.forceTime > 0
 	end
 
-	combs = mods.combs
+	self.combs = mods.combs
 --[[
 	sb.logInfo ('apiary ' .. entity.id() .. ': drone ' .. self.droneModifier .. ', honey ' .. self.honeyModifier .. ', item ' .. self.itemModifier .. ', muta ' .. self.mutationIncrease)
 	for key, slot in ipairs(self.frameSlots) fo
@@ -97,21 +97,21 @@ function apiary_doFrame(mods, item)
 			mods.forceTime = (mods.forceTime or 0) - 1 -- -ve to force night
 		-- Miner bees' modifiers
 		elseif name == "copperframe" then
-			mods.combs.copper = true
+			mods.combs.copper = (mods.combs.copper or 0) + 1
 		elseif name == "silverframe" then
-			mods.combs.silver = true
+			mods.combs.silver = (mods.combs.silver or 0) + 1
 		elseif name == "goldframe" then
-			mods.combs.gold = true
+			mods.combs.gold = (mods.combs.gold or 0) + 1
 		elseif name == "diamondframe" then
-			mods.combs.precious = true
+			mods.combs.precious = (mods.combs.precious or 0) + 1
 		elseif name == "ironframe" then
-			mods.combs.iron = true
+			mods.combs.iron = (mods.combs.iron or 0) + 1
 		elseif name == "titaniumframe" then
-			mods.combs.titanium = true
+			mods.combs.titanium = (mods.combs.titanium or 0) + 1
 		elseif name == "tungstenframe" then -- used to work only in large apiary. Enabled everywhere as per description.
-			mods.combs.tungsten = true
+			mods.combs.tungsten = (mods.combs.tungsten or 0) + 1
 --		elseif name == "durasteelframe" then -- used to work in large or scented apiaries. Disabled everywhere as per description.
---			mods.combs.durasteel = true
+--			mods.combs.durasteel = (mods.combs.durasteel or 0) + 1
 		elseif name == "amite" then
 			mods.antimite = true
 --		else return -- DEBUG avoidance
@@ -475,33 +475,36 @@ function update(dt)
 end
 
 
-function spawnMinerSpecials()
-	-- No point in having two identical miner-affecting frames
-	-- FIXME: is this order required? Randomisation? If two frames are present, deal with one early?
-	if combs.copper == true then
-		trySpawnHoney(1, "copper")
+function spawnMinerSpecialOre()
+	-- Pick a type at random from those found and spawn it.
+	local types = {}
+	for frame, count in pairs(self.combs) do
+		if count > 0 then table.insert(types, frame) end
 	end
-	if combs.silver == true then
-		trySpawnHoney(1, "silver")
+	if #types > 0 then trySpawnHoney(1, types[math.random(#types)]) end
+end
+
+
+function spawnMinerSpecialsEarly()
+	if self.doHoney then
+		-- Do we have more than one frame slot containing miner-affecting frames?
+		-- If so, (n-1)/(n+2) probability of spawning early.
+		-- For two frames, this works out at 0.25 (25%), reducing the effective chance of Deep Earth Comb to 40% (given the default 60%) and the late chance of a metal ore comb to 35%.
+		-- Effectively, a 60% chance of a metal ore and, within that, an equal chance for each type for which a frame is present.
+		local minerFrames = 0
+		for frame, count in pairs(self.combs) do
+			minerFrames = minerFrames + count
+		end
+		if minerFrames > 1 and math.random() <= (minerFrames - 1) / (minerFrames + 2) then
+			spawnMinerSpecialOre()
+		end
 	end
-	if combs.gold == true then
-		trySpawnHoney(1, "gold")
-	end
-	if combs.precious == true then
-		trySpawnHoney(1, "precious")
-	end
-	if combs.iron == true then
-		trySpawnHoney(1, "iron")
-	end
-	if combs.titanium == true then
-		trySpawnHoney(1, "titanium")
-	end
-	if combs.tungsten == true then
-		trySpawnHoney(1, "tungsten")
-	end
---	if combs.durasteel == true then
---		trySpawnHoney(1, "durasteel")
---	end
+end
+
+
+function spawnMinerSpecialsLate()
+	if self.doHoney then spawnMinerSpecialOre() end
+
 	if self.mutationIncrease > 0 then
 		trySpawnMutantBee  (0.16, "radioactive")
 		trySpawnMutantDrone(0.12, "radioactive")
@@ -518,7 +521,8 @@ function workingBees()
 			honeyChance = CHANCE
 			beeDroneChance = CHANCE (type is always same as the class)
 			items = { ITEM = CHANCE, ... }
-			special = function for special spawns; takes no parameters
+			specialPre = function for special spawns, called before standard spawns
+			specialPost = function for special spawns, called after standard spawns
 			sting = true if this class is aggressive
 		}
 
@@ -529,7 +533,8 @@ function workingBees()
 			honeyChance = 0.6,
 			beeDroneChance = 0.4,
 			items = {}
-			special = nil,
+			specialPre = nil,
+			specialPost = nil,
 			sting = false
 		}
 --]]
@@ -558,7 +563,7 @@ function workingBees()
 			items = { tungstenore = 1 / 3 },	-- FIXME: tungsten ore production worked in large and scented apiaries for miners with tungsten frame
 			sting = true
 		},
-		miner = { special = spawnMinerSpecials },
+		miner = { specialPre = spawnMinerSpecialsEarly, specialPost = spawnMinerSpecialsLate },
 		morbid = {
 			items = { ghostlywax = 0.6 },
 			sting = true
@@ -589,6 +594,8 @@ function workingBees()
 		if when ~= notnow then -- strictly, when == 'always' or == now
 			beeActiveWhen = when
 
+			if config.specialPre then config.specialPre(false) end
+
 			local honeyType      = config.honeyType      or queen
 			local honeyChance    = config.honeyChance    or 0.6
 			local beeDroneChance = config.beeDroneChance or 0.4
@@ -603,7 +610,7 @@ function workingBees()
 				end
 			end
 
-			if config.special then config.special() end
+			if config.specialPost then config.specialPost(true) end
 
 			expelQueens(queen)  -- bitches this be MY house. (Kicks all queens but 1 out of the apiary)
 		end
