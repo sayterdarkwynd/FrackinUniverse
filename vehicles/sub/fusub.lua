@@ -275,6 +275,7 @@ function updateDriving()
 			animator.playSound("headlightSwitchOff")
 			animator.setLightActive("headlightBeam",false)
 			animator.setLightActive("rearlightBeam",false)
+			animator.setLightActive("bottomBeam",false)
 			self.HeadlightsOn = false;
 		else
 			animator.setSoundVolume("headlightSwitchOn",self.waterFactor,1.5)
@@ -282,6 +283,7 @@ function updateDriving()
 			self.HeadlightsOn = true;
 			animator.setLightActive("headlightBeam",true)
 			animator.setLightActive("rearlightBeam",true)
+			animator.setLightActive("bottomBeam",true)
 			end
 		self.headlightCanToggle = false
     end
@@ -647,6 +649,7 @@ end
 function toggleLights(state)
   animator.setLightActive("headlightBeam",state)
   animator.setLightActive("rearlightBeam",state)
+  animator.setLightActive("bottomBeam",state)
 end
 
 function drawDebugInfo(animState,waterFactor)
