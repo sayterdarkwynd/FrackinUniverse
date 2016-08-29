@@ -45,7 +45,12 @@ function isn_hasRequiredPower()
 end
 
 function isn_requiredPowerValue()
-	return config.getParameter("isn_requiredPower")
+	if config.getParameter("isn_powerPassthrough") then
+		-- It's a conduit, or a similar device. Check what downstream says.
+		return isn_sumPowerActiveDevicesConnectedOnOutboundNode(0)
+	else
+		return config.getParameter("isn_requiredPower")
+	end
 end
 
 function isn_canSupplyPower()
