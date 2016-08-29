@@ -9,7 +9,7 @@ end
 
 function update(dt)
 	local powerlevel = isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
-	if powerlevel ~= 0 then powerlevel = powerlevel / 10 end			-- why a separate statement?
+	if powerlevel ~= 0 then powerlevel = powerlevel / 10 end	-- Q:Why a separate statement? A:if function returns nil, /10 will error. -r
 	powerlevel = isn_numericRange(powerlevel,0,10)
 	animator.setAnimationState("meter", tostring(math.floor(powerlevel)))
 	
@@ -32,25 +32,20 @@ function isn_getCurrentPowerStorage()
 end
 
 function isn_getCurrentPowerOutput(divide)
-	if storage.active == false then return 0 end
+	if not storage.active then return 0 end  -- This might be pointless. Need to think about it. -r
 	if storage.currentstoredpower <= 0 then return 0 end
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
 	
-	if divisor < 1 then return 0 end
-	if divide == true then return storage.voltage / divisor
+	-- if divisor < 1 then return 0 end
+	if divide and divisor > 0 then return storage.voltage / divisor
 	else return storage.voltage end
 end
 
 function onNodeConnectionChange()
-	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
+	if isn_checkValidOutput() then object.setOutputNodeLevel(0, true)
 	else object.setOutputNodeLevel(0, false) end
 end
 
 function onInputNodeChange(args)
-	if object.isInputNodeConnected(1) then
-		if object.getInputNodeLevel(1) == true then storage.active = true
-		else storage.active = false
-		end
-	else storage.active = true
-	end
+	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
 end

@@ -1,0 +1,112 @@
+{
+  "itemName" : "stabfists",
+  "price" : 1000,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Strap these blades to your hands. Fun ensues",
+  "shortdescription" : "Iron Blade",
+  "tooltipKind" : "fistweapon",
+  "category" : "fistWeapon",
+  "twoHanded" : false,
+  "itemTags" : ["weapon"],
+
+  "inventoryIcon" : "stabfists.png:front",
+  "animation" : "fistweapon.animation",
+  "animationParts" : {
+    "weapon" : "stabfists.png",
+    "swoosh" : "swoosh/clawswoosh.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
+      "damageArea" : [[-1, -1.1], [2.1, -0.6], [2.1, 0.8], [-1, 1.3]]
+    }}}}}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : [ "fistweapon.lua" ],
+
+  "needsEdgeTrigger" : true,
+  "edgeTriggerGrace" : 0.1,
+
+  "comboSteps" : 3,
+  "comboTiming" : [0.24, 0.45],
+  "comboCooldown" : 0.3,
+  "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/uppercut.combofinisher",
+
+  "freezeLimit" : 2,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/fist/punch.lua"],
+    "class" : "Punch",
+
+    "freezeTime" : 0.12,
+    "fireTime" : 0.5,
+    "baseDps" : 4.0,
+    "damageConfig" : {
+      "statusEffects" : [ ],
+      "damageSourceKind" : "dagger",
+      "knockback" : [0, 15],
+      "timeoutGroup" : "primary",
+      "timeout" : 0.1
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 45,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.25, -0.575],
+
+        "allowRotate" : false,
+        "allowFlip" : true,
+
+        "frontArmFrame" : "run.2",
+        "backArmFrame" : "jump.3"
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.625, -0.125],
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "swimIdle.1",
+        "backArmFrame" : "swim.1"
+      },
+      "windup2" : {
+        "duration" : 0.05,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.75, -0.125],
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "swimIdle.1",
+        "backArmFrame" : "swim.1",
+
+        "recoil" : true
+      },
+      "fire" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [0.125, -0.25],
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "rotation",
+        "backArmFrame" : "rotation"
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildfist.lua"
+}

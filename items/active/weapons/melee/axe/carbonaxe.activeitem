@@ -1,0 +1,71 @@
+{
+  "itemName" : "carbonaxe",
+  "price" : 640,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Sturdy, and ideal for survivalists.",
+  "shortdescription" : "Carbon Axe",
+  "tooltipKind" : "sword",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe"],
+
+  "inventoryIcon" : "carbonaxe.png",
+
+  "animation" : "axe.animation",
+  "animationParts" : {
+    "blade" : "carbonaxe.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-1.0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.62,
+    "baseDps" : 10,
+    "damageConfig" : {
+      "damageSourceKind" : "axe",
+      "knockback" : 12
+    },
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0.25, 1.5]
+      },
+      "windup" : {
+        "duration" : 0.7,
+        "weaponOffset" : [0.25, 1.5],
+
+        "minWindup" : 0.6,
+
+        "weaponAngle" : [
+          [0.7, "linear", -20, 0],
+          [0.85, "linear", 0, 50],
+          [0.925, "sin", 50, 45],
+          [1.0, "cos", 50, 45]
+        ],
+
+        "armAngle" : [
+          [1.0, "sin", -90, 50]
+        ]
+      },
+      "fire" : {
+        "weaponOffset" : [0.25, 1.5]
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,45 @@
+{
+  "objectName" : "fu_conduit",
+  "colonyTags" : ["science"],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "Transmits power. Use with care. You may need ^cyan;Watchers^reset; to keep distant stations running.",
+  "shortdescription" : "Wire Relay",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "inventoryIcon" : "fu_conduit.png:default.1",
+  "orientations" : [
+    {
+      "image" : "fu_conduit.png:<color>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/power/fu_conduit/fu_conduit.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 15,
+
+  "animation" : "/objects/power/fu_conduit/fu_conduit.animation",
+
+  "animationParts" : {
+    "switch" : "fu_conduit.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [-1, -1], [-1, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "isn_powerSupplier" : true,
+  "isn_powerReciever" : true,
+  "isn_powerPassthrough" : true
+
+}
