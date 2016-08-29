@@ -620,8 +620,8 @@ function workingBees()
 			trySpawnBee  (beeDroneChance, queen)
 			trySpawnDrone(beeDroneChance, queen)
 
-			if config.items then
-				for item, chance in ipairs(config.items) do
+			if config.items and self.doItems then
+				for item, chance in pairs(config.items) do
 					trySpawnItems(chance, item)
 				end
 			end
