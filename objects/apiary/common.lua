@@ -86,6 +86,7 @@ function apiary_doFrame(mods, item)
 		elseif name == "provenframe" then
 			mods.itemModifier = (mods.itemModifier or 0) + 15
 		elseif name == "durasteelframe" then
+			-- this probably needs to be on a new frame type
 			mods.itemModifier = (mods.itemModifier or 0) + 25
 		elseif name == "scentedframe" then
 			mods.droneModifier = (mods.droneModifier or 0) + 15
@@ -104,8 +105,9 @@ function apiary_doFrame(mods, item)
 			mods.forceTime = (mods.forceTime or 0) + 1 -- +ve to force day
 		elseif name == "eclipseframe" then
 			mods.forceTime = (mods.forceTime or 0) - 1 -- -ve to force night
+		end
 		-- Miner bees' modifiers
-		elseif name == "copperframe" then
+		if     name == "copperframe" then
 			mods.combs.copper = (mods.combs.copper or 0) + 1
 		elseif name == "silverframe" then
 			mods.combs.silver = (mods.combs.silver or 0) + 1
@@ -119,8 +121,8 @@ function apiary_doFrame(mods, item)
 			mods.combs.titanium = (mods.combs.titanium or 0) + 1
 		elseif name == "tungstenframe" then -- used to work only in large apiary. Enabled everywhere as per description.
 			mods.combs.tungsten = (mods.combs.tungsten or 0) + 1
---		elseif name == "durasteelframe" then -- used to work in large or scented apiaries. Disabled everywhere as per description.
---			mods.combs.durasteel = (mods.combs.durasteel or 0) + 1
+		elseif name == "durasteelframe" then -- used to work in large or scented apiaries. Enabled everywhere.
+			mods.combs.durasteel = (mods.combs.durasteel or 0) + 1
 		elseif name == "amite" then
 			mods.antimite = true
 --		else return -- DEBUG avoidance
