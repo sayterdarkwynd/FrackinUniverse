@@ -36,7 +36,7 @@ function isn_getCurrentPowerOutput(divide)
 	generated = generated * genmult
 	generated = math.min(generated,2)
 
-	local summationForDebug = "P " .. generated .. " L " .. math.floor(light * 100)/100
+	local summationForDebug = string.format("P %.2f L %.2f", generated, light)
 	world.debugText(summationForDebug,{location[1]-(string.len(summationForDebug)*0.25),location[2]-3.5},"cyan")
 	
 	if generated >= 2 then animator.setAnimationState("meter", "4")
