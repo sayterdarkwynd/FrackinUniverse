@@ -6,7 +6,7 @@ function init(virtual)
 	storage.currentpowerprod = storage.currentpowerprod or 0
 	storage.fueledticks = storage.fueledticks or 0
 	storage.decayrate = storage.decayrate or 5
-	storage.active = storage.active or true
+	if storage.active == nil then storage.active = true end
 end
 
 function onInputNodeChange(args)
