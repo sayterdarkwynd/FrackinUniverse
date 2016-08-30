@@ -1748,7 +1748,7 @@
         }
       }
    },
-   
+
     {"op" : "add", 
     "path" : "/planetTypes/lightless",
     "value" : 
@@ -5315,6 +5315,7 @@
     }
   },  
   
+  
   {"op" : "add", 
   "path" : "/regionTypes/irradiatedunderground",
   "value" : 
@@ -5679,7 +5680,7 @@
       ]
     }
   },
-  
+
   {"op" : "add", 
   "path" : "/regionTypes/protocore",
   "value" : 
@@ -5746,5 +5747,86 @@
         [0, [ "obsidiancorelayer"] ]
       ]
     }
+  },
+  
+  
+    {"op" : "add", 
+    "path" : "/planetTypes/fugasgiant",
+    "value" : 
+      {
+      "threatRange" : [5, 7],
+      "layers" : {
+        "surface" : {
+          "primaryRegion" : [ "fugasgiant" ],
+          "secondaryRegions" : [ ],
+          "dungeons" : [ ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "fugasgiantunderground" ]
+        },
+         "underground1" : {
+          "primaryRegion" : [ "fugasgiantunderground" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground2" : {
+         "primaryRegion" : [ "fugasgiantunderground" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground3" : {
+         "primaryRegion" : [ "fugasgiantunderground" ],
+          "secondaryRegions" : [  ]
+          },
+        "core" : {
+          "primaryRegion" : [ "gasgiantcorelayer" ]
+        } 
+        }
+      }
+   },
+
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiant",
+  "value" : 
+  {
+      "oceanLiquid" : [ "helium3gas", "shadowgas" ],
+      "oceanLevelOffset" : 0, 
+      "caveLiquid" : [  "helium3gas", "shadowgas" ],
+      "blockSelector" : [ "asteroids", "asteroidfield" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield" ],
+      "biome" : [
+        [0, [ "fugasgiant" ]]
+      ]
+    }
+  },
+
+
+  
+  
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiantunderground",
+  "value" : 
+  {
+      "oceanLiquid" : [ "liquidnitrogen" ],
+      "oceanLevelOffset" : 9999,
+      "blockSelector" : [ "asteroids", "asteroidfield" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield" ],
+      "caveLiquid" : [ "fuel", "poison" ],
+      "caveLiquidChanceRange" : [55, 99], 
+      "biome" : [
+        [0, [ "fugasgiantunderground"]]
+      ]
+    }
+  },  
+  
+  {"op" : "add", 
+  "path" : "/regionTypes/gasgiantcorelayer",
+  "value" : 
+    {
+        "fgCaveSelector" : [ "empty" ],
+        "subBlockSelector" : [ "lowHillsSurface" ],
+        "biome" : [
+          [0, [ "gasgiantcorelayer" ]]
+        ]
+    }
   }
+  
 ]

@@ -35,6 +35,15 @@
         "maskRange" : [1, 25],
         "maskPerPlanetRange" : [3, 3]  
   }},
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [1, 1]  
+  }},  
     {"op" : "add", 
     "path" : "/terrestrialHorizonGraphics/snowdark",
     "value" : 
@@ -794,6 +803,14 @@
       "dynamicsImages" : "/celestial/system/terrestrial/dynamics/temperate/<num>.png",
       "dynamicsRange" : [1, 30] 
   }}, 
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/biomes/fugasgiant/maskie<num>.png",
+      "dynamicsImages" : "/celestial/system/terrestrial/dynamics/temperate/<num>.png",
+      "dynamicsRange" : [1, 30] 
+  }},   
   {"op" : "add", 
   "path" : "/terrestrialGraphics/protoworlddark",
   "value" : 
@@ -2488,7 +2505,7 @@
         "description" : "Hot Planet",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "scorchedcity", "barren", "bog", "urbanwasteland", "irradiated", "ffunknown", "superdense", "slimeworld", "jungle", "alien", "savannah", "midnight" ]
+        "terrestrialType" : [ "fugasgiant", "scorchedcity", "barren", "bog", "urbanwasteland", "irradiated", "ffunknown", "superdense", "slimeworld", "jungle", "alien", "savannah", "midnight" ]
       },
 
       "variationParameters" : [
@@ -2529,7 +2546,7 @@
         "description" : "Habitable Planet",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "forest", "jungle", "alien", "ocean" ]
+        "terrestrialType" : [ "fugasgiant", "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "forest", "jungle", "alien", "ocean" ]
       },
 
       "variationParameters" : [
@@ -2574,7 +2591,7 @@
         "description" : "Cool Planet",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "thickjungle", "jungle", "alien", "toxic", "ocean", "metallicmoon", "tundra" ]
+        "terrestrialType" : [ "fugasgiant", "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "thickjungle", "jungle", "alien", "toxic", "ocean", "metallicmoon", "tundra" ]
       },
 
       "variationParameters" : [
@@ -2626,7 +2643,7 @@
         "description" : "Frozen Planet",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "crystalmoon", "snow", "arctic", "ffunknown", "tundra" ]
+        "terrestrialType" : [ "fugasgiant", "crystalmoon", "snow", "arctic", "ffunknown", "tundra" ]
       },
 
       "variationParameters" : [
