@@ -33,10 +33,27 @@
   "animationPosition" : [0, 0],
   "recipeGroup" : "beetrap",
   "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
-  "scripts" : [ "/objects/scentedapiary/scentedapiary.lua" ],
+  "scripts" : [ "/objects/apiary/common.lua" ],
   "scriptDelta" : 140,
   "slotCount" : 19,
   "uiConfig" : "/interface/apiary/apiary.config",
   "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600
+  "autoCloseCooldown" : 3600,
+
+  // from normalapiary.object
+  "spawnDelay" : 1.05,
+  // "spawnBeeBrake" : nil,
+  "spawnItemBrake" : 150,
+  "spawnHoneyBrake" : 350,
+  "spawnDroneBrake" : 250,
+  "limitDroneCount" : true,
+
+  "beeStingChance" : 0.5,
+  "beeStingOffset" : [ 0, 0 ],
+
+  "beePowerScaling" : 1,
+
+  "queenSlot" : 17,
+  "droneSlot" : 18,
+  "frameSlots" : [ 19 ]
 }
