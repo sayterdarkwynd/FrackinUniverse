@@ -8,10 +8,15 @@ function init(virtual)
 end
 
 function update(dt)
-	local powerlevel = isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
-	if powerlevel ~= 0 then powerlevel = powerlevel / 10 end	-- Q:Why a separate statement? A:if function returns nil, /10 will error. -r
-	powerlevel = isn_numericRange(powerlevel,0,10)
-	animator.setAnimationState("meter", tostring(math.floor(powerlevel)))
+	if storage.currentstoredpower < storage.voltage then
+		-- less than storage.voltage in store; considered discharged
+		animator.setAnimationState("meter", "d")
+	else	-- not discharged
+		local powerlevel = isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
+		if powerlevel ~= 0 then powerlevel = powerlevel / 10 end	-- Q:Why a separate statement? A:if function returns nil, /10 will error. -r
+		powerlevel = isn_numericRange(powerlevel,0,10)
+		animator.setAnimationState("meter", tostring(math.floor(powerlevel)))
+	end
 	
 	local powerinput = isn_getCurrentPowerInput(true)
 	if powerinput >= 1 then
