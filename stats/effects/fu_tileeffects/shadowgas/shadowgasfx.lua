@@ -21,7 +21,7 @@ function init()
     minimumLiquidPercentage = 0.1,
     liquidJumpProfile = {
       jumpSpeed = 70.0,
-      jumpControlForce = 1210.0,
+      jumpControlForce = 610.0,
       jumpInitialPercentage = 0.45,
       jumpHoldTime = 0.01,
       multiJump = false,
