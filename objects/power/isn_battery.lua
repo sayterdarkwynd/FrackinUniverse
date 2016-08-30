@@ -33,6 +33,7 @@ function update(dt)
 	end
 	
 	storage.currentstoredpower = math.min(storage.currentstoredpower, storage.powercapacity)
+	object.setConfigParameter('description', isn_makeBatteryDescription())
 end
 
 function isn_getCurrentPowerStorage()
@@ -56,4 +57,25 @@ end
 
 function onInputNodeChange(args)
 	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
+end
+
+function isn_makeBatteryDescription(desc, charge)
+	if desc == nil then
+		desc = root.itemConfig(object.name())
+		desc = desc and desc.config and desc.config.description or ''
+	end
+	if charge == nil then charge = isn_getCurrentPowerStorage() end
+
+	-- bat flattery
+	if charge == 0 then return desc end
+
+	-- round down to multiple of 0.5 (special case if < 0.5)
+	if charge < 0.5 then
+		charge = '< 0.5'
+	else
+		charge = math.floor (charge * 2) / 2
+	end
+
+	-- append charge state to default description; ensure that it's on a line of its own
+	return desc .. (desc ~= '' and "\n" or '') .. "^yellow;Stored charge: " .. charge .. '%'
 end
