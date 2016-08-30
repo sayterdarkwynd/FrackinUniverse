@@ -2492,7 +2492,7 @@
       "threatRange" : [3, 4],
       "layers" : {
         "surface" : {
-          "primaryRegion" : [ "urbanwasteland" ],
+          "primaryRegion" : [ "urbanwasteland", "urbanwasteland2" ],
           "secondaryRegions" : [ "wartfield", "wastelandmini", "metalworks4", "metalhive", "parkinglot", "aliendesert", "metalworks", "metaljungle", "crystalswamp", "ffhive", "alienforest", "sulphuricmagma", "reddesert", "swamp", "bloodgulch", "hellhive", "corruptedforest", "deadwood",   "savannah"],
           
           "dungeons" : [ 
@@ -2556,6 +2556,74 @@
    },
 
 
+    {"op" : "add", 
+    "path" : "/planetTypes/urbanwasteland2",
+    "value" : 
+      {
+      "threatRange" : [3, 4],
+      "layers" : {
+        "surface" : {
+          "primaryRegion" : [ "urbanwasteland2" ],
+          "secondaryRegions" : [ "wartfield", "wastelandmini", "metalworks4", "metalhive", "parkinglot", "aliendesert", "metalworks", "metaljungle", "crystalswamp", "ffhive", "alienforest", "sulphuricmagma", "reddesert", "swamp", "bloodgulch", "hellhive", "corruptedforest", "deadwood",   "savannah"],
+          
+          "dungeons" : [ 
+          [1.0, "wastelandquests"], 
+          [1.0, "elderruins"], 
+              [1.0, "elderruins"], 
+              [1.0, "crystalcavern"],
+              [1.0, "shipwreck"], 
+              [1.0, "avianpyramid"], 
+              [1.0, "glitchfarm"], 
+              [1.0, "glitchjoust"], 
+              [1.0, "uscmbase"], 
+              [1.0, "lakes"], 
+              [1.0, "volcano"], 
+              [1.0, "greenruins"], 
+          [1.0, "dungeoncrawler"],
+          [1.0, "glitchsewer"], 
+          [1.0, "evilfortress"], 
+          [1.0, "glitchcastle"],
+          [1.0, "glitchvillage"], 
+          [1.0, "apexbase"], 
+          [1.0, "apextestfacility"], 
+          [1.0, "apexcity"], 
+          [1.0, "aviantomb"], 
+          [1.0, "aviannativevillage"], 
+          [1.0, "avianvillage"], 
+          [1.0, "avianairship"], 
+          [1.0, "aviantemple"],
+          [1.0, "humancamp"], 
+          [1.0, "humanprison"], 
+          [1.0, "hylotlcity"], 
+          [1.0, "hylotlruinedcastle"],
+          [1.0, "floranhuntinggrounds"], 
+          [1.0, "floranvillagetower"], 
+          [1.0, "floranhutvillage"], 
+          [1.0, "florancanyon"], 
+          [1.0, "naturalcave"]   
+          ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "wastelandunderground" ]
+        },
+        "underground1" : {
+          "primaryRegion" : [ "wastelandunderground" ],
+          "secondaryRegions" : [ "ffhiveunderground","colourful", "zen", "crystalcave", "abandonedmines", "hiveold", "ffspidernest", "fleshcaves", "cellcaves", "bonecaves", "ffshadow" ]
+        },
+        "underground2" : {
+          "primaryRegion" : [ "wastelandunderground" ],
+          "secondaryRegions" : [ "ffhiveunderground","colourful", "zen", "crystalcave", "abandonedmines", "hiveold", "ffspidernest", "fleshcaves", "cellcaves", "bonecaves", "ffshadow" ]
+        },
+        "underground3" : {
+          "primaryRegion" : [ "wastelandunderground" ],
+          "secondaryRegions" : [ "colourful", "zen", "crystalcave", "abandonedmines", "hiveold", "ffspidernest", "fleshcaves", "cellcaves", "bonecaves", "ffshadow" ]
+        },
+        "core" : {
+          "primaryRegion" : [ "core" ]
+        } 
+        }
+      }
+   },
 
   
    {"op" : "add", 
@@ -3557,6 +3625,21 @@
       ]
     }
   },
+  
+  {"op" : "add", 
+  "path" : "/regionTypes/urbanwasteland2",
+  "value" : 
+  {
+      "caveLiquid" : [ "water", "tarliquid", "darkwater", "wastewater" ],
+      "caveLiquidChanceRange" : [25, 100],
+      "blockSelector" : [ "remixedSurface", "remixedStepsSurface", "remixedCanyonsSurface", "remixedFlatsSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "urbanwasteland2" ]]
+      ]
+    }
+  },
+  
 
   {"op" : "add", 
   "path" : "/regionTypes/lightless",
