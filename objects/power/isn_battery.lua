@@ -8,6 +8,12 @@ function init(virtual)
 end
 
 function update(dt)
+	if not storage.init then
+		sb.logInfo ('battery ' .. entity.id() .. ' stored power = ' .. (world.getObjectParameter(entity.id(), 'isnStoredPower') or 'nil'))
+		storage.currentstoredpower = world.getObjectParameter(entity.id(), 'isnStoredPower') or 0
+		storage.init = true
+	end
+
 	if storage.currentstoredpower < storage.voltage then
 		-- less than storage.voltage in store; considered discharged
 		animator.setAnimationState("meter", "d")
@@ -33,6 +39,7 @@ function update(dt)
 	end
 	
 	storage.currentstoredpower = math.min(storage.currentstoredpower, storage.powercapacity)
+	--object.setConfigParameter('isnStoredPower', storage.currentstoredpower)
 	object.setConfigParameter('description', isn_makeBatteryDescription())
 end
 
@@ -57,6 +64,35 @@ end
 
 function onInputNodeChange(args)
 	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
+end
+
+function die()
+	if storage.currentstoredpower >= storage.voltage then
+		local charge = isn_getCurrentPowerStorage()
+		local iConf = root.itemConfig(object.name())
+		local newObject = { isnStoredPower = storage.currentstoredpower }
+
+		if iConf and iConf.config then
+			-- set the border colour according to the charge level (red → yellow → green)
+			if iConf.config.inventoryIcon then
+				local colour
+
+				if     charge <  25 then colour = 'FF0000'
+				elseif charge <  50 then colour = 'FF8000'
+				elseif charge <  75 then colour = 'FFFF00'
+				elseif charge < 100 then colour = '80FF00'
+				else                     colour = '00FF00'
+				end
+				newObject.inventoryIcon = iConf.config.inventoryIcon .. '?border=1;' .. colour .. '?fade=' .. colour .. 'FF;0.1'
+			end
+
+			-- append the stored charge %age (rounded to 0.5) to the description
+			newObject.description = isn_makeBatteryDescription(iConf.config.description or '', charge)
+		end
+
+		world.spawnItem(object.name(), entity.position(), 1, newObject)
+		object.smash(true)
+	end
 end
 
 function isn_makeBatteryDescription(desc, charge)
