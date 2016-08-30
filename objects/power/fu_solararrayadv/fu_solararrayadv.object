@@ -1,0 +1,37 @@
+{
+  "objectName" : "fu_solararrayadv",
+  "rarity" : "Common",
+    "colonyTags" : [ "science" ],
+  "category" : "wire",
+  "price" : 2500,
+  "description" : "The ultimate in solar generation technology.",
+  "shortdescription" : "^cyan;Solar Tower^white;",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "fu_solararrayadv_icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_solararrayadv_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_solararrayadv.animation",
+  "animationParts" : {
+    "meter" : "fu_solararrayadv_meter.png",
+    "base" : "fu_solararrayadv_base.png"
+  },
+  "animationPosition" : [0, 0],
+  
+  "scripts" : [ "/objects/power/fu_solararrayadv/fu_solararrayadv.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 50,
+  
+  "outputNodes" : [ [2, 1] ],
+  
+  "isn_powerSupplier" : true
+}

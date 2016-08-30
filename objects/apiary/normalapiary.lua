@@ -1,21 +1,21 @@
 local contents
  
-function init(args)
-		animator.setAnimationState("bees", "off")
-        if not self.spawnDelay or not contents then
-                self.spawnDelay = 1.00			 -- A global spawn rate multiplier. Higher is slower.
-                self.spawnBeeBrake = 200      -- Individual spawn rates
-                self.spawnItemBrake = 125	  --
-                self.spawnHoneyBrake = 150   --
-                self.spawnDroneBrake = 150   --
-				self.honeyModifier = 0		-- modifiers for frames, higher means faster production
-				self.itemModifier = 0		--
-				self.beeModifier = 0		--
-				self.droneModifier = 0		--
-				self.mutationIncrease = 0   --
-                reset()
-        end
-		
+function init(virtual)
+	if virtual == true then return end
+	animator.setAnimationState("bees", "off")
+    if not self.spawnDelay or not contents then
+        self.spawnDelay = config.getParameter("spawnDelay") -- A global spawn rate multiplier. Higher is slower.
+        self.spawnBeeBrake = config.getParameter("spawnBeeBrake") -- Individual spawn rates
+        self.spawnItemBrake = config.getParameter("spawnItemBrake")
+        self.spawnHoneyBrake = config.getParameter("spawnHoneyBrake")
+        self.spawnDroneBrake = config.getParameter("spawnDroneBrake")
+		self.honeyModifier = 0		-- modifiers for frames, higher means faster production
+		self.itemModifier = 0		--
+		self.beeModifier = 0		--
+		self.droneModifier = 0		--
+		self.mutationIncrease = 0   --
+        reset()
+    end
 
 end
  
@@ -360,37 +360,37 @@ function flowerCheck()
 	
 	---FrackinUniverse---
 	if flowerBlack ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerBlack) / 2)
 	end	
 	if flowerBrown ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerBrown) / 2)
 	end	
 	if flowerGreen ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerGreen) / 2)
 	end	
 	if flowerGrey ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerGrey) / 2)
 	end
 	if flowerOrange ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerOrange) / 2)
 	end	
 	if flowerOrchid ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerOrchid) / 2)
 	end
 	if flowerOrchid2 ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerOrchid2) / 2)
 	end
 	if flowerOrchid3 ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerOrchid3) / 2)
 	end
 	if flowerPink ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerPink) / 2)
 	end
 	if flowerPurple ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerPurple) / 2)
 	end
 	if flowerWhite ~= nil then	
-		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerSpring) / 2)
+		self.beePower = self.beePower + math.ceil(math.sqrt(#flowerWhite) / 2)
 	end	
 	if FFenergiflower ~= nil then	
 		self.beePower = self.beePower + math.ceil(math.sqrt(#FFenergiflower) / 2)
@@ -429,6 +429,10 @@ function flowerCheck()
 		elseif self.beePower >= 60 then
 		self.beePower = 60
 	end
+	local beePowerSay = "FC:bP = " .. self.beePower
+	local location = entity.position()
+	world.debugText(beePowerSay,{location[1],location[2]-0.5},"orange")
+	-- object.say(beePowerSay)
 end
 
 
@@ -436,7 +440,9 @@ function deciding()
         if self.beePower == -1 then   ---if the apiary doesn't have bees, then stop.
                 return
         end
-		
+		local location = entity.position()
+		world.debugText("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown,{location[1],location[2]-0.5},"orange")
+		-- object.say("H:" .. self.spawnHoneyCooldown .. "/I:" .. self.spawnItemCooldown .. "/ D:" .. self.spawnDroneCooldown .. "/B:" .. self.spawnBeeCooldown)
         -- counting down and looking for events like spawning a bee, an item or honey
         -- also applies the effects if something has to spawn (increasing cooldown, slowing things down)
         if self.spawnBeeCooldown <= 0 then
@@ -449,7 +455,7 @@ function deciding()
         end
 		
         if self.spawnDroneCooldown <= 0 then
-                self.spawnDroneBrake = self.spawnDroneBrake + 10
+                -- self.spawnDroneBrake = self.spawnDroneBrake + 10
                 self.doDrone = true
                 self.spawnDroneCooldown = ( self.spawnDelay * self.spawnDroneBrake ) - self.droneModifier
         else
@@ -458,7 +464,7 @@ function deciding()
         end
  
         if self.spawnItemCooldown <= 0 then
-                self.spawnItemBrake = self.spawnItemBrake + 10
+                -- self.spawnItemBrake = self.spawnItemBrake + 10
                 self.doItems = true
                 self.spawnItemCooldown = ( self.spawnDelay * self.spawnItemBrake ) - self.itemModifier
         else
@@ -467,7 +473,7 @@ function deciding()
         end
 		
         if self.spawnHoneyCooldown <= 0 then
-                self.spawnHoneyBrake = self.spawnHoneyBrake + 10
+                -- self.spawnHoneyBrake = self.spawnHoneyBrake + 10
                 self.doHoney = true
                 self.spawnHoneyCooldown = ( self.spawnDelay * self.spawnHoneyBrake ) - self.honeyModifier
         else

@@ -3,16 +3,16 @@ function init(virtual)
 	object.setInteractive(true)
 	object.setSoundEffectEnabled(false)
 	
-	if storage.currentpowerprod == nil then storage.currentpowerprod = 0 end
-	if storage.fueledticks == nil then storage.fueledticks = 0 end
-	if storage.decayrate == nil then storage.decayrate = 5 end
+	storage.currentpowerprod = storage.currentpowerprod or 0
+	storage.fueledticks = storage.fueledticks or 0
+	storage.decayrate = storage.decayrate or 5
 	if storage.active == nil then storage.active = true end
 end
 
 function onInputNodeChange(args)
 	if object.isInputNodeConnected(0) then
 		-- sb.logInfo("input node is connected. node level is %s", object.getInputNodeLevel(0))
-		if object.getInputNodeLevel(0) == true then storage.active = true
+		if object.getInputNodeLevel(0) then storage.active = true
 		else storage.active = false
 		end
 	else storage.active = true
@@ -24,6 +24,7 @@ function update(dt)
 	if storage.currentpowerprod > 90 then
 		animator.setAnimationState("screen", "fast")
 		object.setLightColor(config.getParameter("lightColor", {166, 166, 166}))
+		object.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 50 then
 		animator.setAnimationState("screen", "med")
 		animator.setAnimationState("fans", "fast")
@@ -37,7 +38,8 @@ function update(dt)
 	else
 		animator.setAnimationState("screen", "off")
 		animator.setAnimationState("fans", "off")
-		object.setLightColor({0, 0, 0, 0})	
+		object.setLightColor({0, 0, 0, 0})
+		object.setSoundEffectEnabled(false)
 	end
 
 	if storage.fueledticks > 0 then -- if we're currently fueled up
@@ -89,11 +91,11 @@ function isn_getCurrentPowerOutput(divide)
 	---sb.logInfo("TGCPOD: Powercount is" .. powercount)
 	
 	---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG END")
-	if divide == true then return powercount / divisor
+	if divide then return powercount / divisor
 	else return powercount end
 end
 
 function onNodeConnectionChange()
-	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
+	if isn_checkValidOutput() then object.setOutputNodeLevel(0, true)
 	else object.setOutputNodeLevel(0, false) end
 end
