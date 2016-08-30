@@ -162,6 +162,9 @@ end
 		if contents[40].name == "ironframe" then
 			ironcombs = true
 		end
+		if contents[40].name == "tungstenframe" then
+			tungstencombs = true
+		end		
 		if contents[40].name == "durasteelframe" then
 			durasteelcombs = true
 		end		
