@@ -16,9 +16,12 @@ function update(dt)
 	local powerinput = isn_getCurrentPowerInput(true)
 	if powerinput >= 1 then
 		storage.currentstoredpower = storage.currentstoredpower + powerinput
+		-- sb.logInfo(string.format("Storing %.2fu, now at %.2fu", powerinput, storage.currentstoredpower))
 	end
 
-	local poweroutput = isn_sumPowerActiveDevicesConnectedOnOutboundNode(0)
+	-- drain power according to attached devices; max drain is storage.voltage
+	-- without the max drain, a field generator will drain each of three 8u batteries at a rate of 24u per battery state update
+	local poweroutput = math.min(storage.voltage, isn_sumPowerActiveDevicesConnectedOnOutboundNode(0))
 	if poweroutput > 0 and storage.currentstoredpower > 0 then
 		storage.currentstoredpower = storage.currentstoredpower - poweroutput
 		-- sb.logInfo(string.format("Draining %.2fu, now at %.2fu", poweroutput, storage.currentstoredpower))
