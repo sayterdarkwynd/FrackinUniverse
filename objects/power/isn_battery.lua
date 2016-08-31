@@ -25,7 +25,7 @@ function update(dt)
 	end
 	
 	local powerinput = isn_getCurrentPowerInput(true)
-	if powerinput >= 1 then
+	if powerinput and powerinput >= 1 then
 		storage.currentstoredpower = storage.currentstoredpower + powerinput
 		-- sb.logInfo(string.format("Storing %.2fu, now at %.2fu", powerinput, storage.currentstoredpower))
 	end

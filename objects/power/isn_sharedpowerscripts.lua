@@ -48,6 +48,7 @@ function isn_getCurrentPowerInput(divide)
 end
 
 function isn_countCurrentPowerInputs()
+	--- Same rule as for isn_getCurrentPowerInput()
 	local connectedDevices
 	local psus = 0
 	local totalInput = 0
@@ -56,8 +57,20 @@ function isn_countCurrentPowerInputs()
 		if object.getInputNodeLevel(iterator) then
 			connectedDevices = isn_getAllDevicesConnectedOnNode(iterator,"input")
 			for key, value in pairs (connectedDevices) do
-				if world.callScriptedEntity(value, "isn_hasStoredPower") or world.callScriptedEntity(value, "isn_isPowerPassthrough")  then
-					psus = psus + 1
+				if world.callScriptedEntity(value,"isn_canSupplyPower") then
+					local isPassthrough = world.callScriptedEntity(value,"isn_isPowerPassthrough")
+					if not isBattery then
+						if isPassthrough then
+							if hasPSU or hasPassthrough then return nil end --ERROR (passthrough; already found a PSU or passthrough)
+							hasPassthrough = true
+						else
+							if hasPassthrough then return nil end --ERROR (PSU; already found a passthrough)
+							hasPSU = true
+						end
+					end
+					if isPassthrough or world.callScriptedEntity(value, "isn_hasStoredPower") then
+						psus = psus + 1
+					end
 				end
 			end
 		end
@@ -77,19 +90,19 @@ end
 
 function isn_requiredPowerValue(persupply)
 	local req
-	local conduit = false
 
 	if config.getParameter("isn_powerPassthrough") then
 		-- It's a conduit, or a similar device. Check what downstream says.
 		req = isn_sumPowerActiveDevicesConnectedOnOutboundNode(0)
-		conduit = true
 	else
 		req = config.getParameter("isn_requiredPower")
 	end
+	if req == nil then return nil end
 
 	-- If requested, get the number of connected active power supplies and split the power requirement equally across them
 	-- (mainly because we don't know which PSU is calling us)
-	local psus = persupply and isn_countCurrentPowerInputs() or 0
+	local psus = persupply and isn_countCurrentPowerInputs()
+	if psus == nil then return nil end
 
 	return psus > 0 and req / psus or req
 end
@@ -192,7 +205,8 @@ function isn_sumPowerActiveDevicesConnectedOnOutboundNode(node)
 			if not world.callScriptedEntity(value,"isn_doesNotConsumePower") then
 				if world.callScriptedEntity(value,"isn_activeConsumption") then
 					-- allow for the consumer's power requirement being spread across several supplies
-					voltagecount = voltagecount + world.callScriptedEntity(value,"isn_requiredPowerValue", true)
+					local required = world.callScriptedEntity(value,"isn_requiredPowerValue", true)
+					if required ~= nil then voltagecount = voltagecount + required end
 					-- sb.logInfo(entity.id() .. ": Found a consumer, " .. value .. ", requiring " .. world.callScriptedEntity(value,"isn_requiredPowerValue", true) .. "; total increased to " .. voltagecount)
 				end
 			end
