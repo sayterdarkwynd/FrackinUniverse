@@ -3,8 +3,8 @@ function init()
   self.movementParams = mcontroller.baseParameters()
   activateVisualEffects()
   self.liquidMovementParameter = {
-    gravityMultiplier = 0.95,
-    groundForce = 70,
+    gravityMultiplier = 0.75,
+    groundForce = 80,
     airForce = 50,
     airFriction = 0.5,
     liquidForce = 20,
@@ -14,7 +14,7 @@ function init()
     minimumLiquidPercentage = 0.2,
     liquidJumpProfile = {
       jumpSpeed = 70.0,
-      jumpControlForce = 450.0,
+      jumpControlForce = 550.0,
       jumpInitialPercentage = 0.75,
       jumpHoldTime = 0.05,
       multiJump = false,

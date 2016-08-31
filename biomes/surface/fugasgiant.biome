@@ -3,12 +3,12 @@
   "friendlyName" : "Gas Giant",
   //"airless" : true,
   "spawnProfile" : {
-    "groups" : [ ]
+    "groups" : [ ]dddddddd
   },
 
   "statusEffects" : [ "biomeairless" ],
 
-  "hueShiftOptions" : [0],
+  "hueShiftOptions" : [-180, -160, -120, -100, -90, -80, -70, -60, -50, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180],
 
   "weather" : [
     [0, [
@@ -584,8 +584,8 @@
     }
   ],
 
-  "mainBlock" : "ice",
-  "subBlocks" : [ "slush" ],
+    "mainBlock" : "cloudblock",
+    "subBlocks" : [ "raincloud", "aegisaltcrystal" ],
   "ores" : "gasgiantSurface",
 
   "parallax" : "/parallax/space/gasgiant2.parallax",
@@ -609,93 +609,10 @@
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "snow" ],
-    "grassModDensity" : 0.9,
+    "grassMod" : [ ],
+    "grassModDensity" : 0,
 
     "items" : [
-      {
-        "mode" : "floor",
-        "priority" : 1.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:potsRare",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [0.35, "snowdrift1" ], [0.35, "snowdrift2" ], [0.35, "snowdrift3" ], [0.35, "snowdrift4" ] ],
-            "parameters" : { }
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 1.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:ultraRare",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [1, "fancysnowman" ] ],
-            "parameters" : { }
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 0.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundChests",
-
-        "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 1.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundRareChests",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [1, "statuspod" ] ],
-            "parameters" : { }
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 0.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
-
-        "type" : "treasureBox",
-        "treasureBoxSets" : [ "weaponChest" ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 1.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCapsules",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
-            "parameters" : { }
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 3.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundChests",
-
-        "type" : "microdungeon",
-        "microdungeons" : [ "igloo" ]
-      },
       {
         "mode" : "floor",
         "priority" : 3.0,
@@ -730,72 +647,6 @@
     "grassMod" : [ "snow" ],
     "grassModDensity" : 0.2,
 
-    "items" : [
-      {
-        "mode" : "floor",
-        "priority" : 0.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
-
-        "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
-      },
-
-      {
-        "mode" : "floor",
-        "priority" : 0.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundtechChests",
-
-        "type" : "treasureBox",
-        "treasureBoxSets" : [ "techChest" ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 1.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [1, "statuspod" ] ],
-            "parameters" : { }
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 0.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
-
-        "type" : "treasureBox",
-        "treasureBoxSets" : [ "weaponChest" ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 1.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
-            "parameters" : { }
-          }
-        ]
-      },
-      {
-        "mode" : "ceiling",
-        "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-        "type" : "grass",
-        "grasses" : [ "ceilingice", "ceilingthinice", "ceilingiceballs", "ceilingsnow" ]
-      }
-    ]
+    "items" : [ ]
   }
 }
