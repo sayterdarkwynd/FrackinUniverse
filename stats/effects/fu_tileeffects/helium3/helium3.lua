@@ -3,7 +3,7 @@ function init()
   self.movementParams = mcontroller.baseParameters()
   activateVisualEffects()
   self.liquidMovementParameter = {
-    gravityMultiplier = 0.25,
+    gravityMultiplier = 0.95,
     groundForce = 70,
     airForce = 50,
     airFriction = 0.5,
