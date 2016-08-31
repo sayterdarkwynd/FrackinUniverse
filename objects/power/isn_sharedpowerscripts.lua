@@ -2,14 +2,12 @@ function isn_getCurrentPowerInput(divide)
 	-- sb.logInfo("POWER INPUT DEBUG aka PID")
 	-- sb.logInfo("called by " .. world.entityName(entity.id()))
 	local totalInput = 0
-	local iterator = 0
 	local connectedDevices
 	local output = 0
 	
-	local nodecount = object.inputNodeCount() 
-	-- sb.logInfo("PID: nodecount is " .. nodecount)
+	-- sb.logInfo("PID: nodecount is " .. object.inputNodeCount())
 	
-	while iterator < nodecount do
+	for iterator = 0, object.inputNodeCount() - 1 do
 		-- sb.logInfo("PID: Iteration " .. iterator)
 		if object.getInputNodeLevel(iterator) then
 			connectedDevices = isn_getAllDevicesConnectedOnNode(iterator,"input")
@@ -27,7 +25,6 @@ function isn_getCurrentPowerInput(divide)
 			end
 		end
 		-- sb.logInfo("PID: total input now at " .. totalInput)
-		iterator = iterator + 1
 	end
 	
 	-- sb.logInfo("GENERAL POWER INPUT DEBUG END")
@@ -92,11 +89,8 @@ end
 
 function isn_activeConsumption()
 	if config.getParameter("isn_powerPassthrough") then -- It's a conduit (or similar device), better check what downstream says -r
-		local nodecount = object.outputNodeCount()
-		local iterator = 0
-		while iterator < nodecount do
+		for iterator = 0, object.outputNodeCount() - 1 do
 			if isn_areActivePowerDevicesConnectedOnOutboundNode(iterator) then return true end
-			iterator = iterator + 1
 		end
 		return false
 	end
