@@ -4,7 +4,7 @@ end
 
 function update(dt)
   mcontroller.controlModifiers({
-      runModifier = 1.10
+      speedModifier = 1.10
     })
 end
 
