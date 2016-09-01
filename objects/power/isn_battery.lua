@@ -25,7 +25,7 @@ function update(dt)
 	end
 	
 	local powerinput = isn_getCurrentPowerInput(true)
-	if powerinput >= 1 then
+	if powerinput and powerinput >= 1 then
 		storage.currentstoredpower = storage.currentstoredpower + powerinput
 		-- sb.logInfo(string.format("Storing %.2fu, now at %.2fu", powerinput, storage.currentstoredpower))
 	end
@@ -47,9 +47,14 @@ function isn_getCurrentPowerStorage()
 	return isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
 end
 
+function isn_hasStoredPower()
+	if not storage.active then return false end  -- This might be pointless. Need to think about it. -r
+	return storage.currentstoredpower > 0
+end
+
 function isn_getCurrentPowerOutput(divide)
-	if not storage.active then return 0 end  -- This might be pointless. Need to think about it. -r
-	if storage.currentstoredpower <= 0 then return 0 end
+	if not isn_hasStoredPower() then return 0 end
+
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
 	
 	-- if divisor < 1 then return 0 end
