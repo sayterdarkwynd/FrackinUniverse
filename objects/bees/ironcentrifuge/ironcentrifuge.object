@@ -1,5 +1,6 @@
 {
   "objectName" : "bees_ironcentrifuge",
+  "colonyTags" : [ "hive", "bees", "machines" ],
   "printable" : false,
   "rarity" : "rare",
   "description" : "Extract items from combs! More efficient than the wooden centrifuge.",
@@ -30,13 +31,23 @@
     "centrifuge" : "ironcentrifuge.png"
   },
   
-  "scripts" : [ "/objects/bees/ironcentrifuge/centrifuge.lua" ],
+  "scripts" : [ "/objects/bees/centrifuge.lua" ],
   "scriptDelta" : 100,
   "recipeGroup" : "ironcentrifuge",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
   "slotCount" : 10,
   "uiConfig" : "/interface/bees/ironcentrifuge/ironcentrifuge.config",
   "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600
+  "autoCloseCooldown" : 3600,
 
+  "craftDelay" : 2,
+  "itemChances": {
+	"rarest": 0.4,
+	"rare": 0.45,
+	"uncommon": 0.7,
+	"normal": 0.8,
+	"common": 0.9
+  },
+
+  "inputSlot": 10
 }
