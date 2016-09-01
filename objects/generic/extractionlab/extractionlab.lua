@@ -1,8 +1,9 @@
 local recipes =
 {
-
+{inputs = { tritium=2 }, outputs = { helium3cannister=1, toxicwaste=1 }, time = 0.75 },
 --liquids
-{inputs = { liquidwater=10 }, outputs = { fu_salt=1, fu_oxygen=1, fu_hydrogen=1 }, time = 0.75},
+{inputs = { liquidhealing=10 }, outputs = { fu_salt=2, fu_oxygen=1, fu_nitrogen=1 }, time = 0.75},
+{inputs = { liquidwater=10 }, outputs = { fu_salt=1, fu_oxygen=2, fu_hydrogen=1 }, time = 0.75},
 {inputs = { swampwater=10 }, outputs = { fu_salt=1, fu_oxygen=1, fu_hydrogen=1 }, time = 0.75},
 {inputs = { liquiddarkwater=20 }, outputs = { fu_salt=2, fu_nitrogen=1, fu_carbon=1 }, time = 0.75 },
 {inputs = { poop=1 }, outputs = { fu_nitrogen=3 }, time = 0.75},
