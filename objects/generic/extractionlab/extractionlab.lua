@@ -35,6 +35,7 @@ local recipes =
 {inputs = { preciouscomb=1 }, outputs = { diamond=1 }, time = 0.75 },
 {inputs = { silvercomb=1 }, outputs = { silverore=2 }, time = 0.75 },
 {inputs = { titaniumcomb=1 }, outputs = { titaniumore=2 }, time = 0.75 },
+{inputs = { tungstencomb=1 }, outputs = { tungstenore=2 }, time = 0.75 },
 {inputs = { mooncomb=1 }, outputs = { helium3gasliquid=2 }, time = 0.75 },
 {inputs = { morbidcomb=1 }, outputs = { rottingfleshmaterial=2 }, time = 0.75 },
 {inputs = { mythicalcomb=1 }, outputs = { vialproto=2 }, time = 0.75 },
