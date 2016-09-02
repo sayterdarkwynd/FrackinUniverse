@@ -72,7 +72,8 @@ function workingCombs(input, output)
 
 		for item, chance in pairs(output) do
 			if rnd <= chance then
-				world.containerAddItems(entity.id(), { name = item, count = 1, data={}})
+				local throw = world.containerAddItems(entity.id(), { name = item, count = 1, data={}})
+				if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around
 				break
 			end
 			rnd = rnd - chance
