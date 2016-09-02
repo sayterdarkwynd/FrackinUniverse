@@ -149,7 +149,8 @@ function update()
     self.angle=updateSinking(waterFactor, self.angle,sinkAngle)
 
   elseif (animState=="idle") then
-
+    animator.setParticleEmitterEmissionRate("bubbles",1)
+    animator.setParticleEmitterActive("bubbles", true)
     local healthFactor = storage.health / self.maxHealth
     local waterSurface = self.maxGroundSearchDistance
     self.waterBounds=mcontroller.localBoundBox()
@@ -239,7 +240,7 @@ function updateDriving()
       mcontroller.approachYVelocity(-self.targetMoveSpeed*madj, self.moveControlForce)
       moving = true
       end
-    animator.setParticleEmitterEmissionRate("bubbles",4)
+    animator.setParticleEmitterEmissionRate("bubbles",25)
     animator.setParticleEmitterActive("bubbles", true)      
       holdingDown = true
     elseif (vehicle.controlHeld("drivingSeat", "up")) then -- positive buoyancy
@@ -249,7 +250,7 @@ function updateDriving()
       moving = true
       end
       holdingUp = true
-    animator.setParticleEmitterEmissionRate("bubbles",6)
+    animator.setParticleEmitterEmissionRate("bubbles",40)
     animator.setParticleEmitterActive("bubbles", true)     
     end
     
@@ -258,7 +259,7 @@ function updateDriving()
       storage.ballasted = not storage.ballasted
       if not storage.ballasted then -- blow tanks and rise - maybe bubbles?
             applyMovementParams()
-    animator.setParticleEmitterEmissionRate("bubbles",3)
+    animator.setParticleEmitterEmissionRate("bubbles",60)
     animator.setParticleEmitterActive("bubbles", true)
             vehicle.setLoungeDance("drivingSeat","warmhands")
       else -- sink to periscope depth / neutral buoyancy
@@ -340,7 +341,7 @@ function updateSinking(waterFactor, currentAngle, sinkAngle)
 
 --    animator.setParticleEmitterActive("bubbles", false)
 --    animator.setParticleEmitterActive("smoke", false)
-    animator.setParticleEmitterEmissionRate("bubbles",3)
+    animator.setParticleEmitterEmissionRate("bubbles",15)
     animator.setParticleEmitterActive("bubbles", true)
     animator.setParticleEmitterEmissionRate("smoke",1)
 
@@ -365,7 +366,7 @@ function updateSinking(waterFactor, currentAngle, sinkAngle)
     end
 
     if (waterFactor> self.minWaterFactorToFloat) then
-    animator.setParticleEmitterEmissionRate("bubbles",3)
+    animator.setParticleEmitterEmissionRate("bubbles",11)
     animator.setParticleEmitterActive("bubbles", true)
       animator.setParticleEmitterActive("smoke", false)    
     else
