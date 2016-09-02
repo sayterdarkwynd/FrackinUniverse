@@ -25,7 +25,10 @@
 
     "parts" : {
       "growth" : {
-	    "properties" : {"centered" : false},
+	"properties" : {
+	      "centered" : false,
+	      "zLevel" : 1
+	  },
         "partStates" : {
           "growth" : {
             "0" : {"properties" : {"image" : "<partImage>:0"}},
@@ -36,7 +39,12 @@
         }
       },
       "powlight" : {
-	    "properties" : {"centered" : false},
+	    "properties" : {
+	      "centered" : false,
+	      "zLevel" : 3,
+	      "fullbright" : true
+	    },
+	    
         "partStates" : {
           "powlight" : {
             "off" : {"properties" : {"image" : "<partImage>:off"}},
