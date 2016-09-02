@@ -284,7 +284,7 @@ function beeSting()
 		if self.beeStingOffset then
 			world.spawnProjectile("stingstatusprojectile", { location[1] + self.beeStingOffset[1], location[2] + self.beeStingOffset[2], entity.id() })
 		else
-			world.spawnProjectile("stingstatusprojectile", location)
+			world.spawnProjectile("stingstatusprojectile", location, entity.id())
 		end
 	end
 end
@@ -329,7 +329,7 @@ function flowerCheck()
 
 	local beePowerSay = "FC:bP = " .. self.beePower
 	local location = entity.position()
-	world.debugText(beePowerSay,{location[1],location[2]-0.5},"orange")
+	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
 	-- object.say(beePowerSay)
 end
 
@@ -649,6 +649,7 @@ function breedingBees()
 					["jungleadaptive"] = "hunter",
 					["hunterred"] = "aggressive",
 					["aggressivenocturnal"] = "morbid",
+					["aggressivemorbid"] = "metal",
 					["radioactivehardy"] = "plutonium",
 					["plutoniumexceptional"] = "solarium",
 					["forestjungle"] = "flower",
