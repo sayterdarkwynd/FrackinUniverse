@@ -1,11 +1,14 @@
 function init(virtual)
 	if virtual then return end
 
-	self.initialCraftDelay = config.getParameter("craftDelay")
 	self.itemChances = config.getParameter("itemChances")
 	self.inputSlot = config.getParameter("inputSlot")
 
+	self.initialCraftDelay = config.getParameter("craftDelay")
 	self.craftDelay = self.craftDelay or self.initialCraftDelay
+	self.stash = self.stash or { count = 0 }
+
+	storage.init = 1
 
 	object.setInteractive(true)
 end
@@ -47,6 +50,10 @@ function deciding(item)
 end
 
 function update(dt)
+	if not storage.init then
+		init()
+	end
+
 	local input = world.containerItems(entity.id())[self.inputSlot]
 
 	if input then
@@ -54,12 +61,12 @@ function update(dt)
 		if output then
 			workingCombs(input, output)
 			animator.setAnimationState("centrifuge", "working")
-		else
-			animator.setAnimationState("centrifuge", "idle")
+			return
 		end
-	else
-		animator.setAnimationState("centrifuge", "idle")
 	end
+
+	animator.setAnimationState("centrifuge", "idle")
+	self.craftDelay = self.initialCraftDelay
 end
 
 function workingCombs(input, output)
@@ -68,6 +75,8 @@ function workingCombs(input, output)
 	if self.craftDelay <= 0 then
 		self.craftDelay = self.initialCraftDelay
 		world.containerConsume(entity.id(), { name = input.name, count = 1, data={}})
+		stashHoney(input.name)
+
 		local rnd = math.random()
 
 		for item, chance in pairs(output) do
@@ -79,4 +88,31 @@ function workingCombs(input, output)
 			rnd = rnd - chance
 		end
 	end
+end
+
+function stashHoney(comb)
+	-- For any nearby jarrer (if this is an industrial centrifuge),
+	-- Record that we've processed a comb.
+	-- The stashed type is the jar object name for the comb type.
+	-- If the stashed type is different, reset the count.
+	local jar = honeyCheck and honeyCheck(comb)
+	if jar then
+		if self.stash == nil then self.stash = { count = 0 } end
+		if self.stash.type == jar then
+			self.stash.count = self.stash.count + 1
+		else
+			self.stash.type = jar
+			self.stash.count = 1
+		end
+		--sb.logInfo("STASH: %s %s", self.stash.count,self.stash.type)
+	end
+end
+
+-- Called by the honey jarrer
+function drawHoney()
+	if not self.stash or self.stash.count == 0 then return nil end
+	local ret = self.stash
+	self.stash = { count = 0 }
+	--sb.logInfo("STASH: Withdrawing")
+	return ret
 end
