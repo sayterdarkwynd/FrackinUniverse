@@ -118,17 +118,17 @@ function isn_powerSlotCheck(slotnum)
 	local slotContent = world.containerItemAt(entity.id(),slotnum)
 	
 	if slotContent == nil then return 0 end
-	if slotContent.name == "biofuelcannister" then return 1
-	elseif slotContent.name == "biofuelcannisteradv" then return 2
-	elseif slotContent.name == "biofuelcannistermax" then return 3
-	elseif slotContent.name == "uraniumrod" then return 2
-	elseif slotContent.name == "neptuniumrod" then return 3
-	elseif slotContent.name == "enricheduranium" then return 3
-	elseif slotContent.name == "plutoniumrod" then return 3
-	elseif slotContent.name == "enrichedplutonium" then return 4
-	elseif slotContent.name == "thoriumrod" then return 4
-	elseif slotContent.name == "solariumstar" then return 4
-	elseif slotContent.name == "ultronium" then return 5
+	if slotContent.name == "biofuelcannister" then return 2
+	elseif slotContent.name == "biofuelcannisteradv" then return 3
+	elseif slotContent.name == "biofuelcannistermax" then return 4
+	elseif slotContent.name == "uraniumrod" then return 4
+	elseif slotContent.name == "neptuniumrod" then return 4
+	elseif slotContent.name == "enricheduranium" then return 6
+	elseif slotContent.name == "plutoniumrod" then return 6
+	elseif slotContent.name == "enrichedplutonium" then return 7
+	elseif slotContent.name == "thoriumrod" then return 5
+	elseif slotContent.name == "solariumstar" then return 8
+	elseif slotContent.name == "ultronium" then return 10
 	else return 0 end
 end
 
