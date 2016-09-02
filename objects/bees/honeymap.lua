@@ -1,4 +1,4 @@
-function honeyCheck()
+function honeyCheck(comb)
 	honeyMap = honeyMap or {
 		arcticcomb      = "snowhoneyjar",
 		aridcomb        = "honeyjar",
@@ -28,6 +28,10 @@ function honeyCheck()
 		volcaniccomb    = "hothoneyjar"
 	}
 
-	local item = world.containerItems(entity.id())[self.inputSlot]
-	return item and honeyMap[item.name] -- may be nil
+	local item = comb
+	if not item then
+		item = world.containerItems(entity.id())[self.inputSlot]
+		if item then item = item.name end
+	end
+	return item and honeyMap[item] -- may be nil
 end
