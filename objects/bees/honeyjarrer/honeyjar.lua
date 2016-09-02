@@ -2,7 +2,8 @@
 -- If this is not the case, then jars may be produced at a lower rate or not at all.
 
 function init(args)
-	self.stash = self.stash or { count = 0 }
+	storage.combsProcessed = storage.combsProcessed or { count = 0 }
+	--sb.logInfo("jarrer: %s", storage.combsProcessed)
 	animator.setAnimationState("jar", "idle")
 end
 
@@ -15,35 +16,35 @@ function update(dt)
 
 		-- Grab a jar or three from the centrifuge.
 		-- The stash will be cleared if the centrifuge hands over nothing twice in a row.
-		if stash and stash.type == self.stash.type then
+		if stash and stash.type == storage.combsProcessed.type then
 			-- same type
 			--sb.logInfo ("got %s for %s", stash.count, stash.type)
-			self.stash.count = (self.stash.count or 0) + stash.count
-			self.stash.sloppy = nil
+			storage.combsProcessed.count = (storage.combsProcessed.count or 0) + stash.count
+			storage.combsProcessed.sloppy = nil
 		elseif stash then
 			-- different type
 			--sb.logInfo ("got %s for %s (clearing stash)", stash.count, stash.type)
-			self.stash = stash
-		elseif self.stash.sloppy then
+			storage.combsProcessed = stash
+		elseif storage.combsProcessed.sloppy then
 			-- got nothing twice in a row
 			--sb.logInfo ("clearing stash")
-			self.stash = { count = 0 }
+			storage.combsProcessed = { count = 0 }
 		else
 			-- got nothing
-			if not self.stash then self.stash = { count = 0 } end
-			self.stash.sloppy = true
+			if not storage.combsProcessed then storage.combsProcessed = { count = 0 } end
+			storage.combsProcessed.sloppy = true
 		end
 
-		if self.stash.count and self.stash.count > 0 then
+		if storage.combsProcessed.count and storage.combsProcessed.count > 0 then
 			animator.setAnimationState("jar", "working")
 		end
 
 		-- So long as the stash count is at least 3 and there is at least one empty honey jar in the jarrer, a full jar will be produced. The stash is then reduced.
-		if self.stash.count and self.stash.count >= 3 and world.containerConsume(entity.id(), { name= "emptyhoneyjar", count = 1, data={}}) == true then
+		if storage.combsProcessed.count and storage.combsProcessed.count >= 3 and world.containerConsume(entity.id(), { name= "emptyhoneyjar", count = 1, data={}}) == true then
 			--sb.logInfo ("producing one %s", stash.type)
-			local throw = world.containerAddItems(entity.id(), { name = self.stash.type, count = 1, data={}})
+			local throw = world.containerAddItems(entity.id(), { name = storage.combsProcessed.type, count = 1, data={}})
 			if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around
-			self.stash.count = self.stash.count - 3
+			storage.combsProcessed.count = storage.combsProcessed.count - 3
 		end
 	else
 		animator.setAnimationState("jar", "idle")

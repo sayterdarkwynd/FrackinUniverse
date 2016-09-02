@@ -6,7 +6,8 @@ function init(virtual)
 
 	self.initialCraftDelay = config.getParameter("craftDelay")
 	self.craftDelay = self.craftDelay or self.initialCraftDelay
-	self.stash = self.stash or { count = 0 }
+	storage.combsProcessed = storage.combsProcessed or { count = 0 }
+	--sb.logInfo("centrifuge: %s", storage.combsProcessed)
 
 	storage.init = 1
 
@@ -97,22 +98,22 @@ function stashHoney(comb)
 	-- If the stashed type is different, reset the count.
 	local jar = honeyCheck and honeyCheck(comb)
 	if jar then
-		if self.stash == nil then self.stash = { count = 0 } end
-		if self.stash.type == jar then
-			self.stash.count = self.stash.count + 1
+		if storage.combsProcessed == nil then storage.combsProcessed = { count = 0 } end
+		if storage.combsProcessed.type == jar then
+			storage.combsProcessed.count = storage.combsProcessed.count + 1
 		else
-			self.stash.type = jar
-			self.stash.count = 1
+			storage.combsProcessed.type = jar
+			storage.combsProcessed.count = 1
 		end
-		--sb.logInfo("STASH: %s %s", self.stash.count,self.stash.type)
+		--sb.logInfo("STASH: %s %s", storage.combsProcessed.count,storage.combsProcessed.type)
 	end
 end
 
 -- Called by the honey jarrer
 function drawHoney()
-	if not self.stash or self.stash.count == 0 then return nil end
-	local ret = self.stash
-	self.stash = { count = 0 }
+	if not storage.combsProcessed or storage.combsProcessed.count == 0 then return nil end
+	local ret = storage.combsProcessed
+	storage.combsProcessed = { count = 0 }
 	--sb.logInfo("STASH: Withdrawing")
 	return ret
 end
