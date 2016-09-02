@@ -1,0 +1,53 @@
+{
+  "objectName" : "bees_woodencentrifuge",
+  "colonyTags" : [ "hive", "bees", "machines" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "Extract items from combs!",
+  "shortdescription" : "^orange;Wooden Centrifuge^white;",
+  "subtitle" : "Extract items from combs.",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 200,
+  "objectType" : "container",
+
+  "hydrophobic" : false,
+
+  "inventoryIcon" : "woodencentrifugeicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "woodencentrifuge.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.4,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+    "animation" : "woodencentrifuge.animation",
+  "animationParts" : {
+    "centrifuge" : "woodencentrifuge.png"
+  },
+
+  "scripts" : [ "/objects/bees/centrifuge.lua" ],
+  "scriptDelta" : 100,
+  "recipeGroup" : "industrialcentrifuge",
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "slotCount" : 5,
+  "uiConfig" : "/interface/bees/woodencentrifuge/woodencentrifuge.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "craftDelay" : 2,
+  "itemChances": {
+	"rarest": 0.35,
+	"rare": 0.4,
+	"uncommon": 0.5,
+	"normal": 0.6,
+	"common": 0.7
+  },
+
+  "inputSlot": 5
+}
