@@ -1,0 +1,73 @@
+{
+  "objectName" : "fu_powersensorlarge",
+  "printable" : false,
+    "colonyTags" : [ "science" ],
+  "rarity" : "Common",
+  "description" : "A large sensor that displays power levels flowing into it. This one goes up to 128",
+  "shortdescription" : "^cyan;Large Power Sensor^white;",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 1000,
+
+  "inventoryIcon" : "fu_powersensorlargeicon.png",
+
+  "orientations" : [
+    {
+      "image" : "fu_powersensorlarge.png:base",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "fu_powersensorlarge.png:base",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "fu_powersensorlarge.png:base",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "fu_powersensorlarge.png:base",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "fu_powersensorlarge.png:base",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "right" ],
+      "direction" : "right"
+    }
+  ],
+  
+  "scripts" : [ "/objects/power/fu_powersensorlarge/fu_powersensorlarge.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 20,
+
+  "animation" : "isn_powersensor.animation",
+  "animationParts" : {
+    "num" : "fu_powersensorlarge_num.png",
+    "base" : "fu_powersensorlarge.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 0] ],
+
+  "isn_powerReciever" : true,
+  "isn_freePower" : true
+}
