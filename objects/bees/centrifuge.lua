@@ -9,6 +9,8 @@ function init(virtual)
 	storage.combsProcessed = storage.combsProcessed or { count = 0 }
 	--sb.logInfo("centrifuge: %s", storage.combsProcessed)
 
+	combsPerJar = 3 -- ref. recipes
+
 	storage.init = 1
 
 	object.setInteractive(true)
@@ -66,6 +68,16 @@ function update(dt)
 		end
 	end
 
+	if storage.combsProcessed and storage.combsProcessed.count > 0 then
+		-- discard the stash if unclaimed by a jarrer within a reasonable time (twice the craft delay)
+		storage.combsProcessed.stale = (storage.combsProcessed.stale or (self.initialCraftDelay * 2)) - 1
+		if storage.combsProcessed.stale == 0 then
+			drawHoney() -- effectively clear the stash, stopping the jarrer from getting it
+			--sb.logInfo ("stash dropped")
+		--else sb.logInfo ("stash drop in %s time units", storage.combsProcessed.stale)
+		end
+	end
+
 	animator.setAnimationState("centrifuge", "idle")
 	self.craftDelay = self.initialCraftDelay
 end
@@ -100,10 +112,10 @@ function stashHoney(comb)
 	if jar then
 		if storage.combsProcessed == nil then storage.combsProcessed = { count = 0 } end
 		if storage.combsProcessed.type == jar then
-			storage.combsProcessed.count = storage.combsProcessed.count + 1
+			storage.combsProcessed.count = math.min(storage.combsProcessed.count + 1, combsPerJar) -- limit to one jar's worth  in stash at any given time
+			storage.combsProcessed.stale = nil
 		else
-			storage.combsProcessed.type = jar
-			storage.combsProcessed.count = 1
+			storage.combsProcessed = { type = jar, count = 1 }
 		end
 		--sb.logInfo("STASH: %s %s", storage.combsProcessed.count,storage.combsProcessed.type)
 	end
