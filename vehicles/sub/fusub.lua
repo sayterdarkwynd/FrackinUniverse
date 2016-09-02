@@ -145,11 +145,11 @@ function update()
     
   elseif (animState=="sinking") then
     local sinkAngle=-math.pi*0.3
-  
+    animator.setParticleEmitterActive("bubbles", false)
     self.angle=updateSinking(waterFactor, self.angle,sinkAngle)
 
   elseif (animState=="idle") then
-
+    animator.setParticleEmitterActive("bubbles", false)
     local healthFactor = storage.health / self.maxHealth
     local waterSurface = self.maxGroundSearchDistance
     self.waterBounds=mcontroller.localBoundBox()
@@ -224,10 +224,12 @@ function updateDriving()
     vehicle.setDamageTeam(world.entityDamageTeam(driverThisFrame))
 -- movement    
     if vehicle.controlHeld("drivingSeat", "left") then
+      animator.setParticleEmitterActive("bubbles", false)
       mcontroller.approachXVelocity(-self.targetMoveSpeed, self.moveControlForce)
       moving = true
       facing = -1
     elseif vehicle.controlHeld("drivingSeat", "right") then
+      animator.setParticleEmitterActive("bubbles", false)
       mcontroller.approachXVelocity(self.targetMoveSpeed, self.moveControlForce)
       moving = true
       facing = 1
