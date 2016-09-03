@@ -1,4 +1,4 @@
-efunction update(dt)
+function update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
   local powerLevel = isn_getCurrentPowerInput(false)
   ---sb.logInfo("PSRD: powerLevel is " .. powerLevel)

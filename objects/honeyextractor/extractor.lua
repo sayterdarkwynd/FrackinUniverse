@@ -38,23 +38,11 @@ function honeyCheck()
 			self.honeyType = "honeyjar"
 			self.doHoney = true
 	end
-	if contents[3].name == "ironcomb" then
-			self.honeyType = "honeyjar"
-			self.doHoney = true
-	end
-	if contents[3].name == "tungstencomb" then
-			self.honeyType = "honeyjar"
-			self.doHoney = true
-	end
-	if contents[3].name == "titaniumcomb" then
-			self.honeyType = "honeyjar"
-			self.doHoney = true
-	end
-	if contents[3].name == "durasteelcomb" then
-			self.honeyType = "honeyjar"
-			self.doHoney = true
-	end
 	if contents[3].name == "coppercomb" then
+			self.honeyType = "honeyjar"
+			self.doHoney = true
+	end
+	if contents[3].name == "ironcomb" then
 			self.honeyType = "honeyjar"
 			self.doHoney = true
 	end
@@ -66,7 +54,7 @@ function honeyCheck()
 			self.honeyType = "honeyjar"
 			self.doHoney = true
 	end
-	if contents[3].name == "preciouscomb" then
+	if contents[3].name == "titaniumcomb" then
 			self.honeyType = "honeyjar"
 			self.doHoney = true
 	end
@@ -92,6 +80,10 @@ function honeyCheck()
 	end
 	if contents[3].name == "flowercomb" then
 			self.honeyType = "floralhoneyjar"
+			self.doHoney = true
+	end
+	if contents[3].name == "minercomb" then
+			self.honeyType = "honeyjar"
 			self.doHoney = true
 	end
 	if contents[3].name == "volcaniccomb" then

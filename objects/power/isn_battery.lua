@@ -9,7 +9,7 @@ end
 
 function update(dt)
 	if not storage.init then
-		sb.logInfo ('battery ' .. entity.id() .. ' stored power = ' .. (world.getObjectParameter(entity.id(), 'isnStoredPower') or 'nil'))
+		-- sb.logInfo ('battery ' .. entity.id() .. ' stored power = ' .. (world.getObjectParameter(entity.id(), 'isnStoredPower') or 'nil'))
 		storage.currentstoredpower = world.getObjectParameter(entity.id(), 'isnStoredPower') or 0
 		storage.init = true
 	end
