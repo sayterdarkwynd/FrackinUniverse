@@ -103,7 +103,8 @@ function isn_requiredPowerValue(persupply)
 
 	-- If requested, get the number of connected active power supplies and split the power requirement equally across them
 	-- (mainly because we don't know which PSU is calling us)
-	local psus = persupply and isn_countCurrentPowerInputs()
+	local psus = 0
+	if persupply then psus = isn_countCurrentPowerInputs() end
 	if psus == nil then return nil end
 
 	return psus > 0 and req / psus or req
