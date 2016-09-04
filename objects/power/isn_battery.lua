@@ -4,7 +4,7 @@ function init(virtual)
 	if storage.currentstoredpower == nil then storage.currentstoredpower = 0 end
 	if storage.powercapacity == nil then storage.powercapacity = config.getParameter("isn_batteryCapacity") end
 	if storage.voltage == nil then storage.voltage = config.getParameter("isn_batteryVoltage") end
-	if storage.active == nil then storage.active = true end
+	if storage.active == nil then storage.active = onInputNodeChange() end
 end
 
 function update(dt)
