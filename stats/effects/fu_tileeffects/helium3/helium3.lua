@@ -3,22 +3,22 @@ function init()
   self.movementParams = mcontroller.baseParameters()
   activateVisualEffects()
   self.liquidMovementParameter = {
-    gravityMultiplier = 0.95,
-    groundForce = 100,
+    gravityMultiplier = 0.75,
+    groundForce = 80,
     airForce = 50,
     airFriction = 0.5,
-    liquidForce = 30,
-    liquidFriction = 0.0,
-    liquidImpedance = 0.24,
-    liquidBuoyancy = 0.92,
-    minimumLiquidPercentage = 0.5,
+    liquidForce = 20,
+    liquidFriction = 0.1,
+    liquidImpedance = 0.1,
+    liquidBuoyancy = 0.1,
+    minimumLiquidPercentage = 0.2,
     liquidJumpProfile = {
-      jumpSpeed = 60.0,
-      jumpControlForce = 1150.0,
+      jumpSpeed = 70.0,
+      jumpControlForce = 550.0,
       jumpInitialPercentage = 0.75,
-      jumpHoldTime = 0.2,
+      jumpHoldTime = 0.05,
       multiJump = false,
-      reJumpDelay = 0.05,
+      reJumpDelay = 1.05,
       autoJump = false,
       collisionCancelled = true
     }

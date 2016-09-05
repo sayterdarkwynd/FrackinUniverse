@@ -9,7 +9,8 @@ function init()
     {stat = "protoImmunity", amount = 1},
     {stat = "liquidnitrogenImmunity", amount = 1},
     {stat = "nitrogenfreezeImmunity", amount = 1},
-    {stat = "iceslipImmunity", amount = 1}
+    {stat = "iceslipImmunity", amount = 1},
+    {stat = "extremepressureProtection", amount = 1}
   })
 end
 
