@@ -4,12 +4,13 @@ function init(virtual)
 	if storage.currentstoredpower == nil then storage.currentstoredpower = 0 end
 	if storage.powercapacity == nil then storage.powercapacity = config.getParameter("isn_batteryCapacity") end
 	if storage.voltage == nil then storage.voltage = config.getParameter("isn_batteryVoltage") end
-	if storage.active == nil then storage.active = true end
+	if storage.active == nil then storage.active = onInputNodeChange() end
+	if storage.excessCurrent == nil then storage.active = false end
 end
 
 function update(dt)
 	if not storage.init then
-		sb.logInfo ('battery ' .. entity.id() .. ' stored power = ' .. (world.getObjectParameter(entity.id(), 'isnStoredPower') or 'nil'))
+		-- sb.logInfo ('battery ' .. entity.id() .. ' stored power = ' .. (world.getObjectParameter(entity.id(), 'isnStoredPower') or 'nil'))
 		storage.currentstoredpower = world.getObjectParameter(entity.id(), 'isnStoredPower') or 0
 		storage.init = true
 	end
@@ -25,17 +26,22 @@ function update(dt)
 	end
 	
 	local powerinput = isn_getCurrentPowerInput(true)
-	if powerinput >= 1 then
+	if powerinput and powerinput >= 1 then
 		storage.currentstoredpower = storage.currentstoredpower + powerinput
 		-- sb.logInfo(string.format("Storing %.2fu, now at %.2fu", powerinput, storage.currentstoredpower))
 	end
 
-	-- drain power according to attached devices; max drain is storage.voltage
-	-- without the max drain, a field generator will drain each of three 8u batteries at a rate of 24u per battery state update
-	local poweroutput = math.min(storage.voltage, isn_sumPowerActiveDevicesConnectedOnOutboundNode(0))
-	if poweroutput > 0 and storage.currentstoredpower > 0 then
-		storage.currentstoredpower = storage.currentstoredpower - poweroutput
-		-- sb.logInfo(string.format("Draining %.2fu, now at %.2fu", poweroutput, storage.currentstoredpower))
+	if storage.active then
+		-- drain power according to attached devices; max drain is storage.voltage
+		local poweroutput = isn_sumPowerActiveDevicesConnectedOnOutboundNode(0)
+		storage.excessCurrent = poweroutput > storage.voltage
+		animator.setAnimationState("status", storage.excessCurrent and "error" or "on")
+		if poweroutput > 0 and storage.currentstoredpower > 0 and not storage.excessCurrent then
+			storage.currentstoredpower = storage.currentstoredpower - poweroutput
+			-- sb.logInfo(string.format("Draining %.2fu, now at %.2fu", poweroutput, storage.currentstoredpower))
+		end
+	else
+		animator.setAnimationState("status", "off")
 	end
 	
 	storage.currentstoredpower = math.min(storage.currentstoredpower, storage.powercapacity)
@@ -47,9 +53,14 @@ function isn_getCurrentPowerStorage()
 	return isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
 end
 
+function isn_hasStoredPower()
+	if not storage.active then return false end  -- This might be pointless. Need to think about it. -r
+	return storage.currentstoredpower > 0
+end
+
 function isn_getCurrentPowerOutput(divide)
-	if not storage.active then return 0 end  -- This might be pointless. Need to think about it. -r
-	if storage.currentstoredpower <= 0 then return 0 end
+	if not isn_hasStoredPower() or storage.excessCurrent then return 0 end
+
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
 	
 	-- if divisor < 1 then return 0 end
@@ -63,7 +74,8 @@ function onNodeConnectionChange()
 end
 
 function onInputNodeChange(args)
-	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
+	-- If either input is connected and at logic low, go inactive. This allows switches to work.
+	storage.active = (not object.isInputNodeConnected(0) or object.getInputNodeLevel(0)) and (not object.isInputNodeConnected(1) or object.getInputNodeLevel(1))
 end
 
 function die()

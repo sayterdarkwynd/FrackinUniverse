@@ -10,7 +10,7 @@ end
 function isn_getCurrentPowerOutput(divide)
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
 	local voltage = isn_getCurrentPowerInput(true)
-	if divide and divisor > 0 then return voltage / divisor
+	if voltage and divide and divisor > 0 then return voltage / divisor
 	else return voltage end
 end
 

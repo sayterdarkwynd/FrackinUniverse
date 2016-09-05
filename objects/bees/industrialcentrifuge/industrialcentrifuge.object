@@ -1,0 +1,55 @@
+{
+  // If you alter scriptDelta or craftDelay then set the honey jarrer's scriptDelta to the product of these
+
+  "objectName" : "bees_industrialcentrifuge",
+  "colonyTags" : [ "hive", "bees", "machines" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "Extract items from combs! More efficient than the iron centrifuge.",
+  "shortdescription" : "^orange;Industrial Centrifuge^white;",
+  "subtitle" : "Extract items from combs.",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 200,
+  "objectType" : "container",
+
+  "hydrophobic" : false,
+
+  "inventoryIcon" : "industrialcentrifugeicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "industrialcentrifuge.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.4,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "animation" : "industrialcentrifuge.animation",
+  "animationParts" : {
+    "centrifuge" : "industrialcentrifuge.png"
+  },
+
+  "scripts" : [ "/objects/bees/centrifuge.lua", "/objects/bees/honeymap.lua" ],
+  "scriptDelta" : 100,
+  "recipeGroup" : "industrialcentrifuge",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 17,
+  "uiConfig" : "/interface/bees/industrialcentrifuge/industrialcentrifuge.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "craftDelay": 1,
+  "itemChances": {
+	"rarest": 0.55,
+	"rare": 0.65,
+	"uncommon": 0.75,
+	"normal": 0.85,
+	"common": 0.95
+  },
+
+  "inputSlot": 17
+}

@@ -32,7 +32,7 @@ function isn_getCurrentPowerOutput(divide)
 	elseif location[2] > 700 then genmult = 3 end
 	
 	generated = generated * genmult
-	generated = math.min(generated,5)
+	generated = math.min(generated,6)
 	
 	local summationForDebug = string.format("P %.2f L %.2f", generated, light)
 	world.debugText(summationForDebug,{location[1]-(string.len(summationForDebug)*0.25),location[2]-3.5},"cyan")

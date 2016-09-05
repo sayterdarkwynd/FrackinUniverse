@@ -18,6 +18,14 @@
           "10" : {"frames" : 1}
         }
       },
+      "status" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1},
+          "on" : {"frames" : 1},
+          "error" : {"frames" : 1}
+        }
+      },
 	  "base" : {
 	    "default" : "base",
 		"states" : { "base" : {"frames" : 1}}
@@ -45,6 +53,20 @@
             "8" : {"properties" : {"image" : "<partImage>:meter.8"}},
             "9" : {"properties" : {"image" : "<partImage>:meter.9"}},
             "10" : {"properties" : {"image" : "<partImage>:meter.10"}}
+          }
+        }
+      },
+      "status" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : false,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "status" : {
+            "off" : {"properties" : {"image" : "<partImage>:status.off"}},
+            "on" : {"properties" : {"image" : "<partImage>:status.on"}},
+            "error" : {"properties" : {"image" : "<partImage>:status.error"}}
           }
         }
       },
