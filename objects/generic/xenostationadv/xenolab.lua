@@ -1,4 +1,10 @@
 local recipes = {
+{inputs = { sweetscoopseed=1 }, outputs = { gene_stealth=1 }, time = 1.2},
+{inputs = { lumivineseed=1 }, outputs = { gene_stealth=1 }, time = 1.2},
+{inputs = { gemglowseed=1 }, outputs = { gene_stealth=1 }, time = 1.2},
+{inputs = { wildsweetscoopseed=1 }, outputs = { gene_stealth=1 }, time = 1.2},
+{inputs = { wildlumivineseed=1 }, outputs = { gene_stealth=1 }, time = 1.2},
+{inputs = { wildgemglowseed=1 }, outputs = { gene_stealth=1 }, time = 1.2}, 
 {inputs = { mushroomseed=1 }, outputs = { gene_regen=1 }, time = 1.2},
 {inputs = { kirifruitseed=1 }, outputs = { gene_energy=1 }, time = 1.2},
 {inputs = { nakatiseed=1 }, outputs = { gene_defense=1 }, time = 1.2},
