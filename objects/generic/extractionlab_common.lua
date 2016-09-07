@@ -848,7 +848,7 @@ local recipes = {
 	{ inputs = { wildvines = 1 }, outputs = { tissueculture = { 4, 4, 7 } } },
 	-- vanilla ores
 	{ inputs = { aegisaltore = 1 }, outputs = { rawminerals = { 7, 7, 9 } } },
-	{ inputs = { coalore = { 25, 25, 12 } }, outputs = { fu_carbon = 1 } },
+	{ inputs = { coalore = { 10, 10, 5 } }, outputs = { fu_carbon = 1 } },
 	{ inputs = { copperore = 1 }, outputs = { rawminerals = { 4, 4, 6 } } },
 	{ inputs = { corefragmentore = 2 }, outputs = { volatilepowder = { 1, 1, 2 }, ammoniumsulfate = { 1, 1, 2 } } },
 	{ inputs = { diamond = 1 }, outputs = { fu_carbon = { 8, 8, 11 } } },
