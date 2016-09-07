@@ -847,7 +847,7 @@ local recipes =
 {inputs = { hivebomb=1 }, outputs = { tissueculture=5 }, time = 0.45},
 
 -- vanilla ores
-{inputs = { coalore=25 }, outputs = { fu_carbon=1 }, time = 0.45},
+{inputs = { coalore=10 }, outputs = { fu_carbon=1 }, time = 0.45},
 {inputs = { copperore=1 }, outputs = { rawminerals=4 }, time = 0.45},
 {inputs = { ironore=1 }, outputs = { liquidironfu=2 }, time = 1.0},
 {inputs = { silverore=1 }, outputs = { rawminerals=5 }, time = 0.45},

@@ -849,7 +849,7 @@ local recipes =
 {inputs = { carcass1=1 }, outputs = { tissueculture=24,geneticmaterial=24  }, time = 0.1},
 {inputs = { carcass2=1 }, outputs = { tissueculture=24,geneticmaterial=24  }, time = 0.1},
 -- vanilla ores
-{inputs = { coalore=12 }, outputs = { fu_carbon=1 }, time = 0.1},
+{inputs = { coalore=5 }, outputs = { fu_carbon=1 }, time = 0.1},
 {inputs = { copperore=1 }, outputs = { rawminerals=6 }, time = 0.1},
 {inputs = { ironore=1 }, outputs = { liquidironfu=4 }, time = 0.1},
 {inputs = { silverore=1 }, outputs = { rawminerals=8 }, time = 0.1},
