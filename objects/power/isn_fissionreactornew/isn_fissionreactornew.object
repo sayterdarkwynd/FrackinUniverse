@@ -1,7 +1,7 @@
 {
-  "objectName" : "isn_fissionreactor",
+  "objectName" : "isn_fissionreactornew",
   "rarity" : "Common",
-    "colonyTags" : [ "science" ],
+    "colonyTags" : [ "science", "power", "radioactive" ],
   "category" : "wire",
   "objectType" : "container",
   "price" : 5000,
@@ -17,38 +17,35 @@
   "humanDescription" : "Let's not go overboard with this...",
   "hylotlDescription" : "I'll have to dispose of the toxic waste regularly.",
 
-  "inventoryIcon" : "isn_fissionreactor_inv.png",
+  "inventoryIcon" : "isn_fissionreactornew_inv.png",
   "orientations" : [
     {
-      "dualImage" : "isn_fissionreactor_base.png",
+      "dualImage" : "isn_fissionreactornew_base.png",
       "imagePosition" : [0, 0],
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
   ],
 
-  "animation" : "isn_fissionreactor.animation",
+  "animation" : "isn_fissionreactornew.animation",
   "animationParts" : {
-    "screen" : "isn_fissionreactor_screen.png",
-    "hazard" : "isn_fissionreactor_hazard.png",
-    "base" : "isn_fissionreactor_base.png"
+    "screen" : "isn_fissionreactornew_screen.png",
+    "hazard" : "isn_fissionreactornew_hazard.png",
+    "base" : "isn_fissionreactornew_base.png"
   },
   "animationPosition" : [0, 0],
   
   "slotCount" : 5,
-  "uiConfig" : "/objects/power/isn_fissionreactor/isn_fissionreactor.config",
+  "uiConfig" : "/objects/power/isn_fissionreactornew/isn_fissionreactornew.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/objects/power/isn_fissionreactor/isn_fissionreactor.lua",
+  "scripts" : [ "/objects/power/isn_fissionreactornew/isn_fissionreactor.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 80,
   
   "inputNodes" : [ [2, 4] ],
   "outputNodes" : [ [2, 2] ],
-  "isn_powerSupplier" : true,
-  "breakDropOptions" : [
-    [ [ "isn_fissionreactornew", 1, { } ] ]
-  ]
+  "isn_powerSupplier" : true
 }

@@ -17,19 +17,32 @@
 
   "inventoryIcon" : "nanofabricatoricon.png",
   "orientations" : [
+  
     {
-      "dualImage" : "nanofabricator.png:<color>.<frame>",
+      "imageLayers" : [ { "image" : "nanofabricator.png:<color>.<frame>", "fullbright" : true }, { "image" : "nanofabricatorlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
 
       "imagePosition" : [0, 0],
       "frames" : 4,
-      "animationCycle" : 0.5,
+      "animationCycle" : 1,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "nanofabricator.png:<color>.<frame>", "fullbright" : true }, { "image" : "nanofabricatorlit.png:<color>.<frame>" } ],
+      "direction" : "right",
 
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
     }
   ],
+  
   "scripts" : [ "/scripts/npcToyObject.lua" ],
   "npcToy" : {
     "influence" : [
