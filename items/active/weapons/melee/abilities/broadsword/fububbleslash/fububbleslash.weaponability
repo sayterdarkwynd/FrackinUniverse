@@ -2,29 +2,33 @@
   "animationParts" : { },
   "animationCustom" : {
     "sounds" : {
-      "fireKunai" : [ "/sfx/gun/plasma_pistol1.ogg" ]
+      "fireKunai" : [ "/sfx/gun/wormgun1.ogg" ]
     }
   },
 
   "ability" : {
     "name" : "Bubble Slash",
-    "type" : "fukunaiblast",
-    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/fukunaiblast/fukunaiblast.lua"],
+    "type" : "fububbleslash",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/fuwaterslash/fuwaterslash.lua"],
     "class" : "KunaiBlast",
 
     // timing and angle adjust to launch projectiles during fire stance
     "projectileTimesAndAngles" : [
-      [0.02, -20],
-      [0.10, -35],
-      [0.18, -50]
+      [0.005, 40],
+      [0.013, 20],
+      [0.021, 10],
+      [0.025, 0],
+      [0.029, -10],
+      [0.037, -20],
+      [0.045, -40]
     ],
-    "projectileOffset" : [1.75, -2.0],
-    "projectileType" : "crystalshardsmall",
+    "projectileOffset" : [2.05, 0.0],
+    "projectileType" : "unfriendlybubble",
     "projectileParameters" : {
-      "baseDamage" : 6
+      "baseDamage" : 1
     },
 
-    "baseDamage" : 6,
+    "baseDamage" : 2,
     "energyUsage" : 60,
     "cooldownTime" : 1.5,
 
