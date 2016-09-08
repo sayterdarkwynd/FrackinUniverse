@@ -1,0 +1,55 @@
+{
+  "objectName" : "wildcrystalplantseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "description" : "A Crystal plant. Truns out money does grow on trees.",
+  "category" : "seed",
+  "shortdescription" : "Crystal Plant Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "hasObjectItem" : false,
+  "learnBlueprintsOnPickup" : [ "crystallite" ],
+  "apexDescription" : "Grow your own crystals. Handy.",
+  "avianDescription" : "A plant that grows crystals. It's magic!",
+  "floranDescription" : "Floran puzzled by shiny plant.",
+  "glitchDescription" : "Concerned. Farming these in abundance could damage the economy.",
+  "humanDescription" : "When I was little, I always wanted a money tree. This is the next best thing.",
+  "hylotlDescription" : "A plant which sprouts glorious glowing crystals.",
+  "novakidDescription" : "A famrable crystal! Now we're talkin'!",
+
+  "inventoryIcon" : "crystalplantseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "crystalplantseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "radioMessagesOnPickup" : [ "pickupseed" ],
+
+  "stages" : [
+    {
+      "duration" : [820, 1420]
+    },
+    {
+      "duration" : [820, 1420]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "fucrystalplantHarvest"
+    }
+  ],
+
+  "breakDropOptions" : [
+    [ [ "crystalplantseed", 1, { } ] ]
+  ],
+
+  "maxImmersion" : 0.25
+}

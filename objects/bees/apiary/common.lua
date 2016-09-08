@@ -282,7 +282,7 @@ function beeSting()
 	if math.random(100) < 100 * self.beeStingChance then
 		local location = entity.position()
 		if self.beeStingOffset then
-			world.spawnProjectile("stingstatusprojectile", { location[1] + self.beeStingOffset[1], location[2] + self.beeStingOffset[2], entity.id() })
+			world.spawnProjectile("stingstatusprojectile", { location[1] + self.beeStingOffset[1], location[2] + self.beeStingOffset[2]}, entity.id())
 		else
 			world.spawnProjectile("stingstatusprojectile", location, entity.id())
 		end
@@ -531,7 +531,7 @@ end
 
 
 function workingBees()
-	beeSpawnList = {
+	beeSpawnList = beeSpawnList or {
 --[[
 		class = {
 			active = one of "day", "night", "always"
@@ -629,6 +629,7 @@ function workingBees()
 			end
 
 			if config.specialPost then config.specialPost(true) end
+			if config.sting then beeSting() end
 
 			expelQueens(queen)  -- bitches this be MY house. (Kicks all queens but 1 out of the apiary)
 		end
@@ -642,7 +643,8 @@ end
 
 
 function breedingBees()
-	beeComboList = {["normalforest"] = "hardy",
+	beeComboList = beeComboList or {
+					["normalforest"] = "hardy",
 					["arcticvolcanic"] = "adaptive",
 					["hardyadaptive"] = "exceptional",
 					["aridadaptive"] = "miner",

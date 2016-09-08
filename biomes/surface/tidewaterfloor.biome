@@ -77,7 +77,7 @@
         "distribution" : "/biomes/distributions.config:scatteredSmall",
 
         "type" : "grass",
-        "grasses" : [ "corals", "seaweed", "waterplant2", "waterplant3" ]
+        "grasses" : [ "corals", "seaweed", "tidewatergrass" ]
       },
       {
         "mode" : "floor",
@@ -207,7 +207,22 @@
         "treeStemList" : [ "kelp" ],
         "treeFoliageList" : [ "kelpy" ]
       },
-
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:surfaceCrops",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+                   [0.50, "wildlumivineseed" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           }, 
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -218,9 +233,17 @@
         "objectSets" : [
           {
             "pool" : [ 
+            [0.5, "wildreefpodseed" ],
+            [0.5, "wildfuspongeweedseed" ],
+            [0.5, "wildgoldenseaspongeplant" ],            
             [0.5, "wildcoralcreepseed" ],
             [0.5, "wildcellpodsplant" ],
-            [0.5, "wildpiruseed" ]
+            [0.5, "wildgemglowseed" ],
+            [0.5, "wildpiruseed" ],
+            [0.25, "wildcellpodsplant" ], 
+            [0.25, "wildkamaranpodsplant" ],
+            [0.35, "wildnakatiseed" ],
+            [0.25, "wildaquapodseed" ]             
             ],
             "parameters" : {
               "startingStage" : 3
@@ -238,9 +261,7 @@
         "objectSets" : [
           {
             "pool" : [ 
-            [0.5, "wildreefpodseed" ],
-            [0.5, "wildfuspongeweedseed" ],
-            [0.5, "wildgoldenseaspongeplant" ] 
+ 
             ],
             "parameters" : {
               "startingStage" : 3
@@ -249,5 +270,50 @@
         ]
       }
     ]
-  }
+  },
+  "undergroundPlaceables" : {
+    "items" : [ 
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffCommon",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+                   [0.50, "wildlumivineseed" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },    
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [0.5, "wildcoralcreepseed" ],
+            [0.5, "wildcellpodsplant" ],
+            [0.5, "wildgemglowseed" ],
+            [0.5, "wildpiruseed" ],
+            [0.25, "wildcellpodsplant" ], 
+            [0.25, "wildkamaranpodsplant" ],
+            [0.35, "wildnakatiseed" ]
+            ],
+            "parameters" : {
+              "startingStage" : 3
+            }
+          }
+        ]
+      }    
+    
+    ]
+  }  
 }
