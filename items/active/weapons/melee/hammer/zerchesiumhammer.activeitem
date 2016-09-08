@@ -1,21 +1,22 @@
 {
-  "itemName" : "solarihammer",
+  "itemName" : "zerchesiumhammer",
   "price" : 900,
   "maxStack" : 1,
+  "level" : 4,
   "rarity" : "uncommon",
-  "description" : "Crystalling impact weapon.",
-  "shortdescription" : "Lunari Hammer",
+  "description" : "Shiny, dangerous and fun!",
+  "shortdescription" : "Zerchesium Morningstar",
   "tooltipKind" : "sword",
   "category" : "hammer",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","hammer"],
 
-  "inventoryIcon" : "solarihammer.png",
+  "inventoryIcon" : "zerchesiumhammer.png",
 
   "animation" : "hammer.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "solarihammer.png"
+    "blade" : "zerchesiumhammer.png"
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
@@ -28,12 +29,12 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "physical",
 
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
-    "fireTime" : 1,
-    "baseDps" : 13.6,
+    "fireTime" : 1.0,
+    "baseDps" : 13.5,
     "stances" : {
       "idle" : {
         "armRotation" : -10,
@@ -72,7 +73,7 @@
     }
   },
 
-  "altAbilityType" : "fugroundslamice",
+  "altAbilityType" : "fugroundslam",
   "altAbility" : { },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

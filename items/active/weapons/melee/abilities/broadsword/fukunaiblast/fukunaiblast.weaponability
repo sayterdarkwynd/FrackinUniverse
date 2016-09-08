@@ -1,0 +1,52 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "fireKunai" : [ "/sfx/gun/plasma_pistol1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Bubble Slash",
+    "type" : "fukunaiblast",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/fukunaiblast/fukunaiblast.lua"],
+    "class" : "KunaiBlast",
+
+    // timing and angle adjust to launch projectiles during fire stance
+    "projectileTimesAndAngles" : [
+      [0.02, -20],
+      [0.10, -35],
+      [0.18, -50]
+    ],
+    "projectileOffset" : [1.75, -2.0],
+    "projectileType" : "crystalshardsmall",
+    "projectileParameters" : {
+      "baseDamage" : 6
+    },
+
+    "baseDamage" : 6,
+    "energyUsage" : 60,
+    "cooldownTime" : 1.5,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.2,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.25,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}
