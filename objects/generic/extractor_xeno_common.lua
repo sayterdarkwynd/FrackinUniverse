@@ -1,3 +1,4 @@
+require "/scripts/fu_storageutils.lua"
 local recipes
 
 function init(args)
@@ -78,28 +79,6 @@ function getValidRecipes(query)
 	return filter(recipes, function(l) return subset(l.inputs, query) end)
 end
 
-function getOutSlotsFor(something)
-	-- TODO: use world.containerItemsFitWhere? Seems not too useful
-	local empty = {} -- empty slots in the outputs
-	local slots = {} -- slots with a stack of "something"
-
-	for i = 3, 11 do -- iterate all output slots
-		local stack = world.containerItemAt(entity.id(), i) -- get the stack on i
-		if stack then -- not empty
-			if stack.name == something then -- its "something"
-				table.insert(slots,i) -- possible drop slot
-			end
-		else -- empty
-			table.insert(empty, i)
-		end
-	end
-
-	for _, e in pairs(empty) do -- add empty slots to the end
-		table.insert(slots,e)
-	end
-	return slots
-end
-
 function update(dt)
 	if not self.mintick then init() end
 
@@ -116,20 +95,8 @@ function update(dt)
 	if self.timer <= 0 then
 		if self.output then
 			for k,v in pairs(self.output) do
-				local leftover = {name = k, count = techlevelMap(v)}
-				local slots = getOutSlotsFor(k)
-				for _, i in pairs(slots) do
-					leftover = world.containerPutItemsAt(entity.id(), leftover, i)
-					if leftover == nil then
-						break
-					end
-				end
-
-				if leftover then
-					world.spawnItem(leftover.name, entity.position(), leftover.count)
-				end
+				fu_storeItems({name = k, count = techlevelMap(v)}, {0, 1, 2}, true)
 			end
-
 			self.output = nil
 			self.timer = self.mintick --reset timer to a safe minimum
 		else
