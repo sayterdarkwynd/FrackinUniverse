@@ -7,7 +7,7 @@
   "printable" : false,
   "objectType" : "container",
   "price" : 1450,
-  "lightColor" : [75, 75, 170],
+  "lightColor" : [ 100, 176, 191 ],
   "inventoryIcon" : "quantumextractoricon.png",
   "description" : "The ultimate in extraction technology. Requires 5u ^orange;power^white; ",
   "shortdescription" : "^cyan;Quantum Extractor (roof)^white;",
@@ -35,11 +35,13 @@
   "isn_powerReciever" : true,
   "isn_requiredPower" : 5,
   "isn_liquidCollector" : false,
+  "fu_mintick" : 0,
+  "fu_stationTechLevel" : 3,
   
   "scripts" : [ 
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua",
-  		"/objects/power/quantumextractor/quantumextractor.lua"
+		"/objects/generic/extractionlab_common.lua"
    	      ],
    	      
   "scriptDelta" : 5,

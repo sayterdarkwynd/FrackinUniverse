@@ -1,0 +1,24 @@
+{
+  "itemName" : "sweetscoop",
+  "rarity" : "Common",
+  "foodValue" : 4,
+  "price" : 60,
+  "inventoryIcon" : "sweetscoop.png",
+  "description" : "The tender bulb of a sweetscoop plant. Quite delicious and filling.",
+  "shortdescription" : "Sweetscoop",
+  "category" : "food",
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 20.0,
+  "//effects" : [ [
+    {
+        "effect" : "foodheal50",
+        "duration" : 60
+    }
+  ] ],
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}
