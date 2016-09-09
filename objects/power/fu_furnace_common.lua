@@ -7,7 +7,10 @@ function init(virtual)
 	storage.currentoutput = nil
 	storage.bonusoutputtable = nil
 	storage.activeConsumption = false
-	self.timer = 1.5
+
+	self.timerInitial = config.getParameter ("fu_timer", 1)
+	self.extraConsumptionChance = config.getParameter ("fu_extraConsumptionChance", 0)
+	self.timer = self.timerInitial
 end
 
 function update(dt)
@@ -37,7 +40,7 @@ function update(dt)
 	storage.activeConsumption = true
 	
 	if world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}}) then
-		if math.random(1,4) == 1 then
+		if math.random() <= self.extraConsumptionChance then
 		  world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}})
 		end
 		if hasBonusOutputs(storage.currentinput) == true then
@@ -51,7 +54,7 @@ function update(dt)
 		end
 		
 		world.containerAddItems(entity.id(), {name = storage.currentoutput, count = self.orerandom, data={}})
-		self.timer = 0.5
+		self.timer = self.timerInitial
 	else
 		storage.activeConsumption = false
 		animator.setAnimationState("furnaceState", "idle")
