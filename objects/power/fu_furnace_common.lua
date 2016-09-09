@@ -1,3 +1,5 @@
+require "/scripts/fu_storageutils.lua"
+
 function init(virtual)
 	if virtual == true then return end
 	
@@ -48,12 +50,12 @@ function update(dt)
 				for key, value in pairs(storage.bonusoutputtable) do
 					if clearSlotCheck(key) == false then break end
 					if math.random(1,100) <= value then
-					  world.containerAddItems(entity.id(), {name = key, count = 1, data={}})
+						fu_storeItems({name = key, count = 1, data = {}}, {0}, true)
 					end
 			end
 		end
 		
-		world.containerAddItems(entity.id(), {name = storage.currentoutput, count = self.orerandom, data={}})
+		fu_storeItems({name = storage.currentoutput, count = self.orerandom, data = {}}, {0}, true)
 		self.timer = self.timerInitial
 	else
 		storage.activeConsumption = false
