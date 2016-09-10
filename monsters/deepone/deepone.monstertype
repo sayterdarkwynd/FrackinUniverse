@@ -1,6 +1,7 @@
 {
   "type" : "deepone",
-
+  "shortdescription" : "Deep One",
+  "description" : "This abomination has a hatred of all land-dwellers and will happily murder anything.",
   "categories" : [ "deepone" ],
   "parts" : [ "body" ],
 
@@ -11,17 +12,17 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/fulegacyscripts/ground/groundMonster.lua",
+      "/monsters/fulegacyscripts/ground/groundmonster.lua",
       "/scripts/pathing.lua",
       "/scripts/stateMachine.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua",
 
-      "/monsters/fulegacyscripts/ground/approachState.lua",
-      "/monsters/fulegacyscripts/ground/fleeState.lua",
-      "/monsters/fulegacyscripts/ground/wanderState.lua",
+      "/monsters/fulegacyscripts/ground/approachstate.lua",
+      "/monsters/fulegacyscripts/ground/fleestate.lua",
+      "/monsters/fulegacyscripts/ground/wanderstate.lua",
 
-      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"
+      "/monsters/fulegacyscripts/ground/skills/creategroundrangedattack.lua"
     ],
 
     "colors" : "deepone",
@@ -129,6 +130,7 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+    "capturable" : false
   }
 }

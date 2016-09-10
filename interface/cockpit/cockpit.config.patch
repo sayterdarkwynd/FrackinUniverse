@@ -64,36 +64,46 @@
   {
     "op" : "replace",
     "path" : "/threatLevelToColor",
-    "value" : [
-    [ 0, 170, 233], //TL 1
-    [ 16, 233, 0], //TL 2
-    [ 194, 233, 0 ], //TL 3
-    [ 235, 171, 0 ], //TL 4
-    [ 235, 100, 0], //TL 5
-    [ 235, 49, 0], //TL 6
-    [ 192, 32, 0], //TL 7
-    [ 255, 32, 50], //TL 8
-    [ 255, 0, 0], //TL 9
-    [ 160, 160, 160] //TL 10
-]
+    "value" : {
+	  "default" : [
+		[ 0, 170, 233], //TL 1
+		[ 16, 233, 0], //TL 2
+		[ 194, 233, 0 ], //TL 3
+		[ 235, 171, 0 ], //TL 4
+		[ 235, 100, 0], //TL 5
+		[ 235, 49, 0], //TL 6
+		[ 192, 32, 0], //TL 7
+		[ 255, 32, 50], //TL 8
+		[ 255, 0, 0], //TL 9
+		[ 255, 0, 0] //TL 10
+	  ],
+	  "moon" : [
+		[160, 160, 160]
+	  ]
+	}
   },
   
   
   {
     "op" : "replace",
     "path" : "/threatLevelToText",
-    "value" : [
-    "Harmless (I)",
-    "Low (II)",
-    "Moderate (III)", 
-    "Risky (IV)",
-    "Dangerous (V)",
-    "Extreme (VI)",
-    "Lethal (VII)",
-    "Impossible (VIII)",
-    "Immeasurable (IX)",
-    "Unknown"
-]
+    "value" : {
+	  "default" : [
+		"Harmless (I)",
+		"Low (II)",
+		"Moderate (III)", 
+		"Risky (IV)",
+		"Dangerous (V)",
+		"Extreme (VI)",
+		"Lethal (VII)",
+		"Impossible (VIII)",
+		"Immeasurable (IX)",
+		"Just No (X)"
+	  ],
+	  "moon" : [
+	    "Unknown"
+	  ]
+	}
   },
   
   
@@ -230,7 +240,7 @@
 
 {"op":"add","path":"/planetTypeToDescription/slimeworld",
 "value":["A ^#517f51;gelatinous^reset;, slimy world. High elasticity. Strange, ^red;massive lifeforms^reset; detected.",
-"^#517f51;Slime^reset;, forms almost this entire planet. ^red;Huge nocturnal creatures^reset; detected.",
+"^#517f51;Slime^reset; forms almost this entire planet. ^red;Huge nocturnal creatures^reset; detected.",
 "A bouncy, sticky ^#517f51;gelatinous^reset;, world. It is evident that this will make for some rather gross exploration."]},
 
 {"op":"add","path":"/planetTypeToDescription/sulphuric",
@@ -259,9 +269,9 @@
 "^#8cf387;Rainforest^reset; covers nearly the entire surface of this warm and inviting planet. ^green;Bamboo and other organic resources detected in large quantities.^reset;"]},
 
 {"op":"add","path":"/planetTypeToDescription/tidewater",
-"value":["This ^#008aff;tidewater^reset; world is subject to massive tidal forces. Ocean currents show fauna rich in ^orange;mutated nodules^reset; with interesting applications.",
-"^#008aff;Tidal^reset; forces are extra strong on this ocean world. Unusual ^orange;rare resources^reset; detected on the ocean floor.",
-"A ^#008aff;tidewater^reset; planet covered in sharp reefs, spike-like stone formations and ^orange;rare resources^reset;."]},
+"value":["This ^#008aff;tidewater^reset; world is subject to massive tidal forces. Ocean currents show fauna rich in ^orange;mutated nodules^reset; with interesting applications. ^cyan;Recommend: Poison protection^reset;",
+"^#008aff;Tidal^reset; forces are extra strong on this ocean world. Unusual ^orange;rare resources^reset; detected on the ocean floor. ^cyan;Recommend: Poison protection^reset;",
+"A ^#008aff;tidewater^reset; planet covered in sharp reefs, spike-like stone formations and ^orange;rare resources^reset;. ^cyan;Recommend: Poison protection^reset;"]},
 
 {"op":"add","path":"/planetTypeToDescription/urbanwasteland",
 "value":["A ^#848484;wasteland^reset; housing the remains of a once great civilization. Something awful happened here, long ago. ^#43a43a;Ancient ruins^reset; hold many lost treasures.",
@@ -270,7 +280,7 @@
 
 {"op":"add","path":"/planetTypeToDescription/ffunknown",
 "value":["^#e43774;Unknown^reset; interference prevents scanning of the planet surface. Proceed carefully. ^red;Potentially Lethal!^reset;",
-"Something here is ^red;blocking our scanners^reset;, leaving this planets composition essentially ^#e43774;unknown^reset;. ^red;Potentially Lethal!^reset;",
+"Something here is ^red;blocking our scanners^reset;, leaving this planet's composition essentially ^#e43774;unknown^reset;. ^red;Potentially Lethal!^reset;",
 "^#e43774;Unknown^reset; readings are confusing our scanners. I can glean nothing useful from them. ^red;Potentially Lethal!^reset;"]},
 
 {"op":"add","path":"/planetTypeToDescription/moon_desert",
@@ -340,7 +350,7 @@
 
 {"op":"add","path":"/planetTypeToDescription/magmadark",
 "value":["This ^red;dangerously hot^white; planet is chiefly composed of ^#ff1818;magma^white;. Remember, your resilient spirit is admirable, but it is not flame retardant.",
-               "The planet surface is ^red;dangerously hot^white;. Few creatures eek out an existence amongst the planet's vast oceans of ^#ff1818;magma^white;.",
+               "The planet surface is ^red;dangerously hot^white;. Few creatures eke out an existence amongst the planet's vast oceans of ^#ff1818;magma^white;.",
                "The beam site is a tiny island isolated in a sea of ^#ff1818;magma^white;. That you would consider visiting this ^red;searingly hot^white; planet speaks volumes of your fortitude."]},
 
 

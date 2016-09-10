@@ -52,6 +52,8 @@ function isn_countCurrentPowerInputs()
 	local connectedDevices
 	local psus = 0
 	local totalInput = 0
+	local hasPSU = false
+	local hasPassthrough = false
 
 	for iterator = 0, object.inputNodeCount() - 1 do
 		if object.getInputNodeLevel(iterator) then
@@ -101,7 +103,8 @@ function isn_requiredPowerValue(persupply)
 
 	-- If requested, get the number of connected active power supplies and split the power requirement equally across them
 	-- (mainly because we don't know which PSU is calling us)
-	local psus = persupply and isn_countCurrentPowerInputs()
+	local psus = 0
+	if persupply then psus = isn_countCurrentPowerInputs() end
 	if psus == nil then return nil end
 
 	return psus > 0 and req / psus or req
@@ -207,7 +210,7 @@ function isn_sumPowerActiveDevicesConnectedOnOutboundNode(node)
 					-- allow for the consumer's power requirement being spread across several supplies
 					local required = world.callScriptedEntity(value,"isn_requiredPowerValue", true)
 					if required ~= nil then voltagecount = voltagecount + required end
-					-- sb.logInfo(entity.id() .. ": Found a consumer, " .. value .. ", requiring " .. world.callScriptedEntity(value,"isn_requiredPowerValue", true) .. "; total increased to " .. voltagecount)
+					-- sb.logInfo(entity.id() .. ": Found a consumer, " .. value .. ", requiring " .. (required or 'nil') .. "; total increased to " .. voltagecount)
 				end
 			end
 		end

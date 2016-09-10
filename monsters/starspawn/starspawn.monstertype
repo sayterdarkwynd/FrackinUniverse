@@ -1,6 +1,7 @@
 {
   "type" : "starspawn",
-
+  "shortdescription" : "Star Spawn of Cthulhu",
+  "description" : "Nothing kind can come from these. They will eat your brains.",
   "categories" : [ "starspawn" ],
   "parts" : [ "body", "head", "staff" ],
 
@@ -10,17 +11,17 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/fulegacyscripts/ground/groundMonster.lua",
+      "/monsters/fulegacyscripts/ground/groundmonster.lua",
       "/scripts/pathing.lua",
       "/scripts/stateMachine.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua",
 
-      "/monsters/fulegacyscripts/ground/approachState.lua",
-      "/monsters/fulegacyscripts/ground/fleeState.lua",
-      "/monsters/fulegacyscripts/ground/wanderState.lua",
+      "/monsters/fulegacyscripts/ground/approachstate.lua",
+      "/monsters/fulegacyscripts/ground/fleestate.lua",
+      "/monsters/fulegacyscripts/ground/wanderstate.lua",
 
-      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"
+      "/monsters/fulegacyscripts/ground/skills/creategroundrangedattack.lua"
     ],
 
     "baseSkills" : [ "starspawnBlinkAttack" ],
@@ -132,6 +133,7 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+    "capturable" : false
   }
 }

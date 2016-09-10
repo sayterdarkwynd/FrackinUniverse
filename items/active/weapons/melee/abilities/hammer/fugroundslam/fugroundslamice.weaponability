@@ -1,0 +1,69 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : {
+          "properties" : {
+            "groundSlamPoint" : [0, 1.5]
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "groundSlamJump" : [ "/sfx/melee/hammer_hit_ground3.ogg", "/sfx/melee/hammer_hit_ground4.ogg" ],
+      "groundSlamFall" : [ "/sfx/tech/tech_dash.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Ice Slam",
+    "type" : "fugroundslamice",
+    "scripts" : ["/items/active/weapons/melee/abilities/hammer/fugroundslam/fugroundslamice.lua"],
+    "class" : "GroundSlam",
+
+    "energyUsage" : 80.0,
+    "cooldownTime" : 2.0,
+
+    "damageConfig" : {
+      "damageSourceKind" : "hammer",
+      "baseDamage" : 5,
+      "knockback" : 15,
+      "timeout" : 0.3,
+      "timeoutGroup" : "alt"
+    },
+
+    "slamSpeed" : -65,
+    "maxSlamTime" : 3.0,
+    "winddownTime" : 0.2,
+
+    "projectileType" : "fuicecloudburstgroundslam",
+    "projectileParameters" : {
+      "power" : 8,
+      "onlyHitTerrain" : false
+    },
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.25,
+        "armRotation" : 55,
+        "weaponRotation" : 135,
+        "weaponOffset" : [0, 0.75],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "slam" : {
+        "duration" : 0.25,
+        "armRotation" : -55,
+        "weaponRotation" : -135,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

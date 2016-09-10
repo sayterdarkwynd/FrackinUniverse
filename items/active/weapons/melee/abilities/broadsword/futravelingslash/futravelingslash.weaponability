@@ -1,0 +1,61 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "fireTravelSlash" : [ "/sfx/melee/travelingslash_fire1.ogg" ],
+      "iceTravelSlash" : [ "/sfx/melee/travelingslash_ice2.ogg" ],
+      // "electricTravelSlash" : [ "/sfx/melee/travelingslash_electric1.ogg", "/sfx/melee/travelingslash_electric2.ogg", "/sfx/melee/travelingslash_electric3.ogg" ],
+      "electricTravelSlash" : [ "/sfx/melee/travelingslash_electric4.ogg" ],
+      "poisonTravelSlash" : [ "/sfx/melee/travelingslash_poison2.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Wave Slash",
+    "type" : "futravelingslash",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/futravelingslash/futravelingslash.lua"],
+    "class" : "TravelingSlash",
+
+    "projectileOffset" : [0,0],
+    "elementalConfig" : {
+      "physical" : {},
+      "fire" : {
+        "projectileType" : "waveblast"
+      },
+      "ice" : {
+        "projectileType" : "iceblast1"
+      },
+      "poison" : {
+        "projectileType" : "poisonblast"
+      },
+      "electric" : {
+        "projectileType" : "electricblast"
+      }
+    },
+
+    "baseDamage" : 7,
+    "energyUsage" : 120,
+    "cooldownTime" : 1.5,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.25,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

@@ -20,14 +20,16 @@
   "orientations" : [
 
     {
-      "dualImage" : "prototyper.png:<color>.<frame>",
+      "imageLayers" : [ { "image" : "prototyper.png:<color>.<key>" }, { "image" : "prototyper_lit.png:<color>.<key>", "fullbright" : true } ],
       "imagePosition" : [0, 0],
       "frames" : 7,
       "animationCycle" : 3.0,
 
       "spaceScan" : 0.1,
       "fgAnchors" : [ [0, -1] ],
-      "collision" : "platform"
+      "collision" : "platform",
+      "direction" : "left",
+      "flipImages" : true
     }
   ],
   "scripts" : [ "/scripts/npcToyObject.lua" ],
