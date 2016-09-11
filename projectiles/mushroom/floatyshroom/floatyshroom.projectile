@@ -11,6 +11,8 @@
   "flippable" : true,
   "lightColor" : [80, 0, 90],
   "frameNumber" : 24,
+  
+  "power" : 10,
   "actionOnReap" : [
     {
       "action" : "config",
@@ -25,14 +27,16 @@
       "type" : "shroomshard",
       "firePosition" : [-10, 5],
       "fuzzAngle" : 180,
-      "angleAdjust" : 0
+      "angleAdjust" : 0,
+      "inheritDamageFactor":0.53
     },
     {
       "action" : "projectile",
       "type" : "shroomshard",
       "firePosition" : [-10, 5],
       "fuzzAngle" : 180,
-      "angleAdjust" : -180
+      "angleAdjust" : -180,
+      "inheritDamageFactor":0.53
     },
     {
       "action" : "projectile",
@@ -40,7 +44,7 @@
       "firePosition" : [-10, 5],
       "fuzzAngle" : 180,
       "angleAdjust" : 90,
-      "inheritDamageFactor":0.33
+      "inheritDamageFactor":0.53
     },
     {
       "action" : "projectile",
@@ -48,7 +52,7 @@
       "firePosition" : [-10, 5],
       "fuzzAngle" : 180,
       "angleAdjust" : -90,
-      "inheritDamageFactor":0.33
+      "inheritDamageFactor":0.53
     },
     {
       "action" : "projectile",
@@ -56,7 +60,7 @@
       "firePosition" : [-10, 5],
       "fuzzAngle" : 180,
       "angleAdjust" : 35,
-      "inheritDamageFactor":0.33
+      "inheritDamageFactor":0.53
     },
     {
       "action" : "projectile",
@@ -64,7 +68,7 @@
       "firePosition" : [-10, 5],
       "fuzzAngle" : 180,
       "angleAdjust" : -35,
-      "inheritDamageFactor":0.33
+      "inheritDamageFactor":0.53
     },
     {
       "action" : "projectile",
@@ -72,7 +76,7 @@
       "firePosition" : [-10, 5],
       "fuzzAngle" : 180,
       "angleAdjust" : 65,
-      "inheritDamageFactor":0.33
+      "inheritDamageFactor":0.53
     },
     {
       "action" : "projectile",
@@ -80,10 +84,8 @@
       "firePosition" : [-10, 5],
       "fuzzAngle" : 180,
       "angleAdjust" : -65,
-      "inheritDamageFactor":0.33
+      "inheritDamageFactor":0.53
     }
   ],
-  "power" : 1,
-  "damageType" : "NoDamage",
   "damageKind" : "default"
 }
