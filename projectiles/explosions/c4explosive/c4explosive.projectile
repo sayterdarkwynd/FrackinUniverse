@@ -1,16 +1,16 @@
 {
-  "projectileName" : "blastingdynamite",
-  "image" : "blastingdynamite.png",
-  "animationCycle" : 0.01,
-  "level" : 4,
-  "frameNumber" : 5,
+  "projectileName" : "c4explosive",
+  "image" : "c4explosive.png",
+  "animationCycle" : 1,
+  "level" : 5,
+  "frameNumber" : 10,
   "speed" : 0,
   "fallSpeed" : 0,
   "animationLoops" : false,
   "piercing" : true,
   "flippable" : true,
   "pointLight" : true,
-  "lightColor" : [168,175,155],
+  "lightColor" : [244,200,196],
   "universalDamage" : true,
   "damageKind" : "default",
   "timeToLive" : 0.01,
@@ -19,36 +19,8 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/blastingdynamite/blastingdynamite.config"
-    },
-    {
-      "action" : "projectile",
-      "type" : "mineralpistolshot3",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : 180
-    },
-    {
-      "action" : "projectile",
-      "type" : "mineralpistolshot3",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : 35
-    },
-    {
-      "action" : "projectile",
-      "type" : "mineralpistolshot3",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : -35
-    },
-    {
-      "action" : "projectile",
-      "type" : "mineralpistolshot3",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : -225
-    }    
+      "file" : "/projectiles/explosions/c4explosive/c4explosive.config"
+    } 
   ],
-  "power" : 12
+  "power" : 24
 }

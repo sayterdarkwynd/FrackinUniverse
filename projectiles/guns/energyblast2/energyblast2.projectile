@@ -1,0 +1,31 @@
+{
+  "projectileName" : "energyblast2",
+  "image" : "energyblast2.png",
+  "animationCycle" : 0.1,
+  "armorPenetration" : 20,
+  "physics" : "bullet",
+  "bounces" : 0,
+  "frameNumber" : 6,  
+  "pointLight" : true,
+  "speed" :35,
+  "piercing" : false,
+  "universalDamage" : true,
+   "lightColor" : [200, 70, 200],
+  "actionOnReap" : [
+   {
+      "action" : "config",
+      "file" : "/projectiles/explosions/spatialcollapse/spatialcollapse.config"
+    },
+	 {
+      "action" : "config",
+      "file" : "/projectiles/explosions/zapsplosion/zapsplosion.config"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/guns/energyblast2/energyblastexplosion2.config"
+    }
+  ],
+  "damageKind" : "slash"
+}
+
+

@@ -1,7 +1,8 @@
 {
   "type" : "sporgus3",
   "shortdescription" : "Nikaw",
-  "description" : "A nasty fungal mutation that just can't stop spewing spores.",
+  "description" : "A nasty fungal mutation that just can't stop spewing explosive spores.",
+
   "categories" : [ "sporgus3" ],
   "parts" : [ "body" ],
 
@@ -21,7 +22,6 @@
 
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
-      "targetEntityTypes" : [ "player", "npc", "monster" ],
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
@@ -36,23 +36,24 @@
           "cooldown" : 3.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 8,
+            "maximumRange" : 6,
             "minimumRange" : 0,
             "windupState" : "",
             "windupTime" : 0.0,
 
             "projectileType" : "floatyshroom",
             "projectileParameters" : {
+            "speed" : 40
             },
-            "power" : 4,
+            "power" : 7,
             "fireOffset" : [0.0, 0.0],
             "aimAtTarget" : false,
             "aimDirection" : [0, 1],
             "inaccuracy" : 0.5,
-            "projectileCount" : 6,
-            "projectileInterval" : 0.01,
+            "projectileCount" : 8,
+            "projectileInterval" : 0.15,
             "fireState" : "fire",
-            "fireDelay" : 0.5,
+            "fireDelay" : 0.25,
             "fireSound" : "fire",
 
             "winddownState" : "",
@@ -64,6 +65,20 @@
       "periodicActions" : [],
 
       "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
         {
           "name" : "approach-walk",
           "parameters" : {
@@ -85,7 +100,7 @@
 
     "touchDamage" : {
       "poly" : [ [0.4375, 1.125], [0.9375, 0.625], [0.9375, -0.625], [0.4375, -1.125], [-0.4375, -1.125], [-0.9375, -0.625], [-0.9375, 0.625], [-0.4375, 1.125] ],
-      "damage" : 8,
+      "damage" : 12,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -152,6 +167,9 @@
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
         }
       },
 
@@ -169,6 +187,10 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "monsters" : "sporgus" }
   }
 }

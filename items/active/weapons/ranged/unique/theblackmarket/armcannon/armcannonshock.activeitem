@@ -5,8 +5,8 @@
     "maxStack" : 1,
     "rarity" : "rare",
   "description" : "Attaches to the forearm. Fires electric blasts.",
-  "shortdescription" : "^#ce64de;Arm Cannon",
-  "level" : 2,
+  "shortdescription" : "^#ce64de;Arm Cannon (Shock)",
+  "level" : 3,
   "category" : "uniqueWeapon",
   "itemTags" : ["weapon","ranged","machinepistol"],
   "tooltipKind" : "gun",
@@ -16,7 +16,7 @@
     "butt" : "",
     "middle" : "armcannonshock.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+        "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
   },      
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/weapons/shock_impact3.ogg" ] },
@@ -24,7 +24,7 @@
   },
 
   "baseOffset" : [0.75, 0.34],
-  "muzzleOffset" : [1.5, 0.125],
+  "muzzleOffset" : [1.0, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -35,8 +35,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.125,
-    "baseDps" : 4.2,
-    "energyUsage" : 24,
+    "baseDps" : 5.5,
+    "energyUsage" : 20,
     "fireType" : "auto",
     "inaccuracy" : 0,
     "projectileCount" : 1,
@@ -48,7 +48,7 @@
       "idle" : {
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true
@@ -57,7 +57,7 @@
         "duration" : 0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
@@ -66,7 +66,7 @@
         "duration" : 0.0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
