@@ -387,7 +387,7 @@ function getRecipes()
 	{ inputs = { sandstonematerial = 50 }, outputs = { phosphorus = { 1, 1, 2 } } },
 	{ inputs = { sewage = 50 }, outputs = { poop = { 2, 2, 4 } } },
 	{ inputs = { shadowblock = 50 }, outputs = { rawminerals = { 3, 4, 5 } } },
-	{ inputs = { shadowspikeblock = 50 }, outputs = { rawminerals = { 3, 4, 53 } } },
+	{ inputs = { shadowspikeblock = 50 }, outputs = { rawminerals = { 3, 4, 5 } } },
 	{ inputs = { shadowwallblock = 50 }, outputs = { rawminerals = { 3, 4, 5 } } },
 	{ inputs = { shroomblock = 50 }, outputs = { geneticmaterial = { 2, 2, 4 } } },
 	{ inputs = { shroomblockglow = 50 }, outputs = { agaranichor = { 1, 1, 4 } } },
