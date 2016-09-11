@@ -396,7 +396,7 @@ function getRecipes()
 	{ inputs = { slimedirtmaterial = 50 }, outputs = { tissueculture = { 3, 3, 4 } } },
 	{ inputs = { slush = 50 }, outputs = { nutrientpaste = { 1, 1, 2 } } },
 	{ inputs = { snow = 50 }, outputs = { nutrientpaste = { 2, 2, 4 } } },
-	{ inputs = { spidersilkblock = 50 }, outputs = { silk = { 1, 1, 3 } } },
+	{ inputs = { spidersilkblock = 50 }, outputs = { silkfibre = { 5, 7, 11 } } },
 	{ inputs = { springvines = 50 }, outputs = { geneticmaterial = { 1, 2, 3 } } },
 	{ inputs = { steelmetal = 50 }, outputs = { metalchunk = { 1, 1, 2 } } },
 	{ inputs = { steelpartblock = 50 }, outputs = { metalchunk = { 1, 1, 2 } } },
