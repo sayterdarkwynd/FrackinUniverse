@@ -1,0 +1,37 @@
+{
+  "objectName" : "powderkeg",
+  "colonyTags" : ["human","humanbunker","storage"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 25,
+  "description" : "A crude explosive for mining. Detonation requires impact.",
+  "shortdescription" : "Powder Keg",
+  "race" : "generic",
+
+  "inventoryIcon" : "powderkegicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "powderkeg.png:<color>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "smashable" : true,
+  "smashOnBreak" : false,
+  "smashSounds" : [ "/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg" ],
+  "smashDropPool" : "empty",
+  
+  "scripts" : [
+    "/objects/scripts/explodingsmashable.lua"
+  ],
+  "explosionProjectile" : "powderkeg",
+  "explosionOffset" : [1, 2],
+  "learnBlueprintsOnPickup" : [ "crudebomb" ]
+}

@@ -61,7 +61,13 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.2, "reedseed1" ], [0.2, "reedseed2" ], [0.2, "reedseed3" ], [0.2, "reedseed4" ], [0.2, "reedseed5" ] ],
+            "pool" : [ 
+            [0.2, "reedseed1" ], 
+            [0.2, "reedseed2" ], 
+            [0.2, "reedseed3" ], 
+            [0.2, "reedseed4" ], 
+            [0.2, "reedseed5" ] 
+            ],
             "parameters" : { }
           }
         ]
@@ -75,7 +81,12 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.35, "tallgrass1" ], [0.35, "tallgrass2" ], [0.35, "tallgrass3" ], [0.35, "tallgrass4" ] ],
+            "pool" : [ 
+            [0.35, "tallgrass1" ], 
+            [0.35, "tallgrass2" ], 
+            [0.35, "tallgrass3" ], 
+            [0.35, "tallgrass4" ] 
+            ],
             "parameters" : { }
           }
         ]
@@ -92,7 +103,11 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [1, "wildriceseed" ] ],
+            "pool" : [ 
+            [0.5, "wildriceseed" ],
+            [0.5, "wildsweetscoopseed" ],
+            [0.5, "gemglowseed" ]
+            ],
             "parameters" : {
               "startingStage" : 3
             }
@@ -107,6 +122,44 @@
     "grassModDensity" : 0.9,
 
     "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [0.5, "wildriceseed" ],
+            [0.5, "wildsweetscoopseed" ],
+            [0.5, "wildgemglowseed" ]
+            ],
+            "parameters" : {
+              "startingStage" : 3
+            }
+          }
+        ]
+      },    
+      {
+        "mode" : "ceiling",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [0.5, "wildlumivineseed" ]
+            ],
+            "parameters" : {
+              "startingStage" : 3
+            }
+          }
+        ]
+      },    
       {
         "mode" : "floor",
         "priority" : 0.0,

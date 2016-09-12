@@ -1,0 +1,55 @@
+{
+  "objectName" : "sweetscoopseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "A plant with fruit that tastes like dessert.",
+  "shortdescription" : "Sweetscoop Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 45,
+
+  "apexDescription" : "It has the consistency and feel of a banana but tastes like a pie.",
+  "avianDescription" : "This tastes like something a human would eat around one of their holidays.",
+  "floranDescription" : "Sssmashy fruit ball is sssweet.",
+  "glitchDescription" : "Delight. This must be what kineptic use to make all their food taste good.",
+  "humanDescription" : "It tastes like pumpkin pie with a bit of a tangy twist.",
+  "hylotlDescription" : "I'm hesitant to call this a fruit. It tastes like it would cause diabetes.",
+  "novakidDescription" : "A plant that grows dessert. Well I'll be.",
+  "kinepticDescription" : "It scoops very well--hence the name--and makes a wicked cobbler.",
+
+  "inventoryIcon" : "sweetscoopseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sweetscoopseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+"learnBlueprintsOnPickup" : [ "sweetscoopseed" ],
+  "stages" : [
+    {
+      "duration" : [225, 535]
+    },
+    {
+      "duration" : [225, 535]
+    },
+    {
+      "alts" : 5,
+      "duration" : [210, 530]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "sweetscoopHarvest",
+      "resetToStage" : 2
+    }
+  ],
+
+  "maxImmersion" : 0.25
+}

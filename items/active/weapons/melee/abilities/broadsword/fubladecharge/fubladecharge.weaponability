@@ -1,0 +1,90 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "bladeCharge" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : { },
+            "charge" : {
+              "cycle" : 1.2,
+              "mode" : "transition",
+              "transition" : "full",
+              "properties" : {
+                "persistentSound" : "/sfx/melee/charge_up13.ogg",
+                "persistentSoundStopTime" : 0.25
+              }
+            },
+            "full" : {
+              "mode" : "loop",
+              "properties" : {
+                "persistentSound" : "/sfx/melee/charge_full_hold1.ogg",
+                "immediateSound" : "/sfx/melee/sword_parry.ogg"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "chargedSwing" : [ "/sfx/melee/charge_full_swing3.ogg" ]
+    },
+    "particleEmitters" : {
+      "bladeCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-0.625, 0.0, 0.375, 2.5],
+        "particles" : [
+          { "particle" : "fireaura"},
+          { "particle" : "poisonaura"},
+          { "particle" : "iceaura"}
+        ]
+      }
+    }
+  },
+
+  "ability" : {
+    "name" : "Elemental Cleave",
+    "type" : "fubladecharge",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/bladecharge/bladecharge.lua"],
+    "class" : "BladeCharge",
+
+    "energyUsage" : 120.0,
+
+    "damageConfig" : {
+      "damageSourceKind" : "broadsword",
+      "statusEffects" : [ ],
+      "baseDamage" : 12.5,
+      "knockback" : 40,
+      "knockbackMode" : "facing",
+      "timeoutGroup" : "alt",
+      "timeout" : 0.5
+    },
+
+    "chargeTime" : 0.65,
+    "cooldownTime" : 0.5,
+    "chargeBorder" : "3f8e71",
+
+    "stances" : {
+      "windup" : {
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "slash" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

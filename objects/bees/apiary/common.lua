@@ -282,7 +282,7 @@ function beeSting()
 	if math.random(100) < 100 * self.beeStingChance then
 		local location = entity.position()
 		if self.beeStingOffset then
-			world.spawnProjectile("stingstatusprojectile", { location[1] + self.beeStingOffset[1], location[2] + self.beeStingOffset[2], entity.id() })
+			world.spawnProjectile("stingstatusprojectile", { location[1] + self.beeStingOffset[1], location[2] + self.beeStingOffset[2]}, entity.id())
 		else
 			world.spawnProjectile("stingstatusprojectile", location, entity.id())
 		end
@@ -313,7 +313,9 @@ function flowerCheck()
 		"wubstemseed",
 		"miraclegrassseed",
 		"vanusflowerseed",
-		"beeflower"
+		"beeflower",
+		"gemglowseed",
+		"darklightflower"
 	}) do
 		flowers = world.objectQuery(entity.position(), 80, {name = p})
 		if flowers ~= nil then
@@ -531,7 +533,7 @@ end
 
 
 function workingBees()
-	beeSpawnList = {
+	beeSpawnList = beeSpawnList or {
 --[[
 		class = {
 			active = one of "day", "night", "always"
@@ -557,24 +559,24 @@ function workingBees()
 		}
 --]]
 	-- Diurnal
-		adaptive = { honeyType = "normal" },
+		adaptive = { honeyType = "normal", items = { fu_liquidhoney = 0.4, beesilk = 0.35 } },
 		aggressive = {
 			honeyType = "red", honeyChance = 0.8,
-			items = { alienmeat = 0.1 },
+			items = { alienmeat = 0.3, beesilk = 0.1 },
 			sting = true
 		},
-		arctic = {},
-		arid = { items = { goldensand = 0.3 } },
+		arctic = { items = { cryogenicsample = 0.5, beesilk = 0.2 } },
+		arid = { items = { goldensand = 0.5, beesilk = 0.2 } },
 		exceptional = {
 			honeyType = "normal", honeyChance = 0.8,
-			items = { fu_liquidhoney = 0.4 } ,
+			items = { fu_liquidhoney = 0.4, beesilk = 0.2 } ,
 		},
-		flower = { items = { beeflower = 0.25 } },
-		forest = {},
-		godly = {},
-		hardy = { honeyType = "normal", honeyChance = 0.8 },
-		hunter = { honeyType = "silk", honeyChance = 0.5 },
-		jungle = { items = { plantfibre = 0.7 }	},
+		flower = { items = { beeflower = 0.25, beesilk = 0.15 } },
+		forest = { items = { fu_liquidhoney = 0.4, beesilk = 0.15 } },
+		godly = { items = { goldenfleece = 0.3 } },
+		hardy = { honeyType = "normal", honeyChance = 0.8, items = { beesilk = 0.25 } },
+		hunter = { honeyType = "silk", honeyChance = 0.5, items = { beesilk = 0.55 } },
+		jungle = { items = { plantfibre = 0.7, beesilk = 0.15 } },
 		metal = {
 			honeyType = "red", honeyChance = 0.8,
 			beeDroneChance = 1 / 3,
@@ -586,13 +588,13 @@ function workingBees()
 			items = { ghostlywax = 0.6 },
 			sting = true
 		},
-		mythical = {},
-		normal = {},
-		plutonium = {},
-		radioactive = {},
+		mythical = { items = { goldenfleece = 0.15} },
+		normal = { items = { fu_liquidhoney = 0.4, beesilk = 0.15 } },
+		plutonium = { items = { plutoniumore = 0.3 } },
+		radioactive = { items = { uraniumore = 0.3 } },
 		red = {	items = { redwaxchunk = 0.2 } },
-		solarium = {},
-		sun = {},
+		solarium = { items = { solariumore = 0.1 } },
+		sun = { },
 		volcanic = {},
 	-- Nocturnal
 		moon = { active = "night" },
@@ -629,6 +631,7 @@ function workingBees()
 			end
 
 			if config.specialPost then config.specialPost(true) end
+			if config.sting then beeSting() end
 
 			expelQueens(queen)  -- bitches this be MY house. (Kicks all queens but 1 out of the apiary)
 		end
@@ -642,7 +645,8 @@ end
 
 
 function breedingBees()
-	beeComboList = {["normalforest"] = "hardy",
+	beeComboList = beeComboList or {
+					["normalforest"] = "hardy",
 					["arcticvolcanic"] = "adaptive",
 					["hardyadaptive"] = "exceptional",
 					["aridadaptive"] = "miner",

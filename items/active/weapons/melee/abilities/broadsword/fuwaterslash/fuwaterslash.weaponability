@@ -1,0 +1,54 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "fireKunai" : [ "/sfx/gun/wormgun1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Aqua Slice",
+    "type" : "fuwaterslash",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/fuwaterslash/fuwaterslash.lua"],
+    "class" : "KunaiBlast",
+
+    // timing and angle adjust to launch projectiles during fire stance
+    "projectileTimesAndAngles" : [
+      [0.005, 40],
+      [0.013, 20],
+      [0.021, 10],
+      [0.025, 0],
+      [0.029, -10]
+    ],
+    "projectileOffset" : [1.35, 0.0],
+    "projectileType" : "waterblast3",
+    "projectileParameters" : {
+      "baseDamage" : 2
+    },
+
+    "baseDamage" : 3,
+    "energyUsage" : 60,
+    "cooldownTime" : 1.5,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.2,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.25,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

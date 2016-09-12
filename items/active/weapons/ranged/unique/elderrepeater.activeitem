@@ -6,11 +6,11 @@
   "rarity" : "legendary",
   "description" : "Projects blasts from beyond time and space.",
   "shortdescription" : "Dimensional Repeater",
-  "level" : 8,
+  "level" : 7,
   "tooltipKind" : "gun",
 
   "itemTags" : ["weapon","ranged","machinepistol"],
-  "twoHanded" : true,
+  "twoHanded" : false,
   "weaponType" : "Disruptor",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -30,7 +30,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -61,7 +61,7 @@
 	      "duration" : 0,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+	      "twoHanded" : false,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -70,16 +70,13 @@
 	      "duration" : 0.075,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+	      "twoHanded" : false,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
 	    }
 	  }
   },
-
-
-  "altAbilityType" : "elderrepeatermarkedshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
