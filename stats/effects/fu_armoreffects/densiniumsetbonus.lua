@@ -21,7 +21,7 @@ function init()
     })
      
   script.setUpdateDelta(0)
-  effect.setParentDirectives("fade="..config.getParameter("color").."=0.5")
+  --effect.setParentDirectives("fade="..config.getParameter("color").."=0.5")
   else
     sb.logInfo("Not all parts detected")
   end
