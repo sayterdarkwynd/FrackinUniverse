@@ -1,0 +1,69 @@
+{
+  "objectName" : "gemglowseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "A salty plant that is fairly water-tolerant.",
+  "shortdescription" : "Gemglow Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 45,
+
+  "apexDescription" : "This strange plant seems to be a natural means of desalinization.",
+  "avianDescription" : "The rind is unbearably salty, but the pulpy flesh inside tastes a bit like lightly salted corn.",
+  "floranDescription" : "Sssalty outssside. Inssside tassstes like corn.",
+  "glitchDescription" : "Intrigue. The faceted surface appears to be a mineral rind deposited by fibrous tubules.",
+  "humanDescription" : "It looks like rock candy. It tastes like the inside of a full salt shaker.",
+  "hylotlDescription" : "You may as well eat pure salt. It could be useful in dilute amounts as a seasoning.",
+  "novakidDescription" : "Boy, I could sure go fer some moonshine on the rocks.",
+  "kinepticDescription" : "Potability in a pot. The plant uses mineral-saturated water to form the rind of the fruit.",
+
+  "inventoryIcon" : "gemglowseedicon.png",
+  "orientations" : [
+	{
+      "imageLayers" : [ { "image" : "gemglowseed.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "gemglowseedlit.png:<color>.<stage>.<alt>" } ],
+	  "direction" : "left",
+	  "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    },
+	{
+      "imageLayers" : [ { "image" : "gemglowseed.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "gemglowseedlit.png:<color>.<stage>.<alt>" } ],
+	  "direction" : "right",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [225, 435]
+    },
+    {
+      "duration" : [225, 435]
+    },
+    {
+      "alts" : 5,
+      "duration" : [210, 530]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "gemglowHarvest",
+      "resetToStage" : 2
+    }
+  ],
+
+  "maxImmersion" : 2.0
+}

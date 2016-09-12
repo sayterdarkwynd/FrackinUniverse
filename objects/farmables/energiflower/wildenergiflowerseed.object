@@ -14,8 +14,21 @@
 
   "inventoryIcon" : "energiflowerseedicon.png",
   "orientations" : [
-    {
-      "dualImage" : "energiflowerseed.png:<color>.<stage>.<alt>",
+	{
+      "imageLayers" : [ { "image" : "energiflowerseed.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "energiflowerseedlit.png:<color>.<stage>.<alt>" } ],
+	  "direction" : "left",
+	  "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1]],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    },
+	{
+      "imageLayers" : [ { "image" : "energiflowerseed.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "energiflowerseedlit.png:<color>.<stage>.<alt>" } ],
+	  "direction" : "right",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
