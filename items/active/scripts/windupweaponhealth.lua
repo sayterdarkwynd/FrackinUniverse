@@ -8,22 +8,22 @@ local baseInaccuracy
 
 function init()
   oldInit()
-  baseProjectileCount = self.primaryAbility.projectileCount
+  baseFireTime = self.primaryAbility.fireTime
   baseInaccuracy = self.primaryAbility.inaccuracy
-  thing = 2
 end
 
 function update(dt, fireMode, shiftHeld)
 
-  local scaleFactor = status.resource("energy") / status.resourceMax("energy") + 1 + thing
-  self.primaryAbility.projectileCount = baseProjectileCount * scaleFactor
+  local scaleFactor = status.resource("health") / status.resourceMax("health") + 0.01
+  local scaleFactor2 = status.resource("health") / status.resourceMax("health") + 1
+  self.primaryAbility.fireTime = baseFireTime * scaleFactor
   self.primaryAbility.inaccuracy = baseInaccuracy * scaleFactor
   oldUpdate(dt, fireMode, shiftHeld)
 
 end
 
 function uninit()
-  self.primaryAbility.projectileCount = baseProjectileCount
-  self.primaryAbility.inaccuracy = baseInaccuracy
+  self.primaryAbility.fireTime = baseFireTime
+  self.primaryAbility.fireTime = baseInaccuracy
   oldUnInit()
 end
