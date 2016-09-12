@@ -7,7 +7,7 @@
 
   "scriptConfig" : {
     "behaviorConfig" : {
-      "emptyHands" : true
+      "emptyHands" : false
     },
 
     "crew" : {
@@ -17,12 +17,12 @@
    	"legs" : "hazmatlegs",
    	"back" : "hazmatback"
   	},
-        "benefits" : [
+        "benefits" : [       
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "biomeradiationImmunity",
-            "duration" : 280
+            "duration" : 300
           },         
           {
             // Persistent effects are active while on the ship
@@ -50,7 +50,7 @@
         "combatBenefit" : {
           "default" : {
             "default" : [
-              "Let me give you a boost real quick!",
+              "Here's an anti-rad pill!",
               "Let me help you out!",
               "Looks like you could use my assistance!",
               "I can help!"
@@ -80,7 +80,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "molotov" ],
+            "primary" : [ "irradiumdagger" ],
             "sheathedprimary" : [ "biopistol" ]          
           }
         ] ]

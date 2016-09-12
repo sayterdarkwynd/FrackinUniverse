@@ -16,7 +16,7 @@
     "butt" : "",
     "middle" : "armcannon.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },      
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/needler1.ogg" ] },
@@ -24,7 +24,7 @@
   },
 
   "baseOffset" : [0.75, 0.34],
-  "muzzleOffset" : [1.5, 0.125],
+  "muzzleOffset" : [1.0, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -34,9 +34,9 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.25,
-    "baseDps" : 7.65,
-    "energyUsage" : 26,
+    "fireTime" : 0.2,
+    "baseDps" : 9,
+    "energyUsage" : 22,
     "fireType" : "auto",
     "inaccuracy" : 0.001,
     "projectileCount" : 1,
@@ -48,7 +48,7 @@
       "idle" : {
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true
@@ -57,7 +57,7 @@
         "duration" : 0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
@@ -66,7 +66,7 @@
         "duration" : 0.0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false

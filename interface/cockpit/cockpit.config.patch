@@ -64,36 +64,46 @@
   {
     "op" : "replace",
     "path" : "/threatLevelToColor",
-    "value" : [
-    [ 0, 170, 233], //TL 1
-    [ 16, 233, 0], //TL 2
-    [ 194, 233, 0 ], //TL 3
-    [ 235, 171, 0 ], //TL 4
-    [ 235, 100, 0], //TL 5
-    [ 235, 49, 0], //TL 6
-    [ 192, 32, 0], //TL 7
-    [ 255, 32, 50], //TL 8
-    [ 255, 0, 0], //TL 9
-    [ 160, 160, 160] //TL 10
-]
+    "value" : {
+	  "default" : [
+		[ 0, 170, 233], //TL 1
+		[ 16, 233, 0], //TL 2
+		[ 194, 233, 0 ], //TL 3
+		[ 235, 171, 0 ], //TL 4
+		[ 235, 100, 0], //TL 5
+		[ 235, 49, 0], //TL 6
+		[ 192, 32, 0], //TL 7
+		[ 255, 32, 50], //TL 8
+		[ 255, 0, 0], //TL 9
+		[ 255, 0, 0] //TL 10
+	  ],
+	  "moon" : [
+		[160, 160, 160]
+	  ]
+	}
   },
   
   
   {
     "op" : "replace",
     "path" : "/threatLevelToText",
-    "value" : [
-    "Harmless (I)",
-    "Low (II)",
-    "Moderate (III)", 
-    "Risky (IV)",
-    "Dangerous (V)",
-    "Extreme (VI)",
-    "Lethal (VII)",
-    "Impossible (VIII)",
-    "Immeasurable (IX)",
-    "Unknown"
-]
+    "value" : {
+	  "default" : [
+		"Harmless (I)",
+		"Low (II)",
+		"Moderate (III)", 
+		"Risky (IV)",
+		"Dangerous (V)",
+		"Extreme (VI)",
+		"Lethal (VII)",
+		"Impossible (VIII)",
+		"Immeasurable (IX)",
+		"Just No (X)"
+	  ],
+	  "moon" : [
+	    "Unknown"
+	  ]
+	}
   },
   
   
@@ -230,7 +240,7 @@
 
 {"op":"add","path":"/planetTypeToDescription/slimeworld",
 "value":["A ^#517f51;gelatinous^reset;, slimy world. High elasticity. Strange, ^red;massive lifeforms^reset; detected.",
-"^#517f51;Slime^reset;, forms almost this entire planet. ^red;Huge nocturnal creatures^reset; detected.",
+"^#517f51;Slime^reset; forms almost this entire planet. ^red;Huge nocturnal creatures^reset; detected.",
 "A bouncy, sticky ^#517f51;gelatinous^reset;, world. It is evident that this will make for some rather gross exploration."]},
 
 {"op":"add","path":"/planetTypeToDescription/sulphuric",

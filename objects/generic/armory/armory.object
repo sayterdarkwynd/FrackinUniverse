@@ -1,33 +1,49 @@
 {
   "objectName" : "armory",
   "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "printable" : false,
+  "price" : 600,
   "rarity" : "Essential",
   "interactAction" : "OpenCraftingInterface",
   "interactData" : {
     "config" : "/interface/windowconfig/armory.config",
     "filter" : [ "armory" ]
   },
-  "printable" : false,
-  "description" : "This machine is a weapons and armor manufacturing interface. Use the Clothing Fabricator for fabric-based armors.",
+  
+  "description" : "This machine is a weapons and armor manufacturing device. Yes, it is large. Use the Clothing Fabricator for fabric-based armors.",
   "shortdescription" : "^orange;Armory^white;",
   "race" : "generic",
   "category" : "crafting",
-  "price" : 600,
+
   "learnBlueprintsOnPickup" : [ "moltencore" ],
 
   "inventoryIcon" : "armoryicon.png",
   "orientations" : [
     {
-      "dualImage" : "armory.png:<color>.<frame>",
+      "imageLayers" : [ { "image" : "armory.png:<color>.<frame>", "fullbright" : true }, { "image" : "armorylit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
 
       "imagePosition" : [0, 0],
-      "frames" : 23,
-      "animationCycle" : 3.2,
+      "frames" : 10,
+      "animationCycle" : 2,
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
-    }
+    },
+    {
+      "imageLayers" : [ { "image" : "armory.png:<color>.<frame>", "fullbright" : true }, { "image" : "armorylit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 10,
+      "animationCycle" : 2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }  
   ],
+  
   "scripts" : [ "/scripts/npcToyObject.lua" ],
   "npcToy" : {
     "influence" : [

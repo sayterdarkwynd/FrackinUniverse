@@ -1,0 +1,23 @@
+{
+  "projectileName" : "shockzap",
+  "image" : "shockzap.png",
+  "animationCycle" : 0.2,
+  "level" : 5,
+  "frameNumber" : 5,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [232,204,0],
+  "power" : 0,
+  "speed" : 5,
+  "timeToLive" : 0.2,
+  
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/shockburstexplosion/shockburstexplosion.config"
+    }
+  ],
+  "damagePoly" : [ [15, 5],  [60, 10], [60, -10], [15, -5] ],
+  "damageKind" : "electricplasma",
+  "physics" : "laser"
+}
