@@ -565,7 +565,7 @@ function workingBees()
 			items = { alienmeat = 0.3, beesilk = 0.1 },
 			sting = true
 		},
-		arctic = { items = { cryogenicsample = 0.5, beesilk = 0.2 } },
+		arctic = { items = { cryonicextract = 0.5, beesilk = 0.2 } },
 		arid = { items = { goldensand = 0.5, beesilk = 0.2 } },
 		exceptional = {
 			honeyType = "normal", honeyChance = 0.8,
