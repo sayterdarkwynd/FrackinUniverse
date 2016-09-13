@@ -1,3 +1,6 @@
+require "/stats/effects/jumpboost/jumpboost25.lua"
+callbacks = { { init = init, update = update, uninit = uninit } }
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
@@ -14,5 +17,6 @@ function init()
 		{stat = "ffextremeradiationImmunity", amount = 1},
 		{stat = "biomeradiationImmunity", amount = 1},
 		{stat = "sulphuricImmunity", amount = 1}
-	})
+	}, 
+	callbacks )
 end
