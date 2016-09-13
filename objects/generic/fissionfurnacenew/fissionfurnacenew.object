@@ -1,5 +1,5 @@
 {
-  "objectName" : "fissionfurnace",
+  "objectName" : "fissionfurnacenew",
   "colonyTags" : [ "fu", "science", "scienceoutpost", "mining", "tool" ],
   "rarity" : "Essential",
   "interactAction" : "OpenCraftingInterface",
@@ -16,10 +16,12 @@
   "lightColor" : [0, 0, 90],
 
   "learnBlueprintsOnPickup" : [ "solariumstar", "solaricrystal", "magnesiumpowder", "moonstonebar", "titaniumwallblockmaterial", "speedblockmaterial", "jumpblockmaterial" ],
-  "inventoryIcon" : "fissionfurnaceicon.png",
+  "inventoryIcon" : "fissionfurnaceiconnew.png",
   "orientations" : [
     {
-      "dualImage" : "fissionfurnace.png:<color>.<frame>",
+      "imageLayers" : [ { "image" : "fissionfurnacenew.png:<color>.<frame>", "fullbright" : true }, { "image" : "fissionfurnacenewlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
 
       "imagePosition" : [0, 0],
       "frames" : 4,
@@ -28,8 +30,21 @@
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ],
       "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fissionfurnacenew.png:<color>.<frame>", "fullbright" : true }, { "image" : "fissionfurnacenewlit.png:<color>.<frame>" } ],
+      "direction" : "right",
 
-    }
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }      
+    
+    
   ],
   "scripts" : [ "/scripts/npcToyObject.lua" ],
   "npcToy" : {
@@ -48,9 +63,5 @@
     "preciseStandPositionLeft" : [-1.0, 0.0],
     "preciseStandPositionRight" : [1.0, 0.0],
     "maxNpcs" : 1
-  },
-
-  "breakDropOptions" : [
-    [ [ "fissionfurnacenew", 1, { } ] ]
-  ]
+  }
 }
