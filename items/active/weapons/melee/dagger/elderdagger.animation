@@ -12,26 +12,19 @@
           },
           "fire" : {
             "frames" : 3,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "fire2" : {
-            "frames" : 3,
-            "cycle" : 0.1,
+            "cycle" : 0.08,
             "mode" : "transition",
             "transition" : "idle"
           }
         }
       }
     },
-
     "parts" : {
       "blade" : {
         "properties" : {
           "zLevel" : 0,
           "centered" : true,
-          "image" : "<partImage><paletteSwaps>?<bladeDirectives>",
+          "image" : "<partImage><paletteSwaps>",
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0]
         }
@@ -49,6 +42,7 @@
         "properties" : {
           "zLevel" : -1,
           "centered" : true,
+          "offset" : [0.5, 0.75],
           "transformationGroups" : ["swoosh"],
           "rotationCenter" : [0, 0]
         },
@@ -62,16 +56,8 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh/<elementalType>swoosh.png:<frame>",
-                "offset" : [1.0, 1.0],
-                "damageArea" : [ [-2.25, 1.125], [0.25, 1.125], [1.625, 0.75], [2.5, 0], [2.5, -0.5], [2.125, -0.875], [1, -1.375], [-2.25, -1.375] ]
-              }
-            },
-            "fire2" : {
-              "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh2/<elementalType>swoosh.png:<frame>",
-                "offset" : [0.25, 0.125],
-                "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
+                "image" : "/items/active/weapons/melee/dagger/swoosh/shadowswoosh.png:<frame>",
+                "damageArea" : [[0.25, 1.125], [0.75, 1.125], [2.0, 0.25], [2.0, -0.5], [0.5, -1.5], [-1.0, -1.5], [-2.0, -0.75]]
               }
             }
           }
@@ -89,69 +75,71 @@
     "physicalswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 1,
-      "burstCount" : 1,
-      "particles" : []
-    },
-    "fushadowdamageswoosh" : {
-      "active" : false,
-      "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 4,
-      "particles" : [
-        { "particle" : "fireswoosh1"},
-        { "particle" : "fireswoosh2"},
-        { "particle" : "fireswoosh3"}
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [ 
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},      
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}       
       ]
-    },   
+    },
     "fireswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 4,
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
       "particles" : [
-        { "particle" : "fireswoosh1"},
-        { "particle" : "fireswoosh2"},
-        { "particle" : "fireswoosh3"}
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},      
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"} 
       ]
     },
     "electricswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
-      "particles" : [
-        { "particle" : "electricswoosh1"},
-        { "particle" : "electricswoosh2"},
-        { "particle" : "electricswoosh2"}
-      ]
-    },
-    "poisonswoosh" : {
-      "active" : false,
-      "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
       "particles" : [
         { "particle" : "poisonswoosh1"},
-        { "particle" : "poisonswoosh2"},
-        { "particle" : "fireswoosh2"}
+        { "particle" : "poisonswoosh2"},      
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"} 
       ]
     },
     "iceswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
       "particles" : [
-        { "particle" : "iceswoosh1"},
-        { "particle" : "iceswoosh2"},
-        { "particle" : "iceswoosh3"}
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},      
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"} 
+      ]
+    },
+    "poisonswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},      
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"} 
       ]
     }
   },
 
   "sounds" : {
-    "fire" : [ ],
-    "fire2" : [ ]
+    "fire" : [ ]
   }
 }

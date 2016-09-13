@@ -12,7 +12,7 @@
 "level" : 7,
   "inventoryIcon" : "elderaxe.png",
 
-  "animation" : "axe.animation",
+  "animation" : "elderaxe.animation",
   "animationParts" : {
     "blade" : "elderaxe.png",
     "handle" : ""
@@ -28,7 +28,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "physical",
 
   "aimOffset" : -1.0,
 
@@ -36,9 +36,12 @@
   "primaryAbility" : {
     "fireTime" : 0.5,
     "baseDps" : 13,
+    
     "damageConfig" : {
-      "damageSourceKind" : "electricaxe",
-      "knockback" : 15
+      "damageSourceKind" : "fushadowdamage",
+      "statusEffects" : [ "insanity" ],
+      "knockback" : 20,
+      "knockbackMode" : "facing"
     },
     "stances" : {
       "idle" : {

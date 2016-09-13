@@ -13,7 +13,7 @@
 
   "inventoryIcon" : "elderspear.png",
 
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animation" : "/items/active/weapons/melee/spear/elderspear.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "elderspear.png"
@@ -26,7 +26,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "physical",
 
   "aimOffset" : -1.0,
   "primaryAbilityType" : "spearstab",
@@ -37,8 +37,8 @@
     "fireTime" : 1.11,
     "baseDps" : 11.5,
     "damageConfig" : {
-      "damageSourceKind" : "spear",
-      "statusEffects" : [ ],
+      "damageSourceKind" : "fushadowdamage",
+      "statusEffects" : [ "insanity" ],
       "knockbackMode" : "aim",
       "knockback" : 10,
       "timeoutGroup" : "primary"
