@@ -1,0 +1,65 @@
+{
+  "objectName" : "powerstation",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "printable" : false,
+  "price" : 600,
+  "rarity" : "Essential",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/powerstation.config",
+    "filter" : [ "powerstation" ]
+  },
+  
+  "description" : "This machine is dedicated to creating technology that requires power to function.",
+  "shortdescription" : "^orange;Power Station^white;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "learnBlueprintsOnPickup" : [ "moltencore" ],
+
+  "inventoryIcon" : "powerstationicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "powerstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "powerstationlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "powerstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "powerstationlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }  
+  ],
+  
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}
