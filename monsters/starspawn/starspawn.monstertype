@@ -20,33 +20,45 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 22,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
-      "hurtTime": 0.10,
+      "targetOutOfSightTime" : 5.5,
+      "hurtTime": 0.12,
       "hurtWaitForGround": false,
       "hurtWaitForGroundTime": 0.1,
 
-      "foundTargetActions" : [],
+      "foundTargetActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+	    "moveState": "walk",
+	    "idleState": "fire3",
+	    "teleportMinDistance": 6,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10          
+          }
+        }      
+      ],
       "fleeActions" : [],
 
       "hostileActions" : [       
         {
           "name" : "action-fire",
-	  "cooldown" : 1,
+	  "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 7,
+            "maximumRange" : 10,
             "minimumRange" : 0,
             "windupState" : "fire",
-            "windupTime" : 0.4,
+            "windupTime" : 0.6,
 
-            "projectileType" : "slimegun",
+            "projectileType" : "elderplasma4green",
             "power" : 25,
             "speed": 50,
-            "fireOffset" : [1.2, -1],
+            "fireOffset" : [1.4, -1.4],
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "fireSound" : "",
@@ -58,13 +70,35 @@
         },        
         {
           "name" : "action-fire",
-	  "cooldown" : 5,
+	  "cooldown" : 9,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 12,
+            "maximumRange" : 16,
             "minimumRange" : 3,
             "windupState" : "fire2",
-            "windupTime" : 0.7,
+            "windupTime" : 0.6,
+
+            "projectileType" : "elderblast1",
+            "power" : 8,
+            "speed": 50,
+            "fireOffset" : [1.75, -2],
+            "aimAtTarget" : true,
+            "fireSound" : "aggroHop",
+            "range": 8,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },           
+        {
+          "name" : "action-fire",
+	  "cooldown" : 6,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 22,
+            "minimumRange" : 5,
+            "windupState" : "fire2",
+            "windupTime" : 0.6,
 
             "projectileType" : "elderburst",
             "power" : 8,
@@ -81,19 +115,14 @@
           }
         },   
         {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {
           "name" : "action-fire",
-	  "cooldown" : 10,
+	  "cooldown" : 12,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 5,
+            "maximumRange" : 22,
+            "minimumRange" : 9,
             "windupState" : "fire3",
-            "windupTime" : 0.4,
+            "windupTime" : 0.8,
 
             "projectileType" : "poisonblast",
             "power" : 12,
@@ -105,13 +134,31 @@
             "winddownState" : "",
             "winddownTime" : 0.4
           }
-        }       
+        },
+        {
+          "name" : "approach-teleport",
+          "cooldown" : 10,
+          "parameters" : {
+	    "moveState": "walk",
+	    "idleState": "fire3",
+	    "teleportMinDistance": 8,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10          
+          }
+        }        
       ],
 
       "periodicActions" : [
         {
           "name" : "approach-teleport",
           "parameters" : {
+	    "moveState": "walk",
+	    "idleState": "idle",
+	    "teleportMinDistance": 9,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10               
           }
         }      
       ],
@@ -134,6 +181,12 @@
         {
           "name" : "approach-teleport",
           "parameters" : {
+	    "moveState": "walk",
+	    "idleState": "fire3",
+	    "teleportMinDistance": 8,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10               
           }
         },
         {
@@ -170,9 +223,9 @@
           "name" : "action-spawncompanions",
           "parameters" : {
             "maxCount" : 3,
-            "spawnCooldown" : 25.0,
-            "monsterType" : "shadowtop",
-            "state" : "idle"
+            "spawnCooldown" : 30.0,
+            "monsterType" : "squidbeast",
+            "state" : "fire2"
           }
         }
       ]     
@@ -250,10 +303,10 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 120
+          "baseValue" : 90
         },
         "protection" : {
-          "baseValue" : 0.2
+          "baseValue" : 0.15
         },
         "fireStatusImmunity" : {
           "baseValue" : 1.0
