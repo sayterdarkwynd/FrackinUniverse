@@ -4,7 +4,7 @@ function init()
   
     setBonusInit("fu_spacefarerset", {
 	    {stat = "fireStatusImmunity", amount = 1},
-	    {stat = "breathDepletionRate", amount = 0.5 },
+	    {stat = "maxBreath", baseMultiplier = 50.0 },
 	    {stat = "slushslowImmunity", amount = 1},
 	    {stat = "protoImmunity", amount = 1},
 	    {stat = "liquidnitrogenImmunity", amount = 1},
