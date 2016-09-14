@@ -1,5 +1,4 @@
-require "/stats/effects/regeneration/lightregen.lua"
-callbacks = { { init = init, update = update, uninit = uninit } }
+
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
@@ -22,6 +21,5 @@ function init()
     {stat = "powerMultiplier", baseMultiplier = self.powerModifier},
     {stat = "grit", amount = 0.75},
     {stat = "wetImmunity", amount = 1}
-	}, 
-	callbacks )
+	})
 end
