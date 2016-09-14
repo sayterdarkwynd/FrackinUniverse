@@ -1,0 +1,54 @@
+{
+  "objectName" : "amberchandelier",
+  "colonyTags" : ["bees","light"],
+  "rarity" : "Common",
+  "description" : "A hanging ceiling light made from bone and shiny amber.",
+  "shortdescription" : "Amber Ceiling Light",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 30,
+  "printable" : false,
+  "lightColor" : [22, 204, 188],
+  "pointLight" : true,
+  "pointBeam" : 4,
+  "beamAmbience" : 0.4,
+
+  "inventoryIcon" : "amberchandeliericon.png",
+  "orientations" : [
+    {
+      "image" : "amberchandelier.png:<color>.<frame>",
+      "imagePosition" : [-4, -24],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaces" : [ [0, 0], [0, -1], [-1, -2], [0, -2], [1, -2], [0, -3] ],
+      "anchors" : [ "top" ],
+      "lightPosition" : [0, -2],
+      "beamAngle" : 270
+    },
+    {
+      "image" : "amberchandelier.png:<color>.<frame>",
+      "imagePosition" : [-4, -24],
+      "direction" : "right",
+
+      "spaces" : [ [0, 0], [0, -1], [-1, -2], [0, -2], [1, -2], [0, -3] ],
+      "anchors" : [ "top" ],
+      "lightPosition" : [0, -2],
+      "beamAngle" : 270
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "amberchandelier.png",
+    "fg" : "amberchandelierlit.png"
+  },
+  "animationPosition" : [-4, -24],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+  
+  "interactive" : false,
+
+  "inputNodes" : [ [0, -2] ]
+}
