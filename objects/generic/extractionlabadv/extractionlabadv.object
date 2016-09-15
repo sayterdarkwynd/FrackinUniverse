@@ -13,17 +13,29 @@
   "shortdescription" : "^orange;Extraction Lab MKII ^white;",
   "subtitle" : "Resource converter",
   "orientations" : [
-    {
-      "dualImage" : "extractionlabadv.png:<color>.<frame>",
+     {
+      "imageLayers" : [ { "image" : "extractionlabadv.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadvlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
 
       "imagePosition" : [0, 0],
       "frames" : 6,
-      "animationCycle" : 2.0,
-
-      "spaceScan" : 0.1,
+      "animationCycle" : 2,
       "collision" : "platform",
+      "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
-    }
+    },
+    {
+      "imageLayers" : [ { "image" : "extractionlabadv.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadvlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    } 
   ],
 
   "animation" : "/objects/generic/extractionlabadv/extractionlabadv.animation",

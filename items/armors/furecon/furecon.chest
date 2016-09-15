@@ -5,10 +5,14 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Special armor that negates radiation. ^#e43774;-Upgradeable-^reset;",
+  "description" : "Great protection for its class. ^#e43774;-Upgradeable-^reset;. ^cyan;Set bonus: Immunity - all radiation^reset;.",
   "shortdescription" : "Recon Vest",
   "tooltipKind" : "armornew2",
-"learnBlueprintsOnPickup" : [ "fureconhead2", "fureconchest2", "fureconpants2" ],
+  "learnBlueprintsOnPickup" : [ 
+  "fureconhead2", 
+  "fureconchest2", 
+  "fureconpants2" 
+  ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -41,8 +45,11 @@
       "stat" : "maxHealth",
       "amount" : 6
     },
-    "ffextremeradiationimmunity",
-    "radiationburnimmunity"
+     "reconsetbonus",
+    {
+      "stat" : "fu_reconset_chest",
+      "amount" : 1
+    }    
   ],
 
   "colorOptions" : [

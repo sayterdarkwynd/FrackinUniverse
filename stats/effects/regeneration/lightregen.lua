@@ -16,27 +16,6 @@ end
 
 function update(dt)
   local lightLevel = getLight()
-  --local lightLevel = world.lightLevel()
---	if lightLevel >= 0.9 then
- --   self.healingRate = 1.01 / config.getParameter("healTime", 120)
- --   status.modifyResourcePercentage("health", self.healingRate * dt)
---	elseif lightLevel >= 0.8 then
- --   self.healingRate = 1.008 / config.getParameter("healTime", 120)
- --   status.modifyResourcePercentage("health", self.healingRate * dt)
---	elseif lightLevel >= 0.7 then
- --   self.healingRate = 1.007 / config.getParameter("healTime", 120)
- --   status.modifyResourcePercentage("health", self.healingRate * dt)
---	elseif lightLevel >= 0.6 then
- --   self.healingRate = 1.006 / config.getParameter("healTime", 120)
- --   status.modifyResourcePercentage("health", self.healingRate * dt)
---	elseif lightLevel >= 0.5 then
- --   self.healingRate = 1.005 / config.getParameter("healTime", 120)
- --   status.modifyResourcePercentage("health", self.healingRate * dt)
---	elseif lightLevel >= 0.4 then
- --   self.healingRate = 1.004 / config.getParameter("healTime", 120)
- --   status.modifyResourcePercentage("health", self.healingRate * dt)
---	end  	
-  
  if lightLevel > 95 then
    self.healingRate = 1.01 / config.getParameter("healTime", 140)
    status.modifyResourcePercentage("health", self.healingRate * dt)

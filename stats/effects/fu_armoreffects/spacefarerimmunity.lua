@@ -5,6 +5,7 @@ function init()
   effect.addStatModifierGroup({
     {stat = "fireStatusImmunity", amount = 1},
     {stat = "breathProtection", amount = 1},
+    {stat = "waterBreathProtection", amount = 1},
     {stat = "slushslowImmunity", amount = 1},
     {stat = "protoImmunity", amount = 1},
     {stat = "liquidnitrogenImmunity", amount = 1},

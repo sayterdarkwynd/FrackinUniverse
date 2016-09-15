@@ -13,22 +13,30 @@
 
   "inventoryIcon" : "elderblade.png",
 
-  "animation" : "comboshortsword.animation",
+  "animation" : "comboeldershortsword.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "elderblade.png"
+    "blade" : "elderblade.png",
+    "swoosh" : "/swoosh/fushadowdamageswoosh.png"
   },
   
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "physical",
 
-  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbilityType" : "shortswordcombo2",
   "primaryAbility" : {
     "fireTime" : 0.63,
-    "baseDps" : 7.86
+    "baseDps" : 7.86,
+    "damageConfig" : {
+      "damageSourceKind" : "fushadowdamage",
+      "statusEffects" : [ "insanity" ],
+      "knockback" : 10,
+      "knockbackMode" : "facing",
+      "timeoutGroup" : "primary"
+    }
   },
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
