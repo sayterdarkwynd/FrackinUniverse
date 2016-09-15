@@ -4,13 +4,12 @@ function init()
   
     setBonusInit("fu_spacefarerset", {
 	    {stat = "fireStatusImmunity", amount = 1},
-	    {stat = "breathDepletionRate", amount = 1.0 },
+	    {stat = "maxBreath", baseMultiplier = 50.0 },
 	    {stat = "slushslowImmunity", amount = 1},
 	    {stat = "protoImmunity", amount = 1},
 	    {stat = "liquidnitrogenImmunity", amount = 1},
 	    {stat = "nitrogenfreezeImmunity", amount = 1},
 	    {stat = "iceslipImmunity", amount = 1},
-	    {stat = "extremepressureProtection", amount = 1},
-	    status.removeEphemeralEffect("camouflage85",math.huge)
+	    {stat = "extremepressureProtection", amount = 1}
 	})
 end

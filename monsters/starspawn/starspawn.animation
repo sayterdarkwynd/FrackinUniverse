@@ -1,94 +1,93 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "movement" : {
+
+      "body" : {
         "priority" : 0,
         "default" : "idle",
-
         "states" : {
           "idle" : {
             "frames" : 1,
-            "cycle" : 0,
-            "mode" : "loop"
-          },
-          "jump" : {
-            "frames" : 8,
-            "mode" : "loop"
-          },
-          "fall" : {
-            "frames" : 8,
-            "mode" : "loop"
+            "cycle" : 1,
+            "mode" :"loop"
           },
           "walk" : {
             "frames" : 8,
-            "mode" : "loop"
+            "cycle" : 1,
+            "mode" :"loop"
           },
-          "run" : {
+          "fire" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/attack.ogg"
+            }             
+          }, 
+          "fire2" : {
             "frames" : 8,
-            "cycle" : 0.5,
-            "mode" : "loop"
-          },
-          "chargeWindup" : {
+            "cycle" : 0.8,
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/attack2.ogg"
+            }             
+          },          
+          "fire3" : {
             "frames" : 4,
-            "cycle" : 0.375,
-            "mode" : "loop"
+            "cycle" : 0.4,
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/starspawn1.ogg"
+            }            
           },
-          "charge" : {
+          "firewindup" : {
             "frames" : 4,
-            "cycle" : 0.275,
-            "mode" : "loop"
+            "cycle" : 0.4
+          }, 
+          
+          "firewinddown" : {
+            "frames" : 4,
+            "cycle" : 0.4
+          },           
+          "jump" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" :"loop"
           },
-          "knockback" : {
+          "fall" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          }, 
+          "jumpwindup" : {
+            "frames" : 1,
+            "cycle" : 0.2,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg"
+            }
+          }
+        }
+      },           
+      
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
             "frames" : 1
           },
-          "knockout" : {
+          "stunned" : {
             "frames" : 1
           }
         }
       },
-
-      
-
-      "attack" : {
-        "priority" : 1,
-        "default" : "idle",
+      "releaseParticles" : {
+        "default" : "off",
         "states" : {
-          "idle" : {
-            "frames" : 1,
-            "cycle" : 0,
-            "mode" : "loop"
-          },
-          "melee" : {
-            "frames" : 8,
-            "mode" : "end"
-          },
-          "shooting" : {
-            "frames" : 6,
-            "mode" : "end"
-          },          
-          "staffattack" : {
-            "frames" : 8,
-            "mode" : "end"
-          },
-          "spitattack" : {
-            "frames" : 6,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "tentacleslam" : {
-            "frames" : 4,
-            "cycle" : 0.8,
-            "mode" : "loop"
-          }
-        }
-      },      
-      
-      "portrait" : {
-        "priority" : -1,
-        "default" : "portrait",
-        "states" : {
-          "portrait" : {
+          "off" : {
             "frames" : 1
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off"
           }
         }
       }
@@ -97,10 +96,12 @@
     "parts" : {
       "body" : {
         "properties" : {
+          "transformationGroups" : [ "body" ],
+          "centered" : true,
           "zLevel" : 2
         },
         "partStates" : {
-          "movement" : {
+          "body" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -111,80 +112,44 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
-            "run" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            },
             "jump" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
               }
             },
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },            
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "chargeWindup" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "knockback" : {
-              "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             },
-            "knockout" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire2.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire3.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }            
+          },
+          "damage" : {
+            "stunned" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
-              }
-            }
-          },
-
-          "attack" : {
-            "staffattack" : {
-              "properties" : {
-                "image" : "<partImage>:staffattack.<frame>"
-              }
-            },
-            "spitattack" : {
-              "properties" : {
-                "image" : "<partImage>:spitattack.<frame>"
-              }
-            },
-            "tentacleslam" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            },
-            "chargeAttack" : {
-              "properties" : {
-                "image" : "<partImage>:staffattack.<frame>"
-              }
-            },
-            "shooting" : {
-              "properties" : {
-                "image" : "<partImage>:spitattack.<frame>"
-              }
-            },
-            "melee" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            }
-          },
-
-          "portrait" : {
-            "portrait" : {
-              "properties" : {
-                 "image" : "/monsters/starspawn/starspawnicon.png"
               }
             }
           }
@@ -192,10 +157,13 @@
       },
       "head" : {
         "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [ 0, -0.1],
+          "centered" : true,
           "zLevel" : 3
         },
         "partStates" : {
-          "movement" : {
+          "head" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -206,80 +174,44 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
-            "run" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            },
             "jump" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
               }
             },
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },            
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "chargeWindup" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "knockback" : {
-              "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             },
-            "knockout" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire2.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire3.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }            
+          },
+          "damage" : {
+            "stunned" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
-              }
-            }
-          },
-
-          "attack" : {
-            "staffattack" : {
-              "properties" : {
-                "image" : "<partImage>:staffattack.<frame>"
-              }
-            },
-            "spitattack" : {
-              "properties" : {
-                "image" : "<partImage>:spitattack.<frame>"
-              }
-            },
-            "tentacleslam" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            },
-            "chargeAttack" : {
-              "properties" : {
-                "image" : "<partImage>:staffattack.<frame>"
-              }
-            },
-            "shooting" : {
-              "properties" : {
-                "image" : "<partImage>:spitattack.<frame>"
-              }
-            },
-            "melee" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            }
-          },
-
-          "portrait" : {
-            "portrait" : {
-              "properties" : {
-                 "image" : "/monsters/starspawn/starspawnicon.png"
               }
             }
           }
@@ -287,10 +219,12 @@
       },
       "staff" : {
         "properties" : {
+          "transformationGroups" : [ "body" ],
+          "centered" : true,
           "zLevel" : 1
         },
         "partStates" : {
-          "movement" : {
+          "staff" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -301,313 +235,136 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
-            "run" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            },
             "jump" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
               }
             },
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },            
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "chargeWindup" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "knockback" : {
-              "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             },
-            "knockout" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire2.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire3.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }            
+          },
+          "damage" : {
+            "stunned" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             }
-          },
-
-          "attack" : {
-            "staffattack" : {
-              "properties" : {
-                "image" : "<partImage>:staffattack.<frame>"
-              }
-            },
-            "spitattack" : {
-              "properties" : {
-                "image" : "<partImage>:spitattack.<frame>"
-              }
-            },
-            "tentacleslam" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            },
-            "chargeAttack" : {
-              "properties" : {
-                "image" : "<partImage>:staffattack.<frame>"
-              }
-            },
-            "shooting" : {
-              "properties" : {
-                "image" : "<partImage>:spitattack.<frame>"
-              }
-            },
-            "melee" : {
-              "properties" : {
-                "image" : "<partImage>:tentacleslam.<frame>"
-              }
-            }
-          },
-
-          "portrait" : {
-            "portrait" : {
-              "properties" : {
-                 "image" : "/monsters/starspawn/starspawnicon.png"
-              }
-            }
           }
         }
-      }
-    }
-  },
-  
-  "rotationGroups" : {
-    "projectileAim" : {
-      "angularVelocity" : 1.5
+      }      
     }
   },
 
-  "particleEmitters" : {
-    "damage" : {
-      "emissionRate" : 0.7,
-      "particles" : [
-      ]
-    },
-    "blinkout" : {
-      "particles" : [
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/blinkout/blinkout.animation",
-            "size" : 1,
-            "angularVelocity" : 35,
-            "fade" : 1,
-            "destructionTime" : 5,
-            "position" : [0, 0],
-            "initialVelocity" : [0, 0],
-            "finalVelocity" : [0, 0],
-            "approach" : [1, 1],
-            "timeToLive" : 0.75,
-            "layer" : "front"
-          }
-        }
-      ]
-    },
-    "deathPoof" : {
-      "particles" : [
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/puff2c/puff2c.animation",
-            "size" : 1,
-            "angularVelocity" : 35,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [0, 0],
-            "finalVelocity" : [0, 0],
-            "approach" : [1, 1],
-            "timeToLive" : 0.4,
-            "layer" : "middle"
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz1/fizz1.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz1/fizz1.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz2/fizz2.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz2/fizz2.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz3/fizz3.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz3/fizz3.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz4/fizz4.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [-8, 8],
-            "finalVelocity" : [-3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [-4, 2],
-              "finalVelocity" : [-3, -4]
-            }
-          }
-        },
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/fizz4/fizz4.animation",
-            "size" : 1,
-            "angularVelocity" : 20,
-            "fade" : 1,
-            "destructionTime" : 7,
-            "position" : [0, 0],
-            "initialVelocity" : [8, 8],
-            "finalVelocity" : [3, -4],
-            "approach" : [15, 15],
-            "timeToLive" : 3.45,
-            "layer" : "middle",
-            "variance" : {
-              "initialVelocity" : [4, 2],
-              "finalVelocity" : [3, -4]
-            }
-          }
-        }
-      ]
-    }
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
   },
 
   "effects" : {
     "blink" : {
       "type" : "flash",
-      "time" : 0.25,
+      "time" : 0,
       "directives" : "fade=ffffff;0.5"
     }
   },
+  
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [40, 40, 30],
+      "pointLight" : true
+    }
+  },
+  
+  "particleEmitters" : {
+
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+
 
   "sounds" : {
     "turnHostile" : [ "/sfx/starspawn/attack.ogg" ],
-    "deathPuff" : [ "/sfx/npc/smallbiped/powlhead_small_death.ogg" ],
-    "blinkSound" : ["/sfx/gun/lightningcoil3.ogg"]
+    "idle" :["/sfx/npc/unique/robotboss_idle1.ogg"],
+    "fire" :["/sfx/weapons/explosion2.ogg"],
+    "chestgun" :["/sfx/weapons/energypew.ogg"],
+    "dualgun" :["/sfx/weapons/k3.ogg"],
+    "melee" :["/sfx/monsters/toss1.ogg"],
+    "shooting" :["/sfx/monsters/toss1.ogg"],
+    "deathPuff" :["/sfx/starspawn/starspawn1.ogg"],
+    "attackSound" :["/sfx/starspawn/attack.ogg"],
+    "aggroHop" :["/sfx/starspawn/attack2.ogg"],
+    "blinkSound" : [ "/sfx/gun/lightningcoil3.ogg" ]
   }
 }
