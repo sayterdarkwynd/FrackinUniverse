@@ -31,7 +31,7 @@ function getRecipes()
 	{ inputs = { liquidironfu = 25 }, outputs = { fu_carbon = { 1, 1, 2 } } },
 	{ inputs = { liquidorganicsoup = 25 }, outputs = { geneticmaterial = { 1, 1, 3 } } },
 	{ inputs = { liquidpus = 50 }, outputs = { fu_nitrogen = { 1, 1, 3 } } },
-	{ inputs = { liquidwater = 10 }, outputs = { fu_salt = { 1, 1, 2 }, fu_oxygen = { 2, 1, 2 }, fu_hydrogen = { 1, 1, 2 } } },
+	{ inputs = { liquidwater = 10 }, outputs = { fu_salt = { 1, 1, 2 }, fu_oxygen = { 1, 1, 2 }, fu_hydrogen = { 2, 2, 3 } } },
 	{ inputs = { poop = 1 }, outputs = { fu_nitrogen = { 3, 3, 5 } } },
 	{ inputs = { swampwater = 10 }, outputs = { fu_salt = { 1, 1, 2 }, fu_oxygen = { 1, 1, 2 }, fu_hydrogen = { 1, 1, 2 } } },
 	-- bees mod content
