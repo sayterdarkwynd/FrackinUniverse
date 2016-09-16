@@ -221,10 +221,11 @@ function populateResultsList(itemIn, itemOut)
 	for _, item in ipairs(list) do
 		local parentSize = widget.getSize(item)
 		local parentPos = widget.getPosition(item)
-		local height = math.max(widget.getSize(item .. '.icon')[2],
-		                        widget.getSize(item .. '.text')[2]) + 2
+		local textHeight = widget.getSize(item .. '.text')[2]
+		local height = math.max(widget.getSize(item .. '.icon')[2], textHeight) + 2
 		y = y + height + spacing
 		widget.setSize(item, { parentSize[1], height })
+		widget.setPosition(item .. '.text', { widget.getPosition(item .. '.text')[1], (height - textHeight) / 2 })
 		widget.setPosition(item .. '.direction', { widget.getPosition(item .. '.direction')[1], height - 1 })
 	end
 	local tableSize = widget.getSize(RECIPES)
