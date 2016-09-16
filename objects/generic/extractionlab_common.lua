@@ -279,7 +279,7 @@ function getRecipes()
 	{ inputs = { dirtmaterial = 50 }, outputs = { nutrientpaste = { 2, 2, 5 } } },
 	{ inputs = { drydirt = 50 }, outputs = { nutrientpaste = { 2, 2, 4 } } },
 	{ inputs = { drysand = 50 }, outputs = { iodine = { 1, 1, 2 }, liquidoil = { 2, 2, 4 } } },
-	{ inputs = { ebonblockmaterial = 4 }, outputs = { ebonshard = { 3, 3, 5 } } },
+	{ inputs = { ebonblockmaterial = 4 }, outputs = { ebonshard = { 2, 3, 4 } } },
 	{ inputs = { elderblock2material = 50 }, outputs = { rawminerals = { 3, 3, 5 } } },
 	{ inputs = { elderblockmaterial = 50 }, outputs = { rawminerals = { 3, 3, 5 } } },
 	{ inputs = { elderstone2material = 50 }, outputs = { rawminerals = { 3, 3, 5 } } },
