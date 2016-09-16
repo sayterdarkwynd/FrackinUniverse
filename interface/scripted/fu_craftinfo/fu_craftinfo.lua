@@ -206,6 +206,8 @@ function populateResultsList(itemIn, itemOut)
 	end
 
 	local list = {}
+	addHeadingItem(materials[itemIn or itemOut], list)
+
 	for _, station in pairs(recognisedObjects) do
 		if found[station] then
 			local info = processObjects[station]
@@ -286,8 +288,10 @@ function concatExtracted(list, techLevel, sep)
 	local sep = sep and ", " or ""
 	for item, counts in pairs(list) do
 		if checkValue(counts, techLevel) then
-			out = out .. sep .. itemName(item)
-			sep = ', '
+			if materials[item] then
+				out = out .. sep .. itemName(item)
+				sep = ', '
+			end
 		end
 	end
 	return out
@@ -331,9 +335,9 @@ function concatRandom(list, guaranteed)
 	if list == nil then return guaranteed and itemName(guaranteed) or "" end
 
 	local out = guaranteed and itemName(guaranteed) or ""
-	local sep = guaranteed and "; " or ""
+	local sep = guaranteed and materials[guaranteed] and "; " or ""
 	for item, chance in pairs(list) do
-		if item ~= guaranteed then
+		if item ~= guaranteed and materials[item] then
 			local colour = chance <= 25
 				   and string.format("^#FF%02X00;", math.floor(chance * chance * 255 / 625))
 				    or string.format("^#%02XFF00;", math.floor((10000 - chance * chance) * 255 / 9375))
@@ -367,10 +371,10 @@ function getNearbyStations()
 	return found
 end
 
-function addHeadingItem(station, list)
+function addHeadingItem(item, list)
 	local path = string.format("%s.%s", RECIPES, widget.addListItem(RECIPES))
-	widget.setText(path .. ".text", station.config.shortdescription)
-	widget.setImage(path .. ".icon", rescale(canonicalise(station.config.inventoryIcon, station.directory), 18, 18))
+	widget.setText(path .. ".text", item.name or item.config.shortdescription)
+	widget.setImage(path .. ".icon", item.icon or rescale(canonicalise(item.config.inventoryIcon, item.directory), 18, 18))
 	widget.setVisible(path .. ".icon", true)
 	table.insert(list, path)
 end
@@ -395,7 +399,8 @@ function addTextItem(direction, text, list)
 end
 
 function itemName(item, colour)
-	return (colour or "^green;") .. root.itemConfig({name = item}).config.shortdescription .. "^reset;"
+	if not materials[item] then return nil end
+	return (colour or "^green;") .. (materials[item].name or materials[item].config.shortdescription) .. "^reset;"
 end
 
 function doNothing(isInput, list)
