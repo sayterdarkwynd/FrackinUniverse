@@ -121,6 +121,8 @@ function endDash()
   status.clearPersistentEffects("movementAbility")
 
   if self.stopAfterDash then
+  	    animator.setAnimationState("dashing", "on")
+    animator.setParticleEmitterActive("dashParticles", true)
     local movementParams = mcontroller.baseParameters()
     local currentVelocity = mcontroller.velocity()
     if math.abs(currentVelocity[1]) > movementParams.runSpeed then
