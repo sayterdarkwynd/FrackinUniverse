@@ -1,0 +1,36 @@
+{
+  "name" : "longjump2",
+  "type" : "legs",
+
+  "scripts" : ["longjump2.lua"],
+  "animator" : "longjump2.animation",
+
+  "description" : "An superior jump with some boost.",
+  "shortDescription" : "Mega Jump",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/pulsejump.png",
+
+  "chipCost" : 3,
+
+  "multiJumpCount" : 1,
+  
+  "jumpSpeedMultiplier" : 1.5,
+  "fallGravityMultiplier" : 0.5,
+  "flutterXVelocity" : 2,
+  "flutterYVelocity" : 24,
+  "flutterTime": 0.15,
+  "flutterAfterFall" : true,
+  "flutterFall" : true,
+  "wallJumpXVelocity" : 15,
+  "wallGrabFreezeTime" : 0.50,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 1,
+  "wallReleaseTime" : 0.55,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1,
+      "airForce" : 0,
+      "airFriction" : 10
+    }
+  }
+}
