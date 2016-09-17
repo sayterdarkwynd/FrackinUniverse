@@ -1,26 +1,26 @@
 {
   "name" : "zeroburst",
-  "type" : "body",
+  "type" : "legs",
 
   "scripts" : ["zeroburst.lua"],
   "animator" : "dash.animation",
 
-  "description" : "A dash that can be used in the air! Cooldown: 0.8s",
+  "description" : "Double-tap up to explode upward! Harms foes!",
   "shortDescription" : "Zero Burst",
   "rarity" : "Legendary",
   "icon" : "/tech/airdash.png",
 
   "chipCost" : 8,
-
+  "energyCost" : 40,
   "maximumDoubleTapTime" : 0.25,
   "dashControlForce" : 2120,
   "dashSpeed" : 0,
   "dashYVel" : 100.5,
   "dashDuration" : 0.25,
-  "dashCooldown" : 0.85,
+  "dashCooldown" : 2,
+  "groundOnly" : true,
   "groundForceMultiplierMax" : 1.15,
   "groundForceMultiplierMin" : 0.95,
-  "runSpeedMultiplier" : 1.1,
-  "stopAfterDash" : true,
-  "groundOnly" : false
+  "runSpeedMultiplier" : 1,
+  "stopAfterDash" : true
 }

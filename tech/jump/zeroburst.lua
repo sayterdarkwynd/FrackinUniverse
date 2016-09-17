@@ -6,29 +6,28 @@ function init()
   self.dashTimer = 0
   self.dashCooldownTimer = 0
   self.rechargeEffectTimer = 0
-
+  self.energyCost = 80
   self.dashControlForce = config.getParameter("dashControlForce")
   self.dashSpeed = config.getParameter("dashSpeed")
   self.dashYVel = config.getParameter("dashYVel")
   self.dashDuration = config.getParameter("dashDuration")
   self.dashCooldown = config.getParameter("dashCooldown")
-  self.groundOnly = config.getParameter("groundOnly")
   self.stopAfterDash = config.getParameter("stopAfterDash")
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=CCCCFFFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
-  
+  self.groundOnly = config.getParameter("groundOnly")
   self.runSpeedMultiplier = config.getParameter("runSpeedMultiplier")
   self.groundForceMultiplierMax = config.getParameter("groundForceMultiplierMax")
   self.groundForceMultiplierMin = config.getParameter("groundForceMultiplierMin")
 
-  self.doubleTap = DoubleTap:new({"left", "right"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
+  self.doubleTap = DoubleTap:new({"up"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
       if self.dashTimer == 0
           and self.dashCooldownTimer == 0
           and groundValid()
           and not mcontroller.crouching()
           and not status.statPositive("activeMovementAbilities") then
 
-        startDash(dashKey == "left" and -1 or 1)
+        startDash(dashKey == "up" and 0 or 0)
       end
     end)
     
@@ -44,7 +43,9 @@ function uninit()
   tech.setParentDirectives()
 end
 
+
 function update(args)
+
 local superJumpTime = 0.01
 
   if self.dashCooldownTimer > 0 then
@@ -93,6 +94,12 @@ function groundValid()
 end
 
 function startDash(direction)
+-- ***energy cost
+ if status.overConsumeResource("energy", self.energyCost) and groundValid() then 
+   status.setResourcePercentage("energyRegenBlock", 5.0)
+-- ***end energy cost
+
+-- ***start jump
   self.dashDirection = direction
   self.dashTimer = self.dashDuration
   self.airDashing = not mcontroller.groundMovement()
@@ -100,12 +107,14 @@ function startDash(direction)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
-  
+-- ***end jump
 
+-- ***spawn projectile
     local damageConfig = { power = 25,speed = 0,physics = "default" } 
     status.addEphemeralEffects{{effect = "nofalldamage", duration = self.cooldown}}
     world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
-	  
+-- ***end projectile
+ end
 end
 
 function endDash()
