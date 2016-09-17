@@ -5,8 +5,8 @@
     "maxStack" : 1,
     "rarity" : "rare",
   "description" : "Attaches to the forearm. Fires incendiary blasts.",
-  "shortdescription" : "^orange;Arm Cannon",
-  "level" : 2,
+  "shortdescription" : "^orange;Arm Cannon (Fire)",
+  "level" : 3,
   "category" : "uniqueWeapon",
   "itemTags" : ["weapon","ranged","machinepistol"],
   "tooltipKind" : "gun",
@@ -24,7 +24,7 @@
   },
 
   "baseOffset" : [0.75, 0.34],
-  "muzzleOffset" : [1.5, 0.125],
+  "muzzleOffset" : [1.0, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -35,8 +35,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.07,
-    "baseDps" : 7,
-    "energyUsage" : 22,
+    "baseDps" : 6.5,
+    "energyUsage" : 20,
     "fireType" : "auto",
     "inaccuracy" : 0.08,
     "projectileCount" : 1,
@@ -48,7 +48,7 @@
       "idle" : {
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true
@@ -57,7 +57,7 @@
         "duration" : 0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
@@ -66,7 +66,7 @@
         "duration" : 0.0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false

@@ -1,6 +1,7 @@
 {
   "type" : "fufatalcircuit2",
-
+  "shortdescription" : "Assault Bot",
+  "description" : "This well-equipped robot is made for combat.",
   "categories" : [ "fufatalcircuit_robotic2" ],
   "parts" : [ "arms", "chest", "tail", "head" ],
   "partParameters" : "fufatalcircuit2.partparams",
@@ -16,19 +17,19 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/boss/fufatalcircuit/groundMonster.lua",
+      "/monsters/boss/fufatalcircuit/groundmonster.lua",
       "/scripts/pathing.lua",
       "/scripts/stateMachine.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua",
 
-      "/monsters/fulegacyscripts/ground/aggroHopState.lua",
-      "/monsters/fulegacyscripts/ground/approachState.lua",
-      "/monsters/fulegacyscripts/ground/aggressState.lua",
-      "/monsters/fulegacyscripts/ground/stunState.lua",
-      "/monsters/fulegacyscripts/ground/wanderState.lua",
+      "/monsters/fulegacyscripts/ground/aggrohopstate.lua",
+      "/monsters/fulegacyscripts/ground/approachstate.lua",
+      "/monsters/fulegacyscripts/ground/aggressstate.lua",
+      "/monsters/fulegacyscripts/ground/stunstate.lua",
+      "/monsters/fulegacyscripts/ground/wanderstate.lua",
 
-      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"
+      "/monsters/fulegacyscripts/ground/skills/creategroundrangedattack.lua"
     ],
 
     "metaBoundBox" : [-1, -5.6, 1, 3],
@@ -162,7 +163,8 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -21]
+    "feetOffset" : [0, -21],
+    "capturable" : false
 
   }
 }

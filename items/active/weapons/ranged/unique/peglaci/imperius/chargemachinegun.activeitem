@@ -6,7 +6,7 @@
   "rarity" : "legendary",
   "description" : "A storm of aegisalt shards rend armor with ease and reflect off walls.",
   "shortdescription" : "Imperius Minigun",
-  "level" : 5,
+  "level" : 4,
   "tooltipKind" : "gun",
   "weaponType" : "Vulcan",
   "itemTags" : ["weapon","ranged","assaultrifle"],
@@ -28,17 +28,21 @@
   "baseOffset" : [0.5, -0.72],
   "muzzleOffset" : [1, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : [
+    "/items/active/scripts/modifiablegun.lua",
+    "/items/active/scripts/windupinaccurateweapon.lua",
+    "/items/active/scripts/heavyweapon.lua"
+  ],
 
   "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.10,
+    "fireTime" : 0.25,
     "baseDps" : 5,
-    "energyUsage" : 35,
-    "inaccuracy" : 0.026,
+    "energyUsage" : 33,
+    "inaccuracy" : 0.016,
 
     "projectileCount" : 2,
     "fireType" : "auto",

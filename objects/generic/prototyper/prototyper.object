@@ -14,23 +14,33 @@
   "race" : "generic",
   "category" : "crafting",
   "price" : 450,
-  "learnBlueprintsOnPickup" : [ "clothingfabricator", "apexpod2", "magneticshielding", "electronmicroscope", "extractionlab", "extractionlab_roof", "nanofabricator", "circuitboard", "basicminer" ],
+  "learnBlueprintsOnPickup" : [ "clothingfabricator", "apexpod2", "magneticshielding", "electronmicroscope", "extractionlab", "extractionlab_roof", "nanofabricator", "circuitboard", "basicminer", "fu_craftinfo" ],
   "radioMessagesOnPickup" : [ "pickupmatterassembler" ],
   "inventoryIcon" : "prototypericon.png",
-  "orientations" : [
 
-    {
-      "imageLayers" : [ { "image" : "prototyper.png:<color>.<key>" }, { "image" : "prototyper_lit.png:<color>.<key>", "fullbright" : true } ],
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "prototyper.png:<color>.<frame>", "fullbright" : true }, { "image" : "prototyperlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
       "imagePosition" : [0, 0],
       "frames" : 7,
-      "animationCycle" : 3.0,
-
+      "animationCycle" : 1.35,
       "spaceScan" : 0.1,
-      "fgAnchors" : [ [0, -1] ],
-      "collision" : "platform",
-      "direction" : "left",
-      "flipImages" : true
-    }
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "prototyper.png:<color>.<frame>", "fullbright" : true }, { "image" : "prototyperlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 7,
+      "animationCycle" : 1.35,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }     
+    
   ],
   "scripts" : [ "/scripts/npcToyObject.lua" ],
   "npcToy" : {

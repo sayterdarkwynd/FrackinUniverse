@@ -5,8 +5,8 @@
     "maxStack" : 1,
     "rarity" : "rare",
   "description" : "Attaches to the forearm. Fires frost blasts.",
-  "shortdescription" : "^cyan;Arm Cannon",
-  "level" : 2,
+  "shortdescription" : "^cyan;Arm Cannon (Ice)",
+  "level" : 3,
   "category" : "uniqueWeapon",
   "itemTags" : ["weapon","ranged","machinepistol"],
   "tooltipKind" : "gun",
@@ -16,7 +16,7 @@
     "butt" : "",
     "middle" : "armcannonice.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/particlemuzzle1.png"
   },      
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/plasma_mp2.ogg" ] },
@@ -24,7 +24,7 @@
   },
 
   "baseOffset" : [0.75, 0.34],
-  "muzzleOffset" : [1.5, 0.125],
+  "muzzleOffset" : [1.0, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -35,7 +35,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.5,
-    "baseDps" : 6.35,
+    "baseDps" : 5.25,
     "energyUsage" : 29,
     "fireType" : "auto",
     "inaccuracy" : 0.08,
@@ -48,7 +48,7 @@
       "idle" : {
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true
@@ -57,7 +57,7 @@
         "duration" : 0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
@@ -66,7 +66,7 @@
         "duration" : 0.0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false

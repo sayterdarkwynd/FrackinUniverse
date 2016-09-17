@@ -1,0 +1,36 @@
+{
+  "objectName" : "c4explosive",
+  "colonyTags" : ["human","humanbunker","storage"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "price" : 200,
+  "description" : "A high-payload Explosive. Be sure to stand clear. Detonation requires impact.",
+  "shortdescription" : "C4 Plastic Explosive",
+  "race" : "generic",
+
+  "inventoryIcon" : "c4explosiveicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "c4explosive.png:<color>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "smashable" : true,
+  "smashOnBreak" : false,
+  "smashSounds" : [ "/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg" ],
+  "smashDropPool" : "empty",
+  
+  "scripts" : [
+    "/objects/scripts/explodingsmashable.lua"
+  ],
+  "explosionProjectile" : "c4explosive",
+  "explosionOffset" : [1, 2]
+}

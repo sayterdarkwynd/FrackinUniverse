@@ -6,24 +6,36 @@
   "category" : "crafting",
   "printable" : false,
   "objectType" : "container",
-  "learnBlueprintsOnPickup" : [ "extractionlab_roof", "chemlab", "fissionfurnace", "armory", "extractionlabadv", "carbonplate" ], 
+  "learnBlueprintsOnPickup" : [ "extractionlab_roof", "chemlab", "powerstation", "fissionfurnacenew", "armory", "extractionlabadv" ], 
   "price" : 450,
   "inventoryIcon" : "extractionlabicon.png",
   "description" : "Converts materials into useful resources.",
   "shortdescription" : "^orange;Extraction Lab^white;",
   "subtitle" : "Resource converter",
   "orientations" : [
-    {
-      "dualImage" : "extractionlab.png:<color>.<frame>",
+     {
+      "imageLayers" : [ { "image" : "extractionlab.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlablit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
 
       "imagePosition" : [0, 0],
       "frames" : 6,
-      "animationCycle" : 2.0,
-
-      "spaceScan" : 0.1,
+      "animationCycle" : 2,
       "collision" : "platform",
+      "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
-    }
+    },
+    {
+      "imageLayers" : [ { "image" : "extractionlab.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlablit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    } 
   ],
 
   "animation" : "/objects/generic/extractionlab/extractionlab.animation",

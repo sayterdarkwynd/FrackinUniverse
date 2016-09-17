@@ -1,0 +1,35 @@
+{
+  "projectileName" : "coldsplosion3",
+  "image" : "coldsplosion.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 6,
+  "speed" : 0,
+  "damagePoly" : [ [-18, 0], [-12, -12], [0, -18], [12, -12], [18, 0], [12, 12], [0, 18], [-12, 12] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "pointLight" : true,
+  "lightColor" : [100,20,205],
+  "damageKind" : "ice",
+  "periodicActions" : [
+    {
+      "time" : 0.07,
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+    },  
+    {
+      "time" : 0.01,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fuiceshotspecial",
+      "inheritDamageFactor" : 1.0,
+      "fuzzAngle" : 360
+   }
+  ],
+  "actionOnReap" : [  
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@
     "rarity" : "rare",
   "description" : "Attaches to the forearm. This one is broken.",
   "shortdescription" : "Arm Cannon [Broken] ",
-  "level" : 2,
+  "level" : 3,
   "category" : "uniqueWeapon",
   "itemTags" : ["weapon","ranged","machinepistol"],
   "tooltipKind" : "gun",
@@ -16,7 +16,7 @@
     "butt" : "",
     "middle" : "armcannonbroken.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },      
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/plasma_mp2.ogg" ] },
@@ -24,7 +24,7 @@
   },
   
   "baseOffset" : [0.75, 0.34],
-  "muzzleOffset" : [1.5, 0.125],
+  "muzzleOffset" : [1.0, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -48,7 +48,7 @@
       "idle" : {
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true
@@ -57,7 +57,7 @@
         "duration" : 0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
@@ -66,7 +66,7 @@
         "duration" : 0.0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false

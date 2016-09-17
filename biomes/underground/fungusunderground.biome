@@ -136,6 +136,7 @@
           "objectSets" : [
             {
               "pool" : [ 
+              
               [0.35, "fubioshroomblue" ],
               [0.35, "fubioshroomgreen" ],
               [0.35, "fubioshroomred" ],
@@ -263,6 +264,21 @@
               "modHueShiftMax" : 90
             },
             {
+              "name" : "fungal",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 90
+            },
+            {
+              "name" : "shroomstump",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 90
+            },
+            {
+              "name" : "toxicoshroom",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 90
+            },
+            {
               "name" : "algae",
               "baseHueShiftMax" : 60,
               "modHueShiftMax" : 90
@@ -271,7 +287,7 @@
               "name" : "alienbush",
               "baseHueShiftMax" : 60,
               "modHueShiftMax" : 90
-            }
+            } 
           ]
         },
         {
@@ -282,6 +298,35 @@
           "type" : "grass",
           "grasses" : [ "glowceiling", "ceilingmushroom" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "floranopenpod1" ],
+              [0.35, "floranopenpod2" ],
+              [0.35, "floranpod1" ],
+              [0.35, "floranpod2" ],
+              [0.35, "floranpod3" ],
+              [0.35, "floranpod1" ],
+              [0.15, "floranpodapex" ],              
+              [0.55, "swamproot1" ],
+              [0.55, "swamproot2" ],
+              [0.55, "swamproot3" ],
+              [0.55, "swamproot4" ],
+              [0.55, "swamproot5" ],
+              [0.55, "plantorb" ],
+              [0.55, "agaranmushroom" ]
+          ],
+              "parameters" : { }
+            }
+          ]
+        },        
         {
           "mode" : "floor",
           "priority" : 1.0,

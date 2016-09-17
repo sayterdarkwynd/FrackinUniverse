@@ -12,17 +12,29 @@
   "shortdescription" : "^orange;MKII Extraction Lab (roof)^white;",
   "subtitle" : "Resource converter",
   "orientations" : [
-    {
-      "dualImage" : "extractionlabadv_roof.png:<color>.<frame>",
+     {
+      "imageLayers" : [ { "image" : "extractionlabadv_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadv_rooflit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
 
       "imagePosition" : [0, 0],
       "frames" : 6,
-      "animationCycle" : 2.0,
-
-      "spaceScan" : 0.1,
+      "animationCycle" : 2,
       "collision" : "platform",
+      "spaceScan" : 0.1,
       "anchors" : [ "top" ]
-    }
+    },
+    {
+      "imageLayers" : [ { "image" : "extractionlabadv_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadv_rooflit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    } 
   ],
 
   "animation" : "/objects/generic/extractionlabadv/extractionlabadv_roof.animation",

@@ -1,7 +1,7 @@
 {
   "type" : "zoro",
-  "shortdescription" : "zoro",
-  "description" : "A nasty little bugger.",
+  "shortdescription" : "Zorafa",
+  "description" : "A swift and nasty creature that loves to pick fights with homeless people.",
 
   "categories" : [ "zoro" ],
   "parts" : [ "body" ],
@@ -69,7 +69,7 @@
             "leapState" : "jump",
             "fallState" : "fall",
 
-            "winddownTime" : 0.25,
+            "winddownTime" : 0.6,
             "winddownState" : "idle"
           }
         }, 
@@ -88,7 +88,7 @@
             "leapState" : "jumpkick",
             "fallState" : "fall",
 
-            "winddownTime" : 0.25,
+            "winddownTime" : 0.6,
             "winddownState" : "idle"
           }
         },        
@@ -112,7 +112,7 @@
             "range": 12,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.2
+            "winddownTime" : 0.6
           }
         },        
         {
@@ -136,7 +136,7 @@
             "range": 3,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.2
+            "winddownTime" : 0.4
           }
         },        
         {
@@ -182,7 +182,7 @@
             "range": 15,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.4
+            "winddownTime" : 1.4
           }
         }         
       ],
@@ -197,7 +197,7 @@
             "hopSequence" : 3,
             "windupTime" : 0,
             "landTime" : 0,
-            "timeBetweenHops" : 0.00,
+            "timeBetweenHops" : 0.41,
             "hopAwayFromWall" : true
           }
         }      
@@ -282,7 +282,7 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-2.025,2.025], [2.075,2.0], [2.075,-2.375], [-2.05,-2.125] ],
+      "collisionPoly" : [ [-2.025,2.525], [2.075,2.5], [2.075,-2.375], [-2.05,-2.125] ],
 
       "mass" : 1.0,
       "walkSpeed" : 12,
@@ -354,8 +354,6 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.44,
-    "capturedMonsterName" : "Zoro",
-    "capturedMonsterType" : "zoro", // turn into an adultpoptop when captured
     "nametagColor" : [64, 200, 255]
   }
 }

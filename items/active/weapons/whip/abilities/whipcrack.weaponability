@@ -1,0 +1,78 @@
+{
+  "animationParts" : { },
+  "animationCustom" : { },
+  "animationScripts" : [
+    "/items/active/effects/chain.lua"
+  ],
+
+  "ability" : {
+    "name" : "Whip Crack",
+    "type" : "whipcrack",
+    "scripts" : ["/items/active/weapons/whip/abilities/whipcrack.lua"],
+    "class" : "WhipCrack",
+
+    "fireTime" : 1.1,
+    "chainDps" : 1.0,
+    "crackDps" : 7.2,
+
+    "damageConfig" : {
+      "statusEffects" : [ ],
+      "damageSourceKind" : "lash",
+      "timeoutGroup" : "primary",
+      "timeout" : 0.3
+    },
+
+    "projectileType" : "whipcrackphysical",
+    "projectileConfig" : {},
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [0.0, 0.0],
+        "weaponOffset" : [-1.3, 0.625],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "swing" : {
+        "armRotation" : 0,
+        "weaponRotation" : -90,
+        "weaponRotationCenter" : [0.0, 0.0],
+        "weaponOffset" : [-1.3, 0.875],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.25,
+        "armRotation" : 100,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [0.0, 0.0],
+        "weaponOffset" : [-1.3, 0.625],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "extend" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : -90,
+        "weaponRotationCenter" : [0.0, 0.0],
+        "weaponOffset" : [-1.3, 0.875],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : -90,
+        "weaponRotationCenter" : [0.0, 0.0],
+        "weaponOffset" : [-1.3, 0.875],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}
