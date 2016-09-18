@@ -1,0 +1,27 @@
+{
+  "id" : "teleportdash",
+  "prerequisites" : [ "techscientist6" ],
+  "title" : "^#1693d5;Zip! Pew! Kableeeeew! Pew!",
+  "text" : "",
+  "completionText" : "Fascinating. The artifact has taught me the ^orange;Teleport Dash^reset; tech. It should really keep the enemy guessing!",
+  "moneyRange" : [220, 320],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+
+    "conditions" : [ ],
+    "showTech" : [
+      "teleportdash"
+    ]
+  }
+}
