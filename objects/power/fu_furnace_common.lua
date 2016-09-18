@@ -50,12 +50,12 @@ function update(dt)
 				for key, value in pairs(storage.bonusoutputtable) do
 					if clearSlotCheck(key) == false then break end
 					if math.random(1,100) <= value then
-						fu_storeItems({name = key, count = 1, data = {}}, {0}, true)
+						fu_sendOrStoreItems(0, {name = key, count = 1, data = {}}, {0}, true)
 					end
 			end
 		end
 		
-		fu_storeItems({name = storage.currentoutput, count = self.orerandom, data = {}}, {0}, true)
+		fu_sendOrStoreItems(0, {name = storage.currentoutput, count = self.orerandom, data = {}}, {0}, true)
 		self.timer = self.timerInitial
 	else
 		storage.activeConsumption = false

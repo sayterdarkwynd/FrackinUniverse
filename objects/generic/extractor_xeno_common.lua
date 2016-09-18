@@ -95,7 +95,7 @@ function update(dt)
 	if self.timer <= 0 then
 		if self.output then
 			for k,v in pairs(self.output) do
-				fu_storeItems({name = k, count = techlevelMap(v)}, {0, 1, 2}, true)
+				fu_sendOrStoreItems(0, {name = k, count = techlevelMap(v)}, {0, 1, 2}, true)
 			end
 			self.output = nil
 			self.timer = self.mintick --reset timer to a safe minimum
