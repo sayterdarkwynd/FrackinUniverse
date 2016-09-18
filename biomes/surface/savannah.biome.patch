@@ -23,6 +23,24 @@
 			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
 		} 
 	},
+	{"op":"add","path":"/surfacePlaceables/items/-","value":
+	  {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [1, "wildvanusflowerseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+          }
+	},	
 	{"op":"add","path":"/surfacePlaceables/items/-","value":{
           "mode" : "floor",
           "priority" : 1.0,
