@@ -8,7 +8,7 @@ function init()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
 
   idle()
-
+self.active=false
   self.available = true
 end
 

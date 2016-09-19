@@ -56,7 +56,7 @@ function getRecipes()
 		{ inputs = { coralcreepseed = 1 }, outputs = { gene_aquahomeo = 1 } },
 		{ inputs = { cornseed = 1 }, outputs = { gene_harden = 1 } },
 		{ inputs = { corvexseed = 1 }, outputs = { gene_corrosive = 1 } },
-		{ inputs = { cottonseed = 1 }, outputs = { gene_energy = 1 } },
+		{ inputs = { cottonseed = 1 }, outputs = { gene_mimetic = 1 } },
 		{ inputs = { crystallite = 1 }, outputs = { gene_mimetic = 2 } },
 		{ inputs = { crystalplantseed = 1 }, outputs = { gene_stealth = 1 } },
 		{ inputs = { currentcornseed = 1 }, outputs = { gene_mimetic = 1 } },
