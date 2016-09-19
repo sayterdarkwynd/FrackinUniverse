@@ -1,3 +1,5 @@
+require "/scripts/fu_storageutils.lua"
+
 function init(virtual)
 	if virtual == true then return end
 	object.setInteractive(true)
@@ -55,7 +57,9 @@ function update(dt)
 	        storage.growth = storage.growth + 3
 	end	
 	if storage.growth >= storage.growthcap then
-		world.containerAddItems(entity.id(), {name = storage.currentcrop, count = storage.yield, data={}})
+		-- if connected to an object receiver, try to send the crop, else store loally
+		-- Wired Industry's item router is one such device
+		fu_sendOrStoreItems(0, {name = storage.currentcrop, count = storage.yield}, {0, 1, 2})
 		world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,2), data={}})
 		isn_doFertIntake()
 		isn_doSeedIntake()
