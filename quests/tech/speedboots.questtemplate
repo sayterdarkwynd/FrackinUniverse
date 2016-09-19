@@ -1,0 +1,27 @@
+{
+  "id" : "speedboots",
+  "prerequisites" : [ "techscientist6" ],
+  "title" : "^#1693d5;Stimulant Rig",
+  "text" : "",
+  "completionText" : "Using what I've learned from this drug, I have devised a new tech. The ^orange;Stimulant Rig^reset;! It injects ^red;unsafe levels of narcotic stimulants^reset; to provide a constant speed boost! Hurray!",
+  "moneyRange" : [220, 320],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+
+    "conditions" : [ ],
+    "showTech" : [
+      "speedboots"
+    ]
+  }
+}
