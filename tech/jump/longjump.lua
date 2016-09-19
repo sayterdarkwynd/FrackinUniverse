@@ -5,7 +5,7 @@ function init()
 	self.doingAbility = false
 	self.jumpSpeedMultiplier = config.getParameter("jumpSpeedMultiplier")
 	self.fallGravityMultiplier = config.getParameter("fallGravityMultiplier")
-	self.fallDamageMultiplier = config.getParameter("fallGravityMultiplier")
+	self.fallDamageMultiplier = config.getParameter("fallDamageMultiplier")
 	self.flutterXVelocity = config.getParameter("flutterXVelocity")
 	self.flutterYVelocity = config.getParameter("flutterYVelocity")
 	self.flutterTime = config.getParameter("flutterTime")
@@ -122,39 +122,18 @@ function landed(args)
 		self.doingAbility = false
 		stopAbility(args)
 	end
-	self.flutterAble = true
 end
 
 function startAbility(args)
-	if self.flutterAble then
-		self.flutterAble = false
-		self.flutterTimer = self.flutterTime
-		tech.setParentState("run")
-		animator.setParticleEmitterActive("flutterParticles", true)
-		animator.playSound("flutter")
-	else
-		self.doingAbility = false
-		stopAbility(args)
-	end
+    self.doingAbility = false
 end
 
 function stopAbility(args)
-	animator.setParticleEmitterActive("flutterParticles", false)
-	animator.stopAllSounds("flutter")
+
 end
 
 function updateAbility(args)
-	if self.flutterTimer > 0 then
-		tech.setParentState("run")
-		local vel = mcontroller.velocity()
-		vel[1] = self.flutterXVelocity * mcontroller.facingDirection()
-		vel[2] = self.flutterYVelocity
-		mcontroller.setVelocity(vel)
-	else
 		self.doingAbility = false
-		stopAbility(args)
-	end
-	self.flutterTimer = self.flutterTimer - args.dt
 end
 
 function updateJumping(args)
@@ -164,9 +143,7 @@ function updateJumping(args)
 end
 
 function updateFalling(args)
-	if not self.flutterAfterFall then self.flutterAble = false end
-	if self.flutterFall then tech.setParentState("run")
-	else tech.setParentState() end
+	tech.setParentState()
 	local params = mcontroller.baseParameters()
 	params.gravityMultiplier = params.gravityMultiplier * self.fallGravityMultiplier
 	mcontroller.controlParameters(params)
