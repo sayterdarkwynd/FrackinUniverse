@@ -125,9 +125,7 @@ function landed(args)
 end
 
 function startAbility(args)
-
-		self.doingAbility = false
-	
+    self.doingAbility = false
 end
 
 function stopAbility(args)
