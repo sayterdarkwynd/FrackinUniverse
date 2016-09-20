@@ -1,22 +1,19 @@
 {
-  "projectileName" : "waveblast",
+  "projectileName" : "waveblast5",
   "image" : "waveblast.png",
   "physics" : "bullet",
-  "animationCycle" : 0.14,
+  "animationCycle" : 0.6,
   "damageKindImage" : "icon.png",
   "frameNumber" : 6,
   "power" : 5,
   "level" : 5,
-  "speed" : 60,
-  "timeToLive" : 0.14,
+  "speed" : 2,
+  "timeToLive" : 0.6,
   "lightColor" : [255,165,0],
   "actionOnReap" : [
     {
-      "action" : "projectile",
-      "type" : "waveblast2",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 1,
-      "angleAdjust" : 0
+      "action" : "config",
+      "file" : "/projectiles/explosions/gaussrifleboom/gaussrifleboom.config"
     }
   ],
   "emitters" : [ "gausssmoke" ],
