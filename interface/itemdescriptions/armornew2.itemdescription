@@ -1,12 +1,14 @@
 {
+  //Position: of the armor portrait
   "objectImage" : {
     "type" : "image",
-    "position" : [36, 127],
+    "position" : [29, 120],
     "file" : "",
     "centered" : true,
     "maxSize" : [ 46, 59 ],
     "minSize" : [ 46, 59 ]
   },
+    //Position: of the items description text
   "descriptionLabel" : {
     "type" : "label",
     "position" : [16, 62],
@@ -14,53 +16,63 @@
     "hAnchor" : "left",
     "vAnchor" : "top"
   },
+    //Position: of the items name
   "title" : {
     "type" : "label",
-    "position" : [35, 179],
+    "position" : [35, 164],
     "hAnchor" : "left",
     "value" : ""
   },
+    //Position: of the rarity text
   "rarityLabel" : {
     "type" : "label",
-    "position" : [16, 5],
+    "position" : [16, 1],
     "hAnchor" : "left",
     "centered" : true,
     "wrapWidth" : 126
   },
+    //Position of armors icon
   "titleIcon" : {
     "type" : "itemslot",
-    "position" : [9, 167],
+    "position" : [9, 162],
     "callback" : "null",
     "iconMode" : true,
     "backingImage" : "/interface/inventory/portrait.png",
     "showRarity" : false,
     "showBackingImageWhenFull" : true
   },
+   //Position: of the items type-label
   "armorLabelTitle" : {
     "type" : "label",
-    "position" : [35, 169],
+    "position" : [35, 173],
     "hAnchor" : "left",
     "color" : [185, 181, 178],
     "value" : "Armour"
   },
+    //This section defines armors stat list
   "statusList" : {
     "scissoring" : false,
     "type" : "list",
+      //fill the list down
     "fillDown" : true,
-    "position" : [-3, 159],
+    //Status Position: horizonal, vertical
+    "position" : [6, 141],
     "schema" : {
-      "spacing" : [0, 1],
+      //Defines lists spacing: horizontal, vertical 
+      "spacing" : [0, 0.8],
+      //memberSize: amountallowed, size
       "memberSize" : [999, 15],
       "listTemplate" : {
         "statusLabel" : {
           "type" : "label",
-          "position" : [88, 2],
+          // Defines label text position: horizontal, vertical
+          "position" : [73, 2],
           "hAnchor" : "left"
         },
         "statusImage" : {
           "scissoring" : false,
           "type" : "image",
-          "position" : [62, -1],
+          "position" : [46, -1],
           "file" : "",
           "zlevel" : 8
         },
