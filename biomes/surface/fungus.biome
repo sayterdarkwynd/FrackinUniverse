@@ -70,7 +70,71 @@
   ],
 
   "skyOptions" : [
+    {
+      "mainColor" : [170, 255, 170],
 
+      "morningColors" : [ [129, 204, 129], [164, 200, 164] ],
+      "dayColors" : [ [79, 170, 80], [79, 175, 75] ],
+      "eveningColors" : [ [155, 10, 155], [155, 20, 265] ],
+      "nightColors" : [ [212, 50, 110], [212, 50, 210] ],
+
+      "morningLightColor" : [97, 180, 97],
+      "dayLightColor" : [60, 130, 50],
+      "eveningLightColor" : [60, 80, 60],
+      "nightLightColor" : [97, 40, 17]
+    },
+    {
+      "mainColor" : [255, 255, 255],
+
+      "morningColors" : [ [129, 14, 129], [164, 10, 164] ],
+      "dayColors" : [ [179, 10, 180], [179, 15, 175] ],
+      "eveningColors" : [ [55, 190, 55], [55, 190, 55] ],
+      "nightColors" : [ [12, 150, 10], [12, 150, 10] ],
+
+      "morningLightColor" : [97, 180, 97],
+      "dayLightColor" : [60, 130, 50],
+      "eveningLightColor" : [160, 80, 160],
+      "nightLightColor" : [17, 240, 17]
+    },
+    {
+      "mainColor" : [200, 5, 55],
+
+      "morningColors" : [ [129, 204, 129], [164, 200, 164] ],
+      "dayColors" : [ [79, 170, 80], [79, 175, 75] ],
+      "eveningColors" : [ [55, 90, 55], [55, 90, 55] ],
+      "nightColors" : [ [12, 50, 10], [12, 50, 10] ],
+
+      "morningLightColor" : [97, 180, 97],
+      "dayLightColor" : [60, 130, 50],
+      "eveningLightColor" : [160, 80, 60],
+      "nightLightColor" : [17, 40, 217]
+    },
+    {
+      "mainColor" : [255, 255, 25],
+
+      "morningColors" : [ [190, 220, 190], [200, 255, 200] ],
+      "dayColors" : [ [200, 255, 200], [220, 255, 220] ],
+      "eveningColors" : [ [150, 200, 150], [150, 200, 150] ],
+      "nightColors" : [ [175, 115, 75], [180, 100, 80] ],
+
+      "morningLightColor" : [190, 220, 190],
+      "dayLightColor" : [200, 255, 200],
+      "eveningLightColor" : [150, 200, 150],
+      "nightLightColor" : [175, 120, 75]
+    },
+    {
+      "mainColor" : [20, 40, 221],
+
+      "morningColors" : [ [190, 220, 190], [200, 255, 200] ],
+      "dayColors" : [ [200, 255, 200], [220, 255, 220] ],
+      "eveningColors" : [ [150, 200, 150], [150, 200, 150] ],
+      "nightColors" : [ [75, 115, 75], [80, 100, 80] ],
+
+      "morningLightColor" : [190, 220, 190],
+      "dayLightColor" : [200, 255, 200],
+      "eveningLightColor" : [150, 200, 150],
+      "nightLightColor" : [75, 120, 75]
+    },
     {
       "mainColor" : [170, 255, 170],
 
@@ -253,24 +317,13 @@
           "objectSets" : [
             {
               "pool" : [ 
-              [0.35, "junglebush1" ], 
-              [0.35, "junglebush2" ], 
-              [0.35, "junglebush3" ], 
-              [0.35, "junglebush4" ], 
-              [0.35, "junglebush5" ], 
-              [0.35, "junglebush6" ], 
-              [0.35, "junglebush7" ], 
-              [0.35, "junglebush8" ], 
-              [0.35, "junglebush9" ], 
-              [0.35, "junglebush10" ], 
-              [0.35, "junglebush11" ], 
-              [0.35, "junglebush12" ], 
-              [0.35, "junglebush13" ], 
-              [0.35, "junglebush14" ], 
-              [0.35, "junglebush15" ], 
-              [0.35, "junglebush16" ], 
-              [0.35, "junglebush17" ], 
-              [0.35, "junglebush18" ],
+              [0.35, "floranopenpod1" ],
+              [0.35, "floranopenpod2" ],
+              [0.35, "floranpod1" ],
+              [0.35, "floranpod2" ],
+              [0.35, "floranpod3" ],
+              [0.35, "floranpod1" ],
+              [0.15, "floranpodapex" ],
               [0.35, "redcap2" ],
               [0.35, "redcap3" ],
               [0.35, "redcap" ],
@@ -391,29 +444,39 @@
           "type" : "bush",
           "bushes" : [
             {
+              "name" : "flowery",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 90
+            },          
+            {
               "name" : "fungal",
               "baseHueShiftMax" : 60,
               "modHueShiftMax" : 90
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
+            },
             {
               "name" : "shroomstump",
               "baseHueShiftMax" : 60,
               "modHueShiftMax" : 90
-            }
+            },
+            {
+              "name" : "toxicoshroom",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 90
+            },
+            {
+              "name" : "algae",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 90
+            },
+            {
+              "name" : "alienbush",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 90
+            }            
           ]
         },
         {
-          "mode" : "floor",
+          "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:ffunCommon",
@@ -421,43 +484,12 @@
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "swampbush",
+              "name" : "ceilingwicked",
               "baseHueShiftMax" : 60,
               "modHueShiftMax" : 90
             }
           ]
         },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "swampplant",
-              "baseHueShiftMax" : 60,
-              "modHueShiftMax" : 90
-            }
-          ]
-        }, 
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "swampshrub",
-              "baseHueShiftMax" : 60,
-              "modHueShiftMax" : 90
-            }
-          ]
-        },
-
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -482,8 +514,6 @@
           "treeStemList" : [ "alienbubble", "cocoa", "fleshy", "grumpy", "metal", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree", "alienstriped", "colourfulstem", "deadtree1", "alienpalm", "bark", "beach", "blank", "coconut", "cross", "desertpalm", "palm", "plain", "twirl", "barren", "old", "skeletal", "stripey", "geometricstem", "giantflower", "icespherestem", "crackly", "oldwood", "palmlike", "twisty", "woody", "ashy", "coal", "crispy", "lava", "magma", "bleak", "gloomy", "murky", "savah", "savannahbleak", "savannahgloomy", "slabby", "spiked", "snowbirch", "snowcocoa", "snowfleshy", "snowgrumpy", "snowmetal", "snowpine", "snowpinetree", "snowslimey", "snowsomething", "snowspikey", "snowtwisted", "snowwood", "weeping", "grasstree", "baobab" ],
           "treeFoliageList" : [ "alienbigleaf", "aliencircle", "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "pinefoliage", "redleaves", "scraggy", "spikeyfoliage", "alienbigleaf", "aliencircle", "aridblank", "autumny", "patchy", "piney", "weirdly", "willowy", "colourfulpalm", "deadleaves", "deadmoss", "cocopalm", "elegant", "lushleaves", "palmleaves", "palmlush", "palmy", "roseleaves", "geometricfoliage", "pinkflower", "redflower", "whitepetals", "icespherefoliage", "jungleleaf", "junglepalm", "jungly", "lushy", "fluff", "grey", "red", "bonky", "burly", "circly", "flat", "savannahbloom", "spikeyfoliage", "squarish", "thorns", "icepinefoliage", "snowblank", "snowbrains", "snowbubbles", "snowcloudy", "snowfrumpy", "snowgreenleaves", "snowhanging", "snowleafy", "snowlotus", "snowpine", "snowredleaves", "snowscraggy", "bluebell", "baobab" ]
         },        
-        
-       
         {
           "mode" : "ceiling",
           "variants" : 1,
@@ -523,6 +553,13 @@
           "objectSets" : [
             {
               "pool" : [ 
+              [0.35, "floranopenpod1" ],
+              [0.35, "floranopenpod2" ],
+              [0.35, "floranpod1" ],
+              [0.35, "floranpod2" ],
+              [0.35, "floranpod3" ],
+              [0.35, "floranpod1" ],
+              [0.15, "floranpodapex" ],              
               [0.15, "redcap2" ],
               [0.15, "redcap3" ],
               [0.15, "redcap" ],

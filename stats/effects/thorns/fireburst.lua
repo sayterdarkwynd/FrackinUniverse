@@ -9,8 +9,8 @@ function init()
 
   self.damageProjectileType = config.getParameter("damageProjectileType") or "armorthornburst"
   self.damageMultiplier = config.getParameter("damageMultiplier") or 0.06
-  self.fadeColor = config.getParameter("fadeColor")
-  self.border = config.getParameter("border")
+  --self.fadeColor = config.getParameter("fadeColor")
+  --self.border = config.getParameter("border")
 
   self.cooldown = config.getParameter("cooldown") or 5
 

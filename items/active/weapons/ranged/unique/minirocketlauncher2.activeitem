@@ -7,6 +7,7 @@
     "description" : "Fires adorable little missiles.",
     "shortdescription" : "Micro-Rocket Cannon",
   "level" : 4,
+  "category" : "micro-rocket launcher", 
   "tooltipKind" : "gun",
   "weaponType" : "Rifle",
   "itemTags" : ["weapon","ranged","rocketlauncher"],
@@ -36,7 +37,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.3,
-    "baseDps" : 6.2,
+    "baseDps" : 7,
     "energyUsage" : 26.0,
     "inaccuracy" : 0.01,
 
@@ -45,8 +46,8 @@
 
     "projectileType" : "rocketswarm",
     "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 4
+      "speed" : 47,
+      "knockback" : 6
     },
   "stances" : {
     "idle" : {
@@ -87,7 +88,7 @@
       }
     },
     
-  "altAbilityType" : "homingrocket",
+  "altAbilityType" : "atomguidedrocket",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

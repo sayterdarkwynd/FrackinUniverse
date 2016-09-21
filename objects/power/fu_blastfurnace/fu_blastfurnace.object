@@ -14,7 +14,7 @@
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 10,
-  
+  "pickupQuestTemplates" : [ "fuwalljump2" ],
   "openSounds" : [ "/sfx/objects/campfire_use.ogg" ],
   "slotCount" : 15,
   "uiConfig" : "/objects/power/fu_blastfurnace/fu_blastfurnace.config",
@@ -37,8 +37,11 @@
       "anchors" : [ "bottom" ]
     }
   ],
+
   
   "inputNodes" : [ [2, 2] ],
+  "outputNodes" : [ [2, 1] ],
+
   "isn_powerReciever" : true,
   "isn_requiredPower" : 4,
   "fu_timer" : 0.5,

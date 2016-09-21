@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/scripts/fu_storageutils.lua"
 
 function init(args)
   object.setInteractive(true)
@@ -33,7 +34,7 @@ function update(dt)
 	    getoutput = util.randomFromList(config.getParameter("commonOutputs"))
 	  end
 	  if math.random(1,100) <= 33 then
-        world.containerAddItems(entity.id(), {name = getoutput, count = 1, data={}})
+        fu_sendOrStoreItems(0, {name = getoutput, count = 1, data = {}}, {0})
 	  end
 	  world.containerConsume(entity.id(), {name = contents[1].name, count = 1, data={}})
 	else

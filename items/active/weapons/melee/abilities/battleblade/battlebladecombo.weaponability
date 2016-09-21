@@ -2,9 +2,9 @@
   "animationParts" : { },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
+      "fire" : [ "/sfx/projectiles/electric_barrier_shock1.ogg" ],
+      "fire2" : [ "/sfx/projectiles/swing_electric1.ogg" ],
+      "fire3" : [ "/sfx/projectiles/swing_electric2.ogg" ]
     }
   },
 
@@ -17,7 +17,7 @@
     "comboSteps" : 3,
 
     "flashTime" : 0.175,
-    "flashDirectives" : "fade=FFFFFFFF=0.15",
+    "flashDirectives" : "fade=22CCFFFF=0.15",
 
     "swooshOffsetRegions" : [
       [0.75, 0.0, 4.25, 5.0],
@@ -26,12 +26,12 @@
     ],
 
     // cooldown time multiplier for steps after the first, compounded per combo step
-    "comboSpeedFactor" : 0.9,
+    "comboSpeedFactor" : 0.57,
 
-    "edgeTriggerGrace" : 0.25,
+    "edgeTriggerGrace" : 0.15,
 
-    "fireTime" : 0.8,
-    "baseDps" : 11.5,
+    "fireTime" : 0.47,
+    "baseDps" : 10.5,
 
     "damageConfig" : {
       "damageSourceKind" : "broadsword",
@@ -45,8 +45,8 @@
         "knockback" : 15
       },
       {
-        "baseDamageFactor" : 0.5,
-        "statusEffects" : [ "castice", "frostslow" ],
+        "baseDamageFactor" : 0.65,
+        "statusEffects" : [ ],
         "knockback" : 10
       },
       {
@@ -57,15 +57,15 @@
 
     "stances" : {
       "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
+        "armRotation" : -80,
+        "weaponRotation" : 0,
         "allowRotate" : false,
         "allowFlip" : true
       },
       "windup1" : {
         "duration" : 0.1,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
+        "armRotation" : 80,
+        "weaponRotation" : 0,
         "twoHanded" : false,
 
         "allowRotate" : false,
@@ -135,8 +135,8 @@
       },
       "fire3" : {
         "duration" : 0.3,
-        "armRotation" : 0,
-        "weaponRotation" : -90,
+        "armRotation" : -10,
+        "weaponRotation" : -80,
         "twoHanded" : false,
 
         "allowRotate" : false,

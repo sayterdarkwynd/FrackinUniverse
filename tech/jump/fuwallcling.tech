@@ -1,0 +1,31 @@
+{
+  "name" : "fuwallcling",
+  "type" : "legs",
+
+  "scripts" : ["walljump.lua"],
+  "animator" : "walljump.animation",
+
+  "description" : "Allows you to grip onto walls for an extended duration.",
+  "shortDescription" : "Magnet Grip",
+  "rarity" : "rare",
+  "icon" : "/tech/magnetgrip.png",
+
+  "chipCost" : 4,
+
+  "multiJumpCount" : 1,
+
+  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallDetectThreshold" : 1,
+
+  "wallReleaseTime" : 8.25,
+
+  "wallGrabFreezeTime" : 8.25,
+  "wallJumpXVelocity" : 0,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 0.8
+    },
+    "airForce" : 0,
+    "airFriction" : 10.0
+  }
+}

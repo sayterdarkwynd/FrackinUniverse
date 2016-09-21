@@ -1,0 +1,37 @@
+{
+  "name" : "longjump2",
+  "type" : "legs",
+
+  "scripts" : ["longjump2.lua"],
+  "animator" : "longjump2.animation",
+
+  "description" : "Tampering with genes has led to this masterpiece.",
+  "shortDescription" : "Mega Jump",
+  "rarity" : "rare",
+  "icon" : "/tech/longjump.png",
+
+  "chipCost" : 11,
+
+  "multiJumpCount" : 1,
+  
+  "jumpSpeedMultiplier" : 2.15,
+  "fallGravityMultiplier" : 0.5,
+  "fallDamageMultiplier" : 0,
+  "flutterXVelocity" : 54,
+  "flutterYVelocity" : 54,
+  "flutterTime": 0.15,
+  "flutterAfterFall" : false,
+  "flutterFall" : false,
+  "wallJumpXVelocity" : 9,
+  "wallGrabFreezeTime" : 0.10,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 1,
+  "wallReleaseTime" : 0.15,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1,
+      "airForce" : 0,
+      "airFriction" : 10
+    }
+  }
+}

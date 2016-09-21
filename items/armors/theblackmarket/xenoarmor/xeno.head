@@ -4,10 +4,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Heavy duty protection. Prevents gas, drowning and suffocation effects. Provides head lamp for sight in the dark.",
+  "description" : "Heavy duty protection. Protects from breath effects. Provides lamp. ^cyan;Set Bonus: Immunity - Ooze, Heat, Cold, Radiation, Pressure.^reset;",
   "shortdescription" : "X10 Power Helm",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
-"level" : 4,
+  "level" : 4,
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
@@ -15,7 +16,7 @@
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.8
+      "baseMultiplier" : 1.75
     },
 
     {
@@ -36,10 +37,11 @@
     {
       "stat" : "breathProtection",
       "amount" : 1.0
-    },
-     {
-       "stat" : "waterImmunity",
-       "amount" : 1.0
+    },      
+    "xenosetbonus",
+    {
+      "stat" : "fu_xenoset_head",
+      "amount" : 1
     }
   ],
 

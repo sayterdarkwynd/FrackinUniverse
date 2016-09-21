@@ -1,0 +1,37 @@
+{
+  "name" : "longjump",
+  "type" : "legs",
+
+  "scripts" : ["longjump.lua"],
+  "animator" : "longjump.animation",
+
+  "description" : "Gene-modded leg muscles provide greater jump height + wall grabs.",
+  "shortDescription" : "Power Jump",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/longjump.png",
+
+  "chipCost" : 5,
+
+  "multiJumpCount" : 1,
+  
+  "jumpSpeedMultiplier" : 1.75,
+  "fallGravityMultiplier" : 0.8,
+  "fallDamageMultiplier" : 0.05,
+  "flutterXVelocity" : 0,
+  "flutterYVelocity" : 0,
+  "flutterTime": 0.01,
+  "flutterAfterFall" : false,
+  "flutterFall" : false,
+  "wallJumpXVelocity" : 8,
+  "wallGrabFreezeTime" : 0.10,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 1,
+  "wallReleaseTime" : 0.15,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1,
+      "airForce" : 0,
+      "airFriction" : 10
+    }
+  }
+}
