@@ -78,6 +78,12 @@
         {
           "name" : "approach-teleport",
           "parameters" : {
+	    "moveState": "walk",
+	    "idleState": "idle",
+	    "teleportMinDistance": 9,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10               
           }
         },
         {
@@ -160,7 +166,7 @@
           "baseValue" : 45
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -174,9 +180,18 @@
         "electricStatusImmunity" : {
           "baseValue" : 1.0
         },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },        
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },   
+        "sulphuricacidImmunity" : {
+          "baseValue" : 1.0
+        },        
         "powerMultiplier" : {
           "baseValue" : 1.0
         }
@@ -198,7 +213,7 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-    "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]
+    "captureHealthFraction" : 0.25,
+    "nametagColor" : [64, 64, 64]
   }
 }
