@@ -72,7 +72,7 @@ function populateList(collectionName)
   elseif collectionName then
     self.customCollectionName = collectionName -- CUSTOM - needed to avoid reset to custom collection view
     local collection = root.collection(collectionName)
-    widget.setText("selectLabel", collection.title);
+    -- MOVED: setting of selectLabel
     widget.setVisible("emptyLabel", false)
     widget.setVisible("scrollArea", true)
     widget.setVisible("scrollAreaCustom", false)
@@ -86,6 +86,8 @@ function populateList(collectionName)
 
     local collectables = root.collectables(collectionName)
     table.sort(collectables, function(a, b) return a.order < b.order end)
+    local count = 0 -- CUSTOM
+    local collected = 0 -- CUSTOM
     for _,collectable in pairs(collectables) do
       local item = widget.addListItem(self.list)
       
@@ -95,14 +97,18 @@ function populateList(collectionName)
 
         if not self.playerCollectables[collectable.name] then
           collectable.icon = string.format("%s?multiply=000000", collectable.icon)
+        else
+          collected = collected + 1 -- CUSTOM
         end
         widget.setImage(string.format("%s.%s.icon", self.list, item), collectable.icon)
         widget.setImageScale(string.format("%s.%s.icon", self.list, item), 1 / scaleDown)
+        count = count + 1 -- CUSTOM
       end
       widget.setText(string.format("%s.%s.index", self.list, item), collectable.order)
 
       self.currentCollectables[string.format("%s.%s", self.list, item)] = collectable;
     end
+    widget.setText("selectLabel", string.format("%s ^%s;[%s/%s]", collection.title, collected == 0 and '#888888' or collected < count and '#BBBBBB' or '#00DD00', collected, count)) -- CUSTOM - added count
   else
     widget.setVisible("emptyLabel", true)
     widget.setText("selectLabel", "Collection")
