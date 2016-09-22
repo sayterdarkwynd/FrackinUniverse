@@ -1,0 +1,31 @@
+{
+  "projectileName" : "rocketswarm2",
+  "physics" : "laser",
+  "image" : "rocketswarm2.png",
+  "animationCycle" : 0.25,
+  "pointLight" : true,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "timeToLive" : 4,
+  "power" : 4,
+  "damageKind" : "fireplasma",
+  "scripts" : [ "rocketswarm2.lua" ],
+  "baseHomingControlForce" : 4,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_arrow.ogg"
+      ]
+    }
+  ],  
+  "actionOnReap" : [
+	{
+      "action" : "config",
+      "file" : "/projectiles/explosions/weakexplosion/weakexplosion.config"
+    }
+  ],
+  "emitters" : [ "smoke", "fireplasma" ]
+}
