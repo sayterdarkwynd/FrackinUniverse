@@ -31,6 +31,15 @@
 
       "hostileActions" : [
         {
+          "name" : "action-animate",
+          "cooldown" : 6,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 2.2
+          }
+        },  
+        {
           "name" : "action-fire",
           "cooldown" : 3.0,
           "parameters" : {
@@ -45,7 +54,7 @@
             "aimAtTarget" : true,
             "fireState" : "fire",
             "fireDelay" : 0.2,
-            "fireSound" : "",
+            "fireSound" : "spit",
 
             "fireArc": true,
             "projectileSpeed": 32,
@@ -57,6 +66,7 @@
         },
         {
           "name" : "action-fire",
+          "cooldown" : 2.0,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 10,
@@ -65,18 +75,18 @@
             "windupState" : "",
             "windupTime" : 0.0,
 
-            "projectileType" : "pusvomit",
+            "projectileType" : "flamethrower",
             "power" : 4,
-            "fireOffset" : [1.0, 1],
-            "projectileCount" : 6,
+            "fireOffset" : [1.55, 1],
+            "projectileCount" : 8,
             "projectileInterval" : 0.05,
             "aimAtTarget" : false,
             "fireState" : "roar",
-            "fireDelay" : 0.3,
+            "fireDelay" : 0.15,
             "fireSound" : "",
 
             "winddownState" : "",
-            "winddownTime" : 0.5
+            "winddownTime" : 0.3
           }
         }
       ],
@@ -197,6 +207,9 @@
           "baseValue" : 1.0
         },
         "wetImmunity" : {
+          "baseValue" : 1.0
+        },
+        "fireImmunity" : {
           "baseValue" : 1.0
         },        
         "poisonStatusImmunity" : {

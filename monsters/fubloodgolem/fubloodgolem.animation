@@ -28,7 +28,12 @@
           },
           "roar" : {
             "frames" : 8,
-            "cycle" : 0.8
+            "cycle" : 2.0,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg"            
+            }
           }
         }
       },
@@ -129,6 +134,8 @@
   },
 
   "sounds" : {
+    "spit" : [ "/sfx/melee/fleshwhip_swing1.ogg", "/sfx/melee/fleshwhip_swing2.ogg" ],    
+    "puke" : [ "/sfx/npc/monsters/orbide_wakeup.ogg","/sfx/projectiles/bloodvomit1.ogg","/sfx/projectiles/bloodvomit2.ogg","/sfx/projectiles/bloodvomit3.ogg","/sfx/projectiles/bloodvomit4.ogg","/sfx/projectiles/bloodvomit5.ogg","/sfx/projectiles/bloodvomit6.ogg","/sfx/projectiles/bloodvomit7.ogg" ],    
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   },
