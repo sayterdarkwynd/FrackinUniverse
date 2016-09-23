@@ -13,13 +13,17 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/boss/bossMonster.lua",
+      "/monsters/fulegacyscripts/ground/groundMonster.lua",
+      "/scripts/pathing.lua",
       "/scripts/stateMachine.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua",
 
-      "/monsters/boss/robotboss/dieState.lua",
-      "/monsters/boss/robotboss/idleState.lua"    ],
+      "/monsters/fulegacyscripts/ground/wanderState.lua",
+      "/monsters/fulegacyscripts/ground/approachState.lua",
+      "/monsters/fulegacyscripts/ground/fleeState.lua",
+
+      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"   ],
 
     "baseSkills" : [ "robotgaussAttack" ],
     "specialSkills" : [ "robotIonAttack" ],
