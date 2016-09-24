@@ -1,84 +1,51 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "movement" : {
+      "body" : {
         "priority" : 0,
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 12,
-            "mode" : "loop",
-            "cycle" : 1
+            "frames" : 4,
+            "mode" : "loop"
           },
           "jump" : {
-            "frames" : 12,
-            "mode" : "loop",
-            "cycle" : 1
+            "frames" : 2,
+            "mode" : "loop"
           },
           "fall" : {
-            "frames" : 1
+            "frames" : 2,
+            "mode" : "loop"
           },
           "walk" : {
-            "frames" : 4,
-            "mode" : "loop",
-            "cycle" : 0.25
+            "frames" : 8,
+            "mode" : "loop"
           },
           "run" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          },
+          "fireWindup" : {
             "frames" : 4,
-            "mode" : "loop",
-            "cycle" : 0.15
+            "cycle" : 0.4,
+            "mode" : "loop"
           },
-          "chargeWindup" : {
-            "frames" : 3,
-            "mode" : "loop",
-            "cycle" : 0.25
-          },
-          "charge" : {
-            "frames" : 4,
-            "mode" : "loop",
-            "cycle" : 0.15
-          },
-          "knockback" : {
-            "frames" : 1
-          },
-          "knockout" : {
-            "frames" : 1
+          "fire" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop"
           }
         }
       },
-
-      "attack" : {
-        "priority" : 1,
-        "default" : "idle",
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
         "states" : {
-          "idle" : {
-            "frames" : 3,
-            "mode" : "loop",
-            "cycle" : 0.25
+          "none" : {
+            "frames" : 1
           },
-          "melee" : {
-            "frames" : 3,
-            "mode" : "loop",
-            "cycle" : 0.25
-          },
-          "shooting" : {
-            "frames" : 3,
-            "mode" : "loop",
-            "cycle" : 0.25
-          },
-          "chargeAttack" : {
-            "frames" : 3,
-            "mode" : "loop",
-            "cycle" : 0.25
-          }
-        }
-      },
-
-      "portrait" : {
-        "priority" : -1,
-        "default" : "portrait",
-        "states" : {
-          "portrait" : {
+          "stunned" : {
             "frames" : 1
           }
         }
@@ -88,11 +55,11 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "zLevel" : 1
+          "transformationGroups" : [ "facing", "body" ],
+          "offset" : [0.0, 0.0]
         },
-
         "partStates" : {
-          "movement" : {
+          "body" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -100,92 +67,54 @@
             },
             "walk" : {
               "properties" : {
-                "image" : "<partImage>:move.<frame>"
+                "image" : "<partImage>:walk.<frame>"
               }
             },
             "run" : {
               "properties" : {
-                "image" : "<partImage>:move.<frame>"
+                "image" : "<partImage>:walk.<frame>"
               }
             },
-            "charge" : {
+            "fire" : {
               "properties" : {
-                "image" : "<partImage>:move.<frame>"
+                "image" : "<partImage>:fire.<frame>"
               }
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
-            "chargeWindup" : {
-              "properties" : {
-                "image" : "<partImage>:attack.<frame>"
-              }
-            },
-            "knockback" : {
-              "properties" : {
-                "image" : "<partImage>:idle.<frame>"
-              }
-            },
-            "knockout" : {
+            "fireWindup" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             }
           },
-
-          "attack" : {
-            "melee" : {
+          "damage" : {
+            "stunned" : {
               "properties" : {
-                "image" : "<partImage>:attack.<frame>"
-              }
-            },
-            "shooting" : {
-              "properties" : {
-                "image" : "<partImage>:attack.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:attack.<frame>"
-              }
-            },
-            "chargeAttack" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            }
-          },
-
-          "portrait" : {
-            "portrait" : {
-              "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:idle.<frame>"
               }
             }
           }
         }
-      },
-
-      "arm" : {
-        "properties" : {
-          "image" : "<partImage>:arm",
-          "rotationGroup" : "projectileAim",
-          "zLevel" : 2
-        }
       }
     }
   },
+  
+  "transformationGroups" : {
+    "body" : { "interpolated" : true },
+    "facing" : { "interpolated" : false }
+	},
 
   "rotationGroups" : {
     "projectileAim" : {
-      "rotationCenter" : [1.125, -0.5],
       "angularVelocity" : 1.5
     }
   },
@@ -196,6 +125,7 @@
       "particles" : [
       ]
     },
+
     "deathPoof" : {
       "particles" : [
         {
@@ -387,8 +317,10 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
-    "fire" : [ "/sfx/gun/mech_gun.ogg", "/sfx/npc/unique/robotboss_pain1.ogg", "/sfx/npc/unique/robotboss_attack1.ogg"  ]
+    "turnHostile" : [ "/sfx/npc/quadruped/bulbouseyehead_turnhostile.ogg" ],
+    "aggroHop" : [ "/sfx/npc/quadruped/bulbouseyehead_turnhostile.ogg" ],
+    "deathPuff" : [ "/sfx/npc/smallbiped/arrowhead_small_death.ogg" ],
+    "attack" : [ "/sfx/npc/smallbiped/arrowhead_small_attack1.ogg" ],
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ]
   }
 }
