@@ -1,116 +1,271 @@
 {
   "type" : "shadowtop",
-  "shortdescription" : "Shadow Top",
-  "description" : "A vulgar offshoot of the Poptop. Nearly invisible.",
+  "shortdescription" : "Shadowtop",
+  "description" : "A terrible mutation of the poptop. Aggressive and dangerous.",
+
   "categories" : [ "shadowtop" ],
   "parts" : [ "body", "bodyfullbright" ],
 
   "animation" : "shadowtop.animation",
-  "colors" : "/monsters/colors.config",
 
-  "dropPools" : [ "shadowtopLoot" ],
+  "dropPools" : [ { "default" : "poptopTreasure", "bow" : "poptopHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/fulegacyscripts/ground/groundmonster.lua",
-      "/scripts/pathing.lua",
-      "/scripts/stateMachine.lua",
-      "/scripts/util.lua",
-      "/scripts/vec2.lua",
-      "/stats/monstereffects/monsterstatus_camouflage85.lua",
-
-      "/monsters/fulegacyscripts/ground/aggrohopstate.lua",
-      "/monsters/fulegacyscripts/ground/approachstate.lua",
-      "/monsters/fulegacyscripts/ground/fleestate.lua",
-      "/monsters/fulegacyscripts/ground/stunstate.lua",
-      "/monsters/shadowtop/wanderskipstate.lua"
+      "/monsters/monster.lua",
+      "/stats/monstereffects/monsterstatus_camouflage55.lua"
     ],
 
-    "blockedSensors" : [ [1.5, -0.8], [1.5, 0.2], [1.5, 0.7] ],
-    "fallSensors" : [ [0.5, -2.5], [0.5, -3.5], [0.5, -4.5], [2.0, -2.5], [2.0, -3.5], [2.0, -4.5] ],
+    "behavior" : "monster",
 
-    "skills" : [ "meleeAttack", "fuPounceAttack" ],
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
 
-    "aggressive" : true,
-    "territoryDistance" : 10.0,
-    "territorialTargetRadius" : 20.0,
-    "minimalTargetRadius" : 6.0,
-    "targetSearchTime" : 0.5,
-    "targetHoldTime" : 10.0,
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
 
-    "closeDistance" : 1.5,
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
-    "wanderTime" : [4.0, 6.0],
-    "wanderMovementTime" : [2.0, 3.0],
+      "fleeActions" : [],
 
-    "jumpTargetDistance" : 6,
-    "jumpTime" : [0.5, 1.0],
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "maximumRange" : 3,
+            "minimumRange" : 1,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
 
-    "pathing" : {
-      "canOpenDoors" : false
+            "projectileType" : "meleebite",
+            "fireOffset" : [0, 0.75],
+
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "inaccuracy" : 1,
+            "aimDirection" : [0,1],
+            "power" : 6,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+
+            "winddownState" : ""
+          }
+        },           
+        {
+          "name" : "action-fire",
+          "cooldown" : 7,
+          "parameters" : {
+            "maximumRange" : 12,
+            "minimumRange" : 6,
+            "windupState" : "firewindup",
+            "windupTime" : 1,
+
+            "projectileType" : "futarball",
+            "fireOffset" : [0, 0.75],
+
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.15,
+            "inaccuracy" : 0,
+            "aimDirection" : [0,1],
+            "power" : 1,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+
+            "winddownState" : ""
+          }
+        },   
+        {
+          "name" : "action-leap", 
+          "cooldown" : 3,
+          "parameters" : {
+            "minimumRange" : 3,
+            "maximumRange" : 20,
+            "windupTime" : 0.25,
+            "windupState" : "idle",
+
+            "leapVelocity" : 65,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownTime" : 0.6,
+            "winddownState" : "idle"
+          }
+        }, 
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "maximumRange" : 8,
+            "windupTime" : 0.5,
+
+            "aimAtTarget" : false,
+            "aimDirection" : [1, 0.5],
+            "chargeTime" : [0.3, 0.5],
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 300,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "moveState" : "run",
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "moveState" : "run",
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "moveState" : "stroll",
+            "wanderTime" : [5, 20]
+          }
+        },
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "moveState" : "walk",
+            "wanderTime" : [5, 5]
+          }
+        }
+      ]
     },
 
-    "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
-    "scale" : 1.0,
+    "touchDamage" : {
+      "poly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.55],  [-0.8125, -1.55], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+      "damage" : 14,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.2,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-2.0, -2.25], [2.5, -2.25], [2.0, 0.25], [-1.5, 0.25] ],
+      "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
 
       "mass" : 1.0,
       "walkSpeed" : 3,
-      "runSpeed" : 8,
+      "runSpeed" : 11,
 
-      "airFriction" : 0.0,
+      "airFriction" : 0,
+
       "airJumpProfile" : {
-        "jumpSpeed" : 45.0,
+        "jumpSpeed" : 65.0,
         "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.0              
+        "jumpHoldTime" : 0.2
       }
     },
 
-    "knockoutTime" : 1,
-    "knockoutEffect" : "blink",
-    "deathParticles" : "deathPoof",
-    "meleeProjectile" : "raptorbite",
-    "touchDamage" : {
-      "poly" : [ [-2.0, -2.25], [2.5, -2.25], [2.0, 0.25], [-1.5, 0.25] ],
-      "damage" : 11,
+    "bodyMaterialKind" : "organic",
 
-      "teamType" : "enemy",
-      "damageSourceKind" : "default",
-      "statusEffects" : [ "percentarmorboostneg2" ]
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
     },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
 
     "statusSettings" : {
       "statusProperties" : {
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
       ],
-      "primaryScriptDelta" : 0,
+      "primaryScriptDelta" : 5,
 
       "stats" : {
-        "grit" : {
-          "baseValue" : 1.0
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 48
+          "baseValue" : 90
         },
         "protection" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.15
         },
         "healthRegen" : {
           "baseValue" : 0.0
-        }
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1
+        }, 
+        "insanityImmunity" : {
+          "baseValue" : 1
+        },
+        "wetImmunity" : {
+          "baseValue" : 1
+        }         
       },
 
       "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
         "health" : {
           "maxStat" : "maxHealth",
           "deltaStat" : "healthRegen",
@@ -119,8 +274,11 @@
       }
     },
 
-    "projectileSourcePosition" : [0.0, -1.0],
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -22]
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "monsters" : "poptop" }
   }
 }

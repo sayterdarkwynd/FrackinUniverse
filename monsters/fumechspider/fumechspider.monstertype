@@ -1,123 +1,194 @@
 {
   "type" : "fumechspider",
-  "shortdescription" : "Mechanical Spider",
-  "description" : "Spiders. Now in Robot flavor. Goodie.",
+
   "categories" : [ "fumechspider" ],
   "parts" : [ "body" ],
 
   "animation" : "fumechspider.animation",
-  "reversed" : true,
 
   "dropPools" : [ "furobotTreasure" ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/fulegacyscripts/crawling/crawlingmonster.lua",
-      "/scripts/stateMachine.lua",
-      "/scripts/util.lua",
-      "/scripts/vec2.lua",
-
-      "/monsters/fulegacyscripts/crawling/approachstate.lua",
-      "/monsters/fulegacyscripts/crawling/fleestate.lua",
-      "/monsters/fulegacyscripts/crawling/wanderstate.lua",
-      "/monsters/fulegacyscripts/crawling/idlestate.lua"
+      "/monsters/monster.lua"
     ],
 
-    "baseSkills" : ["fumechspiderAttack"],
-    "specialSkills" : ["stompAttack"],
+    "behavior" : "monster",
 
-    "projectileSourcePosition" : [0.2, 0.8],
+    "facingMode" : "transformation",
 
-    "territoryDistance" : 40.0,
-    "territorialTargetRadius" : 20.0,
-    "minimalTargetRadius" : 6.0,
-    "targetSearchTime" : 0.5,
-    "targetHoldTime" : 5.0,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
 
-    "aggressive" : true,
+      "hurtWaitForGround" : false,
 
-    "jumpTargetDistance" : 4,
-    "jumpTime" : [0.4, 0.7],
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 5.0,
 
-    "wander" : {
-      "moveTimeRange" : [4, 12],
-      "moveCooldownRange" : [3, 10]
-    },
+      "foundTargetActions" : [ ],
 
-    "idle" : {
-      "idleTimeRange" : [2, 6]
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 2,
+            
+            "onGround" : false,
+            "windupTime" : 0.5,
+            "windupStopForce" : 100,
+
+            "projectileType" : "gausspistolshot",
+            "power" : 3,
+            "fireOffset" : [0.0, 1.5],
+            "projectileCount" : 12,
+            "projectileInterval" : 0.05,
+            "fireSound" : "fire",
+
+            "winddownTime" : 1.0
+          }
+        },
+        {
+          "name" : "action-leap",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "onGround" : false,
+            "minimumRange" : 5,
+            "maximumRange" : 20,
+            "windupTime" : 0.5,
+            "windupState" : "",
+
+            "leapVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "idle",
+            "winddownTime" : 0.0
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-crawl"
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-crawl"
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-crawl",
+          "cooldown" : 1,
+          "parameters" : {
+            "wanderTime" : 1.5,
+            "stopForce" : 200,
+            "idleTime" : 1.0
+          }
+        }
+      ],
+
+      "concurrentActions" : [
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "idle-crawl"
+        }
+      ]
     },
 
     "metaBoundBox" : [-1.25, -1.25, 1.25, 1.25],
-    "scale" : 1.5,
+    "scale" : 1.0,
+
+    "touchDamage" : {
+      "poly" : [ [0.41, 1], [1, 0.41], [1, -0.41], [0.41, -1], [-0.41, -1], [-1, -0.41], [-1, 0.41], [-0.41, 1] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
 
     "movementSettings" : {
-      "collisionPoly" : [ [-1.25, -0.75], [-0.75, -1.25], [0.75, -1.25], [1.25, -0.75], [1.25, 0.75], [0.75, 1.25], [-0.75, 1.25], [-1.25, 0.75] ],
+      "collisionPoly" : [ [0.41, 1], [1, 0.41], [1, -0.41], [0.41, -1], [-0.41, -1], [-1, -0.41], [-1, 0.41], [-0.41, 1] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 8,
-      "runSpeed" : 10,
-      "jumpSpeed" : 12,
-      "flySpeed" : 16,
-      "airFriction" : 0.1,
-      "airForce" : 100.0,
-      "gravityEnabled" : true,
-      "frictionEnabled" : true
+      "walkSpeed" : 4,
+      "runSpeed" : 6
     },
-    "wallWalkSpeedMultiplier" : 0.6,
-    "toGroundMovementMultiplier" : 0.5,
-    "cornerWalkSpeedMultiplier" : 0.4,
 
     "knockoutTime" : 0.5,
     "knockoutEffect" : "blink",
     "knockoutAnimationStates" : {
-      "movement" : "knockout",
-      "attack" : "idle"
+      "damage" : "stunned"
     },
     "deathParticles" : "deathPoof",
-
-    "touchDamage" : {
-      "poly" : [ [-2.25, -1.25], [1.875, -1.25], [1.875, 1.0], [-2.25, 1.0] ],
-      "damage" : 10,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "slash",
-      "statusEffects" : [ ]
-    },
 
     "statusSettings" : {
       "statusProperties" : {
         "targetMaterialKind" : "robotic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
       ],
-      "primaryScriptDelta" : 0,
+      "primaryScriptDelta" : 5,
 
       "stats" : {
-        "grit" : {
-          "baseValue" : 1.0
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
         },
         "maxHealth" : {
           "baseValue" : 48
         },
         "protection" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
         }
       },
 
       "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
         "health" : {
           "maxStat" : "maxHealth",
           "deltaStat" : "healthRegen",
@@ -128,15 +199,8 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-
-    "noticeDistance" : 30,
-
-    "changeGroundCooldown" : 0.25,
-
-    "dropDistance" : 10,
-    "dropInitialTime" : 0.5,
-    "dropTimeLimit" : 5,
-    "dropCooldown" : 30,
-    "dropSpeed" : 10
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
   }
 }

@@ -2,22 +2,24 @@
   "projectileName" : "floatydeathball",
   "physics" : "floatydeath",
   "speed" : 2,
-  "bounces" : 12,
-  "timeToLive" : 12,
+  "bounces" : 24,
+  "timeToLive" : 20,
   "image" : "floatydeathball.png",
   "animationCycle" : 1.5,
   "animationLoops" : false,
   "orientationLocked" : true,
   "flippable" : true,
-    "lightColor" : [160, 160, 0],
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 9,
+  "lightColor" : [160, 160, 0],
   "frameNumber" : 2,
   "periodicActions" : [
     {
-      "time" : 0.1,
+      "time" : 0.09,
       "loop" : true,
       "action" : "projectile",
       "type" : "plasmabullet",
-      "inheritDamageFactor" : 1.275,
+      "inheritDamageFactor" : 1.0,
       "fuzzAngle" : 360
    }
   ],
@@ -32,6 +34,5 @@
     }
   ],
   "power" : 1,
-  "damageType" : "NoDamage",
-  "damageKind" : "default"
+  "damageKind" : "fireplasma"
 }
