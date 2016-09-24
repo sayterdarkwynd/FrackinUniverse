@@ -1,52 +1,54 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "body" : {
+      "movement" : {
         "priority" : 0,
         "default" : "idle",
+
         "states" : {
           "idle" : {
+            "frames" : 7,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "move" : {
             "frames" : 4,
+            "cycle" : 0.25,
             "mode" : "loop"
           },
-          "jump" : {
+          "repairStart" : {
+            "frames" : 5,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "repair"
+          },
+          "repair" : {
+            "frames" : 13,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "repairEnd" : {
+            "frames" : 5,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "move"
+          },
+          "attackStart" : {
+            "frames" : 3,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "attack"
+          },
+          "attack" : {
             "frames" : 2,
+            "cycle" : 0.25,
             "mode" : "loop"
           },
-          "fall" : {
+          "attackEnd" : {
             "frames" : 2,
-            "mode" : "loop"
-          },
-          "walk" : {
-            "frames" : 8,
-            "mode" : "loop"
-          },
-          "run" : {
-            "frames" : 8,
-            "cycle" : 0.8,
-            "mode" : "loop"
-          },
-          "fireWindup" : {
-            "frames" : 4,
-            "cycle" : 0.4,
-            "mode" : "loop"
-          },
-          "fire" : {
-            "frames" : 6,
-            "cycle" : 0.6,
-            "mode" : "loop"
-          }
-        }
-      },
-      "damage" : {
-        "priority" : 3,
-        "default" : "none",
-        "states" : {
-          "none" : {
-            "frames" : 1
-          },
-          "stunned" : {
-            "frames" : 1
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "idle"
           }
         }
       }
@@ -54,52 +56,46 @@
 
     "parts" : {
       "body" : {
-        "properties" : {
-          "transformationGroups" : [ "facing", "body" ],
-          "offset" : [0.0, 0.0]
-        },
         "partStates" : {
-          "body" : {
+          "movement" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
             },
-            "walk" : {
+            "move" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:move.<frame>"
               }
             },
-            "run" : {
+            "repairStart" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:repairStart.<frame>"
               }
             },
-            "fire" : {
+            "repair" : {
               "properties" : {
-                "image" : "<partImage>:fire.<frame>"
+                "image" : "<partImage>:repair.<frame>"
               }
             },
-            "jump" : {
+            "repairEnd" : {
               "properties" : {
-                "image" : "<partImage>:jump.<frame>"
+                "image" : "<partImage>:repairEnd.<frame>"
               }
             },
-            "fall" : {
+            "attackStart" : {
               "properties" : {
-                "image" : "<partImage>:jump.<frame>"
+                "image" : "<partImage>:attackStart.<frame>"
               }
             },
-            "fireWindup" : {
+            "attack" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:attack.<frame>"
               }
-            }
-          },
-          "damage" : {
-            "stunned" : {
+            },
+            "attackEnd" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:attackEnd.<frame>"
               }
             }
           }
@@ -107,25 +103,8 @@
       }
     }
   },
-  
-  "transformationGroups" : {
-    "body" : { "interpolated" : true },
-    "facing" : { "interpolated" : false }
-	},
-
-  "rotationGroups" : {
-    "projectileAim" : {
-      "angularVelocity" : 1.5
-    }
-  },
 
   "particleEmitters" : {
-    "damage" : {
-      "emissionRate" : 0.7,
-      "particles" : [
-      ]
-    },
-
     "deathPoof" : {
       "particles" : [
         {
@@ -317,10 +296,7 @@
   },
 
   "sounds" : {
-    "turnHostile" : [ "/sfx/npc/quadruped/bulbouseyehead_turnhostile.ogg" ],
-    "aggroHop" : [ "/sfx/npc/quadruped/bulbouseyehead_turnhostile.ogg" ],
-    "deathPuff" : [ "/sfx/npc/smallbiped/arrowhead_small_death.ogg" ],
-    "attack" : [ "/sfx/npc/smallbiped/arrowhead_small_attack1.ogg" ],
-    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ]
+    "turnHostile" : [ ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
 }

@@ -1,0 +1,119 @@
+{
+  "type" : "repairbot",
+
+  "categories" : [ "repairbot" ],
+  "parts" : [ "body" ],
+
+  "animation" : "repairbot.animation",
+
+  "dropPools" : [ "robotTreasure" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/dungeon/repairbot/behavior.lua",
+      "/scripts/sensors.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua"
+    ],
+
+    "damageTeam" : 1,
+    "aggressive" : false,
+    
+    "metaBoundBox" : [-1.0, -2.0, 1.0, 2.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.0, -2.0], [1.0, -2.0], [1.0, 2.0], [-1.0, 2.0] ],
+
+      "mass" : 0.2,
+      "walkSpeed" : 8,
+      "runSpeed" : 12,
+      "jumpSpeed" : 5,
+      "flySpeed" : 15,
+      "airFriction" : 0.25,
+      "airForce" : 50.0
+    },
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -2.0], [1.0, -2.0], [1.0, 2.0], [-1.0, 2.0] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "default",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 48
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+
+    "collisionSensors" : [ [1.25, 0.0] ],
+
+    "nearGroundSensor" : [ [0.0, -2.25] ],
+    "midGroundSensor" : [ [0.0, -5.0] ],
+
+    "idleTimeRange" : [1.0, 3.0],
+    "moveTimeRange" : [2.5, 5.0],
+
+    "repairResponseMaxDistance" : 20.0,
+    "repairDistance" : 3.0,
+    "repairHealthPerSecond" : 10.0,
+
+    "attackTargetHoldTime" : 5.0,
+    "attackRange" : [5.0, 15.0],
+
+    "projectileOffset" : [0.25, -0.375]
+  }
+}
