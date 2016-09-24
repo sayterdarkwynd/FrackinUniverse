@@ -208,7 +208,7 @@ function isn_sumPowerActiveDevicesConnectedOnOutboundNode(node)
 		if world.callScriptedEntity(value,"isn_canRecievePower") then
 			if not world.callScriptedEntity(value,"isn_doesNotConsumePower") then
 				if world.callScriptedEntity(value,"isn_isBattery") == true then
-					batteries = batteries + 1
+					if world.callScriptedEntity(device, "isn_getCurrentPowerStorage") < 100 then batteries = batteries + 1 end
 				elseif world.callScriptedEntity(value,"isn_activeConsumption") then
 					-- allow for the consumer's power requirement being spread across several supplies
 					local required = world.callScriptedEntity(value,"isn_requiredPowerValue", true)
