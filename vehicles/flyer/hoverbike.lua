@@ -85,8 +85,8 @@ function init()
   animator.setGlobalTag("rearThrusterFrame", 1)
   animator.setGlobalTag("bottomThrusterFrame", 1)
 
-  animator.setAnimationState("rearThruster", "off")
-  animator.setAnimationState("bottomThruster", "off")
+  animator.setAnimationState("rearThruster", "on")
+  animator.setAnimationState("bottomThruster", "on")
 
   animator.setAnimationState("headlights", "off")
 
