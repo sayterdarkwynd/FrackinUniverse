@@ -96,7 +96,43 @@
 
           "on" : {}
         }
-      }
+      },
+
+      "frontFiring" : {
+        "default" : "off",
+
+        "states" : {
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "immediateSound" : "/sfx/gun/pulserifle2.ogg"
+            }
+          },
+
+          "off" : { }
+        }
+      },
+
+      "backFiring" : {
+        "default" : "off",
+
+        "states" : {
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "immediateSound" : "/sfx/gun/plasma_sniper4.ogg"
+            }
+          },
+
+          "off" : { }
+        }
+      }      
 
 
     },
@@ -333,6 +369,133 @@
             }
           }
         }
+      },
+      
+
+      "backGunFire" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : -1.5,
+          "offset" : [5.9, -2.33],
+          "rotationGroup" : "guns",
+          "rotationCenter" : [3.5, -2.2],
+          "anchorPart" : "foreground"
+        },
+
+        "partStates" : {
+          "backFiring" : {
+            "fire" : {
+              "properties" : {
+                "image" : "/animations/smuzzle/bulletmuzzle1.png:<frameIndex>"
+              }
+            }
+          }
+        }
+      },
+
+      "backGun" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : -1,
+          "rotationGroup" : "guns",
+          "offset" : [3.5, -2.2],
+          "rotationCenter" : [3.5, -2.2],
+          "firePoint" : [1.2, -0.2],
+          "anchorPart" : "foreground"
+        },
+
+        "partStates" : {
+          "movement" : {
+            "idle" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            },
+            "backWalk" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            }
+          }
+        }
+      },
+
+      "frontGunFire" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 2,
+          "offset" : [5.8, -2.33],
+          "rotationGroup" : "guns",
+          "rotationCenter" : [3.4, -2.2],
+          "anchorPart" : "foreground"
+        },
+
+        "partStates" : {
+          "frontFiring" : {
+            "fire" : {
+              "properties" : {
+                "image" : "/animations/smuzzle/bulletmuzzle1.png:<frameIndex>"
+              }
+            }
+          }
+        }
+      },
+
+      "frontGun" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 4,
+          "offset" : [3.4, -2.2],
+          "rotationGroup" : "guns",
+          "rotationCenter" : [3.4, -2.2],
+          "firePoint" : [1.2, -0.2],
+          "anchorPart" : "foreground"
+        },
+
+        "partStates" : {
+          "movement" : {
+            "idle" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            },
+            "backWalk" : {
+              "properties" : {
+                "image" : "/animations/guns/humanmechgun.png:rotation"
+              }
+            }
+          }
+        }
       }
 
 
@@ -345,7 +508,12 @@
     },
     "flip" : {}
   },
-
+  "rotationGroups" : {
+    "guns" : {
+      "angularVelocity" : 10.0
+    }
+  },
+  
   "particleEmitters" : {
 
     "rearThrusterIdle" : {
@@ -458,8 +626,7 @@
     "hornLoop" : ["/sfx/tech/honk.ogg"],
     "headlightSwitchOn" : ["/sfx/objects/floodlights_on.ogg"],
     "headlightSwitchOff" : ["/sfx/objects/floodlights_off.ogg"],
-
     "returnvehicle" : ["/sfx/tech/vehicle_disappear1.ogg"]
-
+    
   }
 }

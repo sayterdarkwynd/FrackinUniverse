@@ -94,6 +94,15 @@ function init()
   self.ownerKey = config.getParameter("ownerKey")
   vehicle.setPersistent(self.ownerKey)
 
+  --LEFLS STUFF
+   self.targetVerticalVelocity = config.getParameter("targetVerticalVelocity")
+   self.fireTimer = 0
+   targetAngle = 0.5
+   AimLimit = config.getParameter("AimLimit") * math.pi / 180
+   shuttleProjectile = config.getParameter("shuttleProjectile")
+   shuttleProjectileConfig = config.getParameter("shuttleProjectileConfig")
+   shuttleFireCycle = config.getParameter("shuttleFireCycle")
+
   --assume maxhealth
   if (storage.health) then
     animator.setAnimationState("movement", "idle")
@@ -450,83 +459,86 @@ function move()
 
     self.enginePitch = self.engineRevPitch;
     self.engineVolume = self.engineRevVolume;
-
+    leftispressed = true
     self.facingDirection = -1
-  end
 
-  if vehicle.controlHeld("drivingSeat", "right") then
+  elseif vehicle.controlHeld("drivingSeat", "right") then
     mcontroller.approachXVelocity(self.targetHorizontalVelocity, self.horizontalControlForce)
-
     self.enginePitch = self.engineRevPitch;
     self.engineVolume = self.engineRevVolume;
-
+    rightispressed = true
      self.facingDirection = 1
+  else
+    rightispressed = false
+    leftispressed = false
   end
-
+-- VERTICAL DIRECTION & TILTING
   if vehicle.controlHeld("drivingSeat", "up") then
-    local targetAngle = (self.facingDirection < 0) and -self.maxAngle or self.maxAngle
-    self.angle = self.angle + (targetAngle - self.angle) * self.angleApproachFactor
-
+    if leftispressed == true then
+      self.angle = self.angle + (-targetAngle - self.angle) * self.angleApproachFactor
+      mcontroller.approachYVelocity(self.targetVerticalVelocity * 1.2, self.horizontalControlForce)
+      leftispressed = false
+    elseif rightispressed == true then
+      self.angle = self.angle + (targetAngle - self.angle) * self.angleApproachFactor
+      mcontroller.approachYVelocity(self.targetVerticalVelocity * 1.2, self.horizontalControlForce)
+      rightispressed = false
+    else 
+      self.angle = self.angle + (0 - self.angle) * self.angleApproachFactor
+      mcontroller.approachYVelocity(self.targetVerticalVelocity, self.horizontalControlForce)
+      rightispressed = false
+      leftispressed = false
+    end
+   
     self.enginePitch = self.engineRevPitch;
     self.engineVolume = self.engineRevVolume;
+    
   elseif vehicle.controlHeld("drivingSeat", "down") then
-    local targetAngle = (self.facingDirection < 0) and self.maxAngle or -self.maxAngle
-    self.angle = self.angle + (targetAngle - self.angle) * self.angleApproachFactor
+      if leftispressed == true then
+        self.angle = self.angle + (targetAngle - self.angle) * self.angleApproachFactor
+        mcontroller.approachYVelocity(-self.targetVerticalVelocity * 1.4, self.horizontalControlForce)
+        leftispressed = false
+      elseif rightispressed == true then
+        self.angle = self.angle + (-targetAngle - self.angle) * self.angleApproachFactor
+        mcontroller.approachYVelocity(-self.targetVerticalVelocity * 1.4, self.horizontalControlForce)
+        leftispressed = false
+      else
+        self.angle = self.angle + (0 - self.angle) * self.angleApproachFactor
+        mcontroller.approachYVelocity(-self.targetVerticalVelocity, self.horizontalControlForce)
+      end
   else
-    local frontSpringDistance = minimumSpringDistance(self.frontSpringPositions)
-    local backSpringDistance = minimumSpringDistance(self.backSpringPositions)
-    if frontSpringDistance == self.maxGroundSearchDistance and backSpringDistance == self.maxGroundSearchDistance then
-      self.angle = self.angle - self.angle * self.angleApproachFactor
-    else
-      self.angle = self.angle + math.atan((backSpringDistance - frontSpringDistance) * self.levelApproachFactor)
-      self.angle = math.min(math.max(self.angle, -self.maxAngle), self.maxAngle)
-    end
+    self.angle = self.angle + (0 - self.angle) * self.angleApproachFactor
   end
+  -- VERTICAL DIRECTION & TILTING
 
-  if nearGround then
-    if self.jumpTimer <= 0 and vehicle.controlHeld("drivingSeat", "jump") then
-      mcontroller.setYVelocity(self.jumpVelocity)
-      self.jumpTimer = self.jumpTimeout
-      self.revEngine = true;
-    else
-      self.jumpTimer = self.jumpTimer - script.updateDt()
-    end
-  else
-    self.jumpTimer = self.jumpTimeout
+
+  if vehicle.controlHeld("drivingSeat", "jump") then
+   mcontroller.approachXVelocity(0, self.horizontalControlForce)
+   mcontroller.approachYVelocity(0, self.horizontalControlForce)
+   self.angle = 0
+   self.angle = self.angle + (0 - self.angle) * self.angleApproachFactor
   end
 
   mcontroller.setRotation(self.angle)
 end
 
 function controls()
-  if (vehicle.controlHeld("drivingSeat", "PrimaryFire")) then
-    if (self.headlightCanToggle) then
-      updateVisualEffects(storage.health, 0, (not self.headlightsOn))
-
-      if (self.headlightsOn) then
-        animator.playSound("headlightSwitchOn")
-      else
-        animator.playSound("headlightSwitchOff")
-      end
-
-      self.headlightCanToggle = false
+  -- GUN STUFF
+ if (vehicle.controlHeld("drivingSeat","PrimaryFire")) then
+   if self.fireTimer <= 0 then
+    world.spawnProjectile(shuttleProjectile, vec2.add(mcontroller.position(), animator.partPoint("frontGun", "firePoint")), entity.id(), {math.cos(aimAngle), math.sin(aimAngle)}, false, shuttleProjectileConfig)
+    self.fireTimer = self.fireTimer + shuttleFireCycle
+    animator.setAnimationState("frontFiring", "fire")
+   else
+    local oldFireTimer = self.fireTimer
+    self.fireTimer = self.fireTimer - script.updateDt()
+    if oldFireTimer > shuttleFireCycle / 2 and self.fireTimer <= shuttleFireCycle / 2 then
+      world.spawnProjectile(shuttleProjectile, vec2.add(mcontroller.position(), animator.partPoint("backGun", "firePoint")), entity.id(), {math.cos(aimAngle), math.sin(aimAngle)}, false, shuttleProjectileConfig)
+      animator.setAnimationState("backFiring", "fire")
     end
-  else
-    self.headlightCanToggle = true;
-  end
-
-  if (vehicle.controlHeld("drivingSeat", "AltFire")) then
-    if not self.hornPlaying then
-      animator.playSound("hornLoop", -1)
-      self.hornPlaying = true;
-    end
-  else
-    if self.hornPlaying then
-      animator.stopAllSounds("hornLoop")
-      self.hornPlaying = false;
-    end
-  end
+   end
+ end
 end
+  -- GUN STUFF ENDING
 
 function animate()
   animator.resetTransformationGroup("flip")
@@ -536,6 +548,29 @@ function animate()
 
   animator.resetTransformationGroup("rotation")
   animator.rotateTransformationGroup("rotation", self.angle)
+
+  -- GUN ANIMATION STUFF
+  local diff = world.distance(vehicle.aimPosition("drivingSeat"), mcontroller.position())
+  diff[2] = diff[2] - 0.000366211 + 2.33
+  diff[1] = diff[1] - 4.875
+  aimAngle = math.atan(diff[2], diff[1])
+  if self.facingDirection < 0 then
+
+   if aimAngle > 0 then
+     aimAngle = math.max(aimAngle, math.pi - AimLimit)
+   else
+     aimAngle = math.min(aimAngle, -math.pi + AimLimit)
+   end
+   animator.rotateGroup("guns", math.pi - aimAngle)
+  else
+   if aimAngle > 0 then
+     aimAngle = math.min(aimAngle, AimLimit)
+   else
+     aimAngle = math.max(aimAngle, -AimLimit)
+   end
+  animator.rotateGroup("guns", aimAngle)
+  end
+  -- GUN ANIMATION STUFF ENDING
 end
 
 function updateDamage()
