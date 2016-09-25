@@ -201,12 +201,15 @@ end
 function isn_sumPowerActiveDevicesConnectedOnOutboundNode(node)
 	if node == nil then return 0 end
 	local voltagecount = 0
+	local batteries = 0
 	local devicelist = isn_getAllDevicesConnectedOnNode(node,"output")
 	if devicelist == nil then return 0 end
 	for key, value in pairs(devicelist) do
 		if world.callScriptedEntity(value,"isn_canRecievePower") then
 			if not world.callScriptedEntity(value,"isn_doesNotConsumePower") then
-				if world.callScriptedEntity(value,"isn_activeConsumption") then
+				if world.callScriptedEntity(value,"isn_isBattery") == true then
+					if world.callScriptedEntity(device, "isn_getCurrentPowerStorage") < 100 then batteries = batteries + 1 end
+				elseif world.callScriptedEntity(value,"isn_activeConsumption") then
 					-- allow for the consumer's power requirement being spread across several supplies
 					local required = world.callScriptedEntity(value,"isn_requiredPowerValue", true)
 					if required ~= nil then voltagecount = voltagecount + required end
@@ -215,5 +218,5 @@ function isn_sumPowerActiveDevicesConnectedOnOutboundNode(node)
 			end
 		end
 	end
-	return voltagecount
+	return voltagecount, batteries
 end

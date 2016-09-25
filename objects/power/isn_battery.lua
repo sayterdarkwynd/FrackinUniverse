@@ -33,11 +33,11 @@ function update(dt)
 
 	if storage.active then
 		-- drain power according to attached devices; max drain is storage.voltage
-		local poweroutput = isn_sumPowerActiveDevicesConnectedOnOutboundNode(0)
+		local poweroutput, batteries = isn_sumPowerActiveDevicesConnectedOnOutboundNode(0)
 		storage.excessCurrent = poweroutput > storage.voltage
 		animator.setAnimationState("status", storage.excessCurrent and "error" or "on")
-		if poweroutput > 0 and storage.currentstoredpower > 0 and not storage.excessCurrent then
-			storage.currentstoredpower = storage.currentstoredpower - poweroutput
+		if (batteries > 0 or poweroutput > 0) and storage.currentstoredpower > 0 and not storage.excessCurrent then
+			storage.currentstoredpower = storage.currentstoredpower - poweroutput - batteries * isn_getCurrentPowerOutput(true)
 			-- sb.logInfo(string.format("Draining %.2fu, now at %.2fu", poweroutput, storage.currentstoredpower))
 		end
 	else
