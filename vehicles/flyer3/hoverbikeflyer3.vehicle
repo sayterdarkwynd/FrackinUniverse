@@ -1,5 +1,5 @@
 {
-  "name" : "hoverbikeflyer",
+  "name" : "hoverbikeflyer3",
   "script" : "hoverbike.lua",
   "boundBox" : [-5, -5, 5, 5],
   "slaveControlTimeout" : 2.0,
@@ -41,7 +41,7 @@
       "part" : "foreground",
       "partAnchor" : "drivingSeatPosition",
       "orientation" : "sit",
-      "statusEffects" : ["maxprotection" , "airimmunity"],
+      "statusEffects" : ["maxprotection" , "airimmunity", "extremepressureimmunity" ],
       "emote" : "happy",
       "dance" : "warmhands"
     },
@@ -49,7 +49,7 @@
       "part" : "foreground",
       "partAnchor" : "passengerSeatPosition",
       "orientation" : "sit",
-      "statusEffects" : ["maxprotection" , "airimmunity" ],
+      "statusEffects" : ["maxprotection" , "airimmunity", "extremepressureimmunity" ],
       "emote" : "neutral",
       "dance" : "typing"
     }
@@ -58,10 +58,10 @@
 
 
 
-  "AimLimit" : 40,
-  "shuttleFireCycle" : 0.25,
-  "shuttleProjectile" : "standardbullet",
-  "shuttleProjectileConfig" : { "power" : 5 },
+  "AimLimit" : 90,
+  "shuttleFireCycle" : 0.2,
+  "shuttleProjectile" : "isn_terawattlaser",
+  "shuttleProjectileConfig" : { "power" : 12 },
   
   
   
@@ -81,8 +81,8 @@
   "jumpTimeout" : 0.01,
 
   //Health and damage
-  "protection" : 70,
-  "maxHealth" : 2000,
+  "protection" : 80,
+  "maxHealth" : 5000,
 
   "damageStateNames" : ["undamaged","scratched","dented","wrecked"],
 
