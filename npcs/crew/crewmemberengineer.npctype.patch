@@ -5,7 +5,12 @@
             "type" : "PeriodicMultiplier",
             "property" : "fuelEfficiency",
             "value" : 1.02,
+            "limit" : 1.5,
             "period" : 2000
           }]
+  } ,
+  {"op" : "replace",
+  "path" : "/scriptConfig/dialog/crewmember/shipImprovementApplied/default/default",
+  "value" : [ "It's done! Fuel efficiency is up another 2%! I'll keep working on it!" ]
   } 
 ]
