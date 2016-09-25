@@ -7,7 +7,11 @@
         "states" : {
           "idle" : {
             "frames" : 10,
-            "cycle" : 2.5
+            "cycle" : 2.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/reptar3.ogg",
+              "particleEmittersOff" : [ "spindust" ]
+            }
           },
           "walk" : {
             "frames" : 4,
@@ -31,8 +35,7 @@
             "frames" : 4,
             "cycle" : 0.5,
             "properties" : {
-              "persistentSound" : "/sfx/raptor/raptor4.ogg",
-              "persistentSoundStopTime" : 2.2,
+              "immediateSound" : "/sfx/npc/monsters/reptar1.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }
           },
@@ -42,8 +45,6 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/raptor/raptor5.ogg",
-              "persistentSoundStopTime" : 2.2,
               "particleEmittersOff" : [ "spindust" ]
             }
           },        
@@ -51,8 +52,7 @@
             "frames" : 7,
             "cycle" : 1.0,
             "properties" : {
-              "persistentSound" : "/sfx/raptor/raptor1.ogg",
-              "persistentSoundStopTime" : 2.0,
+              "immediateSound" : "/sfx/npc/monsters/reptar4.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }
           },
@@ -60,8 +60,7 @@
             "frames" : 7,
             "cycle" : 0.5,
             "properties" : {
-              "immediateSound" : "/sfx/raptor/raptor3.ogg",
-              "immediateSoundRangeMultiplier" : 0.5,
+              "immediateSound" : "/sfx/npc/monsters/reptar1.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }
           },          
@@ -71,7 +70,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/raptor/raptor2.ogg"            
+              "immediateSound" : "/sfx/npc/monsters/reptar6.ogg"            
             },
             "frameProperties" : {
               "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
@@ -261,11 +260,12 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/quadruped/bulbouseyehead_turnhostile.ogg" ],
+    "aggroHop" : [ "/sfx/npc/monsters/reptar4.ogg" ],
     "attack" : [ "/sfx/npc/smallbiped/arrowhead_small_attack1.ogg" ],
-    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
-    "attackSound" : [ "/sfx/raptor/raptor1.ogg", "/sfx/raptor/raptor2.ogg" , "/sfx/raptor/raptor3.ogg", "/sfx/raptor/raptor4.ogg" , "/sfx/raptor/raptor5.ogg"  ],
-    "turnHostile" : [ "/sfx/raptor/raptor1.ogg", "/sfx/raptor/raptor2.ogg" , "/sfx/raptor/raptor3.ogg", "/sfx/raptor/raptor4.ogg" , "/sfx/raptor/raptor5.ogg"  ],
-    "deathPuff" : [ "/sfx/raptor/raptor2.ogg", "/sfx/raptor/raptor3.ogg" ]  
+    "fire" : [ "/sfx/npc/monsters/reptar4.ogg" ],
+    "chargeSound" : [ "/sfx/npc/monsters/reptar4.ogg" ],
+    "attackSound" : [ "/sfx/npc/monsters/reptar1.ogg" ],
+    "turnHostile" : [ "/sfx/npc/monsters/reptar2.ogg" , "/sfx/npc/monsters/reptar3.ogg", "/sfx/npc/monsters/reptar5.ogg"  ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]  
   }
 }
