@@ -1,19 +1,19 @@
 {
   "type" : "bunnything",
   "shortdescription" : "Hopper",
-  "description" : "A vile, hideously evil rabbit-beast. Wants to hug you to death.",
+  "description" : "Wants to do nothing but giggle, sing and hug. All the time.",
 
   "categories" : [ "bunnything" ],
   "parts" : [ "body" ],
-
+  "reversed" : true,
+  
   "animation" : "bunnything.animation",
 
   "dropPools" : [ { "default" : "poptopTreasure", "bow" : "poptopHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_camouflage55.lua"
+      "/monsters/monster.lua"
     ],
 
     "behavior" : "monster",
@@ -31,31 +31,7 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [
-        {
-          "name" : "action-fire",
-          "cooldown" : 2.5,
-          "parameters" : {
-            "maximumRange" : 3,
-            "minimumRange" : 1,
-            "windupState" : "firewindup",
-            "windupTime" : 0.5,
-
-            "projectileType" : "meleebite",
-            "fireOffset" : [0, 0.75],
-
-            "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "inaccuracy" : 1,
-            "aimDirection" : [0,1],
-            "power" : 6,
-            "fireSound" : "fire",
-            "fireState" : "fire",
-
-
-            "winddownState" : ""
-          }
-        },           
+      "hostileActions" : [          
         {
           "name" : "action-fire",
           "cooldown" : 7,
@@ -63,9 +39,9 @@
             "maximumRange" : 12,
             "minimumRange" : 6,
             "windupState" : "firewindup",
-            "windupTime" : 1,
+            "windupTime" : 0.3,
 
-            "projectileType" : "futarball",
+            "projectileType" : "bubbles",
             "fireOffset" : [0, 0.75],
 
             "aimAtTarget" : true,
@@ -77,7 +53,6 @@
             "fireSound" : "fire",
             "fireState" : "fire",
 
-
             "winddownState" : ""
           }
         },   
@@ -86,11 +61,11 @@
           "cooldown" : 3,
           "parameters" : {
             "minimumRange" : 3,
-            "maximumRange" : 20,
+            "maximumRange" : 12,
             "windupTime" : 0.25,
             "windupState" : "idle",
 
-            "leapVelocity" : 65,
+            "leapVelocity" : 45,
             "collisionCheck" : true,
             "highArc" : true,
             "leapState" : "jump",
@@ -120,8 +95,21 @@
         }
       ],
 
-      "periodicActions" : [],
-
+      "periodicActions" : [ ],
+      "damageTakenActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : 0.1,
+          "parameters" : {
+            "windupTime" : 0.4,
+            "windupState" : "invulnerablewindup",
+            "winddownTime" : 0.4,
+            "winddownState" : "invulnerablewinddown",
+            "invulnerableTime" : 6
+          }
+        }
+      ],
+      
       "approachActions" : [
         {
           "name" : "approach-walk",
@@ -149,7 +137,7 @@
           "parameters" : {
             "canJump" : true,
             "maxJumps" : 8,
-            "moveState" : "run",
+            "moveState" : "walk",
             "jumpXVelocity" : 12,
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
@@ -193,11 +181,11 @@
     "scale" : 1.2,
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+      "collisionPoly" : [ [-1.75, -1.9], [1.75, -1.9], [1.75, 1.0], [-1.75, 1.0] ],
 
       "mass" : 1.0,
       "walkSpeed" : 3,
-      "runSpeed" : 11,
+      "runSpeed" : 7,
 
       "airFriction" : 0,
 
@@ -239,22 +227,16 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 90
+          "baseValue" : 60
         },
         "protection" : {
-          "baseValue" : 0.15
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
-        },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1
-        }, 
-        "insanityImmunity" : {
-          "baseValue" : 1
         },
         "wetImmunity" : {
           "baseValue" : 1
@@ -275,10 +257,9 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8],
+    "feetOffset" : [0, -8],s
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "monsters" : "poptop" }
+    "nametagColor" : [64, 200, 255]
   }
 }

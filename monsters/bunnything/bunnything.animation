@@ -11,7 +11,7 @@
             "properties" : {
               "particleEmittersOff" : [ "music" ]
             }
-          },
+          },      
           "walk" : {
             "frames" : 6,
             "cycle" : 0.6,
@@ -25,12 +25,13 @@
             "cycle" : 0.8,
             "mode" : "loop",
             "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/bunnykinmock.ogg",
               "particleEmittersOff" : [ "music" ]
             }
           },          
          "run" : {
-            "frames" : 5,
-            "cycle" : 0.5,
+            "frames" : 6,
+            "cycle" : 0.6,
             "mode" : "loop",
             "properties" : {
               "particleEmittersOff" : [ "music" ]
@@ -42,7 +43,7 @@
             "mode" : "loop",
             "properties" : {
               "particleEmittersOn" : [ "music" ],
-              "persistentSound" : "/sfx/npc/monsters/shadowwhistle.ogg",
+              "persistentSound" : "/sfx/npc/monsters/bunnykinsing.ogg",
               "persistentSoundStopTime" : 0.5
             }
           },
@@ -63,7 +64,7 @@
             }
           },
           "firewindup" : {
-            "frames" : 2,
+            "frames" : 6,
             "cycle" : 0.4,
             "mode" : "loop",
             "properties" : {
@@ -71,7 +72,7 @@
             }
           },
           "firewinddown" : {
-            "frames" : 1,
+            "frames" : 6,
             "cycle" : 0.1,
             "properties" : {
               "particleEmittersOff" : [ "music" ]
@@ -94,20 +95,42 @@
           },
           "fire" : {
             "frames" : 3,
-            "cycle" : 0.3,
-            "properties" : {
-              "particleEmittersOff" : [ "music" ],
-              "immediateSound" : "/sfx/npc/monsters/shadowtopsnarl2.ogg"
-            }
+            "cycle" : 0.3
+
           },          
           "charge" : {
             "frames" : 5,
             "cycle" : 0.5,
             "properties" : {
               "particleEmittersOff" : [ "music" ],
-              "immediateSound" : "/sfx/npc/monsters/shadowtopsnarl.ogg"
+              "immediateSound" : "/sfx/npc/monsters/bunnykinlaugh2.ogg"
             }
-          }
+          },
+          "sleep" : {
+            "frames" : 8,
+            "cycle" : 0.8
+          },          
+          "awaken" : {
+            "frames" : 8,
+            "cycle" : 0.8
+          },              
+
+          "invulnerablewindup" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "properties" : {
+              "particleEmittersOff" : [ "music" ],
+              "immediateSound" : "/sfx/npc/monsters/bunnykinhurt.ogg"
+            }            
+          },
+          "invulnerablewinddown" : {
+            "frames" : 8,
+            "cycle" : 0.8             
+          },          
+          "invulnerable" : {
+            "frames" : 1,
+            "cycle" : 1             
+          }          
         }
       },
       "damage" : {
@@ -169,6 +192,31 @@
                 "image" : "<partImage>:run.<frame>"
               }
             },
+            "sleep" : {
+              "properties" : {
+                "image" : "<partImage>:sleep.<frame>"
+              }
+            },     
+            "awaken" : {
+              "properties" : {
+                "image" : "<partImage>:awaken.<frame>"
+              }
+            }, 
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },             
+            "invulnerablewindup" : {
+              "properties" : {
+                "image" : "<partImage>:sleep.<frame>"
+              }
+            },
+            "invulnerablewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:awaken.<frame>"
+              }
+            },            
             "stroll" : {
               "properties" : {
                 "image" : "<partImage>:stroll.<frame>"
@@ -176,7 +224,7 @@
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:jump.<frame>"
+                "image" : "<partImage>:charge.<frame>"
               }
             },
             "fall" : {
@@ -206,7 +254,7 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:charge.<frame>"
+                "image" : "<partImage>:fire.<frame>"
               }
             },            
             "charge" : {
@@ -376,9 +424,8 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg", "/sfx/npc/monsters/bunnykinjump.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
-    "fire2" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
-    "fire" : [ "/sfx/npc/monsters/shadowtopsnarl2.ogg" ]
+    "fire" : [ "/sfx/npc/monsters/bunnykinlaugh1.ogg", "/sfx/npc/monsters/bunnykinlaugh2.ogg", "/sfx/npc/monsters/bunnykinmock.ogg" ]
   }
 }
