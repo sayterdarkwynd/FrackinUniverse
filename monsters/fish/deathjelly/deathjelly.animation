@@ -7,22 +7,37 @@
         "states" : {
           "idle" : {
             "frames" : 5,
-            "cycle" : 0.8,
+            "cycle" : 1,
             "mode" : "loop"
           },
           "fly" : {
             "frames" : 6,
-            "cycle" : 0.6,
+            "cycle" : 1.2,
             "mode" : "loop"
           },
           "firewindup" : {
             "frames" : 6,
-            "cycle" : 0.6
+            "cycle" : 1.2
           },
           "fire" : {
             "frames" : 5,
             "cycle" : 0.5
-          }
+          },
+          "chargewindup" : {
+            "frames" : 5,
+            "cycle" : 1.2,
+            "mode" : "loop"
+          },
+          "chargewinddown" : {
+            "frames" : 5,
+            "cycle" : 1.2,
+            "mode" : "loop"
+          },
+          "charge" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop"
+          }         
         }
       },
       "damage" : {
@@ -66,7 +81,22 @@
               "properties" : {
                 "image" : "<partImage>:fire.<frame>"
               }
-            }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }, 
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            }            
           },
           "damage" : {
             "stunned" : {

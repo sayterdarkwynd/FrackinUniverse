@@ -1,7 +1,9 @@
 {
   "type" : "deathjelly",
-  "shortdescription" : "Sparkjelli",
+  "shortdescription" : "Shockjelli",
   "description" : "Shockingly shocking. Do not touch.",
+  "reversed" : true,
+  
   "categories" : [ "deathjelly" ],
   "parts" : [ "body" ],
 
@@ -40,11 +42,32 @@
 
       "hostileActions" : [
         {
+          "name" : "action-charge",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 1,
+            "maximumRange" : 20,
+            "windupStopForce" : 25,
+            "windupTime" : 1,
+
+            "onGround" : false,
+            "wallCollide" : false,
+            "aimAtTarget" : true,
+            "chargeTime" : 0.23,
+            "chargeSpeed" : 7,
+            "chargeControlForce" : 250,
+
+            "winddownState" : "fly",
+            "winddownStopForce" : 25,
+            "winddownTime" : 0.05
+          }
+        },      
+        {
           "name" : "action-fire",
           "cooldown" : 5.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 7,
+            "maximumRange" : 8,
             "minimumRange" : 1,
             "onGround" : false,
             "windupStopForce" : 50,
@@ -54,7 +77,7 @@
             "projectileCount" : 1,
             "projectileInterval" : 0.15,             
             "projectileParameters" : {
-              "speed" : 20
+              "speed" : 30
             },
             "power" : 12,
             "fireOffset" : [0.0, 0.0],
@@ -84,7 +107,17 @@
       "wanderActions" : [
         {
           "name" : "emerge-fly"
-        }
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : 10,
+            "groundDistance" : 4,
+            "ceilingDistance" : 4,
+            "xVelocity" : 2,
+            "yVelocity" : 12
+          }
+        }        
       ],
 
       "concurrentActions" : [ ],
@@ -108,16 +141,15 @@
     "selfDamagePoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
 
     "movementSettings" : {
-      "collisionPoly" : [ ],
+      "collisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 1,
-      "runSpeed" : 3,
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
       "gravityEnabled" : false,
 
-      "airFriction" : 2.0,
-      "airForce" : 25,
-      "flySpeed" : 4
+      "airForce" : 50,
+      "flySpeed" : 8
     },
 
     "bodyMaterialKind" : "organic",
@@ -134,7 +166,7 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
+      "appliesWeatherStatusEffects" : false,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -187,6 +219,9 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
   }
 }
