@@ -1,11 +1,11 @@
 {
-  "type" : "wisper7",
-  "shortdescription" : "Icebobb",
-  "description" : "Floaty little balls of freezing pain.",
-  "categories" : [ "wisper7" ],
+  "type" : "deathjelly",
+  "shortdescription" : "Sparkjelli",
+  "description" : "Shockingly shocking. Do not touch.",
+  "categories" : [ "deathjelly" ],
   "parts" : [ "body" ],
 
-  "animation" : "wisper7.animation",
+  "animation" : "deathjelly.animation",
 
   "dropPools" : [ { "default" : "wisperTreasure", "bow" : "wisperHunting" } ],
 
@@ -44,19 +44,19 @@
           "cooldown" : 5.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 18,
-            "minimumRange" : 4,
+            "maximumRange" : 7,
+            "minimumRange" : 1,
             "onGround" : false,
             "windupStopForce" : 50,
             "windupTime" : 0.8,
 
-            "projectileType" : "fuicebreath",
-            "projectileCount" : 3,
+            "projectileType" : "ffteslasmall",
+            "projectileCount" : 1,
             "projectileInterval" : 0.15,             
             "projectileParameters" : {
-              "speed" : 22
+              "speed" : 20
             },
-            "power" : 5,
+            "power" : 12,
             "fireOffset" : [0.0, 0.0],
             "aimAtTarget" : true,
             "inaccuracy" : 0.03,
@@ -97,9 +97,9 @@
       "damage" : 9,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "electricplasma",
       "knockback" : 20,
-      "statusEffects" : [ "percentarmorboostneg2" ]
+      "statusEffects" : [ ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -111,13 +111,13 @@
       "collisionPoly" : [ ],
 
       "mass" : 1.0,
-      "walkSpeed" : 7,
-      "runSpeed" : 9,
+      "walkSpeed" : 1,
+      "runSpeed" : 3,
       "gravityEnabled" : false,
 
       "airFriction" : 2.0,
       "airForce" : 25,
-      "flySpeed" : 11
+      "flySpeed" : 4
     },
 
     "bodyMaterialKind" : "organic",
@@ -165,6 +165,9 @@
         "nitrogenfreezeImmunity" : {
           "baseValue" : 1.0
         },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },        
         "powerMultiplier" : {
           "baseValue" : 1.0
         }
