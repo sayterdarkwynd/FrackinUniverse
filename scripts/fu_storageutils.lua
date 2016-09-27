@@ -50,10 +50,44 @@ function fu_storeItems(items, avoidSlots, spawnLeftovers)
 	return items
 end
 
+-- Interoperability with Peasly Wellbott's Item Broadcaster
+-- We don't do affinities, hyperstorage or animation; we always try to store the item
+local function fu_itemBroadcast_sendItems(node, itemDescriptor)
+	storage.fu_storage_knownPeers = {}
+
+	-- get info on chests in range of connected receivers
+	local out = object.getOutputNodeIds(node)
+	if out then
+		for i, j in pairs(out) do
+			world.callScriptedEntity(i, "returnBeaconHandshake")
+		end
+	end
+
+	-- try to store items in them
+
+	-- sb.logInfo ('sending %s to objects %s', itemDescriptor, storage.fu_storage_knownPeers)
+	for i, chest in ipairs(storage.fu_storage_knownPeers) do
+		itemDescriptor = world.containerAddItems(chest, itemDescriptor)
+		-- sb.logInfo("result: %s", itemDescriptor)
+		if not itemDescriptor or itemDescriptor.count == 0 then break end
+	end
+
+	-- done; return what remains
+	return itemDescriptor
+end
+
+-- Required for receiving responses from Item Broadcaster's item receivers
+function acknowledgeBeaconPeers(ids)
+	-- record storage objects except for self
+	for i, j in ipairs(ids) do
+		if j[1] ~= entity.id() then table.insert(storage.fu_storage_knownPeers, j[1]) end
+	end
+end
+
 function fu_sendItems(node, itemDescriptor)
 	-- if connected to an object receiver, try to send the item(s)
-	-- Wired Industry's item router is one such device
 
+	-- Wired Industry's item router is one such device
 	-- There is an ambiguity if the receiver returns nil (indicating all items stored)
 	-- This is also what is returned if the receive function can not be called...
 	local unfail = { name = itemDescriptor.name, count = 0, data = itemDescriptor.data }
@@ -67,6 +101,10 @@ function fu_sendItems(node, itemDescriptor)
 			-- sb.logInfo ('result: %s', itemDescriptor)
 			if not itemDescriptor or itemDescriptor.count == 0 then break end
 		end
+
+		-- Item Broadcaster interop
+		itemDescriptor = fu_itemBroadcast_sendItems(node, itemDescriptor)
+		if not itemDescriptor or itemDescriptor.count == 0 then break end
 	end
 
 	return itemDescriptor or unfail -- deal with that ambiguity, hopefully
