@@ -15,6 +15,8 @@ function update(dt)
 		storage.init = true
 	end
 
+	storage.recentlyDischarged = false
+
 	if storage.currentstoredpower < storage.voltage then
 		-- less than storage.voltage in store; considered discharged
 		animator.setAnimationState("meter", "d")
@@ -37,7 +39,8 @@ function update(dt)
 		storage.excessCurrent = poweroutput > storage.voltage
 		animator.setAnimationState("status", storage.excessCurrent and "error" or "on")
 		if (batteries > 0 or poweroutput > 0) and storage.currentstoredpower > 0 and not storage.excessCurrent then
-			storage.currentstoredpower = storage.currentstoredpower - poweroutput - batteries * isn_getCurrentPowerOutput(true)
+			storage.recentlyDischarged = poweroutput + batteries * isn_getCurrentPowerOutput(true)
+			storage.currentstoredpower = storage.currentstoredpower - storage.recentlyDischarged
 			-- sb.logInfo(string.format("Draining %.2fu, now at %.2fu", poweroutput, storage.currentstoredpower))
 		end
 	else
@@ -51,6 +54,10 @@ end
 
 function isn_getCurrentPowerStorage()
 	return isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
+end
+
+function isn_recentlyDischarged()
+	return storage.recentlyDischarged
 end
 
 function isn_hasStoredPower()
