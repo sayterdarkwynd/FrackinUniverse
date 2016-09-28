@@ -16,7 +16,7 @@
     ],
 
     "behavior" : "monster",
-
+    "deathBehavior" : "monster-death",
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -54,7 +54,7 @@
             "windupState" : "fire2",
             "windupTime" : 0.4,
 
-            "projectileType" : "redboltsmall",
+            "projectileType" : "twistingpulse",
             "projectileParameters" : {
               "speed" : 25
             },
@@ -150,7 +150,23 @@
             "tag" : "aggro"
           }
         }
-      ]
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "gaussrifleboom",
+            "projectileParameters" : {},
+            "power" : 6,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 1]
+          }
+        }
+      ]  
+      
     },
 
     "touchDamage" : {
