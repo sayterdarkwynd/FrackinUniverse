@@ -11,7 +11,7 @@ function init(virt)
 	storage.bits = {0, 1, 2, 3, 4, 5, 6, 7} -- assume all connected
 
 	if storage.input == nil then
-		local inputBits = config.getParameter('numInputNodesOn') -- default: half of those connected, rounded up
+		local inputBits = config.getParameter('inputBits') -- default: half of those connected, rounded up
 		-- see which nodes are connected
 		local numConnected = 0
 		storage.bits = {}
