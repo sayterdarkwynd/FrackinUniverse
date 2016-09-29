@@ -10,6 +10,12 @@
             "cycle" : 1.4,
             "mode" :"loop"
           },
+          "hurt" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "idle"
+          },           
           "taunt" : {
             "frames" : 14,
             "cycle" : 1.4,
@@ -23,6 +29,8 @@
           "fire" : {
             "frames" : 23,
             "cycle" : 2.3,
+            "mode" : "transition",
+            "transition" : "idle",              
             "properties" : {
               "immediateSound" : "/sfx/melee/charge_combo6.ogg",
               "particleEmittersOff" : [ "fireaura" ]
@@ -42,7 +50,9 @@
           }, 
           "firewinddown" : {
             "frames" : 10,
-            "cycle" : 1
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle"              
           },             
           "windup" : {
             "frames" : 5,
@@ -50,7 +60,9 @@
           }, 
           "winddown" : {
             "frames" : 10,
-            "cycle" : 1
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "idle"             
           },           
           "jump" : {
             "frames" : 1,
@@ -88,6 +100,8 @@
           "charge" : {
             "frames" : 6,
             "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "hurt",              
             "properties" : {
               "immediateSound" : "/sfx/melee/charge_traildash1.ogg"
             },
@@ -169,6 +183,11 @@
                 "image" : "<partImage>:chargewinddown.<frame>"
               }
             },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },            
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:charge.<frame>",
