@@ -41,7 +41,7 @@
             "maximumRange" : 20,
             "windupState" : "chargewindup",
             "windupTime" : 1.15,
-
+            "windupSound" : "charge",
             "chargeTime" : 0.5,
             "chargeSpeed" : 45,
             "chargeControlForce" : 1200,
@@ -54,6 +54,26 @@
             "winddownState" : "chargewinddown"
           }
         },
+        {
+          "name" : "action-leap", 
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 2,
+            "maximumRange" : 12,
+            "maxXRange" : 20,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 75,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },         
         {
           "name" : "action-fire",
 	  "cooldown" : 2,
