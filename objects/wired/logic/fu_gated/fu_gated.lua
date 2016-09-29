@@ -40,6 +40,10 @@ function init(virt)
 	onInputNodeChange()
 end
 
+function onNodeConnectionChange()
+	init()
+end
+
 function onInputNodeChange(node, level)
 	-- ignoring parameters
 	local input = 0
