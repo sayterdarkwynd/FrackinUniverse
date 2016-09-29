@@ -23,13 +23,14 @@ function init(virt)
 			end
 		end
 		-- pick some of them at random
+		local rnd = sb.makeRandomSource()
 		local selected = {}
 		storage.input = 0
 		inputBits = inputBits or math.ceil (numConnected / 2)
 		for i = 1, math.min(numConnected, inputBits) do
 			local bit
 			while true do
-				bit = math.random(1, numConnected)
+				bit = rnd:randInt(1, numConnected)
 				if not bit or not selected[bit] then break end
 			end
 			selected[bit] = true
