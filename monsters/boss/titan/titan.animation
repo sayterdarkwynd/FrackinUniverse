@@ -10,6 +10,12 @@
             "cycle" : 1.4,
             "mode" :"loop"
           },
+          "hurt" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "idle"
+          },           
           "taunt" : {
             "frames" : 14,
             "cycle" : 1.4,
@@ -23,6 +29,8 @@
           "fire" : {
             "frames" : 23,
             "cycle" : 2.3,
+            "mode" : "transition",
+            "transition" : "idle",              
             "properties" : {
               "immediateSound" : "/sfx/melee/charge_combo6.ogg",
               "particleEmittersOff" : [ "fireaura" ]
@@ -42,7 +50,9 @@
           }, 
           "firewinddown" : {
             "frames" : 10,
-            "cycle" : 1
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle"              
           },             
           "windup" : {
             "frames" : 5,
@@ -50,7 +60,9 @@
           }, 
           "winddown" : {
             "frames" : 10,
-            "cycle" : 1
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "idle"             
           },           
           "jump" : {
             "frames" : 1,
@@ -66,11 +78,7 @@
             "cycle" : 1.4,
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/titanyell.ogg"
-            },
-            "frameProperties" : {
-              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
-              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
-            }            
+            }          
           },
           "chargewinddown" : {
             "frames" : 5,
@@ -79,22 +87,16 @@
             "transition" : "idle",
             "properties" : {
               "immediateSound" : "/sfx/weapons/explosion-large01.ogg"
-            },
-            "frameProperties" : {
-              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
-              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
-            }            
+            }          
           },        
           "charge" : {
             "frames" : 6,
             "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "hurt",              
             "properties" : {
               "immediateSound" : "/sfx/melee/charge_traildash1.ogg"
-            },
-            "frameProperties" : {
-              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
-              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
-            }            
+            }       
           }
         }
       },
@@ -169,6 +171,11 @@
                 "image" : "<partImage>:chargewinddown.<frame>"
               }
             },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },            
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:charge.<frame>",
@@ -295,6 +302,7 @@
     "turnHostile" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
     "attackSound" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
     "fire" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
-    "hit" : [ "/sfx/weapons/explosion-large01.ogg" ]
+    "hit" : [ "/sfx/weapons/explosion-large01.ogg", "/sfx/weapons/megahammer.wav" ],
+    "charge" : [ "/sfx/npc/monsters/titanyell.ogg", "/sfx/npc/monsters/titancharge2.ogg","/sfx/npc/monsters/titancharge3.ogg","/sfx/npc/monsters/titancharge4.ogg","/sfx/npc/monsters/titancharge5.ogg" ]
   }
 }
