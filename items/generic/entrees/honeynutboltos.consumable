@@ -1,32 +1,28 @@
 {
   "itemName" : "honeynutboltos",
   "rarity" : "Common",
-  "category" : "food",
+  "category" : "preparedFood",
   "inventoryIcon" : "honeynutboltos.png",
   "description" : "Mmm, cereal.",
   "shortdescription" : "Honey Nut Boltos",
-  "price" : 75,
-  "foodValue" : 15,
+  "price" : 175,
+  "foodValue" : 75,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
+  "maxStack" : 1000,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 1.0,
-  
+  "rottingMultiplier" : 5.0,
   "effects" : [ [
     {
         "effect" : "honeyheal2",
-        "duration" :90  
-    },  
+        "duration" :90
+    },
     {
-        "effect" : "wellfed",
-        "duration" : 120
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 180
     }
   ] ],
   "blockingEffects" : [
     "wellfed"
   ]
 }
-
-
-
