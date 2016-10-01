@@ -1,11 +1,10 @@
 {
-  "type" : "tarslime",
-  "shortdescription" : "Tar Slime",
-  "description" : "Hops and slimes. That's about it.",
-  "categories" : [ "tarslime" ],
+  "type" : "magmamicroslime",
+
+  "categories" : [ "magmamicroslime" ],
   "parts" : [ "body" ],
 
-  "animation" : "tarslime.animation",
+  "animation" : "magmaslime.animation",
   "colors" : "/monsters/colors.config",
   "reversed" : true,
 
@@ -13,32 +12,33 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/slimetar/behavior.lua",
+      "/monsters/slimemagma/behavior.lua",
 
       "/scripts/sensors.lua",
       "/scripts/stateMachine.lua",
       "/scripts/util.lua",
-      "/scripts/vec2.lua"
+      "/scripts/vec2.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "tickEvoTime" : 5,
+  "evolutions" : [ "/scripts/golemancer/evolutions/slimegrow.evo", "/scripts/golemancer/evolutions/magmaslime.evo" ],
 
-    "metaBoundBox" : [-0.75, -1.125, 0.875, 0.25],
+    "metaBoundBox" : [-0.5, -1.125, 0.5, 0.0],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-0.75, -1.125], [0.875, -1.125], [0.875, 0.25], [-0.75, 0.25] ],
+      "collisionPoly" : [ [-0.5, -1.125], [0.5, -1.125], [0.5, 0.0], [-0.5, 0.0] ],
 
-      "mass" : 0.75,
-      "walkSpeed" : 2,
-      "runSpeed" : 4,
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
       "flySpeed" : 15,
-      "airForce" : 5.0,
-      "jumpSpeed" : 4,
-      "jumpControlForce" : 5,      
+
       "airFriction" : 0.0,
       "airJumpProfile" : {
-        "jumpSpeed" : 5.0,
+        "jumpSpeed" : 20.0,
         "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.5              
+        "jumpHoldTime" : 0.0              
       }
     },
 
@@ -49,12 +49,12 @@
     "deathParticles" : "deathPoof",
 
     "touchDamage" : {
-      "poly" : [ [-0.75, -1.125], [0.875, -1.125], [0.875, 0.25], [-0.75, 0.25] ],
-      "damage" : 6,
+      "poly" : [ [-0.5, -1.125], [0.5, -1.125], [0.5, 0.0], [-0.5, 0.0] ],
+      "damage" : 3,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
-      "statusEffects" : [ ]
+      "statusEffects" : [ "burning" ]
     },
 
     "statusSettings" : {
@@ -72,17 +72,11 @@
       "primaryScriptDelta" : 0,
 
       "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0.25
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 9
-        },
         "grit" : {
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 40
+          "baseValue" : 4
         },
         "protection" : {
           "baseValue" : 0.2
@@ -90,24 +84,21 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
-        "slimestickImmunity" : {
-          "baseValue" : 1.0
-        },
         "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },      
+        "slimestickImmunity" : {
           "baseValue" : 1.0
         },
         "blacktarImmunity" : {
           "baseValue" : 1.0
         },
-        "tarImmunity" : {
-          "baseValue" : 1.0
-        },        
         "lavaImmunity" : {
           "baseValue" : 1.0
-        },             
-        "powerMultiplier" : {
+        },     
+        "tarImmunity" : {
           "baseValue" : 1.0
-        }
+        }        
       },
 
       "resources" : {
@@ -138,7 +129,7 @@
     "noticeDistance" : 30,
     "attackSearchTime" : 10,
 
-    "poSize" : "medium",
+    "poSize" : "small",
 
     "spawnVelocity" : [2, 30]
   }

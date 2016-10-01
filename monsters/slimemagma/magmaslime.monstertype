@@ -1,11 +1,11 @@
 {
-  "type" : "tarslime",
-  "shortdescription" : "Tar Slime",
+  "type" : "magmaslime",
+  "shortdescription" : "Magma Slime",
   "description" : "Hops and slimes. That's about it.",
-  "categories" : [ "tarslime" ],
+  "categories" : [ "magmaslime" ],
   "parts" : [ "body" ],
 
-  "animation" : "tarslime.animation",
+  "animation" : "magmaslime.animation",
   "colors" : "/monsters/colors.config",
   "reversed" : true,
 
@@ -13,7 +13,7 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/slimetar/behavior.lua",
+      "/monsters/slimemagma/behavior.lua",
 
       "/scripts/sensors.lua",
       "/scripts/stateMachine.lua",
@@ -54,7 +54,7 @@
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
-      "statusEffects" : [ ]
+      "statusEffects" : [ "burning" ]
     },
 
     "statusSettings" : {
@@ -101,10 +101,10 @@
         },
         "tarImmunity" : {
           "baseValue" : 1.0
-        },        
+        },
         "lavaImmunity" : {
           "baseValue" : 1.0
-        },             
+        },        
         "powerMultiplier" : {
           "baseValue" : 1.0
         }
