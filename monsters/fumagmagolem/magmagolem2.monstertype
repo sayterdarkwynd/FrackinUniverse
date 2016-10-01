@@ -13,8 +13,11 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_deathbombmagma.lua"    
+      "/stats/monstereffects/monsterstatus_deathbombmagma.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "tickEvoTime" : 5,
+  "evolutions" : [ "/scripts/golemancer/evolutions/megamagmagolem2.evo" ],
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
@@ -121,7 +124,7 @@
             "windupTime" : 0.7,
 
             "projectileType" : "hellfireprojectile",
-            "power" : 11.5,
+            "power" : 17.5,
             "speed": 50,
             "fireOffset" : [5, 0],
             "aimAtTarget" : true,
@@ -290,7 +293,7 @@
           "baseValue" : 520
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.65
         },
         "lavaImmunity" : {
           "baseValue" : 1.0

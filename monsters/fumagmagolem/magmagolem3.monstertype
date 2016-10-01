@@ -1,6 +1,6 @@
 {
-  "type" : "magmagolem",
-  "shortdescription" : "Magma Beast",
+  "type" : "magmagolem3",
+  "shortdescription" : "Omega Magma Beast",
   "description" : "All rage and fire. Best to avoid. Really quite dangerous.",
 
   "categories" : [ "magmagolem" ],
@@ -17,14 +17,14 @@
       "/scripts/golemancer/gol_monstermain.lua"
     ],
   "tickEvoTime" : 5,
-  "evolutions" : [ "/scripts/golemancer/evolutions/megamagmagolem.evo" ],
+  "evolutions" : [ "/scripts/golemancer/evolutions/megamagmagolem2.evo" ],
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 30,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
@@ -39,7 +39,7 @@
       "hostileActions" : [
         {
           "name" : "action-animate",
-          "cooldown" : 14,
+          "cooldown" : 10,
           "parameters" : {
             "stateType" : "body",
             "state" : "roar",
@@ -48,15 +48,15 @@
         },
         {
           "name" : "action-charge",
-          "cooldown" : 7,
+          "cooldown" : 5,
           "parameters" : {
-            "maximumRange" : 20,
+            "maximumRange" : 25,
             "windupState" : "chargewindup",
             "windupTime" : 0.4,
 
-            "chargeTime" : 0.4,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 800,
+            "chargeTime" : 0.6,
+            "chargeSpeed" : 90,
+            "chargeControlForce" : 1200,
             "chargeState" : "charge",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
@@ -68,7 +68,7 @@
         },
         {
           "name" : "action-fire",
-	        "cooldown" : 15,
+	        "cooldown" :11,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 30,
@@ -77,8 +77,8 @@
             "windupTime" : 1,
 
             "projectileType" : "hellfireburst2",
-            "power" : 22,
-            "speed": 50,
+            "power" : 35,
+            "speed": 70,
             "fireOffset" : [5, -1],
             "aimAtTarget" : true,
             "projectileCount" : 1,
@@ -91,7 +91,7 @@
         },        
         {
           "name" : "action-fire",
-	        "cooldown" : 9,
+	        "cooldown" : 5,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 10,
@@ -100,8 +100,8 @@
             "windupTime" : 0.7,
 
             "projectileType" : "napalm2",
-            "power" : 5,
-            "speed": 50,
+            "power" : 9,
+            "speed": 60,
             "fireOffset" : [3.0, -0.2],
             "aimAtTarget" : true,
             "projectileCount" : 8,
@@ -115,7 +115,7 @@
         },        
         {
           "name" : "action-fire",
-	        "cooldown" : 12,
+	        "cooldown" : 5,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 30,
@@ -124,8 +124,8 @@
             "windupTime" : 0.7,
 
             "projectileType" : "hellfireprojectile",
-            "power" : 11.5,
-            "speed": 50,
+            "power" : 28.5,
+            "speed": 60,
             "fireOffset" : [5, 0],
             "aimAtTarget" : true,
             "projectileCount" : 1,
@@ -225,35 +225,35 @@
 
         "teamType" : "enemy",
         "damageSourceKind" : "slash",
-        "knockback" : 30,
+        "knockback" : 40,
         "statusEffects" : [ "burning" ]
       }
     },
 
     "touchDamage" : {
-      "poly" : [ [-3.062,2.188], [-3,-5.438], [2.25,-5.625], [1.875,3.562], [-1.125,3.625], [-1.188,2.25] ],
-      "damage" : 22,
+      "poly" : [ [-5.375,-0.188], [-2.812,-5.312], [2.375,-5.312], [3.312,2.562], [-2.375,2.75], [-3.688,0.312], [-5,0.062] ],
+      "damage" : 32,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
-      "knockback" : 20,
+      "knockback" : 40,
       "statusEffects" : [ "burning" ]
     },
 
     "metaBoundBox" : [-5.0, -5.25, 3.31, 2.5],
-    "scale" : 1.0,
+    "scale" : 1.7,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-3.062,2.188], [-3,-5.438], [2.25,-5.625], [1.875,3.562], [-1.125,3.625], [-1.188,2.25] ],
+      "collisionPoly" : [ [-5.375,-0.188], [-2.812,-5.312], [2.375,-5.312], [3.312,2.562], [-2.375,2.75], [-3.688,0.312], [-5,0.062] ],
 
       "mass" : 2.5,
-      "walkSpeed" : 5,
-      "runSpeed" : 11,
+      "walkSpeed" : 7,
+      "runSpeed" : 14,
 
       "airFriction" : 0,
 
       "airJumpProfile" : {
-        "jumpSpeed" : 35.0,
+        "jumpSpeed" : 55.0,
         "jumpInitialPercentage" : 1.0,
         "jumpHoldTime" : 0.0
       }
@@ -261,7 +261,7 @@
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.3,
+    "knockoutTime" : 0.2,
     "knockoutAnimationStates" : {
       "damage" : "stunned"
     },
@@ -275,7 +275,7 @@
 
       "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
-      "minimumLiquidStatusEffectPercentage" : 0.45,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
@@ -284,16 +284,16 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.15
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 320
+          "baseValue" : 1220
         },
         "protection" : {
-          "baseValue" : 0.40
+          "baseValue" : 0.85
         },
         "lavaImmunity" : {
           "baseValue" : 1.0
@@ -308,7 +308,7 @@
           "baseValue" : 1.0
         },        
         "powerMultiplier" : {
-          "baseValue" : 1.45
+          "baseValue" : 1.75
         }
       },
 
@@ -329,6 +329,8 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.24,
+    "capturedMonsterName" : "Magma Golem",
+    "capturedMonsterType" : "magmagolem", // turn into an adultpoptop when captured
     "nametagColor" : [64, 200, 255]
   }
 }
