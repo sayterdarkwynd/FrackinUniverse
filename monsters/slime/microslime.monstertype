@@ -17,8 +17,11 @@
       "/scripts/sensors.lua",
       "/scripts/stateMachine.lua",
       "/scripts/util.lua",
-      "/scripts/vec2.lua"
+      "/scripts/vec2.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "tickEvoTime" : 1,
+  "evolutions" : [ "/scripts/golemancer/evolutions/slimegrow.evo", "/scripts/golemancer/evolutions/microslime.evo", "/scripts/golemancer/evolutions/magmaslime.evo", "/scripts/golemancer/evolutions/doubleslime.evo" ],
 
     "metaBoundBox" : [-0.5, -1.125, 0.5, 0.0],
     "scale" : 1.0,
@@ -86,7 +89,19 @@
         },
         "slimestickImmunity" : {
           "baseValue" : 1.0
-        }
+        },
+        "blacktarImmunity" : {
+          "baseValue" : 1.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        }, 
+        "slimeImmunity" : {
+          "baseValue" : 1.0
+        },         
+        "tarImmunity" : {
+          "baseValue" : 1.0
+        } 
       },
 
       "resources" : {

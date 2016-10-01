@@ -1,23 +1,23 @@
 {
   "itemName" : "honeyham",
   "rarity" : "Common",
-  "category" : "food",
+  "category" : "preparedFood",
   "inventoryIcon" : "honeyham.png",
   "description" : "A haunch of honey roasted ham.",
   "shortdescription" : "Honey Ham",
   "handPosition" : [0, -4],
-  
+
   "price" : 75,
-  "foodValue" : 15,
+  "foodValue" : 25,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
+  "maxStack" : 1000,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 1.0,  
+  "rottingMultiplier" : 5.0,
   "effects" : [ [
     {
-        "effect" : "wellfed",
-        "duration" : 30
+        "effect" : "honeyheal4",
+        "duration" : 90
     }
   ] ],
   "blockingEffects" : [

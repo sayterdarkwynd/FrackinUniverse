@@ -13,8 +13,11 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_deathbombmagma.lua"    
+      "/stats/monstereffects/monsterstatus_deathbombmagma.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "tickEvoTime" : 5,
+  "evolutions" : [ "/scripts/golemancer/evolutions/megamagmagolem.evo" ],
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
@@ -228,7 +231,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-5.375,-0.188], [-2.812,-5.312], [2.375,-5.312], [3.312,2.562], [-2.375,2.75], [-3.688,0.312], [-5,0.062] ],
+      "poly" : [ [-3.062,2.188], [-3,-5.438], [2.25,-5.625], [1.875,3.562], [-1.125,3.625], [-1.188,2.25] ],
       "damage" : 22,
 
       "teamType" : "enemy",
@@ -241,7 +244,7 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-5.375,-0.188], [-2.812,-5.312], [2.375,-5.312], [3.312,2.562], [-2.375,2.75], [-3.688,0.312], [-5,0.062] ],
+      "collisionPoly" : [ [-3.062,2.188], [-3,-5.438], [2.25,-5.625], [1.875,3.562], [-1.125,3.625], [-1.188,2.25] ],
 
       "mass" : 2.5,
       "walkSpeed" : 5,
@@ -272,7 +275,7 @@
 
       "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
+      "minimumLiquidStatusEffectPercentage" : 0.45,
 
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
@@ -290,7 +293,7 @@
           "baseValue" : 320
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.40
         },
         "lavaImmunity" : {
           "baseValue" : 1.0
@@ -326,8 +329,6 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.24,
-    "capturedMonsterName" : "Magma Golem",
-    "capturedMonsterType" : "magmagolem", // turn into an adultpoptop when captured
     "nametagColor" : [64, 200, 255]
   }
 }
