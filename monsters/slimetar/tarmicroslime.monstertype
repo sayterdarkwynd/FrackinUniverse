@@ -12,13 +12,16 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/slime/behavior.lua",
+      "/monsters/slimetar/behavior.lua",
 
       "/scripts/sensors.lua",
       "/scripts/stateMachine.lua",
       "/scripts/util.lua",
-      "/scripts/vec2.lua"
+      "/scripts/vec2.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "tickEvoTime" : 5,
+  "evolutions" : [ "/scripts/golemancer/evolutions/slimegrow.evo", "/scripts/golemancer/evolutions/tarmicroslime.evo" ],
 
     "metaBoundBox" : [-0.5, -1.125, 0.5, 0.0],
     "scale" : 1.0,
