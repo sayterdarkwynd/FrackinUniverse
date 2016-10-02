@@ -59,7 +59,7 @@ function GroundSlam:slam()
       params.powerMultiplier = activeItem.ownerPowerMultiplier()
       params.power = params.power * config.getParameter("damageLevelMultiplier")
 
-      world.spawnProjectile(self.projectileType, lastSlamPosition, activeItem.ownerEntityId(), {0,0}, false, params)
+      world.spawnProjectile(self.projectileType, lastSlamPosition, activeItem.ownerEntityId(), {1,0}, false, params)
       return true
     end
     lastSlamPosition = newSlamPosition
