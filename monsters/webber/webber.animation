@@ -23,9 +23,7 @@
           "jump" : {
             "frames" : 3,
             "cycle" : 0.5,
-            "properties" : {
-              "immediateSoundRangeMultiplier" : 0.5
-            },
+
             "frameProperties" : {
               "immediateSound" : [ "", "/sfx/npc/monsters/oogler_hop.ogg" ]
             }
@@ -69,7 +67,13 @@
           },          
           "charge" : {
             "frames" : 5,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSoundRangeMultiplier" : 0.5
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/monsters/webber_charge.ogg" ]
+            }            
           },
           "melee" : {
             "frames" : 5,
@@ -327,10 +331,10 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "aggroHop" : [ "/sfx/npc/monsters/webber_aggro.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
     "fire2" : [ "/sfx/melee/swing_spear.ogg", "/sfx/melee/swing_dagger.ogg" ],
     "fire" : [ "/sfx/melee/swing_axe.ogg", "/sfx/melee/swing_broadsword.ogg" ],
-    "spit" : [ "/sfx/npc/monsters/taroni_throw.ogg" ]
+    "spit" : [ "/sfx/npc/monsters/taroni_throw.ogg", "/sfx/npc/monsters/webber_attack.ogg", "/sfx/npc/monsters/webber_charge.ogg" ]
   }
 }
