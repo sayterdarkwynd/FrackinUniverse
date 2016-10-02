@@ -8,13 +8,21 @@
           "idle" : {
             "frames" : 1,
             "cycle" : 2.5,
-            "mode" : "loop"
+            "mode" : "loop",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }  
           },
           "blink" : {
             "frames" : 3,
             "cycle" : 0.25,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }  
           },
           "hop" : {
             "frames" : 3,
@@ -25,6 +33,8 @@
               "immediateSoundRangeMultiplier" : 0.5
             },
             "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ],
               "immediateSound" : [ "", "/sfx/npc/monsters/gleap_hop.ogg" ]
             }
           },
@@ -40,7 +50,12 @@
             "frames" : 3,
             "cycle" : 0.25,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ],
+              "immediateSound" : [ "", "/sfx/npc/monsters/goo_spit2.ogg" ]
+            }            
           }
         }
       },
@@ -140,8 +155,24 @@
       "directives" : "fade=ffffff;0.5"
     }
   },
-
+  
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [150, 30, 10],
+      "pointLight" : false
+    }
+  },
+  
   "particleEmitters" : {
+    "fireaura" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 0, 0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "firestormflame" }
+      ]
+    },
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
