@@ -1,88 +1,159 @@
 {
   "type" : "ectoslime",
   "shortdescription" : "Ecto Slime",
-  "description" : "Hops and slimes. That's about it.",
+  "description" : "It's all sticky and warm...ew.",
+
   "categories" : [ "ectoslime" ],
   "parts" : [ "body" ],
 
   "animation" : "ectoslime.animation",
-  "colors" : "/monsters/colors.config",
-  "reversed" : true,
 
-  "dropPools" : [ "slimemonsterectoTreasure" ],
+  "dropPools" : [ { "default" : "slimemonsterectoTreasure", "bow" : "slimemonsterectoTreasure" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/slimeecto/behavior.lua",
-
-      "/scripts/sensors.lua",
-      "/scripts/stateMachine.lua",
-      "/scripts/util.lua",
-      "/scripts/vec2.lua"
+      "/monsters/monster.lua"
     ],
+    
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
 
-    "metaBoundBox" : [-0.75, -1.125, 0.875, 0.25],
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 25,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 3,
+            "timeBetweenHops" : 0.25,
+            "hopAwayFromWall" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "ectomicroslime",
+            "replacement" : true
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "ectomicroslime",
+            "replacement" : true
+          }
+        }
+      ]
+
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-0.75, -1.125], [0.875, -1.125], [0.875, 0.25], [-0.75, 0.25] ],
+      "collisionPoly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
 
-      "mass" : 0.75,
-      "walkSpeed" : 2,
-      "runSpeed" : 4,
-      "flySpeed" : 15,
-      "airForce" : 5.0,
-      "jumpSpeed" : 4,
-      "jumpControlForce" : 5,      
-      "airFriction" : 0.0,
-      "airJumpProfile" : {
-        "jumpSpeed" : 5.0,
-        "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.5              
-      }
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
     },
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.1,
-    "knockoutEffect" : "blink",
-    "deathParticles" : "deathPoof",
-
-    "touchDamage" : {
-      "poly" : [ [-0.75, -1.125], [0.875, -1.125], [0.875, 0.25], [-0.75, 0.25] ],
-      "damage" : 6,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "lash",
-      "statusEffects" : [ ]
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
     },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
 
     "statusSettings" : {
       "statusProperties" : {
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
       ],
-      "primaryScriptDelta" : 0,
+      "primaryScriptDelta" : 5,
 
       "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0.25
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 9
-        },
         "grit" : {
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 40
+          "baseValue" : 4
         },
         "protection" : {
           "baseValue" : 0.2
@@ -90,18 +161,15 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
         "slimestickImmunity" : {
           "baseValue" : 1.0
         },
         "slimeImmunity" : {
           "baseValue" : 1.0
         },         
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "powerMultiplier" : {
-          "baseValue" : 1.0
-        },
         "blacktarImmunity" : {
           "baseValue" : 1.0
         },
@@ -128,21 +196,8 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-
-    "blockedSensors" : [ [1.25, 0.0] ],
-
-    "moveTimeRange" : [1.0, 2.0],
-    "moveCooldownTimeRange" : [5.0, 10.0],
-
-    "largeJumpYThreshold" : 2.0,
-    "largeHumpHoldTime" : 0.2,
-    "smallBounceHoldTime" : 0.05,
-
-    "noticeDistance" : 30,
-    "attackSearchTime" : 10,
-
-    "poSize" : "medium",
-
-    "spawnVelocity" : [2, 30]
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
   }
 }

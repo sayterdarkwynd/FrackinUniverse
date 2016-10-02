@@ -1,12 +1,12 @@
 {
-  "type" : "slime",
+  "type" : "microslime",
   "shortdescription" : "Slime",
   "description" : "It's all sticky and warm...ew.",
 
-  "categories" : [ "slime" ],
+  "categories" : [ "microslime" ],
   "parts" : [ "body" ],
 
-  "animation" : "slime.animation",
+  "animation" : "microslime.animation",
 
   "dropPools" : [ { "default" : "slimemonsterTreasure", "bow" : "slimemonsterTreasure" } ],
 
@@ -16,11 +16,10 @@
       "/scripts/golemancer/gol_monstermain.lua"
     ],
   "tickEvoTime" : 1,
-  "evolutions" : [ "/scripts/golemancer/evolutions/ectoslime.evo", "/scripts/golemancer/evolutions/tarslime.evo", "/scripts/golemancer/evolutions/magmaslime.evo", "/scripts/golemancer/evolutions/slimegrowliquid.evo"  ],
+   "evolutions" : [ "/scripts/golemancer/evolutions/slimegrow.evo", "/scripts/golemancer/evolutions/microslime.evo", "/scripts/golemancer/evolutions/magmaslime.evo", "/scripts/golemancer/evolutions/doubleslime.evo" ],
 
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
     
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -84,26 +83,9 @@
             "wallVerticalSpeed" : 35
           }
         }
-      ],
-
-      "deathActions" : [
-        {
-          "name" : "action-spawnmonster",
-          "parameters" : {
-            "offset" : [0.5,0],
-            "monsterType" : "microslime",
-            "replacement" : true
-          }
-        },
-        {
-          "name" : "action-spawnmonster",
-          "parameters" : {
-            "offset" : [-0.5,0],
-            "monsterType" : "microslime",
-            "replacement" : true
-          }
-        }
       ]
+
+
 
     },
 
@@ -153,36 +135,24 @@
       "primaryScriptDelta" : 5,
 
       "stats" : {
-        "grit" : {
-          "baseValue" : 1.0
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 4
+          "baseValue" : 12
         },
         "protection" : {
-          "baseValue" : 0.2
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
         },
-        "poisonStatusImmunity" : {
+        "powerMultiplier" : {
           "baseValue" : 1.0
-        },
-        "slimestickImmunity" : {
-          "baseValue" : 1.0
-        },
-        "slimeImmunity" : {
-          "baseValue" : 1.0
-        },         
-        "blacktarImmunity" : {
-          "baseValue" : 1.0
-        },
-        "lavaImmunity" : {
-          "baseValue" : 1.0
-        },             
-        "tarImmunity" : {
-          "baseValue" : 1.0
-        } 
+        }
       },
 
       "resources" : {

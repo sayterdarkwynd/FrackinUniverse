@@ -1,14 +1,14 @@
 {
-  "type" : "slime",
-  "shortdescription" : "Slime",
+  "type" : "tarmicroslime",
+  "shortdescription" : "Ecto Slime",
   "description" : "It's all sticky and warm...ew.",
 
-  "categories" : [ "slime" ],
+  "categories" : [ "tarmicroslime" ],
   "parts" : [ "body" ],
 
-  "animation" : "slime.animation",
+  "animation" : "tarmicroslime.animation",
 
-  "dropPools" : [ { "default" : "slimemonsterTreasure", "bow" : "slimemonsterTreasure" } ],
+  "dropPools" : [ { "default" : "slimemonstermagmaTreasure", "bow" : "slimemonstermagmaTreasure" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -16,11 +16,10 @@
       "/scripts/golemancer/gol_monstermain.lua"
     ],
   "tickEvoTime" : 1,
-  "evolutions" : [ "/scripts/golemancer/evolutions/ectoslime.evo", "/scripts/golemancer/evolutions/tarslime.evo", "/scripts/golemancer/evolutions/magmaslime.evo", "/scripts/golemancer/evolutions/slimegrowliquid.evo"  ],
+  "evolutions" : [ "/scripts/golemancer/evolutions/slimegrow.evo", "/scripts/golemancer/evolutions/tarslime.evo" ],
 
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
     
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -84,26 +83,9 @@
             "wallVerticalSpeed" : 35
           }
         }
-      ],
-
-      "deathActions" : [
-        {
-          "name" : "action-spawnmonster",
-          "parameters" : {
-            "offset" : [0.5,0],
-            "monsterType" : "microslime",
-            "replacement" : true
-          }
-        },
-        {
-          "name" : "action-spawnmonster",
-          "parameters" : {
-            "offset" : [-0.5,0],
-            "monsterType" : "microslime",
-            "replacement" : true
-          }
-        }
       ]
+
+
 
     },
 
@@ -114,7 +96,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "tarslow" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
