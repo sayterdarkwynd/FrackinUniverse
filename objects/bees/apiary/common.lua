@@ -471,8 +471,13 @@ function chooseMinerHoney(config)
 	end
 
 	-- equal chance of which frame affects the comb type
+	-- some may unsuccessfully affect the comb type; in that case, the default type is produced
 --	sb.logInfo('may spawn frame-affected comb, chance = %s', chance)
-	return { type = types[math.random(#types)], chance = chance }
+	local type = types[math.random(#types)]
+	if self.config.oreSuccess[type] and math.random() > self.config.oreSuccess[type] then
+		type = nil
+	end
+	return { type = type, chance = chance }
 end
 
 
