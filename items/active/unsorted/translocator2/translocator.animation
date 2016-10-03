@@ -1,0 +1,143 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "disc" : {
+        "default" : "visible",
+        "states" : {
+          "visible" : {
+            "frames" : 6,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },
+          "hidden" : {}
+        }
+      }
+    },
+    "parts" : {
+      "gun" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage>",
+          "offset" : [0.75, 0.125]
+        }
+      },
+      "discunlit" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.75, 0],
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "disc" : {
+            "visible" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>"
+              }
+            },
+            "hidden" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "disc" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.75, 0]
+        },
+
+        "partStates" : {
+          "disc" : {
+            "visible" : {
+              "properties" : {
+                "image" : "<partImage>:base"
+              }
+            },
+            "hidden" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "discReturn" : {
+      "active" : false,
+      "particles" : [
+        {
+          "count" : 5,
+          "particle" : {
+            "type" : "ember",
+            "size" : 0.8,
+            "position" : [2.0, 0.25],
+            "color" : [49, 166, 255, 255],
+            "light" : [14, 47, 72],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "initialVelocity" : [0, 1],
+            "finalVelocity" : [0, 1],
+            "approach" : [2, 3],
+            "timeToLive" : 0.4,
+            "layer" : "middle",
+            "collidesLiquid" : false,
+            "variance" : {
+              "position" : [1.0, 0.25],
+              "initialVelocity" : [1, 1],
+              "finalVelocity" : [1, 0],
+              "size" : 0.5,
+              "timeToLive" : 0.2
+            }
+          }
+        },
+        {
+          "count" : 5,
+          "particle" : {
+            "type" : "ember",
+            "size" : 0.8,
+            "position" : [2.0, 0.25],
+            "color" : [255, 255, 255, 255],
+            "light" : [30, 60, 70],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "initialVelocity" : [0, 1],
+            "finalVelocity" : [0, 1],
+            "approach" : [2, 3],
+            "timeToLive" : 0.4,
+            "layer" : "middle",
+            "collidesLiquid" : false,
+            "variance" : {
+              "position" : [1.0, 0.25],
+              "initialVelocity" : [1, 1],
+              "finalVelocity" : [1, 0],
+              "size" : 0.5,
+              "timeToLive" : 0.2
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "lights" : {
+    "discGlow" : {
+      "position" : [1.75, 0],
+      "color" : [40, 60, 80],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.96,
+      "flickerMaxIntensity" : 1.0
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ "/sfx/gun/crossbow1.ogg" ]
+  }
+}

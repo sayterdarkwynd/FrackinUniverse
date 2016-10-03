@@ -1,20 +1,28 @@
 function spawn(pattern)
   local initialPosition = vec2.add(self.position, {-pattern.offset[1], -pattern.offset[2]})
   local spawnPosition = vec2.add(initialPosition, {pattern.boundingBox[1]/2, pattern.boundingBox[2]/2})
-  if pattern.npcSpawn then
-    world.spawnNpc(spawnPosition, pattern.npcSpawn.species, pattern.npcSpawn.npcType, world.threatLevel())
-  end
-  if pattern.monsterSpawn then
-    world.spawnMonster(pattern.monsterSpawn.type, spawnPosition)
-  end
+  spawnResult(pattern, spawnPosition)
 end
 
 function evolve(evolution)
-  status.setResource("health", 0)
-  if evolution.npcSpawn then
-    world.spawnNpc(self.position, evolution.npcSpawn.species, evolution.npcSpawn.npcType, world.threatLevel())
+  local eType = entity.entityType()
+  if eType == "monster" then
+    monster.setDropPool()
+  elseif eType == "npc" then
+    npc.setDropPool()
   end
-  if evolution.monsterSpawn then
-    world.spawnMonster(evolution.monsterSpawn.type, vec2.add(self.position, {0, 3}))
+  status.setResource("health", 0)
+  spawnResult(evolution, self.position)
+end
+
+function spawnResult(result, position)
+  if result.npcSpawn then
+    world.spawnNpc(position, result.npcSpawn.species, result.npcSpawn.npcType, world.threatLevel(), nil, result.npcSpawn.parameters or {})
+  end
+  if result.monsterSpawn then
+    world.spawnMonster(result.monsterSpawn.type, vec2.add(position, {0, 3}), result.monsterSpawn.parameters or {})
+  end
+  if result.itemSpawn then
+    world.spawnItem(result.itemSpawn.name, position, result.itemSpawn.count or 1, result.itemSpawn.parameters or {})
   end
 end
