@@ -2790,7 +2790,7 @@
   "path" : "/regionTypes/desertwastes",
   "value" : 
   {
-      "caveLiquid" : [  "tarliquid", "blacktar", "wastewater", "organicsoup", "mercuryliquid", "sulphuricacid", "darkwater", "alienjuice" ],
+      "caveLiquid" : [  "tarliquid", "blacktar", "fuquicksand" ],
       "blockSelector" : [ "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface", "remixedSpikesSurface", "remixedSpikesSurface2" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -2802,7 +2802,7 @@
   "path" : "/regionTypes/desertwastesdark",
   "value" : 
   {
-      "caveLiquid" : [  "tarliquid", "blacktar", "wastewater", "organicsoup", "mercuryliquid", "sulphuricacid", "darkwater", "alienjuice" ],
+      "caveLiquid" : [  "tarliquid", "blacktar", "fuquicksand" ],
       "blockSelector" : [ "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface", "remixedSpikesSurface", "remixedSpikesSurface2" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -3670,6 +3670,8 @@
   "path" : "/regionTypes/badlands",
   "value" : 
   {
+      "caveLiquid" : [ "fuquicksand", "blacktar", "tarliquid" ],
+      "caveLiquidChanceRange" : [15, 50],  
       "blockSelector" : [ "flatsSurface", "mesasSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -3810,7 +3812,7 @@
   "path" : "/regionTypes/crystalplain",
   "value" : 
   {
-      "caveLiquid" : [ "organicsoup", "lava", "elderfluid", "liquidaether" ],
+      "caveLiquid" : [ "crystalliquid", "elderfluid", "liquidaether" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedSpikesSurface", "remixedSpikesSurface2" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -3823,7 +3825,7 @@
   "path" : "/regionTypes/crystaldesert",
   "value" : 
   {
-      "caveLiquid" : [ "organicsoup", "lava", "elderfluid" ],
+      "caveLiquid" : [ "crystalliquid", "lava", "elderfluid" ],
       "caveLiquidChanceRange" : [45, 75],
       "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedStepsSurface" ],
       "fgCaveSelector" : [ "denseCaves" ],
@@ -3837,6 +3839,8 @@
   "path" : "/regionTypes/deadwood",
   "value" : 
   {
+      "caveLiquid" : [ "fuquicksand" ],
+      "caveLiquidChanceRange" : [45, 75],  
       "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -3849,7 +3853,7 @@
   "path" : "/regionTypes/desertoasis",
   "value" : 
   {
-      "caveLiquid" : [ "water", "healingliquid" ],
+      "caveLiquid" : [ "water", "healingliquid", "fuquicksand" ],
       "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
