@@ -2,11 +2,11 @@ function init()
   _x = config.getParameter("healthDown", 0)
 baseValue = config.getParameter("healthDown",0)*(status.resource("energy"))
 
-  if (status.resourceMax("health")) * _x >= 100.0 then
+  --if (status.resourceMax("health")) * _x >= 100.0 then
      effect.addStatModifierGroup({{stat = "maxEnergy", amount = baseValue }})
-     else
-     effect.addStatModifierGroup({{stat = "maxEnergy", amount = baseValue }})
-  end
+     --else
+     --effect.addStatModifierGroup({{stat = "maxEnergy", amount = baseValue }})
+ --end
   
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
   animator.setParticleEmitterActive("drips", true)

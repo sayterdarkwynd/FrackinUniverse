@@ -4,11 +4,11 @@ function init()
   _x = config.getParameter("healthDown", 0)
 baseValue = config.getParameter("healthDown",0)*(status.resourceMax("health"))
 
-  if (status.resourceMax("health")) * _x >= 100.0 then
+  --if (status.resourceMax("health")) * _x >= 100.0 then
+  --   effect.addStatModifierGroup({{stat = "maxHealth", amount = baseValue }})
+  --   else
      effect.addStatModifierGroup({{stat = "maxHealth", amount = baseValue }})
-     else
-     effect.addStatModifierGroup({{stat = "maxHealth", amount = baseValue }})
-  end
+  --end
 
 end
 
