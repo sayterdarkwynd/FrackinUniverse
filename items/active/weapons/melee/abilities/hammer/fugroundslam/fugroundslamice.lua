@@ -58,8 +58,9 @@ function GroundSlam:slam()
       local params = copy(self.projectileParameters)
       params.powerMultiplier = activeItem.ownerPowerMultiplier()
       params.power = params.power * config.getParameter("damageLevelMultiplier")
-
-      world.spawnProjectile(self.projectileType, lastSlamPosition, activeItem.ownerEntityId(), {1,0}, false, params)
+      local actualSlamPosition = world.collisionBlocksAlongLine(lastSlamPosition, newSlamPosition,nil,1)[1]
+    --   sb.logInfo("actualSlamPosition = %s, slam length = %s", actualSlamPosition, world.magnitude(lastSlamPosition,newSlamPosition))
+      world.spawnProjectile(self.projectileType, {actualSlamPosition[1],actualSlamPosition[2]+2}, activeItem.ownerEntityId(), {1,0}, false, params)
       return true
     end
     lastSlamPosition = newSlamPosition
