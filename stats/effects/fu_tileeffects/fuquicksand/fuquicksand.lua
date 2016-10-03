@@ -12,10 +12,9 @@ function update(dt)
   mcontroller.controlModifiers({
       groundMovementModifier = 0.1,
       runModifier = 0.1,
-      jumpModifier = 0.4
+      jumpModifier = 0.14
     })
   mcontroller.controlParameters({
-       
 	   liquidFriction = 75.0
     })
   local waterFactor = mcontroller.liquidPercentage();		
