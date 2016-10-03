@@ -30,6 +30,9 @@ function init(virtual)
 		self.droneModifier = 0		--
 		self.mutationIncrease = 0   --
 
+		self.config = root.assetJson('/objects/bees/apiaries.config')	-- common apiaries configuration
+		self.functions = { chooseMinerHoney = chooseMinerHoney, chooseMinerOffspring = chooseMinerOffspring }
+
 		reset()
 		return true
 	end
@@ -78,59 +81,26 @@ end
 function apiary_doFrame(mods, item)
 --- Check the type of frame. Adjust variables-------------
 --- A 600 cooldown, with 30 beepower, is now reduced to a 570 cooldown. 30 beepower = 60 reduced per second, or 9.5 seconds, instead of 10.
-	if item then
-		name = item.name
-		-- Production quantity modifier frames
-		-- Large apiary and scented apiary used 6, 8, 0.02. 0.05 instead of 15, 25, 0.04, 0.08.
-		if     name == "basicframe" then
-			mods.honeyModifier = (mods.honeyModifier or 0) + 15
-		elseif name == "sweetframe" then
-			mods.honeyModifier = (mods.honeyModifier or 0) + 25
-		elseif name == "provenframe" then
-			mods.itemModifier = (mods.itemModifier or 0) + 15
-		elseif name == "durasteelframe" then
-			-- this probably needs to be on a new frame type
-			mods.itemModifier = (mods.itemModifier or 0) + 25
-		elseif name == "scentedframe" then
-			mods.droneModifier = (mods.droneModifier or 0) + 15
-		elseif name == "uraniumframe" then
-			mods.mutationIncrease = (mods.mutationIncrease or 0) + 0.05
-		elseif name == "plutoniumframe" then
-			mods.mutationIncrease = (mods.mutationIncrease or 0) + 0.10
-		--elseif name == "bees_royalframe" then -- no such item
-		elseif name == "feroziumframe" then
-			-- FIXME: beeModifier?
-			mods.droneModifier = (mods.droneModifier or 0) + 10
-			mods.honeyModifier = (mods.honeyModifier or 0) + 10
-			mods.itemModifier  = (mods.itemModifier  or 0) + 10
-		-- Day/night modifiers
-		elseif name == "solarframe" then
-			mods.forceTime = (mods.forceTime or 0) + 1 -- +ve to force day
-		elseif name == "eclipseframe" then
-			mods.forceTime = (mods.forceTime or 0) - 1 -- -ve to force night
+	if item and item.name then
+		local patch
+
+		-- Production rate modifiers etc.
+		patch = self.config.modifiers[item.name]
+		if patch then
+			for key, value in pairs(patch) do
+				if not value or value == true then
+					mods[key] = value
+				else
+					mods[key] = (mods[key] or 0) + value
+				end
+			end
 		end
-		-- Miner bees' modifiers
-		if     name == "copperframe" then
-			mods.combs.copper = (mods.combs.copper or 0) + 1
-		elseif name == "silverframe" then
-			mods.combs.silver = (mods.combs.silver or 0) + 1
-		elseif name == "goldframe" then
-			mods.combs.gold = (mods.combs.gold or 0) + 1
-		elseif name == "diamondframe" then
-			mods.combs.precious = (mods.combs.precious or 0) + 1
-		elseif name == "ironframe" then
-			mods.combs.iron = (mods.combs.iron or 0) + 1
-		elseif name == "titaniumframe" then
-			mods.combs.titanium = (mods.combs.titanium or 0) + 1
-		elseif name == "tungstenframe" then -- used to work only in large apiary. Enabled everywhere as per description.
-			mods.combs.tungsten = (mods.combs.tungsten or 0) + 1
-		elseif name == "durasteelframe" then -- used to work in large or scented apiaries. Enabled everywhere.
-			mods.combs.durasteel = (mods.combs.durasteel or 0) + 1
-		elseif name == "amite" then
-			mods.antimite = true
---		else return -- DEBUG avoidance
+
+		-- Miner bees' ore combs
+		patch = self.config.ores[item.name]
+		if patch then
+			mods.combs[patch] = (mods.combs[patch] or 0) + 1
 		end
---		sb.logInfo ('apiary ' .. entity.id() .. ': found ' .. name)
 	end
 end
 
@@ -297,29 +267,7 @@ function flowerCheck()
 	local flowers
 	local noFlowersYet = self.beePower 			---- Check the initial "beePower" before flowers...
 
-	for i, p in pairs({
-		-- Standard
-		"giantflower1", "giantflower2", "giantflower3", "giantflower4",
-		"springbush1", "springbush2", "springbush3", "springbush4", "springbush5", "springbush6",
-		"flowerred", "floweryellow", "flowerblue",
-		-- Frackin' Universe
-		"flowerblack", "flowerbrown", "flowergreen", "flowergrey",
-		"flowerorange", "flowerpink", "flowerpurple", "flowerwhite",
-		"flowerspring",
-		"flowerorchid", "flowerorchid2", "flowerorchid3",
-		"energiflowerseed",
-		"floralytplantseed",
-		"goldenglowseed",
-		"haleflowerseed",
-		"itaseed",
-		"nissseed",
-		"wubstemseed",
-		"miraclegrassseed",
-		"vanusflowerseed",
-		"beeflower",
-		"gemglowseed",
-		"darklightflower"
-	}) do
+	for i, p in pairs(self.config.flowers) do
 		flowers = world.objectQuery(entity.position(), 80, {name = p})
 		if flowers ~= nil then
 			self.beePower = self.beePower + math.ceil(math.sqrt(#flowers) / 2)
@@ -529,7 +477,7 @@ end
 
 
 function chooseMinerOffspring(config)
-	if self.mutationIncrease == 0 then return nil end
+	if not self.doBees or self.mutationIncrease == 0 then return nil end
 	if math.random() > self.mutationIncrease then
 --		sb.logInfo('may spawn miner bees')
 		return nil
@@ -540,107 +488,44 @@ end
 
 
 function workingBees()
-	beeSpawnList = beeSpawnList or {
---[[
-		class = {
-			active = one of "day", "night", "always"
-			honey = {
-				func = modifier function
-				type = TYPE
-				chance = CHANCE
-			}
-			offspring = {
-				func = modifier function
-				type = TYPE
-				chance = CHANCE
-				drone = chance multiplier (in hive)
-				bee = chance multiplier (outside)
-			}
-			items = { ITEM = CHANCE, ... }
-			sting = true if this class is aggressive
-		}
-
-		Defaults used for omitted settings:
-		CLASS = {
-			active = "day",
-			honey = { type = CLASS, chance = DEFAULT_HONEY_CHANCE },
-			offspring = { type = CLASS, chance = DEFAULT_OFFSPRING_CHANCE, drone = 1, queen = 1 },
-			items = {}
-			sting = false
-		}
-		Modifier functions will be passed (self, CLASS).
---]]
-	-- Diurnal
-		adaptive = { honey = { type = "normal" }, items = { fu_liquidhoney = 0.4, beesilk = 0.35 } },
-		aggressive = {
-			honey = { type = "red", chance = 0.8 },
-			items = { alienmeat = 0.3, beesilk = 0.1 },
-			sting = true
-		},
-		arctic = { items = { cryonicextract = 0.5, beesilk = 0.2 } },
-		arid = { items = { goldensand = 0.5, beesilk = 0.2 } },
-		exceptional = {
-			honey = { type = "normal", chance = 0.8 },
-			items = { fu_liquidhoney = 0.4, beesilk = 0.2 } ,
-		},
-		flower = { items = { beeflower = 0.25, beesilk = 0.15 } },
-		forest = { items = { fu_liquidhoney = 0.4, beesilk = 0.15 } },
-		godly = { items = { goldenfleece = 0.3 } },
-		hardy = { honey = { type = "normal", chance = 0.8 }, items = { beesilk = 0.25 } },
-		hunter = { honey = { type = "silk", chance = 0.5 }, items = { beesilk = 0.55 } },
-		jungle = { items = { plantfibre = 0.7, beesilk = 0.15 } },
-		metal = {
-			honey = { type = "red", chance = 0.8 },
-			offspring = { chance = 1 / 3 },
-			items = { tungstenore = 1 / 3 },
-			sting = true
-		},
-		miner = { honey = { func = chooseMinerHoney }, offspring = { func = chooseMinerOffspring } },
-		morbid = {
-			items = { ghostlywax = 0.6 },
-			sting = true
-		},
-		mythical = { items = { goldenfleece = 0.15} },
-		normal = { items = { fu_liquidhoney = 0.4, beesilk = 0.15 } },
-		plutonium = { items = { plutoniumore = 0.3 } },
-		radioactive = { items = { uraniumore = 0.3 } },
-		red = {	items = { redwaxchunk = 0.2 } },
-		solarium = { items = { solariumore = 0.1 } },
-		sun = { },
-		volcanic = {},
-	-- Nocturnal
-		moon = { active = "night" },
-		nocturnal = { active = "night" },
-	}
 
 	local type, config
 	local notnow = daytime and 'night' or 'day'
 
 	local queen, drone = getEquippedBees()
 
-	if queen == drone and beeSpawnList[queen] then
-		local config = beeSpawnList[queen]
+	if queen == drone and self.config.spawnList[queen] then
+		local config = self.config.spawnList[queen]
 		local when = config.active or 'day'
 --		sb.logInfo ('Checking ' .. queen .. ' (' .. when .. ' / ' .. notnow .. ')')
 
 		if when ~= notnow then -- strictly, when == 'always' or == now
 			beeActiveWhen = when
 
-			-- read config; call functions returning config if specified
-			local honey = config.honey and (config.honey.func and config.honey:func(queen) or config.honey) or {}
-			local offspring = config.offspring and (config.offspring.func and config.offspring:func(queen) or config.offspring) or {}
+			if self.doHoney then
+				-- read config; call functions returning config if specified
+				local honey = config.honey and (self.doHoney and config.honey.func and self.functions[config.honey.func] and self.functions[config.honey.func](config.honey, queen) or config.honey) or {}
 
-			-- get type and chances, handling fallbacks
-			local honeyType   = honey.type       or (config.honey     and config.honey.type      ) or queen
-			local honeyChance = honey.chance     or (config.honey     and config.honey.chance    ) or DEFAULT_HONEY_CHANCE
-			local beeChance   = offspring.chance or (config.offspring and config.offspring.chance) or DEFAULT_OFFSPRING_CHANCE
+				-- get type and chances, handling fallbacks
+				local honeyType   = honey.type       or (config.honey     and config.honey.type      ) or queen
+				local honeyChance = honey.chance     or (config.honey     and config.honey.chance    ) or DEFAULT_HONEY_CHANCE
 
-			local droneChance = beeChance * (offspring.drone or (config.offspring and config.offspring.drone) or 1) -- queen & drone have same base chance
-			beeChance         = beeChance * (offspring.bee   or (config.offspring and config.offspring.bee  ) or 1)
+				trySpawnHoney(honeyChance, honeyType)
+			end
 
-			trySpawnHoney(honeyChance, honeyType)
-			trySpawnBee  (beeChance,   offspring.type or queen)
-			trySpawnDrone(droneChance, offspring.type or queen)
+			if self.doBees then
+				-- read config; call functions returning config if specified
+				local offspring = config.offspring and (self.doBees and config.offspring.func and self.functions[config.offspring.func] and self.functions[config.offspring.func](config.offspring, queen) or config.offspring) or {}
+
+				-- get type and chances, handling fallbacks
+				local beeChance   = offspring.chance or (config.offspring and config.offspring.chance) or DEFAULT_OFFSPRING_CHANCE
+
+				local droneChance = beeChance * (offspring.drone or (config.offspring and config.offspring.drone) or 1) -- inside and outside have same base chance
+				beeChance         = beeChance * (offspring.bee   or (config.offspring and config.offspring.bee  ) or 1)
+
+				trySpawnBee  (beeChance,   offspring.type or queen)
+				trySpawnDrone(droneChance, offspring.type or queen)
+			end
 
 			if config.items and self.doItems then
 				for item, chance in pairs(config.items) do
@@ -662,31 +547,10 @@ end
 
 
 function breedingBees()
-	beeComboList = beeComboList or {
-					["normalforest"] = "hardy",
-					["arcticvolcanic"] = "adaptive",
-					["hardyadaptive"] = "exceptional",
-					["aridadaptive"] = "miner",
-					["jungleadaptive"] = "hunter",
-					["hunterred"] = "aggressive",
-					["aggressivenocturnal"] = "morbid",
-					["aggressivemorbid"] = "metal",
-					["radioactivehardy"] = "plutonium",
-					["plutoniumexceptional"] = "solarium",
-					["forestjungle"] = "flower",
-					["flowernormal"] = "red",
-					["flowerhardy"] = "red",
-					["flowerexceptional"] = "mythical",
-					["minernocturnal"] = "moon",
-					["moonsolarium"] = "sun",
-					["sunmythical"] = "godly",
-					["metalsun"] = "mythical"
-	}
-
 	if daytime then
 		local bee1Type = contents[self.queenSlot] and stripQueenDrone(contents[self.queenSlot].name)
 		local bee2Type = contents[self.droneSlot] and stripQueenDrone(contents[self.droneSlot].name)
-		local species = (bee1Type and bee2Type) and (beeComboList[bee1Type .. bee2Type] or beeComboList[bee2Type .. bee1Type])
+		local species = (bee1Type and bee2Type) and (self.config.breeding[bee1Type .. bee2Type] or self.config.breeding[bee2Type .. bee1Type])
 
 		if species ~= nil then
 --			sb.logInfo ('Checking ' .. bee1Type .. ' + ' .. bee2Type)
