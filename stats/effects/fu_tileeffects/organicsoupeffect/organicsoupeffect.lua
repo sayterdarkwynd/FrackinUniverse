@@ -26,6 +26,8 @@ end
 
 
 function update(dt)
+  if not hungerMax then return end -- belt and braces
+
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
