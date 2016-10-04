@@ -3201,7 +3201,7 @@
       "oceanLiquid" : [ "water" ],
       "oceanLevelOffset" : 9999,
       "blockSelector" : [  "emptier", "emptiest", "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
-      "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves" ],
+      "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
       "bgCaveSelector" : [ "coreCaves", "moonCaves", "solid" ],
       
       "biome" : [
@@ -4235,7 +4235,7 @@
       "caveLiquid" : [ "darkwater", "swampwater", "poison" ],
       "caveLiquidChanceRange" : [15, 40],
       "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
-      "fgCaveSelector" : [ "acidPoolCaves", "denseCaves", "coreCaves"  ],
+      "fgCaveSelector" : [ "denseCaves", "coreCaves"  ],
       "biome" : [
         [0, [ "ffspidernest" ]]
       ]
@@ -4860,7 +4860,7 @@
 		"path" : "/regionTypes/corruptasteroid",
 		"value" : {
                     "blockSelector" : [ "iceclouds" ],
-		    "fgCaveSelector" : [ "acidPoolCaves", "coreCaves", "moonCaves" ],
+		    "fgCaveSelector" : [ "coreCaves", "moonCaves" ],
 		    "bgCaveSelector" : [ "largeClumps" ],
 		      "biome" : [
 		        [0, [ "corruptasteroid" ]]
@@ -4884,7 +4884,7 @@
 		"path" : "/regionTypes/icecloudssurface",
 		"value" : {
                     "blockSelector" : [ "iceclouds" ],
-		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "normalCaves", "acidPoolCaves" ],
+		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "normalCaves" ],
 		    "bgCaveSelector" : [ "largeClumps" ],
 
 		    "subBlockSelector" : [ "largeClumps" ],
@@ -4899,7 +4899,7 @@
 		"path" : "/regionTypes/iceclouds",
 		"value" : {
                     "blockSelector" : [ "iceclouds" ],
-		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "normalCaves", "acidPoolCaves" ],
+		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "normalCaves"],
 		    "bgCaveSelector" : [ "largeClumps" ],
 
 		    "subBlockSelector" : [ "largeClumps" ],
@@ -4913,7 +4913,7 @@
 		"path" : "/regionTypes/clouds",
 		"value" : {
                     "blockSelector" : [ "iceclouds" ],
-		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "normalCaves", "acidPoolCaves" ],
+		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "normalCaves" ],
 		    "bgCaveSelector" : [ "largeClumps" ],
 
 		    "subBlockSelector" : [ "largeClumps" ],
@@ -5100,7 +5100,7 @@
   {
       "caveLiquid" : [ "water", "swampwater", "poison", "blacktar" ],
       "caveLiquidChanceRange" : [5, 35],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "arborealunderground"]]
       ]
@@ -5113,7 +5113,7 @@
   {
       "caveLiquid" : [ "wastewater", "lava", "blacktar" ],
       "caveLiquidChanceRange" : [75, 95],
-      "fgCaveSelector" : [ "denseCaves", "acidPoolCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "arboreal2underground"]]
       ]
@@ -5140,7 +5140,7 @@
   {
       "caveLiquid" : [ "bloodliquid", "bio_ooze", "blacktar", "slimeliquid", "helium3gas", "shadowgas" ],
       "caveLiquidChanceRange" : [1, 25],
-       "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "atropusunderground"]]
       ]
@@ -5153,7 +5153,7 @@
   {
       "caveLiquid" : [ "bloodliquid" ],
       "caveLiquidChanceRange" : [5, 15],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "bloodstoneunderground"]]
       ]
@@ -5166,7 +5166,7 @@
   {
       "caveLiquid" : [ "poison", "blacktar", "tarliquid", "swampwater" ],
       "caveLiquidChanceRange" : [95, 100],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "bogunderground"]]
       ]
@@ -5179,7 +5179,7 @@
   {
       "caveLiquid" : [ "wastewater", "blacktar", "tarliquid", "darkwater", "liquidnitrogen", "poison", "bio_ooze", "shadowgas" ],
       "caveLiquidChanceRange" : [95, 100],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "wastelandunderground"]]
       ]
@@ -5205,7 +5205,7 @@
   {
       "caveLiquid" : [ "poison", "blacktar", "tarliquid", "swampwater", "healingliquid", "slimeliquid" ],
       "caveLiquidChanceRange" : [35, 55],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "moonCaves" ],
       "biome" : [
         [0, [ "fungusunderground"]]
       ]
@@ -5218,7 +5218,7 @@
   {
       "caveLiquid" : [ "lava" ],
       "caveLiquidChanceRange" : [35, 55],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "frozenvolcanicunderground"]]
       ]
@@ -5231,7 +5231,7 @@
   {
       "caveLiquid" : [ "water", "poison", "alienjuice", "healingliquid", "slimeliquid" ],
       "caveLiquidChanceRange" : [65, 95],
-       "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "shroomcave"]]
       ]
@@ -5270,7 +5270,7 @@
   {
       "caveLiquid" : [ "fuhoney" ],
       "caveLiquidChanceRange" : [25, 55],
-       "fgCaveSelector" : [ "denseCaves", "acidPoolCaves" ],
+       "fgCaveSelector" : [ "denseCaves" ],
       "biome" : [
         [0, [ "ffhiveunderground"] ]
       ]
@@ -5282,7 +5282,7 @@
   {
       "caveLiquid" : [ "fuhoneyred" ],
       "caveLiquidChanceRange" : [65, 95],
-       "fgCaveSelector" : [ "denseCaves", "acidPoolCaves" ],
+       "fgCaveSelector" : [ "denseCaves" ],
       "biome" : [
         [0, [ "ffhellhiveunderground" ] ]
       ]
@@ -5295,7 +5295,7 @@
   {
       "caveLiquid" : [ "water", "liquidnitrogen", "helium3gas" ],
       "caveLiquidChanceRange" : [25, 55],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "icemoonunderground"] ]
       ]
@@ -5400,7 +5400,7 @@
   {
       "caveLiquid" : [ "swampwater", "poison","bio_ooze", "alienjuice", "slimeliquid" ], 
       "caveLiquidChanceRange" : [5, 15],
-      "fgCaveSelector" : [ "normalCaves", "acidPoolCaves", "denseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves" ],
 
       "biome" : [
         [0, [ "irradiatedunderground"]]
@@ -5414,7 +5414,7 @@
   {
       "caveLiquid" : [ "liquidaether", "blacktar", "organicsoup", "bio_ooze", "alienjuice", "helium3gas", "shadowgas" ],
       "caveLiquidChanceRange" : [5, 25],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves" ],
       "biome" : [
         [0, [ "penumbraunderground"]]
       ]
@@ -5427,7 +5427,7 @@
   {
       "caveLiquid" : [ "water", "blacktar", "organicsoup", "bio_ooze", "poison", "helium3gas" ],
       "caveLiquidChanceRange" : [5, 25],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "protoworldunderground"]]
       ]
@@ -5440,7 +5440,7 @@
   {
       "caveLiquid" : [ "water", "tarliquid", "poison", "healingliquid", "slimeliquid", "helium3gas" ],
       "caveLiquidChanceRange" : [5, 15],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "slimeworldunderground"]]
       ]
@@ -5453,7 +5453,7 @@
   {
       "caveLiquid" : [ "tarliquid", "blacktar" ],
       "caveLiquidChanceRange" : [5, 75],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "fftarpit"] ]
       ]
@@ -5466,7 +5466,7 @@
   {
       "caveLiquid" : [ "bloodliquid", "organicsoup" ],
       "caveLiquidChanceRange" : [5, 75],
-       "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "fffleshcaves"]]
       ]
@@ -5479,7 +5479,7 @@
   {
       "caveLiquid" : [ "bloodliquid", "alienjuice", "darkwater" ],
       "caveLiquidChanceRange" : [5, 75],
-       "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "ffbonecaves"]]
       ]
@@ -5492,7 +5492,7 @@
   {
       "caveLiquid" : [ "bloodliquid", "pus", "healingliquid" ],
       "caveLiquidChanceRange" : [5, 75],
-       "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "ffcellcaves"]]
       ]
@@ -5505,7 +5505,7 @@
   {
       "caveLiquid" : [ "organicsoup", "alienjuice", "healingliquid", "shadowgas", "helium3gas" ],
       "caveLiquidChanceRange" : [45, 75],
-      "fgCaveSelector" : [ "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "moonCaves" ],
       "biome" : [
         [0, [ "ffsupermatter"]]
       ]
@@ -5518,7 +5518,7 @@
   {
       "caveLiquid" : [ "sulphuricacid" ],
       "caveLiquidChanceRange" : [5, 5],
-      "fgCaveSelector" : [ "denseCaves", "acidPoolCaves", "moonCaves" ],
+      "fgCaveSelector" : [ "denseCaves", "moonCaves" ],
       "biome" : [
         [0, [ "sulphuricunderground"]]
       ]
@@ -5531,7 +5531,7 @@
   {
       "caveLiquid" : [ "tarliquid", "fuel", "helium3gas", "shadowgas" ],
       "caveLiquidChanceRange" : [5, 25],
-       "fgCaveSelector" : [ "acidPoolCaves", "moonCaves", "sparseCaves" ],
+       "fgCaveSelector" : [ "moonCaves" ],
       "biome" : [
         [0, [ "metallicunderground"]]
       ]
@@ -5544,7 +5544,7 @@
   {
       "caveLiquid" : [ "blacktar", "tarliquid", "darkwater", "liquidaether", "helium3gas", "shadowgas" ],
       "caveLiquidChanceRange" : [5, 25],
-      "fgCaveSelector" : [ "normalCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
         [0, [ "lightlessunderground"]]
       ]
@@ -5556,7 +5556,7 @@
   {
       "caveLiquid" : [ "water", "healingliquid", "alienjuice" ],
       "caveLiquidChanceRange" : [25, 70],
-      "fgCaveSelector" : [ "denseCaves", "acidPoolCaves", "moonCaves" ],
+      "fgCaveSelector" : [ "denseCaves", "moonCaves" ],
       "biome" : [
         [0, [ "chromaticunderground"]]
       ]
@@ -5568,7 +5568,7 @@
   {
       "caveLiquid" : [ "water", "tarliquid" ],
       "caveLiquidChanceRange" : [65, 100],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves" ],
       "biome" : [
         [0, [ "thickjungleunderground"]]
       ]
