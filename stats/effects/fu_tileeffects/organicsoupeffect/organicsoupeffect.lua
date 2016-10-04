@@ -1,4 +1,13 @@
 function init()
+  hungerMax = { pcall(status.resourceMax, "food") }
+  hungerMax = hungerMax[1] and hungerMax[2]
+  if not hungerMax then
+    -- 'food' resource has no max; do nothing
+    script.setUpdateDelta(0)
+    return
+  end
+  hungerLevel = status.resource("food")
+
   _x = config.getParameter("healthDown", 0)
   baseValue = config.getParameter("healthDown",0)*(status.resourceMax("health"))
 
@@ -13,9 +22,6 @@ function init()
   self.tickDamagePercentage = 0.0
   self.tickTime = 3.0
   self.tickTimer = self.tickTime  
-  
-  hungerLevel = status.resource("food")
-  hungerMax = status.resourceMax("food") -- 70
 end
 
 
@@ -36,8 +42,3 @@ end
 function uninit()
   
 end
-
-
-
-
-
