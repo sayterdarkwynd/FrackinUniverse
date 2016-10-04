@@ -1,5 +1,8 @@
 local contents
 
+DEFAULT_HONEY_CHANCE = 0.6
+DEFAULT_OFFSPRING_CHANCE = 0.4
+
 function init(virtual)
 	if virtual == true then return end
 
@@ -26,6 +29,9 @@ function init(virtual)
 		self.itemModifier = 0		--
 		self.droneModifier = 0		--
 		self.mutationIncrease = 0   --
+
+		self.config = root.assetJson('/objects/bees/apiaries.config')	-- common apiaries configuration
+		self.functions = { chooseMinerHoney = chooseMinerHoney, chooseMinerOffspring = chooseMinerOffspring }
 
 		reset()
 		return true
@@ -75,59 +81,26 @@ end
 function apiary_doFrame(mods, item)
 --- Check the type of frame. Adjust variables-------------
 --- A 600 cooldown, with 30 beepower, is now reduced to a 570 cooldown. 30 beepower = 60 reduced per second, or 9.5 seconds, instead of 10.
-	if item then
-		name = item.name
-		-- Production quantity modifier frames
-		-- Large apiary and scented apiary used 6, 8, 0.02. 0.05 instead of 15, 25, 0.04, 0.08.
-		if     name == "basicframe" then
-			mods.honeyModifier = (mods.honeyModifier or 0) + 15
-		elseif name == "sweetframe" then
-			mods.honeyModifier = (mods.honeyModifier or 0) + 25
-		elseif name == "provenframe" then
-			mods.itemModifier = (mods.itemModifier or 0) + 15
-		elseif name == "durasteelframe" then
-			-- this probably needs to be on a new frame type
-			mods.itemModifier = (mods.itemModifier or 0) + 25
-		elseif name == "scentedframe" then
-			mods.droneModifier = (mods.droneModifier or 0) + 15
-		elseif name == "uraniumframe" then
-			mods.mutationIncrease = (mods.mutationIncrease or 0) + 0.04
-		elseif name == "plutoniumframe" then
-			mods.mutationIncrease = (mods.mutationIncrease or 0) + 0.08
-		--elseif name == "bees_royalframe" then -- no such item
-		elseif name == "feroziumframe" then
-			-- FIXME: beeModifier?
-			mods.droneModifier = (mods.droneModifier or 0) + 10
-			mods.honeyModifier = (mods.honeyModifier or 0) + 10
-			mods.itemModifier  = (mods.itemModifier  or 0) + 10
-		-- Day/night modifiers
-		elseif name == "solarframe" then
-			mods.forceTime = (mods.forceTime or 0) + 1 -- +ve to force day
-		elseif name == "eclipseframe" then
-			mods.forceTime = (mods.forceTime or 0) - 1 -- -ve to force night
+	if item and item.name then
+		local patch
+
+		-- Production rate modifiers etc.
+		patch = self.config.modifiers[item.name]
+		if patch then
+			for key, value in pairs(patch) do
+				if not value or value == true then
+					mods[key] = value
+				else
+					mods[key] = (mods[key] or 0) + value
+				end
+			end
 		end
-		-- Miner bees' modifiers
-		if     name == "copperframe" then
-			mods.combs.copper = (mods.combs.copper or 0) + 1
-		elseif name == "silverframe" then
-			mods.combs.silver = (mods.combs.silver or 0) + 1
-		elseif name == "goldframe" then
-			mods.combs.gold = (mods.combs.gold or 0) + 1
-		elseif name == "diamondframe" then
-			mods.combs.precious = (mods.combs.precious or 0) + 1
-		elseif name == "ironframe" then
-			mods.combs.iron = (mods.combs.iron or 0) + 1
-		elseif name == "titaniumframe" then
-			mods.combs.titanium = (mods.combs.titanium or 0) + 1
-		elseif name == "tungstenframe" then -- used to work only in large apiary. Enabled everywhere as per description.
-			mods.combs.tungsten = (mods.combs.tungsten or 0) + 1
-		elseif name == "durasteelframe" then -- used to work in large or scented apiaries. Enabled everywhere.
-			mods.combs.durasteel = (mods.combs.durasteel or 0) + 1
-		elseif name == "amite" then
-			mods.antimite = true
---		else return -- DEBUG avoidance
+
+		-- Miner bees' ore combs
+		patch = self.config.ores[item.name]
+		if patch then
+			mods.combs[patch] = (mods.combs[patch] or 0) + 1
 		end
---		sb.logInfo ('apiary ' .. entity.id() .. ': found ' .. name)
 	end
 end
 
@@ -294,29 +267,7 @@ function flowerCheck()
 	local flowers
 	local noFlowersYet = self.beePower 			---- Check the initial "beePower" before flowers...
 
-	for i, p in pairs({
-		-- Standard
-		"giantflower1", "giantflower2", "giantflower3", "giantflower4",
-		"springbush1", "springbush2", "springbush3", "springbush4", "springbush5", "springbush6",
-		"flowerred", "floweryellow", "flowerblue",
-		-- Frackin' Universe
-		"flowerblack", "flowerbrown", "flowergreen", "flowergrey",
-		"flowerorange", "flowerpink", "flowerpurple", "flowerwhite",
-		"flowerspring",
-		"flowerorchid", "flowerorchid2", "flowerorchid3",
-		"energiflowerseed",
-		"floralytplantseed",
-		"goldenglowseed",
-		"haleflowerseed",
-		"itaseed",
-		"nissseed",
-		"wubstemseed",
-		"miraclegrassseed",
-		"vanusflowerseed",
-		"beeflower",
-		"gemglowseed",
-		"darklightflower"
-	}) do
+	for i, p in pairs(self.config.flowers) do
 		flowers = world.objectQuery(entity.position(), 80, {name = p})
 		if flowers ~= nil then
 			self.beePower = self.beePower + math.ceil(math.sqrt(#flowers) / 2)
@@ -495,134 +446,91 @@ function update(dt)
 end
 
 
-function spawnMinerSpecialOre()
-	-- Pick a type at random from those found and spawn it.
+function chooseMinerHoney(config)
+	if not self.doHoney then return nil end
+
+	-- Pick a type at random from those found.
+	local minerFrames = 0
 	local types = {}
 	for frame, count in pairs(self.combs) do
+		minerFrames = minerFrames + count
 		if count > 0 then table.insert(types, frame) end
 	end
-	if #types > 0 then trySpawnHoney(1, types[math.random(#types)]) end
+
+	if minerFrames == 0 then return nil end
+
+	-- boosted chance of spawning a comb: extra chance is 50% or 75% of the difference between default and 1
+	local chance = config.chance or DEFAULT_HONEY_CHANCE
+	chance = chance + (1 - chance) * (minerFrames * 2 - 1) / (minerFrames * 2)
+
+	-- generally, chance of a special ore comb is 1/3 if 1 miner-affecting frame or 1/2 if 2
+	-- TODO: nerf diamond comb production
+	if math.random() > 1 / (4 - minerFrames) then
+--		sb.logInfo('may spawn minercomb, chance = %s', chance)
+		return { chance = chance }
+	end
+
+	-- equal chance of which frame affects the comb type
+	-- some may unsuccessfully affect the comb type; in that case, the default type is produced
+--	sb.logInfo('may spawn frame-affected comb, chance = %s', chance)
+	local type = types[math.random(#types)]
+	if self.config.oreSuccess[type] and math.random() > self.config.oreSuccess[type] then
+		type = nil
+	end
+	return { type = type, chance = chance }
 end
 
 
-function spawnMinerSpecialsEarly()
-	if self.doHoney then
-		-- Do we have more than one frame slot containing miner-affecting frames?
-		-- If so, (n-1)/(n+2) probability of spawning early.
-		-- For two frames, this works out at 0.25 (25%), reducing the effective chance of Deep Earth Comb to 40% (given the default 60%) and the late chance of a metal ore comb to 35%.
-		-- Effectively, a 60% chance of a metal ore and, within that, an equal chance for each type for which a frame is present.
-		local minerFrames = 0
-		for frame, count in pairs(self.combs) do
-			minerFrames = minerFrames + count
-		end
-		if minerFrames > 1 and math.random() <= (minerFrames - 1) / (minerFrames + 2) then
-			spawnMinerSpecialOre()
-		end
+function chooseMinerOffspring(config)
+	if not self.doBees or self.mutationIncrease == 0 then return nil end
+	if math.random() > self.mutationIncrease then
+--		sb.logInfo('may spawn miner bees')
+		return nil
 	end
-end
-
-
-function spawnMinerSpecialsLate()
-	if self.doHoney then spawnMinerSpecialOre() end
-
-	if self.mutationIncrease > 0 then
-		trySpawnMutantBee  (0.16, "radioactive")
-		trySpawnMutantDrone(0.12, "radioactive")
-	end
+--	sb.logInfo('may spawn radioactive bees')
+	return { type = 'radioactive', chance = config.chance, bee = (config.bee or 1) * 1.1, drone = (config.drone or 1) * 0.9 } -- tip a little more in favour of world over hive
 end
 
 
 function workingBees()
-	beeSpawnList = beeSpawnList or {
---[[
-		class = {
-			active = one of "day", "night", "always"
-			honeyType = TYPE
-			honeyChance = CHANCE
-			beeDroneChance = CHANCE (type is always same as the class)
-			items = { ITEM = CHANCE, ... }
-			specialPre = function for special spawns, called before standard spawns
-			specialPost = function for special spawns, called after standard spawns
-			sting = true if this class is aggressive
-		}
-
-		Defaults used for omitted settings:
-		CLASS = {
-			active = "day",
-			honeyType = CLASS,
-			honeyChance = 0.6,
-			beeDroneChance = 0.4,
-			items = {}
-			specialPre = nil,
-			specialPost = nil,
-			sting = false
-		}
---]]
-	-- Diurnal
-		adaptive = { honeyType = "normal", items = { fu_liquidhoney = 0.4, beesilk = 0.35 } },
-		aggressive = {
-			honeyType = "red", honeyChance = 0.8,
-			items = { alienmeat = 0.3, beesilk = 0.1 },
-			sting = true
-		},
-		arctic = { items = { cryonicextract = 0.5, beesilk = 0.2 } },
-		arid = { items = { goldensand = 0.5, beesilk = 0.2 } },
-		exceptional = {
-			honeyType = "normal", honeyChance = 0.8,
-			items = { fu_liquidhoney = 0.4, beesilk = 0.2 } ,
-		},
-		flower = { items = { beeflower = 0.25, beesilk = 0.15 } },
-		forest = { items = { fu_liquidhoney = 0.4, beesilk = 0.15 } },
-		godly = { items = { goldenfleece = 0.3 } },
-		hardy = { honeyType = "normal", honeyChance = 0.8, items = { beesilk = 0.25 } },
-		hunter = { honeyType = "silk", honeyChance = 0.5, items = { beesilk = 0.55 } },
-		jungle = { items = { plantfibre = 0.7, beesilk = 0.15 } },
-		metal = {
-			honeyType = "red", honeyChance = 0.8,
-			beeDroneChance = 1 / 3,
-			items = { tungstenore = 1 / 3 },	-- FIXME: tungsten ore production worked in large and scented apiaries for miners with tungsten frame
-			sting = true
-		},
-		miner = { specialPre = spawnMinerSpecialsEarly, specialPost = spawnMinerSpecialsLate },
-		morbid = {
-			items = { ghostlywax = 0.6 },
-			sting = true
-		},
-		mythical = { items = { goldenfleece = 0.15} },
-		normal = { items = { fu_liquidhoney = 0.4, beesilk = 0.15 } },
-		plutonium = { items = { plutoniumore = 0.3 } },
-		radioactive = { items = { uraniumore = 0.3 } },
-		red = {	items = { redwaxchunk = 0.2 } },
-		solarium = { items = { solariumore = 0.1 } },
-		sun = { },
-		volcanic = {},
-	-- Nocturnal
-		moon = { active = "night" },
-		nocturnal = { active = "night" },
-	}
 
 	local type, config
 	local notnow = daytime and 'night' or 'day'
 
 	local queen, drone = getEquippedBees()
 
-	if queen == drone and beeSpawnList[queen] then
-		local config = beeSpawnList[queen]
+	if queen == drone and self.config.spawnList[queen] then
+		local config = self.config.spawnList[queen]
 		local when = config.active or 'day'
 --		sb.logInfo ('Checking ' .. queen .. ' (' .. when .. ' / ' .. notnow .. ')')
 
 		if when ~= notnow then -- strictly, when == 'always' or == now
 			beeActiveWhen = when
 
-			if config.specialPre then config.specialPre(false) end
+			if self.doHoney then
+				-- read config; call functions returning config if specified
+				local honey = config.honey and (self.doHoney and config.honey.func and self.functions[config.honey.func] and self.functions[config.honey.func](config.honey, queen) or config.honey) or {}
 
-			local honeyType      = config.honeyType      or queen
-			local honeyChance    = config.honeyChance    or 0.6
-			local beeDroneChance = config.beeDroneChance or 0.4
+				-- get type and chances, handling fallbacks
+				local honeyType   = honey.type       or (config.honey     and config.honey.type      ) or queen
+				local honeyChance = honey.chance     or (config.honey     and config.honey.chance    ) or DEFAULT_HONEY_CHANCE
 
-			trySpawnHoney(honeyChance,    honeyType)
-			trySpawnBee  (beeDroneChance, queen)
-			trySpawnDrone(beeDroneChance, queen)
+				trySpawnHoney(honeyChance, honeyType)
+			end
+
+			if self.doBees then
+				-- read config; call functions returning config if specified
+				local offspring = config.offspring and (self.doBees and config.offspring.func and self.functions[config.offspring.func] and self.functions[config.offspring.func](config.offspring, queen) or config.offspring) or {}
+
+				-- get type and chances, handling fallbacks
+				local beeChance   = offspring.chance or (config.offspring and config.offspring.chance) or DEFAULT_OFFSPRING_CHANCE
+
+				local droneChance = beeChance * (offspring.drone or (config.offspring and config.offspring.drone) or 1) -- inside and outside have same base chance
+				beeChance         = beeChance * (offspring.bee   or (config.offspring and config.offspring.bee  ) or 1)
+
+				trySpawnBee  (beeChance,   offspring.type or queen)
+				trySpawnDrone(droneChance, offspring.type or queen)
+			end
 
 			if config.items and self.doItems then
 				for item, chance in pairs(config.items) do
@@ -630,7 +538,6 @@ function workingBees()
 				end
 			end
 
-			if config.specialPost then config.specialPost(true) end
 			if config.sting then beeSting() end
 
 			expelQueens(queen)  -- bitches this be MY house. (Kicks all queens but 1 out of the apiary)
@@ -645,31 +552,10 @@ end
 
 
 function breedingBees()
-	beeComboList = beeComboList or {
-					["normalforest"] = "hardy",
-					["arcticvolcanic"] = "adaptive",
-					["hardyadaptive"] = "exceptional",
-					["aridadaptive"] = "miner",
-					["jungleadaptive"] = "hunter",
-					["hunterred"] = "aggressive",
-					["aggressivenocturnal"] = "morbid",
-					["aggressivemorbid"] = "metal",
-					["radioactivehardy"] = "plutonium",
-					["plutoniumexceptional"] = "solarium",
-					["forestjungle"] = "flower",
-					["flowernormal"] = "red",
-					["flowerhardy"] = "red",
-					["flowerexceptional"] = "mythical",
-					["minernocturnal"] = "moon",
-					["moonsolarium"] = "sun",
-					["sunmythical"] = "godly",
-					["metalsun"] = "mythical"
-	}
-
 	if daytime then
 		local bee1Type = contents[self.queenSlot] and stripQueenDrone(contents[self.queenSlot].name)
 		local bee2Type = contents[self.droneSlot] and stripQueenDrone(contents[self.droneSlot].name)
-		local species = (bee1Type and bee2Type) and (beeComboList[bee1Type .. bee2Type] or beeComboList[bee2Type .. bee1Type])
+		local species = (bee1Type and bee2Type) and (self.config.breeding[bee1Type .. bee2Type] or self.config.breeding[bee2Type .. bee1Type])
 
 		if species ~= nil then
 --			sb.logInfo ('Checking ' .. bee1Type .. ' + ' .. bee2Type)
