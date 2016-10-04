@@ -221,8 +221,8 @@ function WhipCrack:findAnchor()
     local anchorValid = nil
     for _, anchorObject in pairs(objectsNearCursor) do
       local objectName = world.entityName(anchorObject)
-      if objectName == "sapling" then break end -- sapling breaks itemConfig
-      if root.itemConfig(objectName) and root.itemConfig(objectName).config.category == "light" then
+      local objectConfig = { pcall(root.itemConfig, objectName) } -- want [1]=true, [2]=config
+      if objectConfig[1] == true and objectConfig[2].config.category == "light" then
         anchorValid = anchorObject
         break
       end
