@@ -2,9 +2,7 @@
 -- Returns "consuming", "allConsumed" or "cantConsume"
 function consumeResources(pattern)
   local hasConsumed = false
-  sb.logInfo("pattern.requiredResources: %s", pattern.requiredResources)
   for _, resource in pairs(pattern.requiredResources) do
-    sb.logInfo("resource.type: %s", resource.type)
     if resource.type == "liquid" then
       hasConsumed = consumeLiquid(resource) or hasConsumed
     end
