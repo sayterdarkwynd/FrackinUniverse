@@ -2,10 +2,10 @@
   "id" : "create_armory",
   "prerequisites" : [ "create_matterassembler" ],
   "title" : "^#1693d5;Armed to the Teeth",
-  "text" : "With an ^orange;Armory^reset; at your disposal you'll be unstoppable! You'll need one for ^green;astounding armor and weapons^reset;. Build one in your ^orange;Matter Assembler^reset;.",
-  "completionText" : "Now you're prepared to take on the tougher challenges you'll encounter. Note that some armor sets can by upgraded in the ^orange;Nanofabricator^reset;.",
+  "text" : "I'll be blunt. I need my own ^orange;Armory^reset; but lack the skill to create one. Could you perhaps ^orange;make one for me in your Matter Assembler^reset;?.",
+  "completionText" : "Thanks a heap. Here, take this off my hands.",
   "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "scientistchest", 1 ] ] ],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
   "speaker" : "questGiver",
   
   "updateDelta" : 10,
@@ -29,7 +29,7 @@
         "type" : "gatherItem",
         "itemName" : "armory",
         "count" : 1,
-        "consume" : false
+        "consume" : true
       }
     ]
   }

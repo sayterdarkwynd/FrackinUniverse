@@ -1,9 +1,9 @@
 {
   "id" : "extractor6",
-  "prerequisites" : [ "extractor5" ],
-  "title" : "^#1693d5;The Extractor VI",
-  "text" : "^orange;Water^reset; is never in short supply. If you have upgraded your ^orange;Matter Manipulator^reset; to pick up liquids...^orange;extract some^reset; and bring me the results.",
-  "completionText" : "Hydrogen was pretty obvious, huh? So there you have it. The rest is up to you. Go forth and experiment!",
+  "prerequisites" : [ "create_extractor" ],
+  "title" : "^#1693d5;Hydrogen",
+  "text" : "^orange;Water^reset; is never in short supply. If you have upgraded your ^orange;Matter Manipulator^reset; to pick up liquids...^orange;extract some^reset; and bring me ^orange;5 hydrogen^reset; if you don't mind?",
+  "completionText" : "Great. Thanks so very much. Now I can complete this power cell! Take this for your extractor.",
   "moneyRange" : [0, 0],
   "rewards" : [ [ [ "calichewall", 24 ] ] ],
   "speaker" : "questGiver",
@@ -28,8 +28,8 @@
       {
         "type" : "gatherItem",
         "itemName" : "fu_hydrogen",
-        "count" : 1,
-        "consume" : false
+        "count" : 5,
+        "consume" : true
       }
     ]
   }
