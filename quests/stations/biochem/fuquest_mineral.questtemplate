@@ -1,0 +1,26 @@
+{
+  "id" : "fuquest_mineral",
+  "title" : "^cyan;Critical Minerals",
+  "text" : "Next up: ^orange;Mineral Samples^reset;. Make some in your ^orange;BioChem Lab^reset;. Like DNA samples they are ^green;essential^reset; in lab use.",
+  "completionText" : "With mineral and DNA samples in your possession you've opened up a whole new world of research and possibility. Now you should make a ^orange;Xenobiology Lab^reset; or ^orange;Fission Furnace^reset;!",
+  "rewards" : [
+    [ [ "fu_salt", 6] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "mineralsample",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

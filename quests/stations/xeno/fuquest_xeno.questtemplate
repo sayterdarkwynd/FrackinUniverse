@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_xeno",
+  "title" : "^cyan;Using the Xeno Lab",
+  "text" : "So you've built a ^orange;Xeno Lab^reset;? Why are you looking so clueless? It's simple: Toss in ^orange;a potato seed^reset; and wait about 5 seconds. You'll get a useful ^orange;gene type^reset; for your research.",
+  "completionText" : "Effectively every plant seed can be placed within this lab, and each one will produce different genes. You'll need to experiment to find the ones you need the most! Start with basic plants, and work up from there.",
+  "rewards" : [
+    [ [ "saltpeter", 6] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gene_resist",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_nano",
+  "title" : "^cyan;The Amazing Nano-Fab",
+  "text" : "The ^orange;Nanofabricator^reset; is an extrmely useful device. It can be used to fashion ^orange;upgrades, augments, techs^reset; and more. Try making a ^orange;re-breather augment^reset; in yours.",
+  "completionText" : "As you experiment and research new stuff, you'll unlock ^green;all sorts^reset; of useful stuff to make in the Nanofabricator! Try it all out as you go!",
+  "rewards" : [
+    [ [ "serumstim", 1] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fubreathaugment1",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

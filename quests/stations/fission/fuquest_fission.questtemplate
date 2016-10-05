@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_fission",
+  "title" : "^cyan;He who smelt it...",
+  "text" : "The ^orange;Fission Furnace^reset; is extremely useful, and can melt down metals ^green;no other furnace^reset; can handle. Extract some ^orange;coal^reset; for ^orange;carbon^reset; and try making a carbon plate!",
+  "completionText" : "You won't get far without one of these doing its work on the higher-strength metals you are bound to find. Always have it ready to go. It will never let you down!",
+  "rewards" : [
+    [ [ "copperbar", 20] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "carbonplate",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
