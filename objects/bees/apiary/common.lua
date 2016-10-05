@@ -518,7 +518,7 @@ function workingBees()
 				trySpawnHoney(honeyChance, honeyType)
 			end
 
-			if self.doBees then
+			if self.doBees or self.doDrone then
 				-- read config; call functions returning config if specified
 				local offspring = config.offspring and (self.doBees and config.offspring.func and self.functions[config.offspring.func] and self.functions[config.offspring.func](config.offspring, queen) or config.offspring) or {}
 
