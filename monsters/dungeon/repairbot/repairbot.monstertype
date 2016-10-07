@@ -1,25 +1,120 @@
 {
   "type" : "repairbot",
+  "shortdescription" : "Repair Bot",
+  "description" : "A robotic sentry designed for maintaining U.S.C.M. robots and machinery, it's armed for basic self-defense.",
 
   "categories" : [ "repairbot" ],
   "parts" : [ "body" ],
 
   "animation" : "repairbot.animation",
 
-  "dropPools" : [ "robotTreasure" ],
+  "dropPools" : [ { "default" : "smallRobotTreasure" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/dungeon/repairbot/behavior.lua",
-      "/scripts/sensors.lua",
-      "/scripts/stateMachine.lua",
-      "/scripts/util.lua",
-      "/scripts/vec2.lua"
+      "/monsters/monster.lua"
+//      "/monsters/dungeon/repairbot/behavior.lua",
+//      "/scripts/sensors.lua",
+//      "/scripts/stateMachine.lua",
+//      "/scripts/util.lua",
+//      "/scripts/vec2.lua"
     ],
 
-    "damageTeam" : 1,
-    "aggressive" : false,
-    
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 30,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 5,
+            "windupTime" : 0.5,
+
+            "projectileType" : "blueplasmabullet",
+            "power" : 1,
+            "fireOffset" : [0.25, -0.375],
+            "projectileCount" : 6,
+            "projectileInterval" : 0.2,
+            "aimAtTarget" : true,
+            "fireState" : "",
+            "fireDelay" : 0.2,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 2
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 3,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -2.0], [1.0, -2.0], [1.0, 2.0], [-1.0, 2.0] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "default",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
     "metaBoundBox" : [-1.0, -2.0, 1.0, 2.0],
     "scale" : 1.0,
 
@@ -39,22 +134,13 @@
     "knockoutEffect" : "blink",
     "deathParticles" : "deathPoof",
 
-    "touchDamage" : {
-      "poly" : [ [-1.0, -2.0], [1.0, -2.0], [1.0, 2.0], [-1.0, 2.0] ],
-      "damage" : 12,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "default",
-      "statusEffects" : [ ]
-    },
-
     "statusSettings" : {
       "statusProperties" : {
         "targetMaterialKind" : "robotic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -96,24 +182,27 @@
       }
     },
 
-    "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8],
+//    "collisionSensors" : [ [1.25, 0.0] ],
 
-    "collisionSensors" : [ [1.25, 0.0] ],
+//    "nearGroundSensor" : [ [0.0, -2.25] ],
+//    "midGroundSensor" : [ [0.0, -5.0] ],
 
-    "nearGroundSensor" : [ [0.0, -2.25] ],
-    "midGroundSensor" : [ [0.0, -5.0] ],
-
-    "idleTimeRange" : [1.0, 3.0],
-    "moveTimeRange" : [2.5, 5.0],
+//    "idleTimeRange" : [1.0, 3.0],
+//    "moveTimeRange" : [2.5, 5.0],
 
     "repairResponseMaxDistance" : 20.0,
     "repairDistance" : 3.0,
     "repairHealthPerSecond" : 10.0,
 
-    "attackTargetHoldTime" : 5.0,
-    "attackRange" : [5.0, 15.0],
+//    "attackTargetHoldTime" : 5.0,
+//    "attackRange" : [5.0, 15.0],
 
-    "projectileOffset" : [0.25, -0.375]
+//    "projectileOffset" : [0.25, -0.375],
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
   }
 }

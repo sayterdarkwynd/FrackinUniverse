@@ -1,0 +1,223 @@
+{
+  "metadata" : {
+    "name" : "asteroidencounter",
+    "species" : "dummy",
+    "rules" : [
+    ],
+    "anchor" : [ "smallcave1", "miningcamp1" ],
+
+    "maxRadius" : 2000,
+    "maxParts" : 100
+  },
+  "tiles" : [
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    {
+      "value" : [120, 120, 120, 255],
+      "rules" : [ [ "worldGenMustContainAirForeground" ], [ "allowOverdrawing" ] ]
+    },
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ]
+    },
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, room coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, alternate coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [168, 255, 0, 255],
+      "comment" : "bright green, alternate coupler #2",
+      "connector" : true
+    },
+
+    {
+      "value" : [255, 168, 0, 255],
+      "comment" : "bright orange, alternate coupler #3",
+      "connector" : true
+    },
+
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [48, 48, 48, 255],
+      "comment" : "Empty hole overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [196, 175, 113, 255],
+      "comment" : "steel stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "tungstenplatform" ] ]
+    },
+
+    {
+      "value" : [76, 153, 130, 255],
+      "comment" : "foreground lightmetal overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "lightmetal" ], [ "front", "lightmetal" ] ]
+    },
+
+    {
+      "value" : [102, 204, 173, 255],
+      "comment" : "foreground lightmetal",
+      "brush" : [ [ "clear" ], [ "back", "lightmetal" ], [ "front", "lightmetal" ] ]
+    },
+
+    {
+      "value" : [128, 255, 217, 255],
+      "comment" : "background lightmetal",
+      "brush" : [ [ "clear" ], [ "back", "lightmetal" ] ]
+    },
+
+    {
+      "value" : [128, 140, 255, 255],
+      "comment" : "background mediummetal",
+      "brush" : [ [ "clear" ], [ "back", "mediummetal" ] ]
+    },
+
+    {
+      "value" : [89, 98, 179, 255],
+      "comment" : "background mediummetal overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "mediummetal" ] ]
+    },
+
+    {
+      "value" : [76, 84, 153, 255],
+      "comment" : "foreground mediummetal overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "mediummetal" ], [ "front", "mediummetal" ] ]
+    },
+
+    {
+      "value" : [102, 112, 204, 255],
+      "comment" : "foreground mediummetal",
+      "brush" : [ [ "clear" ], [ "back", "mediummetal" ], [ "front", "mediummetal" ] ]
+    },
+
+    {
+      "value" : [111, 98, 90, 255],
+      "comment" : "background rustymetal",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [205, 255, 128, 255],
+      "comment" : "background glass",
+      "brush" : [ [ "clear" ], [ "back", "glass" ] ]
+    },
+    {
+      "value" : [91, 106, 99, 255],
+      "comment" : "flickeringfuturelight",
+      "brush" : [ [ "clear" ], [ "object", "flickeringfluorescentlight" ] ]
+    },
+    {
+      "value" : [113, 133, 196, 255],
+      "comment" : "console right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole2", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [113, 133, 110, 255],
+      "comment" : "crate right",
+      "brush" : [ [ "clear" ], [ "object", "bunkercrate", { "direction" : "right", "parameters" : { "treasurePools" : [ "naturalcaveTreasure" ] } } ] ]
+    },
+    {
+      "value" : [255, 237, 147, 255],
+      "comment" : "floodlight right",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [255, 237, 215, 255],
+      "comment" : "floodlight left",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "left" } ] ]
+    },
+    {
+      "value" : [0, 255, 228, 255],
+      "comment" : "bunker vent",
+      "brush" : [ [ "clear" ], [ "object", "bunkervent" ] ]
+    },
+    {
+      "value" : [113, 196, 170, 255],
+      "comment" : "prison bed left",
+      "brush" : [ [ "clear" ], [ "object", "prisonbed", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [255, 204, 0, 255],
+      "comment" : "nice loot vending machine left",
+      "brush" : [ [ "clear" ], [ "object", "prisoncabinet1", { "direction" : "left", "parameters" : { "treasurePools" : [ "weaponChestTreasure" ] } } ] ]
+    },
+    {
+      "value" : [138, 213, 114, 255],
+      "comment" : "apexshipdoor",
+      "brush" : [ [ "clear" ], [ "object", "apexshipdoor" ] ]
+    },
+
+    // STAGEHANDS
+
+    {
+      "value" : [166, 76, 255, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "asteroidunderground.mine"
+          }
+        }
+      ] ]
+    }
+  ],
+
+  "parts" : [
+    {
+      "name" : "smallcave1",
+      "rules" : [ ],
+      "def" : [ "image", [ "smallcave1.png" ] ]
+    },
+    {
+      "name" : "miningcamp1",
+      "rules" : [ ],
+      "def" : [ "image", [ "miningcamp1.png", "miningcamp1-objects.png" ] ]
+    }
+  ]
+}

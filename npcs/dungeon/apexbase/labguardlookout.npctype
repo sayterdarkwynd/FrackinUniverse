@@ -1,0 +1,39 @@
+{
+  "type" : "labguardlookout",
+  "baseType" : "hostile",
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "labguardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : "/dialog/miniknogthreats.config:attack",
+      "hail" : {
+        "default" : {
+          "default" : [
+            "Halt! This is a high security research facility. Lab personnel only!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "apextier3head" } ],
+            "chest" : [ { "name" : "apextier3chest" } ],
+            "legs" : [ { "name" : "apextier3pants" } ],
+            "back" : [ { "name" : "medicback" } ],
+            "primary" : [
+              "npcsniperrifle"
+            ],
+            "sheathedprimary" : [
+              "npcdagger"
+            ]
+          }
+        ] ]
+    ]
+  }
+}
