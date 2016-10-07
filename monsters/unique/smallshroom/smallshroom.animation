@@ -24,19 +24,36 @@
           "chargewindup" : {
             "frames" : 8,
             "cycle" : 0.6,
-            "mode" : "loop"
+            "mode" : "loop",
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/quadruped/angstyhead_turnhostile.ogg" ]
+            }            
           },
           "melee" : {
             "frames" : 4,
             "cycle" : 0.4,
+            "mode" : "loop",
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/quadruped/angstyhead_attack1.ogg" ]
+            }  
+          }, 
+          "fire" : {
+            "frames" : 4,
+            "cycle" : 0.8,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/quadruped/angstyhead_attack1.ogg" ]
+            }  
           },          
           "charge" : {
             "frames" : 8,
             "cycle" : 0.8,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/quadruped/angstyhead_attack2.ogg" ]
+            } 
           },
           "chargewinddown" : {
             "frames" : 1
@@ -93,9 +110,14 @@
             },
             "melee" : {
               "properties" : {
-                "image" : "<partImage>:melee.<frame>"
+                "image" : "<partImage>:fire.<frame>"
               }
-            },            
+            },    
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },             
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
@@ -150,6 +172,16 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },    
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },             
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
@@ -204,6 +236,16 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },    
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },             
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
@@ -258,6 +300,16 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },    
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },             
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
@@ -312,6 +364,16 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },    
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },             
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
@@ -365,7 +427,8 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "aggroHop" : [ "/sfx/npc/quadruped/angstyhead_idle1.ogg" ],
+    "fire" : [ "/sfx/npc/quadruped/arrowhead_attack1.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   },
 
