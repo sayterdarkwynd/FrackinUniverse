@@ -1,5 +1,7 @@
 {
   "type" : "smallshroom",
+  "shortdescription" : "Shroomling",
+  "description" : "These creatures are often spotted among Agaran settlements. However, their relation to the Agaran is currently unknown.",
 
   "categories" : [ "smallshroom" ],
   "parts" : [ "arms", "chest", "tail", "head" ],
@@ -8,13 +10,8 @@
   "animation" : "smallshroom.animation",
   "reversed" : true,
 
-  "dropPools" : [
-    {
-      "default" : "basicMonsterTreasure",
-      "bow" : "hunting",
-      "brain" : "brain"
-    }
-  ],
+  "dropPools" : [ { "default" : "sporgus2Treasure", "bow" : "sporgusHunting" } ],
+
 
   "baseParameters" : {
     "scripts" : [
@@ -28,14 +25,79 @@
 
       "targetQueryRange" : 30,
       "targetOnDamage" : true,
-      "targetEntityTypes" : [ "player", "npc", "monster" ],
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
 
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2,
+          "parameters" : {
+            "maximumRange" : 3,
+            "minimumRange" : 1,
+            "windupState" : "",
+            "windupTime" : 0.2,
+
+            "projectileType" : "fumeleebite",
+            "fireOffset" : [3, -0.7],
+
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "inaccuracy" : 1,
+            "aimDirection" : [0,1],
+            "power" : 9,
+            "speed": 70,
+            "fireSound" : "fire",
+            "fireState" : "melee",
+
+
+            "winddownState" : ""
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 5,
+          "parameters" : {
+            "maximumRange" : 12,
+            "windupTime" : 0.5,
+
+            "aimAtTarget" : false,
+            "aimDirection" : [1, 0.5],
+            "chargeTime" : [0.3, 0.5],
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 600,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.5
+          }
+        }       
+      ],
       "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "fallState" : "jump",
+            "moveState" : "run",
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
         {
           "name" : "approach-walk",
           "parameters" : {
@@ -62,15 +124,13 @@
       ]
     },
 
-    "skillCount" : 1,
-    "baseSkills" : [ "chargeAttack", "pounceAttack" ],
-
     "touchDamage" : {
       "poly" : [ [-0.8, -2.2], [-0.4, -2.6], [0.4, -2.6], [0.8, -2.2], [0.8, -0.4], [0.4, 0], [-0.4, 0], [-0.8, -0.4] ],
-      "damage" : 12,
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
+      "knockback" : 20,
       "statusEffects" : [ ]
     },
 
@@ -96,8 +156,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -120,6 +180,9 @@
         },
         "healthRegen" : {
           "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
         }
       },
 
@@ -137,6 +200,9 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -21]
+    "feetOffset" : [0, -21],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
   }
 }

@@ -26,10 +26,17 @@
             "cycle" : 0.6,
             "mode" : "loop"
           },
+          "melee" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "idle"
+          },          
           "charge" : {
             "frames" : 8,
-            "cycle" : 0.5,
-            "mode" : "loop"
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "idle"
           },
           "chargewinddown" : {
             "frames" : 1
@@ -84,6 +91,11 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
+              }
+            },            
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
