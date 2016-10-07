@@ -1,0 +1,56 @@
+{
+  "type" : "apexslave",
+  "baseType" : "villager",
+
+  "scriptConfig" : {
+    "questGenerator" : {
+      "pools" : ["common"]
+    },
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default": [
+            "We will never be free."
+          ]
+        },
+        "apex" : {
+          "default" : [
+            "We will never be free.",
+            "Leave now. This is not your concern, stranger.",
+            "Do not fear for us, stranger. This is the way of things.",
+            "I'm so hungry... so hungry...",
+            "Take me with you, stranger. Please.",
+            "I'll never escape the gaze of Big Ape.",
+            "Do not cause trouble, stranger. It won't end well for either of us.",
+            "Freedom is lost to me, stranger."
+          ],
+          "apex" : [
+            "We will never be free.",
+            "Leave now. This is not your concern, friend.",
+            "Do not fear for us, friend. This is the way of things.",
+            "I'm so hungry... so hungry...",
+            "Take me with you, friend. Please.",
+            "I'll never escape the gaze of Big Ape.",
+            "Do not cause trouble, friend. It won't end well for either of us.",
+            "Freedom is lost to me, friend.",
+            "Be glad you are not one of us, friend.",
+            "Be free."
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "peasantchest", "parameters" : { "colorIndex" : [1, 4, 5] } }
+            ]
+          }
+        ] ]
+    ]
+  }
+}
