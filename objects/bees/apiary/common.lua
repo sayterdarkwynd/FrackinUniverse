@@ -143,12 +143,24 @@ function getEquippedBees()
 end
 
 
+function spaceForBees()
+	local bees = world.monsterQuery(entity.position(), 25, { callScript = 'getClass', callScriptResult = 'bee' })
+	local apiaries = world.entityQuery(entity.position(), 25, { withoutEntityId = entity.id(), callScript = 'getClass', callScriptResult = 'apiary' })
+	return #bees < 15 + 2 * #apiaries
+end
+
+
+function getClass()
+	return 'apiary'
+end
+
+
 function trySpawnBee(chance,type)
 	-- tries to spawn bees if we haven't in this round
 	-- Type is normally things "normal" or "bone", as the code inputs them in workingBees() or breedingBees(), this function uses them to spawn bee monsters. "normalbee" for example.
 	-- chance is a float value between 0.00 (will never spawn) and 1.00 (will always spawn)
 --	if self.doBees then sb.logInfo ('Maybe spawning a bee') end
-	if self.doBees and math.random(100) <= 100 * chance then
+	if self.doBees and math.random(100) <= 100 * chance and spaceForBees() then
 		world.spawnMonster(type .. "bee", object.toAbsolutePosition({ 2, 3 }), { level = 1 })
 		self.doBees = false
 	end
@@ -157,7 +169,7 @@ end
 
 function trySpawnMutantBee(chance,type)
 --	if self.doBees then sb.logInfo ('Maybe spawning a mutant bee') end
-	if self.doBees and math.random(100) <= 100 * (chance + self.mutationIncrease) then
+	if self.doBees and math.random(100) <= 100 * (chance + self.mutationIncrease) and spaceForBees() then
 		world.spawnMonster(type .. "bee", object.toAbsolutePosition({ 2, 3 }), { level = 1 })
 		self.doBees = false
 	end
