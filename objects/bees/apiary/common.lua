@@ -185,12 +185,12 @@ end
 
 
 function trySpawnDrone(chance,type,amount)
---	if self.doDrone then sb.logInfo ('Maybe spawning some drones') end
-	if self.doDrone and math.random(100) <= 100 * chance then
+--	if self.doDrones then sb.logInfo ('Maybe spawning some drones') end
+	if self.doDrones and math.random(100) <= 100 * chance then
 		local bonus, reduce = droneStarter()
 		amount = amount or (math.random(2) + bonus)
 		world.containerAddItems(entity.id(), { name=type .. "drone", count = amount, data={}})
-		self.doDrone = false -- why was this doItems?
+		self.doDrones = false -- why was this doItems?
 		if reduce then
 			world.containerConsume(entity.id(), {name =type .. "drone", count = math.random(5), data={}})
 		end
@@ -199,10 +199,10 @@ end
 
 
 function trySpawnMutantDrone(chance,type,amount)
---	if self.doDrone then sb.logInfo ('Maybe spawning some mutant drones') end
-	if self.doDrone and math.random(100) <= 100 * (chance + self.mutationIncrease) then
+--	if self.doDrones then sb.logInfo ('Maybe spawning some mutant drones') end
+	if self.doDrones and math.random(100) <= 100 * (chance + self.mutationIncrease) then
 		world.containerAddItems(entity.id(), { name=type .. "drone", count = amount or 1, data={}})
-		self.doDrone = false -- why was this doItems?
+		self.doDrones = false -- why was this doItems?
 	end
 end
 
@@ -316,11 +316,11 @@ function deciding()
 	if self.spawnDroneBrake then
 		if self.spawnDroneCooldown <= 0 then
 			-- self.spawnDroneBrake = self.spawnDroneBrake + 10
-			self.doDrone = true
+			self.doDrones = true
 --			sb.logInfo('Chance of spawning a drone')
 			self.spawnDroneCooldown = ( self.spawnDelay * self.spawnDroneBrake ) - self.droneModifier
 		else
-			self.doDrone = false
+			self.doDrones = false
 			self.spawnDroneCooldown = self.spawnDroneCooldown - self.beePower * self.beePowerScaling
 		end
 	end
@@ -425,7 +425,7 @@ function update(dt)
 	flowerCheck()
 	deciding()
 
-	if not self.doBees and not self.doItems and not self.doHoney and not self.doDrone then
+	if not self.doBees and not self.doItems and not self.doHoney and not self.doDrones then
 		-- no need to search for the bees if there is nothing to do with them
 		if self.beePower > 0 then
 			self.beePower = 0
@@ -482,7 +482,7 @@ end
 
 
 function chooseMinerOffspring(config)
-	if not self.doBees or self.mutationIncrease == 0 then return nil end
+	if self.mutationIncrease == 0 then return nil end
 	if math.random() > self.mutationIncrease then
 --		sb.logInfo('may spawn miner bees')
 		return nil
@@ -518,19 +518,19 @@ function workingBees()
 				trySpawnHoney(honeyChance, honeyType)
 			end
 
-			if self.doBees or self.doDrone then
+			local function doBeeOrDrone(type, spawnFunc)
 				-- read config; call functions returning config if specified
-				local offspring = config.offspring and (self.doBees and config.offspring.func and self.functions[config.offspring.func] and self.functions[config.offspring.func](config.offspring, queen) or config.offspring) or {}
+				local offspring = config.offspring and (config.offspring.func and self.functions[config.offspring.func] and self.functions[config.offspring.func](config.offspring, queen, type) or config.offspring) or {}
 
 				-- get type and chances, handling fallbacks
-				local beeChance   = offspring.chance or (config.offspring and config.offspring.chance) or DEFAULT_OFFSPRING_CHANCE
+				local chance = offspring.chance or (config.offspring and config.offspring.chance) or DEFAULT_OFFSPRING_CHANCE
+				chance       = chance * (offspring[type] or (config.offspring and config.offspring[type]) or 1)
 
-				local droneChance = beeChance * (offspring.drone or (config.offspring and config.offspring.drone) or 1) -- inside and outside have same base chance
-				beeChance         = beeChance * (offspring.bee   or (config.offspring and config.offspring.bee  ) or 1)
-
-				trySpawnBee  (beeChance,   offspring.type or queen)
-				trySpawnDrone(droneChance, offspring.type or queen)
+				spawnFunc(chance, offspring.type or queen)
 			end
+
+			if self.doBees   then doBeeOrDrone('bee',   trySpawnBee  ) end
+			if self.doDrones then doBeeOrDrone('drone', trySpawnDrone) end
 
 			if config.items and self.doItems then
 				for item, chance in pairs(config.items) do
