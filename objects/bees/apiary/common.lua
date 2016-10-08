@@ -200,12 +200,12 @@ function trySpawnDrone(chance,type,amount)
 --	if self.doDrones then sb.logInfo ('Maybe spawning some drones') end
 	if self.doDrones and math.random(100) <= 100 * chance then
 		local bonus, reduce = droneStarter()
-		amount = amount or (math.random(2) + bonus)
-		world.containerAddItems(entity.id(), { name=type .. "drone", count = amount, data={}})
-		self.doDrones = false -- why was this doItems?
 		if reduce then
 			world.containerConsume(entity.id(), {name =type .. "drone", count = math.random(5), data={}})
 		end
+		amount = amount or (math.random(2) + bonus)
+		world.containerAddItems(entity.id(), { name=type .. "drone", count = amount, data={}})
+		self.doDrones = false
 	end
 end
 
