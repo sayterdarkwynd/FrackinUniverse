@@ -11,14 +11,29 @@
             "cycle" : 0.25,
             "mode" : "loop"
           },
+          "hurt" : {
+            "frames" : 7,
+            "cycle" : 0.4,
+            "mode" : "loop"
+          },          
           "move" : {
             "frames" : 4,
             "cycle" : 0.25,
             "mode" : "loop"
           },
+          "walk" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "run" : {
+            "frames" : 4,
+            "cycle" : 0.15,
+            "mode" : "loop"
+          },          
           "repairStart" : {
             "frames" : 5,
-            "cycle" : 0.25,
+            "cycle" : 0.5,
             "mode" : "transition",
             "transition" : "repair"
           },
@@ -33,6 +48,23 @@
             "mode" : "transition",
             "transition" : "move"
           },
+          "firewindup" : {
+            "frames" : 3,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "attack"
+          },
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "firewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "idle"
+          },          
           "attackStart" : {
             "frames" : 3,
             "cycle" : 0.25,
@@ -68,8 +100,9 @@
 
     "parts" : {
       "body" : {
+  
         "partStates" : {
-          "movement" : {
+          "body" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -80,6 +113,21 @@
                 "image" : "<partImage>:move.<frame>"
               }
             },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },             
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },     
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },            
             "repairStart" : {
               "properties" : {
                 "image" : "<partImage>:repairStart.<frame>"
@@ -95,6 +143,21 @@
                 "image" : "<partImage>:repairEnd.<frame>"
               }
             },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:attackStart.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:attackEnd.<frame>"
+              }
+            },            
             "attackStart" : {
               "properties" : {
                 "image" : "<partImage>:attackStart.<frame>"
@@ -114,7 +177,7 @@
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:idle.<frame>"
               }
             }
           }
