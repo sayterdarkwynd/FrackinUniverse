@@ -9,12 +9,18 @@
           "idle" : {
             "frames" : 7,
             "cycle" : 0.25,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid1.ogg"
+            }  
           },
           "hurt" : {
             "frames" : 7,
             "cycle" : 0.4,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid2.ogg"
+            }  
           },          
           "move" : {
             "frames" : 4,
@@ -35,7 +41,10 @@
             "frames" : 5,
             "cycle" : 0.5,
             "mode" : "transition",
-            "transition" : "repair"
+            "transition" : "repair",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid4.ogg"
+            }            
           },
           "repair" : {
             "frames" : 13,
@@ -52,7 +61,10 @@
             "frames" : 3,
             "cycle" : 0.25,
             "mode" : "transition",
-            "transition" : "attack"
+            "transition" : "attack",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid3.ogg"
+            }  
           },
           "fire" : {
             "frames" : 2,
@@ -69,7 +81,10 @@
             "frames" : 3,
             "cycle" : 0.25,
             "mode" : "transition",
-            "transition" : "attack"
+            "transition" : "attack",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid3.ogg"
+            }  
           },
           "attack" : {
             "frames" : 2,
@@ -378,7 +393,7 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "aggroHop" : [ "/sfx/npc/droid2.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
     "fire" : [ "/sfx/gun/plasma_mp2.ogg" ]
   }
