@@ -4,8 +4,8 @@ function init()
   animator.setParticleEmitterActive("healing", true)
   
   script.setUpdateDelta(5)
-  self.tickDamagePercentage = (0.01 + config.getParameter("bleedAmount", 0)) /100
-  self.tickTime = 0.7
+  self.tickDamagePercentage = 0.01 + config.getParameter("bleedAmount", 0)
+  self.tickTime = 0.5
   self.tickTimer = self.tickTime
   effect.duration()
 end
