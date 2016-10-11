@@ -5,7 +5,7 @@ function init()
   
   script.setUpdateDelta(5)
   self.tickDamagePercentage = 0.01 + config.getParameter("bleedAmount", 0)
-  self.tickTime = 0.5
+  self.tickTime = 0.85
   self.tickTimer = self.tickTime
   effect.duration()
 end
