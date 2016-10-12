@@ -347,12 +347,20 @@
   "path" : "/terrestrialHorizonGraphics/strangesea",
   "value" : 
   {
-      "baseImages" : "/celestial/system/terrestrial/horizon/textures/ocean_<selector>.png",
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/strangesea_<selector>.png",
       "maskTextures" : "/celestial/system/terrestrial/horizon/masks/ocean/<mask>_<selector>.png",
       "maskRange" : [1, 25],
       "maskPerPlanetRange" : [1, 2]  
   }},   
-     
+   {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/aethersea",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/aethersea_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/ocean/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [1, 2]  
+  }},       
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/penumbra",
   "value" : 
@@ -782,11 +790,20 @@
   "path" : "/terrestrialGraphics/strangesea",
   "value" : 
   {
-      "baseImages" : "/celestial/system/terrestrial/biomes/ocean/maskie<num>.png",
+      "baseImages" : "/celestial/system/terrestrial/biomes/strangesea/maskie<num>.png",
       "dynamicsImages" : "/celestial/system/terrestrial/dynamics/ocean/<num>.png",
       "dynamicsRange" : [1, 20],
       "baseCount" : 1
   }}, 
+   {"op" : "add", 
+  "path" : "/terrestrialGraphics/aethersea",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/biomes/aethersea/maskie<num>.png",
+      "dynamicsImages" : "/celestial/system/terrestrial/dynamics/ocean/<num>.png",
+      "dynamicsRange" : [1, 20],
+      "baseCount" : 1
+  }},   
   {"op" : "add", 
   "path" : "/terrestrialGraphics/penumbra",
   "value" : 
@@ -3234,7 +3251,7 @@
         "description" : "Habitable Planet",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "atropusdark", "penumbra", "lightless", "shadow", "arborealdark", "sulphuricdark", "protoworlddark", "tidewater", "midnight" ]
+        "terrestrialType" : [ "aethersea", "atropusdark", "penumbra", "lightless", "shadow", "arborealdark", "sulphuricdark", "protoworlddark", "tidewater", "midnight" ]
       },
 
       "variationParameters" : [
@@ -3279,7 +3296,7 @@
         "description" : "Cool Planet",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "penumbra", "lightless", "atropusdark", "arborealdark", "strangesea", "desertwastesdark", "tidewater", "midnight", "metallicmoon" ]
+        "terrestrialType" : [ "aethersea", "penumbra", "lightless", "atropusdark", "arborealdark", "strangesea", "desertwastesdark", "tidewater", "midnight", "metallicmoon" ]
       },
 
       "variationParameters" : [
@@ -3331,7 +3348,7 @@
         "description" : "Frozen Planet",
         "smallImage" : "/celestial/system/planet_small.png",
 
-        "terrestrialType" : [ "snowdark", "arcticdark", "icewastedark", "tundradark", "penumbra", "shadow" ]
+        "terrestrialType" : [ "aethersea", "snowdark", "arcticdark", "icewastedark", "tundradark", "penumbra", "shadow" ]
       },
 
       "variationParameters" : [

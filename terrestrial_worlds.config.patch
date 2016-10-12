@@ -585,7 +585,6 @@
           [1.0, "aviantemple"],
           [1.0, "humancamp"], 
           [1.0, "humanprison"], 
-          [1.0, "hylotlvillage"], 
           [1.0, "hylotlruinedcastle"],
           [1.0, "floranhuntinggrounds"], 
           [1.0, "floranvillagetower"], 
@@ -625,18 +624,18 @@
        "threatRange" : [3, 8],
        "layers" : {
         "surface" : {
-          "primaryRegion" : [ "ocean", "magma", "toxic", "nitrogensea", "sulphuricocean", "tidewater", "bloodstonesea", "arctic" ],
-          "secondaryRegions" : [ "wartfield", "wastelandmini", "corruptedforest", "magicsnowland", "eden", "fieldofbracken", "supermatterzone", "aliendesert", "goreforest", "cactiplace", "metalworks", "metalhive", "metalworks2", "metalworks3", "metalworks4", "metaljungle", "crystalswamp", "ffhive", "corruptmoon", "birchforest", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "finesand", "cloudforest", "hauntedforest", "hauntedgraveyard", "rainbowforest", "swamp", "mountainous", "tidewater", "estuary", "breakwater", "corrupt", "spring", "mushroom", "oasis", "tar", "alpine", "bioluminescence", "colourful", "bones", "giantflowers", "eyepatch", "ice", "rust",  "alien", "arctic", "barren", "desert", "forest", "jungle", "magma", "ocean", "savannah", "scorchedcity", "snow", "toxic", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga" ],
+          "primaryRegion" : [ "strangesea" ],
+          "secondaryRegions" : [ "ocean", "magma", "toxic", "nitrogensea", "sulphuricocean", "bloodstonesea", "arctic", "wartfield", "wastelandmini", "corruptedforest", "magicsnowland", "eden", "fieldofbracken", "supermatterzone", "aliendesert", "goreforest", "cactiplace", "metalworks", "metalhive", "metalworks2", "metalworks3", "metalworks4", "metaljungle", "crystalswamp", "ffhive", "corruptmoon", "birchforest", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "finesand", "cloudforest", "hauntedforest", "hauntedgraveyard", "rainbowforest", "swamp", "mountainous", "tidewater", "estuary", "breakwater", "corrupt", "spring", "mushroom", "oasis", "tar", "alpine", "bioluminescence", "colourful", "bones", "giantflowers", "eyepatch", "ice", "rust",  "alien", "arctic", "barren", "desert", "forest", "jungle", "magma", "ocean", "savannah", "scorchedcity", "snow", "toxic", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga" ],
           "dungeons" : [ 
           [1.0, "fuwreck"], 
           [1.0, "wreck"], 
           [1.0, "hylotlruinedcastle"], 
-          [1.0, "hylotlcity"],
-          [1.0, "hylotlvillage"]
+          [1.0, "hylotlcity"]
           ]
         },
         "subsurface" : {
-          "primaryRegion" : [ "oceanfloor", "toxicoceanfloor", "magmaoceanfloor", "arcticoceanfloor","nitrogenseafloor", "bloodstoneseafloor", "sulphuricoceanfloor"  ],
+          "primaryRegion" : [ "strangeseafloor" ],
+          "secondaryRegions" : [ "oceanfloor", "toxicoceanfloor", "magmaoceanfloor", "arcticoceanfloor","nitrogenseafloor", "bloodstoneseafloor", "sulphuricoceanfloor" ],
           "dungeons" : [ 
           [1.0, "wreckunderwater"], 
           [1.0, "hylotlruinedcity"], 
@@ -659,7 +658,48 @@
      }
    },
    
-   
+
+   {"op" : "add", 
+   "path" : "/planetTypes/aethersea",
+   "value" : 
+     {
+       "threatRange" : [4, 8],
+       "layers" : {
+        "surface" : {
+          "primaryRegion" : [ "aethersea" ],
+          "secondaryRegions" : [ "tidewater", "bloodstonesea", "corruptedforest", "supermatterzone", "goreforest", "crystalswamp", "corruptmoon", "alienforest", "cellfield", "hauntedforest", "hauntedgraveyard", "corrupt", "tar", "bioluminescence", "bones", "eyepatch", "alien", "lightless", "penumbra", "toxic", "volcanic", "ashgarden", "blackslimebog", "blisterbushfield", "bloodgulch", "bloodstonefield", "deadwood", "elder", "energyorbforest", "hellhive" ],
+          "dungeons" : [ 
+          [1.0, "fuwreck"], 
+          [1.0, "wreck"], 
+          [1.0, "hylotlruinedcastle"], 
+          [1.0, "hylotlcity"]
+          ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "aetherseafloor" ],
+          "secondaryRegions" : [ "lightlessunderground", "penumbraunderground", "elder", "oceanfloor", "toxicoceanfloor", "magmaoceanfloor", "arcticoceanfloor","nitrogenseafloor", "bloodstoneseafloor", "sulphuricoceanfloor"  ],
+          
+          "dungeons" : [ 
+          [1.0, "wreckunderwater"], 
+          [1.0, "hylotlruinedcity"], 
+          [1.0, "hylotloceancity"]
+          ]        
+        },
+        "underground1" : {
+          "secondaryRegions" : [ "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+        },
+        "underground2" : {
+          "secondaryRegions" : [ "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+        },
+        "underground3" : {
+          "secondaryRegions" : [ "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+        },
+        "core" : {
+          "primaryRegion" : [ "lightlessunderground", "penumbraunderground", "mooncore", "nitrogencore", "protocore", "core", "liquidprotocore", "irradiumcore" ]
+        } 
+       }
+     }
+   },   
    
 
    {"op" : "add", 
@@ -5291,22 +5331,64 @@
  },
 
  {"op" : "add",
- "path": "/regionTypes/strangesea",
+ "path": "/regionTypes/aethersea",
  "value" : 
  	{
-       "oceanLiquid" : [ "fuhoney", "fuhoneyred", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater" ],
+       "oceanLiquid" : [ "liquidaether" ],
        "oceanLevelOffset" : 0, 
-       "caveLiquid" : [ "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "fuhoney", "helium3gas", "shadowgas", "wastewater", "poison", "lava" ],
-       "caveLiquidChanceRange" : [100, 100],
+       "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "elderfluid", "alienjuice" ],
+       "caveLiquidChanceRange" : [70, 100],
        "blockSelector" : [ "remixedIslandsSurface", "submergedIslandsSurface", "spikeIslandsSurface" ],
        "fgCaveSelector" : [ "surfaceCaves" ],
 
-       "biome" : [
-         [0, [ "strangesea" ]]
-       ]
+       "biome" : [ [0, [ "aethersea" ] ] ]
  	}
  },
  
+  {"op" : "add", 
+  "path" : "/regionTypes/aetherseafloor",
+  "value" : 
+  {
+       "oceanLiquid" : [ "liquidaether" ],
+       "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "elderfluid", "alienjuice" ],
+      "oceanLevelOffset" : 9999,
+      "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],      
+      "biome" : [ [0, [ "aetherseafloor" ] ] ]
+    }
+  },
+  
+ {"op" : "add",
+ "path": "/regionTypes/strangesea",
+ "value" : 
+ 	{
+       "oceanLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater" ],
+       "oceanLevelOffset" : 0, 
+       "caveLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "fuhoney", "helium3gas", "shadowgas", "wastewater", "poison", "lava" ],
+       "caveLiquidChanceRange" : [70, 100],
+       "blockSelector" : [ "remixedIslandsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves" ],
+
+       "biome" : [ [0, [ "strangesea" ]] ]
+ 	}
+ },
+ 
+ 
+  {"op" : "add", 
+  "path" : "/regionTypes/strangeseafloor",
+  "value" : 
+  {
+       "oceanLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater" ],
+       "caveLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "fuhoney", "helium3gas", "shadowgas", "wastewater", "poison", "lava" ],
+      "oceanLevelOffset" : 9999,
+      "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],      
+      "biome" : [ [0, [ "strangeseafloor" ]] ]
+    }
+  },
+  
+  
+  
  {"op" : "add",
  "path": "/regionTypes/breakwater",
  "value" : 
