@@ -61,12 +61,7 @@
   },
   
   "hueShiftOptions" : [ 0 ],
-  "weather" : [
-    [0, [
-      "/weather.config:sulphuric"
-    ]]
-  ],
-
+  "weather" : [ ],
   "skyOptions" : [ ],
   
     "mainBlock" : "retexaetherdust",
@@ -221,7 +216,19 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "blockpile", "spikes", "flats" ]
-        }
+        },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "aetherkelp" ],
+        "treeFoliageList" : [ "" ]
+      }        
       ]
     }
 }
