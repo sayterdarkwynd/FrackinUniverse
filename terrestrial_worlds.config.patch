@@ -669,7 +669,7 @@
        "layers" : {
         "surface" : {
           "primaryRegion" : [ "aethersea" ],
-          "secondaryRegions" : [ "tidewater", "bloodstonesea", "corruptedforest", "supermatterzone", "goreforest", "crystalswamp", "corruptmoon", "alienforest", "cellfield", "hauntedforest", "hauntedgraveyard", "corrupt", "tar", "bioluminescence", "bones", "eyepatch", "alien", "lightless", "penumbra", "toxic", "volcanic", "ashgarden", "blackslimebog", "blisterbushfield", "bloodgulch", "bloodstonefield", "deadwood", "elder", "energyorbforest", "hellhive" ],
+          "secondaryRegions" : [ "energyorbforestaether", "aetherbreakwater", "estuaryaether", "supermatterzoneaether2", "crystalswampaether", "cellfieldaether", "bioluminescence", "elder", "hellhive" ],
           "dungeons" : [ 
           [1.0, "fuwreck"], 
           [1.0, "wreck"], 
@@ -679,7 +679,7 @@
         },
         "subsurface" : {
           "primaryRegion" : [ "aetherseafloor" ],
-          "secondaryRegions" : [ "oceanfloor", "toxicoceanfloor", "magmaoceanfloor", "arcticoceanfloor","nitrogenseafloor", "bloodstoneseafloor", "sulphuricoceanfloor"  ],
+          "secondaryRegions" : [ "energyorbforestaether2", "deepseaventaether", "crystaldesertaether", "supermatterzoneaether"  ],
           
           "dungeons" : [ 
           [1.0, "wreckunderwater"], 
@@ -4417,7 +4417,7 @@
   "path" : "/regionTypes/lightless",
   "value" : 
   {
-      "caveLiquid" : [ "blacktar", "pus", "bloodliquid", "darkwater", "liquidaether" ],
+      "caveLiquid" : [ "blacktar", "pus", "bloodliquid", "darkwater" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "remixedSurface", "remixedMildSurface", "remixedSwampySurface", "remixedCanyonsSurface", "remixedMountainsSurface"  ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -4506,7 +4506,7 @@
   "path" : "/regionTypes/blisterbushfield",
   "value" : 
   {
-      "caveLiquid" : [ "alienjuice", "liquidaether", "pus", "slimeliquid" ],
+      "caveLiquid" : [ "alienjuice", "pus", "slimeliquid" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "flatsSurface", "lowHillsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -4520,7 +4520,7 @@
   "path" : "/regionTypes/bloodstonefield",
   "value" : 
   {
-      "caveLiquid" : [ "bloodliquid", "liquidaether", "shadowgas" ],
+      "caveLiquid" : [ "bloodliquid", "shadowgas" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "mixedSurface", "lowHillsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -4574,7 +4574,7 @@
   "path" : "/regionTypes/corruptedforest",
   "value" : 
   {
-      "caveLiquid" : [ "bio_ooze", "pus", "darkwater", "liquidaether" ],
+      "caveLiquid" : [ "bio_ooze", "pus", "darkwater" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "lowHillsSurface", "mixedSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -4588,7 +4588,7 @@
   "path" : "/regionTypes/crystalplain",
   "value" : 
   {
-      "caveLiquid" : [ "crystalliquid", "elderfluid", "liquidaether" ],
+      "caveLiquid" : [ "crystalliquid", "elderfluid" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedSpikesSurface", "remixedSpikesSurface2" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -4610,7 +4610,7 @@
       ]
     }
   }, 
-  
+ 
   {"op" : "add", 
   "path" : "/regionTypes/deadwood",
   "value" : 
@@ -4654,7 +4654,7 @@
   "path" : "/regionTypes/elder",
   "value" : 
   {
-      "caveLiquid" : [ "elderfluid", "bio_ooze", "darkwater", "liquidaether" ],
+      "caveLiquid" : [ "elderfluid", "bio_ooze", "darkwater" ],
       "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedMountainsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -5332,6 +5332,49 @@
  	}
  },
 
+
+   {"op" : "add", 
+   "path" : "/planetTypes/aethersea",
+   "value" : 
+     {
+       "threatRange" : [4, 8],
+       "layers" : {
+        "surface" : {
+          "primaryRegion" : [ "aethersea" ],
+          "secondaryRegions" : [ "tidewater", "aetherbreakwater", "bloodstonesea", "corruptedforest", "supermatterzone", "goreforest", "crystalswamp", "corruptmoon", "alienforest", "cellfield", "hauntedforest", "hauntedgraveyard", "corrupt", "tar", "bioluminescence", "bones", "eyepatch", "alien", "lightless", "penumbra", "toxic", "volcanic", "ashgarden", "blackslimebog", "blisterbushfield", "bloodgulch", "bloodstonefield", "deadwood", "elder", "energyorbforest", "hellhive" ],
+          "dungeons" : [ 
+          [1.0, "fuwreck"], 
+          [1.0, "wreck"], 
+          [1.0, "hylotlcity"],
+          [1.0, "hylotlruinedcastle"]
+          ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "aetherseafloor" ],
+          "secondaryRegions" : [ "oceanfloor", "toxicoceanfloor", "magmaoceanfloor", "arcticoceanfloor","nitrogenseafloor", "bloodstoneseafloor", "sulphuricoceanfloor"  ],
+          
+          "dungeons" : [ 
+          [1.0, "wreckunderwater"], 
+          [1.0, "hylotlruinedcity"], 
+          [1.0, "hylotloceancity"]
+          ]        
+        },
+        "underground1" : {
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+        },
+        "underground2" : {
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+        },
+        "underground3" : {
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+        },
+        "core" : {
+          "primaryRegion" : [ "mooncore", "nitrogencore", "protocore", "core", "liquidprotocore", "irradiumcore" ]
+        } 
+       }
+     }
+   },   
+   
  {"op" : "add",
  "path": "/regionTypes/aethersea",
  "value" : 
@@ -5346,6 +5389,7 @@
        "biome" : [ [0, [ "aethersea" ] ] ]
  	}
  },
+ 
  
   {"op" : "add", 
   "path" : "/regionTypes/aetherseafloor",
@@ -5407,6 +5451,21 @@
  },
 
  {"op" : "add",
+ "path": "/regionTypes/aetherbreakwater",
+ "value" : 
+ 	{
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 0, 
+       "blockSelector" : [ "breakwaterIslandsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves" ],
+
+       "biome" : [
+         [0, [ "aetherbreakwater" ]]
+       ]
+ 	}
+ },
+ 
+ {"op" : "add",
  "path": "/regionTypes/rotwater",
  "value" : 
  	{
@@ -5432,6 +5491,20 @@
 
        "biome" : [
          [0, [ "estuary" ]]
+       ]
+ 	}
+ },
+ {"op" : "add",
+ "path": "/regionTypes/estuaryaether",
+ "value" : 
+ 	{
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 0, 
+       "blockSelector" : [ "tidalflatsIslandsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves" ],
+
+       "biome" : [
+         [0, [ "estuaryaether" ]]
        ]
  	}
  },
@@ -5548,7 +5621,115 @@
        ]
  	}
  },
- 
+ {"op" : "add",
+ "path":"/regionTypes/deepseaventaether",
+ "value" : 
+ 	{
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 9999,
+       "blockSelector" : [ "remixedCanyonsSurface" ],
+       "fgCaveSelector" : [ "denseCaves" ],
+       "bgCaveSelector" : [ "denseCaves" ],
+
+       "caveLiquid" : [ "lava" ],
+       "caveLiquidChanceRange" : [100, 100],
+       "biome" : [
+         [0, [ "deepseaventaether" ]]
+       ]
+ 	}
+ }, 
+ {"op" : "add", 
+  "path" : "/regionTypes/crystaldesertaether",
+  "value" : 
+  {
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 9999,  
+      "caveLiquid" : [ "crystalliquid", "lava", "elderfluid" ],
+      "caveLiquidChanceRange" : [55, 95],
+      "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedStepsSurface" ],
+      "fgCaveSelector" : [ "denseCaves" ],
+      "biome" : [
+        [0, [ "crystaldesertaether" ]]
+      ]
+    }
+  }, 
+ {"op" : "add", 
+  "path" : "/regionTypes/supermatterzoneaether",
+  "value" : 
+  {
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 9999,  
+        "caveLiquid" : [  "organicsoup", "fuel", "blacktar", "crystalliquid"  ],
+        "caveLiquidChanceRange" : [55, 95],
+        "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface"  ],
+      
+      "fgCaveSelector" : [ "denseCaves" ],
+      "biome" : [
+        [0, [ "supermatterzoneaether" ]]
+      ]
+    }
+  },
+ {"op" : "add", 
+  "path" : "/regionTypes/supermatterzoneaether2",
+  "value" : 
+  {
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 0,  
+        "caveLiquid" : [  "organicsoup", "fuel", "blacktar", "crystalliquid"  ],
+        "caveLiquidChanceRange" : [55, 95],
+        "blockSelector" : [ "remixedIslandsSurface", "remixedFlatIslandsSurface"  ],
+      
+      "fgCaveSelector" : [ "denseCaves" ],
+      "biome" : [
+        [0, [ "supermatterzoneaether" ]]
+      ]
+    }
+  }, 
+  {"op" : "add", 
+  "path" : "/regionTypes/cellfieldaether",
+  "value" : 
+  {
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 0,   
+      "blockSelector" : [ "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "caveLiquid" : [ "bloodliquid", "alienjuice" ],
+      "caveLiquidChanceRange" : [65, 85],
+
+      "biome" : [
+        [0, [ "cellfieldaether"]]
+      ]
+    }
+  },   
+  {"op" : "add", 
+  "path" : "/regionTypes/energyorbforestaether",
+  "value" : 
+  {
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 0,   
+      "caveLiquid" : [ "alienjuice", "organicsoup", "healingliquid", "crystalliquid"  ],
+      "blockSelector" : [ "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "energyorbforestaether" ]]
+      ]
+    }
+  },  
+   {"op" : "add", 
+  "path" : "/regionTypes/energyorbforestaether2",
+  "value" : 
+  {
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 9999,     
+      "caveLiquid" : [ "alienjuice", "organicsoup", "healingliquid", "crystalliquid"  ],
+      "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "energyorbforestaether" ]]
+      ]
+    }
+  },  
+  
   {"op" : "add",
   "path":"/regionTypes/deepseaventdark",
   "value" : 
