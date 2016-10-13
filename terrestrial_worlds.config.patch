@@ -688,16 +688,16 @@
           ]        
         },
         "underground1" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarpit", "ffvolcanic", "ffcellcave" ]
         },
         "underground2" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarpit", "ffvolcanic", "ffcellcave" ]
         },
         "underground3" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarpit", "ffvolcanic", "ffcellcave" ]
         },
         "core" : {
-          "primaryRegion" : [ "mooncore", "nitrogencore", "protocore", "core", "liquidprotocore", "irradiumcore" ]
+          "primaryRegion" : [ "mooncore", "aethercore" ]
         } 
        }
      }
@@ -6789,7 +6789,23 @@
       ]
     }
   },
-
+  {"op" : "add", 
+  "path" : "/regionTypes/aethercore",
+  "value" : 
+    {
+      "caveLiquid" : [ "liquidaether" ],
+      "caveLiquidChanceRange" : [75, 95],
+      "caveLiquidSeedDensityRange" : [4.0, 4.0],
+      "oceanLiquid" : [ "liquidaether" ],
+      "oceanLevelOffset" : -20,
+      "fgCaveSelector" : [ "coreCaves" ],
+      "bgCaveSelector" : [ "coreBackgroundCaves" ], 
+      "biome" : [
+        [0, [ "aethercorelayer"] ]
+      ]
+    }
+  },
+  
   {"op" : "add", 
   "path" : "/regionTypes/puscore",
   "value" : 
