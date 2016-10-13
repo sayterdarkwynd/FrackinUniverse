@@ -254,7 +254,6 @@
 {"op" : "add", "path" : "/planetDefaults/layers/surface/dungeons/-", "value" : [1.0, "floranhell"] },
 {"op" : "add", "path" : "/planetDefaults/layers/surface/dungeons/-", "value" : [1.0, "humanbunker"] },
 {"op" : "add", "path" : "/planetDefaults/layers/surface/dungeons/-", "value" : [1.0, "scifidungeon"] },
-{"op" : "add", "path" : "/planetDefaults/layers/surface/dungeons/-", "value" : [1.0, "wreck"] },
 //{"op" : "add", "path" : "/planetDefaults/layers/subsurface/dungeons/-", "value" : [1.0, "mazeornate"] },
 //{"op" : "add", "path" : "/planetDefaults/layers/underground1/dungeons/-", "value" : [1.0, "mazeornate"] },
 //{"op" : "add", "path" : "/planetDefaults/layers/underground2/dungeons/-", "value" : [1.0, "mazeornate"] },
@@ -661,47 +660,6 @@
    },
    
 
-   {"op" : "add", 
-   "path" : "/planetTypes/aethersea",
-   "value" : 
-     {
-       "threatRange" : [4, 8],
-       "layers" : {
-        "surface" : {
-          "primaryRegion" : [ "aethersea" ],
-          "secondaryRegions" : [ "energyorbforestaether", "aetherbreakwater", "estuaryaether", "supermatterzoneaether2", "crystalswampaether", "cellfieldaether", "bioluminescence", "elder", "hellhive" ],
-          "dungeons" : [ 
-          [1.0, "fuwreck"], 
-          [1.0, "wreck"], 
-          [1.0, "hylotlcity"],
-          [1.0, "hylotlruinedcastle"]
-          ]
-        },
-        "subsurface" : {
-          "primaryRegion" : [ "aetherseafloor" ],
-          "secondaryRegions" : [ "energyorbforestaether2", "deepseaventaether", "crystaldesertaether", "supermatterzoneaether"  ],
-          
-          "dungeons" : [ 
-          [1.0, "wreckunderwater"], 
-          [1.0, "hylotlruinedcity"], 
-          [1.0, "hylotloceancity"]
-          ]        
-        },
-        "underground1" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarpit", "ffvolcanic", "ffcellcave" ]
-        },
-        "underground2" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarpit", "ffvolcanic", "ffcellcave" ]
-        },
-        "underground3" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarpit", "ffvolcanic", "ffcellcave" ]
-        },
-        "core" : {
-          "primaryRegion" : [ "mooncore", "aethercore" ]
-        } 
-       }
-     }
-   },   
    
 
    {"op" : "add", 
@@ -5339,15 +5297,9 @@
      {
        "threatRange" : [4, 8],
        "layers" : {
-      "space" : {
-        "primaryRegion" : [ "corruptasteroid", "asteroids", "elderasteroid", "barrenasteroids" ]
-      },         
-      "atmosphere" : {
-        "primaryRegion" : [ "clouds", "void", "iceclouds", "atmosphere" ]
-      },        
         "surface" : {
           "primaryRegion" : [ "aethersea" ],
-          "secondaryRegions" : [ "tidewater", "aetherbreakwater", "bloodstonesea", "corruptedforest", "supermatterzone", "goreforest", "crystalswamp", "corruptmoon", "alienforest", "cellfield", "hauntedforest", "hauntedgraveyard", "corrupt", "tar", "bioluminescence", "bones", "eyepatch", "alien", "lightless", "penumbra", "toxic", "volcanic", "ashgarden", "blackslimebog", "blisterbushfield", "bloodgulch", "bloodstonefield", "deadwood", "elder", "energyorbforest", "hellhive" ],
+          "secondaryRegions" : [ "energyorbforestaether", "aetherbreakwater", "estuaryaether", "supermatterzoneaether2", "crystalswampaether", "cellfieldaether", "bioluminescence", "elder", "hellhive" ],
           "dungeons" : [ 
           [1.0, "fuwreck"], 
           [1.0, "wreck"], 
@@ -5357,7 +5309,7 @@
         },
         "subsurface" : {
           "primaryRegion" : [ "aetherseafloor" ],
-          "secondaryRegions" : [ "oceanfloor", "toxicoceanfloor", "magmaoceanfloor", "arcticoceanfloor","nitrogenseafloor", "bloodstoneseafloor", "sulphuricoceanfloor"  ],
+          "secondaryRegions" : [ "energyorbforestaether2", "deepseaventaether", "crystaldesertaether", "supermatterzoneaether"  ],
           
           "dungeons" : [ 
           [1.0, "wreckunderwater"], 
@@ -5366,16 +5318,16 @@
           ]        
         },
         "underground1" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarunderground", "ffvolcanic", "ffcellcaves" ]
         },
         "underground2" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarunderground", "ffvolcanic", "ffcellcaves" ]
         },
         "underground3" : {
-          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
+          "secondaryRegions" : [ "elderunderground", "lightlessunderground", "penumbraunderground", "crystalcave", "hiveold","coralcavern", "luminouscaves", "bonecaves", "icecaves", "ffshadow", "ffsupermatter", "fftarunderground", "ffvolcanic", "ffcellcaves" ]
         },
         "core" : {
-          "primaryRegion" : [ "mooncore", "nitrogencore", "protocore", "core", "liquidprotocore", "irradiumcore" ]
+          "primaryRegion" : [ "mooncore", "aethercore" ]
         } 
        }
      }
@@ -6480,7 +6432,18 @@
       ]
     }
   },
-
+  {"op" : "add", 
+  "path" : "/regionTypes/fftarpit",
+  "value" : 
+  {
+      "caveLiquid" : [ "tarliquid", "blacktar" ],
+      "caveLiquidChanceRange" : [5, 75],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
+      "biome" : [
+        [0, [ "fftarpit"] ]
+      ]
+    }
+  },
   {"op" : "add", 
   "path" : "/regionTypes/fftarunderground",
   "value" : 
