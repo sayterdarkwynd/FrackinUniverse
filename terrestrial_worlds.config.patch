@@ -5339,6 +5339,12 @@
      {
        "threatRange" : [4, 8],
        "layers" : {
+      "space" : {
+        "primaryRegion" : [ "corruptasteroid", "asteroids", "elderasteroid", "barrenasteroids" ]
+      },         
+      "atmosphere" : {
+        "primaryRegion" : [ "clouds", "void", "iceclouds", "atmosphere" ]
+      },        
         "surface" : {
           "primaryRegion" : [ "aethersea" ],
           "secondaryRegions" : [ "tidewater", "aetherbreakwater", "bloodstonesea", "corruptedforest", "supermatterzone", "goreforest", "crystalswamp", "corruptmoon", "alienforest", "cellfield", "hauntedforest", "hauntedgraveyard", "corrupt", "tar", "bioluminescence", "bones", "eyepatch", "alien", "lightless", "penumbra", "toxic", "volcanic", "ashgarden", "blackslimebog", "blisterbushfield", "bloodgulch", "bloodstonefield", "deadwood", "elder", "energyorbforest", "hellhive" ],
@@ -5653,6 +5659,22 @@
       ]
     }
   }, 
+ {"op" : "add",
+ "path": "/regionTypes/crystalswampaether",
+ "value" : 
+ 	{
+       "oceanLiquid" : [ "liquidaether" ],
+       "oceanLevelOffset" : 0,   	
+       "caveLiquid" : [ "organicsoup" ],
+       "caveLiquidChanceRange" : [99, 100],
+       "blockSelector" : [ "remixedPoolsSurface", "remixedSwampySurface", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves" ],
+
+       "biome" : [
+         [0, [ "crystalswampaether" ]]
+       ]
+ 	}
+ },  
  {"op" : "add", 
   "path" : "/regionTypes/supermatterzoneaether",
   "value" : 
@@ -5842,6 +5864,7 @@
  	}
 },
 
+
 	{
 		"op" : "add",
 		"path" : "/regionTypes/elderasteroid",
@@ -5964,6 +5987,7 @@
  	}
  },
 
+ 
   {"op" : "add", 
   "path" : "/regionTypes/ffcoalmine",
   "value" : 
