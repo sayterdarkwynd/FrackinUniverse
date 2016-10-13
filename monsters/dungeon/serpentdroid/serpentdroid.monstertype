@@ -46,7 +46,7 @@
         },
         {
           "name" : "action-fire",
-          "cooldown" : 2.5,
+          "cooldown" : 0.3,
           "parameters" : {
             "maximumRange" : 15,
             "minimumRange" : 2,
@@ -54,19 +54,19 @@
             "windupTime" : 0.0,
 
             "projectileType" : "blueplasmabullet",
-            "power" : 4,
+            "power" : 12,
             "fireOffset" : [-1.0, -0.5],
-            "projectileCount" : 3,
-            "projectileInterval" : 0.3,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.05,
             "aimAtTarget" : true,
             "rotateAim" : true,
             "rotatedOffset" : [2.125, 0.0],
             "fireState" : "fire",
-            "fireDelay" : 0.2,
+            "fireDelay" : 0.05,
             "fireSound" : "fire",
 
             "winddownState" : "",
-            "winddownTime" : 0.5
+            "winddownTime" : 0.2
           }
         }
       ],
@@ -81,7 +81,7 @@
             "windupTime" : 0.0,
 
             "projectileType" : "blueplasmabullet",
-            "power" : 4,
+            "power" : 12,
             "fireOffset" : [-1.0, -0.5],
             "projectileCount" : 3,
             "projectileInterval" : 0.3,
@@ -188,12 +188,15 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
-        "poisonImmunity" : {
+        "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
         "shieldRegen" : {
           "baseValue" : 0.0
-        }
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }        
       },
 
       "resources" : {
