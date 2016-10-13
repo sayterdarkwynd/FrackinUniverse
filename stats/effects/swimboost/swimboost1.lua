@@ -22,7 +22,8 @@ function update(dt)
      mcontroller.controlModifiers({
       speedModifier = self.boostAmount,
       liquidJumpModifier = self.riseAmount,
-      liquidForce = 150
+      liquidForce = 150,
+      liquidImpedance = 0.1
     })
   animator.setParticleEmitterActive("bubbles", mcontroller.running())
   else
