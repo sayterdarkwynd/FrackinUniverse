@@ -126,6 +126,8 @@ function isn_powerSlotCheck(slotnum)
 	elseif slotContent.name == "enricheduranium" then return 6
 	elseif slotContent.name == "plutoniumrod" then return 6
 	elseif slotContent.name == "enrichedplutonium" then return 7
+	elseif slotContent.name == "tritium" then return 4
+	elseif slotContent.name == "deuterium" then return 5
 	elseif slotContent.name == "thoriumrod" then return 5
 	elseif slotContent.name == "solariumstar" then return 8
 	elseif slotContent.name == "ultronium" then return 10
