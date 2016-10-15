@@ -13,9 +13,7 @@
           },
           "invulnerable" : {
             "frames" : 1,
-            "cycle" : 2,
-            "mode" :"transition",
-            "transition" :"idle"
+            "cycle" : 4
           },           
           "tentacle" : {
             "frames" : 8,
@@ -27,8 +25,59 @@
             "frames" : 1,
             "cycle" : 4,
             "mode" :"transition",
-            "transition" :"idle"
+            "transition" :"hidewinddown2",
+            "properties" : {
+              "immediateSound" : "/sfx/tech/tech_sphere_transform.ogg"
+            }             
           },
+          
+          "hidewindup" : {
+            "frames" : 4,
+            "cycle" : 0.8,
+            "properties" : {
+              "immediateSound" : "/sfx/tech/tech_sphere_transform.ogg"
+            }              
+          },   
+          
+          "hide" : {
+            "frames" : 1,
+            "cycle" : 4
+          },
+          
+          "hidewinddown" : {
+            "frames" : 4,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/tech/tech_sphere_transform.ogg"
+            }             
+          },
+          "hidewindup2" : {
+            "frames" : 4,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "hide2",            
+            "properties" : {
+              "immediateSound" : "/sfx/tech/tech_sphere_transform.ogg"
+            }               
+          },   
+          
+          "hide2" : {
+            "frames" : 1,
+            "cycle" : 4
+          },
+          
+          "hidewinddown2" : {
+            "frames" : 4,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/tech/tech_sphere_transform.ogg"
+            }             
+          },          
+             
           "firewindup" : {
             "frames" : 2,
             "cycle" : 0.4,
@@ -48,7 +97,7 @@
             "frames" : 2,
             "cycle" : 0.2,
             "mode" : "transition",
-            "transition" : "stealth"
+            "transition" : "idle"
           },           
           "walk" : {
             "frames" : 6,
@@ -57,27 +106,21 @@
           },
           "fire" : {
             "frames" : 4,
-            "cycle" : 0.4,
-            "mode" :"transition",
-            "transition" :"idle",            
+            "cycle" : 0.4,           
             "properties" : {
               "immediateSound" : "/sfx/starspawn/attack.ogg"
             }             
           }, 
           "fire2" : {
             "frames" : 4,
-            "cycle" : 0.4,
-            "mode" :"transition",
-            "transition" :"idle",            
+            "cycle" : 0.4,           
             "properties" : {
               "immediateSound" : "/sfx/starspawn/attack2.ogg"
             }             
           },          
           "fire3" : {
             "frames" : 6,
-            "cycle" : 0.6,
-            "mode" :"transition",
-            "transition" :"stealth",            
+            "cycle" : 0.6,            
             "properties" : {
               "immediateSound" : "/sfx/starspawn/starspawn1.ogg"
             }            
@@ -106,13 +149,14 @@
           "chargewinddown" : {
             "frames" : 1,
             "cycle" : 0.3,
-            "mode" :"transition",
-            "transition" :"stealth"            
+            "mode" : "transition",
+            "transition" : "hidewindup"           
           },           
           "jump" : {
             "frames" : 1,
             "cycle" : 0.1,
-            "mode" :"loop"
+            "mode" :"transition",
+            "transition" : "hidewindup2"
           },
           "fall" : {
             "frames" : 1,
@@ -186,7 +230,7 @@
               "properties" : {
                 "image" : "<partImage>:stealth"
               }
-            },            
+            },             
             "walk" : {
               "properties" : {
                 "image" : "<partImage>:warp.<frame>"
@@ -271,7 +315,42 @@
                 "image" : "<partImage>:fire4.<frame>",
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
-            } 
+            },
+            "hidewindup" : {
+              "properties" : {
+                "image" : "<partImage>:hidewindup.<frame>"
+              }
+            },   
+            
+            "hide" : {
+              "properties" : {
+                "image" : "<partImage>:hide"
+              }
+            },
+            
+            "hidewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:hidewinddown.<frame>"
+              }
+            },
+            "hidewindup2" : {
+              "properties" : {
+                "image" : "<partImage>:hidewindup2.<frame>"
+              }
+            },   
+            
+            "hide2" : {
+              "properties" : {
+                "image" : "<partImage>:hide2"
+              }
+            },
+            
+            "hidewinddown2" : {
+              "properties" : {
+                "image" : "<partImage>:hidewinddown2.<frame>"
+              }
+            }              
+
           },
           "damage" : {
             "stunned" : {

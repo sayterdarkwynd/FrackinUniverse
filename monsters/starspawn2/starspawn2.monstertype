@@ -30,17 +30,7 @@
       "hurtWaitForGroundTime": 0.1,
 
       "foundTargetActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-	    "moveState": "warp",
-	    "idleState": "idle",
-	    "teleportMinDistance": 8,
-	    "targetXDelta": 5,
-	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20          
-          }
-        }      
+     
       ],
       "fleeActions" : [],
 
@@ -170,9 +160,9 @@
           "name" : "action-invulnerable",
           "parameters" : {
             "windupTime" : 0,
-            "windupState" : "",
+            "windupState" : "hidewindup2",
             "winddownTime" : 0,
-            "winddownState" : "idle",
+            "winddownState" : "hidewinddown2",
             "invulnerableTime" : 4
           }
         }
@@ -187,7 +177,7 @@
             "requireLineOfSight" : true,
             "maximumRange" : 12,
             "minimumRange" : 4,
-            "windupState" : "",
+            "windupState" : "hidewinddown2",
             "windupTime" : 0.7,
 
             "projectileType" : "chaosswoosh",
@@ -207,8 +197,8 @@
           "cooldown" : 15.0,
           "parameters" : {
             "maximumRange" : 20,
-            "windupState" : "chargewindup",
-            "windupTime" : 0.05,
+            "windupState" : "hidewinddown2",
+            "windupTime" : 0.8,
 
             "chargeTime" : 0.6,
             "chargeSpeed" : 30,
@@ -231,7 +221,7 @@
             "maximumRange" : 20,
             "minimumRange" : 4,
             "onGround" : false,
-            "windupState" : "",
+            "windupState" : "hidewinddown2",
             "windupStopForce" : 50,
             "windupTime" : 0.2,
 
@@ -255,30 +245,7 @@
         }   
       ],
       
-      "periodicActions" : [
-        {
-          "name" : "action-invulnerable",
-          "parameters" : {
-            "windupTime" : 0,
-            "windupState" : "",
-            "winddownTime" : 0,
-            "winddownState" : "idle",
-            "invulnerableTime" : 4
-          }
-        },
-        {
-          "name" : "approach-teleport",
-          "cooldown" : 1,
-          "parameters" : {
-	    "moveState": "warp",
-	    "idleState": "warp",
-	    "teleportMinDistance": 12,
-	    "targetXDelta": 5,
-	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20               
-          }
-        }      
-      ],
+      "periodicActions" : [ ],
 
       "approachActions" : [
         {
