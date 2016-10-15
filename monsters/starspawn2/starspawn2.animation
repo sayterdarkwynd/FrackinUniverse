@@ -11,6 +11,12 @@
             "cycle" : 1,
             "mode" :"loop"
           },
+          "invulnerable" : {
+            "frames" : 1,
+            "cycle" : 2,
+            "mode" :"transition",
+            "transition" :"idle"
+          },           
           "tentacle" : {
             "frames" : 8,
             "cycle" : 0.8,
@@ -170,7 +176,12 @@
               "properties" : {
                 "image" : "<partImage>:idle"
               }
-            },          
+            },  
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable"
+              }
+            },             
             "stealth" : {
               "properties" : {
                 "image" : "<partImage>:stealth"

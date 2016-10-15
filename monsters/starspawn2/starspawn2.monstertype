@@ -59,8 +59,7 @@
 
             "projectileType" : "elderburst",
             "projectileParameters" : {
-              "speed" : 40,
-              "timeToLive" : 5
+              "speed" : 40
             },
             "power" : 12,
             "fireOffset" : [0.0, 0.0],
@@ -73,36 +72,7 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        },       
-        {
-          "name" : "action-fire",
-          "cooldown" : 15.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 4,
-            "onGround" : false,
-            "windupState" : "",
-            "windupStopForce" : 50,
-            "windupTime" : 0.2,
-
-            "projectileType" : "floatydeathballelder",
-            "projectileParameters" : {
-              "speed" : 0,
-              "timeToLive" : 5
-            },
-            "power" : 4,
-            "fireOffset" : [0.0, 0.0],
-            "aimAtTarget" : true,
-            "inaccuracy" : 0.09,
-            "fireState" : "firewarp",
-            "fireDelay" : 0.5,
-            "fireSound" : "chestgun",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },      
+        },        
         {
           "name" : "action-fire",
 	  "cooldown" : 1,
@@ -173,28 +143,6 @@
           }
         },   
         {
-          "name" : "action-fire",
-	  "cooldown" : 6,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 12,
-            "minimumRange" : 4,
-            "windupState" : "",
-            "windupTime" : 0.7,
-
-            "projectileType" : "chaosswoosh",
-            "power" : 11,
-            "speed": 10,
-            "fireOffset" : [4, 0],
-            "aimAtTarget" : true,
-            "fireSound" : "fire4",
-            "range": 7,
-            "fireState" : "fire4",
-            "winddownState" : "",
-            "winddownTime" : 1.4
-          }
-        },
-        {
           "name" : "action-charge",
           "cooldown" : 9.0,
           "parameters" : {
@@ -216,8 +164,108 @@
           }
         }        
       ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-invulnerable",
+          "parameters" : {
+            "windupTime" : 0,
+            "windupState" : "",
+            "winddownTime" : 0,
+            "winddownState" : "idle",
+            "invulnerableTime" : 4
+          }
+        }
+      ],
+      
+      //if using the actions below, disable invulnerability
+      "invulnerableActions" : [
+        {
+          "name" : "action-fire",
+	  "cooldown" : 18,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 12,
+            "minimumRange" : 4,
+            "windupState" : "",
+            "windupTime" : 0.7,
 
+            "projectileType" : "chaosswoosh",
+            "power" : 11,
+            "speed": 10,
+            "fireOffset" : [4, 0],
+            "aimAtTarget" : true,
+            "fireSound" : "fire4",
+            "range": 7,
+            "fireState" : "fire4",
+            "winddownState" : "",
+            "winddownTime" : 1.4
+          }
+        },     
+        {
+          "name" : "action-charge",
+          "cooldown" : 15.0,
+          "parameters" : {
+            "maximumRange" : 20,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.05,
+
+            "chargeTime" : 0.6,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 900,
+            "chargeState" : "charge",
+            "wallKnockback" : true,
+            "wallCrashSound" : "wallCrash",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.6,
+            "winddownStopForce" : 1000,
+            "winddownState" : "chargewinddown"
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 20.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
+            "onGround" : false,
+            "windupState" : "",
+            "windupStopForce" : 50,
+            "windupTime" : 0.2,
+
+            "projectileType" : "floatydeathballelder",
+            "projectileParameters" : {
+              "speed" : 1,
+              "timeToLive" : 5,
+              "physics" : "laser"
+            },
+            "power" : 5,
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : true,
+            "inaccuracy" : 0.09,
+            "fireState" : "firewarp",
+            "fireDelay" : 0.5,
+            "fireSound" : "chestgun",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }   
+      ],
+      
       "periodicActions" : [
+        {
+          "name" : "action-invulnerable",
+          "parameters" : {
+            "windupTime" : 0,
+            "windupState" : "",
+            "winddownTime" : 0,
+            "winddownState" : "idle",
+            "invulnerableTime" : 4
+          }
+        },
         {
           "name" : "approach-teleport",
           "cooldown" : 1,
