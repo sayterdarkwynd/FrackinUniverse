@@ -44,7 +44,65 @@
       ],
       "fleeActions" : [],
 
-      "hostileActions" : [       
+      "hostileActions" : [ 
+        {
+          "name" : "action-fire",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
+            "onGround" : false,
+            "windupState" : "",
+            "windupStopForce" : 50,
+            "windupTime" : 0.4,
+
+            "projectileType" : "elderburst",
+            "projectileParameters" : {
+              "speed" : 40,
+              "timeToLive" : 5
+            },
+            "power" : 12,
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : true,
+            "inaccuracy" : 0.09,
+            "fireState" : "firewarp",
+            "fireDelay" : 0.5,
+            "fireSound" : "chestgun",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },       
+        {
+          "name" : "action-fire",
+          "cooldown" : 15.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
+            "onGround" : false,
+            "windupState" : "",
+            "windupStopForce" : 50,
+            "windupTime" : 0.2,
+
+            "projectileType" : "floatydeathballelder",
+            "projectileParameters" : {
+              "speed" : 0,
+              "timeToLive" : 5
+            },
+            "power" : 4,
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : true,
+            "inaccuracy" : 0.09,
+            "fireState" : "firewarp",
+            "fireDelay" : 0.5,
+            "fireSound" : "chestgun",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },      
         {
           "name" : "action-fire",
 	  "cooldown" : 1,
@@ -79,7 +137,7 @@
             "windupTime" : 0.2,
 
             "projectileType" : "elderbladeswoosh",
-            "power" : 9,
+            "power" : 7,
             "speed": 10,
             "fireOffset" : [4.6, 0],
             "aimAtTarget" : true,
@@ -101,7 +159,7 @@
             "windupTime" : 0.2,
 
             "projectileType" : "shadowswoosh",
-            "power" : 9,
+            "power" : 8,
             "speed": 10,
             "fireOffset" : [3, 0],
             "aimAtTarget" : true,
@@ -125,7 +183,7 @@
             "windupTime" : 0.7,
 
             "projectileType" : "chaosswoosh",
-            "power" : 12,
+            "power" : 11,
             "speed": 10,
             "fireOffset" : [4, 0],
             "aimAtTarget" : true,
@@ -148,10 +206,11 @@
             "chargeSpeed" : 30,
             "chargeControlForce" : 900,
             "chargeState" : "charge",
-            "wallCrashSound" : "",
+            "wallKnockback" : true,
+            "wallCrashSound" : "wallCrash",
             "wallCrashEmitter" : "",
 
-            "winddownTime" : 0.2,
+            "winddownTime" : 0.6,
             "winddownStopForce" : 1000,
             "winddownState" : "chargewinddown"
           }
@@ -219,7 +278,7 @@
           "cooldown" : 1,
           "parameters" : {
 	    "moveState": "warp",
-	    "idleState": "warp",
+	    "idleState": "idle",
 	    "teleportMinDistance": 12,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -20,
@@ -314,7 +373,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 210
+          "baseValue" : 710
         },
         "protection" : {
           "baseValue" : 0.35

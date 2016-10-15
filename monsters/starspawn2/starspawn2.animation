@@ -9,10 +9,41 @@
           "idle" : {
             "frames" : 1,
             "cycle" : 1,
-            "mode" :"loop",
-            "properties" : {
-            "immediateSound" : "/sfx/starspawn/starspawn1.ogg"}
+            "mode" :"loop"
           },
+          "tentacle" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" :"transition",
+            "transition" :"stealth"
+          },          
+          "stealth" : {
+            "frames" : 1,
+            "cycle" : 4,
+            "mode" :"transition",
+            "transition" :"idle"
+          },
+          "firewindup" : {
+            "frames" : 2,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "firewarp",
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/attack.ogg"
+            }                
+          },          
+          "firewarp" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "firewinddown"
+          }, 
+          "firewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "stealth"
+          },           
           "walk" : {
             "frames" : 6,
             "cycle" : 1,
@@ -21,6 +52,8 @@
           "fire" : {
             "frames" : 4,
             "cycle" : 0.4,
+            "mode" :"transition",
+            "transition" :"idle",            
             "properties" : {
               "immediateSound" : "/sfx/starspawn/attack.ogg"
             }             
@@ -28,6 +61,8 @@
           "fire2" : {
             "frames" : 4,
             "cycle" : 0.4,
+            "mode" :"transition",
+            "transition" :"idle",            
             "properties" : {
               "immediateSound" : "/sfx/starspawn/attack2.ogg"
             }             
@@ -35,6 +70,8 @@
           "fire3" : {
             "frames" : 6,
             "cycle" : 0.6,
+            "mode" :"transition",
+            "transition" :"stealth",            
             "properties" : {
               "immediateSound" : "/sfx/starspawn/starspawn1.ogg"
             }            
@@ -48,7 +85,7 @@
           },
           "charge" : {
             "frames" : 9,
-            "cycle" : 0.9,
+            "cycle" : 0.9,            
             "properties" : {
               "immediateSound" : "/sfx/starspawn/attack.ogg"
             }            
@@ -57,12 +94,14 @@
             "frames" : 1,
             "cycle" : 0.3,
             "properties" : {
-              "immediateSound" : "/sfx/starspawn/starspawn1.ogg"
+              "immediateSound" : "/sfx/starspawn/starspawncharge.ogg"
             }            
           }, 
           "chargewinddown" : {
             "frames" : 1,
-            "cycle" : 0.3         
+            "cycle" : 0.3,
+            "mode" :"transition",
+            "transition" :"stealth"            
           },           
           "jump" : {
             "frames" : 1,
@@ -74,8 +113,11 @@
             "cycle" : 0.5
           }, 
           "warp" : {
-            "frames" : 6,
-            "cycle" : 0.3
+            "frames" : 10,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/tools/teleport_up.ogg"
+            }            
           },           
           "jumpwindup" : {
             "frames" : 1,
@@ -126,9 +168,14 @@
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:idle"
               }
-            },
+            },          
+            "stealth" : {
+              "properties" : {
+                "image" : "<partImage>:stealth"
+              }
+            },            
             "walk" : {
               "properties" : {
                 "image" : "<partImage>:warp.<frame>"
@@ -136,19 +183,39 @@
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:idle"
               }
             },
             "jumpwindup" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:idle"
               }
             },            
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:idle"
               }
             },
+            "tentacle" : {
+              "properties" : {
+                "image" : "<partImage>:tentacle.<frame>"
+              }
+            },            
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:firewindup.<frame>"
+              }
+            }, 
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
+              }
+            },               
+            "firewarp" : {
+              "properties" : {
+                "image" : "<partImage>:firewarp.<frame>"
+              }
+            },             
             "warp" : {
               "properties" : {
                 "image" : "<partImage>:warp.<frame>"
@@ -198,7 +265,7 @@
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:idle"
               }
             }
           }
@@ -298,6 +365,7 @@
     "deathPuff" :["/sfx/starspawn/starspawn1.ogg"],
     "attackSound" :["/sfx/starspawn/attack.ogg"],
     "aggroHop" :["/sfx/starspawn/attack2.ogg"],
+    "wallCrash" :["/sfx/starspawn/starspawn3.ogg"],
     "blinkSound" : [ "/sfx/gun/lightningcoil3.ogg" ]
   }
 }
