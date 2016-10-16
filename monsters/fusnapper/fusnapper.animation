@@ -19,7 +19,7 @@
             "cycle" : 0.8,
             "mode" : "loop",
             "frameProperties" : {
-              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "", "", "/sfx/npc/monsters/lilodon_step2.ogg", "", "", "" ]
+              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "", "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "" ]
             }            
           },
           "jump" : {
@@ -38,9 +38,9 @@
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/scaveran_attack.ogg",
               "immediateSoundRangeMultiplier" : 0.5
-            },
+            } ,
             "frameProperties" : {
-              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "", "", "/sfx/npc/monsters/lilodon_step2.ogg", "", "", "" ]
+              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "", "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "" ]
             }            
           },
           "charge" : {
@@ -48,19 +48,15 @@
             "cycle" : 0.6,
             "mode" : "transition",
             "transition" : "chargewinddown",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/scaveran_attack.ogg",
-              "immediateSoundRangeMultiplier" : 0.5
-            },
             "frameProperties" : {
-              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "", "", "/sfx/npc/monsters/lilodon_step2.ogg", "", "", "" ]
+              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "/sfx/melee/bite_kill.ogg", "", "/sfx/npc/monsters/lilodon_step1.ogg" ]
             }
           },
           "chargewinddown" : {
             "frames" : 8,
             "cycle" : 0.4,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle"           
           }
         }
       },
@@ -106,6 +102,11 @@
         },
         "partStates" : {
           "body" : {
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },          
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
