@@ -267,15 +267,15 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats" ]
-        },
+        },  
         {
           "mode" : "floor",
-          "priority" : 3.0,
+          "priority" : 1.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "bonesmicrodungeons", "foundrymicrodungeons", "randomencounter", "avianencounter", "glitchencounter", "shroomencounter" ]
+          "microdungeons" : [ "randomencounterfire", "shroomencounterfire", "eyeencounterfire", "colourfulencounterfire", "boneencounterfire", "humanencounterfire", "glitchencounterfire", "apexencounterfire", "avianencounterfire", "floranencounterfire", "bonesmicrodungeons", "foundrymicrodungeons", "randomencounter", "avianencounter", "glitchencounter", "shroomencounter", "fubandits", "fushops", "fulabs", "fuencounters", "newhumanmicro", "newavianmicro", "minigreenruins", "fuencountercultist", "fuhives", "furedhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
         },       
         {
           "mode" : "floor",
@@ -419,6 +419,15 @@
     "grassModDensity" : 0.6,
 
     "items" : [
+{
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "asteroidencounter", "genericundergroundencounter"]
+},    
            {
              "mode" : "ceiling",
              "priority" : 1.0,

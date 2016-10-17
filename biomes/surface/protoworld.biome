@@ -227,15 +227,6 @@
         },
         {
           "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "protomini", "protomini2" ]
-        },
-        {
-          "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:scatteredSmall",
@@ -436,11 +427,20 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "protomini", "protomini2", "terrainfeatures", "rockclimb", "rocktunnel", "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats", "reversepyramids" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "newhumanmicro", "newavianmicro", "alienmicrodungeons", "wastelandbuildings", "rarebuildings", "furedhives", "fuencounters", "fushops", "fulabs", "fuhives", "fuelders", "fuavali", "fubandits" ]
-        },
+          "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "newhumanmicro", "newavianmicro", "alienmicrodungeons", "wastelandbuildings", "rarebuildings", "furedhives", "fuencounters", "fushops", "fulabs", "fuhives", "fuelders", "fuavali", "fubandits" ]
+        },  
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -457,6 +457,15 @@
       "grassModDensity" : 0.2,
 
       "items" : [
+  {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "asteroidencounter", "genericundergroundencounter"]
+  },       
         {
           "mode" : "floor",
           "priority" : 0.0,

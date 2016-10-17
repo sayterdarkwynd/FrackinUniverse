@@ -1,43 +1,43 @@
 {
   "objectName" : "voidstoragenew",
-  "colonyTags" : [ "fu", "science", "scienceoutpost" ],
-  "printable" : false,
-  "rarity" : "legendary",
+  "colonyTags" : ["elder","storage"],
+  "rarity" : "Legendary",
   "objectType" : "container",
-
+  "tooltipKind" : "container",
+  "race" : "ancient",
+  "health" : 6,
+  "lightColor" : [0, 155, 0],
   "category" : "storage",
-  "price" : 12000,
-  "description" : "The ultimate storage.",
-  "shortdescription" : "^#e43774;Dimensional Storage^white;",
-  "race" : "generic",
-  "lightColor" : [0, 255, 0],
-  "apexDescription" : "Man, I have slaughtered a lot of creatures.",
-  "avianDescription" : "I wish my damned wings worked. But nooo...",
-  "floranDescription" : "Plantss. I iss plantss.",
-  "glitchDescription" : "Why do I exist?",
-  "humanDescription" : "I wonder how many giraffes I could fit in here?",
-  "hylotlDescription" : "There is no honor in biting another mans nose.",
-  "ponexDescription" : "My putrid existence is hollow and shameful.",
-  
-  "inventoryIcon" : "voidstoragenewicon.png",
+  "price" : 21589,
+  "printable" : false,
+  "description" : "Nothing could possibly go wrong storing things in a pocket dimension!",
+  "shortdescription" : "Dimensional Storage",
+
+  "inventoryIcon" : "icon.png",
   "orientations" : [
     {
-      "leftImage" : "voidstoragenewleft.png:default",
-      "rightImage" : "voidstoragenewright.png:default",
+      "imageLayers" : [ { "image" : "voidstoragenew.png:<color>.<key>", "fullbright" : true }, { "image" : "voidstoragenewlit.png:<color>.<key>" } ],
+      "imagePosition" : [-24, 0],
 
-      "imagePosition" : [-8, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+      "direction" : "left",
+      "flipImages" : true,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "voidstoragenew.png:<color>.<key>", "fullbright" : true }, { "image" : "voidstoragenewlit.png:<color>.<key>" } ],
+      "imagePosition" : [-24, 0],
 
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
     }
   ],
-  
-  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
-  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+
+  "openSounds" : [ "/sfx/objects/portal_chest_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/portal_chest_close.ogg" ],
   "slotCount" : 200,
   "uiConfig" : "/interface/chests/voidchest200.config",
   "frameCooldown" : 67,
