@@ -2,19 +2,19 @@
   "objectName" : "isn_atmosregulator",
   "rarity" : "legendary",
     "colonyTags" : [ "science" ],
-  "description" : "Generates a field that protects against environmental hazards. Requires 24u of power.",
-  "shortdescription" : "^cyan;Atmospheric Regulator^white;",
+  "description" : "Generates a field that heals any lifeform within its area of effect. Requires 24u of power.",
+  "shortdescription" : "^cyan;Regeneration Matrix^white;",
   "race" : "generic",
   "price" : 2000,
   "category" : "wire",
   "printable" : false,
 
   "apexDescription" : "Ahhh. Refreshing.",
-  "avianDescription" : "Will this help me breathe in space?",
-  "floranDescription" : "Machine make Floran not wilt in hot land.",
-  "glitchDescription" : "Reassured. Even the harshest environments can't get through this field.",
-  "humanDescription" : "I won't need those suit techs if one of these is running.",
-  "hylotlDescription" : "This will provide excellent protection from the elements.",
+  "avianDescription" : "I feel better.",
+  "floranDescription" : "Healy box make floran happy.",
+  "glitchDescription" : "Reassured. I won't die while standing near this machine.",
+  "humanDescription" : "I won't have to worry about the peril of death near this thing!",
+  "hylotlDescription" : "This will provide excellent healing at a constant rate.",
 
   "inventoryIcon" : "isn_atmosregulator_inv.png",
   "orientations" : [
@@ -47,9 +47,9 @@
     }
   ],
 
-  "scripts" : [ "/objects/power/isn_atmosregulator/isn_atmosregulator.lua",
+  "scripts" : [ "/objects/power/isn_atmosregulator/isn_atmosregenerator.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
-				"/objects/isn_sharedobjectscripts.lua"],
+		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 60,
 
   "animation" : "isn_atmosregulator.animation",
@@ -62,9 +62,5 @@
 
   "inputNodes" : [ [1, 2] ],
   "isn_powerReciever" : true,
-  "isn_requiredPower" : 24,
-  
-  "breakDropOptions" : [
-    [ [ "isn_atmosregulatornew", 1, { } ] ]
-  ]
+  "isn_requiredPower" : 24
 }
