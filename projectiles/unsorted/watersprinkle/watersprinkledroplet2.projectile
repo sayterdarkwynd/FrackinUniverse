@@ -1,0 +1,30 @@
+{
+  "projectileName" : "watersprinkledroplet2",
+  "image" : "watersprinkledroplet.png",
+  "physics" : "grenade",
+  "animationCycle" : 0.1,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "emitters" : [ "defaultblue" ],
+  "timeToLive" : 5,
+  "actionOnReap" : [
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "tilleddry",
+      //"previousMod" : "metamod:none",
+      // "previousMod" : null,
+      "newMod" : "tilled",
+      "radius" : 1
+    }
+    /*
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/astraltear_stop2.ogg" ]
+    }
+    */
+  ],
+  "power" : 5.0,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

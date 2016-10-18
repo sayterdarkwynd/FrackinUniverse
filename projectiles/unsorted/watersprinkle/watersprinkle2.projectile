@@ -1,0 +1,33 @@
+{
+  "projectileName" : "watersprinkle2",
+  "image" : "watersprinkle.png",
+  "physics" : "grenade",
+  "animationCycle" : 0.1,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "timeToLive" : 0.01,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "watersprinkledroplet2",
+      "inheritDamageFactor" : 0.0,
+      "angleAdjust" : 25
+    },
+    {
+      "action" : "projectile",
+      "type" : "watersprinkledroplet2",
+      "inheritDamageFactor" : 0.0,
+      "angleAdjust" : -25
+    },
+    {
+      "action" : "projectile",
+      "type" : "watersprinkledroplet2",
+      "inheritDamageFactor" : 0.0,
+      "angleAdjust" : 0
+    }
+  ],
+  "power" : 0.0,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}
