@@ -4,7 +4,7 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "tooltipKind" : "shieldnew",  
-  "description" : "This is the definition of high-tech.",  
+  "description" : "This is the definition of high-tech. ^green;+1% HP regen, +5% Energy regen, +3% Health",  
   "shortdescription" : "Densinium Shield",
   "category" : "shield",
   "twoHanded" : false,
@@ -25,7 +25,33 @@
     }
   },
 
-  "scripts" : ["/items/active/shields/shield.lua"],
+  "scripts" : [ "/items/active/shields/shield2.lua" ],
+
+  // ***************   FU shield properties    *********************
+  // if using shield2.lua, you must include these values
+  "shieldHealthRegen" : 0.01,
+  "shieldEnergyRegen" : 0.05,
+  "shieldHealthBonus" : 0.03,
+  "shieldEnergyBonus" : 0,
+  "shieldProtection" : 0,
+  
+  "protectionAcid" : 0,
+  "protectionBlacktar" : 0,
+  "protectionBioooze" : 0,
+  "protectionPoison" : 0,
+  "protectionLava" : 0,
+  "protectionFire" : 0,
+  "protectionProto" : 0,
+  "protectionCold" : 0,
+  "protectionHeat" : 0,
+  "protectionRads" : 0,
+  "protectionXCold" : 0,
+  "protectionXHeat" : 0,
+  "protectionXRads" : 0,
+  "protectionInsanity" : 0, 
+  "protectionShock" : 1,
+  "protectionSlime" : 0,
+  // end FU shield properties
 
   "minActiveTime" : 0.2,
 

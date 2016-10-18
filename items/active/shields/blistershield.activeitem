@@ -4,12 +4,11 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "tooltipKind" : "shieldnew", 
-  "description" : "Is this thing made of...blisters? What?",
+  "description" : "Is this thing made of...blisters? What? ^green;+5% Energy, +1% health, +1 protection^reset;.",
   "shortdescription" : "Blister Shield",
   "category" : "shield",
   "twoHanded" : false,
   "itemTags" : ["shield"],
-
   "inventoryIcon" : "images/blistershield.png:nearidle",
 
   "animation" : "shield.animation",
@@ -25,11 +24,37 @@
     }
   },
 
-  "scripts" : ["/items/active/shields/shield.lua"],
+  "scripts" : [ "/items/active/shields/shield2.lua" ],
+
+  // ***************   FU shield properties    *********************
+  // if using shield2.lua, you must include these values
+  "shieldHealthRegen" : 0,
+  "shieldEnergyRegen" : 0,
+  "shieldHealthBonus" : 0.01,
+  "shieldEnergyBonus" : 0.05,
+  "shieldProtection" : 1,
+  
+  "protectionAcid" : 0,
+  "protectionBlacktar" : 0,
+  "protectionBioooze" : 0,
+  "protectionPoison" : 0,
+  "protectionLava" : 0,
+  "protectionFire" : 0,
+  "protectionProto" : 0,
+  "protectionCold" : 0,
+  "protectionHeat" : 0,
+  "protectionRads" : 0,
+  "protectionXCold" : 0,
+  "protectionXHeat" : 0,
+  "protectionXRads" : 0,
+  "protectionInsanity" : 0, 
+  "protectionShock" : 0,
+  "protectionSlime" : 0,
+  // end FU shield properties
 
   "minActiveTime" : 0.2,
 
-  "forceWalk" : true,
+  "forceWalk" : false,
   "baseShieldHealth" : 76,
   "cooldownTime" : 0.40,
 

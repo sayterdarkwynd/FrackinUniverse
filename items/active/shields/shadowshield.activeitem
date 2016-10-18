@@ -1,20 +1,19 @@
 {
-  "itemName" : "quantumshield",
-  "price" : 1000,
+  "itemName" : "shadowshield",
+  "price" : 100,
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "shortdescription" : "Quantum Shield",
+  "rarity" : "uncommon",
+  "tooltipKind" : "shieldnew", 
+  "description" : "Is this thing made of...blisters? What? ^green;+5% Energy, +1% health, +1 protection^reset;.",
+  "shortdescription" : "Blister Shield",
   "category" : "shield",
-  "tooltipKind" : "shieldnew",  
-  "description" : "Almost like sorcery, but less bloody and weird. Long Block timer.",
   "twoHanded" : false,
   "itemTags" : ["shield"],
-
-  "inventoryIcon" : "images/quantumshield.png:nearidle",
+  "inventoryIcon" : "images/shadowshield.png:nearidle",
 
   "animation" : "shield.animation",
   "animationParts" : {
-    "shield" : "images/quantumshield.png"
+    "shield" : "images/shadowshield.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -29,11 +28,11 @@
 
   // ***************   FU shield properties    *********************
   // if using shield2.lua, you must include these values
-  "shieldHealthRegen" : 0.01,
-  "shieldEnergyRegen" : 0.05,
-  "shieldHealthBonus" : 0.03,
-  "shieldEnergyBonus" : 0,
-  "shieldProtection" : 0,
+  "shieldHealthRegen" : 0,
+  "shieldEnergyRegen" : 0,
+  "shieldHealthBonus" : 0.01,
+  "shieldEnergyBonus" : 0.05,
+  "shieldProtection" : 1,
   
   "protectionAcid" : 0,
   "protectionBlacktar" : 0,
@@ -49,18 +48,18 @@
   "protectionXHeat" : 0,
   "protectionXRads" : 0,
   "protectionInsanity" : 0, 
-  "protectionShock" : 1,
+  "protectionShock" : 0,
   "protectionSlime" : 0,
   // end FU shield properties
 
   "minActiveTime" : 0.2,
 
   "forceWalk" : false,
-  "baseShieldHealth" : 170,
-  "cooldownTime" : 0.45,
+  "baseShieldHealth" : 76,
+  "cooldownTime" : 0.40,
 
-  "perfectBlockDirectives" : "?border=2;BB99FFFF;00000000",
-  "perfectBlockTime" : 0.4,
+  "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
+  "perfectBlockTime" : 0.2,
   
   "stances" : {
     "idle" : {
