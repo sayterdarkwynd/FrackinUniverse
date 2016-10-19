@@ -4,7 +4,7 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "tooltipKind" : "shieldnew", 
-  "description" : "Is this thing made of...blisters? What? ^green;+5% Energy, +1% health, +1 protection^reset;.",
+  "description" : "Is this thing made of...blisters? What? ^green;+5% Energy, +12% Health, Immunity: Poison^reset;.",
   "shortdescription" : "Blister Shield",
   "category" : "shield",
   "twoHanded" : false,
@@ -30,14 +30,15 @@
   // if using shield2.lua, you must include these values
   "shieldHealthRegen" : 0,
   "shieldEnergyRegen" : 0,
-  "shieldHealthBonus" : 0.01,
+  "shieldHealthBonus" : 0.12,
   "shieldEnergyBonus" : 0.05,
-  "shieldProtection" : 1,
-  
+  "shieldProtection" : 0,
+
+  "protectionBee" : 0,
   "protectionAcid" : 0,
   "protectionBlacktar" : 0,
   "protectionBioooze" : 0,
-  "protectionPoison" : 0,
+  "protectionPoison" : 1,
   "protectionLava" : 0,
   "protectionFire" : 0,
   "protectionProto" : 0,
@@ -54,12 +55,12 @@
 
   "minActiveTime" : 0.2,
 
-  "forceWalk" : false,
+  "forceWalk" : true,
   "baseShieldHealth" : 76,
-  "cooldownTime" : 0.40,
+  "cooldownTime" : 0.30,
 
   "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
-  "perfectBlockTime" : 0.2,
+  "perfectBlockTime" : 0.25,
   
   "stances" : {
     "idle" : {

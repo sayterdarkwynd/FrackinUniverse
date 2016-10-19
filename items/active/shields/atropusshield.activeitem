@@ -4,8 +4,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "tooltipKind" : "shieldnew", 
-  "description" : "Is this thing made of...blisters? What? ^green;+5% Energy, +1% health, +1 protection^reset;.",
-  "shortdescription" : "Blister Shield",
+  "description" : "Corrupted rotting flesh as a shield. Why not? ^green;+10% health, +5% HP Regen, Immunity: Insanity^reset;.",
+  "shortdescription" : "Fleshrot Shield",
   "category" : "shield",
   "twoHanded" : false,
   "itemTags" : ["shield"],
@@ -28,12 +28,13 @@
 
   // ***************   FU shield properties    *********************
   // if using shield2.lua, you must include these values
-  "shieldHealthRegen" : 0,
+  "shieldHealthRegen" : 0.05,
   "shieldEnergyRegen" : 0,
-  "shieldHealthBonus" : 0.01,
-  "shieldEnergyBonus" : 0.05,
-  "shieldProtection" : 1,
+  "shieldHealthBonus" : 0.1,
+  "shieldEnergyBonus" : 0,
+  "shieldProtection" : 0,
   
+  "protectionBee" : 0,
   "protectionAcid" : 0,
   "protectionBlacktar" : 0,
   "protectionBioooze" : 0,
@@ -47,7 +48,7 @@
   "protectionXCold" : 0,
   "protectionXHeat" : 0,
   "protectionXRads" : 0,
-  "protectionInsanity" : 0, 
+  "protectionInsanity" : 1, 
   "protectionShock" : 0,
   "protectionSlime" : 0,
   // end FU shield properties
@@ -55,8 +56,8 @@
   "minActiveTime" : 0.2,
 
   "forceWalk" : false,
-  "baseShieldHealth" : 76,
-  "cooldownTime" : 0.40,
+  "baseShieldHealth" : 106,
+  "cooldownTime" : 0.30,
 
   "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
   "perfectBlockTime" : 0.2,
