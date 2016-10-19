@@ -35,7 +35,11 @@ function init()
     -- protections	  
 	  shieldProtection = config.getParameter("shieldProtection",0)
 	  status.setPersistentEffects("shieldProtection", {{stat = "protection", amount = shieldProtection}})
-
+	  shieldStamina = config.getParameter("shieldStamina",0)
+	  status.setPersistentEffects("shieldStamina", {{stat = "shieldStaminaRegen", amount = shieldStamina}})
+	  shieldFalling = config.getParameter("shieldFalling",0)
+	  status.setPersistentEffects("shieldFalling", {{stat = "fallDamageMultiplier", amount = shieldFalling}})
+	  
     -- encironmental protections
 	  protectionBee = config.getParameter("protectionBee",0)
 	  status.setPersistentEffects("protectionBee", {{stat = "beestingImmunity", amount = protectionBee}})	    
@@ -110,7 +114,6 @@ function update(dt, fireMode, shiftHeld)
     --
     -- FU SPECIALS
     status.modifyResourcePercentage("health", self.shieldHealthRegen * dt)
-    status.modifyResourcePercentage("energy", self.shieldEnergyRegen * dt)
     --
     --
     --
@@ -144,6 +147,8 @@ function uninit()
   status.clearPersistentEffects("shieldHealthBonus")
   status.clearPersistentEffects("shieldEnergyBonus")
   status.clearPersistentEffects("shieldProtection")
+  status.clearPersistentEffects("shieldStamina")
+  status.clearPersistentEffects("shieldFalling")
   status.clearPersistentEffects("protectionBee")
   status.clearPersistentEffects("protectionAcid")
   status.clearPersistentEffects("protectionBlackTar")
