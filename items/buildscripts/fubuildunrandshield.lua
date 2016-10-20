@@ -24,5 +24,7 @@ function build(directory, config, parameters, level, seed)
   config.tooltipFields.cooldownLabel = parameters.cooldownTime or config.cooldownTime
   config.tooltipFields.blockLabel = configParameter("perfectBlockTime")
   config.tooltipFields.stamLabel = configParameter("shieldStamina") * 100
+  config.tooltipFields.hpLabel = configParameter("shieldHealthBonus") * 100 
+  config.tooltipFields.energyLabel = configParameter("shieldEnergyBonus") * 100
   return config, parameters
 end
