@@ -83,7 +83,7 @@ function init()
  	  {stat = "biooozeImmunity", amount = protectionBioooze},
  	  {stat = "poisonStatusImmunity", amount = protectionPoison},
  	  {stat = "insanityImmunity", amount = protectionInsanity},
- 	  {stat = "shockStatusImmunity", amount = protectionShock},
+ 	  {stat = "electricStatusImmunity", amount = protectionShock},
  	  {stat = "slimeImmunity", amount = protectionSlime},
  	  {stat = "lavaImmunity", amount = protectionLava},
  	  {stat = "biomecoldImmunity", amount = protectionCold},
