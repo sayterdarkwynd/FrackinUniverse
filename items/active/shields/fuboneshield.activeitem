@@ -2,11 +2,12 @@
   "itemName" : "fuboneshield",
   "price" : 100,
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "level" : 1,
+  "rarity" : "common",
   "shortdescription" : "Bony Shield",
   "category" : "shield",
   "tooltipKind" : "shieldnew",  
-  "description" : "Bone molded to look like more bone.",
+  "description" : "^green;+8% Energy Regen^reset;",
   "twoHanded" : false,
   "itemTags" : ["shield"],
 
@@ -25,12 +26,41 @@
     }
   },
 
-  "scripts" : ["/items/active/shields/shield.lua"],
+  "scripts" : [ "/items/active/shields/shield2.lua" ],
+
+  // ***************   FU shield properties    *********************
+  // if using shield2.lua, you must include these values
+  "shieldHealthRegen" : 0,
+  "shieldEnergyRegen" : 0.08,
+  "shieldHealthBonus" : 0.06,
+  "shieldEnergyBonus" : 0,
+  "shieldProtection" : 0,
+  "shieldStamina" : 0.05,
+  "shieldFalling" : 0, 
+      
+  "protectionBee" : 0,
+  "protectionAcid" : 0,
+  "protectionBlacktar" : 0,
+  "protectionBioooze" : 0,
+  "protectionPoison" : 0,
+  "protectionLava" : 0,
+  "protectionFire" : 0,
+  "protectionProto" : 0,
+  "protectionCold" : 0,
+  "protectionHeat" : 0,
+  "protectionRads" : 0,
+  "protectionXCold" : 0,
+  "protectionXHeat" : 0,
+  "protectionXRads" : 0,
+  "protectionInsanity" : 0, 
+  "protectionShock" : 0,
+  "protectionSlime" : 0,
+  // end FU shield properties
 
   "minActiveTime" : 0.2,
 
   "forceWalk" : true,
-  "baseShieldHealth" : 65,
+  "baseShieldHealth" : 30,
   "cooldownTime" : 0.55,
 
   "perfectBlockDirectives" : "?border=4;CCAA55FF;00000000",
@@ -51,5 +81,5 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandshield.lua"
+  "builder" : "/items/buildscripts/fubuildunrandshield.lua"
 }

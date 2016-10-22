@@ -6,7 +6,6 @@ function init()
   self.tickDamagePercentage = 0.032
   self.tickTime = 1.0
   self.tickTimer = self.tickTime
-
 end
 
 
