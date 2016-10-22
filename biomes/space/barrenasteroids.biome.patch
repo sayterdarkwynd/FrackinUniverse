@@ -1,5 +1,33 @@
 [
 {
+  "op": "replace",
+  "path": "/ores",
+  "value": "ff_asteroidstandardores"
+},
+
+{
+  "op": "replace",
+  "path": "/spawnProfile/groups",
+  "value": []
+},
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{ 
+        "select" : 2,
+        "pool" : [ 
+          [ 0.02, "asteroidhorror" ],          
+          [ 0.03, "asteroidtentaclecometspore" ],
+          [ 0.03, "asteroidpeblit" ],
+          [ 0.03, "asteroidtintic" ],
+          [ 0.04, "asteroidservitor" ],
+          [ 0.04, "asteroidminidrone" ],
+          [ 0.04, "asteroidscandroid" ],
+          [ 0.04, "asteroidskimbus" ],
+          [ 0.04, "asteroidwisper7" ]
+        ]
+      }
+},
+
+{
   "op": "add",
   "path": "/surfacePlaceables",
   "value": {
