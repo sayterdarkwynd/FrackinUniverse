@@ -31,7 +31,9 @@ function BlinkSlash:windup()
   self.weapon:setStance(self.stances.windup)
   self.weapon:updateAim()
 
-  status.setPersistentEffects("weaponMovementAbility", {{stat = "activeMovementAbilities", amount = 1}})
+  status.setPersistentEffects("weaponMovementAbility", {
+  {stat = "activeMovementAbilities", amount = 1}
+  })
 
   util.wait(self.stances.windup.duration)
 
@@ -61,6 +63,7 @@ function BlinkSlash:slash()
 end
 
 function BlinkSlash:slashAction()
+  status.addEphemeralEffect("defense5")
   status.addEphemeralEffect("blink")
   util.wait(0.25)
 
@@ -88,6 +91,7 @@ end
 
 function BlinkSlash:reset()
   status.clearPersistentEffects("weaponMovementAbility")
+  status.removeEphemeralEffect("defense5")
   animator.setGlobalTag("directives", "")
 end
 

@@ -2,7 +2,6 @@ require "/scripts/vec2.lua"
 
 function init()
   initCommonParameters()
-  self.pressDown = false
   self.bombTimer = 0
 end
 
@@ -44,17 +43,17 @@ function update(args)
     updateAngularVelocity(args.dt)
     updateRotationFrame(args.dt)
     
-
       if self.bombTimer > 0 then
         self.bombTimer = math.max(0, self.bombTimer - args.dt)
       end
-    
+
     if self.pressDown and self.bombTimer == 0 then
       self.bombTimer = 1.1
       local configBombDrop = { power = 10 }
       animator.playSound("bombdrop")
       world.spawnProjectile("distortionbomb", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
     end
+    
   end
 
   updateTransformFade(args.dt)
@@ -182,10 +181,6 @@ function activate()
   tech.setToolUsageSuppressed(true)
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   self.active = true
-  status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 20}})
-  
-
- 
 end
 
 function deactivate()
@@ -204,7 +199,6 @@ function deactivate()
   status.clearPersistentEffects("movementAbility")
   self.angle = 0
   self.active = false
-  status.clearPersistentEffects("ballprotection")
 end
 
 function minY(poly)

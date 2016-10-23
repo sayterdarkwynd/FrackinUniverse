@@ -37,7 +37,7 @@ function update(args)
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
 
-  self.pressDown = args.moves["down"];
+  self.pressDown = args.moves["down"]
   if mcontroller.onGround() then
     self.effectTimer = 0
   end

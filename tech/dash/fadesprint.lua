@@ -70,7 +70,7 @@ function startDash(direction)
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
 
-  status.addPersistentEffect("fadeSprint", "camouflage25", math.huge)
+  --status.addPersistentEffect("fadeSprint", "camouflage25", math.huge)
   status.addPersistentEffect("fadeSprint", "invulnerable", math.huge)
 
   generateSkillEffectEnd()
@@ -78,7 +78,6 @@ end
 
 function endDash(direction)
   self.dash = false
-  --status.clearPersistentEffects("movementAbility")
 
   if self.stopAfterDash then
     local movementParams = mcontroller.baseParameters()
@@ -99,41 +98,11 @@ end
 
 function generateSkillEffectEnd()
 
-  status.addEphemeralEffect("camouflage25", 1)
+  --status.addEphemeralEffect("camouflage25", 1)
   status.addEphemeralEffect("invulnerable", 1)
 
-  local configTableSmoke = {
-    timeToLive = 0.01, -- we want the projectile to die as soon as possible to spawn the particles
-    power = -1,
-    actionOnReap = {
-      {
-        action = "loop",
-        count = 4,
-        power = 10,
-        body =  {
-          {
-            action = "particle",
-            specification = {
-              type = "textured",
-              animation = "/animations/volcanopoof/volcanopoof.png",
-              timeToLive = 0,
-              destructionAction = "fade",
-              destructionTime = 1.5,
-              layer = "front",     
-              size = 0.4,    
-              rotation = 0,
-              velocity = {0,0},
-              variance = {
-                rotation = 1,
-                angularVelocity = 50,
-		size = 0.1
-              }
-               
-            }
-          }
-        }
-      }
-    }
-  }
-  world.spawnProjectile("invisibleprojectile", mcontroller.position(), entity.id(), {0, 0}, false, configTableSmoke)
+  --local configBombDrop = {
+  --  power = 5
+  --}
+  --world.spawnProjectile("distortionbomb", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
 end
