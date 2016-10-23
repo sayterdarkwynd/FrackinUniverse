@@ -7,12 +7,6 @@
   "speed" : 0,
   "fallSpeed" : 0,
   "animationLoops" : false,
-  "piercing" : true,
-  "flippable" : true,
-  "pointLight" : true,
-  "lightColor" : [244,200,196],
-  "universalDamage" : true,
-  "damageKind" : "default",
   "timeToLive" : 0.01,
   "knockback" : 60,
   "knockbackDirectional" : true,
@@ -20,7 +14,15 @@
     {
       "action" : "config",
       "file" : "/projectiles/explosions/c4explosive/c4explosive.config"
-    } 
+    }
   ],
-  "power" : 24
+  "power" : 24,
+  "piercing" : true,
+  "damageKind" : "hidden",
+  "damageType" : "ignoresdef",
+  "damagePoly" : [ [-14, -14], [-14, 14], [14, 14], [14, -14] ],
+  "flippable" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
+  "pointLight" : true,
+  "lightColor" : [244,200,196]
 }
