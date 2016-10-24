@@ -1,21 +1,21 @@
 {
-  "itemName" : "teslastaff1",
-  "price" : 1440,
+  "itemName" : "fuflamewand",
+  "price" : 440,
   "maxStack" : 1,
-  "level" : 3,
+  "level" : 2,
   "rarity" : "rare",
-  "description" : "zzzzzzaaaaap.",
-  "shortdescription" : "Tesla Wand",
+  "description" : "Primitive shaman's implement.",
+  "shortdescription" : "Bone Wand",
   "category" : "staff",
-  "twoHanded" : true,
+  "twoHanded" : false,
   "itemTags" : ["weapon","staff"],
   "tooltipKind" : "staff",
 
   "animation" : "/items/active/weapons/staff/staff.animation",
   "animationParts" : {
-    "staff" : "teslastaff1.png",
+    "staff" : "fuflamewand.png",
     "stone" : "",
-    "chargeEffect" : "teslastaff1glow.png"
+    "chargeEffect" : "/items/active/weapons/wand/generated/glow/fire.png"
   },
   "animationCustom" : {
     "lights" : {
@@ -40,7 +40,7 @@
     }
   },
 
-  "inventoryIcon" : "teslastaff1.png",
+  "inventoryIcon" : "fuflamewand.png",
 
   "scripts" : ["/items/active/weapons/staff/staff.lua"],
 
@@ -49,33 +49,37 @@
       "armRotation" : -90,
       "weaponRotation" : 0,
       "twoHanded" : false,
+      "weaponOffset" : [0, 1.0],
 
       "allowRotate" : false,
       "allowFlip" : true
     },
     "charge" : {
-      "duration" : 1.1,
+      "duration" : 0.3,
       "armRotation" : 20,
       "weaponRotation" : -20,
-      "twoHanded" : true,
-
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.5],
+      
       "allowRotate" : false,
       "allowFlip" : true
     },
     "charged" : {
       "armRotation" : 20,
       "weaponRotation" : -20,
-      "twoHanded" : true,
-
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.5],
+      
       "allowRotate" : false,
       "allowFlip" : true
     },
     "discharge" : {
-      "duration" : 0.5,
+      "duration" : 0.25,
       "armRotation" : -10,
       "weaponRotation" : -50,
-      "twoHanded" : true,
-
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.0],
+      
       "allowRotate" : true,
       "allowFlip" : true
     },
@@ -83,16 +87,17 @@
       "duration" : 0.5,
       "armRotation" : -45,
       "weaponRotation" : 0,
-      "twoHanded" : true,
-
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.75],
+      
       "allowRotate" : false,
       "allowFlip" : true
     }
   },
 
-  "elementalType" : "electric",
+  "elementalType" : "fire",
 
-  "primaryAbilityType" : "guidedbolt",
+  "primaryAbilityType" : "flamewand",
   "primaryAbility" : {},
 
   "altAbilityType" : "plasmabladebarrage",
