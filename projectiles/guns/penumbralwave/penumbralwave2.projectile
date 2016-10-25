@@ -1,0 +1,71 @@
+{
+  "projectileName" : "penumbralwave2",
+  "image" : "penumbralwave.png",
+  "physics" : "arrow",
+  "animationCycle" : 0.7,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 3,
+  "power" : 5,
+  "level" : 6,
+  "speed" : 75,
+  "fullbright" : true,
+  "timeToLive" : 0.7,
+  "lightColor" : [214,120,243],
+  "damageKind" : "poison",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/spatialcollapse/spatialcollapse.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.23,
+	  "angleAdjust" : 135
+    },
+	{
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.23,
+	  "angleAdjust" : -135
+    },  
+    {
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.23,
+	  "angleAdjust" : 15
+    },
+	{
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.23,
+	  "angleAdjust" : -15
+    },       
+    {
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.23,
+	  "angleAdjust" : 90
+    },
+	{
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.23,
+	  "angleAdjust" : -90
+    },    
+    {
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.23,
+	  "angleAdjust" : -45
+    },
+	{
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.23,
+	  "angleAdjust" : 45
+    }    
+  ],
+  "emitters" : [ "corrosive" ],
+  "statusEffects" : [ "biooozepoison2" ]
+}
