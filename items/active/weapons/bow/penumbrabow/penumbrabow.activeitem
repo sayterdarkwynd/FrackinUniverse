@@ -8,16 +8,17 @@
   "tooltipKind" : "bow",
   "weaponType" : "Bow",
   "description" : "Made of penumbrite and rage.",
-  "shortdescription" : "Penumbra Hunting Bow",
+  "shortdescription" : "Enigma Bow",
   "category" : "bow",
   "twoHanded" : true,
   "itemTags" : ["weapon", "ranged", "bow"],
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
   "baseOffset" : [1.0, 1.0],
-  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
-    "bow" : "penumbrabowfull.png"
+    "bow" : "penumbrabowfull.png",
+    "bowfullbright" : "penumbrabowfullfullbright.png"
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "bow" : { "properties" : {
@@ -31,7 +32,7 @@
     "lights" : { "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
-      "color" : [126, 60, 126],
+      "color" : [66, 20, 66],
       "flickerPeriod" : 0.3,
       "flickerMinIntensity" : 0.95,
       "flickerMaxIntensity" : 1,
