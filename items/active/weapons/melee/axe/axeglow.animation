@@ -5,6 +5,13 @@
 
   "animatedParts" : {
     "stateTypes" : {
+      "weapon" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "fire" : {}
+        }
+      },
       "swoosh" : {
         "default" : "idle",
         "states" : {
@@ -12,43 +19,46 @@
           },
           "fire" : {
             "frames" : 3,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "fire2" : {
-            "frames" : 3,
-            "cycle" : 0.1,
+            "cycle" : 0.08,
             "mode" : "transition",
             "transition" : "idle"
           }
         }
       }
     },
-
     "parts" : {
       "bladefullbright" : {
         "properties" : {
-          "centered" : true,
-          "image" : "<partImage><paletteSwaps>",
           "zLevel" : 1,
-          "transformationGroups" : ["weapon"],
-          "rotationCenter" : [0, 0]
-        }
-      },    
-      "blade" : {
-        "properties" : {
-          "zLevel" : 0,
           "centered" : true,
-          "fullbright" : true,
           "image" : "<partImage><paletteSwaps>",
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0]
         }
       },
+      "blade" : {
+        "properties" : {
+          "zLevel" : 0,
+          "fullbright" : true,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "fire" : {
+              "properties" : {
+                "damageArea" : [[-1.0, -0.75], [-1.0, 0.5], [1.625, 0.75], [1.625, -1.25]]
+              }
+            }
+          }
+        }
+      },
       "handle" : {
         "properties" : {
-          "zLevel" : 1,
+          "zLevel" : 0,
           "centered" : true,
           "image" : "<partImage><paletteSwaps>",
           "transformationGroups" : ["weapon"],
@@ -59,6 +69,7 @@
         "properties" : {
           "zLevel" : -1,
           "centered" : true,
+          "offset" : [-2.25, 1.0],
           "transformationGroups" : ["swoosh"],
           "rotationCenter" : [0, 0]
         },
@@ -72,16 +83,8 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh/shadowswoosh.png:<frame>",
-                "offset" : [1.0, 1.0],
-                "damageArea" : [ [-2.25, 1.125], [0.25, 1.125], [1.625, 0.75], [2.5, 0], [2.5, -0.5], [2.125, -0.875], [1, -1.375], [-2.25, -1.375] ]
-              }
-            },
-            "fire2" : {
-              "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh2/shadowswoosh.png:<frame>",
-                "offset" : [0.25, 0.125],
-                "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
+                "image" : "/items/active/weapons/melee/axe/swoosh/<elementalType>swoosh.png:<frame>",
+                "damageArea" : [[-2.25, 1.75], [-1, 2.25], [0.25, 2.25], [2, 1.5], [3.25, -0.125], [3.25, -1.25], [2.5, -2.5], [1.0, -2.5]]
               }
             }
           }
@@ -99,72 +102,66 @@
     "physicalswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 1,
-      "burstCount" : 1,
-      "particles" : [
-        { "particle" : "poisonswoosh1"},
-        { "particle" : "poisonswoosh2"},      
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"}      
-      ]
-    }, 
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [ ]
+    },
     "fireswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 4,
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
       "particles" : [
-        { "particle" : "poisonswoosh1"},
-        { "particle" : "poisonswoosh2"},      
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"}
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"},
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"}
       ]
     },
     "electricswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
       "particles" : [
-        { "particle" : "poisonswoosh1"},
-        { "particle" : "poisonswoosh2"},      
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"}
-      ]
-    },
-    "poisonswoosh" : {
-      "active" : false,
-      "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
-      "particles" : [
-        { "particle" : "poisonswoosh1"},
-        { "particle" : "poisonswoosh2"},      
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"}
+        { "particle" : "electricswoosh1"},
+        { "particle" : "electricswoosh2"},
+        { "particle" : "electricswoosh2"}
       ]
     },
     "iceswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "iceswoosh1"},
+        { "particle" : "iceswoosh2"},
+        { "particle" : "iceswoosh3"},
+        { "particle" : "iceswoosh1"},
+        { "particle" : "iceswoosh2"},
+        { "particle" : "iceswoosh3"}
+      ]
+    },
+    "poisonswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
       "particles" : [
         { "particle" : "poisonswoosh1"},
-        { "particle" : "poisonswoosh2"},      
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"},
-        { "particle" : "shadowsmoke2"}
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"}
       ]
     }
   },
 
   "sounds" : {
-    "fire" : [ ],
-    "fire2" : [ ]
+    "fire" : [ ]
   }
 }
