@@ -26,8 +26,8 @@
     }}}},
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
-      "release" : [ "/sfx/gun/bow_loose.ogg" ],
-      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+      "release" : [ "/sfx/projectiles/fireball_spit.ogg" ],
+      "perfectRelease" : [ "/sfx/projectiles/fistlauncher_shot.ogg" ]
     },
     "lights" : { "glow" : {
       "active" : true,
@@ -48,10 +48,12 @@
   "primaryAbilityType" : "bowshot",
   "primaryAbility" : {
     "fireOffset" : [1.75, 0.125],
+    "drawTime" : 0.5,
+    "powerProjectileTime" : 1.0,
     "drawFrameSelector" : "poisonBowImageSelector",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
     "projectileType" : "flamearrow",
-    "powerProjectileType" : "chargedflamearrow",
+    "powerProjectileType" : "hellfirearrow",
     "projectileParameters" : {
       "power" : 7.25
     }
@@ -62,8 +64,8 @@
     "fireOffset" : [1.75, 0.125],
     "drawFrameSelector" : "poisonBowImageSelectorNoPower",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "hellfirearrow",
-    "powerProjectileType" : "hellfirearrow",
+    "projectileType" : "flamearrow",
+    "powerProjectileType" : "dragonprojectile",
     "projectileParameters" : {
       "power" : 10
     }
