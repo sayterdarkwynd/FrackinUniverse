@@ -80,7 +80,35 @@
             "winddownState" : "idle",
             "winddownTime" : 0.3
           }
-        },           
+        }, 
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 7,
+            "minimumRange" : 3,
+            "maxYRange" : 4,
+            "windupTime" : 0.7,
+            "windupState" : "invulnerable",
+
+            "aimAtTarget" : true,
+            "projectileType" : "fusoundwave",
+            "power" : 4,
+            "aimDirection" : [0.7, 0.4],
+            "fireOffset" : [2.25, 0.5],
+            "projectileCount" : 5,
+            "projectileInterval" : 0.04,
+            "projectileParameters" : {
+              "speed": 35
+            },
+            "fireState" : "",
+            "fireSound" : "wave",
+
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.3
+          }
+        },  
         {
           "name" : "action-charge",
           "cooldown" : 8.0,
@@ -197,11 +225,11 @@
           "cooldown" : [6, 12],
           "parameters" : {
             "windupTime" : 0.5,
-            "windupState" : "firewindup",
-            "winddownTime" : 0.5,
+            "windupState" : "roar",
+            "winddownTime" : 0.3,
             "winddownState" : "firewinddown",
 
-            "invulnerableTime" : 1.5
+            "invulnerableTime" : 2.4
           }
         }        
       ]
