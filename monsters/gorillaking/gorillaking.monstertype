@@ -1,0 +1,314 @@
+{
+  "type" : "gorillaking",
+  "shortdescription" : "Apex Helghast",
+  "description" : "A near-perfect Apex mutation. Watch out.",
+
+  "categories" : [ "gorillaking" ],
+  "parts" : [ "body" ],
+
+  "animation" : "gorillaking.animation",
+
+  "dropPools" : [ "rocktrollLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+      "hurtTime": 0.10,
+      "hurtWaitForGround": false,
+      "hurtWaitForGroundTime": 0.1,
+
+      "foundTargetActions" : [ 
+        {
+          "name" : "action-animate",
+          "cooldown" : 15,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 0.53
+          }
+        }      
+      ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-animate",
+          "cooldown" : 15,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 0.53
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 5,
+            "minimumRange" : 2,
+            "maxYRange" : 4,
+            "windupTime" : 0.7,
+            "windupState" : "firewindup",
+
+            "aimAtTarget" : true,
+            "projectileType" : "sulphurtrollswoosh",
+            "power" : 15,
+            "aimDirection" : [0.7, 0.4],
+            "fireOffset" : [2.25, 0.0],
+            "projectileCount" : 1,
+            "projectileParameters" : {
+              "speed": 15
+            },
+            "fireState" : "",
+            "fireTime" : 0.6,
+            "fireSound" : "fire",
+
+            "winddownState" : "idle",
+            "winddownTime" : 0.3
+          }
+        },           
+        {
+          "name" : "action-charge",
+          "cooldown" : 8.0,
+          "parameters" : {
+            "maximumRange" : 20,
+            "windupState" : "chargewindup",
+            "windupTime" : 1.15,
+
+            "chargeTime" : 0.2,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 1600,
+            "chargeState" : "charge",
+            "wallCrashSound" : "wallCrashSound",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.6,
+            "winddownStopForce" : 1000,
+            "winddownState" : "fire"
+          }
+        },
+        {
+          "name" : "action-leap", 
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 2,
+            "maximumRange" : 12,
+            "maxXRange" : 20,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 55,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }       
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : [6, 12],
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "hurt",
+            "winddownTime" : 0.5,
+            "winddownState" : "firewinddown",
+
+            "invulnerableTime" : 1.5
+          }
+        }      
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15],
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "concurrentActions" : [
+ 
+      ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : [6, 12],
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "firewindup",
+            "winddownTime" : 0.5,
+            "winddownState" : "firewinddown",
+
+            "invulnerableTime" : 1.5
+          }
+        }        
+      ]
+    },
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 16,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 30,
+        "statusEffects" : [  ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+      "damage" : 13,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ "sulphuricacideffect" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+
+      "mass" : 2.5,
+      "walkSpeed" : 9,
+      "runSpeed" : 11,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 65.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.1
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 220
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.05
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.45
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.24,
+    "capturedMonsterType" : "gorillaking", // turn into an adultpoptop when captured
+    "nametagColor" : [64, 200, 255]
+  }
+}
