@@ -111,6 +111,26 @@
         },  
         {
           "name" : "action-charge",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "maximumRange" : 6,
+            "windupState" : "chargewindup",
+            "windupTime" : 1.15,
+
+            "chargeTime" : 0.6,
+            "chargeSpeed" : 20,
+            "chargeControlForce" : 600,
+            "chargeState" : "fire",
+            "wallCrashSound" : "wallCrashSound",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 600,
+            "winddownState" : "hurt"
+          }
+        },        
+        {
+          "name" : "action-charge",
           "cooldown" : 8.0,
           "parameters" : {
             "maximumRange" : 20,
@@ -121,7 +141,7 @@
             "chargeSpeed" : 50,
             "chargeControlForce" : 1600,
             "chargeState" : "charge",
-            "wallCrashSound" : "wallCrashSound",
+            "wallCrashSound" : "wallCrashSound2",
             "wallCrashEmitter" : "",
 
             "winddownTime" : 0.6,
@@ -247,7 +267,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+      "poly" : [ [-3.8,3.85], [-4.05,-3.95], [3,-3.75], [2.75,3.85] ],
       "damage" : 13,
 
       "teamType" : "enemy",
@@ -260,10 +280,10 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+      "collisionPoly" : [ [-3.8,3.85], [-4.05,-3.95], [3,-3.75], [2.75,3.85] ],
 
       "mass" : 2.5,
-      "walkSpeed" : 9,
+      "walkSpeed" : 6,
       "runSpeed" : 11,
 
       "airFriction" : 0,
