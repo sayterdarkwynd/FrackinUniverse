@@ -7,6 +7,7 @@ function init()
       local projectileConfig = { power = 12 }
       animator.playSound("bombdrop")  
       world.spawnProjectile("bahamutboom", mcontroller.position(), 0, {0, 0}, false, projectileConfig)    
+      status.addPersistentEffect("fadeSprint", "slow", math.huge)
   end  
   
 end
@@ -20,5 +21,5 @@ end
 
 
 function uninit()
-  
+   status.clearPersistentEffects("slow")
 end
