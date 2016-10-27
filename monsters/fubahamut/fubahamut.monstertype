@@ -9,11 +9,11 @@
 
   "animation" : "fubahamut.animation",
 
-  "dropPools" : [ "dinoLoot" ],
+  "dropPools" : [ "fleshreaperTreasure" ],
 
   "baseParameters" : {
     "scripts" : [
-      "monster.lua"
+      "/monsters/fubahamut/monster.lua"
     ],
 
     "behavior" : "monster",
@@ -28,36 +28,34 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
 
-      "foundTargetActions" : [ 
-       
-      ],
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
       "fleeActions" : [],
 
       "hostileActions" : [
         {
           "name" : "action-charge",
-          "cooldown" : 6.0,
+          "cooldown" : 5.0,
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup",
             "windupTime" : 0.3,
 
-            "chargeTime" : 0.2,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 1000,
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 1200,
             "chargeState" : "charge",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
             "fireSound" : "chargeSound",
             "winddownTime" : 0.2,
-            "winddownStopForce" : 1000,
+            "winddownStopForce" : 1200,
             "winddownState" : "chargewinddown"
           }
         },      
         {
           "name" : "action-leap", 
-          "cooldown" : 0.5,
+          "cooldown" : 1,
           "parameters" : {
             "minimumRange" : 6,
             "maximumRange" : 20,
@@ -77,23 +75,23 @@
         },
         {
           "name" : "action-fire",
-	  "cooldown" : 3,
+	  "cooldown" : 1.5,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 6,
-            "minimumRange" : 3,
+            "maximumRange" : 8,
+            "minimumRange" : 6,
             "windupState" : "melee",
             "windupSound" : "turnHostile",
             "windupTime" : 0.3,
 
-            "projectileType" : "raptorbite",
+            "projectileType" : "raptorbite3",
             "power" : 11,
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : false,
             "projectileCount" : 1,
             "projectileInterval" : 0.01,
             "fireSound" : "attack",
-            "range": 5,
+            "range": 6,
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.1
@@ -101,7 +99,7 @@
         },
         {
           "name" : "action-fire",
-	  "cooldown" : 3,
+	  "cooldown" : 6,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 10,
@@ -124,9 +122,9 @@
         },         
         {
           "name" : "action-fire",
-	  "cooldown" : 8,
+	  "cooldown" : 12,
           "parameters" : {
-            "requireLineOfSight" : false,
+            "requireLineOfSight" : true,
             "maximumRange" : 15,
             "minimumRange" : 5,
             "windupState" : "fire2",
@@ -150,7 +148,7 @@
       "periodicActions" : [
         {
           "name" : "action-leap", 
-          "cooldown" : 0.5,
+          "cooldown" : 1,
           "parameters" : {
             "minimumRange" : 6,
             "maximumRange" : 20,
