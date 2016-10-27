@@ -1,0 +1,299 @@
+{
+  "type" : "fubahamut",
+  "shortdescription" : "Flesh Reaper",
+  "description" : "A voracious carnivore. Utterly relentless.",
+
+  "reversed" : true,
+  "categories" : [ "fubahamut" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fubahamut.animation",
+
+  "dropPools" : [ "dinoLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "monster.lua"
+    ],
+
+    "behavior" : "monster",
+    
+    "deathBehavior" : "monster-death",
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ 
+       
+      ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "maximumRange" : 20,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.3,
+
+            "chargeTime" : 0.2,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 1000,
+            "chargeState" : "charge",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+            "fireSound" : "chargeSound",
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 1000,
+            "winddownState" : "chargewinddown"
+          }
+        },      
+        {
+          "name" : "action-leap", 
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 6,
+            "maximumRange" : 20,
+            "maxXRange" : 25,
+            "windupTime" : 0.3,
+            "windupState" : "stand",
+
+            "leapVelocity" : 85,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 3,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 6,
+            "minimumRange" : 3,
+            "windupState" : "melee",
+            "windupSound" : "turnHostile",
+            "windupTime" : 0.3,
+
+            "projectileType" : "raptorbite",
+            "power" : 11,
+            "fireOffset" : [5.5, 1],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "attack",
+            "range": 5,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 3,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 10,
+            "minimumRange" : 4,
+            "windupState" : "fire",
+            "windupTime" : 0.40,
+
+            "projectileType" : "bahamuttentacle1",
+            "power" : 11,
+            "fireOffset" : [5.5, 1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "attackSound",
+            "range": 10,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.6
+          }
+        },         
+        {
+          "name" : "action-fire",
+	  "cooldown" : 8,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 15,
+            "minimumRange" : 5,
+            "windupState" : "fire2",
+            "windupTime" : 0.6,
+
+            "projectileType" : "bahamuttentacle1",
+            "power" : 21,
+            "fireOffset" : [5.5, 1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "attackSound",
+            "range": 15,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.8
+          }
+        }        
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-leap", 
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 6,
+            "maximumRange" : 20,
+            "maxXRange" : 25,
+            "windupTime" : 0.3,
+            "windupState" : "stand",
+
+            "leapVelocity" : 85,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ],
+
+      "concurrentActions" : [],
+      "concurrentHostileActions" : []
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-5,0.5], [-5,-8], [4.625,-8], [2.25,-0.125] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 12,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "metaBoundBox" : [-8, -8, 6, 6],
+    "scale" : 1,
+
+    "movementSettings" : {
+	"collisionPoly" : [ [-5,0.5], [-5,-8], [4.625,-8], [2.25,-0.125] ],
+      "mass" : 1.0,
+      "walkSpeed" : 10,
+      "runSpeed" : 14,
+      "flySpeed" : 15,
+      "airForce" : 70.0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 25.0            
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 686
+        },
+        "protection" : {
+          "baseValue" : 0.25
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.32
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [94, 250, 25]
+  }
+}
