@@ -88,7 +88,7 @@ function init()
   monster.setInteractive(config.getParameter("interactive", false))
   
   
-  monster.setName("Titanus Wrex")
+  monster.setName("Apex Super Mutant")
   monster.setDamageBar("special")  
 end
 
