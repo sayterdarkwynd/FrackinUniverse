@@ -36,7 +36,7 @@
           "parameters" : {
             "stateType" : "body",
             "state" : "roar",
-            "animationTime" : 0.53
+            "animationTime" : 2.2
           }
         }      
       ],
@@ -45,39 +45,30 @@
 
       "hostileActions" : [
         {
-          "name" : "action-animate",
-          "cooldown" : 15,
-          "parameters" : {
-            "stateType" : "body",
-            "state" : "roar",
-            "animationTime" : 0.53
-          }
-        },
-        {
           "name" : "action-fire",
-          "cooldown" : 5.0,
+          "cooldown" : 1.0,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 5,
             "minimumRange" : 2,
             "maxYRange" : 4,
-            "windupTime" : 0.7,
+            "windupTime" : 0.2,
             "windupState" : "firewindup",
 
             "aimAtTarget" : true,
             "projectileType" : "sulphurtrollswoosh",
             "power" : 15,
             "aimDirection" : [0.7, 0.4],
-            "fireOffset" : [2.25, 0.0],
+            "fireOffset" : [2.75, 0.4],
             "projectileCount" : 1,
             "projectileParameters" : {
               "speed": 15
             },
-            "fireState" : "",
+            "fireState" : "charge",
             "fireTime" : 0.6,
-            "fireSound" : "fire",
+            "fireSound" : "punch",
 
-            "winddownState" : "idle",
+            "winddownState" : "",
             "winddownTime" : 0.3
           }
         }, 
@@ -86,26 +77,27 @@
           "cooldown" : 5.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 7,
-            "minimumRange" : 3,
+            "maximumRange" : 12,
+            "minimumRange" : 5,
             "maxYRange" : 4,
-            "windupTime" : 0.7,
-            "windupState" : "invulnerable",
+            "windupTime" : 0.3,
+            "windupState" : "fire3",
 
             "aimAtTarget" : true,
             "projectileType" : "fusoundwave",
             "power" : 4,
             "aimDirection" : [0.7, 0.4],
-            "fireOffset" : [2.25, 0.5],
+            "fireOffset" : [3.25, 2],
             "projectileCount" : 5,
             "projectileInterval" : 0.04,
             "projectileParameters" : {
               "speed": 35
             },
+            "fireTime" : 0.4,
             "fireState" : "",
             "fireSound" : "wave",
 
-            "winddownState" : "firewinddown",
+            "winddownState" : "",
             "winddownTime" : 0.3
           }
         },  
@@ -115,12 +107,12 @@
           "parameters" : {
             "maximumRange" : 6,
             "windupState" : "chargewindup",
-            "windupTime" : 1.15,
+            "windupTime" : 0.7,
 
             "chargeTime" : 0.6,
             "chargeSpeed" : 20,
             "chargeControlForce" : 600,
-            "chargeState" : "fire",
+            "chargeState" : "fire2",
             "wallCrashSound" : "wallCrashSound",
             "wallCrashEmitter" : "",
 
@@ -135,7 +127,7 @@
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup",
-            "windupTime" : 1.15,
+            "windupTime" : 0.7,
 
             "chargeTime" : 0.2,
             "chargeSpeed" : 50,
@@ -173,17 +165,14 @@
 
       "periodicActions" : [
         {
-          "name" : "action-invulnerable",
-          "cooldown" : [6, 12],
+          "name" : "action-animate",
+          "cooldown" : 15,
           "parameters" : {
-            "windupTime" : 0.5,
-            "windupState" : "hurt",
-            "winddownTime" : 0.5,
-            "winddownState" : "firewinddown",
-
-            "invulnerableTime" : 1.5
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 2.2
           }
-        }      
+        }     
       ],
 
       "approachActions" : [
@@ -244,12 +233,11 @@
           "name" : "action-invulnerable",
           "cooldown" : [6, 12],
           "parameters" : {
-            "windupTime" : 0.5,
-            "windupState" : "roar",
+            "windupTime" : 0.6,
+            "windupState" : "invulnerablewindup",
             "winddownTime" : 0.3,
-            "winddownState" : "firewinddown",
-
-            "invulnerableTime" : 2.4
+            "winddownState" : "invulnerablewindup",
+            "invulnerableTime" : 4.0
           }
         }        
       ]
@@ -258,7 +246,6 @@
     "damageParts" : {
       "body" : {
         "damage" : 16,
-
         "teamType" : "enemy",
         "damageSourceKind" : "slash",
         "knockback" : 30,
@@ -326,16 +313,16 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 220
+          "baseValue" : 280
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.4
         },
         "healthRegen" : {
           "baseValue" : 0.05
         },
         "powerMultiplier" : {
-          "baseValue" : 1.45
+          "baseValue" : 1.2
         }
       },
 

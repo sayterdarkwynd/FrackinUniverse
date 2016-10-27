@@ -17,19 +17,44 @@
             "particleEmittersOff" : [ "spindust" ]
             }
           },
-          "invulnerable" : {
+          "invulnerablewindup" : {
             "frames" : 6,
-            "cycle" : 1.5,
-            "mode" : "transition",
-            "transition" : "idle",
+            "cycle" : 0.6,
+            "mode" : "loop",
             "properties" : {
-              "persistentSound" : "/sfx/npc/monsters/titancharge4.ogg",
+              "particleEmittersOff" : [ "spindust" ]
+            }            
+          },   
+          "invulnerablewindup2" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/gorillaking_notice.ogg",
+              "particleEmittersOff" : [ "spindust" ]
+            }            
+          },          
+          "invulnerablewinddown" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "spindust" ]
+            }            
+          },           
+          "invulnerable" : {
+            "frames" : 4,
+            "cycle" : 1.2,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/gorillaking_roar.ogg",
+              "persistentSound" : "/sfx/tech/forcefield_loop.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }            
           },           
           "grin" : {
             "frames" : 1,
-            "cycle" : 0.5,
+            "cycle" : 0.3,
             "mode" : "loop"
           },          
           "jump" : {
@@ -46,24 +71,20 @@
             "frames" : 6,
             "cycle" : 0.7,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/titancharge3.ogg",
+              "persistentSound" : "/sfx/npc/monsters/gorillaking_notice.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }
           },
           "chargewinddown" : {
             "frames" : 1,
             "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "idle"
+            "mode" : "transition"
           },        
           "charge" : {
             "frames" : 6,
             "cycle" : 0.6,
             "mode" : "transition",
-            "transition" : "chargewinddown",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/quadruped/lion_attack2.ogg"
-            }            
+            "transition" : "chargewinddown" 
           },
            "hurt" : {
             "frames" : 1,
@@ -76,32 +97,46 @@
             "frames" : 6,
             "cycle" : 0.3,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/titancharge5.ogg",
+              "immediateSound" : "/sfx/npc/monsters/gorillaking_attack1.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }
-          },  
-          "firewindup" : {
-            "frames" : 1,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "charge",
+          }, 
+           "fire2" : {
+            "frames" : 6,
+            "cycle" : 0.6,
             "properties" : {
-              "immediateSound" : "/sfx/npc/quadruped/lion_attack2.ogg",
+              "immediateSound" : "/sfx/npc/quadruped/lion_attack1.ogg",
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },        
+           "fire3" : {
+            "frames" : 10,
+            "cycle" : 1.0,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/lion_attack1.ogg",
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },           
+          "firewindup" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop",
+            "properties" : {
               "particleEmittersOff" : [ "spindust" ]
             }
           },
           "firewinddown" : {
-            "frames" : 1,
-            "cycle" : 0.1,
+            "frames" : 3,
+            "cycle" : 0.3,
             "mode" : "loop"
           },           
           "roar" : {
-            "frames" : 15,
-            "cycle" : 2.4,
+            "frames" : 19,
+            "cycle" : 2,
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/titanyell.ogg"
+              "immediateSound" : "/sfx/npc/monsters/gorillaking_roar2.ogg"
             },
             "frameProperties" : {
               "particleEmittersOn" : [ [], [], [ "spindust" ], [], [ "spindust" ], [], [ "spindust" ], [], [ "spindust" ], [], [ "spindust" ], [], [ "spindust" ], [], [] ],
@@ -197,19 +232,34 @@
                 "image" : "<partImage>:roar.<frame>"
               }
             },
+            "invulnerablewindup" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerablewindup.<frame>"
+              }
+            },             
+            "invulnerablewindup2" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerablewindup.<frame>"
+              }
+            },              
             "invulnerable" : {
               "properties" : {
                 "image" : "<partImage>:invulnerable.<frame>"
               }
-            },            
+            }, 
+            "invulnerablewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerablewinddown.<frame>"
+              }
+            },              
             "chargewindup" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:invulnerablewindup.<frame>"
               }
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:invulnerablewinddown.<frame>"
               }
             },
             
@@ -221,12 +271,12 @@
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:grin"
+                "image" : "<partImage>:invulnerablewindup.<frame>"
               }
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:grin"
+                "image" : "<partImage>:invulnerablewinddown.<frame>"
               }
             },    
             "hurt" : {
@@ -240,7 +290,19 @@
                 "image" : "<partImage>:charge.<frame>",
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
-            }            
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire3.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }             
           },
           "damage" : {
             "stunned" : {
@@ -323,14 +385,15 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/quadruped/lion_attack2.ogg", "/sfx/npc/quadruped/lion_attack2.ogg" ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg", "/sfx/troll/troll2.ogg", "/sfx/troll/troll2.ogg" ],
+    "aggroHop" : [ "/sfx/npc/monsters/gorillaking_notice.ogg", "/sfx/npc/quadruped/lion_attack1.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
     "wallCrashSound" : [ "/sfx/melee/blunt_hit_organic.ogg" ],
     "wallCrashSound2" : [ "/sfx/melee/fist_hit_organic2.ogg" ],
-    "turnHostile" : [ "/sfx/npc/quadruped/lion_attack2.ogg", "/sfx/npc/quadruped/lion_attack2.ogg" ],
-    "attackSound" : [ "/sfx/npc/quadruped/lion_attack2.ogg", "/sfx/npc/quadruped/lion_attack2.ogg" ],
+    "turnHostile" : [ "/sfx/npc/quadruped/lion_attack2.ogg", "/sfx/npc/quadruped/lion_attack1.ogg" ],
+    "attackSound" : [ "/sfx/npc/quadruped/lion_attack1.ogg", "/sfx/npc/quadruped/lion_attack2.ogg", "/sfx/npc/quadruped/gorillaking_attack1.ogg"  ],
     "fire" : [ "/sfx/npc/quadruped/lion_attack1.ogg", "/sfx/npc/quadruped/lion_attack2.ogg" ],
-    "wave" : [ "/sfx/weapons/soundwave.ogg" ]
+    "wave" : [ "/sfx/weapons/soundwave.ogg" ],
+    "punch" : [ "/sfx/npc/monsters/gorillaking_attack2.ogg" ] 
 
   }
 }
