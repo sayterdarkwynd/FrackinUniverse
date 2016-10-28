@@ -2,12 +2,12 @@
   "id" : "create_protocite",
   "prerequisites" : [ "create_armory" ],
   "title" : "^#1693d5;Proto-Potency",
-  "text" : "I am in dire need of your assistance. ^orange;I need a teleporter core^reset; to finish my teleporter. You can craft one at your ^orange;Matter Assembler^reset;.",
-  "completionText" : "Without teleporter cores, you won't be able to craft teleporters. So stay stocked.",
-  "moneyRange" : [600, 940],
+  "text" : "There is a rare metal native ^red;only^reset; to ^orange;Proto Worlds^reset; that I am in dire need of. ^orange;I need 2 protocite bars^reset;. You can smelt them in a ^orange;Fission Furnace^reset;.",
+  "completionText" : "Without protocite you won't be able to make some of the more essential high-end gear. So stay stocked! In return for that bit of help, have a unique piece of armor.",
+  "moneyRange" : [0, 0],
   "rewards" : [ [ [ "fusteampunkhead", 1 ] ] ],
   "speaker" : "questGiver",
-
+  
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,19 +16,21 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-
+    
+    
+    
     "requireTurnIn" : true,
+    
+    "turnInDescription" : "Bring the ^green;Protocite Bars^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
 
-    "turnInDescription" : "Bring the ^green;Teleporter Core^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
-
-
+    
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "teleportercore",
-        "count" : 1,
+        "itemName" : "protocitebar",
+        "count" : 2,
         "consume" : true
       }
-    ]
+    ]  
   }
 }

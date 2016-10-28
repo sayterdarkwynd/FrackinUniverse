@@ -2,12 +2,12 @@
   "id" : "create_laspistol",
   "prerequisites" : [ "create_armory" ],
   "title" : "^#1693d5;I need a sidearm",
-  "text" : "Worried: I'll be honest, I am a horribly bad engineer. I'm heading on an mining expedition soon and need a ^orange;P-4 Mining Laser^reset; but don't know how to make one. Could you ^green;make me one and bring it to me^reset;?",
-  "completionText" : "Surprised: Actually, I got tired of waiting and just had the floran mutant make me one. Sorry for the inconvience I'll compenstate your lost.",
-  "moneyRange" : [400, 640],
-  "rewards" : [ [ [ "ammoniumsulfate", 10 ] ] ],
+  "text" : "I'll be honest, I am a horribly bad engineer. I'm heading on an expedition soon and need a ^orange;Laser Pistol^reset; but don't know how to make one. Could you ^green;make me one and bring it to me^reset;?",
+  "completionText" : "Fantastic. Now I will feel somewhat less terror-stricken at the mere thought of being near wildlife. Here's some resources you can probably use, and some cash.",
+  "moneyRange" : [220, 320],
+  "rewards" : [ [ [ "ammoniumsulfate", 5 ] ] ],
   "speaker" : "questGiver",
-
+  
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,17 +16,17 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-
-
-
+    
+    
+    
     "requireTurnIn" : false,
-
+    
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "protominer",
+        "itemName" : "laspistol",
         "count" : 1,
-        "consume" : false
+        "consume" : true
       }
     ]
   }

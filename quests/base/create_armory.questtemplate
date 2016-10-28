@@ -2,12 +2,12 @@
   "id" : "create_armory",
   "prerequisites" : [ "create_matterassembler" ],
   "title" : "^#1693d5;Armed to the Teeth",
-  "text" : "I'll be blunt. That weapon of yours isn't sharp enough? Go craft a Steel Warblade you'll love it!",
-  "completionText" : "Excellent, enjoy cutting stuff up. Here, take this off my hands.",
-  "moneyRange" : [300, 500],
+  "text" : "I'll be blunt. I need my own ^orange;Armory^reset; but lack the skill to create one. Could you perhaps ^orange;make one for me in your Matter Assembler^reset;?.",
+  "completionText" : "Thanks a heap. Here, take this off my hands.",
+  "moneyRange" : [0, 0],
   "rewards" : [ [ [ "rewardbag", 1 ] ] ],
   "speaker" : "questGiver",
-
+  
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,18 +16,18 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-
-
-
+    
+    
+    
     "requireTurnIn" : true,
-
+    
     "turnInDescription" : "Bring the ^green;Armory^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
 
-
+    
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "hardenedsteelblade",
+        "itemName" : "armory",
         "count" : 1,
         "consume" : true
       }

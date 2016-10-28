@@ -1,13 +1,13 @@
 {
   "id" : "create_solarpanel",
   "prerequisites" : [ "create_silicon" ],
-  "title" : "^#1693d5;Long Distance Power",
-  "text" : "Powered stations are a ^orange;huge productivity booster^white;. But they have their limits. Try crafting a watcher and bringing it to me.",
-  "completionText" : "Watchers are special, they'll keep powered devices running while your away planetside. Keep in mine they do reset if you leave the planet.",
-  "moneyRange" : [400, 640],
+  "title" : "^#1693d5;Solar Power",
+  "text" : "Powered stations are a ^orange;huge productivity booster^white;. To start with, you'll need a ^orange;Solar Panel^reset; to produce energy. Build one on a ^orange;Power Station^reset;.",
+  "completionText" : "Now you've started the engineering path of your adventure. I suggest getting some other machines up soon!",
+  "moneyRange" : [0, 0],
   "rewards" : [ [ [ "starmasterhelm-recipe", 1 ] ] ],
   "speaker" : "questGiver",
-
+  
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,18 +16,18 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-
-
-
+    
+    
+    
     "requireTurnIn" : true,
+    
+    "turnInDescription" : "Bring the ^green;Solar Panel^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
 
-    "turnInDescription" : "Bring the ^green;Watcher^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
-
-
+    
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "fu_watcher",
+        "itemName" : "isn_solarpanel",
         "count" : 1,
         "consume" : false
       }
