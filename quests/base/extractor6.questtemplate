@@ -4,10 +4,10 @@
   "title" : "^#1693d5;Hydrogen",
   "text" : "^orange;Water^reset; is never in short supply. If you have upgraded your ^orange;Matter Manipulator^reset; to pick up liquids...^orange;extract some^reset; and bring me ^orange;5 hydrogen^reset; if you don't mind?",
   "completionText" : "Great. Thanks so very much. Now I can complete this power cell! Take this for your extractor.",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "calichewall", 24 ] ] ],
+  "moneyRange" : [300, 420],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
   "speaker" : "questGiver",
-  
+
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,14 +16,14 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-    
-    
-    
-    "requireTurnIn" : true,
-    
-    "turnInDescription" : "Bring the ^green;Hydrogen^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
 
-    
+
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^green;Hydrogen^reset; to the ^orange;Novakid Scientist^reset; at the ^orange;Science Outpost^reset;",
+
+
     "conditions" : [
       {
         "type" : "gatherItem",

@@ -5,9 +5,9 @@
   "text" : "AI is expressly forbidden on my homeworld. But I need an ^orange;AI Chip^white; for my research! ^green;Can you please bring me one? I would reward you nicely^reset;.",
   "completionText" : "Thanks. I've transferred payment for your troubles directly to your account.",
   "moneyRange" : [2200, 3300],
-  "rewards" : [],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
   "speaker" : "questGiver",
-  
+
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,12 +16,12 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-    
+
     "requireTurnIn" : true,
-    
+
     "turnInDescription" : "Bring the AI Chip to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
 
-    
+
     "conditions" : [
       {
         "type" : "gatherItem",

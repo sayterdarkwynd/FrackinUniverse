@@ -2,12 +2,12 @@
   "id" : "create_quietus",
   "prerequisites" : [ "create_designlab" ],
   "title" : "^#1693d5;We gots 6000 dollars!",
-  "text" : "I'm offering 6000 pixels for a bit of aid, if you can spare a few moments? I need 5 ^orange;quietus bars^reset; in order to finish my work. Can you bring some to me?",
+  "text" : "I'm offering something amazing for a bit of aid, if you can spare a few moments? I need an ^orange;Atmosphere Regulator^reset;. Don't ask why, just get me one!",
   "completionText" : "Well done, ol' chap. As promised: The cash. Enjoy.",
   "moneyRange" : [6000, 6001],
-  "rewards" : [ ],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
   "speaker" : "questGiver",
-  
+
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,18 +16,18 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-    
-    
-    
+
+
+
     "requireTurnIn" : true,
-        "turnInDescription" : "Bring the ^orange;5 Quietus Bars^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+        "turnInDescription" : "Bring the ^orange;Atmosphere Regulator^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
 
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "quietusbar",
-        "count" : 5,
-        "consume" : true
+        "itemName" : "isn_atmosregulatornew",
+        "count" : 1,
+        "consume" : false
       }
     ]
   }

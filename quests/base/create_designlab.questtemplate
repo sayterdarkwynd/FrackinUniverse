@@ -1,13 +1,13 @@
 {
   "id" : "create_designlab",
   "prerequisites" : [ "create_regengene" ],
-  "title" : "^#1693d5;Gene Designing",
-  "text" : "^orange;Gene Design Labs^reset; are all the rage these days. I want one, but my budget can't swing it. Do you have one lying around I might use?",
-  "completionText" : "Thanks so much. You are a life saver! Now I can tinker with life as we know it!",
+  "title" : "^#1693d5;Grass of Life",
+  "text" : "I just took a huge beating. If you craft me some ^orange;Miracle Grass Seeds^reset; I'll be grateful.",
+  "completionText" : "Thanks so much. You are a life saver! Now I won't die so much.",
   "moneyRange" : [ 400, 600 ],
-  "rewards" : [ ],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
   "speaker" : "questGiver",
-  
+
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,18 +16,18 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-    
-    
-    
+
+
+
     "requireTurnIn" : true,
-    
+
     "turnInDescription" : "Bring the ^green;Gene Design Lab^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
 
-    
+
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "designlab",
+        "itemName" : "miraclegrassseed",
         "count" : 1,
         "consume" : true
       }

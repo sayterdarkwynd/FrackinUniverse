@@ -2,12 +2,12 @@
   "id" : "create_fission",
   "prerequisites" : [ "create_aichip" ],
   "title" : "^#1693d5;Quaid's Start",
-  "text" : "You can generate a lot of power with a ^orange;Fission Reactor^reset; in your lab. Show you can make one using your ^orange;Power Station^reset; and you can have ^green;this tech upgrade^reset; I just came up with.",
-  "completionText" : "Great! Try this ^orange;advanced dash tech^reset; out and let me know if it works properly!",
-  "moneyRange" : [0, 0],
-  "rewards" : [ ],
+  "text" : "You can generate a lot of power with a ^orange;Fission Reactor^reset; in your lab. Show you can make one using your ^orange;Power Station^reset; and bring me some ^orange;tritium^reset;.",
+  "completionText" : "Tritium is actually quite useful, you can throw it in a centrifuge or for fuel.",
+  "moneyRange" : [1220, 2320],
+  "rewards" : [ [ [ "rewardbag", 1] ] ],
   "speaker" : "questGiver",
-  
+
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,24 +16,21 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-    
-    
-    
-    "requireTurnIn" : true,
-    
-    "turnInDescription" : "Bring the ^green;Fission Reactor^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
 
-    
+
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^green;Tritium^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "isn_fissionreactornew",
+        "itemName" : "tritium",
         "count" : 1,
-        "consume" : false
+        "consume" : true
       }
-    ],
-    "showTech" : [
-      "airdash2"
     ]
   }
 }
