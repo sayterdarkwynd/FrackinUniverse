@@ -6,8 +6,8 @@ function init()
       mcontroller.controlModifiers({airJumpModifier = self.airJumpModifier})
       local projectileConfig = { power = 12 }
       animator.playSound("bombdrop")  
-      world.spawnProjectile("bahamutboom", mcontroller.position(), 0, {0, 0}, false, projectileConfig)    
-      status.addPersistentEffect( "runboostdebuff", math.huge)
+      world.spawnProjectile("tentacleattack", mcontroller.position(), 0, {0, 0}, false, projectileConfig)    
+      status.addPersistentEffect( "rootfu", math.huge)
   end  
   
 end
@@ -21,5 +21,5 @@ end
 
 
 function uninit()
-   status.clearPersistentEffects("runboostdebuff")
+   status.clearPersistentEffects("rootfu")
 end
