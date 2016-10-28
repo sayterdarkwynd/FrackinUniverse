@@ -136,11 +136,13 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/gorillaking_roar2.ogg"
+              "persistentSound" : "/sfx/npc/monsters/gorillaking_roar2.ogg",
+              "persistentSoundStopTime" : 4
             },
             "frameProperties" : {
               "particleEmittersOn" : [ [], [], [ "spindust" ], [], [ "spindust" ], [], [ "spindust" ], [], [ "spindust" ], [], [ "spindust" ], [], [ "spindust" ], [], [] ],
-              "particleEmittersoff" : [ ["spindust"], ["spindust"], [], ["spindust"], [], ["spindust"], [], ["spindust"], [], ["spindust"], [], ["spindust"], [], ["spindust"], ["spindust"] ]
+              "particleEmittersoff" : [ ["spindust"], ["spindust"], [], ["spindust"], [], ["spindust"], [], ["spindust"], [], ["spindust"], [], ["spindust"], [], ["spindust"], ["spindust"] ],
+              "immediateSound" : [ "", "", "/sfx/melee/blunt_hit_organic.ogg", "", "/sfx/melee/blunt_hit_organic.ogg", "", "/sfx/melee/blunt_hit_organic.ogg", "", "/sfx/melee/blunt_hit_organic.ogg", "", "/sfx/melee/blunt_hit_organic.ogg", "", "/sfx/melee/blunt_hit_organic.ogg", "", "/sfx/melee/blunt_hit_organic.ogg", "", "/sfx/melee/blunt_hit_organic.ogg", "", "" ]
             }
           }
         }
