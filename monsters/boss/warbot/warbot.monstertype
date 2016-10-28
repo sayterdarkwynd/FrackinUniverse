@@ -12,7 +12,7 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/boss/warbot/monster.lua"
     ],
 
     "behavior" : "monster",
@@ -97,46 +97,45 @@
 	  "cooldown" : 14,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 30,
-            "minimumRange" : 3,
+            "maximumRange" : 20,
+            "minimumRange" : 5,
             "windupState" : "fire",
-            "windupTime" : 0.4,
+            "windupTime" : 0.5,
 
             "projectileType" : "rocketswarm",
-            "power" : 25,
-            "speed": 50,
+            "power" : 12,
+            "speed": 30,
             "fireOffset" : [6, 0],
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "fireSound" : "fire",
-            "range": 30,
+            "range": 20,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.2
+            "winddownTime" : 0.7
           }
         },        
         {
           "name" : "action-fire",
-	  "cooldown" : 9,
+	  "cooldown" : 15,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 8,
-            "minimumRange" : 1,
+            "maximumRange" : 25,
+            "minimumRange" : 15,
             "windupState" : "chestgun",
-            "windupTime" : 0.7,
+            "windupTime" : 0.9,
 
-            "projectileType" : "ionrifleshot",
-            "power" : 8,
-            "speed": 50,
+            "projectileType" : "energyscrew",
+            "power" : 20,
+            "speed": 45,
             "fireOffset" : [3.8, 0],
             "aimAtTarget" : true,
-            "projectileCount" : 3,
-            "projectileInterval" : 0.14,
+            "projectileCount" : 1,
             "fireSound" : "chestgun",
-            "range": 8,
+            "range": 25,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.2
+            "winddownTime" : 0.3
           }
         },        
         {
@@ -147,19 +146,19 @@
             "maximumRange" : 15,
             "minimumRange" : 0,
             "windupState" : "dualgun",
-            "windupTime" : 0.4,
+            "windupTime" : 0.5,
 
             "projectileType" : "gausspistolshot",
             "power" : 5,
             "fireOffset" : [4.5, 1.3],
             "aimAtTarget" : true,
-            "projectileCount" : 4,
-            "projectileInterval" : 0.01,
+            "projectileCount" : 6,
+            "projectileInterval" : 0.04,
             "fireSound" : "dualgun",
             "range": 15,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.4
+            "winddownTime" : 0.7
           }
         }       
       ],
@@ -301,10 +300,10 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 220
+          "baseValue" : 320
         },
         "protection" : {
-          "baseValue" : 0.2
+          "baseValue" : 0.5
         },
         "fireStatusImmunity" : {
           "baseValue" : 1.0
