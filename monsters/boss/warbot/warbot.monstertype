@@ -97,45 +97,46 @@
 	  "cooldown" : 14,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 5,
+            "maximumRange" : 50,
+            "minimumRange" : 12,
             "windupState" : "fire",
-            "windupTime" : 0.5,
+            "windupTime" : 0.60,
 
-            "projectileType" : "rocketswarm",
+            "projectileType" : "minirocketflyer",
             "power" : 12,
-            "speed": 30,
-            "fireOffset" : [6, 0],
+            
+            "fireOffset" : [5.2, 0],
             "aimAtTarget" : true,
-            "projectileCount" : 1,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.16,
             "fireSound" : "fire",
-            "range": 20,
+            "range": 50,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.7
+            "winddownTime" : 0.60
           }
         },        
         {
           "name" : "action-fire",
-	  "cooldown" : 15,
+	  "cooldown" : 20,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 25,
-            "minimumRange" : 15,
+            "minimumRange" : 10,
             "windupState" : "chestgun",
-            "windupTime" : 0.9,
+            "windupTime" : 1.0,
 
-            "projectileType" : "energyscrew",
+            "projectileType" : "mobiusrgun",
             "power" : 20,
-            "speed": 45,
-            "fireOffset" : [3.8, 0],
-            "aimAtTarget" : true,
+ 
+            "fireOffset" : [5.2, 0],
+            "aimAtTarget" : false,
             "projectileCount" : 1,
             "fireSound" : "chestgun",
             "range": 25,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.3
+            "winddownTime" : 0.2
           }
         },        
         {
@@ -144,21 +145,22 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 15,
-            "minimumRange" : 0,
+            "minimumRange" : 5,
             "windupState" : "dualgun",
-            "windupTime" : 0.5,
+            "windupTime" : 0.85,
 
             "projectileType" : "gausspistolshot",
             "power" : 5,
-            "fireOffset" : [4.5, 1.3],
+
+            "fireOffset" : [5.3, 1.3],
             "aimAtTarget" : true,
             "projectileCount" : 6,
-            "projectileInterval" : 0.04,
+            "projectileInterval" : 0.03,
             "fireSound" : "dualgun",
             "range": 15,
             "fireState" : "",
             "winddownState" : "",
-            "winddownTime" : 0.7
+            "winddownTime" : 0.35
           }
         }       
       ],
