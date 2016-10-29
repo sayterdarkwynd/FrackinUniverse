@@ -8,13 +8,13 @@ function isn_getAllDevicesConnectedOnNode(node,direction)
 	else nodeID = object.getInputNodeIds(node) end
 	if nodeID == nil then
 		---sb.logInfo("GGDOND: Node with ID " .. node .. " does not exist, terminating with nil")
-		return nil
+		return nil  --possibly you might just want to return {} instead of nil
 	end
 	
 	---local counter = 0
 	local devices = { }
 	---sb.logInfo("GGDOND: Iterating connected devices")
-	for key, value in pairs(nodeID) do
+	for key, value in ipairs(nodeID) do
 		---sb.logInfo("GGDOND: counter at " .. counter)
 		---sb.logInfo("GGDOND: key is " .. key)
 		---for key2, value2 in pairs(value) do
@@ -31,18 +31,18 @@ function isn_getAllDevicesConnectedOnNode(node,direction)
 end
 
 function isn_numericRange(number,minimum,maximum)
-	if number > maximum then return maximum end
-	if number < minimum then return minimum end
-	return number
+	if number > maximum then 
+    return maximum
+	elseif number < minimum then 
+    return minimum
+  else
+    return number
+  end
 end
 
 function isn_countDevicesConnectedOnOutboundNode(node)
 	if not node then return 0 end
-	local devicecount = 0
-	for key, value in pairs(object.getOutputNodeIds(node)) do
-		devicecount = devicecount + 1
-	end
-	return devicecount
+	return #object.getOutputNodeIds(node)
 end
 
 function isn_getXPercentageOfY(x,y)
@@ -51,7 +51,7 @@ function isn_getXPercentageOfY(x,y)
 	return (x / y) * 100
 end
 
-function isn_getListLength(arg)
+function isn_getListLength(arg)  --or you could use #whatTable so I don't know why this exists
 	local listlength = 0
 	for _ in pairs(arg) do listlength = listlength + 1 end
 	return listlength
@@ -60,21 +60,21 @@ end
 function isn_effectAllInRange(effect,tilerange)
 	local targetlist = world.playerQuery(entity.position(),tilerange)
 	sb.logInfo("targetlist = %s",targetlist)
-	for key, value in pairs(targetlist) do
+	for _, value in ipairs(targetlist) do
 		world.callScriptedEntity(value,"status.addEphemeralEffect",effect)
 	end
 end
 
 function isn_projectileAllInRange(projtype,tilerange)
 	local targetlist = world.playerQuery(entity.position(),tilerange)
-	for key, value in pairs(targetlist) do
+	for _, value in ipairs(targetlist) do
 		world.spawnProjectile(projtype, world.entityPosition(value), entity.id())
 	end
 end
 
 function isn_projectileAllInRectangle(projtype,entpos,xwidth,yheight)
 	local targetlist = world.playerQuery(entpos,{entpos[1]+xwidth, entpos[2]+yheight})
-	for key, value in pairs(targetlist) do
+	for _, value in ipairs(targetlist) do
 		world.spawnProjectile(projtype,world.entityPosition(value))
 	end
 end
