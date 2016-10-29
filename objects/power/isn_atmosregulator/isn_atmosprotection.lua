@@ -1,4 +1,6 @@
 function init()
+  status.setPersistentEffects("fu_airprotection2", {{stat = "breathProtection", amount = 1}})
+  status.setPersistentEffects("fu_airprotection", {{stat = "waterbreathProtection", amount = 1}})
   status.setPersistentEffects("fu_protoprotection", {{stat = "protoImmunity", amount = 1}})
   status.setPersistentEffects("isn_airprotection2", {{stat = "waterbreathProtection", amount = 1}})
   status.setPersistentEffects("isn_airprotection", {{stat = "breathProtection", amount = 1}})
@@ -15,6 +17,8 @@ function init()
 end
 
 function uninit()
+  status.clearPersistentEffects("isn_airprotection")
+  status.clearPersistentEffects("isn_airprotection2")
   status.clearPersistentEffects("isn_airprotection")
   status.clearPersistentEffects("isn_airprotection2")
   status.clearPersistentEffects("isn_radsprotection")
