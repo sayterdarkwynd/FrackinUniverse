@@ -1,10 +1,10 @@
 {
   "type" : "fuoutpostfloranscientist",
   "baseType" : "fuoutpostcivilian",
- "damageTeam" : 1, 
+ "damageTeam" : 1,
     "scriptConfig" : {
-        "offeredQuests" : [ "create_protocite", "create_quietus" ],
-        "turnInQuests" : [ "create_protocite", "create_quietus" ],
+        "offeredQuests" : [ "create_teleportercore", "create_atmosregulator" ],
+        "turnInQuests" : [ "create_teleportercore", "create_atmosregulator" ],
     "wander" : {
       "timeRange" : [2.0, 10.0],
       "chatDistance" : 4,
@@ -19,7 +19,7 @@
     "returnToPost" : {
       "moveTime" : 20,
       "minDistance" : 2
-    },    
+    },
     "sit" : {
       "timeOfDayRanges" : [ [0.6, 1.0], [0.0, 0.2] ],
       "moveTimeLimit" : 30,
@@ -61,18 +61,18 @@
         ]
       ],
       "cooldown" : 10
-    },    
+    },
         "converse" : {
             "waitTime" : 0.5,
             "dialog" : {
-          
+
                 "default" : [
                       "Wanna ssstab a tree for me?"
                 ]
                 }
             }
         },
-    
+
   "humanoidTiming" : {
     // Idle, Walk, Run, Jump, Fall, Swim, SwimIdle, Duck, Sit, Lay
     "stateCycle" : [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],

@@ -1,5 +1,6 @@
 {
   "id" : "shoggoth_defeat",
+  "mainQuest" : true,
   "prerequisites" : [ ],
   "title" : "^#1693d5;What Lies Beneath",
   "text" : "From deep below me, I can hear...no, feel...^orange;something dark and terrible^reset; lurking in the abyssal darkness. Dare I investigate the ^orange;source of that slurping, wet cacaphony^reset;?",
@@ -7,7 +8,7 @@
   "moneyRange" : [0, 0],
   "rewards" : [],
   "speaker" : "questGiver",
-  
+
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -16,9 +17,9 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-    
+
     "requireTurnIn" : false,
-    
+
     "conditions" : [
       {
         "type" : "gatherItem",
