@@ -42,30 +42,28 @@
           "cooldown" : 4,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 5,
-            "windupState" : "idle",
-            "windupTime" : 2.1,
+            "maximumRange" : 5,
+            "minimumRange" : 2,
+            "windupState" : "firewindup",
+            "windupTime" : 0.75,
 
-            "projectileType" : "fleshbomb",
-            "power" : 20,
-            "fireOffset" : [2, 0],
+            "projectileType" : "raptorbite",
+            "power" : 14,
+            "fireOffset" : [3, 0],
             "aimAtTarget" : true,
             "onGround" : false,
-            "fireState" : "fire",
+            "fireState" : "",
             "fireSound" : "fire",
-            "inaccuracy" : 2.0,
-            "projectileCount" : 5,
-            "projectileInterval" : 0.3,
-            "winddownState" : "firewinddown",
-            "winddownTime" : 1.5
+            "projectileCount" : 1,
+            "winddownState" : "",
+            "winddownTime" : 1.125
           }
         },
         {
           "name" : "action-charge",
           "cooldown" : 2.5,
           "parameters" : {
-            "maximumRange" : 10,
+            "maximumRange" : 30,
             "windupStopForce" : 50,
             "windupTime" : 1,
             "windupState" : "idle",
@@ -76,10 +74,10 @@
             "rotateToTarget" : false,
             "chargeTime" : 0.35,
             "chargeSpeed" : 55,
-            "chargeControlForce" : 350,
+            "chargeControlForce" : 1250,
 
             "winddownState" : "melee",
-            "winddownStopForce" : 200,
+            "winddownStopForce" : 800,
             "winddownTime" : 0.5
           }
         }
@@ -136,7 +134,7 @@
       "gravityEnabled" : false,
 
       "airFriction" : 2,
-      "airForce" : 20,
+      "airForce" : 80,
       "flySpeed" : 15
     },
 

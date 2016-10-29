@@ -88,7 +88,7 @@ function init()
   monster.setInteractive(config.getParameter("interactive", false))
   
   
-  monster.setName("Flesh Reaper")
+  monster.setName("Gorgolith")
   monster.setDamageBar("special")  
 end
 

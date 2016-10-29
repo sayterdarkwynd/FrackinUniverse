@@ -33,7 +33,8 @@
           "firewindup" : {
             "frames" : 6,
             "cycle" : 0.75,
-            "mode" : "loop",
+            "mode" : "transition",
+            "transition" : "fire",
             "frameProperties" : {
               "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
             },
@@ -44,12 +45,14 @@
           "ranged" : {
             "frames" : 6,
             "cycle" : 0.375,
-            "mode" : "loop"
+            "mode" : "transition",
+            "transition" : "firewinddown"
           },
           "fire" : {
             "frames" : 6,
             "cycle" : 0.375,
-            "mode" : "loop"
+            "mode" : "transition",
+            "transition" : "firewinddown"
           },          
           "melee" : {
             "frames" : 5,
