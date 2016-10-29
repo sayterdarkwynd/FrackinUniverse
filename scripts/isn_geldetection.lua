@@ -10,11 +10,10 @@ function update(dt)
 end
 
 function isn_getGelStatus(geltype)
-	local validTypes = { "isn_accelgel", "isn_bouncegel", "isn_lowfrictionstrip",
-	"isn_propulsionstrip_l", "isn_propulsionstrip_r" }
 	
-	for key, value in pairs(validTypes) do
-		if geltype == value then return true end
+	for _, value in ipairs({ "isn_accelgel", "isn_bouncegel", "isn_lowfrictionstrip",
+	"isn_propulsionstrip_l", "isn_propulsionstrip_r" }) do
+	  if geltype == value then return true end
 	end
 	
 	return false
