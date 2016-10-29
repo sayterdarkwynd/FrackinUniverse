@@ -15,6 +15,8 @@
     ],
 
     "behavior" : "monster",
+    
+    "renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -25,7 +27,10 @@
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
-
+      
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+      
       "foundTargetActions" : [ ],
 
       "fleeActions" : [ ],
@@ -85,13 +90,9 @@
 
       "approachActions" : [
         {
-          "name" : "wander-fly",
+          "name" : "approach-fly",
           "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
+            "usePathfinding" : false
           }
         }
       ],
@@ -104,14 +105,7 @@
 
       "wanderActions" : [
         {
-          "name" : "approach-fly",
-          "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
-          }
+          "name" : "emerge-fly"
         }
       ],
 

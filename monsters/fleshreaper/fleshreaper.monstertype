@@ -15,6 +15,8 @@
     ],
 
     "behavior" : "monster",
+    
+    "renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -26,6 +28,9 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
 
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+      
       "foundTargetActions" : [ ],
 
       "fleeActions" : [ ],
@@ -85,13 +90,9 @@
 
       "approachActions" : [
         {
-          "name" : "wander-fly",
+          "name" : "approach-fly",
           "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
+            "usePathfinding" : false
           }
         }
       ],
@@ -104,14 +105,7 @@
 
       "wanderActions" : [
         {
-          "name" : "approach-fly",
-          "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
-          }
+          "name" : "emerge-fly"
         }
       ],
 
@@ -121,7 +115,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-1.625, -2.375], [1.75, -2.375], [1.75, 2.0], [-1.625, 2.0] ],
+      "poly" : [ [-1.875,2.562], [-1.812,-2.25], [1.312,-2.438], [1.125,2.688] ],
       "damage" : 1,
 
       "teamType" : "enemy",
@@ -130,20 +124,20 @@
       "statusEffects" : [ "puseffect" ]
     },
 
-    "metaBoundBox" : [-3.38, -4.0, 4.50, 0.75],
+    "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-3.625,1], [0.5,0.25], [2.375,-1.125], [4.625,-2], [4.375,-4.25], [-0.375,-4.75], [-1.25,-2.625], [-1.375,-1.75], [-3.75,-0.375] ],
+      "collisionPoly" : [ [-1.875,2.562], [-1.812,-2.25], [1.312,-2.438], [1.125,2.688] ],
 
       "mass" : 0.5,
       "walkSpeed" : 4,
-      "runSpeed" : 12,
+      "runSpeed" : 8,
       "gravityEnabled" : false,
 
       "airFriction" : 2,
       "airForce" : 20,
-      "flySpeed" : 15
+      "flySpeed" : 12
     },
 
     "bodyMaterialKind" : "organic",
@@ -171,7 +165,7 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.19
+          "baseValue" : 0.16
         },
         "knockbackThreshold" : {
           "baseValue" : 5
@@ -180,7 +174,7 @@
           "baseValue" : 78
         },
         "protection" : {
-          "baseValue" : 50.0
+          "baseValue" : 36.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
