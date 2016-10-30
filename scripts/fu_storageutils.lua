@@ -1,9 +1,3 @@
---edit notes from bk3000 aka bk3k
---
---I changed a few things mostly from pairs to ipairs for efficiency 
---where there will be no examining anything but iterated lists
---aka nothing like myTable.nonNumber_index
-
 function fu_storeItems(items, avoidSlots, spawnLeftovers)
 	local function fu_getOutputSlotsFor(something)
 		-- TODO: use world.containerItemsFitWhere? Seems not too useful
@@ -26,7 +20,7 @@ function fu_storeItems(items, avoidSlots, spawnLeftovers)
 	end
 
 	local function contains(list, item)
-		for _, i in ipairs(list) do  --This one I would leave pairs() but it is local and only used on iterated lists
+		for _, i in ipairs(list) do 
 			if i == item then return true end
 		end
 		return false
