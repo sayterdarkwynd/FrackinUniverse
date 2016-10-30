@@ -1,0 +1,33 @@
+{
+  "id" : "create_watcher",
+  "prerequisites" : [ "fuquest_powerstation" ],
+  "title" : "^#1693d5;Long Distance Power",
+  "text" : "Powered stations are a ^orange;huge productivity booster^white;. But they have their limits. Try crafting a watcher and bringing it to me.",
+  "completionText" : "Watchers are special, they'll keep powered devices in range running while your away planetside. Keep in mine they do reset if you leave the planet.",
+  "moneyRange" : [400 , 640 ],
+  "rewards" : [ [ [ "starmasterhelm-recipe", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^orange;Watcher^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_watcher",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

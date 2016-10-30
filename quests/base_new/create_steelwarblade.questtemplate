@@ -1,0 +1,33 @@
+{
+  "id" : "create_steelwarblade",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "^#1693d5;Sharpening the Blade",
+  "text" : "I'll be blunt. That weapon of yours isn't sharp enough. Go craft a Steel Warblade, you'll love it!",
+  "completionText" : "Excellent, enjoy cutting stuff up. Here, take this off my hands.",
+  "moneyRange" : [300, 500],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^orange;steel warblade^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "hardenedsteelblade",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
