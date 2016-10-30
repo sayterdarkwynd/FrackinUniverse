@@ -1,10 +1,3 @@
---update notes from bk3000 aka bk3k
---
---objects aren't mobile so why recalculate every tic of update?  Just a waste of CPU cycles doing that.
---I did it in init()  It probably only needs to recalculate between session changes
---since only storage.state persists between sessions.  That being the case, 
---my edit of line 10 will keep the setting between sessions (which I'd find more desirable by far).
-
 function init()
 	object.setInteractive(true)
 	storage.state = storage.state or false
