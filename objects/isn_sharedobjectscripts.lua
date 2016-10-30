@@ -8,7 +8,7 @@ function isn_getAllDevicesConnectedOnNode(node,direction)
 	else nodeID = object.getInputNodeIds(node) end
 	if nodeID == nil then
 		---sb.logInfo("GGDOND: Node with ID " .. node .. " does not exist, terminating with nil")
-		return nil  --possibly you might just want to return {} instead of nil
+		return nil
 	end
 	
 	---local counter = 0
@@ -51,10 +51,11 @@ function isn_getXPercentageOfY(x,y)
 	return (x / y) * 100
 end
 
-function isn_getListLength(arg)  --or you could use #whatTable so I don't know why this exists
-	local listlength = 0
-	for _ in pairs(arg) do listlength = listlength + 1 end
-	return listlength
+function isn_getListLength(arg)
+	--local listlength = 0
+	--for _ in pairs(arg) do listlength = listlength + 1 end
+	--return listlength
+	return #arg
 end
 
 function isn_effectAllInRange(effect,tilerange)
