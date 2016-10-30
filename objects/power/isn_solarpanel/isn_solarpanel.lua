@@ -1,22 +1,12 @@
---edit notes from bk3000 aka bk3k
---
---efficiency improvement by not calculating truepos over and over when the location won't change!
---plus a small improvement in update()
---and make sure line 34 - 36 is as intended... seems like that might not me and could be done more efficiently by
---checking against larger values first combined with if, elseif, elseif, elseif to set the actual desired value
-
 function init(virtual)
 	if virtual == true then return end
 	storage.checkticks = 0
 	storage.truepos = storage.truepos or {entity.position()[1] + math.random(2,3), entity.position()[2] + 1}
-  --if not nil, no reassignment.  If nil then gets assigned
-  --although I honestly do no understand why the random 'x' offset but I left it intact
 end
 
 function update(dt)
 	storage.checkticks = storage.checkticks + 1
-	--if storage.checkticks >= 10 then
-  if storage.checkticks > 9 then --slightly more efficient because >= is equivalent to n > v or n == v
+  if storage.checkticks > 9 then 
 		storage.checkticks = 0
 		isn_getCurrentPowerOutput()
 	end
@@ -35,8 +25,6 @@ function isn_getCurrentPowerOutput(divide)
 	if light > 0.3 then generated = generated + 0.35 end
 	if light > 0.5 then generated = generated + 0.45 end
 	if light > 0.7 then generated = generated + 0.55 end
-  --just to check your intention here, the 4 checks are no mutually exclusive so if light > 0.7 then 
-  --generated is going to actually increase 1.6 in total, not 0.55 thanks to a compound increase
 	
 	if storage.truepos[2] < 500 then genmult = 1
 	elseif storage.truepos[2] > 900 then genmult = 5 
@@ -75,9 +63,6 @@ function isn_powerGenerationBlocked()
     world.lightLevel(location) < 0.2 then return true 
   else return false --no false return when the other option is true?!
   end 
-  --LUA won't call what's to the right of 'or' if it got value beyond false or nil to the left of it
-  --so making so many seperate statements isn't necessary so I combined them.
-  --strickly speaking that probably wasn't necessary to do
 end
 
 function isn_getTruePosition()  --in case this is called externally, otherwise I'd delete it
