@@ -23,7 +23,7 @@
           },
           "chargewindup" : {
             "frames" : 8,
-            "cycle" : 0.5,
+            "cycle" : 0.75,
             "mode" : "loop"
           },
           "charge" : {
@@ -82,22 +82,24 @@
     },
 
     "parts" : {
-      "backArm" : {
+      "backLegs" : {
         "properties" : {
-          "transformationGroups" : [ "body", "aim" ],
-          "zLevel" : 0
+          "zLevel" : 0,
+          "centered" : true,
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.75, 0.125]
         },
 
         "partStates" : {
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.<frame>"
               }
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "walk" : {
@@ -122,12 +124,12 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:walk.<frame>"
               }
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.1"
               }
             },
             "fire" : {
@@ -137,83 +139,14 @@
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
-              }
-            }
-          },
-          "damage" : {
-            "stunned" : {
-              "properties" : {
-                "image" : "<partImage>:jump"
-              }
-            }
-          }
-        }
-      },
-
-      "frontArm" : {
-        "properties" : {
-          "transformationGroups" : [ "body", "aim" ],
-          "zLevel" : 4
-        },
-
-        "partStates" : {
-          "body" : {
-            "idle" : {
-              "properties" : {
-                "image" : "<partImage>:idle"
-              }
-            },
-            "jump" : {
-              "properties" : {
-                "image" : "<partImage>:jump"
-              }
-            },
-            "walk" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "run" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "chargewindup" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:walk.<frame>"
-              }
-            },
-            "chargewinddown" : {
-              "properties" : {
-                "image" : "<partImage>:idle"
-              }
-            },
-            "firewindup" : {
-              "properties" : {
-                "image" : "<partImage>:idle"
-              }
-            },
-            "fire" : {
-              "properties" : {
                 "image" : "<partImage>:idle.1"
               }
-            },
-            "firewinddown" : {
-              "properties" : {
-                "image" : "<partImage>:idle"
-              }
             }
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           }
@@ -222,20 +155,22 @@
 
       "chest" : {
         "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
           "transformationGroups" : [ "body" ],
-          "zLevel" : 2
+          "offset" : [-0.75, 0.125]
         },
 
         "partStates" : {
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.<frame>"
               }
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "walk" : {
@@ -260,12 +195,12 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:walk.<frame>"
               }
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.1"
               }
             },
             "fire" : {
@@ -275,14 +210,14 @@
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.1"
               }
             }
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           }
@@ -291,20 +226,22 @@
 
       "tail" : {
         "properties" : {
+          "zLevel" : 2,
+          "centered" : true,
           "transformationGroups" : [ "body" ],
-          "zLevel" : 1
+          "offset" : [-0.75, 0.125]
         },
 
         "partStates" : {
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.<frame>"
               }
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "walk" : {
@@ -329,12 +266,12 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:walk.<frame>"
               }
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.1"
               }
             },
             "fire" : {
@@ -344,14 +281,14 @@
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.1"
               }
             }
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           }
@@ -360,20 +297,22 @@
 
       "head" : {
         "properties" : {
-          "transformationGroups" : [ "body" ],
-          "zLevel" : 3
+          "zLevel" : 3,
+          "centered" : true,
+          "transformationGroups" : [ "body", "aim" ],
+          "offset" : [-0.75, 0.125]
         },
 
         "partStates" : {
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.<frame>"
               }
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "walk" : {
@@ -398,12 +337,83 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:walk.<frame>"
               }
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:fire.2"
+              }
+            }
+          }
+        }
+      },
+
+      "frontLegs" : {
+        "properties" : {
+          "zLevel" : 4,
+          "centered" : true,
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.75, 0.125]
+        },
+
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
               }
             },
             "fire" : {
@@ -413,14 +423,14 @@
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.1"
               }
             }
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           }
@@ -488,6 +498,7 @@
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
     "fire" : [ "/sfx/npc/monsters/monster_surprise.ogg" ]
   },
+
   "effects" : {
     "blink" : {
       "type" : "flash",
