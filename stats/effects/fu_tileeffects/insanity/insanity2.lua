@@ -74,8 +74,10 @@ function update(dt)
     self.spawnTimer = self.spawnTimer - dt
   end
 
-  status.modifyResource("health", -self.dps * dt)
-
+  status.modifyResource("health", (-self.dps / 50) * dt)
+  status.modifyResource("energy", (-self.dps * 3) * dt)
+  status.modifyResource("food", (-self.dps /75) * dt)
+  
   local monsterPosition = self.findMonster()
   if monsterPosition then
     if not self.messaged then
@@ -110,7 +112,7 @@ function update(dt)
         keepAlive = true
       }
       world.spawnMonster("horror2", vec2.add(mcontroller.position(), config.getParameter("ghostSpawnOffset")), parameters)
-      self.spawnTimer = 1.0
+      self.spawnTimer = 5.0
     end
   end
 

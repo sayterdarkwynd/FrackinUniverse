@@ -1,7 +1,7 @@
 function init()
   script.setUpdateDelta(5)
-  self.tickDamagePercentage = 0.03
-  self.tickTime = 0.75
+  self.tickDamagePercentage = 0.02
+  self.tickTime = 1.0
   self.tickTimer = self.tickTime
   activateVisualEffects()
 end
