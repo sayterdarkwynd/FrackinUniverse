@@ -1,5 +1,5 @@
 {
-  "type" : "horror",
+  "type" : "horror2",
   "shortdescription" : "Floating Horror",
   "description" : "A horrifying abberation that really wants your face skin in its mouth.",
   "categories" : [ "horror" ],
@@ -11,10 +11,18 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/ghosts/erchiusghost/erchiusghost.lua"
     ],
-    
-    "behavior" : "monster",
+
+    "speedupRange" : [75, 175],
+    "maxSpeed" : 30,
+
+    // The min speed depends on the erchius amount of the player
+    "minSpeedRange" : [0.5, 10],
+    "erchiusRange" : [0, 5000],
+
+    "emissionRange" : 20,
+    "maxEmissionRate" : 100,
 
     "renderLayer" : "foregroundEntity",
 
