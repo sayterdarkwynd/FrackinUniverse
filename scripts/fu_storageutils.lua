@@ -6,8 +6,10 @@ function fu_storeItems(items, avoidSlots, spawnLeftovers)
 
 		for i = 0, world.containerSize(entity.id()) do -- iterate all output slots
 			local stack = world.containerItemAt(entity.id(), i) -- get the stack on i
-			if stack and (stack.name == something) then -- not empty and its "something"
-			  table.insert(slots,i) -- possible drop slot
+			if stack then -- not empty
+				if stack.name == something then -- its "something"
+					table.insert(slots,i) -- possible drop slot
+				end
 			else -- empty
 				table.insert(empty, i)
 			end
