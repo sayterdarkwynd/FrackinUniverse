@@ -3,8 +3,12 @@
  "path":"/threatRange",
  "value": [1,6]
  },
-	{"op":"replace","path":"/gravityRange/0","value":0},
-	{"op":"replace","path":"/gravityRange/1","value":0},
+
+  { "op": "replace","path": "/ambientLightLevel","value":  [70, 70, 70] },  
+  { "op": "add","path": "/environmentStatusEffects/-","value": "gravmeteor" },  
+  { "op": "replace","path": "/gravityRange","value": [ 10,25 ] },  
+  { "op": "replace","path": "/gravityRange","value": [ 10,25 ] }, 
+  
 	{"op":"replace","path":"/terrains/0",
 	"value":{
 	  "terrainSelector":"asteroids",

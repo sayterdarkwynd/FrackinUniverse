@@ -6,6 +6,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setBonusInit("fu_evaderset", {
 		{stat = "sulphuricacidImmunity", amount = 1},
+		{stat = "sulphuricImmunity", amount = 1},
 		{stat = "protoImmunity", amount = 1},
 		{stat = "extremepressureProtection", amount = 1},
 		{stat = "pressureProtection", amount = 1},
