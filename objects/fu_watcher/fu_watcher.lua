@@ -1,14 +1,15 @@
 function init()
 	object.setInteractive(true)
-	storage.state = false
+	storage.state = storage.state or false
+  if not storage.watchBox then
+    local myLocation = entity.position()
+    storage.watchBox = { myLocation[1]-20, myLocation[2]-20, myLocation[1]+20, myLocation[2]+20 }
+  end
 end
 
 function update(dt)
-	local myLocation = entity.position()
-	local watchBox = { myLocation[1]-20, myLocation[2]-20, myLocation[1]+20, myLocation[2]+20 }
-	-- world.debugPoly( watchBox, "red" ) -- didn't work, rectf is not usable as poly
 	if storage.state then
-		world.loadRegion( watchBox )
+		world.loadRegion( storage.watchBox )
 	end
 end
 
