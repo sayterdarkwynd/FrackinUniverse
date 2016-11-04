@@ -15,14 +15,14 @@ function fu_storeItems(items, avoidSlots, spawnLeftovers)
 			end
 		end
 
-		for _, e in pairs(empty) do -- add empty slots to the end
+		for _, e in ipairs(empty) do -- add empty slots to the end
 			table.insert(slots,e)
 		end
 		return slots
 	end
 
 	local function contains(list, item)
-		for _, i in pairs(list) do
+		for _, i in ipairs(list) do 
 			if i == item then return true end
 		end
 		return false
@@ -31,7 +31,7 @@ function fu_storeItems(items, avoidSlots, spawnLeftovers)
 
 	if avoidSlots then
 		local slots = fu_getOutputSlotsFor(items.name)
-		for _, i in pairs(slots) do
+		for _, i in ipairs(slots) do
 			if not contains(avoidSlots, i) then
 				items = world.containerPutItemsAt(entity.id(), items, i)
 				if items == nil then
@@ -56,11 +56,8 @@ local function fu_itemBroadcast_sendItems(node, itemDescriptor)
 	storage.fu_storage_knownPeers = {}
 
 	-- get info on chests in range of connected receivers
-	local out = object.getOutputNodeIds(node)
-	if out then
-		for i, j in pairs(out) do
-			world.callScriptedEntity(i, "returnBeaconHandshake")
-		end
+	for i, j in ipairs( object.getOutputNodeIds(node) or {} ) do
+		world.callScriptedEntity(i, "returnBeaconHandshake")
 	end
 
 	-- try to store items in them
@@ -93,7 +90,7 @@ function fu_sendItems(node, itemDescriptor)
 	local unfail = { name = itemDescriptor.name, count = 0, data = itemDescriptor.data }
 
 	local connectedIds = object.getOutputNodeIds(0)
-	for i,j in pairs(connectedIds) do
+	for i,j in ipairs(connectedIds) do
 		-- Wired Industry interop
 		if world.getObjectParameter(i, "acceptsItems") then
 			-- sb.logInfo ('sending %s to object %s', itemDescriptor, i)
