@@ -31,13 +31,9 @@ function isn_getAllDevicesConnectedOnNode(node,direction)
 end
 
 function isn_numericRange(number,minimum,maximum)
-	if number > maximum then 
-    return maximum
-	elseif number < minimum then 
-    return minimum
-  else
-    return number
-  end
+	if number > maximum then return maximum end
+	if number < minimum then return minimum end
+	return number
 end
 
 function isn_countDevicesConnectedOnOutboundNode(node)
