@@ -1,0 +1,45 @@
+{
+  "objectName" : "pumpinfu",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Hook my outputwire up to an output pump, give me a wire signal and you have a working pump system!",
+  "shortdescription" : "fuInput Pump",
+  "race" : "generic",
+  "health" : 1.5,
+  "category" : "wire",
+  "price" : 100,
+
+  "apexDescription"    : "inputPump: This is designed transport liquids automatically!",
+  "avianDescription"   : "inputPump: This is used to automatically move water, good for keeping my feathers wet!",
+  "floranDescription"  : "inputPump: thisss moves waterstuffsss.",
+  "glitchDescription"  : "inputPump: Impressed. This translocates liquids with ease.",
+  "humanDescription"   : "inputPump: This'll move liquids fast!",
+  "hylotlDescription"  : "inputPump: A useful device for moving liquids. For those who like that.",
+  "novakidDescription" : "inputPump: This old pump will move all liquids!",
+
+    "inventoryIcon" : "pumpinfuicon.png",
+    "orientations" : [
+        {
+            "image" : "pumpinfu.png:<color>.off",
+            "imagePosition" : [0, 0],
+            "spaceScan" : 0.1,
+            "anchors" : [ "background" ]
+        }
+    ],
+
+  "scripts" : [ "/objects/wired/pumpin/pumpinfu.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/pumpin/pumpinfu.animation",
+
+  "animationParts" : {
+    "pumpin" : "pumpinfu.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 0] ],
+  "outputNodes" : [ [1, 0] ],
+  "interval" : 5
+}
+
