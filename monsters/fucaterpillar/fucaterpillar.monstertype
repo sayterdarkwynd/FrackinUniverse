@@ -40,8 +40,8 @@
             "requireLineOfSight" : true,
             "maximumRange" : 16,
             "minimumRange" : 1,
-            "windupState" : "fire",
-            "windupTime" : 0.5,
+            "windupState" : "melee",
+            "windupTime" : 0.6,
 
             "projectileType" : "bioblast4a",
             "power" : 6,
@@ -52,13 +52,37 @@
             "fireSound" : "fire",
             "range": 16,
             "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.1
+            "winddownState" : "fire",
+            "winddownTime" : 0.5
           }
         }
       ],
 
-      "periodicActions" : [],
+      "periodicActions" : [
+        {
+          "name" : "action-fire",
+		   "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 1,
+            "minimumRange" : 1,
+            "windupState" : "idle",
+            "windupTime" : 0.5,
+
+            "projectileType" : "caterpillarspray",
+            "power" : 6,
+            "fireOffset" : [-2.75, -0.15],
+            "aimAtTarget" : false,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.01,
+            "fireSound" : "",
+            "range": 1,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }      
+      ],
 
       "approachActions" : [
         {
@@ -100,7 +124,30 @@
           "parameters" : {
             "wanderTime" : [5, 20]
           }
-        }
+        },
+        {
+          "name" : "action-fire",
+		   "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 1,
+            "minimumRange" : 1,
+            "windupState" : "idle",
+            "windupTime" : 0.5,
+
+            "projectileType" : "caterpillarspray",
+            "power" : 6,
+            "fireOffset" : [-2.75, -0.15],
+            "aimAtTarget" : false,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.01,
+            "fireSound" : "",
+            "range": 1,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }  
       ],
       
       
@@ -188,6 +235,12 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },  
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },        
         "powerMultiplier" : {
           "baseValue" : 1.0
         }
