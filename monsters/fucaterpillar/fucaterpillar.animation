@@ -18,7 +18,7 @@
               "immediateSoundRangeMultiplier" : 0.5
             },
             "frameProperties" : {
-              "immediateSound" : [ " "/sfx/blocks/footstep_brains.ogg"", " "/sfx/blocks/footstep_brains.ogg"", " "/sfx/blocks/footstep_brains.ogg"" ]
+              "immediateSound" : [ "/sfx/blocks/footstep_brains.ogg", "/sfx/blocks/footstep_brains.ogg", "/sfx/blocks/footstep_brains.ogg" ]
             }
           },
           "hurt" : {
@@ -33,6 +33,11 @@
             "frames" : 1,
             "cycle" : 0.5
           },
+          "melee" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop"
+          },          
           "fire" : {
             "frames" : 5,
             "cycle" : 0.5,
@@ -98,6 +103,11 @@
                 "image" : "<partImage>:fire.<frame>"
               }
             },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
+              }
+            },            
             "fireWindup" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
