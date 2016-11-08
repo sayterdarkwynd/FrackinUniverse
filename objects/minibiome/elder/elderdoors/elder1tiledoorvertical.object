@@ -1,0 +1,62 @@
+{
+  "objectName" : "elder1tiledoorvertical",
+    "colonyTags" : [ "elder", "door" ],
+  "printable" : false,
+  "rarity" : "Legendary",
+
+  "category" : "door",
+  "price" : 0,
+  "description" : "Unknown element. Fascinating.",
+  "shortdescription" : "Elder Door",
+  "race" : "ancient",
+
+
+  "inventoryIcon" : "elderslidingdooricon.png",
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/fleshdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/fleshdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "elder1tiledoorvertical.png"
+  },
+
+  "orientations" : [
+    {
+      "image" : "elder1tiledoorvertical.png:default",
+      "imagePosition" : [0, 0],
+      "renderLayer" : "Object+5",
+      "animationPosition" : [0, 0],
+      "flipImages" : true,
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ]
+    },
+    {
+      "image" : "elder1tiledoorvertical.png:default",
+      "imagePosition" : [0, 0],
+      "renderLayer" : "Object+5",
+      "animationPosition" : [0, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ]
+    }
+  ],
+
+  "inputNodes" : [ [-1, 0] ],
+  "outputNodes" : [ [1, 0] ]
+}
