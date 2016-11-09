@@ -1,0 +1,64 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "sensorState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "water" : {
+            "frames" : 1
+          },
+          "poison" : {
+            "frames" : 1
+          },
+          "lava" : {
+            "frames" : 1
+          },
+          "other" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "sensor" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "sensorState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+            "water" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.water"
+              }
+            },
+            "poison" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.poison"
+              }
+            },
+            "lava" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.lava"
+              }
+            },
+            "other" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.other"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
