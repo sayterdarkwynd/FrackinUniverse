@@ -3,6 +3,7 @@
   "shortdescription" : "Mini Shoggoth",
   "description" : "A horrid and amorphous abomination. A tiny one.",
 
+  "reversed" : true,
   "categories" : [ "minishoggoth2" ],
   "parts" : [ "body" ],
 
@@ -16,8 +17,8 @@
     ],
 
     "behavior" : "monster",
-    "facingMode" : "transformation",
-    "deathBehavior" : "monster-death",
+
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -41,7 +42,7 @@
             "minimumRange" : 0,
             "maximumRange" : 10,
             "maxXRange" : 4,
-            "windupTime" : 0.3,
+            "windupTime" : 0.4,
             "windupState" : "idle",
 
             "leapVelocity" : 25,
@@ -62,7 +63,7 @@
             "maximumRange" : 15,
             "minimumRange" : 4,
             "windupState" : "fire",
-            "windupTime" : 0.4,
+            "windupTime" : 0.5,
 
             "projectileType" : "corrosiveparticle",
             "power" : 12,
@@ -86,7 +87,7 @@
             "maximumRange" : 5,
             "minimumRange" : 0,
             "windupState" : "fire",
-            "windupTime" : 0.2,
+            "windupTime" : 0.5,
 
             "projectileType" : "chomp",
             "power" : 10,
@@ -109,7 +110,7 @@
 
       "approachActions" : [
         {
-          "name" : "approach-crawl",
+          "name" : "approach-walk",
           "parameters" : {
             "resetHeading" : false
           }
@@ -123,7 +124,7 @@
           }
         },
         {
-          "name" : "approach-crawl",
+          "name" : "approach-walk",
           "parameters" : {
             "resetHeading" : false
           }
@@ -132,34 +133,14 @@
 
       "wanderActions" : [    
         {
-          "name" : "wander-crawl",
+          "name" : "wander-walk",
           "parameters" : {
             "wanderTime" : [5, 15]
           }
         }
       ],
 
-      "concurrentActions" : [
-        ],
-
-      "concurrentHostileActions" : [
-        { "name" : "idle-crawl" }
-		],
-
-      "deathActions" : [
-        {
-          "name" : "action-projectile",
-          "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "puswater",
-            "projectileParameters" : {},
-            "power" : 0,
-            "aimDirection" : [0, -1],
-            "inaccuracy" : 0,
-            "fireOffset" : [0, 1]
-          }
-        }
-      ]
+      "deathActions" : [ ]
     },
 
     "touchDamage" : {
