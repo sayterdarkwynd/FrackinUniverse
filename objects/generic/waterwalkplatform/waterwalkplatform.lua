@@ -30,7 +30,7 @@ end
 
 
 function update(dt)
-
+    
   if self.triggerTimer > 0 then
     self.triggerTimer = self.triggerTimer - dt
   elseif self.triggerTimer <= 0 then
@@ -41,14 +41,13 @@ function update(dt)
       })
 
     if #entityIds < 1 then
-      
       if self.timer > 0 then
         self.timer = self.timer -dt
       else
         object.smash(true)
       end
     end
-    
+
   end
 end
 
