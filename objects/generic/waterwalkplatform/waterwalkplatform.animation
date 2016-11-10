@@ -1,0 +1,85 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "doorState" : {
+        "default" : "closed",
+        "states" : {
+          "open" : {
+            "frames" : 2,
+            "cycle" : 0.2
+           },
+          "closing" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "closed"
+          },
+          "closed" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          },
+          "locking" : {
+            "frames" : 1,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "locked"
+          },
+          "locked" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "door" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "doorState" : {
+            "open" : {
+              "properties" : {
+                "image" : "<partImage>:open.<frame>"
+              }
+            },
+
+            "closing" : {
+              "properties" : {
+                "image" : "<partImage>:closing.<frame>"
+              }
+            },
+
+            "closed" : {
+              "properties" : {
+                "image" : "<partImage>:closed.<frame>"
+              }
+            },
+
+            "locking" : {
+              "properties" : {
+                "image" : "<partImage>:closed.<frame>"
+              }
+            },
+
+            "locked" : {
+              "properties" : {
+                "image" : "<partImage>:closed.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "open" : [],
+    "close" : [],
+    "locked" : [ "/sfx/interface/clickon_error.ogg" ]
+  }
+}
