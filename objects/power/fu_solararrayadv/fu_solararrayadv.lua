@@ -24,7 +24,7 @@ function isn_getCurrentPowerOutput(divide)
 	local light = world.lightLevel(location)
 
 	
-	generated = light * 3.8
+	generated = light * 4.8
 	
 	if location[2] < 500 then genmult = 1
 	elseif location[2] > 900 then genmult = 5 
