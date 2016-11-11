@@ -1,0 +1,330 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 4,
+            "cycle" : 1,
+            "mode" :"loop"
+          },
+          "invis" : {
+            "frames" : 4,
+            "cycle" : 1,
+            "mode" :"transition",
+            "transition" : "idle"
+          },          
+          "walk" : {
+            "frames" : 4,
+            "cycle" : 1,
+            "mode" :"loop"
+          }, 
+          "teleport" : {
+            "frames" : 8,
+            "cycle" : 1.6
+          },   
+          "teleportout" : {
+            "frames" : 8,
+            "cycle" : 0.8
+          },            
+          "blast" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/attack.ogg",
+              "immediateSoundRangeMultiplier" : 1
+            }             
+          },           
+          "fire" : {
+            "frames" : 5,
+            "cycle" : 0.5      
+          }, 
+          "fireprojectile" : {
+            "frames" : 13,
+            "cycle" : 1.3,
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/starspawn3.ogg",
+              "immediateSoundRangeMultiplier" : 1
+            }             
+          },           
+          "fire2" : {
+            "frames" : 5,
+            "cycle" : 0.5      
+          }, 
+          "fireprojectile2" : {
+            "frames" : 13,
+            "cycle" : 1.3,           
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/starspawnspellcharge.ogg",
+              "immediateSoundRangeMultiplier" : 1
+            }                
+          },            
+          "fire3" : {
+            "frames" : 5,
+            "cycle" : 0.5        
+          },
+          "fireprojectile3" : {
+            "frames" : 13,
+            "cycle" : 1.3,           
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/starspawnspellcharge.ogg",
+              "immediateSoundRangeMultiplier" : 1
+            }                  
+          },          
+          "firewindup" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/starspawnspellcharge.ogg",
+              "immediateSoundRangeMultiplier" : 1
+            }                  
+          }, 
+          
+          "firewinddown" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "immediateSound" : "/sfx/starspawn/starspawnspellcharge2.ogg",
+              "immediateSoundRangeMultiplier" : 1
+            }  
+          },           
+          "jump" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" :"loop"
+          },
+          "fall" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop"
+          }, 
+          "jumpwindup" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg"
+            }
+          }
+        }
+      },           
+      
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "centered" : true,
+          "zLevel" : 2
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "invis" : {
+              "properties" : {
+                "image" : "<partImage>:invis.<frame>"
+              }
+            },            
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },            
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "teleport" : {
+              "properties" : {
+                "image" : "<partImage>:teleport.<frame>"
+              }
+            },            
+            "blast" : {
+              "properties" : {
+                "image" : "<partImage>:blast.<frame>"
+              }
+            },   
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:firewindup.<frame>"
+              }
+            }, 
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
+              }
+            },            
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "fireprojectile" : {
+              "properties" : {
+                "image" : "<partImage>:fireprojectile.<frame>"
+              }
+            },            
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire2.<frame>"
+              }
+            },
+            "fireprojectile2" : {
+              "properties" : {
+                "image" : "<partImage>:fireprojectile2.<frame>"
+              }
+            },              
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire3.<frame>"
+              }
+            },
+            "fireprojectile3" : {
+              "properties" : {
+                "image" : "<partImage>:fireprojectile3.<frame>"
+              }
+            }              
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }     
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+  
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [40, 40, 30],
+      "pointLight" : true
+    }
+  },
+  
+  "particleEmitters" : {
+
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+
+
+  "sounds" : {
+    "turnHostile" : [ "/sfx/starspawn/attack.ogg" ],
+    "idle" :["/sfx/npc/unique/robotboss_idle1.ogg"],
+    "fire" :["/sfx/weapons/explosion2.ogg"],
+    "blast" :["/sfx/weapons/energypew.ogg"],
+    "spell1" :["/sfx/starspawn/starspawncharge.ogg"],
+    "spell2" :["/sfx/weapons/energy-whoosh-impact8.wav"],
+    "spell3" :["/sfx/monsters/starspawnspell2.ogg"],
+    "deathPuff" :["/sfx/starspawn/starspawn1.ogg"],
+    "attackSound" :["/sfx/starspawn/attack.ogg"],
+    "aggroHop" :["/sfx/starspawn/attack2.ogg"],
+    "blinkSound" : [ "/sfx/gun/lightningcoil3.ogg" ]
+  }
+}

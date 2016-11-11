@@ -1,0 +1,188 @@
+{
+  "name": "approach-teleportnew",
+  "scripts": [
+    "/scripts/actions/world.lua",
+    "/scripts/actions/query.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/monster.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/entity.lua",
+    "/monsters/monster.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/movement.lua"
+  ],
+  "parameters": {
+    "moveState": "walk",
+    "idleState": "idle",
+    "teleportMinDistance": 40,
+    "targetXDelta": 5,
+    "groundMinHeight": -10,
+    "groundMaxHeight": 10
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {
+      "type": "sliding",
+      "state": "off",
+      "fromEntity": "attackTarget",
+      "toEntity": "fleeTarget"
+    },
+    "children": [
+      {
+        "title": "entityPosition",
+        "type": "action",
+        "name": "entityPosition",
+        "parameters": {
+          "entity": "target"
+        },
+        "output": {
+          "position": "targetPosition"
+        }
+      },
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": "target",
+          "target": "self"
+        },
+        "output": {
+          "direction": "direction"
+        }
+      },
+      {
+        "title": "offsetDirection",
+        "type": "action",
+        "name": "offsetDirection",
+        "parameters": {
+          "direction": "direction",
+          "multiplier": "<targetXDelta>",
+          "position": "targetPosition"
+        },
+        "output": {
+          "position": "targetPosition"
+        }
+      },
+      {
+        "title": "groundPosition",
+        "type": "action",
+        "name": "groundPosition",
+        "parameters": {
+          "avoidLiquid": false,
+          "maxHeight": "<groundMaxHeight>",
+          "minHeight": "<groundMinHeight>",
+          "position": "targetPosition"
+        },
+        "output": {
+          "position": "targetPosition"
+        }
+      },
+      {
+        "title": "inverter",
+        "type": "decorator",
+        "name": "inverter",
+        "parameters": {},
+        "child": {
+          "title": "inRange",
+          "type": "action",
+          "name": "inRange",
+          "parameters": {
+            "position": "self",
+            "target": "targetPosition",
+            "range": "<teleportMinDistance>"
+          }
+        }
+      },
+      {
+        "title": "cleanup",
+        "type": "composite",
+        "name": "cleanup",
+        "parameters": {},
+        "children": [
+          {
+            "title": "setParticleEmitterActive",
+            "type": "action",
+            "name": "setParticleEmitterActive",
+            "parameters": {
+              "active": true
+            }
+          },
+          {
+            "title": "halt",
+            "type": "action",
+            "name": "halt",
+            "parameters": {}
+          },
+          {
+            "title": "setParticleEmitterActive",
+            "type": "action",
+            "name": "setParticleEmitterActive",
+            "parameters": {
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": 0.5
+        }
+      },
+      {
+        "title": "setPosition",
+        "type": "action",
+        "name": "setPosition",
+        "parameters": {
+          "footPosition": true,
+          "position": "targetPosition"
+        }
+      },
+      {
+        "title": "cleanup",
+        "type": "composite",
+        "name": "cleanup",
+        "parameters": {},
+        "children": [
+          {
+            "title": "setParticleEmitterActive",
+            "type": "action",
+            "name": "setParticleEmitterActive",
+            "parameters": {
+              "active": true
+            }
+          },
+          {
+            "title": "halt",
+            "type": "action",
+            "name": "halt",
+            "parameters": {}
+          },
+          {
+            "title": "setParticleEmitterActive",
+            "type": "action",
+            "name": "setParticleEmitterActive",
+            "parameters": {
+              "active": false
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": "<idleState>",
+          "type": "body"
+        }
+      }
+    ]
+  }
+}
