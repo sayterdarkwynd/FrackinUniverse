@@ -10,7 +10,7 @@ function update(dt)
 		applyGel(value)
 	end
 	
-	entity.smash()
+	--entity.smash()
 end
 
 function getSurroundingTileList()
