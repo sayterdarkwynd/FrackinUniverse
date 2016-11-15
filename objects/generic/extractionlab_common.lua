@@ -692,6 +692,7 @@ function getRecipes()
 	{ inputs = { yellowfootseed = 1 }, outputs = { tissueculture = { 4, 4, 7 } } },
 	{ inputs = { zathiseed = 1 }, outputs = { geneticmaterial = { 8, 8, 9 } } },
 	-- from FU
+	{ inputs = { spectrumore = 5 }, outputs = { fu_nitrogen = { 5, 10, 14 } } },
 	{ inputs = { aenemapetal = 1 }, outputs = { shadowgasliquid = 1 } },
 	{ inputs = { aquapod = 1 }, outputs = { tissueculture = { 3, 3, 6 } } },
 	{ inputs = { arkaendart = 1 }, outputs = { tissueculture = { 4, 4, 8 } } },
