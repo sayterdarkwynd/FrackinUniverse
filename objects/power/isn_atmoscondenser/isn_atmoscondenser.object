@@ -17,7 +17,7 @@
   "humanDescription" : "Let's find the mega condenser! Am I saying that too fast?",
   "hylotlDescription" : "To pull an ocean out of thin air is just plain madness.",
   
-  "scripts" : [ "/objects/power/isn_resource_generator.lua",
+  "scripts" : [ "/objects/power/isn_atmoscondenser/isn_resource_generator.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 120,
@@ -29,11 +29,104 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
+  
+  //Condenser Outputs
+  
+  // Common
   "commonOutputs" : [ "liquidwater", "fu_oxygen", "fu_hydrogen", "fu_nitrogen" ],
-  
   "uncommonOutputs" : [ "fu_carbon", "fu_salt" ],
-  
   "rareOutputs" : [ "helium3gasliquid", "shadowgasliquid", "cellmateria", "geneticmaterial", "mineralsample", "deuterium", "tritium", "dnasample" ],
+  
+  // Biome Special
+  
+  "aetherOutputs" : [ "liquidaether", "fu_nitrogen", "fu_hydrogen", "liquidpoison", "uraniumore", "liquidsulphuricacid" ],
+  "aetheruncommonOutputs" : [ "mutagene1", "mutagene2", "fu_salt", "sulphur" ],
+  "aetherrareOutputs" : [ "mutagene3", "xithriciteore" ],
+  
+  "moonOutputs" : [ "fu_carbon", "rawminerals" ],
+  "moonuncommonOutputs" : [  "helium3gasliquid", "moonstoneore", "liquidfuel"  ],
+  "moonrareOutputs" : [ "mineralsample", "unstableparticles" ],
+  
+  "atropusOutputs" : [ "liquidpus", "liquidblood", "fu_oxygen", "fleshstrand", "geneticmaterial", "nutrientpaste" ],
+  "atropusuncommonOutputs" : [ "larva", "methanol", "biospore", "cellmateria" ],
+  "atropusrareOutputs" : [ "helium3gasliquid", "shadowgasliquid", "cellmatter", "mineralsample", "deuterium", "tritium", "dnasample" ],
+
+  "gasOutputs" : [ "helium3gasliquid", "shadowgasliquid", "liquidpoison", "fu_hydrogen", "fu_nitrogen" ],
+  "gasuncommonOutputs" : [ "rawminerals", "fu_hydrogen", "fu_nitrogen"],
+  "gasrareOutputs" : [ "liquidmetallichydrogen" ],
+  
+  "bogOutputs" : [ "swampwater", "fu_oxygen", "algaegreen", "liquidwater", "fu_hydrogen", "fu_nitrogen" ],
+  "boguncommonOutputs" : [ "cellmateria", "fu_carbon", "fu_salt" ],
+  "bograreOutputs" : [ "helium3gasliquid", "shadowgasliquid", "cellmateria", "geneticmaterial", "mineralsample", "deuterium", "tritium", "dnasample" ],
+  
+  "chromaticOutputs" : [ "fu_oxygen", "liquidwater", "toxicwaste", "fu_mulch", "chromadirtmaterial"  ],
+  "chromaticuncommonOutputs" : [ "uraniumore", "lead", "aliencompound"  ],
+  "chromaticrareOutputs" : [ "plutoniumore", "mutagene4", "neptuniumore", "thoriumore" ],
+  
+  "crystalOutputs" : [ "liquidorganicsoup", "crystalsandmaterial", "crystal" ],
+  "crystaluncommonOutputs" : [ "liquidcrystal", "mutagene1" ],
+  "crystalrareOutputs" : [ "icecrystal", "lunarishard" ],
+  
+  "desertOutputs" : [ "sand", "fu_oxygen", "liquidoil", "calichewall" ],
+  "desertuncommonOutputs" : [ "ff_silicon", "liquidwater", "fu_hydrogen" ],
+  "desertrareOutputs" : [ "saltpeter" ],
+  
+  "iceOutputs" : [ "fu_nitrogen", "snowflake", "fu_hydrogen", "liquidwater" ],
+  "iceuncommonOutputs" : [ "methanol", "iodine", "liquidnitrogenitem", "icecrystal" ],
+  "icerareOutputs" : [ "mutagene3", "isogenore" ],
+  
+  "nitrogenOutputs" : [ "liquidnitrogenitem", "fu_nitrogen", "liquidwater" ],
+  "nitrogenuncommonOutputs" : [ "aliencompound", "mutagene1" ],
+  "nitrogenrareOutputs" : [ "mutagene2" ],
+  
+  "infernusOutputs" : [ "lava", "fu_carbon", "sulphur" ],
+  "infernusuncommonOutputs" : [ "fu_nitrogen", "ff_mercury" ],
+  "infernusrareOutputs" : [ "magnesiumsulfate", "pyreiteore" ],
+  
+  "radiationOutputs" : [ "liquidpoison", "uraniumore", "toxicwaste" ],
+  "radiationuncommonOutputs" : [ "fu_carbon", "plutoniumore", "alienwoodsap", "neptuniumore", "thoriumore" ],
+  "radiationrareOutputs" : [ "calciumnitrate", "tritium", "liquidirradium", "irradiumore" ],
+  
+  "lightlessOutputs" : [ "fu_nitrogen", "fu_oxygen" ],
+  "lightlessuncommonOutputs" : [ "fu_carbon", "triangliumore" ],
+  "lightlessrareOutputs" : [ "effigiumore", "blooddiamond" ],
+  
+  "metallicOutputs" : [ "liquidironfu", "ironore", "ff_spareparts", "tungstenore", "metallic", "bolt" ],
+  "metallicuncommonOutputs" : [ "titaniumore", "magnesiumpowder" ],
+  "metallicrareOutputs" : [ "durasteelore", "densiniumore" ],
+  
+  "protoOutputs" : [ "cellmateria", "fu_salt", "fu_oxygen", "fu_hydrogen" ],
+  "protouncommonOutputs" : [ "biospore", "mineralsample", "dnasample" ],
+  "protorareOutputs" : [ "vialproto", "protociteore" ],
+  
+  "penumbraOutputs" : [ "cellmateria", "fu_nitrogen", "fu_oxygen", "glowfibre" ],
+  "penumbrauncommonOutputs" : [ "liquidorganicsoup", "shadowgasliquid" ],
+  "penumbrarareOutputs" : [ "penumbriteore", "liquidalienjuice" ],
+  
+  "slimeOutputs" : [ "liquidslime", "mascagniteore", "tissueculture", "geneticmaterial", "slimematerial" ],
+  "slimeuncommonOutputs" : [ "ff_resin", "greenslime", "liquidalienjuice" ],
+  "slimerareOutputs" : [ "endomorphicjelly", "cellmatter" ],
+  
+  "strangeseaOutputs" : [ "geneticmaterial", "fu_salt", "tissueculture" ],
+  "strangeseauncommonOutputs" : [ "ff_mercury", "cellmatter", "liquidalienjuice" ],
+  "strangesearareOutputs" : [ "ff_resin", "corruptionore" ],
+  
+  "oceanOutputs" : [ "fu_salt", "sand", "fu_oxygen", "seaweed", "cellmateria" ],
+  "oceanuncommonOutputs" : [ "iodine", "calciumnitrate", "coralfragment", "cellmatter" ],
+  "oceanrareOutputs" : [ "laboil", "biospore"],
+  
+  "sulphuricOutputs" : [ "liquidsulphuricacid", "ff_mercury" ],
+  "sulphuricuncommonOutputs" : [ "phosphorus", "liquidblacktar" ],
+  "sulphuricrareOutputs" : [ "liquidmercury" ],
+  
+  "tarballOutputs" : [ "liquidblacktar", "liquidoil", "corefragmentore", "fu_hydrogen", "sulphur", "lead" ],
+  "tarballuncommonOutputs" : [ "ff_resin", "mutagene1" ],
+  "tarballrareOutputs" : [ "mutagene2", "aliencompound", "cinnabarore" ],
+  
+  "toxicOutputs" : [ "ammoniumsulfate", "toxicwaste", "alienwoodsap"  ],
+  "toxicuncommonOutputs" : [ "venomsample", "ff_mercury", "liquidalienjuice" ],
+  "toxicrareOutputs" : [ "liquidorganisoup", "liquidmercury"],
+  
   
   "animation" : "/objects/power/isn_resource_generator.animation",
 
