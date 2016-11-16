@@ -26,7 +26,7 @@ if self.timer <= 0 then
     if world.type() == "aethersea" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("aetherrareOutputs"))
-	    self.timer = 5
+	    self.timer = 6
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("aetheruncommonOutputs"))
 	    self.timer = 3.5
@@ -37,18 +37,18 @@ if self.timer <= 0 then
     elseif world.type() == "moon" or world.type() == "moon_desert" or world.type()== "moon_shadow" or world.type()=="moon_stone" or world.type()=="moon_volcanic" or world.type()=="moon_toxic" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("moonrareOutputs"))
-	    self.timer = 5
+	    self.timer = 8
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("moonuncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("moonOutputs"))
-	    self.timer = 2
+	    self.timer = 3
 	  end         
     elseif world.type() == "atropus" or world.type() == "atropusdark" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("atropusrareOutputs"))
-	    self.timer = 5
+	    self.timer = 6
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("atropusuncommonOutputs"))
 	    self.timer = 3.5
@@ -59,10 +59,10 @@ if self.timer <= 0 then
     elseif world.type() == "fugasgiant" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("gasrareOutputs"))
-	    self.timer = 5
+	    self.timer = 7
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("gascuncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("gasOutputs"))
 	    self.timer = 2
@@ -81,10 +81,10 @@ if self.timer <= 0 then
     elseif world.type() == "chromatic" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("chromaticrareOutputs"))
-	    self.timer = 5
+	    self.timer = 6
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("chromaticuncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("chromaticOutputs"))
 	    self.timer = 2
@@ -92,13 +92,13 @@ if self.timer <= 0 then
     elseif world.type() == "crystalmoon" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("crystalrareOutputs"))
-	    self.timer = 5
+	    self.timer = 7
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("crystaluncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 5.5
 	  else
 	    output = util.randomFromList(config.getParameter("crystalOutputs"))
-	    self.timer = 2
+	    self.timer = 4
 	  end        
     elseif world.type() == "desert" or world.type() == "desertwastes" or world.type() == "desertwastesdark" then
 	  if rarityroll == 100 then  
@@ -114,7 +114,7 @@ if self.timer <= 0 then
     elseif world.type() == "icewaste" or world.type() == "icewastedark" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("icerareOutputs"))
-	    self.timer = 5
+	    self.timer = 8
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("iceuncommonOutputs"))
 	    self.timer = 3.5
@@ -125,10 +125,10 @@ if self.timer <= 0 then
     elseif world.type() == "nitrogensea" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("nitrogenrareOutputs"))
-	    self.timer = 5
+	    self.timer = 8
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("nitrogenuncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("nitrogenOutputs"))
 	    self.timer = 2
@@ -136,10 +136,10 @@ if self.timer <= 0 then
     elseif world.type() == "infernus" or world.type() == "infernusdark" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("infernusrareOutputs"))
-	    self.timer = 5
+	    self.timer = 8
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("infernusuncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("infernusOutputs"))
 	    self.timer = 2
@@ -147,10 +147,10 @@ if self.timer <= 0 then
     elseif world.type() == "slimeworld" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("slimerareOutputs"))
-	    self.timer = 5
+	    self.timer = 6
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("slimeuncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("slimeOutputs"))
 	    self.timer = 2
@@ -158,10 +158,10 @@ if self.timer <= 0 then
     elseif world.type() == "strangesea" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("strangesearareOutputs"))
-	    self.timer = 5
+	    self.timer = 6
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("strangeseauncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("strangeseaOutputs"))
 	    self.timer = 2
@@ -191,10 +191,10 @@ if self.timer <= 0 then
     elseif world.type() == "tarball" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("tarballrareOutputs"))
-	    self.timer = 5
+	    self.timer = 7
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("tarballuncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("tarballOutputs"))
 	    self.timer = 2
@@ -235,10 +235,10 @@ if self.timer <= 0 then
     elseif world.type() == "penumbra" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("penumbrarareOutputs"))
-	    self.timer = 5
+	    self.timer = 6
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("penumbrauncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("penumbraOutputs"))
 	    self.timer = 2
@@ -246,10 +246,10 @@ if self.timer <= 0 then
     elseif world.type() == "protoworld" or world.type() == "protoworlddark" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("protorareOutputs"))
-	    self.timer = 5
+	    self.timer = 6
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("protouncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("protoOutputs"))
 	    self.timer = 2
@@ -257,14 +257,25 @@ if self.timer <= 0 then
     elseif world.type() == "irradiated" then
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("radiationrareOutputs"))
-	    self.timer = 5
+	    self.timer = 7
 	  elseif rarityroll >= 79 then
 	    output = util.randomFromList(config.getParameter("radiationuncommonOutputs"))
-	    self.timer = 3.5
+	    self.timer = 4.5
 	  else
 	    output = util.randomFromList(config.getParameter("radiationOutputs"))
 	    self.timer = 2
-	  end    
+	  end 
+    elseif world.type() == "fungus" then
+	  if rarityroll == 100 then  
+	    output = util.randomFromList(config.getParameter("fungusrareOutputs"))
+	    self.timer = 5.3
+	  elseif rarityroll >= 79 then
+	    output = util.randomFromList(config.getParameter("fungusuncommonOutputs"))
+	    self.timer = 3.7
+	  else
+	    output = util.randomFromList(config.getParameter("fungusOutputs"))
+	    self.timer = 2
+	  end 	  
     else
 	  if rarityroll == 100 then  
 	    output = util.randomFromList(config.getParameter("rareOutputs"))
