@@ -1,0 +1,42 @@
+{
+  "objectName" : "fu_liquidcondenser",
+  "rarity" : "rare",
+  "colonyTags" : [ "science", "wired", "lab" ],
+  "description" : "Condenses liquid from biome atmosphere. Requires 2u of power.",
+  "shortdescription" : "^cyan;Liquid Condenser^white;",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 500,
+  "printable" : false,
+  "learnBlueprintsOnPickup" : [ "isn_atmoscondenser" ],
+  
+  "scripts" : [ "/objects/power/fu_liquidcondenser/isn_resource_generator.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 120,
+  
+  
+  
+  
+  "animation" : "/objects/power/isn_resource_generator.animation",
+
+  "animationParts" : {
+    "basemachine" : "fu_liquidcondenser.png"
+  },
+  "animationPosition" : [0, 0],
+  
+  "inputNodes" : [ [1, 1] ],
+  "isn_powerReciever" : true,
+  "isn_requiredPower" : 2,
+  "isn_liquidCollector" : true,
+  
+  "inventoryIcon" : "fu_liquidcondenser_inv.png",
+  "orientations" : [
+    {
+      "image" : "fu_liquidcondenser.png:<color>.idle",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}
