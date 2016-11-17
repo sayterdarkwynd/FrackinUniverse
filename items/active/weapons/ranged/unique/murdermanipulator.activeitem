@@ -1,14 +1,13 @@
 {
-  "itemName" : "protominer",
+  "itemName" : "murdermanipulator",
   "price" : 500,
-  "inventoryIcon" : "protominer.png",
+  "inventoryIcon" : "murdermanipulator.png",
     "maxStack" : 1,
     "rarity" : "rare",
-    "description" : "A reliable beam-miner.",
-    "shortdescription" : "P-7 Miner",
-    "learnBlueprintsOnPickup" : [ "penumbriteminer", "murdermanipulator" ],
-  "level" : 1,
-  "category" : "tool",
+    "description" : "A repurposed manipulator. This one murders! Yay!",
+    "shortdescription" : "Murder Manipulator",
+  "level" : 3,
+  "category" : "uniqueWeapon",
   "itemTags" : ["weapon","ranged","tool"],
     "tooltipKind" : "gun",
   "twoHanded" : false,
@@ -16,7 +15,7 @@
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "protominer.png",
+    "middle" : "murdermanipulator.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -26,7 +25,7 @@
     },
     "lights" : {
       "muzzleFlash" : {
-        "color" : [0, 60, 30]
+        "color" : [0, 60, 0]
       }
     }
   },
@@ -36,23 +35,21 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-
-    "fireTime" : 0.022,
-    "baseDps" : 0.2,
-    "energyUsage" : 4,
-    "inaccuracy" : 0,
-
-    "projectileCount" : 1,
+    "fireTime" : 0.05,
+    "baseDps" : 7,
+    "energyUsage" : 18,
     "fireType" : "auto",
-
-    "projectileType" : "protominershot",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "shoggothbeamgun",
     "projectileParameters" : {
-      "speed" : 15
+      "speed" : 35,
+      "timeToLive" : 0.6
     },
     "stances" : {
       "idle" : {
