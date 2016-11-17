@@ -12,10 +12,10 @@ function init()
     liquidImpedance = 0.01,
     liquidBuoyancy = 0.01,
     liquidJumpProfile = {
-      jumpSpeed = 45.0,
+      jumpSpeed = 55.0,
       jumpControlForce = 900.0,
       jumpInitialPercentage = 1,
-      jumpHoldTime = 0.0,
+      jumpHoldTime = 0.1,
       multiJump = false,
       autoJump = false,
       reJumpDelay = 0.5
