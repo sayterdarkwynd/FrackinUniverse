@@ -63,34 +63,34 @@ function update(dt)
     
     
 	  if nighttime then
-		if lightLevel <= 25 then
+		if lightLevel <= 40 then
 		    status.modifyResource("health", (-self.dps /50) * dt)
-		    status.modifyResource("energy", (-self.dps * 3) * dt)
+		    status.modifyResource("energy", (-self.dps * 2.1) * dt)
 		    status.modifyResource("food", (-self.dps /75) * dt)
+		elseif lightLevel <= 30 then
+		    status.modifyResource("health", (-self.dps /45) * dt)
+		    status.modifyResource("energy", (-self.dps * 2.5) * dt)
+		    status.modifyResource("food", (-self.dps /70) * dt)		
 		elseif lightLevel <= 10 then
-		    status.modifyResource("health", (-self.dps /50) * dt)
+		    status.modifyResource("health", (-self.dps /35 ) * dt)
 		    status.modifyResource("energy", (-self.dps * 3) * dt)
-		    status.modifyResource("food", (-self.dps /75) * dt)		
-		elseif lightLevel <= 1 then
-		    status.modifyResource("health", (-self.dps /50 ) * dt)
-		    status.modifyResource("energy", (-self.dps * 3) * dt)
-		    status.modifyResource("food", (-self.dps /75) * dt)		
+		    status.modifyResource("food", (-self.dps /60) * dt)		
 		end  
 	  end
 
 	  if underground then
-		if lightLevel <= 25 then
+		if lightLevel <= 60 then
 		    status.modifyResource("health", (-self.dps /40) * dt)
-		    status.modifyResource("energy", (-self.dps * 4) * dt)
+		    status.modifyResource("energy", (-self.dps * 2.5) * dt)
 		    status.modifyResource("food", (-self.dps /65) * dt)
-		elseif lightLevel <= 10 then
-		    status.modifyResource("health", (self.dps /40) * dt)
-		    status.modifyResource("energy", (self.dps * 4) * dt)
-		    status.modifyResource("food", (self.dps /65) * dt)		
-		elseif lightLevel <= 1 then
-		    status.modifyResource("health", (self.dps /40 ) * dt)
-		    status.modifyResource("energy", (self.dps * 4) * dt)
-		    status.modifyResource("food", (self.dps /65) * dt)	
+		elseif lightLevel <= 40 then
+		    status.modifyResource("health", (self.dps /30) * dt)
+		    status.modifyResource("energy", (self.dps * 3) * dt)
+		    status.modifyResource("food", (self.dps /55) * dt)		
+		elseif lightLevel <= 15 then
+		    status.modifyResource("health", (self.dps /25 ) * dt)
+		    status.modifyResource("energy", (self.dps * 3.5) * dt)
+		    status.modifyResource("food", (self.dps /45) * dt)	
 		end  
 	  end  
   end
