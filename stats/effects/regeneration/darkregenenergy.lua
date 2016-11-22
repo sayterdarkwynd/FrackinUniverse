@@ -1,3 +1,7 @@
+require "/scripts/vec2.lua"
+require "/scripts/util.lua"
+require "/scripts/interp.lua"
+
 function init()
   local bounds = mcontroller.boundBox()
   self.healingRate = 1.01 / config.getParameter("healTime", 420)
@@ -28,7 +32,7 @@ function nighttimeCheck()
 end
 
 function undergroundCheck()
-	underground = world.underground(position) 
+	underground = world.underground(mcontroller.position()) 
 end
 
 function update(dt)
@@ -63,6 +67,7 @@ function update(dt)
 	    status.modifyResourcePercentage("energy", self.healingRate * dt)
 	end  
   end
+		
 end
 
 function uninit()

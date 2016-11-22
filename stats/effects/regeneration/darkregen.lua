@@ -1,3 +1,7 @@
+require "/scripts/vec2.lua"
+require "/scripts/util.lua"
+require "/scripts/interp.lua"
+
 function init()
   local bounds = mcontroller.boundBox()
   self.healingRate = 1.01 / config.getParameter("healTime", 420)
@@ -24,14 +28,16 @@ function getLight()
 end
 
 function nighttimeCheck()
-	nighttime = world.timeOfDay() > 0.5 -- true if daytime
+	return world.timeOfDay() > 0.5 -- true if daytime
 end
 
 function undergroundCheck()
-	underground = world.underground(position) 
+	return world.underground(mcontroller.position()) 
 end
 
 function update(dt)
+  nighttime = nighttimeCheck()
+  underground = undergroundCheck()
   local lightLevel = getLight()
   if nighttime or underground then
 	if lightLevel <= 1 then

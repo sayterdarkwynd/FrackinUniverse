@@ -1,18 +1,13 @@
+require "/scripts/vec2.lua"
+require "/scripts/util.lua"
+require "/scripts/interp.lua"
+
 function init()
   local bounds = mcontroller.boundBox()
-  self.healingRate = 1.01 / config.getParameter("healTime", 420)
-  script.setUpdateDelta(10)
+  self.healingRate = 1.01 / config.getParameter("healTime", 320)
+  script.setUpdateDelta(5)
 end
 
-
-function activateVisualEffects()
-  local lightLevel = getLight()
-  if lightLevel <= 25 then
-    animator.setParticleEmitterOffsetRegion("blood", mcontroller.boundBox())
-    animator.setParticleEmitterActive("blood", true)  
-  end
-end
-  
 function getLight()
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
@@ -22,47 +17,63 @@ function getLight()
   return lightLevel
 end
 
+
 function daytimeCheck()
 	daytime = world.timeOfDay() < 0.5 -- true if daytime
 end
 
 function undergroundCheck()
-	underground = world.underground(position) 
+	underground = world.underground(mcontroller.position()) 
 end
 
 function update(dt)
-local lightLevel = getLight()
- if daytime or underground and lightLevel > 80 then
-	 if lightLevel > 95 then
+  daytimeCheck()
+  undergroundCheck()
+  local lightLevel = getLight()
+
+  if daytime then
+    if underground and lightLevel > 40 then
+      	   self.healingRate = 1.003 / config.getParameter("healTime", 260)
+	   status.modifyResourcePercentage("energy", self.healingRate * dt)
+    elseif lightLevel > 95 then
 	   self.healingRate = 1.01 / config.getParameter("healTime", 140)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	  elseif lightLevel > 90 then
+    elseif lightLevel > 90 then
 	   self.healingRate = 1.008 / config.getParameter("healTime", 180)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	  elseif lightLevel > 80 then
+    elseif lightLevel > 80 then
 	   self.healingRate = 1.007 / config.getParameter("healTime", 220)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	  elseif lightLevel > 70 then
-	   self.healingRate = 1.006 / config.getParameter("healTime", 240)
+    elseif lightLevel > 70 then
+	   self.healingRate = 1.006 / config.getParameter("healTime", 220)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	  elseif lightLevel > 65 then
-	   self.healingRate = 1.005 / config.getParameter("healTime", 270)
+    elseif lightLevel > 65 then
+	   self.healingRate = 1.005 / config.getParameter("healTime", 220)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	  elseif lightLevel > 55 then
-	   self.healingRate = 1.004 / config.getParameter("healTime", 300)
+    elseif lightLevel > 55 then
+	   self.healingRate = 1.004 / config.getParameter("healTime", 240)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	  elseif lightLevel > 45 then
-	   self.healingRate = 1.003 / config.getParameter("healTime", 340)
+    elseif lightLevel > 45 then
+	   self.healingRate = 1.003 / config.getParameter("healTime", 260)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	  elseif lightLevel > 35 then
-	   self.healingRate = 1.002 / config.getParameter("healTime", 380)
+    elseif lightLevel > 35 then
+	   self.healingRate = 1.002 / config.getParameter("healTime", 280)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	  elseif lightLevel > 25 then
-	   self.healingRate = 1.001 / config.getParameter("healTime", 420)
+    elseif lightLevel > 25 then
+	   self.healingRate = 1.001 / config.getParameter("healTime", 320)
 	   status.modifyResourcePercentage("energy", self.healingRate * dt)
-	end 
+    end  
   end
+
 end
+
 function uninit()
 
 end
+
+
+
+
+
+
+
