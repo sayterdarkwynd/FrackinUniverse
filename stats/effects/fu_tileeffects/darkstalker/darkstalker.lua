@@ -1,7 +1,4 @@
-
-
 function init()
-
   self.maxHealth = status.stat("maxHealth")
   self.maxEnergy = status.stat("maxEnergy")
   self.food = status.resource("food") 
@@ -12,9 +9,10 @@ function init()
   self.tickTimer = self.tickTime
   activateVisualEffects()
   self.timers = {} 
-  
+
   local bounds = mcontroller.boundBox()
   script.setUpdateDelta(10)
+  effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", baseMultiplier = 0.4 }})
 end
 
 
@@ -24,7 +22,7 @@ function activateVisualEffects()
   animator.burstParticleEmitter("statustext")
   
   local lightLevel = getLight()
-  if lightLevel <= 25 then
+  if lightLevel <= 40 then
     animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
     animator.setParticleEmitterActive("smoke", true)  
   end
@@ -39,66 +37,30 @@ function getLight()
   return lightLevel
 end
 
-
-function nighttimeCheck()
-	return world.timeOfDay() > 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position()) 
-end
-
+ 
 function update(dt)
-  nighttime = nighttimeCheck()
-  underground = undergroundCheck()
   
-  local lightLevel = getLight()
-  self.tickTimer = self.tickTimer + dt
-  if self.tickTimer >= 0 then
-  self.tickTimer = self.tickTime
-  
-  
+    self.tickTimer = self.tickTimer - dt
+    local lightLevel = getLight()
+    
     local damageRatio = self.maxHealth / self.maxDps
     self.dps = (damageRatio * self.maxDps) /2
     
-    
-	  if nighttime then
-		if lightLevel <= 40 then
-		    status.modifyResource("health", (-self.dps /50) * dt)
-		    status.modifyResource("energy", (-self.dps * 2.1) * dt)
-		    status.modifyResource("food", (-self.dps /75) * dt)
-		elseif lightLevel <= 30 then
-		    status.modifyResource("health", (-self.dps /45) * dt)
-		    status.modifyResource("energy", (-self.dps * 2.5) * dt)
-		    status.modifyResource("food", (-self.dps /70) * dt)		
-		elseif lightLevel <= 10 then
-		    status.modifyResource("health", (-self.dps /35 ) * dt)
-		    status.modifyResource("energy", (-self.dps * 3) * dt)
-		    status.modifyResource("food", (-self.dps /60) * dt)		
-		end  
-	  end
+    self.dpsMod = 1 / lightLevel * 100
+    if lightLevel < 1 then 
+      self.dpsMod = 10   
+    end
 
-	  if underground then
-		if lightLevel <= 60 then
-		    status.modifyResource("health", (-self.dps /40) * dt)
-		    status.modifyResource("energy", (-self.dps * 2.5) * dt)
-		    status.modifyResource("food", (-self.dps /65) * dt)
-		elseif lightLevel <= 40 then
-		    status.modifyResource("health", (self.dps /30) * dt)
-		    status.modifyResource("energy", (self.dps * 3) * dt)
-		    status.modifyResource("food", (self.dps /55) * dt)		
-		elseif lightLevel <= 15 then
-		    status.modifyResource("health", (self.dps /25 ) * dt)
-		    status.modifyResource("energy", (self.dps * 3.5) * dt)
-		    status.modifyResource("food", (self.dps /45) * dt)	
-		end  
-	  end  
+  if self.tickTimer <= 0 then
+    self.tickTimer = self.tickTime
+    if lightLevel <=40 and (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
+      status.modifyResource("health", (-self.dps / self.dpsMod/ 5 ) * dt)
+      status.modifyResource("energy", (-self.dps * (self.dpsMod/10) ) * dt)
+      status.modifyResource("food", (-self.dps / (self.dpsMod * 1.5) ) * dt)
+    end
   end
-
-  
-
-		
 end
+
 
 function uninit()
 
