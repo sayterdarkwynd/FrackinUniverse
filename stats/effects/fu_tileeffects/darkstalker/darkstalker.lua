@@ -46,17 +46,18 @@ function update(dt)
     local damageRatio = self.maxHealth / self.maxDps
     self.dps = (damageRatio * self.maxDps) /2
     
-    self.dpsMod = 1 / lightLevel * 100
+    self.dpsMod = 1 / lightLevel
+    
     if lightLevel < 1 then 
-      self.dpsMod = 10   
+      self.dpsMod = 1   
     end
 
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-    if lightLevel <=40 and (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
-      status.modifyResource("health", (-self.dps / self.dpsMod/ 5 ) * dt)
-      status.modifyResource("energy", (-self.dps * (self.dpsMod/10) ) * dt)
-      status.modifyResource("food", (-self.dps / (self.dpsMod * 1.5) ) * dt)
+    if lightLevel <=40 or (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
+      status.modifyResource("health", (-self.dps * (self.dpsMod * 0.3) ) * dt)
+      status.modifyResource("energy", (-self.dps * (self.dpsMod * 5) ) * dt)
+      status.modifyResource("food", (-self.dps * (self.dpsMod * 0.09 ) ) * dt)
     end
   end
 end
