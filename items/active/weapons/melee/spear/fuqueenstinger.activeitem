@@ -1,0 +1,51 @@
+{
+  "itemName" : "fuqueenstinger",
+  "price" : 0,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "The stinger of a giant queen bee, seriously?",
+  "shortdescription" : "Queen Stinger",
+  "tooltipKind" : "sword",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear"],
+
+  "inventoryIcon" : "fuqueenstinger.png",
+
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fuqueenstinger.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.8,
+    "baseDps" : 11,
+
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ "fubeesting2" ],
+      "knockback" : 10
+    }
+  },
+
+  "altAbilityType" : "stingflurry",
+  "altAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
