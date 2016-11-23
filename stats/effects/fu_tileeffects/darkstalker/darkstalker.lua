@@ -20,7 +20,7 @@ function activateVisualEffects()
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
-  
+  animator.playSound("burn")
   local lightLevel = getLight()
   if lightLevel <= 40 then
     animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
