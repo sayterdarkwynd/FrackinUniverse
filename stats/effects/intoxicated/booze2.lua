@@ -14,8 +14,8 @@ function update(dt)
 end
 
 function activateVisualEffects()
-  animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
-  animator.setParticleEmitterActive("drips", true)
+  animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
+  animator.setParticleEmitterActive("smoke", true)
   effect.setParentDirectives("fade=edcd5c=0.2")
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
