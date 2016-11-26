@@ -169,9 +169,9 @@ function isn_doSlotDecay(slot)
 	
 	
 	
-	if waste ~= nil then
+	if (waste ~= nil) then
 		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
-		if waste.name == "toxicwaste" then
+		if (waste.name == "toxicwaste") then
 		  -- sb.logInfo("increasing storage.radiation")
 		  storage.radiation = storage.radiation + 5
 		else
@@ -182,8 +182,8 @@ function isn_doSlotDecay(slot)
 	end
 	local wastestack
 	
-	if tritium ~= nil then
-		if tritium.name == "tritium" then
+	if (tritium ~= nil) then
+		if (tritium.name == "tritium") then
 		  storage.radiation = storage.radiation + 5
 		else
 		  world.containerConsumeAt(entity.id(),5,tritium.count) --delete waste
@@ -203,20 +203,22 @@ function isn_doSlotDecay(slot)
 	if (tritium == nil) then
 		if math.random(100) < storage.critChance then
 		  tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
+		  wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 		end	
 	elseif (tritium.name == "tritium") and (math.random(100) < storage.critChance) then
 		if math.random(100) < storage.critChance then
 		  tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
+		  wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 		end	
 	end
 	
 	
-	if wastestack ~= nil and wastestack.count > 0 then
+	if (wastestack ~= nil) and (wastestack.count > 0) then
 		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
 		storage.radiation = storage.radiation + 5
 	end
 
-	if tritiumstack ~= nil and tritiumstack.count > 0 then
+	if (tritiumstack ~= nil) and (tritiumstack.count > 0) then
 		world.spawnItem(tritiumstack.name,entity.position(),tritiumstack.count) --drop it on the ground
 	end
 	
