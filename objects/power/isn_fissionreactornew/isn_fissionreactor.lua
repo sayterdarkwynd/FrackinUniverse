@@ -1,5 +1,6 @@
 function init(virtual)
 	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
+	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
         storage.critChance = 50
 	if virtual == true then return end
 	object.setInteractive(true)
@@ -87,6 +88,7 @@ function update(dt)
 	rads = rads + power
 	if rads > 0 then rads = rads * 2 end
 	local waste =  world.containerAvailable(entity.id(),"toxicwaste")
+	local tritium =  world.containerAvailable(entity.id(),"tritium")
 	if waste >= 75 then
 		rads = rads + 5
 	end
@@ -163,10 +165,13 @@ function isn_doSlotDecay(slot)
 	world.containerConsumeAt(entity.id(),slot,1) --consume resource
 
 	local waste = world.containerItemAt(entity.id(),4)
+	local tritium = world.containerItemAt(entity.id(),5)
 	
-	if waste ~= nil then
+	
+	
+	if (waste ~= nil) then
 		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
-		if waste.name == "toxicwaste" then
+		if (waste.name == "toxicwaste") then
 		  -- sb.logInfo("increasing storage.radiation")
 		  storage.radiation = storage.radiation + 5
 		else
@@ -175,25 +180,48 @@ function isn_doSlotDecay(slot)
 		  world.spawnItem(waste.name,entity.position(),waste.count) --drop it on the ground
 		end
 	end
-
 	local wastestack
+	
+	if (tritium ~= nil) then
+		if (tritium.name == "tritium") then
+		  storage.radiation = storage.radiation + 5
+		else
+		  world.containerConsumeAt(entity.id(),5,tritium.count) --delete waste
+		  world.spawnItem(tritium.name,entity.position(),tritium.count) --drop it on the ground
+		end
+	end
+        local tritiumstack
         
-	if waste == nil then
-		if math.random(100) < storage.critChance then
-		  world.spawnItem("tritium",entity.position(),1) --drop it on the ground
-		end	
+        
+	if (waste == nil) then
 		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-	elseif waste.name == "toxicwaste" then
-		if math.random(100) < storage.critChance then
-		  world.spawnItem("tritium",entity.position(),1) --drop it on the ground
-		end	
+	elseif (waste.name == "toxicwaste") then
 		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	end
-	if wastestack ~= nil and wastestack.count > 0 then
+
+
+	if (tritium == nil) then
+		if math.random(100) < storage.critChance then
+		  tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
+		  wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
+		end	
+	elseif (tritium.name == "tritium") and (math.random(100) < storage.critChance) then
+		if math.random(100) < storage.critChance then
+		  tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
+		  wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
+		end	
+	end
+	
+	
+	if (wastestack ~= nil) and (wastestack.count > 0) then
 		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
 		storage.radiation = storage.radiation + 5
 	end
 
+	if (tritiumstack ~= nil) and (tritiumstack.count > 0) then
+		world.spawnItem(tritiumstack.name,entity.position(),tritiumstack.count) --drop it on the ground
+	end
+	
 
 	        
 end

@@ -1,0 +1,53 @@
+{
+  "itemName" : "oredetector1",
+  "price" : 2500,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Emits pulses to analyse the composition of nearby minerals.",
+  "shortdescription" : "Ore Detector MK1",
+  "twoHanded" : false,
+  "category" : "Tool",
+  "itemTags" : ["tool"],
+  "learnBlueprintsOnPickup" : [ "oredetector2" ],
+  "inventoryIcon" : "oredetectoricon.png",
+  "animation" : "oredetector1.animation",
+  "animationParts" : {
+    "detector" : "oredetector1.png",
+    "detectorfullbright" : "oredetector1fullbright.png"
+  },
+  "animationCustom" : {},
+
+  "animationScripts" : ["/items/active/effects/detector.lua"],
+  "animationDelta" : 5,
+
+  "scripts" : ["oredetector.lua"],
+  "scriptDelta" : 1,
+
+  "pingDetectConfig" : {
+    "type" : "ore",
+    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+    "variants" : 4,
+    "colors" : {
+      "copper" : [80, 80, 40, 255],
+      "silver" : [200, 200, 230, 255],
+      "gold" : [200, 180, 30, 255],
+      "iron" : [160, 160, 160, 255],
+      "tungsten" : [120, 120, 120, 255],
+      "diamond" : [0, 0, 255, 255],
+      "erchius" : [235, 178, 247, 255], 
+      //FU Ores Tier 1
+      "berlinite" : [141, 117, 113, 255],
+      "lazulite" : [ 94, 103, 147, 255],
+      "lead" : [102, 102, 102, 255],
+      "magnesium" : [120, 125, 117, 255],
+      "mascagnite" : [185, 165, 148, 255],
+      "sulphur" : [165, 159, 106, 255],
+      "none" : [120, 160, 120, 50]
+    }
+  },
+
+  "pingRange" : 30,
+  "pingBandWidth" : 12,
+  "pingDuration" : 2.5,
+  "pingCooldown" : 1.0
+}
