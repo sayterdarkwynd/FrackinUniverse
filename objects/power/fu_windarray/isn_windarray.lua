@@ -1,4 +1,4 @@
-function init()
+function init(args)
 	storage.checkticks = 0
 	storage.truepos = isn_getTruePosition()
 end
@@ -11,9 +11,11 @@ function update(dt)
 	end
 end
 
+
+
 function isn_getCurrentPowerOutput(divide)
 	if isn_powerGenerationBlocked == true then
-	  animator.setAnimationState("meter", "0")
+	  animator.setAnimationState("windState", "idle")
 	  return 0
 	end
 	
@@ -22,20 +24,24 @@ function isn_getCurrentPowerOutput(divide)
 	local location = isn_getTruePosition()
 	local wind = world.windLevel(location)
 
-	generated = wind 
-	generated = math.abs(generated,30)
-	
-	
-	if generated >= 16 then 
-	  animator.setAnimationState("meter", "4")
-	elseif generated >= 12  then 
-	  animator.setAnimationState("meter", "3")
-	elseif generated >= 6  then 
-	  animator.setAnimationState("meter", "2")	  
+	generated = math.min(math.abs(wind),12)
+
+	if generated >= 12 then 
+	  animator.setAnimationState("windState", "active7")
+	elseif generated >= 10 then 
+	  animator.setAnimationState("windState", "active6")	  
+	elseif generated >= 8 then 
+	  animator.setAnimationState("windState", "active5")	  
+	elseif generated >= 6 then 
+	  animator.setAnimationState("windState", "active4")	  
+	elseif generated >= 4 then 
+	  animator.setAnimationState("windState", "active3")	
 	elseif generated >= 2 then 
-	  animator.setAnimationState("meter", "1")
+	  animator.setAnimationState("windState", "active2")
+	elseif generated >= 1 then 
+	  animator.setAnimationState("windState", "active")	  
 	else 
-	  animator.setAnimationState("meter", "0")
+	  animator.setAnimationState("windState", "idle")
 	end
 	
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
@@ -44,6 +50,7 @@ function isn_getCurrentPowerOutput(divide)
 	if divide == true then return generated / divisor
 	else return generated end
 end
+
 
 function onNodeConnectionChange()
 	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
