@@ -23,7 +23,7 @@ function isn_getCurrentPowerOutput(divide)
 	local wind = world.windLevel(location)
 
 	generated = wind 
-	generated = math.min(generated,30)
+	generated = math.abs(generated,30)
 	
 	
 	if generated >= 16 then 
