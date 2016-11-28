@@ -45,7 +45,35 @@
       "hostileActions" : [
        {
           "name" : "action-fire",
-          "cooldown" : 4,
+          "cooldown" : 15,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 4,
+            "windupStopForce" : 50,
+            "windupState" : "fire2",
+            "windupTime" : 0.4,
+
+            "projectileType" : "fulaserpistol",
+            "projectileCount" : 3,
+            "projectileInterval" : 0.02,            
+            "projectileParameters" : {
+              "speed" : 55
+            },
+            "power" : 5,
+            "fireOffset" : [1, -1],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },      
+       {
+          "name" : "action-fire",
+          "cooldown" : 8,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 20,
@@ -54,12 +82,12 @@
             "windupState" : "fire2",
             "windupTime" : 0.4,
 
-            "projectileType" : "twistingpulse",
+            "projectileType" : "isn_plasmabeam_starter",
             "projectileParameters" : {
               "speed" : 25
             },
             "power" : 12,
-            "fireOffset" : [0, 0],
+            "fireOffset" : [1.8, -1.5],
             "aimAtTarget" : true,
             "onGround" : false,
             "fireState" : "",
@@ -71,7 +99,7 @@
         },
        {
           "name" : "action-fire",
-          "cooldown" : 3,
+          "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 20,
@@ -81,12 +109,12 @@
             "windupTime" : 0.4,
 
             "projectileType" : "laser-1",
-            "projectileCount" : 5,
+            "projectileCount" : 3,
             "projectileInterval" : 0.01,
             "projectileParameters" : {
               "speed" : 60
             },
-            "power" : 6,
+            "power" : 4,
             "fireOffset" : [0, 0],
             "aimAtTarget" : true,
             "onGround" : false,
