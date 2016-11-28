@@ -48,8 +48,8 @@
           "cooldown" : 4,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
-            "minimumRange" : 3,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
             "windupStopForce" : 50,
             "windupState" : "fire2",
             "windupTime" : 0.4,
@@ -74,8 +74,8 @@
           "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
-            "minimumRange" : 3,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
             "windupStopForce" : 50,
             "windupState" : "fire",
             "windupTime" : 0.4,
@@ -104,18 +104,24 @@
 
       "approachActions" : [
         {
-          "name" : "approach-fly"
+          "name" : "approach-fly",
+          "parameters" : {
+            "minRange" : 4,
+            "maxRange" : 15
+          }
         }
       ],
 
       "followActions" : [
         {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
+          "name" : "approach-teleport"
         },
         {
-          "name" : "approach-fly"
+          "name" : "approach-fly",
+          "parameters" : {
+            "minRange" : 4,
+            "maxRange" : 15
+          }
         }
       ],
 
