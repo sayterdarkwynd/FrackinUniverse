@@ -4,19 +4,16 @@ function init(virtual)
 	object.setSoundEffectEnabled(false)
 	
 	if storage.currentpowerprod == nil then storage.currentpowerprod = 0 end
+	if storage.powerprodmod == nil then storage.powerprodmod = 0 end
 	if storage.fueledticks == nil then storage.fueledticks = 0 end
 	if storage.decayrate == nil then storage.decayrate = 5 end
 	if storage.active == nil then storage.active = true end	
 	if storage.batteryHold == nil then storage.batteryHold = false end
 end
 
-function onInputNodeChange(args)
-	if object.isInputNodeConnected(0) then
-		if object.getInputNodeLevel(0) == true then storage.active = true
-		else storage.active = false
-		end
-	else storage.active = true
-	end
+
+function onInputNodeChange()
+   storage.active =  not object.isInputNodeConnected(0) or (object.isInputNodeConnected(0) and object.getInputNodeLevel(0))
 end
 
 function update(dt)
@@ -54,17 +51,18 @@ function update(dt)
 	-- check current power production and set the animation state accordingly
 	if storage.currentpowerprod > 90 and storage.active and not storage.batteryHold then
 		animator.setAnimationState("screen", "slow")
-        object.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
-        object.setSoundEffectEnabled(true)
+		animator.setAnimationState("fans", "slow")
+                object.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
+                object.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 50 and storage.active and not storage.batteryHold then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
-        object.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
+                object.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
 		object.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 10 and storage.active and not storage.batteryHold then
 		animator.setAnimationState("screen", "slow")
 		animator.setAnimationState("fans", "slow")
-        object.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
+                object.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
 		object.setSoundEffectEnabled(true)
 	else
 		animator.setAnimationState("screen", "off")
@@ -95,11 +93,12 @@ function update(dt)
 			for key, value in pairs(config.getParameter("acceptablefuel")) do
 				-- go through our fuel table and see if the contents of the fuel slot match
 				if key == contents[1].name then -- found it!
-					storage.fueledticks = value
+					storage.fueledticks = value / 3 + math.random(20)
+					storage.powerprodmod = value
 					world.containerConsume(entity.id(), {name = contents[1].name, count = 1, data={}})
 					return -- end it here since we want to start again with the new fuel
 				end
-			end
+			end		
 		end
 		-- since the loop ends this update if it finds fuel, if we've reached this point
 		-- it means we didn't find any fuel so now we decrease power gradually
@@ -117,11 +116,11 @@ function isn_getCurrentPowerOutput(divide)
 	if divisor < 1 then divisor = 1 end
 	
 	local powercount = 0
-	if storage.currentpowerprod > 90 then powercount = 100
-	elseif storage.currentpowerprod > 70 then powercount = 50
-	elseif storage.currentpowerprod > 50 then powercount = 36
-	elseif storage.currentpowerprod > 30 then powercount = 24
-	elseif storage.currentpowerprod > 10 then powercount = 8
+	if storage.currentpowerprod > 70 then powercount = 20 + storage.powerprodmod
+	elseif storage.currentpowerprod > 50 then powercount = 16 + storage.powerprodmod
+	elseif storage.currentpowerprod > 30 then powercount = 12 + storage.powerprodmod
+	elseif storage.currentpowerprod > 20 then powercount = 9 + storage.powerprodmod
+	elseif storage.currentpowerprod > 5 then powercount = 5 + storage.powerprodmod
 	else powercount = 0 end
 	---sb.logInfo("TGCPOD: Powercount is" .. powercount)
 	
