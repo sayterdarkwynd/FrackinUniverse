@@ -31,20 +31,24 @@ function update(dt)
     end
     storage.batteryHold = fullBattery and not spendingPower
  
-    -- check current power production and set the animation state accordingly
-	if storage.currentpowerprod > 10 and storage.active and not storage.batteryHold then
-	  animator.setAnimationState("screen", "slow")
-	  animator.setAnimationState("fans", "slow")
-	  local defaultLightBrightness = {{35,79,87},{70,126,161},{126,206,255}}
-	  local defaultLight = defaultLightBrightness[math.min( math.floor((storage.currentpowerprod-11)/40)+1, 3 )]
-	  object.setLightColor(config.getParameter("lightColor",defaultLight))
-	  object.setSoundEffectEnabled(true)
-	else
-	  animator.setAnimationState("screen", "off")
-	  animator.setAnimationState("fans", "off")
-	  object.setLightColor({0, 0, 0, 0})
-	  object.setSoundEffectEnabled(false)
-	end
+    if storage.currentpowerprod > 10 and storage.active and not storage.batteryHold then
+        animator.setAnimationState("screen", "slow")
+        animator.setAnimationState("fans", "slow")
+        local lightRGB = config.getParameter("lightColor",{126,206,255})
+        local brightness = math.min(0.75,0.75*(storage.currentpowerprod/90))
+        lightRGB[1] = math.floor(lightRGB[1]*0.25 + lightRGB[1]*brightness)
+        lightRGB[2] = math.floor(lightRGB[2]*0.25 + lightRGB[2]*brightness)
+        lightRGB[3] = math.floor(lightRGB[3]*0.25 + lightRGB[3]*brightness)
+        object.setLightColor(lightRGB)
+        object.setSoundEffectEnabled(true)
+    else
+        animator.setAnimationState("screen", "off")
+        animator.setAnimationState("fans", "off")
+        object.setLightColor({0, 0, 0, 0})
+        object.setSoundEffectEnabled(false)
+    end
+
+
  
     if not storage.active or storage.batteryHold then
         return
