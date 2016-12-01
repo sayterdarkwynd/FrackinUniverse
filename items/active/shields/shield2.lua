@@ -23,6 +23,8 @@ function init()
   
    -- FU special effects
      -- health effects
+          self.critChance = config.getParameter("critChance", 0)
+          self.critBonus = config.getParameter("critBonus", 0)
  	  self.shieldHealthRegen = config.getParameter("shieldHealthRegen", 1)
  	  shieldEnergyRegen = config.getParameter("shieldEnergyRegen",0)
  	  shieldHealthBonus = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))
