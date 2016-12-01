@@ -34,6 +34,48 @@ function setCritDamage(damage)
   self.critChance = config.getParameter("critChance") or 1
   self.critBonus = config.getParameter("critBonus") or 0
   -- *******************************************************
+
+  -- *************************
+  -- Setting base crit rates
+  
+  - **** check primary hand
+     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), "primary")
+     
+     if root.itemHasTag(heldItem, "dagger") then self.critChance = 3 end
+     if root.itemHasTag(heldItem, "shortsword") then self.critChance = 3 end
+     if root.itemHasTag(heldItem, "broadsword") then self.critChance = 5 end
+     if root.itemHasTag(heldItem, "hammer") then self.critChance = 6 end
+     if root.itemHasTag(heldItem, "axe") then self.critChance = 6 end
+     if root.itemHasTag(heldItem, "fist") then self.critChance = 3 end
+     if root.itemHasTag(heldItem, "spear") then self.critChance = 5 end
+     if root.itemHasTag(heldItem, "whip") then self.critChance = 7 end
+     if root.itemHasTag(heldItem, "chakram") then self.critChance = 7 end
+     if root.itemHasTag(heldItem, "boomerang") then self.critChance = 7 end
+     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 6 end
+     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
+     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 6 end
+     if root.itemHasTag(heldItem, "wand") then self.critChance = 10 end
+     if root.itemHasTag(heldItem, "staff") then self.critChance = 10 end
+
+  - **** check off-hand
+     heldItem = world.entityHandItem(activeItem.ownerEntityId(), "alt")
+     
+     if root.itemHasTag(heldItem, "dagger") then self.critChance = 3 end
+     if root.itemHasTag(heldItem, "shortsword") then self.critChance = 3 end
+     if root.itemHasTag(heldItem, "broadsword") then self.critChance = 5 end
+     if root.itemHasTag(heldItem, "hammer") then self.critChance = 6 end
+     if root.itemHasTag(heldItem, "axe") then self.critChance = 6 end
+     if root.itemHasTag(heldItem, "fist") then self.critChance = 3 end
+     if root.itemHasTag(heldItem, "spear") then self.critChance = 5 end
+     if root.itemHasTag(heldItem, "whip") then self.critChance = 7 end
+     if root.itemHasTag(heldItem, "chakram") then self.critChance = 7 end
+     if root.itemHasTag(heldItem, "boomerang") then self.critChance = 7 end
+     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 6 end
+     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
+     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 6 end
+     if root.itemHasTag(heldItem, "wand") then self.critChance = 10 end
+     if root.itemHasTag(heldItem, "staff") then self.critChance = 10 end
+	
   local crit = math.random(100) <= self.critChance
   damage = crit and (damage*2) + self.critBonus or damage
   return damage
