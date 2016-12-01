@@ -23,7 +23,7 @@ function update(dt)
 		-- sb.logInfo("Checking device %s", value)
 		if world.callScriptedEntity(value, "isn_isBattery") then
 			local currentBatteryStorage = world.callScriptedEntity(value, "isn_getCurrentPowerStorage")
-			if currentBatteryStorage > 98 then
+			if currentBatteryStorage > 99 then
 				fullBattery = true
 			else
 				if storage.batteryHold and currentBatteryStorage > 90 then
