@@ -15,21 +15,35 @@ function onInputNodeChange(args)
 end
  
 function update(dt)
-    local devices = isn_getAllDevicesConnectedOnNode(0,"output")
-    -- sb.logInfo("devices found: %s", devices)
-    local fullBattery = false
-    local spendingPower = false
-    for key,value in pairs(devices) do
-        -- sb.logInfo("Checking device %s", value)
-        if world.callScriptedEntity(value, "isn_isBattery") then
-            local currentBatteryStorage = world.callScriptedEntity(value, "isn_getCurrentPowerStorage")
-            fullBattery = currentBatteryStorage > 90
-            spendingPower = currentBatteryStorage < 99 and not (storage.batteryHold and currentBatteryStorage > 90)
-        else
-            spendingPower = not world.callScriptedEntity(value, "isn_doesNotConsumePower")
-        end
-    end
-    storage.batteryHold = fullBattery and not spendingPower
+	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
+	-- sb.logInfo("devices found: %s", devices)
+	local fullBattery = false
+	local spendingPower = false
+	for key,value in pairs(devices) do
+		-- sb.logInfo("Checking device %s", value)
+		if world.callScriptedEntity(value, "isn_isBattery") then
+			local currentBatteryStorage = world.callScriptedEntity(value, "isn_getCurrentPowerStorage")
+			if currentBatteryStorage > 98 then
+				fullBattery = true
+			else
+				if storage.batteryHold and currentBatteryStorage > 90 then
+					fullBattery = true
+				else
+					spendingPower = true
+				end
+			end
+		else
+			if not world.callScriptedEntity(value, "isn_doesNotConsumePower") then
+				spendingPower = true
+			end
+		end
+	end
+	if fullBattery and not spendingPower then
+		storage.batteryHold = true
+		-- sb.logInfo("Battery full and no other consumers connected, shutting down")
+	else
+		storage.batteryHold = false
+	end
  
     if storage.currentpowerprod > 10 and storage.active and not storage.batteryHold then
         animator.setAnimationState("screen", "slow")
