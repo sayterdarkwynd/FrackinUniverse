@@ -20,7 +20,7 @@ function GunFire:setCritDamage(damage)
   -- *******************************************************
   -- FU Crit Damage Script
   self.critChance = config.getParameter("critChance") or 1
-  self.critBonus = config.getParameter("critBonus") or 0
+  self.critBonus = config.getParameter("critBonus") or math.random(10)
   -- *******************************************************
 
   -- *************************
