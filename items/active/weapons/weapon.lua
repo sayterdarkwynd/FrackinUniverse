@@ -41,57 +41,57 @@ function setCritDamage(damage)
   -- **** check primary hand
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), "primary")
      if heldItem ~= nil then
-	     if root.itemHasTag(heldItem, "dagger") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "shortsword") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "broadsword") then self.critChance = 5 end
-	     if root.itemHasTag(heldItem, "hammer") then self.critChance = 6 end
-	     if root.itemHasTag(heldItem, "axe") then self.critChance = 6 end
-	     if root.itemHasTag(heldItem, "fist") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "spear") then self.critChance = 5 end
+	     if root.itemHasTag(heldItem, "dagger") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "shortsword") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "broadsword") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "hammer") then self.critChance = 10 end
+	     if root.itemHasTag(heldItem, "axe") then self.critChance = 10 end
+	     if root.itemHasTag(heldItem, "fist") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "spear") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "whip") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "chakram") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "boomerang") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 6 end
+	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 6 end
+	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "wand") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "staff") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "pistol") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = 1 end
-	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "assaultrifle") then self.critChance = 3 end
+	     if root.itemHasTag(heldItem, "pistol") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = 5 end
+	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = 10 end
+	     if root.itemHasTag(heldItem, "assaultrifle") then self.critChance = 5 end
 	     if root.itemHasTag(heldItem, "grenadelauncher") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "rocketlauncher") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = 1 end
+	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = 5 end
+	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = 2 end
 	     
      end
   -- **** check off-hand
      heldItem = world.entityHandItem(activeItem.ownerEntityId(), "alt")
      if heldItem ~= nil then
-	     if root.itemHasTag(heldItem, "dagger") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "shortsword") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "broadsword") then self.critChance = 5 end
-	     if root.itemHasTag(heldItem, "hammer") then self.critChance = 6 end
-	     if root.itemHasTag(heldItem, "axe") then self.critChance = 6 end
-	     if root.itemHasTag(heldItem, "fist") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "spear") then self.critChance = 5 end
+	     if root.itemHasTag(heldItem, "dagger") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "shortsword") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "broadsword") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "hammer") then self.critChance = 10 end
+	     if root.itemHasTag(heldItem, "axe") then self.critChance = 10 end
+	     if root.itemHasTag(heldItem, "fist") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "spear") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "whip") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "chakram") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "boomerang") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 6 end
+	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 6 end
+	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "wand") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "staff") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "pistol") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = 1 end
-	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "assaultrifle") then self.critChance = 3 end
+	     if root.itemHasTag(heldItem, "pistol") then self.critChance = 7 end
+	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = 5 end
+	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = 10 end
+	     if root.itemHasTag(heldItem, "assaultrifle") then self.critChance = 5 end
 	     if root.itemHasTag(heldItem, "grenadelauncher") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "rocketlauncher") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = 3 end
-	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = 1 end	     
+	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = 5 end
+	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = 2 end	     
      end
 	
   local crit = math.random(100) <= self.critChance
@@ -298,7 +298,8 @@ function Weapon:damageSource(damageConfig, damageArea, damageTimeout)
       poly = damagePoly,
       line = damageLine,
       -- **********************************************
-      -- FU Critical Hit script       was originally just "damage"
+      -- FU Critical Hit script      
+      -- damage = damage,
       damage = setCritDamage(damage),
       -- **********************************************
       trackSourceEntity = damageConfig.trackSourceEntity,
