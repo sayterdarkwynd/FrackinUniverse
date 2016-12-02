@@ -49,8 +49,6 @@ function setCritDamage(damage)
 	     if root.itemHasTag(heldItem, "fist") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "spear") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "whip") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "chakram") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "boomerang") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
@@ -68,8 +66,6 @@ function setCritDamage(damage)
 	     if root.itemHasTag(heldItem, "fist") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "spear") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "whip") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "chakram") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "boomerang") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
