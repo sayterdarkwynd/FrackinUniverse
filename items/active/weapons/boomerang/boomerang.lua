@@ -30,15 +30,14 @@ function setCritDamageBoomerang(damage)
 
   -- *************************
   -- Setting base crit rates
-  
-
 
   local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
   if heldItem then
       if root.itemHasTag(heldItem, "boomerang") then self.critChance = 10 end
       if root.itemHasTag(heldItem, "chakram") then self.critChance = 10 end
   end
-		
+  
+  self.critChance = self.critChance * ( 1 + status.stat("critChanceMultiplier") )
   local crit = math.random(100) <= self.critChance
   local critDamage = crit and (damage*2) + self.critBonus or damage
   return critDamage  

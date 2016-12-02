@@ -50,14 +50,16 @@ function setCritDamage(damage)
 	     if root.itemHasTag(heldItem, "spear") then self.critChance = 9 end
 	     if root.itemHasTag(heldItem, "whip") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = 9 end
-	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "wand") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "staff") then self.critChance = 10 end
      end
 	
+  self.critChance = self.critChance * ( 1 + status.stat("critChanceMultiplier") )
   local crit = math.random(100) <= self.critChance
   damage = crit and (damage*2) + self.critBonus or damage
+
+  --if crit then
+  --  animator.playSound("crit")
+  --end
+  
   return damage
 end
 

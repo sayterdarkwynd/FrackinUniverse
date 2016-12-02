@@ -34,7 +34,8 @@ function BowShot:setCritDamage(damage)
 	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
      end
-	
+  
+  self.critChance = self.critChance * ( 1 + status.stat("critChanceMultiplier") )
   local crit = math.random(100) <= self.critChance
   local critDamage = crit and (damage*2) + self.critBonus or damage
   return critDamage  
@@ -124,7 +125,7 @@ function BowShot:currentProjectileParameters()
   --projectileParameters.power = projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime) + BowShot:setCritDamage(damage)
   projectileParameters.power = BowShot:setCritDamage( projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime))
   projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
-  
+
   return projectileParameters
 end
 
