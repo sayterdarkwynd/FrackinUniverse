@@ -27,8 +27,8 @@ function GunFire:setCritDamage(damage)
   -- Setting base crit rates
   
   -- **** check primary hand
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), "primary")
-     if heldItem ~= nil then
+     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+     if heldItem then
 	     if root.itemHasTag(heldItem, "pistol") then self.critChance = 7 end
 	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = 5 end
 	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = 10 end
@@ -37,18 +37,6 @@ function GunFire:setCritDamage(damage)
 	     if root.itemHasTag(heldItem, "rocketlauncher") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = 5 end
 	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = 2 end
-     end
-  -- **** check off-hand
-     heldItem = world.entityHandItem(activeItem.ownerEntityId(), "alt")
-     if heldItem ~= nil then
-	     if root.itemHasTag(heldItem, "pistol") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = 5 end
-	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "assaultrifle") then self.critChance = 5 end
-	     if root.itemHasTag(heldItem, "grenadelauncher") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "rocketlauncher") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = 5 end
-	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = 2 end	     
      end
 	
   local crit = math.random(100) <= self.critChance

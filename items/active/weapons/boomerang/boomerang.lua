@@ -21,7 +21,7 @@ end
 
 
 
-function setCritDamage(damage)
+function setCritDamageBoomerang(damage)
   -- *******************************************************
   -- FU Crit Damage Script
   self.critChance = config.getParameter("critChance") or 1
@@ -31,19 +31,14 @@ function setCritDamage(damage)
   -- *************************
   -- Setting base crit rates
   
-  -- **** check primary hand
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), "primary")
-     if heldItem ~= nil then
-	     if root.itemHasTag(heldItem, "boomerang") then self.critChance = 90 end
-	     if root.itemHasTag(heldItem, "chakram") then self.critChance = 10 end
-     end
-  -- **** check off-hand
-     heldItem = world.entityHandItem(activeItem.ownerEntityId(), "alt")
-     if heldItem ~= nil then
-	     if root.itemHasTag(heldItem, "boomerang") then self.critChance = 90 end
-	     if root.itemHasTag(heldItem, "chakram") then self.critChance = 10 end
-     end
-	
+
+
+  local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+  if heldItem then
+      if root.itemHasTag(heldItem, "boomerang") then self.critChance = 10 end
+      if root.itemHasTag(heldItem, "chakram") then self.critChance = 10 end
+  end
+		
   local crit = math.random(100) <= self.critChance
   local critDamage = crit and (damage*2) + self.critBonus or damage
   return critDamage  
@@ -84,7 +79,7 @@ function fire()
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.ownerAimPosition = activeItem.ownerAimPosition()
   
-  params.power = setCritDamage(params.power)
+  params.power = setCritDamageBoomerang(params.power)
   
   if self.aimDirection < 0 then params.processing = "?flipx" end
   local projectileId = world.spawnProjectile(

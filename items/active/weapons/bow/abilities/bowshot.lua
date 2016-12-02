@@ -29,14 +29,8 @@ function BowShot:setCritDamage(damage)
   -- Setting base crit rates
   
   -- **** check primary hand
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), "primary")
-     if heldItem ~= nil then
-	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
-     end
-  -- **** check off-hand
-     heldItem = world.entityHandItem(activeItem.ownerEntityId(), "alt")
-     if heldItem ~= nil then
+     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+     if heldItem then
 	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
 	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
      end
