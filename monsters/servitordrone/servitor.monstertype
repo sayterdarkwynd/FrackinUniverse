@@ -45,21 +45,49 @@
       "hostileActions" : [
        {
           "name" : "action-fire",
-          "cooldown" : 4,
+          "cooldown" : 15,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
-            "minimumRange" : 3,
+            "maximumRange" : 30,
+            "minimumRange" : 4,
             "windupStopForce" : 50,
             "windupState" : "fire2",
             "windupTime" : 0.4,
 
-            "projectileType" : "twistingpulse",
+            "projectileType" : "fulaserpistol",
+            "projectileCount" : 3,
+            "projectileInterval" : 0.02,            
+            "projectileParameters" : {
+              "speed" : 55
+            },
+            "power" : 5,
+            "fireOffset" : [1, -1],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },      
+       {
+          "name" : "action-fire",
+          "cooldown" : 8,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
+            "windupStopForce" : 50,
+            "windupState" : "fire2",
+            "windupTime" : 0.4,
+
+            "projectileType" : "isn_plasmabeam_starter",
             "projectileParameters" : {
               "speed" : 25
             },
             "power" : 12,
-            "fireOffset" : [0, 0],
+            "fireOffset" : [1.8, -1.2],
             "aimAtTarget" : true,
             "onGround" : false,
             "fireState" : "",
@@ -71,22 +99,22 @@
         },
        {
           "name" : "action-fire",
-          "cooldown" : 3,
+          "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
-            "minimumRange" : 3,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
             "windupStopForce" : 50,
             "windupState" : "fire",
             "windupTime" : 0.4,
 
             "projectileType" : "laser-1",
-            "projectileCount" : 5,
+            "projectileCount" : 3,
             "projectileInterval" : 0.01,
             "projectileParameters" : {
               "speed" : 60
             },
-            "power" : 6,
+            "power" : 4,
             "fireOffset" : [0, 0],
             "aimAtTarget" : true,
             "onGround" : false,
@@ -104,18 +132,24 @@
 
       "approachActions" : [
         {
-          "name" : "approach-fly"
+          "name" : "approach-fly",
+          "parameters" : {
+            "minRange" : 4,
+            "maxRange" : 15
+          }
         }
       ],
 
       "followActions" : [
         {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
+          "name" : "approach-teleport"
         },
         {
-          "name" : "approach-fly"
+          "name" : "approach-fly",
+          "parameters" : {
+            "minRange" : 4,
+            "maxRange" : 15
+          }
         }
       ],
 

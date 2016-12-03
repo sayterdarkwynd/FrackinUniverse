@@ -27,7 +27,7 @@ function update(dt)
 		animator.setAnimationState("meter", tostring(math.floor(powerlevel)))
 	end
 	
-	local powerinput = isn_getCurrentPowerInput(true)
+	local powerinput = isn_getCurrentPowerInput(false)  -- set this to (true) to enable batteries losing power (divisor)
 	if powerinput and powerinput >= 1 then
 		storage.currentstoredpower = storage.currentstoredpower + powerinput
 		-- sb.logInfo(string.format("Storing %.2fu, now at %.2fu", powerinput, storage.currentstoredpower))
