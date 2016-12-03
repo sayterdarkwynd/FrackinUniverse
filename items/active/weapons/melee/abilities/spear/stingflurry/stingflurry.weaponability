@@ -1,0 +1,55 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "flurry" : [ "/sfx/melee/spear_flurry.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Sting Flurry",
+    "type" : "stingflurry",
+    "scripts" : ["/items/active/weapons/melee/abilities/spear/stingflurry/stingflurry.lua"],
+    "class" : "Flurry",
+
+    "cooldownResetTime" : 0.25,
+    "maxCooldownTime" : 0.25,
+    "minCooldownTime" : 0.15,
+    "cooldownSwingReduction" : 0.04,
+
+    "energyUsage" : 9.0,
+    "cooldownTime" : 0.2,
+
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ "fubeesting2" ],
+      "baseDamage" : 3,
+      "knockback" : 10,
+      "timeout" : 0.15,
+      "timeoutGroup" : "alt"
+    },
+
+    "cycleRotationOffsets" : [0, 7.5, -7.5],
+    "stances" : {
+	    "idle" : {
+	      "armRotation" : -90,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+	      "weaponOffset" : [0, 0.5],
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+      "swing" : {
+        "duration" : 0.1,
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 0.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

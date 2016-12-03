@@ -47,7 +47,10 @@ function deciding(item)
 		suncomb         = { sulphur        = self.itemChances.rare },
 		titaniumcomb    = { titaniumore    = self.itemChances.rarest },
 		tungstencomb    = { tungstenore    = self.itemChances.rarest },
-		volcaniccomb    = { liquidlava     = self.itemChances.uncommon }
+		volcaniccomb    = { liquidlava     = self.itemChances.uncommon },
+		aegisaltcomb    = { aegisaltore    = self.itemChances.rarest },
+		feroziumcomb    = { feroziumore    = self.itemChances.rarest },
+		violiumcomb     = { violiumore     = self.itemChances.rarest },
 	}
 	if item == nil then return itemMap end
 	return itemMap[item.name] -- may be nil
