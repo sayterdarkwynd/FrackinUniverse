@@ -1,23 +1,22 @@
 {
-  "type" : "furaptor6",
-  "shortdescription" : "Reliraptor",
-  "description" : "It's a freakin' dinosaur!",
+  "type" : "juvenilepoptop",
+  "shortdescription" : "Juvenile Poptop",
+  "description" : "It's chubby...",
 
-  "categories" : [ "furaptor6" ],
+  "categories" : [ "juvenilepoptop" ],
   "parts" : [ "body" ],
 
-  "animation" : "furaptor6.animation",
+  "animation" : "juvenilepoptop.animation",
 
-  "dropPools" : [ "dinoLoot" ],
+  "dropPools" : [ { "default" : "adultpoptopTreasure", "bow" : "adultpoptopHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
     ],
-    "damageTeam" : 1,
+
     "behavior" : "monster",
-    
-    "deathBehavior" : "monster-death",
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -26,97 +25,58 @@
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
+      "hurtTime": 0.10,
+      "hurtWaitForGround": false,
+      "hurtWaitForGroundTime": 0.1,
 
-      "foundTargetActions" : [ 
-       
-      ],
+      "foundTargetActions" : [  ],
 
       "fleeActions" : [],
 
       "hostileActions" : [
         {
           "name" : "action-animate",
-          "cooldown" : 12,
+          "cooldown" : 15,
           "parameters" : {
             "stateType" : "body",
             "state" : "roar",
-            "animationTime" : 2.2
+            "animationTime" : 0.53
           }
         },
         {
           "name" : "action-charge",
           "cooldown" : 6.0,
           "parameters" : {
-            "maximumRange" : 20,
+            "maximumRange" : 15,
             "windupState" : "chargewindup",
             "windupTime" : 0.3,
 
-            "chargeTime" : 0.2,
-            "chargeSpeed" : 50,
-            "chargeControlForce" : 1600,
+            "chargeTime" : 0.1,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 1000,
             "chargeState" : "charge",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
-            "winddownTime" : 0.2,
+            "winddownTime" : 0.05,
             "winddownStopForce" : 1000,
             "winddownState" : "chargewinddown"
-          }
-        },      
-        {
-          "name" : "action-leap", 
-          "cooldown" : 0.5,
-          "parameters" : {
-            "minimumRange" : 2,
-            "maximumRange" : 12,
-            "maxXRange" : 20,
-            "windupTime" : 0.3,
-            "windupState" : "idle",
-
-            "leapVelocity" : 45,
-            "collisionCheck" : true,
-            "highArc" : true,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },
-        {
-          "name" : "action-fire",
-	  "cooldown" : 3,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 5,
-            "minimumRange" : 0,
-            "windupState" : "fire",
-            "windupTime" : 0.2,
-
-            "projectileType" : "raptorbite",
-            "power" : 11,
-            "fireOffset" : [5.5, 1],
-            "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "projectileInterval" : 0.01,
-            "fireSound" : "fire",
-            "range": 5,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.1
           }
         }
       ],
 
-      "periodicActions" : [
-
-      ],
+      "periodicActions" : [],
 
       "approachActions" : [
         {
           "name" : "approach-walk",
           "parameters" : {
-            "resetHeading" : false
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
           }
         }
       ],
@@ -130,7 +90,12 @@
         {
           "name" : "approach-walk",
           "parameters" : {
-            "resetHeading" : false
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
           }
         }
       ],
@@ -138,40 +103,51 @@
       "wanderActions" : [
         {
           "name" : "wander-walk",
+          "cooldown" : 6.0,
           "parameters" : {
             "wanderTime" : [5, 15]
           }
         }
-      ],
+      ]
+    },
 
-      "concurrentActions" : [],
-      "concurrentHostileActions" : []
+    "damageParts" : {
+      "body" : {
+        "damage" : 13,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 20,
+        "statusEffects" : [ ]
+      }
     },
 
     "touchDamage" : {
-      "poly" : [ [-1.625, -2.375], [1.75, -2.375], [1.75, 2.0], [-1.625, 2.0] ],
-      "damage" : 8,
+      "poly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+      "damage" : 13,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
-      "knockback" : 12,
+      "knockback" : 20,
       "statusEffects" : [ ]
     },
 
-    "metaBoundBox" : [-3.38, -4.0, 4.50, 0.75],
-    "scale" : 1.0,
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 0.7,
 
     "movementSettings" : {
-	"collisionPoly" : [ [-2, -3.9], [1.75, -3.9], [1.75, 0.0], [-2, 0.0] ],
-      "mass" : 1.0,
-      "walkSpeed" : 10,
-      "runSpeed" : 14,
-      "flySpeed" : 15,
-      "airForce" : 90.0,
-      "liquidBuoyancy" : 2,
+      "collisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+
+      "mass" : 2.5,
+      "walkSpeed" : 2,
+      "runSpeed" : 3,
+
+      "airFriction" : 0,
+
       "airJumpProfile" : {
-        "jumpSpeed" : 65.0,
-        "jumpHoldTime" : 0.1            
+        "jumpSpeed" : 35.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
       }
     },
 
@@ -189,8 +165,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -206,7 +182,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 76
+          "baseValue" : 90
         },
         "protection" : {
           "baseValue" : 0.0
@@ -215,7 +191,7 @@
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
-          "baseValue" : 1.2
+          "baseValue" : 1.0
         }
       },
 
@@ -235,8 +211,8 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-
-    "captureHealthFraction" : 0.2,
-    "nametagColor" : [64, 200, 255]
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "monsters" : "adultpoptop" }
   }
 }
