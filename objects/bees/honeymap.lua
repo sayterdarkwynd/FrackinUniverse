@@ -25,7 +25,10 @@ function honeyCheck(comb)
 		solariumcomb    = "solariumhoneyjar",
 		titaniumcomb    = "honeyjar",
 		tungstencomb    = "honeyjar",
-		volcaniccomb    = "hothoneyjar"
+		volcaniccomb    = "hothoneyjar",
+		aegisaltcomb    = "honeyjar",
+		feroziumcomb    = "honeyjar",
+		violiumcomb     = "honeyjar",
 	}
 
 	local item = comb
