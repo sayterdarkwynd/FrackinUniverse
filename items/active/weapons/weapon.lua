@@ -40,18 +40,18 @@ function setCritDamage(damage)
   -- Setting base crit rates
 
   -- **** check primary hand
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     if heldItem then
-	     if root.itemHasTag(heldItem, "dagger") then self.critChance = self.critChance + math.random(6) end
-	     if root.itemHasTag(heldItem, "shortsword") then self.critChance = self.critChance + math.random(6) end
-	     if root.itemHasTag(heldItem, "broadsword") then self.critChance = self.critChance + math.random(6) end
-	     if root.itemHasTag(heldItem, "hammer") then self.critChance = self.critChance + math.random(10) end
-	     if root.itemHasTag(heldItem, "axe") then self.critChance = self.critChance + math.random(10) end
-	     if root.itemHasTag(heldItem, "fist") then self.critChance = self.critChance + math.random(6) end
-	     if root.itemHasTag(heldItem, "spear") then self.critChance = self.critChance + math.random(8) end
-	     if root.itemHasTag(heldItem, "whip") then self.critChance = self.critChance + math.random(8) end
-	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = self.critChance + math.random(10) end
-     end
+--     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+--     if heldItem then
+--	     if root.itemHasTag(heldItem, "dagger") then self.critChance = self.critChance + math.random(4) end
+--	     if root.itemHasTag(heldItem, "shortsword") then self.critChance = self.critChance + math.random(2) end
+--	     if root.itemHasTag(heldItem, "broadsword") then self.critChance = self.critChance + math.random(2) end
+--	     if root.itemHasTag(heldItem, "hammer") then self.critChance = self.critChance + math.random(4) end
+--	     if root.itemHasTag(heldItem, "axe") then self.critChance = self.critChance + math.random(4) end
+--	     if root.itemHasTag(heldItem, "fist") then self.critChance = self.critChance + math.random(1) end
+--	     if root.itemHasTag(heldItem, "spear") then self.critChance = self.critChance + math.random(3) end
+--	     if root.itemHasTag(heldItem, "whip") then self.critChance = self.critChance + math.random(2) end
+--	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = self.critChance + math.random(4) end
+--     end
 	
   self.critChance = self.critChance  * ( 1 + status.stat("critChanceMultiplier") ) 
   local crit = math.random(100) <= self.critChance

@@ -31,11 +31,11 @@ function setCritDamageBoomerang(damage)(configParameter("critBonus",0) + + confi
   -- *************************
   -- Setting base crit rates
 
-  local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-  if heldItem then
-      if root.itemHasTag(heldItem, "boomerang") then self.critChance = self.critChance + math.random(10) end
-      if root.itemHasTag(heldItem, "chakram") then self.critChance = self.critChance + math.random(10) end
-  end
+  --local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+  --if heldItem then
+  --    if root.itemHasTag(heldItem, "boomerang") then self.critChance = self.critChance + math.random(2) end
+  --    if root.itemHasTag(heldItem, "chakram") then self.critChance = self.critChance + math.random(2) end
+  --end
   
   self.critChance = self.critChance * ( 1 + status.stat("critChanceMultiplier") )
   local crit = math.random(100) <= self.critChance

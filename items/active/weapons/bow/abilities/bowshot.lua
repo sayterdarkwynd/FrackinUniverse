@@ -30,11 +30,11 @@ function BowShot:setCritDamage(damage)
   -- Setting base crit rates
   
   -- **** check primary hand
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     if heldItem then
-	     if root.itemHasTag(heldItem, "bow") then self.critChance = self.critChance + math.random(10) end
-	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = self.critChance + math.random(10) end
-     end
+  --   local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+  --   if heldItem then
+--	     if root.itemHasTag(heldItem, "bow") then self.critChance = self.critChance + math.random(2) end
+--	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = self.critChance + math.random(3) end
+  --   end
   
   self.critChance = self.critChance  * ( 1 + status.stat("critChanceMultiplier") ) 
   local crit = math.random(100) <= self.critChance
