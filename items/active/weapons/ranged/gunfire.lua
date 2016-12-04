@@ -19,22 +19,22 @@ end
 function GunFire:setCritDamage(damage)
   -- *******************************************************
   -- FU Crit Damage Script
-  self.critChance = config.getParameter("critChance") or 1
-  self.critBonus = config.getParameter("critBonus") or math.random(6)
+  self.critChance = ( config.getParameter("critChance",0) + config.getParameter("level",1) ) or 1
+  self.critBonus =  ( config.getParameter("critBonus",0) + config.getParameter("level",1) ) or 0      
   -- *******************************************************
 
   -- Setting base crit rates
   -- **** check hand
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
      if heldItem then
-	     if root.itemHasTag(heldItem, "pistol") then self.critChance = 7 end
-	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = 5 end
-	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "assaultrifle") then self.critChance = 5 end
-	     if root.itemHasTag(heldItem, "grenadelauncher") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "rocketlauncher") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = 5 end
-	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = 2 end
+	     if root.itemHasTag(heldItem, "pistol") then self.critChance = self.critChance + math.random(8) end
+	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = self.critChance + math.random(6) end
+	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = self.critChance + math.random(10) end
+	     if root.itemHasTag(heldItem, "assaultrifle") then self.critChance = self.critChance + math.random(6) end
+	     if root.itemHasTag(heldItem, "grenadelauncher") then self.critChance = self.critChance + math.random(10) end
+	     if root.itemHasTag(heldItem, "rocketlauncher") then self.critChance = self.critChance + math.random(10) end
+	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = self.critChance + math.random(6) end
+	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = self.critChance + math.random(2) end
      end
      
      

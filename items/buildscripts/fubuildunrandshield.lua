@@ -26,5 +26,7 @@ function build(directory, config, parameters, level, seed)
   config.tooltipFields.stamLabel = configParameter("shieldStamina") * 100
   config.tooltipFields.hpLabel = configParameter("shieldHealthBonus") * 100 
   config.tooltipFields.energyLabel = configParameter("shieldEnergyBonus") * 100
+  config.tooltipFields.critBonusLabel = configParameter("critBonus")
+  config.tooltipFields.critChanceLabel = configParameter("critChance")
   return config, parameters
 end

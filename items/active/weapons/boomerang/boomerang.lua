@@ -21,11 +21,11 @@ end
 
 
 
-function setCritDamageBoomerang(damage)
+function setCritDamageBoomerang(damage)(configParameter("critBonus",0) + + configParameter("level",1)) 
   -- *******************************************************
   -- FU Crit Damage Script
-  self.critChance = config.getParameter("critChance") or 1
-  self.critBonus = config.getParameter("critBonus") or 0
+  self.critChance = ( config.getParameter("critChance") + config.getParameter("level") ) or 1
+  self.critBonus =  ( config.getParameter("critBonus") + config.getParameter("level") ) or 0   
   -- *******************************************************
 
   -- *************************
@@ -33,8 +33,8 @@ function setCritDamageBoomerang(damage)
 
   local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
   if heldItem then
-      if root.itemHasTag(heldItem, "boomerang") then self.critChance = 10 end
-      if root.itemHasTag(heldItem, "chakram") then self.critChance = 10 end
+      if root.itemHasTag(heldItem, "boomerang") then self.critChance = self.critChance + math.random(10) end
+      if root.itemHasTag(heldItem, "chakram") then self.critChance = self.critChance + math.random(10) end
   end
   
   self.critChance = self.critChance * ( 1 + status.stat("critChanceMultiplier") )

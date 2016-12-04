@@ -21,8 +21,9 @@ end
 function BowShot:setCritDamage(damage)
   -- *******************************************************
   -- FU Crit Damage Script
-  self.critChance = config.getParameter("critChance") or 1
-  self.critBonus = config.getParameter("critBonus") or 0
+
+  self.critChance = ( config.getParameter("critChance",0) + config.getParameter("level",1) ) or 1
+  self.critBonus =  ( config.getParameter("critBonus",0) + config.getParameter("level",1) ) or 0   
   -- *******************************************************
 
   -- *************************
@@ -31,11 +32,11 @@ function BowShot:setCritDamage(damage)
   -- **** check primary hand
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
      if heldItem then
-	     if root.itemHasTag(heldItem, "bow") then self.critChance = 10 end
-	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = 10 end
+	     if root.itemHasTag(heldItem, "bow") then self.critChance = self.critChance + math.random(10) end
+	     if root.itemHasTag(heldItem, "crossbow") then self.critChance = self.critChance + math.random(10) end
      end
   
-  self.critChance = self.critChance * ( 1 + status.stat("critChanceMultiplier") )
+  self.critChance = self.critChance  * ( 1 + status.stat("critChanceMultiplier") ) 
   local crit = math.random(100) <= self.critChance
   local critDamage = crit and (damage*2) + self.critBonus or damage
   return critDamage  
