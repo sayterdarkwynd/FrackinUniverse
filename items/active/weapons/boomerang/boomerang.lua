@@ -21,11 +21,11 @@ end
 
 
 
-function setCritDamageBoomerang(damage)(configParameter("critBonus",0) + + configParameter("level",1)) 
+function setCritDamageBoomerang(damage)
   -- *******************************************************
   -- FU Crit Damage Script
-  self.critChance = ( config.getParameter("critChance") + config.getParameter("level") ) or 1
-  self.critBonus =  ( config.getParameter("critBonus") + config.getParameter("level") ) or 0   
+  self.critChance = ( config.getParameter("critChance",0) + config.getParameter("level",1) ) or 1
+  self.critBonus =  ( config.getParameter("critBonus",0) + config.getParameter("level",1) ) or 0   
   -- *******************************************************
 
   -- *************************

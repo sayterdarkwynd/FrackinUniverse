@@ -36,8 +36,8 @@ function build(directory, config, parameters, level, seed)
   end
     -- *******************************
     -- FU ADDITIONS 
-      config.tooltipFields.forceLabel = config.projectileParameters.controlForce or 0
-      config.tooltipFields.knockbackLabel = config.projectileParameters.knockback or 0   
+      config.tooltipFields.distanceLabel = config.projectileParameters.maxDistance or config.projectileParameters.hoverMaxDistance
+      config.tooltipFields.knockbackLabel = config.projectileParameters.knockback or 0 
       config.tooltipFields.critChanceLabel = (configParameter("critChance",0) + configParameter("level",1))
       config.tooltipFields.critBonusLabel = (configParameter("critBonus",0) + configParameter("level",1)) 
     -- *******************************
@@ -46,3 +46,5 @@ function build(directory, config, parameters, level, seed)
 
   return config, parameters
 end
+
+
