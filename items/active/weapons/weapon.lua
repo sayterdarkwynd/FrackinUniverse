@@ -32,10 +32,11 @@ function setCritDamage(damage)
   -- *******************************************************
   -- FU Crit Damage Script
   self.critChance = ( config.getParameter("critChance",0) + config.getParameter("level",1) ) or 1
-  self.critBonus =  ( config.getParameter("critBonus",0) + config.getParameter("level",1) ) or 0                  
-
+  self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + config.getParameter("level",0) )  * self.critChance ) /100 ) /2 ) or 0
   -- *******************************************************
-
+  
+  
+  
   -- *************************
   -- Setting base crit rates
 
