@@ -1,0 +1,63 @@
+{
+  "itemName" : "commonshortspear",
+  "price" : 900,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Shortspear.",
+  "shortdescription" : "Common Shortspear",
+  "tooltipKind" : "sword",
+  "category" : "shortspear",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","spear"],
+
+  "animation" : "shortspear.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+  
+  "muzzleOffset" : [0, 1.05],
+  
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "fireTime" : [0.12, 0.7],
+    "baseDps" : [6, 8],
+    "damageConfig" : {
+      "knockbackRange" : [3, 10]
+    }
+  },
+  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+
+  "critChance" : 4,
+  "critBonus" : 7, 
+  
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "shortspearnames.config:nameGen",
+    "animationParts" : {
+      "blade" : {
+        "path" : "shortspear/<variant>.png",
+        "variants" : 50,
+        "paletteSwap" : true
+      },
+      "handle" : {
+        "path" : "handle/<variant>.png",
+        "variants" : 54,
+        "paletteSwap" : true
+      }
+    },
+    "altAbilities" : [
+      "flurry",
+      "spearspin",
+      "uppercut",
+      "physicalshockwave",
+      "groundslam"
+    ],
+    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
+    "iconDrawables" : [ "handle", "blade" ]
+  }]
+}
