@@ -3,20 +3,18 @@
   "animationCustom" : { },
 
   "ability" : {
-    "name" : "Hunters Thrust",
-    "type" : "huntspearstab",
-    "scripts" : ["/items/active/weapons/melee/abilities/spear/spearstab.lua"],
+    "name" : "Impale",
+    "type" : "shortspearstab",
+    "scripts" : ["/items/active/weapons/melee/abilities/shortspear/shortspearstab.lua"],
     "class" : "SpearStab",
 
-    "fireTime" : 0.5,
-    "baseDps" : 16.5,
-    "energyUsage" : 100.0,
-    
+    "fireTime" : 1.0,
+    "baseDps" : 11.5,
     "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ "bleedinglong" ],
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ "bleedingshort" ],
       "knockbackMode" : "aim",
-      "knockback" : 12,
+      "knockback" : 30,
       "timeoutGroup" : "primary"
     },
     "holdDamageMultiplier" : 0.1,
@@ -38,7 +36,7 @@
         "duration" : 0.1,
         "armRotation" : -110,
         "weaponRotation" : 20,
-        "twoHanded" : true,
+        "twoHanded" : false,
         "weaponOffset" : [0, 0.5],
 
         "allowRotate" : false,
@@ -48,7 +46,7 @@
         "duration" : 0.3,
         "armRotation" : -20,
         "weaponRotation" : -70,
-        "twoHanded" : true,
+        "twoHanded" : false,
         "weaponOffset" : [0, 2.5],
 
         "allowRotate" : false,
@@ -57,11 +55,11 @@
       "hold" : {
         "armRotation" : -30,
         "weaponRotation" : -60,
-        "twoHanded" : true,
+        "twoHanded" : false,
         "weaponOffset" : [0, 2.0],
 
-        "allowRotate" : true,
-        "allowFlip" : true
+        "allowRotate" : false,
+        "allowFlip" : false
       }
     }
   }
