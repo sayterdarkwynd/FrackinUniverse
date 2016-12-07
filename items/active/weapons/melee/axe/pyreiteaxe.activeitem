@@ -1,0 +1,75 @@
+{
+  "itemName" : "pyreiteaxe",
+  "price" : 640,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Hack them into burning bits.",
+  "shortdescription" : "Pyreite Axe",
+  "tooltipKind" : "sword",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe"],
+"level" : 6,
+  "inventoryIcon" : "pyreiteaxe.png",
+
+  "animation" : "axeglow.animation",
+  "animationParts" : {
+    "blade" : "pyreiteaxe.png",
+    "bladefullbright" : "pyreiteaxefullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-0.5, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.65,
+    "baseDps" : 13.75,
+    
+    "damageConfig" : {
+      "statusEffects" : [ "burning" ],
+      "knockback" : 20,
+      "knockbackMode" : "facing"
+    },
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0.25, 2]
+      },
+      "windup" : {
+        "duration" : 0.7,
+        "weaponOffset" : [0.25, 2],
+
+        "minWindup" : 0.6,
+
+        "weaponAngle" : [
+          [0.7, "linear", -20, 0],
+          [0.85, "linear", 0, 50],
+          [0.925, "sin", 50, 45],
+          [1.0, "cos", 50, 45]
+        ],
+
+        "armAngle" : [
+          [1.0, "sin", -90, 50]
+        ]
+      },
+      "fire" : {
+        "weaponOffset" : [0.25, 2]
+      }
+    }
+  },
+  "critChance" : 6,
+  "critBonus" : 15, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

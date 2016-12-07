@@ -1,0 +1,85 @@
+{
+  "itemName" : "pyreitehammer",
+  "price" : 129000,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "legendary",
+  "description" : "Probably not intended for carpentry",
+  "shortdescription" : "Pyreite Hammer",
+  "tooltipKind" : "sword",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer"],
+  "inventoryIcon" : "pyreitehammer.png",
+
+  "animation" : "hammerglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "pyreitehammer.png",
+    "bladefullbright" : "pyreitehammerfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-3.0, 1.5]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.85,
+    "baseDps" : 12.5,
+    "damageConfig" : {
+      "statusEffects" : [ "burning" ]
+    },    
+    "stances" : {
+      "idle" : {
+        "armRotation" : -10,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.5, 1.75]
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.4, 1.75],
+
+        // Windup animation
+        "idleHammerAngle" : -10,
+        "windupHammerAngle" : 0,
+        "dropHammerAngle" : 60,
+        "bounceHammerAngle" : 55,
+
+        "minWindup" : 0.7,
+        "windupBaseAngle" : -10,
+        "windupAngleRange" : 70
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.4, 2.0]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0.6, 2.0]
+      }
+    }
+  },
+
+  "altAbilityType" : "fugroundslamfire",
+  "altAbility" : { },
+
+  "critChance" : 10,
+  "critBonus" : 6, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,52 @@
+{
+  "itemName" : "isogenspear",
+  "price" : 120000,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Chillingly cold metal. Loves the taste of flesh.",
+  "shortdescription" : "Isogen Spear",
+  "tooltipKind" : "sword",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear"],
+
+  "inventoryIcon" : "isogenspear.png",
+
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "isogenspear.png",
+    "bladefullbright" : "isogenspearfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "heavyspearcombo",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 1,
+    "baseDps" : 12.5,
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ "freezefu" ],
+      "knockback" : 45
+    }
+  },
+  "altAbilityType" : "barrier",
+  "altAbility" : { },
+  
+  "critChance" : 21,
+  "critBonus" : 8,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

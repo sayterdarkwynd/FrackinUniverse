@@ -1,0 +1,41 @@
+{
+  "itemName" : "pyreiteshortsword",
+  "price" : 125000,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Lash out with fire and doom",
+  "shortdescription" : "Pyreite Shortsword",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "pyreiteshortsword.png",
+
+  "animation" : "comboglowshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "pyreiteshortsword.png",
+    "bladefullbright" : "pyreiteshortswordfullbright.png"
+  },
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.45,
+    "baseDps" : 7.25,
+    "damageConfig" : {
+      "statusEffects" : [ "burning" ]
+    }
+  },
+  "critChance" : 5,
+  "critBonus" : 5,   
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}
