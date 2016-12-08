@@ -98,34 +98,12 @@
         }
       },
       {
-        "title": "cleanup",
-        "type": "composite",
-        "name": "cleanup",
-        "parameters": {},
-        "children": [
-          {
-            "title": "setParticleEmitterActive",
-            "type": "action",
-            "name": "setParticleEmitterActive",
-            "parameters": {
-              "active": true
-            }
-          },
-          {
-            "title": "halt",
-            "type": "action",
-            "name": "halt",
-            "parameters": {}
-          },
-          {
-            "title": "setParticleEmitterActive",
-            "type": "action",
-            "name": "setParticleEmitterActive",
-            "parameters": {
-              "active": false
-            }
-          }
-        ]
+        "title": "burstParticleEmitter",
+        "type": "action",
+        "name": "burstParticleEmitter",
+        "parameters": {
+          "emitter": "teleportOut"
+        }
       },
       {
         "title": "timer",
@@ -145,34 +123,12 @@
         }
       },
       {
-        "title": "cleanup",
-        "type": "composite",
-        "name": "cleanup",
-        "parameters": {},
-        "children": [
-          {
-            "title": "setParticleEmitterActive",
-            "type": "action",
-            "name": "setParticleEmitterActive",
-            "parameters": {
-              "active": true
-            }
-          },
-          {
-            "title": "halt",
-            "type": "action",
-            "name": "halt",
-            "parameters": {}
-          },
-          {
-            "title": "setParticleEmitterActive",
-            "type": "action",
-            "name": "setParticleEmitterActive",
-            "parameters": {
-              "active": false
-            }
-          }
-        ]
+        "title": "burstParticleEmitter",
+        "type": "action",
+        "name": "burstParticleEmitter",
+        "parameters": {
+          "emitter": "teleportIn"
+        }
       },
       {
         "title": "setAnimationState",
