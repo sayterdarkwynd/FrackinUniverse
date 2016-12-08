@@ -88,7 +88,7 @@ function init()
   monster.setInteractive(config.getParameter("interactive", false))
   
   
-  monster.setName("Xt'fnar Vr'xix")
+  monster.setName("Xtl-Brxall Kefrin'xshax")
   monster.setDamageBar("special")  
 end
 

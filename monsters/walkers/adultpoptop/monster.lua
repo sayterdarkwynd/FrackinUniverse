@@ -7,6 +7,8 @@ require "/scripts/drops.lua"
 require "/scripts/status.lua"
 require "/scripts/companions/capturable.lua"
 require "/scripts/tenant.lua"
+require "/scripts/actions/movement.lua"
+require "/scripts/actions/animator.lua"
 
 -- Engine callback - called on initialization of entity
 function init()
@@ -25,17 +27,8 @@ function init()
   end
   BData:setPosition("spawn", storage.spawnPosition)
 
-  self.behaviorConfig = sb.jsonMerge(config.getParameter("behaviorConfig", {}), skillBehaviorConfig())
-  self.behavior = BTree:new(config.getParameter("behavior"))
-  self.behavior.topLevel = true
-  message.setHandler("despawn", function()
-    monster.setDropPool(nil)
-    monster.setDeathParticleBurst(nil)
-    monster.setDeathSound(nil)
-    self.deathBehavior = nil
-    self.shouldDie = true
-    status.addEphemeralEffect("monsterdespawn")
-  end)
+  self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
+  self.behaviorState = self.behavior:init(_ENV)
 
   self.collisionPoly = mcontroller.collisionPoly()
 
@@ -71,10 +64,18 @@ function init()
   message.setHandler("notify", function(_,_,notification)
       return notify(notification)
     end)
+  message.setHandler("despawn", function()
+      monster.setDropPool(nil)
+      monster.setDeathParticleBurst(nil)
+      monster.setDeathSound(nil)
+      self.deathBehavior = nil
+      self.shouldDie = true
+      status.addEphemeralEffect("monsterdespawn")
+    end)
 
   local deathBehavior = config.getParameter("deathBehavior")
   if deathBehavior then
-    self.deathBehavior = BTree:new(deathBehavior)
+    self.deathBehavior = root.behavior(deathBehavior, config.getParameter("behaviorConfig", {}))
   end
 
   self.forceRegions = ControlMap:new(config.getParameter("forceRegions", {}))
@@ -85,16 +86,15 @@ function init()
     monster.setDamageBar(config.getParameter("damageBar"));
   end
 
-  monster.setInteractive(config.getParameter("interactive", false))
-  
-  
   monster.setName("Mama Poptop")
-  monster.setDamageBar("special")  
+  monster.setDamageBar("special") 
+  
+  monster.setInteractive(config.getParameter("interactive", false))
 end
 
 -- This is called in update() using pcall
 -- to catch errors
-local _update = function(dt)
+function update(dt)
   capturable.update(dt)
   self.damageTaken:update()
 
@@ -133,15 +133,31 @@ local _update = function(dt)
 
     self.tradingEnabled = false
     self.setFacingDirection = false
+    self.moving = false
+    self.rotated = false
     self.forceRegions:clear()
     self.damageSources:clear()
+    self.damageParts = {}
+    BData:clearControls()
+    clearAnimation()
 
     BData:setEntity("self", entity.id())
     BData:setPosition("self", mcontroller.position())
     BData:setNumber("dt", dt * self.behaviorTickRate)
+    BData:setNumber("facingDirection", self.facingDirection or mcontroller.facingDirection())
 
     if self.behavior then
-      self.behavior:run(dt * self.behaviorTickRate)
+      self.behavior:run(self.behaviorState, dt * self.behaviorTickRate)
+    end
+
+    BData:update()
+    updateAnimation()
+
+    if not self.rotated and self.rotation then
+      mcontroller.setRotation(0)
+      animator.resetTransformationGroup(self.rotationGroup)
+      self.rotation = nil
+      self.rotationGroup = nil
     end
 
     self.interacted = false
@@ -151,20 +167,12 @@ local _update = function(dt)
 
     setDamageSources()
     setPhysicsForces()
+    monster.setDamageParts(self.damageParts)
     overrideCollisionPoly()
   end
   self.behaviorTick = self.behaviorTick + 1
 
-  runWorkers()
-end
-
--- Engine callback - called on each update
--- Update frequencey is dependent on update delta
-function update(dt)
-  local status, result = pcall(_update, dt)
-  if not status then
-    error(string.format("Lua Error in monster type '%s'\n %s", monster.type(), result))
-  end
+  movement()
 end
 
 function interact(args)
@@ -179,7 +187,8 @@ end
 function die()
   if not capturable.justCaptured then
     if self.deathBehavior then
-      self.deathBehavior:run()
+      local deathBehaviorState = self.deathBehavior:init(_ENV)
+      self.deathBehavior:run(deathBehaviorState, script.updateDt())
     end
     capturable.die()
   end
@@ -248,21 +257,6 @@ function overrideCollisionPoly()
       break
     end
   end
-end
-
-function skillBehaviorConfig()
-  local skills = config.getParameter("skills", {})
-  local skillConfig = {}
-
-  for _,skillName in pairs(skills) do
-    local skillHostileActions = root.monsterSkillParameter(skillName, "hostileActions")
-    if skillHostileActions then
-      construct(skillConfig, "hostileActions")
-      util.appendLists(skillConfig.hostileActions, skillHostileActions)
-    end
-  end
-
-  return skillConfig
 end
 
 function setupTenant(...)
