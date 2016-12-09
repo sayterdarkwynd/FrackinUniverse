@@ -6,6 +6,12 @@ function init()
 	      {stat = "maxHealth", baseMultiplier = 1.05},
 	      {stat = "powerMultiplier", baseMultiplier = 1.05},
 	      {stat = "physicalResistance", baseMultiplier = 1.05}
-	    })  
+	    }) 
+       else
+	    setBonusInit("fu_boneset", {
+	      {stat = "maxHealth", baseMultiplier = 1.0},
+	      {stat = "powerMultiplier", baseMultiplier = 1.0},
+	      {stat = "physicalResistance", baseMultiplier = 1.0}
+	    })        
     end  	
 end
