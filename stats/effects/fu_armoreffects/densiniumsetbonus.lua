@@ -16,7 +16,8 @@ function init()
 		{stat = "nitrogenfreezeImmunity", amount = 1},
 		{stat = "ffextremeradiationImmunity", amount = 1},
 		{stat = "biomeradiationImmunity", amount = 1},
-		{stat = "sulphuricImmunity", amount = 1}
+		{stat = "sulphuricImmunity", amount = 1},
+		{stat = "physicalResistance", baseMultiplier = 0.15}
 	}, 
 	callbacks )
 end

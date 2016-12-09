@@ -7,8 +7,7 @@ function init()
 		{stat = "ffextremeradiationImmunity", amount = 1},
 		{stat = "radiationburnImmunity", amount = 1},
 		{stat = "biomeradiationImmunity", amount = 1},
-		{stat = "fallDamageMultiplier", effectiveMultiplier = 0.5}
-	}
-	
-	)
+		{stat = "fallDamageMultiplier", effectiveMultiplier = 0.5},
+                {stat = "poisonResistance", amount = 0.35}
+	})
 end

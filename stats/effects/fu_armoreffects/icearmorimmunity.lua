@@ -4,7 +4,8 @@ function init()
     {stat = "liquidnitrogenImmunity", amount = 1},
     {stat = "nitrogenfreezeImmunity", amount = 1},
     {stat = "protoImmunity", amount = 1},
-    {stat = "ffextremecoldImmunity", amount = 1}
+    {stat = "ffextremecoldImmunity", amount = 1},
+    {stat = "iceResistance", amount = 0.25}
   })
 end
 

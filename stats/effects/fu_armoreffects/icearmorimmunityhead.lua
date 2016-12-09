@@ -5,7 +5,8 @@ function init()
     {stat = "shadowgasImmunity", amount = 1},
     {stat = "protoImmunity", amount = 1},
     {stat = "waterbreathProtection", amount = 1},
-    {stat = "biomecoldImmunity", amount = 1}
+    {stat = "biomecoldImmunity", amount = 1},
+    {stat = "iceResistance", amount = 0.15}
   })
 end
 

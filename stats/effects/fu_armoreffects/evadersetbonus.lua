@@ -10,7 +10,8 @@ function init()
 		{stat = "protoImmunity", amount = 1},
 		{stat = "extremepressureProtection", amount = 1},
 		{stat = "pressureProtection", amount = 1},
-		{stat = "breathProtection", amount = 1}
+		{stat = "breathProtection", amount = 1},
+		{stat = "fireResistance", baseMultiplier = 0.15}
 	}, 
 	callbacks )
 end

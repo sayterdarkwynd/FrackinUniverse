@@ -11,6 +11,7 @@ function init()
 	    {stat = "nitrogenfreezeImmunity", amount = 1},
 	    {stat = "iceslipImmunity", amount = 1},
 	    {stat = "extremepressureProtection", amount = 1},
-	    {stat = "asteroidImmunity", amount = 1}
+	    {stat = "asteroidImmunity", amount = 1},
+	    {stat = "physicalResistance", amount = 0.25}
 	})
 end

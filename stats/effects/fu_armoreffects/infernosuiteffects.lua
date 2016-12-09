@@ -4,7 +4,8 @@ function init()
     {stat = "biomeheatImmunity", amount = 1},
     {stat = "biomecoldImmunity", amount = 1},
     {stat = "ffextremecoldimmunity", amount = 1},
-    {stat = "fireStatusImmunity", amount = 1}
+    {stat = "fireStatusImmunity", amount = 1},
+    {stat = "fireResistance", amount = 0.55}
   })
 end
 

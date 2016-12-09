@@ -7,7 +7,8 @@ function init()
 	      {stat = "quicksandImmunity", baseMultiplier = 1},  
 	      {stat = "maxHealth", baseMultiplier = 1.15},
 	      {stat = "maxEnergy", baseMultiplier = 1.10},
-	      {stat = "powerMultiplier", baseMultiplier = 1.10}
+	      {stat = "powerMultiplier", baseMultiplier = 1.10},
+	      {stat = "physicalResist", baseMultiplier = 1.10}
 	    })
     else
 	    setBonusInit("fu_nomadset", {

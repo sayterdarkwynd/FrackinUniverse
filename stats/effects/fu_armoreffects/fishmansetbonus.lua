@@ -6,6 +6,7 @@ function init()
 	    {stat = "protoImmunity", amount = 1},
 	    {stat = "maxBreath", amount = 1400.0 },
 	    {stat = "breathDepletionRate", amount = 1.0 },
-	    {stat = "wetImmunity", amount = 1 }
+	    {stat = "wetImmunity", amount = 1 },
+		{stat = "poisonResistance", baseMultiplier = 0.55}
 	})
 end
