@@ -50,7 +50,6 @@ function update(dt)
     
     if lightLevel < 1 then 
       self.dpsMod = 1.1 
-      activateVisualEffects()
     end
 
   if self.tickTimer <= 0 then
