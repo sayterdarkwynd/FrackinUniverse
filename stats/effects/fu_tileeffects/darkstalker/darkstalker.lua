@@ -39,7 +39,7 @@ end
 
  
 function update(dt)
-  
+    
     self.tickTimer = self.tickTimer - dt
     local lightLevel = getLight()
     
@@ -49,7 +49,8 @@ function update(dt)
     self.dpsMod = 1 / lightLevel
     
     if lightLevel < 1 then 
-      self.dpsMod = 1.1   
+      self.dpsMod = 1.1 
+      activateVisualEffects()
     end
 
   if self.tickTimer <= 0 then
