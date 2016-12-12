@@ -57,16 +57,8 @@ function setCritDamageBoomerang(damage)
   -- *******************************************************
   -- FU Crit Damage Script
   self.critChance = ( config.getParameter("critChance",0) + config.getParameter("level",1) ) or 1
-  self.critBonus =  ( config.getParameter("critBonus",0) + config.getParameter("level",1) ) or 0   
+  self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + config.getParameter("level",0) )  * self.critChance ) /100 ) /2 ) or 0  
   -- *******************************************************
-
-  -- *************************
-  -- Setting base crit rates
-
-  --local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-  --if heldItem then
-  --    if root.itemHasTag(heldItem, "magnorb") then self.critChance = self.critChance + math.random(2) end
-  --end
   
   self.critChance = self.critChance * ( 1 + status.stat("critChanceMultiplier") )
   local crit = math.random(100) <= self.critChance
@@ -167,7 +159,9 @@ end
 function fire(orbIndex)
   local params = copy(self.projectileParameters)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
-  self.projectileParameters.power = setCritDamageBoomerang(self.projectileParameters.power)
+  
+  params.power = setCritDamageBoomerang(params.power)
+
   params.ownerAimPosition = activeItem.ownerAimPosition()
   local firePos = firePosition(orbIndex)
   if world.lineCollision(mcontroller.position(), firePos) then return end
