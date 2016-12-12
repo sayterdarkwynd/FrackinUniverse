@@ -18,8 +18,10 @@ function init()
     {stat = "slushslowImmunity", amount = 1},
     {stat = "snowslowImmunity", amount = 1},
     {stat = "protoImmunity", amount = 1},
+    {stat = "shadowImmunity", amount = 1},
+    {stat = "pressureImmunity", amount = 1},    
     {stat = "shadowResistance", amount = 0.7},
-    {stat = "shadowImmunity", amount = 1}
+    {stat = "physicalResistance", amount = 0.4}
   })
 end
 
