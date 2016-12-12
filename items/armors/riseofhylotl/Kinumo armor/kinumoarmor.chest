@@ -4,7 +4,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Copper-laced protection for wanderers. Gives 5% energy boost.",
+  "description" : "A light armor for sea-farers. ^cyan;Set Bonus: +Poison Resist, +Max Breath, +Shield Regen, +Energy. Extra bonus on Ocean, Tidewater and Strange Sea.^reset;",
   "shortdescription" : "Sirens Breastplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,28 +20,32 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 2,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
+      "baseMultiplier" : 1.75
     },
 
     {
       "stat" : "protection",
-      "amount" : 20
+      "amount" : 26
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 80
+      "amount" : 20
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 18
-    },
-    "percentenergyboost5"
+      "amount" : 15
+    },    
+    "sirensetbonus",
+    {
+      "stat" : "fu_sirenset_chest",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [
