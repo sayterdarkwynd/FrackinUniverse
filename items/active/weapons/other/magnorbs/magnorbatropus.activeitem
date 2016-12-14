@@ -1,0 +1,60 @@
+{
+  "itemName" : "magnorbatropus",
+  "level" : 5,
+  "price" : 1200,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Gruesome, yet fun.",
+  "shortdescription" : "Skull Bola",
+  "tooltipKind" : "magnorb",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","boomerang"],
+
+  "inventoryIcon" : "iconatropus.png",
+  "animation" : "magnorbsatropus.animation",
+  "animationParts" : {
+    "glove" : "gloveatropus.png",
+    "orb1" : "orbatropus.png",
+    "orb2" : "orbatropus.png",
+    "orb3" : "orbatropus.png",
+    "orb4" : "orbatropus.png",
+    "orb5" : "orbatropus.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["magnorbs_multi.lua"],
+
+  "orbitRate" : 0.45,
+
+  "projectileType" : "magnorbatropus",
+  "projectileParameters" : {
+    "power" : 2.25,
+    "knockback" : 5,
+
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 70,
+    "pickupDistance" : 2.5,
+    "snapDistance" : 2.0
+  },
+
+  "shieldKnockback" : 10,
+  "shieldEnergyCost" : 40,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  }, 
+  "builder" : "/items/buildscripts/buildmagnorb.lua"
+}

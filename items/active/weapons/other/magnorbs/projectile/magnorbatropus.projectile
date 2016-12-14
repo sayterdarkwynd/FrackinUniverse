@@ -1,0 +1,41 @@
+{
+  "projectileName" : "magnorbatropus",
+  "image" : "magnorbatropus.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "actionOnReap" : [ ],
+  "statusEffects" : [ ],
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 65,
+  "damageKind" : "poison",
+  "physics" : "stickybomb",
+  "bounces" : 12,
+  "piercing" : true,
+  "timeToLive" : 4,
+
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "pusvomit3",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.25,
+      "angleAdjust" : 35
+    },  
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goo_spit1.ogg",
+        "/sfx/projectiles/goo_spit2.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg",
+        "/sfx/projectiles/bonebounce1.ogg",
+        "/sfx/projectiles/bonebounce3.ogg",
+        "/sfx/projectiles/bonebounce5.ogg"
+      ]
+    }
+  ],
+
+  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
+}
