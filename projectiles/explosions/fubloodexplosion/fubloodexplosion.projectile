@@ -1,7 +1,7 @@
 {
   "projectileName" : "fubloodexplosion",
   "image" : "fubloodexplosion.png",
-  "animationCycle" : 0.9,
+  "animationCycle" : 0.5,
   "frameNumber" : 9,
   "speed" : 0,
   "damagePoly" : [ [-3,3], [-3,-3], [2,-2], [2,3] ],
@@ -13,13 +13,15 @@
   "actionOnReap" : [
     {
       "action" : "sound",
-      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
-    },
-    {
-      "action" : "sound",
-      "options" : [ "/sfx/weather/acidburn.ogg" ]
+      "options" : [ 
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg",
+        "/sfx/projectiles/bonebounce1.ogg",
+        "/sfx/projectiles/bonebounce3.ogg",
+        "/sfx/projectiles/bonebounce5.ogg"      
+      ]
     }
   ],
   "emmiters" : [ "blood" ],
-  "statusEffects" : [ "weakpoison" ]
+  "statusEffects" : [ "insanity" ]
 }
