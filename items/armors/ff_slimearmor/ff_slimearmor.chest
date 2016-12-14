@@ -4,12 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Slimy, oozing protection. Immune to Poison and Proto-poison. ^#e43774;-Upgradeable-^reset;",
+  "description" : "Slimy, oozing protection. Immune to Bio-ooze. ^cyan;Set Bonus: Immune to Poison and Proto^reset; ^#e43774;-Upgradeable-^reset;",
   "shortdescription" : "Gelatinous Chest",
   "category" : "chestarmour",
   "learnBlueprintsOnPickup" : [ "ff_slimechest2" ],
   "tooltipKind" : "armornew2",
-"level" : 2,
+  "level" : 2,
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -42,14 +42,19 @@
       "stat" : "maxHealth",
       "amount" : 12
     },
+
     {
       "stat" : "wetImmunity",
       "amount" : 1
     },
-    "protoimmunity",
-    "poisonblock"  
+    "biooozeimmunity",
+    "slimesetbonus",
+    {
+      "stat" : "fu_slimeset_chest",
+      "amount" : 1
+    }
   ],
-  "questTags" : [ "tier2armor" ],  
+  "questTags" : [ "tier2armor" ],
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },
     { "ffca8a" : "727272", "e0975c" : "414141", "a85636" : "1c1c1c", "6f2919" : "0b0b0b" },

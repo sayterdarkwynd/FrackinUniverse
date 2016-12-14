@@ -7,7 +7,8 @@ function init()
 		{stat = "breathImmunity", amount = 1},
 		{stat = "pressureProtection", amount = 1},
 		{stat = "extremepressureProtection", amount = 1},
-		{stat = "fallDamageMultiplier", effectiveMultiplier = 0.1}
+		{stat = "fallDamageMultiplier", effectiveMultiplier = 0.25},
+		{stat = "electricResistance", effectiveMultiplier = 0.30}
 	}
 
 	)
