@@ -178,6 +178,13 @@ function fire(orbIndex)
     self.cooldownTimer = self.cooldownTime
     animator.playSound("fire")
   end
+
+-- FU adds energy drain to these otherwise OP with crit weapons
+  self.energyCost = 4 * config.getParameter("level", 1)
+  if status.resourcePositive("energy") then
+     status.overConsumeResource("energy", self.energyCost)
+  end
+  
 end
 
 function firePosition(orbIndex)

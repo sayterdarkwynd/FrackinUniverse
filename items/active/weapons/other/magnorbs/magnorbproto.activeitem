@@ -1,0 +1,59 @@
+{
+  "itemName" : "magnorbproto",
+  "level" : 4,
+  "price" : 900,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "This unusual weapon is quite dangerous.",
+  "shortdescription" : "Tauntra Orbs",
+  "tooltipKind" : "magnorb",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","boomerang"],
+
+  "inventoryIcon" : "iconproto.png",
+  "animation" : "magnorbsproto.animation",
+  "animationParts" : {
+    "glove" : "gloveproto.png",
+    "orb1" : "orbproto.png",
+    "orb2" : "orbproto.png",
+    "orb3" : "orbproto.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["magnorbsproto.lua"],
+
+  "orbitRate" : 3.02,
+
+  "projectileType" : "magnorbproto",
+  "projectileParameters" : {
+    "power" : 2.25,
+    "knockback" : 15,
+
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 50,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 1.0
+  },
+
+  "shieldKnockback" : 30,
+  "shieldEnergyCost" : 10,
+  "shieldHealth" : 600,
+  
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  }, 
+  "builder" : "/items/buildscripts/buildmagnorb.lua"
+}
