@@ -216,6 +216,9 @@ function getRecipes()
 	{ inputs = { toxicwaste = { 10, 10, 5 } }, outputs = { uraniumore = 1 } },
 	{ inputs = { tritium = 2 }, outputs = { helium3cannister = { 1, 1, 2 }, toxicwaste = { 1, 2, 3 } } },
 	-- tiles
+	{ inputs = { goldensand = 50 }, outputs = { goldore = 1,2,3 }, timeScale = { nil, nil, 4.5 } },
+	{ inputs = { goldenleaves = 50 }, outputs = { ff_resin = 1,2,3 }, timeScale = { nil, nil, 4.5 } },
+	{ inputs = { goldenwood = 50 }, outputs = { ff_resin = 1,2,3 }, timeScale = { nil, nil, 4.5 } },
 	{ inputs = { aegisaltcrystal = 50 }, outputs = { ff_silicon = 1 }, timeScale = { nil, nil, 4.5 } },
 	{ inputs = { alienrock = 50 }, outputs = { ff_silicon = { 2, 2, 4 } } },
 	{ inputs = { aliensoil = 50 }, outputs = { algaegreen = { 2, 3, 5 } } },

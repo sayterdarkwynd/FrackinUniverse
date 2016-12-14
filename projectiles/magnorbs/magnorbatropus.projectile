@@ -14,15 +14,13 @@
   "bounces" : 12,
   "piercing" : true,
   "timeToLive" : 4,
+  "emitters" : [ "blood" ],
 
   "actionOnCollide" : [
     {
-      "action" : "projectile",
-      "type" : "pusvomit3",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.25,
-      "angleAdjust" : 35
-    },  
+      "action" : "config",
+      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+    },
     {
       "action" : "sound",
       "options" : [
