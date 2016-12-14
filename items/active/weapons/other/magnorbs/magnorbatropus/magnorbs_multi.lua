@@ -30,7 +30,7 @@ function init()
   self.shieldTransformTime = config.getParameter("shieldTransformTime", 0.1)
   self.shieldPoly = animator.partPoly("glove", "shieldPoly")
   self.shieldEnergyCost = config.getParameter("shieldEnergyCost", 50)
-  self.shieldHealth = 1000
+  self.shieldHealth = config.getParameter("shieldHealth", 50) * config.getParameter("level", 1)
   self.shieldKnockback = config.getParameter("shieldKnockback", 0)
   if self.shieldKnockback > 0 then
     self.knockbackDamageSource = {
@@ -74,7 +74,7 @@ function update(dt, fireMode, shiftHeld)
     if not self.shieldActive then
       activateShield()
        status.setPersistentEffects("atropusmagnorb", {
-        {stat = "pusImmunity", amount = 1},
+        {stat = "healthRegen", amount = 2},
         {stat = "poisonResistance", amount = 0.15}
       })         
     end
