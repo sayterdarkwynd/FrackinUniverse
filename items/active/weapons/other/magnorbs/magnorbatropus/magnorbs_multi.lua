@@ -9,28 +9,27 @@ function init()
   self.projectileType = config.getParameter("projectileType")
   self.projectileParameters = config.getParameter("projectileParameters")
   self.projectileParameters.power = self.projectileParameters.power * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
-
   self.cooldownTime = config.getParameter("cooldownTime", 0)
   self.cooldownTimer = self.cooldownTime
 
   initStances()
 
-  storage.projectileIds = storage.projectileIds or {false, false, false}
+  storage.projectileIds = storage.projectileIds or {false, false, false, false, false}
   checkProjectiles()
 
-  self.orbitRate = config.getParameter("orbitRate", 1) * -3 * math.pi
+  self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
 
   animator.resetTransformationGroup("orbs")
-  for i = 1, 4 do
+  for i = 1, 5 do
     animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
   end
   setOrbPosition(1)
 
   self.shieldActive = false
   self.shieldTransformTimer = 0
-  self.shieldTransformTime = config.getParameter("shieldTransformTime", 0.25)
+  self.shieldTransformTime = config.getParameter("shieldTransformTime", 0.1)
   self.shieldPoly = animator.partPoly("glove", "shieldPoly")
-  self.shieldEnergyCost = config.getParameter("shieldEnergyCost", 60)
+  self.shieldEnergyCost = config.getParameter("shieldEnergyCost", 50)
   self.shieldHealth = 1000
   self.shieldKnockback = config.getParameter("shieldKnockback", 0)
   if self.shieldKnockback > 0 then
@@ -42,7 +41,7 @@ function init()
       team = activeItem.ownerTeam(),
       knockback = self.shieldKnockback,
       rayCheck = true,
-      damageRepeatTimeout = 0.42
+      damageRepeatTimeout = 0.5
     }
   end
 
@@ -50,8 +49,6 @@ function init()
 
   updateHand()
 end
-
-
 
 function setCritDamageBoomerang(damage)
   -- *******************************************************
@@ -66,13 +63,14 @@ function setCritDamageBoomerang(damage)
   return critDamage  
 end
 
+
 function update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(0, self.cooldownTimer)
 
   updateStance(dt)
   checkProjectiles()
 
-  if fireMode == "alt" and availableOrbCount() == 4 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
+  if fireMode == "alt" and availableOrbCount() == 5 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
     end
@@ -115,7 +113,7 @@ function update(dt, fireMode, shiftHeld)
 
     animator.resetTransformationGroup("orbs")
     animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
-    for i = 1, 4 do
+    for i = 1, 5 do
       animator.rotateTransformationGroup("orb"..i, self.orbitRate * dt)
       animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
     end
@@ -133,7 +131,7 @@ function uninit()
 end
 
 function nextOrb()
-  for i = 1, 4 do
+  for i = 1, 5 do
     if not storage.projectileIds[i] then
       return i
     end
@@ -142,7 +140,7 @@ end
 
 function availableOrbCount()
   local available = 0
-  for i = 1, 4 do
+  for i = 1, 5 do
     if not storage.projectileIds[i] then
       available = available + 1
     end
@@ -161,7 +159,7 @@ function fire(orbIndex)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   
   params.power = setCritDamageBoomerang(params.power)
-
+  
   params.ownerAimPosition = activeItem.ownerAimPosition()
   local firePos = firePosition(orbIndex)
   if world.lineCollision(mcontroller.position(), firePos) then return end
@@ -178,6 +176,11 @@ function fire(orbIndex)
     self.cooldownTimer = self.cooldownTime
     animator.playSound("fire")
   end
+-- FU adds energy drain to these otherwise OP with crit weapons
+  self.energyCost = 4 * config.getParameter("level", 1)
+  if status.resourcePositive("energy") then
+     status.overConsumeResource("energy", self.energyCost)
+  end  
 end
 
 function firePosition(orbIndex)
@@ -230,15 +233,15 @@ function deactivateShield()
 end
 
 function setOrbPosition(spaceFactor, distance)
-  for i = 1, 4 do
+  for i = 1, 5 do
     animator.resetTransformationGroup("orb"..i)
     animator.translateTransformationGroup("orb"..i, {distance or 0, 0})
-    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - 3) / 4))
+    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - 2) / 5))
   end
 end
 
 function setOrbAnimationState(newState)
-  for i = 1, 4 do
+  for i = 1, 5 do
     animator.setAnimationState("orb"..i, newState)
   end
 end

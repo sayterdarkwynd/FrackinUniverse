@@ -14,13 +14,13 @@ function init()
 
   initStances()
 
-  storage.projectileIds = storage.projectileIds or {false, false, false, false, false}
+  storage.projectileIds = storage.projectileIds or {false, false, false, false}
   checkProjectiles()
 
   self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
 
   animator.resetTransformationGroup("orbs")
-  for i = 1, 5 do
+  for i = 1, 4 do
     animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
   end
   setOrbPosition(1)
@@ -63,14 +63,13 @@ function setCritDamageBoomerang(damage)
   return critDamage  
 end
 
-
 function update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(0, self.cooldownTimer)
 
   updateStance(dt)
   checkProjectiles()
 
-  if fireMode == "alt" and availableOrbCount() == 5 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
+  if fireMode == "alt" and availableOrbCount() == 4 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
     end
@@ -113,7 +112,7 @@ function update(dt, fireMode, shiftHeld)
 
     animator.resetTransformationGroup("orbs")
     animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
-    for i = 1, 5 do
+    for i = 1, 4 do
       animator.rotateTransformationGroup("orb"..i, self.orbitRate * dt)
       animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
     end
@@ -131,7 +130,7 @@ function uninit()
 end
 
 function nextOrb()
-  for i = 1, 5 do
+  for i = 1, 4 do
     if not storage.projectileIds[i] then
       return i
     end
@@ -140,7 +139,7 @@ end
 
 function availableOrbCount()
   local available = 0
-  for i = 1, 5 do
+  for i = 1, 4 do
     if not storage.projectileIds[i] then
       available = available + 1
     end
@@ -157,10 +156,10 @@ end
 function fire(orbIndex)
   local params = copy(self.projectileParameters)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
+  params.ownerAimPosition = activeItem.ownerAimPosition()
   
   params.power = setCritDamageBoomerang(params.power)
   
-  params.ownerAimPosition = activeItem.ownerAimPosition()
   local firePos = firePosition(orbIndex)
   if world.lineCollision(mcontroller.position(), firePos) then return end
   local projectileId = world.spawnProjectile(
@@ -176,11 +175,12 @@ function fire(orbIndex)
     self.cooldownTimer = self.cooldownTime
     animator.playSound("fire")
   end
--- FU adds energy drain to these otherwise OP with crit weapons
-  self.energyCost = 4 * config.getParameter("level", 1)
+-- fu energy cost
+  self.energyCost = 5 * config.getParameter("level", 1)
   if status.resourcePositive("energy") then
      status.overConsumeResource("energy", self.energyCost)
-  end  
+  end
+  
 end
 
 function firePosition(orbIndex)
@@ -233,15 +233,15 @@ function deactivateShield()
 end
 
 function setOrbPosition(spaceFactor, distance)
-  for i = 1, 5 do
+  for i = 1, 4 do
     animator.resetTransformationGroup("orb"..i)
     animator.translateTransformationGroup("orb"..i, {distance or 0, 0})
-    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - 2) / 5))
+    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - 2) / 4))
   end
 end
 
 function setOrbAnimationState(newState)
-  for i = 1, 5 do
+  for i = 1, 4 do
     animator.setAnimationState("orb"..i, newState)
   end
 end

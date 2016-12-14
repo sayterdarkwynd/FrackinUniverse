@@ -1,0 +1,76 @@
+{
+  "itemName" : "magnorbshadow",
+  "level" : 4,
+  "price" : 1100,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Fires solidified shadow at foes.",
+  "shortdescription" : "Shadow Orbs",
+  "tooltipKind" : "magnorb",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : [ "weapon", "boomerang" ],
+
+  "inventoryIcon" : "iconshadow.png",
+  "animation" : "magnorbshadow.animation",
+  "animationParts" : {
+    "glove" : "gloveshadow.png",
+    "orb1" : "orbshadow.png",
+    "orb2" : "orbshadow.png",
+    "orb3" : "orbshadow.png",
+    "orb4" : "orbshadow.png"
+  },
+
+  "animationCustom" : { 
+  
+    "lights" : { 
+      "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [65, 0, 82],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+      }
+    } 
+  
+  },
+
+  "scripts" : ["magnorbsquad.lua"],
+
+  "orbitRate" : 1.02,
+
+  "projectileType" : "magnorbshadow",
+  "projectileParameters" : {
+    "power" : 2.35,
+    "knockback" : 15,
+
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 50,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 1.0
+  },
+
+  "shieldKnockback" : 30,
+  "shieldEnergyCost" : 10,
+  "shieldHealth" : 400,
+  
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  }, 
+  "builder" : "/items/buildscripts/buildmagnorb.lua"
+}
