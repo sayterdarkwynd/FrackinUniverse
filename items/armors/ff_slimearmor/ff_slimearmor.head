@@ -4,12 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "A..slimey helm. Lovely. Immune to Bio-ooze, Proto-poison and Wet. ^#e43774;-Upgradeable-^reset;",
+  "description" : "A..slimey helm. Lovely. Immune to Wet ^cyan;Set Bonus: Immune to Poison and Proto^reset; ^#e43774;-Upgradeable-^reset;",
   "shortdescription" : "Gelatinous Helm",
   "category" : "headarmour",
   "learnBlueprintsOnPickup" : [ "ff_slimehead2" ],
   "tooltipKind" : "armornew2",
-"level" : 2,
+  "level" : 2,
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
@@ -33,13 +33,16 @@
     {
       "stat" : "maxHealth",
       "amount" : 6
-    },    
+    },
     {
       "stat" : "wetImmunity",
       "amount" : 1
     },
-    "protoimmunity",
-    "biooozeimmunity"
+    "slimesetbonus",
+    {
+      "stat" : "fu_slimeset_head",
+      "amount" : 1
+    }
   ],
   "questTags" : [ "tier2armor" ],
   "colorOptions" : [

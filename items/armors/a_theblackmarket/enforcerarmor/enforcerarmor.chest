@@ -1,44 +1,56 @@
 {
-  "itemName" : "enforcerhead",
-  "inventoryIcon" : "icons.png:head",
+  "itemName" : "enforcerchest",
+  "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Nearly unbreakable in every respect. 10% defense boost.",
-  "shortdescription" : "Tritanium Helmet",
-  "category" : "headarmour",
+  "description" : "Nearly unbreakable in every respect. 15% Electric Resistance",
+  "shortdescription" : "Tritanium Chestplate",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
 "level" : 4,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
+      "baseMultiplier" : 2.25
     },
 
     {
       "stat" : "protection",
-      "amount" : 19
+      "amount" : 30
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 50
+      "amount" : 80
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 14
+      "amount" : 19
     },
-    "damagebonus"
+    "defense2",
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.15
+    }
   ],
 
   "colorOptions" : [
-    /* GREY */
-    { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
+    /* RED */
+    { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
     /* BLACK */
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
     /* GREY */
@@ -61,6 +73,5 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-
   ]
 }
