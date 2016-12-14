@@ -1,0 +1,59 @@
+{
+  "itemName" : "magnorbslime",
+  "level" : 2,
+  "price" : 500,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Releases globs of delicious slime.",
+  "shortdescription" : "Slime Lobber",
+  "tooltipKind" : "magnorb",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","boomerang"],
+
+  "inventoryIcon" : "iconslime.png",
+  "animation" : "magnorbslime.animation",
+  "animationParts" : {
+    "glove" : "gloveslime.png",
+    "orb1" : "magnorbslime.png",
+    "orb2" : "magnorbslime.png",
+    "orb3" : "magnorbslime.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["magnorbslime.lua"],
+
+  "orbitRate" : 0.35,
+
+  "projectileType" : "magnorbslime",
+  "projectileParameters" : {
+    "power" : 1.95,
+    "knockback" : 10,
+
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 150,
+    "pickupDistance" : 2.5,
+    "snapDistance" : 2.0
+  },
+
+  "shieldKnockback" : 10,
+  "shieldEnergyCost" : 40,
+  "shieldHealth" : 300,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  }, 
+  "builder" : "/items/buildscripts/buildmagnorb.lua"
+}

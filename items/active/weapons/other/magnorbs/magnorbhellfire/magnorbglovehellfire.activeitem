@@ -1,32 +1,34 @@
 {
-  "itemName" : "magnorbproto",
-  "level" : 3,
-  "price" : 900,
+  "itemName" : "magnorbhellfire",
+  "level" : 5,
+  "price" : 1100,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "This unusual weapon is quite dangerous.",
-  "shortdescription" : "Tauntra Orbs",
+  "description" : "Full of scorchy fun.",
+  "shortdescription" : "Hellfire Ejector",
   "tooltipKind" : "magnorb",
   "category" : "uniqueWeapon",
   "twoHanded" : true,
-  "itemTags" : ["weapon","boomerang"],
+  "itemTags" : [ "weapon", "boomerang" ],
 
-  "inventoryIcon" : "iconproto.png",
-  "animation" : "magnorbsproto.animation",
+  "inventoryIcon" : "iconhellfire.png",
+  "animation" : "magnorbhellfire.animation",
   "animationParts" : {
-    "glove" : "gloveproto.png",
-    "orb1" : "orbproto.png",
-    "orb2" : "orbproto.png",
-    "orb3" : "orbproto.png",
-    "orb4" : "orbproto.png"
+    "glove" : "glovehellfire.png",
+    "glovefullbright" : "glovehellfirefullbright.png",
+    "orb1" : "orbhellfire.png",
+    "orb2" : "orbhellfire.png",
+    "orb3" : "orbhellfire.png",
+    "orb4" : "orbhellfire.png"
   },
+
   "animationCustom" : { 
   
     "lights" : { 
       "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
-      "color" : [25, 110, 12],
+      "color" : [155, 100, 42],
       "flickerPeriod" : 0.3,
       "flickerMinIntensity" : 0.95,
       "flickerMaxIntensity" : 1,
@@ -39,14 +41,13 @@
 
   "scripts" : ["magnorbsquad.lua"],
 
-  "orbitRate" : 3.02,
+  "orbitRate" : 8.02,
 
-  "projectileType" : "magnorbproto",
+  "projectileType" : "magnorbhellfire",
   
   "projectileParameters" : {
-    "power" : 2.25,
+    "power" : 2.35,
     "knockback" : 15,
-
     "returnOnHit" : true,
     "ignoreTerrain" : false,
     "controlForce" : 50,

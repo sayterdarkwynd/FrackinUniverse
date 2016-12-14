@@ -1,0 +1,35 @@
+{
+  "projectileName" : "magnorbhellfire",
+  "image" : "magnorbhellfire.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "statusEffects" : [ "burning" ],
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 75,
+  "damageKind" : "fire",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 6,
+  "piercing" : true,
+  "timeToLive" : 2,
+  "lightColor" : [73, 43, 16],
+
+  "actionOnReap" : [ 
+  
+  ],
+  
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/fireball_bounce1.ogg",
+        "/sfx/projectiles/fireball_bounce2.ogg",
+        "/sfx/projectiles/fireball_bounce3.ogg"
+      ]
+    }
+  ],
+
+  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
+}
