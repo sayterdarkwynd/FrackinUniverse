@@ -72,11 +72,16 @@ function update(dt, fireMode, shiftHeld)
   if fireMode == "alt" and availableOrbCount() == 4 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
+       status.setPersistentEffects("shadowmagnorb", {
+        {stat = "shadowImmunity", amount = 1},
+        {stat = "shadowResistance", amount = 0.25}
+      })        
     end
     setOrbAnimationState("shield")
     self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
   else
     self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
+    status.clearPersistentEffects("shadowmagnorb")
     if self.shieldTransformTimer > 0 then
       setOrbAnimationState("unshield")
     end
