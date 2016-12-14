@@ -4,7 +4,6 @@
   "pointLight" : false,
   "flippable" : true,
   "orientationLocked" : true,
-  "statusEffects" : [ "burning" ],
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
   "power" : 1.5,
   "speed" : 75,
@@ -16,11 +15,28 @@
   "timeToLive" : 2,
   "lightColor" : [73, 43, 16],
 
-  "actionOnReap" : [ 
+  "emitters" : [ "flamesfast" ],
+  "statusEffects" : [ "burning" ],
   
+  "actionOnReap" : [ 
+    { "action" : "config", "file" : "/projectiles/explosions/fireexplosion/fireexplosion.config" },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 35
+    }
   ],
   
   "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "firelight",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 35
+    },
     {
       "action" : "sound",
       "options" : [
