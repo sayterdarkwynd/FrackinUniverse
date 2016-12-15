@@ -166,23 +166,24 @@ function fire(orbIndex)
   params.power = setCritDamageBoomerang(params.power)
   
   local firePos = firePosition(orbIndex)
-  if world.lineCollision(mcontroller.position(), firePos) then return end
-  local projectileId = world.spawnProjectile(
-      self.projectileType,
-      firePosition(orbIndex),
-      activeItem.ownerEntityId(),
-      aimVector(orbIndex),
-      false,
-      params
-    )
-  if projectileId then
-    storage.projectileIds[orbIndex] = projectileId
-    self.cooldownTimer = self.cooldownTime
-    animator.playSound("fire")
-  end
--- fu energy cost
-  self.energyCost = 5 * config.getParameter("level", 1)
-  if status.resourcePositive("energy") then
+  
+  if status.resourcePositive("energy") and not status.resourceLocked("energy") then
+	  if world.lineCollision(mcontroller.position(), firePos) then return end
+	  local projectileId = world.spawnProjectile(
+	      self.projectileType,
+	      firePosition(orbIndex),
+	      activeItem.ownerEntityId(),
+	      aimVector(orbIndex),
+	      false,
+	      params
+	    )
+	  if projectileId then
+	    storage.projectileIds[orbIndex] = projectileId
+	    self.cooldownTimer = self.cooldownTime
+	    animator.playSound("fire")
+	  end
+   -- fu energy cost
+     self.energyCost = 5 * config.getParameter("level", 1)
      status.overConsumeResource("energy", self.energyCost)
   end
   

@@ -47,6 +47,9 @@
   "fu_extraConsumptionChance" : 0.25,
   
   "inputsToOutputs" : {
+          "mud" : "mudstonematerial",
+          "clay" : "firedclay",
+          "firedclay" : "brickmaterial",
 	  "coalore" : "fu_carbon",
 	  "copperore" : "copperbar",
 	  "ironore" : "ironbar",
@@ -117,6 +120,9 @@
   },
   
   "bonusOutputs" : {
+      "mud" : { "mudstonematerial" : 60 },
+      "clay" : { "firedclay" : 65 },   
+      "firedclay" : { "brickmaterial" : 50 }
       "coalore" : { "sulphur" : 16,"diamond" : 1, "fu_carbon" : 12 },
       "copperore" : { "ff_silicon" : 13,"ironore" : 13 },
       "ironore" : { "fu_carbon" : 15,"lead" : 13 },

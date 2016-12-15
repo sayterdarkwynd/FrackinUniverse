@@ -72,9 +72,11 @@ function update(dt, fireMode, shiftHeld)
   if fireMode == "alt" and availableOrbCount() == 4 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
+      
+     
+      status.addEphemeralEffect("mage_shield_lvl1")
        status.setPersistentEffects("protomagnorb", {
-        {stat = "protoImmunity", amount = 1},
-        {stat = "poisonResistance", amount = 0.15}
+        {stat = "protoImmunity", amount = 1}
       })       
     end
     setOrbAnimationState("shield")
@@ -82,6 +84,7 @@ function update(dt, fireMode, shiftHeld)
   else
     self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
     status.clearPersistentEffects("protomagnorb")
+    status.removeEphemeralEffect("mage_shield_lvl1")
     if self.shieldTransformTimer > 0 then
       setOrbAnimationState("unshield")
     end
@@ -166,23 +169,24 @@ function fire(orbIndex)
   params.power = setCritDamageBoomerang(params.power)
   
   local firePos = firePosition(orbIndex)
-  if world.lineCollision(mcontroller.position(), firePos) then return end
-  local projectileId = world.spawnProjectile(
-      self.projectileType,
-      firePosition(orbIndex),
-      activeItem.ownerEntityId(),
-      aimVector(orbIndex),
-      false,
-      params
-    )
-  if projectileId then
-    storage.projectileIds[orbIndex] = projectileId
-    self.cooldownTimer = self.cooldownTime
-    animator.playSound("fire")
-  end
--- fu energy cost
-  self.energyCost = 5 * config.getParameter("level", 1)
-  if status.resourcePositive("energy") then
+  if status.resourcePositive("energy") and not status.resourceLocked("energy") then
+  
+	  if world.lineCollision(mcontroller.position(), firePos) then return end
+	  local projectileId = world.spawnProjectile(
+	      self.projectileType,
+	      firePosition(orbIndex),
+	      activeItem.ownerEntityId(),
+	      aimVector(orbIndex),
+	      false,
+	      params
+	    )
+	  if projectileId then
+	    storage.projectileIds[orbIndex] = projectileId
+	    self.cooldownTimer = self.cooldownTime
+	    animator.playSound("fire")
+	  end
+   -- fu energy cost
+     self.energyCost = 5 * config.getParameter("level", 1)
      status.overConsumeResource("energy", self.energyCost)
   end
   
