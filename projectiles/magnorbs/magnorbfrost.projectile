@@ -1,0 +1,43 @@
+{
+  "projectileName" : "magnorbfrost",
+  "image" : "magnorbfrost.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 55,
+  "damageKind" : "ice",
+  "physics" : "grenade",
+  "bounces" : 4,
+  "piercing" : true,
+  "timeToLive" : 3,
+
+  "emitters" : [ "icethrowertrail" ],
+  "statusEffects" : [ "freezefu" ],
+  
+  "actionOnReap" : [ 
+    { "action" : "config", "file" : "/projectiles/explosions/snowballexplosion/snowballexplosion.config" },
+    {
+      "action" : "projectile",
+      "type" : "fuiceshotspecial",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 35
+    }
+  ],
+  
+  "actionOnCollide" : [
+    { "action" : "config", "file" : "/projectiles/explosions/snowballexplosion/snowballexplosion.config" },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/melee/swing_dagger_ice1.ogg",
+        "/sfx/melee/swing_dagger_ice2.ogg",
+        "/sfx/melee/swing_dagger_ice3.ogg"
+      ]
+    }
+  ],
+
+  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
+}

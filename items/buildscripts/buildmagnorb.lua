@@ -36,6 +36,9 @@ function build(directory, config, parameters, level, seed)
   end
     -- *******************************
     -- FU ADDITIONS 
+
+      config.tooltipFields.shieldPowerLabel = configParameter("shieldPower")
+      config.tooltipFields.shieldHealthLabel = (configParameter("shieldHealth",1) * configParameter("level",1))
       config.tooltipFields.forceLabel = config.projectileParameters.controlForce or 0
       config.tooltipFields.knockbackLabel = config.projectileParameters.knockback or 0   
       config.tooltipFields.critChanceLabel = (configParameter("critChance",0) + configParameter("level",1))
