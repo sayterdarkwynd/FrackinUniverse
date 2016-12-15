@@ -201,6 +201,7 @@ function checkProjectiles()
   for i, projectileId in ipairs(storage.projectileIds) do
     if projectileId and not world.entityExists(projectileId) then
       storage.projectileIds[i] = false
+      animator.playSound("appear")
     end
   end
 end

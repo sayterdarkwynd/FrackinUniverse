@@ -41,7 +41,7 @@ function init()
       team = activeItem.ownerTeam(),
       knockback = self.shieldKnockback,
       rayCheck = true,
-      damageRepeatTimeout = 0.5
+      damageRepeatTimeout = 0.4
     }
   end
 
@@ -102,10 +102,8 @@ function update(dt, fireMode, shiftHeld)
       self.damageListener:update()
     end
   end
-
+  
   if self.shieldTransformTimer > 0 then
-
-
     local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
     setOrbPosition(1 - transformRatio * 0.7, transformRatio * 0.75)
     animator.resetTransformationGroup("orbs")
@@ -147,7 +145,6 @@ function availableOrbCount()
   for i = 1, 5 do
     if not storage.projectileIds[i] then
       available = available + 1
-      animator.playSound("appear")
     end
   end
   return available
@@ -156,7 +153,7 @@ end
 function updateHand()
   local isFrontHand = (activeItem.hand() == "primary") == (mcontroller.facingDirection() < 0)
   animator.setGlobalTag("hand", isFrontHand and "front" or "back")
-  activeItem.setOutsideOfHand(isFrontHand)
+  activeItem.setOutsideOfHand(isFrontHand)        
 end
 
 function fire(orbIndex)
@@ -201,6 +198,7 @@ function checkProjectiles()
   for i, projectileId in ipairs(storage.projectileIds) do
     if projectileId and not world.entityExists(projectileId) then
       storage.projectileIds[i] = false
+      animator.playSound("appear")
     end
   end
 end
