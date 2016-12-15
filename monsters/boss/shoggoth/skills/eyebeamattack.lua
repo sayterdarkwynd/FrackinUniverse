@@ -8,7 +8,7 @@ function eyeBeamAttack.enter()
 
   return {
     timer = config.getParameter("eyeBeamAttack.skillTime", 2),
-    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 1600),
+    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 200),
     distanceRange = config.getParameter("eyeBeamAttack.distanceRange"),
     winddownTimer = config.getParameter("eyeBeamAttack.winddownTime"),
     windupTimer = config.getParameter("eyeBeamAttack.windupTime"),
