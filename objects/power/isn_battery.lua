@@ -83,6 +83,7 @@ end
 function onInputNodeChange(args)
 	-- If either input is connected and at logic low, go inactive. This allows switches to work.
 	storage.active = (not object.isInputNodeConnected(0) or object.getInputNodeLevel(0)) and (not object.isInputNodeConnected(1) or object.getInputNodeLevel(1))
+	object.setOutputNodeLevel(0, storage.active)
 end
 
 function die()
