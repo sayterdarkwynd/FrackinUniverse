@@ -1,6 +1,6 @@
 function init(virtual)
 	if virtual == true then return end
-	
+
 	if storage.currentstoredpower == nil then storage.currentstoredpower = 0 end
 	if storage.powercapacity == nil then storage.powercapacity = config.getParameter("isn_batteryCapacity") end
 	if storage.voltage == nil then storage.voltage = config.getParameter("isn_batteryVoltage") end
@@ -26,7 +26,7 @@ function update(dt)
 		powerlevel = isn_numericRange(powerlevel,0,10)
 		animator.setAnimationState("meter", tostring(math.floor(powerlevel)))
 	end
-	
+
 	local powerinput = isn_getCurrentPowerInput(false)  -- set this to (true) to enable batteries losing power (divisor)
 	if powerinput and powerinput >= 1 then
 		storage.currentstoredpower = storage.currentstoredpower + powerinput
@@ -46,7 +46,7 @@ function update(dt)
 	else
 		animator.setAnimationState("status", "off")
 	end
-	
+
 	storage.currentstoredpower = math.min(storage.currentstoredpower, storage.powercapacity)
 	--object.setConfigParameter('isnStoredPower', storage.currentstoredpower)
 	object.setConfigParameter('description', isn_makeBatteryDescription())
@@ -69,7 +69,7 @@ function isn_getCurrentPowerOutput(divide)
 	if not isn_hasStoredPower() or storage.excessCurrent then return 0 end
 
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
-	
+
 	-- if divisor < 1 then return 0 end
 	if divide and divisor > 0 then return storage.voltage / divisor
 	else return storage.voltage end
@@ -110,7 +110,9 @@ function die()
 		end
 
 		world.spawnItem(object.name(), entity.position(), 1, newObject)
-		object.smash(true)
+		-- object.smash(true)
+	else
+		world.spawnItem(object.name(), entity.position())
 	end
 end
 
