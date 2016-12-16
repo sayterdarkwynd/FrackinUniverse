@@ -7,7 +7,7 @@
   "parts" : [ "body" ],
 
   "animation" : "bloodgiantscorpion.animation",
-   "dropPools" : [ { "default" : "fugiantscorpionLoot", "bow" : "anglureHunting" } ],
+  "dropPools" : [ { "default" : "fugiantscorpionLoot", "bow" : "anglureHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -50,7 +50,7 @@
             "winddownStopForce" : 1000,
             "winddownState" : "winddown"
           }
-        },      
+        },
         {
           "name" : "action-fire",
           "cooldown" : 5.0,
@@ -65,7 +65,7 @@
             "aimAtTarget" : true,
             "projectileType" : "acidspit",
             "projectileCount" : 3,
-            "projectileInterval" : 0.15,            
+            "projectileInterval" : 0.15,
             "power" : 6,
             "fireOffset" : [2.5, -1.5],
             "fireState" : "fire",
@@ -124,7 +124,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ "weakpoison" ]
+      "statusEffects" : [ "staffslow2" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -191,18 +191,45 @@
         "biooozeImmunity" : {
           "baseValue" : 1.0
         },
+        "slimefrictionImmunity" : {
+          "baseValue" : 1.0
+        },
+        "slimeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "slimestickImmunity" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.25
+        },
+        "fireResistance" : {
+          "baseValue" : -0.25
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.25
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.4
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
-        "slimefrictionImmunity" : {
-          "baseValue" : 1.0
-        },    
-        "slimeImmunity" : {
-          "baseValue" : 1.0
-        },            
-        "slimestickImmunity" : {
-          "baseValue" : 1.0
-        }        
+        "shadowResistance" : {
+          "baseValue" : 0.4
+        }
       },
 
       "resources" : {

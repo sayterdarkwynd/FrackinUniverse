@@ -7,7 +7,7 @@
   "parts" : [ "body" ],
 
   "animation" : "frostgiantscorpion.animation",
-   "dropPools" : [ { "default" : "fugiantscorpionLoot", "bow" : "anglureHunting" } ],
+  "dropPools" : [ { "default" : "fugiantscorpionLoot", "bow" : "anglureHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -50,7 +50,7 @@
             "winddownStopForce" : 1000,
             "winddownState" : "winddown"
           }
-        },      
+        },
         {
           "name" : "action-fire",
           "cooldown" : 5.0,
@@ -124,7 +124,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ "weakpoison" ]
+      "statusEffects" : [ "nitrogenfreeze" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -180,7 +180,7 @@
           "baseValue" : 80
         },
         "protection" : {
-          "baseValue" : 0.45
+          "baseValue" : 35.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -188,15 +188,36 @@
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
-        "poisonStatusImmunity" : {
+        "physicalResistance" : {
+          "baseValue" : 0.25
+        },
+        "fireResistance" : {
+          "baseValue" : -0.4
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.4
+        },
+        "iceStatusImmunity" : {
           "baseValue" : 1.0
         },
-        "poisonResistance" : { "baseValue" : 0 },
-        "fireResistance" : { "baseValue" : -0.40 },
-        "iceResistance" : { "baseValue" : 0 },
-        "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0 }      
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.0
+        }
       },
 
       "resources" : {
