@@ -184,9 +184,8 @@ function tileMaterials()
   ["irradiatedtile2"] =       {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1, 0},
   ["irradiatedtile3"] =          {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1, 0},
   ["protorock"] = 	         {{"ffextremeradiation"},1,   1,   1,   14,   100,  0.0,    0,  1.3, 0},
-  ["bioblock"] = 	          {{"regenerationblock"},1,   1,   1,   14,   100,  0.0,    0,  1.1, 0},
-  ["bioblock2"] = 	          {{"regenerationblock"},1,   1,   1,   14,   100,  0.0,    0,  1.2, 0},
-  ["biodirt"] = 	          {{"regenerationblock"},1,   1,   1,   14,   101,  1.0,    0,  1.85, 0},
+  ["bioblock"] = 	          {{"fumudslow"},1,   1,   1,   14,   100,  0.0,    0,  1.1, 0},
+  ["bioblock2"] = 	          {{"percentarmorboostnegproto"},1,   1,   1,   14,   100,  0.0,    0,  1.2, 0},
   ["metallic"] = 	          {{"metalspeed"},1,   1,   1,   14,   100,  0.0,    0,  1.3, 0},
   ["asphalt"] = 	          {{"metalspeed"},1,   1,   1,   14,   100,  0.0,    0,  1.4, 0},
   ["cloudblock"] = 	            {{"lowgrav"},1,   1,   1,   14,   101,  1.0,    0,  1.2, 0},
@@ -203,7 +202,7 @@ function tileMaterials()
   ["redhotcobblestone"] = 	            {{"burning"},1,   1,   1,   14,   100,  0.0,    0,  1, 0},  
   ["fublueslimedirt"] =   {{"regenerationblock","slimestick"},1,1,1,14,100,0.0,1,1.1, 0},
   ["fublueslime"] = 	{{"regenerationblock","slimestick"},1,1,1,14,100,0.0,1,1.1, 0},
- ["fublueslimestone"] = {{"regenerationblock","slimestick"},1,1,1,14,100,0.0,0.5,1.1, 0}  
+  ["fublueslimestone"] = {{"regenerationblock","slimestick"},1,1,1,14,100,0.0,0.5,1.1, 0}  
 
   }
 end
