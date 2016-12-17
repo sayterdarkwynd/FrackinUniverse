@@ -2,39 +2,30 @@ function init()
 
   hungerMax = { pcall(status.resourceMax, "food") }
   hungerMax = hungerMax[1] and hungerMax[2]
-  if not hungerMax then
-    script.setUpdateDelta(0)
-    return
-  end
-  
   hungerLevel = status.resource("food")
-  _x = config.getParameter("healthDown", 0)
   baseValue = config.getParameter("healthDown",0)*(status.resourceMax("food"))
   
-  if (status.resourceMax("food")) * _x <= 70 then
-     effect.addStatModifierGroup({{stat = "maxFood", amount = baseValue }})
-  end
-  
   effect.setParentDirectives("border=1;cc005500;00000000")
-  script.setUpdateDelta(5)
-
   self.tickDamagePercentage = 0.0
   self.tickTime = 3.0
   self.tickTimer = self.tickTime  
-
+  script.setUpdateDelta(3)
 end
 
 
 
 
 function update(dt)
-  if not hungerMax then return end -- belt and braces
-
+  hungerMax = { pcall(status.resourceMax, "food") }
+  hungerMax = hungerMax[1] and hungerMax[2]
+  hungerLevel = status.resource("food")
+  baseValue = config.getParameter("healthDown",0)*(status.resourceMax("food"))
+  
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
 	  if (hungerLevel < hungerMax) then
-	    adjustedHunger = hungerLevel + 0.2 -- decent rate, not too fast
+	    adjustedHunger = hungerLevel + (hungerLevel * 0.011)
 	    status.setResource("food", adjustedHunger)
 	  end    
   end
