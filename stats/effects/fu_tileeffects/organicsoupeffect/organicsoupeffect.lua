@@ -3,17 +3,16 @@ function init()
   hungerMax = { pcall(status.resourceMax, "food") }
   hungerMax = hungerMax[1] and hungerMax[2]
   if not hungerMax then
-    -- 'food' resource has no max; do nothing
     script.setUpdateDelta(0)
     return
   end
   
   hungerLevel = status.resource("food")
   _x = config.getParameter("healthDown", 0)
-  baseValue = config.getParameter("healthDown",0)*(status.resourceMax("health"))
+  baseValue = config.getParameter("healthDown",0)*(status.resourceMax("food"))
   
-  if (status.resourceMax("health")) * _x >= 100.0 then
-     effect.addStatModifierGroup({{stat = "maxHealth", amount = baseValue }})
+  if (status.resourceMax("food")) * _x <= 70 then
+     effect.addStatModifierGroup({{stat = "maxFood", amount = baseValue }})
   end
   
   effect.setParentDirectives("border=1;cc005500;00000000")
