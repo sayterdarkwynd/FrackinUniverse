@@ -8,6 +8,7 @@
           "idle" : {
             "particleEmittersOn" : [ "blood" ],
             "frames" : 4,
+            "cycle" : 0.8,
             "mode" : "loop"
           },
           "jump" : {
@@ -53,6 +54,7 @@
           },
           "firewindup" : {
             "frames" : 4,
+            "cycle" : 0.2,
             "mode" : "transition",
             "transition" : "fire",
             "properties" : {
@@ -61,6 +63,7 @@
           },
           "fire" : {
             "frames" : 4,
+            "cycle" : 0.4,
             "mode" : "transition",
             "transition" : "idle"
           },
@@ -161,7 +164,7 @@
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:firewindup.<frame>"
               }
             },
             "fire" : {
