@@ -1,0 +1,38 @@
+[
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 25,
+      "offsetRegion" : [-1.0, -2.5, 1.0, 1.5],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke1"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds",
+    "value" : {
+      "shadowcharge" : [ "/sfx/melee/shockwave_charge_poison.ogg" ],
+      "shadowfull" : [ "/sfx/melee/shockwave_full_poison.ogg" ],
+      "shadowactivate" : [ "/sfx/melee/elemental_aura_activate.ogg" ],
+      "shadowactive" : [ "/sfx/melee/elemental_aura_poison.ogg" ],
+      "shadowdeactivate" : [ "/sfx/gun/impact_plasma.ogg" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] }
+    }
+  }
+]

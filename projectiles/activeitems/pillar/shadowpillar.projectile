@@ -16,7 +16,8 @@
   "damagePoly" : [ [8, 4],  [8, -4],  [-8, -4],  [-8, 4] ],
   "piercing" : true,
   "damageKind" : "fushadowdamage",
-  "emitters" : [ "shadowsmoke1" ],
+  "emitters" : [ "shadowsmoke2" ],
+  "statusEffects" : [ "defenseboostneg20" ],
   "actionOnReap" : [
     {
       "action" : "sound",
@@ -30,7 +31,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/statuseffects/poison/poisonshort.animation",
+            "animation" : "/animations/statuseffects/shadowsmoke/shadowsmoke.animation",
             "finalVelocity" : [0, 2],
             "timeToLive" : 0.45,
             "destructionAction" : "shrink",
@@ -47,7 +48,7 @@
           "specification" : {
             "type" : "animated",
             "looping" : true,
-            "animation" : "/animations/shards/slimeshard.animation",
+            "animation" : "/animations/shards/shadowrockshard.animation",
             "size" : 1,
             "approach" : [30, 30],
             "timeToLive" : 1,
@@ -66,7 +67,7 @@
           "specification" : {
             "type" : "animated",
             "looping" : true,
-            "animation" : "/animations/shards/slimeshard.animation",
+            "animation" : "/animations/shards/shadowrockshard.animation",
             "size" : 1,
             "approach" : [30, 30],
             "timeToLive" : 1,
@@ -84,7 +85,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/elementalaura/poisonaura/poisonaura.animation",
+            "animation" : "/animations/shadowfx/shadowfx.animation",
             "initialVelocity" : [0, 1],
             "finalVelocity" : [0, 3],
             "approach" : [1, 1],
@@ -102,7 +103,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "animation" : "/animations/shadowdrip/shadowdrip1.animation",
             "initialVelocity" : [0, -5],
             "finalVelocity" : [0, -10],
             "timeToLive" : 0.45,
