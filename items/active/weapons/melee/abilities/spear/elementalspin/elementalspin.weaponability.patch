@@ -1,0 +1,62 @@
+[
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowSpin",
+    "value": [
+      "/sfx/melee/elemental_spin_poison.ogg"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowSpinFire",
+    "value": [
+      "/sfx/melee/travelingslash_poison1.ogg"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowSpin",
+    "value": {
+      "active": false,
+      "emissionRate": 12,
+      "offsetRegion": [
+        -3.5,
+        -3.5,
+        3.5,
+        3.5
+      ],
+      "particles": [
+        {
+          "particle": "shadowswoosh1"
+        },
+        {
+          "particle": "shadowswoosh2"
+        },
+        {
+          "particle": "shadowswoosh3"
+        },
+        {
+          "particle": "shadowswoosh1"
+        },
+        {
+          "particle": "shadowswoosh2"
+        },
+        {
+          "particle": "shadowswoosh3"
+        }
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value": {
+      "projectileType": "shadowspinswoosh",
+      "damageConfig": {
+        "statusEffects": [
+          "defenseboostneg20"
+        ]
+      }
+    }
+  }
+]

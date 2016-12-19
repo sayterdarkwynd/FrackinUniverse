@@ -17,6 +17,9 @@ end
 
 
 function activateVisualEffects()
+--if world.entityType(entity.id()) ~= "player" then
+--  effect.expire()
+--end
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")

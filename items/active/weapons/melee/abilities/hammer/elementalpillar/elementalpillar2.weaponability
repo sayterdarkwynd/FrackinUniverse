@@ -46,6 +46,17 @@
           { "particle" : "poisonswoosh2"},
           { "particle" : "fireswoosh2"}
         ]
+      },
+      "shadowCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
+        "particles" : [
+          { "particle" : "shadowswoosh1"},
+          { "particle" : "shadowswoosh2"},
+          { "particle" : "shadowswoosh3"}
+        ]
       }
     },
     "sounds" : {
@@ -60,7 +71,10 @@
       "iceimpact" : [ "/sfx/gun/grenadeblast_ice2.ogg" ],
       "poisoncharge" : [ "/sfx/melee/shockwave_charge_poison.ogg" ],
       "poisonfull" : [ "/sfx/melee/shockwave_full_poison.ogg" ],
-      "poisonimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ]
+      "poisonimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
+      "shadowcharge" : [ "/sfx/melee/shockwave_charge_poison.ogg" ],
+      "shadowfull" : [ "/sfx/melee/shockwave_full_poison.ogg" ],
+      "shadowimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ]
     }
   },
 
@@ -88,6 +102,9 @@
       },
       "electric" : {
         "projectileType" : "electricpillar"
+      },
+      "shadow" : {
+        "projectileType" : "firepillar"
       }
     },
     "projectileParameters" : {

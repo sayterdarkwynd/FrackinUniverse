@@ -40,9 +40,8 @@ function tileMaterials()
   self.matCheck["irradiatedtile2"] =          {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1, 0}
   self.matCheck["irradiatedtile3"] =          {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1, 0}
   self.matCheck["protorock"] = 	         {{"ffextremeradiation"},1,   1,   1,   14,   100,  0.0,    0,  1.3, 0}
-  self.matCheck["bioblock"] = 	          {{"regenerationblock"},1,   1,   1,   14,   100,  0.0,    0,  1.1, 0}
-  self.matCheck["bioblock2"] = 	          {{"regenerationblock"},1,   1,   1,   14,   100,  0.0,    0,  1.2, 0}
-  self.matCheck["biodirt"] = 	          {{"regenerationblock"},1,   1,   1,   14,   101,  1.0,    0,  1.85, 0}
+  self.matCheck["bioblock"] = 	          {{"fumudslow"},1,   1,   1,   14,   100,  0.0,    0,  1.1, 0}
+  self.matCheck["bioblock2"] = 	          {{"percentarmorboostnegproto"},1,   1,   1,   14,   100,  0.0,    0,  1.2, 0}
   self.matCheck["metallic"] = 	                 {{"metalspeed"},1,   1,   1,   14,   100,  0.0,    0,  1.3, 0}
   self.matCheck["asphalt"] = 	                 {{"metalspeed"},1,   1,   1,   14,   100,  0.0,    0,  1.4, 0}
   self.matCheck["cloudblock"] = 	            {{"lowgrav"},1,   1,   1,   14,   101,  1.0,    0,  1.2, 0}

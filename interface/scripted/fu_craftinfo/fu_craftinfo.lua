@@ -244,10 +244,19 @@ end
 function getExtractionMats(recipes, station)
 	for _, recipe in pairs(recipes) do
 		for mat, _ in pairs(recipe.inputs) do
-			registerMaterial(mat, station)
+			-- sanity check: mat must be a string else root.createItem will fail
+			if type(mat) ~= 'string' then
+				sb.logWarn("Name '%s' is not a string - botched recipe? inputs = %s outputs = %s", mat, recipe.inputs, recipe.outputs)
+			else
+				registerMaterial(mat, station)
+			end
 		end
 		for mat, _ in pairs(recipe.outputs) do
-			registerMaterial(mat, station)
+			if type(mat) ~= 'string' then
+				sb.logWarn("Name '%s' is not a string - botched recipe? inputs = %s outputs = %s", mat, recipe.inputs, recipe.outputs)
+			else
+				registerMaterial(mat, station)
+			end
 		end
 	end
 end
