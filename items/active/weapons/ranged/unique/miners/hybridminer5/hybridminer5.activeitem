@@ -1,22 +1,22 @@
 {
-  "itemName" : "hybridminer2",
+  "itemName" : "hybridminer5",
   "level" : 1,
   "price" : 100,
-  "inventoryIcon" : "hybridminer2gun.png",
+  "inventoryIcon" : "hybridminer5gun.png",
   "maxStack" : 1,
   "rarity" : "common",
-    "description" : "Ferozium powers this up quite nicely.",
-    "shortdescription" : "C-7 Miner",
-    "learnBlueprintsOnPickup" : [ "hybridminer3" ],
+    "description" : "Holy crap. Seriously. Just...wow.",
+    "shortdescription" : "CT-4 Mining Cannon",
+    "learnBlueprintsOnPickup" : [ "hybridminer5" ],
   "category" : "^#e43774;Upgradeable Tool^reset;",
   "itemTags" : [ "weapon","ranged", "tool" ],
-  "twoHanded" : false,
+  "twoHanded" : true,
 
-  "animation" : "hybridminer2.animation",
+  "animation" : "hybridminer5.animation",
   "animationParts" : {
     "beamorigin" : "rainbowmuzzle.png",
-    "gnome" : "hybridminer2.png",
-    "gnomefullbright" : "hybridminer2fullbright.png"
+    "gnome" : "hybridminer5.png",
+    "gnomefullbright" : "hybridminer5fullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -28,19 +28,19 @@
   },
   "animationScripts" : ["/items/active/effects/chain.lua"],
 
-  //"baseOffset" : [0.9, 1.1],
-  "muzzleOffset" : [1.1, -0.1],
+  //"baseOffset" : [1.2, -0.14],
+  "muzzleOffset" : [2, -0.1],
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua" ],
 
   "elementalType" : "physical",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/unique/miners/hybridminer2/beamfire.lua"],
+    "scripts" : ["/items/active/weapons/ranged/unique/miners/hybridminer5/beamfire.lua"],
     "class" : "BeamFire",
 
     "fireTime" : 0.2,
-    "baseDps" : 1.5,
+    "baseDps" : 4,
     "energyUsage" : 1,
 
     "damageConfig" : {
@@ -49,13 +49,13 @@
       "knockback" : 5
     },
 
-    "beamLength" : 11,
+    "beamLength" : 24,
 
     "chain" : {
       "startOffset" : [0, 0],
-      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer2/rainbowstart.png",
-      "segmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer2/rainbow.png",
-      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer2/rainbowend.png",
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer5/rainbowstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer5/rainbow.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer5/rainbowend.png",
       "segmentSize" : 0.40,
       "overdrawLength" : 0.1,
       "taper" : 0,
