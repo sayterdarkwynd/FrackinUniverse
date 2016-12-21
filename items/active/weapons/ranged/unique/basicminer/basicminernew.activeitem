@@ -1,0 +1,115 @@
+{
+  "itemName" : "basicminernew",
+  "level" : 1,
+  "price" : 100,
+  "inventoryIcon" : "basicminergun.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A neat little mining weapon. Does a bit of damage, too.",
+  "shortdescription" : "Mining Laser",
+  "learnBlueprintsOnPickup" : [ "protominer" ],
+  "category" : "uniqueWeapon",
+  "itemTags" : [ "weapon","ranged", "tool" ],
+  "twoHanded" : false,
+
+  "animation" : "basicminernew.animation",
+  "animationParts" : {
+    "beamorigin" : "rainbowmuzzle.png",
+    "gnome" : "basicminernew.png",
+    "gnomefullbright" : "basicminernewfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fireStart" : [ "/sfx/gun/erchiuseyebeam_start.ogg" ],
+      "fireLoop" : [ "/sfx/gun/erchiuseyebeam_loop.ogg" ],
+      "fireEnd" : [ "/sfx/gun/erchiuseyebeam_stop.ogg" ],
+      "beamImpact" : [ "/sfx/gun/gnomebeam_hit_ground.ogg" ]
+    }
+  },
+  "animationScripts" : ["/items/active/effects/chain.lua"],
+
+  //"baseOffset" : [0.9, 1.1],
+  "muzzleOffset" : [1.5, 0.05],
+  
+  "scripts" : ["/items/active/weapons/ranged/gun.lua" ],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/unique/basicminer/beamfire.lua"],
+    "class" : "BeamFire",
+
+    "fireTime" : 0.2,
+    "baseDps" : 0.1,
+    "energyUsage" : 1,
+
+    "damageConfig" : {
+      "statusEffects" : [ "electrified" ],
+      "damageSourceKind" : "electric",
+      "knockback" : 5
+    },
+
+    "beamLength" : 6,
+
+    "chain" : {
+      "startOffset" : [0, 0],
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/basicminer/rainbowstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/basicminer/rainbow.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/basicminer/rainbowend.png",
+      "segmentSize" : 0.40,
+      "overdrawLength" : 0.1,
+      "taper" : 1,
+      "waveform" : {
+        "frequency" : 0.2,
+        "amplitude" : 0.2,
+        "movement" : 0.2
+      },
+      "fullbright" : true
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "squirm",
+          "gnomefullbright" : "squirm"
+        }
+      },
+      "fire" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "fire",
+          "gnomefullbright" : "fire"
+        }
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "idle",
+          "gnomefullbright" : "idle"
+        }
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
