@@ -1,22 +1,22 @@
 {
-  "itemName" : "hybridminernew",
+  "itemName" : "protominer",
   "level" : 1,
   "price" : 100,
-  "inventoryIcon" : "hybridminergun.png",
+  "inventoryIcon" : "protominergun.png",
   "maxStack" : 1,
   "rarity" : "common",
-    "description" : "Combines protocite and advanced alloys to destroy tiles swiftly.",
-    "shortdescription" : "B-97 Miner",
-    "learnBlueprintsOnPickup" : [ "hybridminer2" ],
+    "description" : "A reliable beam-miner.",
+    "shortdescription" : "P-7 Miner",
+    "learnBlueprintsOnPickup" : [ "penumbriteminer", "murdermanipulator" ],
   "category" : "^#e43774;Upgradeable Tool^reset;",
   "itemTags" : [ "weapon","ranged", "tool" ],
   "twoHanded" : false,
 
-  "animation" : "penumbriteminernew.animation",
+  "animation" : "protominer.animation",
   "animationParts" : {
     "beamorigin" : "rainbowmuzzle.png",
-    "gnome" : "hybridminernew.png",
-    "gnomefullbright" : "hybridminernewfullbright.png"
+    "gnome" : "protominer.png",
+    "gnomefullbright" : "protominerfullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -36,11 +36,11 @@
   "elementalType" : "physical",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/unique/miners/hybridminer/beamfire.lua"],
+    "scripts" : ["/items/active/weapons/ranged/unique/miners/protominer/beamfire.lua"],
     "class" : "BeamFire",
 
     "fireTime" : 0.2,
-    "baseDps" : 0.9,
+    "baseDps" : 0.6,
     "energyUsage" : 1,
 
     "damageConfig" : {
@@ -49,13 +49,13 @@
       "knockback" : 5
     },
 
-    "beamLength" : 8,
+    "beamLength" : 6,
 
     "chain" : {
       "startOffset" : [0, 0],
-      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer/rainbowstart.png",
-      "segmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer/rainbow.png",
-      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer/rainbowend.png",
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/protominer/rainbowstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/miners/protominer/rainbow.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/protominer/rainbowend.png",
       "segmentSize" : 0.40,
       "overdrawLength" : 0.1,
       "taper" : 0,
