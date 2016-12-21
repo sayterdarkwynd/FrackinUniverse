@@ -1,22 +1,22 @@
 {
-  "itemName" : "basicminernew",
+  "itemName" : "hybridminernew",
   "level" : 1,
   "price" : 100,
-  "inventoryIcon" : "basicminergun.png",
+  "inventoryIcon" : "hybridminergun.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "A neat little mining weapon. Does a bit of damage, too.",
-  "shortdescription" : "Mining Laser",
-  "learnBlueprintsOnPickup" : [ "protominer" ],
+    "description" : "Combines protocite and advanced alloys to destroy tiles swiftly.",
+    "shortdescription" : "B-97 Miner",
+    "learnBlueprintsOnPickup" : [ "hybridminer2" ],
   "category" : "^#e43774;Upgradeable Tool^reset;",
   "itemTags" : [ "weapon","ranged", "tool" ],
   "twoHanded" : false,
 
-  "animation" : "basicminernew.animation",
+  "animation" : "penumbriteminernew.animation",
   "animationParts" : {
     "beamorigin" : "rainbowmuzzle.png",
-    "gnome" : "basicminernew.png",
-    "gnomefullbright" : "basicminernewfullbright.png"
+    "gnome" : "hybridminernew.png",
+    "gnomefullbright" : "hybridminernewfullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -29,18 +29,18 @@
   "animationScripts" : ["/items/active/effects/chain.lua"],
 
   //"baseOffset" : [0.9, 1.1],
-  "muzzleOffset" : [1.3, 0.03],
+  "muzzleOffset" : [1.1, -0.1],
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua" ],
 
   "elementalType" : "physical",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/unique/miners/basicminer/beamfire.lua"],
+    "scripts" : ["/items/active/weapons/ranged/unique/miners/hybridminer/beamfire.lua"],
     "class" : "BeamFire",
 
     "fireTime" : 0.2,
-    "baseDps" : 0.5,
+    "baseDps" : 0.9,
     "energyUsage" : 1,
 
     "damageConfig" : {
@@ -49,13 +49,13 @@
       "knockback" : 5
     },
 
-    "beamLength" : 4,
+    "beamLength" : 8,
 
     "chain" : {
       "startOffset" : [0, 0],
-      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/basicminer/rainbowstart.png",
-      "segmentImage" : "/items/active/weapons/ranged/unique/miners/basicminer/rainbow.png",
-      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/basicminer/rainbowend.png",
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer/rainbowstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer/rainbow.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/hybridminer/rainbowend.png",
       "segmentSize" : 0.40,
       "overdrawLength" : 0.1,
       "taper" : 0,
