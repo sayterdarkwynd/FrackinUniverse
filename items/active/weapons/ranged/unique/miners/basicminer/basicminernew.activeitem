@@ -1,8 +1,8 @@
 {
-  "itemName" : "protominernew",
+  "itemName" : "basicminernew",
   "level" : 1,
   "price" : 100,
-  "inventoryIcon" : "protominergun.png",
+  "inventoryIcon" : "basicminergun.png",
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "A neat little mining weapon. Does a bit of damage, too.",
@@ -12,11 +12,11 @@
   "itemTags" : [ "weapon","ranged", "tool" ],
   "twoHanded" : false,
 
-  "animation" : "protominernew.animation",
+  "animation" : "basicminernew.animation",
   "animationParts" : {
     "beamorigin" : "rainbowmuzzle.png",
-    "gnome" : "protominernew.png",
-    "gnomefullbright" : "protominernewfullbright.png"
+    "gnome" : "basicminernew.png",
+    "gnomefullbright" : "basicminernewfullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -36,7 +36,7 @@
   "elementalType" : "physical",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/unique/protominer/beamfire.lua"],
+    "scripts" : ["/items/active/weapons/ranged/unique/miners/basicminer/beamfire.lua"],
     "class" : "BeamFire",
 
     "fireTime" : 0.2,
@@ -49,13 +49,13 @@
       "knockback" : 5
     },
 
-    "beamLength" : 6,
+    "beamLength" : 4,
 
     "chain" : {
       "startOffset" : [0, 0],
-      "startSegmentImage" : "/items/active/weapons/ranged/unique/protominer/rainbowstart.png",
-      "segmentImage" : "/items/active/weapons/ranged/unique/protominer/rainbow.png",
-      "endSegmentImage" : "/items/active/weapons/ranged/unique/protominer/rainbowend.png",
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/basicminer/rainbowstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/miners/basicminer/rainbow.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/basicminer/rainbowend.png",
       "segmentSize" : 0.40,
       "overdrawLength" : 0.1,
       "taper" : 0,
