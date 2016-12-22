@@ -38,8 +38,9 @@ function BeamFire:update(dt, fireMode, shiftHeld)
 end
 
 function BeamFire:fire()
-  self.weapon:setStance(self.stances.fire)
 
+  self.weapon:setStance(self.stances.fire)
+  
   animator.playSound("fireStart")
   animator.playSound("fireLoop", -1)
 

@@ -11,7 +11,7 @@
           },
           "squirm" : {
             "frames" : 8,
-            "cycle" : 1.0,
+            "cycle" : 4.0,
             "mode" : "loop",
             "properties" : {
               "lightsOff" : ["red", "green", "blue"]
@@ -207,28 +207,9 @@
       "transformationGroups" : ["muzzle", "beamEnd"],
       "emissionRate" : 30,
       "particles" : [
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/sparkles/sparkleloop5.animation",
-            "position" : [0, 0],
-            "initialVelocity" : [0, 2.0],
-            "finalVelocity" : [0, -4.0],
-            "approach" : [0, 10],
-            "fade" : 0.3,
-            "destructionAction" : "shrink",
-            "destructionTime" : 0.3,
-            "size" : 1.2,
-            "timeToLive" : 0.5,
-            "fullbright" : true,
-            "layer" : "front",
-            "collidesForeground" : false,
-            "variance" : {
-              "position" : [0.5, 0.5],
-              "initialVelocity" : [2, 2]
-            }
-          }
-        }
+        {"particle" : "penumbriteminer1"},
+        {"particle" : "penumbriteminer2"},
+        {"particle" : "penumbriteminerimpact"}
       ]
     }
   },

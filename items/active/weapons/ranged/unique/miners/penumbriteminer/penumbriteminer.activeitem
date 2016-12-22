@@ -1,11 +1,11 @@
 {
   "itemName" : "penumbriteminer",
-  "level" : 1,
+  "level" : 3,
   "price" : 100,
   "inventoryIcon" : "penumbriteminergun.png",
   "maxStack" : 1,
-  "rarity" : "common",
-    "description" : "Industrial strength potency.",
+  "rarity" : "uncommon",
+    "description" : "High-powered with a durable titanium/moonstone body.",
     "shortdescription" : "A-7C Miner",
     "learnBlueprintsOnPickup" : [ "hybridminer" ],
   "category" : "^#e43774;Upgradeable Tool^reset;",
@@ -14,22 +14,21 @@
 
   "animation" : "penumbriteminer.animation",
   "animationParts" : {
-    "beamorigin" : "rainbowmuzzle.png",
     "gnome" : "penumbriteminer.png",
     "gnomefullbright" : "penumbriteminerfullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fireStart" : [ "/sfx/projectiles/swing_electric1.ogg", "/sfx/projectiles/swing_electric1.ogg" ],
-      "fireLoop" : [ "/sfx/projectiles/swing_electric1.ogg", "/sfx/projectiles/swing_electric2.ogg" ],
-      "fireEnd" : [ ],
-      "beamImpact" : [ "/sfx/gun/gnomebeam_hit_ground.ogg" ]
+      "fireStart" : [ "/sfx/gun/aegisaltpistol_start.ogg" ],
+      "fireLoop" : [ "/sfx/gun/magnorbs_shield_loop2.ogg" ],
+      "fireEnd" : [ "/sfx/gun/aegisaltpistol_stop.ogg" ],    
+      "beamImpact" : [  ]
     }
   },
   "animationScripts" : ["/items/active/effects/chain.lua"],
 
   //"baseOffset" : [0.9, 1.1],
-  "muzzleOffset" : [1.1, -0.1],
+  "muzzleOffset" : [1.1, -0.05],
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua" ],
 
@@ -41,7 +40,7 @@
 
     "fireTime" : 0.2,
     "baseDps" : 0.7,
-    "energyUsage" : 1,
+    "energyUsage" : 4,
 
     "damageConfig" : {
       "statusEffects" : [ "electrified" ],
@@ -58,11 +57,11 @@
       "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/penumbriteminer/rainbowend.png",
       "segmentSize" : 0.40,
       "overdrawLength" : 0.1,
-      "taper" : 0,
+      "taper" : 1,
       "waveform" : {
-        "frequency" : 0.1,
-        "amplitude" : 0.2,
-        "movement" : 0.0
+        "frequency" : 2.5,
+        "amplitude" : 0.1,
+        "movement" : 4.0
       },
       "fullbright" : true
     },
@@ -71,7 +70,7 @@
       "idle" : {
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true,
@@ -84,7 +83,7 @@
       "fire" : {
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true,
@@ -98,7 +97,7 @@
         "duration" : 0.5,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true,
