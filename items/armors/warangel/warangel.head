@@ -13,24 +13,6 @@
   "mask" : "mask.png",
 "level" : 7,
   "statusEffects" : [
-      {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.0
-    },
-    {
-      "stat" : "protection",
-      "amount" : 29
-    },
-
-    {
-      "stat" : "maxEnergy",
-      "amount" : 30
-    },
-
-    {
-      "stat" : "maxHealth",
-      "amount" : 44
-    },
     "headlampdual",
     "warangelsetbonus",
     {
@@ -38,6 +20,28 @@
       "amount" : 1
     }  
   ],
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "warangelfuArmorLevelPower",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.2
+    },
+    {
+      "levelFunction" : "warangelfuArmorLevelProtection",
+      "stat" : "protection",
+      "amount" : 0.325
+    },
+    {
+      "levelFunction" : "warangelfuArmorLevelEnergy",
+      "stat" : "maxEnergy",
+      "amount" : 2
+    },
+    {
+      "levelFunction" : "warangelfuArmorLevelHealth",
+      "stat" : "maxHealth",
+      "amount" : 4
+    }
+  ],  
 "questTags" : [ "warangelarmor" ],
   "colorOptions" : [
     /* YELLOW DEFAULT */

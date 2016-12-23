@@ -11,7 +11,7 @@
   "category" : "^#e43774;Upgradeable Tool^reset;",
   "itemTags" : [ "weapon","ranged", "tool" ],
   "twoHanded" : false,
-
+  "tooltipKind" : "gun",
   "animation" : "protominer.animation",
   "animationParts" : {
     "gnome" : "protominer.png",
@@ -29,11 +29,13 @@
 
   //"baseOffset" : [0.9, 1.1],
   "muzzleOffset" : [1.2, -0.05],
-  
+
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua" ],
 
   "elementalType" : "physical",
-
+  "critChance" : 5,
+  
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/unique/miners/protominer/beamfire.lua"],
     "class" : "BeamFire",
