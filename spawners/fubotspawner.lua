@@ -1,3 +1,7 @@
+require "/scripts/util.lua"
+require "/scripts/companions/util.lua"
+require "/scripts/messageutil.lua"
+
 function setInteractive(state)
   if entity.setInteractive then entity.setInteractive(state)
   else object.setInteractive(state) end
@@ -17,7 +21,7 @@ function init(virtual)
     setInteractive(true)
   end
 end
-
+      
 function onInteraction(args)
   if args ~= nil and args.sourceId ~= nil then
     local p = entity.position()
@@ -33,13 +37,14 @@ function onInteraction(args)
     parameters.spawnPoint = {p[1], p[2] +1} -- object Y is off by 1 ?
     world.spawnMonster(type, parameters.spawnPoint, parameters)
 --    entity.smash()
+
     world.breakObject(entity.id(),true)
   end
 end
 
 function getLevel()
   if world.getProperty("ship.fuel") ~= nil then return 1 end
-  if world.threatLevel then return (world.threatLevel() + 1) end  
+  if world.threatLevel then return world.threatLevel() end  
   return 1
 end
 
