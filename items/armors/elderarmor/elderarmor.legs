@@ -13,31 +13,34 @@
   "effectSources" : [ "shadowsmoke2" ],
   "level" : 7,
   "statusEffects" : [
-    {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
-    },
-
-    {
-      "stat" : "protection",
-      "amount" : 18
-    },
-
-    {
-      "stat" : "maxEnergy",
-      "amount" : 20
-    },
-
-    {
-      "stat" : "maxHealth",
-      "amount" : 15
-    },
     "eldersetbonus",
     {
       "stat" : "fu_elderset_legs",
       "amount" : 1
     }    
   ],
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "elderfuArmorLevelPower",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.1
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelProtection",
+      "stat" : "protection",
+      "amount" : 0.23
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelEnergy",
+      "stat" : "maxEnergy",
+      "amount" : 7
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelHealth",
+      "stat" : "maxHealth",
+      "amount" : 2
+    }
+  ],  
   "questTags" : [ "elderarmor" ],
   "colorOptions" : [
     /* YELLOW DEFAULT */

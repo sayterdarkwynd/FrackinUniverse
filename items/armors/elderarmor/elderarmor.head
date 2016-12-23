@@ -14,24 +14,6 @@
   "effectSources" : [ "shadowsmoke2" ],
   "level" : 7,
   "statusEffects" : [
-      {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.2
-    },
-    {
-      "stat" : "protection",
-      "amount" : 26
-    },
-
-    {
-      "stat" : "maxEnergy",
-      "amount" : 30
-    },
-
-    {
-      "stat" : "maxHealth",
-      "amount" : 22
-    },
     "darkregen",
     "eldersetbonus",
     {
@@ -39,6 +21,28 @@
       "amount" : 1
     }     
   ],
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "elderfuArmorLevelPower",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.1
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelProtection",
+      "stat" : "protection",
+      "amount" : 0.325
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelEnergy",
+      "stat" : "maxEnergy",
+      "amount" : 8
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelHealth",
+      "stat" : "maxHealth",
+      "amount" : 3
+    }
+  ], 
   "questTags" : [ "elderarmor" ],
   "colorOptions" : [
     /* YELLOW DEFAULT */
