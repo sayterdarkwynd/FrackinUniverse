@@ -20,6 +20,7 @@ function init()
     {stat = "extremepressureProtection", amount = 1},
     {stat = "powerMultiplier", baseMultiplier = self.powerModifier},
     {stat = "grit", amount = 0.75},
-    {stat = "wetImmunity", amount = 1}
+    {stat = "wetImmunity", amount = 1},
+    {stat = "radiationburnImmunity", amount = 1},
 	})
 end

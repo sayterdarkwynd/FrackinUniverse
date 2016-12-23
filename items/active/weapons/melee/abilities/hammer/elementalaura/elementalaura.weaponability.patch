@@ -1,0 +1,103 @@
+[
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowcharge",
+    "value" : [ "/sfx/melee/shockwave_charge_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowfull",
+    "value" : [ "/sfx/melee/shockwave_full_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowactivate",
+    "value" : [ "/sfx/melee/elemental_aura_activate.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowactive",
+    "value" : [ "/sfx/melee/elemental_aura_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowdeactivate",
+    "value" : [ "/sfx/gun/impact_plasma.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactivecharge",
+    "value" : [ "/sfx/melee/shockwave_charge_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactivefull",
+    "value" : [ "/sfx/melee/shockwave_full_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactiveactivate",
+    "value" : [ "/sfx/melee/elemental_aura_activate.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactiveactive",
+    "value" : [ "/sfx/melee/elemental_aura_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactivedeactivatee",
+    "value" : [ "/sfx/gun/impact_plasma.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 25,
+      "offsetRegion" : [-1.0, -2.5, 1.0, 1.5],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke1"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/radioactiveCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 25,
+      "offsetRegion" : [-1.0, -2.5, 1.0, 1.5],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "radioactiveaura"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/radioactive",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "radiationburn" ] }
+    }
+  }
+]

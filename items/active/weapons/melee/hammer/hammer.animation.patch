@@ -1,14 +1,31 @@
 [
 
-  {"op" : "replace", 
+  {"op" : "replace",
     "path" : "/sounds",
-  	"value" : 
+  	"value" :
 	  {
 	  	 "fire" : [],
 	  	 "fire2" : [],
 	  	 "groundImpact" : [ "/sfx/melee/hammer_hit_ground3.ogg", "/sfx/melee/hammer_hit_ground4.ogg" ],
 	     "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
 	  }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/radioactiveswoosh",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    }
   }
-  
 ]

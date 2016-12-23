@@ -1,0 +1,73 @@
+[
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowTrailDashCharge",
+    "value" : [ "/sfx/melee/charge_traildash3.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowTrailDashFire",
+    "value" : [ "/sfx/melee/travelingslash_poison3.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactiveTrailDashCharge",
+    "value" : [ "/sfx/melee/charge_traildash3.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactiveTrailDashFire",
+    "value" : [ "/sfx/melee/travelingslash_poison3.ogg" ]
+  },
+  {
+    "op": "replace",
+    "path": "/ability/damageConfig/damageSourceKind",
+    "value": "<elementalType>"
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowSwordCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value" : {
+      "projectileType" : "shadowtrail"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/radioactiveSwordCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/radioactive",
+    "value" : {
+      "projectileType" : "radioactivetrail"
+    }
+  }
+]
