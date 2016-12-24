@@ -22,27 +22,33 @@
   },
 
   "statusEffects" : [
-      {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.85
-    },
-    {
-      "stat" : "protection",
-      "amount" : 42
-    },
-    {
-      "stat" : "maxEnergy",
-      "amount" : 40
-    },
-    {
-      "stat" : "maxHealth",
-      "amount" : 35
-    },
     "eldersetbonus",
     {
       "stat" : "fu_elderset_chest",
       "amount" : 1
     } 
+  ],
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "elderfuArmorLevelPower",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelProtection",
+      "stat" : "protection",
+      "amount" : 0.5
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelEnergy",
+      "stat" : "maxEnergy",
+      "amount" : 9
+    },
+    {
+      "levelFunction" : "elderfuArmorLevelHealth",
+      "stat" : "maxHealth",
+      "amount" : 5
+    }
   ],
   "questTags" : [ "elderarmor" ],
   "colorOptions" : [
