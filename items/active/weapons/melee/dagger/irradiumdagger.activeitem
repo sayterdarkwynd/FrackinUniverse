@@ -28,7 +28,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "radioactive",
 
   "aimOffset" : -1.0,
 
@@ -38,6 +38,8 @@
     "fireTime" : 0.32,
     "baseDps" : 9.1,
     "damageConfig" : {
+      "damageSourceKind": "radioactive",
+      "statusEffects" : [ "radiationburn" ],
       "knockback" : 10
     },
     "stances" : {
@@ -69,7 +71,7 @@
       }
     }
   },
-  "critChance" : 4, 
-  "critBonus" : 6, 
+  "critChance" : 4,
+  "critBonus" : 6,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

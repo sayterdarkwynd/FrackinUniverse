@@ -1,0 +1,23 @@
+[
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/radioactive",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "radiationburn" ] }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/ability/damageConfig",
+    "value": {
+      "damageSourceKind" : "<elementalType>"
+    },
+  }
+]

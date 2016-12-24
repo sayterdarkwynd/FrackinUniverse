@@ -26,7 +26,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "radioactive",
 
   "aimOffset" : -1.0,
   "primaryAbilityType" : "spearstab",
@@ -36,8 +36,8 @@
     "fireTime" : 0.92,
     "baseDps" : 9.92,
     "damageConfig" : {
-      "damageSourceKind" : "spear",
-      "statusEffects" : [ ],
+      "damageSourceKind" : "radioactive",
+      "statusEffects" : [ "radiationburn" ],
       "knockback" : 10
     }
   },
@@ -46,6 +46,6 @@
 
   "critChance" : 9,
   "critBonus" : 8,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
