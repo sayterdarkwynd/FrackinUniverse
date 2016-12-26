@@ -31,9 +31,39 @@
   },
   {
     "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowCharge",
+    "value": {
+      "active": false,
+      "transformationGroups": [ "weapon" ],
+      "emissionRate": 30,
+      "offsetRegion": [ -1,0.5,1,2.5],
+      "particles": [
+        { "particle": "shadowswoosh1"},
+        { "particle": "shadowswoosh2"},
+        { "particle": "shadowswoosh2"}
+      ]
+    }
+  },
+  {
+    "op": "add",
     "path": "/ability/elementalConfig/shadow",
     "value": {
       "projectileType": "shadowpillar"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/radioactiveCharge",
+    "value": {
+      "active": false,
+      "transformationGroups": [ "weapon" ],
+      "emissionRate": 30,
+      "offsetRegion": [ -1,0.5,1,2.5],
+      "particles": [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
     }
   },
   {
