@@ -1,0 +1,76 @@
+[
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowcharge",
+    "value": [ "/sfx/melee/shockwave_charge_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowfull",
+    "value": [ "/sfx/melee/shockwave_full_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowimpact",
+    "value": [ "/sfx/gun/grenadeblast_poison2.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactivecharge",
+    "value": [ "/sfx/melee/shockwave_charge_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactivefull",
+    "value": [ "/sfx/melee/shockwave_full_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactiveimpact",
+    "value": [ "/sfx/gun/grenadeblast_poison2.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowCharge",
+    "value": {
+      "active": false,
+      "transformationGroups": [ "weapon" ],
+      "emissionRate": 30,
+      "offsetRegion": [ -1,0.5,1,2.5],
+      "particles": [
+        { "particle": "shadowswoosh1"},
+        { "particle": "shadowswoosh2"},
+        { "particle": "shadowswoosh2"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value": {
+      "projectileType": "shadowpillar"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/radioactiveCharge",
+    "value": {
+      "active": false,
+      "transformationGroups": [ "weapon" ],
+      "emissionRate": 30,
+      "offsetRegion": [ -1,0.5,1,2.5],
+      "particles": [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/radioactive",
+    "value": {
+      "projectileType": "radioactivepillar"
+    }
+  }
+]

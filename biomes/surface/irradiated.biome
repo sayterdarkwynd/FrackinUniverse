@@ -2,20 +2,20 @@
   "name" : "irradiated",
   "friendlyName" : "Irradiated",
   "statusEffects" : [ "ffextremeradiation"  ],
-  
-  
+
+
     "spawnProfile" : {
     "groups" : [
       {
         "select" : 3,
-        "pool" : [   
+        "pool" : [
           [ 0.11, "anglure5" ],
           [ 0.09, "poptop" ],
           [ 0.05, "fuadultpoptop" ],
           [ 0.03, "zoro" ],
           [ 0.08, "fugiantbee" ],
-          [ 0.08, "seedspawn2" ],        
-          [ 0.07, "pyromantle" ],     
+          [ 0.08, "seedspawn2" ],
+          [ 0.07, "pyromantle" ],
           [ 0.07, "futoxicgolem" ],
           [ 0.07, "futoxicfly" ],
           [ 0.11, "tentaclecometspore" ]
@@ -66,6 +66,9 @@
             },
             "biomeradiationImmunity" : {
               "baseValue" : 1.0
+            },
+            "radiationburnImmunity" : {
+              "baseValue" : 1.0
             }
         }
       }
@@ -73,7 +76,7 @@
   },
 
   "hueShiftOptions" : [ -120, -75, -55, -25, 0, 25, 55, 75, 120],
-  
+
   "weather" : [
     [0, [
       "/weather.config:irradiated"
@@ -136,8 +139,8 @@
     }
 
   ],
-  
-  
+
+
   "mainBlock" : "irradiatedtile",
   "subBlocks" : [ "waste", "irradiatedtile2" ],
   "ores" : "ff_radioactiveOres",
@@ -207,7 +210,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildguamseed" ],
               [0.35, "wildtoxictopseed" ],
               [0.35, "wildoonfortaseed" ],
@@ -231,7 +234,7 @@
           "type" : "object",
           "objectSets" : [
             {
-        "pool" : [ 
+        "pool" : [
               [0.35, "toxicfern1" ],
               [0.35, "toxicflower1" ],
               [0.35, "toxicflower2" ],
@@ -245,7 +248,7 @@
               "parameters" : {  }
             }
           ]
-        },      
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -327,7 +330,7 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fubandits", "fushops", "fulabs", "fuelders", "fuavali", "fuencountercultist", "newhumanmicro", "newavianmicro", "minigreenruins", "fuhives", "furedhives" ]
-        },       
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -444,7 +447,7 @@
 
   "type" : "microdungeon",
   "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "asteroidencounter", "genericundergroundencounter"]
-},       
+},
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -512,13 +515,13 @@
           "treeStemList" : [ "vine", "vine2", "vine3", "vine4" ],
           "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
         },
-           
+
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
@@ -553,7 +556,7 @@
 
           "type" : "grass",
           "grasses" : [ "bloodstoneplant" ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -562,7 +565,7 @@
 
           "type" : "grass",
           "grasses" : [ "bloodstonesprout" ]
-        },    
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -599,7 +602,7 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
@@ -617,14 +620,14 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildalgaeseed" ],
               [0.35, "wilderithianalgaeseed" ],
               [0.35, "wildblisterbushplantseed" ],
               [0.35, "wildighantseed" ],
               [0.35, "wildpasakavineseed" ],
               [0.35, "wildslimeplantseed" ],
-              [0.35, "wildvextongueseed" ] 
+              [0.35, "wildvextongueseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }

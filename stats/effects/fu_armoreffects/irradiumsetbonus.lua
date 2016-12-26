@@ -2,8 +2,9 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setBonusInit("fu_irradiumsetbonus", {
-    {stat = "ffextremeheatImmunity", amount = 1},
-    {stat = "biomeheatImmunity", amount = 1},
-		{stat = "fireResistance", amount = 0.35}
+    {stat = "ffextremecoldImmunity", amount = 1},
+    {stat = "biomecoldImmunity", amount = 1},
+		{stat = "iceResistance", amount = 0.15}
+		{stat = "radioactiveResistance", amount = 0.35}
 	})
 end

@@ -19,9 +19,10 @@ function init()
     {stat = "snowslowImmunity", amount = 1},
     {stat = "protoImmunity", amount = 1},
     {stat = "shadowImmunity", amount = 1},
-    {stat = "pressureImmunity", amount = 1},    
+    {stat = "pressureImmunity", amount = 1},
     {stat = "shadowResistance", amount = 0.7},
-    {stat = "physicalResistance", amount = 0.4}
+    {stat = "physicalResistance", amount = 0.4},
+    {stat = "radiationburnImmunity", amount = 1}
   })
 end
 
@@ -29,5 +30,5 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end

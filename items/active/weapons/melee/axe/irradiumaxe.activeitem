@@ -9,7 +9,7 @@
   "category" : "axe",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","axe"],
-"level" : 4,
+  "level" : 4,
   "inventoryIcon" : "irradiumaxe.png",
 
   "animation" : "axe.animation",
@@ -28,7 +28,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "radioactive",
 
   "aimOffset" : -1.0,
 
@@ -37,7 +37,8 @@
     "fireTime" : 0.65,
     "baseDps" : 10,
     "damageConfig" : {
-      "damageSourceKind" : "poisonaxe",
+      "damageSourceKind" : "radioactive",
+      "statusEffects" : [ "radiationburn" ],
       "knockback" : 15
     },
     "stances" : {
@@ -67,6 +68,6 @@
     }
   },
   "critChance" : 12,
-  "critBonus" : 4, 
+  "critBonus" : 4,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

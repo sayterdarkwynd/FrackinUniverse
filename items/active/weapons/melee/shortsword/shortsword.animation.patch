@@ -1,14 +1,29 @@
 [
 
-  {"op" : "replace", 
+  {"op" : "replace",
     "path" : "/sounds",
-  	"value" : 
+  	"value" :
 	  {
 	  	 "fire" : [],
 	  	 "fire2" : [],
 	  	 "fire3" : [],
 	     "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
 	  }
+  },
+  {
+    "op" : "add",
+    "path" : "particleEmitters/radioactiveswoosh",
+    "value:" :
+    {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    }
   }
-  
 ]

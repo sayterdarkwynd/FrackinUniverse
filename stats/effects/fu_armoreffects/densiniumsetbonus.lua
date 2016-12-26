@@ -17,7 +17,8 @@ function init()
 		{stat = "ffextremeradiationImmunity", amount = 1},
 		{stat = "biomeradiationImmunity", amount = 1},
 		{stat = "sulphuricImmunity", amount = 1},
-		{stat = "physicalResistance", baseMultiplier = 0.15}
-	}, 
+		{stat = "physicalResistance", baseMultiplier = 0.15},
+		{stat = "radiationburnImmunity", amount = 1}
+	},
 	callbacks )
 end
