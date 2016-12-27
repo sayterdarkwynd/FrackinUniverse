@@ -12,3 +12,11 @@ function init()
 	    {stat = "iceResistance", baseMultiplier = 0.50}
 	})
 end
+
+
+
+
+
+
+
+
