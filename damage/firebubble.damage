@@ -1,0 +1,146 @@
+{
+  "kind" : "firebubble",
+  "elementalType" : "fire",
+  "effects" : {
+    "organic" : {
+      "hit" : {
+        "sounds" : [ "/sfx/projectiles/bubble_impact.ogg" ],
+        "particles" : [
+        ]
+      },
+      "stronghit" : {
+        "sounds" : [ "/sfx/projectiles/bubble_impact.ogg", "/sfx/melee/critical_hit_light.ogg" ],
+        "particles" : [
+            // CRITICAL FIRE PUFF
+            {
+              "type" : "animated",
+              "animation" : "/animations/flamepuff/flamepuff.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            }
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/gun/impact_flesh.ogg" ],
+        "particles" : [
+        ]
+      }
+    },
+    "robotic" : {
+      "hit" : {
+        "sounds" : [ "/sfx/projectiles/bubble_impact.ogg" ],
+        "particles" : [
+        ]
+      },
+      "stronghit" : {
+        "sounds" : [ "/sfx/projectiles/bubble_impact.ogg", "/sfx/melee/critical_hit_light.ogg" ],
+        "particles" : [
+            // CRITICAL FIRE PUFF
+            {
+              "type" : "animated",
+              "animation" : "/animations/flamepuff/flamepuff.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            }
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/kill_robotic1.ogg", "/sfx/melee/kill_robotic2.ogg" ],
+        "particles" : [
+        ]
+      }
+    },
+    "wooden" : {
+      "hit" : {
+        "sounds" : [ "/sfx/projectiles/bubble_impact.ogg" ],
+        "particles" : [
+        ]
+      },
+      "stronghit" : {
+        "sounds" : [ "/sfx/projectiles/bubble_impact.ogg", "/sfx/melee/critical_hit_light.ogg" ],
+        "particles" : [
+            // CRITICAL FIRE PUFF
+            {
+              "type" : "animated",
+              "animation" : "/animations/flamepuff/flamepuff.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            }
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/kill_wood1.ogg", "/sfx/melee/kill_wood2.ogg" ],
+        "particles" : [
+        ]
+      }
+    },
+    "stone" : {
+      "hit" : {
+        "sounds" : [ "/sfx/projectiles/bubble_impact.ogg" ],
+        "particles" : [
+        ]
+      },
+      "stronghit" : {
+        "sounds" : [ "/sfx/projectiles/bubble_impact.ogg", "/sfx/melee/critical_hit_light.ogg" ],
+        "particles" : [
+            // CRITICAL FIRE PUFF
+            {
+              "type" : "animated",
+              "animation" : "/animations/flamepuff/flamepuff.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            }
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/kill_stone1.ogg", "/sfx/melee/kill_stone2.ogg", "/sfx/melee/kill_stone3.ogg", "/sfx/melee/kill_stone4.ogg", "/sfx/melee/kill_stone5.ogg" ],
+        "particles" : [
+        ]
+      }
+    }
+  }
+}
