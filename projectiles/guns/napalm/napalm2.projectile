@@ -13,5 +13,14 @@
   "damageKind" : "fireplasma",
   "statusEffects" : [ "beamburning" ],
   "emitters" : [ "gausssmoke" ],
-  "hydrophobic" : true
+  "hydrophobic" : true,
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "firefinish2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 0
+    }
+  ]
 }
