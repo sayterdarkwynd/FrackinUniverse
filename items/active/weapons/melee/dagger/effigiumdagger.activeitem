@@ -1,0 +1,78 @@
+{
+  "itemName" : "effigiumknife",
+  "price" : 900,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "Ghostly as a spirit.",
+  "shortdescription" : "Phantasm Knife",
+  "tooltipKind" : "sword",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger"],
+  "level" : 5,
+  "inventoryIcon" : "effigiumdagger.png",
+
+  "animation" : "daggerglow.animation",
+  "animationParts" : {
+    "blade" : "effigiumdagger.png",
+    "bladefullbright" : "effigiumdaggerfullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+    "fireTime" : 0.32,
+    "baseDps" : 9.1,
+    "damageConfig" : {
+      "damageSourceKind": "fushadowdamage",
+      "statusEffects" : [ "shadowgasfx" ],
+      "knockback" : 10
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.8, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -20,
+        "weaponRotation" : -20,
+        "weaponOffset" : [0.8, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0.8, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      }
+    }
+  },
+  "critChance" : 6,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
