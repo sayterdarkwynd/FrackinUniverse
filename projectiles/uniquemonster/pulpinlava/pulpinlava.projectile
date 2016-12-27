@@ -1,0 +1,21 @@
+{
+  "projectileName" : "pulpinlava",
+  "physics" : "rain",
+  "image" : "pulpinlava.png",
+  "timeToLive" : 0.2,
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "damagePoly" : [ [-30, -30], [30, -30], [30, 30], [-30, 30] ],
+  "damageKind" : "hidden",
+  "actionOnReap" : [
+    {
+      "action" : "liquid",
+      "liquid" : "lava",
+      "quantity" : 4
+    },
+  ],
+
+  "onlyHitTerrain" : true,
+  "hydrophobic" : true,
+  "masterOnly" : true
+}
