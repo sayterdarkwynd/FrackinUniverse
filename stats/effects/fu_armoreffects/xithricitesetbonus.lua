@@ -6,8 +6,8 @@ function init()
             {stat = "biomeradiationImmunity", amount = 1},
 	    {stat = "shadowImmunity", amount = 1}, 
 	    {stat = "insanityImmunity", amount = 1}, 
-	    {stat = "cosmicResistance", baseMultiplier = 0.15},
-	    {stat = "shadowResistance", baseMultiplier = 0.75},
+	    {stat = "cosmicResistance", baseMultiplier = 0.75},
+	    {stat = "shadowResistance", baseMultiplier = 0.15},
 	    {stat = "radioactiveResistance", baseMultiplier = 0.50}
 	})
 end
