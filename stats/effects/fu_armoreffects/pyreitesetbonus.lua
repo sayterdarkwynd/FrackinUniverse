@@ -5,8 +5,7 @@ function init()
             {stat = "ffextremecoldImmunity", amount = 1},
             {stat = "biomecoldImmunity", amount = 1},
 	    {stat = "fireStatusImmunity", amount = 1},
-	    {stat = "shadowImmunity", amount = 1},            
-	    {stat = "physicalResistance", baseMultiplier = 0.15},
+	    {stat = "shadowImmunity", amount = 1},      
 	    {stat = "fireResistance", baseMultiplier = 0.75},
 	    {stat = "shadowResistance", baseMultiplier = 0.15},
 	    {stat = "iceResistance", baseMultiplier = 0.50}
