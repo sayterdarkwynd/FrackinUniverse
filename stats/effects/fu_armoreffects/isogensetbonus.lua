@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setBonusInit("fu_pyreiteset", {
+	setBonusInit("fu_isogenset", {
             {stat = "ffextremeheatImmunity", amount = 1},
             {stat = "biomeheatImmunity", amount = 1},
 	    {stat = "protoImmunity", amount = 1},
