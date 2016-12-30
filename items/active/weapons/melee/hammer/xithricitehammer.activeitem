@@ -29,16 +29,16 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "shadow",
+  "elementalType" : "cosmic",
 
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
     "fireTime" : 0.72,
     "baseDps" : 11.5,
     "damageConfig" : {
-      "statusEffects" : [ "defenseboostneg20" ],
-       "damageSourceKind" : "fushadowdamage"
-    },    
+      "statusEffects" : [  ],
+       "damageSourceKind" : "cosmic"
+    },
     "stances" : {
       "idle" : {
         "armRotation" : -10,
@@ -77,10 +77,10 @@
     }
   },
 
-  "altAbilityType" : "shockwave",
+  "altAbilityType" : "elementalaura",
   "altAbility" : { },
 
   "critChance" : 9,
-  "critBonus" : 7, 
+  "critBonus" : 7,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
