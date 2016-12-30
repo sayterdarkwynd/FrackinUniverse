@@ -31,6 +31,21 @@
   },
   {
     "op": "add",
+    "path": "/animationCustom/sounds/cosmiccharge",
+    "value": [ "/sfx/melee/shockwave_charge_electric.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicfull",
+    "value": [ "/sfx/melee/shockwave_full_electric.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicimpact",
+    "value": [ "/sfx/gun/grenadeblast_electric2.ogg" ]
+  },
+  {
+    "op": "add",
     "path": "/animationCustom/particleEmitters/shadowCharge",
     "value": {
       "active": false,
@@ -71,6 +86,28 @@
     "path": "/ability/elementalConfig/radioactive",
     "value": {
       "projectileType": "radioactivepillar"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/cosmicCharge",
+    "value": {
+      "active": false,
+      "transformationGroups": [ "weapon" ],
+      "emissionRate": 30,
+      "offsetRegion": [ -1,0.5,1,2.5],
+      "particles": [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/cosmic",
+    "value": {
+      "projectileType": "cosmicpillar"
     }
   }
 ]
