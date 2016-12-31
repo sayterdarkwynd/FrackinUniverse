@@ -15,13 +15,27 @@
   "piercing" : true,
 
   "lightColor" : [120,0,0],
-  "damageKind" : "fireplasma",
-  "statusEffects" : [ "gravgun" ],
+  "damageKind" : "cosmic",
+  "statuseffects" : [ "gravgun" ],
   "emitters" : [ "fireplasma" ],
+  
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/gravexplosion/gravexplosion.config"
     }
-  ]
+  ],
+  
+  "orientationLocked" : true,
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 20,
+      "innerRadius" : 8,
+      "baseTargetRadialVelocity" : 120,
+      "controlForce" : 1700,
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"]
+    }
+  },
+  "clientEntityMode" : "ClientSlaveOnly"
 }
