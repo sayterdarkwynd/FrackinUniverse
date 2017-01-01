@@ -1,0 +1,49 @@
+{
+  "objectName" : "gravzoneelder",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "physics",
+  "description" : "This device seems to increase gravity tenfold within a small radius",
+  "shortdescription" : "Elder Sigil",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 100,
+
+  "inventoryIcon" : "gravzoneicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "eldergrav.png:<color>.<frame>", "fullbright" : true }, { "image" : "eldergravlit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "metaBoundBox" : [-50, -50, 50, 50]
+    }
+  ],
+
+  "scripts" : [ 
+  "/objects/wired/gravgeneratordungeon/gravzoneelder.lua",
+  "/objects/isn_sharedobjectscripts.lua" 
+  ],
+  "scriptDelta" : 0,
+
+  "animation" : "/objects/wired/gravgeneratordungeon/gravzone.animation",
+
+  "animationParts" : {
+    "gravzone" : "eldergrav.png" 
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 0] ],
+
+  "physicsForces" : {
+    "jumpForce" : {
+      "type" : "DirectionalForceRegion",
+      "rectRegion" : [-50, -50, 50, 50],
+      "yTargetVelocity" : 0,
+      "controlForce" : 1200
+    }
+  }
+}
