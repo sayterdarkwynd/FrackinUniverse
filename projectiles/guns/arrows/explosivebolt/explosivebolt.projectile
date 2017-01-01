@@ -1,0 +1,25 @@
+{
+  "projectileName" : "explosivebolt",
+  "physics" : "arrownosticky",
+  "bounces" : 0,
+  "image" : "explosivebolt.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "emitters" : [ "flamesfast" ],
+  "timeToLive" : 30,
+  "pointLight" : true,
+  "lightColor" : [235, 126, 2],
+  "power" : 5.0,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "speed" : 100,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/explosivebolt/explosiveboltexplosion.config"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "projectileName" : "chargedpoisonarrow",
+  "physics" : "arrownosticky",
+  "image" : "chargedpoisonarrow.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "pointLight" : true,
+  "lightColor" : [48, 79, 13],
+  "emitters" : [ "poisondrip" ],
+  "statusEffects" : [
+    "weakpoison"
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    }
+  ],
+  "power" : 20,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "damageKind" : "poisonbow"
+}
