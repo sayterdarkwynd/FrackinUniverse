@@ -1,5 +1,5 @@
 {
-  "projectileName" : "flamearrow",
+  "projectileName" : "poisonarrow",
   "physics" : "arrow",
   "actionOnCollide" : [
     {
@@ -9,16 +9,19 @@
       ]
     }
   ],
-  "image" : "flamearrow.png",
+  "image" : "poisonarrow.png",
   "animationCycle" : 0.25,
   "frameNumber" : 1,
-  "damageKindImage" : "icon.png",
-  "damageKind" : "firebow",
+  "pointLight" : true,
+  "lightColor" : [48, 79, 13],
+  "emitters" : [ "poisonplasma" ],
+  "statusEffects" : [
+    "weakpoison"
+  ],
   "power" : 20,
   "knockback" : 10,
-  "fullbright" : true,
-  "emitters" : [ "smoke" ],
   "knockbackDirectional" : true,
+  "damageKind" : "poisonbow",
   "timeToLive" : 10,
   "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ]
 }

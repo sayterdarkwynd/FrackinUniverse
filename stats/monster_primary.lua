@@ -6,9 +6,9 @@ function init()
   self.lastYPosition = 0
   self.lastYVelocity = 0
   self.fallDistance = 0
-  
+
   self.fallDamagePreferences = settings.stringToInteger[settings.getSetting("monsters", "all")] or 0
-  
+
   --end of fall damage code
 
   self.damageFlashTime = 0
@@ -42,7 +42,8 @@ function applyDamageRequest(damageRequest)
   end
 
   local hitType = damageRequest.hitType
-    local elementalStat = root.elementalResistance(damageRequest.damageSourceKind)
+  local damageSourceKind = damageRequest.damageSourceKind
+    local elementalStat = root.elementalResistance(damageSourceKind)
     local resistance = status.stat(elementalStat)
     damage = damage - (resistance * damage)
     if resistance ~= 0 and damage > 0 then
@@ -66,8 +67,19 @@ function applyDamageRequest(damageRequest)
     end
   end
 
+
   if not status.resourcePositive("health") then
     hitType = "kill"
+    --bows should cause hunting drops regardless of damageKind
+    if string.find(damageSourceKind, "bow") then
+      string.gsub(damageSourceKind, "fire", "")
+      string.gsub(damageSourceKind, "ice", "")
+      string.gsub(damageSourceKind, "electric", "")
+      string.gsub(damageSourceKind, "poison", "")
+      string.gsub(damageSourceKind, "shadow", "")
+      string.gsub(damageSourceKind, "radioactive", "")
+      string.gsub(damageSourceKind, "poison", "")
+    end
   end
   return {{
     sourceEntityId = damageRequest.sourceEntityId,
@@ -77,7 +89,7 @@ function applyDamageRequest(damageRequest)
     healthLost = healthLost,
     hitType = hitType,
     kind = "Normal",
-    damageSourceKind = damageRequest.damageSourceKind,
+    damageSourceKind = damageSourceKind,
     targetMaterialKind = status.statusProperty("targetMaterialKind")
   }}
 end
@@ -100,14 +112,14 @@ function update(dt)
     local minimumFallVel = 40
     local baseGravity = 80
     local gravityDiffFactor = 1 / 30.0
-  
+
     local curYPosition = mcontroller.yPosition()
     local yPosChange = curYPosition - (self.lastYPosition or curYPosition)
-	
+
 	if self.fallDistance > minimumFallDistance and -self.lastYVelocity > minimumFallVel and mcontroller.onGround() then
 	  --fall damage is proportional to max health, with 100.0 being the player's standard
 	  local healthRatio = status.stat("maxHealth") / 100.0
-	
+
       local damage = (self.fallDistance - minimumFallDistance) * fallDistanceDamageFactor
       damage = damage * (1.0 + (world.gravity(mcontroller.position()) - baseGravity) * gravityDiffFactor)
       damage = damage * healthRatio
@@ -118,7 +130,7 @@ function update(dt)
           sourceEntityId = entity.id()
         })
     end
-	
+
 	if mcontroller.yVelocity() < -minimumFallVel and not mcontroller.onGround() then
       self.fallDistance = self.fallDistance + -yPosChange
     else
