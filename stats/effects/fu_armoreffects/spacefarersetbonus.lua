@@ -1,3 +1,6 @@
+require "/stats/effects/fu_tileeffects/gravmaker/gravmakerspacefarer.lua"
+callbacks = { { init = init, update = update, uninit = uninit } }
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
@@ -13,5 +16,6 @@ function init()
 	    {stat = "extremepressureProtection", amount = 1},
 	    {stat = "asteroidImmunity", amount = 1},
 	    {stat = "physicalResistance", amount = 0.25}
-	})
+	},
+	callbacks)
 end
