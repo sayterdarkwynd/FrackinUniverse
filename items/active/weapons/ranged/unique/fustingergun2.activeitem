@@ -1,22 +1,22 @@
 {
-  "itemName" : "fustingergun",
-  "price" : 800,
-  "inventoryIcon" : "fustingergun.png",
+  "itemName" : "fustingergun2",
+  "price" : 1600,
+  "inventoryIcon" : "fustingergun2.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A gene-spliced living weapon.",
-  "shortdescription" : "Sting Needler",
+  "rarity" : "legendary",
+  "description" : "This is one you get when you shove a stingergun onto a shotgun",
+  "shortdescription" : "Stinger Burstrifle",
   "category" : "Dart Carbine",
-  "level" : 4,
+  "level" : 6,
   "tooltipKind" : "gun",
   "weaponType" : "Carbine",
   "itemTags" : ["weapon","ranged","assaultrifle"],
-  "twoHanded" : false,
-  "learnBlueprintsOnPickup" : [ "fustingergun2" ],
+  "twoHanded" : true,
+
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "fustingergun.png",
+    "middle" : "fustingergun2.png",
     "barrel" : "",
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
@@ -27,7 +27,7 @@
   },
 
   "baseOffset" : [1.26, 0.35],
-  "muzzleOffset" : [0.9, -0.225],
+  "muzzleOffset" : [1.26, -0.225],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -53,7 +53,7 @@
 	    "idle" : {
 	      "armRotation" : 0,
 	      "weaponRotation" : 0,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : true,
 	      "allowFlip" : true
@@ -62,7 +62,7 @@
 	      "duration" : 0,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -71,15 +71,16 @@
 	      "duration" : 0.075,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
 	    }
 	  }
   },
+  "altAbilityType" : "burstshot",
 
-  "critChance" : 5,
-  "critBonus" : 3,
+  "critChance" : 8,
+  "critBonus" : 12,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
