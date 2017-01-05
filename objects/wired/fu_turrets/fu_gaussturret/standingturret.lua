@@ -187,8 +187,8 @@ function autoFire()
   local power = 3.25
   power = root.evalFunction("monsterLevelPowerMultiplier", level) * power
   local fireTime = 0.12
-  local projectileParameters = { power = 3, speed = 60, inaccuracy = 0.0001, knockback = 3  }
-  local energyUsage = 22
+  local projectileParameters = { power = power, speed = 60, inaccuracy = 0.0001, knockback = 3  }
+  local energyUsage = 6
 
   while true do
     while not consumeEnergy(energyUsage) do coroutine.yield() end
