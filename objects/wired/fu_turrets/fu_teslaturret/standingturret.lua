@@ -184,8 +184,7 @@ end
 -- Coroutine
 function autoFire()
   local level = math.max(1.0, world.threatLevel())
-  local power = 15 * math.max(1.0, world.threatLevel())
-  
+  local power = 11.5 * math.max(1.0, world.threatLevel())
   local fireTime = 1
   local projectileParameters = { power = power , speed=72, knockback=1.5  }
   local energyUsage = 15
