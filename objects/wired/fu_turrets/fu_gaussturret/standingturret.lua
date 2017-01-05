@@ -184,10 +184,9 @@ end
 -- Coroutine
 function autoFire()
   local level = math.max(1.0, world.threatLevel())
-  local power = 3.25
-  power = root.evalFunction("monsterLevelPowerMultiplier", level) * power
+  local power = 1 * math.max(1.0, world.threatLevel())
   local fireTime = 0.12
-  local projectileParameters = { power = power, speed = 60, inaccuracy = 0.0001, knockback = 3  }
+  local projectileParameters = { power = power, speed = 60, inaccuracy = 0.001, knockback = 3  }
   local energyUsage = 6
 
   while true do
