@@ -64,6 +64,7 @@ function getRecipes()
 	{ inputs = { godlydrone = 1 }, outputs = { geneticmaterial = { 3, 3, 4 } } },
 	{ inputs = { godlyqueen = 1 }, outputs = { geneticmaterial = { 3, 3, 4 } } },
 	{ inputs = { goldcomb = 1 }, outputs = { goldore = 2 } },
+	{ inputs = { hematite = 2 }, outputs = { ironore = { 3, 4, 5 } } },
 	{ inputs = { hardydrone = 1 }, outputs = { geneticmaterial = { 1, 1, 4 } } },
 	{ inputs = { hardyqueen = 1 }, outputs = { geneticmaterial = { 1, 1, 4 } } },
 	{ inputs = { hunterdrone = 1 }, outputs = { geneticmaterial = { 1, 1, 4 } } },
