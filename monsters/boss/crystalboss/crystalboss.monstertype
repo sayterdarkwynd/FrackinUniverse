@@ -1,0 +1,216 @@
+{
+  "type" : "crystalboss",
+  "shortdescription" : "Erchius Horror",
+
+  "categories" : [ "crystalboss" ],
+  "parts" : [ "organs", "shell", "bodyglow", "eye", "beam1", "beam2", "beam3", "beam4"],
+
+  "animation" : "crystalboss.animation",
+  "reversed" : true,
+  "dropPools" : [
+    {
+      "default" : "erchiushorrorTreasure"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/boss/bossMonster.lua",
+      "/monsters/simpleRangedAttack.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+
+      "/monsters/boss/crystalboss/dieState.lua",
+      "/monsters/boss/crystalboss/idleState.lua",
+      "/monsters/boss/crystalboss/crystalbossreset.lua"
+    ],
+
+    "skillCount" : 6,
+    "skills" : [ "crystalSingleBeamAttack", "crystalDoubleBeamAttack", "crystalSineBeamAttack", "crystalIdleAttack" , "crystalShatterAttack", "crystalMoontantAttack" ],
+
+    "phases" : [
+      {
+        "skills" : ["crystalIdleAttack", "crystalSingleBeamAttack", "crystalIdleAttack", "crystalMoontantAttack"]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.8,
+        "enterPhase" : "crystalShatterAttack",
+        "skills" : [ "crystalIdleAttack", "crystalSineBeamAttack", "crystalIdleAttack", "crystalMoontantAttack" ]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.4,
+        "enterPhase" : "crystalShatterAttack",
+        "skills" : [ "crystalIdleAttack", "crystalDoubleBeamAttack", "crystalIdleAttack", "crystalMoontantAttack" ]
+      }
+    ],
+
+    "projectileSourcePosition" : [-2.5, -1.25],
+    "projectileSourceOffset" : [7, 0],
+
+    "trackTargetDistance" : 50.0,
+    "switchTargetDistance" : 0,
+    "keepTargetInSight" : false,
+
+    "knockoutTime" : 0,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "",
+
+    "alwaysAggressive" : true,
+
+    "scale" : 1.0,
+
+    "portraitIcon" : "/monsters/boss/crystalboss/crystal/crystalbossicon.png",
+
+    "movementSettings" : {
+      "gravityEnabled" : false,
+
+      "collisionPoly" : [ [12.5, 0.5], [0, -12.5], [-12.5, 0.5], [0, 12.5] ],
+      "mass" : 4.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 13,
+      "airForce" : 200,
+      "airJumpProfile" : {
+        "jumpControlForce" : 0,
+        "jumpInitialPercentage" : 0
+      },
+      "physicsEffectCategories" : ["boss"]
+    },
+    "jumpTargetDistance" : 4,
+    "jumpTime" : [0.4, 0.7],
+
+    "metaBoundBox" : [-15, -15, 15, 15],
+
+    "blockedSensors" : [ [1.5, -4.5], [1.5, -3.5], [1.5, -2.5], [1.5, -1.5], [1.5, -0.5], [1.5, 0.5] ],
+    "fallSensors" : [ [2, -3.5], [2, -5.5], [2, -6.5], [4, -4.5], [4, -5.5], [4, -6.5] ],
+
+    "touchDamage" : {
+      "poly" : [ [-4, -3], [0, -3], [0, 0], [-4, 0] ],
+      "damage" : 20,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "default",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 6000
+        },
+        "protection" : {
+          "baseValue" : 0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "specialStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "healingStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "stunImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.85
+        },        
+        "fireResistance" : {
+          "baseValue" : 0.7
+        },
+        "iceResistance" : {
+          "baseValue" : 0.2
+        },
+        "electricResistance" : {
+          "baseValue" : 0.3
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 1.5
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.65
+        },
+        "cosmicResistance" : {
+          "baseValue" : 1.5
+        }   
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0,
+          "maxValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "projectiles" : {
+      "deathexplosion" : {
+        "type" : "regularexplosionknockback",
+        "config" : {
+          "speed" : 0.1,
+          "power" : 2,
+
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+            }
+          ]
+        },
+
+        "fireTime" : 8.0,
+        "fireInterval" : 0.2,
+        "cooldown" : 0.1
+      }
+    },
+
+    "mouthOffset" : [1.0, -1.5],
+    "feetOffset" : [0, -21]
+  }
+}
