@@ -8,7 +8,7 @@ function init()
       {stat = "biomeradiationImmunity", amount = 1},
       {stat = "breathProtection", amount = 1},
       {stat = "poisonResistance", amount = 0.10},
-      {stat = "radiationResistance", amount = 0.15},
+      {stat = "radioactiveResistance", amount = 0.15},
       {stat = "radiationburnImmunity", amount = 1},
     }, callbacks )
 
