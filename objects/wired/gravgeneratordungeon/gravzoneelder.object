@@ -1,41 +1,41 @@
 {
   "objectName" : "gravzoneelder",
+  "objectType" : "physics",
   "colonyTags" : ["wired"],
   "printable" : false,
   "rarity" : "Common",
-  "objectType" : "physics",
   "description" : "This unknown glyphs seems to generate a strange force...",
   "shortdescription" : "Elder Sigil",
   "race" : "generic",
-  "flippable" : false,
+
   "category" : "wire",
   "price" : 100,
 
-  "inventoryIcon" : "gravzoneicon.png",
+  "inventoryIcon" : "jumppadicon.png",
   "orientations" : [
     {
-      "imageLayers" : [ { "image" : "eldergrav.png:<frame>", "fullbright" : true }, { "image" : "eldergravlit.png:<frame>" } ],
-
+      "image" : "jumppad.png:<color>.off",
       "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 1,
 
       "spaceScan" : 0.1,
       "anchors" : [ "background" ],
       "metaBoundBox" : [-30, -30, 30, 30]
-    } 
+      
+    }
   ],
 
-  "scripts" : [ "/objects/wired/gravgeneratordungeon/gravzoneelder.lua", "/objects/isn_sharedobjectscripts.lua" ],
+  "scripts" : [ "/objects/wired/forcepad/forcepad.lua" ],
   "scriptDelta" : 0,
 
-  "animation" : "/objects/wired/gravgeneratordungeon/gravzone.animation",
+  "animation" : "/objects/wired/gravgeneratordungeon/forcepad.animation",
 
-  "animationParts" : { "gravzone" : "eldergrav.png"  },
+  "animationParts" : {
+    "forcepad" : "jumppad.png",
+    "forcepadfullbright" : "jumppadfullbright.png"
+  },
   "animationPosition" : [0, 0],
 
   "inputNodes" : [ [0, 0] ],
-
   "physicsForces" : {
     "jumpForce" : {
       "type" : "DirectionalForceRegion",
