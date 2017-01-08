@@ -271,7 +271,7 @@ function getRecipes()
 		{ inputs = { wildhaleflowerseed = 1 }, outputs = { gene_energy = 4 } },
 		{ inputs = { wildhellfireplantseed = 1 }, outputs = { gene_pyro = 3 } },
 		{ inputs = { wildherrodbush = 1 }, outputs = { gene_agility = 2 } },
-		{ inputs = { wildhopsseed = 1 }, outputs = { gene_reactive = 1 } },
+		{ inputs = { wildhopsseed = 1 }, outputs = { gene_stimulant = 1 } },
 		{ inputs = { wildighantseed = 1 }, outputs = { gene_stimulant = 1 } },
 		{ inputs = { wildignuschiliseed = 1 }, outputs = { gene_pyro = 2 } },
 		{ inputs = { wildignuschili2seed = 1 }, outputs = { gene_pyro = 3 } },
