@@ -64,7 +64,9 @@ function update(dt)
     if lightLevel <=40 or (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
       status.modifyResource("health", (-self.dps * (self.dpsMod * 0.095) ) * dt)
       status.modifyResource("energy", (-self.dps * (self.dpsMod * 1.8) ) * dt)
-      self.food and status.modifyResource("food", (-self.dps * (self.dpsMod * 0.009 ) ) * dt)
+      if self.food then
+        status.modifyResource("food", (-self.dps * (self.dpsMod * 0.009 ) ) * dt)
+      end
     end
   end
 end
