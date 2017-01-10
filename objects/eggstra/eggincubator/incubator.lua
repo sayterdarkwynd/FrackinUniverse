@@ -7,10 +7,17 @@
 function init()
   -- egg type?
   incubation = {
-    default = 20,
-    henegg = 20,
-    primedegg = 20,
-    raptoregg = 200
+    default = 400,
+    henegg = 400,
+    primedegg = 200,
+    raptoregg = 1200,
+    firefluffaloegg = 800,
+    poisonfluffaloegg =  800,
+    icefluffaloegg = 800,
+    electricfluffalofegg = 800,
+    fluffaloegg = 400,
+    robothenegg = 400,
+    mooshiegg = 300
   }
   
   -- change this to check the egg instead. each egg has a spawnMod that influences its hatch time
@@ -45,14 +52,14 @@ function checkHatching()
 
       -- set the eggs current age
       local age = (os.time() - storage.incubationTime) - spawnMod
-      sb.logInfo("age: %s", age)  
-      sb.logInfo("hatch modifier: %s", spawnMod)  
+      --sb.logInfo("age: %s", age)  
+      --sb.logInfo("hatch modifier: %s", spawnMod)  
       
       -- base hatch time
       local hatchTime = incubation[item.name]
       if hatchTime == nil then 
         hatchTime = incubation.default 
-        sb.logInfo("Hatch time: %s", hatchTime)
+        --sb.logInfo("Hatch time: %s", hatchTime)
       end
 
       -- forced hatch time
@@ -63,7 +70,7 @@ function checkHatching()
 
       -- set visual growth bar on the incubator
       self.indicator = math.ceil( (age / hatchTime) * 9)
-      sb.logInfo("indicator: %s", self.indicator) 
+       --sb.logInfo("indicator: %s", self.indicator) 
       
 
       -- hatching check
@@ -102,18 +109,67 @@ function hatchEgg()  --make the baby
     if item.name == "egg" or "primedegg" or "henegg" then
       local parameters = {}
       parameters.persistent = true
-	  parameters.damageTeam = 0
+      parameters.damageTeam = 0
       parameters.damageTeamType = "friendly"
       parameters.startTime = os.time()
-      world.spawnMonster("henbaby", entity.position(), parameters)
+      world.spawnMonster("fuhenbaby", entity.position(), parameters)
     elseif item.name == "goldenegg" then
       world.spawnItem("money", entity.position(), 5000)
     elseif item.name == "raptoregg" then
       parameters.persistent = true
       parameters.damageTeam = 0
-      parameters.damageTeamType = "friendly"
+      parameters.damageTeamType = "passive"
       parameters.startTime = os.time()    
       world.spawnMonster("furaptor4", entity.position(), parameters)
+    elseif item.name == "mooshiegg" then
+      local parameters = {}
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()
+      world.spawnMonster("fumooshibaby", entity.position(), parameters)
+    elseif item.name == "fluffaloegg" then
+      local parameters = {}
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()
+      world.spawnMonster("fufluffalo", entity.position(), parameters)
+    elseif item.name == "firefluffaloegg" then
+      local parameters = {}
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()
+      world.spawnMonster("fufirefluffalo", entity.position(), parameters)
+    elseif item.name == "icefluffaloegg" then
+      local parameters = {}
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()
+      world.spawnMonster("fuicefluffalo", entity.position(), parameters)
+    elseif item.name == "poisonfluffaloegg" then
+      local parameters = {}
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()
+      world.spawnMonster("fupoisonfluffalo", entity.position(), parameters)
+    elseif item.name == "electricfluffaloegg" then
+      local parameters = {}
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()
+      world.spawnMonster("fuelectricfluffalo", entity.position(), parameters)
+    elseif item.name == "robothenegg" then
+      local parameters = {}
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()
+      world.spawnMonster("furobothenbaby", entity.position(), parameters)
     end
   end
   storage.incubationTime = nil

@@ -1,36 +1,34 @@
 {
-  "type" : "furobothenbaby",
-  "shortdescription" : "Baby Robot Hen",
+  "type" : "fuicefluffalo",
 
-  "categories" : [ "robothenbaby" ],
-  "parts" : [ "body" ],
+  "categories" : [ "icefluffalo" ],
+  "parts" : [ "body", "spawn" ],
 
-  "animation" : "robothenbaby.animation",
+  "animation" : "icefluffalo.animation",
   "reversed" : false,
 
-  "dropPools" : [ { "default" : "robothenbabyTreasure" } ],
+  "dropPools" : [ { "default" : "huntingquadruped" } ],
 
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
     ],
 
-    "persistent" : false,
+    "persistent" : true,
 
-    "behavior" : "farmablebaby",
+    "behavior" : "farmable",
 
-    "evolveType" : "furobothen",
-    "spawnOffset" : [0.0, 0.25],
-    "spawnPoly" : [ [0.25, 0.75], [0.75, 0.25], [0.75, -0.25], [0.25, -0.75], [-0.25, -0.75], [-0.75, -0.25], [-0.75, 0.25], [-0.25, 0.75] ],
-    "evolveTime" : 1200,
+    "harvestTime" : [500, 900],
+    "harvestSpawnOffset" : [0, 0],
+    "harvestPool" : "iceFluffaloHarvest",
 
-    "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
+    "metaBoundBox" : [-4.0, -4.0, 4.0, 4.0],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5] ],
+      "collisionPoly" : [ [1.5, 1.625], [2.25, 0.875], [2.25, -0.875], [1.5, -1.625], [-1.5, -1.625], [-2.25, -0.875], [-2.25, 0.875], [-1.5, 1.625] ],
 
-      "mass" : 0.5,
+      "mass" : 1.0,
       "walkSpeed" : 5,
       "runSpeed" : 5,
       "jumpSpeed" : 5
@@ -49,8 +47,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -66,16 +64,43 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 40
+          "baseValue" : 120
         },
         "protection" : {
           "baseValue" : 0.0
         },
         "healthRegen" : {
-          "baseValue" : 1.5
+          "baseValue" : 4.0
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
         }
       },
 
@@ -92,11 +117,10 @@
       }
     },
 
-    "mouthOffset" : [0, 0],
+    "mouthOffset" : [12, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.5,
-    "capturedMonsterType" : "robothenbaby", 
+    "capturable" : false,
+    "relocatable" : true,
     "nametagColor" : [64, 200, 255]
   }
 }
