@@ -8,7 +8,7 @@ end
 
 function applyDamageRequest(damageRequest)
     local r = _applyDamageRequest(damageRequest)
-    sb.logInfo("r = %s", r)
+    --sb.logInfo("r = %s", r)
     if next(r) ~= nil and r[1].hitType == "kill" then
         sb.logInfo("mementomori: R.I.P")
         world.setProperty(mementomori.deathPositionKey, mcontroller.position())
