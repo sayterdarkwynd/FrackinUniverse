@@ -1,6 +1,6 @@
 function init()
-	object.setInteractive(true)
-	storage.state = storage.state or false
+  object.setInteractive(true)
+  storage.state = storage.state or false
   if not storage.watchBox then
     local myLocation = entity.position()
     storage.watchBox = { myLocation[1]-20, myLocation[2]-20, myLocation[1]+20, myLocation[2]+20 }
@@ -8,29 +8,29 @@ function init()
 end
 
 function update(dt)
-	if storage.state then
-		world.loadRegion( storage.watchBox )
-	end
+  if storage.state then
+    world.loadRegion( storage.watchBox )
+  end
 end
 
 function onInteraction(args)
-	if not storage.state then
-		openEye()
-	else
-		closeEye()
-	end
+  if not storage.state then
+    openEye()
+  else
+    closeEye()
+  end
 end
 
 function openEye()
-	animator.setAnimationState("eyeState","opening")
-	storage.state = true
+  animator.setAnimationState("eyeState","opening")
+  storage.state = true
 end
 
 function closeEye()
-	animator.setAnimationState("eyeState","closing")
-	storage.state = false
+  animator.setAnimationState("eyeState","closing")
+  storage.state = false
 end
 
 function uninit()
-  
+  storage.state = false
 end
