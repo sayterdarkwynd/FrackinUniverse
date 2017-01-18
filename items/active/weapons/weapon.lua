@@ -25,46 +25,25 @@ function Weapon:init()
   for _,ability in pairs(self.abilities) do
     ability:init()
   end
+    
 end
 
-
-function setCritDamage(damage)
   -- *******************************************************
   -- FU Crit Damage Script
+  
+function setCritDamage(damage)
+
   self.critChance = ( config.getParameter("critChance",0) + config.getParameter("level",1) ) or 1
   self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + config.getParameter("level",0) )  * self.critChance ) /100 ) /2 ) or 0
-  -- *******************************************************
-  
-  
-  
-  -- *************************
-  -- Setting base crit rates
 
-  -- **** check primary hand
---     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
---     if heldItem then
---	     if root.itemHasTag(heldItem, "dagger") then self.critChance = self.critChance + math.random(4) end
---	     if root.itemHasTag(heldItem, "shortsword") then self.critChance = self.critChance + math.random(2) end
---	     if root.itemHasTag(heldItem, "broadsword") then self.critChance = self.critChance + math.random(2) end
---	     if root.itemHasTag(heldItem, "hammer") then self.critChance = self.critChance + math.random(4) end
---	     if root.itemHasTag(heldItem, "axe") then self.critChance = self.critChance + math.random(4) end
---	     if root.itemHasTag(heldItem, "fist") then self.critChance = self.critChance + math.random(1) end
---	     if root.itemHasTag(heldItem, "spear") then self.critChance = self.critChance + math.random(3) end
---	     if root.itemHasTag(heldItem, "whip") then self.critChance = self.critChance + math.random(2) end
---	     if root.itemHasTag(heldItem, "quarterstaff") then self.critChance = self.critChance + math.random(4) end
---     end
-	
   self.critChance = self.critChance  * ( 1 + status.stat("critChanceMultiplier") ) 
   local crit = math.random(100) <= self.critChance
   damage = crit and (damage*2) + self.critBonus or damage
-
-  --if crit then
-  --  animator.playSound("crit")
-  --end
-  
   return damage
 end
-
+  -- *******************************************************
+  
+  
 function Weapon:update(dt, fireMode, shiftHeld)
 
   self.attackTimer = math.max(0, self.attackTimer - dt)
@@ -105,6 +84,7 @@ function Weapon:update(dt, fireMode, shiftHeld)
   end
 
   self:clearDamageSources()
+  
 end
 
 function Weapon:uninit()
@@ -269,6 +249,7 @@ function Weapon:damageSource(damageConfig, damageArea, damageTimeout)
       -- FU Critical Hit script      
       -- damage = damage,
       damage = setCritDamage(damage),
+      
       -- **********************************************
       
       trackSourceEntity = damageConfig.trackSourceEntity,

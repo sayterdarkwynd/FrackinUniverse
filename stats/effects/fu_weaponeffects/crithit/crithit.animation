@@ -1,0 +1,43 @@
+{
+  "particleEmitters" : {
+    "smoke" : {
+      "active" : true,
+      "emissionRate" : 3,
+      "transformationGroups" : ["smoke"],
+      "particles" : [ { "particle" : "cosmicaura" } ]
+    },
+    "statustext" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "Crit!",
+            "size" : 1.0,
+            "color" : [255, 0, 66, 255],
+            "fade" : 0.4,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 1.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 6],
+            "finalVelocity" : [0, 3],
+            "approach" : [0, 10],
+            "timeToLive" : 1,
+            "variance" : {}
+          }
+        }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
+  },
+
+
+  "sounds" : {
+    "burn" : [ "/sfx/melee/giantsword_charge_full.ogg" ]
+  }
+}
