@@ -34,10 +34,10 @@ end
 function setCritDamage(damage)
   self.critChance = ( config.getParameter("critChance",0) + (config.getParameter("level",0)/2) ) or 1
   self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + (config.getParameter("level",0)/2) )  * self.critChance ) /100 ) /2 ) or 0  
-
   self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)) 
   local crit = math.random(100) <= self.critChance
   damage = crit and (damage*2) + self.critBonus or damage
+
   if crit then status.addEphemeralEffect("crithit", 0.5, activeItem.ownerEntityId()) end  
   return damage
 end
