@@ -99,6 +99,14 @@ function canHatch(item)  -- is it a supported egg type?
   if item.name == "egg" or "henegg" then return true end
   if item.name == "primedegg" then return true end
   if item.name == "goldenegg" then return true end  
+  if item.name == "egg" or "raptoregg" then return true end
+  if item.name == "egg" or "mooshiegg" then return true end
+  if item.name == "egg" or "fluffaloegg" then return true end
+  if item.name == "egg" or "firefluffaloegg" then return true end
+  if item.name == "egg" or "icefluffaloegg" then return true end
+  if item.name == "egg" or "poisonfluffaloegg" then return true end
+  if item.name == "egg" or "electricfluffaloegg" then return true end
+  if item.name == "egg" or "robothenegg" then return true end
   return false
 end
 

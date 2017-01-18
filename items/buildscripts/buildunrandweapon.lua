@@ -68,8 +68,8 @@ function build(directory, config, parameters, level, seed)
     -- *******************************
     -- FU ADDITIONS 
     
-      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0) + configParameter("level",1), 1)
-      config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0) + configParameter("level",1), 1)
+      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0) + util.round(configParameter("level",1)/2), 1)
+      config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0) + util.round(configParameter("level",1)/2), 1)
 
     -- *******************************
     if elementalType ~= "physical" then

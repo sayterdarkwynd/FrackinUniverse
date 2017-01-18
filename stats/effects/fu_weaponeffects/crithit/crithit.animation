@@ -3,8 +3,13 @@
     "smoke" : {
       "active" : true,
       "emissionRate" : 3,
-      "transformationGroups" : ["smoke"],
-      "particles" : [ { "particle" : "cosmicaura" } ]
+      "particles" : [ 
+      { "particle" : "fireaura" },
+        { "particle" : "electricswoosh1"},
+        { "particle" : "electricswoosh2"},
+        { "particle" : "electricswoosh2"},
+        { "particle" : "fastrisingelectric"}      
+      ]
     },
     "statustext" : {
       "enabled" : true,
@@ -13,18 +18,18 @@
         {
           "particle" : {
             "type" : "text",
-            "text" : "Crit!",
-            "size" : 1.0,
-            "color" : [255, 0, 66, 255],
+            "text" : "+ Crit +",
+            "size" : 0.5,
+            "color" : [255, 125, 66, 255],
             "fade" : 0.4,
             "destructionAction" : "shrink",
-            "destructionTime" : 0.8,
+            "destructionTime" : 0.5,
             "position" : [0.0, 1.0],
             "offsetRegion" : [0, 0, 0, 0],
             "initialVelocity" : [0, 6],
             "finalVelocity" : [0, 3],
             "approach" : [0, 10],
-            "timeToLive" : 1,
+            "timeToLive" : 0.5,
             "variance" : {}
           }
         }

@@ -17,53 +17,14 @@ end
 
 
 function GunFire:setCritDamage(damage)
-  -- *******************************************************
-  -- FU Crit Damage Script
-  self.critChance = ( config.getParameter("critChance",0) + config.getParameter("level",1) ) or 1
-  self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + config.getParameter("level",0) )  * self.critChance ) /100 ) /2 ) or 0
-  -- *******************************************************
-  
-  
-  
-  -- *************************
-  -- Setting base crit rates
-  -- **** check hand
-  --   local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-  --   if heldItem then
---	     if root.itemHasTag(heldItem, "pistol") then self.critChance = self.critChance + math.random(1) end
---	     if root.itemHasTag(heldItem, "machinepistol") then self.critChance = self.critChance + math.random(1) end
---	     if root.itemHasTag(heldItem, "sniperrifle") then self.critChance = self.critChance + math.random(2) end
---	     if root.itemHasTag(heldItem, "assaultrifle") then self.critChance = self.critChance + math.random(2) end
---	     if root.itemHasTag(heldItem, "grenadelauncher") then self.critChance = self.critChance + math.random(2) end
---	     if root.itemHasTag(heldItem, "rocketlauncher") then self.critChance = self.critChance + math.random(2) end
---	     if root.itemHasTag(heldItem, "shotgun") then self.critChance = self.critChance + math.random(1) end
---	     if root.itemHasTag(heldItem, "flamethrower") then self.critChance = self.critChance + math.random(1) end
-  --   end
-     
-     
-  self.critChance = self.critChance * ( 1 + status.stat("critChanceMultiplier") )
+  self.critChance = ( config.getParameter("critChance",0) + (config.getParameter("level",0)/2) ) or 1
+  self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + (config.getParameter("level",0)/2) )  * self.critChance ) /100 ) /2 ) or 0  
+
+  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)) 
   local crit = math.random(100) <= self.critChance
-  local critDamage = crit and (damage*2) + self.critBonus or damage
-  
-  --if crit then
-  --  animator.playSound("crit")
-  --end
-
-  --sb.logInfo("critChanceup? "..status.stat("critChanceMultiplier")) -- to check?
-  --	  sb.logInfo(self.critChance.." critical hit?") 
---sb.logInfo("Stat names:")
---local statNames = status.activeUniqueStatusEffectSummary()
---for key in pairs(statNames) do
---  sb.logInfo("  "..statNames[key][1])
---end
-
---sb.logInfo("Critbonus?")
---local critbonusCheck = status.getPersistentEffects("critbonus")
---for key in pairs(critbonusCheck ) do
---  sb.logInfo("  "..critbonusCheck [key])
---end
-
-  return critDamage  
+  damage = crit and (damage*2) + self.critBonus or damage
+  if crit then status.addEphemeralEffect("crithit", 0.5, activeItem.ownerEntityId()) end  
+  return damage
 end
 
 
