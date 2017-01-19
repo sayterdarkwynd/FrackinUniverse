@@ -1,22 +1,20 @@
 function init()
   self.minRange = config.getParameter("minRange") or 0.5
 
-  self.visualProjectileType = config.getParameter("visualProjectileType")
-  self.visualProjectileCount = config.getParameter("visualProjectileCount") or 20
-  self.visualProjectileSpeed = config.getParameter("visualProjectileSpeed") or 20
-  self.visualProjectileTime = config.getParameter("visualProjectileTime")
-  self.visualDuration = config.getParameter("visualDuration") or 0.2
+  self.visualProjectileType = "armornova"
+  self.visualProjectileCount = 8
+  self.visualProjectileSpeed = 6.66
+  self.visualProjectileTime = 0.666
+  self.visualDuration = 0.666
 
-  self.damageProjectileType = config.getParameter("damageProjectileType") or "armorthornburst"
-  self.damageMultiplier = config.getParameter("damageMultiplier") or 0.06
-  --self.fadeColor = config.getParameter("fadeColor")
-  --self.border = config.getParameter("border")
+  self.damageProjectileType = "novadamage"
+  self.damageMultiplier = 1.45
 
-  self.cooldown = config.getParameter("cooldown") or 5
+  self.cooldown = 10
+  self.cooldownTimer = 10
+  self.removeInWater = true
 
-  self.removeInWater = config.getParameter("removeInWater")
-
-  self.minTriggerDamage = config.getParameter("minTriggerDamage") or 0
+  self.minTriggerDamage = 15
 
   resetThorns()
   self.cooldownTimer = 0
