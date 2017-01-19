@@ -37,11 +37,18 @@ function setCritDamage(damage)
   self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)) 
   local crit = math.random(100) <= self.critChance
   damage = crit and (damage*2) + self.critBonus or damage
-  if heldItem then
-    if not root.itemHasTag(heldItem, "mininggun") then 
-      if crit then status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId()) end
-    end 
+     -- Primary hand, or single-hand equip  
+     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+     --used for checking dual-wield setups
+     local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
+  if crit then
+    if heldItem then
+      if not root.itemHasTag(heldItem, "mininggun") then 
+        status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
+      end
+    end
   end
+
   return damage
 end
   -- *******************************************************
