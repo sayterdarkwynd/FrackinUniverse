@@ -37,8 +37,11 @@ function setCritDamage(damage)
   self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)) 
   local crit = math.random(100) <= self.critChance
   damage = crit and (damage*2) + self.critBonus or damage
-
-  if crit then status.addEphemeralEffect("crithit", 0.5, activeItem.ownerEntityId()) end  
+  if heldItem then
+    if not root.itemHasTag(heldItem, "mininggun") then 
+      if crit then status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId()) end
+    end 
+  end
   return damage
 end
   -- *******************************************************

@@ -12,10 +12,16 @@ function GunFire:init()
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
+  
+-- **** FU VARS
+  local heldItem = world.entityHandItem(activeItem.ownerEntityId(), "primary")
+  local heldItem2 = world.entityHandItem(activeItem.ownerEntityId(), "alt")
+  local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")
+  
 end
 
 
-
+--********************** FU CRIT HITS
 function GunFire:setCritDamage(damage)
   self.critChance = ( config.getParameter("critChance",0) + (config.getParameter("level",0)/2) ) or 1
   self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + (config.getParameter("level",0)/2) )  * self.critChance ) /100 ) /2 ) or 0  
@@ -23,7 +29,11 @@ function GunFire:setCritDamage(damage)
   self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)) 
   local crit = math.random(100) <= self.critChance
   damage = crit and (damage*2) + self.critBonus or damage
-  if crit then status.addEphemeralEffect("crithit", 0.5, activeItem.ownerEntityId()) end  
+  if crit then
+    if not root.itemHasTag(heldItem, "mininggun") then 
+      status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId()) 
+    end
+  end   
   return damage
 end
 
