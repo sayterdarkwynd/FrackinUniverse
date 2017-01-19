@@ -23,8 +23,6 @@
     }
   ],
 
-  "scripts" : [ "wretchel.lua" ],
-  
   "stages" : [
     {
       "duration" : [720, 1460]
@@ -42,8 +40,16 @@
       "resetToStage" : 2
     }
   ],
+
     "maxImmersion" : 0.125,
-  
+          "touchDamage" : {
+            "poly" : [ [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0] ],
+            "damage" : 0,
+
+            "damageType" : "IgnoresDef",
+            "damageSourceKind" : "cosmic",
+            "statusEffects" : [ "slowfall3", "gravrain" ]
+          },  
   "breakDropOptions" : [
     [ [ "wretchelseed", 1, { } ] ]
   ]
