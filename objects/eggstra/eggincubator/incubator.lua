@@ -10,7 +10,7 @@ function init()
     default = 400,
     henegg = 400,
     primedegg = 200,
-    raptoregg = 1200,
+    raptoregg = 2,
     firefluffaloegg = 800,
     poisonfluffaloegg =  800,
     icefluffaloegg = 800,
@@ -70,9 +70,7 @@ function checkHatching()
 
       -- set visual growth bar on the incubator
       self.indicator = math.ceil( (age / hatchTime) * 9)
-       --sb.logInfo("indicator: %s", self.indicator) 
       
-
       -- hatching check
       if age >= hatchTime then
         hatchEgg()
@@ -124,13 +122,6 @@ function hatchEgg()  --make the baby
     end
     if item.name == "goldenegg" then
       world.spawnItem("money", entity.position(), 5000)
-    end  
-    if item.name == "raptoregg" then
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()    
-      world.spawnMonster("furaptor4", entity.position(), parameters)
     end  
     if item.name == "mooshiegg" then
       local parameters = {}
@@ -188,6 +179,13 @@ function hatchEgg()  --make the baby
       parameters.startTime = os.time()
       world.spawnMonster("furobothenbaby", entity.position(), parameters)
     end
+    if item.name == "raptoregg" then
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()    
+      world.spawnMonster("furaptor4", entity.position(), parameters)
+    end      
   end
   storage.incubationTime = nil
 end
