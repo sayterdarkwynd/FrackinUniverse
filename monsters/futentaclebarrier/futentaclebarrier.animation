@@ -6,47 +6,22 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 2,
-            "cycle" : 3,
-	    "mode" : "loop"
+            "frames" : 9,
+            "cycle" : 0.9,
+            "mode" : "loop"
           },
           "walk" : {
-            "frames" : 3,
+            "frames" : 1,
             "cycle" : 0.5,
             "mode" : "loop",
             "properties" : {
-              "immediateSoundRangeMultiplier" : 0.5
-            },
-            "frameProperties" : {
-              "immediateSound" : [ "/sfx/blocks/footstep_brains.ogg", "/sfx/blocks/footstep_brains.ogg", "/sfx/blocks/footstep_brains.ogg" ]
+            "particleEmittersOff" : [ "spindust" ]
             }
           },
-          "hurt" : {
-            "frames" : 1,
-            "cycle" : 0.5
-          },           
-          "jump" : {
-            "frames" : 1,
-            "cycle" : 0.5
-          },          
           "fall" : {
             "frames" : 1,
-            "cycle" : 0.5
-          },
-          "melee" : {
-            "frames" : 6,
-            "cycle" : 0.6,
-            "mode" : "transition",
-            "transition" : "fire"
-          },          
-          "fire" : {
-            "frames" : 5,
-            "cycle" : 0.5,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSoundRangeMultiplier" : 0.5,
-              "immediateSound" : "/sfx/npc/quadruped/sandworm_attack2.ogg"
-            }            
+            "cycle" : 0.25,
+            "mode" : "loop"
           }
         }
       },
@@ -88,8 +63,7 @@
       "body" : {
         "properties" : {
           "transformationGroups" : [ "body" ],
-		  "centered" : true,
-          "offset" : [0,1]
+          "offset" : [-0.0625, 0.6875]
         },
         "partStates" : {
           "body" : {
@@ -103,29 +77,9 @@
                 "image" : "<partImage>:walk.<frame>"
               }
             },
-            "fire" : {
-              "properties" : {
-                "image" : "<partImage>:fire.<frame>"
-              }
-            },
-            "melee" : {
-              "properties" : {
-                "image" : "<partImage>:melee.<frame>"
-              }
-            },            
-            "fireWindup" : {
-              "properties" : {
-                "image" : "<partImage>:idle.<frame>"
-              }
-            },
-            "jump" : {
-              "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
-              }
-            },
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:walk.<frame>"
               }
             }
           },
@@ -148,12 +102,19 @@
   "effects" : {
     "blink" : {
       "type" : "flash",
-      "time" : 0.25,
+      "time" : 0,
       "directives" : "fade=ffffff;0.5"
     }
   },
 
   "particleEmitters" : {
+    "spindust" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ -0.0, -2.25, 0.0, -2.25 ],
+      "particles" : [
+        { "particle" : "mandrafloradust" }
+      ]
+    },
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
@@ -175,16 +136,24 @@
         { "particle" : "deathfizz4right" }
       ]
     },
-    "dripslime" : {
-      "emissionRate" : 5,
-      "offsetRegion" : [-1, -1, 1, 1],
-      "particles" : [
-        { "particle" : "poisondrip3" }
-      ]
-    },
     "captureParticles" : {
       "particles" : [
-        { "particle" : "monstercapture" }
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/energy/energy.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 1,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        }
       ]
     },
     "releaseParticles" : {
@@ -211,7 +180,6 @@
 
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
-    "deathPuff" : [ "/sfx/npc/quadruped/sandworm_death.ogg" ],
-    "fire" : [  "/sfx/projectiles/bloodvomit6.ogg","/sfx/projectiles/bloodvomit5.ogg" , "/sfx/projectiles/bloodvomit4.ogg" , "/sfx/projectiles/bloodvomit3.ogg" , "/sfx/projectiles/bloodvomit2.ogg"  ]
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
 }
