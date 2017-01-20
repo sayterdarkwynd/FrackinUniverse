@@ -9,7 +9,7 @@ function init()
               {stat = "sulphuricImmunity", amount = 1}
 	    }) 
        else
-	    setBonusInit("fu_boneset", {
+	    setBonusInit("fu_boneset2", {
 	      {stat = "maxHealth", baseMultiplier = 1.0},
 	      {stat = "powerMultiplier", baseMultiplier = 1.0},
 	      {stat = "physicalResistance", baseMultiplier = 1.0},

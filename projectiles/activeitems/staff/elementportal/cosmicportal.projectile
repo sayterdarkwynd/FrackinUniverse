@@ -1,0 +1,51 @@
+{
+  "projectileName" : "cosmicportal",
+  "physics" : "hover",
+  "timeToLive" : 6,
+  "image" : "cosmicportal.png",
+  "animationCycle" : 0.35,
+  "lightColor" : [90, 60, 110],
+  "frameNumber" : 4,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/melee/astraltear2.ogg" ]
+    },
+    {
+      "time" : 5.65,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/astraltear_stop3.ogg" ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/cosmicimpactmute.config"
+    }
+  ],
+  "speed" : 0,
+  "power" : 0,
+  "damagePoly" : [],
+
+  "fullbright" : true,
+  "emitters" : ["cosmicdust"],
+
+  "renderLayer" : "Projectile-1",
+  "orientationLocked" : true,
+
+  "bounces" : -1,
+  "onlyHitTerrain" : true,
+
+  "scripts" : [ "/projectiles/activeitems/staff/elementportal/elementportal.lua" ],
+
+  "projectileType" : "cosmicswarmer",
+  "projectileParameters" : {},
+  "spawnRate" : 0.3,
+
+  "persistentAudio" : "/sfx/melee/barrier_create_electric.ogg"
+}

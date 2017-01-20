@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ngravitybolt",
+  "physics" : "arrownosticky",
+  "bounces" : 0,
+  "image" : "ngravitybolt.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "emitters" : [ "shadowsmoke" ],
+  "timeToLive" : 30,
+  "power" : 5.0,
+  "speed" : 100,
+  "damageType" : "NoDamage",
+  "damageKind" : "bow",
+  "damageTeam" : { "type" : "ghostly" },
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "ngravityexplosion"
+    }
+  ]
+}

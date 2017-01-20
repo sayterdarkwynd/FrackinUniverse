@@ -12,7 +12,7 @@ function init()
     {stat = "grit", amount = 0.25},
     {stat = "wetImmunity", amount = 1},
     {stat = "poisonResistance", amount = 0.25},
-    {stat = "radiationResistance", amount = 0.4}
+    {stat = "radioactiveResistance", amount = 0.4}
 	},callbacks)
 
 end

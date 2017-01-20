@@ -1,0 +1,27 @@
+{
+  "projectileName" : "poisonarrow",
+  "physics" : "arrow",
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_arrow.ogg"
+      ]
+    }
+  ],
+  "image" : "poisonarrow.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "pointLight" : true,
+  "lightColor" : [48, 79, 13],
+  "emitters" : [ "poisonplasma" ],
+  "statusEffects" : [
+    "weakpoison"
+  ],
+  "power" : 20,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "damageKind" : "poisonbow",
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ]
+}

@@ -4,7 +4,8 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Fire, brimstone and protection. 15% Fire Resist.",
+  "description" : "15% Fire Resist. Glows. Lava powered. More powerful on deadly-hot biomes.
+^cyan;Set Bonus : ^green;Immune to Acid, Proto, Burning, Lava, All Heat, Wet^reset;.",
   "shortdescription" : "Hellfire Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -32,12 +33,13 @@
     {
       "stat" : "fireResistance",
       "amount" : 0.15
-    },    
+    },
+    "gloworange",
+    "hellfiresetbonus",
     {
-      "stat" : "fireStatusImmunity",
+      "stat" : "fu_hellfireset_chest",
       "amount" : 1
     },
-    "ffextremeheatimmunity",
-    "fireburst"
+    "lavahealing"
   ]
 }

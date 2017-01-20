@@ -4,8 +4,8 @@
   "printable" : false,
   "price" : 1600,
   "rarity" : "rare",
-
-  "description" : "Produces anti-gravity in a 75 tile radius. Use with caution.",
+  "objectType" : "physics",
+  "description" : "Produces anti-gravity in a 30 tile radius. Use with caution.",
   "shortdescription" : "^orange;Anti-Grav Generator^white;",
   "race" : "generic",
   "category" : "crafting",
@@ -13,7 +13,7 @@
   "inventoryIcon" : "armoryicon.png",
   "orientations" : [
     {
-      "imageLayers" : [ { "image" : "antigravgen.png:<color>.<frame>", "fullbright" : true }, { "image" : "antigravgen.png:<color>.<frame>" } ],
+      "imageLayers" : [ { "image" : "antigravgen.png:<color>.<frame>", "fullbright" : true }, { "image" : "antigravgenlit.png:<color>.<frame>" } ],
       "direction" : "left",
       "flipImages" : true,
 
@@ -22,7 +22,8 @@
       "animationCycle" : 1,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-30, -30, 30, 30]
     },
     {
       "imageLayers" : [ { "image" : "antigravgen.png:<color>.<frame>", "fullbright" : true }, { "image" : "antigravgenlit.png:<color>.<frame>" } ],
@@ -33,7 +34,8 @@
       "animationCycle" : 1,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-30, -30, 30, 30]
     }
   ],
 
@@ -59,5 +61,14 @@
     "preciseStandPositionLeft" : [-1.0, 0.0],
     "preciseStandPositionRight" : [1.0, 0.0],
     "maxNpcs" : 1
+  },
+
+  "physicsForces" : {
+    "jumpForce" : {
+      "type" : "DirectionalForceRegion",
+      "rectRegion" : [-50, -50, 50, 50],
+      "yTargetVelocity" : 3,
+      "controlForce" : 700
+    }
   }
 }

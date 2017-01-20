@@ -10,7 +10,7 @@ function init()
     {stat = "breathProtection", amount = 1},
     {stat = "wetImmunity", amount = 1},
     {stat = "poisonResistance", amount = 0.15},
-    {stat = "radiationResistance", amount = 0.30},
+    {stat = "radioactiveResistance", amount = 0.30},
     {stat = "radiationburnImmunity", amount = 1}
 	},callbacks)
 

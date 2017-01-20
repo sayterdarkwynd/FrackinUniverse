@@ -51,6 +51,31 @@
   },
   {
     "op": "add",
+    "path": "/animationCustom/sounds/cosmiccharge",
+    "value" : [ "/sfx/melee/shockwave_charge_electric.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicfull",
+    "value" : [ "/sfx/melee/shockwave_full_electric.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicactivate",
+    "value" : [ "/sfx/melee/elemental_aura_activate.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicactive",
+    "value" : [ "/sfx/melee/elemental_aura_electric.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicdeactivatee",
+    "value" : [ "/sfx/gun/impact_plasma.ogg" ]
+  },
+  {
+    "op": "add",
     "path": "/animationCustom/particleEmitters/shadowCharge",
     "value" : {
       "active" : false,
@@ -98,6 +123,29 @@
     "path": "/ability/elementalConfig/radioactive",
     "value" : {
       "damageConfig" : { "statusEffects" : [ "radiationburn" ] }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/cosmicCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 25,
+      "offsetRegion" : [-1.0, -2.5, 1.0, 1.5],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"},
+        { "particle" : "cosmicaura"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/cosmic",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [  ] }
     }
   }
 ]

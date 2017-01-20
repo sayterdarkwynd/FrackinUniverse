@@ -11,6 +11,8 @@
 
   "persistent" : true,
 
+"defenseAmount" : 25,
+
   "scriptConfig" : {
     "behavior" : "crewmember",
     "behaviorConfig" : {
@@ -35,6 +37,21 @@
 
       "powerMultiplierExponent" : 1.0,
 
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "defenseboost",
+            "defenseAmount" : 25,
+            "duration" : 300
+          },         
+          {
+            // Persistent effects are active while on the ship
+            "type" : "PersistentEffect",
+            "effect" : "regeneration1"
+          }
+        ],
+        
       "role" : {
         "type" : "soldier",
         "name" : "Greg",

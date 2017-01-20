@@ -20,6 +20,16 @@
     "value" : [ "/sfx/melee/travelingslash_poison1.ogg" ]
   },
   {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicSpin",
+    "value" :  ["/sfx/melee/elemental_spin_electric.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_electric7.ogg" ]
+  },
+  {
     "op": "replace",
     "path": "/ability/damageConfig/damageSourceKind",
     "value": "<elementalType>"
@@ -75,6 +85,30 @@
       "projectileType": "radioactivespinswoosh",
       "damageConfig": {
         "statusEffects": [ "radiationburn"]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/cosmicSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/cosmic",
+    "value": {
+      "projectileType": "cosmicspinswoosh",
+      "damageConfig": {
+        "statusEffects": [  ]
       }
     }
   }

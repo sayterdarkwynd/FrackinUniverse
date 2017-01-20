@@ -14,15 +14,17 @@
     "scripts" : [
       "/monsters/monster.lua"
     ],
+    
 
+    
     "persistent" : false,
 
     "behavior" : "farmablebaby",
 
-    "evolveType" : "hen",
+    "evolveType" : "fuhen",
     "spawnOffset" : [0.0, 0.25],
     "spawnPoly" : [ [0.25, 0.75], [0.75, 0.25], [0.75, -0.25], [0.25, -0.75], [-0.25, -0.75], [-0.75, -0.25], [-0.75, 0.25], [-0.25, 0.75] ],
-    "evolveTime" : 100,
+    "evolveTime" : 1200,
 
     "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
     "scale" : 1.0,
@@ -98,5 +100,13 @@
     "captureHealthFraction" : 0.5,
     "capturedMonsterType" : "henbaby", 
     "nametagColor" : [64, 200, 255]
-  }
+  },
+  
+    "tamedParameters" : {
+      "stages" : [24, 172800],
+      "span" : 300,
+      "growthType" : "chicken"
+    },
+    "slaughterPool" : [{"name" : "rawnugget", "count" : 1}],
+    "generation" : 1
 }

@@ -1,6 +1,6 @@
 {
   "itemName" : "fustingergun",
-  "price" : 160,
+  "price" : 800,
   "inventoryIcon" : "fustingergun.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
@@ -12,7 +12,7 @@
   "weaponType" : "Carbine",
   "itemTags" : ["weapon","ranged","assaultrifle"],
   "twoHanded" : false,
-
+  "learnBlueprintsOnPickup" : [ "fustingergun2" ],
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -44,7 +44,7 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "stingergunsting",
+    "projectileType" : "honeystingergunsting",
     "projectileParameters" : {
       "speed" : 62,
       "knockback" : 1.5
@@ -79,7 +79,7 @@
 	  }
   },
 
-  "critChance" : 5,
+  "critChance" : 3,
   "critBonus" : 3,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

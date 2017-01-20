@@ -29,7 +29,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "shadow",
+  "elementalType" : "cosmic",
 
   "aimOffset" : -1.0,
 
@@ -37,12 +37,12 @@
   "primaryAbility" : {
     "fireTime" : 0.55,
     "baseDps" : 12.95,
-    
+
     "damageConfig" : {
-      "statusEffects" : [ "defenseboostneg20" ],
+      "statusEffects" : [ ],
       "knockback" : 20,
       "knockbackMode" : "facing",
-       "damageSourceKind" : "fushadowdamage"
+       "damageSourceKind" : "cosmic"
     },
     "stances" : {
       "idle" : {
@@ -71,6 +71,6 @@
     }
   },
   "critChance" : 4,
-  "critBonus" : 17, 
+  "critBonus" : 11,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,0 +1,55 @@
+{
+  "objectName" : "eggincubator",
+  "rarity" : "Common",
+  "objectType" : "container",
+
+  "category" : "storage",
+  "price" : 100,
+  "description" : "An egg incubator.",
+  "shortdescription" : "Incubator",
+  "race" : "generic",
+  "printable" : false,
+
+  "apexDescription" : "An incubator for eggs.",
+  "avianDescription" : "A baby birdy home.",
+  "floranDescription" : "A box of tassssty.",
+  "glitchDescription" : "Identify. Egg Incubation.",
+  "humanDescription" : "An incubator.",
+  "hylotlDescription" : "An egg incubator.",
+
+  "inventoryIcon" : "eggincubatoricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "eggincubator.png:default",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+  
+  "animation" : "/objects/eggstra/ibin.animation",
+
+  "animationParts" : {
+    "bin" : "eggincubator.png",
+    "indicator" : "eggtimer.png"
+  },
+  
+  "scripts" : [ 
+    "/objects/eggstra/bin.lua",
+    "/objects/eggstra/eggincubator/incubator.lua"
+  ],
+  "containerCallback" : "binInventoryChange",
+  "scriptDelta" : 60,
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.wav" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.wav" ],
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest1.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600
+}

@@ -38,8 +38,8 @@ function build(directory, config, parameters, level, seed)
     -- FU ADDITIONS 
       config.tooltipFields.distanceLabel = config.projectileParameters.maxDistance or config.projectileParameters.hoverMaxDistance
       config.tooltipFields.knockbackLabel = config.projectileParameters.knockback or 0 
-      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0) + configParameter("level",1), 1)
-      config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0) + configParameter("level",1), 1)
+      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0) + util.round(configParameter("level",1)/2), 1)
+      config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0) + util.round(configParameter("level",1)/2), 1)
     -- *******************************
   -- set price
   config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1))

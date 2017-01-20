@@ -10,7 +10,7 @@
   "level" : 5,
   "tooltipKind" : "gun",
   "weaponType" : "Bio-Tech",
-  "itemTags" : ["weapon","ranged","sniperrifle"],
+  "itemTags" : ["weapon","ranged","grenadelauncher"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -18,7 +18,7 @@
     "butt" : "",
     "middle" : "eyecannon.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -26,9 +26,9 @@
     }
   },
 
-  "baseOffset" : [1.56, 0.4],
-  "muzzleOffset" : [2.445, 0.125],
-
+  "baseOffset" : [1.26, 0.4],
+  "muzzleOffset" : [1, 0.125],
+  "handGrip" : "wrap",
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "poison",
@@ -36,16 +36,17 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.7,
+    "fireTime" : 1.2,
     "baseDps" : 5.35,
-    "energyUsage" : 43.5,
-    "inaccuracy" : 0,
+    "energyUsage" : 47.5,
+    "inaccuracy" : 0.05,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "ocucannonshot",
     "projectileParameters" : { 
+      "damageKind" : "poison",
       "speed" : 50,
       "knockback" : 9
     },
