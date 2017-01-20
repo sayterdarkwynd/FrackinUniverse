@@ -119,71 +119,64 @@ function hatchEgg()  --make the baby
       parameters.damageTeamType = "friendly"
       parameters.startTime = os.time()
       world.spawnMonster("fuhenbaby", entity.position(), parameters)
-    end
-    if item.name == "goldenegg" then
+    elseif item.name == "goldenegg" then
       world.spawnItem("money", entity.position(), 5000)
-    end  
-    if item.name == "mooshiegg" then
+    elseif item.name == "mooshiegg" then
       local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()
       world.spawnMonster("fumooshibaby", entity.position(), parameters)
-    end  
-    if item.name == "fluffaloegg" then
+    elseif item.name == "fluffaloegg" then
       local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()
       world.spawnMonster("fufluffalo", entity.position(), parameters)
-    end
-    if item.name == "firefluffaloegg" then
+    elseif item.name == "firefluffaloegg" then
       local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()
       world.spawnMonster("fufirefluffalo", entity.position(), parameters)
-    end
-    if item.name == "icefluffaloegg" then
+    elseif item.name == "icefluffaloegg" then
       local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()
       world.spawnMonster("fuicefluffalo", entity.position(), parameters)
-    end
-    if item.name == "poisonfluffaloegg" then
+    elseif item.name == "poisonfluffaloegg" then
       local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()
       world.spawnMonster("fupoisonfluffalo", entity.position(), parameters)
-    end
-    if item.name == "electricfluffaloegg" then
+    elseif item.name == "electricfluffaloegg" then
       local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()
       world.spawnMonster("fuelectricfluffalo", entity.position(), parameters)
-    end
-    if item.name == "robothenegg" then
+    elseif item.name == "robothenegg" then
       local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()
       world.spawnMonster("furobothenbaby", entity.position(), parameters)
-    end
-    if item.name == "raptoregg" then
+    elseif item.name == "raptoregg" then
+      local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()    
+      --sb.logInfo("Trying to spawn raptor. Parameters is %s", parameters)
       world.spawnMonster("furaptor4", entity.position(), parameters)
     end      
   end
