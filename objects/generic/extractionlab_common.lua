@@ -256,6 +256,7 @@ function getRecipes()
 	{ inputs = { cobblestonematerial = 50 }, outputs = { rawminerals = { 2, 2, 3 } } },
 	{ inputs = { concretematerial = 50 }, outputs = { rawminerals = { 2, 2, 4 } } },
 	{ inputs = { conglomeratematerial = 50 }, outputs = { rawminerals = { 2, 2, 3 } } },
+	{ inputs = { copperblock = 50 }, outputs = { copperbar = { 1, 1, 2 } } },
 	{ inputs = { coral2material = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },
 	{ inputs = { coralmaterial = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },
 	{ inputs = { corruptdirtmaterial = 50 }, outputs = { tissueculture = { 2, 2, 4 } } },
