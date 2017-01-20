@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-    if (world.type() == "infernus") or (world.type() == "infernusdark") or (world.type() == "volcanic") or (world.type() == "magma")  then
+      if (world.type() == "infernus") or (world.type() == "infernusdark") or (world.type() == "volcanic") or (world.type() == "magma")  then
 	    setBonusInit("fu_hellfireset", {
 		{stat = "physicalResistance", amount = 0.15},
 		{stat = "maxHealth", baseMultiplier = 1.15},	
@@ -26,7 +26,7 @@ function init()
 		{stat = "wetImmunity", amount = 1},
 		{stat = "biomeheatImmunity", amount = 1}
 	    })        
-    end  
+      end  
 	
 end
 
