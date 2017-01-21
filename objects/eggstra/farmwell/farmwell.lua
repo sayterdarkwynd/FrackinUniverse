@@ -24,14 +24,7 @@ object.setInteractive(true)
   elseif storage.waterCount > 100 then
     object.say("Water : "..math.ceil(storage.waterCount).." (Very Low)")
   end
-
-        self.indicator = 0
-        self.timer = 0
-        if self.indicator == nil then self.indicator = 0 end
-        if self.timer == nil or self.timer > self.indicator then self.timer = self.indicator - 1 end
-        if self.timer > -1 then animator.setGlobalTag("bin_indicator", self.timer) end
-        self.timer = self.timer + 1 
-        
+  
 end
 
 function onInteraction(args)
