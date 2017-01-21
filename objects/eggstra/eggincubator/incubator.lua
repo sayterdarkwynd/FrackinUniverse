@@ -10,7 +10,7 @@ function init()
     default = 400,
     henegg = 400,
     primedegg = 200,
-    raptoregg = 2,
+    raptoregg = 1200,
     firefluffaloegg = 800,
     poisonfluffaloegg =  800,
     icefluffaloegg = 800,
@@ -19,9 +19,13 @@ function init()
     robothenegg = 400,
     mooshiegg = 300
   }
+  -- egg modifiers
+  eggmodifiers = {
+    default = 1
+  }
   
   -- change this to check the egg instead. each egg has a spawnMod that influences its hatch time
-  spawnMod = math.random(10) -- + spawnModValue
+  spawnMod = math.random(10) -- + config.getParameter("spawnModValue")
   
   -- is world temperature suitable? warmer weather reduces spawn time unless it likes cold
   storage.warmth = 0
@@ -29,7 +33,6 @@ function init()
   
   -- how tough is the egg? the tougher it is, the longer it takes to hatch
   storage.hardiness = 0
-  
 end
 
 
