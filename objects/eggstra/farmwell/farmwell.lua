@@ -1,6 +1,6 @@
 function init()
     object.setInteractive(true)
-     script.setUpdateDelta(10)
+
 end
 
 function update(dt)
@@ -10,20 +10,28 @@ object.setInteractive(true)
     end
     storage.waterCount = storage.waterCount + dt
   if storage.waterCount < 100 then
-    object.say("Water : Nearly Dry ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Nearly Dry)")
   elseif storage.waterCount > 600 then
-    object.say("Water : Brimming ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Brimming)")
   elseif storage.waterCount > 500 then
-    object.say("Water : Full ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Full)")
   elseif storage.waterCount > 400 then
-    object.say("Water : Wet ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Wet)")
   elseif storage.waterCount > 300 then
-    object.say("Water : Passable ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Ample)")
   elseif storage.waterCount > 200 then
-    object.say("Water : Low  "..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Low)")
   elseif storage.waterCount > 100 then
-    object.say("Water : Very Low ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Very Low)")
   end
+
+        self.indicator = 0
+        self.timer = 0
+        if self.indicator == nil then self.indicator = 0 end
+        if self.timer == nil or self.timer > self.indicator then self.timer = self.indicator - 1 end
+        if self.timer > -1 then animator.setGlobalTag("bin_indicator", self.timer) end
+        self.timer = self.timer + 1 
+        
 end
 
 function onInteraction(args)
@@ -32,24 +40,24 @@ function onInteraction(args)
   end
   
   if storage.waterCount < 100 then
-    object.say("Water : Nearly Dry ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Nearly Dry)")
   elseif storage.waterCount > 600 then
-    object.say("Water : Brimming ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Brimming)")
   elseif storage.waterCount > 500 then
-    object.say("Water : Full ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Full)")
   elseif storage.waterCount > 400 then
-    object.say("Water : Wet ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Wet)")
   elseif storage.waterCount > 300 then
-    object.say("Water : Passable ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Ample)")
   elseif storage.waterCount > 200 then
-    object.say("Water : Low  "..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Low)")
   elseif storage.waterCount > 100 then
-    object.say("Water : Very Low ("..math.ceil(storage.waterCount)..")")
+    object.say("Water : "..math.ceil(storage.waterCount).." (Very Low)")
   end
   
-  if storage.waterCount and storage.waterCount > 25 then
+  if storage.waterCount and storage.waterCount > 100 then
     local p = object.position()
     world.spawnItem("waterbucket", p, 1)
-    storage.waterCount = storage.waterCount - 25
+    storage.waterCount = storage.waterCount - 100
   end
 end
