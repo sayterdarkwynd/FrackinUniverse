@@ -1,8 +1,8 @@
-function init(virtual)
-  if not virtual then
-    storage.mParams = entity.configParameter("cagedParams", nil)
-    entity.setInteractive(storage.mParams ~= nil)
-  end
+function init()
+ 
+    storage.mParams = config.getParameter("cagedParams", nil)
+    object.setInteractive(storage.mParams ~= nil)
+ 
 end
 
 function main()
@@ -43,10 +43,5 @@ function updateCage()
   if mParams ~= nil then cage = "filledchickencage" end
   storage.mParams = nil
   entity.smash()
-  
-  --TODO try delay after smash?
-  --local result = world.placeObject(cage, position, direction, {cagedParams = mParams})
-  --if not result then
-    world.spawnItem(cage, position, 1, {cagedParams = mParams})
-  --end
+  world.spawnItem(cage, position, 1, {cagedParams = mParams})
 end
