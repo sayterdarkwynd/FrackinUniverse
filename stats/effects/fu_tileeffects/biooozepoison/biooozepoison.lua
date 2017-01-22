@@ -19,6 +19,13 @@ baseValue = config.getParameter("healthDown",0)*(status.resourceMax("health"))
 end
 
 function update(dt)
+
+  if status.isResource("food") then
+      hungerLevel = status.resource("food")
+  else
+      hungerLevel = 50
+  end
+  
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
@@ -28,6 +35,8 @@ function update(dt)
         damageSourceKind = "poison",
         sourceEntityId = entity.id()
       })
+	adjustedHunger = hungerLevel - (hungerLevel * 0.0095)
+	status.setResource("food", adjustedHunger)
   end
 
   effect.setParentDirectives("fade=CCFF33="..self.tickTimer * 0.4)
