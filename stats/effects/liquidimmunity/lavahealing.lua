@@ -28,5 +28,5 @@ local mouthful = world.liquidAt(mouthposition)
 end
 
 function uninit()
-  status.clearPersistentEffects("lavahealing")
+
 end

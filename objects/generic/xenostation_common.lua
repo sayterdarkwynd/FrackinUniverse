@@ -24,9 +24,6 @@ function getRecipes()
 		{ inputs = { aquapodseed = 1 }, outputs = { gene_aquacelerity = 1, gene_aquahomeo = 1 } },
 		{ inputs = { arkaentree = 1 }, outputs = { gene_harden = 2 } },
 		{ inputs = { automatoseed = 1 }, outputs = { gene_harden = 1 } },
-		{ inputs = { avaliplant1 = 1 }, outputs = { gene_energy = 1 } },
-		{ inputs = { avaliplant2 = 1 }, outputs = { gene_defense = 1 } },
-		{ inputs = { avaliplant3 = 1 }, outputs = { gene_agility = 1 } },
 		{ inputs = { avesmingoseed = 1 }, outputs = { gene_chloroplast = 1 } },
 		{ inputs = { bambooseed = 1 }, outputs = { gene_reproductive = 1 }, timeScale = { 2 / 11, 5 / 6 } }, -- time=1 for both
 		{ inputs = { bananaseed = 1 }, outputs = { gene_resist = 1 } },

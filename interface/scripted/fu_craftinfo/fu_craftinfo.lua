@@ -140,6 +140,11 @@ function registerMaterial(mat, station)
 	if materialsMissing[mat] then return end
 	if not materials[mat] then
 		-- this will probably spam the log file a bit; not much can be done about it
+		-- Skipping all wild* except wildvines
+		if string.sub(mat,1,4) == 'wild' and mat ~= 'wildvines' then
+			materialsMissing[mat] = true
+			return
+		end
 		-- saplings are special-cased
 		local sapling = mat == 'sapling'
 		if not sapling and root.createItem({ name = mat }).name == 'perfectlygenericitem' then

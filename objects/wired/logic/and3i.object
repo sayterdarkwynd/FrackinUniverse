@@ -1,0 +1,41 @@
+{
+  "objectName" : "and3i",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "<An /'And'/ gate. Requires all inputs to be /'on'/ to work.>",
+  "shortdescription" : "And Gate (3 Inputs)",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "inventoryIcon" : "and3i.png:default.1",
+  "orientations" : [
+    {
+      "image" : "and3i.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/logic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "and3i.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inboundNodes" : [ [-1, -1], [-1, 0], [0, 0] ],
+  "outboundNodes" : [ [0, -1] ],
+
+  "gates" : 3,
+  "truthtable" : [ [ [ false, false ], [ false, false ] ], [ [ false, false ], [ false, true ] ] ]
+}

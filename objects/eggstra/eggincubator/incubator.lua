@@ -19,9 +19,13 @@ function init()
     robothenegg = 400,
     mooshiegg = 300
   }
+  -- egg modifiers
+  eggmodifiers = {
+    default = 1
+  }
   
   -- change this to check the egg instead. each egg has a spawnMod that influences its hatch time
-  spawnMod = math.random(10) -- + spawnModValue
+  spawnMod = math.random(10) -- + config.getParameter("spawnModValue")
   
   -- is world temperature suitable? warmer weather reduces spawn time unless it likes cold
   storage.warmth = 0
@@ -29,7 +33,6 @@ function init()
   
   -- how tough is the egg? the tougher it is, the longer it takes to hatch
   storage.hardiness = 0
-  
 end
 
 
@@ -70,9 +73,7 @@ function checkHatching()
 
       -- set visual growth bar on the incubator
       self.indicator = math.ceil( (age / hatchTime) * 9)
-       --sb.logInfo("indicator: %s", self.indicator) 
       
-
       -- hatching check
       if age >= hatchTime then
         hatchEgg()
@@ -99,14 +100,14 @@ function canHatch(item)  -- is it a supported egg type?
   if item.name == "egg" or "henegg" then return true end
   if item.name == "primedegg" then return true end
   if item.name == "goldenegg" then return true end  
-  if item.name == "egg" or "raptoregg" then return true end
-  if item.name == "egg" or "mooshiegg" then return true end
-  if item.name == "egg" or "fluffaloegg" then return true end
-  if item.name == "egg" or "firefluffaloegg" then return true end
-  if item.name == "egg" or "icefluffaloegg" then return true end
-  if item.name == "egg" or "poisonfluffaloegg" then return true end
-  if item.name == "egg" or "electricfluffaloegg" then return true end
-  if item.name == "egg" or "robothenegg" then return true end
+  if item.name == "raptoregg" then return true end
+  if item.name == "mooshiegg" then return true end
+  if item.name == "fluffaloegg" then return true end
+  if item.name == "firefluffaloegg" then return true end
+  if item.name == "icefluffaloegg" then return true end
+  if item.name == "poisonfluffaloegg" then return true end
+  if item.name == "electricfluffaloegg" then return true end
+  if item.name == "robothenegg" then return true end
   return false
 end
 
@@ -123,12 +124,6 @@ function hatchEgg()  --make the baby
       world.spawnMonster("fuhenbaby", entity.position(), parameters)
     elseif item.name == "goldenegg" then
       world.spawnItem("money", entity.position(), 5000)
-    elseif item.name == "raptoregg" then
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()    
-      world.spawnMonster("furaptor4", entity.position(), parameters)
     elseif item.name == "mooshiegg" then
       local parameters = {}
       parameters.persistent = true
@@ -178,7 +173,15 @@ function hatchEgg()  --make the baby
       parameters.damageTeamType = "passive"
       parameters.startTime = os.time()
       world.spawnMonster("furobothenbaby", entity.position(), parameters)
-    end
+    elseif item.name == "raptoregg" then
+      local parameters = {}
+      parameters.persistent = true
+      parameters.damageTeam = 0
+      parameters.damageTeamType = "passive"
+      parameters.startTime = os.time()    
+      --sb.logInfo("Trying to spawn raptor. Parameters is %s", parameters)
+      world.spawnMonster("furaptor4", entity.position(), parameters)
+    end      
   end
   storage.incubationTime = nil
 end

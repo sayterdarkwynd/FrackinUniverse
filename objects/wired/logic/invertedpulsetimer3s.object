@@ -1,0 +1,40 @@
+{
+  "objectName" : "invertedpulsetimer3s",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Stops transmitting signals for 3 seconds whenever it becomes active.",
+  "shortdescription" : "Inv. 3-Sec. Pulse Transmitter",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "inventoryIcon" : "timer.png:default.1",
+  "orientations" : [
+    {
+      "image" : "timer.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/pulsetimer.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "timer.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inboundNodes" : [ [-1, 0] ],
+  "outboundNodes" : [ [0, -1] ],
+
+  "interval" : 198,
+
+  "inverted" : true
+}
