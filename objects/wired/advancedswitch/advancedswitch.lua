@@ -81,7 +81,7 @@ function output(state)
     entity.setAnimationState("switchState", "on")
     if not (entity.configParameter("alwaysLit")) then entity.setLightColor(entity.configParameter("lightColor", {0, 0, 0, 0})) end
     entity.playSound("on");
-    entity.setAllOutboundNodes(true)
+    entity.setAlloutputNodes(true)
     if self.hasNotGate then
       entity.setOutboundNodeLevel(self.notGateNode, false)
     end
@@ -89,7 +89,7 @@ function output(state)
     entity.setAnimationState("switchState", "off")
     if not (entity.configParameter("alwaysLit")) then entity.setLightColor({0, 0, 0, 0}) end
     entity.playSound("off");
-    entity.setAllOutboundNodes(false)
+    entity.setAlloutputNodes(false)
     if self.hasNotGate then
       entity.setOutboundNodeLevel(self.notGateNode, true)
     end

@@ -55,7 +55,7 @@ function output(state)
 
   storage.state = state
   entity.setAnimationState("switchState", state)
-  entity.setAllOutboundNodes(false)
+  entity.setAlloutputNodes(false)
   entity.setOutboundNodeLevel(state, true)
 end
 

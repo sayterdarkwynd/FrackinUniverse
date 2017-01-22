@@ -3,7 +3,7 @@ function init()
   if storage.state == nil then
     output(false)
   else
-    entity.setAllOutboundNodes(storage.state)
+    entity.setAlloutputNodes(storage.state)
     if storage.state then
       entity.setAnimationState("switchState", "on")
     else
@@ -50,7 +50,7 @@ end
 function output(state)
   if storage.state ~= state then
     storage.state = state
-    entity.setAllOutboundNodes(state)
+    entity.setAlloutputNodes(state)
     if self.hasNotGate then
       entity.setOutboundNodeLevel(self.notGateNode, not state)
     end
