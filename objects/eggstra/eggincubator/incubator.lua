@@ -115,7 +115,7 @@ function hatchEgg()  --make the baby
   local container = entity.id()
   local item = world.containerTakeNumItemsAt(container, 0, 1)
   if item then
-    if item.name == "egg" or "primedegg" or "henegg" then
+    if item.name == "egg" or item.name == "primedegg" or item.name == "henegg" then
       local parameters = {}
       parameters.persistent = true
       parameters.damageTeam = 0
