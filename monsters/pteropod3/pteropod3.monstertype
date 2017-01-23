@@ -33,15 +33,38 @@
 
 
       "hostileActions" : [ 
+        {
+          "name" : "action-swoop", 
+          "cooldown" : 1.0,
+          "parameters" : {
+            "minimumRange" : 3,
+            "maximumRange" : 15,
+
+            "windupState": "winduploop",
+
+            "onGround" : false,
+            "windupTime" : 0.6,
+
+            "gravityMultiplier" : 0.5,
+            "swoopVelocity" : 50,
+            "collisionCheck" : false,
+            "highArc" : false,
+            "swoopTime" : 0.5,
+            "swoopState" : "fire",
+            "winddownTime" : 0.5,
+            "winddownState" : "fly",
+            "winddownStopForce" : 10
+          }
+        },  
        {
           "name" : "action-fire",
-          "cooldown" : 0.0,
+          "cooldown" : 1.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
+            "maximumRange" : 10,
             "minimumRange" : 5,
             "windupState" : "firewindup",
-            "windupTime" : 1.25,
+            "windupTime" : 0.5,
 
             "projectileType" : "bloodvomit",
             "projectileCount" : 5,
@@ -92,19 +115,42 @@
       "wanderActions" : [
         {
           "name" : "wander-fly",
+          "cooldown" : 3.0,
           "parameters" : {
             "wanderTime" : [2,4],
             "groundDistance" : 8,
             "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
+            "xVelocity" : 16,
+            "yVelocity" : 3
           }
         }
       ],
 
       "concurrentActions" : [ ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [
+
+        {
+          "name" : "action-fire",
+          "cooldown" : 1.2,
+          "parameters" : {
+
+            "windupState" : "fire",
+            "windupTime" : 0.01,
+            "projectileType" : "acidexplosion2",
+            "fireSound" : "", //needs explosion sound or in projectile?
+            "fireState" : "fire",
+            "winddownState" : "fly",
+            "winddownTime" : 0.01,
+            "aimAtTarget" : false,
+            "aimDirection" : [0,-1],
+            "onGround" : true,
+            "fireDelay" : 0.01,
+            "projectileParameters" : { "statusEffects" : [ "insanity"] }
+          }
+        }
+
+      ]
     },
 
     "touchDamage" : {
