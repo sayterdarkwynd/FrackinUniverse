@@ -8,6 +8,7 @@ function init()
   -- egg type?
   incubation = {
     default = 400,
+    egg = 400,
     henegg = 400,
     primedegg = 200,
     raptoregg = 1200,
@@ -45,7 +46,7 @@ function checkHatching()
   if entity.id() then
     local container = entity.id()
     local item = world.containerItemAt(container, 0)
-    if canHatch(item) then
+    if item ~= nil and incubation[item.name] ~= nil then
 
       -- set incubation time
       if storage.incubationTime == nil then
@@ -60,7 +61,7 @@ function checkHatching()
 
       -- base hatch time
       local hatchTime = incubation[item.name]
-      if hatchTime == nil then
+      if hatchTime == nil then   -- Cannot ever be true, since this if-block never gets run if hatchTime would be nil
         hatchTime = incubation.default
         --sb.logInfo("Hatch time: %s", hatchTime)
       end
@@ -95,21 +96,21 @@ function checkHatching()
 
 end
 
-function canHatch(item)  -- is it a supported egg type?
-  if item == nil then return false end
-  if item.name == "egg" or item.name =="henegg" then return true end
-  if item.name == "primedegg" then return true end
-  if item.name == "goldenegg" then return true end
-  if item.name == "raptoregg" then return true end
-  if item.name == "mooshiegg" then return true end
-  if item.name == "fluffaloegg" then return true end
-  if item.name == "firefluffaloegg" then return true end
-  if item.name == "icefluffaloegg" then return true end
-  if item.name == "poisonfluffaloegg" then return true end
-  if item.name == "electricfluffaloegg" then return true end
-  if item.name == "robothenegg" then return true end
-  return false
-end
+-- function canHatch(item)  -- is it a supported egg type?
+--   if item == nil then return false end
+--   if item.name == "egg" or item.name =="henegg" then return true end
+--   if item.name == "primedegg" then return true end
+--   if item.name == "goldenegg" then return true end
+--   if item.name == "raptoregg" then return true end
+--   if item.name == "mooshiegg" then return true end
+--   if item.name == "fluffaloegg" then return true end
+--   if item.name == "firefluffaloegg" then return true end
+--   if item.name == "icefluffaloegg" then return true end
+--   if item.name == "poisonfluffaloegg" then return true end
+--   if item.name == "electricfluffaloegg" then return true end
+--   if item.name == "robothenegg" then return true end
+--   return false
+-- end
 
 function hatchEgg()  --make the baby
   local container = entity.id()
@@ -117,70 +118,30 @@ function hatchEgg()  --make the baby
   if item then
     local spawnposition = entity.position()
     spawnposition[2] = spawnposition[2] + 2
+    local parameters = {}
+    parameters.persistent = true
+    parameters.damageTeam = 0
+    parameters.startTime = os.time()
+    parameters.damageTeamType = "passive"
     if item.name == "egg" or item.name == "primedegg" or item.name == "henegg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "friendly"
-      parameters.startTime = os.time()
       world.spawnMonster("fuhenbaby", spawnposition, parameters)
     elseif item.name == "goldenegg" then
       world.spawnItem("money", spawnposition, 5000)
     elseif item.name == "mooshiegg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()
       world.spawnMonster("fumooshibaby", spawnposition, parameters)
     elseif item.name == "fluffaloegg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()
       world.spawnMonster("fufluffalo", spawnposition, parameters)
     elseif item.name == "firefluffaloegg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()
       world.spawnMonster("fufirefluffalo", spawnposition, parameters)
     elseif item.name == "icefluffaloegg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()
       world.spawnMonster("fuicefluffalo", spawnposition, parameters)
     elseif item.name == "poisonfluffaloegg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()
       world.spawnMonster("fupoisonfluffalo", spawnposition, parameters)
     elseif item.name == "electricfluffaloegg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()
       world.spawnMonster("fuelectricfluffalo", spawnposition, parameters)
     elseif item.name == "robothenegg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()
       world.spawnMonster("furobothenbaby", spawnposition, parameters)
     elseif item.name == "raptoregg" then
-      local parameters = {}
-      parameters.persistent = true
-      parameters.damageTeam = 0
-      parameters.damageTeamType = "passive"
-      parameters.startTime = os.time()
       --sb.logInfo("Trying to spawn raptor. Parameters is %s", parameters)
       world.spawnMonster("furaptor4", spawnposition, parameters)
     end
