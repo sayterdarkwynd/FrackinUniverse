@@ -7,12 +7,12 @@ function init()
     "attackState"
   })
   self.state.leavingState = function(stateName)
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
   end
 
   entity.setAggressive(false)
   entity.setDeathParticleBurst("deathPoof")
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 end
 
 function update(dt)
@@ -25,7 +25,7 @@ function damage(args)
 end
 
 function move(direction)
-  entity.setAnimationState("movement", "move")
+  animator.setAnimationState("movement", "move")
 
   mcontroller.controlMove(direction, true)
 end
@@ -88,7 +88,7 @@ function attackState.enterWith(targetId)
 
   attackState.setAggressive(targetId)
 
-  return { timer = entity.configParameter("attackTargetHoldTime") }
+  return { timer = config.getParameter("attackTargetHoldTime") }
 end
 
 function attackState.update(dt, stateData)
@@ -106,7 +106,7 @@ function attackState.update(dt, stateData)
   if self.targetPosition ~= nil then
     local toTarget = world.distance(self.targetPosition, mcontroller.position())
 
-    if world.magnitude(toTarget) < entity.configParameter("attackDistance") then
+    if world.magnitude(toTarget) < config.getParameter("attackDistance") then
       attackState.setAttackEnabled(true)
     else
       attackState.setAttackEnabled(false)
@@ -117,7 +117,7 @@ function attackState.update(dt, stateData)
   if self.targetId == nil then
     stateData.timer = stateData.timer - dt
   else
-    stateData.timer = entity.configParameter("attackTargetHoldTime")
+    stateData.timer = config.getParameter("attackTargetHoldTime")
   end
 
   if stateData.timer <= 0 then
@@ -131,10 +131,10 @@ end
 
 function attackState.setAttackEnabled(enabled)
   if enabled then
-    entity.setAnimationState("movement", "attack")
-    self.attackHoldTimer = entity.configParameter("attackHoldTime")
+    animator.setAnimationState("movement", "attack")
+    self.attackHoldTimer = config.getParameter("attackHoldTime")
   else
-    entity.setAnimationState("movement", "aggro")
+    animator.setAnimationState("movement", "aggro")
   end
 
   entity.setDamageOnTouch(enabled)
@@ -144,10 +144,10 @@ function attackState.setAggressive(targetId)
   self.targetId = targetId
 
   if targetId ~= nil then
-    entity.setAnimationState("movement", "aggro")
+    animator.setAnimationState("movement", "aggro")
     entity.setAggressive(true)
   else
-    entity.setAnimationState("movement", "idle")
+    animator.setAnimationState("movement", "idle")
     entity.setAggressive(false)
   end
 end

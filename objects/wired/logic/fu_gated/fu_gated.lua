@@ -4,8 +4,7 @@
 --   inputBits: number of inputs which are required to be on, or unset (defaults to half of connected inputs, rounded up)
 -- only one should be specified
 
-function init(virt)
-	if virt then return end
+function init()
 
 	storage.input = config.getParameter('inputValue') -- default: random
 	storage.bits = {0, 1, 2, 3, 4, 5, 6, 7} -- assume all connected
