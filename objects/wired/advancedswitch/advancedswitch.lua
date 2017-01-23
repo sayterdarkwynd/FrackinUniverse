@@ -1,9 +1,9 @@
 function init()
-  entity.setInteractive(entity.configParameter("interactive", true))
+  object.setInteractive(config.getParameter("interactive", true))
 
-  self.hasNotGate = entity.configParameter("hasNotGate")
+  self.hasNotGate = config.getParameter("hasNotGate")
   if self.hasNotGate then
-    self.notGateNode = entity.configParameter("notGateNode")
+    self.notGateNode = config.getParameter("notGateNode")
     if self.notGateNode == nil then
       self.hasNotGate = false
     end
@@ -11,9 +11,9 @@ function init()
     self.hasNotGate = false
   end
 
-  self.hasStateToggle = entity.configParameter("hasStateToggle")
+  self.hasStateToggle = config.getParameter("hasStateToggle")
   if self.hasStateToggle then
-    self.stateToggleNode = entity.configParameter("stateToggleNode")
+    self.stateToggleNode = config.getParameter("stateToggleNode")
     if self.stateToggleNode == nil then
       self.hasStateToggle = false
     end
@@ -21,10 +21,10 @@ function init()
     self.hasStateToggle = false
   end
 
-  self.hasPersistentSwitchFunctionality = entity.configParameter("hasPersistentSwitchFunctionality")
+  self.hasPersistentSwitchFunctionality = config.getParameter("hasPersistentSwitchFunctionality")
   if self.hasPersistentSwitchFunctionality then
-    self.persistentSwitchOnNode = entity.configParameter("persistentSwitchOnNode")
-    self.persistentSwitchOffNode = entity.configParameter("persistentSwitchOffNode")
+    self.persistentSwitchOnNode = config.getParameter("persistentSwitchOnNode")
+    self.persistentSwitchOffNode = config.getParameter("persistentSwitchOffNode")
     if self.persistentSwitchOnNode == nil or self.persistentSwitchOffNode == nil then
       self.hasPersistentSwitchFunctionality = false
     end
@@ -32,9 +32,9 @@ function init()
     self.hasPersistentSwitchFunctionality = false
   end
 
-  self.hasInteractiveToggle = entity.configParameter("hasInteractiveToggle")
+  self.hasInteractiveToggle = config.getParameter("hasInteractiveToggle")
   if self.hasInteractiveToggle then
-    self.interactiveToggleNode = entity.configParameter("interactiveToggleNode")
+    self.interactiveToggleNode = config.getParameter("interactiveToggleNode")
     if self.interactiveToggleNode == nil then
       self.hasInteractiveToggle = false
     end
@@ -42,9 +42,9 @@ function init()
     self.hasInteractiveToggle = false
   end
 
-  self.hasLatch = entity.configParameter("hasLatch")
+  self.hasLatch = config.getParameter("hasLatch")
   if self.hasLatch then
-    self.latchNode = entity.configParameter("latchNode")
+    self.latchNode = config.getParameter("latchNode")
     if self.latchNode == nil then
       self.hasLatch = false
     end
@@ -53,7 +53,7 @@ function init()
   end
 
   if storage.state == nil then
-    output(entity.configParameter("defaultSwitchState", false))
+    output(config.getParameter("defaultSwitchState", false))
   else
     output(storage.state)
   end
@@ -78,43 +78,43 @@ end
 function output(state)
   storage.state = state
   if state then
-    entity.setAnimationState("switchState", "on")
-    if not (entity.configParameter("alwaysLit")) then entity.setLightColor(entity.configParameter("lightColor", {0, 0, 0, 0})) end
+    animator.setAnimationState("switchState", "on")
+    if not (config.getParameter("alwaysLit")) then animator.setLightColor(config.getParameter("lightColor", {0, 0, 0, 0})) end
     entity.playSound("on");
-    entity.setAlloutputNodes(true)
+    object.setAllOutputNodes(true)
     if self.hasNotGate then
-      entity.setOutboundNodeLevel(self.notGateNode, false)
+      object.setOutputNodeLevel(self.notGateNode, false)
     end
   else
-    entity.setAnimationState("switchState", "off")
-    if not (entity.configParameter("alwaysLit")) then entity.setLightColor({0, 0, 0, 0}) end
+    animator.setAnimationState("switchState", "off")
+    if not (config.getParameter("alwaysLit")) then animator.setLightColor({0, 0, 0, 0}) end
     entity.playSound("off");
-    entity.setAlloutputNodes(false)
+    object.setAllOutputNodes(false)
     if self.hasNotGate then
-      entity.setOutboundNodeLevel(self.notGateNode, true)
+      object.setOutputNodeLevel(self.notGateNode, true)
     end
   end
 end
 
 function update(dt)
-  if not self.hasInteractiveToggle or not entity.isInboundNodeConnected(self.interactiveToggleNode) or entity.getInboundNodeLevel(self.interactiveToggleNode) then
-    entity.setInteractive(entity.configParameter("interactive", true))
+  if not self.hasInteractiveToggle or not object.isInputNodeConnected(self.interactiveToggleNode) or object.getInputNodeLevel(self.interactiveToggleNode) then
+    object.setInteractive(config.getParameter("interactive", true))
   else
-    entity.setInteractive(false)
+    object.setInteractive(false)
   end
-  if not self.hasLatch or not entity.isInboundNodeConnected(self.latchNode) or entity.getInboundNodeLevel(self.latchNode) then
-    if not self.hasPersistentSwitchFunctionality or entity.getInboundNodeLevel(self.persistentSwitchOnNode) == entity.getInboundNodeLevel(self.persistentSwitchOffNode) then
-      if self.hasStateToggle and entity.getInboundNodeLevel(self.stateToggleNode) and not storage.triggered then
+  if not self.hasLatch or not object.isInputNodeConnected(self.latchNode) or object.getInputNodeLevel(self.latchNode) then
+    if not self.hasPersistentSwitchFunctionality or object.getInputNodeLevel(self.persistentSwitchOnNode) == object.getInputNodeLevel(self.persistentSwitchOffNode) then
+      if self.hasStateToggle and object.getInputNodeLevel(self.stateToggleNode) and not storage.triggered then
         storage.triggered = true
         output(not storage.state)
-      elseif self.hasStateToggle and storage.triggered and not entity.getInboundNodeLevel(self.stateToggleNode) then
+      elseif self.hasStateToggle and storage.triggered and not object.getInputNodeLevel(self.stateToggleNode) then
         storage.triggered = false
       end
     else
-      entity.setInteractive(false)
-      if entity.getInboundNodeLevel(self.persistentSwitchOnNode) and not entity.getInboundNodeLevel(self.persistentSwitchOffNode) and not storage.state then
+      object.setInteractive(false)
+      if object.getInputNodeLevel(self.persistentSwitchOnNode) and not object.getInputNodeLevel(self.persistentSwitchOffNode) and not storage.state then
         output(true)
-      elseif entity.getInboundNodeLevel(self.persistentSwitchOffNode) and not entity.getInboundNodeLevel(self.persistentSwitchOnNode) and storage.state then
+      elseif object.getInputNodeLevel(self.persistentSwitchOffNode) and not object.getInputNodeLevel(self.persistentSwitchOnNode) and storage.state then
         output(false)
       end
     end

@@ -1,11 +1,11 @@
 function binInventoryChange()
   if entity.id() then
     local container = entity.id()
-    local frames = entity.configParameter("binFrames", 10) - 1
+    local frames = config.getParameter("binFrames", 10) - 1
     local fill = math.ceil(frames * fillPercent(container))
     if self.fill ~= fill then
       self.fill = fill
-      entity.setAnimationState("fillState", tostring(fill))
+      animator.setAnimationState("fillState", tostring(fill))
     end
   end
 end

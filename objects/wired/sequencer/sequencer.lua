@@ -1,13 +1,13 @@
 function init()
-  entity.setInteractive(entity.configParameter("interactive", false))
+  object.setInteractive(config.getParameter("interactive", false))
 
-  self.stateCount = entity.configParameter("stateCount")
-  self.incrementingNode = entity.configParameter("incrementingNode", 1)
-  self.decrementingNode = entity.configParameter("decrementingNode", 0)
+  self.stateCount = config.getParameter("stateCount")
+  self.incrementingNode = config.getParameter("incrementingNode", 1)
+  self.decrementingNode = config.getParameter("decrementingNode", 0)
 
-  self.hasLatch = entity.configParameter("hasLatch", false)
+  self.hasLatch = config.getParameter("hasLatch", false)
   if self.hasLatch then
-    self.latchNode = entity.configParameter("latchNode")
+    self.latchNode = config.getParameter("latchNode")
     if self.latchNode == nil then
       self.hasLatch = false
     end
@@ -16,7 +16,7 @@ function init()
   end
 
   if storage.state == nil then
-    output(entity.configParameter("defaultSwitchState", 0))
+    output(config.getParameter("defaultSwitchState", 0))
   else
     output(storage.state)
   end
@@ -28,7 +28,7 @@ function init()
     storage.triggeredDown = false
   end
 
-  self.hasStateInputs = entity.configParameter("hasStateInputs", false)
+  self.hasStateInputs = config.getParameter("hasStateInputs", false)
   if self.hasStateInputs then
     storage.triggeredState = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false }
   end
@@ -54,14 +54,14 @@ function output(state)
   end
 
   storage.state = state
-  entity.setAnimationState("switchState", state)
-  entity.setAlloutputNodes(false)
-  entity.setOutboundNodeLevel(state, true)
+  animator.setAnimationState("switchState", state)
+  object.setAllOutputNodes(false)
+  object.setOutputNodeLevel(state, true)
 end
 
 function update(dt)
-  if not self.hasLatch or not entity.isInboundNodeConnected(self.latchNode) or entity.getInboundNodeLevel(self.latchNode) then
-    if entity.getInboundNodeLevel(self.incrementingNode) then
+  if not self.hasLatch or not object.isInputNodeConnected(self.latchNode) or object.getInputNodeLevel(self.latchNode) then
+    if object.getInputNodeLevel(self.incrementingNode) then
       if not storage.triggeredUp then
         storage.triggeredUp = true
         output(storage.state + 1)
@@ -69,7 +69,7 @@ function update(dt)
     elseif storage.triggeredUp then
       storage.triggeredUp = false
     end
-    if entity.getInboundNodeLevel(self.decrementingNode) then
+    if object.getInputNodeLevel(self.decrementingNode) then
       if not storage.triggeredDown then
         storage.triggeredDown = true
         output(storage.state - 1)
@@ -81,7 +81,7 @@ function update(dt)
     if self.hasStateInputs then
       i = 0
       while i < self.stateCount do
-        if entity.getInboundNodeLevel(i) then
+        if object.getInputNodeLevel(i) then
           if not storage.triggeredState[i] then
             storage.triggeredState[i] = true
             output(i)
