@@ -1,37 +1,39 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
 
-function init()
-  -- Positions and angles
-  self.baseOffset = config.getParameter("baseOffset")
-  self.basePosition = vec2.add(object.position(), self.baseOffset)
-  self.tipOffset = config.getParameter("tipOffset") --This is offset from BASE position, not object origin
+function init(virtual)
+  if not virtual then
+    -- Positions and angles
+    self.baseOffset = config.getParameter("baseOffset")
+    self.basePosition = vec2.add(object.position(), self.baseOffset)
+    self.tipOffset = config.getParameter("tipOffset") --This is offset from BASE position, not object origin
 
-  self.rotationSpeed = util.toRadians(config.getParameter("rotationSpeed"))
-  self.offAngle = util.toRadians(config.getParameter("offAngle", -30))
+    self.rotationSpeed = util.toRadians(config.getParameter("rotationSpeed"))
+    self.offAngle = util.toRadians(config.getParameter("offAngle", -30))
 
-  -- Targeting
-  self.targetQueryRange = config.getParameter("targetQueryRange")
-  self.targetMinRange = config.getParameter("targetMinRange")
-  self.targetMaxRange = config.getParameter("targetMaxRange")
-  self.targetAngleRange = util.toRadians(config.getParameter("targetAngleRange"))
+    -- Targeting
+    self.targetQueryRange = config.getParameter("targetQueryRange")
+    self.targetMinRange = config.getParameter("targetMinRange")
+    self.targetMaxRange = config.getParameter("targetMaxRange")
+    self.targetAngleRange = util.toRadians(config.getParameter("targetAngleRange"))
 
-  -- Energy
-  storage.energy = storage.energy or 0
-  self.regenBlockTimer = 0
-  self.energyRegen = config.getParameter("energyRegen")
-  self.maxEnergy = config.getParameter("maxEnergy")
-  self.energyRegenBlock = config.getParameter("energyRegenBlock")
+    -- Energy
+    storage.energy = storage.energy or 0
+    self.regenBlockTimer = 0
+    self.energyRegen = config.getParameter("energyRegen")
+    self.maxEnergy = config.getParameter("maxEnergy")
+    self.energyRegenBlock = config.getParameter("energyRegenBlock")
 
-  self.energyBarOffset = config.getParameter("energyBarOffset")
-  self.verticalScaling = config.getParameter("verticalScaling")
-  animator.translateTransformationGroup("energy", self.energyBarOffset)
+    self.energyBarOffset = config.getParameter("energyBarOffset")
+    self.verticalScaling = config.getParameter("verticalScaling")
+    animator.translateTransformationGroup("energy", self.energyBarOffset)
 
-  -- Initialize turret
-  object.setInteractive(false)
+    -- Initialize turret
+    object.setInteractive(false)
 
-  self.state = FSM:new()
-  self.state:set(offState)
+    self.state = FSM:new()
+    self.state:set(offState)
+  end
 end
 
 function update(dt)
