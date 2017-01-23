@@ -1,0 +1,38 @@
+{
+  "name": "action-getbouncy",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/status.lua"
+  ],
+  "parameters": {
+    "windupState": "hop"
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {
+      "type": "sliding",
+      "state": "off",
+      "fromEntity": "attackTarget",
+      "toEntity": "fleeTarget"
+    },
+    "children": [
+      {
+        "title": "action-windup",
+        "type": "module",
+        "name": "action-windup",
+        "parameters": {}
+      },
+      {
+        "title": "addEphemeralEffect",
+        "type": "action",
+        "name": "addEphemeralEffect",
+        "parameters": {
+          "name": "bouncy",
+          "duration": 60
+        }
+      }
+    ]
+  }
+}
