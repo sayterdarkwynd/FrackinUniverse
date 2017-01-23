@@ -7,15 +7,15 @@ baseValue = config.getParameter("healthDown",0)*(status.resourceMax("health"))
   --   else
      effect.addStatModifierGroup({{stat = "maxHealth", amount = baseValue }})
   --end
-  
+
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
   animator.setParticleEmitterActive("drips", true)
-  
+
   script.setUpdateDelta(5)
 
   self.tickDamagePercentage = 0.02
   self.tickTime = 2.0
-  self.tickTimer = self.tickTime  
+  self.tickTimer = self.tickTime
 end
 
 function update(dt)
@@ -25,18 +25,20 @@ function update(dt)
   else
       hungerLevel = 50
   end
-  
+
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
     status.applySelfDamageRequest({
-        damageType = "IgnoresDef",
-        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
-        damageSourceKind = "poison",
-        sourceEntityId = entity.id()
-      })
-	adjustedHunger = hungerLevel - (hungerLevel * 0.0095)
-	status.setResource("food", adjustedHunger)
+      damageType = "IgnoresDef",
+      damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
+      damageSourceKind = "poison",
+      sourceEntityId = entity.id()
+    })
+    if status.isResource("food") then
+      adjustedHunger = hungerLevel - (hungerLevel * 0.0095)
+      status.setResource("food", adjustedHunger)
+    end
   end
 
   effect.setParentDirectives("fade=CCFF33="..self.tickTimer * 0.4)
@@ -44,5 +46,5 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end
