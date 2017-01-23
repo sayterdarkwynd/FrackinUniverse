@@ -27,16 +27,7 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
 
-      "foundTargetActions" : [
-        {
-          "name" : "action-aggrohop",
-          "parameters" : {
-            "aggroHopSpeed" : 0.0,
-            "aggroHopWait" : 0.0,
-            "onGround" : false
-          }
-        }
-      ],
+      "foundTargetActions" : [ ],
 
       "fleeActions" : [ ],
 
@@ -47,7 +38,7 @@
       "approachActions" : [
         {
           "name" : "approach-fly",
-          "cooldown" : 2.0,
+          "cooldown" : 0.5,
           "parameters" : {
             "approachTime" : 4.0
           }
@@ -59,7 +50,7 @@
             "landDirection" : [0, -1],
             "flySpeed" : 12,
             "flyControlForce" : 20,
-            "idleTime" : [1,2],
+            "idleTime" : [1,12],
             "landState" : "idle"
           }
         }
@@ -121,7 +112,16 @@
 
       "concurrentActions" : [ ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "thorns",
+          "duration" : 5
+          }
+        }
+      ]
     },
 
     "touchDamage" : {

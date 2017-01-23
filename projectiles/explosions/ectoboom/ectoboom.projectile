@@ -1,0 +1,23 @@
+{
+  "projectileName" : "ectoboom",
+  "image" : "ectoboom.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 5,
+  "speed" : 0,
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "universalDamage" : true,
+  "damageKind" : "default",
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ]
+    },
+    { 
+      "action" : "liquid", 
+      "liquid" : "darkwater", "quantity" : 1 
+    }    
+  ],
+  "emitters" : [ "corrosive" ]
+}
