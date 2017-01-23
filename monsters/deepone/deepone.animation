@@ -47,8 +47,8 @@
               "persistentSoundStopTime" : 2.2
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
-              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+              "particleEmittersOff" : [ [ "waterdrip" ], [], [], ["waterdrip"], [], [], [], ["waterdrip"] ],
+              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], ["waterdrip"], [], ["waterdrip"] ]
             }            
           },
           "chargewinddown" : {
@@ -61,8 +61,8 @@
               "persistentSoundStopTime" : 2.2
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
-              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+              "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
+              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], ["waterdrip"], [], [] ]
             }            
           },        
           "charge" : {
@@ -74,8 +74,8 @@
               "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg"
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
-              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+              "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
+              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], [], ["waterdrip"], [] ]
             }            
           },
           "roar" : {
@@ -88,8 +88,8 @@
               "persistentSoundStopTime" : 1.25
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
-              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+              "particleEmittersOff" : [ [ "waterdrip" ], [], [], [], [], [], [], ["waterdrip"] ],
+              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], [], [], [] ]
             }
           }
         }
@@ -188,31 +188,31 @@
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:melee.<frame>",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
               }
             },
             "melee" : {
               "properties" : {
                 "image" : "<partImage>:melee.<frame>",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
               }
             },            
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:fire",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
               }
             },
             "firewindup" : {
               "properties" : {
                 "image" : "<partImage>:firewindup.<frame>",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
               }
             },
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:firewinddown.<frame>",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
               }
             } 
           },
@@ -240,26 +240,17 @@
     }
   },
   
-  "lights" : {
-    "glow" : {
-      "active" : true,
-      "position" : [0, 0],
-      "color" : [200, 90, 30],
-      "pointLight" : false
-    }
-  },
-  
   "particleEmitters" : {
-    "fireaura" : {
+    "waterdrip" : {
       "emissionRate" : 15,
       "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
       "particles" : [
-        { "particle" : "firestormflame" },
-        { "particle" : "firestormflame" },
-        { "particle" : "firestormflame" },
-        { "particle" : "firestormflame" },
-        { "particle" : "fireaura" },
-        { "particle" : "fireaura" }
+        { "particle" : "waterdrip" },
+        { "particle" : "waterdrip" },
+        { "particle" : "waterdrip" },
+        { "particle" : "waterdrip" },
+        { "particle" : "waterdrip" },
+        { "particle" : "waterdrip" }
         
       ]
     },
