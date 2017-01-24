@@ -62,6 +62,8 @@ function setCritDamage(damage)
         self.critChance = 3 + weaponModifier
       elseif root.itemHasTag(heldItem, "rapier") then
         self.critChance = 1 + weaponModifier
+      elseif root.itemHasTag(heldItem, "melee") then
+        self.critChance = 1 + weaponModifier
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)
