@@ -70,7 +70,9 @@ function setCritDamageBoomerang(damage)
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)
-  
+  if not self.critChance then
+    self.critChance = 0
+  end  
   --critBonus is bonus damage done with crits
   self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
   -- this next modifier only applies if they have a multiply item equipped

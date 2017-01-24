@@ -32,14 +32,13 @@ end
   -- FU Crit Damage Script
 
 function setCritDamage(damage)
-
      -- check their equipped weapon
      -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
      --used for checking dual-wield setups
      local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
      local weaponModifier = config.getParameter("critChance",0)
-   
+     
   if heldItem then
       if root.itemHasTag(heldItem, "dagger") then
         self.critChance = 1 + weaponModifier
@@ -63,13 +62,12 @@ function setCritDamage(damage)
         self.critChance = 3 + weaponModifier
       elseif root.itemHasTag(heldItem, "rapier") then
         self.critChance = 1 + weaponModifier
-      elseif root.itemHasTag(heldItem, "mininggun") then
-        self.critChance = 0       
       end
   end
+  
   if not self.critChance then
-    local self.critChance = 0
-  end    
+    self.critChance = 0
+  end
     --sb.logInfo("crit chance base="..self.critChance)
   
   --critBonus is bonus damage done with crits

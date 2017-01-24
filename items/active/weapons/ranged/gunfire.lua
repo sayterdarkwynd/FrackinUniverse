@@ -33,9 +33,7 @@ function GunFire:setCritDamage(damage)
      --used for checking dual-wield setups
      local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
      local weaponModifier = config.getParameter("critChance",0)
-  if not self.critChance then
-    local self.critChance = 0
-  end       
+     
   if heldItem then
       if root.itemHasTag(heldItem, "pistol") then
         self.critChance = 4 + weaponModifier
@@ -60,7 +58,9 @@ function GunFire:setCritDamage(damage)
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)
-  
+  if not self.critChance then
+    self.critChance = 0
+  end  
   --critBonus is bonus damage done with crits
   self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
   -- this next modifier only applies if they have a multiply item equipped
