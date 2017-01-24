@@ -33,7 +33,9 @@ function GunFire:setCritDamage(damage)
      --used for checking dual-wield setups
      local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
      local weaponModifier = config.getParameter("critChance",0)
-     
+  if not self.critChance then
+    local self.critChance = 0
+  end       
   if heldItem then
       if root.itemHasTag(heldItem, "pistol") then
         self.critChance = 4 + weaponModifier

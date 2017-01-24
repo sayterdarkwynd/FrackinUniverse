@@ -27,11 +27,13 @@ function BowShot:setCritDamage(damage)
      --used for checking dual-wield setups
      local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
      local weaponModifier = config.getParameter("critChance",0)
-     
+   if not self.critChance then
+    local self.critChance = 0
+  end      
   if heldItem then
       if root.itemHasTag(heldItem, "bow") then
         self.critChance = 9 + weaponModifier
-      elseif if root.itemHasTag(heldItem, "crossbow") then
+      elseif root.itemHasTag(heldItem, "crossbow") then
         self.critChance = 9 + weaponModifier
       end
   end
@@ -50,12 +52,7 @@ function BowShot:setCritDamage(damage)
   damage = crit and (damage*2) + self.critBonus or damage
 
   if crit then
-    if heldItem then
-      -- exclude mining lasers
-      if not root.itemHasTag(heldItem, "mininggun") then 
         status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
-      end
-    end
   end
 
   return damage
