@@ -20,8 +20,8 @@ function init()
 	    {stat = "breathDepletionRate", amount = 1.0 },
 	    {stat = "electricResistance", baseMultiplier = 0.35},
 	    {stat = "poisonResistance", baseMultiplier = 0.65},
-      {stat = "shadowResistance", amount = 0.7},
-      {stat = "shadowImmunity", amount = 1},
-			{stat = "radiationburnImmunity", amount = 1}
+            {stat = "shadowResistance", amount = 0.7},
+            {stat = "shadowImmunity", amount = 1},
+	    {stat = "radiationburnImmunity", amount = 1}
 	})
 end
