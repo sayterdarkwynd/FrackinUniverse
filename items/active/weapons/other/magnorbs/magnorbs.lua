@@ -53,19 +53,45 @@ end
 
 
 
-function setCritDamageBoomerang(damage)
   -- *******************************************************
   -- FU Crit Damage Script
-  self.critChance = ( config.getParameter("critChance",0) + (config.getParameter("level",0)/2) ) or 1
-  self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + (config.getParameter("level",0)/2) )  * self.critChance ) /100 ) /2 ) or 0   
-  -- *******************************************************
+
+     -- check their equipped weapon
+     -- Primary hand, or single-hand equip  
+     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+     --used for checking dual-wield setups
+     local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
+     local weaponModifier = config.getParameter("critChance",0)
+     
+  if heldItem then
+      if root.itemHasTag(heldItem, "magnorb") then
+        self.critChance = 4 + weaponModifier
+      end
+  end
+    --sb.logInfo("crit chance base="..self.critChance)
   
   self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)) 
   local crit = math.random(100) <= self.critChance
   local critDamage = crit and (damage*2) + self.critBonus or damage
   if crit then status.addEphemeralEffect("crithit", 0.5, activeItem.ownerEntityId()) end  
   return critDamage  
+  --apply the crit
+  local crit = self.critRoll <= self.critChance
+    --sb.logInfo("crit roll="..self.critRoll)
+  damage = crit and (damage*2) + self.critBonus or damage
+
+  if crit then
+    if heldItem then
+      -- exclude mining lasers
+      if not root.itemHasTag(heldItem, "mininggun") then 
+        status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
+      end
+    end
+  end
+
+  return damage
 end
+  -- *******************************************************
 
 function update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(0, self.cooldownTimer)
