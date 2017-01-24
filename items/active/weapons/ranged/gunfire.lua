@@ -52,7 +52,9 @@ function GunFire:setCritDamage(damage)
       elseif root.itemHasTag(heldItem, "rocketlauncher") then
         self.critChance = 9 + weaponModifier  
       elseif root.itemHasTag(heldItem, "shotgun") then
-        self.critChance = 4 + weaponModifier        
+        self.critChance = 4 + weaponModifier   
+      elseif root.itemHasTag(heldItem, "flamethrower") then
+        self.critChance = 2 + weaponModifier        
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)
