@@ -1,4 +1,4 @@
-require "/stats/effects/regeneration/regenerationminorarmorset5.lua"
+require "/stats/effects/regeneration/regenerationminorarmorsetlightpriest.lua"
 require "/stats/effects/runboost/runboost10.lua"
 callbacks = { { init = init, update = update, uninit = uninit } }
 
