@@ -2,10 +2,10 @@
   "itemName" : "cultiststaff3",
   "price" : 1440,
   "maxStack" : 1,
-  "level" : 4,
-  "rarity" : "rare",
+  "level" : 7,
+  "rarity" : "Legendary",
   "description" : "Fashioned from bones and petrified wood.",
-  "shortdescription" : "Cultist's Staff",
+  "shortdescription" : "Staff of Madness",
   "category" : "staff",
   "twoHanded" : true,
   "itemTags" : ["weapon","staff"],
@@ -30,7 +30,7 @@
         "emissionRate" : 10,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "madnessstaff"}
         ]
       }
     },
@@ -90,14 +90,26 @@
     }
   },
 
-  "elementalType" : "electric",
+  "elementalType" : "shadow",
 
-  "primaryAbilityType" : "elementportal",
-  "primaryAbility" : {},
+  "primaryAbility" : {
+    "type" : "elderportal",
+    "name" : "Elder Portal",
+    "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/controlprojectile.lua"],
+    "class" : "ControlProjectile",
 
-  "altAbilityType" : "plasmabladebarrage",
+    "energyCost" : 150,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "elderportal",
+    "projectileParameters" : {
+      "baseDamage" : 10
+    }
+  },
+
+  "altAbilityType" : "madnesszone",
   "altAbility" : {},
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
-
