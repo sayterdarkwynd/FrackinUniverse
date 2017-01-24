@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "Finely made. Causes targets to bleed.",
-  "shortdescription" : "Carbon Blade",
+  "shortdescription" : "Carbon Shortsword",
   "tooltipKind" : "sword",
   "category" : "shortsword",
   "twoHanded" : false,
@@ -24,15 +24,20 @@
 
   "elementalType" : "physical",
 
+  
+  
   "primaryAbilityType" : "shortswordcombo2",
   "primaryAbility" : {
     "fireTime" : 0.63,
-    "baseDps" : 7
+    "baseDps" : 7,
+    "damageConfig" : {
+      "statusEffects" : [ "bleedingshort" ]
+    }
   },
 
-  //"altAbilityType" : "risingslash",
   "critChance" : 3,
   "critBonus" : 5,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   "collectablesOnPickup" : { "fu_warrior2" : "carbonblade" }
   

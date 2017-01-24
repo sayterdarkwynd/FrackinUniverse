@@ -1,7 +1,5 @@
-function init(virtual)
-  if not virtual then
+function init()
     object.setInteractive(true)
-  end
 end
 
 function onInteraction(args)

@@ -1,0 +1,67 @@
+{
+  "objectName" : "advancedliquidsensor",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "This can detect and discriminate between the presence of various liquids.",
+  "shortdescription" : "Advanced Liquid Sensor",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 10,
+
+  "inventoryIcon" : "liquidsensoricon.png",
+
+  "orientations" : [
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "right" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "advancedliquidsensor.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "liquidsensor.animation",
+  "animationParts" : {
+    "sensor" : "liquidsensor.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [1, -1], [1, 0], [1, 1], [0, -1], [0, 0], [0, 1], [-1, -1], [-1, 0], [-1, 1] ]
+}

@@ -1,0 +1,64 @@
+{
+  "objectName" : "smallwallswitchlit",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Flippin' awesome! Can even be toggled when its input node is /'on'/.",
+  "shortdescription" : "Small Wall Switch (Light)",
+  "race" : "generic",
+
+  "floranDescription" : "Ssswitch! Can even be toggled when itsss input node isss /'on'/.",
+  "glitchDescription" : "Impressed. A small switch that can be toggled when its input node is /'on'/.",
+
+  "lightColor" : [77, 21, 21],
+
+  "category" : "wire",
+  "price" : 20,
+
+  "inventoryIcon" : "smallwallswitchicon.png",
+  "orientations" : [
+    {
+      "image" : "smallwallswitch.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switchwithinput.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "alwaysLit" : true,
+
+  "animation" : "/objects/wired/switch/switchtoggle2lit.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/apexconsole2switch.ogg" ],
+      "off" : [ "/sfx/objects/apexconsole2switch.ogg" ]
+    }
+  },
+
+  "animationParts" : {
+    "bg" : "smallwallswitch.png",
+    "fg" : "smallwallswitchlit.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "npcToy": {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallswitch"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

@@ -2,6 +2,8 @@
   "type" : "icecrab",
   "shortdescription" : "Frost Pincer",
   "description" : "While not necessarily lethal, they can make getting around rather hazardous.",
+
+  
   "categories" : [ "icecrab" ],
   "parts" : [ "body" ],
 
@@ -16,13 +18,13 @@
     ],
 
     "behavior" : "monster",
+    "deathBehavior" : "monster-death",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
-      "targetEntityTypes" : [ "player", "npc", "monster" ],
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
@@ -34,27 +36,29 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 2.5,
+          "cooldown" : 0.1,
           "parameters" : {
-            "maximumRange" : 12,
-            "minimumRange" : 1,
+          
+            "maximumRange" : 20,
+            "minimumRange" : 5,
             "windupState" : "firewindup",
-            "windupTime" : 0.5,
+            "windupTime" : 0.25,
 
-            "projectileType" : "fuicebreath",
+            "projectileType" : "icegas",
             "fireOffset" : [0, 0.75],
 
             "aimAtTarget" : false,
-            "projectileCount" : 12,
-            "projectileInterval" : 0.25,
-            "inaccuracy" : 1,
+            "projectileCount" : 5,
+            "fireDelay" : 0.20,
+            "projectileInterval" : 0.01,
+            "inaccuracy" : 3,
             "aimDirection" : [0,1],
-            "power" : 9,
+            "power" : 4,
             "fireSound" : "fire",
             "fireState" : "fire",
 
-
-            "winddownState" : ""
+            "winddownState" : "idle",
+            "winddownTime" : 0.5
           }
         }
       ],
@@ -65,7 +69,37 @@
         {
           "name" : "approach-walk",
           "parameters" : {
+            "canJump" : false,
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
             "canJump" : false
+          }
+        }
+      ],
+
+     "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fuicecloudburst2",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
           }
         }
       ],
@@ -73,7 +107,7 @@
       "wanderActions" : [
         {
           "name" : "wander-walk",
-          "cooldown" : 6.0,
+          "cooldown" : 1.0,
           "parameters" : {
             "wanderTime" : [0.5, 2.5]
           }
@@ -83,7 +117,7 @@
 
     "touchDamage" : {
       "poly" : [ [1.0625, 0.0], [1.0625, -0.5], [0.8125, -0.875], [-0.8125, -0.875], [-1.0625, -0.5], [-1.0625, 0.0], [0.0, 0.75]],
-      "damage" : 7,
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -99,7 +133,7 @@
 
       "mass" : 1.0,
       "walkSpeed" : 4,
-      "runSpeed" : 5,
+      "runSpeed" : 6,
 
       "airFriction" : 0,
 
@@ -124,8 +158,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -138,13 +172,13 @@
           "baseValue" : 0.25
         },
         "knockbackThreshold" : {
-          "baseValue" : 12
+          "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 80
+          "baseValue" : 60
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.2
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -152,12 +186,36 @@
         "liquidnitrogenImmunity" : {
           "baseValue" : 1.0
         },
-        "poisonResistance" : { "baseValue" : 0 },
-        "fireResistance" : { "baseValue" : -0.5 },
-        "iceResistance" : { "baseValue" : 1 },
-        "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0 }
+        "nitrogenfreezeImmunity" : {
+          "baseValue" : 1.0
+        },        
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceResistance" : {
+          "baseValue" : 1
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
       },
 
       "resources" : {

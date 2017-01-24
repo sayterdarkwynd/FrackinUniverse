@@ -1,0 +1,52 @@
+{
+  "itemName" : "stonespear",
+  "price" : 70,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A rudimentary spear.",
+  "shortdescription" : "Stone Spear",
+  "tooltipKind" : "sword",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear"],
+
+  "inventoryIcon" : "stonespear.png",
+
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "stonespear.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : [
+  "/items/active/weapons/melee/meleeweapon.lua"
+  ],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.9,
+    "baseDps" : 8,
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ ],
+      "knockback" : 25
+    }
+  },
+  "altAbilityType" : "flurry",
+  "altAbility" : { },
+  
+  "critChance" : 6,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

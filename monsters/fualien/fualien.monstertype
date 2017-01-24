@@ -34,8 +34,16 @@
 
       "hostileActions" : [
         {
+          "name" : "action-statuseffect", 
+          "cooldown" : 10,
+          "parameters" : {
+          "effect" : "mage_shield_lvl1shadowcrab",
+          "duration" : 5
+          }
+        },
+        {
           "name" : "action-fire",
-	  "cooldown" : 3,
+	  "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 15,
@@ -49,7 +57,6 @@
             "fireOffset" : [1.35, -1],
             "aimAtTarget" : true,
             "fireSound" : "fire",
-            "range": 15,
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.2
@@ -61,19 +68,18 @@
             "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 3,
-            "minimumRange" : 0,
-            "windupState" : "melee",
-            "windupTime" : 0.34,
+            "minimumRange" : 2,
+            "windupState" : "",
+            "windupTime" : 0.25,
 
-            "projectileType" : "energyswoosh2",
+            "projectileType" : "energyswoosh3",
             "power" : 7,
             "fireOffset" : [4, -1],
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "projectileInterval" : 0.01,
             "fireSound" : "fire",
-            "range": 3,
-            "fireState" : "",
+            "fireState" : "melee",
             "winddownState" : "",
             "winddownTime" : 0.34
           }
@@ -87,6 +93,7 @@
       "approachActions" : [
         {
           "name" : "approach-walk",
+          "cooldown" : 2.0,
           "parameters" : {
             "resetHeading" : false
           }
@@ -101,6 +108,7 @@
         },
         {
           "name" : "approach-walk",
+          "cooldown" : 2.0,
           "parameters" : {
             "resetHeading" : false
           }
@@ -110,8 +118,9 @@
       "wanderActions" : [
         {
           "name" : "wander-walk",
+          "cooldown" : 1.0,
           "parameters" : {
-            "wanderTime" : [5, 15]
+            "wanderTime" : [1, 1]
           }
         }
       ]

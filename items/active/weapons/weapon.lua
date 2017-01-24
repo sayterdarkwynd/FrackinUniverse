@@ -30,19 +30,57 @@ end
 
   -- *******************************************************
   -- FU Crit Damage Script
-  
+
 function setCritDamage(damage)
-  self.critChance = ( config.getParameter("critChance",0) + (config.getParameter("level",0)/2) ) or 1
-  self.critBonus = ( ( ( (config.getParameter("critBonus",0)   + (config.getParameter("level",0)/2) )  * self.critChance ) /100 ) /2 ) or 0  
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)) 
-  local crit = math.random(100) <= self.critChance
-  damage = crit and (damage*2) + self.critBonus or damage
+     -- check their equipped weapon
      -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
      --used for checking dual-wield setups
      local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
+     local weaponModifier = config.getParameter("critChance",0)
+     
+  if heldItem then
+      if root.itemHasTag(heldItem, "dagger") then
+        self.critChance = 1 + weaponModifier
+      elseif root.itemHasTag(heldItem, "shortsword") then
+        self.critChance = 2 + weaponModifier
+      elseif root.itemHasTag(heldItem, "broadsword") then
+        self.critChance = 2 + weaponModifier
+      elseif root.itemHasTag(heldItem, "hammer") then
+        self.critChance = 4 + weaponModifier
+      elseif root.itemHasTag(heldItem, "quarterstaff") then
+        self.critChance = 1 + weaponModifier
+      elseif root.itemHasTag(heldItem, "shortspear") then
+        self.critChance = 1 + weaponModifier
+      elseif root.itemHasTag(heldItem, "axe") then
+        self.critChance = 3 + weaponModifier
+      elseif root.itemHasTag(heldItem, "lance") then
+        self.critChance = 2 + weaponModifier
+      elseif root.itemHasTag(heldItem, "spear") then
+        self.critChance = 2 + weaponModifier
+      elseif root.itemHasTag(heldItem, "battleblade") then
+        self.critChance = 3 + weaponModifier
+      elseif root.itemHasTag(heldItem, "rapier") then
+        self.critChance = 1 + weaponModifier
+      end
+  end
+    --sb.logInfo("crit chance base="..self.critChance)
+  
+  --critBonus is bonus damage done with crits
+  self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
+  -- this next modifier only applies if they have a multiply item equipped
+  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)+ status.stat("critChanceMultiplier",0)) 
+  -- random dice roll. I've heavily lowered the chances, as it was far too high by nature of the random roll.
+  self.critRoll = math.random(200)
+  
+  --apply the crit
+  local crit = self.critRoll <= self.critChance
+    --sb.logInfo("crit roll="..self.critRoll)
+  damage = crit and (damage*2) + self.critBonus or damage
+
   if crit then
     if heldItem then
+      -- exclude mining lasers
       if not root.itemHasTag(heldItem, "mininggun") then 
         status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
       end

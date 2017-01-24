@@ -33,19 +33,19 @@
       "hostileActions" : [ 
        {
           "name" : "action-fire",
-          "cooldown" : 0.0,
+          "cooldown" : 1.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 12,
-            "minimumRange" : 2,
+            "maximumRange" : 25,
+            "minimumRange" : 7,
             "windupState" : "firewindup",
             "windupTime" : 0.8,
 
             "projectileType" : "fuvaporizer",
-            "projectileCount" : 5,
-            "projectileInterval" : 0.005,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.2,
             "inaccuracy" : 0,
-            "power" : 10,
+            "power" : 2,
             "fireOffset" : [0.75, 0.25],
             "aimAtTarget" : true,
             "onGround" : false,
@@ -69,6 +69,7 @@
       "approachActions" : [
         {
           "name" : "approach-fly",
+          "cooldown" : 2,
           "parameters" : {
             "minRange" : 4,
             "maxRange" : 8
@@ -90,11 +91,12 @@
       "wanderActions" : [
         {
           "name" : "wander-fly",
+          "cooldown" : 1,
           "parameters" : {
             "wanderTime" : [2,4],
             "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
+            "ceilingDistance" : 1,
+            "xVelocity" : 12,
             "yVelocity" : 12
           }
         }
