@@ -1,23 +1,23 @@
 {
-  "itemName" : "fugaussrifle",
+  "itemName" : "fugaussmachinegun",
   "price" : 160,
-  "inventoryIcon" : "fugaussrifle.png",
+  "inventoryIcon" : "fugaussmachinegun.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "A fantastic assault rifle.",
-  "shortdescription" : "Gauss Rifle",
-  "category" : "Kinetic Rifle",
+  "shortdescription" : "Gauss Machinegun",
+  "category" : "Kinetic Machinegun",
   "level" : 4,
   "tooltipKind" : "gun",
   "weaponType" : "Coilgun",
   "itemTags" : ["weapon","ranged","assaultrifle"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/fugaussrifle.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugaussmachinegun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "fugaussrifle.png",
-    "middlefullbright" : "fugaussriflefullbright.png",
+    "middle" : "fugaussmachinegun.png",
+    "middlefullbright" : "fugaussmachinegunfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
@@ -27,8 +27,8 @@
     }
   },
 
-  "baseOffset" : [0.7, 0.3],
-  "muzzleOffset" : [2.845, 0.18],
+  "baseOffset" : [0.7, 0.4],
+  "muzzleOffset" : [2.6, 0.24],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -37,10 +37,10 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.154,
+    "fireTime" : 0.08,
     "baseDps" : 9.7,
     "energyUsage" : 27.0,
-    "inaccuracy" : 0.03,
+    "inaccuracy" : 0.08,
 
     "projectileCount" : 1,
     "fireType" : "auto",
@@ -90,9 +90,9 @@
     },
 
 
-  "critChance" : 3,
+  "critChance" : 2,
   "critBonus" : 9,
-  "altAbilityType" : "flashlight",
+  "altAbilityType" : "explosiveburst",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

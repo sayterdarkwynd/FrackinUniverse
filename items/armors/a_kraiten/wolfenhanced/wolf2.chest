@@ -1,41 +1,50 @@
 {
-  "itemName" : "fubearlegs2",
-  "inventoryIcon" : "icons.png:pants",
+  "itemName" : "fuwolfchest2",
+  "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "No bears were harmed in making this.
-^cyan;Set Bonus: ^green;+25% Crit with Hammers/Axes, Immune to Standard Cold and 15% Ice Resistance.^reset;",
-  "shortdescription" : "Savage Bear Greaves",
-  "category": "legsarmour",
+  "rarity" : "Rare",
+  "description" : "Coat of a wolf.
+^cyan;Set Bonus: ^green;Immune to ice, slush, snow and standard cold, 50% Ice Resistance^reset;",
+  "shortdescription" : "Wolf Coat",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
-  "maleFrames" : "pants.png",
-  "femaleFrames" : "pants.png",
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
 
-  "level" : 4,
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "level" : 5,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.50
+      "baseMultiplier" : 2.3
     },
     {
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 35.5
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 82.5
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 16
+      "amount" : 25
     },
-    "bearsetbonus",
+    "wolfsetbonus",
     {
-      "stat" : "fu_bearset_legs",
+      "stat" : "fu_wolfset_chest",
       "amount" : 1
     }
   ],

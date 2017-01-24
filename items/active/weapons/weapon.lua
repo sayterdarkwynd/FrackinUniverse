@@ -68,18 +68,19 @@ function setCritDamage(damage)
   if not self.critChance then
     self.critChance = 0
   end
-    --sb.logInfo("crit chance base="..self.critChance)
-  
+  --sb.logInfo("crit chance base="..self.critChance)
+  --sb.logInfo("crit chance bonus="..status.stat("critChance"))
   --critBonus is bonus damage done with crits
   self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
   -- this next modifier only applies if they have a multiply item equipped
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)+ status.stat("critChanceMultiplier",0)) 
+  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
+  --sb.logInfo("final chance ="..self.critChance)
   -- random dice roll. I've heavily lowered the chances, as it was far too high by nature of the random roll.
   self.critRoll = math.random(200)
   
   --apply the crit
   local crit = self.critRoll <= self.critChance
-    --sb.logInfo("crit roll="..self.critRoll)
+  --sb.logInfo("crit roll="..self.critRoll)
   damage = crit and (damage*2) + self.critBonus or damage
 
   if crit then
