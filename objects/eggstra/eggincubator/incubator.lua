@@ -84,16 +84,16 @@ function checkHatching()
         self.timer = 0
       end
 
-        if self.indicator == nil then self.indicator = 0 end
-        if self.timer == nil or self.timer > self.indicator then self.timer = self.indicator - 1 end
-        if self.timer > -1 then animator.setGlobalTag("bin_indicator", self.timer) end
-        self.timer = self.timer + 1
-
+      if self.indicator == nil then self.indicator = 0 end
+      if self.timer == nil or self.timer > self.indicator then self.timer = self.indicator - 1 end
+      if self.timer > -1 then animator.setGlobalTag("bin_indicator", self.timer) end
+      self.timer = self.timer + 1
+    else
+      storage.incubationTime = nil
+      self.indicator = 0
+      self.timer = 0
     end
   end
-
-
-
 end
 
 function hatchEgg()  --make the baby
