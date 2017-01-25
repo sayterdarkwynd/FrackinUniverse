@@ -16,7 +16,13 @@ local recipes =
 {inputs = { cthulureward=1, eldertome=1, elderrelic14=1 }, outputs = { deathbringer=1 }, time = 15.0 },
 {inputs = { cthulureward=1, eldertome=1, elderrelic7=1 }, outputs = { shadowburst=1 }, time = 15.0 },
 {inputs = { cthulureward=1, elderrelic6=1, elderrelic8=1 }, outputs = { elderrepeater=1 }, time = 15.0 },
-{inputs = { nocxiumbar=5, elderrelic2=1, elderrelic7=1 }, outputs = { elderwhip=1 }, time = 15.0 }
+{inputs = { nocxiumbar=5, elderrelic2=1, elderrelic7=1 }, outputs = { elderwhip=1 }, time = 15.0 },
+{inputs = { eldertome=1, elderrelic7=2, cthulureward=1 }, outputs = { cultiststaff1=1 }, time = 15.0 },
+{inputs = { eldertome=1, elderrelic6=2, elderrelic9=1 }, outputs = { cultiststaff2=1 }, time = 15.0 },
+{inputs = { eldertome=1, elderrelic12=2, elderrelic14=1 }, outputs = { cultiststaff3=1 }, time = 15.0 },
+{inputs = { nocxiumbar=6, elderrelic6=1, elderrelic11=1 }, outputs = { cultarmorhead=1 }, time = 15.0 },
+{inputs = { nocxiumbar=7, elderrelic7=1, elderrelic12=1 }, outputs = { cultarmorchest=1 }, time = 15.0 },
+{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 }
 }
 
 function init(args)
@@ -29,7 +35,7 @@ end
 
 function getInputContents()
         local id = entity.id()
-      
+
         local contents = {}
         for i=0,2 do
             local stack = world.containerItemAt(entity.id(),i)
@@ -41,7 +47,7 @@ function getInputContents()
                 end
             end
         end
-      
+
         return contents
     end
 
@@ -60,15 +66,15 @@ end
 function getValidRecipes(query)
 
     local function subset(t1,t2)
-        if next(t2) == nil then 
-          return false 
+        if next(t2) == nil then
+          return false
         end
-        if t1 == t2 then 
+        if t1 == t2 then
           return true
         end
             for k,_ in pairs(t1) do
-                if not t2[k] or t1[k] > t2[k] then 
-                  return false 
+                if not t2[k] or t1[k] > t2[k] then
+                  return false
                 end
             end
         return true
@@ -147,5 +153,5 @@ function startCrafting(result)
         animator.setAnimationState("samplingarrayanim", "working")
 
         return true
-    end              
+    end
 end

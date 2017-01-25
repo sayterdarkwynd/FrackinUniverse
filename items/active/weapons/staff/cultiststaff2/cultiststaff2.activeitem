@@ -2,20 +2,20 @@
   "itemName" : "cultiststaff2",
   "price" : 1440,
   "maxStack" : 1,
-  "level" : 3,
-  "rarity" : "uncommon",
+  "level" : 7,
+  "rarity" : "legendary",
   "description" : "Fashioned from bones and petrified wood.",
-  "shortdescription" : "Cultist's Staff",
+  "shortdescription" : "Eldritch Staff",
   "category" : "staff",
   "twoHanded" : true,
   "itemTags" : ["weapon","staff"],
   "tooltipKind" : "staff",
 
-  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animation" : "/items/active/weapons/staff/staff2.animation",
   "animationParts" : {
     "staff" : "cultiststaff2.png",
     "stone" : "",
-    "chargeEffect" : "cultiststaffglow.png"
+    "chargeEffect" : "cultiststaff2glow.png"
   },
   "animationCustom" : {
     "lights" : {
@@ -30,7 +30,7 @@
         "emissionRate" : 10,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "eldritchstaff"}
         ]
       }
     },
@@ -49,7 +49,7 @@
       "armRotation" : -90,
       "weaponRotation" : 0,
       "twoHanded" : false,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -58,7 +58,7 @@
       "armRotation" : 20,
       "weaponRotation" : -20,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -66,7 +66,7 @@
       "armRotation" : 20,
       "weaponRotation" : -20,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -75,7 +75,33 @@
       "armRotation" : -10,
       "weaponRotation" : -50,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,0.5],
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "chargerotate" : {
+      "duration" : 1.1,
+      "armRotation" : 0,
+      "weaponRotation" : -90,
+      "twoHanded" : false,
+      "weaponOffset" : [0,0.5],
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "chargedrotate" : {
+      "armRotation" : 0,
+      "weaponRotation" : -90,
+      "twoHanded" : false,
+      "weaponOffset" : [0,0.5],
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "dischargerotate" : {
+      "duration" : 0.5,
+      "armRotation" : 0,
+      "weaponRotation" : -90,
+      "twoHanded" : false,
+      "weaponOffset" : [0,0.5],
       "allowRotate" : true,
       "allowFlip" : true
     },
@@ -84,20 +110,32 @@
       "armRotation" : -45,
       "weaponRotation" : 0,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : false,
       "allowFlip" : true
     }
   },
 
-  "elementalType" : "ice",
+  "elementalType" : "shadow",
 
-  "primaryAbilityType" : "elementorb",
-  "primaryAbility" : {},
+  "primaryAbility" : {
+    "type" : "eldritchblast",
+    "name" : "Eldritch Blast",
+    "scripts" : ["/items/active/weapons/staff/abilities/aimedprojectile/aimedprojectile.lua"],
+    "class" : "ControlProjectile",
 
-  "altAbilityType" : "kluexzone",
+    "energyCost" : 60,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "eldritchblast",
+    "projectileParameters" : {
+      "baseDamage" : 12
+    }
+  },
+
+  "altAbilityType" : "entropicwarding",
   "altAbility" : {},
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
-

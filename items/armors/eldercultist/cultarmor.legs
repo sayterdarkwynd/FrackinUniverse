@@ -3,14 +3,14 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Dark sorceror robe. Gives lots of energy.",
+  "rarity" : "legendary",
+  "description" : "Dark sorceror robe. ^cyan;Set Bonus: Immune to Shadowtaint and Insanity, High energy regen, 65% Shadow Resistance^reset;",
   "shortdescription" : "Cultist Robe",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
+  "level" : 7,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -19,7 +19,7 @@
 
     {
       "stat" : "protection",
-      "amount" : 3
+      "amount" : 12
     },
 
     {
@@ -29,9 +29,14 @@
 
     {
       "stat" : "maxHealth",
-      "amount" : 3
+      "amount" : 12
     },
-    "energyregenfu_armor75"
+
+    "cultistsetbonus",
+    {
+      "stat" : "fu_cultistset_chest",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [

@@ -59,30 +59,6 @@
             "winddownState" : "firewinddown",
             "winddownTime" : 0.3
           }
-        },      
-        {
-          "name" : "action-fire",
-          "cooldown" : 24.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 4,
-            "maxYRange" : 4,
-            "windupTime" : 0.6,
-
-            "aimAtTarget" : false,
-            "projectileType" : "gravburststat",
-            "power" : 6,
-            "aimDirection" : [0.7, 0.4],
-            "fireOffset" : [0.25, 0.0],
-            "projectileCount" : 5,
-            "projectileInterval" : 0.1,
-            "fireState" : "fire",
-            "fireSound" : "fire",
-
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.3
-          }
         }
       ],
 
@@ -91,6 +67,7 @@
       "approachActions" : [
         {
           "name" : "approach-walk",
+          "cooldown" :  1.0,
           "parameters" : {
             "canJump" : false,
             "run" : true
@@ -106,6 +83,7 @@
         },
         {
           "name" : "approach-walk",
+          "cooldown" :  0.3,
           "parameters" : {
             "canJump" : false,
             "run" : true

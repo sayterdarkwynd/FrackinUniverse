@@ -9,7 +9,7 @@
 
   "animation" : "icecrab.animation",
 
-  "dropPools" : [ { "default" : "crabcanoTreasure", "bow" : "crabcanoHunting" } ],
+  "dropPools" : [ { "default" : "icecrabcanoTreasure", "bow" : "icecrabcanoHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -36,23 +36,24 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 2.5,
+          "cooldown" : 0.1,
           "parameters" : {
-            "maximumRange" : 10,
-            "minimumRange" : 4,
+          
+            "maximumRange" : 20,
+            "minimumRange" : 5,
             "windupState" : "firewindup",
-            "windupTime" : 1.5,
+            "windupTime" : 0.25,
 
-            "projectileType" : "fuicebreath",
+            "projectileType" : "icegas",
             "fireOffset" : [0, 0.75],
 
             "aimAtTarget" : false,
-            "projectileCount" : 30,
+            "projectileCount" : 5,
             "fireDelay" : 0.20,
             "projectileInterval" : 0.01,
-            "inaccuracy" : 1.5,
+            "inaccuracy" : 3,
             "aimDirection" : [0,1],
-            "power" : 8,
+            "power" : 4,
             "fireSound" : "fire",
             "fireState" : "fire",
 
@@ -93,7 +94,7 @@
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "iceboom",
+            "projectileType" : "fuicecloudburst2",
             "projectileParameters" : {},
             "power" : 0,
             "aimDirection" : [0, 0],
@@ -185,6 +186,9 @@
         "liquidnitrogenImmunity" : {
           "baseValue" : 1.0
         },
+        "nitrogenfreezeImmunity" : {
+          "baseValue" : 1.0
+        },        
         "powerMultiplier" : {
           "baseValue" : 1.0
         },

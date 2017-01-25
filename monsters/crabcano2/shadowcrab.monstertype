@@ -8,7 +8,7 @@
 
   "animation" : "shadowcrab.animation",
 
-  "dropPools" : [ { "default" : "crabcanoTreasure", "bow" : "crabcanoHunting" } ],
+  "dropPools" : [ { "default" : "ffbasicTreasure", "bow" : "crabcanoHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -30,14 +30,14 @@
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
       "fleeActions" : [],
-
+  
       "hostileActions" : [
         {
           "name" : "action-fire",
           "cooldown" : 2.5,
           "parameters" : {
             "maximumRange" : 10,
-            "minimumRange" : 4,
+            "minimumRange" : 1,
             "windupState" : "firewindup",
             "windupTime" : 1.5,
 
@@ -47,10 +47,10 @@
             "aimAtTarget" : false,
             "projectileCount" : 20,
             "fireDelay" : 0.05,
-            "projectileInterval" : 0.4,
+            "projectileInterval" : 0.01,
             "inaccuracy" : 1.5,
             "aimDirection" : [0,1],
-            "power" : 8,
+            "power" : 1,
             "fireSound" : "fire",
             "fireState" : "fire",
 
@@ -211,6 +211,9 @@
           "baseValue" : 0.0
         },
         "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "fallDamageMultiplier" : {
           "baseValue" : 0.0
         }
       },

@@ -1,0 +1,24 @@
+{
+  "projectileName" : "iceblast2",
+  "image" : "iceblast2.png",
+  "physics" : "bullet",
+  "timeToLive" : 2,
+  "animationCycle" : 0.62,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 7,
+  "power" : 10,
+  "lightColor" : [40, 0, 120],
+  "speed" : 20,
+  "piercing" : false,
+  "damagePoly" : [ [0, -8], [16, -8], [16, 8], [0, 8] ],
+  "damageKind" : "iceplasma",
+  "statusEffects" : [ "icesnare" ],
+  "emitters" : [ "iceplasma" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceexplosion1/iceexplosion1.config"
+    }
+  ],
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ]
+ }
