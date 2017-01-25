@@ -63,7 +63,9 @@ function update(dt)
     self.tickTimer = self.tickTime
     if lightLevel <=40 or (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
       status.modifyResource("health", (-self.dps * (self.dpsMod * 0.095) ) * dt)
-      status.modifyResource("energy", (-self.dps * (self.dpsMod * 1.8) ) * dt)
+      if status.resource("energy") then
+        status.modifyResource("energy", (-self.dps * (self.dpsMod * 1.8) ) * dt)
+      end
       if self.food then
         status.modifyResource("food", (-self.dps * (self.dpsMod * 0.009 ) ) * dt)
       end
