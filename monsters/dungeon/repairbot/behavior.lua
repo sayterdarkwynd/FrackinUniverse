@@ -9,7 +9,7 @@ function init()
 
   entity.setAggressive(false)
   entity.setDeathParticleBurst("deathPoof")
-  entity.setAnimationState("movement", "idle")
+  animator.setAnimationState("movement", "idle")
 end
 
 function update(dt)
@@ -52,19 +52,19 @@ function setAnimation(desiredAnimation)
 
   if desiredAnimation == "attack" then
     if animation ~= "attack" and animation ~= "attackStart" then
-      entity.setAnimationState("movement", "attackStart")
+      animator.setAnimationState("movement", "attackStart")
     end
   elseif desiredAnimation == "repair" then
     if animation ~= "repair" and animation ~= "repairStart" then
-      entity.setAnimationState("movement", "repairStart")
+      animator.setAnimationState("movement", "repairStart")
     end
   else
     if animation == "attack" or animation == "attackStart" then
-      entity.setAnimationState("movement", "attackEnd")
+      animator.setAnimationState("movement", "attackEnd")
     elseif animation == "repair" or animation == "repairStart" then
-      entity.setAnimationState("movement", "repairEnd")
+      animator.setAnimationState("movement", "repairEnd")
     elseif animation ~= "attackEnd" and animation ~= "repairEnd" then
-      entity.setAnimationState("movement", desiredAnimation)
+      animator.setAnimationState("movement", desiredAnimation)
     end
   end
 
@@ -125,9 +125,9 @@ function repairState.update(dt, stateData)
 
   local toTarget = world.distance(targetPosition, mcontroller.position())
   local animation = entity.animationState("movement")
-  if world.magnitude(toTarget) < entity.configParameter("repairDistance") then
+  if world.magnitude(toTarget) < config.getParameter("repairDistance") then
     if setAnimation("repair") then
-      entity.heal(stateData.targetId, entity.configParameter("repairHealthPerSecond") * dt)
+      entity.heal(stateData.targetId, config.getParameter("repairHealthPerSecond") * dt)
     end
   else
     if setAnimation("move") then
@@ -139,7 +139,7 @@ function repairState.update(dt, stateData)
 end
 
 function repairState.findTaget()
-  local entityIds = world.entityQuery(mcontroller.position(), entity.configParameter("repairResponseMaxDistance"), {includedTypes = {"monster"}})
+  local entityIds = world.entityQuery(mcontroller.position(), config.getParameter("repairResponseMaxDistance"), {includedTypes = {"monster"}})
   local selfId = entity.id()
 
   for i, entityId in ipairs(entityIds) do
@@ -161,7 +161,7 @@ function attackState.enterWith(params)
   if params.damageSourceId == nil then return nil end
 
   self.targetId = params.damageSourceId
-  return { timer = entity.configParameter("attackTargetHoldTime") }
+  return { timer = config.getParameter("attackTargetHoldTime") }
 end
 
 function attackState.update(dt, stateData)
@@ -172,7 +172,7 @@ function attackState.update(dt, stateData)
   local shouldFire = false
   if self.targetPosition ~= nil then
     local toTarget = world.distance(self.targetPosition, mcontroller.position())
-    local attackRange = entity.configParameter("attackRange")
+    local attackRange = config.getParameter("attackRange")
     local distance = world.magnitude(toTarget)
 
     if distance < attackRange[1] then
@@ -186,7 +186,7 @@ function attackState.update(dt, stateData)
     else
       mcontroller.controlFace(toTarget[1])
       if setAnimation("attack") then
-        -- entity.setFireDirection(entity.configParameter("projectileOffset"), { mcontroller.facingDirection(), 0 })
+        -- entity.setFireDirection(config.getParameter("projectileOffset"), { mcontroller.facingDirection(), 0 })
         shouldFire = true
       end
     end
@@ -203,7 +203,7 @@ function attackState.update(dt, stateData)
   if self.targetId == nil then
     stateData.timer = stateData.timer - dt
   else
-    stateData.timer = entity.configParameter("attackTargetHoldTime")
+    stateData.timer = config.getParameter("attackTargetHoldTime")
   end
 
   if stateData.timer <= 0 then

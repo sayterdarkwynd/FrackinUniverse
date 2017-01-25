@@ -1,0 +1,41 @@
+{
+  "itemName" : "advalloybroadsword",
+  "price" : 800,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Forged from carbon.",
+  "shortdescription" : "Masters Broadsword",
+  "tooltipKind" : "sword",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword"],
+
+  "inventoryIcon" : "advalloybroadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "advalloybroadsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.03,
+    "baseDps" : 10.67,
+    "damageConfig" : {
+      "statusEffects" : [ "bleedingshort" ]
+    }
+  },
+
+  "altAbilityType" : "parry",
+
+  "critChance" : 5,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -31,8 +31,29 @@
 
       "hostileActions" : [
         {
+          "name" : "action-fire",
+          "cooldown" : 0.2,
+          "parameters" : {
+
+            "maximumRange" : 30,
+            "minimumRange" : 3,
+
+            "windupState" : "hopfull",
+            "windupTime" : 0.1,
+            "projectileType" : "darkwatervomit",
+            "fireSound" : "deathPuff",
+            "fireState" : "fall",
+            "winddownState" : "land",
+            "winddownTime" : 0.05,
+            "aimAtTarget" : false,
+            "aimDirection" : [0,0],
+            "onGround" : true,
+            "fireDelay" : 0.05
+          }
+        },
+        {
           "name" : "action-hop",
-          "cooldown" : 0.0,
+          "cooldown" : 1.0,
           "parameters" : {
             "verticalSpeed" : 20,
             "horizontalSpeed" : 10,

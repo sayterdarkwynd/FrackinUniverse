@@ -1,31 +1,31 @@
 function init()
   storage.timer = storage.timer or 0
-  storage.timerDuration = storage.timerDuration or entity.configParameter("duration", 5)
+  storage.timerDuration = storage.timerDuration or config.getParameter("duration", 5)
 
   updateAnimation()
 
-  entity.setInteractive(true)
+  object.setInteractive(true)
 end
 
 function update(dt)
-  if not entity.getInboundNodeLevel(0) then
+  if not object.getInputNodeLevel(0) then
     storage.timer = storage.timerDuration
   elseif storage.timer > 0 then
     storage.timer = math.max(storage.timer - dt, 0)
   end
 
-  entity.setOutboundNodeLevel(0, storage.timer <= 0)
+  object.setOutputNodeLevel(0, storage.timer <= 0)
 
   updateAnimation()
 end
 
 function updateAnimation()
   if storage.timer == storage.timerDuration then
-    entity.setAnimationState("timerState", "off"..storage.timerDuration)
+    animator.setAnimationState("timerState", "off"..storage.timerDuration)
   elseif storage.timer > 0 then
-    entity.setAnimationState("timerState", "count"..math.ceil(storage.timer))
+    animator.setAnimationState("timerState", "count"..math.ceil(storage.timer))
   else
-    entity.setAnimationState("timerState", "on"..storage.timerDuration)
+    animator.setAnimationState("timerState", "on"..storage.timerDuration)
   end
 end
 

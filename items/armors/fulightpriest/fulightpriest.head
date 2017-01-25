@@ -4,7 +4,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Glows with light, and grants +1% health regeneration. Immune to insanity.",
+  "description" : "Glows with psionic power.^cyan;Set Bonus: ^green; Regeneration 5, Insanity Immunity, 10% Speed Boost^reset;",
   "shortdescription" : "Light Priest Hood",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,7 +12,7 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
+  "level" : 4,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -21,16 +21,19 @@
 
     {
       "stat" : "protection",
-      "amount" : 10
+      "amount" : 15
     },
 
     {
       "stat" : "maxEnergy",
       "amount" : 60
     },
-    "insanityimmunity",
-    "regenerationminor3",
-    "glowyellow2"
+    "glowyellow2",
+    "lightpriestsetbonus",
+    {
+      "stat" : "fu_lightpriestset_head",
+      "amount" : 1
+    }    
   ],
 
  "colorOptions" : [

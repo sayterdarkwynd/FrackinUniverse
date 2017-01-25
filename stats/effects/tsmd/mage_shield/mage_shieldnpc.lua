@@ -6,8 +6,8 @@ function init()
   
   self.shieldHealth = config.getParameter("shieldHealth")
   self.dangerHealth = self.shieldHealth * 0.2
-  status.modifyResource("damageAbsorption", self.shieldHealth)
-  
+
+  self.shieldRemaining = self.shieldHealth
   self.active = true
   self.broke = false
 end
@@ -15,8 +15,17 @@ end
 function update(dt)
   if self.active then  
     self.damageListener:update()
-    
-    self.currentDA = status.resource("damageAbsorption")
+    self.currentDA = self.shieldRemaining
+    effect.addStatModifierGroup({
+      {stat = "physicalResistance", amount = 0.5 },
+      {stat = "electricResistance", amount = 0.5 },
+      {stat = "poisonResistance", amount = 0.5 },
+      {stat = "iceResistance", amount = 0.5 },
+      {stat = "fireResistance", amount = 0.5 },
+      {stat = "radioactiveResistance", amount = 0.5 },
+      {stat = "shadowResistance", amount = 0.5 },
+      {stat = "cosmicResistance", amount = 0.5 }
+      })
   else  
     effect.expire()
   end
@@ -24,21 +33,17 @@ end
 
 function uninit()
   animator.setAnimationState("aura", "off")
-  -- what if you get damage absorption from other effect?
-  -- status.setResource("damageAbsorption", 0)
-  
   if not self.broke then
-    
-    status.modifyResource("damageAbsorption", - self.shieldHealth)
+    self.shieldRemaining = (self.shieldRemaining - self.shieldHealth)
   end
 end
 
 function checkDamage(notifications)
   for _,notification in pairs(notifications) do
     if notification.targetEntityId == effect.sourceEntity() then
-      if status.resourcePositive("damageAbsorption") then
+      if self.shieldRemaining then
         animator.playSound("block")
-        self.shieldHealth = self.shieldHealth - (self.currentDA - status.resource("damageAbsorption"))
+        self.shieldHealth = self.shieldHealth - (self.currentDA - self.shieldRemaining)
         
         if self.shieldHealth <= self.dangerHealth then
           -- TODO: about to be broke

@@ -4,14 +4,14 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Provides a 10% movement buff, and grants +1% health regeneration.",
+  "description" : "^cyan;Set Bonus: ^green; Regeneration 5, Insanity Immunity, 10% Speed Boost^reset;",
   "shortdescription" : "Light Priest Robes",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
+  "level" : 4,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -20,16 +20,18 @@
 
     {
       "stat" : "protection",
-      "amount" : 7
+      "amount" : 12
     },
 
     {
       "stat" : "maxEnergy",
       "amount" : 50
     },
-
-    "regenerationminor3",
-    "runboost10"
+    "lightpriestsetbonus",
+    {
+      "stat" : "fu_lightpriestset_legs",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [

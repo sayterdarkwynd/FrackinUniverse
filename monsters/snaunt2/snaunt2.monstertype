@@ -29,16 +29,28 @@
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
       "fleeActions" : [],
-
+      
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "metalspeed",
+          "duration" : 5
+          }
+        }
+      ],
+      
       "hostileActions" : [
         {
           "name" : "action-fire",
+          "cooldown" : 0.2,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 10,
+            "maximumRange" : 12,
+            "minimumRange" : 4,
             "windupState" : "",
-            "windupTime" : 0.0,
+            "windupTime" : 0.5,
             "projectileCount" : 3,
             "projectileInterval" : 0.05,
             "projectileType" : "pusvomit",
@@ -46,7 +58,7 @@
             "fireOffset" : [0.75, 0.6875],
             "aimAtTarget" : true,
             "fireState" : "fire",
-            "fireDelay" : 0.3,
+            "fireDelay" : 0.2,
             "fireSound" : "fire",
 
             "fireArc": true,
@@ -64,9 +76,10 @@
       "approachActions" : [
         {
           "name" : "approach-walk",
+          "cooldown" : 0.1,
           "parameters" : {
             "canJump" : true,
-            "maxJumps" : 6,
+            "maxJumps" : 3,
             "jumpXVelocity" : 12,
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
@@ -78,7 +91,7 @@
       "wanderActions" : [
         {
           "name" : "wander-walk",
-          "cooldown" : 6.0,
+          "cooldown" : 0.1,
           "parameters" : {
             "wanderTime" : [5, 15]
           }
@@ -154,6 +167,9 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },        
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         }
