@@ -36,7 +36,7 @@ function pump(inputPos,outputPos)
 end
 
 
-function onInboundNodeChange(args) setoutputpump()end
+function onInputNodeChange(args) setoutputpump()end
 function onNodeConnectionChange()  setoutputpump() end
 
 --some reason entityid is the key instead of a value in the table object.getOutputNodeIds(0).

@@ -7,19 +7,19 @@ function init()
   if storage.timer == nil then
     storage.timer = 0
   end
-  self.interval = entity.configParameter("interval")
-  self.inverted = entity.configParameter("inverted") or false
+  self.interval = config.getParameter("interval")
+  self.inverted = config.getParameter("inverted") or false
   self.switchIsActive = false
 end
 
 function output(state)
   if storage.state ~= state then
     storage.state = state
-    entity.setAllOutboundNodes(state)
+    object.setAllOutputNodes(state)
     if state then
-      entity.setAnimationState("switchState", "on")
+      animator.setAnimationState("switchState", "on")
     else
-      entity.setAnimationState("switchState", "off")
+      animator.setAnimationState("switchState", "off")
     end
   else
   end
@@ -28,7 +28,7 @@ end
 function update(dt)
   if storage.timer == 0 then
     output(self.inverted)
-    if entity.getInboundNodeLevel(0) then
+    if object.getInputNodeLevel(0) then
       if (not self.switchIsActive) and storage.state == self.inverted then
         self.switchIsActive = true
         storage.timer = self.interval

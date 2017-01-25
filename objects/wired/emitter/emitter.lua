@@ -1,3 +1,3 @@
 function init()
-  entity.setAllOutboundNodes(entity.configParameter("alwaysOn", true))
+  object.setAllOutputNodes(config.getParameter("alwaysOn", true))
 end

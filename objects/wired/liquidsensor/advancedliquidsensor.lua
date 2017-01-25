@@ -31,3 +31,10 @@ function update(dt)
     animator.setAnimationState("sensorState", "other")
   end
 end
+
+
+
+
+
+
+

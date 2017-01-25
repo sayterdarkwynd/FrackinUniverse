@@ -24,8 +24,8 @@
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
+      "keepTargetInRange" : 30,
+      "targetOutOfSightTime" : 6.5,
 
       "foundTargetActions" : [ 
        
@@ -115,6 +115,7 @@
       "approachActions" : [
         {
           "name" : "approach-walk",
+          "cooldown" : 1.0,
           "parameters" : {
             "resetHeading" : false
           }
@@ -129,6 +130,7 @@
         },
         {
           "name" : "approach-walk",
+          "cooldown" : 1.0,
           "parameters" : {
             "resetHeading" : false
           }
@@ -138,6 +140,7 @@
       "wanderActions" : [
         {
           "name" : "wander-walk",
+          "cooldown" : 1.0,
           "parameters" : {
             "wanderTime" : [5, 15]
           }

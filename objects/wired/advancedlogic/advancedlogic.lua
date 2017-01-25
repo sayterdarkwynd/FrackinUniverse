@@ -1,31 +1,31 @@
 function init()
-  entity.setInteractive(false)
+  object.setInteractive(false)
   if storage.state == nil then
     output(false)
   else
-    entity.setAllOutboundNodes(storage.state)
+    object.setAllOutputNodes(storage.state)
     if storage.state then
-      entity.setAnimationState("switchState", "on")
+      animator.setAnimationState("switchState", "on")
     else
-      entity.setAnimationState("switchState", "off")
+      animator.setAnimationState("switchState", "off")
     end
   end
-  self.gates = entity.configParameter("gates")
-  self.truthtable = entity.configParameter("truthtable")
-  self.hasNotGate = entity.configParameter("hasNotGate")
+  self.gates = config.getParameter("gates")
+  self.truthtable = config.getParameter("truthtable")
+  self.hasNotGate = config.getParameter("hasNotGate")
   if self.hasNotGate then
-    self.notGateNode = entity.configParameter("notGateNode")
+    self.notGateNode = config.getParameter("notGateNode")
     if self.notGateNode == nil then
       self.hasNotGate = false
     else
-      entity.setOutboundNodeLevel(self.notGateNode, not state)
+      object.setOutputNodeLevel(self.notGateNode, not state)
     end
   else
     self.hasNotGate = false
   end
-  self.hasLatch = entity.configParameter("hasLatch")
+  self.hasLatch = config.getParameter("hasLatch")
   if self.hasLatch then
-    self.latchNode = entity.configParameter("latchNode")
+    self.latchNode = config.getParameter("latchNode")
     if self.latchNode == nil then
       self.hasLatch = false
     end
@@ -33,13 +33,13 @@ function init()
     self.hasLatch = false
   end
   if self.gates >= 1 then
-    self.gateNode1 = entity.configParameter("gateNode1")
+    self.gateNode1 = config.getParameter("gateNode1")
     if self.gates >= 2 then
-      self.gateNode2 = entity.configParameter("gateNode2")
+      self.gateNode2 = config.getParameter("gateNode2")
       if self.gates >= 3 then
-        self.gateNode3 = entity.configParameter("gateNode3")
+        self.gateNode3 = config.getParameter("gateNode3")
         if self.gates >= 4 then
-          self.gateNode4 = entity.configParameter("gateNode4")
+          self.gateNode4 = config.getParameter("gateNode4")
           self.gates = 4
         end
       end
@@ -50,14 +50,14 @@ end
 function output(state)
   if storage.state ~= state then
     storage.state = state
-    entity.setAllOutboundNodes(state)
+    object.setAllOutputNodes(state)
     if self.hasNotGate then
-      entity.setOutboundNodeLevel(self.notGateNode, not state)
+      object.setOutputNodeLevel(self.notGateNode, not state)
     end
     if state then
-      entity.setAnimationState("switchState", "on")
+      animator.setAnimationState("switchState", "on")
     else
-      entity.setAnimationState("switchState", "off")
+      animator.setAnimationState("switchState", "off")
     end
   end
 end
@@ -71,15 +71,15 @@ function toIndex(truth)
 end
 
 function update(dt)
-  if not self.hasLatch or not entity.isInboundNodeConnected(self.latchNode) or entity.getInboundNodeLevel(self.latchNode) then
+  if not self.hasLatch or not object.isInputNodeConnected(self.latchNode) or object.getInputNodeLevel(self.latchNode) then
     if self.gates == 1 then
-      output(self.truthtable[toIndex(entity.getInboundNodeLevel(self.gateNode1))])
+      output(self.truthtable[toIndex(object.getInputNodeLevel(self.gateNode1))])
     elseif self.gates == 2 then
-      output(self.truthtable[toIndex(entity.getInboundNodeLevel(self.gateNode1))][toIndex(entity.getInboundNodeLevel(self.gateNode2))])
+      output(self.truthtable[toIndex(object.getInputNodeLevel(self.gateNode1))][toIndex(object.getInputNodeLevel(self.gateNode2))])
     elseif self.gates == 3 then
-      output(self.truthtable[toIndex(entity.getInboundNodeLevel(self.gateNode1))][toIndex(entity.getInboundNodeLevel(self.gateNode2))][toIndex(entity.getInboundNodeLevel(self.gateNode3))])
+      output(self.truthtable[toIndex(object.getInputNodeLevel(self.gateNode1))][toIndex(object.getInputNodeLevel(self.gateNode2))][toIndex(object.getInputNodeLevel(self.gateNode3))])
     elseif self.gates == 4 then
-      output(self.truthtable[toIndex(entity.getInboundNodeLevel(self.gateNode1))][toIndex(entity.getInboundNodeLevel(self.gateNode2))][toIndex(entity.getInboundNodeLevel(self.gateNode3))][toIndex(entity.getInboundNodeLevel(self.gateNode4))])
+      output(self.truthtable[toIndex(object.getInputNodeLevel(self.gateNode1))][toIndex(object.getInputNodeLevel(self.gateNode2))][toIndex(object.getInputNodeLevel(self.gateNode3))][toIndex(object.getInputNodeLevel(self.gateNode4))])
     end
   end
 end
