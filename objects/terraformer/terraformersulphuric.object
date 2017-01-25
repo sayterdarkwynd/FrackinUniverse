@@ -1,15 +1,15 @@
 {
-  "objectName" : "terraformer",
+  "objectName" : "terraformersulphuric",
   "colonyTags" : [],
   "rarity" : "Legendary",
-  "description" : "Transforms a planet's climate.",
-  "shortdescription" : "Terraformer",
+  "description" : "Transforms a planet's climate into a Sulphuric biome.",
+  "shortdescription" : "Sulphuric Terraformer",
   "race" : "ancient",
   "category" : "terraformer",
   "price" : 5000,
   "printable" : false,
 
-  "inventoryIcon" : "terraformericon.png",
+  "inventoryIcon" : "terraformericon_poison.png",
   "orientations" : [
     {
       "dualImage" : "terraformer.png:inactive",
@@ -28,8 +28,8 @@
   "animationPosition" : [-16, 0],
   "animationParts" : {
     "base" : "terraformer.png",
-    "baseFullbright" : "terraformerfullbright.png",
-    "beam" : "beam/terraformer_beam.png"
+    "baseFullbright" : "terraformerfullbright_poison.png",
+    "beam" : "beam/terraformer_beam_poison.png"
   },
 
   "scripts" : ["/objects/terraformer/terraformer.lua"],
@@ -43,6 +43,6 @@
 
   "planetTypeChangeThreshold" : 0.5,
 
-  "terraformBiome" : "garden",
-  "terraformPlanetType" : "garden"
+  "terraformBiome" : "sulphuric",
+  "terraformPlanetType" : "sulphuric"
 }
