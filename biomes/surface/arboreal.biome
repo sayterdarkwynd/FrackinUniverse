@@ -4,40 +4,40 @@
 
   "requiredStatuses" : [],
 
-    "spawnProfile" : {
+  "spawnProfile" : {
     "groups" : [
       {
         "select" : 4,
-        "pool" : [ 
+        "pool" : [
           [ 0.10, "anglure4" ],
-          [ 0.09, "iguarmor" ],     
+          [ 0.09, "iguarmor" ],
           [ 0.1111, "pteropod" ],
           [ 0.05, "ixoling2" ],
           [ 0.05, "fukingsnake" ],
           [ 0.05, "nutmidge" ],
-          [ 0.05, "fucaterpillar" ],          
+          [ 0.05, "fucaterpillar" ],
           [ 0.05, "mandraflora" ],
-	  [ 0.12, "fuallergen" ],
-          [ 0.02, "furaptor" ],     
-          [ 0.02, "furaptor4" ],        
+          [ 0.12, "fuallergen" ],
+          [ 0.02, "furaptor" ],
+          [ 0.02, "furaptor4" ],
           [ 0.02, "furaptor8" ],
-          [ 0.02, "furaptor11" ]	  
+          [ 0.02, "furaptor11" ]
         ]
-      },	  
+      },
       {
         "select" : 3,
         "pool" : [
-	  [ 0.3, "fireflyspawner" ],
-          [ 0.3, "futinycockroach" ],        
+          [ 0.3, "fireflyspawner" ],
+          [ 0.3, "futinycockroach" ],
           [ 0.4, "blackbeetle" ],
           [ 0.4, "forestbee" ],
           [ 0.1, "minerbee" ],
           [ 0.3, "normalbee" ],
-	  [ 0.3, "greentip" ],
-	  [ 0.3, "blueback" ],
-	  [ 0.1, "aurorabee" ],
-	  [ 0.09, "fumothcritter" ],
-	  [ 0.111, "fuspidercritter" ]
+          [ 0.3, "greentip" ],
+          [ 0.3, "blueback" ],
+          [ 0.1, "aurorabee" ],
+          [ 0.09, "fumothcritter" ],
+          [ 0.111, "fuspidercritter" ]
         ]
       },
       {
@@ -55,41 +55,44 @@
       {
         "select" : 4,
         "pool" : [
-        [ 0.4, "fupterosaurcritter" ],
-        [ 0.2, "fuamazoncritter" ],
-        [ 0.111, "fufoxcritter" ],
-        [ 0.1, "fubearcritter" ],
-        [ 0.1, "fufawncritter" ],        
-	  [ 0.3, "fireflyspawner" ],
+          [ 0.4, "fupterosaurcritter" ],
+          [ 0.2, "fuamazoncritter" ],
+          [ 0.111, "fufoxcritter" ],
+          [ 0.1, "fubearcritter" ],
+          [ 0.1, "fufawncritter" ],
+          [ 0.3, "fireflyspawner" ],
           [ 0.4, "birdcritter" ],
           [ 0.3, "bunnycritter" ],
           [ 0.3, "chevcritter" ],
           [ 0.3, "groopcritter" ],
-	  [ 0.3, "harecritter" ],
-	  [ 0.3, "hedgehogcritter" ],
-	  [ 0.3, "redbreastcritter" ],
-	  [ 0.3, "squirrelcritter" ],
-	  [ 0.3, "fufluffalo" ],
-	  [ 0.3, "fufluffalobaby" ],
-	  [ 0.3, "fumooshi" ],
-	  [ 0.3, "fumooshibaby" ],
-	  [ 0.3, "fuhen" ],
-	  [ 0.3, "fuhenbaby" ]	  
+          [ 0.3, "harecritter" ],
+          [ 0.3, "hedgehogcritter" ],
+          [ 0.3, "redbreastcritter" ],
+          [ 0.3, "squirrelcritter" ],
+          [ 0.3, "fufluffalo" ],
+          [ 0.3, "fufluffalobaby" ],
+          [ 0.3, "fumooshi" ],
+          [ 0.3, "fumooshibaby" ],
+          [ 0.3, "fuhen" ],
+          [ 0.3, "fuhenbaby" ]
         ]
       }
-    ]
+    ],
+    "monsterParameters" : {
+      "persistent" : false
+    }
   },
-  
+
 
   "hueShiftOptions" : [-220, -110, -55, -23, 0, 23, 55, 110, 220],
-  
+
     "weather" : [
       [0, [
         "/weather.config:arboreal"
       ]]
   ],
-  
-  
+
+
   "skyOptions" : [
     //varied
     {
@@ -119,7 +122,7 @@
       "eveningLightColor" : [0, 100, 65],
       "nightLightColor" : [0, 40, 40]
     },
-       
+
     {
       "mainColor" : [255, 255, 255],
 
@@ -174,12 +177,12 @@
     },
      {
        "mainColor" : [255, 0, 255],
- 
+
        "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
        "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
        "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
        "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
- 
+
        "morningLightColor" : [202, 177, 100],
        "dayLightColor" : [202, 138, 100],
        "eveningLightColor" : [202, 100, 100],
@@ -336,25 +339,25 @@
       }
      },
 
- 
+
     "surfacePlaceables" : {
       "grassMod" : [ "deadleaves", "colourfulgrass", "flowerygrass" ],
       "grassModDensity" : 0.9,
 
       "ceilingGrassMod" : [ "undergrowth" ],
       "ceilingGrassModDensity" : 0.5,
-    
+
       "items" : [
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "thorns1" ],
               [0.50, "thorns2" ],
               [0.50, "thorns3" ],
@@ -382,7 +385,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildalgaeseed" ],
               [0.35, "wildvaranberryseed" ],
               [0.35, "wildmiraclegrassseed" ],
@@ -407,7 +410,7 @@
           "type" : "object",
           "objectSets" : [
         {
-          "pool" : [ 
+          "pool" : [
           [0.35, "jungleplant_ff1" ],
           [0.35, "shimbush1" ],
           [0.35, "shimbush2" ],
@@ -428,7 +431,7 @@
           [0.35, "shrubby2" ],
           [0.35, "shrubby3" ],
           [0.35, "orangebush" ],
-          [0.35, "bladeplant1" ],              
+          [0.35, "bladeplant1" ],
           [0.35, "ferny1" ],
           [0.35, "fireflies1"],
           [0.35, "carcass1"],
@@ -451,7 +454,7 @@
           "treeStemHueShiftMax" : 120,
           "treeStemList" : [ "redwood" ],
           "treeFoliageList" : [ "redwood1" ]
-        },    
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -463,7 +466,7 @@
           "treeStemHueShiftMax" : 120,
           "treeStemList" : [ "murky", "bleak", "spiked", "alienstriped","alienweird", "alienbubble", "birch", "cocoa", "fleshy", "grumpy", "metal", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
           "treeFoliageList" : [ "flat", "circly", "savannahbloom", "spikeyfoliage", "thorns", "alienbigleaf", "aliencircle", "rose", "brains", "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "pinefoliage", "redleaves", "scraggy", "spikeyfoliage" ]
-        }, 
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -475,7 +478,7 @@
           "treeStemHueShiftMax" : 120,
           "treeStemList" : [ "pearlwood", "nyanistem", "applewood", "peachwood", "pearwood" ],
           "treeFoliageList" : [ "pearlfoliage", "nyanifoliage", "apple", "pear", "peach"]
-        }, 
+        },
         {
           "mode" : "floor",
           "variants" : 1,
@@ -621,7 +624,7 @@
           "priority" : 3.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
-        
+
           "type" : "microdungeon",
           "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel", "blockpile", "loops", "flats", "canyonmini" ]
         },
@@ -658,7 +661,7 @@
     "undergroundPlaceables" : {
       "grassMod" : [ "deadleaves", "mossgrass2" ],
       "grassModDensity" : 0.5,
-      
+
       "ceilingGrassMod" : [ "roots" ],
       "ceilingGrassModDensity" : 0.3,
 
@@ -739,7 +742,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildalgaeseed" ],
               [0.35, "wildtalonseedseed" ],
               [0.35, "wilddeathblossomseed" ],
@@ -749,13 +752,13 @@
               "parameters" : { "startingStage" : 3 }
             }
           ]
-        },           
+        },
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
@@ -842,5 +845,5 @@
         }
       ]
     }
-  
+
 }
