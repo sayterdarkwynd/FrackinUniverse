@@ -185,7 +185,7 @@ function deciding(item)
 
         mapFarm = config.getParameter("centrifugeFarm")
         mapBees = config.getParameter("centrifugeBee")
-        mapLiquid = config.getParameter("centrifugeFu")
+        mapLiquid = config.getParameter("centrifugeLiquid")
         mapIsotope = config.getParameter("centrifugeIso")
         if mapFarm and not mapBees and not mapLiquid and not mapIsotope then
 	  if item == nil then return itemMapFarm end
