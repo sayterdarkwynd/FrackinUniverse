@@ -52,15 +52,149 @@ function deciding(item)
 		volcaniccomb    = { liquidlava     = self.itemChances.uncommon },
 		aegisaltcomb    = { aegisaltore    = self.itemChances.rarest },
 		feroziumcomb    = { feroziumore    = self.itemChances.rarest },
-		violiumcomb     = { violiumore     = self.itemChances.rarest },
-		
-		--next, FU items
-		liquidwater      = { petalred       = self.itemChances.common / 3,
-		                    petalyellow    = self.itemChances.common / 3,
-		                    petalblue      = self.itemChances.common / 3 }		
+		violiumcomb     = { violiumore     = self.itemChances.rarest }
+	        }
+	        
+        itemMapFU = itemMapFU or {
+		liquidwater         = { liquidwastewater       = self.itemChances.common,
+		                       fu_hydrogen             = self.itemChances.normal / 2,
+		                       fu_oxygen               = self.itemChances.normal / 2 },
+		liquidpoison        = { liquidwastewater       = self.itemChances.common / 2,
+		                       fu_carbon               = self.itemChances.normal,
+		                       toxicwaste              = self.itemChances.common / 2 },
+		liquidlava          = { coalore                = self.itemChances.common / 3,
+		                       corefragmentore         = self.itemChances.common / 3,
+		                       fu_carbon               = self.itemChances.common / 3 },
+		liquidslime         = { liquidwastewater       = self.itemChances.common / 2,
+		                       greenslime              = self.itemChances.common / 2,
+		                       endomorphicjelly        = self.itemChances.uncommon },
+		liquidoil           = { liquidwastewater       = self.itemChances.common / 3,
+		                       fu_carbon               = self.itemChances.common / 3,
+		                       coalore                 = self.itemChances.common / 3 },
+		liquidfuel          = { liquidwastewater       = self.itemChances.common / 2,
+		                       toxicwaste              = self.itemChances.common / 2,
+		                       ff_silicon              = self.itemChances.normal },
+		liquidhealing       = { liquidwastewater       = self.itemChances.common,
+		                       ff_silicon              = self.itemChances.uncommon,
+		                       fu_oxygen               = self.itemChances.normal  },
+		swampwater          = { dnasample              = self.itemChances.uncommon ,
+		                       liquidwater             = self.itemChances.common / 5,
+		                       algaegreen              = self.itemChances.common / 5,
+		                       nutrientpaste           = self.itemChances.common / 5,
+		                       geneticmaterial         = self.itemChances.common / 5,
+		                       tissueculture           = self.itemChances.common / 5 },
+		liquidblood         = { liquidwastewater       = self.itemChances.common,
+		                       geneticmaterial         = self.itemChances.normal / 3,
+		                       tissueculture           = self.itemChances.normal / 3,
+		                       dnasample               = self.itemChances.normal / 3 },
+		liquidbioooze       = { liquidwastewater       = self.itemChances.common / 3,
+		                       liquidpoison            = self.itemChances.common / 3,
+		                       ff_silicon              = self.itemChances.common / 3 },
+		liquidblacktar      = { liquidwastewater       = self.itemChances.common / 3,
+		                       liquidoil               = self.itemChances.common / 3,
+		                       fu_carbon               = self.itemChances.common / 3 },
+		liquidorganicsoup   = { liquidwastewater       = self.itemChances.common / 4,
+		                       geneticmaterial         = self.itemChances.common / 4,
+		                       dnasample               = self.itemChances.common / 4,
+		                       tissueculture           = self.itemChances.common / 4 },
+		vialproto           = { liquidwastewater       = self.itemChances.common / 3,
+		                       rawminerals             = self.itemChances.common / 3,
+		                       nutrientpaste           = self.itemChances.common / 3,
+		                       protociteore            = self.itemChances.rare },
+		liquidelderfluid    = { liquidwastewater       = self.itemChances.common / 2,
+		                       plutoniumore            = self.itemChances.common / 2,
+		                       rawminerals             = self.itemChances.common / 3,
+		                       aliencompound           = self.itemChances.uncommon },
+		liquidsulphuricacid = { liquidwastewater       = self.itemChances.common / 3,
+		                       sulphur                 = self.itemChances.common / 3,
+		                       fu_carbon               = self.itemChances.common / 3 },
+		liquidirradium      = { sulphur                = self.itemChances.common / 2,
+		                       irradiumore             = self.itemChances.rare,
+		                       fu_nitrogen             = self.itemChances.common / 2 },
+		ff_mercury          = { liquidwastewater       = self.itemChances.common / 2,
+		                       ironore                 = self.itemChances.common / 2,
+		                       fu_carbon               = self.itemChances.uncommon  },
+		liquidgravrain      = { liquidwastewater       = self.itemChances.common / 3,
+		                       sulphur                 = self.itemChances.uncommon / 3,
+		                       rawminerals             = self.itemChances.uncommon / 3,
+		                       ff_silicon              = self.itemChances.uncommon / 3 },
+		liquidironfu        = { liquidoil              = self.itemChances.uncommon,
+		                       ironore                 = self.itemChances.common,
+		                       fu_carbon               = self.itemChances.rare },
+		liquidpus           = { liquidbioooze          = self.itemChances.common / 3,
+		                       nutrientpaste           = self.itemChances.common / 3,
+		                       tissueculture           = self.itemChances.common / 3,
+		                       dnasample               = self.itemChances.rare},
+		fu_liquidhoney      = { liquidwastewater       = self.itemChances.common / 3,
+		                       geneticmaterial         = self.itemChances.common / 3,
+		                       nutrientpaste           = self.itemChances.common / 3 },
+		liquidalienjuice    = { liquidwastewater       = self.itemChances.common / 3,
+		                       geneticmaterial         = self.itemChances.common / 3,
+		                       ff_silicon              = self.itemChances.common / 3 },
+		liquidnitrogenitem  = { liquidwastewater       = self.itemChances.common / 3,
+		                       fu_nitrogen             = self.itemChances.common / 3,
+		                       icecrystal              = self.itemChances.rare },
+		liquiddarkwater     = { liquidwastewater       = self.itemChances.common / 3,
+		                       nutrientpaste           = self.itemChances.common / 3,
+		                       mineralsample           = self.itemChances.common / 3,
+		                       liquidpoison            = self.itemChances.common / 3 },
+		liquidaether        = { vialproto              = self.itemChances.rare,
+		                       aliencompound           = self.itemChances.rarest,
+		                       fu_hydrogen             = self.itemChances.common / 2,
+		                       fu_carbon               = self.itemChances.common / 2 },
+		liquidwastewater        = { liquidwater        = self.itemChances.common  }			 		                           
+        }
+        
+	itemMapIsotopes = itemMapIsotopes or {
+		liquidmetallichydrogen  = { fu_hydrogenmetallic    = self.itemChances.rarest,
+		                           fu_hydrogen             = self.itemChances.common / 2,
+		                           fu_carbon               = self.itemChances.common / 2 },
+		liquiddeuterium         = { deuterium              = self.itemChances.rare,
+		                           fu_hydrogen             = self.itemChances.common / 2,
+		                           fu_carbon               = self.itemChances.common / 2 },
+		toxicwaste              = { uraniumore             = self.itemChances.common,
+		                           tritium                 = self.itemChances.rarest },	
+		uraniumrod              = { enricheduranium        = self.itemChances.rare,
+		                           toxicwaste              = self.itemChances.common / 2,
+		                           fu_hydrogen             = self.itemChances.common / 2 }, 
+		plutoniumrod            = { enrichedplutonium      = self.itemChances.rare,
+		                           fu_hydrogen             = self.itemChances.common / 2,
+		                           toxicwaste              = self.itemChances.common / 2 }, 
+		neptuniumrod            = { toxicwaste             = self.itemChances.common / 2,
+		                           fu_hydrogen             = self.itemChances.common / 2,
+		                           ultronium               = self.itemChances.rarest },  
+		thoriumrod              = { toxicwaste             = self.itemChances.common / 2,
+		                           fu_hydrogen             = self.itemChances.common / 2,
+		                           ultronium               = self.itemChances.rarest }, 
+		solariumstar            = { ultronium              = self.itemChances.rare,
+		                           toxicwaste              = self.itemChances.common / 2,
+		                           fu_hydrogen             = self.itemChances.common / 2 }, 
+		tritium                 = { uraniumrod             = self.itemChances.common / 2,
+		                           liquidmetallichydrogen  = self.itemChances.rare,
+		                           fu_hydrogenmetallic     = self.itemChances.rarest,
+		                           fu_carbon               = self.itemChances.common / 2 }, 
+		deuterium               = { tritium                = self.itemChances.uncommon,
+		                           liquidmetallichydrogen  = self.itemChances.rare,
+		                           fu_carbon               = self.itemChances.common } 
 	}
-	if item == nil then return itemMap end
-	return itemMap[item.name] -- may be nil
+	
+        mapBees = config.getParameter("centrifugeBee")
+        mapLiquid = config.getParameter("centrifugeFu")
+        mapIsotope = config.getParameter("centrifugeIso")
+        
+	if mapBees and not mapLiquid and not mapIsotope then
+	  if item == nil then return itemMap end
+	  sb.logInfo("one")
+	  return itemMap[item.name] -- may be nil
+	elseif mapLiquid and not mapBees and not mapIsotope then
+	  if item == nil then return itemMap or itemMapFU end
+	  sb.logInfo("two")
+	  return itemMap[item.name] or itemMapFU[item.name] -- may be nil
+	elseif mapIsotope and not mapBees and not mapLiquid then
+	  if item == nil then return itemMap or itemMapFU or itemMapIso end
+	  sb.logInfo("three")
+	  return itemMap[item.name] or itemMapFU[item.name] or itemMapIsotopes[item.name] -- may be nil
+	end
 end
 
 function update(dt)
