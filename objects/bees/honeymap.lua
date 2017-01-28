@@ -29,6 +29,7 @@ function honeyCheck(comb)
 		aegisaltcomb    = "honeyjar",
 		feroziumcomb    = "honeyjar",
 		violiumcomb     = "honeyjar",
+		liquidwater     = "liquidwastewater"
 	}
 
 	local item = comb

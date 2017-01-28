@@ -1,11 +1,6 @@
-require "/scripts/fu_storageutils.lua"
+function init(virtual)
+	if virtual then return end
 
-function init()
-	storage.currentinput = nil
-	storage.currentoutput = nil
-	storage.bonusoutputtable = nil
-	storage.activeConsumption = false
-	
 	self.itemChances = config.getParameter("itemChances")
 	self.inputSlot = config.getParameter("inputSlot")
 
@@ -25,7 +20,7 @@ function deciding(item)
 	itemMap = itemMap or {
 		-- item chances are between 0 and 1, and for any given comb type, the sum of the chances must not exceed 1
 		
-		-- First, all Bees! related items
+		--first, Bees! related items
 		arcticcomb      = { frozenwaxchunk = self.itemChances.normal },
 		aridcomb        = { goldensand     = self.itemChances.common },
 		coppercomb      = { copperore      = self.itemChances.rare },
@@ -59,49 +54,43 @@ function deciding(item)
 		feroziumcomb    = { feroziumore    = self.itemChances.rarest },
 		violiumcomb     = { violiumore     = self.itemChances.rarest },
 		
-		-- Next we proceed with FrackinUniverse items
-		liquidwater      = { liquidwastewater       = self.itemChances.common / 3,
-		                    fu_hydrogen    = self.itemChances.common / 3,
-		                    fu_oxygen      = self.itemChances.common / 3 }
-		
+		--next, FU items
+		liquidwater      = { petalred       = self.itemChances.common / 3,
+		                    petalyellow    = self.itemChances.common / 3,
+		                    petalblue      = self.itemChances.common / 3 }		
 	}
 	if item == nil then return itemMap end
 	return itemMap[item.name] -- may be nil
 end
 
 function update(dt)
-	
 	if not storage.init then
 		init()
 	end
 
 	local input = world.containerItems(entity.id())[self.inputSlot]
-        if isn_hasRequiredPower() == true then 
-		if input then
-			local output = deciding(input)
-			if output then
-				workingCombs(input, output)
-				animator.setAnimationState("centrifuge", "working")
-				storage.activeConsumption = true
-				return
-			end
-		end
 
-		if storage.combsProcessed and storage.combsProcessed.count > 0 then
-			-- discard the stash if unclaimed by a jarrer within a reasonable time (twice the craft delay)
-			storage.combsProcessed.stale = (storage.combsProcessed.stale or (self.initialCraftDelay * 2)) - 1
-			if storage.combsProcessed.stale == 0 then
-				drawHoney() -- effectively clear the stash, stopping the jarrer from getting it
-			end
+	if input then
+		local output = deciding(input)
+		if output then
+			workingCombs(input, output)
+			animator.setAnimationState("centrifuge", "working")
+			return
 		end
 	end
-	
-        if isn_hasRequiredPower() == false or storage.currentoutput == nil or clearSlotCheck(storage.currentoutput) == false then		
-	 animator.setAnimationState("centrifuge", "idle")
-	 self.craftDelay = self.initialCraftDelay
-	 storage.activeConsumption = false
-	 return
-        end
+
+	if storage.combsProcessed and storage.combsProcessed.count > 0 then
+		-- discard the stash if unclaimed by a jarrer within a reasonable time (twice the craft delay)
+		storage.combsProcessed.stale = (storage.combsProcessed.stale or (self.initialCraftDelay * 2)) - 1
+		if storage.combsProcessed.stale == 0 then
+			drawHoney() -- effectively clear the stash, stopping the jarrer from getting it
+			--sb.logInfo ("stash dropped")
+		--else sb.logInfo ("stash drop in %s time units", storage.combsProcessed.stale)
+		end
+	end
+
+	animator.setAnimationState("centrifuge", "idle")
+	self.craftDelay = self.initialCraftDelay
 end
 
 function workingCombs(input, output)
