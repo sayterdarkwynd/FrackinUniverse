@@ -17,10 +17,15 @@ function init(virtual)
 end
 
 function deciding(item)
-	itemMap = itemMap or {
-		-- item chances are between 0 and 1, and for any given comb type, the sum of the chances must not exceed 1
-		
-		--first, Bees! related items
+-- item chances are between 0 and 1, and for any given comb type, the sum of the chances must not exceed 1
+	itemMapFarm = itemMapFarm or {
+		milk      = { cheese = self.itemChances.common },
+		liquidwater         = { liquidwastewater       = self.itemChances.common,
+		                       fu_hydrogen             = self.itemChances.normal / 2,
+		                       fu_oxygen               = self.itemChances.normal / 2 }
+	        }
+	        
+	itemMapBees = itemMapBees or {
 		arcticcomb      = { frozenwaxchunk = self.itemChances.normal },
 		aridcomb        = { goldensand     = self.itemChances.common },
 		coppercomb      = { copperore      = self.itemChances.rare },
@@ -55,7 +60,7 @@ function deciding(item)
 		violiumcomb     = { violiumore     = self.itemChances.rarest }
 	        }
 	        
-        itemMapFU = itemMapFU or {
+        itemMapLiquids = itemMapLiquids or {
 		liquidwater         = { liquidwastewater       = self.itemChances.common,
 		                       fu_hydrogen             = self.itemChances.normal / 2,
 		                       fu_oxygen               = self.itemChances.normal / 2 },
@@ -177,23 +182,27 @@ function deciding(item)
 		                           liquidmetallichydrogen  = self.itemChances.rare,
 		                           fu_carbon               = self.itemChances.common } 
 	}
-	
+
+        mapFarm = config.getParameter("centrifugeFarm")
         mapBees = config.getParameter("centrifugeBee")
         mapLiquid = config.getParameter("centrifugeFu")
         mapIsotope = config.getParameter("centrifugeIso")
-        
-	if mapBees and not mapLiquid and not mapIsotope then
-	  if item == nil then return itemMap end
+        if mapFarm and not mapBees and not mapLiquid and not mapIsotope then
+	  if item == nil then return itemMapFarm end
 	  sb.logInfo("one")
-	  return itemMap[item.name] -- may be nil
-	elseif mapLiquid and not mapBees and not mapIsotope then
-	  if item == nil then return itemMap or itemMapFU end
+	  return itemMapFarm[item.name] -- may be nil        
+	elseif mapBees and not mapFarm and not mapLiquid and not mapIsotope then
+	  if item == nil then return itemMapBees end
+	  sb.logInfo("one")
+	  return itemMapBees[item.name] or itemMapFarm[item.name] -- may be nil
+	elseif mapLiquid and not mapFarm and not mapBees and not mapIsotope then
+	  if item == nil then return itemMapBees or itemMapLiquids end
 	  sb.logInfo("two")
-	  return itemMap[item.name] or itemMapFU[item.name] -- may be nil
-	elseif mapIsotope and not mapBees and not mapLiquid then
-	  if item == nil then return itemMap or itemMapFU or itemMapIso end
+	  return itemMapBees[item.name] or itemMapLiquids[item.name] -- may be nil
+	elseif mapIsotope and not mapFarm and not mapBees and not mapLiquid then
+	  if item == nil then return itemMapBees or itemMapLiquids or itemMapIso end
 	  sb.logInfo("three")
-	  return itemMap[item.name] or itemMapFU[item.name] or itemMapIsotopes[item.name] -- may be nil
+	  return itemMapBees[item.name] or itemMapLiquids[item.name] or itemMapIsotopes[item.name] -- may be nil
 	end
 end
 
