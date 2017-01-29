@@ -5,7 +5,7 @@
   "category" : "wire",
   "objectType" : "container",
   "price" : 3500,
-  "description" : "A coal or water burning fuel source. Generates a small amount of power.",
+  "description" : "A coal or water burning power source. Produces small amounts of energy.",
   "shortdescription" : "^cyan;Alternator Generator^white;",
   "race" : "generic",
   "printable" : false,
@@ -22,8 +22,6 @@
     {
       "dualImage" : "fu_alternatorgenerator_base.png",
       "imagePosition" : [0, 0],
-      "frames" : 14,
-      
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
@@ -31,27 +29,37 @@
 
   "animation" : "fu_alternatorgenerator.animation",
   "animationParts" : {
+    "screen" : "fu_alternatorgenerator_screen.png",
+    "fans" : "fu_alternatorgenerator_fans.png",
     "base" : "fu_alternatorgenerator_base.png"
   },
   "animationPosition" : [0, 0],
-  "soundEffect" : "/objects/power/fu_alternatorgenerator/isn_thermalgenerator.wav",
+  "soundEffect" : "/objects/power/fu_alternatorgenerator/fu_alternatorgenerator.wav",
   
   "slotCount" : 1,
   "uiConfig" : "/objects/power/fu_alternatorgenerator/fu_alternatorgenerator.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/objects/power/isn_thermalgenerator/fu_alternatorgenerator.lua",
+  "scripts" : [ "/objects/power/fu_alternatorgenerator/fu_alternatorgenerator.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 70,
   
-  "inputNodes" : [ [0, 0] ],
-  "outputNodes" : [ [0, 1] ],
+  "inputNodes" : [ [2, 2] ],
+  "outputNodes" : [ [2, 1] ],
   
   "isn_powerSupplier" : true,
   "acceptablefuel" : {
-	  "liquidwater" : 2,
-	  "coalore" : 4
+	  "paper" : 2,
+	  "logblock" : 4,
+	  "fullwood2" : 4,
+	  "coalore" : 6,
+	  "biofuelcannister" : 8,
+	  "liquidoil" : 8,
+	  "liquidfuel" : 10,
+	  "biofuelcannisteradv" : 12,
+	  "supermatter" : 14,
+	  "biofuelcannistermax" : 16
   }
 }

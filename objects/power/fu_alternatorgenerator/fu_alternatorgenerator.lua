@@ -22,19 +22,23 @@ end
 function update(dt)
 	-- check current power production and set the animation state accordingly
 	if storage.currentpowerprod > 90 then
-		animator.setAnimationState("base", "on")
+		animator.setAnimationState("screen", "on")
+		animator.setAnimationState("fans", "on")
 		object.setLightColor(config.getParameter("lightColor", {166, 166, 166}))
 		object.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 50 then
-		animator.setAnimationState("base", "on")
+		animator.setAnimationState("screen", "on")
+		animator.setAnimationState("fans", "on")
 		object.setLightColor(config.getParameter("lightColor", {100, 100, 100}))
 		object.setSoundEffectEnabled(true)
 	elseif storage.currentpowerprod > 10 then
-		animator.setAnimationState("base", "on")
+		animator.setAnimationState("screen", "on")
+		animator.setAnimationState("fans", "on")
 		object.setLightColor(config.getParameter("lightColor", {50, 50, 50}))
 		object.setSoundEffectEnabled(false)
 	else
-		animator.setAnimationState("base", "off")
+		animator.setAnimationState("screen", "off")
+		animator.setAnimationState("fans", "off")
 		object.setLightColor({0, 0, 0, 0})
 		object.setSoundEffectEnabled(false)
 	end
