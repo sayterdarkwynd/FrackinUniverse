@@ -1,14 +1,18 @@
 transferUtil={}
+disabled=false
+unhandled={}
 
 function transferUtil.init()
-	if storage.init==nil then
+	if storage==nil then
 		storage={}
+	end
+	if storage.init==nil then
 		storage.init=true
 	end
 	storage.position=entity.position()
 end
 
-transferUtil.itemtypes = {
+transferUtil.itemTypes = {
 	{group="generic",	options={"foodjunk","junk","other","vehiclecontroller","generic", "coin", "celestialitem","quest"} }, 
 	{group="treasure",	options={"bug","tech","techmanagement","largefossile","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"} },
 	{group="material",	options={"block","liquid","platform","rail","railplatform","breakable","railpoint"} }, 
@@ -29,23 +33,83 @@ function transferUtil.getAbsPos(position)
 	return {world.xwrap(pos[1] + position[1]), pos[2] + position[2]};
 end
 
-function transferUtil.routeItems(storage)
-
-	--[[if~= nil and target ~= nil and world.entityExists(source) and world.entityExists(target) then
-		local items = world.containerItems(storage.input)
-		if items ~= nil then
-			if #storage.inputSlots > 0 then
-				transferUtil.transferFromSlots(storage)
-			else
-				transferUtil.transferFromAnywhere(storage)
+function transferUtil.routeItems()
+	if #storage.inContainers < 1 then return end
+	if #storage.outContainers < 1 then return end
+	for _,sourceContainer in pairs(storage.inContainers) do
+		local targetContainer=transferUtil.findNearest(sourceContainer,storage.outContainers)
+		local sourceItems=world.containerItems(sourceContainer)
+		for index1,item in pairs(sourceItems) do
+			if transferUtil.checkFilter(item) then
+				if transferUtil.validInputSlot(index1) then
+					local tempSize=world.containerSize(targetContainer)
+					if #storage.outputSlots > 0 then
+						for index0=0,tempSize-1 do
+							if transferUtil.tFirstIndex(index0+1,storage.outputSlots) > 0 then
+								local leftOverItems=world.containerPutItemsAt(targetContainer,item,index0)
+								if leftOverItems~=nil then
+									world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count-leftOverItems.count)
+									item=leftOverItems
+									break
+								else
+									world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+									break
+								end
+							end
+						end
+					else
+						local leftOverItems=world.containerAddItems(targetContainer,item)
+						if leftOverItems~=nil then
+							local tempQuantity=item.count-leftOverItems.count
+							if tempQuantity > 0 then
+								world.containerTakeNumItemsAt(sourceContainer,index1-1,tempQuantity)
+								break
+							end
+						else
+							world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+						end
+					end
+				end
 			end
 		end
-	end]]--
+	end
 end
 
+function transferUtil.validInputSlot(slot)
+	if #storage.inputSlots == 0 then return true end
+	return (transferUtil.tFirstIndex(slot,storage.inputSlots)>0)
+	--(#storage.inputSlots == 0) or (transferUtil.tFirstIndex(slot,storage.inputSlots)>0)
+end
+
+function transferUtil.findNearest(origin,targetList)
+	local temp=nil
+	local target=nil
+	local distance=nil
+	for _,i2 in pairs(targetList) do
+		if i2~=origin then
+		temp=world.magnitude(world.objectSpaces(i2)[1],world.objectSpaces(origin)[1])
+			if distance==nil then
+				target=i2
+				distance=temp
+			elseif distance > temp then
+				target=i2
+				distance=temp
+			end
+		end
+	end
+	return target
+end
+
+function transferUtil.tFirstIndex(entry,t1)
+	for k,v in pairs(t1) do
+		if entry==v then
+			return k
+		end
+	end
+	return 0
+end
 
 function transferUtil.tConjunct(t1,t2)
-	--sb.logInfo(tostring(t1).."::::"..tostring(t2))
 	if t2==nil then
 		if(t1==nil) then
 			return {};
@@ -59,125 +123,106 @@ function transferUtil.tConjunct(t1,t2)
 	end
 	local beep;local meep;
 	for _,v2 in pairs(t2) do
-		--sb.logInfo(k1.."::::"..v1)
 		beep=false
 		for _,v1 in pairs(t1) do
-			--sb.logInfo(k2..":::::"..v2)
 			if(tonumber(v2)==tonumber(v1)) then
 				beep=true
-				--break;
 			end
 		end
 		if not beep then
-			--sb.logInfo("Inserting "..v2)
 			table.insert(t1,v2)
 		end
 	end
 	return t1;
 end
 
-function transferUtil.checkFilter(item,invert)
-	--Inverted = Don't take
-	local filterItems = world.containerItems(entity.id())
-	local filters = false;
-	for i,v in pairs(filterItems) do
-		filters = true;
-		if transferUtil.compareItems(v, item) then
-			return invert == false;
+function transferUtil.checkFilter(item)
+	routerItems=world.containerItems(entity.id())
+	for slot,rItem in pairs(routerItems) do
+		local invert=storage.filterInverted[slot]
+		local fType=storage.filterType[slot]
+		if fType == -1 then
+			if transferUtil.compareItems(rItem, item) then
+				if invert then
+					return false
+				end
+			else
+				if not invert then
+					return false
+				end
+			end
+		elseif fType==0 then
+			if transferUtil.compareTypes(rItem, item) then
+				if invert then
+					return false
+				end
+			else
+				if not invert then
+					return false
+				end
+			end
+		elseif fType==1 then
+			if transferUtil.compareCategories(rItem, item) then
+				if invert then
+					return false
+				end
+			else
+				if not invert then
+					return false
+				end
+			end
+		else
+			return false
 		end
 	end
-	if filters == false then
-		return true;
-	end
-	return filterItems;
+	return true
 end
 
 
 function transferUtil.compareItems(itemA, itemB)
 	if itemA == nil or itemB == nil then
 		return false;
+	elseif itemA.name == itemB.name then
+		return true;
+	else
+		return false
 	end
-	if itemA.name == itemB.name then
+end
+
+function transferUtil.compareTypes(itemA, itemB)
+	if itemA == nil or itemB == nil then
+		return false;
+	end
+	if transferUtil.getType(itemA) == transferUtil.getType(itemB) then
 		return true;
 	end
+	return false
+end
+function transferUtil.compareCategories(itemA, itemB)
+	if itemA == nil or itemB == nil then
+		return false;
+	end
+	if transferUtil.getCategory(itemA) == transferUtil.getCategory(itemB) then
+		return true;
+	end
+	return false
 end
 
-function transferUtil.transferFromAnywhere(source,target,items)
-	for i,v in pairs(items) do
-		local item = v;
-		if checkFilter(item) then
-			local success, amount = transferUtil.tryFitOutput(target,item);
-				if success then
-					world.containerConsumeAt(source, i - 1, amount)
-					return;
-			end
-		end
-	end
-end
-
-function transferUtil.transferFromSlots(source,target,items,slots)
-	for i = 1, #slots do
-		local item = items[slots[i]];
-		if item ~= nil then
-			if checkFilter(item) then
-				local success, amount = transferUtil.tryFitOutput(target,item,slots);
-				if success then
-					world.containerConsumeAt(source, slots[i] - 1, amount)
-					return;
-				end
-			end
-		end
-	end
-end
-
-function transferUtil.tryFitOutput(target,item,slots,drop)
-	if drop==nil then
-		drop=false
-	end
-	if slots==nil then
-			local leftOverItems = world.containerAddItems(target, item)
-			if leftOverItems == nil or leftOverItems.count ~= item.count then
-				if leftOverItems == nil then
-					return true, item.count;
+function transferUtil.tryFitOutput(target,item,drop)
+	local leftOverItems = world.containerAddItems(target, item)
+	if leftOverItems == nil or leftOverItems.count ~= item.count then
+		if leftOverItems == nil then
+			return true, item.count;
+		else
+			if drop==true then 
+				temp=world.objectSpaces(target)
+				if temp~=nil then
+					world.spawnItem(item,temp[1])
 				else
-					if drop then 
-						temp=world.objectSpaces(target)
-						if temp~=nil then
-							world.spawnItem(item,temp[1])
-						else
-							world.spawnItem(item,entity.position())
-						end
-					else
-						return true, item.count - leftOverItems.count;
-					end
+					world.spawnItem(item,entity.position())
 				end
-			end
-	end
-	if #slots > 0 then
-		for i = 1, #slots do
-			local leftOverItems = world.containerPutItemsAt(target, item, slots - 1)
-			if leftOverItems == nil or leftOverItems.count ~= item.count then
-				if leftOverItems == nil then
-					return true, item.count;
-				else
-					return true, item.count - leftOverItems.count;
-				end
-			end
-		end
-	else
-		local containerName = world.entityName(target);
-		local containerConfig = root.itemConfig({name = containerName, count = 1})
-		local slots = containerConfig.config.slotCount;
-		if containerConfig ~= nil then
-			for i = 1, slots do
-				local leftOverItems = world.containerPutItemsAt(output, item, i - 1)
-				if leftOverItems == nil or leftOverItems.count ~= item.count then
-					if leftOverItems == nil then
-						return true, item.count;
-					else
-						return true, item.count - leftOverItems.count;
-					end
-				end
+			else
+				return true, item.count - leftOverItems.count;
 			end
 		end
 	end
@@ -195,22 +240,29 @@ function transferUtil.sendConfig()
 	return storage;
 end
 
-function transferUtil.sendContainerInputs(node)
+function transferUtil.recvConfig(conf)
+	storage=conf
+end
+
+function transferUtil.sendContainerInputs()
 	if(transferUtil.powerLevel(node)) then
 		if(storage.inContainers~=nil)then
 			return storage.inContainers
 		end
 	end
-	return(nil)
+	return({})
 end
 
-function transferUtil.sendContainerOutputs(node)
-	if(transferUtil.powerLevel(node)) then
+function transferUtil.sendContainerOutputs()
+	if outDataNode==nil then
+		return
+	end
+	if(transferUtil.powerLevel(powerNode)) then
 		if(storage.outContainers~=nil)then
 			return storage.outContainers
 		end
 	end
-	return(nil)
+	return({})
 end
 
 function transferUtil.powerLevel(node,explicit)
@@ -234,11 +286,8 @@ end
 
 function transferUtil.updateInputs(powerNode,dataNode)
 	if dataNode==nil then dataNode=powerNode end
-	if not transferUtil.powerLevel(powerNode,true) then
-		storage.input={}
-		storage.inContainers={}
-		return false
-	end
+	storage.input={}
+	storage.inContainers={}
 	storage.input=object.getInputNodeIds(dataNode);
 	for k,_ in pairs(storage.input) do
 		result=world.callScriptedEntity(k,"transferUtil.sendContainerInputs");
@@ -249,16 +298,14 @@ end
 
 function transferUtil.updateOutputs(powerNode,dataNode)
 	if dataNode==nil then dataNode=powerNode end
-	if not transferUtil.powerLevel(powerNode,true) then
-		storage.output={}
-		storage.outContainers={}
-		return
-	end
+	storage.output={}
+	storage.outContainers={}
 	storage.output=object.getOutputNodeIds(dataNode);
 	for k,_ in pairs(storage.output) do
 		result=world.callScriptedEntity(k,"transferUtil.sendContainerOutputs");
 		storage.outContainers=transferUtil.tConjunct(storage.outContainers,result)
 	end
+	return true
 end
 
 
@@ -266,21 +313,17 @@ end
 --Public functions for interoperability
 
 
-function receiveItem(itemDescriptor)
-	return transferUtil.tryFitOutput(entity.id(),itemDescriptor)
+function receiveItem(item)
+	return transferUtil.tryFitOutput(entity.id(),item)
 end
 
 
-function canReceiveItem(itemDescriptor)
+function canReceiveItem(item)
 	if storage.receiveItem~=nil then
-		if transferUtil.powerLevel(0) and itemDescriptor ~= nil then
+		if transferUtil.powerLevel(0) and item ~= nil then
 			if storage.receiveItem==true then
 				if storage.filterType~=nil then
-					if transferUtil.getType(itemDescriptor) ~= storage.filterType then
-						return false
-					else
-						return true
-					end
+					return transferUtil.checkFilter(item)
 				end
 				return true
 			end
@@ -291,21 +334,36 @@ end
 
 
 
-function transferUtil.getType(itemDescriptor)
-	local itemRoot = root.itemConfig(itemDescriptor.name)
-	local itemCat=string.tolower(itemRoot.category)
+function transferUtil.getType(item)
+	local itemRoot = root.itemConfig(item.name)
+	local itemCat
+	if itemRoot.category ~= nil then
+		itemCat=itemRoot.category
+	else
+		if itemRoot.config.category ~= nil then
+			itemCat=itemRoot.config.category
+		end
+		if itemRoot.config.projectileType~=nil then
+			itemCat="thrownitem"
+		end
+	end
 	if itemCat~=nil then
-		return itemCat
+		return string.lower(itemCat)
+	end
+	if unhandled[item.name]~=true then
+		sb.logInfo(sb.printJson(itemRoot))
+		unhandled[item.name]=true
 	end
 	return "generic"
 end
 
-function transferUtil.getCategory(itemDescriptor)
-	local itemCat=transferUtil.getType(itemDescriptor)
-	for k,group in pairs(transferUtil.itemTypes) do
-		for k,v in pairs(group.options) do 
-			if v==itemType then 
-				return group.group
+function transferUtil.getCategory(item)
+	local itemCat=transferUtil.getType(item)
+	for _,subset in pairs(transferUtil.itemTypes) do
+		for _,v in pairs(subset.options) do
+			v=string.lower(v)
+			if v==itemCat then 
+				return string.lower(subset.group)
 			end
 		end
 	end

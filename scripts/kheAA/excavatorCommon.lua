@@ -3,9 +3,6 @@ require "/scripts/util.lua"
 
 excavatorCommon={}
 states={}
-defaultstorage.maxWidth = 20;
-defaultstorage.drillRange=200
-defaultDrillPower=10
 reDrillLevelFore=0
 redrillPosFore=nil
 reDrillLevelback=0
@@ -21,33 +18,38 @@ function excavatorCommon.init(drill,pump)
 	storage.facing=util.clamp(object.direction(),0,1)
 	storage.isDrill=drill
 	storage.isPump=pump
-	if drill == true and pump == true then
+	if drill == true or pump == true then
 		storage.width=0
-		did=true
-	elseif pump==true then
-		storage.depth=-1
 		did=true
 	end
 	if pump then
 		require "/scripts/kheAA/liquidLib.lua"
+		storage.depth=-1
+		storage.liquids={}
 		did=true
 	end
 	if did then
 		storage.state="start"
 		anims()
+	else
+		storage.state="off"
 	end
 end
 
 function excavatorCommon.cycle(dt)
+	if storage.state=="off" then
+		return
+	end
 	if transferUtil.powerLevel(0) then
 		setRunning(true)
 		if storage.state=="stop" then
 			storage.state="start"
 			return;
 		end
-		setRunning(false)
-		storage.state="stop"
+	else
+		deltatime=0
 	end
+	deltatime = deltatime + dt;
 	time = time + dt;
 	if time > 10 then
 		local pos = storage.position;
@@ -67,35 +69,40 @@ function excavatorCommon.cycle(dt)
 end
 
 function states.start(dt)
-	deltatime = deltatime + dt;
-	if deltatime >= 0.2 then
-		step = step + 0.2;
-		deltatime = 0;
-	end
 	if storage.isDrill then
-		if step >= 1 then
-			step = 0;
-			storage.width = storage.width + 1;
-			animator.resetTransformationGroup("horizontal")
-			animator.scaleTransformationGroup("horizontal", {storage.width,1});
-			animator.translateTransformationGroup("horizontal", {2,1});
-			local pos = storage.position;
-			local searchPos = {world.xwrap(pos[1] + storage.width + 2), pos[2] + 1};
-			if storage.width >= storage.maxWidth or world.material(searchPos, "foreground") then
-				animator.setAnimationState("drillState", "on");
-				renderDrill(storage.drillPos)
-				storage.state = "moveDrill";
-				storage.drillTarget = excavatorCommon.getNextDrillTarget();
-				setRunning(false);
-			end
-		end
+		storage.state="moveDrillBar"
 	else
 		storage.state="movePump"
 	end
 end
 
+function states.moveDrillBar(dt)
+	--sb.logInfo(step)
+	if deltatime >= 0.2 then
+		--sb.logInfo(deltatime)
+		step = step + 0.2;
+		deltatime=0
+	end
+	animator.resetTransformationGroup("horizontal")
+	animator.scaleTransformationGroup("horizontal", {storage.width+step,1});
+	animator.translateTransformationGroup("horizontal", {2,1});
+	if step >= 1 then
+		step = 0;
+		storage.width = storage.width + 1;
+		local pos = storage.position;
+		local searchPos = {world.xwrap(pos[1] + storage.width + 2), pos[2] + 1};
+		if storage.width >= storage.maxWidth or world.material(searchPos, "foreground") then
+			animator.setAnimationState("drillState", "on");
+			renderDrill(storage.drillPos)
+			storage.state = "moveDrill";
+			storage.drillTarget = excavatorCommon.getNextDrillTarget();
+			setRunning(false);
+		end
+	end
+	
+end
+
 function states.moveDrill(dt)
-	deltatime = deltatime + dt;
 	local drillPos = storage.drillPos;
 	local drillTarget = storage.drillTarget;
 	local drillDir = excavatorCommon.getDir();
@@ -111,30 +118,35 @@ function states.moveDrill(dt)
 		renderDrill({drillPos[1] + drillDir[1] * step, drillPos[2] + drillDir[2] * step})
 	end
 	if drillPos[1] == drillTarget[1] and drillPos[2] == drillTarget[2] then
-		storage.state = "mine";
+		if storage.isPump then
+			storage.state = "pump";
+		else
+			storage.state = "mine";
+		end
 	end
 end
 
 
 
 function states.movePump(dt)
-	deltatime = deltatime + dt;
+	if deltatime >= 0.2 then
+		step = step + 0.2;
+	end
 	if step >= 1 then
 		step = 0;
 		storage.depth = storage.depth - 1;
 		storage.state = "pump";
-		renderPump(storage.depth)
+		renderPump(step)
 	end
 	if deltatime >= 0.1 then
 		step = step + 0.1;
 		deltatime = 0;
-		renderPump(storage.depth - step)
+		renderPump(step)
 	end
 end
 
 
 function states.mine(dt)
-	deltatime = deltatime + dt;
 	if deltatime < 0.1 then
 		return;
 	end
@@ -142,7 +154,7 @@ function states.mine(dt)
 	if redrillPosFore ~= nil then
 		if reDrillLevelFore == 1 then
 			if world.material(redrillPosFore,"foreground") then
-				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", drillPower/3)
+				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=2
 				return
 			else
@@ -151,7 +163,7 @@ function states.mine(dt)
 			end
 		elseif reDrillLevelFore == 2 then
 			if world.material(redrillPosFore,"foreground") then
-				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", drillPower/3)
+				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=0
 				return
 			else
@@ -163,7 +175,7 @@ function states.mine(dt)
 	if redrillPosBack ~= nil then
 		if reDrillLevelBack == 1 then
 			if world.material(redrillPosBack,"background") then
-				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", drillPower/3)
+				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=2
 				return
 			else
@@ -172,7 +184,7 @@ function states.mine(dt)
 			end
 		elseif reDrillLevelBack == 2 then
 			if world.material(redrillPosBack,"background") then
-				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", drillPower/3)
+				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=0
 				return
 			else
@@ -191,13 +203,12 @@ function states.mine(dt)
 		return
 	end
 	if world.material(absdrillPos,"foreground") then
-		world.damageTiles({absdrillPos}, "foreground", absdrillPos, "plantish", drillPower)
+		world.damageTiles({absdrillPos}, "foreground", absdrillPos, "plantish", storage.drillPower)
 		if world.material(absdrillPos,"foreground") then
 			local weeds=world.entityQuery({absdrillPos[1]-20,absdrillPos[2]-20},{absdrillPos[1]+20,absdrillPos[2]+20})
 			if weeds~=nil then
 				for k,v in pairs(weeds) do
 					if world.entityExists(v) then
-						--sb.logInfo(v)
 					end
 				end
 				redrillPosFore=absdrillPos;
@@ -207,9 +218,9 @@ function states.mine(dt)
 		end
 	end
 	if transferUtil.powerLevel(1,true) then
-		world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", drillPower)
+		world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", storage.drillPower)
 		if world.material(absdrillPos,"background") then
-			world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", drillPower)
+			world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", storage.drillPower)
 			if world.material(absdrillPos,"background") then
 				redrillPosBack=absdrillPos;
 				reDrillLevelBack=1
@@ -224,13 +235,13 @@ function states.mine(dt)
 	local drops = world.itemDropQuery(transferUtil.getAbsPos(storage.drillPos),	5);
 	for i = 1, #drops do
 		local item = world.takeItemDrop(drops[i]);
-		transferUtil.tryFitOutput(storage.containerID,item,nil,true)
+		if item then transferUtil.tryFitOutput(storage.containerID,item,true)
+		end
 	end
 	
 end
 
 function states.pump(dt)
-	deltatime = deltatime + dt;
 	if deltatime < 0.2 then
 		return;
 	end
@@ -270,7 +281,11 @@ function states.pump(dt)
 		return;
 	end
 	if liquid == nil then
-		storage.state = "move";
+		if storage.isDrill then
+			storage.state = "moveDrill";
+		else
+			storage.state = "movePump";
+		end
 	end
 end
 

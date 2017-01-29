@@ -3,16 +3,12 @@ local deltatime = 0;
 
 function init()
 	transferUtil.init()
-	storage.inputSlots = {};
-	storage.outputSlots = {};
-	storage.filterInverted = false;
-	--storage.filterInverted = {false,false,false,false,false};
-	storage.inContainers={}
-	storage.outContainers={}
-	message.setHandler("transferUtil.sendConfig", transferUtil.sendConfig)
-	message.setHandler("setInverted", setInverted)
-	message.setHandler("setInputSlots", setInputSlots)
-	message.setHandler("setOutputSlots", setOutputSlots)
+	initVars()
+	message.setHandler("sendConfig", sendConfig)
+	message.setHandler("setFilters", function (_, _, types) storage.filterType = types end)
+	message.setHandler("setInverts", function (_, _, inverted) storage.filterInverted = inverted end)
+	message.setHandler("setInputSlots", function (msg, _, slots) storage.inputSlots = slots end)
+	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)
 	object.setInteractive(true)
 end
 
@@ -22,31 +18,59 @@ function update(dt)
 		return;
 	end
 	deltatime = 0;
-	--transferUtil.updateInputs(1);
-	local temp=transferUtil.updateInputs(1);
+	storage.routerItems=world.containerItems(entity.id())
+	local temp=transferUtil.updateInputs(0,1);
 	transferUtil.updateOutputs(0);
 	object.setOutputNodeLevel(0,temp)
-	transferUtil.routeItems(storage);
+	storage.routerItems=world.containerItems(entity.id())
+	transferUtil.routeItems();
 end
 
-function setInverted(a, b, inverted)
-	storage.filterInverted = inverted;
+function initVars()
+	powerNode=0
+	inDataNode=1
+	outDataNode=0
+	storage.routerItems={}
+	storage.inContainers={}
+	storage.outContainers={}
+	if storage.inputSlots == nil then
+		storage.inputSlots = {};
+	end
+	if storage.outputSlots == nil then
+		storage.outputSlots = {};
+	end
+	if storage.filterInverted == nil then
+		storage.filterInverted={}
+		for i=1,5 do
+			storage.filterInverted[i]=false;
+		end
+	end
+	if storage.filterType == nil then
+		storage.filterType={};
+		for i=1,5 do
+			storage.filterType[i]=-1;
+		end
+	end
 end
 
-function setInput(a, b, input)
-	storage.input = object.getInputNodeIds(1);
-	--storage.inputPos = world.entityPosition(input)
-end
-
-function setOutput(a, b, output)
-	storage.output = object.getOutputNodeIds(0);
-	--storage.outputPos = world.entityPosition(output)
-end
-
-function setInputSlots(a, b, slots)
-	storage.inputSlots = slots;
-end
-
-function setOutputSlots(a, b, slots)
-	storage.outputSlots = slots;
+function sendConfig()
+	if storage.inputSlots == nil then
+		storage.inputSlots = {};
+	end
+	if storage.outputSlots == nil then
+		storage.outputSlots = {};
+	end
+	if storage.filterInverted == nil then
+		storage.filterInverted={}
+		for i=1,5 do
+			storage.filterInverted[i]=false;
+		end
+	end
+	if storage.filterType == nil then
+		storage.filterType={};
+		for i=1,5 do
+			storage.filterType[i]=-1;
+		end
+	end
+	return({storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType})
 end

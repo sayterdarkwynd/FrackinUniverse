@@ -1,128 +1,70 @@
-require "/scripts/kheAA/transferUtil.lua"
 local inputList = "inputSlotScrollArea.inputSlotList";
 local outputList = "outputSlotScrollArea.outputSlotList";
 
 
 function init()
-	pipes = {};
-	containers = {};
-	currentQuery = nil;
-	pos = world.entityPosition(pane.containerEntityId());
-	myBox=pane.containerEntityId()
-	widget.setSize("scanner.scanGrid", {250, 88})
-	xOffset = 125;
-	yOffset = 41;
-	input = nil;
-	output = nil;
 	inputSlots = {};
 	outputSlots = {};
-	inverted = false;
-	initialized = false;
-	promise = world.sendEntityMessage(pane.containerEntityId(), "transferUtil.sendConfig")
-	
-end
-
-function containerFound()
-	return true;
+	if filterInverted == nil then
+		filterInverted={}
+		for i=1,5 do
+			filterInverted[i]=false;
+		end
+	end
+	if filterType == nil then
+		filterType={};
+		for i=1,5 do
+			filterType[i]=-1;
+		end
+	end
+	inContainers={}
+	outContainers={}
+	initialized = nil;
 end
 
 function initialize(conf)
-	input = conf.input;
-	output = conf.output;
-	inverted = conf.filterInverted;
-	inputSlots = {};
-	outputSlots = {};
-	for i = 1, #conf.inputSlots do
-		table.insert(inputSlots, {conf.inputSlots[i], -1})
+	inputSlots={}
+	for k,v in pairs(conf[1]) do
+		inputSlots[k]={v,"-1"}
 	end
-	for i = 1, #conf.outputSlots do
-		table.insert(outputSlots, {conf.outputSlots[i], -1})
+	for k,v in pairs(conf[2]) do
+		outputSlots[k]={v,"-1"}
 	end
+	filterInverted=conf[3]
+	filterType=conf[4]
 	redrawInputSlotList()
 	redrawOutputSlotList()
-	updateCheckbox()
-
-
-	refresh();
-end
-
-function refresh()
-	if not myBox.inputNodeCount() then
-		items={};
-		refreshList();
-		return
-	end
-	if not myBox.isInputNodeConnected(0) then
-		items={};
-		refreshList();
-		return
-	end
-	for k,v in pairs (myBox.getInputNodeIds(0)) do
-		if v>1 then
-			result=world.callScriptedEntity(v,"transferUtil.sendContainerInputs",nil)
-			if(result~=nil)then
-				containerFound(transferUtil.makeContainer(k))
-			end	
-		end
-	end
+	redrawItemFilters()
+	redrawInvertButtons()
 end
 
 function update()
+	if initialized==nil then
+		redrawItemFilters()
+		redrawInvertButtons()
+		myBox=pane.containerEntityId()
+		position=world.entityPosition(myBox);
+		promise = world.sendEntityMessage(myBox, "sendConfig")
+		initialized=false
+		return
+	end
 	if not initialized then
 		if promise:finished() and promise:succeeded() then
 			initialize(promise:result())
 			initialized = true;
 		elseif promise:finished() and not promise:succeeded() then
-			promise = world.sendEntityMessage(pane.containerEntityId(), "transferUtil.sendConfig")
+			promise = world.sendEntityMessage(myBox, "sendConfig")
 		end
 		return;
 	end
 end
 
-function updateCheckbox()
-	if inverted == false then
-		widget.setChecked("invertedCheckbox", false)
-		widget.setText("invertedText", "Only take filtered items")
-	else
-		widget.setChecked("invertedCheckbox", true)
-		widget.setText("invertedText", "Don't take filtered items")
-	end
-end
-
-function invertedCheckbox( ... )
-	inverted = not inverted;
-	updateCheckbox();
-	world.sendEntityMessage(pane.containerEntityId(), "setInverted", inverted)
-end
-
-function setOutput()
-	local item = widget.getListSelected("scanner.scanGrid")
-	if item ~= nil and containers[item] ~= nil then
-		if containers[item][1] ~= output and containers[item][1] ~= input then
-			output = containers[item][1];
-			world.sendEntityMessage(pane.containerEntityId(), "setOutput", output)
-			drawGrid();
-		end
-	end
-end
-
-function setInput()
-	local item = widget.getListSelected("scanner.scanGrid")
-	if item ~= nil and containers[item] ~= nil then
-		if containers[item][1] ~= output and containers[item][1] ~= input then
-			input = containers[item][1];
-			world.sendEntityMessage(pane.containerEntityId(), "setInput", input)
-			drawGrid();
-		end
-	end
-end
-
-function addInputSlot( ... )
+function addInputSlot()
 	local text = widget.getText("inputSlotCount")
 	if text ~= "" and tonumber(text) >= 0 then
 		local slot = tonumber(text);
-		for i = 1, #inputSlots do
-			if inputSlots[i][1] == slot then
+		for _,v in pairs(inputSlots) do
+			if v[1] == slot then
 				return;
 			end
 		end
@@ -133,12 +75,12 @@ function addInputSlot( ... )
 	end
 end
 
-function addOutputSlot( ... )
+function addOutputSlot()
 	local text = widget.getText("outputSlotCount")
 	if text ~= "" and tonumber(text) >= 0 then
 		local slot = tonumber(text);
-		for i = 1, #outputSlots do
-			if outputSlots[i][1] == slot then
+		for _,v in pairs(outputSlots) do
+			if v[1] == slot then
 				return;
 			end
 		end
@@ -149,35 +91,36 @@ function addOutputSlot( ... )
 	end
 end
 
-function subInputSlot( ... )
+function subInputSlot()
 	local item = widget.getListSelected(inputList)
 	if item ~= nil then
-		for i = 1, #inputSlots do
-			if inputSlots[i][2] == item then
-				table.remove(inputSlots, i)
-				syncInputSlots();
+		for k,v in pairs(inputSlots) do
+			if v[2] == item then
+				table.remove(inputSlots,k)
 				redrawInputSlotList()
+				syncInputSlots();
 				return;
 			end
 		end
 	end
+
 end
 
 function redrawInputSlotList()
 	widget.clearListItems(inputList)
-	for i = 1, #inputSlots do
+	for _,v in pairs(inputSlots) do
 		local item = widget.addListItem(inputList);
-		widget.setText(inputList .. "." .. item .. ".slotNr", inputSlots[i][1] .. "");
-		inputSlots[i][2] = item;
+		widget.setText(inputList .. "." .. item .. ".slotNr", v[1] .. "");
+		v[2] = item;
 	end
 end
 
-function subOutputSlot( ... )
+function subOutputSlot()
 	local item = widget.getListSelected(outputList)
 	if item ~= nil then
-		for i = 1, #outputSlots do
-			if outputSlots[i][2] == item then
-				table.remove(outputSlots, i)
+		for k,v in pairs(outputSlots) do
+			if v[2] == item then
+				table.remove(outputSlots, k)
 				syncOutputSlots();
 				redrawOutputSlotList()
 				return;
@@ -188,33 +131,51 @@ end
 
 function redrawOutputSlotList()
 	widget.clearListItems(outputList)
-	for i = 1, #outputSlots do
+	for _,v in pairs(outputSlots) do
 		local item = widget.addListItem(outputList);
-		widget.setText(outputList .. "." .. item .. ".slotNr", outputSlots[i][1] .. "");
-		outputSlots[i][2] = item;
+		widget.setText(outputList .. "." .. item .. ".slotNr", v[1] .. "");
+		v[2] = item;
 	end
 end
 
-function syncInputSlots( ... )
-	local slots = {};
-	for i = 1, #inputSlots do
-		table.insert(slots, inputSlots[i][1]);
+function syncInputSlots()
+	local temp={}
+	for _,v in pairs(inputSlots) do
+		table.insert(temp,v[1])
 	end
-	world.sendEntityMessage(pane.containerEntityId(), "setInputSlots", slots);
+	world.sendEntityMessage(myBox, "setInputSlots", temp);
 end
 
-function syncOutputSlots( ... )
-	local slots = {};
-	for i = 1, #outputSlots do
-		table.insert(slots, outputSlots[i][1]);
+function syncOutputSlots()
+	local temp={}
+	for _,v in pairs(outputSlots) do
+		table.insert(temp,v[1])
 	end
-	world.sendEntityMessage(pane.containerEntityId(), "setOutputSlots", slots);
+	world.sendEntityMessage(myBox, "setOutputSlots", temp);
 end
 
-function reset( ... )
-	input = nil;
-	output = nil;
-	world.sendEntityMessage(pane.containerEntityId(), "setInput", input)
-	world.sendEntityMessage(pane.containerEntityId(), "setOutput", output)
-	drawGrid();
+function redrawItemFilters() --int widget.getSelectedOption(String widgetName)
+	for i=1,5 do
+		widget.setSelectedOption("item"..i.."Filter",filterType[i])
+	end
+end
+
+function redrawInvertButtons()
+	for i=1,5 do
+		widget.setChecked("item"..i.."ButtonInvert",filterInverted[i])
+	end
+end
+
+function itemFilters() --int widget.getSelectedOption(String widgetName)
+	for i=1,5 do
+		filterType[i]=widget.getSelectedOption("item"..i.."Filter")
+	end
+	world.sendEntityMessage(myBox, "setFilters", filterType);
+end
+
+function invertButtons()
+	for i=1,5 do
+		filterInverted[i]=widget.getChecked("item"..i.."ButtonInvert")
+	end
+	world.sendEntityMessage(myBox, "setInverts", filterInverted);
 end

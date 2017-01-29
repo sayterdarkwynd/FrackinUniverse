@@ -26,9 +26,9 @@ function renderPump(step)
 		step=0
 	end
 	animator.resetTransformationGroup("pipe")
-	local temp=math.min(0,storage.depth + 1-step)
+	local temp=math.min(0,storage.depth-step)
 	animator.scaleTransformationGroup("pipe", {1,temp});
-	animator.translateTransformationGroup("pipe", {1,temp});
+	animator.translateTransformationGroup("pipe", {1,1});
 end
 
 function update(dt)
