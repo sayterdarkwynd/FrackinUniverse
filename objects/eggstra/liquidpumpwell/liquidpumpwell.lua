@@ -8,22 +8,6 @@ object.setInteractive(true)
       storage.waterCount = 0 
     end
     storage.waterCount = storage.waterCount + dt
-  if storage.waterCount < 100 then
-    object.say("Water : "..math.ceil(storage.waterCount).." (Nearly Dry)")
-  elseif storage.waterCount > 600 then
-    object.say("Water : "..math.ceil(storage.waterCount).." (Brimming)")
-  elseif storage.waterCount > 500 then
-    object.say("Water : "..math.ceil(storage.waterCount).." (Full)")
-  elseif storage.waterCount > 400 then
-    object.say("Water : "..math.ceil(storage.waterCount).." (Wet)")
-  elseif storage.waterCount > 300 then
-    object.say("Water : "..math.ceil(storage.waterCount).." (Ample)")
-  elseif storage.waterCount > 200 then
-    object.say("Water : "..math.ceil(storage.waterCount).." (Low)")
-  elseif storage.waterCount > 100 then
-    object.say("Water : "..math.ceil(storage.waterCount).." (Very Low)")
-  end
-  
 end
 
 function onInteraction(args)

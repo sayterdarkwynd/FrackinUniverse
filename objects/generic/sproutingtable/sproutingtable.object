@@ -1,37 +1,75 @@
 {
   "objectName" : "sproutingtable",
-  "colonyTags" : [ "crafting", "booze" ],
+  "colonyTags" : [ "fu", "science", "booze", "plants" ],
+  "rarity" : "Essential",
   "printable" : false,
-  "rarity" : "rare",
-  "description" : "Sprout seeds on this table",
-  "shortdescription" : "Sprouting Table",
-  "subtitle" : "Sprouting table.",
   "race" : "generic",
   "category" : "crafting",
-  "price" : 200,
+  "price" : 450,
   "objectType" : "container",
-
-  "hydrophobic" : true,
+  "description" : "Will slowly convert seeds into useful materials.",
+  "subtitle" : "Converts seeds into useful things.",
+  "shortdescription" : "^orange;Sprouting Table^white;",
+  "learnBlueprintsOnPickup" : ["cloninglab", "xenostation" ],
+  "pickupQuestTemplates" : [ "fuquest_xeno" ],
+  "fu_stationTechLevel": 1,
+  "fu_mintick": 1,
+  "fu_timerMod" : 60,
+  "apexDescription" : "A primitive Sprouting Table.",
+  "avianDescription" : "Delicious seeds all over this table...",
+  "floranDescription" : "Can Floran makess mate on thiss?",
+  "glitchDescription" : "Identify. A Sprouting Table.",
+  "humanDescription" : "Some jars on a wooden slab with plants in 'em.",
+  "hylotlDescription" : "A quaint early type of plant cloning device.",
+  
+  "lightColor" : [60, 60, 173],
 
   "inventoryIcon" : "sproutingtableicon.png",
   "orientations" : [
+
     {
-      "dualImage" : "sproutingtable.png:default",
+      "dualImage" : "sproutingtable.png:<color>.<frame>",
       "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 1,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "fgAnchors" : [ [0, -1] ]
     }
   ],
-
-  "soundEffect" : "/sfx/objects/camera_pan_loop.ogg",
-
-
-  "recipeGroup" : "sprouting",
-  "openSounds" : [ "/sfx/objects/florancrate_open.ogg" ],
-  "slotCount" : 2,
-  "uiConfig" : "/interface/objectcrafting/sprout.config",
+  
+  
+  "animation" : "/objects/generic/xenostation/xenolab.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "sproutingtable.png"
+  },
+  "scripts" : [ "/objects/generic/xenostation_common.lua",
+                "/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 25,
+  "recipeGroup" : "sproutingtable",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 12,
+  "uiConfig" : "/interface/xenolab/xenolab.config",
   "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600
+  "autoCloseCooldown" : 3600,
 
+  "outputNodes" : [ [2, 1] ],
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
 }

@@ -1,36 +1,37 @@
 {
-  "objectName" : "extractionlabadv",
-  "colonyTags" : [ "fu", "science", "scienceoutpost" ],
-  "rarity" : "uncommon",
+  "objectName" : "handmill",
+  "colonyTags" : [ "fu", "science", "farm" ],
+  "rarity" : "Essential",
   "race" : "generic",
   "category" : "crafting",
   "printable" : false,
   "objectType" : "container",
-  "price" : 650,
-  "inventoryIcon" : "extractionlabicon.png",
-  "description" : "Converts materials into useful resources faster.",
-  "learnBlueprintsOnPickup" : [ "extractionlabadv_roof" ],
-  "shortdescription" : "^orange;Extraction Lab MKII ^white;",
+  "learnBlueprintsOnPickup" : [ "extractionlab", "extractionlab_roof" ], 
+  "pickupQuestTemplates" : [ "fuquest_extractor" ],
+  "price" : 450,
+  "inventoryIcon" : "handmillicon.png",
+  "description" : "Converts materials into useful resources.",
+  "shortdescription" : "^orange;Hand Mill^white;",
   "subtitle" : "Resource converter",
   "orientations" : [
      {
-      "imageLayers" : [ { "image" : "extractionlabadv.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadvlit.png:<color>.<frame>" } ],
+      "imageLayers" : [ { "image" : "handmill.png:<color>.<frame>"} ],
       "direction" : "left",
       "flipImages" : true,
 
       "imagePosition" : [0, 0],
-      "frames" : 6,
+      "frames" : 3,
       "animationCycle" : 2,
       "collision" : "platform",
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     },
     {
-      "imageLayers" : [ { "image" : "extractionlabadv.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadvlit.png:<color>.<frame>" } ],
+      "imageLayers" : [ { "image" : "handmill.png:<color>.<frame>"} ],
       "direction" : "right",
 
       "imagePosition" : [0, 0],
-      "frames" : 6,
+      "frames" : 3,
       "animationCycle" : 2,
       "collision" : "platform",
       "spaceScan" : 0.1,
@@ -38,22 +39,22 @@
     } 
   ],
 
-  "animation" : "/objects/generic/extractionlabadv/extractionlabadv.animation",
+  "animation" : "/objects/generic/handmill/handmill.animation",
   "animationParts" : {
-    "samplingarrayanim" : "extractionlabadv.png"
+    "samplingarrayanim" : "handmill.png"
   },
   "scripts" : [ "/objects/generic/extractionlab_common.lua",
                 "/scripts/npcToyObject.lua" ],
   "scriptDelta" : 5,
-  "recipeGroup" : "extractionlab",
+  "recipeGroup" : "handmill",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
   "slotCount" : 12,
   "uiConfig" : "/interface/extractor/extractor.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  
-  "outputNodes" : [ [2, 1] ],
 
+  "outputNodes" : [ [2, 1] ],
+  
   "npcToy" : {
     "influence" : [
       "sink",
@@ -73,6 +74,7 @@
   },
 
   "fu_mintick" : 1,
-  "fu_stationTechLevel" : 2,
-  "fu_timerMod" : 2
+  "fu_stationTechLevel" : 1,
+  "fu_timerMod" : 8
 }
+

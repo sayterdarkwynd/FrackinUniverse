@@ -11,7 +11,6 @@
   "subtitle" : "Converts seeds into genes.",
   "shortdescription" : "^orange;Xeno Research Lab^white;",
   "learnBlueprintsOnPickup" : [ "genesequencer", "designlab", "xenostationadvnew", "gravgen", "antigravgen" ],
-  "pickupQuestTemplates" : [ "fuquest_xeno" ],
   "apexDescription" : "A Xeno Research Lab.",
   "avianDescription" : "A Xeno Research Lab.",
   "floranDescription" : "A Xeno Research Lab.",
@@ -19,9 +18,10 @@
   "humanDescription" : "A Xeno Research Lab.",
   "hylotlDescription" : "A Xeno Research Lab.",
 
-  "fu_stationTechLevel": 1,
+  "fu_stationTechLevel": 2,
   "fu_mintick": 1,
-
+  "fu_timerMod" : 1,
+  
   "lightColor" : [60, 60, 173],
 
   "inventoryIcon" : "xenostationicon.png",
@@ -45,7 +45,7 @@
   },
   "scripts" : [ "/objects/generic/xenostation_common.lua",
                 "/scripts/npcToyObject.lua" ],
-  "scriptDelta" : 5,
+  "scriptDelta" : 25,
   "recipeGroup" : "xenostation",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
   "slotCount" : 12,
