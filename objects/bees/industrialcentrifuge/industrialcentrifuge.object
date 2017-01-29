@@ -33,7 +33,10 @@
     "centrifuge" : "industrialcentrifuge.png"
   },
 
-  "scripts" : [ "/objects/bees/centrifuge.lua", "/objects/bees/honeymap.lua" ],
+  "scripts" : [ "/objects/bees/centrifuge.lua", 
+                "/objects/bees/honeymap.lua",  
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 25,
   "recipeGroup" : "industrialcentrifuge",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
@@ -51,5 +54,12 @@
 	"common": 0.95
   },
 
-  "inputSlot": 1
+  "inputSlot": 1,
+  
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+  
+  "centrifugeIso" : "1",  
+  "isn_powerReciever" : true,
+  "isn_requiredPower" : 8
 }

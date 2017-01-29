@@ -1,6 +1,10 @@
 function init()
   self.maxHealth = status.stat("maxHealth")
-  self.maxEnergy = status.stat("maxEnergy")
+  if status.isResource("energy") then
+    self.maxEnergy = status.stat("maxEnergy")
+  else
+    self.maxEnergy = false
+  end
   if status.isResource("food") then
       self.food = status.resource("food")
   else
@@ -63,7 +67,7 @@ function update(dt)
     self.tickTimer = self.tickTime
     if lightLevel <=40 or (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
       status.modifyResource("health", (-self.dps * (self.dpsMod * 0.095) ) * dt)
-      if status.resource("energy") then
+      if self.maxEnergy then
         status.modifyResource("energy", (-self.dps * (self.dpsMod * 1.8) ) * dt)
       end
       if self.food then

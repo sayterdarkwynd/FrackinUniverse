@@ -13,12 +13,13 @@ end
 --   reversible = true if the conversion can be reversed
 --
 --   Each quantity is either a single number or a table containing a value for each extractor tech level
---   Order is basic (1), advanced (2)
+--   Order is basic (1), advanced (2), super-advanced (3)
 --
 --   Listing order is no guarantee of checking order
 --   No checks are made for multi-input recipes being overridden by single-input recipes
 function getRecipes()
 	return {
+	        { inputs = { soakedwheat = 1 }, outputs = { wheatsprout = 1 } },
 		{ inputs = { aenemaflower = 1 }, outputs = { gene_energy = 2 } },
 		{ inputs = { algaeseed = 1 }, outputs = { gene_reproductive = 1 } },
 		{ inputs = { aquapodseed = 1 }, outputs = { gene_aquacelerity = 1, gene_aquahomeo = 1 } },

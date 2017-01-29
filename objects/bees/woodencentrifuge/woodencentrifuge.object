@@ -31,7 +31,7 @@
     "centrifuge" : "woodencentrifuge.png"
   },
 
-  "scripts" : [ "/objects/bees/centrifuge.lua" ],
+  "scripts" : [ "/objects/bees/woodencentrifuge/centrifuge.lua" ],
   "scriptDelta" : 100,
   "recipeGroup" : "industrialcentrifuge",
   "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
@@ -42,12 +42,17 @@
 
   "craftDelay" : 2,
   "itemChances": {
-	"rarest": 0.35,
-	"rare": 0.4,
-	"uncommon": 0.5,
+	"rarest": 0.01,
+	"rare": 0.05,
+	"uncommon": 0.1,
 	"normal": 0.6,
 	"common": 0.7
   },
 
-  "inputSlot": 1
+  "inputSlot": 1,
+
+  "centrifugeBee" : "1",
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ]
 }

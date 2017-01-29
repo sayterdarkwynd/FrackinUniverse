@@ -125,8 +125,8 @@ function startCrafting(result)
 				return false
 			end
 		end
-
-		self.timer = (techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)
+                self.timerMod = config.getParameter("fu_timerMod")
+		self.timer = ((techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)) + self.timerMod
 		self.output = result.outputs
 		animator.setAnimationState("samplingarrayanim", "working")
 		if self.light then

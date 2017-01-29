@@ -61,7 +61,7 @@ function setCritDamage(damage)
       elseif root.itemHasTag(heldItem, "battleblade") then
         self.critChance = 3 + weaponModifier
       elseif root.itemHasTag(heldItem, "rapier") then
-        self.critChance = 1 + weaponModifier
+        self.critChance = 2 + weaponModifier      
       end
   end
   

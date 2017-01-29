@@ -20,7 +20,7 @@ function update(dt)
 		if stash and stash.type == storage.combsProcessed.type then
 			-- same type
 			--sb.logInfo ("got %s for %s", stash.count, stash.type)
-			storage.combsProcessed.count = math.min((storage.combsProcessed.count or 0) + stash.count, 2 * combsPerJar) -- limit to twe jars' worth
+			storage.combsProcessed.count = math.min((storage.combsProcessed.count or 0) + stash.count, 2 * combsPerJar) -- limit to two jars' worth
 			storage.combsProcessed.stale = nil
 		elseif stash then
 			-- different type
