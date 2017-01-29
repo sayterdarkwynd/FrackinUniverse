@@ -1,22 +1,16 @@
 {
   "objectName" : "fu_alternatorgenerator",
   "rarity" : "Common",
-    "colonyTags" : [ "science" ],
+    "colonyTags" : [ "science", "power" ],
   "category" : "wire",
   "objectType" : "container",
   "price" : 3500,
-  "description" : "A coal or water burning power source. Produces small amounts of energy.",
+  "description" : "A coal or water burning power source. Max of 4u power.",
   "shortdescription" : "^cyan;Alternator Generator^white;",
   "race" : "generic",
   "printable" : false,
   "learnBlueprintsOnPickup" : [  "isn_radiostationnew", "isn_fissionreactornew", "isn_atmoscondenser" ],
-  "apexDescription" : "Low-class Apex housing is usually near generators like these. The constant noise prevents you from getting any good sleep.",
-  "avianDescription" : "I'm not a fan of heavy industry.",
-  "floranDescription" : "Floran not like hot noisssy machine.",
-  "glitchDescription" : "Observation. It is designed with replaceable parts to minimize repair costs.",
-  "humanDescription" : "This'll generate a lot of power, but it'll eat up fuel.",
-  "hylotlDescription" : "Fossil fuel generation. Crass and primitive. It is, however, effective.",
-
+  "pickupQuestTemplates" : [ "fuquest_powergeneration1" ],
   "inventoryIcon" : "fu_alternatorgeneratoricon.png",
   "orientations" : [
     {
@@ -51,15 +45,8 @@
   
   "isn_powerSupplier" : true,
   "acceptablefuel" : {
-	  "paper" : 2,
-	  "logblock" : 4,
-	  "fullwood2" : 4,
-	  "coalore" : 6,
-	  "biofuelcannister" : 8,
-	  "liquidoil" : 8,
-	  "liquidfuel" : 10,
-	  "biofuelcannisteradv" : 12,
-	  "supermatter" : 14,
-	  "biofuelcannistermax" : 16
+	  "liquidwater" : 2,
+	  "waterbucket" : 2,
+	  "coalore" : 4
   }
 }
