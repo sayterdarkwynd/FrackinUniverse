@@ -48,6 +48,7 @@ function BowShot:setCritDamage(damage)
   self.critRoll = math.random(200)
   
   --apply the crit
+  
   local crit = self.critRoll <= self.critChance
     --sb.logInfo("crit roll="..self.critRoll)
   damage = crit and (damage*2) + self.critBonus or damage

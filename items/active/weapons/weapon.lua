@@ -68,6 +68,7 @@ function setCritDamage(damage)
   if not self.critChance then
     self.critChance = 0
   end
+  
   --sb.logInfo("crit chance base="..self.critChance)
   --sb.logInfo("crit chance bonus="..status.stat("critChance"))
   --critBonus is bonus damage done with crits
