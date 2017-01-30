@@ -1,0 +1,60 @@
+{
+  "objectName" : "extractionlab_roof",
+  "colonyTags" : [ "fu", "science", "scienceoutpost" ],
+  "rarity" : "Essential",
+  "race" : "generic",
+  "category" : "crafting",
+  "printable" : false,
+  "objectType" : "container",
+  "learnBlueprintsOnPickup" : [ "chemlab", "fissionfurnacenew", "saltpeter", "phosphorus", "ff_mercury", "magnesiumpowder", "rawminerals", "magnesiumpowder", "ammoniumsulfate", "penumbriteshard" ],
+  "price" : 450,
+  "inventoryIcon" : "extractionlabicon.png",
+  "description" : "Converts materials into useful resources.",
+  "shortdescription" : "^orange;Extraction Lab (roof)^white;",
+  "subtitle" : "Resource converter",
+  "orientations" : [
+  
+     {
+      "imageLayers" : [ { "image" : "extractionlab_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlab_rooflit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "extractionlab_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlab_rooflit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    } 
+  ],
+
+  "animation" : "extractionlab_roof.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "extractionlab_roof.png"
+  },
+  "scripts" : [ "/objects/generic/extractionlab_common.lua" ],
+  "scriptDelta" : 5,
+  "recipeGroup" : "extractionlab",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 12,
+  "uiConfig" : "/interface/extractor/extractor.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "outputNodes" : [ [2, 1] ],
+
+  "fu_mintick" : 1,
+  "fu_stationTechLevel" : 1,
+  "fu_timerMod" : 4
+}
