@@ -189,19 +189,15 @@ function deciding(item)
         mapIsotope = config.getParameter("centrifugeIso")
         if mapFarm and not mapBees and not mapLiquid and not mapIsotope then
 	  if item == nil then return itemMapFarm end
-	  sb.logInfo("one")
 	  return itemMapFarm[item.name] -- may be nil        
 	elseif mapBees and not mapFarm and not mapLiquid and not mapIsotope then
 	  if item == nil then return itemMapBees end
-	  sb.logInfo("one")
 	  return itemMapBees[item.name] or itemMapFarm[item.name] -- may be nil
 	elseif mapLiquid and not mapFarm and not mapBees and not mapIsotope then
 	  if item == nil then return itemMapBees or itemMapLiquids end
-	  sb.logInfo("two")
 	  return itemMapBees[item.name] or itemMapLiquids[item.name] -- may be nil
 	elseif mapIsotope and not mapFarm and not mapBees and not mapLiquid then
 	  if item == nil then return itemMapBees or itemMapLiquids or itemMapIso end
-	  sb.logInfo("three")
 	  return itemMapBees[item.name] or itemMapLiquids[item.name] or itemMapIsotopes[item.name] -- may be nil
 	end
 end
