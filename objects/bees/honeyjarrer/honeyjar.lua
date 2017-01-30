@@ -10,9 +10,9 @@ end
 
 function update(dt)
 	local contents = world.containerItems(entity.id())
-	local ents = world.objectQuery(entity.position(), 5, {name="bees_industrialcentrifuge", order="nearest"})
+	local ents = world.objectQuery(entity.position(), 5, {name="industrialcentrifuge", order="nearest"})
 
-	if #ents > 0 and world.entityName(ents[1]) == "bees_industrialcentrifuge" then
+	if #ents > 0 and world.entityName(ents[1]) == "industrialcentrifuge" then
 		local stash = world.callScriptedEntity(ents[1], "drawHoney")
 
 		-- Grab a jar or three from the centrifuge.
