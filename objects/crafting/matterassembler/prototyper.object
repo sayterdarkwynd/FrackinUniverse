@@ -13,7 +13,9 @@
   "scripts" : [ "/scripts/npcToyObject.lua",
                 "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
               ],
-
+              
+  "pickupQuestTemplates" : [ "fuquest_prototyper" ],
+  
   "animation" : "prototyper.animation",
   "animationPosition" : [0, 28],
 
@@ -55,15 +57,13 @@
         },
 
         "filter" : [ "prototyper1" ],
-        "initialRecipeUnlocks" : [ "coil", "electromagnet", "wire", "microscope", "magneticshielding", "electronmicroscope", "handmill", "nanofabricator", "circuitboard", "basicminer", "fu_craftinfo", "armory"  ],
+        "initialRecipeUnlocks" : [ "circuitboard", "coil", "electromagnet", "wire", "microscope", "magneticshielding", "electronmicroscope", "handmill", "nanofabricator", "circuitboard", "armory"  ],
         "upgradeMaterials" : [
           { "item" : "tungstenbar", "count" : 10 },
           { "item" : "circuitboard", "count" : 2 },
           { "item" : "coil", "count" : 6 }
         ]
       },
-
-      "pickupQuestTemplates" : [ "fuquest_nano" ],
 
       "upgradeSoundEffect" : "fanfare",
       "upgradeParticleEffect" : "dust"
@@ -135,7 +135,7 @@
         },
         "filter" : [ "prototyper1", "prototyper2", "prototyper3" ],
         "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg",
-        "initialRecipeUnlocks" : [ "clonelab", "xenostation", "gravgen", "antigravgen" ]
+        "initialRecipeUnlocks" : [ "clonelab", "xenostation", "gravgen", "antigravgen", "fu_craftinfo"  ]
       },
 
       "learnBlueprintsOnPickup" : []

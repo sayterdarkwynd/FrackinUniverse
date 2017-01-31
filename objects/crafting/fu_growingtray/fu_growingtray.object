@@ -1,9 +1,9 @@
 {
   "objectName" : "fu_growingtray",
   "printable" : false,
-  "colonyTags" : [ "science", "farming", "plants" ],
+    "colonyTags" : [ "science", "farming", "plants", "farm" ],
   "rarity" : "Common",
-  "description" : "Grows crops more quick and efficiently via fertilizers and controlled conditions.",
+  "description" : "Grows crops more quickly and efficiently via fertilizers and controlled conditions.",
   "shortdescription" : "^cyan;Growing Tray^reset;",
   "race" : "generic",
   "category" : "wire",
@@ -11,10 +11,6 @@
   "price" : 1000,
   "learnBlueprintsOnPickup" : [ "isn_hydroponicstray" ],
   "inventoryIcon" : "fu_growingtray_inv.png",
-  
-  "breakDropOptions" : [],
-  "startingUpgradeStage" : 1,
-  "maxUpgradeStage" : 2,
   
   "orientations" : [
     {
@@ -26,11 +22,11 @@
   ],
     
   "slotCount" : 11,
-  "uiConfig" : "/objects/power/fu_growingtray/fu_growingtray.config",
+  "uiConfig" : "fu_growingtray.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/objects/power/fu_growingtray/fu_growingtray.lua",
+  "scripts" : [ "fu_growingtray.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 220,
@@ -45,9 +41,8 @@
 
   "inputNodes" : [ [1, 1] ],
   "outputNodes" : [ [1, 0] ],
-  "isn_powerReciever" : false,
   
-  "isn_growthCap" : 30,
+  "isn_growthCap" : 50,
 
   "isn_waterInputs" : {
     "waterbucket" : 15,
