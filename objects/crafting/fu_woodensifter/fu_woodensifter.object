@@ -1,9 +1,9 @@
 {
-  "objectName" : "isn_powdersifter",
+  "objectName" : "fu_woodensifter",
   "rarity" : "Common",
     "colonyTags" : [ "science" ],
-  "description" : "Sifts through powders to find useful reagents. Requires 6u of power.",
-  "shortdescription" : "^cyan;Powder Sifter^white;",
+  "description" : "Sifts through powders to find useful reagents.",
+  "shortdescription" : "^cyan;Sifter^white;",
   "race" : "generic",
   "category" : "storage",
   "price" : 500,
@@ -17,15 +17,15 @@
   "humanDescription" : "Instant treasure, just add useless crap!",
   "hylotlDescription" : "A device to seek diamonds in the rough. Oddly poetic, if ultimately capitalist.",
   
-  "scripts" : [ "/objects/power/isn_powdersifter/isn_powdersifter.lua",
+  "scripts" : [ "fu_woodensifter.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
-				"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 15,
+		"/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 125,
   
   "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
   "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
   "slotCount" : 25,
-  "uiConfig" : "/objects/power/isn_powdersifter/isn_powdersifter.config",
+  "uiConfig" : "/objects/crafting/fu_woodensifter/fu_woodensifter.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
@@ -33,22 +33,20 @@
   "uncommonOutputs" : [ "petalred", "petalyellow", "petalblue", "bone", "crystal", "silverore", "goldore", "fu_carbon" ],
   "rareOutputs" : [ "crystal", "icecrystal", "diamond" ],
   
-  "animation" : "/objects/power/isn_powdersifter/isn_powdersifter.animation",
+  "animation" : "fu_woodensifter.animation",
 
   "animationParts" : {
-    "isn_powdersifter" : "isn_powdersifter.png"
+    "isn_powdersifter" : "fu_woodensifter.png"
   },
   "animationPosition" : [0, 0],
   
   "inputNodes" : [ [1, 1] ],
   "outputNodes" : [ [1, 0] ],
-  "isn_powerReciever" : true,
-  "isn_requiredPower" : 6,
   
-  "inventoryIcon" : "isn_powdersiftericon.png",
+  "inventoryIcon" : "fu_woodensiftericon.png",
   "orientations" : [
     {
-      "image" : "isn_powdersifter.png:<color>.idle",
+      "image" : "fu_woodensifter.png:<color>.idle",
       "imagePosition" : [0, 0],
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
