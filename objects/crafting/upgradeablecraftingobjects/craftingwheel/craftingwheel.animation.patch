@@ -2,15 +2,7 @@
   {
     "op": "add",
     "path": "/animatedParts/stateTypes/stage/states/clothingfabricator",
-    "value": {
-      "frames": 7,
-      "cycle": 0.8,
-      "mode": "loop",
-      "properties": {
-        "persistentSound": "/sfx/objects/craftingwheel_loop.ogg",
-        "persistentSoundRangeMultiplier": 0.25
-      }
-    }
+    "value": {}
   },
   {
     "op": "add",
@@ -18,10 +10,20 @@
     "value": {
       "properties": {
         "centered": true,
-        "fullbright": true
+        "zLevel": 2
       },
       "partStates": {
         "stage": {
+          "craftingwheel": {
+            "properties": {
+              "image": "craftingwheellit.png:<color>.<frame>"
+            }
+          },
+          "craftingwheel2": {
+            "properties": {
+              "image": "craftingwheel2lit.png:<color>.<frame>"
+            }
+          },
           "clothingfabricator": {
             "properties": {
               "image": "craftingwheel3lit.png:<color>.<frame>"
@@ -33,8 +35,8 @@
   },
   {
     "op": "add",
-    "path": "/animatedParts/parts/chassis/properties/zLevel",
-    "value": 2
+    "path": "/animatedParts/parts/chassis/properties/fullbright",
+    "value": true
   },
   {
     "op": "add",
