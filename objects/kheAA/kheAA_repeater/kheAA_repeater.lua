@@ -4,8 +4,10 @@ storage={}
 
 function init()
 	transferUtil.init()
-	onInputNodeChange()
-	update(999)
+	storage.inContainers={}
+	storage.outContainers={}
+	inDataNode=0
+	outDataNode=0
 end
 
 function update(dt)
@@ -13,8 +15,8 @@ function update(dt)
 	if deltatime < 1 then
 		return
 	end
-	local temp=transferUtil.updateInputs(1);
-	transferUtil.updateOutputs(0);
-	object.setOutputNodeLevel(0,temp)
 	deltatime=0
+	transferUtil.updateInputs(inDataNode);
+	transferUtil.updateOutputs(outDataNode);
+	object.setOutputNodeLevel(outDataNode,util.tableSize(storage.outContainers))
 end

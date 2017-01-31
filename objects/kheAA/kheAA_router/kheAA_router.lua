@@ -14,16 +14,20 @@ end
 
 function update(dt)
 	deltatime = deltatime + dt;
-	if deltatime < 0.1 then
+	if deltatime < 1 then
 		return;
 	end
 	deltatime = 0;
 	storage.routerItems=world.containerItems(entity.id())
-	local temp=transferUtil.updateInputs(0,1);
-	transferUtil.updateOutputs(0);
-	object.setOutputNodeLevel(0,temp)
-	storage.routerItems=world.containerItems(entity.id())
-	transferUtil.routeItems();
+	transferUtil.updateInputs(inDataNode);
+	transferUtil.updateOutputs(outDataNode);
+	
+	if transferUtil.powerLevel(powerNode) then
+		transferUtil.routeItems();
+		object.setOutputNodeLevel(outDataNode,util.tableSize(storage.inContainers)>0)
+	else
+		object.setOutputNodeLevel(outDataNode,false)
+	end
 end
 
 function initVars()

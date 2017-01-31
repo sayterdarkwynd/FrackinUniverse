@@ -7,18 +7,18 @@ function init()
 	outputSlots = {};
 	if filterInverted == nil then
 		filterInverted={}
-		for i=1,5 do
+		filterInverted[1]=true
+		for i=2,5 do
 			filterInverted[i]=false;
 		end
 	end
 	if filterType == nil then
 		filterType={};
-		for i=1,5 do
+		filterType[1]=true
+		for i=2,5 do
 			filterType[i]=-1;
 		end
 	end
-	inContainers={}
-	outContainers={}
 	initialized = nil;
 end
 
@@ -32,6 +32,8 @@ function initialize(conf)
 	end
 	filterInverted=conf[3]
 	filterType=conf[4]
+	--dbg({"conf3",conf[3],"conf4",conf[4]})
+	--dbg({"filterinv",filterInverted,"filtertype",filterType})
 	redrawInputSlotList()
 	redrawOutputSlotList()
 	redrawItemFilters()
@@ -40,8 +42,8 @@ end
 
 function update()
 	if initialized==nil then
-		redrawItemFilters()
-		redrawInvertButtons()
+		--redrawItemFilters()
+		--redrawInvertButtons()
 		myBox=pane.containerEntityId()
 		position=world.entityPosition(myBox);
 		promise = world.sendEntityMessage(myBox, "sendConfig")
@@ -167,15 +169,24 @@ function redrawInvertButtons()
 end
 
 function itemFilters() --int widget.getSelectedOption(String widgetName)
+	if not initialized==true then return end
 	for i=1,5 do
 		filterType[i]=widget.getSelectedOption("item"..i.."Filter")
 	end
+	--dbg(filterType)
 	world.sendEntityMessage(myBox, "setFilters", filterType);
 end
 
 function invertButtons()
+	if not initialized==true then return end
 	for i=1,5 do
 		filterInverted[i]=widget.getChecked("item"..i.."ButtonInvert")
 	end
 	world.sendEntityMessage(myBox, "setInverts", filterInverted);
+end
+
+
+
+function dbg(args)
+	sb.logInfo(sb.printJson(args))
 end

@@ -4,8 +4,7 @@ local deltatime=0;
 function init()
 	promise=nil
 	storage={}
-	storage.input={}
-	storage.containers={}
+	storage.inContainers={}
 	items = {};
 	deltatime=30;
 	pos = world.entityPosition(pane.containerEntityId());
@@ -44,14 +43,14 @@ function refresh()
 	if storage==nil then
 		return
 	end
-	if storage.containers==nil then
+	if storage.inContainers==nil then
 		return
 	end
-	if not #storage.containers then
+	if not #storage.inContainers then
 		return
 	end
 	items={};
-	for i,x in pairs(storage.containers) do
+	for x,_ in pairs(storage.inContainers) do
 		containerFound(x)
 	end
 end

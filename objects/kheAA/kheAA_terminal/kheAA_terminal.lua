@@ -5,20 +5,14 @@ function init()
 	message.setHandler("transferUtil.sendConfig",transferUtil.sendConfig);
 	message.setHandler("transferItem", transferItem);
 	object.setInteractive(true);
+	inDataNode=0
 end
 
 function update()
-	if transferUtil.updateInputs(0) then
-		for k,v in pairs(storage.input) do
-			result=world.callScriptedEntity(k,"transferUtil.sendContainerInputs");
-			if(result~=nil)then
-				storage.containers=transferUtil.tConjunct(storage.containers,result)			
-			end
-		end
-	end
+	transferUtil.updateInputs(inDataNode)
 end
 
-function transferItem(a, b, location)
+function transferItem(_, _, location)
 	local source = location[1];
 	local slot = location[2];
 	if world.entityExists(source) then

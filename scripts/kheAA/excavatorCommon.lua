@@ -10,11 +10,20 @@ redrillPosBack=nil
 deltatime = 0;
 step=0;
 time = 0;
+--[[
+node list:
+	powerNode
+	hiPumpNode
+	outDataNode
+	outLiquidNode
+	hiMineNode
+
+]]
 
 function excavatorCommon.init(drill,pump)
 	local did=false
 	transferUtil.init()
-	storage.containerID=entity.id()
+	storage.inContainers={}
 	storage.facing=util.clamp(object.direction(),0,1)
 	storage.isDrill=drill
 	storage.isPump=pump
@@ -40,7 +49,7 @@ function excavatorCommon.cycle(dt)
 	if storage.state=="off" then
 		return
 	end
-	if transferUtil.powerLevel(0) then
+	if transferUtil.powerLevel(powerNode) then
 		setRunning(true)
 		if storage.state=="stop" then
 			storage.state="start"
@@ -69,6 +78,7 @@ function excavatorCommon.cycle(dt)
 end
 
 function states.start(dt)
+	storage.inContainers[entity.id()]=0
 	if storage.isDrill then
 		storage.state="moveDrillBar"
 	else
@@ -217,7 +227,7 @@ function states.mine(dt)
 			end
 		end
 	end
-	if transferUtil.powerLevel(1,true) then
+	if transferUtil.powerLevel(hiMineNode,true) then
 		world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", storage.drillPower)
 		if world.material(absdrillPos,"background") then
 			world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", storage.drillPower)
@@ -256,13 +266,31 @@ function states.pump(dt)
 		storage.liquids[liquid[1]] = storage.liquids[liquid[1]] + liquid[2];
 	end
 	
-	if not transferUtil.powerLevel(1,true) then
+	if not transferUtil.powerLevel(hiPumpNode,true) then
 		for k,v in pairs(storage.liquids) do
 			if v >= 1 then
 				if liquidLib.liquidIds[k] ~= nil then
 					local try,count=transferUtil.tryFitOutput(entity.id(),{name = liquidLib.liquidIds[k], count = 1})
 					if try then
 						storage.liquids[k] = storage.liquids[k] - count;
+						break
+					end
+				else
+					local tempList=object.getOutputNodeIds(outLiquidNode)
+					if #tempList > 0 then
+						local outputPipes={}
+						for _,v in pairs(tempList) do
+							local result=world.callScriptedEntity(v[1],"liquidLib.canReceiveLiquid")
+							if result then
+								table.insert(outputPipes,v[1])
+							end
+						end
+						if #outputPipes>0 then
+							local outputPipe=transferUtil.nearest(entity.id(),outputPipes)
+							world.callScriptedEntity(outputPipe,"liquidLib.receiveLiquid",{k,1})
+							storage.liquids[k]=v-1
+						end
+						break
 					end
 				end
 			end
@@ -274,6 +302,24 @@ function states.pump(dt)
 		for k,v in pairs(liquidLib.liquidIds) do
 			if world.containerConsume(entity.id(),{name=v,1}) then
 				storage.liquids[k]=storage.liquids[k]+1
+			end
+		end
+		for k,v in pairs(storage.liquids) do
+			local tempList=object.getOutputNodeIds(outLiquidNode)
+			if #tempList > 0 then
+				local outputPipes={}
+				for _,v in pairs(tempList) do
+					local result=world.callScriptedEntity(v[1],"liquidLib.canReceiveLiquid")
+					if result then
+						table.insert(outputPipes,v[1])
+					end
+				end
+				if #outputPipes>0 then
+					local outputPipe=transferUtil.nearest(entity.id(),outputPipes)
+					world.callScriptedEntity(outputPipe,"liquidLib.receiveLiquid",{k,1})
+					storage.liquids[k]=v-1
+				end
+				break
 			end
 		end
 	end
