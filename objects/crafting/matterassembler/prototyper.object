@@ -1,0 +1,180 @@
+{
+  "objectName" : "prototyper",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "combat", "laser" ],
+  "rarity" : "Essential",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "breakDropOptions" : [],
+
+  "price" : 50,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+
+  "animation" : "prototyper.animation",
+  "animationPosition" : [0, 28],
+
+  "inventoryIcon" : "prototyper1icon.png",
+  "placementImage" : "prototyper1.png:default.default",
+  "placementImagePosition" : [-28, 0],    
+
+  "description" : "Craft all sorts of complex gear",
+  "shortdescription" : "^orange;Machining Table^white;",
+
+  "learnBlueprintsOnPickup" : [],
+
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "machiningtable",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "prototyper1icon.png",
+        "placementImage" : "prototyper1.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "Craft all sorts of complex gear",
+        "shortdescription" : "^orange;Machining Table^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/prototyper.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Machining Table",
+            "subtitle" : " ^#b9b5b2;Create complex gear",
+            "icon" : {
+              "file" : "/interface/crafting/craftingfurnace.png"
+            }
+          }
+        },
+
+        "filter" : [ "prototyper1" ],
+        "initialRecipeUnlocks" : [ "microscope", "clothingfabricator", "magneticshielding", "electronmicroscope", "handmill", "nanofabricator", "circuitboard", "basicminer", "fu_craftinfo"  ],
+        "upgradeMaterials" : [
+          { "item" : "tungstenbar", "count" : 10 },
+          { "item" : "circuitboard", "count" : 2 },
+          { "item" : "coil", "count" : 6 }
+        ]
+      },
+
+      "pickupQuestTemplates" : [ "fuquest_nano" ],
+
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "autoassembler",
+
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "prototyper2icon.png",
+        "placementImage" : "prototyper2.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "Create more complicated gear",
+        "shortdescription" : "^orange;Auto-Assembler^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/prototyper.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Auto-Assembler",
+            "subtitle" : " ^#b9b5b2;Complex gear",
+            "icon" : {
+              "file" : "/interface/crafting/craftingfurnace2.png"
+            }
+          }
+        },
+        "filter" : [ "prototyper1", "prototyper2" ],
+        "initialRecipeUnlocks" : [  "apexcoolshelf",  "apexpod2" ],
+        "upgradeMaterials" : [
+          { "item" : "titaniumbar", "count" : 6 },
+          { "item" : "cpu", "count" : 2 },
+          { "item" : "glass", "count" : 10 },
+          { "item" : "ff_plastic", "count" : 5 }
+        ]
+      },
+
+      "learnBlueprintsOnPickup" : [ "titaniumwallblockmaterial", "speedblockmaterial", "jumpblockmaterial" ],
+
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "matterassembler",
+
+      "itemSpawnParameters" : {
+        "price" : 750,
+        "inventoryIcon" : "prototyper3icon.png",
+        "placementImage" : "prototyper3.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "Create advanced technology",
+        "shortdescription" : "^orange;Matter Assembler^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/prototyper.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Matter Assembler",
+            "subtitle" : " ^#b9b5b2;Advanced technology",
+            "icon" : {
+              "file" : "/interface/crafting/craftingfurnace3.png"
+            }
+          }
+        },
+        "filter" : [ "prototyper1", "prototyper2", "prototyper3" ],
+        "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg",
+        "initialRecipeUnlocks" : []
+      },
+
+      "learnBlueprintsOnPickup" : []
+    }
+  ],
+
+  "orientations" : [
+    {
+      "image" : "prototyper1.png:default.<frame>",
+      "imagePosition" : [-28, 0],    
+      "direction" : "left",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "prototyper1.png:default.<frame>",
+      "imagePosition" : [-28, 0],    
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }  
+}
