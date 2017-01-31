@@ -93,19 +93,17 @@ function transferUtil.findNearest(origin,targetList)
 	local distance=nil
 	for i2,_ in pairs(targetList) do
 		if i2 ~= origin and i2 ~= nil then
-		local spaces1=world.objectSpaces(i2)
-		local spaces2=world.objectSpaces(origin)
-		if spaces1 == nil then return end
-		if spaces2 == nil then return end
-		if #spaces1 == 0 then return end
-		if #spaces2 == 0 then return end
-		temp=world.magnitude(spaces1[1],spaces2[1])
-			if distance==nil then
-				target=i2
-				distance=temp
-			elseif distance > temp then
-				target=i2
-				distance=temp
+		if world.entityExists(i2) and world.entityExists(origin) then
+			local pos1=world.callScriptedEntity(i2,"entity.position")
+			local pos2=world.callScriptedEntity(origin,"entity.position")
+			temp=world.magnitude(pos1,pos2)
+				if distance==nil then
+					target=i2
+					distance=temp
+				elseif distance > temp then
+					target=i2
+					distance=temp
+				end
 			end
 		end
 	end
@@ -119,6 +117,53 @@ function transferUtil.tFirstIndex(entry,t1)
 		end
 	end
 	return 0
+end
+
+function transferUtil.pos2Rect(pos,size)
+	if size == nil then size = 0 end
+	return({pos[1]-size,pos[2]-size,pos[1]+size,pos[2]+size})
+end
+
+function transferUtil.spacePos2Rect(spaces,pos)
+	local minX
+	local minY
+	local maxX
+	local maxY
+	for _,pos in pairs(spaces) do
+		if minX==nil then minX=pos[1]
+		elseif minX > pos[1] then minX=pos[1]
+		end
+		if minY==nil then minY=pos[2]
+		elseif minY > pos[2] then minX=pos[2]
+		end
+		if maxX==nil then maxX=pos[1]
+		elseif maxX < pos[1] then maxX=pos[1]
+		end
+		if maxY==nil then maxY=pos[2]
+		elseif maxY < pos[2] then maxY=pos[2]
+		end
+	end
+	return {pos[1]+minX,pos[2]+minY,pos[1]+maxX,pos[2]+maxY}
+end
+
+function transferUtil.rect2Center(rect,isFloat)
+	local buffer
+	if isFloat then
+		buffer={1.0,1.0}
+	else
+		buffer={1,1}
+	end
+	buffer[1]=buffer[1]*((rect[1]+rect[3])/2)
+	buffer[2]=buffer[2]*((rect[2]+rect[4])/2)
+	if isFloat then
+		return buffer
+	else
+		return {util.round(buffer[1],0),util.round(buffer[2],0)}
+	end
+end
+
+function transferUtil.spacePos2Center(spaces,pos)
+	return transferUtil.rect2Center(transferUtil.spacePos2Rect(spaces,pos),true)
 end
 
 function transferUtil.checkFilter(item)
