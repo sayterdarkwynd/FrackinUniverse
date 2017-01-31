@@ -13,7 +13,8 @@
   "scripts" : [ "/scripts/npcToyObject.lua",
                 "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
               ],
-
+              
+  "pickupQuestTemplates" : [ "fuquest_nano" ],
   "animation" : "nanofabricator.animation",
   "animationPosition" : [0, 18],
 
@@ -49,21 +50,19 @@
             "title" : " Tinkering Table",
             "subtitle" : " ^#b9b5b2;Upgrades and odds/ends",
             "icon" : {
-              "file" : "/interface/crafting/craftingfurnace.png"
+              "file" : "/interface/crafting/craftingnano1.png"
             }
           }
         },
 
         "filter" : [ "nanofabricator1" ],
-        "initialRecipeUnlocks" : [ "fubreathaugment1", "moltencore", "isn_glowgel", "isn_bouncegel", "isn_propulsionstrip_l", "isn_propulsionstrip_r", "isn_accelgel", "isn_lowfrictionstrip" ],
+        "initialRecipeUnlocks" : [ "basicminer", "fubreathaugment1", "moltencore", "isn_glowgel", "isn_bouncegel", "isn_propulsionstrip_l", "isn_propulsionstrip_r", "isn_accelgel", "isn_lowfrictionstrip" ],
         "upgradeMaterials" : [
           { "item" : "tungstenbar", "count" : 6 },
           { "item" : "circuitboard", "count" : 2 },
           { "item" : "coil", "count" : 3 }
         ]
       },
-
-      "pickupQuestTemplates" : [ "fuquest_nano" ],
 
       "upgradeSoundEffect" : "fanfare",
       "upgradeParticleEffect" : "dust"
@@ -89,7 +88,7 @@
             "title" : " Engineering Bench",
             "subtitle" : " ^#b9b5b2;Upgrades, odds/ends",
             "icon" : {
-              "file" : "/interface/crafting/craftingfurnace2.png"
+              "file" : "/interface/crafting/craftingnano2.png"
             }
           }
         },
@@ -129,7 +128,7 @@
             "title" : " Nanofabricator",
             "subtitle" : " ^#b9b5b2;Upgrade, odds/ends",
             "icon" : {
-              "file" : "/interface/crafting/craftingfurnace3.png"
+              "file" : "/interface/crafting/craftingnano3.png"
             }
           }
         },

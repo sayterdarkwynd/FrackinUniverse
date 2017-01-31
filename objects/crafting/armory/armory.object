@@ -1,65 +1,184 @@
 {
   "objectName" : "armory",
   "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
-  "printable" : false,
-  "price" : 600,
   "rarity" : "Essential",
-  "interactAction" : "OpenCraftingInterface",
-  "interactData" : {
-    "config" : "/interface/windowconfig/armory.config",
-    "filter" : [ "armory" ]
-  },
-  
-  "description" : "This machine is a weapons and armor manufacturing device. Yes, it is large. Use the Clothing Fabricator for fabric-based armors.",
-  "shortdescription" : "^orange;Armory^white;",
   "race" : "generic",
   "category" : "crafting",
 
-  "learnBlueprintsOnPickup" : [ "moltencore" ],
+  "breakDropOptions" : [],
+
+  "price" : 50,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+              
   "pickupQuestTemplates" : [ "fuquest_armory" ],
-  "inventoryIcon" : "armoryicon.png",
+  "animation" : "armory.animation",
+  "animationPosition" : [0, 24],
+
+  "inventoryIcon" : "armory1icon.png",
+  "placementImage" : "armory.png:default.default",
+  "placementImagePosition" : [-44, 0],    
+
+  "description" : "Create special weapons and armor",
+  "shortdescription" : "^orange;Armorworks^white;",
+
+  "learnBlueprintsOnPickup" : [],
+
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "armorworks",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "armory1icon.png",
+        "placementImage" : "armory.png:default.default",
+        "placementImagePosition" : [-44, 0],    
+
+        "description" : "Create special weapons and armor",
+        "shortdescription" : "^orange;Armorworks^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/armory.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Armorworks",
+            "subtitle" : " ^#b9b5b2;Special Weapons and Armor",
+            "icon" : {
+              "file" : "/interface/crafting/armory1.png"
+            }
+          }
+        },
+
+        "filter" : [ "armory1" ],
+        "initialRecipeUnlocks" : [ "fu_mulch", "ff_fertilizer" ],
+        "upgradeMaterials" : [
+          { "item" : "tungstenbar", "count" : 6 },
+          { "item" : "bottle", "count" : 4 },
+          { "item" : "apexcoolshelf", "count" : 1 },
+          { "item" : "coil", "count" : 3 }
+        ]
+      },
+
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "assemblyline",
+
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "armory2icon.png",
+        "placementImage" : "armory2.png:default.default",
+        "placementImagePosition" : [-44, 0],    
+
+        "description" : "Even more advanced gear.",
+        "shortdescription" : "^orange;Assembly Line^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/armory.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Assembly Line",
+            "subtitle" : " ^#b9b5b2;Automated weapons and armor",
+            "icon" : {
+              "file" : "/interface/crafting/armory2.png"
+            }
+          }
+        },
+        "filter" : [ "armory1", "armory2" ],
+        "initialRecipeUnlocks" : [],
+        "upgradeMaterials" : [
+          { "item" : "titaniumbar", "count" : 6 },
+          { "item" : "cpu", "count" : 2 },
+          { "item" : "glass", "count" : 10 },
+          { "item" : "ff_plastic", "count" : 5 }
+        ]
+      },
+
+      "learnBlueprintsOnPickup" : [],
+
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "armory",
+
+      "itemSpawnParameters" : {
+        "price" : 750,
+        "inventoryIcon" : "armory3icon.png",
+        "placementImage" : "armory3.png:default.default",
+        "placementImagePosition" : [-44, 0],    
+
+        "description" : "The best weapons and armor. Period.",
+        "shortdescription" : "^orange;Armory^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/armory.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Armory",
+            "subtitle" : " ^#b9b5b2;Advanced Weaponry",
+            "icon" : {
+              "file" : "/interface/crafting/armory3.png"
+            }
+          }
+        },
+        "filter" : [ "armory1", "armory2", "armory3" ],
+        "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg",
+        "initialRecipeUnlocks" : []
+      },
+
+      "learnBlueprintsOnPickup" : []
+    }
+  ],
+
   "orientations" : [
     {
-      "imageLayers" : [ { "image" : "armory.png:<color>.<frame>", "fullbright" : true }, { "image" : "armorylit.png:<color>.<frame>" } ],
+      "image" : "armory.png:default.<frame>",
+      "imagePosition" : [-44, 0],    
       "direction" : "left",
       "flipImages" : true,
-
-      "imagePosition" : [0, 0],
-      "frames" : 10,
-      "animationCycle" : 2,
-
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     },
     {
-      "imageLayers" : [ { "image" : "armory.png:<color>.<frame>", "fullbright" : true }, { "image" : "armorylit.png:<color>.<frame>" } ],
+      "image" : "armory.png:default.<frame>",
+      "imagePosition" : [-44, 0],    
       "direction" : "right",
-
-      "imagePosition" : [0, 0],
-      "frames" : 10,
-      "animationCycle" : 2,
-
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
-    }  
+    }
   ],
-  
-  "scripts" : [ "/scripts/npcToyObject.lua" ],
+
   "npcToy" : {
     "influence" : [
-      "sink",
-      "sinkComplete"
+      "furnace",
+      "furnace",
+      "furnaceComplete"
     ],
     "defaultReactions" : {
-      "sink" : [
-        [1.0, "typing"]
+      "furnace" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
       ],
-      "sinkComplete" : [
-        [1.0, "smile"]
+      "furnaceComplete" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"],
+        [1.0, "pokefire"]
       ]
     },
-    "preciseStandPositionLeft" : [-1.0, 0.0],
-    "preciseStandPositionRight" : [1.0, 0.0],
+    "preciseStandPositionLeft" : [-1.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
     "maxNpcs" : 1
   }
 }

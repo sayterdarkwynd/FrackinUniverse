@@ -1,54 +1,185 @@
 {
   "objectName" : "designlab",
-  "colonyTags" : [ "fu", "science", "scienceoutpost" ],
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
   "rarity" : "Essential",
-  "interactAction" : "OpenCraftingInterface",
-  "interactData" : {
-    "config" : "/interface/windowconfig/designlab.config",
-    "filter" : [ "designlab" ]
-  },
-  "printable" : false,
-  "description" : "Create new strains.",
-  "shortdescription" : "^orange;Gene Design Lab^white;",
   "race" : "generic",
   "category" : "crafting",
-  "price" : 450,
 
-  "learnBlueprintsOnPickup" : [ "clonelab", "avaliaeroponics" ],
+  "breakDropOptions" : [],
+
+  "price" : 50,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+              
   "pickupQuestTemplates" : [ "fuquest_bracken" ],
   
-  "lightColor" : [60, 60, 100],
-  "soundEffect" : "/sfx/objects/fridge_hum.ogg",
-  "inventoryIcon" : "designlabicon.png",
-  "orientations" : [
+  "animation" : "designlab.animation",
+  "animationPosition" : [0, 26],
+
+  "inventoryIcon" : "designlab1icon.png",
+  "placementImage" : "designlab1lit.png:default.default",
+  "placementImagePosition" : [-40, 0],    
+
+  "description" : "Create plants from raw materials.",
+  "shortdescription" : "^orange;Greenhouse^white;",
+
+  "learnBlueprintsOnPickup" : [ "fu_growingtray" ],
+
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "greenhouse",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "designlab1icon.png",
+        "placementImage" : "designlab1lit.png:default.default",
+        "placementImagePosition" : [-40, 0],    
+
+        "description" : "Breed basic plants",
+        "shortdescription" : "^orange;Greenhouse^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/designlab.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Greenhouse",
+            "subtitle" : " ^#b9b5b2;Basic genetics",
+            "icon" : {
+              "file" : "/interface/crafting/designlab1icon.png"
+            }
+          }
+        },
+
+        "filter" : [ "designlab1" ],
+        "initialRecipeUnlocks" : [ "naileryseed", "mintseed", "onionseed", "ginsengseed", "algaeseed", "bambooseed", "brackentreeseed", "oonfortaseed", "miraclegrassseed", "avesmingoseed", "bananaseed", "beakseedseed", "carrotseed", "coffeeseed", "cocoaseed", "cottonseed", "currentcornseed", "diodiaseed", "eggshootseed", "grapesseed", "kiwiseed", "mushroomseed", "neonmelonseed", "pearlpeaseed", "potatoseed", "riceseed", "sugarcaneseed", "tomatoseed", "wheatseed"  ],
+        "upgradeMaterials" : [
+          { "item" : "tungstenbar", "count" : 6 },
+          { "item" : "bottle", "count" : 4 },
+          { "item" : "apexpod2", "count" : 1 },
+          { "item" : "coil", "count" : 3 }
+        ]
+      },
+
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
 
     {
-      "dualImage" : "designlab.png:<color>.<frame>",
-      "imagePosition" : [0, 0],
-      "frames" : 4,
-      "animationCycle" : 1.0,
+      "animationState" : "botanylab",
 
-      "spaceScan" : 0.1,
-      "fgAnchors" : [ [0, -1] ]
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "designlab2icon.png",
+        "placementImage" : "designlab2.png:default.default",
+        "placementImagePosition" : [-40, 0],    
+
+        "description" : "More advanced seed experimentation.",
+        "shortdescription" : "^orange;Botany Lab^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/designlab.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Botany Lab",
+            "subtitle" : " ^#b9b5b2;More complex plants",
+            "icon" : {
+              "file" : "/interface/crafting/designlab2icon.png"
+            }
+          }
+        },
+        "filter" : [ "designlab1", "designlab2" ],
+        "initialRecipeUnlocks" : [ "automatoseed", "boltbulbseed", "bonebooseed", "chiliseed", "coralcreepseed", "crystalplantseed", "dirturchinseed", "feathercrown", "oculemonseed", "pineappleseed", "pussplumseed", "reefpodseed", "toxictopseed", "wartweedseed" ],
+        "upgradeMaterials" : [
+          { "item" : "titaniumbar", "count" : 6 },
+          { "item" : "cpu", "count" : 2 },
+          { "item" : "apexpod2", "count" : 1 },
+          { "item" : "electromagnet", "count" : 2 }
+        ]
+      },
+
+      "learnBlueprintsOnPickup" : [],
+
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "designlab",
+
+      "itemSpawnParameters" : {
+        "price" : 750,
+        "inventoryIcon" : "designlab3icon.png",
+        "placementImage" : "designlab3.png:default.default",
+        "placementImagePosition" : [-40, 0],    
+
+        "description" : "Create bizarre alien plantlife",
+        "shortdescription" : "^orange;Gene Design Lab^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/designlab.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Gene Design Lab",
+            "subtitle" : " ^#b9b5b2;Advanced genetics",
+            "icon" : {
+              "file" : "/interface/crafting/designlab3icon.png"
+            }
+          }
+        },
+        "filter" : [ "designlab1", "designlab2", "designlab3" ],
+        "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg",
+        "initialRecipeUnlocks" : [ "clonelab", "avaliaeroponics" ]
+      },
+
+      "learnBlueprintsOnPickup" : []
     }
   ],
-  "scripts" : [ "/scripts/npcToyObject.lua" ],
+
+  "orientations" : [
+    {
+      "image" : "designlab1.png:default.<frame>",
+      "imagePosition" : [-40, 0],    
+      "direction" : "left",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "designlab1.png:default.<frame>",
+      "imagePosition" : [-40, 0],    
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
   "npcToy" : {
     "influence" : [
-      "sink",
-      "sinkComplete"
+      "furnace",
+      "furnace",
+      "furnaceComplete"
     ],
     "defaultReactions" : {
-      "sink" : [
-        [1.0, "typing"]
+      "furnace" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
       ],
-      "sinkComplete" : [
-        [1.0, "smile"]
+      "furnaceComplete" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"],
+        [1.0, "pokefire"]
       ]
     },
-    "preciseStandPositionLeft" : [-1.0, 0.0],
-    "preciseStandPositionRight" : [1.0, 0.0],
-    "maxNpcs" : 2
+    "preciseStandPositionLeft" : [-1.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
   }
-
 }
