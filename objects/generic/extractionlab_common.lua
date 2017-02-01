@@ -815,7 +815,7 @@ function getRecipes()
 	{ inputs = { cookedribmeat = 1 }, outputs = { geneticmaterial = { 3, 3, 5 } } },
 	{ inputs = { cookedtentacle = 1 }, outputs = { geneticmaterial = { 3, 3, 5 } } },
 	{ inputs = { coralcreep = 1 }, outputs = { tissueculture = { 3, 3, 5 } } },
-	{ inputs = { corn = 1 }, outputs = { tissueculture = { 3, 3, 5 } } },
+	{ inputs = { corn = 1 }, outputs = { cattlefeed = { 3, 3, 5 } } },
 	{ inputs = { crystalplant = 1 }, outputs = { tissueculture = { 3, 3, 5 } } },
 	{ inputs = { currentcorn = 1 }, outputs = { tissueculture = { 3, 3, 5 } } },
 	{ inputs = { diodia = 1 }, outputs = { tissueculture = { 3, 3, 5 } } },
