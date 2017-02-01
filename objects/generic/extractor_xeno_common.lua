@@ -1,6 +1,7 @@
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 local recipes
+local deltaTime=0
 
 function init()
 	transferUtil.init()

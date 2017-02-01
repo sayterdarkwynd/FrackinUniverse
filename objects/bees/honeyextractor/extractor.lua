@@ -1,5 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 local contents
+local deltaTime=0
  
 function init()
 	transferUtil.init()

@@ -1,4 +1,5 @@
 require "/scripts/kheAA/transferUtil.lua"
+local deltaTime=0
 function init()
 	transferUtil.init()
 	object.setInteractive(true)
