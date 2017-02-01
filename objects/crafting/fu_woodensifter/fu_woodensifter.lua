@@ -1,12 +1,22 @@
 require "/scripts/util.lua"
 require "/scripts/fu_storageutils.lua"
+require "/scripts/kheAA/transferUtil.lua"
 
 function init()
+	transferUtil.init()
   object.setInteractive(true)
   storage.activeConsumption = false
 end
 
 function update(dt)
+
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
+
   if isn_hasRequiredPower() == false then
     animator.setAnimationState("sifterState", "idle")
 	storage.activeConsumption = false
