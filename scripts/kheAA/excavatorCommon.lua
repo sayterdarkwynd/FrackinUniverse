@@ -1,5 +1,4 @@
 require "/scripts/kheAA/transferUtil.lua"
-require "/scripts/util.lua"
 
 excavatorCommon={}
 states={}
@@ -8,6 +7,7 @@ redrillPosFore=nil
 reDrillLevelback=0
 redrillPosBack=nil
 deltatime = 0;
+local delta2=0
 step=0;
 time = 0;
 --[[
@@ -22,8 +22,8 @@ node list:
 
 function excavatorCommon.init(drill,pump)
 	local did=false
+	delta2=100
 	transferUtil.init()
-	storage.inContainers={}
 	storage.facing=util.clamp(object.direction(),0,1)
 	storage.isDrill=drill
 	storage.isPump=pump
@@ -46,6 +46,12 @@ function excavatorCommon.init(drill,pump)
 end
 
 function excavatorCommon.cycle(dt)
+	if delta2 > 1 then
+		transferUtil.loadSelfContainer()
+		delta2=0
+	else
+		delta2=delta2+dt
+	end
 	if storage.state=="off" then
 		return
 	end
@@ -87,9 +93,7 @@ function states.start(dt)
 end
 
 function states.moveDrillBar(dt)
-	--sb.logInfo(step)
 	if deltatime >= 0.2 then
-		--sb.logInfo(deltatime)
 		step = step + 0.2;
 		deltatime=0
 	end
@@ -166,6 +170,12 @@ function states.mine(dt)
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=2
+				local drops = world.itemDropQuery(redrillPosFore,5);
+				for i = 1, #drops do
+					local item = world.takeItemDrop(drops[i]);
+					if item then transferUtil.tryFitOutput(storage.containerId,item,true)
+					end
+				end
 				return
 			else
 				reDrillLevelFore=0
@@ -175,6 +185,12 @@ function states.mine(dt)
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=0
+				local drops = world.itemDropQuery(redrillPosFore,5);
+				for i = 1, #drops do
+					local item = world.takeItemDrop(drops[i]);
+					if item then transferUtil.tryFitOutput(storage.containerId,item,true)
+					end
+				end
 				return
 			else
 				reDrillLevelFore=0
@@ -187,6 +203,12 @@ function states.mine(dt)
 			if world.material(redrillPosBack,"background") then
 				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=2
+				local drops = world.itemDropQuery(redrillPosBack,5);
+				for i = 1, #drops do
+					local item = world.takeItemDrop(drops[i]);
+					if item then transferUtil.tryFitOutput(storage.containerId,item,true)
+					end
+				end
 				return
 			else
 				reDrillLevelBack=0
@@ -196,6 +218,12 @@ function states.mine(dt)
 			if world.material(redrillPosBack,"background") then
 				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=0
+				local drops = world.itemDropQuery(redrillPosBack,5);
+				for i = 1, #drops do
+					local item = world.takeItemDrop(drops[i]);
+					if item then transferUtil.tryFitOutput(storage.containerId,item,true)
+					end
+				end
 				return
 			else
 				reDrillLevelBack=0
@@ -245,7 +273,7 @@ function states.mine(dt)
 	local drops = world.itemDropQuery(transferUtil.getAbsPos(storage.drillPos),	5);
 	for i = 1, #drops do
 		local item = world.takeItemDrop(drops[i]);
-		if item then transferUtil.tryFitOutput(storage.containerID,item,true)
+		if item then transferUtil.tryFitOutput(storage.containerId,item,true)
 		end
 	end
 	
