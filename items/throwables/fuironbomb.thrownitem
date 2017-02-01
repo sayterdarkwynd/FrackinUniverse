@@ -1,0 +1,30 @@
+{
+  "itemName" : "fuironbomb",
+  "price" : 50,
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "inventoryIcon" : "fuironbomb.png",
+  "image" : "fucopperbomb.png",
+  "shortdescription" : "Iron Bomb",
+  "description" : "Alchemical creation! Turn things into iron!",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.5,
+  "cooldown" : 0.7,
+
+  "projectileType" : "ironbomb",
+  "projectileConfig" : {
+    "speed" : 25,
+    "power" : 10,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}
