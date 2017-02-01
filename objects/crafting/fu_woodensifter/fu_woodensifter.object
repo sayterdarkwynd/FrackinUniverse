@@ -2,20 +2,13 @@
   "objectName" : "fu_woodensifter",
   "rarity" : "Common",
     "colonyTags" : [ "science" ],
-  "description" : "Sifts through powders to find useful reagents.",
+  "description" : "Sifts through powders to find useful reagents. Requires 2u power.",
   "shortdescription" : "^cyan;Sifter^white;",
   "race" : "generic",
   "category" : "storage",
   "price" : 500,
   "objectType" : "container",
   "printable" : false,
-
-  "apexDescription" : "This machine can turn useless dust into valuable reagents.",
-  "avianDescription" : "Ashes to riches, dust to stuff.",
-  "floranDescription" : "Weird thing ssscrabble through garbage, find good rock. Floran throw at fishman.",
-  "glitchDescription" : "Identification. This is a high power centrifuge capable of working with powdered solids.",
-  "humanDescription" : "Instant treasure, just add useless crap!",
-  "hylotlDescription" : "A device to seek diamonds in the rough. Oddly poetic, if ultimately capitalist.",
   
   "scripts" : [ "fu_woodensifter.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
@@ -40,8 +33,10 @@
   },
   "animationPosition" : [0, 0],
   
-  "inputNodes" : [ [1, 1] ],
-  "outputNodes" : [ [1, 0] ],
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+  "isn_powerReciever" : true,
+  "isn_requiredPower" : 2,
   
   "inventoryIcon" : "fu_woodensiftericon.png",
   "orientations" : [
