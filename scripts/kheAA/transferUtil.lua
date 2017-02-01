@@ -71,6 +71,7 @@ function transferUtil.routeItems()
 				if transferUtil.checkFilter(item) then
 					if transferUtil.validInputSlot(index1) then
 						local tempSize=world.containerSize(targetContainer)
+						if tempSize==nil then return end
 						if util.tableSize(storage.outputSlots) > 0 then
 							for index0=0,tempSize-1 do
 								if transferUtil.tFirstIndex(index0+1,storage.outputSlots) > 0 then
@@ -272,13 +273,21 @@ function transferUtil.compareCategories(itemA, itemB)
 end
 
 function transferUtil.tryFitOutput(target,item,drop)
+	if target==nil then
+		if drop then
+			world.spawnItem(item,entity.position())
+			return nil
+		else
+			return item
+		end
+	end
 	local leftOverItems = world.containerAddItems(target, item)
 	if leftOverItems == nil or leftOverItems.count ~= item.count then
 		if leftOverItems == nil then
 			return true, item.count;
 		else
 			if drop==true then 
-				temp=world.objectSpaces(target)
+				temp=world.callScriptedEntity(target,"entity.position")
 				if temp~=nil then
 					world.spawnItem(item,temp[1])
 				else
