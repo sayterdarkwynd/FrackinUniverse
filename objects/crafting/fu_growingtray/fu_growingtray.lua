@@ -1,7 +1,7 @@
 require "/scripts/fu_storageutils.lua"
 
-function init(virtual)
-	if virtual == true then return end
+function init()
+	
 	object.setInteractive(true)
 	
 	if storage.growth == nil then storage.growth = 0 end

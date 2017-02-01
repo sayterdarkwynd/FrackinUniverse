@@ -1,7 +1,7 @@
 require "/scripts/util.lua"
 require "/scripts/fu_storageutils.lua"
 
-function init(args)
+function init()
   object.setInteractive(true)
   storage.activeConsumption = false
 end

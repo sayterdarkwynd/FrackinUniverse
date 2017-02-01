@@ -1,8 +1,8 @@
-function init(virtual)
+function init()
 	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
         storage.critChance = 50
-	if virtual == true then return end
+	
 	object.setInteractive(true)
 	
 	if storage.radiation == nil then storage.radiation = 0 end

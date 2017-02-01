@@ -1,7 +1,7 @@
 require "/scripts/fu_storageutils.lua"
-
-function init(virtual)
-	if virtual == true then return end
+require "/scripts/kheAA/transferUtil.lua"
+function init()
+	transferUtil.init()
 	object.setInteractive(true)
 	
 	if storage.growth == nil then storage.growth = 0 end
@@ -21,6 +21,12 @@ function init(virtual)
 end
 
 function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 	storage.activeConsumption = false
 	if isn_hasRequiredPower() == false then
 		animator.setAnimationState("powlight", "off")

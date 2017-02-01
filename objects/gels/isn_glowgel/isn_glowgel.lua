@@ -1,5 +1,5 @@
-function init(virtual)
-	self.placed = not virtual
+function init()
+	self.placed = true
 end
 
 function update(dt)

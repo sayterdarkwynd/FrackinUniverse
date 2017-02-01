@@ -1,4 +1,6 @@
-function init(virtual)
+require "/scripts/kheAA/transferUtil.lua"
+function init()
+	transferUtil.init()
 	-- these are items wich will be used for upgrade
 	upgradeItemsList = {
 		["upgrademodule"] = true
@@ -17,6 +19,13 @@ end
 
 
 function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
+
 	local itemForUpgrade = world.containerItemAt(entity.id(), 0)
   if isn_hasRequiredPower() == false then
     object.setLightColor({0, 0, 0, 0})

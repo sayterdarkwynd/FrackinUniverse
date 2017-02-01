@@ -15,8 +15,8 @@ function configParameter(name,default)
   end
 end
 
-function init(virtual)
-  if not virtual then
+function init()
+  if true then
 --  printTable(0,_ENV)
     setInteractive(true)
   end

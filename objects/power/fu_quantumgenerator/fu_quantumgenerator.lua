@@ -1,4 +1,6 @@
+require "/scripts/kheAA/transferUtil.lua"
 function init()
+	transferUtil.init()
     object.setInteractive(true)
     object.setSoundEffectEnabled(false)
    
@@ -15,6 +17,12 @@ function onInputNodeChange(args)
 end
  
 function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
 	-- sb.logInfo("devices found: %s", devices)
 	local fullBattery = false

@@ -1,3 +1,4 @@
+require "/scripts/util.lua"
 local itemList = "scrollArea.itemList";
 local deltatime=0;
 
@@ -46,7 +47,7 @@ function refresh()
 	if storage.inContainers==nil then
 		return
 	end
-	if not #storage.inContainers then
+	if util.tableSize(storage.inContainers) == 0 then
 		return
 	end
 	items={};

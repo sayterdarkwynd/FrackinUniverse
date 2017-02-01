@@ -3,8 +3,18 @@ transferUtil={}
 disabled=false
 unhandled={}
 --util.tableSize()
-transferUtil.itemTypes = {}
+transferUtil.itemTypes = nil
 
+--[[
+
+if deltaTime > 1 then
+	deltaTime=0
+	transferUtil.loadSelfContainer()
+else
+	deltaTime=deltaTime+dt
+end
+
+]]
 
 function transferUtil.init()
 	if storage==nil then
@@ -14,10 +24,10 @@ function transferUtil.init()
 		storage.init=true
 	end
 	storage.position=entity.position()
-	transferUtil.initTypes()
 end
 
 function transferUtil.initTypes()
+	transferUtil.itemTypes={}
 	transferUtil.itemTypes["generic"]={"foodjunk","junk","other","vehiclecontroller","generic", "coin", "celestialitem","quest"} 
 	transferUtil.itemTypes["treasure"]={"bug","tech","techmanagement","largefossile","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"}
 	transferUtil.itemTypes["material"]={"block","liquid","platform","rail","railplatform","breakable","railpoint"} 
@@ -33,18 +43,30 @@ function transferUtil.initTypes()
 	transferUtil.itemTypes["farming"]={"seed","sapling","farmbeastegg","farmbeastfood","farmbeastfeed"}
 end
 
+function transferUtil.loadSelfContainer()
+	storage.containerId=entity.id()
+	storage.inContainers={}
+	storage.outContainers={}
+	storage.inContainers[storage.containerId]=transferUtil.spacePos2Rect(world.objectSpaces(storage.containerId),storage.position)
+	storage.outContainers[storage.containerId]=transferUtil.spacePos2Rect(world.objectSpaces(storage.containerId),storage.position)
+end
+
 function transferUtil.getAbsPos(position)
 	pos=storage.position;
 	return {world.xwrap(pos[1] + position[1]), pos[2] + position[2]};
 end
 
 function transferUtil.routeItems()
-	if not (util.tableSize(storage.inContainers) > 0) then return end
-	if not (util.tableSize(storage.outContainers) > 0) then return end
-	for sourceContainer,_ in pairs(storage.inContainers) do
-		local targetContainer=transferUtil.findNearest(sourceContainer,storage.outContainers)
+	if util.tableSize(storage.inContainers) == 0 then return end
+	if util.tableSize(storage.outContainers) == 0 then return end
+	for sourceContainer,pos in pairs(storage.inContainers) do
+		local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,storage.outContainers)
 		if targetContainer ~= nil then
+			--[[if not world.regionActive(pos) then
+				world.loadRegion(pos)
+			end]]--
 			local sourceItems=world.containerItems(sourceContainer)
+			if sourceItems==nil then return end
 			for index1,item in pairs(sourceItems) do
 				if transferUtil.checkFilter(item) then
 					if transferUtil.validInputSlot(index1) then
@@ -91,7 +113,8 @@ function transferUtil.findNearest(origin,targetList)
 	local temp=nil
 	local target=nil
 	local distance=nil
-	for i2,_ in pairs(targetList) do
+	local targetBox
+	for i2,pos in pairs(targetList) do
 		if i2 ~= origin and i2 ~= nil then
 		if world.entityExists(i2) and world.entityExists(origin) then
 			local pos1=world.callScriptedEntity(i2,"entity.position")
@@ -99,15 +122,17 @@ function transferUtil.findNearest(origin,targetList)
 			temp=world.magnitude(pos1,pos2)
 				if distance==nil then
 					target=i2
+					targetBox=pos
 					distance=temp
 				elseif distance > temp then
 					target=i2
+					targetBox=pos
 					distance=temp
 				end
 			end
 		end
 	end
-	return target
+	return target,targetBox
 end
 
 function transferUtil.tFirstIndex(entry,t1)
@@ -129,6 +154,7 @@ function transferUtil.spacePos2Rect(spaces,pos)
 	local minY
 	local maxX
 	local maxY
+	if spaces==nil then return nil end
 	for _,pos in pairs(spaces) do
 		if minX==nil then minX=pos[1]
 		elseif minX > pos[1] then minX=pos[1]
@@ -167,6 +193,9 @@ function transferUtil.spacePos2Center(spaces,pos)
 end
 
 function transferUtil.checkFilter(item)
+	if transferUtil.itemTypes==nil then
+		transferUtil.initTypes()
+	end
 	routerItems=world.containerItems(entity.id())
 	if #routerItems == 0 then
 		return true
@@ -374,24 +403,4 @@ end
 function dbg(args)
 	sb.logInfo(sb.printJson(args))
 end
---Public functions for interoperability
 
-
-function receiveItem(item)
-	return transferUtil.tryFitOutput(entity.id(),item)
-end
-
-
-function canReceiveItem(item)
-	if storage.receiveItem~=nil then
-		if item ~= nil then
-			if storage.receiveItem==true then
-				if storage.filterType~=nil then
-					return transferUtil.checkFilter(item)
-				end
-				return true
-			end
-		end
-	end
-	return nil
-end

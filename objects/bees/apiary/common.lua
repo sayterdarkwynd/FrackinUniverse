@@ -3,8 +3,8 @@ local contents
 DEFAULT_HONEY_CHANCE = 0.6
 DEFAULT_OFFSPRING_CHANCE = 0.4
 
-function init(virtual)
-	if virtual == true then return end
+function init()
+	
 
 	animator.setAnimationState("bees", "off")
 

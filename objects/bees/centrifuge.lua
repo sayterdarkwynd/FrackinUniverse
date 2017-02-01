@@ -1,6 +1,10 @@
 require "/scripts/fu_storageutils.lua"
+require "/scripts/kheAA/transferUtil.lua"
+local deltaTime=0
+
 
 function init()
+    transferUtil.init()
 	storage.currentinput = nil
 	storage.currentoutput = nil
 	storage.bonusoutputtable = nil
@@ -15,8 +19,6 @@ function init()
 	--sb.logInfo("centrifuge: %s", storage.combsProcessed)
 
 	combsPerJar = 3 -- ref. recipes
-
-	storage.init = 1
 
 	object.setInteractive(true)
 end
@@ -208,11 +210,12 @@ function deciding(item)
 end
 
 function update(dt)
-	
-	if not storage.init then
-		init()
+	if deltaTime>1 then
+		transferUtil.loadSelfContainer()
+		deltaTime=0
+	else
+		deltaTime=deltaTime+dt
 	end
-
 	local input = world.containerItems(entity.id())[self.inputSlot]
         if isn_hasRequiredPower() == true then 
 		if input then
@@ -251,13 +254,23 @@ function workingCombs(input, output)
 		stashHoney(input.name)
 
 		local rnd = math.random()
-
 		for item, chance in pairs(output) do
+			local done=false
+			local throw=nil
 			if rnd <= chance then
-				local throw = world.containerAddItems(entity.id(), { name = item, count = 1, data={}})
-				if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around
-				break
+				local contSize=world.containerSize(entity.id())
+				for i=1,contSize-1 do
+					throw = world.containerPutItemsAt(entity.id(), { name = item, count = 1, data={}},i)
+					if throw==nil then
+						done=true
+						break
+					end
+				end
+				if done then
+					break
+				end
 			end
+			if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around
 			rnd = rnd - chance
 		end
 	end

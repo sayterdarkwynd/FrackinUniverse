@@ -1,8 +1,9 @@
 require "/scripts/fu_storageutils.lua"
+require "/scripts/kheAA/transferUtil.lua"
 local recipes
 
-function init(args)
-	if args then return end
+function init()
+	transferUtil.init()
 	self.mintick = config.getParameter("fu_mintick", 1)
 	self.timer = self.timer or self.mintick
 	self.crafting = false
@@ -80,8 +81,14 @@ function getValidRecipes(query)
 end
 
 function update(dt)
-	if not self.mintick then init() end
 
+	if not self.mintick then init() end
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 	if config.getParameter("isn_requiredPower") and isn_hasRequiredPower() == false then
 		animator.setAnimationState("samplingarrayanim", "idle")
 		if self.light then

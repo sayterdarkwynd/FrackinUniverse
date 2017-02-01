@@ -1,4 +1,4 @@
-function init(args)
+function init()
   self.sensors = sensors.create()
 
   self.state = stateMachine.create({

@@ -1,7 +1,9 @@
-function init(virtual)
+require "/scripts/kheAA/transferUtil.lua"
+function init()
+	transferUtil.init()
 	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
         storage.critChance = 50
-	if virtual == true then return end
+	
 	object.setInteractive(true)
 	
 	if storage.radiation == nil then storage.radiation = 0 end
@@ -19,6 +21,12 @@ function onInputNodeChange(args)
 end
 
 function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 
 	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
 	-- sb.logInfo("devices found: %s", devices)

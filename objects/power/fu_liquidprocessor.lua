@@ -1,5 +1,5 @@
-function init(virtual)
-	if virtual == true then return end
+function init()
+	
 	storage.checkticks = 0
 	storage.truepos = isn_getTruePosition()
 	self.outputPos = object.position()
