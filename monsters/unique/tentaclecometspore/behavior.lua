@@ -1,4 +1,4 @@
-function init(args)
+function init()
   self.state = stateMachine.create({
     "idleState",
     "attackState",

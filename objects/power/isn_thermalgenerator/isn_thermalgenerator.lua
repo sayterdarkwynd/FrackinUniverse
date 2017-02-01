@@ -1,5 +1,7 @@
-function init(virtual)
-	if virtual == true then return end
+require "/scripts/kheAA/transferUtil.lua"
+local deltaTime=0
+function init()
+	transferUtil.init()
 	object.setInteractive(true)
 	object.setSoundEffectEnabled(false)
 	
@@ -20,6 +22,19 @@ function onInputNodeChange(args)
 end
 
 function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
+
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 	-- check current power production and set the animation state accordingly
 	if storage.currentpowerprod > 90 then
 		animator.setAnimationState("screen", "fast")

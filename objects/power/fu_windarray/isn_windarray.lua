@@ -1,4 +1,4 @@
-function init(args)
+function init()
 	storage.checkticks = 0
 	storage.truepos = isn_getTruePosition()
 end

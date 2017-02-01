@@ -1,12 +1,21 @@
+require "/scripts/kheAA/transferUtil.lua"
 local contents
+local deltaTime=0
  
-function init(args)
+function init()
+	transferUtil.init()
 	self.initialCraftDelay = 3
 	self.craftDelay = self.craftDelay or self.initialCraftDelay
 	self.inputSlot = 3 -- for use in honeyCheck()
 end
  
 function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 	local contents = world.containerItems(entity.id())
 	if contents[3] and contents[2] and contents[2].name == 'emptyhoneyjar' then
 		if not workingCombs(contents) then

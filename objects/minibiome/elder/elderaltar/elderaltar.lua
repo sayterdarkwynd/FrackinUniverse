@@ -25,8 +25,7 @@ local recipes =
 {inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 }
 }
 
-function init(args)
-    if args then return end
+function init()
     self.timer = 1
     self.mintick = 1
     self.crafting = false

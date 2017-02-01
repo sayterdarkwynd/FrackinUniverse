@@ -1,5 +1,7 @@
-function init(virtual)
-	if virtual then return end
+require "/scripts/kheAA/transferUtil.lua"
+
+function init()
+	transferUtil.init()
 
 	self.itemChances = config.getParameter("itemChances")
 	self.inputSlot = config.getParameter("inputSlot")
@@ -11,7 +13,7 @@ function init(virtual)
 
 	combsPerJar = 3 -- ref. recipes
 
-	storage.init = 1
+	storage.init = true
 
 	object.setInteractive(true)
 end
@@ -206,7 +208,12 @@ function update(dt)
 	if not storage.init then
 		init()
 	end
-
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 	local input = world.containerItems(entity.id())[self.inputSlot]
 
 	if input then

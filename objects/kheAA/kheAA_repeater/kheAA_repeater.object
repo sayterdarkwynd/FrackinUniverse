@@ -1,0 +1,38 @@
+{
+	"objectName" : "kheAA_repeater",
+	"rarity" : "Common",
+	"description" : "Links together certain inventory network nodes.",
+	"shortdescription" : "Repeater",
+	"race" : "generic",
+
+	"category" : "wire",
+	"price" : 75,
+	
+	"inventoryIcon" : "/objects/apex/apextablelamp/apextablelampicon.png",
+	"orientations" : [
+		{
+			"image" : "/objects/apex/apextablelamp/apextablelamp.png:<color>.<frame>",
+			"imagePosition" : [0, 0],
+			"frames" : 1,
+			"animationCycle" : 0.3,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+	"animationParts" : {
+		"bg" : "/objects/apex/apextablelamp/apextablelamp.png",
+		"fg" : "/objects/apex/apextablelamp/apextablelamplit.png"
+	},
+	"animationPosition" : [0, 0],
+
+
+	"scripts" : [ "/objects/kheAA/kheAA_repeater/kheAA_repeater.lua"],
+
+	"inputNodes" : [ [0,0]],
+
+	"outputNodes" : [ [0, 1] ],
+	"scriptDelta" : 1
+}

@@ -1,5 +1,5 @@
-function init(virtual)
-	if virtual == true then return end
+function init()
+	
 end
 
 function update(dt)

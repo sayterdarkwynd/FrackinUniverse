@@ -1,7 +1,7 @@
 
 --[[for k, v in pairs(items) do
     if v.name == "sapling" then]]--
-function init(args)
+function init()
 	prep()
 end
 
