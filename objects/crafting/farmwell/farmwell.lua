@@ -1,6 +1,5 @@
 function init()
     object.setInteractive(true)
-
 end
 
 function update(dt)
@@ -9,6 +8,7 @@ object.setInteractive(true)
       storage.waterCount = 0 
     end
     storage.waterCount = storage.waterCount + dt
+    
 end
 
 function onInteraction(args)
@@ -23,7 +23,7 @@ function onInteraction(args)
     local p = object.position()
     world.spawnItem("waterbucket", p, 3)
     storage.waterCount = storage.waterCount - 100
-
+  end
 	  if storage.waterCount < 100 then
 	    object.say("Water : "..math.ceil(storage.waterCount).." (Nearly Dry)")
 	  elseif storage.waterCount > 600 then
@@ -38,11 +38,5 @@ function onInteraction(args)
 	    object.say("Water : "..math.ceil(storage.waterCount).." (Low)")
 	  elseif storage.waterCount > 100 then
 	    object.say("Water : "..math.ceil(storage.waterCount).." (Very Low)")
-	  end
-      if randMath >= 99 then
-        world.spawnItem("methanol", p, 5)
-      elseif randMath >=85 then
-        world.spawnItem("algaegreen", p, 5)
-      end
-  end
+	  end  
 end
