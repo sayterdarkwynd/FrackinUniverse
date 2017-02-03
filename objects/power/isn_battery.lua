@@ -1,5 +1,5 @@
-function init(virtual)
-	if virtual == true then return end
+function init()
+	
 
 	if storage.currentstoredpower == nil then storage.currentstoredpower = 0 end
 	if storage.powercapacity == nil then storage.powercapacity = config.getParameter("isn_batteryCapacity") end

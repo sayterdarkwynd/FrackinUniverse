@@ -1,6 +1,6 @@
 require "/scripts/util.lua"
 
-function init(args)
+function init()
   object.setInteractive(true)
   self.timer = 1
 end

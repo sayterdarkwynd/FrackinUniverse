@@ -1,0 +1,41 @@
+{
+	"animatedParts" : {
+		"stateTypes" : {
+			"terminalState" : {
+				"default" : "off",
+				"states" : {
+					"off" : {
+						"frames" : 1
+					},
+					"on" : {
+						"frames" : 1
+					}
+				}
+			}
+		},
+
+		"parts" : {
+			"terminal" : {
+				"properties" : {
+					"centered" : false
+				},
+
+				"partStates" : {
+					"terminalState" : {
+						"off" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.off"
+							}
+						},
+
+						"on" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.on"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

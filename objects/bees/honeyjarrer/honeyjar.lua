@@ -1,6 +1,6 @@
 -- This code relies on scriptDelta(jarrer) == scriptDelta(ind.centrifuge) * craftDelay(ind.centrifuge).
 -- If this is not the case, then jars may be produced at a lower rate or not at all.
-function init(args)
+function init()
 	storage.combsProcessed = storage.combsProcessed or { count = 0 }
 	--sb.logInfo("jarrer: %s", storage.combsProcessed)
 	animator.setAnimationState("jar", "idle")
@@ -10,9 +10,9 @@ end
 
 function update(dt)
 	local contents = world.containerItems(entity.id())
-	local ents = world.objectQuery(entity.position(), 5, {name="bees_industrialcentrifuge", order="nearest"})
+	local ents = world.objectQuery(entity.position(), 5, {name="industrialcentrifuge", order="nearest"})
 
-	if #ents > 0 and world.entityName(ents[1]) == "bees_industrialcentrifuge" then
+	if #ents > 0 and world.entityName(ents[1]) == "industrialcentrifuge" then
 		local stash = world.callScriptedEntity(ents[1], "drawHoney")
 
 		-- Grab a jar or three from the centrifuge.
@@ -20,7 +20,7 @@ function update(dt)
 		if stash and stash.type == storage.combsProcessed.type then
 			-- same type
 			--sb.logInfo ("got %s for %s", stash.count, stash.type)
-			storage.combsProcessed.count = math.min((storage.combsProcessed.count or 0) + stash.count, 2 * combsPerJar) -- limit to twe jars' worth
+			storage.combsProcessed.count = math.min((storage.combsProcessed.count or 0) + stash.count, 2 * combsPerJar) -- limit to two jars' worth
 			storage.combsProcessed.stale = nil
 		elseif stash then
 			-- different type

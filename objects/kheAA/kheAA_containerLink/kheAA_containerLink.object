@@ -1,0 +1,60 @@
+{
+	"objectName" : "network_containerlink",
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Links the nearest container into an item transfer network",
+	"shortdescription" : "Storage Bridge",
+	"race" : "generic",
+
+	"category" : "wire",
+	"price" : 75,
+
+	
+  "animation" : "kheAA_containerlink.animation",
+  "animationPosition" : [0, 0],
+
+	
+	"inventoryIcon" : "/objects/floran/plantbiolight/plantbiolighticon.png",
+	"orientations" : [
+		{
+			"image" : "/objects/floran/plantbiolight/plantbiolight.png:<frame>", "fullbright" : true,
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "left", "right" ]
+		},
+
+		{
+			"image" : "/objects/floran/plantbiolight/plantbiolightleft.png:<frame>", "fullbright" : true,
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "left" ]
+		},
+
+		{
+			"image" : "/objects/floran/plantbiolight/plantbiolightright.png:<frame>", "fullbright" : true,
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "right" ]
+		},
+
+		{
+			"image" : "/objects/floran/plantbiolight/plantbiolight.png:<frame>", "fullbright" : true,
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+	
+
+	"scripts" : [ "/objects/kheAA/kheAA_containerLink/kheAA_containerLink.lua" ],
+	"scriptDelta" : 5,
+
+	"inputNodes" : [[0,0]],
+	"outputNodes" : [[1,0]],
+
+	"interval" : 5
+}

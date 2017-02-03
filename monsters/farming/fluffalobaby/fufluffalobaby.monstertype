@@ -13,10 +13,14 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
 
-    "persistent" : false,
+  "tickEvoTime" : 5,
+  "evolutions" : [ "/scripts/golemancer/evolutions/fluffalobabygrow.evo" ],
+
+    "persistent" : true,
 
     "behavior" : "farmablebaby",
 
@@ -97,7 +101,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "capturedMonsterType" : "fluffalobaby", 
+    "capturedMonsterType" : "fluffalobaby",
     "nametagColor" : [64, 200, 255]
   }
 }

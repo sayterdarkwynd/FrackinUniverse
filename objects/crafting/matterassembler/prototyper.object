@@ -1,0 +1,196 @@
+{
+  "objectName" : "prototyper",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "combat", "laser" ],
+  "rarity" : "Essential",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "breakDropOptions" : [],
+
+  "price" : 50,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+              
+  "pickupQuestTemplates" : [ "fuquest_prototyper" ],
+  
+  "animation" : "prototyper.animation",
+  "animationPosition" : [0, 28],
+
+  "inventoryIcon" : "prototyper1icon.png",
+  "placementImage" : "prototyper1.png:default.default",
+  "placementImagePosition" : [-28, 0],    
+
+  "description" : "Craft all sorts of complex gear",
+  "shortdescription" : "^orange;Machining Table^white;",
+
+  "learnBlueprintsOnPickup" : [],
+ 
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "machiningtable",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "prototyper1icon.png",
+        "placementImage" : "prototyper1.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "Craft all sorts of complex gear",
+        "shortdescription" : "^orange;Machining Table^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/prototyper.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Machining Table",
+            "subtitle" : " ^#b9b5b2;Create complex gear",
+            "icon" : {
+              "file" : "/interface/crafting/craftingmatterassembler1.png"
+            }
+          }
+        },
+
+        "filter" : [ "prototyper1" ],
+        "initialRecipeUnlocks" : [ "cog", "laserdiode", "wiretoolfu", "fu_alternatorgenerator", "fu_woodensifter", "circuitboard", "coil", "electromagnet", "wire", "microscope", "magneticshielding", "handmill", "nanofabricator", "armory", "designlab", "sproutingtable", "fu_growingtray", "farmwell", "eggincubator", "heavypipe"  ],
+        "upgradeMaterials" : [
+          { "item" : "tungstenbar", "count" : 10 },
+          { "item" : "circuitboard", "count" : 2 },
+          { "item" : "coil", "count" : 6 }
+        ]
+      },
+      "craftingSound" : "/sfx/interface/crafting_anvil.ogg",
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "autoassembler",
+
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "prototyper2icon.png",
+        "placementImage" : "prototyper2.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "Create more complicated gear",
+        "shortdescription" : "^orange;Auto-Assembler^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/prototyper.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Auto-Assembler",
+            "subtitle" : " ^#b9b5b2;Complex gear",
+            "icon" : {
+              "file" : "/interface/crafting/craftingmatterassembler2.png"
+            }
+          }
+        },
+        "filter" : [ "prototyper1", "prototyper2" ],
+        "initialRecipeUnlocks" : [  "apexcoolshelf2",  "apexpod2", "electronmicroscope", "titaniumwallblockmaterial", "speedblockmaterial", "jumpblockmaterial", "extractionlab" ],
+        "upgradeMaterials" : [
+          { "item" : "titaniumbar", "count" : 6 },
+          { "item" : "cpu", "count" : 2 },
+          { "item" : "glass", "count" : 10 },
+          { "item" : "ff_plastic", "count" : 5 }
+        ]
+      },
+
+      "learnBlueprintsOnPickup" : [ ],
+      "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg",
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "matterassembler",
+
+      "itemSpawnParameters" : {
+        "price" : 750,
+        "inventoryIcon" : "prototyper3icon.png",
+        "placementImage" : "prototyper3lit.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "Create advanced technology",
+        "shortdescription" : "^orange;Matter Assembler^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/prototyper.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Matter Assembler",
+            "subtitle" : " ^#b9b5b2;Advanced technology",
+            "icon" : {
+              "file" : "/interface/crafting/craftingmatterassembler3.png"
+            }
+          }
+        },
+        "filter" : [ "prototyper1", "prototyper2", "prototyper3" ],
+        "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg",
+        "initialRecipeUnlocks" : [ "clonelab", "xenostation", "gravgen", "antigravgen", "fu_craftinfo", "powerstation"  ]
+      },
+
+      "learnBlueprintsOnPickup" : []
+    }
+  ],
+
+  "orientations" : [
+    {
+      "image" : "prototyper1.png:default.<frame>",
+      "imagePosition" : [-28, 0],    
+      "direction" : "left",
+      "flipImages" : true,
+      "spaces" : [
+        [-4, 6],[-3, 6], [-2, 6], [-1, 6], [0, 6], [1, 6], [2, 6],[3, 6],
+        [-4, 5],[-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5],[3, 5],
+        [-4, 4],[-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4],[3, 4],
+        [-4, 3],[-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3],[3, 3],
+        [-4, 2],[-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],[3, 2],
+        [-4, 1],[-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],[3, 1],
+        [-4, 0],[-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0],[3, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "prototyper1.png:default.<frame>",
+      "imagePosition" : [-28, 0],    
+      "direction" : "right",
+      "spaces" : [
+        [-4, 6],[-3, 6], [-2, 6], [-1, 6], [0, 6], [1, 6], [2, 6],[3, 6],
+        [-4, 5],[-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5],[3, 5],
+        [-4, 4],[-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4],[3, 4],
+        [-4, 3],[-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3],[3, 3],
+        [-4, 2],[-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],[3, 2],
+        [-4, 1],[-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],[3, 1],
+        [-4, 0],[-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0],[3, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }  
+}

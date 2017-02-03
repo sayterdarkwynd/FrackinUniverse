@@ -1,8 +1,9 @@
 require "/scripts/fu_storageutils.lua"
+require "/scripts/kheAA/transferUtil.lua"
+local deltaTime=0
 
-function init(virtual)
-	if virtual == true then return end
-	
+function init()
+	transferUtil.init()
 	object.setInteractive(true)
 	
 	storage.currentinput = nil
@@ -16,6 +17,12 @@ function init(virtual)
 end
 
 function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
   self.orerandom = math.random(1,2)
   self.timer = self.timer - dt
   if self.timer <= 0 then

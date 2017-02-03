@@ -1,6 +1,6 @@
 require "/scripts/util.lua"
 
-function init(args)
+function init()
   self.dead = false
   self.targetId = nil
 

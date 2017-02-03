@@ -1,4 +1,3 @@
-require "/stats/player_primary.lua"
 require "/scripts/mementomori.lua"
 
 if not _mm_wrapped then

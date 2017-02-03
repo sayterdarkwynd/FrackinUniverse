@@ -1,9 +1,9 @@
 {
-  "objectName" : "bees_ironcentrifuge",
+  "objectName" : "ironcentrifuge",
   "colonyTags" : [ "hive", "bees", "machines" ],
   "printable" : false,
   "rarity" : "rare",
-  "description" : "Extract items from combs! More efficient than the wooden centrifuge.",
+  "description" : "Extract items from combs! More efficient than the wooden centrifuge. Requires 2u power.",
   "shortdescription" : "^orange;Iron Centrifuge^white;",
   "subtitle" : "Extract items from combs.",
   "race" : "generic",
@@ -31,7 +31,7 @@
     "centrifuge" : "ironcentrifuge.png"
   },
 
-  "scripts" : [ "/objects/bees/centrifuge.lua" ],
+  "scripts" : [ "/objects/bees/woodencentrifuge/centrifuge.lua" ],
   "scriptDelta" : 50,
   "recipeGroup" : "ironcentrifuge",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
@@ -42,12 +42,19 @@
 
   "craftDelay" : 2,
   "itemChances": {
-	"rarest": 0.4,
-	"rare": 0.45,
-	"uncommon": 0.7,
-	"normal": 0.8,
-	"common": 0.9
+	"rarest": 0.05,
+	"rare": 0.15,
+	"uncommon": 0.4,
+	"normal": 0.6,
+	"common": 0.7
   },
 
-  "inputSlot": 1
+  "inputSlot": 1,
+  
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+  
+  "centrifugeLiquid" : "1",  
+  "isn_powerReciever" : true,
+  "isn_requiredPower" : 2
 }

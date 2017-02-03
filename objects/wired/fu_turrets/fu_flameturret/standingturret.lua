@@ -1,8 +1,8 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
 
-function init(virtual)
-  if not virtual then
+function init()
+  if true then
     -- Positions and angles
     self.baseOffset = config.getParameter("baseOffset")
     self.basePosition = vec2.add(object.position(), self.baseOffset)

@@ -1,5 +1,5 @@
-function init(virtual)
-	if virtual == true then return end
+function init()
+	
 	storage.active = storage.active or false
 end
 

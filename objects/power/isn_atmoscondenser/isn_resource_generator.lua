@@ -1,12 +1,22 @@
 require "/scripts/util.lua"
+require "/scripts/kheAA/transferUtil.lua"
+local deltaTime=0
 
-function init(args)
+function init()
+  transferUtil.init()
   object.setInteractive(true)
   self.timer = 1
 end
 
 function update(dt)
 self.timer = self.timer - dt
+
+if deltaTime > 1 then
+	deltaTime=0
+	transferUtil.loadSelfContainer()
+else
+	deltaTime=deltaTime+dt
+end
 
 if self.timer <= 0 then
 

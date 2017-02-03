@@ -1,11 +1,10 @@
 {
   // If you alter scriptDelta or craftDelay then set the honey jarrer's scriptDelta to the product of these
-
-  "objectName" : "bees_industrialcentrifuge",
+  "objectName" : "industrialcentrifuge",
   "colonyTags" : [ "hive", "bees", "machines" ],
   "printable" : false,
   "rarity" : "rare",
-  "description" : "Extract items from combs! More efficient than the iron centrifuge.",
+  "description" : "Extract items from combs! More efficient than the iron centrifuge. Requires 8u power.",
   "shortdescription" : "^orange;Industrial Centrifuge^white;",
   "subtitle" : "Extract items from combs.",
   "race" : "generic",
@@ -33,7 +32,10 @@
     "centrifuge" : "industrialcentrifuge.png"
   },
 
-  "scripts" : [ "/objects/bees/centrifuge.lua", "/objects/bees/honeymap.lua" ],
+  "scripts" : [ "/objects/bees/centrifuge.lua", 
+                "/objects/bees/honeymap.lua",  
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 25,
   "recipeGroup" : "industrialcentrifuge",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
@@ -51,5 +53,12 @@
 	"common": 0.95
   },
 
-  "inputSlot": 1
+  "inputSlot": 1,
+  
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+  
+  "centrifugeIso" : "1",  
+  "isn_powerReciever" : true,
+  "isn_requiredPower" : 8
 }
