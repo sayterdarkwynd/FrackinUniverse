@@ -27,6 +27,34 @@
             "cycle" : 0.5,
             "mode" : "loop"
           },
+          "babyeat" : {
+            "frames" : 4,
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "babychew",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              "persistentSoundStopTime" : 1.0,
+              "particleEmittersOff" : [ "spindust" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/smallbiped/canine_small_pain1.ogg", "", "/sfx/melee/bite_kill.ogg"]
+            }               
+          }, 
+          "babychew" : {
+            "frames" : 8,
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              "persistentSoundStopTime" : 1.0,
+              "particleEmittersOff" : [ "spindust" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/melee/bite.ogg", "", "/sfx/melee/bite.ogg", "", "/sfx/melee/bite.ogg", "", "/sfx/melee/bite.ogg", "" ]
+            }            
+          },          
           "chargewindup" : {
             "frames" : 3,
             "cycle" : 0.5,
@@ -141,14 +169,24 @@
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:fall.<frame>"
               }
             },
+            "babyeat" : {
+              "properties" : {
+                "image" : "<partImage>:babyeat.<frame>"
+              }
+            },
+            "babychew" : {
+              "properties" : {
+                "image" : "<partImage>:babychew.<frame>"
+              }
+            },            
             "roarwindup" : {
               "properties" : {
                 "image" : "<partImage>:roarwindup.<frame>"
@@ -269,6 +307,7 @@
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
-    "fire" : [ "/sfx/weapons/soundwave.ogg" ]
+    "fire" : [ "/sfx/weapons/soundwave.ogg" ],
+    "fire2" : [ "/sfx/projectiles/bloodvomit1.ogg" ]
   }
 }
