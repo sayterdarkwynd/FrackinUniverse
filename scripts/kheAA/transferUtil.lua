@@ -78,10 +78,10 @@ function transferUtil.routeItems()
 				end
 			end
 
-			if not transferUtil.zoneAwake(sourceRect) then
+			if not transferUtil.zoneAwake(sourceRect) == true then
 				return
 			end
-			if not transferUtil.zoneAwake(targetRect) then
+			if not transferUtil.zoneAwake(targetRect) == true then
 				return
 			end
 			local sourceItems=world.containerItems(sourceContainer)
@@ -437,14 +437,15 @@ function transferUtil.getCategory(item)
 end
 
 function transferUtil.zoneAwake(targetRect)
-	--dbg({"pos",targetRect,"active",world.regionActive(targetRect)})
 	if not world.regionActive(targetRect) then
 		world.loadRegion(targetRect)
+	else
+		return true
 	end
 	if not world.regionActive(targetRect) then
 		return false
 	else
-		return true
+		return nil
 	end
 end
 
