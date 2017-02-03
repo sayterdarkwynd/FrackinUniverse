@@ -1,0 +1,180 @@
+{
+	"objectName" : "aex",
+	"colonyTags" : [],
+	"rarity" : "Legendary",
+	"printable" : false,
+	"description" : "Pull the augments right out.",
+	"shortdescription" : "^orange;Augment Extractor^white;",
+	"race" : "generic",
+	"category" : "storage",
+	"price" : 750,
+	"health" : 1.5,
+
+	"objectType" : "container",
+	"slotCount" : 2,
+	"uiConfig" : "/interface/objectcrafting/aex.config",
+	"subtitle" : "For augments",
+	"frameCooldown" : 5,
+	"autoCloseCooldown" : 3600,
+	"scripts" : [ "aex.lua"],
+
+	"apexDescription" : "Machines like these are used to extract augments.",
+	"avianDescription" : "How useful, I can extract any augments I want with this.",
+	"floranDescription" : "Floran can exsstract augmentss with this.",
+	"glitchDescription" : "Impressed. This device can extract any augment.",
+	"humanDescription" : "I can use this to extract any augment. Neat!",
+	"hylotlDescription" : "Such things are useful for extracting augments.",
+	"novakidDescription" : "I can use this here gadget to get back my augments.",
+	
+	"lightColor" : [38, 114, 128],
+	"lightPosition" : [0, 1],
+
+	"flickerPeriod" : 1.2,
+	"flickerMinIntensity" : 0.95,
+	"flickerMaxIntensity" : 1.00,
+	"flickerPeriodVariance" : 0.0,
+	"flickerIntensityVariance" : 0.0,
+
+	"inventoryIcon" : "aexicon.png",
+
+	"animation" : "/objects/augmentextractor/aex.animation",
+	"animationParts" : {
+		"aex" : "aex.png",
+		"aexlit" : "aexlit.png"
+	},
+	"animationPosition" : [-6, 0],
+
+	"orientations" : [
+		{
+			"imageLayers" : [ { "image" : "aex.png:off.<frame>", "fullbright" : true }, { "image" : "aexlit.png:off.<frame>" } ],
+			"imagePosition" : [-6, 0],
+
+			"direction" : "left",
+			"flipImages" : true,
+
+			"frames" : 1,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"imageLayers" : [ { "image" : "aex.png:off.<frame>", "fullbright" : true }, { "image" : "aexlit.png:off.<frame>" } ],
+			"imagePosition" : [-6, 0],
+
+			"direction" : "right",
+			
+			"frames" : 1,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+	
+	"augmentMap" : {
+		"energy1"			:	"energyaugment1",
+		"energy2"			:	"energyaugment2",
+		"energy3"			:	"energyaugment3",
+		
+		"healing1"			:	"healingaugment1",
+		"healing2"			:	"healingaugment2",
+		"healing3"			:	"healingaugment3",
+		
+		"light1"			:	"lightaugment1",
+		"light2"			:	"lightaugment2",
+		"light3"			:	"lightaugment3",
+		
+		"damage1"			:	"damageaugment1",
+		"damage2"			:	"damageaugment2",
+		"damage3"			:	"damageaugment3",
+		
+		"health1"			:	"healthaugment1",
+		"health2"			:	"healthaugment2",
+		"health3"			:	"healthaugment3",
+		
+		"poisonblock"		:	"poisonblockaugment",
+		"electricblock"		:	"electricblockaugment",
+		"fireblock"			:	"fireblockaugment",
+		"iceblock"			:	"iceblockaugment",
+
+		"mobility"			:	"mobilityaugment",
+		"speed"				:	"speedaugment",
+		"swimming"			:	"swimaugment",
+		"thorns"			:	"thornsaugment",
+		"lowgrav"			:	"gravityaugment",
+		"jump"				:	"jumpaugment",
+		
+		"fuacidaugment1"	:	"fuacidaugment1",
+		"fubreathaugment1"	:	"fubreathaugment1",
+		"fucoldaugment1"	:	"fucoldaugment1",
+		"fucoldaugment2"	:	"fucoldaugment2",
+		"fuheataugment1"	: 	"fuheataugment1",
+		"fuheataugment2"	:	"fuheataugment2",
+		"insanityimmunityaug" : "insanityimmunityaug",
+		"furadaugment1"		:	"furadaugment1",
+		"furadaugment2"		:	"furadaugment2",
+		"futotalimmunity1"	:	"futotalimmunity1",
+		"futotalimmunity2"	:	"futotalimmunity2",
+		
+		"feedaugment1"		:	"feedaugment1",
+		"feedaugment2"		:	"feedaugment2",
+		"feedaugment3"		:	"feedaugment3",
+		
+		"furegenaugment1"	:	"furegenaugment1",
+		"furegenaugment2"	:	"furegenaugment2",
+		"furegenaugment3"	:	"furegenaugment3",
+		
+		"fumobility1"		:	"fumobility1",
+		"fumobility2"		:	"fumobility2",
+		"fumobility3"		:	"fumobility3",
+		
+		"fuwaterwalk"		:	"fuwaterwalk",
+		
+		"fudefenseaugment1"	:	"fudefenseaugment1",
+		"fudefenseaugment2"	:	"fudefenseaugment2",
+		"fudefenseaugment3"	:	"fudefenseaugment3",
+		"fudefenseaugment4"	:	"fudefenseaugment4"
+	},
+	
+	"collarMap" : {
+		"bouncycollar"	: "bouncycollar",
+		
+		"healing1"		: "healingcollar1",
+		"healing2"		: "healingcollar2",
+		"healing3"		: "healingcollar3",
+		
+		"health1"		: "healthcollar1",
+		"health2"		: "healthcollar2",
+		"health3"		: "healthcollar3",
+		
+		"damage1"		: "damagecollar1",
+		"damage2"		: "damagecollar2",
+		"damage3"		: "damagecollar3",
+		
+		"icebomb"		: "icebombcollar",
+		"poisonbomb"	: "poisonbombcollar",
+		"electricbomb"	: "electricbombcollar",
+		"firebomb"		: "firebombcollar",
+		
+		"ghostly"		: "ghostlycollar",
+		
+		"oblivious"		: "obliviouscollar",
+		
+		"lowgravcollar"	: "lowgravcollar",
+		"shadowcollar"	: "shadowcollar",
+		"slaughterbite"	: "slaughterbite",
+		"swimcollar"	: "swimcollar"
+	},
+	
+	"reelMap" : {
+		"fast" 		: "fishingreelfast",
+		"strong"	: "fishingreelstrong",
+		"long"		: "fishingreellong"
+	},
+	
+	"lureMap" :{
+		"control"	: "fishinglurecontrol",
+		"light"		: "fishinglurelight",
+		"sinking"	: "fishingluresinking"
+	}
+	
+}
