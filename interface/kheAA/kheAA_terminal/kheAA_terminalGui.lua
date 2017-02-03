@@ -9,10 +9,10 @@ function init()
 	items = {};
 	deltatime=30;
 	pos = world.entityPosition(pane.containerEntityId());
-	initialized = false;
 	widget.addListItem("scrollArea.itemList")
 	filterText = "";
 	widget.focus("filterBox")
+	refresh()
 end
 
 
@@ -42,25 +42,33 @@ end
 
 function refresh()
 	if storage==nil then
-		return
+		init()
 	end
+	
+	local blankList=false
 	if storage.inContainers==nil then
-		return
-	end
-	if util.tableSize(storage.inContainers) == 0 then
-		return
+		blankList=true
+	elseif util.tableSize(storage.inContainers) == 0 then
+		blankList=true
 	end
 	items={};
-	for x,_ in pairs(storage.inContainers) do
-		containerFound(x)
+	if not blankList then
+		for entId,rectPos in pairs(storage.inContainers) do
+			containerFound(entId,posRect)
+		end
 	end
+	refreshList()
 end
 
-function containerFound(containerID)
+function containerFound(containerID,posRect)
+	if containerID == nil then return false end
+	--if not world.regionActive(rectPos) then return false end
+	if not world.entityExists(containerID) then return false end
+	
 	local containerItems = world.containerItems(containerID)
-	for i,v in pairs(containerItems) do
-		local conf = root.itemConfig(v, v.level or nil, v.seed or nil)
-		table.insert(items, {{containerID, i}, v, conf})
+	for index,item in pairs(containerItems) do
+		local conf = root.itemConfig(item, item.level or nil, item.seed or nil)
+		table.insert(items, {{containerID, index}, item, conf,posRect})
 	end
 	refreshList()
 	return true;
@@ -122,9 +130,9 @@ end
 function request()
 	local selected = widget.getListSelected(itemList)
 	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-		world.sendEntityMessage(pane.containerEntityId(), "transferItem", listItems[selected][1])
 		for i = 1, #items do
 			if items[i] == listItems[selected] then
+				world.sendEntityMessage(pane.containerEntityId(), "transferItem",items[i])
 				table.remove(items, i);
 				refreshList();
 				return;

@@ -12,9 +12,12 @@ function update()
 	transferUtil.updateInputs(inDataNode)
 end
 
-function transferItem(_, _, location)
-	local source = location[1];
-	local slot = location[2];
+function transferItem(_, _, itemData)
+	--itemData={containerID, index}, item, conf,posRect
+	local source = itemData[1][1];
+	local sourceRect=itemData[4]
+	local slot = itemData[1][2];
+	if not transferUtil.zoneAwake(sourceRect) then return end
 	if world.entityExists(source) then
 		local item = world.containerTakeAt(source, slot - 1);
 		if item ~= nil then

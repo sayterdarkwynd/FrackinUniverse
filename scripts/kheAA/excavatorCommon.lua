@@ -84,7 +84,6 @@ function excavatorCommon.cycle(dt)
 end
 
 function states.start(dt)
-	storage.inContainers[entity.id()]=0
 	if storage.isDrill then
 		storage.state="moveDrillBar"
 	else
@@ -160,6 +159,19 @@ function states.movePump(dt)
 end
 
 
+
+function excavatorCommon.grab(grabPos)
+	local drops = world.itemDropQuery(grabPos,5);
+	for i = 1, #drops do
+		local item = world.takeItemDrop(drops[i]);
+		if item~=nil then
+			transferUtil.throwItemsAt(storage.containerId,storage.inContainers[storage.containerId],item,true)
+		end
+	end
+end
+
+
+
 function states.mine(dt)
 	if deltatime < 0.1 then
 		return;
@@ -170,12 +182,7 @@ function states.mine(dt)
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=2
-				local drops = world.itemDropQuery(redrillPosFore,5);
-				for i = 1, #drops do
-					local item = world.takeItemDrop(drops[i]);
-					if item then transferUtil.tryFitOutput(storage.containerId,item,true)
-					end
-				end
+				excavatorCommon.grab(redrillPosFore)
 				return
 			else
 				reDrillLevelFore=0
@@ -185,12 +192,7 @@ function states.mine(dt)
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=0
-				local drops = world.itemDropQuery(redrillPosFore,5);
-				for i = 1, #drops do
-					local item = world.takeItemDrop(drops[i]);
-					if item then transferUtil.tryFitOutput(storage.containerId,item,true)
-					end
-				end
+				excavatorCommon.grab(redrillPosFore)
 				return
 			else
 				reDrillLevelFore=0
@@ -203,12 +205,7 @@ function states.mine(dt)
 			if world.material(redrillPosBack,"background") then
 				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=2
-				local drops = world.itemDropQuery(redrillPosBack,5);
-				for i = 1, #drops do
-					local item = world.takeItemDrop(drops[i]);
-					if item then transferUtil.tryFitOutput(storage.containerId,item,true)
-					end
-				end
+				excavatorCommon.grab(redrillPosBack)
 				return
 			else
 				reDrillLevelBack=0
@@ -218,12 +215,7 @@ function states.mine(dt)
 			if world.material(redrillPosBack,"background") then
 				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=0
-				local drops = world.itemDropQuery(redrillPosBack,5);
-				for i = 1, #drops do
-					local item = world.takeItemDrop(drops[i]);
-					if item then transferUtil.tryFitOutput(storage.containerId,item,true)
-					end
-				end
+				excavatorCommon.grab(redrillPosBack)
 				return
 			else
 				reDrillLevelBack=0
@@ -232,7 +224,7 @@ function states.mine(dt)
 		end
 	end
 
-	local absdrillPos = transferUtil.getAbsPos(storage.drillPos);
+	local absdrillPos = transferUtil.getAbsPos(storage.drillPos,storage.position);
 	if (storage.position[2]-absdrillPos[2]) > storage.drillRange then
 		drillAnimReset()
 		drillReset()
@@ -269,13 +261,7 @@ function states.mine(dt)
 	storage.drillTarget = excavatorCommon.getNextDrillTarget();
 	deltatime=0.1
 	storage.state = "moveDrill";
-
-	local drops = world.itemDropQuery(transferUtil.getAbsPos(storage.drillPos),	5);
-	for i = 1, #drops do
-		local item = world.takeItemDrop(drops[i]);
-		if item then transferUtil.tryFitOutput(storage.containerId,item,true)
-		end
-	end
+	excavatorCommon.grab(absdrillPos)
 	
 end
 
@@ -286,7 +272,7 @@ function states.pump(dt)
 	deltatime = 0;
 
 	--###world.forceDestroyLiquid()
-	local liquid = world.destroyLiquid(transferUtil.getAbsPos({storage.facing, storage.depth}));
+	local liquid = world.destroyLiquid(transferUtil.getAbsPos({storage.facing, storage.depth},storage.position));
 	if liquid ~= nil then
 		if storage.liquids[liquid[1]] == nil then
 			storage.liquids[liquid[1]] = 0;
@@ -298,12 +284,13 @@ function states.pump(dt)
 		for k,v in pairs(storage.liquids) do
 			if v >= 1 then
 				if liquidLib.liquidIds[k] ~= nil then
-					local try,count=transferUtil.tryFitOutput(entity.id(),{name = liquidLib.liquidIds[k], count = 1})
+					local try,count=transferUtil.throwItemsAt(storage.containerId,storage.inContainers[storage.containerId],{name = liquidLib.liquidIds[k], count = 1})
 					if try then
 						storage.liquids[k] = storage.liquids[k] - count;
 						break
 					end
 				else
+				--BLOATY!
 					local tempList=object.getOutputNodeIds(outLiquidNode)
 					if #tempList > 0 then
 						local outputPipes={}
@@ -332,6 +319,7 @@ function states.pump(dt)
 				storage.liquids[k]=storage.liquids[k]+1
 			end
 		end
+		--NEED TO REFINE THIS! seriously bloaty.
 		for k,v in pairs(storage.liquids) do
 			local tempList=object.getOutputNodeIds(outLiquidNode)
 			if #tempList > 0 then
@@ -343,7 +331,7 @@ function states.pump(dt)
 					end
 				end
 				if #outputPipes>0 then
-					local outputPipe=transferUtil.nearest(entity.id(),outputPipes)
+					local outputPipe=transferUtil.nearest(storage.containerId,storage.inContainers[storage.containerId],outputPipes)
 					world.callScriptedEntity(outputPipe,"liquidLib.receiveLiquid",{k,1})
 					storage.liquids[k]=v-1
 				end
@@ -351,7 +339,7 @@ function states.pump(dt)
 			end
 		end
 	end
-	if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 1}), "foreground") then
+	if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 1},storage.position), "foreground") then
 		return;
 	end
 	if liquid == nil then
