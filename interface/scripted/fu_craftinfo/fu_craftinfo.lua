@@ -52,8 +52,8 @@ function init()
 		} -- input: output, input: {outputs}
 	end
 
-	centrifuge = getLists("centrifuge")
-	centrifuge2 = getLists("centrifuge2")
+	-- centrifuge = getLists("centrifuge")
+	-- centrifuge2 = getLists("centrifuge2")
 	blastFurnace = getLists("fu_blastfurnace")
 	arcSmelter = getLists("isn_arcsmelter")
 
@@ -66,8 +66,8 @@ function init()
 		quantumextractor_roof = { map = "quantumextractor" },
 		xenostation           = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
 		xenostationadvnew        = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
-		centrifuge            = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = centrifuge },
-		centrifuge2           = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = centrifuge2 },
+		-- centrifuge            = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = centrifuge },
+		-- centrifuge2           = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = centrifuge2 },
 		fu_blastfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace },
 		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter }
 	}
@@ -78,8 +78,8 @@ function init()
 		"extractionlab",
 		"xenostationadvnew",
 		"xenostation",
-		"centrifuge2",
-		"centrifuge",
+		-- "centrifuge2",
+		-- "centrifuge",
 		"isn_arcsmelter",
 		"fu_blastfurnace"
 	}
