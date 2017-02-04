@@ -12,6 +12,9 @@ extractionLab = getRecipes() -- {inputs}, {outputs}
 require "/objects/generic/xenostation_common.lua"
 xenoLab = getRecipes() -- {inputs}, {outputs}
 
+require "/objects/generic/centrifuge_recipes.lua"
+centrifugeLab = getRecipes()  -- it's more complicated than the above two
+
 centrifuge = {}
 centrifuge2 = {}
 blastFurnace = {}
@@ -65,9 +68,12 @@ function init()
 		quantumextractor      = { mats = getExtractionMats, spew = doExtraction, data = extractionLab },
 		quantumextractor_roof = { map = "quantumextractor" },
 		xenostation           = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
-		xenostationadvnew        = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
-		-- centrifuge            = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = centrifuge },
-		-- centrifuge2           = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = centrifuge2 },
+		xenostationadvnew     = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
+		centrifuge            = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		centrifuge2           = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		industrialcentrifuge  = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		ironcentrifuge        = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		fu_blastfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace },
 		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter }
 	}
@@ -78,8 +84,11 @@ function init()
 		"extractionlab",
 		"xenostationadvnew",
 		"xenostation",
-		-- "centrifuge2",
-		-- "centrifuge",
+		"centrifuge2",
+		"centrifuge",
+		"industrialcentrifuge",
+		"ironcentrifuge",
+		"woodencentrifuge",
 		"isn_arcsmelter",
 		"fu_blastfurnace"
 	}
@@ -352,6 +361,71 @@ function concatRandom(list, guaranteed)
 	local sep = guaranteed and materials[guaranteed] and "; " or ""
 	for item, chance in pairs(list) do
 		if item ~= guaranteed and materials[item] then
+			local colour = chance <= 25
+				   and string.format("^#FF%02X00;", math.floor(chance * chance * 255 / 625))
+				    or string.format("^#%02XFF00;", math.floor((10000 - chance * chance) * 255 / 9375))
+			out = out .. sep .. itemName(item, colour)
+			sep = ', '
+		end
+	end
+	return out
+end
+
+-- Separators
+
+function getSeparatorMats(recipes, station)
+	local conf = root.itemConfig({name = station})
+	local centrifugeType = conf.config.centrifugeType
+
+	for _, recipeGroup in pairs(recipes.recipeTypes[centrifugeType]) do
+		for input, outputs in pairs(recipes[recipeGroup]) do
+			registerMaterial(input, station)
+			for output, _ in pairs(outputs) do
+				registerMaterial(output, station)
+			end
+		end
+	end
+end
+
+function doSeparate(list, recipes, itemIn, itemOut, objectName)
+	local output = false
+	local conf = root.itemConfig({name = objectName})
+	addHeadingItem(conf, list)
+	local centrifugeType = conf.config.centrifugeType
+	local recipeGroups = recipes.recipeTypes[centrifugeType]
+
+	if itemIn then
+		for i = #recipeGroups,1,-1 do
+			local recipeGroup = recipes[recipeGroups[i]]
+			if recipeGroup[itemIn] and not output then
+				output = addTextItem("=>", concatSepRandom(recipeGroup[itemIn], conf.config.itemChances), list)
+			end
+		end
+	elseif itemOut then
+		for i = #recipeGroups,1,-1 do
+			if not output then
+				local recipeGroup = recipes[recipeGroups[i]]
+				for input, outputs in pairs(recipeGroup) do
+					if outputs[itemOut] then
+						output = addTextItem("<=", input, list)
+					end
+				end
+			end
+		end
+	end
+
+	if not output then doNothing(itemIn, list) end
+end
+
+function concatSepRandom(list, chanceTable)
+	if list == nil then return "" end
+
+	local out = ""
+	local sep = ""
+	for item, chancePair in pairs(list) do
+		if materials[item] then
+			local chanceBase, chanceDivisor = table.unpack(chancePair)
+			local chance = chanceTable[chanceBase] / chanceDivisor * 100
 			local colour = chance <= 25
 				   and string.format("^#FF%02X00;", math.floor(chance * chance * 255 / 625))
 				    or string.format("^#%02XFF00;", math.floor((10000 - chance * chance) * 255 / 9375))
