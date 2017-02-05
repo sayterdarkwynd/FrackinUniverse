@@ -61,69 +61,55 @@ function transferUtil.routeItems()
 	if util.tableSize(storage.outContainers) == 0 then return end
 	
 	for sourceContainer,sourceRect in pairs(storage.inContainers) do
-		if type(sourceRect) ~= "table" then
-			return
-		else
-			if util.tableSize(sourceRect) ~= 4 then
-				return
-			end
+		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourceRect)
+		if ping1 ~= nil then
+			sourceContainer=ping1
 		end
 		local targetContainer,targetRect=transferUtil.findNearest(sourceContainer,sourceRect,storage.outContainers)
-		if targetContainer ~= nil and targetRect~= nil then
-			if type(targetRect) ~= "table" then
-				return
-			else
-				if util.tableSize(targetRect) ~= 4 then
-					return
-				end
-			end
-
-			if not transferUtil.zoneAwake(sourceRect) == true then
-				return
-			end
-			if not transferUtil.zoneAwake(targetRect) == true then
-				return
-			end
+		local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetRect)
+		if ping2 ~= nil then
+			targetContainer=ping2
+		end
+		if targetAwake == true and sourceAwake == true then
 			local sourceItems=world.containerItems(sourceContainer)
-			
-			if sourceItems==nil then return end
-			
-			for index1,item in pairs(sourceItems) do
-				if transferUtil.checkFilter(item) then
-					if transferUtil.validInputSlot(index1) then
-						local tempSize=world.containerSize(targetContainer)
-						
-						if tempSize==nil then return end
-						
-						if util.tableSize(storage.outputSlots) > 0 then
-							for index0=0,tempSize-1 do
-								if transferUtil.tFirstIndex(index0+1,storage.outputSlots) > 0 then
-									local leftOverItems=world.containerPutItemsAt(targetContainer,item,index0)
-									if leftOverItems~=nil then
-										world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count-leftOverItems.count)
-										item=leftOverItems
-										break
-									else
-										world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
-										break
+			if sourceItems ~= nil then 
+				for index1,item in pairs(sourceItems) do
+					if transferUtil.checkFilter(item) then
+						if transferUtil.validInputSlot(index1) then
+							if util.tableSize(storage.outputSlots) > 0 then
+								local tempSize=world.containerSize(targetContainer)
+								for index0=0,tempSize-1 do
+									if transferUtil.tFirstIndex(index0+1,storage.outputSlots) > 0 then
+										local leftOverItems=world.containerPutItemsAt(targetContainer,item,index0)
+										if leftOverItems~=nil then
+											world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count-leftOverItems.count)
+											item=leftOverItems
+											break
+										else
+											world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+											break
+										end
 									end
 								end
-							end
-						else
-							local leftOverItems=world.containerAddItems(targetContainer,item)
-							if leftOverItems~=nil then
-								local tempQuantity=item.count-leftOverItems.count
-								if tempQuantity > 0 then
-									world.containerTakeNumItemsAt(sourceContainer,index1-1,tempQuantity)
-									break
-								end
 							else
-								world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+								local leftOverItems=world.containerAddItems(targetContainer,item)
+								if leftOverItems~=nil then
+									local tempQuantity=item.count-leftOverItems.count
+									if tempQuantity > 0 then
+										world.containerTakeNumItemsAt(sourceContainer,index1-1,tempQuantity)
+										break
+									end
+								else
+									world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+								end
 							end
 						end
 					end
 				end
 			end
+		else
+			--dbg({"sourceContainer",sourceContainer,"sourceAwake",sourceAwake})
+			--dbg({"targetContainer",targetContainer,"targetAwake",targetAwake})
 		end
 	end
 end
@@ -437,15 +423,52 @@ function transferUtil.getCategory(item)
 end
 
 function transferUtil.zoneAwake(targetRect)
+	if type(targetRect) ~= "table" then
+		return nil
+	else
+		if util.tableSize(targetRect) ~= 4 then
+			return nil
+		end
+	end
 	if not world.regionActive(targetRect) then
 		world.loadRegion(targetRect)
 	else
 		return true
 	end
-	if not world.regionActive(targetRect) then
-		return false
+	if world.regionActive(targetRect) then
+		return true
 	else
-		return nil
+		return false
+	end
+end
+
+function transferUtil.containerAwake(targetContainer,targetRect)
+	if type(targetRect) ~= "table" then
+		return nil,nil
+	else
+		if util.tableSize(targetRect) ~= 4 then
+			return nil,nil
+		end
+	end
+	local awake=transferUtil.zoneAwake(targetRect)
+	ping=world.objectQuery({targetRect[1],targetRect[2]},{targetRect[3],targetRect[4]},{order="nearest"})
+	if ping ~= nil then
+		ping=ping[1]
+		if awake then
+			if ping ~= targetContainer then
+				if world.containerSize(ping) ~= nil then
+					return true, ping	
+				else
+					return false,nil
+				end
+			else
+				return true,nil
+			end
+		else
+			return false,nil
+		end
+	else
+		return false,nil
 	end
 end
 
