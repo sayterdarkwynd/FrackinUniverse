@@ -4,7 +4,7 @@
   "printable" : false,
   "rarity" : "rare",
   "description" : "Extract items from combs!",
-  "shortdescription" : "^orange;Wooden Centrifuge^white;",
+  "shortdescription" : "^orange;Wooden Centrifuge^reset;",
   "subtitle" : "Extract items from combs.",
   "race" : "generic",
   "category" : "crafting",
@@ -26,12 +26,13 @@
       "anchors" : [ "bottom" ]
     }
   ],
-    "animation" : "woodencentrifuge.animation",
+  "animation" : "woodencentrifuge.animation",
   "animationParts" : {
     "centrifuge" : "woodencentrifuge.png"
   },
 
-  "scripts" : [ "/objects/bees/woodencentrifuge/centrifuge.lua" ],
+  "scripts" : [ "/objects/bees/centrifuge.lua",
+                "/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 100,
   "recipeGroup" : "industrialcentrifuge",
   "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
@@ -42,15 +43,16 @@
 
   "craftDelay" : 2,
   "itemChances": {
-	"rarest": 0.05,
-	"rare": 0.10,
-	"uncommon": 0.25,
-	"normal": 0.6,
-	"common": 0.7
+    "rarest": 0.05,
+    "rare": 0.10,
+    "uncommon": 0.25,
+    "normal": 0.6,
+    "common": 0.7
   },
 
   "inputSlot": 1,
-  "centrifugeBee" : "1",
+
+  "centrifugeType" : "bees",
 
   "inputNodes" : [ [0, 1] ],
   "outputNodes" : [ [0, 0] ]
