@@ -13,18 +13,26 @@ function update()
 end
 
 function transferItem(_, _, itemData)
-	--itemData={containerID, index}, item, conf,posRect
+	dbg(itemData)
+	--itemData={containerID, index}, item, conf,pos
 	local source = itemData[1][1];
-	local sourceRect=itemData[4]
+	if type(source)=="string"then
+		source=tonumber(source)
+	end
+	local sourcePos=itemData[4]
 	local slot = itemData[1][2];
-	if not transferUtil.zoneAwake(sourceRect) then return end
-	if world.entityExists(source) then
+	local awake,ping=transferUtil.containerAwake(source,sourcePos)
+	if not awake==true then
+		return
+	else
+		if ping~=nil then
+			source=ping
+		end
 		local item = world.containerTakeAt(source, slot - 1);
 		if item ~= nil then
 			world.spawnItem(item, entity.position())
 		end
 	end
-
 end
 
 function transferUtil.sendConfig()

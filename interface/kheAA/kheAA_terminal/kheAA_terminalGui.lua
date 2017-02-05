@@ -53,14 +53,14 @@ function refresh()
 	end
 	items={};
 	if not blankList then
-		for entId,rectPos in pairs(storage.inContainers) do
-			containerFound(entId,posRect)
+		for entId,pos in pairs(storage.inContainers) do
+			containerFound(entId,pos)
 		end
 	end
 	refreshList()
 end
 
-function containerFound(containerID,posRect)
+function containerFound(containerID,pos)
 	if containerID == nil then return false end
 	--if not world.regionActive(rectPos) then return false end
 	if not world.entityExists(containerID) then return false end
@@ -68,7 +68,7 @@ function containerFound(containerID,posRect)
 	local containerItems = world.containerItems(containerID)
 	for index,item in pairs(containerItems) do
 		local conf = root.itemConfig(item, item.level or nil, item.seed or nil)
-		table.insert(items, {{containerID, index}, item, conf,posRect})
+		table.insert(items, {{containerID, index}, item, conf,pos})
 	end
 	refreshList()
 	return true;
