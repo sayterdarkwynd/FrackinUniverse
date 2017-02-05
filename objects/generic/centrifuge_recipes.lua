@@ -52,7 +52,8 @@ function getRecipes()
     itemMapLiquids = {
         liquidwater         = { liquidwastewater       = { "common", 1 },
                                fu_hydrogen             = { "normal", 2 },
-                               fu_oxygen               = { "normal", 2 } },
+                               fu_oxygen               = { "normal", 2 },
+                               deuterium               = { "rarest", 1 }},
         liquidpoison        = { liquidwastewater       = { "common", 2 },
                                fu_carbon               = { "normal", 1 },
                                toxicwaste              = { "common", 2 } },
