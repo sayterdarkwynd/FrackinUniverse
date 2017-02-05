@@ -27,8 +27,8 @@ end
 
 function transferUtil.initTypes()
 	transferUtil.itemTypes={}
-	transferUtil.itemTypes["generic"]={"foodjunk","junk","other","vehiclecontroller","generic", "coin", "celestialitem","quest"} 
-	transferUtil.itemTypes["treasure"]={"bug","tech","techmanagement","largefossile","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"}
+	transferUtil.itemTypes["generic"]={"foodjunk","junk","other","generic","quest","tech"} 
+	transferUtil.itemTypes["treasure"]={"coin", "celestialitem","vehiclecontroller","bug","largefossile","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"}
 	transferUtil.itemTypes["material"]={"block","liquid","platform","breakable"} 
 	transferUtil.itemTypes["rail"]={"rail","railplatform","railpoint"} 
 	transferUtil.itemTypes["tool"]={"tool","fishingrod","miningtool","flashlight","wiretool","beamminingtool","tillingtool","paintingbeamtool","harvestingtool","musicalinstrument","grapplinghook","thrownitem"}
@@ -39,7 +39,7 @@ function transferUtil.initTypes()
 	transferUtil.itemTypes["books"]={"blueprint", "codex"}
 	transferUtil.itemTypes["augments"]={"eppaugment","fishinglure","fishingreel","petcollar","clothingdye"}
 	transferUtil.itemTypes["reagents"]={"craftingmaterial","cookingingredient","fuel"}
-	transferUtil.itemTypes["building"]={"crafting","machinery","spawner","terraformer","trap","wire","light","furniture","decorative","door","fridgestorage","teleporter","teleportmarker","shippingcontainer","storage"}
+	transferUtil.itemTypes["building"]={"techmanagement","crafting","machinery","spawner","terraformer","trap","wire","light","furniture","decorative","door","fridgestorage","teleporter","teleportmarker","shippingcontainer","storage"}
 	transferUtil.itemTypes["farming"]={"seed","sapling","farmbeastegg","farmbeastfood","farmbeastfeed"}
 end
 
