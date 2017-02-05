@@ -2,18 +2,17 @@ require "/scripts/util.lua"
 transferUtil={}
 disabled=false
 unhandled={}
---util.tableSize()
 transferUtil.itemTypes = nil
 
 --[[
-
-if deltaTime > 1 then
-	deltaTime=0
-	transferUtil.loadSelfContainer()
-else
-	deltaTime=deltaTime+dt
+function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 end
-
 ]]
 
 function transferUtil.init()
@@ -43,30 +42,18 @@ function transferUtil.initTypes()
 	transferUtil.itemTypes["farming"]={"seed","sapling","farmbeastegg","farmbeastfood","farmbeastfeed"}
 end
 
-function transferUtil.loadSelfContainer()
-	storage.containerId=entity.id()
-	storage.inContainers={}
-	storage.outContainers={}
-	local tempRect=transferUtil.spacePos2Rect(world.objectSpaces(storage.containerId),storage.position)
-	storage.inContainers[storage.containerId]=tempRect
-	storage.outContainers[storage.containerId]=tempRect
-end
-
-function transferUtil.getAbsPos(position,pos)
-	return {world.xwrap(pos[1] + position[1]), pos[2] + position[2]};
-end
 
 function transferUtil.routeItems()
 	if util.tableSize(storage.inContainers) == 0 then return end
 	if util.tableSize(storage.outContainers) == 0 then return end
 	
-	for sourceContainer,sourceRect in pairs(storage.inContainers) do
-		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourceRect)
+	for sourceContainer,sourcePos in pairs(storage.inContainers) do
+		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
 		if ping1 ~= nil then
 			sourceContainer=ping1
 		end
-		local targetContainer,targetRect=transferUtil.findNearest(sourceContainer,sourceRect,storage.outContainers)
-		local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetRect)
+		local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
+		local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
 		if ping2 ~= nil then
 			targetContainer=ping2
 		end
@@ -108,19 +95,81 @@ function transferUtil.routeItems()
 				end
 			end
 		else
-			--dbg({"sourceContainer",sourceContainer,"sourceAwake",sourceAwake})
-			--dbg({"targetContainer",targetContainer,"targetAwake",targetAwake})
+			--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
 		end
 	end
 end
 
 
-function transferUtil.throwItemsAt(target,targetRect,item,drop)
-	if target==nil then --handling for stupid shit. really shouldn't happen.
+function transferUtil.containerAwake(targetContainer,targetPos)
+	if type(targetPos) ~= "table" then
+		return nil,nil
+	elseif util.tableSize(targetPos) > 2 then
+		targetPos={targetPos[1],targetPos[2]}
+	elseif util.tableSize(targetPos)<2 then
+		return nil,nil
+	end
+	local awake=transferUtil.zoneAwake(transferUtil.pos2Rect(targetPos,0.1))
+	if awake==nil then
+		return nil,nil
+	elseif awake then
+		ping=world.objectAt(targetPos)
+		if ping ~= nil then
+			if ping ~= targetContainer then
+				if world.containerSize(ping) ~= nil then
+					return true, ping	
+				else
+					return false,nil
+				end
+			else
+				return true,nil
+			end
+		else
+			return false,nil
+		end
+	end
+	return nil,nil
+end
+
+function transferUtil.zoneAwake(targetBox)
+	if type(targetBox) ~= "table" then
+		dbg({"zoneawake failure, invalid input:",targetBox})
+		return nil
+	else
+		if util.tableSize(targetBox) ~= 4 then
+			dbg({"zoneawake failure, invalid input:",targetBox})
+			return nil
+		end
+	end
+	if not world.regionActive(targetBox) then
+		world.loadRegion(targetBox)
+	else
+		return true
+	end
+	if world.regionActive(targetBox) then
+		return true
+	else
+		return false
+	end
+end
+
+
+function transferUtil.throwItemsAt(target,targetPos,item,drop)
+	if target==nil and targetPos == nil then --handling for stupid shit. really shouldn't happen.
 		world.spawnItem(item,entity.position())
 		return true,item.count
-	elseif not transferUtil.zoneAwake(targetRect) then
+	elseif util.tableSize(targetPos) ~= 2 then
+		world.spawnItem(item,entity.position())
 		return true,item.count
+	else
+		local awake,ping=transferUtil.containerAwake(target,targetPos)
+		if awake then
+			if ping ~= nil then
+				target=ping
+			end
+		else
+			return true, item.count
+		end
 	end
 	local leftOverItems = world.containerAddItems(target, item)
 	if leftOverItems == nil or leftOverItems.count ~= item.count then
@@ -128,7 +177,7 @@ function transferUtil.throwItemsAt(target,targetRect,item,drop)
 			return true, item.count
 		else
 			if drop==true then 
-				world.spawnItem(item,transferUtil.rect2Center(targetRect))
+				world.spawnItem(leftOverItems,targetPos)
 				return true, item.count
 			else
 				return true, item.count - leftOverItems.count
@@ -138,8 +187,6 @@ function transferUtil.throwItemsAt(target,targetRect,item,drop)
 	return false;
 end
 
-
-
 function transferUtil.updateInputs(dataNode)
 	storage.input={}
 	storage.inContainers={}
@@ -148,8 +195,8 @@ function transferUtil.updateInputs(dataNode)
 	for inputSource,nodeValue in pairs(storage.input) do
 		local temp=world.callScriptedEntity(inputSource,"transferUtil.sendContainerInputs")
 		if temp ~= nil then
-			for entId,posRect in pairs(temp) do
-				buffer[entId]=posRect
+			for entId,position in pairs(temp) do
+				buffer[entId]=position
 			end
 		end
 	end
@@ -164,15 +211,13 @@ function transferUtil.updateOutputs(dataNode)
 	for outputSource,nodeValue in pairs(storage.output) do
 		local temp=world.callScriptedEntity(outputSource,"transferUtil.sendContainerOutputs")
 		if temp ~= nil then
-			for entId,posRect in pairs(temp) do
-				buffer[entId]=posRect
+			for entId,position in pairs(temp) do
+				buffer[entId]=position
 			end
 		end
 	end
 	storage.outContainers=buffer
 end
-
-
 
 function transferUtil.checkFilter(item)
 	if transferUtil.itemTypes==nil then
@@ -223,87 +268,37 @@ function transferUtil.checkFilter(item)
 	return result
 end
 
-function transferUtil.findNearest(origin,originRect,targetList)
+function transferUtil.findNearest(source,sourcePos,targetList)
 	local temp=nil
 	local target=nil
 	local distance=nil
-	local targetBox=nil
-	if origin == nil or targetList == nil then
+	local targetPos=nil
+	if source == nil or targetList == nil then
+		return nil
+	elseif util.tableSize(targetList) == 0 then
 		return nil
 	end
-	local pos2=transferUtil.rect2Center(originRect,true)
-	if util.tableSize(targetList) == 0 then
-		return nil
-	end
-	for i2,posRect in pairs(targetList) do
-		if i2 ~= origin and i2 ~= nil then
-		local pos1=transferUtil.rect2Center(posRect,true)
-		temp=world.magnitude(pos1,pos2)
+	for i2,position in pairs(targetList) do
+		if i2 ~= source and i2 ~= nil then
+		temp=world.magnitude(position,sourcePos)
 			if distance==nil then
 				target=i2
-				targetBox=posRect
+				targetPos=position
 				distance=temp
 			elseif distance > temp then
 				target=i2
-				targetBox=posRect
+				targetPos=position
 				distance=temp
 			end
 		end
 	end
-	return target,targetBox
-end
-
-
-function transferUtil.spacePos2Rect(spaces,pos)
-	local minX
-	local minY
-	local maxX
-	local maxY
-	if spaces==nil then
-		return nil
-	end
-	for _,pos in pairs(spaces) do
-		if minX==nil then minX=pos[1]
-		elseif minX > pos[1] then minX=pos[1]
-		end
-		if minY==nil then minY=pos[2]
-		elseif minY > pos[2] then minX=pos[2]
-		end
-		if maxX==nil then maxX=pos[1]
-		elseif maxX < pos[1] then maxX=pos[1]
-		end
-		if maxY==nil then maxY=pos[2]
-		elseif maxY < pos[2] then maxY=pos[2]
-		end
-	end
-	return {pos[1]+minX,pos[2]+minY,pos[1]+maxX,pos[2]+maxY}
+	return target,targetPos
 end
 
 
 function transferUtil.pos2Rect(pos,size)
 	if size == nil then size = 0 end
 	return({pos[1]-size,pos[2]-size,pos[1]+size,pos[2]+size})
-end
-
-
-function transferUtil.rect2Center(rect,isFloat)
-	local buffer
-	if isFloat then
-		buffer={1.0,1.0}
-	else
-		buffer={1,1}
-	end
-	buffer[1]=buffer[1]*((rect[1]+rect[3])/2)
-	buffer[2]=buffer[2]*((rect[2]+rect[4])/2)
-	if isFloat then
-		return buffer
-	else
-		return {util.round(buffer[1],0),util.round(buffer[2],0)}
-	end
-end
-
-function transferUtil.spacePos2Center(spaces,pos)
-	return transferUtil.rect2Center(transferUtil.spacePos2Rect(spaces,pos),true)
 end
 
 function transferUtil.tFirstIndex(entry,t1)
@@ -315,12 +310,10 @@ function transferUtil.tFirstIndex(entry,t1)
 	return 0
 end
 
-
 function transferUtil.validInputSlot(slot)
 	if util.tableSize(storage.inputSlots) == 0 then return true end
 	return transferUtil.tFirstIndex(slot,storage.inputSlots)>0
 end
-
 
 
 function transferUtil.compareItems(itemA, itemB)
@@ -422,54 +415,16 @@ function transferUtil.getCategory(item)
 	return string.lower(item.name)
 end
 
-function transferUtil.zoneAwake(targetRect)
-	if type(targetRect) ~= "table" then
-		return nil
-	else
-		if util.tableSize(targetRect) ~= 4 then
-			return nil
-		end
-	end
-	if not world.regionActive(targetRect) then
-		world.loadRegion(targetRect)
-	else
-		return true
-	end
-	if world.regionActive(targetRect) then
-		return true
-	else
-		return false
-	end
+function transferUtil.loadSelfContainer()
+	storage.containerId=entity.id()
+	storage.inContainers={}
+	storage.outContainers={}
+	storage.inContainers[storage.containerId]=storage.position
+	storage.outContainers[storage.containerId]=storage.position
 end
 
-function transferUtil.containerAwake(targetContainer,targetRect)
-	if type(targetRect) ~= "table" then
-		return nil,nil
-	else
-		if util.tableSize(targetRect) ~= 4 then
-			return nil,nil
-		end
-	end
-	local awake=transferUtil.zoneAwake(targetRect)
-	ping=world.objectQuery({targetRect[1],targetRect[2]},{targetRect[3],targetRect[4]},{order="nearest"})
-	if ping ~= nil then
-		ping=ping[1]
-		if awake then
-			if ping ~= targetContainer then
-				if world.containerSize(ping) ~= nil then
-					return true, ping	
-				else
-					return false,nil
-				end
-			else
-				return true,nil
-			end
-		else
-			return false,nil
-		end
-	else
-		return false,nil
-	end
+function transferUtil.getAbsPos(position,pos)
+	return {world.xwrap(pos[1] + position[1]), pos[2] + position[2]};
 end
 
 function dbg(args)
