@@ -137,7 +137,9 @@ function getRecipes()
                                aliencompound           = { "rarest", 1 },
                                fu_hydrogen             = { "common", 2 },
                                fu_carbon               = { "common", 2 } },
-        liquidwastewater        = { liquidwater        = { "common", 1 }  }
+        liquidwastewater        = { liquidwater        = { "rare", 2 },
+				    nutrientpaste      = { "common", 1 },
+				    geneticmaterial    = { "rare", 2 }}
       },
 
     itemMapIsotopes = {
