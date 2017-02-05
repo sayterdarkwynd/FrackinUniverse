@@ -17,7 +17,7 @@ function onInteraction(args)
   if storage.waterCount and storage.waterCount > 1200 then
     storage.waterCount = 1200
   end   
-  if storage.waterCount and storage.waterCount > 50 then
+  if storage.waterCount and storage.waterCount > 49 then
     local p = object.position()
     world.spawnItem("liquidwater", p, 50)
     storage.waterCount = storage.waterCount - 50
