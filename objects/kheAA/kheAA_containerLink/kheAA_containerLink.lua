@@ -33,23 +33,6 @@ function loadContainer()
 	end
 end
 
---[[function particleBurst()
-	if storage.containerId == nil then return
-	elseif not world.regionActive(transferUtil.pos2Rect(storage.position,linkRange)) then
-		return
-	end
-	animator.setParticleEmitterOffsetRegion("lightBeam",{-1,-1,-1,-1})
-	animator.burstParticleEmitter("lightBeam")
-	local posA = storage.position
-	local posB = storage.containerPos
-	local distance=world.distance(posA,posB)
-	local step={distance[1]/0.1,distance[2]/0.1}
-	for i=0,9 do
-		animator.setParticleEmitterOffsetRegion("lightBeam",transferUtil.pos2Rect({step[1]*i,step[2]*i},1))
-		animator.burstParticleEmitter("lightBeam")
-	end
-end]]--
-
 function findContainer()
 	if storage.containerId == nil then
 		local tempRect=transferUtil.pos2Rect(storage.position,linkRange)
