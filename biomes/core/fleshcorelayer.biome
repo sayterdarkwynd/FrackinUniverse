@@ -1,47 +1,11 @@
 {
-  "name" : "futentacleunderground",
-  "friendlyName" : "Infested Cave",
+  "name" : "fleshcorelayer",
+  "friendlyName" : "Flesh Core",
 
-  "spawnProfile" : {
-    "groups" : [
-      {
-        "select" : 6,
-        "pool" : [ 
-          [ 1, "tentaclecrawler" ],
-          [ 1, "tentaclegnat" ],
-          [ 0.5, "tentaclespawner" ],
-          [ 0.6, "tentaclebomb" ],
-          [ 0.6, "tentacleghost" ],
-          [ 0.6, "futentaclebarrier" ],
-          [ 1, "tentacleclam" ]
-        ]
-      },
-      {
-        "select" : 5,
-        "pool" : [
-          [ 1, "bigwormcritter" ],
-          [ 1, "fisheyecritter" ],
-          [ 1, "cellcritter" ],
-          [ 1, "cell2critter" ],
-          [ 1, "eggcellcritter" ]          
-        ]
-      }
-    ],
-    "monsterParameters" : {
-      "colors" : "volcanic",
-        "statusSettings" : {
-        "stats" : {
-          "poisonStatusImmunity" : {"baseValue" : 1.0},
-          "pusImmunity" : {"baseValue" : 1.0},
-          "insanityImmunity" : {"baseValue" : 1.0},
-          "biooozeImmunity" : {"baseValue" : 1.0}
-        }
-      }
-    }
-  },
+  "parallax" : "/parallax/underground/atropusunderground.parallax",
 
     "mainBlock" : "tentacleblock",
-    "subBlocks" : [ "andesite", "jellyblock", "fustomachblock" ],
+    "subBlocks" : [ "deadcore" ],
     "ores" : "ff_deepsurfaceshadowOres",
 
   "ambientNoises" : {
@@ -62,12 +26,7 @@
     }
   },
 
-
   "undergroundPlaceables" : {
-    "grassMod" : [ "tentaclegrass" ],
-    "grassModDensity" : 0.9,
-      "ceilingGrassMod" : [ "tentaclegrass" ],
-      "ceilingGrassModDensity" : 0.5,
     "items" : [
       {
         "mode" : "floor",
@@ -157,15 +116,6 @@
         "treeFoliageList" : [ "" ]
       }
     ]
-  },
-
-  "hueShiftOptions" : [0],
-  "parallax" : "/parallax/underground/atropusunderground.parallax",
-
-  "sky" : {
-    "topColor" : [182, 204, 255],
-    "bottomColor" : [224, 239, 255],
-    "nightTopColor" : [0, 0, 30],
-    "nightBottomColor" : [0, 0, 0]
   }
 }
+
