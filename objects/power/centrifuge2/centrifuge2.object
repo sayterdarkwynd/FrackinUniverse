@@ -4,7 +4,7 @@
   "printable" : false,
   "rarity" : "rare",
   "description" : "The only centrifuge that can process radioactive isotopes. Needs 10u power.",
-  "shortdescription" : "^cyan;Gas Centrifuge^white;",
+  "shortdescription" : "^cyan;Gas Centrifuge^reset;",
   "subtitle" : "Extract items from resources",
   "race" : "generic",
   "category" : "crafting",
@@ -33,7 +33,7 @@
 
   "scripts" : [ "/objects/bees/centrifuge.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua" ],
+                "/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 5,
   "recipeGroup" : "centrifuge",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
@@ -44,19 +44,19 @@
 
   "craftDelay": 1,
   "itemChances": {
-	"rarest": 0.35,
-	"rare": 0.55,
-	"uncommon": 0.65,
-	"normal": 0.75,
-	"common": 0.85
+    "rarest": 0.35,
+    "rare": 0.55,
+    "uncommon": 0.65,
+    "normal": 0.75,
+    "common": 0.85
   },
 
   "inputSlot": 1,
-  
+
   "inputNodes" : [ [0, 1] ],
   "outputNodes" : [ [0, 0] ],
-  
-  "centrifugeIso" : "1",  
+
+  "centrifugeType" : "isotope",
   "isn_powerReciever" : true,
   "isn_requiredPower" : 10
 }

@@ -4,7 +4,7 @@
   "printable" : false,
   "rarity" : "rare",
   "description" : "Extract items from combs! More efficient than the wooden centrifuge. Requires 2u power.",
-  "shortdescription" : "^orange;Iron Centrifuge^white;",
+  "shortdescription" : "^orange;Iron Centrifuge^reset;",
   "subtitle" : "Extract items from combs.",
   "race" : "generic",
   "category" : "crafting",
@@ -26,12 +26,14 @@
       "anchors" : [ "bottom" ]
     }
   ],
-    "animation" : "ironcentrifuge.animation",
+  "animation" : "ironcentrifuge.animation",
   "animationParts" : {
     "centrifuge" : "ironcentrifuge.png"
   },
 
-  "scripts" : [ "/objects/bees/woodencentrifuge/centrifuge.lua" ],
+  "scripts" : [ "/objects/bees/centrifuge.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+                "/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 50,
   "recipeGroup" : "ironcentrifuge",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
@@ -42,19 +44,19 @@
 
   "craftDelay" : 2,
   "itemChances": {
-	"rarest": 0.05,
-	"rare": 0.15,
-	"uncommon": 0.4,
-	"normal": 0.6,
-	"common": 0.7
+    "rarest": 0.05,
+    "rare": 0.15,
+    "uncommon": 0.4,
+    "normal": 0.6,
+    "common": 0.7
   },
 
   "inputSlot": 1,
-  
+
   "inputNodes" : [ [0, 1] ],
   "outputNodes" : [ [0, 0] ],
-  
-  "centrifugeLiquid" : "1",  
+
+  "centrifugeType" : "liquid",
   "isn_powerReciever" : true,
   "isn_requiredPower" : 2
 }
