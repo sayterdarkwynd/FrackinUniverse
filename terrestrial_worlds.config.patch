@@ -1155,7 +1155,7 @@
           "secondaryRegions" : [ "furuinsunderground", "bloodstoneunderground", "corruptmoonunderground", "ffhellhiveunderground", "ffpoopit", "hiveold", "ffspidernest", "fffleshcaves", "ffcellcaves", "ffshadow" ]
         },
         "core" : {
-          "primaryRegion" : [ "puscore" ]
+          "primaryRegion" : [ "puscore", "fleshcore" ]
         } 
        }
      }
@@ -1210,7 +1210,7 @@
           "secondaryRegions" : [ "furuinsunderground", "bloodstoneunderground", "corruptmoonunderground", "ffhellhiveunderground", "ffpoopit", "hiveold", "ffspidernest", "fffleshcaves", "ffcellcaves", "ffshadow" ]
         },
         "core" : {
-          "primaryRegion" : [ "puscore" ]
+          "primaryRegion" : [ "puscore", "fleshcore" ]
         } 
        }
      }
@@ -6793,7 +6793,23 @@
       ]
     }
   },   
-  
+  {"op" : "add", 
+  "path" : "/regionTypes/fleshcore",
+  "value" : 
+    {
+      "caveLiquid" : [ "bloodliquid", "pus" ],
+      "caveLiquidChanceRange" : [95, 99],
+      "caveLiquidSeedDensityRange" : [4.0, 7.0],
+      "oceanLiquid" : [ "bloodliquid", "pus" ],
+      "oceanLevelOffset" : -10,
+      "subBlockSelector" : [ "lowHillsSurface" ],
+      "fgCaveSelector" : [ "coreCaves" ],
+      "bgCaveSelector" : [ "coreBackgroundCaves" ],
+      "biome" : [
+        [0, [ "fleshcorelayer"] ]
+      ]
+    }
+  },  
   {"op" : "add", 
   "path" : "/regionTypes/nitrogencore",
   "value" : 
