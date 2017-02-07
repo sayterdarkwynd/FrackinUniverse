@@ -33,7 +33,7 @@ function activateVisualEffects()
   animator.burstParticleEmitter("statustext")
   animator.playSound("burn")
   local lightLevel = getLight()
-  if lightLevel <= 40 then
+  if lightLevel <= 40 and world.entityType(entity.id()) == "player" then
     animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
     animator.setParticleEmitterActive("smoke", true)
   end
