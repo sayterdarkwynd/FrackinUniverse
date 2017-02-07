@@ -5,16 +5,14 @@
   "category" : "food",
   "eventCategory" : "eventCrop",
   "inventoryIcon" : "bolbohn.png",
-  "description" : "A root with a strong taste that few enjoy.",
+  "description" : "Modified. Increases your acuity, allowing 10% greater critical hit chances. Not useable in recipes. Tastes like donkey ****.",
   "shortdescription" : "Bolbohn",
-  "foodValue" : 10,
+  "foodValue" : 3,
   "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 1.0,
+
   "blockingEffects" : [
     "wellfed"
   ],
+  "effects" : [ [ "critchance1" ] ],
   "learnBlueprintsOnPickup" : [ "avikanmeal", "bolbohnjam", "spicebol" ]
 }

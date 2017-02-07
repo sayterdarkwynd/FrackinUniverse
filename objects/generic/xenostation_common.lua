@@ -22,13 +22,9 @@ function getRecipes()
 	        -- for starbooze
 	        { inputs = { soakedwheat = 1 }, outputs = { wheatsprout = 1 } },
 	        
-	        --everythign else
-	        { inputs = { fuavikancactusseed = 1 }, outputs = { gene_energy = 1 } },
-	        { inputs = { fuavikanspiceplantseed = 1 }, outputs = { gene_stealth = 1 } },	        
+	        --everythign else        
 	        { inputs = { avikancactusseed = 1 }, outputs = { gene_energy = 1 } },
-	        { inputs = { avikanspiceplantseed = 1 }, outputs = { gene_stealth = 1 } },
-	        { inputs = { fubolbohnseed = 1 }, outputs = { gene_insectoid = 1 } },
-	        { inputs = { fudunestalkseed = 1 }, outputs = { gene_nervebundle = 1 } },	        
+	        { inputs = { avikanspiceplantseed = 1 }, outputs = { gene_stealth = 1 } },	        
 	        { inputs = { bolbohnseed = 1 }, outputs = { gene_insectoid = 1 } },
 	        { inputs = { dunestalkseed = 1 }, outputs = { gene_nervebundle = 1 } },
 	        { inputs = { shadowrootseed = 1 }, outputs = { gene_stealth = 1 } },

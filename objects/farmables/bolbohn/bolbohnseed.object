@@ -1,5 +1,5 @@
 {
-  "objectName" : "fuwildbolbohnseed",
+  "objectName" : "bolbohnseed",
   "colonyTags" : ["nature"],
   "rarity" : "Common",
   "category" : "seed",
@@ -8,7 +8,6 @@
   "objectType" : "farmable",
   "printable" : false,
   "price" : 20,
-  "hasObjectItem" : false,
 
   "apexDescription" : "A decidedly odd plant, and a funny smelling one at that.",
   "avianDescription" : "I'm not sure I like the smell of this plant...",
@@ -30,6 +29,11 @@
   "drodenDescription" : "Detected native Kadavan flora. Bolbohn confirmed.",
 
   "inventoryIcon" : "bolbohnseedicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "bolbohnseed.png:default.2.0",
+
+
   "orientations" : [
     {
       "dualImage" : "bolbohnseed.png:<color>.<stage>.<alt>",
@@ -38,7 +42,7 @@
       "animationCycle" : 0.5,
 
       "spaces" : [ [0, 0], [0, 1] ],
-      "requireTilledAnchors" : false,
+      "requireTilledAnchors" : true,
       "anchors" : [ "bottom" ]
 
     }
@@ -55,12 +59,8 @@
     },
     {
       "alts" : 5,
-      "harvestPool" : "fubolbohnHarvest"
+      "harvestPool" : "bolbohnHarvest"
     }
-  ],
-
-  "breakDropOptions" : [
-    [ [ "fubolbohnseed", 1, { } ] ]
   ],
 
   "maxImmersion" : 0.25
