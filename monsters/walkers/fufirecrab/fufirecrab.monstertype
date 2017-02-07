@@ -1,14 +1,14 @@
 {
   "type" : "fufirecrab",
-  "shortdescription" : "Scorchstacean",
-  "description" : "Loves to crap fire.",
+  "shortdescription" : "Wilt Crab",
+  "description" : "Heavily plated. Hard to kill. Aggressive if stared at.",
 
   "categories" : [ "fufirecrab" ],
   "parts" : [ "body" ],
 
   "animation" : "fufirecrab.animation",
 
-  "dropPools" : [ { "default" : "ooglerTreasure", "bow" : "ooglerHunting" } ],
+  "dropPools" : [ { "default" : "ooglerTreasure", "bow" : "huntingfufirecrab" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -120,6 +120,35 @@
         }
       ],
 
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 12,
+            "minimumRange" : 6,
+            "maxYRange" : 6,
+            "windupState" : "firewindup",
+            "windupTime" : 0.6,
+
+            "aimAtTarget" : true,
+            "projectileType" : "unfriendlybubble",
+            "projectileCount" : 8,
+            "projectileInterval" : 0.15,
+            "power" : 6,
+            "fireOffset" : [2.5, -1.5],
+            "fireState" : "",
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.3
+          }
+        }      
+      ],
+      "periodicHostileActions" : [
+      ],
+      
       "wanderActions" : [
         {
           "name" : "wander-walk",
