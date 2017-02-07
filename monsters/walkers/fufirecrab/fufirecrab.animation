@@ -48,6 +48,16 @@
               "immediateSound" : [ "", "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg" ]
             } 
           },
+          "fire" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "mouthwater" ],
+              "persistentSound" : "/sfx/npc/monsters/monster_bite1.ogg",
+              "persistentSoundStopTime" : 1
+            }
+          },              
           "charge" : {
             "frames" : 11,
             "cycle" : 1.1,
@@ -158,6 +168,11 @@
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:charge.<frame>"
+              }
+            },   
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
               }
             },            
             "firewindup" : {
