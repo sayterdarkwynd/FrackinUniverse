@@ -11,6 +11,7 @@ function init()
   self.tickDamagePercentage = 0.04
   self.tickTime = 1.0
   self.tickTimer = self.tickTime
+  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecold", 5.0)
 end
 
 function update(dt)

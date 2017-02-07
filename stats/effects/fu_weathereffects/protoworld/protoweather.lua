@@ -1,6 +1,6 @@
 function init()
   script.setUpdateDelta(5)
-
+world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeproto", 5.0)
   animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
   animator.setParticleEmitterActive("coldbreath", true)
   
