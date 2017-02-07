@@ -22,9 +22,9 @@ function getRecipes()
 	        -- for starbooze
 	        { inputs = { soakedwheat = 1 }, outputs = { wheatsprout = 1 } },
 	        
-	        --everythign else        
-	        { inputs = { avikancactusseed = 1 }, outputs = { gene_energy = 1 } },
-	        { inputs = { avikanspiceplantseed = 1 }, outputs = { gene_stealth = 1 } },	        
+	        --everythign else         
+	        { inputs = { avikancactusseed = 1 }, outputs = { gene_defense = 1 } },
+	        { inputs = { avikanspiceplantseed = 1 }, outputs = { gene_mimetic = 1 } },	        
 	        { inputs = { bolbohnseed = 1 }, outputs = { gene_insectoid = 1 } },
 	        { inputs = { dunestalkseed = 1 }, outputs = { gene_nervebundle = 1 } },
 	        { inputs = { shadowrootseed = 1 }, outputs = { gene_stealth = 1 } },
@@ -94,8 +94,6 @@ function getRecipes()
 		{ inputs = { flowerspring = 1 }, outputs = { gene_reproductive = 1 } },
 		{ inputs = { flowerwhite = 1 }, outputs = { gene_mimetic = 1 } },
 		{ inputs = { floweryellow = 1 }, outputs = { gene_reproductive = 1 } },
-		{ inputs = { fuavikancactusseed = 1 }, outputs = { gene_defense = 1 } },
-		{ inputs = { fuavikanspiceplantseed = 1 }, outputs = { gene_mimetic = 1 } },
 		{ inputs = { fubioshroomblue = 1 }, outputs = { biospore = 3 } },
 		{ inputs = { fubioshroomgreen = 1 }, outputs = { biospore = 3 } },
 		{ inputs = { fubioshroompurple = 1 }, outputs = { biospore = 3 } },
@@ -251,8 +249,6 @@ function getRecipes()
 		{ inputs = { wildflowerred = 1 }, outputs = { gene_stimulant = 1 } },
 		{ inputs = { wildflowerspring = 1 }, outputs = { gene_reproductive = 1 } },
 		{ inputs = { wildfloweryellow = 1 }, outputs = { gene_reproductive = 1 } },
-		{ inputs = { wildfuavikancactusseed = 1 }, outputs = { gene_defense = 1 } },
-		{ inputs = { wildfuavikanspiceplantseed = 1 }, outputs = { gene_mimetic = 1 } },
 		{ inputs = { wildfubioshroomblue = 1 }, outputs = { biospore = 3 } },
 		{ inputs = { wildfubioshroomgreen = 1 }, outputs = { biospore = 3 } },
 		{ inputs = { wildfubioshroompurple = 1 }, outputs = { biospore = 3 } },

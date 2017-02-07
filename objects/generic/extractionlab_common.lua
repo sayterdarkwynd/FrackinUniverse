@@ -414,12 +414,8 @@ function getRecipes()
 	{ inputs = { wetdirt = 50 }, outputs = { geneticmaterial = { 1, 1, 4 } } },
 	-- seeds
 	{ inputs = { shadowrootseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },
-	{ inputs = { fuavikancactusseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },	        
-	{ inputs = { fuavikanspiceplantseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },	
 	{ inputs = { avikancactusseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },	        
-	{ inputs = { avikanspiceplantseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },	
-	{ inputs = { fubolbohnseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },	        
-	{ inputs = { fudunestalkseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },	
+	{ inputs = { avikanspiceplantseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },		
 	{ inputs = { bolbohnseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },	        
 	{ inputs = { dunestalkseed = 1 }, outputs = { tissueculture = { 2, 2, 5 } } },
 	{ inputs = { algaeseed = 1 }, outputs = { fu_nitrogen = { 3, 3 }, geneticmaterial = { nil, nil, 5 } } },
