@@ -1,0 +1,26 @@
+{
+  "projectileName" : "dualflame",
+  "timeToLive" : 0.1,
+    "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "shortflame",
+      "inheritDamageFactor" : 1.0,
+      "parameters" : {
+              "speed" : 5
+            },
+      "angleAdjust" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "shortflame",
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : -90
+    }
+  ],
+  "power" : 5,
+  "speed" : 0,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

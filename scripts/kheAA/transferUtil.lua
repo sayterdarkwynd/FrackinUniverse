@@ -27,9 +27,10 @@ end
 
 function transferUtil.initTypes()
 	transferUtil.itemTypes={}
-	transferUtil.itemTypes["generic"]={"foodjunk","junk","other","vehiclecontroller","generic", "coin", "celestialitem","quest"} 
-	transferUtil.itemTypes["treasure"]={"bug","tech","techmanagement","largefossile","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"}
-	transferUtil.itemTypes["material"]={"block","liquid","platform","rail","railplatform","breakable","railpoint"} 
+	transferUtil.itemTypes["generic"]={"foodjunk","junk","other","generic","quest","tech"} 
+	transferUtil.itemTypes["treasure"]={"coin", "celestialitem","vehiclecontroller","bug","largefossile","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"}
+	transferUtil.itemTypes["material"]={"block","liquid","platform","breakable"} 
+	transferUtil.itemTypes["rail"]={"rail","railplatform","railpoint"} 
 	transferUtil.itemTypes["tool"]={"tool","fishingrod","miningtool","flashlight","wiretool","beamminingtool","tillingtool","paintingbeamtool","harvestingtool","musicalinstrument","grapplinghook","thrownitem"}
 	transferUtil.itemTypes["weapon"]={"assaultrifle","axe","boomerang","bow","broadsword","chakram","crossbow","dagger","fistweapon","grenadelauncher","hammer","machinepistol","pistol","rocketlauncher","shield","shortsword","shotgun","sniperrifle","spear","staff","wand","toy","uniqueweapon","whip","fu_upgrade","fu_warspear","fu_lance","fu_pierce","fu_scythe","quarterstaff","warblade","fu_keening"}
 	transferUtil.itemTypes["armor"]={"headarmor", "chestarmor", "legsarmor", "backarmor","enviroprotectionpack"} 
@@ -37,8 +38,8 @@ function transferUtil.initTypes()
 	transferUtil.itemTypes["consumable"]={"drink","preparedfood","food","medicine"}
 	transferUtil.itemTypes["books"]={"blueprint", "codex"}
 	transferUtil.itemTypes["augments"]={"eppaugment","fishinglure","fishingreel","petcollar","clothingdye"}
-	transferUtil.itemTypes["reagents"]={"craftingmaterial","cookingingredient","fuel","crafting"}--need refinement here. ores and bars generally have bar/ore in their itemname
-	transferUtil.itemTypes["building"]={"machinery","spawner","terraformer","trap","wire","light","furniture","decorative","door","fridgestorage","teleporter","teleportmarker","shippingcontainer"}
+	transferUtil.itemTypes["reagents"]={"craftingmaterial","cookingingredient","fuel"}
+	transferUtil.itemTypes["building"]={"techmanagement","crafting","machinery","spawner","terraformer","trap","wire","light","furniture","decorative","door","fridgestorage","teleporter","teleportmarker","shippingcontainer","storage"}
 	transferUtil.itemTypes["farming"]={"seed","sapling","farmbeastegg","farmbeastfood","farmbeastfeed"}
 end
 

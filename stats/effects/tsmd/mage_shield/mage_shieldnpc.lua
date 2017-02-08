@@ -6,7 +6,7 @@ function init()
   
   self.shieldHealth = config.getParameter("shieldHealth")
   self.dangerHealth = self.shieldHealth * 0.2
-
+  self.currentDA = 0
   self.shieldRemaining = self.shieldHealth
   self.active = true
   self.broke = false

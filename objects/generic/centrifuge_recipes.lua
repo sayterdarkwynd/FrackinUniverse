@@ -172,6 +172,7 @@ function getRecipes()
                                    fu_carbon               = { "common", 2 } },
         deuterium               = { tritium                = { "uncommon", 1 },
                                    liquidmetallichydrogen  = { "rare", 1 },
+                                   liquiddeuterium         = { "rarest", 1 },
                                    fu_carbon               = { "common", 1 } }
       }
   }

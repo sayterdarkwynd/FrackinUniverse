@@ -7,7 +7,7 @@ function init()
   self.shieldHealth = config.getParameter("shieldHealth")
   self.dangerHealth = self.shieldHealth * 0.2
   status.modifyResource("damageAbsorption", self.shieldHealth)
-  
+  self.currentDA = 0
   self.active = true
   self.broke = false
 end
@@ -39,7 +39,6 @@ function checkDamage(notifications)
       if status.resourcePositive("damageAbsorption") then
         animator.playSound("block")
         self.shieldHealth = self.shieldHealth - (self.currentDA - status.resource("damageAbsorption"))
-        
         if self.shieldHealth <= self.dangerHealth then
           -- TODO: about to be broke
         end
