@@ -10,12 +10,14 @@ function init()
 	      {stat = "powerMultiplier", baseMultiplier = 1.10},
 	      {stat = "physicalResist", baseMultiplier = 1.10},
               {stat = "radiationburnImmunity", amount = 1},
+              {stat = "sandstormImmunity", baseMultiplier = 1},
               {stat = "shieldStaminaRegen", baseMultiplier = 1.10}
 	    })
     else
 	    setBonusInit("fu_nomadset", {
 	      {stat = "blacktarImmunity", baseMultiplier = 1},
 	      {stat = "quicksandImmunity", baseMultiplier = 1},
+	      {stat = "sandstormImmunity", baseMultiplier = 1},
               {stat = "radiationburnImmunity", amount = 1},
               {stat = "shieldStaminaRegen", baseMultiplier = 1.10}
 	    })

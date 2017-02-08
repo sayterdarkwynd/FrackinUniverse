@@ -1,14 +1,14 @@
 {
-  "type" : "volpin",
-  "shortdescription" : "volpin",
-  "description" : "It has a sticky texture that allows it to climb surfaces with ease.",
+  "type" : "iciclit",
+  "shortdescription" : "Frostlit",
+  "description" : "Able to spin and spray ice everywhere, these bastards annoy anyone they see.",
 
-  "categories" : [ "volpin" ],
+  "categories" : [ "iciclit" ],
   "parts" : [ "body" ],
 
-  "animation" : "volpin.animation",
+  "animation" : "iciclit.animation",
 
-  "dropPools" : [ { "default" : "extraMonsterFire", "bow" : "extraMonsterFireHunting" } ],
+  "dropPools" : [ { "default" : "extraMonsterIce", "bow" : "extraMonsterRockIce" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -16,62 +16,70 @@
     ],
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
-
-    "facingMode" : "transformation",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "hurtWaitForGround" : false,
-
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 40,
-      "targetOutOfSightTime" : 0.5,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
 
-      "foundTargetActions" : [ ],
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
-      "fleeActions" : [ ],
+      "fleeActions" : [],
 
       "hostileActions" : [
+
         {
-          "name" : "action-fire",
+          "name" : "action-trail-charge",
           "cooldown" : 2.0,
           "parameters" : {
-            "requireLineOfSight" : true,
             "maximumRange" : 20,
-            "minimumRange" : 0,
-            "windupState" : "firewindup",
-            "windupTime" : 0.25,
-            "windupStopForce" : 200,
-            "aimAtTarget" : false,
-            "aimDirection" : [0, 1],
-            "projectileType" : "dualflame",
-            "projectileCount" : 4,
-            "projectileInterval" : 0.01,
-            "power" : 5,
-            "fireOffset" : [0,0],
-            "fireSound" : "fire",
-            "fireState" : "fire",
-            "winddownState" : "idle",
-            "winddownTime" : 0.25
+            "windupTime" : 0.5,
+            "winddownTime" : 0.5,
+            "chargeSpeed" : 15,
+            "chargeControlForce" : 200,
+            "chargeTime" : 1.5,
+            "aimAtTarget" : true,
+            "wallKnockback" : true,
+            "knockbackThreshold": 3,
+            "projectileType" : "iciclittrail"
+          }
+        }
+
+      ],
+
+      "periodicActions" : [
+
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : [6, 12],
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "invulnerablewindup",
+            "winddownTime" : 0.5,
+            "winddownState" : "invulnerablewinddown",
+
+            "invulnerableTime" : 20
           }
         }
       ],
 
-      "damageTakenActions" : [ 
-
+      "damageTakenActions" : [
       ],
-
-      "periodicActions" : [ ],
 
       "approachActions" : [
         {
-          "name" : "approach-crawl",
+          "name" : "approach-walk",
           "parameters" : {
-            "resetHeading" : false
+            "canJump" : true,
+            "maxJumps" : 3,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
           }
         }
       ],
@@ -83,58 +91,47 @@
           }
         },
         {
-          "name" : "approach-crawl",
+          "name" : "approach-walk",
           "parameters" : {
-            "resetHeading" : false
+            "canJump" : true,
+            "maxJumps" : 3,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
           }
         }
       ],
 
       "wanderActions" : [
         {
-          "name" : "wander-crawl",
-          "cooldown" : 1,
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
           "parameters" : {
-            "wanderTime" : 1.5,
-            "stopForce" : 200,
-            "idleTime" : 1.0,
-            "resetHeading" : false
-          }
-        }
-      ],
-
-      "concurrentActions" : [
-
-      ],
-
-      "concurrentHostileActions" : [
-        {
-          "name" : "idle-crawl",
-          "parameters" : {
-            "resetHeading" : false
+            "wanderTime" : [5, 20]
           }
         }
       ]
     },
 
     "touchDamage" : {
-      "poly" : [ [0.31, 0.75],  [0.75, 0.31],  [0.75, -0.31],  [0.31, -0.75],  [-0.31, -0.75],  [-0.75, -0.31],  [-0.75, 0.31],  [-0.31, 0.75] ],
+      "poly" : [ [0.3125, 1.25], [0.8125, 0.75],  [0.8125, -0.75], [0.3125, -1.25],  [-0.3125, -1.25], [-0.8125, -0.75],  [-0.8125, 0.75], [-0.3125, 1.25] ],
       "damage" : 9,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "fire",
+      "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ "burning" ]
+      "statusEffects" : [ ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.31, 0.75],  [0.75, 0.31],  [0.75, -0.31],  [0.31, -0.75],  [-0.31, -0.75],  [-0.75, -0.31],  [-0.75, 0.31],  [-0.31, 0.75] ],
+      "collisionPoly" : [ [0.3125, 1.25], [0.8125, 0.75],  [0.8125, -0.75], [0.3125, -1.25],  [-0.3125, -1.25], [-0.8125, -0.75],  [-0.8125, 0.75], [-0.3125, 1.25] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 5,
+      "walkSpeed" : 3,
       "runSpeed" : 5,
 
       "airFriction" : 0,
@@ -146,7 +143,7 @@
       }
     },
 
-    "bodyMaterialKind" : "organic",
+    "bodyMaterialKind" : "stone",
 
     "knockoutTime" : 0.3,
     "knockoutAnimationStates" : {
@@ -157,7 +154,7 @@
 
     "statusSettings" : {
       "statusProperties" : {
-        "targetMaterialKind" : "organic"
+        "targetMaterialKind" : "stone"
       },
 
       "appliesEnvironmentStatusEffects" : false,
@@ -177,7 +174,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 36
+          "baseValue" : 48
         },
         "protection" : {
           "baseValue" : 0.0
@@ -185,23 +182,20 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
-        "lavaImmunity" : {
-          "baseValue" : 1.0
-        },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
-        },
-        "fireResistance" : {
           "baseValue" : 0.5
         },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
         "fireStatusImmunity" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : -0.5
+          "baseValue" : 0.0
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
