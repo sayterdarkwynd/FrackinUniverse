@@ -64,13 +64,13 @@ function update(dt)
     if lightLevel < 1 then
       self.dpsMod = 1.1
     end
-  if lightLevel > 40 then
+  if lightLevel > 70 then
     animator.setParticleEmitterActive("smoke", false)
   end
   
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-    if lightLevel <=40 or (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
+    if lightLevel <=70 or (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
       if world.entityType(entity.id()) == "player" then
  	    animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
 	    animator.setParticleEmitterActive("smoke", true)  
