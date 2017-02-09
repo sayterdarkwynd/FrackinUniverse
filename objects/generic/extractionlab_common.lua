@@ -327,6 +327,8 @@ function getRecipes()
 	{ inputs = { junk = 50 }, outputs = { ff_silicon = { 1, 1, 2 }, ironore = { 1, 1, 2 } } },
 	{ inputs = { limestonematerial = 50 }, outputs = { rawminerals = { 2, 2, 4 }, calciumnitrate = 1 } },
 	{ inputs = { logblock = 5 }, outputs = { methanol = { 2, 2, 4 } } },
+	{ inputs = { darkwoodmaterial = 5 }, outputs = { methanol = { 2, 2, 4 } } },
+	{ inputs = { methanol = 2 }, outputs = { fu_hydrogen = { 2, 2, 4 } } },
 	{ inputs = { magmarock = 50 }, outputs = { ammoniumsulfate = { 1, 1, 2 } } },
 	{ inputs = { magmawall1 = 50 }, outputs = { ammoniumsulfate = { 2, 2, 4 } } },
 	{ inputs = { magmawall2 = 50 }, outputs = { rawminerals = { 3, 3, 4 }, corefragmentore = { 1, 1, 2 } } },
