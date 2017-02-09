@@ -9,5 +9,6 @@ function update(dt)
 	end
 	animator.setAnimationState("switchState", "on")
 	
-	isn_projectileAllInRange("isn_atmosprojectile",500)
+	--isn_projectileAllInRange("isn_atmosprojectile",500)
+	isn_effectAllInRange("isn_atmosprotection",500)
 end
