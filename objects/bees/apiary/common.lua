@@ -1,9 +1,12 @@
-local contents
+require "/scripts/kheAA/transferUtil.lua"
 
+local contents
+local deltaTime=0
 DEFAULT_HONEY_CHANCE = 0.6
 DEFAULT_OFFSPRING_CHANCE = 0.4
 
 function init()
+	transferUtil.init()
 	
 
 	animator.setAnimationState("bees", "off")
@@ -420,6 +423,12 @@ end
 
 
 function update(dt)
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
 	contents = world.containerItems(entity.id())
 	daytimeCheck()
 

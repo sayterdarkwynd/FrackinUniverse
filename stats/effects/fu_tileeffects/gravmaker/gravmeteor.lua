@@ -14,7 +14,7 @@ function activateVisualEffects()
 end
 
 function update(dt)
-	if params.collisionEnabled then
+	if self.baseParams.collisionEnabled then
 		self.newParams={gravityEnabled = false,airForce=0,flySpeed=0,airFriction=0.001}
 		mcontroller.controlParameters(self.newParams)
 	end
