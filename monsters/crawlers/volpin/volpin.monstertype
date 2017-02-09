@@ -42,19 +42,21 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 20,
-            "minimumRange" : 2,
+            "minimumRange" : 0,
             "windupState" : "firewindup",
-            "windupTime" : 0.5,
+            "windupTime" : 0.25,
             "windupStopForce" : 200,
             "aimAtTarget" : false,
-            "aimDirection" : [1, 1],
-            "projectileType" : "fireball",
+            "aimDirection" : [0, 1],
+            "projectileType" : "dualflame",
+            "projectileCount" : 4,
+            "projectileInterval" : 0.01,
             "power" : 5,
-            "fireOffset" : [0.0, 0.0],
+            "fireOffset" : [0,0],
             "fireSound" : "fire",
             "fireState" : "fire",
             "winddownState" : "idle",
-            "winddownTime" : 0.3
+            "winddownTime" : 0.25
           }
         }
       ],
@@ -175,7 +177,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 64
+          "baseValue" : 36
         },
         "protection" : {
           "baseValue" : 0.0

@@ -2,7 +2,7 @@
 {
   "type" : "cryopod",
   "shortdescription" : "cryopod",
-  "description" : "It compresses moisture in its pod to form a powerful projectile.",
+  "description" : "It compresses moisture in its pod to form a powerful cold blast. Flies erratically.",
 
   "categories" : [ "cryopod" ],
   "parts" : [ "body" ],
@@ -33,43 +33,58 @@
       "fleeActions" : [ ],
 
       "hostileActions" : [ 
-       {
-          "name" : "action-fire",
-          "cooldown" : 1.0,
+        {
+          "name" : "action-offset-swoop",
+          "cooldown" : 0.1,
           "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 30,
-            "minimumRange" : 5,
-            "windupState" : "firewindup",
-            "windupTime" : 1.25,
-
-            "projectileType" : "icerock",
-            "power" : 0,
-            "fireOffset" : [0.75, 0.25],
-            "aimAtTarget" : true,
+            "targetOffset": [
+              0,
+              6
+            ],
+            "minimumRange" : 0,
+            "maximumRange" : 20,
             "onGround" : false,
-            "fireState" : "fire",
-            "fireSound" : "fire",
-            "fireDelay" : 0.1,
-
-            //"fireArc": true,
-            //"projectileSpeed": 50,
-            //"gravityMultiplier": 0.6,
-
-            "winddownState" : "",
-            "winddownTime" : 0.5
+            "windupTime" : 0.5,
+            "windupState" : "fly",
+            "gravityMultiplier" : -0.33,
+            "swoopVelocity" : 40,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopState" : "fly",
+            "swoopTime" : 0.25,
+            "winddownTime" : 0.0,
+            "winddownState" : "fly",
+            "winddownStopForce" : 20
           }
         },
         {
-          "name" : "wander-fly",
+          "name" : "action-fire",
+          "cooldown" : 0.6,
           "parameters" : {
-            "wanderTime" : [0.5,0.5],
-            "groundDistance" : 12,
-            "ceilingDistance" : 8,
-            "xVelocity" : 6,
-            "yVelocity" : 16
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 0,
+            "windupState" : "firewindup",
+            "windupTime" : 0.75,
+            "projectileType" : "cryopodbreath",
+            "power" : 12,
+            "fireOffset" : [0, 0],
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "winddownState" : "",
+            "winddownTime" : 0.5,
+            "aimAtTarget" : false,
+            "aimDirection" : [1,-1],
+            "onGround" : false,
+            "fireDelay" : 0.1
           }
         }
+      ],
+
+
+      "concurrentHostileActions" : [ 
       ],
 
       "periodicActions" : [
@@ -79,11 +94,8 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-
-            "approachAngle": 45,
-            "minRange" : 4,
-            "maxRange" : 8
-
+            "minRange" : 10,
+            "maxRange" : 18
           }
         }
       ],
@@ -112,11 +124,8 @@
         }
       ],
 
-      "concurrentActions" : [ ],
+      "concurrentActions" : [ ]
 
-      "concurrentHostileActions" : [ 
-      
-      ]
     },
 
     "touchDamage" : {
@@ -124,9 +133,9 @@
       "damage" : 9,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "ice",
+      "damageSourceKind" : "lash",
       "knockback" : 20,
-      "statusEffects" : [ "frostslow" ]
+      "statusEffects" : [  ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -176,7 +185,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 64
+          "baseValue" : 96
         },
         "protection" : {
           "baseValue" : 0.0

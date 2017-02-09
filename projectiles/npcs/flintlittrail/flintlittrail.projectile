@@ -1,0 +1,25 @@
+{
+  "projectileName" : "flintlittrail",
+  "image" : "flintlittrail.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.3,
+  "lightColor" : [160, 50, 50],
+  "power" : 2,
+  "speed" : 0,
+  "timeToLive" : 5.0,
+  "bounces" : -1,
+  "knockback" : 25,
+  "knockbackDirectional" : false,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "piercing" : false,
+  "damageKind" : "fire",
+  "emitters" : [ "flamesfast" ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/fire_out.ogg" ]
+    }
+  ]
+}

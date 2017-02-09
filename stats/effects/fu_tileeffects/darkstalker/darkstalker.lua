@@ -25,18 +25,20 @@ end
 
 
 function activateVisualEffects()
---if world.entityType(entity.id()) ~= "player" then
---  effect.expire()
---end
+if world.entityType(entity.id()) ~= "player" then
+  effect.expire()
+end
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
   animator.playSound("burn")
   local lightLevel = getLight()
-  if lightLevel <= 40 and world.entityType(entity.id()) == "player" then
-    animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
-    animator.setParticleEmitterActive("smoke", true)
-  end
+	  if lightLevel < 40 and world.entityType(entity.id()) == "player" then
+	    animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
+	    animator.setParticleEmitterActive("smoke", true)
+	  else
+	    animator.setParticleEmitterActive("smoke", false)
+	  end  
 end
 
 function getLight()
@@ -62,10 +64,17 @@ function update(dt)
     if lightLevel < 1 then
       self.dpsMod = 1.1
     end
-
+  if lightLevel > 70 then
+    animator.setParticleEmitterActive("smoke", false)
+  end
+  
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-    if lightLevel <=40 or (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
+    if lightLevel <=70 or (world.timeOfDay() > 0.5 or world.underground(mcontroller.position())) then
+      if world.entityType(entity.id()) == "player" then
+ 	    animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
+	    animator.setParticleEmitterActive("smoke", true)  
+      end
       status.modifyResource("health", (-self.dps * (self.dpsMod * 0.095) ) * dt)
       if self.maxEnergy then
         status.modifyResource("energy", (-self.dps * (self.dpsMod * 1.8) ) * dt)

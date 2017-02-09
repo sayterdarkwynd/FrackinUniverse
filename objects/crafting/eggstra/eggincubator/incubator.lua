@@ -11,7 +11,11 @@ function init()
     egg = {"fuhenbaby", 400, 0.5},
     henegg = {"fuhenbaby", 400, 1},
     primedegg = {"fuhenbaby", 200, 1},
-    raptoregg = {raptorHatchling(), 1200, 1},
+    raptoregg = {"furaptor4", 20, 1},
+    raptoregg2 = {"furaptor5", 1200, 1},
+    raptoregg3 = {"furaptor9", 1200, 1},
+    raptoregg4 = {"furaptor10", 1200, 1},
+    raptoregg4 = {"furaptor11", 1200, 1},
     firefluffaloegg = {"fufirefluffalo", 800, 1},
     poisonfluffaloegg =  {"fupoisonfluffalo", 800, 1},
     icefluffaloegg = {"fuicefluffalo", 800, 1},
@@ -37,21 +41,6 @@ function init()
   storage.hardiness = 0
 end
 
-
-function raptorHatchling()
-local randomHatchling = math.random(3)
-self.raptorname = default
-  if randomHatchling == 1 then
-    self.raptorname = furaptor4
-  elseif randomHatchling == 2 then
-    self.raptorname = furaptor5
-  elseif randomHatchling == 3 then
-    self.raptorname = furaptor6
-  else
-    self.raptorname = furaptor8
-  end
-  return self.raptorname
-end
 
 function update()
   checkHatching()
