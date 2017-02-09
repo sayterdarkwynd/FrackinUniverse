@@ -8,5 +8,6 @@ function update(dt)
 		return
 	end
 	animator.setAnimationState("switchState", "on")
-	isn_projectileAllInRange("isn_atmosregenprojectile",500)
+	isn_effectAllInRange("isn_atmosregenprojectile",500)
+	--isn_projectileAllInRange("isn_atmosregen",500)
 end
