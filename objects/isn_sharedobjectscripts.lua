@@ -88,10 +88,10 @@ function isn_projectileTypesInRange(projtype,tilerange,types)
 	end
 end
 function isn_projectilePlayersInRange(projtype,tilerange)
-	isn_projectileTypesInRange(entity.position(),tilerange,{"player"})
+	isn_projectileTypesInRange(projtype,entity.position(),tilerange,{"player"})
 end
 function isn_projectileAllInRange(projtype,tilerange)
-	isn_projectileTypesInRange(entity.position(),tilerange,{"creature"})
+	isn_projectileTypesInRange(projtype,entity.position(),tilerange,{"creature"})
 end
 
 function isn_projectileTypesInRangeParams(projtype,tilerange,params,types)
