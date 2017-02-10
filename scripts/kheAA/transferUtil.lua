@@ -232,7 +232,6 @@ function transferUtil.checkFilter(item)
 	for k,v in pairs(routerItems) do
 		buffer[k]=true
 	end
-	
 	for slot,rItem in pairs(routerItems) do
 		local fType=storage.filterType[slot]
 		if fType == -1 then
@@ -258,6 +257,8 @@ function transferUtil.checkFilter(item)
 			if buffer[slot] then
 				result=false
 				break
+			else
+				result=true
 			end
 		else
 			if buffer[slot] then
