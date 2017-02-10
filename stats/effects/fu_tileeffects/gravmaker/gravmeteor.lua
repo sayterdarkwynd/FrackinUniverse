@@ -15,7 +15,7 @@ end
 
 function update(dt)
 	if self.baseParams.collisionEnabled then
-		self.newParams={gravityEnabled = false,airForce=0,flySpeed=0,airFriction=0.001}
+		self.newParams={gravityEnabled = false,airForce=6,flySpeed=4,airFriction=0.2}
 		mcontroller.controlParameters(self.newParams)
 	end
 end
