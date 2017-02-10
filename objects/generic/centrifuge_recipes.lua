@@ -162,7 +162,7 @@ function getRecipes()
                                    fu_hydrogen             = { "common", 2 },
                                    ultronium               = { "rarest", 1 } },
         thoriumrod              = { lead                   = { "rare", 1 },
-                                   toxicwaste              = { "common", 2 }
+                                   toxicwaste              = { "common", 2 },
                                    fu_hydrogen             = { "common", 2 },
                                    ultronium               = { "rarest", 1 } },
         solariumstar            = { ultronium              = { "rare", 1 },
