@@ -4,6 +4,8 @@ require "/scripts/vec2.lua"
 BowShot = WeaponAbility:new()
 
 function BowShot:init()
+  self.critChance = config.getParameter("critChance", 0)
+  self.critBonus = config.getParameter("critBonus", 0)
   self.energyPerShot = self.energyPerShot or 0
 
   self.drawTime = 0
@@ -21,6 +23,12 @@ end
   -- FU Crit Damage Script
 
 function BowShot:setCritDamage(damage)
+	if not self.critChance then 
+		self.critChance = config.getParameter("critChance", 0)
+	end
+	if not self.critBonus then
+		self.critBonus = config.getParameter("critBonus", 0)
+	end
      -- check their equipped weapon
      -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
@@ -36,9 +44,6 @@ function BowShot:setCritDamage(damage)
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)
-  if not self.critChance then
-    self.critChance = 0
-  end
   
   --critBonus is bonus damage done with crits
   self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
