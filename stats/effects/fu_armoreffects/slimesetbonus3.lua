@@ -8,6 +8,7 @@ function init()
 	    {stat = "slimestickImmunity", amount = 1},
 	    {stat = "slimefrictionImmunity", amount = 1},
 	    {stat = "wetImmunity", amount = 1},
+	    {stat = "poisonStatusImmunity", baseMultiplier = 1},
 	    {stat = "slimeImmunity", amount = 1},
 	    {stat = "poisonResistance", baseMultiplier = 0.35}
 	})
