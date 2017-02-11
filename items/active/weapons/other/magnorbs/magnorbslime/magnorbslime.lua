@@ -57,6 +57,13 @@ end
   -- FU Crit Damage Script
 
 function setCritDamageBoomerang(damage)
+	if not self.critChance then 
+		self.critChance = config.getParameter("critChance", 0)
+	end
+	if not self.critBonus then
+		self.critBonus = config.getParameter("critBonus", 0)
+	end
+
      -- check their equipped weapon
      -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())

@@ -17,6 +17,8 @@ function Weapon:new(weaponConfig)
 end
 
 function Weapon:init()
+self.critChance = config.getParameter("critChance", 0)
+self.critBonus = config.getParameter("critBonus", 0)
   self.attackTimer = 0
   self.aimAngle = 0
   self.aimDirection = 1
@@ -32,6 +34,13 @@ end
   -- FU Crit Damage Script
 
 function setCritDamage(damage)
+	if not self.critChance then 
+		self.critChance = config.getParameter("critChance", 0)
+	end
+	if not self.critBonus then
+		self.critBonus = config.getParameter("critBonus", 0)
+	end
+
      -- check their equipped weapon
      -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
@@ -63,11 +72,7 @@ function setCritDamage(damage)
       elseif root.itemHasTag(heldItem, "rapier") then
         self.critChance = 2 + weaponModifier      
       end
-  end
-  
-  if not self.critChance then
-    self.critChance = 0
-  end
+	end
   
   --sb.logInfo("crit chance base="..self.critChance)
   --sb.logInfo("crit chance bonus="..status.stat("critChance"))
