@@ -39,7 +39,7 @@
       "fleeActions" : [ ],
 
       "hostileActions" : [
-        
+
       ],
 
       "periodicActions" : [ ],
@@ -47,18 +47,9 @@
       "approachActions" : [
         {
           "name" : "approach-fly",
-          "cooldown" : 2.0,
           "parameters" : {
             "usePathfinding" : false,
-            "minRange": 15,
-            "maxRange": 15,
-            "targetOffset" : [0,-8]
-          }
-        },
-        {
-          "name" : "wander-fly",
-          "cooldown" : 2.0,
-          "parameters" : {
+            "excludeLiquidIds" : [3]
           }
         }
       ],
@@ -79,15 +70,45 @@
 
       "wanderActions" : [
         {
-          "name" : "wander-fly",
-          "cooldown" : 2.0,
-          "parameters" : {
-          }
+          "name" : "wander-fly"
         }
       ],
-      "concurrentActions" : [ ],
-      "concurrentHostileActions" : [ ]
 
+      "concurrentActions" : [  ],
+
+      "concurrentHostileActions" : [ 
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 5,
+            "windupTime" : 2.0,
+            "windupStopForce" : 50,
+            "windupState" : "fly",
+            "onGround" : "false",
+            "projectileType" : "snotblock",
+            "power" : 10,
+            "fireOffset" : [0, 0],
+            "fireSound" : "fire",
+            "fireState" : "",
+            "fireDelay" : 0.0,
+            "rotateAim" : true,
+            "rotatedOffset" : [0,1],
+            "winddownState" : "",
+            "winddownTime" : 0.0
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "aimDirection" : [-1,0],
+            "projectileType" : "eyeslimebubblestart"
+          }
+        }
+       ]
     },
 
     "touchDamage" : {
@@ -142,13 +163,13 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.5
+          "baseValue" : 0.25
         },
         "knockbackThreshold" : {
-          "baseValue" : 9
+          "baseValue" : 3
         },
         "maxHealth" : {
-          "baseValue" : 72
+          "baseValue" : 192
         },
         "protection" : {
           "baseValue" : 0.0
