@@ -9,7 +9,8 @@
     "/scripts/actions/monster.lua",
     "/scripts/actions/sensor.lua",
     "/scripts/actions/status.lua",
-    "/scripts/actions/time.lua"
+    "/scripts/actions/time.lua",
+    "/scripts/actions/projectiles.lua"
   ],
   "parameters": {
     "windupState": "chargewindup",
@@ -37,10 +38,13 @@
       20
     ],
     "wallKnockback": false,
-    //trail projectile bit
-    "projectileType": "standardbullet",
-    "power": 0,
-    "projectileParameters": {}
+
+    "offset" : [0,0],
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {},
+    "projectileInterval" : 0.25,
+    "power" : 5,
+    "scalePower" : true
 
   },
   "root": {
@@ -181,25 +185,6 @@
                           "success": -1
                         },
                         "children": [
-
-                          {
-                            "title": "action-projectile",
-                            "type" : "module",
-                            "name" : "action-projectile",
-                            "parameters": {
-                              "aimDirection": [
-                                0,
-                                0
-                              ],
-                              "projectileType": "<projectileType>",
-                              "power": 0,
-                              "fireOffset": [
-                                0,
-                                0
-                              ],
-                              "projectileParameters": "<projectileParameters>"
-                            }
-                          },
                           {
                             "title": "selector",
                             "type": "composite",
@@ -295,6 +280,58 @@
                               "force": "<chargeControlForce>"
                             }
                           },
+                          {
+                            "title": "succeeder",
+                            "type": "decorator",
+                            "name": "succeeder",
+                            "parameters": {},
+                            "child": {
+                              "title": "optional",
+                              "type": "decorator",
+                              "name": "optional",
+                              "parameters": {
+                                "shouldRun": "<onGround>"
+                              },
+                              "child" : {
+                                "title" : "sequence",
+                                "type" : "composite",
+                                "name" : "sequence",
+                                "parameters" : {
+                                  "type" : "sliding",
+                                  "state" : "off",
+                                  "fromEntity" : "attackTarget",
+                                  "toEntity" : "fleeTarget"
+                                },
+                                "children" : [
+                                  { 
+                                    "title": "spawnProjectile",
+                                    "type": "action",
+                                    "name": "spawnProjectile",
+                                    "parameters": {
+                                      "aimVector": "",
+                                      "offset": "<offset>",
+                                      "position": "self",
+                                      "power": "<power>",
+                                      "projectileConfig": "<projectileParameters>",
+                                      "projectileType": "<projectileType>",
+                                      "scalePower": "<scalePower>",
+                                      "sourceEntity": "self",
+                                      "trackSource": false
+                                    }
+                                  },
+                                  {
+                                    "title": "timer",
+                                    "type": "action",
+                                    "name": "timer",
+                                    "parameters": {
+                                      "time": "<projectileInterval>"
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+
                           {
                             "title": "runner",
                             "type": "action",

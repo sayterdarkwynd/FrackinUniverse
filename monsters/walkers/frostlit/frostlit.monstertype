@@ -1,14 +1,14 @@
 {
-  "type" : "iciclit",
+  "type" : "frostlit",
   "shortdescription" : "Frostlit",
   "description" : "Able to spin and spray ice everywhere, these bastards annoy anyone they see.",
 
-  "categories" : [ "iciclit" ],
+  "categories" : [ "frostlit" ],
   "parts" : [ "body" ],
 
-  "animation" : "iciclit.animation",
+  "animation" : "frostlit.animation",
 
-  "dropPools" : [ { "default" : "extraMonsterIce", "bow" : "extraMonsterRockIce" } ],
+  "dropPools" : [ { "default" : "extraMonsterIce", "bow" : "extraMonsterIceHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -37,6 +37,7 @@
           "cooldown" : 2.0,
           "parameters" : {
             "maximumRange" : 20,
+            "minimumRange" : 5,
             "windupTime" : 0.5,
             "winddownTime" : 0.5,
             "chargeSpeed" : 15,
@@ -45,7 +46,27 @@
             "aimAtTarget" : true,
             "wallKnockback" : true,
             "knockbackThreshold": 3,
-            "projectileType" : "iciclittrail"
+
+
+            "projectileType" : "frostlittrail",
+            "projectileParameters" : {},
+            "projectileInterval" : 0.05,
+            "offset" : [0,-1],
+            "power" : 0,
+            "scalePower" : false
+
+          }
+        },
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : 3.5,
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "invulnerablewindup",
+            "winddownTime" : 0.5,
+            "winddownState" : "invulnerablewinddown",
+            "onGround" : true,
+            "invulnerableTime" : 4
           }
         }
 
