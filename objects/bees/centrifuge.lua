@@ -51,8 +51,7 @@ function deciding(item)
     --   return self.itemMapIsotopes[item.name] or self.itemMapLiquids[item.name] or self.itemMapBees[item.name] or self.itemMapFarm[item.name] -- may be nil
     end
   end
-  sb.logInfo("centrifuge.lua: recipe for %s not found in %s, but material was registered", item.name, self.centrifugeType)
-  return nil  -- will probably error out
+  return nil
 end
 
 function update(dt)
