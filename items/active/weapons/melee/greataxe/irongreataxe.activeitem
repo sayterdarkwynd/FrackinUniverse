@@ -1,0 +1,42 @@
+{
+  "itemName" : "irongreataxe",
+  "price" : 300,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A somewhat crude iron greataxe.",
+  "shortdescription" : "Iron Greataxe",
+  "tooltipKind" : "sword",
+  "category" : "greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","greataxe"],
+
+  "inventoryIcon" : "irongreataxe.png",
+
+  "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "irongreataxe.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.8,
+    "baseDps" : 11.5
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "physicalshockwave",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
