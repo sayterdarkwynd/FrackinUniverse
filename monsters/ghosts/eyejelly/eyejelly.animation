@@ -21,6 +21,16 @@
           }
         }
       },
+      "head" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 8,
+            "cycle" : 2
+          }
+        }
+      },      
       "damage" : {
         "priority" : 3,
         "default" : "none",
@@ -95,19 +105,9 @@
           "transformationGroups" : [ "aim", "facing", "body" ]
         },
         "partStates" : {
-          "body" : {
+          "head" : {
             "idle" : {
               "properties" : {
-                  "image" : "<partImage>:idle.<frame>"
-                }
-              },
-              "fly" : {
-                "properties" : {
-                  "image" : "<partImage>:idle.<frame>"
-                }
-              },
-              "charge" : {
-                "properties" : {
                   "image" : "<partImage>:idle.<frame>"
                 }
               }
