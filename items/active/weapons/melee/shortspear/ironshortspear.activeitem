@@ -1,0 +1,42 @@
+{
+  "itemName" : "ironshortspear",
+  "price" : 480,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Doesn't feel so short to enemies.",
+  "shortdescription" : "Iron Shortspear",
+  "tooltipKind" : "sword",
+  "category" : "shortspear",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortspear", "spear"],
+
+  "inventoryIcon" : "ironshortspear.png",
+
+  "animation" : "/items/active/weapons/melee/shortspear/comboshortspear.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "ironshortspear.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+ 
+  "aimOffset" : -1.0,
+  "muzzleOffset" : [0, 1.05],
+  
+  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+  
+  "critChance" : 3,
+  "critBonus" : 4, 
+  
+  "primaryAbilityType" : "shortspearcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 7.5
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

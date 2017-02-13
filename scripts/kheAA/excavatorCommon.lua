@@ -25,8 +25,9 @@ function excavatorCommon.init(drill,pump)
 	delta2=100
 	transferUtil.init()
 	storage.facing=util.clamp(object.direction(),0,1)
-	storage.isDrill=drill
-	storage.isPump=pump
+	storage.isDrill=(drill==true)
+	storage.isPump=(pump==true)
+	storage.isVacuum=(vacuum==true)
 	if drill == true or pump == true then
 		storage.width=0
 		did=true
@@ -35,6 +36,9 @@ function excavatorCommon.init(drill,pump)
 		require "/scripts/kheAA/liquidLib.lua"
 		storage.depth=-1
 		storage.liquids={}
+		did=true
+	end
+	if vacuum then
 		did=true
 	end
 	if did then
@@ -86,9 +90,16 @@ end
 function states.start(dt)
 	if storage.isDrill then
 		storage.state="moveDrillBar"
-	else
+	elseif storage.isPump then
 		storage.state="movePump"
+	elseif storage.isVacuum then
+		storage.state="vacuum"
 	end
+end
+
+function states.vacuum(dt)
+	excavatorCommon.grab(entity.position())
+	storage.state="start"
 end
 
 function states.moveDrillBar(dt)
@@ -160,8 +171,10 @@ end
 
 
 
-function excavatorCommon.grab(grabPos)
-	local drops = world.itemDropQuery(grabPos,5);
+function excavatorCommon.grab(grabPos,range)
+	if range == nil then range = 5 end
+	local drops = world.itemDropQuery(grabPos,range);
+	--local size=world.containerItemsCanFit(storage.containerId,drops[i])
 	for i = 1, #drops do
 		local item = world.takeItemDrop(drops[i]);
 		if item~=nil then
@@ -182,7 +195,9 @@ function states.mine(dt)
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=2
-				excavatorCommon.grab(redrillPosFore)
+				if true or storage.isVacuum then
+					excavatorCommon.grab(redrillPosFore)
+				end
 				return
 			else
 				reDrillLevelFore=0
@@ -192,7 +207,9 @@ function states.mine(dt)
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=0
-				excavatorCommon.grab(redrillPosFore)
+				if true or storage.isVacuum then
+					excavatorCommon.grab(redrillPosFore)
+				end
 				return
 			else
 				reDrillLevelFore=0
@@ -215,7 +232,9 @@ function states.mine(dt)
 			if world.material(redrillPosBack,"background") then
 				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=0
-				excavatorCommon.grab(redrillPosBack)
+				if true or storage.isVacuum then
+					excavatorCommon.grab(redrillPosBack)
+				end
 				return
 			else
 				reDrillLevelBack=0
@@ -261,7 +280,9 @@ function states.mine(dt)
 	storage.drillTarget = excavatorCommon.getNextDrillTarget();
 	deltatime=0.1
 	storage.state = "moveDrill";
-	excavatorCommon.grab(absdrillPos)
+	if true or storage.isVacuum then
+		excavatorCommon.grab(absdrillPos)
+	end
 	
 end
 

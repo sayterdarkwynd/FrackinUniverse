@@ -57,24 +57,65 @@ function isn_getListLength(arg)
 	return listlength
 end
 
-function isn_effectAllInRange(effect,tilerange)
+--<comment>callscriptedentity is restricted to either be client master or server master, wherever it is called from.
+--however: every npc, monster, and player has a message handler for applystatuseffect. unfortunately, it calls addephemeraleffect, which means...
+--we are limited to effectname and duration.</comment>
+--[[function isn_effectAllInRange(effect,tilerange)
 	local targetlist = world.playerQuery(entity.position(),tilerange)
 	sb.logInfo("targetlist = %s",targetlist)
 	for key, value in pairs(targetlist) do
 		world.callScriptedEntity(value,"status.addEphemeralEffect",effect)
 	end
+end]]--
+
+function isn_effectTypesInRange(effect,tilerange,types)
+	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
+	for key, value in pairs(targetlist) do
+		world.sendEntityMessage(value,"applyStatusEffect",effect)
+	end
+end
+function isn_effectPlayersInRange(effect,tilerange)
+	isn_effectTypesInRange(effect,tilerange,{"player"})
+end
+function isn_effectAllInRange(effect,tilerange)
+	isn_effectTypesInRange(effect,tilerange,{"creature"})
 end
 
-function isn_projectileAllInRange(projtype,tilerange)
-	local targetlist = world.playerQuery(entity.position(),tilerange)
+function isn_projectileTypesInRange(projtype,tilerange,types)
+	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
 	for key, value in pairs(targetlist) do
 		world.spawnProjectile(projtype, world.entityPosition(value), entity.id())
 	end
 end
+function isn_projectilePlayersInRange(projtype,tilerange)
+	isn_projectileTypesInRange(projtype,tilerange,{"player"})
+end
+function isn_projectileAllInRange(projtype,tilerange)
+	isn_projectileTypesInRange(projtype,tilerange,{"creature"})
+end
 
-function isn_projectileAllInRectangle(projtype,entpos,xwidth,yheight)
-	local targetlist = world.playerQuery(entpos,{entpos[1]+xwidth, entpos[2]+yheight})
+function isn_projectileTypesInRangeParams(projtype,tilerange,params,types)
+	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
+	for key, value in pairs(targetlist) do
+		world.spawnProjectile(projtype, world.entityPosition(value), entity.id(),{0,0},false,params)
+	end
+end
+function isn_projectilePlayersInRangeParams(projtype,tilerange,params)
+	isn_projectileTypesInRangeParams(projtype,tilerange,params,{"player"})
+end
+function isn_projectileAllInRangeParams(projtype,tilerange,params)
+	isn_projectileTypesInRangeParams(projtype,tilerange,params,{"creature"})
+end
+
+function isn_projectileTypesInRectangle(projtype,entpos,xwidth,yheight,types)
+	local targetlist = world.entityQuery(entpos,{entpos[1]+xwidth, entpos[2]+yheight},{includedTypes=types})
 	for key, value in pairs(targetlist) do
 		world.spawnProjectile(projtype,world.entityPosition(value))
 	end
+end
+function isn_projectilePlayersInRectangle(projtype,entpos,xwidth,yheight)
+	isn_projectileTypesInRectangle(projtype,entpos,xwidth,yheight,{"player"})
+end
+function isn_projectileAllInRectangle(projtype,entpos,xwidth,yheight)
+	isn_projectileTypesInRectangle(projtype,entpos,xwidth,yheight,{"creature"})
 end

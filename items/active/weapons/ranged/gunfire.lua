@@ -5,6 +5,8 @@ require "/scripts/interp.lua"
 GunFire = WeaponAbility:new()
 
 function GunFire:init()
+self.critChance = config.getParameter("critChance", 0)
+self.critBonus = config.getParameter("critBonus", 0)
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
@@ -27,6 +29,13 @@ end
   -- FU Crit Damage Script
 
 function GunFire:setCritDamage(damage)
+	if not self.critChance then 
+		self.critChance = config.getParameter("critChance", 0)
+	end
+	if not self.critBonus then
+		self.critBonus = config.getParameter("critBonus", 0)
+	end
+
      -- check their equipped weapon
      -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
@@ -58,9 +67,6 @@ function GunFire:setCritDamage(damage)
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)
-  if not self.critChance then
-    self.critChance = 0
-  end  
   --critBonus is bonus damage done with crits
   self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
   -- this next modifier only applies if they have a multiply item equipped
@@ -69,9 +75,6 @@ function GunFire:setCritDamage(damage)
   self.critRoll = math.random(200)
   
   --apply the crit
-  if not self.critChance then 
-    self.critChance = 0 
-  end
   local crit = self.critRoll <= self.critChance
     --sb.logInfo("crit roll="..self.critRoll)
   damage = crit and (damage*2) + self.critBonus or damage

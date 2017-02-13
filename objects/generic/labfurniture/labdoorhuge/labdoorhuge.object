@@ -1,0 +1,48 @@
+{
+  "objectName" : "labdoorhuge",
+  "colonyTags" : ["fu","science","door"],
+  "rarity" : "uncommon",
+
+  "category" : "door",
+  "price" : 250,
+  "description" : "This door is made of some sort of bulletproof material.",
+  "shortdescription" : "Huge Lab Door",
+  "race" : "apex",
+
+  "inventoryIcon" : "labdoorhugeicon.png",
+  "orientations" : [
+    {
+      "image" : "labdoorhuge.png:default",
+      "flipImages" : true,
+      "imagePosition" : [-24, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "labdoorhuge.png:default",
+      "imagePosition" : [-24, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "close" : [ "/sfx/objects/apexcooldoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "labdoorhuge.png"
+  },
+  "animationPosition" : [-24, 0],
+
+  "inputNodes" : [ [-2, 9] ],
+  "outputNodes" : [ [0, 0] ]
+}
