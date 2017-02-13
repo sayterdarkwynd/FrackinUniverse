@@ -1,0 +1,29 @@
+{
+  "projectileName" : "eyeslimebubblestart",
+  "image" : "eyeslimebubble.png:start",
+  "orientationLocked" : true,
+  "physics" : "gas",
+  "animationCycle" : 1.0,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 8,
+  "power" : 50,
+  "speed" : 1,
+  "timeToLive" : 1.0,
+  "piercing" : false,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageKind" : "bubble",
+  "actionOnTimeout" : [
+    {
+      "action" : "projectile",
+      "type" : "eyeslimebubblefloat",
+      "inheritDamageFactor" : 2
+    }
+  ],
+  "actionOnHit" : [
+    {
+      "action" : "projectile",
+      "type" : "eyeslimebubblepop",
+      "inheritDamageFactor" : 1
+    }
+  ]
+}
