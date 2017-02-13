@@ -13,7 +13,7 @@ function update()
 end
 
 function transferItem(_, _, itemData)
-	dbg(itemData)
+	--dbg(itemData)
 	--itemData={containerID, index}, item, conf,pos
 	local source = itemData[1][1];
 	if type(source)=="string"then

@@ -53,50 +53,52 @@ function transferUtil.routeItems()
 		if ping1 ~= nil then
 			sourceContainer=ping1
 		end
-		local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
-		local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
-		if ping2 ~= nil then
-			targetContainer=ping2
-		end
-		if targetAwake == true and sourceAwake == true then
-			local sourceItems=world.containerItems(sourceContainer)
-			if sourceItems ~= nil then 
-				for index1,item in pairs(sourceItems) do
-					if transferUtil.checkFilter(item) then
-						if transferUtil.validInputSlot(index1) then
-							if util.tableSize(storage.outputSlots) > 0 then
-								local tempSize=world.containerSize(targetContainer)
-								for index0=0,tempSize-1 do
-									if transferUtil.tFirstIndex(index0+1,storage.outputSlots) > 0 then
-										local leftOverItems=world.containerPutItemsAt(targetContainer,item,index0)
-										if leftOverItems~=nil then
-											world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count-leftOverItems.count)
-											item=leftOverItems
-											break
-										else
-											world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
-											break
+		for targetContainer,targetPos in pairs(storage.outContainers) do
+			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
+			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
+			if ping2 ~= nil then
+				targetContainer=ping2
+			end
+			if targetAwake == true and sourceAwake == true then
+				local sourceItems=world.containerItems(sourceContainer)
+				if sourceItems ~= nil then 
+					for index1,item in pairs(sourceItems) do
+						if transferUtil.checkFilter(item) then
+							if transferUtil.validInputSlot(index1) then
+								if util.tableSize(storage.outputSlots) > 0 then
+									local tempSize=world.containerSize(targetContainer)
+									for index0=0,tempSize-1 do
+										if transferUtil.tFirstIndex(index0+1,storage.outputSlots) > 0 then
+											local leftOverItems=world.containerPutItemsAt(targetContainer,item,index0)
+											if leftOverItems~=nil then
+												world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count-leftOverItems.count)
+												item=leftOverItems
+												break
+											else
+												world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+												break
+											end
 										end
 									end
-								end
-							else
-								local leftOverItems=world.containerAddItems(targetContainer,item)
-								if leftOverItems~=nil then
-									local tempQuantity=item.count-leftOverItems.count
-									if tempQuantity > 0 then
-										world.containerTakeNumItemsAt(sourceContainer,index1-1,tempQuantity)
-										break
-									end
 								else
-									world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+									local leftOverItems=world.containerAddItems(targetContainer,item)
+									if leftOverItems~=nil then
+										local tempQuantity=item.count-leftOverItems.count
+										if tempQuantity > 0 then
+											world.containerTakeNumItemsAt(sourceContainer,index1-1,tempQuantity)
+											break
+										end
+									else
+										world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+									end
 								end
 							end
 						end
 					end
 				end
+			else
+				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
 			end
-		else
-			--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
 		end
 	end
 end
@@ -156,12 +158,42 @@ end
 
 
 function transferUtil.throwItemsAt(target,targetPos,item,drop)
-	if target==nil and targetPos == nil then --handling for stupid shit. really shouldn't happen.
-		world.spawnItem(item,entity.position())
-		return true,item.count
-	elseif util.tableSize(targetPos) ~= 2 then
-		world.spawnItem(item,entity.position())
-		return true,item.count
+	if target==nil and targetPos==nil then
+		if drop then
+			world.spawnItem(item,entity.position())
+			return true,item.count
+		else
+			return false
+		end
+	elseif target==nil then
+		if util.tableSize(targetPos) ~= 2 then
+			if drop then
+				world.spawnItem(item,entity.position())
+				return true,item.count
+			else
+				return false
+			end
+		end
+		target=world.objectAt(targetPos)
+		if world.containerSize(target) == nil or world.containerSize(target) == 0 then
+			if drop then
+				world.spawnItem(item,targetPos)
+				return true,item.count
+			else
+				return false
+			end
+		end
+	elseif targetPos == nil then
+		if world.entityExists(target) then
+			targetPos=world.callScriptedEntity(target,"entity.position")
+		else
+			if drop then
+				world.spawnItem(item,entity.position())
+				return true,item.count
+			else
+				return false
+			end
+		end
 	else
 		local awake,ping=transferUtil.containerAwake(target,targetPos)
 		if awake then
@@ -173,16 +205,12 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 		end
 	end
 	local leftOverItems = world.containerAddItems(target, item)
-	if leftOverItems == nil or leftOverItems.count ~= item.count then
-		if leftOverItems == nil then
+	if leftOverItems ~= nil then
+		if drop then
+			world.spawnItem(leftOverItems,targetPos)
 			return true, item.count
 		else
-			if drop==true then 
-				world.spawnItem(leftOverItems,targetPos)
-				return true, item.count
-			else
-				return true, item.count - leftOverItems.count
-			end
+			return true,item.count-leftOverItems.count
 		end
 	end
 	return false;
