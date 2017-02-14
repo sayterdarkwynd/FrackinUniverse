@@ -20,9 +20,20 @@
             "mode" : "loop"
           },
           "firewindup" : {
+            "frames" : 2,
+            "cycle" : 0.25
+          },
+          "fire" : {
             "frames" : 1,
-            "cycle" : 0.5,
-            "mode" : "loop"
+            "cycle" : 0.25
+          },
+          "altfire" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "firewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.25
           }
         }
       },
@@ -96,7 +107,22 @@
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:firewindup.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "altfire" : {
+              "properties" : {
+                "image" : "<partImage>:altfire.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
               }
             }
           },
@@ -121,6 +147,11 @@
             "idle" : {
               "properties" : {
                   "image" : "<partImage>:idle.<frame>"
+                }
+              },
+            "altfire" : {
+              "properties" : {
+                  "image" : "<partImage>:altfire.<frame>"
                 }
               }
           },  
