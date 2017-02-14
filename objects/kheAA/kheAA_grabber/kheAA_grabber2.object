@@ -1,0 +1,44 @@
+{
+	"objectName" : "network_grabber2",
+	"colonyTags" : ["wired"],
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Grabber made with Titanium. Grabs items from the world. ^blue;Input: power switch, ^red;Output: item network^reset;.",
+	"shortdescription" : "Grabber",
+	"objectType" : "container",
+	"tooltipKind" : "container",
+	"race" : "generic",
+
+	"category" : "wire",
+	"price" : 64,
+
+	"inventoryIcon" : "kheAA_grabbericon.png",
+	"orientations" : [
+		{
+			"image" : "kheAA_grabber.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"scripts" : [ "/objects/kheAA/kheAA_grabber/kheAA_grabber.lua"],
+	"scriptDelta" : 1,
+
+	"animation" : "/objects/kheAA/kheAA_grabber/kheAA_grabber.animation",
+
+	"animationParts" : {
+		"grabber" : "kheAA_grabber.png"
+	},
+	"animationPosition" : [0, 0],
+	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+	"closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+	"slotCount" : 8,
+	"uiConfig" : "/objects/kheAA/kheAA_grabber/kheAA_grabber.config",
+	"frameCooldown" : 5,
+	"autoCloseCooldown" : 3600,
+
+	"inputNodes" : [ [0, 0] ],
+	"outputNodes" : [ [0, 1] ]
+}
