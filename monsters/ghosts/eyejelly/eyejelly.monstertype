@@ -17,8 +17,6 @@
 
     "behavior" : "monster",
 
-    "renderLayer" : "foregroundEntity",
-
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -48,8 +46,6 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "usePathfinding" : false,
-            "excludeLiquidIds" : [3]
           }
         }
       ],
@@ -63,7 +59,7 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "usePathfinding" : false
+            "targetOffset" : [0,8]
           }
         }
       ],
