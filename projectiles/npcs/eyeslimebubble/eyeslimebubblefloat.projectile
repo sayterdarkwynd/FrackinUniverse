@@ -2,17 +2,19 @@
   "projectileName" : "eyeslimebubblefloat",
   "image" : "eyeslimebubble.png:float",
   "orientationLocked" : true,
-  "physics" : "bigbubble",
+  "flippable" : true,
+  "physics" : "gas",
   "animationCycle" : 0.6,
   "damageKindImage" : "icon.png",
   "frameNumber" : 2,
   "power" : 50,
-  "speed" : 10,
+  "speed" : 0,
   "timeToLive" : 2,
   "piercing" : false,
   "damagePoly" : [ [-16, 0], [-12, -12], [0, -16], [12, -12], [16, 0], [12, 12], [0, 16], [-12, 12] ],
-  "damageKind" : "bubble",
+  "damageKind" : "poisonplasma",
   "emitters" : [ "poisondrip" ],
+  "statusEffects" : [ {"effect" : "slimeslow", "duration" : 2.5}],
   "actionOnReap" : [
     {
       "action" : "projectile",
@@ -22,37 +24,38 @@
     {
       "action" : "projectile",
       "type" : "goocluster",
-      "fuzzAngle" : 360,
-      "inheritDamageFactor" : 0.25,
-      "angleAdjust" : 0
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 45,
+      "projectileConfig" : {
+        "bounces" : -1
+      }
     },
     {
       "action" : "projectile",
       "type" : "goocluster",
-      "fuzzAngle" : 360,
-      "inheritDamageFactor" : 0.25,
-      "angleAdjust" : 0
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 135,
+      "projectileConfig" : {
+        "bounces" : -1
+      }
     },
     {
       "action" : "projectile",
       "type" : "goocluster",
-      "fuzzAngle" : 360,
-      "inheritDamageFactor" : 0.25,
-      "angleAdjust" : 0
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 225,
+      "projectileConfig" : {
+        "bounces" : -1
+      }
     },
     {
       "action" : "projectile",
       "type" : "goocluster",
-      "fuzzAngle" : 360,
-      "inheritDamageFactor" : 0.25,
-      "angleAdjust" : 0
-    },
-    {
-      "action" : "projectile",
-      "type" : "goocluster",
-      "fuzzAngle" : 360,
-      "inheritDamageFactor" : 0.25,
-      "angleAdjust" : 0
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 325,
+      "projectileConfig" : {
+        "bounces" : -1
+      }
     },
     {
       "action" : "sound",

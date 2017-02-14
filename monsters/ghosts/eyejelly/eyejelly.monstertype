@@ -8,7 +8,7 @@
 
   "animation" : "eyejelly.animation",
 
-  "dropPools" : [ { "default" : "extraMonsterPoison", "bow" : "extraMonsterPoisonHunting" } ],
+  "dropPools" : [ { "default" : "slimemonsterTreasure" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -16,8 +16,7 @@
     ],
 
     "behavior" : "monster",
-
-    "renderLayer" : "foregroundEntity",
+    "deathbehavior" : "monster-death",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -39,7 +38,59 @@
       "fleeActions" : [ ],
 
       "hostileActions" : [
-
+        {
+         "name" : "action-fire",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 20,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+            "projectileType" : "snotblock",
+            "power" : 10,
+            "speed" : 5,
+            "fireOffset" : [0.75, 0.25],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+            "fireDelay" : 0.25,
+            "fireArc": true,
+            "rotateAim" : false,
+            "projectileSpeed": 50,
+            "gravityMultiplier": 0.6,
+            "winddownState" : "firewinddown",
+            "winddownTime" : 1.5
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 20,
+            "minimumRange" : 5,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+            "projectileType" : "eyeslimebubblestart",
+            "power" : 10,
+            "fireOffset" : [0.0, -4],
+            "aimDirection" : [0,0],
+            "faceTarget" : false,
+            "aimAtTarget" : false,
+            "onGround" : false,
+            "fireState" : "altfire",
+            "fireSound" : "fire",
+            "fireDelay" : 0.25,
+            "rotateAim" : false,
+            "rotatedOffset" : [0,-1],
+            "projectileSpeed": 50,
+            "gravityMultiplier": 0.6,
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.5
+          }
+        }
       ],
 
       "periodicActions" : [ ],
@@ -48,8 +99,9 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "usePathfinding" : false,
-            "excludeLiquidIds" : [3]
+            "targetOffset" : [0,8],
+            "minRange" : 4,
+            "maxRange" : 8
           }
         }
       ],
@@ -63,7 +115,6 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "usePathfinding" : false
           }
         }
       ],
@@ -74,59 +125,46 @@
         }
       ],
 
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "eyejellyslime",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 1]
+          }
+        }
+      ],
+
       "concurrentActions" : [  ],
 
       "concurrentHostileActions" : [ 
         {
-          "name" : "action-fire",
-          "cooldown" : 2.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 5,
-            "windupTime" : 2.0,
-            "windupStopForce" : 50,
-            "windupState" : "fly",
-            "onGround" : "false",
-            "projectileType" : "snotblock",
-            "power" : 10,
-            "fireOffset" : [0, 0],
-            "fireSound" : "fire",
-            "fireState" : "",
-            "fireDelay" : 0.0,
-            "rotateAim" : true,
-            "rotatedOffset" : [0,1],
-            "winddownState" : "",
-            "winddownTime" : 0.0
-          }
-        },
-        {
-          "name" : "action-projectile",
-          "cooldown" : 2.0,
-          "parameters" : {
-            "aimDirection" : [-1,0],
-            "projectileType" : "eyeslimebubblestart"
-          }
+          "name" : "action-aim-head"
         }
        ]
     },
 
     "touchDamage" : {
-      "poly" : [ [-3,-4], [3,-4], [4,-3], [4,3], [3,4], [-3,4], [-4,3], [-4,-3] ],
+      "poly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
       "damage" : 9,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "poison",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ {"effect" : "slimeslow", "duration" : 2.5} ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionEnabled" : false,
-      "collisionPoly" : [ [-3,-4], [3,-4], [4,-3], [4,3], [3,4], [-3,4], [-4,3], [-4,-3] ],
+      "collisionEnabled" : true,
+      "collisionPoly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
 
       "mass" : 1.0,
       "walkSpeed" : 4,
@@ -134,8 +172,8 @@
       "gravityEnabled" : false,
 
       "airFriction" : 2.0,
-      "airForce" : 25,
-      "flySpeed" : 8
+      "airForce" : 40,
+      "flySpeed" : 15
     },
 
     "bodyMaterialKind" : "organic",
@@ -166,7 +204,7 @@
           "baseValue" : 0.25
         },
         "knockbackThreshold" : {
-          "baseValue" : 3
+          "baseValue" : 9
         },
         "maxHealth" : {
           "baseValue" : 192
