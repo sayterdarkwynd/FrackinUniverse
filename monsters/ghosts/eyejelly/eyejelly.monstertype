@@ -40,11 +40,11 @@
       "hostileActions" : [
         {
          "name" : "action-fire",
-          "cooldown" : 4.0,
+          "cooldown" : 1.0,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 30,
-            "minimumRange" : 20,
+            "minimumRange" : 15,
             "windupState" : "firewindup",
             "windupTime" : 0.5,
             "projectileType" : "snotblock",
@@ -61,12 +61,12 @@
             "projectileSpeed": 50,
             "gravityMultiplier": 0.6,
             "winddownState" : "firewinddown",
-            "winddownTime" : 1.5
+            "winddownTime" : 0.5
           }
         },
         {
           "name" : "action-fire",
-          "cooldown" : 4.0,
+          "cooldown" : 3.5,
           "parameters" : {
             "requireLineOfSight" : false,
             "maximumRange" : 20,
@@ -83,10 +83,7 @@
             "fireState" : "altfire",
             "fireSound" : "fire",
             "fireDelay" : 0.25,
-            "rotateAim" : false,
             "rotatedOffset" : [0,-1],
-            "projectileSpeed": 50,
-            "gravityMultiplier": 0.6,
             "winddownState" : "firewinddown",
             "winddownTime" : 0.5
           }
@@ -100,8 +97,8 @@
           "name" : "approach-fly",
           "parameters" : {
             "targetOffset" : [0,8],
-            "minRange" : 4,
-            "maxRange" : 8
+            "minRange" : 5,
+            "maxRange" : 20
           }
         }
       ],
