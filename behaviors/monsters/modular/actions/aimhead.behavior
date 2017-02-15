@@ -12,7 +12,8 @@
     "/scripts/actions/movement.lua"
   ],
   "parameters": {
-  "rotateAim" : true
+  "rotateAim" : true,
+  "headOffest" : [0,0]
   },
   "root": {
     "title": "sequence",
@@ -64,6 +65,18 @@
                     "parameters": {
                       "transformationGroup": "aim"
                     }
+                  },  
+                  {
+                    "title": "offsetPosition",
+                    "type": "action",
+                    "name": "offsetPosition",
+                    "parameters": {
+                      "offset": "<headOffset>",
+                      "position": "self"
+                    },
+                    "output": {
+                      "position": "offsetPosition"
+                    }
                   },
                   {
                     "title": "entityAngle",
@@ -73,7 +86,7 @@
                       "entity": "target",
                       "facingDirection": "facingDirection",
                       "heading": "heading",
-                      "position": "self"
+                      "position": "offsetPosition"
                     },
                     "output": {
                       "angle": "entityAngle"
@@ -81,6 +94,15 @@
                   }
                 ]
               },
+              {
+                "title": "transform",
+                "type": "action",
+                "name": "transform",
+                "parameters": {
+                  "group": "aim",
+                  "translation": "<headOffset>"
+                }
+              },              
               {
                 "title": "transform",
                 "type": "action",
