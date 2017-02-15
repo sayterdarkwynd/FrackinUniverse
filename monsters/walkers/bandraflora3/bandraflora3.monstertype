@@ -1,12 +1,12 @@
 {
-  "type" : "bandraflora",
-  "shortdescription" : "Bandraflora",
-  "description" : "It loves spewing out annoying little buggers.",
+  "type" : "bandraflora3",
+  "shortdescription" : "Rajaflora",
+  "description" : "A mutation of the common genus.",
 
-  "categories" : [ "bandraflora" ],
+  "categories" : [ "bandraflora3" ],
   "parts" : [ "body" ],
 
-  "animation" : "bandraflora.animation",
+  "animation" : "bandraflora3.animation",
 
   "dropPools" : [ { "default" : "mandrafloraTreasure", "bow" : "mandrafloraHunting" } ],
 
@@ -33,15 +33,40 @@
 
       "hostileActions" : [
         {
-          "name" : "action-charge",
+          "name" : "action-fire",
+          "cooldown" : 1,
           "parameters" : {
-            "maximumRange" : 35,
+            "maximumRange" : 5,
+            "minimumRange" : 1,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.2,
+
+            "projectileType" : "webblast",
+            "fireOffset" : [3, -0.7],
+
+            "aimAtTarget" : true,
+
+            "inaccuracy" : 0.04,
+            "power" : 8,
+            "speed": 40,
+            "fireSound" : "fire",
+            "fireState" : "charge",
+
+
+            "winddownState" : "chargewinddown"
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "maximumRange" : 12,
             "windupTime" : 0.6,
 
             "aimAtTarget" : true,
-            "chargeTime" : 2,
+            "chargeTime" : 3,
             "chargeSpeed" : 40,
-            "chargeControlForce" : 600,
+            "chargeControlForce" : 2200,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
@@ -90,7 +115,7 @@
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 2,
-            "projectileType" : "mandrafloraeye",
+            "projectileType" : "blistergunexplosion",
             "projectileParameters" : {},
             "power" : 0,
             "aimDirection" : [1, 1],
@@ -102,30 +127,15 @@
       
       "concurrentHostileActions" : [ 
         {
-          "name" : "action-projectile",
-          "cooldown" : 0.5,
+          "name" : "action-statuseffect", 
+          "cooldown" : 5,
           "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "poisonballoon",
-            "projectileParameters" : {},
-            "power" : 0,
-            "aimDirection" : [1, 1],
-            "inaccuracy" : 3.5,
-            "fireOffset" : [0, 0]
+          "effect" : "lowgrav",
+          "duration" : 5
           }
-        }       
+        }
       ],
       
-      "concurrentActions" : [
-        {
-          "name" : "action-spawncompanions",
-          "parameters" : {
-            "maxCount" : 5,
-            "spawnCooldown" : 5.0,
-            "monsterType" : "bulbop2"
-          }
-        }       
-      ],
       
       "wanderActions" : [
         {

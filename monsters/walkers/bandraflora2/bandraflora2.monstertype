@@ -1,12 +1,12 @@
 {
-  "type" : "bandraflora",
-  "shortdescription" : "Bandraflora",
-  "description" : "It loves spewing out annoying little buggers.",
+  "type" : "bandraflora2",
+  "shortdescription" : "Keldraflora",
+  "description" : "A variation of the standard genus with tar-laden cells",
 
-  "categories" : [ "bandraflora" ],
+  "categories" : [ "bandraflora2" ],
   "parts" : [ "body" ],
 
-  "animation" : "bandraflora.animation",
+  "animation" : "bandraflora2.animation",
 
   "dropPools" : [ { "default" : "mandrafloraTreasure", "bow" : "mandrafloraHunting" } ],
 
@@ -33,21 +33,30 @@
 
       "hostileActions" : [
         {
-          "name" : "action-charge",
+          "name" : "action-fire",
+          "cooldown" : 0.2,
           "parameters" : {
-            "maximumRange" : 35,
-            "windupTime" : 0.6,
+            "maximumRange" : 30,
+            "minimumRange" : 3,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.2,
+
+            "projectileType" : "futarball3",
+            "fireOffset" : [3, -0.7],
 
             "aimAtTarget" : true,
-            "chargeTime" : 2,
-            "chargeSpeed" : 40,
-            "chargeControlForce" : 600,
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
+            "projectileCount" : 12,
+            "inaccuracy" : 1,
+            "aimDirection" : [0,1],
+            "power" : 3,
+            "speed": 30,
+            "fireSound" : "fire",
+            "fireState" : "charge",
 
-            "winddownTime" : 0.6
+
+            "winddownState" : "chargewinddown"
           }
-        }
+        }   
       ],
 
       "periodicActions" : [],
@@ -106,7 +115,7 @@
           "cooldown" : 0.5,
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "poisonballoon",
+            "projectileType" : "ectoboom",
             "projectileParameters" : {},
             "power" : 0,
             "aimDirection" : [1, 1],
@@ -116,16 +125,6 @@
         }       
       ],
       
-      "concurrentActions" : [
-        {
-          "name" : "action-spawncompanions",
-          "parameters" : {
-            "maxCount" : 5,
-            "spawnCooldown" : 5.0,
-            "monsterType" : "bulbop2"
-          }
-        }       
-      ],
       
       "wanderActions" : [
         {
@@ -145,7 +144,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "weakpoison" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
