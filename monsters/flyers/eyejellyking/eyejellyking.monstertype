@@ -40,9 +40,14 @@
 
       "periodicActions" : [ ],
 
-      "approachActions" : [
+      "approachActions" :[
         {
-          "name" : "wander-fly"
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,8],
+            "minRange" : 10,
+            "maxRange" : 25
+          }
         }
       ],
 
@@ -60,9 +65,6 @@
       ],
 
       "wanderActions" : [
-        {
-          "name" : "wander-fly"
-        }
       ],
 
       "deathActions" : [ ],
@@ -71,7 +73,10 @@
 
       "concurrentHostileActions" : [ 
         {
-          "name" : "action-aim-head"
+          "name" : "action-aim-head",
+          "parameters" : {
+            "headOffset" : [0,5]
+          }
         }
        ]
     },

@@ -13,7 +13,8 @@
   ],
   "parameters": {
   "rotateAim" : true,
-  "headOffset" : [0,0]
+  "headOffset" : [0,0],
+  "lockBody" : false
   },
   "root": {
     "title": "sequence",
@@ -85,7 +86,7 @@
                     "parameters": {
                       "entity": "target",
                       "facingDirection": "facingDirection",
-                      "heading": "heading",
+                      "heading": "heading,
                       "position": "offsetPosition"
                     },
                     "output": {
@@ -100,24 +101,15 @@
                 "name": "transform",
                 "parameters": {
                   "group": "aim",
-                  "translation": "<headOffset>"
-                }
-              },              
-              {
-                "title": "transform",
-                "type": "action",
-                "name": "transform",
-                "parameters": {
-                  "group": "aim",
                   "rotation": "entityAngle",
-                  "rotationCenter": [0,0]
+                  "rotationCenter": [0,0],
+                  "translation": "<headOffset>"
                 }
               }
             ]
           }
         }
       }
-
     ]
   }
 }
