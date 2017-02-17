@@ -441,6 +441,7 @@ function getRecipes()
 	{ inputs = { boltbulbseed = 1 }, outputs = { coil = { 1, 1, 2 } } },
 	{ inputs = { bonebooseed = 1 }, outputs = { bone = { 2, 2, 3 } } },
 	{ inputs = { brackentreeseed = 1 }, outputs = { silk = { 4, 4, 5 } } },
+	{ inputs = { silkfibre = 5 }, outputs = { silk = { 1, 2, 3 } } },
 	{ inputs = { caprioleplantseed = 1 }, outputs = { geneticmaterial = { 3, 3, 4 } } },
 	{ inputs = { carrotseed = 1 }, outputs = { cellmateria = { 2, 2, 3 } } },
 	{ inputs = { cellpodsplant = 1 }, outputs = { geneticmaterial = { 5, 5, 7 } }, timeScale = { 6.6666666666667, 11.111111111111, 50 } },
