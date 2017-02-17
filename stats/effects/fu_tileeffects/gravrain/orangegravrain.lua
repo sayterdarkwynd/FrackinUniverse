@@ -1,4 +1,5 @@
 --deprecated code
+
 --[[function init()
   self.gravityModifier = config.getParameter("gravityModifier")
   self.movementParams = mcontroller.baseParameters()

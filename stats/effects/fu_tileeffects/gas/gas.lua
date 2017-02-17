@@ -1,9 +1,11 @@
 function init()
-  self.gravityModifier = config.getParameter("gravityModifier")
+  unifiedGravMod.init()
+  self.gravityMod = config.getParameter("gravityMod",0)
+  status.addStatModifierGroup({effect="gravityMod",amount=self.gravityMod})
   self.movementParams = mcontroller.baseParameters()
   activateVisualEffects()
   self.liquidMovementParameter = {
-    gravityMultiplier = 1.5,
+    --gravityMultiplier = 1.5,
     groundForce = 100,
     airForce = 20,
     airFriction = 0,
@@ -35,8 +37,4 @@ end
 
 function update(dt)
   mcontroller.controlParameters(self.liquidMovementParameter)
-end
-
-function uninit()
-
 end

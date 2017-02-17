@@ -1,9 +1,13 @@
+require "/scripts/unifiedGravMod.lua"
+
 function init()
-  self.gravityModifier = config.getParameter("gravityModifier")
-  self.movementParams = mcontroller.baseParameters()
+	unifiedGravMod.init()
+	
+  --self.gravityModifier = config.getParameter("gravityModifier")
+  --self.movementParams = mcontroller.baseParameters()
   activateVisualEffects()
   self.liquidMovementParameter = {
-    gravityMultiplier = 0.75,
+    --gravityMultiplier = 0.75,
     groundForce = 80,
     airForce = 50,
     airFriction = 0.5,
@@ -37,8 +41,5 @@ end
 
 function update(dt)
   mcontroller.controlParameters(self.liquidMovementParameter)
-end
-
-function uninit()
-
+  unifiedGravMod.refreshGravity()
 end

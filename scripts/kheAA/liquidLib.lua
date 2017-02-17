@@ -1,6 +1,7 @@
 liquidLib = {}
 liquidLib.liquidIds={}
 liquidLib.liquidIds[100]="liquidaether";
+liquidLib.liquidIds[70]="liquidorangegravrain";
 liquidLib.liquidIds[69]="liquidwastewater";
 liquidLib.liquidIds[68]="liquidmetallichydrogen";
 liquidLib.liquidIds[67]="liquiddeuterium";
@@ -50,7 +51,7 @@ function liquidLib.init()
 end
 
 function liquidLib.itemToLiquidId(item)
-	for i,v in liquidLib.liquidIds do
+	for i,v in pairs(liquidLib.liquidIds) do
 		if item.name==v then
 			return i
 		end 
@@ -59,7 +60,7 @@ function liquidLib.itemToLiquidId(item)
 end
 
 function liquidLib.itemToLiquidLevel(itemDescriptor)
-	for i,v in ipairs(liquidLib.liquidIds) do
+	for i,v in pairs(liquidLib.liquidIds) do
 		if itemDescriptor.name==v then
 			return {i,itemDescriptor.count}
 		end 
@@ -90,7 +91,7 @@ function liquidLib.liquidToItem(liquidId,level)
 end
 
 function liquidLib.canReceiveLiquid()
-	if receiveLiquid~=nil then
+	if receiveLiquid==true then
 		return true
 	end
 	return nil
@@ -114,37 +115,33 @@ function liquidLib.doPump()
 				local spawned = world.spawnLiquid(pos, i, math.min(1, v));
 				if spawned then
 					storage.liquids[i] = v - math.min(1, v);
-					return;
+					break;
 				end
 			end
 		end
-	elseif storage.liquids[liquid[1]] ~= nil and storage.liquids[liquid[1]] then
-		if liquid[2] < 1 then
+	elseif (storage.liquids[liquid[1]] ~= nil) and (storage.liquids[liquid[1]]>0) then
+		if (liquid[2] < 1) and (storage.liquids[liquid[1]] > -1) then
 			local spawned = world.spawnLiquid(pos, liquid[1], 1 - liquid[2]);
 			if spawned then
 				storage.liquids[liquid[1]] = storage.liquids[liquid[1]] - (1 - liquid[2]);
-				return;
 			end
 		end
 	end
 	
 	local items = world.containerItems(entity.id());
 	
-	if items[1] ~= nil then
-		liquidLib.tryConsumeLiquid(items[1]);
+	if items ~= nil then
+		for slot,item in pairs(items) do
+			if liquidLib.tryConsumeLiqitem(items[1]) then break end
+		end
 	end
 
 end
 
-function liquidLib.tryConsumeLiquid(item)
-	local liquidId = -1;
-	for i,v in pairs(liquidLib.liquidIds) do
-		if v == item.name then
-			liquidId = i;
-		end
-	end
-	if liquidId == -1 then
-		return;
+function liquidLib.tryConsumeLiqitem(item)
+	local liquidId = liquidLib.itemToLiquidId(item)
+	if liquidId == nil then
+		return false;
 	end
 	if storage.liquids[liquidId] == nil then
 		storage.liquids[liquidId] = 0;
@@ -155,6 +152,9 @@ function liquidLib.tryConsumeLiquid(item)
 		if consumed then
 			storage.liquids[liquidId] = storage.liquids[liquidId] + 1;
 		end
+	else
+		return false
 	end
+	return true
 end
 
