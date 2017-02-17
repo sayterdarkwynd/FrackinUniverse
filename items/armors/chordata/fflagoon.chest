@@ -1,19 +1,20 @@
 {
-  "itemName" : "boosterchest",
-  "price" : 75,
+  "itemName" : "fflagoonchest",
   "inventoryIcon" : "icons.png:chest",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "Popular lower-street wear. Increases Crit Chance.",
-  "shortdescription" : "Booster Croptop",
+  "rarity" : "uncommon",
+  "description" : "This swampy chestpiece is covered in scales. ^cyan;Set bonus: 55% Poison Resist,+ Breath, Poison + Proto immunity^reset;.",
+  "shortdescription" : "Chordata Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-
+"level" : 5,
   "femaleFrames" : {
     "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
@@ -23,27 +24,33 @@
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.35
+      "baseMultiplier" : 2.25
     },
 
     {
       "stat" : "protection",
-      "amount" : 4
+      "amount" : 32
+    },
+
+    {
+      "stat" : "maxEnergy",
+      "amount" : 32
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 3
+      "amount" : 60
     },
-
+    "fishmansetbonus",
     {
-      "stat" : "maxHealth",
-      "amount" : 3
-    },
-    "armorcritbonus"
+      "stat" : "fu_fishmanset_chest",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [
+    /* BLUE */
+    { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
     /* BLACK */
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
     /* GREY */
@@ -66,6 +73,7 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
-}
 
+  ],
+  "collectablesOnPickup" : { "fu_armorsmith" : "fflagoonchest" }
+}

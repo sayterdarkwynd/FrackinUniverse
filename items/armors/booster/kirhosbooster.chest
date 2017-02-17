@@ -1,32 +1,44 @@
 {
-  "itemName" : "boosterlegs",
-  "price" : 35,
-  "type" : "Legs",
-  "inventoryIcon" : "icons.png:pants",
+  "itemName" : "boosterchest",
+  "price" : 75,
+  "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Popular lower-street wear. Increases Crit Chance.",
-  "shortdescription" : "Booster Pants",
-  "category" : "legarmour",
+  "description" : "Popular lower-street wear. +5% Crit Chance.",
+  "shortdescription" : "Booster Croptop",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
 
-  "maleFrames" : "pantsm.png",
-  "femaleFrames" : "pantsf.png",
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
 
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
+      "baseMultiplier" : 1.35
     },
 
     {
       "stat" : "protection",
-      "amount" : 2
+      "amount" : 4
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 4
+      "amount" : 3
+    },
+
+    {
+      "stat" : "maxHealth",
+      "amount" : 3
     },
     "armorcritbonus"
   ],
@@ -54,7 +66,6 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ],
-
-  "learnBluePrintsOnPickUp" : ["boosterlegs"]
+  ]
 }
+
