@@ -4,8 +4,8 @@ function init()
 	setBonusInit("fu_slimeset", {
 	    {stat = "protoImmunity", amount = 1},
 	    {stat = "wetImmunity", amount = 1},
-	    {stat = "poisonResistance", baseMultiplier = 0.35},
-	    {stat = "poisonStatusImmunity", baseMultiplier = 1},
+	    {stat = "poisonResistance", amount = 0.35},
+	    {stat = "poisonStatusImmunity", amount = 1},
 	    {stat = "slimestickImmunity", amount = 1},
 	    {stat = "slimefrictionImmunity", amount = 1},
 	    {stat = "slimeImmunity", amount = 1}
