@@ -1,0 +1,42 @@
+{
+  "itemName" : "fubonearmorhead",
+  "inventoryIcon" : "icons.png:head",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "^cyan;Set Bonus^reset; : ^green;+25% Fall Damage^reset;. On Forests, Lush and Deserts gain ^green;+5% Health, Power^reset; and ^green;Physical Resistance^reset;",
+  "shortdescription" : "Bone Mask",
+  "category" : "^#e43774;Upgradeable Armor^reset;",
+  "tooltipKind" : "armornew2",
+  "learnBlueprintsOnPickup" : [ "fubonearmor2head" ],
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
+"level" : 1,
+  "statusEffects" : [
+    {
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },  
+    {
+      "stat" : "protection",
+      "amount" : 7
+    },
+
+    {
+      "stat" : "maxEnergy",
+      "amount" : 4
+    },
+
+    {
+      "stat" : "maxHealth",
+      "amount" : 4
+    },
+    "bonesetbonus",
+    {
+      "stat" : "fu_boneset_head",
+      "amount" : 1
+    }         
+  ],
+  "collectablesOnPickup" : { "fu_armorsmith" : "fubonearmorhead" }
+}

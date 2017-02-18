@@ -1,0 +1,105 @@
+{
+  "itemName" : "prismaticbow",
+  "price" : 960,
+  "inventoryIcon" : "yorunoyumiicon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "tooltipKind" : "bow",
+  "category" : "bow",
+  "description" : "Pulsing with cosmic energy",
+  "shortdescription" : "Prismatic Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 4,
+
+  "animation" : "/items/active/weapons/bow/energybow.animation",
+  "animationParts" : {
+    "bow" : "yorunoyumi.png",
+    "bowFullbright" : "yorunoyumifullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "bow" : { "properties" : {
+        "offset" : [0, 0]
+      }},
+      "bowFullbright" : { "properties" : {
+        "offset" : [0, 0]
+      }}
+    }},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/melee/laser_weapon_swing2.ogg" ],
+      "perfectRelease" : [ "/sfx/melee/laser_weapon_swing1.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "critChance" : 3,
+  "critBonus" : 9,
+  
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "drawSpeedMultiplier" : "constant",
+    "projectileType" : "energyarrow",
+    "powerProjectileType" : "chargedenergyarrow",
+    "projectileParameters" : {
+      "power" : 6.5
+    }
+  },
+
+  "altAbilityType" : "bowshot",
+  "altAbility" : {
+    "name" : "Chaos Arrow",
+    "energyPerShot" : 100,
+    "drawSpeedMultiplier" : "constant",
+    "projectileType" : "energyarrow",
+    "powerProjectileType" : "energyarrow",
+    "projectileParameters" : {
+      "power" : 8,
+      "speed" : 100,
+      "actionOnReap" : [
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : -50,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : -25,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : 0,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : 25,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : 50,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        }
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}
