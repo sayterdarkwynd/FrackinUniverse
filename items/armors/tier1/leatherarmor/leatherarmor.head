@@ -5,9 +5,9 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "category" : "headarmour",
-  "description" : "Durable boiled leather armor. ^cyan;Set Bonus: +25% Knockback Resist, +10% Power, +20% Fire Resistance^reset;",
+  "description" : "Durable boiled leather armor. ^cyan;Set Bonus^reset; : ^green;+10% Knockback Resist^reset;, ^green;+5% Speed^reset;, ^green;+5% Crit Chance^reset;, ^green;Additional 5% energy and 10% knockback resistance^reset; on Lush and Desert biomes",
   "shortdescription" : "Leather Cap",
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
@@ -15,34 +15,32 @@
 
   "level" : 1,
   "statusEffects" : [
+    {
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },
+
+    {
+      "stat" : "protection",
+      "amount" : 6.5
+    },
+
+    {
+      "stat" : "maxEnergy",
+      "amount" : 3
+    },
+
+    {
+      "stat" : "maxHealth",
+      "amount" : 3
+    },  
     "leathersetbonus",
     {
       "stat" : "fu_leatherset_head",
       "amount" : 1
     } 
   ],
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1475
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.275
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 3.12
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 2.75
-    }
-  ],
+
 
   "colorOptions" : [
     // BROWN

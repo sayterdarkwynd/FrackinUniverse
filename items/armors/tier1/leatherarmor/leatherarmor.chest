@@ -5,9 +5,9 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "category" : "chestarmour",
-  "description" : "Durable boiled leather armor. ^cyan;Set Bonus: +25% Knockback Resist, +10% Power, +20% Fire Resistance^reset;",
+  "description" : "Durable boiled leather armor. ^cyan;Set Bonus^reset; : ^green;+10% Knockback Resist^reset;, ^green;+5% Speed^reset;, ^green;+5% Crit Chance^reset;, ^green;Additional 5% energy and 10% knockback resistance^reset; on Lush and Desert biomes",
   "shortdescription" : "Leather Jerkin",
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : {
     "body" : "chest.png",
@@ -24,33 +24,30 @@
   "level" : 1,
 
   "statusEffects" : [
+    {
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.24
+    },
+
+    {
+      "stat" : "protection",
+      "amount" : 11
+    },
+
+    {
+      "stat" : "maxEnergy",
+      "amount" : 5
+    },
+
+    {
+      "stat" : "maxHealth",
+      "amount" : 5
+    },
     "leathersetbonus",
     {
       "stat" : "fu_leatherset_chest",
       "amount" : 1
     } 
-  ],
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.20
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.455
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 5.12
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 4.5
-    }
   ],
 
 
