@@ -1,0 +1,51 @@
+{
+  "projectileName" : "eyeslimerain",
+  "timeToLive" : 0.1,
+    "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "snotblock",
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 30,
+      "parameters" : {
+        "damageKind"  : "poison",
+        "statusEffects" : [ {"effect" : "slimeslow", "duration" : 2.5} ]
+      }
+    },
+    {
+      "action" : "projectile",
+      "type" : "snotblock",
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 60,
+      "parameters" : {
+        "damageKind"  : "poison",
+        "statusEffects" : [ {"effect" : "slimeslow", "duration" : 2.5} ]
+      }
+    },
+    {
+      "action" : "projectile",
+      "type" : "snotblock",
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : -30,
+      "parameters" : {
+        "damageKind"  : "poison",
+        "statusEffects" : [ {"effect" : "slimeslow", "duration" : 2.5} ]
+      }
+    },
+    {
+      "action" : "projectile",
+      "type" : "snotblock",
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : -60,
+      "parameters" : {
+        "damageKind"  : "poison",
+        "statusEffects" : [ {"effect" : "slimeslow", "duration" : 2.5} ]
+      }
+    }
+  ],
+  "speed" : 0,
+  "power" : 5,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}
