@@ -1,0 +1,23 @@
+{
+	"projectileName": "gravbomb",
+	"physics": "grenade",
+	"bounces": -1,
+	"timeToLive": 3,
+	"image": "gravbomb2.png",
+	"animationCycle": 5,
+	"frameNumber": 7,
+	"actionOnReap": [
+		{
+			"action": "projectile",
+			"type": "iceexplosionknockback",
+			"config": {
+				"power" : 0,
+				"statusEffects": [{"effect":"orangegravrain","duration":8}]
+			}
+		}
+	],
+	"power": 0,
+	"damageType": "NoDamage",
+	"damageKind": "default",
+	"emitters": ["sparks"]
+}

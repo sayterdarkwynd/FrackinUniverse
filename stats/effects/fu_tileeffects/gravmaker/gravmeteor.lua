@@ -3,15 +3,15 @@
 
 function init()
 	self.baseParams = mcontroller.baseParameters()
-	activateVisualEffects()
+	--activateVisualEffects()
 	--self.bounds=poly.boundBox(mcontroller.baseParameters().standingPoly)
 end
 
-function activateVisualEffects()
+--[[function activateVisualEffects()
 	local statusTextRegion = { 0, 1, 0, 1 }
 	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
 	animator.burstParticleEmitter("statustext")
-end
+end]]--
 
 function update(dt)
 	if self.baseParams.collisionEnabled then
@@ -19,7 +19,6 @@ function update(dt)
 		mcontroller.controlParameters(self.newParams)
 	end
 end
-
 
 --junk for work on antigrav movement effects. useless currently.
 	--if mcontroller.jumping() then
