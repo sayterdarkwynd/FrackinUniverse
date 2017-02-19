@@ -1,96 +1,67 @@
 {
-  "type" : "eyejelly",
-  "shortdescription" : "eyejelly",
-  "description" : "An eye immersed in a viscous fluid",
+  "type" : "eyejellykingspawn",
+  "shortdescription" : "eyejellykingspawn",
+  "description" : "The eye of king jelly",
 
-  "categories" : [ "eyejelly" ],
-  "parts" : [ "body", "head" ],
+  "categories" : [ "eyejellykingspawn" ],
+  "parts" : [ "body" ],
 
-  "animation" : "eyejelly.animation",
+  "animation" : "eyejellykingspawn.animation",
 
-  "dropPools" : [ { "default" : "slimemonsterTreasure" } ],
+  "dropPools" : [ ],
 
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
     ],
 
-    "behavior" : "monster",
-    "deathBehavior" : "monster-death",
+    "rotationOffset" : 0.0,
 
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 35,
+      "targetQueryRange" : 20,
       "targetOnDamage" : true,
-      "keepTargetInSight" : false,
+      "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
-
-      "hurtTime" : 0.25,
-      "hurtWaitForGround" : false,
-
-      "damageTakenActions" : [
-      ],
 
       "foundTargetActions" : [ ],
 
       "fleeActions" : [ ],
 
       "hostileActions" : [
+
         {
-         "name" : "action-fire",
-          "cooldown" : 4.0,
+          "name" : "action-splash-charge",
+          "cooldown" : 1.5,
           "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 30,
-            "minimumRange" : 20,
-            "windupState" : "firewindup",
-            "windupTime" : 0.5,
-            "projectileType" : "snotblock",
-            "power" : 10,
-            "speed" : 5,
-            "fireOffset" : [0.75, 0.25],
+            "maximumRange" : 25,
+            "windupStopForce" : 25,
+            "windupTime" : 1,
+            "onGround" : false,
+
+            "wallCollide" : true,
             "aimAtTarget" : true,
-            "onGround" : false,
-            "fireState" : "fire",
-            "fireSound" : "fire",
-            "fireDelay" : 0.25,
-            "fireArc": true,
-            "rotateAim" : false,
-            "projectileSpeed": 50,
-            "gravityMultiplier": 0.6,
-            "winddownState" : "firewinddown",
-            "winddownTime" : 1.5
-          }
-        },
-        {
-          "name" : "action-fire",
-          "cooldown" : 4.0,
-          "parameters" : {
-            "requireLineOfSight" : false,
-            "maximumRange" : 20,
-            "minimumRange" : 5,
-            "windupState" : "firewindup",
-            "windupTime" : 0.5,
-            "projectileType" : "eyeslimebubblestart",
-            "power" : 10,
-            "fireOffset" : [0.0, -4],
-            "aimDirection" : [0,0],
-            "faceTarget" : false,
-            "aimAtTarget" : false,
-            "onGround" : false,
-            "fireState" : "altfire",
-            "fireSound" : "fire",
-            "fireDelay" : 0.25,
-            "rotateAim" : false,
-            "rotatedOffset" : [0,-1],
-            "projectileSpeed": 50,
-            "gravityMultiplier": 0.6,
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.5
+            "rotateToTarget" : true,
+            "rotationOffset" : 1.57,
+            "chargeTime" : 1.0,
+            "chargeSpeed" : 45,
+            "chargeControlForce" : 250,
+
+            "winddownState" : "",
+            "winddownStopForce" : 25,
+
+            "projectileType" : "eyeslimebubblefloat",
+            "projectileParameters" : {
+              "timeToLive" : 0.01
+            }
           }
         }
+
       ],
 
       "periodicActions" : [ ],
@@ -99,9 +70,9 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "targetOffset" : [0,8],
-            "minRange" : 4,
-            "maxRange" : 8
+            "targetOffset" : [0,3],
+            "minRange" : 10,
+            "maxRange" : 20
           }
         }
       ],
@@ -113,45 +84,54 @@
           }
         },
         {
-          "name" : "approach-fly",
-          "parameters" : {
-          }
+          "name" : "approach-fly"
         }
       ],
 
       "wanderActions" : [
         {
-          "name" : "wander-fly"
-        }
-      ],
-
-      "deathActions" : [
-        {
-          "name" : "action-projectile",
+          "name" : "wander-fly",
           "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "eyejellyslime",
-            "projectileParameters" : {},
-            "power" : 0,
-            "aimDirection" : [0, -1],
-            "inaccuracy" : 0,
-            "fireOffset" : [0, 1]
+            "wanderTime" : [2,4],
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 4,
+            "yVelocity" : 12
           }
         }
       ],
 
-      "concurrentActions" : [  ],
+      "concurrentActions" : [ ],
 
       "concurrentHostileActions" : [ 
         {
-          "name" : "action-aim-head"
+          "name" : "action-fire",
+          "cooldown" : 2.4,
+          "parameters" : {
+            "maximumRange" : 30,
+            "minimumRange" : 0,
+            "windupState" : "fly",
+            "windupTime" : 0.01,
+            "projectileType" : "eyeslimebubblefloat",
+            "fireSound" : "", 
+            "fireState" : "fly",
+            "winddownState" : "fly",
+            "winddownTime" : 0.01,
+            "aimAtTarget" : false,
+            "aimDirection" : [0,0],
+            "onGround" : true,
+            "fireDelay" : 0.01,
+            "projectileParameters" : {
+              "timeToLive" : 0.01
+            }
+          }
         }
-       ]
+      ]
     },
 
     "touchDamage" : {
-      "poly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
-      "damage" : 9,
+      "poly" : [ [1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1],[-2,1],[-1,2] ],
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "poison",
@@ -163,17 +143,16 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionEnabled" : true,
-      "collisionPoly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+      "collisionPoly" : [ [1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1],[-2,1],[-1,2] ],
 
-      "mass" : 1.0,
+      "mass" : 0.5,
       "walkSpeed" : 4,
       "runSpeed" : 12,
       "gravityEnabled" : false,
 
-      "airFriction" : 2.0,
+      "airFriction" : 4,
       "airForce" : 40,
-      "flySpeed" : 15
+      "flySpeed" : 25
     },
 
     "bodyMaterialKind" : "organic",
@@ -201,13 +180,13 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.5
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 192
+          "baseValue" : 32
         },
         "protection" : {
           "baseValue" : 0.0
