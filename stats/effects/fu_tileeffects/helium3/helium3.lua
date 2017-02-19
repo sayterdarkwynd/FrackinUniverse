@@ -40,6 +40,6 @@ function activateVisualEffects()
 end
 
 function update(dt)
-  mcontroller.controlParameters(self.liquidMovementParameter)
-  unifiedGravMod.refreshGravity()
+	mcontroller.controlParameters(self.liquidMovementParameter)
+	unifiedGravMod.update(dt)
 end

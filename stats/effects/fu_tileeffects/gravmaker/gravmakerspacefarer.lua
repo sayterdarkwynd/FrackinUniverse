@@ -18,7 +18,6 @@ end
 end]]--
 
 function update(dt)
-	--unifiedGravMod.applyNormalization()
-	--unifiedGravMod.refreshGrav()
+	--unifiedGravMod.update(dt)
   --mcontroller.controlParameters( { gravityMultiplier = self.newGravityMultiplier } )
 end

@@ -74,17 +74,11 @@ function liquidLib.liquidLevelToItem(liqLvl)
 end
 
 function liquidLib.liquidToItem(liquidId,level)
-	for i,v in liquidLib.liquidIds do
-	if i==liquidid then
-		temp=i;
-		break;
-	end
-	end
-	if(temp~=nil)then
-		if(#level>0) then
-			return{name=temp,count=level,parameters={}}
+	if(liquidLib.liquidIds[liquidId]~=nil) then
+		if(level~=nil) then
+			return {name=liquidLib.liquidIds[liquidId],count=level,parameters={}}
 		else
-		return temp
+			return {name=liquidLib.liquidIds[liquidId],count=1,parameters={}}
 		end
 	end
 	return nil
