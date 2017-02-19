@@ -19,7 +19,7 @@
     "deathBehavior" : "monster-death",
     "behaviorConfig" : {
       "damageOnTouch" : true,
-
+      "queryTargets" : false,
       "targetQueryRange" : 35,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
@@ -31,23 +31,53 @@
 
       "damageTakenActions" : [ ],
 
-      "foundTargetActions" : [ ],
+      "foundTargetActions" : [ 
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 599,
+          "parameters" : {
+          "effect" : "eyejellykingspawnbydamage",
+          "duration" : 600
+          }
+        }
+      ],
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ ],
+      "hostileActions" : [ 
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 50,
+            "minimumRange" : 0,
+            "windupState" : "fly",
+            "projectileType" : "eyeslimerain",
+            "power" : 10,
+            "fireOffset" : [0, 0],
+            "aimDirection" : [0,-1],
+            "faceTarget" : true,
+            "aimAtTarget" : false,
+            "onGround" : false,
+            "fireState" : "fly",
+            "fireSound" : "fire",
+            "winddownState" : "fly"
+          }
+        }
+      ],
 
       "periodicActions" : [ ],
 
       "approachActions" :[
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-            "targetOffset" : [0,8],
-            "minRange" : 10,
-            "maxRange" : 25
-          }
-        }
+       {
+         "name" : "approach-fly",
+         "parameters" : {
+           "targetOffset" : [0,5],
+           "minRange" : 5,
+           "maxRange" : 25
+         }
+       }
       ],
 
       "followActions" : [
@@ -64,6 +94,9 @@
       ],
 
       "wanderActions" : [
+        {
+          "name" : "wander-fly"
+        }
       ],
 
       "deathActions" : [ ],
@@ -81,8 +114,8 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
-      "damage" : 9,
+      "poly" : [[2,7.5],[5.25,5.25],[7,1],[8.75,-1.5],[8,-4],[5,-5.5],[2,-7],[-2,-7],[-5,-5.5],[-8,-4],[-8.75,-1.5],[-7,1],[-5.25,5.25],[-2,7.5]],
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "poison",
@@ -95,7 +128,7 @@
 
     "movementSettings" : {
       "collisionEnabled" : true,
-      "collisionPoly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+      "collisionPoly" : [[2,7.5],[5.25,5.25],[7,1],[8.75,-1.5],[8,-4],[5,-5.5],[2,-7],[-2,-7],[-5,-5.5],[-8,-4],[-8.75,-1.5],[-7,1],[-5.25,5.25],[-2,7.5]],
 
       "mass" : 1.0,
       "walkSpeed" : 4,
