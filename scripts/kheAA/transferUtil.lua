@@ -158,6 +158,11 @@ end
 
 
 function transferUtil.throwItemsAt(target,targetPos,item,drop)
+
+	if item.count~=math.floor(item.count) or item.count<=0 then return false end
+	
+	drop=drop or false
+	
 	if target==nil and targetPos==nil then
 		if drop then
 			world.spawnItem(item,entity.position())
@@ -165,45 +170,29 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 		else
 			return false
 		end
-	elseif target==nil then
-		if util.tableSize(targetPos) ~= 2 then
-			if drop then
-				world.spawnItem(item,entity.position())
-				return true,item.count
-			else
-				return false
-			end
+	end
+	
+	local awake,ping=transferUtil.containerAwake(target,targetPos)
+	if awake then
+		if ping ~= nil then
+			target=ping
 		end
-		target=world.objectAt(targetPos)
-		if world.containerSize(target) == nil or world.containerSize(target) == 0 then
-			if drop then
-				world.spawnItem(item,targetPos)
-				return true,item.count
-			else
-				return false
-			end
-		end
-	elseif targetPos == nil then
-		if world.entityExists(target) then
-			targetPos=world.callScriptedEntity(target,"entity.position")
-		else
-			if drop then
-				world.spawnItem(item,entity.position())
-				return true,item.count
-			else
-				return false
-			end
-		end
+	elseif drop then
+		world.spawnItem(item,entity.position())
+		return true,item.count
 	else
-		local awake,ping=transferUtil.containerAwake(target,targetPos)
-		if awake then
-			if ping ~= nil then
-				target=ping
-			end
+		return false
+	end
+	
+	if world.containerSize(target) == nil or world.containerSize(target) == 0 then
+		if drop then
+			world.spawnItem(item,targetPos)
+			return true,item.count
 		else
-			return true, item.count
+			return false
 		end
 	end
+	
 	local leftOverItems = world.containerAddItems(target, item)
 	if leftOverItems ~= nil then
 		if drop then
@@ -212,8 +201,12 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 		else
 			return true,item.count-leftOverItems.count
 		end
+	else
+		return true, item.count
 	end
+	
 	return false;
+	
 end
 
 function transferUtil.updateInputs(dataNode)

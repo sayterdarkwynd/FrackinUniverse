@@ -41,7 +41,7 @@ function findContainer()
 	for _, objectId in pairs(objectIds) do
 		if world.containerSize(objectId) then
 			storage.containerId=objectId
-			storage.containerPos=world.callScriptedEntity(storage.containerId,"entity.position")
+			storage.containerPos=world.entityPosition(storage.containerId)
 			storage.inContainers[storage.containerId]=storage.containerPos
 			storage.outContainers[storage.containerId]=storage.containerPos
 			break

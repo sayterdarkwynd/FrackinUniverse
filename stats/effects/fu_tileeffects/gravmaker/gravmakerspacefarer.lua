@@ -1,22 +1,23 @@
+--deprecated code!
+
+--require "/scripts/unifiedGravMod.lua"
+
+
 function init()
-  self.gravityModifier = 1.0
-  self.movementParams = mcontroller.baseParameters()
-  effect.addStatModifierGroup({
-    {stat = "asteroidImmunity", amount = 1}
-  })
-  setGravityMultiplier()
-  script.setUpdateDelta(5)
+	--unifiedGravMod.init()
+  --self.gravityModifier = 1.0
+  --self.movementParams = mcontroller.baseParameters()
+  --effect.addStatModifierGroup({{stat = "asteroidImmunity", amount = 1}})
+  --setGravityMultiplier()
+  script.setUpdateDelta(0)
 end
 
-function setGravityMultiplier()
+--[[function setGravityMultiplier()
   local oldGravityMultiplier = self.movementParams.gravityMultiplier or 1
   self.newGravityMultiplier = self.gravityModifier * oldGravityMultiplier
-end
+end]]--
 
 function update(dt)
-  mcontroller.controlParameters( { gravityMultiplier = self.newGravityMultiplier } )
-end
-
-function uninit()
-
+	--unifiedGravMod.update(dt)
+  --mcontroller.controlParameters( { gravityMultiplier = self.newGravityMultiplier } )
 end

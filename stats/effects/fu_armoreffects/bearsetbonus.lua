@@ -9,7 +9,7 @@ function init()
 		  setBonusInit("fu_bearset", {
 		    {stat = "iceResistance", amount = 0.15},
 		    {stat = "coldimmunity", amount = 1},
-		    {stat = "critChance", amount = 25}
+		    {stat = "powerMultiplier", amount = 25}
 		  })
 	      end
        else
