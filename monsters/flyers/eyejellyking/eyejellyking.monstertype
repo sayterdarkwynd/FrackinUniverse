@@ -20,10 +20,10 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
       "queryTargets" : false,
-      "targetQueryRange" : 35,
+      "targetQueryRange" : 70,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
-      "keepTargetInRange" : 50,
+      "keepTargetInRange" : 100,
       "targetOutOfSightTime" : 5.0,
 
       "hurtTime" : 0.25,
@@ -67,15 +67,26 @@
         }
       ],
 
-      "periodicActions" : [ ],
+      "periodicActions" : [
+
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 599,
+          "parameters" : {
+          "effect" : "eyejellykingspawnbydamage",
+          "duration" : 600
+          }
+        }
+
+       ],
 
       "approachActions" :[
        {
          "name" : "approach-fly",
          "parameters" : {
-           "targetOffset" : [0,5],
-           "minRange" : 5,
-           "maxRange" : 25
+           "targetOffset" : [0,8],
+           "minRange" : 10,
+           "maxRange" : 16
          }
        }
       ],
@@ -101,7 +112,14 @@
 
       "deathActions" : [ ],
 
-      "concurrentActions" : [ ],
+      "concurrentActions" : [ 
+        {
+          "name" : "action-aim-head",
+          "parameters" : {
+            "headOffset" : [0,5]
+          }
+        }
+      ],
 
       "concurrentHostileActions" : [ 
         {
@@ -120,7 +138,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "poison",
       "knockback" : 20,
-      "statusEffects" : [ {"effect" : "slimeslow", "duration" : 2.5} ]
+      "statusEffects" : [ {"effect" : "slimeslow", "duration" : 1.5} ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
