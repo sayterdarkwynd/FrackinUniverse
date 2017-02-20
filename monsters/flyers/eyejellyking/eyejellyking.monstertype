@@ -101,7 +101,14 @@
 
       "deathActions" : [ ],
 
-      "concurrentActions" : [ ],
+      "concurrentActions" : [ 
+        {
+          "name" : "action-aim-head",
+          "parameters" : {
+            "headOffset" : [0,5]
+          }
+        }
+      ],
 
       "concurrentHostileActions" : [ 
         {
@@ -120,7 +127,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "poison",
       "knockback" : 20,
-      "statusEffects" : [ {"effect" : "slimeslow", "duration" : 2.5} ]
+      "statusEffects" : [ {"effect" : "slimeslow", "duration" : 1.5} ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
