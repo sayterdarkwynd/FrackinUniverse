@@ -39,11 +39,11 @@
           "name" : "action-splash-charge",
           "cooldown" : 1.5,
           "parameters" : {
+            "minimumRange" : 0,
             "maximumRange" : 25,
             "windupStopForce" : 25,
             "windupTime" : 1,
             "onGround" : false,
-
             "wallCollide" : true,
             "aimAtTarget" : true,
             "rotateToTarget" : true,
@@ -51,14 +51,11 @@
             "chargeTime" : 1.0,
             "chargeSpeed" : 45,
             "chargeControlForce" : 250,
-
             "winddownState" : "",
             "winddownStopForce" : 25,
 
-            "projectileType" : "eyeslimebubblefloat",
-            "projectileParameters" : {
-              "timeToLive" : 0.01
-            }
+            "projectileType" : "eyeslimesplash"
+
           }
         }
 
