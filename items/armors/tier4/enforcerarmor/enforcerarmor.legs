@@ -1,53 +1,43 @@
 {
-  "itemName" : "enforcerchest",
-  "inventoryIcon" : "icons.png:chest",
+  "itemName" : "enforcerpants",
+  "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Nearly unbreakable in every respect. 15% Electric Resistance",
-  "shortdescription" : "Tritanium Chestplate",
-  "category" : "chestarmour",
+  "description" : "Nearly unbreakable in every respect. 5% Electric Resistance. Gravity field.",
+  "shortdescription" : "Enforcer Greaves",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-"level" : 4,
+  "maleFrames" : "pantsm.png",
+  "femaleFrames" : "pantsm.png",
+  "level" : 6,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
+      "baseMultiplier" : 1.75
     },
 
     {
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 17
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 80
+      "amount" : 12
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 19
+      "amount" : 15
     },
-    "defense2",
+    "lowgrav_wretchel",
     {
       "stat" : "electricResistance",
-      "amount" : 0.15
+      "amount" : 0.05
     }
   ],
-
   "colorOptions" : [
     /* RED */
     { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
