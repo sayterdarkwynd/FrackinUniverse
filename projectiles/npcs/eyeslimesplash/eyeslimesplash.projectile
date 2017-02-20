@@ -1,0 +1,59 @@
+{
+  "projectileName" : "eyeslimesplash",
+  "image" : "eyeslimebubble.png:pop",
+  "orientationLocked" : true,
+  "flippable" : true,
+  "physics" : "gas",
+  "animationCycle" : 0.1,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 7,
+  "power" : 10,
+  "speed" : 0,
+  "timeToLive" : 0.01,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "emitters" : [ "poisondrip" ],
+  "statusEffects" : [ {"effect" : "slimeslow", "duration" : 1.5}],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "goocluster",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 45,
+      "projectileConfig" : {
+        "bounces" : -1
+      }
+    },
+    {
+      "action" : "projectile",
+      "type" : "goocluster",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 135,
+      "projectileConfig" : {
+        "bounces" : -1
+      }
+    },
+    {
+      "action" : "projectile",
+      "type" : "goocluster",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 225,
+      "projectileConfig" : {
+        "bounces" : -1
+      }
+    },
+    {
+      "action" : "projectile",
+      "type" : "goocluster",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 325,
+      "projectileConfig" : {
+        "bounces" : -1
+      }
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ]
+    }
+  ]
+}
