@@ -21,7 +21,7 @@ function unifiedGravMod.initSoft()
 	self.gravityMod = config.getParameter("gravityMod",0.0)
 	self.gravityNormalize = config.getParameter("gravityNorm",false)
 	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
-	sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
+	--sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
 	effect.addStatModifierGroup({{stat = "gravityMod", amount=self.gravityMod},{stat = "gravityBaseMod", amount=self.gravityBaseMod}})
 end
 
@@ -46,7 +46,7 @@ function unifiedGravMod.refreshGrav(dt)
 			newGrav=newGrav+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
 		else
-			mcontroller.addMomentum({0,-1*myGrav()*newGrav*0.2*dt})
+			mcontroller.addMomentum({0,-1*world.gravity(entity.position())*newGrav*0.2*dt})
 		end
 	end
 end
