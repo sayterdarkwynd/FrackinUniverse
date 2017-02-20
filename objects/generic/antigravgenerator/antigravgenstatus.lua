@@ -11,5 +11,5 @@ function update(dt)
 		end
 		mcontroller.controlParameters(self.newParams)
 	end
-	if effect.duration() < (effect.getParameter("defaultDuration",5)-0.1) then effect.expire() end
+	if effect.duration() < (effect.getParameter("defaultDuration",5)-0.3) then effect.expire() end
 end
