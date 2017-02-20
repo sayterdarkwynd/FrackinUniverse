@@ -304,10 +304,11 @@ function states.pump(dt)
 	if not transferUtil.powerLevel(hiPumpNode,true) then
 		for k,v in pairs(storage.liquids) do
 			if v >= 1 then
-				if liquidLib.liquidIds[k] ~= nil then
-					local try,count=transferUtil.throwItemsAt(storage.containerId,storage.inContainers[storage.containerId],{name = liquidLib.liquidIds[k], count = 1})
+				local itemD=liquidLib.liquidToItem(k)
+				if itemD ~= nil then
+					local try,count=transferUtil.throwItemsAt(storage.containerId,storage.inContainers[storage.containerId],itemD)
 					if try then
-						storage.liquids[k] = storage.liquids[k] - count;
+						storage.liquids[k] = storage.liquids[k] - itemD.count;
 						break
 					end
 				else

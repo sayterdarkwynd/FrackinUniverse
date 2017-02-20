@@ -4,7 +4,7 @@
   "inventoryIcon" : "furainbowgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-    "description" : "Shoots prismatic bursts that split and bounce.",
+    "description" : "Shoots prismatic bursts that are blasty fun.",
     "shortdescription" : "Prismatic Cannon",
   "category" : "Energy Gun",
   "level" : 4,
@@ -13,10 +13,11 @@
   "itemTags" : ["weapon","ranged","flamethrower", "energy"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/furainbowgun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "furainbowgun.png",
+    "middlefullbright" : "furainbowgunfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
@@ -27,11 +28,11 @@
   },
 
   "baseOffset" : [0.68, -0.22],
-  "muzzleOffset" : [2.845, -0.425],
+  "muzzleOffset" : [2.845, -0.31],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "cosmic",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -43,7 +44,7 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "furainbow",
+    "projectileType" : "fuwidebeamshot",
     "projectileParameters" : { 
       "speed" : 95,
       "knockback" : 4
@@ -59,8 +60,8 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 1,
-	      "weaponRotation" : 1,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -68,8 +69,8 @@
 	    },
 	    "cooldown" : {
 	      "duration" : 0,
-	      "armRotation" : 1,
-	      "weaponRotation" : 1,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -81,7 +82,7 @@
   "critChance" : 2,
   "critBonus" : 6,
 
-  "altAbilityType" : "densiniumaltshot",
+  "altAbilityType" : "rainbowblast",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

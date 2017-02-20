@@ -1,11 +1,10 @@
-require "/stats/effects/fu_tileeffects/gravmaker/gravmakerspacefarer.lua"
-callbacks = { { init = init, update = update, uninit = uninit } }
+--callbacks = { { init = init, update = update, uninit = uninit } }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-    if (world.type() == "asteroids") or (world.type() == "barrenasteroids") or (world.type() == "iceasteroids") or (world.type() == "elderasteroid") or (world.type() == "corruptasteroid") then
-    
+	setSEBonusInit("fu_spacefarerset", {"spacefarerseteffect"})
+	--[[if (world.type() == "asteroids") or (world.type() == "barrenasteroids") or (world.type() == "iceasteroids") or (world.type() == "elderasteroid") or (world.type() == "corruptasteroid") then
         setBonusInit("fu_spacefarerset", {
 	    {stat = "fireStatusImmunity", amount = 1},
 	    {stat = "maxBreath", baseMultiplier = 50.0 },
@@ -36,5 +35,14 @@ function init()
 	})    
     
     end
+	]]--
 
+end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	else
+		--nothing interesting happens. It's not handled here! removal is handled by the effect itself.
+	end
 end

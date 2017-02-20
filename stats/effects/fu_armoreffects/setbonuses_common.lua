@@ -22,10 +22,17 @@ function setBonusInit(setBonusName, setBonusStats, callbacks)
 	--sb.logInfo("init for %s\nchecking for %s", setBonusName, self.setBonusCheck)
 end
 
+function setSEBonusInit(setBonusName, SetBonusEffects)
+	self.armourPresent = nil
+	self.setBonusName = setBonusName
+	self.setBonusCheck = { setBonusName .. '_head', setBonusName .. '_chest', setBonusName .. '_legs' }
+	self.setBonusEffects = SetBonusEffects
+end
+
 function update()
 	--sb.logInfo("head:%s, chest:%s, legs:%s", status.stat(self.setBonusCheck[1]), status.stat(self.setBonusCheck[2]), status.stat(self.setBonusCheck[3]))
 
-	local newstate = status.stat(self.setBonusCheck[1]) == 1 and status.stat(self.setBonusCheck[2]) == 1 and status.stat(self.setBonusCheck[3]) == 1
+	local newstate = checkSetWorn(self.setBonusCheck)
 
 	if self.armourPresent == newstate then
 		for _, callback in pairs(self.callbacks) do
@@ -50,6 +57,21 @@ function update()
 	else
 		removeSetBonus()
 	end
+end
+
+function checkSetWorn(mySet)
+	--used everywhere
+	return status.stat(mySet[1]) == 1 and status.stat(mySet[2]) == 1 and status.stat(mySet[3]) == 1
+end
+
+function applySetEffects()
+	if self.setBonusEffects == nil then
+		return
+	end
+	--for _,effect in pairs(self.setBonusEffects) do
+	--sb.logInfo(sb.printJson(self.setBonusEffects))
+		status.addEphemeralEffects(self.setBonusEffects)
+	--end
 end
 
 function removeSetBonus()
