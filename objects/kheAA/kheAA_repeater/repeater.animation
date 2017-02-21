@@ -1,0 +1,41 @@
+{
+	"animatedParts" : {
+		"stateTypes" : {
+			"repeaterState" : {
+				"default" : "off",
+				"states" : {
+					"off" : {
+						"frames" : 1
+					},
+					"on" : {
+						"frames" : 1
+					}
+				}
+			}
+		},
+
+		"parts" : {
+			"repeater" : {
+				"properties" : {
+					"centered" : false
+				},
+
+				"partStates" : {
+					"repeaterState" : {
+						"off" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.off"
+							}
+						},
+
+						"on" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.on"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

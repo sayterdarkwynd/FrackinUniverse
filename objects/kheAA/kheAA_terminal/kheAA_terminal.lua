@@ -20,6 +20,7 @@ function transferItem(_, _, itemData)
 		source=tonumber(source)
 	end
 	local sourcePos=itemData[4]
+	local targetPos=itemData[5]
 	local slot = itemData[1][2];
 	local awake,ping=transferUtil.containerAwake(source,sourcePos)
 	if not awake==true then
@@ -30,7 +31,7 @@ function transferItem(_, _, itemData)
 		end
 		local item = world.containerTakeAt(source, slot - 1);
 		if item ~= nil then
-			world.spawnItem(item, entity.position())
+			world.spawnItem(item, targetPos or entity.position())
 		end
 	end
 end
