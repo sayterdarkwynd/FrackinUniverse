@@ -32,41 +32,26 @@
 
       "hostileActions" : [
         {
-          "name" : "action-leap",
-          "cooldown" : 0.5,
-          "parameters" : {
-            "minimumRange" : 0,
-            "maximumRange" : 20,
-            "maxXRange" : 4,
-            "windupTime" : 0.3,
-            "windupState" : "idle",
-
-            "leapVelocity" : 25,
-            "collisionCheck" : true,
-            "highArc" : false,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },
-        {
-          "name" : "action-charge",
+          "name" : "action-swoosh-charge",
           "parameters" : {
             "maximumRange" : 10,
             "minimumRange" : 2,
             "windupTime" : 0.5,
 
             "chargeTime" : 1.0,
-            "chargeSpeed" : 24,
-            "chargeControlForce" : 150,
+            "chargeSpeed" : 48,
+            "chargeControlForce" : 300,
             "wallKnockback" : true,
             "wallCrashSound" : "wallCrash",
             "wallCrashEmitter" : "",
 
             "winddownTime" : 0.5,
-            "winddownStopForce" : 200
+            "winddownStopForce" : 200,
+
+            "projectileType" : "chargeswoosh",
+            "fireOffset" : [2,-1],
+            "projectileParameters" : {
+            }
           }
         }
       ],
@@ -82,7 +67,8 @@
             "jumpXVelocity" : 12,
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
-            "minXRange" : 10
+            "minXRange" : 10,
+            "run" : true
           }
         }
       ],
@@ -101,7 +87,8 @@
             "jumpXVelocity" : 12,
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
-            "minXRange" : 10
+            "minXRange" : 10,
+            "run" : true
           }
         }
       ],
@@ -115,6 +102,7 @@
           }
         }
       ]
+
     },
 
     "touchDamage" : {
@@ -134,16 +122,11 @@
       "collisionPoly" : [ [1,5],[2,4],[2,3],[2,1],[1,0],[3,-2],[1,-4],[-1,-4],[-3,-2],[-1,-0],[-2,1],[-2,3],[-2,4],[-1,5] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 5,
-      "runSpeed" : 8,
 
-      "airFriction" : 0,
+      "runSpeed" : 12,
 
-      "airJumpProfile" : {
-        "jumpSpeed" : 65.0,
-        "jumpInitialPercentage" : 12.0,
-        "jumpHoldTime" : 12.0
-      }
+      "airFriction" : 0
+
     },
 
     "bodyMaterialKind" : "robotic",
