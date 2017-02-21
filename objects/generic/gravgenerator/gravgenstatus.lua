@@ -7,11 +7,13 @@ end
 
 function update(dt)
 	if params.collisionEnabled then
+		--local magic=-102.4*dt
+		local magic=-102.4*dt
 		if params.gravityEnabled then
-			mcontroller.addMomentum({0,-102.4*dt})
+			mcontroller.addMomentum({0,magic})
 		else
-			mcontroller.addMomentum({0,-102.4*dt*0.2})
+			mcontroller.addMomentum({0,magic*0.2})
 		end
 	end
-	if effect.duration() < (effect.getParameter("defaultDuration",5)-0.1) then effect.expire() end
+	if effect.duration() < (effect.getParameter("defaultDuration",5)-0.3) then effect.expire() end
 end

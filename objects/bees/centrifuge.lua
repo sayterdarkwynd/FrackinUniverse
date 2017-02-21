@@ -72,7 +72,7 @@ function update(dt)
 				return
 			end
 		end
-
+                
 		if storage.combsProcessed and storage.combsProcessed.count > 0 then
 			-- discard the stash if unclaimed by a jarrer within a reasonable time (twice the craft delay)
 			storage.combsProcessed.stale = (storage.combsProcessed.stale or (self.initialCraftDelay * 2)) - 1
@@ -128,11 +128,13 @@ function stashHoney(comb)
 	-- Record that we've processed a comb.
 	-- The stashed type is the jar object name for the comb type.
 	-- If the stashed type is different, reset the count.
+
 	local jar = honeyCheck and honeyCheck(comb)
+
 	if jar then
 		if storage.combsProcessed == nil then storage.combsProcessed = { count = 0 } end
 		if storage.combsProcessed.type == jar then
-			storage.combsProcessed.count = math.min(storage.combsProcessed.count + 1, combsPerJar) -- limit to one jar's worth  in stash at any given time
+			storage.combsProcessed.count = math.min(storage.combsProcessed.count + 1, self.combsPerJar) -- limit to one jar's worth  in stash at any given time
 			storage.combsProcessed.stale = nil
 		else
 			storage.combsProcessed = { type = jar, count = 1 }
