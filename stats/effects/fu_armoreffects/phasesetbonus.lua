@@ -1,5 +1,5 @@
-require "/stats/effects/regeneration/regenerationminorarmorset3.lua"
-require "/stats/effects/runboost/runboost25.lua"
+require "/stats/effects/runboost/runboostphasearmor.lua"
+
 callbacks = { { init = init, update = update, uninit = uninit } }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
