@@ -1,5 +1,4 @@
-require "/stats/effects/regeneration/regenerationminorarmorset.lua"
-require "/stats/effects/shieldregen/shieldregenarmorset.lua"
+require "/stats/effects/regeneration/regenerationminorarmorsethoplite.lua"
 callbacks = { { init = init, update = update, uninit = uninit } }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

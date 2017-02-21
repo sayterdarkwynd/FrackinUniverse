@@ -39,11 +39,11 @@
           "name" : "action-splash-charge",
           "cooldown" : 1.5,
           "parameters" : {
+            "minimumRange" : 0,
             "maximumRange" : 25,
             "windupStopForce" : 25,
             "windupTime" : 1,
             "onGround" : false,
-
             "wallCollide" : true,
             "aimAtTarget" : true,
             "rotateToTarget" : true,
@@ -51,14 +51,11 @@
             "chargeTime" : 1.0,
             "chargeSpeed" : 45,
             "chargeControlForce" : 250,
-
             "winddownState" : "",
             "winddownStopForce" : 25,
 
-            "projectileType" : "eyeslimebubblefloat",
-            "projectileParameters" : {
-              "timeToLive" : 0.01
-            }
+            "projectileType" : "eyeslimesplash"
+
           }
         }
 
@@ -70,9 +67,9 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "targetOffset" : [0,3],
-            "minRange" : 10,
-            "maxRange" : 20
+            "targetOffset" : [0,8],
+            "minRange" : 4,
+            "maxRange" : 16
           }
         }
       ],
@@ -103,30 +100,7 @@
 
       "concurrentActions" : [ ],
 
-      "concurrentHostileActions" : [ 
-        {
-          "name" : "action-fire",
-          "cooldown" : 2.4,
-          "parameters" : {
-            "maximumRange" : 30,
-            "minimumRange" : 0,
-            "windupState" : "fly",
-            "windupTime" : 0.01,
-            "projectileType" : "eyeslimebubblefloat",
-            "fireSound" : "", 
-            "fireState" : "fly",
-            "winddownState" : "fly",
-            "winddownTime" : 0.01,
-            "aimAtTarget" : false,
-            "aimDirection" : [0,0],
-            "onGround" : true,
-            "fireDelay" : 0.01,
-            "projectileParameters" : {
-              "timeToLive" : 0.01
-            }
-          }
-        }
-      ]
+      "concurrentHostileActions" : [ ]
     },
 
     "touchDamage" : {

@@ -102,12 +102,16 @@ function setCritDamageBoomerang(damage)
 end
   -- *******************************************************
 
-function update(dt, fireMode, shiftHeld)
+function update(dt, fireMode, shiftHeld,moves)
   self.cooldownTimer = math.max(0, self.cooldownTimer)
 
   updateStance(dt)
   checkProjectiles()
+  
+   -- if (moves.up) then
 
+   -- end
+    
   if fireMode == "alt" and availableOrbCount() == 4 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
