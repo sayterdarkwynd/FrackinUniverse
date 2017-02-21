@@ -18,6 +18,7 @@ function init()
 	end
 	
 	self.teleportTarget = false  
+	
   self.projectileParameters.power = self.projectileParameters.power * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
   self.cooldownTime = config.getParameter("cooldownTime", 0)
   self.cooldownTimer = self.cooldownTime
@@ -162,7 +163,7 @@ function update(dt, fireMode, shiftHeld,moves)
 	then
 		local nextOrbIndex = nextOrb()
 		if nextOrbIndex then
-			fireUp(nextOrbIndex)
+		  fireUp(nextOrbIndex)
 		end
 		self.fireHeld = true
 	end

@@ -36,8 +36,8 @@ function tileMaterials()
   self.matCheck["jellystone"] = 		{{"jumpboost15"},1,   1,   1,   14,   100,  0.0,    1,  1, 0}
   self.matCheck["blackslime"] =    {{"slimestick","weakpoison"}, 1,   1,   1,   14,   101,  1.5,    0,  1.65, 0}
   self.matCheck["spidersilkblock"] = 	        {{"webstick"},   1,   1,   1,   14,   101,  0.0,    0,  1.32, 0}
-  self.matCheck["irradiatedtile"] = 	      {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1, 0}
-  self.matCheck["irradiatedtile2"] =          {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1, 0}
+  self.matCheck["irradiatedtile"] = 	      {{"negativehealthirradiated"},   1,   1,   1,   14,   100,  0.0,    0,  1, 0}
+  self.matCheck["irradiatedtile2"] =          {{"percentarmorboostnegproto"},1,   1,   1,   14,   100,  0.0,    0,  1, 0}
   self.matCheck["irradiatedtile3"] =          {{"radiationburn"},1,   1,   1,   14,   100,  0.0,    0,  1, 0}
   self.matCheck["protorock"] = 	         {{"ffextremeradiation"},1,   1,   1,   14,   100,  0.0,    0,  1.3, 0}
   self.matCheck["bioblock"] = 	          {{"fumudslow"},1,   1,   1,   14,   100,  0.0,    0,  1.1, 0}
