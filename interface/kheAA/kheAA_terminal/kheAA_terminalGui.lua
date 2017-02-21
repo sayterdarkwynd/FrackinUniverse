@@ -128,11 +128,16 @@ function filterBox()
 end
 
 function request()
+	--pane.playerEntityId()
 	local selected = widget.getListSelected(itemList)
 	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
 		for i = 1, #items do
 			if items[i] == listItems[selected] then
-				world.sendEntityMessage(pane.containerEntityId(), "transferItem",items[i])
+				local itemToSend=items[i]
+				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
+				--sb.logInfo(sb.printJson({playerPos=temp}))
+				
+				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 				table.remove(items, i);
 				refreshList();
 				return;
