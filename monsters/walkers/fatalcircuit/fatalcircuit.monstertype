@@ -8,7 +8,7 @@
 
   "animation" : "fatalcircuit.animation",
 
-  "dropPools" : [ { "default" : "ffmetallicbossChest", "bow" : "extraMonsterRobotHunting" } ],
+  "dropPools" : [ { "default" : "extraMonsterRobot", "bow" : "extraMonsterRobotHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -31,13 +31,14 @@
       "fleeActions" : [],
 
       "hostileActions" : [
+
         {
           "name" : "action-swoosh-charge",
-          "cooldown" : 5,
+          "cooldown" : 0.5,
           "parameters" : {
-            "maximumRange" : 10,
+            "maximumRange" : 20,
             "minimumRange" : 2,
-            "windupTime" : 0.5,
+            //"windupTime" : 0.5,
 
             "chargeTime" : 1.0,
             "chargeSpeed" : 48,
@@ -46,85 +47,26 @@
             "wallCrashSound" : "wallCrash",
             "wallCrashEmitter" : "",
 
-            "winddownTime" : 0.5,
+            "onGround" : false,
+
+
+            //"winddownTime" : 0.5,
             "winddownStopForce" : 200,
 
-            "projectileType" : "chargeswoosh",
+            "projectileType" : "electricchargeswoosh",
             "fireOffset" : [2,-1],
             "projectileParameters" : {
             }
           }
-        },
-        {
-          "name" : "action-fire",
-	  "cooldown" : 6,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 8,
-            "minimumRange" : 2,
-            "windupState" : "firewindup2",
-            "windupTime" : 1.32,
-
-            "projectileType" : "ffteslasmall",
-            "power" : 4,
-            
-            "fireOffset" : [1.0, 1],
-            "aimAtTarget" : true,
-            "projectileCount" : 3,
-            "projectileInterval" : 0.01,
-            "fireSound" : "attack",
-            "range": 8,
-            "fireState" : "hurt",
-            "winddownState" : "chargewinddown",
-            "winddownTime" : 0.45
-          }
-        },         
-        {
-          "name" : "action-fire",
-	  "cooldown" : 6,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 24,
-            "minimumRange" : 12,
-            "windupState" : "firewindup3",
-            "windupTime" : 1.58,
-
-            "projectileType" : "electricblast",
-            "power" : 9,
-            
-            "fireOffset" : [1.0, 0],
-            "aimAtTarget" : true,
-            "projectileCount" : 1,
-            "fireSound" : "attack",
-            "range": 24,
-            "fireState" : "hurt",
-            "winddownState" : "chargewinddown",
-            "winddownTime" : 0.8
-          }
-        },        
-        {
-          "name" : "action-fire",
-	  "cooldown" : 6,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 18,
-            "minimumRange" : 6,
-            "windupState" : "firewindup",
-            "windupTime" : 1.37,
-
-            "projectileType" : "waveblast",
-            "power" : 7,
-            
-            "fireOffset" : [1.0, 0],
-            "aimAtTarget" : true,
-            "projectileCount" : 1,
-            "fireSound" : "attack",
-            "range": 18,
-            "fireState" : "hurt",
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.45
-          }
         }
+      ],
+
+      "concurrentHostileActions" : [
+
+      ],
+
+      "damageTakenActions" : [
+
       ],
 
       "periodicActions" : [],
@@ -231,25 +173,25 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 170
+          "baseValue" : 280
         },
         "protection" : {
-          "baseValue" : 0.2
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
-          "baseValue" : 1.25
+          "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.7
+          "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.9
+          "baseValue" : 0.0
         },
         "fireStatusImmunity" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "iceResistance" : {
           "baseValue" : 0.0
@@ -264,7 +206,7 @@
           "baseValue" : 0.0
         },
         "poisonResistance" : {
-          "baseValue" : 1
+          "baseValue" : 0.5
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
