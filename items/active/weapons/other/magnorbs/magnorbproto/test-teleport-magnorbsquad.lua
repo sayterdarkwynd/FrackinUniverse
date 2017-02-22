@@ -4,10 +4,21 @@ require "/scripts/status.lua"
 require "/scripts/activeitem/stances.lua"
 
 function init()
+	self.critChance = config.getParameter("critChance", 0)
+	self.critBonus = config.getParameter("critBonus", 0)
   activeItem.setCursor("/cursors/reticle0.cursor")
 
   self.projectileType = config.getParameter("projectileType")
   self.projectileParameters = config.getParameter("projectileParameters")
+  self.projectileParametersAlt = config.getParameter("projectileParametersAlt")
+	if self.projectileParametersAlt then
+		self.projectileParametersAlt.power = self.projectileParametersAlt.power * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
+	else
+		self.projectileParametersAlt = self.projectileParameters
+	end
+	
+	self.teleportTarget = false  
+	
   self.projectileParameters.power = self.projectileParameters.power * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
   self.cooldownTime = config.getParameter("cooldownTime", 0)
   self.cooldownTimer = self.cooldownTime
@@ -54,6 +65,13 @@ end
   -- FU Crit Damage Script
 
 function setCritDamageBoomerang(damage)
+	if not self.critChance then 
+		self.critChance = config.getParameter("critChance", 0)
+	end
+	if not self.critBonus then
+		self.critBonus = config.getParameter("critBonus", 0)
+	end
+
      -- check their equipped weapon
      -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
@@ -93,12 +111,12 @@ function setCritDamageBoomerang(damage)
 end
   -- *******************************************************
 
-function update(dt, fireMode, shiftHeld)
+function update(dt, fireMode, shiftHeld,moves)
   self.cooldownTimer = math.max(0, self.cooldownTimer)
 
   updateStance(dt)
   checkProjectiles()
-
+    
   if fireMode == "alt" and availableOrbCount() == 4 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
@@ -120,13 +138,35 @@ function update(dt, fireMode, shiftHeld)
     end
   end
 
-  if self.shieldTransformTimer == 0 and fireMode == "primary" and self.lastFireMode ~= "primary" and self.cooldownTimer == 0 then
-    local nextOrbIndex = nextOrb()
-    if nextOrbIndex then
-      fire(nextOrbIndex)
-    end
-  end
-  self.lastFireMode = fireMode
+
+	if self.shieldTransformTimer == 0 
+		and fireMode == "primary" 
+		and self.lastFireMode ~= "primary" 
+		and self.cooldownTimer == 0
+	then
+		local nextOrbIndex = nextOrb()
+		if nextOrbIndex then
+			fire(nextOrbIndex)
+		end
+	end
+	
+	self.lastFireMode = fireMode
+	
+	if self.fireHeld and not moves.up then self.fireHeld = false end
+	
+	if self.shieldTransformTimer == 0
+		and fireMode ~= "primary"
+		and fireMode ~= "alt"
+		and not self.fireHeld
+		and moves.up
+		and self.cooldownTimer == 0
+	then
+		local nextOrbIndex = nextOrb()
+		if nextOrbIndex then
+		  fireUp(nextOrbIndex)
+		end
+		self.fireHeld = true
+	end
 
   if self.shieldActive then
     if not status.resourcePositive("shieldStamina") or not status.overConsumeResource("energy", self.shieldEnergyCost * dt) then
@@ -191,36 +231,71 @@ function updateHand()
   activeItem.setOutsideOfHand(isFrontHand)
 end
 
+
 function fire(orbIndex)
-  local params = copy(self.projectileParameters)
-  params.powerMultiplier = activeItem.ownerPowerMultiplier()
-  params.ownerAimPosition = activeItem.ownerAimPosition()
-  
-  params.power = setCritDamageBoomerang(params.power)
-  
-  local firePos = firePosition(orbIndex)
-  if status.resourcePositive("energy") and not status.resourceLocked("energy") then
-  
-	  if world.lineCollision(mcontroller.position(), firePos) then return end
-	  local projectileId = world.spawnProjectile(
-	      self.projectileType,
-	      firePosition(orbIndex),
-	      activeItem.ownerEntityId(),
-	      aimVector(orbIndex),
-	      false,
-	      params
-	    )
-	  if projectileId then
-	    storage.projectileIds[orbIndex] = projectileId
-	    self.cooldownTimer = self.cooldownTime
-	    animator.playSound("fire")
-	  end
-   -- fu energy cost
-     self.energyCost = 5 * config.getParameter("level", 1)
-     status.overConsumeResource("energy", self.energyCost)
-  end
-  
+
+	local params = copy(self.projectileParameters)
+	params.powerMultiplier = activeItem.ownerPowerMultiplier()
+	params.ownerAimPosition = activeItem.ownerAimPosition()
+	local firePos = firePosition(orbIndex)
+	if world.lineCollision(mcontroller.position(), firePos) then return end
+	local projectileId = world.spawnProjectile(
+			self.projectileType,
+			firePosition(orbIndex),
+			activeItem.ownerEntityId(),
+			aimVector(orbIndex),
+			false,
+			params
+		)
+	if projectileId then
+		storage.projectileIds[orbIndex] = projectileId
+		self.cooldownTimer = self.cooldownTime
+		animator.playSound("fire")
+	end
 end
+
+function fireUp(orbIndex) -- teleport altfire 
+
+	if not self.teleportTarget then
+		local params = copy(self.projectileParametersAlt)
+		params.powerMultiplier = activeItem.ownerPowerMultiplier()
+		params.ownerAimPosition = activeItem.ownerAimPosition()
+		local firePos = firePosition(orbIndex)
+		sb.logInfo("%s", firePos)
+		if world.lineCollision(mcontroller.position(), firePos) then return end
+		local projectileId = world.spawnProjectile(
+				self.projectileTypeAlt,
+				firePosition(orbIndex),
+				activeItem.ownerEntityId(),
+				aimVector(orbIndex),
+				false,
+				params
+			)
+		if projectileId then
+			world.callScriptedEntity(projectileId, "setOwnerId", activeItem.ownerEntityId())
+			storage.projectileIds[orbIndex] = projectileId
+			self.teleportTarget = projectileId
+			self.cooldownTimer = self.cooldownTime
+			if animator.hasSound("fireAlt") then
+				animator.playSound("fireAlt")
+			else
+				animator.playSound("fire")
+			end
+		end
+	else
+		teleport(self.teleportTarget)
+	end
+end
+
+function teleport()
+	if self.teleportTarget then
+		status.setStatusProperty("translocatorDiscId", self.teleportTarget)
+		status.setStatusProperty("teleportSettings", {config.getParameter("teleportOffset", {0, 2.5}),config.getParameter("teleportTolerance", 2.0)})
+		status.addEphemeralEffect("translocate")
+		self.teleportTarget = false
+	end
+end
+
 
 function firePosition(orbIndex)
   return vec2.add(mcontroller.position(), activeItem.handPosition(animator.partPoint("orb"..orbIndex, "orbPosition")))
