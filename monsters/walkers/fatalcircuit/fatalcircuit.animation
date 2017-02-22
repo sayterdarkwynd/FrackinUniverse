@@ -49,39 +49,6 @@
               "immediateSound" : "/sfx/melee/charge_traildash1.ogg",
               "immediateSoundRangeMultiplier" : 0.5
             }            
-          },
-          "firewindup" : {
-            "frames" : 3,
-            "cycle" : 1.37,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/melee/charge_up1.ogg",
-              "immediateSoundRangeMultiplier" : 0.5,
-              "particleEmittersOn" : [ "chargeUp" ],
-              "particleEmittersOff" : [ "teslaUp","rocketUp" ]
-            }
-          }, 
-          "firewindup2" : {
-            "frames" : 3,
-            "cycle" : 1.32,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/melee/charge_up8.ogg",
-              "immediateSoundRangeMultiplier" : 0.5,
-              "particleEmittersOn" : [ "teslaUp" ],
-              "particleEmittersOff" : [ "chargeUp","rocketUp" ]
-            }
-          }, 
-          "firewindup3" : {
-            "frames" : 3,
-            "cycle" : 1.58,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/melee/charge_up5.ogg",
-              "immediateSoundRangeMultiplier" : 0.5,
-              "particleEmittersOn" : [ "rocketUp" ],
-              "particleEmittersOff" : [ "teslaUp","chargeUp" ]
-            }
           },           
           "charge" : {
             "frames" : 4,
@@ -93,6 +60,35 @@
             "immediateSoundRangeMultiplier" : 0.5,
             "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
             }
+          },          
+          "chargewinddown" : {
+            "frames" : 3,
+            "cycle" : 0.45,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/tech/mech_powerdown.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
+            }            
+          },
+          "firewindup" : {
+            "frames" : 3,
+            "cycle" : 1.5,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_up1.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOn" : [ "chargeUp" ],
+              "particleEmittersOff" : [ "teslaUp","rocketUp" ]
+            }
+          },
+          "fire" : {
+            "frames" : 1,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/tech/mech_powerdown.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
+            }
           },
           "firewinddown" : {
             "frames" : 3,
@@ -102,13 +98,28 @@
               "immediateSoundRangeMultiplier" : 0.5,
               "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
             }
-          },          
-          "chargewinddown" : {
+          }, 
+          "teslawindup" : {
             "frames" : 3,
-            "cycle" : 0.45,
+            "cycle" : 1.32,
+            "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
-            }            
+              "immediateSound" : "/sfx/melee/charge_up8.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOn" : [ "teslaUp" ],
+              "particleEmittersOff" : [ "chargeUp","rocketUp" ]
+            }
+          }, 
+          "wavewindup" : {
+            "frames" : 3,
+            "cycle" : 1.58,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_up5.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOn" : [ "rocketUp" ],
+              "particleEmittersOff" : [ "teslaUp","chargeUp" ]
+            }
           }
         }
       },
@@ -197,24 +208,29 @@
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:windup.<frame>"
+                "image" : "<partImage>:firewindup.<frame>"
+              }
+            },             
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },       
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
               }
             },
-            "firewindup2" : {
+            "teslawindup" : {
               "properties" : {
                 "image" : "<partImage>:windup.<frame>"
               }
             }, 
-            "firewindup3" : {
+            "wavewindup" : {
               "properties" : {
                 "image" : "<partImage>:windup.<frame>"
               }
-            },             
-            "firewinddown" : {
-              "properties" : {
-                "image" : "<partImage>:winddown.<frame>"
-              }
-            }            
+            }
           },
           "damage" : {
             "stunned" : {
