@@ -31,12 +31,14 @@
       "fleeActions" : [],
 
       "hostileActions" : [
+
         {
           "name" : "action-swoosh-charge",
+          "cooldown" : 0.5,
           "parameters" : {
-            "maximumRange" : 10,
+            "maximumRange" : 20,
             "minimumRange" : 2,
-            "windupTime" : 0.5,
+            //"windupTime" : 0.5,
 
             "chargeTime" : 1.0,
             "chargeSpeed" : 48,
@@ -45,7 +47,10 @@
             "wallCrashSound" : "wallCrash",
             "wallCrashEmitter" : "",
 
-            "winddownTime" : 0.5,
+            "onGround" : false,
+
+
+            //"winddownTime" : 0.5,
             "winddownStopForce" : 200,
 
             "projectileType" : "electricchargeswoosh",
@@ -54,6 +59,14 @@
             }
           }
         }
+      ],
+
+      "concurrentHostileActions" : [
+
+      ],
+
+      "damageTakenActions" : [
+
       ],
 
       "periodicActions" : [],
@@ -160,7 +173,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 70
+          "baseValue" : 280
         },
         "protection" : {
           "baseValue" : 0.0
