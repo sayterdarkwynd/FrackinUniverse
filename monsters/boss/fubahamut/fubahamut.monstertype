@@ -35,7 +35,7 @@
       "hostileActions" : [
         {
           "name" : "action-charge",
-          "cooldown" : 5.0,
+          "cooldown" : 3.0,
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup",
@@ -54,32 +54,12 @@
           }
         },      
         {
-          "name" : "action-leap", 
-          "cooldown" : 1,
-          "parameters" : {
-            "minimumRange" : 6,
-            "maximumRange" : 20,
-            "maxXRange" : 25,
-            "windupTime" : 0.3,
-            "windupState" : "stand",
-
-            "leapVelocity" : 85,
-            "collisionCheck" : true,
-            "highArc" : true,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },
-        {
           "name" : "action-fire",
-	  "cooldown" : 1.5,
+	  "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 8,
-            "minimumRange" : 6,
+            "minimumRange" : 0,
             "windupState" : "melee",
             "windupSound" : "turnHostile",
             "windupTime" : 0.3,
@@ -91,7 +71,7 @@
             "projectileCount" : 1,
             "projectileInterval" : 0.01,
             "fireSound" : "attack",
-            "range": 6,
+            "range": 8,
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.1
@@ -99,10 +79,10 @@
         },
         {
           "name" : "action-fire",
-	  "cooldown" : 6,
+	  "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
+            "maximumRange" : 15,
             "minimumRange" : 4,
             "windupState" : "fire",
             "windupTime" : 0.40,
@@ -112,7 +92,7 @@
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : true,
             "fireSound" : "attackSound",
-            "range": 10,
+            "range": 15,
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.6
@@ -120,10 +100,10 @@
         },         
         {
           "name" : "action-fire",
-	  "cooldown" : 12,
+	  "cooldown" : 7,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
+            "maximumRange" : 25,
             "minimumRange" : 5,
             "windupState" : "fire2",
             "windupTime" : 0.6,
@@ -133,7 +113,7 @@
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : true,
             "fireSound" : "attackSound",
-            "range": 15,
+            "range": 25,
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.8
@@ -170,7 +150,27 @@
           "parameters" : {
             "resetHeading" : false
           }
-        }
+        },
+        {
+          "name" : "action-leap", 
+          "cooldown" : 1,
+          "parameters" : {
+            "minimumRange" : 6,
+            "maximumRange" : 20,
+            "maxXRange" : 25,
+            "windupTime" : 0.3,
+            "windupState" : "stand",
+
+            "leapVelocity" : 78,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }        
       ],
 
       "followActions" : [
@@ -184,7 +184,27 @@
           "parameters" : {
             "resetHeading" : false
           }
-        }
+        },
+        {
+          "name" : "action-leap", 
+          "cooldown" : 1,
+          "parameters" : {
+            "minimumRange" : 6,
+            "maximumRange" : 20,
+            "maxXRange" : 25,
+            "windupTime" : 0.3,
+            "windupState" : "stand",
+
+            "leapVelocity" : 78,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }        
       ],
 
       "wanderActions" : [
@@ -193,7 +213,27 @@
           "parameters" : {
             "wanderTime" : [5, 15]
           }
-        }
+        },
+        {
+          "name" : "action-leap", 
+          "cooldown" : 1,
+          "parameters" : {
+            "minimumRange" : 6,
+            "maximumRange" : 20,
+            "maxXRange" : 25,
+            "windupTime" : 0.3,
+            "windupState" : "stand",
+
+            "leapVelocity" : 78,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }        
       ],
 
       "concurrentActions" : [],
@@ -216,8 +256,8 @@
     "movementSettings" : {
       "collisionPoly" : [ [-5,0.5], [-5,-8], [4.625,-8], [2.25,-0.125] ],
       "mass" : 1.0,
-      "walkSpeed" : 10,
-      "runSpeed" : 14,
+      "walkSpeed" : 15,
+      "runSpeed" : 25,
       "flySpeed" : 15,
       "airForce" : 70.0,
 
