@@ -205,7 +205,7 @@ function getRecipes()
 	{ inputs = { rottenfood = 1 }, outputs = { fu_mulch = { 1, 2, 3 } } },
 	{ inputs = { seaweed = 1 }, outputs = { tissueculture = { 1, 1, 2 } } },
 	{ inputs = { toxicwaste = { 10, 10, 5 } }, outputs = { uraniumore = 1 } },
-	{ inputs = { tritium = 2 }, outputs = { helium3cannister = { 1, 1, 2 }, toxicwaste = { 1, 2, 3 } } },
+	{ inputs = { tritium = 2 }, outputs = { helium3gasliquid = { 2, 3, 4 }, toxicwaste = { 1, 2, 3 } } },
 	-- tiles
 	{ inputs = { stomachblock = 1 }, outputs = { dnasample = { 1, 2, 4 } } },
 	{ inputs = { tentacleblock = 1 }, outputs = { dnasample = { 1, 2, 4 } } },
@@ -340,7 +340,7 @@ function getRecipes()
 	{ inputs = { moltensand = 50 }, outputs = { metalchunk = { 1, 1, 2 } } },
 	{ inputs = { moltensteel = 50 }, outputs = { metalchunk = { 1, 1, 2 } } },
 	{ inputs = { moltentile = 50 }, outputs = { metalchunk = { 1, 1, 2 } } },
-	{ inputs = { moondust = 50 }, outputs = { helium3cannister = { 1, 1, 4 } } },
+	{ inputs = { moondust = 50 }, outputs = { helium3gasliquid = { 1, 1, 4 } } },
 	{ inputs = { moonrock = 50 }, outputs = { rawminerals = { 3, 3, 4 } } },
 	{ inputs = { moonstone = 50 }, outputs = { rawminerals = { 1, 1, 3 } } },
 	{ inputs = { mossypackeddirt = 50 }, outputs = { fu_nitrogen = { 2, 2, 4 } } },
