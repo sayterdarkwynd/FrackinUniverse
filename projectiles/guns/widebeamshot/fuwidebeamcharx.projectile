@@ -1,7 +1,7 @@
 {
   "projectileName" : "fuwidebeamcharx",
   "physics" : "laser",
-  "piercing" : true,
+  "piercing" : false,
   "bounces" : 2,
   "level" : 3,
   "damageKindImage" : "widebeamshoticon.png",
@@ -10,34 +10,38 @@
   "frameNumber" : 2,
   "power" : 40,
   "timeToLive" : 0,
-  "supportsProcessing" : true,
+
+  "emitters" : [ "sparklesunicorn" ],
   "fullbright" : true,
-  "actionOnReap" : [
-    
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/prismaticexplosion/prismaticexplosion.config"
+    },    
 {
       "action" : "projectile",
       "type" : "fuwidebeamchar",
-      "timeToLive" : 0.01,
+      "timeToLive" : 1,
       "fuzzAngle" : 1,
-      "inheritDamageFactor" : 0.7,
+      "inheritDamageFactor" : 0.4,
       "angleAdjust" : 0
 
     },
 {
       "action" : "projectile",
       "type" : "fuwidebeamchar",
-      "timeToLive" : 0.01,
+      "timeToLive" : 1,
       "fuzzAngle" : 1,
-      "inheritDamageFactor" : 0.7,
+      "inheritDamageFactor" : 0.4,
       "angleAdjust" : 35
 
     },
 {
       "action" : "projectile",
       "type" : "fuwidebeamchar",
-      "timeToLive" : 0.01,
+      "timeToLive" : 1,
       "fuzzAngle" : -1,
-      "inheritDamageFactor" : 0.7,
+      "inheritDamageFactor" : 0.4,
       "angleAdjust" : -35
 
     }
