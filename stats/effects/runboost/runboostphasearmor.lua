@@ -8,7 +8,7 @@ function update(dt)
       speedModifier = 1.10,
       airJumpModifier = 1.10
     })
-  self.healingRate = 0.00001
+  self.healingRate = 0.0005
   status.modifyResourcePercentage("health", self.healingRate * 1.0)
 end
 
