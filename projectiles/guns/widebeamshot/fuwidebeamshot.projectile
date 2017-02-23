@@ -1,7 +1,7 @@
 {
   "projectileName" : "fuwidebeamshot",
   "physics" : "hyperbs",
-  "piercing" : true,
+  "piercing" : false,
   "bounces" : 1,
   "level" : 3,
   "damageKindImage" : "widebeamshoticon.png",
@@ -10,17 +10,15 @@
   "frameNumber" : 2,
   "power" : 40,
   "timeToLive" : 1,
-  "supportsProcessing" : true,
+
+  "emitters" : [ "sparklesunicorn" ],
   "fullbright" : true,
-  "actionOnReap" : [
+  "actionOnHit" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/prismaticexplosion/prismaticexplosion.config"
     }
-
-
    ],
-
 
   "damageKind" : "cosmic"
 }
