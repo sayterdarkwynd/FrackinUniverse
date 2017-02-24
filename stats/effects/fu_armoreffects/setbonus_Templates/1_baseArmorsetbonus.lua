@@ -1,10 +1,10 @@
 setName="fu_bearset"
 
-weaponEffect={
-    {stat = "critChance", amount = 25}
+weaponEffect={ -- if it is to have stats from weapons wielded, enter them here
+    {stat = "critChance", amount = 25} 
   }
   
-armorBonus={
+armorBonus={  -- whatever bonuses the armor provides go here
   {stat = "iceResistance", amount = 0.15},
   {stat = "coldimmunity", amount = 1}
   }
@@ -22,12 +22,12 @@ function update()
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		bearPawCheck()
+		myFunction()  -- we can run custom functions here to make all sorts of neat shit possible
 	end
 end
 
-function bearPawCheck()
-	if weaponCheck("both",{"axe","hammer"},false) then
+function myFunction()
+	if weaponCheck("both",{"axe","hammer"},false) then   -- weaponCheck is run in setbonuses core file)
 		effect.setStatModifierGroup(handler,weaponEffect)
 	else
 		effect.setStatModifierGroup(handler,{})
