@@ -1,8 +1,10 @@
+setName="fu_xithriciteset"
+setStatEffects={"xithriciteseteffect"}
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setSEBonusInit("fu_spacefarerset", {"spacefarerseteffect"})
-
+	setSEBonusInit(setName,setStatEffects)
 end
 
 function update()

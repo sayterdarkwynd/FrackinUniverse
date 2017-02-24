@@ -1,8 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setSEBonusInit("fu_spacefarerset", {"spacefarerseteffect"})
-
+	setSEBonusInit("fu_xenoset", {"fu_xenoseteffect"})
 end
 
 function update()
