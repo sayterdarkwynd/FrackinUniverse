@@ -1,21 +1,25 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+weaponEffect={{stat = "critChance", amount = 25}}
 
 function init()
-  local heldItem = world.entityHandItem(entity.id(), "primary")
-  local heldItem2 = world.entityHandItem(entity.id(), "alt")
-  
-    if heldItem or heldItem2  then
-	      if root.itemHasTag(heldItem, "axe") or root.itemHasTag(heldItem, "hammer") then
-		  setBonusInit("fu_bearset", {
-		    {stat = "iceResistance", amount = 0.15},
-		    {stat = "coldimmunity", amount = 1},
-		    {stat = "powerMultiplier", amount = 25}
-		  })
-	      end
-       else
-	  setBonusInit("fu_bearset", {
-	    {stat = "iceResistance", amount = 0.15},
-	    {stat = "coldimmunity", amount = 1}
-	  })      
-    end  	
+	setSEBonusInit("fu_bearset")
+	effect.addStatModifierGroup({{stat = "iceResistance", amount = 0.15},{stat = "coldimmunity", amount = 1}})
+	handler=effect.addStatModifierGroup({})
+	bearPawCheck()
+end
+
+function update()
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+		bearPawCheck()
+	end
+end
+
+function bearPawCheck()
+	if weaponCheck("both",{"axe","hammer"},false) then
+		effect.setStatModifierGroup(handler,weaponEffect)
+	else
+		effect.setStatModifierGroup(handler,{})
+	end
 end

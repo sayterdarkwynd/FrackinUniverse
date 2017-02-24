@@ -1,7 +1,9 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setBonusInit("fu_xithriciteset", {
+	setSEBonusInit("fu_xithriciteset")
+	
+	effect.addStatModifierGroup({
 	    {stat = "breathProtection", amount = 1},
 	    {stat = "waterbreathProtection", amount = 1},	
 	    {stat = "ffextremeradiationImmunity", amount = 1},
@@ -13,11 +15,11 @@ function init()
 	    {stat = "shadowResistance", baseMultiplier = 0.15},
 	    {stat = "radioactiveResistance", baseMultiplier = 0.50}
 	})
+	
 end
 
-
-
-
-
-
-
+function update()
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	end
+end
