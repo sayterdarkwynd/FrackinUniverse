@@ -1,10 +1,7 @@
-setName="fu_xithriciteset"
-setStatEffects={"xithriciteseteffect"}
-
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setSEBonusInit(setName,setStatEffects)
+	setSEBonusInit("fu_xenoset", {"fu_xenoseteffect"})
 end
 
 function update()

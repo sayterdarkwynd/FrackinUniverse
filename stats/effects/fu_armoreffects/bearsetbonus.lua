@@ -1,9 +1,12 @@
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_bearset"
 weaponEffect={{stat = "critChance", amount = 25}}
+armorBonus={{stat = "iceResistance", amount = 0.15},{stat = "coldimmunity", amount = 1}}
+
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setSEBonusInit("fu_bearset")
-	effect.addStatModifierGroup({{stat = "iceResistance", amount = 0.15},{stat = "coldimmunity", amount = 1}})
+	setSEBonusInit(setName)
+	effect.addStatModifierGroup(armorBonus)
 	handler=effect.addStatModifierGroup({})
 	bearPawCheck()
 end

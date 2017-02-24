@@ -1,7 +1,10 @@
+setName="fu_bearset"
+setStatEffects={"bearsetbonuseffect"}
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setSEBonusInit("fu_bearset", {"bearsetbonuseffect"})
+	setSEBonusInit(setName,setStatEffects)
 end
 
 function update()
