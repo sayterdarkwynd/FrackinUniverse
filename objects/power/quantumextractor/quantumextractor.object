@@ -38,7 +38,30 @@
       "collision" : "platform",
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
-    }     
+    },
+    {
+      "imageLayers" : [ { "image" : "quantumextractor_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractor_rooflit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "quantumextractor_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractor_rooflit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    } 
   ],
 
   "animation" : "/objects/power/quantumextractor/quantumextractor.animation",
@@ -46,7 +69,7 @@
     "samplingarrayanim" : "quantumextractor.png"
   },
   
-  "inputNodes" : [ [1, 1] ],
+
   "isn_powerReciever" : true,
   "isn_requiredPower" : 5,
   "isn_liquidCollector" : false,
@@ -54,8 +77,9 @@
   "fu_stationTechLevel" : 3,
   "fu_timerMod" : 1,
   
-  "outputNodes" : [ [2, 1] ],
-
+  "outputNodes" : [ [0, 1] ],
+  "inputNodes" : [ [0, 0] ],
+  
   "scripts" : [ 
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua",
