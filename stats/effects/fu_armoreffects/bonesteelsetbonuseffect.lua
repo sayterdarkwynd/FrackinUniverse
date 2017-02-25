@@ -1,11 +1,11 @@
-setName="fu_sanguineset"
+setName="fu_bonesteelset"
 
 weaponEffect={
-    {stat = "critChance", amount = 15}
+    {stat = "powerMultiplier", baseMultiplier = 1.15}
   }
   
 armorBonus={
-    {stat = "poisonResistance", amount = 0.15}
+    {stat = "physicalResistance", baseMultiplier = 1.15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -20,18 +20,13 @@ end
 function update()
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
-		status.removeEphemeralEffect( "regenerationsanguine" )
 	else
 		daggerCheck()
-		status.addEphemeralEffect( "regenerationsanguine" )
-	  mcontroller.controlModifiers({
-	      speedModifier = 1.10
-	    })
 	end	
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"dagger","whip"},false) then
+	if weaponCheck("both",{"broadsword","shortsword"},false) then
 		effect.setStatModifierGroup(handler,weaponEffect)
 	else
 		effect.setStatModifierGroup(handler,{})
