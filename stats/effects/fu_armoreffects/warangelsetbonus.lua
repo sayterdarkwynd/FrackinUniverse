@@ -1,5 +1,5 @@
 setName="fu_warangelset"
-setStatEffects={"fu_warangelseteffect"}
+setStatEffects={"warangelsetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
