@@ -1,4 +1,5 @@
 setName="fu_xithriciteset"
+
 armorBonus={
 	{stat = "breathProtection", amount = 1},
 	{stat = "waterbreathProtection", amount = 1},	
