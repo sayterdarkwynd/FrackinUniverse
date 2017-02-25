@@ -1,5 +1,5 @@
-setName="fu_leatherset"
-setStatEffects={"leathersetbonuseffect"}
+setName="fu_blisterset"
+setStatEffects={"blistersetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

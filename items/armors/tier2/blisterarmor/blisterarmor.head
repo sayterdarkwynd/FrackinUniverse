@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "An effective lightsource and proto-shield.",
+  "description" : "Set Bonus:
+^#c74eff;Poison-Proofing^reset; : Immune to Poison, Proto Poison and gain +25% Poison Resistance
+^green;Glow^reset; : Emit a purple glow in dark places",
   "shortdescription" : "Blister Helm",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
@@ -32,9 +34,12 @@
     {
       "stat" : "maxHealth",
       "amount" : 9
-    },    
-    "protoimmunity",
-    "glowpurple"
+    },
+    "blistersetbonus",
+    {
+      "stat" : "fu_blisterset_head",
+      "amount" : 1
+    }  
   ],
   "collectablesOnPickup" : { "fu_armorsmith" : "blisterhelm" }
 
