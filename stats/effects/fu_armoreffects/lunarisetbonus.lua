@@ -1,5 +1,5 @@
-setName="fu_nomadset"
-setStatEffects={"nomadsetbonuseffect"}
+setName="fu_lunariset"
+setStatEffects={"lunarisetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

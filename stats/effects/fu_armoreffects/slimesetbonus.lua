@@ -1,13 +1,14 @@
+setName="fu_slimeset"
+setStatEffects={"slimesetbonuseffect"}
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setBonusInit("fu_slimeset", {
-	    {stat = "protoImmunity", amount = 1},
-	    {stat = "wetImmunity", amount = 1},
-	    {stat = "poisonResistance", amount = 0.35},
-	    {stat = "poisonStatusImmunity", amount = 1},
-	    {stat = "slimestickImmunity", amount = 1},
-	    {stat = "slimefrictionImmunity", amount = 1},
-	    {stat = "slimeImmunity", amount = 1}
-	})
+	setSEBonusInit(setName,setStatEffects)
+end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
 end

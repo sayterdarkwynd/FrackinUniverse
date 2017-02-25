@@ -1,11 +1,13 @@
-setName="fu_vagabondset"
---setStatEffects={"fu_densiniumseteffect","jumpboost25"}
+setName="fu_reconset"
+
 weaponEffect={
     {stat = "powerMultiplier", baseMultiplier = 1.15}
   }
   
 armorBonus={
-    {stat = "fireResistance", amount = 0.15}
+      {stat = "radioactiveResistance", baseMultiplier = 1.25},
+      {stat = "radiationburnImmunity", baseMultiplier = 1.0},
+      {stat = "biomeradiationImmunity", baseMultiplier = 1.0}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -14,7 +16,7 @@ function init()
 	setSEBonusInit(setName)
 	handler=effect.addStatModifierGroup({})
         daggerCheck()
-	effect.addStatModifierGroup(armorBonus)	
+        effect.addStatModifierGroup(armorBonus)	
 end
 
 function update()
@@ -22,11 +24,15 @@ function update()
 		effect.expire()
 	else
 		daggerCheck()
-	end	
+	end
+
+	  mcontroller.controlModifiers({
+	      speedModifier = 1.05
+	    })
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"pistol","machinepistol"},false) then
+	if weaponCheck("both",{"rifle","sniperrifle"},false) then
 		effect.setStatModifierGroup(handler,weaponEffect)
 	else
 		effect.setStatModifierGroup(handler,{})
