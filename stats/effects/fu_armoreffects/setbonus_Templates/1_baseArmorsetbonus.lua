@@ -15,7 +15,7 @@ function init()
 	setSEBonusInit(setName)
 	effect.addStatModifierGroup(armorBonus)
 	handler=effect.addStatModifierGroup({})
-	bearPawCheck()
+	myFunction()
 end
 
 function update()
