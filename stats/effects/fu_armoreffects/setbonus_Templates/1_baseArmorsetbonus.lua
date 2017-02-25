@@ -1,4 +1,4 @@
-setName="fu_bearset"
+setName="fu_setname" --this should match what you put in the template shell.
 
 weaponEffect={ -- if it is to have stats from weapons wielded, enter them here
     {stat = "critChance", amount = 25} 
@@ -20,7 +20,7 @@ end
 
 function update()
 	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire()
+		effect.expire() --Khe: Treat this the same as return
 	else
 		myFunction()  -- we can run custom functions here to make all sorts of neat shit possible
 	end
