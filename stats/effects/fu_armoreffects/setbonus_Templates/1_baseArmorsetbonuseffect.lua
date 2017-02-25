@@ -32,7 +32,7 @@ function update()
 		if false then--optional condition to have different armor bonuses
 			effect.setStatModifierGroup(armorHandle,armorBonus2)
 		else
-			effect.setStatModifierGroup(armorHandle,armorBonus1)
+			effect.setStatModifierGroup(armorHandle,armorBonus)
 		end
 		myFunction()  -- we can run custom functions here to make all sorts of neat shit possible
 	end

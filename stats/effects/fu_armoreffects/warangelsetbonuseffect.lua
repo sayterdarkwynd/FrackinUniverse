@@ -14,17 +14,17 @@ armorBonus={
     {stat = "poisonStatusImmunity", amount = 1},
     {stat = "pressureProtection", amount = 1},
     {stat = "extremepressureProtection", amount = 1},
-    {stat = "powerMultiplier", baseMultiplier = 1.25},
     {stat = "grit", amount = 0.75},
     {stat = "wetImmunity", amount = 1},
-    {stat = "radiationburnImmunity", amount = 1}
+    {stat = "radiationburnImmunity", amount = 1},
+    {stat = "powerMultiplier", baseMultiplier = 1.25}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	effect.addStatModifierGroup(armorBonus)
+	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update()
