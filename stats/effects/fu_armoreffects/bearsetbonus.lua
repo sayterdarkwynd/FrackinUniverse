@@ -1,6 +1,6 @@
 setName="fu_bearset"
 weaponEffect={
-    {stat = "critChance", amount = 250}
+    {stat = "critChance", amount = 15}
   }
 armorBonus={
   {stat = "iceResistance", amount = 0.15},
