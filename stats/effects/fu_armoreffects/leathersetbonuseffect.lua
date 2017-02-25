@@ -4,14 +4,14 @@ weaponEffect={
     {stat = "critChance", baseMultiplier = 1.12},
     {stat = "powerMultiplier", baseMultiplier = 1.05}
   }
-  
-armorBonus={
+
+armorBonus2={
       {stat = "maxEnergy", baseMultiplier = 1.05},
       {stat = "critChance", baseMultiplier = 1.03},
       {stat = "grit", baseMultiplier = 0.2}
 }
 
-armorBonus2={
+armorBonus={
       {stat = "maxEnergy", baseMultiplier = 1.0},
       {stat = "critChance", baseMultiplier = 1.03},
       {stat = "grit", baseMultiplier = 0.1}
@@ -21,15 +21,12 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-
+	weaponHandle=effect.addStatModifierGroup({})
+	daggerCheck()
+	armorHandle=effect.addStatModifierGroup(armorBonus)
     if (world.type() == "garden") or (world.type() == "forest")  then
-       effect.addStatModifierGroup(armorBonus)	
-    else
-       effect.addStatModifierGroup(armorBonus2)	
-    end  
-    
+       effect.setStatModifierGroup(armorHandle,armorBonus2)	
+    end
 end
 
 function update()
@@ -38,16 +35,20 @@ function update()
 	else
 		daggerCheck()
 	end
-
-	  mcontroller.controlModifiers({
-	      speedModifier = 1.05
-	    })
+	if (world.type() == "garden") or (world.type() == "forest")  then
+		effect.setStatModifierGroup(armorHandle,armorBonus2)
+	else
+		effect.setStatModifierGroup(armorHandle,armorBonus)
+    end
+	mcontroller.controlModifiers({--Khe: Remember: control modifiers such as this one REPLACE the previous one. causes annoying race-conditions.
+		speedModifier = 1.05
+	})
 end
 
 function daggerCheck()
 	if weaponCheck("both",{"bow"},false) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

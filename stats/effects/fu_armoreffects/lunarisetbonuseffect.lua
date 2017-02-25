@@ -16,9 +16,9 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-        effect.addStatModifierGroup(armorBonus)	 
+	weaponHandle=effect.addStatModifierGroup({})
+	daggerCheck()
+	armorHandle=effect.addStatModifierGroup(armorBonus)	 
 end
 
 function update()
@@ -31,8 +31,8 @@ end
 
 function daggerCheck()
 	if weaponCheck("both",{"lunari"},false) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

@@ -1,35 +1,14 @@
-setName="fu_setname" --this should match what you put in the template shell.
-
-weaponEffect={ -- if it is to have stats from weapons wielded, enter them here
-    {stat = "critChance", amount = 25} 
-  }
-  
-armorBonus={  -- whatever bonuses the armor provides go here
-  {stat = "iceResistance", amount = 0.15},
-  {stat = "coldimmunity", amount = 1}
-  }
+setName="fu_setname" -- enter the set bonus name as per the armor file
+setStatEffects={"statuseffectname"} -- enter your statuseffect name
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setSEBonusInit(setName)
-	effect.addStatModifierGroup(armorBonus)
-	handler=effect.addStatModifierGroup({})
-	myFunction()
+	setSEBonusInit(setName,setStatEffects) -- dont need to change the names on the left. those are fine
 end
 
 function update()
-	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire() --Khe: Treat this the same as return
-	else
-		myFunction()  -- we can run custom functions here to make all sorts of neat shit possible
-	end
-end
-
-function myFunction()
-	if weaponCheck("both",{"axe","hammer"},false) then   -- weaponCheck is run in setbonuses core file)
-		effect.setStatModifierGroup(handler,weaponEffect)
-	else
-		effect.setStatModifierGroup(handler,{})
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
 	end
 end
