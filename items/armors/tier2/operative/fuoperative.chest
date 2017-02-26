@@ -3,11 +3,12 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Stylish, classy and dangerous.",
+  "rarity" : "common",
+  "description" : "Set Bonus:
+^#c74eff;Training : ^reset;+10% Crit Chance, +20% Crit Damage",
   "shortdescription" : "Operative Chest Armor",
   "category" : "chestarmour",
-  "tooltipKind" : "armornew2",
+  "tooltipKind" : "armor",
 
   "maleFrames" : {
     "body" : "chestm.png",
@@ -20,26 +21,31 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 2,
-"statusEffects" : [ 
+  "level" : 2,
+  "statusEffects" : [ 
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.55
+      "baseMultiplier" : 1.50
     },
 
     {
       "stat" : "protection",
-      "amount" : 14
-    },
-
-    {
-      "stat" : "maxEnergy",
       "amount" : 20
     },
 
     {
+      "stat" : "maxEnergy",
+      "amount" : 14
+    },
+
+    {
       "stat" : "maxHealth",
-      "amount" : 25
-    }
+      "amount" : 10
+    },
+    "operativesetbonus",
+    {
+      "stat" : "fu_operativeset_chest",
+      "amount" : 1
+    }  
   ]
 }
