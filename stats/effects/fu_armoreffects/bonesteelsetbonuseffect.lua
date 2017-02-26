@@ -5,7 +5,7 @@ weaponEffect={
   }
   
 armorBonus={
-    {stat = "physicalResistance", baseMultiplier = 1.15}
+    {stat = "physicalResistance", amount = 0.15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

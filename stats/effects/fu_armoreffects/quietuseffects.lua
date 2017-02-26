@@ -7,7 +7,7 @@ function init()
     {stat = "fireStatusImmunity", amount = 1},
     {stat = "iceslipImmunity", amount = 1},
     {stat = "pusImmunity", amount = 1},
-    {stat = "shadowResistance", baseMultiplier = 0.20}
+    {stat = "shadowResistance", amount = 0.20}
   })
 end
 

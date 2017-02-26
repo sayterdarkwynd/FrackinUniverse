@@ -11,7 +11,7 @@ function init()
 		{stat = "extremepressureProtection", amount = 1},
 		{stat = "pressureProtection", amount = 1},
 		{stat = "breathProtection", amount = 1},
-		{stat = "fireResistance", baseMultiplier = 0.15}
+		{stat = "fireResistance", amount = 0.15}
 	}, 
 	callbacks )
 end

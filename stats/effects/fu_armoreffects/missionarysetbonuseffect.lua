@@ -5,7 +5,7 @@ weaponEffect={
   }
   
 armorBonus={
-    {stat = "grit", baseMultiplier = 1.25},
+    {stat = "grit", amount = 0.25},
     {stat = "critBonus", amount = 15}
 }
 
