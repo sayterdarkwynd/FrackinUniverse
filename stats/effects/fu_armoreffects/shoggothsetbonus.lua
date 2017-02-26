@@ -1,7 +1,6 @@
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_shoggothset"
 
-function init()
-    setBonusInit("fu_shoggothset", {
+armorBonus={
 	    {stat = "ffextremeradiationImmunity", amount = 1},
 	    {stat = "biomeradiationImmunity", amount = 1},
 	    {stat = "ffextremeheatImmunity", amount = 1},
@@ -24,5 +23,17 @@ function init()
 	    {stat = "shadowResistance", amount = 0.7},
 	    {stat = "physicalResistance", amount = 0.4},
       {stat = "radiationburnImmunity", amount = 1}
-    })
+    }
+
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
+function init()
+	setSEBonusInit(setName)
+	effect.addStatModifierGroup(armorBonus)
+end
+
+function update()
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	end
 end

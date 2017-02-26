@@ -1,12 +1,14 @@
-require "/stats/effects/runboost/runboostmissionaryarmor.lua"
-callbacks = { { init = init, update = update, uninit = uninit } }
+setName="fu_missionaryset"
+setStatEffects={"missionarysetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-    setBonusInit("fu_missionaryset", {
-      {stat = "powerMultiplier", baseMultiplier = 1.25},
-      {stat = "critBonus", baseMultiplier = 1.05},
-      {stat = "grit", baseMultiplier = 0.05}
-    },callbacks)        
+	setSEBonusInit(setName,setStatEffects)
+end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
 end

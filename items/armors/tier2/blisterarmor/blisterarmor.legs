@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Protects while glowing and protecting against Proto-poison.",
+  "description" : "Set Bonus:
+^#c74eff;Poison-Proofing^reset; : Immune: Poison, Proto Poison. +25% Poison Resist
+^green;Glow^reset; : Emit a purple glow",
   "shortdescription" : "Blister Greaves",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
@@ -33,8 +35,10 @@
       "stat" : "maxHealth",
       "amount" : 6
     },
-    "protoimmunity",
-   "glowpurple"
-  ],
-    "questTags" : [ "tier4armor" ]
+    "blistersetbonus",
+    {
+      "stat" : "fu_blisterset_legs",
+      "amount" : 1
+    }  
+  ]
 }

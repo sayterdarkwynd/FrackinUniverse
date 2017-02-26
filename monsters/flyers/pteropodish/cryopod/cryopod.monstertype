@@ -37,10 +37,7 @@
           "name" : "action-offset-swoop",
           "cooldown" : 0.1,
           "parameters" : {
-            "targetOffset": [
-              0,
-              6
-            ],
+            "targetOffset": [0,6],
             "minimumRange" : 0,
             "maximumRange" : 20,
             "onGround" : false,
@@ -57,6 +54,31 @@
             "winddownStopForce" : 20
           }
         },
+        {
+          "name" : "action-fire",
+          "cooldown" : 3,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 10,
+            "windupState" : "firewindup",
+            "windupTime" : 0.75,
+            "projectileType" : "fuicebullet",
+            "inaccuracy" : 0.5,
+            "power" : 4,
+            "fireOffset" : [0, 0],
+            "projectileCount" : 3,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "winddownState" : "",
+            "winddownTime" : 0.5,
+            "aimAtTarget" : true,
+            "aimDirection" : [1,-1],
+            "onGround" : false,
+            "fireDelay" : 0.1
+          }
+        },        
         {
           "name" : "action-fire",
           "cooldown" : 0.6,
@@ -206,7 +228,7 @@
           "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : 0.5
+          "baseValue" : 1.0
         },
         "iceStatusImmunity" : {
           "baseValue" : 1.0
