@@ -16,7 +16,7 @@ function init()
 	bearPawCheck()
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else

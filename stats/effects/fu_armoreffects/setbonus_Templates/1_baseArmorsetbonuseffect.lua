@@ -25,7 +25,7 @@ function init()
 	myFunction()
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire() --Khe: Treat this the same as return: it goes last in this code piece
 	else
