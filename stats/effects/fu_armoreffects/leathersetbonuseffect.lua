@@ -1,13 +1,13 @@
 setName="fu_leatherset"
 
 weaponEffect={
-    {stat = "critChance", baseMultiplier = 1.12},
+    {stat = "critChance", amount = 12},
     {stat = "powerMultiplier", baseMultiplier = 1.05}
   }
 
 armorBonus2={
       {stat = "maxEnergy", baseMultiplier = 1.05},
-      {stat = "critChance", baseMultiplier = 1.03},
+      {stat = "critChance", amount = 3},
       {stat = "grit", baseMultiplier = 0.2}
 }
 
