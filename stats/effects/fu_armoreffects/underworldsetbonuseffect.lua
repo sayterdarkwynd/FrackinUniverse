@@ -1,7 +1,7 @@
 setName="fu_underworldset"
 
 weaponEffect={
-    {stat = "critChance", baseMultiplier = 1.12}
+    {stat = "critChance", amount = 12}
   }
   
 armorBonus={

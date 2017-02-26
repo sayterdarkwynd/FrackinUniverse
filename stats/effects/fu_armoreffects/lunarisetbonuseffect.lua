@@ -1,7 +1,7 @@
 setName="fu_lunariset"
 
 weaponEffect={
-    {stat = "critChance", baseMultiplier = 1.15},
+    {stat = "critChance", amount = 15},
     {stat = "powerMultiplier", baseMultiplier = 1.15}
   }
   

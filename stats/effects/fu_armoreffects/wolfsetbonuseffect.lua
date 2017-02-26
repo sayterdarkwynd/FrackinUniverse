@@ -1,7 +1,7 @@
 setName="fu_wolfset"
 
 weaponEffect={
-    {stat = "critBonus", baseMultiplier = 1.20}
+    {stat = "critBonus", amount = 20}
   }
   
 armorBonus={

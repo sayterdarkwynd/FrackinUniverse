@@ -6,7 +6,7 @@ weaponEffect={
   
 armorBonus={
     {stat = "grit", baseMultiplier = 1.25},
-    {stat = "critBonus", baseMultiplier = 1.15}
+    {stat = "critBonus", amount = 15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
