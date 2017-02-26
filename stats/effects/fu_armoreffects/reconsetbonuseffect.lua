@@ -5,18 +5,18 @@ weaponEffect={
   }
   
 armorBonus={
-      {stat = "radioactiveResistance", baseMultiplier = 1.25},
-      {stat = "radiationburnImmunity", baseMultiplier = 1.0},
-      {stat = "biomeradiationImmunity", baseMultiplier = 1.0}
+      {stat = "radioactiveResistance", amount = 0.25},
+      {stat = "radiationburnImmunity", amount = 1.0},
+      {stat = "biomeradiationImmunity", amount = 1.0}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-        effect.addStatModifierGroup(armorBonus)	
+	weaponHandle=effect.addStatModifierGroup({})
+	daggerCheck()
+	armorHandle=effect.addStatModifierGroup(armorBonus)	
 end
 
 function update()
@@ -33,8 +33,8 @@ end
 
 function daggerCheck()
 	if weaponCheck("both",{"rifle","sniperrifle"},false) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

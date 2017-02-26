@@ -1,7 +1,7 @@
 setName="fu_slimeset"
 
 weaponEffect={
-    {stat = "critChance", baseMultiplier = 1.12},
+    {stat = "critChance", amount = 12},
     {stat = "powerMultiplier", baseMultiplier = 1.20}
   }
   
@@ -21,9 +21,9 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-        effect.addStatModifierGroup(armorBonus)	
+	weaponHandle=effect.addStatModifierGroup({})
+	daggerCheck()
+	armorHandle=effect.addStatModifierGroup(armorBonus)	
 end
 
 function update()
