@@ -6,14 +6,14 @@ function init()
 	      {stat = "maxEnergy", baseMultiplier = 1.15},
 	      {stat = "shieldStaminaRegen", baseMultiplier = 1.4},
 	      {stat = "maxBreath", baseMultiplier = 5},
-	      {stat = "poisonResistance", baseMultiplier = 1.30}
+	      {stat = "poisonResistance", amount = 0.30}
 	    }) 
        else
 	    setBonusInit("fu_sirenset", {
 	      {stat = "maxEnergy", baseMultiplier = 1.05},
 	      {stat = "shieldStaminaRegen", baseMultiplier = 1.25},
 	      {stat = "maxBreath", baseMultiplier = 2},
-	      {stat = "poisonResistance", baseMultiplier = 1.15}
+	      {stat = "poisonResistance", amount = 0.15}
 	    })        
     end  	
 end

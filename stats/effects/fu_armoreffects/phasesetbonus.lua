@@ -1,14 +1,14 @@
-require "/stats/effects/runboost/runboostphasearmor.lua"
-
-callbacks = { { init = init, update = update, uninit = uninit } }
+setName="fu_phaseset"
+setStatEffects={"phasesetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setBonusInit("fu_phaseset", {
-		{stat ="electricResistance", amount = 0.4},
-		{stat ="electricStatusImmunity" , amount = 1 },
-		{stat ="pressureProtection" , amount = 1 },
-		{stat ="extremepressureProtection" , amount = 1 }
-	},callbacks)
+	setSEBonusInit(setName,setStatEffects)
+end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
 end

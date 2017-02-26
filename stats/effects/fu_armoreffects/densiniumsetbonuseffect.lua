@@ -9,7 +9,7 @@ armorBonus={
 	{stat = "biomecoldImmunity", amount = 1},
 	{stat = "sulphuricImmunity", amount = 1},
 	{stat = "breathProtection", amount = 1},
-	{stat = "physicalResistance", baseMultiplier = 0.15},
+	{stat = "physicalResistance", amount = 0.15},
 	{stat = "radiationburnImmunity", amount = 1}
 }
 
@@ -20,7 +20,7 @@ function init()
 	effect.addStatModifierGroup(armorBonus)
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	end

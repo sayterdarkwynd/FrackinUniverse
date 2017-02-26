@@ -8,13 +8,13 @@ weaponEffect={
 armorBonus2={
       {stat = "maxEnergy", baseMultiplier = 1.05},
       {stat = "critChance", amount = 3},
-      {stat = "grit", baseMultiplier = 0.2}
+      {stat = "grit", amount = 0.2}
 }
 
 armorBonus={
       {stat = "maxEnergy", baseMultiplier = 1.0},
-      {stat = "critChance", baseMultiplier = 1.03},
-      {stat = "grit", baseMultiplier = 0.1}
+      {stat = "critChance", amount = 3},
+      {stat = "grit", amount = 0.1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -29,7 +29,7 @@ function init()
     end
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else

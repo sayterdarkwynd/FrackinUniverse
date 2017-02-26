@@ -5,7 +5,7 @@ weaponEffect={
   }
   
 armorBonus={
-    {stat = "grit", baseMultiplier = 1.25},
+    {stat = "grit", amount = 0.25},
     {stat = "critBonus", amount = 15}
 }
 
@@ -18,7 +18,7 @@ function init()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
