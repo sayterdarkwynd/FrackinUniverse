@@ -1,8 +1,12 @@
 setName="fu_underworldset"
 
 weaponEffect={
+    {stat = "critChance", amount = 6}
+}
+
+weaponEffect2={
     {stat = "critChance", amount = 12}
-  }
+}
   
 armorBonus={
     {stat = "electricResistance", amount = 0.15},
@@ -23,11 +27,13 @@ function update(dt)
 		effect.expire()
 	else
 		daggerCheck()
-	end	
+	end
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"rifle","pistol","machinepistol"},false) then
+	if weaponCheck("either",{"rifle"}) or (weaponCheck("primary",{"pistol","machinepistol"}) and weaponCheck("alt",{"pistol","machinepistol"})) then
+		effect.setStatModifierGroup(handler,weaponEffect2)
+	elseif weaponCheck("either",{"pistol","machinepistol"}) then
 		effect.setStatModifierGroup(handler,weaponEffect)
 	else
 		effect.setStatModifierGroup(handler,{})

@@ -2,7 +2,7 @@ setName="fu_swashbucklerset"
 
 weaponEffect={
     {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
+}
   
 armorBonus={
     {stat = "iceResistance", amount = 0.2},
@@ -31,7 +31,7 @@ function update(dt)
 end
 
 function daggerCheck()
-	if weaponCheck("primary",{"shortsword"},false) and  weaponCheck("alt",{"shortsword"},false) then
+	if weaponCheck("both",{"shortsword"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

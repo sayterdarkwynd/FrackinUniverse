@@ -28,7 +28,7 @@ function update(dt)
 end
 
 function daggerCheck()
-	if weaponCheck("primary",{"shield"},false) or  weaponCheck("alt",{"shield"},false) then
+	if weaponCheck("primary",{"shield"}) or  weaponCheck("alt",{"shield"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
