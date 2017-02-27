@@ -1,14 +1,12 @@
-setName="fu_raiderset"
+setName="fu_dwellerset"
 
-weaponEffect={
-    {stat = "critBonus", amount = 10}
-  }
-
-weaponEffect2={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
+weaponEffect={}
   
-armorBonus={ }
+armorBonus={
+    {stat = "shadowResistance", amount = 0.20},
+    {stat = "tarImmunity", amount = 1},
+    {stat = "blacktarImmunity", amount = 1}
+}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
@@ -25,16 +23,11 @@ function update(dt)
 	else
 		daggerCheck()
 	end	
-  mcontroller.controlModifiers({
-      speedModifier = 1.12
-    })	
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"dagger"},false) then
+	if weaponCheck("both",{"mininglaser"},false) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
-	elseif weaponCheck("both",{"machinepistol","pistol"},false) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect2)		
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
 	end

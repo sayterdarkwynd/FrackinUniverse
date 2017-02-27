@@ -14,7 +14,7 @@ function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
 	daggerCheck()
-	armorHandle=effect.addStatModifierGroup(armorBonus)	
+	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -27,8 +27,8 @@ end
 
 function daggerCheck()
 	if weaponCheck("both",{"pistol","machinepistol"},false) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end
