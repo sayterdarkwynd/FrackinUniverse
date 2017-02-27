@@ -9,7 +9,7 @@ weaponEffect2={
 }
 
 weaponEffect3={
-	{stat = "powerMultiplier", baseMultiplier = 1.225}
+	{stat = "powerMultiplier", baseMultiplier = 1.15}
 }
   
 armorBonus={
