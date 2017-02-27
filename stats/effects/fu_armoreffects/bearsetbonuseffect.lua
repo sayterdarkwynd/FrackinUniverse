@@ -31,11 +31,11 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("both",{"axe","hammer"}) then
+	if weaponCheck("both",{"axe","hammer"}) then--twohanded or matching dual wield
 		effect.setStatModifierGroup(weaponHandle,weaponEffect3)
-	elseif weaponCheck("primary",{"axe","hammer"}) and weaponCheck("alt",{"axe","hammer"}) then
+	elseif weaponCheck("primary",{"axe","hammer"}) and weaponCheck("alt",{"axe","hammer"}) then--unmatching dual wield
 		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
-	elseif weaponCheck("either",{"axe","hammer"}) then
+	elseif weaponCheck("either",{"axe","hammer"}) then--only one hand has axe/hammer
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
