@@ -17,25 +17,25 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-	effect.addStatModifierGroup(armorBonus)	
+	weaponHandle=effect.addStatModifierGroup({})
+	checkWeapons()
+	armorHandle=effect.addStatModifierGroup(armorBonus)	
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end
 end
 
-function daggerCheck()
-	if weaponCheck("either",{"rifle"}) or (weaponCheck("primary",{"pistol","machinepistol"}) and weaponCheck("alt",{"pistol","machinepistol"})) then
-		effect.setStatModifierGroup(handler,weaponEffect2)
+function checkWeapons()
+	if weaponCheck("either",{"rifle"}) or weaponCheck("both",{"pistol","machinepistol"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
 	elseif weaponCheck("either",{"pistol","machinepistol"}) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

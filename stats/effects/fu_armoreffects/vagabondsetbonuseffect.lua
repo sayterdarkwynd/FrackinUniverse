@@ -1,8 +1,16 @@
 setName="fu_vagabondset"
 
 weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
+	{stat = "powerMultiplier", baseMultiplier = 1.075}
+}
+
+weaponEffect2={
+	{stat = "powerMultiplier", baseMultiplier = 1.15}
+}
+
+weaponEffect3={
+	{stat = "powerMultiplier", baseMultiplier = 1.225}
+}
   
 armorBonus={
     {stat = "fireResistance", amount = 0.15}
@@ -13,7 +21,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
@@ -21,12 +29,16 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end	
 end
 
-function daggerCheck()
-	if weaponCheck("either",{"pistol","machinepistol"}) then
+function checkWeapons()
+	if weaponCheck("both",{"pistol","machinepistol"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect3)
+	elseif weaponCheck("primary",{"pistol","machinepistol"}) and weaponCheck("alt",{"pistol","machinepistol"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
+	elseif weaponCheck("either",{"pistol","machinepistol"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

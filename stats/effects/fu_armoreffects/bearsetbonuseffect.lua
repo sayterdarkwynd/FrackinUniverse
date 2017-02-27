@@ -17,27 +17,27 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	effect.addStatModifierGroup(armorBonus)
-	handler=effect.addStatModifierGroup({})
-	bearPawCheck()
+	armorHandle=effect.addStatModifierGroup(armorBonus)
+	weaponHandle=effect.addStatModifierGroup({})
+	checkWeapons()
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		bearPawCheck()
+		checkWeapons()
 	end
 end
 
-function bearPawCheck()
+function checkWeapons()
 	if weaponCheck("both",{"axe","hammer"}) then
-		effect.setStatModifierGroup(handler,weaponEffect3)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect3)
 	elseif weaponCheck("primary",{"axe","hammer"}) and weaponCheck("alt",{"axe","hammer"}) then
-		effect.setStatModifierGroup(handler,weaponEffect2)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
 	elseif weaponCheck("either",{"axe","hammer"}) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end
