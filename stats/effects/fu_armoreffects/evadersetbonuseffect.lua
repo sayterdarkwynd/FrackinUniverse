@@ -1,11 +1,13 @@
-setName="fu_vagabondset"
+setName="fu_evaderset"
 
 weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
+    {stat = "physicalResistance", amount = 0.15}
   }
   
 armorBonus={
-    {stat = "fireResistance", amount = 0.15}
+    {stat = "shieldRegen", amount = 0.25},
+    {stat = "shieldHealth", amount = 0.25},
+    {stat = "perfectBlockLimitRegen", baseMultiplier = 1.25}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -26,7 +28,7 @@ function update(dt)
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"pistol","machinepistol"},false) then
+	if weaponCheck("primary",{"shield"},false) or  weaponCheck("alt",{"shield"},false) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

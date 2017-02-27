@@ -1,12 +1,14 @@
-setName="fu_vagabondset"
+setName="fu_raiderset"
 
 weaponEffect={
+    {stat = "critBonus", amount = 10}
+  }
+
+weaponEffect2={
     {stat = "powerMultiplier", baseMultiplier = 1.15}
   }
   
-armorBonus={
-    {stat = "fireResistance", amount = 0.15}
-}
+armorBonus={ }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
@@ -23,11 +25,16 @@ function update(dt)
 	else
 		daggerCheck()
 	end	
+  mcontroller.controlModifiers({
+      speedModifier = 1.12
+    })	
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"pistol","machinepistol"},false) then
+	if weaponCheck("both",{"dagger"},false) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
+	elseif weaponCheck("both",{"machinepistol","pistol"},false) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)		
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
 	end

@@ -22,6 +22,6 @@ function update(dt)
 			speedModifier = 1.10,
 			airJumpModifier = 1.10
 		})
-		status.modifyResourcePercentage("health", 0.006 * dt)--0.6% hp regen per second
+		status.modifyResourcePercentage("health", 0.004 * dt)
 	end
 end

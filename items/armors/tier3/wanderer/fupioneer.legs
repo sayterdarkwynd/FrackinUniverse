@@ -4,14 +4,16 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Steel pants with a convenient flap for the release of bodily fluids. Immune to mud and clay effects.",
-  "shortdescription" : "Wanderer Pants",
+  "description" : "Set Bonus:
+^#c74eff;Grounded^reset; : +20% Electric Resist
+^green;Overcharge^reset; : +15% Damage and +15% Crit Dmg (Energy Weapon)",   
+"shortdescription" : "Wanderer Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -31,11 +33,13 @@
     {
       "stat" : "maxHealth",
       "amount" : 5
-    },
-    "fumudslowimmunity"
+    },   
+    "wanderersetbonus",
+    {
+      "stat" : "fu_wandererset_legs",
+      "amount" : 1
+    }
   ],
-
-  "triggerKeys" : [ "titaniumarmor" ],
 
   "colorOptions" : [
     /* WHITE */

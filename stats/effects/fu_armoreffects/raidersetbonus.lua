@@ -1,5 +1,5 @@
-setName="fu_evaderset"
-setStatEffects={"evadersetbonuseffect"}
+setName="fu_raiderset"
+setStatEffects={"raidersetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

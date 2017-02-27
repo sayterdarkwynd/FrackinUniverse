@@ -4,14 +4,16 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Immune to slime, mud, ice and snow.",
+  "description" : "Set Bonus:
+^#c74eff;Firm Footing^reset; : Immune: Slime, Mud, Ice, Snow
+^green;Master Miner^reset; : Detects Ore, +25% Mining Laser damage", 
   "shortdescription" : "Dweller Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -23,13 +25,17 @@
     },
     {
       "stat" : "maxEnergy",
-      "amount" : 34
+      "amount" : 12
     },
     {
       "stat" : "maxHealth",
       "amount" : 7
-    },
-    "movementprotection"
+    },   
+    "dwellersetbonus",
+    {
+      "stat" : "fu_dwellerset_chest",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [

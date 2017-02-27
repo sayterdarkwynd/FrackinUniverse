@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "This chest protection provides 25% energy regeneration.",
+  "description" : "Set Bonus:
+^#c74eff;Firm Footing^reset; : Immune: Slime, Mud, Ice, Snow
+^green;Master Miner^reset; : Detects Ore, +25% Mining Laser damage", 
   "shortdescription" : "Dweller Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,7 +22,7 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 3,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -28,15 +30,20 @@
     },  
     {
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 24
     },
     {
-      "stat" : "energyRegen",
-      "amount" : 1.25
+      "stat" : "maxEnergy",
+      "amount" : 25
     },    
     {
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 8
+    },   
+    "dwellersetbonus",
+    {
+      "stat" : "fu_dwellerset_chest",
+      "amount" : 1
     }
   ],
 

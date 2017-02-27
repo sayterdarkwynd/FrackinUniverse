@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Hide your face and protect yourself. Grants 15% energy regeneration.",
+  "description" : "Set Bonus:
+^#c74eff;Firm Footing^reset; : Immune: Slime, Mud, Ice, Snow
+^green;Master Miner^reset; : Detects Ore, +25% Mining Laser damage", 
   "shortdescription" : "Dweller Cowl",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,11 +14,11 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 3,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.51
+      "baseMultiplier" : 1.45
     },  
     {
       "stat" : "protection",
@@ -24,16 +26,17 @@
     },
     {
       "stat" : "maxEnergy",
-      "amount" : 45
+      "amount" : 15
     },
     {
       "stat" : "maxHealth",
       "amount" : 11
-    },    
+    },   
+    "dwellersetbonus",
     {
-      "stat" : "energyRegen",
-      "amount" : 1.15
-    } 
+      "stat" : "fu_dwellerset_chest",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [

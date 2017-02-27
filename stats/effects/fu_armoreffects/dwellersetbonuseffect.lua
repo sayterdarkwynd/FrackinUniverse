@@ -1,11 +1,11 @@
-setName="fu_vagabondset"
+setName="fu_dwellerset"
 
-weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
+weaponEffect={}
   
 armorBonus={
-    {stat = "fireResistance", amount = 0.15}
+    {stat = "shadowResistance", amount = 0.20},
+    {stat = "tarImmunity", amount = 1},
+    {stat = "blacktarImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -26,7 +26,7 @@ function update(dt)
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"pistol","machinepistol"},false) then
+	if weaponCheck("both",{"mininglaser"},false) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
