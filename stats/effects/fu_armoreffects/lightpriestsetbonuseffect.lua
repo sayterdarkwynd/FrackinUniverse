@@ -1,6 +1,9 @@
 setName="fu_lightpriestset"
 
 weaponEffect={
+    {stat = "powerMultiplier", baseMultiplier = 1.10}
+  }
+  weaponEffect2={
     {stat = "powerMultiplier", baseMultiplier = 1.20}
   }
   
@@ -13,7 +16,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
@@ -21,13 +24,15 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 		status.modifyResourcePercentage("health", 0.004 * dt)
 	end	
 end
 
-function daggerCheck()
-	if weaponCheck("either",{"staff","wand"}) then
+function checkWeapons()
+	if weaponCheck("both",{"staff","wand"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
+	elseif weaponCheck("either",{"wand"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

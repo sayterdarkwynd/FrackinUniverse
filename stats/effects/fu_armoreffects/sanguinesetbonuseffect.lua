@@ -12,9 +12,9 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-	effect.addStatModifierGroup(armorBonus)	
+	weaponHandle=effect.addStatModifierGroup({})
+        checkWeapons()
+	armorHandle=effect.addStatModifierGroup(armorBonus)	
 end
 
 function update(dt)
@@ -22,7 +22,7 @@ function update(dt)
 		effect.expire()
 		status.removeEphemeralEffect( "regenerationsanguine" )
 	else
-		daggerCheck()
+		checkWeapons()
 		status.addEphemeralEffect( "regenerationsanguine" )
 	  mcontroller.controlModifiers({
 	      speedModifier = 1.10
@@ -30,10 +30,10 @@ function update(dt)
 	end	
 end
 
-function daggerCheck()
+function checkWeapons()
 	if weaponCheck("either",{"dagger","whip"}) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

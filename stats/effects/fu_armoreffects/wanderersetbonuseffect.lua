@@ -14,7 +14,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
@@ -22,11 +22,11 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end	
 end
 
-function daggerCheck()
+function checkWeapons()
 	if weaponCheck("either",{"energy"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else

@@ -14,7 +14,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
@@ -22,7 +22,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end	
 	mcontroller.controlModifiers({
 		speedModifier = 1.10
@@ -30,8 +30,8 @@ function update(dt)
 	})
 end
 
-function daggerCheck()
-	if weaponCheck("both",{"fist"}) or weaponCheck("either",{"quarterstaff"}) then
+function checkWeapons()
+	if weaponCheck("both",{"fist","quarterstaff"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

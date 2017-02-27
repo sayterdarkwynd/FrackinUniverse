@@ -22,7 +22,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
     if (world.type() == "garden") or (world.type() == "forest")  then
        effect.setStatModifierGroup(armorHandle,armorBonus2)	
@@ -33,7 +33,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end
 	if (world.type() == "garden") or (world.type() == "forest")  then
 		effect.setStatModifierGroup(armorHandle,armorBonus2)
@@ -45,7 +45,7 @@ function update(dt)
 	})
 end
 
-function daggerCheck()
+function checkWeapons()
 	if weaponCheck("either",{"bow"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else

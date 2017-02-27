@@ -1,10 +1,14 @@
 setName="fu_slimeset"
 
 weaponEffect={
+    {stat = "critChance", amount = 6},
+    {stat = "powerMultiplier", baseMultiplier = 1.10}
+}
+weaponEffect2={
     {stat = "critChance", amount = 12},
     {stat = "powerMultiplier", baseMultiplier = 1.20}
-  }
-  
+}
+
 armorBonus={
 	    {stat = "wetImmunity", amount = 1},
 	    {stat = "poisonResistance", amount = 0.35},
@@ -22,7 +26,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)	
 end
 
@@ -30,14 +34,16 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end
 end
 
-function daggerCheck()
-	if weaponCheck("either",{"slime"}) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+function checkWeapons()
+	if weaponCheck("both",{"slime"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
+	elseif weaponCheck("either",{"slime"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

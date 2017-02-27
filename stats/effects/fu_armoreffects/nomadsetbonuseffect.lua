@@ -27,7 +27,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 	if (world.type() == "desert") or (world.type() == "desertwastes") or (world.type() == "desertwastesdark") then--optional condition to have different armor bonuses
 		effect.setStatModifierGroup(armorHandle,armorBonus2)
@@ -39,7 +39,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end
 	if (world.type() == "desert") or (world.type() == "desertwastes") or (world.type() == "desertwastesdark") then--optional condition to have different armor bonuses
 		effect.setStatModifierGroup(armorHandle,armorBonus2)
@@ -48,8 +48,8 @@ function update(dt)
 	end
 end
 
-function daggerCheck()
-	if weaponCheck("either",{"dagger"}) then
+function checkWeapons()
+	if weaponCheck("either",{"dagger"}) then--set both for dual wield required, or leave as is for "if any hand, do."
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
