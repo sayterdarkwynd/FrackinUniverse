@@ -1,12 +1,15 @@
-require "/stats/effects/regeneration/regenerationminorarmorsetlightpriest.lua"
-require "/stats/effects/runboost/runboost10.lua"
-callbacks = { { init = init, update = update, uninit = uninit } }
+setName="fu_lightpriestset"
+setStatEffects={"lightpriestsetbonuseffect", "fireburst", "glowyellow2"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setBonusInit("fu_lightpriestset", {
-	    {stat = "insanityImmunity", amount = 1},
-	    {stat = "radiationburnImmunity", amount = 1}
-	},callbacks)
+	setSEBonusInit(setName,setStatEffects)
 end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
+end
+

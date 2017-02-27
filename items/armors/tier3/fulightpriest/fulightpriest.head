@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Glows with psionic power.^cyan;Set Bonus: ^green; Regeneration 5, Insanity Immunity, 10% Speed Boost^reset;",
+  "description" : "Set Bonus:
+^#c74eff;Mystic^reset; : +20% Wand and Staff damage
+^green;Regeneration Cloak^reset; : +4% Regen",  
   "shortdescription" : "Light Priest Hood",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,11 +14,11 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "level" : 4,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.95
+      "baseMultiplier" : 1.45
     },
 
     {
@@ -26,9 +28,12 @@
 
     {
       "stat" : "maxEnergy",
-      "amount" : 60
+      "amount" : 19
     },
-    "glowyellow2",
+    {
+      "stat" : "maxHealth",
+      "amount" : 11
+    },     
     "lightpriestsetbonus",
     {
       "stat" : "fu_lightpriestset_head",

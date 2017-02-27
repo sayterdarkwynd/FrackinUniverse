@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "A chestguard protects the pioneer's first steps into a new world.",
+  "description" : "Set Bonus:
+^#c74eff;Grounded^reset; : +20% Electric Resist
+^green;Overcharge^reset; : "+15% Damage and +15% Crit Dmg (Energy Weapon)", 
   "shortdescription" : "Wanderer Chestguard",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,7 +22,7 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 3,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -40,10 +42,13 @@
     {
       "stat" : "maxHealth",
       "amount" : 12
+    },    
+    "wanderersetbonus",
+    {
+      "stat" : "fu_wandererset_chest",
+      "amount" : 1
     }
   ],
-
-  "triggerKeys" : [ "titaniumarmor" ],
 
   "colorOptions" : [
     /* WHITE */
