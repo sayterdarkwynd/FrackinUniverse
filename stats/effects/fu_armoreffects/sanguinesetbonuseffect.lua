@@ -31,7 +31,7 @@ function update(dt)
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"dagger","whip"},false) then
+	if weaponCheck("either",{"dagger","whip"}) then
 		effect.setStatModifierGroup(handler,weaponEffect)
 	else
 		effect.setStatModifierGroup(handler,{})

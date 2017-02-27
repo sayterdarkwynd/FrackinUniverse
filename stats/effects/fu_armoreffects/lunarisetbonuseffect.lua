@@ -30,7 +30,7 @@ function update(dt)
 end
 
 function daggerCheck()
-	if weaponCheck("both",{"lunari"},false) then
+	if weaponCheck("either",{"lunari"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
