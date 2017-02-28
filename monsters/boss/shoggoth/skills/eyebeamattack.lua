@@ -56,6 +56,7 @@ function eyeBeamAttack.update(dt, stateData)
       if stateData.windupTimer == config.getParameter("eyeBeamAttack.windupTime") then
       animator.setAnimationState("movement", "idle")
       --animator.setAnimationState("firstBeams", "active")
+      animator.playSound("turnHostile")
       end
       stateData.windupTimer = stateData.windupTimer - dt
       if stateData.windupTimer  < 0 then

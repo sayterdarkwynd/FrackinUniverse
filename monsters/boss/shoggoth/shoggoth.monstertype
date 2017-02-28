@@ -60,8 +60,8 @@
 
     "movementSettings" : {
       "collisionPoly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-      "mass" : 1,
-      "walkSpeed" : 6,
+      "mass" : 7,
+      "walkSpeed" : 4,
       "runSpeed" : 8,
       "jumpSpeed" : 0,
       "airforce" : 0
@@ -94,8 +94,8 @@
       "damage" : 24,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "fu_shadow",
-      "statusEffects" : [ "percentarmorboostneg3", "insanity" ]
+      "damageSourceKind" : "cosmic",
+      "statusEffects" : [ "percentarmorboostneg3" ]
     },
 
     "statusSettings" : {
@@ -117,10 +117,10 @@
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 3000
+          "baseValue" : 5000
         },
         "protection" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -151,12 +151,15 @@
         },
         "radiationburnImmunity" : {
           "baseValue" : 1.0
-        },        
+        },   
+        "sulphuricacidImmunity" : {
+          "baseValue" : 1.0
+        },           
         "poisonResistance" : { "baseValue" : 0.4 },
-        "fireResistance" : { "baseValue" : -0.9 },
+        "fireResistance" : { "baseValue" :0.5 },
         "iceResistance" : { "baseValue" : 0.5 },
         "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
+        "physicalResistance" : { "baseValue" : 0.4 },
         "shadowResistance" : { "baseValue" : 0.95 },
         "cosmicResistance" : { "baseValue" : 0.95 },
         "radioactiveResistance" : { "baseValue" : 0.45 }
