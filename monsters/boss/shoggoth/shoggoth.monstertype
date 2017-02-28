@@ -30,29 +30,29 @@
       },
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.75,
+        "healthPercentage" : 0.80,
         "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
       },
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.60,
-        "skills" : [ "fleshBombAttack" ]
+        "healthPercentage" : 0.75,
+        "skills" : [ "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
       },      
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.5,
+        "healthPercentage" : 0.65,
         "enterPhase" : "miniShoggothSpawnAttack",
         "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
       },
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.35,
-        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack" ]
+        "healthPercentage" : 0.55,
+        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack" ]
       },
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.25,
-        "skills" : [ "shoggothChargeAttack" ]
+        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack" ]
       }
     ],
 
@@ -91,11 +91,11 @@
 
     "touchDamage" : {
       "poly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-      "damage" : 140,
+      "damage" : 24,
 
       "teamType" : "enemy",
       "damageSourceKind" : "fu_shadow",
-      "statusEffects" : [ "slimefriction", "insanity" ]
+      "statusEffects" : [ "percentarmorboostneg3", "insanity" ]
     },
 
     "statusSettings" : {
