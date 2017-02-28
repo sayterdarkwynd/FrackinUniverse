@@ -1,51 +1,50 @@
 {
-  "itemName" : "fudiverhead",
-  "inventoryIcon" : "icons.png:head",
+  "itemName" : "fudiverlegs",
+  "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Breathing shouldn't be a problem. Prevents gas effects, and provides some light!",
-  "shortdescription" : "Nautilus Helmet",
+  "description" : "Set Bonus:
+^cyan;Immune: Acid, Poison, Gas^reset;
+^#e43774;Swim Speed Boost, +900 Air, Breath Regen +50%^reset;
+^green;Ocean biomes: +15% Damage, +5% Speed, +10% Crit Damage^reset;",
+  "shortdescription" : "Nautilus Leggings",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [ "fudiverhead2", "fudiverchest2", "fudiverlegs2" ], 
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
-"level" : 3,
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.45
+      "baseMultiplier" : 1.32
     },
 
     {
       "stat" : "protection",
-      "amount" : 14
+      "amount" : 9
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 11
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 9
-    },
-    "gasimmunity",
-    {
-      "stat" : "breathProtection",
-      "amount" : 1.0
+      "amount" : 8
     },
     {
       "stat" : "wetImmunity",
       "amount" : 1
     },
-    "headlamp2",
-    "pressureimmunity"
+    "nautilussetbonus",
+    {
+      "stat" : "fu_nautilusset_legs",
+      "amount" : 1
+    }
   ],
-
   "colorOptions" : [
     /* YELLOW */
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },
