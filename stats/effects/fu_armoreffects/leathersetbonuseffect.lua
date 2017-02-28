@@ -7,13 +7,12 @@ weaponEffect={
 
 armorBonus2={
       {stat = "maxEnergy", baseMultiplier = 1.05},
-      {stat = "critChance", amount = 3},
+      {stat = "critChance", amount = 5},
       {stat = "grit", amount = 0.2}
 }
 
 armorBonus={
-      {stat = "maxEnergy", baseMultiplier = 1.0},
-      {stat = "critChance", amount = 3},
+      {stat = "critChance", amount = 5},
       {stat = "grit", amount = 0.1}
 }
 
