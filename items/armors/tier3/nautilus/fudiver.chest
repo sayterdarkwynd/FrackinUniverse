@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Protects against nitrogen and acid seas.",
+  "description" : "Set Bonus:
+^cyan;Immune: Acid, Poison, Gas^reset;
+^#e43774;Swim Speed Boost, +900 Air, Breath Regen +50%^reset;
+^green;Ocean biomes: +15% Damage, +5% Speed, +10% Crit Damage^reset;",
   "shortdescription" : "Nautilus Chestpiece",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
@@ -45,9 +48,11 @@
       "stat" : "wetImmunity",
       "amount" : 1
     },
-    "liquidnitrogenimmunity", 
-    "sulphuricacidimmunity",
-    "pressureimmunity"
+    "nautilussetbonus",
+    {
+      "stat" : "fu_nautilusset_chest",
+      "amount" : 1
+    }
   ],
 
   "triggerKeys" : [ "tier3armor" ],
