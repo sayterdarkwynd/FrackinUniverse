@@ -30,29 +30,29 @@
       },
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.75,
+        "healthPercentage" : 0.80,
         "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
       },
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.60,
-        "skills" : [ "fleshBombAttack" ]
+        "healthPercentage" : 0.75,
+        "skills" : [ "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
       },      
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.5,
+        "healthPercentage" : 0.65,
         "enterPhase" : "miniShoggothSpawnAttack",
         "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
       },
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.35,
-        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack" ]
+        "healthPercentage" : 0.55,
+        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack" ]
       },
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.25,
-        "skills" : [ "shoggothChargeAttack" ]
+        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack" ]
       }
     ],
 
@@ -60,11 +60,11 @@
 
     "movementSettings" : {
       "collisionPoly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-      "mass" : 1,
-      "walkSpeed" : 6,
+      "mass" : 7,
+      "walkSpeed" : 4,
       "runSpeed" : 8,
-      "jumpSpeed" : 20,
-      "airforce" : 10
+      "jumpSpeed" : 0,
+      "airforce" : 0
     },
 
     "projectileSourcePosition" : [-2.5, -1.25],
@@ -91,11 +91,11 @@
 
     "touchDamage" : {
       "poly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-      "damage" : 140,
+      "damage" : 24,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "fu_shadow",
-      "statusEffects" : [ "slimefriction", "insanity" ]
+      "damageSourceKind" : "cosmic",
+      "statusEffects" : [ "percentarmorboostneg3" ]
     },
 
     "statusSettings" : {
@@ -117,10 +117,10 @@
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 3000
+          "baseValue" : 5000
         },
         "protection" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -151,12 +151,15 @@
         },
         "radiationburnImmunity" : {
           "baseValue" : 1.0
-        },        
+        },   
+        "sulphuricacidImmunity" : {
+          "baseValue" : 1.0
+        },           
         "poisonResistance" : { "baseValue" : 0.4 },
-        "fireResistance" : { "baseValue" : -0.9 },
+        "fireResistance" : { "baseValue" :0.5 },
         "iceResistance" : { "baseValue" : 0.5 },
         "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
+        "physicalResistance" : { "baseValue" : 0.4 },
         "shadowResistance" : { "baseValue" : 0.95 },
         "cosmicResistance" : { "baseValue" : 0.95 },
         "radioactiveResistance" : { "baseValue" : 0.45 }
