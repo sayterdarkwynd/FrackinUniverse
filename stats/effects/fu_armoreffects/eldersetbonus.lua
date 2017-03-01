@@ -18,8 +18,8 @@ function init()
 	    {stat = "grit", amount = 0.42},
 	    {stat = "maxBreath", amount = 1400.0 },
 	    {stat = "breathDepletionRate", amount = 1.0 },
-	    {stat = "electricResistance", baseMultiplier = 0.35},
-	    {stat = "poisonResistance", baseMultiplier = 0.65},
+	    {stat = "electricResistance", amount = 0.35},
+	    {stat = "poisonResistance", amount = 0.65},
             {stat = "shadowResistance", amount = 0.7},
             {stat = "shadowImmunity", amount = 1},
 	    {stat = "radiationburnImmunity", amount = 1}

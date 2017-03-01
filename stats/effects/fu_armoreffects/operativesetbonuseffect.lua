@@ -3,8 +3,8 @@ setName="fu_operativeset"
 weaponEffect={}
   
 armorBonus={
-    {stat = "critChance", baseMultiplier = 1.10},
-    {stat = "critBonus", baseMultiplier = 1.20}
+    {stat = "critChance", amount = 10},
+    {stat = "critBonus", amount = 20}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -15,7 +15,7 @@ function init()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	end	

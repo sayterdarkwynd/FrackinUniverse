@@ -5,8 +5,8 @@ weaponEffect={
   }
   
 armorBonus={
-    {stat = "grit", baseMultiplier = 1.25},
-    {stat = "critBonus", baseMultiplier = 1.15}
+    {stat = "grit", amount = 0.25},
+    {stat = "critBonus", amount = 15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -14,15 +14,15 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end	
 	mcontroller.controlModifiers({
 		speedModifier = 1.10
@@ -30,8 +30,8 @@ function update()
 	})
 end
 
-function daggerCheck()
-	if weaponCheck("both",{"fist","quarterstaff"},false) then
+function checkWeapons()
+	if weaponCheck("both",{"fist","quarterstaff"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

@@ -11,11 +11,11 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-	effect.addStatModifierGroup(armorBonus)	
+	weaponHandle=effect.addStatModifierGroup({})
+	armorHandle=effect.addStatModifierGroup(armorBonus)	
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 		status.removeEphemeralEffect( "glowpurple" )

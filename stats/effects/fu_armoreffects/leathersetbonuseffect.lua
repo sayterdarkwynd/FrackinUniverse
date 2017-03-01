@@ -1,20 +1,20 @@
 setName="fu_leatherset"
 
 weaponEffect={
-    {stat = "critChance", baseMultiplier = 1.12},
+    {stat = "critChance", amount = 12},
     {stat = "powerMultiplier", baseMultiplier = 1.05}
   }
 
 armorBonus2={
       {stat = "maxEnergy", baseMultiplier = 1.05},
-      {stat = "critChance", baseMultiplier = 1.03},
-      {stat = "grit", baseMultiplier = 0.2}
+      {stat = "critChance", amount = 3},
+      {stat = "grit", amount = 0.2}
 }
 
 armorBonus={
       {stat = "maxEnergy", baseMultiplier = 1.0},
-      {stat = "critChance", baseMultiplier = 1.03},
-      {stat = "grit", baseMultiplier = 0.1}
+      {stat = "critChance", amount = 3},
+      {stat = "grit", amount = 0.1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -22,18 +22,18 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
     if (world.type() == "garden") or (world.type() == "forest")  then
        effect.setStatModifierGroup(armorHandle,armorBonus2)	
     end
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end
 	if (world.type() == "garden") or (world.type() == "forest")  then
 		effect.setStatModifierGroup(armorHandle,armorBonus2)
@@ -45,8 +45,8 @@ function update()
 	})
 end
 
-function daggerCheck()
-	if weaponCheck("both",{"bow"},false) then
+function checkWeapons()
+	if weaponCheck("either",{"bow"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

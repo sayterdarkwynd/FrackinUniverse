@@ -1,8 +1,12 @@
 setName="fu_swashbucklerset"
 
 weaponEffect={
+    {stat = "powerMultiplier", baseMultiplier = 1.075}
+}
+
+weaponEffect2={
     {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
+}
   
 armorBonus={
     {stat = "iceResistance", amount = 0.2},
@@ -15,23 +19,25 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	weaponHandle=effect.addStatModifierGroup({})
-	daggerCheck()
+	checkWeapons()
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end	
   mcontroller.controlModifiers({
       airJumpModifier = 1.08
     })
 end
 
-function daggerCheck()
-	if weaponCheck("primary",{"shortsword"},false) and  weaponCheck("alt",{"shortsword"},false) then
+function checkWeapons()
+	if weaponCheck("both",{"shortsword"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
+	elseif weaponCheck("either",{"shortsword"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

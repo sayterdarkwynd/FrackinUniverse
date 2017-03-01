@@ -1,35 +1,41 @@
 setName="fu_underworldset"
 
 weaponEffect={
-    {stat = "critChance", baseMultiplier = 1.12}
-  }
+    {stat = "critChance", amount = 6}
+}
+
+weaponEffect2={
+    {stat = "critChance", amount = 12}
+}
   
 armorBonus={
-    {stat = "electricResistance", baseMultiplier = 1.15},
-    {stat = "iceResistance", baseMultiplier = 1.15}
+    {stat = "electricResistance", amount = 0.15},
+    {stat = "iceResistance", amount = 0.15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-	effect.addStatModifierGroup(armorBonus)	
+	weaponHandle=effect.addStatModifierGroup({})
+	checkWeapons()
+	armorHandle=effect.addStatModifierGroup(armorBonus)	
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
-	end	
+		checkWeapons()
+	end
 end
 
-function daggerCheck()
-	if weaponCheck("both",{"rifle","pistol","machinepistol"},false) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+function checkWeapons()
+	if weaponCheck("either",{"rifle"}) or weaponCheck("both",{"pistol","machinepistol"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
+	elseif weaponCheck("either",{"pistol","machinepistol"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

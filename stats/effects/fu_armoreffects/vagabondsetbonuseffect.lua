@@ -1,8 +1,16 @@
 setName="fu_vagabondset"
---setStatEffects={"fu_densiniumseteffect","jumpboost25"}
+
 weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
+	{stat = "powerMultiplier", baseMultiplier = 1.075}
+}
+
+weaponEffect2={
+	{stat = "powerMultiplier", baseMultiplier = 1.15}
+}
+
+weaponEffect3={
+	{stat = "powerMultiplier", baseMultiplier = 1.15}
+}
   
 armorBonus={
     {stat = "fireResistance", amount = 0.15}
@@ -12,23 +20,27 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-	effect.addStatModifierGroup(armorBonus)	
+	weaponHandle=effect.addStatModifierGroup({})
+	checkWeapons()
+	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end	
 end
 
-function daggerCheck()
-	if weaponCheck("both",{"pistol","machinepistol"},false) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+function checkWeapons()
+	if weaponCheck("both",{"pistol","machinepistol"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect3)
+	elseif weaponCheck("primary",{"pistol","machinepistol"}) and weaponCheck("alt",{"pistol","machinepistol"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
+	elseif weaponCheck("either",{"pistol","machinepistol"}) then
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

@@ -5,30 +5,30 @@ weaponEffect={
   }
   
 armorBonus={
-    {stat = "physicalResistance", baseMultiplier = 1.15}
+    {stat = "physicalResistance", amount = 0.15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	handler=effect.addStatModifierGroup({})
-        daggerCheck()
-	effect.addStatModifierGroup(armorBonus)	
+	weaponHandle=effect.addStatModifierGroup({})
+        checkWeapons()
+	armorHandle=effect.addStatModifierGroup(armorBonus)	
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		daggerCheck()
+		checkWeapons()
 	end	
 end
 
-function daggerCheck()
-	if weaponCheck("both",{"broadsword","shortsword"},false) then
-		effect.setStatModifierGroup(handler,weaponEffect)
+function checkWeapons()
+	if weaponCheck("either",{"broadsword","shortsword"}) then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
+		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
-		effect.setStatModifierGroup(handler,{})
+		effect.setStatModifierGroup(weaponHandle,{})
 	end
 end

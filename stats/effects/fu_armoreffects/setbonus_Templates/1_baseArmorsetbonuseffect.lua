@@ -25,21 +25,21 @@ function init()
 	myFunction()
 end
 
-function update()
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire() --Khe: Treat this the same as return: it goes last in this code piece
 	else
 		if false then--optional condition to have different armor bonuses
 			effect.setStatModifierGroup(armorHandle,armorBonus2)
 		else
-			effect.setStatModifierGroup(armorHandle,armorBonus1)
+			effect.setStatModifierGroup(armorHandle,armorBonus)
 		end
 		myFunction()  -- we can run custom functions here to make all sorts of neat shit possible
 	end
 end
 
 function myFunction()
-	if weaponCheck("both",{"axe","hammer"},false) then   -- weaponCheck is run in setbonuses core file)
+	if weaponCheck("either",{"axe","hammer"}) then   -- weaponCheck is run in setbonuses core file)
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

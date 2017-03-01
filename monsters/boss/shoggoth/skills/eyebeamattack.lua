@@ -8,7 +8,7 @@ function eyeBeamAttack.enter()
 
   return {
     timer = config.getParameter("eyeBeamAttack.skillTime", 2),
-    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 6),
+    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 1),
     distanceRange = config.getParameter("eyeBeamAttack.distanceRange"),
     winddownTimer = config.getParameter("eyeBeamAttack.winddownTime"),
     windupTimer = config.getParameter("eyeBeamAttack.windupTime"),
@@ -56,6 +56,7 @@ function eyeBeamAttack.update(dt, stateData)
       if stateData.windupTimer == config.getParameter("eyeBeamAttack.windupTime") then
       animator.setAnimationState("movement", "idle")
       --animator.setAnimationState("firstBeams", "active")
+      animator.playSound("turnHostile")
       end
       stateData.windupTimer = stateData.windupTimer - dt
       if stateData.windupTimer  < 0 then

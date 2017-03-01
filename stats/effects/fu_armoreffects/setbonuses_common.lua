@@ -89,46 +89,47 @@ function removeSetBonus()
 	end
 end
 
-function weaponCheck(hands,tags,matchHands)
-	local heldItem = world.entityHandItem(entity.id(), "primary")
-	local heldItem2 = world.entityHandItem(entity.id(), "alt")
-	if hands=="both" then
-		if matchHands then
-			if heldItem~=nil and heldItem2~=nil  then
-				for _,tag in pairs(tags) do
-					if root.itemHasTag(heldItem,tag) and root.itemHasTag(heldItem2,tag) then
-						return true
-					end
+function weaponCheck(hands,tags)
+	local heldItemPrimary = world.entityHandItem(entity.id(), "primary")
+	local heldItemAlt = world.entityHandItem(entity.id(), "alt")
+	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
+	local twoHandedPrimary=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
+	
+	if hands=="both" and not twoHandedPrimary then
+		if heldItemPrimary~=nil and heldItemAlt~=nil then
+			for _,tag in pairs(tags) do
+				if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
+					return true
 				end
 			end
-		else
-			if heldItem~=nil then
-				for _,tag in pairs(tags) do
-					if root.itemHasTag(heldItem,tag) then
-						return true
-					end
+		end
+	elseif hands=="either" or hands=="both"	then
+		if heldItemPrimary~=nil then
+			for _,tag in pairs(tags) do
+				if root.itemHasTag(heldItemPrimary,tag) then
+					return true
 				end
 			end
-			if heldItem2~=nil  then
-				for _,tag in pairs(tags) do
-					if root.itemHasTag(heldItem2,tag) then
-						return true
-					end
+		end
+		if heldItemAlt~=nil  then
+			for _,tag in pairs(tags) do
+				if root.itemHasTag(heldItemAlt,tag) then
+					return true
 				end
 			end
 		end
 	elseif hands=="primary" then
-		if heldItem~=nil then
+		if heldItemPrimary~=nil then
 			for _,tag in pairs(tags) do
-				if root.itemHasTag(heldItem,tag) then
+				if root.itemHasTag(heldItemPrimary,tag) then
 					return true
 				end
 			end
 		end
 	elseif hands=="alt" then
-		if heldItem2~=nil  then
+		if heldItemAlt~=nil  then
 			for _,tag in pairs(tags) do
-				if root.itemHasTag(heldItem2,tag) then
+				if root.itemHasTag(heldItemAlt,tag) then
 					return true
 				end
 			end

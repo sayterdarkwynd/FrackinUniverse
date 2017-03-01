@@ -1,0 +1,37 @@
+{
+  "name" : "longjump3",
+  "type" : "legs",
+
+  "scripts" : ["longjump3.lua"],
+  "animator" : "longjump3.animation",
+
+  "description" : "Jump, jump, jump, jump...",
+  "shortDescription" : "Power Jump III",
+  "rarity" : "rare",
+  "icon" : "/tech/longjump.png",
+
+  "chipCost" : 24,
+
+  "multiJumpCount" : 1,
+  
+  "jumpSpeedMultiplier" : 1.35,
+  "fallGravityMultiplier" : 0.6,
+  "fallDamageMultiplier" : 0.01,
+  "flutterXVelocity" : 15,
+  "flutterYVelocity" : 15,
+  "flutterTime": 0.25,
+  "flutterAfterFall" : true,
+  "flutterFall" : true,
+  "wallJumpXVelocity" : 12,
+  "wallGrabFreezeTime" : 0.30,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 2,
+  "wallReleaseTime" : 0.35,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1,
+      "airForce" : 0,
+      "airFriction" : 10
+    }
+  }
+}
