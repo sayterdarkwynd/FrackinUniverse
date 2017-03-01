@@ -2,9 +2,9 @@
   "id" : "shoggoth_unlock",
   "mainQuest" : true,
   "title" : "Nuclear Power",
-  "prerequisites" : [ "create_mutavisk", "create_plastic"],
-  "text" : "I've heard quite a bit about your ^orange;amazing mind^reset; from the others here. Could you perhaps craft a ^orange;Nuclear Core^reset; in your ^orange;Matter Assembler^reset;? I can't seem to get it right!",
-  "completionText" : "Ah, I see what I missed! Thanks! ...Listen...I heard from my friend, Wagner, who works in a ^green;remote lab on Delta Freya II^reset; that they made the discovery of a lifetime. ^orange;Your expertise^reset; could prove invaluable. Check your SAIL for the location.",
+  "prerequisites" : [ "create_plastic" ],
+  "text" : "Why am I up here? I'm trying to use this relay, but the damned thing is shorted out. I desperately need to reach a friend. Could you perhaps craft a ^orange;Molten Core^reset; in your ^orange;Matter Assembler^reset;? That should fix it right up.",
+  "completionText" : "....hmm, that's odd. No signal from the ^green;lab on Delta Freya II^reset;. I wonder if my friend is okay?",
 
   "moneyRange" : [50, 50],
   "rewards" : [ ],
@@ -18,12 +18,12 @@
     },
 
     "requireTurnIn" : true,
-    "turnInDescription" : "Bring the ^orange;Nuclear Core^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+    "turnInDescription" : "Bring the ^orange;Molten Core^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
 
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "nuclearcore",
+        "itemName" : "moltencore",
         "count" : 1,
         "consume" : false
       }
