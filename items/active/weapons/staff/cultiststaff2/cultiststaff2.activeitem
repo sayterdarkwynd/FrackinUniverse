@@ -11,7 +11,7 @@
   "itemTags" : ["weapon","staff"],
   "tooltipKind" : "staff",
 
-  "animation" : "/items/active/weapons/staff/staff2.animation",
+  "animation" : "cultiststaff2.animation",
   "animationParts" : {
     "staff" : "cultiststaff2.png",
     "stone" : "",
@@ -20,7 +20,7 @@
   "animationCustom" : {
     "lights" : {
       "glow" : {
-        "color" : [185, 24, 42]
+        "color" : [23, 176, 0]
       }
     },
     "particleEmitters" : {
@@ -44,95 +44,10 @@
 
   "scripts" : ["/items/active/weapons/staff/staff.lua"],
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : -90,
-      "weaponRotation" : 0,
-      "twoHanded" : false,
-      "weaponOffset" : [0,0.5],
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "charge" : {
-      "duration" : 1.1,
-      "armRotation" : 20,
-      "weaponRotation" : -20,
-      "twoHanded" : true,
-      "weaponOffset" : [0,0.5],
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "charged" : {
-      "armRotation" : 20,
-      "weaponRotation" : -20,
-      "twoHanded" : true,
-      "weaponOffset" : [0,0.5],
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "discharge" : {
-      "duration" : 0.5,
-      "armRotation" : -10,
-      "weaponRotation" : -50,
-      "twoHanded" : true,
-      "weaponOffset" : [0,0.5],
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "chargerotate" : {
-      "duration" : 1.1,
-      "armRotation" : 0,
-      "weaponRotation" : -90,
-      "twoHanded" : false,
-      "weaponOffset" : [0,0.5],
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "chargedrotate" : {
-      "armRotation" : 0,
-      "weaponRotation" : -90,
-      "twoHanded" : false,
-      "weaponOffset" : [0,0.5],
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "dischargerotate" : {
-      "duration" : 0.5,
-      "armRotation" : 0,
-      "weaponRotation" : -90,
-      "twoHanded" : false,
-      "weaponOffset" : [0,0.5],
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "cooldown" : {
-      "duration" : 0.5,
-      "armRotation" : -45,
-      "weaponRotation" : 0,
-      "twoHanded" : true,
-      "weaponOffset" : [0,0.5],
-      "allowRotate" : false,
-      "allowFlip" : true
-    }
-  },
-
   "elementalType" : "shadow",
 
-  "primaryAbility" : {
-    "type" : "eldritchblast",
-    "name" : "Eldritch Blast",
-    "scripts" : ["/items/active/weapons/staff/abilities/aimedprojectile/aimedprojectile.lua"],
-    "class" : "ControlProjectile",
-
-    "energyCost" : 60,
-
-    "maxCastRange" : 25,
-
-    "projectileType" : "eldritchblast",
-    "projectileParameters" : {
-      "baseDamage" : 12
-    }
-  },
+  "primaryAbilityType" : "eldritchblast",
+  "primaryAbility" : {},
 
   "altAbilityType" : "entropicwarding",
   "altAbility" : {},

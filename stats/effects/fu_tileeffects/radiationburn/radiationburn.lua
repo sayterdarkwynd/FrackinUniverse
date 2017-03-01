@@ -17,7 +17,7 @@ function update(dt)
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
         damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
-        damageSourceKind = "hellfireweapon",
+        damageSourceKind = "radioactive",
         sourceEntityId = entity.id()
       })
   end

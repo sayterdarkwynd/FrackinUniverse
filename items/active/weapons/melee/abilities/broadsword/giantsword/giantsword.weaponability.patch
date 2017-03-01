@@ -45,11 +45,6 @@
     "value" : [ "/sfx/melee/giantsword_charged_electric.ogg" ]
   },
   {
-    "op": "replace",
-    "path": "/ability/damageConfig/damageSourceKind",
-    "value": "<elementalType>"
-  },
-  {
     "op": "add",
     "path": "/animationCustom/particleEmitters/shadowSwordCharge",
     "value" : {
@@ -70,7 +65,7 @@
     "op": "add",
     "path": "/ability/elementalConfig/shadow",
     "value" : {
-      "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] }
+      "damageConfig" : { "statusEffects" : [ "shadowgasfx" ] }
     }
   },
   {
@@ -114,7 +109,7 @@
     "op": "add",
     "path": "/ability/elementalConfig/cosmic",
     "value" : {
-      "damageConfig" : { "statusEffects" : [  ] }
+      "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] }
     }
   }
 ]
