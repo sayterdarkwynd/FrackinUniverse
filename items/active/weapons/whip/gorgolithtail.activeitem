@@ -1,0 +1,60 @@
+{
+  "itemName" : "gorgolithtail",
+  "price" : 3000,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "The tail of a savage carnivore.",
+  "shortdescription" : "Gorgorlith Tail",
+  "tooltipKind" : "sword",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "whip"],
+
+  "inventoryIcon" : "gorgolithtail.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "gorgolithtail.png",
+    "weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : {
+      "burstCount" : 3,
+      "particles" : [{"particle" : "poisonswoosh1"}]
+    }},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0.0625],
+    "length" : [2, 12],
+    "segmentImage" : "/items/active/weapons/whip/gorgolithtaillink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/gorgolithtailend.png",
+    "segmentSize" : 0.275
+  },
+
+  "scripts" : [ "whip.lua" ],
+  "blockPiercing" : true,
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 0.65,
+    "chainDps" : 1.2,
+    "crackDps" : 5.5,
+
+    "damageConfig" : {
+      "damageSourceKind" : "poisonlash"
+    },
+
+    "projectileType" : "whipcrackgorgolith"
+  },
+
+  "critChance" : 4,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

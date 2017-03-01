@@ -1,0 +1,38 @@
+{
+  "projectileName" : "quietusball",
+  "physics" : "default",
+  "timeToLive" : 3,
+  "image" : "quietusball.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [120, 0, 0],
+  "frameNumber" : 4,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "default",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : ["bleedingshort"],
+  "fullbright" : true,
+  "emitters" : ["blood"],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg",
+        "/sfx/projectiles/bonebounce1.ogg",
+        "/sfx/projectiles/bonebounce3.ogg",
+        "/sfx/projectiles/bonebounce5.ogg"
+      ]
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+    }
+  ],
+
+  "bounces" : 0,
+
+  "scripts" : [ "/projectiles/activeitems/staff/plasmaball/plasmaball.lua" ],
+
+  "triggerSpeed" : 80
+}

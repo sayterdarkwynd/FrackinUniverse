@@ -3,14 +3,14 @@
   "price" : 1440,
   "maxStack" : 1,
   "level" : 4,
-  "rarity" : "rare",
-  "description" : "Fashioned from bones and petrified wood. Float on water.",
+  "rarity" : "Uncommon",
+  "description" : "Fashioned from bones and petrified wood.",
   "shortdescription" : "Druid Staff",
   "category" : "staff",
   "twoHanded" : true,
   "itemTags" : ["weapon","staff"],
   "tooltipKind" : "staff",
-
+  "learnBlueprintsOnPickup" : [ "druidstaff2" ],
   "animation" : "/items/active/weapons/staff/staff.animation",
   "animationParts" : {
     "staff" : "druidstaff.png",
@@ -30,7 +30,7 @@
         "emissionRate" : 20,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "druidstaff"}
         ]
       }
     },
@@ -42,9 +42,7 @@
 
   "inventoryIcon" : "druidstaff.png",
 
-  "scripts" : [
-  "/items/active/weapons/staff/staff.lua"
-  ],
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
 
   "stances" : {
     "idle" : {
@@ -92,12 +90,12 @@
     }
   },
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
   "primaryAbilityType" : "druidwand",
   "primaryAbility" : {},
 
-  "altAbilityType" : "plasmabladebarrage",
+  "altAbilityType" : "healingzone",
   "altAbility" : {},
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

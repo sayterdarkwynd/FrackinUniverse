@@ -469,7 +469,7 @@ function cannonFire(spread)
 			piercing = false,
   			knockbackDirectional = true,
 			physics = "grenade",
-			damageType = "ignoresdef", 
+			damageType = "IgnoresDef", 
 			damageTeam = {type = "pvp"},
 			damageKind = "default",
 			scripts = { "homingrocket.lua" },

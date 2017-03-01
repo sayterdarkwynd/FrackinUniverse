@@ -15,9 +15,9 @@
   "flippable" : true,
   "damagePoly" : [ [8, 4],  [8, -4],  [-8, -4],  [-8, 4] ],
   "piercing" : true,
-  "damageKind" : "fushadowdamage",
+  "damageKind" : "shadowbarrier",
   "emitters" : [ "shadowsmoke2" ],
-  "statusEffects" : [ "defenseboostneg20" ],
+  "statusEffects" : [ "shadowgasfx" ],
   "actionOnReap" : [
     {
       "action" : "sound",
@@ -31,7 +31,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/shadowsmoke/shadowsmoke1.animation",
+            "animation" : "/animations/shadowsmoke/shadowsmoke.animation",
             "finalVelocity" : [0, 2],
             "timeToLive" : 0.45,
             "destructionAction" : "shrink",

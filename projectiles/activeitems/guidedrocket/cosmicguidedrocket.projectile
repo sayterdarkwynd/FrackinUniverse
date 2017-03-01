@@ -1,0 +1,33 @@
+{
+  "projectileName" : "cosmicguidedrocket",
+  "image" : "cosmicguidedrocket.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "fallSpeed" : 0,
+  "lightColor" : [125, 32, 150],
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/cosmicexplosionknockbackstatus.config"
+    }
+  ],
+  "statusEffects" : [ ],
+  "emitters" : [ "cosmicdust" ],
+  "flippable" : true,
+  "power" : 10.0,
+  "speed" : 1.0,
+  "acceleration" : 20,
+  "physics" : "rocket",
+  "damageType" : "NoDamage",
+  "damageKind" : "cosmicplasma",
+
+  "scripts" : [ "guidedrocket.lua" ],
+  "rotationRate" : 5.0,
+  "maxTrackingAngle" : 3.14,
+  "trailProjectile" : "smallcosmiccloud",
+  "trailDistance" : 2.0,
+
+  "persistentAudio" : "/sfx/projectiles/guidedrocket_electric_loop.ogg"
+}

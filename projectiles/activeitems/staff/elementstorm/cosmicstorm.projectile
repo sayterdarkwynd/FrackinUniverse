@@ -1,0 +1,28 @@
+{
+  "projectileName" : "cosmicstorm2",
+  "physics" : "default",
+  "image" : "cosmicstorm.png",
+  "flippable" : true,
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [110, 110, 140],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/cosmicexplosionknockback.config"
+    }
+  ],
+  "power" : 20,
+  "knockback" : 40,
+  "speed" : 80,
+  "damageKind" : "cosmicplasma",
+  "damageType" : "NoDamage",
+  "damageKindImage" : "/interface/statuses/cosmic.png",
+  "statusEffects" : [
+    "defenseboostneg20"
+  ],
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "cosmicdust" ]
+}

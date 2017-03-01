@@ -1,0 +1,110 @@
+{
+  "projectileName" : "vinebarrier",
+  "image" : "vinebarrier.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.15,
+  "power" : 4,
+  "speed" : 0,
+  "timeToLive" : 6.0,
+  "bounces" : -1,
+  "knockback" : 60,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "piercing" : true,
+  "damageKind" : "poison",
+  "emitters" : [ ],
+  "statusEffects" : [ "biooozepoisonshort" ],
+  "actionOnReap" : [
+    {
+      "action" : "particle",
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/shards/plantshard.animation",
+        "initialVelocity" : [0.0, 6.0],
+        "finalVelocity" : [0.0, -30.0],
+        "approach" : [0.3, 30],
+        "timeToLive" : 0.5,
+        "layer" : "middle",
+        "collidesForeground" : false,
+        "variance" : {
+         "position" : [1, 1],
+         "initialVelocity" : [5, 3],
+         "rotation" : 180,
+         "angularVelocity" : 180
+        }
+      }
+    },
+    {
+      "action" : "particle",
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/shards/plantshard.animation",
+        "initialVelocity" : [0.0, 6.0],
+        "finalVelocity" : [0.0, -30.0],
+        "approach" : [0.3, 30],
+        "timeToLive" : 0.5,
+        "layer" : "middle",
+        "collidesForeground" : false,
+        "variance" : {
+         "position" : [1, 1],
+         "initialVelocity" : [5, 3],
+         "rotation" : 180,
+         "angularVelocity" : 180
+        }
+      }
+    },
+    {
+      "action" : "particle",
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/shards/plantshard.animation",
+        "initialVelocity" : [0.0, 6.0],
+        "finalVelocity" : [0.0, -30.0],
+        "approach" : [0.3, 30],
+        "timeToLive" : 0.5,
+        "layer" : "middle",
+        "collidesForeground" : false,
+        "variance" : {
+         "position" : [1, 1],
+         "initialVelocity" : [5, 3],
+         "rotation" : 180,
+         "angularVelocity" : 180
+        }
+      }
+    },
+    {
+      "action" : "particle",
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/shards/plantshard.animation",
+        "initialVelocity" : [0.0, 6.0],
+        "finalVelocity" : [0.0, -30.0],
+        "approach" : [0.3, 30],
+        "timeToLive" : 0.5,
+        "layer" : "middle",
+        "collidesForeground" : false,
+        "variance" : {
+         "position" : [1, 1],
+         "initialVelocity" : [5, 3],
+         "rotation" : 180,
+         "angularVelocity" : 180
+        }
+      }
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/objects/plant_break1",
+        "/sfx/objects/plant_break2",
+        "/sfx/objects/plant_break3",
+        "/sfx/objects/plant_break4",
+        "/sfx/objects/plant_break5",
+        "/sfx/objects/plant_break6"
+      ]
+    }
+  ],
+  "scripts" : ["/projectiles/killable.lua"],
+  "scriptDelta" : 1
+}
