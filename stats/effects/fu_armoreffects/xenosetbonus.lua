@@ -1,5 +1,5 @@
 setName="fu_xenoset"
-setStatEffects={"xenosetbonuseffect", "novax10", "runboost",}
+setStatEffects={"xenosetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

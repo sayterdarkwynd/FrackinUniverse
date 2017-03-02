@@ -14,6 +14,9 @@ armorBonus={
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
+  mcontroller.controlModifiers({
+      speedModifier = 1.12
+    })
 	setSEBonusInit(setName)
 	armorHandle=effect.addStatModifierGroup(armorBonus)
 end
