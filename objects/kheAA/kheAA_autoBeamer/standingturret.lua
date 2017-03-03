@@ -4,7 +4,7 @@ require "/scripts/interp.lua"
 
 function init()
   -- Positions and angles
-  	removableMods = {
+  	--[[removableMods = {
 	["ash"] = true,
 	["blackash"] = true,
 	["bone"] = true,
@@ -16,7 +16,7 @@ function init()
 	["sand"] = true,
 	["snow"] = true,
 	["tilleddry"] = true
-	}
+	}]]--
   self.baseOffset = config.getParameter("baseOffset")
   self.basePosition = vec2.add(object.position(), self.baseOffset)
   self.tipOffset = config.getParameter("tipOffset") --This is offset from BASE position, not object origin
@@ -24,10 +24,7 @@ function init()
   self.offAngle = util.toRadians(config.getParameter("offAngle", -30))
 
   -- Targeting
-  self.targetQueryRange = config.getParameter("harvestDistance",4)
-  self.targetMinRange = config.getParameter("targetMinRange")
-  self.targetMaxRange = config.getParameter("targetMaxRange")
-  self.targetAngleRange = util.toRadians(config.getParameter("targetAngleRange"))
+  self.targetQueryRange = config.getParameter("targetQueryRange",4)
 
   -- Initialize turret
   object.setInteractive(false)
@@ -108,8 +105,8 @@ function fireState(targetId)
     local targetDistance = world.magnitude(toTarget)
     local targetAngle = math.atan(toTarget[2], object.direction() * toTarget[1])
 
-    if targetDistance > self.targetMaxRange or targetDistance < self.targetMinRange or world.lineTileCollision(self.basePosition, targetPosition) then break end
-    if math.abs(targetAngle) > self.targetAngleRange then break end
+    if targetDistance > (self.targetQueryRange+4) or targetDistance < 2.5 or world.lineTileCollision(self.basePosition, targetPosition) then break end
+    if math.abs(targetAngle) > util.toRadians(360) then break end
 
     animator.rotateGroup("gun", targetAngle)
 
@@ -166,7 +163,7 @@ function findTarget()
 			
 			local toTarget = world.distance(targetPosition, self.basePosition)
 			local targetAngle = math.atan(toTarget[2], object.direction() * toTarget[1])
-			if not ( world.magnitude(toTarget) > self.targetMinRange and math.abs(targetAngle) < self.targetAngleRange ) then
+			if not ( world.magnitude(toTarget) > 2.5 and math.abs(targetAngle) < util.toRadians(360) ) then
 				return false
 			end
 			if world.entityType(entityId) == "plant" then
@@ -199,7 +196,7 @@ function validTarget(entityId)
 	
 	local toTarget = world.distance(targetPosition, self.basePosition)
 	local targetAngle = math.atan(toTarget[2], object.direction() * toTarget[1])
-	if not ( world.magnitude(toTarget) > self.targetMinRange and math.abs(targetAngle) < self.targetAngleRange ) then
+	if not ( world.magnitude(toTarget) > 2.5 and math.abs(targetAngle) < util.toRadians(360) ) then
 		return false
 	end
 	if world.entityType(entityId) == "plant" then
