@@ -1,20 +1,13 @@
+function init()
+	message.setHandler("print",scanButton)
+end
+
 item =
 {
 	parameters= {
 		tooltipFields= {
 			subtitle= "",
 			objectImage= {
-				{
-					position= {-16.5, 5.5},
-					fullbright= false,
-					color= {255, 255, 255},
-					image= "",
-					transformation= {
-						{-1, 0, 73},
-						{0, 1, -39.5},
-						{0, 0, 1}
-					}
-				}
 			}
 		},
 		podUuid=nil,
@@ -36,17 +29,6 @@ item =
 				},
 				name= "",
 				portrait= {
-					{
-						position= {-16.5, 5.5},
-						fullbright= false,
-						color= {255, 255, 255},
-						image= "",
-						transformation= {
-							{-1, 0, 73},
-							{0, 1, -39.5},
-							{0, 0, 1}
-						}
-					}
 				},
 				config= {
 					parameters= {
@@ -65,51 +47,58 @@ item =
 }
 
 function scanButton()
-	loadMonster()
+	local items=world.containerItems(entity.id())
+	if not items then return end
+	for index,invItem in pairs(items)do
+		if index==1 then
+			if loadMonster(invItem) then return end
+		elseif index==2 then
+			return
+		end
+	end
+	
 	printMonster()
 end
 
-function loadMonster()
-	local buffer={}
-	local name="Servitor mkIII"
-	local desc="Protects an assigned ecosystem with brutal force."
-	local img="/monsters/flyers/servitors/servitor2.png:idle.1?"
-	local myType="servitor4"
+function loadMonster(invItem)
+	local data=root.itemConfig(invItem).config
+	if not data.botspawner then return true end
+	if not data.botspawner.type then return true end
+	
+	local name=data.shortdescription or "Broken Bot"
+	local desc=data.description or "Yup, you broke it."
+	local myType=data.botspawner.type
+	local imgData=root.monsterPortrait(myType)
 	
 	item.parameters.tooltipFields.subtitle=name
 	item.parameters.description=desc
-	
-	for _,image in pairs(item.parameters.tooltipFields.objectImage) do
-		image.image=img
-		table.insert(buffer,image)
-	end
-	item.parameters.tooltipFields.objectImage=buffer
-	buffer={}
-	
+	item.parameters.tooltipFields.objectImage=imgData
+
+	local buffer={}
 	for _,pet in pairs(item.parameters.pets) do
-		local buffer2={}
 		pet.description=desc
 		pet.name=name
-		
-		for _,image in pairs(pet.portrait) do
-			image.image=img
-			table.insert(buffer2,image)
-		end
-		pet.portrait=buffer2
+
+		pet.portrait=imgData
 		
 		pet.config.type=myType
 		table.insert(buffer,pet)
 	end
 	item.parameters.pets=buffer
-	buffer={}
+	return false
 end
 
 function printMonster()
 	item.parameters.podUuid=sb.makeUuid()
-	world.containerAddItems(pane.containerEntityId(),item)
+	if world.containerPutItemsAt(entity.id(),item,1) == nil then
+		world.containerTakeNumItemsAt(entity.id(),0,1)
+	end
 end
 
-
-function bye()
-	pane.dismiss()
+function update(dt)
+  if #world.containerItems(entity.id()) > 0 then
+    animator.setAnimationState("powerState", "on")
+  else
+    animator.setAnimationState("powerState", "off")
+  end
 end
