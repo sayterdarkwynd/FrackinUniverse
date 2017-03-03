@@ -1,141 +1,113 @@
-require "/scripts/vec2.lua"
 require "/scripts/util.lua"
+require "/scripts/interp.lua"
+require "/scripts/poly.lua"
+require "/items/active/weapons/weapon.lua"
 
-EffectZone = WeaponAbility:new()
+ElementalAura = WeaponAbility:new()
 
-function EffectZone:init()
-  self.elementalType = self.elementalType or self.weapon.elementalType
-
-  self.stances = config.getParameter("stances")
-  self.weapon:setStance(self.stances.idle)
-
+function ElementalAura:init()
+  self:reset()
   self.cooldownTimer = self.cooldownTime
   self.activeTimer = 0
-  self.activeTime = self.activeTime
-
-  self.weapon.onLeaveAbility = function()
-    self:reset()
-  end
 end
 
-function EffectZone:update(dt, fireMode, shiftHeld)
+function ElementalAura:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
-  if self.fireMode == (self.activatingFireMode or self.abilitySlot)
-    and not self.weapon.currentAbility
-    and not status.resourceLocked("energy") then
+  self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 
-    self:setState(self.charge)
+  if self.weapon.currentAbility == nil
+    and self.cooldownTimer == 0
+    and self.fireMode == "alt"
+    and not status.resourceLocked("energy")
+    and status.resource("energy") >= self.energyUsage * (self.minChargeTime / self.chargeTime) then
+
+    self:setState(self.windup)
   end
+
   if self.active then
     self.activeTimer = math.max(0, self.activeTimer - self.dt)
-    if self.activeTimer <= 0 then
+    if self.activeTimer > 0 then
+      self.weapon:setOwnerDamage(self.damageConfig, self.damagePoly)
+    else
       self:deactivate()
     end
   end
 end
 
--- Attack state: charge
-function EffectZone:charge()
-  self.weapon:setStance(self.stances.charge)
+-- Attack state: windup
+function ElementalAura:windup()
+  self.weapon:setStance(self.stances.windup)
+  self.weapon:updateAim()
 
-  animator.playSound(self.elementalType.."charge")
-  animator.setAnimationState("charge", "charge")
+  animator.setParticleEmitterActive(self.weapon.elementalType.."Charge", true)
+  animator.playSound(self.weapon.elementalType.."charge")
 
-  local chargeTimer = self.stances.charge.duration
+  local wasFull = false
+  local chargeTimer = 0
+  while self.fireMode == "alt" and (chargeTimer == self.chargeTime or status.overConsumeResource("energy", (self.energyUsage / self.chargeTime) * self.dt)) do
+    chargeTimer = math.min(self.chargeTime, chargeTimer + self.dt)
 
-  while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
-    chargeTimer = chargeTimer - self.dt
+    if chargeTimer == self.chargeTime and not wasFull then
+      wasFull = true
+      animator.stopAllSounds(self.weapon.elementalType.."charge")
+      animator.playSound(self.weapon.elementalType.."full", -1)
+    end
 
-    mcontroller.controlModifiers({runningSuppressed=true})
-
-    coroutine.yield()
-  end
-
-  animator.stopAllSounds(self.elementalType.."charge")
-
-  if chargeTimer <= 0 then
-    self:setState(self.charged)
-  else
-    animator.playSound(self.elementalType.."discharge")
-    self:setState(self.cooldown)
-  end
-end
-
-function EffectZone:charged()
-  self.weapon:setStance(self.stances.charged)
-
-  animator.playSound(self.elementalType.."fullcharge")
-  animator.playSound(self.elementalType.."chargedloop", -1)
-  animator.setParticleEmitterActive(self.elementalType.."charge", true)
-
-  while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
-    mcontroller.controlModifiers({runningSuppressed=true})
+    local chargeRatio = math.sin(chargeTimer / self.chargeTime * 1.57)
+    self.weapon.relativeArmRotation = util.toRadians(util.lerp(chargeRatio, {self.stances.windup.armRotation, self.stances.windup.endArmRotation}))
+    self.weapon.relativeWeaponRotation = util.toRadians(util.lerp(chargeRatio, {self.stances.windup.weaponRotation, self.stances.windup.endWeaponRotation}))
 
     coroutine.yield()
   end
 
-  animator.stopAllSounds(self.elementalType.."chargedloop")
+  animator.setParticleEmitterActive(self.weapon.elementalType.."Charge", false)
+  animator.stopAllSounds(self.weapon.elementalType.."charge")
+  animator.stopAllSounds(self.weapon.elementalType.."full")
 
-  self:setState(self.discharge)
-end
-
-function EffectZone:discharge()
-  self.weapon:setStance(self.stances.discharge)
-
-  if status.overConsumeResource("energy", self.energyCost) then
-    animator.playSound(self.elementalType.."active")
-  else
-    animator.playSound(self.elementalType.."discharge")
-    self:setState(self.cooldown)
-    return
+  if chargeTimer > self.minChargeTime then
+    self.activeTimer = self.duration * (chargeTimer / self.chargeTime)
+    self:setState(self.fire)
   end
-
-  util.wait(self.stances.discharge.duration, function(dt)
-
-  end)
-
-  self:setState(self.cooldown)
 end
 
-function EffectZone:cooldown()
-  self.weapon:setStance(self.stances.cooldown)
-  animator.setAnimationState("charge", "discharge")
-  animator.setParticleEmitterActive(self.elementalType.."charge", false)
+-- Attack state: fire
+function ElementalAura:fire()
+  self.weapon:setStance(self.stances.fire)
+
   self:activate()
-  util.wait(self.stances.cooldown.duration, function()
 
-  end)
+  util.wait(self.stances.fire.duration)
+
+  self.cooldownTimer = self.cooldownTime
 end
 
-function EffectZone:activate()
+function ElementalAura:activate()
   status.setPersistentEffects("entropicWarding", { "entropicward" })
-  animator.playSound(self.elementalType.."activate")
-  animator.setAnimationState("charge", "discharge")
-  animator.setParticleEmitterActive(self.elementalType.."charge", false)
+  animator.playSound(self.weapon.elementalType.."activate")
   if not self.active then
-    animator.playSound(self.elementalType.."active", -1)
+    animator.playSound(self.weapon.elementalType.."active", -1)
   end
   self.active = true
-  self.activeTimer = self.activeTime
 end
 
-function EffectZone:deactivate()
+function ElementalAura:deactivate()
   status.clearPersistentEffects("entropicWarding")
-  animator.stopAllSounds(self.elementalType.."active")
-  animator.playSound(self.elementalType.."deactivate")
+  animator.stopAllSounds(self.weapon.elementalType.."active")
+  animator.playSound(self.weapon.elementalType.."deactivate")
   self.active = false
 end
 
-function EffectZone:reset()
-  self.deactivate()
-  self.weapon:setStance(self.stances.idle)
-  animator.stopAllSounds(self.elementalType.."chargedloop")
-  animator.stopAllSounds(self.elementalType.."fullcharge")
-  animator.setAnimationState("charge", "idle")
-  animator.setParticleEmitterActive(self.elementalType.."charge", false)
+function ElementalAura:reset()
+  animator.setParticleEmitterActive(self.weapon.elementalType.."Charge", false)
+  animator.stopAllSounds(self.weapon.elementalType.."charge")
+  animator.stopAllSounds(self.weapon.elementalType.."full")
 end
 
-function EffectZone:uninit(weaponUninit)
+function ElementalAura:uninit(final)
+  if final then
+    status.clearPersistentEffects("entropicWarding")
+    animator.stopAllSounds(self.weapon.elementalType.."active")
+  end
   self:reset()
 end

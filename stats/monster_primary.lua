@@ -78,7 +78,7 @@ function applyDamageRequest(damageRequest)
       string.gsub(damageSourceKind, "poison", "")
       string.gsub(damageSourceKind, "shadow", "")
       string.gsub(damageSourceKind, "radioactive", "")
-      string.gsub(damageSourceKind, "poison", "")
+      string.gsub(damageSourceKind, "cosmic", "")
     end
   end
   return {{

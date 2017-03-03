@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 armorBonus2={
 	{stat = "maxHealth", baseMultiplier = 1.10},
-	{stat = "maxEnergy", baseMultiplier = 1.05},
+	{stat = "powerMultiplier", baseMultiplier = 1.05},
 	{stat = "physicalResistance", amount = 0.05},
 	{stat = "fallDamageMultiplier", baseMultiplier = 0.25}
 }
@@ -13,8 +13,6 @@ armorBonus={
 }
 
 setName="fu_boneset"
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

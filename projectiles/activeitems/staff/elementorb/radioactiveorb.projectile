@@ -4,7 +4,7 @@
   "timeToLive" : 6,
   "image" : "radioactiveorb.png",
   "animationCycle" : 0.3,
-  "lightColor" : [80, 110, 30],
+  "lightColor" : [150, 150, 0],
   "frameNumber" : 4,
     "periodicActions" : [
     {
@@ -16,7 +16,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/radioactivedust/radioactivedust.animation",
+            "animation" : "/animations/radioactivefx/radioactivefx.animation",
             "initialVelocity" : [0.0, 7.0],
             "finalVelocity" : [0.0, 3.0],
             "approach" : [0.3, 60],
@@ -37,7 +37,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/statuseffects/radiationburn2/radiationburn2.animation",
+            "animation" : "/animations/statuseffects/radiationburnshort/radiationburnshort.animation",
             "initialVelocity" : [0.0, 7.0],
             "finalVelocity" : [0.0, 3.0],
             "approach" : [0.3, 60],
@@ -52,28 +52,6 @@
             "finalVelocity" : [0, 0],
             "rotation" : 180,
             "angularVelocity" : 180
-            }
-          }
-        },
-        {
-          "action" : "particle",
-          "specification" : {
-            "type" : "animated",
-            "animation" : "/animations/radioactiveball/radioactiveball.animation",
-            "position" : [0, 0],
-            "initialVelocity" : [0.2, -10],
-            "finalVelocity" : [0.1, -50],
-            "approach" : [0, 10],
-            "fade" : 0.5,
-            "destructionAction" : "shrink",
-            "destructionTime" : 2,
-            "layer" : "middle",
-            "size" : 0.3,
-            "timeToLive" : 1,
-            "variance" : {
-            "position" : [1, 1],
-            "size" : 0.2,
-            "initialVelocity" : [0, 4]
             }
           }
         }
@@ -98,7 +76,7 @@
   ],
   "speed" : 0,
   "power" : 30,
-  "damageKind" : "radioactive",
+  "damageKind" : "radioactiveplasma",
   "damagePoly" : [ [-10, 0], [-7, -7], [0, -10], [7, -7], [10, 0], [7, 7], [0, 10], [-7, 7] ],
   "statusEffects" : [ "radiationburn" ],
   "damageRepeatTimeout" : 0.25,

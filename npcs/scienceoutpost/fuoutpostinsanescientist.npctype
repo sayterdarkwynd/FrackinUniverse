@@ -1,0 +1,154 @@
+{
+  "type" : "fuoutpostinsanescientist",
+  "baseType" : "fuoutpostcivilian",
+  "damageTeam" : 1,
+    "scriptConfig" : {
+    "offeredQuests" : [ "shoggoth_unlock", "shoggoth_wagner" ],
+    "turnInQuests" : [ "shoggoth_unlock", "shoggoth_wagner" ],
+
+    "wander" : {
+      "timeRange" : [2.0, 10.0],
+      "chatDistance" : 4,
+      "indoorTimeOfDayRanges" : [ [0.0, 0.2], [0.5, 1.0] ],
+      "indoorSearchRadius" : 10,
+      "indoorLookaheadDistance" : 4,
+      "moveToTargetTime" : 7.0,
+      "changeDirectionCooldown" : 2,
+      "dropDownChance" : 0,
+      "cooldown" : 10
+    },
+    "returnToPost" : {
+      "moveTime" : 20,
+      "minDistance" : 2
+    },
+    "sit" : {
+      "timeOfDayRanges" : [ [0.6, 1.0], [0.0, 0.2] ],
+      "moveTimeLimit" : 30,
+      "searchRadius" : 10,
+      "sitRadius" : 3,
+      "cooldown" : 60,
+      "timeRange" : [15, 240]
+    },
+    "work" : {
+      "timeOfDayRanges" : [ [0.2, 0.6] ],
+      "tools" : [ [ "hoe", 0.5, 2.0] ],
+      "toolRange" : 3.0,
+      "searchDistance" : 10.0,
+      "timeRange" : [4.0, 6.0],
+      "cooldown" : 10.0
+    },
+
+    "chat" : {
+      "distanceRange" : [2.0, 4.0],
+      "conversations" : [
+        [
+          [2, "blabbering", "idle" ],
+          [1, "idle", "laugh" ],
+          [2, "idle", "blabbering" ],
+          [1, "sad", "idle" ]
+        ],
+        [
+          [2, "idle", "blabbering" ],
+          [2, "blabbering", "happy" ],
+          [1, "wink", "laugh" ],
+          [2, "happy", "happy" ]
+        ],
+        [
+          [2, "idle", "blabbering" ],
+          [2, "blabbering", "blabbering" ],
+          [2, "blabbering", "annoyed" ],
+          [3, "shouting", "shouting" ],
+          [2, "annoyed", "annoyed" ]
+        ]
+      ],
+      "cooldown" : 10
+    },
+        "converse" : {
+            "waitTime" : 0.5,
+            "dialog" : {
+
+                "default" : [
+                      "I like the pretty lies."
+                ]
+                }
+            }
+        },
+
+
+    "items" : {
+        "override" : [
+            [0, [
+          {
+            "primary" : [ "flightfire" ],
+            "head" : [ "fuearphones" ],
+            "chest" : [ "scientistchest" ],
+            "legs" : [ "scientistlegs" ],
+            "back" : [ "fieldgenerator" ]
+          }
+            ] ]
+        ]
+    },
+  "humanoidTiming" : {
+    // Idle, Walk, Run, Jump, Fall, Swim, SwimIdle, Duck, Sit, Lay
+    "stateCycle" : [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],
+    "stateFrames" : [1, 8, 8, 4, 4, 7, 2, 1, 1, 1],
+
+    // EmoteIdle, Blabbering, Shouting, Happy, Sad, NEUTRAL, Laugh, Annoyed, Oh, OOOH, Blink, Wink, Eat, Sleep
+    //          , normal    , caps    , :)   , :'(, :|     , :D   ,        , :o, :O  ,      , ;)
+    "emoteCycle" : [1.0, 0.3, 0.3, 0.3, 1.0, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.3, 1],
+    "emoteFrames" : [1, 2, 2, 2, 5, 2, 2, 2, 2, 3, 3, 5, 2, 2]
+  },
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "targetMaterialKind" : "organic"
+    },
+
+    "appliesEnvironmentStatusEffects" : false,
+    "minimumLiquidStatusEffectPercentage" : 0.1,
+
+    "primaryScriptSources" : [
+      "/stats/npc_primary.lua"
+    ],
+    "primaryScriptDelta" : 5,
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      },
+      "energyRegen" : {
+        "baseValue" : 100.0
+      },
+      "shieldSuppressed" : {
+        "baseValue" : 0.0
+      },
+      "invulnerable" : {
+        "baseValue" : 0.0
+      }
+    },
+
+    "resources" : {
+      "health" : {
+        "maxStat" : "maxHealth",
+        "deltaStat" : "healthRegen",
+        "defaultPercentage" : 100
+      },
+      "energy" : {
+        "maxStat" : "maxEnergy",
+        "deltaStat" : "energyRegen",
+        "defaultPercentage" : 100
+      }
+    }
+  }
+}

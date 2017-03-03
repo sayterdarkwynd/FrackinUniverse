@@ -1,7 +1,10 @@
+setName="fu_xenoset"
+setStatEffects={"xenosetbonuseffect"}
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setSEBonusInit("fu_xenoset", {"fu_xenoseteffect"})
+	setSEBonusInit(setName,setStatEffects)
 end
 
 function update()

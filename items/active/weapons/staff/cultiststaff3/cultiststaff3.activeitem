@@ -20,7 +20,7 @@
   "animationCustom" : {
     "lights" : {
       "glow" : {
-        "color" : [185, 24, 42]
+        "color" : [143, 0, 179]
       }
     },
     "particleEmitters" : {
@@ -44,12 +44,14 @@
 
   "scripts" : ["/items/active/weapons/staff/staff.lua"],
 
+  "baseDamageFactor" : 1.5,
+
   "stances" : {
     "idle" : {
       "armRotation" : -90,
       "weaponRotation" : 0,
       "twoHanded" : false,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -58,7 +60,7 @@
       "armRotation" : 20,
       "weaponRotation" : -20,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -66,7 +68,7 @@
       "armRotation" : 20,
       "weaponRotation" : -20,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -75,7 +77,7 @@
       "armRotation" : -10,
       "weaponRotation" : -50,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : true,
       "allowFlip" : true
     },
@@ -84,7 +86,7 @@
       "armRotation" : -45,
       "weaponRotation" : 0,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,0.5],
       "allowRotate" : false,
       "allowFlip" : true
     }
@@ -98,13 +100,13 @@
     "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 150,
+    "energyCost" : 75,
 
-    "maxCastRange" : 25,
+    "maxCastRange" : 50,
 
     "projectileType" : "elderportal",
     "projectileParameters" : {
-      "baseDamage" : 10
+      "baseDamage" : 12
     }
   },
 

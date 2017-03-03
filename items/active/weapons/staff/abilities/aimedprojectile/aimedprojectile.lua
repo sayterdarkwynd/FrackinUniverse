@@ -1,13 +1,13 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
-ControlProjectile = WeaponAbility:new()
+AimedProjectile = WeaponAbility:new()
 
-function ControlProjectile:init()
+function AimedProjectile:init()
   self.elementalType = self.elementalType or self.weapon.elementalType
 
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
-  self.stances = config.getParameter("stances")
+  self.stances = self.stances
 
   activeItem.setCursor("/cursors/reticle0.cursor")
   self.weapon:setStance(self.stances.idle)
@@ -17,7 +17,7 @@ function ControlProjectile:init()
   end
 end
 
-function ControlProjectile:update(dt, fireMode, shiftHeld)
+function AimedProjectile:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
   world.debugPoint(self:focusPosition(), "blue")
@@ -26,20 +26,20 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
     and not self.weapon.currentAbility
     and not status.resourceLocked("energy") then
 
-    self:setState(self.chargerotate)
+    self:setState(self.charge)
   end
 end
 
 -- charge
-function ControlProjectile:chargerotate()
-  self.weapon:setStance(self.stances.chargerotate)
+function AimedProjectile:charge()
+  self.weapon:setStance(self.stances.charge)
 
   animator.playSound(self.elementalType.."charge")
   animator.setAnimationState("charge", "charge")
   animator.setParticleEmitterActive(self.elementalType .. "charge", true)
   activeItem.setCursor("/cursors/charge2.cursor")
 
-  local chargeTimer = self.stances.chargerotate.duration
+  local chargeTimer = self.stances.charge.duration
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     chargeTimer = chargeTimer - self.dt
 
@@ -51,7 +51,7 @@ function ControlProjectile:chargerotate()
   animator.stopAllSounds(self.elementalType.."charge")
 
   if chargeTimer <= 0 then
-    self:setState(self.chargedrotate)
+    self:setState(self.charged)
   else
     animator.playSound(self.elementalType.."discharge")
     self:setState(self.cooldown)
@@ -59,8 +59,8 @@ function ControlProjectile:chargerotate()
 end
 
 -- charged
-function ControlProjectile:chargedrotate()
-  self.weapon:setStance(self.stances.chargedrotate)
+function AimedProjectile:charged()
+  self.weapon:setStance(self.stances.charged)
 
   animator.playSound(self.elementalType.."fullcharge")
   animator.playSound(self.elementalType.."chargedloop", -1)
@@ -72,19 +72,19 @@ function ControlProjectile:chargedrotate()
     coroutine.yield()
   end
 
-  self:setState(self.dischargerotate)
+  self:setState(self.discharge)
 end
 
 -- discharge
-function ControlProjectile:dischargerotate()
-  self.weapon:setStance(self.stances.dischargerotate)
+function AimedProjectile:discharge()
+  self.weapon:setStance(self.stances.discharge)
 
   activeItem.setCursor("/cursors/reticle0.cursor")
 
   animator.playSound(self.elementalType.."activate")
   self:createProjectiles()
 
-  util.wait(self.stances.dischargerotate.duration, function(dt)
+  util.wait(self.stances.discharge.duration, function(dt)
     status.setResourcePercentage("energyRegenBlock", 1.0)
   end)
 
@@ -95,9 +95,9 @@ function ControlProjectile:dischargerotate()
 end
 
 -- cooldown
-function ControlProjectile:cooldown()
+function AimedProjectile:cooldown()
   self.weapon:setStance(self.stances.cooldown)
-  self.weapon.aimAngle = 0
+--  self.weapon.aimAngle = 0
 
   animator.setAnimationState("charge", "discharge")
   animator.setParticleEmitterActive(self.elementalType .. "charge", false)
@@ -106,10 +106,11 @@ function ControlProjectile:cooldown()
   util.wait(self.stances.cooldown.duration, function()
 
   end)
+  self:reset()
 end
 
 -- create projectile
-function ControlProjectile:createProjectiles()
+function AimedProjectile:createProjectiles()
   local position = self.focusPosition()
   local aim = self.weapon.aimAngle
 
@@ -123,12 +124,12 @@ function ControlProjectile:createProjectiles()
 end
 
 -- stone offset
-function ControlProjectile:focusPosition()
+function AimedProjectile:focusPosition()
   return vec2.add(mcontroller.position(), activeItem.handPosition(animator.partPoint("stone", "focalPoint")))
 end
 
 -- stop sounds and particles
-function ControlProjectile:reset()
+function AimedProjectile:reset()
   self.weapon:setStance(self.stances.idle)
   animator.stopAllSounds(self.elementalType.."chargedloop")
   animator.stopAllSounds(self.elementalType.."fullcharge")
@@ -138,6 +139,6 @@ function ControlProjectile:reset()
 end
 
 -- reset
-function ControlProjectile:uninit(weaponUninit)
+function AimedProjectile:uninit(weaponUninit)
   self:reset()
 end

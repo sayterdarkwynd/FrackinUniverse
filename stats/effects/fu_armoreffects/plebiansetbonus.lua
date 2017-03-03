@@ -1,5 +1,6 @@
 setName="fu_plebianset"
-setStatEffects={"plebeianbonuseffect"}
+setStatEffects={"plebiansetbonuseffect"}
+
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

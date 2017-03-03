@@ -1,6 +1,33 @@
 {
   "animationParts" : { },
   "animationCustom" : {
+    "parts" : {
+      "blade" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "transformationGroups" : ["swoosh"],
+          "fullbright" : true,
+          "offset" : [0, 0],
+          "focalPoint" : [0.0, 2.5],
+          "damageArea" : [[0, -0.5], [-0.75, 1.0], [-0.75, 2.75], [0, 4.25], [0.75, 2.75], [0.75, 1.0]]
+        },
+        "partStates" : {
+          "blade" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "swing" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }
+    },
     "sounds" : {
       "flurry" : [ "/sfx/melee/spear_flurry.ogg" ]
     }
@@ -27,6 +54,11 @@
       "knockback" : 10,
       "timeout" : 0.15,
       "timeoutGroup" : "alt"
+    },
+
+    "projectileType" : "honeystingergunsting",
+    "projectileParameters" : {
+      "baseDamage" : 8
     },
 
     "cycleRotationOffsets" : [0, 7.5, -7.5],

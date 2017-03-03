@@ -1,0 +1,28 @@
+{
+  "projectileName" : "electricstorm2",
+  "physics" : "default",
+  "image" : "electricstorm.png",
+  "flippable" : true,
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [80, 80, 150],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockback.config"
+    }
+  ],
+  "power" : 20,
+  "knockback" : 40,
+  "speed" : 80,
+  "damageKind" : "electricplasma",
+  "damageType" : "NoDamage",
+  "damageKindImage" : "/interface/statuses/electric.png",
+  "statusEffects" : [
+    "electrified"
+  ],
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "electricplasmapurple", "lightningthrowertrail" ]
+}

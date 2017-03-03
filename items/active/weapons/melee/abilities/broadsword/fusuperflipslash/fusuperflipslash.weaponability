@@ -16,7 +16,7 @@
             "swoosh" : {
               "flip" : {
                 "properties" : {
-                  "image" : "/items/active/weapons/melee/abilities/broadsword/fusuperflipslash/<elementalType>swoosh.png",
+                  "image" : "/items/active/weapons/melee/abilities/broadsword/flipslash/<elementalType>swoosh.png",
                   "offset" : [2.25, 2.75],
                   "damageArea" : [[-6.0, -3.5], [-6.0, 0], [-3.5, 2.5], [0, 2.5], [2.5, 0], [2.5, -3.5], [0, -6.0], [-3.5, -6.0]]
                 }
@@ -44,12 +44,12 @@
   },
 
   "ability" : {
-    "name" : "Super Flip Slash",
+    "name" : "Screw Attack",
     "type" : "fusuperflipslash",
     "scripts" : ["/items/active/weapons/melee/abilities/broadsword/fusuperflipslash/fusuperflipslash.lua"],
     "class" : "FlipSlash",
 
-    "cooldownTime" : 0.5,
+    "cooldownTime" : 0.0,
 
     "damageConfig" : {
       "damageSourceKind" : "broadsword",
@@ -68,7 +68,7 @@
     "rotations" : 3,
     "rotationTime" : 0.2,
 
-    "jumpVelocity" : [35, 20],
+    "jumpVelocity" : [35, 25],
     "jumpDuration" : 0.2,
 
     "stances" : {
@@ -87,7 +87,7 @@
         "twoHanded" : true,
 
         "allowRotate" : false,
-        "allowFlip" : false
+        "allowFlip" : true
       }
     }
   }

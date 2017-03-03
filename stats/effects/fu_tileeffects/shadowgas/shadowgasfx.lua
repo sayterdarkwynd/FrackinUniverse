@@ -8,8 +8,8 @@ function init()
   self.tickDamagePercentage = 0.01
   self.tickTime = 1.2
   self.tickTimer = self.tickTime
-  
-  
+
+
   self.liquidMovementParameter = {
     groundForce = 70,
     airForce = 20,
@@ -27,9 +27,9 @@ function init()
       multiJump = false,
       reJumpDelay = 1.05,
       autoJump = false,
-      collisionCancelled = false 
+      collisionCancelled = false
     }
-  }  
+  }
 end
 
 
@@ -40,7 +40,7 @@ function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
 end
-  
+
 
 function update(dt)
 mcontroller.controlParameters(self.liquidMovementParameter)
@@ -51,11 +51,11 @@ mcontroller.controlParameters(self.liquidMovementParameter)
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
         damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
-        damageSourceKind = "nitrogenweapon",
+        damageSourceKind = "shadow",
         sourceEntityId = entity.id()
       })
   end
-  
+
 end
 
 function uninit()
