@@ -11,5 +11,6 @@ function update(dt)
 		end
 		mcontroller.controlParameters(self.newParams)
 	end
-	if effect.duration() < (15-1/3) then effect.expire() end
+	local temp=(effect.duration()-math.floor(effect.duration()))
+	if  temp < 2/3 and temp > 0 then effect.expire() end
 end
