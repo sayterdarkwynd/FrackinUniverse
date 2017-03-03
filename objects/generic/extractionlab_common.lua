@@ -756,7 +756,7 @@ function getRecipes()
 	{ inputs = { violiumore = 1 }, outputs = { rawminerals = { 7, 7, 9 } } },
 	-- fu ores
 	{ inputs = { berliniteore = 4 }, outputs = { phosphorus = { 1, 1, 3 } } },
-	{ inputs = { cinnabarore = 2 }, outputs = { mercury = { 1, 2, 3 } }, timeScale = { 2.4, 4 } },
+	{ inputs = { cinnabarore = 2 }, outputs = { ff_mercury = { 1, 2, 3 } }, timeScale = { 2.4, 4 } },
 	{ inputs = { corruptionore = 4 }, outputs = { rawminerals = { 5, 5, 7 } }, timeScale = { 2.5333333333333, 4.2222222222222 } },
 	{ inputs = { densiniumore = 4 }, outputs = { rawminerals = { 12, 12, 24 } } },
 	{ inputs = { irradiumore = 4 }, outputs = { liquidirradium = { 4, 4, 5 } } },
