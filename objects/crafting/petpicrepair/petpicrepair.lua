@@ -15,6 +15,7 @@ end
 function loadMonster(invItem)
 	local imgData={}
 	local buffer={}
+	if not invItem.parameters.pets then return end
 	for _,pet in pairs(invItem.parameters.pets) do
 		if isGenerated(pet.config.type) then return end
 		imgData=root.monsterPortrait(pet.config.type)
