@@ -8,10 +8,6 @@ weaponEffect2={
 	{stat = "powerMultiplier", baseMultiplier = 1.15}
 }
 
-weaponEffect3={
-	{stat = "powerMultiplier", baseMultiplier = 1.15}
-}
-  
 armorBonus={
     {stat = "fireResistance", amount = 0.15}
 }
@@ -34,9 +30,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("both",{"pistol","machinepistol"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect3)
-	elseif weaponCheck("primary",{"pistol","machinepistol"}) and weaponCheck("alt",{"pistol","machinepistol"}) then
+	if weaponCheck("primary",{"pistol","machinepistol"}) and weaponCheck("alt",{"pistol","machinepistol"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
 	elseif weaponCheck("either",{"pistol","machinepistol"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
