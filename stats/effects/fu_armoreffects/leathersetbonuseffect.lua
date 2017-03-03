@@ -12,7 +12,6 @@ armorBonus2={
 }
 
 armorBonus={
-      {stat = "maxEnergy", baseMultiplier = 1.0},
       {stat = "critChance", amount = 3},
       {stat = "grit", amount = 0.1}
 }

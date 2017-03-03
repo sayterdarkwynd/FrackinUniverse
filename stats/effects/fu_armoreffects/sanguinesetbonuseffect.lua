@@ -25,7 +25,7 @@ function update(dt)
 		checkWeapons()
 		status.addEphemeralEffect( "regenerationsanguine" )
 	  mcontroller.controlModifiers({
-	      speedModifier = 1.10
+	      speedModifier = 1.1
 	    })
 	end	
 end

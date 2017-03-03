@@ -1,8 +1,8 @@
 setName="fu_missionaryset"
 
 weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.25}
-  }
+	{stat = "powerMultiplier", baseMultiplier = 1.25}
+}
   
 armorBonus={
     {stat = "grit", amount = 0.25},
