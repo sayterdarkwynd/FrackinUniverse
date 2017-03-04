@@ -173,7 +173,7 @@ function findTarget()
 			if tStage ~= nil then
 				local plantName = world.entityName(entityId)
 				if plantName ~= nil then
-					local plantConfig = root.itemConfig(plantName).config
+					local plantConfig = root.itemConfig(plantName).config or nil
 					if plantConfig ~= nil then
 						if plantConfig.stages ~= nil then
 							if plantConfig.stages[tStage+1].harvestPool ~= nil then
