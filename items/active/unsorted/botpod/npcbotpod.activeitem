@@ -1,0 +1,63 @@
+{
+  "itemName" : "npcbotpod",
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "description" : "Throw it down to release the creature captured inside!",
+  "shortdescription" : "Filled Capture Pod",
+  "tooltipKind" : "filledcapturepod",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged"],
+
+  "inventoryIcon" : "botpodicon.png",
+  "animation" : "botpod.animation",
+  "animationParts" : {
+    "botpod" : "botpod.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["npcbotpod.lua"],
+
+  "icons" : {
+    "healthy" : "/items/active/unsorted/botpod/botpodicon.png",
+    "dead" : "/items/active/unsorted/botpod/botpodicondead.png"
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  },
+
+  "projectileType" : "botpod",
+  "projectileParameters" : {
+    "speed" : 40,
+    "level" : 0
+  },
+
+  "pets" : [
+    "tripod"
+  ]
+}
