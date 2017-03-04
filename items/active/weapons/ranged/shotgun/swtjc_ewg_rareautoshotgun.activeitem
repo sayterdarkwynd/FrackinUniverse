@@ -70,7 +70,10 @@
       "fire",
       "ice",
       "electric",
-      "poison"
+      "poison",
+      "radioactive",
+      "shadow",
+      "cosmic"
     ],
     "elementalConfig" : {
       "fire" : {
@@ -88,7 +91,19 @@
       "electric" : {
         "primaryAbility" : { "projectileType" : "electricplasma", "projectileParameters" : { "damageKind" : "electricplasmashotgun", "statusEffects" : [ "electrified" ] } },
         "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
-      }
+      },
+      "radioactive" : {
+        "primaryAbility" : { "projectileType" : "radioactiveplasma", "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+       "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      },
+      "shadow" : {
+        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+       "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      },
+      "cosmic" : {
+        "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
+       "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      } 
     },
     "animationParts" : {
       "butt" : {

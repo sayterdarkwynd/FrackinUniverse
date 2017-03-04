@@ -73,25 +73,40 @@
       "fire",
       "ice",
       "electric",
-      "poison"
+      "poison",
+      "radioactive",
+      "shadow",
+      "cosmic"
     ],
     "elementalConfig" : {
       "fire" : {
-        "primaryAbility" : { "projectileType" : "fireplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/ar1.ogg", "/sfx/gun/ar2.ogg", "/sfx/gun/ar3.ogg", "/sfx/gun/ar4.ogg", "/sfx/gun/ar5.ogg", "/sfx/gun/ar6.ogg", "/sfx/gun/grenade2.ogg" ]
+        "primaryAbility" : { "projectileType" : "fireplasma", "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg" ]
       },
       "ice" : {
-        "primaryAbility" : { "projectileType" : "iceplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/ar1.ogg", "/sfx/gun/ar2.ogg", "/sfx/gun/ar3.ogg", "/sfx/gun/ar4.ogg", "/sfx/gun/ar5.ogg", "/sfx/gun/ar6.ogg", "/sfx/gun/grenade2.ogg" ]
+        "primaryAbility" : { "projectileType" : "iceplasma", "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg" ]
       },
       "poison" : {
-        "primaryAbility" : { "projectileType" : "poisonplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/ar1.ogg", "/sfx/gun/ar2.ogg", "/sfx/gun/ar3.ogg", "/sfx/gun/ar4.ogg", "/sfx/gun/ar5.ogg", "/sfx/gun/ar6.ogg", "/sfx/gun/grenade2.ogg" ]
+        "primaryAbility" : { "projectileType" : "poisonplasma", "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg" ]
       },
       "electric" : {
-        "primaryAbility" : { "projectileType" : "electricplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/ar1.ogg", "/sfx/gun/ar2.ogg", "/sfx/gun/ar3.ogg", "/sfx/gun/ar4.ogg", "/sfx/gun/ar5.ogg", "/sfx/gun/ar6.ogg", "/sfx/gun/grenade2.ogg" ]
-      }
+        "primaryAbility" : { "projectileType" : "electricplasma", "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg" ]
+      },
+      "radioactive" : {
+        "primaryAbility" : { "projectileType" : "radioactiveplasma", "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg" ]
+      },
+      "shadow" : {
+        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg" ]
+      },
+      "cosmic" : {
+        "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg" ]
+      }      
     },
     "animationParts" : {
       "butt" : {
