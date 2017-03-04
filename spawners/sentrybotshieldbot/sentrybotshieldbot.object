@@ -1,31 +1,30 @@
 {
-  "objectName" : "sentrybottriplod3",
+  "objectName" : "sentrybotshieldbot",
   "rarity" : "common",
-  "description" : "A reliable sidekick to protect you.",
-  "shortdescription" : "Deathbeam Guard",
+  "description" : "A well protected little buddy.",
+  "shortdescription" : "Shield Bot",
   "race" : "generic",
   "category" : "decorative",
-  "price" : 750,
+  "price" : 450,
   "printable" : false,
 
-  "inventoryIcon" : "sentrybottriplod2icon.png",
+  "inventoryIcon" : "sentrybotshieldboticon.png",
   "orientations" : [
     {
-      "dualImage" : "sentrybottriplod2.png:<color>",
+      "dualImage" : "sentrybotshieldbot.png:<color>",
 
       "imagePosition" : [-10, 0],
       "frames" : 1,
       "animationCycle" : 1.0,
 
       "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
-//      "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
   ],
   
   "botspawner" : {
-      "type" : "spiderwalker2pet",
-	  "monsterImage":"/monsters/crawlers/triplodish/spiderwalker/spiderwalker.png:idle.1?"
+      "type" : "sentryminidrone2",
+	  "monsterImage":"/monsters/flyers/sentryminidrone2/sentryminidrone2.png:idle.1?"
   },
   
   "scripts" : [ 
