@@ -15,5 +15,6 @@ function update(dt)
 			mcontroller.addMomentum({0,magic*0.2})
 		end
 	end
-	if effect.duration() < (effect.getParameter("defaultDuration",5)-0.3) then effect.expire() end
+	local temp=(effect.duration()-math.floor(effect.duration()))
+	if  temp < 2/3 and temp > 0 then effect.expire() end
 end
