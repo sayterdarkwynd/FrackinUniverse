@@ -171,15 +171,12 @@ function findTarget()
 			end
 			local tStage=world.farmableStage(entityId)
 			if tStage ~= nil then
-				local plantName = world.entityName(entityId)
-				if plantName ~= nil then
-					local plantConfig = root.itemConfig(plantName).config or nil
-					if plantConfig ~= nil then
-						if plantConfig.stages ~= nil then
-							if plantConfig.stages[tStage+1].harvestPool ~= nil then
-								return true
-							end
-						end
+				sb.logInfo("Stage:"..tStage)
+				stages=world.getObjectParameter(entityId,"stages")
+				sb.logInfo(sb.printJson(stages))
+				if stages ~= nil then
+					if stages[tStage+1].harvestPool ~= nil then
+						return true
 					end
 				end
 			end
@@ -204,15 +201,12 @@ function validTarget(entityId)
 	end
 	local tStage=world.farmableStage(entityId)
 	if tStage ~= nil then
-		local plantName = world.entityName(entityId)
-		if plantName ~= nil then
-			local plantConfig = root.itemConfig(plantName).config
-			if plantConfig ~= nil then
-				if plantConfig.stages ~= nil then
-					if plantConfig.stages[tStage+1].harvestPool ~= nil then
-						return true
-					end
-				end
+		sb.logInfo("Stage:"..tStage)
+		stages=world.getObjectParameter(entityId,"stages")
+		sb.logInfo(sb.printJson(stages))
+		if stages ~= nil then
+			if stages[tStage+1].harvestPool ~= nil then
+				return true
 			end
 		end
 	end
