@@ -52,7 +52,9 @@ end
 
 
 function update(dt)
-
+if world.entityType(entity.id()) ~= "player" then
+  effect.expire()
+end
     self.tickTimer = self.tickTimer - dt
     local lightLevel = getLight()
 

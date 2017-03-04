@@ -74,7 +74,10 @@
       "fire",
       "ice",
       "electric",
-      "poison"
+      "poison",
+      "radioactive",
+      "shadow",
+      "cosmic"
     ],
     "elementalConfig" : {
       "fire" : {
@@ -92,7 +95,19 @@
       "electric" : {
         "primaryAbility" : { "projectileType" : "electricplasma", "projectileParameters" : { "damageKind" : "electricplasmashotgun", "statusEffects" : [ "electrified" ] } },
         "fireSounds" : [ "/sfx/gun/rocket_electric1.ogg" ]
-      }
+      },
+      "radioactive" : {
+        "primaryAbility" : { "projectileType" : "radioactiveplasma", "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+       "fireSounds" : [ "/sfx/gun/rocket_electric1.ogg" ]
+      },
+      "shadow" : {
+        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+       "fireSounds" : [ "/sfx/gun/rocket_electric1.ogg" ]
+      },
+      "cosmic" : {
+        "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
+       "fireSounds" : [ "/sfx/gun/rocket_electric1.ogg" ]
+      } 
     },
     "animationParts" : {
       "butt" : {
