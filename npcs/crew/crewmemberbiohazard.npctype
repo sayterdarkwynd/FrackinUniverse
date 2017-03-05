@@ -2,21 +2,20 @@
   "type" : "crewmemberbiohazard",
   "baseType" : "crewmember",
 
-  // This npctype is used just as a base for the other crewmemberchemist*
-  // npctypes. Don't use it directly for spawning NPCs.
-
   "scriptConfig" : {
     "behaviorConfig" : {
       "emptyHands" : false
     },
 
     "crew" : {
-    "defaultUniform" : {
-	"head" : "hazmathead",
-    	"chest" : "hazmatchest",
-   	"legs" : "hazmatlegs",
-   	"back" : "hazmatback"
-  	},
+      "defaultUniform" : {
+        "head" : "hazmathead",
+        "chest" : "hazmatchest",
+        "legs" : "hazmatlegs",
+        "back" : "hazmatback"
+      },
+
+      "role" : {
         "benefits" : [       
           {
             // Ephemeral effects gained upon leaving the ship
@@ -30,7 +29,6 @@
             "effect" : "regeneration1"
           }
         ],
-      "role" : {
         "type" : "chemist",
         "name" : "Radiologist",
         "field" : "Radiologist",
