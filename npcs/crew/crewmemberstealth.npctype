@@ -2,20 +2,19 @@
   "type" : "crewmemberstealth",
   "baseType" : "crewmember",
 
-  // This npctype is used just as a base for the other crewmemberchemist*
-  // npctypes. Don't use it directly for spawning NPCs.
-
   "scriptConfig" : {
     "behaviorConfig" : {
       "emptyHands" : false
     },
 
     "crew" : {
-    "defaultUniform" : {
-	"head" : "fudarkrobeshelmetnpc",
-    	"chest" : "fudarkrobeschestnpc",
-   	"legs" : "fudarkrobespantsnpc"
-  	},
+      "defaultUniform" : {
+        "head" : "fudarkrobeshelmetnpc",
+        "chest" : "fudarkrobeschestnpc",
+        "legs" : "fudarkrobespantsnpc"
+      },
+
+      "role" : {
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -35,7 +34,6 @@
             "effect" : "regeneration1"
           }
         ],
-      "role" : {
         "type" : "chemist",
         "name" : "Assassin",
         "field" : "Murderology",

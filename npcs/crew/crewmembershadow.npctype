@@ -2,20 +2,19 @@
   "type" : "crewmembershadow",
   "baseType" : "crewmember",
 
-  // This npctype is used just as a base for the other crewmemberchemist*
-  // npctypes. Don't use it directly for spawning NPCs.
-
   "scriptConfig" : {
     "behaviorConfig" : {
       "emptyHands" : false
     },
 
     "crew" : {
-    "defaultUniform" : {
-	"head" : "darkhead",
-    	"chest" : "darkchest",
-   	"legs" : "darklegs"
-  	},
+      "defaultUniform" : {
+        "head" : "darkhead",
+        "chest" : "darkchest",
+        "legs" : "darklegs"
+      },
+
+      "role" : {
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -29,7 +28,6 @@
             "effect" : "regeneration1"
           }
         ],
-      "role" : {
         "type" : "chemist",
         "name" : "Shadow Being",
         "field" : "Shadow-Walk"
