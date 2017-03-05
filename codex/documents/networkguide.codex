@@ -1,19 +1,23 @@
 {
-  "id" : "networkguide",
-  "title" : "Networking for Dummies",
-  "description" : "Networking for Dummies",
-  "icon" : "ffbook.png",
-  "contentPages" : ["^white;Hi. Cat was told to write tutorial book. So here it is. It is assumed everyone knows what ^red;input^white; and ^blue;output^white; nodes are. Well, item networking uses those. Yus. Most important part: if cat left labeling on it, read the label. It's not there for the cat's amusement, that's your job.",
-  "^green;Container Links:^white; these are uberuseful little noms. They're also self-centered, so don't expect them to care about their ^red;inputs^white; or ^blue;outputs^white;. They won't. Same with much of the FU machinery. It does its job, ignores everything else. Plug them into ^green;repeaters^white; or ^green;routers^white;, their job is to relay stuff. Oh, right, how they work: they look for the nearest container, measured from center to center. Then they just squawk about it all day.",
-  "^green;Repeaters^white;: Parrots. PARROTS! Noisy little birds that talk all day to each other. They just pass along the who-is-who. Never try to give them items, they just eat them or use them as nesting material.",
-  "^green;Routers^white; part 1: Important part of all item networks. It handles all the item movement. Current interface includes ^red;input^white; slot filters, which umm...let you pick which slots to take from. Router inputs are very explicit. Power on left, network on right. Interface also includes ^blue;output^white; slot filtering. choose what slots to put stuff into. Very useful. Sometimes you only want to load a centrifuge or arc smelter with the tasty noms that you want melted or swirled...and want them to come out melty or swirly. That's what this is for. Plan to make slot filters accept input ranges. will be using (-) sign. Maybe after a nap. Also want to add invert button to input and output slot lists.",
-  "^green;Routers^white; part 2: UI has many options on it. don't look like previous models, but still simple to understand. ^green;Inv. Logic^white; is...umm...well, it takes the condition out, inverts it, and makes it a logical AND. Great if you don't want grapefruit in your fruitbowl, but want all the other fruits. There's also filtering for ^green;Exact Match, Type Match (Item Category), and Category Match (Groups of Categories)^white;.",
-  "Item Categories:\nGeneric: Most types of junk or garbage, or anything that doesn't fit a category.\nTreasure: Anything shiny or rare.\nMaterials: block, liquid, platform, breakables!\nRail stuff: rail, railplatform,railpoint\nconsumable: the noms category.\nbooks: blueprint, codex\nReagents: crafting materials, cooking ingredients, fuel\nbuilding: Most forms of storage, Crafting tables, most machinery and electronics. Furniture and deco stuff. Doors.\nFarm beast and tree stuff.\nWeapons\nArmor\nTools: tools, instruments and thrown stuff\nAugments: epp augment, fishing lure, fishing reel, pet collar, clothing dye\n",
-  "^green;Pumps and quarries^white;:\n Pretty toys. bring shiny tasty noms to you with minimal effort. Cat won't teach finer points. Just remember that ^blue;left inputs are for power switch, right for alternate mode,^white; and ^red;outputs are for items, optionally liquids.^white; Alternate modes...nya...pump will just dump liquids through its liquid outfit, if connected. Well, more like trickle. Kinda both. Quarry alternate mode just makes it also hit background blocks.\n-scribbles including a doodle of a pump and a quarry smooshed together- pretty...",
-  "What you reading back here for? Last page not have stuff yet! Naptime. Myaaaaaaawn."
-  ],
-    "itemConfig" : {
-    "rarity" : "uncommon",
-    "price" : 2
-  }
+	"id": "networkguide",
+	"title": "The FU Network Guide",
+	"description": "How to work CAT Network Equipment",
+	"icon": "ffbook.png",
+	"contentPages": [
+
+		"You will find Customizable Automatic Transmit Network devices primarily at the Machining Table. The parts are connected by wiring, like Startech, but Cat Net is decentralized. If there is a power input mentioned on the label, you can toggle it with a switch. Most important: If cat left labeling on it, read the label!",
+		"The I(tem) T(ransferrence) D(evice) sets CAT apart from Startech, which only moves items when inserted. CAT Net ITDs handle item movement while turned on, across storage and other connected devices.\nSet your filters before wiring in and outputs. Choose your In- and Outputs carefully.",
+		"The Storage Bridge resembles a Startech Storage Bus. Looks for the container nearest to itself, measured between bottom-left corners. They only relay info about their container. Just plug them into any CAT Network devices.",
+		"Pump and quarry work out of the box and automatically collect. A Quarry extends up to 20 blocks to the right, then mines in that area downwards (amount based on tier, current depth limit is about 200 tiles). Pumps automatically go down until they find a fluid, up to the same distance. When full, they just offload near the device.",
+		"Quarries will pick up any items in their way, including chests. Secondary makes it mine background tiles.\nThe second mode for the pump switches it to compress liquids and pump them to any connected spouts.\n",
+		"The Terminal lets you retrieve items. Grabber (Foraging Table) picks things up. The spout ejects any liquids and accepts them from pumps.",
+		"The current ITD interface has 2 functions, the slot filter and the item filter. The input slot filter, let you pick which slots to take from. Output slot filtering is included. \nTo filter items you need one to base the filter on. On default, only that item is transmitted Inv. Logic takes the condition out, inverts it, and makes it a logical AND. In other words, it excludes that item from transmit. There's also filtering for Exact Match, Type Match (Item Category), and Category Match (Groups of Categories).",
+		"Item Categories: \nGeneric: junk, anything that doesn't fit a category. \nTreasure: Anything shiny or rare. \nMaterials: block, liquid, platform, breakables! \nRail stuff: rail, railplatform, railpoint \nconsumable: the food category. \nbooks: blueprint, codex \nReagents: materials, ingredients, fuel \nbuilding: storage, crafting, electronics, furniture, doors. \nFarm beast and tree stuff \nWeapons \nArmor",
+		"Tools: tools, instruments and throwables \nAugments: epp augment, fishing lure, fishing reel, pet collar, clothing dye",
+		"Credits: Kherae (Me!)\nTP for Steambound Reloaded\nCratesmith for VesselBound's container link code\nFunny guy named Hello World who reorganized guide."
+	],
+	"itemConfig": {
+		"rarity": "uncommon",
+		"price": 2
+	}
 }
