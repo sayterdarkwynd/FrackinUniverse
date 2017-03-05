@@ -42,7 +42,7 @@ item =
 			}
 		}
 	},
-	name= "filledcapturepod",
+	name= "botpod",
 	count= 1
 }
 

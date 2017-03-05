@@ -3,13 +3,18 @@
   "baseType" : "crewmemberscience",
 
   "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
     "crew" : {
+      "defaultUniform" : {
+        "head" : "ff_gasmask",
+        "chest" : "scientistchest",
+        "legs" : "scientistlegs"
+      },
+
       "role" : {
-    "defaultUniform" : {
-	"head" : "ff_gasmask",
-    "chest" : "scientistchest",
-   	"legs" : "scientistlegs"
-  	},
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -31,9 +36,6 @@
     "default" : [
       [0, [
           {
-            "head" : [ { "name" : "ff_gasmask" } ],
-            "chest" : [ { "name" : "scientistchest" } ],
-            "legs" : [ { "name" : "scientistlegs" } ],
             "primary" : [ "biopistol" ],
             "sheathedprimary" : [ "npcwrench" ]
           }
