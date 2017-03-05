@@ -3,13 +3,18 @@
   "baseType" : "crewmemberscience",
 
   "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
     "crew" : {
+      "defaultUniform" : {
+        "head" : "scientisthead",
+        "chest" : "scientistchest",
+        "legs" : "scientistlegs"
+      },
+
       "role" : {
-    "defaultUniform" : {
-	"head" : "scientisthead",
-    	"chest" : "scientistchest",
-   	"legs" : "scientistlegs"
-  	},
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -37,9 +42,6 @@
     "default" : [
       [0, [
           {
-            "head" : [ { "name" : "scientisthead" } ],
-            "chest" : [ { "name" : "scientistchest" } ],
-            "legs" : [ { "name" : "scientistlegs" } ],
             "primary" : [ "thesauce" ],
             "sheathedprimary" : [ "mechpistol" ]
           }

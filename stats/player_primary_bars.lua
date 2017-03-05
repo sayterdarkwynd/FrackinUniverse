@@ -41,4 +41,5 @@ function setBar(barName,barPercentage,barColor)
         color = barColor,
         stat = barStat
     }
+    sb.logInfo("%s  %s  %s",barName,barPercentage,barColor)
 end

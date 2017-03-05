@@ -1,7 +1,9 @@
 function init()
  --Power
   self.critChanceup = config.getParameter("critChanceMultiplier", 0)
-  effect.addStatModifierGroup({{stat = "critChance", baseMultiplier = self.critChanceup}})
+  effect.addStatModifierGroup({
+    {stat = "critChance", baseMultiplier = self.critChanceup}
+  })
 end
 
 
@@ -13,19 +15,23 @@ function update(dt)
 --  percentage (from 0 to 1),
 --  colour in {r , g, b, a}
 --)
-world.sendEntityMessage(
-  activeItem.ownerEntityId(),
-  "setBar",
-  config.getParameter("itemName"),
-  status.critChance/100,
-  {0,255,128,255}
-  )
+	if status.stat("critChance") then
+		world.sendEntityMessage(
+		  activeItem.ownerEntityId(),
+		  "setBar",
+		  "critEffector",
+		  status.stat("critChance")/100,
+		  {0,255,128,255}
+		  )
+	else
+		status.setStatusProperty("critChance",0)
+	end
 end
 
 function uninit()
 world.sendEntityMessage(
-  playerId,
+  activeItem.ownerEntityId(),
   "removeBar",
-  config.getParameter("itemName")
+  "critEffector"
 )
 end
