@@ -1,26 +1,22 @@
 {
-  "id" : "networkguide",
-  "title" : "The Network Bible",
-  "description" : "How to work Networks",
-  "icon" : "ffbook.png",
-  "contentPages" : [
-
-   "The Network Bible \n \nI. Basic Networks \n(a) Basic Network and Advanced Storage P.3 \n(b) How to use P.5 \n(c) Cat Net and Mining P.6 \n \nII. ADVANCED In construction! \n(a) IDEs and Advanced Networking P.9 \n(b) Does not exist yet P.- \n(c)Credits P.10 \n(x) Cheat sheets P.11",
-   "I. Hello World! \nThis is a HowTo within a HowTo. One will step-by-step, help you to set up the 2 kinds of networks used. The second one will show you how to actually incorporate them into your game. \nBoth chapters include StarTech. That mod recommended as addition to FU. Mass Storage and Transport (as described in the following pages) will not work without it. \nThe first thing you'll need is Wiring Mode for the M.M. the Mechanics' Wrench, crafted at the Machining Table.",
-   "(a) To set up a Basic Network you will need any container, to store your stuff in, and 3 items found the Inventors Table. The T(ransmatter) Controller, a T Storage Bus, the T Terminal and a Relay. You can also craft the T Drive Bay and a Storage Drive for later. \nPlace the Storage Bus above your container so that the cone towards it. If you don't want the Bus above, equip the Wrench (Anvil) and click it with your left. Leave some space and place everything else. Press (T) and wire the Terminal to the Controller.",
-   "Place the Relay and connect it in the same way. Now connect the Relays Input to the storage devices, your Bus and the Drive Bay. Only use one Controller per Network and connect everything to it! \nCongratulations, you have a complete Transmatter Network!",
-   "(b) To use your network, locate the Terminal and press (E). You should see your items in there already, take one with double click or a specific number at the very bottom. You can add items with Shift+L, just like with any other container. \nTo use Advanced Storage put a Storage Drive into the Drive Bay. Any item you throw into the Terminal, will be loaded onto the Drive until it's full, for now. Feel free to take em out to carry around.",
-   "(c) You find the Customizable Automatic Transmit Network at the Machining Table and its respective upgrades, in the first tab. Wiring works just the same but, but Cat Net is decentralized. If there is a power input mentioned on the label, you can toggle it with a switch. Most important: If cat left labeling on it, read the label! \nThe I(tem) T(ransference) D(evice) sets CAT apart from Startech, which only moves items when inserted. But this puppy automatically handles item movement, across storages.",
-   "For now, they will simply transfer all items, if not toggled. They only work in one direction, so choose you In- and Outputs carefully. \nThe Storage Bridge resembles the Storage Bus. Looks for the nearest container itself, measured from center to center. Independent and self-centered, so don't expect them to care much about inputs. Just plug them into CAT, IDEs or routers. \nPump and quarry work out of the box and automatically collect. Pumps automatically go down until they find a fluid.",
-   "A Quarry extends 20 blocks to the right, then mines in that area downwards. It will also pick up any other item in its way, like chests. A second mode for the pump will be added later. Theoretically they should stop working when they are full, but that's unlikely to happen with 16 slots to fill. \nThe Terminal is slightly different, you can't store items in it. That's what the Grabber (Foraging Table) is for. The spout ejects any liquid.",
-   "II. (a) The current IDE interface has 2 functions, the slot filter and the item filter. The input slot filter, let you pick which slots to take from. Output slot filtering is included. \nTo filter items you need one to base the filter on. On default, only that item is transmitted Inv. Logic takes the condition out, inverts it, and makes it a logical AND. In other words, it excludes that item from transmit. There's also filtering for Exact Match, Type Match (Item Category), and Category Match (Groups of Categories).",
-   "(c) Thank you for the help, the previous version of the guide and for making FU what it is, Kherae! \nShout out to zetaPRIME(StarTech) and TP!(Steambound Reloaded). And of course Cratesmith(VesselBound) for the Storage Bridges! \nWithout their work we'd still be getting our hands dirty!", 
-   "(x) Item Categories: \nGeneric: junk, anything that doesn't fit a category. \nTreasure: Anything shiny or rare. \nMaterials: block, liquid, platform, breakables! \nRail stuff: rail, railplatform, railpoint \nconsumable: the food category. \nbooks: blueprint, codex \nReagents: materials, ingredients, fuel \nbuilding: storage, crafting, electronics, furniture, doors. \nFarm beast and tree stuff \nWeapons \nArmor",
-   "Tools: tools, instruments and throwables \nAugments: epp augment, fishing lure, fishing reel, pet collar, clothing dye"
-  
-  ],
-    "itemConfig" : {
-    "rarity" : "uncommon",
-    "price" : 2
-  }
+	"id": "networkguide",
+	"title": "The Cat's Network Guide",
+	"description": "How to work CAT Network Equipment",
+	"icon": "ffbook.png",
+	"contentPages": [
+		"You will find Customizable Automatic Transmit Network devices primarily at the Machining Table. The parts are connected by wiring, like Startech, but Cat Net is decentralized. If there is a power input mentioned on the label, you can toggle it with a switch. Most important: If cat left labeling on it, read the label!",
+		"The I(tem) T(ransferrence) D(evice) sets CAT apart from Startech, which only moves items when inserted. CAT Net ITDs handle item movement while turned on, across storage and other connected devices.\nSet your filters before wiring in and outputs. Choose your In- and Outputs carefully.",
+		"The Storage Bridge resembles a Startech Storage Bus. Looks for the container nearest to itself, measured between bottom-left corners. They only relay info about their container. Just plug them into any CAT Network devices.",
+		"Pump and quarry work out of the box and automatically collect. A Quarry extends up to 20 blocks to the right, then mines in that area downwards (amount based on tier, current depth limit is about 200 tiles). Pumps automatically go down until they find a fluid, up to the same distance. When full, they just offload near the device.",
+		"Quarries will pick up any items in their way, including chests. Secondary makes it mine background tiles.\nThe second mode for the pump switches it to compress liquids and pump them to any connected spouts.\n",
+		"The Terminal lets you retrieve items. Grabber (Foraging Table) picks things up. The spout ejects any liquids and accepts them from pumps.",
+		"The current ITD interface has 2 functions, the slot filter and the item filter. The input slot filter, let you pick which slots to take from. Output slot filtering is included. \nTo filter items you need one to base the filter on. On default, only that item is transmitted Inv. Logic takes the condition out, inverts it, and makes it a logical AND. In other words, it excludes that item from transmit. There's also filtering for Exact Match, Type Match (Item Category), and Category Match (Groups of Categories).",
+		"Item Categories: \nGeneric: junk, anything that doesn't fit a category. \nTreasure: Anything shiny or rare. \nMaterials: block, liquid, platform, breakables! \nRail stuff: rail, railplatform, railpoint \nconsumable: the food category. \nbooks: blueprint, codex \nReagents: materials, ingredients, fuel \nbuilding: storage, crafting, electronics, furniture, doors. \nFarm beast and tree stuff \nWeapons \nArmor",
+		"Tools: tools, instruments and throwables \nAugments: epp augment, fishing lure, fishing reel, pet collar, clothing dye",
+		"Credits: Kherae (Me!)\nTP for Steambound Reloaded\nCratesmith for VesselBound's container link code\n"
+	],
+	"itemConfig": {
+		"rarity": "uncommon",
+		"price": 2
+	}
 }
