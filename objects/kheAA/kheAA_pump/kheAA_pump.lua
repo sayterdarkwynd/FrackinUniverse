@@ -16,11 +16,11 @@ end
 
 function setRunning(running)
 	if running then
-		storage.running = true;
+		--storage.running = true;
 		animator.setAnimationState("pumpState", "on")
 		animator.setAnimationState("pipeState", "on")
 	else
-		storage.running = false;
+		--storage.running = false;
 		animator.setAnimationState("pumpState", "off")
 	end
 end
@@ -37,4 +37,8 @@ end
 
 function update(dt)
 	excavatorCommon.cycle(dt)
+end
+
+function die()
+	liquidLib.die()
 end
