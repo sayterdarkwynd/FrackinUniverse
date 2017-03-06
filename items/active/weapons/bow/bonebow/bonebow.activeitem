@@ -1,27 +1,27 @@
 {
-  "itemName" : "lunaribow",
-  "level" : 3,
-  "price" : 150,
-  "inventoryIcon" : "lunaribowicon.png",
+  "itemName" : "bonebow",
+  "price" : 640,
+  "inventoryIcon" : "bonebowicon.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "Common",
   "tooltipKind" : "bow",
-  "weaponType" : "Bow",
-  "description" : "Crystalline bow for hunting extra dangerous game.",
-  "shortdescription" : "Lunari Bow",
   "category" : "bow",
+  "description" : "A primitive bone bow, almost too stiff to draw.",
+  "shortdescription" : "Bone Bow",
   "twoHanded" : true,
   "itemTags" : ["weapon", "ranged", "bow"],
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
+  "level" : 1,
+
   "animation" : "/items/active/weapons/bow/bow.animation",
   "animationParts" : {
-    "bow" : "lunaribow.png"
+    "bow" : "bonebow.png"
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "bow" : { "properties" : {
-      "offset" : [0.25, 0]
+      "offset" : [0.25, 0.125]
     }}}},
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
@@ -32,33 +32,29 @@
 
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
-  "elementalType" : "physical",
-
   "primaryAbilityType" : "bowshot",
   "primaryAbility" : {
     "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelector",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "lunariarrow",
-    "powerProjectileType" : "chargedlunariarrow",
+    "projectileType" : "bonearrow",
+    "powerProjectileType" : "chargedbonearrow",
     "projectileParameters" : {
-      "power" : 6.8
+      "power" : 4.5
     }
   },
 
   "altAbilityType" : "tripleshot",
   "altAbility" : {
     "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelectorNoPower",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "chargedlunariarrow",
+    "projectileType" : "bonearrow",
     "projectileParameters" : {
-      "power" : 6.1
+      "power" : 3.0
     },
     "splitDelay" : 0.04,
     "splitAngle" : 5
   },
-  "critChance" : 5,
-  "critBonus" : 5,
+
+
   "builder" : "/items/buildscripts/buildbow.lua"
 }
