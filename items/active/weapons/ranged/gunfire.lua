@@ -45,25 +45,25 @@ function GunFire:setCritDamage(damage)
      
   if heldItem then
       if root.itemHasTag(heldItem, "pistol") then
-        self.critChance = 4 + weaponModifier
+        self.critChance = 0.2 + weaponModifier
       elseif root.itemHasTag(heldItem, "machinepistol") then
-        self.critChance = 2 + weaponModifier
+        self.critChance = 0.1 + weaponModifier
       elseif root.itemHasTag(heldItem, "assaultrifle") then
-        self.critChance = 3 + weaponModifier       
+        self.critChance = 0.13 + weaponModifier       
       elseif root.itemHasTag(heldItem, "sniperrifle") then
-        self.critChance = 9 + weaponModifier  
+        self.critChance = 0.4 + weaponModifier  
       elseif root.itemHasTag(heldItem, "energy") then
-        self.critChance = 4 + weaponModifier   
+        self.critChance = 0.2 + weaponModifier   
       elseif root.itemHasTag(heldItem, "grenadelauncher") then
-        self.critChance = 8 + weaponModifier        
+        self.critChance = 0.6 + weaponModifier        
       elseif root.itemHasTag(heldItem, "rifle") then
-        self.critChance = 7 + weaponModifier       
+        self.critChance = 0.4 + weaponModifier       
       elseif root.itemHasTag(heldItem, "rocketlauncher") then
-        self.critChance = 9 + weaponModifier  
+        self.critChance = 1 + weaponModifier  
       elseif root.itemHasTag(heldItem, "shotgun") then
-        self.critChance = 4 + weaponModifier   
+        self.critChance = 0.3 + weaponModifier  
       elseif root.itemHasTag(heldItem, "flamethrower") then
-        self.critChance = 2 + weaponModifier        
+        self.critChance = 0.1 + weaponModifier              
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)

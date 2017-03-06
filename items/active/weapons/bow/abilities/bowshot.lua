@@ -38,9 +38,9 @@ function BowShot:setCritDamage(damage)
      
   if heldItem then
       if root.itemHasTag(heldItem, "bow") then
-        self.critChance = 9 + weaponModifier
+        self.critChance = 0.25 + weaponModifier
       elseif root.itemHasTag(heldItem, "crossbow") then
-        self.critChance = 9 + weaponModifier
+        self.critChance = 0.25 + weaponModifier
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)
