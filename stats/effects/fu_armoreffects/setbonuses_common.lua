@@ -64,6 +64,19 @@ function checkSetWorn(mySet)
 	return status.stat(mySet[1]) == 1 and status.stat(mySet[2]) == 1 and status.stat(mySet[3]) == 1
 end
 
+function checkSetLevel(mySet)
+	--used on tiered set bonuses
+	return math.min(math.min(status.stat(mySet[1]),status.stat(mySet[2])),status.stat(mySet[3]))
+end
+
+function setBonusMultiply(effectBase,mult)
+	local temp={}
+	for k,v in pairs(effectBase) do
+		temp[k]=v*mult
+	end
+	return temp
+end
+
 function applySetEffects()
 	if self.setBonusEffects == nil then
 		return
@@ -89,53 +102,47 @@ function removeSetBonus()
 	end
 end
 
-function weaponCheck(hands,tags)
+function weaponCheck(tags)
 	local heldItemPrimary = world.entityHandItem(entity.id(), "primary")
 	local heldItemAlt = world.entityHandItem(entity.id(), "alt")
 	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
-	local twoHandedPrimary=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
-	
-	if hands=="both" and not twoHandedPrimary then
-		if heldItemPrimary~=nil and heldItemAlt~=nil then
-			for _,tag in pairs(tags) do
-				if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
-					return true
-				end
+	local results={}
+	results["either"]=false
+	results["primary"]=false
+	results["alt"]=false
+	results["both"]=false
+	results["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
+	if heldItemPrimary~=nil and heldItemAlt~=nil then
+		for _,tag in pairs(tags) do
+			if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
+				results["primary"]=true
+				results["alt"]=true
+				results["both"]=true
+				results["either"]=true
+			elseif root.itemHasTag(heldItemPrimary,tag) then
+				results["primary"]=true
+				results["either"]=true
+			elseif root.itemHasTag(heldItemAlt,tag) then
+				results["alt"]=true
+				results["either"]=true
 			end
 		end
-	elseif hands=="either" or hands=="both"	then
-		if heldItemPrimary~=nil then
-			for _,tag in pairs(tags) do
-				if root.itemHasTag(heldItemPrimary,tag) then
-					return true
-				end
+	elseif heldItemPrimary~=nil then
+		for _,tag in pairs(tags) do
+			if root.itemHasTag(heldItemPrimary,tag) then
+				results["primary"]=true
+				results["either"]=true
 			end
 		end
-		if heldItemAlt~=nil  then
-			for _,tag in pairs(tags) do
-				if root.itemHasTag(heldItemAlt,tag) then
-					return true
-				end
-			end
-		end
-	elseif hands=="primary" then
-		if heldItemPrimary~=nil then
-			for _,tag in pairs(tags) do
-				if root.itemHasTag(heldItemPrimary,tag) then
-					return true
-				end
-			end
-		end
-	elseif hands=="alt" then
-		if heldItemAlt~=nil  then
-			for _,tag in pairs(tags) do
-				if root.itemHasTag(heldItemAlt,tag) then
-					return true
-				end
+	elseif heldItemAlt~=nil  then
+		for _,tag in pairs(tags) do
+			if root.itemHasTag(heldItemAlt,tag) then
+				results["alt"]=true
+				results["either"]=true
 			end
 		end
 	end
-	return false
+	return results
 end
 
 function uninit()

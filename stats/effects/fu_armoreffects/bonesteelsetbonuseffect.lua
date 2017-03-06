@@ -40,7 +40,8 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("either",{"broadsword","shortsword"}) then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
+	local weapons=weaponCheck({"broadsword","shortsword"})
+	if weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
