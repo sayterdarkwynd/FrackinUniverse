@@ -1,0 +1,70 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "rotationGroup" : "weapon",
+        "emissionRate" : 8,
+        "offsetPart" : "muzzleFlash",
+        "offsetRegion" : [0.0, 0.0, 0.0, 0.0],
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0, 0.5] }
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/rocket3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Rocket Burst",
+    "type" : "rocketburst",
+    "scripts" : ["/items/active/weapons/ranged/abilities/rocketburst/rocketburst.lua"],
+    "class" : "RocketBurst",
+
+    "projectileType" : "minirocket",
+    "elementalConfig" : {
+      "physical" : { "projectileParameters" : { } },
+      "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+      "electric" : { "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+      "ice" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+      "poison" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+      "radioactive" : { "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+      "shadow" : { "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } }      
+    },
+    "baseDps" : 15,
+    "energyUsage" : 50,
+    "fireTime" : 0.25,
+    "inaccuracy" : 0.8,
+
+    "fireType" : "burst",
+    "burstCount" : 5,
+    "burstTime" : 0.1,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.1, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.05,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.1, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "lance" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {
+            },
+            "fire" : {
+              "frames" : 4,
+              "cycle" : 0.12,
+              "mode" : "transition",
+              "transition" : "idle"
+            }
+          }
+        }
+      },
+      "parts" : {
+        "lance" : {
+          "properties" : {
+            "zLevel" : 3,
+            "centered" : true,
+            "fullbright" : true,
+            "offset" : [2.5, 0.0],
+            "transformationGroups" : ["muzzle"],
+            "damageArea" : [ [-3.0, 0], [-2.0, 0.5], [2.5, 0.0], [-2.0, -0.5] ]
+          },
+          "partStates" : {
+            "lance" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "fire" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/ranged/abilities/lance/<elementalType>lance.png:<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "lights" : {
+      "fireflash" : {
+        "active" : false,
+        "position" : [3.0, 0.0],
+        "color" : [140, 100, 40]
+      },
+      "electricflash" : {
+        "active" : false,
+        "position" : [3.0, 0.0],
+        "color" : [100, 40, 140]
+      },
+      "iceflash" : {
+        "active" : false,
+        "position" : [3.0, 0.0],
+        "color" : [40, 120, 140]
+      },
+      "poisonflash" : {
+        "active" : false,
+        "position" : [3.0, 0.0],
+        "color" : [40, 140, 40]
+      },
+      "radioactiveflash" : {
+        "active" : false,
+        "position" : [3.0, 0.0],
+        "color" : [50, 140, 140]
+      },
+      "shadowflash" : {
+        "active" : false,
+        "position" : [3.0, 0.0],
+        "color" : [40, 40, 40]
+      },
+      "cosmicflash" : {
+        "active" : false,
+        "position" : [3.0, 0.0],
+        "color" : [200, 140, 90]
+      }      
+    },
+    "particleEmitters" : {
+      "fireblast" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 25,
+        "offsetRegion" : [0.0, -0.5, 3.0, 0.5],
+        "particles" : [
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"},
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"}
+        ]
+      },
+      "electricblast" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 25,
+        "offsetRegion" : [0.0, -0.5, 3.0, 0.5],
+        "particles" : [
+          { "particle" : "electricswoosh1"},
+          { "particle" : "electricswoosh2"},
+          { "particle" : "electricswoosh2"}
+        ]
+      },
+      "poisonblast" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 25,
+        "offsetRegion" : [0.0, -0.5, 3.0, 0.5],
+        "particles" : [
+          { "particle" : "poisonswoosh1"},
+          { "particle" : "poisonswoosh2"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "poisonswoosh1"},
+          { "particle" : "poisonswoosh2"},
+          { "particle" : "fireswoosh2"}
+        ]
+      },
+      "iceblast" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 25,
+        "offsetRegion" : [0.0, -0.5, 3.0, 0.5],
+        "particles" : [
+          { "particle" : "iceswoosh1"},
+          { "particle" : "iceswoosh2"},
+          { "particle" : "iceswoosh3"},
+          { "particle" : "iceswoosh1"},
+          { "particle" : "iceswoosh2"},
+          { "particle" : "iceswoosh3"}
+        ]
+      },
+      "radioactiveblast" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 25,
+        "offsetRegion" : [0.0, -0.5, 3.0, 0.5],
+        "particles" : [
+          { "particle" : "radioactiveswoosh1"},
+          { "particle" : "radioactiveswoosh2"},
+          { "particle" : "radioactiveswoosh3"},
+          { "particle" : "radioactiveswoosh1"},
+          { "particle" : "radioactiveswoosh2"},
+          { "particle" : "radioactiveswoosh3"}
+        ]
+      },
+      "shadowblast" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 25,
+        "offsetRegion" : [0.0, -0.5, 3.0, 0.5],
+        "particles" : [
+          { "particle" : "shadowswoosh1"},
+          { "particle" : "shadowswoosh2"},
+          { "particle" : "shadowswoosh3"},
+          { "particle" : "shadowswoosh1"},
+          { "particle" : "shadowswoosh2"},
+          { "particle" : "shadowswoosh3"}
+        ]
+      },
+      "cosmicblast" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 25,
+        "offsetRegion" : [0.0, -0.5, 3.0, 0.5],
+        "particles" : [
+          { "particle" : "cosmicswoosh1"},
+          { "particle" : "cosmicswoosh2"},
+          { "particle" : "cosmicswoosh3"},
+          { "particle" : "cosmicswoosh1"},
+          { "particle" : "cosmicswoosh2"},
+          { "particle" : "cosmicswoosh3"}
+        ]
+      }
+    },
+    "sounds" : {
+      "firelancefire" : [ "/sfx/gun/elemental_lance.ogg" ],
+      "electriclancefire" : [ "/sfx/gun/elemental_lance.ogg" ],
+      "icelancefire" : [ "/sfx/gun/elemental_lance.ogg" ],
+      "poisonlancefire" : [ "/sfx/gun/elemental_lance.ogg" ],
+      "radioactivelancefire" : [ "/sfx/gun/elemental_lance.ogg" ],
+      "shadowlancefire" : [ "/sfx/gun/elemental_lance.ogg" ],
+      "cosmiclancefire" : [ "/sfx/gun/elemental_lance.ogg" ]      
+    }
+  },
+
+  "ability" : {
+    "name" : "Energy Lance",
+    "type" : "lance",
+    "scripts" : ["/items/active/weapons/ranged/abilities/lance/lance.lua"],
+    "class" : "LanceAttack",
+
+    "cooldownTime" : 4.0,
+
+    "energyUsage" : 50,
+
+    "damageConfig" : {
+      "damageSourceKind" : "<elementalType>plasma",
+      "baseDamage" : 20,
+      "knockback" : 40,
+      "timeoutGroup" : "alt",
+      "timeout" : 0.5
+    },
+    "elementalConfig" : {
+      "fire" : { "damageConfig" : { "statusEffects" : [ "burning" ] } },
+      "ice" : { "damageConfig" : { "statusEffects" : [ "frostslow" ] } },
+      "poison" : { "damageConfig" : { "statusEffects" : [ "weakpoison" ] } },
+      "electric" : { "damageConfig" : { "statusEffects" : [ "electrified" ] } }
+    },
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.3,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

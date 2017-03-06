@@ -1,0 +1,91 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "rotationGroup" : "weapon",
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0.0, -0.25, 0.5, 0.25],
+        "particles" : [
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade2.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Explosive Burst",
+    "type" : "explosiveburst",
+    "scripts" : ["/items/active/weapons/ranged/abilities/explosiveburst/explosiveburst.lua"],
+    "class" : "ExplosiveBurst",
+
+    "elementalConfig" : {
+      "physical" : {
+        "projectileType" : "airburstbullet"
+      },
+      "fire" : {
+        "projectileType" : "airburstfirebullet"
+      },
+      "ice" : {
+        "projectileType" : "airbursticebullet"
+      },
+      "poison" : {
+        "projectileType" : "airburstpoisonbullet"
+      },
+      "electric" : {
+        "projectileType" : "airburstelectricbullet"
+      },
+      "radioactive" : {
+        "projectileType" : "airburstpoisonbullet"
+      },
+      "shadow" : {
+        "projectileType" : "airbursticebullet"
+      },
+      "cosmic" : {
+        "projectileType" : "airburstfirebullet"
+      }      
+    },
+    "projectileParameters" : {
+      "speed" : 100
+    },
+    "inaccuracy" : 0.05,
+    "burstCount" : 5,
+    "burstTime" : 0.05,
+    "baseDps" : 10,
+    "fireTime" : 0.2,
+    "fireType" : "burst",
+    "projectileCount" : 1,
+
+    "energyUsage" : 50,
+
+    "minDistance" : 5,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

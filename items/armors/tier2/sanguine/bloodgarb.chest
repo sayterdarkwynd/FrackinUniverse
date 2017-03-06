@@ -4,11 +4,13 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Agile and flexible.",
+  "description" : "Set Bonus:
+^cyan;+10% Crit (Daggers, Whips)^reset;
+^green;Regen 2, +10% Speed^reset;",
   "shortdescription" : "Sanguine Vest",
   "category" : "chestarmour",
-  "tooltipKind" : "armornew2",
-  "level" : 4,
+  "tooltipKind" : "armor",
+  "level" : 2,
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -24,22 +26,27 @@
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.1
+      "baseMultiplier" : 1.6
     },
 
     {
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 21
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 9
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 42
+      "amount" : 12
+    },
+    "sanguinesetbonus",
+    {
+      "stat" : "fu_sanguineset_chest",
+      "amount" : 1
     }
   ],
 

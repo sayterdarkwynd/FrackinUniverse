@@ -1,0 +1,97 @@
+{
+  "projectileName" : "burningmandala",
+  "physics" : "laser",
+  "timeToLive" : 4,
+  "image" : "burningmandala.png",
+  "animationCycle" : 0.6,
+  "lightColor" : [160, 50, 50],
+  "frameNumber" : 3,
+  "periodicActions" : [
+    {
+      "time" : 0.3,
+      "action" : "loop",
+      "count" : 2,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/statuseffects/burning/burning.animation",
+            "approach" : [50, 50],
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.425,
+            "fade" : 1,
+            "light" : [191, 103, 2],
+            "size" : 0.5,
+            "layer" : "middle",
+            "timeToLive" : 0.425,
+            "variance" : {
+              "position" : [1.5, 1.0],
+              "finalVelocity" : [1.5, 1.5]
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/shards/fireshard.animation",
+            "size" : 1,
+            "approach" : [30, 30],
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0, 1.0],
+              "finalVelocity" : [3, 3],
+              "timeToLive" : 1
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [253, 143, 77, 255],
+            "fade" : 0.9,
+            "approach" : [20, 20],
+            "light" : [191, 103, 2],
+            "destructionTime" : 0.8,
+            "layer" : "back",
+            "variance" : {
+              "position" : [2.0, 1.0],
+              "finalVelocity" : [1.5, 1.5],
+              "size" : 0.5
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "actionOnReap" : [],
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "fireplasma",
+  "damagePoly" : [ [-1.25,1.5], [-1.25,-0.75], [0.875,-1], [0.75,1.625] ],
+  "statusEffects" : [ "burningnapalm" ],
+  "damageRepeatTimeout" : 0.25,
+
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ "fireplasma" ],
+
+  "piercing" : true,
+  "bounces" : 0,
+
+  "scripts" : [ "/projectiles/activeitems/staff/burningmandala/burningmandala.lua" ],
+  "scriptDelta" : 1,
+
+  "controlOrbit" : {
+    "targetDistance" : 4,
+    "targetSpeed" : 50
+  }
+}

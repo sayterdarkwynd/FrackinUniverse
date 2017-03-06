@@ -1,0 +1,55 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "enterAimMode" : [ "/sfx/interface/sniper_mark_start2.ogg" ],
+      "targetAcquired1" : [ "/sfx/interface/sniper_mark_pitch1.ogg" ],
+      "targetAcquired2" : [ "/sfx/interface/sniper_mark_pitch2.ogg" ],
+      "targetAcquired3" : [ "/sfx/interface/sniper_mark_pitch3.ogg" ],
+      "targetAcquired4" : [ "/sfx/interface/sniper_mark_pitch4.ogg" ],
+      "targetAcquired5" : [ "/sfx/interface/sniper_mark_pitch5.ogg" ],
+      "targetAcquired6" : [ "/sfx/interface/sniper_mark_pitch6.ogg" ],
+      "targetAcquired7" : [ "/sfx/interface/sniper_mark_pitch7.ogg" ],
+      "targetAcquired8" : [ "/sfx/interface/sniper_mark_pitch8.ogg" ],
+      "targetAcquired9" : [ "/sfx/interface/sniper_mark_pitch9.ogg" ],
+      "targetAcquired10" : [ "/sfx/interface/sniper_mark_pitch10.ogg" ],
+      "disengage" : [ "/sfx/interface/sniper_mark_stop2.ogg"]
+    }
+  },
+  "animationScripts" : [ "/items/active/effects/entitymarker.lua" ],
+
+  "ability" : {
+    "name" : "Marked Shot 2.0",
+    "type" : "markedshot",
+    "scripts" : ["/items/active/weapons/ranged/abilities/markedshot/markedshot.lua"],
+    "class" : "MarkedShot",
+
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "chainbullet" },
+      "fire" : { "projectileType" : "chainfireplasma" },
+      "electric" : { "projectileType" : "chainelectricplasma" },
+      "ice" : { "projectileType" : "chainiceplasma" },
+      "poison" : { "projectileType" : "chainpoisonplasma" },
+      "radioactive" : { "projectileType" : "chainradioactiveplasma" },
+      "shadow" : { "projectileType" : "chainshadowplasma" },
+      "cosmic" : { "projectileType" : "chaincosmicplasma" }
+    },
+    "projectileParameters" : { },
+    "baseDamage" : 10,
+    "energyUsage" : 10, // cost per target marked
+    "cooldownTime" : 4.0,
+    "projectileCount" : 1,
+
+    "maxTargets" : 10,
+    "targetQueryDistance" : 2,
+
+    "stances" : {
+      "cooldown" : {
+        "duration" : 0.6,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true
+      }
+    }
+  }
+}

@@ -1,66 +1,162 @@
 {
   "objectName" : "powerstation",
   "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
-  "printable" : false,
-  "price" : 600,
   "rarity" : "Essential",
-  "interactAction" : "OpenCraftingInterface",
-  "interactData" : {
-    "config" : "/interface/windowconfig/powerstation.config",
-    "filter" : [ "powerstation" ]
-  },
-  
-  "description" : "This machine is dedicated to creating technology that requires power to function.",
-  "shortdescription" : "^orange;Power Station^white;",
   "race" : "generic",
   "category" : "crafting",
 
-  "learnBlueprintsOnPickup" : [ "moltencore", "fu_liquidcondenser" ],
+  "breakDropOptions" : [],
+
+  "price" : 250,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+              
   "pickupQuestTemplates" : [ "fuquest_powerstation" ],
+  "animation" : "powerstation.animation",
+  "animationPosition" : [0, 23],
 
   "inventoryIcon" : "powerstationicon.png",
+  "placementImage" : "powerstation.png:default.default",
+  "placementImagePosition" : [-44, 0],    
+
+  "description" : "Create powered gear",
+  "shortdescription" : "^orange;Electronics Center^white;",
+
+  "learnBlueprintsOnPickup" : [ ],
+
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 2,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "electronicscenter",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "powerstationicon.png",
+        "placementImage" : "powerstation.png:default.default",
+        "placementImagePosition" : [-44, 0],    
+
+        "description" : "Create powered gear",
+        "shortdescription" : "^orange;Electronics Center^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/powerstation.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Electronics Center",
+            "subtitle" : " ^#b9b5b2;Create powered gear",
+            "icon" : {
+              "file" : ""
+            }
+          }
+        },
+
+        "filter" : [ "powerstation1" ],
+        
+        "initialRecipeUnlocks" : [ "isn_powersensor","isn_solarpanel","isn_hydroponicstray","isn_battery_t1","fu_powersensorlarge","isn_powersensor","fu_liquidcondenser" ],
+        
+        "upgradeMaterials" : [
+          { "item" : "carbonplate", "count" : 6 },
+          { "item" : "stickofram", "count" : 2 },
+          { "item" : "glass", "count" : 4 },
+          { "item" : "cpu", "count" : 2 }
+        ]
+      },
+      "craftingSound" : "/sfx/interface/crafting_tech1.ogg",
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "powerstation",
+
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "powerstation2icon.png",
+        "placementImage" : "powerstation2.png:default.default",
+        "placementImagePosition" : [-44, 0],    
+
+        "description" : "High-tech powered devices",
+        "shortdescription" : "^orange;Power Station^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/powerstation.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : " Power Station",
+            "subtitle" : " ^#b9b5b2;High-tech powered devices",
+            "icon" : {
+              "file" : ""
+            }
+          }
+        },
+        "filter" : [ "powerstation1", "powerstation2" ],
+        "initialRecipeUnlocks" : []
+      },
+
+      "craftingSound" : "/sfx/interface/crafting_tech1.ogg",
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    }
+  ],
+
   "orientations" : [
     {
-      "imageLayers" : [ { "image" : "powerstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "powerstationlit.png:<color>.<frame>" } ],
+      "image" : "powerstation.png:default.<frame>",
+      "imagePosition" : [-44, 0],    
       "direction" : "left",
       "flipImages" : true,
-
-      "imagePosition" : [0, 0],
-      "frames" : 5,
-      "animationCycle" : 2,
-
-      "spaceScan" : 0.1,
+      "spaces" : [
+        [-6, 5],[-5, 5],[-4, 5],[-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5],[3, 5],[4, 5],[5, 5],
+        [-6, 4],[-5, 4],[-4, 4],[-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4],[3, 4],[4, 4],[5, 4],
+        [-6, 3],[-5, 3],[-4, 3],[-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3],[3, 3],[4, 3],[5, 3],
+        [-6, 2],[-5, 2],[-4, 2],[-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],[3, 2],[4, 2],[5, 2],
+        [-6, 1],[-5, 1],[-4, 1],[-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],[3, 1],[4, 1],[5, 1],
+        [-6, 0],[-5, 0],[-4, 0],[-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0],[3, 0],[4, 0],[5, 0]
+      ],
       "anchors" : [ "bottom" ]
     },
     {
-      "imageLayers" : [ { "image" : "powerstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "powerstationlit.png:<color>.<frame>" } ],
+      "image" : "powerstation.png:default.<frame>",
+      "imagePosition" : [-44, 0],    
       "direction" : "right",
+      "spaces" : [
 
-      "imagePosition" : [0, 0],
-      "frames" : 5,
-      "animationCycle" : 2,
-
-      "spaceScan" : 0.1,
+        [-5, 5],[-4, 5],[-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5],[3, 5],[4, 5],[5, 5],
+        [-5, 4],[-4, 4],[-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4],[3, 4],[4, 4],[5, 4],
+        [-5, 3],[-4, 3],[-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3],[3, 3],[4, 3],[5, 3],
+        [-5, 2],[-4, 2],[-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],[3, 2],[4, 2],[5, 2],
+        [-5, 1],[-4, 1],[-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],[3, 1],[4, 1],[5, 1],
+        [-5, 0],[-4, 0],[-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0],[3, 0],[4, 0],[5, 0]
+      ],
       "anchors" : [ "bottom" ]
-    }  
+    }
   ],
-  
-  "scripts" : [ "/scripts/npcToyObject.lua" ],
+
   "npcToy" : {
     "influence" : [
-      "sink",
-      "sinkComplete"
+      "furnace",
+      "furnace",
+      "furnaceComplete"
     ],
     "defaultReactions" : {
-      "sink" : [
-        [1.0, "typing"]
+      "furnace" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
       ],
-      "sinkComplete" : [
-        [1.0, "smile"]
+      "furnaceComplete" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"],
+        [1.0, "pokefire"]
       ]
     },
-    "preciseStandPositionLeft" : [0, 0],
-    "preciseStandPositionRight" : [0, 0],
+    "preciseStandPositionLeft" : [-1.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
     "maxNpcs" : 1
   }
 }

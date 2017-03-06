@@ -1,3 +1,5 @@
+require "/scripts/unifiedGravMod.lua"
+
 function init()
   unifiedGravMod.init()
   self.gravityMod = config.getParameter("gravityMod",0)
@@ -22,8 +24,8 @@ function init()
       autoJump = false,
       reJumpDelay = 0.5
     }
-  }  
 end
+ 
 
 
 

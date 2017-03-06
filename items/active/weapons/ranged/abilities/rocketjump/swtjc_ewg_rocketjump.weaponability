@@ -1,0 +1,73 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "rotationGroup" : "weapon",
+        "emissionRate" : 8,
+        "offsetPart" : "muzzleFlash",
+        "offsetRegion" : [0.5, 1.0, 1.0, 1.5],
+        "particles" : [
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/rocketblast1.ogg", "/sfx/gun/rocketblast2.ogg", "/sfx/gun/rocketblast3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Rocket Jump",
+    "type" : "swtjc_ewg_rocketjump",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "ngravityexplosion",
+    "projectileParameters" : {
+      "knockback" : 60
+    },
+    "elementalConfig" : {
+      "physical" : { "projectileParameters" : { } },
+      "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+      "electric" : { "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+      "ice" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+      "poison" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+      "radioactive" : { "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+      "shadow" : { "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } }      
+    },
+
+    // use baseDps and fireTime from primary fire
+
+    "projectileCount" : 3,
+    "inaccuracy" : 0.1,
+    "baseDps" : 30,
+    "energyUsage" : 30,
+    "fireTime" : 3.0,
+    "fireType" : "auto",
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.4,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

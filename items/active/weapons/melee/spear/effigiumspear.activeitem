@@ -37,21 +37,16 @@
     "fireTime" : 0.92,
     "baseDps" : 9.92,
     "damageConfig" : {
-      "damageSourceKind" : "fushadowdamage",
+      "damageSourceKind" : "shadowspear",
       "statusEffects" : [ "shadowgasfx" ],
       "knockback" : 10
     }
   },
-  "altAbilityType" : "stingflurry",
-  "altAbility" : { 
-      "damageConfig" : {
-      "damageSourceKind" : "fushadowdamage",
-      "statusEffects" : [ "shadowgasfx" ]
-    }
-  },
+  "altAbilityType" : "flurry", //regular flurry uses elemental damagesourcekind and statuseffects
+  "altAbility" : {},
 
-  "critChance" : 5,
-  "critBonus" : 7,
+  "critChance" : 3,
+  "critBonus" : 5,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

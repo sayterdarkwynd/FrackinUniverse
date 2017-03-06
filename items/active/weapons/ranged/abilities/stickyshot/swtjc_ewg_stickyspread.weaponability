@@ -1,0 +1,80 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [-0.75, -0.375],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0.75, -0.125],
+          "image" : "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+        }
+      }
+    }},
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "rotationGroup" : "weapon",
+        "emissionRate" : 8,
+        "offsetPart" : "muzzleFlash",
+        "offsetRegion" : [0.5, 1.0, 1.0, 1.5],
+        "particles" : [
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade2.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Sticky Bomb Spread",
+    "type" : "swtjc_ewg_stickyspread",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "stickybullet",
+    "projectileParameters" : {
+      "speed" : 100,
+      "timeToLive" : [3.5, 4.5]
+    },
+    "elementalConfig" : {
+      "physical" : { "projectileParameters" : { } },
+      "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+      "electric" : { "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+      "ice" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+      "poison" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+      "radioactive" : { "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+      "shadow" : { "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } }
+    },
+
+    "baseDps" : 15,
+    "energyUsage" : 70,
+    "inaccuracy" : 0.08,
+    "fireType" : "auto",
+    "projectileCount" : 10,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.2,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

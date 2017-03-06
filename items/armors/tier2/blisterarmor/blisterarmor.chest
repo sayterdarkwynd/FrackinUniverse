@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Blister-pod derived armor. Proto-immune. Glows.",
+  "description" : "Set Bonus:
+^cyan;Immune: Poison, Proto Poison. +25% Poison Resist^reset;
+^green;Emits a purple glow^reset;",
   "shortdescription" : "Blister Chest",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
@@ -41,9 +43,11 @@
     {
       "stat" : "maxHealth",
       "amount" : 15
-    },
-    "protoimmunity",
-   "glowpurple"
-  ],
-    "questTags" : [ "tier4armor" ]
+    },    
+    "blistersetbonus",
+    {
+      "stat" : "fu_blisterset_chest",
+      "amount" : 1
+    }  
+  ]
 }

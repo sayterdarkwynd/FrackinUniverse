@@ -1,0 +1,83 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [-0.75, -0.375],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0.75, -0.125],
+          "image" : "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+        }
+      }
+    }},
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "transformationGroups" : ["muzzle"],
+        "emissionRate" : 8,
+        "offsetRegion" : [0.0, 0.0, 0.0, 0.0],
+        "particles" : [
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"},
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade2.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Explosive Spread",
+    "type" : "swtjc_ewg_explosivespread",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "explosivebullet",
+    "elementalConfig" : {
+      "physical" : { "projectileParameters" : { } },
+      "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+      "electric" : { "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+      "ice" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+      "poison" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+      "radioactive" : { "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+      "shadow" : { "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } }      
+    },
+
+    // use baseDps and fireTime from primary fire
+
+    "baseDps" : 15,
+    "energyUsage" : 61.25,
+    "inaccuracy" : 0.08,
+    "fireType" : "auto",
+    "projectileCount" : 10,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

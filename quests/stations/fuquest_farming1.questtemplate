@@ -1,8 +1,8 @@
 {
   "id" : "fuquest_farming1",
   "title" : "^cyan;Feeling Thirsty?",
-  "text" : "A ^orange;Well^reset; is extremely important, for it provides life-giving water for numerous purposes. Build one at a ^orange;Foraging Table^reset;.",
-  "completionText" : "Water in wells will gradually increase. When you have 100 or more, you can harvest buckets of water. These can be used in crafting, thrown to create lakes or placed in a Hydroponics Tray.",
+  "text" : "A ^orange;Well^reset; is extremely important, for it provides life-giving water for numerous purposes. Build one at a ^orange;Foraging Table^reset;. Once it fills for a bit, you can ^green;Harvest some water^reset;",
+  "completionText" : "Water in wells will gradually increase. When you have 100 or more, you can harvest water. These can be used in crafting, thrown to create lakes or placed in a Hydroponics Tray.",
   "rewards" : [
     [ [ "henegg", 1] ]
   ],
@@ -21,7 +21,13 @@
         "itemName" : "farmwell",
         "count" : 1,
         "consume" : false
-      }
+      },
+      {
+        "type" : "gatherItem",
+        "itemName" : "liquidwater",
+        "count" : 1,
+        "consume" : false
+      }      
     ]
   }
 }

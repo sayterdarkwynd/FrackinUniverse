@@ -3,23 +3,16 @@
   "rarity" : "Common",
   "price" : 5,
   "inventoryIcon" : "mireurchin.png",
-  "description" : "Move slower, but carry a great shield",
+  "description" : "Effect:
+^cyan;Ice and Electric Resistance^reset;",
   "shortdescription" : "Mire Urchin",
   "category" : "food",
 
   "effects" : [ [
-      {
-        "effect" : "runboost",
-        "amount" : "-0.15",
-        "duration" : 120
-      },
-      {
-        "effect" : "staticshield",
-        "amount" : "1.00",
-        "duration" : 120
-      }
+      "electricblock", "iceblock"
     ] ],
   "blockingEffects" : [
-    "runboost", "staticshield"
+    "electricblock", 
+    "iceblock"
   ]
 }

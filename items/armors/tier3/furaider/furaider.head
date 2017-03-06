@@ -4,11 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Might not make you friends, but it does make you deadly.",
+  "description" : "Set Bonus:
+^#c74eff;Grounded^reset; : +15% Machine Pistol Damage, +20% Dagger Crit Damage
+^green;Overcharge^reset; : +20% Speed", 
   "shortdescription" : "Raider Hood",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-"level" : 4,
+"level" : 3,
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
@@ -16,7 +18,7 @@
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.65
+      "baseMultiplier" : 1.55
     },
 
     {
@@ -26,14 +28,18 @@
 
     {
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 9
     },
 
     {
       "stat" : "maxHealth",
       "amount" : 9
-    },    
-    "radiationburnimmunity"
+    },      
+    "raidersetbonus",
+    {
+      "stat" : "fu_raiderset_head",
+      "amount" : 1
+    }
   ],
 
  "colorOptions" : [

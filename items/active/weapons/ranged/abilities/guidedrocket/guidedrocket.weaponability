@@ -1,0 +1,108 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.075, 1.10],
+          "transformationGroups" : ["weapon"],
+          "image" : "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+        }
+      }
+    }},
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "transformationGroups" : ["muzzle"],
+        "offsetPart" : "muzzleFlash",
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff" }
+        ]
+      }
+    },
+    "lights" : {
+      "laser" : {
+        "transformationGroups" : ["muzzle"],
+        "active" : true,
+        "position" : [0.5, 1.10],
+        "color" : [90, 0, 90]
+      }
+    },
+    "sounds" : {
+      "physicalGuided" : [ "/sfx/gun/rocket2.ogg" ],
+      "fireGuided" : [ "/sfx/gun/rocket_fire1.ogg" ],
+      "iceGuided" : [ "/sfx/gun/rocket_ice1.ogg" ],
+      "electricGuided" : [ "/sfx/gun/rocket_electric1.ogg" ],
+      "poisonGuided" : [ "/sfx/gun/rocket_poison1.ogg" ],
+      "radioactiveGuided" : [ "/sfx/gun/rocket_ice1.ogg" ],
+      "shadowGuided" : [ "/sfx/gun/rocket_ice1.ogg" ],
+      "cosmicGuided" : [ "/sfx/gun/rocket_electric1.ogg" ]       
+    }
+  },
+  "animationScripts" : [
+    "/items/active/effects/laserbeam.lua"
+  ],
+  "scriptedAnimationParameters" : {
+    "beams" : [
+      {
+        "offset" : [0.45, 1.10],
+        "color" : [255, 0, 255, 128],
+        "length" : 60,
+        "segments" : 6,
+        "angle" : 0
+      }
+    ]
+  },
+
+  "ability" : {
+    "name" : "Slow Guided Rocket",
+    "type" : "guidedrocket",
+    "scripts" : ["/items/active/weapons/ranged/abilities/guidedrocket/guidedrocket.lua"],
+    "class" : "GuidedRocket",
+
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "guidedrocket" },
+      "fire" : { "projectileType" : "fireguidedrocket" },
+      "electric" : { "projectileType" : "electricguidedrocket" },
+      "ice" : { "projectileType" : "iceguidedrocket" },
+      "poison" : { "projectileType" : "poisonguidedrocket" },
+      "radioactive" : { "projectileType" : "radioactiveguidedrocket" },   
+      "shadow" : { "projectileType" : "shadowguidedrocket" },  
+      "cosmic" : { "projectileType" : "cosmicguidedrocket" }        
+    },
+    "projectileParameters" : {
+      "acceleration" : 20,
+      "maxTrackingAngle" : 3.14
+    },
+    "projectileCount" : 1,
+    "inaccuracy" : 0.01,
+    "baseDps" : 5,
+    "energyUsage" : 60,
+    "fireTime" : 4.0,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  }
+}

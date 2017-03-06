@@ -27,10 +27,10 @@
       "knockbackRange" : [35, 50]
     }
   },
-  
-  "critChance" : 3,
-  "critBonus" : 4, 
-  
+
+  "critChance" : 1,
+  "critBonus" : 4,
+
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "qsnames.config:nameGen",
@@ -38,7 +38,10 @@
       "fire",
       "ice",
       "electric",
-      "poison"
+      "poison",
+      "shadow",
+      "radioactive",
+      "cosmic"
     ],
     "elementalConfig" : {
       "fire" : {
@@ -52,6 +55,15 @@
       },
       "electric" : {
         "fireSounds" : [ [ "/sfx/melee/swing_spear_electric1.ogg", "/sfx/melee/swing_spear_electric2.ogg", "/sfx/melee/swing_spear_electric3.ogg" ] ]
+      },
+      "shadow" : {
+        "fireSounds" : [ [ "/sfx/melee/swing_spear_poison1.ogg", "/sfx/melee/swing_spear_poison2.ogg", "/sfx/melee/swing_spear_poison3.ogg" ] ]
+      },
+      "radioactive" : {
+        "fireSounds" : [ [ "/sfx/melee/swing_spear_poison1.ogg", "/sfx/melee/swing_spear_poison2.ogg", "/sfx/melee/swing_spear_poison3.ogg" ] ]
+      },
+      "cosmic" : {
+        "fireSounds" : [ [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ] ]
       }
     },
     "animationParts" : {

@@ -1,11 +1,14 @@
 require "/scripts/util.lua"
+require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
 
 Flurry = WeaponAbility:new()
 
+--well this ability is unique
 function Flurry:init()
   self.cooldownTimer = self.cooldownTime
   self:reset()
+  self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
 end
 
 function Flurry:update(dt, fireMode, shiftHeld)
@@ -17,7 +20,7 @@ function Flurry:update(dt, fireMode, shiftHeld)
     and self.cooldownTimer == 0
     and not status.resourceLocked("energy")
     and self.fireMode == "alt" then
-    
+
     self:setState(self.swing)
   end
 end
@@ -35,6 +38,24 @@ function Flurry:swing()
 
     animator.setAnimationState("swoosh", "fire")
     animator.playSound("flurry")
+
+    local aimAngle = self.weapon.aimAngle
+    local weaponRotation = util.toRadians(self.cycleRotationOffsets[currentRotationOffset])
+    local direction = vec2.rotate({mcontroller.facingDirection() * math.cos(aimAngle), math.sin(aimAngle)},weaponRotation)
+
+    local pParams = copy(self.projectileParameters)
+    pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier")
+    pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+
+    world.spawnProjectile(
+      self.projectileType,
+      vec2.add(mcontroller.position(), activeItem.handPosition(animator.partPoint("blade", "focalPoint"))),
+      activeItem.ownerEntityId(),
+      direction,
+      false,
+      pParams
+    )
+
     util.wait(self.stances.swing.duration, function(dt)
       local damageArea = partDamageArea("swoosh")
       self.weapon:setDamage(self.damageConfig, damageArea)
@@ -61,4 +82,12 @@ end
 
 function Flurry:uninit()
   self:reset()
+end
+
+function Flurry:projectileSource()
+
+end
+
+function Flurry:fireDirection()
+
 end

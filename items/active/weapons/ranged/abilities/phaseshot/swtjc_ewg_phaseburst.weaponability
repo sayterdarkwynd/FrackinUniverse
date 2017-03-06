@@ -1,0 +1,145 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [-0.75, -0.375],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0.75, -0.125],
+          "image" : "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+        }
+      }
+    }},
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0, 0, 0, 0],
+        "particles" : [
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/dragonhead_fire1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Phase Burst",
+    "type" : "swtjc_ewg_phaseburst",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "shortbeam",
+    "projectileParameters" : {
+      "knockbackRange" : [10, 20],
+      "piercing" : true
+    },
+    "elementalConfig" : {
+      "physical" : {
+        "projectileParameters" : {
+          "damageKind" : "standardbullet",
+          "lightColor" : [255, 255, 128],
+          "emitters" : [ "plasma1", "defaultyellow", "plasma1", "defaultyellow", "plasma1", "defaultyellow"  ]
+        }
+      },
+      "fire" : {
+        "projectileParameters" : {
+          "damageKind" : "fire",
+          "lightColor" : [255, 128, 0],
+          "emitters" : [ "fireplasma", "defaultorange", "fireplasma", "defaultorange", "fireplasma", "defaultorange"  ],
+          "statusEffects" : [ "burning" ]
+        }
+      },
+      "electric" : {
+        "projectileParameters" : {
+          "damageKind" : "electric",
+          "lightColor" : [128, 0, 255],
+          "emitters" : [ "electricplasma", "defaultblue", "electricplasma", "defaultblue", "electricplasma", "defaultblue"  ],
+          "statusEffects" : [ "electrified" ]
+        }
+      },
+      "ice" : {
+        "projectileParameters" : {
+          "damageKind" : "ice",
+          "lightColor" : [0, 128, 255],
+          "emitters" : [ "iceplasma", "defaultwhite", "iceplasma", "defaultwhite", "iceplasma", "defaultwhite"  ],
+          "statusEffects" : [ "frostslow" ]
+        }
+      },
+      "poison" : {
+        "projectileParameters" : {
+          "damageKind" : "poison",
+          "lightColor" : [0, 255, 0],
+          "emitters" : [ "poisonplasma", "defaultgreen", "poisonplasma", "defaultgreen", "poisonplasma", "defaultgreen"  ],
+          "statusEffects" : [ "weakpoison" ]
+        }
+      },
+      "radioactive" : {
+        "projectileParameters" : {
+          "damageKind" : "poison",
+          "lightColor" : [155, 255, 0],
+          "emitters" : [ "radioactiveplasma", "defaultgreen", "radioactiveplasma", "defaultgreen", "radioactiveplasma", "defaultgreen"  ],
+          "statusEffects" : [ "weakpoison" ]
+        }
+      },
+      "shadow" : {
+        "projectileParameters" : {
+          "damageKind" : "poison",
+          "lightColor" : [26, 26, 26],
+          "emitters" : [ "shadowsmoke2", "defaultgreen", "shadowsmoke2", "defaultgreen", "shadowsmoke2", "defaultgreen"  ],
+          "statusEffects" : [ "weakpoison" ]
+        }
+      },
+      "cosmic" : {
+        "projectileParameters" : {
+          "damageKind" : "poison",
+          "lightColor" : [199, 45, 120],
+          "emitters" : [ "plasmaflamemonster", "defaultgreen", "plasmaflamemonster", "defaultgreen", "plasmaflamemonster", "defaultgreen"  ],
+          "statusEffects" : [ "weakpoison" ]
+        }
+      }
+    },
+
+    // use baseDps and fireTime from primary fire
+
+    "projectileCount" : 10,
+    "inaccuracy" : 0.08,
+    "baseDps" : 15,
+    "energyUsage" : 50,
+    "fireTime" : 0.5,
+    "fireType" : "auto",
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.40,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

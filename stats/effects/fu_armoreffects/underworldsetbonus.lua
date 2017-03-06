@@ -1,9 +1,14 @@
+setName="fu_underworldset"
+setStatEffects={"underworldsetbonuseffect"}
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-    setBonusInit("fu_underworldset", {
-      {stat = "electricResistance", baseMultiplier = 1.10},
-      {stat = "physicalResistance", baseMultiplier = 1.10},
-      {stat = "critBonus", baseMultiplier = 1.15}
-    })        
+	setSEBonusInit(setName,setStatEffects)
+end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
 end

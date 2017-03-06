@@ -72,7 +72,7 @@ function setCritDamageBoomerang(damage)
      
   if heldItem then
       if root.itemHasTag(heldItem, "magnorb") then
-        self.critChance = 4 + weaponModifier
+        self.critChance = 1 + weaponModifier
       end
   end
     --sb.logInfo("crit chance base="..self.critChance)

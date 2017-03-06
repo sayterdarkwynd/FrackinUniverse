@@ -1,0 +1,150 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "transformationGroups" : ["muzzle"],
+        "offsetPart" : "muzzleFlash",
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff" }
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade2.ogg" ],
+      "targetAcquired" : [ "/sfx/interface/rocket_lockon2.ogg" ]
+    }
+  },
+  "animationScripts" : [
+    "/items/active/weapons/ranged/abilities/homingrocket/homingrocketanimation.lua"
+  ],
+
+  "ability" : {
+    "name" : "Slow Homing Rocket",
+    "type" : "homingrocket",
+    "scripts" : ["/items/active/weapons/ranged/abilities/homingrocket/homingrocket.lua"],
+    "class" : "HomingRocketAttack",
+
+    "projectileType" : "homingrocket",
+    "projectileParameters" : {
+      "physics" : "rocket",
+      "controlForce" : 150,
+      "maxSpeed" : 30
+    },
+    "elementalConfig" : {
+      "physical" : {
+        "projectileParameters" : {
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+            }
+          ]
+        }
+      },
+      "fire" : {
+        "projectileParameters" : {
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "electric" : {
+        "projectileParameters" : {
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "ice" : {
+        "projectileParameters" : {
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "poison" : {
+        "projectileParameters" : {
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/poisonexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "radioactive" : {
+        "projectileParameters" : {
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/radioactiveexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "shadow" : {
+        "projectileParameters" : {
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/shadowexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "cosmic" : {
+        "projectileParameters" : {
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/cosmicexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      }      
+    },
+    "projectileCount" : 1,
+    "inaccuracy" : 0.01,
+    "baseDps" : 7.5,
+    "energyUsage" : 60,
+    "fireTime" : 4.0,
+
+    "queryRange" : 50,
+    "rocketWindupTime" : 0.01,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

@@ -17,20 +17,31 @@ function FlipSlash:update(dt, fireMode, shiftHeld)
   if not self.weapon.currentAbility
      and self.cooldownTimer == 0
      and self.fireMode == "alt"
-
      and not status.statPositive("activeMovementAbilities")
      and status.overConsumeResource("energy", self.energyUsage) then
-
-    self:setState(self.windup)
+    if mcontroller.onGround() then self:setState(self.windupground)
+    else self:setState(self.windupair) end
   end
 end
 
-function FlipSlash:windup()
+function FlipSlash:windupground()
   self.weapon:setStance(self.stances.windup)
 
   status.setPersistentEffects("weaponMovementAbility", {{stat = "activeMovementAbilities", amount = 1}})
 
   util.wait(self.stances.windup.duration, function(dt)
+      mcontroller.controlCrouch()
+    end)
+
+  self:setState(self.flip)
+end
+
+function FlipSlash:windupair()
+  self.weapon:setStance(self.stances.windup)
+
+  status.setPersistentEffects("weaponMovementAbility", {{stat = "activeMovementAbilities", amount = 1}})
+
+  util.wait(self.stances.windup.duration/4, function(dt)
       mcontroller.controlCrouch()
     end)
 
@@ -54,10 +65,12 @@ function FlipSlash:flip()
     self.flipTimer = self.flipTimer + self.dt
 
     mcontroller.controlParameters(self.flipMovementParameters)
+    mcontroller.controlModifiers({speedModifier=100.0})
+    mcontroller.controlModifiers({runningSuppressed=true})
 
     if self.jumpTimer > 0 then
       self.jumpTimer = self.jumpTimer - self.dt
-      mcontroller.setVelocity({self.jumpVelocity[1] * self.weapon.aimDirection, self.jumpVelocity[2]})
+      mcontroller.setYVelocity(self.jumpVelocity[2])
     end
 
     local damageArea = partDamageArea("swoosh")
@@ -75,7 +88,6 @@ function FlipSlash:flip()
   animator.setParticleEmitterActive("flip", false)
   self.cooldownTimer = self.cooldownTime
 end
-
 
 function FlipSlash:uninit()
   status.clearPersistentEffects("weaponMovementAbility")

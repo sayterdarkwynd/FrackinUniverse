@@ -1,11 +1,14 @@
+setName="fu_xenoset"
+setStatEffects={"xenosetbonuseffect"}
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setBonusInit("fu_xenoset", {
-		{stat = "biomeheatImmunity", amount = 1},
-		{stat = "biomecoldImmunity", amount = 1},
-		{stat = "biomeradiationImmunity", amount = 1},
-		{stat = "wetImmunity", amount = 1},
-		{stat = "physicalResistance", baseMultiplier = 0.20}
-	})
+	setSEBonusInit(setName,setStatEffects)
+end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
 end

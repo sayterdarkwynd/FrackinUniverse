@@ -1,0 +1,97 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0, 0, 0, 0],
+        "particles" : [
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/shotgun1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Reb. Piercing Spread",
+    "type" : "swtjc_ewg_bouncingpiercingspread",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "piercing" : true,
+      "bounces" : 3,
+      "speed" : 100,
+      "actionOnCollide" : [
+        {
+          "action" : "sound",
+          "options" : [
+            "/sfx/projectiles/bullet_ricochet1.ogg",
+            "/sfx/projectiles/bullet_ricochet2.ogg",
+            "/sfx/projectiles/bullet_ricochet3.ogg",
+            "/sfx/projectiles/bullet_ricochet4.ogg",
+            "/sfx/projectiles/bullet_ricochet5.ogg",
+            "/sfx/projectiles/bullet_ricochet6.ogg",
+            "/sfx/projectiles/bullet_ricochet7.ogg",
+            "/sfx/projectiles/bullet_ricochet8.ogg",
+            "/sfx/projectiles/bullet_ricochet9.ogg",
+            "/sfx/projectiles/bullet_ricochet10.ogg",
+            "/sfx/projectiles/bullet_ricochet11.ogg",
+            "/sfx/projectiles/bullet_ricochet12.ogg",
+            "/sfx/projectiles/bullet_ricochet13.ogg"
+          ]
+        }
+      ]
+    },
+    "elementalConfig" : {
+      "physical" : { "projectileParameters" : { } },
+      "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+      "electric" : { "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+      "ice" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+      "poison" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+      "radioactive" : { "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+      "shadow" : { "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } }      
+    },
+
+    // use baseDps and fireTime from primary fire
+
+    "baseDps" : 15,
+    "energyUsage" : 87.5,
+    "inaccuracy" : 0.08,
+    "fireType" : "auto",
+    "projectileCount" : 10,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

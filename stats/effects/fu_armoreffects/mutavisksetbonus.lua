@@ -8,6 +8,6 @@ function init()
 		{stat = "radiationburnImmunity", amount = 1},
 		{stat = "biomeradiationImmunity", amount = 1},
 		{stat = "fallDamageMultiplier", effectiveMultiplier = 0.5},
-                {stat = "radioactiveResistance", baseMultiplier = 0.35}
+                {stat = "radioactiveResistance", amount = 0.35}
 	})
 end
