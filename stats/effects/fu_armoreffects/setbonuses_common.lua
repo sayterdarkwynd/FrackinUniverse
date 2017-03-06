@@ -72,7 +72,8 @@ end
 function setBonusMultiply(effectBase,mult)
 	local temp={}
 	for _,v in pairs(effectBase) do
-		v[2]=v[2]*mult
+	
+		v["amount"]=v["amount"]*mult
 		table.insert(temp,v)
 	end
 	return temp
