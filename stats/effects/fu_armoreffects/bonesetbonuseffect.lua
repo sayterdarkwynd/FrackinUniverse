@@ -4,12 +4,12 @@ armorBonus2={
 	{stat = "maxHealth", baseMultiplier = 1.10},
 	{stat = "powerMultiplier", baseMultiplier = 1.05},
 	{stat = "physicalResistance", amount = 0.05},
-	{stat = "fallDamageMultiplier", baseMultiplier = 0.25}
+	{stat = "fallDamageMultiplier", baseMultiplier = 0.875}
 }
 
 armorBonus={
 	{stat = "maxHealth", baseMultiplier = 1.05},
-	{stat = "fallDamageMultiplier", baseMultiplier = 0.25}
+	{stat = "fallDamageMultiplier", baseMultiplier = 0.875}
 }
 
 setName="fu_boneset"

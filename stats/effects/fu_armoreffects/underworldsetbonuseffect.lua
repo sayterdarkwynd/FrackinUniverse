@@ -3,10 +3,6 @@ setName="fu_underworldset"
 weaponEffect={
     {stat = "critChance", amount = 6}
 }
-
-weaponEffect2={
-    {stat = "critChance", amount = 12}
-}
   
 armorBonus={
     {stat = "electricResistance", amount = 0.15},
@@ -31,9 +27,10 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("either",{"rifle"}) or weaponCheck("both",{"pistol","machinepistol"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
-	elseif weaponCheck("either",{"pistol","machinepistol"}) then
+	local weapons=weaponCheck({"rifle","pistol","machinepistol"})
+	if weapons["twoHanded"] or weapons["both"] then
+		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,2))
+	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

@@ -1,12 +1,9 @@
 setName="fu_stalwartset"
 
 weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.075}
+    {stat = "powerMultiplier", amount = 0.075}
   }
-weaponEffect2={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
-  
+
 armorBonus={
     {stat = "fireResistance", amount = 0.15}
 }
@@ -29,9 +26,10 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("both",{"spear","shortspear"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
-	elseif weaponCheck("either",{"spear","shortspear"}) then
+	local weapons=weaponCheck({"spear","shortspear"})
+	if weapons["both"] then
+		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,2))
+	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
