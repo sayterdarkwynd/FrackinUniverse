@@ -38,39 +38,15 @@
       "fleeActions" : [ ],
 
       "hostileActions" : [
-        {
-         "name" : "action-fire",
-          "cooldown" : 1.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 30,
-            "minimumRange" : 15,
-            "windupState" : "firewindup",
-            "windupTime" : 0.5,
-            "projectileType" : "eyejellyblock",
-            "power" : 5,
-            "speed" : 5,
-            "fireOffset" : [0, -4],
-            "aimAtTarget" : true,
-            "onGround" : false,
-            "fireState" : "fire",
-            "fireSound" : "fire",
-            "fireDelay" : 0.25,
-            "fireArc": true,
-            "rotateAim" : false,
-            "projectileSpeed": 50,
-            "gravityMultiplier": 0.6,
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.5
-          }
-        },
+
         {
           "name" : "action-fire",
-          "cooldown" : 3.5,
+          "cooldown" : 0.5,
           "parameters" : {
             "requireLineOfSight" : false,
-            "maximumRange" : 20,
-            "minimumRange" : 5,
+            "maximumRange" : 30,
+            "minimumRange" : 2,
+	    "maxXRange" : 10,
             "windupState" : "firewindup",
             "windupTime" : 0.5,
             "projectileType" : "eyejellybubblestart",
@@ -87,6 +63,36 @@
             "winddownState" : "firewinddown",
             "winddownTime" : 0.5
           }
+        },
+        {
+         "name" : "action-fire",
+          "cooldown" : 3.5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 21,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+            "projectileType" : "eyejellyblock",
+	    "highArc" : true,
+            "power" : 5,
+            "speed" : 5,
+	    "faceTarget" : false,
+            "fireOffset" : [0, -4],
+	    "aimDirection" : [0, 1],
+	    //"rotateToTarget" : true,
+	    //"rotateAim" : true,
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+            "fireDelay" : 0.25,
+            "fireArc": true,
+            "projectileSpeed": 25,
+            "gravityMultiplier": 0.6,
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.5
+          }
         }
       ],
 
@@ -97,8 +103,8 @@
           "name" : "approach-fly",
           "parameters" : {
             "targetOffset" : [0,8],
-            "minRange" : 5,
-            "maxRange" : 20
+            "minRange" : 10,
+            "maxRange" : 15
           }
         }
       ],
