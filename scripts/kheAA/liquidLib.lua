@@ -48,6 +48,9 @@ function liquidLib.init()
 	if storage.liquids == nil then
 		storage.liquids = {};
 	end
+	if storage.liquidOuts == nil then
+		storage.liquidOuts = {};
+	end
 end
 
 function liquidLib.itemToLiquidId(item)
@@ -92,7 +95,8 @@ function liquidLib.canReceiveLiquid()
 end
 
 function liquidLib.receiveLiquid(liquid)
-	storage.liquids[liquid[1]]=storage.liquids[liquid[1]]+liquid[2]
+	if not storage.liquids then storage.liquids={} end
+	storage.liquids[liquid[1]]=(storage.liquids[liquid[1]] or 0)+liquid[2]
 end
 
 
@@ -152,3 +156,29 @@ function liquidLib.tryConsumeLiqitem(item)
 	return true
 end
 
+function liquidLib.update(dt)
+	storage.liquidOuts={}
+	local tempList=object.getOutputNodeIds(outLiquidNode)
+	if tempList then
+		for id,node in pairs(tempList) do
+			local result=world.callScriptedEntity(id,"liquidLib.canReceiveLiquid")
+			if result then
+				storage.liquidOuts[id]=world.entityPosition(id)
+			end
+		end
+	end
+end
+
+
+function liquidLib.die()
+	if storage.liquids then
+		for id,count in pairs(storage.liquids) do
+			local liquid=liquidLib.liquidToItem(id,count)
+			if liquid then
+				world.spawnItem(liquid,entity.position())
+			else
+				world.spawnLiquid(entity.position(),id,count)
+			end
+		end
+	end
+end
