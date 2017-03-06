@@ -4,17 +4,19 @@ end
 
 function scanButton()
 	local items=world.containerItems(entity.id())
+	if not items then return end
 	for index,invItem in pairs(items)do
-		item=loadMonster(invItem)
-		if not item then return end
+		invItem=loadMonster(invItem)
+		if not invItem then return end
 		world.containerTakeAt(entity.id(),index-1)
-		world.containerPutItemsAt(entity.id(),item,index-1)
+		world.containerPutItemsAt(entity.id(),invItem,index-1)
 	end
 end
 
 function loadMonster(invItem)
 	local imgData={}
 	local buffer={}
+	if not invItem.parameters.pets then return end
 	for _,pet in pairs(invItem.parameters.pets) do
 		if isGenerated(pet.config.type) then return end
 		imgData=root.monsterPortrait(pet.config.type)
@@ -44,9 +46,6 @@ function isGenerated(type)
 	if type=="largefish" then return true end
 	if type=="smallbiped" then return true end
 	if type=="largebiped" then return true end
-
-
-
 
 	return false
 end
