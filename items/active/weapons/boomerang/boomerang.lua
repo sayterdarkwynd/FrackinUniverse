@@ -41,7 +41,7 @@ function setCritDamageBoomerang(damage)
      local weaponModifier = config.getParameter("critChance",0)
      
   if heldItem then
-      if root.itemHasTag(heldItem, "boomerang") or root.itemHasTag(heldItem, "boomerang") then
+     if root.itemHasTag(heldItem, "boomerang") or root.itemHasTag(heldItem, "chakram") then
         self.critChance = 0.35 + weaponModifier
       end
   end
