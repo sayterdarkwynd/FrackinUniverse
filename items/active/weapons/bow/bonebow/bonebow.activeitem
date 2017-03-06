@@ -21,7 +21,7 @@
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "bow" : { "properties" : {
-      "offset" : [0.25, 0.125]
+      "offset" : [0.25, 0]
     }}}},
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
@@ -35,21 +35,23 @@
   "primaryAbilityType" : "bowshot",
   "primaryAbility" : {
     "fireOffset" : [1.75, 0.125],
+	"drawFrameSelector" : "bowImageSelector",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
     "projectileType" : "bonearrow",
     "powerProjectileType" : "chargedbonearrow",
     "projectileParameters" : {
-      "power" : 4.5
+      "power" : 5.0
     }
   },
 
   "altAbilityType" : "tripleshot",
   "altAbility" : {
     "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelectorNoPower",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "bonearrow",
+    "projectileType" : "chargedbonearrow",
     "projectileParameters" : {
-      "power" : 3.0
+      "power" : 5.0
     },
     "splitDelay" : 0.04,
     "splitAngle" : 5
