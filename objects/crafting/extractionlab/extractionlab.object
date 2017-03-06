@@ -6,7 +6,7 @@
   "category" : "crafting",
   "printable" : false,
   "objectType" : "container",
-  "learnBlueprintsOnPickup" : [ "extractionlabadv" ], 
+  "learnBlueprintsOnPickup" : [ "extractionlabadv" ],
   "pickupQuestTemplates" : [ "fuquest_extractor" ],
   "price" : 450,
   "inventoryIcon" : "extractionlabicon.png",
@@ -18,7 +18,9 @@
       "imageLayers" : [ { "image" : "extractionlab.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlablit.png:<color>.<frame>" } ],
       "direction" : "left",
       "flipImages" : true,
-
+      "animationParts" : {
+          "samplingarrayanim" : "extractionlab.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
       "animationCycle" : 2,
@@ -29,7 +31,9 @@
     {
       "imageLayers" : [ { "image" : "extractionlab.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlablit.png:<color>.<frame>" } ],
       "direction" : "right",
-
+      "animationParts" : {
+          "samplingarrayanim" : "extractionlab.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
       "animationCycle" : 2,
@@ -41,7 +45,9 @@
       "imageLayers" : [ { "image" : "extractionlab_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlab_rooflit.png:<color>.<frame>" } ],
       "direction" : "left",
       "flipImages" : true,
-
+      "animationParts" : {
+          "samplingarrayanim" : "extractionlab_roof.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
       "animationCycle" : 2,
@@ -52,14 +58,16 @@
     {
       "imageLayers" : [ { "image" : "extractionlab_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlab_rooflit.png:<color>.<frame>" } ],
       "direction" : "right",
-
+      "animationParts" : {
+          "samplingarrayanim" : "extractionlab_roof.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
       "animationCycle" : 2,
       "collision" : "platform",
       "spaceScan" : 0.1,
       "anchors" : [ "top" ]
-    } 
+    }
   ],
 
   "animation" : "extractionlab.animation",
@@ -78,7 +86,7 @@
 
   "outputNodes" : [ [0, 1] ],
   "inputNodes" : [ [0, 0] ],
-  
+
   "npcToy" : {
     "influence" : [
       "sink",
@@ -101,4 +109,3 @@
   "fu_stationTechLevel" : 1,
   "fu_timerMod" : 4
 }
-

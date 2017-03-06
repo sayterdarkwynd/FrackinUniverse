@@ -15,12 +15,14 @@
   "shortdescription" : "^cyan;Quantum Extractor^reset;",
   "subtitle" : "Resource converter",
   "orientations" : [
-    
+
      {
       "imageLayers" : [ { "image" : "quantumextractor.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractorlit.png:<color>.<frame>" } ],
       "direction" : "left",
       "flipImages" : true,
-
+      "animationParts" : {
+          "samplingarrayanim" : "quantumextractor.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
       "animationCycle" : 2,
@@ -31,7 +33,9 @@
     {
       "imageLayers" : [ { "image" : "quantumextractor.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractorlit.png:<color>.<frame>" } ],
       "direction" : "right",
-
+      "animationParts" : {
+          "samplingarrayanim" : "quantumextractor.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
       "animationCycle" : 2,
@@ -43,7 +47,9 @@
       "imageLayers" : [ { "image" : "quantumextractor_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractor_rooflit.png:<color>.<frame>" } ],
       "direction" : "left",
       "flipImages" : true,
-
+      "animationParts" : {
+          "samplingarrayanim" : "quantumextractor_roof.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
       "animationCycle" : 2,
@@ -54,21 +60,23 @@
     {
       "imageLayers" : [ { "image" : "quantumextractor_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractor_rooflit.png:<color>.<frame>" } ],
       "direction" : "right",
-
+      "animationParts" : {
+          "samplingarrayanim" : "quantumextractor_roof.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
       "animationCycle" : 2,
       "collision" : "platform",
       "spaceScan" : 0.1,
       "anchors" : [ "top" ]
-    } 
+    }
   ],
 
   "animation" : "/objects/power/quantumextractor/quantumextractor.animation",
   "animationParts" : {
     "samplingarrayanim" : "quantumextractor.png"
   },
-  
+
 
   "isn_powerReciever" : true,
   "isn_requiredPower" : 5,
@@ -76,18 +84,18 @@
   "fu_mintick" : 0,
   "fu_stationTechLevel" : 3,
   "fu_timerMod" : 1,
-  
+
   "outputNodes" : [ [0, 1] ],
   "inputNodes" : [ [0, 0] ],
-  
-  "scripts" : [ 
+
+  "scripts" : [
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua",
 		"/objects/generic/extractionlab_common.lua"
    	      ],
-   	      
+
   "scriptDelta" : 5,
-  
+
   "recipeGroup" : "quantumextractor",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
   "slotCount" : 12,
