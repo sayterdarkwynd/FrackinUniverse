@@ -24,7 +24,8 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("either",{"shotgun","assaultrifle"}) then
+	local weapons=weaponCheck({"shotgun","assaultrifle"})
+	if weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

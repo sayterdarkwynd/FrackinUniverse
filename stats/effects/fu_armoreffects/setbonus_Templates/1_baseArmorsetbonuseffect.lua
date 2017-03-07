@@ -39,7 +39,8 @@ function update(dt)
 end
 
 function myFunction()
-	if weaponCheck("either",{"axe","hammer"}) then   -- weaponCheck is run in setbonuses core file)
+	local weapons=weaponCheck({"axe","hammer"})
+	if weapon["either"] then   -- weaponCheck is run in setbonuses core file)
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

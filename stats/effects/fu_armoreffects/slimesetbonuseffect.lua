@@ -2,11 +2,7 @@ setName="fu_slimeset"
 
 weaponEffect={
     {stat = "critChance", amount = 6},
-    {stat = "powerMultiplier", baseMultiplier = 1.10}
-}
-weaponEffect2={
-    {stat = "critChance", amount = 12},
-    {stat = "powerMultiplier", baseMultiplier = 1.20}
+    {stat = "powerMultiplier", amount = 0.10}
 }
 
 armorBonus={
@@ -39,9 +35,10 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("both",{"slime"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
-	elseif weaponCheck("either",{"slime"}) then
+	local weapons=weaponCheck({"slime"})
+	if weapons["both"] then
+		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,2))
+	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

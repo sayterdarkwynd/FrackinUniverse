@@ -49,7 +49,8 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("either",{"dagger"}) then--set both for dual wield required, or leave as is for "if any hand, do."
+local weapons=weaponCheck({"dagger","knife"})
+	if weapons["either"] then--set both for dual wield required, or leave as is for "if any hand, do."
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

@@ -18,3 +18,6 @@ function update(dt)
 	liquidLib.doPump()
 end
 
+function die()
+	liquidLib.die()
+end

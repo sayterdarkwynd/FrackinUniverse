@@ -2,11 +2,11 @@ setName="fu_samuraiset"
 
 weaponEffect={
     {stat = "powerMultiplier", baseMultiplier = 1.15},
-    {stat = "critChance", amount = 0.5}
+    {stat = "critChance", amount = 5}
   }
   
 armorBonus={
-    {stat = "physicalResistance", amount = 0.5}
+    {stat = "physicalResistance", amount = 0.05}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -27,7 +27,8 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("either",{"shortsword","broadsword"}) then
+	local weapons=weaponCheck({"shortsword","broadsword"})
+	if weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

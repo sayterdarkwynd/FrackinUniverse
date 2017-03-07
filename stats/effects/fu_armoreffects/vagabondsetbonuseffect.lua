@@ -1,11 +1,7 @@
 setName="fu_vagabondset"
 
 weaponEffect={
-	{stat = "powerMultiplier", baseMultiplier = 1.075}
-}
-
-weaponEffect2={
-	{stat = "powerMultiplier", baseMultiplier = 1.15}
+	{stat = "powerMultiplier", amount = 0.075}
 }
 
 armorBonus={
@@ -30,9 +26,10 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("primary",{"pistol","machinepistol"}) and weaponCheck("alt",{"pistol","machinepistol"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
-	elseif weaponCheck("either",{"pistol","machinepistol"}) then
+	local weapons=weaponCheck({"pistol","machinepistol"})
+	if weapons["primary"] and weapon["alt"] then
+		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,2))
+	elseif weapons("either",{"pistol","machinepistol"}) then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

@@ -1,12 +1,9 @@
 setName="fu_lightpriestset"
 
 weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.10}
+    {stat = "powerMultiplier", amount = 0.10}
   }
-  weaponEffect2={
-    {stat = "powerMultiplier", baseMultiplier = 1.20}
-  }
-  
+
 armorBonus={
     { stat = "cosmicResistance", amount = 0.25 }
 }
@@ -30,9 +27,10 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("both",{"staff","wand"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
-	elseif weaponCheck("either",{"wand"}) then
+	local weapons=weaponCheck({"staff","wand"})
+	if weapons["both"] or weapons["twoHanded"] then
+		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,2))
+	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

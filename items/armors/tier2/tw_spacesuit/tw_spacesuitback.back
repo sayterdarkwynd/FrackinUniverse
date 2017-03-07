@@ -3,12 +3,21 @@
   "price" : 250,
   "inventoryIcon" : "icons.png:back",
   "rarity" : "Rare",
-  "category" : "backwear",
+
   "description" : "A tungsten-reinforced life support tank. Grants Physical Resistance from a handy kinetic dampener.",
   "shortdescription" : "Spacesuit Airtank",
   "tooltipKind" : "back",
   
-  "statusEffects" : [ "physicalblock" ],
+  "statusEffects" : [
+    "physicalblock",
+    {
+      "stat" : "maxBreath",
+      "amount" : 300
+    }
+  ],
+  
+  "category" : "enviroProtectionPack",
+  "acceptsAugmentType" : "back",
   
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
