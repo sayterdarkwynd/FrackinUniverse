@@ -14,62 +14,25 @@ function init()
 end
 
 function setValues()
-
-self.baseTemp = config.getParameter("baseTemp",0)
-self.baseMod = config.getParameter("baseMod",0)
-self.biomeMod = ( ( self.baseTemp ) * ( 1 +self.baseMod ) )
-
-if (world.type() == "snow") then
-  self.baseTemp = math.random(10)
-  self.baseMod = 3
-elseif (world.type() == "arctic") then
-  self.baseTemp = math.random(20)
-  self.baseMod = 3
-elseif (world.type() == "arcticoceanfloor") then
-  self.baseTemp = math.random(30)
-  self.baseMod = 3
-elseif (world.type() == "icewaste") then
-  self.baseTemp = math.random(30)
-  self.baseMod = 5
-elseif (world.type() == "icewastedark") then
-  self.baseTemp = math.random(40)
-  self.baseMod = 5
-elseif (world.type() == "frozenvolcanic") then
-  self.baseTemp = math.random(20)
-  self.baseMod = 2
-elseif (world.type() == "icemoon") then
-  self.baseTemp = math.random(20)
-  self.baseMod = 1.5
-elseif (world.type() == "nitrogensea") then
-  self.baseTemp = math.random(35)
-  self.baseMod = 4
-elseif (world.type() == "nitrogenseafloor") then
-  self.baseTemp = math.random(40)
-  self.baseMod = 4
-end
-
-
-
-
 -- check resist level and apply modifier for effects
   if status.stat("iceResistance") <= 0.99 then
-    self.icehitmod = 2.2 * 1+ (status.stat("iceResistance",0) * 4)
+    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 4)
   elseif status.stat("iceResistance") <= 0.80 then
-    self.icehitmod = 1.9 * 1+ (status.stat("iceResistance",0) * 3.5)    
+    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 3.5)    
   elseif status.stat("iceResistance") <= 0.75 then
-    self.icehitmod = 1.5 * 1+ (status.stat("iceResistance",0) * 3) 
+    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 3) 
   elseif status.stat("iceResistance") <= 0.65 then
-    self.icehitmod = 1.2 * 1+ (status.stat("iceResistance",0) * 2.5)    
+    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 2.5)    
   elseif status.stat("iceResistance") <= 0.50 then
-    self.icehitmod = 0.8 * 1+ (status.stat("iceResistance",0) * 2)
+    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 2)
   elseif status.stat("iceResistance") <= 0.40 then
-    self.icehitmod = 0.5 * 1+ (status.stat("iceResistance",0) * 1.5)    
+    self.icehitmod = 1 * 1+ (status.stat("iceResistance",0) * 1.5)    
   elseif status.stat("iceResistance") <= 0.30 then
-    self.icehitmod = 0.1
+    self.icehitmod = 0.6
   elseif status.stat("iceResistance") <= 0.10 then
-    self.icehitmod = 0.05
+    self.icehitmod = 0.2
   elseif status.stat("iceResistance") <= 0.05 then
-    self.icehitmod = 0.01       
+    self.icehitmod = 0.05       
   end 
   
   self.icehitTimer = self.icehitmod +1
@@ -77,10 +40,7 @@ end
 
 -- alert the player that they are affected
 function activateVisualEffects()
-  effect.setParentDirectives("fade=0022cc=0.8")
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")
+  effect.setParentDirectives("fade=3066cc=0.6")
   
   animator.setParticleEmitterOffsetRegion("icebreath", mcontroller.boundBox())
   animator.setParticleEmitterActive("icebreath", true) 
@@ -88,18 +48,51 @@ end
 
 -- visual indicator for effect
 function makeAlert()
-        world.spawnProjectile("icesmoke",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
+        world.spawnProjectile("settlingsnow",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
         animator.playSound("bolt")
 end
 
 
+-- we have Light checks because night is colder than day. 
+function getLight()
+  local position = mcontroller.position()
+  position[1] = math.floor(position[1])
+  position[2] = math.floor(position[2])
+  local lightLevel = world.lightLevel(position)
+  lightLevel = math.floor(lightLevel * 100)
+  return lightLevel
+end
+
+function daytimeCheck()
+	return world.timeOfDay() < 0.5 -- true if daytime
+end
+
+function undergroundCheck()
+	return world.underground(mcontroller.position()) 
+end
+
 function update(dt)
+
+      -- det defaults
+      daytime = daytimeCheck()
+      underground = undergroundCheck()
+      local lightLevel = getLight()
+      
       self.biomeTimer = self.biomeTimer - dt
       self.debuffApply = self.baseDebuff * (-self.icehitmod)
-      self.damageApply = self.baseDmg * (self.icehitmod) 
-   
-  if status.stat("iceResistance") <= 0.99 then
+      self.damageApply = ( self.baseDmg * 1- math.min(status.stat("iceResistance"),0) )
+
       if self.biomeTimer <= 0 and status.stat("iceResistance") < 1.0 then
+        -- is it nighttime or above ground? if so, its colder
+        if not daytime then
+          self.damageApply = self.damageApply * 1 - math.min(lightLevel,0)   
+        end
+        -- if it is above ground, exposure is worse
+          if not underground then 
+            self.damageApply = self.damageApply + (self.icehitmod *2.5)
+          end 
+          
+          
          -- damage application per tick
           status.applySelfDamageRequest ({
             damageType = "IgnoresDef",
@@ -107,28 +100,28 @@ function update(dt)
             damageSourceKind = "ice",
             sourceEntityId = entity.id()	
           })   
-
-    -- speed penalty is equal to your resistance level. higher is better. 0 is motionless and frozen.
-    mcontroller.controlModifiers({
-        speedModifier = status.stat("iceResistance")
-    }) 
-
-          effect.addStatModifierGroup({
-            {stat = "maxEnergy", amount = self.debuffApply },
-            -- your HP is dropped in half
-            {stat = "protection", amount = (stat.status("protection")/2) }
-          })
-
-  end 
-  
-  
-  -- activate visuals and check stats
-  makeAlert()
-  activateVisualEffects()
+          
+         -- being cold also consumes food faster to keep your body warm
+	 if status.isResource("food") then
+	  status.modifyResource("food", (status.resource("food") * -0.01) )
+	 end	          
+	 
+	 -- and finally, the colder you get the slower you move and the crappier your jump becomes
+         if status.stat("iceResistance") <= 0.99 then
+             mcontroller.controlModifiers({
+	         walkSpeedModifier = status.stat("iceResistance"),
+	         runSpeedModifier = status.stat("iceResistance")
+             })
+         end
+          
+          -- activate visuals and check stats
+	  makeAlert()
+	  activateVisualEffects()
 	  
-  -- set the timer
-  self.biomeTimer = self.icehitTimer
-	
+	  -- set the timer
+          self.biomeTimer = self.icehitTimer
+
+      end 	
 end       
 
 function uninit()
