@@ -1,3 +1,16 @@
+function init()
+  self.defaultOnAnimation = config.getParameter("defaultOnAnimation","other")
+  self.defaultOffAnimation = config.getParameter("defaultOffAnimation","off")
+  self.liquidCount = config.getParameter("liquidCount",0)
+  if self.liquidCount > 0 then
+    self.liquidArrayNodes = config.getParameter("liquidArrayNodes")
+    self.liquidArrayIDs = config.getParameter("liquidArrayIDs")
+    self.liquidArrayAnimations = config.getParameter("liquidArrayAnimations")
+  end
+  
+
+end
+
 function getSample()
   return world.liquidAt(object.position())
 end
@@ -5,36 +18,23 @@ end
 function update(dt)
   local sample = getSample()
 
+  object.setAllOutputNodes(false)
+  local i = 0
   if not sample then
-    object.setOutputNodeLevel(0, false)
-    animator.setAnimationState("sensorState", "off")
-  elseif sample[1] == 1 or sample[1] == 2 then
-    object.setOutputNodeLevel(0, true)
-    animator.setAnimationState("sensorState", "water")
-  elseif sample[1] == 4 then
-    object.setOutputNodeLevel(0, true)
-    animator.setAnimationState("sensorState", "poison")
-  elseif sample[1] == 3 or sample[1] == 5 then
-    object.setOutputNodeLevel(0, true)
-    animator.setAnimationState("sensorState", "lava")
-  elseif sample[1] == 11 then
-    object.setOutputNodeLevel(0, true)
-    animator.setAnimationState("sensorState", "other")
-  elseif sample[1] == 4 then
-    object.setOutputNodeLevel(0, true)
-    animator.setAnimationState("sensorState", "poison")
-  elseif sample[1] == 13 then
-    object.setOutputNodeLevel(0, true)
-    animator.setAnimationState("sensorState", "other")    
+    animator.setAnimationState("sensorState", self.defaultOffAnimation)
   else
-    object.setOutputNodeLevel(0, true)
-    animator.setAnimationState("sensorState", "other")
+    while i < self.liquidCount+2 do
+      if i == self.liquidCount+1 then
+        object.setOutputNodeLevel(0, true)
+        animator.setAnimationState("sensorState", self.defaultOnAnimation)
+        i = i + 1
+      elseif sample[1] == self.liquidArrayIDs[i] then
+        object.setOutputNodeLevel(self.liquidArrayNodes[i], true)
+        animator.setAnimationState("sensorState", self.liquidArrayAnimations[i])
+        i = self.liquidCount + 2
+      else
+        i = i + 1
+      end
+    end
   end
 end
-
-
-
-
-
-
-
