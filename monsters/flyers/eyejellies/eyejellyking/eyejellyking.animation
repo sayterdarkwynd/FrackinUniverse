@@ -6,34 +6,14 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 1,
-            "cycle" : 0.25
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "loop"
           },
           "fly" : {
             "frames" : 8,
             "cycle" : 0.5,
             "mode" : "loop"
-          },
-          "charge" : {
-            "frames" : 2,
-            "cycle" : 0.25,
-            "mode" : "loop"
-          },
-          "firewindup" : {
-            "frames" : 2,
-            "cycle" : 0.25
-          },
-          "fire" : {
-            "frames" : 1,
-            "cycle" : 0.25
-          },
-          "altfire" : {
-            "frames" : 1,
-            "cycle" : 0.5
-          },
-          "firewinddown" : {
-            "frames" : 2,
-            "cycle" : 0.25
           }
         }
       },
@@ -42,8 +22,7 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 8,
-            "cycle" : 2
+            "frames" : 1
           }
         }
       },      
@@ -85,7 +64,7 @@
       "body" : {
         "properties" : {
           "zLevel" : 1,
-          "transformationGroups" : [ "facing", "body" ],
+          "transformationGroups" : [ "facing", "body"  ],
           "offset" : [0.0, 0.125]
         },
         "partStates" : {
@@ -98,31 +77,6 @@
             "fly" : {
               "properties" : {
                 "image" : "<partImage>:fly.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:charge.<frame>"
-              }
-            },
-            "firewindup" : {
-              "properties" : {
-                "image" : "<partImage>:firewindup.<frame>"
-              }
-            },
-            "fire" : {
-              "properties" : {
-                "image" : "<partImage>:fire.<frame>"
-              }
-            },
-            "altfire" : {
-              "properties" : {
-                "image" : "<partImage>:altfire.<frame>"
-              }
-            },
-            "firewinddown" : {
-              "properties" : {
-                "image" : "<partImage>:firewinddown.<frame>"
               }
             }
           },
@@ -139,7 +93,7 @@
         "properties" : {
           "zLevel" : 20,
           "offset" : [0,0],
-          "transformationGroups" : [ "aim", "facing", "body" ],
+          "transformationGroups" : [ "aim", "facing" ],
           "rotationCenter" : [0, 0]
         },
         "partStates" : {
@@ -147,11 +101,6 @@
             "idle" : {
               "properties" : {
                   "image" : "<partImage>:idle.<frame>"
-                }
-              },
-            "altfire" : {
-              "properties" : {
-                  "image" : "<partImage>:altfire.<frame>"
                 }
               }
           },  
@@ -167,9 +116,9 @@
     }
   },
   "transformationGroups" : {
-    "body" : { "interpolated" : true },
+    "body" : { "interpolated" : false },
     "facing" : { "interpolated" : false },
-    "aim" : { "interpolated" : true }
+    "aim" : { "interpolated" : false }
   },
 
   "effects" : {
@@ -186,9 +135,9 @@
       "emissionRate" : 12.0,
       "offsetRegion" : [-0.75, -1.0, 0.75, 0.5],
       "particles" : [
-        { "particle" : "poisondrip1" },
-        { "particle" : "poisondrip2" },
-        { "particle" : "poisondrip3" }
+        { "particle" : "jellydrip1" },
+        { "particle" : "jellydrip2" },
+        { "particle" : "jellydrip3" }
       ]
     },
     "deathPoof" : {
