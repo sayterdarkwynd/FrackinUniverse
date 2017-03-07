@@ -2,7 +2,7 @@ require "/objects/generic/extractor_xeno_common.lua"
 
 -- unit times for the xeno lab tech levels
 function getTimer(techLevel)
-	return ({ 5.5, 1.2 })[techLevel]
+	return ({ 5.5, 1.2 , 1.2 })[techLevel]
 end
 
 -- Format:
@@ -34,7 +34,7 @@ function getRecipes()
 		{ inputs = { arkaentree = 1 }, outputs = { gene_harden = 2 } },
 		{ inputs = { automatoseed = 1 }, outputs = { gene_harden = 1 } },
 		{ inputs = { avesmingoseed = 1 }, outputs = { gene_chloroplast = 1 } },
-		{ inputs = { bambooseed = 1 }, outputs = { gene_reproductive = 1 }, timeScale = { 2 / 11, 5 / 6 } }, -- time=1 for both
+		{ inputs = { bambooseed = 1 }, outputs = { gene_reproductive = 1 }, timeScale = { 2 / 11, 5 / 6 , 5 / 6 } }, -- time=1 for both
 		{ inputs = { bananaseed = 1 }, outputs = { gene_resist = 1 } },
 		{ inputs = { batterystem = 1 }, outputs = { gene_electric = 2 } },
 		{ inputs = { beakseedseed = 1 }, outputs = { gene_avian = 1 } },
@@ -54,7 +54,7 @@ function getRecipes()
 		{ inputs = { brackentreeseed = 1 }, outputs = { gene_reproductive = 1 } },
 		{ inputs = { caprioleplantseed = 1 }, outputs = { gene_muscle = 1 } },
 		{ inputs = { carrotseed = 1 }, outputs = { gene_resist = 1 } },
-		{ inputs = { cellpodsplant = 1 }, outputs = { gene_insectoid = 5 }, timeScale = { 10 / 11, 25 / 6 } }, -- time=5 for both
+		{ inputs = { cellpodsplant = 1 }, outputs = { gene_insectoid = 5 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } }, -- time=5 for both
 		{ inputs = { chiliseed = 1 }, outputs = { gene_pyro = 1 } },
 		{ inputs = { cinnamonseed = 1 }, outputs = { gene_stimulant = 1 } },
 		{ inputs = { cocoaseed = 1 }, outputs = { gene_energy = 1 } },
@@ -99,9 +99,9 @@ function getRecipes()
 		{ inputs = { fubioshroompurple = 1 }, outputs = { biospore = 3 } },
 		{ inputs = { fubioshroomred = 1 }, outputs = { biospore = 3 } },
 		{ inputs = { fubioshroomyellow = 1 }, outputs = { biospore = 3 } },
-		{ inputs = { fusnowberryseed = 1 }, outputs = { gene_cryo = 1 }, timeScale = { 10 / 11, 25 / 6 } },
-		{ inputs = { fuspongeweedseed = 1 }, outputs = { gene_fish = 1 }, timeScale = { 10 / 11, 25 / 6 } },
-		{ inputs = { garpberryseed = 1 }, outputs = { gene_resist = 1 }, timeScale = { 0.8, 5 / 3 } },
+		{ inputs = { fusnowberryseed = 1 }, outputs = { gene_cryo = 1 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
+		{ inputs = { fuspongeweedseed = 1 }, outputs = { gene_fish = 1 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
+		{ inputs = { garpberryseed = 1 }, outputs = { gene_resist = 1 }, timeScale = { 0.8, 5 / 3 , 5 / 3} },
 		{ inputs = { garikleaf = 1 }, outputs = { gene_regen = 2 } },
 		{ inputs = { gazelemonseed = 1 }, outputs = { gene_ocular = 1 } },
 		{ inputs = { gemglowseed = 1 }, outputs = { gene_stealth = 1 } },
@@ -111,7 +111,7 @@ function getRecipes()
 		{ inputs = { glarestalkseed = 1 }, outputs = { gene_ocular = 2 } },
 		{ inputs = { goldenglowseed = 1 }, outputs = { gene_bioluminescent = 2 } },
 		{ inputs = { goldenrootseed = 1 }, outputs = { gene_mimetic = 1 } },
-		{ inputs = { goldenseaspongeplant = 1 }, outputs = { gene_fish = 1 }, timeScale = { 10 / 11, 25 / 6 } },
+		{ inputs = { goldenseaspongeplant = 1 }, outputs = { gene_fish = 1 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
 		{ inputs = { goldshroomseed = 1 }, outputs = { gene_harden = 1 } },
 		{ inputs = { grapesseed = 1 }, outputs = { gene_resist = 1 } },
 		{ inputs = { greenleafseed = 1 }, outputs = { gene_chloroplast = 1 } },
@@ -126,7 +126,7 @@ function getRecipes()
 		{ inputs = { jillyrootseed = 1 }, outputs = { gene_chloroplast = 1 } },
 		{ inputs = { isn_meatplant = 1 }, outputs = { gene_void = 1 }, { gene_mammal = 1 } },
 		{ inputs = { itaseed = 1 }, outputs = { gene_chloroplast = 1 } },
-		{ inputs = { kamaranpodsplant = 1 }, outputs = { gene_mimetic = 4 }, timeScale = { 10 / 11, 25 / 6 } },
+		{ inputs = { kamaranpodsplant = 1 }, outputs = { gene_mimetic = 4 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
 		{ inputs = { kirifruitseed = 1 }, outputs = { gene_energy = 1 } },
 		{ inputs = { kiwiseed = 1 }, outputs = { gene_harden = 1 } },
 		{ inputs = { kramil = 1 }, outputs = { gene_immunity = 2 } },
@@ -201,7 +201,7 @@ function getRecipes()
 		{ inputs = { wildarkaentree = 1 }, outputs = { gene_harden = 2 } },
 		{ inputs = { wildavesmingoseed = 1 }, outputs = { gene_chloroplast = 1 } },
 		{ inputs = { wildautomatoseed = 1 }, outputs = { gene_harden = 1 } },
-		{ inputs = { wildbambooseed = 1 }, outputs = { gene_reproductive = 1 }, timeScale = { 2 / 11, 5 / 6 } },
+		{ inputs = { wildbambooseed = 1 }, outputs = { gene_reproductive = 1 }, timeScale = { 2 / 11, 5 / 6 , 5 / 6 } },
 		{ inputs = { wildbananaseed = 1 }, outputs = { gene_resist = 1 } },
 		{ inputs = { wildbatterystem = 1 }, outputs = { gene_electric = 2 } },
 		{ inputs = { wildbeetlesproutseed = 1 }, outputs = { gene_harden = 2, gene_insectoid = 2 } },
@@ -220,7 +220,7 @@ function getRecipes()
 		{ inputs = { wildbonebooseed = 1 }, outputs = { gene_skeletal = 1 }, { gene_mammal = 1 } },
 		{ inputs = { wildcaprioleplantseed = 1 }, outputs = { gene_muscle = 1 } },
 		{ inputs = { wildcarrotseed = 1 }, outputs = { gene_resist = 1 } },
-		{ inputs = { wildcellpodsplant = 1 }, outputs = { gene_insectoid = 5 }, timeScale = { 10 / 11, 25 / 6 } },
+		{ inputs = { wildcellpodsplant = 1 }, outputs = { gene_insectoid = 5 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
 		{ inputs = { wildchiliseed = 1 }, outputs = { gene_pyro = 1 } },
 		{ inputs = { wildcinnamonseed = 1 }, outputs = { gene_stimulant = 1 } },
 		{ inputs = { wildcocoaseed = 1 }, outputs = { gene_energy = 1 } },
@@ -254,8 +254,8 @@ function getRecipes()
 		{ inputs = { wildfubioshroompurple = 1 }, outputs = { biospore = 3 } },
 		{ inputs = { wildfubioshroomred = 1 }, outputs = { biospore = 3 } },
 		{ inputs = { wildfubioshroomyellow = 1 }, outputs = { biospore = 3 } },
-		{ inputs = { wildfusnowberryseed = 1 }, outputs = { gene_cryo = 1 }, timeScale = { 10 / 11, 25 / 6 } },
-		{ inputs = { wildfuspongeweedseed = 1 }, outputs = { gene_fish = 1 }, timeScale = { 10 / 11, 25 / 6 } },
+		{ inputs = { wildfusnowberryseed = 1 }, outputs = { gene_cryo = 1 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
+		{ inputs = { wildfuspongeweedseed = 1 }, outputs = { gene_fish = 1 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
 		{ inputs = { wildgarikleaf = 1 }, outputs = { gene_regen = 2 } },
 		{ inputs = { wildgazelemonseed = 1 }, outputs = { gene_ocular = 1 } },
 		{ inputs = { wildgemglowseed = 1 }, outputs = { gene_stealth = 1 } },
@@ -265,7 +265,7 @@ function getRecipes()
 		{ inputs = { wildglarestalkseed = 1 }, outputs = { gene_ocular = 2 } },
 		{ inputs = { wildgoldenglowseed = 1 }, outputs = { gene_bioluminescent = 2 } },
 		{ inputs = { wildgoldenrootseed = 1 }, outputs = { gene_mimetic = 1 } },
-		{ inputs = { wildgoldenseaspongeplant = 1 }, outputs = { gene_fish = 1 }, timeScale = { 10 / 11, 25 / 6 } },
+		{ inputs = { wildgoldenseaspongeplant = 1 }, outputs = { gene_fish = 1 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
 		{ inputs = { wildgoldshroomseed = 1 }, outputs = { gene_harden = 1 } },
 		{ inputs = { wildgreenleafseed = 1 }, outputs = { gene_chloroplast = 1 } },
 		{ inputs = { wildgrapesseed = 1 }, outputs = { gene_resist = 1 } },
@@ -280,7 +280,7 @@ function getRecipes()
 		{ inputs = { wildisn_meatplant = 1 }, outputs = { gene_void = 1 }, { gene_mammal = 1 } },
 		{ inputs = { wilditaseed = 1 }, outputs = { gene_chloroplast = 1 } },
 		{ inputs = { wildjillyrootseed = 1 }, outputs = { gene_chloroplast = 1 } },
-		{ inputs = { wildkamaranpodsplant = 1 }, outputs = { gene_mimetic = 4 }, timeScale = { 10 / 11, 25 / 6 } },
+		{ inputs = { wildkamaranpodsplant = 1 }, outputs = { gene_mimetic = 4 }, timeScale = { 10 / 11, 25 / 6 , 25 / 6 } },
 		{ inputs = { wildkirifruitseed = 1 }, outputs = { gene_energy = 1 } },
 		{ inputs = { wildkiwiseed = 1 }, outputs = { gene_harden = 1 } },
 		{ inputs = { wildkramil = 1 }, outputs = { gene_immunity = 2 } },

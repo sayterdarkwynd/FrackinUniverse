@@ -60,7 +60,7 @@ function update(dt)
     
       self.biomeTimer = self.biomeTimer - dt
       self.debuffApply = self.baseDebuff * (-self.poisonhitmod)
-      self.damageApply = self.baseDmg * (self.poisonhitmod) 
+      self.damageApply = ( self.baseDmg * 1- math.min(status.stat("poisonResistance"),0) )      
       
       if self.biomeTimer <= 0 and status.stat("poisonResistance") < 1.0 then
          -- damage application per tick
