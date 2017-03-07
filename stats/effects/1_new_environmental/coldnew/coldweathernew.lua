@@ -107,12 +107,11 @@ function update(dt)
 	 end	          
 	 
 	 -- and finally, the colder you get the slower you move and the crappier your jump becomes
-         if status.stat("iceResistance") <= 0.99 then
              mcontroller.controlModifiers({
-	         walkSpeedModifier = status.stat("iceResistance"),
-	         runSpeedModifier = status.stat("iceResistance")
+	         airJumpModifier = status.stat("iceResistance"),
+	         speedModifier = status.stat("iceResistance")
              })
-         end
+
           
           -- activate visuals and check stats
 	  makeAlert()
