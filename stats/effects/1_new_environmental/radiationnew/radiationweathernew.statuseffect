@@ -1,24 +1,21 @@
 {
-  "name" : "heatweathernew",
-  "blockingStat" : "biomeheatImmunity",
+  "name" : "radiationweathernew",
+  "blockingStat" : "biomeradiationImmunity",
 
   "effectConfig" : {
 	    //-- Heat values
 	    //--
 	    //-- Biome            Modifier (biomeTemp)
 	    //-------------
-	    //--Jungle            0.15
-	    //--Slime             0.05
-	    //--Rainforest        0.12
-	    //--Primeval          0.08
-	    //--Desert            0.25
-	    //--Red Desert        0.85
-	    //--Sulphuric         1.25
-	    //--Sulphuric Dark    1.4
-	    //--Sulphuric Ocean   1.4
-	    //--Volcanic          1.14
-	    //--Magma             2.4
-	    //--Infernus          2
+	    //--Alien             1.00
+	    //--Jungle            0.55
+	    //--Irradiated        2.0
+	    //--Metallic          0.35
+	    //--Sulphuric         0.25
+	    //--Sulphuric Dark    0.4
+	    //--Sulphuric Ocean   0.4
+	    //--Strange Sea       1.14
+
 	    
 	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
 	  "biomeTemp" : 2.0, //ice wastes are 2x as deadly
@@ -34,10 +31,10 @@
   "defaultDuration" : 1,
 
   "scripts" : [
-    "heatweathernew.lua"
+    "radiationweathernew.lua"
   ],
 
-  "animationConfig" : "heatweathernew.animation",
+  "animationConfig" : "radiationweathernew.animation",
 
   "icon" : "/interface/statuses/fire.png"
 }

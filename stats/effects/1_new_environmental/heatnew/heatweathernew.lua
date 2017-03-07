@@ -93,17 +93,11 @@ self.damageApply = ( self.baseDmg * 1- math.min(status.stat("fireResistance"),0)
 	else
 	  self.situationalPenalty = 0
 	end 
-	   -- final Damage calculation
-	   -- apply the damage constantly but silently         
-	   self.damageApply = ( (self.damageApply) + (self.situationalPenalty) ) * ( 1+(self.biomeTemp))
-	   status.modifyResource("health", (-self.damageApply * (1-status.stat("fireResistance"))*self.biomeTemp ) * dt)
-	   status.modifyResource("food", (-self.damageApply * (1-status.stat("fireResistance")/10)) * dt)
-	   
+
         -- they look as if aflame
-        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
- 	 
           -- activate visuals and check stats
 	  activateVisualEffects()
+	  makeAlert()
 	  -- set the timers
           self.biomeTimer = self.firehitTimer/2
           self.timerRadioMessage = self.timerRadioMessage - dt  	  
@@ -112,6 +106,13 @@ self.damageApply = ( self.baseDmg * 1- math.min(status.stat("fireResistance"),0)
       -- and finally, the hotter you get the slower you move and the crappier your jump becomes
       -- this is outside of the timer, because it needs to always apply if you have less than 100% resist, not just onTick    
       if status.stat("fireResistance") < 0.9 then
+      
+	   -- final Damage calculation
+	   -- apply the damage constantly but silently         
+	   self.damageApply = ( (self.damageApply) + (self.situationalPenalty) ) * ( 1+(self.biomeTemp))
+	   status.modifyResource("health", (-self.damageApply * (1-status.stat("fireResistance"))*self.biomeTemp ) * dt)
+	   status.modifyResource("food", (-self.damageApply * (1-status.stat("fireResistance")/100)) * dt)     
+	   
              mcontroller.controlModifiers({
 	         airJumpModifier = status.stat("fireResistance")+0.3, 
 	         speedModifier = status.stat("fireResistance")+0.30 
@@ -119,6 +120,12 @@ self.damageApply = ( self.baseDmg * 1- math.min(status.stat("fireResistance"),0)
       end  
  
 end       
+
+
+function makeAlert()
+        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
+        animator.playSound("bolt")
+end
 
 function uninit()
 
