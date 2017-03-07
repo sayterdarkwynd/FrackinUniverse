@@ -19,6 +19,7 @@ function init()
 			filterType[i]=-1;
 		end
 	end
+	if invertSlots==nil then invertSlots={false,false} end
 	initialized = nil;
 end
 
@@ -32,10 +33,12 @@ function initialize(conf)
 	end
 	filterInverted=conf[3]
 	filterType=conf[4]
+	invertSlots=conf[5]
 	redrawInputSlotList()
 	redrawOutputSlotList()
 	redrawItemFilters()
 	redrawInvertButtons()
+	redrawInvertSlotButtons()
 end
 
 function update()
@@ -104,15 +107,6 @@ function subInputSlot()
 
 end
 
-function redrawInputSlotList()
-	widget.clearListItems(inputList)
-	for _,v in pairs(inputSlots) do
-		local item = widget.addListItem(inputList);
-		widget.setText(inputList .. "." .. item .. ".slotNr", v[1] .. "");
-		v[2] = item;
-	end
-end
-
 function subOutputSlot()
 	local item = widget.getListSelected(outputList)
 	if item ~= nil then
@@ -127,6 +121,15 @@ function subOutputSlot()
 	end
 end
 
+function redrawInputSlotList()
+	widget.clearListItems(inputList)
+	for _,v in pairs(inputSlots) do
+		local item = widget.addListItem(inputList);
+		widget.setText(inputList .. "." .. item .. ".slotNr", v[1] .. "");
+		v[2] = item;
+	end
+end
+
 function redrawOutputSlotList()
 	widget.clearListItems(outputList)
 	for _,v in pairs(outputSlots) do
@@ -134,6 +137,13 @@ function redrawOutputSlotList()
 		widget.setText(outputList .. "." .. item .. ".slotNr", v[1] .. "");
 		v[2] = item;
 	end
+end
+
+function invSlots()
+	if not initialized==true then return end
+	invertSlots[1]=widget.getChecked("invInputSlot")
+	invertSlots[2]=widget.getChecked("invOutputSlot")
+	world.sendEntityMessage(myBox, "setInvertSlots", invertSlots);
 end
 
 function syncInputSlots()
@@ -162,6 +172,11 @@ function redrawInvertButtons()
 	for i=1,5 do
 		widget.setChecked("item"..i.."ButtonInvert",filterInverted[i])
 	end
+end
+
+function redrawInvertSlotButtons()
+	widget.setChecked("invInputSlot",invertSlots[1])
+	widget.setChecked("invOutputSlot",invertSlots[2])
 end
 
 function itemFilters()
