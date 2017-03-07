@@ -1,35 +1,39 @@
 setName="fu_footmanset"
 
-weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
-  
+weaponBonus={
+	{stat = "powerMultiplier", amount = 0.15}
+}
+
 armorBonus={
-    {stat = "iceResistance", amount = 0.15}
+	{stat = "iceResistance", amount = 0.15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponHandle=effect.addStatModifierGroup({})
+	weaponBonusHandle=effect.addStatModifierGroup({})
+
 	checkWeapons()
-	armorHandle=effect.addStatModifierGroup(armorBonus)
+
+	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
-	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire()
-	else
-		checkWeapons()
-	end	
+if not checkSetWorn(self.setBonusCheck) then
+	effect.expire()
+else
+	
+	checkWeapons()
+end
 end
 
-function checkWeapons()
+function 
+	checkWeapons()
 	local weapons=weaponCheck({"shortsword","broadsword"})
-	if weapons["either"] then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
-		effect.setStatModifierGroup(weaponHandle,weaponEffect)
-	else
-		effect.setStatModifierGroup(weaponHandle,{})
-	end
+if weapons["either"] then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
+	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+else
+	effect.setStatModifierGroup(weaponBonusHandle,{})
+end
 end

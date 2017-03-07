@@ -1,37 +1,40 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
-armorBonus2={
-	{stat = "maxHealth", baseMultiplier = 1.10},
-	{stat = "powerMultiplier", baseMultiplier = 1.05},
-	{stat = "physicalResistance", amount = 0.05},
-	{stat = "fallDamageMultiplier", baseMultiplier = 0.875}
+armorBonus={
+	{stat = "maxHealth", amount = 5},
+	{stat = "powerMultiplier", amount = 0.05},
+	{stat = "physicalResistance", amount = 0.05}
 }
 
-armorBonus={
-	{stat = "maxHealth", baseMultiplier = 1.05},
-	{stat = "fallDamageMultiplier", baseMultiplier = 0.875}
+armorEffect={
+	{stat = "maxHealth", amount = 5},
+	{stat = "fallDamageMultiplier", baseMultiplier = 0.925}
 }
 
 setName="fu_boneset"
 
 function init()
 	setSEBonusInit(setName)
-	armorHandle=effect.addStatModifierGroup({})
-	if (world.type() == "garden") or (world.type() == "forest") then
-		effect.setStatModifierGroup(armorHandle,armorBonus2)
-	else
-		effect.setStatModifierGroup(armorHandle,armorBonus)
-	end
+	effect.setStatModifierGroup(armorEffect)
+
+	armorBonusHandle=effect.addStatModifierGroup({})
+	checkArmor()
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		if (world.type() == "garden") or (world.type() == "forest") then
-			effect.setStatModifierGroup(armorHandle,armorBonus2)
-		else
-			effect.setStatModifierGroup(armorHandle,armorBonus)
-		end
+		checkArmor()
+	end
+end
+
+function checkArmor()
+	if (world.type() == "garden") or (world.type() == "forest") then
+		effect.setStatModifierGroup(
+		armorBonusHandle,armorBonus)
+	else
+		effect.setStatModifierGroup(
+		armorBonusHandle,{})
 	end
 end

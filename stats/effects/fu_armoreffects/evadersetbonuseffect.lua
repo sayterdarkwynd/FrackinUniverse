@@ -1,37 +1,41 @@
 setName="fu_evaderset"
 
-weaponEffect={
-    {stat = "physicalResistance", amount = 0.15}
-  }
-  
+weaponBonus={
+	{stat = "physicalResistance", amount = 0.15}
+}
+
 armorBonus={
-    {stat = "shieldRegen", amount = 0.25},
-    {stat = "shieldHealth", amount = 0.25},
-    {stat = "perfectBlockLimitRegen", baseMultiplier = 1.25}
+	{stat = "shieldRegen", amount = 0.25},
+	{stat = "shieldHealth", amount = 0.25},
+	{stat = "perfectBlockLimitRegen", baseMultiplier = 1.25}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponHandle=effect.addStatModifierGroup({})
+	weaponBonusHandle=effect.addStatModifierGroup({})
+
 	checkWeapons()
-	armorHandle=effect.addStatModifierGroup(armorBonus)
+
+	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
-	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire()
-	else
-		checkWeapons()
-	end	
+if not checkSetWorn(self.setBonusCheck) then
+	effect.expire()
+else
+	
+	checkWeapons()
+end
 end
 
-function checkWeapons()
+function 
+	checkWeapons()
 	local weapons=weaponCheck({"shield"})
-	if weapons["either"]
-		effect.setStatModifierGroup(weaponHandle,weaponEffect)
-	else
-		effect.setStatModifierGroup(weaponHandle,{})
-	end
+if weapons["either"]
+	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+else
+	effect.setStatModifierGroup(weaponBonusHandle,{})
+end
 end
