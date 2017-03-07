@@ -20,11 +20,11 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 40,
+      "targetQueryRange" : 50,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 40,
-      "targetOutOfSightTime" : 2.5,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5,
 
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
@@ -33,15 +33,15 @@
       "hostileActions" : [
         {
           "name" : "action-swoosh-charge",
-          "cooldown" : 5,
+          "cooldown" : 1.5,
           "parameters" : {
-            "maximumRange" : 10,
+            "maximumRange" : 20,
             "minimumRange" : 2,
             "windupTime" : 0.5,
 
             "chargeTime" : 1.0,
-            "chargeSpeed" : 48,
-            "chargeControlForce" : 300,
+            "chargeSpeed" : 45,
+            "chargeControlForce" : 450,
             "wallKnockback" : true,
             "wallCrashSound" : "wallCrash",
             "wallCrashEmitter" : "",
@@ -52,17 +52,18 @@
             "projectileType" : "electricchargeswoosh",
             "fireOffset" : [2,-1],
             "projectileParameters" : {
+              "power" : 15
             }
           }
         },
         {
           "name" : "action-fire",
-	  "cooldown" : 6,
+	        "cooldown" : 6,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 8,
-            "minimumRange" : 2,
-            "windupState" : "firewindup2",
+            "maximumRange" : 35,
+            "minimumRange" : 25,
+            "windupState" : "teslawindup",
             "windupTime" : 1.32,
 
             "projectileType" : "ffteslasmall",
@@ -81,35 +82,35 @@
         },         
         {
           "name" : "action-fire",
-	  "cooldown" : 6,
+	        "cooldown" : 6,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 24,
-            "minimumRange" : 12,
-            "windupState" : "firewindup3",
-            "windupTime" : 1.58,
+            "minimumRange" : 13,
+            "windupState" : "firewindup",
+            "windupTime" : 1.5,
 
             "projectileType" : "electricblast",
             "power" : 9,
             
-            "fireOffset" : [1.0, 0],
+            "fireOffset" : [-2, 0],
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "fireSound" : "attack",
             "range": 24,
-            "fireState" : "hurt",
-            "winddownState" : "chargewinddown",
+            "fireState" : "fire",
+            "winddownState" : "firewinddown",
             "winddownTime" : 0.8
           }
         },        
         {
           "name" : "action-fire",
-	  "cooldown" : 6,
+	        "cooldown" : 6,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 18,
-            "minimumRange" : 6,
-            "windupState" : "firewindup",
+            "maximumRange" : 12,
+            "minimumRange" : 2,
+            "windupState" : "wavewindup",
             "windupTime" : 1.37,
 
             "projectileType" : "waveblast",
@@ -121,7 +122,7 @@
             "fireSound" : "attack",
             "range": 18,
             "fireState" : "hurt",
-            "winddownState" : "firewinddown",
+            "winddownState" : "chargewinddown",
             "winddownTime" : 0.45
           }
         }

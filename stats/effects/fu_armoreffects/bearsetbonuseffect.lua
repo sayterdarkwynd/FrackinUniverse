@@ -38,7 +38,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"axe","hammer"})
-	if weapons["twoHanded"] and weapons["primary"] then --twohander
+	if weapons["twoHanded"] then --twohander
 		effect.setStatModifierGroup(weaponHandleAlt,setBonusMultiply(weaponEffects2,level))
 	else
 		effect.setStatModifierGroup(weaponHandleAlt,{})
@@ -47,7 +47,7 @@ function checkWeapons()
 		effect.setStatModifierGroup(weaponHandlePrimary,setBonusMultiply(weaponEffects1,3*level))
 	elseif (weapons["primary"] and weapons["alt"]) or weapons["twoHanded"] then--unmatching dual wield or 2-hander
 		effect.setStatModifierGroup(weaponHandlePrimary,setBonusMultiply(weaponEffects1,2*level))
-	elseif weaponCheck("either",{"axe","hammer"}) then--only one hand has axe/hammer
+	elseif weapons["either"] then--only one hand has axe/hammer
 		effect.setStatModifierGroup(weaponHandlePrimary,setBonusMultiply(weaponEffects1,level))
 	else
 		effect.setStatModifierGroup(weaponHandlePrimary,{})
