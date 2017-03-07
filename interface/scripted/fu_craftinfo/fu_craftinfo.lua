@@ -286,13 +286,21 @@ function doExtraction(list, recipes, itemIn, itemOut, objectName)
 	if itemIn then
 		for _, recipe in pairs(recipes) do
 			if recipe.inputs[itemIn] or (recipe.reversible and checkValue(recipe.outputs[itemIn], techLevel)) then
-				output = addTextItem("=>", concatExtracted(recipe.outputs, techLevel), list)
+				for item, _ in pairs(recipe.outputs) do
+					if not materialsMissing[item] then
+						output = addTextItem("=>", concatExtracted(recipe.outputs, techLevel), list)
+					end
+				end
 			end
 		end
 	elseif itemOut then
 		for _, recipe in pairs(recipes) do
 			if checkValue(recipe.outputs[itemOut], techLevel) or (recipe.reversible and recipe.inputs[itemOut]) then
-				output = addTextItem("<=", concatExtracted(recipe.inputs), list)
+				for item, _ in pairs(recipe.inputs) do
+					if not materialsMissing[item] then
+						output = addTextItem("<=", concatExtracted(recipe.inputs, techLevel), list)
+					end
+				end
 			end
 		end
 	end

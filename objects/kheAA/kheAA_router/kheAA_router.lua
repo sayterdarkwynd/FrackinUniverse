@@ -7,6 +7,7 @@ function init()
 	message.setHandler("sendConfig", sendConfig)
 	message.setHandler("setFilters", function (_, _, types) storage.filterType = types end)
 	message.setHandler("setInverts", function (_, _, inverted) storage.filterInverted = inverted end)
+	message.setHandler("setInvertSlots", function (_, _, inverted) storage.invertSlots = inverted end)
 	message.setHandler("setInputSlots", function (msg, _, slots) storage.inputSlots = slots end)
 	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)
 	object.setInteractive(true)
@@ -55,6 +56,7 @@ function initVars()
 			storage.filterType[i]=-1;
 		end
 	end
+	storage.invertSlots={false,false}
 end
 
 function sendConfig()
@@ -76,5 +78,8 @@ function sendConfig()
 			storage.filterType[i]=-1;
 		end
 	end
-	return({storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType})
+	if storage.invertSlots==nil then
+		storage.invertSlots={false,false}
+	end
+	return({storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType,storage.invertSlots})
 end

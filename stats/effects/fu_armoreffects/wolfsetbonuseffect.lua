@@ -3,11 +3,6 @@ setName="fu_wolfset"
 weaponEffect={
 	{stat = "critBonus", amount = 10}
 }
-  
-weaponEffect2={
-	{stat = "critBonus", amount = 20}
-}
-
 armorBonus={
     {stat = "iceResistance", amount = 0.50},
     {stat = "iceStatusImmunity", amount = 1},
@@ -32,9 +27,10 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("primary",{"dagger","knife"}) and weaponCheck("alt",{"dagger","knife"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
-	elseif weaponCheck("either",{"dagger","knife"}) then
+local weapons=weaponCheck({"dagger","knife"})
+	if weapons["primary"] and weapons["alt"] then
+		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,2))
+	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

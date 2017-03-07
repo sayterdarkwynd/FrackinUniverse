@@ -1,17 +1,13 @@
 setName="fu_swashbucklerset"
 
 weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.075}
+    {stat = "powerMultiplier", amount = 0.075}
 }
 
-weaponEffect2={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
-}
-  
 armorBonus={
-    {stat = "iceResistance", amount = 0.2},
+    {stat = "iceResistance", amount = 0.15},
     {stat = "foodDelta", baseMultiplier = 0.8},
-    {stat = "fireResistance", amount = 0.15}
+    {stat = "shockResistance", amount = 0.15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -24,7 +20,8 @@ function init()
 end
 
 function update(dt)
-	if not checkSetWorn(self.setBonusCheck) then
+	level=checkSetLevel(self.setBonusCheck)
+	if level==0 then
 		effect.expire()
 	else
 		checkWeapons()
@@ -35,10 +32,11 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("both",{"shortsword"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect2)
-	elseif weaponCheck("either",{"shortsword"}) then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect)
+	local weapons=weaponCheck({"shortsword"})
+	if weapons["both"] then
+		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,2*level))
+	elseif weapons["either"] then
+		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,level))
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
 	end

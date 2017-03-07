@@ -1,0 +1,62 @@
+{
+  "itemName" : "bonebow",
+  "price" : 640,
+  "inventoryIcon" : "bonebowicon.png",
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "tooltipKind" : "bow",
+  "category" : "bow",
+  "description" : "A primitive bone bow, almost too stiff to draw.",
+  "shortdescription" : "Bone Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "bonebow.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+	"drawFrameSelector" : "bowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "bonearrow",
+    "powerProjectileType" : "chargedbonearrow",
+    "projectileParameters" : {
+      "power" : 5.0
+    }
+  },
+
+  "altAbilityType" : "tripleshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "chargedbonearrow",
+    "projectileParameters" : {
+      "power" : 5.0
+    },
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
+  },
+
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

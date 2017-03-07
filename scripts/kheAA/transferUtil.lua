@@ -68,7 +68,7 @@ function transferUtil.routeItems()
 								if util.tableSize(storage.outputSlots) > 0 then
 									local tempSize=world.containerSize(targetContainer)
 									for index0=0,tempSize-1 do
-										if transferUtil.tFirstIndex(index0+1,storage.outputSlots) > 0 then
+										if transferUtil.validOutputSlot(index0) then
 											local leftOverItems=world.containerPutItemsAt(targetContainer,item,index0)
 											if leftOverItems~=nil then
 												world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count-leftOverItems.count)
@@ -335,7 +335,13 @@ end
 
 function transferUtil.validInputSlot(slot)
 	if util.tableSize(storage.inputSlots) == 0 then return true end
-	return transferUtil.tFirstIndex(slot,storage.inputSlots)>0
+	
+	return (transferUtil.tFirstIndex(slot,storage.inputSlots)>0) == not storage.invertSlots[1]
+end
+
+function transferUtil.validOutputSlot(slot)
+	if util.tableSize(storage.outputSlots) == 0 then return true end
+	return (transferUtil.tFirstIndex(slot,storage.outputSlots)>0) == not storage.invertSlots[2]
 end
 
 

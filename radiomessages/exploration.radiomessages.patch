@@ -4,16 +4,86 @@
     "path": "/biomeradiation/text",
     "value": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!"
   },
+  
+  
+  {
+    "op": "add",
+    "path": "/ffbiomeradiationsevere",
+    "value": {
+      "unique": false,
+      "text": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  
   {
     "op": "replace",
     "path": "/biomecold/text",
     "value": "^red;WARNING! EXTREME COLD DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!"
   },
+  
+  {
+    "op": "add",
+    "path": "/ffbiomedeadlycold",
+    "value": {
+      "unique": false,
+      "text": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/ffbiomecoldnight",
+    "value": {
+      "unique": false,
+      "text": "As night falls, the temperature will fall. This will make any effects you feel from the cold even deadlier on you. I suggest finding warmth, and soon.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ffbiomecoldwater",
+    "value": {
+      "unique": false,
+      "text": "You fell in water. On a freezing world. Good job, idiot! Now you'll freeze to death ^red;twice as fast^reset;!",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  
   {
     "op": "replace",
     "path": "/biomeheat/text",
     "value": "^red;WARNING! EXTREME HEAT DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!"
   },
+
+  {
+    "op": "add",
+    "path": "/ffbiomeheatcavern",
+    "value": {
+      "unique": false,
+      "text": "You'll find it much warmer in caverns, thanks to heat being trapped within. Stay cool, or you'll stay dead.^reset;!",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  
+  {
+    "op": "add",
+    "path": "/ffbiomedeadlyheat",
+    "value": {
+      "unique": false,
+      "text": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  
+  
   {
     "op": "replace",
     "path": "/biomeairless/text",
@@ -55,7 +125,7 @@
     "path": "/ffbiomeproto",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! PROTO-POISON DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "text": "^red;WARNING! POISON ATMOSPHERE DETECTED ^reset;! \nWith ^green;Proto-Poison protection^reset; you'll be fine. Otherwise, Proto poison slowly drains your vitality. Poison resistance reduces or nullifies the effects.",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }

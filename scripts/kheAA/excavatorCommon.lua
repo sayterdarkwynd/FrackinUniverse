@@ -35,7 +35,7 @@ function excavatorCommon.init(drill,pump)
 	if pump then
 		require "/scripts/kheAA/liquidLib.lua"
 		storage.depth=-1
-		storage.liquids={}
+		liquidLib.init()
 		did=true
 	end
 	if vacuum then
@@ -52,22 +52,29 @@ end
 function excavatorCommon.cycle(dt)
 	if delta2 > 1 then
 		transferUtil.loadSelfContainer()
+		if storage.isPump then
+			liquidLib.update(dt)
+		end
 		delta2=0
 	else
 		delta2=delta2+dt
 	end
 	if storage.state=="off" then
+		setRunning(false)
 		return
 	end
+	
 	if transferUtil.powerLevel(powerNode) then
-		setRunning(true)
 		if storage.state=="stop" then
+			setRunning(true)
 			storage.state="start"
 			return;
 		end
 	else
+		setRunning(false)
 		deltatime=0
 	end
+	setRunning(true)
 	deltatime = deltatime + dt;
 	time = time + dt;
 	if time > 10 then
@@ -292,8 +299,7 @@ function states.pump(dt)
 	end
 	deltatime = 0;
 
-	--###world.forceDestroyLiquid()
-	local liquid = world.destroyLiquid(transferUtil.getAbsPos({storage.facing, storage.depth},storage.position));
+	local liquid = world.forceDestroyLiquid(transferUtil.getAbsPos({storage.facing, storage.depth},storage.position));
 	if liquid ~= nil then
 		if storage.liquids[liquid[1]] == nil then
 			storage.liquids[liquid[1]] = 0;
@@ -304,60 +310,50 @@ function states.pump(dt)
 	if not transferUtil.powerLevel(hiPumpNode,true) then
 		for k,v in pairs(storage.liquids) do
 			if v >= 1 then
-				local itemD=liquidLib.liquidToItem(k)
+				local level=10^math.floor(math.log(v,10))
+				local itemD=liquidLib.liquidToItem(k,level)
 				if itemD ~= nil then
 					local try,count=transferUtil.throwItemsAt(storage.containerId,storage.inContainers[storage.containerId],itemD)
 					if try then
-						storage.liquids[k] = storage.liquids[k] - itemD.count;
+						storage.liquids[k] = storage.liquids[k] - count;
 						break
 					end
 				else
-				--BLOATY!
-					local tempList=object.getOutputNodeIds(outLiquidNode)
-					if #tempList > 0 then
-						local outputPipes={}
-						for _,v in pairs(tempList) do
-							local result=world.callScriptedEntity(v[1],"liquidLib.canReceiveLiquid")
-							if result then
-								table.insert(outputPipes,v[1])
-							end
-						end
-						if #outputPipes>0 then
-							local outputPipe=transferUtil.nearest(entity.id(),outputPipes)
+					if util.tableSize(storage.liquidOuts)>0 then
+						local outputPipe=transferUtil.findNearest(entity.id(),entity.position(),storage.liquidOuts)
+						if world.entityExists(outputPipe) then
 							world.callScriptedEntity(outputPipe,"liquidLib.receiveLiquid",{k,1})
 							storage.liquids[k]=v-1
+							break
 						end
-						break
 					end
 				end
 			end
 		end
 	else
-		local myItems=world.containerItems(entity.id());
-		local itmConf=nil;
-		local temp;
-		for k,v in pairs(liquidLib.liquidIds) do
-			if world.containerConsume(entity.id(),{name=v,1}) then
-				storage.liquids[k]=storage.liquids[k]+1
-			end
-		end
-		--NEED TO REFINE THIS! seriously bloaty.
-		for k,v in pairs(storage.liquids) do
-			local tempList=object.getOutputNodeIds(outLiquidNode)
-			if #tempList > 0 then
-				local outputPipes={}
-				for _,v in pairs(tempList) do
-					local result=world.callScriptedEntity(v[1],"liquidLib.canReceiveLiquid")
-					if result then
-						table.insert(outputPipes,v[1])
+		for _,item in pairs(world.containerItems(entity.id())) do
+			if item.count >= 1 then
+				item.count=10^math.floor(math.log(item.count,10))
+				local id=liquidLib.itemToLiquidId(item)
+				if id then
+					if world.containerConsume(entity.id(),item) then
+						if not storage.liquids[id] then storage.liquids[id] = 0 end
+						storage.liquids[id]=storage.liquids[id]+item.count
+						break
 					end
 				end
-				if #outputPipes>0 then
-					local outputPipe=transferUtil.nearest(storage.containerId,storage.inContainers[storage.containerId],outputPipes)
+			end
+		end
+		for k,v in pairs(storage.liquids) do
+			if util.tableSize(storage.liquidOuts)>0 then
+			--findNearest(source,sourcePos,targetList)
+				local outputPipe=transferUtil.findNearest(entity.id(),entity.position(),storage.liquidOuts)
+				--sb.logInfo(sb.printJson({outputPipe,"liquidLib.receiveLiquid",{k,1}}))
+				if world.entityExists(outputPipe) then
 					world.callScriptedEntity(outputPipe,"liquidLib.receiveLiquid",{k,1})
 					storage.liquids[k]=v-1
+					break
 				end
-				break
 			end
 		end
 	end

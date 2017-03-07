@@ -31,7 +31,8 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("both",{"fist","quarterstaff"}) then
+	local weapons=weaponCheck({"fist","quarterstaff"})
+	if weapons["both"] or weapons["twoHanded"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})

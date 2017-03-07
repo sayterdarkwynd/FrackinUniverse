@@ -1,7 +1,7 @@
 setName="fu_wandererset"
 
 weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.15},
+    {stat = "powerMultiplier", amount = 0.15},
     {stat = "critBonus", amount = 10}
   }
   
@@ -27,7 +27,8 @@ function update(dt)
 end
 
 function checkWeapons()
-	if weaponCheck("either",{"energy"}) then
+	local weapons=weaponCheck({"energy"})
+	if weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)
 	else
 		effect.setStatModifierGroup(weaponHandle,{})
