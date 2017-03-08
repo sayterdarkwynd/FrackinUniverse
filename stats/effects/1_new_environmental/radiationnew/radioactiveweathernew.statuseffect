@@ -1,5 +1,5 @@
 {
-  "name" : "radiationweathernew",
+  "name" : "radioactiveweathernew",
   "blockingStat" : "biomeradiationImmunity",
 
   "effectConfig" : {
@@ -18,23 +18,23 @@
 
 	    
 	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
-	  "biomeTemp" : 2.0, //ice wastes are 2x as deadly
+	  "biomeTemp" : 1, //ice wastes are 2x as deadly
 	  //what is critical temperature threshold?
 	  "biomeThreshold" : 12,
 	  //base timer
-	    "baseRate" : 0.05,
+	    "baseRate" : 0.55,
 	  //base effect applied per tick
 	    "baseDebuffPerTick" : 4,
 	  // base damage applied per tick
 	    "baseDmgPerTick" : 4
   },
-  "defaultDuration" : 1,
+  "defaultDuration" : 120,
 
   "scripts" : [
-    "radiationweathernew.lua"
+    "radioactiveweathernew.lua"
   ],
 
-  "animationConfig" : "radiationweathernew.animation",
+  "animationConfig" : "radioactiveweathernew.animation",
 
   "icon" : "/interface/statuses/fire.png"
 }
