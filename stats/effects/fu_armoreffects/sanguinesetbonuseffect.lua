@@ -28,15 +28,15 @@ else
 	checkWeapons()
 	status.addEphemeralEffect( "regenerationsanguine" )
 	mcontroller.controlModifiers({
-			speedModifier = 1.1
-		})
+		speedModifier = 1.1
+	})
 end
 end
 
 function 
 	checkWeapons()
 	local weapons=weaponCheck({"dagger","knife","whip"})
-if weapon["either"] then
+if weapons["either"] then
 	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 else
 	effect.setStatModifierGroup(weaponBonusHandle,{})
