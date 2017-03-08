@@ -1,0 +1,49 @@
+{
+  "objectName" : "swtjc_wp_sequencer3bitv",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A 3-bit sequencer. Outputs a signal based on which of the 8 states it's currently on.",
+  "shortdescription" : "3-Bit Sequencer",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "3-bit sssequencccer. Outputsss a sssignal basssed on which of the 8 ssstatesss it'sss currently on.",
+  "glitchDescription" : "Fascinated. A 3-bit sequencer. Outputs a signal based on which of the 8 states it's currently on.",
+
+  "inventoryIcon" : "swtjc_wp_sequencer3bitv.png:default.7",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_sequencer3bitv.png:default.7",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/sequencer/swtjc_wp_sequencer.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/sequencer/swtjc_wp_sequencer.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_sequencer3bitv.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "hasStateInputs" : false,
+  "stateCount" : 8,
+  "inputNodes" : [ [-1, 2], [-1, 1], [-1, -1] ],
+  "outputNodes" : [ [0, 2], [1, 2], [0, 1], [1, 1], [0, 0], [1, 0], [0, -1], [1, -1] ],
+  "incrementingNode" : 1,
+  "decrementingNode" : 0,
+
+  "hasLatch" : true,
+  "latchNode" : 2,
+  "defaultSwitchState" : 0
+}

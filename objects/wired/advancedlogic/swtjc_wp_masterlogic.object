@@ -1,0 +1,71 @@
+{
+  "objectName" : "swtjc_wp_masterlogic",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An AND, OR, XOR, NAND, NOR, and NXOR Gate, with a Data Latch, all in a single package!",
+  "shortdescription" : "Master Logic Gate",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "apexDescription" : "They really went overboard with programming this thing!",
+  "avianDescription" : "They really went overboard with programming this thing!",
+  "floranDescription" : "They really went overboard with programming thisss thing!",
+  "glitchDescription" : "Amused. They really went overboard with programming this thing!",
+  "humanDescription" : "They really went overboard with programming this thing!",
+  "hylotlDescription" : "They really went overboard with programming this thing!",
+  "novakidDescription" : "They really went overboard with programming this thing!",
+  "penguinDescription" : "They really went overboard with programming this thing!",
+  "avaliDescription" : "They really went overboard with programming this thing!",
+
+  "inventoryIcon" : "swtjc_wp_masterlogic.png:default.0",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_masterlogic.png:default.0",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/advancedlogic/swtjc_wp_masterlogic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/advancedlogic/swtjc_wp_masterlogic.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_masterlogic.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, 0], [-1, -1], [-1, 1] ],
+  "outputNodes" : [ [0, 1], [0, 0], [0, -1], [1, 1], [1, 0], [1, -1] ],
+
+//  "hasAndGate" : true,
+  "andGateNode" : 0,
+//  "hasOrGate" : true,
+  "orGateNode" : 1,
+//  "hasXorGate" : true,
+  "xorGateNode" : 2,
+//  "hasNandGate" : true,
+  "nandGateNode" : 3,
+//  "hasNorGate" : true,
+  "norGateNode" : 4,
+//  "hasNxorGate" : true,
+  "nxorGateNode" : 5,
+
+  "hasLatch" : true,
+  "latchNode" : 0,
+
+  "gates" : 2,
+  "gateNode1" : 1,
+  "gateNode2" : 2,
+  "andTruthtable" : [ [ false, false ], [ false, true ] ],
+  "orTruthtable" : [ [ false, true ], [ true, true ] ],
+  "xorTruthtable" : [ [ false, true ], [ true, false ] ]
+}
