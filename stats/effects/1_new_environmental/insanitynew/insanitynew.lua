@@ -24,11 +24,30 @@ function init()
 end
 
 function setValues()
+-- check resist level and apply modifier for effects
+-- this effects how hard the environmental effects hit you in general. Note that the higher up you go in resists, the less severe effects become , until they are effectively ignorable.
   if status.stat("poisonResistance") <= 0.99 then
-    self.poisonhitmod = 0.5 * ( 1+ status.stat("poisonResistance",0) *2 )    
+    self.poisonhitmod = 1.5 * 1+ (status.stat("poisonResistance",0) * 4)
+  elseif status.stat("poisonResistance") <= 0.80 then
+    self.poisonhitmod = 1.25 * 1+ (status.stat("poisonResistance",0) * 3.5)    
+  elseif status.stat("poisonResistance") <= 0.75 then
+    self.poisonhitmod = 1 * 1+ (status.stat("poisonResistance",0) * 3) 
+  elseif status.stat("poisonResistance") <= 0.65 then
+    self.poisonhitmod = 0.8 * 1+ (status.stat("poisonResistance",0) * 2.5)    
+  elseif status.stat("poisonResistance") <= 0.50 then
+    self.poisonhitmod = 0.6 * 1+ (status.stat("poisonResistance",0) * 2)
+  elseif status.stat("poisonResistance") <= 0.40 then
+    self.poisonhitmod = 0.4 * 1+ (status.stat("poisonResistance",0) * 1.5)    
+  elseif status.stat("poisonResistance") <= 0.30 then
+    self.poisonhitmod = 0.1
+  elseif status.stat("poisonResistance") <= 0.10 then
+    self.poisonhitmod = 0.05
+  elseif status.stat("poisonResistance") <= 0.05 then
+    self.poisonhitmod = 0.05       
+  else
+    self.poisonhitmod = 0.05
   end 
-  
-  self.poisonhitTimer = self.poisonhitmod
+    self.poisonhitTimer = self.poisonhitmod
 end
 
 -- alert the player that they are affected
@@ -64,18 +83,14 @@ self.saturation = math.floor(-self.biomeTemp * self.baseRate)
       end   
       
       if (self.biomeTimer <= 0) and (status.stat("poisonResistance") < 1.0) then  
-      
-        -- first we check how windy it is
-        self.windLevel =  world.windLevel(mcontroller.position())
-	self.situationalPenalty = 0   
-	self.damageApply = (self.damageApply) * (1+self.biomeTemp)
-        self.debuffApply = (self.debuffApply) * (1+self.biomeTemp)
 
-	     status.modifyResource("health", ( (-self.damageApply * 0.25) - (status.stat("poisonResistance")) )  * dt )
-             status.modifyResource("food", ( -self.debuffApply * (1-status.stat("poisonResistance"))/5 ) * dt)
+           self.debuffApply = ( (self.debuffApply) * (1+self.biomeTemp) )
+	   self.damageApply = ( (self.damageApply + self.situationalPenalty) * ( 1* self.biomeTemp ) )
 
-           
-	   
+	   status.modifyResource("health", (-self.damageApply * (1-status.stat("poisonResistance"))*self.biomeTemp ) * dt)
+	   status.modifyResource("food", (-self.damageApply * (1-status.stat("poisonResistance"))) * dt)    
+             
+
         if self.biomeTimer2 <= 0 then
             effect.addStatModifierGroup({
               {stat = "protection", amount = -self.baseDebuff  },
