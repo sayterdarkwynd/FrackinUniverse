@@ -1,0 +1,43 @@
+{
+  "objectName" : "swtjc_wp_brokenwallswitch",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Flippin' awesome! Or rather, it would be if I didn't have to turn its input node /'on'/ to toggle it.",
+  "shortdescription" : "Broken (Input Only) Wall Switch",
+  "race" : "generic",
+
+  "floranDescription" : "Broken Ssswitch! Can only be toggled when itsss input node isss /'on'/.",
+  "glitchDescription" : "Annoyed. A broken switch that can only be toggled when its input node is /'on'/.",
+
+  "category" : "wire",
+  "price" : 20,
+
+  "inventoryIcon" : "swtjc_wp_brokenwallswitchicon.png",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_brokenwallswitch.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switchwithinput.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle2.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_brokenwallswitch.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "interactive" : false
+}
