@@ -17,7 +17,10 @@ function init()
   self.baseDmg = config.getParameter("baseDmgPerTick",2)
   self.baseDebuff = config.getParameter("baseDebuffPerTick",2)
   self.baseTimer = config.getParameter("baseRate",0.5)
+  self.windLevel =  world.windLevel(mcontroller.position())
+  
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
+  
   -- set values, activate effects
   activateVisualEffects()
   setValues()
