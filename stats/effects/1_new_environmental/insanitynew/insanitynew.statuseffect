@@ -1,0 +1,41 @@
+{
+  "name" : "insanitynew",
+  "blockingStat" : "insanityImmunity",
+
+  "effectConfig" : {
+	    //-- Heat values
+	    //--
+	    //-- Biome            Modifier (biomeTemp)
+	    //-------------
+	    //--Alien             1.00
+	    //--Jungle            0.55
+	    //--Irradiated        2.0
+	    //--Metallic          0.35
+	    //--Sulphuric         0.25
+	    //--Sulphuric Dark    0.4
+	    //--Sulphuric Ocean   0.4
+	    //--Strange Sea       1.14
+
+	    
+	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
+	  "biomeTemp" : 1, //ice wastes are 2x as deadly
+	  //what is critical temperature threshold?
+	  "biomeThreshold" : 6,
+	  //base timer
+	    "baseRate" : 0.07,
+	  //base effect applied per tick
+	    "baseDebuffPerTick" : 2,
+	  // base damage applied per tick
+	    "baseDmgPerTick" : 0.5,
+	    "multiplyColor" : [-220, -220, -220]
+  },
+  "defaultDuration" : 120,
+
+  "scripts" : [
+    "insanitynew.lua"
+  ],
+
+  "animationConfig" : "insanitynew.animation",
+
+  "icon" : "/interface/statuses/insanity.png"
+}
