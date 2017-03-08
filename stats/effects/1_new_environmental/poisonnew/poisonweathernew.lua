@@ -73,13 +73,14 @@ self.debuffApply = (self.baseDebuff* self.biomeTemp) * (-self.poisonhitmod)
 
 self.damageApply = ( self.baseDmg * 1- math.min(status.stat("poisonResistance"),0) ) * self.biomeTemp
 
--- if timer is 0 and they have less than 100% resist, proceed
-      if self.biomeTimer <= 0 and status.stat("poisonResistance") < 1.0 then
+      if status.stat("poisonResistance") < 1.0 then  
              mcontroller.controlModifiers({  -- BACKWARDS MOVEMENT --- port this over to INSANITY!
-	         airJumpModifier = 1 * status.stat("poisonResistance"), 
-	         speedModifier = 1 * (-1 + status.stat("poisonResistance"))
-             })       
-
+	         airJumpModifier = status.stat("poisonResistance")+0.2, 
+	         speedModifier = status.stat("poisonResistance")+0.2
+             })    
+      end       
+-- if timer is 0 and they have less than 100% resist, proceed
+      if self.biomeTimer <= 0 and status.stat("poisonResistance") < 1.0 then   
         -- first we check how windy it is
         self.windLevel =  world.windLevel(mcontroller.position())
 
