@@ -1,36 +1,32 @@
 {
   "name" : "coldweathernew",
-  "blockingStat" : "coldImmunity",
+  "blockingStat" : "biomecoldImmunity",
 
   "effectConfig" : {
-    //-- Cold values
-    //--
-    //-- Biome            Modifier
-    //-------------
-    //--Snow              0.8
-    //--Arctic            1.5
-    //--Nitrogen Sea      1.3
-    //--Frozen Moon       1.0
-    //--Ice Waste         2.0
-    //--Frozen Volcanic   1.5
-    //--Ice Waste Dark    2.4
-    //--Tundra            0.5
+	    //-- Cold values
+	    //--
+	    //-- Biome            Modifier (biomeTemp)
+	    //-------------
+	    //--Snow              0.15
+	    //--Arctic            0.8
+	    //--Nitrogen Sea      1.0
+	    //--Frozen Moon       0.8
+	    //--Ice Waste         2.0
+	    //--Frozen Volcanic   1.2
+	    //--Ice Waste Dark    2.4
+	    //--Tundra            0.05
 	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
-	  "biomeTemp" : 2.0, //ice wastes are 2x as deadly
-
+	  "biomeTemp" : 0.5, //ice wastes are 2x as deadly
 	  //what is critical temperature threshold?
 	  "biomeThreshold" : 12,
-
 	  //base timer
-	    "baseRate" : 0.25,
-
+	    "baseRate" : 0.1,
 	  //base effect applied per tick
 	    "baseDebuffPerTick" : 4,
-
 	  // base damage applied per tick
-	    "baseDmgPerTick" : 12
+	    "baseDmgPerTick" : 4
   },
-  "defaultDuration" : 1,
+  "defaultDuration" : 5,
 
   "scripts" : [
     "coldweathernew.lua"

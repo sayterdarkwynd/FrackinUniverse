@@ -17,16 +17,23 @@ function init()
   self.baseDmg = config.getParameter("baseDmgPerTick",2)
   self.baseDebuff = config.getParameter("baseDebuffPerTick",2)
   self.baseTimer = config.getParameter("baseRate",0.5)
- 
+  self.windLevel =  world.windLevel(mcontroller.position())
+  
+  world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
+  
   -- set values, activate effects
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeproto", 1.0) -- send player a warning
   activateVisualEffects()
   setValues()
+  self.timerRadioMessage = 0
+  self.liquidMod = 1
+  self.situationalPenalty = 0
+  self.nightPenalty = 1
   script.setUpdateDelta(5)
 end
 
 function setValues()
 -- check resist level and apply modifier for effects
+-- this effects how hard the environmental effects hit you in general. Note that the higher up you go in resists, the less severe effects become , until they are effectively ignorable.
   if status.stat("iceResistance") <= 0.99 then
     self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 4)
   elseif status.stat("iceResistance") <= 0.80 then
@@ -46,7 +53,6 @@ function setValues()
   elseif status.stat("iceResistance") <= 0.05 then
     self.icehitmod = 0.05       
   end 
-  
   self.icehitTimer = self.icehitmod +1
 end
 
@@ -86,7 +92,7 @@ end
 
 function update(dt)
 
-      -- light check
+      -- environment checks
       daytime = daytimeCheck()
       underground = undergroundCheck()
       local lightLevel = getLight()
@@ -96,66 +102,75 @@ function update(dt)
       self.damageApply = ( self.baseDmg * 1- math.min(status.stat("iceResistance"),0) ) * self.biomeTemp
 
       if self.biomeTimer <= 0 and status.stat("iceResistance") < 1.0 then
-      
-      -- Also handled here is the nasty effect being underwater in this temperature has upon you....
-      -- are they in water? if so, they ain't gonna like it
+
+        -- are they in liquid?
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-        local mouthful = world.liquidAt(mouthposition)
-	if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
-            status.modifyResource("food", (status.resource("food") * -0.005) )
-            self.damageApply = self.damageApply * 1.75
-	    inWater = 1
-	else
-	  isDry()
-        end   
-        
-        -- is it nighttime or above ground? if so, its colder
-        if not daytime then
-          self.damageApply = self.damageApply * 2 - math.min(lightLevel,0)  
-          if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
-             status.modifyResource("food", (status.resource("food") * -0.005) )
-            self.damageApply = self.damageApply * 1.75
-	    inWater = 1
-	  else
-	    isDry()
-          end            
+        local mouthful = world.liquidAt(mouthposition)        
+        if (world.liquidAt(mouthPosition)) then
+		self.liquidMod = 1.50
+		if self.timerRadioMessage == 0 then
+		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
+		  self.timerRadioMessage = 60
+		end
+        else
+          self.liquidMod = 1
         end
+
+        -- is it nighttime or above ground? 
+        if not daytime then
+                self.nightPenalty = 1 + math.min(lightLevel,0)/100 
+                if self.timerRadioMessage == 0 then
+                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
+                  self.timerRadioMessage = 60
+		end
+        else
+          self.nightPenalty = 1
+        end
+        
         -- if it is above ground, exposure is worse
-          if not underground then 
-            self.damageApply = self.damageApply + (self.icehitmod *1.5)
-          end 
+        
+        -- first we check how windy it is
+        self.windLevel =  world.windLevel(mcontroller.position())
+        
+        -- and if they are on the surface, we give them a penalty thanks to surface conditions
+        if not underground then 
+          self.situationalPenalty = (self.icehitmod) * (1+ (self.windLevel/100)) 
+        else
+          self.situationalPenalty = 0
+        end 
 
+        -- Damage calculation
+        self.damageApply = ( (self.damageApply) + (self.situationalPenalty) ) * ( (self.liquidMod) + (self.nightPenalty) )
          -- damage application per tick
-          status.applySelfDamageRequest ({
-            damageType = "IgnoresDef",
-            damage = self.damageApply,
-            damageSourceKind = "ice",
-            sourceEntityId = entity.id()	
-          })   
-          
-         -- being cold also consumes food faster to keep your body warm
-	 if status.isResource("food") then
-	  status.modifyResource("food", (status.resource("food") * -0.01) )
-	 end	          
-
-          -- activate visuals and check stats
 	  activateVisualEffects()
+	  makeAlert()
 	  
-	  -- set the timer
-          self.biomeTimer = self.icehitTimer
-          
+	  -- set the timers
+          self.biomeTimer = self.icehitTimer * 1 - status.stat("iceResistance")
+          self.timerRadioMessage = self.timerRadioMessage - dt
       end 
       
       -- and finally, the colder you get the slower you move and the crappier your jump becomes
       -- this is outside of the timer, because it needs to always apply if you have less than 100% resist, not just onTick    
       if status.stat("iceResistance") < 0.9 then
+      
+      -- constant damage applied
+           status.modifyResource("health", (-self.damageApply * (1-status.stat("iceResistance")) ) * dt)
+	   status.modifyResource("food", (-self.damageApply * (1-status.stat("iceResistance"))/5 ) * dt)
+	   
              mcontroller.controlModifiers({
 	         airJumpModifier = status.stat("iceResistance")+0.1, 
 	         speedModifier = status.stat("iceResistance")+0.10 -- 0.01 is a failsafe so they are never at 0 speed
              })      
-      end  
-      
+      end      
 end       
+
+
+function makeAlert()
+        world.spawnProjectile("iceinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
+        --animator.playSound("bolt")
+end
+
 
 function uninit()
 

@@ -24,6 +24,7 @@ function init()
       autoJump = false,
       reJumpDelay = 0.5
     }
+  }
 end
  
 
