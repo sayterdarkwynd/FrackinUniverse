@@ -1,33 +1,37 @@
 setName="fu_militiaset"
 
-weaponEffect={
-    {stat = "powerMultiplier", baseMultiplier = 1.15}
-  }
-  
+weaponBonus={
+	{stat = "powerMultiplier", amount = 0.15}
+}
+
 armorBonus={}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponHandle=effect.addStatModifierGroup({})
+	weaponBonusHandle=effect.addStatModifierGroup({})
+
 	checkWeapons()
-	armorHandle=effect.addStatModifierGroup(armorBonus)
+
+	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
-	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire()
-	else
-		checkWeapons()
-	end	
+if not checkSetWorn(self.setBonusCheck) then
+	effect.expire()
+else
+	
+	checkWeapons()
+end
 end
 
-function checkWeapons()
+function 
+	checkWeapons()
 	local weapons=weaponCheck({"shotgun","assaultrifle"})
-	if weapons["either"] then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect)
-	else
-		effect.setStatModifierGroup(weaponHandle,{})
-	end
+if weapons["either"] then
+	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+else
+	effect.setStatModifierGroup(weaponBonusHandle,{})
+end
 end

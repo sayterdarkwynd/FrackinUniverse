@@ -1,36 +1,40 @@
 setName="fu_wandererset"
 
-weaponEffect={
-    {stat = "powerMultiplier", amount = 0.15},
-    {stat = "critBonus", amount = 10}
-  }
-  
+weaponBonus={
+	{stat = "powerMultiplier", amount = 0.15},
+	{stat = "critBonus", amount = 10}
+}
+
 armorBonus={
-    {stat = "electricResistance", amount = 0.20}
+	{stat = "electricResistance", amount = 0.20}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponHandle=effect.addStatModifierGroup({})
+	weaponBonusHandle=effect.addStatModifierGroup({})
+	
 	checkWeapons()
-	armorHandle=effect.addStatModifierGroup(armorBonus)
+	
+	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		checkWeapons()
-	end	
+		
+	checkWeapons()
+	end
 end
 
-function checkWeapons()
+function 
+	checkWeapons()
 	local weapons=weaponCheck({"energy"})
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponHandle,weaponEffect)
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponHandle,{})
+		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end
 end
