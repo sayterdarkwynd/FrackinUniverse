@@ -1,0 +1,44 @@
+{
+  "objectName" : "swtjc_wp_and3i",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An /'AND'/ gate. Requires all inputs to be /'on'/ to work.",
+  "shortdescription" : "AND Gate (3 Inputs)",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "An /'AND'/ gate. Requiresss all inputsss to be /'on'/ to work.",
+  "glitchDescription" : "Observation. An /'AND'/ gate. Requires all inputs to be /'on'/ to work.",
+
+  "inventoryIcon" : "swtjc_wp_and3i.png:default.1",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_and3i.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/swtjc_wp_logic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_and3i.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, -1], [-1, 0], [0, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "gates" : 3,
+  "truthtable" : [ [ [ false, false ], [ false, false ] ], [ [ false, false ], [ false, true ] ] ]
+}

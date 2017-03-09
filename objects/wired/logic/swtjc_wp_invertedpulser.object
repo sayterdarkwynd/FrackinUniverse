@@ -1,0 +1,43 @@
+{
+  "objectName" : "swtjc_wp_invertedpulser",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Stops transmitting signals for an instant whenever it becomes active.",
+  "shortdescription" : "Inverted Pulse Transmitter",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "Stopsss transssmitting sssignalsss for an inssstant whenever it becomesss active.",
+  "glitchDescription" : "Observation. Stops transmitting signals for an instant whenever it becomes active.",
+
+  "inventoryIcon" : "timer.png:default.1",
+  "orientations" : [
+    {
+      "image" : "timer.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/swtjc_wp_pulsetimer.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "timer.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "interval" : 5,
+
+  "inverted" : true
+}
