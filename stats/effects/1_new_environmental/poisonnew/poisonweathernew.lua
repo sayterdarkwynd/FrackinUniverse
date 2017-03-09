@@ -14,9 +14,9 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
-  self.biomeTimer = config.getParameter("baseRate",0)              -- same as above. pare out.
-  self.biomeTimer2=  (self.baseRate * (1 + status.stat("poisonResistance",0)) *20)   --this second timer is for secondary effects (debuffs) and are much slower
-
+  self.biomeTimer = config.getParameter("baseRate",0)
+  self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *2)
+sb.logInfo("biomeTimer initial : "..self.baseRate)
   -- activate visuals and check stats
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
   activateVisualEffects() 
@@ -44,44 +44,33 @@ function setEffectTime()
 end
 
 function update(dt)
-  self.damageApply = setEffectDamage()
-  self.debuffApply = setEffectDebuff()
-  self.baseRate = setEffectTime()
+self.biomeTimer = self.biomeTimer - dt 
+self.biomeTimer2 = self.biomeTimer2 - dt 
+self.timerRadioMessage = self.timerRadioMessage - dt
+self.damageApply = setEffectDamage()
+self.debuffApply = setEffectDebuff()
+self.baseRate = setEffectTime()
 
       if status.stat("poisonResistance",0) < 1.0 then  
-        activateVisualEffects() 
-        self.timerRadioMessage = self.timerRadioMessage - dt
-        self.biomeTimer = self.biomeTimer - dt  
-        self.biomeTimer2 = self.biomeTimer2 - dt
-
-        -- first we check how windy it is
         self.windLevel =  world.windLevel(mcontroller.position())
-
-        -- is it nighttime or above ground? 
         if self.windLevel >= 40 then
                 if self.timerRadioMessage == 0 then
                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
                   self.timerRadioMessage = 60
                     self.biomeTemp = self.biomeTemp * 1.6
-  		      self.damageApply = setEffectDamage()
-  		      self.debuffApply = setEffectDebuff()
-  		      self.baseRate = setEffectTime()                  
+  		    self.damageApply = setEffectDamage()
+  		    self.debuffApply = setEffectDebuff()                 
 		end
         end
-               
-        if self.biomeTimer <= 0 then
-          if self.biomeTimer2 <= 0 then
-            effect.addStatModifierGroup({
-              {stat = "protection", amount = -self.baseDebuff  },
-              {stat = "powerMultiplier", amount = -(self.baseDebuff/100 )  }
-            })
-            
-            self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("poisonResistance",0))) * 2
-          end 
-          self.biomeTimer = self.baseRate
-          makeAlert()
-        end
 
+      if (self.biomeTimer2 <= 0) and (status.stat("poisonResistance",0) < 1.0) and (status.stat("powerMultiplier") >=0.05) then
+            effect.addStatModifierGroup({
+              {stat = "powerMultiplier", amount = -((self.baseDebuff*2)/100)  }
+            })
+        makeAlert()
+        self.biomeTimer2 = setEffectTime()
+      end 
+        
         self.damageApply = (self.damageApply /50)  
         status.modifyResource("health", -self.damageApply * dt)
 
@@ -94,6 +83,9 @@ function update(dt)
 end       
 
 function makeAlert()
+  local statusTextRegion = { 0, 1, 0, 1 }
+  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+  animator.burstParticleEmitter("statustext")   
    animator.playSound("bolt")
 end
 

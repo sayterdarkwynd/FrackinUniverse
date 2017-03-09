@@ -14,14 +14,13 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
-  self.biomeTimer = config.getParameter("baseRate",0)              -- same as above. pare out.
-  self.biomeTimer2=  (self.baseRate * (1 + status.stat("poisonResistance",0)) *2)   --this second timer is for secondary effects (debuffs) and are much slower
-
+  self.biomeTimer = config.getParameter("baseRate",0)
+  self.biomeTimer2 = (self.baseRate * (1 + status.stat("iceResistance",0)) *2)
+  
   -- activate visuals and check stats
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
   activateVisualEffects()
   makeAlert()  
-
   script.setUpdateDelta(5)
 end
 
@@ -34,14 +33,17 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (( self.biomeThreshold * self.baseRate ) * (1 +status.stat("iceResistance",0)))
+  return (( self.biomeThreshold * self.baseRate ) * (1 +status.stat("poisonResistance",0)))
 end
 
 -- alert the player that they are affected
 function activateVisualEffects()
   effect.setParentDirectives("fade=3066cc=0.6")
   animator.setParticleEmitterOffsetRegion("icebreath", mcontroller.boundBox())
-  animator.setParticleEmitterActive("icebreath", true) 
+  animator.setParticleEmitterActive("icebreath", true)
+  local statusTextRegion = { 0, 1, 0, 1 }
+  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+  animator.burstParticleEmitter("statustext")   	  
 end
 
 -- we have Light checks because night is colder than day. 
@@ -73,39 +75,39 @@ end
 
 
 function update(dt)
-  self.damageApply = setEffectDamage()
-  self.debuffApply = setEffectDebuff()
-  self.baseRate = setEffectTime()
+self.biomeTimer = self.biomeTimer - dt 
+self.biomeTimer2 = self.biomeTimer2 - dt 
+self.timerRadioMessage = self.timerRadioMessage - dt
+self.damageApply = setEffectDamage()
+self.debuffApply = setEffectDebuff()
+self.baseRate = setEffectTime()
+sb.logInfo("timer : "..self.baseRate)
   -- environment checks
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight()  
-  
-  
-      if self.biomeTimer <= 0 and status.stat("iceResistance") < 1.0 then
+
+      if self.biomeTimer <= 0 and status.stat("iceResistance",0) < 1.0 then
 	self.timerRadioMessage = self.timerRadioMessage - dt 
-	
+	self.biomeTimer = self.biomeTimer - dt
+	self.biomeTimer2 = self.biomeTimer2 - dt
           -- cold wind
-          self.windLevel =  world.windLevel(mcontroller.position())
-          sb.logInfo("wind : "..self.windLevel)
-          if self.windLevel >= 20 then
-                -- reapply effects when in stronger winds
-                self.biomeThreshold = self.biomeThreshold * (1.15 + status.stat("iceResistance"))
-  		self.damageApply = setEffectDamage()
-  		self.debuffApply = setEffectDebuff()
-  		self.baseRate = setEffectTime()   
-  		
+        self.windLevel =  world.windLevel(mcontroller.position())
+        if self.windLevel >= 40 then
                 if self.timerRadioMessage == 0 then
                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
                   self.timerRadioMessage = 60
+                    self.biomeTemp = self.biomeTemp * 1.2
+  		    self.damageApply = setEffectDamage()
+  		    self.debuffApply = setEffectDebuff()                 
 		end
-          end
-
+        end
+        
         -- are they in liquid?
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
         local mouthful = world.liquidAt(mouthposition)        
         if (world.liquidAt(mouthPosition)) then
-		self.liquidPenalty = self.liquidPenalty * (1.2 + status.stat("iceResistance"))
+		self.liquidPenalty = self.liquidPenalty * 1.2
   		self.damageApply = setEffectDamage()
   		self.debuffApply = setEffectDebuff()
   		self.baseRate = setEffectTime() 		
@@ -117,7 +119,7 @@ function update(dt)
         
         -- is it nighttime or above ground? 
         if not daytime then
-                self.biomeNight = self.biomeNight * (1.15 + status.stat("iceResistance"))
+                self.biomeNight = self.biomeNight * 1.25
   		self.damageApply = setEffectDamage()
   		self.debuffApply = setEffectDebuff()
   		self.baseRate = setEffectTime()                 
@@ -126,19 +128,17 @@ function update(dt)
                   self.timerRadioMessage = 60
 		end
         end
-        
-        
-          -- activate visuals and check stats
-	  activateVisualEffects()
-          makeAlert()  
+ 
             effect.addStatModifierGroup({
               {stat = "maxHealth", amount = -self.baseDebuff  },
               {stat = "powerMultiplier", amount = -(self.baseDebuff/100 )  }
             })
-          self.biomeTimer = self.baseRate
+            
+	  activateVisualEffects()
+          self.biomeTimer = setEffectTime()
       end 
-        
-      if status.stat("iceResistance") <=0.99 then      
+      
+      if status.stat("iceResistance",0) < 1.0 then      
 	     self.damageApply = (self.damageApply /120)  
 	     status.modifyResource("health", -self.damageApply * dt)
 	   
@@ -149,17 +149,21 @@ function update(dt)
 	     end
            end  
              mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("iceResistance")+0.1, 
-	         speedModifier = status.stat("iceResistance")+0.10 -- 0.01 is a failsafe so they are never at 0 speed
+	         airJumpModifier = 1 * status.stat("iceResistance")+0.05, 
+	         speedModifier = 1 * status.stat("iceResistance")+0.05
              })              
       end  
-      self.biomeTimer = self.biomeTimer - dt
+      
+      if self.biomeTimer2 <= 0 and status.stat("iceResistance",0) < 1.0 then
+        makeAlert()
+        self.biomeTimer2 = setEffectTime()
+        self.biomeTimer2 = (self.biomeTimer2)/3
+      end
 end         
 
-
+-- ice breath
 function makeAlert()
         world.spawnProjectile("iceinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
-        --animator.playSound("bolt")
 end
 
 

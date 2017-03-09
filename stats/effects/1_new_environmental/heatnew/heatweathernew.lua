@@ -34,7 +34,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (( self.biomeThreshold * self.baseRate ) * (1 +status.stat("fireResistance",0)))
+  return (( self.biomeThreshold * self.baseRate ) * (1 +status.stat("fireResistance",0))/10)
 end
 
 -- alert the player that they are affected
@@ -66,9 +66,9 @@ underground = undergroundCheck()
 	self.windLevel =  world.windLevel(mcontroller.position())
 
 	if not underground then 
-	  self.situationalPenalty = 1.2
+	  self.situationPenalty = self.situationPenalty * 1.2
 	else
-	  self.situationalPenalty = 1
+	  self.situationPenalty = config.getParameter("situationPenalty",0)
 	end 
 
 	  activateVisualEffects()
@@ -79,8 +79,8 @@ underground = undergroundCheck()
       end 
 
       if status.stat("fireResistance",0) <=0.99 then      
-	     self.damageApply = (self.damageApply /100) 
-	     self.debuffApply = (self.debuffApply /10) 
+	     self.damageApply = (self.damageApply /25) 
+	     self.debuffApply = (self.debuffApply /100) 
 	     
 	     status.modifyResource("health", -self.damageApply * dt)
 	   if status.isResource("food") then
