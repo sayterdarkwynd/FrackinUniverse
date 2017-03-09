@@ -33,7 +33,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (( self.biomeThreshold * self.baseRate ) * (1 + status.stat("radioactiveResistance",0)))
+  return (( self.biomeThreshold * self.baseRate ) * (1 + status.stat("radioactiveResistance",0))/10)
 end
 
 -- alert the player that they are affected
