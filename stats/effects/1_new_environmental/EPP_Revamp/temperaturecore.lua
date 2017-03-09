@@ -26,14 +26,16 @@ function init()
 
 
   self.biomeTemp = config.getParameter("biomeTemp",0)
-  self.biomeNight = config.getParameter("biomeNight",0)
-  self.biomeThreshold = config.getParameter("biomeThreshold",0)
   self.windLevel =  world.windLevel(mcontroller.position())
   self.baseDmg = config.getParameter("baseDmgPerTick",0)
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
   self.baseRate = config.getParameter("baseRate",0)
-  self.situationalPenalty = 0
-  self.liquidPenalty = (config.getParameter("biomeTemp",0)/2)
+  
+  self.biomeNight = config.getParameter("biomeNight",0)
+  self.biomeThreshold = config.getParameter("biomeThreshold",0)
+  self.situationPenalty = config.getParameter("situationPenalty",0)
+  self.liquidPenalty = config.getParameter("liquidPenalty",0) 
+  
   self.affectAnimals = 0
   comboEffect = { }
   
@@ -51,7 +53,13 @@ end
 
 
 
+function setEffectDamage()
+  self.damageApply = ( (self.baseDmg * self.biomeTemp) + ( ((self.biomeNight) + (self.liquidPenalty) ) * self.situationPenalty  ) * (1 -status.stat("poisonResistance"))
+end
 
+function setEffectDebuff()
+  self.debuffApply = ( (self.baseDebuff * self.biomeTemp) + ( ((self.biomeNight) + (self.liquidPenalty) ) * self.situationPenalty  ) * (1 -status.stat("poisonResistance"))
+end
 
 function setElementInit(setElementName, setEffectStats,callbacks)
 -- core hitmods

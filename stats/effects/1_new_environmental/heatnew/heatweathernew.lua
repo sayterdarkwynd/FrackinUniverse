@@ -109,7 +109,7 @@ self.damageApply = ( self.baseDmg * 1- math.min(status.stat("fireResistance"),0)
       
 	   -- final Damage calculation
 	   -- apply the damage constantly but silently         
-	   self.damageApply = ( (self.damageApply) + (self.situationalPenalty) ) * ( 1+(self.biomeTemp))
+	   self.damageApply = (( (self.damageApply) + (self.situationalPenalty) ) * ( 1+(self.biomeTemp)) /50)
 	   status.modifyResource("health", (-self.damageApply * (1-status.stat("fireResistance"))*self.biomeTemp ) * dt)
 	   status.modifyResource("food", (-self.damageApply * (1-status.stat("fireResistance")/100)) * dt)     
 	   
