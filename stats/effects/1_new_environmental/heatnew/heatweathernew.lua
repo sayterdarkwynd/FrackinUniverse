@@ -15,7 +15,7 @@ function init()
   
   self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
   self.biomeTimer = config.getParameter("baseRate",0)              -- same as above. pare out.
-  self.biomeTimer2= (self.biomeTimer * (1 + status.stat("fireResistance",0))) * 2   --this second timer is for secondary effects (debuffs) and are much slower
+  self.biomeTimer2=  (self.baseRate * (1 + status.stat("fireResistance",0)) *2)  --this second timer is for secondary effects (debuffs) and are much slower
 
   -- activate visuals and check stats
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning

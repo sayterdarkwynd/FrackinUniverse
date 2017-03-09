@@ -2,8 +2,6 @@ require("/scripts/vec2.lua")
 
 function init()
 
-  self.timerRadioMessage = 1  -- initial delay for secondary radiomessages
-    
   -- Environment Configuration --
   self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -16,18 +14,21 @@ function init()
   
   self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
   self.biomeTimer = config.getParameter("baseRate",0)              -- same as above. pare out.
-  self.biomeTimer2= (self.biomeTimer * (1 + status.stat("poisonResistance",0))) * 2   --this second timer is for secondary effects (debuffs) and are much slower
+  self.biomeTimer2=  (self.baseRate * (1 + status.stat("poisonResistance",0)) *2)   --this second timer is for secondary effects (debuffs) and are much slower
 
 
+  -- inform them they are ill                                
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffect", 1.0) -- send player a warning
+  self.timerRadioMessage =  config.getParameter("baseRate",0)  -- initial delay for secondary radiomessages
   
-  
-  -- set desaturation
+  -- set desaturation effect
   self.multiply = config.getParameter("multiplyColor")
   self.saturation = 0  
   
+  -- activate visuals
   activateVisualEffects()
   
+  -- check for Hunger messages
   messageCheck()
 
   script.setUpdateDelta(5)
@@ -49,10 +50,11 @@ end
 
 -- alert the player that they are affected
 function activateVisualEffects()
+sb.logInfo("self.multiply")
   animator.setParticleEmitterOffsetRegion("poisonbreath", mcontroller.boundBox())
   animator.setParticleEmitterActive("poisonbreath", true)
   
-  local multiply = {255 + self.multiply[1] * status.stat("poisonResistance"), 255 + self.multiply[2] * status.stat("poisonResistance"), 255 + self.multiply[3] * status.stat("poisonResistance")}
+  local multiply = {100 * status.stat("poisonResistance",0), 255 + self.multiply[2] * status.stat("poisonResistance",0), 255 + self.multiply[3] * status.stat("poisonResistance",0)}
   local multiplyHex = string.format("%s%s%s", toHex(multiply[1]), toHex(multiply[2]), toHex(multiply[3]))  
   effect.setParentDirectives(string.format("?saturation=%d?multiply=%s", self.saturation, multiplyHex))
 end
@@ -73,7 +75,8 @@ self.saturation = math.floor(-self.biomeTemp * self.baseRate)
 self.damageApply = setEffectDamage()
 self.debuffApply = setEffectDebuff()
 self.baseRate = setEffectTime()
-
+self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
+  
       if (status.stat("poisonResistance") < 1.0) then
              mcontroller.controlModifiers({
 	         speedModifier = (-status.stat("poisonResistance",0))-0.2
