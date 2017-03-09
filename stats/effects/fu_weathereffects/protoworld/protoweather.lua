@@ -1,52 +1,51 @@
 function init()
+  self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
+    
   -- Environment Configuration --
-  self.biomeTimer = 5
-  self.baseDmg = config.getParameter("baseDmgPerTick",2)
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",2)
-  self.baseTimer = config.getParameter("baseRate",0.5)
-
-  -- set values, activate effects
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeproto", 1.0) -- send player a warning
+  self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
+  self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
+  self.baseDmg = config.getParameter("baseDmgPerTick",0)           -- damage per tick
+  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     --debuff per tick
+  self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
+  self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
+  self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
+  self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
+  
+  self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
+  self.biomeTimer = config.getParameter("baseRate",0)              -- same as above. pare out.
+  self.biomeTimer2= (self.biomeTimer * (1 + status.stat("poisonResistance",0))) * 2   --this second timer is for secondary effects (debuffs) and are much slower
+  
+  -- activate visuals and check stats
+  world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
   activateVisualEffects()
-  setValues()
 
   script.setUpdateDelta(5)
 end
 
-function setValues()
--- check resist level and apply modifier for effects
-  if status.stat("poisonResistance") <= 0.99 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 4)
-  elseif status.stat("poisonResistance") <= 0.80 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 3.5)    
-  elseif status.stat("poisonResistance") <= 0.75 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 3) 
-  elseif status.stat("poisonResistance") <= 0.65 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 2.5)    
-  elseif status.stat("poisonResistance") <= 0.50 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 2)
-  elseif status.stat("poisonResistance") <= 0.40 then
-    self.poisonhitmod = 1 * 1+ (status.stat("poisonResistance",0) * 1.5)    
-  elseif status.stat("poisonResistance") <= 0.30 then
-    self.poisonhitmod = 0.6
-  elseif status.stat("poisonResistance") <= 0.10 then
-    self.poisonhitmod = 0.2
-  elseif status.stat("poisonResistance") <= 0.05 then
-    self.poisonhitmod = 0.05       
-  end 
-  
-  self.poisonhitTimer = self.poisonhitmod +1
+function setEffectDamage()
+  return ( ( self.baseDmg + self.situationPenalty + self.liquidPenalty + self.biomeNight ) *  (1 -status.stat("poisonResistance",0) ) * self.biomeThreshold  )
 end
+
+function setEffectDebuff()
+  return ( ( ( self.baseDebuff + self.liquidPenalty + self.biomeNight ) * self.biomeTemp ) * (1 -status.stat("poisonResistance,0") * self.biomeThreshold) )
+end
+
+function setEffectTime()
+  return (( self.biomeThreshold * self.baseRate ) * (1 + status.stat("poisonResistance,0")))
+end
+
 
 -- alert the player that they are affected
 function activateVisualEffects()
-  effect.setParentDirectives("fade=306630=0.8")
+  animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
+  animator.setParticleEmitterActive("coldbreath", true) 
+end
+
+function activateVisualEffects2()
+  effect.setParentDirectives("fade=306630=0.35")
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
-  
-  animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
-  animator.setParticleEmitterActive("coldbreath", true) 
 end
 
 -- visual indicator for effect
@@ -58,11 +57,13 @@ end
 
 function update(dt)
     
-      self.biomeTimer = self.biomeTimer - dt
-      self.debuffApply = self.baseDebuff * (-self.poisonhitmod)
-      self.damageApply = ( self.baseDmg * 1- math.min(status.stat("poisonResistance"),0) )      
-      
-      if self.biomeTimer <= 0 and status.stat("poisonResistance") < 1.0 then
+  self.damageApply = setEffectDamage()
+  self.debuffApply = setEffectDebuff()
+  self.baseRate = setEffectTime()     
+  self.biomeTimer = self.biomeTimer - dt
+  self.biomeTimer2 =  self.biomeTimer2 -dt
+  
+      if self.biomeTimer <= 0 and status.stat("poisonResistance",0) < 1.0 then
          -- damage application per tick
           status.applySelfDamageRequest ({
             damageType = "IgnoresDef",
@@ -71,20 +72,24 @@ function update(dt)
             sourceEntityId = entity.id()	
           })   
 
-          effect.addStatModifierGroup({
-            {stat = "maxHealth", amount = self.debuffApply },
-            {stat = "critChance", amount = 0 }
-          })
-          
           -- activate visuals and check stats
 	  makeAlert()
 	  activateVisualEffects()
 	  
 	  -- set the timer
-          self.biomeTimer = self.poisonhitTimer
-
-      end 	
-end       
+          self.biomeTimer = self.baseRate
+      end 
+      if self.biomeTimer2 <= 0 and status.stat("poisonResistance",0) < 1.0 then      
+          effect.addStatModifierGroup({
+            {stat = "maxHealth", amount = -self.debuffApply },
+            {stat = "critChance", amount = 0 }
+          })
+          activateVisualEffects2()
+          self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("poisonResistance",0))) * 2 
+          sb.logInfo("timer : "..self.biomeTimer2)
+      end    
+          
+end         
 
 function uninit()
 

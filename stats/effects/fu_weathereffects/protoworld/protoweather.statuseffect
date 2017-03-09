@@ -3,13 +3,35 @@
   "blockingStat" : "protoImmunity",
 
   "effectConfig" : {
-    "biomeDay" : 3,
-    "biomeNight" : 20,
-    "biomeTemp" : 10,
-    "biomeRate" : 1,
-    "biomeDmgPerTick" : 4
+	    //-- Heat values
+	    //--
+	    //-- Biome            Modifier (biomeTemp)
+	    //-------------
+	    //--Alien             1.00
+	    //--Jungle            0.55
+	    //--Irradiated        2.0
+	    //--Metallic          0.35
+	    //--Sulphuric         0.25
+	    //--Sulphuric Dark    0.4
+	    //--Sulphuric Ocean   0.4
+	    //--Strange Sea       1.14
+
+	    
+	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
+	  "biomeTemp" : 1.0, //ice wastes are 2x as deadly
+	  //what is critical temperature threshold?
+	  "biomeThreshold" : 1.0,
+	  //base timer
+	    "baseRate" : 5.0,
+	  //base effect applied per tick
+	    "baseDebuffPerTick" : 2,
+	  // base damage applied per tick
+	    "baseDmgPerTick" : 1,
+	    "situationPenalty" : 1.0,
+	    "liquidPenalty" : 1.0,
+	    "biomeNight" : 1.0	
   },
-  "defaultDuration" : 1,
+  "defaultDuration" : 6,
 
   "scripts" : [
     "protoweather.lua"
@@ -17,6 +39,6 @@
 
   "animationConfig" : "protoweather.animation",
 
-  "label" : "Sap Health",
+  "label" : "Proto Poison",
   "icon" : "/interface/statuses/hpdown.png"
 }

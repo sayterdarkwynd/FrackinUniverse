@@ -1,59 +1,40 @@
 require("/scripts/vec2.lua")
 function init()
-  -- Environment Configuration --
 
-  --first, the modifier for temperature
-  self.biomeTemp = config.getParameter("biomeTemp",0)
+  self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
+    
+  -- Environment Configuration --
+  self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
+  self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
+  self.baseDmg = config.getParameter("baseDmgPerTick",0)           -- damage per tick
+  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     --debuff per tick
+  self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
+  self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
+  self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
+  self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
-  --then, the modifier for night time effects
-  self.biomeNight = config.getParameter("biomeNight",0)
-  
-  -- what is critical temperature threshold? This value is used to determine chance of catching hypothermia
-  self.biomeThreshold = config.getParameter("biomeThreshold",0)
-  
-  -- now we set the base effect config
-  self.radioMessageTimer = 10
-  self.biomeTimer = 5
-  self.baseDmg = config.getParameter("baseDmgPerTick",2)
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",2)
-  self.baseTimer = config.getParameter("baseRate",0.5)
-  self.windLevel =  world.windLevel(mcontroller.position())
-  
+  self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
+  self.biomeTimer = config.getParameter("baseRate",0)              -- same as above. pare out.
+  self.biomeTimer2= (self.biomeTimer * (1 + status.stat("iceResistance",0))) * 2   --this second timer is for secondary effects (debuffs) and are much slower
+
+  -- activate visuals and check stats
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
-  
-  -- set values, activate effects
   activateVisualEffects()
-  setValues()
-  self.timerRadioMessage = 0
-  self.liquidMod = 1
-  self.situationalPenalty = 0
-  self.nightPenalty = 1
+  makeAlert()  
+
   script.setUpdateDelta(5)
 end
 
-function setValues()
--- check resist level and apply modifier for effects
--- this effects how hard the environmental effects hit you in general. Note that the higher up you go in resists, the less severe effects become , until they are effectively ignorable.
-  if status.stat("iceResistance") <= 0.99 then
-    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 4)
-  elseif status.stat("iceResistance") <= 0.80 then
-    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 3.5)    
-  elseif status.stat("iceResistance") <= 0.75 then
-    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 3) 
-  elseif status.stat("iceResistance") <= 0.65 then
-    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 2.5)    
-  elseif status.stat("iceResistance") <= 0.50 then
-    self.icehitmod = 2 * 1+ (status.stat("iceResistance",0) * 2)
-  elseif status.stat("iceResistance") <= 0.40 then
-    self.icehitmod = 1 * 1+ (status.stat("iceResistance",0) * 1.5)    
-  elseif status.stat("iceResistance") <= 0.30 then
-    self.icehitmod = 0.6
-  elseif status.stat("iceResistance") <= 0.10 then
-    self.icehitmod = 0.2
-  elseif status.stat("iceResistance") <= 0.05 then
-    self.icehitmod = 0.05       
-  end 
-  self.icehitTimer = self.icehitmod +1
+function setEffectDamage()
+  return ( ( self.baseDmg + self.situationPenalty + self.liquidPenalty + self.biomeNight ) *  (1 -status.stat("iceResistance",0) ) * self.biomeThreshold  )
+end
+
+function setEffectDebuff()
+  return ( ( ( self.baseDebuff + self.liquidPenalty + self.biomeNight ) * self.biomeTemp ) * (1 -status.stat("iceResistance",0) * self.biomeThreshold) )
+end
+
+function setEffectTime()
+  return (( self.biomeThreshold * self.baseRate ) * (1 +status.stat("iceResistance",0)))
 end
 
 -- alert the player that they are affected
@@ -90,80 +71,90 @@ local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mo
 end
 
 
+
 function update(dt)
-
-      -- environment checks
-      daytime = daytimeCheck()
-      underground = undergroundCheck()
-      local lightLevel = getLight()
-      
-      self.biomeTimer = self.biomeTimer - dt 
-      self.debuffApply = (self.baseDebuff* self.biomeTemp) * (-self.icehitmod) 
-      self.damageApply = ( self.baseDmg * 1- math.min(status.stat("iceResistance"),0) ) * self.biomeTemp
-
+  self.damageApply = setEffectDamage()
+  self.debuffApply = setEffectDebuff()
+  self.baseRate = setEffectTime()
+  -- environment checks
+  daytime = daytimeCheck()
+  underground = undergroundCheck()
+  local lightLevel = getLight()  
+  
+  
       if self.biomeTimer <= 0 and status.stat("iceResistance") < 1.0 then
+	self.timerRadioMessage = self.timerRadioMessage - dt 
+	
+          -- cold wind
+          self.windLevel =  world.windLevel(mcontroller.position())
+          sb.logInfo("wind : "..self.windLevel)
+          if self.windLevel >= 20 then
+                -- reapply effects when in stronger winds
+                self.biomeThreshold = self.biomeThreshold * (1.15 + status.stat("iceResistance"))
+  		self.damageApply = setEffectDamage()
+  		self.debuffApply = setEffectDebuff()
+  		self.baseRate = setEffectTime()   
+  		
+                if self.timerRadioMessage == 0 then
+                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
+                  self.timerRadioMessage = 60
+		end
+          end
 
         -- are they in liquid?
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
         local mouthful = world.liquidAt(mouthposition)        
         if (world.liquidAt(mouthPosition)) then
-		self.liquidMod = 1.50
+		self.liquidPenalty = self.liquidPenalty * (1.2 + status.stat("iceResistance"))
+  		self.damageApply = setEffectDamage()
+  		self.debuffApply = setEffectDebuff()
+  		self.baseRate = setEffectTime() 		
 		if self.timerRadioMessage == 0 then
 		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
 		  self.timerRadioMessage = 60
 		end
-        else
-          self.liquidMod = 1
         end
-
+        
         -- is it nighttime or above ground? 
         if not daytime then
-                self.nightPenalty = 1 + math.min(lightLevel,0)/100 
+                self.biomeNight = self.biomeNight * (1.15 + status.stat("iceResistance"))
+  		self.damageApply = setEffectDamage()
+  		self.debuffApply = setEffectDebuff()
+  		self.baseRate = setEffectTime()                 
                 if self.timerRadioMessage == 0 then
                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
                   self.timerRadioMessage = 60
 		end
-        else
-          self.nightPenalty = 1
         end
         
-        -- if it is above ground, exposure is worse
         
-        -- first we check how windy it is
-        self.windLevel =  world.windLevel(mcontroller.position())
-        
-        -- and if they are on the surface, we give them a penalty thanks to surface conditions
-        if not underground then 
-          self.situationalPenalty = (self.icehitmod) * (1+ (self.windLevel/100)) 
-        else
-          self.situationalPenalty = 0
-        end 
-
-        -- Damage calculation
-        self.damageApply = ( (self.damageApply) + (self.situationalPenalty) ) * ( (self.liquidMod) + (self.nightPenalty) )
-         -- damage application per tick
+          -- activate visuals and check stats
 	  activateVisualEffects()
-	  makeAlert()
-	  
-	  -- set the timers
-          self.biomeTimer = self.icehitTimer * 1 - status.stat("iceResistance")
-          self.timerRadioMessage = self.timerRadioMessage - dt
+          makeAlert()  
+            effect.addStatModifierGroup({
+              {stat = "maxHealth", amount = -self.baseDebuff  },
+              {stat = "powerMultiplier", amount = -(self.baseDebuff/100 )  }
+            })
+          self.biomeTimer = self.baseRate
       end 
-      
-      -- and finally, the colder you get the slower you move and the crappier your jump becomes
-      -- this is outside of the timer, because it needs to always apply if you have less than 100% resist, not just onTick    
-      if status.stat("iceResistance") < 0.9 then
-      
-      -- constant damage applied
-           status.modifyResource("health", (-self.damageApply * (1-status.stat("iceResistance")) ) * dt)
-	   status.modifyResource("food", (-self.damageApply * (1-status.stat("iceResistance"))/5 ) * dt)
+        
+      if status.stat("iceResistance") <=0.99 then      
+	     self.damageApply = (self.damageApply /120)  
+	     status.modifyResource("health", -self.damageApply * dt)
 	   
+	   if status.isResource("food") then
+	     self.debuffApply = (self.debuffApply /20) 
+	     if status.resource("food") >= 2 then
+	       status.modifyResource("food", -self.debuffApply * dt )
+	     end
+           end  
              mcontroller.controlModifiers({
 	         airJumpModifier = status.stat("iceResistance")+0.1, 
 	         speedModifier = status.stat("iceResistance")+0.10 -- 0.01 is a failsafe so they are never at 0 speed
-             })      
-      end      
-end       
+             })              
+      end  
+      self.biomeTimer = self.biomeTimer - dt
+end         
 
 
 function makeAlert()
