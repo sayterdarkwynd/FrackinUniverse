@@ -62,20 +62,19 @@ function transferUtil.routeItems()
 			if targetAwake == true and sourceAwake == true then
 				local sourceItems=world.containerItems(sourceContainer)
 				if sourceItems ~= nil then 
-					for index1,item in pairs(sourceItems) do
+					for indexIn,item in pairs(sourceItems) do
 						if transferUtil.checkFilter(item) then
-							if transferUtil.validInputSlot(index1) then
+							if transferUtil.validInputSlot(indexIn) then
 								if util.tableSize(storage.outputSlots) > 0 then
-									local tempSize=world.containerSize(targetContainer)
-									for index0=0,tempSize-1 do
-										if transferUtil.validOutputSlot(index0) then
-											local leftOverItems=world.containerPutItemsAt(targetContainer,item,index0)
+									for indexOut=1,world.containerSize(targetContainer) do
+										if transferUtil.validOutputSlot(indexOut) then
+											local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
 											if leftOverItems~=nil then
-												world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count-leftOverItems.count)
+												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
 												item=leftOverItems
 												break
 											else
-												world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 												break
 											end
 										end
@@ -85,11 +84,11 @@ function transferUtil.routeItems()
 									if leftOverItems~=nil then
 										local tempQuantity=item.count-leftOverItems.count
 										if tempQuantity > 0 then
-											world.containerTakeNumItemsAt(sourceContainer,index1-1,tempQuantity)
+											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
 											break
 										end
 									else
-										world.containerTakeNumItemsAt(sourceContainer,index1-1,item.count)
+										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 									end
 								end
 							end
@@ -335,7 +334,6 @@ end
 
 function transferUtil.validInputSlot(slot)
 	if util.tableSize(storage.inputSlots) == 0 then return true end
-	
 	return (transferUtil.tFirstIndex(slot,storage.inputSlots)>0) == not storage.invertSlots[1]
 end
 

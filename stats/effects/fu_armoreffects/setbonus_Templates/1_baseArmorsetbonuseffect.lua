@@ -1,48 +1,52 @@
 setName="fu_setname" --this should match what you put in the template shell.
 
-weaponEffect={ -- if it is to have stats from weapons wielded, enter them here
-    {stat = "critChance", amount = 25} 
-  }
-  
+weaponBonus={ -- if it is to have stats from weapons wielded, enter them here
+	{stat = "critChance", amount = 25} 
+}
+
 armorBonus={	-- whatever bonuses the armor provides go here
-	{stat = "iceResistance", amount = 0.15},
-	{stat = "coldimmunity", amount = 1}
+{stat = "iceResistance", amount = 0.15},
+{stat = "coldimmunity", amount = 1}
 }
 armorBonus2={	-- whatever bonuses the armor provides go here
-	{stat = "iceResistance", amount = 0.2},
-	{stat = "coldimmunity", amount = 1}
+{stat = "iceResistance", amount = 0.2},
+{stat = "coldimmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	armorHandle=effect.addStatModifierGroup(armorBonus)
-	if false then--optional condition to have different armor bonuses
-		effect.setStatModifierGroup(armorHandle,armorBonus2)
-	end
-	weaponHandle=effect.addStatModifierGroup({})
-	myFunction()
+
+	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+if false then--optional condition to have different armor bonuses
+	effect.setStatModifierGroup(
+	armorBonusHandle,armorBonus2)
+end
+	weaponBonusHandle=effect.addStatModifierGroup({})
+myFunction()
 end
 
 function update(dt)
-	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire() --Khe: Treat this the same as return: it goes last in this code piece
+if not checkSetWorn(self.setBonusCheck) then
+	effect.expire() --Khe: Treat this the same as return: it goes last in this code piece
+else
+	if false then--optional condition to have different armor bonuses
+		effect.setStatModifierGroup(
+	armorBonusHandle,armorBonus2)
 	else
-		if false then--optional condition to have different armor bonuses
-			effect.setStatModifierGroup(armorHandle,armorBonus2)
-		else
-			effect.setStatModifierGroup(armorHandle,armorBonus)
-		end
-		myFunction()  -- we can run custom functions here to make all sorts of neat shit possible
+		effect.setStatModifierGroup(
+	armorBonusHandle,armorBonus)
 	end
+	myFunction()	-- we can run custom functions here to make all sorts of neat shit possible
+end
 end
 
 function myFunction()
 	local weapons=weaponCheck({"axe","hammer"})
-	if weapon["either"] then   -- weaponCheck is run in setbonuses core file)
-		effect.setStatModifierGroup(weaponHandle,weaponEffect)
-	else
-		effect.setStatModifierGroup(weaponHandle,{})
-	end
+if weapons["either"] then	-- weaponCheck is run in setbonuses core file)
+	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+else
+	effect.setStatModifierGroup(weaponBonusHandle,{})
+end
 end

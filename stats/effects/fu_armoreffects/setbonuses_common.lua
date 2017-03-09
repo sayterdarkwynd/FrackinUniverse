@@ -1,9 +1,9 @@
 -- For callbacks:
---   require "/path/to/effect/script.lua"
---   callbacks = { { init = init, update = update, uninit = uninit } }
+--	require "/path/to/effect/script.lua"
+--	callbacks = { { init = init, update = update, uninit = uninit } }
 -- repeat as needed:
---   require "/path/to/another/effect/script.lua"
---   table.insert(callbacks, { init = init, update = update, uninit = uninit })
+--	require "/path/to/another/effect/script.lua"
+--	table.insert(callbacks, { init = init, update = update, uninit = uninit })
 --
 -- Callbacks can be used to implement other scripted bonuses
 --
@@ -72,8 +72,8 @@ end
 function setBonusMultiply(effectBase,mult)
 	local temp={}
 	for _,v in pairs(effectBase) do
-	
-		v["amount"]=v["amount"]*mult
+		v["amount"]=v["amount"] and (v["amount"]*mult) or nil
+		v["baseMultiplier"]=v["baseMultiplier"] and (1.0+(v["baseMultiplier"]-1.0)*mult) or nil
 		table.insert(temp,v)
 	end
 	return temp
@@ -136,7 +136,7 @@ function weaponCheck(tags)
 				results["either"]=true
 			end
 		end
-	elseif heldItemAlt~=nil  then
+	elseif heldItemAlt~=nil	then
 		for _,tag in pairs(tags) do
 			if root.itemHasTag(heldItemAlt,tag) then
 				results["alt"]=true
