@@ -1,6 +1,6 @@
 {
-  "name" : "insanitynew",
-  "blockingStat" : "insanityImmunity",
+  "name" : "biomepoison1",
+  "blockingStat" : "biomepoisonImmunity",
 
   "effectConfig" : {
 	    //-- Heat values
@@ -17,28 +17,27 @@
 	    //--Strange Sea       1.14
 
 	    
-	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
-	  "biomeTemp" : 1, //ice wastes are 2x as deadly
+	  //base temperature variable. This effectively sets the power of the status on the player
+	  "biomeTemp" : 1.12, 
 	  //what is critical temperature threshold?
-	  "biomeThreshold" : 1,
+	  "biomeThreshold" : 2,
 	  //base timer
-	    "baseRate" : 8,
+	    "baseRate" : 2,
 	  //base effect applied per tick
 	    "baseDebuffPerTick" : 2,
 	  // base damage applied per tick
-	    "baseDmgPerTick" : 2,
-	    "multiplyColor" : [-210, -210, -210],
+	    "baseDmgPerTick" : 3,
 	    "situationPenalty" : 1,
 	    "liquidPenalty" : 1,
 	    "biomeNight" : 1	    
   },
-  "defaultDuration" : 120,
+  "defaultDuration" : 20,
 
   "scripts" : [
-    "insanitynew.lua"
+    "poisonweathernew.lua"
   ],
 
-  "animationConfig" : "insanitynew.animation",
+  "animationConfig" : "poisonweathernew.animation",
 
-  "icon" : "/interface/statuses/insanity.png"
+  "icon" : "/interface/statuses/poison.png"
 }

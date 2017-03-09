@@ -1,56 +1,40 @@
 require("/scripts/vec2.lua")
 function init()
-  -- Environment Configuration --
 
-  --first, the modifier for temperature
-  self.biomeTemp = config.getParameter("biomeTemp",0)
+  self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
+    
+  -- Environment Configuration --
+  self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
+  self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
+  self.baseDmg = config.getParameter("baseDmgPerTick",0)           -- damage per tick
+  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     --debuff per tick
+  self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
+  self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
+  self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
+  self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
-  --then, the modifier for night time effects
-  self.biomeNight = config.getParameter("biomeNight",0)
-  
-  -- what is critical temperature threshold? This value is used to determine chance of catching hypothermia
-  self.biomeThreshold = config.getParameter("biomeThreshold",0)
-  
-  -- now we set the base effect config
-  self.radioMessageTimer = 1
-  self.baseDmg = config.getParameter("baseDmgPerTick",0)
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
-  self.baseRate = config.getParameter("baseRate",0)
-  self.biomeTimer = config.getParameter("baseRate",0)
+  self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
+  self.biomeTimer = config.getParameter("baseRate",0)              -- same as above. pare out.
+  self.biomeTimer2=  (self.baseRate * (1 + status.stat("fireResistance",0)) *2)  --this second timer is for secondary effects (debuffs) and are much slower
+
+  -- activate visuals and check stats
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning
-  -- set values, activate effects
   activateVisualEffects()
-  setValues()
-  self.timerRadioMessage = 0
-  self.situationalPenalty = 0
+  makeAlert()  
+  
   script.setUpdateDelta(5)
 end
 
-function setValues()
--- check resist level and apply modifier for effects
--- this effects how hard the environmental effects hit you in general. Note that the higher up you go in resists, the less severe effects become , until they are effectively ignorable.
-  if status.stat("fireResistance") <= 0.99 then
-    self.firehitmod = 1.5 * 1+ (status.stat("fireResistance",0) * 4)
-  elseif status.stat("fireResistance") <= 0.80 then
-    self.firehitmod = 1.25 * 1+ (status.stat("fireResistance",0) * 3.5)    
-  elseif status.stat("fireResistance") <= 0.75 then
-    self.firehitmod = 1 * 1+ (status.stat("fireResistance",0) * 3) 
-  elseif status.stat("fireResistance") <= 0.65 then
-    self.firehitmod = 0.8 * 1+ (status.stat("fireResistance",0) * 2.5)    
-  elseif status.stat("fireResistance") <= 0.50 then
-    self.firehitmod = 0.6 * 1+ (status.stat("fireResistance",0) * 2)
-  elseif status.stat("fireResistance") <= 0.40 then
-    self.firehitmod = 0.4 * 1+ (status.stat("fireResistance",0) * 1.5)    
-  elseif status.stat("fireResistance") <= 0.30 then
-    self.firehitmod = 0.1
-  elseif status.stat("fireResistance") <= 0.10 then
-    self.firehitmod = 0.05
-  elseif status.stat("fireResistance") <= 0.05 then
-    self.firehitmod = 0.05       
-  else
-    self.firehitmod = 0.05
-  end 
-    self.firehitTimer = self.firehitmod
+function setEffectDamage()
+  return ( ( self.baseDmg + self.situationPenalty + self.liquidPenalty + self.biomeNight ) *  (1 -status.stat("fireResistance",0) ) * self.biomeThreshold  )
+end
+
+function setEffectDebuff()
+  return ( ( ( self.baseDebuff + self.liquidPenalty + self.biomeNight ) * self.biomeTemp ) * (1 -status.stat("fireResistance",0) * self.biomeThreshold) )
+end
+
+function setEffectTime()
+  return (( self.biomeThreshold * self.baseRate ) * (1 +status.stat("fireResistance",0)))
 end
 
 -- alert the player that they are affected
@@ -60,65 +44,57 @@ function activateVisualEffects()
   animator.setParticleEmitterActive("firebreath", true) 
 end
 
-
 function undergroundCheck()
-	return world.underground(mcontroller.position()) 
+  return world.underground(mcontroller.position()) 
 end
 
-
 function update(dt)
-
-
+  self.damageApply = setEffectDamage()
+  self.debuffApply = setEffectDebuff()
+  self.baseRate = setEffectTime()
+  
 -- environment checks
 underground = undergroundCheck()
   if underground then  
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheatcavern", 1.0) -- send player a warning
     self.timerRadioMessage = 1
   end  
-  
-          
-self.biomeTimer = self.biomeTimer - dt 
-self.debuffApply = (self.baseDebuff* self.biomeTemp) * (-self.firehitmod) 
-self.damageApply = ( self.baseDmg * 1- math.min(status.stat("fireResistance"),0) ) * self.biomeTemp
--- if timer is 0 and they have less than 100% resist, proceed
-      if self.biomeTimer <= 0 and status.stat("fireResistance") < 1.0 then
+       
+  self.biomeTimer = self.biomeTimer - dt 
 
-	 
-	-- first we check how windy it is. Use the modifier to apply bonus penalties if not belowground
+      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < 1.0 then
 	self.windLevel =  world.windLevel(mcontroller.position())
 
-	-- and if they are on the surface, we give them a penalty thanks to surface conditions
 	if not underground then 
-	  self.situationalPenalty = (self.firehitmod) * (2+ (self.windLevel/100))
+	  self.situationalPenalty = 1.2
 	else
-	  self.situationalPenalty = 0
+	  self.situationalPenalty = 1
 	end 
 
-        -- they look as if aflame
-          -- activate visuals and check stats
 	  activateVisualEffects()
 	  makeAlert()
-	  -- set the timers
-          self.biomeTimer = self.firehitTimer/2
+
+          self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt  	  
       end 
-      
-      -- and finally, the hotter you get the slower you move and the crappier your jump becomes
-      -- this is outside of the timer, because it needs to always apply if you have less than 100% resist, not just onTick    
-      if status.stat("fireResistance") < 0.9 then
-      
-	   -- final Damage calculation
-	   -- apply the damage constantly but silently         
-	   self.damageApply = (( (self.damageApply) + (self.situationalPenalty) ) * ( 1+(self.biomeTemp)) /50)
-	   status.modifyResource("health", (-self.damageApply * (1-status.stat("fireResistance"))*self.biomeTemp ) * dt)
-	   status.modifyResource("food", (-self.damageApply * (1-status.stat("fireResistance")/100)) * dt)     
-	   
+
+      if status.stat("fireResistance",0) <=0.99 then      
+	     self.damageApply = (self.damageApply /100) 
+	     self.debuffApply = (self.debuffApply /10) 
+	     
+	     status.modifyResource("health", -self.damageApply * dt)
+	   if status.isResource("food") then
+	     if status.resource("food") >= 2 then
+	       status.modifyResource("food", -self.debuffApply * dt )
+	     end
+           end  
              mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("fireResistance")+0.3, 
-	         speedModifier = status.stat("fireResistance")+0.30 
-             })      
+	         airJumpModifier = status.stat("fireResistance",0)+0.3, 
+	         speedModifier = status.stat("fireResistance",0)+0.30 
+             })              
       end  
- 
+      self.biomeTimer = self.biomeTimer - dt
+      
 end       
 
 
