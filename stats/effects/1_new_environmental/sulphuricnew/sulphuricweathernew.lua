@@ -32,15 +32,15 @@ end
 
 -- *******************Damage effects
 function setEffectDamage()
-  return ( ( self.baseDmg ) *  (1 -status.stat("poisonResistance",0) ) * self.biomeThreshold  )
+  return ( ( self.baseDmg ) *  (1 -status.stat("physicalResistance",0) ) * self.biomeThreshold  )
 end
 
 function setEffectDebuff()
-  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("poisonResistance",0) * self.biomeThreshold) )
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("physicalResistance",0) * self.biomeThreshold) )
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("poisonResistance",0)))
+  return (self.baseRate * (1 - status.stat("physicalResistance",0)))
 end
 
 -- ******** Applied bonuses and penalties
@@ -158,62 +158,26 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight()  
 
-      if self.biomeTimer <= 0 and status.stat("poisonResistance",0) < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < 1.0 then
 	self.biomeTimer = self.biomeTimer - dt
-          -- cold wind
-        
-        
-        if self.windLevel >= 40 then
-                setWindPenalty()   
-                if (self.timerRadioMessage <=0) then
-                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
-                   self.timerRadioMessage = 60             
-		end
-        end
-        
-        -- are they in liquid?
-        local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-        local mouthful = world.liquidAt(mouthposition)        
-        if (world.liquidAt(mouthPosition)) then
-		setLiquidPenalty()
-		if (self.timerRadioMessage <= 0) then
-		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
-		  self.timerRadioMessage = 60
-		end
-        end
-        
-        -- is it nighttime or above ground? 
-        if not daytime then
-                setNightPenalty() 
-                if (self.timerRadioMessage <= 0) then
-                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
-                  self.timerRadioMessage = 60
-		end
-        end
 
-	self.damageApply = setEffectDamage()   
-	self.debuffApply = setEffectDebuff()  
-        
             effect.addStatModifierGroup({
               {stat = "protection", amount = -self.damageApply  },
-              {stat = "physicalResistance", amount = -(self.debuffApply/100 )  }
+              {stat = "physicalResistance", amount = -self.debuffApply)  }
             })
             activateVisualEffects()
             self.biomeTimer = setEffectTime()
+            
       end 
       
-      if status.stat("poisonResistance",0) < 1.0 then      
+      if status.stat("protection",0) < 1 then      
 	     status.modifyResource("health", -self.damageApply * dt)
 	   
-	   if status.isResource("food") then
+	   if status.isResource("energy") then
 	     if status.resource("energy") >= 2 then
 	       status.modifyResource("energy", -self.debuffApply * dt )
 	     end
            end  
-             mcontroller.controlModifiers({
-	         airJumpModifier = 1 * status.stat("poisonResistance")+0.1, 
-	         speedModifier = 1 * status.stat("poisonResistance")+0.1
-             })  
       end  
         
 end         
