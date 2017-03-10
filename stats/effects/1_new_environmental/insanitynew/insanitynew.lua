@@ -3,19 +3,23 @@ require("/scripts/vec2.lua")
 function init()
 
   -- Environment Configuration --
-  self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
-  self.biomeTimer = config.getParameter("baseRate",0)
-  self.biomeTimer2 = (self.baseRate * (1 + status.stat("iceResistance",0)) *2)
+  --base values
+  self.baseRate = config.getParameter("baseRate",0)                
+  self.baseDmg = config.getParameter("baseDmgPerTick",0)        
+  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
+  self.biomeTemp = config.getParameter("biomeTemp",0)              
   
-  self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
+  --timers
+  self.biomeTimer = self.baseRate
+  self.biomeTimer2 = (self.baseRate * (1 + status.stat("cosmicResistance",0)) *10)
+  
+  --conditionals
+
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
-  self.baseDmg = config.getParameter("baseDmgPerTick",0)           -- damage per tick
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     --debuff per tick
   self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-
   -- inform them they are ill                                
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeinsanity", 1.0) -- send player a warning
   self.timerRadioMessage =  config.getParameter("baseRate",0)  -- initial delay for secondary radiomessages
@@ -33,39 +37,7 @@ function init()
   script.setUpdateDelta(5)
 end
 
-function setEffectDamage()
-  return ( ( self.baseDmg + self.situationPenalty + self.liquidPenalty + self.biomeNight ) *  (1 -status.stat("poisonResistance",0) ) * self.biomeThreshold  )
-end
-
-function setEffectDebuff()
-  return ( ( ( self.baseDebuff + self.liquidPenalty + self.biomeNight ) * self.biomeTemp ) * (1 -status.stat("poisonResistance",0) * self.biomeThreshold) )
-end
-
-function setEffectTime()
-  return ( 1 - status.stat("poisonResistance",0) * self.baseRate )
-end
-
-function setNightEffect()
-  self.baseDmg = self.baseDmg + self.biomeNight
-  self.baseDebuff = self.baseDebuff + self.biomeNight
-  self.damageApply = setEffectDamage()
-  self.debuffApply = setEffectDebuff() 
-end
-
-function setSituational()
-  self.baseDmg = self.baseDmg + self.situationPenalty
-  self.baseDebuff = self.baseDebuff + self.situationPenalty
-  self.damageApply = setEffectDamage()
-  self.debuffApply = setEffectDebuff() 
-end
-
-function setLiquidFactor()
-  self.baseDmg = self.baseDmg + self.liquidPenalty
-  self.baseDebuff = self.baseDebuff + self.liquidPenalty
-  self.damageApply = setEffectDamage()
-  self.debuffApply = setEffectDebuff()
-end
-
+-- ***************global reset
 function resetValues()
   self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -77,13 +49,54 @@ function resetValues()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
 end
 
+-- *******************Damage effects
+function setEffectDamage()
+  return ( ( self.baseDmg ) *  (1 -status.stat("cosmicResistance",0) ) * self.biomeThreshold  )
+end
+
+function setEffectDebuff()
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("cosmicResistance",0) * self.biomeThreshold) )
+end
+
+function setEffectTime()
+  return (self.baseRate * (1 - status.stat("cosmicResistance",0)))
+end
+
+function setNightPenalty()
+  self.modDmg = self.baseDmg + self.biomeNight
+  self.modDebuff = self.baseDebuff + self.biomeNight 
+  self.baseDmg = self.damageApply + self.modDmg
+  self.baseDebuff = self.debuffApply + self.modDebuff
+end
+
+function setSituationPenalty()
+  self.modDmg = self.baseDmg + self.situationPenalty
+  self.modDebuff = self.baseDebuff + self.situationPenalty
+  self.baseDmg = self.damageApply + self.modDmg
+  self.baseDebuff = self.debuffApply + self.modDebuff 
+end
+
+function setLiquidPenalty()
+  self.modDmg = self.baseDmg + self.liquidPenalty
+  self.modDebuff = self.baseDebuff + self.liquidPenalty
+  self.baseDmg = self.damageApply + self.modDmg
+  self.baseDebuff = self.debuffApply + self.modDebuff
+end
+
+function setWindPenalty()
+  self.windLevel =  world.windLevel(mcontroller.position())
+  self.modThreshold = (self.windlevel / 100) + self.biomeThreshold
+  self.biomeThreshold = self.biomeThreshold + self.modThreshold  
+end
+
+
 -- alert the player that they are affected
 function activateVisualEffects()
 sb.logInfo("self.multiply")
   animator.setParticleEmitterOffsetRegion("poisonbreath", mcontroller.boundBox())
   animator.setParticleEmitterActive("poisonbreath", true)
   
-  local multiply = {100 * status.stat("poisonResistance",0), 255 + self.multiply[2] * status.stat("poisonResistance",0), 255 + self.multiply[3] * status.stat("poisonResistance",0)}
+  local multiply = {100 * status.stat("cosmicResistance",0), 255 + self.multiply[2] * status.stat("cosmicResistance",0), 255 + self.multiply[3] * status.stat("cosmicResistance",0)}
   local multiplyHex = string.format("%s%s%s", toHex(multiply[1]), toHex(multiply[2]), toHex(multiply[3]))  
   effect.setParentDirectives(string.format("?saturation=%d?multiply=%s", self.saturation, multiplyHex))
 end
@@ -108,11 +121,11 @@ self.windLevel =  world.windLevel(mcontroller.position())        -- is there win
   
       if (status.stat("poisonResistance") < 1.0) then
              mcontroller.controlModifiers({
-	         speedModifier = (-status.stat("poisonResistance",0))-0.2
+	         speedModifier = (-status.stat("cosmicResistance",0))-0.2
              })     
       end   
       
-      if (self.biomeTimer <= 0) and (status.stat("poisonResistance",0) < 1.0) then  
+      if (self.biomeTimer <= 0) and (status.stat("cosmicResistance",0) < 1.0) then  
 	status.modifyResource("health", -self.damageApply * dt)
 	status.modifyResource("food", -self.damageApply * dt) 
 	
@@ -125,13 +138,13 @@ self.windLevel =  world.windLevel(mcontroller.position())        -- is there win
         self.biomeTimer = self.baseRate       
       end
       
-      if (self.biomeTimer2 <= 0) and (status.stat("poisonResistance",0) < 1.0) then
+      if (self.biomeTimer2 <= 0) and (status.stat("cosmicResistance",0) < 1.0) then
             effect.addStatModifierGroup({
               {stat = "protection", amount = -self.baseDebuff  },
               {stat = "maxEnergy", amount = -(self.baseDebuff*2)  }
             })
         makeAlert()
-        self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("poisonResistance",0))) * 2
+        self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("cosmicResistance",0))) * 2
       end      
 end       
 
