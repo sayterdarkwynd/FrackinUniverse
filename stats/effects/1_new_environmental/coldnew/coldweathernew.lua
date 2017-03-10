@@ -131,7 +131,7 @@ sb.logInfo("timer : "..self.baseRate)
         if self.windLevel >= 40 then
                 if self.timerRadioMessage == 0 then
                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
-                    self.timerRadioMessage = 60
+                   self.timerRadioMessage = 60
                    setWindPenalty()
   		   self.damageApply = setEffectDamage()
   		   self.debuffApply = setEffectDebuff()
