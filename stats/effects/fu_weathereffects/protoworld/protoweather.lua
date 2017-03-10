@@ -147,11 +147,16 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.debuffApply = setEffectDebuff() 
    
   -- environment checks
-  daytime = daytimeCheck()
-  underground = undergroundCheck()
   local lightLevel = getLight() 
-  
+  daytime = daytimeCheck()
+  underground = undergroundCheck() 
+
       if self.biomeTimer <= 0 and status.stat("poisonResistance",0) < 1.0 then
+	  if not daytime then
+	    setSituationPenalty()
+	  end
+	  self.damageApply = setEffectDamage()   
+	  self.debuffApply = setEffectDebuff()       
          -- damage application per tick
           status.applySelfDamageRequest ({
             damageType = "IgnoresDef",
@@ -167,11 +172,17 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	  -- set the timer
           self.biomeTimer = self.baseRate
       end 
-      if self.biomeTimer2 <= 0 and status.stat("poisonResistance",0) < 1.0 then      
+      if self.biomeTimer2 <= 0 and status.stat("poisonResistance",0) < 1.0 then  
+          if status.stat("critChance",0) >=1 then
           effect.addStatModifierGroup({
             {stat = "maxHealth", amount = -self.debuffApply },
-            {stat = "critChance", amount = 0 }
+            {stat = "critChance", amount = -self.debuffApply }
           })
+          else
+          effect.addStatModifierGroup({
+            {stat = "maxHealth", amount = -self.debuffApply }
+          })          
+          end
           activateVisualEffects2()
           self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("poisonResistance",0))) * 2 
           sb.logInfo("timer : "..self.biomeTimer2)
