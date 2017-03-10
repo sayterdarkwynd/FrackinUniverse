@@ -34,13 +34,24 @@
     "path": "/ffbiomepoison",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! POISONOUS ATMOSPHERE DETECTED ^reset;! You're breathing in deadly air that will very soon kill you. You might consider ^green;Poison Protection^reset; of some sort.",
+      "text": "^red;WARNING! POISONOUS ATMOSPHERE DETECTED ^reset;! You're breathing in deadly air that will very soon kill you. You are getting weaker. This will get worse the more sick you become.",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
   },
   
+  {
+    "op": "add",
+    "path": "/ffbiomepoisonwind",
+    "value": {
+      "unique": false,
+      "text": "This breeze is really stirring up poisonous vapour. Threat level increased.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
   
+    
   {
     "op": "replace",
     "path": "/biomecold/text",

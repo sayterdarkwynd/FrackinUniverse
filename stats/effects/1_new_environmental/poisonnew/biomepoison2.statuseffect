@@ -1,0 +1,43 @@
+{
+  "name" : "biomepoison2",
+  "blockingStat" : "biomepoisonImmunity",
+
+  "effectConfig" : {
+	    //-- Heat values
+	    //--
+	    //-- Biome            Modifier (biomeTemp)
+	    //-------------
+	    //--Alien             1.00
+	    //--Jungle            0.55
+	    //--Irradiated        2.0
+	    //--Metallic          0.35
+	    //--Sulphuric         0.25
+	    //--Sulphuric Dark    0.4
+	    //--Sulphuric Ocean   0.4
+	    //--Strange Sea       1.14
+
+	    
+	  //base temperature variable. This effectively sets the power of the status on the player
+	  "biomeTemp" : 1.05, 
+	  //what is critical temperature threshold?
+	  "biomeThreshold" : 1.1,
+	  //base timer
+	    "baseRate" : 4,
+	  //base effect applied per tick
+	    "baseDebuffPerTick" : 2,
+	  // base damage applied per tick
+	    "baseDmgPerTick" : 3,
+	    "situationPenalty" : 1.08,
+	    "liquidPenalty" : 1.08,
+	    "biomeNight" : 1.08    
+  },
+  "defaultDuration" : 20,
+
+  "scripts" : [
+    "poisonweathernew.lua"
+  ],
+
+  "animationConfig" : "poisonweathernew.animation",
+
+  "icon" : "/interface/statuses/poison.png"
+}

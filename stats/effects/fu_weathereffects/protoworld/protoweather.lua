@@ -1,68 +1,157 @@
 function init()
+  self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
+    
   -- Environment Configuration --
-  self.biomeTimer = 5
-  self.baseDmg = config.getParameter("baseDmgPerTick",2)
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",2)
-  self.baseTimer = config.getParameter("baseRate",0.5)
-
-  -- set values, activate effects
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeproto", 1.0) -- send player a warning
+  --base values
+  self.baseRate = config.getParameter("baseRate",0)                
+  self.baseDmg = config.getParameter("baseDmgPerTick",0)        
+  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
+  self.biomeTemp = config.getParameter("biomeTemp",0)    
+  
+  --timers
+  self.biomeTimer = self.baseRate
+  self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
+  
+  -- activate visuals and check stats
+  world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
   activateVisualEffects()
-  setValues()
 
   script.setUpdateDelta(5)
 end
 
-function setValues()
--- check resist level and apply modifier for effects
-  if status.stat("poisonResistance") <= 0.99 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 4)
-  elseif status.stat("poisonResistance") <= 0.80 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 3.5)    
-  elseif status.stat("poisonResistance") <= 0.75 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 3) 
-  elseif status.stat("poisonResistance") <= 0.65 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 2.5)    
-  elseif status.stat("poisonResistance") <= 0.50 then
-    self.poisonhitmod = 2 * 1+ (status.stat("poisonResistance",0) * 2)
-  elseif status.stat("poisonResistance") <= 0.40 then
-    self.poisonhitmod = 1 * 1+ (status.stat("poisonResistance",0) * 1.5)    
-  elseif status.stat("poisonResistance") <= 0.30 then
-    self.poisonhitmod = 0.6
-  elseif status.stat("poisonResistance") <= 0.10 then
-    self.poisonhitmod = 0.2
-  elseif status.stat("poisonResistance") <= 0.05 then
-    self.poisonhitmod = 0.05       
-  end 
-  
-  self.poisonhitTimer = self.poisonhitmod +1
+-- *******************Damage effects
+function setEffectDamage()
+  return ( ( self.baseDmg ) *  (1 -status.stat("fireResistance",0) ) * self.biomeThreshold  )
 end
 
--- alert the player that they are affected
+function setEffectDebuff()
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("fireResistance",0) * self.biomeThreshold) )
+end
+
+function setEffectTime()
+  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+end
+
+-- ******** Applied bonuses and penalties
+function setNightPenalty()
+  if (self.biomeNight > 1) then
+    self.baseDmg = self.baseDmg + self.biomeNight
+    self.baseDebuff = self.baseDebuff + self.biomeNight
+    sb.logInfo("nightpenalty : "..self.biomeNight)
+  end
+end
+
+function setSituationPenalty()
+  if (self.situationPenalty > 1) then
+    self.baseDmg = self.baseDmg + self.situationPenalty
+    self.baseDebuff = self.baseDebuff + self.situationPenalty 
+    sb.logInfo("situationpenalty : "..self.situationPenalty)
+  end
+end
+
+function setLiquidPenalty()
+  if (self.liquidPenalty > 1) then
+    self.baseDmg = self.baseDmg * 2
+    self.baseDebuff = self.baseDebuff + self.liquidPenalty 
+    sb.logInfo("liquidpenalty : "..self.liquidPenalty.." Base Damage : "..self.baseDmg)
+  end
+end
+
+function setWindPenalty()
+  self.windLevel =  world.windLevel(mcontroller.position())
+  if (self.windLevel > 1) then
+    self.biomeThreshold = self.biomeThreshold + (self.windlevel / 100)
+    sb.logInfo("windlevel : "..self.windlevel)
+  end  
+end
+
+-- ********************************
+
+--**** Other functions
+function getLight()
+  local position = mcontroller.position()
+  position[1] = math.floor(position[1])
+  position[2] = math.floor(position[2])
+  local lightLevel = world.lightLevel(position)
+  lightLevel = math.floor(lightLevel * 100)
+  return lightLevel
+end
+
+function daytimeCheck()
+	return world.timeOfDay() < 0.5 -- true if daytime
+end
+
+function undergroundCheck()
+	return world.underground(mcontroller.position()) 
+end
+
+
+function isDry()
+local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
+	if not world.liquidAt(mouthPosition) then
+	    inWater = 0
+	end
+end
+
+function hungerLevel()
+  if status.isResource("food") then
+   return status.resource("food")
+  else
+   return 50
+  end
+end
+
+function toHex(num)
+  local hex = string.format("%X", math.floor(num + 0.5))
+  if num < 16 then hex = "0"..hex end
+  return hex
+end
+
+--**** Alert the player
 function activateVisualEffects()
-  effect.setParentDirectives("fade=306630=0.8")
+  animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
+  animator.setParticleEmitterActive("coldbreath", true) 
+end
+
+function activateVisualEffects2()
+  effect.setParentDirectives("fade=306630=0.35")
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
-  
-  animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
-  animator.setParticleEmitterActive("coldbreath", true) 
 end
 
 -- visual indicator for effect
 function makeAlert()
         world.spawnProjectile("poisonsmoke",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
-        animator.playSound("bolt")
 end
 
 
 function update(dt)
     
-      self.biomeTimer = self.biomeTimer - dt
-      self.debuffApply = self.baseDebuff * (-self.poisonhitmod)
-      self.damageApply = ( self.baseDmg * 1- math.min(status.stat("poisonResistance"),0) )      
-      
-      if self.biomeTimer <= 0 and status.stat("poisonResistance") < 1.0 then
+self.biomeTimer = self.biomeTimer - dt 
+self.biomeTimer2 = self.biomeTimer2 - dt 
+self.timerRadioMessage = self.timerRadioMessage - dt
+
+--set the base stats
+  self.baseRate = config.getParameter("baseRate",0)                
+  self.baseDmg = config.getParameter("baseDmgPerTick",0)        
+  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
+  self.biomeTemp = config.getParameter("biomeTemp",0)  
+  self.biomeThreshold = config.getParameter("biomeThreshold",0)    
+  self.biomeNight = config.getParameter("biomeNight",0)            
+  self.situationPenalty = config.getParameter("situationPenalty",0)
+  self.liquidPenalty = config.getParameter("liquidPenalty",0)   
+  
+  self.baseRate = setEffectTime()
+  self.damageApply = setEffectDamage()   
+  self.debuffApply = setEffectDebuff() 
+   
+  -- environment checks
+  daytime = daytimeCheck()
+  underground = undergroundCheck()
+  local lightLevel = getLight() 
+  
+      if self.biomeTimer <= 0 and status.stat("poisonResistance",0) < 1.0 then
          -- damage application per tick
           status.applySelfDamageRequest ({
             damageType = "IgnoresDef",
@@ -71,20 +160,24 @@ function update(dt)
             sourceEntityId = entity.id()	
           })   
 
-          effect.addStatModifierGroup({
-            {stat = "maxHealth", amount = self.debuffApply },
-            {stat = "critChance", amount = 0 }
-          })
-          
           -- activate visuals and check stats
-	  makeAlert()
+	  --makeAlert()
 	  activateVisualEffects()
 	  
 	  -- set the timer
-          self.biomeTimer = self.poisonhitTimer
-
-      end 	
-end       
+          self.biomeTimer = self.baseRate
+      end 
+      if self.biomeTimer2 <= 0 and status.stat("poisonResistance",0) < 1.0 then      
+          effect.addStatModifierGroup({
+            {stat = "maxHealth", amount = -self.debuffApply },
+            {stat = "critChance", amount = 0 }
+          })
+          activateVisualEffects2()
+          self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("poisonResistance",0))) * 2 
+          sb.logInfo("timer : "..self.biomeTimer2)
+      end    
+          
+end         
 
 function uninit()
 

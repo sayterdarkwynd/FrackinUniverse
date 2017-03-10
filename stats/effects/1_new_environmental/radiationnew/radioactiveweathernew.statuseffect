@@ -3,30 +3,14 @@
   "blockingStat" : "biomeradiationImmunity",
 
   "effectConfig" : {
-	    //-- Heat values
-	    //--
-	    //-- Biome            Modifier (biomeTemp)
-	    //-------------
-	    //--Alien             1.00
-	    //--Jungle            0.55
-	    //--Irradiated        2.0
-	    //--Metallic          0.35
-	    //--Sulphuric         0.25
-	    //--Sulphuric Dark    0.4
-	    //--Sulphuric Ocean   0.4
-	    //--Strange Sea       1.14
-
-	    
-	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
-	  "biomeTemp" : 1, //ice wastes are 2x as deadly
-	  //what is critical temperature threshold?
-	  "biomeThreshold" : 12,
-	  //base timer
-	    "baseRate" : 0.55,
-	  //base effect applied per tick
-	    "baseDebuffPerTick" : 4,
-	  // base damage applied per tick
-	    "baseDmgPerTick" : 4
+	  "biomeTemp" : 1, 
+	  "biomeThreshold" : 1,
+	  "baseRate" : 5,
+	  "baseDebuffPerTick" : 2,
+	  "baseDmgPerTick" : 2,
+	  "situationPenalty" : 1.2,
+	  "liquidPenalty" : 1.1,
+	  "biomeNight" : 1.1
   },
   "defaultDuration" : 120,
 
