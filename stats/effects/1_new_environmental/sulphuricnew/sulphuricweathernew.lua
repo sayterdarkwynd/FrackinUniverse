@@ -12,7 +12,7 @@ function init()
   
   --timers
   self.biomeTimer = self.baseRate
-  self.biomeTimer2 = 3
+  self.biomeTimer2 = 1
   
   --conditionals
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -24,8 +24,6 @@ function init()
   -- activate visuals and check stats
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
   activateVisualEffects()
-  makeAlert()  
-  
   script.setUpdateDelta(5)
 end
 
@@ -121,16 +119,17 @@ end
 
 -- alert the player that they are affected
 function activateVisualEffects()
-  effect.setParentDirectives("fade=3066cc=0.6")
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")   	  
+  effect.setParentDirectives("fade=ffbe22=0.3")
+ 	  
 end
 
 -- ice breath
 function makeAlert()
-        local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-        world.spawnProjectile("iceinvis",mouthPosition,entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
+	  local statusTextRegion = { 0, 1, 0, 1 }
+	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+	  animator.burstParticleEmitter("statustext")  
+        --local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
+        --world.spawnProjectile("iceinvis",mouthPosition,entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
 end
 
 
@@ -152,32 +151,25 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.baseRate = setEffectTime()
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
-   
-  -- environment checks
-  daytime = daytimeCheck()
-  underground = undergroundCheck()
-  local lightLevel = getLight()  
-
-      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < 1.0 then
-	self.biomeTimer = self.biomeTimer - dt
-
-            effect.addStatModifierGroup({
-              {stat = "protection", amount = -self.damageApply  },
-              {stat = "physicalResistance", amount = -self.debuffApply)  }
-            })
-            activateVisualEffects()
-            self.biomeTimer = setEffectTime()
-            
+  
+      if (self.biomeTimer2 <= 0) then
+         makeAlert()
+         self.biomeTimer2 = self.baseRate * 5
       end 
       
-      if status.stat("protection",0) < 1 then      
-	     status.modifyResource("health", -self.damageApply * dt)
-	   
-	   if status.isResource("energy") then
-	     if status.resource("energy") >= 2 then
-	       status.modifyResource("energy", -self.debuffApply * dt )
-	     end
-           end  
+      if (self.biomeTimer <= 0) and (status.stat("protection",0) > 0) then
+            effect.addStatModifierGroup({
+              {stat = "protection", amount = -self.debuffApply  },
+              {stat = "physicalResistance", amount = (status.stat("physicalResistance",0) *(-self.debuffApply/100))  }
+            })
+            
+            activateVisualEffects()
+            self.biomeTimer = self.baseRate
+      end 
+
+      
+      if status.stat("protection",0) < 1 then 
+	     status.modifyResource("health", -self.damageApply * dt) 
       end  
         
 end         
