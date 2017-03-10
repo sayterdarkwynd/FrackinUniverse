@@ -15,7 +15,7 @@ setName="fu_boneset"
 
 function init()
 	setSEBonusInit(setName)
-	effect.setStatModifierGroup(armorEffect)
+	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 
 	armorBonusHandle=effect.addStatModifierGroup({})
 	checkArmor()

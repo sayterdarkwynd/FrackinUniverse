@@ -1,7 +1,14 @@
+setName="fu_bountyhunterset"
+setStatEffects={"bountyhuntersetbonuseffect"}
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setBonusInit("fu_bountyhunterset", {
-		{stat = "iceResistance", amount = 0.25}
-	})
+	setSEBonusInit(setName,setStatEffects)
+end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
 end

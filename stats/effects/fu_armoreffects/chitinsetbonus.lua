@@ -1,8 +1,14 @@
+setName="fu_chitinset"
+setStatEffects={"chitinsetbonuseffect"}
+
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-	setBonusInit("fu_chitinset", {
-	    {stat = "sulphuricImmunity", amount = 1},
-	    {stat = "physicalResistance", amount = 0.15}
-	})
+	setSEBonusInit(setName,setStatEffects)
+end
+
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
 end
