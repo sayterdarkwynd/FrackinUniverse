@@ -25,21 +25,8 @@ function init()
   -- activate visuals and check stats
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning
   activateVisualEffects()
-  makeAlert()  
   
   script.setUpdateDelta(5)
-end
-
--- ***************global reset
-function resetValues()
-  self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
-  self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
-  self.baseDmg = config.getParameter("baseDmgPerTick",0)           -- damage per tick
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     --debuff per tick
-  self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
-  self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
-  self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
-  self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
 end
 
 -- *******************Damage effects
@@ -55,99 +42,150 @@ function setEffectTime()
   return (self.baseRate * (1 - status.stat("fireResistance",0)))
 end
 
+-- ******** Applied bonuses and penalties
 function setNightPenalty()
-  self.modDmg = self.baseDmg + self.biomeNight
-  self.modDebuff = self.baseDebuff + self.biomeNight 
-  self.baseDmg = self.damageApply + self.modDmg
-  self.baseDebuff = self.debuffApply + self.modDebuff
+  if (self.biomeNight > 1) then
+    self.baseDmg = self.baseDmg + self.biomeNight
+    self.baseDebuff = self.baseDebuff + self.biomeNight
+    sb.logInfo("nightpenalty : "..self.biomeNight)
+  end
 end
 
 function setSituationPenalty()
-  self.modDmg = self.baseDmg + self.situationPenalty
-  self.modDebuff = self.baseDebuff + self.situationPenalty
-  self.baseDmg = self.damageApply + self.modDmg
-  self.baseDebuff = self.debuffApply + self.modDebuff 
+  if (self.situationPenalty > 1) then
+    self.baseDmg = self.baseDmg + self.situationPenalty
+    self.baseDebuff = self.baseDebuff + self.situationPenalty 
+    sb.logInfo("situationpenalty : "..self.situationPenalty)
+  end
 end
 
 function setLiquidPenalty()
-  self.modDmg = self.baseDmg + self.liquidPenalty
-  self.modDebuff = self.baseDebuff + self.liquidPenalty
-  self.baseDmg = self.damageApply + self.modDmg
-  self.baseDebuff = self.debuffApply + self.modDebuff
+  if (self.liquidPenalty > 1) then
+    self.baseDmg = self.baseDmg * 2
+    self.baseDebuff = self.baseDebuff + self.liquidPenalty 
+    sb.logInfo("liquidpenalty : "..self.liquidPenalty.." Base Damage : "..self.baseDmg)
+  end
 end
 
 function setWindPenalty()
   self.windLevel =  world.windLevel(mcontroller.position())
-  self.modThreshold = (self.windlevel / 100) + self.biomeThreshold
-  self.biomeThreshold = self.biomeThreshold + self.modThreshold  
+  if (self.windLevel > 1) then
+    self.biomeThreshold = self.biomeThreshold + (self.windlevel / 100)
+    sb.logInfo("windlevel : "..self.windlevel)
+  end  
 end
 
+-- ********************************
 
--- alert the player that they are affected
-function activateVisualEffects()
-  effect.setParentDirectives("fade=ff7600=0.7")
-  animator.setParticleEmitterOffsetRegion("firebreath", mcontroller.boundBox())
-  animator.setParticleEmitterActive("firebreath", true) 
+--**** Other functions
+function getLight()
+  local position = mcontroller.position()
+  position[1] = math.floor(position[1])
+  position[2] = math.floor(position[2])
+  local lightLevel = world.lightLevel(position)
+  lightLevel = math.floor(lightLevel * 100)
+  return lightLevel
+end
+
+function daytimeCheck()
+	return world.timeOfDay() < 0.5 -- true if daytime
 end
 
 function undergroundCheck()
-  return world.underground(mcontroller.position()) 
+	return world.underground(mcontroller.position()) 
 end
 
+
+function isDry()
+local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
+	if not world.liquidAt(mouthPosition) then
+	    inWater = 0
+	end
+end
+
+function hungerLevel()
+  if status.isResource("food") then
+   return status.resource("food")
+  else
+   return 50
+  end
+end
+
+function toHex(num)
+  local hex = string.format("%X", math.floor(num + 0.5))
+  if num < 16 then hex = "0"..hex end
+  return hex
+end
+
+--**** Alert the player
+function activateVisualEffects()
+  effect.setParentDirectives("fade=ff7600=0.7")
+  --animator.setParticleEmitterOffsetRegion("firebreath", mcontroller.boundBox())
+  --animator.setParticleEmitterActive("firebreath", true) 
+end
+
+function makeAlert()
+        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
+        animator.playSound("bolt")
+end
+
+
+
 function update(dt)
-  self.damageApply = setEffectDamage()
-  self.debuffApply = setEffectDebuff()
-  self.baseRate = setEffectTime()
+self.biomeTimer = self.biomeTimer - dt 
+self.biomeTimer2 = self.biomeTimer2 - dt 
+self.timerRadioMessage = self.timerRadioMessage - dt
+
+--set the base stats
+  self.baseRate = config.getParameter("baseRate",0)                
+  self.baseDmg = config.getParameter("baseDmgPerTick",0)        
+  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
+  self.biomeTemp = config.getParameter("biomeTemp",0)  
+  self.biomeThreshold = config.getParameter("biomeThreshold",0)    
+  self.biomeNight = config.getParameter("biomeNight",0)            
+  self.situationPenalty = config.getParameter("situationPenalty",0)
+  self.liquidPenalty = config.getParameter("liquidPenalty",0)   
   
--- environment checks
-underground = undergroundCheck()
+  self.baseRate = setEffectTime()
+  self.damageApply = setEffectDamage()   
+  self.debuffApply = setEffectDebuff() 
+   
+  -- environment checks
+  daytime = daytimeCheck()
+  underground = undergroundCheck()
+  local lightLevel = getLight() 
+  
   if underground then  
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheatcavern", 1.0) -- send player a warning
-    self.timerRadioMessage = 1
+    self.timerRadioMessage = 60
+    setSituationPenalty()
   end  
-       
-  self.biomeTimer = self.biomeTimer - dt 
 
+  self.damageApply = setEffectDamage()   
+  self.debuffApply = setEffectDebuff() 
+  
       if self.biomeTimer <= 0 and status.stat("fireResistance",0) < 1.0 then
-	self.windLevel =  world.windLevel(mcontroller.position())
-
-	if not underground then 
-	  self.situationPenalty = config.getParameter("situationPenalty",0)
-	else
-	  self.situationPenalty = 1
-	end 
-          
-	  activateVisualEffects()
 	  makeAlert()
-
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt  	  
       end 
 
       if status.stat("fireResistance",0) <=0.99 then      
-	     self.damageApply = (self.damageApply /25) 
-	     self.debuffApply = (self.debuffApply /100) 
-	     
 	     status.modifyResource("health", -self.damageApply * dt)
 	   if status.isResource("food") then
 	     if status.resource("food") >= 2 then
 	       status.modifyResource("food", -self.debuffApply * dt )
 	     end
            end  
+           
              mcontroller.controlModifiers({
 	         airJumpModifier = status.stat("fireResistance",0)+0.3, 
-	         speedModifier = status.stat("fireResistance",0)+0.30 
+	         speedModifier = status.stat("fireResistance",0)+0.3 
              })              
       end  
       self.biomeTimer = self.biomeTimer - dt
       
 end       
-
-
-function makeAlert()
-        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
-        animator.playSound("bolt")
-end
 
 function uninit()
 
