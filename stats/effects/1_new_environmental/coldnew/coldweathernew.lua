@@ -4,6 +4,10 @@ function init()
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
+  self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
+  self.biomeTimer = config.getParameter("baseRate",0)
+  self.biomeTimer2 = (self.baseRate * (1 + status.stat("iceResistance",0)) *2)
+  
   self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
   self.baseDmg = config.getParameter("baseDmgPerTick",0)           -- damage per tick
@@ -13,10 +17,6 @@ function init()
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
-  self.baseRate = config.getParameter("baseRate",0)                -- base Timer rate
-  self.biomeTimer = config.getParameter("baseRate",0)
-  self.biomeTimer2 = (self.baseRate * (1 + status.stat("iceResistance",0)) *2)
-  
   -- activate visuals and check stats
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
   activateVisualEffects()
@@ -24,17 +24,52 @@ function init()
   script.setUpdateDelta(5)
 end
 
+function resetValues()
+  self.biomeTemp = config.getParameter("biomeTemp",0)              -- sets the base variable for the biome/effect
+  self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
+  self.baseDmg = config.getParameter("baseDmgPerTick",0)           -- damage per tick
+  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     --debuff per tick
+  self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
+  self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
+  self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
+  self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
+end
+
+-- *******************Damage effects
 function setEffectDamage()
-  return ( ( self.baseDmg + self.situationPenalty + self.liquidPenalty + self.biomeNight ) *  (1 -status.stat("iceResistance",0) ) * self.biomeThreshold  )
+  return ( ( self.baseDmg ) *  (1 -status.stat("iceResistance",0) ) * self.biomeThreshold  )
 end
 
 function setEffectDebuff()
-  return ( ( ( self.baseDebuff + self.liquidPenalty + self.biomeNight ) * self.biomeTemp ) * (1 -status.stat("iceResistance",0) * self.biomeThreshold) )
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("iceResistance",0) * self.biomeThreshold) )
 end
 
 function setEffectTime()
-  return (( self.biomeThreshold * self.baseRate ) * (1 +status.stat("poisonResistance",0)))
+  return ( 1 - status.stat("iceResistance",0) * self.baseRate )
 end
+
+function setNightPenalty()
+  self.baseDmg = self.baseDmg + self.biomeNight
+  self.baseDebuff = self.baseDebuff + self.biomeNight 
+end
+
+function setLiquidPenalty()
+  self.baseDmg = self.baseDmg + self.situationPenalty
+  self.baseDebuff = self.baseDebuff + self.situationPenalty
+end
+
+function setLiquidPenalty()
+  self.baseDmg = self.baseDmg + self.liquidPenalty
+  self.baseDebuff = self.baseDebuff + self.liquidPenalty
+end
+
+function setWindPenalty()
+  self.windLevel =  world.windLevel(mcontroller.position())
+  self.biomeThreshold = self.biomeThreshold + (self.windLevel/100)
+end
+
+-- ********************************
+
 
 -- alert the player that they are affected
 function activateVisualEffects()
@@ -92,14 +127,14 @@ sb.logInfo("timer : "..self.baseRate)
 	self.biomeTimer = self.biomeTimer - dt
 	self.biomeTimer2 = self.biomeTimer2 - dt
           -- cold wind
-        self.windLevel =  world.windLevel(mcontroller.position())
+        
         if self.windLevel >= 40 then
                 if self.timerRadioMessage == 0 then
                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
-                  self.timerRadioMessage = 60
-                    self.biomeTemp = self.biomeTemp * 1.2
-  		    self.damageApply = setEffectDamage()
-  		    self.debuffApply = setEffectDebuff()                 
+                    self.timerRadioMessage = 60
+                   setWindPenalty()
+  		   self.damageApply = setEffectDamage()
+  		   self.debuffApply = setEffectDebuff()
 		end
         end
         
@@ -107,7 +142,7 @@ sb.logInfo("timer : "..self.baseRate)
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
         local mouthful = world.liquidAt(mouthposition)        
         if (world.liquidAt(mouthPosition)) then
-		self.liquidPenalty = self.liquidPenalty * 1.2
+		setLiquidPenalty()
   		self.damageApply = setEffectDamage()
   		self.debuffApply = setEffectDebuff()
   		self.baseRate = setEffectTime() 		
@@ -119,7 +154,7 @@ sb.logInfo("timer : "..self.baseRate)
         
         -- is it nighttime or above ground? 
         if not daytime then
-                self.biomeNight = self.biomeNight * 1.25
+                setNightPenalty()
   		self.damageApply = setEffectDamage()
   		self.debuffApply = setEffectDebuff()
   		self.baseRate = setEffectTime()                 
@@ -151,7 +186,7 @@ sb.logInfo("timer : "..self.baseRate)
              mcontroller.controlModifiers({
 	         airJumpModifier = 1 * status.stat("iceResistance")+0.05, 
 	         speedModifier = 1 * status.stat("iceResistance")+0.05
-             })              
+             })  
       end  
       
       if self.biomeTimer2 <= 0 and status.stat("iceResistance",0) < 1.0 then
