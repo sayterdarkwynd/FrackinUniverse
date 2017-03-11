@@ -1,25 +1,23 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.10}
+  {stat = "powerMultiplier", amount = 0.10}
 }
 
 armorBonus2={
-{stat = "blacktarImmunity", amount = 1},
-{stat = "quicksandImmunity", amount = 1},
-{stat = "radiationburnImmunity", amount = 1},
-{stat = "sandstormImmunity", amount = 1},
-{stat = "shieldStaminaRegen", baseMultiplier = 1.20},
-{stat = "maxHealth", baseMultiplier = 1.15},
-{stat = "maxEnergy", baseMultiplier = 1.10}
+  {stat = "fireStatusImmunity", amount = 1},
+  {stat = "fireResistance", amount = 0.30},
+  {stat = "quicksandImmunity", amount = 1},
+  {stat = "sandstormImmunity", amount = 1},
+  {stat = "shieldStaminaRegen", baseMultiplier = 1.20}
 }
 
 armorBonus={
-{stat = "blacktarImmunity", amount = 1},
-{stat = "quicksandImmunity", amount = 1},
-{stat = "sandstormImmunity", amount = 1},
-{stat = "radiationburnImmunity", amount = 1},
-{stat = "shieldStaminaRegen", baseMultiplier = 1.20}
+  {stat = "fireStatusImmunity", amount = 1},
+  {stat = "fireResistance", amount = 0.15},
+  {stat = "quicksandImmunity", amount = 1},
+  {stat = "sandstormImmunity", amount = 1},
+  {stat = "shieldStaminaRegen", baseMultiplier = 1.20}
 }
 
 setName="fu_nomadset"

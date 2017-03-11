@@ -1,3 +1,5 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 setName="fu_vagabondset"
 
 weaponBonus={
@@ -5,10 +7,10 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "fireResistance", amount = 0.15}
+	{stat = "electricResistance", amount = 0.075}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 
 function init()
 	setSEBonusInit(setName)

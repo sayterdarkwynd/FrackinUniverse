@@ -1,12 +1,12 @@
-setName="fu_samuraiset"
+setName="fu_reconset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15},
-	{stat = "critChance", amount = 5}
+	{stat = "powerMultiplier", amount = 0.15}
 }
 
 armorBonus={
-	{stat = "physicalResistance", amount = 0.05}
+		{stat = "radioactiveResistance", amount = 0.12},
+		{stat = "radiationburnImmunity", amount = 1.0}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -27,11 +27,15 @@ else
 	
 	checkWeapons()
 end
+
+	mcontroller.controlModifiers({
+			speedModifier = 1.05
+		})
 end
 
 function 
 	checkWeapons()
-	local weapons=weaponCheck({"shortsword","broadsword"})
+	local weapons=weaponCheck({"rifle","sniperrifle"})
 if weapons["either"] then
 	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 else
