@@ -55,7 +55,6 @@ function setNightPenalty()
   if (self.biomeNight > 1) then
     self.baseDmg = self.baseDmg + self.biomeNight
     self.baseDebuff = self.baseDebuff + self.biomeNight
-    sb.logInfo("nightpenalty : "..self.biomeNight)
   end
 end
 
@@ -63,7 +62,6 @@ function setSituationPenalty()
   if (self.situationPenalty > 1) then
     self.baseDmg = self.baseDmg + self.situationPenalty
     self.baseDebuff = self.baseDebuff + self.situationPenalty 
-    sb.logInfo("situationpenalty : "..self.situationPenalty)
   end
 end
 
@@ -71,7 +69,6 @@ function setLiquidPenalty()
   if (self.liquidPenalty > 1) then
     self.baseDmg = self.baseDmg * 2
     self.baseDebuff = self.baseDebuff + self.liquidPenalty 
-    sb.logInfo("liquidpenalty : "..self.liquidPenalty.." Base Damage : "..self.baseDmg)
   end
 end
 
@@ -79,7 +76,6 @@ function setWindPenalty()
   self.windLevel =  world.windLevel(mcontroller.position())
   if (self.windLevel > 1) then
     self.biomeThreshold = self.biomeThreshold + (self.windlevel / 100)
-    sb.logInfo("windlevel : "..self.windlevel)
   end  
 end
 
@@ -127,7 +123,6 @@ end
 
 --*********alert the player that they are affected
 function activateVisualEffects()
-sb.logInfo("self.multiply")
   animator.setParticleEmitterOffsetRegion("poisonbreath", mcontroller.boundBox())
   animator.setParticleEmitterActive("poisonbreath", true)
   local multiply = {100 * status.stat("cosmicResistance",0), 255 + self.multiply[2] * status.stat("cosmicResistance",0), 255 + self.multiply[3] * status.stat("cosmicResistance",0)}

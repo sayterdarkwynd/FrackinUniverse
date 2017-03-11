@@ -1,5 +1,7 @@
 require("/scripts/vec2.lua")
+require("/scripts/util.lua")
 function init()
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -11,10 +13,9 @@ function init()
   
   --timers
   self.biomeTimer = self.baseRate
-  self.biomeTimer2 = (self.baseRate * (1 + status.stat("radioactiveResistance",0)) *10)
+  self.biomeTimer2 = 1
   
   --conditionals
-
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
   self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
@@ -22,25 +23,23 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeradiation", 1.0) -- send player a warning
+  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaether", 1.0) -- send player a warning
   activateVisualEffects()
-  makeAlert()  
-
   script.setUpdateDelta(5)
 end
 
 
 -- *******************Damage effects
 function setEffectDamage()
-  return ( ( self.baseDmg ) *  (1 -status.stat("fireResistance",0) ) * self.biomeThreshold  )
+  return ( ( self.baseDmg ) *  (1 -status.stat("cosmicResistance",0) ) * self.biomeThreshold  )
 end
 
 function setEffectDebuff()
-  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("fireResistance",0) * self.biomeThreshold) )
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("cosmicResistance",0) * self.biomeThreshold) )
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (self.baseRate * (1 - status.stat("cosmicResistance",0)))
 end
 
 -- ******** Applied bonuses and penalties
@@ -48,7 +47,6 @@ function setNightPenalty()
   if (self.biomeNight > 1) then
     self.baseDmg = self.baseDmg + self.biomeNight
     self.baseDebuff = self.baseDebuff + self.biomeNight
-    sb.logInfo("nightpenalty : "..self.biomeNight)
   end
 end
 
@@ -56,7 +54,6 @@ function setSituationPenalty()
   if (self.situationPenalty > 1) then
     self.baseDmg = self.baseDmg + self.situationPenalty
     self.baseDebuff = self.baseDebuff + self.situationPenalty 
-    sb.logInfo("situationpenalty : "..self.situationPenalty)
   end
 end
 
@@ -64,7 +61,6 @@ function setLiquidPenalty()
   if (self.liquidPenalty > 1) then
     self.baseDmg = self.baseDmg * 2
     self.baseDebuff = self.baseDebuff + self.liquidPenalty 
-    sb.logInfo("liquidpenalty : "..self.liquidPenalty.." Base Damage : "..self.baseDmg)
   end
 end
 
@@ -72,7 +68,6 @@ function setWindPenalty()
   self.windLevel =  world.windLevel(mcontroller.position())
   if (self.windLevel > 1) then
     self.biomeThreshold = self.biomeThreshold + (self.windlevel / 100)
-    sb.logInfo("windlevel : "..self.windlevel)
   end  
 end
 
@@ -104,12 +99,6 @@ local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mo
 	end
 end
 
-function toHex(num)
-  local hex = string.format("%X", math.floor(num + 0.5))
-  if num < 16 then hex = "0"..hex end
-  return hex
-end
-
 function hungerLevel()
   if status.isResource("food") then
    return status.resource("food")
@@ -118,19 +107,23 @@ function hungerLevel()
   end
 end
 
---*********alert the player that they are affected
-function activateVisualEffects()
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext") 
-  effect.setParentDirectives("fade=33dd15=0.4")
-  animator.setParticleEmitterOffsetRegion("radioactivebreath", mcontroller.boundBox())
-  animator.setParticleEmitterActive("radioactivebreath", true) 
+function toHex(num)
+  local hex = string.format("%X", math.floor(num + 0.5))
+  if num < 16 then hex = "0"..hex end
+  return hex
 end
 
+
+-- alert the player that they are affected
+function activateVisualEffects()
+  effect.setParentDirectives("fade=ff23cc=0.3")
+end
+
+-- ice breath
 function makeAlert()
-        world.spawnProjectile("poisonsmoke",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
- 	animator.playSound("bolt")
+  local statusTextRegion = { 0, 1, 0, 1 }
+  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+  animator.burstParticleEmitter("statustext")  
 end
 
 
@@ -150,52 +143,46 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.liquidPenalty = config.getParameter("liquidPenalty",0)   
   
   self.baseRate = setEffectTime()
+  
+  if status.isResource("food") then
+      setSituationPenalty()
+      self.baseDmg = ( self.baseDmg * (status.resource("food")/40) )
+      self.baseDebuff = ( self.baseDebuff * (status.resource("food")/40) )
+      self.baseRate = ( self.baseRate * (status.resource("food")/40) )
+  end
+
+        -- is it nighttime or above ground? 
+        if not daytime then
+                setNightPenalty() 
+                if (self.timerRadioMessage <= 0) then
+                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaethernight", 1.0) -- send player a warning
+                  self.timerRadioMessage = 60
+		end
+        end
+        
+  --apply damage totals
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
-   
-  -- environment checks
-  daytime = daytimeCheck()
-  underground = undergroundCheck()
-  local lightLevel = getLight() 
-
-      if self.biomeTimer <= 0 and status.stat("radioactiveResistance") < 1.0 then
-	self.timerRadioMessage = self.timerRadioMessage - dt 
-	
-          -- fallout
-          self.windLevel =  world.windLevel(mcontroller.position())
-          if self.windLevel >= 20 then
-                setWindPenalty()   
-                if self.timerRadioMessage == 0 then
-                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeradiationwind", 1.0) -- send player a warning
-                  self.timerRadioMessage = 20
-		end
-          end
-
-	self.damageApply = setEffectDamage()   
-	self.debuffApply = setEffectDebuff()  
-	
-          -- activate visuals and check stats
-	  activateVisualEffects() 
+   sb.logInfo(" baseRate: "..self.baseRate)
+      
+      if (self.biomeTimer <= 0) and (status.stat("maxEnergy",0) > 0) then
             effect.addStatModifierGroup({
-              {stat = "maxHealth", amount = -self.debuffApply  },
-              {stat = "maxEnergy", amount = -self.debuffApply  }
+              {stat = "energyRegenPercentageRate", amount = status.stat("energyRegenPercentageRate") * (1 * -status.stat("cosmicResistance",0))  },
+              {stat = "energyRegenBlockTime", amount = status.stat("energyRegenBlockTime") * (1 * -status.stat("cosmicResistance",0))  },            
+              {stat = "maxEnergy", amount = util.round(-self.debuffApply)  }
             })
-          self.biomeTimer = self.baseRate
+            makeAlert()
+            activateVisualEffects()
+            self.biomeTimer = self.baseRate
       end 
-        
-      if status.stat("radioactiveResistance") <=0.99 then      
-	     self.damageApply = (self.damageApply /100)  
-	     status.modifyResource("health", -self.damageApply * dt)
-	   
-	   if status.isResource("food") then
-	     self.debuffApply = (self.debuffApply /10)
-	     if status.resource("food") >= 2 then
-	       status.modifyResource("food", -self.debuffApply * dt )
+      
+      if (status.stat("maxEnergy",0) < 20) then 
+	     status.modifyResource("health", -self.damageApply * dt) 
+	     if status.isResource("energy") then
+	       status.modifyResource("energy", -self.damageApply * dt) 
 	     end
-           end     
       end  
-      self.biomeTimer = self.biomeTimer - dt
-end       
+end         
 
 function uninit()
 

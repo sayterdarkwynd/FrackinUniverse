@@ -51,19 +51,7 @@ end
 
 
 function update(dt)
-  self.tickTimer = self.tickTimer - dt
-  if self.tickTimer <= 0 then
-    self.tickTimer = self.tickTime
-    status.applySelfDamageRequest({
-        damageType = "IgnoresDef",
-        effect.addStatModifierGroup({{stat = "protection", amount = baseValue }}),
-        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
-        damageSourceKind = "poison",
-        sourceEntityId = entity.id(),
-        activateVisualEffects2()
-      })
-  end
-  
+
   local erchiusCount = 0
   erchiusCount = erchiusCount + (self.maxHealth or 0)
   erchiusCount = erchiusCount + (self.maxEnergy or 0)

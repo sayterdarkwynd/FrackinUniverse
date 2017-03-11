@@ -1,17 +1,35 @@
 {
-  "particleEmitters" : {      
-    "poisonbreath" : {
-      "enabled" : true,
-      "emissionRate" : 1.0,
+  "particleEmitters" : {
+    "smoke1" : {
+      "layer": "front",
+      "active" : false,
+      "emissionRate" : 0.2,
+      "particles" : [ { "particle" : "blur" } ]
+    },   
+    "smoke2" : {
+      "layer": "front",
+      "active" : false,
+      "emissionRate" : 0.5,
+      "particles" : [ { "particle" : "blur" } ]
+    },    
+    "smoke3" : {
+      "layer": "front",
+      "active" : false,
+      "emissionRate" : 1,
+      "particles" : [ { "particle" : "blur" } ]
+    },        
+    "icebreath" : {
+      "enabled" : false,
+      "emissionRate" : 3.0,
       "particles" : [
         {
           "particle" : {
             "type" : "ember",
             "size" : 1.5,
-            "color" : [30, 30, 40, 180],
-            "fade" : 0.5,
+            "color" : [250, 250, 255, 180],
+            "fade" : 0.4,
             "destructionAction" : "shrink",
-            "destructionTime" : 0.4,
+            "destructionTime" : 0.8,
             "position" : [0.0, 0.0],
             "offsetRegion" : [0, 0, 0, 0],
             "initialVelocity" : [0, -0.1],
@@ -29,9 +47,9 @@
         {
           "particle" : {
             "type" : "text",
-            "text" : "- Def",
+            "text" : "- Armor",
             "size" : 0.55,
-            "color" : [225, 44, 66, 255],
+            "color" : [255, 190, 34, 255],
             "fade" : 0.5,
             "destructionAction" : "shrink",
             "destructionTime" : 0.8,
@@ -40,7 +58,7 @@
             "initialVelocity" : [0, 4],
             "finalVelocity" : [0, 1],
             "approach" : [0, 10],
-            "timeToLive" : 1.5,
+            "timeToLive" : 1.0,
             "variance" : {
             }
           }
@@ -49,5 +67,7 @@
     } 
   },
 
-  "sounds" : { "bolt" : [ "/sfx/projectiles/poison_barrier_kill.ogg" ] }
+  "sounds" : {
+    "bolt" : [ "/sfx/projectiles/ice_barrier_break1.ogg" ]
+  }
 }
