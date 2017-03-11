@@ -1,6 +1,10 @@
 require("/scripts/vec2.lua")
 function init()
 
+if status.statPositive("biomeheatImmunity") then
+  effect.expire() return
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -12,7 +16,7 @@ function init()
   
   --timers
   self.biomeTimer = self.baseRate
-  self.biomeTimer2 = (self.baseRate * (1 + status.stat("physicalResistance",0)) *10)
+  self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
   
   --conditionals
 
@@ -23,7 +27,7 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "jungleheat", 1.0) -- send player a warning
+  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
   activateVisualEffects()
   
   script.setUpdateDelta(5)
@@ -31,15 +35,15 @@ end
 
 -- *******************Damage effects
 function setEffectDamage()
-  return ( ( self.baseDmg ) *  (1 -status.stat("physicalResistance",0) ) * self.biomeThreshold  )
+  return ( ( self.baseDmg ) *  (1 -status.stat("fireResistance",0) ) * self.biomeThreshold  )
 end
 
 function setEffectDebuff()
-  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("physicalResistance",0) * self.biomeThreshold) )
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("fireResistance",0) * self.biomeThreshold) )
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("physicalResistance",0)))
+  return (self.baseRate * (1 - status.stat("fireResistance",0)))
 end
 
 -- ******** Applied bonuses and penalties
@@ -115,7 +119,7 @@ end
 
 --**** Alert the player
 function activateVisualEffects()
-  effect.setParentDirectives("fade=ff7600=0.7")
+  effect.setParentDirectives("fade=ff7600=0.05")
   --animator.setParticleEmitterOffsetRegion("firebreath", mcontroller.boundBox())
   --animator.setParticleEmitterActive("firebreath", true) 
 end
@@ -128,6 +132,10 @@ end
 
 
 function update(dt)
+if status.statPositive("biomeheatImmunity") then
+  effect.expire() return
+end
+
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
@@ -151,53 +159,46 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
   
-  if underground then  
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheatcavern", 1.0) -- send player a warning
-    self.timerRadioMessage = 60
-    setSituationPenalty()
-  end  
-
-
+  if daytime then  
         -- are they in liquid?
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
         local mouthful = world.liquidAt(mouthposition)        
         if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
 		setLiquidPenalty()
 		if (self.timerRadioMessage <= 0) then
-		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejunglewater", 1.0) -- send player a warning
+		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertwater", 1.0) -- send player a warning
 		  self.timerRadioMessage = 60
 		end
 	    inWater = 1
 	else
 	  isDry()
-        end 	
+        end 		
         
-  self.damageApply = setEffectDamage()   
-  self.debuffApply = setEffectDebuff() 
+      self.damageApply = setEffectDamage()   
+      self.debuffApply = setEffectDebuff() 
   
-      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < 1.0 then
-	  makeAlert()
+      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < 1.0 then
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt  	  
       end 
 
-      if status.stat("physicalResistance",0) <=0.99 then      
-	     status.modifyResource("health", -self.damageApply * dt)
-	   if status.isResource("food") then
-	     if status.resource("food") >= 2 then
-	       status.modifyResource("food", -self.debuffApply * dt )
-	     end
-           end  
+      if status.stat("fireResistance",0) <=0.99 then      
+	   status.modifyResource("health", -self.damageApply * dt)
            
            if (status.resource("health")) <= (status.resource("health")/4) then
              mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("physicalResistance",0)+0.3, 
-	         speedModifier = status.stat("physicalResistance",0)+0.3 
+	         airJumpModifier = status.stat("fireResistance",0), 
+	         speedModifier = status.stat("fireResistance",0) 
              })  
            end
       end  
       self.biomeTimer = self.biomeTimer - dt
-      
+  else	
+	if (self.timerRadioMessage <= 0) then
+	  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
+	  self.timerRadioMessage = 120
+	end  
+  end    
 end       
 
 function uninit()

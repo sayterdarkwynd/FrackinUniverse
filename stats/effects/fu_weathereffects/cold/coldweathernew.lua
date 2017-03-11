@@ -199,18 +199,18 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       end 
       
       if status.stat("iceResistance",0) < 1.0 then      
-	     self.damageApply = (self.damageApply /120)  
+	     self.damageApply = self.damageApply  
 	     status.modifyResource("health", -self.damageApply * dt)
 	   
 	   if status.isResource("food") then
-	     self.debuffApply = (self.debuffApply /50) 
+	     self.debuffApply = (self.debuffApply /120) 
 	     if status.resource("food") >= 2 then
 	       status.modifyResource("food", -self.debuffApply * dt )
 	     end
            end  
              mcontroller.controlModifiers({
-	         airJumpModifier = 1 * status.stat("iceResistance")+0.1, 
-	         speedModifier = 1 * status.stat("iceResistance")+0.1
+	         airJumpModifier = 0.4 + status.stat("iceResistance"), 
+	         speedModifier = 0.2 + status.stat("iceResistance")
              })  
       end  
       --breath

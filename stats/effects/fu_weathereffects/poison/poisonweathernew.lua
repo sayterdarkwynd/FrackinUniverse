@@ -172,7 +172,6 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         self.biomeTimer2 = setEffectTime()
       end 
         
-        self.damageApply = (self.damageApply /50)  
         status.modifyResource("health", -self.damageApply * dt)
 
         -- less agile the more damaged you are
