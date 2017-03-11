@@ -1,0 +1,29 @@
+{
+  "name" : "desertweathernew",
+  "blockingStat" : "biomeheatImmunity",
+
+  "effectConfig" : {
+	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
+	  "biomeTemp" : 0.75, 
+	  //this is a generic modifier for damage and debuff totals
+	  "biomeThreshold" : 0.25,
+	  //base timer
+	    "baseRate" : 5,
+	  //base effect applied per tick
+	    "baseDebuffPerTick" : 1,
+	  // base damage applied per tick
+	    "baseDmgPerTick" : 1,
+	    "situationPenalty" : 1,
+	    "liquidPenalty" : 0.25,
+	    "biomeNight" : 0.45	    
+  },
+  "defaultDuration" : 2,
+
+  "scripts" : [
+    "desertweathernew.lua"
+  ],
+
+  "animationConfig" : "desertweathernew.animation",
+
+  "icon" : "/interface/statuses/fire.png"
+}
