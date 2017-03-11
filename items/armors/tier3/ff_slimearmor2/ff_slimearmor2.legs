@@ -1,48 +1,41 @@
 {
-  "itemName" : "ff_slimechest2",
-  "inventoryIcon" : "icons.png:chest",
+  "itemName" : "ff_slimelegs2",
+  "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Slimy, oozing protection. ^cyan;Set Bonus: Immune to Bio-Ooze, Insanity, Poison and Shadow Taint and Slime. +25% Poison Resistance^reset;",
-  "shortdescription" : "Black Slime Chest",
+  "description" : "Set Bonus:
+^cyan;+25% Poison/Radiation Resist, +10% Damage, +6% Crit (Slime weapons). ^reset;
+^e43774;Immune: Poison, Bioooze, Slime. Spawns minions. +Slime Weapon Damage^reset;
+^green;Immune: Mud, Slime, Mud and Clay tiles^reset;",   
+  "shortdescription" : "Black Slime Legs",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "ff_slimechest3" ],
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-  "level" : 4,
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
+  "learnBlueprintsOnPickup" : [ "ff_slimelegs3" ],
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.05
+      "baseMultiplier" : 1.42
     },
 
     {
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 12
     },
-
     {
       "stat" : "maxEnergy",
-      "amount" : 26
+      "amount" : 5
     },
     {
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 8
     },
     "slimesetbonus2",
     {
-      "stat" : "fu_slimeset2_chest",
+      "stat" : "fu_slimeset2_legs",
       "amount" : 1
     }
   ],

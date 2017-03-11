@@ -1,16 +1,18 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 setName="fu_evaderset"
 
 weaponBonus={
-	{stat = "physicalResistance", amount = 0.15}
+	{stat = "physicalResistance", amount = 0.08}
 }
 
 armorBonus={
-	{stat = "shieldRegen", amount = 0.25},
-	{stat = "shieldHealth", amount = 0.25},
-	{stat = "perfectBlockLimitRegen", baseMultiplier = 1.25}
+        {stat = "physicalResistance", amount = 0.10}
+	{stat = "shieldRegen", amount = 0.20},
+	{stat = "shieldHealth", amount = 0.20},
+	{stat = "perfectBlockLimitRegen", baseMultiplier = 1.20}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -30,10 +32,10 @@ else
 end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"shield"})
-if weapons["either"]
+	local weapons2=weaponCheck({"shortsword"})
+if weapons["either"] and weapons2["either"] then
 	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 else
 	effect.setStatModifierGroup(weaponBonusHandle,{})

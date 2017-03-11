@@ -1,20 +1,41 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
-setName="fu_bountyhunterset"
+setName="fu_bonesteelset"
 
-armorEffect={
-	{stat = "iceResistance", amount = 0.25}
+weaponBonus={
+  {stat = "powerMultiplier", amount = 0.20}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+armorBonus={
+  {stat = "physicalResistance", amount = 0.12},
+  {stat = "fallDamageMultiplier", baseMultiplier = 0.12}
+}
 
 function init()
 	setSEBonusInit(setName)
+	weaponBonusHandle=effect.addStatModifierGroup({})
+			
+	checkWeapons()
 
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
+	else
+		effect.setStatModifierGroup(
+		armorBonusHandle,armorBonus)
+		checkWeapons()
 	end
+end
+
+function 
+	checkWeapons()
+	local weapons=weaponCheck({"rocketlauncher","flamethrower"})
+if weapons["either"] then
+	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+else
+	effect.setStatModifierGroup(weaponBonusHandle,{})
+end
 end

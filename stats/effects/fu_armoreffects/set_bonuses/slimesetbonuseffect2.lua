@@ -6,7 +6,10 @@ weaponBonus={
 }
 
 armorBonus={
-		{stat = "poisonResistance", amount = 0.35},
+                {stat = "biooozeImmunity", amount = 1.0},
+                {stat = "poisonStatusImmunity", amount = 1.0},
+		{stat = "poisonResistance", amount = 0.25},
+		{stat = "radioactiveResistance", amount = 0.25},
 		{stat = "slimestickImmunity", amount = 1},
 		{stat = "slimefrictionImmunity", amount = 1},
 		{stat = "slimeImmunity", amount = 1},
@@ -42,9 +45,9 @@ self.timer = self.timer - dt
 	    local p = entity.position()
 	    local parameters = {}
 	    if math.random(2) = 1 then
-	      local type = "slime"
+	      local type = "ectoslime"
 	    else
-	      local type = "microslime"
+	      local type = "ectomicroslime"
 	    end
 	    sb.logInfo("Spawning a slime from Slime armor. Type is %s",type)
 	    parameters.persistent = false
