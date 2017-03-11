@@ -2,8 +2,62 @@
   {
     "op": "replace",
     "path": "/biomeradiation/text",
-    "value": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!"
+    "value": "^red;WARNING! RADIATION DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!"
   },
+  
+  {
+    "op": "add",
+    "path": "/ffbiomedesert",
+    "value": {
+      "unique": false,
+      "text": "^red;WARNING: DESERT HEAT ^reset;! The climate here is exceptionally warm during the day. Water will help you cool off, if you can find it. Fire Resistance will help a great deal. Night is cool but tolerable.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ffbiomedesertwater",
+    "value": {
+      "unique": false,
+      "text": "You've managed to cool off in this wonderful pool of liquid. You feel much less uncomfortable now!",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ffbiomedesertnight",
+    "value": {
+      "unique": false,
+      "text": "The sun has set, and the temperature has blissfully dropped to tolerable levels. You should be relatively comfortable until daybreak.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+    
+  {
+    "op": "add",
+    "path": "/ffbiomejungle",
+    "value": {
+      "unique": false,
+      "text": "^red;WARNING: TROPICAL HEAT ^reset;! The climate here is exceptionally warm, which could lead to discomfort if care is not taken. Water will help you cool off, if you can find it. Physical Resistance will help, too.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  
+
+  {
+    "op": "add",
+    "path": "/ffbiomejunglewater",
+    "value": {
+      "unique": false,
+      "text": "Ah, a soothing spring. This should help lower your temperature and give you a brief moment of respite.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },  
   
   
   {
@@ -11,7 +65,7 @@
     "path": "/ffbiomeradiationsevere",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "text": "^red;WARNING! RADIATION DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -55,7 +109,7 @@
   {
     "op": "replace",
     "path": "/biomecold/text",
-    "value": "^red;WARNING! EXTREME COLD DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!"
+    "value": "^red;WARNING! EXTREME COLD DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!"
   },
   
   {
@@ -63,7 +117,7 @@
     "path": "/ffbiomedeadlycold",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment. Radiation will sap your health and energy, and make you sick!",
+      "text": "^red;WARNING! RADIATION DETECTED ^reset;! You should not attempt further exploration without proper protective equipment. Radiation will sap your health and energy, and make you sick!",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -93,7 +147,7 @@
   {
     "op": "replace",
     "path": "/biomeheat/text",
-    "value": "^red;WARNING! EXTREME HEAT DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!"
+    "value": "^red;WARNING! EXTREME HEAT DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!"
   },
 
   {
@@ -112,7 +166,7 @@
     "path": "/ffbiomedeadlyheat",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "text": "^red;WARNING! RADIATION DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -130,7 +184,7 @@
     "path": "/ffbiomeradiation",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! RADIATION DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "text": "^red;WARNING! RADIATION DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -140,7 +194,7 @@
     "path": "/ffbiomecold",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! EXTREME COLD DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "text": "^red;WARNING! EXTREME COLD DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -150,7 +204,7 @@
     "path": "/ffbiomeheat",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! EXTREME HEAT DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "text": "^red;WARNING! EXTREME HEAT DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -160,7 +214,7 @@
     "path": "/ffbiomeproto",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! POISON ATMOSPHERE DETECTED ^reset;! \nWith ^green;Proto-Poison protection^reset; you'll be fine. Otherwise, Proto poison slowly drains your vitality. Poison resistance reduces or nullifies the effects.",
+      "text": "^red;WARNING! POISON ATMOSPHERE DETECTED ^reset;! With ^green;Proto-Poison protection^reset; you'll be fine. Otherwise, Proto poison slowly drains your vitality. Poison resistance reduces or nullifies the effects.",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -170,7 +224,28 @@
     "path": "/ffbiomesulphuric",
     "value": {
       "unique": false,
-      "text": "^red;WARNING! SULPHURIC ATMOSPHERE DETECTED ^reset;! \nYou should not attempt further exploration without proper protective equipment!",
+      "text": "^red;WARNING! SULPHURIC ATMOSPHERE DETECTED ^reset;! You should not attempt further exploration without proper protective equipment!",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  
+  {
+    "op": "add",
+    "path": "/ffbiomeaether",
+    "value": {
+      "unique": false,
+      "text": "^red;WARNING! COSMIC ENERGY DETECTED ^reset;! Some sort of protection from cosmic damage would help a great deal. This energy appears to decrease energy regeneration rates.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ffbiomeaethernight",
+    "value": {
+      "unique": false,
+      "text": "As night falls, the effects of the cosmic energy permeating this planet seem to increase in severity. Somehow, the sun holds the worst of these effects at bay.",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
