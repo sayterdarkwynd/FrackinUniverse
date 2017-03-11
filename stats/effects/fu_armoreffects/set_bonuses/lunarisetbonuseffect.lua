@@ -1,4 +1,4 @@
-setName="fu_lunariset"
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
 	{stat = "critChance", amount = 15},
@@ -8,11 +8,11 @@ weaponBonus={
 armorBonus={
 		{stat = "energyRegenPercentageRate", baseMultiplier = 1.25},
 		{stat = "energyRegenBlockTime", baseMultiplier = 0.85},
-		{stat = "cosmicResistance", amount = 0.25},
-		{stat = "shadowResistance", amount = 0.20}
+		{stat = "cosmicResistance", amount = 0.25}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_lunariset"
+
 
 function init()
 	setSEBonusInit(setName)
@@ -32,12 +32,11 @@ else
 end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"lunari"})
-if weapons["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+	if weapons["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end

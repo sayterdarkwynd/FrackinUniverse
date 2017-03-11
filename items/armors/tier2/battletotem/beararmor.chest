@@ -1,16 +1,17 @@
 {
-  "itemName" : "fuwolfchest",
+  "itemName" : "fubearchest",
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Set Bonus:
-^cyan;Immune: Snow, Cold. +50% Ice Resistance^reset;
-^green;+10 to 20% Crit Damage (Daggers)^reset;",
-  "shortdescription" : "Fang Shaman Coat",
+^cyan;+7.5 to 22.5% Crit Chance with Hammers/Axes^reset;
+^green;Immune: Cold, Ice status effects.^reset;",
+  "shortdescription" : "Battle Totem Jerkin",
+  "learnBlueprintsOnPickup" : [ "fubearchest2" ],
   "category" : "^#e43774;Upgradeable Armor^reset;",
-  "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "fuwolfchest2" ],
+  "tooltipKind" : "armor",
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -23,29 +24,29 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "level" : 3,
+  "level" : 2,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.80
+      "baseMultiplier" : 1.60
     },
     {
       "stat" : "protection",
-      "amount" : 30.5
+      "amount" : 22
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 25.5
+      "amount" : 9
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 24
     },
-    "wolfsetbonus",
+    "bearsetbonus",
     {
-      "stat" : "fu_wolfset_chest",
+      "stat" : "fu_bearset_chest",
       "amount" : 1
     }
   ],

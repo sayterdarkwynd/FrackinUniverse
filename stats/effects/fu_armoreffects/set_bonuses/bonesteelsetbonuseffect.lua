@@ -1,23 +1,20 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 setName="fu_bonesteelset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15}
+  {stat = "powerMultiplier", amount = 0.15}
 }
 
 armorBonus2={
-{stat = "maxHealth", baseMultiplier = 1.10},
-{stat = "maxEnergy", baseMultiplier = 1.05},
-{stat = "physicalResistance", amount = 0.20},
-{stat = "fallDamageMultiplier", baseMultiplier = 0.25}
+  {stat = "physicalResistance", amount = 0.25},
+  {stat = "fallDamageMultiplier", baseMultiplier = 0.25}
 }
 
 armorBonus={
-	{stat = "physicalResistance", amount = 0.15},
-{stat = "maxHealth", baseMultiplier = 1.05},
-{stat = "fallDamageMultiplier", baseMultiplier = 0.25}
+  {stat = "physicalResistance", amount = 0.10},
+  {stat = "fallDamageMultiplier", baseMultiplier = 0.25}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -32,7 +29,7 @@ function update(dt)
 if not checkSetWorn(self.setBonusCheck) then
 	effect.expire()
 else
-	if (world.type() == "garden") or (world.type() == "forest") then
+	if (world.type() == "sulphuric") or (world.type() == "sulphuricdark") or (world.type() == "sulphuricocean") or (world.type() == "mountainous") then
 		effect.setStatModifierGroup(
 	armorBonusHandle,armorBonus2)
 	else

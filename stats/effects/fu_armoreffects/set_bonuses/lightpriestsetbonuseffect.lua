@@ -5,7 +5,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{ stat = "cosmicResistance", amount = 0.25 }
+	{ stat = "cosmicResistance", amount = 0.20 }
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -32,11 +32,11 @@ end
 function 
 	checkWeapons()
 	local weapons=weaponCheck({"staff","wand"})
-if weapons["both"] or weapons["twoHanded"] then
-	effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
-elseif weapons["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+	if weapons["both"] or weapons["twoHanded"] then
+		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
+	elseif weapons["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end
