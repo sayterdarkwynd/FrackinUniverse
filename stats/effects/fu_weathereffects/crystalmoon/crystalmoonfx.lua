@@ -7,10 +7,6 @@ function init()
 end
 
 function update(dt)
-  mcontroller.controlModifiers({
-      groundMovementModifier = -0.0,
-      runModifier = -0.0
-    })
   mcontroller.controlParameters({
       normalGroundFriction = -0.4
     })

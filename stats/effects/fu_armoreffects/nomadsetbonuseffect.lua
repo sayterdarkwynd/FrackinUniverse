@@ -1,4 +1,4 @@
-setName="fu_nomadset"
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
 	{stat = "powerMultiplier", amount = 0.10}
@@ -15,14 +15,14 @@ armorBonus2={
 }
 
 armorBonus={
-	{stat = "blacktarImmunity", amount = 1},
+{stat = "blacktarImmunity", amount = 1},
 {stat = "quicksandImmunity", amount = 1},
 {stat = "sandstormImmunity", amount = 1},
 {stat = "radiationburnImmunity", amount = 1},
 {stat = "shieldStaminaRegen", baseMultiplier = 1.20}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_nomadset"
 
 function init()
 	setSEBonusInit(setName)
@@ -54,12 +54,11 @@ else
 end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"dagger","knife"})
-if weapons["either"] then--set both for dual wield required, or leave as is for "if any hand, do."
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+        if weapons["either"] then--set both for dual wield required, or leave as is for "if any hand, do."
+	  effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+        else
+	  effect.setStatModifierGroup(weaponBonusHandle,{})
+        end
 end
