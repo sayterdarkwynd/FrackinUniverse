@@ -1,16 +1,14 @@
-require "/stats/effects/jumpboost/jumpboostwarriorrobes.lua"
-
-callbacks = { { init = init, update = update, uninit = uninit } }
+setName="fu_warriorrobesset"
+setStatEffects={"warriorrobessetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
-		    setBonusInit("fu_warriorrobesset", {
-		      {stat = "shadowImmunity", amount = 1},
-		      {stat = "insanityImmunity", amount = 1},
-		      {stat = "critChance", amount = 8},
-		      {stat = "foodDelta", baseMultiplier = 0.8}
-		    },callbacks) 
-
+	setSEBonusInit(setName,setStatEffects)
 end
 
+function update()
+	if checkSetWorn(self.setBonusCheck) then
+		applySetEffects()
+	end
+end
