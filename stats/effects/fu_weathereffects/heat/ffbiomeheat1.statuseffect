@@ -3,36 +3,14 @@
   "blockingStat" : "biomeheatImmunity",
 
   "effectConfig" : {
-	    //-- Heat values
-	    //--
-	    //-- Biome            Modifier (biomeTemp)
-	    //-------------
-	    //--Jungle            0.15
-	    //--Slime             0.05
-	    //--Rainforest        0.12
-	    //--Primeval          0.08
-	    //--Desert            0.25
-	    //--Red Desert        0.85
-	    //--Sulphuric         1.25
-	    //--Sulphuric Dark    1.4
-	    //--Sulphuric Ocean   1.4
-	    //--Volcanic          1.14
-	    //--Magma             2.4
-	    //--Infernus          2
-	    
-	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
-	  "biomeTemp" : 1.0, //ice wastes are 2x as deadly
-	  //this is a generic modifier for damage and debuff totals
-	  "biomeThreshold" : 1.2,
-	  //base timer
-	    "baseRate" : 1,
-	  //base effect applied per tick
-	    "baseDebuffPerTick" : 4,
-	  // base damage applied per tick
+	  "biomeTemp" : 1.15, 
+	  "biomeThreshold" : 1,
+	    "baseRate" : 4,
+	    "baseDebuffPerTick" : 5,
 	    "baseDmgPerTick" : 4,
-	    "situationPenalty" : 1,
-	    "liquidPenalty" : 1,
-	    "biomeNight" : 0.65	    
+	    "situationPenalty" : 1.1,
+	    "liquidPenalty" : 0.7,
+	    "biomeNight" : 0.8        
   },
   "defaultDuration" : 2,
 

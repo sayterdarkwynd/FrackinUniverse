@@ -3,20 +3,15 @@
   "blockingStat" : "biomecoldImmunity",
 
   "effectConfig" : {
-	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
-	  "biomeTemp" : 0.5, //ice wastes are 2x as deadly
-	  //what is critical temperature threshold?
+	  "biomeTemp" : 0.5, 
 	  "biomeThreshold" : 0.5,
-	  //base timer
-	    "baseRate" : 1,
-	  //base effect applied per tick
-	    "baseDebuffPerTick" : 1,
-	  // base damage applied per tick
-	    "baseDmgPerTick" : 1,
-	    "situationPenalty" : 1,
-	    "liquidPenalty" : 1.1,
-	    "biomeNight" : 1.1
-  },
+	  "baseRate" : 5,
+	  "baseDebuffPerTick" : 1,
+	  "baseDmgPerTick" : 1,
+	  "situationPenalty" : 1.2,
+	  "liquidPenalty" : 1.1,
+	  "biomeNight" : 1.1
+  },a
   "defaultDuration" : 5,
 
   "scripts" : [
@@ -25,6 +20,6 @@
 
   "animationConfig" : "coldweathernew.animation",
 
-  "label" : "Freezing",
+  "label" : "Cold",
   "icon" : "/interface/statuses/ice.png"
 }
