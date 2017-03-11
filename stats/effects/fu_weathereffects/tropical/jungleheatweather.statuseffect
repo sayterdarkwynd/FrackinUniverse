@@ -1,0 +1,29 @@
+{
+  "name" : "jungleweathernew",
+  "blockingStat" : "jungleslowImmunity",
+
+  "effectConfig" : {
+	  //base temperature variable. This is used to apply penalties to resistance based on potency of effect (Deadly vs Lesser cold)
+	  "biomeTemp" : 0.65, 
+	  //this is a generic modifier for damage and debuff totals
+	  "biomeThreshold" : 0.20,
+	  //base timer
+	    "baseRate" : 7,
+	  //base effect applied per tick
+	    "baseDebuffPerTick" : 1,
+	  // base damage applied per tick
+	    "baseDmgPerTick" : 0.3,
+	    "situationPenalty" : 1,
+	    "liquidPenalty" : 0.35,
+	    "biomeNight" : 1	    
+  },
+  "defaultDuration" : 2,
+
+  "scripts" : [
+    "jungleweathernew.lua"
+  ],
+
+  "animationConfig" : "jungleweathernew.animation",
+  "label" : "Tropical Heat",
+  "icon" : "/interface/statuses/fire.png"
+}
