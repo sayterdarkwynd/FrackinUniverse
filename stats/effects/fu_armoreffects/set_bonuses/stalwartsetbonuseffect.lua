@@ -1,14 +1,15 @@
-setName="fu_stalwartset"
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponEffect={
     {stat = "powerMultiplier", amount = 0.075}
   }
 
 armorBonus={
-    {stat = "fireResistance", amount = 0.15}
+    {stat = "grit", amount = 0.15}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_stalwartset"
+
 
 function init()
 	setSEBonusInit(setName)

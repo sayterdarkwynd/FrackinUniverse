@@ -1,21 +1,20 @@
-setName="fu_reconset"
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15}
+	{stat = "critChance", amount = 5}
 }
 
 armorBonus={
-		{stat = "radioactiveResistance", amount = 0.25},
-		{stat = "radiationburnImmunity", amount = 1.0},
-		{stat = "biomeradiationImmunity", amount = 1.0}
+	{stat = "shadowResistance", amount = 0.10}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
+setName="fu_sanguineset"
 
 function init()
 	setSEBonusInit(setName)
 	weaponBonusHandle=effect.addStatModifierGroup({})
-
+			
 	checkWeapons()
 
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
@@ -24,19 +23,20 @@ end
 function update(dt)
 if not checkSetWorn(self.setBonusCheck) then
 	effect.expire()
+	status.removeEphemeralEffect( "regenerationsanguine" )
 else
 	
 	checkWeapons()
-end
-
+	status.addEphemeralEffect( "regenerationsanguine" )
 	mcontroller.controlModifiers({
-			speedModifier = 1.05
-		})
+		speedModifier = 1.1
+	})
+end
 end
 
 function 
 	checkWeapons()
-	local weapons=weaponCheck({"rifle","sniperrifle"})
+	local weapons=weaponCheck({"dagger","knife","whip"})
 if weapons["either"] then
 	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 else

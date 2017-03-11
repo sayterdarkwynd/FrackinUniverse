@@ -1,17 +1,19 @@
 setName="fu_leatherset"
 
 weaponBonus={
-	{stat = "critChance", amount = 10},
-{stat = "powerMultiplier", amount = 0.05}
+	{stat = "critChance", amount = 6},
+        {stat = "powerMultiplier", amount = 0.05}
 }
 
 armorBonus={
-	{stat = "grit", amount = 0.1},
-{stat = "maxEnergy", amount = 5}
+	{stat = "grit", amount = 0.05},
+        {stat = "maxEnergy", amount = 5},
+        {stat = "iceResistance", amount = 0.0375},
+        {stat = "electricResistance", amount = 0.0375}
 }
 
 armorEffect={
-	{stat = "critChance", amount = 5}
+	{stat = "critChance", amount = 2}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -38,13 +40,13 @@ else
 	checkArmor()
 end
 
-mcontroller.controlModifiers({--Khe: Remember: control modifiers such as this one REPLACE the previous one. causes annoying race-conditions.
+mcontroller.controlModifiers({
 	speedModifier = 1.05
 })
 end
 
 function checkArmor()
-if (world.type() == "garden") or (world.type() == "forest")	then
+if (world.type() == "garden") or (world.type() == "forest") then
 	effect.setStatModifierGroup(
 	armorBonusHandle,armorBonus)
 else

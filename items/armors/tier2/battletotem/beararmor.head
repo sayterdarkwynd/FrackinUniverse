@@ -1,52 +1,44 @@
 {
-  "itemName" : "fubearchest",
-  "inventoryIcon" : "icons.png:chest",
+  "itemName" : "fubearhead",
+  "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Set Bonus:
 ^cyan;+7.5 to 22.5% Crit Chance with Hammers/Axes^reset;
-^green;Immune: Cold. 15% Ice Resistance^reset;",
-  "shortdescription" : "Battle Totem Coat",
-  "learnBlueprintsOnPickup" : [ "fubearchest2" ],
+^green;Immune: Cold, Ice status effects.^reset;",
+  "shortdescription" : "Battle Totem Mask",
+  "learnBlueprintsOnPickup" : [ "fubearhead2" ],
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armor",
 
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
 
   "level" : 2,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.60
+      "baseMultiplier" : 1.35
     },
     {
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 13
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 9
+      "amount" : 5
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 24
+      "amount" : 12
     },
     "bearsetbonus",
     {
-      "stat" : "fu_bearset_chest",
+      "stat" : "fu_bearset_head",
       "amount" : 1
     }
   ],

@@ -4,14 +4,15 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Snow won't slow these puppies down.",
+  "description" : "Snow won't slow these puppies down.
+^cyan;Immune to Snow, Ice and Slush effects. +15% Ice Resistance^reset;",
   "shortdescription" : "Reinforced Snowpants",
   "category" : "legarmour",
   "tooltipKind" : "armor",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 1,
+  "level" : 1,
   "statusEffects" : [
         {
           "stat" : "powerMultiplier",
@@ -25,11 +26,16 @@
           "stat" : "maxHealth",
           "amount" : 3
         },
-
       {
         "stat" : "maxEnergy",
         "amount" : 12
       },
+      {
+        "stat" : "iceResistance",
+        "amount" : 0.15
+      },      
+      "iceslipimmunity",
+      "slushslowimmunity",
       "snowslowimmunity"
   ],
 

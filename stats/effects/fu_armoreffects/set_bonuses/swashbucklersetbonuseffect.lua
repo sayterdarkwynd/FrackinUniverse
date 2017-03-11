@@ -1,3 +1,6 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
+
 setName="fu_swashbucklerset"
 
 weaponBonus={
@@ -5,12 +8,11 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "iceResistance", amount = 0.15},
+	{stat = "electricResistance", amount = 0.15},
 	{stat = "foodDelta", baseMultiplier = 0.8},
 	{stat = "shockResistance", amount = 0.15}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -24,12 +26,12 @@ end
 function update(dt)
 	level=checkSetLevel(self.setBonusCheck)
 	if level==0 then
-		effect.expire()
+	  effect.expire()
 	else
-	checkWeapons()
+	  checkWeapons()
 	end
 	mcontroller.controlModifiers({
-		airJumpModifier = 1.08
+	  airJumpModifier = 1.08
 	})
 end
 
