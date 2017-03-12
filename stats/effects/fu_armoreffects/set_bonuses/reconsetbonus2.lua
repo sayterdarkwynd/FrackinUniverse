@@ -1,5 +1,5 @@
-setName="fu_reconset"
-setStatEffects={"reconsetbonuseffect"}
+setName="fu_reconset2"
+setStatEffects={"reconsetbonuseffect2"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
