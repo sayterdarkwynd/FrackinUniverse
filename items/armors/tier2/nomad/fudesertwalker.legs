@@ -11,30 +11,35 @@
   "shortdescription" : "Nomad Pants",
   "category" : "legarmour",
   "tooltipKind" : "armor",
-  "level" : 2,
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 2,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.32
+      "baseMultiplier" : 1.05
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 7
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 11
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    },      
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "nomadsetbonus",
     {
       "stat" : "fu_nomadset_legs",

@@ -6,7 +6,7 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "Set Bonus:
-^cyan;+15% Damage (Rifle, Sniper Rifle), +5% Speed^reset;
+^cyan;+15% Damage, +5% Crit Chance (Rifle, Sniper Rifle), +8% Speed^reset;
 ^green;+18% Radioactive Resist, Immune: Rad Burn^reset;", 
   "shortdescription" : "Elite Recon Helm",
   "category" : "^#e43774;Upgradeable Armor^reset;",
@@ -20,26 +20,30 @@
   "mask" : "mask.png",
   
   "level" : 4,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.62
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 18
+      "amount" : 0.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 26
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 10
-    },
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
      "reconsetbonus2",
     {
       "stat" : "fu_reconset2_head",

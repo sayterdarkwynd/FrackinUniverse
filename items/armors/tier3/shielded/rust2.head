@@ -17,29 +17,39 @@
   "mask" : "mask.png",
   
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
+      "baseMultiplier" : 1.10
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 16
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 8
+      "amount" : 4
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
+    "shieldedsetbonus",
+    {
+      "stat" : "fu_shieldedset_head",
+      "amount" : 1
     },
     {
       "stat" : "breathProtection",
       "amount" : 1.0
-    }
+    }    
   ],
 
   "colorOptions" : [

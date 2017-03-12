@@ -13,24 +13,32 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
+
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.35
-    },  
+      "baseMultiplier" : 1.05
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 10
+      "amount" : 0.2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 3
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 7
-    },   
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "dwellersetbonus",
     {
       "stat" : "fu_dwellerset_legs",

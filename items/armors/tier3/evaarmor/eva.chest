@@ -25,23 +25,30 @@
   },
 
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
-    },  
-    {
-      "stat" : "protection",
-      "amount" : 24
+      "baseMultiplier" : 1.20
     },
     {
-      "stat" : "maxEnergy",
-      "amount" : 25
-    },    
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.5
+    },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 6
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    },   
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [ 
     "evasetbonus",
     {
       "stat" : "fu_evaset_chest",

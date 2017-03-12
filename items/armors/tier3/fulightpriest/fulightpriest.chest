@@ -22,25 +22,32 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  "level" : 3,
-  "statusEffects" : [
-    {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
-    },
 
+  "level" : 3,
+    "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.35
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 25
+      "amount" : 0.4
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 9
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 24
-    },    
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "lightpriestsetbonus",
     {
       "stat" : "fu_lightpriestset_chest",

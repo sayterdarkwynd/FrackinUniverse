@@ -15,28 +15,32 @@
   
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  
+
   "level" : 4,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.52
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 11
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 17
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
-    },
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [
     "fumudslowimmunity",
     "slushslowimmunity",
     "slimestickimmunity",
