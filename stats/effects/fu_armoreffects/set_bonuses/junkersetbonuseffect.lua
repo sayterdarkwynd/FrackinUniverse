@@ -1,6 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
-setName="fu_scoutset"
+setName="fu_junkerset"
 
 weaponBonus={ { stat = "powerMultiplier" , baseMultiplier = 1.25} }
 
