@@ -1,50 +1,48 @@
 {
-  "itemName" : "fureconchest2",
-  "price" : 375,
-  "inventoryIcon" : "icons.png:chest",
+  "itemName" : "fureconpants2",
+  "price" : 150,
+  "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^cyan;Set bonus: Jump, Speed, Rad Immunity, Oxygen, 15% Poison Resist, 30% Radioactive Resist^reset;.",
-  "shortdescription" : "Elite Recon Vest",
+  "description" : "Set Bonus:
+^cyan;+15% Damage, +5% Crit Chance (Rifle, Sniper Rifle), +8% Speed^reset;
+^green;+18% Radioactive Resist, Immune: Rad Burn^reset;",   
+"shortdescription" : "Elite Recon Legs",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
-"learnBlueprintsOnPickup" : [ "fureconhead3", "fureconchest3", "fureconpants3" ],
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-"level" : 4,
+  "learnBlueprintsOnPickup" : [ "fureconhead3", "fureconchest3", "fureconpants3" ],
+  
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
+  
+  "level" : 4,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.04
+      "baseMultiplier" : 1.52
     },
 
     {
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 11
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 17
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 18
+      "amount" : 6
     },
-     "reconsetbonus2",
+    "fumudslowimmunity",
+    "slushslowimmunity",
+    "slimestickimmunity",
+    "reconsetbonus2",
     {
-      "stat" : "fu_reconset2_chest",
+      "stat" : "fu_reconset2_legs",
       "amount" : 1
     }
   ],
@@ -87,6 +85,5 @@
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
 
-  ],
-  "collectablesOnPickup" : { "fu_armorsmith" : "fureconchest2" }
+  ]
 }

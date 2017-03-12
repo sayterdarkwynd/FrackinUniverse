@@ -1,45 +1,57 @@
 {
-  "itemName" : "fureconhead2",
-  "price" : 225,
-  "inventoryIcon" : "icons.png:head",
+  "itemName" : "fureconchest2",
+  "price" : 375,
+  "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^cyan;Set bonus: Jump, Speed, Rad Immunity, Oxygen, 15% Poison Resist, 30% Radioactive Resist^reset;.",
-  "shortdescription" : "Elite Recon Helm",
+  "description" : "Set Bonus:
+^cyan;+15% Damage (Rifle, Sniper Rifle), +5% Speed^reset;
+^green;+18% Radioactive Resist, Immune: Rad Burn^reset;", 
+  "shortdescription" : "Elite Recon Vest",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
-"learnBlueprintsOnPickup" : [ "fureconhead3", "fureconchest3", "fureconpants3" ],
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
-"level" : 4,
+  "learnBlueprintsOnPickup" : [ "fureconhead3", "fureconchest3", "fureconpants3" ],
+  
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+  
+  "level" : 4,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.62
+      "baseMultiplier" : 2.04
     },
 
     {
       "stat" : "protection",
-      "amount" : 18
+      "amount" : 30
     },
 
     {
       "stat" : "maxEnergy",
-      "amount" : 26
+      "amount" : 20
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 10
+      "amount" : 18
     },
      "reconsetbonus2",
     {
-      "stat" : "fu_reconset2_head",
+      "stat" : "fu_reconset2_chest",
       "amount" : 1
     }
   ],
+
   "colorOptions" : [
 
      /* BLACK */
@@ -78,5 +90,6 @@
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
 
-  ]
+  ],
+  "collectablesOnPickup" : { "fu_armorsmith" : "fureconchest2" }
 }

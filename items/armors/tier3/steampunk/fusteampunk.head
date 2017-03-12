@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A wonderful, weird mask.",
+  "description" : "Set Bonus:
+^#cyan;Immune: Burning^reset;
+^#e43774;30% Electric Resistance^reset;
+^green;+25% Dmg, +25% Energy (Electric weapons)^reset;", 
   "shortdescription" : "Steampunk Mask",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,6 +15,7 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
+  
   "level" : 3,
   "statusEffects" : [
     {
@@ -29,6 +33,11 @@
     {
       "stat" : "maxHealth",
       "amount" : 14
+    },
+    "steampunksetbonus",
+    {
+      "stat" : "fu_steampunkset_head",
+      "amount" : 1
     }
   ],
 

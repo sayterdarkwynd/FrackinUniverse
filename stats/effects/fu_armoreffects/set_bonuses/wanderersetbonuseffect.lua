@@ -1,3 +1,5 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 setName="fu_wandererset"
 
 weaponBonus={
@@ -9,7 +11,6 @@ armorBonus={
 	{stat = "electricResistance", amount = 0.20}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -29,8 +30,7 @@ function update(dt)
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"energy"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)

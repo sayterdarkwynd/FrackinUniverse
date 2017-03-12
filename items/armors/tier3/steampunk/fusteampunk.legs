@@ -4,14 +4,21 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Stylish.",
+
+  "description" : "Set Bonus:
+^#cyan;Immune: Burning^reset;
+^#e43774;30% Electric Resistance^reset;
+^green;+25% Dmg, +25% Energy (Electric weapons)^reset;", 
+
+
   "shortdescription" : "Steampunk Coat",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
+  
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -28,6 +35,11 @@
     {
       "stat" : "maxHealth",
       "amount" : 7
+    },
+    "steampunksetbonus",
+    {
+      "stat" : "fu_steampunkset_legs",
+      "amount" : 1
     }
   ],
   

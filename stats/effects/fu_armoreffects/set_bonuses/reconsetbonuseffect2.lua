@@ -1,11 +1,14 @@
-setName="fu_dwellerset"
+setName="fu_reconset2"
 
-weaponBonus={}
+weaponBonus={
+	{stat = "powerMultiplier", amount = 0.15},
+	{stat = "critChance", amount = 5}
+}
 
 armorBonus={
-	{stat = "shadowResistance", amount = 0.20},
-	{stat = "tarImmunity", amount = 1},
-	{stat = "blacktarImmunity", amount = 1}
+		{stat = "radioactiveResistance", amount = 0.18},
+		{stat = "biomeradiationImmunity", amount = 1.0},
+		{stat = "radiationburnImmunity", amount = 1.0}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -26,11 +29,15 @@ else
 	
 	checkWeapons()
 end
+
+	mcontroller.controlModifiers({
+			speedModifier = 1.10
+		})
 end
 
 function 
 	checkWeapons()
-	local weapons=weaponCheck({"mininglaser"})
+	local weapons=weaponCheck({"rifle","sniperrifle"})
 if weapons["either"] then
 	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 else

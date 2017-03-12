@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Alters gravity around the user for deep-space maneuvering.",
+  "description" : "Set Bonus:
+^cyan;+15% Ice Resist, ^reset;
+^e43774;+6% Crit, +20% Damage (Hammers)^reset;",
   "shortdescription" : "Intrepid Hood",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,7 +14,7 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -32,7 +34,11 @@
       "stat" : "maxHealth",
       "amount" : 8
     },
-    "lowgrav_intrepid"
+    "intrepidsetbonus",
+    {
+      "stat" : "fu_intrepidset_head",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [
