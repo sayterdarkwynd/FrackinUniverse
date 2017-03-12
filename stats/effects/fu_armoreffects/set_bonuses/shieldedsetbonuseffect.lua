@@ -5,7 +5,6 @@ setName="fu_shieldedset"
 weaponBonus={}
 
 armorBonus={
-  {stat = "electricResist", amount = 0.35},
   {stat = "gasImmunity", amount = 1},
   {stat = "breathProtection", amount = 1}
 }

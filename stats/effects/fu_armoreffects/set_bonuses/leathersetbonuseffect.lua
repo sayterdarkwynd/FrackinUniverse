@@ -7,9 +7,7 @@ weaponBonus={
 
 armorBonus={
 	{stat = "grit", amount = 0.05},
-        {stat = "maxEnergy", amount = 5},
-        {stat = "iceResistance", amount = 0.0375},
-        {stat = "electricResistance", amount = 0.0375}
+        {stat = "maxEnergy", amount = 5}
 }
 
 armorEffect={

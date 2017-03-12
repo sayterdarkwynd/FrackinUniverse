@@ -2,9 +2,6 @@ setName="fu_warriorrobesset"
 
 armorEffect={
 	{stat = "shadowImmunity", amount = 1},
-	{stat = "shadowResistance", amount = 0.3},
-	{stat = "cosmicResistance", amount = 0.3},
-	{stat = "radiationResistance", amount = 0.3},
 	{stat = "insanityImmunity", amount = 1},
 	{stat = "critChance", amount = 8},
 	{stat = "foodDelta", baseMultiplier = 0.8}

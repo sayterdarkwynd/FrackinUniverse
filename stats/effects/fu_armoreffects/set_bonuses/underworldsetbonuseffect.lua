@@ -4,10 +4,7 @@ weaponBonus={
 	{stat = "critChance", amount = 6}
 }
 
-armorEffect={
-	{stat = "electricResistance", amount = 0.025},
-	{stat = "iceResistance", amount = 0.025}
-}
+armorEffect={}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

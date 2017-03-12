@@ -5,7 +5,6 @@ weaponBonus={
 }
 
 armorBonus={
-		{stat = "radioactiveResistance", amount = 0.12},
 		{stat = "radiationburnImmunity", amount = 1.0}
 }
 

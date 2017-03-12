@@ -5,7 +5,6 @@ setName="fu_mutaviskset"
 weaponBonus={}
 
 armorBonus={
-  {stat = "radioactiveResistance", amount = 0.35},
   {stat = "ffextremeradiationImmunity", amount = 1.0},
   {stat = "fallDamageMultiplier", baseMultiplier = 0.75}
 }

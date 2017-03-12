@@ -5,7 +5,6 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "shadowResistance", amount = 0.20},
 	{stat = "tarImmunity", amount = 1},
 	{stat = "blacktarImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},

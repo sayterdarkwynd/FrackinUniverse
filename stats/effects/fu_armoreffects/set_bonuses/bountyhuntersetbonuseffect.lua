@@ -7,7 +7,6 @@ weaponBonus={
 }
 
 armorBonus={
-  {stat = "physicalResistance", amount = 0.12},
   {stat = "fallDamageMultiplier", baseMultiplier = 0.12}
 }
 

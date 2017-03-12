@@ -8,9 +8,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "electricResistance", amount = 0.15},
-	{stat = "foodDelta", baseMultiplier = 0.8},
-	{stat = "shockResistance", amount = 0.15}
+	{stat = "foodDelta", baseMultiplier = 0.8}
 }
 
 

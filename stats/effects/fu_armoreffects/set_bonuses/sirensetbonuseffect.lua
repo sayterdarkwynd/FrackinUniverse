@@ -9,7 +9,6 @@ armorBonus={
 }
 
 armorEffect={
-	{stat = "poisonResistance", amount = 0.22},
 	{stat = "breathProtection", amount = 1.0},
 	{stat = "shieldRegen", baseMultiplier = 1.15}
 }

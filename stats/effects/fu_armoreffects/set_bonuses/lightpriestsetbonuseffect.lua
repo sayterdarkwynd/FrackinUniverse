@@ -4,9 +4,7 @@ weaponBonus={
 	{stat = "powerMultiplier", amount = 0.10}
 }
 
-armorBonus={
-	{ stat = "cosmicResistance", amount = 0.20 }
-}
+armorBonus={ }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

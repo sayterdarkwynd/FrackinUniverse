@@ -4,9 +4,7 @@ weaponBonus={
 	{stat = "critChance", amount = 5}
 }
 
-armorBonus={
-	{stat = "shadowResistance", amount = 0.10}
-}
+armorBonus={}
 
 
 setName="fu_sanguineset"

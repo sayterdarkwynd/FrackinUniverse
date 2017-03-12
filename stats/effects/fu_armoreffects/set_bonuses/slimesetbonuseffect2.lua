@@ -8,8 +8,6 @@ weaponBonus={
 armorBonus={
                 {stat = "biooozeImmunity", amount = 1.0},
                 {stat = "poisonStatusImmunity", amount = 1.0},
-		{stat = "poisonResistance", amount = 0.25},
-		{stat = "radioactiveResistance", amount = 0.25},
 		{stat = "slimestickImmunity", amount = 1},
 		{stat = "slimefrictionImmunity", amount = 1},
 		{stat = "slimeImmunity", amount = 1},

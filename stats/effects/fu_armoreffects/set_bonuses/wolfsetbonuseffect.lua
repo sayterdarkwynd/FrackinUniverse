@@ -4,7 +4,6 @@ weaponBonus={
 	{stat = "critBonus", amount = 10}
 }
 armorBonus={
-	{stat = "iceResistance", amount = 0.15},
 	{stat = "iceStatusImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1}
 }
