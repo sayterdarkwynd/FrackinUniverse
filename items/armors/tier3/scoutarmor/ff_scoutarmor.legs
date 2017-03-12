@@ -4,14 +4,18 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Reliable protection. Decent energy regeneration.",
+  "description" : "Set Bonus: 
+^cyan;Immune:Gas, Proto-Poison^reset;
+^#e43774;+800s Oxygen^reset;
+^green;+25% Energy Regen^reset;",
   "shortdescription" : "Scout Greaves",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [ "ff_scoutchest_melee", "ff_scouthelm_melee", "ff_scoutpants_melee" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
+  
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -28,7 +32,11 @@
     {
       "stat" : "maxHealth",
       "amount" : 12
-    }, 
-    "energyregenfu_armor20"
+    },
+      "scoutsetbonus",
+    {
+      "stat" : "fu_scoutset_legs",
+      "amount" : 1
+    }
   ]
 }
