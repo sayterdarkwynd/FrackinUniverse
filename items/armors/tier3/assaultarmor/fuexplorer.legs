@@ -4,14 +4,18 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Heavy-duty armour. Leg servos provide extra jumping power.^cyan;Set Bonus: 15% Ice Resistance, Immune to standard Cold^reset;",
+  "description" : "Set Bonus: 
+^cyan;Immune: Gas, Breath, Cold, Liq.Nitrogen^reset;
+^#e43774;+15% Damage (Assault/Energy Rifles)^reset;
+^green;+20% Jump. +20% Ice Resist, 15% Phys. Resist^reset;",
+
   "shortdescription" : "Assault Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  "level" : 4,
+  "level" : 3,
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
@@ -32,10 +36,9 @@
       "stat" : "maxHealth",
       "amount" : 12
     },
-    "jumpboost35",
-    "explorersetbonus",
+    "assaultsetbonus",
     {
-      "stat" : "fu_explorerset_legs",
+      "stat" : "fu_assaultset_legs",
       "amount": 1
     }
   ],

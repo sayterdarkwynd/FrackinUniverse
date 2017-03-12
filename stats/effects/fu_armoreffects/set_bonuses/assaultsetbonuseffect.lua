@@ -1,19 +1,18 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
-setName="fu_stalkerset"
+setName="fu_assaultset"
 
 weaponBonus={
   {stat = "powerMultiplier", amount = 0.15}
 }
 
-armorBonus2={
-  {stat = "poisonResistance", amount = 0.20},
-  {stat = "fallDamageMultiplier", baseMultiplier = 0.25}
-}
-
 armorBonus={
-  {stat = "poisonResistance", amount = 0.20},
-  {stat = "fallDamageMultiplier", baseMultiplier = 0.25}
+  {stat = "iceResistance", amount = 0.20},
+  {stat = "physicalResistance", amount = 0.20},
+  {stat = "breathProtection", amount = 1.0},
+  {stat = "gasImmunity", amount = 1.0},
+  {stat = "liquidnitrogenImmunity", amount = 1.0},
+  {stat = "biomecoldImmunity", amount = 1.0} 
 }
 
 function init()
@@ -34,12 +33,12 @@ function update(dt)
 		checkWeapons()
 	end
 	mcontroller.controlModifiers({
-		speedModifier = 1.08
+		airJumpModifier = 1.2
 	})
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"rifle","sniperrifle","bow"})
+	local weapons=weaponCheck({"assaultrifle","energy"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

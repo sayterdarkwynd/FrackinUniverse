@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Environmental Vulnerability Assisting helmet. Provides oxygen.",
+  "description" : "Set Bonus:
+^#cyan;Immune: Radiation, Rad Burns^reset;
+^#e43774;25% all Elemental Resists^reset;
+^green;Immune: Pus, Liq. Nitrogen^reset;", 
   "shortdescription" : "E.V.A Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,10 +16,28 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
+  "level" : 3,
   "statusEffects" : [
-  "headlamp",
     {
-      "stat" : "breathProtection",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.45
+    },  
+    {
+      "stat" : "protection",
+      "amount" : 16
+    },
+    {
+      "stat" : "maxEnergy",
+      "amount" : 15
+    },
+    {
+      "stat" : "maxHealth",
+      "amount" : 11
+    },   
+    "headlamp",
+    "evasetbonus",
+    {
+      "stat" : "fu_evaset_chest",
       "amount" : 1
     }
   ],
