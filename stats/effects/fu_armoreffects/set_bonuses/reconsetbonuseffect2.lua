@@ -1,11 +1,13 @@
-setName="fu_reconset"
+setName="fu_reconset2"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15}
+	{stat = "powerMultiplier", amount = 0.15},
+	{stat = "critChance", amount = 5}
 }
 
 armorBonus={
-		{stat = "radioactiveResistance", amount = 0.12},
+		{stat = "radioactiveResistance", amount = 0.18},
+		{stat = "biomeradiationImmunity", amount = 1.0},
 		{stat = "radiationburnImmunity", amount = 1.0}
 }
 
@@ -29,7 +31,7 @@ else
 end
 
 	mcontroller.controlModifiers({
-			speedModifier = 1.05
+			speedModifier = 1.10
 		})
 end
 
