@@ -18,7 +18,7 @@ armorBonus={
 setName="fu_slimeset"
 
 function init()
-  self.timer = math.random(6)
+  self.timer = math.random(120)+40
 	setSEBonusInit(setName)
 	weaponBonusHandle=effect.addStatModifierGroup({})
 
@@ -41,30 +41,37 @@ self.timer = self.timer - dt
     if self.timer <= 0 then
 	    local p = entity.position()
 	    local parameters = {}
-	    local type = "microslime"
+	    if math.random(2) = 1 then
+	      local type = "slime"
+	    else
+	      local type = "microslime"
+	    end
 	    sb.logInfo("Spawning a slime from Slime armor. Type is %s",type)
-	    parameters.persistent = true
+	    parameters.persistent = false
 	    parameters.damageTeamType = "friendly"
 	    parameters.aggressive = true
 	    parameters.damageTeam = 0
-	    parameters.ownerUuid = world.entityUniqueId(args.sourceId) or args.sourceId
-	    parameters.selfUuid = sb.makeUuid()
 	    parameters.level = getLevel()
 	    sb.logInfo("Parameters for spawn are: %s",parameters)
 	    world.spawnMonster(type, mcontroller.position(), parameters)    
-      self.timer = math.random(5)
+      self.timer = math.random(220)+40
     end
     
 end
 
-function 
-	checkWeapons()
-	local weapons=weaponCheck({"slime"})
-if weapons["both"] then
-	effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
-elseif weapons["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
+function getLevel()
+  if world.getProperty("ship.fuel") ~= nil then return 1 end
+  if world.threatLevel then return world.threatLevel() end
+  return 1
 end
+
+function checkWeapons()
+	local weapons=weaponCheck({"slime"})
+	if weapons["both"] then
+		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
+	elseif weapons["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end

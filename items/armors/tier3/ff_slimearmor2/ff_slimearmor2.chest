@@ -1,35 +1,51 @@
 {
-  "itemName" : "ff_slimelegs2",
-  "inventoryIcon" : "icons.png:pants",
+  "itemName" : "ff_slimechest2",
+  "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Awesome. It feels like soggy underwear. Grants energy regen. ^cyan;Set Bonus: Immune to Bio-Ooze, Insanity, Poison and Shadow Taint and Slime. +25% Poison Resistance^reset;",
-  "shortdescription" : "Black Slime Legs",
+  "description" : "Set Bonus:
+^cyan;+25% Poison/Radiation Resist, +10% Damage, +6% Crit (Slime weapons). ^reset;
+^e43774;Immune: Poison, Bioooze, Slime. Spawns minions. ^reset;
+^green;Immune: Mud, Slime, Mud and Clay tiles^reset;", 
+  "shortdescription" : "Black Slime Chest",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "ff_slimelegs3" ],
-  "maleFrames" : "pants.png",
-  "femaleFrames" : "pants.png",
+  "learnBlueprintsOnPickup" : [ "ff_slimechest3" ],
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
   "level" : 4,
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.42
+      "baseMultiplier" : 2.05
     },
 
     {
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 30
     },
-    "energyregenfu_armor20",
+
+    {
+      "stat" : "maxEnergy",
+      "amount" : 26
+    },
     {
       "stat" : "maxHealth",
-      "amount" : 8
+      "amount" : 15
     },
     "slimesetbonus2",
     {
-      "stat" : "fu_slimeset2_legs",
+      "stat" : "fu_slimeset2_chest",
       "amount" : 1
     }
   ],

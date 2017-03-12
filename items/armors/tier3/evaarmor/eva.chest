@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Environmental Vulnerability Assisting suit. Resists liquids.",
+  "description" : "Set Bonus:
+^#cyan;Immune: Radiation, Rad Burns^reset;
+^#e43774;25% all Elemental Resists^reset;
+^green;Immune: Pus, Liq. Nitrogen^reset;", 
   "shortdescription" : "E.V.A Suit",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,9 +24,31 @@
     "frontSleeve" : "fsleeve.png"
   },
 
+  "level" : 3,
   "statusEffects" : [
-    "liquidimmunity"
+    {
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.75
+    },  
+    {
+      "stat" : "protection",
+      "amount" : 24
+    },
+    {
+      "stat" : "maxEnergy",
+      "amount" : 25
+    },    
+    {
+      "stat" : "maxHealth",
+      "amount" : 8
+    },   
+    "evasetbonus",
+    {
+      "stat" : "fu_evaset_chest",
+      "amount" : 1
+    }
   ],
+
   
   "colorOptions" : [
   /* No colour options, as the armor has no dyeable parts */
