@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/unifiedGravMod.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 2.4}
+	{stat = "powerMultiplier", amount = 3.4}
 }
 
 armorBonus={
@@ -15,7 +15,7 @@ armorBonus={
 		{stat = "breathProtection", amount = 1}
 }
 
-setName="fu_spacefarerset2"
+setName="fu_warphunterset"
 
 function init()
 	self.gravityMod = config.getParameter("gravityMod",0.0)
@@ -23,7 +23,7 @@ function init()
 	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
 	--sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
 	unifiedGravMod.init()
-	setSEBonusInit("fu_spacefarerset")
+	setSEBonusInit("fu_warphunterset")
 	animator.setParticleEmitterOffsetRegion("sparkles", mcontroller.boundBox())
 	animator.setParticleEmitterActive("sparkles", true)
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")

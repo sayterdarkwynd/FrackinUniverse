@@ -1,12 +1,13 @@
-setName="fu_invaderset"
+setName="fu_rifterset"
 
 weaponBonus={
 	{stat = "critChance", amount = 5},
-        {stat = "powerMultiplier", baseMultiplier = 1.20}
+        {stat = "powerMultiplier", baseMultiplier = 1.25}
 }
 
 armorEffect={
         {stat = "protoImmunity", amount = 1.0},
+        {stat = "gasImmunity", amount = 1.0},
         {stat = "fallDamageMultiplier", baseMultiplier = 0.75}
 }
 
@@ -29,7 +30,7 @@ end
 
 
 function checkWeapons()
-	local weapons=weaponCheck({"magnorb", "magnorbs", "energy"})
+	local weapons=weaponCheck({"magnorb", "magnorbs", "boomerang","chakram"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

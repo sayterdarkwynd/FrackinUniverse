@@ -1,19 +1,19 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
+setName="fu_amberset"
+
 weaponBonus={
-	{stat = "critBonus", amount = 10}
-}
-armorBonus={
-	{stat = "iceStatusImmunity", amount = 1},
-	{stat = "snowslowImmunity", amount = 1}
+  {stat = "powerMultiplier", amount = 0.10}
 }
 
-setName="fu_wolfset"
+armorBonus={
+  {stat = "beestingImmunity", amount = 1}
+}
 
 function init()
 	setSEBonusInit(setName)
 	weaponBonusHandle=effect.addStatModifierGroup({})
-
+			
 	checkWeapons()
 
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
@@ -23,16 +23,15 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-
+		effect.setStatModifierGroup(
+		armorBonusHandle,armorBonus)
 		checkWeapons()
 	end
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"dagger","knife","shortsword"})
-	if weapons["primary"] and weapons["alt"] then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
-	elseif weapons["either"] then
+	local weapons=weaponCheck({"shortsword","broadsword","whip","axe","hammer","spear","shortspear","dagger"})
+	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
