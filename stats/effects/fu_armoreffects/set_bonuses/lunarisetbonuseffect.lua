@@ -7,8 +7,7 @@ weaponBonus={
 
 armorBonus={
 		{stat = "energyRegenPercentageRate", baseMultiplier = 1.25},
-		{stat = "energyRegenBlockTime", baseMultiplier = 0.85},
-		{stat = "cosmicResistance", amount = 0.25}
+		{stat = "energyRegenBlockTime", baseMultiplier = 0.85}
 }
 
 setName="fu_lunariset"

@@ -14,33 +14,45 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.45
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 19
+      "amount" : 0.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
     "chitinsetbonus",
     {
       "stat" : "fu_chitinset_head",
       "amount" : 1
     },
-    "damagebonus"
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.05
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.05
+    }
   ],
   "colorOptions" : [
     /* BROWN */

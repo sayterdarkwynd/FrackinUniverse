@@ -4,32 +4,45 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "These living leggings provide extra vitality.",
+  "description" : "Set Bonus:
+^cyan;4% Regeneration^reset;",
   "shortdescription" : "Cellular Leggings",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
-    },  
+      "baseMultiplier" : 1.1
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 14
+      "amount" : 0.15
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
-    },    
-    {
-      "stat" : "maxHealth",
-      "amount" : 9
+      "amount" : 6
     },
-    "percenthealthboost15"
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 0
+    }
+  ],
+
+  "statusEffects" : [
+    "cellularsetbonus",
+    {
+      "stat" : "fu_cellular_legs",
+      "amount" : 1
+    } 
   ],
 
   "colorOptions" : [

@@ -13,7 +13,6 @@ armorEffect={
 	{stat = "grit", amount = 0.12},
         {stat = "shieldRegen", amount = 0.3},
         {stat = "protoImmunity", amount = 1.0}
-        {stat = "physicalResistance", amount = 0.15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -50,8 +49,7 @@ else
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"shortspear", "spear"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)

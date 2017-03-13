@@ -6,8 +6,6 @@ weaponBonus={
 }
 
 armorBonus={
-                {stat = "electricResistance", amount = 0.20},
-                {stat = "physicalResistance", amount = 0.10},
 		{stat = "protoImmunity", amount = 1.0},
 		{stat = "fireStatusImmunity", amount = 1.0},
 		{stat = "gasImmunity", amount = 1.0},

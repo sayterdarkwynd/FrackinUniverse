@@ -3,7 +3,6 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "level" : 3,
   "rarity" : "Common",
   "description" : "Set Bonus:
 ^#c74eff;+25% Shield Regen, Stamina, Block^reset;
@@ -24,30 +23,39 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.65
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 32
+      "amount" : 0.6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
-    },      
+      "amount" : 7
+    }
+  ],
+
+  "statusEffects" : [     
     "evadersetbonus",
     {
       "stat" : "fu_evaderset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.0333
     }
   ],
 

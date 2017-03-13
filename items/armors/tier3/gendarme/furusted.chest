@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Somewhat rusty, but still functional.",
+  "description" : "Set Bonus: 
+^cyan;24% Fire Resist^reset;
+^#e43774;Immune: Burning^reset;
+^green;+20% Damage (Rocket and Grenade Launcher)^reset;",
   "shortdescription" : "Gendarme Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,26 +23,40 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 3,
-  "statusEffects" : [
+  
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.32
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 29
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 19
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 22
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
+      "gendarmesetbonus",
+    {
+      "stat" : "fu_gendarmeset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.08
     }
   ],
 

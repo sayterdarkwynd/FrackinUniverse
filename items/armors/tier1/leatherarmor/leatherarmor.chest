@@ -6,7 +6,7 @@
   "rarity" : "Common",
   "category" : "chestarmour",
   "description" : "Set Bonus:
-^green;+2% Crit Chance, 5% Speed, +3.75% Ice & Electric Resistance^reset;
+^green;+2% Crit Chance, 5% Speed, +6% Ice & Electric Resistance^reset;
 ^cyan;Bows: +5% Crit Chance, +5% Power^reset; 
 ^#e43774;(Lush/Forest biomes) +5 Energy, +5% Knockback Resistance^reset;", 
   "shortdescription" : "Leather Jerkin",
@@ -25,32 +25,44 @@
   },
 
   "level" : 1,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.25
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.45
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 7
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 4
+    }
+  ],
+
 
   "statusEffects" : [
-    {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.24
-    },
-
-    {
-      "stat" : "protection",
-      "amount" : 11
-    },
-
-    {
-      "stat" : "maxEnergy",
-      "amount" : 5
-    },
-
-    {
-      "stat" : "maxHealth",
-      "amount" : 5
-    },
     "leathersetbonus",
     {
       "stat" : "fu_leatherset_chest",
       "amount" : 1
-    } 
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.02
+    }    
   ],
 
 

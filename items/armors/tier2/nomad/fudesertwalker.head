@@ -11,36 +11,45 @@
   "shortdescription" : "Nomad Hood",
   "category" : "headarmour",
   "tooltipKind" : "armor",
-  "level" : 2,
+
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 2,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.45
+      "baseMultiplier" : 1.10
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 10
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 11
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
-    },    
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
     "nomadsetbonus",
     {
       "stat" : "fu_nomadset_head",
       "amount" : 1
-    }        
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.05
+    }          
   ],
 
  "colorOptions" : [

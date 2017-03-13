@@ -4,32 +4,48 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Perfect for hunting evil robots.",
+  "description" : "Set Bonus: 
+^cyan;20% damage (Rocket / Grenade Launcher)^reset;
+^#e43774;+6% Crit Chance^reset;",
   "shortdescription" : "Hunter's Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.35
-    },    
+      "baseMultiplier" : 1.1
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 20
+      "amount" : 0.2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 40
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 11
+      "amount" : 2
     }
   ],
+
+  "statusEffects" : [
+    "huntersetbonus",
+    {
+      "stat" : "fu_hunterset_legs",
+      "amount" : 1
+    } 
+  ],
+
   "colorOptions" : [
 
     /* BLACK */

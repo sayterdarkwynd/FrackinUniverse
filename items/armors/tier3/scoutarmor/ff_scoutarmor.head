@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Reliable protection. Decent health bonus.",
+  "description" : "Set Bonus: 
+^cyan;Immune:Gas, Proto-Poison^reset;
+^#e43774;+800s Oxygen^reset;
+^green;+25% Energy Regen^reset;",
   "shortdescription" : "Scout Helm",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
@@ -12,23 +15,36 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 3,
-  "statusEffects" : [
+  
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.72
-    },    
+      "baseMultiplier" : 1.15
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17
+      "amount" : 0.25
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 14
+      "amount" : 5
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 19
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
+      "scoutsetbonus",
+    {
+      "stat" : "fu_scoutset_head",
+      "amount" : 1
     }
   ]
 }

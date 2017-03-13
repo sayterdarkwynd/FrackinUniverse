@@ -5,38 +5,48 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "Set Bonus:
-^cyan;+20% Wand and Staff damage^reset;
-^green;+4% Regen^reset;",  
+^cyan;+20% Wand and Staff damage, Glow^reset;
+^green;24% Cosmic Resist, Daylight Regen^reset;",  
   "shortdescription" : "Light Priest Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
+
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.3
+      "baseMultiplier" : 1.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 9
+      "amount" : 0.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 6
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    },    
+      "amount" : 0
+    }
+  ],
+
+  "statusEffects" : [
     "lightpriestsetbonus",
     {
       "stat" : "fu_lightpriestset_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.08
     }
   ],
 

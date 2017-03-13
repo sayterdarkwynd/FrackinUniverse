@@ -6,7 +6,7 @@
   "rarity" : "Common",
   "category" : "legarmour",
   "description" : "Set Bonus:
-^green;+2% Crit Chance, 5% Speed, +3.75% Ice & Electric Resistance^reset;
+^green;+2% Crit Chance, 5% Speed, +6% Ice & Electric Resistance^reset;
 ^cyan;Bows: +5% Crit Chance, +5% Power^reset; 
 ^#e43774;(Lush/Forest biomes) +5 Energy, +5% Knockback Resistance^reset;", 
   "shortdescription" : "Leather Leggings",
@@ -16,31 +16,42 @@
   "femaleFrames" : "pants.png",
 
   "level" : 1,
-  "statusEffects" : [
-     {
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.10
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 5
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 2
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 2
-    }, 
+      "amount" : 1
+    }
+  ],  
+  "statusEffects" : [
     "leathersetbonus",
     {
       "stat" : "fu_leatherset_legs",
       "amount" : 1
-    } 
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.02
+    }    
   ],  
 
   "colorOptions" : [

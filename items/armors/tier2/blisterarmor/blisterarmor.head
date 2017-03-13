@@ -5,42 +5,52 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Set Bonus:
-^cyan;Immune: Poison, Proto Poison. +20% Poison Resist^reset;
+^cyan;Immune: Poison, Proto Poison. +21% Poison Resist^reset;
 ^#e43774;Blister Weapons: +8% Crit and 15% Dmg^reset;
 ^green;Emits a purple glow^reset;",
   "shortdescription" : "Blister Helm",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [ "blisterhelmalt"],
-  "level" : 3,
+
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 2,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.45
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 13
+      "amount" : 0.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 18
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
-    },
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
     "blistersetbonus",
     {
       "stat" : "fu_blisterset_head",
       "amount" : 1
-    }  
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
+    }    
   ],
   "collectablesOnPickup" : { "fu_armorsmith" : "blisterhelm" }
 

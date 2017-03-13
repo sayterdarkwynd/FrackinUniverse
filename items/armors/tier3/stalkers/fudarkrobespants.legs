@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "Set Bonus:
-^cyan;Immune: Poison. Bio-Ooze. +20% Poison Resist^reset;
+^cyan;Immune: Poison. Bio-Ooze. +21% Poison Resist^reset;
 ^#e43774;+15% Damage (Sniper Rifles, Bows)^reset;
 ^green;+8% Speed, +25% Fall Damage Reduction^reset;",
   "shortdescription" : "Stalker's Legs",
@@ -14,31 +14,40 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
+
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 11
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 17
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 11
-    },      
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [ 
       "stalkersetbonus",
     {
       "stat" : "fu_stalkerset_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
     }
   ],
 

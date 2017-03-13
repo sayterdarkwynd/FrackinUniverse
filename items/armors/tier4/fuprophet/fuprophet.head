@@ -4,36 +4,54 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "The holy hat of a Star Prophet. Immune to proto-poison.",
+   "description" : "Set Bonus:
+^cyan;Immunity: Stun, Poison, Burning^reset;
+^e43774;+24% Poison Resist^reset;
+^green;+25% Damage (Wand/Staff)^reset;", 
   "shortdescription" : "Prophet Significa",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "level" : 3,
+
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 13
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 25
+      "amount" : 6
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
-    },    
-    "protoimmunity"
+      "amount" : 2
+    }
   ],
+
+  "statusEffects" : [
+    "prophetsetbonus",
+    {
+      "stat" : "fu_prophetset_head",
+      "amount" : 1
+    },
+     {
+      "stat" : "poisonResistance",
+      "amount" : 0.08
+    } 
+  ],  
+
   "colorOptions" : [
     /* YELLOW */
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },  

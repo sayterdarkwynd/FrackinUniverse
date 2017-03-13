@@ -5,11 +5,14 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Grants immunity to various liquids and extreme pressure.",
+  "description" : "Set Bonus: 
+^cyan;+800s Oxygen^reset;
+^#e43774;15% Physical Resist, Immunity: Acid^reset;
+^green;+15% Damage (Grenade Launcher)^reset;",
   "shortdescription" : "Junker Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-"level" : 4,
+  
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -22,28 +25,36 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 80
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 22
-    },
-    "liquidimmunity",
-    "extremepressureimmunity"
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
+    "junkersetbonus",
+    {
+      "stat" : "fu_junkerset_chest",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [

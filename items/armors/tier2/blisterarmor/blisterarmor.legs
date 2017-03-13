@@ -5,41 +5,49 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Set Bonus:
-^cyan;Immune: Poison, Proto Poison. +20% Poison Resist^reset;
+^cyan;Immune: Poison, Proto Poison. +21% Poison Resist^reset;
 ^#e43774;Blister Weapons: +8% Crit and 15% Dmg^reset;
 ^green;Emits a purple glow^reset;",
   "shortdescription" : "Blister Greaves",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [ "blisterpantsalt"],
-  "level" : 3,
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 2,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.32
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 9
+      "amount" : 0.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 18
+      "amount" : 1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
-    },
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "blistersetbonus",
     {
       "stat" : "fu_blisterset_legs",
       "amount" : 1
-    }  
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
+    }    
   ]
 }

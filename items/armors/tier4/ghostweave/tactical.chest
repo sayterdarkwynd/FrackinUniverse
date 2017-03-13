@@ -4,11 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Little protection. Health regeneration and slime immunity.",
+  "description" : "Set Bonus:
+^cyan;+25% Damage (Pistol / Machine Pistol)^reset;
+^e43774;Stealth when stationary^reset;",  
   "shortdescription" : "Ghost-Weave Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-"level" : 4,
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -21,28 +23,38 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.5
-    },      
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 21
+      "amount" : 0.4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 95
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 22
-    },
-    "slimestickimmunity",
-    "regeneration2"  
+      "amount" : 4
+    }
   ],
+
+  "statusEffects" : [
+    "ghostweavesetbonus",
+    {
+      "stat" : "fu_ghostweaveset_chest",
+      "amount" : 1
+    }
+  ],
+
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },
     { "ffca8a" : "727272", "e0975c" : "414141", "a85636" : "1c1c1c", "6f2919" : "0b0b0b" },

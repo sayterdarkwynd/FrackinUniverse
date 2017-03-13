@@ -10,8 +10,7 @@ armorBonus={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.17},
         {stat = "shieldRegen", baseMultiplier = 1.17},
         {stat = "shieldHealth", baseMultiplier = 1.17},
-        {stat = "perfectBlockLimitRegen", baseMultiplier = 1.17},
-        {stat = "fireResistance", amount = 0.15}
+        {stat = "perfectBlockLimitRegen", baseMultiplier = 1.17}
 }
 
 setName="fu_footmanset"

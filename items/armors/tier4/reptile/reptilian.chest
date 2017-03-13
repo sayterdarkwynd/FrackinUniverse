@@ -4,8 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Wonderful reptile hide protection.
-^cyan;Set Bonus: ^green;Stat boost in Primeval biomes, immune to acid and proto.^reset;",
+  "description" : "Set Bonus:
+^cyan;+10% Phys. Resist(Sword/Shield), +25% Damage (Shield/Axe)^reset;
+^green;Immune: Heat, Acid.^reset;",
   "shortdescription" : "Reptile Scale Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -14,32 +15,38 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 4,
+
   "femaleFrames" : {
     "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.0
+      "baseMultiplier" : 1.20
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 23
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 22
-    },
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
     "reptilesetbonus",
     {
       "stat" : "fu_reptileset_chest",

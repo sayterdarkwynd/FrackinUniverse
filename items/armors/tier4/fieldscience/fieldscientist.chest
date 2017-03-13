@@ -4,11 +4,14 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Fantastic science wear. This piece grants energy regeneration and proto immunity.",
+  "description" : "Set Bonus: 
+^cyan;Detects nearby ores (to Tier 4)^reset;
+^#e43774;+150% Damage (Mining Laser)^reset;
+^green;Immunity: Liq. Nitrogen, Poison , Pus^reset;",
   "shortdescription" : "Geologist's Coat",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-"level" : 4,
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -21,22 +24,37 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
       "baseMultiplier" : 1.25
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 4
+      "amount" : 0.45
     },
-    "energyregenfu_armor50",
     {
-      "stat" : "maxHealth",
-      "amount" : 5
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 7
     },
-    "protoimmunity"
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
+    }
   ],
+
+  "statusEffects" : [
+    "geologistsetbonus",
+    {
+      "stat" : "fu_geologistset_chest",
+      "amount" : 1
+    }
+  ], 
 
   "colorOptions" : [
     /* GREY */

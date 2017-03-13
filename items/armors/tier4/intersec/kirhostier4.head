@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "^cyan;Set Bonus^reset; : ^green;Radiation, Poison and Proto Immunity^reset;, ^green;15% Poison Resistance^reset;, ^green;+5% Physical Resistance^reset;, ^green;Slime Immunity^reset;, ^green;+5% Crit Chance^reset;.",
+  "description" : "Set Bonus:
+^cyan;+5% Crit Chance (Assault Rifle/Pistol/Rifle)^reset;
+^e43774;+25% Crit Damage (Assault Rifle/Pistol/Rifle)^reset;
+^green;+2% chance to gain pixels with kills.^reset;", 
   "shortdescription" : "Intersec Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,31 +16,36 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.48
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 18
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 5
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "intersecsetbonus",
     {
       "stat" : "fu_intersecset_head",
       "amount" : 1
-    }
+    } 
   ],
 
   "colorOptions" : [

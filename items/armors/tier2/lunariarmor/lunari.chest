@@ -23,31 +23,41 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
+
   "level" : 2,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
-    },  
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 20
+      "amount" : 0.45
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 46
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 14
-    }, 
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
     "lunarisetbonus",
     {
       "stat" : "fu_lunariset_chest",
       "amount" : 1
-    } 
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.05
+    }  
   ],
 
   "colorOptions" : [

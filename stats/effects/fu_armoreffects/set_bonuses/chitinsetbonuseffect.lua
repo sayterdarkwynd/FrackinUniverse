@@ -1,9 +1,7 @@
 setName="fu_chitinset"
 
 armorEffect={
-	{stat = "sulphuricImmunity", amount = 1},
-	{stat = "poisonResistance", amount = 0.15},
-	{stat = "physicalResistance", amount = 0.15}
+	{stat = "sulphuricImmunity", amount = 1}
 }
 
 armorBonus={

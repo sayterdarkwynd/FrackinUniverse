@@ -5,7 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Designed for combat in super-hot environments. ^cyan;Set Bonus: Immune to heat, cold and fire. +60% Fire Resist^reset;",
+  "description" : "Set Bonus: 
+^cyan;27% Fire Resist^reset;
+^#e43774;+25% Damage (Flamethrower)^reset;
+^green;Immunity: Heat, Burning^reset;",
   "shortdescription" : "Inferno Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,28 +16,41 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
+  
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.8
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 20
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "infernosetbonus",
+    {
+      "stat" : "fu_infernoset_head",
+      "amount" : 1
     },
-    "infernosuiteffects"
+     {
+      "stat" : "fireResistance",
+      "amount" : 0.09
+    } 
   ],
 
   "colorOptions" : [

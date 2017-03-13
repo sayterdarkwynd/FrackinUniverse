@@ -7,7 +7,7 @@
   "description" : "Set Bonus: 
 ^cyan;Immune: Gas, Breath, Cold, Liq.Nitrogen^reset;
 ^#e43774;+15% Damage (Assault/Energy Rifles)^reset;
-^green;+20% Jump. +20% Ice Resist, 15% Phys. Resist^reset;",
+^green;+20% Jump. +18% Ice Resist, 15% Phys. Resist^reset;",
 
   "shortdescription" : "Assault Greaves",
   "category" : "legarmour",
@@ -15,31 +15,44 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
+
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
+      "baseMultiplier" : 1.0
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 18
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 17
+      "amount" : 0
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
     "assaultsetbonus",
     {
       "stat" : "fu_assaultset_legs",
       "amount": 1
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.06
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.05
     }
   ],
 

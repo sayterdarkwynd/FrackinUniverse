@@ -4,39 +4,56 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Enhanced protection and energy. ^cyan;Set bonus: 25% Physical Resist, Immune - Fire, Ice, Slush, Proto, Nitrogen, Pressure^reset;",
-  "shortdescription" : "MK2 Spacefarer Helm",
+  "description" : "Set Bonus:
+^cyan;+30% Electric, 20% Physical Resist^reset;
+^e43774;Immune: Zero-G, Burning, Proto, Pressure, Oxygen, Gas ^reset;
+^green;+240% Mining Laser damage^reset;",  
+  "shortdescription" : "Spacefarer mk2 Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.05
-    },    
+      "baseMultiplier" : 1.10
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 25
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 50
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
-    },
-    "headlampdual",
-    "spacefarersetbonus",
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
+    "headlamp2",
+    "spacefarersetbonus2",
     {
-      "stat" : "fu_spacefarerset_head",
+      "stat" : "fu_spacefarerset2_head",
       "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.07
     }
   ]
 }

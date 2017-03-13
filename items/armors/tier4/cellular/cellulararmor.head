@@ -4,7 +4,8 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "A helmet made of cellular material. It feels oozy and gooey inside.",
+  "description" : "Set Bonus:
+^cyan;4% Regeneration^reset;",
   "shortdescription" : "Cellular Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,25 +13,39 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 3,
-  "statusEffects" : [
+
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
-    },  
+      "baseMultiplier" : 1.15
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 15
+      "amount" : 0.25
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
-    },    
-    {
-      "stat" : "maxHealth",
-      "amount" : 8
+      "amount" : 5
     },
-    "glowblue2"
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [
+    "cellularsetbonus",
+    {
+      "stat" : "fu_cellular_head",
+      "amount" : 1
+    },
+    "glowblue2" 
   ],
 
   "colorOptions" : [

@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Infused with materials that resist toxic pus",
+  "description" : "Set Bonus: 
+^cyan;Immune: Pus, Black Tar, Oxygen +400s^reset;
+^#e43774;+15% Damage (Assault Rifles, Pistols)^reset;
+^green;+5% Jump and Speed^reset;",
   "shortdescription" : "Corsair Leggings",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -12,27 +15,36 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.3
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 6
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 7
-    },
-    "pusimmunity"
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [
+    "corsairsetbonus",
+    {
+      "stat" : "fu_corsairset_legs",
+      "amount": 1
+    }
   ],
 
   "colorOptions" : [

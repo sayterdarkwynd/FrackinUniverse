@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Great protection, enhanced visibility. Very nice tech. Immune to extreme pressure.",
+  "description" : "Set Bonus:
+^cyan;Immunity: Pressure^reset;
+^e43774;+24% Fire and Radiation Resist^reset;
+^green;Sunlight increases stats 25%^reset;", 
   "shortdescription" : "Star-Killer Mask",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,33 +15,46 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.70
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 20
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 32
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 17
-    },
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "headlamp2",
+    "starkillersetbonus",
     {
-      "stat" : "wetImmunity",
+      "stat" : "fu_starkillerset_head",
       "amount" : 1
     },
-    "headlamp2",
-    "extremepressureimmunity"
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.8
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.8
+    }
   ],
 
   "colorOptions" : [

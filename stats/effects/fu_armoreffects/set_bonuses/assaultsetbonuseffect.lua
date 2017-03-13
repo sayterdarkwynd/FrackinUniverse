@@ -7,8 +7,6 @@ weaponBonus={
 }
 
 armorBonus={
-  {stat = "iceResistance", amount = 0.20},
-  {stat = "physicalResistance", amount = 0.20},
   {stat = "breathProtection", amount = 1.0},
   {stat = "gasImmunity", amount = 1.0},
   {stat = "liquidnitrogenImmunity", amount = 1.0},

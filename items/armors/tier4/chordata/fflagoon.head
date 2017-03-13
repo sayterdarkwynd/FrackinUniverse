@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "This mask undoubtedly belonged to a lagoon dwelling creature. ^cyan;Set bonus: 55% Poison Resist,+ Breath, Poison + Proto immunity^reset;.",
+   "description" : "Set Bonus:
+^cyan;20% Poison Resist, Swim Boost 1^reset;
+^e43774;Immunity:Insanity, Oxygen^reset;
+^green;+25% Damage (Spear/Short Spear)^reset;", 
   "shortdescription" : "Chordata Head",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,32 +15,41 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
+      "baseMultiplier" : 1.10
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 23
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 23
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 45
-    },
-    "fishmansetbonus",
-    {
-      "stat" : "fu_fishmanset_head",
-      "amount" : 1
+      "amount" : 4
     }
+  ],
+
+  "statusEffects" : [
+    "chordatasetbonus",
+    {
+      "stat" : "fu_chordata_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
+    }   
   ],
 
   "colorOptions" : [

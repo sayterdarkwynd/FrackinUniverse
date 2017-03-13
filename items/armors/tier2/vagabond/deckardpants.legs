@@ -6,38 +6,48 @@
   "rarity" : "uncommon",
   "description" : "Set Bonus:
 ^cyan;+7.5% Damage (per Pistol or Machine Pistol)^reset;
-^green;+7.5% Electric Resist^reset;",
+^green;+12% Electric Resist^reset;",
   "shortdescription" : "Vagabond's Pants",
   "category" : "legarmour",
   "tooltipKind" : "armor",
-"level" : 1,
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 2,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.3
-    },      
+      "baseMultiplier" : 1.1
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 6
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [
     "vagabondsetbonus",
     {
       "stat" : "fu_vagabondset_legs",
       "amount" : 1
-    }    
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.04
+    }      
   ],
 
 

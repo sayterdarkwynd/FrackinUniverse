@@ -1,0 +1,66 @@
+{
+  "itemName" : "wastelandhead",
+  "inventoryIcon" : "icons.png:head",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Set Bonus: 
+^cyan;20% Resist (Fire/Poison/Elec/Ice)^reset;
+^#e43774;Immunity: Gas, Poison, Proto-Poison^reset;
+^green;+50% Hunger Reduction^reset;",
+  "shortdescription" : "Survivor's Mask",
+  "category" : "headarmour",
+  "tooltipKind" : "armornew2",
+
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
+
+  "level" : 4,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.10
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 4
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
+    "survivorsetbonus",
+    {
+      "stat" : "fu_survivorset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.07
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.07
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.07
+    }
+  ]
+}

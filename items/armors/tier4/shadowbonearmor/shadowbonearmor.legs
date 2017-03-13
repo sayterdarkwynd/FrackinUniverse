@@ -5,39 +5,49 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
 
-
-  "description" : "Strong leg armor for dangerous situations. ^cyan;Set Bonus: Prevents insanity and Shadow Taint. 30% shadow resist^reset;",
+  "description" : "Set Bonus: 
+^cyan;30% Shadow Resist^reset;
+^green;+30% Damage (Axe / Hammer^reset;",
   "shortdescription" : "Shadow Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
+      "baseMultiplier" : 1.0
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 19
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
-    },
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
     "shadowbonesetbonus",
     {
       "stat" : "fu_shadowboneset_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.1
     }
   ],
 

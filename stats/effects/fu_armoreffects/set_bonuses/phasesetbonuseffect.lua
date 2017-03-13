@@ -1,10 +1,9 @@
 setName="fu_phaseset"
 
 armorBonus={
-	{stat ="electricResistance", amount = 0.4},
-{stat ="electricStatusImmunity" , amount = 1 },
-{stat ="pressureProtection" , amount = 1 },
-{stat ="extremepressureProtection" , amount = 1 }
+	{stat ="electricStatusImmunity" , amount = 1 },
+	{stat ="pressureProtection" , amount = 1 },
+	{stat ="extremepressureProtection" , amount = 1 }
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

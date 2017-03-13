@@ -11,7 +11,7 @@
   "shortdescription" : "Nomad Robes",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
-  "level" : 2,
+
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
@@ -24,31 +24,40 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 2,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.80
+      "baseMultiplier" : 1.20
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17.5
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 18
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
-    },
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
     "nomadsetbonus",
     {
       "stat" : "fu_nomadset_chest",
       "amount" : 1
-    }     
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.05
+    }       
   ],
 
 

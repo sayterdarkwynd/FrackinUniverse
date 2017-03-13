@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Protects from suffocation. A good piece of protection.",
+  "description" : "Set Bonus: 
+^cyan;Immune: Pus, Black Tar, Oxygen +400s^reset;
+^#e43774;+15% Damage (Assault Rifles, Pistols)^reset;
+^green;+5% Jump and Speed^reset;",
   "shortdescription" : "Corsair Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,27 +16,36 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17
+      "amount" : 0.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 9
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 11
-    },
-    "airimmunity"
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
+    "corsairsetbonus",
+    {
+      "stat" : "fu_corsairset_head",
+      "amount": 1
+    }
   ],
 
   "colorOptions" : [

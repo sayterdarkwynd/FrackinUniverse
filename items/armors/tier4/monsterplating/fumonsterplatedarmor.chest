@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "A chestplate made with tough monster hide. Immune to muck and black tar.",
+  "description" : "Set Bonus: 
+^cyan;+15% Physical Resist^reset;
+^#e43774;Immunity: Acid, Tar, Stings^reset;",
   "shortdescription" : "Monster Plate Chestguard",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,26 +22,40 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 3,
-  "statusEffects" : [
-    {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.15
-    },
 
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.20
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 27
+      "amount" : 0.5
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 22
+      "amount" : 6
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
+    "monsterplatesetbonus",
+    {
+      "stat" : "fu_monsterplateset_chest",
+      "amount" : 1
     },
-    "fumudslowimmunity",
-    "blacktarimmunity"
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.05
+    }      
   ]
 }

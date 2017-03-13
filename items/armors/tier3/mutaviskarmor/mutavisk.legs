@@ -4,37 +4,50 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Standing has never been so stylishly purple. ^cyan;Set Bonus: Total Radiation Immunity, -50% fall damage, 35% Radioactive Resist^reset;",
+  "description" : "Set Bonus: 
+^cyan;30% Radioactive Resist^reset;
+^#e43774;Immune: Deadly Radiation^reset;
+^green;25% Fall Damage Reduction^reset;",
   "shortdescription" : "Mutavisk Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
-  "statusEffects" : [
+  
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
+      "baseMultiplier" : 1.05
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 9
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 8
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 5
-    },
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
       "mutavisksetbonus",
     {
       "stat" : "fu_mutaviskset_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.1
     }
   ],
 

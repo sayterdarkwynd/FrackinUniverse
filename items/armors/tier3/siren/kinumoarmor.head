@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "Set Bonus:
-^cyan;+22% Poison Resist, +15% Shield Regen^reset;
+^cyan;+21% Poison Resist, +15% Shield Regen^reset;
 ^e43774;Immune: Breath^reset;
 ^green;Ocean/Tidewater: +25% Health, +5 protection^reset;",  
   "shortdescription" : "Siren's Helm",
@@ -15,31 +15,40 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
+
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.45
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 14
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
-    },    
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "sirensetbonus",
     {
       "stat" : "fu_sirenset_head",
       "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
     }
   ],
 

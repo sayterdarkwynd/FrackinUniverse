@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Turn blows with skill of arms, not quality of wear.",
+  "description" : "Set Bonus: 
+^cyan;21% Shadow Resist^reset;
+^#e43774;+25% Damage (Fist, Axe)^reset;
+^green;Thorns^reset;",
   "shortdescription" : "Slayer Gauntlets",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,27 +24,40 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.85
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 26
+      "amount" : 0.6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
+      "amount" : 7
+    }
+  ],
+
+  "statusEffects" : [
+    "slayersetbonus",
+    {
+      "stat" : "fu_slayerset_chest",
+      "amount": 1
     },
-    "thornsstranglevine"
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
+    }
   ],
 
   "colorOptions" : [

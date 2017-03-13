@@ -25,27 +25,38 @@
   },
   
   "level" : 3,
-  "statusEffects" : [
+    "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.3
-    },   
+      "baseMultiplier" : 1.35
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 23
+      "amount" : 0.4
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
-    },        
-    {
-      "stat" : "maxHealth",
-      "amount" : 25
+      "amount" : 9
     },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "steampunksetbonus",
     {
       "stat" : "fu_steampunkset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.1
     }
   ],
   
