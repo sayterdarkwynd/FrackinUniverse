@@ -8,7 +8,7 @@ function init()
    {stat = "biomeradiationImmunity", amount = 1},
    {stat = "biomecoldImmunity", amount = 1},
    {stat = "biomeheatImmunity", amount = 1},
-   {stat = "sulphuricacidImmunity", amount = 1},
+   {stat = "sulphuricImmunity", amount = 1},
    {stat = "sulphuricImmunity", amount = 1},
    {stat = "ffextremeheatImmunity", amount = 1},
    {stat = "ffextremecoldImmunity", amount = 1},

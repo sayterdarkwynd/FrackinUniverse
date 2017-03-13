@@ -6,7 +6,7 @@ armorEffect={
   {stat = "ffextremeheatImmunity", amount = 1},
   {stat = "ffextremecoldImmunity", amount = 1},
   {stat = "ffextremeradiationImmunity", amount = 1},
-  {stat = "sulphuricacidImmunity", amount = 1}
+  {stat = "sulphuricImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

@@ -1,5 +1,5 @@
 setName="fu_amberset"
-setStatEffects={"ambersetbonuseffect"}
+setStatEffects={"ambersetbonuseffect", "thorns"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

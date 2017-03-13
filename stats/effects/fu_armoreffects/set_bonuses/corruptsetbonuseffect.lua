@@ -7,7 +7,7 @@ armorBonus={
 }
 
 armorEffect={
-	{stat = "sulphuricacidImmunity", amount = 5},
+	{stat = "sulphuricImmunity", amount = 5},
 	{stat = "poisonStatusImmunity", baseMultiplier = 1}
 }
 

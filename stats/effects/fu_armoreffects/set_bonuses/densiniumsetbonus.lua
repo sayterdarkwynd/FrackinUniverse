@@ -1,5 +1,5 @@
 setName="fu_densiniumset"
-setStatEffects={"densiniumsetbonuseffect","jumpboost25hidden"}
+setStatEffects={"densiniumsetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
