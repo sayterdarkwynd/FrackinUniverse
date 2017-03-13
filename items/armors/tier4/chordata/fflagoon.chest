@@ -14,38 +14,47 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
+
   "femaleFrames" : {
     "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
+      "baseMultiplier" : 1.20
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 32
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 32
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 60
-    },
-    "fishmansetbonus",
-    {
-      "stat" : "fu_fishmanset_chest",
-      "amount" : 1
+      "amount" : 6
     }
+  ],
+
+  "statusEffects" : [
+    "chordatasetbonus",
+    {
+      "stat" : "fu_chordata_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
+    }      
   ],
 
   "colorOptions" : [

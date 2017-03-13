@@ -12,27 +12,38 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
+      "baseMultiplier" : 1.15
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 0.35
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 26
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 19
-    },
-    "ffextremeheatresist"
+      "amount" : 5
+    }
   ],
 
+  "statusEffects" : [
+    "protectorsetbonus",
+    {
+      "stat" : "fu_protectorset_head",
+      "amount" : 1
+    }
+  ],
 
   "colorOptions" : [
     /* GREY BLUE */

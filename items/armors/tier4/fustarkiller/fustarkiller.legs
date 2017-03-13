@@ -11,33 +11,45 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.65
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 24
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
+    "starkillersetbonus",
     {
-      "stat" : "wetImmunity",
+      "stat" : "fu_starkillerset_legs",
       "amount" : 1
     },
-    "jumpboost15",
-    "extremepressureimmunity"
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.8
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.8
+    }
   ],
 
   "colorOptions" : [

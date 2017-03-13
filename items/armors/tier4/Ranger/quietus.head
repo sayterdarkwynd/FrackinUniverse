@@ -12,26 +12,40 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.85
-    },    
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 23
+      "amount" : 0.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 35
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
+    "rangersetbonus",
+    {
+      "stat" : "fu_rangerset_head",
+      "amount" : 1
     },
-    "regeneration01"
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.05
+    }  
   ]
 }

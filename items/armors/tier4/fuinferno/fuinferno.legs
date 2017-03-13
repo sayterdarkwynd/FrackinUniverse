@@ -12,29 +12,43 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.80
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 13
-    },
-    "infernosuiteffects"
+      "amount" : 2
+    }
   ],
+
+  "statusEffects" : [
+    "infernosetbonus",
+    {
+      "stat" : "fu_infernoset_legs",
+      "amount" : 1
+    },
+     {
+      "stat" : "fireResistance",
+      "amount" : 0.09
+    } 
+  ],
+
 
   "colorOptions" : [
     /* BLACK */

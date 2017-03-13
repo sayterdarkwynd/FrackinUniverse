@@ -11,36 +11,41 @@
   "learnBlueprintsOnPickup" : [ "fudiverhead3", "fudiverchest3", "fudiverlegs3" ], 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.4
+      "baseMultiplier" : 1.05
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 14
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    },
-    {
-      "stat" : "wetImmunity",
-      "amount" : 1
-    },
-    "biooozeimmunity",
-    "swimboost3",
-    "extremepressureimmunity"
+      "amount" : 3
+    }
   ],
-  
+
+
+  "statusEffects" : [
+    "swimboost2",
+    "krakensetbonus",
+    {
+      "stat" : "fu_krakenset_legs",
+      "amount" : 1
+    } 
+  ], 
+
   "colorOptions" : [
     /* YELLOW */
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },

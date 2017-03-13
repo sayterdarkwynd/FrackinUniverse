@@ -12,31 +12,44 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.05
-    },    
+      "baseMultiplier" : 1.10
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 25
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 50
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
-    },
-    "headlampdual",
-    "spacefarersetbonus",
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
+    "spacefarersetbonus2",
     {
-      "stat" : "fu_spacefarerset_head",
+      "stat" : "fu_spacefarerset2_head",
       "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.07
     }
   ]
 }

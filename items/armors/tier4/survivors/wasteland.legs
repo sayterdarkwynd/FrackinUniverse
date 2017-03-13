@@ -11,23 +11,52 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
-    },    
+      "baseMultiplier" : 1.05
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 11
+      "amount" : 0.2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 50
+      "amount" : 3
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "survivorsetbonus",
+    {
+      "stat" : "fu_survivorset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.07
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.07
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.07
     }
   ]
 }

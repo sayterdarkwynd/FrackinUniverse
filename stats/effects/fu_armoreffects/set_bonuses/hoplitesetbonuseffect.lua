@@ -49,8 +49,7 @@ else
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"shortspear", "spear"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)

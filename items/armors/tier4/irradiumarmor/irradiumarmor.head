@@ -12,30 +12,37 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
-    {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
-    },
 
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 19
+      "amount" : 0.35
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
-    },
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "irradiumsetbonus",
     {
       "stat" : "fu_irradiumset_head",
       "amount" : 1
-    }
+    } 
   ],
 
 "effectSources" : [ "icetrail" ]

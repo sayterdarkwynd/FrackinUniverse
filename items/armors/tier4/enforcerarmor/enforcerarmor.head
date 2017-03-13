@@ -12,31 +12,41 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "level" : 6,
-  "statusEffects" : [
+  
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 24
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 24
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 16
-    },
-    "damagebonus",
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [
+    "nitrogenfreezeimmunity",
+    "enforcersetbonus",
     {
-      "stat" : "electricResistance",
-      "amount" : 0.1
+      "stat" : "fu_enforcerset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.04
     }
   ],
 

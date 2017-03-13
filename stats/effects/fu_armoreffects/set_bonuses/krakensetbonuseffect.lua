@@ -1,0 +1,41 @@
+setName="fu_krakenset"
+
+armorBonus2={
+		{stat = "critBonus", amount = 8},
+		{stat = "powerMultiplier", amount = 0.15},
+		{stat = "sulphuricacidImmunity", amount = 1},
+		{stat = "poisonStatusImmunity", amount = 1},
+		{stat = "breathProtection", amount = 1}
+}
+
+armorBonus={
+		{stat = "sulphuricacidImmunity", amount = 1},
+		{stat = "poisonStatusImmunity", amount = 1},
+		{stat = "breathProtection", amount = 1}
+}
+
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
+function init()
+	setSEBonusInit(setName)
+
+	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	if (world.type() == "ocean") or (world.type() == "sulphuricocean") or (world.type() == "aethersea") or (world.type() == "nitrogensea") or (world.type() == "strangesea") or (world.type() == "tidewater") then
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
+	end
+end
+
+function update(dt)
+if not checkSetWorn(self.setBonusCheck) then
+	effect.expire()
+end
+if (world.type() == "ocean") or (world.type() == "sulphuricocean") or (world.type() == "aethersea") or (world.type() == "nitrogensea") or (world.type() == "strangesea") or (world.type() == "tidewater") then
+	effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
+	
+	mcontroller.controlModifiers({
+		speedModifier = 1.05
+	})	
+else
+	effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+	end
+end

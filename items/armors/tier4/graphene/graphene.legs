@@ -11,27 +11,41 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.3
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 9
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 4
+      "amount" : 2
+    }
+  ],
+
+
+  "statusEffects" : [
+    "graphenesetbonus",
+    {
+      "stat" : "fu_grapheneset_legs",
+      "amount" : 1
     },
-    "extremepressureimmunity"
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.8
+    }    
   ]
 }

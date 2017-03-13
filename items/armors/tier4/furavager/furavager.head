@@ -12,27 +12,37 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.85
-    },  
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 21
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 22
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 14
-    },
-    "maxenergyboost65"
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [
+    "ravagersetbonus",
+    {
+      "stat" : "fu_ravagerset_head",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [

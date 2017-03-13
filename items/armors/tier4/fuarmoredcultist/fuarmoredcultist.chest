@@ -9,7 +9,7 @@
   "shortdescription" : "Corrupted Armor",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-"level" : 5,
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -22,24 +22,36 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.5
-    },  
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 34
+      "amount" : 0.5
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 50
+      "amount" : 5
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 25
+      "amount" : 5
     }
   ],
+  "statusEffects" : [
+    "corruptsetbonus",
+    {
+      "stat" : "fu_corruptset_chest",
+      "amount" : 1
+    }
+  ], 
 
   "colorOptions" : [
     /* PURPLE */

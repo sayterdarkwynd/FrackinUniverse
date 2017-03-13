@@ -20,30 +20,44 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
-    },    
+      "baseMultiplier" : 1.20
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 36
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 80
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 22
-    },
-    "spacefarersetbonus",
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
+    "spacefarersetbonus2",
     {
-      "stat" : "fu_spacefarerset_chest",
+      "stat" : "fu_spacefarerset2_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.07
     }
   ]
 }

@@ -8,7 +8,7 @@
   "shortdescription" : "Prophet Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "level" : 3,
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -21,28 +21,42 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.35
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 0.4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 35
+      "amount" : 8
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },
-    "protoimmunity"
+      "amount" : 2
+    }
   ],
+
+  "statusEffects" : [
+    "prophetsetbonus",
+    {
+      "stat" : "fu_prophetset_chest",
+      "amount" : 1
+    },
+     {
+      "stat" : "poisonResistance",
+      "amount" : 0.08
+    } 
+  ],
+
   "colorOptions" : [
     /* YELLOW */
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },  

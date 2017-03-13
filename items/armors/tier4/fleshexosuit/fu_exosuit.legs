@@ -8,32 +8,42 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-"level" : 4,
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 40
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
-    },
-    "exosuitlegs"
+      "amount" : 2
+    }
   ],
+
+  "statusEffects" : [
+    "biofleshsetbonus",
+    {
+      "stat" : "fu_biofleshset_legs",
+      "amount" : 1
+    }
+  ], 
+
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },
     { "ffca8a" : "727272", "e0975c" : "414141", "a85636" : "1c1c1c", "6f2919" : "0b0b0b" },

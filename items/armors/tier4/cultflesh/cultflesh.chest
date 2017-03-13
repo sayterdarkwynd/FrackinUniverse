@@ -4,7 +4,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Muscle, sinew, flesh and bone...tasteful! Grants regeneration and Slime immunity. ^cyan;Set Bonus: %20 Shadow resistance and Shadow Taint immunity^reset;",
+  "description" : "Muscle, sinew, flesh and bone...tasteful! Grants regeneration and Slime immunity. ^cyan;Set Bonus: %30 Shadow resistance and Shadow Taint immunity^reset;",
   "shortdescription" : "Flesh Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,32 +20,40 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.2
+      "baseMultiplier" : 1.25
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 33
+      "amount" : 0.45
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 22
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 11
-    },
-    "slimestickimmunity",
-    "regenerationminor",
-    "cultfleshsetbonus",
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "fleshsetbonus",
     {
-      "stat" : "fu_cultfleshset_chest",
+      "stat" : "fu_fleshset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.1
     }
   ]
 

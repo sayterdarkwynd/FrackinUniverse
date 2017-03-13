@@ -20,26 +20,40 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.35
-    },    
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 24
+      "amount" : 0.5
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 62
+      "amount" : 5
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
+      "amount" : 5
     }
   ],
-  "colorOptions" : [
+  
+  "statusEffects" : [
+    "huntersetbonus",
+    {
+      "stat" : "fu_hunterset_chest",
+      "amount" : 1
+    } 
+  ],
+
+    "colorOptions" : [
 
     /* BLACK */
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },

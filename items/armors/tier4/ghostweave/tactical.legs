@@ -11,28 +11,39 @@
 
   "maleFrames" : "pantsm.png",
   "femaleFrames" : "pantsm.png",
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
-    },      
+      "baseMultiplier" : 1.1
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 9
+      "amount" : 0.13
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 38
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
-    },
-    "runboost"  
+      "amount" : 2
+    }
   ],
+
+  "statusEffects" : [
+    "ghostweavesetbonus",
+    {
+      "stat" : "fu_ghostweaveset_legs",
+      "amount" : 1
+    }
+  ],
+
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },
     { "ffca8a" : "727272", "e0975c" : "414141", "a85636" : "1c1c1c", "6f2919" : "0b0b0b" },

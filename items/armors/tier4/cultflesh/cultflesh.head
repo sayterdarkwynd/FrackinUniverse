@@ -8,34 +8,44 @@
   "shortdescription" : "Flesh Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "level" : 4,
+
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
+      "baseMultiplier" : 1.15
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 20
+      "amount" : 0.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 3
-    },
-    "cultfleshsetbonus",
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
+    "fleshsetbonus",
     {
-      "stat" : "fu_cultfleshset_head",
+      "stat" : "fu_fleshset_head",
       "amount" : 1
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.1
     }
   ]
 }

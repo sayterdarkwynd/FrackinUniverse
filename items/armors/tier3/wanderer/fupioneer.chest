@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "Set Bonus:
-^#c74eff;+20% Electric Resist^reset; 
+^#c74eff;+21% Electric Resist^reset; 
 ^green;+15% Damage and +15% Crit Dmg (Energy Weapon)^reset; ", 
   "shortdescription" : "Wanderer Chestguard",
   "category" : "chestarmour",
@@ -22,31 +22,40 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
+
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
+      "baseMultiplier" : 1.20
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },    
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [  
     "wanderersetbonus",
     {
       "stat" : "fu_wandererset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.07
     }
   ],
 

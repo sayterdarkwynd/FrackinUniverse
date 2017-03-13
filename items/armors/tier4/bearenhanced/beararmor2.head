@@ -4,8 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "No bears were harmed in making this.
-^cyan;Set Bonus: ^green;+25% Crit with Hammers/Axes, Immune to Standard Cold and 15% Ice Resistance.^reset;",
+  "description" : "Set Bonus:
+^cyan;+7.5 to 25.5% Crit Chance with Hammers/Axes^reset;
+^green;Immune: Cold, Ice status effects. 35% Ice Resist^reset;",
   "shortdescription" : "Savage Bear Hood",
   "category": "headarmour",
   "tooltipKind" : "armornew2",
@@ -15,29 +16,38 @@
   "mask" : "mask.png",
 
   "level" : 4,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.72
+      "baseMultiplier" : 1.05
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 19
+      "amount" : 0.4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
-    },
-
-    {
-      "stat" : "maxHealth",
-      "amount" : 24
-    },
-    "bearsetbonus",
-    {
-      "stat" : "fu_bearset_head",
       "amount" : 1
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 7
+    }
+  ],
+
+  "statusEffects" : [
+    "bearsetbonus2",
+    {
+      "stat" : "fu_bearset2_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.12
     }
   ],
 

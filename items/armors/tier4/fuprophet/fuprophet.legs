@@ -8,31 +8,47 @@
   "shortdescription" : "Prophet Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-  "level" : 3,
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.12
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 9
+      "amount" : 0.13
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 28
+      "amount" : 8
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
+      "amount" : 2
     }
   ],
+
+
+  "statusEffects" : [
+    "prophetsetbonus",
+    {
+      "stat" : "fu_prophetset_legs",
+      "amount" : 1
+    },
+     {
+      "stat" : "poisonResistance",
+      "amount" : 0.08
+    } 
+  ],
+
   "colorOptions" : [
     /* YELLOW */
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },  

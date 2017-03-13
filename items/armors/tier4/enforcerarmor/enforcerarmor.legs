@@ -11,33 +11,44 @@
 
   "maleFrames" : "pantsm.png",
   "femaleFrames" : "pantsm.png",
-  "level" : 6,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
+      "baseMultiplier" : 1.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17
+      "amount" : 0.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
-    },
-    "lowgrav_wretchel",
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.05
+      "amount" : 0
     }
   ],
+
+  "statusEffects" : [
+    "nitrogenfreezeimmunity",
+    "enforcersetbonus",
+    {
+      "stat" : "fu_enforcerset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.04
+    }
+  ],
+  
   "colorOptions" : [
     /* RED */
     { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },

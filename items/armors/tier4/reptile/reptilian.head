@@ -12,33 +12,38 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.65
+      "baseMultiplier" : 1.10
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 19
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 11
-    },
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
     "reptilesetbonus",
     {
       "stat" : "fu_reptileset_head",
       "amount" : 1
     }
   ],
-  "questTags" : [ "tier3armor" ],
 
   "colorOptions" : [
     /* PURPLE DEFAULT */

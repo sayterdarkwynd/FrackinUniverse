@@ -44,21 +44,20 @@ mcontroller.controlModifiers({
 end
 
 function checkArmor()
-if (world.type() == "garden") or (world.type() == "forest") then
-	effect.setStatModifierGroup(
-	armorBonusHandle,armorBonus)
-else
-	effect.setStatModifierGroup(
-	armorBonusHandle,{})
+	if (world.type() == "garden") or (world.type() == "forest") then
+	  effect.setStatModifierGroup(
+	  armorBonusHandle,armorBonus)
+	else
+	  effect.setStatModifierGroup(
+	  armorBonusHandle,{})
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"bow"})
-if weapons["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+	if weapons["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end

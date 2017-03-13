@@ -13,28 +13,41 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
+  
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.8
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 20
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "infernosetbonus",
+    {
+      "stat" : "fu_infernoset_head",
+      "amount" : 1
     },
-    "infernosuiteffects"
+     {
+      "stat" : "fireResistance",
+      "amount" : 0.09
+    } 
   ],
 
   "colorOptions" : [

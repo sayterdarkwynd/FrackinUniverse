@@ -20,28 +20,37 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.0
-    },  
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 28
+      "amount" : 0.45
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
-    },    
-    {
-      "stat" : "maxHealth",
-      "amount" : 14
+      "amount" : 7
     },
     {
-      "stat" : "healthRegen",
-      "amount" : 1.05
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
     }
+  ],
+
+  "statusEffects" : [
+    "cellularsetbonus",
+    {
+      "stat" : "fu_cellular_chest",
+      "amount" : 1
+    } 
   ],
 
   "colorOptions" : [
