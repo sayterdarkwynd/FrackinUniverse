@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/unifiedGravMod.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 3.0}
+	{stat = "powerMultiplier", amount = 2.4}
 }
 
 armorBonus={
@@ -10,6 +10,8 @@ armorBonus={
 		{stat = "fireStatusImmunity", amount = 1.0},
 		{stat = "gasImmunity", amount = 1.0},
 		{stat = "iceslipImmunity", amount = 1.0},
+		{stat = "pressureProtection", amount = 1},
+		{stat = "extremepressureProtection", amount = 1},		
 		{stat = "breathProtection", amount = 1400}
 }
 

@@ -11,6 +11,7 @@ armorBonus2={
 armorBonus={
 		{stat = "sulphuricacidImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
+		{stat = "biooozeImmunity", amount = 1},
 		{stat = "breathProtection", amount = 1}
 }
 

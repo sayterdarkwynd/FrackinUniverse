@@ -7,6 +7,8 @@ armorBonus={
    { stat = "protection", baseMultiplier = 1.25}
 }
 
+armorEffect={}
+
 setName="fu_starkillerset"
 
 function init()
