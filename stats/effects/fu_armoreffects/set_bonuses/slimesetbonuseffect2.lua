@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
 	{stat = "critChance", amount = 6},
-	{stat = "powerMultiplier", amount = 0.10}
+	{stat = "powerMultiplier", amount = 0.15}
 }
 
 armorBonus={
@@ -16,7 +16,7 @@ armorBonus={
 		{stat = "mudslowImmunity", amount = 1}
 }
 
-setName="fu_slimeset"
+setName="fu_slimeset2"
 
 function init()
   self.timer = math.random(120)+40

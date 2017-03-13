@@ -6,7 +6,7 @@ weaponBonus={
 }
 
 armorEffect={
-        {stat = "protoImmunity", amount = 1.0}
+        {stat = "protoImmunity", amount = 1.0},
         {stat = "fallDamageMultiplier", baseMultiplier = 0.75}
 }
 

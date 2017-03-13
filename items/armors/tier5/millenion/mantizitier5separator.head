@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Gaze upon the visage of the Empire.",
+   "description" : "Set Bonus:
+^e43774;+30% Shield Regen, Block, Stamina^reset;
+^green;Shield + Sword adds +20% Health^reset;",
   "shortdescription" : "Millenion's Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,26 +15,40 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 23
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 32
-    }  
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "millenionsetbonus",
+    {
+      "stat" : "fu_millenionset_head",
+      "amount" : 1
+    },
+     {
+      "stat" : "fireResistance",
+      "amount" : 0.09
+    } 
   ],
   
   "colorOptions" : [

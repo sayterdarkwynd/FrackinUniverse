@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Ablative armor keeps your face unbloodied and supplied with fresh air",
+   "description" : "Set Bonus:
+^cyan;+25% Damage (Shotgun, Grenade Launcher)^reset;
+^e43774;Immunity: Liq. Nitrogen, Pus, Poison^reset;",
   "shortdescription" : "Decker's Visor",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,28 +15,39 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.9
+      "baseMultiplier" : 1.05
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 23
+      "amount" : 0.4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
-    },
-    "airimmunity"
+      "amount" : 7
+    }
   ],
+
+  "statusEffects" : [
+    "headlamp2",
+    "deckersetbonus",
+    {
+      "stat" : "fu_deckerset_head",
+      "amount" : 1
+    }
+  ],
+
 
 
   "colorOptions" : [

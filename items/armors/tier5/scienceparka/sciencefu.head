@@ -12,29 +12,41 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
+
   "level" : 5,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
+      "baseMultiplier" : 1.15
     },
-      {
-        "stat" : "protection",
-        "amount" : 21
-      },
-      {
-        "stat" : "maxEnergy",
-        "amount" : 19
-      },
-      {
-        "stat" : "maxHealth",
-        "amount" : 9
-      },
-      "arcticparkasetbonus",
-      {
-        "stat" : "fu_arcticparkaset_head",
-        "amount" : 1
-      }
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.35
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 2
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
+    "arcticsetbonus",
+    {
+      "stat" : "fu_arcticset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.10
+    }
   ],
 
   "colorOptions" : [

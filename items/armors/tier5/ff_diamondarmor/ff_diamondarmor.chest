@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Diamond chestpiece. ^cyan;Immune to Shadow effects^reset;",
+   "description" : "Set Bonus:
+^cyan;+30% Physical Resist^reset;
+^e43774;Immune: Acid, Bio-ooze^reset;
+^green;+5% Crit Chance (Broadswords)^reset;", 
   "shortdescription" : "Gishinanki Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -13,34 +16,47 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
+
   "femaleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.35
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 40
+      "amount" : 0.55
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 28
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
+    "diamondsetbonus",
+    {
+      "stat" : "fu_diamondset_chest",
+      "amount" : 1
     },
-    "shadowimmunity"
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.1
+    }
   ],
 
   "colorOptions" : [

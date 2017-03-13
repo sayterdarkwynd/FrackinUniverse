@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Glory. Victory. Duty.",
+   "description" : "Set Bonus:
+^e43774;+30% Shield Regen, Block, Stamina^reset;
+^green;Shield + Sword adds +20% Health^reset;",
   "shortdescription" : "Millenion's Coat",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,26 +23,40 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.05
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37.25
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 25
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 50
+      "amount" : 5
     }
+  ],
+
+  "statusEffects" : [
+    "millenionsetbonus",
+    {
+      "stat" : "fu_millenionset_chest",
+      "amount" : 1
+    },
+     {
+      "stat" : "fireResistance",
+      "amount" : 0.09
+    } 
   ],
   
   

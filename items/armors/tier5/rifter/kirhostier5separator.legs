@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Keep your junk in this protective layer of armor.",
+  "description" : "Set Bonus:
+^cyan;+30 Cosmic Resist,  25% Fall Damage Reduction^reset;
+^e43774;Immune: Gas, Proto-Poison.^reset;
+^green;+25% Damage (Magnorb, Chakram, Boomerang)^reset;", 
   "shortdescription" : "Rifter Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -12,25 +15,35 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.45
+      "baseMultiplier" : 1.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 15
+      "amount" : 0.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 30
+      "amount" : 0
+    }
+  ],
+
+  "statusEffects" : [
+    "riftersetbonus",
+    {
+      "stat" : "fu_rifterset_legs",
+      "amount" : 1
     }
   ],
 

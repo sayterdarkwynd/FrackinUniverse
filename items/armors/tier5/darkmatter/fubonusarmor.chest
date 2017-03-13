@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "An impossible use of dark matter.",
+   "description" : "Set Bonus:
+^cyan;+30% Cosmic Resist^reset;
+^e43774;0.4% Regeneration^reset;
+^green;+50% Crit Damage^reset;", 
   "shortdescription" : "Dark Matter Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -13,32 +16,47 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 4,
+
   "femaleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.15
-    },  
+      "baseMultiplier" : 1.3
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 40
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
+      "amount" : 7
     }
+  ],
+
+  "statusEffects" : [
+    "darkmattersetbonus",
+    {
+      "stat" : "fu_darkmatterset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.13
+    }      
   ],
 
   "colorOptions" : [

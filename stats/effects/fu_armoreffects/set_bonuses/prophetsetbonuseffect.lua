@@ -27,8 +27,7 @@ else
 end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"staff","wand"})
 	if weapons["both"] or weapons["twoHanded"] then
 		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))

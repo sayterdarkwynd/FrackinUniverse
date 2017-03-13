@@ -4,34 +4,52 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "An impossible use of dark matter.",
+   "description" : "Set Bonus:
+^cyan;+30% Cosmic Resist^reset;
+^e43774;0.4% Regeneration^reset;
+^green;+50% Crit Damage^reset;", 
   "shortdescription" : "Dark Matter Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
-    },  
+      "baseMultiplier" : 1.2
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 19
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
+      "amount" : 5
     }
-  ], 
+  ],
+
+  "statusEffects" : [
+    "darkmattersetbonus",
+    {
+      "stat" : "fu_darkmatterset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.12
+    }  
+  ],
 
   "colorOptions" : [
     /* PURPLE DEFAULT */

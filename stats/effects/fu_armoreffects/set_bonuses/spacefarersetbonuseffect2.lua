@@ -12,7 +12,7 @@ armorBonus={
 		{stat = "iceslipImmunity", amount = 1.0},
 		{stat = "pressureProtection", amount = 1},
 		{stat = "extremepressureProtection", amount = 1},		
-		{stat = "breathProtection", amount = 1400}
+		{stat = "breathProtection", amount = 1}
 }
 
 setName="fu_spacefarerset2"

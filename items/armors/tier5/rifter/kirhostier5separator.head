@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Dedicated air supply, and protection from extreme pressure. Good times.",
+  "description" : "Set Bonus:
+^cyan;+30 Cosmic Resist,  25% Fall Damage Reduction^reset;
+^e43774;Immune: Gas, Proto-Poison.^reset;
+^green;+25% Damage (Magnorb, Chakram, Boomerang)^reset;", 
   "shortdescription" : "Rifter Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,27 +16,36 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 22.5
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 40
-    },
-    "pressureimmunity"
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [
+    "riftersetbonus",
+    {
+      "stat" : "fu_rifterset_head",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [

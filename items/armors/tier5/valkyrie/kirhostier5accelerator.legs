@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Earn passage to valhalla, and wear high-heeled greaves. Provides enormous extra jump. ^cyan;Set Bonus: Immune to Pressure & 90% fall damage reduction^reset;",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Oxygen, Pressure, Gas, Radiation^reset;
+^#e43774;Slowed Falls^reset;",
   "shortdescription" : "Valkyrie Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -12,33 +14,40 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
+      "baseMultiplier" : 1.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 14
+      "amount" : 0.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 10
-    },
-    "jumpboost35",
+      "amount" : 0
+    }
+  ],
 
+  "statusEffects" : [
     "valkyriesetbonus",
     {
       "stat" : "fu_valkyrieset_legs",
       "amount" : 1
-    }
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.05
+    }    
   ],
 
   "colorOptions" : [

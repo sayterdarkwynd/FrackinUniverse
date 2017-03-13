@@ -4,33 +4,51 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "An impossible use of dark matter.",
+   "description" : "Set Bonus:
+^cyan;+30% Cosmic Resist^reset;
+^e43774;0.4% Regeneration^reset;
+^green;+50% Crit Damage^reset;", 
   "shortdescription" : "Dark Matter Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.4
-    },  
+      "baseMultiplier" : 1.15
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
+      "amount" : 4
     }
-  ], 
+  ],
+
+  "statusEffects" : [
+    "darkmattersetbonus",
+    {
+      "stat" : "fu_darkmatterset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.1
+    }  
+  ],
 
   "colorOptions" : [
     /* PURPLE DEFAULT */

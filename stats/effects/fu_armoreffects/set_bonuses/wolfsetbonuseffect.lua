@@ -29,7 +29,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"dagger","knife"})
+	local weapons=weaponCheck({"dagger","knife","shortsword"})
 	if weapons["primary"] and weapons["alt"] then
 		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
 	elseif weapons["either"] then

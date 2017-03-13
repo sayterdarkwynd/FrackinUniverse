@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Living where others fear to tread.",
+   "description" : "Set Bonus:
+^cyan;Immune: Pressure, Gas^reset;
+^e43774;+25% Damage (Assault Rifle, Pistol)^reset;", 
   "shortdescription" : "Warframe Armor",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,25 +23,35 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.12
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 35
+      "amount" : 0.45
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 70
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 25
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
+    "warframesetbonus",
+    {
+      "stat" : "fu_warframeset_chest",
+      "amount" : 1
     }
   ],
 
