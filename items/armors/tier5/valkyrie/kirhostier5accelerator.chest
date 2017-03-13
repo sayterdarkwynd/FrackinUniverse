@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "^cyan;Set Bonus: Immune to Pressure & 90% fall damage reduction^reset;",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Oxygen, Pressure, Gas, Radiation^reset;
+^#e43774;Slowed Falls^reset;",
   "shortdescription" : "Valkyrie Hardsuit",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,32 +23,40 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
+      "baseMultiplier" : 1.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 35
+      "amount" : 0.4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 65
+      "amount" : 9
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 27
-    },
+      "amount" : 3
+    }
+  ],
 
+  "statusEffects" : [
     "valkyriesetbonus",
     {
       "stat" : "fu_valkyrieset_chest",
       "amount" : 1
-    }
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.15
+    }    
   ],
 
   "colorOptions" : [

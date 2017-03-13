@@ -4,7 +4,8 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Rad-Proof with good all-around protection.",
+  "description" : "Set Bonus:
+^cyan;+25% Damage (Energy Rifles)^reset;",
   "shortdescription" : "Sentry Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,26 +13,37 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-    "statusEffects" : [
-    {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
-    },
 
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 0.3
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 18
+      "amount" : 3
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 38
-    },
-    "ffextremeradiationimmunity"
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "sentrysetbonus",
+    {
+      "stat" : "fu_sentryset_head",
+      "amount" : 1
+    }
   ],
   "learnBlueprintsOnPickup" : [ "mobiuspistol", "mobiusrifle", "mobiusrailgun", "mobiuschest", "mobiuspants" ],
   "colorOptions" : [

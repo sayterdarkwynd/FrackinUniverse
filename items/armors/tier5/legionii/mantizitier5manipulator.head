@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "A thick helmet with a pair of stylish horns.",
+  "description" : "Set Bonus:
+^cyan;+30% Shield Regen, +20% Knockback Resist^reset;
+^cyan;++15% Crit (Spear, Shortspear)^reset;
+^green;Immune: Gas^reset;",
   "shortdescription" : "Legionii Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,29 +16,37 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.92
+      "baseMultiplier" : 1.10
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 21.5
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 25
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 4
     }
   ],
-  
-  "itemTags" : [ "tier5armor" ],
+
+  "statusEffects" : [
+    "legioniisetbonus",
+    {
+      "stat" : "fu_legioniiset_head",
+      "amount" : 1
+    }
+  ],
   
   "colorOptions" : [
     /* RED */

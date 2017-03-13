@@ -4,36 +4,53 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Diamond helmet. Regenerates health.",
+   "description" : "Set Bonus:
+^cyan;+30% Physical Resist^reset;
+^e43774;Immune: Acid, Bio-ooze^reset;
+^green;+5% Crit Chance (Broadswords)^reset;", 
   "shortdescription" : "Gishinanki Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.72
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 25
+      "amount" : 0.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 22
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
-    },
-    "regeneration01"
+      "amount" : 5
+    }
   ],
+
+  "statusEffects" : [
+    "diamondsetbonus",
+    {
+      "stat" : "fu_diamondset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.1
+    }
+  ],
+
   "colorOptions" : [
     /* Dark Steel Whatever */
     { "ffca8a" : "9da8af", "e0975c" : "676f83", "a85636" : "3d3d51", "6f2919" : "24232f" },

@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Tread upon the weak and unworthy.",
+   "description" : "Set Bonus:
+^e43774;+30% Shield Regen, Block, Stamina^reset;
+^green;Shield + Sword adds +20% Health^reset;",
   "shortdescription" : "Millenion's Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -12,26 +14,40 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.45
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 16
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 11
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 31
+      "amount" : 2
     }
+  ],
+
+  "statusEffects" : [
+    "millenionsetbonus",
+    {
+      "stat" : "fu_millenionset_legs",
+      "amount" : 1
+    },
+     {
+      "stat" : "fireResistance",
+      "amount" : 0.09
+    } 
   ],
   
   "colorOptions" : [

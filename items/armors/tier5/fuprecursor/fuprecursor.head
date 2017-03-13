@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "A HUD built into the crystalline visor gives the user an edge over their foes.",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Oxygen, Zero-G^reset;
+^#e43774;40% Radiation Resist^reset;
+^green;+15% Crit, +25 Damage (Dual Machinepistol)^reset;",
   "shortdescription" : "Precursor Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,31 +15,42 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
- "level" : 4,
- "statusEffects" : [
+
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.0
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 18
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    },
-    "exosuithead"
+      "amount" : 1
+    }
   ],
-  
-    "triggerKeys" : [ "tier5armor" ],
+
+  "statusEffects" : [
+    "precursorsetbonus",
+    {
+      "stat" : "fu_precursorset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.15
+    } 
+  ],
 
   "colorOptions" : [
     /* RED */

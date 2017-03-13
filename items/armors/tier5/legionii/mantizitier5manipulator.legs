@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Technically, the greaves are the pieces of armor that cover just the ankles and shins, but whatever. ",
+  "description" : "Set Bonus:
+^cyan;+30% Shield Regen, +20% Knockback Resist^reset;
+^cyan;++15% Crit (Spear, Shortspear)^reset;
+^green;Immune: Gas^reset;",
   "shortdescription" : "Legionii Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -12,29 +15,37 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
+      "baseMultiplier" : 1.10
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 14
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 22
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 7
+      "amount" : 4
     }
   ],
-  
-  "itemTags" : [ "tier5armor" ],
+
+  "statusEffects" : [
+    "legioniisetbonus",
+    {
+      "stat" : "fu_legioniiset_chest",
+      "amount" : 1
+    }
+  ],
   
   "colorOptions" : [
     /* RED */

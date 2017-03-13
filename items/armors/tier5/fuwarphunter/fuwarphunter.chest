@@ -5,8 +5,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Increases health by an additional 10%. Immune to extreme pressure.",
-  "shortdescription" : "Warp Hunter Techjacket",
+  "description" : "Set Bonus:
+^cyan;30%/25% Electric/Physical Resist^reset;
+^e43774;Immune: Zero-G, Burning, Proto, Pressure, Oxygen, Gas^reset;
+^green;+340% Mining Laser damage^reset;", 
+  "shortdescription" : "Warp Miner Techjacket",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
@@ -21,29 +24,45 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 6,
-  "statusEffects" : [
+
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.35
+      "baseMultiplier" : 1.20
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 40
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 40
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
+    "warphuntersetbonus",
+    {
+      "stat" : "fu_warphunterset_chest",
+      "amount" : 1
     },
-    "percenthealthboost10",
-    "extremepressureimmunity"
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.09
+    }
   ],
 
   "colorOptions" : [

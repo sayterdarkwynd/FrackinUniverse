@@ -4,41 +4,49 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "An exceptionally advanced underwater armor.",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Acid, Poison, Oxygen, Pressure^reset;
+^#e43774;Swim Boost 3^reset;
+^green;Increased stats on Oceans/Tidewater biomes^reset;",
   "shortdescription" : "Leviathan Leggings",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.62
+      "baseMultiplier" : 1.05
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 10
-    },
-    {
-      "stat" : "wetImmunity",
-      "amount" : 1
-    },
-    "biooozeimmunity",
-    "swimboost4"
+      "amount" : 3
+    }
   ],
+
+  "statusEffects" : [
+    "swimboost3",
+    "leviathansetbonus",
+    {
+      "stat" : "fu_leviathanset_legs",
+      "amount" : 1
+    } 
+  ], 
   
   "colorOptions" : [   
     /* GREEN */

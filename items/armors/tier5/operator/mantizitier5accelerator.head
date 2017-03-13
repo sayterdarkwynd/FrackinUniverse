@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "An ashlander favorite.",
+   "description" : "Set Bonus:
+^cyan;Immune: Pressure, Gas^reset;
+^e43774;+25% Damage (Assault Rifle, Pistol)^reset;", 
   "shortdescription" : "Warframe Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,25 +15,35 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 21
+      "amount" : 0.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 40
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
+    "warframesetbonus",
+    {
+      "stat" : "fu_warframeset_head",
+      "amount" : 1
     }
   ],
   
