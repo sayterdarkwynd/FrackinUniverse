@@ -17,7 +17,7 @@ function update(dt)
 		deltaTime=deltaTime+dt
 	end
 	local contents = world.containerItems(entity.id())
-	if contents[3] and contents[2] and contents[2].name == 'emptyhoneyjar' then
+	if contents[3] and contents[2] and contents[2].name == 'bottle' then
 		if not workingCombs(contents) then
 			-- reset crafting delay if indicated
 			self.craftDelay = self.initialCraftDelay
