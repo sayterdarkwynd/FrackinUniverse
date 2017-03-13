@@ -3,7 +3,7 @@ setName="fu_leviathanset"
 armorBonus2={
 		{stat = "critBonus", amount = 8},
 		{stat = "powerMultiplier", amount = 0.15},
-		{stat = "sulphuricacidImmunity", amount = 1},
+		{stat = "sulphuricImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
 		{stat = "biooozeImmunity", amount = 1},
 		{stat = "breathProtection", amount = 1},
@@ -11,7 +11,7 @@ armorBonus2={
 }
 
 armorBonus={
-		{stat = "sulphuricacidImmunity", amount = 1},
+		{stat = "sulphuricImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
 		{stat = "biooozeImmunity", amount = 1},
 		{stat = "breathProtection", amount = 1},

@@ -3,14 +3,14 @@ setName="fu_nautilusset"
 armorBonus2={
 		{stat = "critBonus", amount = 8},
 		{stat = "powerMultiplier", amount = 0.15},
-		{stat = "sulphuricacidImmunity", amount = 1},
+		{stat = "sulphuricImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
 		{stat = "maxBreath", amount = 700},
 		{stat = "breathRegeneration", baseMultiplier = 1.5}
 }
 
 armorBonus={
-		{stat = "sulphuricacidImmunity", amount = 1},
+		{stat = "sulphuricImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
 		{stat = "maxBreath", amount = 700},
 		{stat = "breathRegeneration", baseMultiplier = 1.5}

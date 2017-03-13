@@ -7,7 +7,8 @@ weaponBonus={
 }
 
 armorBonus={
-  {stat = "beestingImmunity", amount = 1}
+  {stat = "beestingImmunity", amount = 1},
+  {stat = "honeyslowImmunity", amount = 1}
 }
 
 function init()

@@ -8,7 +8,7 @@ armorBonus={
 	{stat = "fujungleslowImmunity", amount = 1},
 	{stat = "fumudslowImmunity", amount = 1},
 	{stat = "beestingImmunity", amount = 1},
-	{stat = "sulphuricacidImmunity", amount = 1}
+	{stat = "sulphuricImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

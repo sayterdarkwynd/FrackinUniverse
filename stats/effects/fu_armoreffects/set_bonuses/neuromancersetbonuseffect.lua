@@ -1,10 +1,16 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.30}
+	{stat = "powerMultiplier", amount = 0.25}
 }
 
-armorBonus={}
+armorBonus={
+	{stat = "gasImmunity", amount = 1},
+	{stat = "pusImmunity", amount = 1},
+	{stat = "slimestickImmunity", amount = 1},
+	{stat = "slimefrictionImmunity", amount = 1},
+	{stat = "liquidnitrogenImmunity", amount = 1}
+}
 
 setName="fu_neuromancerset"
 
