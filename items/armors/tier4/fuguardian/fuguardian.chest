@@ -3,8 +3,11 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Legendary",
-  "description" : "Protects and heals intergalactic police.",
+  "rarity" : "uncommon",
+   "description" : "Set Bonus:
+^cyan;+25% Cosmic Resist^reset;
+^e43774;+25% Shield Regen and Shield Health^reset;
+^green;+25% Perfect Block and Shield Stamina regen^reset;",
   "shortdescription" : "Guardian Carapace",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -14,35 +17,48 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
+
   "femaleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.35
-    },  
+      "baseMultiplier" : 1.3
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 32
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 40
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
-    },
-    "regeneration01"
+      "amount" : 5
+    }
   ],
 
+  "statusEffects" : [
+    "guardiansetbonus",
+    {
+      "stat" : "fu_guardianset_chest",
+      "amount" : 1
+    },
+     {
+      "stat" : "cosmicResistance",
+      "amount" : 0.08
+    }   
+  ], 
 
   "colorOptions" : [
      /* BLACK */

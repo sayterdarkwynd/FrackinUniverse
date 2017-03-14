@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus:
-^cyan;+25% Poison/Radiation Resist, +10% Damage, +6% Crit (Slime weapons). ^reset;
+^cyan;+18% Poison/Radiation Resist, +10% Damage, +6% Crit (Slime weapons). ^reset;
 ^e43774;Immune: Poison, Bioooze, Slime. Spawns minions. ^reset;
 ^green;Immune: Mud, Slime, Mud and Clay tiles^reset;",   
   "shortdescription" : "Black Slime Helm",
@@ -15,31 +15,44 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
+
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.65
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17
+      "amount" : 0.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 21
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 10
-    },
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
     "slimesetbonus2",
     {
       "stat" : "fu_slimeset2_head",
       "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.06
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.06
     }
   ],
 

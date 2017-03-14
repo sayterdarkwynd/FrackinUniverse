@@ -3,35 +3,52 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Legendary",
-  "description" : "Interstellar police fear no harm in these greaves. Provides a substantial shield regen boost.",
+  "rarity" : "uncommon",
+   "description" : "Set Bonus:
+^cyan;+25% Cosmic Resist^reset;
+^e43774;+25% Shield Regen and Shield Health^reset;
+^green;+25% Perfect Block and Shield Stamina regen^reset;",
   "shortdescription" : "Guardian Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.55
-    },  
+      "baseMultiplier" : 1.15
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 14
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" :12
+      "amount" : 1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
+    "guardiansetbonus",
+    {
+      "stat" : "fu_guardianset_legs",
+      "amount" : 1
     },
-    "shieldregen3"
+     {
+      "stat" : "cosmicResistance",
+      "amount" : 0.08
+    } 
   ],
 
   "colorOptions" : [

@@ -4,38 +4,52 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Exceptionally agile.",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Oxygen, Zero-G^reset;
+^#e43774;40% Radiation Resist^reset;
+^green;+15% Crit, +25 Damage (Dual Machinepistol)^reset;",
   "shortdescription" : "Precursor Robes",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
+      "baseMultiplier" : 1.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
-    },
-    "exosuitlegs"
+      "amount" : 0
+    }
   ],
 
-    "triggerKeys" : [ "tier5armor" ],
+  "statusEffects" : [
+    "precursorsetbonus",
+    {
+      "stat" : "fu_precursorset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.1
+    } 
+  ],
 
   "colorOptions" : [
    /* RED */

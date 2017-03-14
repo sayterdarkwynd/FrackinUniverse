@@ -11,7 +11,6 @@ armorBonus={
 
 armorEffect={
 	{stat = "grit", amount = 0.15}
-        {stat = "iceResistance", amount = 0.15}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

@@ -6,9 +6,7 @@ weaponBonus={
   {stat = "powerMultiplier", amount = 0.25}
 }
 
-armorBonus={
-  {stat = "shadowResistance", amount = 0.15}
-}
+armorBonus={}
 
 function init()
 	setSEBonusInit(setName)

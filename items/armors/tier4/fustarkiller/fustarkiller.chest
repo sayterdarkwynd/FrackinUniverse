@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "You're always mad when wearing star-killer armor. Immune to most basic tile effects and extreme pressure.",
+  "description" : "Set Bonus:
+^cyan;Immunity: Pressure^reset;
+^e43774;+24% Fire and Radiation Resist^reset;
+^green;Sunlight increases stats 25%^reset;", 
   "shortdescription" : "Star-Killer Plate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,33 +24,44 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "level" : 5,
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.34
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 34
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 38
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 26
-    },
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
+    "starkillersetbonus",
     {
-      "stat" : "wetImmunity",
+      "stat" : "fu_starkillerset_chest",
       "amount" : 1
     },
-    "corvexputty",
-    "extremepressureimmunity"
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.8
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.8
+    }
   ],
 
   "colorOptions" : [

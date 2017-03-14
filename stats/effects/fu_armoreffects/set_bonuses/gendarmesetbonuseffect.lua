@@ -7,7 +7,6 @@ weaponBonus={
 }
 
 armorBonus={
-  {stat = "fireResistance", amount = 0.20},
   {stat = "fireStatusImmunity", amount = 1.0}
 }
 

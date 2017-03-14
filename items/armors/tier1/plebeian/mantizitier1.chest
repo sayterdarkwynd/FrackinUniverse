@@ -7,7 +7,7 @@
   "description" : "Set Bonus:
 ^green;+15% Shield Regen, Blocking, and Stamina^reset;
 ^#e43774;Sword and Shield: +20% Health^reset;
-^cyan;+15% Fire Resist. 15% Knockback Resist^reset;",
+^cyan;+6% Fire Resist. 15% Knockback Resist^reset;",
   "shortdescription" : "Plebeian Plates",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
@@ -29,7 +29,7 @@
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.20
+      "baseMultiplier" : 1.15
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
@@ -39,12 +39,12 @@
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 2
+      "amount" : 0
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 10
+      "amount" : 7
     }
   ],
 
@@ -53,7 +53,11 @@
     {
       "stat" : "fu_plebianset_chest",
       "amount" : 1
-    } 
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    }      
   ],
 
   "colorOptions" : [

@@ -7,7 +7,7 @@
   "description" : "Set Bonus: 
 ^cyan;Immune: Gas, Breath, Cold, Liq.Nitrogen^reset;
 ^#e43774;+15% Damage (Assault/Energy Rifles)^reset;
-^green;+20% Jump. +20% Ice Resist, 15% Phys. Resist^reset;",
+^green;+20% Jump. +18% Ice Resist, 15% Phys. Resist^reset;",
   "shortdescription" : "Assault Armor",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -17,37 +17,50 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  "level" : 3,
+
   "femaleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.55
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 39
+      "amount" : 0.6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 26
-    },
+      "amount" : 7
+    }
+  ],
+
+  "statusEffects" : [
     "assaultsetbonus",
     {
       "stat" : "fu_assaultset_chest",
       "amount": 1
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.06
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.05
     }
   ],
 

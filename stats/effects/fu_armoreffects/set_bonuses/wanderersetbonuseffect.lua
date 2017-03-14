@@ -7,9 +7,7 @@ weaponBonus={
 	{stat = "critBonus", amount = 10}
 }
 
-armorBonus={
-	{stat = "electricResistance", amount = 0.20}
-}
+armorBonus={}
 
 
 function init()

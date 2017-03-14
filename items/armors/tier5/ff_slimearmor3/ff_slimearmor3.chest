@@ -4,11 +4,14 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Slimy, oozing protection. ^cyan;Set Bonus: Immune to Bio-Ooze, Insanity, Poison and Proto and Slime. +35% Poison Resistance^reset;",
+  "description" : "Set Bonus:
+^cyan;+35/25% Poison/Radiation Resist, +10% Damage, +8% Crit (Slime weapons). ^reset;
+^e43774;Immune: Poison, Bioooze, Slime. Spawns minions. ^reset;
+^green;Immune: Mud, Slime, Mud and Clay tiles^reset;", 
   "shortdescription" : "Red Slime Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "level" : 5,
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -21,32 +24,46 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.3
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 35
+      "amount" : 0.55
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 32
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 50
-    },
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
     "slimesetbonus3",
     {
       "stat" : "fu_slimeset3_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.13
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.10
     }
   ],
+
 
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },

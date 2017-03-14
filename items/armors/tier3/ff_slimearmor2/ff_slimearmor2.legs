@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus:
-^cyan;+25% Poison/Radiation Resist, +10% Damage, +6% Crit (Slime weapons). ^reset;
+^cyan;+18% Poison/Radiation Resist, +10% Damage, +6% Crit (Slime weapons). ^reset;
 ^e43774;Immune: Poison, Bioooze, Slime. Spawns minions. +Slime Weapon Damage^reset;
 ^green;Immune: Mud, Slime, Mud and Clay tiles^reset;",   
   "shortdescription" : "Black Slime Legs",
@@ -14,29 +14,44 @@
   "learnBlueprintsOnPickup" : [ "ff_slimelegs3" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  "level" : 3,
-  "statusEffects" : [
-    {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.42
-    },
 
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.1
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.25
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 5
+      "amount" : 1
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    },
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "slimesetbonus2",
     {
       "stat" : "fu_slimeset2_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.06
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.06
     }
   ],
 

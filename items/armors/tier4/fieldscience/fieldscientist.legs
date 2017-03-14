@@ -4,28 +4,47 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Elite science gear. This piece alters gravity around it.",
+  "description" : "Set Bonus: 
+^cyan;Detects nearby ores (to Tier 4)^reset;
+^#e43774;+150% Damage (Mining Laser)^reset;
+^green;Immunity: Liq. Nitrogen, Poison , Pus^reset;",
   "shortdescription" : "Geologist's Slacks",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-"level" : 4,
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.12
+      "baseMultiplier" : 1.1
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 3
+      "amount" : 0.15
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 50
+      "amount" : 4
     },
-    "helium3"
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 1
+    }
+  ],
+  
+  "statusEffects" : [
+    "geologistsetbonus",
+    {
+      "stat" : "fu_geologistset_legs",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [

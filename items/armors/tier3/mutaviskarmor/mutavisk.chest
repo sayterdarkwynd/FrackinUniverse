@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus: 
-^cyan;35% Radioactive Resist^reset;
+^cyan;30% Radioactive Resist^reset;
 ^#e43774;Immune: Deadly Radiation^reset;
 ^green;25% Fall Damage Reduction^reset;",
   "shortdescription" : "Mutavisk Chestpiece",
@@ -25,29 +25,38 @@
   },
   
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.65
+      "baseMultiplier" : 1.20
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 25
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
       "mutavisksetbonus",
     {
       "stat" : "fu_mutaviskset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.1
     }
   ],
 

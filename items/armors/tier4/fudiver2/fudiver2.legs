@@ -4,43 +4,50 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Immune to bio-ooze and provides a large swimming speed boost.",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Acid, Poison, Bio-ooze, Oxygen^reset;
+^#e43774;Swim Boost 2^reset;
+^green;Increased stats on Oceans/Tidewater biomes^reset;",
   "shortdescription" : "Kraken Leggings",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [ "fudiverhead3", "fudiverchest3", "fudiverlegs3" ], 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.4
+      "baseMultiplier" : 1.05
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 14
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    },
-    {
-      "stat" : "wetImmunity",
-      "amount" : 1
-    },
-    "biooozeimmunity",
-    "swimboost3",
-    "extremepressureimmunity"
+      "amount" : 3
+    }
   ],
-  
+
+  "statusEffects" : [
+    "swimboost2",
+    "krakensetbonus",
+    {
+      "stat" : "fu_krakenset_legs",
+      "amount" : 1
+    } 
+  ], 
+
   "colorOptions" : [
     /* YELLOW */
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },

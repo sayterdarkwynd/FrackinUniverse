@@ -6,11 +6,11 @@
   "rarity" : "uncommon",
   "description" : "Set Bonus:
 ^cyan;+7.5% Damage (per Pistol or Machine Pistol)^reset;
-^green;+7.5% Electric Resist^reset;",
+^green;+12% Electric Resist^reset;",
   "shortdescription" : "Vagabond's Coat",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
-"level" : 1,
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -23,30 +23,39 @@
     "frontSleeve" : "fsleeve.png"
   },
 
+  "level" : 2,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.25
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.45
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 7
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 4
+    }
+  ],  
 
   "statusEffects" : [
-    {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
-    },      
-    {
-      "stat" : "protection",
-      "amount" : 9
-    },
-
-    {
-      "stat" : "maxEnergy",
-      "amount" : 20
-    },
-
-    {
-      "stat" : "maxHealth",
-      "amount" : 12
-    },
     "vagabondsetbonus",
     {
       "stat" : "fu_vagabondset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.04
     }     
   ],
 

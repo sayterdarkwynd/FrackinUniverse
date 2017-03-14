@@ -5,7 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Designed for combat in super-hot environments. ^cyan;Set Bonus: Immune to heat, cold and fire. +60% Fire Resist^reset;",
+  "description" : "Set Bonus: 
+^cyan;27% Fire Resist^reset;
+^#e43774;+25% Damage (Flamethrower)^reset;
+^green;Immunity: Heat, Burning^reset;",
   "shortdescription" : "Inferno Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -15,36 +18,49 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 4,
+
   "femaleFrames" : {
     "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.15
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 32
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 25
-    },
-    "infernosuiteffects"
+      "amount" : 5
+    }
   ],
-  
+
+  "statusEffects" : [
+    "infernosetbonus",
+    {
+      "stat" : "fu_infernoset_chest",
+      "amount" : 1
+    },
+     {
+      "stat" : "fireResistance",
+      "amount" : 0.09
+    } 
+  ],
+
 
   "colorOptions" : [
     /* BLACK */

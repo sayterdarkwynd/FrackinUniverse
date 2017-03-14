@@ -8,7 +8,6 @@ weaponBonus={
 }
 
 armorBonus={ 
-{stat = "poisonResistance", amount = 0.20}, 
 {stat = "poisonStatusImmunity", amount = 1.0}
 {stat = "protoImmunity", amount = 1.0}
 }

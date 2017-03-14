@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Build to endure the rigors of space.",
+  "description" : "Set Bonus:
+^cyan;+30 Cosmic Resist,  25% Fall Damage Reduction^reset;
+^e43774;Immune: Gas, Proto-Poison.^reset;
+^green;+25% Damage (Magnorb, Chakram, Boomerang)^reset;", 
   "shortdescription" : "Rifter Hardsuit",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,25 +24,39 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.15
+      "baseMultiplier" : 1.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37.5
+      "amount" : 0.4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 25
+      "amount" : 9
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 60
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "riftersetbonus",
+    {
+      "stat" : "fu_rifterset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.1
     }
   ],
 

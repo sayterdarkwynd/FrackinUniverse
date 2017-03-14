@@ -5,35 +5,51 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Pants with an inter-dimensional phase that grants reduced gravitic friction.",
+   "description" : "Set Bonus:
+^cyan;Immunity: Poison, Pus, Bio-Ooze^reset;
+^e43774;Altered Gravity^reset;", 
   "shortdescription" : "Wretchel Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.45
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 11
+      "amount" : 0.13
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 42
+      "amount" : 8
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
+      "amount" : 2
+    }
+  ],
+
+
+  "statusEffects" : [
+    "wretchelsetbonus",
+    {
+      "stat" : "fu_wretchelset_legs",
+      "amount" : 1
     },
-    "lowgrav_wretchel"
+     {
+      "stat" : "shadowResistance",
+      "amount" : 0.05
+    } 
   ],
 
   "colorOptions" : [

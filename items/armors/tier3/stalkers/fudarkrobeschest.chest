@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "Set Bonus:
-^cyan;Immune: Poison. Bio-Ooze. +20% Poison Resist^reset;
+^cyan;Immune: Poison. Bio-Ooze. +21% Poison Resist^reset;
 ^#e43774;+15% Damage (Sniper Rifles, Bows)^reset;
 ^green;+8% Speed, +25% Fall Damage Reduction^reset;",
   "shortdescription" : "Stalker's Robe",
@@ -17,37 +17,46 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  "level" : 3,
+
   "femaleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 3,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 29
+      "amount" : 0.45
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 14
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 21
-    },      
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [   
       "stalkersetbonus",
     {
       "stat" : "fu_stalkerset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
     }
   ],
 

@@ -4,8 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Lupine Legs.
-^cyan;Set Bonus: ^green;Immune to ice, slush, snow and standard cold, 50% Ice Resistance^reset;",
+  "description" : "Set Bonus:
+^cyan;Immune: Snow, Slush, Ice, Cold. +30% Ice Resistance^reset;
+^green;+15 to 25% Crit Damage (Daggers)^reset;",
   "shortdescription" : "Wolf Leggings",
   "category" : "legsarmour",
   "tooltipKind" : "armornew2",
@@ -13,31 +14,40 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "level" : 5,
-  "statusEffects" : [
+  "level" : 2,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
+      "baseMultiplier" : 1.2
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 13
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 45
+      "amount" : 1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 10
-    },
-    "wolfsetbonus",
-    {
-      "stat" : "fu_wolfset_legs",
       "amount" : 1
     }
+  ],
+
+  "statusEffects" : [
+    "wolfsetbonus2",
+    {
+      "stat" : "fu_wolfset2_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.1
+    }  
   ],
 
   "colorOptions" : [

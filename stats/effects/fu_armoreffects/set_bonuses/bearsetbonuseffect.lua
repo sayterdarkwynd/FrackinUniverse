@@ -6,10 +6,10 @@ weaponBonuss1={
 	{stat = "critChance", amount = 7.5}
 }
 weaponBonuss2={
-	{stat = "powerMultiplier", amount = 0.20}
+	{stat = "powerMultiplier", amount = 0.24}
 }
 armorBonus={
-     {stat = "iceStatusImmunity", amount = 0.2},
+     {stat = "iceStatusImmunity", amount = 1},
      {stat = "grit", amount = 0.2},
      {stat = "biomecoldImmunity", amount = 1}
 }
@@ -18,7 +18,6 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-
 	armorBonusHandle=effect.addStatModifierGroup({})
 	weaponBonusHandlePrimary=effect.addStatModifierGroup({})
 	weaponBonusHandleAlt=effect.addStatModifierGroup({})
@@ -27,18 +26,17 @@ end
 
 function update(dt)
 	level=checkSetLevel(self.setBonusCheck)
-if level==0 then
-	effect.expire()
-else
-	checkArmor()
-	
-	checkWeapons()
-end
+	if level==0 then
+		effect.expire()
+	else
+		checkArmor()
+
+		checkWeapons()
+	end
 end
 
 function checkArmor()
-effect.setStatModifierGroup(
-	armorBonusHandle,setBonusMultiply(armorBonus,level))
+	effect.setStatModifierGroup( armorBonusHandle,setBonusMultiply(armorBonus,level))
 end
 
 function checkWeapons()

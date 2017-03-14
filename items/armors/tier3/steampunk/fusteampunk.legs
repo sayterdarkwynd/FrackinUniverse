@@ -19,27 +19,38 @@
   "femaleFrames" : "pants.png",
   
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.73
-    },   
+      "baseMultiplier" : 1.2
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 9
+      "amount" : 0.1
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 32
+      "amount" : 6
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 7
-    },
+      "amount" : 0
+    }
+  ],
+
+  "statusEffects" : [
     "steampunksetbonus",
     {
       "stat" : "fu_steampunkset_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.1
     }
   ],
   

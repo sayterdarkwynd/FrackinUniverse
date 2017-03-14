@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Thin leggings for maximum mobility.",
+   "description" : "Set Bonus:
+^cyan;Immune: Pressure, Gas^reset;
+^e43774;+25% Damage (Assault Rifle, Pistol)^reset;", 
   "shortdescription" : "Warframe Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -12,25 +14,36 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 15
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 10
+      "amount" : 1
+    }
+  ],
+
+
+  "statusEffects" : [
+    "warframesetbonus",
+    {
+      "stat" : "fu_warframeset_legs",
+      "amount" : 1
     }
   ],
   

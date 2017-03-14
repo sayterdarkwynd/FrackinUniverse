@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "^cyan;Set Bonus^reset; : ^green;Radiation, Poison and Proto Immunity^reset;, ^green;15% Poison Resistance^reset;, ^green;+5% Physical Resistance^reset;, ^green;Slime Immunity^reset;, ^green;+5% Crit Chance^reset;.",
+  "description" : "Set Bonus:
+^cyan;+5% Crit Chance (Assault Rifle/Pistol/Rifle)^reset;
+^e43774;+25% Crit Damage (Assault Rifle/Pistol/Rifle)^reset;
+^green;+2% chance to gain pixels with kills.^reset;", 
   "shortdescription" : "Intersec Breastplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,31 +24,36 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.79
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 20
-    },
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
     "intersecsetbonus",
     {
       "stat" : "fu_intersecset_chest",
       "amount" : 1
-    }
+    } 
   ],
 
   "colorOptions" : [

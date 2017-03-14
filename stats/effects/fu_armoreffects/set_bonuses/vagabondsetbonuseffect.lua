@@ -6,9 +6,7 @@ weaponBonus={
 	{stat = "powerMultiplier", amount = 0.075}
 }
 
-armorBonus={
-	{stat = "electricResistance", amount = 0.075}
-}
+armorBonus={}
 
 
 

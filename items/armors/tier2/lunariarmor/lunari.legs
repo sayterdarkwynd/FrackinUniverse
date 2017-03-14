@@ -6,7 +6,7 @@
   "rarity" : "uncommon",
   "description" : "Set Bonus:
 ^cyan;+15% Damage and Crit (Lunari weapons)^reset; 
-^#e43774;+25% Cosmic Resist^reset;
+^#e43774;+15% Cosmic Resist^reset;
 ^green;+25% Energy Regen^reset;",
   "shortdescription" : "Lunari Greaves",
   "category" : "legarmour",
@@ -14,31 +14,41 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
+
   "level" : 2,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.34
-    },  
+      "baseMultiplier" : 1.1
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 10
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 22
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    }, 
+      "amount" : 1
+    }
+  ],
+
+  "statusEffects" : [
     "lunarisetbonus",
     {
       "stat" : "fu_lunariset_legs",
       "amount" : 1
-    } 
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.05
+    }   
   ],
 
   "colorOptions" : [

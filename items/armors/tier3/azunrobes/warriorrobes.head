@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Set Bonus:
-^cyan;+30% Shadow, Cosmic, Radiation Resis.^reset;
+^cyan;+18% Shadow, Cosmic, Radiation Resis.^reset;
 ^e43774;Immune: Shadow Taint, Insanity ^reset;
 ^green;+15% Speed and Jump, +8% Crit Chance^reset;",  
 "shortdescription" : "Azun Hood",
@@ -17,30 +17,46 @@
   "mask" : "mask.png",
 
   "level" : 3,
-
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.35
+      "baseMultiplier" : 1.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 13
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 24
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 13
-    },      
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [   
       "warriorrobessetbonus",
     {
       "stat" : "fu_warriorrobesset_head",
       "amount" : 1
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.06
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.06
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.06
     }
   ]
 }

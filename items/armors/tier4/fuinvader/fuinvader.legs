@@ -4,37 +4,53 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Sleek, comfortable greaves with a skirt of iron plates.",
+  "description" : "Set Bonus: 
+^cyan;25% Electric Resist, 25% Fall Damage Reduction^reset;
+^#e43774;Immunity: Proto-Poison^reset;
+^green;+20% Damage and +5% Crit (Magnorbs)^reset;",
   "shortdescription" : "Invader Greaves",
   "category" : "legarmour",
   "inspectionKind" : "armor",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 8
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
+      "amount" : 1
     }
   ],
 
-    "triggerKeys" : [ "titaniumarmor" ],
+
+  "statusEffects" : [
+    "infernosetbonus",
+    {
+      "stat" : "fu_infernoset_legs",
+      "amount" : 1
+    },
+     {
+      "stat" : "electricResistance",
+      "amount" : 0.08
+    } 
+  ],
 
   "colorOptions" : [
     /* WHITE */

@@ -4,9 +4,7 @@ weaponBonus={
 	{stat = "powerMultiplier", amount = 0.10}
 }
 
-armorBonus={
-	{ stat = "cosmicResistance", amount = 0.20 }
-}
+armorBonus={ }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
@@ -29,8 +27,7 @@ else
 end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"staff","wand"})
 	if weapons["both"] or weapons["twoHanded"] then
 		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))

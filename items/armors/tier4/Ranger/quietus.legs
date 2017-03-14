@@ -4,32 +4,50 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Strong, resilient and fashionable.",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Burning, Insanity^reset;
+^#e43774;15% Fire Resist^reset;
+^green;+30% Damage (Quietus weapons)^reset;",
   "shortdescription" : "Ranger Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.62
-    },    
+      "baseMultiplier" : 1.2
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17
+      "amount" : 0.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 25
+      "amount" : 1
     }
+  ],
+
+  "statusEffects" : [
+    "rangersetbonus",
+    {
+      "stat" : "fu_rangerset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.05
+    }  
   ]
 }

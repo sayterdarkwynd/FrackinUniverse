@@ -4,7 +4,6 @@ weaponBonus={
 	{stat = "critBonus", amount = 10}
 }
 armorBonus={
-	{stat = "iceResistance", amount = 0.15},
 	{stat = "iceStatusImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1}
 }
@@ -30,7 +29,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"dagger","knife"})
+	local weapons=weaponCheck({"dagger","knife","shortsword"})
 	if weapons["primary"] and weapons["alt"] then
 		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
 	elseif weapons["either"] then

@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Increases shield regeneration speed.",
+  "description" : "Set Bonus: 
+^cyan;12% Physical Resist, +9% Electric Resist^reset;
+^#e43774;+10% Damage (melee)^reset;",
   "shortdescription" : "Warrior Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,24 +22,44 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.22
-    },    
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 25
+      "amount" : 0.5
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 50
-    },   
-    {
-      "stat" : "maxHealth",
-      "amount" : 20
+      "amount" : 5
     },
-    "shieldregen2"
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
+    "warriorsetbonus",
+    {
+      "stat" : "fu_warriorset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.4
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.3
+    }  
   ]
 }

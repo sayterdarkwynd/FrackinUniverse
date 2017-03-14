@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Armor with regenerative properties. ^cyan;Set Bonus: Deadly Cold Immunity, 15% Cold Resist, 35% Radioactive Resist^reset;",
+  "description" : "Set Bonus: 
+^cyan;+35% Radioactive Resist^reset;
+^#e43774;Immunity: All radiation^reset;
+^green;+5% Crit,+10% Rad Resist(Irradium weapons)^reset;",
   "shortdescription" : "Irradium Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,34 +23,43 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 35
+      "amount" : 0.55
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 40
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
-    },
-    "regenerationminor",
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
     "irradiumsetbonus",
     {
       "stat" : "fu_irradiumset_chest",
       "amount" : 1
-    }
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.12
+    }      
   ],
+
 "effectSources" : [ "icetrail" ]
 
 }

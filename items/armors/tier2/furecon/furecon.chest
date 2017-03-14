@@ -29,31 +29,39 @@
   },
   
   "level" : 2,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.54
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 0.45
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 10
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
-    },
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
      "reconsetbonus",
     {
       "stat" : "fu_reconset_chest",
       "amount" : 1
-    }
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.04
+    }  
   ],
 
   "upgrade" : "Upgradeable",

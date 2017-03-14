@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "This swampy chestpiece is covered in scales. ^cyan;Set bonus: 55% Poison Resist,+ Breath, Poison + Proto immunity^reset;.",
+   "description" : "Set Bonus:
+^cyan;20% Poison Resist, Swim Boost 1^reset;
+^e43774;Immunity:Insanity, Oxygen^reset;
+^green;+25% Damage (Spear/Short Spear)^reset;", 
   "shortdescription" : "Chordata Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -14,38 +17,47 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
+
   "femaleFrames" : {
     "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
+      "baseMultiplier" : 1.20
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 32
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 32
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 60
-    },
-    "fishmansetbonus",
-    {
-      "stat" : "fu_fishmanset_chest",
-      "amount" : 1
+      "amount" : 6
     }
+  ],
+
+  "statusEffects" : [
+    "chordatasetbonus",
+    {
+      "stat" : "fu_chordata_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
+    }      
   ],
 
   "colorOptions" : [

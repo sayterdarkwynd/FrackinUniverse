@@ -4,41 +4,47 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Wonderful reptile hide protection.
-^cyan;Set Bonus: ^green;Stat boost in Primeval biomes, immune to acid and proto.^reset;",
+  "description" : "Set Bonus:
+^cyan;+10% Phys. Resist(Sword/Shield), +25% Damage (Shield/Axe)^reset;
+^green;Immune: Heat, Acid.^reset;",
   "shortdescription" : "Reptile Scale Head",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.65
+      "baseMultiplier" : 1.10
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 19
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 11
-    },
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
     "reptilesetbonus",
     {
       "stat" : "fu_reptileset_head",
       "amount" : 1
     }
   ],
-  "questTags" : [ "tier3armor" ],
 
   "colorOptions" : [
     /* PURPLE DEFAULT */

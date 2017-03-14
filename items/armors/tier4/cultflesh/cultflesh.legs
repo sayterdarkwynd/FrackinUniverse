@@ -4,38 +4,49 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "These really accent your shapely legs. It's all in the gore. Immune to slime. ^cyan;Set Bonus: %20 Shadow resistance and Shadow Taint immunity^reset;",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Shadow Taint, Insanity^reset;
+^#e43774;15% Shadow Resist^reset;
+^green;+15% Crit (Bio-weapon)^reset;",
   "shortdescription" : "Flesh Leggings",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-  "level" : 4,
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
+      "baseMultiplier" : 1.05
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 18
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 4
-    },
-    "slimestickimmunity",
-    "cultfleshsetbonus",
-    {
-      "stat" : "fu_cultfleshset_legs",
       "amount" : 1
+    }
+  ],
+  "statusEffects" : [
+    "fleshsetbonus",
+    {
+      "stat" : "fu_fleshset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.1
     }
   ]
 }

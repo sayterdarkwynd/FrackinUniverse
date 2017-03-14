@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "Set Bonus:
-^cyan;+22% Poison Resist, +15% Shield Regen^reset;
+^cyan;+21% Poison Resist, +15% Shield Regen^reset;
 ^e43774;Immune: Breath^reset;
 ^green;Ocean/Tidewater: +25% Health, +5 protection^reset;",   
   "shortdescription" : "Siren's Breastplate",
@@ -23,31 +23,40 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
+
   "level" : 3,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 26
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
-    },    
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
     "sirensetbonus",
     {
       "stat" : "fu_sirenset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.07
     }
   ],
 

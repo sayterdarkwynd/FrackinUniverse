@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Strong, resilient and fashionable. Grants immunity to ice, mud, fire, black tar, pus and sulphuric acid.",
+  "description" : "Set Bonus: 
+^cyan;Immunity: Burning, Insanity^reset;
+^#e43774;15% Fire Resist^reset;
+^green;+30% Damage (Quietus weapons)^reset;",
   "shortdescription" : "Ranger Plate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,26 +23,40 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 4,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.25
-    },    
+      "baseMultiplier" : 1.35
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 40
+      "amount" : 0.45
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 55
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
+    "rangersetbonus",
+    {
+      "stat" : "fu_rangerset_chest",
+      "amount" : 1
     },
-    "quietuseffects"
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.05
+    }  
   ]
 }

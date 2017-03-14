@@ -4,8 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "No bears were harmed in making this.
-^cyan;Set Bonus: ^green;+25% Crit with Hammers/Axes, Immune to Standard Cold and 15% Ice Resistance.^reset;",
+  "description" : "Set Bonus:
+^cyan;+9.5 to 25.5% Crit Chance with Hammers/Axes^reset;
+^cyan;+35% Ice Resist^reset;
+^green;Immune: Cold, Ice status effects, Slush.^reset;",
   "shortdescription" : "Savage Bear Coat",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -23,29 +25,38 @@
   },
 
   "level" : 4,
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.15
+      "baseMultiplier" : 1.15
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 32
+      "amount" : 0.6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 20
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 40
-    },
-    "bearsetbonus",
+      "amount" : 7
+    }
+  ],
+
+  "statusEffects" : [
+    "bearsetbonus2",
     {
-      "stat" : "fu_bearset_chest",
+      "stat" : "fu_bearset2_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.12
     }
   ],
 
