@@ -11,7 +11,7 @@ function init()
 	storage.outContainers={}
 	storage.containerId=nil
 	storage.containerPos={0,0}
-	linkRange=20
+	linkRange=16
 end
 
 function update(dt)
@@ -39,7 +39,7 @@ function findContainer()
 
 	local objectIds = world.objectQuery(entity.position(), linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
-		if world.containerSize(objectId) then
+		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
 			storage.containerId=objectId
 			storage.containerPos=world.entityPosition(storage.containerId)
 			storage.inContainers[storage.containerId]=storage.containerPos
