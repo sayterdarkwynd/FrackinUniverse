@@ -27,20 +27,21 @@ end
 
 function transferUtil.initTypes()
 	transferUtil.itemTypes={}
-	transferUtil.itemTypes["generic"]={"foodjunk","junk","other","generic","quest","tech"} 
-	transferUtil.itemTypes["treasure"]={"coin", "celestialitem","vehiclecontroller","bug","largefossile","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"}
+	transferUtil.itemTypes["bee"]={"queen","drone"}
+	transferUtil.itemTypes["treasure"]={"coin", "celestialitem","vehiclecontroller","bug","largefossil","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"}
 	transferUtil.itemTypes["material"]={"block","liquid","platform","breakable"} 
 	transferUtil.itemTypes["rail"]={"rail","railplatform","railpoint"} 
 	transferUtil.itemTypes["tool"]={"tool","fishingrod","miningtool","flashlight","wiretool","beamminingtool","tillingtool","paintingbeamtool","harvestingtool","musicalinstrument","grapplinghook","thrownitem"}
 	transferUtil.itemTypes["weapon"]={"assaultrifle","axe","boomerang","bow","broadsword","chakram","crossbow","dagger","fistweapon","grenadelauncher","hammer","machinepistol","pistol","rocketlauncher","shield","shortsword","shotgun","sniperrifle","spear","staff","wand","toy","uniqueweapon","whip","fu_upgrade","fu_warspear","fu_lance","fu_pierce","fu_scythe","quarterstaff","warblade","fu_keening"}
-	transferUtil.itemTypes["armor"]={"headarmor", "chestarmor", "legsarmor", "backarmor","enviroprotectionpack"} 
-	transferUtil.itemTypes["cosmeticarmor"]={"chestwear","legwear","headwear","backwear"}
 	transferUtil.itemTypes["consumable"]={"drink","preparedfood","food","medicine"}
-	transferUtil.itemTypes["books"]={"blueprint", "codex"}
 	transferUtil.itemTypes["augments"]={"eppaugment","fishinglure","fishingreel","petcollar","clothingdye"}
-	transferUtil.itemTypes["reagents"]={"craftingmaterial","cookingingredient","fuel"}
 	transferUtil.itemTypes["building"]={"techmanagement","crafting","machinery","spawner","terraformer","trap","wire","light","furniture","decorative","door","fridgestorage","teleporter","teleportmarker","shippingcontainer","storage"}
 	transferUtil.itemTypes["farming"]={"seed","sapling","farmbeastegg","farmbeastfood","farmbeastfeed"}
+	transferUtil.itemTypes["armor"]={"headarmor", "chestarmor", "legsarmor", "backarmor","enviroprotectionpack"} 
+	transferUtil.itemTypes["cosmeticarmor"]={"chestwear","legwear","headwear","backwear"}
+	transferUtil.itemTypes["reagents"]={"craftingmaterial","cookingingredient","fuel"}
+	transferUtil.itemTypes["books"]={"blueprint", "codex"}
+	transferUtil.itemTypes["generic"]={"foodjunk","junk","other","generic","quest","tech"} 
 end
 
 
@@ -419,11 +420,15 @@ function transferUtil.getType(item)
 			itemCat=itemRoot.config.category
 	elseif itemRoot.config.projectileType~=nil then
 		itemCat="thrownitem"
+	elseif itemRoot.config.itemTags then
+		for _,tag in pairs(itemRoot.config.itemTags) do
+		
+		end
 	end
 	if itemCat~=nil then
 		return string.lower(itemCat)
 	elseif unhandled[item.name]~=true then
-		sb.logInfo(sb.printJson(itemRoot))
+		sb.logInfo("Unhandled Item:\n%s",itemRoot)
 		unhandled[item.name]=true
 	end
 	return string.lower(item.name)
