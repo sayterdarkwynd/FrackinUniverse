@@ -5,7 +5,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Set Bonus: ^cyan;Absorbs damage, resists shadow and repels nearly any status effect.^reset;",
+  "description" : "Set Bonus: ^cyan;???^reset;",
   "shortdescription" : "Shoggoth Mask",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,32 +13,65 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "level" : 7,
-  "statusEffects" : [
+
+  "level" : 8,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.2
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 26
+      "amount" : 0.4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 45
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 46
-    },
+      "amount" : 7
+    }
+  ],
+
+  "statusEffects" : [
     "shoggothsetbonus",
     {
       "stat" : "fu_shoggothset_head",
       "amount" : 1
-    }    
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.20
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.20
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.20
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.20
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.20
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.20
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.20
+    }
   ],
 
   "colorOptions" : [

@@ -30,6 +30,7 @@ end
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
   activateVisualEffects()
   
+  self.gracePeriod = 220
   script.setUpdateDelta(5)
 end
 
@@ -159,46 +160,54 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
   
-  if daytime then  
-        -- are they in liquid?
-        local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-        local mouthful = world.liquidAt(mouthposition)        
-        if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
-		setLiquidPenalty()
-		if (self.timerRadioMessage <= 0) then
-		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertwater", 1.0) -- send player a warning
-		  self.timerRadioMessage = 60
-		end
-	    inWater = 1
-	else
-	  isDry()
-        end 		
-        
-      self.damageApply = setEffectDamage()   
-      self.debuffApply = setEffectDebuff() 
+  self.gracePeriod = 220 -- how long before it affects them?
   
-      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < 1.0 then
-          self.biomeTimer = setEffectTime()
-          self.timerRadioMessage = self.timerRadioMessage - dt  	  
-      end 
+  if self.gracePeriod = 0 then
+	if daytime then  
+		-- are they in liquid?
+		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
+		local mouthful = world.liquidAt(mouthposition)        
+		if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
+			setLiquidPenalty()
+			if (self.timerRadioMessage <= 0) then
+			  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertwater", 1.0) -- send player a warning
+			  self.timerRadioMessage = 60
+			  self.gracePeriod = 60
+			end
+		    inWater = 1
+		else
+		  isDry()
+		end 		
 
-      if status.stat("fireResistance",0) <=0.99 then      
-	   status.modifyResource("health", -self.damageApply * dt)
-           
-           if (status.resource("health")) <= (status.resource("health")/4) then
-             mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("fireResistance",0), 
-	         speedModifier = status.stat("fireResistance",0) 
-             })  
-           end
-      end  
-      self.biomeTimer = self.biomeTimer - dt
-  else	
-	if (self.timerRadioMessage <= 0) then
-	  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
-	  self.timerRadioMessage = 120
-	end  
-  end    
+	      self.damageApply = setEffectDamage()   
+	      self.debuffApply = setEffectDebuff() 
+
+	      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < 1.0 then
+		  self.biomeTimer = setEffectTime()
+		  self.timerRadioMessage = self.timerRadioMessage - dt  	  
+	      end 
+
+	      if status.stat("fireResistance",0) <=0.99 then      
+		   status.modifyResource("health", -self.damageApply * dt)
+
+		   if (status.resource("health")) <= (status.resource("health")/4) then
+		     mcontroller.controlModifiers({
+			 airJumpModifier = status.stat("fireResistance",0), 
+			 speedModifier = status.stat("fireResistance",0) 
+		     })  
+		   end
+	      end  
+	      self.biomeTimer = self.biomeTimer - dt
+	else	
+		if (self.timerRadioMessage <= 0) then
+		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
+		  self.timerRadioMessage = 120
+		end  
+	end
+  else
+    self.gracePeriod = self.gracePeriod - dt
+  end
+      
 end       
 
 function uninit()

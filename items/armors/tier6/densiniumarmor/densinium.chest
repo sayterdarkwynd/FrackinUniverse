@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "^cyan;Set Bonus: Immunity - Heat, Cold, Pressure, Acid, Proto, Rad-Burn. +25% Jump, 15% Physical Resist^reset;.",
+   "description" : "Set Bonus:
+^cyan;+30% Physical Resist^reset;
+^#e43774;Immune: Heat, Radiation, Poison, Oxygen^reset;
+^green;+12 Crit, +25% Damage (Densinium weapons)^reset;",
   "shortdescription" : "Densinium Armor",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -14,37 +17,49 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 6,
+
   "femaleFrames" : {
     "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.62
+      "baseMultiplier" : 1.15
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37
+      "amount" : 0.6
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 36
+      "amount" : 3
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 70
-    },
-      "densiniumsetbonus",
+      "amount" : 7
+    }
+  ],
+
+  "statusEffects" : [
+    "densiniumsetbonus",
     {
       "stat" : "fu_densiniumset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.1
     }
   ],
-  "questTags" : [ "tier7armor" ],
+
   "colorOptions" : [
     /* BLACK */
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },

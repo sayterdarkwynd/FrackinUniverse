@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Immune to acid and liquid nitrogen.",
+   "description" : "Set Bonus:
+^cyan;+50% Electric Resist^reset;
+^e43774;Immune: Pressure, Insanity^reset;
+^green;+35% Shield Stamina, Block, Shield Regen^reset;", 
   "shortdescription" : "Ultra-Mesh Breastplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,29 +23,41 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.7
+      "baseMultiplier" : 1.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 0.55
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 70
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 22
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
+    "ultrameshsetbonus",
+    {
+      "stat" : "fu_ultrameshset_chest",
+      "amount" : 1
     },
-    "liquidnitrogenimmunity", 
-    "sulphuricImmunity" 
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.20
+    }
   ],
 
   "colorOptions" : [

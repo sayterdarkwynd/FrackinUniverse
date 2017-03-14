@@ -7,7 +7,7 @@ function init()
     {stat = "waterImmunity", amount = 1},
     {stat = "biooozeImmunity", amount = 1},
     {stat = "blacktarImmunity", amount = 1},
-    {stat = "nitrogenfreezeImmunity", amount = 1},
+    {stat = "liquidnitrogenImmunity", amount = 1},
     {stat = "sulphuricImmunity", amount = 1}
   })
 end

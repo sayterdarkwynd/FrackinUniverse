@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Resistant to all but extreme blaster fire.",
+   "description" : "Set Bonus:
+^cyan;Immunity: Heat, Proto^reset;
+^e43774;+30% Electric Resist^reset;
+^green;+25% Damage, Dual-Wield +30% Crit Dmg (Energy)^reset;", 
   "shortdescription" : "Neuromancer's Visor",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,25 +16,35 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.18
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 24
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 18
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 18
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
+    "neuromancersetbonus",
+    {
+      "stat" : "fu_neuromancerset_head",
+      "amount" : 1
     }
   ],
 

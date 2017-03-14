@@ -4,35 +4,52 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Provides a slight boost to swim speed.",
+   "description" : "Set Bonus:
+^cyan;+50% Electric Resist^reset;
+^e43774;Immune: Pressure, Insanity^reset;
+^green;+35% Shield Stamina, Block, Shield Regen^reset;", 
   "shortdescription" : "Ultra-Mesh Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.8
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 14
+      "amount" : 0.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 70
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 12
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [ 
+    "swimboost1",
+    "ultrameshsetbonus",
+    {
+      "stat" : "fu_ultrameshset_legs",
+      "amount" : 1
     },
-    "swimboost"
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.10
+    }
   ],
 
   "colorOptions" : [

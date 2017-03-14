@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "^cyan;+25% Speed, Set Bonus: Shock Immunity and 40% Electric Resistance, Regeneration 3, Pressure Immunity^reset;",
+  "description" : "Set Bonus:
+^cyan;+20% Speed, Jump, Regen 0.8%^reset;
+^cyan;10% Crit Chance, 50% Electric Resist^reset;
+^green;Immune: Pressure, Most Tiles, Electric^reset;",
   "shortdescription" : "Phase Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -13,34 +16,44 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 7,
   "femaleFrames" : {
     "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
+  "level" : 7,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.6
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 7
+    }
+  ],
 
   "statusEffects" : [
-      {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.85
-    },
-    {
-      "stat" : "protection",
-      "amount" : 40
-    },
-    {
-      "stat" : "maxEnergy",
-      "amount" : 60
-    },
-    {
-      "stat" : "maxHealth",
-      "amount" : 55
-    },
     "phasesetbonus",
     {
       "stat" : "fu_phaseset_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.20
     }
   ],
 

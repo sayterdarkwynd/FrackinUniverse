@@ -5,11 +5,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^cyan;Set bonus: Jump, Speed, Rad Proof, Oxygen, Knockback Resist, 25% Poison Resist, 40% Radioactive Resist^reset;.",
+  "description" : "Set Bonus:
+^cyan;+22% Damage, +8% Crit Chance (Rifle, Sniper Rifle), +15% Speed^reset;
+^green;+18% Radioactive Resist, Immune: Rad Burn^reset;", 
   "shortdescription" : "Type-3 Recon Vest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-"level" : 5,
+
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -22,27 +24,39 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.61
+      "baseMultiplier" : 1.25
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 34
+      "amount" : 0.45
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 7
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 27
-    },
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [
      "reconsetbonus3",
     {
       "stat" : "fu_reconset3_chest",
       "amount" : 1
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.1
     }
   ],
 
