@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "A breastplate of hard materials, concealed beneath a thick robe.",
+  "description" : "Set Bonus:
+^cyan;+9% crit chance (Pistol, Machine Pistol)^reset;
+^#e43774;30% Shadow Resistance^reset;
+^green;Immune: Gas, Shadow, Taint^reset;",
   "shortdescription" : "Assassinii Armor",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,26 +24,40 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.75
+      "baseMultiplier" : 1.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37.5
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 55
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 26
+      "amount" : 7
     }
+  ],
+
+  "statusEffects" : [
+    "assassinisetbonus",
+    {
+      "stat" : "fu_assassiniset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.10
+    }      
   ],
   
   "colorOptions" : [

@@ -4,7 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Great defense, but loses some energy capacity. Immune to acid.",
+  "description" : "Set Bonus: 
+^cyan;36% All Resists^reset;
+^#e43774;Immunity: Heat, Cold, Radiation, Acid^reset;",
   "shortdescription" : "Morphite Chest MK2",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,29 +22,64 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.0
-    },  
+      "baseMultiplier" : 1.25
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37.5
+      "amount" : 0.45
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 7
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 30
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
+    "morphitesetbonus2",
+    {
+      "stat" : "fu_morphiteset2_chest",
+      "amount" : 1
     },
     {
-      "stat" : "sulphuricImmunity",
-      "amount" : 1.0
+      "stat" : "poisonResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.12
     }
   ],
 

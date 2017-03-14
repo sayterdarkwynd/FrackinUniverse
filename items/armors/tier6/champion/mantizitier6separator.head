@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Blood. Sweat. Tears. I am all of this, and more.",
+  "description" : "Set Bonus:
+^cyan;+30% Damage/+15% Crit Chance (Hammer and Axe),  ^reset;
+^#e43774;Immunity: Tar, Mud, Clay, Cold^reset;",
   "shortdescription" : "Champion's Maw",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,25 +15,35 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.90
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 24
+      "amount" : 0.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 18
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 44
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
+    "championsetbonus",
+    {
+      "stat" : "fu_championset_head",
+      "amount" : 1
     }
   ],
   

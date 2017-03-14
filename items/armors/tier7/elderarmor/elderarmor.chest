@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Composed of an unknown material that provides astounding protection. ^cyan;Set Bonus: Immune to heat, cold, rads, most poisons. 65% Poison, 15% Electric Resist^reset;.",
+   "description" : "Set Bonus:
+^cyan;Immune: Shadow, Insanity, Pus, Acid^reset;
+^e43774;40% Shadow Resist, +25 Damage (Elder)^reset;
+^green;Summons minions, Darkness Regen^reset;", 
   "shortdescription" : "Elder Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -14,42 +17,49 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 7,
+
   "femaleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
+  "level" : 7,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.25
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.45
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 7
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
+    }
+  ],
+
   "statusEffects" : [
     "eldersetbonus",
     {
       "stat" : "fu_elderset_chest",
       "amount" : 1
-    } 
-  ],
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "elderfuArmorLevelPower",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
     },
     {
-      "levelFunction" : "elderfuArmorLevelProtection",
-      "stat" : "protection",
-      "amount" : 0.5
-    },
-    {
-      "levelFunction" : "elderfuArmorLevelEnergy",
-      "stat" : "maxEnergy",
-      "amount" : 9
-    },
-    {
-      "levelFunction" : "elderfuArmorLevelHealth",
-      "stat" : "maxHealth",
-      "amount" : 5
+      "stat" : "shadowResistance",
+      "amount" : 0.25
     }
   ],
+
   "questTags" : [ "elderarmor" ],
   "colorOptions" : [
     /* YELLOW DEFAULT */

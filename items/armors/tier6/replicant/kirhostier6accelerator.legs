@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Enhance your reflexes beyond ordinary limits.",
+  "description" : "Set Bonus:
+^cyan;+15% Crit (Swords), Dual-wield for +25% damage^reset;
+^cyan;30% Shadow Resistance^reset;
+^green;Immune: Gas, Shadow, Taint^reset;",
   "shortdescription" : "Replicant's Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -12,25 +15,39 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
+      "baseMultiplier" : 1.0
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 18
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 35
+      "amount" : 0
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 14
+      "amount" : 8
+    }
+  ],
+
+  "statusEffects" : [
+    "replicantsetbonus",
+    {
+      "stat" : "fu_replicantset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.1
     }
   ],
 
