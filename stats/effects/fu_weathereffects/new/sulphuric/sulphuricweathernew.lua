@@ -113,23 +113,22 @@ function toHex(num)
 end
 
 
--- alert the player that they are affected
 function activateVisualEffects()
   effect.setParentDirectives("fade=ffbe22=0.3")
- 	  
 end
 
--- ice breath
 function makeAlert()
 	  local statusTextRegion = { 0, 1, 0, 1 }
 	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
 	  animator.burstParticleEmitter("statustext")  
-        --local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-        --world.spawnProjectile("iceinvis",mouthPosition,entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
 end
 
 
 function update(dt)
+
+
+		status.addEphemeralEffect( "biomeairless" )
+		
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
@@ -148,12 +147,9 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
   
-      if (self.biomeTimer2 <= 0) then
-         makeAlert()
-         self.biomeTimer2 = self.baseRate * 5
-      end 
       
       if (self.biomeTimer <= 0) and (status.stat("protection",0) > 0) then
+      makeAlert()
             effect.addStatModifierGroup({
               {stat = "protection", amount = -self.debuffApply  },
               {stat = "physicalResistance", amount = (status.stat("physicalResistance",0) *(-self.debuffApply/100))  }
