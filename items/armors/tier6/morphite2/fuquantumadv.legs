@@ -4,34 +4,75 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Higher defense at the cost of some energy. Immune to deadly cold.",
+  "description" : "Set Bonus: 
+^cyan;36% All Resists^reset;
+^#e43774;Immunity: Heat, Cold, Radiation, Acid^reset;",
+  "shortdescription" : "Morphite Chestpiece",
+  "category" : "Armor",
   "shortdescription" : "Morphite Greaves MK2",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  "level" : 5,
-  "statusEffects" : [
+
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.5
-    },  
+      "baseMultiplier" : 1.05
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 17
+      "amount" : 0.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 1
+    }
+  ],
+  "statusEffects" : [
+    "morphitesetbonus2",
+    {
+      "stat" : "fu_morphiteset2_legs",
+      "amount" : 1
     },
-    "ffextremecoldresist"
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.12
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.12
+    }
   ],
 
   "colorOptions" : [

@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Superior plating grants additional protection. Immune to extreme pressure.",
+   "description" : "Set Bonus:
+^cyan;40% Radiation Resist^reset;
+^e43774;Immune: Radiation, Heat, Cold, Pressure^reset;
+^green;+15% Plasma damage. Detect nearby Ore, Caves, Enemies.", 
   "shortdescription" : "Sunwalker Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -20,26 +23,41 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
-  "statusEffects" : [
+
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.05
+      "baseMultiplier" : 1.25
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 34
+      "amount" : 0.55
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 64
+      "amount" : 4
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 35
+      "amount" : 6
+    }
+  ],
+
+  "statusEffects" : [
+    "sunwalkersetbonus",
+    {
+      "stat" : "fu_sunwalkerset_chest",
+      "amount" : 1
     },
-    "defense2",
-    "extremepressureimmunity"
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.20
+    }
   ],
   
   "colorOptions" : [

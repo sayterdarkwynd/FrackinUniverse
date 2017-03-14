@@ -4,7 +4,9 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Step lightly upon legendary sands.",
+  "description" : "Set Bonus:
+^cyan;+30% Damage/+15% Crit Chance (Hammer and Axe),  ^reset;
+^#e43774;Immunity: Tar, Mud, Clay, Cold^reset;",
   "shortdescription" : "Champion's Tights",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -12,25 +14,35 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.50
+      "baseMultiplier" : 1.1
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 16
+      "amount" : 0.25
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 12
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 34
+      "amount" : 4
+    }
+  ],
+
+  "statusEffects" : [ 
+    "championsetbonus",
+    {
+      "stat" : "fu_championset_legs",
+      "amount" : 1
     }
   ],
   

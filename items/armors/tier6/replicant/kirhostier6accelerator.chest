@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Enhance your reflexes beyond ordinary limits.",
+  "description" : "Set Bonus:
+^cyan;+15% Crit (Swords), Dual-wield for +25% damage^reset;
+^cyan;30% Shadow Resistance^reset;
+^green;Immune: Gas, Shadow, Taint^reset;",
   "shortdescription" : "Replicant's Hardsuit",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,25 +24,39 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.55
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 42
+      "amount" : 0.6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 80
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 32
+      "amount" : 7
+    }
+  ],
+
+  "statusEffects" : [
+    "replicantsetbonus",
+    {
+      "stat" : "fu_replicantset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.1
     }
   ],
 

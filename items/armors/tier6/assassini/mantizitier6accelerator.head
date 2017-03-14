@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "A face-concealing hood.",
+  "description" : "Set Bonus:
+^cyan;+9% crit chance (Pistol, Machine Pistol)^reset;
+^#e43774;30% Shadow Resistance^reset;
+^green;Immune: Gas, Shadow, Taint^reset;",
   "shortdescription" : "Assassinii Hood",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,26 +16,40 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.15
+      "baseMultiplier" : 1.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 23
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 40
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 18
+      "amount" : 5
     }
+  ],
+
+  "statusEffects" : [
+    "assassinisetbonus",
+    {
+      "stat" : "fu_assassiniset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.10
+    }  
   ],
   
   "colorOptions" : [

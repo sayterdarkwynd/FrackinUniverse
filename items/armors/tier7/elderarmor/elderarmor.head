@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "An abhorrent helm that provides regeneration in darkness. ^cyan;Set Bonus: Immune to heat, cold, rads, most poisons. 65% Poison, 15% Electric Resist^reset;.",
+   "description" : "Set Bonus:
+^cyan;Immune: Shadow, Insanity, Pus, Acid^reset;
+^e43774;40% Shadow Resist, +25 Damage (Elder)^reset;
+^green;Summons minions, Darkness Regen^reset;", 
   "shortdescription" : "Elder Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,37 +15,43 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
   "effectSources" : [ "shadowsmoke2" ],
+
   "level" : 7,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.25
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 6
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 2
+    }
+  ],
+
   "statusEffects" : [
-    "darkregen",
     "eldersetbonus",
     {
       "stat" : "fu_elderset_head",
       "amount" : 1
-    }     
-  ],
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "elderfuArmorLevelPower",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1
     },
     {
-      "levelFunction" : "elderfuArmorLevelProtection",
-      "stat" : "protection",
-      "amount" : 0.325
-    },
-    {
-      "levelFunction" : "elderfuArmorLevelEnergy",
-      "stat" : "maxEnergy",
-      "amount" : 8
-    },
-    {
-      "levelFunction" : "elderfuArmorLevelHealth",
-      "stat" : "maxHealth",
-      "amount" : 3
+      "stat" : "shadowResistance",
+      "amount" : 0.08
     }
-  ], 
+  ],
+
   "questTags" : [ "elderarmor" ],
   "colorOptions" : [
     /* YELLOW DEFAULT */

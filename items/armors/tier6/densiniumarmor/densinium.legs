@@ -4,38 +4,53 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "^cyan;Set Bonus: Immunity - Heat, Cold, Pressure, Acid, Proto, Rad-Burn. +25% Jump, 15% Physical Resist^reset;.",
+   "description" : "Set Bonus:
+^cyan;+30% Physical Resist^reset;
+^#e43774;Immune: Heat, Radiation, Poison, Oxygen^reset;
+^green;+12 Crit, +25% Damage (Densinium weapons)^reset;",
   "shortdescription" : "Densinium Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 6,
-  "statusEffects" : [
+
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
-    },  
-      {
-        "stat" : "protection",
-        "amount" : 17
-      },    
-      {
-        "stat" : "maxEnergy",
-        "amount" : 18
-      },
+      "baseMultiplier" : 1.0
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 0
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 30
-    },      
-      "densiniumsetbonus",
+      "amount" : 8
+    }
+  ],
+
+  "statusEffects" : [
+    "densiniumsetbonus",
     {
       "stat" : "fu_densiniumset_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.1
     }
-  ],
-  "questTags" : [ "tier7armor" ],
+  ]
+  ,
   "colorOptions" : [
 
     /* BLACK */

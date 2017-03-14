@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Layered densinium will definitely keep you alive.",
+   "description" : "Set Bonus:
+^cyan;25% Physical Resist, Sandstorms, Thorns^reset;
+^e43774;Immunity:Liq. Nitrogen^reset;
+^green;+15% Damage, +20% Knockback (Fist)^reset;", 
   "shortdescription" : "Gladiator Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,26 +16,40 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.1
+      "baseMultiplier" : 1.2
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 24
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 18
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 40
+      "amount" : 5
     }
+  ],
+
+  "statusEffects" : [
+    "gladiatorsetbonus",
+    {
+      "stat" : "fu_gladiatorset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.08
+    }  
   ],
 
   "colorOptions" : [

@@ -4,7 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Grants immunity to poisons. 25% Poison Resist",
+   "description" : "Set Bonus:
+^cyan;+50% Electric Resist^reset;
+^e43774;Immune: Pressure, Insanity^reset;
+^green;+35% Shield Stamina, Block, Shield Regen^reset;", 
   "shortdescription" : "Ultra-Mesh Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -12,34 +15,40 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-"level" : 4,
-  "statusEffects" : [
+
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.3
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 16
+      "amount" : 0.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 70
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 16
-    },
+      "amount" : 5
+    }
+  ],
+
+  "statusEffects" : [
+    "ultrameshsetbonus",
     {
-      "stat" : "poisonStatusImmunity",
+      "stat" : "fu_ultrameshset_head",
       "amount" : 1
     },
     {
-      "stat" : "poisonResistance",
-      "amount" : 0.25
+      "stat" : "electricResistance",
+      "amount" : 0.20
     }
   ],
 

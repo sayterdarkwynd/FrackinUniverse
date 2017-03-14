@@ -5,7 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "^cyan;Set Bonus: 75% Ice Resistance, 50% Poison Resistance, 5% Physical Resistance, Immune: Acid, Proto, Heat, Extreme Heat^reset;",
+   "description" : "Set Bonus:
+^cyan;Immune: Cold, Ice Slip, Snow, Ice Status^reset;
+^e43774;50% Ice Resist^reset;
+^green;+15% Physical Resist (Isogen weapons)^reset;", 
   "shortdescription" : "Isogen Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -13,32 +16,40 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "level" : 5,
-  "statusEffects" : [
+
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.75
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 32
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 30
-    },
-    "isogenguardian",
+      "amount" : 3
+    }
+  ],
+
+  "statusEffects" : [
     "isogensetbonus",
     {
       "stat" : "fu_isogenset_head",
       "amount" : 1
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.08
     }
   ],
 

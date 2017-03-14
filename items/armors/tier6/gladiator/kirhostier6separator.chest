@@ -4,7 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Layered densinium will definitely keep you alive.",
+   "description" : "Set Bonus:
+^cyan;25% Physical Resist, Sandstorms, Thorns^reset;
+^e43774;Immunity:Liq. Nitrogen^reset;
+^green;+15% Damage, +20% Knockback (Fist)^reset;", 
   "shortdescription" : "Gladiator Hardsuit",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -21,26 +24,40 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 6,
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.67
+      "baseMultiplier" : 1.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 4
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 90
+      "amount" : 7
     }
+  ],
+
+  "statusEffects" : [
+    "gladiatorsetbonus",
+    {
+      "stat" : "fu_gladiatorset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.10
+    }      
   ],
 
   "colorOptions" : [
