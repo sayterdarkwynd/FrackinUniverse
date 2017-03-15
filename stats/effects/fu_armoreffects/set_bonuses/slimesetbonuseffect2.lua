@@ -19,7 +19,7 @@ armorBonus={
 setName="fu_slimeset2"
 
 function init()
-  self.timer = math.random(120)+40
+  self.timer = math.random(60)
 	setSEBonusInit(setName)
 	weaponBonusHandle=effect.addStatModifierGroup({})
 
@@ -40,13 +40,15 @@ self.timer = self.timer - dt
   -- randomly spawn a slime  
     
     if self.timer <= 0 then
+            self.slimevar = math.random(2)
+   	    if self.slimevar == 2 then
+   	      self.type = "ectoslime"
+   	    else
+   	      self.type = "ectomicroslime"
+	    end        
 	    local p = entity.position()
 	    local parameters = {}
-	    if math.random(2) == 1 then
-	      local type = "ectoslime"
-	    else
-	      local type = "ectomicroslime"
-	    end
+	    local type = self.type
 	    sb.logInfo("Spawning a slime from Slime armor. Type is %s",type)
 	    parameters.persistent = false
 	    parameters.damageTeamType = "friendly"
@@ -55,7 +57,7 @@ self.timer = self.timer - dt
 	    parameters.level = getLevel()
 	    sb.logInfo("Parameters for spawn are: %s",parameters)
 	    world.spawnMonster(type, mcontroller.position(), parameters)    
-      self.timer = math.random(220)+40
+            self.timer = math.random(120)
     end
     
 end

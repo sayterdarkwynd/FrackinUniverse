@@ -4,6 +4,57 @@
 
   "particles" : [
     {
+      "density" : 0.02,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/sulphuricrain/1.png",
+        "velocity" : [0, -35.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 20,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/sulphuricsplash/1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    },
+    {
+      "density" : 0.02,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/sulphuricrain/2.png",
+        "velocity" : [0, -25.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 20,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/sulphuricsplash/1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    },
+    {
+      "density" : 0.02,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/sulphuricrain/3.png",
+        "velocity" : [0, -20.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 20,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/sulphuricsplash/1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    },  
+    {
 
       "density" : 0.09,
       "autoRotate" : true,
@@ -111,13 +162,24 @@
       "spawnAboveRegion" : 20,
       "spawnHorizontalPad" : 120,
       "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "sulphuricrain",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -100],
+      "ratePerX" : 0.15,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 10,
+      "windAffectAmount" : 1
     }
   ],
 
-  "statusEffects" : ["sandstorm"],
+  "statusEffects" : ["sandstorm", "sulphuricweatherstorm3"],
 
   "duration" : [40, 120],
   "maximumWind" : 92.0,
-  "lightningFrequency" : 0.142,
+  "lightningFrequency" : 0.242,
   "weatherNoises" : [ "/sfx/weather/snowstorm.ogg" ]
 }

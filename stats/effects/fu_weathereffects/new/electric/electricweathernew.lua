@@ -23,9 +23,10 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning
+  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
   activateVisualEffects()
   
+  self.isOn = 0
   script.setUpdateDelta(5)
 end
 
@@ -115,7 +116,7 @@ end
 
 --**** Alert the player
 function activateVisualEffects()
-  effect.setParentDirectives("fade=ff7600=0.7")
+  effect.setParentDirectives("fade=0099cc=0.3")
   --animator.setParticleEmitterOffsetRegion("firebreath", mcontroller.boundBox())
   --animator.setParticleEmitterActive("firebreath", true) 
 end
@@ -156,8 +157,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   local lightLevel = getLight() 
   
   if not underground then  
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheatcavern", 1.0) -- send player a warning
-    self.timerRadioMessage = 60
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 60.0) -- send player a warning
+    self.timerRadioMessage = 120
     setSituationPenalty()
   end  
 
@@ -167,22 +168,35 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       if self.biomeTimer <= 0 and status.stat("electricResistance",0) < 1.0 then
 	  makeAlert()
           self.biomeTimer = setEffectTime()
-          self.timerRadioMessage = self.timerRadioMessage - dt  	  
-      end 
+          self.timerRadioMessage = self.timerRadioMessage - dt 
 
-      if status.stat("electricResistance",0) <=0.99 then      
-	     status.modifyResource("health", -self.damageApply * dt)
-	   if status.isResource("energy") then
-	     if status.resource("energy") >= 10 then
-	       status.modifyResource("energy", -self.debuffApply * dt )
-	     end
-           end  
-           
-             mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("electricResistance",0)+0.3, 
-	         speedModifier = status.stat("electricResistance",0)+0.3 
-             })              
-      end  
+        -- are they in liquid?
+        local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
+        local mouthful = world.liquidAt(mouthposition)        
+        if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
+		setLiquidPenalty()
+		if (self.timerRadioMessage <= 0) then
+		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricwater", 1.0) -- send player a warning
+		  self.timerRadioMessage = 120
+		end
+	    inWater = 1
+	else
+	  isDry()
+        end 
+      end 
+	  self.damageApply = setEffectDamage()   
+	  self.debuffApply = setEffectDebuff()
+	  self.debuffApply = self.debuffApply / 120
+      
+      if self.isOn == 0 then
+	  effect.addStatModifierGroup({
+	    {stat = "maxEnergy", baseMultiplier = 0.5},
+	    {stat = "energyRegenPercentageRate", amount = status.stat("energyRegenPercentageRate") -self.debuffApply },
+	    {stat = "energyRegenBlockTime", amount = status.stat("energyRegenBlockTime") + self.debuffApply }
+	  }) 
+	  self.isOn = 1
+      end
+
       self.biomeTimer = self.biomeTimer - dt
       
 end       
