@@ -1,5 +1,5 @@
 setName="fu_infernusset"
-setStatEffects={"infernussetbonuseffect"}
+setStatEffects={"infernussetbonuseffect", "fireburst"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
