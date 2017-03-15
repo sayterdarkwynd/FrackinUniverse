@@ -67,6 +67,19 @@ function fuWeatherLib.message(message)
 end
 
 function fuWeatherLib.getEffectDamage(resistType,rMax,rMin)
+	local temp=fuWeatherLib.getEffectscale(resistType,rMax,rMin)
+	temp=temp*self.baseDmg
+	return temp
+end
+
+function fuWeatherLib.getEffectDebuff(resistType,rMax,rMin)
+	local temp=fuWeatherLib.getEffectscale(resistType,rMax,rMin)
+	--return self.biomeTemp
+	temp=temp*self.baseDebuff
+	return temp
+end
+
+function fuWeatherLib.getEffectscale(resistType,rMax,rMin)
 	local temp=status.stat(resistType,0)
 	
 	if rMin and rMax then
@@ -89,17 +102,12 @@ function fuWeatherLib.getEffectDamage(resistType,rMax,rMin)
 	elseif world.timeOfDay() < 0.5 and self.biomeDayPenalty then
 		temp=temp*self.biomeDayPenalty
 	end
-	
-	
 	return temp
 end
 
-function fuWeatherLib.getEffectDebuff(resistType)
-	return (self.baseDebuff+(not (world.timeOfDay() < 0.5) and self.biomeNight or 0)) * self.biomeTemp * (1 -math.min(status.stat(resistType,0),1.0)) * self.biomeThreshold
-end
 
 function fuWeatherLib.getEffectTime(resistType)
-	return self.baseRate * (1 - math.min(status.stat(resistType,0),1.0))
+	return self.baseRate * math.max((1 + math.min(status.stat(resistType,0)),0.01)
 end
 
 -- ********************************

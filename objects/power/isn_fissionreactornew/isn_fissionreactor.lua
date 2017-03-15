@@ -5,7 +5,7 @@ function init()
 	transferUtil.init()
 	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
-        storage.critChance = 50
+	storage.critChance = 50
 	
 	object.setInteractive(true)
 	
@@ -164,6 +164,10 @@ function isn_slotDecayCheck(slot, chance)
 	
 	if slotContent.name == "solariumstar" or slotContent.name == "thoriumrod" or slotContent.name == "enricheduranium" or slotContent.name == "enrichedplutonium" or slotContent.name == "ultronium" then
 		if math.random(1,100) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
+	end	
+	
+	if slotContent.name == "deuterium" or slotContent.name == "tritium" then
+		if math.random(1,120) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end	
 	
 	return false

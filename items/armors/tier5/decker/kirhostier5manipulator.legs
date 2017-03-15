@@ -8,18 +8,24 @@
 ^cyan;+25% Damage (Shotgun, Grenade Launcher)^reset;
 ^e43774;Immunity: Liq. Nitrogen, Pus, Poison^reset;",
   "shortdescription" : "Decker's Greaves",
-  "category" : "legarmour",
+  "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
+  "learnBlueprintsOnPickup" : [
+  "mantizitier6mpants",
+  "mantizitier6mhead",
+  "mantizitier6mchest"
+  ],
+  
   "level" : 5,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.0
+      "baseMultiplier" : 1.05
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
@@ -29,12 +35,12 @@
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 0
+      "amount" : 1
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
+      "amount" : 7
     }
   ],
 
