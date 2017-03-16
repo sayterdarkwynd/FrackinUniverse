@@ -2,7 +2,7 @@ require("/scripts/vec2.lua")
 function init()
 
 if status.stat("fireResistance",0) >= 0.3 then
-return
+effect.expire()
 end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
