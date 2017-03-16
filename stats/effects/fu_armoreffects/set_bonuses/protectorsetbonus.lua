@@ -1,5 +1,5 @@
 setName="fu_protectorset"
-setStatEffects={"protectorsetbonuseffect", "damagesoak"}
+setStatEffects={"protectorsetbonuseffect"}
 
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

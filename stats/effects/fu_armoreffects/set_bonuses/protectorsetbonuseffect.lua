@@ -1,42 +1,49 @@
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_protectorset"
 
-weaponBonuss1={
+weaponBonus={
 	{stat = "critChance", baseMultiplier = 1.25}
 }
 
 armorBonus={}
 
+armorEffect={}
+
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 function init()
 	setSEBonusInit(setName)
+        armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	weaponBonusHandle=effect.addStatModifierGroup({})
 	armorBonusHandle=effect.addStatModifierGroup({})
-	weaponBonusHandlePrimary=effect.addStatModifierGroup({})
-	weaponBonusHandleAlt=effect.addStatModifierGroup({})
-        update(0)
+	checkWeapons()
+        checkArmor()
 end
 
 function update(dt)
-	level=checkSetLevel(self.setBonusCheck)
-	if level==0 then
-		effect.expire()
-	else
-		checkArmor()
+if not checkSetWorn(self.setBonusCheck) then
+	effect.expire()
+	status.removeEphemeralEffect( "damageheal" )
+else
+	status.addEphemeralEffect( "damageheal" )
+	checkWeapons()
+	checkArmor()
+end
 
-		checkWeapons()
-	end
 end
 
 function checkArmor()
-	effect.setStatModifierGroup( armorBonusHandle,setBonusMultiply(armorBonus,level))
+	if (world.type() == "garden") or (world.type() == "forest") then
+	  effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+	else
+	  effect.setStatModifierGroup(armorBonusHandle,{})
+	end
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"shortsword","broadsword","dagger"})
-	
+	local weapons=weaponCheck({"shortsword","broadsword","dagger","knife"})
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,setBonusMultiply(weaponBonus,level))
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,{})
+		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end
 end
