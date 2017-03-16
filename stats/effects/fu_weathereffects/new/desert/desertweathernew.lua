@@ -162,7 +162,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   
   self.gracePeriod = 220 -- how long before it affects them?
   
-  if self.gracePeriod = 0 then
+  if self.gracePeriod == 0 then
 	if daytime then  
 		-- are they in liquid?
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
