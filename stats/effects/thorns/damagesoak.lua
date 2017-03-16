@@ -1,7 +1,7 @@
 function init()
   self.minRange = config.getParameter("minRange") or 0.5
 
-  self.visualProjectileType = "armornova"
+  self.visualProjectileType = "shieldburst"
   self.visualProjectileCount = 8
   self.visualProjectileSpeed = 6.66
   self.visualProjectileTime = 0.666
