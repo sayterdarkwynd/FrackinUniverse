@@ -23,7 +23,7 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomegenericpoison", 1.0) -- send player a warning
+  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
   activateVisualEffects() 
   script.setUpdateDelta(5)
 end
