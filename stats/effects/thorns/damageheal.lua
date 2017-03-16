@@ -7,9 +7,8 @@ function init()
   self.visualProjectileTime = config.getParameter("visualProjectileTime")
   self.visualDuration = config.getParameter("visualDuration") or 0.2
 
-  self.damageProjectileType = config.getParameter("damageProjectileType") or "armorthornburst"
+  self.damageProjectileType = config.getParameter("damageProjectileType")
   self.damageMultiplier = config.getParameter("damageMultiplier") or 0.01
-  self.border = config.getParameter("border")
 
   self.cooldown = config.getParameter("cooldown") or 5
 
@@ -19,10 +18,6 @@ function init()
 
   resetThorns()
   self.cooldownTimer = 0
-
-  if self.border then
-    effect.setParentDirectives("border="..self.border)
-  end
 
   self.queryDamageSince = 0
 end
@@ -36,7 +31,8 @@ function resetThorns()
 end
 
 function update(dt)
-  if self.cooldownTimer <= 0 then
+self.random = math.random(100)
+  if self.cooldownTimer <= 0 and self.random <=16 then
     local damageNotifications, nextStep = status.damageTakenSince(self.queryDamageSince)
     self.queryDamageSince = nextStep
     for _, notification in ipairs(damageNotifications) do
@@ -114,7 +110,7 @@ function triggerThorns(damage)
   end
 
   local damageConfig = {
-    power = damage,
+    power = 0,
     speed = 0,
     physics = "default"
   }
@@ -122,4 +118,5 @@ function triggerThorns(damage)
   self.healValue = status.resource("health") * 1.05
   status.setResource( "health", self.healValue )
   world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
+  animator.playSound("heal")
 end
