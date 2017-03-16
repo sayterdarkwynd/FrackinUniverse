@@ -1,19 +1,21 @@
 function init()
   self.minRange = config.getParameter("minRange") or 0.5
 
-  self.visualProjectileType = "shieldburst"
-  self.visualProjectileCount = 8
-  self.visualProjectileSpeed = 6.66
-  self.visualProjectileTime = 0.666
-  self.visualDuration = 0.666
+  self.visualProjectileType = config.getParameter("visualProjectileType")
+  self.visualProjectileCount = config.getParameter("visualProjectileCount") or 20
+  self.visualProjectileSpeed = config.getParameter("visualProjectileSpeed") or 20
+  self.visualProjectileTime = config.getParameter("visualProjectileTime")
+  self.visualDuration = config.getParameter("visualDuration") or 0.2
 
-  self.damageProjectileType = "novadamage"
-  self.damageMultiplier = 1.05
+  self.damageProjectileType = config.getParameter("damageProjectileType") or "armorthornburst"
+  self.damageMultiplier = config.getParameter("damageMultiplier") or 0.01
+  self.border = config.getParameter("border")
 
-  self.cooldown = 10
-  self.cooldownTimer = 10
+  self.cooldown = config.getParameter("cooldown") or 5
 
-  self.minTriggerDamage = 1
+  self.removeInWater = config.getParameter("removeInWater")
+
+  self.minTriggerDamage = config.getParameter("minTriggerDamage") or 0
 
   resetThorns()
   self.cooldownTimer = 0
@@ -21,6 +23,8 @@ function init()
   if self.border then
     effect.setParentDirectives("border="..self.border)
   end
+
+  self.queryDamageSince = 0
 end
 
 function resetThorns()
@@ -29,11 +33,26 @@ function resetThorns()
   self.thornsTimer = 0
   self.spawnedThorns = 0
   self.thornDamage = 0
-
-  effect.setParentDirectives("")
 end
 
 function update(dt)
+  if self.cooldownTimer <= 0 then
+    local damageNotifications, nextStep = status.damageTakenSince(self.queryDamageSince)
+    self.queryDamageSince = nextStep
+    for _, notification in ipairs(damageNotifications) do
+      if notification.healthLost > self.minTriggerDamage and notification.sourceEntityId ~= notification.targetEntityId then
+        triggerThorns(notification.healthLost * self.damageMultiplier)
+        self.cooldownTimer = self.cooldown
+        break
+      end
+    end
+  end
+
+  if self.removeInWater then
+    if effect.duration() and world.liquidAt({mcontroller.xPosition(), mcontroller.yPosition() - 1}) then
+      effect.expire()
+    end
+  end
 
   if self.cooldownTimer > 0 then
     self.cooldownTimer = self.cooldownTimer - dt
@@ -43,15 +62,10 @@ function update(dt)
     self.thornsTimer = self.thornsTimer - dt
 
     local fadeOpacity = ((self.visualProjectileCount - self.spawnedThorns) / self.visualProjectileCount) * 0.8
-
-    if self.fadeColor then
-      effect.setParentDirectives("fade="..self.fadeColor.."="..fadeOpacity)
-    end
-
     if self.thornsTimer <= 0 then
       local thornCount
       local visualInterval = self.visualDuration / self.visualProjectileCount
-      
+
       if not self.visualDuration or self.visualDuration <= 0 then
         thornCount = self.visualProjectileCount
       else
@@ -81,7 +95,7 @@ function spawnVisualThorns(count)
 
     local position = mcontroller.position()
     local visualConfig = {
-      power = 0, 
+      power = 0,
       timeToLive = self.visualProjectileTime,
       speed = self.visualProjectileSpeed,
       physics = "default"
@@ -104,13 +118,8 @@ function triggerThorns(damage)
     speed = 0,
     physics = "default"
   }
+  
+  self.healValue = status.resource("health") * 1.05
+  status.setResource( "health", self.healValue )
   world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
-  status.setResource( status.resource("health"), (status.resource("health") * 1.05) )   
-end
-
-function selfDamage(notification)
-  if self.cooldownTimer <= 0 and notification.damage > self.minTriggerDamage and notification.sourceEntityId ~= notification.targetEntityId then
-    triggerHeal(notification.damage * self.damageMultiplier)
-    self.cooldownTimer = self.cooldown
-  end
 end
