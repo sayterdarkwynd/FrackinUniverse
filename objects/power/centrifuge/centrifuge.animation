@@ -16,13 +16,15 @@
             }
           }
         }
-      }
+      }  
     },
 
     "parts" : {
       "centrifuge" : {
         "properties" : {
-          "centered" : false
+          "centered" : false,
+          "zLevel" : 1,
+          "fullbright" : true
         },
 
         "partStates" : {
@@ -40,7 +42,31 @@
             }
           }
         }
-      }
+      },
+      "centrifugefullbright" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2
+        },
+
+        "partStates" : {
+          "centrifuge" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.1"
+              }
+            },
+
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }      
+      
+      
     }
   }
 }
