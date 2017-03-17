@@ -9,7 +9,8 @@ armorEffect={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.35},
         {stat = "shieldRegen", baseMultiplier = 1.35},
         {stat = "shieldHealth", baseMultiplier = 1.35},
-        {stat = "perfectBlockLimitRegen", baseMultiplier = 1.35}
+        {stat = "perfectBlockLimitRegen", baseMultiplier = 1.35},
+        {stat = "aetherImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

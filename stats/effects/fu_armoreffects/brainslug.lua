@@ -1,10 +1,13 @@
 function init()
   animator.setParticleEmitterOffsetRegion("slug", mcontroller.boundBox())
   animator.setParticleEmitterActive("slug", true)
-  effect.addStatModifierGroup({{stat = "foodDelta", amount = 0.005}})
-  effect.addStatModifierGroup({{stat = "fallDamageMultiplier", amount = 0.75}})
-  effect.addStatModifierGroup({{stat = "energyRegenBlockTime", amount = 1.35}})
-  effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", amount = 0.08}})  
+  effect.addStatModifierGroup({
+    {stat = "energyRegenPercentageRate", baseMultiplier = 0.50},
+    {stat = "energyRegenBlockTime", baseMultiplier = 1.35},
+    {stat = "fallDamageMultiplier", amount = 0.85},
+    {stat = "foodDelta", baseMultiplier = 1.25},
+    {stat = "aetherImmunity", amount = 1}
+  })  
 end
 
 function update(dt)

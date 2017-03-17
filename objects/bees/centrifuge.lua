@@ -37,18 +37,6 @@ function deciding(item)
   for i=#self.recipeTypes,1,-1 do
     if self.recipeTable[self.recipeTypes[i]][item.name] then
       return self.recipeTable[self.recipeTypes[i]][item.name]
-    -- if self.centrifugeType == "farm" then
-    --   if item == nil then return self.itemMapFarm end
-    --   return self.itemMapFarm[item.name] -- may be nil
-    -- elseif self.centrifugeType == "bees" then
-    --   if item == nil then return self.itemMapBees end
-    --   return self.itemMapBees[item.name] or self.itemMapFarm[item.name] -- may be nil
-    -- elseif self.centrifugeType == "liquid" then
-    --   if item == nil then return self.itemMapLiquids end
-    --   return self.itemMapLiquids[item.name] or self.itemMapBees[item.name] or self.itemMapFarm[item.name] -- may be nil
-    -- elseif self.centrifugeType == "isotope" then
-    --   if item == nil then return self.itemMapIsotopes end
-    --   return self.itemMapIsotopes[item.name] or self.itemMapLiquids[item.name] or self.itemMapBees[item.name] or self.itemMapFarm[item.name] -- may be nil
     end
   end
   return nil
