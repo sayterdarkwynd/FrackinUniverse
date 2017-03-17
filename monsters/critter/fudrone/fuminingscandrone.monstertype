@@ -1,7 +1,7 @@
 {
-  "type" : "fuminingscannerdrone",
-  "shortdescription" : "Micro Drone",
-  "description" : "Absolutely harmless, unless you don't want that video on the Ansible...",
+  "type" : "fuorescannerdrone",
+  "shortdescription" : "Ore Scanner Drone",
+  "description" : "Ping, ping, ping. Ooh! SOLARIUM!",
   "categories" : [ "fudrone" ],
   "parts" : [ "body" ],
 
@@ -18,7 +18,9 @@
     "scripts" : [
       "/monsters/monster.lua"
     ],
-
+    "animationScripts" : [
+      "/monsters/critter/fudrone/orescan.lua"
+    ],
     "behavior" : "flyingcritter",
 
     "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
@@ -49,9 +51,9 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
+      "appliesWeatherStatusEffects" : false,
       "appliesEnvironmentStatusEffects" : false,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
+      "minimumLiquidStatusEffectPercentage" : 9.0,
 
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
