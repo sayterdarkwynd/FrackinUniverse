@@ -2,13 +2,21 @@
 
   "frameGrid" : {
     "size" : [320, 40],
-    "dimensions" : [7, 1],
+    "dimensions" : [6, 1],
     "names" : [
-      [ "closed", "opening0", "opening1", "opening2", "opening3", "opening4", "open"] 
+      [ "closed", "halfLeft", "left", null, "halfRight", "right" ]
     ]
   },
 
   "aliases" : {
-    "default" : "closed"
+    "default" : "closed",
+    "closeLeft.1" : "halfLeft",
+    "closeLeft.2" : "closed",
+    "closeRight.1" : "halfRight",
+    "closeRight.2" : "closed",
+    "openLeft.1" : "halfLeft",
+    "openLeft.2" : "left",
+    "openRight.1" : "halfRight",
+    "openRight.2" : "right"
   }
 }

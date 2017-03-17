@@ -17,6 +17,7 @@ function init()
 end
 
 function update(dt)
+	
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else

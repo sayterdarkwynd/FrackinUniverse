@@ -10,7 +10,8 @@ armorBonus={
 		{stat = "fireStatusImmunity", amount = 1.0},
 		{stat = "gasImmunity", amount = 1.0},
 		{stat = "iceslipImmunity", amount = 1.0},
-		{stat = "maxBreath", amount = 1400}
+		{stat = "maxBreath", amount = 1400},
+		{stat = "asteroidImmunity", amount = 1}
 }
 
 setName="fu_spacefarerset"
@@ -22,8 +23,6 @@ function init()
 	--sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
 	unifiedGravMod.init()
 	setSEBonusInit("fu_spacefarerset")
-	animator.setParticleEmitterOffsetRegion("sparkles", mcontroller.boundBox())
-	animator.setParticleEmitterActive("sparkles", true)
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
 	
 	setSEBonusInit(setName)

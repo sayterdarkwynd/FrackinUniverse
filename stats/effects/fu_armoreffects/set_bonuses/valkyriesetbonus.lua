@@ -1,5 +1,5 @@
 setName="fu_valkyrieset"
-setStatEffects={"valkyriesetbonuseffect"}
+setStatEffects={"valkyriesetbonuseffect", "fuslowfall"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

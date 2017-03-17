@@ -3,15 +3,17 @@
 "op" : "add",
 "path" : "/aether",
 "value" : [     
-   [0.20, "clear"],
-   [0.10, "sulphurstormsevere"],
+   [0.05, "clear"],
+   [0.05, "sulphurstormsevere"],
     [0.10, "gravrain"],
-    [0.15, "insanitystorm"],
+    [0.10, "orangegravrain"],
     [0.10, "gravrainlight"], 
+    [0.10, "orangegravrainlight"],
+    [0.10, "insanitystorm"],
     [0.10, "freezestorm"],
     [0.10, "fulightningstorm"],
     [0.10, "crystalstorm"],
-    [0.15, "crystalstormmajor"]
+    [0.10, "crystalstormmajor"]
    ]
 },
 {
@@ -45,16 +47,36 @@
    ]
 },
 
+{
+"op" : "add",
+"path" : "/fungal",
+"value" : [     
+   [0.1, "clear"],
+   [0.02, "fulightningstorm"],
+   [0.20, "windstorm"],
+   [0.30, "groundmist"],
+   [0.10, "glowingrain"],
+   [0.08, "poisongasstorm"],
+   [0.001, "poisongasstorm2"],
+   [0.005, "poisongasstorm3"],
+   [0.2, "heavyrain"]
+   ]
+},
 
 {
 "op" : "add",
 "path" : "/atropus",
 "value" : [     
-    [0.4, "clear"],
-    [0.3, "biorain"],
-    [0.4, "bloodrain"],
-    [0.08, "gravrain"],
-    [0.1, "gravrainlight"],
+    [0.05, "clear"],
+    [0.2, "biorain"],
+    [0.3, "bloodrain"],
+    [0.05, "gravrain"],
+    [0.1, "poisongasstorm"],
+    [0.05, "poisongasstorm2"],
+    [0.03, "poisongasstorm3"],    
+    [0.1, "orangegravrain"],
+    [0.05, "gravrainlight"], 
+    [0.1, "orangegravrainlight"],
     [0.005, "meteorshower"]
     ]
 },
@@ -151,10 +173,13 @@
 "path" : "/irradiated",
 "value" : [     
     [0.5, "clear"],
-    [0.25, "gravrainlight"],
+    [0.05, "gravrain"],
+    [0.05, "orangegravrain"],
+    [0.05, "gravrainlight"], 
+    [0.05, "orangegravrainlight"],
     [0.10, "bograin"],
     [0.15, "fog"],
-    [0.25, "acidrain"],
+    [0.15, "acidrain"],
     [0.001, "meteorshower"],
     [0.001, "largemeteor"]
     ]
@@ -166,7 +191,10 @@
 "value" : [     
    [0.4, "clear"],
    [0.20, "ironstorm"],
-   [0.15, "gravrain"],
+    [0.04, "gravrain"],
+    [0.04, "orangegravrain"],
+    [0.04, "gravrainlight"], 
+    [0.04, "orangegravrainlight"],
    [0.10, "fulightningstorm"],
    [0.15, "firestorm"],
    [0.25, "gravrainlight"],
@@ -192,14 +220,15 @@
 "op" : "add",
 "path" : "/penumbra",
 "value" : [     
-    [0.4, "clear"],
+    [0.02, "clear"],
     [0.08, "insanitystorm"],
-    [0.5, "groundmist"],
-    [0.5, "fog"],
-    [0.25, "fog2"],
-    [0.1, "gravrainlight"],
-    [0.351, "mistyrain"],
-    [0.255, "acidrain"]
+    [0.2, "groundmist"],
+    [0.2, "fog"],
+    [0.2, "fog2"],
+    [0.05, "gravrainlight"], 
+    [0.05, "orangegravrainlight"],
+    [0.1, "mistyrain"],
+    [0.1, "acidrain"]
     ]
 },
   
@@ -213,7 +242,8 @@
     [0.05, "slimestorm"],
     [0.10, "fulightningstorm"],
     [0.2, "slimestormlesser"],
-    [0.07, "gravrainlight"],
+    [0.05, "gravrainlight"], 
+    [0.05, "orangegravrainlight"],
     [0.20, "acidrain"]
     ]
 },
@@ -227,8 +257,9 @@
     [0.25, "rain"],
     [0.25, "drizzle"],
     [0.20, "heavyrain"],
-    [0.05, "tarrain" ],
-    [0.05, "hurricane"],
+    [0.1, "poisongasstorm"],
+    [0.05, "poisongasstorm2"],
+    [0.007, "poisongasstorm3"], 
     [0.10, "acidrain"],
     [0.20, "mistyrain"],
     [0.15, "fog"],
@@ -257,14 +288,17 @@
 "op" : "add",
 "path" : "/tidewater",
 "value" : [     
-    [0.4, "fog"],
-    [0.15, "fog2"],
-    [0.1, "insanitystorm"],
-    [0.4, "drizzle"],
+    [0.2, "fog"],
+    [0.1, "fog2"],
+    [0.05, "insanitystorm"],
+    [0.1, "drizzle"],
     [0.3, "rain"],
-    [0.2, "mistyrain"],
-    [0.2, "hurricane"],
-    [0.2, "windstorm"]
+    [0.1, "poisongasstorm"],
+    [0.05, "poisongasstorm2"],
+    [0.007, "poisongasstorm3"],    
+    [0.05, "mistyrain"],
+    [0.05, "hurricane"],
+    [0.05, "windstorm"]
     ]
 },
 
@@ -287,14 +321,19 @@
 "op" : "add",
 "path" : "/wasteland",
 "value" : [     
-    [0.5, "clear"],
-    [0.04, "gravrain"],
-    [0.03, "insanitystorm"],
-    [0.1, "gravrainlight"],
-    [0.4, "ashstorm"],
+    [0.02, "clear"],
+    [0.02, "gravrain"],
+    [0.02, "orangegravrain"],
+    [0.02, "gravrainlight"], 
+    [0.02, "orangegravrainlight"],
+    [0.1, "insanitystorm"],
+    [0.1, "poisongasstorm"],
+    [0.05, "poisongasstorm2"],
+    [0.007, "poisongasstorm3"],    
+    [0.3, "ashstorm"],
     [0.1, "tarrain" ],    
-    [0.6, "ash"],
-    [0.05, "windstorm"]
+    [0.2, "ash"],
+    [0.2, "windstorm"]
     ]
 },
 
@@ -302,14 +341,19 @@
 "op" : "add",
 "path" : "/urbanwasteland",
 "value" : [     
-    [0.5, "clear"],
-    [0.04, "gravrain"],
-    [0.03, "insanitystorm"],
-    [0.1, "gravrainlight"],
-    [0.4, "ashstorm"],
+    [0.02, "clear"],
+    [0.02, "gravrain"],
+    [0.02, "orangegravrain"],
+    [0.02, "gravrainlight"], 
+    [0.02, "orangegravrainlight"],
+    [0.1, "insanitystorm"],
+    [0.1, "poisongasstorm"],
+    [0.05, "poisongasstorm2"],
+    [0.007, "poisongasstorm3"],    
+    [0.3, "ashstorm"],
     [0.1, "tarrain" ],    
-    [0.6, "ash"],
-    [0.05, "windstorm"]
+    [0.2, "ash"],
+    [0.2, "windstorm"]
     ]
 },
 
@@ -317,13 +361,20 @@
 "op" : "add",
 "path" : "/chromatic",
 "value" : [     
-    [0.04, "gravrain"],
-    [0.05, "insanitystorm"],
-    [0.2, "lightningstorm"],
-    [0.5, "clear"],
-    [0.5, "fog"],
-    [0.5, "rain"],
-    [0.5, "acidrain"]
+    [0.01, "clear"],
+    [0.02, "gravrain"],
+    [0.02, "orangegravrain"],
+    [0.02, "gravrainlight"], 
+    [0.02, "orangegravrainlight"],
+    [0.01, "insanitystorm"],
+    [0.1, "lightningstorm"],
+    [0.1, "poisongasstorm"],
+    [0.05, "poisongasstorm2"],
+    [0.007, "poisongasstorm3"],    
+    [0.1, "clear"],
+    [0.4, "fog"],
+    [0.1, "rain"],
+    [0.2, "acidrain"]
     ]
 },
 
@@ -331,13 +382,15 @@
 "op" : "add",
 "path" : "/lightless",
 "value" : [     
-    [0.04, "gravrain"],
+    [0.05, "gravrain"],
+    [0.05, "orangegravrain"],
+    [0.05, "gravrainlight"], 
+    [0.05, "orangegravrainlight"],
     [0.2, "insanitystorm"],
-    [0.1, "gravrainlight"],
-    [0.5, "clear"],
-    [0.5, "fog"],
-    [0.5, "rain"],
-    [0.5, "acidrain"]
+    [0.1, "clear"],
+    [0.4, "fog"],
+    [0.05, "rain"],
+    [0.05, "acidrain"]
     ]
 },
 
