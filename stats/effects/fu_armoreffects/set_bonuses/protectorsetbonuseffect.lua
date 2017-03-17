@@ -1,9 +1,10 @@
 setName="fu_protectorset"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "critChance", baseMultiplier = 1.25}
 }
 
+armorBonus={}
 
 armorEffect={}
 
@@ -11,22 +12,35 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
+        armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	weaponBonusHandle=effect.addStatModifierGroup({})
+	armorBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+        checkArmor()
 end
 
 function update(dt)
-	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire()
+if not checkSetWorn(self.setBonusCheck) then
+	effect.expire()
+	status.removeEphemeralEffect( "damageheal" )
+else
+	status.addEphemeralEffect( "damageheal" )
+	checkWeapons()
+	checkArmor()
+end
+
+end
+
+function checkArmor()
+	if (world.type() == "garden") or (world.type() == "forest") then
+	  effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 	else
-		checkWeapons()
+	  effect.setStatModifierGroup(armorBonusHandle,{})
 	end
 end
 
-
 function checkWeapons()
-	local weapons=weaponCheck({"shortsword","broadsword","dagger"})
+	local weapons=weaponCheck({"shortsword","broadsword","dagger","knife"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

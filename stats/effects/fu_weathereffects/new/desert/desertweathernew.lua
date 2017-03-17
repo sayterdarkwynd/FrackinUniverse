@@ -26,9 +26,11 @@ end
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
+  if (status.stat("fireResistance") <= 0.25) then
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
-  activateVisualEffects()
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
+    activateVisualEffects()
+  end
   
   self.gracePeriod = 220
   script.setUpdateDelta(5)
@@ -162,7 +164,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   
   self.gracePeriod = 220 -- how long before it affects them?
   
-  if self.gracePeriod = 0 then
+  if self.gracePeriod == 0 and (status.stat("fireResistance") <= 0.25) then
 	if daytime then  
 		-- are they in liquid?
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))

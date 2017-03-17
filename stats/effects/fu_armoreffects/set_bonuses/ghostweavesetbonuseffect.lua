@@ -22,10 +22,11 @@ end
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
+		status.removeEphemeralEffect( "damagedefense" )
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 		checkWeapons()
+		status.addEphemeralEffect( "damagedefense" )
 	end
 end
 
