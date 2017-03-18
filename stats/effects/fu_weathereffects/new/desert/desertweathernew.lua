@@ -161,9 +161,9 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight() 
-  self.gracePeriod = self.gracePeriod - dt
-  if (self.gracePeriod == 0) and (status.stat("fireResistance") <= 0.25) then
-	if daytime then  
+  
+  if (status.stat("fireResistance") <= 0.25) and (self.gracePeriod <=0) then
+	if daytime then
 		-- are they in liquid?
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
 		local mouthful = world.liquidAt(mouthposition)        
@@ -198,12 +198,16 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		   end
 	      end  
 	      self.biomeTimer = self.biomeTimer - dt
-	else	
+	else
+	        self.gracePeriod = 60
 		if (self.timerRadioMessage <= 0) then
 		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
 		  self.timerRadioMessage = 120
 		end  
 	end
+  else
+	    self.gracePeriod = self.gracePeriod - dt  
+            sb.logInfo("grace period: "..self.gracePeriod)	
   end
       
 end       

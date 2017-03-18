@@ -160,7 +160,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
-  if self.gracePeriod == 0 then
+  if (self.gracePeriod <=0) then
 	if daytime then  
 		-- are they in liquid?
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
