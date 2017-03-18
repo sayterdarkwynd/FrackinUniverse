@@ -2,6 +2,10 @@ require("/scripts/vec2.lua")
 require("/scripts/util.lua")
 function init()
 
+if (status.stat("cosmicResistance",0)  >= 1.0) or status.statPositive("biomeheatImmunity") then
+  effect.expire()
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -163,7 +167,6 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   --apply damage totals
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
-   sb.logInfo(" baseRate: "..self.baseRate)
       
       if (self.biomeTimer <= 0) and (status.stat("maxEnergy",0) > 0) then
             effect.addStatModifierGroup({

@@ -22,7 +22,32 @@
     "parts" : {
       "centrifuge" : {
         "properties" : {
-          "centered" : false
+          "centered" : false,
+          "fullbright" : true,
+          "zLevel" : 0
+        },
+
+        "partStates" : {
+          "centrifuge" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.1"
+              }
+            },
+
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      },
+      
+      "centrifugefullbright" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2
         },
 
         "partStates" : {
@@ -41,6 +66,8 @@
           }
         }
       }
+      
+      
     }
   }
 }
