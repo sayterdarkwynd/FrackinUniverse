@@ -162,7 +162,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
   
-  self.gracePeriod = 220 -- how long before it affects them?
+  self.gracePeriod = 60 -- how long before it affects them?
   
   if self.gracePeriod == 0 and (status.stat("fireResistance") <= 0.25) then
 	if daytime then  
