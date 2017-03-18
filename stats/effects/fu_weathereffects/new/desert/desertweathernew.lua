@@ -164,18 +164,20 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight() 
-  
-  if (status.stat("fireResistance") <= 0.25) and (self.gracePeriod <=0) then
-  
+
 	  if underground then
 		  self.biomeTemp = self.biomeTemp / 4
 		  self.gracePeriod = 60
-			  if not self.usedUnderground then
+			  if not self.usedCavernous then
 			    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertunderground", 1.0) -- send player a warning
 			    self.timerRadioMessage = 10  
-			    self.usedUnderground = 1
+			    self.usedCavernous = 1
 			  end  
 	  end
+	  
+  if (status.stat("fireResistance") <= 0.25) and (self.gracePeriod <=0) then
+  
+
   
         if daytime and lightLevel >= 75 then
           self.situationPenalty = self.situationPenalty + 0.5
