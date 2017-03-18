@@ -1,7 +1,9 @@
 require("/scripts/vec2.lua")
 
 function init()
-
+if (status.stat("cosmicResistance",0)  >= 1.0) or status.statPositive("insanityImmunity") then
+  effect.expire()
+end
   -- Environment Configuration --
   --base values
   self.baseRate = config.getParameter("baseRate",0)                

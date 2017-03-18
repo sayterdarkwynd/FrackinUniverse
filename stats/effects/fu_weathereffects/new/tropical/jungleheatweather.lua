@@ -1,14 +1,12 @@
 require("/scripts/vec2.lua")
 function init()
 
-if (status.stat("fireResistance",0)  >= 0.25) or  (status.stat("physicalResistance",0) >= 0.2) then
+if (status.stat("fireResistance",0)  >= 0.25) or  (status.stat("physicalResistance",0) >= 0.2) or status.statPositive("biomeheatImmunity") then
   effect.expire()
 end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
-if status.statPositive("biomeheatImmunity") then
-  effect.expire() return
-end
+
     
   -- Environment Configuration --
   --base values

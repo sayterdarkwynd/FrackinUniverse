@@ -1,6 +1,10 @@
 require("/scripts/vec2.lua")
 
 function init()
+if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") then
+  effect.expire()
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
   
   -- Environment Configuration --

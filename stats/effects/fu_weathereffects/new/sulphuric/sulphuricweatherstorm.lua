@@ -1,6 +1,10 @@
 require("/scripts/vec2.lua")
 function init()
 
+if (status.stat("physicalResistance",0)  >= 1.0) or status.statPositive("sulphuricImmunity") then
+  effect.expire()
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -126,9 +130,6 @@ end
 
 function update(dt)
 
-
-		status.addEphemeralEffect( "biomeairless" )
-		
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

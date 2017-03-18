@@ -17,7 +17,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-
+        armorEffectHandle=effect.addStatModifierGroup(armorBonus)
 	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 end
 
@@ -30,6 +30,5 @@ function update(dt)
 		else
 			effect.setStatModifierGroup(armorBonusHandle,armorEffect)
 		end
-		checkWeapons()
 	end
 end
