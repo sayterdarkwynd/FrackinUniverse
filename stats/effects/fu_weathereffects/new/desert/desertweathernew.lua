@@ -202,7 +202,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	        self.gracePeriod = 60
 		if (self.timerRadioMessage <= 0) then
 		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
-		  self.timerRadioMessage = 120
+		  self.timerRadioMessage = 220
 		end  
 	end
   else
