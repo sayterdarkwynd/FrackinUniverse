@@ -160,7 +160,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
   
-  self.gracePeriod = 30 -- how long before it affects them?
+  self.gracePeriod = 10 -- how long before it affects them?
   
   if self.gracePeriod == 0 then
 	if daytime then  
@@ -202,6 +202,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		if (self.timerRadioMessage <= 0) then
 		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
 		  self.timerRadioMessage = 120
+		  self.gracePeriod = 60
 		end  
 	end
   else
