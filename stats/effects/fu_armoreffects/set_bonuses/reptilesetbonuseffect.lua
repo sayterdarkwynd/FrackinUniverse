@@ -45,7 +45,7 @@ local weaponSword2=weaponCheck({"axe"})
 	if weaponSword["either"] and weaponShield["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	elseif weaponSword2["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)		
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)		
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end

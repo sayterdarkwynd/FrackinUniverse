@@ -27,13 +27,12 @@ end
 
 function update(dt)
 	level=checkSetLevel(self.setBonusCheck)
-if level==0 then
-	effect.expire()
-else
-	checkArmor()
-	
-	checkWeapons()
-end
+	if level==0 then
+		effect.expire()
+	else
+		checkArmor()
+		checkWeapons()
+	end
 end
 
 function checkArmor()

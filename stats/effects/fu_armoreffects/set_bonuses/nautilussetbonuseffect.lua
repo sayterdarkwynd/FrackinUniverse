@@ -23,8 +23,7 @@ function init()
 
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 	if (world.type() == "ocean") or (world.type() == "sulphuricocean") or (world.type() == "aethersea") or (world.type() == "nitrogensea") or (world.type() == "strangesea") or (world.type() == "tidewater") then
-		effect.setStatModifierGroup(
-	armorBonusHandle,armorBonus2)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
 	end
 end
 

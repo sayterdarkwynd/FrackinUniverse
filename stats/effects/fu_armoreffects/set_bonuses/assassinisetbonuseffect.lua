@@ -5,7 +5,7 @@ weaponBonus={
 }
 
 
-armorEffect={
+armorBonus={
 	{stat = "protoImmunity", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1},
 	{stat = "aetherImmunity", amount = 1},

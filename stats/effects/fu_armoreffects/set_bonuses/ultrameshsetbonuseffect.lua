@@ -5,7 +5,7 @@ weaponBonus={
 }
 
 
-armorEffect={
+armorBonus={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.35},
         {stat = "shieldRegen", baseMultiplier = 1.35},
         {stat = "shieldHealth", baseMultiplier = 1.35},
