@@ -134,7 +134,7 @@ end
 
 function update(dt)
 if status.statPositive("biomeheatImmunity") then
-  effect.expire() return
+  effect.expire()
 end
 
 self.biomeTimer = self.biomeTimer - dt 
