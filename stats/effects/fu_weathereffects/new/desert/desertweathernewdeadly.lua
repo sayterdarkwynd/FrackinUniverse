@@ -30,7 +30,7 @@ end
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
   activateVisualEffects()
   
-  self.gracePeriod = 20
+  self.gracePeriod = 10
   script.setUpdateDelta(5)
 end
 
@@ -190,8 +190,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 
 		   if (status.resource("health")) <= (status.resource("health")/4) then
 		     mcontroller.controlModifiers({
-			 airJumpModifier = status.stat("fireResistance",0), 
-			 speedModifier = status.stat("fireResistance",0) 
+			 airJumpModifier = 0.6, 
+			 speedModifier = 0.6 
 		     })  
 		   end
 	      end  
@@ -205,7 +205,6 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	end
   else
     self.gracePeriod = self.gracePeriod - dt
-    sb.logInfo("grace period: "..self.gracePeriod)
   end
       
 end       
