@@ -30,7 +30,7 @@ end
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
   activateVisualEffects()
   
-  self.gracePeriod = 220
+  self.gracePeriod = 10
   script.setUpdateDelta(5)
 end
 
@@ -159,10 +159,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight() 
-  
-  self.gracePeriod = 220 -- how long before it affects them?
-  
-  if self.gracePeriod == 0 then
+
+  if (self.gracePeriod <=0) then
 	if daytime then  
 		-- are they in liquid?
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
@@ -192,8 +190,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 
 		   if (status.resource("health")) <= (status.resource("health")/4) then
 		     mcontroller.controlModifiers({
-			 airJumpModifier = status.stat("fireResistance",0), 
-			 speedModifier = status.stat("fireResistance",0) 
+			 airJumpModifier = 0.6, 
+			 speedModifier = 0.6 
 		     })  
 		   end
 	      end  
@@ -202,6 +200,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		if (self.timerRadioMessage <= 0) then
 		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
 		  self.timerRadioMessage = 120
+		  self.gracePeriod = 60
 		end  
 	end
   else

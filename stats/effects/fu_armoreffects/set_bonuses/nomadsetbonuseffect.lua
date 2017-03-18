@@ -29,8 +29,7 @@ function init()
 
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 	if (world.type() == "desert") or (world.type() == "desertwastes") or (world.type() == "desertwastesdark") then--optional condition to have different armor bonuses
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus2)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
 	end
 	
 end

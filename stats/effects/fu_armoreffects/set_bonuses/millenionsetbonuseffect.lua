@@ -6,7 +6,7 @@ weaponBonus={
 }
 
 
-armorEffect={
+armorBonus={
 	{stat = "blacktarImmunity", amount = 1},
         {stat = "gasImmunity", amount = 1},
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.30},

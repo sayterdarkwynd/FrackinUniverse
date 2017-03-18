@@ -38,8 +38,7 @@ end
 
 function checkArmor()
 if (world.type() == "mountainous4") or (world.type() == "mountainous3") or (world.type() == "mountainous2") or (world.type() == "mountainous") then
-	effect.setStatModifierGroup(
-	armorBonusHandle,armorBonus)
+	effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 else
 	effect.setStatModifierGroup(
 	armorBonusHandle,{})
