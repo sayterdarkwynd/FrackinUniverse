@@ -19,7 +19,11 @@ end
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
+  if not self.usedIntro then
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
+    self.usedIntro = 1
+  end
+  
   activateVisualEffects()
 
   script.setUpdateDelta(5)

@@ -28,7 +28,11 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "jungleheat", 1.0) -- send player a warning
+  if not self.usedIntro then
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "jungleheat", 1.0) -- send player a warning
+    self.usedIntro = 1
+  end
+  
   activateVisualEffects()
   
   script.setUpdateDelta(5)
@@ -166,8 +170,11 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
 	  setLiquidPenalty()
 	  if (self.timerRadioMessage <= 0) then
-	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejunglewater", 1.0) -- send player a warning
-	    self.timerRadioMessage = 60
+	    if not self.usedWater then
+	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejunglewater", 1.0) -- send player a warning
+	      self.timerRadioMessage = 60
+	      self.usedWater = 1
+	    end
 	  end
 	  inWater = 1
 	else
