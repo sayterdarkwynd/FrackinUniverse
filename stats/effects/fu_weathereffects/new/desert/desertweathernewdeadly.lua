@@ -30,7 +30,7 @@ end
   world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
   activateVisualEffects()
   
-  self.gracePeriod = 220
+  self.gracePeriod = 20
   script.setUpdateDelta(5)
 end
 
@@ -159,9 +159,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight() 
-  
-  self.gracePeriod = 10 -- how long before it affects them?
-  
+
   if self.gracePeriod == 0 then
 	if daytime then  
 		-- are they in liquid?

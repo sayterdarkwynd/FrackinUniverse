@@ -32,7 +32,7 @@ end
     activateVisualEffects()
   end
   
-  self.gracePeriod = 220
+  self.gracePeriod = 10
   script.setUpdateDelta(5)
 end
 
@@ -161,10 +161,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight() 
-  
-  self.gracePeriod = 60 -- how long before it affects them?
-  
-  if self.gracePeriod == 0 and (status.stat("fireResistance") <= 0.25) then
+  self.gracePeriod = self.gracePeriod - dt
+  if (self.gracePeriod == 0) and (status.stat("fireResistance") <= 0.25) then
 	if daytime then  
 		-- are they in liquid?
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
@@ -206,8 +204,6 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		  self.timerRadioMessage = 120
 		end  
 	end
-  else
-    self.gracePeriod = self.gracePeriod - dt
   end
       
 end       
