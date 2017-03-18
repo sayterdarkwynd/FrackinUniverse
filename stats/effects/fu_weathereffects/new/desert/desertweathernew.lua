@@ -206,8 +206,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		end  
 	end
   else
-	    self.gracePeriod = self.gracePeriod - dt  
-            sb.logInfo("grace period: "..self.gracePeriod)	
+	    self.gracePeriod = self.gracePeriod - dt  	
   end
       
 end       
