@@ -3,7 +3,7 @@ setName="fu_operativeset"
 weaponBonus={}
 
 armorBonus={
-	{stat = "critChance", amount = 10},
+	{stat = "critChance", amount = 4},
 	{stat = "critBonus", amount = 20}
 }
 
