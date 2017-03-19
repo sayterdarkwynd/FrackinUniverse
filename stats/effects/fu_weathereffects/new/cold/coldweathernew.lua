@@ -24,8 +24,13 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
+  if not self.usedIntro then
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
+    self.usedIntro = 1
+  end
+  
   activateVisualEffects()
+    
   makeAlert()  
   
   script.setUpdateDelta(5)
@@ -164,8 +169,11 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         if self.windLevel >= 40 then
                 setWindPenalty()   
                 if (self.timerRadioMessage <=0) then
-                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
-                   self.timerRadioMessage = 60             
+                  if not self.usedWind then
+                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
+                    self.timerRadioMessage = 10
+                    self.usedWind = 1
+                  end
 		end
         end
         
@@ -175,8 +183,11 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         if (world.liquidAt(mouthPosition)) then
 		setLiquidPenalty()
 		if (self.timerRadioMessage <= 0) then
-		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
-		  self.timerRadioMessage = 60
+		  if not self.usedWater then
+		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
+		    self.timerRadioMessage = 10
+		    self.usedWater = 1
+		  end
 		end
         end
         
@@ -184,8 +195,11 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         if not daytime then
                 setNightPenalty() 
                 if (self.timerRadioMessage <= 0) then
-                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
-                  self.timerRadioMessage = 60
+                  if not self.usedNight then
+                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
+                    self.timerRadioMessage = 10
+                    self.usedNight = 1
+                  end
 		end
         end
 

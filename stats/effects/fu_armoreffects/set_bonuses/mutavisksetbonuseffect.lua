@@ -6,6 +6,7 @@ weaponBonus={}
 
 armorBonus={
   {stat = "ffextremeradiationImmunity", amount = 1.0},
+  {stat = "biomeradiationImmunity", amount = 1.0},
   {stat = "fallDamageMultiplier", baseMultiplier = 0.75}
 }
 

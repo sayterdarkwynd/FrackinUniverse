@@ -27,9 +27,13 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
+    if not self.usedIntro then
+      -- activate visuals and check stats
+      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
+      self.usedIntro = 1
+    end
+
   activateVisualEffects()
-  
   self.gracePeriod = 10
   script.setUpdateDelta(5)
 end
@@ -160,7 +164,36 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
+
+	  if underground then
+		  self.biomeTemp = self.biomeTemp / 4
+		  self.gracePeriod = 60
+			  if not self.usedCavernous then
+			    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertunderground", 1.0) -- send player a warning
+			    self.timerRadioMessage = 10  
+			    self.usedCavernous = 1
+			  end  
+	  end
+	  
   if (self.gracePeriod <=0) then
+
+        if daytime and lightLevel >= 75 then
+          self.situationPenalty = self.situationPenalty + 1.0
+                  if not self.usedNoon then
+		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnoon", 1.0) -- send player a warning
+		    self.timerRadioMessage = 10  
+		    self.usedNoon = 1
+		  end
+        elseif daytime and lightLevel >= 15 then
+                  if not self.usedSunrise then
+		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertsunrise", 1.0) -- send player a warning
+		    self.timerRadioMessage = 10  
+		    self.usedSunrise = 1
+		  end  		  
+        else
+          self.situationPenalty = config.getParameter("situationPenalty",0)
+        end
+        
 	if daytime then  
 		-- are they in liquid?
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
@@ -168,9 +201,12 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
 			setLiquidPenalty()
 			if (self.timerRadioMessage <= 0) then
-			  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertwater", 1.0) -- send player a warning
-			  self.timerRadioMessage = 60
-			  self.gracePeriod = 60
+			  if not self.usedWater then
+			    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertwater", 1.0) -- send player a warning
+			    self.timerRadioMessage = 10
+			    self.gracePeriod = 60
+			    self.usedWater = 1
+			  end
 			end
 		    inWater = 1
 		else
@@ -198,9 +234,12 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	      self.biomeTimer = self.biomeTimer - dt
 	else	
 		if (self.timerRadioMessage <= 0) then
-		  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
-		  self.timerRadioMessage = 120
-		  self.gracePeriod = 60
+		  if not self.usedNight then
+		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnight", 1.0) -- send player a warning
+		    self.timerRadioMessage = 10
+		    self.gracePeriod = 20
+		    self.usedNight = 1
+		  end
 		end  
 	end
   else

@@ -26,7 +26,11 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning
+  if not self.usedIntro then
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning
+    self.usedIntro = 1
+  end
+  
   activateVisualEffects()
   
   script.setUpdateDelta(5)
@@ -155,8 +159,11 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   local lightLevel = getLight() 
   
   if underground then  
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheatcavern", 1.0) -- send player a warning
-    self.timerRadioMessage = 60
+    if not self.usedCavern then
+      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheatcavern", 1.0) -- send player a warning
+      self.timerRadioMessage = 10
+      self.usedCavern = 1
+    end
     setSituationPenalty()
   end  
 
