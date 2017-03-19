@@ -10,7 +10,8 @@ armorBonus={
         {stat = "shieldRegen", baseMultiplier = 1.35},
         {stat = "shieldHealth", baseMultiplier = 1.35},
         {stat = "perfectBlockLimitRegen", baseMultiplier = 1.35},
-        {stat = "aetherImmunity", amount = 1}
+        {stat = "aetherImmunity", amount = 1},
+        {stat = "insanityImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -28,7 +29,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-
 		checkWeapons()
 	end
 end
