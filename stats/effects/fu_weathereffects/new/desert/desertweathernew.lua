@@ -1,7 +1,7 @@
 require("/scripts/vec2.lua")
 function init()
 
-if (status.stat("fireResistance",0)  >= 1.0) or status.statPositive("biomeheatImmunity") or status.statPositive("ffextremeheatImmunity") or (player.worldId() == player.ownShipWorldId()) then
+if (status.stat("fireResistance",0)  >= 1.0) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
   effect.expire()
 end
 
@@ -40,6 +40,7 @@ end
 end
 
 -- *******************Damage effects
+
 function setEffectDamage()
   return ( ( self.baseDmg ) *  (1 -status.stat("fireResistance",0) ) * self.biomeThreshold  )
 end

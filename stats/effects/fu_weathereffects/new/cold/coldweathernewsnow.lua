@@ -1,6 +1,6 @@
 require("/scripts/vec2.lua")
 function init()
-  if (status.stat("iceResistance",0) >= 0.2) or (status.stat("physicalResistance",0) >= 0.2) or (player.worldId() == player.ownShipWorldId()) then
+  if (status.stat("iceResistance",0) >= 0.2) or (status.stat("physicalResistance",0) >= 0.2) or world.type()=="unknown" then
     effect.expire()
   end
   
