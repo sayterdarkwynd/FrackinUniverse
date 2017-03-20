@@ -1,4 +1,5 @@
 unifiedGravMod={}
+unifiedGravMod.gravHandler=nil
 
 function init()
 	unifiedGravMod.init()
@@ -22,7 +23,9 @@ function unifiedGravMod.initSoft()
 	self.gravityNormalize = config.getParameter("gravityNorm",false)
 	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
 	--sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
-	effect.addStatModifierGroup({{stat = "gravityMod", amount=self.gravityMod},{stat = "gravityBaseMod", amount=self.gravityBaseMod}})
+	if not unifiedGravMod.gravHandler then
+		unifiedGravMod.gravHandler=effect.addStatModifierGroup({{stat = "gravityMod", amount=self.gravityMod},{stat = "gravityBaseMod", amount=self.gravityBaseMod}})
+	end
 end
 
 
@@ -71,4 +74,20 @@ function unifiedGravMod.removeNormalization()
 		effect.removeStatModifierGroup(unifiedGravMod.normalizer)
 		unifiedGravMod.normalizer=nil
 	end
+end
+
+function unifiedGravMod.removeGravStat()
+	if unifiedGravMod.gravHandler ~= nil then
+		effect.removeStatModifierGroup(unifiedGravMod.gravHandler)
+		unifiedGravMod.gravHandler=nil
+	end
+end
+
+function unifiedGravMod.uninit()
+	unifiedGravMod.removeNormalization()
+	unifiedGravMod.removeGravStat()
+end
+
+function uninit()
+	unifiedGravMod.uninit()
 end

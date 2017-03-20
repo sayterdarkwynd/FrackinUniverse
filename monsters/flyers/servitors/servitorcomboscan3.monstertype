@@ -1,0 +1,154 @@
+{
+	"type": "fuscannerdronecombo3",
+	"shortdescription": "Combo Scanner mkIII",
+	"description": "Provides information on nearby caves and ores.",
+	"reversed": true,
+	"categories": ["servitor2"],
+	"parts": ["body"],
+
+	"animation": "servitor2.animation",
+	"dropPools": [],
+	"baseParameters": {
+
+		"animationScripts": [
+			"/monsters/flyers/servitors/orescan.lua"
+		],
+		
+		"pingDetectConfig": {
+			"types": ["ore","cave"],
+			"image": "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+			"variants": 4,
+			"pingRange": 25,
+			"pingBandWidth": 20,
+			"pingDuration": 2.5,
+			"pingCooldown": 0.0
+		},
+		"animationDelta": 5,
+		"scripts": [
+			"/monsters/monster.lua"
+		],
+
+		"persistent": true,
+
+		"behavior": "monster",
+		"deathBehavior": "monster-death",
+		"seeThroughLiquid": false,
+		"behaviorConfig": {
+			"damageOnTouch": false,
+
+			"targetQueryRange": 0,
+			"targetOnDamage": false,
+			"keepTargetInSight": false,
+			"keepTargetInRange": 0,
+			"targetOutOfSightTime": 0.0,
+
+			"hurtWaitForGround": false,
+
+			"foundTargetActions": [],
+
+			"fleeActions": [],
+
+			"hostileActions": [],
+
+			"periodicActions": [],
+
+			"approachActions": [],
+
+			"followActions": [
+				{
+					"name": "approach-teleport",
+					"parameters":{
+						"teleportMinDistance": 15
+					}
+				},
+				{
+					"name": "approach-fly",
+					"parameters": {
+						"usePathfinding" : false,
+						"minRange": 4,
+						"maxRange": 15
+					}
+				}
+			],
+
+			"wanderActions": [],
+
+			"concurrentActions": [],
+
+			"concurrentHostileActions": [],
+
+			"deathActions": []
+
+		},
+
+
+		"metaBoundBox": [-4, -4, 4, 4],
+		"scale": 0.35,
+
+		"movementSettings": {
+			"collisionPoly" : [ [0.625, 0.9375], [1.125, 0.4375], [1.125, -0.4375], [0.625, -0.9375], [-0.625, -0.9375], [-1.125, -0.4375], [-1.125, 0.4375], [-0.625, 0.9375] ],
+
+			"mass": 0.1,
+			"walkSpeed": 4,
+			"runSpeed": 24,
+			"gravityEnabled": false,
+			"collisionEnabled":false,
+			"airFriction": 4,
+			"airForce": 40,
+			"flySpeed": 15
+		},
+
+		"bodyMaterialKind": "robotic",
+		"knockoutTime": 0.1,
+		"knockoutAnimationStates": {
+			"damage": "stunned"
+		},
+		"deathParticles": "deathPoof",
+		"knockoutEffect": "",
+
+		"statusSettings": {
+			"statusProperties": {
+				"targetMaterialKind": "robotic"
+			},
+
+			"appliesEnvironmentStatusEffects": false,
+			"appliesWeatherStatusEffects": false,
+			"minimumLiquidStatusEffectPercentage": 10.0,
+
+			"primaryScriptSources": [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta": 5,
+
+			"stats": {
+				"maxHealth":{
+					"baseValue":100
+				},
+				"invulnerable": {
+					"baseValue": 1
+				},
+				"powerMultiplier": {
+					"baseValue": 0.0
+				}
+			},
+			"resources": {
+				"stunned": {
+					"deltaValue": -1.0,
+					"initialValue": 0.0,
+					"maxValue":0.0
+				},
+				"health": {
+					"maxStat": "maxHealth",
+					"deltaValue": 100,
+					"defaultPercentage": 100
+				}
+			}
+		},
+
+		"mouthOffset": [0, 0],
+		"feetOffset": [0, -8],
+		"capturable": true,
+		"captureHealthFraction": 1.0,
+		"nametagColor": [64, 200, 255]
+	}
+}
