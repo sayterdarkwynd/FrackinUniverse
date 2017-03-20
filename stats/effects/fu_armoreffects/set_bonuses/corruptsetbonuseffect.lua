@@ -59,7 +59,7 @@ function update(dt)
 	        
 		checkArmor()
 		self.randValue = math.random(100)	
-		if (self.randValue < 95) then  -- spawn a projectile
+		if (self.randValue < 5) then  -- spawn a projectile
 		  params = { power = 5, damageKind = "shadow" }			
 		  projectileId = world.spawnProjectile("scouteye",mcontroller.position(),entity.id(), aimVectorRand(),false,params)
 		end			

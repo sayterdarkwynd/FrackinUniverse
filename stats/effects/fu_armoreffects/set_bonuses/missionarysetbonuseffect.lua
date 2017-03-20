@@ -26,7 +26,7 @@ else
 	checkWeapons()
 end
 mcontroller.controlModifiers({
-	speedModifier = 1.10
+	speedModifier = 1.10,
 	airJumpModifier = 1.10
 })
 end
