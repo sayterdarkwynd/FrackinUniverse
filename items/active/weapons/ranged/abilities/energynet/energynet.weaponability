@@ -34,7 +34,7 @@
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
 
-    "projectileType" : "forcecage",
+    "projectileType" : "forcecage2",
     "projectileParameters" : {
       "timeToLive" : 5,
       "speed" : 3, 
@@ -47,8 +47,38 @@
         },
         {
           "action" : "projectile",
-          "type" : "crystalbayonet"
-        }
+          "type" : "crystalbayonetforce",
+          "angle" : 0
+        },
+        {
+          "action" : "projectile",
+          "type" : "crystalbayonetforce",
+          "angle" : 180
+        },        
+    {
+      "action" : "projectile",
+      "type" : "pinkplasmaballs",
+      "inheritDamageFactor" : 0.25,
+      "angle" : 45
+    },
+    {
+      "action" : "projectile",
+      "type" : "pinkplasmaballs",
+      "inheritDamageFactor" : 0.25,
+      "angle" : -45
+    },
+    {
+      "action" : "projectile",
+      "type" : "pinkplasmaballs",
+      "inheritDamageFactor" : 0.25,
+      "angle" : -135
+    },
+    {
+      "action" : "projectile",
+      "type" : "pinkplasmaballs",
+      "inheritDamageFactor" : 0.25,
+      "angle" : 135
+    }        
       ]
     },
     "projectileCount" : 1,

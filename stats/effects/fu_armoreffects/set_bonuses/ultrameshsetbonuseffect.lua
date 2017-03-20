@@ -11,6 +11,8 @@ armorBonus={
         {stat = "shieldHealth", baseMultiplier = 1.35},
         {stat = "perfectBlockLimitRegen", baseMultiplier = 1.35},
         {stat = "aetherImmunity", amount = 1},
+        {stat = "extremepressureProtection", amount = 1},
+        {stat = "pressureProtection", amount = 1},
         {stat = "insanityImmunity", amount = 1}
 }
 
