@@ -1,6 +1,6 @@
 require("/scripts/vec2.lua")
 function init()
-if (status.stat("electricResistance",0)  >= 1.0) or status.statPositive("biomeelectricImmunity") then
+if (status.stat("electricResistance",0)  >= 1.0) or status.statPositive("biomeelectricImmunity") or (player.worldId() == player.ownShipWorldId()) then
   effect.expire()
 end
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages

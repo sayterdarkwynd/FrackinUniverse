@@ -1,7 +1,7 @@
 require("/scripts/vec2.lua")
 
 function init()
-if (status.stat("cosmicResistance",0)  >= 1.0) or status.statPositive("insanityImmunity") then
+if (status.stat("cosmicResistance",0)  >= 1.0) or status.statPositive("insanityImmunity") or (player.worldId() == player.ownShipWorldId()) then
   effect.expire()
 end
   -- Environment Configuration --

@@ -56,12 +56,11 @@ function update(dt)
 		effect.expire()
 	else
 	        getLight()
-	        
 		checkArmor()
-		self.randValue = math.random(100)	
+		self.randValue = math.random(30)	
 		if (self.randValue < 5) then  -- spawn a projectile
-		  params = { power = 5, damageKind = "shadow" }			
-		  projectileId = world.spawnProjectile("scouteye",mcontroller.position(),entity.id(), aimVectorRand(),false,params)
+		  params = { power = 10, damageKind = "shadow" }			
+		  projectileId = world.spawnProjectile("scouteyecultist",mcontroller.position(),entity.id(), aimVectorRand(),false,params)
 		end			
 	end
 end
