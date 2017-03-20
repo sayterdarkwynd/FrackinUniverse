@@ -1,6 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
-setName="fu_infernusset"
+setName="fu_infernoset"
 
 weaponBonus={
   {stat = "powerMultiplier", amount = 0.30}

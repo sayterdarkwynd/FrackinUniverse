@@ -7,7 +7,8 @@ weaponBonus={
 
 
 armorEffect={
-	{stat = "critChance", amount = 15}
+	{stat = "critChance", amount = 15},
+	{stat = "asteroidImmunity", amount = 1}
 }
 
 
@@ -21,8 +22,6 @@ function init()
 	--sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
 	unifiedGravMod.init()
 	setSEBonusInit("fu_spacefarerset")
-	animator.setParticleEmitterOffsetRegion("sparkles", mcontroller.boundBox())
-	animator.setParticleEmitterActive("sparkles", true)
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
 	
 	setSEBonusInit(setName)
