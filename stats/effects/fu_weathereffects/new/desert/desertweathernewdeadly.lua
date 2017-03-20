@@ -1,7 +1,7 @@
 require("/scripts/vec2.lua")
 function init()
 
-if (status.stat("fireResistance",0)  >= 1.0) or status.statPositive("biomeheatImmunity") or status.statPositive("ffextremeheatImmunity") then
+if (status.stat("fireResistance",0)  >= 1.0) or status.statPositive("biomeheatImmunity") or status.statPositive("ffextremeheatImmunity") or world.type()=="unknown" then
   effect.expire()
 end
 

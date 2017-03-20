@@ -30,7 +30,7 @@ function update(dt)
 		checkWeapons()
 	end
 	mcontroller.controlModifiers({
-		airJumpModifier = 1.05
+		airJumpModifier = 1.05,
 		speedModifier = 1.05
 	})
 end

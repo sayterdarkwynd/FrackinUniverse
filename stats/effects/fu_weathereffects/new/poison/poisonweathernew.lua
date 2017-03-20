@@ -1,7 +1,7 @@
 require("/scripts/vec2.lua")
 
 function init()
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") then
+if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or world.type()=="unknown" then
   effect.expire()
 end
 
