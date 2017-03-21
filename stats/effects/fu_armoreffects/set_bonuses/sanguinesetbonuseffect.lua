@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 5}
+	{stat = "critChance", amount = 4}
 }
 
 armorBonus={}
@@ -19,25 +19,23 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-	status.removeEphemeralEffect( "regenerationsanguine" )
-else
-	
-	checkWeapons()
-	status.addEphemeralEffect( "regenerationsanguine" )
-	mcontroller.controlModifiers({
-		speedModifier = 1.1
-	})
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+
+		checkWeapons()
+		status.modifyResourcePercentage("health", 0.002 * dt)
+		mcontroller.controlModifiers({
+			speedModifier = 1.1
+		})
+	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"dagger","knife","whip"})
-if weapons["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+	if weapons["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end

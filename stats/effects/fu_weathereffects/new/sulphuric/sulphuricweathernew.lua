@@ -1,6 +1,10 @@
 require("/scripts/vec2.lua")
 function init()
 
+if (status.stat("physicalResistance",0)  >= 1.0) or status.statPositive("sulphuricImmunity") or world.type()=="unknown" then
+  effect.expire()
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -22,7 +26,11 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
+  if not self.usedIntro then 
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
+    self.usedIntro = 1
+  end
+  
   activateVisualEffects()
   script.setUpdateDelta(5)
 end
@@ -126,9 +134,6 @@ end
 
 function update(dt)
 
-
-		status.addEphemeralEffect( "biomeairless" )
-		
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

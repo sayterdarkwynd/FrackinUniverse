@@ -14,7 +14,8 @@ armorBonus={
 		{stat = "insanityImmunity", amount = 1},
 		{stat = "ffextremeradiationImmunity", amount = 1},
 		{stat = "radiationburnImmunity", amount = 1},
-		{stat = "biomeradiationImmunity", amount = 1}
+		{stat = "biomeradiationImmunity", amount = 1},
+		{stat = "aetherImmunity", amount = 1}
 }
 
 function init()

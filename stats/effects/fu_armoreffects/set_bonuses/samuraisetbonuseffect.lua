@@ -9,7 +9,7 @@ weaponBonus={
 }
 
 weaponBonus2={
-	{stat = "critChance", amount = 15},
+	{stat = "critChance", amount = 4},
 	{stat = "critBonus", amount = 10}
 }
 

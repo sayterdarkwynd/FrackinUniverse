@@ -24,9 +24,8 @@ armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 
 	armorBonusHandle=effect.addStatModifierGroup({})
 
-
 	checkWeapons()
-checkArmor()
+        checkArmor()
 end
 
 function update(dt)

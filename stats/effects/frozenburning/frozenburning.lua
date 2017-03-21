@@ -32,7 +32,7 @@ function update(dt)
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
         damage = 3,
-        damageSourceKind = "frozenburning",
+        damageSourceKind = "ice",
         sourceEntityId = entity.id()
       })
   end

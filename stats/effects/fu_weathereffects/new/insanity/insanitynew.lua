@@ -1,7 +1,9 @@
 require("/scripts/vec2.lua")
 
 function init()
-
+if (status.stat("cosmicResistance",0)  >= 1.0) or status.statPositive("insanityImmunity") or world.type()=="unknown" then
+  effect.expire()
+end
   -- Environment Configuration --
   --base values
   self.baseRate = config.getParameter("baseRate",0)                
@@ -20,8 +22,11 @@ function init()
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-  -- inform them they are ill                                
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeinsanity", 1.0) -- send player a warning
+  -- inform them they are ill           
+  if not self.usedIntro then
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeinsanity", 1.0) -- send player a warning
+    self.usedIntro = 1
+  end
   self.timerRadioMessage =  config.getParameter("baseRate",0)  -- initial delay for secondary radiomessages
   
   -- set desaturation effect
@@ -134,8 +139,11 @@ function messageCheck()
   self.hungerLevel = hungerLevel()
         if (self.windLevel >= 20) then
                 if self.timerRadioMessage == 0 then
-                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) -- send player a warning
-                  self.timerRadioMessage = 5
+                  if not self.usedWind then
+                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) -- send player a warning
+                    self.timerRadioMessage = 5
+                    self.usedWind = 1
+                  end
 		end
         end
         if status.isResource("food") then

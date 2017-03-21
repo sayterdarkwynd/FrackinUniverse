@@ -30,11 +30,9 @@ if not checkSetWorn(self.setBonusCheck) then
 	effect.expire()
 else
 	if (world.type() == "sulphuric") or (world.type() == "sulphuricdark") or (world.type() == "sulphuricocean") or (world.type() == "mountainous") then
-		effect.setStatModifierGroup(
-	armorBonusHandle,armorBonus2)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
 	else
-		effect.setStatModifierGroup(
-	armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 	end
 	
 	checkWeapons()

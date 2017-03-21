@@ -1,6 +1,10 @@
 require("/scripts/vec2.lua")
 
 function init()
+if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or world.type()=="unknown" then
+  effect.expire()
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
   
   -- Environment Configuration --
@@ -23,7 +27,11 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomegenericpoison", 1.0) -- send player a warning
+  if not self.usedIntro then
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomegenericpoison", 1.0) -- send player a warning
+    self.usedIntro = 1
+  end
+  
   activateVisualEffects() 
   script.setUpdateDelta(5)
 end
@@ -156,8 +164,11 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         if self.windLevel >= 40 then
                 setWindPenalty() 
                 if self.timerRadioMessage == 0 then
-                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
-                  self.timerRadioMessage = 60               
+                  if not self.usedWind then
+                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
+                    self.timerRadioMessage = 10 
+                    self.usedWind = 1
+                  end
 		end
         end
 

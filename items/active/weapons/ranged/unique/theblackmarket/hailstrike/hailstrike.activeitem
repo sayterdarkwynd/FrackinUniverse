@@ -27,30 +27,30 @@
     "lights" : { "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
-      "color" : [200, 12, 40]
+      "color" : [0, 120, 120]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
     }
   },
   "baseOffset" : [0, -0.55],
-  "muzzleOffset" : [1.5, 0.125],
+  "muzzleOffset" : [2.2, 0],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua", "/items/active/scripts/heavyweapon2.lua"],
 
-  "elementalType" : "fire",
+  "elementalType" : "cosmic",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.08,
+    "fireTime" : 0.12,
     "baseDps" : 10.0,
     "energyUsage" : 36,
     "inaccuracy" : 0.056,
     "fireType" : "auto",
 
-    "projectileType" : "furavager",
+    "projectileType" : "fuhailstrikeshot",
     "projectileParameters" : {
       "knockback" : 1.5,
       "speed" : 60
@@ -90,7 +90,7 @@
   "critChance" : 2,
   "critBonus" : 2,
 
-  "altAbilityType" : "shrapnelbomb",
+  "altAbilityType" : "hailstrikealt",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

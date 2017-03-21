@@ -8,7 +8,7 @@ weaponBonus2={
 	{stat = "powerMultiplier", baseMultiplier = 1.25}
 }
 
-armorEffect={
+armorBonus={
 	{stat = "gasImmunity", amount = 1},
 	{stat = "shadowImmunity", amount = 1},
 	{stat = "blacktarImmunity", amount = 1}
