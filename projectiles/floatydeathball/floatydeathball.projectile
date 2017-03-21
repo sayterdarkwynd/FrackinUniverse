@@ -20,20 +20,21 @@
       "loop" : true,
       "action" : "projectile",
       "type" : "plasmabullet",
-      "inheritDamageFactor" : 1.0,
-      "fuzzAngle" : 360
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "damageKind" : "fireplasma" }
    }
   ],
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosion.config"
+      "file" : "/projectiles/explosions/firetitanexplosion/firetitanexplosion.config"
     },    
     {
       "action" : "sound",
       "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
     }
   ],
-  "power" : 1,
+  "power" : 10,
   "damageKind" : "fireplasma"
 }
