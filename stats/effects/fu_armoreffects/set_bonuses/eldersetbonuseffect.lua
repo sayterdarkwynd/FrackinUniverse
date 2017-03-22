@@ -20,6 +20,7 @@ function init()
 	armorBonusHandle=effect.addStatModifierGroup({})
 	weaponBonusHandlePrimary=effect.addStatModifierGroup({})
 	weaponBonusHandleAlt=effect.addStatModifierGroup({})
+	self.timer = 0
         update(0)
 end
 
@@ -53,6 +54,12 @@ end
 
 function checkArmor()
 	effect.setStatModifierGroup( armorBonusHandle,setBonusMultiply(armorBonus,level))
+end
+
+function getLevel()
+  if world.getProperty("ship.fuel") ~= nil then return 1 end
+  if world.threatLevel then return world.threatLevel() end
+  return 1
 end
 
 function checkWeapons()

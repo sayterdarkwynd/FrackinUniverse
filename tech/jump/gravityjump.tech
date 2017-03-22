@@ -1,0 +1,37 @@
+{
+  "name" : "gravityjump",
+  "type" : "legs",
+
+  "scripts" : ["gravityjump.lua"],
+  "animator" : "longjump3.animation",
+
+  "description" : "Jump, jump, jump, jump...",
+  "shortDescription" : "Gravity Jump",
+  "rarity" : "rare",
+  "icon" : "/tech/longjump.png",
+
+  "chipCost" : 24,
+
+  "multiJumpCount" : 1,
+  
+  "jumpSpeedMultiplier" : 3.05,
+  "fallGravityMultiplier" : 0.2,
+  "fallDamageMultiplier" : 0.01,
+  "flutterXVelocity" : 0,
+  "flutterYVelocity" : 0,
+  "flutterTime": 0,
+  "flutterAfterFall" : false,
+  "flutterFall" : false,
+  "wallJumpXVelocity" : 32,
+  "wallGrabFreezeTime" : 0.50,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 2,
+  "wallReleaseTime" : 0.95,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1,
+      "airForce" : 0,
+      "airFriction" : 0
+    }
+  }
+}

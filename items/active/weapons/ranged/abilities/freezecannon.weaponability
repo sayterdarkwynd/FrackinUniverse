@@ -15,7 +15,7 @@
   },
 
   "ability" : {
-    "name" : "Frost Bomb",
+    "name" : "Frost Burst",
     "type" : "freezecannon",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
@@ -28,15 +28,14 @@
       "poison" : { "projectileType" : "fufreezecannonshot2" }
     },
     "projectileParameters" : {
-      "knockback" : 10,
-      "statusEffects" : [ ] // don't inherit from primary fire
+      "knockback" : 10
     },
     "projectileCount" : 4,
-    "inaccuracy" : 0.2,
+    "inaccuracy" : 0.3,
     "baseDps" : 8,
     "energyUsage" : 25.0,
-    "fireTime" : 1.0,
-    "speed" : 25,
+    "fireTime" : 0.08,
+    "speed" : 8,
     "fireType" : "auto",
 
     "stances" : {

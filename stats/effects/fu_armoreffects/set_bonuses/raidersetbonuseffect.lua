@@ -1,7 +1,7 @@
 setName="fu_raiderset"
 
 weaponBonus1={
-	{stat = "critBonus", amount = 5}
+	{stat = "critBonus", baseMultiplier = 1.05}
 }
 
 weaponBonus2={

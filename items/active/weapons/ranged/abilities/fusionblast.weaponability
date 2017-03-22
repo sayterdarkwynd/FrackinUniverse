@@ -25,18 +25,24 @@
       "fire" : { "projectileType" : "fusionflame" },
       "electric" : { "projectileType" : "fusionflame" },
       "ice" : { "projectileType" : "fusionflame" },
-      "poison" : { "projectileType" : "fusionflame" }
+      "poison" : { "projectileType" : "fusionflame" },
+      "cosmic" : { "projectileType" : "fusionflame" },
+      "shadow" : { "projectileType" : "fusionflame" },
+      "radioactive" : { "projectileType" : "fusionflame" }
     },
     "projectileParameters" : {
       "knockback" : 10,
-      "statusEffects" : [ ] // don't inherit from primary fire
-    },
-    "projectileCount" : 1,
-    "inaccuracy" : 0,
+      "statusEffects" : [ ], // don't inherit from primary fire,
+      "physics" : "laser",
+      "speed" : 20,
+      "timeToLive" : 1
+      },
+    "projectileCount" : 2,
+    "inaccuracy" : 0.2,
     "baseDps" : 5,
     "energyUsage" : 25.0,
     "fireTime" : 0.1,
-    "speed" : 20,
+    "speed" : 40,
     "fireType" : "auto",
 
     "stances" : {

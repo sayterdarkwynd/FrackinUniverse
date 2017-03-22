@@ -1,7 +1,7 @@
 setName="fu_leviathanset"
 
 armorBonus2={
-		{stat = "critBonus", amount = 8},
+		{stat = "critBonus", baseMultiplier = 1.08},
 		{stat = "powerMultiplier", amount = 0.15},
 		{stat = "sulphuricImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
