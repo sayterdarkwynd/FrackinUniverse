@@ -1,0 +1,48 @@
+{
+  "itemName" : "khetastrophae",
+  "price": 1500,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Fires grenades...LOTS of grenades.",
+  "shortdescription" : "Khetastrophae",
+  "tooltipKind" : "gun",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","grenadelauncher"],
+  "critChance" : 5,
+
+  "inventoryIcon" : "khetastrophae.png",
+  "animation" : "khetastrophae.animation",
+  "animationParts" : {
+    "gun" : "khetastrophae.png"
+  },
+  
+  "scripts" : ["khetastrophae.lua"],
+  
+  "fireOffset" : [3.25, 0.625],
+  
+  "primaryAbility" : {
+    "energyUsage" : 125,
+	"baseDps" : 8,
+    "fireTime" : 1.25,
+    "inaccuracy" : 0.13,
+	
+    "projectileType" : "fireproximityminestatus",
+    "projectileCount" : 8,
+		"projectileParameters" : { 
+		"inheritDamageFactor" : 1
+    }
+  },
+  
+  "altAbility" : {
+    "energyUsage" : 125,
+	"baseDps" : 5,
+    "fireTime" : 1.25,
+    "projectileType" : "kheraegrenade",
+    "projectileCount" : 1,
+	"projectileParameters" : { 
+      "inheritDamageFactor" : 1
+    }
+  }
+}

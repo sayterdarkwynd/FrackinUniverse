@@ -1,0 +1,38 @@
+{
+  "animatedParts" : {
+    "parts" : {
+      "gun" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage>",
+          "offset" : [0, 0.5]
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "fireParticles" : {
+      "emissionRate" : 10.0,
+      "particles" : [
+        {
+          "particle" : "rocketbarrelpuff",
+          "offset" : [3, 0.5]
+        },
+        {
+          "particle" : "rocketbarrelpuff",
+          "offset" : [3, 0.5]
+        },
+        {
+          "particle" : "rocketbarrelpuff",
+          "offset" : [3, 0.5]
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ "/sfx/gun/rocket1.ogg" ],
+    "trigger" : [ "/sfx/interface/rocket_lockon.ogg" ]
+  }
+}
