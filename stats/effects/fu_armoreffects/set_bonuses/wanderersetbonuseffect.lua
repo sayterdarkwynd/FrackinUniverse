@@ -4,7 +4,7 @@ setName="fu_wandererset"
 
 weaponBonus={
 	{stat = "powerMultiplier", amount = 0.15},
-	{stat = "critBonus", amount = 10}
+	{stat = "critBonus", baseMultiplier = 1.10}
 }
 
 armorBonus={}

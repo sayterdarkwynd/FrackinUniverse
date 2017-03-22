@@ -4,7 +4,7 @@ weaponBonus={}
 
 armorBonus={
 	{stat = "critChance", amount = 4},
-	{stat = "critBonus", amount = 20}
+	{stat = "critBonus", baseMultiplier = 1.20}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -17,7 +17,7 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	end
 end

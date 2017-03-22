@@ -3,10 +3,10 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_bearset"
 
 weaponBonuss1={
-	{stat = "critChance", amount = 7.5}
+	{stat = "critChance", amount = 3.5}
 }
 weaponBonuss2={
-	{stat = "powerMultiplier", amount = 0.24}
+	{stat = "powerMultiplier", baseMultiplier = 1.24}
 }
 armorBonus={
      {stat = "iceStatusImmunity", amount = 1},
