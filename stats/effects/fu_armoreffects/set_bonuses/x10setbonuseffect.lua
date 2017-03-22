@@ -26,6 +26,7 @@ armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	weaponBonusHandle=effect.addStatModifierGroup({})
 	armorBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
+	sb.logInfo(sb.printJson(weapons))
 end
 
 function update(dt)
@@ -34,20 +35,10 @@ if not checkSetWorn(self.setBonusCheck) then
 else
 	checkWeapons()
 end
-
+sb.logInfo(sb.printJson(weapons))
 mcontroller.controlModifiers({
 	airJumpModifier = 1.2
 })
-end
-
-function checkArmor()
-	if (world.type() == "garden") or (world.type() == "forest") then
-	  effect.setStatModifierGroup(
-	  armorBonusHandle,armorBonus)
-	else
-	  effect.setStatModifierGroup(
-	  armorBonusHandle,{})
-	end
 end
 
 function checkWeapons()
