@@ -1,5 +1,14 @@
 {
   "particleEmitters" : {
+     "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "dash",
+          "flip" : true
+        }
+      ]
+    },  
     "flutterParticles" : {
       "emissionRate" : 20.0,
       "particles" : [
@@ -122,6 +131,22 @@
     "multiJumpSound" : ["/sfx/tech/tech_doublejump.ogg"],
     "wallJumpSound" : ["/sfx/tech/tech_walljump.ogg"],
     "wallGrab" : [ "/sfx/blocks/footstep_stone.ogg" ],
-    "wallSlideLoop" : [ "/sfx/tech/tech_wallslide.ogg" ]
-  }
+    "wallSlideLoop" : [ "/sfx/tech/tech_wallslide.ogg" ],
+    "startDash" : [ "/sfx/tech/tech_dash.ogg" ],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ]
+  },
+  
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  }  
+  
+  
 }
