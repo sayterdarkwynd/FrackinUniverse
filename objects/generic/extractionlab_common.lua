@@ -19,7 +19,6 @@ end
 --   No checks are made for multi-input recipes being overridden by single-input recipes
 function getRecipes()
 	return {
-	-- liquids
 	{ inputs = { tentacleplant = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
 	{ inputs = { tentacleproduce = 1 }, outputs = { tissueculture = { 1, 1, 2 } } },
 	{ inputs = { nakatibark = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
@@ -266,6 +265,8 @@ function getRecipes()
 	{ inputs = { concretematerial = 50 }, outputs = { rawminerals = { 2, 2, 4 } } },
 	{ inputs = { conglomeratematerial = 50 }, outputs = { rawminerals = { 2, 2, 3 } } },
 	{ inputs = { copperblock = 50 }, outputs = { copperbar = { 1, 1, 2 } } },
+	{ inputs = { livecoral = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },
+	{ inputs = { darkwatercoral = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },	
 	{ inputs = { coral2material = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },
 	{ inputs = { coralmaterial = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },
 	{ inputs = { corruptdirtmaterial = 50 }, outputs = { tissueculture = { 2, 2, 4 } } },
