@@ -20,6 +20,12 @@ end
 function getRecipes()
 	return {
 	-- liquids
+	{ inputs = { tentacleplant = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
+	{ inputs = { tentacleproduce = 1 }, outputs = { tissueculture = { 1, 1, 2 } } },
+	{ inputs = { nakatibark = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
+	{ inputs = { nakatiseed = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
+	{ inputs = { eggs = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
+	{ inputs = { automato = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
 	{ inputs = { algaegreen = 5 }, outputs = { fu_nitrogen = { 1, 1, 3 } } },
 	{ inputs = { frozenwater = 50 }, outputs = { liquidwater = 1 } },
 	{ inputs = { fu_nitrogen = 1 }, outputs = { liquidnitrogenitem = 1 }, reversible = true },

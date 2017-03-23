@@ -23,6 +23,9 @@ function getRecipes()
 	        { inputs = { soakedwheat = 1 }, outputs = { wheatsprout = 1 } },
 	        
 	        --everythign else         
+	        { inputs = { nakatibark = 1 }, outputs = { gene_defense = { 1, 1, 2 } } },
+
+	        
 	        { inputs = { avikancactusseed = 1 }, outputs = { gene_defense = 1 } },
 	        { inputs = { avikanspiceplantseed = 1 }, outputs = { gene_mimetic = 1 } },	        
 	        { inputs = { bolbohnseed = 1 }, outputs = { gene_insectoid = 1 } },
@@ -180,6 +183,7 @@ function getRecipes()
 		{ inputs = { talonseedseed = 1 }, outputs = { gene_resist = 1 } },
 		{ inputs = { teratomatoseed = 1 }, outputs = { gene_regen = 3 } },
 		{ inputs = { tentacleplant = 1 }, outputs = { gene_mimetic = 2 } },
+	        { inputs = { tentacleproduce = 5 }, outputs = { gene_mimetic = { 1, 1, 2 } } },		
 		{ inputs = { tetherhookseed = 1 }, outputs = { gene_void = 2 } },
 		{ inputs = { thornitoxseed = 1 }, outputs = { gene_corrosive = 1 } },
 		{ inputs = { tinselbush = 1 }, outputs = { gene_reactive = 1 } },
