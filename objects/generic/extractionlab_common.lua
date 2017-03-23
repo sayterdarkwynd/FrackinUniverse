@@ -259,6 +259,7 @@ function getRecipes()
 	{ inputs = { castlewalls2 = 50 }, outputs = { rawminerals = { 2, 2, 4 } } },
 	{ inputs = { chertmaterial = 50 }, outputs = { rawminerals = { 2, 2, 4 } } },
 	{ inputs = { chromadirtmaterial = 50 }, outputs = { fu_carbon = { 1, 1, 2 } } },
+	{ inputs = { whitemeteorite = 50 }, outputs = { fu_carbon = { 2, 2, 3 } } },
 	{ inputs = { clay = 50 }, outputs = { nutrientpaste = { 3, 3, 5 } } },
 	{ inputs = { cloudblock = 50 }, outputs = { liquidwater = { 2, 2, 4 } } },
 	{ inputs = { cobblestonematerial = 50 }, outputs = { rawminerals = { 2, 2, 3 } } },
