@@ -188,7 +188,7 @@
   
   
     "mainBlock" : "jungledirt2",
-    "subBlocks" : [ "jungledirt1", "junglestone", "plantmatter" ],
+    "subBlocks" : [ "jungledirt1", "junglestone", "rainforestfloor" ],
     "ores" : "ff_surfacerainforestOres",
 
   "parallax" : "/parallax/surface/thickjungle.parallax",
@@ -212,13 +212,38 @@
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "thickjunglegrass", "flowerygrass" ],
+    "grassMod" : [ "thickjunglegrass", "flowerygrass", "lushgrass" ],
     "grassModDensity" : 0.9,
     
     "ceilingGrassMod" : [ "undergrowth" ],
     "ceilingGrassModDensity" : 0.5,
     
       "items" : [
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "ceilingwicked",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "ceilingrainforeststone",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "ceilingrainforestplant",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },        
            {
              "mode" : "floor",
              "priority" : 1.0,
@@ -443,7 +468,7 @@
               "modHueShiftMax" : 180
             },
             {
-              "name" : "swampbush",
+              "name" : "rainforestplant",
               "baseHueShiftMax" : 40,
               "modHueShiftMax" : 180
             },
@@ -610,6 +635,31 @@
     "ceilingGrassModDensity" : 0.3,
     
       "items" : [
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "ceilingwicked",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "ceilingrainforeststone",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "ceilingrainforestplant",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },      
         {
           "mode" : "floor",
           "priority" : 0.0,
