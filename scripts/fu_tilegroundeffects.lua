@@ -17,6 +17,7 @@ function tileMaterials()
   self.matCheck["crystalsand"] = 		{{"jungleslow"}, 1,   1,   1,   14,   101,    0.5,  0,  1.9, 0}
   self.matCheck["glasssand"] = 		        {{"jungleslow"}, 1,   1,   1,   14,   101,  0.5,    0,  1.9, 0}
   self.matCheck["redsand"] = 		        {{"jungleslow"}, 1,   1,   1,   14,   101,  0.5,    0,  1.9, 0}
+  self.matCheck["jungledirt1"] = 	        {{"jungleslow"}, 1,   1,   1,   14,   100,  0.0,    0,  1, 0} 
   self.matCheck["jungledirt2"] = 		{{"jungleslow"}, 1,   1,   1,   14,   100,  0.0,    0,  1, 0}
   self.matCheck["swampdirtff"] = 		{{"jungleslow"}, 1,   1,   1,   14,   100,  0.0,    0,  1, 0}
   self.matCheck["springvines"] = 		{{"jungleslow"}, 1,   1,   1,   14,   100,  0.0,    0,  1, 0}

@@ -4,7 +4,11 @@ weaponBonus={
 	{stat = "powerMultiplier", amount = 0.25}
 }
 
-armorBonus={}
+armorBonus={
+  {stat = "pressureProtection", amount = 1},
+  {stat = "extremepressureProtection", amount = 1},
+  {stat = "gasImmunity", amount = 1}
+}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

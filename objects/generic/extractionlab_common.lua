@@ -19,7 +19,12 @@ end
 --   No checks are made for multi-input recipes being overridden by single-input recipes
 function getRecipes()
 	return {
-	-- liquids
+	{ inputs = { tentacleplant = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
+	{ inputs = { tentacleproduce = 1 }, outputs = { tissueculture = { 1, 1, 2 } } },
+	{ inputs = { nakatibark = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
+	{ inputs = { nakatiseed = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
+	{ inputs = { eggs = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
+	{ inputs = { automato = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
 	{ inputs = { algaegreen = 5 }, outputs = { fu_nitrogen = { 1, 1, 3 } } },
 	{ inputs = { frozenwater = 50 }, outputs = { liquidwater = 1 } },
 	{ inputs = { fu_nitrogen = 1 }, outputs = { liquidnitrogenitem = 1 }, reversible = true },
@@ -205,6 +210,10 @@ function getRecipes()
 	{ inputs = { toxicwaste = { 10, 10, 5 } }, outputs = { uraniumore = 1 } },
 	{ inputs = { tritium = 2 }, outputs = { helium3gasliquid = { 2, 3, 4 }, toxicwaste = { 1, 2, 3 } } },
 	-- tiles
+	{ inputs = { fusavannahgrass = 1 }, outputs = { nutrientpaste = { 1, 2, 4 } } },
+	{ inputs = { fualiengrass = 1 }, outputs = { rawminerals = { 1, 2, 4 } } },	
+	{ inputs = { rainforestfloor = 1 }, outputs = { geneticmaterial = { 1, 2, 4 } } },
+	{ inputs = { rainforestfloorflowers = 1 }, outputs = { tissueculture = { 1, 2, 4 } } },
 	{ inputs = { stomachblock = 1 }, outputs = { dnasample = { 1, 2, 4 } } },
 	{ inputs = { tentacleblock = 1 }, outputs = { dnasample = { 1, 2, 4 } } },
 	{ inputs = { goldensand = 50 }, outputs = { goldore = { 1, 2, 3 }, glass = { 1, 1, 1 } }, timeScale = { nil, nil, 4.5 } },
@@ -250,12 +259,17 @@ function getRecipes()
 	{ inputs = { castlewalls2 = 50 }, outputs = { rawminerals = { 2, 2, 4 } } },
 	{ inputs = { chertmaterial = 50 }, outputs = { rawminerals = { 2, 2, 4 } } },
 	{ inputs = { chromadirtmaterial = 50 }, outputs = { fu_carbon = { 1, 1, 2 } } },
+	{ inputs = { whitemeteorite = 50 }, outputs = { fu_carbon = { 2, 2, 3 } } },
 	{ inputs = { clay = 50 }, outputs = { nutrientpaste = { 3, 3, 5 } } },
 	{ inputs = { cloudblock = 50 }, outputs = { liquidwater = { 2, 2, 4 } } },
 	{ inputs = { cobblestonematerial = 50 }, outputs = { rawminerals = { 2, 2, 3 } } },
 	{ inputs = { concretematerial = 50 }, outputs = { rawminerals = { 2, 2, 4 } } },
 	{ inputs = { conglomeratematerial = 50 }, outputs = { rawminerals = { 2, 2, 3 } } },
 	{ inputs = { copperblock = 50 }, outputs = { copperbar = { 1, 1, 2 } } },
+	{ inputs = { deadearth = 50 }, outputs = { ash = { 5, 5, 10 } } },
+	{ inputs = { greyslate = 50 }, outputs = { rawminerals = { 1, 2, 3 } } },
+	{ inputs = { livecoral = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },
+	{ inputs = { darkwatercoral = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },	
 	{ inputs = { coral2material = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },
 	{ inputs = { coralmaterial = 50 }, outputs = { coralfragment = { 2, 2, 3 } } },
 	{ inputs = { corruptdirtmaterial = 50 }, outputs = { tissueculture = { 2, 2, 4 } } },
