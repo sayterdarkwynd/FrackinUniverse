@@ -1,7 +1,7 @@
 setName="fu_dwellerset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 1.20}
+	{stat = "powerMultiplier", baseMultiplier = 1.20}
 }
 
 armorBonus={
