@@ -33,7 +33,7 @@ end
   
   -- activate visuals and check stats
   if not self.usedIntro then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "jungleheat", 1.0) -- send player a warning
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejungle", 1.0) -- send player a warning
     self.usedIntro = 1
   end
   

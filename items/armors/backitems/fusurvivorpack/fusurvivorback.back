@@ -3,7 +3,7 @@
   "inventoryIcon" : "icon.png",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "rarity" : "common",
-  "description" : "Grants +15% HP and Energy, and a mild glow. Also prevents proto-poison.",
+  "description" : "Grants +15% HP and Energy, and a mild glow. Also prevents proto-poison and blocks effects of electrical storms.",
   "shortdescription" : "Type-S Survival Pack",
   "tooltipKind" : "baseaugment",
   "category" : "enviroProtectionPack",
@@ -23,7 +23,11 @@
     {
       "stat" : "maxHealth",
       "baseMultiplier" : 1.15
-    }
+    },
+    {
+      "stat" : "biomeelectricImmunity",
+      "amount" : 1.0
+    }    
   ]
   
   

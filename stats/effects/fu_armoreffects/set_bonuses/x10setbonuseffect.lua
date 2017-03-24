@@ -1,5 +1,3 @@
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_x10set"
 
 weaponBonus={
@@ -8,6 +6,10 @@ weaponBonus={
 }
 
 armorBonus={
+
+}
+
+armorEffect={
   {stat = "breathProtection", amount = 1.0},
   {stat = "gasImmunity", amount = 1.0},
   {stat = "liquidnitrogenImmunity", amount = 1.0},
@@ -15,26 +17,26 @@ armorBonus={
   {stat = "fallDamageMultiplier", amount = 0.70}
 }
 
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
-			
-	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	weaponBonusHandle=effect.addStatModifierGroup({})
+	armorBonusHandle=effect.addStatModifierGroup({})
+	checkWeapons()
 end
 
 function update(dt)
-	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire()
-	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
-		checkWeapons()
-	end
-	mcontroller.controlModifiers({
-		airJumpModifier = 1.2
-	})
+if not checkSetWorn(self.setBonusCheck) then
+	effect.expire()
+else
+	checkWeapons()
+end
+mcontroller.controlModifiers({
+	airJumpModifier = 1.2
+})
 end
 
 function checkWeapons()

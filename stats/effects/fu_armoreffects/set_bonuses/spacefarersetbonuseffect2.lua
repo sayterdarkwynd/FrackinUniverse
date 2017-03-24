@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/unifiedGravMod.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 2.4}
+	{stat = "powerMultiplier", baseMultiplier = 2.4}
 }
 
 armorBonus={

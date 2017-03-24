@@ -6,16 +6,17 @@
 
   { "op": "replace","path": "/ambientLightLevel","value":  [70, 70, 70] },  
   { "op": "add","path": "/environmentStatusEffects/-","value": "gravmeteor" },  
-  { "op": "replace","path": "/gravityRange","value": [ 10,25 ] },  
-  { "op": "replace","path": "/gravityRange","value": [ 10,25 ] }, 
-  
-	{"op":"replace","path":"/terrains/0",
-	"value":{
-	  "terrainSelector":"asteroids",
-	  "caveSelector":"empty",
-	  "bgCaveSelector":"empty",
-	  "subBlockSelector":"largeClumps",
-	  "oreSelector":"richVeins"
-	  }
-	}
+  { "op": "replace","path": "/gravityRange","value": [ 0,14 ] },  
+  { "op": "replace","path": "/gravityRange","value": [ 0,14 ] }, 
+  {
+    "op": "add",
+    "path": "/terrains/-",
+    "value": {
+      "terrainSelector": "asteroids",
+      "caveSelector": "empty",
+      "bgCaveSelector": "empty",
+      "subBlockSelector": "largeClumps",
+      "oreSelector": "richVeins"
+    }
+  }	
 ]
