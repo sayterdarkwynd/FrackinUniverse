@@ -542,8 +542,6 @@
       14
     ]
   },    
-  
-  
     
    {"op" : "add", 
    "path" : "/planetTypes/ffunknown",
@@ -552,6 +550,9 @@
        "threatRange" : [4, 8],
        "layers" : {
         "surface" : {
+      "space" : {
+        "primaryRegion" : [ "elderasteroid", "elderasteroid", "asteroids", "erchiusasteroid",  "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ]
+      },        
           "primaryRegion" : [ "midnight", "chromatic", "arborealdark", "icewastedark", "sulphuricdark", "eden", "tarball", "arboreal2", "desertwastes","mountainous", "tidewater", "arboreal", "atropus", "bloodstone", "bog", "crystalmoon", "icemoon", "icewaste", "infernus", "irradiated", "lightless", "metallicmoon", "nitrogensea", "penumbra", "protoworld", "sulphuric", "thickjungle", "urbanwasteland", "alien", "barren", "desert", "forest", "jungle", "savannah", "scorchedcity", "snow", "tundra", "volcanic" ],
           "secondaryRegions" : [ "futentacle", "wartfield", "wastelandmini", "magicsnowland", "eden", "fieldofbracken", "supermatterzone", "aliendesert", "goreforest", "cactiplace", "metalworks", "metalhive", "metalworks2", "metalworks3", "metalworks4", "metaljungle", "crystalswamp", "ffhive", "corruptmoon", "birchforest", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "finesand", "cloudforest", "hauntedforest", "hauntedgraveyard", "rainbowforest", "swamp", "mountainous", "tidewater", "estuary", "breakwater", "corrupt", "spring", "mushroom", "oasis", "tar", "alpine", "bioluminescence", "colourful", "bones", "giantflowers", "eyepatch", "ice", "rust",  "alien", "arctic", "barren", "desert", "forest", "steamspring", "prism", "hiveold", "jungle", "magma", "ocean", "savannah", "scorchedcity", "snow", "toxic", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "corruptedforest", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga" ],
           "dungeons" : [ 
@@ -617,6 +618,9 @@
      {
        "threatRange" : [3, 8],
        "layers" : {
+      "space" : {
+        "primaryRegion" : [ "elderasteroid", "elderasteroid", "asteroids", "erchiusasteroid",  "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ]
+      },       
         "surface" : {
           "primaryRegion" : [ "strangesea" ],
           "secondaryRegions" : [ "ocean", "magma", "toxic", "nitrogensea", "sulphuricocean", "bloodstonesea", "arctic", "wartfield", "wastelandmini", "corruptedforest", "magicsnowland", "eden", "fieldofbracken", "supermatterzone", "aliendesert", "goreforest", "cactiplace", "metalworks", "metalhive", "metalworks2", "metalworks3", "metalworks4", "metaljungle", "crystalswamp", "ffhive", "corruptmoon", "birchforest", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "finesand", "cloudforest", "hauntedforest", "hauntedgraveyard", "rainbowforest", "swamp", "mountainous", "tidewater", "estuary", "breakwater", "corrupt", "spring", "mushroom", "oasis", "tar", "alpine", "bioluminescence", "colourful", "bones", "giantflowers", "eyepatch", "ice", "rust",  "alien", "arctic", "barren", "desert", "forest", "jungle", "magma", "ocean", "savannah", "scorchedcity", "snow", "toxic", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga" ],
@@ -5977,17 +5981,28 @@
 
 	{
 		"op" : "add",
-		"path" : "/regionTypes/gleamingsteroid",
+		"path" : "/regionTypes/gleamingasteroid",
 		"value" : {
                     "blockSelector" : [ "iceclouds", "asteroids" ],
 		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves", "coreCaves", "moonCaves" ],
 		    "bgCaveSelector" : [ "largeClumps" ],
 		      "biome" : [
-		        [0, [ "gleamingsteroid" ]]
+		        [0, [ "gleamingasteroid" ]]
 		      ]
 		    }
 	},
-	
+	{
+		"op" : "add",
+		"path" : "/regionTypes/iceasteroids",
+		"value" : {
+                    "blockSelector" : [ "iceclouds", "asteroids" ],
+		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves", "coreCaves", "moonCaves" ],
+		    "bgCaveSelector" : [ "largeClumps" ],
+		      "biome" : [
+		        [0, [ "iceasteroids" ]]
+		      ]
+		    }
+	},	
 	{
 		"op" : "add",
 		"path" : "/regionTypes/elderasteroid",
