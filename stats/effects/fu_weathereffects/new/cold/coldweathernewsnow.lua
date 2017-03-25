@@ -225,7 +225,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	     end
            end  
            self.modifier = status.stat("iceResistance",0)
-           if (status.stat("iceResistance",0) <= 0) then (self.modifier = 0) end
+           if (status.stat("iceResistance",0) <= 0) then self.modifier = 0 end
 		self.modifier = self.modifier + 0.3
              	mcontroller.controlModifiers({
 	         	airJumpModifier = self.modifier, 
