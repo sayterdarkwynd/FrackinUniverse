@@ -198,7 +198,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 
              self.statedit = 1 * (status.resource("health")/100)
              if self.statedit <=0 then
-               self.statedit = 0
+               self.statedit = 0.05
              end
              mcontroller.controlModifiers({
 	         airJumpModifier = self.statedit, 

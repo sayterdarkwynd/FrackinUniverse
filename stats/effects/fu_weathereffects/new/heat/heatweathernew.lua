@@ -192,16 +192,13 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	       status.modifyResource("food", -self.debuffApply * dt )
 	     end
            end  
-           self.statedit = status.stat("fireResistance",0)+ 0.3
-           self.statedit2 = status.stat("fireResistance",0)+ 0.3
-             if self.statedit <=0 then
-               self.statedit = 0
-             elseif self.statedit2 <= 0 then
-               self.statedit2 = 0
-             end
-             mcontroller.controlModifiers({
-	         airJumpModifier = self.statedit, 
-	         speedModifier = self.statedit2 
+
+           self.modifier = status.stat("fireResistance",0)
+           if (status.stat("fireResistance",0) <= 0) then (self.modifier = 0) end
+		self.modifier = self.modifier + 0.3
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = self.modifier, 
+	         	speedModifier = self.modifier 
              })              
       end  
       self.biomeTimer = self.biomeTimer - dt
