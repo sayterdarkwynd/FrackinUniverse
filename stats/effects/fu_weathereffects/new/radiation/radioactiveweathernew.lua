@@ -5,6 +5,15 @@ if (status.stat("radioactiveResistance",0)  >= 1.0) or status.statPositive("biom
   effect.expire()
 end
 
+-- checks strength of effect vs resistance
+if (config.getParameter("baseRate",0) == 5) and (status.stat("radioactiveResistance",0)  >= 0.3) then
+  effect.expire()
+elseif (config.getParameter("baseRate",0) == 4) and (status.stat("radioactiveResistance",0)  >= 0.6) then
+  effect.expire()
+elseif (config.getParameter("baseRate",0) == 3) and (status.stat("radioactiveResistance",0)  >= 1.0) then
+  effect.expire()   
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --

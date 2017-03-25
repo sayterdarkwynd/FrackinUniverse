@@ -5,6 +5,17 @@ if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonSta
   effect.expire()
 end
 
+-- checks strength of effect vs resistance
+if (config.getParameter("baseDmgPerTick",0) >= 1) and (status.stat("poisonResistance",0)  >= 0.3) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 2) and (status.stat("poisonResistance",0)  >= 0.6) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 3) and (status.stat("poisonResistance",0)  >= 1.0) then
+  effect.expire()
+elseif (config.getParameter("biomeThreshold",0) == 1.2) and (status.stat("poisonResistance",0)  >= 0.5) then
+  effect.expire()  
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
   
   -- Environment Configuration --

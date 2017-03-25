@@ -6,6 +6,16 @@ if (status.stat("cosmicResistance",0)  >= 1.0) or status.statPositive("aetherImm
   effect.expire()
 end
 
+-- checks strength of effect vs resistance
+if (config.getParameter("biomeTemp",0) == 2) and (status.stat("cosmicResistance",0)  >= 0.45) then
+  effect.expire()
+elseif (config.getParameter("biomeTemp",0) == 3) and (status.stat("cosmicResistance",0)  >= 0.70) then
+  effect.expire()   
+elseif (config.getParameter("biomeTemp",0) == 4) and (status.stat("cosmicResistance",0)  >= 1.0) then
+  effect.expire()     
+end
+
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --

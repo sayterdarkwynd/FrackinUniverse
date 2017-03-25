@@ -5,6 +5,17 @@ if (status.stat("physicalResistance",0)  >= 1.0) or status.statPositive("sulphur
   effect.expire()
 end
 
+-- checks strength of effect vs resistance
+if (config.getParameter("baseDebuffPerTick",0) == 3) and (status.stat("physicalResistance",0)  >= 0.25) then
+  effect.expire()
+elseif (config.getParameter("baseDebuffPerTick",0) == 5) and (status.stat("physicalResistance",0)  >= 0.50) then
+  effect.expire()
+elseif (config.getParameter("baseDebuffPerTick",0) == 7) and (status.stat("physicalResistance",0)  >= 0.75) then
+  effect.expire()   
+elseif (config.getParameter("baseDebuffPerTick",0) == 9) and (status.stat("physicalResistance",0)  >= 1.0) then
+  effect.expire()     
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --

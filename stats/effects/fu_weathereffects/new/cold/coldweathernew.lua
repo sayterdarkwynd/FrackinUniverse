@@ -4,6 +4,16 @@ if (status.stat("iceResistance",0)  >= 1.0) or status.statPositive("biomecoldImm
   effect.expire()
 end
 
+if (config.getParameter("baseRate",0) == 10) and (status.stat("iceResistance",0)  >= 0.2) then
+  effect.expire()
+elseif (config.getParameter("baseRate",0) == 4) and (status.stat("iceResistance",0)  >= 0.35) then
+  effect.expire()
+elseif (config.getParameter("baseRate",0) == 3) and (status.stat("iceResistance",0)  >= 0.65) then
+  effect.expire() 
+elseif (config.getParameter("baseRate",0) == 2) and (status.stat("iceResistance",0)  >= 1.0 ) then
+  effect.expire()    
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
