@@ -1,5 +1,5 @@
-setName="fu_spacesuitset"
-setStatEffects={"tw_spacesuitbonuseffect"}
+setName="tw_spacesuitset"
+setStatEffects={"tw_spacesuitsetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
