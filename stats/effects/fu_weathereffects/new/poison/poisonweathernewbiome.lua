@@ -176,7 +176,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
                 if self.timerRadioMessage == 0 then
                   if not self.usedWind then
                     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
-                    self.timerRadioMessage = 10
+                    self.timerRadioMessage = 220
                     self.usedWind = 1
                   end
 		end
