@@ -1,0 +1,210 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "confetti" ]
+            }
+          },
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "confetti",
+            "properties" : {
+              "immediateSound" : "/sfx/objects/timefreeze_start.ogg",
+              "particleEmittersOff" : [ "confetti" ]
+            },
+            "frameProperties" : {
+              "stateNudge" : [ [-0.125, 0], [0, 0] ]
+            }
+          },
+          "confetti" : {
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "confetti" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "gun" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "superrewardbag.png",
+          "offset" : [0.0, 0.0]
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "confetti" : {
+      "emissionRate" : 500.0,
+      "emissionRateVariance" : 0.0,
+      "active" : true,
+    
+      "particles" : [
+        {
+          // Red, drifting
+          "particle" : {
+            "type" : "ember",
+            "position" : [1.0, 0],
+            "size" : 2.0,
+            "color" : [210, 0, 0, 255],
+            "light" : [50, 50, 50],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 9.0],
+            "finalVelocity" : [0.0, -5.0],
+            "approach" : [0, 20],
+            "timeToLive" : 5,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [2, 2.0]
+            }
+          }
+        },
+        {
+          // Red, falling fast
+          "particle" : {
+            "type" : "ember",
+            "position" : [1.0, 0],
+            "size" : 2.0,
+            "color" : [255, 22, 144, 255],
+            "light" : [50, 50, 50],
+            "fade" : 0.3,
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [0, 10],
+            "timeToLive" : 5,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [5, 2.0]
+            }
+          }
+        },
+        {
+          // Green, drifting
+          "particle" : {
+            "type" : "ember",
+            "position" : [1.0, 0],
+            "size" : 2.0,
+            "color" : [40, 255, 120, 255],
+            "light" : [50, 50, 50],
+            "fade" : 0.65,
+            "initialVelocity" : [0.0, 9.0],
+            "finalVelocity" : [0.0, -5.0],
+            "approach" : [10, 20],
+            "timeToLive" : 5,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [2, 2.0]
+            }
+          }
+        },
+        {
+          // Green, falling fast
+          "particle" : {
+            "type" : "ember",
+            "position" : [1.0, 0],
+            "size" : 2.0,
+            "color" : [0, 255, 220, 255],
+            "light" : [50, 50, 50],
+            "fade" : 0.7,
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [0, 20],
+            "timeToLive" : 5,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [5, 2.0]
+            }
+          }
+        },
+        {
+          // Blue, drifting
+          "particle" : {
+            "type" : "ember",
+            "position" : [1.0, 0],
+            "size" : 2.0,
+            "color" : [0, 220, 0, 255],
+            "light" : [50, 50, 50],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 9.0],
+            "finalVelocity" : [0.0, -5.0],
+            "approach" : [0, 30],
+            "timeToLive" : 5,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [2, 2.0]
+            }
+          }
+        },
+        {
+          // Blue, falling fast
+          "particle" : {
+            "type" : "ember",
+            "position" : [1.0, 0],
+            "size" : 2.0,
+            "color" : [0, 0, 255, 255],
+            "light" : [50, 50, 50],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [20, 20],
+            "timeToLive" : 5,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [5, 2.0]
+            }
+          }
+        },
+        {
+          // White, drifting
+          "particle" : {
+            "type" : "ember",
+            "position" : [1.0, 0],
+            "size" : 2.0,
+            "color" : [255, 255, 0, 255],
+            "light" : [50, 50, 50],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 9.0],
+            "finalVelocity" : [0.0, -5.0],
+            "approach" : [0, 20],
+            "timeToLive" : 5,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [2, 2.0]
+            }
+          }
+        },
+        {
+          // White, falling fast
+          "particle" : {
+            "type" : "ember",
+            "position" : [1.0, 0],
+            "size" : 2.0,
+            "color" : [255, 255, 255, 255],
+            "light" : [50, 50, 50],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [0, 20],
+            "timeToLive" : 5,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [5, 2.0]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
