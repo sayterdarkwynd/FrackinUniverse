@@ -194,12 +194,14 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       end 
         
         status.modifyResource("health", -self.damageApply * dt)
-
-        -- less agile the more damaged you are
-        mcontroller.controlModifiers({  
-	 airJumpModifier = 1 * (status.resource("health")/100), 
-	 speedModifier = 1 * (status.resource("health")/100)
-        }) 
+             self.statedit = 1 * (status.resource("health")/100)
+             if self.statedit <=0 then
+               self.statedit = 0
+             end
+             mcontroller.controlModifiers({
+	         airJumpModifier = self.statedit, 
+	         speedModifier = self.statedit 
+             })  
       end     
 end       
 
