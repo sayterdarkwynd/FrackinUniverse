@@ -28,7 +28,6 @@ end
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
-  
   --conditionals
 
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -38,9 +37,10 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomegenericpoison", 1.0) -- send player a warning
-    self.usedIntro = 1
+  if (self.timerRadioMessage == 0) and not self.usedIntro then
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
+    self.usedIntro = 1 
+    self.timerRadioMessage = 220 
   end
   
   activateVisualEffects() 
@@ -147,6 +147,7 @@ end
 
 
 function update(dt)
+
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

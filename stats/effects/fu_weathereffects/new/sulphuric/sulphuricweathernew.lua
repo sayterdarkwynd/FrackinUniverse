@@ -39,7 +39,8 @@ end
   -- activate visuals and check stats
   if not self.usedIntro then 
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
-    self.usedIntro = 1
+     self.usedIntro = 1
+     self.timerRadioMessage = 20
   end
   
   activateVisualEffects()

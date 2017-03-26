@@ -13,7 +13,7 @@ elseif (config.getParameter("baseRate",0) == 3) and (status.stat("iceResistance"
 elseif (config.getParameter("baseRate",0) == 2) and (status.stat("iceResistance",0)  >= 1.0 ) then
   effect.expire()    
 end
-
+  
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -35,10 +35,12 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
+  if (self.timerRadioMessage == 0) and not self.usedIntro then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
-    self.usedIntro = 1
+    self.usedIntro = 1 
+    self.timerRadioMessage = 220 
   end
+  
   
   activateVisualEffects()
     
