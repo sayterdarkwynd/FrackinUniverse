@@ -15,7 +15,7 @@ elseif (config.getParameter("baseDmgPerTick",0) >= 3) and (status.stat("poisonRe
 elseif (config.getParameter("biomeThreshold",0) == 1.2) and (status.stat("poisonResistance",0)  >= 0.5) then
   effect.expire()  
 end
-self.usedIntro = 0
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
   
   -- Environment Configuration --
@@ -42,7 +42,7 @@ self.usedIntro = 0
   if (self.timerRadioMessage == 0) and not self.usedIntro then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
     self.usedIntro = 1 
-    self.timerRadioMessage = 220 
+    self.timerRadioMessage = 20 
   end
   
   activateVisualEffects() 
@@ -197,14 +197,15 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       end 
         
         status.modifyResource("health", -self.damageApply * dt)
-             self.statedit = 1 * (status.resource("health")/100)
-             if self.statedit <=0 then
-               self.statedit = 0
-             end
-             mcontroller.controlModifiers({
-	         airJumpModifier = self.statedit, 
-	         speedModifier = self.statedit 
-             })  
+           if (status.stat("poisonResistance",0) <= 0) then self.modifier = 0 end
+           
+		self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
+		if self.modifier <= 0 then self.modifier = 0.15 end
+		
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = 1 * self.modifier, 
+	         	speedModifier = (1 * self.modifier) + 0.1 
+             })    
       end     
 end       
 
