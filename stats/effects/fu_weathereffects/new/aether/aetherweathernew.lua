@@ -15,7 +15,6 @@ elseif (config.getParameter("biomeTemp",0) == 4) and (status.stat("cosmicResista
   effect.expire()     
 end
 
-
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --

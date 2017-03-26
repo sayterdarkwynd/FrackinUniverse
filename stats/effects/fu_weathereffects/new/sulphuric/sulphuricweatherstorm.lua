@@ -35,9 +35,10 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuricstorm", 1.0) -- send player a warning
-    self.usedIntro = 1
+  if not self.usedIntro then 
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
+     self.usedIntro = 1
+     self.timerRadioMessage = 20
   end
   
   activateVisualEffects()

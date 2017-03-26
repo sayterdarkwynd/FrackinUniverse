@@ -15,7 +15,7 @@ elseif (config.getParameter("baseDmgPerTick",0) >= 3) and (status.stat("poisonRe
 elseif (config.getParameter("biomeThreshold",0) == 1.2) and (status.stat("poisonResistance",0)  >= 0.5) then
   effect.expire()  
 end
-
+self.usedIntro = 0
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
   
   -- Environment Configuration --
@@ -28,7 +28,8 @@ end
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
-  
+  sb.logInfo("my counter : "..self.usedIntro)
+  sb.logInfo("my counter : "..self.timerRadioMessage)
   --conditionals
 
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -38,10 +39,12 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
+  if (self.timerRadioMessage == 0) and not self.usedIntro then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
     self.usedIntro = 1 
+    self.timerRadioMessage = 220 
   end
+  
   activateVisualEffects() 
   script.setUpdateDelta(5)
 end

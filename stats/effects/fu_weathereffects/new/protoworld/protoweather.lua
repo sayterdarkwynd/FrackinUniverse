@@ -12,7 +12,6 @@ elseif (config.getParameter("biomeTemp",0) == 1.0) and (status.stat("poisonResis
   effect.expire()      
 end
 
-
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -27,9 +26,10 @@ end
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
   
   -- activate visuals and check stats
-  if not self.usedIntro then
+  if not self.usedIntro and (self.timerRadioMessage == 0) then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
     self.usedIntro = 1
+    self.timerRadioMessage = 20
   end
   
   activateVisualEffects()
