@@ -72,7 +72,7 @@ function update(dt)
           damage = biomeDmg+2,
           damageSourceKind = "poison",
           sourceEntityId = entity.id(),  
-          biomeTimer = 3	
+          biomeTimer = 2	
           })       
 	makeAlert()     
 	activateVisualEffects()
@@ -84,7 +84,7 @@ function update(dt)
           damage = biomeDmg+2,
           damageSourceKind = "electric",
           sourceEntityId = entity.id(),  
-          biomeTimer = 3	
+          biomeTimer = 2	
           })   
 	makeAlert()      
 	activateVisualEffects()

@@ -1,8 +1,19 @@
 require("/scripts/vec2.lua")
 
 function init()
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or world.type()=="unknown" then
+if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") or world.type()=="unknown" then
   effect.expire()
+end
+
+-- checks strength of effect vs resistance
+if (config.getParameter("baseDmgPerTick",0) >= 1) and (status.stat("poisonResistance",0)  >= 0.3) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 2) and (status.stat("poisonResistance",0)  >= 0.6) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 3) and (status.stat("poisonResistance",0)  >= 1.0) then
+  effect.expire()
+elseif (config.getParameter("biomeThreshold",0) == 1.2) and (status.stat("poisonResistance",0)  >= 0.5) then
+  effect.expire()   
 end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
@@ -166,7 +177,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
                 if self.timerRadioMessage == 0 then
                   if not self.usedWind then
                     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
-                    self.timerRadioMessage = 10 
+                    self.timerRadioMessage = 220 
                     self.usedWind = 1
                   end
 		end
@@ -185,11 +196,14 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         
         status.modifyResource("health", -self.damageApply * dt)
 
-        -- less agile the more damaged you are
-        mcontroller.controlModifiers({  
-	 airJumpModifier = 1 * (status.resource("health")/100), 
-	 speedModifier = 1 * (status.resource("health")/100)
-        }) 
+             self.statedit = 1 * (status.resource("health")/100)
+             if self.statedit <=0 then
+               self.statedit = 0
+             end
+             mcontroller.controlModifiers({
+	         airJumpModifier = self.statedit, 
+	         speedModifier = self.statedit 
+             })  
       end     
 end       
 

@@ -59,7 +59,33 @@
           { "particle" : "shadowsmoke2"},
           { "particle" : "shadowsmoke2"},
         ]
-      }
+      },
+      "cosmicCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
+        "particles" : [
+          { "particle" : "cosmicswoosh1"},
+          { "particle" : "cosmicswoosh2"},
+          { "particle" : "cosmicdust"},
+          { "particle" : "cosmicdust"},
+          { "particle" : "cosmicdust"},
+        ]
+      },
+      "radioactiveCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
+        "particles" : [
+          { "particle" : "radioactiveswoosh1"},
+          { "particle" : "radioactiveswoosh2"},
+          { "particle" : "radioactivedrip"},
+          { "particle" : "radioactivedrip"},
+          { "particle" : "radioactivedrip"},
+        ]
+      }      
     },
     "sounds" : {
       "firecharge" : [ "/sfx/melee/shockwave_charge_fire.ogg" ],
@@ -76,7 +102,10 @@
       "poisonimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
       "shadowcharge" : [ "/sfx/melee/shockwave_charge_poison.ogg" ],
       "shadowfull" : [ "/sfx/melee/shockwave_full_poison.ogg" ],
-      "shadowimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ]
+      "shadowimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
+      "radioactivecharge" : [ "/sfx/melee/shockwave_charge_poison.ogg" ],
+      "radioactivefull" : [ "/sfx/melee/shockwave_full_poison.ogg" ],
+      "radioactiveimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ]      
     }
   },
 
@@ -107,7 +136,13 @@
       },
       "shadow" : {
         "projectileType" : "shadowpillar"
-      }
+      },
+      "radioactive" : {
+        "projectileType" : "radioactivepillar"
+      },
+      "cosmic" : {
+        "projectileType" : "cosmicpillar"
+      }        
     },
     "projectileParameters" : {
       "power" : 2.0,

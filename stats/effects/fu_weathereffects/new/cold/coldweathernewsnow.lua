@@ -224,10 +224,13 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	       status.modifyResource("food", -self.debuffApply * dt )
 	     end
            end  
-             mcontroller.controlModifiers({
-	         airJumpModifier = 0.4 + status.stat("iceResistance"), 
-	         speedModifier = 0.2 + status.stat("iceResistance")
-             })  
+           self.modifier = status.stat("iceResistance",0)
+           if (status.stat("iceResistance",0) <= 0) then self.modifier = 0 end
+		self.modifier = self.modifier + 0.3
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = self.modifier, 
+	         	speedModifier = self.modifier 
+             })                
       end  
       --breath
       if self.biomeTimer2 <= 0 and status.stat("iceResistance",0) < 1.0 then

@@ -197,10 +197,12 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	   status.modifyResource("health", -self.damageApply * dt)
 
            if (status.resource("health")) <= (status.resource("health")/3) then
-             mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("physicalResistance",0), 
-	         speedModifier = status.stat("physicalResistance",0) 
-             })  
+                self.modifier = status.stat("physicalResistance",0)
+           	if (status.stat("physicalResistance",0) <= 0) then self.modifier = 0.05 end
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = self.modifier, 
+	         	speedModifier = self.modifier 
+             	})  
            end
       end  
       self.biomeTimer = self.biomeTimer - dt

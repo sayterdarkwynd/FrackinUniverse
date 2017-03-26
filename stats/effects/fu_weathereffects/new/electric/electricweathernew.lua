@@ -3,6 +3,16 @@ function init()
 if (status.stat("electricResistance",0)  >= 1.0) or status.statPositive("biomeelectricImmunity") or world.type()=="unknown"  then
   effect.expire()
 end
+
+-- checks strength of effect vs resistance
+if (config.getParameter("baseDmgPerTick",0) >= 4) and (status.stat("electricResistance",0)  >= 0.3) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 5) and (status.stat("electricResistance",0)  >= 0.6) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 6) and (status.stat("electricResistance",0)  >= 1.0) then
+  effect.expire()
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --

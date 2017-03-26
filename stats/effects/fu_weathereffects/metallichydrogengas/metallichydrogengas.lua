@@ -1,4 +1,7 @@
 function init()
+if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("gasImmunity") then
+  effect.expire()
+end
   script.setUpdateDelta(5)
 
   animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())

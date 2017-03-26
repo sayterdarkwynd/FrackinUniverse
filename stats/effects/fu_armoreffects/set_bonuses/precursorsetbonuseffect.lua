@@ -7,7 +7,8 @@ weaponBonus={
 
 armorBonus={
 	{stat = "critChance", amount = 15},
-	{stat = "asteroidImmunity", amount = 1}
+	{stat = "asteroidImmunity", amount = 1},
+	{stat = "breathProtection", amount = 1}
 }
 
 setName="fu_precursorset"
