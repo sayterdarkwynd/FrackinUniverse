@@ -198,14 +198,12 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         
         status.modifyResource("health", -self.damageApply * dt)
            if (status.stat("poisonResistance",0) <= 0) then self.modifier = 0 end
-           
-		self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
-		if self.modifier <= 0 then self.modifier = 0.15 end
-		
+	   self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
+           if self.modifier <= 0 then self.modifier = 0.15 end	
              	mcontroller.controlModifiers({
 	         	airJumpModifier = 1 * self.modifier, 
 	         	speedModifier = (1 * self.modifier) + 0.1 
-             })    
+             })     
       end     
 end       
 
