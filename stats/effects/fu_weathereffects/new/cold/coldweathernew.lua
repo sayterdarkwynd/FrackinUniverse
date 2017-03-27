@@ -4,6 +4,16 @@ if (status.stat("iceResistance",0)  >= 1.0) or status.statPositive("biomecoldImm
   effect.expire()
 end
 
+if (config.getParameter("baseRate",0) == 10) and (status.stat("iceResistance",0)  >= 0.2) then
+  effect.expire()
+elseif (config.getParameter("baseRate",0) == 4) and (status.stat("iceResistance",0)  >= 0.35) then
+  effect.expire()
+elseif (config.getParameter("baseRate",0) == 3) and (status.stat("iceResistance",0)  >= 0.65) then
+  effect.expire() 
+elseif (config.getParameter("baseRate",0) == 2) and (status.stat("iceResistance",0)  >= 1.0 ) then
+  effect.expire()    
+end
+  
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -25,10 +35,12 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
+  if (self.timerRadioMessage == 0) and not self.usedIntro then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
-    self.usedIntro = 1
+    self.usedIntro = 1 
+    self.timerRadioMessage = 220 
   end
+  
   
   activateVisualEffects()
     
@@ -225,10 +237,13 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	       status.modifyResource("food", -self.debuffApply * dt )
 	     end
            end  
-             mcontroller.controlModifiers({
-	         airJumpModifier = 0.4 + status.stat("iceResistance"), 
-	         speedModifier = 0.2 + status.stat("iceResistance")
-             })  
+           self.modifier = status.stat("iceResistance",0)
+           if (status.stat("iceResistance",0) <= 0) then self.modifier = 0 end
+		self.modifier = self.modifier + 0.3
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = self.modifier, 
+	         	speedModifier = self.modifier - 0.1 
+             })    
       end  
       --breath
       if self.biomeTimer2 <= 0 and status.stat("iceResistance",0) < 1.0 then

@@ -5,6 +5,13 @@ if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("protoImmu
   effect.expire()
 end
 
+-- checks strength of effect vs resistance
+if (config.getParameter("biomeTemp",0) == 1.15) and (status.stat("poisonResistance",0)  >= 0.45) then
+  effect.expire()
+elseif (config.getParameter("biomeTemp",0) == 1.0) and (status.stat("poisonResistance",0)  >= 0.70) then
+  effect.expire()      
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -19,9 +26,10 @@ end
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
   
   -- activate visuals and check stats
-  if not self.usedIntro then
+  if not self.usedIntro and (self.timerRadioMessage == 0) then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
     self.usedIntro = 1
+    self.timerRadioMessage = 20
   end
   
   activateVisualEffects()

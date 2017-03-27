@@ -4,6 +4,15 @@ if (status.stat("fireResistance",0)  >= 1.0) or status.statPositive("biomeheatIm
   effect.expire()
 end
 
+-- checks strength of effect vs resistance
+if (config.getParameter("baseDmgPerTick",0) >= 5) and (status.stat("fireResistance",0)  >= 0.3) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 6) and (status.stat("fireResistance",0)  >= 0.6) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 7) and (status.stat("fireResistance",0)  >= 1.0) then
+  effect.expire()
+end
+
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -26,9 +35,10 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
+  if not self.usedIntro and self.timerRadioMessage == 0 then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning
     self.usedIntro = 1
+    self.timerRadioMessage = 20
   end
   
   activateVisualEffects()
@@ -183,10 +193,13 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	       status.modifyResource("food", -self.debuffApply * dt )
 	     end
            end  
-           
-             mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("fireResistance",0)+0.3, 
-	         speedModifier = status.stat("fireResistance",0)+0.3 
+
+           self.modifier = status.stat("fireResistance",0)
+           if (status.stat("fireResistance",0) <= 0) then self.modifier = 0 end
+		self.modifier = self.modifier + 0.3
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = self.modifier, 
+	         	speedModifier = self.modifier 
              })              
       end  
       self.biomeTimer = self.biomeTimer - dt

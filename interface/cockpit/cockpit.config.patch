@@ -66,16 +66,16 @@
     "path" : "/threatLevelToColor",
     "value" : {
 	  "default" : [
-		[ 0, 170, 233], //TL 1
-		[ 16, 233, 0], //TL 2
-		[ 194, 233, 0 ], //TL 3
-		[ 235, 171, 0 ], //TL 4
-		[ 235, 100, 0], //TL 5
-		[ 235, 49, 0], //TL 6
-		[ 192, 32, 0], //TL 7
-		[ 255, 32, 50], //TL 8
-		[ 255, 0, 0], //TL 9
-		[ 255, 0, 0] //TL 10
+		[ 0, 170, 233], 
+		[ 16, 233, 0], 
+		[ 194, 233, 0 ], 
+		[ 235, 171, 0 ], 
+		[ 235, 100, 0],
+		[ 235, 49, 0], 
+		[ 192, 32, 0], 
+		[ 255, 32, 50], 
+		[ 255, 0, 72], 
+		[ 255, 0, 0] 
 	  ],
 	  "moon" : [
 		[160, 160, 160]
@@ -106,10 +106,19 @@
 	}
   },
   
+  
+  
   {"op":"replace","path":"/planetTypeToDescription/desert",
 "value":["There is limited flora here on this ^#e6c801;desert^white;, but the location does support life. ^red;Hot days, cool nights^reset;.",
 "A ^#e6c801;desert^white; area populated by cacti, as well as various animal life. A relatively safe landing site, so long as you avoid the sandstorms. ^red;Quite warm^reset;.",
 "Sand. Readings indicate sand. Also some cacti... but predominantly sand. This ^#e6c801;desert^white; is ^red;uncomfortably warm^reset; but rich in resources."]},
+
+  {"op":"replace","path":"/planetTypeToDescription/scorchedcity",
+"value":[
+"The landing location is a ^#b24301;scorched^white; wasteland. The atmospheric ^red;temperature is dangerously high^white; and also ^green;poisonous gas^reset; on strong winds. It is impressively brave of you to consider this destination.",
+"The beam site is ^#b24301;scorched^white; and desolate. Little is capable of surviving here as the ^red;temperature is fatally high^white; and ^reset;poisonous gas^reset; storms. People live in the area, but I cannot fathom why.",
+"The landing site is ^#b24301;scorched^white; by the ^red;intense heat of the planet's surface^white; and its ^green;occasional poisonous storm^reset;. Only a few hardy individuals remain, possibly out of pure habit."
+]},
 
 
   {"op":"add","path":"/planetTypeToDescription/tabularasa",
@@ -335,7 +344,6 @@
 "This unusually ^#914560;super-dense^reset; planet has gravity ^orange;far above normal^reset;. Be very careful. ^red;Falling means certain death^reset;.",
 "A ^#914560;Super-dense^reset; world with a much higher gravitational force than other planets of the same size. ^red;Very dangerous. Tread carefully."]},
 
-//------------
 {"op":"add","path":"/planetTypeToDescription/arcticdark",
 "value":["^red;Temperatures at the landing site are dangerously low.^white; You will be beaming onto a small island surrounded by ^#00ffe4;frigid ocean^white;. I strongly advise you to wear a scarf.",
                 "The beam site is ^red;intensely cold^white;: a tiny island in a ^#00ffe4;frigid ocean^white;. There is a 0.025% chance you will mis-beam into the water, quickly succumbing to the awful chill.",
@@ -372,9 +380,9 @@
               "This location is relatively chill, and ^#69f1fd;snow^white; lies thickly on the ground. My sensors indicate that there are critters scampering through the soft blanket of white." ]},
 
 {"op":"add","path":"/planetTypeToDescription/aethersea",
-"value":["Dark, strange and quiet, this ^#e78442;aether sea^reset; is awaiting exploration. Tread carefully, for the atmosphere is acidic. ^orange;Xithricite Ore detected^reset;.^cyan;Recommend: Acid Protection^reset;.",
-              "Serious weather, high-tides and strangeness abound on this acidic ^#e78442;aether sea^reset;. ^cyan;Recommend: Acid Protection^reset;",
-              "A bizarre world that seems to straddle dimensions, this ^#e78442;aether sea^reset; calls to you with its dark, acid-laced serenity. ^cyan;Recommend: Acid Protection^reset;" ]},
+"value":["Dark, strange and quiet, this ^#e78442;aether sea^reset; is awaiting exploration. Tread carefully, for the atmosphere is laced with strange particles. ^orange;Xithricite Ore detected^reset;.^cyan;Recommend: Cosmic Resistance/ Aether Protection^reset;.",
+              "Serious weather, high-tides and strangeness abound on this acidic ^#e78442;aether sea^reset;. ^cyan;Recommend: Cosmic Resistance/ Aether Protection^reset;",
+              "A bizarre world that seems to straddle dimensions, this ^#e78442;aether sea^reset; calls to you with its dark serenity. ^cyan;Recommend: Cosmic Resistance/ Aether Protection^reset;" ]},
 
 
 

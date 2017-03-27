@@ -5,10 +5,6 @@ if (status.stat("fireResistance",0)  >= 0.25) or  (status.stat("physicalResistan
   effect.expire()
 end
 
-if on then
-	effect.expire()
-end
-	
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
 
     
@@ -20,6 +16,7 @@ end
   self.biomeTemp = config.getParameter("biomeTemp",0)              
   
   --timers
+  
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("physicalResistance",0)) *10)
   
@@ -32,9 +29,10 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
+  if not self.usedIntro and (self.timerRadioMessage == 0) then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejungle", 1.0) -- send player a warning
     self.usedIntro = 1
+    self.timerRadioMessage = 20
   end
   
   activateVisualEffects()
@@ -197,10 +195,12 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	   status.modifyResource("health", -self.damageApply * dt)
 
            if (status.resource("health")) <= (status.resource("health")/3) then
-             mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("physicalResistance",0), 
-	         speedModifier = status.stat("physicalResistance",0) 
-             })  
+                self.modifier = status.stat("physicalResistance",0)
+           	if (status.stat("physicalResistance",0) <= 0) then self.modifier = 0.05 end
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = self.modifier, 
+	         	speedModifier = self.modifier 
+             	})  
            end
       end  
       self.biomeTimer = self.biomeTimer - dt

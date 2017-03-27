@@ -4,7 +4,7 @@ function init()
 if (status.stat("fireResistance",0)  >= 1.0) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
   effect.expire()
 end
-
+  self.usedIntro = 0
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -27,7 +27,7 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   if (status.stat("fireResistance") <= 0.25) then
-    if not self.usedIntro then
+    if not self.usedIntro and self.timerRadioMessage == 0 then
       -- activate visuals and check stats
       world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
       self.usedIntro = 1

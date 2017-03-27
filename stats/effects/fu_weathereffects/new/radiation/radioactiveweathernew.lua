@@ -5,6 +5,15 @@ if (status.stat("radioactiveResistance",0)  >= 1.0) or status.statPositive("biom
   effect.expire()
 end
 
+-- checks strength of effect vs resistance
+if (config.getParameter("baseRate",0) == 5) and (status.stat("radioactiveResistance",0)  >= 0.3) then
+  effect.expire()
+elseif (config.getParameter("baseRate",0) == 4) and (status.stat("radioactiveResistance",0)  >= 0.6) then
+  effect.expire()
+elseif (config.getParameter("baseRate",0) == 3) and (status.stat("radioactiveResistance",0)  >= 1.0) then
+  effect.expire()   
+end
+  self.usedIntro = 0
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -27,9 +36,10 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
+  if not self.usedIntro and self.timerRadioMessage == 0 then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeradiation", 1.0) -- send player a warning
     self.usedIntro = 1
+    self.timerRadioMessage = 20
   end
   
   activateVisualEffects()

@@ -4,6 +4,13 @@ function init()
 if (status.stat("cosmicResistance",0)  >= 1.0) or status.statPositive("insanityImmunity") or world.type()=="unknown" then
   effect.expire()
 end
+
+if (config.getParameter("baseDmgPerTick",0) >= 2) and (status.stat("cosmicResistance",0)  >= 0.6) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 4) and (status.stat("cosmicResistance",0)  >= 0.9) then
+  effect.expire()
+end
+
   -- Environment Configuration --
   --base values
   self.baseRate = config.getParameter("baseRate",0)                

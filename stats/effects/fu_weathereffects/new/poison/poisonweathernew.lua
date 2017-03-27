@@ -1,8 +1,19 @@
 require("/scripts/vec2.lua")
 
 function init()
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or world.type()=="unknown" then
+if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") or world.type()=="unknown" then
   effect.expire()
+end
+
+-- checks strength of effect vs resistance
+if (config.getParameter("baseDmgPerTick",0) >= 1) and (status.stat("poisonResistance",0)  >= 0.3) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 2) and (status.stat("poisonResistance",0)  >= 0.6) then
+  effect.expire()
+elseif (config.getParameter("baseDmgPerTick",0) >= 3) and (status.stat("poisonResistance",0)  >= 1.0) then
+  effect.expire()
+elseif (config.getParameter("biomeThreshold",0) == 1.2) and (status.stat("poisonResistance",0)  >= 0.5) then
+  effect.expire()   
 end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
@@ -17,7 +28,6 @@ end
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
-  
   --conditionals
 
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -27,9 +37,10 @@ end
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
   -- activate visuals and check stats
-  if not self.usedIntro then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomegenericpoison", 1.0) -- send player a warning
-    self.usedIntro = 1
+  if (self.timerRadioMessage == 0) and not self.usedIntro then
+    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
+    self.usedIntro = 1 
+    self.timerRadioMessage = 10 
   end
   
   activateVisualEffects() 
@@ -136,6 +147,7 @@ end
 
 
 function update(dt)
+
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
@@ -166,7 +178,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
                 if self.timerRadioMessage == 0 then
                   if not self.usedWind then
                     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
-                    self.timerRadioMessage = 10 
+                    self.timerRadioMessage = 220 
                     self.usedWind = 1
                   end
 		end
@@ -184,12 +196,14 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       end 
         
         status.modifyResource("health", -self.damageApply * dt)
-
-        -- less agile the more damaged you are
-        mcontroller.controlModifiers({  
-	 airJumpModifier = 1 * (status.resource("health")/100), 
-	 speedModifier = 1 * (status.resource("health")/100)
-        }) 
+        
+           if (status.stat("poisonResistance",0) <= 0) then self.modifier = 0 end
+	   self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
+           if self.modifier <= 0 then self.modifier = 0.15 end	
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = 1 * self.modifier, 
+	         	speedModifier = (1 * self.modifier) + 0.1 
+             })               
       end     
 end       
 
