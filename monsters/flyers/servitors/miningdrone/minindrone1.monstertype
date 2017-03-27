@@ -1,12 +1,12 @@
 {
-	"type": "fuscannerdronecombo3",
-	"shortdescription": "Combo Scanner mkIII",
-	"description": "Provides information on nearby caves and ores.",
+	"type": "miningdrone1",
+	"shortdescription": "Mining Droid",
+	"description": "Provides information on nearby ores.",
 	"reversed": true,
-	"categories": ["servitor2"],
+	"categories": ["miningdrone1"],
 	"parts": ["body"],
 
-	"animation": "servitor2.animation",
+	"animation": "miningdrone.animation",
 	"dropPools": [],
 	"baseParameters": {
 	
@@ -19,17 +19,15 @@
 		],
 		
 		"pingDetectConfig": {
-			"types": ["ore","cave"],
+			"types": ["ore"],
 			"image": "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
 			"variants": 4,
 			"pingRange": 24,
 			"pingBandWidth": 10,
-			"pingDuration": 1.5,
+			"pingDuration": 2.5,
 			"pingCooldown": 10.0
 		},
 		"animationDelta": 5,
-		
-
 
 		"persistent": false,
 
@@ -141,8 +139,9 @@
 			"primaryScriptDelta": 5,
 
 			"stats": {
+			        "oreScan" : { "baseValue" : 1 },
 				"maxHealth":{
-					"baseValue":20
+					"baseValue":10
 				},
 				"healthRegen":{
 					"baseValue":0.1
