@@ -40,6 +40,7 @@ function unifiedGravMod.refreshGrav(dt)
 	if not self.ghosting then  --ignore effect if ghost
 		local gravMod=status.stat("gravityMod")--most multipliers are gonna be this. this is where gravity increases and decreases go.
 		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature.
+		
 		local newGrav=(gravMod*(self.gravMult2-gravBaseMod))--new effective gravity
 		local gravNorm=status.stat("gravityNorm")
 		if not self.flying then
