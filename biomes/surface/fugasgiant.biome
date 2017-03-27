@@ -2,10 +2,39 @@
   "name" : "fugasgiant",
   "friendlyName" : "Gas Giant",
   "airless" : true,
-  "spawnProfile" : {
-    "groups" : [ ]
-  },
 
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [ 
+          [ 0.04, "gasbag" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "gasImmunity" : {
+            "baseValue" : 1.0
+          },
+          "poisonStatusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "pressureProtection" : {
+            "baseValue" : 1.0
+          },
+          "extremepressureProtection" : {
+            "baseValue" : 1.0
+          },
+          "sandstormImmunity" : {
+            "baseValue" : 1.0
+          }            
+        }
+      }
+    }
+  },
+  
   "statusEffects" : [ "gasworld" ],
 
   "hueShiftOptions" : [-180, -160, -120, -100, -90, -80, -70, -60, -50, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180],
