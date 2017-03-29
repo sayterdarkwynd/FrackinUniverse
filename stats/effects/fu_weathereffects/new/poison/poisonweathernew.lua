@@ -37,7 +37,6 @@ function checkEffectValid()
 	  effect.expire()
 	end
 
-	-- checks strength of effect vs resistance
 	if (config.getParameter("baseDmgPerTick",0) == 1) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  self.usedIntro = nil
