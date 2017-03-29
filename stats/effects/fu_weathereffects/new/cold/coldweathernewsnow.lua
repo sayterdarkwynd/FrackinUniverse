@@ -1,13 +1,12 @@
 require("/scripts/vec2.lua")
 function init()
-  if (status.stat("iceResistance",0) >= 0.2) or (status.stat("physicalResistance",0) >= 0.2) or world.type()=="unknown" then
-    effect.expire()
-  end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -24,19 +23,28 @@ function init()
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
-  -- activate visuals and check stats
-  if (self.timerRadioMessage == 0) and not self.usedIntro then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
-    self.usedIntro = 1 
-    self.timerRadioMessage = 220 
-  end
-  
-  activateVisualEffects()
-  makeAlert()  
-  
+  checkEffectValid()
+
   script.setUpdateDelta(5)
 end
 
+--******* check effect and cancel ************
+function checkEffectValid()
+  if (status.stat("iceResistance",0) >= 0.15) or (status.stat("physicalResistance",0) >= 0.15) or world.type()=="unknown" then
+    deactivateVisualEffects()
+    effect.expire()
+  else
+	  -- activate visuals and check stats
+	  if (self.timerRadioMessage == 0) and not self.usedIntro then
+	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
+	    self.usedIntro = 1 
+	    self.timerRadioMessage = 220 
+	  end
+
+	  activateVisualEffects()
+	  makeAlert()    
+  end
+end
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -131,6 +139,10 @@ function activateVisualEffects()
   animator.burstParticleEmitter("statustext")   	  
 end
 
+function deactivateVisualEffects()
+  effect.setParentDirectives("fade=3066cc=0.0") 	  
+end
+
 -- ice breath
 function makeAlert()
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
@@ -139,6 +151,7 @@ end
 
 
 function update(dt)
+checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

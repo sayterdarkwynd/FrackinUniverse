@@ -1,25 +1,13 @@
 require("/scripts/vec2.lua")
+
 function init()
-
-if (status.stat("physicalResistance",0)  >= 1.0) or status.statPositive("sulphuricImmunity") or world.type()=="unknown" then
-  effect.expire()
-end
-
--- checks strength of effect vs resistance
-if (config.getParameter("baseDebuffPerTick",0) == 3) and (status.stat("physicalResistance",0)  >= 0.25) then
-  effect.expire()
-elseif (config.getParameter("baseDebuffPerTick",0) == 5) and (status.stat("physicalResistance",0)  >= 0.50) then
-  effect.expire()
-elseif (config.getParameter("baseDebuffPerTick",0) == 7) and (status.stat("physicalResistance",0)  >= 0.75) then
-  effect.expire()   
-elseif (config.getParameter("baseDebuffPerTick",0) == 9) and (status.stat("physicalResistance",0)  >= 1.0) then
-  effect.expire()     
-end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -35,7 +23,9 @@ end
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-  
+
+  checkEffectValid()
+
   -- activate visuals and check stats
   if not self.usedIntro then 
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
@@ -47,6 +37,28 @@ end
   script.setUpdateDelta(5)
 end
 
+--******* check effect and cancel ************
+function checkEffectValid()
+	if status.statPositive("sulphuricImmunity") or world.type()=="unknown" then
+	  deactivateVisualEffects()
+	  effect.expire()
+	end
+
+	-- checks strength of effect vs resistance
+	if (config.getParameter("baseDebuffPerTick",0) == 3) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("baseDebuffPerTick",0) == 5) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("baseDebuffPerTick",0) == 7) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()   
+	elseif (config.getParameter("baseDebuffPerTick",0) == 9) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()     
+	end
+end
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -137,6 +149,10 @@ function activateVisualEffects()
   effect.setParentDirectives("fade=ffbe22=0.3")
 end
 
+function deactivateVisualEffects()
+  effect.setParentDirectives("fade=ffbe22=0")
+end
+
 function makeAlert()
 	  local statusTextRegion = { 0, 1, 0, 1 }
 	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
@@ -145,7 +161,7 @@ end
 
 
 function update(dt)
-
+checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

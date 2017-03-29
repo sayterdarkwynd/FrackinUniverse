@@ -1,23 +1,13 @@
 require("/scripts/vec2.lua")
 function init()
 
-if (status.stat("radioactiveResistance",0)  >= 1.0) or status.statPositive("biomeradiationImmunity") or status.statPositive("ffextremeradiationImmunity") or world.type()=="unknown" then
-  effect.expire()
-end
-
--- checks strength of effect vs resistance
-if (config.getParameter("baseRate",0) == 5) and (status.stat("radioactiveResistance",0)  >= 0.3) then
-  effect.expire()
-elseif (config.getParameter("baseRate",0) == 4) and (status.stat("radioactiveResistance",0)  >= 0.6) then
-  effect.expire()
-elseif (config.getParameter("baseRate",0) == 3) and (status.stat("radioactiveResistance",0)  >= 1.0) then
-  effect.expire()   
-end
   self.usedIntro = 0
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -34,18 +24,45 @@ end
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-  
-  -- activate visuals and check stats
-  if not self.usedIntro and self.timerRadioMessage == 0 then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeradiation", 1.0) -- send player a warning
-    self.usedIntro = 1
-    self.timerRadioMessage = 20
-  end
-  
-  activateVisualEffects()
-  makeAlert()  
+
+  checkEffectValid()
 
   script.setUpdateDelta(5)
+end
+
+
+
+--******* check effect and cancel ************
+function checkEffectValid()
+	if status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") or world.type()=="unknown" then
+	  deactivateVisualEffects()
+	  effect.expire()
+	end
+
+	-- checks strength of effect vs resistance
+	if (config.getParameter("baseDmgPerTick",0) == 1) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("baseDmgPerTick",0) == 2) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("baseDmgPerTick",0) == 3) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("biomeThreshold",0) == 1.2) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire() 
+	else
+	  -- activate visuals and check stats
+	  if not self.usedIntro and self.timerRadioMessage == 0 then
+	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeradiation", 1.0) -- send player a warning
+	    self.usedIntro = 1
+	    self.timerRadioMessage = 20
+	  end
+
+	  activateVisualEffects()
+	  makeAlert()  	
+	end
 end
 
 
@@ -143,6 +160,11 @@ function activateVisualEffects()
   animator.setParticleEmitterActive("radioactivebreath", true) 
 end
 
+function deactivateVisualEffects()
+  effect.setParentDirectives("fade=33dd15=0")
+  animator.setParticleEmitterActive("radioactivebreath", false) 
+end
+
 function makeAlert()
         world.spawnProjectile("poisonsmoke",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
  	animator.playSound("bolt")
@@ -150,6 +172,7 @@ end
 
 
 function update(dt)
+checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

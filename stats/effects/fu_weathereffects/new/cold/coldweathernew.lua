@@ -1,23 +1,12 @@
 require("/scripts/vec2.lua")
 function init()
-if (status.stat("iceResistance",0)  >= 1.0) or status.statPositive("biomecoldImmunity") or status.statPositive("ffextremecoldImmunity") or world.type()=="unknown" then
-  effect.expire()
-end
 
-if (config.getParameter("baseRate",0) == 10) and (status.stat("iceResistance",0)  >= 0.2) then
-  effect.expire()
-elseif (config.getParameter("baseRate",0) == 4) and (status.stat("iceResistance",0)  >= 0.35) then
-  effect.expire()
-elseif (config.getParameter("baseRate",0) == 3) and (status.stat("iceResistance",0)  >= 0.65) then
-  effect.expire() 
-elseif (config.getParameter("baseRate",0) == 2) and (status.stat("iceResistance",0)  >= 1.0 ) then
-  effect.expire()    
-end
-  
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -33,20 +22,41 @@ end
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-  
-  -- activate visuals and check stats
-  if (self.timerRadioMessage == 0) and not self.usedIntro then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
-    self.usedIntro = 1 
-    self.timerRadioMessage = 220 
-  end
-  
-  
-  activateVisualEffects()
-    
-  makeAlert()  
-  
+
+
+  checkEffectValid()
+
   script.setUpdateDelta(5)
+end
+
+--******* check effect and cancel ************
+function checkEffectValid()
+	if status.statPositive("biomecoldImmunity") or status.statPositive("ffextremecoldImmunity") or world.type()=="unknown" then
+	  effect.expire()
+	end
+
+	if (config.getParameter("baseRate",0) == 10) and (status.stat("iceResistance",0)  >= self.effectCutoffValue) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("baseRate",0) == 4) and (status.stat("iceResistance",0)  >= self.effectCutoffValue) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("baseRate",0) == 3) and (status.stat("iceResistance",0)  >= self.effectCutoffValue) then
+	  deactivateVisualEffects()
+	  effect.expire() 
+	elseif (config.getParameter("baseRate",0) == 2) and (status.stat("iceResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire() 
+	else
+	  -- activate visuals and check stats
+	  if (self.timerRadioMessage == 0) and not self.usedIntro then
+	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
+	    self.usedIntro = 1 
+	    self.timerRadioMessage = 220 
+	  end
+	  activateVisualEffects()
+	  makeAlert()  	
+	end
 end
 
 
@@ -143,6 +153,10 @@ function activateVisualEffects()
   animator.burstParticleEmitter("statustext")   	  
 end
 
+function deactivateVisualEffects()
+  effect.setParentDirectives("fade=3066cc=0.0")  	  
+end
+
 -- ice breath
 function makeAlert()
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
@@ -151,6 +165,7 @@ end
 
 
 function update(dt)
+checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

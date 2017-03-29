@@ -1,24 +1,14 @@
 require("/scripts/vec2.lua")
 require("/scripts/util.lua")
+
 function init()
-
-if (status.stat("cosmicResistance",0)  >= 1.0) or status.statPositive("aetherImmunity") or world.type()=="unknown" then
-  effect.expire()
-end
-
--- checks strength of effect vs resistance
-if (config.getParameter("biomeTemp",0) == 2) and (status.stat("cosmicResistance",0)  >= 0.45) then
-  effect.expire()
-elseif (config.getParameter("biomeTemp",0) == 3) and (status.stat("cosmicResistance",0)  >= 0.70) then
-  effect.expire()   
-elseif (config.getParameter("biomeTemp",0) == 4) and (status.stat("cosmicResistance",0)  >= 1.0) then
-  effect.expire()     
-end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -34,19 +24,40 @@ end
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-  
-  -- activate visuals and check stats
-    if not self.usedIntro then
-      -- activate visuals and check stats
-     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaether", 1.0) -- send player a warning
-      self.usedIntro = 1
-    end
-    
-  
-  activateVisualEffects()
+
+
+  checkEffectValid()
+
   script.setUpdateDelta(5)
 end
 
+
+--******* check effect and cancel ************
+function checkEffectValid()
+	if status.statPositive("aetherImmunity") or world.type()=="unknown" then
+	  effect.expire()
+	end
+
+	-- checks strength of effect vs resistance
+	if (config.getParameter("biomeTemp",0) == 2) and ( self.effectCutoff  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("biomeTemp",0) == 3) and ( self.effectCutoff  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()   
+	elseif (config.getParameter("biomeTemp",0) == 4) and ( self.effectCutoff  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire() 
+	else
+	  -- activate visuals and check stats
+	    if not self.usedIntro then
+	      -- activate visuals and check stats
+	     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaether", 1.0) -- send player a warning
+	      self.usedIntro = 1
+	    end
+	  activateVisualEffects()	
+	end
+end
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -137,6 +148,9 @@ end
 function activateVisualEffects()
   effect.setParentDirectives("fade=ff23cc=0.3")
 end
+function deactivateVisualEffects()
+  effect.setParentDirectives("fade=ff23cc=0.0")
+end
 
 -- ice breath
 function makeAlert()
@@ -147,6 +161,7 @@ end
 
 
 function update(dt)
+checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
