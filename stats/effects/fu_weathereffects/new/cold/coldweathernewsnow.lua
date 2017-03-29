@@ -30,6 +30,10 @@ end
 
 --******* check effect and cancel ************
 function checkEffectValid()
+  if world.entityType(entity.id()) ~= "player" then
+    deactivateVisualEffects()
+    effect.expire()
+  end
   if (status.stat("iceResistance",0) >= 0.15) or (status.stat("physicalResistance",0) >= 0.15) or world.type()=="unknown" then
     deactivateVisualEffects()
     effect.expire()

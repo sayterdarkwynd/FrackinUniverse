@@ -31,6 +31,10 @@ end
 
 --******* check effect and cancel ************
 function checkEffectValid()
+  if world.entityType(entity.id()) ~= "player" then
+    deactivateVisualEffects()
+    effect.expire()
+  end
 	if status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  self.usedIntro = nil	

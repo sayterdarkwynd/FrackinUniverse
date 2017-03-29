@@ -34,6 +34,10 @@ end
 
 --******* check effect and cancel ************
 function checkEffectValid()
+	  if world.entityType(entity.id()) ~= "player" then
+	    deactivateVisualEffects()
+	    effect.expire()
+	  end
 	if status.statPositive("aetherImmunity") or world.type()=="unknown" then
 	  effect.expire()
 	end

@@ -31,6 +31,10 @@ end
 
 --******* check effect and cancel ************
 function checkEffectValid()
+  if world.entityType(entity.id()) ~= "player" then
+    deactivateVisualEffects()
+    effect.expire()
+  end
 	if (status.stat("fireResistance",0)  >= 0.25) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  effect.expire()

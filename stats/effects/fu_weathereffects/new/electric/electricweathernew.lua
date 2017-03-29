@@ -31,6 +31,10 @@ end
 
 --******* check effect and cancel ************
 function checkEffectValid()
+	  if world.entityType(entity.id()) ~= "player" then
+	    deactivateVisualEffects()
+	    effect.expire()
+	  end
 	if status.statPositive("biomeelectricImmunity") or world.type()=="unknown"  then
 	  deactivateVisualEffects()
 	  effect.expire()
@@ -205,6 +209,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
           self.timerRadioMessage = self.timerRadioMessage - dt 
 
         -- are they in liquid?
+        
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
         local mouthful = world.liquidAt(mouthposition)        
         if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
@@ -234,8 +239,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	  self.isOn = 1
       end
 
-      self.biomeTimer = self.biomeTimer - dt
-      
+      self.biomeTimer = self.biomeTimer - dt     
 end       
 
 function uninit()
