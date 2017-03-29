@@ -12,7 +12,7 @@ armorBonus={
 	{stat = "poisonStatusImmunity", amount = 1},
 	{stat = "biomeheatImmunity", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
-	{stat = "biomecoldImmunity", amount = 1}	
+	{stat = "biomecoldImmunity", amount = 1},	
 	{stat = "ffextremeheatImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},
 	{stat = "ffextremecoldImmunity", amount = 1}

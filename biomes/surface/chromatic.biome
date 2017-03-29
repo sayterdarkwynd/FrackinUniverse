@@ -2,7 +2,7 @@
   "name" : "chromatic",
   "friendlyName" : "chromatic",
 
-  "statusEffects" : [ "ffextremeradiation" ],
+  "statusEffects" : [ "ffextremeradiation3" ],
 
  "spawnProfile" : {
     "groups" : [
@@ -340,6 +340,26 @@
            }
          ]
       },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "swampplant",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 220
+            },
+            {
+              "name" : "chromaticgrass",
+              "baseHueShiftMax" : 60,
+              "modHueShiftMax" : 220
+            } 
+          ]
+        },      
          {
           "mode" : "floor",
           "priority" : 1.0,

@@ -1,0 +1,57 @@
+{
+  "projectileName" : "astraltear2",
+  "image" : "astraltear.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "timeToLive" : 5,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [100, 100, 100],
+  "pointLight" : true,
+  "flippable" : true,
+  "piercing" : true,
+  "statusEffects" : [ ],
+  "power" : 5.0,
+  "speed" : 0,
+  "knockback" : 20,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
+  "damageKind" : "shadow",
+  "fullbright" : false,
+  "damagePoly" : [[-16, 24], [8, 16], [16, -24], [-8, -16]],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "astraltearstop2",
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 1
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/astraltear_stop2.ogg" ]
+    }
+  ],
+  
+  "periodicActions" : [
+    {
+      "action" : "particle",
+      "specification" : "shadowsmoke2",
+      "time" : 0.1,
+      "repeat" : true
+    },
+    {
+      "action" : "particle",
+      "specification" : "shadowsmoke2",
+      "time" : 0.1,
+      "repeat" : true
+    },
+    {
+      "action" : "particle",
+      "specification" : "shadowsmoke2",
+      "time" : 0.1,
+      "repeat" : true
+    }
+  ],
+
+  "persistentAudio" : "/sfx/projectiles/iceorb_loop.ogg"
+}

@@ -148,3 +148,7 @@ end
 function windLevel()
 	return world.windLevel(mcontroller.position())
 end
+
+function daytimeCheck()
+	return world.timeOfDay() < 0.5 
+end

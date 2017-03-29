@@ -31,26 +31,31 @@
 
       "hurtWaitForGround" : false,
 
-      "foundTargetActions" : [],
+      "foundTargetActions" : [
+     
+      ],
 
-      "fleeActions" : [],
+      "fleeActions" : [ 
+      
+      ],
 
       "hostileActions" : [
        {
           "name" : "action-fire",
-          "cooldown" : 4,
+          "cooldown" : 5,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
-            "minimumRange" : 7,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
             "windupStopForce" : 50,
             "windupState" : "fire",
             "windupTime" : 0.4,
 
             "projectileType" : "laser-1",
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
             "projectileParameters" : {
-              "speed" : 40,
-              "timeToLive" : 0.4
+              "speed" : 60
             },
             "power" : 5,
             "fireOffset" : [0, 0],
@@ -62,123 +67,61 @@
             "winddownState" : "",
             "winddownTime" : 0.1
           }
-        },      
-       {
-          "name" : "action-fire",
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 6,
-            "minimumRange" : 0,
-            "windupStopForce" : 50,
-            "windupState" : "fire",
-            "windupTime" : 0.4,
-
-            "projectileType" : "blueflamethrower",
-            "projectileCount" : 5,
-            "projectileInterval" : 0.05,
-            "projectileParameters" : {
-              "speed" : 20,
-              "timeToLive" : 0.25
-            },
-            "power" : 5,
-            "fireOffset" : [-3, 2.5],
-            "aimAtTarget" : true,
-            "onGround" : false,
-            "fireState" : "",
-            "fireSound" : "fire2",
-
-            "winddownState" : "",
-            "winddownTime" : 0.1
-          }
         }
       ],
 
       "approachActions" : [
         {
-          "name" : "approach-fly",
+          "name" : "approach-swarm",
           "parameters" : {
-            "minRange" : 1,
-            "maxRange" : 4
+            "usePathfinding" : false
           }
         }
       ],
 
       "followActions" : [
         {
-          "name" : "approach-teleport"
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
         },
         {
           "name" : "approach-fly",
           "parameters" : {
-            "minRange" : 1,
-            "maxRange" : 4
+            "usePathfinding" : false
           }
         }
       ],
 
       "wanderActions" : [
         {
-          "name" : "wander-fly",
-          "parameters" : {
-            "wanderTime" : [1,2],
-            "groundDistance" : 5,
-            "ceilingDistance" : 5,
-            "xVelocity" : 4,
-            "yVelocity" : 12
-          }
+          "name" : "emerge-fly"
         },
         {
-          "name" : "action-statuseffect", 
-          "cooldown" : 20,
+          "name" : "wander-fly",
           "parameters" : {
-          "effect" : "cultistshield",
-          "duration" : 2
+            "wanderTime" : [2,4],
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 8,
+            "yVelocity" : 12
           }
-        },   
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 60,
-          "parameters" : {
-          "effect" : "percentarmorboostrobot",
-          "duration" : 20
-          }
-        },        
-        {
-          "name" : "action-statuseffect",
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "headlamp",
-          "duration" : 220
-          }
-        }         
+        }        
       ],
 
       "concurrentActions" : [
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ""
-          }
-        }         
+       
       ],
       
       "concurrentHostileActions" : [
         {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : "aggro"
-          }
-        },
-        {
           "name" : "action-statuseffect", 
-          "cooldown" : 60,
+          "cooldown" : 200,
           "parameters" : {
-          "effect" : "percentarmorboostrobot",
-          "duration" : 20
+          "effect" : "glow",
+          "duration" : 220
           }
-        },        
+        },      
         {
           "name" : "action-statuseffect", 
           "cooldown" : 20,
@@ -186,7 +129,7 @@
           "effect" : "cultistshield",
           "duration" : 2
           }
-        },          
+        },         
         {
           "name" : "action-statuseffect",
           "cooldown" : 200,

@@ -1,0 +1,173 @@
+{
+	"type": "miningdrone1",
+	"shortdescription": "Mining Droid",
+	"description": "Provides information on nearby ores.",
+	"reversed": true,
+	"categories": ["miningdrone1"],
+	"parts": ["body"],
+
+	"animation": "miningdrone.animation",
+	"dropPools": [],
+	"baseParameters": {
+	
+		"scripts": [
+			"/monsters/monster.lua"
+		],
+		
+		"animationScripts": [
+			"/monsters/flyers/servitors/orescan.lua"
+		],
+		
+		"pingDetectConfig": {
+			"types": ["ore"],
+			"image": "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+			"variants": 4,
+			"pingRange": 24,
+			"pingBandWidth": 10,
+			"pingDuration": 2.5,
+			"pingCooldown": 10.0
+		},
+		"animationDelta": 5,
+
+		"persistent": false,
+
+		"behavior": "monster",
+		"deathBehavior": "monster-death",
+		"seeThroughLiquid": false,
+		"behaviorConfig": {
+			"damageOnTouch": false,
+
+			"targetQueryRange": 0,
+			"targetOnDamage": false,
+			"keepTargetInSight": true,
+			"keepTargetInRange": 50,
+			"targetOutOfSightTime": 5.0,
+
+			"hurtWaitForGround": false,
+
+			"foundTargetActions": [],
+
+			"fleeActions": [
+			
+			],
+
+			"hostileActions": [],
+
+			"periodicActions": [],
+
+		      "approachActions" : [
+			{
+			  "name" : "approach-fly",
+			  "parameters" : {
+			    "minRange" : 1,
+			    "maxRange" : 4
+			  }
+			}
+		      ],
+
+		      "followActions" : [
+			{
+			  "name" : "approach-teleport"
+			},
+			{
+			  "name" : "approach-fly",
+			  "parameters" : {
+			    "minRange" : 1,
+			    "maxRange" : 4
+			  }
+			}
+		      ],
+
+		      "wanderActions" : [
+			{
+			  "name" : "wander-fly",
+			  "parameters" : {
+			    "wanderTime" : [2,4],
+			    "groundDistance" : 3,
+			    "ceilingDistance" : 2,
+			    "xVelocity" : 4,
+			    "yVelocity" : 12
+			  }
+			}
+		      ],
+
+			"concurrentActions": [],
+
+			"concurrentHostileActions": [],
+
+			"deathActions": []
+
+		},
+
+
+		"metaBoundBox": [-4, -4, 4, 4],
+		"scale": 0.35,
+
+		"movementSettings": {
+			"collisionPoly" : [ [0.625, 0.9375], [1.125, 0.4375], [1.125, -0.4375], [0.625, -0.9375], [-0.625, -0.9375], [-1.125, -0.4375], [-1.125, 0.4375], [-0.625, 0.9375] ],
+
+			"mass": 0.1,
+			"walkSpeed": 4,
+			"runSpeed": 24,
+			"gravityEnabled": false,
+			"collisionEnabled":true,
+			"airFriction": 4,
+			"airForce": 40,
+			"flySpeed": 15
+		},
+
+		"bodyMaterialKind": "robotic",
+		"knockoutTime": 0.1,
+		"knockoutAnimationStates": {
+			"damage": "stunned"
+		},
+		"deathParticles": "deathPoof",
+		"knockoutEffect": "",
+
+		"statusSettings": {
+			"statusProperties": {
+				"targetMaterialKind": "robotic"
+			},
+
+			"appliesEnvironmentStatusEffects": false,
+			"appliesWeatherStatusEffects": false,
+			"minimumLiquidStatusEffectPercentage": 10.0,
+
+			"primaryScriptSources": [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta": 5,
+
+			"stats": {
+			        "oreScan" : { "baseValue" : 1 },
+				"maxHealth":{
+					"baseValue":10
+				},
+				"healthRegen":{
+					"baseValue":0.1
+				},				
+				"powerMultiplier": {
+					"baseValue": 0.0
+				}
+			},
+			"resources": {
+				"stunned": {
+					"deltaValue": -1.0,
+					"initialValue": 0.0,
+					"maxValue":0.0
+				},
+				"health": {
+					"maxStat": "maxHealth",
+					"deltaStat": "healthRegen",
+					"defaultPercentage": 100
+				}
+			}
+		},
+
+		"mouthOffset": [0, 0],
+		"feetOffset": [0, -8],
+		"capturable": true,
+		"captureHealthFraction": 1.0,
+		"nametagColor": [64, 200, 255]
+	}
+}

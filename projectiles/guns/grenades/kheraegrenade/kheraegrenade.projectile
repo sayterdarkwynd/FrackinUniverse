@@ -1,0 +1,51 @@
+{
+  "projectileName" : "kheraegrenade",
+  "physics" : "grenade",
+  "timeToLive" : 0.7,
+  "image" : "kheraegrenade.png",
+  "damageKindImage" : "firedamage.png",
+  "animationCycle" : 0.7,
+  "frameNumber" : 4,
+  "damageKind" : "fireplasma",
+  
+  "pointLight" : true,
+  "lightColor" : [175, 0, 0],
+  "fullbright" : true,
+  
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "kheraegrenadetrans",
+      "angle" : 0,
+	  "inheritDamageFactor" : 0.75
+    },
+    {
+      "action" : "projectile",
+      "type" : "kheraegrenadetrans",
+      "angle" : 72,
+	  "inheritDamageFactor" : 0.75
+    },
+    {
+      "action" : "projectile",
+      "type" : "kheraegrenadetrans",
+      "angle" : 144,
+	  "inheritDamageFactor" : 0.75
+    },
+    {
+      "action" : "projectile",
+      "type" : "kheraegrenadetrans",
+      "angle" : 216,
+	  "inheritDamageFactor" : 0.75
+    },
+    {
+      "action" : "projectile",
+      "type" : "kheraegrenadetrans",
+      "angle" : 288,
+	  "inheritDamageFactor" : 0.75
+    }
+  ]
+}

@@ -1,21 +1,13 @@
 require("/scripts/vec2.lua")
 
 function init()
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("protoImmunity") or world.type()=="unknown" then
-  effect.expire()
-end
-
--- checks strength of effect vs resistance
-if (config.getParameter("biomeTemp",0) == 1.15) and (status.stat("poisonResistance",0)  >= 0.45) then
-  effect.expire()
-elseif (config.getParameter("biomeTemp",0) == 1.0) and (status.stat("poisonResistance",0)  >= 0.70) then
-  effect.expire()      
-end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -24,30 +16,57 @@ end
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
-  
-  -- activate visuals and check stats
-  if not self.usedIntro and (self.timerRadioMessage == 0) then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
-    self.usedIntro = 1
-    self.timerRadioMessage = 20
-  end
-  
-  activateVisualEffects()
+
+  checkEffectValid()
 
   script.setUpdateDelta(5)
 end
 
+
+--******* check effect and cancel ************
+function checkEffectValid()
+  if world.entityType(entity.id()) ~= "player" then
+    deactivateVisualEffects()
+    effect.expire()
+  end
+	if status.statPositive("protoImmunity") or world.type()=="unknown" then
+	  deactivateVisualEffects()
+	  effect.expire()
+	end
+
+	-- checks strength of effect vs resistance
+	if (config.getParameter("biomeTemp",0) == 1.15) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects2()
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("biomeTemp",0) == 1.0) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects2()
+	  deactivateVisualEffects()
+	  effect.expire() 
+	else
+	  -- activate visuals and check stats
+	  if not self.usedIntro and (self.timerRadioMessage == 0) then
+	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
+	    self.usedIntro = 1
+	    self.timerRadioMessage = 20
+	  end
+
+	  activateVisualEffects()	
+	end
+end
+
+
 -- *******************Damage effects
 function setEffectDamage()
-  return ( ( self.baseDmg ) *  (1 -status.stat("fireResistance",0) ) * self.biomeThreshold  )
+  return ( ( self.baseDmg ) *  (1 -status.stat("poisonResistance",0) ) * self.biomeThreshold  )
 end
 
 function setEffectDebuff()
-  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("fireResistance",0) * self.biomeThreshold) )
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("poisonResistance",0) * self.biomeThreshold) )
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (self.baseRate * (1 - status.stat("poisonResistance",0)))
 end
 
 -- ******** Applied bonuses and penalties
@@ -134,6 +153,13 @@ function activateVisualEffects2()
   animator.burstParticleEmitter("statustext")
 end
 
+function deactivateVisualEffects()
+    animator.setParticleEmitterActive("coldbreath", false) 
+end
+function deactivateVisualEffects2()
+  effect.setParentDirectives("fade=306630=0")
+end
+
 -- visual indicator for effect
 function makeAlert()
         world.spawnProjectile("poisonsmoke",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
@@ -141,7 +167,7 @@ end
 
 
 function update(dt)
-    
+checkEffectValid()    
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

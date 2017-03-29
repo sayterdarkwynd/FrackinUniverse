@@ -2,13 +2,14 @@
   "projectileName" : "atomsmashershot",
   "image" : "atomsmashershot.png",
   "animationCycle" : 0.3,
-  "level" : 1,
+  "level" : 6,
   "physics" : "bullet",
   "frameNumber" : 3,
   "pointLight" : true,
   "damagePoly" : [ [-28, 0], [0, 12], [16, 16], [28, 0], [-16, -16], [0, -12] ],
   "lightColor" : [255, 113, 0],
   "speed" : 50,
+  "universalDamage" : true,
   "actionOnReap" : [
     {
       "action" : "config",
@@ -36,7 +37,9 @@
       "angleAdjust" : 0
     }
   ],
-  "damageKind" : "default",
+  "damageKind" : "cosmic",
+  "damageType" : "IgnoresDef",
+  "power" : 30,
   "emitters" : [ "defaultblue" ]
 }
 
