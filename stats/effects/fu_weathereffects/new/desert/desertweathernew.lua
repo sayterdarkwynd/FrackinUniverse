@@ -242,8 +242,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 
 		   if (status.resource("health")) <= (status.resource("health")/4) then
 		     mcontroller.controlModifiers({
-			 airJumpModifier = 0.7, 
-			 speedModifier = 0.7 
+			 airJumpModifier = 0.85, 
+			 speedModifier = 0.85 
 		     })  
 		   end
 	      end  

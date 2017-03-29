@@ -231,13 +231,12 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       if status.stat("radioactiveResistance") <=0.99 then      
 	     self.damageApply = (self.damageApply /100)  
 	     status.modifyResource("health", -self.damageApply * dt)
-	   
+           
 	   if status.isResource("food") then
-	     self.debuffApply = (self.debuffApply /10)
 	     if status.resource("food") >= 2 then
-	       status.modifyResource("food", -self.debuffApply * dt )
+	       status.modifyResource("food", (-self.debuffApply /20) * dt )
 	     end
-           end     
+           end             
       end  
       self.biomeTimer = self.biomeTimer - dt
 end       
