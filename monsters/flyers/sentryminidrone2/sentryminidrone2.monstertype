@@ -15,7 +15,7 @@
   "baseParameters" : {
     "scripts" : [ "/monsters/monster.lua"],
 
-    "persistent" : true,
+    "persistent" : false,
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
@@ -181,7 +181,7 @@
       "flySpeed" : 40
     },
 
-    "bodyMaterialKind" : "organic",
+    "bodyMaterialKind" : "robotic",
 
     "knockoutTime" : 0.3,
     "knockoutAnimationStates" : {
@@ -192,11 +192,11 @@
 
     "statusSettings" : {
       "statusProperties" : {
-        "targetMaterialKind" : "organic"
+        "targetMaterialKind" : "robotic"
       },
-
-      "appliesWeatherStatusEffects" : true,
+      
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [

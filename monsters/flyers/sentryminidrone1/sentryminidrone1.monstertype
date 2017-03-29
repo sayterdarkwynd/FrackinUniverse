@@ -18,7 +18,7 @@
     ],
 
 
-    "persistent" : true,
+    "persistent" : false,
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
@@ -164,7 +164,7 @@
     "scale" : 0.8,
 
     "movementSettings" : {
-      "collisionEnabled" : false,
+      "collisionEnabled" : true,
       "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
 
       "mass" : 0.5,
@@ -177,7 +177,7 @@
       "flySpeed" : 26
     },
 
-    "bodyMaterialKind" : "organic",
+    "bodyMaterialKind" : "robotic",
 
     "knockoutTime" : 0.3,
     "knockoutAnimationStates" : {
@@ -188,11 +188,11 @@
 
     "statusSettings" : {
       "statusProperties" : {
-        "targetMaterialKind" : "organic"
+        "targetMaterialKind" : "robotic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
