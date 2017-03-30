@@ -1,0 +1,22 @@
+{
+  "itemName" : "deliciousmeat",
+  "rarity" : "Common",
+  "price" : 30,
+  "category" : "preparedFood",
+  "inventoryIcon" : "meatchunk.png",
+  "description" : "A wonderfully tasty looking morsel which you should *definitely* eat.",
+  "shortdescription" : "Delicious Mystery Meat",
+  "radioMessagesOnPickup" : [ "eatingYourself" ],
+  "effects" : [ [
+    {
+        "effect" : "bleedinglong2",
+        "duration" : 20
+    }
+  ] ],
+  "foodValue" : 45,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0
+}
