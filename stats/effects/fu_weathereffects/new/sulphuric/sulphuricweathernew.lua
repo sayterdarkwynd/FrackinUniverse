@@ -74,7 +74,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("physicalResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("physicalResistance",0) ),0.25))
 end
 
 -- ******** Applied bonuses and penalties

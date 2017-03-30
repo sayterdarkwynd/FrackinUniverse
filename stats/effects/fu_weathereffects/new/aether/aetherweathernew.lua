@@ -74,7 +74,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("cosmicResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("cosmicResistance",0) ),0.15))
 end
 
 -- ******** Applied bonuses and penalties

@@ -63,9 +63,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-
-  return (  self.baseRate *  math.min(   1 - math.min( status.stat("iceResistance",0) ),0.5))
-    
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("iceResistance",0) ),0.25))  
 end
 
 -- ******** Applied bonuses and penalties
@@ -247,7 +245,6 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		   end               
       end  
            if self.biomeTimer2 <= 0 then
-     
 		   activateVisualEffects()
 		   makeAlert() --misty breath
 		   self.biomeTimer2 = 2.4           

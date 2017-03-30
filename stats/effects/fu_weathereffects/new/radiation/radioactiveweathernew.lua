@@ -72,15 +72,15 @@ end
 
 -- *******************Damage effects
 function setEffectDamage()
-  return ( ( self.baseDmg ) *  (1 -status.stat("fireResistance",0) ) * self.biomeThreshold  )
+  return ( ( self.baseDmg ) *  (1 -status.stat("radioactiveResistance",0) ) * self.biomeThreshold  )
 end
 
 function setEffectDebuff()
-  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("fireResistance",0) * self.biomeThreshold) )
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("radioactiveResistance",0) * self.biomeThreshold) )
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("radioactiveResistance",0) ),0.45))
 end
 
 -- ******** Applied bonuses and penalties
