@@ -25,15 +25,6 @@ function init()
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
 
   checkEffectValid()
-
-  -- activate visuals and check stats
-  if not self.usedIntro then 
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
-     self.usedIntro = 1
-     self.timerRadioMessage = 20
-  end
-  
-  activateVisualEffects()
   script.setUpdateDelta(5)
 end
 
@@ -60,8 +51,15 @@ function checkEffectValid()
 	  effect.expire()   
 	elseif (config.getParameter("baseDebuffPerTick",0) == 9) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
-	  effect.expire()     
-	end
+	  effect.expire()   
+	else
+	  -- activate visuals and check stats
+	  if not self.usedIntro then 
+	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
+	     self.usedIntro = 1
+	     self.timerRadioMessage = 20
+	  end	
+	end	
 end
 
 -- *******************Damage effects
@@ -74,7 +72,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("physicalResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("physicalResistance",0) ),0.25))
 end
 
 -- ******** Applied bonuses and penalties

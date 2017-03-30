@@ -40,13 +40,7 @@ function checkEffectValid()
 	  effect.expire()
 	end
 
-	if (config.getParameter("baseDmgPerTick",0) == 5) and (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 6) and (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 7) and (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
+	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else
@@ -56,8 +50,6 @@ function checkEffectValid()
 	    self.usedIntro = 1
 	    self.timerRadioMessage = 20
 	  end
-
-	  activateVisualEffects()	
 	end
 end
 
@@ -71,7 +63,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.25))
 end
 
 -- ******** Applied bonuses and penalties
@@ -157,7 +149,7 @@ function deactivateVisualEffects()
 end
 
 function makeAlert()
-        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
+--        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
         animator.playSound("bolt")
 end
 
@@ -194,27 +186,28 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       self.timerRadioMessage = 10
       self.usedCavern = 1
     end
+    activateVisualEffects()
     setSituationPenalty()
   end  
 
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
-  
-      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < 1.0 then
-	  makeAlert()
-          self.biomeTimer = setEffectTime()
-          self.timerRadioMessage = self.timerRadioMessage - dt  	  
-      end 
 
-      if status.stat("fireResistance",0) <=0.99 then      
+      if (status.stat("fireResistance",0)) < (self.effectCutoffValue) then  
+             activateVisualEffects()
 	     status.modifyResource("health", -self.damageApply * dt)
 	   if status.isResource("food") then
 	     if status.resource("food") >= 2 then
-	       status.modifyResource("food", -self.debuffApply * dt )
+	       status.modifyResource("food", (-self.debuffApply /12) * dt )
 	     end
            end  
-
-           self.modifier = status.stat("fireResistance",0)
+	      if self.biomeTimer2 <= 0 and status.stat("fireResistance",0) < 1.0 then
+		  makeAlert()
+		  self.biomeTimer2 = setEffectTime()
+		  self.timerRadioMessage = self.timerRadioMessage - dt  
+		   sb.logInfo("timer val: "..self.biomeTimer2)
+	      end   
+           self.modifier = status.stat("fireResistance",0)         
            if (status.stat("fireResistance",0) <= 0) then self.modifier = 0 end
 		self.modifier = self.modifier + 0.3
              	mcontroller.controlModifiers({
@@ -222,8 +215,6 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	         	speedModifier = self.modifier 
              })              
       end  
-      self.biomeTimer = self.biomeTimer - dt
-      
 end       
 
 function uninit()

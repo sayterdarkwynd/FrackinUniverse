@@ -40,13 +40,7 @@ function checkEffectValid()
 	  effect.expire()
 	end
 
-	if (config.getParameter("baseDmgPerTick",0) == 4) and (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 5) and (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 6) and (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
+	if (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else
@@ -55,8 +49,6 @@ function checkEffectValid()
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
 	    self.usedIntro = 1
 	  end
-
-	  activateVisualEffects()	
 	end
 end
 
@@ -70,7 +62,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("electricResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("electricResistance",0) ),0.45))
 end
 
 -- ******** Applied bonuses and penalties
@@ -203,8 +195,9 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
   
-      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue then
 	  makeAlert()
+	  activateVisualEffects()
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt 
 

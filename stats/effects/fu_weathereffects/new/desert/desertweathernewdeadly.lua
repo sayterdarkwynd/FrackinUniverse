@@ -47,8 +47,6 @@ function checkEffectValid()
 	      self.usedIntro = 1
 	      self.timerRadioMessage = 60
 	    end
-
-	  activateVisualEffects()	
 	end
 end
 
@@ -62,7 +60,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.25))
 end
 
 -- ******** Applied bonuses and penalties
@@ -233,18 +231,18 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	      self.damageApply = setEffectDamage()   
 	      self.debuffApply = setEffectDebuff() 
 
-	      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < 1.0 then
+	      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < self.effectCutoffValue then
 		  self.biomeTimer = setEffectTime()
 		  self.timerRadioMessage = self.timerRadioMessage - dt  	  
 	      end 
 
-	      if status.stat("fireResistance",0) <=0.99 then      
+	      if status.stat("fireResistance",0) <= self.effectCutoffValue then      
 		   status.modifyResource("health", -self.damageApply * dt)
 
 		   if (status.resource("health")) <= (status.resource("health")/4) then
 		     mcontroller.controlModifiers({
-			 airJumpModifier = 0.6, 
-			 speedModifier = 0.6 
+			 airJumpModifier = 0.65, 
+			 speedModifier = 0.65 
 		     })  
 		   end
 	      end  
@@ -259,6 +257,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		  end
 		end  
 	end
+	activateVisualEffects()
   else
     self.gracePeriod = self.gracePeriod - dt
   end

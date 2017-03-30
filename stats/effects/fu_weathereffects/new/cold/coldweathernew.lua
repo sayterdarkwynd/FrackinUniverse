@@ -39,18 +39,9 @@ function checkEffectValid()
 	  effect.expire()
 	end
 
-	if (config.getParameter("baseRate",0) == 10) and (status.stat("iceResistance",0)  >= self.effectCutoffValue) then
+	if (status.stat("iceResistance",0)  >= self.effectCutoffValue) then
 	  deactivateVisualEffects()
 	  effect.expire()
-	elseif (config.getParameter("baseRate",0) == 4) and (status.stat("iceResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseRate",0) == 3) and (status.stat("iceResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire() 
-	elseif (config.getParameter("baseRate",0) == 2) and (status.stat("iceResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire() 
 	else
 	  -- activate visuals and check stats
 	  if (self.timerRadioMessage == 0) and not self.usedIntro then
@@ -58,8 +49,6 @@ function checkEffectValid()
 	    self.usedIntro = 1 
 	    self.timerRadioMessage = 220 
 	  end
-	  activateVisualEffects()
-	  makeAlert()  	
 	end
 end
 
@@ -74,7 +63,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("iceResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("iceResistance",0) ),0.25))  
 end
 
 -- ******** Applied bonuses and penalties
@@ -151,10 +140,7 @@ end
 
 -- alert the player that they are affected
 function activateVisualEffects()
-  effect.setParentDirectives("fade=3066cc=0.6")
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")   	  
+  effect.setParentDirectives("fade=3066cc=0.6") 	  
 end
 
 function deactivateVisualEffects()
@@ -173,7 +159,6 @@ checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
-
 --set the base stats
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
@@ -192,12 +177,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight()  
-
-      if self.biomeTimer <= 0 and status.stat("iceResistance",0) < 1.0 then
-	self.biomeTimer = self.biomeTimer - dt
-          -- cold wind
-        
-        
+  
+      if self.biomeTimer <= 0 and status.stat("iceResistance",0) < (self.effectCutoffValue) then
         if self.windLevel >= 40 then
                 setWindPenalty()   
                 if (self.timerRadioMessage <=0) then
@@ -237,39 +218,34 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 
 	self.damageApply = setEffectDamage()   
 	self.debuffApply = setEffectDebuff()  
-        
-            effect.addStatModifierGroup({
-              {stat = "maxHealth", amount = -self.damageApply  },
-              {stat = "powerMultiplier", amount = -(self.debuffApply/100 )  }
-            })
-            activateVisualEffects()
-            self.biomeTimer = setEffectTime()
+        self.biomeTimer = setEffectTime()
+        activateVisualEffects()
       end 
       
-      if status.stat("iceResistance",0) < 1.0 then      
-	     self.damageApply = self.damageApply  
-	     status.modifyResource("health", -self.damageApply * dt)
-	   
-	   if status.isResource("food") then
-	     self.debuffApply = (self.debuffApply /120) 
-	     if status.resource("food") >= 2 then
-	       status.modifyResource("food", -self.debuffApply * dt )
-	     end
-           end  
+      if status.stat("iceResistance",0) < self.effectCutoffValue then   
            self.modifier = status.stat("iceResistance",0)
-           if (status.stat("iceResistance",0) <= 0) then self.modifier = 0 end
-		self.modifier = self.modifier + 0.3
-             	mcontroller.controlModifiers({
+           if (status.stat("iceResistance",0) <= 0) then 
+             self.modifier = 0 
+           end
+	     self.modifier = self.modifier + 0.3
+             mcontroller.controlModifiers({
 	         	airJumpModifier = self.modifier, 
 	         	speedModifier = self.modifier - 0.1 
-             })    
+             }) 
+		     self.damageApply = self.damageApply  
+		     status.modifyResource("health", -self.damageApply * dt)
+
+		   if status.isResource("food") then
+		     self.debuffApply = (self.debuffApply /120) 
+		     if status.resource("food") >= 2 then
+		       status.modifyResource("food", -self.debuffApply * dt )
+		     end
+		   end               
       end  
-      --breath
-      if self.biomeTimer2 <= 0 and status.stat("iceResistance",0) < 1.0 then
-        makeAlert()
-        self.biomeTimer2 = 2.4
-      end
-        
+           if self.biomeTimer2 <= 0 then
+		   makeAlert() --misty breath
+		   self.biomeTimer2 = 2.4           
+           end      
 end         
 
 function uninit()

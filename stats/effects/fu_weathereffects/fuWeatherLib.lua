@@ -10,6 +10,8 @@ fuWeatherLib.timerCounters={}
 function fuWeatherLib.init()
 	-- Environment Configuration --
 	--base values
+	self.effectCutoff = config.getParameter("effectCutoff",0)
+        self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
 	self.baseRate = config.getParameter("baseRate",0)				
 	self.baseDmg = config.getParameter("baseDmgPerTick",0)
 	self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
@@ -111,6 +113,35 @@ function fuWeatherLib.getEffectTime(resistType)
 end
 
 -- ********************************
+function checkEffectValid()
+	  if world.entityType(entity.id()) ~= "player" then
+	    deactivateVisualEffects()
+	    effect.expire()
+	  end
+	if status.statPositive("aetherImmunity") or world.type()=="unknown" then
+	  effect.expire()
+	end
+
+	-- checks strength of effect vs resistance
+	if (config.getParameter("biomeTemp",0) == 2) and ( self.effectCutoff  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	elseif (config.getParameter("biomeTemp",0) == 3) and ( self.effectCutoff  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()   
+	elseif (config.getParameter("biomeTemp",0) == 4) and ( self.effectCutoff  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire() 
+	else
+	  -- activate visuals and check stats
+	    if not self.usedIntro then
+	      -- activate visuals and check stats
+	     world.sendEntityMessage(entity.id(), "queueRadioMessage", message, 1.0) -- send player a warning
+	      self.usedIntro = 1
+	    end
+	  activateVisualEffects()	
+	end
+end
 
 function liquidInMouth()
 	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))

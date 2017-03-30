@@ -38,7 +38,7 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if (status.stat("fireResistance",0)  >= 0.25) or  (status.stat("physicalResistance",0) >= 0.2) or status.statPositive("biomeheatImmunity") or world.type()=="unknown" then
+	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) or  (status.stat("physicalResistance",0) >= 0.2) or status.statPositive("biomeheatImmunity") or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  effect.expire()
 	  
@@ -47,10 +47,8 @@ function checkEffectValid()
 	  if not self.usedIntro and (self.timerRadioMessage == 0) then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejungle", 1.0) -- send player a warning
 	    self.usedIntro = 1
-	    self.timerRadioMessage = 20
+	    self.timerRadioMessage = 20  	
 	  end
-
-	  activateVisualEffects()	
 	end
 end
 
@@ -64,7 +62,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("physicalResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("physicalResistance",0) ),0.6))
 end
 
 -- ******** Applied bonuses and penalties
@@ -204,14 +202,14 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       self.damageApply = setEffectDamage()   
       self.debuffApply = setEffectDebuff() 
   
-      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < self.effectCutoffValue then
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt  	  
       end 
 
-      if status.stat("physicalResistance",0) <=0.99 then      
+      if status.stat("physicalResistance",0) <= self.effectCutoffValue then      
 	   status.modifyResource("health", -self.damageApply * dt)
-
+           activateVisualEffects()
            if (status.resource("health")) <= (status.resource("health")/3) then
                 self.modifier = status.stat("physicalResistance",0)
            	if (status.stat("physicalResistance",0) <= 0) then self.modifier = 0.05 end
