@@ -164,8 +164,6 @@ checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
-sb.logInfo("val : "..self.biomeTimer)
-sb.logInfo("val2 : "..self.biomeTimer2)
 --set the base stats
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
@@ -226,7 +224,6 @@ sb.logInfo("val2 : "..self.biomeTimer2)
 	self.damageApply = setEffectDamage()   
 	self.debuffApply = setEffectDebuff()  
         self.biomeTimer = setEffectTime()
-        sb.logInfo("setting : "..self.biomeTimer)
       end 
       
       if status.stat("iceResistance",0) < self.effectCutoffValue then   
