@@ -54,10 +54,10 @@ function checkEffectValid()
 	  if not self.usedIntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeinsanity", 1.0) -- send player a warning
 	    self.usedIntro = 1
+	    activateVisualEffects()
+	    		    
 	  end
-
-	  activateVisualEffects()
-	  messageCheck()	
+	  messageCheck()
 	end
 end
 

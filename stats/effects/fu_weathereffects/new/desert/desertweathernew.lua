@@ -44,10 +44,11 @@ function checkEffectValid()
 	      -- activate visuals and check stats
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
 	      self.usedIntro = 1
+	      activateVisualEffects()
 	    end
 	  end
 
-	  activateVisualEffects()	
+	  	
 	end
 end
 

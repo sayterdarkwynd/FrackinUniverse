@@ -58,12 +58,12 @@ function checkEffectValid()
 	  self.usedIntro = nil
 	  effect.expire()  
 	else
-	  activateVisualEffects() 
 	  -- activate visuals and check stats
 	  if (self.timerRadioMessage == 0) and not self.usedUntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
 	    self.usedIntro = 1 
 	    self.timerRadioMessage = 10 
+	    activateVisualEffects()
 	  end
 	end
 end

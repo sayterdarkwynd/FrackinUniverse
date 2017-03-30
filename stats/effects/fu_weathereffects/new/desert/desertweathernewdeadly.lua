@@ -46,9 +46,8 @@ function checkEffectValid()
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
 	      self.usedIntro = 1
 	      self.timerRadioMessage = 60
+	      activateVisualEffects()
 	    end
-
-	  activateVisualEffects()	
 	end
 end
 
