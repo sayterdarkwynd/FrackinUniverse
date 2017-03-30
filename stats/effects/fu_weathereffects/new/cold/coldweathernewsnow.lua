@@ -42,10 +42,8 @@ function checkEffectValid()
 	  if (self.timerRadioMessage == 0) and not self.usedIntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
 	    self.usedIntro = 1 
-	    self.timerRadioMessage = 220 
-	  activateVisualEffects()
-	  makeAlert() 	    
-	  end
+	    self.timerRadioMessage = 220 	    
+	  end 
   end
 end
 
@@ -136,10 +134,7 @@ end
 
 -- alert the player that they are affected
 function activateVisualEffects()
-  effect.setParentDirectives("fade=3066cc=0.6")
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")   	  
+  effect.setParentDirectives("fade=3066cc=0.6") 	  
 end
 
 function deactivateVisualEffects()

@@ -140,10 +140,7 @@ end
 
 -- alert the player that they are affected
 function activateVisualEffects()
-  effect.setParentDirectives("fade=3066cc=0.6")
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")   	  
+  effect.setParentDirectives("fade=3066cc=0.6") 	  
 end
 
 function deactivateVisualEffects()
@@ -222,6 +219,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	self.damageApply = setEffectDamage()   
 	self.debuffApply = setEffectDebuff()  
         self.biomeTimer = setEffectTime()
+        activateVisualEffects()
       end 
       
       if status.stat("iceResistance",0) < self.effectCutoffValue then   
@@ -245,7 +243,6 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		   end               
       end  
            if self.biomeTimer2 <= 0 then
-		   activateVisualEffects()
 		   makeAlert() --misty breath
 		   self.biomeTimer2 = 2.4           
            end      

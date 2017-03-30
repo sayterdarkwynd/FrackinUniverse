@@ -43,20 +43,16 @@ function checkEffectValid()
 	  effect.expire()
 	end
 
-	if (config.getParameter("baseDmgPerTick",0) >= 2) and (status.stat("cosmicResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) >= 4) and (status.stat("cosmicResistance",0)  >= self.effectCutoffValue) then
+	if (status.stat("cosmicResistance",0)  >= self.effectCutoffValue) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else
 	  -- inform them they are ill           
 	  if not self.usedIntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeinsanity", 1.0) -- send player a warning
-	    self.usedIntro = 1
-	    activateVisualEffects()
-	    		    
+	    self.usedIntro = 1	    
 	  end
+	  
 	  messageCheck()
 	end
 end
@@ -228,10 +224,11 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
   
-      if (status.stat("cosmicResistance") < 1.0) then
+      if (status.stat("cosmicResistance") < self.effectCutoffValue) then
              mcontroller.controlModifiers({
 	         speedModifier = (-status.stat("cosmicResistance",0))-0.2
              })     
+             activateVisualEffects()
       end   
       
       if (self.biomeTimer <= 0) and (status.stat("cosmicResistance",0) < self.effectCutoffValue) then  

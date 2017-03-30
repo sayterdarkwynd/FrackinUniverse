@@ -38,7 +38,7 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if (status.stat("fireResistance",0)  >= 0.25) or  (status.stat("physicalResistance",0) >= 0.2) or status.statPositive("biomeheatImmunity") or world.type()=="unknown" then
+	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) or  (status.stat("physicalResistance",0) >= 0.2) or status.statPositive("biomeheatImmunity") or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  effect.expire()
 	  
@@ -47,9 +47,8 @@ function checkEffectValid()
 	  if not self.usedIntro and (self.timerRadioMessage == 0) then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejungle", 1.0) -- send player a warning
 	    self.usedIntro = 1
-	    self.timerRadioMessage = 20
-	    	  activateVisualEffects()	
-	  end	
+	    self.timerRadioMessage = 20  	
+	  end
 	end
 end
 
@@ -210,7 +209,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 
       if status.stat("physicalResistance",0) <= self.effectCutoffValue then      
 	   status.modifyResource("health", -self.damageApply * dt)
-
+           activateVisualEffects()
            if (status.resource("health")) <= (status.resource("health")/3) then
                 self.modifier = status.stat("physicalResistance",0)
            	if (status.stat("physicalResistance",0) <= 0) then self.modifier = 0.05 end
