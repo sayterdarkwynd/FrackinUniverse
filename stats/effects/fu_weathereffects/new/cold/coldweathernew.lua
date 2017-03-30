@@ -193,7 +193,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight()  
 
-      if self.biomeTimer <= 0 and status.stat("iceResistance",0) < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("iceResistance",0) < (self.effectCutoffValue) then
 	self.biomeTimer = self.biomeTimer - dt
           -- cold wind
         
@@ -246,7 +246,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
             self.biomeTimer = setEffectTime()
       end 
       
-      if status.stat("iceResistance",0) < 1.0 then      
+      if status.stat("iceResistance",0) < self.effectCutoffValue then      
 	     self.damageApply = self.damageApply  
 	     status.modifyResource("health", -self.damageApply * dt)
 	   

@@ -203,7 +203,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
   
-      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue then
 	  makeAlert()
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt 

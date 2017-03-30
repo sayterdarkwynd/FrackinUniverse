@@ -232,7 +232,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
             self.biomeTimer = setEffectTime()
       end 
       
-      if status.stat("iceResistance",0) < 1.0 then      
+      if (status.stat("iceResistance",0)) < (self.effectCutoffValue) then      
 	     self.damageApply = self.damageApply  
 	     status.modifyResource("health", -self.damageApply * dt)
 	   

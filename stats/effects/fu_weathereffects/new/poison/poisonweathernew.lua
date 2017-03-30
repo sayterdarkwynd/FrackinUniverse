@@ -198,7 +198,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
-      if status.stat("poisonResistance",0) < 1.0 then  
+      if status.stat("poisonResistance",0) < self.effectCutoffValue then  
         self.windLevel =  world.windLevel(mcontroller.position())
         if self.windLevel >= 40 then
                 setWindPenalty() 

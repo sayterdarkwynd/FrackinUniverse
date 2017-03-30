@@ -204,12 +204,12 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       self.damageApply = setEffectDamage()   
       self.debuffApply = setEffectDebuff() 
   
-      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < self.effectCutoffValue then
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt  	  
       end 
 
-      if status.stat("physicalResistance",0) <=0.99 then      
+      if status.stat("physicalResistance",0) <= self.effectCutoffValue then      
 	   status.modifyResource("health", -self.damageApply * dt)
 
            if (status.resource("health")) <= (status.resource("health")/3) then

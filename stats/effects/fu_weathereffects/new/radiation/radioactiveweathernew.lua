@@ -200,7 +200,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
-      if self.biomeTimer <= 0 and status.stat("radioactiveResistance") < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("radioactiveResistance") < self.effectCutoffValue then
 	self.timerRadioMessage = self.timerRadioMessage - dt 
 	
           -- fallout
@@ -228,7 +228,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
           self.biomeTimer = self.baseRate
       end 
         
-      if status.stat("radioactiveResistance") <=0.99 then      
+      if status.stat("radioactiveResistance") <= self.effectCutoffValue then      
 	     self.damageApply = (self.damageApply /100)  
 	     status.modifyResource("health", -self.damageApply * dt)
            

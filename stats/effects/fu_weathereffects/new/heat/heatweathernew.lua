@@ -193,13 +193,15 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       self.timerRadioMessage = 10
       self.usedCavern = 1
     end
+    activateVisualEffects()
     setSituationPenalty()
   end  
 
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
 
-      if status.stat("fireResistance",0) < 1.0 then       
+      if (status.stat("fireResistance",0)) < (self.effectCutoffValue) then  
+             activateVisualEffects()
 	     status.modifyResource("health", -self.damageApply * dt)
 	   if status.isResource("food") then
 	     if status.resource("food") >= 2 then

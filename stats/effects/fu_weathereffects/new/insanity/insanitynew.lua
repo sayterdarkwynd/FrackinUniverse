@@ -234,7 +234,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
              })     
       end   
       
-      if (self.biomeTimer <= 0) and (status.stat("cosmicResistance",0) < 1.0) then  
+      if (self.biomeTimer <= 0) and (status.stat("cosmicResistance",0) < self.effectCutoffValue) then  
 	status.modifyResource("health", -self.damageApply * dt)
 	status.modifyResource("food", -self.damageApply * dt) 
 	

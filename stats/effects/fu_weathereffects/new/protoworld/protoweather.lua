@@ -191,7 +191,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   daytime = daytimeCheck()
   underground = undergroundCheck() 
 
-      if self.biomeTimer <= 0 and status.stat("poisonResistance",0) < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("poisonResistance",0) < self.effectCutoffValue then
 	  if not daytime then
 	    setSituationPenalty()
 	  end
@@ -212,7 +212,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	  -- set the timer
           self.biomeTimer = self.baseRate
       end 
-      if self.biomeTimer2 <= 0 and status.stat("poisonResistance",0) < 1.0 then  
+      if self.biomeTimer2 <= 0 and status.stat("poisonResistance",0) < self.effectCutoffValue then  
           if status.stat("critChance",0) >=1 then
           effect.addStatModifierGroup({
             {stat = "maxHealth", amount = -self.debuffApply },
