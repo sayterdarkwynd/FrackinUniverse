@@ -36,7 +36,7 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if (status.stat("fireResistance",0)  >= 0.6) or status.statPositive("biomeheatImmunity") or status.statPositive("ffextremeheatImmunity") or world.type()=="unknown" then
+	if (status.stat("fireResistance",0)  >= 0.6) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else

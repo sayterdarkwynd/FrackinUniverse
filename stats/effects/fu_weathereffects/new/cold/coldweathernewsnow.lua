@@ -34,7 +34,7 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-  if (status.stat("iceResistance",0) >= self.effectCutoffValue) or (status.stat("physicalResistance",0) >= self.effectCutoffValue) or world.type()=="unknown" then
+  if (status.stat("iceResistance",0) >= self.effectCutoffValue) or status.statPositive("biomecoldImmunity") or (status.stat("physicalResistance",0) >= self.effectCutoffValue) or world.type()=="unknown" then
     deactivateVisualEffects()
     effect.expire()
   else

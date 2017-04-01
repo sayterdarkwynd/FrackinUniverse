@@ -43,7 +43,7 @@ function checkEffectValid()
 	end
 
 	-- checks strength of effect vs resistance
-	if ( self.effectCutoff  >= self.effectCutoffValue ) then
+	if ( status.stat("cosmicResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else
