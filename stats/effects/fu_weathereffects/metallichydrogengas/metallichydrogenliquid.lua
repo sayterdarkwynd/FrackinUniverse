@@ -1,15 +1,10 @@
-require "/scripts/unifiedGravMod.lua"
 
 function init()
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") then
+
+if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") then
   effect.expire()
 end
-	self.gravityMod = config.getParameter("gravityMod",20.0)
-	self.gravityNormalize = config.getParameter("gravityNorm",false)
-	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
-	self.movementParams = mcontroller.baseParameters()
-	unifiedGravMod.init()
-	
+
   script.setUpdateDelta(5)
 
   animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
@@ -22,26 +17,6 @@ end
   effect.setParentDirectives("fade=ffea00=0.027")
   baseValue = config.getParameter("biomeDmgPerTick")
   activateVisualEffects()
-  self.liquidMovementParameter = {
-    groundForce = 70,
-    airForce = 20,
-    airFriction = 0.3,
-    liquidForce = 70,
-    liquidFriction = 0.35,
-    liquidImpedance = 0.1,
-    liquidBuoyancy = 0.25,
-    minimumLiquidPercentage = 0.1,
-    liquidJumpProfile = {
-      jumpSpeed = 70.0,
-      jumpControlForce = 610.0,
-      jumpInitialPercentage = 0.45,
-      jumpHoldTime = 0.01,
-      multiJump = false,
-      reJumpDelay = 0.5,
-      autoJump = false,
-      collisionCancelled = false
-    }
-  }  
 end
 
 
@@ -71,19 +46,19 @@ end
 
   
 function update(dt)
+
       biomeTimer = biomeTimer - dt
-  unifiedGravMod.update(dt)
-  mcontroller.controlParameters(self.liquidMovementParameter)      
-      if biomeTimer <= 0 and status.stat("powerMultiplier") >= 1 then
-        effect.addStatModifierGroup({{stat = "maxHealth", amount = baseValue* (-1) }})
-        effect.addStatModifierGroup({{stat = "maxEnergy", amount = baseValue* (-1) }})
+      if biomeTimer <= 0 and status.stat("maxHealth") >= 1 then
+        effect.addStatModifierGroup({{stat = "encumberance", amount = baseValue* (1) }})
+        effect.addStatModifierGroup({{stat = "foodDelta", amount = baseValue* (-0.025) }})
+
 	biomeTimer = 5	
           status.applySelfDamageRequest ({
           damageType = "IgnoresDef",
-          damage = 7,
+          damage = 2,
           damageSourceKind = "poison",
           sourceEntityId = entity.id(),  
-          biomeTimer = 2	
+          biomeTimer = 4	
           })	
 	makeAlert()
 	activateVisualEffects()
