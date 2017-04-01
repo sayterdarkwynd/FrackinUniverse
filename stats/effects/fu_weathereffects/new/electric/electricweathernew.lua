@@ -139,8 +139,6 @@ end
 --**** Alert the player
 function activateVisualEffects()
   effect.setParentDirectives("fade=0099cc=0.3")
-  --animator.setParticleEmitterOffsetRegion("firebreath", mcontroller.boundBox())
-  --animator.setParticleEmitterActive("firebreath", true) 
 end
 
 function deactivateVisualEffects()
@@ -148,13 +146,7 @@ function deactivateVisualEffects()
 end
 
 function makeAlert()
-        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
-        animator.playSound("bolt")
-end
-
-
-function makeLightning()
-        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
+        --world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
         animator.playSound("bolt")
 end
 
@@ -196,7 +188,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.debuffApply = setEffectDebuff() 
   
       if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue then
-	  makeAlert()
+	  --makeAlert()
 	  activateVisualEffects()
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt 

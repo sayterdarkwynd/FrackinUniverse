@@ -38,13 +38,13 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") or world.type()=="unknown" then
+	if status.statPositive("biomeradiationImmunity") or status.statPositive("ffextremeradiationImmunity") or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  effect.expire()
 	end
 
 	-- checks strength of effect vs resistance
-	if ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	if ( status.stat("radioactiveResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else

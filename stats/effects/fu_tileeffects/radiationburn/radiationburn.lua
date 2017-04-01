@@ -11,6 +11,10 @@ end
 
 
 function update(dt)
+	if (status.stat("radioactiveResistance",0)  >= 0.4) then
+	  effect.expire()
+	else
+	
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime

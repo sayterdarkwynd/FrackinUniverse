@@ -35,7 +35,7 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") or world.type()=="unknown" then
+	if (status.statPositive("poisonStatusImmunity")) or (status.statPositive("gasImmunity")) or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  self.usedIntro = nil	
 	  effect.expire()
@@ -202,19 +202,24 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	self.damageApply = setEffectDamage()   
 	self.debuffApply = setEffectDebuff()  
 	
-      if (self.biomeTimer2 <= 0) and (status.stat("poisonResistance",0) < self.effectCutoffValue ) and (status.stat("powerMultiplier") >=0.05) then
-            effect.addStatModifierGroup({
-              {stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
-            })
-        makeAlert()
-        self.biomeTimer2 = setEffectTime()
-      end 
+	      if (self.biomeTimer2 <= 0) and (status.stat("powerMultiplier") >=0.05) then
+		    effect.addStatModifierGroup({
+		      {stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
+		    })
+		makeAlert()
+		self.biomeTimer2 = setEffectTime()
+	      end 
         
-        status.modifyResource("health", -self.damageApply * dt)
+          status.modifyResource("health", -self.damageApply * dt)
         
-           if (status.stat("poisonResistance",0) <= 0) then self.modifier = 0 end
+           if (status.stat("poisonResistance",0) <= 0) then 
+             self.modifier = 0 
+           end
+           
 	   self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
-           if self.modifier <= 0 then self.modifier = 0.15 end	
+           if self.modifier <= 0.15 then 
+             self.modifier = 0.15 
+           end	
              	mcontroller.controlModifiers({
 	         	airJumpModifier = 1 * self.modifier, 
 	         	speedModifier = (1 * self.modifier) + 0.1 
