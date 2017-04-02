@@ -237,7 +237,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	   if status.isResource("food") then
 	     if status.resource("food") >= 2 then
 	       status.modifyResource("food", (-self.debuffApply /12) * dt )
-	     end
+	     enddddd
            end  
 	      if self.biomeTimer2 <= 0 and status.stat("fireResistance",0) < 1.0 then
 		  makeAlert()
