@@ -89,7 +89,7 @@ function WhipCrack:swing()
 
   while self.anchor do
     if world.entityExists(self.anchor) then
-      self.anchorPos = self.anchorPos or self:getAnchorPos()--lpk
+      self.anchorPos = self.anchorPos or self:getAnchorPos()
       local chainEndPos = vec2.add(world.entityPosition(self.anchor), self.anchorPos)
       local chainStartPos = vec2.add(mcontroller.position(), activeItem.handPosition(self.chain.startOffset))
       if not world.lineCollision(chainStartPos, chainEndPos) or self.blockPiercing then
