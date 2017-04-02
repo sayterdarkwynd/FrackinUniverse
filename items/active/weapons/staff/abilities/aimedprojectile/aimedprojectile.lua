@@ -119,7 +119,7 @@ function AimedProjectile:createProjectiles()
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
 
   if not world.lineTileCollision(mcontroller.position(), position) then
-    world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), {mcontroller.facingDirection() * math.cos(aim), math.sin(aim)}, false, params)
+    world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), {mcontroller.facingDirection() * math.cos(aim), math.sin(aim)}, false, pParams)
   end
 end
 
