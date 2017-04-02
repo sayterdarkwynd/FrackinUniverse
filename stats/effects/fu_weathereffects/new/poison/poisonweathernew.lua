@@ -185,7 +185,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
-      if status.stat("poisonResistance",0) < self.effectCutoffValue then  
+      if (status.stat("poisonResistance",0) <= self.effectCutoffValue) then  
         self.windLevel =  world.windLevel(mcontroller.position())
         activateVisualEffects()
         if self.windLevel >= 40 then
