@@ -11,9 +11,9 @@ end
 
 
 function update(dt)
-	if (status.stat("radioactiveResistance",0)  >= 0.4) then
+	if (status.stat("radioactiveResistance",0)  >= 0.4) or status.statPositive("biomeradiationImmunity") or status.statPositive("ffextremeradiationImmunity") then
 	  effect.expire()
-	else
+	end
 	
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then

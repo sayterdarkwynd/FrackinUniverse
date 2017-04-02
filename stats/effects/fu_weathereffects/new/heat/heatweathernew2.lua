@@ -243,7 +243,6 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		  makeAlert()
 		  self.biomeTimer2 = setEffectTime()
 		  self.timerRadioMessage = self.timerRadioMessage - dt  
-		   sb.logInfo("timer val: "..self.biomeTimer2)
 	      end   
            self.modifier = status.stat("fireResistance",0)         
            if (status.stat("fireResistance",0) <= 0) then self.modifier = 0 end
