@@ -43,7 +43,7 @@ sb.logInfo("base liquidPenalty: "..self.liquidPenalty)
 --  Threat Level * biomeTemp = Base Value --> absolute base value
 
 -- Base Damage
--- baseDmgPerTick * Threat Level / 10 
+-- ( baseDmgPerTick * Threat Level / 10 ) * (1 + resistance)
 
 -- windstorm effects. wind can positively or negatively affect the weather pattern in question
 --  Base Value * Wind Modifier
@@ -52,10 +52,13 @@ sb.logInfo("base liquidPenalty: "..self.liquidPenalty)
 --  Base Value * Situational Modifier    --> applied in update(dt) only
 
 --  * liquid modifier. Player is worse or better w/ liquid
--- Base Value * liquid Modifier
+-- Biome Temp * (1 + liquid Modifier + (Threat / 2)/10)
 
 --  * time modifier. Certain times of day are worse or better
--- Base Value * time modifider
+-- Base Value * time modifier
+
+-- * layer     the deeper you go in the earth,the effect increases (or higher into the sky, as the case may be)
+
 
 
   script.setUpdateDelta(5)
