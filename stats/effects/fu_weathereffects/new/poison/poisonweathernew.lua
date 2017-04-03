@@ -35,35 +35,22 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") or world.type()=="unknown" then
+	if (status.statPositive("poisonStatusImmunity")) or (status.statPositive("gasImmunity")) or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  self.usedIntro = nil	
 	  effect.expire()
 	end
 
-	if (config.getParameter("baseDmgPerTick",0) == 1) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	if ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  self.usedIntro = nil
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 2) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  self.usedIntro = nil
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 3) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  self.usedIntro = nil
-	  effect.expire()
-	elseif (config.getParameter("biomeThreshold",0) == 1.2) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  self.usedIntro = nil
-	  effect.expire()  
+	  effect.expire() 
 	else
 	  -- activate visuals and check stats
 	  if (self.timerRadioMessage == 0) and not self.usedUntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
 	    self.usedIntro = 1 
 	    self.timerRadioMessage = 10 
-	    activateVisualEffects()
 	  end
 	end
 end
@@ -79,7 +66,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("poisonResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("poisonResistance",0) ),0.45))
 end
 
 -- ******** Applied bonuses and penalties
@@ -198,8 +185,9 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
-      if status.stat("poisonResistance",0) < self.effectCutoffValue then  
+      if (status.stat("poisonResistance",0) <= self.effectCutoffValue) then  
         self.windLevel =  world.windLevel(mcontroller.position())
+        activateVisualEffects()
         if self.windLevel >= 40 then
                 setWindPenalty() 
                 if self.timerRadioMessage == 0 then
@@ -214,19 +202,24 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	self.damageApply = setEffectDamage()   
 	self.debuffApply = setEffectDebuff()  
 	
-      if (self.biomeTimer2 <= 0) and (status.stat("poisonResistance",0) < self.effectCutoffValue ) and (status.stat("powerMultiplier") >=0.05) then
-            effect.addStatModifierGroup({
-              {stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
-            })
-        makeAlert()
-        self.biomeTimer2 = setEffectTime()
-      end 
+	      if (self.biomeTimer2 <= 0) and (status.stat("powerMultiplier") >=0.05) then
+		    effect.addStatModifierGroup({
+		      {stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
+		    })
+		makeAlert()
+		self.biomeTimer2 = setEffectTime()
+	      end 
         
-        status.modifyResource("health", -self.damageApply * dt)
+          status.modifyResource("health", -self.damageApply * dt)
         
-           if (status.stat("poisonResistance",0) <= 0) then self.modifier = 0 end
+           if (status.stat("poisonResistance",0) <= 0) then 
+             self.modifier = 0 
+           end
+           
 	   self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
-           if self.modifier <= 0 then self.modifier = 0.15 end	
+           if self.modifier <= 0.15 then 
+             self.modifier = 0.15 
+           end	
              	mcontroller.controlModifiers({
 	         	airJumpModifier = 1 * self.modifier, 
 	         	speedModifier = (1 * self.modifier) + 0.1 

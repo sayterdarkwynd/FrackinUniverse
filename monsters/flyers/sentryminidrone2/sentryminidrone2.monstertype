@@ -95,26 +95,6 @@
 
       "wanderActions" : [
         {
-          "name" : "emerge-fly"
-        },
-        {
-          "name" : "wander-fly",
-          "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 8,
-            "yVelocity" : 12
-          }
-        }        
-      ],
-
-      "concurrentActions" : [
-       
-      ],
-      
-      "concurrentHostileActions" : [
-        {
           "name" : "action-statuseffect", 
           "cooldown" : 200,
           "parameters" : {
@@ -137,8 +117,37 @@
           "effect" : "headlamp",
           "duration" : 220
           }
-        }         
+        },        
+        {
+          "name" : "emerge-fly"
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [2,4],
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 8,
+            "yVelocity" : 12
+          }
+        }        
       ],
+
+      "concurrentActions" : [
+       
+      ],
+      
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 15,
+          "parameters" : {
+          "effect" : "cultistshield",
+          "duration" : 5
+          }
+        }        
+      ],
+      
       "deathActions" : [
         {
           "name" : "action-projectile",

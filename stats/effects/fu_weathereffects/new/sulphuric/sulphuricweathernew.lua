@@ -58,8 +58,6 @@ function checkEffectValid()
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
 	     self.usedIntro = 1
 	     self.timerRadioMessage = 20
-
-	  activateVisualEffects()
 	  end	
 	end	
 end
@@ -74,7 +72,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("physicalResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("physicalResistance",0) ),0.25))
 end
 
 -- ******** Applied bonuses and penalties

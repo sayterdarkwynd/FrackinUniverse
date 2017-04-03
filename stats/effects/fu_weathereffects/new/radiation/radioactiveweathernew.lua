@@ -38,33 +38,21 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") or world.type()=="unknown" then
+	if status.statPositive("biomeradiationImmunity") or status.statPositive("ffextremeradiationImmunity") or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  effect.expire()
 	end
 
 	-- checks strength of effect vs resistance
-	if (config.getParameter("baseDmgPerTick",0) == 1) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	if ( status.stat("radioactiveResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 2) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 3) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("biomeThreshold",0) == 1.2) and ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire() 
 	else
 	  -- activate visuals and check stats
 	  if not self.usedIntro and self.timerRadioMessage == 0 then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeradiation", 1.0) -- send player a warning
 	    self.usedIntro = 1
-	    self.timerRadioMessage = 20
-
-	  activateVisualEffects()
-	  makeAlert()  		    
+	    self.timerRadioMessage = 20    
 	  end
 	end
 end
@@ -72,15 +60,15 @@ end
 
 -- *******************Damage effects
 function setEffectDamage()
-  return ( ( self.baseDmg ) *  (1 -status.stat("fireResistance",0) ) * self.biomeThreshold  )
+  return ( ( self.baseDmg ) *  (1 -status.stat("radioactiveResistance",0) ) * self.biomeThreshold  )
 end
 
 function setEffectDebuff()
-  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("fireResistance",0) * self.biomeThreshold) )
+  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("radioactiveResistance",0) * self.biomeThreshold) )
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("radioactiveResistance",0) ),0.45))
 end
 
 -- ******** Applied bonuses and penalties
@@ -201,9 +189,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   local lightLevel = getLight() 
 
       if self.biomeTimer <= 0 and status.stat("radioactiveResistance") < self.effectCutoffValue then
-	self.timerRadioMessage = self.timerRadioMessage - dt 
-	
-          -- fallout
+	self.timerRadioMessage = self.timerRadioMessage - dt 	
           self.windLevel =  world.windLevel(mcontroller.position())
           if self.windLevel >= 20 then
                 setWindPenalty()   
@@ -218,13 +204,13 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 
 	self.damageApply = setEffectDamage()   
 	self.debuffApply = setEffectDebuff()  
-	
-          -- activate visuals and check stats
-	  activateVisualEffects() 
+
             effect.addStatModifierGroup({
               {stat = "maxHealth", amount = -self.debuffApply  },
               {stat = "maxEnergy", amount = -self.debuffApply  }
             })
+	    activateVisualEffects()
+	    makeAlert()              
           self.biomeTimer = self.baseRate
       end 
         

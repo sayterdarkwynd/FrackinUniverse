@@ -40,13 +40,7 @@ function checkEffectValid()
 	  effect.expire()
 	end
 
-	if (config.getParameter("baseDmgPerTick",0) == 4) and (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 5) and (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 6) and (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
+	if (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else
@@ -54,7 +48,6 @@ function checkEffectValid()
 	  if not self.usedIntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
 	    self.usedIntro = 1
-	     activateVisualEffects()
 	  end
 	end
 end
@@ -69,7 +62,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("electricResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("electricResistance",0) ),0.45))
 end
 
 -- ******** Applied bonuses and penalties
@@ -146,8 +139,6 @@ end
 --**** Alert the player
 function activateVisualEffects()
   effect.setParentDirectives("fade=0099cc=0.3")
-  --animator.setParticleEmitterOffsetRegion("firebreath", mcontroller.boundBox())
-  --animator.setParticleEmitterActive("firebreath", true) 
 end
 
 function deactivateVisualEffects()
@@ -155,13 +146,7 @@ function deactivateVisualEffects()
 end
 
 function makeAlert()
-        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
-        animator.playSound("bolt")
-end
-
-
-function makeLightning()
-        world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
+        --world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
         animator.playSound("bolt")
 end
 
@@ -203,7 +188,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.debuffApply = setEffectDebuff() 
   
       if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue then
-	  makeAlert()
+	  --makeAlert()
+	  activateVisualEffects()
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt 
 

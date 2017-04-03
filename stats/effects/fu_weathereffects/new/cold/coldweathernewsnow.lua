@@ -34,7 +34,7 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-  if (status.stat("iceResistance",0) >= self.effectCutoffValue) or (status.stat("physicalResistance",0) >= self.effectCutoffValue) or world.type()=="unknown" then
+  if (status.stat("iceResistance",0) >= self.effectCutoffValue) or status.statPositive("biomecoldImmunity") or (status.stat("physicalResistance",0) >= self.effectCutoffValue) or world.type()=="unknown" then
     deactivateVisualEffects()
     effect.expire()
   else
@@ -42,10 +42,8 @@ function checkEffectValid()
 	  if (self.timerRadioMessage == 0) and not self.usedIntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
 	    self.usedIntro = 1 
-	    self.timerRadioMessage = 220 
-	  activateVisualEffects()
-	  makeAlert() 	    
-	  end
+	    self.timerRadioMessage = 220 	    
+	  end 
   end
 end
 
@@ -59,7 +57,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("iceResistance",0)))
+ return (  self.baseRate *  math.min(   1 - math.min( status.stat("iceResistance",0) ),0.6))
 end
 
 -- ******** Applied bonuses and penalties
@@ -136,10 +134,7 @@ end
 
 -- alert the player that they are affected
 function activateVisualEffects()
-  effect.setParentDirectives("fade=3066cc=0.6")
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")   	  
+  effect.setParentDirectives("fade=3066cc=0.6") 	  
 end
 
 function deactivateVisualEffects()
@@ -245,7 +240,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		     end
 		   end              
       end  
-	      if self.biomeTimer2 <= 0 and status.stat("iceResistance",0) < self.effectCutoffValue then
+	      if self.biomeTimer2 <= 0 then
 		makeAlert() -- misty breath
 		self.biomeTimer2 = 2.4       
 	      end   

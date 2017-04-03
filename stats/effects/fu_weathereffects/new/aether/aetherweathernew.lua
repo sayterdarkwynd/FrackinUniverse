@@ -43,24 +43,16 @@ function checkEffectValid()
 	end
 
 	-- checks strength of effect vs resistance
-	if (config.getParameter("biomeTemp",0) == 2) and ( self.effectCutoff  >= self.effectCutoffValue ) then
+	if ( status.stat("cosmicResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  effect.expire()
-	elseif (config.getParameter("biomeTemp",0) == 3) and ( self.effectCutoff  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire()   
-	elseif (config.getParameter("biomeTemp",0) == 4) and ( self.effectCutoff  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire() 
 	else
 	  -- activate visuals and check stats
 	    if not self.usedIntro then
 	      -- activate visuals and check stats
 	     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaether", 1.0) -- send player a warning
 	      self.usedIntro = 1
-	      activateVisualEffects()
 	    end
-	  	
 	end
 end
 
@@ -74,7 +66,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("cosmicResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("cosmicResistance",0) ),0.15))
 end
 
 -- ******** Applied bonuses and penalties

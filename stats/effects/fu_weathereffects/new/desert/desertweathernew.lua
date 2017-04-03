@@ -35,16 +35,15 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if (status.stat("fireResistance",0)  >= 0.25) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
+	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else
-	  if (status.stat("fireResistance") <= 0.25) then
+	  if (status.stat("fireResistance") <= self.effectCutoffValue) then
 	    if not self.usedIntro and self.timerRadioMessage == 0 then
 	      -- activate visuals and check stats
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
 	      self.usedIntro = 1
-	      activateVisualEffects()
 	    end
 	  end
 
@@ -63,7 +62,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.5))
 end
 
 -- ******** Applied bonuses and penalties
@@ -193,7 +192,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 			  end  
 	  end
 	  
-  if (status.stat("fireResistance") <= 0.25) and (self.gracePeriod <=0) then
+  if (status.stat("fireResistance") <= self.effectCutoffValue) and (self.gracePeriod <=0) then
         if daytime and lightLevel >= 75 then
           self.situationPenalty = self.situationPenalty + 0.5
                   if not self.usedNoon then
@@ -259,6 +258,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		  end
 		end  
 	end
+	activateVisualEffects()
   else
 	    self.gracePeriod = self.gracePeriod - dt  	
   end

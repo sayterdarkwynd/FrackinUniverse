@@ -40,13 +40,7 @@ function checkEffectValid()
 	  effect.expire()
 	end
 
-	if (config.getParameter("baseDmgPerTick",0) == 5) and (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 6) and (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDmgPerTick",0) == 7) and (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
+	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else
@@ -55,7 +49,6 @@ function checkEffectValid()
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning
 	    self.usedIntro = 1
 	    self.timerRadioMessage = 20
-	     activateVisualEffects()
 	  end
 	end
 end
@@ -70,7 +63,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.25))
 end
 
 -- ******** Applied bonuses and penalties
@@ -209,10 +202,9 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	     end
            end  
 	      if self.biomeTimer2 <= 0 and status.stat("fireResistance",0) < 1.0 then
-		  makeAlert()
+		  --makeAlert()
 		  self.biomeTimer2 = setEffectTime()
 		  self.timerRadioMessage = self.timerRadioMessage - dt  
-		   sb.logInfo("timer val: "..self.biomeTimer2)
 	      end   
            self.modifier = status.stat("fireResistance",0)         
            if (status.stat("fireResistance",0) <= 0) then self.modifier = 0 end

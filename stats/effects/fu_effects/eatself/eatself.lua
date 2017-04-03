@@ -1,7 +1,7 @@
 
 function init()
 
-world.sendEntityMessage(entity.id(), "queueRadioMessage", "eatself", 1.0) -- send player a warning
+world.sendEntityMessage(entity.id(), "queueRadioMessage", "eatingYourself", 1.0) -- send player a warning
   
 
 end

@@ -35,7 +35,22 @@
       "hurtWaitForGround" : false,
 
       "foundTargetActions" : [
-     
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 200,
+          "parameters" : {
+          "effect" : "glow",
+          "duration" : 220
+          }
+        },          
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 200,
+          "parameters" : {
+          "effect" : "headlamp",
+          "duration" : 220
+          }
+        }        
       ],
 
       "fleeActions" : [ 
@@ -98,6 +113,22 @@
 
       "wanderActions" : [
         {
+          "name" : "action-statuseffect", 
+          "cooldown" : 200,
+          "parameters" : {
+          "effect" : "glow",
+          "duration" : 220
+          }
+        },          
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 200,
+          "parameters" : {
+          "effect" : "headlamp",
+          "duration" : 220
+          }
+        },         
+        {
           "name" : "emerge-fly"
         },
         {
@@ -113,27 +144,13 @@
       ],
 
       "concurrentActions" : [
-       
+      
       ],
       
       "concurrentHostileActions" : [
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "glow",
-          "duration" : 220
-          }
-        },          
-        {
-          "name" : "action-statuseffect",
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "headlamp",
-          "duration" : 220
-          }
-        }         
+        
       ],
+      
       "deathActions" : [
         {
           "name" : "action-projectile",

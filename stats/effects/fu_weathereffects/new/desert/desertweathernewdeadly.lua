@@ -36,7 +36,7 @@ function checkEffectValid()
     deactivateVisualEffects()
     effect.expire()
   end
-	if (status.stat("fireResistance",0)  >= 0.6) or status.statPositive("biomeheatImmunity") or status.statPositive("ffextremeheatImmunity") or world.type()=="unknown" then
+	if (status.stat("fireResistance",0)  >= 0.6) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
 	  deactivateVisualEffects()
 	  effect.expire()
 	else
@@ -46,7 +46,6 @@ function checkEffectValid()
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
 	      self.usedIntro = 1
 	      self.timerRadioMessage = 60
-	      activateVisualEffects()
 	    end
 	end
 end
@@ -61,7 +60,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.25))
 end
 
 -- ******** Applied bonuses and penalties
@@ -258,6 +257,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		  end
 		end  
 	end
+	activateVisualEffects()
   else
     self.gracePeriod = self.gracePeriod - dt
   end

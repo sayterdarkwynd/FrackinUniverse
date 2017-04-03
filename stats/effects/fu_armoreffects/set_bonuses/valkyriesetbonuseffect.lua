@@ -7,6 +7,7 @@ weaponBonus={}
 armorBonus={
   {stat = "extremepressureProtection", amount = 1},
   {stat = "ffextremeradiationImmunity", amount = 1},
+  {stat = "breathProtection", amount = 1},
   {stat = "gasImmunity", amount = 1}
 }
 
