@@ -26,5 +26,19 @@
   "type" : "microdungeon",
   "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
   }
-}
+},
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value": {
+      "mode": "floor",
+      "priority": 1,
+      "variants": 1,
+      "distribution": "/biomes/distributions.config:mainBiomeMicrodungeon",
+      "type": "microdungeon",
+      "microdungeons": [
+        "magmamicrodungeons"
+      ]
+    }
+  }
 ]

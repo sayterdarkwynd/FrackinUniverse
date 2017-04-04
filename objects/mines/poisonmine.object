@@ -1,0 +1,53 @@
+{
+  "objectName" : "poisonmine",
+  "colonyTags" : ["combat"],
+  "printable" : false,
+  "rarity" : "Common",
+  "breakDropOptions" : [],
+
+  "category" : "wire",
+  "price" : 20,
+  "description" : "Watch your step, this looks explosive!",
+  "shortdescription" : "Military Land Mine",
+  "race" : "generic",
+
+  "apexDescription" : "A land mine, it could still be active.",
+  "avianDescription" : "Uh oh! I do not want to step on this.",
+  "floranDescription" : "Watch your ssstep!",
+  "glitchDescription" : "Cautious. An active land mine, I had better be careful.",
+  "humanDescription" : "I don't want to risk it, this thing could still go off.",
+  "hylotlDescription" : "Land mines, smaller than sea mines but still lethal.",
+  "novakidDescription" : "This thing could still blow!",
+
+  "inventoryIcon" : "poisonmineicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "poisonmine.png:<color>.off",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/landmine/landmine.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+  "animationParts" : {
+    "switch" : "poisonmine.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : ["/sfx/objects/hiddenswitch1.ogg"]
+    }
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "firstProjectile" : "smoke",
+  "triggerDelay" : 0.5,
+  "secondProjectile" : "poisonstatusprojectile",
+  "detectArea" : [[-1.0, 0], [1.0, 0.5]]
+}
