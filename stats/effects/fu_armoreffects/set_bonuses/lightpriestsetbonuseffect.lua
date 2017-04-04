@@ -1,7 +1,7 @@
 setName="fu_lightpriestset"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 0.10}
+	{stat = "powerMultiplier", baseMultiplier = 1.10}
 }
 
 armorBonus={ }
