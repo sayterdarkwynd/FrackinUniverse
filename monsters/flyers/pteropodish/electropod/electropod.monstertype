@@ -31,10 +31,10 @@
 
         {
           "name" : "action-swoop", 
-          "cooldown" : 1.0,
+          "cooldown" : 1.5,
           "parameters" : {
             "minimumRange" : 0,
-            "maximumRange" : 8,
+            "maximumRange" : 24,
 
             "windupState": "winduploop",
 
@@ -56,6 +56,17 @@
 
       "approachActions" : [
 
+        {
+          "name" : "wander-fly",
+          "cooldown" : 1.5,
+          "parameters" : {
+            "wanderTime" : [2,4],
+            "groundDistance" : 24,
+            "ceilingDistance" : 8,
+            "xVelocity" : 4,
+            "yVelocity" : 18
+          }
+        },
         {
           "name" : "approach-fly",
           "parameters" : {
@@ -86,10 +97,10 @@
           "name" : "wander-fly",
           "parameters" : {
             "wanderTime" : [2,4],
-            "groundDistance" : 12,
+            "groundDistance" : 24,
             "ceilingDistance" : 8,
             "xVelocity" : 4,
-            "yVelocity" : 12
+            "yVelocity" : 18
           }
         }
 
@@ -108,7 +119,7 @@
 
             "windupState" : "fire",
             "windupTime" : 0.01,
-            "projectileType" : "electricplasmarocket",
+            "projectileType" : "electricplasmaexplosion",
             "fireSound" : "", //needs explosion sound or in projectile?
             "fireState" : "fire",
             "winddownState" : "fly",
