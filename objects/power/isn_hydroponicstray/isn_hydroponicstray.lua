@@ -64,7 +64,7 @@ function update(dt)
 	        storage.growth = storage.growth + 3
 	end	
 	if storage.growth >= storage.growthcap then
-		-- if connected to an object receiver, try to send the crop, else store loally
+		-- if connected to an object receiver, try to send the crop, else store locally
 		-- Wired Industry's item router is one such device
 		fu_sendOrStoreItems(0, {name = storage.currentcrop, count = storage.yield}, {0, 1, 2})
 		world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,2), data={}})

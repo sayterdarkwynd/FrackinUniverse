@@ -32,12 +32,18 @@ function deciding(item)
 		                    petalblue      = self.itemChances.common / 3 },
 		godlycomb       = { matteritem     = self.itemChances.rare },
 		goldcomb        = { goldore        = self.itemChances.rarest },
-		ironcomb        = { ironore        = self.itemChances.rarest },
+		ironcomb        = { ironore        = self.itemChances.rare },
 		junglecomb      = { goldenleaves   = self.itemChances.common },
-		minercomb       = { coalore        = self.itemChances.uncommon },
+		flowercomb      = { coalore        = self.itemChances.common / 4,
+		                    ironore        = self.itemChances.common / 4,
+		                    copperore      = self.itemChances.common / 4,
+		                    tungstenore    = self.itemChances.common / 4,
+		                    durasteelore   = self.itemChances.rare},
 		mooncomb        = { hematite       = self.itemChances.common },
-		morbidcomb      = { ghostlywax     = self.itemChances.common },
-		mythicalcomb    = { liquidhealing  = self.itemChances.rare },
+		morbidcomb      = { ghostlywax     = self.itemChances.common,
+		                    bone           = self.itemChances.rare},
+		mythicalcomb    = { liquidhealing  = self.itemChances.rare,
+		                    corvex         = self.itemChances.rarest },
 		nocturnalcomb   = { waxchunk       = self.itemChances.common },
 		normalcomb      = { waxchunk       = self.itemChances.common },
 		plutoniumcomb   = { plutoniumore   = self.itemChances.rare },
@@ -53,7 +59,10 @@ function deciding(item)
 		volcaniccomb    = { liquidlava     = self.itemChances.uncommon },
 		aegisaltcomb    = { aegisaltore    = self.itemChances.rarest },
 		feroziumcomb    = { feroziumore    = self.itemChances.rarest },
-		violiumcomb     = { violiumore     = self.itemChances.rarest }
+		violiumcomb     = { violiumore     = self.itemChances.rarest },
+		magmacomb       = { corefragmentore = self.itemChances.normal,
+		                    scorchedcore   = self.itemChances.rare,
+		                    liquidlava     = self.itemChances.common }
 	}
 	if item == nil then return itemMap end
 	return itemMap[item.name] -- may be nil
