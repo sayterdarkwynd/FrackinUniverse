@@ -14,6 +14,18 @@
             "frames" : 8,
             "cycle" : 0.5,
             "mode" : "loop"
+          },
+          "firewindup" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "particleEmittersOff" : [ "drip" ]
+          },
+          "firewinddown" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "particleEmittersOn" : [ "drip" ]
           }
         }
       },
@@ -78,6 +90,16 @@
               "properties" : {
                 "image" : "<partImage>:fly.<frame>"
               }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
             }
           },
           "damage" : {
@@ -132,8 +154,8 @@
   "particleEmitters" : {
     "drip" : {
       "active" : true,
-      "emissionRate" : 12.0,
-      "offsetRegion" : [-0.75, -1.0, 0.75, 0.5],
+      "emissionRate" : 24.0,
+      "offsetRegion" : [-8.75, -5.5, 8.75, -7.0],
       "particles" : [
         { "particle" : "jellydrip1" },
         { "particle" : "jellydrip2" },
@@ -142,6 +164,25 @@
     },
     "deathPoof" : {
       "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
         { "particle" : "deathfizz1left" },
         { "particle" : "deathfizz1right" },
         { "particle" : "deathfizz2left" },

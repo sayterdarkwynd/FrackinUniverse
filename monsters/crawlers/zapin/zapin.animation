@@ -15,11 +15,13 @@
           },
           "firewindup" : {
             "frames" : 5,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "particleEmittersOn" : [ "flames" ]
           },
           "fire" : {
             "frames" : 2,
-            "cycle" : 0.2
+            "cycle" : 0.2,
+            "particleEmittersOff" : [ "flames" ]
           },
           "firewinddown" : {
             "frames" : 1
@@ -126,11 +128,13 @@
 
   "particleEmitters" : {
     "flames" : {
-      "active" : true,
-      "emissionRate" : 12.0,
+      "active" : false,
+      "emissionRate" : 8.0,
       "offsetRegion" : [-0.75, -1.0, 0.75, 0.5],
       "particles" : [
-        { "particle" : "teslaboltpurple" }
+        { "particle" : "teslaboltpurple" },
+        { "particle" : "electricswoosh1" },
+        { "particle" : "electricswoosh2" }
       ]
     },
     "deathPoof" : {

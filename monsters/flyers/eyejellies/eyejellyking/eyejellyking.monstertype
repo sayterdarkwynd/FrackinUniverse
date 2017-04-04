@@ -52,7 +52,6 @@
             "requireLineOfSight" : false,
             "maximumRange" : 50,
             "minimumRange" : 0,
-            "windupState" : "fly",
             "projectileType" : "eyejellyrain",
             "power" : 10,
             "fireOffset" : [0, 0],
@@ -62,7 +61,10 @@
             "onGround" : false,
             "fireState" : "fly",
             "fireSound" : "fire",
-            "winddownState" : "fly"
+            "windupStopForce": 10,
+            "windupTime": 0.5,
+            "winddownStopForce": 10,
+            "winddownTime": 0.25
           }
         }
       ],
@@ -77,7 +79,6 @@
           "duration" : 600
           }
         }
-
        ],
 
       "approachActions" :[
@@ -126,6 +127,14 @@
           "name" : "action-aim-head",
           "parameters" : {
             "headOffset" : [0,5]
+          }
+        },
+        {
+          "name" : "action-spawncompanions",
+          "parameters" : {
+            "maxCount" : 3,
+            "spawnCooldown" : 5.0,
+            "monsterType" : "eyejellyroller"
           }
         }
        ]
