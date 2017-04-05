@@ -1,14 +1,13 @@
 require("/scripts/vec2.lua")
 
 function init()
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or world.type()=="unknown" then
-  effect.expire()
-end
 
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
   
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -17,7 +16,8 @@ end
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
-  
+  sb.logInfo("my counter : "..self.usedIntro)
+  sb.logInfo("my counter : "..self.timerRadioMessage)
   --conditionals
 
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -25,15 +25,39 @@ end
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-  
-  -- activate visuals and check stats
-  if not self.usedIntro then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
-    self.usedIntro = 1 
-  end
-  activateVisualEffects() 
+
+  checkEffectValid()
+
   script.setUpdateDelta(5)
 end
+
+
+--******* check effect and cancel ************
+function checkEffectValid()
+  if world.entityType(entity.id()) ~= "player" then
+    deactivateVisualEffects()
+    effect.expire()
+  end
+	if (status.statPositive("poisonStatusImmunity")) or (status.statPositive("gasImmunity")) or world.type()=="unknown" then
+	  deactivateVisualEffects()
+	  self.usedIntro = nil	
+	  effect.expire()
+	end
+
+	-- checks strength of effect vs resistance
+	if ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	  deactivateVisualEffects()
+	  effect.expire()
+	else
+	  -- activate visuals and check stats
+	  if (self.timerRadioMessage == 0) and not self.usedIntro then
+	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
+	    self.usedIntro = 1 
+	    self.timerRadioMessage = 20 
+	  end	
+	end
+end
+
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -45,7 +69,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("poisonResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("poisonResistance",0) ),0.35))
 end
 
 -- ******** Applied bonuses and penalties
@@ -126,6 +150,11 @@ function activateVisualEffects()
   animator.setParticleEmitterActive("poisonbreath", true) 
 end
 
+function deactivateVisualEffects()
+  effect.setParentDirectives("fade=558833=0")
+  animator.setParticleEmitterActive("poisonbreath", false) 
+end
+
 function makeAlert()
    local statusTextRegion = { 0, 1, 0, 1 }
    animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
@@ -135,6 +164,8 @@ end
 
 
 function update(dt)
+checkEffectValid()
+
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
@@ -158,14 +189,15 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
-      if status.stat("poisonResistance",0) < 1.0 then  
+      if status.stat("poisonResistance",0) < self.effectCutoffValue then  
+        activateVisualEffects()
         self.windLevel =  world.windLevel(mcontroller.position())
         if self.windLevel >= 40 then
                 setWindPenalty() 
                 if self.timerRadioMessage == 0 then
                   if not self.usedWind then
                     world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
-                    self.timerRadioMessage = 10
+                    self.timerRadioMessage = 220
                     self.usedWind = 1
                   end
 		end
@@ -174,7 +206,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	self.damageApply = setEffectDamage()   
 	self.debuffApply = setEffectDebuff()  
 	
-      if (self.biomeTimer2 <= 0) and (status.stat("poisonResistance",0) < 1.0) and (status.stat("powerMultiplier") >=0.05) then
+      if (self.biomeTimer2 <= 0) and (status.stat("poisonResistance",0) < self.effectCutoffValue) and (status.stat("powerMultiplier") >=0.05) then
             effect.addStatModifierGroup({
               {stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
             })
@@ -183,12 +215,13 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       end 
         
         status.modifyResource("health", -self.damageApply * dt)
-
-        -- less agile the more damaged you are
-        mcontroller.controlModifiers({  
-	 airJumpModifier = 1 * (status.resource("health")/100), 
-	 speedModifier = 1 * (status.resource("health")/100)
-        }) 
+           if (status.stat("poisonResistance",0) <= 0) then self.modifier = 0 end
+	   self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
+           if self.modifier <= 0 then self.modifier = 0.15 end	
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = 1 * self.modifier, 
+	         	speedModifier = (1 * self.modifier) + 0.1 
+             })     
       end     
 end       
 

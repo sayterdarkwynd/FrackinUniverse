@@ -1,7 +1,7 @@
 setName="fu_hunterset"
 
 weaponBonus={
-	{stat = "critBonus", amount = 6},
+	{stat = "critBonus", baseMultiplier = 1.06},
         {stat = "powerMultiplier", baseMultiplier = 1.20}
 }
 

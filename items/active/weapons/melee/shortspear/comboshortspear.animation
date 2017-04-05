@@ -53,10 +53,10 @@
     "parts" : {
       "blade" : {
         "properties" : {
-          "zLevel" : 0,
+          "zLevel" : 1,
           "centered" : true,
           "image" : "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
-          "offset" : [0, 1.875],
+          "offset" : [0.0, 1.875],
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
           "damageArea" : [ [-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0] ]
@@ -64,7 +64,7 @@
       },
       "handle" : {
         "properties" : {
-          "zLevel" : 1,
+          "zLevel" : 0,
           "centered" : true,
           "image" : "<partImage><paletteSwaps>?<directives>",
           "offset" : [0, 1.875],
@@ -184,6 +184,41 @@
         { "particle" : "iceswoosh1"},
         { "particle" : "iceswoosh2"},
         { "particle" : "iceswoosh3"}
+      ]
+    },
+    "shadowswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "burstCount" : 3,
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    },
+    "radioactiveswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    },
+    "cosmicswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
       ]
     }
   },

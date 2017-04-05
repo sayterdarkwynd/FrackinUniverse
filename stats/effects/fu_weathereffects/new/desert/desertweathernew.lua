@@ -1,14 +1,12 @@
 require("/scripts/vec2.lua")
 function init()
-
-if (status.stat("fireResistance",0)  >= 1.0) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
-  effect.expire()
-end
-
+  self.usedIntro = 0
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -26,17 +24,31 @@ end
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
   
-  if (status.stat("fireResistance") <= 0.25) then
-    if not self.usedIntro then
-      -- activate visuals and check stats
-      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
-      self.usedIntro = 1
-    end
-  end
-  
-  activateVisualEffects()
+  checkEffectValid()
   self.gracePeriod = 10
   script.setUpdateDelta(5)
+end
+
+--******* check effect and cancel ************
+function checkEffectValid()
+  if world.entityType(entity.id()) ~= "player" then
+    deactivateVisualEffects()
+    effect.expire()
+  end
+	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
+	  deactivateVisualEffects()
+	  effect.expire()
+	else
+	  if (status.stat("fireResistance") <= self.effectCutoffValue) then
+	    if not self.usedIntro and self.timerRadioMessage == 0 then
+	      -- activate visuals and check stats
+	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
+	      self.usedIntro = 1
+	    end
+	  end
+
+	  	
+	end
 end
 
 -- *******************Damage effects
@@ -50,7 +62,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("fireResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.5))
 end
 
 -- ******** Applied bonuses and penalties
@@ -131,6 +143,12 @@ function activateVisualEffects()
   --animator.setParticleEmitterActive("firebreath", true) 
 end
 
+function deactivateVisualEffects()
+  effect.setParentDirectives("fade=ff7600=0.0")
+  --animator.setParticleEmitterActive("firebreath", false) 
+end
+
+
 function makeAlert()
         world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
         animator.playSound("bolt")
@@ -139,9 +157,7 @@ end
 
 
 function update(dt)
-if status.statPositive("biomeheatImmunity") then
-  effect.expire() return
-end
+checkEffectValid()
 
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
@@ -176,10 +192,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 			  end  
 	  end
 	  
-  if (status.stat("fireResistance") <= 0.25) and (self.gracePeriod <=0) then
-  
-
-  
+  if (status.stat("fireResistance") <= self.effectCutoffValue) and (self.gracePeriod <=0) then
         if daytime and lightLevel >= 75 then
           self.situationPenalty = self.situationPenalty + 0.5
                   if not self.usedNoon then
@@ -219,18 +232,18 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	      self.damageApply = setEffectDamage()   
 	      self.debuffApply = setEffectDebuff() 
 
-	      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < 1.0 then
+	      if self.biomeTimer <= 0 and status.stat("fireResistance",0) < self.effectCutoffValue then
 		  self.biomeTimer = setEffectTime()
 		  self.timerRadioMessage = self.timerRadioMessage - dt  	  
 	      end 
 
-	      if status.stat("fireResistance",0) <=0.99 then      
+	      if status.stat("fireResistance",0) <= self.effectCutoffValue then      
 		   status.modifyResource("health", -self.damageApply * dt)
 
 		   if (status.resource("health")) <= (status.resource("health")/4) then
 		     mcontroller.controlModifiers({
-			 airJumpModifier = 0.7, 
-			 speedModifier = 0.7 
+			 airJumpModifier = 0.85, 
+			 speedModifier = 0.85 
 		     })  
 		   end
 	      end  
@@ -245,6 +258,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		  end
 		end  
 	end
+	activateVisualEffects()
   else
 	    self.gracePeriod = self.gracePeriod - dt  	
   end

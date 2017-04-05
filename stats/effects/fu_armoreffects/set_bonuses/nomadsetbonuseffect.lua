@@ -13,7 +13,7 @@ armorBonus2={
 }
 
 armorBonus={
-  {stat = "fireStatusImmunity", amount = 1}
+  {stat = "fireStatusImmunity", amount = 1},
   {stat = "quicksandImmunity", amount = 1},
   {stat = "sandstormImmunity", amount = 1},
   {stat = "shieldStaminaRegen", baseMultiplier = 1.20}

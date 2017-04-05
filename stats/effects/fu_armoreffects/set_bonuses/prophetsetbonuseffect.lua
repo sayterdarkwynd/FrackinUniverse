@@ -1,7 +1,7 @@
 setName="fu_prophetset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.12}
+	{stat = "powerMultiplier", baseMultiplier = 1.12}
 }
 
 armorBonus={ }

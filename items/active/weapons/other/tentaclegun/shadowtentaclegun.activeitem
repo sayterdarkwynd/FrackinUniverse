@@ -35,7 +35,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "shadow",
 
   "primaryAbilityType" : "shadowtentaclegun",
   "primaryAbility" : {
@@ -46,10 +46,10 @@
       "segmentSize" : 1.0
     },
 
-    "guideProjectiles" : false,
+    "guideProjectiles" : true,
     "maxLength" : 2,
 
-    "baseDps" : 6,
+    "baseDps" : 7.5,
     "fireTime" : 0.25,
     "maxProjectiles" : 20,
     "energyUsage" : 40,
@@ -59,7 +59,8 @@
     "projectileParameters" : {
       "knockback" : 12,
       "speed" : 60,
-      "timeToLive" : 1
+      "timeToLive" : 1,
+      "damageSourceKind" : "shadow"
     }
   },
 
@@ -95,7 +96,8 @@
       "ignoreTerrain" : false,
       "bounces" : 6,
       "timeToLive" : 10,
-      "minVelocity" : 20
+      "minVelocity" : 20,
+      "damageSourceKind" : "shadow"
     }
   },
 

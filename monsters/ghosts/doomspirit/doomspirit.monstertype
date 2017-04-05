@@ -89,9 +89,11 @@
           }
         },
         {
-          "name" : "approach-fly",
-          "parameters" : {
-            "usePathfinding" : false
+        "name":"approach-fly", 
+        "parameters":{
+          "targetOffset":[0,5], 
+          "minRange":5, 
+          "maxRange":15
           }
         }
       ],
@@ -99,12 +101,70 @@
       "wanderActions" : [
         {
           "name" : "emerge-fly"
-        }
+        },
+	{"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}}, 
+	{"name":"land-fly", "parameters":{"flySpeed":8, "flyControlForce":25, "landCheckDistance":40, "idleTime":40}}        
       ],
 
-      "concurrentActions" : [ { "name" : "action-ghostsparkle" } ],
+      "concurrentActions" : [  ],
 
-      "concurrentHostileActions" : [ { "name" : "action-ghostsparkle" } ]
+      "concurrentHostileActions" : [ 
+      
+	{
+	  "name":"action-projectile", 
+	  "cooldown":10.0, 
+	  "parameters":{
+	    "skillName":"glitterBurst", 
+	    "projectileCount":1, 
+	    "projectileType":"invisibleprojectile", 
+	    "projectileParameters":{
+	      "statusEffects":[ { "effect":"maxprotection", "duration":5} ], 
+	      "timeToLive":0.1, 
+	      "actionOnReap":[ {"action":"projectile","type":"astraltear2"} ], 
+	      "speed":0, 
+	      "power":0
+	      }, 
+	      "power":0, 
+	      "aimAtTarget":true, 
+	      "inaccuracy":0.0, 
+	      "fireOffset":[0,0]
+	  }
+	}, 
+
+	{
+	  "name":"action-projectile", 
+	  "cooldown":5.0, 
+	  "parameters":{
+	    "skillName":"glitterBurst", 
+	    "projectileCount":1, 
+	    "projectileType":"astraltear2", 
+	    "projectileParameters":{
+	      "statusEffects":[ {"effect":"glow", "duration":5}], 
+	      "timeToLive":3.1, 
+	      "actionOnReap":[], 
+	      "speed":0, 
+	      "power":0
+	    }, 
+	    "power":0, 
+	    "aimAtTarget":true, 
+	    "inaccuracy":0.0, 
+	    "fireOffset":[0,0]
+	  }
+	}, 
+	{
+	  "name":"action-projectile", 
+	  "cooldown":10.0, 
+	  "parameters":{
+	    "skillName":"glitterBurst", 
+	    "projectileCount":1, 
+	    "projectileType":"invisibleprojectile", 
+	    "projectileParameters":{
+	      "statusEffects":[{"effect":"camouflage0", "duration":5}]
+	    }
+	  }
+	}       
+      ]
+      
     },
 
     "touchDamage" : {
@@ -130,7 +190,7 @@
       "gravityEnabled" : false,
 
       "airFriction" : 0.5,
-      "airForce" : 10,
+      "airForce" : 40,
       "flySpeed" : 8
     },
 
@@ -168,7 +228,7 @@
           "baseValue" : 45
         },
         "protection" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -196,7 +256,15 @@
         },        
         "powerMultiplier" : {
           "baseValue" : 1.0
-        }
+        },
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "poisonResistance" : { "baseValue" : 1.0 },
+        "cosmicResistance" : { "baseValue" : -1.0 },
+        "radioactiveResistance" : { "baseValue" : 0.7 },
+        "iceResistance" : { "baseValue" : 0.6 },
+        "fireResistance" : { "baseValue" : -0.5 },
+        "physicalResistance" : { "baseValue" : 1.0 },
+        "electricResistance" : { "baseValue" : -0.7 }
       },
 
       "resources" : {

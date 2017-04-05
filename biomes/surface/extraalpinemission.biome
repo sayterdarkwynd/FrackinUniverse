@@ -1,0 +1,122 @@
+{
+  "name" : "extraalpinemission",
+  "friendlyName" : "extraalpinemission",
+
+  "hueShiftOptions" : [-15, 0, 15],
+
+  "weather" : [
+    [0, [
+      "/weather.config:snow"
+    ]]
+  ],
+
+  "skyOptions" : [
+    {
+      // light lavenderish + red night
+      "mainColor" : [255, 255, 255],
+
+      "morningColors" : [ [255, 151, 153], [255, 196, 197] ],
+      "dayColors" : [ [233, 179, 255], [245, 221, 225] ],
+      "eveningColors" : [ [195, 151, 255], [233, 217, 255] ],
+      "nightColors" : [ [50, 0, 0, 80], [50, 0, 0, 160] ],
+
+      "morningLightColor" : [176, 81, 83],
+      "dayLightColor" : [182, 137, 200],
+      "eveningLightColor" : [150, 115, 199],
+      "nightLightColor" : [56, 17, 17]
+    }
+  ],
+
+  "mainBlock" : "grassyrock",
+  "subBlocks" : [ "rock04", "gravel" ],
+  "ores" : "surface",
+
+  "parallax" : "/parallax/surface/garden.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/arctic_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/arctic_night.ogg" ]
+    }
+  },
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "alpinegrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "snowpinetree" ],
+        "treeFoliageList" : [ "snowpine" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:rare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "snowdrift1" ], [0.35, "snowdrift2" ], [0.35, "snowdrift3" ], [0.35, "snowdrift4" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "mistprimer" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "snowbush",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "alpinestone",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+         ]
+      }
+    ]
+  }
+}

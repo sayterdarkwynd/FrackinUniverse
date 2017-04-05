@@ -1,25 +1,20 @@
 require("/scripts/vec2.lua")
 function init()
 
-if (status.stat("fireResistance",0)  >= 0.25) or  (status.stat("physicalResistance",0) >= 0.2) or status.statPositive("biomeheatImmunity") or world.type()=="unknown" then
-  effect.expire()
-end
-
-if on then
-	effect.expire()
-end
-	
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
 
     
   -- Environment Configuration --
   --base values
+  self.effectCutoff = config.getParameter("effectCutoff",0)
+  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
   self.biomeTemp = config.getParameter("biomeTemp",0)              
   
   --timers
+  
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("physicalResistance",0)) *10)
   
@@ -30,16 +25,31 @@ end
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-  
-  -- activate visuals and check stats
-  if not self.usedIntro then
-    world.sendEntityMessage(entity.id(), "queueRadioMessage", "jungleheat", 1.0) -- send player a warning
-    self.usedIntro = 1
-  end
-  
-  activateVisualEffects()
+
+  checkEffectValid()
   
   script.setUpdateDelta(5)
+end
+
+
+--******* check effect and cancel ************
+function checkEffectValid()
+  if world.entityType(entity.id()) ~= "player" then
+    deactivateVisualEffects()
+    effect.expire()
+  end
+	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) or  (status.stat("physicalResistance",0) >= 0.2) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
+	  deactivateVisualEffects()
+	  effect.expire()
+	  
+	else
+	  -- activate visuals and check stats
+	  if not self.usedIntro and (self.timerRadioMessage == 0) then
+	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejungle", 1.0) -- send player a warning
+	    self.usedIntro = 1
+	    self.timerRadioMessage = 20  	
+	  end
+	end
 end
 
 -- *******************Damage effects
@@ -52,7 +62,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-  return (self.baseRate * (1 - status.stat("physicalResistance",0)))
+  return (  self.baseRate *  math.min(   1 - math.min( status.stat("physicalResistance",0) ),0.6))
 end
 
 -- ******** Applied bonuses and penalties
@@ -133,6 +143,12 @@ function activateVisualEffects()
   --animator.setParticleEmitterActive("firebreath", true) 
 end
 
+function deactivateVisualEffects()
+  effect.setParentDirectives("fade=ff7600=0.0")
+  --animator.setParticleEmitterActive("firebreath", false) 
+end
+
+
 function makeAlert()
         world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
         animator.playSound("bolt")
@@ -141,9 +157,7 @@ end
 
 
 function update(dt)
-if status.statPositive("biomeheatImmunity") then
-  effect.expire()
-end
+checkEffectValid()
 
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
@@ -188,19 +202,21 @@ self.timerRadioMessage = self.timerRadioMessage - dt
       self.damageApply = setEffectDamage()   
       self.debuffApply = setEffectDebuff() 
   
-      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < 1.0 then
+      if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < self.effectCutoffValue then
           self.biomeTimer = setEffectTime()
           self.timerRadioMessage = self.timerRadioMessage - dt  	  
       end 
 
-      if status.stat("physicalResistance",0) <=0.99 then      
+      if status.stat("physicalResistance",0) <= self.effectCutoffValue then      
 	   status.modifyResource("health", -self.damageApply * dt)
-
+           activateVisualEffects()
            if (status.resource("health")) <= (status.resource("health")/3) then
-             mcontroller.controlModifiers({
-	         airJumpModifier = status.stat("physicalResistance",0), 
-	         speedModifier = status.stat("physicalResistance",0) 
-             })  
+                self.modifier = status.stat("physicalResistance",0)
+           	if (status.stat("physicalResistance",0) <= 0) then self.modifier = 0.05 end
+             	mcontroller.controlModifiers({
+	         	airJumpModifier = self.modifier, 
+	         	speedModifier = self.modifier 
+             	})  
            end
       end  
       self.biomeTimer = self.biomeTimer - dt

@@ -16,6 +16,7 @@ function update(dt)
     self.tickTimer = 1
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
+        damageKind = "radioactive",
         damage = 0.06 * status.resourceMax("health"),
         sourceEntityId = entity.id()
       })

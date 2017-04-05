@@ -1,0 +1,117 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "powerState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 12,
+            "cycle" : 1.2,
+            "mode" : "loop"
+          }
+        }
+      },
+      "healState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "heal" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 1.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "heal" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "pethealingstation" : {
+        "properties" : {
+          "centered" : false,
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "powerState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:off.<frame>"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:on.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "pethealingstationlit" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1
+        },
+
+        "partStates" : {
+          "powerState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:off.<frame>"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:on.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {},
+
+  "particleEmitters" : {
+    "heal" : {
+      "emissionRate" : 10,
+      "emissionVariance" : 5,
+      "active" : false,
+
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/statuseffects/heal/heal.animation",
+            "position" : [1.0, 1.5],
+            "finalVelocity" : [0.0, 4],
+            "approach" : [0, 50],
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "fade" : 1,
+            "size" : 1,
+            "layer" : "middle",
+            "timeToLive" : 0.85,
+            "variance" : {
+              "initialVelocity" : [3.0, 3.0],
+              "position" : [0.5, 1.0]
+            }
+          }
+        }
+      ]
+    }
+  }
+
+}

@@ -1,11 +1,15 @@
 setName="fu_irradiumset"
 
 weaponBonus1={
-	{stat = "critBonus", amount = 5},
+	{stat = "critBonus", baseMultiplier = 1.05},
 	{stat = "radioactiveResistance", amount = 0.1}
 }
 
-armorBonus={ }
+armorBonus={ 
+	{stat = "ffextremeradiationImmunity", amount = 1},
+	{stat = "biomeradiationImmunity", amount = 1},
+	{stat = "radiationburnImmunity", amount = 1}
+}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

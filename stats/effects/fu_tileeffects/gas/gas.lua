@@ -1,34 +1,36 @@
 require "/scripts/unifiedGravMod.lua"
 
 function init()
-  unifiedGravMod.init()
-  self.gravityMod = config.getParameter("gravityMod",0)
-  effect.addStatModifierGroup({effect="gravityMod",amount=self.gravityMod})
-  self.movementParams = mcontroller.baseParameters()
+	self.gravityMod = config.getParameter("gravityMod",20.0)
+	self.gravityNormalize = config.getParameter("gravityNorm",false)
+	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
+	self.movementParams = mcontroller.baseParameters()
+	unifiedGravMod.init()
+  
   activateVisualEffects()
   self.liquidMovementParameter = {
-    --gravityMultiplier = 1.5,
-    groundForce = 100,
+    groundForce = 70,
     airForce = 20,
-    airFriction = 0,
-    liquidForce = 100,
-    liquidFriction = 0.0,
-    liquidImpedance = 0.01,
-    liquidBuoyancy = 0.01,
+    airFriction = 0.3,
+    liquidForce = 70,
+    liquidFriction = 0.35,
+    liquidImpedance = 0.1,
+    liquidBuoyancy = 0.25,
+    minimumLiquidPercentage = 0.1,
     liquidJumpProfile = {
-      jumpSpeed = 55.0,
-      jumpControlForce = 900.0,
-      jumpInitialPercentage = 1,
-      jumpHoldTime = 0.1,
+      jumpSpeed = 70.0,
+      jumpControlForce = 610.0,
+      jumpInitialPercentage = 0.45,
+      jumpHoldTime = 0.01,
       multiJump = false,
+      reJumpDelay = 0.5,
       autoJump = false,
-      reJumpDelay = 0.5
+      collisionCancelled = false
     }
   }
+
+  script.setUpdateDelta(5)
 end
- 
-
-
 
 function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
@@ -39,5 +41,6 @@ function activateVisualEffects()
 end
 
 function update(dt)
+  unifiedGravMod.update(dt)
   mcontroller.controlParameters(self.liquidMovementParameter)
 end

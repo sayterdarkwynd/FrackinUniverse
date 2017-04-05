@@ -1,0 +1,195 @@
+{
+  "metadata" : {
+    "name" : "apexunderwaterlab",
+    "species" : "apex",
+    "rules" : [
+    ],
+    "anchor" : [ "anchor1", "anchor2" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 15,
+    "protected" : true
+  },
+
+  "parts" : [
+    {
+      "name" : "anchor1",
+      "rules" : [
+		[ "doNotCombineWith", [ "anchor2" ] ],
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchor1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "anchor2",
+      "rules" : [
+		[ "doNotCombineWith", [ "anchor1" ] ],
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchor2.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "dorms1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "dorms1" ] ]
+      ],
+      "def" : [ "tmx", "dorms1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "dorms2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "dorms2" ] ]
+      ],
+      "def" : [ "tmx", "dorms2.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "dorms3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "dorms3.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "dorms4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "dorms4.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "labconnector1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+		[ "doNotConnectToPart", [ "labconnector1" ] ]
+      ],
+      "def" : [ "tmx", "labconnector1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "labconnector2",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "doNotConnectToPart", [ "labconnector2" ] ]
+      ],
+      "def" : [ "tmx", "labconnector2.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "labs1",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "labs1" ] ]
+      ],
+      "def" : [ "tmx", "labs1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "labs2",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "labs2" ] ]
+      ],
+      "def" : [ "tmx", "labs2.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "labs3",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "labs3" ] ]
+      ],
+      "def" : [ "tmx", "labs3.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "labs4",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "labs4" ] ]
+      ],
+      "def" : [ "tmx", "labs4.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "labs5",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "labs5" ] ]
+      ],
+      "def" : [ "tmx", "labs5.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "dormscap1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "dormscap1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "dormscap2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "dormscap2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "labscap1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "labscap1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "labscap2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "labscap2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "generatorsnow",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "doNotCombineWith", [ "generatorinfiltration", "generatorradar" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "generatorsnow.json" ],
+      "chance" : 5
+    },
+    {
+      "name" : "generatorinfiltration",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "doNotCombineWith", [ "generatorsnow", "generatorradar" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "generatorinfiltration.json" ],
+      "chance" : 5
+    },
+    {
+      "name" : "generatorradar",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "doNotCombineWith", [ "generatorsnow", "generatorinfiltration" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "generatorradar.json" ],
+      "chance" : 2
+    }
+  ]
+}

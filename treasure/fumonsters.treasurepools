@@ -1,5 +1,25 @@
 {
-
+  "gasbagLoot" : [
+    [1, {
+        "pool" : [
+          {"weight" : 0.0333, "item" : [ "liquidmetallichydrogen", 150]},
+          {"weight" : 0.0333, "item" : [ "dnasample", 150]},
+          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
+          {"weight" : 0.0200, "item" : [ "cellmateria", 50]},
+          {"weight" : 0.0366, "item" : [ "mineralsample", 15]},
+          {"weight" : 0.0366, "item" : [ "iodine", 4]},
+          {"weight" : 0.0366, "item" : [ "ff_mercury", 6]}
+        ],
+        "poolRounds" : [
+          [0.90, 1],
+          [0.80, 2],
+          [0.70, 3]
+        ],
+      "allowDuplication" : true
+      }
+    ]
+  ],
+  
   "gorgolithLoot" : [
     [1, {
       "fill" : [
@@ -46,6 +66,31 @@
       "allowDuplication" : true
       }
     ]
+  ],
+
+  "warbotTreasure" : [
+    [1, {
+      "pool" : [
+        {"weight" : 0.5, "pool" : "furobotTreasure"},
+        {"weight" : 0.3, "pool" : "ffmetallicbossChest"},
+        {"weight" : 0.1, "item" : "stickofram"},
+        {"weight" : 0.1, "item" : "staticcell"},
+        {"weight" : 0.1, "item" : "servitorchassis"},
+        {"weight" : 0.1, "item" : "servitorlaser"},
+        {"weight" : 0.1, "item" : "servitorbehaviorchip"}
+      ],
+      "poolRounds" : [
+        [0.90, 0],
+        [0.80, 1],
+        [0.70, 2],
+        [0.60, 3],
+        [0.50, 4],
+        [0.40, 5],
+        [0.30, 6],
+        [0.20, 7]        
+      ],
+      "allowDuplication" : false
+    }]
   ],
   
   "servitorTreasure" : [
@@ -262,8 +307,6 @@
           {"weight" : 0.0211, "item" : [ "glassmaterial", 25]},
           {"weight" : 0.0211, "item" : [ "protociteore", 5]},
           {"weight" : 0.0211, "item" : [ "penumbriteore", 5]},
-          {"weight" : 0.0211, "item" : [ "ebonshard", 25]},
-          {"weight" : 0.0211, "item" : [ "obsidianshard", 5]},
           {"weight" : 0.0211, "item" : [ "metalchunk", 5]},
           {"weight" : 0.0211, "item" : [ "ff_spareparts", 5]},
           {"weight" : 0.0250, "item" : [ "fleshstrand", 50]},
@@ -282,47 +325,34 @@
           {"weight" : 0.0366, "item" : [ "ff_plastic", 6]},
           {"weight" : 0.0366, "item" : [ "iodine", 4]},
           {"weight" : 0.0366, "item" : [ "ff_mercury", 6]},
-          {"weight" : 0.012, "item" : [ "trooperhead", 1]},
-          {"weight" : 0.012, "item" : [ "trooperhead2", 1]},
           {"weight" : 0.012, "item" : [ "targetinggoggles", 1]},
           {"weight" : 0.005, "item" :  [ "yellowguardianback-recipe", 1]},
           {"weight" : 0.005, "item" :  [ "blueguardianback-recipe", 1]},
           {"weight" : 0.005, "item" :  [ "pinkguardianback-recipe", 1]},
           {"weight" : 0.005, "item" :  [ "greenguardianback-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "cultfleshchest-recipe", 1]},
-	        {"weight" : 0.005, "item" :  [ "cultfleshlegs-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "cultfleshhead-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "fuarmoredcultistback-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "fuarmoredcultisthead-recipe", 1]},
-	        {"weight" : 0.005, "item" :  [ "fuarmoredcultistchest-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "fuarmoredcultistlegs-recipe", 1]},
-          {"weight" : 0.012, "item" :  [ "fuexosuitchest-recipe", 1]},
-	        {"weight" : 0.012, "item" :  [ "fuexosuitlegs-recipe", 1]},
-          {"weight" : 0.012, "item" :  [ "fuexosuithead-recipe", 1]},
           {"weight" : 0.012, "item" :  [ "atropuschest-recipe", 1]},
           {"weight" : 0.012, "item" :  [ "longarmpistol-recipe", 1]},
           {"weight" : 0.012, "item" :  [ "longarm-recipe", 1]},
-          {"weight" : 0.015, "item" :  [ "eldertome", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic1", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic2", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic3", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic4", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic5", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic6", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic7", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic8", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic9", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic10", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic11", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic12", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic13", 1]},
-          {"weight" : 0.015, "item" :  [ "elderrelic14", 1]},
-          {"weight" : 0.012, "item" :  [ "brainslug", 1]}
+          {"weight" : 0.005, "item" :  [ "eldertome", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic1", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic2", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic3", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic4", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic5", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic6", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic7", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic8", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic9", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic10", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic11", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic12", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic13", 1]},
+          {"weight" : 0.005, "item" :  [ "elderrelic14", 1]},
+          {"weight" : 0.008, "item" :  [ "brainslug", 1]}
         ],
         "poolRounds" : [
           [0.63, 1],
-          [0.33, 2],
-          [0.20, 3]
+          [0.33, 2]
         ],
       "allowDuplication" : true
       }
@@ -368,8 +398,6 @@
           {"weight" : 0.0111, "item" : [ "glassmaterial", 25]},
           {"weight" : 0.0111, "item" : [ "protociteore", 5]},
           {"weight" : 0.0111, "item" : [ "penumbriteore", 5]},
-          {"weight" : 0.0111, "item" : [ "ebonshard", 25]},
-          {"weight" : 0.0111, "item" : [ "obsidianshard", 5]},
           {"weight" : 0.0111, "item" : [ "metalchunk", 5]},
           {"weight" : 0.0111, "item" : [ "ff_spareparts", 5]},
           {"weight" : 0.0111, "item" : [ "protorockmaterial", 5]},
@@ -448,15 +476,97 @@
           {"weight" : 0.005, "item" :  [ "fubonearmor3head", 1]}
         ],
         "poolRounds" : [
-          [0.23, 1],
-          [0.33, 2],
-          [0.33, 3]
+          [0.13, 1],
+          [0.23, 2],
+          [0.33, 3],
+          [0.43, 4],
+          [0.53, 5]          
         ],
       "allowDuplication" : true
       }
     ]
   ],
-
+  
+  "ffelderStarspawnTreasureBoss" : [
+    [1, {
+        "fill" : [
+        { "item" : "eldertome" }
+        ],
+        "pool" : [
+        {"weight" : 0.008, "pool" : "eldertome" },
+        {"weight" : 0.008, "pool" : "artifactloot" },
+        {"weight" : 0.03, "pool" : "augments"},
+        {"weight" : 0.03, "pool" : "petcollars2"},
+          {"weight" : 0.20, "pool" : "money"},
+          {"weight" : 0.0111, "item" : [ "protorockmaterial", 5]},
+          {"weight" : 0.0005, "item" : [ "densiniumore", 12]},
+          {"weight" : 0.0015, "item" : [ "densiniumore", 6]},
+          {"weight" : 0.012, "item" :  [ "cultfleshchest", 1]},
+	  {"weight" : 0.012, "item" :  [ "cultfleshlegs", 1]},
+          {"weight" : 0.012, "item" :  [ "cultfleshhead", 1]},
+          {"weight" : 0.012, "item" :  [ "cultarmorhead", 1]},
+	  {"weight" : 0.012, "item" :  [ "cultarmorchest", 1]},
+          {"weight" : 0.012, "item" :  [ "cultarmorpants", 1]},
+          {"weight" : 0.012, "item" :  [ "fuarmoredcultistback", 1]},
+          {"weight" : 0.012, "item" :  [ "fuarmoredcultisthead", 1]},
+	  {"weight" : 0.012, "item" :  [ "fuarmoredcultistchest", 1]},
+          {"weight" : 0.012, "item" :  [ "fuarmoredcultistlegs", 1]},
+          {"weight" : 0.012, "item" :  [ "eldershield", 1]},
+          {"weight" : 0.012, "item" :  [ "elderarmorhead", 1]},
+	  {"weight" : 0.012, "item" :  [ "elderarmorchest", 1]},
+          {"weight" : 0.012, "item" :  [ "elderarmorpants", 1]},
+          {"weight" : 0.012, "item" :  [ "eldercarbine", 1]},
+          {"weight" : 0.012, "item" :  [ "elderpistol", 1]},
+          {"weight" : 0.012, "item" :  [ "elderblade", 1]},
+          {"weight" : 0.012, "item" :  [ "cultiststaff1", 1]},
+          {"weight" : 0.012, "item" :  [ "cultiststaff2", 1]},
+          {"weight" : 0.012, "item" :  [ "cultiststaff3", 1]},
+          {"weight" : 0.012, "item" :  [ "brainslug", 1]},
+          {"weight" : 0.012, "item" :  [ "eldertome", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic1", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic2", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic3", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic4", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic5", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic6", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic7", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic8", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic9", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic10", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic11", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic12", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic13", 1]},
+          {"weight" : 0.025, "item" :  [ "elderrelic14", 1]},
+          {"weight" : 0.005, "item" :  [ "elderarmorchest", 1]},
+          {"weight" : 0.005, "item" :  [ "elderarmorhead", 1]},
+          {"weight" : 0.005, "item" :  [ "elderarmorpants", 1]},
+          {"weight" : 0.02, "item" :  [ "tentaclestatue", 1]},
+          {"weight" : 0.02, "item" :  [ "strangedevice1", 1]},
+          {"weight" : 0.04, "item" :  [ "mysteriousmachine1", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting1", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting2", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting3", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting4", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting5", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting6", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting7", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting8", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting9", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting10", 1]},
+          {"weight" : 0.025, "item" :  [ "elderpainting11", 1]},
+          {"weight" : 0.005, "item" :  [ "fubonearmor3head", 1]}
+        ],
+        "poolRounds" : [
+          [0.13, 1],
+          [0.23, 2],
+          [0.33, 3],
+          [0.43, 4],
+          [0.53, 5]          
+        ],
+      "allowDuplication" : true
+      }
+    ]
+  ],
 
 
   "shadowtopLoot" : [
@@ -1748,8 +1858,6 @@
           {"weight" : 0.003, "item" : "teleportercore"},
           {"weight" : 0.0211, "item" : [ "protociteore", 5]},
           {"weight" : 0.0211, "item" : [ "penumbriteore", 5]},
-          {"weight" : 0.0211, "item" : [ "ebonshard", 25]},
-          {"weight" : 0.0211, "item" : [ "obsidianshard", 50]},
           {"weight" : 0.0250, "item" : [ "fleshstrand", 50]},
           {"weight" : 0.0200, "item" : [ "fleshstrand", 100]},
           {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
@@ -1857,8 +1965,6 @@
           {"weight" : 0.003, "item" : "teleportercore"},
           {"weight" : 0.0211, "item" : [ "protociteore", 5]},
           {"weight" : 0.0211, "item" : [ "penumbriteore", 5]},
-          {"weight" : 0.0211, "item" : [ "ebonshard", 25]},
-          {"weight" : 0.0211, "item" : [ "obsidianshard", 50]},
           {"weight" : 0.0250, "item" : [ "fleshstrand", 50]},
           {"weight" : 0.0200, "item" : [ "fleshstrand", 100]},
           {"weight" : 0.0200, "item" : [ "cellmatter", 50]},

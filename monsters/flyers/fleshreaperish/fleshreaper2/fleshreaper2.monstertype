@@ -1,7 +1,8 @@
-{
+{ 
   "type" : "fleshreaper2",
   "shortdescription" : "Flesh Reaper",
   "description" : "With a name like this, clearly they want your love.",
+
   "categories" : [ "fleshreaper2" ],
   "parts" : [ "body" ],
 
@@ -16,12 +17,12 @@
 
     "behavior" : "monster",
 
+    "seeThroughLiquid" : false,
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
-      "targetEntityTypes" : [ "player", "npc", "monster" ],
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
@@ -30,111 +31,257 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ 
-      
+      "hostileActions" : [  
        {
           "name" : "action-fire",
-          "cooldown" : 4,
+          "cooldown" : 10,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
+            "maximumRange" : 12,
             "minimumRange" : 5,
-            "windupState" : "idle",
-            "windupTime" : 0.75,
+            "windupStopForce" : 50,
+            "windupState" : "ranged",
+            "windupTime" : 0.4,
 
-            "projectileType" : "honeystingergunsting",
-            "power" : 20,
+            "projectileType" : "largeshadowcloud",
+            "projectileParameters" : {
+              "speed" : 30
+            },
+            "power" : 15,
+            "fireOffset" : [2, -1],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        }, 
+       {
+          "name" : "action-fire",
+          "cooldown" : 7.5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 22,
+            "minimumRange" : 3,
+            "windupStopForce" : 10,
+            "windupState" : "melee",
+            "windupTime" : 0.2,
+
+            "projectileType" : "multibone",
+            "projectileParameters" : {
+              "speed" : 40
+            },
+            "power" : 10,
             "fireOffset" : [2, 0],
             "aimAtTarget" : true,
             "onGround" : false,
-            "fireState" : "fire",
-            "fireSound" : "fire",
-            "inaccuracy" : 1.0,
-            "projectileCount" : 10,
-            "projectileInterval" : 0.05,
-            "winddownState" : "firewinddown",
-            "winddownTime" : 1.5
-          }
-        },
-        {
-          "name" : "action-charge",
-          "cooldown" : 2.5,
-          "parameters" : {
-            "maximumRange" : 10,
-            "windupStopForce" : 50,
-            "windupTime" : 1,
-            "windupState" : "idle",
-            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "ranged",
 
-            "wallCollide" : true,
-            "aimAtTarget" : true,
-            "rotateToTarget" : false,
-            "chargeTime" : 0.35,
-            "chargeSpeed" : 55,
-            "chargeControlForce" : 750,
-
-            "winddownState" : "melee",
-            "winddownStopForce" : 200,
+            "winddownState" : "",
             "winddownTime" : 0.5
+          }
+        },         
+       {
+          "name" : "action-fire",
+          "cooldown" : 5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 25,
+            "minimumRange" : 5,
+            "windupStopForce" : 3,
+            "windupState" : "melee",
+            "windupTime" : 0.2,
+
+            "projectileType" : "magnorbatropus2",
+            "projectileParameters" : {
+              "speed" : 45
+            },
+            "power" : 10,
+            "fireOffset" : [2, 0],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "swipe",
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        },      
+        {
+          "name" : "action-swoop",
+          "cooldown" : 1,
+          "parameters" : {
+            "minimumRange" : 4,
+            "maximumRange" : 15,
+            "onGround" : false,
+            "windupTime" : 0.5,
+
+            "gravityMultiplier" : -0.5,
+            "swoopVelocity" : 55,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopTime" : 0.5,
+
+            "winddownTime" : 0.5,
+            "winddownState" : "crash",
+            "winddownStopForce" : 20
           }
         }
       ],
 
-      "periodicActions" : [
-       ],
+      "periodicActions" : [ ],
 
-      "approachActions" : [
+      "approachActions" : [    
         {
-          "name" : "wander-fly",
+          "name" : "approach-fly",
+          "cooldown" : 5.0,
           "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
+            "usePathfinding" : false,
+            "minRange" : 1,
+            "maxRange" : 5   
           }
         }
       ],
 
       "followActions" : [
         {
-          "name" : "approach-fly"
-        }
-      ],
-
-      "wanderActions" : [
-        {
-          "name" : "approach-fly",
+          "name" : "approach-teleport",
           "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
+	    "moveState": "fly",
+	    "idleState": "idle",
+	    "teleportMinDistance": 9,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10               
+          }
+        },      
+        {
+        "name":"approach-fly", 
+        "cooldown" : 5.0,
+        "parameters":{
+          "targetOffset":[0,5], 
+          "minRange":10, 
+          "maxRange":25
           }
         }
       ],
 
-      "concurrentActions" : [ ],
+      "wanderActions" : [
+        { "name" : "emerge-fly" },
+	{
+	"name":"wander-fly", 
+	"cooldown":[5,20], 
+	  "parameters":{ 
+	    "wanderTime":[10,40], 
+	    "groundDistance":2, 
+	    "ceilingDistance":12, 
+	    "xVelocity":8, 
+	    "yVelocity":8
+	  }
+	},         
+	{
+	"name":"wander-fly", 
+	"cooldown":[5,20], 
+	  "parameters":{ 
+	    "wanderTime":[10,40], 
+	    "groundDistance":20, 
+	    "ceilingDistance":10, 
+	    "xVelocity":8, 
+	    "yVelocity":12
+	  }
+	}, 
+	{
+	  "name":"land-fly", 
+	  "parameters":{
+	    "flySpeed":8, 
+	    "flyControlForce":25, 
+	    "landCheckDistance":40, 
+	    "idleTime":40
+	  }
+	} 
+      ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentActions" : [],
+
+      "concurrentHostileActions" : [
+	{
+	  "name":"action-projectile", 
+	  "cooldown":10.0, 
+	  "parameters":{
+	    "skillName":"glitterBurst", 
+	    "projectileCount":1, 
+	    "projectileType":"invisibleprojectile", 
+	    "projectileParameters":{
+	      "power" : 0,
+	      "statusEffects":[
+	        {"effect":"camouflage99", "duration":10}
+	      ]
+	    }
+	  }
+	}, 
+	{
+	  "name":"action-projectile", 
+	  "cooldown":20.0, 
+	  "parameters":{
+	    "skillName":"glitterBurst", 
+	    "projectileCount":1, 
+	    "projectileType":"invisibleprojectile", 
+	    "projectileParameters":{
+	      "power" : 0,
+	      "statusEffects":[
+	        {"effect":"damagebonus2", "duration":10}
+	      ]
+	    }
+	  }
+	},	
+       {
+          "name" : "action-fire",
+          "cooldown" : 4,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 5,
+            "minimumRange" : 1,
+            "windupStopForce" : 50,
+            "windupState" : "fire",
+            "windupTime" : 0.6,
+
+            "projectileType" : "magnorbshadow2",
+            "projectileParameters" : {
+              "speed" : 25
+            },
+            "power" : 10,
+            "fireOffset" : [2, 0],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "crash",
+            "fireDelay" : 0.2,
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        }     
+      ]
     },
 
     "touchDamage" : {
-      "poly" : [ [-1.625, -2.375], [1.75, -2.375], [1.75, 2.0], [-1.625, 2.0] ],
-      "damage" : 1,
+      "poly" : [ [-2.2,2.5], [-2.2,-3], [1.7,-3.15], [1.5,2.55] ],
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
-      "knockback" : 5,
-      "statusEffects" : [ "puseffect" ]
+      "knockback" : 20,
+      "statusEffects" : [ ]
     },
 
-    "metaBoundBox" : [-3.38, -4.0, 4.50, 0.75],
+    "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-3.625,1], [0.5,0.25], [2.375,-1.125], [4.625,-2], [4.375,-4.25], [-0.375,-4.75], [-1.25,-2.625], [-1.375,-1.75], [-3.75,-0.375] ],
+      "collisionPoly" : [ [-2.2,2.5], [-2.2,-3], [1.7,-3.15], [1.5,2.55] ],
 
       "mass" : 0.5,
       "walkSpeed" : 4,
@@ -142,8 +289,8 @@
       "gravityEnabled" : false,
 
       "airFriction" : 2,
-      "airForce" : 20,
-      "flySpeed" : 15
+      "airForce" : 50,
+      "flySpeed" : 14
     },
 
     "bodyMaterialKind" : "organic",
@@ -171,26 +318,44 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.19
+          "baseValue" : 0.5
         },
         "knockbackThreshold" : {
-          "baseValue" : 5
+          "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 78
+          "baseValue" : 125
         },
         "protection" : {
-          "baseValue" : 50.0
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
         },
-        "poisonStatusImmunity" : {
+        "powerMultiplier" : {
           "baseValue" : 1.0
         },
+        "physicalResistance" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        }, 
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },     
         "pusImmunity" : {
           "baseValue" : 1.0
-        }
+        },        
+        "poisonResistance" : {
+          "baseValue" : 1.0
+        },        
+        "fireResistance" : {
+          "baseValue" : -0.5
+        }        
       },
 
       "resources" : {
@@ -208,7 +373,8 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
+    "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "captureParticles" : "captureParticles"
+    "nametagColor" : [64, 200, 255]
   }
 }

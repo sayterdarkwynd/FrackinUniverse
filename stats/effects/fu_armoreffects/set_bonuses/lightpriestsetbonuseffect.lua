@@ -1,7 +1,7 @@
 setName="fu_lightpriestset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.10}
+	{stat = "powerMultiplier", baseMultiplier = 1.10}
 }
 
 armorBonus={ }
@@ -18,13 +18,13 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	
-	checkWeapons()
-	status.modifyResourcePercentage("health", 0.004 * dt)
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+
+		checkWeapons()
+		status.modifyResourcePercentage("health", 0.004 * dt)
+	end
 end
 
 function checkWeapons()

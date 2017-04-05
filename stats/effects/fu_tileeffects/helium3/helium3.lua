@@ -9,20 +9,20 @@ function init()
   self.liquidMovementParameter = {
     --gravityMultiplier = 0.75,
     groundForce = 80,
-    airForce = 50,
-    airFriction = 0.5,
-    liquidForce = 20,
+    airForce = 40,
+    airFriction = 0.4,
+    liquidForce = 70,
     liquidFriction = 0.1,
     liquidImpedance = 0.1,
     liquidBuoyancy = 0.1,
-    minimumLiquidPercentage = 0.2,
+    minimumLiquidPercentage = 0.1,
     liquidJumpProfile = {
       jumpSpeed = 70.0,
       jumpControlForce = 550.0,
-      jumpInitialPercentage = 0.75,
-      jumpHoldTime = 0.05,
+      jumpInitialPercentage = 0.55,
+      jumpHoldTime = 0.024,
       multiJump = false,
-      reJumpDelay = 1.05,
+      reJumpDelay = 0.5,
       autoJump = false,
       collisionCancelled = true
     }
