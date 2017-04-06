@@ -249,6 +249,7 @@ function getRecipes()
 	{ inputs = { bloodstonematerial = 50 }, outputs = { phosphorus = { 1, 1, 3 } } },
 	{ inputs = { bloodstonewall = 50 }, outputs = { blooddiamond = { 1, 1, 2 } } },
 	{ inputs = { bloodstonewall2 = 50 }, outputs = { rawminerals = { 2, 2, 4 } } },
+	{ inputs = { fuvinewall = 50 }, outputs = { plantfibre = { 2, 4, 6 } } },
 	{ inputs = { bonematerial = 25 }, outputs = { bone = { 5, 5, 8 }, liquidoil = { 10, 10, 20 } } },
 	{ inputs = { bleachedbonematerial = 25 }, outputs = { bone = { 5, 5, 8 }, liquidoil = { 10, 10, 20 } } },
 	{ inputs = { charredbonematerial = 25 }, outputs = { fu_carbon = { 2, 3, 4 }, liquidoil = { 3, 4, 5 } } },
