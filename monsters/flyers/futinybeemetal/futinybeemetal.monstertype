@@ -1,12 +1,12 @@
 {
-  "type" : "futinybee",
-  "shortdescription" : "Bee",
+  "type" : "futinybeemetal",
+  "shortdescription" : "Metal Bee",
   "description" : "Don't touch the pointy end.",
 
-  "categories" : [ "futinybee" ],
+  "categories" : [ "futinybeemetal" ],
   "parts" : [ "body" ],
 
-  "animation" : "futinybee.animation",
+  "animation" : "futinybeemetal.animation",
 
   "dropPools" : [ ],
 
@@ -16,6 +16,7 @@
     ],
 
     "behavior" : "monster",
+    "deathBehavior" : "monster-death",
 
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
@@ -137,7 +138,20 @@
         }
       ],
 
-      "deathActions" : [],
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "laserexplosion",
+            "projectileParameters" : {},
+            "power" : 3,
+            "aimDirection" : [0.3, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 2]
+          }
+        }
+      ],
 
       "concurrentActions" : [ ],
 
@@ -146,10 +160,10 @@
 
     "touchDamage" : {
       "poly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
-      "damage" : 1,
+      "damage" : 3,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "lash",
+      "damageSourceKind" : "radioactive",
       "knockback" : 20,
       "statusEffects" : [ "fubeesting2" ]
     },
@@ -167,7 +181,7 @@
 
       "airFriction" : 4,
       "airForce" : 40,
-      "flySpeed" : 12
+      "flySpeed" : 10
     },
 
     "bodyMaterialKind" : "organic",

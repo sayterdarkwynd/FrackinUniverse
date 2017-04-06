@@ -8,12 +8,18 @@
           "idle" : {
             "frames" : 3,
             "cycle" : 0.5,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+            "persistentSound" : "/sfx/projectiles/bugswarm3.ogg",
+            "persistentSoundStopTime" : 2.2}
           },
           "fire" : {
             "frames" : 5,
             "cycle" : 0.5,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+            "persistentSound" : "/sfx/projectiles/bugswarm4.ogg",
+            "persistentSoundStopTime" : 2.2}
           },   
           "swoopwindup" : {
             "frames" : 3,
@@ -45,7 +51,27 @@
             "frames" : 1
           }
         }
-      }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }       
     },
 
     "parts" : {
