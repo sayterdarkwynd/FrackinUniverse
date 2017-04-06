@@ -34,56 +34,33 @@
 
       "hostileActions" : [
         {
-          "name" : "action-statuseffect", 
-          "cooldown" : 10,
-          "parameters" : {
-          "effect" : "mage_shield_lvl1shadowcrab",
-          "duration" : 5
-          }
-        },
-        {
           "name" : "action-fire",
-	  "cooldown" : 1,
+          "cooldown" : 3,
           "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 3,
-            "windupState" : "fireWindup",
-            "windupTime" : 0.5,
+          
+            "maximumRange" : 20,
+            "minimumRange" : 1,
+            "windupState" : "windup",
+            "windupTime" : 0.55,
 
-            "projectileType" : "alienblast",
-            "power" : 12,
-            
-            "fireOffset" : [1.35, -1],
-            "aimAtTarget" : true,
-            "fireSound" : "fire",
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },
-        {
-          "name" : "action-fire",
-	    "cooldown" : 1,
-            "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 3,
-            "minimumRange" : 2,
-            "windupState" : "",
-            "windupTime" : 0.25,
+            "projectileType" : "magnorbshadow3",
+            "fireOffset" : [-2, -1],
 
-            "projectileType" : "energyswoosh3",
-            "power" : 7,
-            "fireOffset" : [4, -1],
             "aimAtTarget" : true,
-            "projectileCount" : 1,
+            "projectileCount" : 0,
+            "projectileParameters" : { "speed" : 25, "timeToLive" : 0.2},
+            "fireDelay" : 0.20,
             "projectileInterval" : 0.01,
-            "fireSound" : "fire",
-            "fireState" : "melee",
-            "winddownState" : "",
-            "winddownTime" : 0.34
+            "inaccuracy" : 0.5,
+            
+            "power" : 5,
+            "fireSound" : "wallCrash",
+            "fireState" : "fire",
+
+            "winddownState" : "idle",
+            "winddownTime" : 0.5
           }
-        }
+        }  
       ],
 
       "periodicActions" : [

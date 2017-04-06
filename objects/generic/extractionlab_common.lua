@@ -112,6 +112,8 @@ function getRecipes()
 	{ inputs = { suncomb = 1 }, outputs = { solariumore = 2 } },
 	{ inputs = { sundrone = 1 }, outputs = { solariumore = { 1, 1, 2 } } },
 	{ inputs = { sunqueen = 1 }, outputs = { solariumore = { 1, 1, 2 } } },
+	{ inputs = { mythicaldrone = 1 }, outputs = { protociteore = { 1, 1, 2 } } },
+	{ inputs = { mythicalqueen = 1 }, outputs = { protociteore = { 1, 1, 2 } } },	
 	{ inputs = { titaniumcomb = 1 }, outputs = { titaniumore = 2 } },
 	{ inputs = { tungstencomb = 1 }, outputs = { tungstenore = 2 } },
 	{ inputs = { volcaniccomb = 1 }, outputs = { cinnabarore = 2 } },
