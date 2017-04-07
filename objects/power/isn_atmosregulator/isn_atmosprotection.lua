@@ -10,6 +10,8 @@ function init()
    {stat = "biomeheatImmunity", amount = 1},
    {stat = "sulphuricImmunity", amount = 1},
    {stat = "sulphuricImmunity", amount = 1},
+   {stat = "biomeelectricImmunity", amount = 1},
+   {stat = "electricStatusImmunity", amount = 1},
    {stat = "ffextremeheatImmunity", amount = 1},
    {stat = "ffextremecoldImmunity", amount = 1},
    {stat = "ffextremeradiationImmunity", amount = 1},
