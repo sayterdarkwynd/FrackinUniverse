@@ -9,7 +9,11 @@
 	"animation": "servitor2.animation",
 	"dropPools": [],
 	"baseParameters": {
-
+	
+		"scripts": [
+			"/monsters/monster.lua"
+		],
+		
 		"animationScripts": [
 			"/monsters/flyers/servitors/orescan.lua"
 		],
@@ -18,17 +22,16 @@
 			"types": ["ore","cave"],
 			"image": "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
 			"variants": 4,
-			"pingRange": 25,
-			"pingBandWidth": 20,
-			"pingDuration": 2.5,
-			"pingCooldown": 0.0
+			"pingRange": 24,
+			"pingBandWidth": 10,
+			"pingDuration": 1.5,
+			"pingCooldown": 10.0
 		},
 		"animationDelta": 5,
-		"scripts": [
-			"/monsters/monster.lua"
-		],
+		
 
-		"persistent": true,
+
+		"persistent": false,
 
 		"behavior": "monster",
 		"deathBehavior": "monster-death",
@@ -38,40 +41,57 @@
 
 			"targetQueryRange": 0,
 			"targetOnDamage": false,
-			"keepTargetInSight": false,
-			"keepTargetInRange": 0,
-			"targetOutOfSightTime": 0.0,
+			"keepTargetInSight": true,
+			"keepTargetInRange": 50,
+			"targetOutOfSightTime": 5.0,
 
 			"hurtWaitForGround": false,
 
 			"foundTargetActions": [],
 
-			"fleeActions": [],
+			"fleeActions": [
+			
+			],
 
 			"hostileActions": [],
 
 			"periodicActions": [],
 
-			"approachActions": [],
+		      "approachActions" : [
+			{
+			  "name" : "approach-fly",
+			  "parameters" : {
+			    "minRange" : 1,
+			    "maxRange" : 4
+			  }
+			}
+		      ],
 
-			"followActions": [
-				{
-					"name": "approach-teleport",
-					"parameters":{
-						"teleportMinDistance": 15
-					}
-				},
-				{
-					"name": "approach-fly",
-					"parameters": {
-						"usePathfinding" : false,
-						"minRange": 4,
-						"maxRange": 15
-					}
-				}
-			],
+		      "followActions" : [
+			{
+			  "name" : "approach-teleport"
+			},
+			{
+			  "name" : "approach-fly",
+			  "parameters" : {
+			    "minRange" : 1,
+			    "maxRange" : 4
+			  }
+			}
+		      ],
 
-			"wanderActions": [],
+		      "wanderActions" : [
+			{
+			  "name" : "wander-fly",
+			  "parameters" : {
+			    "wanderTime" : [2,4],
+			    "groundDistance" : 3,
+			    "ceilingDistance" : 2,
+			    "xVelocity" : 4,
+			    "yVelocity" : 12
+			  }
+			}
+		      ],
 
 			"concurrentActions": [],
 
@@ -92,7 +112,7 @@
 			"walkSpeed": 4,
 			"runSpeed": 24,
 			"gravityEnabled": false,
-			"collisionEnabled":false,
+			"collisionEnabled":true,
 			"airFriction": 4,
 			"airForce": 40,
 			"flySpeed": 15
@@ -122,11 +142,11 @@
 
 			"stats": {
 				"maxHealth":{
-					"baseValue":100
+					"baseValue":20
 				},
-				"invulnerable": {
-					"baseValue": 1
-				},
+				"healthRegen":{
+					"baseValue":0.1
+				},				
 				"powerMultiplier": {
 					"baseValue": 0.0
 				}
@@ -139,7 +159,7 @@
 				},
 				"health": {
 					"maxStat": "maxHealth",
-					"deltaValue": 100,
+					"deltaStat": "healthRegen",
 					"defaultPercentage": 100
 				}
 			}

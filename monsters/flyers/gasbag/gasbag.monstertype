@@ -9,31 +9,26 @@
   "animation" : "gasbag.animation",
 
   "dropPools" : [ { "default" : "gasbagLoot", "bow" : "gasbagLoot" } ],
-
+  
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
     ],
 
-    "behavior" : "monster",
-    
-    "renderLayer" : "foregroundEntity",
-      "aggressive" : false,
+      "behavior" : "monster",
       "deathBehavior" : "monster-death",
+      "aggressive" : false,
       "seeThroughLiquid" : true,
       
     "behaviorConfig" : {
       "damageOnTouch" : true,
+      
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
-      "targetEntityTypes" : [ "player", "npc", "monster" ],
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
 
-      "hurtTime" : 0.25,
-      "hurtWaitForGround" : false,
-      
       "foundTargetActions" : [ ],
 
       "fleeActions" : [ ],
@@ -51,14 +46,14 @@
             "windupTime" : 2.5,
 
             "projectileType" : "atomsmasher_shot",
-            "power" : 20,
-            "fireOffset" : [2, 0],
+            "power" : 60,
+            "fireOffset" : [4, 0],
             "aimAtTarget" : true,
             "onGround" : false,
             "fireState" : "fire",
             "fireSound" : "fire",
             "inaccuracy" : 0.05,
-            "projectileCount" : 3,
+            "projectileCount" : 1,
             "projectileInterval" : 0.05,
             "winddownState" : "firewinddown",
             "winddownTime" : 3.7
@@ -70,20 +65,20 @@
           "parameters" : {
             "maximumRange" : 15,
             "windupStopForce" : 50,
-            "windupTime" : 1,
+            "windupTime" : 2.5,
             "windupState" : "firewindup",
             "onGround" : false,
 
             "wallCollide" : true,
             "aimAtTarget" : true,
             "rotateToTarget" : false,
-            "chargeTime" : 0.45,
-            "chargeSpeed" : 55,
-            "chargeControlForce" : 850,
+            "chargeTime" : 4.45,
+            "chargeSpeed" : 85,
+            "chargeControlForce" : 550,
 
             "winddownState" : "firewinddown",
             "winddownStopForce" : 500,
-            "winddownTime" : 0.5
+            "winddownTime" : 3.7
           }
         }
       ],
@@ -128,7 +123,7 @@
       "concurrentActions" : [ ],
 
       "concurrentHostileActions" : [ ],
-      
+
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -149,29 +144,29 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-6.375,4.625], [-7.375,3], [-7.938,0.875], [-7.875,-1.75], [-6.25,-4.062], [-5.312,-4.375], [-2.938,-5.875], [-0.562,-6.375], [2.188,-6.312], [6.75,-3.375], [8.5,-1.375], [8.5,1.25], [7.375,2.312], [5.812,4.438], [3.25,6], [0,6.5], [-4.5,5.625], [-6,5] ],
-      "damage" : 1,
+      "poly" : [ [-6.5,4.562], [-7.5,2.25], [-7.875,0.625], [-7.188,-2.625], [-5.312,-4.5], [-2,-6.5], [2.375,-6.438], [6.875,-3.25], [8.375,-1.375], [8.812,-0.25], [8.5,0.938], [6.5,3.625], [5.25,4.75], [3.625,5.812], [0.625,6.438], [-3.312,5.625], [-5.562,5.125] ],
+      "damage" : 28,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
-      "knockback" : 5,
-      "statusEffects" : []
+      "knockback" : 70,
+      "statusEffects" : [ ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-6.375,4.625], [-7.375,3], [-7.938,0.875], [-7.875,-1.75], [-6.25,-4.062], [-5.312,-4.375], [-2.938,-5.875], [-0.562,-6.375], [2.188,-6.312], [6.75,-3.375], [8.5,-1.375], [8.5,1.25], [7.375,2.312], [5.812,4.438], [3.25,6], [0,6.5], [-4.5,5.625], [-6,5] ],
+      "collisionPoly" : [ [-6.5,4.562], [-7.5,2.25], [-7.875,0.625], [-7.188,-2.625], [-5.312,-4.5], [-2,-6.5], [2.375,-6.438], [6.875,-3.25], [8.375,-1.375], [8.812,-0.25], [8.5,0.938], [6.5,3.625], [5.25,4.75], [3.625,5.812], [0.625,6.438], [-3.312,5.625], [-5.562,5.125] ],
 
-      "mass" : 20,
-      "walkSpeed" : 1,
-      "runSpeed" : 2,
+      "mass" : 12.0,
+      "walkSpeed" : 2,
+      "runSpeed" : 4,
       "gravityEnabled" : false,
 
-      "airFriction" : 2,
-      "airForce" : 20,
-      "flySpeed" : 1
+      "airFriction" : 4,
+      "airForce" : 40,
+      "flySpeed" : 4
     },
 
     "bodyMaterialKind" : "organic",
@@ -188,8 +183,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -199,13 +194,13 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.16
+          "baseValue" : 0.5
         },
         "knockbackThreshold" : {
-          "baseValue" : 5
+          "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 700
+          "baseValue" : 750
         },
         "protection" : {
           "baseValue" : 0.0
@@ -213,39 +208,9 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "pusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "pressureProtection" : {
-          "baseValue" : 1.0
-        },
-        "extremepressureProtection" : {
-          "baseValue" : 1.0
-        },
-        "gasImmunity" : {
-          "baseValue" : 1.0
-        },
-        "physicalResistance" : {
-          "baseValue" : 0.5
-        },
-        "fireResistance" : {
-          "baseValue" : 0.5
-        },
-        "iceResistance" : {
-          "baseValue" : 1.0
-        },
-        "radioactiveResistance" : {
-          "baseValue" : 1.0
-        } ,
-        "poisonResistance" : {
-          "baseValue" : 1.0
-        },
-        "electricResistance" : {
-          "baseValue" : 1.0
-        }           
+        "powerMultiplier" : {
+          "baseValue" : 2.0
+        }
       },
 
       "resources" : {
@@ -263,7 +228,10 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "captureHealthFraction" : 0.005,
-    "captureParticles" : "captureParticles"
+    "capturable" : true,
+    "captureHealthFraction" : 0.05,
+    "capturedMonsterName" : "Gas Bag",
+    "capturedMonsterType" : "gasbag2", // turn into an adultpoptop when captured    
+    "nametagColor" : [64, 200, 255]
   }
 }

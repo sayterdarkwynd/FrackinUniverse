@@ -18,7 +18,7 @@
     ],
 
 
-    "persistent" : true,
+    "persistent" : false,
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
@@ -35,7 +35,22 @@
       "hurtWaitForGround" : false,
 
       "foundTargetActions" : [
-     
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 200,
+          "parameters" : {
+          "effect" : "glow",
+          "duration" : 220
+          }
+        },          
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 200,
+          "parameters" : {
+          "effect" : "headlamp",
+          "duration" : 220
+          }
+        }        
       ],
 
       "fleeActions" : [ 
@@ -75,92 +90,67 @@
 
       "approachActions" : [
         {
-          "name" : "approach-fly",
+          "name" : "approach-swarm",
           "parameters" : {
-            "minRange" : 6,
-            "maxRange" : 12
+            "usePathfinding" : false
           }
         }
       ],
 
       "followActions" : [
         {
-          "name" : "approach-teleport"
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
         },
         {
           "name" : "approach-fly",
           "parameters" : {
-            "minRange" : 4,
-            "maxRange" : 8
+            "usePathfinding" : false
           }
         }
       ],
 
       "wanderActions" : [
         {
+          "name" : "action-statuseffect", 
+          "cooldown" : 200,
+          "parameters" : {
+          "effect" : "glow",
+          "duration" : 220
+          }
+        },          
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 200,
+          "parameters" : {
+          "effect" : "headlamp",
+          "duration" : 220
+          }
+        },         
+        {
+          "name" : "emerge-fly"
+        },
+        {
           "name" : "wander-fly",
-          "cooldown" : 20,
           "parameters" : {
             "wanderTime" : [2,4],
             "groundDistance" : 8,
-            "ceilingDistance" : 5,
-            "xVelocity" : 4,
+            "ceilingDistance" : 8,
+            "xVelocity" : 8,
             "yVelocity" : 12
           }
-        },
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "glow",
-          "duration" : 220
-          }
-        },          
-        {
-          "name" : "action-statuseffect",
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "headlamp",
-          "duration" : 220
-          }
-        }         
+        }        
       ],
 
       "concurrentActions" : [
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ""
-          }
-        }         
+      
       ],
       
       "concurrentHostileActions" : [
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : "aggro"
-          }
-        },
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "glow",
-          "duration" : 220
-          }
-        },          
-        {
-          "name" : "action-statuseffect",
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "headlamp",
-          "duration" : 220
-          }
-        }         
+        
       ],
+      
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -191,6 +181,7 @@
     "scale" : 0.8,
 
     "movementSettings" : {
+      "collisionEnabled" : true,
       "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
 
       "mass" : 0.5,
@@ -203,7 +194,7 @@
       "flySpeed" : 26
     },
 
-    "bodyMaterialKind" : "organic",
+    "bodyMaterialKind" : "robotic",
 
     "knockoutTime" : 0.3,
     "knockoutAnimationStates" : {
@@ -214,11 +205,11 @@
 
     "statusSettings" : {
       "statusProperties" : {
-        "targetMaterialKind" : "organic"
+        "targetMaterialKind" : "robotic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [

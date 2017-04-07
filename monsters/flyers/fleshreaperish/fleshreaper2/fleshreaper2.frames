@@ -1,16 +1,30 @@
 {
   "frameGrid" : {
-    "size" : [74, 74],
+    "size" : [100, 74],
     "dimensions" : [6, 7],
 
     "names" : [
       [ "fly.1", "fly.2", "fly.3", "fly.4", null, null ],
-      [ "melee.1", "melee.2", "melee.3", "melee.4", "melee.5", null ],
+      [ "chargewindup.1", "charge.1", "melee.1", "melee.2", "melee.3", null ],
       [ "ranged.1", "ranged.2", "ranged.3", "ranged.4", "ranged.5", "ranged.6" ],
-      [ "idle.1", "idle.2", "idle.3", "idle.4", "idle.5", null],
+      [ "idle.1", "idle.2", "idle.3", "idle.4", "swoopwindup.1", null],
       [ "hurt", null, null, null, null, null],
       [ "stunned", null, null, null, null, null],
       [ "stopped", null, null, null, null, null]
     ]
+  },
+  
+  "aliases" : {
+  "crash.1" : "hurt",
+  "crash.2" : "stunned",
+  "crash.3" : "fly.1",
+  "crash.4" : "fly.2",
+  "crash.5" : "fly.3",
+  "fire.1" : "ranged.1",
+  "fire.2" : "ranged.2",
+  "fire.3" : "ranged.3",
+  "fire.4" : "ranged.4",
+  "fire.5" : "ranged.5",
+  "fire.6" : "ranged.6"
   }
 }

@@ -1,6 +1,6 @@
 {
   "type" : "fugiantredbee2",
-  "shortdescription" : "Giant Red Bee",
+  "shortdescription" : "Blood Queen",
   "description" : "Don't touch the pointy end.",
 
   "categories" : [ "fugiantredbee" ],
@@ -16,7 +16,6 @@
     ],
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
 
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
@@ -43,29 +42,12 @@
 
       "hostileActions" : [ 
         {
-          "name" : "action-swoop", 
-          "cooldown" : 1.0,
-          "parameters" : {
-            "minimumRange" : 3,
-            "maximumRange" : 10,
-            "onGround" : false,
-            "windupTime" : 0.6,
-
-            "gravityMultiplier" : -0.5,
-            "swoopVelocity" : 25,
-            "collisionCheck" : true,
-            "highArc" : false,
-            "swoopTime" : 0.5,
-
-            "winddownTime" : 0.5,
-            "winddownState" : "fly",
-            "winddownStopForce" : 20
-          }
-        }      
-      
+          "name":"approach-swarm", 
+          "parameters":{ "usePathfinding": true }
+        }  
       ],
 
-      "periodicActions" : [ ],
+      "periodicActions" : [],
 
       "approachActions" : [
         {
@@ -138,24 +120,21 @@
         }
       ],
 
-      "deathActions" : [
-        {
-          "name" : "action-projectile",
-          "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "bobfaeball",
-            "projectileParameters" : {},
-            "power" : 0,
-            "aimDirection" : [0.3, -1],
-            "inaccuracy" : 0,
-            "fireOffset" : [0, 2]
-          }
-        }
-      ],
+      "deathActions" : [],
 
       "concurrentActions" : [ ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [
+	{
+	"name":"action-spawncompanions", 
+	"parameters":{
+	  "spawnCooldown":0.5, 
+	  "monsterType":"futinybeered", 
+	  "maxCount":10, 
+	  "monsterParameters":{"level":[1]}
+	  }
+	}        
+      ]
     },
 
     "touchDamage" : {

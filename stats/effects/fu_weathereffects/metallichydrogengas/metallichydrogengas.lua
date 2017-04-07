@@ -1,7 +1,34 @@
+require "/scripts/unifiedGravMod.lua"
+
 function init()
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("gasImmunity") then
+
+
+if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") then
   effect.expire()
 end
+
+unifiedGravMod.init()
+  self.liquidMovementParameter = {
+    --gravityMultiplier = 0.75,
+    groundForce = 80,
+    airForce = 40,
+    airFriction = 0.4,
+    liquidForce = 70,
+    liquidFriction = 0.1,
+    liquidImpedance = 0.1,
+    liquidBuoyancy = 0.1,
+    minimumLiquidPercentage = 0.1,
+    liquidJumpProfile = {
+      jumpSpeed = 70.0,
+      jumpControlForce = 550.0,
+      jumpInitialPercentage = 0.55,
+      jumpHoldTime = 0.024,
+      multiJump = false,
+      reJumpDelay = 0.5,
+      autoJump = false,
+      collisionCancelled = true
+    }
+  }  
   script.setUpdateDelta(5)
 
   animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
@@ -43,6 +70,8 @@ end
 
   
 function update(dt)
+	mcontroller.controlParameters(self.liquidMovementParameter)
+	unifiedGravMod.update(dt)
       biomeTimer = biomeTimer - dt
       if biomeTimer <= 0 and status.stat("maxHealth") >= 1 then
         effect.addStatModifierGroup({{stat = "encumberance", amount = baseValue* (1) }})

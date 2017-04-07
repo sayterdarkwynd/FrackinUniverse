@@ -1,5 +1,7 @@
 function init() 
-effect.addStatModifierGroup({{stat = "foodDelta", baseMultiplier = config.getParameter("regenAmount", 0)}})
+effect.addStatModifierGroup({
+  {stat = "foodDelta", amount = config.getParameter("regenAmount", 0)}
+})
 end
 
 function update(dt)

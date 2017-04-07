@@ -1,9 +1,9 @@
-self.spawnIds={}
+spawnIds={}
 
 
 function init()
-	self.timer=0
-	self.monsterData=config.getParameter("monsterData",{type="gleap",persistent = true,damageTeamType = "friendly",aggressive = true,damageTeam = 0,level=1})
+	timer=1
+	monsterData=config.getParameter("monsterData",{type="gleap",persistent = true,damageTeamType = "friendly",aggressive = true,damageTeam = 0,level=1})
 	--message.setHandler("onDeath",deadPet)
 	--message.setHandler("onDespawn",despawnPet)
 end
@@ -11,12 +11,12 @@ end
 
 function update(dt)
 	refreshIds()
-	if self.timer>0 then
-		self.timer = self.timer - dt
+	if timer >0 then
+		timer = timer - dt
 	else
-		if #self.spawnIds < config.getParam("spawnLimit",math.huge) then
+		if #spawnIds < config.getParameter("spawnLimit",math.huge) then
 			spawn()
-			self.timer=config.GetParameter("spawnCooldown",15)
+			timer=config.getParameter("spawnCooldown",15)
 		end
     end
     
@@ -38,20 +38,20 @@ end]]
 
 function refreshIds()
 	local buffer={}
-	for _,v in pairs(self.spawnIds) do
+	for _,v in pairs(spawnIds) do
 		if world.entityExists(v) then
 			table.insert(buffer,v)
 		end
 	end
-	self.spawnIds=buffer
+	spawnIds=buffer
 end
 
 function spawn()
 	local p = entity.position()
-	local parameters = self.monsterData
+	local parameters = monsterData
 	parameters.level = getLevel()
-	local tempMonsterID=world.spawnMonster(self.monsterData.type, mcontroller.position(), parameters)
-	table.insert(self.spawnIds,tempMonsterID)
+	local tempMonsterID=world.spawnMonster(monsterData.type, mcontroller.position(), parameters)
+	table.insert(spawnIds,tempMonsterID)
 end
 
 

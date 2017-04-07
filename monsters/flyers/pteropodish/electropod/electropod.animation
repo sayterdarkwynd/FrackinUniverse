@@ -28,7 +28,8 @@
             "transition" : "winduploop",
             "frameProperties" : {
               "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "" ]
-            }
+            },
+            "particleEmittersOn" : [ "flames" ]
           },
           "winduploop" : {
             "frames" : 4,
@@ -45,7 +46,8 @@
             "frames" : 4,
             "cycle" : 0.375,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "particleEmittersOff" : [ "flames" ]
           }
         }
       },
@@ -147,6 +149,16 @@
   },
 
   "particleEmitters" : {
+    "flames" : {
+      "active" : false,
+      "emissionRate" : 24.0,
+      "offsetRegion" : [-0.75, -1.0, 0.75, 0.5],
+      "particles" : [
+        { "particle" : "teslaboltpurple" },
+        { "particle" : "electricswoosh1" },
+        { "particle" : "electricswoosh2" }
+      ]
+    },  
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },

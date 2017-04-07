@@ -5,11 +5,13 @@ function init()
 end
 
 function update(dt)
-  mcontroller.controlModifiers({
-        groundMovementModifier = 0.75,
-        speedModifier = 0.75,
-        airJumpModifier = 0.8
-    })
+  if status.stat("iceResistance") < 70.0 then
+	  mcontroller.controlModifiers({
+		groundMovementModifier = 0.75,
+		speedModifier = 0.75,
+		airJumpModifier = 0.8
+	    })
+  end
 end
 
 function uninit()

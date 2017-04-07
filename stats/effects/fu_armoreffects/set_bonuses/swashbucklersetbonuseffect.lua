@@ -4,7 +4,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_swashbucklerset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.075}
+	{stat = "powerMultiplier", baseMultiplier = 1.075}
 }
 
 armorBonus={

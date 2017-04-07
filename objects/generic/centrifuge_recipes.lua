@@ -46,7 +46,10 @@ function getRecipes()
         volcaniccomb    = { liquidlava     = { "uncommon", 1 } },
         aegisaltcomb    = { aegisaltore    = { "common", 1 } },
         feroziumcomb    = { feroziumore    = { "common", 1 } },
-        violiumcomb     = { violiumore     = { "common", 1 } }
+        violiumcomb     = { violiumore     = { "common", 1 } },
+        magmacomb       = { corefragmentore = { "normal", 1 },
+                            scorchedcore    = { "rare", 1 },
+                            liquidlava      = { "common", 1 } }      
       },
 
     itemMapLiquids = {
