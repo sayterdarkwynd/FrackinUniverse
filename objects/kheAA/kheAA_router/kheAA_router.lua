@@ -56,7 +56,9 @@ function initVars()
 			storage.filterType[i]=-1;
 		end
 	end
-	storage.invertSlots={false,false}
+	if not storage.invertSlots then
+		storage.invertSlots={false,false}
+	end
 end
 
 function sendConfig()
