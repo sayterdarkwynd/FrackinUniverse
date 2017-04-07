@@ -32,37 +32,97 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [
-        {
+      "hostileActions" : [   
+	{
           "name" : "action-fire",
           "cooldown" : 3,
           "parameters" : {
           
             "maximumRange" : 20,
             "minimumRange" : 1,
-            "windupState" : "windup",
-            "windupTime" : 0.55,
+            "windupState" : "idle",
+            "windupTime" : 0.1,
 
-            "projectileType" : "magnorbshadow3",
-            "fireOffset" : [-2, -1],
+            "projectileType" : "magnorbshadow2",
+            "fireOffset" : [0, 0],
 
-            "aimAtTarget" : true,
-            "projectileCount" : 0,
-            "projectileParameters" : { "speed" : 25, "timeToLive" : 0.2},
-            "fireDelay" : 0.20,
-            "projectileInterval" : 0.01,
-            "inaccuracy" : 0.5,
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "projectileParameters" : { 
+              "speed" : 90, 
+              "timeToLive" : 0.1
+              },
+            "projectileInterval" : 1,
+            "aimDirection" : [-0.3,-1],
             
-            "power" : 5,
-            "fireSound" : "wallCrash",
+            "power" : 0,
+            "fireSound" : "fire",
             "fireState" : "fire",
 
-            "winddownState" : "idle",
+            "winddownState" : "",
             "winddownTime" : 0.5
           }
-        }  
+        },       
+        {
+          "name" : "action-fire",
+	  "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 4,
+            "windupState" : "fireWindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "alienblast",
+            "projectileParameters" : { "damageSourceKind" : "cosmic" },
+            "power" : 10,
+            
+            "fireOffset" : [1.35, -1],
+            "aimAtTarget" : true,
+            "fireSound" : "fire",
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }
       ],
 
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 10,
+          "parameters" : {
+          "effect" : "mage_shield_lvl1shadowcrab",
+          "duration" : 5
+          }
+        }      
+      ],
+      
+      "concurrentHostileActions" : [
+         {
+             "name" : "action-fire",
+   	    "cooldown" : 1,
+               "parameters" : {
+               "requireLineOfSight" : true,
+               "maximumRange" : 3,
+               "minimumRange" : 1,
+               "windupState" : "",
+               "windupTime" : 0.25,
+               "onGround" : true,
+               "projectileType" : "energyswoosh3",
+               "power" : 7,
+               "fireOffset" : [4, -1],
+               "aimAtTarget" : true,
+               "projectileCount" : 1,
+               "projectileInterval" : 0.01,
+               "fireSound" : "fire",
+               "fireState" : "melee",
+               "winddownState" : "",
+               "winddownTime" : 0.34
+             }
+          }      
+      ],
+      
       "periodicActions" : [
 
       ],
@@ -85,7 +145,7 @@
         },
         {
           "name" : "approach-walk",
-          "cooldown" : 2.0,
+          "cooldown" : 3.0,
           "parameters" : {
             "resetHeading" : false
           }
@@ -97,7 +157,7 @@
           "name" : "wander-walk",
           "cooldown" : 1.0,
           "parameters" : {
-            "wanderTime" : [1, 1]
+            "wanderTime" : [2, 5]
           }
         }
       ]
