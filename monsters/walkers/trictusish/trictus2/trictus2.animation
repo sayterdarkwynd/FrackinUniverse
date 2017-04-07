@@ -6,22 +6,55 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 1
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ]
+            }            
           },
           "windup" : {
             "frames" : 14,
-            "cycle" : 0.9
+            "cycle" : 0.9,
+            "properties" : {
+	      "particleEmittersOff" : [ "chargeup" ]
+            }
           },
           "winddown" : {
             "frames" : 14,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "properties" : {
+	                  "particleEmittersOff" : [ "chargeup" ]
+            }
           },
           "slash" : {
             "frames" : 4,
             "cycle" : 0.4,
             "mode" : "transition",
-            "transition" : "idle"
-          }
+            "transition" : "idle",
+            "properties" : {
+	                  "particleEmittersOff" : [ "chargeup" ]
+            }
+          },
+          "chargewindup" : {
+            "frames" : 14,
+            "cycle" : 1.8,
+            "properties" : {
+	                  "particleEmittersOn" : [ "chargeup" ]
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 14,
+            "cycle" : 0.5,
+            "properties" : {
+	                  "particleEmittersOn" : [ "chargeup" ]
+            }
+          },
+          "charge" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+	                  "particleEmittersOn" : [ "chargeup" ]
+            }
+          }          
         }
       },
       "damage" : {
@@ -75,6 +108,21 @@
               "properties" : {
                 "image" : "<partImage>:slash.<frame>"
               }
+            }, 
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:slash.<frame>"
+              }
+            },             
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>"
+              }
             },            
             "windup" : {
               "properties" : {
@@ -125,6 +173,24 @@
   },
 
   "particleEmitters" : {
+    "chargeup" : {
+      "emissionRate" : 7,
+      "offsetRegion" : [ -0.4, 0.5, 0.4, 0.2],
+      "particles" : [
+        { "particle" : "erchiussmoke" },
+        { "particle" : "erchiussmoke" },
+        { "particle" : "erchiussmoke" },
+        { "particle" : "erchiussmoke" },
+        { "particle" : "firefly" },
+        { "particle" : "firefly" },
+        { "particle" : "firefly" },
+        { "particle" : "firefly" },
+        { "particle" : "kluexstaff" },
+        { "particle" : "kluexstaff" },
+        { "particle" : "kluexstaff" },
+        { "particle" : "kluexstaff" }        
+      ]
+    },  
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },

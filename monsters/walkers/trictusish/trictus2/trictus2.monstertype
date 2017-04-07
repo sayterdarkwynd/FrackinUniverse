@@ -1,7 +1,7 @@
 {
   "type" : "trictus2",
   "shortdescription" : "Vectus",
-  "description" : "A horribly malign cactus-thing.",
+  "description" : "An unusual and deadly energy-based variation of the Trictus.",
 
   "categories" : [ "trictus2" ],
   "parts" : [ "body" ],
@@ -29,23 +29,14 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 7,
+      "targetQueryRange" : 20,
       "targetQueryCooldown" : 0.2,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 10,
-      "targetOutOfSightTime" : 2.5,
+      "keepTargetInRange" : 20,
+      "targetOutOfSightTime" : 6.5,
 
-      "foundTargetActions" : [
-        {
-          "name" : "action-animate",
-          "parameters" : {
-            "type" : "body",
-            "state" : "winddown",
-            "animationTime" : 0.5
-          }
-        }
-      ],
+      "foundTargetActions" : [],
 
       "fleeActions" : [],
 
@@ -54,27 +45,43 @@
           "name" : "action-charge",
           "cooldown" : 0.0,
           "parameters" : {
-            "maximumRange" : 10,
+            "maximumRange" : 12,
             "windupState" : "",
             "windupTime" : 0.0,
 
             "chargeTime" : 0.5,
-            "chargeSpeed" : 25,
-            "chargeControlForce" : 200,
+            "chargeSpeed" : 35,
+            "chargeControlForce" : 300,
             "chargeState" : "slash",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
-            "winddownStopForce" : 200,
+            "winddownStopForce" : 300,
             "winddownState" : "",
             "winddownTime" : 0.5
           }
         }
       ],
-      "periodicActions" : [   
+      
+      "damageTakenActions" : [     
+	{
+         "name":"action-projectile",
+         "cooldown" : 2,
+         "parameters" : {
+          "projectileType" : "magnorbshadow2",
+          "projectileParameters" : {
+            "timeToLive" : 0.1
+          },
+          "aimDirection" : [-0.4,-1],
+          "aimAtTarget" : false
+         }
+        }      
+      ],
+      
+      "periodicActions" : [      
         {
           "name" : "action-invulnerable",
-          "cooldown" : [6, 12],
+          "cooldown" : [10, 20],
           "parameters" : {
             "windupTime" : 0,
             "windupState" : "",
@@ -84,66 +91,67 @@
             "invulnerableState" : "windup",
             "invulnerableTime" : 0.0
           }
-        }
+        }         
       ],
-
+      
       "approachActions" : [
+        {
+          "name" : "approach-teleport",
+          "cooldown" : 8,
+          "parameters" : {
+	    "moveState": "chargewindup",
+	    "idleState": "chargewinddown",
+	    "teleportMinDistance": 12,
+	    "targetXDelta": 15,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10               
+          }
+        }       
       ],
 
       "followActions" : [
         {
           "name" : "approach-teleport",
+          "cooldown" : 8,
           "parameters" : {
+	    "moveState": "chargewindup",
+	    "idleState": "chargewinddown",
+	    "teleportMinDistance": 12,
+	    "targetXDelta": 15,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10               
           }
         }
       ],
-
-      "wanderActions" : [
       
+      "invulnerableActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "novax10",
+          "duration" : 10
+          }
+        }      
       ],
       
-      "concurrentHostileActions" : [
+      "wanderActions" : [],
+      
+      "concurrentHostileActions" : [       
 	    {
 	      "name" : "action-fire",
-	      "cooldown" : 3,
+	      "cooldown" : 8,
 	      "parameters" : {
 		"requireLineOfSight" : false,
 		"maximumRange" : 35,
-		"minimumRange" : 9,
-		"windupState" : "windup",
-		"windupTime" : 0.45,
+		"minimumRange" : 4,
+		"windupState" : "chargewindup",
+		"windupTime" : 1.8,
 
-		"projectileType" : "hgravityexplosion",
+		"projectileType" : "redplasmatorpedo",
 		"projectileCount" : 1,
 		"projectileParameters" : {
-		  "statusEffects" : [ "darkwaterpoison" ]
-		},
-		"power" : 3,
-		"fireOffset" : [0.6, 0.5],
-		"aimDirection" : [-0.5,-1],
-		"aimAtTarget" : false,
-		"fireDelay" : 0.1,
-		"fireSound" : "",
-		"fireState" : "",
-		"winddownState" : "winddown",
-		"winddownTime" : 0.5
-		}
-	     },        
-	    {
-	      "name" : "action-fire",
-	      "cooldown" : 3,
-	      "parameters" : {
-		"requireLineOfSight" : false,
-		"maximumRange" : 35,
-		"minimumRange" : 9,
-		"windupState" : "windup",
-		"windupTime" : 0.9,
-
-		"projectileType" : "thornriflebullet",
-		"projectileCount" : 4,
-		"projectileInterval" : 0.05,
-		"inaccuracy" : 1,
-		"projectileParameters" : {
+		  "timeToLive" : 1,
 		  "statusEffects" : [ "darkwaterpoison" ]
 		},
 		"power" : 3,
@@ -157,9 +165,7 @@
 		"winddownTime" : 0.5
 		}
 	     }        
-      ]
- 
-	     
+      ]     
     },
 
     "damageParts" : {
@@ -239,31 +245,31 @@
           "baseValue" : 0.0
         },
         "healthRegen" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.05
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.2
         },
         "fireResistance" : {
-          "baseValue" : 0.5
+          "baseValue" : 0.0
         },
         "fireStatusImmunity" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.0
         },
         "poisonResistance" : {
           "baseValue" : -0.5

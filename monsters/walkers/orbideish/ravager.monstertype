@@ -1,0 +1,242 @@
+{
+  "type" : "ravager",
+  "shortdescription" : "ravager",
+  "description" : "Something about the way it limps makes you feel uncomfortable.",
+
+  "categories" : [ "ravager" ],
+  "parts" : [ "body" ],
+
+  "animation" : "ravager.animation",
+
+  "dropPools" : [ { "default" : "orbideTreasure", "bow" : "orbideHunting" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-animate",
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "invulnerablewinddown",
+            "animationTimer" : 1.2
+          }
+        }
+      ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "parameters": {
+            "maximumRange": 15,
+            "minimumRange": 5,
+            "windupTime": 1,
+            "chargeSpeed": 100,
+            "chargeControlForce": 1000,
+            "chargeTime": 0.35,
+            "wallKnockback" : true,
+            "wallCrashSound": "wallCrash",
+            "wallCrashEmitter": "",
+
+            "winddownStopForce": 1000,
+            "winddownTime": 0.6
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name": "action-invulnerable",
+          "parameters": {
+            "invulnerableEffect": "maxprotection",
+            "invulnerableTime": 600,
+            "winddownTime": 1.2,
+            "windupTime": 1.2
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name": "approach-walk",
+          "parameters": {
+            "canJump": true,
+            "jumpXVelocity": 12,
+            "jumpYVelocity": 30
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name": "approach-walk",
+          "parameters": {
+            "canJump": true,
+            "jumpXVelocity": 12,
+            "jumpYVelocity": 30
+          }
+        }
+      ],
+
+      "wanderActions" : [
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "orbideball",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [1, 1],
+            "inaccuracy" : 1.5,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.3075, 1.5], [0.75, 1.06], [0.75, -2.93], [0.3075, -3.375], [-0.3075, -3.375], [-0.75, -2.93], [-0.75, 1.06], [-0.3075, 1.5] ],
+      "damage" : 16,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.3075, 1.5], [0.75, 1.06], [0.75, -2.93], [0.3075, -3.375], [-0.3075, -3.375], [-0.75, -2.93], [-0.75, 1.06], [-0.3075, 1.5] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 1,
+      "runSpeed" : 3,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 85
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : -0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "monsters" : "orbide" }
+  }
+}
