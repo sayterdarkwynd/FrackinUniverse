@@ -11,6 +11,27 @@
   "dropPools" : [ { "default" : "orbideTreasure", "bow" : "orbideHunting" } ],
 
   "baseParameters" : {
+  
+    "colorSwap":{
+    "1d1b30":"311212", 
+    "1b2140" : "440e1c",
+    "404974" : "772b40",
+    "36405a" : "772b40",
+    "3a365b" : "5c2726", 
+    "575086" : "873b39",
+    "505986" : "873b39",
+    "7872a2" : "9f5a58", 
+    "6677a0" : "a04c6d",
+    "8696bd" : "ba6a89",
+    "727ca2" : "ba6a89",
+    "262f43" : "341f3d",
+    "435774" : "533769",
+    "6887a6" : "765897",
+    "99bee3" : "a582cd",
+    "d8e9fa" : "ccbfdb"
+    },
+    
+    
     "scripts" : [
       "/monsters/monster.lua"
     ],
@@ -42,22 +63,39 @@
 
       "hostileActions" : [
         {
-          "name" : "action-charge",
-          "parameters": {
-            "maximumRange": 15,
-            "minimumRange": 5,
-            "windupTime": 1,
-            "chargeSpeed": 100,
-            "chargeControlForce": 1000,
-            "chargeTime": 0.35,
-            "wallKnockback" : true,
+          "name" : "action-trail-charge",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "maximumRange" : 20,
+            "minimumRange" : 5,
+            "windupTime" : 1.1,
+            "winddownTime" : 0.6,
+            "chargeSpeed" : 100,
+            "chargeControlForce" : 1000,
+            "chargeTime" : 0.35,
+            "aimAtTarget" : true,
+            "wallKnockback" : false,
             "wallCrashSound": "wallCrash",
-            "wallCrashEmitter": "",
+            "knockbackThreshold": 3,
 
-            "winddownStopForce": 1000,
-            "winddownTime": 0.6
+            "projectileType" : "invisibleprojectile",
+            "projectileParameters" : { 
+              "power" : 0,
+              "timeToLive" : 0.2, 
+              "actionOnReap" :  [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+		    }              
+              ]
+              },
+            "projectileInterval" : 0.05,
+            "offset" : [0,-2],
+            "power" : 8,
+            "scalePower" : true
+
           }
-        }
+        }         
       ],
 
       "periodicActions" : [
@@ -83,6 +121,20 @@
         }
       ],
 
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubloodexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 3,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }      
+      ],
+      
       "followActions" : [
         {
           "name" : "approach-teleport",
@@ -107,14 +159,49 @@
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "orbideball",
-            "projectileParameters" : {},
-            "power" : 0,
-            "aimDirection" : [1, 1],
-            "inaccuracy" : 1.5,
+            "projectileType" : "fubloodexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 3,
+            "aimDirection" : [0, 0],
             "fireOffset" : [0, 0]
           }
-        }
+        },      
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "magnorbatropus2",
+            "projectileParameters" : { "speed" : 15 },
+            "power" : 3,
+            "aimDirection" : [0, 1],
+            "inaccuracy" : 0.3,
+            "fireOffset" : [0, 1]
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "magnorbatropus2",
+            "projectileParameters" : { "speed" : 15 },
+            "power" : 3,
+            "aimDirection" : [-1, 1],
+            "inaccuracy" : 0.3,
+            "fireOffset" : [0, 1]
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "magnorbatropus2",
+            "projectileParameters" : { "speed" : 15 },
+            "power" : 3,
+            "aimDirection" : [1, 1],
+            "inaccuracy" : 0.3,
+            "fireOffset" : [0, 1]
+          }
+        }        
       ]
     },
 
@@ -172,13 +259,13 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.15
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 85
+          "baseValue" : 95
         },
         "protection" : {
           "baseValue" : 0.0
@@ -193,7 +280,7 @@
           "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.35
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
@@ -205,17 +292,29 @@
           "baseValue" : 1.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.0
         },
         "poisonResistance" : {
-          "baseValue" : -0.5
+          "baseValue" : 1.0
         },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },    
+        "shadowResistance" : {
+          "baseValue" : 0.7
+        },        
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },        
         "poisonStatusImmunity" : {
-          "baseValue" : 0.0
-        }
+          "baseValue" : 1.0
+        },
+        "fallDamageMultiplier" : {
+          "baseValue" : 0
+        }        
       },
 
       "resources" : {

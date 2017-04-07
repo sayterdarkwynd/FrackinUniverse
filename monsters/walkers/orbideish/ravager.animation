@@ -11,8 +11,6 @@
             "mode" : "loop",
             "properties" : {
               "particleEmittersOff" : [ "dash" ]
-              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
-              // "persistentSoundStopTime" : 0.4
             }
           },
           "walk" : {
@@ -21,8 +19,6 @@
             "mode" : "loop",
             "properties" : {
               "particleEmittersOff" : [ "dash" ]
-              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
-              // "persistentSoundStopTime" : 0.4
             },
             "frameProperties" : {
               "immediateSound" : [ "", "", "", "/sfx/npc/monsters/orbide_step1.ogg", "", "", "", "/sfx/npc/monsters/orbide_step2.ogg" ]
@@ -33,16 +29,12 @@
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/oogler_hop.ogg",
               "particleEmittersOff" : [ "dash" ]
-              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
-              // "persistentSoundStopTime" : 0.4
             }
           },
           "fall" : {
             "frames" : 1,
             "properties" : {
             "particleEmittersOff" : [ "dash" ]
-              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
-              // "persistentSoundStopTime" : 0.4
             }
           },
           "chargewindup" : {
@@ -64,9 +56,9 @@
             "frames" : 1,
             "cycle" : 0.1,
             "properties" : {
-              "particleEmittersOff" : [ "dash" ]
-              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
-              // "persistentSoundStopTime" : 0.4
+              "particleEmittersOff" : [ "dash" ],
+              "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
+              "persistentSoundStopTime" : 0.4
             }
           },
           "charge" : {
@@ -74,8 +66,6 @@
             "cycle" : 0.3,
             "properties" : {
               "particleEmittersOn" : [ "dash" ],
-              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
-              // "persistentSoundStopTime" : 0.4
               "immediateSound" : "/sfx/npc/monsters/orbide_charge.ogg"
             }
           },
@@ -308,6 +298,7 @@
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
-    "wallCrash" : [ "/sfx/npc/monsters/peblit_drop1.ogg" ]
+    "wallCrash" : [ "/sfx/npc/monsters/peblit_drop1.ogg" ],
+    "crash" : [ "/sfx/npc/monsters/peblit_drop1.ogg" ]
   }
 }
