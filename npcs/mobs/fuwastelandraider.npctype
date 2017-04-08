@@ -1,10 +1,20 @@
 {
   "type" : "fuwastelandraider",
-  "baseType" : "hostile",
+  "baseType" : "hostilefu",
 
-  "levelVariance" : [0, 1],
+  "levelVariance" : [1, 2],
 
   "dropPools" : [ "ffbanditTreasure" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "leapWindup" : 0.55,
+      "rangedAimTime" : 0.2,
+      "rangedWindupTime" : 0.01,
+      "rangedMinFireTime": 0.15,
+      "rangedMaxFireTime": 5      
+    }  
+  },
   
   "items" : {
     "override" : [
@@ -84,7 +94,7 @@
             "chest" : [ { "name" : "warangelchest" } ],
             "legs" : [ { "name" : "warangellegs" } ],
             "primary" : [
-              "fuaegisaltminigun" 
+              "fuaegisaltminigunnpc" 
             ]
           },
           {
@@ -113,5 +123,25 @@
           }
         ] ]
     ]
+  },
+  
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 70.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 100.0
+      },      
+      "powerMultiplier" : {
+        "baseValue" : 0.65
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
   }
 }

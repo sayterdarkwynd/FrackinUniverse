@@ -6,6 +6,16 @@
 
   "dropPools" : [ "ffbanditTreasure" ],
   
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "leapWindup" : 0.55,
+      "rangedAimTime" : 0.2,
+      "rangedWindupTime" : 0.01,
+      "rangedMinFireTime": 0.15,
+      "rangedMaxFireTime": 5      
+    }  
+  },
+  
   "items" : {
     "override" : [
       [0, [
@@ -15,7 +25,10 @@
             "legs" : [ { "name" : "blisterpants", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
               "blistergun"
-            ]
+            ],
+            "alt" : [
+              "bowlingball"
+            ]            
           },
           {
             "head" : [ { "name" : "fubountyhunterhead", "parameters" : { "colorIndex" : 1 } } ],
@@ -23,7 +36,10 @@
             "legs" : [ { "name" : "fubountyhunterpants", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
               "fugaussrifle"
-            ]
+            ],
+            "alt" : [
+              "thorngrenade"
+            ]   
           },
           {
             "head" : [ { "name" : "fubonusarmorhead", "parameters" : { "colorIndex" : 1 } } ],
@@ -33,7 +49,7 @@
               "protopistol"
             ],
             "alt" : [
-              "flashlight"
+              "lunarishield"
             ]
           },
           {
@@ -42,6 +58,9 @@
             "legs" : [ { "name" : "fuexplorerlegs", "parameters" : { "colorIndex" : 7 } } ],
             "primary" : [
               "minirocketlauncher"
+            ],
+            "alt" : [
+              "energyjavelin"
             ]
           },
           {
@@ -52,7 +71,7 @@
               "slimelauncher"
             ],
             "alt" : [
-              "flashlight"
+              "energylance"
             ]
           },
           {
@@ -71,6 +90,9 @@
               "npcmachinepistol",
               "npcshotgun",
               "npcsniperrifle"
+            ],
+            "alt" : [
+              "nailbomb"
             ]
           },
           {
@@ -79,6 +101,9 @@
             "legs" : [ { "name" : "agilitysuitlegs", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
               "energyassault"
+            ],
+            "alt" : [
+              "stickblastingdynamite"
             ]
           },
           {
@@ -87,9 +112,31 @@
             "legs" : [ { "name" : "densiniumlegs", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
               "mechgun"
+            ],
+            "alt" : [
+              "deathblossom"
             ]
           }
         ] ]
     ]
+  },
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 70.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 100.0
+      },      
+      "powerMultiplier" : {
+        "baseValue" : 0.65
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
   }
 }
