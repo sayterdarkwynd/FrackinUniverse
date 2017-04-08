@@ -1,14 +1,14 @@
 {
-  "itemName" : "gravitonpistol",
+  "itemName" : "gravitonpistolunique",
   "price" : 120,
-  "inventoryIcon" : "gravitonpistol.png",
+  "inventoryIcon" : "gravitonpistolunique.png",
     "maxStack" : 1,
-    "rarity" : "rare",
+    "rarity" : "essential",
   "description" : "Launches micro-gravity disruptions.",
-  "shortdescription" : "Graviton Pistol",
-  "level" : 4,
+  "shortdescription" : "^#ffdb31;Kevin^reset;",
+  "level" : 5,
   "category" : "Gravity Weapon",
-  "itemTags" : ["weapon","ranged","machinepistol", "energy"],
+  "itemTags" : ["weapon","ranged","machinepistol", "energy","upgradeableWeapon"],
   "tooltipKind" : "gun",
   "twoHanded" : false,
   "weaponType" : "Focused Gravity",
@@ -18,7 +18,7 @@
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "gravitonpistol.png",
+    "middle" : "gravitonpistolunique.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
   },      
@@ -33,21 +33,43 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "cosmic",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.35,
-    "baseDps" : 4.7,
-    "energyUsage" : 30,
+    "fireTime" : 0.75,
+    "baseDps" : 7.7,
+    "energyUsage" : 40,
     "fireType" : "auto",
     "inaccuracy" : 0,
     "projectileCount" : 1,
-    "projectileType" : "gravitonorbsmall",
+    "projectileType" : "electricblast",
     "projectileParameters" : {
-      "speed" : 65,
-      "knockback" : 12
+      "speed" : 45,
+      "knockback" : 32,
+          "emitters" : [ "electricplasmapurple" ],
+	  "periodicActions" : [
+	    {
+	      "time" : 0.05,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "icegas",
+	      "inheritDamageFactor" :0.25,
+	      "fuzzAngle" : 360,
+	      "projectileParameters" : { "damageKind" : "cosmic" }
+	   }
+	  ],
+	  "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/fuwavebeamexplosion/fuwavebeamexp.config"
+	    },    
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+	    }
+	  ]      
     },
     "stances" : {
       "idle" : {
