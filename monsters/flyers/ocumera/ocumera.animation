@@ -19,40 +19,30 @@
             "mode" : "loop",
             "frameProperties" : {
               "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
-            },
-            "particleEmittersOff" : [ "flames" ]
+            }
           },
           "firewindup" : {
             "frames" : 4,
-            "cycle" : 0.375,
-            "mode" : "transition",
-            "transition" : "winduploop",
+            "cycle" : 0.5,
             "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "" ]
-            },
-            "particleEmittersOn" : [ "flames" ]
-          },
-          "winduploop" : {
-            "frames" : 4,
-            "cycle" : 0.375,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
-            },
-            "properties" : {
-              "persistentSound" : "/sfx/npc/monsters/pteropod_windup.ogg"
-            },
-            "particleEmittersOn" : [ "flames" ]
+              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "/sfx/npc/monsters/batong_flap2.ogg" ]
+            }
           },
           "fire" : {
+            "frames" : 1,
+            "cycle" : 1.5,
+            "mode" : "loop"
+          },
+          "firewinddown" : {
             "frames" : 4,
-            "cycle" : 0.375,
-            "mode" : "transition",
-            "transition" : "idle",
-            "particleEmittersOff" : [ "flames" ]
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "/sfx/npc/monsters/batong_flap2.ogg" ]
+            }
           }
         }
       },
+            
       "damage" : {
         "priority" : 3,
         "default" : "none",
@@ -61,12 +51,7 @@
             "frames" : 1
           },
           "stunned" : {
-            "frames" : 8,
-            "cycle" : 0.75,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap3.ogg", "", "", "", "/sfx/npc/monsters/batong_flap3.ogg", "", "" ]
-            }
+            "frames" : 1
           }
         }
       },
@@ -95,8 +80,8 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "transformationGroups" : [ "body" ],
-          "offset" : [0.25, -0.25]
+          "zLevel" : 1,
+          "transformationGroups" : [ "facing", "body" ]
         },
         "partStates" : {
           "body" : {
@@ -112,17 +97,17 @@
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:windup.<frame>"
-              }
-            },
-            "winduploop" : {
-              "properties" : {
-                "image" : "<partImage>:winduploop.<frame>"
+                "image" : "<partImage>:firewindup.<frame>"
               }
             },
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
               }
             }
           },
@@ -134,12 +119,13 @@
             }
           }
         }
-      }
+      }       
     }
   },
-
   "transformationGroups" : {
-    "body" : { "interpolated" : true }
+    "body" : { "interpolated" : true },
+    "facing" : { "interpolated" : false },
+    "aim" : { "interpolated" : true }
   },
 
   "effects" : {
@@ -151,35 +137,28 @@
   },
 
   "particleEmitters" : {
-    "flames" : {
-      "active" : false,
-      "emissionRate" : 24.0,
+    "drip" : {
+      "active" : true,
+      "emissionRate" : 12.0,
       "offsetRegion" : [-0.75, -1.0, 0.75, 0.5],
       "particles" : [
-        { "particle" : "teslaboltpurple" },
-        { "particle" : "electricswoosh1" },
-        { "particle" : "electricswoosh2" }
+        { "particle" : "jellydrip1" },
+        { "particle" : "jellydrip2" },
+        { "particle" : "jellydrip3" }
       ]
-    },  
+    },
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
-        { "particle" : "teslaboltpurple" },
-        { "particle" : "teslaboltpurple" },
-        { "particle" : "teslaboltpurple" },
-        { "particle" : "electricswoosh2" },
-        { "particle" : "electricswoosh2" },
-        { "particle" : "electricswoosh2" },
-        { "particle" : "electricswoosh2" },
-        { "particle" : "electricswoosh2" },
-        { "particle" : "deathember" },
-        { "particle" : "deathember" },
-        { "particle" : "deathember" },
-        { "particle" : "deathember" },
-        { "particle" : "deathember" },
-        { "particle" : "deathember" },
-        { "particle" : "deathember" },
-        { "particle" : "deathember" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
+        { "particle" : "eyejellysplat" },
         { "particle" : "deathfizz1left" },
         { "particle" : "deathfizz1right" },
         { "particle" : "deathfizz2left" },
