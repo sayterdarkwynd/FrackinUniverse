@@ -40,16 +40,7 @@ function checkEffectValid()
 	end
 
 	-- checks strength of effect vs resistance
-	if (config.getParameter("baseDebuffPerTick",0) == 3) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDebuffPerTick",0) == 5) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("baseDebuffPerTick",0) == 7) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire()   
-	elseif (config.getParameter("baseDebuffPerTick",0) == 9) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
+	if ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  effect.expire()   
 	else
