@@ -70,7 +70,6 @@ function build(directory, config, parameters, level, seed)
     
       config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
       config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
-
     -- *******************************
     if elementalType ~= "physical" then
       config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
