@@ -1,0 +1,40 @@
+{
+  "itemName" : "cavedetector3",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Emits pulses to plot the density of nearby materials.",
+  "shortdescription" : "Cave Detector III",
+  "twoHanded" : false,
+  "category" : "Tool",
+  "itemTags" : ["tool"],
+
+  "inventoryIcon" : "cavedetectoricon.png",
+  "animation" : "oredetector.animation",
+  "animationParts" : {
+    "detector" : "cavedetector.png",
+    "detectorfullbright" : "cavedetectorfullbright.png"
+  },
+  "animationCustom" : {},
+
+  "animationScripts" : ["/items/active/effects/detector.lua"],
+  "animationDelta" : 5,
+
+  "scripts" : ["oredetector.lua"],
+  "scriptDelta" : 1,
+
+  "pingDetectConfig" : {
+    "type" : "cave",
+    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+    "variants" : 4,
+    "colors" : {
+      "empty" : [30, 30, 255, 255],
+      "solid" : [120, 120, 160, 50]
+    }
+  },
+
+  "pingRange" : 50,
+  "pingBandWidth" : 12,
+  "pingDuration" : 2.5,
+  "pingCooldown" : 1.0
+}
