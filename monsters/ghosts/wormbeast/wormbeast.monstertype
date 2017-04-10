@@ -1,26 +1,27 @@
 {
-  "type" : "wormish",
-  "shortdescription" : "wormish",
-  "description" : "A flying scorpion-tailed cyclops",
+  "type" : "wormbeast",
+  "shortdescription" : "wormbeast",
+  "description" : "A horrible burrowing monstrositiy. Hates ketchup.",
 
-  "categories" : [ "wormish" ],
+  "categories" : [ "wormbeast" ],
   "parts" : [ "body" ],
 
-  "animation" : "wormish.animation",
+  "animation" : "wormbeast.animation",
 
-  "dropPools" : [ { "default" : "slimemonsterTreasure" } ],
+  "dropPools" : [ ],
 
   "baseParameters" : {
+  
+"colorSwap":{"373737":"373737aa", "808080":"808080", "b6b6b6":"d35ea0", "7b7b7b":"97276d", "450f21":"450f2100", "641929":"64192900", "714a44":"714a4400", "a96e65":"a96e6500", "210610":"21061000", "30636c":"30636c00", "4facb2":"4facb200", "a8e6e2":"a8e6e200", "ca8d30":"7b7b7b", "dcc253":"e6e6e6"},
+
     "scripts" : [
       "/monsters/monster.lua"
     ],
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
-    "renderLayer":"Monster+10", 
-    "seeThroughLiquid":true, 
-    "onGround":false, 
-    
+    "seeThroughLiquid" : true,
+    "renderLayer" : "Monster+10",
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -31,11 +32,14 @@
       "targetOutOfSightTime" : 18.0,
       "swoopVelocity" : 45,
       
+
       "hurtTime" : 0.25,
       "hurtWaitForGround" : false,
+      
+      "seeThroughLiquid":true, 
+      "onGround":false,      
 
-      "damageTakenActions" : [
-      ],
+      "deathActions" : [],
 
       "foundTargetActions" : [ ],
 
@@ -189,13 +193,13 @@
         }
       ]
     },
-
+    
     "touchDamage" : {
-      "poly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
-      "damage" : 9,
+      "poly":[ [0.625, 1], [1, 0.625], [1, -0.625], [0.625, -1], [-0.625, -1], [-1, -0.625], [-1, 0.625], [-0.625, 1] ],
+      "damage" : 12,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "lash",
+      "damageSourceKind" : "slash",
       "knockback" : 20,
       "statusEffects" : [ "ballistic", "glow" ]
     },
@@ -204,8 +208,8 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionEnabled" : true,
-      "collisionPoly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
 
       "mass" : 1.0,
       "walkSpeed" : 4,
@@ -286,7 +290,9 @@
         "poisonStatusImmunity" : {
           "baseValue" : 0.0
         },
-       "lavaImmunity" : { "baseValue" : 0.0 }
+        "lavaImmunity" : { 
+          "baseValue" : 0.0 
+        }
       },
 
       "resources" : {
@@ -304,8 +310,30 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.5,
+    "capturable" : false,
+    "captureHealthFraction" : 0.2,
     "nametagColor" : [64, 200, 255]
+  },
+  
+"animationCustom":{
+  "animatedParts":{ 
+    "stateTypes":{
+      "body":{
+        "states":{
+          "fly":{
+            "properties":{
+            "persistentSound":"/sfx/npc/boss/tentacleboss_roar.ogg", 
+            "persistentSoundStopTime":3.3
+            } 
+          }, 
+          "fire": {
+            "properties":{
+              "persistentSound":"/sfx/projectiles/bugswarm4.ogg"
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

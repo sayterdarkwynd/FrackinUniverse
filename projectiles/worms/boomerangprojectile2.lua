@@ -11,6 +11,7 @@ function init()
   self.ignoreTerrain = config.getParameter("ignoreTerrain")
   self.ownerId = projectile.sourceEntity()
   self.minVelocity = config.getParameter("minVelocity", 0.2)
+
   if self.ignoreTerrain then mcontroller.applyParameters({collisionEnabled=false}) end
 
   if boomerangExtra then
