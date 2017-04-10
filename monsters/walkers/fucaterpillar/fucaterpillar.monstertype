@@ -132,25 +132,14 @@
       
       "damageTakenActions" : [
         {
-          "name" : "action-fire",
-          "cooldown" : 1,
+          "name" : "action-projectile",
           "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 4,
-            "windupState" : "idle",
-            "windupTime" : 0.1,
-            "projectileType" : "pusvomit4",
+            "projectileCount" : 1,
+            "projectileType" : "fubugexplosion",
+            "projectileParameters" : { "speed" : 0 },
             "power" : 0,
-            "fireOffset" : [-1.75, -0.15],
-            "aimAtTarget" : false,
-            "aimDirection" : [-1,0],
-            "projectileCount" : 3,
-            "projectileInterval" : 0.01,
-            "fireSound" : "",
-            "fireState" : "fire",
-            "winddownState" : "",
-            "winddownTime" : 0.01
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
           }
         }        
       ],
@@ -167,7 +156,18 @@
             "inaccuracy" : 0,
             "fireOffset" : [0, 1]
           }
-        }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubugexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 3,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }         
       ]      
     },
 

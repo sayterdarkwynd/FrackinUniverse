@@ -96,6 +96,7 @@ end
 
 function setWindPenalty()
   self.windLevel =  world.windLevel(mcontroller.position())
+  if not self.windLevel then self.windLevel = world.windLevel(mcontroller.position()) end
   if (self.windLevel > 1) then
     self.biomeThreshold = self.biomeThreshold + (self.windlevel / 100)
   end  
