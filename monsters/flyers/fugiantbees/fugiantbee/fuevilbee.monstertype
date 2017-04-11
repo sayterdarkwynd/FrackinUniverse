@@ -1,19 +1,14 @@
 {
-  "type" : "futinybeemetal",
-  "shortdescription" : "Metal Bee",
+  "type" : "fuevilbee",
+  "shortdescription" : "Giant Queen",
   "description" : "Don't touch the pointy end.",
 
-  "categories" : [ "futinybeemetal" ],
+  "categories" : [ "fugiantbee" ],
   "parts" : [ "body" ],
 
-  "animation" : "futinybeemetal.animation",
+  "animation" : "fugiantbee.animation",
 
-  "dropPools" : [ 
-    {
-      "default" : "empty",
-      "bugnet" : "metalqueen"
-    }  
-  ],
+  "dropPools" : [ "beeLoot" ],
 
   "baseParameters" : {
     "scripts" : [
@@ -21,7 +16,6 @@
     ],
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
 
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
@@ -48,29 +42,12 @@
 
       "hostileActions" : [ 
         {
-          "name" : "action-swoop", 
-          "cooldown" : 1.0,
-          "parameters" : {
-            "minimumRange" : 3,
-            "maximumRange" : 10,
-            "onGround" : false,
-            "windupTime" : 0.6,
-
-            "gravityMultiplier" : -0.5,
-            "swoopVelocity" : 25,
-            "collisionCheck" : true,
-            "highArc" : false,
-            "swoopTime" : 0.5,
-
-            "winddownTime" : 0.5,
-            "winddownState" : "fly",
-            "winddownStopForce" : 20
-          }
+          "name":"approach-swarm", 
+          "parameters":{ "usePathfinding": true }
         }      
-      
       ],
 
-      "periodicActions" : [ ],
+      "periodicActions" : [],
 
       "approachActions" : [
         {
@@ -82,7 +59,7 @@
         },
         {
           "name" : "land-fly",
-          "cooldown" : 15,
+          "cooldown" : 2,
           "parameters" : {
             "landDirection" : [0, -1],
             "flySpeed" : 12,
@@ -108,7 +85,7 @@
         },
         {
           "name" : "land-fly",
-          "cooldown" : 15,
+          "cooldown" : 2,
           "parameters" : {
             "landDirection" : [0, -1],
             "flySpeed" : 12,
@@ -122,7 +99,7 @@
       "wanderActions" : [
         {
           "name" : "land-fly",
-          "cooldown" : 15,
+          "cooldown" : 2,
           "parameters" : {
             "landDirection" : [0, -1],
             "flySpeed" : 12,
@@ -143,38 +120,35 @@
         }
       ],
 
-      "deathActions" : [
-        {
-          "name" : "action-projectile",
-          "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "laserexplosion",
-            "projectileParameters" : {},
-            "power" : 3,
-            "aimDirection" : [0.3, -1],
-            "inaccuracy" : 0,
-            "fireOffset" : [0, 2]
-          }
-        }
-      ],
+      "deathActions" : [],
 
       "concurrentActions" : [ ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [ 
+	{
+	"name":"action-spawncompanions", 
+	"parameters":{
+	  "spawnCooldown":0.3, 
+	  "monsterType":"futinybee", 
+	  "maxCount":10, 
+	  "monsterParameters":{"level":[2]}
+	  }
+	}     
+      ]
     },
 
     "touchDamage" : {
       "poly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
-      "damage" : 3,
+      "damage" : 9,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "radioactive",
+      "damageSourceKind" : "lash",
       "knockback" : 20,
       "statusEffects" : [ "fubeesting2" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 0.45,
+    "scale" : 1.0,
 
     "movementSettings" : {
       "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
@@ -186,7 +160,7 @@
 
       "airFriction" : 4,
       "airForce" : 40,
-      "flySpeed" : 10
+      "flySpeed" : 15
     },
 
     "bodyMaterialKind" : "organic",
@@ -203,7 +177,7 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -220,7 +194,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 8
+          "baseValue" : 45
         },
         "protection" : {
           "baseValue" : 0.0
@@ -249,7 +223,7 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-    "captureHealthFraction" : 1,
+    "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255]
   }
 }
