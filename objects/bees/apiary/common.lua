@@ -513,13 +513,14 @@ function chooseMinerOffspring(config)
 	end
 	
 --	sb.logInfo('may spawn radioactive bees')
-                chance = config.chance
-		if (math.random(100) <= 60 * (chance + self.mutationIncrease)) then
-		  world.spawnMonster("fuevilbee", object.toAbsolutePosition({ 2, 3 }), { level = 3 })
-		elseif (math.random(100) <= 40 * (chance + self.mutationIncrease)) then
-		  world.spawnMonster("elderbee", object.toAbsolutePosition({ 2, 3 }), { level = 3 })
-		elseif (math.random(100) <= 30 * (chance + self.mutationIncrease)) then
-		  world.spawnMonster("fearmoth", object.toAbsolutePosition({ 2, 3 }), { level = 3 })
+                local threat = world.threatLevel() or 1
+                local chance = config.chance or DEFAULT_HONEY_CHANCE
+		if (math.random(100) <= 20 * (chance + self.mutationIncrease)) then
+		  world.spawnMonster("fuevilbee", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
+		elseif (math.random(100) <= 10 * (chance + self.mutationIncrease)) then
+		  world.spawnMonster("elderbee", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
+		elseif (math.random(100) <= 5 * (chance + self.mutationIncrease)) then
+		  world.spawnMonster("fearmoth", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
 		end
 	return { type = 'radioactive', chance = config.chance, bee = (config.bee or 1) * 1.1, drone = (config.drone or 1) * 0.9 } -- tip a little more in favour of world over hive
 	
