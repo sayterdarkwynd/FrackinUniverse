@@ -412,7 +412,7 @@ function transferUtil.getType(item)
 	elseif item.name == "sapling" then
 		return item.name
 	end
-	local itemRoot = root.itemConfig(item.name)
+	local itemRoot = root.itemConfig(item)
 	local itemCat
 	if itemRoot.category ~= nil then
 		itemCat=itemRoot.category

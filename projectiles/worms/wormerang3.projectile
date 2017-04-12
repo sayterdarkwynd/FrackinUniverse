@@ -1,0 +1,31 @@
+{
+  "projectileName" : "wormerang3",
+  "image" : "wormerang2.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "flippable" : false,
+  "actionOnReap" : [ ],
+  "statusEffects" : [ ],
+  "periodicActions" : [
+    {
+      "time" : 0.02,
+      "action" : "projectile",
+      "type" : "wormtrail",
+      "fuzzAngle" : 0
+   }
+  ],
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "power" : 5.0,
+  "speed" : 30,
+  "damageKind" : "poisonspear",
+  "physics" : "laser",
+  "bounces" : -1,
+  "piercing" : true,
+  "timeToLive" : 8,
+  "wobbleRate" : 0,
+  "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
+
+  "scripts" : [ "boomerangprojectile.lua", "wormerangprojectile2.lua" ]
+}
