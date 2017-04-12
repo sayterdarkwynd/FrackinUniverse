@@ -41,6 +41,8 @@ function getRecipes()
 	{ inputs = { poop = 1 }, outputs = { fu_nitrogen = { 3, 3, 5 } } },
 	{ inputs = { swampwater = 10 }, outputs = { fu_salt = { 1, 1, 2 }, fu_oxygen = { 1, 1, 2 }, fu_hydrogen = { 1, 1, 2 } } },
 	-- bees mod content
+	{ inputs = { elderdrone = 1 }, outputs = { liquidelderfluid = { 1, 2, 3 } } },
+	{ inputs = { elderqueen = 1 }, outputs = { liquidelderfluid = { 1, 2, 3 } } },	
 	{ inputs = { adaptivedrone = 1 }, outputs = { geneticmaterial = { 1, 1, 4 } } },
 	{ inputs = { adaptivequeen = 1 }, outputs = { geneticmaterial = { 1, 1, 4 } } },
 	{ inputs = { aggressivedrone = 1 }, outputs = { geneticmaterial = { 1, 1, 4 } } },

@@ -49,7 +49,9 @@ function getRecipes()
         violiumcomb     = { violiumore     = { "common", 1 } },
         magmacomb       = { corefragmentore = { "normal", 1 },
                             scorchedcore    = { "rare", 1 },
-                            liquidlava      = { "common", 1 } }      
+                            liquidlava      = { "common", 1 } },
+        eldercomb       = { liquidelderfluid = { "normal", 1 },
+                            protorockmaterial    = { "rare", 1 } }                             
       },
 
     itemMapLiquids = {
