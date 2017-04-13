@@ -8,7 +8,7 @@
 
   "animation" : "ocumera.animation",
 
-  "dropPools" : [ { "default" : "slimemonsterTreasure" } ],
+  "dropPools" : [ { "default" : "extraMonsterElectric" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -91,7 +91,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+      "poly" : [ [-1, 1.5], [1,1.5], [1, -1.5], [1,1.5] ],
       "damage" : 9,
 
       "teamType" : "enemy",
@@ -105,7 +105,7 @@
 
     "movementSettings" : {
       "collisionEnabled" : true,
-      "collisionPoly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+      "collisionPoly" : [ [-1, 1.5], [1,1.5], [1, -1.5], [1,1.5] ],
 
       "mass" : 1.0,
       "walkSpeed" : 4,
@@ -148,7 +148,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 79
+          "baseValue" : 64
         },
         "protection" : {
           "baseValue" : 0.0
@@ -160,7 +160,7 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.35
+          "baseValue" : 0.0
         },
         "fireResistance" : {
           "baseValue" : 0.0
