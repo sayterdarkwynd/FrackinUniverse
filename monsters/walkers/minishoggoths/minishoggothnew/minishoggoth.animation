@@ -32,11 +32,21 @@
             "cycle" : 0.5,
             "mode" : "loop"
           },
-          "chargewindup" : {
+          "firewinddown" : {
             "frames" : 5,
             "cycle" : 0.5,
             "mode" : "loop"
           },          
+          "chargewindup" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          }, 
+          "chargewinddown" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },            
           "charge" : {
             "frames" : 5,
             "cycle" : 0.5,
@@ -103,14 +113,24 @@
             },
             "chargewindup" : {
               "properties" : {
-                "image" : "<partImage>:windup.<frame>"
+                "image" : "<partImage>:chargewindup.<frame>"
               }
-            },            
+            }, 
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>"
+              }
+            },              
             "fireWindup" : {
               "properties" : {
                 "image" : "<partImage>:windup.<frame>"
               }
-            }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
+              }
+            }            
           },
           "damage" : {
             "stunned" : {

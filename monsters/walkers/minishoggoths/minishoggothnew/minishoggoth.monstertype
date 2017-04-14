@@ -39,9 +39,9 @@
             "maximumRange" : 10,
             "minimumRange" : 1,
             "windupTime" : 0.5,
-            "winddownTime" : 0.6,
-            "chargeSpeed" : 24,
-            "chargeControlForce" : 300,
+            "winddownTime" : 0.5,
+            "chargeSpeed" : 12,
+            "chargeControlForce" : 800,
             "chargeTime" : 1,
             "aimAtTarget" : true,
             "wallKnockback" : false,
@@ -63,11 +63,11 @@
           "name" : "action-fire",
 	        "cooldown" : 15,
           "parameters" : {
-            "requireLineOfSight" : true,
+            "requireLineOfSight" : false,
             "maximumRange" : 30,
             "minimumRange" : 10,
             "windupState" : "fire",
-            "windupTime" : 1,
+            "windupTime" : 0.5,
 
             "projectileType" : "floatypoisonball2",
             "power" : 8,
@@ -79,7 +79,7 @@
             "range": 30,
             "fireState" : "",
             "winddownState" : "firewinddown",
-            "winddownTime" : 0.6
+            "winddownTime" : 0.5
           }
         }        
       ],
@@ -90,9 +90,14 @@
 
       "approachActions" : [
         {
-          "name" : "approach-crawl",
+          "name" : "approach-walk",
           "parameters" : {
-            "resetHeading" : false
+            "canJump" : false,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
           }
         }
       ],
@@ -104,18 +109,30 @@
           }
         },
         {
-          "name" : "approach-crawl",
+          "name" : "approach-walk",
           "parameters" : {
-            "resetHeading" : false
+            "canJump" : false,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
           }
         }
       ],
 
       "wanderActions" : [
         {
-          "name" : "wander-crawl",
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
           "parameters" : {
-            "wanderTime" : [5, 15]
+            "wanderTime" : [5, 15],
+            "canJump" : false,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
           }
         }
       ],
@@ -123,9 +140,17 @@
       "concurrentActions" : [
         ],
 
-      "concurrentHostileActions" : [
-        { "name" : "idle-crawl" }
-		],
+      "damageTakenActions" : [
+        {
+          "name" : "action-spawncompanions",
+          "parameters" : {
+            "maxCount" : 6,
+            "spawnCooldown" : 2.0,
+            "monsterType" : "tentaclegnat",
+            "state" : "chargewinddown"
+          }
+        }
+      ],
 
       "deathActions" : [
         {
