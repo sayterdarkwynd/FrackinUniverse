@@ -32,6 +32,11 @@
             "cycle" : 0.5,
             "mode" : "loop"
           },
+          "firewindup" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },          
           "firewinddown" : {
             "frames" : 5,
             "cycle" : 0.5,
@@ -56,7 +61,19 @@
             "frames" : 5,
             "cycle" : 0.5,
             "mode" : "loop"
-          }
+          },
+          "fullwinddown" : {
+            "frames" : 10,
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "fullwinddown2" : {
+            "frames" : 10,
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle"
+          }          
         }
       },
       "damage" : {
@@ -131,11 +148,26 @@
                 "image" : "<partImage>:windup.<frame>"
               }
             },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },            
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:firewinddown.<frame>"
               }
-            }            
+            },
+            "fullwinddown" : {
+              "properties" : {
+                "image" : "<partImage>:fullwinddown.<frame>"
+              }
+            },
+            "fullwinddown2" : {
+              "properties" : {
+                "image" : "<partImage>:fullwinddown2.<frame>"
+              }
+            }              
           },
           "damage" : {
             "stunned" : {
