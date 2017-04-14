@@ -53,8 +53,8 @@
             "requireLineOfSight" : true,
             "maximumRange" : 10,
             "minimumRange" : 0,
-            "windupState" : "fire",
-            "windupTime" : 0.6,
+            "windupState" : "",
+            "windupTime" : 0.4,
 
             "projectileType" : "elderplasma4green",
             "power" : 9,
@@ -63,10 +63,11 @@
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "fireSound" : "",
+            "fireDelay" : 0.2,
             "range": 30,
-            "fireState" : "",
+            "fireState" : "fire",
             "winddownState" : "",
-            "winddownTime" : 0.7
+            "winddownTime" : 0.2
           }
         },    
         {
@@ -77,7 +78,7 @@
             "maximumRange" : 12,
             "minimumRange" : 9,
             "windupState" : "fire3",
-            "windupTime" : 0.7,
+            "windupTime" : 0.4,
 
             "projectileType" : "starspawntentacle1",
             "power" : 12,
@@ -85,9 +86,10 @@
             "aimAtTarget" : true,
             "fireSound" : "aggroHop",
             "range": 12,
+            "fireDelay" : 0.2,
             "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 1.4
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.4
           }
         },           
         {
@@ -153,8 +155,8 @@
             "fireSound" : "fire",
             "range": 15,
             "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 1.4
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.4
           }
         }     
       ],
@@ -238,17 +240,7 @@
         }
       ],
 
-      "concurrentActions" : [
-        {
-          "name" : "action-spawncompanions",
-          "parameters" : {
-            "maxCount" : 1,
-            "spawnCooldown" : 15.0,
-            "monsterType" : "squidbeast",
-            "state" : "fire2"
-          }
-        }
-      ]     
+      "concurrentActions" : []     
       
     },
 
