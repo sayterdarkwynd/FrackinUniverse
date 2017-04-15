@@ -22,7 +22,7 @@
     ],
 
     "skillCount" : 6,
-    "skills" : ["tentacleSwipeAttack", "fleshBombAttack", "eyeBeamAttack", "shoggothAcidAttack", "miniShoggothSpawnAttack", "shoggothChargeAttack"],
+    "skills" : [ "tentacleSwipeAttack", "fleshBombAttack", "eyeBeamAttack", "shoggothAcidAttack", "miniShoggothSpawnAttack", "shoggothChargeAttack" ],
 
     "phases" : [
       {
@@ -36,7 +36,7 @@
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.75,
-        "skills" : [ "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
+        "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack" ]
       },      
       {
         "trigger" : "healthPercentage",
@@ -47,12 +47,12 @@
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.55,
-        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack" ]
+        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack" ]
       },
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.25,
-        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack" ]
+        "skills" : [ "shoggothChargeAttack", "tentacleSwipeAttack" ]
       }
     ],
 
@@ -71,9 +71,14 @@
     "projectileSourceOffset" : [7, 0],
 
     "trackTargetDistance" : 100.0,
-    "switchTargetDistance" : 0,
-    "keepTargetInSight" : true,
-
+    "switchTargetDistance" : 200,
+      "targetQueryRange" : 100,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 200,
+      "targetOutOfSightTime" : 220.0,
+      
+      
     "knockoutTime" : 0.5,
     "knockoutEffect" : "blink",
     "deathParticles" : "deathPoof",
@@ -117,13 +122,13 @@
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 4100
+          "baseValue" : 2100
         },
         "protection" : {
           "baseValue" : 0.0
         },
         "healthRegen" : {
-          "baseValue" : 0.0
+          "baseValue" : 2.8
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0

@@ -34,21 +34,21 @@
       "hostileActions" : [
         {
           "name" : "action-trail-charge",
-          "cooldown" : 5.0,
+          "cooldown" : 3,
           "parameters" : {
-            "maximumRange" : 10,
-            "minimumRange" : 1,
+            "maximumRange" : 30,
+            "minimumRange" : 10,
             "windupTime" : 0.5,
             "winddownTime" : 0.5,
-            "chargeSpeed" : 12,
-            "chargeControlForce" : 800,
+            "chargeSpeed" : 14,
+            "chargeControlForce" : 1000,
             "chargeTime" : 1,
             "aimAtTarget" : true,
             "wallKnockback" : false,
             "wallCrashSound": "",
             "knockbackThreshold": 3,
 
-            "projectileType" : "pusvomit",
+            "projectileType" : "pusvomit2",
             "projectileParameters" : { 
               "power" : 0,
               "timeToLive" : 0
@@ -61,25 +61,69 @@
         },
         {
           "name" : "action-fire",
-	        "cooldown" : 15,
+	  "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : false,
-            "maximumRange" : 30,
-            "minimumRange" : 10,
-            "windupState" : "fire",
+            "maximumRange" : 12,
+            "minimumRange" : 4,
+            "windupState" : "firewindup",
             "windupTime" : 0.5,
 
-            "projectileType" : "floatypoisonball2",
+            "projectileType" : "darkwatervomit",
             "power" : 8,
             "speed": 10,
-            "fireOffset" : [2, 0],
+            "fireOffset" : [2, -1],
             "aimAtTarget" : true,
-            "projectileCount" : 1,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.05,
             "fireSound" : "fire",
-            "range": 30,
-            "fireState" : "",
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.5
+            "fireState" : "fire",
+            "winddownState" : "fullwinddown2",
+            "winddownTime" : 1
+          }
+        },        
+        {
+          "name" : "action-fire",
+	  "cooldown" : 3,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 12,
+            "minimumRange" : 4,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "pusvomit3",
+            "power" : 8,
+            "speed": 10,
+            "fireOffset" : [2, -1],
+            "aimAtTarget" : true,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.05,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "winddownState" : "fullwinddown2",
+            "winddownTime" : 1
+          }
+        },
+        {
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 4,
+            "minimumRange" : 0,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "raptorbite",
+            "power" : 11,
+            "fireOffset" : [1.4, -0.2],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "winddownState" : "fullwinddown2",
+            "winddownTime" : 1
           }
         }        
       ],
@@ -144,15 +188,15 @@
         {
           "name" : "action-spawncompanions",
           "parameters" : {
-            "maxCount" : 6,
-            "spawnCooldown" : 2.0,
+            "maxCount" : 1,
+            "spawnCooldown" : 1,
             "monsterType" : "tentaclegnat",
-            "state" : "chargewinddown"
+            "state" : "fullwinddown"
           }
         }
       ],
 
-      "deathActions" : [
+      "deathActions" : [     
         {
           "name" : "action-projectile",
           "parameters" : {

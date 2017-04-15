@@ -7,8 +7,8 @@ function miniShoggothSpawnAttack.enter()
   end
 
   return {
-    timer = config.getParameter("miniShoggothSpawnAttack.skillTime", 16),
-    damagePerSecond = config.getParameter("miniShoggothSpawnAttack.damagePerSecond", 1600),
+    timer = config.getParameter("miniShoggothSpawnAttack.skillTime", 8),
+    damagePerSecond = config.getParameter("miniShoggothSpawnAttack.damagePerSecond", 10),
     distanceRange = config.getParameter("miniShoggothSpawnAttack.distanceRange"),
     winddownTimer = config.getParameter("miniShoggothSpawnAttack.winddownTime"),
     windupTimer = config.getParameter("miniShoggothSpawnAttack.windupTime"),
