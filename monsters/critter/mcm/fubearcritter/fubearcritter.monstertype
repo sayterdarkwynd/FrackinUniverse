@@ -1,7 +1,7 @@
 {
   "type" : "fubearcritter",
   "shortdescription" : "Bear",
-  "description" : "A large predator found in temperate woodlands. Though normally a docile animal, it has been known to attack.",
+  "description" : "A large omnivore found in temperate woodlands. Though normally a docile animal, it has been known to attack.",
 
   "categories" : [ "fubearcritter" ],
   "parts" : [ "body" ],
@@ -9,53 +9,145 @@
   "animation" : "fubearcritter.animation",
   "reversed" : false,
 
-  "dropPools" : [
-    {
-      "default" : "empty",
-      "bow" : "huntingbear",
-      "brain" : "brain"
-    }
-  ],
+  "dropPools" : [ { "default" : "generatedGroundMonsterTreasure", "bow" : "bogdinoLoot" } ],
 
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
     ],
 
-    "behavior" : "walkingcritter",
+    "behavior" : "monster",
 
-    "metaBoundBox" : [-4, -4, 4, 4],
+    "behaviorConfig" : {
+      "aggressive" : false,
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 40,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "maximumRange" : 15,
+            "windupState" : "firewindup",
+            "windupTime" : 0.3,
+
+            "chargeTime" : 0.4,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 1000,
+            "chargeState" : "melee",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 1000,
+            "winddownState" : "firewinddown"
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false,
+            "maxJumps" : 8,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false,
+            "maxJumps" : 0,
+            "jumpXVelocity" : 0,
+            "jumpYVelocity" : 0,
+            "jumpXControlForce" : 0,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "canJump" : false,
+            "wanderTime" : [5, 20]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.292,1.542], [-2.625,0.875], [-2.583,-2.292], [0.917,-2.333], [2.25,-0.625], [2.083,1.25] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-2.0, -2.0, 2.0, 2.0],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-2.458,1.208], [-2.458,-1.875], [1.792,-1.917], [1.708,1.292] ],
+      "collisionPoly" : [ [0.292,1.542], [-2.625,0.875], [-2.583,-2.292], [0.917,-2.333], [2.25,-0.625], [2.083,1.25] ],
 
-      "mass" : 0.5,
+      "mass" : 1.0,
       "walkSpeed" : 5,
-      "runSpeed" : 5,
-      "jumpSpeed" : 5
+      "runSpeed" : 7,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
     },
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.1,
-    "knockoutEffect" : "",
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
     "deathParticles" : "deathPoof",
-    "damageTeamType" : "passive",
+    "knockoutEffect" : "",
 
     "statusSettings" : {
       "statusProperties" : {
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
-      "minimumLiquidStatusEffectPercentage" : 0.7,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
       ],
-      "primaryScriptDelta" : 0,
+      "primaryScriptDelta" : 5,
 
       "stats" : {
         "knockbackStunTime" : {
@@ -72,6 +164,9 @@
         },
         "healthRegen" : {
           "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
@@ -94,7 +189,7 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-    "captureHealthFraction" : 1.0,
+    "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255]
   }
 }
