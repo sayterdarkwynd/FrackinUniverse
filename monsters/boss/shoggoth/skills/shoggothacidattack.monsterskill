@@ -6,7 +6,7 @@
   "parameters" : {
     "scripts" : [ "/monsters/boss/shoggoth/skills/shoggothacidattack.lua" ],
     "shoggothAcidAttack" : {
-      "skillTime" : 4,
+      "skillTime" : 2,
       
       "damagePerSecond" : 12,
       "distanceRange" : [10,100],
@@ -18,8 +18,26 @@
       "projectile" : {
         "type" : "acidspit",
         "config" : {
-          "power" : 40,
-          "speed" : 40
+          "power" : 12,
+          "speed" : 40,
+          "actionOnReap" : [
+              {
+	        "action" : "projectile",
+	        "type" : "magnorbshadow4",
+	        "fuzzAngle" : 0,
+	        "inheritDamageFactor" : 0.25,
+	        "projectileParameters" : { "speed" : 10 },
+	        "angleAdjust" : 0
+    	      },
+              {
+	        "action" : "projectile",
+	        "type" : "magnorbshadow4",
+	        "fuzzAngle" : 0,
+	        "inheritDamageFactor" : 0.25,
+	         "projectileParameters" : { "speed" : 10 },
+	        "angleAdjust" : 20
+    	       }    	        
+          ]
         },
         "offset" : [10, -5]
       }

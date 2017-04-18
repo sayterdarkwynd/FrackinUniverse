@@ -6,15 +6,16 @@
   "parameters" : {
     "scripts" : [ "/monsters/boss/shoggoth/skills/shoggothchargeattack.lua" ],
     "shoggothChargeAttack" : {
-      "skillTime" : 16,
+      "skillTime" : 8,
       
       "damagePerSecond" : 5000,
-      "distanceRange" : [0, 0],
+      "distanceRange" : [30, 0],
       "intervalTime" : 0.8,
       "projectile" : {
         "type" : "shoggothchomp",
+        "statusEffects" : [ "darkstalker" ],
         "config" : {
-          "power" : 30,
+          "power" : 20,
           "speed" : 10
         },
         "offset" : [18, -12.5]

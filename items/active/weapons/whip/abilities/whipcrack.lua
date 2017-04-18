@@ -92,7 +92,7 @@ function WhipCrack:swing()
       self.anchorPos = self.anchorPos or self:getAnchorPos()
       local chainEndPos = vec2.add(world.entityPosition(self.anchor), self.anchorPos)
       local chainStartPos = vec2.add(mcontroller.position(), activeItem.handPosition(self.chain.startOffset))
-      if not world.lineCollision(chainStartPos, chainEndPos) or self.blockPiercing then
+      if not world.lineCollision(chainStartPos, chainEndPos) then --or self.blockPiercing then
         local aimVector = world.distance(chainEndPos, chainStartPos)
         local swingAngle = vec2.angle(aimVector)
         if not mcontroller.onGround() then
@@ -152,7 +152,7 @@ function WhipCrack:fire()
   chainLength = math.min(self.chain.length[2], math.max(self.chain.length[1], chainLength))
 
   self.chain.endOffset = vec2.add(self.chain.startOffset, {chainLength, 0})
-  local collidePoint = world.lineCollision(chainStartPos, vec2.add(mcontroller.position(), activeItem.handPosition(self.chain.endOffset))) and not self.blockPiercing
+  local collidePoint = world.lineCollision(chainStartPos, vec2.add(mcontroller.position(), activeItem.handPosition(self.chain.endOffset))) --and not self.blockPiercing
   if collidePoint then
     chainLength = world.magnitude(chainStartPos, collidePoint) - 0.25
     if chainLength < self.chain.length[1] then

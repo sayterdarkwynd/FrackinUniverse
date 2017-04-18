@@ -32,7 +32,7 @@ function init()
 		self.itemModifier = 0		--
 		self.droneModifier = 0		--
 		self.mutationIncrease = 0   --
-
+                self.honeyAmount = 0 --
 		self.config = root.assetJson('/objects/bees/apiaries.config')	-- common apiaries configuration
 		self.functions = { chooseMinerHoney = chooseMinerHoney, chooseMinerOffspring = chooseMinerOffspring }
 
@@ -164,7 +164,7 @@ function trySpawnBee(chance,type)
 	-- chance is a float value between 0.00 (will never spawn) and 1.00 (will always spawn)
 --	if self.doBees then sb.logInfo ('Maybe spawning a bee') end
 	if self.doBees and math.random(100) <= 100 * chance and spaceForBees() then
-		world.spawnMonster(type .. "bee", object.toAbsolutePosition({ 2, 3 }), { level = 1 })
+		world.spawnMonster(type .. "bee", object.toAbsolutePosition({ 2, 3 }), { level = 1 })	
 		self.doBees = false
 	end
 end
@@ -239,7 +239,7 @@ function trySpawnHoney(chance,honeyType,amount)
 	local flowerIds = world.objectQuery(entity.position(), 25, {name="beeflower", order="nearest"})  --find all flowers within range
 
 	if (math.random(100) / (#flowerIds * 3 + 100) ) <= chance then   --- The more flowers in range, the more likely honey is to spawn. Honey still spawns 1 at a time, at the same interval
-		world.containerAddItems(entity.id(), { name=honeyType .. "comb", count = amount, data={}})
+		world.containerAddItems(entity.id(), { name=honeyType .. "comb", count = amount + self.honeyAmount , data={}})
 		self.doHoney = false
 	end
 end
@@ -381,7 +381,7 @@ function miteInfection()   ---Random mite infection.
 	end
 
 	if self.antimite then
-		---Infection stops spreading if the frame is the anti-mite frame.
+		---Infection stops spreading if the frame is an anti-mite frame or magma frame.
 		world.containerConsume(entity.id(), { name= "vmite", count = 10, data={}})
 		world.containerConsume(entity.id(), { name= "vmite", count = 5, data={}})
 		world.containerConsume(entity.id(), { name= "vmite", count = 2, data={}})
@@ -503,13 +503,27 @@ end
 
 
 function chooseMinerOffspring(config)
-	if self.mutationIncrease == 0 then return nil end
+	if self.mutationIncrease == 0 then 
+	  return nil 
+	end
+	
 	if math.random() > self.mutationIncrease then
 --		sb.logInfo('may spawn miner bees')
 		return nil
 	end
+	
 --	sb.logInfo('may spawn radioactive bees')
+                local threat = world.threatLevel() or 1
+                local chance = config.chance or DEFAULT_HONEY_CHANCE
+		if (math.random(100) <= 20 * (chance + self.mutationIncrease)) then
+		  world.spawnMonster("fuevilbee", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
+		elseif (math.random(100) <= 10 * (chance + self.mutationIncrease)) then
+		  world.spawnMonster("elderbee", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
+		elseif (math.random(100) <= 5 * (chance + self.mutationIncrease)) then
+		  world.spawnMonster("fearmoth", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
+		end
 	return { type = 'radioactive', chance = config.chance, bee = (config.bee or 1) * 1.1, drone = (config.drone or 1) * 0.9 } -- tip a little more in favour of world over hive
+	
 end
 
 

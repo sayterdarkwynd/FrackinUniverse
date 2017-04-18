@@ -124,7 +124,19 @@
             "frames" : 1
           }
         }
-      }
+      },
+        "damage" : {
+	"priority" : 3,
+	"default" : "none",
+	  "states" : {
+	    "none" : {
+	      "frames" : 1
+	    },
+	    "stunned" : {
+	      "frames" : 1
+	    }
+	  }
+        }
     },
 
     "parts" : {
@@ -205,7 +217,13 @@
               }
             }
           },
-
+	  "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          },          
           "portrait" : {
             "portrait" : {
               "properties" : {
@@ -292,7 +310,13 @@
               }
             }
           },
-
+	  "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          }, 
           "portrait" : {
             "portrait" : {
               "properties" : {
@@ -312,10 +336,6 @@
         },
 
         "partStates" : {
-
-
-
-
           "firstBeams" : {
             "idle" : {
               "properties" : {
@@ -338,8 +358,13 @@
               }
             }
           },
-
-
+	  "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          },           
           "portrait" : {
             "portrait" : {
               "properties" : {
