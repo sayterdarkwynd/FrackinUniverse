@@ -46,26 +46,29 @@ function unifiedGravMod.refreshGrav(dt)
 		
 		local newGrav=(gravMod*(self.gravMult2-gravBaseMod))--new effective gravity
 		local gravNorm=status.stat("gravityNorm")
-		if not self.flying then
+		if 0==world.gravity(entity.position()) then
+			mcontroller.addMomentum({0,-1*80*newGrav*0.2*dt})
+		elseif self.flying then
+			mcontroller.addMomentum({0,-1*world.gravity(entity.position())*newGrav*0.2*dt})
+		else
 			newGrav=newGrav+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
-		else
-			mcontroller.addMomentum({0,-1*world.gravity(entity.position())*newGrav*0.2*dt})
 		end
 	end
 end
 
+-- F(x)=IF(x>80,-1,IF(x<80,1,0))*120/x, F(22)=80
 function unifiedGravMod.applyGravNormalization()
-	local magic=world.gravity(entity.position())
-	magic=((magic>80 and -1.0) or (magic<80 and 1.0) or 0) * (80/magic)
-	
-	local gravNorm=1.5*magic
+	local gravity=world.gravity(entity.position())
+	local gravNorm=0
+	if gravity ~= 0 then
+		gravNorm=(80/gravity)-1.5
+	end
 	if unifiedGravMod.normalizer==nil then
 		if status.stat("gravityNorm") == 0.0 then
 			unifiedGravMod.normalizer=effect.addStatModifierGroup({{stat="gravityNorm",amount=gravNorm}})
 		end
 	else
-		effect.setStatModifierGroup(unifiedGravMod.normalizer,{{stat="gravityNorm",amount=gravNorm}})
 		effect.setStatModifierGroup(unifiedGravMod.normalizer,{{stat="gravityNorm",amount=gravNorm}})
 	end
 end

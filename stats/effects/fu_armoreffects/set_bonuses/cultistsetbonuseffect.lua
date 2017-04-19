@@ -1,7 +1,9 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 setName="fu_cultistset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15}
+	{stat = "powerMultiplier", amount = 1.15}
 }
 
 armorBonus={
@@ -9,7 +11,7 @@ armorBonus={
   {stat = "shadowImmunity", amount = 1}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 
 function init()
 	setSEBonusInit(setName)
@@ -21,21 +23,18 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	
-	checkWeapons()
-	status.modifyResourcePercentage("health", 0.008 * dt)
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+
+		checkWeapons()
+		status.modifyResourcePercentage("health", 0.008 * dt)
+	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"staff","wand"})
-	if weapons["both"] or weapons["twoHanded"] then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
-	elseif weapons["either"] then
+	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
