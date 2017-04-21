@@ -30,8 +30,15 @@ function init()
       collisionCancelled = false 
     }
   }  
+	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") then
+	  deactivateVisualEffects()
+	  effect.expire()
+	end  
 end
 
+function deactivateVisualEffects()
+  animator.setParticleEmitterActive("shadowgaseffect", false)
+end
 
 function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("shadowgaseffect", mcontroller.boundBox())
@@ -43,6 +50,10 @@ end
   
 
 function update(dt)
+	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") then
+	  deactivateVisualEffects()
+	  effect.expire()
+	end
 mcontroller.controlParameters(self.liquidMovementParameter)
 
   self.tickTimer = self.tickTimer - dt
@@ -51,7 +62,7 @@ mcontroller.controlParameters(self.liquidMovementParameter)
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
         damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
-        damageSourceKind = "nitrogenweapon",
+        damageSourceKind = "shadow",
         sourceEntityId = entity.id()
       })
   end

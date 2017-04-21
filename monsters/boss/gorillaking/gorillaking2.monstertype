@@ -57,7 +57,7 @@
 
             "aimAtTarget" : true,
             "projectileType" : "sulphurtrollswoosh",
-            "power" : 15,
+            "power" : 11,
             "aimDirection" : [0.7, 0.4],
             "fireOffset" : [2.75, 0.4],
             "projectileCount" : 1,
@@ -78,26 +78,27 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 12,
-            "minimumRange" : 5,
-            "maxYRange" : 4,
-            "windupTime" : 0.3,
-            "windupState" : "fire3",
-
-            "aimAtTarget" : true,
-            "projectileType" : "fusoundwave",
+            "minimumRange" : 1,
+            "windupTime" : 1.5,
+            "windupStopForce" : 50,
+            "windupState" : "grin2",
+            
+            "aimAtTarget" : false,
+            "projectileType" : "electricbarrier",
             "power" : 5,
-            "aimDirection" : [0.7, 0.4],
-            "fireOffset" : [3.25, 2],
-            "projectileCount" : 5,
-            "projectileInterval" : 0.04,
+            "fireOffset" : [0, 0],
+            "projectileCount" : 10,
+            "projectileInterval" : 0,
+            "inaccuracy" : 3.14,
             "projectileParameters" : {
-              "speed": 35
+              "speed": 35,
+              "physics" : "laser",
+              "knockback" : 30,
+              "scripts" : []
             },
-            "fireTime" : 0.4,
             "fireState" : "",
             "fireSound" : "wave",
-
-            "winddownState" : "",
+            "winddownState" : "invulnerablewinddown",
             "winddownTime" : 0.3
           }
         },  
@@ -111,7 +112,7 @@
 
             "chargeTime" : 0.6,
             "chargeSpeed" : 20,
-            "chargeControlForce" : 600,
+            "chargeControlForce" : 700,
             "chargeState" : "fire2",
             "wallCrashSound" : "wallCrashSound",
             "wallCrashEmitter" : "",
@@ -121,26 +122,6 @@
             "winddownState" : "hurt"
           }
         },        
-        {
-          "name" : "action-charge",
-          "cooldown" : 8.0,
-          "parameters" : {
-            "maximumRange" : 20,
-            "windupState" : "chargewindup",
-            "windupTime" : 0.7,
-
-            "chargeTime" : 0.2,
-            "chargeSpeed" : 50,
-            "chargeControlForce" : 1600,
-            "chargeState" : "charge",
-            "wallCrashSound" : "wallCrashSound2",
-            "wallCrashEmitter" : "",
-
-            "winddownTime" : 0.6,
-            "winddownStopForce" : 1000,
-            "winddownState" : "fire"
-          }
-        },
         {
           "name" : "action-leap", 
           "cooldown" : 0.5,
@@ -255,7 +236,7 @@
 
     "touchDamage" : {
       "poly" : [ [-3.8,3.85], [-4.05,-3.95], [3,-3.75], [2.75,3.85] ],
-      "damage" : 13,
+      "damage" : 11,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -322,14 +303,16 @@
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
-          "baseValue" : 1.2
+          "baseValue" : 1.0
         },
         "poisonResistance" : { "baseValue" : 0 },
         "fireResistance" : { "baseValue" : -0.2 },
         "iceResistance" : { "baseValue" : 0.25 },
         "electricResistance" : { "baseValue" : -0.25 },
         "physicalResistance" : { "baseValue" : 0.25 },
-        "shadowResistance" : { "baseValue" : 0 }
+        "shadowResistance" : { "baseValue" : 0 },
+        "cosmicResistance" : { "baseValue" : 0 },
+        "radioactiveResistance" : { "baseValue" : 0.15 }
       },
 
       "resources" : {
@@ -349,7 +332,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.24,
-    "capturedMonsterType" : "gorillaking", // turn into an adultpoptop when captured
+    "capturedMonsterType" : "gorillaking2", // turn into an adultpoptop when captured
     "nametagColor" : [64, 200, 255]
   }
 }

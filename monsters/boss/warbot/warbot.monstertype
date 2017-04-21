@@ -35,71 +35,76 @@
       "hostileActions" : [
         {
           "name" : "action-charge",
-          "cooldown" : 7,
+          "cooldown" : 5,
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup",
             "windupTime" : 0.3,
 
             "chargeTime" : 0.3,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 800,
+            "chargeSpeed" : 20,
+            "chargeControlForce" : 900,
             "chargeState" : "charge",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
             "winddownTime" : 0.2,
-            "winddownStopForce" : 600,
+            "winddownStopForce" : 800,
             "winddownState" : "chargewinddown"
           }
         },
         {
           "name" : "action-charge",
-          "cooldown" : 8,
+          "cooldown" : 6,
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup2",
             "windupTime" : 0.3,
 
             "chargeTime" : 0.3,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 800,
+            "chargeSpeed" : 20,
+            "chargeControlForce" : 900,
             "chargeState" : "charge2",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
             "winddownTime" : 0.2,
-            "winddownStopForce" : 600,
+            "winddownStopForce" : 800,
             "winddownState" : "chargewinddown2"
           }
-        }, 
-        {
-          "name" : "action-leap", 
-          "cooldown" : 8,
-          "parameters" : {
-            "minimumRange" : 5,
-            "maximumRange" : 20,
-            "windupTime" : 0.25,
-            "windupState" : "jumpwindup",
-
-            "leapVelocity" : 45,
-            "collisionCheck" : true,
-            "highArc" : true,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownTime" : 0.25,
-            "winddownState" : "idle"
-          }
-        },        
+        },
         {
           "name" : "action-fire",
-	  "cooldown" : 14,
+	  "cooldown" : 15,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 25,
+            "minimumRange" : 10,
+            "windupState" : "chestcharge",
+            "windupTime" : 1.5,
+ 
+            "projectileType" : "mobiusrgun",
+            "power" : 12,
+ 
+            "fireOffset" : [5.2, 0],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileParameters" : { "speed" : 25},
+            "fireSound" : "chestgun",
+            "fireState" : "chestgun",
+            "fireDelay" : 0.5,
+            "winddownState" : "winddownfire2",
+            "winddownTime" : 0.2
+          }
+        },          
+        {
+          "name" : "action-fire",
+	  "cooldown" : 9,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 50,
             "minimumRange" : 12,
-            "windupState" : "fire",
+            "windupState" : "",
             "windupTime" : 0.60,
 
             "projectileType" : "minirocketflyer",
@@ -110,43 +115,20 @@
             "projectileCount" : 3,
             "projectileInterval" : 0.16,
             "fireSound" : "fire",
-            "range": 50,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.60
+            "fireState" : "fire",
+            "fireDelay" : 0.5,
+            "winddownState" : "winddownfire1",
+            "winddownTime" : 0.4
           }
-        },        
+        },                
         {
           "name" : "action-fire",
-	  "cooldown" : 20,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 25,
-            "minimumRange" : 10,
-            "windupState" : "chestgun",
-            "windupTime" : 1.0,
-
-            "projectileType" : "mobiusrgun",
-            "power" : 15,
- 
-            "fireOffset" : [5.2, 0],
-            "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "fireSound" : "chestgun",
-            "range": 25,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },        
-        {
-          "name" : "action-fire",
-	  "cooldown" : 2,
+	  "cooldown" : 1.4,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 15,
             "minimumRange" : 5,
-            "windupState" : "dualgun",
+            "windupState" : "",
             "windupTime" : 0.85,
 
             "projectileType" : "gausspistolshot",
@@ -158,14 +140,17 @@
             "projectileInterval" : 0.03,
             "fireSound" : "dualgun",
             "range": 15,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.35
+            "fireState" : "dualgun",
+            "fireDelay" : 0.6,
+            "winddownState" : "winddownfire3",
+            "winddownTime" : 0.4
           }
         }       
       ],
 
-      "periodicActions" : [],
+      "periodicActions" : [
+        
+      ],
 
       "approachActions" : [
         {
@@ -197,7 +182,26 @@
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
-        }
+        },
+        {
+          "name" : "action-leap", 
+          "cooldown" : 8,
+          "parameters" : {
+            "minimumRange" : 5,
+            "maximumRange" : 20,
+            "windupTime" : 0.25,
+            "windupState" : "jumpwindup",
+
+            "leapVelocity" : 55,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownTime" : 0.25,
+            "winddownState" : "idle"
+          }
+        }         
       ],
 
       "wanderActions" : [
@@ -226,7 +230,56 @@
             "state" : "idle"
           }
         }
-      ]     
+      ],
+      
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-leap", 
+          "cooldown" : 8,
+          "parameters" : {
+            "minimumRange" : 5,
+            "maximumRange" : 20,
+            "windupTime" : 0.25,
+            "windupState" : "jumpwindup",
+
+            "leapVelocity" : 45,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownTime" : 0.25,
+            "winddownState" : "idle"
+          }
+        }      
+      ],
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
+	  "cooldown" : 5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 25,
+            "minimumRange" : 10,
+            "windupState" : "chestcharge",
+            "windupTime" : 1.5,
+ 
+            "projectileType" : "ffteslasmall",
+            "power" : 3,
+ 
+            "fireOffset" : [5.2, 0],
+            "aimAtTarget" : false,
+            "projectileCount" : 4,
+            "inaccuracy" : 3.14,
+            "projectileInterval" : 0,
+            "fireSound" : "aggroHop",
+            "fireState" : "chestgun",
+            "fireDelay" : 0.5,
+            "winddownState" : "winddownfire2",
+            "winddownTime" : 0.2
+          }
+        }    
+      ]      
       
     },
 
@@ -259,16 +312,8 @@
       "collisionPoly" : [ [-3.25,2.25], [-3.125,-3.625], [2.625,-4], [2.375,2.125] ],
 
       "mass" : 2.5,
-      "walkSpeed" : 5,
-      "runSpeed" : 11,
-
-      "airFriction" : 0,
-
-      "airJumpProfile" : {
-        "jumpSpeed" : 35.0,
-        "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.35
-      }
+      "walkSpeed" : 4,
+      "runSpeed" : 8
     },
 
     "bodyMaterialKind" : "organic",
@@ -318,10 +363,12 @@
         },
         "poisonResistance" : { "baseValue" : 1 },
         "fireResistance" : { "baseValue" : 0.8 },
-        "iceResistance" : { "baseValue" : 0.7 },
+        "iceResistance" : { "baseValue" : -0.3 },
         "electricResistance" : { "baseValue" : -0.3 },
-        "physicalResistance" : { "baseValue" : 0.3 },
-        "shadowResistance" : { "baseValue" : 0 }
+        "physicalResistance" : { "baseValue" : 0.35 },
+        "shadowResistance" : { "baseValue" : 0.5 },
+        "cosmicResistance" : { "baseValue" : 0.3 },
+        "radioactiveResistance" : { "baseValue" : 1 }
       },
 
       "resources" : {
