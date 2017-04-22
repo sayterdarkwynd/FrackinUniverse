@@ -19,17 +19,11 @@
   "statusEffects" : [ "burning" ],
   
   "actionOnReap" : [ 
-    { "action" : "config", "file" : "/projectiles/explosions/fireexplosion/fireexplosion.config" },
-    {
-      "action" : "projectile",
-      "type" : "flamethrowerflameff",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : 35
-    }
+    { "action" : "config", "file" : "/projectiles/explosions/firetitanexplosion/magnorbfireexplosion.config" }
   ],
   
   "actionOnCollide" : [
+    { "action" : "config", "file" : "/projectiles/explosions/firetitanexplosion/magnorbfireexplosion.config" },
     {
       "action" : "projectile",
       "type" : "firelight",
@@ -47,5 +41,41 @@
     }
   ],
 
+    "periodicActions":[
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/activeitems/staff/elementbouncer/firebouncer.png:1",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    },
+
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/activeitems/staff/elementbouncer/firebouncer.png:2",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      }
+    ],
+            
   "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
 }

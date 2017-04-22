@@ -112,10 +112,11 @@ function update(dt, fireMode, shiftHeld)
   if fireMode == "alt" and availableOrbCount() == 3 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
+      status.addEphemeralEffect("percentarmorboost10")
       status.setPersistentEffects("slimemagnorb", {
         {stat = "slimestickImmunity", amount = 1},
         {stat = "slimefrictionImmunity", amount = 1},
-        {stat = "poisonResistance", baseMultiplier = 1.15}
+        {stat = "poisonResistance", amount = 0.15}
       })
 
     end
@@ -124,6 +125,7 @@ function update(dt, fireMode, shiftHeld)
   else
     self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
     status.clearPersistentEffects("slimemagnorb") 
+    status.removeEphemeralEffect("percentarmorboost10")
     if self.shieldTransformTimer > 0 then
       setOrbAnimationState("unshield")
     end
