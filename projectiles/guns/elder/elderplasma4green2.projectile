@@ -1,0 +1,27 @@
+{
+  "projectileName" : "elderplasma4green2",
+  "physics" : "laser",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "elderplasma4green2.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 2,
+  "power" : 50,
+  "speed" : 75,
+  "supportsProcessing" : true,
+  "lightColor" : [79, 128, 78],
+    "fullbright" : true,
+  "damageKind" : "shadowplasma",
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "elderflamethrowerflameff",
+      "inheritDamageFactor" : 0.15
+    }
+  ],
+  "statusEffects" : [ "paralysis" ]
+}
