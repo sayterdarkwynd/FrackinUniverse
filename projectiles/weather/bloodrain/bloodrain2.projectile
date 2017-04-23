@@ -1,0 +1,22 @@
+{
+  "projectileName" : "bloodrain2",
+  "physics" : "weather",
+  "image" : "bloodrain.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "actionOnReap" : [ 
+    { "action" : "liquid", "liquid" : "bloodliquid", "quantity" : 0.45 },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "bloodstonegrass",
+      "radius" : 4
+    }   
+  ],
+  "level" : 4,
+  "power" : 2,
+  "damageKind" : "cosmic",
+  "damageType" : "IgnoresDef",
+  "timeToLive" : 3,
+  "speed" : 40
+}

@@ -21,8 +21,8 @@ function containerCallback()
 	-- end
     if items[1]~=null and items[2]~=null and
        items[1].name == "sapling" and items[2].name == "sapling" then
-	local leafsample = items[1]
-	local stemsample = items[2]
+	local leafsample = items[2]
+	local stemsample = items[1]
 	local biomatteramount = leafsample.count + stemsample.count
 	stemsample.parameters["foliageHueShift"] = leafsample.parameters["foliageHueShift"]
 	stemsample.parameters["foliageName"] = leafsample.parameters["foliageName"]

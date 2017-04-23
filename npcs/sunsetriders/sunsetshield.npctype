@@ -1,0 +1,50 @@
+{
+  "type" : "sunsetshield",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Well, good night Irene!",
+			"Shoot 'em full of holes!",
+            "Seems like another varmint's on the loose!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "novatier2head" } ],
+            "chest" : [ { "name" : "novatier2chest" } ],
+            "legs" : [ { "name" : "novatier2pants" } ],
+            "primary" : [
+              "npcpistol"
+            ],
+			"alt" : [
+              "commonsmallshield",
+              "commonlargeshield"
+            ]
+          }
+        ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

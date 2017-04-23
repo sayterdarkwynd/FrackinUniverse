@@ -14,7 +14,7 @@
             "cycle" : 1,
             "mode" : "loop",
             "properties" : {
-            "particleEmittersOff" : [ "spindust" ]
+            "particleEmittersOff" : [ "spindust", "burndust" ]
             }
           },
           "invulnerablewindup" : {
@@ -22,7 +22,7 @@
             "cycle" : 0.6,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }            
           },   
           "invulnerablewindup2" : {
@@ -31,7 +31,7 @@
             "mode" : "loop",
             "properties" : {
               "persistentSound" : "/sfx/npc/monsters/gorillaking_notice.ogg",
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }            
           },          
           "invulnerablewinddown" : {
@@ -39,7 +39,7 @@
             "cycle" : 0.3,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }            
           },           
           "invulnerable" : {
@@ -49,48 +49,74 @@
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/gorillaking_roar.ogg",
               "persistentSound" : "/sfx/tech/forcefield_loop.ogg",
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }            
           },           
           "grin" : {
             "frames" : 1,
             "cycle" : 0.3,
-            "mode" : "loop"
-          },          
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "spindust", "burndust" ]
+            }  
+          }, 
+          "grin2" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/gorillaking_notice.ogg",
+              "persistentSound" : "/sfx/projectiles/electricstickyspikes_loop.ogg",
+              "particleEmittersOff" : [ "spindust" ],
+              "particleEmittersOn" : [ "burndust" ]
+            } 
+          },           
           "jump" : {
             "frames" : 1,
             "cycle" : 0.5,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "spindust", "burndust" ]
+            }  
           },
           "fall" : {
             "frames" : 1,
             "cycle" : 0.5,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "spindust", "burndust" ]
+            }  
           },
           "chargewindup" : {
             "frames" : 6,
             "cycle" : 0.7,
             "properties" : {
               "persistentSound" : "/sfx/npc/monsters/gorillaking_notice.ogg",
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }
           },
           "chargewinddown" : {
             "frames" : 1,
             "cycle" : 0.1,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "burndust" ]
+            }  
           },        
           "charge" : {
             "frames" : 6,
             "cycle" : 0.6,
             "mode" : "transition",
-            "transition" : "chargewinddown" 
+            "transition" : "chargewinddown",
+            "properties" : {
+              "particleEmittersOff" : [ "burndust" ]
+            }   
           },
            "hurt" : {
             "frames" : 1,
             "cycle" : 0.2,
             "properties" : {
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }
           },           
            "fire" : {
@@ -98,7 +124,7 @@
             "cycle" : 0.3,
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/gorillaking_attack1.ogg",
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }
           }, 
            "fire2" : {
@@ -106,7 +132,7 @@
             "cycle" : 0.6,
             "properties" : {
               "immediateSound" : "/sfx/npc/quadruped/lion_attack1.ogg",
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }
           },        
            "fire3" : {
@@ -114,7 +140,7 @@
             "cycle" : 1.0,
             "properties" : {
               "immediateSound" : "/sfx/npc/quadruped/lion_attack1.ogg",
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }
           },           
           "firewindup" : {
@@ -122,13 +148,16 @@
             "cycle" : 0.6,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ]
             }
           },
           "firewinddown" : {
             "frames" : 3,
             "cycle" : 0.3,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "spindust", "burndust" ]
+            }  
           },           
           "roar" : {
             "frames" : 19,
@@ -136,6 +165,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
+              "particleEmittersOff" : [ "burndust" ],
               "persistentSound" : "/sfx/npc/monsters/gorillaking_roar2.ogg",
               "persistentSoundStopTime" : 4
             },
@@ -165,7 +195,7 @@
           "off" : {
             "frames" : 1,
             "properties" : {
-              "particleEmittersOff" : [ "releaseParticles" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "releaseParticles" ]
             }
           },
           "on" : {
@@ -174,6 +204,7 @@
             "mode" : "transition",
             "transition" : "off",
             "properties" : {
+              "particleEmittersOff" : [ "spindust", "burndust", "releaseParticles" ],
               "particleEmittersOn" : [ "releaseParticles" ]
             }
           }
@@ -204,6 +235,11 @@
                 "image" : "<partImage>:grin"
               }
             },
+            "grin2" : {
+              "properties" : {
+                "image" : "<partImage>:grin"
+              }
+            },            
             "jump" : {
               "properties" : {
                 "image" : "<partImage>:jump"
@@ -331,6 +367,17 @@
   },
 
   "particleEmitters" : {
+    "burndust" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, 1.0, 2.0, 2.0 ],
+      "particles" : [
+        { "particle" : "defaultred" },
+        { "particle" : "defaultred" },
+        { "particle" : "defaultred" },
+        { "particle" : "defaultred" },
+        { "particle" : "defaultorange" }
+      ]
+    },  
     "spindust" : {
       "emissionRate" : 15,
       "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],

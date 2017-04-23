@@ -6,6 +6,8 @@ function init()
   
   self.shieldHealth = config.getParameter("shieldHealth")
   self.dangerHealth = self.shieldHealth * 0.2
+  status.giveResource("damageAbsorption", 0)
+  status.setResource("damageAbsorption", 0)
   status.modifyResource("damageAbsorption", self.shieldHealth)
   self.currentDA = 0
   self.active = true
@@ -13,6 +15,7 @@ function init()
 end
 
 function update(dt)
+
   if self.active then  
     self.damageListener:update()
     

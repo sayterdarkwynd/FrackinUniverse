@@ -42,15 +42,9 @@ function checkEffectValid()
 	end
 
 	-- checks strength of effect vs resistance
-	if (config.getParameter("biomeTemp",0) == 1.05) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
+	if ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  effect.expire()
-	elseif (config.getParameter("biomeTemp",0) == 1.08) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	elseif (config.getParameter("biomeTemp",0) == 1.3) and ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  effect.expire() 
 	else
 	  -- activate visuals and check stats
 	  if not self.usedIntro then 

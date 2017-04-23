@@ -1,0 +1,46 @@
+{
+  "type" : "sunsetshotgun",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Well, good night Irene!",
+			"Shoot 'em full of holes!",
+            "Seems like another varmint's on the loose!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "novatier5ahead" } ],
+            "chest" : [ { "name" : "novatier5achest" } ],
+            "legs" : [ { "name" : "novatier5apants" } ],
+            "primary" : [
+              "npcshotgun"
+            ]
+          }
+        ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

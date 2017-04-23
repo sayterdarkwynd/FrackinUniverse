@@ -1,0 +1,24 @@
+{
+  "id" : "pavillion.gearup",
+  "title" : "^green;Castle Takeshi",
+  "text" : "Ninjas in the employ of Shogun Takeshi have kidnapped the hylotl princess Koto. Are you a bad enough dude to rescue the princess?",
+  "completionText" : "A thousand thanks! I will ensure that my father rewards you appropriately for your heroic efforts!",
+  "speaker" : "player",
+  "moneyRange" : [5000, 5000],
+  "rewards" : [
+      [ [ "hylotltier1chest-recipe" ], [ "hylotltier1head-recipe" ], [ "hylotltier1pants-recipe" ], [ "snuffishaf", 1 ], [ "pulpinaf", 1 ] ]
+   ],
+  "canBeAbandoned" : true,
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+		"missionUnlockedCinema" : "/cinematics/coordinates.cinematic",		
+		"portraits" : {
+		"default" : "player"
+		},
+    "associatedMission" : "pavillion",
+    "turnInDescription" : "Storm Castle Takeshi and save Princess Koto!",
+    "requireTurnIn" : true
+  }
+}

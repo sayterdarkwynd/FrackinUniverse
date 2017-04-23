@@ -33,37 +33,12 @@
 
       "hostileActions" : [],
 
-      "periodicActions" : [
-        {
-          "name" : "action-fire",
-          "cooldown" : 2.5,
-          "parameters" : {
-            "maximumRange" : 12,
-            "minimumRange" : 1,
-            "windupState" : "firewindup",
-            "windupTime" : 0.5,
-
-            "projectileType" : "fusquirtwater",
-            "fireOffset" : [0, 0.75],
-
-            "aimAtTarget" : false,
-            "projectileCount" : 12,
-            "projectileInterval" : 0.05,
-            "inaccuracy" : 0.2,
-            "aimDirection" : [0,1],
-            "power" : 0,
-            "fireSound" : "fire",
-            "fireState" : "fire",
-
-
-            "winddownState" : ""
-          }
-        },      
+      "periodicActions" : [    
         {
           "name" : "action-projectile",
           "cooldown" : 2,
           "parameters" : {
-            "projectileCount" : 4,
+            "projectileCount" : 2,
             "projectileType" : "fusquirtwater",
             "projectileParameters" : { 
     		"damageTeam" : { "type" : "friendly" },
@@ -87,52 +62,12 @@
       ],
 
       "concurrentActions" : [
-        {
-          "name" : "action-fire",
-          "cooldown" : 2.5,
-          "parameters" : {
-            "maximumRange" : 12,
-            "minimumRange" : 1,
-            "windupState" : "firewindup",
-            "windupTime" : 0.5,
 
-            "projectileType" : "fusquirtwater",
-            "fireOffset" : [0, 0.75],
-
-            "aimAtTarget" : false,
-            "projectileCount" : 12,
-            "projectileInterval" : 0.05,
-            "inaccuracy" : 0.2,
-            "aimDirection" : [0,1],
-            "power" : 0,
-            "fireSound" : "fire",
-            "fireState" : "fire",
-
-
-            "winddownState" : ""
-          }
-        },      
-        {
-          "name" : "action-projectile",
-          "cooldown" : 2,
-          "parameters" : {
-            "projectileCount" : 4,
-            "projectileType" : "fusquirtwater",
-            "projectileParameters" : { 
-    		"damageTeam" : { "type" : "friendly" },
-    		"speed" : 30
-            },
-            "power" : 0,
-            "aimDirection" : [0,1],
-            "inaccuracy" : 0.2,
-            "fireOffset" : [0, 0.4]
-          }
-        } 
       ],
       "wanderActions" : [ 
         {
           "name" : "action-fire",
-          "cooldown" : 2.5,
+          "cooldown" : 4,
           "parameters" : {
             "maximumRange" : 12,
             "minimumRange" : 1,
@@ -143,7 +78,7 @@
             "fireOffset" : [0, 0.75],
 
             "aimAtTarget" : false,
-            "projectileCount" : 12,
+            "projectileCount" : 2,
             "projectileInterval" : 0.05,
             "inaccuracy" : 0.2,
             "aimDirection" : [0,1],

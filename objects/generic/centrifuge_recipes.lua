@@ -46,7 +46,12 @@ function getRecipes()
         volcaniccomb    = { liquidlava     = { "uncommon", 1 } },
         aegisaltcomb    = { aegisaltore    = { "common", 1 } },
         feroziumcomb    = { feroziumore    = { "common", 1 } },
-        violiumcomb     = { violiumore     = { "common", 1 } }
+        violiumcomb     = { violiumore     = { "common", 1 } },
+        magmacomb       = { corefragmentore = { "normal", 1 },
+                            scorchedcore    = { "rare", 1 },
+                            liquidlava      = { "common", 1 } },
+        eldercomb       = { liquidelderfluid = { "normal", 1 },
+                            protorockmaterial    = { "rare", 1 } }                             
       },
 
     itemMapLiquids = {
@@ -60,6 +65,9 @@ function getRecipes()
         liquidlava          = { coalore                = { "common", 3 },
                                corefragmentore         = { "common", 3 },
                                fu_carbon               = { "common", 3 } },
+        liquidmilk         = { liquidwastewater        = { "common", 2 },
+                               geneticmaterial         = { "common", 2 },
+                               nutrientpaste           = { "uncommon", 1 } },                                                             
         liquidslime         = { liquidwastewater       = { "common", 2 },
                                greenslime              = { "common", 2 },
                                endomorphicjelly        = { "uncommon", 1 } },

@@ -9,75 +9,130 @@
           "idle" : {
             "frames" : 4,
             "cycle" : 1,
-            "mode" :"loop"
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }            
           },
           "invis" : {
             "frames" : 4,
             "cycle" : 1,
             "mode" :"transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }
           },          
           "walk" : {
             "frames" : 4,
             "cycle" : 1,
-            "mode" :"loop"
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }
           }, 
           "teleport" : {
             "frames" : 8,
-            "cycle" : 1.6
+            "cycle" : 1.6,
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }
           },   
           "teleportout" : {
             "frames" : 8,
-            "cycle" : 0.8
+            "cycle" : 0.8,
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }
           },            
           "blast" : {
             "frames" : 4,
             "cycle" : 0.4,
             "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ],
               "immediateSound" : "/sfx/starspawn/attack.ogg",
               "immediateSoundRangeMultiplier" : 1
             }             
-          },           
+          },  
+          "blast2" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }             
+          },     
+          "blast3" : {
+            "frames" :7,
+            "cycle" : 1.6,
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ],
+              "immediateSound" : "/sfx/starspawn/attack.ogg",
+              "immediateSoundRangeMultiplier" : 1
+            }             
+          },             
           "fire" : {
             "frames" : 5,
-            "cycle" : 0.5      
+            "cycle" : 0.5,
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }     
           }, 
           "fireprojectile" : {
             "frames" : 13,
             "cycle" : 1.3,
             "properties" : {
+              "particleEmittersOn" : [ "poisonous" ],
+              "particleEmittersOff" : [ "cosmic", "ball"],            
               "immediateSound" : "/sfx/starspawn/starspawn3.ogg",
               "immediateSoundRangeMultiplier" : 1
             }             
           },           
           "fire2" : {
             "frames" : 5,
-            "cycle" : 0.5      
+            "cycle" : 0.5,
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }      
           }, 
           "fireprojectile2" : {
             "frames" : 13,
             "cycle" : 1.3,           
             "properties" : {
+              "particleEmittersOn" : [ "cosmic" ],
+              "particleEmittersOff" : [ "poisonous", "ball" ],
               "immediateSound" : "/sfx/starspawn/starspawnspellcharge.ogg",
               "immediateSoundRangeMultiplier" : 1
             }                
           },            
           "fire3" : {
             "frames" : 5,
-            "cycle" : 0.5        
+            "cycle" : 0.5,
+            "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
           },
           "fireprojectile3" : {
             "frames" : 13,
             "cycle" : 1.3,           
             "properties" : {
+              "particleEmittersOff" : [ "poisonous", "ball" ],
+              "particleEmittersOn" : [ "ball" ],
               "immediateSound" : "/sfx/starspawn/starspawnspellcharge.ogg",
               "immediateSoundRangeMultiplier" : 1
             }                  
+          }, 
+          "fireprojectile4" : {
+            "frames" : 13,
+            "cycle" : 1.3,           
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ],
+              "immediateSound" : "/sfx/starspawn/starspawn3.ogg",
+              "immediateSoundRangeMultiplier" : 1
+            }                
           },          
           "firewindup" : {
             "frames" : 4,
             "cycle" : 0.4,
             "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ],
               "immediateSound" : "/sfx/starspawn/starspawnspellcharge.ogg",
               "immediateSoundRangeMultiplier" : 1
             }                  
@@ -87,6 +142,7 @@
             "frames" : 4,
             "cycle" : 0.4,
             "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ],
               "immediateSound" : "/sfx/starspawn/starspawnspellcharge2.ogg",
               "immediateSoundRangeMultiplier" : 1
             }  
@@ -94,17 +150,22 @@
           "jump" : {
             "frames" : 4,
             "cycle" : 0.4,
-            "mode" :"loop"
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic" ]
+            }
           },
           "fall" : {
             "frames" : 4,
             "cycle" : 0.4,
-            "mode" : "loop"
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic" ]
+            }
           }, 
           "jumpwindup" : {
             "frames" : 4,
             "cycle" : 0.4,
             "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic" ],
               "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg"
             }
           }
@@ -187,7 +248,17 @@
               "properties" : {
                 "image" : "<partImage>:blast.<frame>"
               }
-            },   
+            }, 
+            "blast2" : {
+              "properties" : {
+                "image" : "<partImage>:blast2.<frame>"
+              }
+            },  
+            "blast3" : {
+              "properties" : {
+                "image" : "<partImage>:blast3.<frame>"
+              }
+            },               
             "firewindup" : {
               "properties" : {
                 "image" : "<partImage>:firewindup.<frame>"
@@ -227,7 +298,12 @@
               "properties" : {
                 "image" : "<partImage>:fireprojectile3.<frame>"
               }
-            }              
+            },
+            "fireprojectile4" : {
+              "properties" : {
+                "image" : "<partImage>:fireprojectile4.<frame>"
+              }
+            }             
           },
           "damage" : {
             "stunned" : {
@@ -263,7 +339,53 @@
   },
   
   "particleEmitters" : {
-
+    "ball" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [3,2,-3,4],
+      "particles" : [
+        { "particle" : "defaultdarkgreen" },
+        { "particle" : "defaultdarkgreen" },
+        { "particle" : "defaultdarkgreen" },
+        { "particle" : "defaultdarkgreen" },
+        { "particle" : "defaultred" },
+        { "particle" : "defaultred" },
+        { "particle" : "levitationair" },
+        { "particle" : "levitationair" },
+        { "particle" : "levitationair" }
+      ]
+    },    
+    "cosmic" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [3,3, -3, 5],
+      "particles" : [
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "lightpurplephaseparticle" },
+        { "particle" : "lightpurplephaseparticle" },
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "piercingspark" },
+        { "particle" : "piercingspark" },
+        { "particle" : "piercingspark" },
+        { "particle" : "piercingspark" }
+      ]
+    },  
+    "poisonous" : {
+      "emissionRate" : 10,
+      "offsetRegion" : [1.0,3.0,-1.0,5.0],
+      "particles" : [
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust" }
+      ]
+    },
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
@@ -297,12 +419,32 @@
     },
     "teleportOut" : {
       "particles" : [
-        { "particle" : "monstercapture" }
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" }
       ]
     },
     "teleportIn" : {
       "particles" : [
-        { "particle" : "monsterrelease" }
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" }
       ]
     },
     "levelUp" : {

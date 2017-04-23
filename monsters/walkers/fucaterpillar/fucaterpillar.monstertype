@@ -35,53 +35,52 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-		   "cooldown" : 2,
+	  "cooldown" : 4,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 16,
-            "minimumRange" : 1,
-            "windupState" : "melee",
-            "windupTime" : 0.6,
-
+            "maximumRange" : 15,
+            "minimumRange" : 4,
+            "windupState" : "",
+            "windupTime" : 0.1,
             "projectileType" : "bioblast4a",
-            "power" : 6,
+            "power" : 8,
             "fireOffset" : [3.75, -0.15],
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "projectileInterval" : 0.01,
             "fireSound" : "fire",
-            "range": 16,
-            "fireState" : "",
-            "winddownState" : "fire",
-            "winddownTime" : 0.5
+            "fireDelay" : 0.8,
+            "fireState" : "snotspew",
+            "winddownState" : "",
+            "winddownTime" : 0.8
           }
-        }
+        }          
       ],
 
       "periodicActions" : [
         {
           "name" : "action-fire",
-		   "cooldown" : 1,
+          "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 1,
-            "minimumRange" : 1,
+            "maximumRange" : 15,
+            "minimumRange" : 4,
             "windupState" : "idle",
-            "windupTime" : 0.5,
-
+            "windupTime" : 0.1,
             "projectileType" : "caterpillarspray",
-            "power" : 6,
-            "fireOffset" : [-2.75, -0.15],
+            "power" : 0,
+            "fireOffset" : [-3.75, -0.15],
             "aimAtTarget" : false,
+            "aimDirection" : [0,-1],
             "projectileCount" : 3,
             "projectileInterval" : 0.01,
-            "fireSound" : "",
-            "range": 1,
-            "fireState" : "",
+            "fireSound" : "fire",
+            "fireDelay" : 0.8,
+            "fireState" : "fire",
             "winddownState" : "",
-            "winddownTime" : 0.1
+            "winddownTime" : 0.8
           }
-        }      
+        }     
       ],
 
       "approachActions" : [
@@ -124,32 +123,26 @@
           "parameters" : {
             "wanderTime" : [5, 20]
           }
-        },
-        {
-          "name" : "action-fire",
-		   "cooldown" : 1,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 1,
-            "minimumRange" : 1,
-            "windupState" : "idle",
-            "windupTime" : 0.5,
-
-            "projectileType" : "caterpillarspray",
-            "power" : 6,
-            "fireOffset" : [-2.75, -0.15],
-            "aimAtTarget" : false,
-            "projectileCount" : 3,
-            "projectileInterval" : 0.01,
-            "fireSound" : "",
-            "range": 1,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.1
-          }
-        }  
+        }        
       ],
+
+      "concurrentActions" : [],
       
+      "concurrentHostileActions" : [],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubugexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }        
+      ],
       
       "deathActions" : [
         {
@@ -163,7 +156,18 @@
             "inaccuracy" : 0,
             "fireOffset" : [0, 1]
           }
-        }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubugexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 3,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }         
       ]      
     },
 
@@ -174,7 +178,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "poisonspear",
       "knockback" : 10,
-      "statusEffects" : [ "shadowgasfx" ]
+      "statusEffects" : [ "weakpoison" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],

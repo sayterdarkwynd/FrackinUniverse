@@ -8,12 +8,12 @@
 
   "animation" : "futinybee.animation",
 
-  "dropPools" : [ 
+  "dropPools" : [
     {
-      "default" : "beeLoot",
+      "default" : "empty",
       "bugnet" : "normalqueen"
-    }
-    ],
+    }  
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -21,7 +21,6 @@
     ],
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
 
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
@@ -82,7 +81,7 @@
         },
         {
           "name" : "land-fly",
-          "cooldown" : 2,
+          "cooldown" : 14,
           "parameters" : {
             "landDirection" : [0, -1],
             "flySpeed" : 12,
@@ -108,7 +107,7 @@
         },
         {
           "name" : "land-fly",
-          "cooldown" : 2,
+          "cooldown" : 14,
           "parameters" : {
             "landDirection" : [0, -1],
             "flySpeed" : 12,
@@ -122,7 +121,7 @@
       "wanderActions" : [
         {
           "name" : "land-fly",
-          "cooldown" : 2,
+          "cooldown" : 14,
           "parameters" : {
             "landDirection" : [0, -1],
             "flySpeed" : 12,
@@ -143,20 +142,7 @@
         }
       ],
 
-      "deathActions" : [
-        {
-          "name" : "action-projectile",
-          "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "bobfaeball",
-            "projectileParameters" : {},
-            "power" : 0,
-            "aimDirection" : [0.3, -1],
-            "inaccuracy" : 0,
-            "fireOffset" : [0, 2]
-          }
-        }
-      ],
+      "deathActions" : [],
 
       "concurrentActions" : [ ],
 
@@ -186,7 +172,7 @@
 
       "airFriction" : 4,
       "airForce" : 40,
-      "flySpeed" : 15
+      "flySpeed" : 12
     },
 
     "bodyMaterialKind" : "organic",
@@ -220,7 +206,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 8
+          "baseValue" : 1
         },
         "protection" : {
           "baseValue" : 0.0
@@ -249,7 +235,7 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-    "captureHealthFraction" : 0.5,
+    "captureHealthFraction" : 1,
     "nametagColor" : [64, 200, 255]
   }
 }

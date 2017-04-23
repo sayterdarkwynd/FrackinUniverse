@@ -13,14 +13,13 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_mageshield.lua"
+      "/monsters/monster.lua"
     ],
 
     "behavior" : "monster",
 
     "behaviorConfig" : {
-      "damageOnTouch" : true,
+      "damageOnTouch" : false,
 
       "targetQueryRange" : 22,
       "targetOnDamage" : true,
@@ -36,55 +35,69 @@
 
       "concurrentHostileActions" : [
         {
-          "name" : "action-statuseffect", 
-          "cooldown" : 30,
+          "name" : "action-fire",
+          "cooldown" : 2,
           "parameters" : {
-          "effect" : "mage_shield_lvl4starspawn",
-          "duration" : 20
+            "requireLineOfSight" : true,
+            "maximumRange" : 3,
+            "minimumRange" : 0,
+            "windupState" : "fireprojectile4",
+            "windupTime" : 1.3,
+
+            "projectileType" : "elderbladeswoosh",
+            "projectileParameters" : { "speed" : 0, "statusEffects" : [ "insanity" ], "fullbright" : true },
+            "power" : 12,
+            "fireOffset" : [2.7, 1],
+            "aimAtTarget" : false,
+            "fireDelay" : 0.7,
+            "fireSound" : "spell1",
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.6
           }
         }
       ],
       
-      "hostileActions" : [       
+      "hostileActions" : [   
         {
           "name" : "action-fire",
 	  "cooldown" : 5,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
-            "minimumRange" : 0,
-            "windupState" : "blast",
-            "windupTime" : 0.4,
+            "maximumRange" : 8,
+            "minimumRange" : 3,
+            "windupState" : "blast3",
+            "windupTime" : 1.2,
 
             "projectileType" : "elderplasma4green",
-            "power" : 9,
-            "speed": 50,
-            "fireOffset" : [2.7, 1],
+            "projectileParameters" : { "statusEffects" : [ "insanity" ] },
+            "power" : 12,
+            "speed": 40,
+            "fireOffset" : [2.7, 2.4],
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "fireSound" : "blast",
-            "range": 30,
+            "fireDelay" : 0.4,
             "fireState" : "",
             "winddownState" : "invis",
-            "winddownTime" : 0.4
+            "winddownTime" : 1.0
           }
         },    
         {
           "name" : "action-fire",
-	  "cooldown" : 11,
+	  "cooldown" : 8,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 22,
-            "minimumRange" : 9,
-            "windupState" : "fireprojectile",
-            "windupTime" : 0.7,
+            "maximumRange" : 15,
+            "minimumRange" : 4,
+            "windupState" : "fireprojectile2",
+            "windupTime" : 1.3,
 
             "projectileType" : "starspawntentacle1",
-            "power" : 12,
+            "power" : 15,
             "fireOffset" : [1, 1],
             "aimAtTarget" : true,
             "fireSound" : "spell1",
-            "range": 22,
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.6
@@ -92,23 +105,37 @@
         },           
         {
           "name" : "action-fire",
-	  "cooldown" : 3,
+	  "cooldown" : 10,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 16,
             "minimumRange" : 3,
             "windupState" : "fireprojectile3",
-            "windupTime" : 0.7,
+            "windupTime" : 0.9,
 
             "projectileType" : "starspawnball",
-            "power" : 8,
-            "speed": 60,
-            "fireOffset" : [4, 0],
-            "aimAtTarget" : true,
+            "projectileParameters" : {
+		"actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/darkmatterexplosion/starspawnburst.config"
+		    },
+		    {
+		      "action" : "projectile",
+		      "type" : "poisonblast",
+		      "fuzzAngle" : 0,
+		      "inheritDamageFactor" : 0.75,
+		      "angleAdjust" : 0
+		    }
+		]            
+            },
+            "power" : 20,
+            "speed": 15,
+            "fireOffset" : [2.7, 0],
+            "aimAtTarget" : false,
             "fireSound" : "spell2",
-            "range": 16,
             "fireState" : "",
-            "winddownState" : "",
+            "winddownState" : "invis",
             "winddownTime" : 0.6
           }
         },            
@@ -117,17 +144,52 @@
 	  "cooldown" : 12,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 9,
-            "windupState" : "fireprojectile2",
-            "windupTime" : 0.7,
+            "maximumRange" : 30,
+            "minimumRange" : 1,
+            "windupState" : "fireprojectile",
+            "windupTime" : 0.9,
 
-            "projectileType" : "poisonblast",
-            "power" : 12,
-            "fireOffset" : [4, 1],
+            "projectileType" : "poisonportal",
+            "projectileParameters" : { 
+              "speed" : 5, 
+              "power" : 10,
+              "damageSourceKind" : "radioactive", 
+              "timeToLive" : 5,
+		        "actionOnReap" : [
+			    {
+			      "action" : "config",
+			      "file" : "/projectiles/explosions/bioboom/bioboom.config"
+			    },
+			    {
+			      "action" : "projectile",
+			      "type" : "bioblast",
+			      "fuzzAngle" : 0,
+			      "inheritDamageFactor" : 0.75,
+			      "angleAdjust" : 35
+			    }
+			],                
+		  "periodicActions" : [
+		    {
+		      "time" : 0.087,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "floatypoisonball2",
+		      "inheritDamageFactor" : 1.0,
+		      "fuzzAngle" : 360,
+		      "projectileParameters" : { 
+		        "damageKind" : "poison", 
+		        "speed" : 12 ,
+		        "power" : 8
+	              }
+		    }
+		  ]             
+            
+            },
+            "power" : 20,
+            "fireOffset" : [4, 8],
+            "fireDelay" : 1,
             "aimAtTarget" : true,
             "fireSound" : "fire",
-            "range": 15,
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.6
@@ -144,17 +206,17 @@
           "parameters" : {
 	    "moveState": "teleportout",
 	    "idleState": "teleport",
-	    "teleportMinDistance": 12,
+	    "teleportMinDistance": 15,
 	    "targetXDelta": 5,
-	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20               
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10               
           }
         },
         {
           "name" : "approach-walk",
           "parameters" : {
-            "canJump" : true,
-            "maxJumps" : 5,
+            "canJump" : false,
+            "maxJumps" : 0,
             "jumpXVelocity" : 12,
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
@@ -170,10 +232,10 @@
           "parameters" : {
 	    "moveState": "teleportout",
 	    "idleState": "teleport",
-	    "teleportMinDistance": 20,
+	    "teleportMinDistance": 18,
 	    "targetXDelta": 5,
-	    "groundMinHeight": -30,
-	    "groundMaxHeight": 30               
+	    "groundMinHeight": -20,
+	    "groundMaxHeight": 20               
           }
         }
       ],
@@ -185,12 +247,12 @@
           "parameters" : {
 	    "moveState": "teleportout",
 	    "idleState": "teleport",
-	    "teleportMinDistance": 12,
+	    "teleportMinDistance": 14,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -20,
 	    "groundMaxHeight": 20               
           }
-        },
+        },      
         {
           "name" : "wander-walk",
           "cooldown" : 3.0,
@@ -206,28 +268,38 @@
         }
       ],
 
-      "concurrentActions" : [ 
+      "concurrentActions" : [      
         {
           "name" : "action-spawncompanions",
           "cooldown" : 12,
           "parameters" : {
-            "maxCount" : 2,
-            "spawnCooldown" : 15.0,
+            "maxCount" : 1,
+            "spawnCooldown" : 30.0,
             "monsterType" : "squidbeast",
-            "state" : "fire2"
+            "state" : "fire"
+          }
+        }       
+      ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 30,
+          "parameters" : {
+            "effect" : "mage_shield_lvl4starspawn",
+            "duration" : 20
           }
         }      
       ]     
       
     },
 
-
     "damageParts" : {
       "body" : {
         "damage" : 16,
 
         "teamType" : "enemy",
-        "damageSourceKind" : "slash",
+        "damageSourceKind" : "shadow",
         "knockback" : 30,
         "statusEffects" : [ ]
       }
@@ -238,7 +310,7 @@
       "damage" : 14,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "shadow",
       "knockback" : 20,
       "statusEffects" : [ "insanity" ]
     },
@@ -286,36 +358,22 @@
       "primaryScriptDelta" : 5,
 
       "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0.25
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 9
-        },
-        "maxHealth" : {
-          "baseValue" : 150
-        },
-        "protection" : {
-          "baseValue" : 0.25
-        },
-        "fireStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "insanityImmunity" : {
-          "baseValue" : 1.0
-        },         
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },        
-        "powerMultiplier" : {
-          "baseValue" : 1.35
-        },
-        "poisonResistance" : { "baseValue" : 0 },
-        "fireResistance" : { "baseValue" : 0 },
-        "iceResistance" : { "baseValue" : 0 },
-        "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0.8 }
+        "knockbackStunTime" : {"baseValue" : 0.25},
+        "knockbackThreshold" : {"baseValue" : 9},
+        "maxHealth" : {"baseValue" : 150},
+        "protection" : {"baseValue" : 0.25},
+        "fireStatusImmunity" : {"baseValue" : 1.0},
+        "insanityImmunity" : {"baseValue" : 1.0},         
+        "poisonStatusImmunity" : {"baseValue" : 1.0},        
+        "powerMultiplier" : {"baseValue" : 1.0},
+        "poisonResistance" : { "baseValue" : 0.2 },
+        "fireResistance" : { "baseValue" : 0.2 },
+        "iceResistance" : { "baseValue" : 0.2 },
+        "electricResistance" : { "baseValue" : 0.2 },
+        "physicalResistance" : { "baseValue" : 0.2 },
+        "shadowResistance" : { "baseValue" : 0.8 },
+        "cosmicResistance" : { "baseValue" : 0.4 },
+        "radioactiveResistance" : { "baseValue" : 0.3 }
       },
 
       "resources" : {
