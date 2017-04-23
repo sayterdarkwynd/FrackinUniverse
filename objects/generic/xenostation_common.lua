@@ -68,7 +68,7 @@ function getRecipes()
 		{ inputs = { cottonseed = 1 }, outputs = { gene_mimetic = 1 } },
 		{ inputs = { crystallite = 1 }, outputs = { gene_mimetic = 2 } },
 		{ inputs = { crystalplantseed = 1 }, outputs = { gene_stealth = 1 } },
-		{ inputs = { currentcornseed = 1 }, outputs = { gene_mimetic = 1 } },
+		{ inputs = { currentcornseed = 1 }, outputs = { gene_electric = 1 } },
 		{ inputs = { darklightflower = 1 }, outputs = { gene_immunity = 1 } },
 		{ inputs = { deathblossomseed = 1 }, outputs = { gene_poisonous = 2 } },
 		{ inputs = { diodiahybridseed = 1 }, outputs = { gene_mimetic = 1 } },
