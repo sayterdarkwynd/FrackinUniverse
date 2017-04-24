@@ -1,101 +1,53 @@
 {
-  "type" : "ocumera",
-  "shortdescription" : "ocumera",
-  "description" : "A flying scorpion-tailed cyclops",
+  "type" : "spheresnaketestsegment",
+  "shortdescription" : "head of the snake - has status changing color",
+  "description" : "Testing rotating monster",
 
-  "categories" : [ "ocumera" ],
+  "categories" : [ "spheresnaketest" ],
   "parts" : [ "body" ],
 
-  "animation" : "ocumera.animation",
+  "animation" : "spheresnaketest.animation",
 
-  "dropPools" : [ { "default" : "extraMonsterElectric" } ],
+  "dropPools" : [ ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monstersegment.lua",
+      "/monsters/segmentfollow.lua"
     ],
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 35,
+      "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
       "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.0,
+      "targetOutOfSightTime" : 2.5,
 
-      "hurtTime" : 0.25,
-      "hurtWaitForGround" : false,
+      "foundTargetActions" : [],
 
-      "damageTakenActions" : [
-      ],
+      "fleeActions" : [],
 
-      "foundTargetActions" : [ ],
+      "hostileActions" : [],
 
-      "fleeActions" : [ ],
+      "periodicActions" : [],
 
-      "hostileActions" : [
-       {
-          "name" : "action-fire-tracking",
-          "cooldown" : 0.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 30,
-            "minimumRange" : 5,
-            "windupState" : "firewindup",
-            "windupTime" : 0.1875,
-            "projectileType" : "prelongbeam",
-            "power" : 10,
-            "fireOffset" : [-0.25,-0.5],
-            "aimAtTarget" : true,
-            "onGround" : false,
-            "fireState" : "fire",
-            "fireSound" : "",
-            "winddownTime" : 0.4625
-          }
-        }
-      ],
-      "periodicActions" : [ ],
+      "approachActions" : [],
 
-      "approachActions" : [
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-            "minRange" : 4,
-            "maxRange" : 30
-          }
-        }
-      ],
+      "followActions" : [],
 
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-          }
-        }
-      ],
-
-      "wanderActions" : [
-        {
-          "name" : "wander-fly"
-        }
-      ]
+      "wanderActions" : []
     },
 
     "touchDamage" : {
-      "poly" : [ [-1, 1.5], [1,1.5], [1, -1.5], [1,1.5] ],
-      "damage" : 9,
+      "poly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+      "damage" : 14,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "lash",
+      "damageSourceKind" : "slash",
       "knockback" : 20,
       "statusEffects" : [ ]
     },
@@ -104,8 +56,7 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionEnabled" : true,
-      "collisionPoly" : [ [-1, 1.5], [1,1.5], [1, -1.5], [1,1.5] ],
+      "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
 
       "mass" : 1.0,
       "walkSpeed" : 4,
@@ -148,7 +99,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 64
+          "baseValue" : 65
         },
         "protection" : {
           "baseValue" : 0.0
@@ -205,6 +156,8 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "segments" : 0,
+    "segmentMonster" : "spheresnaketestsegment"
   }
 }

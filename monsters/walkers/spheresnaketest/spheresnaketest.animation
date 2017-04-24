@@ -1,4 +1,8 @@
 {
+  "globalTagDefaults" : {
+    "rotationFrame" : "0"
+  },
+
   "animatedParts" : {
     "stateTypes" : {
       "body" : {
@@ -7,42 +11,31 @@
         "states" : {
           "idle" : {
             "frames" : 8,
-            "cycle" : 0.75,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
-            }
+	    "mode" : "loop",
+            "cycle" : 1
           },
           "fly" : {
             "frames" : 8,
-            "cycle" : 0.75,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "" ]
-            }
+	    "mode" : "loop",
+            "cycle" : 1
           },
-          "firewindup" : {
-            "frames" : 2,
-            "cycle" : 0.1875,
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "/sfx/npc/monsters/batong_flap2.ogg" ]
-            }
+          "walk" : {
+            "frames" : 8,
+	    "mode" : "loop",
+            "cycle" : 1
           },
-          "fire" : {
-            "frames" : 1,
-            "cycle" : 1.0,
-            "mode" : "loop"
+          "jump" : {
+            "frames" : 8,
+	    "mode" : "loop",
+            "cycle" : 1
           },
-          "firewinddown" : {
-            "frames" : 6,
-            "cycle" : 0.4625,
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "/sfx/npc/monsters/batong_flap2.ogg" ]
-            }
+          "fall" : {
+            "frames" : 8,
+	    "mode" : "loop",
+            "cycle" : 1
           }
         }
       },
-            
       "damage" : {
         "priority" : 3,
         "default" : "none",
@@ -80,52 +73,51 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "zLevel" : 1,
-          "transformationGroups" : [ "facing", "body" ]
+          "transformationGroups" : [ "body" ],
+          "centered" : true
         },
         "partStates" : {
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:fly.<frame>"
+                "image" : "<partImage>:spin.<frame>"
               }
             },
             "fly" : {
               "properties" : {
-                "image" : "<partImage>:fly.<frame>"
+                "image" : "<partImage>:spin.<frame>"
               }
             },
-            "firewindup" : {
+            "walk" : {
               "properties" : {
-                "image" : "<partImage>:firewindup.<frame>"
+                "image" : "<partImage>:spin.<frame>"
               }
             },
-            "fire" : {
+            "jump" : {
               "properties" : {
-                "image" : "<partImage>:fire.<frame>"
+                "image" : "<partImage>:spin.<frame>"
               }
             },
-            "firewinddown" : {
+            "fall" : {
               "properties" : {
-                "image" : "<partImage>:firewinddown.<frame>"
+                "image" : "<partImage>:spin.<frame>"
               }
             }
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:spin.<frame>"
               }
             }
           }
         }
-      }       
+      }
     }
   },
+
   "transformationGroups" : {
-    "body" : { "interpolated" : true },
-    "facing" : { "interpolated" : false },
-    "aim" : { "interpolated" : true }
+    "body" : { "interpolated" : true }
   },
 
   "effects" : {
@@ -139,10 +131,15 @@
   "particleEmitters" : {
     "deathPoof" : {
       "particles" : [
-        { "particle" : "electricswoosh1" },
-        { "particle" : "electricswoosh2" },
-        { "particle" : "electricswoosh1" },
-        { "particle" : "electricswoosh2" },
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
         { "particle" : "deathfizz1left" },
         { "particle" : "deathfizz1right" },
         { "particle" : "deathfizz2left" },
@@ -183,6 +180,6 @@
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
-    "fire" : [ "/sfx/gun/aegisaltpistol_start.ogg" ]
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ]
   }
 }
