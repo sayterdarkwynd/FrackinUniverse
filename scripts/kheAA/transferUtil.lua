@@ -73,7 +73,6 @@ function transferUtil.routeItems()
 											if leftOverItems~=nil then
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
 												item=leftOverItems
-												break
 											else
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 												break
@@ -86,7 +85,7 @@ function transferUtil.routeItems()
 										local tempQuantity=item.count-leftOverItems.count
 										if tempQuantity > 0 then
 											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
-											break
+											--break
 										end
 									else
 										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
