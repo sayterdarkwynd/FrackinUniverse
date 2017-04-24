@@ -345,16 +345,22 @@ function states.pump(dt)
 			end
 		end
 		for k,v in pairs(storage.liquids) do
-			if util.tableSize(storage.liquidOuts)>0 then
-			--findNearest(source,sourcePos,targetList)
-				local outputPipe=transferUtil.findNearest(entity.id(),entity.position(),storage.liquidOuts)
-				--sb.logInfo(sb.printJson({outputPipe,"liquidLib.receiveLiquid",{k,1}}))
-				if world.entityExists(outputPipe) then
-					world.callScriptedEntity(outputPipe,"liquidLib.receiveLiquid",{k,1})
-					storage.liquids[k]=v-1
-					break
+			if v >= 1 then
+				local level=10^math.floor(math.log(v,10))
+				if util.tableSize(storage.liquidOuts)>0 then
+				--findNearest(source,sourcePos,targetList)
+					local outputPipe=transferUtil.findNearest(entity.id(),entity.position(),storage.liquidOuts)
+					--sb.logInfo(sb.printJson({outputPipe,"liquidLib.receiveLiquid",{k,1}}))
+					if world.entityExists(outputPipe) then
+						world.callScriptedEntity(outputPipe,"liquidLib.receiveLiquid",{k,level})
+						storage.liquids[k]=v-level
+						break
+					end
 				end
 			end
+		end
+		for k,v in pairs(storage.liquids) do
+
 		end
 	end
 	if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 1},storage.position), "foreground") then

@@ -112,6 +112,7 @@ function update(dt, fireMode, shiftHeld)
   if fireMode == "alt" and availableOrbCount() == 5 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
+      status.addEphemeralEffect("iceburst")
        status.setPersistentEffects("frostmagnorb", {
         {stat = "iceResistance", amount = 0.15}
       })         
@@ -121,6 +122,7 @@ function update(dt, fireMode, shiftHeld)
   else
     self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
     status.clearPersistentEffects("frostmagnorb") 
+    status.removeEphemeralEffect("iceburst")
     if self.shieldTransformTimer > 0 then
       setOrbAnimationState("unshield")
     end

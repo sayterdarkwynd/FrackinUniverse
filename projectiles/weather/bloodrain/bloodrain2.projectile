@@ -1,9 +1,27 @@
 {
   "projectileName" : "bloodrain2",
-  "physics" : "weather",
+  "physics" : "laser",
   "image" : "bloodrain.png",
   "animationCycle" : 0.5,
   "frameNumber" : 4,
+  "actionOnCollide" : [ 
+    { "action" : "liquid", "liquid" : "bloodliquid", "quantity" : 0.45 },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "bloodstonegrass",
+      "radius" : 4
+    }   
+  ], 
+  "actionOnHit" : [ 
+    { "action" : "liquid", "liquid" : "bloodliquid", "quantity" : 0.45 },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "bloodstonegrass",
+      "radius" : 4
+    }   
+  ],  
   "actionOnReap" : [ 
     { "action" : "liquid", "liquid" : "bloodliquid", "quantity" : 0.45 },
     {
