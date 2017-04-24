@@ -147,7 +147,9 @@ function autoFire(target)
 	while true do
 		local rotation = animator.currentRotationAngle("gun")
 		local aimVector = {object.direction() * math.cos(rotation), math.sin(rotation)}
-		world.spawnProjectile("bugzap", firePosition(), entity.id(), aimVector)
+		--world.callScriptedEntity(target,"monster.setDamageTeam",{})
+		--sb.logInfo("%s",{entity.damageTeam(),world.entityDamageTeam(target)})
+		--world.spawnProjectile("bugzap", firePosition(), entity.id(), aimVector)
 		animator.playSound("fire")
 		util.wait(config.getParameter("fireTime",0.1))
 	end
@@ -168,14 +170,14 @@ function findTarget()
 			if not ( world.magnitude(toTarget) > 2.5 and math.abs(targetAngle) < util.toRadians(360) ) then
 				return false
 			end
-			if world.entityType(entityId) == "monster" then
+			--if world.entityType(entityId) == "monster" then
 				local scripts=world.callScriptedEntity(entityId,"config.getParameter","scripts")
 				if scripts then
 					if contains(scripts,"/monsters/bugs/bug.lua") then
 						return true
 					end
 				end
-			end
+			--end
 			return false
 		end
 	)
