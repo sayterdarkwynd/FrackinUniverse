@@ -1,6 +1,6 @@
 {
   "itemName" : "fuhuntingrifle",
-  "price" : 960,
+  "price" : 120,
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "Great for hunting game.",
@@ -10,7 +10,7 @@
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","sniperrifle"],
   "level" : 2,
-
+  "learnBlueprintsOnPickup" : [ "fuhuntingrifle2" ],
   "inventoryIcon" : "fuhuntingrifle.png",
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -48,7 +48,8 @@
     "projectileType" : "standardbullet",
     "projectileParameters" : {
       "knockback" : 26,
-      "damageKind" : "bow"
+      "damageKind" : "bow",
+      "speed" : 60
     },
     "stances" : {
       "idle" : {

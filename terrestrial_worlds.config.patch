@@ -675,19 +675,34 @@
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/surface/secondaryRegions", 
-    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ]
+    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone", "crystalplain", "supermatterzone", "aliendesert", "deadwood", "wastelandmini" ]
     },
     { "op" : "add", 
-    "path" : "/planetTypes/moon/layers/surface/subsurface", 
-    "value" : [ "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground" ]
+    "path" : "/planetTypes/moon/layers/subsurface/secondaryRegions", 
+    "value" : [ "ffcrystalcavern", "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "crystalmoonunderground", "fungusunderground", "icecaves", "luminouscaves" ]
     },
+    { "op" : "add", 
+    "path" : "/planetTypes/moon/layers/underground1/secondaryRegions", 
+    "value" : [ "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
+    },
+    { "op" : "add", 
+    "path" : "/planetTypes/moon/layers/underground2/secondaryRegions", 
+    "value" : [ "ffcrystalcavern", "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "crystalmoonunderground", "fungusunderground", "metallicunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
+    },
+    { "op" : "add", 
+    "path" : "/planetTypes/moon/layers/underground3/secondaryRegions", 
+    "value" : [ "ffcrystalcavern", "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "crystalmoonunderground", "fungusunderground", "metallicunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
+    },
+    { "op" : "add", 
+    "path" : "/planetTypes/moon/layers/core/primaryRegion", 
+    "value" : [ "core", "nitrogencore"]
+    },    
+    
     { "op" : "add", 
     "path" : "/planetTypes/ocean/layers/subsurface/secondaryRegions", 
     "value" : [ "deepseavent", "kelpforest", "coralreef" ]
     },
-    
-    
-    
+
   {
     "op": "add",
     "path": "/regionTypes/asteroids/gravityRange",
@@ -2725,7 +2740,7 @@
     "value" : 
       {
       "gravityRange" : [50, 90],
-      "threatRange" : [4, 5],
+      "threatRange" : [4, 6],
       "layers" : {
       "space" : {
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
@@ -3737,13 +3752,13 @@
           "primaryRegion" : [ "moondesertunderground" ]
         },
         "underground1" : {
-          "primaryRegion" : [ "moondesertunderground" ]
+          "primaryRegion" : [ "moondesertunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground2" : {
-          "primaryRegion" : [ "moondesertunderground" ]
+          "primaryRegion" : [ "moondesertunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground3" : {
-          "primaryRegion" : [ "moondesertunderground" ]
+          "primaryRegion" : [ "moondesertunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "core" : {
           "primaryRegion" : [ "mooncore" ],
@@ -3782,13 +3797,13 @@
           "primaryRegion" : [ "moonstoneunderground" ]
         },
         "underground1" : {
-          "primaryRegion" : [ "moonstoneunderground" ]
+          "primaryRegion" : [ "moonstoneunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground2" : {
-          "primaryRegion" : [ "moonstoneunderground" ]
+          "primaryRegion" : [ "moonstoneunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground3" : {
-          "primaryRegion" : [ "moonstoneunderground" ]
+          "primaryRegion" : [ "moonstoneunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "core" : {
           "primaryRegion" : [ "mooncore" ],
@@ -3827,13 +3842,13 @@
           "primaryRegion" : [ "moontoxicunderground" ]
         },
         "underground1" : {
-          "primaryRegion" : [ "moontoxicunderground" ]
+          "primaryRegion" : [ "moontoxicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground2" : {
-          "primaryRegion" : [ "moontoxicunderground" ]
+          "primaryRegion" : [ "moontoxicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground3" : {
-          "primaryRegion" : [ "moontoxicunderground" ]
+          "primaryRegion" : [ "moontoxicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "core" : {
           "primaryRegion" : [ "mooncore" ],
@@ -3871,13 +3886,13 @@
           "primaryRegion" : [ "moonvolcanicunderground" ]
         },
         "underground1" : {
-          "primaryRegion" : [ "moonvolcanicunderground" ]
+          "primaryRegion" : [ "moonvolcanicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground2" : {
-          "primaryRegion" : [ "moonvolcanicunderground" ]
+          "primaryRegion" : [ "moonvolcanicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground3" : {
-          "primaryRegion" : [ "moonvolcanicunderground" ]
+          "primaryRegion" : [ "moonvolcanicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "core" : {
           "primaryRegion" : [ "mooncore" ],
@@ -6572,6 +6587,19 @@
       ]
     }
   },
+
+  {"op" : "add", 
+  "path" : "/regionTypes/ffshadowmoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "poison", "bio_ooze", "shadowgas", "darkwater" ],
+      "caveLiquidChanceRange" : [45, 75],
+
+      "biome" : [
+        [0, [ "ffshadowmoon"]]
+      ]
+    }
+  },
   
   {"op" : "add", 
   "path" : "/regionTypes/ffshadow",
@@ -6975,6 +7003,18 @@
     }
   },
   {"op" : "add", 
+  "path" : "/regionTypes/fftarpitmoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "tarliquid", "blacktar" ],
+      "caveLiquidChanceRange" : [5, 75],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
+      "biome" : [
+        [0, [ "fftarpitmoon"] ]
+      ]
+    }
+  },  
+  {"op" : "add", 
   "path" : "/regionTypes/fftarpit",
   "value" : 
   {
@@ -7114,7 +7154,18 @@
     }
   }, 
   
-  
+	{
+		"op" : "add",
+		"path" : "/regionTypes/metalworksundergroundmoon",
+		"value" : {
+		    "fgCaveSelector" : [ "normalCaves" ],
+		    "bgCaveSelector" : [ "largeClumps" ],
+		    "subBlockSelector" : [ "largeClumps" ],
+		      "biome" : [
+		        [0, [ "metalworksundergroundmoon" ]]
+		      ]
+		    }
+	},  
 	{
 		"op" : "add",
 		"path" : "/regionTypes/metalworksunderground1",
