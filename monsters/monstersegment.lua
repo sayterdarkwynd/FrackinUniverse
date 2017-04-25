@@ -50,14 +50,26 @@ function init()
   capturable.init()
 
   -- Listen to damage taken
-  self.damageTaken = damageListener("damageTaken", function(notifications)
-    for _,notification in pairs(notifications) do
-      if notification.healthLost > 0 then
-        self.damaged = true
-        BData:setEntity("damageSource", notification.sourceEntityId)
+  if not config.getParameter("parent") then
+    self.damageTaken = damageListener("damageTaken", function(notifications)
+      for _,notification in pairs(notifications) do
+        if notification.healthLost > 0 then
+          self.damaged = true
+          BData:setEntity("damageSource", notification.sourceEntityId)
+        end
       end
-    end
-  end)
+    end)
+  else
+    self.damageTaken = damageListener("damageTaken", function(notifications)
+      for _,notification in pairs(notifications) do
+        if notification.healthLost > 0 then
+          self.damaged = true
+	  status.setResourcePercentage("health",100)
+	  world.sendEntityMessage(config.getParameter("head"),"headDamage",notification)
+        end
+      end
+    end)
+  end
 
   self.debug = true
 
@@ -90,14 +102,22 @@ function init()
 
   self.segments = config.getParameter("segments")
   self.child = config.getParameter("segmentMonster")
+  if not config.getParameter("parent") then 
+    self.head = entity.id()
+    message.setHandler("headDamage", function(_,__,notification)
+     BData:setEntity("damageSource", notification.sourceEntityId)
+     status.overConsumeResource("health",notification.healthLost)
+    end) 
+  end
   if self.segments > 0 then 
-	self.child = world.spawnMonster(self.child, mcontroller.position(),{parent = entity.id(), segments = self.segments - 1})
+	self.child = world.spawnMonster(self.child, mcontroller.position(),{head = self.head and self.head or config.getParameter("head"), parent = entity.id(), segments = self.segments - 1})
   end 
 end
 
 -- This is called in update() using pcall
 -- to catch errors
 function update(dt)
+
   capturable.update(dt)
   self.damageTaken:update()
 
@@ -172,10 +192,16 @@ function update(dt)
     setPhysicsForces()
     monster.setDamageParts(self.damageParts)
     overrideCollisionPoly()
+
   end
   self.behaviorTick = self.behaviorTick + 1
 
   movement()
+
+  if config.getParameter("parent") and not world.entityExists(config.getParameter("parent")) then
+    status.setResource("health", 0)
+  end
+
 end
 
 function interact(args)
