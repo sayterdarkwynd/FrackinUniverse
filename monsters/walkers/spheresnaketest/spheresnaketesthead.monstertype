@@ -33,15 +33,24 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ ],
+      "hostileActions" : [ 
+	{
+	  "name" : "action-swoop",
+	  "parameters" : {
+	    "windupState" : "fly",
+	    "winddownState" : "fly"
+	  }
+	}
+      ],
       "periodicActions" : [ ],
 
       "approachActions" : [
         {
           "name" : "approach-fly",
           "parameters" : {
-            "minRange" : 4,
-            "maxRange" : 30
+            "minRange" : 1,
+            "maxRange" : 1,
+	    "targetOffset" : [0,-2]
           }
         }
       ],
@@ -118,13 +127,13 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0
         },
         "knockbackThreshold" : {
-          "baseValue" : 9
+          "baseValue" : 100
         },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 500
         },
         "protection" : {
           "baseValue" : 0.0
@@ -182,7 +191,7 @@
     "capturable" : true,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
-    "segments" : 7,
+    "segments" : 10,
     "segmentMonster" : "spheresnaketestsegment"
   }
 }
