@@ -64,10 +64,8 @@ function init()
       for _,notification in pairs(notifications) do
         if notification.healthLost > 0 then
           self.damaged = true
-          BData:setEntity("damageSource", notification.sourceEntityId)
-	  print(notification.healthLost)
 	  status.setResourcePercentage("health",100)
-	  world.sendEntityMessage(config.getParameter("head"),"healthLost",healthLost)
+	  world.sendEntityMessage(config.getParameter("head"),"headDamage",notification)
         end
       end
     end)
@@ -106,9 +104,9 @@ function init()
   self.child = config.getParameter("segmentMonster")
   if not config.getParameter("parent") then 
     self.head = entity.id()
-    message.setHandler("healthLost", function(_,_,healthLost)
-	--THIS LINE RIGHT HERE I CANT PASS THE DAMN DAMAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      status.consumeResource("health",10)
+    message.setHandler("headDamage", function(_,__,notification)
+     BData:setEntity("damageSource", notification.sourceEntityId)
+     status.overConsumeResource("health",notification.healthLost)
     end) 
   end
   if self.segments > 0 then 
