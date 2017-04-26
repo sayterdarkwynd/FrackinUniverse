@@ -25,7 +25,7 @@ function upgradeCost(itemConfig)
 end
 
 function populateItemList(forceRepop)
-  local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon")
+  local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon") or player.itemsWithTag("shield")
   for i = 1, #upgradeableWeaponItems do
     upgradeableWeaponItems[i].count = 1
   end
@@ -91,6 +91,13 @@ function itemSelected()
   end
 end
 
+function isArmor()
+  if (upgradedItem.parameters.category == "legarmor") or (upgradedItem.parameters.category == "chestarmor") or (upgradedItem.parameters.category == "headarmor") then
+     isArmorSet = 1
+  return isArmorSet
+  end
+end
+
 function doUpgrade()
   if self.selectedItem then
     local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
@@ -102,9 +109,11 @@ function doUpgrade()
         local consumedCurrency = player.consumeCurrency("essence", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
-                  local itemConfig = root.itemConfig(upgradedItem)
+          local itemConfig = root.itemConfig(upgradedItem)
           upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
           upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) + 10
+          upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 2
+          upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 2
           if upgradedItem.parameters.level > 10 then
             upgradedItem.parameters.level = 10
           end
