@@ -19,13 +19,14 @@ function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
 
   local prevValue = root.evalFunction("weaponEssenceValue", itemConfig.parameters.level or itemConfig.config.level or 1)
-  local newValue = root.evalFunction("weaponEssenceValue", self.upgradeLevel)
+  local newValue = root.evalFunction("weaponEssenceValue", self.upgradeLevel) * itemConfig.parameters.level
 
   return math.floor(newValue - prevValue)
 end
 
+
 function populateItemList(forceRepop)
-  local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon") or player.itemsWithTag("shield")
+  local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon")
   for i = 1, #upgradeableWeaponItems do
     upgradeableWeaponItems[i].count = 1
   end
