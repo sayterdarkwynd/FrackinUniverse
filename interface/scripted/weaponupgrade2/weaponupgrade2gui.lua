@@ -110,8 +110,7 @@ function doUpgrade()
         local consumedCurrency = player.consumeCurrency("essence", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
-          local itemConfig = root.itemConfig(upgradedItem) 
-	  local itemTag = root.itemHasTags(itemDescriptor)   
+          local itemConfig = root.itemConfig(upgradedItem)  
           upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 		  if upgradedItem.parameters.primaryAbility and (itemConfig.config.primaryAbility.fireTime >= 0.3) then   -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing
 		    upgradedItem.parameters.primaryAbility = {fireTime = itemConfig.config.primaryAbility.fireTime - (upgradedItem.parameters.level/7) }
