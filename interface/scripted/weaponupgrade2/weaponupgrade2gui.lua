@@ -4,7 +4,7 @@ require "/scripts/interp.lua"
 function init()
   self.itemList = "itemScrollArea.itemList"
 
-  self.upgradeLevel = config.getParameter("upgradeLevel")
+  self.upgradeLevel = 8
 
   self.upgradeableWeaponItems = {}
   self.selectedItem = nil
@@ -19,7 +19,7 @@ function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
 
   local prevValue = root.evalFunction("weaponEssenceValue", itemConfig.parameters.level or itemConfig.config.level or 1)
-  local newValue = root.evalFunction("weaponEssenceValue", self.upgradeLevel) * itemConfig.parameters.level
+  local newValue = (root.evalFunction("weaponEssenceValue", self.upgradeLevel) * (itemConfig.parameters.level or itemConfig.config.level or 1)/3)
 
   return math.floor(newValue - prevValue)
 end
@@ -110,14 +110,17 @@ function doUpgrade()
         local consumedCurrency = player.consumeCurrency("essence", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
-          local itemConfig = root.itemConfig(upgradedItem)
+          local itemConfig = root.itemConfig(upgradedItem) 
+	  local itemTag = root.itemHasTags(itemDescriptor)   
           upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
-          upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) + 10
-          upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 2
-          upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 2
-          if upgradedItem.parameters.level > 10 then
-            upgradedItem.parameters.level = 10
-          end
+		  if upgradedItem.parameters.primaryAbility and (itemConfig.config.primaryAbility.fireTime >= 0.3) then   -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing
+		    upgradedItem.parameters.primaryAbility = {fireTime = itemConfig.config.primaryAbility.fireTime - (upgradedItem.parameters.level/7) }
+		  end
+		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) + (upgradedItem.parameters.level/5)  -- increase DPS a bit
+		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
+		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage       
+          sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
+          sb.logInfo(sb.printJson(itemTags,1)) -- list all current bonuses being applied to the weapon for debug 
           if itemConfig.config.upgradeParameters then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
           end
