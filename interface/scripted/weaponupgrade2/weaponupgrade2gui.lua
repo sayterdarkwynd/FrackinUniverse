@@ -112,17 +112,33 @@ function doUpgrade()
         if consumedCurrency then
           local itemConfig = root.itemConfig(upgradedItem)  
           upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
+                  
+                  -- magnorbs
+                  if upgradedItem.parameters.shieldKnockback then
+                    upgradedItem.parameters.shieldKnockback = (itemConfig.parameters.shieldKnockback or itemConfig.config.shieldKnockback or 1) + 1 
+                    upgradedItem.parameters.shieldEnergyCost = (itemConfig.parameters.shieldEnergyCost or itemConfig.config.shieldEnergyCost or 1) + 1 
+                    upgradedItem.parameters.shieldHealth = (itemConfig.parameters.shieldHealth or itemConfig.config.shieldHealth or 1) + 1 
+                  end  
+                    -- boomerangs and other projectileParameters based things
+		  if upgradedItem.parameters.projectileParameters then   
+		    upgradedItem.parameters.projectileParameters = {power = itemConfig.config.primaryAbility.power + (upgradedItem.parameters.level/7) }
+		    --upgradedItem.parameters.projectileParameters = {controlForce = itemConfig.config.primaryAbility.controlForce + (upgradedItem.parameters.level/7) }
+		  end   
+
+                  
 		  if upgradedItem.parameters.primaryAbility and (itemConfig.config.primaryAbility.fireTime >= 0.3) then   -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing
 		    upgradedItem.parameters.primaryAbility = {fireTime = itemConfig.config.primaryAbility.fireTime - (upgradedItem.parameters.level/7) }
 		  end
 		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) + (upgradedItem.parameters.level/5)  -- increase DPS a bit
 		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
-		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage       
+		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
+		  
           sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
-          sb.logInfo(sb.printJson(itemTags,1)) -- list all current bonuses being applied to the weapon for debug 
+          
           if itemConfig.config.upgradeParameters then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
           end
+          
         end
         player.giveItem(upgradedItem)
       end
