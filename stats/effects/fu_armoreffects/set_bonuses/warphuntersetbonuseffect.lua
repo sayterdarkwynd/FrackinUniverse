@@ -46,9 +46,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"mininglaser"})
-	if weapons["both"] then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
-	elseif weapons["either"] then
+	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
