@@ -8,13 +8,15 @@ function init()
 	}
 	-- these are types of items, which can be improved
 	upgradebleItemsList = {
-		["sword"] = false,
-		["gun"] = false,
-		["shield"] = false,
+		["sword"] = true,
+		["gun"] = true,
+		["shield"] = true,
 		["headarmor"] = true,
 		["chestarmor"] = true,
-		["legsarmor"] = true,
-		["backarmor"] = true
+		["legarmor"] = true,
+		["backarmor"] = true,
+		["backwear"] = true,
+		["enviroProtectionPack"] = true
 	}
 end
 

@@ -11,7 +11,7 @@
   "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","rocketlauncher", "plasma"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "plasma", "upgradeableWeapon"],
   "inventoryIcon" : "isn_fusioncannonicon.png",
   "animation" : "isn_fusioncannon.animation",
   "animationParts" : {
@@ -91,5 +91,25 @@
   "critBonus" : 12,
   "altAbilityType" : "fusionblast",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua", "/items/active/scripts/heavyweapon2.lua" ],
+    "shortdescription" : "^cyan;Blastmark^reset; ^yellow;^reset;",
+  "description" : "Increased projectile speed and knockback.^reset;",  
+    "critChance" : 12,
+    "critBonus" : 16,
+	  "primaryAbility" : {
+	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+	    "class" : "GunFire",
+
+	    "fireTime" : 2.4,
+	    "energyUsage" : 42,
+
+	    "projectileParameters" : {
+	      "knockback" : 24,
+	      "speed" : 55
+	    }
+	  }
+        }
 }

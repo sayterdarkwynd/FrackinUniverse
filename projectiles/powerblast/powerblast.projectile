@@ -1,0 +1,82 @@
+{
+  "projectileName" : "powerblast",
+  "image" : "powerblast.png",
+  "animationCycle" : 0.9,
+  "timeToLive" : 0.9,
+  "level" : 5,
+  "physics" : "laser",
+  "frameNumber" : 9,
+  "pointLight" : true,
+  "fullbright" : true,
+  "damagePoly" : [ [2.25,4.375], [-3.125,2.5], [-3.125,-2.125], [3.625,-4.75], [4.875,-0.75], [4.625,1] ],
+  "lightColor" : [144, 174, 255],
+  "speed" : 12,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/darkmatterboom/darkmatterboom2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "densiniumrifleshot",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.6,
+      "angleAdjust" : -10
+    },
+    {
+      "action" : "projectile",
+      "type" : "densiniumrifleshot",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.6,
+      "angleAdjust" : 20
+    },
+    {
+      "action" : "projectile",
+      "type" : "densiniumrifleshot",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.6,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "densiniumrifleshot",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.6,
+      "angleAdjust" : 35
+    }   
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.04,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fungravityexplosion",
+      "inheritDamageFactor" :0.0,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "damageSourceKind" : "cosmic", "timeToLive" : 0.03 }
+   },    
+    {
+      "time" : 0.04,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "densiniumrifleshot",
+      "inheritDamageFactor" :0.034,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "damageSourceKind" : "cosmic" }
+   },  
+    {
+      "time" : 0.02,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "densiniumrifleshot",
+      "inheritDamageFactor" :0.034,
+      "fuzzAngle" : 20,
+      "projectileParameters" : { "damageSourceKind" : "cosmic" }
+   }
+  ],  
+  "damageKind" : "electric",
+  "emitters" : [ "defaultblue" ],
+  "hydrophobic" : false
+}
+
+
