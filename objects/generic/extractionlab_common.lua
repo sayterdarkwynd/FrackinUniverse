@@ -712,7 +712,7 @@ function getRecipes()
  	{ inputs = { boiledbananaCNYC = 1 }, outputs = { tissueculture = { 3, 3, 5 }, liquidwater = { 0, 0, 1 } } },
  	{ inputs = { boiledbeakseedCNYC = 1 }, outputs = { tissueculture = { 5, 5, 7 }, liquidwater = { 0, 0, 1 } } },
  	{ inputs = { boiledblueberriesCNYC = 1 }, outputs = { tissueculture = { 3, 3, 5 }, liquidwater = { 0, 0, 1 } } },
-	{ inputs = { boiledboltbulbCNYC = 1 }, outputs = { rawminerals = 3 }, liquidwater = { 0, 0, 1 } } },
+	{ inputs = { boiledboltbulbCNYC = 1 }, outputs = { rawminerals = 3, liquidwater = { 0, 0, 1 } } },
  	{ inputs = { boiledbonebooCNYC = 1 }, outputs = { tissueculture = { 3, 3, 5 }, liquidwater = { 0, 0, 1 } } },
  	{ inputs = { boiledbroccoli = 1 }, outputs = { tissueculture = { 3, 3, 5 }, liquidwater = { 0, 0, 1 } } },
  	{ inputs = { boiledbrusselsproutCNYC = 1 }, outputs = { tissueculture = { 5, 5, 7 }, liquidwater = { 0, 0, 1 } } },
