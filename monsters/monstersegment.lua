@@ -102,15 +102,19 @@ function init()
 
   self.segments = config.getParameter("segments")
   self.child = config.getParameter("segmentMonster")
+  if self.segmentArray then
+	self.child = self.segmentArray[math.min(#self.segments,math.max(1,(#self.segmentArray - self.segments + 1)))]
+  end
   if not config.getParameter("parent") then 
     self.head = entity.id()
     message.setHandler("headDamage", function(_,__,notification)
+     self.damaged = true
      BData:setEntity("damageSource", notification.sourceEntityId)
      status.overConsumeResource("health",notification.healthLost)
     end) 
   end
   if self.segments > 0 then 
-	self.child = world.spawnMonster(self.child, mcontroller.position(),{head = self.head and self.head or config.getParameter("head"), parent = entity.id(), segments = self.segments - 1})
+	self.child = world.spawnMonster(self.child, mcontroller.position(),{head = self.head and self.head or config.getParameter("head"), parent = entity.id(), segments = self.segments - 1, parentRadius = config.getParameter("radius"), renderLayer = "foregroundEntity+"..tostring(self.segments)})
   end 
 end
 
