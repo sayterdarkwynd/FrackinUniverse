@@ -146,10 +146,6 @@ function doUpgrade()
 			    local fireTimeMod = ( upgradedItem.parameters.level/10 * 0.5)
 			    local fireTimeFinal = fireTimeBase * fireTimeMod 
 			    local fireTimeFinal2 = fireTimeBase - fireTimeFinal
-			    sb.logInfo("fireTimeBase :"..fireTimeBase)
-			    sb.logInfo("fireTimeMod :"..fireTimeMod)
-			    sb.logInfo("fireTimeFinal :"..fireTimeFinal)
-			    sb.logInfo("fireTimeFinal2 multiplied :"..fireTimeFinal2)
 			    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2 
 			end			
 		  end
