@@ -126,21 +126,30 @@ function doUpgrade()
 		        controlForce = itemConfig.config.primaryAbility.controlForce + (upgradedItem.parameters.level)
 		      }
 		  end   
-                  -- beam weapons and miners
-                  if (itemConfig.config.primaryAbility) and (itemConfig.config.primaryAbility.beamLength) then
-                    upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
-                  end		  
-                  -- wands/staves
-                  if (itemConfig.config.primaryAbility) and (itemConfig.config.primaryAbility.maxCastRange) then
-                    upgradedItem.parameters.primaryAbility = {
-                      energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3),
-                      maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
-                      }
-                  end
-                  
-		  if not (itemConfig.config.category == "Magnorb") and (itemConfig.config.primaryAbility.fireTime) and (itemConfig.config.primaryAbility.fireTime >= 0.3) then   -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing
-		    upgradedItem.parameters.primaryAbility.fireTime = itemConfig.config.primaryAbility.fireTime - (upgradedItem.parameters.level/7)
+		  
+		  if (itemConfig.config.primaryAbility) then
+		    -- beams and miners
+			if (itemConfig.config.primaryAbility.beamLength) then
+			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
+			end
+		   -- wands/staves	
+			if (itemConfig.config.primaryAbility.maxCastRange) then
+			  upgradedItem.parameters.primaryAbility = {
+			  energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3),
+			  maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
+			  }
+			end	
+		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
+		        
+			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) then    
+			    local fireTimeBase = itemConfig.config.primaryAbility.fireTime
+			    local fireTimeMod = ( upgradedItem.parameters.level/10 * 0.5)
+			    local fireTimeFinal = fireTimeBase * fireTimeMod 
+			    local fireTimeFinal2 = fireTimeBase - fireTimeFinal
+			    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2 
+			end			
 		  end
+
 		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) + (upgradedItem.parameters.level/5)  -- increase DPS a bit
 		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
 		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
