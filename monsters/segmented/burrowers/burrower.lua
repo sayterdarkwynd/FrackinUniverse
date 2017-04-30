@@ -24,8 +24,7 @@ end
 
 function burrowEffect(dt)
 
-    self.burrowing = world.pointTileCollision(mcontroller.position(), {"Block"})
-
+    self.burrowing = world.polyCollision(mcontroller.collisionPoly(), mcontroller.position(), {"block"})
     if not self.burrowed == self.burrowing then 
 	world.spawnProjectile(self.burrowBurstProjectile, mcontroller.position())
     	animator.burstParticleEmitter("groundBurstEmitter")
@@ -33,7 +32,7 @@ function burrowEffect(dt)
   	animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
     else  
 	self.burrowTick = self.burrowTick - dt
-	if self.burrowTick <= 0 then
+	if self.burrowTick <= 0  and self.burrowing then
 	    world.spawnProjectile(self.burrowProjectile, mcontroller.position())
 	    self.burrowTick = self.burrowTimer
 	end
@@ -87,9 +86,6 @@ function update(dt)
 		end
 		if world.magnitude(mcontroller.position(),world.entityPosition(self.parent)) > self.followRadius then
 		  mcontroller.controlApproachVelocityAlongAngle(angle, self.flySpeed + magnitude, 1500)
-		  --[[animator.rotateTransformationGroup("body", self.tilt - angle)
-		  self.tilt = angle
-		  ]]
 		twistEffect()
 		else
 		  mcontroller.setVelocity(vec2.approach(distance,world.entityPosition(self.parent),self.parentRadius))
