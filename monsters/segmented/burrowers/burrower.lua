@@ -22,15 +22,29 @@ function updateRotationFrame(dt)
 end
 ]]
 
-function burrowEffect()
+function burrowEffect(dt)
 
-    self.burrowing = world.pointTileCollision(mcontroller.position(), {"Block"})
+    self.burrowing = world.polyCollision(mcontroller.collisionPoly(), mcontroller.position(), {"block"})
     if not self.burrowed == self.burrowing then 
+	world.spawnProjectile(self.burrowBurstProjectile, mcontroller.position())
     	animator.burstParticleEmitter("groundBurstEmitter")
     	animator.setParticleEmitterActive("behindGroundEmitter", self.burrowing)
   	animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
+    else  
+	self.burrowTick = self.burrowTick - dt
+	if self.burrowTick <= 0  and self.burrowing then
+	    world.spawnProjectile(self.burrowProjectile, mcontroller.position())
+	    self.burrowTick = self.burrowTimer
+	end
     end
     self.burrowed = self.burrowing
+end
+
+function twistEffect()
+	self.twist = self.twist and self.twist or 0
+	self.newTwist = vec2.angle(mcontroller.velocity())
+	animator.rotateTransformationGroup("body", self.twist - self.newTwist)
+	self.twist = self.newTwist
 end
 
 function update(dt)
@@ -45,8 +59,11 @@ function update(dt)
 	  self.ballRadius = config.getParameter("radius")
 	end
 	]]
-	if not self.burrowed then
-	  self.burrowed = false
+	if not self.burrowTimer then
+	  self.burrowProjectile = config.getParameter("burrowProjectile", "burrow")
+	  self.burrowBurstProjectile = config.getParameter("burrowBurstProjectile", "burrowburst")
+	  self.burrowTimer = config.getParameter("burrowTimer",0.25)
+	  self.burrowTick = self.burrowTimer
 	end
 	if not self.followRadius then
 	  self.parentRadius =  config.getParameter("parentRadius",1)
@@ -69,8 +86,7 @@ function update(dt)
 		end
 		if world.magnitude(mcontroller.position(),world.entityPosition(self.parent)) > self.followRadius then
 		  mcontroller.controlApproachVelocityAlongAngle(angle, self.flySpeed + magnitude, 1500)
-		  animator.rotateTransformationGroup("body", self.tilt - angle)
-		  self.tilt = angle
+		twistEffect()
 		else
 		  mcontroller.setVelocity(vec2.approach(distance,world.entityPosition(self.parent),self.parentRadius))
 		end
@@ -80,6 +96,5 @@ function update(dt)
   	updateRotationFrame(dt)
   	self.lastPosition = mcontroller.position()
 	]]
-	burrowEffect()
+	burrowEffect(dt)
 end
-

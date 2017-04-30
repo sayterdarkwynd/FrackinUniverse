@@ -10,10 +10,14 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 1
+            "frames" : 4,
+	    "mode" : "loop",
+	    "cycle" : 1
           },
           "fly" : {
-            "frames" : 1
+            "frames" : 4,
+	    "mode" : "loop",
+	    "cycle" : 1
           }
         }
       },
@@ -54,7 +58,7 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "transformationGroups" : [ "body" ],
+          "transformationGroups" : [ "body", "aim" ],
           "centered" : true
         },
         "partStates" : {
@@ -86,7 +90,13 @@
     "body" : { 
 	"interpolated" : true,
     	"rotationCenter" : [0,0],
-	"angularVelocity" : 1.5 }
+	"angularVelocity" : 1.5 
+	},
+    "aim" : { 
+	"interpolated" : true,
+    	"rotationCenter" : [0,0],
+	"angularVelocity" : 1.5 
+	}
   },
   "rotationGroups" : {
     "body" : { 
