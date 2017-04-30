@@ -1,0 +1,100 @@
+{
+  "type" : "shroommerchant",
+  "baseType" : "merchant",
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "effectDirectives" : ""
+    }
+  },
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "greetingChance" : 0
+    },
+
+    "questGenerator" : { "pools" : [], "enableParticipation" : false },
+
+    "reactions" : {
+      "spontaneous" : [
+        [1.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "wander", { "timeRange" : [0.2, 0.6] }]
+      ]
+    },
+
+    "merchant" : {
+      "waitTime" : 40,
+      "storeRadius" : 8,
+      "poolsFile" : "/npcs/merchantpools.config",
+      "categories" : {
+        "floran" : ["shroommerchant" ]
+      },
+      "buyFactorRange" : [ 1.0, 1.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 4,
+      "behaviorConfig" : { "sleep" : false },
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Agaran Merchant",
+          "subtitle" : "  Shroomy salesman selling stuff"
+        }
+      }
+    },
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/shroom.config:tagCriteria",
+          "enclosedArea" : "/dialog/shroom.config:enclosedArea",
+          "otherDeed" : "/dialog/shroom.config:otherDeed",
+          "severe" : "/dialog/shroom.config:severe",
+          "final" : "/dialog/shroom.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/shroom.config:beacon",
+          "rent" : "/dialog/shroom.config:rent"
+        }
+      },
+
+      "converse" : "/dialog/shroom.config:hail",
+      "accuse" : "/dialog/shroom.config:accuse",
+      "alert" : "/dialog/shroom.config:accuse",
+
+      "merchant" : {
+        "start" : "/dialog/shroom.config:start",
+        "end" : "/dialog/shroom.config:end",
+        "follow" : "/dialog/shroom.config:follow",
+        "welcome" : "/dialog/shroom.config:welcome",
+        "tout" : "/dialog/shroom.config:tout"
+      },
+
+      "flee" : {
+        "helpme" : "/dialog/shroom.config:helpme",
+        "helpthem" : "/dialog/shroom.config:helpthem",
+        "encourage" : "/dialog/shroom.config:encourage",
+        "safe" : "/dialog/shroom.config:safe"
+      }
+    }
+  },
+
+  "items" : {
+    "floran" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "shroomhead", "parameters" : { "colorIndex" : 0 } },
+              { "name" : "shroomhead2", "parameters" : { "colorIndex" : 0 } },
+              { "name" : "shroomhead3", "parameters" : { "colorIndex" : 0 } },
+              { "name" : "shroomhead4", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "chest" : [
+              { "name" : "florantier2chest", "parameters" : { "colorIndex" : 11 } }
+            ],
+            "legs" : [
+              { "name" : "florantier2pants", "parameters" : { "colorIndex" : 11 } }
+            ]
+          }
+      ]]
+    ]
+  }
+}

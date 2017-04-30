@@ -13,7 +13,7 @@
   "weaponType" : "Energy",
   "itemTags" : ["weapon","ranged","sniperrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
-
+  
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -37,16 +37,16 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.21,
-    "baseDps" : 8,
-    "energyUsage" : 28.2,
+    "fireTime" : 1.21,
+    "baseDps" : 11,
+    "energyUsage" : 35.2,
     "inaccuracy" : 0.002,
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "fuicebullet",
     "projectileParameters" : { 
-      "speed" : 60,
+      "speed" : 75,
       "knockback" : 3
     },
   "stances" : {
@@ -82,5 +82,21 @@
   "critBonus" : 8,
   "altAbilityType" : "tentabane",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+    "upgradeParameters" : {
+    "shortdescription" : "^cyan;Black Frost^reset; ^yellow;^reset;",
+  "description" : "Freezing death.
+^yellow;Brutal freezing shots^reset;", 
+
+	  "primaryAbility" : {
+	    "baseDps" : 11.5,
+	    "energyUsage" : 46,
+
+	    "projectileParameters" : {
+	      "knockback" : 5.2,
+	      "speed" : 90
+	    }
+	  }
+      }
 }
