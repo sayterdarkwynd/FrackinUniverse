@@ -11,10 +11,6 @@
   "speed" :1,  
    "lightColor" : [40, 40, 100],
   "actionOnReap" : [
-  {
-      "action" : "config",
-      "file" : "/projectiles/guns/a_peglaciprojectiles/furailgun/furailgunexplosion.config"
-    },
 	{
       "action" : "projectile",
       "type" : "furailgunshotpower2c",
@@ -22,17 +18,6 @@
       "angleAdjust" : 0
     }
   ],
-  "periodicActions" : [
-    {
-      "time" : 0.01,
-      "loop" : true,
-      "action" : "projectile",
-      "type" : "blueplasmabullet",
-      "inheritDamageFactor" :0.25,
-      "fuzzAngle" : 360,
-      "projectileParameters" : { "damageSourceKind" : "electric" }
-   }
-  ],  
   "damageKind" : "default"
 }
 
