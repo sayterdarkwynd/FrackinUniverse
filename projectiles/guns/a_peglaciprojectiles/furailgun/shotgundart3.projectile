@@ -1,5 +1,5 @@
 {
-  "projectileName" : "furailgunshot",
+  "projectileName" : "furailgunshot3",
   "image" : "shotgundart.png",
   "animationCycle" : 0.1,
   "piercing" : true,
@@ -7,21 +7,26 @@
   "bounces" : 0,
   "frameNumber" : 3,  
   "pointLight" : false,
-  "timeToLive" : 0.25,
-  "speed" :100,
-  "power" : 5,
+  "timeToLive" : 1,
+  "speed" :110,
+  "power" : 20,
   "fullbright" : true,
    "lightColor" : [40, 40, 100],
   "damageKind" : "default",
+  "emitters" : [ "peglacitrail" ],
   "statusEffects" : [ "electrified" ],
-   "actionOnReap" : [  
+   "actionOnReap" : [
     {
+      "action" : "config",
+      "file" : "/projectiles/explosions/railgunshot/railgunshot.config"
+    },   
+	{
       "action" : "projectile",
-      "type" : "furailgunshot2",
-      "inheritDamageFactor" : 1.5,
+      "type" : "furailgunshotpowerwait2",
+      "inheritDamageFactor" : 0,
       "angleAdjust" : 0
     }
-  ],    
+  ],  
     "periodicActions":[
     {
       "time" : 0,
@@ -33,7 +38,7 @@
       "loop" : true,
       "action" : "projectile",
       "type" : "furailguntrail",
-      "inheritDamageFactor" :0,
+      "inheritDamageFactor" :0.035,
       "timeToLive" : 0.5,
       "fuzzAngle" : 0,
       "projectileParameters" : { "damageSourceKind" : "electric" }

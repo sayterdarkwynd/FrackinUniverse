@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A devastating long-ranged rifle.
-^yellow;Inflicts electrified status^reset;
+^yellow;Pierces tiles, increases damage with range^reset;
 ^cyan;Massive damage alt-fire^reset;",
   "shortdescription" : "Railgun",
   "tooltipKind" : "gun2",
@@ -32,7 +32,7 @@
       "color" : [10, 10, 100]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/hvmarauder3.wav" ]
     }
   },
   "baseOffset" : [0.87, 0.35],
@@ -47,7 +47,7 @@
     "class" : "GunFire",
 
     "fireTime" : 2.0,
-    "baseDps" : 8.2,
+    "baseDps" : 5.2,
     "energyUsage" : 32,
     "inaccuracy" : 0,
     "fireType" : "auto",
@@ -55,7 +55,8 @@
     "projectileType" : "furailgunshot",
     "projectileParameters" : {
       "knockback" : 20,
-      "speed" : 110,
+      "speed" : 100,
+      "power" : 2,
       "statusEffects" : [ "electrified" ]
     },
     "projectileCount" : 1,
