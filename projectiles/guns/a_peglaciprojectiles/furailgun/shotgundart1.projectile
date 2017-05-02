@@ -13,7 +13,6 @@
   "fullbright" : true,
    "lightColor" : [40, 40, 100],
   "damageKind" : "default",
-  "statusEffects" : [ "electrified" ],
    "actionOnReap" : [  
     {
       "action" : "projectile",
@@ -29,11 +28,11 @@
       "file" : "/projectiles/explosions/railgunshot/railgunshot.config"
     },    
     {
-      "time" : 0.06,
+      "time" : 0.02,
       "loop" : true,
       "action" : "projectile",
       "type" : "furailguntrail",
-      "inheritDamageFactor" :0,
+      "inheritDamageFactor" :0.015,
       "timeToLive" : 0.5,
       "fuzzAngle" : 0,
       "projectileParameters" : { "damageSourceKind" : "electric" }

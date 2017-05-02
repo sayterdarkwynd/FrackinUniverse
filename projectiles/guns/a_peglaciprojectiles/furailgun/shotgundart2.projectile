@@ -7,13 +7,12 @@
   "bounces" : 0,
   "frameNumber" : 3,  
   "pointLight" : false,
-  "timeToLive" : 0.35,
-  "speed" :100,
+  "timeToLive" : 0.25,
+  "speed" :120,
   "power" : 10,
   "fullbright" : true,
    "lightColor" : [40, 40, 100],
   "damageKind" : "default",
-  "statusEffects" : [ "electrified" ],
    "actionOnReap" : [
     {
       "action" : "projectile",
@@ -24,17 +23,17 @@
   ],  
     "periodicActions":[
     {
-      "time" : 0.03,
+      "time" : 0.01,
       "action" : "config",
       "file" : "/projectiles/explosions/railgunshot/railgunshot.config"
     },
     
     {
-      "time" : 0.06,
+      "time" : 0.02,
       "loop" : true,
       "action" : "projectile",
       "type" : "furailguntrail",
-      "inheritDamageFactor" :0.0,
+      "inheritDamageFactor" :0.03,
       "timeToLive" : 0.5,
       "fuzzAngle" : 0,
       "projectileParameters" : { "damageSourceKind" : "electric" }
