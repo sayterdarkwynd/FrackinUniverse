@@ -1,48 +1,113 @@
 {
-  "type" : "dirtburrowersegment",
-  "shortdescription" : "A segment of a camoflauged worm burrowing through the earth",
-  "description" : "A segment of a camoflauged burrowing worm",
- 
- "categories" : [ "dirtburrowersegment" ],
+  "type" : "copperburrower",
+  "shortdescription" : "A camoflauged worm burrowing through the earth",
+  "description" : "A camoflauged worm burrowing through the earth",
+
+  "categories" : [ "copperburrower" ],
   "parts" : [ "body" ],
 
-  "animation" : "dirtburrower.animation",
+  "animation" : "copperburrower.animation",
 
   "dropPools" : [ ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monstersegment.lua",
-      "/monsters/segmented/burrowers/burrower.lua"
+      "/monsters/monstersegment.lua"
     ],
 
     "behavior" : "monster",
-
-    "renderLayer" : "foregroundEntity",
+    "deathBehavior" : "monster-death",
+    "renderLayer" : "foregroundEntity+8",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
-
-      "targetQueryRange" : 20,
+      "seeThroughLiquid" : true,
+      "targetQueryRange" : 35,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
+      "keepTargetInRange" : 80,
+      "targetOutOfSightTime" : 5.0,
 
-      "foundTargetActions" : [],
+      "damageTakenActions" : [
+      ],
 
-      "fleeActions" : [],
+      "foundTargetActions" : [ ],
 
-      "hostileActions" : [],
-
-      "periodicActions" : [],
-
-      "approachActions" : [],
-
-      "followActions" : [],
-
-      "wanderActions" : []
+      "fleeActions" : [ ],
       
+      "hostileActions" : [
+      ],
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+    	    "minRange" : 1,
+    	    "maxRange" : 1,
+    	    "targetOffset" : [0,-6],
+    	    "avoidLiquid" : false,
+    	    "usePathfinding" : false,
+          "stopForce" : 30
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+      	  "parameters" : {
+            "ceilingDistance" : 2,
+      	    "groundDistance" : 2,
+            "xVelocity": 12,
+            "yVelocity": 16
+      	  }
+        }
+      ],
+       "concurrentHostileActions" : [
+	{
+	  "name" : "action-burroweffect"
+	},
+	{
+	  "name" : "action-aim-head"
+	}
+       
+      ],
+       "concurrentActions" : [
+	{
+	  "name" : "action-burroweffect"
+	},
+	{
+	  "name" : "action-aim-head"
+	}
+       
+      ],
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "copperdeath",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
     },
 
     "touchDamage" : {
@@ -63,19 +128,20 @@
       "collisionEnabled" : false,
       "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
 
-      "mass" : 1.0,
+      "mass" : 2.0,
       "walkSpeed" : 4,
       "runSpeed" : 12,
       "gravityEnabled" : false,
 
       "airFriction" : 0.75,
-      "airForce" : 15,
-      "flySpeed" : 25
+      "airForce" : 20,
+      "flySpeed" : 15
+
     },
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.0,
+    "knockoutTime" : 0.01,
     "knockoutAnimationStates" : {
       "damage" : "stunned"
     },
@@ -101,10 +167,13 @@
           "baseValue" : 0
         },
         "knockbackThreshold" : {
-          "baseValue" : 500
+          "baseValue" : 999
+        },
+        "grit" : {
+          "baseValue" : 1
         },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 500
         },
         "protection" : {
           "baseValue" : 0.0
@@ -162,10 +231,8 @@
     "capturable" : false,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
-    "segments" : 0,
-    "segmentMonster" : "dirtburrowersegment",
-    "radius" : 1.0,
-    "burrowProjectile" : "dirtburrow",
-    "burrowBurstProjectile" : "dirtburrowburst"
+    "segments" : 7,
+    "segmentMonster" : ["copperburrowertail", "copperburrowersegment", "copperburrowersegment", "copperburrowersegment", "copperburrowersegment", "copperburrowersegment", "copperburrowersegment"],
+    "radius" : 1.0
   }
 }
