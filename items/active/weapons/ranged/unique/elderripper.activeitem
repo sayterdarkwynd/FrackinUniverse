@@ -8,10 +8,10 @@
 ^yellow;Piercing attack^reset;",
   "shortdescription" : "Ripper Gun",
   "category" : "Abomination",
-  "level" : 6,
+  "level" : 7,
   "tooltipKind" : "gun2",
   "weaponType" : "Elder",
-  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon", "elder"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon", "elder"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/elderripper.animation",
@@ -38,20 +38,15 @@
   "primaryAbility" : {
         "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.35,
-    "baseDps" : 11.25,
-    "energyUsage" : 47.5,
-    "inaccuracy" : 0.02,
+    "fireTime" : 1.2,
+    "baseDps" : 9.0,
+    "energyUsage" : 70,
+    "inaccuracy" : 0.002,
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "elderharpoon",
-    "projectileParameters" : {
-      "speed" : 64,
-      "knockback" : 8,
-      "knockbackDirectional" : true,
-      "lightColor" : [221, 227, 49]
-    },
+    "projectileParameters" : {},
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0,

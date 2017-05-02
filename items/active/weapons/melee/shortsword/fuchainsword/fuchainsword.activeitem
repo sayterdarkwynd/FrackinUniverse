@@ -1,0 +1,50 @@
+{
+  "itemName" : "fuchainsword",
+  "price" : 3960,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Don't mess with a War Angel.
+^cyan;Causes Bleeding^reset;",
+  "shortdescription" : "Chain Blade",
+  "tooltipKind" : "sword",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "melee", "broadsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "warangelchainsaw.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/fuchainsword/fuchainsword.animation",
+  "animationParts" : {
+    "handle" : "handle.png",
+    "handlefullbright" : "handlefullbright.png",
+    "blade" : "blade.png",
+    "bladefullbright" : "bladefullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ],
+      "fire2" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ],
+      "fire3" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/energymeleeweapon.lua"],
+  
+  "activeTime" : 20.5,
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.03,
+    "baseDps" : 10.67,
+    "damageConfig" : {
+      "statusEffects" : [ "bleedingshort" ]
+    }
+  },
+  
+  "altAbilityType" : "phasecharge",
+
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -13,7 +13,8 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/boss/fubahamut/monster.lua"
+      "/monsters/boss/fubahamut/monster.lua",
+      "/stats/monstereffects/monsterstatus_fallimmune.lua"
     ],
 
     "behavior" : "monster",
@@ -54,44 +55,24 @@
           }
         },             
         {
-          "name" : "action-leap", 
-          "cooldown" : 1,
-          "parameters" : {
-            "minimumRange" : 5,
-            "maximumRange" : 20,
-            "maxXRange" : 45,
-            "windupTime" : 0.3,
-            "windupState" : "stand",
-
-            "leapVelocity" : 55,
-            "collisionCheck" : true,
-            "highArc" : true,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },
-        {
           "name" : "action-fire",
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 7,
             "minimumRange" : 0,
-            "windupState" : "melee",
+            "windupState" : "chargewindup",
             "windupSound" : "turnHostile",
             "windupTime" : 0.3,
 
             "projectileType" : "raptorbite3",
-            "power" : 11,
+            "power" : 10,
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : false,
             "projectileCount" : 1,
             "projectileInterval" : 0.01,
             "fireSound" : "attack",
-            "range": 8,
-            "fireState" : "",
+            "fireDelay" : 0.5,
+            "fireState" : "melee",
             "winddownState" : "",
             "winddownTime" : 0.1
           }
@@ -103,44 +84,43 @@
             "requireLineOfSight" : true,
             "maximumRange" : 15,
             "minimumRange" : 4,
-            "windupState" : "fire",
+            "windupState" : "",
             "windupTime" : 0.40,
 
             "projectileType" : "bahamuttentacle1",
-            "power" : 0,
+            "power" : 7,
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : true,
             "fireSound" : "attackSound",
-            "range": 15,
-            "fireState" : "",
+            "fireState" : "fire",
+            "fireDelay" : 0.6,
             "winddownState" : "",
             "winddownTime" : 0.6
           }
-        }             
-      ],
-
-      "periodicActions" : [
+        },
         {
           "name" : "action-leap", 
-          "cooldown" : 1,
+          "cooldown" : 6,
           "parameters" : {
             "minimumRange" : 6,
-            "maximumRange" : 20,
-            "maxXRange" : 25,
+            "maximumRange" : 30,
+            "maxXRange" : 30,
             "windupTime" : 0.3,
             "windupState" : "stand",
 
             "leapVelocity" : 88,
             "collisionCheck" : true,
-            "highArc" : false,
+            "highArc" : true,
             "leapState" : "jump",
             "fallState" : "fall",
 
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        }
+        }         
       ],
+
+      "periodicActions" : [],
 
       "approachActions" : [
         {
@@ -182,7 +162,27 @@
           "parameters" : {
             "resetHeading" : false
           }
-        }      
+        },
+        {
+          "name" : "action-leap", 
+          "cooldown" : 1,
+          "parameters" : {
+            "minimumRange" : 6,
+            "maximumRange" : 20,
+            "maxXRange" : 25,
+            "windupTime" : 0.3,
+            "windupState" : "stand",
+
+            "leapVelocity" : 88,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }         
       ],
 
       "wanderActions" : [
@@ -194,37 +194,9 @@
         }       
       ],
 
-      "concurrentActions" : [
-        {
-          "name" : "action-leap", 
-          "cooldown" : 1,
-          "parameters" : {
-            "minimumRange" : 6,
-            "maximumRange" : 20,
-            "maxXRange" : 25,
-            "windupTime" : 0.3,
-            "windupState" : "stand",
-
-            "leapVelocity" : 98,
-            "collisionCheck" : true,
-            "highArc" : false,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        }        
-      ],
-      "concurrentHostileActions" : [
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 5,
-          "parameters" : {
-          "effect" : "nofalldamage",
-          "duration" : 50
-          }
-        },      
+      "concurrentActions" : [],
+      
+      "concurrentHostileActions" : [            
         {
           "name" : "action-fire",
 	  "cooldown" : 5,
@@ -232,31 +204,32 @@
             "requireLineOfSight" : true,
             "maximumRange" : 25,
             "minimumRange" : 5,
-            "windupState" : "fire2",
+            "windupState" : "",
             "windupTime" : 0.6,
 
             "projectileType" : "bahamuttentacle2",
-            "power" : 0,
+            "power" : 5,
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : true,
             "fireSound" : "attackSound",
             "range": 25,
-            "fireState" : "",
+            "fireState" : "fire2",
+            "fireDelay" : 0.7,
             "winddownState" : "",
             "winddownTime" : 0.8
           }
         },    
         {
           "name" : "action-swoosh-charge",
-          "cooldown" : 8,
+          "cooldown" : 15,
           "parameters" : {
             "maximumRange" : 20,
             "minimumRange" : 2,
             "windupTime" : 0.5,
 
             "chargeTime" : 0.5,
-            "chargeSpeed" : 38,
-            "chargeControlForce" : 300,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 1400,
             "wallKnockback" : true,
             "wallCrashSound" : "wallCrash",
             "wallCrashEmitter" : "",
@@ -265,31 +238,9 @@
             "winddownStopForce" : 500,
 
             "projectileType" : "bioblast3",
-            "fireOffset" : [1,-0.4],
-            "projectileParameters" : {
-            }
+            "fireOffset" : [1,-0.4]
           }
-        },        
-        {
-          "name" : "action-charge",
-          "cooldown" : 3,
-          "parameters" : {
-            "maximumRange" : 20,
-            "windupState" : "chargewindup",
-            "windupTime" : 0.3,
-
-            "chargeTime" : 0.5,
-            "chargeSpeed" : 40,
-            "chargeControlForce" : 1200,
-            "chargeState" : "charge",
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
-            "fireSound" : "chargeSound",
-            "winddownTime" : 0.2,
-            "winddownStopForce" : 1200,
-            "winddownState" : "chargewinddown"
-          }
-        }      
+        }     
       ]
     },
 
@@ -315,7 +266,7 @@
       "airForce" : 70.0,
 
       "airJumpProfile" : {
-        "jumpSpeed" : 25.0            
+        "jumpSpeed" : 65.0            
       }
     },
 
@@ -373,12 +324,14 @@
         "powerMultiplier" : {
           "baseValue" : 1.32
         },
-        "poisonResistance" : { "baseValue" : 0.6 },
+        "poisonResistance" : { "baseValue" : 0.4 },
         "fireResistance" : { "baseValue" : -0.4 },
         "iceResistance" : { "baseValue" : -0.2 },
-        "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0.5 }
+        "electricResistance" : { "baseValue" : 0.3 },
+        "physicalResistance" : { "baseValue" : 0.25 },
+        "shadowResistance" : { "baseValue" : 0 },
+        "cosmicResistance" : { "baseValue" : 0.4 },
+        "radioactiveResistance" : { "baseValue" : 0.5 }
       },
 
       "resources" : {

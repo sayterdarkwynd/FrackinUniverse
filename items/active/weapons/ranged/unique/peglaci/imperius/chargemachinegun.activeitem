@@ -5,14 +5,14 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Exceptionally powerful.
-^yellow;Increases fire speed^reset;
+^yellow;Alt-Fire slows enemies^reset;
 ^green;+Sustained Fire^reset;
 ^red;-Slowed^reset;",
   "shortdescription" : "Imperius Minigun",
-  "category" : "Minigun",
+  "category" : "Chaingun",
   "level" : 4,
   "tooltipKind" : "gun2",
-  "weaponType" : "Vulcan",
+  "weaponType" : "assaultrifle",
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
@@ -88,6 +88,11 @@
   "critChance" : 1,
   "critBonus" : 2,
   "altAbilityType" : "spray",
+  "altAbility" : {
+    "name" : "Stun Shot",
+    "fireTime" : 0.25,
+    "projectileType" : "fuaegisaltminigunshot1a"
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

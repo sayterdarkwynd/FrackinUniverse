@@ -37,7 +37,7 @@ function transferUtil.initTypes()
 	transferUtil.itemTypes["augments"]={"eppaugment","fishinglure","fishingreel","petcollar","clothingdye"}
 	transferUtil.itemTypes["building"]={"techmanagement","crafting","machinery","spawner","terraformer","trap","wire","light","furniture","decorative","door","fridgestorage","teleporter","teleportmarker","shippingcontainer","storage"}
 	transferUtil.itemTypes["farming"]={"seed","sapling","farmbeastegg","farmbeastfood","farmbeastfeed"}
-	transferUtil.itemTypes["armor"]={"headarmor", "chestarmor", "legsarmor", "backarmor","enviroprotectionpack"} 
+	transferUtil.itemTypes["armor"]={"headarmor", "chestarmor", "legsarmor", "backarmor","headarmour", "chestarmour", "legsarmour", "backarmour","enviroprotectionpack"} 
 	transferUtil.itemTypes["cosmeticarmor"]={"chestwear","legwear","headwear","backwear"}
 	transferUtil.itemTypes["reagents"]={"craftingmaterial","cookingingredient","fuel"}
 	transferUtil.itemTypes["books"]={"blueprint", "codex"}
@@ -73,7 +73,6 @@ function transferUtil.routeItems()
 											if leftOverItems~=nil then
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
 												item=leftOverItems
-												break
 											else
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 												break
@@ -86,7 +85,7 @@ function transferUtil.routeItems()
 										local tempQuantity=item.count-leftOverItems.count
 										if tempQuantity > 0 then
 											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
-											break
+											--break
 										end
 									else
 										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)

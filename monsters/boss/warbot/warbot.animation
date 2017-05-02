@@ -8,64 +8,116 @@
           "idle" : {
             "frames" : 1,
             "cycle" : 1,
-            "mode" :"loop"
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "charge" ]
+            }    
           },
+          
           "walk" : {
             "frames" : 8,
             "cycle" : 1.6,
-            "mode" :"loop"
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "charge" ]
+            }    
           },
+          "chestcharge" : {
+            "frames" : 1,
+            "cycle" : 1.5,
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOn" : [ "charge" ]
+            }    
+          },          
           "chestgun" : {
             "frames" : 4,
             "cycle" : 1.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }             
           }, 
           "dualgun" : {
             "frames" : 5,
             "cycle" : 1.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }             
           },          
           "fire" : {
             "frames" : 6,
             "cycle" : 1.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }            
           },
           "firewindup" : {
             "frames" : 1,
-            "cycle" : 0.3
+            "cycle" : 0.3,
+            "properties" : {
+             "particleEmittersOff" : [ "charge" ]
+            }
           }, 
           
           "firewinddown" : {
             "frames" : 1,
-            "cycle" : 0.2
-          },           
+            "cycle" : 0.2,
+            "properties" : {
+             "particleEmittersOff" : [ "charge" ]
+            }
+          },    
+          "winddownfire1" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "properties" : {
+             "particleEmittersOff" : [ "charge" ]
+            }
+          },   
+          "winddownfire2" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "properties" : {
+             "particleEmittersOff" : [ "charge" ]
+            }
+          },  
+          "winddownfire3" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+             "particleEmittersOff" : [ "charge" ]
+            }
+          },            
           "jump" : {
             "frames" : 4,
-            "cycle" : 1.0,
-            "mode" :"loop"
+            "cycle" : 0.6,
+            "properties" : {
+             "particleEmittersOff" : [ "charge" ]
+            }
           },
           "fall" : {
             "frames" : 1,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "properties" : {
+             "particleEmittersOff" : [ "charge" ]
+            }
           },
           "chargewindup" : {
             "frames" : 1,
             "cycle" : 0.35,
             "properties" : {
-             "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg"
+             "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg",
+             "particleEmittersOff" : [ "charge" ]
             }
           },
           "chargewindup2" : {
             "frames" : 1,
             "cycle" : 0.35,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain2.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_pain2.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }
           },          
           "chargewinddown" : {
@@ -74,7 +126,8 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain3.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_pain3.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }
           },
           "chargewinddown2" : {
@@ -83,28 +136,32 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }
           },           
           "charge" : {
             "frames" : 3,
             "cycle" : 0.5,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain2.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_pain2.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }
           },
           "charge2" : {
             "frames" : 3,
             "cycle" : 0.5,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain3.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_pain3.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }
           },   
           "jumpwindup" : {
             "frames" : 1,
             "cycle" : 0.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg"
+              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg",
+              "particleEmittersOff" : [ "charge" ]
             }
           },            
           "jumpattack" : {
@@ -114,7 +171,8 @@
             "transition" : "idle",
             "properties" : {
               "persistentSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg",
-              "persistentSoundStopTime" : 1.25
+              "persistentSoundStopTime" : 1.25,
+              "particleEmittersOff" : [ "charge" ]
             }
           }
         }
@@ -170,6 +228,11 @@
                 "image" : "<partImage>:jump.<frame>"
               }
             },
+            "chestcharge" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },            
             "jumpwindup" : {
               "properties" : {
                 "image" : "<partImage>:jumpwindup.<frame>"
@@ -200,6 +263,21 @@
                 "image" : "<partImage>:winddown.<frame>"
               }
             },
+            "winddownfire1" : {
+              "properties" : {
+                "image" : "<partImage>:winddownfire1.<frame>"
+              }
+            }, 
+            "winddownfire2" : {
+              "properties" : {
+                "image" : "<partImage>:winddownfire2.<frame>"
+              }
+            }, 
+            "winddownfire3" : {
+              "properties" : {
+                "image" : "<partImage>:winddownfire3.<frame>"
+              }
+            },             
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:charge.<frame>",
@@ -263,7 +341,20 @@
   },
   
   "particleEmitters" : {
-
+    "charge" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 3.0, 1.0, 3.0, 1.0 ],
+      "particles" : [
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "ancientenergy1" },
+        { "particle" : "ancientenergy1" },
+        { "particle" : "ancientenergy2" },
+        { "particle" : "ancientenergy2" }
+      ]
+    },
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
