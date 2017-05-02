@@ -34,6 +34,7 @@ function update(dt)
 	end
 	
 	if not self.followRadius then
+	  monster.setDamageBar("none")
 	  self.parentRadius =  config.getParameter("parentRadius",1)
 	  local segmentRadius = config.getParameter("radius",1)
 	  self.followRadius =  segmentRadius + self.parentRadius
