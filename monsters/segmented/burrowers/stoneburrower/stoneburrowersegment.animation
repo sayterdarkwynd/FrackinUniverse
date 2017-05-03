@@ -11,13 +11,13 @@
         "states" : {
           "idle" : {
             "frames" : 4,
-	    "mode" : "loop",
-	    "cycle" : 1
+            "mode" : "loop",
+            "cycle" : 1
           },
           "fly" : {
             "frames" : 4,
-	    "mode" : "loop",
-	    "cycle" : 1
+            "mode" : "loop",
+            "cycle" : 1
           }
         }
       },
@@ -32,34 +32,14 @@
             "frames" : 1
           }
         }
-      },
-      "releaseParticles" : {
-        "default" : "off",
-        "states" : {
-          "off" : {
-            "frames" : 1,
-            "properties" : {
-              "particleEmittersOff" : [ "releaseParticles" ]
-            }
-          },
-          "on" : {
-            "frames" : 1,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "off",
-            "properties" : {
-              "particleEmittersOn" : [ "releaseParticles" ]
-            }
-          }
-        }
       }
     },
-
     "parts" : {
       "body" : {
         "properties" : {
           "transformationGroups" : [ "body", "aim" ],
-          "centered" : true
+          "centered" : true,
+          "zlevel" : 20
         },
         "partStates" : {
           "body" : {
@@ -72,12 +52,12 @@
               "properties" : {
                 "image" : "<partImage>:<groundState>.<frame>"
               }
-            }
-          },
-          "damage" : {
-            "stunned" : {
-              "properties" : {
-                "image" : "<partImage>:<groundState>.<frame>"
+            },
+            "damage" : {
+              "stunned" : {
+                "properties" : {
+                  "image" : "<partImage>:<groundState>.<frame>"
+                }
               }
             }
           }
@@ -85,25 +65,24 @@
       }
     }
   },
-
   "transformationGroups" : {
-    "body" : { 
-	"interpolated" : true,
-    	"rotationCenter" : [0,0],
-	"angularVelocity" : 1.5 
-	},
-    "aim" : { 
-	"interpolated" : true,
-    	"rotationCenter" : [0,0],
-	"angularVelocity" : 1.5 
-	}
+      "body" : { 
+        "interpolated" : true,
+        "rotationCenter" : [0,0],
+        "angularVelocity" : 1.5 
+      },
+      "aim" : { 
+         "interpolated" : true,
+         "rotationCenter" : [0,0],
+         "angularVelocity" : 1.5 
+      }  
   },
   "rotationGroups" : {
     "body" : { 
-    	"rotationCenter" : [0,0],
-	"angularVelocity" : 1.5 }
+      "rotationCenter" : [0,0],
+      "angularVelocity" : 1.5 
+    }
   },
-
   "effects" : {
     "blink" : {
       "type" : "flash",
@@ -148,31 +127,6 @@
         { "particle" : "deathfizz3right" },
         { "particle" : "deathfizz4left" },
         { "particle" : "deathfizz4right" }
-      ]
-    },
-    "captureParticles" : {
-      "particles" : [
-        { "particle" : "monstercapture" }
-      ]
-    },
-    "releaseParticles" : {
-      "particles" : [
-        { "particle" : "monsterrelease" }
-      ]
-    },
-    "teleportOut" : {
-      "particles" : [
-        { "particle" : "monstercapture" }
-      ]
-    },
-    "teleportIn" : {
-      "particles" : [
-        { "particle" : "monsterrelease" }
-      ]
-    },
-    "levelUp" : {
-      "particles" : [
-        { "particle" : "monsterlevelup" }
       ]
     }
   },
