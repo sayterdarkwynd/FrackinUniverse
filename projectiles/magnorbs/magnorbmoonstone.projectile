@@ -1,0 +1,40 @@
+{
+  "projectileName" : "magnorbmoonstone",
+  "image" : "magnorbmoonstone.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+
+  "statusEffects" : [ ],
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 55,
+  "damageKind" : "poison",
+  "physics" : "stickygrenade",
+  "bounces" : 0,
+  "timeToLive" : 4,
+
+  "actionOnReap" : [ 
+    {
+      "action" : "projectile",
+      "type" : "precursorexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0
+    },
+    { "action" : "sound", "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ] }
+  ],
+  
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "precursorexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0
+    },
+    { "action" : "sound", "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ] }
+  ]
+
+    
+}
