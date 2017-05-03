@@ -1,12 +1,12 @@
 {
-  "type" : "aquasnakesegment",
-  "shortdescription" : "A segment of a aqua sphere snake",
-  "description" : "A snake-like construct composed of aqua disrotion spheres",
- 
- "categories" : [ "aquasnake" ],
+  "type" : "spheresnake2",
+  "shortdescription" : "The head of a distortion sphere snake",
+  "description" : "A snake-like construct composed of distortion spheres",
+
+  "categories" : [ "spheresnake2" ],
   "parts" : [ "body" ],
 
-  "animation" : "aquasnake.animation",
+  "animation" : "spheresnake2.animation",
 
   "dropPools" : [ ],
 
@@ -18,30 +18,81 @@
 
     "behavior" : "monster",
 
-    "renderLayer" : "foregroundEntity",
+    "renderLayer" : "foregroundEntity+11",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 35,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
       "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
+      "targetOutOfSightTime" : 5.0,
 
-      "foundTargetActions" : [],
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 10,
+          "parameters" : {
+            "effect" : "mage_shield_lvl4starspawn",
+            "duration" : 5
+          }
+        }       
+      ],
 
-      "fleeActions" : [],
+      "foundTargetActions" : [ ],
 
-      "hostileActions" : [],
-
+      "fleeActions" : [ ],
+      
+      "hostileActions" : [
+        {
+         "cooldown" : 0.5,
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "gasburst",
+            "power" : 2,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }        
+      ],
       "periodicActions" : [],
 
-      "approachActions" : [],
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+	    "minRange" : 0,
+	    "maxRange" : 1,
+	    "targetOffset" : [0,-4],
+	    "avoidLiquid" : false,
+	    "usePathfinding" : false
+          }
+        }
+      ],
 
-      "followActions" : [],
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+          }
+        }
+      ],
 
-      "wanderActions" : []
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+	  "parameters" : {
+	    "groundDistance" : 2
+	  }
+        }
+      ]
     },
 
     "touchDamage" : {
@@ -68,8 +119,9 @@
       "gravityEnabled" : false,
 
       "airFriction" : 2.0,
-      "airForce" : 500,
+      "airForce" : 40,
       "flySpeed" : 15
+
     },
 
     "bodyMaterialKind" : "organic",
@@ -100,13 +152,13 @@
           "baseValue" : 0
         },
         "knockbackThreshold" : {
-          "baseValue" : 100
+          "baseValue" : 150
         },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 500
         },
         "protection" : {
-          "baseValue" : 0.5
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -115,7 +167,7 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.1
         },
         "fireResistance" : {
           "baseValue" : 0.0
@@ -161,8 +213,8 @@
     "capturable" : true,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
-    "segments" : 0,
-    "segmentMonster" : "aquasnakesegment",
+    "segments" : 10,
+    "segmentMonster" : "spheresnakesegment2",
     "radius" : 0.85,
     "frames" : 8
   }
