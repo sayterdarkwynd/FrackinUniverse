@@ -7,10 +7,11 @@
   "bounces" : 0,
   "frameNumber" : 1,  
   "pointLight" : false,
+  "fullbright" : true,
   "speed" :80,  
   "lightColor" : [40, 40, 100],
   "actionOnReap" : [
-  	{
+    {
       "action" : "config",
       "file" : "/projectiles/guns/a_peglaciprojectiles/furailgun/furailgunexplosion.config"
     },
@@ -21,8 +22,25 @@
       "angleAdjust" : 0
     }
   ],
-  "damageKind" : "default",
-  "emitters" : [ "peglacitrail" ]
+  "damageKind" : "electric",
+  "emitters" : [ "peglacitrail" ],    
+    "periodicActions":[
+    {
+      "time" : 0,
+      "action" : "config",
+      "file" : "/projectiles/explosions/railgunshot/railgunshot.config"
+    },    
+    {
+      "time" : 0.06,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "furailguntrail",
+      "inheritDamageFactor" :0,
+      "timeToLive" : 0.5,
+      "fuzzAngle" : 0,
+      "projectileParameters" : { "damageSourceKind" : "electric" }
+   }
+    ]
 }
 
 

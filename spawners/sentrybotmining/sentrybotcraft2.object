@@ -1,0 +1,34 @@
+{
+  "objectName" : "sentrybotmining2",
+  "rarity" : "rare",
+  "description" : "Will scan ores up to Tier 4.",
+  "shortdescription" : "Ore Drone II",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 450,
+  "printable" : false,
+  "learnBlueprintsOnPickup" : [ "sentrybotmining3" ],
+  "inventoryIcon" : "sentrybotcrafticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sentrybotcraft.png:<color>",
+
+      "imagePosition" : [-5, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "botspawner" : {
+      "type" : "miningdrone2",
+	  "monsterImage":"/monsters/flyers/miningdrone/miningdrone.png:idle.1?"
+  },
+  
+  "scripts" : [ 
+    "/spawners/fubotspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

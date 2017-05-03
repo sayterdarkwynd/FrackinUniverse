@@ -1,29 +1,29 @@
 {
   "projectileName" : "fuaegisaltminigunshot1a",
   "image" : "dart.png",
-  "animationCycle" : 0.5,
-  "armorPenetration" : 3,
-  "physics" : "bullet",
-  "bounces" : 0,
+  "animationCycle" : 0.1,
+  "armorPenetration" : 5,
+  "physics" : "laser",
   "frameNumber" : 1,  
   "pointLight" : false,
-  "speed" :20,
+  "speed" :60,
+  "timeToLive" : 2,
   "lightColor" : [10, 50, 10],
-  "timeToLive" : 0.01,
-"actionOnReap" : [
-	 {
-      "action" : "projectile",
-      "type" : "fuaegisaltminigunshot1",
-      "inheritDamageFactor" : 1,
-	  "fuzzAngle" : 2,
-      "angleAdjust" : -90
-    }
-  ],  
-    "statusEffects" : [
-	"slow"
-  ],
-  "damageKind" : "default",
-  "emitters" : [ "peglacitrailpurple" ]
+  "statusEffects" : ["slow"],
+  "damageKind" : "electric",  
+  "emitters" : [ "peglacitrailpurple" ],
+	  "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/plasmaboomsmall2/plasmaboomsmall3.config"
+	    }
+	  ],       
+	  "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/plasmaboomsmall2/plasmaboomsmall3.config"
+	    }
+	  ]     
 }
 
 
