@@ -1,0 +1,66 @@
+{
+  "projectileName" : "magnorbmoonstone",
+  "image" : "magnorbmoonstone.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 75,
+  "damageKind" : "poison",
+  "physics" : "beachball",
+  "fullbright" : true,
+  "bounces" : 12,
+  "timeToLive" : 4,
+  "statusEffects" : [ "weakpoison" ],
+  "actionOnReap" : [ 
+    {
+      "action" : "projectile",
+      "type" : "precursorexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0
+    },
+    { "action" : "sound", "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ] }  
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.08,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "plasmaball2",
+      "inheritDamageFactor" : 0.1,
+      "fuzzAngle" : 360
+   },
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/magnorbs/magnorbmoonstone.png",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    }
+  ],  
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "plasmaball2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.25,
+      "angleAdjust" : 0
+    },
+    { "action" : "sound", "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ] }
+  ],
+
+  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
+
+    
+}

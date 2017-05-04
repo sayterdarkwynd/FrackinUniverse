@@ -1,0 +1,55 @@
+{
+  "projectileName" : "corruptpumpgasspray",
+  "image" : "corruptpumpgas.png",
+  "physics" : "gas",
+  "animationCycle" : 0.8,
+  "frameNumber" : 8,
+  "power" : 3,
+  "speed" : 15,
+  "timeToLive" : 0.01,
+  "bounces" : 1,
+  "damagePoly" : [ [-18, 0], [-12, -12], [0, -18], [12, -12], [18, 0], [12, 12], [0, 18], [-12, 12] ],
+  "piercing" : true,
+  "statusEffects" : [
+    "weakpoison"
+  ],
+  "damageKind" : "default",
+  "damageKindImage" : "/interface/statuses/poison.png",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "corruptpumpgas",
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 1,
+      "angleAdjust" : 30
+    },
+    {
+      "action" : "projectile",
+      "type" : "corruptpumpgas",
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 1,
+      "angleAdjust" : 15
+    },
+    {
+      "action" : "projectile",
+      "type" : "corruptpumpgas",
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "corruptpumpgas",
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 1,
+      "angleAdjust" : -15
+    },
+    {
+      "action" : "projectile",
+      "type" : "corruptpumpgas",
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 1,
+      "angleAdjust" : -30
+    }
+  ]
+}

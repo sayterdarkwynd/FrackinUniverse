@@ -1,0 +1,39 @@
+{
+  "projectileName" : "poisonbouncer2",
+  "physics" : "paperplane",
+  "timeToLive" : 1,
+  "image" : "poisonbouncer.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [80, 110, 30],
+  "frameNumber" : 4,
+  
+  "periodicActions" : [ ],
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/poisonimpact.config"
+    }
+  ],
+  "speed" : 10,
+  "power" : 2,
+  "piercing" : true,
+  "damageKind" : "poison",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "weakpoison" ],
+
+  "fullbright" : true,
+  "emitters" : [ "poisonplasma" ],
+
+  "bounces" : 1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua", "/projectiles/activeitems/staff/elementbouncer/bouncespikes.lua" ],
+
+  "spikeProjectile" : "poisonstickyspikes",
+  "spikeDamageFactor" : 0.1,
+
+  "controlMovement" : {
+    "maxSpeed" : 30,
+    "controlForce" : 30
+  }
+}
