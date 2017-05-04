@@ -1,0 +1,48 @@
+{
+  "objectName" : "precursordoor",
+  "colonyTags" : ["fu","science","door"],
+  "rarity" : "rare",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "This door is made of light.",
+  "shortdescription" : "Precursor Door",
+  "race" : "apex",
+ "lightColor" : [0, 166, 166],
+  "inventoryIcon" : "precursordooricon.png",
+  "orientations" : [
+    {
+      "image" : "precursordoor.png:default",
+      "flipImages" : true,
+      "imagePosition" : [-20, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "precursordoor.png:default",
+      "imagePosition" : [-20, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "close" : [ "/sfx/objects/apexcooldoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "precursordoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

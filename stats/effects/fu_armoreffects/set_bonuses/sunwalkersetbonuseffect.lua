@@ -5,6 +5,9 @@ weaponBonus={
 }
 
 armorBonus={
+        {stat = "biomecoldImmunity", amount = 1},
+        {stat = "biomeheatImmunity", amount = 1},
+        {stat = "biomeradiationImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},
 	{stat = "ffextremeheatImmunity", amount = 1},
@@ -32,9 +35,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"plasma"})
-	if weapons["both"] then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
-	elseif weapons["either"] then
+	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})

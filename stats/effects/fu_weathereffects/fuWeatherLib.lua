@@ -24,12 +24,14 @@ function fuWeatherLib.init()
 	
 	-- biome temperature modifier
 	self.biomeTemp = config.getParameter("biomeTemp",0)			
-	self.biomeThreshold = config.getParameter("biomeThreshold",0)		-- base Modifier
-	
 	
 	-- biome Level
 	self.threatLevel = world.threatLevel()
 	
+	--set final biomeTemp
+	self.biomeTemp = (self.biomeTemp) + ((self.threatLevel/25))
+	
+	self.biomeThreshold = config.getParameter("biomeThreshold",0)		-- base Modifier
 	
 	-- situational modifiers
 	self.biomeNightModifier = config.getParameter("biomeNightModifier",1)	-- if set to anything other than one, multiplies base by that during night

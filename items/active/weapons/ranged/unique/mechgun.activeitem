@@ -7,16 +7,17 @@
   "description" : "A rifle popular in ages long-past by those known as the Precursors",
   "shortdescription" : "Precursor Rifle",
   "category" : "Energy Gun",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Rifle",
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "precursorgun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "mechgun.png",
+    "middlefullbright" : "mechgunfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
   },
@@ -31,7 +32,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -44,10 +45,9 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "precursorshot",
+    "projectileType" : "precursorshot2",
     "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 2
+      "knockback" : 3
     },
 	  "stances" : {
 	    "idle" : {

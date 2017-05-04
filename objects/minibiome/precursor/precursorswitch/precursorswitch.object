@@ -1,0 +1,53 @@
+{
+  "objectName" : "precursorswitch",
+  "colonyTags" : [ "wired", "precursor" ],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "What secrets does this ancient switch reveal?",
+  "shortdescription" : "Switch",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 20,
+
+  "inventoryIcon" : "precursorswitchicon.png",
+  "orientations" : [
+    {
+      "image" : "precursorswitch.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallbutton.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "precursorswitch.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "outputNodes" : [ [0, -1] ],
+
+  "interval" : 15,
+
+  "npcToy": {
+    "ownerOnly": true,
+    "influence" : [ "wallbutton" ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}
