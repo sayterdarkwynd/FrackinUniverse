@@ -102,9 +102,8 @@ function init()
 
   self.segments = config.getParameter("segments")
   self.child = config.getParameter("segmentMonster")
-  if self.segmentArray then
-	self.child = self.segmentArray[math.min(#self.segments,math.max(1,(#self.segmentArray - self.segments + 1)))]
-  end
+  self.segmentArray = type(self.child) == 'table' and self.child or nil
+  self.child = self.segmentArray and self.segmentArray[self.segments] or self.child
   if not config.getParameter("parent") then 
     self.head = entity.id()
     message.setHandler("headDamage", function(_,__,notification)
@@ -114,7 +113,14 @@ function init()
     end) 
   end
   if self.segments > 0 then 
-	self.child = world.spawnMonster(self.child, mcontroller.position(),{head = self.head and self.head or config.getParameter("head"), parent = entity.id(), segments = self.segments - 1, parentRadius = config.getParameter("radius"), renderLayer = "foregroundEntity+"..tostring(self.segments)})
+	self.child = world.spawnMonster(self.child, mcontroller.position(),
+	{
+	head = self.head and self.head or config.getParameter("head"), 
+	parent = entity.id(), 
+	segmentMonster = config.getParameter("segmentMonster"),
+	segments = self.segments - 1, 
+	parentRadius = config.getParameter("radius"), 
+	renderLayer = "foregroundEntity+"..tostring(self.segments)})
   end 
 end
 

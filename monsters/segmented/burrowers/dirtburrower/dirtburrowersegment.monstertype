@@ -6,7 +6,7 @@
  "categories" : [ "dirtburrowersegment" ],
   "parts" : [ "body" ],
 
-  "animation" : "burrower.animation",
+  "animation" : "dirtburrower.animation",
 
   "dropPools" : [ ],
 
@@ -68,8 +68,8 @@
       "runSpeed" : 12,
       "gravityEnabled" : false,
 
-      "airFriction" : 2.0,
-      "airForce" : 500,
+      "airFriction" : 0.75,
+      "airForce" : 15,
       "flySpeed" : 25
     },
 
@@ -131,10 +131,10 @@
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.0
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.95
+          "baseValue" : 0.0
         },
         "poisonResistance" : {
           "baseValue" : 0.0
@@ -159,12 +159,13 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
+    "capturable" : false,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
     "segments" : 0,
     "segmentMonster" : "dirtburrowersegment",
-    "radius" : 0.85,
-    "frames" : 8
+    "radius" : 1.0,
+    "burrowProjectile" : "dirtburrow",
+    "burrowBurstProjectile" : "dirtburrowburst"
   }
 }

@@ -280,7 +280,30 @@
       }
     }
   },    
-
+  { "op" : "add", "path" : "/planetSizes/mammoth",
+    "value" : {
+      "size" : [64000, 24000],
+      "gravityRange" : [120, 190],
+      "dayLengthRange" : [3200, 7000],
+      "layerDefaults" : {
+        "secondaryRegionPeriod" : [1500, 3000],
+        "secondaryRegionSize"   : [0.2, 0.92],
+        "secondaryRegionCount" : [1, 5],
+        "subRegionSize" : [0.15, 0.55],
+        "dungeonCountRange"     : [3, 8]
+      },
+      "layers" : {
+        "space"        : { "baseHeight" : 23500, "layerLevel" : 20600 },
+        "atmosphere"   : { "baseHeight" : 17500, "layerLevel" : 15500 },
+        "surface"      : { "baseHeight" : 14500, "layerLevel" : 12100 },
+        "subsurface"   : { "baseHeight" : 12000, "layerLevel" : 9000 },
+        "underground1" : { "baseHeight" : 7900, "layerLevel" : 7700 },
+        "underground2" : { "baseHeight" : 5575, "layerLevel" : 5200 },
+        "underground3" : { "baseHeight" : 2725, "layerLevel" : 2550 },
+        "core"         : { "baseHeight" : 600,  "layerLevel" : 0    }
+      }
+    }
+  },  
 
 //garden
 

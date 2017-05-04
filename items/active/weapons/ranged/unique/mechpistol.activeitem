@@ -13,10 +13,11 @@
   "tooltipKind" : "gun2",
   "weaponType" : "Pistol",
   "twoHanded" : false,
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "precursorpistol.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "mechpistol.png",
+    "middlefullbright" : "mechpistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
   },
@@ -30,7 +31,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -41,10 +42,7 @@
     "fireType" : "auto",
     "inaccuracy" : 0.001,
     "projectileCount" : 1,
-    "projectileType" : "precursorshotsmall",
-    "projectileParameters" : {
-      "speed" : 60
-    },
+    "projectileType" : "precursorshotsmall2",
     "stances" : {
       "idle" : {
         "armRotation" : 0,
