@@ -1,9 +1,13 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [    
-  "fudragontable",
-  "fudragonbed",
-  "fudragonchair",
-  "fudragonlamp",
-  "fudragontrophy"
-  ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudragontable" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudragonbed" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudragonchair" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudragonlamp" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudragontrophy" }
+  ]
 ]
