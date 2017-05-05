@@ -19,7 +19,7 @@
 
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
-      "damageOnTouch" : false,
+      "damageOnTouch" : true,
 
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
@@ -86,7 +86,7 @@
       "concurrentHostileActions" : [
 	{
 	  "name":"action-projectile",  
-	  "cooldown" : 0.06,
+	  "cooldown" : 0.08,
 	  "parameters":{
 	    "skillName":"glitterBurst", 
 	    "projectileCount":1, 
@@ -94,7 +94,6 @@
 	    "power":0.00001, 
 	    "damageKind" : "shadow",
 	    "damageSourceKind" : "shadow",
-	    "statusEffects" : [ "freezefu" ],
 	    "aimAtTarget":true, 
 	    "inaccuracy":0.0, 
 	    "fireOffset":[0,0]
