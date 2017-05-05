@@ -1,4 +1,13 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "fucellgun", "fu_lasereyestaff", "fumonsterclaw", "fucellsword" ] },
-        {"op":"replace","path":"/price","value": 20 }	
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fucellgun" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fu_lasereyestaff" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumonsterclaw" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fucellsword" },
+    {"op":"replace","path":"/price","value": 20 }
+  ]
 ]

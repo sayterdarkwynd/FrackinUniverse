@@ -127,7 +127,7 @@ function doUpgrade()
 		      }
 		  end   
 		  
-		  if (itemConfig.config.primaryAbility) then
+		  if (itemConfig.config.primaryAbility) then				  
 		    -- beams and miners
 			if (itemConfig.config.primaryAbility.beamLength) then
 			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
@@ -140,17 +140,24 @@ function doUpgrade()
 			  }
 			end	
 		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
-		        
-			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) then    
+			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) and not (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") then    
 			    local fireTimeBase = itemConfig.config.primaryAbility.fireTime
 			    local fireTimeMod = ( upgradedItem.parameters.level/10 * 0.5)
 			    local fireTimeFinal = fireTimeBase * fireTimeMod 
 			    local fireTimeFinal2 = fireTimeBase - fireTimeFinal
 			    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2 
+			end
+			
+		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
+			if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
+			    local baseDpsBase = itemConfig.config.primaryAbility.baseDps
+			    local baseDpsMod = (upgradedItem.parameters.level/50)
+			    local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
+			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
 			end			
 		  end
-
-		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) + (upgradedItem.parameters.level/5)  -- increase DPS a bit
+		  
+		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + upgradedItem.parameters.level/50)  -- increase DPS a bit
 		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
 		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
 		  

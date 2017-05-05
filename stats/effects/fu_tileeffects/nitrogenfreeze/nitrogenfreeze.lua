@@ -2,12 +2,27 @@ function init()
   animator.setParticleEmitterOffsetRegion("snow", mcontroller.boundBox())
   animator.setParticleEmitterActive("snow", true)
   script.setUpdateDelta(5)
-  self.tickDamagePercentage = 0.01
   self.tickTime = 0.7
   self.tickTimer = self.tickTime
+  self.baseDamage = setEffectDamage()
+  self.baseTime = setEffectTime() 
+end
+
+
+function setEffectDamage()
+  self.baseValue = config.getParameter("healthDown",0)
+  return ( self.baseValue *  (1 -status.stat("iceResistance",0) )  )
+end
+
+function setEffectTime()
+  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("iceResistance",0) ),0.45))
 end
 
 function update(dt)
+  	if ( status.stat("iceResistance",0)  >= 0.75 ) then
+  	  deactivateVisualEffects()
+	  effect.expire() 
+	end  
   mcontroller.controlModifiers({
         groundForce = 60.5,
         slopeSlidingFactor = 0.6,  
@@ -25,8 +40,8 @@ function update(dt)
     self.tickTimer = self.tickTime
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
-        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 2,
-        damageSourceKind = "nitrogenweapon",
+        damage = self.baseDamage,
+        damageSourceKind = "ice",
         sourceEntityId = entity.id()
       })
   end

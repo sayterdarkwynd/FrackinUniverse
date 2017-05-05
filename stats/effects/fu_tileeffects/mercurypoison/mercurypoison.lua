@@ -1,19 +1,19 @@
 function init()
-  _x = config.getParameter("healthDown", 0)
-baseValue = config.getParameter("healthDown",0)*(status.resourceMax("health"))
-
- -- if (status.resourceMax("health")) * _x >= 100.0 then
- --    effect.addStatModifierGroup({{stat = "maxHealth", amount = baseValue }})
- --    else
-     effect.addStatModifierGroup({{stat = "maxHealth", amount = baseValue }})
- -- end
-  
   script.setUpdateDelta(5)
-
-  self.tickDamagePercentage = 0.0
   self.tickTime = 3.0
   self.tickTimer = self.tickTime  
+  self.baseDamage = setEffectDamage()
+  self.baseTime = setEffectTime()
   activateVisualEffects()
+end
+
+function setEffectDamage()
+  self.baseValue = config.getParameter("healthDown",0)
+  return ( self.baseValue *  (1 -status.stat("poisonResistance",0) )  )
+end
+
+function setEffectTime()
+  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("poisonResistance",0) ),0.45))
 end
 
 function activateVisualEffects()
@@ -24,14 +24,22 @@ function activateVisualEffects()
   animator.burstParticleEmitter("statustext")
 end
 
+function deactivateVisualEffects()
+  animator.setParticleEmitterActive("drips", false)
+end
+
 function update(dt)
+  	if ( status.stat("poisonResistance",0)  >= 0.50 ) and ( status.stat("radioactiveResistance",0)  >= 0.25 ) then
+  	  deactivateVisualEffects()
+	  effect.expire() 
+	end  
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
-        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
-        damageSourceKind = "poison",
+        damage = self.baseDamage,
+        damageSourceKind = "radioactive",
         sourceEntityId = entity.id()
       })
   end

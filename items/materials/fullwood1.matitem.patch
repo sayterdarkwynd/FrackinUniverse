@@ -1,3 +1,10 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "darkwoodmaterial", "eggincubator" ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "darkwoodmaterial" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "eggincubator" }
+  ]
 ]

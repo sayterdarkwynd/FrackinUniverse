@@ -15,14 +15,21 @@
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
-  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
-    "bow" : "elderbow.png"
+    "bow" : "elderbow.png",
+    "bowfullbright" : "elderbowfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "bow" : { "properties" : {
-      "offset" : [0.25, 0]
-    }}}},
+    "animatedParts" : { 
+    "parts" : { 
+     "bow" : { 
+       "properties" : {
+          "offset" : [-0.1, 0]
+          }
+        }
+      }
+    },
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
       "release" : [ "/sfx/gun/bow_loose.ogg" ],
