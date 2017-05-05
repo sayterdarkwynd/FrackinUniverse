@@ -1,3 +1,12 @@
 [
- {"op":"add","path":"/learnBlueprintsOnPickup","value": [ "chitinchest", "chitinlegs", "chitinhead", "vinewhip" ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "chitinchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "chitinlegs" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "chitinhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "vinewhip" }
+  ]
 ]

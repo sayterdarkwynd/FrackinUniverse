@@ -1,8 +1,12 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-	"diamondlantern", 
-	"diamondblockmaterial", 
-	"ff_focusingarray", 
-	"diamondshield"
-	] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "diamondlantern" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "diamondblockmaterial" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "ff_focusingarray" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "diamondshield" }
+  ]
 ]

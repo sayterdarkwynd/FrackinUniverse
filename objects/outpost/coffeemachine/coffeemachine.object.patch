@@ -1,10 +1,40 @@
 [
-	{ "op": "add", "path": "/autoCloseCooldown", "value": 3600 },
-	{ "op": "add", "path": "/frameCooldown", "value": 5 },
-	{ "op": "add", "path": "/objectType", "value": "container" },
-	{ "op": "add", "path": "/openSounds", "value": [ "/sfx/objects/campfire_use.ogg" ] },
-	{ "op": "add", "path": "/recipeGroup", "value": "coffeemachine" },
-	{ "op": "add", "path": "/slotCount", "value": 2 },
-	{ "op": "add", "path": "/uiConfig", "value": "/interface/objectcrafting/coffeemachine.config" },
-	{ "op": "replace", "path": "/category", "value": "crafting" }
+  [
+    { "op": "test", "path": "/openSounds", "inverse" : true },
+    { "op": "add", "path": "/openSounds", "value": [] }
+  ],
+  [
+    { "op": "test", "path": "/uiConfig", "inverse" : true },
+    { "op": "add", "path": "/uiConfig", "value": "" }
+  ],
+  [
+    { "op": "test", "path": "/recipeGroup", "inverse" : true },
+    { "op": "add", "path": "/recipeGroup", "value": "" }
+  ],
+  [
+    { "op": "test", "path": "/autoCloseCooldown", "inverse" : true },
+    { "op": "add", "path": "/autoCloseCooldown", "value": 0 }
+  ],
+  [
+    { "op": "test", "path": "/frameCooldown", "inverse" : true },
+    { "op": "add", "path": "/frameCooldown", "value": 0 }
+  ],
+  [
+    { "op": "test", "path": "/slotCount", "inverse" : true },
+    { "op": "add", "path": "/slotCount", "value": 0 }
+  ],
+  [
+    { "op": "test", "path": "/objectType", "inverse" : true },
+    { "op": "add", "path": "/objectType", "value": "" }
+  ],
+  [
+    { "op" : "add", "path" : "/openSounds/-", "value" : "/sfx/objects/campfire_use.ogg" },
+    { "op": "replace", "path": "/autoCloseCooldown", "value": 3600 },
+    { "op": "replace", "path": "/frameCooldown", "value": 5 },
+    { "op": "replace", "path": "/objectType", "value": "container" },
+    { "op": "replace", "path": "/recipeGroup", "value": "coffeemachine" },
+    { "op": "replace", "path": "/slotCount", "value": 2 },
+    { "op": "replace", "path": "/uiConfig", "value": "/interface/objectcrafting/coffeemachine.config" },
+    { "op": "replace", "path": "/category", "value": "crafting" }
+  ]
 ]
