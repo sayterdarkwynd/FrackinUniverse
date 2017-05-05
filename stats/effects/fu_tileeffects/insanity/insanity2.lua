@@ -51,7 +51,9 @@ end
 
 
 function update(dt)
-
+  	if ( status.stat("shadowResistance",0)  >= 0.80 ) and ( status.stat("cosmicResistance",0)  >= 0.80 ) then
+	  effect.expire() 
+	end  
   local erchiusCount = 0
   erchiusCount = erchiusCount + (self.maxHealth or 0)
   erchiusCount = erchiusCount + (self.maxEnergy or 0)

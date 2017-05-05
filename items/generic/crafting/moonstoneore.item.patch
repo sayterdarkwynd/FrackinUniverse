@@ -1,6 +1,17 @@
 [
-	{"op":"replace","path":"/description","value":"An unusually malleable, yet resilient metal."},
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "moonstonebar", "phasematter" ] },
-	{"op":"add","path":"/radioMessagesOnPickup","value": [ "pickupMoonstone" ] },
-	{"op":"replace","path":"/price","value": 60 }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op": "test", "path": "/radioMessagesOnPickup", "inverse" : true },
+    { "op": "add", "path": "/radioMessagesOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "moonstonebar" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "phasematter" },
+    { "op" : "add", "path" : "/radioMessagesOnPickup/-", "value" : "pickupMoonstone" },
+    { "op": "replace", "path": "/description", "value": "An unusually malleable, yet resilient metal." },
+    {"op": "replace", "path": "/price", "value": 60 }
+  ]
 ]

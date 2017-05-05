@@ -4,7 +4,7 @@
   "description" : "A camoflauged worm burrowing through the earth",
 
   "categories" : [ "dirtburrower" ],
-  "parts" : [ "body" ],
+  "parts" : [ "bodylit", "body" ],
 
   "animation" : "dirtburrower.animation",
 
@@ -156,7 +156,7 @@
           "baseValue" : 999
         },
         "grit" : {
-          "baseValue" : 1
+          "baseValue" : 0.67
         },
         "maxHealth" : {
           "baseValue" : 500
@@ -215,10 +215,8 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : false,
-    "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
     "segments" : 5,
     "segmentMonster" : ["dirtburrowertail", "dirtburrowersegment", "dirtburrowersegment", "dirtburrowersegment", "dirtburrowersegment"],
-    "radius" : 1.0
+    "radius" : 1.2
   }
 }

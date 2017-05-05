@@ -1,10 +1,14 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-	"crystalblock", 
-	"liquidcrystal", 
-	"crystallineblade",
-        "fucrystalspear",
-        "fuicewand",
-        "crystallight"
-	] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "crystalblock" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "liquidcrystal" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "crystallineblade" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fucrystalspear" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuicewand" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "crystallight" }
+  ]
 ]

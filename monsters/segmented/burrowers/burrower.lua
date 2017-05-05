@@ -5,7 +5,7 @@ local monsterUpdate = update
 
 function burrowEffect(dt)
 
-    self.burrowing = world.polyCollision(mcontroller.collisionPoly(), mcontroller.position(), {"block"})
+    self.burrowing = world.polyCollision(self.burrowPoly, mcontroller.position(), {"block"})
     if not self.burrowed == self.burrowing then 
 	world.spawnProjectile(self.burrowBurstProjectile, mcontroller.position())
     	animator.burstParticleEmitter("groundBurstEmitter")
@@ -31,12 +31,12 @@ end
 function update(dt)
 
 	self.parent = self.parent and self.parent or config.getParameter("parent")
-
 	if not self.burrowTimer then
 	  self.burrowProjectile = config.getParameter("burrowProjectile", "burrow")
 	  self.burrowBurstProjectile = config.getParameter("burrowBurstProjectile", "burrowburst")
 	  self.burrowTimer = config.getParameter("burrowTimer",0.25)
 	  self.burrowTick = self.burrowTimer
+	  self.burrowPoly = config.getParameter("burrowPoly",{ {-0.45, -0.25},{-0.25, -0.45}, {0.25, -0.45}, {0.45, -0.25}, {0.45, 0.25}, {0.25, 0.45}, {-0.25, 0.45}, {-0.45, 0.25} })
 	end
 	if not self.followRadius then
 	  monster.setDamageBar("none")

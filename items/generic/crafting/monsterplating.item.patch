@@ -1,7 +1,11 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-    "fumonsterplatedchest", 
-    "fumonsterplatedhead", 
-    "fumonsterplatedlegs" 
-  ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumonsterplatedchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumonsterplatedhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumonsterplatedlegs" }
+  ]
 ]

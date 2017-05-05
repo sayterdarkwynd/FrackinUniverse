@@ -1,0 +1,83 @@
+{
+  "type" : "highwaygirulian",
+  "baseType" : "guard",
+  "identity" : {
+    "name" : "Girulian",
+    "gender" : "male",
+	"hairType" : "male19",
+    "hairDirectives": "?replace;735e3a=b59a4d;d9c189=f1d992;a38d59=daba5e",
+	"bodyDirectives": "?replace;ffe2c5=fff6f6;ffc181=f7d5d3;d39c6c=d1aaa1;c7815b=a27f70",
+    "race" : "human"
+  },
+  "damageTeamType" : "assistant",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+  "innateStatusEffects" : [ "invulnerable" ],
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+  
+    "behaviorConfig" : {
+      "greetingChance" : 0
+    },
+	"dialogMode" : "sequence",		
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "Well met, friend. My name is Girulian; as you might suspect by now, I am also a Guardian working with the SMASH unit.",
+			"That was an intense and invigorating battle; no doubt the end must be near.",
+			"I hear the sounds of machinery up ahead; the penguins' leader draws close.",
+			"I would go with you, but I have to stay to call for backup in case worst comes to worst.",
+			"Go now! The fate of Techno City lies in your hands!"
+          ]
+        }
+      }
+    }
+  },
+  
+  "movementParameters" : {
+      "runSpeed" : 20,
+	  "walkSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 60
+    },
+    "mass" : 2.0
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "coolshadeshead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "deadbeatleatherchest" , "parameters" : { "colorIndex" : 3 } } ],
+            "legs" : [ { "name" : "deadbeatleatherlegs" , "parameters" : { "colorIndex" : 3 } } ],
+            "primary" : [
+{ "name" : "soluskatana", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["burning"] } } } }
+            ],
+            "sheathedprimary" : [               
+			  "commonmachinepistol"
+			  ]
+          }
+        ] ]
+    ]
+  },
+
+    "statusControllerSettings" : {
+
+    "stats" : {
+	  "powerMultiplier" : {
+        "baseValue" : 1.75
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+	  "maxEnergy" : {
+        "baseValue" : 20.0
+      }
+  }
+ }
+  
+}

@@ -8,17 +8,18 @@
 ^yellow;Extreme fire speed^reset;",
   "shortdescription" : "Vaporizer",
   "category" : "Energy Gun",
-  "level" : 4,
+  "level" : 5,
   "tooltipKind" : "gun2",
   "learnBlueprintsOnPickup" : [ "fuvaporizer" ],   
   "weaponType" : "Antimatter",
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "precursorvaporizer.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "fuvaporizer.png",
+    "middlefullbright" : "fuvaporizerfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
   },
@@ -86,6 +87,19 @@
   "critBonus" : 1,
 
   "altAbilityType" : "vaporizerbomb",
+  "altAbility" : {
+    "projectileType" : "plasmaball",
+    "projectileCount" : 10,
+    "energyCost" : 100,
+    "baseDps" : 8,
+    "inaccuracy" : 0.3,
+    "projectileParameters" : {
+      "damageSourceKind" : "radioactive",
+      "speed" : 100,
+      "timeToLive" : 3,
+      "knockback" : 10
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
