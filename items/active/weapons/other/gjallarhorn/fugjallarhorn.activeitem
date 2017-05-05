@@ -10,7 +10,7 @@
   "category" : "rocketLauncher",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","rocketLauncher"],
-  "level" : 10,
+  "level" : 7,
 
   "inventoryIcon" : "gjallarhornicon.png",
 
@@ -19,6 +19,7 @@
     "butt" : "",
     "middle" : "gjallarhorn.png",
     "barrel" : "",
+    "grenadelauncher" : "",
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
   "animationCustom" : {
@@ -27,8 +28,8 @@
     }
   },
 
-  "baseOffset" : [-0.22, 0.33],
-  "muzzleOffset" : [1.5, 0.34],
+  "baseOffset" : [-0.22, 0.6],
+  "muzzleOffset" : [3.5, 0.34],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -38,8 +39,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 1.25,
-    "baseDps" : 14,
+    "fireTime" : 3.25,
+    "baseDps" : 7,
     "energyUsage" : 75,
     "inaccuracy" : 0.0,
 
@@ -81,10 +82,31 @@
     }
   },
   
-  "critChance" : 2,
-  "critBonus" : 2,
+  "critChance" : 12,
+  "critBonus" : 20,
 
-  "altAbilityType" : "flashlight",
+  "altAbilityType" : "hailstrikealt",
+  "altAbility" : {
+    "energyCost" : 220,
+    "fireTime" : 4,
+    "projectileCount" : 2,
+    "projectileParameters" : {
+    "timeToLive" : 1,
+	  "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "gjallarrocket",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 1,
+	      "angleAdjust" : 180
+	    }
+	  ]    
+    } 
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
