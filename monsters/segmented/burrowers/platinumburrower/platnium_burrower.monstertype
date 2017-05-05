@@ -1,0 +1,236 @@
+{
+  "type" : "platinum_burrower",
+  "shortdescription" : "A camoflauged worm burrowing through the earth",
+  "description" : "A camoflauged worm burrowing through the earth",
+
+  "categories" : [ "platinum_burrower" ],
+  "parts" : [ "bodylit", "body" ],
+
+  "animation" : "platinum_burrower.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monstersegment.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    "renderLayer" : "foregroundEntity+8",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      "seeThroughLiquid" : true,
+      "targetQueryRange" : 35,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 80,
+      "targetOutOfSightTime" : 5.0,
+
+      "damageTakenActions" : [
+      ],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+      
+      "hostileActions" : [
+      ],
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+    	    "minRange" : 1,
+    	    "maxRange" : 1,
+    	    "targetOffset" : [0,-6],
+    	    "avoidLiquid" : false,
+    	    "usePathfinding" : false,
+          "stopForce" : 30
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+      	  "parameters" : {
+            "ceilingDistance" : 2,
+      	    "groundDistance" : 2,
+            "xVelocity": 12,
+            "yVelocity": 16
+      	  }
+        }
+      ],
+       "concurrentHostileActions" : [
+	{
+	  "name" : "action-burroweffect"
+	},
+	{
+	  "name" : "action-aim-head"
+	}
+       
+      ],
+       "concurrentActions" : [
+	{
+	  "name" : "action-burroweffect"
+	},
+	{
+	  "name" : "action-aim-head"
+	}
+       
+      ],
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "platinumdeath",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+      "damage" : 14,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+
+      "mass" : 2.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0.75,
+      "airForce" : 20,
+      "flySpeed" : 15
+
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.01,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 999
+        },
+        "grit" : {
+          "baseValue" : 1
+        },
+        "maxHealth" : {
+          "baseValue" : 500
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "segments" : 7,
+    "segmentMonster" : ["platinum_burrower_tail", "platinum_burrower_segment", "platinum_burrower_segment", "platinum_burrower_segment", "platinum_burrower_segment", "platinum_burrower_segment", "platinum_burrower_segment"],
+    "radius" : 1.2
+  }
+}

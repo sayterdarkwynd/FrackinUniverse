@@ -3,7 +3,7 @@ require "/scripts/unifiedGravMod.lua"
 function init()
 
 
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") then
+if (status.stat("poisonResistance",0)  >= 0.75) or status.statPositive("poisonStatusImmunity") or status.statPositive("gasImmunity") then
   effect.expire()
 end
 
@@ -70,6 +70,9 @@ end
 
   
 function update(dt)
+  	if ( status.stat("poisonResistance",0)  >= 0.75 ) or status.statPositive("gasImmunity") then
+	  effect.expire() 
+	end  
 	mcontroller.controlParameters(self.liquidMovementParameter)
 	unifiedGravMod.update(dt)
       biomeTimer = biomeTimer - dt

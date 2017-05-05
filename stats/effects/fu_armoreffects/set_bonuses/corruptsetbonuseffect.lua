@@ -8,8 +8,8 @@ armorBonus={
 }
 
 armorEffect={
-	{stat = "sulphuricImmunity", amount = 5},
-	{stat = "poisonStatusImmunity", baseMultiplier = 1}
+	{stat = "sulphuricImmunity", amount = 1},
+	{stat = "poisonStatusImmunity", amount = 1}
 }
 
 setName="fu_corruptset"

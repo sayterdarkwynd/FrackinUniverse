@@ -1,0 +1,26 @@
+{
+  "projectileName" : "cosmicbolt",
+  "physics" : "arrow",
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_arrow.ogg"
+      ]
+    }
+  ],
+  "image" : "cosmicbolt.png",
+  "animationCycle" : 0.25,
+  "lightColor" : [170, 143, 255],
+  "frameNumber" : 3,
+  "emitters" : [ "cosmicdust" ],
+  "damageKind" : "cosmicbow",
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "power" : 10.0,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "speed" : 100,
+  "timeToLive" : 20,
+  "pointLight" : true,
+  "statusEffects" : ["percentarmorboostneg2"]
+}
