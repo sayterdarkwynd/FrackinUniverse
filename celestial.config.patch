@@ -2901,6 +2901,26 @@
     }
   },
   {
+    "op": "replace",
+    "path": "/systemTypes/White/orbitRegions/0/planetaryTypes/0/item",
+    "value": "Garden"
+  },
+  {
+    "op": "replace",
+    "path": "/systemTypes/White/orbitRegions/1/satelliteTypes/1/item",
+    "value": "Garden"
+  },
+  {
+    "op": "replace",
+    "path": "/systemTypes/White/orbitRegions/2/planetaryTypes/0/item",
+    "value": "Garden"
+  },
+  {
+    "op": "replace",
+    "path": "/systemTypes/White/orbitRegions/3/planetaryTypes/3/item",
+    "value": "Garden"
+  },
+  {
     "op": "add",
     "path": "/planetaryTypes/redSunScorching",
     "value": {
@@ -5611,11 +5631,11 @@
     "op": "add",
     "path": "/planetaryTypes/Garden",
     "value": {
-      "satelliteProbability": 0.35,
-      "maxSatelliteCount": 2,
+      "satelliteProbability": 1,
+      "maxSatelliteCount": 1,
       "baseParameters": {
         "worldType": "Terrestrial",
-        "description": "Ocean Planet",
+        "description": "Tier 1 Planet",
         "smallImage": "/celestial/system/planettype/planet_small_ocean.png",
         "terrestrialType": [
           "garden"
@@ -7766,6 +7786,11 @@
         }
       ]
     }
+  },
+  {
+    "op": "replace",
+    "path": "/planetaryTypes/Tier1/baseParameters/smallImage",
+    "value": "/celestial/system/planettype/planet_small_ocean.png"
   },
   {
     "op": "add",
