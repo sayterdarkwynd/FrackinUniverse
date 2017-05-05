@@ -457,6 +457,7 @@ function getRecipes()
 	{ inputs = { bananaseed = 1 }, outputs = { tissueculture = { 3, 3, 5 }, phosphorus = { 1, 2, 2 } } },
 	{ inputs = { batterystem = 1 }, outputs = { geneticmaterial = { 2, 2, 5 } } },
 	{ inputs = { beakseedseed = 1 }, outputs = { tissueculture = { 3, 3, 4 }, phosphorus = { 1, 2, 2 } } },
+	{ inputs = { beakseed = 1 }, outputs = { tissueculture = { 3, 3, 4 }, phosphorus = { 1, 2, 2 } } },
 	{ inputs = { beetlesproutseed = 1 }, outputs = { algaeseed = { 1, 1, 3 }, phosphorus = { 1, 2, 2 } } },
 	{ inputs = { bellamorte = 1 }, outputs = { geneticmaterial = { 2, 2, 5 } } },
 	{ inputs = { biscornseed = 1 }, outputs = { tissueculture = { 3, 3, 4 } } },
