@@ -46,7 +46,7 @@
         }
       ],
 
-      "followActions" : [
+      "followActions" : [       
         {
           "name" : "approach-teleport",
           "parameters" : {
@@ -80,9 +80,24 @@
         }
       ],
 
-      "concurrentActions" : [ ],
+      "concurrentActions" : [     
+      ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [
+	{
+	  "name":"action-projectile",  
+	  "cooldown" : 0.01,
+	  "parameters":{
+	    "skillName":"glitterBurst", 
+	    "projectileCount":1, 
+	    "projectileType":"fuhgravityexplosion", 
+	    "power":0, 
+	    "aimAtTarget":true, 
+	    "inaccuracy":0.0, 
+	    "fireOffset":[0,0]
+	  }
+	}       
+      ]
     },
 
     "touchDamage" : {
