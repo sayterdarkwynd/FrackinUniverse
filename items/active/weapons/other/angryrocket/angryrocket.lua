@@ -40,6 +40,7 @@ function update(dt, fireMode, shiftHeld)
 	local ability = config.getParameter(fireMode.."Ability")
 	
 	if fireMode == "alt" then
+		gotLockTime=1
 		if lockTime==nil then
 			lockTime=0
 		end
@@ -57,14 +58,14 @@ function update(dt, fireMode, shiftHeld)
 				activeItem.setScriptedAnimationParameter("entities", {self.target})
 			elseif self.target~=nil and newTarget==self.target then
 				lockTime=lockTime+deltatime
-				if lockTime >= 2 then
+				if lockTime >= gotLockTime then
 					animator.playSound("targetAcquired2")
 				else
 					animator.playSound("targetAcquired1")
 				end
 				activeItem.setScriptedAnimationParameter("entities", {self.target})
 			elseif self.target~=nil then
-				if lockTime >= 2 then
+				if lockTime >= gotLockTime then
 					animator.playSound("targetAcquired2")
 				else
 					animator.playSound("targetAcquired1")
@@ -81,7 +82,7 @@ function update(dt, fireMode, shiftHeld)
 		prevFireMode=fireMode
 	elseif prevFireMode=="alt" and fireMode=="none" then
 		if self.target ~= nil then
-			if lockTime >= 2 then
+			if lockTime >= gotLockTime then
 				altFire(prevAbility)
 			end
 		else
