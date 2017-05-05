@@ -1,7 +1,11 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [
-        "zeroburst_tech",
-	"pumpoutfu",
-	"pumpoutpressurefu"
-    ] }
-]  
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "zeroburst_tech" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "pumpoutfu" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "pumpoutpressurefu" }
+  ]
+]

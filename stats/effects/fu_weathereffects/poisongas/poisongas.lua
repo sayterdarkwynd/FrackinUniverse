@@ -71,6 +71,9 @@ end
 
   
 function update(dt)
+  	if ( status.stat("poisonResistance",0)  >= 0.5 ) then
+	  effect.expire() 
+	end  
       biomeTimer = biomeTimer - dt
   unifiedGravMod.update(dt)
   mcontroller.controlParameters(self.liquidMovementParameter)      

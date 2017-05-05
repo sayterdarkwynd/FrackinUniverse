@@ -1,3 +1,11 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "coralstinger", "coraldullblade", "fucoralcleaver"  ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "coralstinger" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "coraldullblade" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fucoralcleaver" }
+  ]
 ]

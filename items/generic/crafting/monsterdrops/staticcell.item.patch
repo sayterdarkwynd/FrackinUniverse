@@ -1,8 +1,12 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [
-    "staticcell", 
-    "fusteampunkhead", 
-    "fusteampunkchest", 
-    "fusteampunklegs"
-    ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "staticcell" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fusteampunkhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fusteampunkchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fusteampunklegs" }
+  ]
 ]
