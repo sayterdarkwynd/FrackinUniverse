@@ -1385,18 +1385,32 @@
       ]
     }
   },
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant",
+  "value" : 
   {
-    "op": "add",
-    "path": "/terrestrialGraphics/fugasgiant",
-    "value": {
-      "baseImages": "/celestial/system/terrestrial/biomes/fugasgiant/maskie<num>.png",
-      "dynamicsImages": "/celestial/system/terrestrial/dynamics/temperate/<num>.png",
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
       "dynamicsRange": [
         1,
         30
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 2,
+      "primaryHueShiftRange": [
+        0,
+        360
+      ],
+      "hueShiftOffsetRange": [
+        -10,
+        10
       ]
-    }
-  },
+  }},
   {
     "op": "add",
     "path": "/terrestrialGraphics/protoworlddark",
