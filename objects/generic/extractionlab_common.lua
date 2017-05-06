@@ -19,6 +19,7 @@ end
 --   No checks are made for multi-input recipes being overridden by single-input recipes
 function getRecipes()
 	return {
+	{ inputs = { liquidbeer = 50 }, outputs = { liquidbeer = { 1, 1, 2 } } },
 	{ inputs = { tentacleplant = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
 	{ inputs = { tentacleproduce = 1 }, outputs = { tissueculture = { 1, 1, 2 } } },
 	{ inputs = { nakatibark = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
