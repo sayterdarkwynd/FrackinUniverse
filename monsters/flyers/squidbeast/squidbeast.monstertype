@@ -84,27 +84,27 @@
       ],
 
       "concurrentHostileActions" : [
-	{
-	  "name":"action-projectile",  
-	  "cooldown" : 0.08,
-	  "parameters":{
-	    "skillName":"emptyfu", 
-	    "projectileCount":1, 
-	    "projectileType":"fuhgravityexplosion", 
-	    "power":0, 
+        {
+         "name":"action-projectile",
+         "cooldown" : 0.08,
+         "parameters" : {
+          "projectileType" : "fuhgravityexplosion",
+          "aimDirection" : [0,0],
+          "aimAtTarget" : true,
+	    "power":0.0,
+	    "speed" : 0,
 	    "damageType" : "NoDamage",
-	    "aimAtTarget":true, 
 	    "inaccuracy":0.0, 
-	    "fireOffset":[0,0]
-	  },
-	  "power":0
-	}       
+	    "fireOffset":[0,0]          
+         }
+        }      
+      
       ]
     },
 
     "touchDamage" : {
       "poly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -0.26], [0.26, -0.625], [-0.26, -0.625], [-0.625, -0.26], [-0.625, 0.26], [-0.26, 0.625] ],
-      "damage" : 0,
+      "damage" : 0.5,
 
       "teamType" : "enemy",
       "damageSourceKind" : "shadow",
@@ -165,10 +165,10 @@
           "baseValue" : 0.0
         },
         "healthRegen" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.2
         },
         "powerMultiplier" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.05
         },
         "fireResistance" : {
           "baseValue" : -1.0

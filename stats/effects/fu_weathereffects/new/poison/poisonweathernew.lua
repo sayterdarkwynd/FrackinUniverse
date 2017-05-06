@@ -162,7 +162,14 @@ end
 
 
 function update(dt)
+
+
 checkEffectValid()
+
+  --if world.entityType(entity.id()) == "player" then
+  --  status.addEphermalEffect("biomeairless",99)
+  --end
+  
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
