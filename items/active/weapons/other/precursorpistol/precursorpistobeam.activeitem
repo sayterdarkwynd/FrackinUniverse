@@ -1,27 +1,26 @@
 {
-  "itemName" : "precursorpistol",
+  "itemName" : "precursorpistolbeam",
   "price" : 160,
-  "inventoryIcon" : "precursorpistol.png",
+  "inventoryIcon" : "precursorpistolbeam.png",
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Protects and heals.
-^yellow;Projects healing zones^reset;
-^green;Zone prevents Energy and Shield Regen^reset;",
-    "shortdescription" : "Precursor Protector",
-  "category" : "Bio Weapon",
+^yellow;Projects energy beams^reset;",
+  "shortdescription" : "Precursor Beamgun",
+  "category" : "Energy Weapon",
   "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "pistol",
-  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","pistol", "energy", "upgradeableWeapon"],
   "twoHanded" : false,
 
   "animation" : "/items/active/weapons/ranged/unique/precursorhealgun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "precursorpistol.png",
-    "middlefullbright" : "precursorpistolfullbright.png",
+    "middle" : "precursorpistolbeam.png",
+    "middlefullbright" : "precursorpistolbeamfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlered.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -39,22 +38,22 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 3.0,
-    "baseDps" : 0,
-    "energyUsage" : 1.0,
+    "fireTime" : 0.2,
+    "baseDps" : 6,
+    "energyUsage" : 20.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "healingzone2",
+    "projectileType" : "precursorshotsmall2",
     "projectileParameters" : { 
-      "speed" : 0,
-      "timeToLive" : 3
+      "speed" : 30,
+      "timeToLive" : 0.3
     },
 	  "stances" : {
 	    "idle" : {
-	      "armRotation" : 0,
+	      "armRotation" : 0.2,
 	      "weaponRotation" : 0,
 	      "twoHanded" : false,
 
@@ -71,7 +70,7 @@
 	      "allowFlip" : true
 	    },
 	    "cooldown" : {
-	      "duration" : 3.0,
+	      "duration" : 0.0,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
 	      "twoHanded" : false,
