@@ -1,12 +1,12 @@
 {
-  "itemName" : "precursorpistolbeam",
+  "itemName" : "precursorpistolice",
   "price" : 160,
-  "inventoryIcon" : "precursorpistolbeam.png",
+  "inventoryIcon" : "precursorpistolice.png",
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Protects and heals.
 ^yellow;Projects energy beams^reset;",
-  "shortdescription" : "Precursor Beamgun",
+  "shortdescription" : "Precursor Freeze Gun",
   "category" : "Energy Weapon",
   "level" : 4,
   "tooltipKind" : "gun2",
@@ -17,10 +17,10 @@
   "animation" : "/items/active/weapons/ranged/unique/precursorhealgun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "precursorpistolbeam.png",
-    "middlefullbright" : "precursorpistolbeamfullbright.png",
+    "middle" : "precursorpistolice.png",
+    "middlefullbright" : "precursorpistolicefullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -33,27 +33,26 @@
   
   "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
 
-  "elementalType" : "radioactive",
+  "elementalType" : "ice",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.3,
-    "baseDps" : 6,
+    "fireTime" : 1,
+    "baseDps" : 1.5,
     "energyUsage" : 20.0,
-    "inaccuracy" : 0,
+    "inaccuracy" : 0.05,
 
-    "projectileCount" : 1,
+    "projectileCount" : 2,
     "burstTime" : 0.075,
-    "burstCount" : 8,
+    "burstCount" : 3,
     "fireType" : "burst",
+    
 
-
-
-    "projectileType" : "precursorshotsmall2",
+    "projectileType" : "fuicebullet",
     "projectileParameters" : { 
-      "speed" : 36,
-      "timeToLive" : 0.55
+      "timeToLive" : 0.55,
+      "speed" : 30
     },
 	  "stances" : {
 	    "idle" : {
@@ -65,7 +64,7 @@
 	      "allowFlip" : true
 	    },
 	    "fire" : {
-	      "duration" : 0,
+	      "duration" : 0.05,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
 	      "twoHanded" : false,
