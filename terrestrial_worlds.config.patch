@@ -7560,7 +7560,7 @@
           "secondaryRegions" : [  ]
           },
         "core" : {
-          "primaryRegion" : [ "gasgiantcorelayer" ]
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
         } 
         }
       }
@@ -7592,7 +7592,7 @@
           "secondaryRegions" : [  ]
           },
         "core" : {
-          "primaryRegion" : [ "gasgiantcorelayer" ]
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
         } 
         }
       }
@@ -7624,7 +7624,7 @@
           "secondaryRegions" : [  ]
           },
         "core" : {
-          "primaryRegion" : [ "gasgiantcorelayer" ]
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
         } 
         }
       }
@@ -7656,7 +7656,7 @@
           "secondaryRegions" : [  ]
           },
         "core" : {
-          "primaryRegion" : [ "gasgiantcorelayer" ]
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
         } 
         }
       }
@@ -7688,7 +7688,7 @@
           "secondaryRegions" : [  ]
           },
         "core" : {
-          "primaryRegion" : [ "gasgiantcorelayer" ]
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
         } 
         }
       }
@@ -7784,7 +7784,23 @@
   "path" : "/regionTypes/gasgiantcorelayer",
   "value" : 
     {
-      "oceanLiquid" : [ "metallichydrogen" ],
+      "oceanLiquid" : [ "metallichydrogen", "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel" ],
+      "oceanLevelOffset" : 1000,      
+      "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel" ],
+      "caveLiquidChanceRange" : [55, 99], 
+        "fgCaveSelector" : [ "empty" ],
+        "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+        "subBlockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+        "biome" : [
+          [0, [ "gasgiantcorelayer" ]]
+        ]
+    }
+  },
+  {"op" : "add", 
+  "path" : "/regionTypes/gasgiantcorelayer2",
+  "value" : 
+    {
+      "oceanLiquid" : [ "metallichydrogen", "lava" ],
       "oceanLevelOffset" : 1000,      
       "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel" ],
       "caveLiquidChanceRange" : [55, 99], 
@@ -7792,9 +7808,25 @@
         "blockSelector" : [ "lowHillsSurface", "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface" ],
         "subBlockSelector" : [ "lowHillsSurface", "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface" ],
         "biome" : [
-          [0, [ "gasgiantcorelayer" ]]
+          [0, [ "gasgiantcorelayer2" ]]
         ]
     }
-  }
+  },
+  {"op" : "add", 
+  "path" : "/regionTypes/gasgiantcorelayer3",
+  "value" : 
+    {
+      "oceanLiquid" : [ "healingliquid" ],
+      "oceanLevelOffset" : 1000,      
+      "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel" ],
+      "caveLiquidChanceRange" : [55, 99], 
+        "fgCaveSelector" : [ "empty" ],
+        "blockSelector" : [ "lowHillsSurface", "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface" ],
+        "subBlockSelector" : [ "lowHillsSurface", "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface" ],
+        "biome" : [
+          [0, [ "gasgiantcorelayer3" ]]
+        ]
+    }
+  }   
   
 ]
