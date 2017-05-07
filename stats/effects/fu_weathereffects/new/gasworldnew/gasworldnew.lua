@@ -2,7 +2,7 @@ require("/scripts/vec2.lua")
 function init()
 
   self.usedIntro = 0
-  self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
+  self.timerRadioMessage = 1  -- initial delay for secondary radiomessages
 
   -- Environment Configuration --
   --base values
@@ -15,7 +15,7 @@ function init()
   
   --timers
   self.biomeTimer = self.baseRate 
-  sb.logInfo("self.biomeTimer 1 : "..self.biomeTimer)
+  --sb.logInfo("self.biomeTimer 1 : "..self.biomeTimer)
   --conditionals
 
   self.windLevel =  world.windLevel(mcontroller.position(),0)        -- is there wind? we note that too
@@ -23,9 +23,13 @@ function init()
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-
+  
+  self.usedIntro = 0
+  self.usedIntro2 = 0
+  self.usedIntro3 = 0
+  self.usedWind = 0
+  
   checkEffectValid()
-
   script.setUpdateDelta(5)
 end
 
@@ -46,7 +50,7 @@ function checkEffectValid()
 	else
 
 	  -- activate visuals and check stats
-	  if not self.usedIntro and self.timerRadioMessage == 0 then
+	  if (self.usedIntro == 0) and (self.timerRadioMessage == 0) then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure", 1.0) -- send player a warning
 	    self.usedIntro = 1
 	    self.timerRadioMessage = 20  
@@ -185,21 +189,21 @@ self.windLevel =  world.windLevel(mcontroller.position()) or 1
                   end
 		end
         end
-        
+
       if ( self.biomeTimer <= 0 ) then
         if (status.stat("physicalResistance") <= self.effectCutoffValue ) then
 		if daytime then
-		  if not (self.usedIntro) and (self.timerRadioMessage == 0) then
+		  if not (self.usedIntro2) and (self.timerRadioMessage == 0) then
 		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressureday", 1.0) -- send player a warning
-		    self.usedIntro = 1
+		    self.usedIntro2 = 1
 		    self.timerRadioMessage = 220 
 		  end        
 		  status.modifyResource("health", -(self.damageApply * self.situationPenalty) * dt)
 		  makeAlert()
 		else
-		  if not (self.usedIntro2) and (self.timerRadioMessage == 0) then
+		  if not (self.usedIntro3) and (self.timerRadioMessage == 0) then
 		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressurenight", 1.0) -- send player a warning
-		    self.usedIntro2 = 1
+		    self.usedIntro3 = 1
 		    self.timerRadioMessage = 220 
 		  end
 		  status.modifyResource("health", -(self.damageApply * self.situationPenalty) * dt) 
@@ -207,9 +211,9 @@ self.windLevel =  world.windLevel(mcontroller.position()) or 1
 		end
         end
   
-  sb.logInfo("physical resist : "..status.stat("physicalResistance",0))        
+        --sb.logInfo("physical resist : "..status.stat("physicalResistance",0))        
         self.biomeTimer = setEffectTime()   
-        sb.logInfo("base timer : "..self.biomeTimer)
+        --sb.logInfo("base timer : "..self.biomeTimer)
       end
       
         
