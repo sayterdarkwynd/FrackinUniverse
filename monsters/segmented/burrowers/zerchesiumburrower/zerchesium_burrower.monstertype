@@ -1,12 +1,12 @@
 {
-  "type" : "berlinite_burrower",
+  "type" : "zerchesium_burrower",
   "shortdescription" : "A camoflauged worm burrowing through the earth",
   "description" : "A camoflauged worm burrowing through the earth",
 
-  "categories" : [ "berlinite_burrower" ],
+  "categories" : [ "zerchesium_burrower" ],
   "parts" : [ "bodylit", "body" ],
 
-  "animation" : "berlinite_burrower.animation",
+  "animation" : "zerchesium_burrower.animation",
 
   "dropPools" : [ ],
 
@@ -17,7 +17,7 @@
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
-    "renderLayer" : "foregroundEntity+9",
+    "renderLayer" : "foregroundEntity+10",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -77,30 +77,30 @@
       	  }
         }
       ],
-      "concurrentHostileActions" : [
-    	{
-    	  "name" : "action-burroweffect"
-    	},
-    	{
-    	  "name" : "action-aim-head"
-    	}
+       "concurrentHostileActions" : [
+	{
+	  "name" : "action-burroweffect"
+	},
+	{
+	  "name" : "action-aim-head"
+	}
+       
       ],
-      "concurrentActions" : [
-    	{
-    	  "name" : "action-burroweffect"
-    	},
-    	{
-    	  "name" : "action-aim-head"
-    	}
-           
+       "concurrentActions" : [
+	{
+	  "name" : "action-burroweffect"
+	},
+	{
+	  "name" : "action-aim-head"
+	}
+       
       ],
-
       "deathActions" : [
         {
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "berlinitedeath",
+            "projectileType" : "zerchesiumdeath",
             "projectileParameters" : {},
             "power" : 0,
             "aimDirection" : [0, 0],
@@ -170,7 +170,7 @@
           "baseValue" : 999
         },
         "grit" : {
-          "baseValue" : 0.67
+          "baseValue" : 1
         },
         "maxHealth" : {
           "baseValue" : 500
@@ -229,8 +229,8 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : false,
-    "segments" : 8,
-    "segmentMonster" : ["berlinite_burrower_tail", "berlinite_burrower_segment", "berlinite_burrower_segment", "berlinite_burrower_segment", "berlinite_burrower_segment", "berlinite_burrower_segment", "berlinite_burrower_segment", "berlinite_burrower_segment"],
+    "segments" : 9,
+    "segmentMonster" : ["zerchesium_burrower_tail", "zerchesium_burrower_segment", "zerchesium_burrower_segment", "zerchesium_burrower_segment", "zerchesium_burrower_segment", "zerchesium_burrower_segment", "zerchesium_burrower_segment", "zerchesium_burrower_segment", "zerchesium_burrower_segment"],
     "radius" : 1.2
   }
 }

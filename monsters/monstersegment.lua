@@ -27,9 +27,10 @@ function init()
   end
   BData:setPosition("spawn", storage.spawnPosition)
 
-  self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
-  self.behaviorState = self.behavior:init(_ENV)
-
+  if not config.getParameter("parent") or config.getParameter("dynamic") then
+    self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
+    self.behaviorState = self.behavior:init(_ENV)
+  end
   self.collisionPoly = mcontroller.collisionPoly()
 
   if animator.hasSound("deathPuff") then
@@ -119,7 +120,9 @@ function init()
 	parent = entity.id(), 
 	segmentMonster = config.getParameter("segmentMonster"),
 	segments = self.segments - 1, 
-	parentRadius = config.getParameter("radius"), 
+	parentRadius = config.getParameter("radius"),
+  damageBar = false,
+  dynamic = config.getParameter("dynamicSegments") or config.getParameter("dynamic"),
 	renderLayer = "foregroundEntity+"..tostring(self.segments)})
   end 
 end
