@@ -1,0 +1,53 @@
+{
+  "particleEmitters" : {      
+    "radioactivebreath" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [199, 255, 66, 180],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.4,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -0.1],
+            "finalVelocity" : [0, -0.3],
+            "approach" : [0, 0.3],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+     "statustext" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "High Pressure",
+            "size" : 0.65,
+            "color" : [199, 255, 66, 255],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 4],
+            "finalVelocity" : [0, 1],
+            "approach" : [0, 10],
+            "timeToLive" : 1.0,
+            "variance" : {
+            }
+          }
+        }
+      ]
+    } 
+  },
+
+  "sounds" : { "bolt" : [ "/sfx/projectiles/poison_barrier_kill.ogg" ] }
+}

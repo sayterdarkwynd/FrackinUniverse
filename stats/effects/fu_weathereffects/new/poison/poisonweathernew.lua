@@ -162,7 +162,10 @@ end
 
 
 function update(dt)
+
+
 checkEffectValid()
+
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt

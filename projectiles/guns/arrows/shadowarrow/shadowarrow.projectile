@@ -20,6 +20,17 @@
   "knockback" : 20,
   "knockbackDirectional" : true,
   "damageKind" : "shadowbow",
-  "piercing" : true,
-  "statusEffects" : ["shadowgasfx"]
+  "piercing" : false,
+  "statusEffects" : ["shadowgasfx"],
+	  "periodicActions" : [
+	    {
+	      "time" : 0.01,
+	      "action" : "projectile",
+	      "type" : "flyswarm",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.05,
+	      "angleAdjust" : 0,
+	      "config" : { "speed" : 12 }
+	    }
+	  ]  
 }

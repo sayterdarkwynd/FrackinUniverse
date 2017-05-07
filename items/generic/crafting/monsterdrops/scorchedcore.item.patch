@@ -1,8 +1,12 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-  "isn_plasmalight",
-  "fuheataugment1",
-  "hellfirebow",
-  "magnorbhellfire"
-  ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "isn_plasmalight" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuheataugment1" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "hellfirebow" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "magnorbhellfire" }
+  ]
 ]
