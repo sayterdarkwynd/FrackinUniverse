@@ -19,6 +19,7 @@ end
 --   No checks are made for multi-input recipes being overridden by single-input recipes
 function getRecipes()
 	return {
+	{ inputs = { liquidbeer = 50 }, outputs = { liquidbeer = { 1, 1, 2 } } },
 	{ inputs = { tentacleplant = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
 	{ inputs = { tentacleproduce = 1 }, outputs = { tissueculture = { 1, 1, 2 } } },
 	{ inputs = { nakatibark = 1 }, outputs = { geneticmaterial = { 1, 1, 2 } } },
@@ -457,6 +458,7 @@ function getRecipes()
 	{ inputs = { bananaseed = 1 }, outputs = { tissueculture = { 3, 3, 5 }, phosphorus = { 1, 2, 2 } } },
 	{ inputs = { batterystem = 1 }, outputs = { geneticmaterial = { 2, 2, 5 } } },
 	{ inputs = { beakseedseed = 1 }, outputs = { tissueculture = { 3, 3, 4 }, phosphorus = { 1, 2, 2 } } },
+	{ inputs = { beakseed = 1 }, outputs = { tissueculture = { 3, 3, 4 }, phosphorus = { 1, 2, 2 } } },
 	{ inputs = { beetlesproutseed = 1 }, outputs = { algaeseed = { 1, 1, 3 }, phosphorus = { 1, 2, 2 } } },
 	{ inputs = { bellamorte = 1 }, outputs = { geneticmaterial = { 2, 2, 5 } } },
 	{ inputs = { biscornseed = 1 }, outputs = { tissueculture = { 3, 3, 4 } } },

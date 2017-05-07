@@ -141,6 +141,7 @@ function getRecipes()
                                nutrientpaste           = { "common", 3 },
                                mineralsample           = { "common", 3 },
                                liquidpoison            = { "common", 3 } },
+        liquidbeer        =   { money                  = { "common", 1 } },                               
         liquidaether        = { vialproto              = { "rare", 1 },
                                aliencompound           = { "rarest", 1 },
                                fu_hydrogen             = { "common", 2 },
