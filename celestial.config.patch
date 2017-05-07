@@ -45,6 +45,42 @@
       "maskRange" : [1, 25],
       "maskPerPlanetRange" : [1, 1]  
   }},  
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant2",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant2_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [1, 1]  
+  }}, 
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant3",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant3_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [1, 1]  
+  }},   
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant4",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant4_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [1, 1]  
+  }},   
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant5",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant5_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [1, 1]  
+  }},   
     {"op" : "add", 
     "path" : "/terrestrialHorizonGraphics/snowdark",
     "value" : 
@@ -846,11 +882,115 @@
         360
       ],
       "hueShiftOffsetRange": [
-        -10,
-        10
+        -75,
+        75
       ]
   }},
-    
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant2",
+  "value" : 
+  {
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        20
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 2,
+      "primaryHueShiftRange": [
+        0,
+        260
+      ],
+      "hueShiftOffsetRange": [
+        -150,
+        150
+      ]
+  }},
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant3",
+  "value" : 
+  {
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        10
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 2,
+      "primaryHueShiftRange": [
+        0,
+        160
+      ],
+      "hueShiftOffsetRange": [
+        -250,
+        250
+      ]
+  }},
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant4",
+  "value" : 
+  {
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        25
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 2,
+      "primaryHueShiftRange": [
+        0,
+        90
+      ],
+      "hueShiftOffsetRange": [
+        -360,
+        360
+      ]
+  }},  
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant5",
+  "value" : 
+  {
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        25
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 2,
+      "primaryHueShiftRange": [
+        0,
+        120
+      ],
+      "hueShiftOffsetRange": [
+        -160,
+        160
+      ]
+  }},
+  
   {"op" : "add", 
   "path" : "/terrestrialGraphics/protoworlddark",
   "value" : 
@@ -1961,7 +2101,7 @@
         "worldType" : "Terrestrial",
         "description" : "Gassy Planet",
         "smallImage": "/celestial/system/planet_large.png",
-        "terrestrialType" : [ "fugasgiant" ]
+        "terrestrialType" : [ "fugasgiant", "fugasgiant2", "fugasgiant3", "fugasgiant4", "fugasgiant5" ]
       },
 
       "variationParameters" : [
@@ -2625,7 +2765,7 @@
         "description" : "Hot Planet",
         //"smallImage" : "/celestial/system/planet_small.png",
         "smallImage": "/celestial/system/planet_small_hot.png",
-        "terrestrialType" : [ "fugasgiant", "scorchedcity", "barren", "bog", "urbanwasteland", "irradiated", "ffunknown", "superdense", "slimeworld", "jungle", "alien", "savannah", "midnight" ]
+        "terrestrialType" : [ "scorchedcity", "barren", "bog", "urbanwasteland", "irradiated", "ffunknown", "superdense", "slimeworld", "jungle", "alien", "savannah", "midnight" ]
       },
 
       "variationParameters" : [
@@ -2681,7 +2821,7 @@
         "description" : "Habitable Planet",
         //"smallImage" : "/celestial/system/planet_small.png",
         "smallImage": "/celestial/system/planet_small_habitable.png",
-        "terrestrialType" : [ "fugasgiant", "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "forest", "jungle", "alien", "ocean" ]
+        "terrestrialType" : [ "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "forest", "jungle", "alien", "ocean" ]
       },
 
       "variationParameters" : [
@@ -2736,7 +2876,7 @@
         "description" : "Cool Planet",
         // "smallImage" : "/celestial/system/planet_small.png",
         "smallImage": "/celestial/system/planet_small_cool.png",
-        "terrestrialType" : [ "fugasgiant", "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "thickjungle", "jungle", "alien", "toxic", "ocean", "metallicmoon", "tundra" ]
+        "terrestrialType" : [ "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "thickjungle", "jungle", "alien", "toxic", "ocean", "metallicmoon", "tundra" ]
       },
 
       "variationParameters" : [
@@ -2793,7 +2933,7 @@
         "description" : "Frozen Planet",
         //"smallImage" : "/celestial/system/planet_small.png",
         "smallImage": "/celestial/system/planet_small_frozen.png",
-        "terrestrialType" : [ "fugasgiant", "crystalmoon", "snow", "arctic", "ffunknown", "tundra" ]
+        "terrestrialType" : [ "crystalmoon", "snow", "arctic", "ffunknown", "tundra" ]
       },
 
       "variationParameters" : [
