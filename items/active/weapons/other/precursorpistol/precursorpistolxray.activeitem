@@ -4,8 +4,8 @@
   "inventoryIcon" : "precursorpistolxray.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Protects and heals.
-^yellow;Phase blasts^reset;",
+  "description" : "Fire through solid materials!
+^yellow;Reveal enemies and terrain^reset;",
   "shortdescription" : "Precursor X-Ray Gun",
   "category" : "Energy Weapon",
   "level" : 4,
@@ -38,12 +38,12 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.42,
-    "baseDps" : 5.5,
-    "energyUsage" : 50.0,
-    "inaccuracy" : 0.05,
+    "fireTime" : 1,
+    "baseDps" : 0.1,
+    "energyUsage" : 40.0,
+    "inaccuracy" : 0.2,
 
-    "projectileCount" : 6,
+    "projectileCount" : 9,
     "fireType" : "auto",
     
 
@@ -57,7 +57,7 @@
 	  ],
 	"bounces":3, 
 	"damageKind":"ice"
-	}    
+	},    
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0.2,
