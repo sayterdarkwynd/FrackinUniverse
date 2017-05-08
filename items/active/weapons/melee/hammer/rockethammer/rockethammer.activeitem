@@ -4,8 +4,10 @@
   "level" : 5,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Boom.",
-  "shortdescription" : "Rocket Hammer",
+  "description" : "Massive, ancient hammer.
+^cyan;Huge impact damage^reset;
+^yellow;Rocket-propelled!^reset;",
+  "shortdescription" : "Omega Hammer",
   "tooltipKind" : "sword",
   "category" : "hammer",
   "twoHanded" : true,
@@ -61,9 +63,109 @@
   },
 
   "altAbilityType" : "groundslam", 
-  "altAbility" : {"slamSpeed" : -75, "winddownTime" : 0.5, "damageConfig" : {"damageSourceKind" : "firehammer", "baseDamage" : 8, "knockback" : 0}, "stances" : {"windup" : {"duration" : 0.25, "armRotation" : 80, "weaponRotation" : 40, "frontArmFrame" : "run.1", "backArmFrame" : "jump.4", "weaponOffset":[0,-0.5], "twoHanded" : true, "allowRotate" : false, "allowFlip" : true}, "slam" : {"duration" : 0.25, "armRotation" : -50, "weaponRotation" : -70, "weaponOffset":[0,-0.5], "twoHanded" : true, "allowRotate" : false, "allowFlip" : false}}, "projectileType" : "redglobe", "projectileParameters" : {"damageType" : "noDamage", "damageKind" : "noDamage", "timeToLive" : 0, "processing" : "?0", "actionOnReap" : [{"action" : "projectile", "type" : "energyfist", "inheritDamageFactor" : 1, "offset" : [0,5], "config" : {"damageType" : "noDamage", "damageKind" : "noDamage", "processing" : "?0", "speed" : 40, "timeToLive" : 1, "bounces":0, "actionOnReap" : [], "periodicActions" : [{"time" : 0.02, "repeat" : true, "action" : "projectile", "type" : "fast", "inheritDamageFactor" : 1, "angleAdjust" : -90, "config" : {"damageType" : "noDamage", "damageKind" : "noDamage", "processing" : "?0", "timeToLive" : 0.1, "actionOnReap" : [{"action" : "projectile", "type" : "fireshockwave", "inheritDamageFactor" : 0.5, "angleAdjust" : 90, "offset" : [0,1], "config" : {}}]}}]}}, {"action" : "projectile", "type" : "energyfist", "inheritDamageFactor" : 1, "offset" : [0,5], "angleAdjust":180, "config" : {"damageType" : "noDamage", "damageKind" : "noDamage", "processing" : "?0", "speed" : 40, "timeToLive" : 1, "bounces":0, "actionOnReap" : [], "periodicActions" : [{"time" : 0.02, "repeat" : true, "action" : "projectile", "type" : "fast", "inheritDamageFactor" : 1, "angleAdjust" : 90, "config" : {"damageType" : "noDamage", "damageKind" : "noDamage", "processing" : "?0", "timeToLive" : 0.1, "actionOnReap" : [{"action" : "projectile", "type" : "fireshockwave", "inheritDamageFactor" : 0.5, "angleAdjust" : -90, "offset" : [0,1], "config" : {}}]}}]}}, {"action" : "explosion", "foregroundRadius" : 6, "backgroundRadius" : 0, "explosiveDamageAmount" : 10, "delaySteps" : 5}, {"action" : "config", "file" : "/projectiles/explosions/burningexplosion/burningexplosion.config"}, {"action" : "loop", "count" : 10, "body" : [{"action" : "projectile", "type" : "redglobe", "fuzzAngle" : 180, "inheritDamageFactor" : 0.3, "config" : {"damageType" : "noDamage", "damageKind" : "noDamage", "speed" : 40, "timeToLive" : 0.1, "processing" : "?0", "actionOnReap" : [{"action" : "config", "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockback.config"}]}}]} ]}},
+  "altAbility" : {
+    "slamSpeed" : -75, 
+    "winddownTime" : 0.5, 
+    "damageConfig" : {
+      "damageSourceKind" : "firehammer", 
+      "baseDamage" : 8, "knockback" : 0}, 
+      "stances" : {
+        "windup" : {"duration" : 0.25, "armRotation" : 80, "weaponRotation" : 40, "frontArmFrame" : "run.1", "backArmFrame" : "jump.4", "weaponOffset":[0,-0.5], "twoHanded" : true, "allowRotate" : false, "allowFlip" : true}, 
+        "slam" : {"duration" : 0.25, "armRotation" : -50, "weaponRotation" : -70, "weaponOffset":[0,-0.5], "twoHanded" : true, "allowRotate" : false, "allowFlip" : false}}, 
+        "projectileType" : "redglobe", 
+        "projectileParameters" : {
+            "damageType" : "noDamage", 
+            "damageKind" : "noDamage", 
+            "timeToLive" : 0, 
+            "processing" : "?0", 
+            "actionOnReap" : [
+              {"action" : "projectile", 
+               "type" : "energyfist", 
+               "inheritDamageFactor" : 1, 
+               "offset" : [0,5], 
+               "config" : {
+                 "damageType" : "noDamage", 
+                 "damageKind" : "noDamage", 
+                 "processing" : "?0", 
+                 "speed" : 40, 
+                 "timeToLive" : 1, 
+                 "bounces":0, 
+                 "actionOnReap" : [], 
+                 "periodicActions" : [
+                   {"time" : 0.02, 
+                    "repeat" : true, 
+                    "action" : "projectile", 
+                    "type" : "fast", 
+                    "inheritDamageFactor" : 1, 
+                    "angleAdjust" : -90, 
+                    "config" : {
+                      "damageType" : "noDamage", 
+                      "damageKind" : "noDamage", 
+                      "processing" : "?0", 
+                      "timeToLive" : 0.1, 
+                      "actionOnReap" : [
+                        {"action" : "projectile", 
+                         "type" : "fireshockwave", 
+                         "inheritDamageFactor" : 0.5, 
+                         "angleAdjust" : 90, 
+                         "offset" : [0,1], 
+                           "config" : {}}]}}]}}, 
+                           {"action" : "projectile", 
+                            "type" : "energyfist", 
+                            "inheritDamageFactor" : 1, 
+                            "offset" : [0,5], 
+                            "angleAdjust":180, 
+                            "config" : {
+                              "damageType" : "noDamage", 
+                              "damageKind" : "noDamage", 
+                              "processing" : "?0", 
+                              "speed" : 40, 
+                              "timeToLive" : 1, 
+                              "bounces":0, 
+                              "actionOnReap" : [], 
+                              "periodicActions" : [
+                              {"time" : 0.02, 
+                               "repeat" : true, 
+                               "action" : "projectile", 
+                               "type" : "fast", 
+                               "inheritDamageFactor" : 1, 
+                               "angleAdjust" : 90, 
+                                 "config" : { 
+                                   "damageType" : "noDamage", 
+                                   "damageKind" : "noDamage", 
+                                   "processing" : "?0", 
+                                   "timeToLive" : 0.1, 
+                                   "actionOnReap" : [
+                                    {"action" : "projectile", 
+                                     "type" : "fireshockwave", 
+                                     "inheritDamageFactor" : 0.5, 
+                                     "angleAdjust" : -90, 
+                                     "offset" : [0,1], 
+                                     "config" : {}}]}}]}}, 
+                                     {"action" : "explosion", 
+                                      "foregroundRadius" : 6, 
+                                      "backgroundRadius" : 0, 
+                                      "explosiveDamageAmount" : 10, 
+                                      "delaySteps" : 5}, 
+                                      {"action" : "config", 
+                                       "file" : "/projectiles/explosions/burningexplosion/burningexplosion.config"}, 
+                                       {"action" : "loop", "count" : 10, 
+                                       "body" : [
+                                       {"action" : "projectile", 
+                                        "type" : "redglobe", 
+                                        "fuzzAngle" : 180, 
+                                        "inheritDamageFactor" : 0.3, 
+                                        "config" : {
+                                          "damageType" : "noDamage", 
+                                          "damageKind" : "noDamage", 
+                                          "speed" : 40, 
+                                          "timeToLive" : 0.1, 
+                                          "processing" : "?0", 
+                                          "actionOnReap" : [
+                                            {"action" : "config", "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockback.config"}]}}]} ]}
+                                            },
 
-  "critChance" : 2,
-  "critBonus" : 8,
+  "critChance" : 9,
+  "critBonus" : 12,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
