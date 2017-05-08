@@ -27,9 +27,10 @@ function init()
   end
   BData:setPosition("spawn", storage.spawnPosition)
 
-  self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
-  self.behaviorState = self.behavior:init(_ENV)
-
+  if not config.getParameter("parent") or config.getParameter("dynamic") then
+    self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
+    self.behaviorState = self.behavior:init(_ENV)
+  end
   self.collisionPoly = mcontroller.collisionPoly()
 
   if animator.hasSound("deathPuff") then
@@ -102,15 +103,27 @@ function init()
 
   self.segments = config.getParameter("segments")
   self.child = config.getParameter("segmentMonster")
+  self.segmentArray = type(self.child) == 'table' and self.child or nil
+  self.child = self.segmentArray and self.segmentArray[self.segments] or self.child
   if not config.getParameter("parent") then 
     self.head = entity.id()
     message.setHandler("headDamage", function(_,__,notification)
+     self.damaged = true
      BData:setEntity("damageSource", notification.sourceEntityId)
      status.overConsumeResource("health",notification.healthLost)
     end) 
   end
   if self.segments > 0 then 
-	self.child = world.spawnMonster(self.child, mcontroller.position(),{head = self.head and self.head or config.getParameter("head"), parent = entity.id(), segments = self.segments - 1})
+	self.child = world.spawnMonster(self.child, mcontroller.position(),
+	{
+	head = self.head and self.head or config.getParameter("head"), 
+	parent = entity.id(), 
+	segmentMonster = config.getParameter("segmentMonster"),
+	segments = self.segments - 1, 
+	parentRadius = config.getParameter("radius"),
+  damageBar = false,
+  dynamic = config.getParameter("dynamicSegments") or config.getParameter("dynamic"),
+	renderLayer = "foregroundEntity+"..tostring(self.segments)})
   end 
 end
 

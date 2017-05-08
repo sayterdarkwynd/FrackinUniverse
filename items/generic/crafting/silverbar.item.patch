@@ -1,6 +1,10 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-	"pumpinfu",
-	"isn_windarray"
-	] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "pumpinfu" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "isn_windarray" }
+  ]
 ]

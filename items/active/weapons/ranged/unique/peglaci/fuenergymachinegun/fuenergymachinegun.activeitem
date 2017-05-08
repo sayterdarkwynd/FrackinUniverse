@@ -5,12 +5,13 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Brutal violium-derived blasts shred opponents
-^yellow;Inflicts electrified status",
+^yellow;Inflicts electrified status^reset;
+^cyan;Inflicts Slow status^reset;",
   "shortdescription" : "Thresher",
   "tooltipKind" : "gun2",
   "category" : "assaultRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","assaultrifle", "energy" ],
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon" ],
 
   "inventoryIcon" : [
     { "image" : "fuenergymachinegun.png:idle.1" }
@@ -31,7 +32,7 @@
       "color" : [101, 52, 120]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/hvmarauder1.wav" ]
     }
   },
   "baseOffset" : [1.0, 0.35],
@@ -53,6 +54,7 @@
 
     "projectileType" : "fuenergymachinegunshot",
     "projectileParameters" : {
+      "damageSourceKind" : "electric",
       "knockback" : 4,
       "speed" : 60,
       "statusEffects" : [ "electrified" ]
@@ -91,6 +93,7 @@
   "critChance" : 4,
   "critBonus" : 6,
   "altAbilityType" : "shrapnelshard",
+  "altAbility" : { "name" : "Static Shocks" },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

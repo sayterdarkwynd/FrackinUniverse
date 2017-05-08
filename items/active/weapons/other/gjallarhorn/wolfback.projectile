@@ -1,0 +1,22 @@
+{
+  "projectileName" : "wolfback",
+  "image" : "wolfpack.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,  
+  "timeToLive" : 0.2,
+  "damageKindImage" : "icon2.png",
+  "pointLight" : true,
+  "lightColor" : [173, 255, 245],
+  "piercing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "wolfpack",
+      "inheritDamageFactor" : 1
+    }
+  ],
+  "emitters" : [ "rocketsmoke" ],
+  "speed" : 30.0,
+  "physics" : "bullet",
+  "damageKind" : "default"
+}

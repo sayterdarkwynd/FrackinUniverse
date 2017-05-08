@@ -5,6 +5,12 @@
   "spawnProfile" : {
     "groups" : [
       {
+        "select" : 1,
+        "pool" : [ 
+          [ 0.1, "burrower_depth_selector" ]
+        ]
+      },     
+      {
         "select" : 2,
         "pool" : [ 
           [ 0.1111, "crustoise" ],     
@@ -237,7 +243,16 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "underground3amicrodungeons" ]
-      }               
+      },
+      {
+        "mode" : "floor",
+        "priority" : 99.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ultraRare",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "precursormicro" ]
+      }       
     ]
   },
     "hueShiftOptions" : [0]

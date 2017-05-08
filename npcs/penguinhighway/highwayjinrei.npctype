@@ -1,0 +1,80 @@
+{
+  "type" : "highwayjinrei",
+  "baseType" : "guard",
+  "identity" : {
+    "name" : "Jinrei",
+    "gender" : "male",
+    "race" : "hylotl"
+  },
+  "damageTeamType" : "assistant",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+  "innateStatusEffects" : [ "invulnerable" ],
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+  
+    "behaviorConfig" : {
+      "greetingChance" : 0
+    },
+	"dialogMode" : "sequence",		
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "My apologies for dropping in unannounced. You looked like you needed help.",
+			"My name is Jinrei; I am a Guardian who fights with SMASH to protect this fine city.",
+			"I take it you have met Zeldia? Nevertheless, there is little time to lose. More enemies await us.",
+			"The penguin threat must be eliminated at all costs; I am sure you will find more of my allies ahead to aid you.",
+			"I will stay to secure this area and ensure the penguins do not re-infest it. Please, move on without me."
+          ]
+        }
+      }
+    }
+  },
+  
+  "movementParameters" : {
+      "runSpeed" : 20,
+	  "walkSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 60
+    },
+    "mass" : 2.0
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "hylotltier3chest" } ],
+            "legs" : [ { "name" : "hylotltier3pants" } ],
+            "primary" : [
+{ "name" : "soluskatana", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["burning"] } } } }
+            ],
+            "sheathedprimary" : [               
+			  "commonmachinepistol"
+			  ]
+          }
+        ] ]
+    ]
+  },
+
+    "statusControllerSettings" : {
+
+    "stats" : {
+	  "powerMultiplier" : {
+        "baseValue" : 1.75
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+	  "maxEnergy" : {
+        "baseValue" : 20.0
+      }
+  }
+ }
+  
+}

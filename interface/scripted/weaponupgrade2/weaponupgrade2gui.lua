@@ -4,7 +4,7 @@ require "/scripts/interp.lua"
 function init()
   self.itemList = "itemScrollArea.itemList"
 
-  self.upgradeLevel = config.getParameter("upgradeLevel")
+  self.upgradeLevel = 8
 
   self.upgradeableWeaponItems = {}
   self.selectedItem = nil
@@ -19,7 +19,7 @@ function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
 
   local prevValue = root.evalFunction("weaponEssenceValue", itemConfig.parameters.level or itemConfig.config.level or 1)
-  local newValue = root.evalFunction("weaponEssenceValue", self.upgradeLevel) * itemConfig.parameters.level
+  local newValue = (root.evalFunction("weaponEssenceValue", self.upgradeLevel) * (itemConfig.parameters.level or itemConfig.config.level or 1)/3) + 200
 
   return math.floor(newValue - prevValue)
 end
@@ -110,17 +110,64 @@ function doUpgrade()
         local consumedCurrency = player.consumeCurrency("essence", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
-          local itemConfig = root.itemConfig(upgradedItem)
+          local itemConfig = root.itemConfig(upgradedItem)  
           upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
-          upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) + 10
-          upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 2
-          upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 2
-          if upgradedItem.parameters.level > 10 then
-            upgradedItem.parameters.level = 10
-          end
+          upgradedItem.parameters.primaryAbility = {}     
+                  -- magnorbs
+                  if (upgradedItem.parameters.orbitRate) then
+                    upgradedItem.parameters.shieldKnockback = (itemConfig.parameters.shieldKnockback or itemConfig.config.shieldKnockback or 1) + 1 
+                    upgradedItem.parameters.shieldEnergyCost = (itemConfig.parameters.shieldEnergyCost or itemConfig.config.shieldEnergyCost or 1) + 1 
+                    upgradedItem.parameters.shieldHealth = (itemConfig.parameters.shieldHealth or itemConfig.config.shieldHealth or 1) + 1 
+                  end  
+                  -- boomerangs and other projectileParameters based things (magnorbs here too , chakrams)
+		  if (upgradedItem.parameters.projectileParameters) then   
+		    upgradedItem.parameters.projectileParameters = { 
+		        power = itemConfig.config.primaryAbility.power + (upgradedItem.parameters.level/7),
+		        controlForce = itemConfig.config.primaryAbility.controlForce + (upgradedItem.parameters.level)
+		      }
+		  end   
+		  
+		  if (itemConfig.config.primaryAbility) then				  
+		    -- beams and miners
+			if (itemConfig.config.primaryAbility.beamLength) then
+			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
+			end
+		   -- wands/staves	
+			if (itemConfig.config.primaryAbility.maxCastRange) then
+			  upgradedItem.parameters.primaryAbility = {
+			  energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3),
+			  maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
+			  }
+			end	
+		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
+			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) and not (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") then    
+			    local fireTimeBase = itemConfig.config.primaryAbility.fireTime
+			    local fireTimeMod = ( upgradedItem.parameters.level/10 * 0.5)
+			    local fireTimeFinal = fireTimeBase * fireTimeMod 
+			    local fireTimeFinal2 = fireTimeBase - fireTimeFinal
+			    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2 
+			end
+			
+		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
+			if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
+			    local baseDpsBase = itemConfig.config.primaryAbility.baseDps
+			    local baseDpsMod = (upgradedItem.parameters.level/50)
+			    local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
+			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
+			end			
+		  end
+		  
+		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + upgradedItem.parameters.level/50)  -- increase DPS a bit
+		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
+		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
+		  
+	  sb.logInfo("Upgrading weapon : ")	  
+          sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
+          
           if itemConfig.config.upgradeParameters then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
           end
+          
         end
         player.giveItem(upgradedItem)
       end

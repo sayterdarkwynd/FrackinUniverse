@@ -1,14 +1,18 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-  "blackteleporter",
-  "brassteleporter",
-  "futureteleporter",
-  "scienceteleporter",
-  "stoneteleporter",
-  "tombteleporter",
-  "woodenteleporter",
-  "crossteleporter",
-  "futeleporter",
-  "translocator"
-  ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "blackteleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "brassteleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "futureteleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "scienceteleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "stoneteleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tombteleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "woodenteleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "crossteleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "futeleporter" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "translocator" }
+  ]
 ]

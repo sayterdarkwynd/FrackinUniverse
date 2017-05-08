@@ -1,12 +1,16 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-  "fuenergyblaster",
-  "fusunwalkerhead", 
-  "fusunwalkerchest", 
-  "fusunwalkerpants",
-	"kirhostier6apants",
-	"kirhostier6ahead",
-	"kirhostier6achest",
-	"densealloy"
-] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuenergyblaster" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fusunwalkerhead" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fusunwalkerchest" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fusunwalkerpants" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "kirhostier6apants" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "kirhostier6ahead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "kirhostier6achest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "densealloy" }
+  ]
 ]
