@@ -371,6 +371,7 @@ function getRecipes()
 		{ inputs = { cacti = 1 }, outputs = { gene_defense = 1 } },
 		{ inputs = { carrot = 1 }, outputs = { gene_resist = 1 } },
 		{ inputs = { chili = 1 }, outputs = { gene_pyro = 1 } },
+		{ inputs = { beakseedseed = 1 }, outputs = { gene_avian = 1 } },
 		{ inputs = { coconut = 1 }, outputs = { gene_defense = 1 } },
 		{ inputs = { coffeebeans = 1 }, outputs = { gene_energy = 1 } },
 		{ inputs = { coralcreep = 1 }, outputs = { gene_aquahomeo = 1 } },
