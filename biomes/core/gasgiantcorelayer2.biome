@@ -1,0 +1,151 @@
+{
+  "name" : "gasgiantcorelayer2",
+  "friendlyName" : "Gas Giant Core Layer",
+
+  "parallax" : "/parallax/surface/gasgiant3.parallax",
+
+  "mainBlock" : "obsidian",
+  "subBlocks" : [ "deadcore" ],
+  "ores" : "gasgiantSurface",
+
+  "weather" : [
+    [0, [
+      "/weather.config:fugasgiant"
+    ]]
+  ],
+  
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/magma_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/magma_underground.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/m54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "undergroundPlaceables" : {
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCore",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "thorns1" ], [0.20, "thorns2" ], [0.20, "thorns3" ], [0.20, "thorns4" ] ]
+          },
+          {
+            "pool" : [ [0.20, "desertgroundspike1" ], [0.20, "desertgroundspike2" ], [0.20, "desertgroundspike3" ], [0.20, "desertgroundspike4" ] ]
+          },
+          {
+            "pool" : [ [0.20, "greengroundspike1" ], [0.20, "greengroundspike2" ], [0.20, "greengroundspike3" ], [0.20, "greengroundspike4" ] ]
+          },
+          {
+            "pool" : [ [0.20, "savannahgroundspike1" ], [0.20, "savannahgroundspike2" ], [0.20, "savannahgroundspike3" ], [0.20, "savannahgroundspike4" ] ]
+          },
+          {
+            "pool" : [ [0.20, "magmagroundspike1" ], [0.20, "magmagroundspike2" ], [0.20, "magmagroundspike3" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingCore",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "ceilingspike1" ], [0.20, "ceilingspike2" ], [0.20, "ceilingspike3" ], [0.20, "ceilingspike4" ] ]
+          },
+          {
+            "pool" : [ [0.20, "desertceilingspike1" ], [0.20, "desertceilingspike2" ], [0.20, "desertceilingspike3" ], [0.20, "desertceilingspike4" ] ]
+          },
+          {
+            "pool" : [ [0.20, "greenceilingspike1" ], [0.20, "greenceilingspike2" ], [0.20, "greenceilingspike3" ], [0.20, "greenceilingspike4" ] ]
+          },
+          {
+            "pool" : [ [0.20, "savannahceilingspike1" ], [0.20, "savannahceilingspike2" ], [0.20, "savannahceilingspike3" ], [0.20, "savannahceilingspike4" ] ]
+          },
+          {
+            "pool" : [ [0.20, "magmaceilingspike1" ], [0.20, "magmaceilingspike2" ], [0.20, "magmaceilingspike3" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:layer3Chests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:backerStatues",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "benjaminstatue" ], [1, "cameronstatue" ], [1, "memorialstatue" ], [1, "oliverstatue" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      }
+    ]
+  },
+
+  "hueShiftOptions" : [-180, -160, -120, -100, -90, -80, -70, -60, -50, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180]
+}

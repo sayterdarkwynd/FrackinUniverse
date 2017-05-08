@@ -22,7 +22,6 @@ function init()
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
- self.usedIntro = 0
   checkEffectValid()
   script.setUpdateDelta(5)
 end
@@ -44,10 +43,24 @@ function checkEffectValid()
 	else
 
 	  -- activate visuals and check stats
-	  if (self.timerRadioMessage <= 0) and not self.usedIntro then
-	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure", 1.0) -- send player a warning
-	    self.usedIntro = 1
-	    self.timerRadioMessage = 6  
+	  if (self.timerRadioMessage <= 0) and (self.usedIntro == 0) then
+	    if math.random(3) == 3 then
+	            world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure", 1.0) -- send player a warning
+	      	    self.usedIntro = 1
+	      	    self.timerRadioMessage = 20  
+	    elseif math.random == 2 then
+	            world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure2", 1.0) -- send player a warning
+	      	    self.usedIntro = 1
+	      	    self.timerRadioMessage = 20 
+	    elseif math.random == 1 then
+	            world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure3", 1.0) -- send player a warning
+	      	    self.usedIntro = 1
+	      	    self.timerRadioMessage = 20	      	    
+	    else
+	            world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure4", 1.0) -- send player a warning
+	      	    self.usedIntro = 1
+	      	    self.timerRadioMessage = 20  
+	    end
 	  end
 	end
 end
@@ -172,20 +185,8 @@ self.windLevel =  world.windLevel(mcontroller.position()) or 1
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
-        
-        if self.windLevel >= 40 then
-		self.biomeThreshold = self.biomeThreshold + (self.windLevel / 100)
-                if (self.timerRadioMessage <= 0) then
-                  if not self.usedWind then
-                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressurewind", 1.0) -- send player a warning
-                    self.timerRadioMessage = 220 
-                    self.usedWind = 1
-                  end
-		end
-        end
-
       if ( self.biomeTimer <= 0 ) then
-        if (status.stat("physicalResistance") <= self.effectCutoffValue ) then
+        if (status.stat("physicalResistance") <=  self.effectCutoffValue ) then           
 		if daytime then
 		  if (self.timerRadioMessage <= 0) then
 		    if not self.usedIntro2 then
@@ -209,8 +210,20 @@ self.windLevel =  world.windLevel(mcontroller.position()) or 1
 		  makeAlert()
 		  activateVisualEffects()
 		end
+	      -- add wind modifiers
+		if self.windLevel >= 40 then
+			self.biomeThreshold = self.biomeThreshold + (self.windLevel / 100)
+			if (self.timerRadioMessage <= 0) then
+			  if not self.usedWind then
+			    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressurewind", 1.0) -- send player a warning
+			    self.timerRadioMessage = 220 
+			    self.usedWind = 1
+			  end
+			end
+		end 		
         end       
-        self.biomeTimer = setEffectTime()   
+        self.biomeTimer = setEffectTime()  
+     
       end
 end       
 
