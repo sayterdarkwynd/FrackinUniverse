@@ -47,10 +47,11 @@ function update(dt, fireMode, shiftHeld)
 	if not deltaPowerup then
 		deltaPowerup=0
 	end
-	if deltaPowerup > 1 then
+	local rate=1/2
+	local percent=0.1
+	if deltaPowerup > rate then
 		if storage.onboard < storage.onboardMax then
-			local amt=storage.onboardMax/5.0
-			amt=math.min(amt,storage.onboardMax-storage.onboard)
+			local amt=math.min(storage.onboardMax*percent*rate,storage.onboardMax-storage.onboard)
 			if status.consumeResource("energy",amt) then
 				storage.onboard=storage.onboard+amt
 			end
