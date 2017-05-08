@@ -2,30 +2,62 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
 function init()
-  activeItem.setScriptedAnimationParameter("markerImage", "/items/active/weapons/other/angryrocket/targetoverlay.png")
-  self.fireOffset = config.getParameter("fireOffset")
-  updateAim()
+	if not storage.init then
+		storage.init=true
+		storage.onboard=0
+	end
+	if not config.getParameter("onboard") then
+		activeItem.setInstanceValue("onboard",storage.onboard)
+	else
+		storage.onboard=config.getParameter("onboard")
+	end
+	
+	storage.onboardMax=math.max(config.getParameter("altAbility",{energyUsage=0}).energyUsage,config.getParameter("primaryAbility",{energyUsage=0}).energyUsage)*2
+	activeItem.setScriptedAnimationParameter("markerImage", "/items/active/weapons/other/angryrocket/targetoverlay.png")
+	self.fireOffset = config.getParameter("fireOffset")
+	updateAim()
 
-  storage.fireTimer = config.getParameter("primaryAbility").fireTime or 1
-  self.recoilTimer = 0
+	storage.fireTimer = storage.fireTimer or 0
+	self.recoilTimer = 0
 
-  activeItem.setCursor("/cursors/reticle0.cursor")
-  reset()
-  
-  setToolTipValues(config.getParameter("primaryAbility"))
+	activeItem.setCursor("/cursors/reticle0.cursor")
+	reset()
+
+	setToolTipValues(config.getParameter("primaryAbility"))
+	
+end
+
+function uninit()
+	activeItem.setInstanceValue("onboard",storage.onboard)
+
 end
 
 function setToolTipValues(ability)
-  activeItem.setInstanceValue("tooltipFields", {
-    damagePerShotLabel = damagePerShot(ability) * ability.projectileCount,
-    speedLabel = 1 / ability.fireTime,
-    energyPerShotLabel = ability.energyUsage
-  })
+	activeItem.setInstanceValue("tooltipFields", {
+		damagePerShotLabel = damagePerShot(ability) * ability.projectileCount,
+		speedLabel = 1,
+		energyPerShotLabel = ability.energyUsage
+	})
 end
 
 function update(dt, fireMode, shiftHeld)
-	if deltatime==nil then
+	if not deltatime then
 		deltatime=0
+	end
+	if not deltaPowerup then
+		deltaPowerup=0
+	end
+	if deltaPowerup > 1 then
+		if storage.onboard < storage.onboardMax then
+			local amt=storage.onboardMax/5.0
+			amt=math.min(amt,storage.onboardMax-storage.onboard)
+			if status.consumeResource("energy",amt) then
+				storage.onboard=storage.onboard+amt
+			end
+		end
+		deltaPowerup=0
+	else
+		deltaPowerup=deltaPowerup+dt
 	end
 	deltatime=deltatime+dt
 	updateAim()
@@ -40,14 +72,14 @@ function update(dt, fireMode, shiftHeld)
 	local ability = config.getParameter(fireMode.."Ability")
 	
 	if fireMode == "alt" then
-		gotLockTime=1
+		gotLockTime=2
 		if lockTime==nil then
 			lockTime=0
 		end
 		if prevFireMode~="alt" then
 			animator.playSound("enterAimMode")
 		end
-		if storage.fireTimer == 0 and not status.resourceLocked("energy") and deltatime>1 then
+		if storage.fireTimer == 0 and deltatime>1 then
 			--sb.logInfo(lockTime)
 			local newTarget = findTarget()
 			if newTarget ~= false and newTarget~= self.target then
@@ -76,10 +108,11 @@ function update(dt, fireMode, shiftHeld)
 		end
 		prevAbility=ability
 		prevFireMode=fireMode
-	elseif ability and storage.fireTimer <= 0 and not world.pointTileCollision(firePosition()) and status.overConsumeResource("energy", ability.energyUsage) then
-		storage.fireTimer = ability.fireTime or 1
+	elseif ability and storage.fireTimer <= 0 and (not world.pointTileCollision(firePosition())) and (storage.onboard >= ability.energyUsage) then
+		storage.fireTimer = 1
 		primaryFire(ability)
 		prevFireMode=fireMode
+		storage.onboard=storage.onboard-ability.energyUsage
 	elseif prevFireMode=="alt" and fireMode=="none" then
 		if self.target ~= nil then
 			if lockTime >= gotLockTime then
@@ -97,17 +130,19 @@ end
 
 
 function altFire(ability)
-  local projectileId = fireProjectile(ability,{power = damagePerShot(ability),powerMultiplier = activeItem.ownerPowerMultiplier(),target = self.target,maxSpeed=70})
-  world.callScriptedEntity(projectileId, "setTarget", self.target)
-  status.overConsumeResource("energy", ability.energyUsage)
+	if storage.onboard > ability.energyUsage then
+		storage.onboard=storage.onboard-ability.energyUsage
+		local projectileId = fireProjectile(ability,{power = damagePerShot(ability),powerMultiplier = activeItem.ownerPowerMultiplier(),target = self.target,maxSpeed=70})
+		world.callScriptedEntity(projectileId, "setTarget", self.target)
+	end
 end
 
 function primaryFire(ability)
-  local params = {
-    power = damagePerShot(ability),
+	local params = {
+		power = damagePerShot(ability),
 	powerMultiplier = activeItem.ownerPowerMultiplier()
-  }
-  local projectileId = fireProjectile(ability,params)
+	}
+	local projectileId = fireProjectile(ability,params)
 end
 
 function fireProjectile(ability,params)
@@ -125,38 +160,37 @@ function muzzleFlash()
 end
 
 function updateAim()
-  self.aimAngle, self.aimDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
-  activeItem.setArmAngle(self.aimAngle)
-  activeItem.setFacingDirection(self.aimDirection)
+	self.aimAngle, self.aimDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
+	activeItem.setArmAngle(self.aimAngle)
+	activeItem.setFacingDirection(self.aimDirection)
 end
 
 function firePosition()
-  return vec2.add(mcontroller.position(), activeItem.handPosition(self.fireOffset))
+	return vec2.add(mcontroller.position(), activeItem.handPosition(self.fireOffset))
 end
 
 function aimVector(ability)
-  local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(ability.inaccuracy or 0, 0))
-  aimVector[1] = aimVector[1] * self.aimDirection
-  return aimVector
+	local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(ability.inaccuracy or 0, 0))
+	aimVector[1] = aimVector[1] * self.aimDirection
+	return aimVector
 end
 
 function damagePerShot(ability)
-  return ability.baseDps
-  * ability.fireTime
-  * (self.baseDamageMultiplier or 1.0)
-  * config.getParameter("damageLevelMultiplier", root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1)))
-  / ability.projectileCount
+	return ability.baseDamage
+	* (self.baseDamageMultiplier or 1.0)
+	* config.getParameter("damageLevelMultiplier", root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1)))
+	/ ability.projectileCount
 end
 
 
 function reset()
-  activeItem.setScriptedAnimationParameter("entities", {})
-  self.target=nil
+	activeItem.setScriptedAnimationParameter("entities", {})
+	self.target=nil
 end
 
 
 function findTarget()
-  local nearEntities = world.entityQuery(activeItem.ownerAimPosition(), 3, { includedTypes = {"monster", "npc", "player"} })
+	local nearEntities = world.entityQuery(activeItem.ownerAimPosition(), 3, { includedTypes = {"monster", "npc", "player"} })
 	if nearEntities~=nil then
 		nearEntities = util.filter(nearEntities,
 			function(entityId)
