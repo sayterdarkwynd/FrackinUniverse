@@ -43,7 +43,7 @@
       "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant_<selector>.png",
       "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
       "maskRange" : [1, 25],
-      "maskPerPlanetRange" : [1, 1]  
+      "maskPerPlanetRange" : [3, 3]  
   }},  
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/fugasgiant2",
@@ -51,8 +51,8 @@
   {
       "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant2_<selector>.png",
       "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
-      "maskRange" : [1, 25],
-      "maskPerPlanetRange" : [1, 1]  
+      "maskRange" : [1,25],
+      "maskPerPlanetRange" : [1,1]  
   }}, 
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/fugasgiant3",
@@ -61,7 +61,7 @@
       "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant3_<selector>.png",
       "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
       "maskRange" : [1, 25],
-      "maskPerPlanetRange" : [1, 1]  
+      "maskPerPlanetRange" : [1, 3]  
   }},   
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/fugasgiant4",
@@ -70,7 +70,7 @@
       "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant4_<selector>.png",
       "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
       "maskRange" : [1, 25],
-      "maskPerPlanetRange" : [1, 1]  
+      "maskPerPlanetRange" : [2, 2]  
   }},   
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/fugasgiant5",
@@ -79,7 +79,7 @@
       "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant5_<selector>.png",
       "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
       "maskRange" : [1, 25],
-      "maskPerPlanetRange" : [1, 1]  
+      "maskPerPlanetRange" : [1, 3]  
   }},   
     {"op" : "add", 
     "path" : "/terrestrialHorizonGraphics/snowdark",
@@ -864,7 +864,7 @@
   "path" : "/terrestrialGraphics/fugasgiant",
   "value" : 
   {
-      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
       "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
       "shadowNumber": [
         1,
@@ -876,21 +876,21 @@
         30
       ],
       "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
-      "overlayCount": 2,
+      "overlayCount": 3,
       "primaryHueShiftRange": [
         0,
         360
       ],
       "hueShiftOffsetRange": [
-        -75,
-        75
+        -360,
+        360
       ]
   }},
   {"op" : "add", 
   "path" : "/terrestrialGraphics/fugasgiant2",
   "value" : 
   {
-      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
       "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
       "shadowNumber": [
         1,
@@ -905,18 +905,18 @@
       "overlayCount": 2,
       "primaryHueShiftRange": [
         0,
-        260
+        360
       ],
       "hueShiftOffsetRange": [
-        -150,
-        150
+        -360,
+        360
       ]
   }},
   {"op" : "add", 
   "path" : "/terrestrialGraphics/fugasgiant3",
   "value" : 
   {
-      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
       "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
       "shadowNumber": [
         1,
@@ -928,21 +928,21 @@
         10
       ],
       "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
-      "overlayCount": 2,
+      "overlayCount": 4,
       "primaryHueShiftRange": [
         0,
-        160
+        360
       ],
       "hueShiftOffsetRange": [
-        -250,
-        250
+        -360,
+        360
       ]
   }},
   {"op" : "add", 
   "path" : "/terrestrialGraphics/fugasgiant4",
   "value" : 
   {
-      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
       "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
       "shadowNumber": [
         1,
@@ -957,7 +957,7 @@
       "overlayCount": 2,
       "primaryHueShiftRange": [
         0,
-        90
+        360
       ],
       "hueShiftOffsetRange": [
         -360,
@@ -968,7 +968,7 @@
   "path" : "/terrestrialGraphics/fugasgiant5",
   "value" : 
   {
-      "baseImage": "/celestial/system/gas_giant/gas_giant_base.png",
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
       "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
       "shadowNumber": [
         1,

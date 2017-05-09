@@ -1,0 +1,62 @@
+{
+  "objectName" : "ClockTest",
+  "colonyTags" : [],
+  "rarity" : "Essential",
+  "printable" : false,
+  "description" : "Debug tool to print clock stuffs to log.",
+  "shortdescription" : "clock test",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 0,
+  "health" : 1.5,
+
+  "objectType" : "container",
+  "slotCount" : 1,
+  "uiConfig" : "/objects/devtools/ClockTest/ItemScanner.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+  "scripts" : [ "ItemScannerAnim.lua"],
+  "lightColor" : [38, 114, 128],
+  "lightPosition" : [0, 1],
+
+  "flickerPeriod" : 1.2,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1.00,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0.0,
+  
+  "inventoryIcon" : "/objects/crafting/pethealingstation/pethealingstationicon.png",
+
+  "animation" : "/objects/crafting/pethealingstation/pethealingstation.animation",
+  "animationParts" : {
+    "pethealingstation" : "/objects/crafting/pethealingstation/pethealingstation.png",
+    "pethealingstationlit" : "/objects/crafting/pethealingstation/pethealingstationlit.png"
+  },
+  "animationPosition" : [-6, 0],
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/crafting/pethealingstation/pethealingstation.png:off.<frame>", "fullbright" : true }, { "image" : "/objects/crafting/pethealingstation/pethealingstationlit.png:off.<frame>" } ],
+      "imagePosition" : [-6, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "/objects/crafting/pethealingstation/pethealingstation.png:off.<frame>", "fullbright" : true }, { "image" : "/objects/crafting/pethealingstation/pethealingstationlit.png:off.<frame>" } ],
+      "imagePosition" : [-6, 0],
+
+      "direction" : "right",
+      
+      "frames" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

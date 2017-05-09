@@ -140,12 +140,17 @@ function doUpgrade()
 			  }
 			end	
 		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
-			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) and not (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") then    
+			
+			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) then
+			  if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") then
+			    upgradedItem.parameters.primaryAbility.fireTime = upgradedItem.parameters.primaryAbility.fireTime
+			  else
 			    local fireTimeBase = itemConfig.config.primaryAbility.fireTime
 			    local fireTimeMod = ( upgradedItem.parameters.level/10 * 0.5)
 			    local fireTimeFinal = fireTimeBase * fireTimeMod 
 			    local fireTimeFinal2 = fireTimeBase - fireTimeFinal
 			    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2 
+			  end
 			end
 			
 		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
