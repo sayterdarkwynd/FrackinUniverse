@@ -15,54 +15,38 @@
   "fallSpeed" : 10,
   "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
   "lightColor" : [0, 140, 255],
-  "damageKind" : "default",
+  "damageKind" : "electric",
   "emitters" : [ "electricplasmapurple", "electricplasma","lightningthrowertrail" ],
   "actionOnReap" : [
     {
       "action" : "projectile",
       "type" : "isn_fusioncannonblast",
       "fuzzAngle" : 0,
-      "inheritDamageFactor" : 1.0,
+      "inheritDamageFactor" : 0.0,
       "angleAdjust" : 0
     },
     {
       "action" : "config",
-      "file" : "/projectiles/guns/a_sciencemod/isn_fusioncannon/isn_fusioncannon.config"
-    },
-	{
-      "action" : "projectile",
-      "type" : "isn_napalmfire",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : -40
-    },
-	{
-      "action" : "projectile",
-      "type" : "isn_napalmfire",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : -20
-    },
-	{
-      "action" : "projectile",
-      "type" : "isn_napalmfire",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : 0
-    },
-	{
-      "action" : "projectile",
-      "type" : "isn_napalmfire",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : 20
-    },
-	{
-      "action" : "projectile",
-      "type" : "isn_napalmfire",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.1,
-      "angleAdjust" : 40
+      "file" : "/projectiles/guns/a_sciencemod/isn_fusioncannon/isn_fusioncannon2.config"
     }
-  ]
+  ],
+  
+   "periodicActions":[
+    {
+      "time" : 0,
+      "loop" : true, 
+      "action" : "projectile",
+      "type" : "fusionmining",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.0,
+      "angleAdjust" : 0,
+      
+      "projectileParameters" : { 
+        "speed" : 61, 
+        "timeToLive" : 0.3,
+        "offset" : [ 1,0 ]
+        }
+    }
+    ]      
+    
 }
