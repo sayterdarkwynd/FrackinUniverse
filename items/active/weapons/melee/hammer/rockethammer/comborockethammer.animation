@@ -1,0 +1,186 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+	  "blade" : {"default" : "inactive", "states" : {"inactive" : {"properties" : {"lightsOff" : ["glow"], "particleEmittersOff" : ["idlejet1", "idlejet2"]}}, "extend" : {"frames" : 5, "cycle" : 0.15, "mode" : "transition", "transition" : "active", "properties" : {"lightsOn" : ["glow"], "particleEmittersOn" : ["idlejet1", "idlejet2"], "immediateSound" : "/sfx/gun/grenadeblast_small_fire1.ogg"}}, "active" : {"frames" : 9, "cycle" : 0.5, "mode" : "loop", "properties" : {"lightsOn" : ["glow"], "particleEmittersOn" : ["idlejet1", "idlejet2"], "persistentSound" : "/sfx/melee/shockwave_full_fire.ogg"}}, "retract" : {"frames" : 5, "cycle" : 0.15, "mode" : "transition", "transition" : "inactive", "properties" : {"lightsOn" : ["glow"], "particleEmittersOn" : ["idlejet1", "idlejet2"], "immediateSound" : "/sfx/gun/flamethrower_stop.ogg"}}}},
+      "swoosh" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "idle",
+			"frameProperties" : {"immediateSound" : ["/sfx/melee/travelingslash_fire1.ogg"]}
+          },
+          "fire2" : {
+            "frames" : 3,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle",
+			"frameProperties" : {"immediateSound" : ["/sfx/melee/swing_broadsword_fire1.ogg"]}
+          },
+          "fire3" : {
+            "frames" : 3,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle",
+			"frameProperties" : {"immediateSound" : ["/sfx/melee/travelingslash_fire3.ogg"]}
+          },
+		  "fire4" : {
+		    "frames" : 5, 
+			"cycle" : 0.2, 
+			"mode" : "transition", 
+			"transition" : "idle", 
+			"frameProperties" : {"immediateSound" : []}
+		  }
+        }
+      }
+    },
+
+    "parts" : {
+      "blade" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
+          "offset" : [0, 1.875],
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0],
+          "damageArea" : [ [-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0] ]
+        }
+      },
+      "handle" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>?<directives>",
+          "offset" : [0, 1.875],
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0]
+        }
+      },
+      "swoosh" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "transformationGroups" : ["swoosh"],
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/hammer/swoosh/fireswoosh.png:<frame>?scalenearest=1.5",
+                "offset" : [0.8, 3],
+                "damageArea" : [[-5.25, 3], [-3.75, 4.5], [1.5, 4.5], [4.5, 2.625], [6, -0.375], [6, -3.375], [4.5, -4.875], [0, -3.75]]
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/broadsword/swoosh3/fireswoosh.png:<frame>?scalenearest=3",
+                "offset" : [2, 0],
+                "damageArea" : [[-9.5, 3], [6, 2], [6, -2], [-9.5, -3]]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/hammer/swoosh/fireswoosh.png:<frame>?scalenearest=2",
+                "offset" : [0.2, 4],
+                "damageArea" : [[-7, 4], [-5, 6], [2, 6], [6, 3.5], [8, -0.5], [8, -4.5], [6, -6.5], [0, -5]]
+              }
+            },
+			"fire4" : {
+			  "properties" : {
+			    "image" : "/projectiles/explosions/regularexplosion2/regularexplosion2.png:<frame>?scalenearest=1.5", 
+				"offset" : [5,-0.5], 
+				"damageArea" : [[5, 5], [-5, 5], [5, -5], [-5, -5]]
+			  }
+			}
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "swoosh" : {}
+  },
+
+  "particleEmitters" : {
+    "fire4fire":{"active":false, "offsetRegion":[5,-0.5,5,-0.5], "transformationGroups":["swoosh"], "emissionRate":1, "burstCount":7, "particles":[{"particle":{"type":"animated", "looping":false, "animation":"/animations/mediumflame/mediumflame.animation", "approach" : [0.5, 0.5], "timeToLive" : 0.6, "layer" : "front", "variance" : {"position" : [1.5, 1.5], "initialVelocity" : [1, 1], "timeToLive" : 0.15, "rotation" : 180}}}]}, "fire4smoke":{"active":false, "offsetRegion":[5,-0.5,5,-0.5], "transformationGroups":["swoosh"], "emissionRate":1, "burstCount":7, "particles":[{"particle":{"type":"animated", "looping":false, "animation":"/animations/smoke/smoke.animation", "approach" : [0.5, 0.5], "timeToLive" : 0.6, "variance" : {"position" : [1.5, 1.5], "initialVelocity" : [1, 1], "timeToLive" : 0.15, "rotation" : 180}}}]}, "idlejet1":{"active":false, "transformationGroups":["weapon"], "emissionRate":20, "offsetRegion":[-1.7,4.4,-1.7,4.6], "particles":[{"particle":{"type":"animated", "animation":"/animations/mediumflamefire/mediumflamefire.animation", "position":[0,0], "layer":"back", "initialVelocity":[-5,0], "finalVelocity":[0,0], "approach":[0,0], "fade":0.5, "destructionAction":"shrink", "destructionTime":1, "size":0.7, "timeToLive":0, "fullbright":true, "rotation":70, "variance":{"initialVelocity":[1,1], "rotation":180}}}]}, "idlejet2":{"active":false, "transformationGroups":["weapon"], "emissionRate":20, "offsetRegion":[-1.85,5,-1.85,5.2], "particles":[{"particle":{"type":"animated", "animation":"/animations/mediumflamefire/mediumflamefire.animation", "position":[0,0], "layer":"back", "initialVelocity":[-5,0], "finalVelocity":[0,0], "approach":[0,0], "fade":0.5, "destructionAction":"shrink", "destructionTime":1, "size":0.7, "timeToLive":0, "fullbright":true, "rotation":70, "variance":{"initialVelocity":[1,1], "rotation":180}}}]},
+    "physicalswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 1,
+      "burstCount" : 1,
+      "particles" : []
+    },
+    "fireswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "burstCount" : 4,
+      "particles" : [
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"}
+      ]
+    },
+    "electricswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "burstCount" : 3,
+      "particles" : [
+        { "particle" : "electricswoosh1"},
+        { "particle" : "electricswoosh2"},
+        { "particle" : "electricswoosh2"}
+      ]
+    },
+    "poisonswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "burstCount" : 3,
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"}
+      ]
+    },
+    "iceswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "burstCount" : 3,
+      "particles" : [
+        { "particle" : "iceswoosh1"},
+        { "particle" : "iceswoosh2"},
+        { "particle" : "iceswoosh3"}
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fire" : ["/sfx/melee/hammer_smash2.ogg"], 
+    "fire2" : ["/sfx/melee/swing_hammer_fire1.ogg"], 
+    "fire3" : ["/sfx/melee/hammer_smash1.ogg"], 
+    "fire4" : ["/sfx/weapons/missileexp3.wav", "/sfx/weapons/smissileexp1.wav", "/sfx/weapons/megahammer.wav"]
+  }, 
+  "lights" : {
+    "glow" : {"position" : [0, 5], "color":[150, 50, 19], "transformationGroups" : ["weapon"]}
+  }
+}

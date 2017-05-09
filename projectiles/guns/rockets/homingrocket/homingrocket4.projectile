@@ -16,40 +16,20 @@
   "scripts" : [ "homingrocket.lua" ],
   "controlForce" : 150,
   "maxSpeed" : 150,
-  "actionOnReap" : [
+	  "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "slowzoneinvis",
+	      "config" : { "timeToLive" : 1.5 },
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.25,
+	      "angleAdjust" : 0
+	    },
     	    {
     	      "action" : "config",
-    	      "file" : "/projectiles/explosions/hellfireexplosion/hellfireexplosion.config"
-	    },
-    {
-      "action" : "projectile",
-      "type" : "fireswirl",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.15,
-      "angleAdjust" : 90
-    },
-    {
-      "action" : "projectile",
-      "type" : "fireswirl",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.15,
-      "angleAdjust" : 0
-    },
-    {
-      "action" : "projectile",
-      "type" : "fireswirl",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.15,
-      "angleAdjust" : -90
-    },
-    {
-      "action" : "projectile",
-      "type" : "fireswirl",
-      "fuzzAngle" : 0,
-      "inheritDamageFactor" : 0.15,
-      "angleAdjust" : 180
-    }      
-  ],  
+    	      "file" : "/projectiles/explosions/hellfireexplosion/spankrexplosion.config"
+	    }    
+	  ],  
   "actionOnCollide" : [
     	    {
     	      "action" : "config",
