@@ -1,106 +1,54 @@
 {
-  "type" : "diamond_burrower",
-  "shortdescription" : "A camoflauged worm burrowing through the earth",
-  "description" : "A camoflauged worm burrowing through the earth",
+  "type" : "solarium_burrower_tail",
+  "shortdescription" : "A segment of a camoflauged worm burrowing through the earth",
+  "description" : "A segment of a camoflauged burrowing worm",
+ 
+ "categories" : [ "solarium_burrower_tail" ],
+  "parts" : [ "body" ],
 
-  "categories" : [ "diamond_burrower" ],
-  "parts" : [ "bodylit", "body" ],
-
-  "animation" : "diamond_burrower.animation",
+  "animation" : "solarium_burrower_segment.animation",
 
   "dropPools" : [ ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monstersegment.lua"
+      "/monsters/monstersegment.lua",
+      "/monsters/segmented/burrowers/burrower.lua"
     ],
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
-    "renderLayer" : "foregroundEntity+10",
+    "renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
-      "seeThroughLiquid" : true,
-      "targetQueryRange" : 35,
+
+      "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
-      "keepTargetInRange" : 80,
-      "targetOutOfSightTime" : 5.0,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
 
-      "damageTakenActions" : [
-      ],
+      "foundTargetActions" : [],
 
-      "foundTargetActions" : [ ],
+      "fleeActions" : [],
 
-      "fleeActions" : [ ],
-      
-      "hostileActions" : [
-      ],
-      "periodicActions" : [ ],
+      "hostileActions" : [],
 
-      "approachActions" : [
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-    	    "minRange" : 1,
-    	    "maxRange" : 1,
-    	    "targetOffset" : [0,-6],
-    	    "avoidLiquid" : false,
-    	    "usePathfinding" : false,
-          "stopForce" : 30
-          }
-        }
-      ],
+      "periodicActions" : [],
 
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-          }
-        }
-      ],
+      "approachActions" : [],
 
-      "wanderActions" : [
-        {
-          "name" : "wander-fly",
-      	  "parameters" : {
-            "ceilingDistance" : 2,
-      	    "groundDistance" : 2,
-            "xVelocity": 12,
-            "yVelocity": 16
-      	  }
-        }
-      ],
-       "concurrentHostileActions" : [
-	{
-	  "name" : "action-burroweffect"
-	},
-	{
-	  "name" : "action-aim-head"
-	}
-       
-      ],
-       "concurrentActions" : [
-	{
-	  "name" : "action-burroweffect"
-	},
-	{
-	  "name" : "action-aim-head"
-	}
-       
-      ],
+      "followActions" : [],
+
+      "wanderActions" : [],
+
       "deathActions" : [
         {
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "diamonddeath",
+            "projectileType" : "solariumdeath",
             "projectileParameters" : {},
             "power" : 0,
             "aimDirection" : [0, 0],
@@ -108,6 +56,7 @@
           }
         }
       ]
+      
     },
 
     "touchDamage" : {
@@ -128,20 +77,19 @@
       "collisionEnabled" : false,
       "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
 
-      "mass" : 2.0,
+      "mass" : 1.0,
       "walkSpeed" : 4,
       "runSpeed" : 12,
       "gravityEnabled" : false,
 
       "airFriction" : 0.75,
-      "airForce" : 20,
-      "flySpeed" : 15
-
+      "airForce" : 15,
+      "flySpeed" : 25
     },
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.01,
+    "knockoutTime" : 0.0,
     "knockoutAnimationStates" : {
       "damage" : "stunned"
     },
@@ -167,13 +115,10 @@
           "baseValue" : 0
         },
         "knockbackThreshold" : {
-          "baseValue" : 999
-        },
-        "grit" : {
-          "baseValue" : 1
+          "baseValue" : 500
         },
         "maxHealth" : {
-          "baseValue" : 500
+          "baseValue" : 65
         },
         "protection" : {
           "baseValue" : 0.0
@@ -229,8 +174,10 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : false,
-    "segments" : 9,
-    "segmentMonster" : ["diamond_burrower_tail", "direstone_burrower_segment", "diamond_burrower_segment", "direstone_burrower_segment", "diamond_burrower_segment", "direstone_burrower_segment", "diamond_burrower_segment", "direstone_burrower_segment", "diamond_burrower_segment"],
-    "radius" : 1.2
+    "segments" : 0,
+    "segmentMonster" : "solarium_burrowersegment",
+    "radius" : 1.2,
+    "burrowProjectile" : "direstoneburrow",
+    "burrowBurstProjectile" : "direstoneburrowburst"
   }
 }
