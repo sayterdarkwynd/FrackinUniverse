@@ -1,5 +1,5 @@
 {
-  "type" : "hostilefu",
+  "type" : "hostilefuultraelite",
   "baseType" : "base",
 
   "persistent" : true,
@@ -12,11 +12,11 @@
     "behavior" : "hostileguard",
 
     "behaviorConfig" : {
-      "leapWindup" : 0.45,
+      "leapWindup" : 0.15,
       "rangedAimTime" : 0.05,
       "rangedWindupTime" : 0.01,
-      "rangedMinFireTime": 0.2,
-      "rangedMaxFireTime": 2      
+      "rangedMinFireTime": 0.3,
+      "rangedMaxFireTime": 0.7    
     },
 
     "aggressive" : true,
@@ -33,33 +33,33 @@
     },
 
     "dialog" : {
-      "attack" : "/dialog/combat.config:attack",
-      "reattack" : "/dialog/combat.config:reattack",
-      "killedTarget" : "/dialog/combat.config:killedTarget",
-      "lostTarget" : "/dialog/combat.config:lostTarget",
-      "outOfSight" : "/dialog/combat.config:outOfSight",
-      "cheerOn" : "/dialog/combat.config:cheerOn",
-      "cantReach" : "/dialog/combat.config:cantReach"
+      "attack" : "/dialog/macready.config:attack",
+      "reattack" : "/dialog/macready.config:reattack",
+      "killedTarget" : "/dialog/macready.config:killedTarget",
+      "lostTarget" : "/dialog/macready.config:lostTarget",
+      "outOfSight" : "/dialog/macready.config:outOfSight",
+      "cheerOn" : "/dialog/macready.config:cheerOn",
+      "cantReach" : "/dialog/macready.config:cantReach"
     },
 
     "combat" : {
       "meleeWeaponWindups" : {
-        "default" : 0.35,
-        "broadsword" : 0.35,
-        "dagger" : 0.25,
-        "axe" : 0.35,
-        "hammer" : 0.5,
-        "shortsword" : 0.25,
-        "spear" : 0.45
+        "default" : 0.05,
+        "broadsword" : 0.1,
+        "dagger" : 0.05,
+        "axe" : 0.15,
+        "hammer" : 0.3,
+        "shortsword" : 0.05,
+        "spear" : 0.25
       },
       "meleeWeaponCooldowns" : {
-        "default" : 1.0,
-        "broadsword" : 1.7,
+        "default" : 0.5,
+        "broadsword" : 1.0,
         "dagger" : 0.7,
-        "axe" : 1.4,
-        "hammer" : 2.0,
+        "axe" : 1.0,
+        "hammer" : 1.4,
         "shortsword" : 1.0,
-        "spear" : 1.4
+        "spear" : 1.1
       }
     }
   },
@@ -92,13 +92,13 @@
   "statusControllerSettings" : {
     "stats" : {
       "maxHealth" : {
-        "baseValue" : 70.0
+        "baseValue" : 320.0
       },
       "maxEnergy" : {
-        "baseValue" : 90.0
+        "baseValue" : 150.0
       },      
       "powerMultiplier" : {
-        "baseValue" : 0.65
+        "baseValue" : 1.0
       },
       "protection" : {
         "baseValue" : 1.0
