@@ -52,7 +52,7 @@ end
 
 function update(dt)
   self.tookDamage = false
-  monster.say("I love dick")
+  --monster.say("I love you")
   world.spawnProjectile("pushzone2",mcontroller.position(),entity.id(),{0,-35},false,params)
   trackTargets(self.keepTargetInSight, self.queryTargetDistance, self.trackTargetDistance, self.switchTargetDistance)
 
