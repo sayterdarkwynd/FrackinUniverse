@@ -94,7 +94,23 @@
 
     "projectileType" : "drillspearexplosion",
     "projectileConfig" : {
-      "speed" : 0
+      "speed" : 0,
+      "periodicActions" : [
+	    {
+	      "time" : 0,
+	      "loop" : true, 
+	      "action" : "projectile",
+	      "type" : "fusionmining",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0,
+
+	      "projectileParameters" : { 
+		"speed" : 61, 
+		"timeToLive" : 0.2
+		}
+	    }
+      ]
     },
 
     "cycleRotationOffsets" : [0, 7.5, -7.5],
