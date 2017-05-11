@@ -6,7 +6,7 @@
  "categories" : [ "dirt_burrower_tail" ],
   "parts" : [ "body" ],
 
-  "animation" : "dirt_burrower.animation",
+  "animation" : "dirt_burrower_segment.animation",
 
   "dropPools" : [ ],
 
@@ -98,31 +98,34 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0
+          "baseValue" : -1
         },
         "knockbackThreshold" : {
-          "baseValue" : 500
+          "baseValue" : 999
+        },
+        "grit" : {
+          "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 667
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.2
         },
         "healthRegen" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.1
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.15
         },
         "fireStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.35
         },
         "iceResistance" : {
           "baseValue" : 0.0
@@ -131,16 +134,34 @@
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
         },
         "poisonResistance" : {
           "baseValue" : 0.0
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.35
+        },
+        "shadowResistance" : {
+         "baseValue" : 0.95 
+        },
+        "shadowStatusImmunity" : {
+         "baseValue" : 1.0 
+        },
+        "cosmicStatusImmunity" : { 
+         "baseValue" : 0.0 
+        },
+        "cosmicResistance" : { 
+         "baseValue" : -1.0 
+        },
+        "radioactiveStatusImmunity" : { 
+        "baseValue" : 0.35 
+        },
+        "radioactiveResistance" : { 
+        "baseValue" : 0.0 
         }
       },
 
@@ -156,6 +177,7 @@
         }
       }
     },
+
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
