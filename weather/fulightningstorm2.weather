@@ -106,24 +106,52 @@
     {
       "projectile" : "ffteslasmall",
       "parameters" : {
-        "power" : 4
+        "power" : 6,
+        "statusEffects" : [ "electrified" ],
+          "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+		    }        
+          ]
       },
       "velocity" : [0, -50],
-      "ratePerX" : 0.006,
+      "ratePerX" : 0.01,
       "spawnAboveRegion" : 20,
       "spawnHorizontalPad" : 10,
-      "windAffectAmount" : 0.3
+      "windAffectAmount" : 0.09
     },
     {
       "projectile" : "ffteslasmall2",
       "parameters" : {
-        "power" : 4
+        "power" : 8,
+        "statusEffects" : [ "electrified" ],
+          "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
+		    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "firefinish",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }, 		    
+	    {
+	      "action" : "projectile",
+	      "type" : "zeroenergylesser2",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }          
+          ]
       },
       "velocity" : [0, -50],
       "ratePerX" : 0.006,
       "spawnAboveRegion" : 20,
       "spawnHorizontalPad" : 10,
-      "windAffectAmount" : 0.3
+      "windAffectAmount" : 0.08
     },
     {
       "projectile" : "spacedust1",
@@ -131,7 +159,7 @@
         "power" : 1
       },
       "velocity" : [0, -50],
-      "ratePerX" : 0.006,
+      "ratePerX" : 0.005,
       "spawnAboveRegion" : 30,
       "spawnHorizontalPad" : 30,
       "windAffectAmount" : 1.0
@@ -139,13 +167,70 @@
     {
       "projectile" : "fftesla",
       "parameters" : {
-        "power" : 12
+        "power" : 16,
+        "statusEffects" : [ "electrified" ],
+          "actionOnReap" : [
+	    {
+	     "action" : "config",
+	     "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "firefinish",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }, 		    
+	    {
+	      "action" : "projectile",
+	      "type" : "zeroenergylesser2",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }          
+          ]
+      },
+      "velocity" : [0, -80],
+      "ratePerX" : 0.003,
+      "spawnAboveRegion" : 24,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.02
+    },
+    {
+      "projectile" : "fftesla",
+      "parameters" : {
+        "power" : 32,
+        "statusEffects" : [ "electrified" ],
+          "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
+		    },          
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/teslaboom/teslaboom3.config"
+		    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "firefinish",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }, 		    
+	    {
+	      "action" : "projectile",
+	      "type" : "zeroenergylesser",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }          
+          ]
       },
       "velocity" : [0, -80],
       "ratePerX" : 0.001,
       "spawnAboveRegion" : 24,
       "spawnHorizontalPad" : 30,
-      "windAffectAmount" : 0.3
+      "windAffectAmount" : 0.0
     }
   ],
 
