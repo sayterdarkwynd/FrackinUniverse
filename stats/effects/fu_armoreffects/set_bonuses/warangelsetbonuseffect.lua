@@ -1,11 +1,12 @@
 setName="fu_warangelset"
 
 weaponBonus={
-	{stat = "critChance", amount = 25},
-	{stat = "powerMultiplier", baseMultiplier = 3 }
+	{stat = "critChance", amount = 12},
+	{stat = "powerMultiplier", baseMultiplier = 2.5 }
 }
 
 armorBonus={
+        {stat = "breathProtection", amount = 1},
 	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},

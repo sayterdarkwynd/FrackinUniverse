@@ -4,9 +4,10 @@
   "level" : 4,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Made from the depths. And hate. Lots and lots of hate.",
+  "description" : "Made from the depths. And hate. Lots and lots of hate.
+^cyan;Inflicts Poison^reset;",
   "shortdescription" : "Coral Cleaver",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "warblade",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
@@ -27,7 +28,10 @@
   "primaryAbilityType" : "battlebladecoral",
   "primaryAbility" : {
     "fireTime" : 0.73,
-    "baseDps" : 10.4
+    "baseDps" : 10.4,
+    "damageConfig" : {
+      "statusEffects" : [ "weakpoison" ]
+    }
   },
 
   "altAbilityType" : "fububbleslash",

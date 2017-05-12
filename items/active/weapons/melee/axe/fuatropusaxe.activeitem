@@ -3,9 +3,10 @@
   "price" : 740,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "That's...wonderful.",
-  "shortdescription" : "Flesh Axe",
-  "tooltipKind" : "sword",
+  "description" : "A revolting bio-weapon
+^cyan;Inflicts Poison^reset;",
+  "shortdescription" : "Fleshweave Hatchet",
+  "tooltipKind" : "sword2",
   "category" : "axe",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","axe","bioweapon", "upgradeableWeapon"],
@@ -28,17 +29,19 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
   "aimOffset" : -1.0,
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
     "fireTime" : 0.7,
-    "baseDps" : 11,
+    "baseDps" : 10,
     "damageConfig" : {
-      "damageSourceKind" : "axe",
-      "knockback" : 12
+      "knockback" : 12,
+	    "damageConfig" : {
+	      "statusEffects" : [ "weakpoison" ]
+	    }
     },
     "stances" : {
       "idle" : {
@@ -67,6 +70,6 @@
     }
   },
   "critChance" : 2,
-  "critBonus" : 7, 
+  "critBonus" : 6, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

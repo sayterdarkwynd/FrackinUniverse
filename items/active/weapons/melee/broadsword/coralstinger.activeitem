@@ -4,9 +4,10 @@
   "level" : 4,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Jagged and not-too-friendly.",
+  "description" : "Jagged and not-too-friendly.
+^cyan;Inflicts Poison^reset;",
   "shortdescription" : "Coral Stingblade",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
@@ -27,7 +28,10 @@
   "primaryAbilityType" : "piercecombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 8.75
+    "baseDps" : 8.75,
+    "damageConfig" : {
+      "statusEffects" : [ "weakpoison" ]
+    }
   },
 
   "altAbilityType" : "fuwaterslash",
