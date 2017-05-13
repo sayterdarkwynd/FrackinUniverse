@@ -1,0 +1,48 @@
+{
+  "itemName" : "fuatropushammer",
+  "price" : 800,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A revolting bio-weapon
+^cyan;Inflicts Poison^reset;",
+  "shortdescription" : "Fleshweave Mace",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+
+  "inventoryIcon" : "fuatropushammer.png",
+
+  "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fuatropushammer.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "knockback" : 16,
+      "statusEffects" : [ "weakpoison" ]
+    }
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+  "critChance" : 3,
+  "critBonus" : 9,
+  "altAbilityType" : "elementalpillar",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

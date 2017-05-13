@@ -1,0 +1,609 @@
+{
+  "name": "approach-fly-liquids",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/behavior.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/sensor.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/flying.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "stopForce": 500,
+    "avoidLiquid": true,
+    "usePathfinding": true,
+    "approachTime": 0,
+    "flyState": "fly",
+    "targetOffset": [
+      0,
+      0
+    ],
+    "minRange": 0,
+    "maxRange": 0,
+    "maxAngle": 1,
+    "approachAngle": 10
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {
+      "type": "sliding",
+      "state": "off",
+      "fromEntity": "attackTarget",
+      "toEntity": "fleeTarget"
+    },
+    "children": [
+      {
+        "title": "succeeder",
+        "type": "decorator",
+        "name": "succeeder",
+        "parameters": {},
+        "child": {
+          "title": "setAnimationState",
+          "type": "action",
+          "name": "setAnimationState",
+          "parameters": {
+            "state": "<flyState>",
+            "type": "body"
+          }
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": 1,
+          "success": 1
+        },
+        "children": [
+          {
+            "title": "parallel",
+            "type": "composite",
+            "name": "parallel",
+            "parameters": {
+              "fail": -1,
+              "success": -1
+            },
+            "children": [
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {
+                  "type": "sliding",
+                  "state": "off",
+                  "fromEntity": "attackTarget",
+                  "toEntity": "fleeTarget"
+                },
+                "children": [
+                  {
+                    "title": "entityPosition",
+                    "type": "action",
+                    "name": "entityPosition",
+                    "parameters": {
+                      "entity": "target"
+                    },
+                    "output": {
+                      "position": "targetPosition"
+                    }
+                  },
+                  {
+                    "title": "setNumber",
+                    "type": "action",
+                    "name": "setNumber",
+                    "parameters": {
+                      "number": "<maxRange>"
+                    },
+                    "output": {
+                      "number": "range"
+                    }
+                  },
+                  {
+                    "title": "listClear",
+                    "type": "action",
+                    "name": "listClear",
+                    "parameters": {
+                      "list": "targetPositions"
+                    }
+                  },
+                  {
+                    "title": "repeater",
+                    "type": "decorator",
+                    "name": "repeater",
+                    "parameters": {
+                      "maxLoops": -1,
+                      "untilSuccess": true
+                    },
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {
+                        "type": "sliding",
+                        "state": "off",
+                        "fromEntity": "attackTarget",
+                        "toEntity": "fleeTarget"
+                      },
+                      "children": [
+                        {
+                          "title": "setNumber",
+                          "type": "action",
+                          "name": "setNumber",
+                          "parameters": {
+                            "number": "<maxAngle>"
+                          },
+                          "output": {
+                            "number": "angle"
+                          }
+                        },
+                        {
+                          "title": "succeeder",
+                          "type": "decorator",
+                          "name": "succeeder",
+                          "parameters": {},
+                          "child": {
+                            "title": "repeater",
+                            "type": "decorator",
+                            "name": "repeater",
+                            "parameters": {
+                              "maxLoops": 10,
+                              "untilSuccess": false
+                            },
+                            "child": {
+                              "title": "sequence",
+                              "type": "composite",
+                              "name": "sequence",
+                              "parameters": {
+                                "type": "sliding",
+                                "state": "off",
+                                "fromEntity": "attackTarget",
+                                "toEntity": "fleeTarget"
+                              },
+                              "children": [
+                                {
+                                  "title": "add",
+                                  "type": "action",
+                                  "name": "add",
+                                  "parameters": {
+                                    "addend": -0.2,
+                                    "number": "angle"
+                                  },
+                                  "output": {
+                                    "result": "angle"
+                                  }
+                                },
+                                {
+                                  "title": "vecRotate",
+                                  "type": "action",
+                                  "name": "vecRotate",
+                                  "parameters": {
+                                    "vector": [
+                                      0,
+                                      "range"
+                                    ],
+                                    "angle": "angle"
+                                  },
+                                  "output": {
+                                    "vector": "targetOffset"
+                                  }
+                                },
+                                {
+                                  "title": "inverter",
+                                  "type": "decorator",
+                                  "name": "inverter",
+                                  "parameters": {},
+                                  "child": {
+                                    "title": "lineTileCollision",
+                                    "type": "action",
+                                    "name": "lineTileCollision",
+                                    "parameters": {
+                                      "position": "targetPosition",
+                                      "offset": "targetOffset",
+                                      "collisionType": [
+                                        "Null",
+                                        "Block",
+                                        "Dynamic"
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "title": "offsetPosition",
+                                  "type": "action",
+                                  "name": "offsetPosition",
+                                  "parameters": {
+                                    "offset": "targetOffset",
+                                    "position": "targetPosition"
+                                  },
+                                  "output": {
+                                    "position": "offsetTargetPosition"
+                                  }
+                                },
+                                {
+                                  "title": "distance",
+                                  "type": "action",
+                                  "name": "distance",
+                                  "parameters": {
+                                    "from": "self",
+                                    "to": "offsetTargetPosition"
+                                  },
+                                  "output": {
+                                    "vector": "toTarget",
+                                    "magnitude": "targetDistance"
+                                  }
+                                },
+                                {
+                                  "title": "inverter",
+                                  "type": "decorator",
+                                  "name": "inverter",
+                                  "parameters": {},
+                                  "child": {
+                                    "title": "lineTileCollision",
+                                    "type": "action",
+                                    "name": "lineTileCollision",
+                                    "parameters": {
+                                      "position": "self",
+                                      "offset": "toTarget",
+                                      "collisionType": [
+                                        "Null",
+                                        "Block",
+                                        "Dynamic"
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "title": "greaterThan",
+                                  "type": "action",
+                                  "name": "greaterThan",
+                                  "parameters": {
+                                    "first": "targetDistance",
+                                    "second": "<minRange>"
+                                  }
+                                },
+                                {
+                                  "title": "listPush",
+                                  "type": "action",
+                                  "name": "listPush",
+                                  "parameters": {
+                                    "list": "targetPositions",
+                                    "position": "offsetTargetPosition"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "title": "add",
+                          "type": "action",
+                          "name": "add",
+                          "parameters": {
+                            "addend": -1,
+                            "number": "range"
+                          },
+                          "output": {
+                            "result": "range"
+                          }
+                        },
+                        {
+                          "title": "inverter",
+                          "type": "decorator",
+                          "name": "inverter",
+                          "parameters": {},
+                          "child": {
+                            "title": "greaterThan",
+                            "type": "action",
+                            "name": "greaterThan",
+                            "parameters": {
+                              "first": "maxRange",
+                              "second": "<minRange>"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "listShuffle",
+                    "type": "action",
+                    "name": "listShuffle",
+                    "parameters": {
+                      "list": "targetPositions"
+                    },
+                    "output": {
+                      "list": "targetPositions"
+                    }
+                  },
+                  {
+                    "title": "offsetPosition",
+                    "type": "action",
+                    "name": "offsetPosition",
+                    "parameters": {
+                      "offset": [
+                        0,
+                        0
+                      ],
+                      "position": "targetPosition"
+                    },
+                    "output": {
+                      "position": "lastTargetPosition"
+                    }
+                  },
+                  {
+                    "title": "selector",
+                    "type": "composite",
+                    "name": "selector",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "listGet",
+                        "type": "action",
+                        "name": "listGet",
+                        "parameters": {
+                          "list": "targetPositions"
+                        },
+                        "output": {
+                          "position": "movePosition"
+                        }
+                      },
+                      {
+                        "title": "offsetPosition",
+                        "type": "action",
+                        "name": "offsetPosition",
+                        "parameters": {
+                          "offset": [
+                            0,
+                            0
+                          ],
+                          "position": "targetPosition"
+                        },
+                        "output": {
+                          "position": "movePosition"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "parallel",
+                    "type": "composite",
+                    "name": "parallel",
+                    "parameters": {
+                      "fail": 1,
+                      "success": -1
+                    },
+                    "children": [
+                      {
+                        "title": "entityPosition",
+                        "type": "action",
+                        "name": "entityPosition",
+                        "parameters": {
+                          "entity": "target"
+                        },
+                        "output": {
+                          "position": "targetPosition"
+                        }
+                      },
+                      {
+                        "title": "sequence",
+                        "type": "composite",
+                        "name": "sequence",
+                        "parameters": {
+                          "type": "sliding",
+                          "state": "off",
+                          "fromEntity": "attackTarget",
+                          "toEntity": "fleeTarget"
+                        },
+                        "children": [
+                          {
+                            "title": "distance",
+                            "type": "action",
+                            "name": "distance",
+                            "parameters": {
+                              "from": "targetPosition",
+                              "to": "lastTargetPosition"
+                            },
+                            "output": {
+                              "magnitude": "targetMoveDistance"
+                            }
+                          },
+                          {
+                            "title": "inverter",
+                            "type": "decorator",
+                            "name": "inverter",
+                            "parameters": {},
+                            "child": {
+                              "title": "greaterThan",
+                              "type": "action",
+                              "name": "greaterThan",
+                              "parameters": {
+                                "first": "targetMoveDistance",
+                                "second": 2
+                              }
+                            }
+                          },
+                          {
+                            "title": "distance",
+                            "type": "action",
+                            "name": "distance",
+                            "parameters": {
+                              "from": "self",
+                              "to": "movePosition"
+                            },
+                            "output": {
+                              "vector": "toMovePosition",
+                              "magnitude": "moveDistance"
+                            }
+                          },
+                          {
+                            "title": "inverter",
+                            "type": "decorator",
+                            "name": "inverter",
+                            "parameters": {},
+                            "child": {
+                              "title": "lineTileCollision",
+                              "type": "action",
+                              "name": "lineTileCollision",
+                              "parameters": {
+                                "position": "self",
+                                "offset": "toMovePosition",
+                                "collisionType": [
+                                  "Null",
+                                  "Block",
+                                  "Dynamic"
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "title": "greaterThan",
+                            "type": "action",
+                            "name": "greaterThan",
+                            "parameters": {
+                              "first": "moveDistance",
+                              "second": 1
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "title": "runner",
+                        "type": "action",
+                        "name": "runner",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "dynamic",
+                "type": "composite",
+                "name": "dynamic",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "parallel",
+                    "type": "composite",
+                    "name": "parallel",
+                    "parameters": {
+                      "fail": 1,
+                      "success": -1
+                    },
+                    "children": [
+                      {
+                        "title": "entityInSight",
+                        "type": "action",
+                        "name": "entityInSight",
+                        "parameters": {
+                          "entity": "target"
+                        }
+                      },
+                      {
+                        "title": "flyInGeneralDirection",
+                        "type": "action",
+                        "name": "flyInGeneralDirection",
+                        "parameters": {
+                          "position": "movePosition",
+                          "maxAngle": "<approachAngle>"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "optional",
+                    "type": "decorator",
+                    "name": "optional",
+                    "parameters": {
+                      "shouldRun": "<usePathfinding>"
+                    },
+                    "child": {
+                      "title": "inverter",
+                      "type": "decorator",
+                      "name": "inverter",
+                      "parameters": {},
+                      "child": {
+                        "title": "moveToPosition",
+                        "type": "action",
+                        "name": "moveToPosition",
+                        "parameters": {
+                          "avoidLiquid": "<avoidLiquid>",
+                          "failFast": false,
+                          "groundPosition": false,
+                          "maxGround": 5,
+                          "minGround": -5,
+                          "position": "movePosition",
+                          "run": false
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "title": "flyInGeneralDirection",
+                    "type": "action",
+                    "name": "flyInGeneralDirection",
+                    "parameters": {
+                      "position": "movePosition",
+                      "maxAngle": "<approachAngle>"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "selector",
+            "type": "composite",
+            "name": "selector",
+            "parameters": {},
+            "children": [
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {
+                  "type": "sliding",
+                  "state": "off",
+                  "fromEntity": "attackTarget",
+                  "toEntity": "fleeTarget"
+                },
+                "children": [
+                  {
+                    "title": "greaterThan",
+                    "type": "action",
+                    "name": "greaterThan",
+                    "parameters": {
+                      "first": "<approachTime>",
+                      "second": 0
+                    }
+                  },
+                  {
+                    "title": "timer",
+                    "type": "action",
+                    "name": "timer",
+                    "parameters": {
+                      "time": "<approachTime>"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "runner",
+                "type": "action",
+                "name": "runner",
+                "parameters": {}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

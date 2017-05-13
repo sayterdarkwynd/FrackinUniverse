@@ -1,3 +1,4 @@
+require("/scripts/vec2.lua")
 function init()
   self.tookDamage = false
   self.dead = false
@@ -51,7 +52,8 @@ end
 
 function update(dt)
   self.tookDamage = false
-
+  --monster.say("I love you")
+  world.spawnProjectile("pushzone2",mcontroller.position(),entity.id(),{0,-35},false,params)
   trackTargets(self.keepTargetInSight, self.queryTargetDistance, self.trackTargetDistance, self.switchTargetDistance)
 
   for skillName, params in pairs(self.skillParameters) do

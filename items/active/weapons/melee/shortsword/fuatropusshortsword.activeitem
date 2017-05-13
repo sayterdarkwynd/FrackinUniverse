@@ -1,0 +1,42 @@
+{
+  "itemName" : "fuatropusshortsword",
+  "price" : 700,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A revolting bio-weapon
+^cyan;Inflicts Poison^reset;",
+  "shortdescription" : "Fleshweave Sword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "fuatropusshortsword.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fuatropusshortsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "shortswordcombo2",
+  "primaryAbility" : {
+    "fireTime" : 0.68,
+    "baseDps" : 7,
+    "damageConfig" : {
+      "statusEffects" : [ "weakpoison" ]
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 5,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}
