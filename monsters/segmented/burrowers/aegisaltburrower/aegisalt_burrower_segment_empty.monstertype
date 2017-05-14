@@ -6,7 +6,7 @@
  "categories" : [ "aegisalt_burrower_segment_empty" ],
   "parts" : [ "body" ],
 
-  "animation" : "aegisalt_burrower.animation",
+  "animation" : "aegisalt_burrower_segment.animation",
 
   "dropPools" : [ ],
 
@@ -27,24 +27,7 @@
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
       "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
-
-      "foundTargetActions" : [],
-
-      "fleeActions" : [],
-
-      "hostileActions" : [],
-
-      "periodicActions" : [],
-
-      "approachActions" : [],
-
-      "followActions" : [],
-
-      "wanderActions" : [],
-
-      "deathActions" : []
-      
+      "targetOutOfSightTime" : 2.5
     },
 
     "touchDamage" : {
@@ -99,17 +82,14 @@
       "primaryScriptDelta" : 5,
 
       "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 500
+        "grit" : {
+          "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 500
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 66.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -118,31 +98,49 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.33
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "fireStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.25
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.75
         },
         "electricStatusImmunity" : {
           "baseValue" : 0.0
         },
         "poisonResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
+        },
+        "shadowResistance" : {
+         "baseValue" : 0.75 
+        },
+        "shadowStatusImmunity" : {
+         "baseValue" : 0.75
+        },
+        "cosmicStatusImmunity" : { 
+         "baseValue" : -0.5 
+        },
+        "cosmicResistance" : { 
+         "baseValue" : -0.5 
+        },
+        "radioactiveStatusImmunity" : { 
+        "baseValue" : 0.5
+        },
+        "radioactiveResistance" : { 
+        "baseValue" : 0.75
         }
       },
 
@@ -159,12 +157,12 @@
       }
     },
 
+
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : false,
-    "nametagColor" : [64, 200, 255],
     "segments" : 0,
-    "segmentMonster" : "aegisalt_burrower_segment_empty",
+    "segmentMonster" : "aegisalt_burrower_segment",
     "radius" : 1.2,
     "burrowProjectile" : "direstoneburrow",
     "burrowBurstProjectile" : "direstoneburrowburst"
