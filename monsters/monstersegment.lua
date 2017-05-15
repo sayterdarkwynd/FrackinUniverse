@@ -27,10 +27,10 @@ function init()
   end
   BData:setPosition("spawn", storage.spawnPosition)
 
-  if not config.getParameter("parent") or config.getParameter("dynamic") then
+  --if not config.getParameter("parent") or config.getParameter("dynamic") then
     self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
     self.behaviorState = self.behavior:init(_ENV)
-  end
+  --end
   
   self.collisionPoly = mcontroller.collisionPoly()
 
