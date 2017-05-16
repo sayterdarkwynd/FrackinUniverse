@@ -1,0 +1,34 @@
+{
+  "name" : "pigeonSwoopAttack",
+  "label" : "SWOOP",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-swoop", 
+        "cooldown" : [2,5],
+        "parameters" : {
+          "skillName" : "pigeonSwoopAttack",
+
+          "minimumRange" : 3,
+          "maximumRange" : 30,
+          "onGround" : false,
+          "windupTime" : 0.224,
+          "windupState" : "charge",
+          "windupStopForce" : 50,
+
+          "swoopState" : "melee",
+          "gravityMultiplier" : -0.2,
+	  "swoopVelocity": 30,
+          "collisionCheck" : false,
+          "highArc" : false,
+          "swoopTime" : 0.95,
+          "winddownTime" : 0.1,
+          "winddownState" : "fly",
+          "winddownStopForce" : 20
+        }
+      }
+    ]
+  }
+}

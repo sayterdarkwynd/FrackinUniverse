@@ -1,0 +1,35 @@
+{
+  "name" : "raptorswoopAttack",
+  "label" : "HEAVY SWOOP",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-swoop", 
+        "cooldown" : [3,8],
+        "parameters" : {
+          "skillName" : "raptorswoopAttack",
+
+          "minimumRange" : 3,
+          "maximumRange" : 25,
+          "onGround" : false,
+          "windupTime" : 0.45,
+          "windupState" : "charge",
+          "windupStopForce" : 60,
+
+          "swoopState" : "melee",
+          "gravityMultiplier" : -0.3,
+	  "swoopVelocity": 50,
+          "collisionCheck" : false,
+          "highArc" : false,
+          "swoopTime" : 1.225,
+	  "knockbackThreshold": 110,
+          "winddownTime" : 0.5,
+          "winddownState" : "fly",
+          "winddownStopForce" : 30
+        }
+      }
+    ]
+  }
+}

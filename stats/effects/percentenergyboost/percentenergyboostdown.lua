@@ -1,12 +1,10 @@
 function init()
-  script.setUpdateDelta(5)
-  _x = config.getParameter("healthDown", 0)
-baseValue = config.getParameter("healthDown",0)*(status.resourceMax("energy"))
-
- -- if (status.resourceMax("energy")) * _x >= 100.0 then
-     effect.addStatModifierGroup({{stat = "maxEnergy", amount = baseValue }})
- -- end
-  
+ if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
+   effect.expire()
+ end
+ baseValue = config.getParameter("healthDown",0)
+ effect.addStatModifierGroup({{stat = "maxEnergy", baseMultiplier = baseValue }})
+ script.setUpdateDelta(5)  
 end
 
 function update(dt)

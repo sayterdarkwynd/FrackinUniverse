@@ -1,0 +1,35 @@
+{
+  "name" : "divebombAttack",
+  "label" : "DIVE",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-swoop", 
+        "cooldown" : [3,8],
+        "parameters" : {
+          "skillName" : "divebombAttack",
+
+          "minimumRange" : 5,
+          "maximumRange" : 35,
+          "onGround" : false,
+          "windupTime" : 0.5,
+          "windupState" : "charge",
+          "windupStopForce" : 30,
+
+          "swoopState" : "melee",
+          "gravityMultiplier" : -0.1,
+          "collisionCheck" : false,
+          "highArc" : false,
+	  "swoopVelocity": 57,
+          "swoopTime" : 0.85,
+
+          "winddownTime" : 0.3,
+          "winddownState" : "fly",
+          "winddownStopForce" : 20
+        }
+      }
+    ]
+  }
+}

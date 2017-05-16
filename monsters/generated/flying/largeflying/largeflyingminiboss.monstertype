@@ -60,7 +60,8 @@
           "name" : "approach-fly",
           "parameters" : {
             "targetOffset" : [0,4],
-            "minRange" : 4
+            "minRange" : 4,
+            "maxRange" : 15
           }
         }
       ],
@@ -75,7 +76,8 @@
           "name" : "approach-fly",
           "parameters" : {
             "targetOffset" : [0,4],
-            "minRange" : 4
+            "minRange" : 4,
+            "maxRange" : 15
           }
         }
       ],
@@ -107,9 +109,11 @@
 
       "concurrentHostileActions" : [ ]
     },
-    "skillCount" : 2,
-    "baseSkills" : [ 
+    "skillCount" : 3,
+    "baseSkills" : [ "raptorSwoopAttack", "divebombAttack" ],
+    "specialSkills" : [
     "flyingSwoopAttack",
+    "pigeonSwoopAttack",
     "acidicSpitAttack", 
     "acidSprayAttack",
     "beamBurstAttack", 
@@ -231,7 +235,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 124
+          "baseValue" : 164
         },
         "protection" : {
           "baseValue" : 0.0

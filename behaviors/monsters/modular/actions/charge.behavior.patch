@@ -1,0 +1,31 @@
+[
+  {
+    "op": "add",
+    "path": "/parameters/damageOnTouch",
+    "value": false
+  },
+  {
+    "op": "add",
+    "path": "/root/children/1/children/1/children/1/children/0/children/1",
+    "value": {
+      "title": "setDamageOnTouch",
+      "type": "action",
+      "name": "setDamageOnTouch",
+      "parameters": {
+        "touchDamage": true
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/root/children/-",
+    "value": {
+      "title": "setDamageOnTouch",
+      "type": "action",
+      "name": "setDamageOnTouch",
+      "parameters": {
+        "touchDamage": "<damageOnTouch>"
+      }
+    }
+  }
+]

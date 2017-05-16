@@ -1,0 +1,565 @@
+{
+  "name": "action-windup",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/math.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/sensor.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/status.lua",
+    "/scripts/actions/monster.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "onGround": false,
+    "maxXRange": 0,
+    "maxYRange": 0,
+    "maximumRange": 10,
+    "minimumRange": 0,
+    "requireLineOfSight": true,
+    "windupState": "windup",
+    "windupStopForce": 0,
+    "faceTarget": true,
+    "windupTime": 0.01,
+    "aimAtTarget": false,
+    "rotateToTarget": false,
+    "wallCollisionCheck": false,
+    "keepInRange": false,
+    "windupEffect": "",
+    "windupStateType": "body",
+    "rotationOffset": 0,
+    "skillName": ""
+  },
+  "root": {
+    "title": "parallel",
+    "type": "composite",
+    "name": "parallel",
+    "parameters": {
+      "fail": 1,
+      "success": 1
+    },
+    "children": [
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": 1,
+          "success": -1
+        },
+        "children": [
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {
+              "type": "sliding",
+              "state": "off",
+              "fromEntity": "attackTarget",
+              "toEntity": "fleeTarget"
+            },
+            "children": [
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "inverter",
+                    "type": "decorator",
+                    "name": "inverter",
+                    "parameters": {},
+                    "child": {
+                      "title": "greaterThan",
+                      "type": "action",
+                      "name": "greaterThan",
+                      "parameters": {
+                        "first": "<maxYRange>",
+                        "second": 0
+                      }
+                    }
+                  },
+                  {
+                    "title": "entityInRange",
+                    "type": "action",
+                    "name": "entityInRange",
+                    "parameters": {
+                      "entity": "target",
+                      "yRange": "<maxYRange>",
+                      "position": "self"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "inverter",
+                    "type": "decorator",
+                    "name": "inverter",
+                    "parameters": {},
+                    "child": {
+                      "title": "greaterThan",
+                      "type": "action",
+                      "name": "greaterThan",
+                      "parameters": {
+                        "first": "<maxXRange>",
+                        "second": 0
+                      }
+                    }
+                  },
+                  {
+                    "title": "entityInRange",
+                    "type": "action",
+                    "name": "entityInRange",
+                    "parameters": {
+                      "entity": "target",
+                      "xRange": "<maxXRange>",
+                      "position": "self"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "inverter",
+                    "type": "decorator",
+                    "name": "inverter",
+                    "parameters": {},
+                    "child": {
+                      "title": "greaterThan",
+                      "type": "action",
+                      "name": "greaterThan",
+                      "parameters": {
+                        "first": "<maximumRange>",
+                        "second": 0
+                      }
+                    }
+                  },
+                  {
+                    "title": "entityInRange",
+                    "type": "action",
+                    "name": "entityInRange",
+                    "parameters": {
+                      "entity": "target",
+                      "range": "<maximumRange>",
+                      "position": "self"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "inverter",
+                "type": "decorator",
+                "name": "inverter",
+                "parameters": {},
+                "child": {
+                  "title": "entityInRange",
+                  "type": "action",
+                  "name": "entityInRange",
+                  "parameters": {
+                    "entity": "target",
+                    "range": "<minimumRange>",
+                    "position": "self"
+                  }
+                }
+              },
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "optional",
+                    "type": "decorator",
+                    "name": "optional",
+                    "parameters": {
+                      "shouldRun": "<keepInRange>"
+                    },
+                    "child": {
+                      "title": "success",
+                      "type": "action",
+                      "name": "success",
+                      "parameters": {}
+                    }
+                  },
+                  {
+                    "title": "runner",
+                    "type": "action",
+                    "name": "runner",
+                    "parameters": {}
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "inverter",
+            "type": "decorator",
+            "name": "inverter",
+            "parameters": {},
+            "child": {
+              "title": "optional",
+              "type": "decorator",
+              "name": "optional",
+              "parameters": {
+                "shouldRun": "<onGround>"
+              },
+              "child": {
+                "title": "inverter",
+                "type": "decorator",
+                "name": "inverter",
+                "parameters": {},
+                "child": {
+                  "title": "selector",
+                  "type": "composite",
+                  "name": "selector",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {
+                        "type": "sliding",
+                        "state": "off",
+                        "fromEntity": "attackTarget",
+                        "toEntity": "fleeTarget"
+                      },
+                      "children": [
+                        {
+                          "title": "gravityEnabled",
+                          "type": "action",
+                          "name": "gravityEnabled",
+                          "parameters": {}
+                        },
+                        {
+                          "title": "groundCollision",
+                          "type": "action",
+                          "name": "groundCollision",
+                          "parameters": {}
+                        }
+                      ]
+                    },
+                    {
+                      "title": "boundsCollision",
+                      "type": "action",
+                      "name": "boundsCollision",
+                      "parameters": {}
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "title": "runner",
+            "type": "action",
+            "name": "runner",
+            "parameters": {}
+          }
+        ]
+      },
+      {
+        "title": "sequence",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {
+          "type": "sliding",
+          "state": "off",
+          "fromEntity": "attackTarget",
+          "toEntity": "fleeTarget"
+        },
+        "children": [
+          {
+            "title": "inverter",
+            "type": "decorator",
+            "name": "inverter",
+            "parameters": {},
+            "child": {
+              "title": "optional",
+              "type": "decorator",
+              "name": "optional",
+              "parameters": {
+                "shouldRun": "<wallCollisionCheck>"
+              },
+              "child": {
+                "title": "wallCollision",
+                "type": "action",
+                "name": "wallCollision",
+                "parameters": {
+                  "direction": "facingDirection"
+                }
+              }
+            }
+          },
+          {
+            "title": "inverter",
+            "type": "decorator",
+            "name": "inverter",
+            "parameters": {},
+            "child": {
+              "title": "optional",
+              "type": "decorator",
+              "name": "optional",
+              "parameters": {
+                "shouldRun": "<requireLineOfSight>"
+              },
+              "child": {
+                "title": "inverter",
+                "type": "decorator",
+                "name": "inverter",
+                "parameters": {},
+                "child": {
+                  "title": "entityInSight",
+                  "type": "action",
+                  "name": "entityInSight",
+                  "parameters": {
+                    "entity": "target"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "title": "succeeder",
+            "type": "decorator",
+            "name": "succeeder",
+            "parameters": {},
+            "child": {
+              "title": "setAnimationState",
+              "type": "action",
+              "name": "setAnimationState",
+              "parameters": {
+                "state": "<windupState>",
+                "type": "<windupStateType>"
+              }
+            }
+          },
+          {
+            "title": "succeeder",
+            "type": "decorator",
+            "name": "succeeder",
+            "parameters": {},
+            "child": {
+              "title": "addEphemeralEffect",
+              "type": "action",
+              "name": "addEphemeralEffect",
+              "parameters": {
+                "name": "<windupEffect>",
+                "duration": "<windupTime>"
+              }
+            }
+          },
+          {
+            "title": "setActiveSkillName",
+            "type": "action",
+            "name": "setActiveSkillName",
+            "parameters": {
+              "skillName": "<skillName>"
+            }
+          },
+          {
+            "title": "parallel",
+            "type": "composite",
+            "name": "parallel",
+            "parameters": {
+              "fail": 1,
+              "success": -1
+            },
+            "children": [
+              {
+                "title": "succeeder",
+                "type": "decorator",
+                "name": "succeeder",
+                "parameters": {},
+                "child": {
+                  "title": "controlApproachVelocity",
+                  "type": "action",
+                  "name": "controlApproachVelocity",
+                  "parameters": {
+                    "velocity": [
+                      0,
+                      0
+                    ],
+                    "force": "<windupStopForce>"
+                  }
+                }
+              },
+              {
+                "title": "succeeder",
+                "type": "decorator",
+                "name": "succeeder",
+                "parameters": {},
+                "child": {
+                  "title": "optional",
+                  "type": "decorator",
+                  "name": "optional",
+                  "parameters": {
+                    "shouldRun": "<aimAtTarget>"
+                  },
+                  "child": {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {
+                      "type": "sliding",
+                      "state": "off",
+                      "fromEntity": "attackTarget",
+                      "toEntity": "fleeTarget"
+                    },
+                    "children": [
+                      {
+                        "title": "entityDirection",
+                        "type": "action",
+                        "name": "entityDirection",
+                        "parameters": {
+                          "entity": "self",
+                          "target": "target"
+                        },
+                        "output": {
+                          "vector": "aimVector"
+                        }
+                      },
+                      {
+                        "title": "succeeder",
+                        "type": "decorator",
+                        "name": "succeeder",
+                        "parameters": {},
+                        "child": {
+                          "title": "optional",
+                          "type": "decorator",
+                          "name": "optional",
+                          "parameters": {
+                            "shouldRun": "<rotateToTarget>"
+                          },
+                          "child": {
+                            "title": "sequence",
+                            "type": "composite",
+                            "name": "sequence",
+                            "parameters": {
+                              "type": "sliding",
+                              "state": "off",
+                              "fromEntity": "attackTarget",
+                              "toEntity": "fleeTarget"
+                            },
+                            "children": [
+                              {
+                                "title": "vecAngle",
+                                "type": "action",
+                                "name": "vecAngle",
+                                "parameters": {
+                                  "vector": "aimVector"
+                                },
+                                "output": {
+                                  "angle": "aimAngle"
+                                }
+                              },
+                              {
+                                "title": "add",
+                                "type": "action",
+                                "name": "add",
+                                "parameters": {
+                                  "addend": "aimAngle",
+                                  "number": "<rotationOffset>"
+                                },
+                                "output": {
+                                  "result": "aimAngle"
+                                }
+                              },
+                              {
+                                "title": "rotate",
+                                "type": "action",
+                                "name": "rotate",
+                                "parameters": {
+                                  "angle": "aimAngle",
+                                  "rate": 0
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "title": "succeeder",
+                "type": "decorator",
+                "name": "succeeder",
+                "parameters": {},
+                "child": {
+                  "title": "optional",
+                  "type": "decorator",
+                  "name": "optional",
+                  "parameters": {
+                    "shouldRun": "<faceTarget>"
+                  },
+                  "child": {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {
+                      "type": "sliding",
+                      "state": "off",
+                      "fromEntity": "attackTarget",
+                      "toEntity": "fleeTarget"
+                    },
+                    "children": [
+                      {
+                        "title": "vecRotate",
+                        "type": "action",
+                        "name": "vecRotate",
+                        "parameters": {
+                          "vector": [
+                            1,
+                            0
+                          ],
+                          "angle": "heading"
+                        },
+                        "output": {
+                          "vector": "headingDirection"
+                        }
+                      },
+                      {
+                        "title": "faceEntity",
+                        "type": "action",
+                        "name": "faceEntity",
+                        "parameters": {
+                          "entity": "target",
+                          "headingDirection": "headingDirection"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": "<windupTime>"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

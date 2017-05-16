@@ -1,0 +1,36 @@
+{
+  "name" : "fumeleeAttack",
+  "label" : "Melee Attack",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-charge",
+        "cooldown" : [1.3, 2.0],
+        "parameters" : {
+          "skillName" : "fumeleeAttack",
+
+          "maximumRange" : 8,
+          "windupTime" : 0.01,
+
+          "chargeTime" : 0.4,
+          "aimAtTarget" : false,
+          "chargeSpeed" : 20,
+          "chargeControlForce" : 500,
+	  "winddownStopForce": 0,
+          "wallCrashEmitter" : "",
+          "chargeState" : "melee",
+
+          "winddownTime" : 0
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "crash" : [  ]
+    }
+  }
+}

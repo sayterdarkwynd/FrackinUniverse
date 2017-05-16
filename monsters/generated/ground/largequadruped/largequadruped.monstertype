@@ -24,7 +24,7 @@
     "behavior" : "monster",
 
     "behaviorConfig" : {
-      "damageOnTouch" : true,
+      "damageOnTouch" : false,
 
       "targetQueryRange" : 30,
       "targetOnDamage" : true,
@@ -83,10 +83,10 @@
         }
       ]
     },
-    "skillCount" : 1,
-    "baseSkills" : [ 
-    "chargeAttack", 
-    "pounceAttack", 
+    "skillCount" : 3,
+    "baseSkills" : [ "fumeleeAttack", "pounceAttack" ],
+    "specialSkills" : [
+    "chargeAttack",
     "acidicSpitAttack", 
     "beamBurstAttack", 
     "bloodVomitAttack", 

@@ -23,6 +23,7 @@ function init()
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
 
+
   checkEffectValid()
 
   self.isOn = 0
