@@ -1,17 +1,17 @@
 {
-  "type" : "largequadruped",
+  "type" : "largebiped3",
 
-  "categories" : [ "largequadruped" ],
-  "parts" : [ "legs", "chest", "tail", "head" ],
-  "partParameters" : "largequadruped.partparams",
+  "categories" : [ "largebiped" ],
+  "parts" : [ "arms", "chest", "tail", "head" ],
+  "partParameters" : "largebiped.partparams",
 
-  "animation" : "largequadruped.animation",
+  "animation" : "largebiped.animation",
   "reversed" : true,
 
   "dropPools" : [
     {
       "default" : "generatedGroundMonsterTreasure",
-      "bow" : "huntingquadruped",
+      "bow" : "hunting",
       "brain" : "brain"
     }
   ],
@@ -31,8 +31,6 @@
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
-
-      "fireOffset" : [2.0, 0.0],
 
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
@@ -73,6 +71,24 @@
         }
       ],
 
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 6,
+          "parameters" : {
+            "windupState" : "windup",
+            "windupTime" : 2,          
+            "projectileCount" : 1,
+            "projectileType" : "healingzone",
+            "projectileParameters" : { "timeToLive" : 4 },
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }       
+      ],
+      
       "wanderActions" : [
         {
           "name" : "wander-walk",
@@ -83,71 +99,12 @@
         }
       ]
     },
+
     "skillCount" : 3,
     "baseSkills" : [ "fumeleeAttack", "pounceAttack" ],
-    "specialSkills" : [
-    "chargeAttack",
-    "acidicSpitAttack", 
-    "beamBurstAttack", 
-    "bloodVomitAttack", 
-    "blueFlameAttack",
-    "boneRainAttack", 
-    "bubbleBlastAttack",
-    "burninghaloAttack",
-    "cellBlastAttack", 
-    "darkGravityBallAttack",
-    "doubleBarbSprayAttack",
-    "explosivePhlegmAttack",
-    "eyeballShotAttack",
-    "eyeballSprayAttack", 
-    "fireballAttack", 
-    "fireSwirlAttack",
-    "fishBreathAttack", 
-    "gasBelchAttack",    
-    "glitterAttack", 
-    "iceBlastAttack", 
-    "icerockShotAttack",
-    "leafyGustAttack",
-    "lightBallAttack", 
-    "miniDragonBreathAttack", 
-    "mudBallAttack",
-    "orbOfZotsAttack",
-    "plasmaSweepAttack", 
-    "plasmaTorpedoAttack", 
-    "putridWaveAttack", 
-    "rainbowVomitAttack",
-    "rockRollAttack", 
-    "shardSprayAttack",
-    "shockingBoltAttack",
-    "shockingWaveAttack", 
-    "smokeRingAttack",
-    "snotBubbleAttack",
-    "snotShotAttack", 
-    "staticDischargeAttack", 
-    "waterGunAttack",
-    "beetleSwarmAttack",
-    "darkGasAttack",
-    "flySwarmAttack",
-    "iceShotAttack",
-    "inkSprayAttack",
-    "rockShotAttack",
-    "seedSpitAttack",
-    "sonicWaveAttack",
-    "spiceCloudAttack",
-    "tentacleShotAttack",
-    "waveBlastAttack",
-    "waveBlastAttack2",
-    "waveBlastAttack3",
-    "poisonVomitAttack2",
-    "raptorstrikeAttack2",
-    "raptorstrikeAttack3",
-    "raptorstrikeAttack4",
-    "soundwaveAttack2",
-    "windBlastAttack2",
-    "shadowbeastAttack"
-    ],
+    "specialSkills" : [ "chargeAttack" ],
 
-    "knockoutTime" : 0.3,
+    "knockoutTime" : 0.1,
     "knockoutEffect" : "blink",
     "knockoutAnimationStates" : {
       "damage" : "stunned"
@@ -156,19 +113,21 @@
 
     "colors" : "generated",
 
-    "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-2.25, -1.1], [-1.5, -1.8], [1, -1.8], [1.75, -1.1], [1.75, -0.1], [1, 0.5], [-1.5, 0.5], [-2.25, -0.1] ],
+      "collisionPoly" : [ [-0.8, -2.2], [-0.4, -2.6], [0.4, -2.6], [0.8, -2.2], [0.8, 0.1], [0.4, 0.5], [-0.4, 0.5], [-0.8, 0.1] ],
       "mass" : 1.6,
-      "walkSpeed" : 6.0,
-      "runSpeed" : 14.0
+      "walkSpeed" : 2.0,
+      "runSpeed" : 7.0
     },
 
+    "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
+
     "touchDamage" : {
-      "poly" : [ [-2.0, -0.8], [-1.5, -1.5], [1.5, -1.5], [2.0, -0.8], [2.0, -0.4], [1.4, 0.2], [-1.4, 0.2], [-2.0, -0.4] ],
-      "damage" : 8,
+      "poly" : [ [-1, -2.6], [1, -2.6], [1, 0], [-1, 0] ],
+      "damage" : 15,
+
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
@@ -191,13 +150,13 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.15
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 75
+          "baseValue" : 95
         },
         "maxShield" : {
           "baseValue" : 0.0
@@ -224,7 +183,7 @@
         "health" : {
           "maxStat" : "maxHealth",
           "deltaStat" : "healthRegen",
-          "defaultPercentage" : 200
+          "defaultPercentage" : 100
         },
         "shieldHealth" : {
           "maxStat" : "maxShield",
@@ -234,8 +193,8 @@
       }
     },
 
-    "mouthOffset" : [1.5, 0],
-    "feetOffset" : [0, -14],
+    "mouthOffset" : [0.5, 0.5],
+    "feetOffset" : [0, -21],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255]

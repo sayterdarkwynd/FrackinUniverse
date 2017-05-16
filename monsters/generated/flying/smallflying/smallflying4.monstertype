@@ -1,17 +1,17 @@
 {
-  "type" : "largeflyingminiboss",
+  "type" : "smallflying4",
 
-  "categories" : [ "largeflying" ],
+  "categories" : [ "smallflying" ],
   "parts" : [ "body", "head", "wings" ],
-  "partParameters" : "largeflying.partparams",
+  "partParameters" : "smallflying.partparams",
 
-  "animation" : "largeflying.animation",
+  "animation" : "smallflying.animation",
   "reversed" : true,
 
   "dropPools" : [
     {
-      "default" : "slimemonsterlargeTreasure",
-      "bow" : "huntingminiboss",
+      "default" : "generatedFlyingMonsterTreasure",
+      "bow" : "huntingflying",
       "brain" : "brain"
     }
   ],
@@ -25,7 +25,7 @@
 
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
-      "damageOnTouch" : true,
+      "damageOnTouch" : false,
 
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
@@ -33,19 +33,8 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
 
-      "onGround" : false,
-
-      // Attack-specific parameters
-      "swoopVelocity" : 40,
-
-      "windupTime" : 0.4,
-      "windupState" : "windup",
-      "windupStopForce" : 100,
-
-      "winddownTime" : 0.5,
-      "winddownState" : "winddown",
-
-      "projectileOffset" : [1.0, 1.5],
+      // Attack specific parameters
+      "swoopVelocity" : 30,
 
       "foundTargetActions" : [ ],
 
@@ -59,9 +48,9 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "targetOffset" : [0,4],
-            "minRange" : 4,
-            "maxRange" : 15
+            "targetOffset" : [0,5],
+            "minRange" : 3,
+            "maxRange" : 12
           }
         }
       ],
@@ -75,9 +64,9 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "targetOffset" : [0,4],
-            "minRange" : 4,
-            "maxRange" : 15
+            "targetOffset" : [0,5],
+            "minRange" : 3,
+            "maxRange" : 12
           }
         }
       ],
@@ -85,19 +74,19 @@
       "wanderActions" : [
         {
           "name" : "wander-fly",
-          "cooldown" : [5,20],
+          "cooldown" : [2,20],
           "parameters" : {
             "wanderTime" : [10,40],
-            "groundDistance" : 35,
+            "groundDistance" : 20,
             "ceilingDistance" : 10,
-            "xVelocity" : 8,
+            "xVelocity" : 9,
             "yVelocity" : 12
           }
         },
         {
           "name" : "land-fly",
           "parameters" : {
-            "flySpeed" : 8,
+            "flySpeed" : 15,
             "flyControlForce" : 25,
             "landCheckDistance" : 40,
             "idleTime" : 40
@@ -109,93 +98,27 @@
 
       "concurrentHostileActions" : [ ]
     },
-    "skillCount" : 3,
-    "baseSkills" : [ "raptorswoopAttack", "divebombAttack" ],
+    
+    "skillCount" : 4,
+    "baseSkills" : [ "divebombAttack", "raptorswoopAttack" ],
     "specialSkills" : [
-    "flyingSwoopAttack",
-    "pigeonSwoopAttack",
-    "acidicSpitAttack", 
-    "acidSprayAttack",
-    "beamBurstAttack", 
-    "bloodVomitAttack", 
-    "blueFlameAttack",
-    "boneRainAttack", 
-    "bubbleBlastAttack",
-    "burninghaloAttack",
-    "cellBlastAttack", 
-    "darkGravityBallAttack",
-    "doubleBarbSprayAttack",
-    "explosivePhlegmAttack",
-    "eyeballShotAttack",
-    "eyeballSprayAttack", 
-    "fireballAttack", 
-    "fireSwirlAttack",
-    "fishBreathAttack", 
-    "gasBelchAttack",    
-    "glitterAttack", 
-    "iceBlastAttack", 
-    "icerockShotAttack",
-    "leafyGustAttack",
-    "lightBallAttack", 
-    "miniDragonBreathAttack", 
-    "mudBallAttack",
-    "orbOfZotsAttack",
-    "plasmaSweepAttack", 
-    "plasmaTorpedoAttack", 
-    "putridWaveAttack", 
-    "rainbowVomitAttack",
-    "rockRollAttack", 
-    "shardSprayAttack",
-    "shockingBoltAttack",
-    "shockingWaveAttack", 
-    "smokeRingAttack",
-    "snotBubbleAttack",
-    "snotShotAttack", 
-    "staticDischargeAttack", 
-    "waterGunAttack",
-    "beetleSwarmAttack",
-    "darkGasAttack",
-    "flySwarmAttack",
-    "iceShotAttack",
-    "inkSprayAttack",
-    "rockShotAttack",
-    "seedSpitAttack",
-    "sonicWaveAttack",
-    "spiceCloudAttack",
-    "tentacleShotAttack",
-    "waveBlastAttack",
-    "waveBlastAttack2",
-    "waveBlastAttack3",
-    "poisonVomitAttack2",
-    "raptorstrikeAttack3",
-    "raptorstrikeAttack4",
-    "soundwaveAttack2",
-    "windBlastAttack2",
-    "windBlastAttack3",
-    "windBlastAttack4",
-    "shadowbeastAttack"
-    ],
-
+			    "flyingSwoopAttack",
+			    "pigeonSwoopAttack" 
+    			],
     "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
-    "scale" : 1.25,
+    "scale" : 1.0,
 
     "movementSettings" : {
       "gravityEnabled" : false,
-      "collisionPoly" : [ [0.0, 1.5], [1.0, 0.5], [1.5, -0.5], [1.0, -1.5], [0.0, -2.5], [-1.0, -1.5], [-1.5, -0.5], [-1.0, 0.5] ],
+      "collisionPoly" : [ [0.625, 1], [1, 0.625], [1, -0.625], [0.625, -1], [-0.625, -1], [-1, -0.625], [-1, 0.625], [-0.625, 1] ],
 
-      "mass" : 1.5,
-      "flySpeed" : 16,
-      "airFriction" : 4,
+      "mass" : 1.0,
+      "flySpeed" : 12,
+      "airFriction" : 1,
       "airForce" : 40.0
     },
 
-    "targetRadius" : 18.0,
-    "targetSearchTime" : 0.5,
-    "targetHoldTime" : 3.0,
-
-    "bodyMaterialKind" : "organic",
-
-    "knockoutTime" : 0.1,
+    "knockoutTime" : 0,
     "knockoutEffect" : "blink",
     "knockoutAnimationStates" : {
       "damage" : "stunned"
@@ -205,8 +128,8 @@
     "colors" : "generated",
 
     "touchDamage" : {
-      "poly" : [ [0.0, 1.5], [1.0, 0.5], [1.5, -0.5], [1.0, -1.5], [0.0, -2.5], [-1.0, -1.5], [-1.5, -0.5], [-1.0, 0.5] ],
-      "damage" : 15,
+      "poly" : [ [0.625, 1], [1, 0.625], [1, -0.625], [0.625, -1], [-0.625, -1], [-1, -0.625], [-1, 0.625], [-0.625, 1] ],
+      "damage" : 12,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -219,8 +142,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -236,7 +159,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 164
+          "baseValue" : 42
         },
         "protection" : {
           "baseValue" : 0.0
