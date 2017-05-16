@@ -31,6 +31,10 @@ end
 
 --******* check effect and cancel ************
 function checkEffectValid()
+ if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
+	    deactivateVisualEffects()
+	    effect.expire()
+ end	 
 	  if world.entityType(entity.id()) ~= "player" then
 	    deactivateVisualEffects()
 	    effect.expire()
@@ -152,6 +156,10 @@ end
 
 function update(dt)
 checkEffectValid()
+ if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
+	    deactivateVisualEffects()
+	    effect.expire()
+ end	
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
@@ -187,7 +195,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
   
-      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue then
+      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue  and status.isResource("energy") then
 	  --makeAlert()
 	  activateVisualEffects()
           self.biomeTimer = setEffectTime()

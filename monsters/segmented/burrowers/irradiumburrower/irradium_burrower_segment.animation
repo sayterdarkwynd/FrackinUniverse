@@ -91,34 +91,56 @@
     }
   },
 
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [12, 24, 89],
+      "pointLight" : true
+    }
+  },
+  
   "particleEmitters" : {
     "groundBurstEmitter": {
       "particles" : [
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" }
-      ]
+        { "particle" : "greyrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "blackstoneshard" },
+        { "particle" : "dust4" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" }      ]
     },
     "behindGroundEmitter":{
       "particles" : [
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" },
-        { "particle" : "defaultbrown" }
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" },
+        { "particle" : "dust2" }
       ]
     },
     "deathPoof" : {
       "particles" : [
+        { "particle" : "greyrockshard" },
+        { "particle" : "greyrockshard" },
+        { "particle" : "greyrockshard" },
+        { "particle" : "greyrockshard" },
+        { "particle" : "greyrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "shadowrockshard" },
+        { "particle" : "blackstoneshard" },
+        { "particle" : "blackstoneshard" },
+        { "particle" : "blackstoneshard" },
+        { "particle" : "blackstoneshard" },
         { "particle" : "deathfizz1left" },
         { "particle" : "deathfizz1right" },
         { "particle" : "deathfizz2left" },
@@ -130,7 +152,6 @@
       ]
     }
   },
-
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],

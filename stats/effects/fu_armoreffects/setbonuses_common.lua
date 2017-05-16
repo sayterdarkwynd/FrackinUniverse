@@ -11,6 +11,8 @@
 -- If animation is needed, reference the animation file in the statuseffect file (copy from the included script's corresponding file)
 -- Limitations: no icons, scripts won't see their own config, only one animation file?
 
+require "/scripts/util.lua"
+
 function setBonusInit(setBonusName, setBonusStats, callbacks)
 	self.statGroup = nil
 	self.armourPresent = nil
@@ -71,9 +73,10 @@ end
 
 function setBonusMultiply(effectBase,mult)
 	local temp={}
-	for _,v in pairs(effectBase) do
-		v["amount"]=v["amount"] and (v["amount"]*mult) or nil
-		v["baseMultiplier"]=v["baseMultiplier"] and (1.0+(v["baseMultiplier"]-1.0)*mult) or nil
+	for _,vOld in pairs(effectBase) do
+		local v=copy(vOld)
+		v["amount"]=(v["amount"] and (v["amount"]*mult)) or nil
+		v["baseMultiplier"]=(v["baseMultiplier"] and (1.0+(v["baseMultiplier"]-1.0)*mult)) or nil
 		table.insert(temp,v)
 	end
 	return temp
