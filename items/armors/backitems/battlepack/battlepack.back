@@ -1,23 +1,27 @@
 {
-  "itemName" : "feedpack",
+  "itemName" : "battlepack",
   "price" : 750,
   "inventoryIcon" : "icon.png",
   "rarity" : "Rare",
-  "description" : "Keeps you from starving.",
-  "shortdescription" : "Feeding Pack",
+  "description" : "+10% damage. +4 health, +4 Energy",
+  "shortdescription" : "Battle Pack",
   "tooltipKind" : "baseaugment",
+  "learnBlueprintsOnPickup" : [ "battlepack2" ],
   "category" : "enviroProtectionPack",
   "acceptsAugmentType" : "back",
 
   "statusEffects" : [
-    "feedpack",
+    {
+      "stat" : "powerMultiplier",
+      "amount" : 0.10
+    },
     {
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 4
     },
     {
       "stat" : "maxHealth",
-      "amount" : 15
+      "amount" : 4
     }
   ],
   

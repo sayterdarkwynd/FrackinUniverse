@@ -48,7 +48,7 @@ function update(dt)
 	end
 	
 	self.monsterUpdate = self.monsterUpdate and self.monsterUpdate or monsterUpdate
-	self.monsterUpdate(dt)	
+	self.monsterUpdate(dt)
 	
 	if world.entityExists(self.parent and self.parent or -1) then
 		local distance 	= entity.distanceToEntity(self.parent)
