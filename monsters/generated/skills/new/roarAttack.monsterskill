@@ -1,0 +1,38 @@
+{
+  "name" : "roarAttack",
+  "label" : "MIGHTY ROAR",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : [4, 6],
+        "parameters" : {
+          "skillName" : "roarAttack",
+
+          "maximumRange" : 8,
+          "minimumRange" : 0,
+          "windupEffect" : "",
+          
+          "fireDelay" : 0.2,
+          "projectileType" : "roar",
+          "projectileParameters" : {
+          "power" : 15,
+            "speed" : 0
+          },
+          "power" : 10,
+          "aimAtTarget" : false,
+          "winddownTime" : 0.5
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/npc/quadruped/tiger_turnhostile.ogg" ]
+    }
+  }
+}
+
