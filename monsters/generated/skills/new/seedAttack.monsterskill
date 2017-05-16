@@ -1,0 +1,41 @@
+{
+  "name" : "seedAttack",
+  "label" : "SEEDS",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 5],
+        "parameters" : {
+          "skillName" : "seedAttack",
+
+          "maximumRange" : 15,
+          "minimumRange" : 0,
+          "windupEffect" : "",
+          
+          "fireDelay" : 0.3,
+          "projectileType" : "sporeseed",
+          "projectileParameters" : {
+          "power" : 6,
+            "speed" : 25
+          },
+          "power" : 6,
+          "aimAtTarget" : false,
+          "inaccuracy" : 0.34,
+          "projectileCount" : 5,
+          "aimDirection" : [0, 1],
+          "projectileInterval" : 0.035
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/npc/monsters/sporgus_fire.ogg" ]
+    }
+  }
+}
+

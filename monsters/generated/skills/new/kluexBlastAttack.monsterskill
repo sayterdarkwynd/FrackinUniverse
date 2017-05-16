@@ -1,0 +1,41 @@
+{
+  "name" : "kluexBlastAttack",
+  "label" : "GEM BLAST",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 5],
+        "parameters" : {
+          "skillName" : "kluexBlastAttack",
+
+          "maximumRange" : 20,
+          "minimumRange" : 1,
+          "windupEffect" : "",
+          
+          "fireDelay" : 0.3,
+          "projectileType" : "electricorb",
+          "projectileParameters" : {
+          "speed" : 20,
+          "timeToLive" : 5,
+          "power" : 5
+          },
+          "power" : 5,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 1,
+          "inaccuracy" : 0
+        }
+      }
+    ]
+  },
+  
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/fireball_poof.ogg" ]
+    }
+  }
+}
+

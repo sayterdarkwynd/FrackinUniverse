@@ -1,0 +1,37 @@
+{
+  "name" : "spinAssaultAttack",
+  "label" : "SPIN ASSAULT",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 6],
+        "parameters" : {
+          "skillName" : "spinAssaultAttack",
+
+          "maximumRange" : 20,
+          "minimumRange" : 1,
+          "windupEffect" : "",
+          
+          "fireDelay" : 0.3,
+          "projectileType" : "spinslash",
+          "projectileParameters" : {
+          "power" : 15,
+            "speed" : 30
+          },
+          "power" : 15,
+          "aimAtTarget" : true,
+          "projectileSpeed" : 30
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/npc/monsters/monster_slash1.ogg", "/sfx/npc/monsters/monster_slash2.ogg" ]
+    }
+  }
+}

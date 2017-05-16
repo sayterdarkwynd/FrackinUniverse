@@ -1,0 +1,77 @@
+{
+  "projectileName" : "forcecage3",
+  "physics" : "default",
+  "timeToLive" : 4,
+  "image" : "forcecage.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 3,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 4,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_disappear2.ogg" ]
+    }
+  ],
+      "actionOnReap" : [
+        {
+          "action" : "sound",
+          "options" : [
+            "/sfx/melee/staff_aura_activate.ogg"
+          ]
+        },
+        {
+          "action" : "projectile",
+          "type" : "crystalbayonetforce",
+          "angle" : 0
+        },
+        {
+          "action" : "projectile",
+          "type" : "crystalbayonetforce",
+          "angle" : 180
+        }    
+      ],
+  
+  "speed" : 12,
+  "power" : 4,
+
+  "onlyHitTerrain" : true,
+
+  "physicsCollisions" : {
+    "piece1" : {
+      "platform" : false,
+      "collision" : [ [-3.0, 0], [0, 3.0] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece2" : {
+      "platform" : false,
+      "collision" : [ [0, 3.0], [3.0, 0] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece3" : {
+      "platform" : false,
+      "collision" : [ [3.0, 0], [0, -3.0] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece4" : {
+      "platform" : false,
+      "collision" : [ [0, -3.0], [-3.0, 0] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    }
+  },
+
+  "renderLayer" : "ItemDrop+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ ],
+  "lightColor" : [110, 60, 130],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+  
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+}

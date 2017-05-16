@@ -1,0 +1,36 @@
+{
+  "name" : "crystalAttack",
+  "label" : "CRYSTAL",
+  "image" : "/monsters/generated/skills/defaultelectric.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : [1.5, 3],
+        "parameters" : {
+          "skillName" : "crystalAttack",
+
+          "maximumRange" : 200,
+          "minimumRange" : 1,
+          "windupEffect" : "",
+          
+          "fireDelay" : 0.3,
+          "projectileType" : "energycrystal",
+          "projectileParameters" : {
+          "power" : 10
+          },
+          "power" : 10,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/plasma1.ogg", "/sfx/projectiles/plasma2.ogg", "/sfx/projectiles/plasma3.ogg" ]
+    }
+  }
+}
+

@@ -1,0 +1,40 @@
+{
+  "name" : "shitShowerAttack",
+  "label" : "POOP BREATH",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 5],
+        "parameters" : {
+          "skillName" : "shitShowerAttack",
+
+          "maximumRange" : 10,
+          "minimumRange" : 1,
+          "windupEffect" : "",
+          
+          "fireDelay" : 0.3,
+          "projectileType" : "poopbreath",
+          "projectileParameters" : {
+          "power" : 5
+          },
+          "power" : 5,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 4,
+          "inaccuracy" : 0.1,
+          "projectileInterval" : 0.05
+        }
+      }
+    ]
+  },
+  
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/fireball_poof.ogg" ]
+    }
+  }
+}
+

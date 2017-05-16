@@ -1,33 +1,36 @@
 {
-  "name" : "waveBlastAttack3",
-  "label" : "WATER BLAST",
-  "image" : "/monsters/generated/skills/defaultwater.png",
+  "name" : "goopAttack",
+  "label" : "SPATTER",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
 
   "config" : {
-    "hostileActions" : [
+    "hostileActions" : [ 
       {
         "name" : "action-fire",
-        "cooldown" : 5,
+        "cooldown" : [3, 5],
         "parameters" : {
-          "skillName" : "waterBlastAttack2",
+          "skillName" : "goopAttack",
 
           "maximumRange" : 15,
           "minimumRange" : 2,
-          "windupEffect" : "cultistshield",
+          "windupEffect" : "",
           
-          "fireDelay" : 0.35,
-          "projectileType" : "waterblast2",
+          "fireDelay" : 0.5,
+          "projectileType" : "moontantgoop",
           "projectileParameters" : {
-            "speed" : 35
+          "power" : 6,
+            "speed" : 30
           },
-          "power" : 1.5,
+          "power" : 7,
           "aimAtTarget" : true,
 
-          "projectileCount" : 9,
-          "projectileInterval" : 0.056,
+          "projectileCount" : 4,
+          "projectileInterval" : 0.066,
 
           "fireArc" : true,
-          "projectileSpeed" : 35
+          "highArc" : false,
+          "inaccuracy" : 0.1,
+          "projectileSpeed" : 30
         }
       }
     ]
