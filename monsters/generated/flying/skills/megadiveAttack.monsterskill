@@ -1,0 +1,35 @@
+{
+  "name" : "megadiveAttack",
+  "label" : "DIVE",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-swoop", 
+        "cooldown" : [6,10],
+        "parameters" : {
+          "skillName" : "megadiveAttack",
+
+          "minimumRange" : 15,
+          "maximumRange" : 55,
+          "onGround" : false,
+          "windupTime" : 0.5,
+          "windupState" : "charge",
+          "windupStopForce" : 30,
+
+          "swoopState" : "melee",
+          "gravityMultiplier" : -0.2,
+          "collisionCheck" : false,
+          "highArc" : false,
+	  "swoopVelocity": 57,
+          "swoopTime" : 0.85,
+
+          "winddownTime" : 0.6,
+          "winddownState" : "fly",
+          "winddownStopForce" : 20
+        }
+      }
+    ]
+  }
+}

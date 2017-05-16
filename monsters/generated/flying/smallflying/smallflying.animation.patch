@@ -23,7 +23,12 @@
     "value": {
       "frames": 4,
       "cycle": 0.25,
-      "mode": "loop"
+      "mode": "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/wingflap.ogg",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
     }
   },
   {
@@ -36,6 +41,17 @@
     "path": "/animatedParts/stateTypes/body/states/fire/cycle",
     "value": 1
   },
+  
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/fire/properties",
+    "value": {
+      "persistentSound": "",
+      "persistentSoundStopTime": 0.25,
+      "persistentSoundRangeMultiplier": 0.5
+    }
+  },
+  
   {
     "op": "add",
     "path": "/animatedParts/parts/backWings/partStates/body/windup",
@@ -153,5 +169,15 @@
     "op": "add",
     "path": "/sounds/fire",
     "value": [ "/sfx/npc/monsters/monster_surprise.ogg" ]
-  }   
+  },
+  {
+    "op": "add",
+    "path": "/sounds/charge",
+    "value": [ "/sfx/npc/monsters/monster_surprise.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/sounds/melee",
+    "value": [ "/sfx/npc/monsters/monster_surprise.ogg" ]
+  } 
 ]
