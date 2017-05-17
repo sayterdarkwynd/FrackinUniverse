@@ -1,0 +1,101 @@
+{
+  "type" : "fudodofarmbaby",
+  "shortdescription" : "Copperbeak",
+
+  "categories" : [ "fudodofarm" ],
+  "parts" : [ "body", "spawn" ],
+
+  "animation" : "fudodofarm.animation",
+  "reversed" : false,
+
+  "dropPools" : [ { "default" : "huntingflying" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "persistent" : false,
+
+    "behavior" : "farmablebaby",
+
+    "evolveType" : "fudodofarm",
+    "spawnOffset" : [0.0, 0.25],
+    "spawnPoly" : [ [0.25, 0.75], [0.75, 0.25], [0.75, -0.25], [0.25, -0.75], [-0.25, -0.75], [-0.75, -0.25], [-0.75, 0.25], [-0.25, 0.75] ],
+    "evolveTime" : 100,
+
+    "metaBoundBox" : [-4.0, -4.0, 4.0, 4.0],
+    "scale" : 0.5,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.25, 0.75], [0.75, 0.25], [0.75, -0.25], [0.25, -0.75], [-0.25, -0.75], [-0.75, -0.25], [-0.75, 0.25], [-0.25, 0.75] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+    "deathParticles" : "deathPoof",
+
+    "damageTeamType" : "friendly",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 250
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 4.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [4, 0],
+    "feetOffset" : [0, -6],
+    "capturable" : false,
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

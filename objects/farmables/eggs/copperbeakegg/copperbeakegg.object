@@ -1,0 +1,40 @@
+{
+  "objectName" : "copperbeakegg",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "farmBeastEgg",
+  "price" : 1000,
+
+  "description" : "Hatches into a tiny chick and matures into a Copperbeak. The adult Copperbeak produces copper.",
+  "shortdescription" : "Copperbeak Egg",
+  "race" : "generic",
+
+  "inventoryIcon" : "copperbeakegg.png:idle.1",
+  "orientations" : [
+    {
+      "image" : "copperbeakegg.png:idle.1",
+      "imagePosition" : [-7, -3],
+
+      "spaces" : [ [-1, 0], [-1, 1], [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/farmables/eggs/farmableegg.animation",
+  "animationPosition" : [-7, -3],
+  "animationParts" : {
+    "egg" : "copperbeakegg.png"
+  },
+
+  "scripts" : ["/objects/farmables/eggs/farmableegg.lua"],
+  "scriptDelta" : 60,
+
+  "hatchTime" : 40,
+  "forceHatchTime" : 80,
+
+  "spawnMonster" : "fudodofarmbaby",
+  "spawnOffset" : [0.5, 0.5]
+}
