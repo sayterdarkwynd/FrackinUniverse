@@ -1,5 +1,5 @@
 {
-  "type" : "hugebiped",
+  "type" : "fuhugebiped",
 
   "categories" : [ "hugebiped" ],
   "parts" : [ "barm", "farm", "body", "tail", "head" ],
@@ -10,133 +10,280 @@
 
   "dropPools" : [
     {
-      "default" : "minibosstreasure"
+      "default" : "slimemonsterlargeTreasure",
+      "bow" : "huntingminiboss",
+      "brain" : "brain"
     }
   ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/ground/groundMonster.lua",
-      "/scripts/pathing.lua",
-      "/scripts/stateMachine.lua",
-      "/scripts/util.lua",
-      "/scripts/vec2.lua",
-
-      "/monsters/ground/approachState.lua",
-      "/monsters/ground/fleeState.lua",
-      "/monsters/ground/captiveState.lua",
-      "/monsters/ground/stunState.lua",
-      "/monsters/ground/socializeState.lua",
-      "/monsters/ground/wanderState.lua",
-
-      "/monsters/ground/skills/createGroundRangedAttack.lua"
+      "/monsters/monster.lua"
     ],
 
-    "skills" : [],
+    "behavior" : "monster",
 
-    "territoryDistance" : 40.0,
-    "territorialTargetRadius" : 20.0,
-    "minimalTargetRadius" : 6.0,
-    "targetSearchTime" : 0.5,
-    "targetHoldTime" : 5.0,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
 
-    "closeDistance" : 1.5,
+      "targetQueryRange" : 60,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 75,
+      "targetOutOfSightTime" : 2.5,
 
-    "wanderTime" : [4.0, 6.0],
-    "wanderMovementTime" : [2.0, 3.0],
-    "wanderJumpProbability" : 0.1,
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
-    "jumpTargetDistance" : 4,
-    "jumpTime" : [0.8, 1.4],
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 17,
+            "jumpYVelocity" : 40,
+            "jumpXControlForce" : 50,
+            "fallState" : "jump",
+            "moveState" : "run",
+            "run" : true
+          }
+        }
+      ],
 
-    "pathing" : {
-      "canOpenDoors" : false
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 17,
+            "jumpYVelocity" : 40,
+            "jumpXControlForce" : 50,
+            "fallState" : "jump",
+            "moveState" : "run",
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [3, 9]
+          }
+        }
+      ]
     },
 
+    "skillCount" : 3,
+    "baseSkills" : [ "fumeleeAttack",  "pounceAttack"],
+    "specialSkills" : [
+    "chargeAttack",
+    "acidicSpitAttack", 
+    "acidSprayAttack",
+    "beamBurstAttack", 
+    "bloodVomitAttack", 
+    "blueFlameAttack",
+    "boneRainAttack", 
+    "bubbleBlastAttack",
+    "burninghaloAttack",
+    "cellBlastAttack", 
+    "darkGravityBallAttack",
+    "doubleBarbSprayAttack",
+    "explosivePhlegmAttack",
+    "eyeballShotAttack",
+    "eyeballSprayAttack", 
+    "fireballAttack", 
+    "fireSwirlAttack",
+    "fishBreathAttack", 
+    "gasBelchAttack",    
+    "glitterAttack", 
+    "iceBlastAttack", 
+    "icerockShotAttack",
+    "leafyGustAttack",
+    "lightBallAttack", 
+    "miniDragonBreathAttack", 
+    "mudBallAttack",
+    "orbOfZotsAttack",
+    "plasmaSweepAttack", 
+    "plasmaTorpedoAttack", 
+    "putridWaveAttack", 
+    "rainbowVomitAttack",
+    "rockRollAttack", 
+    "shardSprayAttack",
+    "shockingBoltAttack",
+    "shockingWaveAttack", 
+    "smokeRingAttack",
+    "snotBubbleAttack",
+    "snotShotAttack", 
+    "staticDischargeAttack", 
+    "waterGunAttack",
+    "beetleSwarmAttack",
+    "darkGasAttack",
+    "flySwarmAttack",
+    "iceShotAttack",
+    "inkSprayAttack",
+    "rockShotAttack",
+    "seedSpitAttack",
+    "sonicWaveAttack",
+    "spiceCloudAttack",
+    "tentacleShotAttack",
+    "waveBlastAttack",
+    "waveBlastAttack2",
+    "waveBlastAttack3",
+    "poisonVomitAttack2",
+    "raptorstrikeAttack2",
+    "raptorstrikeAttack2",
+    "raptorstrikeAttack3",
+    "raptorstrikeAttack4",
+    "soundwaveAttack2",
+    "windBlastAttack2",
+    "shadowbeastAttack",
+    "cageWall",
+    "crystalAttack",
+    "flamingAuraAttack",
+    "glowcritterAttack",
+    "glowcritterAttack2",
+    "goopAttack",
+    "gravAuraAttack",
+    "iceAuraAttack",
+    "iceBelchAttack",
+    "kluexAuraAttack",
+    "kluexBlastAttack",
+    "poisonAuraAttack",
+    "pullAuraAttack",
+    "pushAuraAttack",
+    "roarAttack",
+    "seedAttack",
+    "shitShowerAttack",
+    "shockAuraAttack",
+    "spinAssaultAttack",
+    "steamAttack"
+    ],
     "knockoutTime" : 0.1,
     "knockoutEffect" : "blink",
     "knockoutAnimationStates" : {
-      "movement" : "knockout"
+      "damage" : "stunned"
     },
     "deathParticles" : "deathPoof",
 
-    "exhaustionTimer" : 3.0,
-    "exhaustionTimeout" : 3.0,
-    "exhaustionDistanceLimit" : 1.0
-  },
+    "colors" : "generated",
 
-  "familyParameters" : [
-    [
-      {
-        "baseSkills" : [ "meleeAttack" ],
-        "specialSkills" : [ ]
+    "scale" : 1.3,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-2.562,5.625], [-5.625,4.438], [-6.688,2.25], [-6.438,0.188], [-4.375,0.125], [-4,-4.625], [-4.562,-6.062], [-4.438,-9.125], [4,-9.188], [8.75,-8.062], [8.375,-3.375], [1.438,0.062], [3.625,1.625], [3.438,5.312], [2.062,5.938] ],
+      "mass" : 3.6,
+      "walkSpeed" : 2.0,
+      "runSpeed" : 6.0
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+
+    "touchDamage" : {
+      "poly" : [ [-2.562,5.625], [-5.625,4.438], [-6.688,2.25], [-6.438,0.188], [-4.375,0.125], [-4,-4.625], [-4.562,-6.062], [-4.438,-9.125], [4,-9.188], [8.75,-8.062], [8.375,-3.375], [1.438,0.062], [3.625,1.625], [3.438,5.312], [2.062,5.938] ],
+      "damage" : 25,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.1
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 820
+        },
+        "maxShield" : {
+          "baseValue" : 0.0
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.75
+        },
+        "shieldRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceResistance" : {
+          "baseValue" : -0.35
+        },
+        "fireResistance" : {
+          "baseValue" : 0.4
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.3
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.5
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.0
+        } 
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        },
+        "shieldHealth" : {
+          "maxStat" : "maxShield",
+          "deltaStat" : "shieldRegen",
+          "defaultPercentage" : 100
+        }
       }
-    ]
-  ],
+    },
 
-  "variantParameters" : [
-    [
-      [1.0, {
-          "scale" : 1,
-
-          "movementSettings" : {
-            "collisionPoly" : [ [-3, -9.375], [3, -9.375], [3, 2], [-3, 2] ],
-            "mass" : 2.0,
-            "walkSpeed" : 7,
-            "runSpeed" : 12
-          },
-
-          "metaBoundBox" : [-10, -10, 10, 10],
-
-          "blockedSensors" : [ [2, -2.5], [2, -2.3], [2, -1.8], [2, -1.3], [2, -0.8], [2, -0.3], [2, 0.2], [2, 0.7] ],
-          "fallSensors" : [ [0.5, -2.5], [0.5, -3.5], [0.5, -4.5], [2.0, -2.5], [2.0, -3.5], [2.0, -4.5] ],
-
-          "touchDamage" : {
-            "poly" : [ [-3, -9.375], [3, -9.375], [3, 2], [-3, 2] ],
-            "damage" : 25,
-
-            "teamType" : "enemy",
-            "damageSourceKind" : "slash",
-            "statusEffects" : [ ]
-          },
-
-          "statusSettings" : {
-            "statusProperties" : {
-              "targetMaterialKind" : "organic"
-            },
-
-            "appliesEnvironmentStatusEffects" : false,
-            "minimumLiquidStatusEffectPercentage" : 0.1,
-
-            "primaryScriptSources" : [
-              "/stats/monster_primary.lua"
-            ],
-            "primaryScriptDelta" : 5,
-
-            "stats" : {
-              "maxHealth" : {
-                "baseValue" : 240
-              },
-              "protection" : {
-                "baseValue" : 0.0
-              },
-              "healthRegen" : {
-                "baseValue" : 0.0
-              }
-            },
-
-            "resources" : {
-              "health" : {
-                "maxStat" : "maxHealth",
-                "deltaStat" : "healthRegen",
-                "defaultPercentage" : 100
-              }
-            }
-          },
-
-          "mouthOffset" : [0, 0],
-          "feetOffset" : [0, -21]
-        } ]
-    ]
-  ]
+    "mouthOffset" : [0.5, 0.5],
+    "feetOffset" : [0, -21],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
 }
