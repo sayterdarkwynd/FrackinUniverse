@@ -4,6 +4,7 @@ function getRecipes()
                     bees = {"itemMapFarm","itemMapBees"},
                     liquid = {"itemMapFarm","itemMapBees","itemMapLiquids"},
                     isotope = {"itemMapFarm","itemMapBees","itemMapLiquids","itemMapIsotopes"} },
+                    powdersifter = { "itemMapPowder" }
 
     -- for any given comb type, the sum of the chances must not exceed 1
     -- chances are common, normal, uncommon, rare, or rarest, followed by the reciprocal of the multiplier to be applied
@@ -13,7 +14,107 @@ function getRecipes()
                                fu_hydrogen             = { "normal", 2 },
                                fu_oxygen               = { "normal", 2 } }
       },
-
+    itemMapPowder = { 
+	  --"commonOutputs" : [ "saltpeter", "ironore", "coalore", "sulphur", "rawminerals", "nutrientpaste", "copperore", "fu_salt", "ff_silicon", "lead" ],
+	  --"uncommonOutputs" : [ "petalred", "petalyellow", "petalblue", "bone", "crystal", "silverore", "goldore", "fu_carbon" ],
+	  --"rareOutputs" : [ "crystal", "icecrystal", "diamond" ],    
+      ash = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1 }
+            },
+      aetherdustmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1 }
+            },
+      drysand = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1 }
+            }, 
+      sand = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1 }
+            },
+      gravelmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1 }
+            },
+      moondust = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1 }
+            },
+      sand2 = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1 }
+            },
+      biogravelmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            },
+      coralmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            },
+      coral2material = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            },
+      crystalsandmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            },
+      glasssandmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            },
+      redsand = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            },  
+      bonemealmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            }, 
+      frozensandmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            },    
+      rainbowsandmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            }, 
+      steelsand = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            }, 
+      steelashmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            }, 
+      sulphurdirtmaterial = {
+      		result = { "common", 1 },
+      		result = { "common", 1 },
+      		result = { "common", 1}
+            }            
+    },
+    
     itemMapBees = {
         arcticcomb      = { frozenwaxchunk = { "normal", 1 } },
         aridcomb        = { goldensand     = { "common", 1 } },
