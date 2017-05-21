@@ -5,8 +5,8 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;
+^cyan;Immune: Acid. +25% Poison and Physical Resist^reset;
+^#e43774;+12% Health, +6%/12% Crit Chance (1h/2h melee)^reset;
 ^green;Upgradeable^reset;",
   "shortdescription" : "Kingslayer Greaves",
   "category" : "^#e43774;Upgradeable Armor^reset;",
@@ -26,38 +26,38 @@
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1
+      "baseMultiplier" : 1.2
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.25
+      "amount" : 0.1
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 1
+      "amount" : 6
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 3
+      "amount" : 0
     }
   ],
 
   "statusEffects" : [ 
-    "chitinsetbonus",
+    "kingslayersetbonus",
     {
-      "stat" : "fu_chitinset_legs",
+      "stat" : "fu_kingslayerset_legs",
       "amount" : 1
     },
     {
       "stat" : "poisonResistance",
-      "amount" : 0.05
+      "amount" : 0.07
     },
     {
       "stat" : "physicalResistance",
-      "amount" : 0.05
+      "amount" : 0.07
     }
   ],
   "colorOptions" : [

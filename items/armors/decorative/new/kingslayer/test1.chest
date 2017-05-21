@@ -5,8 +5,8 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;
+^cyan;Immune: Acid. +25% Poison and Physical Resist^reset;
+^#e43774;+12% Health, +6%/12% Crit Chance (1h/2h melee)^reset;
 ^green;Upgradeable^reset;",
   "shortdescription" : "Kingslayer Plate",
   "category" : "^#e43774;Upgradeable Armor^reset;",
@@ -35,38 +35,38 @@
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.35
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.55
+      "amount" : 0.4
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 4
+      "amount" : 9
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
+      "amount" : 3
     }
   ],
 
   "statusEffects" : [
-    "chitinsetbonus",
+    "kingslayersetbonus",
     {
-      "stat" : "fu_chitinset_chest",
+      "stat" : "fu_kingslayerset_chest",
       "amount" : 1
     },
     {
       "stat" : "poisonResistance",
-      "amount" : 0.05
+      "amount" : 0.11
     },
     {
       "stat" : "physicalResistance",
-      "amount" : 0.05
+      "amount" : 0.11
     }
   ],
 
