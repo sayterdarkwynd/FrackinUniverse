@@ -111,7 +111,11 @@ function doUpgrade()
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
           local itemConfig = root.itemConfig(upgradedItem)  
-          upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
+		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
+		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/20) )  -- increase DPS a bit
+		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
+		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
+	          
           upgradedItem.parameters.primaryAbility = {}     
                   -- magnorbs
                   if (upgradedItem.parameters.orbitRate) then
@@ -156,16 +160,12 @@ function doUpgrade()
 		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
 			if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
 			    local baseDpsBase = itemConfig.config.primaryAbility.baseDps
-			    local baseDpsMod = (upgradedItem.parameters.level/50)
+			    local baseDpsMod = (upgradedItem.parameters.level/20)
 			    local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
 			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
 			end			
 		  end
-		  
-		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + upgradedItem.parameters.level/50)  -- increase DPS a bit
-		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
-		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
-		  
+	  
 	  sb.logInfo("Upgrading weapon : ")	  
           sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
           

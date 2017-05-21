@@ -1,4 +1,4 @@
-setName="fu_kingslayerset"
+setName="fu_geistset"
 
 weaponBonus={
 	{stat = "critChance", amount = 9}

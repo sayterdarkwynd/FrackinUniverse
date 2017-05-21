@@ -1,5 +1,5 @@
-setName="fu_kingslayerset"
-setStatEffects={"kingslayersetbonuseffect"}
+setName="fu_geistset"
+setStatEffects={"geistsetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
