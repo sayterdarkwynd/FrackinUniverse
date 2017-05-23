@@ -1,31 +1,29 @@
 {
-  "type" : "direstone_burrower_tail",
-  "shortdescription" : "A segment of a camoflauged worm burrowing through the earth",
-  "description" : "A segment of a camoflauged burrowing worm",
- 
- "categories" : [ "direstone_burrower_tail" ],
+  "type" : "debugsphere",
+  "shortdescription" : "debugsphere",
+  "description" : "Testing rotating monster",
+
+  "categories" : [ "debugsphere" ],
   "parts" : [ "body" ],
 
-  "animation" : "direstone_burrower_segment.animation",
+  "animation" : "debugsphere.animation",
 
   "dropPools" : [ ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monstersegment.lua",
-      "/monsters/segmented/burrowers/burrower.lua"
+      "/monsters/monster.lua",
+      "/monsters/ghosts/debugsphere/debugsphere.lua"
     ],
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
-    "renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
-      "keepTargetInSight" : false,
+      "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5
 
@@ -45,23 +43,27 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-
-      "collisionEnabled" : false,
       "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
 
-      "mass" : 1.0,
-      "walkSpeed" : 4,
-      "runSpeed" : 12,
       "gravityEnabled" : false,
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 7,
 
-      "airFriction" : 0.75,
-      "airForce" : 15,
-      "flySpeed" : 25
+      "airFriction" : 0,
+      "flySpeed" : 20,
+      "flyForce" : 20,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
     },
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.0,
+    "knockoutTime" : 0.3,
     "knockoutAnimationStates" : {
       "damage" : "stunned"
     },
@@ -83,8 +85,14 @@
       "primaryScriptDelta" : 5,
 
       "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
         "maxHealth" : {
-          "baseValue" : 500
+          "baseValue" : 65
         },
         "protection" : {
           "baseValue" : 0.0
@@ -99,13 +107,13 @@
           "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.0
         },
         "fireStatusImmunity" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : -1.0
+          "baseValue" : 0.0
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
@@ -114,31 +122,13 @@
           "baseValue" : 0.0
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.0
         },
         "poisonResistance" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.0
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.25
-        },
-        "shadowResistance" : {
-         "baseValue" : 0.75 
-        },
-        "shadowStatusImmunity" : {
-         "baseValue" : 0.75
-        },
-        "cosmicStatusImmunity" : { 
-         "baseValue" : -1.0 
-        },
-        "cosmicResistance" : { 
-         "baseValue" : -1.0 
-        },
-        "radioactiveStatusImmunity" : { 
-        "baseValue" : 0.5
-        },
-        "radioactiveResistance" : { 
-        "baseValue" : 0.75
+          "baseValue" : 0.0
         }
       },
 
@@ -155,14 +145,10 @@
       }
     },
 
-
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : false,
-    "segments" : 0,
-    "segmentMonster" : "direstone_burrower_segment",
-    "radius" : 1.2,
-    "burrowProjectile" : "direstoneburrow",
-    "burrowBurstProjectile" : "direstoneburrowburst"
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
   }
 }
