@@ -1,65 +1,65 @@
 {
-  "itemName" : "masqueradepants",
-  "inventoryIcon" : "icons.png:pants",
+  "itemName" : "masqueradechest",
+  "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;",
+^cyan;+25% Energy Regen, +20% Electric Resist^reset;
+^green;Gas Immunity^reset;", 
   "itemTags" : [ "upgradeableWeapon" ],
-  "shortdescription" : "Masquerade Greaves",
+  "shortdescription" : "Masquerade Chest",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
 
-  "maleFrames" : "pants.png",
-  "femaleFrames" : "pants.png",
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
 
-  "learnBlueprintsOnPickup" : [
-    "fumonsterplatedchest", 
-    "fumonsterplatedhead", 
-    "fumonsterplatedlegs"   
-  ],
-  
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
   "level" : 3,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1
+      "baseMultiplier" : 1.25
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.25
+      "amount" : 0.45
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 1
+      "amount" : 7
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 3
+      "amount" : 4
     }
   ],
 
-  "statusEffects" : [ 
-    "chitinsetbonus",
+  "statusEffects" : [
+    "hackersetbonus",
     {
-      "stat" : "fu_chitinset_legs",
+      "stat" : "fu_hackerset_chest",
       "amount" : 1
     },
     {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
+      "stat" : "electricResistance",
+      "amount" : 0.1
     }
   ],
+
   "colorOptions" : [
     /* GREY */
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },

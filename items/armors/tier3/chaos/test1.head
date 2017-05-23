@@ -1,63 +1,48 @@
 {
-  "itemName" : "chaoschest",
-  "inventoryIcon" : "icons.png:chest",
+  "itemName" : "chaoshead",
+  "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;",
-  "itemTags" : [ "upgradeableWeapon" ],
-  "shortdescription" : "Chaos Plate",
-  "category" : "^#e43774;Upgradeable Armor^reset;",
+  "description" : "Set Bonus:
+^cyan;+6% Crit (Daggers, Whips, Boomerangs, Chakrams), + 0.3% Regen^reset;
+^green;+10% Speed, +15% Shadow Resistance^reset;",
+  "shortdescription" : "Chaos Hood",
+  "category" : "headarmor",
   "tooltipKind" : "armornew2",
+  "itemTags" : [ "upgradeableWeapon" ],
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
 
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
-  "learnBlueprintsOnPickup" : [
-    "fumonsterplatedchest", 
-    "fumonsterplatedhead", 
-    "fumonsterplatedlegs"   
-  ],
-  
   "level" : 3,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.2
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.55
+      "amount" : 0.3
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 4
+      "amount" : 2
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
+      "amount" : 3
     }
   ],
 
   "statusEffects" : [
-    "chitinsetbonus",
+    "chaossetbonus",
     {
-      "stat" : "fu_chitinset_chest",
+      "stat" : "fu_chaosset_head",
       "amount" : 1
     },
     {
@@ -66,10 +51,9 @@
     },
     {
       "stat" : "physicalResistance",
-      "amount" : 0.05
+      "amount" : 0.07
     }
   ],
-
   "colorOptions" : [
     /* PURPLE */
     { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },  

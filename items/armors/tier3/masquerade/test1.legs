@@ -1,64 +1,53 @@
 {
-  "itemName" : "masqueradehead",
-  "inventoryIcon" : "icons.png:head",
+  "itemName" : "masqueradepants",
+  "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;",
+^cyan;+25% Energy Regen, +20% Electric Resist^reset;
+^green;Gas Immunity^reset;", 
   "itemTags" : [ "upgradeableWeapon" ],
-  "shortdescription" : "Masquerade Helm",
+  "shortdescription" : "Masquerade Greaves",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
 
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
 
-  "learnBlueprintsOnPickup" : [
-    "fumonsterplatedchest", 
-    "fumonsterplatedhead", 
-    "fumonsterplatedlegs"   
-  ],
-  
   "level" : 3,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
+      "baseMultiplier" : 1.1
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.35
+      "amount" : 0.15
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 2
+      "amount" : 4
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 4
+      "amount" : 1
     }
   ],
 
-  "statusEffects" : [
-    "chitinsetbonus",
+  "statusEffects" : [ 
+    "hackersetbonus",
     {
-      "stat" : "fu_chitinset_head",
+      "stat" : "fu_hackerset_chest",
       "amount" : 1
     },
     {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
+      "stat" : "electricResistance",
+      "amount" : 0.03
     }
   ],
   "colorOptions" : [
@@ -101,6 +90,5 @@
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ],
-  "collectablesOnPickup" : { "fu_armorsmith" : "chitinhead" }
+  ]
 }
