@@ -110,13 +110,65 @@ function doUpgrade()
         local consumedCurrency = player.consumeCurrency("essence", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
+        
           local itemConfig = root.itemConfig(upgradedItem)  
 		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 		  upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/20) )  -- increase DPS a bit
 		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
 		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
-	          
-          upgradedItem.parameters.primaryAbility = {}     
+
+
+	 -- set Rarity
+	 if upgradedItem.parameters.level ==4 then
+	   upgradedItem.parameters.rarity = "uncommon"
+	 elseif upgradedItem.parameters.level == 5 then
+	   upgradedItem.parameters.rarity = "rare"
+	 elseif upgradedItem.parameters.level == 6 then
+	   upgradedItem.parameters.rarity = "legendary"
+	 elseif upgradedItem.parameters.level >= 7 then
+	   upgradedItem.parameters.rarity = "essential"	   
+	 end
+	 
+
+	 
+	 -- is it a tool?
+	 		if (itemConfig.config.category == "Tool") or (itemConfig.config.category == "tool") then
+	 		
+	 		  -- parasol
+	 		   if upgradedItem.parameters.fallingParameters then
+	 		     upgradedItem.parameters.fallingParameters.airForce = (itemConfig.parameters.airForce or itemConfig.config.airForce or 1) * 1.15 
+	 		     upgradedItem.parameters.fallingParameters.runSpeed = (itemConfig.parameters.runSpeed or itemConfig.config.runSpeed or 1) * 1.15 
+	 		     upgradedItem.parameters.fallingParameters.walkSpeed = (itemConfig.parameters.walkSpeed or itemConfig.config.walkSpeed or 1) * 1.15 
+	 		   end
+	 		   if upgradedItem.parameters.maxFallSpeed then
+	 		     upgradedItem.parameters.maxFallSpeed = (itemConfig.parameters.maxFallSpeed or itemConfig.config.maxFallSpeed or 1) - 4 
+	 		   end	 		
+	 		
+	 		    -- hoe, chainsaw, etc
+			    if upgradedItem.parameters.fireTime then
+			      upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
+			    end
+			    if upgradedItem.parameters.blockRadius then
+			      upgradedItem.parameters.blockRadius = (itemConfig.parameters.blockRadius or itemConfig.config.blockRadius or 1) + 1
+			    end	
+			    if upgradedItem.parameters.altBlockRadius then
+			      upgradedItem.parameters.altBlockRadius = (itemConfig.parameters.altBlockRadius or itemConfig.config.altBlockRadius or 1) + 1
+			    end			    
+			 end
+			 
+                  -- is it a shield?
+			  if (itemConfig.config.category == "shield") then
+			    if upgradedItem.parameters.cooldownTime then
+			      upgradedItem.parameters.cooldownTime = (itemConfig.parameters.cooldownTime or itemConfig.config.cooldownTime or 1) * 0.95 
+			    end
+			    if upgradedItem.parameters.perfectBlockTime then
+			      upgradedItem.parameters.perfectBlockTime = (itemConfig.parameters.perfectBlockTime or itemConfig.config.perfectBlockTime or 1) * 1.05
+			    end
+			    if upgradedItem.parameters.baseShieldHealth then
+			      upgradedItem.parameters.baseShieldHealth = (itemConfig.parameters.baseShieldHealth or itemConfig.config.baseShieldHealth or 1) * 1.15
+			    end
+			  end
+          upgradedItem.parameters.primaryAbility = {}    
                   -- magnorbs
                   if (upgradedItem.parameters.orbitRate) then
                     upgradedItem.parameters.shieldKnockback = (itemConfig.parameters.shieldKnockback or itemConfig.config.shieldKnockback or 1) + 1 
