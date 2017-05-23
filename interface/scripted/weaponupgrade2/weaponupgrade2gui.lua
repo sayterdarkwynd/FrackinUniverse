@@ -155,7 +155,7 @@ function doUpgrade()
 			      upgradedItem.parameters.altBlockRadius = (itemConfig.parameters.altBlockRadius or itemConfig.config.altBlockRadius or 1) + 1
 			    end			    
 			 end
-			 
+			  
                   -- is it a shield?
 			  if (itemConfig.config.category == "shield") then
 			    if upgradedItem.parameters.cooldownTime then
@@ -168,13 +168,29 @@ function doUpgrade()
 			      upgradedItem.parameters.baseShieldHealth = (itemConfig.parameters.baseShieldHealth or itemConfig.config.baseShieldHealth or 1) * 1.15
 			    end
 			  end
-          upgradedItem.parameters.primaryAbility = {}    
+          upgradedItem.parameters.primaryAbility = {}   
+          
+                  -- is it a staff or wand?
+			  if (itemConfig.config.category == "staff") or (itemConfig.config.category == "wand") then
+			    upgradedItem.parameters.primaryAbility = {} 
+			    if (itemConfig.config.baseDamageFactor) then
+			      upgradedItem.parameters.baseDamageFactor = (itemConfig.parameters.baseDamageFactor or itemConfig.config.baseDamageFactor or 1) * 1.15 
+			    end
+--			    if (itemConfig.config.primaryAbility.energyCost) then
+--			      upgradedItem.parameters.primaryAbility.energyCost = (itemConfig.parameters.primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost or 1) * 1.08
+--			    end
+--			    if (itemConfig.config.primaryAbility.maxCastRange) then
+--			      upgradedItem.parameters.primaryAbility.maxCastRange = (itemConfig.parameters.primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange or 1) * 1.15
+--			    end		    
+			  end 
+			  
                   -- magnorbs
                   if (upgradedItem.parameters.orbitRate) then
                     upgradedItem.parameters.shieldKnockback = (itemConfig.parameters.shieldKnockback or itemConfig.config.shieldKnockback or 1) + 1 
                     upgradedItem.parameters.shieldEnergyCost = (itemConfig.parameters.shieldEnergyCost or itemConfig.config.shieldEnergyCost or 1) + 1 
                     upgradedItem.parameters.shieldHealth = (itemConfig.parameters.shieldHealth or itemConfig.config.shieldHealth or 1) + 1 
                   end  
+                  
                   -- boomerangs and other projectileParameters based things (magnorbs here too , chakrams)
 		  if (upgradedItem.parameters.projectileParameters) then   
 		    upgradedItem.parameters.projectileParameters = { 
@@ -182,8 +198,9 @@ function doUpgrade()
 		        controlForce = itemConfig.config.primaryAbility.controlForce + (upgradedItem.parameters.level)
 		      }
 		  end   
-		  
-		  if (itemConfig.config.primaryAbility) then				  
+	  
+		  if (itemConfig.config.primaryAbility) then	 
+			  
 		    -- beams and miners
 			if (itemConfig.config.primaryAbility.beamLength) then
 			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
