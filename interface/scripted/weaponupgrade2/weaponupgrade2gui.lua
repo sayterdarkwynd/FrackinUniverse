@@ -172,6 +172,9 @@ function doUpgrade()
           if itemConfig.config.upgradeParameters then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
           end
+          if (itemConfig.config.upgradeParameters2) and (upgradedItem.parameters.level) >= 5 then
+            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+          end
           
         end
         player.giveItem(upgradedItem)
