@@ -57,6 +57,7 @@ function update(args)
       releaseWall()
     end
   elseif self.wall then
+    refreshJumps()
     mcontroller.controlParameters(self.wallSlideParameters)
 
     if not checkWall(self.wall) or status.statPositive("activeMovementAbilities") then

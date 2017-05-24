@@ -4,7 +4,8 @@
   "inventoryIcon" : "gravgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Condenses gravity into focused blasts or spews grav liquid
+  "description" : "Condenses gravity into focused blasts.
+^cyan;Moves enemies. A lot.^reset;
 ^yellow;Extreme Knockback (Alt)^reset;",
   "shortdescription" : "Gravity Gun",
   "level" : 3,
@@ -23,7 +24,7 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
+      "fire" : [ "/sfx/weapons/energyweapon2.ogg" ]
     }
   },
 
@@ -37,18 +38,16 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.31,
-    "baseDps" : 5,
-    "energyUsage" : 30,
+    "fireTime" : 1.31,
+    "baseDps" : 3,
+    "energyUsage" : 80,
     "inaccuracy" : 0.01,
-    "burstTime" : 0.065,
-    "burstCount" : 3,
     "projectileCount" : 1,
-    "fireType" : "burst",
+    "fireType" : "auto",
 
-    "projectileType" : "squirtgrav",
+    "projectileType" : "gravdamage",
     "projectileParameters" : { 
-      "speed" : 45,
+      "speed" : 120,
       "knockback" : 2
     },
 	  "stances" : {
@@ -85,6 +84,55 @@
   "critBonus" : 13,
 
   "altAbilityType" : "shockburstshot",
+  "altAbility" : {
+    "name" : "Gravity Warp",
+    "fireTime" : 3.0,
+    "energyCost" : 200,
+    "projectileParameters" : {
+      "speed" : 70,
+	"actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/cosmicimpact2.config"
+	    },	
+	    {
+	      "action" : "projectile",
+	      "type" : "gravityportal",
+	      "fuzzAngle" : 0,      
+	      "inheritDamageFactor" : 0.04,
+	      "angleAdjust" : 0
+	    }
+	  ],      
+	  "periodicActions" : [
+	    {
+
+	      "time" : 0.01,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "fubeamgunblob2",
+	      "config" : {
+	        "renderLayer" : "Projectile+5",
+	        "speed" : 70,
+	        "timeToLive" : 0.1,
+	          "physics" : "laser",
+		  "physicsForces" : {
+		    "vacuum" : {
+		      "type" : "RadialForceRegion",
+		      "outerRadius" : 12,
+		      "innerRadius" : 6,
+		      "baseTargetRadialVelocity" : 120,
+		      "controlForce" : 700,
+		      "categoryWhitelist" : ["monster", "npc", "vehicle", "itemdrop"]
+		    }
+		  },
+		  "clientEntityMode" : "ClientSlaveOnly"	          
+	      },
+	      "inheritDamageFactor" :0.04,
+	      "fuzzAngle" : 0
+	   } 
+	  ]      
+    }  
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

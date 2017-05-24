@@ -1,0 +1,41 @@
+{
+  "name" : "glowcritterAttack2",
+  "label" : "GLOW MINION",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 5],
+        "parameters" : {
+          "skillName" : "glowcritterAttack2",
+
+          "maximumRange" : 7,
+          "minimumRange" : 1,
+          "windupEffect" : "",
+          
+          "fireDelay" : 0.4,
+          "projectileType" : "biolumcritters",
+          "projectileParameters" : {
+            "power" : 1,
+            "speed" : 22
+          },
+          "power" : 1,
+          "aimAtTarget" : true,
+          "projectileCount" : 12,
+          "projectileInterval" : 0.05,
+          "fireArc" : true,
+          "projectileSpeed" : 25
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/impact_flesh.ogg" ]
+    }
+  }
+}
+

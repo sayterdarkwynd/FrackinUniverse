@@ -1,41 +1,72 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "sifterState" : {
+      "centrifuge" : {
         "default" : "idle",
         "states" : {
           "idle" : {
             "frames" : 1
           },
-		  "active" : {
+          "working" : {
             "frames" : 4,
-            "cycle" : 0.5,
-            "mode" : "loop"
+            "cycle" : 1,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/honeyjarrer/centrifuge.ogg"
+            }
           }
         }
-      }
+      }  
     },
 
     "parts" : {
-      "isn_powdersifter" : {
+      "centrifuge" : {
         "properties" : {
-          "centered" : false
+          "centered" : false,
+          "zLevel" : 1,
+          "fullbright" : true
         },
+
         "partStates" : {
-          "sifterState" : {
+          "centrifuge" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:<color>.idle"
+                "image" : "<partImage>:default.default"
               }
             },
-            "active" : {
+
+            "working" : {
               "properties" : {
-                "image" : "<partImage>:<color>.active<frame>"
+                "image" : "<partImage>:default.<frame>"
               }
             }
           }
         }
-      }
+      },
+      "centrifugefullbright" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2
+        },
+
+        "partStates" : {
+          "centrifuge" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            },
+
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            }
+          }
+        }
+      }     
+      
+      
     }
   }
 }

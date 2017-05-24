@@ -1,0 +1,489 @@
+{
+  "name": "action-leap",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/world.lua",
+    "/scripts/actions/status.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/projectiles.lua",
+    "/scripts/behavior.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/sensor.lua"
+  ],
+  "parameters": {
+    "windupState": "leapwindup",
+    "winddownState": "leapwinddown",
+    "leapVelocity": 30,
+    "highArc": false,
+    "collisionCheck": true,
+    "leapState": "jump",
+    "fallState": "fall",
+    "minLeapTime": 0.1,
+    "knockbackThreshold": 15,
+    "leapStateType": "body",
+    "skillName": "",
+    "damageOnTouch": false
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {
+      "type": "sliding",
+      "state": "off",
+      "fromEntity": "attackTarget",
+      "toEntity": "fleeTarget"
+    },
+    "children": [
+      {
+        "title": "entityPosition",
+        "type": "action",
+        "name": "entityPosition",
+        "parameters": {
+          "entity": "target"
+        },
+        "output": {
+          "position": "targetPosition"
+        }
+      },
+      {
+        "title": "sequence",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {
+          "type": "sliding",
+          "state": "off",
+          "fromEntity": "attackTarget",
+          "toEntity": "fleeTarget"
+        },
+        "children": [
+          {
+            "title": "stat",
+            "type": "action",
+            "name": "stat",
+            "parameters": {
+              "statName": "jumpModifier"
+            },
+            "output": {
+              "value": "jumpModifier"
+            }
+          },
+          {
+            "title": "multiply",
+            "type": "action",
+            "name": "multiply",
+            "parameters": {
+              "number": "<leapVelocity>",
+              "factor": "jumpModifier"
+            },
+            "output": {
+              "result": "speedModifier"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": "<leapVelocity>",
+              "number": "speedModifier"
+            },
+            "output": {
+              "result": "speed"
+            }
+          }
+        ]
+      },
+      {
+        "title": "projectileAimVector",
+        "type": "action",
+        "name": "projectileAimVector",
+        "parameters": {
+          "collisionCheck": "<collisionCheck>",
+          "fromPosition": "self",
+          "speed": "speed",
+          "toPosition": "targetPosition",
+          "useHighArc": "<highArc>"
+        },
+        "output": {
+          "aimVector": "aimVector"
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": 1,
+          "success": -1
+        },
+        "children": [
+          {
+            "title": "succeeder",
+            "type": "decorator",
+            "name": "succeeder",
+            "parameters": {},
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {
+                "type": "sliding",
+                "state": "off",
+                "fromEntity": "attackTarget",
+                "toEntity": "fleeTarget"
+              },
+              "children": [
+                {
+                  "title": "entityPosition",
+                  "type": "action",
+                  "name": "entityPosition",
+                  "parameters": {
+                    "entity": "target"
+                  },
+                  "output": {
+                    "position": "targetPosition"
+                  }
+                },
+                {
+                  "title": "projectileAimVector",
+                  "type": "action",
+                  "name": "projectileAimVector",
+                  "parameters": {
+                    "collisionCheck": "<collisionCheck>",
+                    "fromPosition": "self",
+                    "speed": "speed",
+                    "toPosition": "targetPosition",
+                    "useHighArc": "<highArc>"
+                  },
+                  "output": {
+                    "aimVector": "aimVector"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "action-windup",
+            "type": "module",
+            "name": "action-windup",
+            "parameters": {
+              "windupState": "<windupState>",
+              "windupStateType": "<leapStateType>",
+              "skillName": "<skillName>"
+            }
+          }
+        ]
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": 1,
+          "success": -1
+        },
+        "children": [
+          {
+            "title": "controlFlag",
+            "type": "action",
+            "name": "controlFlag",
+            "parameters": {
+              "name": "attacking"
+            }
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {
+              "type": "sliding",
+              "state": "off",
+              "fromEntity": "attackTarget",
+              "toEntity": "fleeTarget"
+            },
+            "children": [
+              {
+                "title": "setDamageOnTouch",
+                "type": "action",
+                "name": "setDamageOnTouch",
+                "parameters": {
+                  "touchDamage": true
+                }
+              },
+              {
+                "title": "vecMultiply",
+                "type": "action",
+                "name": "vecMultiply",
+                "parameters": {
+                  "first": "aimVector",
+                  "second": "speed"
+                },
+                "output": {
+                  "vector": "leapVelocity"
+                }
+              },
+              {
+                "title": "setVelocity",
+                "type": "action",
+                "name": "setVelocity",
+                "parameters": {
+                  "velocity": "leapVelocity"
+                }
+              },
+              {
+                "title": "succeeder",
+                "type": "decorator",
+                "name": "succeeder",
+                "parameters": {},
+                "child": {
+                  "title": "setAnimationState",
+                  "type": "action",
+                  "name": "setAnimationState",
+                  "parameters": {
+                    "state": "<leapState>",
+                    "type": "<leapStateType>"
+                  }
+                }
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": -1,
+                  "success": -1
+                },
+                "children": [
+                  {
+                    "title": "succeeder",
+                    "type": "decorator",
+                    "name": "succeeder",
+                    "parameters": {},
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {
+                        "type": "sliding",
+                        "state": "off",
+                        "fromEntity": "attackTarget",
+                        "toEntity": "fleeTarget"
+                      },
+                      "children": [
+                        {
+                          "title": "entityDirection",
+                          "type": "action",
+                          "name": "entityDirection",
+                          "parameters": {
+                            "entity": "self",
+                            "target": "target"
+                          },
+                          "output": {
+                            "yDirection": "targetYDir"
+                          }
+                        },
+                        {
+                          "title": "inverter",
+                          "type": "decorator",
+                          "name": "inverter",
+                          "parameters": {},
+                          "child": {
+                            "title": "greaterThan",
+                            "type": "action",
+                            "name": "greaterThan",
+                            "parameters": {
+                              "first": "targetYDir",
+                              "second": 0
+                            }
+                          }
+                        },
+                        {
+                          "title": "controlDown",
+                          "type": "action",
+                          "name": "controlDown",
+                          "parameters": {}
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {
+                      "type": "sliding",
+                      "state": "off",
+                      "fromEntity": "attackTarget",
+                      "toEntity": "fleeTarget"
+                    },
+                    "children": [
+                      {
+                        "title": "timer",
+                        "type": "action",
+                        "name": "timer",
+                        "parameters": {
+                          "time": "<minLeapTime>"
+                        }
+                      },
+                      {
+                        "title": "dynamic",
+                        "type": "composite",
+                        "name": "dynamic",
+                        "parameters": {},
+                        "children": [
+                          {
+                            "title": "selector",
+                            "type": "composite",
+                            "name": "selector",
+                            "parameters": {},
+                            "children": [
+                              {
+                                "title": "boundsCollision",
+                                "type": "action",
+                                "name": "boundsCollision",
+                                "parameters": {
+                                  "dirVector": [
+                                    1,
+                                    0
+                                  ]
+                                }
+                              },
+                              {
+                                "title": "boundsCollision",
+                                "type": "action",
+                                "name": "boundsCollision",
+                                "parameters": {
+                                  "dirVector": [
+                                    -1,
+                                    0
+                                  ]
+                                }
+                              },
+                              {
+                                "title": "boundsCollision",
+                                "type": "action",
+                                "name": "boundsCollision",
+                                "parameters": {
+                                  "dirVector": [
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "title": "boundsCollision",
+                                "type": "action",
+                                "name": "boundsCollision",
+                                "parameters": {
+                                  "dirVector": [
+                                    0,
+                                    -1
+                                  ]
+                                }
+                              },
+                              {
+                                "title": "onGround",
+                                "type": "action",
+                                "name": "onGround",
+                                "parameters": {}
+                              }
+                            ]
+                          },
+                          {
+                            "title": "failer",
+                            "type": "decorator",
+                            "name": "failer",
+                            "parameters": {},
+                            "child": {
+                              "title": "sequence",
+                              "type": "composite",
+                              "name": "sequence",
+                              "parameters": {
+                                "type": "sliding",
+                                "state": "off",
+                                "fromEntity": "attackTarget",
+                                "toEntity": "fleeTarget"
+                              },
+                              "children": [
+                                {
+                                  "title": "velocity",
+                                  "type": "action",
+                                  "name": "velocity",
+                                  "parameters": {},
+                                  "output": {
+                                    "y": "yVelocity"
+                                  }
+                                },
+                                {
+                                  "title": "inverter",
+                                  "type": "decorator",
+                                  "name": "inverter",
+                                  "parameters": {},
+                                  "child": {
+                                    "title": "greaterThan",
+                                    "type": "action",
+                                    "name": "greaterThan",
+                                    "parameters": {
+                                      "first": "yVelocity",
+                                      "second": 0
+                                    }
+                                  }
+                                },
+                                {
+                                  "title": "succeeder",
+                                  "type": "decorator",
+                                  "name": "succeeder",
+                                  "parameters": {},
+                                  "child": {
+                                    "title": "setAnimationState",
+                                    "type": "action",
+                                    "name": "setAnimationState",
+                                    "parameters": {
+                                      "state": "<fallState>",
+                                      "type": "<leapStateType>"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "title": "runner",
+                            "type": "action",
+                            "name": "runner",
+                            "parameters": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "setDamageOnTouch",
+                "type": "action",
+                "name": "setDamageOnTouch",
+                "parameters": {
+                  "touchDamage": "<damageOnTouch>"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "action-winddown",
+        "type": "module",
+        "name": "action-winddown",
+        "parameters": {
+          "winddownState": "<winddownState>",
+          "winddownStateType": "<leapStateType>"
+        }
+      }
+    ]
+  }
+}

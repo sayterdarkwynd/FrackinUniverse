@@ -1,0 +1,33 @@
+{
+  "projectileName" : "fubeamgunblob2",
+  "image" : "pow.png",
+  "animationCycle" : 0.5,
+  "physics" : "laser",
+  "bounces" : 0,
+  "frameNumber" : 4,
+  "fullbright" : true,
+  "lightColor" : [20, 44, 255],
+  "speed" : 0,
+  "timeToLive" : 0.1,
+  "actionOnReap" : [
+     {
+      "action" : "config",
+      "file" : "/projectiles/explosions/laserexplosion/laserexplosion.config"
+    }
+  ],
+  "damageKind" : "cosmic",
+  "piercing" : true,
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 10,
+      "innerRadius" : 5,
+      "baseTargetRadialVelocity" : 120,
+      "controlForce" : 600,
+      "categoryWhitelist" : ["monster", "npc", "vehicle", "itemdrop"]
+    }
+  },
+  "clientEntityMode" : "ClientSlaveOnly"  
+}
+
+

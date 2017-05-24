@@ -732,7 +732,7 @@
     },
     { "op" : "add", 
     "path" : "/planetTypes/garden/layers/surface/secondaryRegions", 
-    "value" : [ "birchforest", "cloudforest", "fieldofcarrots", "fieldofcorn", "fieldofgrape", "fieldofpotato", "fieldofbracken", "fieldoftomato", "fieldofwheat", "flowerforest", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "snowyforest", "taiga" ]
+    "value" : [ "birchforest", "fieldofcarrots", "fieldofcorn", "fieldofgrape", "fieldofpotato", "fieldofbracken", "fieldoftomato", "fieldofwheat", "flowerforest", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "snowyforest", "taiga" ]
     },
     { "op" : "add", 
     "path" : "/planetTypes/jungle/layers/surface/secondaryRegions", 
@@ -2921,7 +2921,7 @@
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
       },      
         "surface" : {
-          "primaryRegion" : [ "mountainous" ], 
+          "primaryRegion" : [ "mountainous", "mountainous2", "mountainous3", "mountainous4" ], 
 	  "secondaryRegions" : [ "wastelandmini", "ffhive", "birchforest", "alienforest", "cellfield", "reddesert", "finesand", "cloudforest", "swamp", "alpine", "spring", "glacial", "hotsprings", "rainbowforest"  ],
           
           "dungeons" : [ 
@@ -3792,7 +3792,7 @@
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
       },      
         "surface" : {
-          "primaryRegion" : [ "urbanwasteland2" ],
+          "primaryRegion" : [ "urbanwasteland", "urbanwasteland2" ],
           "secondaryRegions" : [ "futentacle", "wartfield", "wastelandmini", "metalworks4", "metalhive", "parkinglot", "aliendesert", "metalworks", "metaljungle", "crystalswamp", "ffhive", "alienforest", "sulphuricmagma", "reddesert", "swamp", "bloodgulch", "hellhive", "corruptedforest", "deadwood",   "savannah"],
           
           "dungeons" : [ 
@@ -5878,10 +5878,49 @@
        "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
        "caveLiquidChanceRange" : [50, 100],
        "biome" : [
-         [0, [ "mountainous", "mountainous2", "mountainous3", "mountainous4" ] ]
+         [0, [ "mountainous" ] ]
        ]
      }
    },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous2",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous2" ] ]
+       ]
+     }
+   },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous3",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous3" ] ]
+       ]
+     }
+   },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous4",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous4" ] ]
+       ]
+     }
+   },  
    
  {"op" : "add",
  "path": "/regionTypes/tidewater",
