@@ -1,6 +1,6 @@
 {
   "itemName" : "gravgun",
-  "price" : 160,
+  "price" : 1600,
   "inventoryIcon" : "gravgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
@@ -38,17 +38,17 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.31,
+    "fireTime" : 1.5,
     "baseDps" : 3,
-    "energyUsage" : 80,
+    "energyUsage" : 65,
     "inaccuracy" : 0.01,
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "gravdamage",
     "projectileParameters" : { 
-      "speed" : 120,
-      "knockback" : 2
+      "speed" : 65,
+      "knockback" : 15
     },
 	  "stances" : {
 	    "idle" : {
@@ -88,9 +88,11 @@
     "name" : "Gravity Warp",
     "fireTime" : 3.0,
     "energyCost" : 200,
+    "baseDps" : 3,
     "projectileParameters" : {
       "speed" : 70,
-	"actionOnReap" : [
+      "piercing" : false,
+	"actionOnHit" : [
 	    {
 	      "action" : "config",
 	      "file" : "/projectiles/explosions/elementimpact/cosmicimpact2.config"
@@ -99,7 +101,8 @@
 	      "action" : "projectile",
 	      "type" : "gravityportal",
 	      "fuzzAngle" : 0,      
-	      "inheritDamageFactor" : 0.04,
+	      "inheritDamageFactor" : 0.035,
+	      "config" : { "scale" : 2.0},
 	      "angleAdjust" : 0
 	    }
 	  ],      
@@ -118,16 +121,16 @@
 		  "physicsForces" : {
 		    "vacuum" : {
 		      "type" : "RadialForceRegion",
-		      "outerRadius" : 12,
-		      "innerRadius" : 6,
+		      "outerRadius" : 16,
+		      "innerRadius" : 8,
 		      "baseTargetRadialVelocity" : 120,
-		      "controlForce" : 700,
+		      "controlForce" : 400,
 		      "categoryWhitelist" : ["monster", "npc", "vehicle", "itemdrop"]
 		    }
 		  },
 		  "clientEntityMode" : "ClientSlaveOnly"	          
 	      },
-	      "inheritDamageFactor" :0.04,
+	      "inheritDamageFactor" :0.035,
 	      "fuzzAngle" : 0
 	   } 
 	  ]      
