@@ -1,9 +1,11 @@
 setName="fu_enforcerset"
 
-weaponBonus={
+weaponBonus1={
 	{stat = "powerMultiplier", amount = 0.25}
 }
-
+weaponBonus2={
+	{stat = "powerMultiplier", amount = 0.35}
+}
 armorBonus={
   {stat = "liquidnitrogenImmunity", amount = 1.0}
 }
@@ -12,7 +14,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	weaponBonusHandlePrimary=effect.addStatModifierGroup({})
+	weaponBonusHandleAlt=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
@@ -29,10 +32,22 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"shotgun","assaultrifle"})
-	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	local knives=weaponCheck({"assaultrifle"})
+	local guns=weaponCheck({"shotgun"})
+	
+	if knives["primary"] then
+		effect.setStatModifierGroup(weaponBonusHandlePrimary,weaponBonus1)
+	elseif guns["primary"] then
+		effect.setStatModifierGroup(weaponBonusHandlePrimary,weaponBonus2)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(weaponBonusHandlePrimary,{})
+	end
+	
+	if knives["alt"] then
+		effect.setStatModifierGroup(weaponBonusHandleAlt,weaponBonus1)
+	elseif guns["alt"] then
+		effect.setStatModifierGroup(weaponBonusHandleAlt,weaponBonus2)
+	else
+		effect.setStatModifierGroup(weaponBonusHandleAlt,{})
 	end
 end
