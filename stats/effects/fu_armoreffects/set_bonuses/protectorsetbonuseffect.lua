@@ -1,7 +1,7 @@
 setName="fu_protectorset"
 
 weaponBonus={
-	{stat = "critChance", baseMultiplier = 1.25}
+	{stat = "critChance", amount = 12}
 }
 
 armorBonus={}
