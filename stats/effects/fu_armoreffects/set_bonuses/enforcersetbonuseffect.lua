@@ -1,17 +1,19 @@
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_enforcerset"
 
 weaponBonus={
-  {stat = "powerMultiplier", amount = 0.25}
+	{stat = "powerMultiplier", amount = 0.25}
 }
 
-armorBonus={ }
+armorBonus={
+  {stat = "liquidnitrogenImmunity", amount = 1.0}
+}
+
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
 	weaponBonusHandle=effect.addStatModifierGroup({})
-			
+
 	checkWeapons()
 
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
@@ -21,8 +23,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+
 		checkWeapons()
 	end
 end
