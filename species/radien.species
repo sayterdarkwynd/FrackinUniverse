@@ -8,11 +8,8 @@
   },
 
   "statusEffects" : [ "novakidglow" ],
-  "humanoidOverrides" : {
-    "bodyFullbright" : true
-  },
 
-  "nameGen" : [ "/species/novakidnamegen.config:names", "/species/novakidnamegen.config:names" ],
+  "nameGen" : [ "/species/hylotlfemalenamegen.config:names", "/species/hylotlfemalenamegen.config:names" ],
   "ouchNoises" : [ "/sfx/humanoid/novakidhurt_male2.ogg", "/sfx/humanoid/novakidhurt_female2.ogg" ],
   "charGenTextLabels" : [ "PLASMA COLOR", "CORONA", "SHIRT", "PANTS", "DEPOSITS COLOR", "BRAND", "SHIRT COLOR", "PANTS COLOR", "NOVAKID", "PERSONALITY" ],
   "skull" : "/humanoid/novakid/dead.png",
@@ -93,11 +90,11 @@
       { "item" : "novakidblackpants" }
     ]
   },
+
+  "headOptionAsBodyColor" : true,
+  "hairColorAsBodyColor" : true,
+
   
-  "altOptionAsUndyColor" : true,
-  "headOptionAsHairColor" : true,
-  "altOptionAsHairColor" : true,
-  "hairColorAsBodySubColor" : true,
   
   "genders" : [
     {
@@ -127,37 +124,34 @@
   ],
   "bodyColor" : [
   
-    { "ffe2c5" : "b7d179", "ffc181" : "8eab59", "d39c6c" : "808a44", "c7815b" : "5e6534" },
-    { "ffe2c5" : "c4d0a5", "ffc181" : "a3af83", "d39c6c" : "7f8760", "c7815b" : "5e6142" },
-    { "ffe2c5" : "fff0b7", "ffc181" : "f2da85", "d39c6c" : "d8c061", "c7815b" : "ad9d56" },
-    { "ffe2c5" : "eaeaea", "ffc181" : "d6d6d6", "d39c6c" : "b2b2b2", "c7815b" : "999999" },
-    { "ffe2c5" : "a6cbd2", "ffc181" : "7ca7af", "d39c6c" : "558287", "c7815b" : "386362" },
-    { "ffe2c5" : "d08c9f", "ffc181" : "b27082", "d39c6c" : "874e62", "c7815b" : "603347" },
-    { "ffe2c5" : "e47068", "ffc181" : "c54848", "d39c6c" : "952f45", "c7815b" : "65223a" },
-    { "ffe2c5" : "b9997a", "ffc181" : "9f7761", "d39c6c" : "85594a", "c7815b" : "6a3e36" },
-    { "ffe2c5" : "ffad66", "ffc181" : "c47e3c", "d39c6c" : "ad6a2b", "c7815b" : "8c501c" },  
-    // Yellow
-    { "ffe2c5" : "fff8b5", "ffc181" : "fde03f", "d39c6c" : "f6b919", "c7815b" : "352b12" },
-    // Orange
-    { "ffe2c5" : "ffedc4", "ffc181" : "feb05c", "d39c6c" : "fa8131", "c7815b" : "40110a" },
-    // Red
-    { "ffe2c5" : "ffe2c9", "ffc181" : "fe9875", "d39c6c" : "ef5443", "c7815b" : "4f160d" },
-    // Pinky
-    { "ffe2c5" : "fee5ff", "ffc181" : "f6bbf9", "d39c6c" : "f57afc", "c7815b" : "4c2153" },
-    // Purple
-    { "ffe2c5" : "fedbff", "ffc181" : "da89f7", "d39c6c" : "ae38f1", "c7815b" : "340e52" },
-    // Blue
-    { "ffe2c5" : "c7feff", "ffc181" : "56ebf8", "d39c6c" : "12c2e8", "c7815b" : "0c2b4b" },
-    // Sea Green
-    { "ffe2c5" : "c3fffc", "ffc181" : "4df4df", "d39c6c" : "0cd6b8", "c7815b" : "0c482d" },
-    // Green
-    { "ffe2c5" : "c7ffdc", "ffc181" : "63f574", "d39c6c" : "17dc0d", "c7815b" : "0d500f" },
-    // Yellow Green
-    { "ffe2c5" : "fffdae", "ffc181" : "c9f236", "d39c6c" : "8ae100", "c7815b" : "2d510d" },
-    // "White/PaleBlue
-    { "ffe2c5" : "deffff", "ffc181" : "a2dbdb", "d39c6c" : "6ea2a9", "c7815b" : "222d33" }
-
+    // Black
+	{ "ffc181" : "2c2c2c", "d39c6c" : "121212", "c7815b" : "000000", "ffe2c5" : "4e4e4e", "f32200" : "FFDCC4", "dc1f00" : "FFB98F", "be1b00" : "C1695F", "951500" : "7E3F38" },
+	// Blue
+	{ "ffc181" : "386e7d", "d39c6c" : "275157", "c7815b" : "162f32", "ffe2c5" : "4b9baa", "f32200" : "FFFFE7", "dc1f00" : "FFE48E", "be1b00" : "C1AA5C", "951500" : "7C7135" },
+	// Blue-green
+	{ "ffc181" : "027d7a", "d39c6c" : "045754", "c7815b" : "043230", "ffe2c5" : "2c9f9b", "f32200" : "F6F0D3", "dc1f00" : "DAD39B", "be1b00" : "A7A270", "951500" : "6B6B47" },
+	// Dark blue
+	{ "ffc181" : "29357d", "d39c6c" : "1d2657", "c7815b" : "101432", "ffe2c5" : "34449f", "f32200" : "FFFFE0", "dc1f00" : "E7EFA1", "be1b00" : "ABB573", "951500" : "697447"  },
+	// Dark gray-blue
+	{ "ffc181" : "5d787d", "d39c6c" : "405357", "c7815b" : "253032", "ffe2c5" : "768b9f", "f32200" : "EEFFDC", "dc1f00" : "B1E994", "be1b00" : "7CAD69", "951500" : "4F7B43" },
+	// Gray
+	{ "ffc181" : "7d7d7d", "d39c6c" : "575757", "c7815b" : "323232", "ffe2c5" : "9f9f9f", "f32200" : "C7DEBC", "dc1f00" : "90BC80", "be1b00" : "648B5A", "951500" : "3A5D35" },
+	// Gray-blue
+	{ "ffc181" : "747a7d", "d39c6c" : "515557", "c7815b" : "2f3132", "ffe2c5" : "949b9f", "f32200" : "DAFFE5", "dc1f00" : "97ECB0", "be1b00" : "6BB383", "951500" : "417356" },
+	// Green
+	{ "ffc181" : "607d5d", "d39c6c" : "425740", "c7815b" : "263225", "ffe2c5" : "7a9f76", "f32200" : "D0D0FF", "dc1f00" : "9290F8", "be1b00" : "6060A9", "951500" : "43396B" },
+	// Magenta
+	{ "ffc181" : "7c5d7d", "d39c6c" : "564057", "c7815b" : "322532", "ffe2c5" : "9e769f", "f32200" : "FFFFFF", "dc1f00" : "F2EFF3", "be1b00" : "A6A4AE", "951500" : "818181" },
+	// Pink-purple
+	{ "ffc181" : "7a297d", "d39c6c" : "551d57", "c7815b" : "311032", "ffe2c5" : "9b349f", "f32200" : "FFFAF6", "dc1f00" : "FBD5CF", "be1b00" : "D9A49E", "951500" : "B07B74" },
+	// Purple
+	{ "ffc181" : "625d7d", "d39c6c" : "434057", "c7815b" : "272532", "ffe2c5" : "7c769f", "f32200" : "FFF4FF", "dc1f00" : "FFCDEA", "be1b00" : "E19CC4", "951500" : "B8739B" },
+	// Red
+	{ "ffc181" : "7d2e2e", "d39c6c" : "572020", "c7815b" : "321212", "ffe2c5" : "9f3b3b", "f32200" : "CECBC2", "dc1f00" : "A89B89", "be1b00" : "74665A", "951500" : "463D34" },
+	// Red wine
+	{ "ffc181" : "7d1d41", "d39c6c" : "571431", "c7815b" : "320c1c", "ffe2c5" : "9f2557", "f32200" : "B4B3AD", "dc1f00" : "8A897A", "be1b00" : "4E4F42", "951500" : "2C2915" }
   ],
+  
   "undyColor" : [
     { "f32200" : "FFDCC4", "dc1f00" : "FFB98F", "be1b00" : "C1695F", "951500" : "7E3F38" },
     { "f32200" : "FFFFE7", "dc1f00" : "FFE48E", "be1b00" : "C1AA5C", "951500" : "7C7135" },
@@ -174,38 +168,35 @@
     { "f32200" : "FFFAF6", "dc1f00" : "FBD5CF", "be1b00" : "D9A49E", "951500" : "B07B74" },
     { "f32200" : "CECBC2", "dc1f00" : "A89B89", "be1b00" : "74665A", "951500" : "463D34" },
     { "f32200" : "B4B3AD", "dc1f00" : "8A897A", "be1b00" : "4E4F42", "951500" : "2C2915" },
-    { "f32200" : "FFFFFF", "dc1f00" : "F2EFF3", "be1b00" : "A6A4AE", "951500" : "818181" }   
+    { "f32200" : "FFFFFF", "dc1f00" : "F2EFF3", "be1b00" : "A6A4AE", "951500" : "818181" } 
   ],
 
   "hairColor" : [
-    { "ffe2c5" : "b7d179", "ffc181" : "8eab59", "d39c6c" : "808a44", "c7815b" : "5e6534" },
-    { "ffe2c5" : "c4d0a5", "ffc181" : "a3af83", "d39c6c" : "7f8760", "c7815b" : "5e6142" },
-    { "ffe2c5" : "fff0b7", "ffc181" : "f2da85", "d39c6c" : "d8c061", "c7815b" : "ad9d56" },
-    { "ffe2c5" : "eaeaea", "ffc181" : "d6d6d6", "d39c6c" : "b2b2b2", "c7815b" : "999999" },
-    { "ffe2c5" : "a6cbd2", "ffc181" : "7ca7af", "d39c6c" : "558287", "c7815b" : "386362" },
-    { "ffe2c5" : "d08c9f", "ffc181" : "b27082", "d39c6c" : "874e62", "c7815b" : "603347" },
-    { "ffe2c5" : "e47068", "ffc181" : "c54848", "d39c6c" : "952f45", "c7815b" : "65223a" },
-    { "ffe2c5" : "b9997a", "ffc181" : "9f7761", "d39c6c" : "85594a", "c7815b" : "6a3e36" },
-    { "ffe2c5" : "ffad66", "ffc181" : "c47e3c", "d39c6c" : "ad6a2b", "c7815b" : "8c501c" },   
-    // Yellow
-    { "ffe2c5" : "fff8b5", "ffc181" : "fde03f", "d39c6c" : "f6b919", "c7815b" : "352b12" },
-    // Orange
-    { "ffe2c5" : "ffedc4", "ffc181" : "feb05c", "d39c6c" : "fa8131", "c7815b" : "40110a" },
-    // Red
-    { "ffe2c5" : "ffe2c9", "ffc181" : "fe9875", "d39c6c" : "ef5443", "c7815b" : "4f160d" },
-    // Pinky
-    { "ffe2c5" : "fee5ff", "ffc181" : "f6bbf9", "d39c6c" : "f57afc", "c7815b" : "4c2153" },
-    // Purple
-    { "ffe2c5" : "fedbff", "ffc181" : "da89f7", "d39c6c" : "ae38f1", "c7815b" : "340e52" },
-    // Blue
-    { "ffe2c5" : "c7feff", "ffc181" : "56ebf8", "d39c6c" : "12c2e8", "c7815b" : "0c2b4b" },
-    // Sea Green
-    { "ffe2c5" : "c3fffc", "ffc181" : "4df4df", "d39c6c" : "0cd6b8", "c7815b" : "0c482d" },
-    // Green
-    { "ffe2c5" : "c7ffdc", "ffc181" : "63f574", "d39c6c" : "17dc0d", "c7815b" : "0d500f" },
-    // Yellow Green
-    { "ffe2c5" : "fffdae", "ffc181" : "c9f236", "d39c6c" : "8ae100", "c7815b" : "2d510d" },
-    // "White/PaleBlue
-    { "ffe2c5" : "deffff", "ffc181" : "a2dbdb", "d39c6c" : "6ea2a9", "c7815b" : "222d33" }
+    // Black
+	{ "ffc181" : "2c2c2c", "d39c6c" : "121212", "c7815b" : "000000", "ffe2c5" : "4e4e4e", "f32200" : "FFDCC4", "dc1f00" : "FFB98F", "be1b00" : "C1695F", "951500" : "7E3F38" },
+	// Blue
+	{ "ffc181" : "386e7d", "d39c6c" : "275157", "c7815b" : "162f32", "ffe2c5" : "4b9baa", "f32200" : "FFFFE7", "dc1f00" : "FFE48E", "be1b00" : "C1AA5C", "951500" : "7C7135" },
+	// Blue-green
+	{ "ffc181" : "027d7a", "d39c6c" : "045754", "c7815b" : "043230", "ffe2c5" : "2c9f9b", "f32200" : "F6F0D3", "dc1f00" : "DAD39B", "be1b00" : "A7A270", "951500" : "6B6B47" },
+	// Dark blue
+	{ "ffc181" : "29357d", "d39c6c" : "1d2657", "c7815b" : "101432", "ffe2c5" : "34449f", "f32200" : "FFFFE0", "dc1f00" : "E7EFA1", "be1b00" : "ABB573", "951500" : "697447"  },
+	// Dark gray-blue
+	{ "ffc181" : "5d787d", "d39c6c" : "405357", "c7815b" : "253032", "ffe2c5" : "768b9f", "f32200" : "EEFFDC", "dc1f00" : "B1E994", "be1b00" : "7CAD69", "951500" : "4F7B43" },
+	// Gray
+	{ "ffc181" : "7d7d7d", "d39c6c" : "575757", "c7815b" : "323232", "ffe2c5" : "9f9f9f", "f32200" : "C7DEBC", "dc1f00" : "90BC80", "be1b00" : "648B5A", "951500" : "3A5D35" },
+	// Gray-blue
+	{ "ffc181" : "747a7d", "d39c6c" : "515557", "c7815b" : "2f3132", "ffe2c5" : "949b9f", "f32200" : "DAFFE5", "dc1f00" : "97ECB0", "be1b00" : "6BB383", "951500" : "417356" },
+	// Green
+	{ "ffc181" : "607d5d", "d39c6c" : "425740", "c7815b" : "263225", "ffe2c5" : "7a9f76", "f32200" : "D0D0FF", "dc1f00" : "9290F8", "be1b00" : "6060A9", "951500" : "43396B" },
+	// Magenta
+	{ "ffc181" : "7c5d7d", "d39c6c" : "564057", "c7815b" : "322532", "ffe2c5" : "9e769f", "f32200" : "FFFFFF", "dc1f00" : "F2EFF3", "be1b00" : "A6A4AE", "951500" : "818181" },
+	// Pink-purple
+	{ "ffc181" : "7a297d", "d39c6c" : "551d57", "c7815b" : "311032", "ffe2c5" : "9b349f", "f32200" : "FFFAF6", "dc1f00" : "FBD5CF", "be1b00" : "D9A49E", "951500" : "B07B74" },
+	// Purple
+	{ "ffc181" : "625d7d", "d39c6c" : "434057", "c7815b" : "272532", "ffe2c5" : "7c769f", "f32200" : "FFF4FF", "dc1f00" : "FFCDEA", "be1b00" : "E19CC4", "951500" : "B8739B" },
+	// Red
+	{ "ffc181" : "7d2e2e", "d39c6c" : "572020", "c7815b" : "321212", "ffe2c5" : "9f3b3b", "f32200" : "CECBC2", "dc1f00" : "A89B89", "be1b00" : "74665A", "951500" : "463D34" },
+	// Red wine
+	{ "ffc181" : "7d1d41", "d39c6c" : "571431", "c7815b" : "320c1c", "ffe2c5" : "9f2557", "f32200" : "B4B3AD", "dc1f00" : "8A897A", "be1b00" : "4E4F42", "951500" : "2C2915" }	
   ]
 }
