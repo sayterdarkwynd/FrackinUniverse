@@ -1,0 +1,54 @@
+{
+  "itemName" : "drillspear",
+  "price" : 780,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "This spear will pierce the heavens. And flesh.
+^cyan;Inflicts Bleeding^reset;",
+  "shortdescription" : "Drill Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "melee", "spear", "upgradeableWeapon"],
+
+  "inventoryIcon" : "drillspearicon.png",
+
+  "animation" : "/items/active/weapons/melee/spear/drillspear/drillspear.animation",
+  "animationParts" : {
+    "blade" : "blade.png",
+    "handle" : "handle.png",
+    "handlefullbright" : "handlefullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/tools/chainsaw_swing.ogg" ],
+      "fire2" : [ "/sfx/tools/chainsaw_idle.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/spear/drillspear/drillspear.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.8,
+    "baseDps" : 10.5,
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ "bleedingshort" ],
+      "knockback" : 12
+    }
+  },
+  "altAbilityType" : "drillcharge",
+  "altAbility" : { },
+
+  "critChance" : 4,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

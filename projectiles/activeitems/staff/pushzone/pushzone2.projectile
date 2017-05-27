@@ -1,0 +1,45 @@
+{
+  "projectileName" : "pushzone2",
+  "physics" : "stickygrenade",
+  "timeToLive" : 0.1,
+  "image" : "pushzone2.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 12,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 9.7,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_disappear1.ogg" ]
+    }
+  ],
+  "actionOnReap" : [],
+  "speed" : 125,
+  "power" : 0,
+
+  "onlyHitTerrain" : true,
+  "physicsForces" : {
+    "push" : {
+      "type" : "RadialForceRegion",
+      "categoryWhitelist" : [ "player", "npc" ],
+      "outerRadius" : 20,
+      "innerRadius" : 10,
+      "baseTargetRadialVelocity" : 30,
+      "controlForce" : 500
+    }
+  },
+
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ ],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+  
+  "persistentAudio" : "/sfx/projectiles/zone_push_loop.ogg"
+}

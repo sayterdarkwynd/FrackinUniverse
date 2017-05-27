@@ -1,11 +1,21 @@
 {
   "type" : "fueyebeast",
-  "baseType" : "hostilefu",
+  "baseType" : "hostilefuultraelite",
 
   "levelVariance" : [0, 1],
 
   "dropPools" : [ "ffcannibalTreasure" ],
   
+    "dialog" : {
+      "attack" : "/dialog/macready.config:attack",
+      "reattack" : "/dialog/macready.config:reattack",
+      "killedTarget" : "/dialog/macready.config:killedTarget",
+      "lostTarget" : "/dialog/macready.config:lostTarget",
+      "outOfSight" : "/dialog/macready.config:outOfSight",
+      "cheerOn" : "/dialog/macready.config:cheerOn",
+      "cantReach" : "/dialog/macready.config:cantReach"
+    },
+    
   "items" : {
     "override" : [
       [0, [
@@ -15,8 +25,11 @@
             "legs" : [ { "name" : "eyeballlegs", "parameters" : { "colorIndex" : 1 } } ],
             "back" : [ { "name" : "eyeballback", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
-              "spawngun", "eyecannon", "spikesword", "thornlauncher", "thornslinger"
-            ]
+              "eyecannon", "fuatropusbroadsword", "thornrifle", "thornslinger"
+            ],
+            "alt" : [
+              "eyecannon", "fuatropusbroadsword", "thornrifle", "thornslinger"
+            ]            
           }
         ] ]
     ]

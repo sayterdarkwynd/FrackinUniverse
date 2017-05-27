@@ -607,7 +607,7 @@ function getRecipes()
 	{ inputs = { zathiseed = 1 }, outputs = { geneticmaterial = { 8, 8, 9 } } },
        
 	-- from FU
-	{ inputs = { effigiumore = 5 }, outputs = { essence = { 1, 2, 3 } } },
+	{ inputs = { effigiumore = 5 }, outputs = { essence = { 1, 1, 1 } } },
 	{ inputs = { aenemapetal = 1 }, outputs = { shadowgasliquid = 1 } },
 	{ inputs = { aquapod = 1 }, outputs = { tissueculture = { 3, 3, 6 } } },
 	{ inputs = { arkaendart = 1 }, outputs = { tissueculture = { 4, 4, 8 } } },

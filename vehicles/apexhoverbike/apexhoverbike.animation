@@ -1,0 +1,512 @@
+{
+  "globalTagDefaults" : {
+    "colour" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+
+
+      "movement" : {
+        "default" : "idle",
+        "states" : {
+
+          "warpInPart1" : {
+            "frames" : 4,  
+            "cycle" : 0.33,
+            "mode" : "transition",
+            "transition" : "warpInPart2"
+            },
+
+          "warpInPart2" : {
+            "frames" : 4,  
+            "cycle" : 0.33,
+            "mode" : "transition",
+            "transition" : "idle"
+            },
+
+          "idle" : {},
+
+          "warpOutPart1" : {
+            "frames" : 4,  
+            "cycle" : 0.33,
+            "mode" : "transition",
+            "transition" : "warpOutPart2"
+            },
+
+          "warpOutPart2" : {
+            "frames" : 4,  
+            "cycle" : 0.33,
+            "mode" : "transition",
+            "transition" : "invisible"
+            },
+
+          "invisible" : {}
+
+        }
+      },
+
+
+      "onfire" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+
+          "on" : {
+            "frames" : 6,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          }
+
+        }
+      },
+
+      "teslaCoil" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+
+          "on" : {
+            "frames" : 6,
+            "cycle" : 0.125,
+            "mode" : "loop"
+          }
+
+        }
+      }
+
+
+      //"rearThruster" : {
+      //  "default" : "off",
+      //  "states" : {
+      //    "off" : {},
+
+      //    "on" : {
+      //      "frames" : 1,
+      //      "cycle" : 0.125,
+      //      "mode" : "loop"
+      //    }
+
+      //  }
+      //},
+
+      //"bottomThruster" : {
+      //  "default" : "off",
+      //  "states" : {
+      //    "off" : {},
+
+      //    "on" : {
+      //      "frames" : 1,
+      //      "cycle" : 0.125,
+      //      "mode" : "loop"
+      //    }
+
+      //}
+      //},
+
+      //"headlights" : {
+      //"default" : "off",
+      //"states" : {
+      //  "off" : {},
+
+      //  "on" : {}
+      //}
+      //}
+
+
+    },
+
+    "parts" : {
+
+
+      "background" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : -1,
+          "transformationGroups" : ["flip", "rotation"]
+        },
+
+        "partStates" : {
+          "movement" : {
+
+            "warpInPart1" : {
+              "properties" : {}
+            },
+
+            "warpInPart2" : {
+              "properties" : {
+              //  "image" : "hoverbike<colour>background.png:move.<damageState>"
+              "image" : "apexhoverbikebackground.png:move.<damageState>"
+              }
+            },
+
+            "idle" : {
+              "properties" : {
+              //  "image" : "hoverbike<colour>background.png:move.<damageState>"
+              "image" : "apexhoverbikebackground.png:move.<damageState>"
+              }
+            },
+
+            "warpOutPart1" : {
+              "properties" : {
+              //  "image" : "hoverbike<colour>background.png:move.<damageState>"
+              "image" : "apexhoverbikebackground.png:move.<damageState>"
+              }
+            },
+
+            "warpOutPart2" : {
+              "properties" : {}
+            },
+
+            "invisible" : {
+              "properties" : {}
+            }
+
+          }
+        }
+      },
+
+      "foreground" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 1,
+          "transformationGroups" : ["flip", "rotation"],
+          "drivingSeatPosition" : [0, 1.5],
+          "passengerSeatPosition" : [-2, 1.5]
+        },
+
+        "partStates" : {
+
+          "movement" : {
+
+            "warpInPart1" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "warpInPart2" : {
+              "properties" : {
+              //  "image" : "hoverbike<colour>background.png:move.<damageState>"
+              "image" : "apexhoverbikeforeground.png:move.<damageState>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+              //  "image" : "hoverbike<colour>background.png:move.<damageState>"
+              "image" : "apexhoverbikeforeground.png:move.<damageState>"
+              }
+            },
+
+            "warpOutPart1" : {
+              "properties" : {
+              //  "image" : "hoverbike<colour>background.png:move.<damageState>"
+              "image" : "apexhoverbikeforeground:move.<damageState>"
+              }
+            },
+
+            "warpOutPart2" : {
+              "properties" : {}
+            },
+
+            "invisible" : {
+              "properties" : {}
+            }
+          }
+        }
+      },
+
+      "warp" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 3,
+          "fullbright" : true,
+          "transformationGroups" : ["flip", "rotation"]
+        },
+
+        "partStates" : {
+
+          "movement" : {
+
+            "warpInPart1" : {
+              "properties" : {
+               // "image" : "hoverbikewarp.png:warpInPart1.<frame>"
+               "image" : "apexhoverbikewarp.png:warpInPart1.<frame>"
+              }
+            },
+            "warpInPart2" : {
+              "properties" : {
+               // "image" : "hoverbikewarp.png:warpInPart2.<frame>"
+               "image" : "apexhoverbikewarp.png:warpInPart2.<frame>"
+              }
+            },
+
+
+            "idle" : {
+              "properties" : {}
+            },
+
+
+            "warpOutPart1" : {
+              "properties" : {
+               // "image" : "hoverbikewarp.png:warpOutPart1.<frame>"
+               "image" : "apexhoverbikewarp.png:warpOutPart1.<frame>"
+              }
+            },
+            "warpOutPart2" : {
+              "properties" : {
+               // "image" : "hoverbikewarp.png:warpOutPart2.<frame>"
+               "image" : "apexhoverbikewarp.png:warpOutPart2.<frame>"
+              }
+            },
+
+
+            "invisible" : {
+              "properties" : {}
+            }
+
+          }
+        }
+      },
+
+
+      //"lights" : {
+      //  "properties" : {
+      //    "centered" : true,
+      //    "zLevel" : 2,
+      //    "fullbright" : true,
+      //    "transformationGroups" : ["flip", "rotation"]
+      //  },
+
+      //"partStates" : {
+
+      //  "headlights" : {
+
+      //    "off" : {
+      //      "properties" : {
+      //      }
+      //    },
+
+      //    "on" : {
+      //      "properties" : {
+      //        "image" : "hoverbikeheadlights.png:headlights.<damageState>",
+      //        "offset" : [3.1875, -0.0625 ]
+      //      }
+      //    }
+      //  }
+      //}
+      //},
+
+      "fire" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 2,
+          "fullbright" : true,
+          "transformationGroups" : ["flip", "rotation"]
+        },
+
+        "partStates" : {
+          "onfire" : {
+            "on" : {
+              "properties" : {
+                "image" : "hoverbikefire.png:burn.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "teslaCoil" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 1,
+          "fullbright" : true,
+          "light" : [134, 198, 215],
+          "transformationGroups" : ["flip", "rotation"]
+        },
+
+        "partStates" : {
+          "teslaCoil" : {
+            "on" : {
+              "properties" : {
+                "image" : "/animations/apexhoverbike/teslacoil.png:discharge.<frame>",
+                "offset" : [-1.7, -0.6]
+              }
+            }
+          }
+        }
+      }
+
+
+
+      //"rearThrust" : {
+      //"properties" : {
+      //  "centered" : true,
+      //    "zLevel" : -1,
+      //    "fullbright" : true,
+      //    "light" : [87, 148, 150],
+      //    "transformationGroups" : ["flip", "rotation"]
+      //  },
+
+      //  "partStates" : {
+      //    "rearThruster" : {
+      //      "on" : {
+      //        "properties" : {
+      //          "image" : "/animations/hoverbikethruster/backthruster.png:thrust.<rearThrusterFrame>",
+
+      //          "offset" : [-4.75, 0.9]
+      //        }
+      //      }
+      //    }
+      //  }
+      //},
+
+
+      //"bottomThrust" : {
+      //  "properties" : {
+      //    "centered" : true,
+      //    "zLevel" : -1,
+      //    "fullbright" : true,
+      //    "light" : [87, 148, 150],
+      //    "transformationGroups" : ["flip", "rotation"]
+      //  },
+
+      //  "partStates" : {
+      //    "bottomThruster" : {
+      //      "on" : {
+      //        "properties" : {
+      //          "image" : "/animations/hoverbikethruster/bottomthruster.png:thrust.<bottomThrusterFrame>",
+      //          "offset" : [0.1, -2.0]
+      //        }
+      //      }
+      //    }
+      //  }
+      //}
+
+
+    }
+  },
+
+  "transformationGroups" : {
+    "rotation" : {
+      "interpolated" : true
+    },
+    "flip" : {}
+  },
+
+  "particleEmitters" : {
+
+    //"rearThrusterIdle" : {
+    //  "transformationGroups" : ["flip", "rotation"],
+    //  "emissionRate" : 5.0,
+    //  "offsetRegion" : [ -5, 0.5, -5, 1.5],
+    //  "particles" : [{ "particle" : "hoverbikethrust"}]
+    //},
+
+    //"rearThrusterDrive" : {
+    //  "transformationGroups" : ["flip", "rotation"],
+    //  "emissionRate" : 15.0,
+    //  "offsetRegion" : [-3.5, 0.5, -3.5, -0.5],
+    //  "particles" : [{ "particle" : "hoverbikethrust"}]
+    //},
+
+    //"ventralThrusterIdle" : {
+    //  "transformationGroups" : ["flip", "rotation"],
+    //  "emissionRate" : 5.0,
+    //  "offsetRegion" : [-0.5, -1.5, 0.5, -1.55],
+    //  "particles" : [{ "particle" : "hoverbikedownthrust"}]
+    //},
+    //"ventralThrusterJump" : {
+    //  "transformationGroups" : ["flip", "rotation"],
+    //  "emissionRate" : 15.0,
+    //  "burstCount"  : 2,
+    //  "offsetRegion" : [-0.5, -1.5, 0.5, -1.55],
+    //  "particles" : [{ "particle" : "hoverbikedownthrust"}]
+    //},
+
+
+    "smoke" : {
+      "transformationGroups" : ["flip", "rotation"],
+      "emissionRate" : 0.0,
+      "offsetRegion" : [-1.5, -1.5, 0.5, -1],
+      "particles" : [{ "particle" : "burningvehiclesmokefront"}]
+    },
+    
+    "fire" : {
+      "transformationGroups" : ["flip", "rotation"],
+      "emissionRate" : 0.0,
+      "offsetRegion" : [2, 0, 3, 0.75],
+      "particles" : [ { "particle" : "burningdust"},
+                      { "particle" : "campfireflames"},
+                      { "particle" : "fireshard"},
+                      { "particle" : "burningvehiclesmokeback"}]
+
+    },
+
+    "damageIntermittent" : {
+      "transformationGroups" : ["flip", "rotation"],
+      "emissionRate" : 0.0,
+      "burstCount"  : 5,
+      "offsetRegion" : [-3.25, -1.5, -3, -1.25],
+      "particles" : [{ "particle" : "burningvehiclesmokefront"},
+                     { "particle" : "fireshard"}]
+    }
+  },
+
+ "lights" : {
+   "dashboardGlow" : {
+      "active" : false,
+      "transformationGroups" : ["flip", "rotation"],
+      "position" : [2.0, 0.5],
+      "color" : [120, 80, 0],
+      "pointLight" : true,
+      "pointAngle" : 140,
+      "pointBeam" : 5
+    }
+    //"headlightBeam" : {
+    //  "active" : false,
+    //  "transformationGroups" : ["flip", "rotation"],
+    //  "position" : [4.5, 0.0],
+    //  "color" : [250, 250, 200],
+    //  "pointLight" : true,
+    //  "pointAngle" : -5,
+    //  "pointBeam" : 5
+    //}
+  },
+
+  "sounds" : {
+    "collisionNotification" : [ "/sfx/tech/hoverbike_bump1.ogg",
+                                "/sfx/tech/hoverbike_bump2.ogg",
+                                "/sfx/tech/hoverbike_bump3.ogg"  ],
+
+    "collisionDamage" : ["/sfx/melee/bite_robotic1.ogg"],
+
+
+   "changeDamageState" : [  "/sfx/gun/grenadeblast_small_fire1.ogg",
+                            "/sfx/gun/grenadeblast_small_fire2.ogg",
+                            "/sfx/gun/grenadeblast_small_fire3.ogg" ],
+
+   "explode" : [  "/sfx/gun/grenadeblast_small_fire1.ogg",
+                  "/sfx/gun/grenadeblast_small_fire2.ogg",
+                  "/sfx/gun/grenadeblast_small_fire3.ogg" ],
+
+
+    "engineStart" : ["/sfx/tools/teleport_up.ogg"],
+
+    "engineLoop" : ["/sfx/tech/hoverbike_drive_loop.ogg"],
+
+    "engineStartDamaged" : ["/sfx/tools/teleport_up.ogg"],
+
+    "engineLoopDamaged" : ["/sfx/tech/hoverbike_idle_loop.ogg"],
+
+    "damageIntermittent" : [ "/sfx/gun/grenadeblast_small_fire1.ogg",
+                             "/sfx/gun/grenadeblast_small_fire2.ogg",
+                             "/sfx/gun/grenadeblast_small_fire3.ogg" ],
+
+    //"hornLoop" : ["/sfx/tech/honk.ogg"],
+    //"headlightSwitchOn" : ["/sfx/objects/floodlights_on.ogg"],
+    //"headlightSwitchOff" : ["/sfx/objects/floodlights_off.ogg"],
+
+    "returnvehicle" : ["/sfx/tech/vehicle_disappear1.ogg"]
+
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "projectileName" : "gravitonorbsmall3",
+  "image" : "gravitonorbsmall.png",
+  "animationCycle" : 0.3,
+  "physics" : "laser",
+  "frameNumber" : 10,
+  "pointLight" : true,
+  "lightColor" : [120,0,120],
+  "damagePoly" : [ [-18, 0], [-6, -6], [0, -18], [6, -6], [18, 0], [6, 6], [0, 18], [-6, 6] ],
+  "speed" : 60,
+  "piercing" : true,
+  "timeToLive" : 1,
+   "fullbright" : true,
+  "emitters" : [ "jellyplasma" ],
+  "knockback" : 24,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/globeexplosions/magentaglobeexplosion/magentaglobeexplosion.config"
+    }
+  ],
+  "damageKind" : "cosmicplasma",
+    "periodicActions":[
+    {
+      "time" : 0.01,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fuhgravityexplosion2",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 0
+   },    
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/gravblast/gravblast2.png:3",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    },
+
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/gravblast/gravblast2.png:4",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      }
+    ]
+}

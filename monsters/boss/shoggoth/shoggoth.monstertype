@@ -21,8 +21,8 @@
       "/monsters/boss/shoggoth/idlestate.lua"
     ],
 
-    "skillCount" : 7,
-    "skills" : [ "tentacleSwipeAttack", "fleshBombAttack", "eyeBeamAttack", "shoggothAcidAttack", "miniShoggothSpawnAttack", "shoggothChargeAttack", "shoggothAcidAttack2" ],
+    "skillCount" : 8,
+    "skills" : [ "tentacleSwipeAttack", "fleshBombAttack", "eyeBeamAttack", "shoggothAcidAttack", "miniShoggothSpawnAttack", "miniShoggothSpawnAttack2", "shoggothChargeAttack", "shoggothAcidAttack2" ],
 
     "phases" : [
       {
@@ -30,30 +30,78 @@
       },
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.80,
-        "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
+        "healthPercentage" : 0.95,
+        "skills" : [ "shoggothChargeAttack" ]
+      },      
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.90,
+        "enterPhase" : "miniShoggothSpawnAttack",
+        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
       },
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.75,
-        "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
+        "skills" : [ "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
+      },      
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.70,
+        "skills" : [ "shoggothChargeAttack" ]
       },      
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.65,
-        "enterPhase" : "miniShoggothSpawnAttack",
         "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
       },
       {
         "trigger" : "healthPercentage",
+        "healthPercentage" : 0.60,
+        "enterPhase" : "miniShoggothSpawnAttack",
+        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
+      },   
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.57,
+        "skills" : [ "shoggothChargeAttack" ]
+      },       
+      {
+        "trigger" : "healthPercentage",
         "healthPercentage" : 0.55,
-        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
+        "enterPhase" : "miniShoggothSpawnAttack",
+        "skills" : [ "fleshBombAttack", "shoggothAcidAttack2" ]
       },
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.25,
-        "skills" : [ "shoggothChargeAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
-      }
+        "healthPercentage" : 0.50,
+        "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.45,
+        "skills" : [ "tentacleSwipeAttack", "eyeBeamAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
+      },        
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.40,
+        "skills" : [ "shoggothChargeAttack" ]
+      },       
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.30,
+        "enterPhase" : "miniShoggothSpawnAttack2",
+        "skills" : [ "eyeBeamAttack", "shoggothAcidAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.20,
+        "skills" : [ "shoggothAcidAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
+      },
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.05,
+        "skills" : [ "shoggothChargeAttack" ]
+      }      
     ],
 
     "scale" : 1,
@@ -165,7 +213,10 @@
         },   
         "ffextremeheatImmunity" : {
           "baseValue" : 1.0
-        },          
+        },       
+        "penaltyBlock" : {
+          "baseValue" : 1.0
+        },         
         "poisonResistance" : { "baseValue" : 0.4 },
         "fireResistance" : { "baseValue" :0.5 },
         "iceResistance" : { "baseValue" : 0.5 },

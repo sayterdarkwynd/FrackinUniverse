@@ -1,0 +1,103 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "swoosh" : {
+          "states" : {
+            "flip" : {}
+          }
+        }
+      },
+
+      "parts" : {
+        "swoosh" : {
+          "partStates" : {
+            "swoosh" : {
+              "flip" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/broadsword/flipslash/<elementalType>swoosh.png",
+                  "offset" : [2.25, 2.75],
+                  "damageArea" : [[-6.0, -3.5], [-6.0, 0], [-3.5, 2.5], [0, 2.5], [2.5, 0], [2.5, -3.5], [0, -6.0], [-3.5, -6.0]]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "flip" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [-4, -4, 5, 5],
+        "emissionRate" : 70,
+        "particles" : [
+          { "particle" : "energyblade"},
+          { "particle" : "energyblade2"}
+        ]
+      }
+    },
+    "sounds" : {
+      "flipSlash" : [ "/sfx/weapons/chainsword_swing.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Screw Attack",
+    "type" : "fuchainflipslash",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/fusuperflipslash/fusuperflipslash.lua"],
+    "class" : "FlipSlash",
+
+    "cooldownTime" : 0.0,
+
+    "elementalConfig" : {
+      "physical" : {"damageSourceKind" : "broadsword", "statusEffects" : [ "bleeding05" ]},
+      "fire" : {"damageSourceKind" : "firebroadsword", "statusEffects" : ["burning"]},
+      "ice" : {"damageSourceKind" : "icebroadsword", "statusEffects" : ["frostslow"]},
+      "electric" : {"damageSourceKind" : "electricbroadsword", "statusEffects" : ["electrified"]},
+      "poison" : {"damageSourceKind" : "poisonbroadsword", "statusEffects" : ["weakpoison"]},
+      "shadow" : {"damageSourceKind" : "shadowbroadsword", "statusEffects" : ["shadowgasfx"]},
+      "radioactive" : {"damageSourceKind" : "radioactivebroadsword", "statusEffects" : ["radiationburn"]},
+      "cosmic" : {"damageSourceKind" : "cosmicbroadsword", "statusEffects" : ["defenseboostneg20"]}
+    },
+
+    "damageConfig" : {
+      "baseDamage" : 6,
+      "knockback" : [0, -35],
+      "timeout" : 0.2,
+      "timeoutGroup" : "alt"
+    },
+
+    "flipMovementParameters" : {
+      "collisionPoly" : [ [-2.0, -1.0], [-1.0, -2.0], [1.0, -2.0], [2.0, -1.0], [2.0, 1.0], [1.0, 2.0], [-1.0, 2.0], [-2.0, 1.0] ]
+    },
+
+    "energyUsage" : 60.0,
+    "rotations" : 3,
+    "rotationTime" : 0.2,
+
+    "jumpVelocity" : [35, 25],
+    "jumpDuration" : 0.2,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.2,
+        "armRotation" : 30,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "flip" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  }
+}

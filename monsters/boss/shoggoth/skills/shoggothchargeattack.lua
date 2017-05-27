@@ -9,7 +9,7 @@ function shoggothChargeAttack.enter()
 
 
   return {
-    timer = config.getParameter("shoggothChargeAttack.skillTime", 0.24),
+    timer = config.getParameter("shoggothChargeAttack.skillTime", 0.14),
     damagePerSecond = config.getParameter("shoggothChargeAttack.damagePerSecond", 5000),
     distanceRange = config.getParameter("shoggothChargeAttack.distanceRange"),
     intervalTime = config.getParameter("shoggothChargeAttack.intervalTime"),

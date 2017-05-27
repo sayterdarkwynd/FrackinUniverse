@@ -17,20 +17,20 @@ function build(directory, config, parameters, level, seed)
   if level and not configParameter("fixedLevel", true) then
     parameters.level = level
   end
-
   setupAbility(config, parameters, "primary")
   setupAbility(config, parameters, "alt")
-
   -- elemental type and config (for alt ability)
   local elementalType = configParameter("elementalType", "physical")
   replacePatternInData(config, nil, "<elementalType>", elementalType)
   if config.altAbility and config.altAbility.elementalConfig then
-    util.mergeTable(config.altAbility, config.altAbility.elementalConfig[elementalType])
+    --The difference is here, i added an if null-coalescing operation that checks if the alt ability has the elementalType in the elementalConfig list and replaces it with the physical type if it doesn't exist.
+    util.mergeTable(config.altAbility, config.altAbility.elementalConfig[elementalType] or config.altAbility.elementalConfig["physical"])
+                                                                                       
   end
 
   -- calculate damage level multiplier
   config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))
-
+  
   -- palette swaps
   config.paletteSwaps = ""
   if config.palette then

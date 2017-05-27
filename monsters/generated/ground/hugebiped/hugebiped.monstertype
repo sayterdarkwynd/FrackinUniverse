@@ -1,0 +1,290 @@
+{
+  "type" : "fuhugebiped",
+  "shortdescription" : "Huge Biped",
+  "description" : "A massive creature.",
+  "categories" : [ "hugebiped" ],
+  "parts" : [ "barm", "farm", "body", "tail", "head" ],
+  "partParameters" : "hugebiped.partparams",
+
+  "animation" : "hugebiped.animation",
+  "reversed" : true,
+
+  "dropPools" : [
+    {
+      "default" : "dinoLootBoss",
+      "bow" : "dinoLootBoss",
+      "brain" : "brain"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 60,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 75,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 17,
+            "jumpYVelocity" : 40,
+            "jumpXControlForce" : 50,
+            "fallState" : "jump",
+            "moveState" : "run",
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 17,
+            "jumpYVelocity" : 40,
+            "jumpXControlForce" : 50,
+            "fallState" : "jump",
+            "moveState" : "run",
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [3, 9]
+          }
+        }
+      ]
+    },
+
+    "skillCount" : 3,
+    "baseSkills" : [ "fumeleeAttack",  "pounceAttack"],
+    "specialSkills" : [
+    "chargeAttack",
+    "acidicSpitAttack", 
+    "acidSprayAttack",
+    "beamBurstAttack", 
+    "bloodVomitAttack", 
+    "blueFlameAttack",
+    "boneRainAttack", 
+    "bubbleBlastAttack",
+    "burninghaloAttack",
+    "cellBlastAttack", 
+    "darkGravityBallAttack",
+    "doubleBarbSprayAttack",
+    "explosivePhlegmAttack",
+    "eyeballShotAttack",
+    "eyeballSprayAttack", 
+    "fireballAttack", 
+    "fireSwirlAttack",
+    "fishBreathAttack", 
+    "gasBelchAttack",    
+    "glitterAttack", 
+    "iceBlastAttack", 
+    "icerockShotAttack",
+    "leafyGustAttack",
+    "lightBallAttack", 
+    "miniDragonBreathAttack", 
+    "mudBallAttack",
+    "orbOfZotsAttack",
+    "plasmaSweepAttack", 
+    "plasmaTorpedoAttack", 
+    "putridWaveAttack", 
+    "rainbowVomitAttack",
+    "rockRollAttack", 
+    "shardSprayAttack",
+    "shockingBoltAttack",
+    "shockingWaveAttack", 
+    "smokeRingAttack",
+    "snotBubbleAttack",
+    "snotShotAttack", 
+    "staticDischargeAttack", 
+    "waterGunAttack",
+    "beetleSwarmAttack",
+    "darkGasAttack",
+    "flySwarmAttack",
+    "iceShotAttack",
+    "inkSprayAttack",
+    "rockShotAttack",
+    "seedSpitAttack",
+    "sonicWaveAttack",
+    "spiceCloudAttack",
+    "tentacleShotAttack",
+    "waveBlastAttack",
+    "waveBlastAttack2",
+    "waveBlastAttack3",
+    "poisonVomitAttack2",
+    "raptorstrikeAttack2",
+    "raptorstrikeAttack2",
+    "raptorstrikeAttack3",
+    "raptorstrikeAttack4",
+    "soundwaveAttack2",
+    "windBlastAttack2",
+    "shadowbeastAttack",
+    "cageWall",
+    "crystalAttack",
+    "flamingAuraAttack",
+    "glowcritterAttack",
+    "glowcritterAttack2",
+    "goopAttack",
+    "gravAuraAttack",
+    "iceAuraAttack",
+    "iceBelchAttack",
+    "kluexAuraAttack",
+    "kluexBlastAttack",
+    "poisonAuraAttack",
+    "pullAuraAttack",
+    "pushAuraAttack",
+    "roarAttack",
+    "seedAttack",
+    "shitShowerAttack",
+    "shockAuraAttack",
+    "spinAssaultAttack",
+    "steamAttack"
+    ],
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+
+    "colors" : "generated",
+
+    "scale" : 1.3,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-2.562,5.625], [-5.625,4.438], [-6.688,2.25], [-6.438,0.188], [-4.375,0.125], [-4,-4.625], [-4.562,-6.062], [-4.438,-9.125], [4,-9.188], [8.75,-8.062], [8.375,-3.375], [1.438,0.062], [3.625,1.625], [3.438,5.312], [2.062,5.938] ],
+      "mass" : 3.6,
+      "walkSpeed" : 2.0,
+      "runSpeed" : 6.0
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+
+    "touchDamage" : {
+      "poly" : [ [-2.562,5.625], [-5.625,4.438], [-6.688,2.25], [-6.438,0.188], [-4.375,0.125], [-4,-4.625], [-4.562,-6.062], [-4.438,-9.125], [4,-9.188], [8.75,-8.062], [8.375,-3.375], [1.438,0.062], [3.625,1.625], [3.438,5.312], [2.062,5.938] ],
+      "damage" : 25,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.1
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 820
+        },
+        "maxShield" : {
+          "baseValue" : 0.0
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.75
+        },
+        "shieldRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceResistance" : {
+          "baseValue" : -0.35
+        },
+        "fireResistance" : {
+          "baseValue" : 0.4
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.3
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.5
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.0
+        } 
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        },
+        "shieldHealth" : {
+          "maxStat" : "maxShield",
+          "deltaStat" : "shieldRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0.5, 0.5],
+    "feetOffset" : [0, -21],
+    "capturable" : true,
+    "captureHealthFraction" : 0.03,
+    "nametagColor" : [64, 200, 255]
+  }
+}

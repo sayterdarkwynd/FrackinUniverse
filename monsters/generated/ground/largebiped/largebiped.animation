@@ -37,13 +37,29 @@
           "firewindup" : {
             "frames" : 1
           },
-          "fire" : {
-            "frames" : 4,
-            "cycle" : 0.4,
-            "mode" : "loop"
-          },
+	  "fire": {
+		"frames": 4,
+		"cycle": 0.4,
+		"mode": "loop",
+            "properties" : {
+              "persistentSound" : "",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
+	},
           "firewinddown" : {
             "frames" : 1
+          },
+          "melee" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/melee/bite.ogg",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
           }
         }
       },
@@ -132,12 +148,18 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:idle"
               }
             },
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:idle"
+              }
+            },
+			
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
               }
             }
           },
@@ -196,19 +218,26 @@
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:rotation"
               }
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:rotation"
               }
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:rotation"
+              }
+			  },
+			
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
               }
             }
+            
           },
           "damage" : {
             "stunned" : {
@@ -270,12 +299,18 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:idle"
               }
             },
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:idle"
+              }
+            },
+			
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
               }
             }
           },
@@ -339,12 +374,18 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:idle"
               }
             },
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:idle"
+              }
+            },
+			
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
               }
             }
           },
@@ -393,7 +434,7 @@
             },
             "charge" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:melee.1"
               }
             },
             "chargewinddown" : {
@@ -403,24 +444,30 @@
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:rotation"
               }
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:rotation"
               }
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:rotation"
+              }
+            },
+			
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
               }
             }
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:melee.2"
               }
             }
           }
@@ -485,8 +532,7 @@
 
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
-    "fire" : [ "/sfx/npc/monsters/monster_surprise.ogg" ]
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   },
   "effects" : {
     "blink" : {

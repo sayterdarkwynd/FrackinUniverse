@@ -6,7 +6,7 @@
  "categories" : [ "berlinite_burrower_segment" ],
   "parts" : [ "body" ],
 
-  "animation" : "berlinite_burrower.animation",
+  "animation" : "berlinite_burrower_segment.animation",
 
   "dropPools" : [ ],
 
@@ -72,7 +72,7 @@
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
-    "movementSettings" : {
+      "movementSettings" : {
 
       "collisionEnabled" : false,
       "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
@@ -83,7 +83,7 @@
       "gravityEnabled" : false,
 
       "airFriction" : 0.75,
-      "airForce" : 15,
+      "airForce" : 35,
       "flySpeed" : 25
     },
 
@@ -110,18 +110,22 @@
       ],
       "primaryScriptDelta" : 5,
 
+
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0
+          "baseValue" : -1
         },
         "knockbackThreshold" : {
-          "baseValue" : 500
+          "baseValue" : 999
+        },
+        "grit" : {
+          "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 750
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 50.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -130,31 +134,49 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
         },
         "poisonResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
+        },
+        "shadowResistance" : {
+         "baseValue" : 0.25 
+        },
+        "shadowStatusImmunity" : {
+         "baseValue" : 0.25
+        },
+        "cosmicStatusImmunity" : { 
+         "baseValue" : 0.0 
+        },
+        "cosmicResistance" : { 
+         "baseValue" : 0.0 
+        },
+        "radioactiveStatusImmunity" : { 
+        "baseValue" : 0.5
+        },
+        "radioactiveResistance" : { 
+        "baseValue" : 0.75
         }
       },
 

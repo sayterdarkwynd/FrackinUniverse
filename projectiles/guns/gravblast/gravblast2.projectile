@@ -1,0 +1,63 @@
+{
+  "projectileName" : "gravblast2",
+  "image" : "gravblast2.png",
+  "animationCycle" : 0.3,
+  "physics" : "bullet",
+  "bounces" : -1,
+  "frameNumber" : 6,  
+  "pointLight" : true,
+  "fullbright" : true,
+  "speed" :20,
+  "piercing" : true,
+  "lightColor" : [10, 30, 99],
+  "damageKind" : "cosmic",
+  "emitters" : [ "peglacitrail" ],
+  "timeToLive" : 0.3,
+  "statuseffects" : [ ],
+    "periodicActions":[
+    {
+      "time" : 0.02,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fuhgravityexplosion2",
+      "inheritDamageFactor" :0.05,
+      "fuzzAngle" : 0
+   },    
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/gravblast/gravblast2.png:3",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    },
+
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/gravblast/gravblast2.png:4",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      }
+    ]
+    
+}
+
+

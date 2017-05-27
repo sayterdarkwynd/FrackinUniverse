@@ -31,6 +31,7 @@ function init()
     self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
     self.behaviorState = self.behavior:init(_ENV)
   end
+  
   self.collisionPoly = mcontroller.collisionPoly()
 
   if animator.hasSound("deathPuff") then
@@ -64,9 +65,9 @@ function init()
     self.damageTaken = damageListener("damageTaken", function(notifications)
       for _,notification in pairs(notifications) do
         if notification.healthLost > 0 then
-          self.damaged = true
-	  status.setResourcePercentage("health",100)
-	  world.sendEntityMessage(config.getParameter("head"),"headDamage",notification)
+        self.damaged = true
+	      status.setResourcePercentage("health",100)
+	      world.sendEntityMessage(config.getParameter("head"),"headDamage",notification)
         end
       end
     end)
@@ -93,7 +94,7 @@ function init()
 
   self.forceRegions = ControlMap:new(config.getParameter("forceRegions", {}))
   self.damageSources = ControlMap:new(config.getParameter("damageSources", {}))
-  self.touchDamageEnabled = false
+  self.touchDamageEnabled = true
 
   if config.getParameter("damageBar") then
     monster.setDamageBar(config.getParameter("damageBar"));
@@ -111,19 +112,22 @@ function init()
      self.damaged = true
      BData:setEntity("damageSource", notification.sourceEntityId)
      status.overConsumeResource("health",notification.healthLost)
-    end) 
+    end)
+  else
+    self.totalSegments = self.segments
   end
   if self.segments > 0 then 
 	self.child = world.spawnMonster(self.child, mcontroller.position(),
-	{
-	head = self.head and self.head or config.getParameter("head"), 
-	parent = entity.id(), 
-	segmentMonster = config.getParameter("segmentMonster"),
-	segments = self.segments - 1, 
-	parentRadius = config.getParameter("radius"),
-  damageBar = false,
-  dynamic = config.getParameter("dynamicSegments") or config.getParameter("dynamic"),
-	renderLayer = "foregroundEntity+"..tostring(self.segments)})
+  	{
+  	head = self.head and self.head or config.getParameter("head"), 
+  	parent = entity.id(), 
+  	segmentMonster = config.getParameter("segmentMonster"),
+    totalSegments = self.totalSegments and self.totalSegments or config.getParameter("totalSegments"),
+  	segments = self.segments - 1, 
+  	parentRadius = config.getParameter("radius"),
+    damageBar = false,
+    dynamic = config.getParameter("dynamicSegments") or config.getParameter("dynamic"),
+  	renderLayer = "foregroundEntity+"..tostring(self.segments)})
   end 
 end
 
