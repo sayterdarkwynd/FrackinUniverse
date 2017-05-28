@@ -768,7 +768,7 @@
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/surface/secondaryRegions", 
-    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone", "crystalplain", "supermatterzone", "aliendesert", "deadwood", "wastelandmini" ]
+    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone", "crystalplain", "supermatterzonemoon", "aliendesert", "deadwoodmoon", "wastelandminimoon" ]
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/subsurface/secondaryRegions", 
@@ -5166,7 +5166,20 @@
       ]
     }
   },
-
+  {"op" : "add", 
+  "path" : "/regionTypes/deadwoodmoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "fuquicksand" ],
+      "caveLiquidChanceRange" : [15, 55],  
+      "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "deadwoodmoon" ]]
+      ]
+    }
+  },
+  
   {"op" : "add", 
   "path" : "/regionTypes/desertoasis",
   "value" : 
@@ -5599,6 +5612,21 @@
         ]
       }
   },  
+
+  
+    {"op" : "add", 
+    "path" : "/regionTypes/supermatterzonemoon",
+    "value" : 
+    {
+        "caveLiquid" : [  "organicsoup", "fuel", "blacktar", "crystalliquid"  ],
+        "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface"  ],
+        "fgCaveSelector" : [ "denseCaves" ],
+        "biome" : [
+          [0, [ "supermatterzonemoon" ]]
+        ]
+      }
+  },  
+  
   
   {"op" : "add", 
   "path" : "/regionTypes/taiga",
@@ -7521,7 +7549,25 @@
         [0, [ "wastelandmini"] ]
       ]
     }
+  },  
+  
+  {"op" : "add", 
+  "path" : "/regionTypes/wastelandminimoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "blacktar", "darkwater", "gravrain", "lava", "poison", "bio_ooze" ],
+      "caveLiquidChanceRange" : [25, 95],
+      
+      "blockSelector" : [ "remixedSurface", "remixedMildSurface","remixedMountainsSurface", "remixedFlatsSurface" ],
+      "subBlockSelector" : [ "largeClumps" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves" ],
+      
+      "biome" : [
+        [0, [ "wastelandminimoon"] ]
+      ]
+    }
   },   
+  
   {"op" : "add", 
   "path" : "/regionTypes/fleshcore",
   "value" : 
