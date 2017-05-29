@@ -1,0 +1,188 @@
+{
+  "itemName" : "elderbroadsword",
+  "price" : 32000,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Ancient. Evil.
+^cyan;Annihilating Alt-Fire^reset;",
+  "shortdescription" : "Elder Cleaver",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","xithricite"],
+  "inventoryIcon" : "elderbroadsword2.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/comboaetheriumbroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "elderbroadsword2.png",
+    "bladefullbright" : "elderbroad2swordfullbright.png"
+  },
+  "animationCustom":{ },
+  
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility":{
+    "fireTime":0.82, 
+    "baseDps":10.25, 
+    "damageConfig":{
+      "knockback":20, 
+      "statusEffects":["insanity2"], 
+      "damageSourceKind":"shadowbroadsword"}, 
+      "comboSteps":6, 
+      "swooshOffsetRegions":[
+        [0.75, 0.0, 4.25, 5.0], 
+        [0, -4.25, 5, 0], 
+        [3.0, -0.5, 6.5, 2.0], 
+        [1.5, -1.0, 5.5, 1.0], 
+        [0, -4.25, 5, 0], 
+        [1.5, -1.0, 5.5, 1.0]
+      ], 
+      "stepDamageConfig":[
+        {"baseDamageFactor":1.0, "knockback":15}, 
+        {"baseDamageFactor":1.0, "knockback":15}, 
+        {"baseDamageFactor":0.5, "knockback":10}, 
+        {"baseDamageFactor":0.7, "knockback":10}, 
+        {"baseDamageFactor":0.7, "knockback":10}, 
+        {"baseDamageFactor":1.2, "knockback":30}
+        ], 
+      "stances":{
+        "idle":{
+          "armRotation":-20, 
+          "weaponRotation":50, 
+          "twoHanded":false, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false, 
+          "allowFlip":true, "aimAngle":0
+        }, 
+        "windup1":{
+          "duration":0.1, 
+          "armRotation":90, 
+          "weaponRotation":-10, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false, 
+          "allowFlip":true
+          }, 
+        "preslash1":{
+          "duration":0.025, 
+          "armRotation":55, 
+          "weaponRotation":-45, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false, 
+          "allowFlip":false
+          }, 
+        "fire1":{
+          "duration":0.15, 
+          "armRotation":-45, 
+          "weaponRotation":-55, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false,
+          "allowFlip":false
+          }, 
+        "wait1":{
+          "duration":1.2, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1]
+        }, 
+        "windup2":{
+          "duration":0.1, 
+          "armRotation":-100, 
+          "weaponRotation":-150, 
+          "weaponOffset":[0,1], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "preslash2":{
+          "duration":0.025, 
+          "armRotation":-40, 
+          "weaponRotation":-130, 
+          "weaponOffset":[0,1], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "fire2":{
+          "duration":0.15, 
+          "armRotation":40, 
+          "weaponRotation":-100, 
+          "weaponOffset":[0,1], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+          }, 
+        "wait2":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]}, 
+        "windup3":{"duration":0.1, "armRotation":0, "weaponRotation":-60, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "preslash3":{"duration":0}, "fire3":{"duration":0.1, "armRotation":-110, "weaponRotation":30, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "wait3":{"duration":1.2, "armRotation":-110, "weaponRotation":30, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "windup4":{"duration":0.1, "armRotation":-140, "weaponRotation":50, "weaponOffset":[0,0], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "preslash4":{"duration":0}, "fire4":{"duration":0.2, "armRotation":-20, "weaponRotation":-70, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "wait4":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]}, 
+        "windup5":{"duration":0.1, "armRotation":-40, "weaponRotation":-70, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "preslash5":{"duration":0.025, "armRotation":-10, "weaponRotation":-75, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "fire5":{"duration":0.1, "armRotation":50, "weaponRotation":-80, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "wait5":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]}, 
+        "windup6":{"duration":0.2, "armRotation":170, "weaponRotation":90, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "preslash6":{"duration":0}, "fire6":{"duration":0.4, "armRotation":0, "weaponRotation":-90, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "wait6":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]}}}, 
+
+  "altAbilityType":"traildash", 
+  
+  "altAbility":{
+    "name" : "Doom Trail",
+    "energyUsage":300, 
+    "damageConfig":{"baseDamage":8, 
+    "knockback":-20}, 
+    "dashSpeed":200, 
+    "trailInterval":3, 
+    "projectileType":"fudarkbeamchar", 
+  "projectileParameters":{"power":5, "processing":"?0", "timeToLive":0, "speed":0, 
+  "actionOnReap":[
+  {"action":"projectile", "type":"fruitthorn", "inheritDamageFactor":0.2, "config":{"processing":"?replace;2F3E29=462E54;899560=5E436E;ADB574=7D628D", "timeToLive":0, "speed":1}},
+  {"action":"projectile", "type":"fudarkbeamchar", "inheritDamageFactor":0.2, "angleAdjust":180, "fuzzAngle":40, "config":{"piercing":true, "speed":50, "timeToLive":1, "knockback":0, "processing":"?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", 
+  "periodicActions":[
+    {"action":"particle", "specification":"cosmicswoosh1", "time":0.2, "repeat":true}
+  ], 
+  "actionOnReap":[
+    {
+      "action":"projectile", 
+      "type":"shadowbarrier", 
+      "inheritDamageFactor":1, 
+      "fuzzAngle":180, 
+      "config":{
+        "timeToLive":0, 
+        "processing":"?0", 
+        "actionOnReap":[
+          {"action":"projectile", "type":"shadowbarrier", "inheritDamageFactor":0.2, "angleAdjust":0, 
+            "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}
+          }
+        }, 
+        {"action":"projectile", "type":"shadowbarrier", "inheritDamageFactor":0.2, "angleAdjust":36, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"elderflamethrowerff", "inheritDamageFactor":0.2, "angleAdjust":72, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowbarrier", "inheritDamageFactor":0.2, "angleAdjust":108, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"elderflamethrowerff", "inheritDamageFactor":0.2, "angleAdjust":144, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowbarrier", "inheritDamageFactor":0.2, "angleAdjust":180, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"elderflamethrowerff", "inheritDamageFactor":0.2, "angleAdjust":216, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowbarrier", "inheritDamageFactor":0.2, "angleAdjust":252, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"elderflamethrowerff", "inheritDamageFactor":0.2, "angleAdjust":288, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowbarrier", "inheritDamageFactor":0.2, "angleAdjust":324, "config":{"processing":"?scalenearest=2?replace;2F3E29=312637;5F6A47=462E54;899560=5E436E;ADB574=7D628D", "damageTeam":{"type":"friendly"}}}
+        ]
+      }
+    }, 
+  {"action":"config", "file":"/projectiles/explosions/burstexplosion/cosmicburstexplosion.config"}]}}]}},
+
+  "critChance" : 5,
+  "critBonus" : 12,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
