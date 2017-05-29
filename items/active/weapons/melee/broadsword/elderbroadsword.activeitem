@@ -140,7 +140,7 @@
   "altAbilityType":"traildash", 
   
   "altAbility":{
-    "name" : "Doom Trail",
+    "name" : "Shadow Trail",
     "energyUsage":300, 
     "damageConfig":
       {
@@ -155,7 +155,7 @@
     "timeToLive":0, 
     "speed":0, 
     "actionOnReap":[
-  {"action":"projectile", "type":"shadowswarmer", "inheritDamageFactor":0.2, "config":{"timeToLive":0, "speed":1}},
+  {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "config":{"timeToLive":0, "speed":1}},
   {
     "action":"projectile", 
     "type":"fudarkbeamchar", 
@@ -164,7 +164,7 @@
     "fuzzAngle":40, 
     "config":{
       "piercing":true, 
-      "speed":30, 
+      "speed":42, 
       "timeToLive":1, 
       "knockback":0,  
       "periodicActions":[
@@ -179,20 +179,20 @@
       "config":{
         "timeToLive":0, 
         "actionOnReap":[
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":0, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":36, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":72, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":108, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":144, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":180, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":216, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":252, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":288, "config":{"damageTeam":{"type":"friendly"}}}, 
-        {"action":"projectile", "type":"elderswarmer2", "inheritDamageFactor":0.2, "angleAdjust":324, "config":{"damageTeam":{"type":"friendly"}}}
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":0, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":36, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":72, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":108, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":144, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":180, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":216, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":252, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":288, "config":{"damageTeam":{"type":"friendly"}}}, 
+        {"action":"projectile", "type":"shadowsmoke", "inheritDamageFactor":0.2, "angleAdjust":324, "config":{"damageTeam":{"type":"friendly"}}}
         ]
       }
     }, 
-    {"action":"config", "file":"/projectiles/explosions/burstexplosion/cosmicburstexplosion.config"}
+    {"action":"config", "file":"/projectiles/explosions/burstexplosion/shadowburstexplosion.config"}
       ]
   }}]}},
 
