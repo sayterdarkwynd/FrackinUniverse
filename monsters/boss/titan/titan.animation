@@ -8,42 +8,100 @@
           "idle" : {
             "frames" : 14,
             "cycle" : 1.4,
-            "mode" :"loop"
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           },
           "hurt" : {
             "frames" : 3,
             "cycle" : 0.5,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           },  
           "diefire" : {
             "frames" : 1,
-            "cycle" : 0.1
+            "cycle" : 0.1,
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           },          
           "die" : {
             "frames" : 15,
-            "cycle" : 1.5
+            "cycle" : 1.5,
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           },
           "die2" : {
             "frames" : 15,
-            "cycle" : 1.0
+            "cycle" : 1.0,
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
+          },     
+          "die3" : {
+            "frames" : 15,
+            "cycle" : 1.5,
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_combo6.ogg",
+              "particleEmittersOn" : [ "fireaura" ],
+              "particleEmittersOff" : [ "healaura"]
+            }
+          },
+          "die4" : {
+            "frames" : 15,
+            "cycle" : 1.0,
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_combo6.ogg",
+              "particleEmittersOn" : [ "fireaura"],
+              "particleEmittersOff" : [ "healaura"]
+            } 
+          },  
+          "die5" : {
+            "frames" : 15,
+            "cycle" : 1.5,
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_combo6.ogg",
+              "particleEmittersOn" : [ "healaura" ],
+              "particleEmittersOff" : [ "fireaura"]
+            }
+          },
+          "die6" : {
+            "frames" : 15,
+            "cycle" : 1.0,
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_combo6.ogg",
+              "particleEmittersOn" : [ "healaura"],
+              "particleEmittersOff" : [ "fireaura"]
+            } 
           },           
           "taunt" : {
             "frames" : 14,
             "cycle" : 1.4,
-            "mode" :"loop"
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           },          
           "walk" : {
             "frames" : 8,
             "cycle" : 0.8,
-            "mode" :"loop"
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           },
           "fire" : {
             "frames" : 23,
             "cycle" : 2.3,             
             "properties" : {
               "immediateSound" : "/sfx/melee/charge_combo6.ogg",
-              "particleEmittersOff" : [ "fireaura" ]
+              "particleEmittersOn" : [ "fireaura" ],
+              "particleEmittersOff" : [ "healaura"]
             }          
           },
           "fullfire" : {
@@ -51,46 +109,64 @@
             "cycle" : 2.3,
             "properties" : {
               "immediateSound" : "/sfx/melee/charge_combo5.ogg",
-              "particleEmittersOff" : [ "fireaura" ]
+              "particleEmittersOn" : [ "fireaura" ],
+              "particleEmittersOff" : [ "healaura"]
             }              
           }, 
           "firewindup" : {
             "frames" : 5,
             "cycle" : 1,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/titanyell.ogg"
+              "immediateSound" : "/sfx/npc/monsters/titanyell.ogg",
+              "particleEmittersOff" : [ "fireaura" ]
             }               
           }, 
           "firewinddown" : {
             "frames" : 10,
             "cycle" : 1,
             "mode" : "transition",
-            "transition" : "idle"              
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }              
           },             
           "windup" : {
             "frames" : 5,
-            "cycle" : 1
+            "cycle" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           }, 
           "winddown" : {
             "frames" : 10,
             "cycle" : 0.6,
             "mode" : "transition",
-            "transition" : "idle"             
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }             
           },           
           "jump" : {
             "frames" : 1,
             "cycle" : 0.5,
-            "mode" :"loop"
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           },
           "fall" : {
             "frames" : 1,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
+            }
           },
           "chargewindup" : {
             "frames" : 14,
             "cycle" : 1.4,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/titanyell.ogg"
+              "immediateSound" : "/sfx/npc/monsters/titanyell.ogg",
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
             }          
           },
           "chargewinddown" : {
@@ -99,7 +175,8 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/weapons/explosion-large01.ogg"
+              "immediateSound" : "/sfx/weapons/explosion-large01.ogg",
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
             }          
           },        
           "charge" : {
@@ -108,7 +185,8 @@
             "mode" : "transition",
             "transition" : "hurt",              
             "properties" : {
-              "immediateSound" : "/sfx/melee/charge_traildash1.ogg"
+              "immediateSound" : "/sfx/melee/charge_traildash1.ogg",
+              "particleEmittersOff" : [ "fireaura", "healaura" ]
             }       
           }
         }
@@ -204,6 +282,26 @@
               "properties" : {
                 "image" : "<partImage>:die2.<frame>"
               }
+            },  
+            "die3" : {
+              "properties" : {
+                "image" : "<partImage>:die.<frame>"
+              }
+            },
+            "die4" : {
+              "properties" : {
+                "image" : "<partImage>:die2.<frame>"
+              }
+            },   
+            "die5" : {
+              "properties" : {
+                "image" : "<partImage>:die.<frame>"
+              }
+            },
+            "die6" : {
+              "properties" : {
+                "image" : "<partImage>:die2.<frame>"
+              }
             },             
             "hurt" : {
               "properties" : {
@@ -269,9 +367,21 @@
   },
   
   "particleEmitters" : {
+    "healaura" : {
+      "emissionRate" : 45,
+      "offsetRegion" : [ -2.0, 2.0, 2.0, 2.0 ],
+      "particles" : [
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" }
+      ]
+    },   
     "fireaura" : {
-      "emissionRate" : 15,
-      "offsetRegion" : [ 1.56, -1.19, 2.0, -0.0 ],
+      "emissionRate" : 45,
+      "offsetRegion" : [ -1.0, 2.0, 1.0, 2.0 ],
       "particles" : [
         { "particle" : "firestormflame" },
         { "particle" : "firestormflame" },
@@ -279,9 +389,8 @@
         { "particle" : "smallfirecloud2" },
         { "particle" : "fireaura" },
         { "particle" : "fireaura" }
-        
       ]
-    },
+    },    
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
@@ -334,6 +443,7 @@
     "aggroHop" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg", "/sfx/troll/troll2.ogg", "/sfx/troll/troll2.ogg" ],
     "pew" : [ "/sfx/weapons/energypew.ogg" ],
+    "crash" : [ "/sfx/weapons/energypew.ogg" ],
     "turnHostile" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
     "attackSound" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
     "fire" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],

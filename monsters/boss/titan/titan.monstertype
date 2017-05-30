@@ -33,7 +33,7 @@
       "foundTargetActions" : [],
       "fleeActions" : [],
 
-      "hostileActions" : [
+      "hostileActions" : [    
 	{
           "name" : "action-fire",
 	  "cooldown" : 6,
@@ -81,7 +81,7 @@
           "name" : "action-charge",
           "cooldown" : 5.4,
           "parameters" : {
-            "maximumRange" : 20,
+            "maximumRange" : 24,
             "windupState" : "chargewindup",
             "windupTime" : 1.15,
             "windupSound" : "charge",
@@ -99,7 +99,7 @@
         },              
         {
           "name" : "action-fire",
-	  "cooldown" : 2,
+	  "cooldown" : 4,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 7,
@@ -151,15 +151,14 @@
       "damageTakenActions" : [
 	{
           "name" : "action-fire",
-          "cooldown" : 3,
+          "cooldown" : 5,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 50,
             "minimumRange" : 0,
-            "windupState" : "die",
+            "windupState" : "die5",
             "windupSound" : "aggroHop",
             "windupTime" : 0,
-            "inaccuracy" : 1.0,
             "projectileType" : "healingzone",
             "projectileParameters" : {
               "timeToLive" : 2
@@ -173,18 +172,18 @@
             "fireSound" : "pew",
             "fireDelay" : 1.5,
             "fireState" : "",
-            "winddownState" : "die2",
+            "winddownState" : "die6",
             "winddownTime" : 1.0
           }
         },      
 	{
           "name" : "action-fire",
-          "cooldown" : 5,
+          "cooldown" : 4.9,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 24,
-            "minimumRange" : 12,
-            "windupState" : "die",
+            "minimumRange" : 4,
+            "windupState" : "die3",
             "windupSound" : "aggroHop",
             "windupTime" : 0,
             "inaccuracy" : 1.0,
@@ -199,7 +198,7 @@
               "actionOnReap" : [
 		    {
 		      "action" : "config",
-		      "file" : "/projectiles/explosions/precursorexplosion/precursorexplosion.config"
+		      "file" : "/projectiles/explosions/burstexplosion/radioactiveburstexplosion.config"
 		    }		    
               ]
             },
@@ -212,7 +211,7 @@
             "fireSound" : "pew",
             "fireDelay" : 1.5,
             "fireState" : "",
-            "winddownState" : "die2",
+            "winddownState" : "die4",
             "winddownTime" : 1.0
           }
         }      
@@ -270,6 +269,31 @@
       "concurrentActions" : [],
       
       "concurrentHostileActions" : [ 
+        {
+          "name" : "action-trail-charge",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "maximumRange" : 24,
+            "minimumRange" : 5,
+            "windupTime" : 1.4,
+            "winddownTime" : 0.5,
+            "chargeSpeed" : 55,
+            "chargeControlForce" : 450,
+            "chargeTime" : 1.5,
+            "aimAtTarget" : true,
+            "wallKnockback" : true,
+            "knockbackThreshold": 3,
+
+
+            "projectileType" : "firefinish",
+            "projectileParameters" : {},
+            "projectileInterval" : 0.05,
+            "offset" : [0,-1],
+            "power" : 0,
+            "scalePower" : false
+
+          }
+        },        
 	{
           "name" : "action-fire",
           "cooldown" : 8,
@@ -277,7 +301,7 @@
             "requireLineOfSight" : true,
             "maximumRange" : 50,
             "minimumRange" : 0,
-            "windupState" : "die",
+            "windupState" : "die5",
             "windupSound" : "aggroHop",
             "windupTime" : 0,
             "inaccuracy" : 1.0,
@@ -294,7 +318,7 @@
             "fireSound" : "pew",
             "fireDelay" : 1.5,
             "fireState" : "",
-            "winddownState" : "die2",
+            "winddownState" : "die6",
             "winddownTime" : 1.0
           }
         },         
@@ -302,8 +326,8 @@
           "name" : "action-statuseffect", 
           "cooldown" : 50,
           "parameters" : {
-          "effect" : "nofalldamage",
-          "duration" : 50
+            "effect" : "nofalldamage",
+            "duration" : 50
           }
         },       
         {
@@ -316,7 +340,7 @@
             "windupTime" : 0.3,
             "windupState" : "idle",
 
-            "leapVelocity" : 75,
+            "leapVelocity" : 55,
             "collisionCheck" : true,
             "highArc" : true,
             "leapState" : "jump",
