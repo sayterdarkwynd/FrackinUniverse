@@ -61,25 +61,39 @@
             "requireLineOfSight" : true,
             "maximumRange" : 7,
             "minimumRange" : 0,
-            "windupState" : "taunt",
-            "windupSound" : "",
-            "windupTime" : 1.3,
+            "windupState" : "die",
+            "windupSound" : "aggroHop",
+            "windupTime" : 1.5,
             "projectileType" : "distortionbomb",
             "projectileParameters" : {
               "timeToLive" : 3,
               "physics" : "grenade",
-              "speed" : 20,
-              "damageSourceKind" : "radioactive"
+              "speed" : 24,
+              "bounces" : 2,
+              "damageSourceKind" : "radioactive",
+              "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+		    },
+		    {
+		      "action" : "projectile",
+		      "type" : "fuhgravityexplosion",
+		      "fuzzAngle" : 0,
+		      "inheritDamageFactor" : 0.15,
+		      "angleAdjust" : 0
+		    }   		    
+              ]
             },
-            "power" : 10,
+            "power" : 12,
             "speed": 0,
-            "fireOffset" : [4.5, 2],
+            "fireOffset" : [1.5, 1.1],
             "aimAtTarget" : false,
             "projectileCount" : 1,
             "fireSound" : "",
             "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 1.1
+            "winddownState" : "die2",
+            "winddownTime" : 1.0
           }
         },         
         {

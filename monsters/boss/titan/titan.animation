@@ -15,6 +15,18 @@
             "cycle" : 0.5,
             "mode" : "transition",
             "transition" : "idle"
+          },  
+          "diefire" : {
+            "frames" : 1,
+            "cycle" : 0.1
+          },          
+          "die" : {
+            "frames" : 15,
+            "cycle" : 1.5
+          },
+          "die2" : {
+            "frames" : 15,
+            "cycle" : 1.0
           },           
           "taunt" : {
             "frames" : 14,
@@ -147,6 +159,12 @@
                 "image" : "<partImage>:idle.<frame>"
               }
             },
+            
+            "taunt" : {
+              "properties" : {
+                "image" : "<partImage>:taunt.<frame>"
+              }
+            },            
             "walk" : {
               "properties" : {
                 "image" : "<partImage>:charge.<frame>"
@@ -172,6 +190,21 @@
                 "image" : "<partImage>:chargewinddown.<frame>"
               }
             },
+            "direfire" : {
+              "properties" : {
+                "image" : "<partImage>:diefire.<frame>"
+              }
+            },            
+            "die" : {
+              "properties" : {
+                "image" : "<partImage>:die.<frame>"
+              }
+            },
+            "die2" : {
+              "properties" : {
+                "image" : "<partImage>:die2.<frame>"
+              }
+            },             
             "hurt" : {
               "properties" : {
                 "image" : "<partImage>:hurt.<frame>"
