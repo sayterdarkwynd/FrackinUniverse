@@ -1,0 +1,40 @@
+{
+  "name" : "pushAuraAttack",
+  "label" : "PUSH",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 5],
+        "parameters" : {
+          "skillName" : "pushAuraAttack",
+
+          "maximumRange" : 24,
+          "minimumRange" : 1,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.5,
+          "projectileType" : "pushzone",
+          "projectileParameters" : {
+            "speed" : 5,
+            "timeToLive" : 3.0
+          },
+	  "inaccuracy" : 0,
+          "projectileCount" : 1,
+          "aimDirection" : [1, 0],
+          "power" : 5,
+          "aimAtTarget" : true
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/npc/monsters/ignome_charge2.ogg" ]
+    }
+  }
+}
+

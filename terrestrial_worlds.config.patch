@@ -245,7 +245,7 @@
         "secondaryRegionSize" : [0.2, 0.92],
         "secondaryRegionCount" : [1, 3],
         "subRegionSize" : [0.13, 0.47],
-        "dungeonCountRange" : [1, 3]
+        "dungeonCountRange" : [2, 4]
       },
       "layers" : {
         "space"        : { "baseHeight" : 3500, "layerLevel" : 3000 },
@@ -272,7 +272,7 @@
         "secondaryRegionSize" : [0.2, 0.92],
         "secondaryRegionCount" : [1, 4],
         "subRegionSize" : [0.15, 0.5],
-        "dungeonCountRange" : [2, 4]
+        "dungeonCountRange" : [2, 6]
       },
       "layers" : {
         "space"        : { "baseHeight" : 6500, "layerLevel" : 5700 },
@@ -296,7 +296,7 @@
         "secondaryRegionSize"   : [0.2, 0.92],
         "secondaryRegionCount" : [1, 5],
         "subRegionSize" : [0.15, 0.55],
-        "dungeonCountRange"     : [3, 5]
+        "dungeonCountRange"     : [3, 7]
       },
       "layers" : {
         "space"        : { "baseHeight" : 7500, "layerLevel" : 6600 },
@@ -732,7 +732,7 @@
     },
     { "op" : "add", 
     "path" : "/planetTypes/garden/layers/surface/secondaryRegions", 
-    "value" : [ "birchforest", "cloudforest", "fieldofcarrots", "fieldofcorn", "fieldofgrape", "fieldofpotato", "fieldofbracken", "fieldoftomato", "fieldofwheat", "flowerforest", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "snowyforest", "taiga" ]
+    "value" : [ "birchforest", "fieldofcarrots", "fieldofcorn", "fieldofgrape", "fieldofpotato", "fieldofbracken", "fieldoftomato", "fieldofwheat", "flowerforest", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "snowyforest", "taiga" ]
     },
     { "op" : "add", 
     "path" : "/planetTypes/jungle/layers/surface/secondaryRegions", 
@@ -768,7 +768,7 @@
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/surface/secondaryRegions", 
-    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone", "crystalplain", "supermatterzone", "aliendesert", "deadwood", "wastelandmini" ]
+    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone", "crystalplain", "supermatterzonemoon", "aliendesert", "deadwoodmoon", "wastelandminimoon" ]
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/subsurface/secondaryRegions", 
@@ -1107,7 +1107,6 @@
       "surface" : {
           "primaryRegion" : [ "arboreal" ],
           "secondaryRegions" : [ "futentacle", "wartfield", "fieldofbracken", "ffhive", "aliendesert", "cactiplace", "crystalswamp", "birchforest", "alienforest", "cloudforest", "rainbowforest", "swamp", "elder", "corruptedforest", "fieldofwheat", "fieldofsugar",  "fieldofpotato", "fieldofcorn",  "fieldofgrape",  "fieldoftomato", "pineforest", "flowerforest", "snowyforest", "giantflowers", "forest", "jungle", "savannah", "snow",  "tundra" ],
-          "dungeonCountRange" : [2, 10],
              "dungeons" : [ 
              [1.0, "gregbase"], 
               [1.0, "apexspaceelevator"],
@@ -2921,7 +2920,7 @@
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
       },      
         "surface" : {
-          "primaryRegion" : [ "mountainous" ], 
+          "primaryRegion" : [ "mountainous", "mountainous2", "mountainous3", "mountainous4" ], 
 	  "secondaryRegions" : [ "wastelandmini", "ffhive", "birchforest", "alienforest", "cellfield", "reddesert", "finesand", "cloudforest", "swamp", "alpine", "spring", "glacial", "hotsprings", "rainbowforest"  ],
           
           "dungeons" : [ 
@@ -3792,7 +3791,7 @@
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
       },      
         "surface" : {
-          "primaryRegion" : [ "urbanwasteland2" ],
+          "primaryRegion" : [ "urbanwasteland", "urbanwasteland2" ],
           "secondaryRegions" : [ "futentacle", "wartfield", "wastelandmini", "metalworks4", "metalhive", "parkinglot", "aliendesert", "metalworks", "metaljungle", "crystalswamp", "ffhive", "alienforest", "sulphuricmagma", "reddesert", "swamp", "bloodgulch", "hellhive", "corruptedforest", "deadwood",   "savannah"],
           
           "dungeons" : [ 
@@ -5166,7 +5165,20 @@
       ]
     }
   },
-
+  {"op" : "add", 
+  "path" : "/regionTypes/deadwoodmoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "fuquicksand" ],
+      "caveLiquidChanceRange" : [15, 55],  
+      "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "deadwoodmoon" ]]
+      ]
+    }
+  },
+  
   {"op" : "add", 
   "path" : "/regionTypes/desertoasis",
   "value" : 
@@ -5599,6 +5611,21 @@
         ]
       }
   },  
+
+  
+    {"op" : "add", 
+    "path" : "/regionTypes/supermatterzonemoon",
+    "value" : 
+    {
+        "caveLiquid" : [  "organicsoup", "fuel", "blacktar", "crystalliquid"  ],
+        "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface"  ],
+        "fgCaveSelector" : [ "denseCaves" ],
+        "biome" : [
+          [0, [ "supermatterzonemoon" ]]
+        ]
+      }
+  },  
+  
   
   {"op" : "add", 
   "path" : "/regionTypes/taiga",
@@ -5878,10 +5905,49 @@
        "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
        "caveLiquidChanceRange" : [50, 100],
        "biome" : [
-         [0, [ "mountainous", "mountainous2", "mountainous3", "mountainous4" ] ]
+         [0, [ "mountainous" ] ]
        ]
      }
    },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous2",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous2" ] ]
+       ]
+     }
+   },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous3",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous3" ] ]
+       ]
+     }
+   },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous4",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous4" ] ]
+       ]
+     }
+   },  
    
  {"op" : "add",
  "path": "/regionTypes/tidewater",
@@ -5920,9 +5986,9 @@
           "secondaryRegions" : [ "energyorbforestaether2", "deepseaventaether", "crystaldesertaether", "supermatterzoneaether"  ],
           
           "dungeons" : [ 
-          [1.0, "wreckunderwater"], 
-          [1.0, "hylotlruinedcity"], 
-          [1.0, "hylotloceancity"]
+          [1.0, "wreckunderwateraether"], 
+          [1.0, "hylotlruinedcityaether"], 
+          [1.0, "hylotloceancityaether"]
           ]        
         },
         "underground1" : {
@@ -7482,7 +7548,25 @@
         [0, [ "wastelandmini"] ]
       ]
     }
+  },  
+  
+  {"op" : "add", 
+  "path" : "/regionTypes/wastelandminimoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "blacktar", "darkwater", "gravrain", "lava", "poison", "bio_ooze" ],
+      "caveLiquidChanceRange" : [25, 95],
+      
+      "blockSelector" : [ "remixedSurface", "remixedMildSurface","remixedMountainsSurface", "remixedFlatsSurface" ],
+      "subBlockSelector" : [ "largeClumps" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves" ],
+      
+      "biome" : [
+        [0, [ "wastelandminimoon"] ]
+      ]
+    }
   },   
+  
   {"op" : "add", 
   "path" : "/regionTypes/fleshcore",
   "value" : 

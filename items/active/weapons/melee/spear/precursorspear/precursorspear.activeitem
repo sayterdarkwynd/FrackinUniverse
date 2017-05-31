@@ -1,0 +1,53 @@
+{
+  "itemName" : "precursorspear",
+  "price" : 12000,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Ancient and sophisticated.
+^cyan;Inflicts Vulnerability^reset;",
+  "shortdescription" : "Precursor Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","energy", "upgradeableWeapon"],
+
+  "inventoryIcon" : "precursorspear.png",
+
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "precursorspear.png",
+    "bladefullbright" : "precursorspearfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.872,
+    "baseDps" : 12.0,
+    "damageConfig" : {
+      "statusEffects" : [ "radiationburn" ],
+      "knockback" : 35,
+       "damageSourceKind" : "radioactive"
+    }
+  },
+  "altAbilityType" : "elementalspin",
+  "altAbility" : { },
+
+  "critChance" : 5,
+  "critBonus" : 6,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

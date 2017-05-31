@@ -20,7 +20,7 @@
     "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
   },      
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/gun/revolver2.ogg" ] }  
+    "sounds" : { "fire" : [ "/sfx/weapons/explosion-large01.ogg" ] }  
   },
 
   "baseOffset" : [0.7, 0.34],
@@ -33,7 +33,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.6,
+    "fireTime" : 1.2,
     "baseDps" : 12.6,
     "energyUsage" : 55,
     "fireType" : "auto",
@@ -42,7 +42,13 @@
     "projectileType" : "bullet-2",
     "projectileParameters" : {
       "speed" : 75,
-      "knockback" : 4
+      "knockback" : 12,
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/eldercarbineboom.config"
+	    }   
+      ]
     },
     "stances" : {
       "idle" : {

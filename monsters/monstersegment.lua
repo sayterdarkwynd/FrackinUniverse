@@ -118,16 +118,16 @@ function init()
   end
   if self.segments > 0 then 
 	self.child = world.spawnMonster(self.child, mcontroller.position(),
-	{
-	head = self.head and self.head or config.getParameter("head"), 
-	parent = entity.id(), 
-	segmentMonster = config.getParameter("segmentMonster"),
-  totalSegments = self.totalSegments and self.totalSegments or config.getParameter("totalSegments"),
-	segments = self.segments - 1, 
-	parentRadius = config.getParameter("radius"),
-  damageBar = false,
-  dynamic = config.getParameter("dynamicSegments") or config.getParameter("dynamic"),
-	renderLayer = "foregroundEntity+"..tostring(self.segments)})
+  	{
+  	head = self.head and self.head or config.getParameter("head"), 
+  	parent = entity.id(), 
+  	segmentMonster = config.getParameter("segmentMonster"),
+    totalSegments = self.totalSegments and self.totalSegments or config.getParameter("totalSegments"),
+  	segments = self.segments - 1, 
+  	parentRadius = config.getParameter("radius"),
+    damageBar = false,
+    dynamic = config.getParameter("dynamicSegments") or config.getParameter("dynamic"),
+  	renderLayer = "foregroundEntity+"..tostring(self.segments)})
   end 
 end
 

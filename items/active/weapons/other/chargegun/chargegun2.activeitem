@@ -1,0 +1,106 @@
+{
+  "itemName" : "chargegun2",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Bad things are unleashed upon those who wait.",
+  "shortdescription" : "Charge Gun",
+  "tooltipKind" : "gun",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged"],
+  "level" : 1,
+
+  "inventoryIcon" : "chargegunicon.png",
+
+  "animation" : "chargegun.animation",
+  "animationParts" : {
+    "gun" : "chargegun.png",
+    "gunfullbright" : "chargegunfullbright.png"
+  },
+  "animationCustom" : {
+  
+     "animatedParts":{
+        "parts":{ 
+          "gunfullbright":{
+            "partStates" : {
+               "firing":{ 
+			"charge":{
+			  "properties":{
+			    "image":"<partImage>:charge.<frame>?replace;CBDFDF=808080;B4BEBE=606060?hueshift=180"
+			  }
+			},
+			"fire":{
+			  "properties":{
+			    "image":"<partImage>:fire?replace;CBDFDF=808080;B4BEBE=606060?hueshift=180"
+			  }
+			},
+			"fullcharge":{
+			  "properties":{
+			     "image":"<partImage>:fullcharge.<frame>?replace;CBDFDF=808080;B4BEBE=606060?hueshift=180"
+			   }
+			},
+			"off":{
+			  "properties":{
+			    "image":"<partImage>:empty?replace;CBDFDF=808080;B4BEBE=606060"
+			  }
+			}               
+               }
+            }
+          }
+        }
+     }
+  },
+  
+  "muzzleOffset" : [2.5, 0.5],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "chargefire",
+  "primaryAbility" : {
+    "chargeLevels" : [
+                {
+                  "baseDamage":3,
+                  "cooldown":0.25,
+                  "energyCost":10,
+                  "fireSound":"fire",
+                  "inaccuracy":0,
+                  "projectileCount":1,
+                  "projectileParameters":{},
+                  "projectileType":"doomshot",
+                  "time":0
+                },
+                {
+                  "baseDamage":3,
+                  "cooldown":0.25,
+                  "energyCost":20,
+                  "fireSound":"fire",
+                  "inaccuracy":0,
+                  "projectileCount":100,
+                  "projectileParameters":{},
+                  "projectileType":"doomshot",
+                  "spreadAngle":10,
+                  "time":0.5
+                },
+                {
+                  "baseDamage":100,
+                  "cooldown":0.25,
+                  "energyCost":1990,
+                  "fireSound":"fire",
+                  "inaccuracy":0,
+                  "projectileCount":9,
+                  "projectileParameters":{
+                    "foregroundRadius":5,
+                    "statusEffects":["l6doomed"]
+                  },
+                  "projectileType":"energywave",
+                  "spreadAngle":10,
+                  "time":1
+                }
+    ]
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -5,34 +5,42 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Bonus:^cyan; Immune to all Radiation. Immune to Shadow Taint. 50% Cosmic and 50% Shadow resistance.^reset;",
+  "description" : "Bonus:
+^cyan; Immune to all Radiation. Immune to Shadow Taint.^reset;
+^#e43774;50% Cosmic and 50% Shadow resistance.^reset;",
   "shortdescription" : "Mask of the Necro-King",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
   "level" : 6,
-  "statusEffects" : [
+  
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.82
-    },  
+      "baseMultiplier" : 1.35
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 23
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 17
+      "amount" : 5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 17
-    },
+      "amount" : 7
+    }  
+  ],
+  
+  "statusEffects" : [
     {
       "stat" : "shadowResistance",
       "amount" : 0.5

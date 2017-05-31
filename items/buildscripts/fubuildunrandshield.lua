@@ -20,6 +20,7 @@ function build(directory, config, parameters, level, seed)
 
   -- tooltip fields
   config.tooltipFields = {}
+  config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
   config.tooltipFields.healthLabel = util.round(configParameter("baseShieldHealth", 0) * root.evalFunction("shieldLevelMultiplier", configParameter("level", 1)), 0)
   config.tooltipFields.cooldownLabel = parameters.cooldownTime or config.cooldownTime
   config.tooltipFields.blockLabel = configParameter("perfectBlockTime")

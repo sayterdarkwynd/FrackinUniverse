@@ -33,12 +33,55 @@
       "foundTargetActions" : [],
       "fleeActions" : [],
 
-      "hostileActions" : [
+      "hostileActions" : [    
+	{
+          "name" : "action-fire",
+	  "cooldown" : 6,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 24,
+            "minimumRange" : 6,
+            "windupState" : "die",
+            "windupSound" : "aggroHop",
+            "windupTime" : 0,
+            "projectileType" : "distortionbomb",
+            "projectileParameters" : {
+              "timeToLive" : 3,
+              "physics" : "grenade",
+              "speed" : 44,
+              "bounces" : 2,
+              "damageSourceKind" : "radioactive",
+              "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+		    },
+		    {
+		      "action" : "projectile",
+		      "type" : "fuhgravityexplosion",
+		      "fuzzAngle" : 0,
+		      "inheritDamageFactor" : 0.15,
+		      "angleAdjust" : 0
+		    }   		    
+              ]
+            },
+            "power" : 12,
+            "speed": 0,
+            "fireOffset" : [1.5, 0.4],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "fireSound" : "pew",
+            "fireDelay" : 1.5,
+            "fireState" : "",
+            "winddownState" : "die2",
+            "winddownTime" : 1.0
+          }
+        },      
         {
           "name" : "action-charge",
           "cooldown" : 5.4,
           "parameters" : {
-            "maximumRange" : 20,
+            "maximumRange" : 24,
             "windupState" : "chargewindup",
             "windupTime" : 1.15,
             "windupSound" : "charge",
@@ -53,38 +96,10 @@
             "winddownStopForce" : 1000,
             "winddownState" : "chargewinddown"
           }
-        },      
+        },              
         {
           "name" : "action-fire",
-	  "cooldown" : 6,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 7,
-            "minimumRange" : 0,
-            "windupState" : "taunt",
-            "windupSound" : "",
-            "windupTime" : 1.3,
-            "projectileType" : "distortionbomb",
-            "projectileParameters" : {
-              "timeToLive" : 3,
-              "physics" : "grenade",
-              "speed" : 20,
-              "damageSourceKind" : "radioactive"
-            },
-            "power" : 10,
-            "speed": 0,
-            "fireOffset" : [4.5, 2],
-            "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "fireSound" : "",
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 1.1
-          }
-        },         
-        {
-          "name" : "action-fire",
-	  "cooldown" : 2,
+	  "cooldown" : 4,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 7,
@@ -131,12 +146,75 @@
         }      
       ],
 
-      "periodicActions" : [
-           
-      ],
+      "periodicActions" : [],
       
       "damageTakenActions" : [
-      
+	{
+          "name" : "action-fire",
+          "cooldown" : 5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 50,
+            "minimumRange" : 0,
+            "windupState" : "die5",
+            "windupSound" : "aggroHop",
+            "windupTime" : 0,
+            "projectileType" : "healingzone",
+            "projectileParameters" : {
+              "timeToLive" : 2
+            },
+            "power" : 12,
+            "speed": 0,
+            "fireOffset" : [1.5, 0.4],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            
+            "fireSound" : "pew",
+            "fireDelay" : 1.5,
+            "fireState" : "",
+            "winddownState" : "die6",
+            "winddownTime" : 1.0
+          }
+        },      
+	{
+          "name" : "action-fire",
+          "cooldown" : 4.9,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 24,
+            "minimumRange" : 4,
+            "windupState" : "die3",
+            "windupSound" : "aggroHop",
+            "windupTime" : 0,
+            "inaccuracy" : 1.0,
+            "projectileType" : "distortionbomb2",
+            "projectileParameters" : {
+              "timeToLive" : 3,
+              "physics" : "grenade",
+              "speed" : 64,
+              "fullbright" : true,
+              "bounces" : 2,
+              "damageSourceKind" : "radioactive",
+              "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/burstexplosion/radioactiveburstexplosion.config"
+		    }		    
+              ]
+            },
+            "power" : 12,
+            "speed": 0,
+            "fireOffset" : [1.5, 0.4],
+            "aimAtTarget" : false,
+            "projectileCount" : 3,
+            
+            "fireSound" : "pew",
+            "fireDelay" : 1.5,
+            "fireState" : "",
+            "winddownState" : "die4",
+            "winddownTime" : 1.0
+          }
+        }      
       ],
       
       "approachActions" : [
@@ -188,16 +266,70 @@
         }
       ],
 
-      "concurrentActions" : [ ],
-      "concurrentHostileActions" : [           
+      "concurrentActions" : [],
+      
+      "concurrentHostileActions" : [ 
+        {
+          "name" : "action-trail-charge",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "maximumRange" : 24,
+            "minimumRange" : 5,
+            "windupTime" : 1.4,
+            "winddownTime" : 0.5,
+            "chargeSpeed" : 55,
+            "chargeControlForce" : 450,
+            "chargeTime" : 1.5,
+            "aimAtTarget" : true,
+            "wallKnockback" : true,
+            "knockbackThreshold": 3,
+
+
+            "projectileType" : "firefinish",
+            "projectileParameters" : {},
+            "projectileInterval" : 0.05,
+            "offset" : [0,-1],
+            "power" : 0,
+            "scalePower" : false
+
+          }
+        },        
+	{
+          "name" : "action-fire",
+          "cooldown" : 8,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 50,
+            "minimumRange" : 0,
+            "windupState" : "die5",
+            "windupSound" : "aggroHop",
+            "windupTime" : 0,
+            "inaccuracy" : 1.0,
+            "projectileType" : "healingzone",
+            "projectileParameters" : {
+              "timeToLive" : 2.0
+            },
+            "power" : 12,
+            "speed": 0,
+            "fireOffset" : [1.5, 0.4],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            
+            "fireSound" : "pew",
+            "fireDelay" : 1.5,
+            "fireState" : "",
+            "winddownState" : "die6",
+            "winddownTime" : 1.0
+          }
+        },         
         {
           "name" : "action-statuseffect", 
           "cooldown" : 50,
           "parameters" : {
-          "effect" : "nofalldamage",
-          "duration" : 50
+            "effect" : "nofalldamage",
+            "duration" : 50
           }
-        },              
+        },       
         {
           "name" : "action-leap", 
           "cooldown" : 3,
@@ -208,7 +340,7 @@
             "windupTime" : 0.3,
             "windupState" : "idle",
 
-            "leapVelocity" : 75,
+            "leapVelocity" : 55,
             "collisionCheck" : true,
             "highArc" : true,
             "leapState" : "jump",

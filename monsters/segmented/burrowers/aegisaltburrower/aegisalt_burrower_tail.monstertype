@@ -28,21 +28,7 @@
       "keepTargetInSight" : false,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
-
-      "foundTargetActions" : [],
-
-      "fleeActions" : [],
-
-      "hostileActions" : [],
-
-      "periodicActions" : [],
-
-      "approachActions" : [],
-
-      "followActions" : [],
-
-      "wanderActions" : [],
-
+      
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -56,7 +42,7 @@
           }
         }
       ]
-      
+
     },
 
     "touchDamage" : {
@@ -111,14 +97,8 @@
       "primaryScriptDelta" : 5,
 
       "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 500
-        },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 500
         },
         "protection" : {
           "baseValue" : 0.0
@@ -133,13 +113,13 @@
           "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "fireStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.25
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
@@ -148,13 +128,31 @@
           "baseValue" : 0.0
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "poisonResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
+        },
+        "shadowResistance" : {
+         "baseValue" : 0.75 
+        },
+        "shadowStatusImmunity" : {
+         "baseValue" : 0.75
+        },
+        "cosmicStatusImmunity" : { 
+         "baseValue" : -1.0 
+        },
+        "cosmicResistance" : { 
+         "baseValue" : -1.0 
+        },
+        "radioactiveStatusImmunity" : { 
+        "baseValue" : 0.5
+        },
+        "radioactiveResistance" : { 
+        "baseValue" : 0.75
         }
       },
 
@@ -171,11 +169,12 @@
       }
     },
 
+
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : false,
     "segments" : 0,
-    "segmentMonster" : "aegisalt_burrowersegment",
+    "segmentMonster" : "aegisalt_burrower_segment",
     "radius" : 1.2,
     "burrowProjectile" : "direstoneburrow",
     "burrowBurstProjectile" : "direstoneburrowburst"

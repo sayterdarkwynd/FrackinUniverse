@@ -27,81 +27,72 @@
       "keepTargetInSight" : false,
       "keepTargetInRange" : 80,
       "targetOutOfSightTime" : 5.0,
-
-      "damageTakenActions" : [
-      ],
-
+      "damageTakenActions" : [ ],
       "foundTargetActions" : [ ],
-
-      "fleeActions" : [ ],
-      
-      "hostileActions" : [
-      ],
+      "fleeActions" : [ ],    
+      "hostileActions" : [ ],
       "periodicActions" : [ ],
-
       "approachActions" : [
         {
-          "name" : "approach-fly",
+          "name" : "approach-fly-liquids",
           "parameters" : {
-    	    "minRange" : 1,
-    	    "maxRange" : 1,
-    	    "targetOffset" : [0,-6],
-    	    "avoidLiquid" : false,
-    	    "usePathfinding" : false,
+          "minRange" : 1,
+          "maxRange" : 1,
+          "targetOffset" : [0,-6],
+          "avoidLiquid" : false,
+          "usePathfinding" : false,
+          "approachAngle" : 5,
           "stopForce" : 30
           }
         }
       ],
-
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-          }
-        }
-      ],
-
       "wanderActions" : [
         {
           "name" : "wander-fly",
-      	  "parameters" : {
-            "ceilingDistance" : 2,
-      	    "groundDistance" : 2,
+          "parameters" : {
+            "ceilingDistance" : 3,
+            "groundDistance" : 16,
             "xVelocity": 12,
-            "yVelocity": 16
-      	  }
+            "yVelocity": 18
+          }
         }
       ],
-      "concurrentHostileActions" : [
-    	{
-    	  "name" : "action-burroweffect"
-    	},
-    	{
-    	  "name" : "action-aim-head"
-    	}
+       "concurrentHostileActions" : [
+        {
+          "name" : "action-burroweffect"
+        },
+        {
+          "name" : "action-aim-head"
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.75,
+          "parameters" : {
+            "projectileType" : "dirtburrow"
+          }
+        }  
       ],
-      "concurrentActions" : [
-    	{
-    	  "name" : "action-burroweffect"
-    	},
-    	{
-    	  "name" : "action-aim-head"
-    	}
-           
+       "concurrentActions" : [
+        {
+          "name" : "action-burroweffect"
+        },
+        {
+          "name" : "action-aim-head"
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.75,
+          "parameters" : {
+            "projectileType" : "dirtburrow"
+          }
+        }
       ],
 
       "deathActions" : [
         {
           "name" : "action-projectile",
           "parameters" : {
-            "projectileCount" : 1,
             "projectileType" : "leaddeath",
-            "projectileParameters" : {},
             "power" : 0,
             "aimDirection" : [0, 0],
             "fireOffset" : [0, 0]
@@ -122,6 +113,7 @@
 
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
+
 
     "movementSettings" : {
 
@@ -164,19 +156,17 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0
+          "baseValue" : -1
         },
-        "knockbackThreshold" : {
-          "baseValue" : 999
-        },
+        "knockbackThreshold" : {"baseValue" : 999 },
         "grit" : {
-          "baseValue" : 0.67
+          "baseValue" : 1.0
         },
         "maxHealth" : {
           "baseValue" : 500
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 25.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -188,28 +178,46 @@
           "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
         },
         "poisonResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.75
+        },
+        "shadowResistance" : {
+         "baseValue" : 0.25 
+        },
+        "shadowStatusImmunity" : {
+         "baseValue" : 0.25
+        },
+        "cosmicStatusImmunity" : { 
+         "baseValue" : 0.0 
+        },
+        "cosmicResistance" : { 
+         "baseValue" : 0.0 
+        },
+        "radioactiveStatusImmunity" : { 
+        "baseValue" : 0.5
+        },
+        "radioactiveResistance" : { 
+        "baseValue" : 0.75
         }
       },
 

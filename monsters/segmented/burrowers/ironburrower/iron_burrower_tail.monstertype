@@ -6,7 +6,7 @@
  "categories" : [ "iron_burrower_tail" ],
   "parts" : [ "body" ],
 
-  "animation" : "iron_burrower.animation",
+  "animation" : "iron_burrower_segment.animation",
 
   "dropPools" : [ ],
 
@@ -111,14 +111,8 @@
       "primaryScriptDelta" : 5,
 
       "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 500
-        },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 500
         },
         "protection" : {
           "baseValue" : 0.0
@@ -133,13 +127,13 @@
           "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "fireStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -1.0
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
@@ -148,13 +142,31 @@
           "baseValue" : 0.0
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "poisonResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
+        },
+        "shadowResistance" : {
+         "baseValue" : 0.5 
+        },
+        "shadowStatusImmunity" : {
+         "baseValue" : 0.5
+        },
+        "cosmicStatusImmunity" : { 
+         "baseValue" : -0.5 
+        },
+        "cosmicResistance" : { 
+         "baseValue" : -0.5 
+        },
+        "radioactiveStatusImmunity" : { 
+        "baseValue" : 0.5
+        },
+        "radioactiveResistance" : { 
+        "baseValue" : 0.75
         }
       },
 
@@ -170,6 +182,7 @@
         }
       }
     },
+
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],

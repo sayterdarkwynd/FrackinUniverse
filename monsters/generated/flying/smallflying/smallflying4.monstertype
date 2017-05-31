@@ -1,0 +1,194 @@
+{
+  "type" : "smallflying4",
+
+  "categories" : [ "smallflying" ],
+  "parts" : [ "body", "head", "wings" ],
+  "partParameters" : "smallflying.partparams",
+
+  "animation" : "smallflying.animation",
+  "reversed" : true,
+
+  "dropPools" : [
+    {
+      "default" : "generatedFlyingMonsterTreasure",
+      "bow" : "huntingflying",
+      "brain" : "brain"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : false,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      // Attack specific parameters
+      "swoopVelocity" : 30,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,5],
+            "minRange" : 3,
+            "maxRange" : 12
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,5],
+            "minRange" : 3,
+            "maxRange" : 12
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "cooldown" : [2,20],
+          "parameters" : {
+            "wanderTime" : [10,40],
+            "groundDistance" : 20,
+            "ceilingDistance" : 10,
+            "xVelocity" : 9,
+            "yVelocity" : 12
+          }
+        },
+        {
+          "name" : "land-fly",
+          "parameters" : {
+            "flySpeed" : 15,
+            "flyControlForce" : 25,
+            "landCheckDistance" : 40,
+            "idleTime" : 40
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ]
+    },
+    
+    "skillCount" : 4,
+    "baseSkills" : [ "divebombAttack", "raptorswoopAttack" ],
+    "specialSkills" : [
+			    "flyingSwoopAttack",
+			    "pigeonSwoopAttack" 
+    			],
+    "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "gravityEnabled" : false,
+      "collisionPoly" : [ [0.625, 1], [1, 0.625], [1, -0.625], [0.625, -1], [-0.625, -1], [-1, -0.625], [-1, 0.625], [-0.625, 1] ],
+
+      "mass" : 1.0,
+      "flySpeed" : 12,
+      "airFriction" : 1,
+      "airForce" : 40.0
+    },
+
+    "knockoutTime" : 0,
+    "knockoutEffect" : "blink",
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+
+    "colors" : "generated",
+
+    "touchDamage" : {
+      "poly" : [ [0.625, 1], [1, 0.625], [1, -0.625], [0.625, -1], [-0.625, -1], [-1, -0.625], [-1, 0.625], [-0.625, 1] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 42
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

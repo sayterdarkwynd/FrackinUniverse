@@ -1,0 +1,30 @@
+{
+  "projectileName" : "fungravityexplosion2",
+  "image" : "fungravityexplosion.png",
+  "animationCycle" : 0.6,
+  "animationLoops" : false,
+  "physics" : "illusion",
+  "frameNumber" : 6,
+  "pointLight" : false,
+  "speed" : 0,
+  "power" : 0.0,
+  "emitters" : [ "defaultblue" ],
+  "bounces" : -1,
+
+  "timeToLive" : 0.6,
+
+  "orientationLocked" : true,
+
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 8,
+      "innerRadius" : 4,
+      "baseTargetRadialVelocity" : 120,
+      "controlForce" : 420,
+      "categoryWhitelist" : [ "monster", "npc", "vehicle", "itemdrop" ]
+    }
+  },
+
+  "clientEntityMode" : "ClientSlaveOnly"
+}

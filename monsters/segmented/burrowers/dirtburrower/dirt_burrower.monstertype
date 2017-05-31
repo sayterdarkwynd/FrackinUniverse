@@ -26,18 +26,11 @@
       "keepTargetInSight" : false,
       "keepTargetInRange" : 80,
       "targetOutOfSightTime" : 5.0,
-
-      "damageTakenActions" : [
-      ],
-
+      "damageTakenActions" : [ ],
       "foundTargetActions" : [ ],
-
-      "fleeActions" : [ ],
-      
-      "hostileActions" : [
-      ],
+      "fleeActions" : [ ],    
+      "hostileActions" : [ ],
       "periodicActions" : [ ],
-
       "approachActions" : [
         {
           "name" : "approach-fly-liquids",
@@ -47,52 +40,51 @@
     	    "targetOffset" : [0,-6],
     	    "avoidLiquid" : false,
     	    "usePathfinding" : false,
+          "approachAngle" : 5,
           "stopForce" : 30
           }
         }
       ],
-
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-          }
-        }
-      ],
-
       "wanderActions" : [
         {
           "name" : "wander-fly",
       	  "parameters" : {
-            "ceilingDistance" : 2,
-      	    "groundDistance" : 2,
+            "ceilingDistance" : 3,
+      	    "groundDistance" : 16,
             "xVelocity": 12,
-            "yVelocity": 16
+            "yVelocity": 18
       	  }
         }
       ],
        "concurrentHostileActions" : [
-	{
-	  "name" : "action-burroweffect"
-	},
-	{
-	  "name" : "action-aim-head"
-	}
-       
+      	{
+      	  "name" : "action-burroweffect"
+      	},
+      	{
+      	  "name" : "action-aim-head"
+      	},
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.75,
+          "parameters" : {
+            "projectileType" : "dirtburrow"
+          }
+        }  
       ],
        "concurrentActions" : [
-	{
-	  "name" : "action-burroweffect"
-	},
-	{
-	  "name" : "action-aim-head"
-	}
-       
+      	{
+      	  "name" : "action-burroweffect"
+      	},
+      	{
+      	  "name" : "action-aim-head"
+      	},
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.75,
+          "parameters" : {
+            "projectileType" : "dirtburrow"
+          }
+        }
       ]
     },
 
@@ -152,35 +144,33 @@
         "knockbackStunTime" : {
           "baseValue" : -1
         },
-        "knockbackThreshold" : {
-          "baseValue" : 999
-        },
+        "knockbackThreshold" : {"baseValue" : 999 },
         "grit" : {
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 667
+          "baseValue" : 500
         },
         "protection" : {
-          "baseValue" : 0.2
+          "baseValue" : 25.0
         },
         "healthRegen" : {
-          "baseValue" : 0.1
+          "baseValue" : 0.0
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.15
+          "baseValue" : -0.5
         },
         "fireStatusImmunity" : {
-          "baseValue" : 0.35
+          "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
@@ -192,28 +182,28 @@
           "baseValue" : 0.75
         },
         "poisonResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.35
+          "baseValue" : 0.75
         },
         "shadowResistance" : {
-         "baseValue" : 0.95 
+         "baseValue" : 0.25 
         },
         "shadowStatusImmunity" : {
-         "baseValue" : 1.0 
+         "baseValue" : 0.25
         },
         "cosmicStatusImmunity" : { 
          "baseValue" : 0.0 
         },
         "cosmicResistance" : { 
-         "baseValue" : -1.0 
+         "baseValue" : 0.0 
         },
         "radioactiveStatusImmunity" : { 
-        "baseValue" : 0.35 
+        "baseValue" : 0.5
         },
         "radioactiveResistance" : { 
-        "baseValue" : 0.0 
+        "baseValue" : 0.75
         }
       },
 
@@ -235,6 +225,8 @@
     "capturable" : false,
     "segments" : 5,
     "segmentMonster" : ["dirt_burrower_tail", "dirt_burrower_segment", "dirt_burrower_segment", "dirt_burrower_segment", "dirt_burrower_segment"],
-    "radius" : 1.2
+    "radius" : 1.2,
+    "burrowProjectile" : "dirtburrow",
+    "burrowBurstProjectile" : "dirtburrowburst"
   }
 }
