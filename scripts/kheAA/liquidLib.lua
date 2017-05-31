@@ -10,7 +10,7 @@ liquidLib.liquidIds[65]="sand";
 liquidLib.liquidIds[64]="liquidbioooze";
 liquidLib.liquidIds[63]="fu_nitrogen";
 liquidLib.liquidIds[62]="fu_hydrogen";
-liquidLib.liquidIds[61]="liquidcrystal";
+liquidLib.liquidIds[61]="liquidbeer";
 liquidLib.liquidIds[60]="liquiddarkwater";
 liquidLib.liquidIds[59]="liquidcrystal";
 liquidLib.liquidIds[58]="liquidwastewater";
@@ -51,6 +51,8 @@ function liquidLib.init()
 	if storage.liquidOuts == nil then
 		storage.liquidOuts = {};
 	end
+	storage.liquidInNode = config.getParameter("kheAA_liquidInNode")
+	storage.liquidOutNode = config.getParameter("kheAA_liquidOutNode")
 end
 
 function liquidLib.itemToLiquidId(item)

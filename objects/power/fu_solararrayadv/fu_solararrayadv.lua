@@ -1,3 +1,6 @@
+require "/objects/power/isn_sharedpowerscripts.lua"
+require "/objects/isn_sharedobjectscripts.lua"
+
 function init()
 	
 	storage.checkticks = 0

@@ -1,7 +1,13 @@
+require "/objects/power/isn_sharedpowerscripts.lua"
+require "/objects/isn_sharedobjectscripts.lua"
 require "/scripts/kheAA/transferUtil.lua"
+
 local deltaTime=0
+
 function init()
 	transferUtil.init()
+	isn_powerInit()
+	
     object.setInteractive(true)
     object.setSoundEffectEnabled(false)
    
@@ -12,19 +18,40 @@ function init()
     if storage.active == nil then storage.active = true end
     if storage.batteryHold == nil then storage.batteryHold = false end
 end
- 
-function onInputNodeChange(args)
-    storage.active =  not object.isInputNodeConnected(0) or (object.isInputNodeConnected(0) and object.getInputNodeLevel(0))
+
+function onNodeConnectionChange()
+	nodeStuff()
+end
+function onInputNodeChange()
+	nodeStuff()
+end
+
+function nodeStuff()
+	storage.active=false
+	if storage.logicInNode then
+		if (not object.isInputNodeConnected(storage.logicInNode)) or object.getInputNodeLevel(storage.logicInNode) then
+			--sb.logInfo("checkvalid: %s",isn_checkValidOutput())
+			if isn_checkValidOutput() then
+				if true then
+					storage.active=true
+				end
+			end
+		end
+	end
+	if storage.logicOutNode then
+		object.setOutputNodeLevel(storage.logicOutNode,storage.active)
+	end
 end
  
 function update(dt)
 	if deltaTime > 1 then
 		deltaTime=0
+		nodeStuff()
 		transferUtil.loadSelfContainer()
 	else
 		deltaTime=deltaTime+dt
 	end
-	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
+	local devices = isn_getAllDevicesConnectedOnNode(storage.powerOutNode,"output")
 	-- sb.logInfo("devices found: %s", devices)
 	local fullBattery = false
 	local spendingPower = false
@@ -73,7 +100,7 @@ function update(dt)
 
 
  
-    if not storage.active or storage.batteryHold then
+    if (not storage.active) or storage.batteryHold then
         return
     end
  
@@ -108,14 +135,8 @@ function update(dt)
     end
 end
  
-function isn_getCurrentPowerOutput(divide)
+function isn_getCurrentPowerOutput()
     if storage.batteryHold or not storage.active then return 0 end
- 
-    ---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG aka TGCPOD")
-    local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
-    ---sb.logInfo("TGCPOD: Divisor is " .. divisor)
-    if divisor < 1 then divisor = 1 end
-   
     local powercount = 0
     if storage.currentpowerprod > 70 then powercount = 20 + storage.powerprodmod
     elseif storage.currentpowerprod > 50 then powercount = 16 + storage.powerprodmod
@@ -123,12 +144,5 @@ function isn_getCurrentPowerOutput(divide)
     elseif storage.currentpowerprod > 20 then powercount = 9 + storage.powerprodmod
     elseif storage.currentpowerprod > 5 then powercount = 5 + storage.powerprodmod
     end
-    ---sb.logInfo("TGCPOD: Powercount is" .. powercount)
-   
-    ---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG END")
-    return divide and (powercount/divisor) or powercount
-end
- 
-function onNodeConnectionChange()
-    object.setOutputNodeLevel(0, isn_checkValidOutput())
+    return powercount
 end
