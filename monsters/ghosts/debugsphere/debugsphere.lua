@@ -16,6 +16,8 @@ function init()
   self.step = 0.25
   self.waveHeight = 2.5
 
+  self.amplitude = 2.5
+
 end
 
 function update(dt)
@@ -122,7 +124,48 @@ function update(dt)
   
       for i = 2, #path do
   
-        util.debugLine(path[i],path[i-1],{0,255,255})
+        util.debugLine(path[i],path[i-1],{0,128,255})
+  
+      end
+  
+    end
+
+  end
+
+  if target then
+
+    local path = {mcontroller.position()}
+    local targetPosition = world.entityPosition(target)
+    local amplitude = self.amplitude
+    local dist = vec2.sub(mcontroller.position(),targetPosition)
+    local xDist = targetPosition[1]-path[1][1]
+    local yDist = targetPosition[2]-path[1][2]
+
+    for x = 0 , xDist, xDist > 0 and math.pi/4 or -math.pi/4 do
+
+      local point
+
+      if x < math.pi then
+
+        point = {x,math.sin(x) * yDist + amplitude}
+
+      else
+
+        point = {x,math.sin(x) * amplitude + yDist}
+
+      end
+
+      path[#path+1] = vec2.add(point,path[1])
+
+    end
+
+
+    if #path > 1 then
+  
+      for i = 2, #path do
+  
+        util.debugPoint(path[i],{255,255,255})
+        util.debugLine(path[i],path[i-1],{128,255,128})
   
       end
   
