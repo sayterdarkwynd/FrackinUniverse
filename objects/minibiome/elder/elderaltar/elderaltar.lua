@@ -23,7 +23,8 @@ local recipes =
 {inputs = { eldertome=1, elderrelic12=2, elderrelic14=1 }, outputs = { cultiststaff3=1 }, time = 15.0 },
 {inputs = { nocxiumbar=6, elderrelic6=1, elderrelic11=1 }, outputs = { cultarmorhead=1 }, time = 15.0 },
 {inputs = { nocxiumbar=7, elderrelic7=1, elderrelic12=1 }, outputs = { cultarmorchest=1 }, time = 15.0 },
-{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 }
+{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 },
+{inputs = { elderrelic3=6, elderrelic5=2, elderrelic7=1 }, outputs = { elderbroadsword=1 }, time = 15.0 }
 }
 
 function init()

@@ -1,0 +1,36 @@
+{
+  "projectileName" : "lunarimicro",
+  "image" : "lunarimicro.png",
+  "physics" : "hover",
+  "animationCycle" : 2,
+  "frameNumber" : 1,
+  "renderLayer" : "Object+1",
+  "power" : 6,
+  "speed" : 0,
+  "piercing" : true,
+  "initialVelocity" : 0,
+  "fullbright" : true,
+  "timeToLive" : 2,
+  "bounces" : -1,
+  "flippable" : true,
+  "orientationLocked" : false,
+
+  "periodicActions" : [
+    {
+      "time" : 0.3,
+      "loop" : true,		    
+      "action" : "config",
+      "file" : "/projectiles/explosions/teslaboom/teslaboomsmall.config"
+    },	        
+    {
+      "time" : 0.08,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "lunarimicro2",
+      "inheritDamageFactor" :0.05,
+      "fuzzAngle" : 360
+   }	        
+  ],  
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

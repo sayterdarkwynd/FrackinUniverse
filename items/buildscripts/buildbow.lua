@@ -29,6 +29,7 @@ function build(directory, config, parameters, level, seed)
   config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))
 
   config.tooltipFields = {}
+  config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
   config.tooltipFields.subtitle = parameters.category
   config.tooltipFields.energyPerShotLabel = config.primaryAbility.energyPerShot or 0
   local bestDrawTime = (config.primaryAbility.powerProjectileTime[1] + config.primaryAbility.powerProjectileTime[2]) / 2
