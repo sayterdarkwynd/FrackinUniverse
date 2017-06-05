@@ -4,6 +4,7 @@ require "/scripts/actions/animator.lua"
 local monsterUpdate = update
 
 function playerModified(position,range)
+	print(world.isPlayerModified({position[1]-range,position[2]-range,position[1]+range,position[2]+range}))
 	return world.isPlayerModified({position[1]-range,position[2]-range,position[1]+range,position[2]+range})
 end
 
@@ -11,18 +12,20 @@ function burrowEffect(dt)
 
     self.burrowing = world.polyCollision(self.burrowPoly, mcontroller.position(), {"block"})
     if not self.burrowed == self.burrowing then
-    	if not playerModified(mcontroller.position(),2) then
+    	--if not playerModified(mcontroller.position(),1) then
+    	--	print('ding',mcontroller.position()[1],mcontroller.position()[2])
 			world.spawnProjectile(self.burrowBurstProjectile, mcontroller.position())
-    	end
+    	--end
     	animator.burstParticleEmitter("groundBurstEmitter")
     	animator.setParticleEmitterActive("behindGroundEmitter", self.burrowing)
   		animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
     else  
 	self.burrowTick = self.burrowTick - dt
 	if self.burrowTick <= 0  and self.burrowing then
-		if not playerModified(mcontroller.position(),1) then
+		--if not playerModified(mcontroller.position(),1) then
+	    --	print('dong',mcontroller.position()[1],mcontroller.position()[2])
 	    	world.spawnProjectile(self.burrowProjectile, mcontroller.position())
-	    end
+	    --end
 	    self.burrowTick = self.burrowTimer
 	end
     end
