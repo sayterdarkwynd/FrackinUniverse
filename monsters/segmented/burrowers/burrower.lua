@@ -3,18 +3,29 @@ require "/scripts/actions/animator.lua"
 
 local monsterUpdate = update
 
+function playerModified(position,range)
+	print(world.isPlayerModified({position[1]-range,position[2]-range,position[1]+range,position[2]+range}))
+	return world.isPlayerModified({position[1]-range,position[2]-range,position[1]+range,position[2]+range})
+end
+
 function burrowEffect(dt)
 
     self.burrowing = world.polyCollision(self.burrowPoly, mcontroller.position(), {"block"})
-    if not self.burrowed == self.burrowing then 
-	world.spawnProjectile(self.burrowBurstProjectile, mcontroller.position())
+    if not self.burrowed == self.burrowing then
+    	--if not playerModified(mcontroller.position(),1) then
+    	--	print('ding',mcontroller.position()[1],mcontroller.position()[2])
+			world.spawnProjectile(self.burrowBurstProjectile, mcontroller.position())
+    	--end
     	animator.burstParticleEmitter("groundBurstEmitter")
     	animator.setParticleEmitterActive("behindGroundEmitter", self.burrowing)
-  	animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
+  		animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
     else  
 	self.burrowTick = self.burrowTick - dt
 	if self.burrowTick <= 0  and self.burrowing then
-	    world.spawnProjectile(self.burrowProjectile, mcontroller.position())
+		--if not playerModified(mcontroller.position(),1) then
+	    --	print('dong',mcontroller.position()[1],mcontroller.position()[2])
+	    	world.spawnProjectile(self.burrowProjectile, mcontroller.position())
+	    --end
 	    self.burrowTick = self.burrowTimer
 	end
     end
@@ -31,6 +42,7 @@ end
 function update(dt)
 
 	self.parent = self.parent and self.parent or config.getParameter("parent")
+	
 	if not self.burrowTimer then
 	  self.burrowProjectile = config.getParameter("burrowProjectile", "burrow")
 	  self.burrowBurstProjectile = config.getParameter("burrowBurstProjectile", "burrowburst")
@@ -38,6 +50,7 @@ function update(dt)
 	  self.burrowTick = self.burrowTimer
 	  self.burrowPoly = config.getParameter("burrowPoly",{ {-0.45, -0.25},{-0.25, -0.45}, {0.25, -0.45}, {0.45, -0.25}, {0.45, 0.25}, {0.25, 0.45}, {-0.25, 0.45}, {-0.45, 0.25} })
 	end
+
 	if not self.followRadius then
 	  monster.setDamageBar("none")
 	  self.parentRadius =  config.getParameter("parentRadius",1)
@@ -47,6 +60,14 @@ function update(dt)
 	  self.flySpeed = movementSettings.flySpeed
 	end
 	
+	if not self.statusEffectChecked then
+		local projectileCoordinator = config.getParameter('projectileCoordinator')
+		if projectileCoordinator then
+			status.addEphemeralEffect(projectileCoordinator,1)
+		end
+		self.statusEffectChecked = true
+	end
+
 	self.monsterUpdate = self.monsterUpdate and self.monsterUpdate or monsterUpdate
 	self.monsterUpdate(dt)
 	
