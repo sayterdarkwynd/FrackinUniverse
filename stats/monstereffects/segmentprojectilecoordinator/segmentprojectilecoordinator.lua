@@ -9,9 +9,13 @@ function init()
 	local level 		= coordinator.level
 
 	self.projectile 		= config.getParameter('projectile')
-	self.timer 				= segmentNumber / totalSegments * config.getParameter("pulse")
 	self.pulse 				= config.getParameter('pulse')
 	self.power 				= config.getParameter("power",10) * level
+	if config.getParameter('reverse') == true then
+	self.timer 				= (totalSegments - segmentNumber) / totalSegments * config.getParameter("pulse")
+	else
+	self.timer 				= segmentNumber / totalSegments * config.getParameter("pulse")
+	end
 end
 
 function update(dt)
