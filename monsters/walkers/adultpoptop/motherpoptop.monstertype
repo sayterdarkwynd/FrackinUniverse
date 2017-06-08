@@ -46,37 +46,16 @@
 
       "hostileActions" : [ 
         {
-          "name" : "action-leap", 
-          "cooldown" : 5,
-          "parameters" : {
-            "minimumRange" : 0,
-            "maximumRange" : 45,
-            "maxXRange" : 45,
-            "windupTime" : 0.3,
-            "windupState" : "roar",
-
-            "leapVelocity" : 60,
-            "collisionCheck" : true,
-            "highArc" : true,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },        
-    
-        {
           "name" : "action-fire",
-	  "cooldown" : 7,
+	  "cooldown" : 5.2,
           "parameters" : {
-            "requireLineOfSight" : true,
+            "requireLineOfSight" : false,
             "maximumRange" : 20,
             "minimumRange" : 8,
             "windupState" : "fire",
             "windupTime" : 0.5,
 
-            "projectileType" : "fusoundwave",
+            "projectileType" : "fusoundwaveboss",      
             "power" : 8,
             
             "fireOffset" : [2.5, 0.3],
@@ -89,7 +68,7 @@
             "winddownState" : "",
             "winddownTime" : 0.6
           }
-        },                
+        },                             
         {
           "name" : "action-charge",
           "cooldown" : 6.0,
@@ -120,6 +99,9 @@
             "windupState" : "babyeat",
             "windupTime" : 1.1,
             "projectileType" : "bloodvomit",
+            "projectileParameters" : {
+              "statusEffects" : [ "defenseboostneg35monster" ]
+            },
             "power" : 5,
             "fireOffset" : [3.25, 0.6],
             "projectileCount" : 3,
@@ -185,8 +167,11 @@
           "parameters" : {
             "wanderTime" : [5, 15]
           }
-        },
-        {
+        }    
+      ],
+
+      "damageTakenActions" : [
+	{
           "name" : "action-fire",
           "cooldown" : 5.2,
           "parameters" : {
@@ -194,6 +179,9 @@
             "windupState" : "",
             "windupTime" : 0.01,
             "projectileType" : "electricplasmarocket",
+            "projectileParameters" : {
+              "statusEffects" : [ "electrified" ]
+            },
             "fireSound" : "", //needs explosion sound or in projectile?
             "fireState" : "jump",
             "winddownState" : "fall",
@@ -201,17 +189,31 @@
             "aimAtTarget" : false,
             "aimDirection" : [0,-1],
             "onGround" : true,
-            "fireDelay" : 0.01,
-            "projectileParameters" : {
-              
-              "statusEffects" : [ 
-                "electrified"
-              ]
-            }
+            "fireDelay" : 0.01
           }
-        }       
-      ],
+        },       
+        {
+          "name" : "action-leap", 
+          "cooldown" : 3,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 45,
+            "maxXRange" : 45,
+            "windupTime" : 0.3,
+            "windupState" : "roar",
 
+            "leapVelocity" : 60,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }     
+      ],
+      
       "concurrentActions" : [
         {
           "name" : "action-spawncompanions",
