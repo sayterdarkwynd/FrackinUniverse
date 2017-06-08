@@ -46,17 +46,40 @@
 
       "hostileActions" : [ 
         {
+          "name" : "action-leap", 
+          "cooldown" : 3,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 45,
+            "maxXRange" : 45,
+            "windupTime" : 0.3,
+            "windupState" : "roar",
+
+            "leapVelocity" : 60,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },      
+        {
           "name" : "action-fire",
 	  "cooldown" : 5.2,
           "parameters" : {
             "requireLineOfSight" : false,
             "maximumRange" : 20,
             "minimumRange" : 8,
-            "windupState" : "fire",
+            "windupState" : "fire2",
             "windupTime" : 0.5,
 
             "projectileType" : "fusoundwaveboss",      
             "power" : 8,
+            "projectileParameters" : {
+              "renderLayer" : "Monster+1"
+            },
             
             "fireOffset" : [2.5, 0.3],
             "aimAtTarget" : true,
@@ -71,7 +94,7 @@
         },                             
         {
           "name" : "action-charge",
-          "cooldown" : 6.0,
+          "cooldown" : 3.0,
           "parameters" : {
             "maximumRange" : 15,
             "windupState" : "chargewindup",
@@ -100,6 +123,7 @@
             "windupTime" : 1.1,
             "projectileType" : "bloodvomit",
             "projectileParameters" : {
+              "renderLayer" : "Monster+1",
               "statusEffects" : [ "defenseboostneg35monster" ]
             },
             "power" : 5,
@@ -173,13 +197,15 @@
       "damageTakenActions" : [
 	{
           "name" : "action-fire",
-          "cooldown" : 5.2,
+          "cooldown" : 2.2,
           "parameters" : {
 
             "windupState" : "",
             "windupTime" : 0.01,
             "projectileType" : "electricplasmarocket",
             "projectileParameters" : {
+              "timeToLive" : 0.2,
+              "renderLayer" : "Monster+1",
               "statusEffects" : [ "electrified" ]
             },
             "fireSound" : "", //needs explosion sound or in projectile?
@@ -191,7 +217,21 @@
             "onGround" : true,
             "fireDelay" : 0.01
           }
-        },       
+        }        
+      ],
+      
+      "concurrentActions" : [
+        {
+          "name" : "action-spawncompanions",
+          "parameters" : {
+            "maxCount" : 3,
+            "spawnCooldown" : 5.0,
+            "monsterType" : "poptop"
+          }
+        }       
+      ],
+      
+      "concurrentHostileActions" : [  
         {
           "name" : "action-leap", 
           "cooldown" : 3,
@@ -211,41 +251,7 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        }     
-      ],
-      
-      "concurrentActions" : [
-        {
-          "name" : "action-spawncompanions",
-          "parameters" : {
-            "maxCount" : 3,
-            "spawnCooldown" : 5.0,
-            "monsterType" : "poptop"
-          }
-        }       
-      ],
-      
-      "concurrentHostileActions" : [  
-        {
-          "name" : "action-charge",
-          "cooldown" : 3.0,
-          "parameters" : {
-            "maximumRange" : 15,
-            "windupState" : "chargewindup",
-            "windupTime" : 0.3,
-
-            "chargeTime" : 0.05,
-            "chargeSpeed" : 20,
-            "chargeControlForce" : 400,
-            "chargeState" : "charge",
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
-            "onGround" : false,
-            "winddownTime" : 0.05,
-            "winddownStopForce" : 500,
-            "winddownState" : "chargewinddown"
-          }
-        }        
+        }      
       ]
     },
 
