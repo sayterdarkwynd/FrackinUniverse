@@ -7,7 +7,8 @@ armorBonus2={
 		{stat = "gasImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
 		{stat = "biooozeImmunity", amount = 1},
-		{stat = "breathProtection", amount = 1}
+		{stat = "breathProtection", amount = 1},
+		{stat = "swimboost2", amount = 1}
 }
 
 armorBonus={
@@ -15,7 +16,8 @@ armorBonus={
 		{stat = "gasImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
 		{stat = "biooozeImmunity", amount = 1},
-		{stat = "breathProtection", amount = 1}
+		{stat = "breathProtection", amount = 1},
+		{stat = "swimboost2", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -35,10 +37,10 @@ if not checkSetWorn(self.setBonusCheck) then
 end
 if (world.type() == "ocean") or (world.type() == "sulphuricocean") or (world.type() == "aethersea") or (world.type() == "nitrogensea") or (world.type() == "strangesea") or (world.type() == "tidewater") then
 	effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
-	
+
 	mcontroller.controlModifiers({
 		speedModifier = 1.05
-	})	
+	})
 else
 	effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 	end

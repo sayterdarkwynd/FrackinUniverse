@@ -1,11 +1,42 @@
 {
   "name" : "erchiusasteroid",
   "friendlyName" : "erchiusasteroid",
-  "statusEffects" : [ "biomeairless", "gravmeteor", "erchiussickness" ],
+  "statusEffects" : [ "biomeairless", "erchiussickness" ],
+  
+  
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 4,
+        "pool" : [
+          [ 0.05, "aggroHugeGround" ],
+          [ 0.05, "passiveHugeGround" ],        
+          [ 0.05, "anglure4" ],
+          [ 0.04, "bulbop2" ],
+          [ 0.05, "iguarmor" ],
+          [ 0.05, "pteropod" ],
+          [ 0.05, "ixoling2" ],
+          [ 0.05, "fukingsnake" ],
+          [ 0.05, "nutmidge" ],
+          [ 0.05, "fucaterpillar" ],
+          [ 0.05, "mandraflora" ],
+          [ 0.05, "fuallergen" ],
+          [ 0.02, "furaptor" ],
+          [ 0.02, "furaptor4" ],
+          [ 0.02, "furaptor8" ],
+          [ 0.02, "furaptor11" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "persistent" : false
+    }
+  },
+  
   "mainBlock" : "matterblock",
   "ores" : "asteroid",
   "subBlocks" : [ "supermatter" ],
-  "gravityRange" : [0,14],
+
   "parallax" : "/parallax/space/asteroids.parallax",
 
   "ambientNoises" : {

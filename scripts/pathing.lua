@@ -23,7 +23,7 @@ function PathFinder:find(targetPosition)
     return "pathfinding"
   end
 
-  if not self:hasPath() and not self.aStar then
+ if not self.hasPath and not self.aStar then
     if self.options.mustEndOnGround and not validStandingPosition(targetPosition, false) then
       return false
     end
@@ -36,7 +36,7 @@ end
 
 function PathFinder:start(sourcePosition, targetPosition)
   self.target = targetPosition
-  
+
   local baseParameters = mcontroller.baseParameters()
   local jumpSpeed = baseParameters.airJumpProfile.jumpSpeed
   jumpSpeed = jumpSpeed + (jumpSpeed * status.stat("jumpModifier"))
@@ -67,6 +67,7 @@ function PathFinder:explore()
   local result = self.aStar:explore(self:exploreRate())
   if result == true and self:canPathfind() then
     self.edges = self.aStar:result()
+    self.hasPath = true
     self.currentEdgeIndex = 1
     self.lastEdgeIndex = 1
     self.stuckTimer = 0
@@ -82,11 +83,8 @@ end
 
 function PathFinder:reset()
   self.edges = {}
+  self.hasPath = false
   self.currentEdgeIndex = 1
-end
-
-function PathFinder:hasPath()
-  return #self.edges > 0
 end
 
 function PathFinder:currentEdge()
@@ -99,7 +97,7 @@ end
 
 function PathFinder:update(targetPosition)
   -- Reset path if it's been stuck on the same node for a bit
-  if self:hasPath() and self.stuckTimer > 0.5 then
+ if self.hasPath and self.stuckTimer > 0.5 then
     self:reset()
   end
   self.stuckTimer = self.stuckTimer + script.updateDt()
@@ -111,7 +109,7 @@ function PathFinder:update(targetPosition)
   end
 
   -- Find a new path if none exists
-  if not self:hasPath() then
+  if not self.hasPath then
     local findProgress = self:find(targetPosition)
     if findProgress == true then
       return "running"
@@ -130,7 +128,7 @@ function PathFinder:update(targetPosition)
     return false
   end
 
-  if self:hasPath() then
+  if self.hasPath then
     if self.currentEdgeIndex ~= self.lastEdgeIndex then
       self.stuckTimer = 0
       self.lastEdgeIndex = self.currentEdgeIndex
@@ -149,7 +147,7 @@ PathMover = {}
 function PathMover:new(options)
   options = options or {}
   local newPather = {}
-  local pathOptions = parseArgs(options.pathOptions or {}, {
+  local pathOptions = applyDefaults(options.pathOptions or {}, {
     returnBest = false,
     mustEndOnGround = mcontroller.baseParameters().gravityEnabled,
     maxDistance = 200,
@@ -157,19 +155,19 @@ function PathMover:new(options)
     dropCost = 2,
     boundBox = mcontroller.boundBox(),
     droppingBoundBox = padBoundBox(0.2, 0), --Wider bound box for dropping
-    standingBoundBox = padBoundBox(-0.2, 0), --Thinner bound box for standing and landing
+    standingBoundBox = padBoundBox(-0.7, 0), --Thinner bound box for standing and landing
     smallJumpMultiplier = 1 / math.sqrt(2), -- 0.5 multiplier to jump height
     jumpDropXMultiplier = 1,
     enableWalkSpeedJumps = true,
     enableVerticalJumpAirControl = false,
     maxFScore = 400,
     maxNodesToSearch = 70000,
-    maxLandingVelocity = -5.0,
+    maxLandingVelocity = -10.0,
     liquidJumpCost = 15
   })
   newPather.finder = PathFinder:new(pathOptions)
 
-  newPather.options = parseArgs(options, {
+ newPather.options = applyDefaults(options, {
     run = false,
     movementParameters = {}
   })
@@ -180,14 +178,17 @@ function PathMover:new(options)
   newPather.lastPosition = newPather.position
 
   newPather.boundBox = mcontroller.boundBox()
-
+  
+  newPather.canOpenDoors = config.getParameter("pathing.canOpenDoors", false)
+  newPather.forceWalkingBackwards = config.getParameter("pathing.forceWalkingBackwards", false)
+  
   setmetatable(newPather, extend(self))
   return newPather
 end
 
 function PathMover:move(targetPosition, dt)
   local run = self.options.run
-  if config.getParameter("pathing.forceWalkingBackwards", false) then
+  if self.forceWalkingBackwards then
     if run == true then run = mcontroller.movingDirection() == mcontroller.facingDirection() end
   end
 
@@ -263,14 +264,8 @@ function PathMover:edgeMove()
   self:updateEdge()
 
   if self.edge == nil then return true end
-  local edgeDelta = world.distance(self.edge.target.position, self.edge.source.position)
-
-  util.debugText(self.action, {self.position[1], self.position[2]-2}, "blue")
-
-  local nextEdge = self.finder:lookAhead(1) or {}
-  local nextAction = nextEdge.action or "None"
-
-  if config.getParameter("pathing.canOpenDoors", false) and not self:openDoors() then
+  
+  if not self:openDoors() then
     return false
   end
 
@@ -293,8 +288,6 @@ end
 
 function PathMover:openDoors()
   local bounds = rect.translate(mcontroller.boundBox(), mcontroller.position())
-  local yOffset = self.delta[2] > 0 and self.boundBox[4] + 1 or self.boundBox[2] - 1
-  local line2 = {self.position, {self.position[1], self.position[2] + yOffset}}  --vertical line
   
   if util.toDirection(self.delta[1]) > 0 then
     bounds[1] = bounds[3]
@@ -304,13 +297,10 @@ function PathMover:openDoors()
     bounds[1] = bounds[1] - 1
   end
 
-  util.debugRect(bounds, "blue")
   if world.rectTileCollision(bounds, {"Dynamic"}) then
-    
     -- There is a colliding object in the way. See if we can open it
-   
    local closedDoorIds = world.entityQuery(rect.ll(bounds), rect.ur(bounds), { includedTypes = {"object"}, callScript = "hasCapability", callScriptArgs = { "closedDoor" } })
-    if #closedDoorIds == 0 or not config.getParameter("pathing.canOpenDoors", true) then
+    if #closedDoorIds == 0 or not self.canOpenDoors then
       return false
     else
       for _, closedDoorId in pairs(closedDoorIds) do
@@ -318,19 +308,6 @@ function PathMover:openDoors()
           world.callScriptedEntity(closedDoorId, "openDoor")
         end
       end
-    end
-    
-    elseif world.lineTileCollision(line2[1], line2[2], {"Dynamic"}) and self.delta[2] ~= 0 then 
-    local closedDoorIds = world.entityLineQuery(line2[1], line2[2], { includedTypes = {"object"}, callScript = "hasCapability", callScriptArgs = { "closedDoor" } })
-    
-    if #closedDoorIds == 0 or not config.getParameter("pathing.canOpenDoors", true) then
-        return false
-    else
-        for _, closedDoorId in pairs(closedDoorIds) do
-            if self.options.openDoorCallback == nil or self.options.openDoorCallback(closedDoorId) then
-                world.callScriptedEntity(closedDoorId, "openDoor")
-            end
-        end
     end
   end
   return true
@@ -377,7 +354,7 @@ function PathMover:moveJump()
     end
     self.deltaX = self.edge.jumpVelocity[1]
 
-    if self.jumpTimer <= 0 then
+    if mcontroller.liquidMovement() or self.jumpTimer <= 0 then
       --Try to not get slowed down by friction
       self.controlParameters.airFriction = 0
       self.controlParameters.liquidFriction = 0
@@ -493,7 +470,8 @@ function PathMover:moveWalk()
       end
     end
 
-    moveX(self.delta[1], run)
+    local edgeDelta = world.distance(self.edge.target.position, self.edge.source.position)
+    moveX(edgeDelta[1], run)
     self.deltaX = self.delta[1]
   end
   return "running"
@@ -509,7 +487,7 @@ function PathMover:moveFly()
   end
 
   if self.edge and self.edge.action == "Fly" then
-    mcontroller.controlFly(vec2.mul(vec2.norm(self.delta), mcontroller.baseParameters().flySpeed), mcontroller.baseParameters().airForce)
+    mcontroller.controlFly(self.delta)
     self.deltaX = self.delta[1]
   end
   return "running"

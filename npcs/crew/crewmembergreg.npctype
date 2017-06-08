@@ -1,5 +1,5 @@
 {
-  "type" : "crewmembergreg",
+  "type" : "crewmemberg",
   "baseType" : "base",
 
   "dropPools" : [ "villagertreasure" ],
@@ -46,11 +46,16 @@
             "effect" : "defenseboostgreg",
             "defenseAmount" : 6,
             "duration" : 300
-          },         
+          },
+	  {
+            "type": "ShipUpgradeBenefit",
+            "property": "fuelEfficiency",
+            "value": 0.3
+          },
           {
-            // Persistent effects are active while on the ship
-            "type" : "PersistentEffect",
-            "effect" : "regeneration1"
+            "type": "ShipUpgradeBenefit",
+            "property": "maxFuel",
+            "value": 300
           }
         ],
         "type" : "soldier",
@@ -108,12 +113,13 @@
         "Armchair <field> Expert"
       ],
 
+
+      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"],
       "defaultUniform" : {
         "head" : "duncecap",
         "chest" : "tshirtchest",
         "legs" : "jeans1legs"
-      },
-      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+      }      
     },
 
     "questGenerator" : {
@@ -347,6 +353,17 @@
             ]
           }
         },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+		"Greg!!!!",
+		".....Greg!",
+		"Gregga greg! Greg?",
+		"...Greg? GREGGGGG!!!!",
+		"...............greg. Gregga greg."		
+            ]
+          }
+        },
         "unfollow" : {
           "default" : {
             "default" : [
@@ -515,22 +532,21 @@
 
   "movementParameters" : {
     // Run at the same speed as the player
-    "runSpeed" : 22.0
+    "runSpeed" : 20.0
   },
+
 
   "items" : {
     "default" : [
       [0, [
           {
-            "primary" : [ "negablade" ]
-          },
-          {
-            "primary" : [ "eyesword" ]
+            "primary" : [ "negablade" ],
+            "sheathedprimary" : [ "bugnet" ]
           }
         ] ]
     ]
   },
-
+  
   "statusControllerSettings" : {
     "statusProperties" : {
       "hitInvulnerability" : true,
@@ -543,13 +559,16 @@
 
     "stats" : {
       "maxHealth" : {
-        "baseValue" : 550.0
+        "baseValue" : 220.0
       },
       "powerMultiplier" : {
         "baseValue" : 0.25
       },
       "healthRegen" : {
         "baseValue" : 2.0
+      },
+      "beestingImmunity" : {
+        "baseValue" : 1.0
       }
     }
   }

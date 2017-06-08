@@ -1,11 +1,12 @@
 {
   "name": "action-hop",
-  "description": "",
+  "description": null,
   "scripts": [
     "/scripts/actions/movement.lua",
     "/scripts/actions/math.lua",
     "/scripts/actions/animator.lua",
     "/scripts/actions/time.lua",
+    "/scripts/actions/entity.lua",
     "/scripts/behavior.lua",
     "/scripts/actions/status.lua"
   ],
@@ -16,24 +17,16 @@
     "landTime": 0.25,
     "hopSequence": 3,
     "timeBetweenHops": 0.5,
-    "bounceOffWalls": true,
-    "randomDirection": false,
     "hopAwayFromWall": true,
     "wallVerticalSpeed": 35,
     "hopControlForce": 10,
-    "knockbackThreshold": 15,
     "damageOnTouch": false
   },
   "root": {
     "title": "sequence",
     "type": "composite",
     "name": "sequence",
-    "parameters": {
-      "type": "sliding",
-      "state": "off",
-      "fromEntity": "attackTarget",
-      "toEntity": "fleeTarget"
-    },
+    "parameters": {},
     "children": [
       {
         "title": "setDirection",
@@ -49,27 +42,22 @@
         "type": "decorator",
         "name": "repeater",
         "parameters": {
-          "maxLoops": "<hopSequence>",
-          "untilSuccess": false
+          "maxLoops": {"key": "<hopSequence>"},
+          "untilSuccess": {"value": false}
         },
         "child": {
           "title": "sequence",
           "type": "composite",
           "name": "sequence",
-          "parameters": {
-            "type": "sliding",
-            "state": "off",
-            "fromEntity": "attackTarget",
-            "toEntity": "fleeTarget"
-          },
+          "parameters": {},
           "children": [
             {
               "title": "multiply",
               "type": "action",
               "name": "multiply",
               "parameters": {
-                "number": 1,
-                "factor": "<verticalSpeed>"
+                "factor": {"key": "<verticalSpeed>"},
+                "number": {"value": 1}
               },
               "output": {
                 "result": "ySpeed"
@@ -99,12 +87,7 @@
               "title": "sequence",
               "type": "composite",
               "name": "sequence",
-              "parameters": {
-                "type": "sliding",
-                "state": "off",
-                "fromEntity": "attackTarget",
-                "toEntity": "fleeTarget"
-              },
+              "parameters": {},
               "children": [
                 {
                   "title": "succeeder",
@@ -116,8 +99,8 @@
                     "type": "action",
                     "name": "entityDirection",
                     "parameters": {
-                      "entity": "self",
-                      "target": "target"
+                      "entity": {"key": "self"},
+                      "target": {"key": "target"}
                     },
                     "output": {
                       "direction": "facingDirection"
@@ -140,7 +123,7 @@
                         "type": "action",
                         "name": "canMove",
                         "parameters": {
-                          "direction": "facingDirection"
+                          "direction": {"key": "facingDirection"}
                         }
                       },
                       {
@@ -148,15 +131,15 @@
                         "type": "decorator",
                         "name": "optional",
                         "parameters": {
-                          "shouldRun": "<hopAwayFromWall>"
+                          "shouldRun": {"key": "<hopAwayFromWall>"}
                         },
                         "child": {
                           "title": "multiply",
                           "type": "action",
                           "name": "multiply",
                           "parameters": {
-                            "number": "facingDirection",
-                            "factor": -1
+                            "factor": {"value": -1},
+                            "number": {"key": "facingDirection"}
                           },
                           "output": {
                             "result": "facingDirection"
@@ -168,8 +151,8 @@
                         "type": "action",
                         "name": "multiply",
                         "parameters": {
-                          "number": 1,
-                          "factor": "<wallVerticalSpeed>"
+                          "factor": {"key": "<wallVerticalSpeed>"},
+                          "number": {"value": 1}
                         },
                         "output": {
                           "result": "ySpeed"
@@ -185,8 +168,8 @@
               "type": "action",
               "name": "multiply",
               "parameters": {
-                "number": "facingDirection",
-                "factor": "<horizontalSpeed>"
+                "factor": {"key": "<horizontalSpeed>"},
+                "number": {"key": "facingDirection"}
               },
               "output": {
                 "result": "xSpeed"
@@ -197,7 +180,7 @@
               "type": "action",
               "name": "faceDirection",
               "parameters": {
-                "direction": "facingDirection"
+                "direction": {"key": "facingDirection"}
               }
             },
             {
@@ -205,24 +188,24 @@
               "type": "action",
               "name": "setAnimationState",
               "parameters": {
-                "state": "hop",
-                "type": "body"
+                "state": {"value": "hop"},
+                "type": {"value": "body"}
               }
             },
-			{
-				"title": "setDamageOnTouch",
-				"type": "action",
-				"name": "setDamageOnTouch",
-				"parameters": {
-				"touchDamage" : true
-				}
-			},
             {
               "title": "timer",
               "type": "action",
               "name": "timer",
               "parameters": {
-                "time": "<windupTime>"
+                "time": {"value": "<windupTime>"}
+              }
+            },
+            {
+              "title": "setDamageOnTouch",
+              "type": "action",
+              "name": "setDamageOnTouch",
+              "parameters": {
+                "touchDamage": {"value": true}
               }
             },
             {
@@ -230,8 +213,8 @@
               "type": "composite",
               "name": "parallel",
               "parameters": {
-                "fail": 1,
-                "success": -1
+                "fail": {"value": 1},
+                "success": {"value": -1}
               },
               "children": [
                 {
@@ -239,37 +222,30 @@
                   "type": "action",
                   "name": "controlFlag",
                   "parameters": {
-                    "name": "attacking"
+                    "bool": {"value": true}
+                  },
+                  "output": {
+                    "bool": "attacking"
                   }
                 },
                 {
                   "title": "sequence",
                   "type": "composite",
                   "name": "sequence",
-                  "parameters": {
-                    "type": "sliding",
-                    "state": "off",
-                    "fromEntity": "attackTarget",
-                    "toEntity": "fleeTarget"
-                  },
+                  "parameters": {},
                   "children": [
                     {
                       "title": "sequence",
                       "type": "composite",
                       "name": "sequence",
-                      "parameters": {
-                        "type": "sliding",
-                        "state": "off",
-                        "fromEntity": "attackTarget",
-                        "toEntity": "fleeTarget"
-                      },
+                      "parameters": {},
                       "children": [
                         {
                           "title": "stat",
                           "type": "action",
                           "name": "stat",
                           "parameters": {
-                            "statName": "jumpModifier"
+                            "statName": {"value": "jumpModifier"}
                           },
                           "output": {
                             "value": "jumpModifier"
@@ -280,11 +256,8 @@
                           "type": "action",
                           "name": "vecMultiply",
                           "parameters": {
-                            "first": [
-                              "xSpeed",
-                              "ySpeed"
-                            ],
-                            "second": "jumpModifier"
+                            "first": {"value": ["xSpeed", "ySpeed"]},
+                            "number": {"key": "jumpModifier"}
                           },
                           "output": {
                             "vector": "speedModifier"
@@ -295,11 +268,8 @@
                           "type": "action",
                           "name": "vecAdd",
                           "parameters": {
-                            "first": [
-                              "xSpeed",
-                              "ySpeed"
-                            ],
-                            "second": "speedModifier"
+                            "first": {"value": ["xSpeed", "ySpeed"]},
+                            "second": {"key": "speedModifier"}
                           },
                           "output": {
                             "vector": "hopVelocity"
@@ -312,7 +282,7 @@
                       "type": "action",
                       "name": "setVelocity",
                       "parameters": {
-                        "velocity": "hopVelocity"
+                        "velocity": {"key": "hopVelocity"}
                       }
                     },
                     {
@@ -320,7 +290,7 @@
                       "type": "action",
                       "name": "timer",
                       "parameters": {
-                        "time": 0.25
+                        "time": {"value": 0.25}
                       }
                     },
                     {
@@ -328,8 +298,8 @@
                       "type": "composite",
                       "name": "parallel",
                       "parameters": {
-                        "fail": -1,
-                        "success": -1
+                        "fail": {"value": -1},
+                        "success": {"value": -1}
                       },
                       "children": [
                         {
@@ -337,8 +307,8 @@
                           "type": "action",
                           "name": "controlApproachXVelocity",
                           "parameters": {
-                            "velocity": "xSpeed",
-                            "force": "<hopControlForce>"
+                            "force": {"key": "<hopControlForce>"},
+                            "velocity": {"key": "xSpeed"}
                           }
                         },
                         {
@@ -356,20 +326,15 @@
                                 "title": "sequence",
                                 "type": "composite",
                                 "name": "sequence",
-                                "parameters": {
-                                  "type": "sliding",
-                                  "state": "off",
-                                  "fromEntity": "attackTarget",
-                                  "toEntity": "fleeTarget"
-                                },
+                                "parameters": {},
                                 "children": [
                                   {
                                     "title": "entityDirection",
                                     "type": "action",
                                     "name": "entityDirection",
                                     "parameters": {
-                                      "entity": "self",
-                                      "target": "target"
+                                      "entity": {"key": "self"},
+                                      "target": {"key": "target"}
                                     },
                                     "output": {
                                       "yDirection": "targetYDir"
@@ -385,8 +350,8 @@
                                       "type": "action",
                                       "name": "greaterThan",
                                       "parameters": {
-                                        "first": "targetYDir",
-                                        "second": 0
+                                        "first": {"key": "targetYDir"},
+                                        "second": {"value": 0}
                                       }
                                     }
                                   },
@@ -408,12 +373,7 @@
                                 "title": "sequence",
                                 "type": "composite",
                                 "name": "sequence",
-                                "parameters": {
-                                  "type": "sliding",
-                                  "state": "off",
-                                  "fromEntity": "attackTarget",
-                                  "toEntity": "fleeTarget"
-                                },
+                                "parameters": {},
                                 "children": [
                                   {
                                     "title": "velocity",
@@ -435,8 +395,8 @@
                                       "type": "action",
                                       "name": "greaterThan",
                                       "parameters": {
-                                        "first": "yVelocity",
-                                        "second": 0
+                                        "first": {"key": "yVelocity"},
+                                        "second": {"value": 0}
                                       }
                                     }
                                   },
@@ -445,8 +405,8 @@
                                     "type": "action",
                                     "name": "setAnimationState",
                                     "parameters": {
-                                      "state": "fall",
-                                      "type": "body"
+                                      "state": {"value": "fall"},
+                                      "type": {"value": "body"}
                                     }
                                   }
                                 ]
@@ -477,24 +437,16 @@
               "type": "action",
               "name": "setAnimationState",
               "parameters": {
-                "state": "land",
-                "type": "body"
+                "state": {"value": "land"},
+                "type": {"value": "body"}
               }
             },
-			{
-			  "title": "setDamageOnTouch",
-			  "type": "action",
-			  "name": "setDamageOnTouch",
-			  "parameters": {
-			  "touchDamage" : "<damageOnTouch>"
-			 }
-			},		
             {
-              "title": "timer",
+              "title": "setDamageOnTouch",
               "type": "action",
-              "name": "timer",
+              "name": "setDamageOnTouch",
               "parameters": {
-                "time": "<landTime>"
+                "touchDamage": {"key": "<damageOnTouch>"}
               }
             },
             {
@@ -502,7 +454,15 @@
               "type": "action",
               "name": "timer",
               "parameters": {
-                "time": "<timeBetweenHops>"
+                "time": {"value": "<landTime>"}
+              }
+            },
+            {
+              "title": "timer",
+              "type": "action",
+              "name": "timer",
+              "parameters": {
+                "time": {"value": "<timeBetweenHops>"}
               }
             }
           ]

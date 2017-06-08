@@ -1,0 +1,33 @@
+{
+  "projectileName" : "hiveswarm4",
+  "image" : "hiveswarm2.png",
+  "animationCycle" : 1,
+  "level" : 4,
+  "frameNumber" : 18,
+  "speed" : 0,
+  "fallSpeed" : 0,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "flippable" : true,
+  "power" : 5,
+  "universalDamage" : true,
+  "damageKind" : "default",
+  "timeToLive" : 2,
+  "actionOnReap" : [ 
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/hivebomb_impact.ogg" ]
+    }  
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.03,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "hiveswarm3",
+      "fuzzAngle" : 360
+   }  
+  ],
+  "statusEffects" : [ "fubeesting2" ]
+}

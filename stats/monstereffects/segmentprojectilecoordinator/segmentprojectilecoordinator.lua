@@ -3,7 +3,7 @@ require "/scripts/vec2.lua"
 
 function init()
 	
-	local coordinator = status.statusProperty('coordinator')
+	local coordinator   = status.statusProperty('coordinator')
 	local segmentNumber = coordinator.segmentNumber
 	local totalSegments = coordinator.totalSegments
 	local level 		= coordinator.level
@@ -11,10 +11,10 @@ function init()
 	self.projectile 		= config.getParameter('projectile')
 	self.pulse 				= config.getParameter('pulse')
 	self.power 				= config.getParameter("power",10) * level
-	if config.getParameter('reverse') == true then
-	self.timer 				= (totalSegments - segmentNumber) / totalSegments * config.getParameter("pulse")
+	if config.getParameter('reverse') then
+		self.timer 			= (totalSegments - segmentNumber) / totalSegments * config.getParameter("pulse")
 	else
-	self.timer 				= segmentNumber / totalSegments * config.getParameter("pulse")
+		self.timer 			= segmentNumber / totalSegments * config.getParameter("pulse")
 	end
 end
 

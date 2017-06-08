@@ -1,17 +1,18 @@
 {
   "name": "action-swoosh-charge",
-  "description": "",
+  "description": null,
   "scripts": [
     "/scripts/behavior.lua",
     "/scripts/actions/movement.lua",
     "/scripts/actions/math.lua",
     "/scripts/actions/animator.lua",
+    "/scripts/actions/entity.lua",
     "/scripts/actions/monster.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/projectiles.lua",
     "/scripts/actions/sensor.lua",
     "/scripts/actions/status.lua",
-    "/scripts/actions/time.lua",
-    "/scripts/actions/projectiles.lua"
-
+    "/scripts/actions/time.lua"
   ],
   "parameters": {
     "windupState": "chargewindup",
@@ -20,55 +21,38 @@
     "chargeSpeed": 25,
     "chargeControlForce": 100,
     "chargeTime": 1.5,
-    "onGround": true,
     "wallCollide": true,
     "wallCrashSound": "crash",
     "wallCrashEmitter": "",
     "aimAtTarget": false,
-    "aimDirection": [
-      1,
-      0
-    ],
+    "inaccuracy": 0,
+    "aimDirection": [1, 0],
     "rotateToTarget": false,
-    "knockbackThreshold": 0,
     "chargeStateType": "body",
     "rotationOffset": 0,
     "skillName": "",
-    "wallCrashVelocity": [
-      -10,
-      20
-    ],
-    "wallKnockback": true,
-
-    "projectileType": "invisibleprojectile",
-    "power": 5,
-    "fireOffset": [
-      0,
-      0
-    ],
+    "wallCrashVelocity": [-10, 20],
+    "wallKnockback": false,
+    "damageOnTouch": false,
+    "fireOffset": [0, 0],
+    "projectileType": "invisibleProjectile",
     "projectileParameters": {}
-
   },
   "root": {
     "title": "sequence",
     "type": "composite",
     "name": "sequence",
-    "parameters": {
-      "type": "sliding",
-      "state": "off",
-      "fromEntity": "attackTarget",
-      "toEntity": "fleeTarget"
-    },
+    "parameters": {},
     "children": [
       {
         "title": "action-windup",
         "type": "module",
         "name": "action-windup",
         "parameters": {
-          "wallCollisionCheck": "<wallCollide>",
-          "windupState": "<windupState>",
-          "windupStateType": "<chargeStateType>",
-          "skillName": "<skillName>"
+          "windupState": {"value": "<windupState>"},
+          "wallCollisionCheck": {"key": "<wallCollide>"},
+          "windupStateType": {"value": "<chargeStateType>"},
+          "skillName": {"value": "<skillName>"}
         }
       },
       {
@@ -76,8 +60,8 @@
         "type": "composite",
         "name": "parallel",
         "parameters": {
-          "fail": 1,
-          "success": -1
+          "fail": {"value": 1},
+          "success": {"value": -1}
         },
         "children": [
           {
@@ -85,19 +69,17 @@
             "type": "action",
             "name": "controlFlag",
             "parameters": {
-              "name": "attacking"
+              "bool": {"value": true}
+            },
+            "output": {
+              "bool": "attacking"
             }
           },
           {
             "title": "sequence",
             "type": "composite",
             "name": "sequence",
-            "parameters": {
-              "type": "sliding",
-              "state": "off",
-              "fromEntity": "attackTarget",
-              "toEntity": "fleeTarget"
-            },
+            "parameters": {},
             "children": [
               {
                 "title": "selector",
@@ -110,20 +92,64 @@
                     "type": "decorator",
                     "name": "optional",
                     "parameters": {
-                      "shouldRun": "<aimAtTarget>"
+                      "shouldRun": {"key": "<aimAtTarget>"}
                     },
                     "child": {
-                      "title": "entityDirection",
-                      "type": "action",
-                      "name": "entityDirection",
-                      "parameters": {
-                        "entity": "self",
-                        "target": "target"
-                      },
-                      "output": {
-                        "direction": "direction",
-                        "vector": "aimDirection"
-                      }
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "entityDirection",
+                          "type": "action",
+                          "name": "entityDirection",
+                          "parameters": {
+                            "entity": {"key": "self"},
+                            "target": {"key": "target"}
+                          },
+                          "output": {
+                            "direction": "direction",
+                            "vector": "aimDirection"
+                          }
+                        },
+                        {
+                          "title": "multiply",
+                          "type": "action",
+                          "name": "multiply",
+                          "parameters": {
+                            "factor": {"key": "<inaccuracy>"},
+                            "number": {"value": -1}
+                          },
+                          "output": {
+                            "result": "minInaccuracy"
+                          }
+                        },
+                        {
+                          "title": "random",
+                          "type": "action",
+                          "name": "random",
+                          "parameters": {
+                            "max": {"key": "<inaccuracy>"},
+                            "min": {"key": "minInaccuracy"}
+                          },
+                          "output": {
+                            "number": "fuzzAngle"
+                          }
+                        },
+                        {
+                          "title": "vecRotate",
+                          "type": "action",
+                          "name": "vecRotate",
+                          "parameters": {
+                            "angle": {"key": "fuzzAngle"},
+                            "vector": {"key": "aimDirection"}
+                          },
+                          "output": {
+                            "vector": "aimDirection"
+                          }
+                        }
+                      ]
                     }
                   },
                   {
@@ -131,11 +157,8 @@
                     "type": "action",
                     "name": "vecMultiply",
                     "parameters": {
-                      "first": "<aimDirection>",
-                      "second": [
-                        "facingDirection",
-                        1
-                      ]
+                      "first": {"key": "<aimDirection>"},
+                      "second": {"value": ["facingDirection", 1]}
                     },
                     "output": {
                       "vector": "aimDirection"
@@ -148,20 +171,15 @@
                 "type": "composite",
                 "name": "parallel",
                 "parameters": {
-                  "fail": -1,
-                  "success": 1
+                  "fail": {"value": -1},
+                  "success": {"value": 1}
                 },
                 "children": [
                   {
                     "title": "sequence",
                     "type": "composite",
                     "name": "sequence",
-                    "parameters": {
-                      "type": "sliding",
-                      "state": "off",
-                      "fromEntity": "attackTarget",
-                      "toEntity": "fleeTarget"
-                    },
+                    "parameters": {},
                     "children": [
                       {
                         "title": "succeeder",
@@ -173,20 +191,28 @@
                           "type": "action",
                           "name": "setAnimationState",
                           "parameters": {
-                            "state": "<chargeState>",
-                            "type": "<chargeStateType>"
+                            "state": {"value": "<chargeState>"},
+                            "type": {"value": "<chargeStateType>"}
                           }
                         }
                       },
                       {
-                        "title" : "setNumber",
-                        "type" : "action",
-                        "name" : "setNumber",
-                        "parameters" : {
-                          "number" : 1
+                        "title": "setDamageOnTouch",
+                        "type": "action",
+                        "name": "setDamageOnTouch",
+                        "parameters": {
+                          "touchDamage": {"value": true}
+                        }
+                      },
+                      {
+                        "title": "setNumber",
+                        "type": "action",
+                        "name": "setNumber",
+                        "parameters": {
+                          "number": {"value": 1}
                         },
-                        "output" : {
-                          "number" : "shots"
+                        "output": {
+                          "number": "shots"
                         }
                       },
                       {
@@ -194,8 +220,8 @@
                         "type": "composite",
                         "name": "parallel",
                         "parameters": {
-                          "fail": -1,
-                          "success": -1
+                          "fail": {"value": -1},
+                          "success": {"value": -1}
                         },
                         "children": [
                           {
@@ -223,7 +249,7 @@
                             "type": "action",
                             "name": "vecAngle",
                             "parameters": {
-                              "vector": "aimDirection"
+                              "vector": {"key": "aimDirection"}
                             },
                             "output": {
                               "angle": "aimAngle"
@@ -235,52 +261,87 @@
                             "name": "succeeder",
                             "parameters": {},
                             "child": {
-                              "title": "optional",
-                              "type": "decorator",
-                              "name": "optional",
-                              "parameters": {
-                                "shouldRun": "<rotateToTarget>"
-                              },
-                              "child": {
-                                "title": "parallel",
-                                "type": "composite",
-                                "name": "parallel",
-                                "parameters": {
-                                  "fail": -1,
-                                  "success": -1
-                                },
-                                "children": [
-                                  {
-                                    "title": "faceDirection",
-                                    "type": "action",
-                                    "name": "faceDirection",
-                                    "parameters": {
-                                      "direction": 1
-                                    }
+                              "title": "selector",
+                              "type": "composite",
+                              "name": "selector",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "optional",
+                                  "type": "decorator",
+                                  "name": "optional",
+                                  "parameters": {
+                                    "shouldRun": {"key": "<rotateToTarget>"}
                                   },
-                                  {
-                                    "title": "add",
-                                    "type": "action",
-                                    "name": "add",
+                                  "child": {
+                                    "title": "parallel",
+                                    "type": "composite",
+                                    "name": "parallel",
                                     "parameters": {
-                                      "addend": "aimAngle",
-                                      "number": "<rotationOffset>"
+                                      "fail": {"value": -1},
+                                      "success": {"value": -1}
                                     },
-                                    "output": {
-                                      "result": "rotationAngle"
-                                    }
-                                  },
-                                  {
-                                    "title": "rotateBody",
-                                    "type": "action",
-                                    "name": "rotateBody",
-                                    "parameters": {
-                                      "angle": "rotationAngle",
-                                      "transformationGroup": "body"
-                                    }
+                                    "children": [
+                                      {
+                                        "title": "faceDirection",
+                                        "type": "action",
+                                        "name": "faceDirection",
+                                        "parameters": {
+                                          "direction": {"value": 1}
+                                        }
+                                      },
+                                      {
+                                        "title": "add",
+                                        "type": "action",
+                                        "name": "add",
+                                        "parameters": {
+                                          "addend": {"key": "aimAngle"},
+                                          "number": {"key": "<rotationOffset>"}
+                                        },
+                                        "output": {
+                                          "result": "rotationAngle"
+                                        }
+                                      },
+                                      {
+                                        "title": "rotateBody",
+                                        "type": "action",
+                                        "name": "rotateBody",
+                                        "parameters": {
+                                          "angle": {"key": "rotationAngle"},
+                                          "transformationGroup": {"value": "body"}
+                                        }
+                                      }
+                                    ]
                                   }
-                                ]
-                              }
+                                },
+                                {
+                                  "title": "sequence",
+                                  "type": "composite",
+                                  "name": "sequence",
+                                  "parameters": {},
+                                  "children": [
+                                    {
+                                      "title": "breakVector",
+                                      "type": "action",
+                                      "name": "breakVector",
+                                      "parameters": {
+                                        "vector": {"key": "aimDirection"}
+                                      },
+                                      "output": {
+                                        "x": "chargeX"
+                                      }
+                                    },
+                                    {
+                                      "title": "faceDirection",
+                                      "type": "action",
+                                      "name": "faceDirection",
+                                      "parameters": {
+                                        "direction": {"key": "chargeX"}
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
                             }
                           },
                           {
@@ -288,11 +349,8 @@
                             "type": "action",
                             "name": "vecMultiply",
                             "parameters": {
-                              "first": "<fireOffset>",
-                              "second": [
-                                "facingDirection",
-                                1
-                              ]
+                              "first": {"key": "<fireOffset>"},
+                              "second": {"value": ["facingDirection", 1]}
                             },
                             "output": {
                               "vector": "fireOffset"
@@ -302,20 +360,15 @@
                             "title": "sequence",
                             "type": "composite",
                             "name": "sequence",
-                            "parameters": {
-                              "type": "sliding",
-                              "state": "off",
-                              "fromEntity": "attackTarget",
-                              "toEntity": "fleeTarget"
-                            },
+                            "parameters": {},
                             "children": [
                               {
                                 "title": "gte",
                                 "type": "action",
                                 "name": "gte",
                                 "parameters": {
-                                  "first": "shots",
-                                  "second": 1
+                                  "first": {"key": "shots"},
+                                  "second": {"value": 1}
                                 }
                               },
                               {
@@ -323,8 +376,8 @@
                                 "type": "action",
                                 "name": "add",
                                 "parameters": {
-                                  "addend": -1,
-                                  "number": "shots"
+                                  "addend": {"value": -1},
+                                  "number": {"key": "shots"}
                                 },
                                 "output": {
                                   "result": "shots"
@@ -335,18 +388,17 @@
                                 "type": "action",
                                 "name": "spawnProjectile",
                                 "parameters": {
-                                  "aimVector": "aimDirection",
-                                  "angle": "aimAngle",
-                                  "offset": "fireOffset",
-                                  "position": "self",
-                                  "power": "<power>",
-                                  "projectileConfig": "<projectileParameters>",
-                                  "projectileType": "<projectileType>",
-                                  "scalePower": true,
-                                  "sourceEntity": "self",
-                                  "trackSource": true,
-                                  "damageRepeatGroup": "monsterswoosh",
-                                  "uniqueRepeatGroup": true
+                                  "aimVector": {"key": "aimDirection"},
+                                  "angle": {"key": "aimAngle"},
+                                  "damageRepeatGroup": {"value": "monsterswoosh"},
+                                  "offset": {"key": "<fireOffset>"},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"key": "<projectileParameters>"},
+                                  "projectileType": {"key": "<projectileType>"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false},
+                                  "uniqueRepeatGroup": {"value": true}
                                 }
                               }
                             ]
@@ -356,9 +408,9 @@
                             "type": "action",
                             "name": "controlApproachVelocityAlongAngle",
                             "parameters": {
-                              "angle": "aimAngle",
-                              "velocity": "<chargeSpeed>",
-                              "force": "<chargeControlForce>"
+                              "angle": {"key": "aimAngle"},
+                              "force": {"key": "<chargeControlForce>"},
+                              "velocity": {"key": "<chargeSpeed>"}
                             }
                           },
                           {
@@ -382,18 +434,13 @@
                         "type": "decorator",
                         "name": "optional",
                         "parameters": {
-                          "shouldRun": "<wallCollide>"
+                          "shouldRun": {"key": "<wallCollide>"}
                         },
                         "child": {
                           "title": "sequence",
                           "type": "composite",
                           "name": "sequence",
-                          "parameters": {
-                            "type": "sliding",
-                            "state": "off",
-                            "fromEntity": "attackTarget",
-                            "toEntity": "fleeTarget"
-                          },
+                          "parameters": {},
                           "children": [
                             {
                               "title": "selector",
@@ -405,12 +452,7 @@
                                   "title": "sequence",
                                   "type": "composite",
                                   "name": "sequence",
-                                  "parameters": {
-                                    "type": "sliding",
-                                    "state": "off",
-                                    "fromEntity": "attackTarget",
-                                    "toEntity": "fleeTarget"
-                                  },
+                                  "parameters": {},
                                   "children": [
                                     {
                                       "title": "gravityEnabled",
@@ -423,7 +465,7 @@
                                       "type": "action",
                                       "name": "wallCollision",
                                       "parameters": {
-                                        "direction": "facingDirection"
+                                        "direction": {"key": "facingDirection"}
                                       }
                                     },
                                     {
@@ -436,29 +478,21 @@
                                         "type": "decorator",
                                         "name": "optional",
                                         "parameters": {
-                                          "shouldRun": "<wallKnockback>"
+                                          "shouldRun": {"key": "<wallKnockback>"}
                                         },
                                         "child": {
                                           "title": "sequence",
                                           "type": "composite",
                                           "name": "sequence",
-                                          "parameters": {
-                                            "type": "sliding",
-                                            "state": "off",
-                                            "fromEntity": "attackTarget",
-                                            "toEntity": "fleeTarget"
-                                          },
+                                          "parameters": {},
                                           "children": [
                                             {
                                               "title": "vecMultiply",
                                               "type": "action",
                                               "name": "vecMultiply",
                                               "parameters": {
-                                                "first": "<wallCrashVelocity>",
-                                                "second": [
-                                                  "facingDirection",
-                                                  1
-                                                ]
+                                                "first": {"key": "<wallCrashVelocity>"},
+                                                "second": {"value": ["facingDirection", 1]}
                                               },
                                               "output": {
                                                 "vector": "wallCrashVelocity"
@@ -469,7 +503,7 @@
                                               "type": "action",
                                               "name": "setVelocity",
                                               "parameters": {
-                                                "velocity": "wallCrashVelocity"
+                                                "velocity": {"key": "wallCrashVelocity"}
                                               }
                                             },
                                             {
@@ -483,8 +517,8 @@
                                               "type": "action",
                                               "name": "setResource",
                                               "parameters": {
-                                                "resource": "stunned",
-                                                "amount": 0.25
+                                                "amount": {"value": 0.25},
+                                                "resource": {"value": "stunned"}
                                               }
                                             }
                                           ]
@@ -497,12 +531,7 @@
                                   "title": "sequence",
                                   "type": "composite",
                                   "name": "sequence",
-                                  "parameters": {
-                                    "type": "sliding",
-                                    "state": "off",
-                                    "fromEntity": "attackTarget",
-                                    "toEntity": "fleeTarget"
-                                  },
+                                  "parameters": {},
                                   "children": [
                                     {
                                       "title": "inverter",
@@ -536,7 +565,7 @@
                                 "type": "action",
                                 "name": "playSound",
                                 "parameters": {
-                                  "sound": "<wallCrashSound>"
+                                  "sound": {"value": "<wallCrashSound>"}
                                 }
                               }
                             },
@@ -550,7 +579,7 @@
                                 "type": "action",
                                 "name": "burstParticleEmitter",
                                 "parameters": {
-                                  "emitter": "<wallCrashEmitter>"
+                                  "emitter": {"value": "<wallCrashEmitter>"}
                                 }
                               }
                             }
@@ -562,7 +591,7 @@
                         "type": "action",
                         "name": "timer",
                         "parameters": {
-                          "time": "<chargeTime>"
+                          "time": {"value": "<chargeTime>"}
                         }
                       }
                     ]
@@ -578,8 +607,16 @@
         "type": "module",
         "name": "action-winddown",
         "parameters": {
-          "winddownState": "<winddownState>",
-          "winddownStateType": "<chargeStateType>"
+          "winddownState": {"value": "<winddownState>"},
+          "winddownStateType": {"value": "<chargeStateType>"}
+        }
+      },
+      {
+        "title": "setDamageOnTouch",
+        "type": "action",
+        "name": "setDamageOnTouch",
+        "parameters": {
+          "touchDamage": {"key": "<damageOnTouch>"}
         }
       }
     ]
