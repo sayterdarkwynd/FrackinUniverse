@@ -28,16 +28,6 @@ function init()
 
 
 self.baseValue = setBaseValue()
-sb.logInfo("base value: "..self.baseValue)  
-sb.logInfo("base dmg: "..self.baseDmg)  
-sb.logInfo("base debuff: "..self.baseDebuff)  
-sb.logInfo("base rate: "..self.baseRate)  
-
-sb.logInfo("base wind: "..self.windLevel)  
-sb.logInfo("base threshold: "..self.biomeThreshold)  
-sb.logInfo("base situationmod: "..self.situationPenalty)  
-sb.logInfo("base liquidPenalty: "..self.liquidPenalty)  
-
 
 -- base Value calculation
 --  Threat Level * biomeTemp = Base Value --> absolute base value
