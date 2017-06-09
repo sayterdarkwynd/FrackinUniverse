@@ -1,15 +1,11 @@
 [
-
-  {"op" : "replace", 
-  "path" : "/scriptConfig/crew/role/benefits",
-  "value" :           
-         [{
-            "type" : "PeriodicIncrease",
-            "property" : "maxFuel",
-            "value" : 100,
-            "limit" : 20000,
-            "period" : 2000
-          }]
-  } 
-  
- ]
+  {
+    "op": "add",
+    "path": "/scriptConfig/crew/role/benefits/0",
+    "value": {
+      "type": "ShipUpgradeBenefit",
+      "property": "maxFuel",
+      "value": 200
+    }
+  }
+]

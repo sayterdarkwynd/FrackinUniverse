@@ -6,7 +6,7 @@
   "rarity" : "rare",
   "description" : "Negative energy eradicates all solid matter
 ^yellow;Extreme fire speed^reset;",
-  "shortdescription" : "Vaporizer",
+  "shortdescription" : "Precursor Vaporizer",
   "category" : "Energy Gun",
   "level" : 5,
   "tooltipKind" : "gun2",
@@ -21,7 +21,7 @@
     "middle" : "fuvaporizer.png",
     "middlefullbright" : "fuvaporizerfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -34,19 +34,19 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.025,
+    "fireTime" : 0.1,
     "baseDps" : 9.19,
     "energyUsage" : 32.5,
     "inaccuracy" : 0.05,
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "fuvaporizer",
+    "projectileType" : "precursorshotsmall2",
     "projectileParameters" : { 
       "speed" : 50,
       "knockback" : 1,
@@ -64,17 +64,17 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 1,
+	      "weaponRotation" : 1,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
 	    },
 	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "duration" : 0.025,
+	      "armRotation" : 1,
+	      "weaponRotation" : 1,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -88,6 +88,7 @@
 
   "altAbilityType" : "vaporizerbomb",
   "altAbility" : {
+    "name" : "Bio-Disruptor",
     "projectileType" : "plasmaball",
     "projectileCount" : 10,
     "energyCost" : 100,

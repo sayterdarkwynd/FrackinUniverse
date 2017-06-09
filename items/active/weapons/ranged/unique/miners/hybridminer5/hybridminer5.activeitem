@@ -5,7 +5,7 @@
   "inventoryIcon" : "hybridminer5gun.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
     "description" : "The ultimate mining laser.",
     "shortdescription" : "CT-4 Mining Cannon",
     "learnBlueprintsOnPickup" : [ "hybridminer5" ],
@@ -111,5 +111,36 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+          "shortdescription" : "^cyan;CT-4^reset; ^green;^reset;",
+	  "primaryAbility" : {
+	    "damageConfig" : {
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "cosmic",
+	      "knockback" : 5
+	    }
+	  }    
+  },
+  "upgradeParameters2" : {
+          "shortdescription" : "^cyan;CT-4^reset; ^cyan;^reset;",
+	  "primaryAbility" : {
+	    "damageConfig" : {
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "cosmic",
+	      "knockback" : 5
+	    }
+	  }    
+  },
+  "upgradeParameters3" : {
+          "shortdescription" : "^cyan;CT-4^reset; ^yellow;^reset;",
+	  "primaryAbility" : {
+	    "damageConfig" : {
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "cosmic",
+	      "knockback" : 5
+	    }
+	  }    
+  }
 }

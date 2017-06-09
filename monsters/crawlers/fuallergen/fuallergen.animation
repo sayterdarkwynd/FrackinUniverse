@@ -6,36 +6,21 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 1,
-            "cycle" : 1,
-            "mode" :"loop",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/sporgus_fire.ogg"
-            }            
+            "frames" : 1
           },
-          "walk" : {
-            "frames" : 1,
-            "cycle" : 1,
-            "mode" :"loop" 
-          },  
           "fire" : {
             "frames" : 4,
             "cycle" : 0.75,
             "mode" :"loop",
             "properties" : {
               "immediateSound" : "/sfx/melee/ignome_windup.ogg"
-            }               
-          },          
+            }
+          },
           "hurt" : {
             "frames" : 4,
             "cycle" : 0.75,
-            "mode" :"loop" 
-          },
-          "jump" : {
-            "frames" : 1,
-            "cycle" : 0.35,
-            "mode" :"loop" 
-          }           
+            "mode" :"loop"
+          }
         }
       },
       "damage" : {
@@ -69,7 +54,7 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "transformationGroups" : [ "body" ]
+          "transformationGroups" : [ "body", "facing" ]
         },
         "partStates" : {
           "body" : {
@@ -78,26 +63,16 @@
                 "image" : "<partImage>:idle.<frame>"
               }
             },
-            "walk" : {
-              "properties" : {
-                "image" : "<partImage>:idle.<frame>"
-              }
-            },
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:fire.<frame>"
               }
-            },  
+            },
             "hurt" : {
               "properties" : {
                 "image" : "<partImage>:hurt.<frame>"
               }
-            },
-            "jump" : {
-              "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
-              }
-            }           
+            }
           },
           "damage" : {
             "stunned" : {
@@ -110,9 +85,13 @@
       }
     }
   },
+  "globalTagDefaults" : {
+    "aggro" : ""
+  },
 
   "transformationGroups" : {
-    "body" : { "interpolated" : true }
+    "body" : { "interpolated" : true },
+    "facing" : { "interpolated" : false }
   },
 
   "effects" : {
@@ -122,7 +101,7 @@
       "directives" : "fade=ffffff;0.5"
     }
   },
-  
+
   "particleEmitters" : {
 
     "deathPoof" : {

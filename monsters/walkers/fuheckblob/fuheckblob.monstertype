@@ -1,0 +1,198 @@
+{
+  "type" : "fuheckblob",
+  "shortdescription" : "Fleshy Blob",
+  "description" : "Considering he's always losing blood, he's in great shape!",
+
+  "categories" : [ "fuheckblob" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fuheckblob.animation",
+  "reversed" : true,
+
+  "dropPools" : [ "fleshblobLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/stats/monstereffects/monsterstatus_drain.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 3,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : true,
+            "wallVerticalSpeed" : 35
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 25,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 3,
+            "timeBetweenHops" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35
+          }
+        }
+      ]
+
+
+
+    },
+
+    "metaBoundBox" : [-1.0, -1.0, 1.0, 1.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.0, -1.0], [1.0, -1.0], [1.0, 1.0], [-1.0, 1.0] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
+      "flySpeed" : 15,
+      "airForce" : 5.0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 20.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 1,
+    "knockoutEffect" : "blink",
+    "knockoutAnimationStates" : {
+      "damage" : "idle"
+    },
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -1.0], [1.0, -1.0], [1.0, 1.0], [-1.0, 1.0] ],
+      "damage" : 9,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 15,
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 70
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

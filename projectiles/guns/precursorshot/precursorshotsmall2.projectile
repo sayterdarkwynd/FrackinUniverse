@@ -6,7 +6,7 @@
   "piercing" : false,
   "level" : 1,
   "frameNumber" : 6,
-  "speed" : 60,
+  "speed" : 240,
   "damageKindImage" : "icon.png",
   "pointLight" : false,
   "timeToLive" : 0.85,
@@ -17,11 +17,6 @@
     {
       "action" : "config",
       "file" : "/projectiles/explosions/precursorexplosion/precursorexplosionsmall2.config"
-    },
-    {
-      "action" : "liquid",
-      "liquid" : "orangegravrain",
-      "quantity" : 0.15
     }
   ],
   "periodicActions" : [
@@ -34,5 +29,14 @@
       "fuzzAngle" : 360
    }
   ],  
-  "damageKind" : "radioactive"
+  "damageKind" : "radioactive",
+
+  "scripts" : ["/scripts/projectiles/zigzagprojectile.lua"],
+  "scriptDelta" : 1,
+
+  "zigZagTime" : 0.1,
+  "zigZagAngle" : 0.5,
+
+  "persistentAudio" : "/sfx/projectiles/raygun_wobble_loop.ogg"
+  
 }

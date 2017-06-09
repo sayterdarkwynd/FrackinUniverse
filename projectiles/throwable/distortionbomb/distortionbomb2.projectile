@@ -1,0 +1,22 @@
+{
+  "projectileName" : "distortionbomb2",
+  "physics" : "stickybomb",
+  "bounces" : -1,
+  "timeToLive" : 1.35,
+  "image" : "distortionbomb.png",
+  "animationCycle" : 1.35,
+  "fullbright" : true,
+  "lightColor" : [0, 75, 0],
+  "frameNumber" : 7,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/distortionbombexplosion.config"
+    }
+  ],
+  "power" : 60,
+  "damageType" : "NoDamage",
+  "damageKind" : "radioactive",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "emitters" : [ "sparks" ]
+}

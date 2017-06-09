@@ -25,10 +25,10 @@ function init()
     end
     storage.spawnPosition = groundSpawnPosition or position
   end
-  BData:setPosition("spawn", storage.spawnPosition)
 
-  self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
-  self.behaviorState = self.behavior:init(_ENV)
+  self.behavior = behavior.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig"), _ENV)
+  self.board = self.behavior:blackboard()
+  self.board:setPosition("spawn", storage.spawnPosition)
 
   self.collisionPoly = mcontroller.collisionPoly()
 
@@ -39,13 +39,13 @@ function init()
     monster.setDeathParticleBurst(config.getParameter("deathParticles"))
   end
 
-  script.setUpdateDelta(1)
+  script.setUpdateDelta(config.getParameter("initialScriptDelta", 5))
   mcontroller.setAutoClearControls(false)
-  self.behaviorTickRate = config.getParameter("behaviorUpdateDelta", 5)
+  self.behaviorTickRate = config.getParameter("behaviorUpdateDelta", 2)
   self.behaviorTick = math.random(1, self.behaviorTickRate)
 
   animator.setGlobalTag("flipX", "")
-  BData:setNumber("facingDirection", mcontroller.facingDirection())
+  self.board:setNumber("facingDirection", mcontroller.facingDirection())
 
   capturable.init()
 
@@ -54,7 +54,7 @@ function init()
     for _,notification in pairs(notifications) do
       if notification.healthLost > 0 then
         self.damaged = true
-        BData:setEntity("damageSource", notification.sourceEntityId)
+        self.board:setEntity("damageSource", notification.sourceEntityId)
       end
     end
   end)
@@ -75,7 +75,7 @@ function init()
 
   local deathBehavior = config.getParameter("deathBehavior")
   if deathBehavior then
-    self.deathBehavior = root.behavior(deathBehavior, config.getParameter("behaviorConfig", {}))
+    self.deathBehavior = behavior.behavior(deathBehavior, config.getParameter("behaviorConfig", {}), _ENV, self.behavior:blackboard())
   end
 
   self.forceRegions = ControlMap:new(config.getParameter("forceRegions", {}))
@@ -86,16 +86,19 @@ function init()
     monster.setDamageBar(config.getParameter("damageBar"));
   end
 
-
   monster.setName("Xtl-Brxall Kefrin'xshax")
-  monster.setDamageBar("special")  
-  
+  monster.setDamageBar("special")
+
   monster.setInteractive(config.getParameter("interactive", false))
+
+  monster.setAnimationParameter("chains", config.getParameter("chains"))
 end
 
--- This is called in update() using pcall
--- to catch errors
 function update(dt)
+  if config.getParameter("facingMode", "control") == "transformation" then
+    mcontroller.controlFace(1)
+  end
+
   capturable.update(dt)
   self.damageTaken:update()
 
@@ -127,7 +130,6 @@ function update(dt)
     monster.setDamageOnTouch(self.touchDamageEnabled)
   end
 
-
   if self.behaviorTick >= self.behaviorTickRate then
     self.behaviorTick = self.behaviorTick - self.behaviorTickRate
     mcontroller.clearControls()
@@ -139,19 +141,19 @@ function update(dt)
     self.forceRegions:clear()
     self.damageSources:clear()
     self.damageParts = {}
-    BData:clearControls()
     clearAnimation()
 
-    BData:setEntity("self", entity.id())
-    BData:setPosition("self", mcontroller.position())
-    BData:setNumber("dt", dt * self.behaviorTickRate)
-    BData:setNumber("facingDirection", self.facingDirection or mcontroller.facingDirection())
-
     if self.behavior then
-      self.behavior:run(self.behaviorState, dt * self.behaviorTickRate)
-    end
+      local board = self.behavior:blackboard()
+      board:setEntity("self", entity.id())
+      board:setPosition("self", mcontroller.position())
+      board:setNumber("dt", dt * self.behaviorTickRate)
+      board:setNumber("facingDirection", self.facingDirection or mcontroller.facingDirection())
 
-    BData:update()
+      self.behavior:run(dt * self.behaviorTickRate)
+    end
+    BGroup:updateGroups()
+
     updateAnimation()
 
     if not self.rotated and self.rotation then
@@ -172,13 +174,11 @@ function update(dt)
     overrideCollisionPoly()
   end
   self.behaviorTick = self.behaviorTick + 1
-
-  movement()
 end
 
 function interact(args)
   self.interacted = true
-  BData:setEntity("interactionSource", args.sourceId)
+  self.board:setEntity("interactionSource", args.sourceId)
 end
 
 function shouldDie()
@@ -188,8 +188,7 @@ end
 function die()
   if not capturable.justCaptured then
     if self.deathBehavior then
-      local deathBehaviorState = self.deathBehavior:init(_ENV)
-      self.deathBehavior:run(deathBehaviorState, script.updateDt())
+      self.deathBehavior:run(script.updateDt())
     end
     capturable.die()
   end
@@ -197,6 +196,7 @@ function die()
 end
 
 function uninit()
+  BGroup:uninit()
 end
 
 function setDamageSources()
