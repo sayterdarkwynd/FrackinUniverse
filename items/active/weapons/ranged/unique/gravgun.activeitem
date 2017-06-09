@@ -1,10 +1,11 @@
 {
   "itemName" : "gravgun",
-  "price" : 160,
+  "price" : 1600,
   "inventoryIcon" : "gravgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Condenses gravity into focused blasts or spews grav liquid
+  "description" : "Condenses gravity into focused blasts.
+^cyan;Moves enemies. A lot.^reset;
 ^yellow;Extreme Knockback (Alt)^reset;",
   "shortdescription" : "Gravity Gun",
   "level" : 3,
@@ -23,7 +24,7 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
+      "fire" : [ "/sfx/weapons/energyweapon2.ogg" ]
     }
   },
 
@@ -37,19 +38,17 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.31,
-    "baseDps" : 5,
-    "energyUsage" : 30,
+    "fireTime" : 1.5,
+    "baseDps" : 3,
+    "energyUsage" : 65,
     "inaccuracy" : 0.01,
-    "burstTime" : 0.065,
-    "burstCount" : 3,
     "projectileCount" : 1,
-    "fireType" : "burst",
+    "fireType" : "auto",
 
-    "projectileType" : "squirtgrav",
+    "projectileType" : "gravdamage",
     "projectileParameters" : { 
-      "speed" : 45,
-      "knockback" : 2
+      "speed" : 65,
+      "knockback" : 5
     },
 	  "stances" : {
 	    "idle" : {
@@ -85,6 +84,103 @@
   "critBonus" : 13,
 
   "altAbilityType" : "shockburstshot",
+  "altAbility" : {
+    "name" : "Gravity Warp",
+    "fireTime" : 3.0,
+    "energyCost" : 200,
+    "baseDps" : 3,
+    "projectileParameters" : {
+      "speed" : 70,
+      "piercing" : false,
+	"actionOnHit" : [
+		 {
+		   "action":"particle", 
+		   "rotate":true, 
+		   "specification":  {
+		     "type":"animated", 
+		     "looping":true, 
+		     "animation":"/animations/spacemonsterspawn/spacemonsterspawn.animation", 
+		     "position":[0,0], 
+		     "finalVelocity":[0,0], 
+		     "approach":[0,0], 
+		     "destructionAction":"shrink", 
+		     "destructionTime":1.15, 
+		     "fade":1, 
+		     "size":3, 
+		     "layer":"back", 
+		     "timeToLive":0.85
+		     }
+		 },
+		 
+            {"action":"sound", "options":["/sfx/gun/erchiuseyebeam_start.ogg"]}, 
+            
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/cosmicimpact2.config"
+	    },
+	    
+	    {
+	      "action" : "projectile",
+	      "type" : "gravityportal",
+	      "fuzzAngle" : 0,      
+	      "inheritDamageFactor" : 0.035,
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fubeamgunblob2",
+	      "fuzzAngle" : 0,      
+	      "inheritDamageFactor" : 0.05,
+	      "config" : {
+	      	        "renderLayer" : "Projectile+5",
+	      	        "speed" : 0,
+	      	        "timeToLive" : 0.1,
+	      	          "physics" : "laser",
+	      		  "physicsForces" : {
+	      		    "vacuum" : {
+	      		      "type" : "RadialForceRegion",
+	      		      "outerRadius" : 30,
+	      		      "innerRadius" : 20,
+	      		      "targetRadialVelocity" : 120,
+	      		      "controlForce" : 200,
+	      		      "categoryWhitelist" : ["monster", "npc", "vehicle", "itemdrop"]
+	      		    }
+	      		  },
+	      		  "clientEntityMode" : "ClientSlaveOnly"	          
+	      },
+	      "angleAdjust" : 0
+	    }	    
+	  ],    
+	  
+	  "periodicActions" : [
+	    {
+	      "time" : 0.01,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "fubeamgunblob2",
+	      "config" : {
+	        "renderLayer" : "Projectile+5",
+	        "speed" : 70,
+	        "timeToLive" : 0.1,
+	          "physics" : "laser",
+		  "physicsForces" : {
+		    "vacuum" : {
+		      "type" : "RadialForceRegion",
+		      "outerRadius" : 16,
+		      "innerRadius" : 8,
+		      "targetRadialVelocity" : 120,
+		      "controlForce" : 400,
+		      "categoryWhitelist" : ["monster", "npc", "vehicle", "itemdrop"]
+		    }
+		  },
+		  "clientEntityMode" : "ClientSlaveOnly"	          
+	      },
+	      "inheritDamageFactor" :0.035,
+	      "fuzzAngle" : 0
+	   } 
+	  ]      
+    }  
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,0 +1,1811 @@
+{
+  "metadata" : {
+    "name" : "naturalcave",
+    "species" : "dummy",
+    "rules" : [
+    ],
+    "anchor" : [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance5", "entrance6" ],
+    // "gravity" : 80,
+    "maxRadius" : 2000,
+    "maxParts" : 15,
+    "extendSurfaceFreeSpace" : 100
+  },
+  "tiles" : [
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    {
+      "value" : [120, 120, 120, 255],
+      "rules" : [ [ "worldGenMustContainAirForeground" ], [ "allowOverdrawing" ] ]
+    },
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, entrance coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, empty cave coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [240, 255, 0, 255],
+      "comment" : "bright yellow, entrance piece coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [54, 63, 105, 255],
+      "comment" : "water pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+    },
+
+    {
+      "value" : [255, 232, 178, 255],
+      "comment" : "background main biome block",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [255, 222, 178, 255],
+      "comment" : "overwritable background main biome block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [204, 186, 143, 255],
+      "comment" : "foreground main biome block",
+      "brush" : [ [ "surface", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [204, 176, 143, 255],
+      "comment" : "overwritable foreground main biome block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [222, 255, 178, 255],
+      "comment" : "background sub biome block #1",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [222, 245, 178, 255],
+      "comment" : "overwritable background sub biome block #1",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [177, 204, 143, 255],
+      "comment" : "foreground sub biome block #1",
+      "brush" : [ [ "surface", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [177, 194, 143, 255],
+      "comment" : "overwritable foreground sub biome block #1",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [178, 232, 255, 255],
+      "comment" : "background sub biome block #2",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [178, 222, 255, 255],
+      "comment" : "overwritable background sub biome block #2",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [143, 186, 204, 255],
+      "comment" : "foreground sub biome block #2",
+      "brush" : [ [ "surface", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [143, 176, 204, 255],
+      "comment" : "overwritable foreground sub biome block #2",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [255, 0, 0, 255],
+      "comment" : "wire #1 Red",
+      "brush" : [ [ "wire", { "group" : "group1", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 255, 0, 255],
+      "comment" : "wire #2 Green",
+      "brush" : [ [ "wire", { "group" : "group2", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 0, 255, 255],
+      "comment" : "wire #3 Blue",
+      "brush" : [ [ "wire", { "group" : "group3", "local" : true } ] ]
+    },
+
+    {
+      "value" : [26, 77, 0, 255],
+      "comment" : "biome tree",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biometree" ] ]
+    },
+
+    {
+      "value" : [34, 102, 0, 255],
+      "comment" : "biome flora",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biomeitems" ] ]
+    },
+
+    {
+      "value" : [85, 255, 0, 255],
+      "comment" : "Player Spawn",
+      "brush" : [ [ "playerstart" ] ]
+    },
+
+    {
+      "value" : [185, 179, 21, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [237, 230, 26, 255],
+      "comment" : "foreground crosshatch",
+      "brush" : [ [ "clear" ], [ "front", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [63, 185, 21, 255],
+      "comment" : "background fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "fullwood1" ] ]
+    },
+
+    {
+      "value" : [117, 185, 21, 255],
+      "comment" : "foreground fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "fullwood1" ], [ "front", "fullwood1" ] ]
+    },   
+    {
+      "value" : [186, 20, 145, 255],
+      "comment" : "background darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ] ]
+    },
+
+    {
+      "value" : [237, 26, 184, 255],
+      "comment" : "foreground darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+
+    {
+      "value" : [217, 26, 184, 255],
+      "comment" : "foreground darkwood overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+
+    {
+      "value" : [186, 65, 20, 255],
+      "comment" : "background girder",
+      "brush" : [ [ "clear" ], [ "back", "girder" ] ]
+    },
+
+    {
+      "value" : [237, 82, 26, 255],
+      "comment" : "foreground girder",
+      "brush" : [ [ "clear" ], [ "back", "girder" ], [ "front", "girder" ] ]
+    },
+
+    {
+      "value" : [186, 170, 124, 255],
+      "comment" : "foreground plantmatter",
+      "brush" : [ [ "clear" ], [ "back", "plantmatter" ], [ "front", "plantmatter" ] ]
+    },
+
+    {
+      "value" : [133, 115, 79, 255],
+      "comment" : "background plantmatter",
+      "brush" : [ [ "clear" ], [ "back", "plantmatter" ] ]
+    },
+
+    {
+      "value" : [137, 124, 76, 255],
+      "comment" : "old wood stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "platform" ] ]
+    },
+
+    {
+      "value" : [184, 145, 101, 255],
+      "comment" : "wooden stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "woodenplatform" ] ]
+    },
+
+    {
+      "value" : [166, 148, 136, 255],
+      "comment" : "wreck stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "wreckplatform" ] ]
+    },
+
+    {
+      "value" : [119, 182, 124, 255],
+      "comment" : "tent1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tent1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [80, 149, 91, 255],
+      "comment" : "tent1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tent1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [123, 181, 118, 255],
+      "comment" : "tent2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tent2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [80, 148, 80, 255],
+      "comment" : "tent2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tent2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 57, 94, 255],
+      "comment" : "woodencrate1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "left", "parameters" : { "treasurePools" : [ "naturalcaveTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 50, 83, 255],
+      "comment" : "woodencrate1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right", "parameters" : { "treasurePools" : [ "naturalcaveTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 56, 136, 255],
+      "comment" : "woodencrate2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "left", "parameters" : { "treasurePools" : [ "naturalcaveTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 50, 122, 255],
+      "comment" : "woodencrate2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "right", "parameters" : { "treasurePools" : [ "naturalcaveTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [196, 56, 255, 255],
+      "comment" : "bunkercrate facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkercrate", { "direction" : "left", "parameters" : { "treasurePools" : [ "naturalcaveTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [176, 50, 229, 255],
+      "comment" : "bunkercrate facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkercrate", { "direction" : "right", "parameters" : { "treasurePools" : [ "naturalcaveTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [140, 56, 255, 255],
+      "comment" : "metalbarrel1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "metalbarrel1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [125, 50, 229, 255],
+      "comment" : "metalbarrel1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "metalbarrel1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [84, 56, 255, 255],
+      "comment" : "prisongirderv facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderv", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [74, 50, 229, 255],
+      "comment" : "prisongirderv facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderv", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [56, 103, 255, 255],
+      "comment" : "prisongirderh",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderh" ] ]
+    },
+
+    {
+      "value" : [56, 154, 255, 255],
+      "comment" : "woodsupport",
+      "brush" : [ [ "clear" ], [ "object", "woodsupport" ] ]
+    },
+
+    {
+      "value" : [66, 154, 255, 255],
+      "comment" : "underwater woodsupport",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ], [ "object", "woodsupport" ] ]
+    },
+
+    {
+      "value" : [56, 187, 255, 255],
+      "comment" : "barbedwire facing left",
+      "brush" : [ [ "clear" ], [ "object", "barbedwire", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [50, 170, 229, 255],
+      "comment" : "barbedwire facing right",
+      "brush" : [ [ "clear" ], [ "object", "barbedwire", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [56, 253, 255, 255],
+      "comment" : "prisonpipefence",
+      "brush" : [ [ "clear" ], [ "object", "prisonpipefence" ] ]
+    },
+
+    {
+      "value" : [56, 255, 206, 255],
+      "comment" : "tungstenchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "tungstenchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [50, 229, 185, 255],
+      "comment" : "tungstenchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "tungstenchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [56, 255, 168, 255],
+      "comment" : "woodenchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [50, 229, 152, 255],
+      "comment" : "woodenchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [56, 255, 126, 255],
+      "comment" : "woodstool",
+      "brush" : [ [ "clear" ], [ "object", "woodstool" ] ]
+    },
+
+    {
+      "value" : [56, 255, 70, 255],
+      "comment" : "talljar1",
+      "brush" : [ [ "clear" ], [ "object", "talljar1" ] ]
+    },
+
+    {
+      "value" : [98, 255, 56, 255],
+      "comment" : "talljar2",
+      "brush" : [ [ "clear" ], [ "object", "talljar2" ] ]
+    },
+
+    {
+      "value" : [154, 255, 56, 255],
+      "comment" : "midjar1",
+      "brush" : [ [ "clear" ], [ "object", "midjar1" ] ]
+    },
+
+    {
+      "value" : [201, 255, 56, 255],
+      "comment" : "smalljar1",
+      "brush" : [ [ "clear" ], [ "object", "smalljar1" ] ]
+    },
+
+    {
+      "value" : [236, 200, 94, 255],
+      "comment" : "floodlights facing left",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 184, 87, 255],
+      "comment" : "floodlights facing right",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [77, 65, 31, 255],
+      "comment" : "floodlights facing left - off state",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "left", "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [64, 54, 26, 255],
+      "comment" : "floodlights facing right - off state",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "right", "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [218, 83, 2, 255],
+      "comment" : "prisonbarrelfire facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonbarrelfire", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [204, 79, 2, 255],
+      "comment" : "prisonbarrelfire facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonbarrelfire", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [253, 143, 77, 255],
+      "comment" : "campfire",
+      "brush" : [ [ "clear" ], [ "object", "campfire" ] ]
+    },
+
+    {
+      "value" : [254, 233, 129, 255],
+      "comment" : "oillantern1",
+      "brush" : [ [ "clear" ], [ "object", "oillantern1" ] ]
+    },
+
+    {
+      "value" : [77, 70, 39, 255],
+      "comment" : "oillantern1 - off state",
+      "brush" : [ [ "clear" ], [ "object", "oillantern1", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [253, 209, 77, 255],
+      "comment" : "torch",
+      "brush" : [ [ "clear" ], [ "object", "torch" ] ]
+    },
+
+    {
+      "value" : [130, 110, 60, 255],
+      "comment" : "woodentalllantern",
+      "brush" : [ [ "clear" ], [ "object", "woodentalllantern" ] ]
+    },
+
+    {
+      "value" : [77, 63, 23, 255],
+      "comment" : "torch - off state",
+      "brush" : [ [ "clear" ], [ "object", "torch", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [177, 128, 80, 255],
+      "comment" : "woodendoor",
+      "brush" : [ [ "clear" ], [ "object", "woodendoor" ] ]
+    },
+
+    {
+      "value" : [190, 255, 20, 255],
+      "comment" : "travellersbeacon",
+      "brush" : [ [ "clear" ], [ "object", "travellersbeacon", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 45, 26, 255],
+      "comment" : "miningbelt facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningbelt", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 42, 24, 255],
+      "comment" : "miningbelt facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningbelt", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 56, 26, 255],
+      "comment" : "miningcrusher facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningcrusher", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 53, 24, 255],
+      "comment" : "miningcrusher facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningcrusher", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 91, 26, 255],
+      "comment" : "mininghazardsign",
+      "brush" : [ [ "clear" ], [ "object", "mininghazardsign" ] ]
+    },
+
+    {
+      "value" : [255, 79, 26, 255],
+      "comment" : "miningfence facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningfence", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 75, 24, 255],
+      "comment" : "miningfence facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningfence", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 68, 26, 255],
+      "comment" : "miningskip facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningskip", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 64, 24, 255],
+      "comment" : "miningskip facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningskip", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 102, 26, 255],
+      "comment" : "miningdoor facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningdoor", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 97, 24, 255],
+      "comment" : "miningdoor facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningdoor", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 94, 26, 255],
+      "comment" : "miningchest facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningchest", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 90, 24, 255],
+      "comment" : "miningchest facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningchest", { "direction" : "right" } ] ]
+    },
+
+    // NPC MONSTER SPAWN BRUSHES //
+
+    {
+      "value" : [0, 152, 104, 255],
+      "comment" : "small quadruped npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "gleap",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [152, 0, 79, 255],
+      "comment" : "large quadruped npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "nutmidge",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [152, 125, 0, 255],
+      "comment" : "large quadruped npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "poptop",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [64, 0, 152, 255],
+      "comment" : "small flying npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "batong",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [152, 54, 0, 255],
+      "comment" : "large flying npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "largeflying",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [152, 0, 0, 255],
+      "comment" : "small biped npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "crustoise",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 136, 152, 255],
+      "comment" : "large biped npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "snaunt",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [255, 205, 0, 255],
+      "comment" : "motherpoptop npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "motherpoptop",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [125, 194, 66, 255],
+      "comment" : "tutorial man",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "tutorial"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [173, 0, 179, 255],
+      "comment" : "large biped npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "crustoise",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [14, 152, 0, 255],
+      "comment" : "fish npc #1",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "fish",
+            "seed" : "stable",
+            "parameters" : {
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [143, 152, 0, 255],
+      "comment" : "fish npc #2",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "fish",
+            "seed" : "stable",
+            "parameters" : {
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [152, 93, 0, 255],
+      "comment" : "fish npc #3",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "fish",
+            "seed" : "stable",
+            "parameters" : {
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [126, 0, 153, 255],
+      "comment" : "large fish npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "largefish",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true,
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    // STAGEHANDS
+
+    {
+      "value" : [0, 240, 240, 255],
+      "comment" : "radio message trigger stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "radiomessage",
+          "parameters" : {
+            "broadcastArea" : [-8, -8, 8, 8],
+            "radioMessages" : ["naturalcave1", "naturalcave2"]
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [0, 240, 241, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -8, 8, 8],
+            "locationType" : "naturalcave.entrance"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [0, 240, 242, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -8, 8, 8],
+            "locationType" : "naturalcave.depths"
+          }
+        }
+      ] ]
+    }
+
+  ],
+
+  "parts" : [
+    {
+      "name" : "entrance1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ]
+      ],
+      "def" : [ "image", [ "entrance1.png", "entrance1-objects.png" ] ]
+    },
+
+    {
+      "name" : "entrance2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ]
+      ],
+      "def" : [ "image", [ "entrance2b.png", "entrance2b-objects.png" ] ]
+    },
+
+    {
+      "name" : "entrance2c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ]
+      ],
+      "def" : [ "image", [ "entrance2c.png", "entrance2c-objects.png" ] ]
+    },
+
+    {
+      "name" : "entrance3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ]
+      ],
+      "def" : [ "image", [ "entrance3.png", "entrance3-objects.png" ] ]
+    },
+
+    {
+      "name" : "entrance4a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ]
+      ],
+      "def" : [ "image", [ "entrance4a.png" ] ]
+    },
+
+    {
+      "name" : "entrance4b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ]
+      ],
+      "def" : [ "image", [ "entrance4b.png" ] ]
+    },
+
+    {
+      "name" : "entrance5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ]
+      ],
+      "def" : [ "image", [ "entrance5.png", "entrance5-objects.png" ] ]
+    },
+
+    {
+      "name" : "entrance6",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ]
+      ],
+      "def" : [ "image", [ "entrance6.png", "entrance6-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite1left",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite1right" ] ]
+      ],
+      "def" : [ "image", [ "campsite1left.png", "campsite1-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite1right",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite1left" ] ]
+      ],
+      "def" : [ "image", [ "campsite1right.png", "campsite1-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite2left",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite2right" ] ]
+      ],
+      "def" : [ "image", [ "campsite2left.png", "campsite2-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite2right",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite2left" ] ]
+      ],
+      "def" : [ "image", [ "campsite2right.png", "campsite2-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite3left",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite3right" ] ]
+      ],
+      "def" : [ "image", [ "campsite3left.png", "campsite3-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite3right",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite3left" ] ]
+      ],
+      "def" : [ "image", [ "campsite3right.png", "campsite3-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite4left",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite4right" ] ]
+      ],
+      "def" : [ "image", [ "campsite4left.png", "campsite4-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite4right",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite4left" ] ]
+      ],
+      "def" : [ "image", [ "campsite4right.png", "campsite4-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite5left",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite5right" ] ]
+      ],
+      "def" : [ "image", [ "campsite5left.png", "campsite5-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite5right",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite5left" ] ]
+      ],
+      "def" : [ "image", [ "campsite5right.png", "campsite5-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite6left",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite6right" ] ]
+      ],
+      "def" : [ "image", [ "campsite6left.png", "campsite6-objects.png" ] ]
+    },
+
+    {
+      "name" : "campsite6right",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "campsite6left" ] ]
+      ],
+      "def" : [ "image", [ "campsite6right.png", "campsite6-objects.png" ] ]
+    },
+
+    {
+      "name" : "1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "1a", "1b", "1c", "1d" ] ]
+      ],
+      "def" : [ "image", [ "1a.png", "1a-objects.png" ] ]
+    },
+
+    {
+      "name" : "1b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "1a", "1b", "1c", "1d" ] ]
+      ],
+      "def" : [ "image", [ "1b.png", "1b-objects.png" ] ]
+    },
+
+    {
+      "name" : "1c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "1a", "1b", "1c", "1d" ] ]
+      ],
+      "def" : [ "image", [ "1c.png", "1c-objects.png" ] ]
+    },
+
+    {
+      "name" : "1d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "1a", "1b", "1c", "1d" ] ]
+      ],
+      "def" : [ "image", [ "1d.png", "1d-objects.png" ] ]
+    },
+
+    {
+      "name" : "2a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "2b", "2c", "2d" ] ]
+      ],
+      "def" : [ "image", [ "2a.png", "2a-objects.png" ] ]
+    },
+
+    {
+      "name" : "2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "2a", "2c", "2d" ] ]
+      ],
+      "def" : [ "image", [ "2b.png", "2b-objects.png" ] ]
+    },
+
+    {
+      "name" : "2c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "2a", "2b", "2d" ] ]
+      ],
+      "def" : [ "image", [ "2c.png", "2c-objects.png" ] ]
+    },
+
+    {
+      "name" : "2d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "2a", "2b", "2c" ] ]
+      ],
+      "def" : [ "image", [ "2d.png", "2d-objects.png" ] ]
+    },
+
+    {
+      "name" : "3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "3.png", "3-objects.png" ] ]
+    },
+
+    {
+      "name" : "4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "4.png", "4-objects.png" ] ]
+    },
+
+    {
+      "name" : "5a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "5a.png", "5a-objects.png" ] ]
+    },
+
+    {
+      "name" : "5b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ],
+        [ "doNotCombineWith", [ "entrance2b", "entrance2c" ] ]
+      ],
+      "def" : [ "image", [ "5b.png", "5b-objects.png" ] ]
+    },
+
+    {
+      "name" : "5c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "5c.png", "5c-objects.png" ] ]
+    },
+
+    {
+      "name" : "5d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "5d.png", "5d-objects.png" ] ]
+    },
+
+    {
+      "name" : "5e",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "5e.png", "5e-objects.png" ] ]
+    },
+
+    {
+      "name" : "5f",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "5f.png", "5f-objects.png" ] ]
+    },
+
+    {
+      "name" : "5g",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "5g.png", "5g-objects.png" ] ]
+    },
+
+    {
+      "name" : "5h",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h" ] ]
+      ],
+      "def" : [ "image", [ "5h.png", "5h-objects.png" ] ]
+    },
+
+    {
+      "name" : "bossroom",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6", "6a", "6b", "6c", "6d", "6e" ] ]
+      ],
+      "def" : [ "image", [ "bossroom.png", "bossroom-objects.png" ] ],
+      "chance" : 100
+    },
+
+    {
+      "name" : "6a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ],
+        [ "doNotCombineWith", [ "6a", "6b", "6c", "6d", "6e" ] ]
+      ],
+      "def" : [ "image", [ "6a.png", "6a-objects.png", "6a-npcs.png" ] ],
+      "chance" : 1
+    },
+
+    {
+      "name" : "6b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ],
+        [ "doNotCombineWith", [ "6a", "6b", "6c", "6d", "6e" ] ]
+      ],
+      "def" : [ "image", [ "6b.png", "6b-objects.png", "6b-npcs.png" ] ],
+      "chance" : 1
+    },
+
+    {
+      "name" : "6c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ],
+        [ "doNotCombineWith", [ "6a", "6b", "6c", "6d", "6e" ] ]
+      ],
+      "def" : [ "image", [ "6c.png", "6c-objects.png", "6c-npcs.png" ] ],
+      "chance" : 1
+    },
+
+    {
+      "name" : "6d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ],
+        [ "doNotCombineWith", [ "6a", "6b", "6c", "6d", "6e" ] ]
+      ],
+      "def" : [ "image", [ "6d.png", "6d-objects.png", "6d-npcs.png" ] ],
+      "chance" : 1
+    },
+
+    {
+      "name" : "6e",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2b", "entrance2c", "entrance3", "entrance4a", "entrance4b", "entrance5", "entrance6" ] ],
+        [ "doNotCombineWith", [ "6a", "6b", "6c", "6d", "6e" ] ]
+      ],
+      "def" : [ "image", [ "6e.png", "6e-objects.png", "6e-npcs.png" ] ],
+      "chance" : 1
+    },
+
+    {
+      "name" : "7a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "7b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "7a.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "7b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "7a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "7b.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "8a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "8b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "8a.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "8b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "8a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "8b.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "9a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "10a", "10b" ] ],
+        [ "doNotCombineWith", [ "9b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "9a.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "9b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "10a", "10b" ] ],
+        [ "doNotCombineWith", [ "9a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "9b.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "10a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "9a", "9b" ] ],
+        [ "doNotCombineWith", [ "10b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "10a.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "10b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "9a", "9b" ] ],
+        [ "doNotCombineWith", [ "10a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "10b.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "11a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "12a", "12b" ] ],
+        [ "doNotCombineWith", [ "11b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "11a.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "11b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "12a", "12b" ] ],
+        [ "doNotCombineWith", [ "11a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "11b.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "12a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "11a", "11b" ] ],
+        [ "doNotCombineWith", [ "12b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "12a.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "12b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "11a", "11b" ] ],
+        [ "doNotCombineWith", [ "12a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "12b.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "13a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "13a", "13b" ] ]
+      ],
+      "def" : [ "image", [ "13a.png", "13a-objects.png" ] ]
+    },
+
+    {
+      "name" : "13b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "13a", "13b" ] ]
+      ],
+      "def" : [ "image", [ "13b.png", "13b-objects.png" ] ]
+    },
+
+    {
+      "name" : "endceiling1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endceiling1.png", "endceiling1-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endceiling2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endceiling2a.png", "endceiling2a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endceiling2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endceiling2b.png", "endceiling2b-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endceiling2c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endceiling2a.png", "endceiling2c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endceiling2d",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endceiling2a.png", "endceiling2d-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endceiling3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endceiling3.png", "endceiling3-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endfloor1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endfloor1.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endfloor2a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endfloor2.png", "endfloor2a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endfloor2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endfloor2.png", "endfloor2b-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endfloor2c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endfloor2.png", "endfloor2c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endfloor2d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endfloor2.png", "endfloor2d-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endleft1a.png", "endleft1a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft1b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endleft1b.png", "endleft1b-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft1c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endleft1c.png", "endleft1c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h", "13a", "13b" ] ]
+      ],
+      "def" : [ "image", [ "endleft2a.png", "endleft2a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "13a", "13b" ] ]
+      ],
+      "def" : [ "image", [ "endleft2b.png", "endleft2b-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft2c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endleft2c.png", "endleft2c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft3a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endleft3a.png", "endleft3a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft3b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endleft3b.png", "endleft3b-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft3c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "endright3c" ] ]
+      ],
+      "def" : [ "image", [ "endleft3c.png", "endleft3c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft4a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endleft4a.png", "endleft4a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft4b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endleft4b.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft4c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "2d" ] ]
+      ],
+      "def" : [ "image", [ "endleft4c.png", "endleft4c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endright1a.png", "endright1a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright1b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endright1b.png", "endright1b-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright1c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endright1c.png", "endright1c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h", "13a", "13b" ] ]
+      ],
+      "def" : [ "image", [ "endright2a.png", "endright2a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "4", "13a", "13b" ] ]
+      ],
+      "def" : [ "image", [ "endright2b.png", "endright2b-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright2c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endright2c.png", "endright2c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright3a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endright3a.png", "endright3a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright3b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endright3b.png", "endright3b-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright3c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "endleft3c" ] ]
+      ],
+      "def" : [ "image", [ "endright3c.png", "endright3c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright4a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endright4a.png", "endright4a-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright4b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endright4b.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright4c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endright4c.png", "endright4c-objects.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "enddarkleft",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "enddarkleft.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "enddarkright",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "enddarkright.png" ] ],
+      "chance" : 0
+    }
+  ]
+}

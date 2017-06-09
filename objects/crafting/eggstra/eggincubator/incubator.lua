@@ -22,7 +22,8 @@ function init()
     electricfluffaloegg = {"fuelectricfluffalo", 800, 1},
     fluffaloegg = {"fufluffalo", 400, 1},
     robothenegg = {"furobothenbaby", 400, 1},
-    mooshiegg = {"fumooshibaby", 300, 1}
+    mooshiegg = {"fumooshibaby", 300, 1},
+    copperbeakegg = {"fudodofarmbaby", 120, 1}
   }
   -- egg modifiers
   eggmodifiers = {

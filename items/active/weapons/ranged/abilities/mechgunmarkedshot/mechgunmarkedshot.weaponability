@@ -19,25 +19,32 @@
   "animationScripts" : [ "/items/active/effects/entitymarker.lua" ],
 
   "ability" : {
-    "name" : "Tracking Shot",
+    "name" : "Rage Blast",
     "type" : "mechgunmarkedshot",
     "scripts" : ["/items/active/weapons/ranged/abilities/markedshot/markedshot.lua"],
     "class" : "MarkedShot",
     
     "elementalConfig" : {
-      "physical" : { "projectileType" : "precursorshot" },
-      "fire" : { "projectileType" : "precursorshot" },
-      "electric" : { "projectileType" : "precursorshot" },
-      "ice" : { "projectileType" : "precursorshot" },
-      "poison" : { "projectileType" : "precursorshot" },
-      "shadow" : { "projectileType" : "precursorshot" },
-      "radioactive" : { "projectileType" : "precursorshot" },
-      "cosmic" : { "projectileType" : "precursorshot" }
+      "physical" : { "projectileType" : "precursorshot2" },
+      "fire" : { "projectileType" : "precursorshot2" },
+      "electric" : { "projectileType" : "precursorshot2" },
+      "ice" : { "projectileType" : "precursorshot2" },
+      "poison" : { "projectileType" : "precursorshot2" },
+      "shadow" : { "projectileType" : "precursorshot2" },
+      "radioactive" : { "projectileType" : "precursorshot2" },
+      "cosmic" : { "projectileType" : "precursorshot2" }
     },
-    "projectileParameters" : { },
-    "baseDamage" : 6,
-    "energyUsage" : 40.0, // cost per target marked
-    "cooldownTime" : 1.0,
+    "projectileParameters" : {
+      "statusEffects" : [ "bleedingshort" ]
+    },
+    "fireTime" : 0.11,
+    "baseDps" : 15.95,
+    "energyUsage" : 55.5,
+    "inaccuracy" : 0.012,
+    "burstTime" : 0.075,
+    "burstCount" : 3,
+    "projectileCount" : 1,
+    "fireType" : "burst",
 
     "maxTargets" : 10,
     "targetQueryDistance" : 2,

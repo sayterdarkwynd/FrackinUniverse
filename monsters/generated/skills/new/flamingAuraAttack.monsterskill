@@ -1,0 +1,41 @@
+{
+  "name" : "flamingAuraAttack",
+  "label" : "FIRE MIASMA",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 5],
+        "parameters" : {
+          "skillName" : "flamingAuraAttack",
+
+          "maximumRange" : 8,
+          "minimumRange" : 1,
+          "windupEffect" : "castfire",
+          
+          "fireDelay" : 0.5,
+          "projectileType" : "largefirecloud",
+          "projectileParameters" : {
+            "speed" : 5,
+            "timeToLive" : 3.2
+          },
+	  "inaccuracy" : 3,
+          "projectileCount" : 8,
+          "projectileInterval" : 0.0,
+          "aimDirection" : [0, 1],
+          "power" : 5,
+          "aimAtTarget" : false
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/npc/monsters/ignome_charge2.ogg" ]
+    }
+  }
+}
+

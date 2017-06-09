@@ -1,5 +1,30 @@
 {
 
+
+  "fuspaceElevatorChest" : [
+    [1, {
+      "fill" : [
+        {"pool" : "valuableTreasure"}
+      ],
+      "pool" : [
+        {"weight" : 0.5, "pool" : "ffbasicTreasure"},
+        {"weight" : 0.5, "pool" : "techTreasure"},
+        {"weight" : 0.5, "pool" : "ffchemTreasure"},
+        {"weight" : 0.5, "pool" : "ffwastelandChest"},
+        {"weight" : 0.5, "pool" : "ffmetallicChest"}
+      ],
+      "poolRounds" : [
+        [0.85, 1],
+        [0.70, 2],
+        [0.60, 3],
+        [0.55, 4],
+        [0.40, 5]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+   
+  
   "fficeChestTreasure" : [
     [1, {
       "fill" : [
@@ -749,6 +774,7 @@
 "ffmetallicChest" : [
     [1, {
         "pool" : [
+          {"weight":0.1, "pool":"salvageComponent"},
           {"weight" : 0.001, "pool" : "artifactloot" },
           {"weight" : 0.08, "item" : ["beesilk", 5]},
           {"weight" : 0.03, "item" : ["goldenfleece", 1]},
@@ -886,6 +912,7 @@
         ],
         "pool" : [
           {"weight" : 0.001, "pool" : "artifactloot" },
+          {"weight":0.1, "pool":"salvageComponent"},
           {"weight" : 0.08, "item" : ["beesilk", 5]},
           {"weight" : 0.03, "item" : ["goldenfleece", 1]},
           {"weight" : 0.05, "pool" : "augments"},
@@ -961,6 +988,7 @@
 "ffmetallicChestSurprise" : [
     [1, {
         "pool" : [
+          {"weight":0.1, "pool":"salvageComponent"},
           {"weight" : 0.001, "pool" : "artifactloot" },
           {"weight" : 0.08, "item" : ["beesilk", 5]},
           {"weight" : 0.03, "item" : ["goldenfleece", 1]},
@@ -1082,9 +1110,10 @@
 "ffmetallicbigChest" : [
     [1, {
         "pool" : [
-         {"weight" : 0.001, "pool" : "artifactloot" },
-        {"weight" : 0.03, "pool" : "augments"},
-        {"weight" : 0.03, "pool" : "petcollars2"},
+          {"weight":0.1, "pool":"salvageComponent"},
+          {"weight" : 0.001, "pool" : "artifactloot" },
+          {"weight" : 0.03, "pool" : "augments"},
+          {"weight" : 0.03, "pool" : "petcollars2"},
           {"weight" : 0.1, "item" : [ "essence", 150]},
           {"weight" : 0.333, "item" : [ "polymer", 5]},
           {"weight" : 0.333, "item" : [ "circuitboard", 1]},
@@ -1217,8 +1246,8 @@
           {"weight" : 0.001, "pool" : "artifactloot" },
           {"weight" : 0.08, "item" : ["beesilk", 5]},
           {"weight" : 0.03, "item" : ["goldenfleece", 1]},
-        {"weight" : 0.03, "pool" : "augments"},
-        {"weight" : 0.03, "pool" : "petcollars2"},
+          {"weight" : 0.03, "pool" : "augments"},
+          {"weight" : 0.03, "pool" : "petcollars2"},
           {"weight" : 0.20, "pool" : "money"},
           {"weight" : 0.05, "item" : ["darkwoodmaterial", 10]},
           {"weight" : 0.05, "item" : ["plantfibre", 10]},
@@ -1328,40 +1357,40 @@
 	  {"weight" : 0.004, "item" : [ "verdantrailgun-recipe", 1]},
 	  {"weight" : 0.008, "item" : [ "druidstaff-recipe", 1]},
 	  {"weight" : 0.003, "item" : [ "biopistol-recipe", 1]},
-{"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
-{"weight" : 0.01, "item" : ["gene_agility", 1]},
-{"weight" : 0.01, "item" : ["gene_aquacelerity", 1]},
-{"weight" : 0.01, "item" : ["gene_aquahomeo", 1]},
-{"weight" : 0.01, "item" : ["gene_assimilate", 1]},
-{"weight" : 0.01, "item" : ["gene_avian", 1]},
-{"weight" : 0.01, "item" : ["gene_bioluminescent", 1]},
-{"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
-{"weight" : 0.01, "item" : ["gene_chloroplast", 1]},
-{"weight" : 0.01, "item" : ["gene_corrosive", 1]},
-{"weight" : 0.01, "item" : ["gene_cryo", 1]},
-{"weight" : 0.01, "item" : ["gene_defense", 1]},
-{"weight" : 0.01, "item" : ["gene_electric", 1]},
-{"weight" : 0.01, "item" : ["gene_energy", 1]},
-{"weight" : 0.01, "item" : ["gene_fish", 1]},
-{"weight" : 0.01, "item" : ["gene_harden", 1]},
-{"weight" : 0.01, "item" : ["gene_immunity", 1]},
-{"weight" : 0.01, "item" : ["gene_insectoid", 1]},
-{"weight" : 0.01, "item" : ["gene_mammal", 1]},
-{"weight" : 0.01, "item" : ["gene_mimetic", 1]},
-{"weight" : 0.01, "item" : ["gene_muscle", 1]},
-{"weight" : 0.01, "item" : ["gene_nervebundle", 1]},
-{"weight" : 0.01, "item" : ["gene_ocular", 1]},
-{"weight" : 0.01, "item" : ["gene_poisonous", 1]},
-{"weight" : 0.01, "item" : ["gene_pyro", 1]},
-{"weight" : 0.01, "item" : ["gene_rage", 1]},
-{"weight" : 0.01, "item" : ["gene_reactive", 1]},
-{"weight" : 0.01, "item" : ["gene_regen", 1]},
-{"weight" : 0.01, "item" : ["gene_reproductive", 1]},
-{"weight" : 0.01, "item" : ["gene_resist", 1]},
-{"weight" : 0.01, "item" : ["gene_skeletal", 1]},
-{"weight" : 0.01, "item" : ["gene_stealth", 1]},
-{"weight" : 0.01, "item" : ["gene_stimulant", 1]},
-{"weight" : 0.01, "item" : ["gene_void", 1]}
+	  {"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
+	  {"weight" : 0.01, "item" : ["gene_agility", 1]},
+	  {"weight" : 0.01, "item" : ["gene_aquacelerity", 1]},
+	  {"weight" : 0.01, "item" : ["gene_aquahomeo", 1]},
+	  {"weight" : 0.01, "item" : ["gene_assimilate", 1]},
+	  {"weight" : 0.01, "item" : ["gene_avian", 1]},
+	  {"weight" : 0.01, "item" : ["gene_bioluminescent", 1]},
+	  {"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
+	  {"weight" : 0.01, "item" : ["gene_chloroplast", 1]},
+	  {"weight" : 0.01, "item" : ["gene_corrosive", 1]},
+	  {"weight" : 0.01, "item" : ["gene_cryo", 1]},
+	  {"weight" : 0.01, "item" : ["gene_defense", 1]},
+	  {"weight" : 0.01, "item" : ["gene_electric", 1]},
+	  {"weight" : 0.01, "item" : ["gene_energy", 1]},
+	  {"weight" : 0.01, "item" : ["gene_fish", 1]},
+	  {"weight" : 0.01, "item" : ["gene_harden", 1]},
+	  {"weight" : 0.01, "item" : ["gene_immunity", 1]},
+	  {"weight" : 0.01, "item" : ["gene_insectoid", 1]},
+	  {"weight" : 0.01, "item" : ["gene_mammal", 1]},
+	  {"weight" : 0.01, "item" : ["gene_mimetic", 1]},
+	  {"weight" : 0.01, "item" : ["gene_muscle", 1]},
+	  {"weight" : 0.01, "item" : ["gene_nervebundle", 1]},
+	  {"weight" : 0.01, "item" : ["gene_ocular", 1]},
+	  {"weight" : 0.01, "item" : ["gene_poisonous", 1]},
+	  {"weight" : 0.01, "item" : ["gene_pyro", 1]},
+	  {"weight" : 0.01, "item" : ["gene_rage", 1]},
+	  {"weight" : 0.01, "item" : ["gene_reactive", 1]},
+	  {"weight" : 0.01, "item" : ["gene_regen", 1]},
+	  {"weight" : 0.01, "item" : ["gene_reproductive", 1]},
+	  {"weight" : 0.01, "item" : ["gene_resist", 1]},
+	  {"weight" : 0.01, "item" : ["gene_skeletal", 1]},
+	  {"weight" : 0.01, "item" : ["gene_stealth", 1]},
+	  {"weight" : 0.01, "item" : ["gene_stimulant", 1]},
+	  {"weight" : 0.01, "item" : ["gene_void", 1]}
         ],
         "poolRounds" : [
           [0.23, 1],
@@ -1378,7 +1407,7 @@
   "ffelderbookTreasure" : [
     [1, {
         "pool" : [
-          {"weight" : 0.02, "item" :  [ "elderarmorbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderarmorbook-codex", 1]}, 
           {"weight" : 0.02, "item" :  [ "elderbladebook-codex", 1]},
           {"weight" : 0.02, "item" :  [ "eldercarbinebook-codex", 1]},
           {"weight" : 0.02, "item" :  [ "eldergrapplerbook-codex", 1]},
@@ -1387,10 +1416,15 @@
           {"weight" : 0.02, "item" :  [ "elderspearbook-codex", 1]},
           {"weight" : 0.02, "item" :  [ "elderwhipbook-codex", 1]},
           {"weight" : 0.02, "item" :  [ "elderrepeaterbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "cultarmorchestbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "cultarmorheadbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "cultarmorpantsbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderstaffbook1-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderstaffbook2-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderstaffbook3-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderstaffbook4-codex", 1]},
           {"weight" : 0.02, "item" :  [ "elderbowbook-codex", 1]},
-          {"weight" : 0.02, "item" :  [ "elderstaff1book-codex", 1]},
-          {"weight" : 0.02, "item" :  [ "elderstaff2book-codex", 1]},
-          {"weight" : 0.02, "item" :  [ "elderstaff3book-codex", 1]}
+          {"weight" : 0.02, "item" :  [ "elderbroadswordbook-codex", 1]}
         ],
         "poolRounds" : [
           [0.23, 1],
@@ -1483,19 +1517,24 @@
           {"weight" : 0.02, "item" :  [ "elderrelic13", 1]},
           {"weight" : 0.02, "item" :  [ "elderrelic14", 1]},
 
-          {"weight" : 0.005, "item" :  [ "elderarmorbook-codex", 1]},
-          {"weight" : 0.005, "item" :  [ "elderbladebook-codex", 1]},
-          {"weight" : 0.005, "item" :  [ "eldercarbinebook-codex", 1]},
-          {"weight" : 0.005, "item" :  [ "eldergrapplerbook-codex", 1]},
-          {"weight" : 0.005, "item" :  [ "elderpistolbook-codex", 1]},
-          {"weight" : 0.005, "item" :  [ "elderripperbook-codex", 1]},
-          {"weight" : 0.005, "item" :  [ "elderspearbook-codex", 1]},
-          {"weight" : 0.005, "item" :  [ "elderwhipbook-codex", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrepeaterbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderarmorbook-codex", 1]}, 
+          {"weight" : 0.02, "item" :  [ "elderbladebook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "eldercarbinebook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "eldergrapplerbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderpistolbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderripperbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderspearbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderwhipbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderrepeaterbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "cultarmorchestbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "cultarmorheadbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "cultarmorpantsbook-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderstaffbook1-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderstaffbook2-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderstaffbook3-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderstaffbook4-codex", 1]},
           {"weight" : 0.02, "item" :  [ "elderbowbook-codex", 1]},
-          {"weight" : 0.02, "item" :  [ "elderstaff1book-codex", 1]},
-          {"weight" : 0.02, "item" :  [ "elderstaff2book-codex", 1]},
-          {"weight" : 0.02, "item" :  [ "elderstaff3book-codex", 1]},
+          {"weight" : 0.02, "item" :  [ "elderbroadswordbook-codex", 1]},
           {"weight" : 0.005, "item" :  [ "blackbook5-codex", 1]},
           {"weight" : 0.005, "item" :  [ "blackbook6-codex", 1]},
           {"weight" : 0.005, "item" :  [ "blackbook7-codex", 1]},

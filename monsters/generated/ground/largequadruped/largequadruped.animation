@@ -40,10 +40,26 @@
           "fire" : {
             "frames" : 4,
             "cycle" : 0.4,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
           },
           "firewinddown" : {
             "frames" : 1
+          },
+          "melee" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/melee/bite.ogg",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
           }
         }
       },
@@ -141,6 +157,11 @@
               "properties" : {
                 "image" : "<partImage>:idle.1"
               }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
             }
           },
           "damage" : {
@@ -211,6 +232,11 @@
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:idle.1"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
               }
             }
           },
@@ -283,6 +309,11 @@
               "properties" : {
                 "image" : "<partImage>:idle.1"
               }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
             }
           },
           "damage" : {
@@ -332,7 +363,7 @@
             },
             "charge" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:fire.1"
               }
             },
             "chargewinddown" : {
@@ -342,17 +373,22 @@
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:rotation"
               }
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:fire.<frame>"
+                "image" : "<partImage>:rotation"
               }
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle.1"
+                "image" : "<partImage>:rotation"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
               }
             }
           },
@@ -424,6 +460,11 @@
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:idle.1"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
               }
             }
           },

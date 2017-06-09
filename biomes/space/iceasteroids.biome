@@ -1,7 +1,9 @@
 {
   "name" : "iceasteroids",
   "friendlyName" : "Asteroids",
-  "gravityRange" : [0,14],
+  "statusEffects" : [ "biomeairless", "biomecold" ],
+  
+  
   "mainBlock" : "meteoriterock",
   "subBlocks" : [ "frozenwater", "frozenstone" ],
   "ores" : "asteroid",
@@ -11,13 +13,16 @@
       {
         "select" : 1,
         "pool" : [
-          [ 1, "asteroidskimbus" ]
+          [ 0.05, "asteroidtentaclecometspore" ],
+          [ 0.05, "asteroidpeblit" ],
+          [ 0.05, "asteroidtintic" ],
+          [ 0.05, "asteroidscandroid" ],
+          [ 0.05, "asteroidskimbus" ],
+          [ 0.05, "asteroidwisper7" ]
         ]
       }
     ]
   },
-
-  "statusEffects" : [ "biomeairless", "gravmeteor", "biomecold" ],
 
   "parallax" : "/parallax/space/asteroids.parallax",
 

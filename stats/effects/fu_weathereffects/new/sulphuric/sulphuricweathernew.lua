@@ -16,6 +16,7 @@ function init()
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = 1
+  self.usedIntro = 0
   
   --conditionals
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -45,10 +46,10 @@ function checkEffectValid()
 	  effect.expire()   
 	else
 	  -- activate visuals and check stats
-	  if not self.usedIntro then 
+	  if not (self.usedIntro) or (self.usedIntro == 0) then 
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
 	     self.usedIntro = 1
-	     self.timerRadioMessage = 20
+	     self.timerRadioMessage = 220
 	  end	
 	end	
 end

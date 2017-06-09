@@ -1,0 +1,405 @@
+{
+  "name": "action-swoop",
+  "description": null,
+  "scripts": [
+    "/scripts/actions/world.lua",
+    "/scripts/actions/projectiles.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/behavior.lua",
+    "/scripts/actions/status.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/sensor.lua"
+  ],
+  "parameters": {
+    "windupState": "swoopwindup",
+    "winddownState": "swoopwinddown",
+    "swoopVelocity": 30,
+    "highArc": false,
+    "collisionCheck": true,
+    "swoopState": "swoop",
+    "minSwoopTime": 0.1,
+    "gravityMultiplier": -1,
+    "swoopTime": 0.5,
+    "skillName": "",
+    "damageOnTouch": false
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": 1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "entityPosition",
+                "type": "action",
+                "name": "entityPosition",
+                "parameters": {
+                  "entity": {"key": "target"}
+                },
+                "output": {
+                  "position": "targetPosition"
+                }
+              },
+              {
+                "title": "projectileAimVector",
+                "type": "action",
+                "name": "projectileAimVector",
+                "parameters": {
+                  "collisionCheck": {"key": "<collisionCheck>"},
+                  "fromPosition": {"key": "self"},
+                  "gravityMultiplier": {"key": "<gravityMultiplier>"},
+                  "speed": {"key": "<swoopVelocity>"},
+                  "toPosition": {"key": "targetPosition"},
+                  "useHighArc": {"key": "<highArc>"}
+                },
+                "output": {
+                  "aimVector": "aimVector"
+                }
+              },
+              {
+                "title": "entityDirection",
+                "type": "action",
+                "name": "entityDirection",
+                "parameters": {
+                  "entity": {"key": "self"},
+                  "target": {"key": "target"}
+                },
+                "output": {
+                  "yDirection": "yDirection"
+                }
+              },
+              {
+                "title": "inverter",
+                "type": "decorator",
+                "name": "inverter",
+                "parameters": {},
+                "child": {
+                  "title": "greaterThan",
+                  "type": "action",
+                  "name": "greaterThan",
+                  "parameters": {
+                    "first": {"key": "yDirection"},
+                    "second": {"value": 0}
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "action-windup",
+            "type": "module",
+            "name": "action-windup",
+            "parameters": {
+              "windupState": {"value": "<windupState>"},
+              "skillName": {"value": "<skillName>"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setDamageOnTouch",
+        "type": "action",
+        "name": "setDamageOnTouch",
+        "parameters": {
+          "touchDamage": {"value": true}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": 1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "controlFlag",
+            "type": "action",
+            "name": "controlFlag",
+            "parameters": {
+              "bool": {"value": true}
+            },
+            "output": {
+              "bool": "attacking"
+            }
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "stat",
+                    "type": "action",
+                    "name": "stat",
+                    "parameters": {
+                      "statName": {"value": "jumpModifier"}
+                    },
+                    "output": {
+                      "value": "jumpModifier"
+                    }
+                  },
+                  {
+                    "title": "multiply",
+                    "type": "action",
+                    "name": "multiply",
+                    "parameters": {
+                      "factor": {"key": "jumpModifier"},
+                      "number": {"key": "<swoopVelocity>"}
+                    },
+                    "output": {
+                      "result": "speedModifier"
+                    }
+                  },
+                  {
+                    "title": "add",
+                    "type": "action",
+                    "name": "add",
+                    "parameters": {
+                      "addend": {"key": "<swoopVelocity>"},
+                      "number": {"key": "speedModifier"}
+                    },
+                    "output": {
+                      "result": "speed"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "vecMultiply",
+                "type": "action",
+                "name": "vecMultiply",
+                "parameters": {
+                  "first": {"key": "aimVector"},
+                  "number": {"key": "speed"}
+                },
+                "output": {
+                  "vector": "swoopVelocity"
+                }
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "succeeder",
+                    "type": "decorator",
+                    "name": "succeeder",
+                    "parameters": {},
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "setNumber",
+                          "type": "action",
+                          "name": "setNumber",
+                          "parameters": {
+                            "number": {"key": "<gravityMultiplier>"}
+                          },
+                          "output": {
+                            "number": "gravityMultiplier"
+                          }
+                        },
+                        {
+                          "title": "controlParameters",
+                          "type": "action",
+                          "name": "controlParameters",
+                          "parameters": {
+                            "parameters": {"value": {"airFriction": 0, "gravityEnabled": true}},
+                            "gravityMultiplier": {"key": "gravityMultiplier"}
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "controlDown",
+                    "type": "action",
+                    "name": "controlDown",
+                    "parameters": {}
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "setVelocity",
+                        "type": "action",
+                        "name": "setVelocity",
+                        "parameters": {
+                          "velocity": {"key": "swoopVelocity"}
+                        }
+                      },
+                      {
+                        "title": "succeeder",
+                        "type": "decorator",
+                        "name": "succeeder",
+                        "parameters": {},
+                        "child": {
+                          "title": "setAnimationState",
+                          "type": "action",
+                          "name": "setAnimationState",
+                          "parameters": {
+                            "state": {"value": "<swoopState>"},
+                            "type": {"value": "body"}
+                          }
+                        }
+                      },
+                      {
+                        "title": "timer",
+                        "type": "action",
+                        "name": "timer",
+                        "parameters": {
+                          "time": {"value": "<minSwoopTime>"}
+                        }
+                      },
+                      {
+                        "title": "dynamic",
+                        "type": "composite",
+                        "name": "dynamic",
+                        "parameters": {},
+                        "children": [
+                          {
+                            "title": "selector",
+                            "type": "composite",
+                            "name": "selector",
+                            "parameters": {},
+                            "children": [
+                              {
+                                "title": "boundsCollision",
+                                "type": "action",
+                                "name": "boundsCollision",
+                                "parameters": {
+                                  "dirVector": {"value": [1, 0]}
+                                }
+                              },
+                              {
+                                "title": "boundsCollision",
+                                "type": "action",
+                                "name": "boundsCollision",
+                                "parameters": {
+                                  "dirVector": {"value": [-1, 0]}
+                                }
+                              },
+                              {
+                                "title": "boundsCollision",
+                                "type": "action",
+                                "name": "boundsCollision",
+                                "parameters": {
+                                  "dirVector": {"value": [0, 1]}
+                                }
+                              },
+                              {
+                                "title": "boundsCollision",
+                                "type": "action",
+                                "name": "boundsCollision",
+                                "parameters": {
+                                  "dirVector": {"value": [0, -1]}
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "title": "selector",
+                            "type": "composite",
+                            "name": "selector",
+                            "parameters": {},
+                            "children": [
+                              {
+                                "title": "sequence",
+                                "type": "composite",
+                                "name": "sequence",
+                                "parameters": {},
+                                "children": [
+                                  {
+                                    "title": "greaterThan",
+                                    "type": "action",
+                                    "name": "greaterThan",
+                                    "parameters": {
+                                      "first": {"key": "<swoopTime>"},
+                                      "second": {"value": 0}
+                                    }
+                                  },
+                                  {
+                                    "title": "timer",
+                                    "type": "action",
+                                    "name": "timer",
+                                    "parameters": {
+                                      "time": {"value": "<swoopTime>"}
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "title": "runner",
+                                "type": "action",
+                                "name": "runner",
+                                "parameters": {}
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "action-winddown",
+        "type": "module",
+        "name": "action-winddown",
+        "parameters": {
+          "winddownState": {"value": "<winddownState>"}
+        }
+      },
+      {
+        "title": "setDamageOnTouch",
+        "type": "action",
+        "name": "setDamageOnTouch",
+        "parameters": {
+          "touchDamage": {"key": "<damageOnTouch>"}
+        }
+      }
+    ]
+  }
+}

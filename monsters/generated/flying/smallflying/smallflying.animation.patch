@@ -1,0 +1,183 @@
+[
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/windup",
+    "value": {
+      "frames": 4,
+      "cycle": 0.25,
+      "mode": "loop"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/winddown",
+    "value": {
+      "frames": 4,
+      "cycle": 0.4,
+      "mode": "loop"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/melee",
+    "value": {
+      "frames": 4,
+      "cycle": 0.25,
+      "mode": "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/wingflap.ogg",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/stateTypes/body/states/fire/frames",
+    "value": 1
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/stateTypes/body/states/fire/cycle",
+    "value": 1
+  },
+  
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/fire/properties",
+    "value": {
+      "persistentSound": "",
+      "persistentSoundStopTime": 0.25,
+      "persistentSoundRangeMultiplier": 0.5
+    }
+  },
+  
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/backWings/partStates/body/windup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/backWings/partStates/body/winddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/backWings/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/windup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/winddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/head/partStates/body/windup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fire.2"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/head/partStates/body/winddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fire.2"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/head/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fire.2"
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/parts/head/partStates/body/fire/properties/image",
+    "value": "<partImage>:fire.2"
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/frontWings/partStates/body/windup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/frontWings/partStates/body/winddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/frontWings/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/sounds/fire",
+    "value": [ "/sfx/npc/monsters/monster_surprise.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/sounds/charge",
+    "value": [ "/sfx/npc/monsters/monster_surprise.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/sounds/melee",
+    "value": [ "/sfx/npc/monsters/monster_surprise.ogg" ]
+  } 
+]

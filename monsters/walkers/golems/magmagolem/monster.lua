@@ -25,10 +25,9 @@ function init()
     end
     storage.spawnPosition = groundSpawnPosition or position
   end
-  BData:setPosition("spawn", storage.spawnPosition)
-
-  self.behavior = root.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig", {}))
-  self.behaviorState = self.behavior:init(_ENV)
+  self.behavior = behavior.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig"), _ENV)
+  self.behaviorState = self.behavior:blackboard()
+  self.board:setPosition("spawn", storage.spawnPosition)
 
   self.collisionPoly = mcontroller.collisionPoly()
 
@@ -45,7 +44,7 @@ function init()
   self.behaviorTick = math.random(1, self.behaviorTickRate)
 
   animator.setGlobalTag("flipX", "")
-  BData:setNumber("facingDirection", mcontroller.facingDirection())
+  self.board:setNumber("facingDirection", mcontroller.facingDirection())
 
   capturable.init()
 
@@ -54,7 +53,7 @@ function init()
     for _,notification in pairs(notifications) do
       if notification.healthLost > 0 then
         self.damaged = true
-        BData:setEntity("damageSource", notification.sourceEntityId)
+        self.board:setEntity("damageSource", notification.sourceEntityId)
       end
     end
   end)
@@ -75,7 +74,7 @@ function init()
 
   local deathBehavior = config.getParameter("deathBehavior")
   if deathBehavior then
-    self.deathBehavior = root.behavior(deathBehavior, config.getParameter("behaviorConfig", {}))
+    self.deathBehavior = behavior.behavior(deathBehavior, config.getParameter("behaviorConfig", {}), _ENV, self.behavior:blackboard())
   end
 
   self.forceRegions = ControlMap:new(config.getParameter("forceRegions", {}))
@@ -88,14 +87,19 @@ function init()
 
 
   monster.setName("Magma Titan")
-  monster.setDamageBar("special") 
-  
+  monster.setDamageBar("special")
+
   monster.setInteractive(config.getParameter("interactive", false))
+  monster.setAnimationParameter("chains", config.getParameter("chains"))
 end
 
 -- This is called in update() using pcall
 -- to catch errors
 function update(dt)
+  if config.getParameter("facingMode", "control") == "transformation" then
+    mcontroller.controlFace(1)
+  end
+
   capturable.update(dt)
   self.damageTaken:update()
 
@@ -139,19 +143,20 @@ function update(dt)
     self.forceRegions:clear()
     self.damageSources:clear()
     self.damageParts = {}
-    BData:clearControls()
+    self.board:clearControls()
     clearAnimation()
 
-    BData:setEntity("self", entity.id())
-    BData:setPosition("self", mcontroller.position())
-    BData:setNumber("dt", dt * self.behaviorTickRate)
-    BData:setNumber("facingDirection", self.facingDirection or mcontroller.facingDirection())
-
     if self.behavior then
-      self.behavior:run(self.behaviorState, dt * self.behaviorTickRate)
-    end
+      local board = self.behavior:blackboard()
+      self.board:setEntity("self", entity.id())
+      self.board:setPosition("self", mcontroller.position())
+      self.board:setNumber("dt", dt * self.behaviorTickRate)
+      self.board:setNumber("facingDirection", self.facingDirection or mcontroller.facingDirection())
 
-    BData:update()
+      self.behavior:run(dt * self.behaviorTickRate)
+    end
+    BGroup:updateGroups()
+
     updateAnimation()
 
     if not self.rotated and self.rotation then
@@ -178,7 +183,7 @@ end
 
 function interact(args)
   self.interacted = true
-  BData:setEntity("interactionSource", args.sourceId)
+  self.board:setEntity("interactionSource", args.sourceId)
 end
 
 function shouldDie()
@@ -197,6 +202,7 @@ function die()
 end
 
 function uninit()
+  BGroup:uninit()
 end
 
 function setDamageSources()

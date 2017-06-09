@@ -1,0 +1,42 @@
+{
+  "projectileName" : "gravdamage",
+  "image" : "gravdamage.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "timeToLive" : 0.6,
+  "power" : 5.0,
+  "damageKind" : "cosmic",
+  "piercing" : true,
+  "damagePoly" : [ [-10, 0], [-10, -10], [0, -10], [8, -8], [10, 0], [10, 10], [0, 10], [-8, 8] ],
+  "statusEffects" : [],
+  "periodicActions" : [
+    {
+    
+      "time" : 0.03,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "gravblast2",
+      "inheritDamageFactor" :0.15,
+      "config" : { "damageSourceKind" : "cosmic" },
+      "fuzzAngle" : 0
+   } 
+  ],
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/globeexplosions/blueglobeexplosion/blueglobeexplosion.config"
+    },   
+    {
+      "action" : "projectile",
+      "type" : "fungravityexplosion2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.04,
+      "config" : { "damageSourceKind" : "cosmic" },
+      "angleAdjust" : 0
+    }    
+  ]
+    
+}

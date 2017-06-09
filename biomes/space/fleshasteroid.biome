@@ -1,8 +1,8 @@
 {
   "name" : "fleshasteroid",
   "friendlyName" : "Flesh Blobs",
-  "statusEffects" : [ "biomeairless", "gravmeteor", "insanity2" ],
-  "gravityRange" : [0,14],  
+  "statusEffects" : [ "biomeairless", "insanity2" ],
+
   "mainBlock" : "fleshblock",
   "subBlocks" : [ "brainsblock", "rottingflesh", "boneyflesh", "hellstone" ],
   "ores" : "ff_deepsurfaceatropusOres",
@@ -12,13 +12,14 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.06, "fleshleech" ],  
-          [ 0.06, "fleshleech2" ], 
+        "pool" : [
+          [ 0.06, "fleshleech" ],
+          [ 0.06, "fleshleech2" ],
           [ 0.06, "pteropod3" ],
+          [ 0.08, "horror" ],
 	  [ 0.08, "fleshreaper" ]
         ]
-      },  
+      },
       {
         "select" : 2,
         "pool" : "generatedFlying"
@@ -40,8 +41,8 @@
       }
     }
   },
-  
-  
+
+
   "parallax" : "/parallax/space/asteroids.parallax",
 
   "ambientNoises" : {
@@ -63,9 +64,9 @@
   },
 
   "hueShiftOptions" : [0],
-  
-  
-  
+
+
+
   "surfacePlaceables" : {
     "grassMod" : [ "tentaclegrass" ],
     "grassModDensity" : 0.9,
@@ -94,16 +95,16 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
-            [2.0, "tentaclepopbig" ], 
-            [0.8, "tentaclepopmed" ], 
-            [0.8, "tentaclepopsmall" ], 
+            "pool" : [
+            [2.0, "tentaclepopbig" ],
+            [0.8, "tentaclepopmed" ],
+            [0.8, "tentaclepopsmall" ],
             [0.8, "tentacleegg" ],
-            [0.4, "tentaclespawner1" ] 
+            [0.4, "tentaclespawner1" ]
             ]
           }
         ]
-      },      
+      },
       {
         "mode" : "floor",
         "priority" : 1.0,
@@ -175,7 +176,7 @@
             "parameters" : { }
           }
         ]
-      },      
+      },
       {
         "mode" : "ceiling",
         "priority" : 1.0,
@@ -189,7 +190,7 @@
             "parameters" : { }
           }
         ]
-      }   
+      }
     ]
   },
 
@@ -208,16 +209,16 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
-            [2.0, "tentaclepopbig" ], 
-            [0.8, "tentaclepopmed" ], 
-            [0.8, "tentaclepopsmall" ], 
+            "pool" : [
+            [2.0, "tentaclepopbig" ],
+            [0.8, "tentaclepopmed" ],
+            [0.8, "tentaclepopsmall" ],
             [0.8, "tentacleegg" ],
-            [0.4, "tentaclespawner1" ] 
+            [0.4, "tentaclespawner1" ]
             ]
           }
         ]
-      },  
+      },
       {
         "mode" : "floor",
         "priority" : 1.0,
@@ -245,7 +246,7 @@
             "parameters" : { }
           }
         ]
-      },      
+      },
       {
         "mode" : "ceiling",
         "priority" : 1.0,
@@ -259,7 +260,7 @@
             "parameters" : { }
           }
         ]
-      },      
+      },
       {
         "mode" : "ceiling",
         "priority" : 1.0,
@@ -288,6 +289,6 @@
       }
     ]
   }
-  
-  
+
+
 }
