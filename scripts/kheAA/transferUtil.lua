@@ -25,8 +25,8 @@ function transferUtil.init()
 	storage.position=entity.position()
 	storage.logicInNode = config.getParameter("logicInNode")
 	storage.logicOutNode = config.getParameter("logicOutNode")
-	storage.itemInNode = config.getParameter("kheAA_itemInNode")
-	storage.itemOutNode = config.getParameter("kheAA_itemOutNode")
+	storage.kheAA_itemInNode = config.getParameter("kheAA_itemInNode")
+	storage.kheAA_itemOutNode = config.getParameter("kheAA_itemOutNode")
 end
 
 function transferUtil.initTypes()
@@ -215,9 +215,9 @@ end
 function transferUtil.updateInputs()
 	storage.input={}
 	storage.inContainers={}
-	if storage.itemInNode == nil then return end
+	if storage.kheAA_itemInNode == nil then return end
 	
-	storage.input=object.getInputNodeIds(storage.itemInNode);
+	storage.input=object.getInputNodeIds(storage.kheAA_itemInNode);
 	local buffer={}
 	for inputSource,nodeValue in pairs(storage.input) do
 		local temp=world.callScriptedEntity(inputSource,"transferUtil.sendContainerInputs")
@@ -233,9 +233,9 @@ end
 function transferUtil.updateOutputs()
 	storage.output={}
 	storage.outContainers={}
-	if storage.itemOutNode == nil then return end
+	if storage.kheAA_itemOutNode == nil then return end
 	
-	storage.output=object.getOutputNodeIds(storage.itemOutNode);
+	storage.output=object.getOutputNodeIds(storage.kheAA_itemOutNode);
 	local buffer={}
 	for outputSource,nodeValue in pairs(storage.output) do
 		local temp=world.callScriptedEntity(outputSource,"transferUtil.sendContainerOutputs")

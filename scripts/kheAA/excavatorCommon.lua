@@ -6,35 +6,39 @@ reDrillLevelFore=0
 redrillPosFore=nil
 reDrillLevelback=0
 redrillPosBack=nil
-deltatime = 0;
-local delta2=0
-step=0;
-time = 0;
+
 --[[
 node list:
-	powerNode
-	hiPumpNode
-	outDataNode
-	outLiquidNode
-	hiMineNode
-
+	storage.logicInNode
+	storage.logicOutNode
+	storage.kheAA_itemInNode--input to inventory network
+	storage.kheAA_itemOutNode--output to inventory network
+	storage.kheAA_liquidOutNode --used only by liquidLib
+	storage.kheAA_liquidInNode --used only by liquidLib
+	storage.kheAA_powerMiningNode--for mining objects, this is used to determine whether to dig background blocks.
+	storage.kheAA_powerPumpingNode--compression switch
 ]]
 
 function excavatorCommon.init(drill,pump)
 	local did=false
-	delta2=100
 	transferUtil.init()
 	storage.facing=util.clamp(object.direction(),0,1)
 	storage.isDrill=(drill==true)
 	storage.isPump=(pump==true)
 	storage.isVacuum=(vacuum==true)
+	step=(step or -0.2)
+	storage.kheAA_powerMiningNode = config.getParameter("kheAA_powerMiningNode")
+	storage.kheAA_powerPumpingNode = config.getParameter("kheAA_powerPumpingNode")
+	storage.maxWidth = config.getParameter("kheAA_maxWidth",20);
+	storage.maxDepth=config.getParameter("kheAA_maxDepth",20);
+	storage.drillPower=config.getParameter("kheAA_drillPower",10);
 	if drill == true or pump == true then
 		storage.width=0
 		did=true
 	end
 	if pump then
 		require "/scripts/kheAA/liquidLib.lua"
-		storage.depth=-1
+		storage.depth=0
 		liquidLib.init()
 		did=true
 	end
@@ -50,7 +54,9 @@ function excavatorCommon.init(drill,pump)
 end
 
 function excavatorCommon.cycle(dt)
-	if delta2 > 1 then
+	if not delta2 then
+		delta2=100
+	elseif delta2 > 1 then
 		transferUtil.loadSelfContainer()
 		if storage.isPump then
 			liquidLib.update(dt)
@@ -64,7 +70,7 @@ function excavatorCommon.cycle(dt)
 		return
 	end
 	
-	if transferUtil.powerLevel(powerNode) then
+	if transferUtil.powerLevel(storage.logicInNode) then
 		if storage.state=="stop" then
 			setRunning(true)
 			storage.state="start"
@@ -75,8 +81,8 @@ function excavatorCommon.cycle(dt)
 		deltatime=0
 	end
 	setRunning(true)
-	deltatime = deltatime + dt;
-	time = time + dt;
+	deltatime = (deltatime or 100) + dt
+	time = (time or (dt*-1)) + dt;
 	if time > 10 then
 		local pos = storage.position;
 		local x1 = world.xwrap(pos[1] - 1);
@@ -251,7 +257,7 @@ function states.mine(dt)
 	end
 
 	local absdrillPos = transferUtil.getAbsPos(storage.drillPos,storage.position);
-	if (storage.position[2]-absdrillPos[2]) > storage.drillRange then
+	if (storage.position[2]-absdrillPos[2]) > storage.maxDepth then
 		drillAnimReset()
 		drillReset()
 		setRunning(false)
@@ -273,7 +279,7 @@ function states.mine(dt)
 			end
 		end
 	end
-	if transferUtil.powerLevel(hiMineNode,true) then
+	if transferUtil.powerLevel(storage.kheAA_powerMiningNode,true) then
 		world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", storage.drillPower)
 		if world.material(absdrillPos,"background") then
 			world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", storage.drillPower)
@@ -307,7 +313,7 @@ function states.pump(dt)
 		storage.liquids[liquid[1]] = storage.liquids[liquid[1]] + liquid[2];
 	end
 	
-	if not transferUtil.powerLevel(hiPumpNode,true) then
+	if not transferUtil.powerLevel(storage.kheAA_powerPumpingNode,true) then
 		for k,v in pairs(storage.liquids) do
 			if v >= 1 then
 				local level=10^math.floor(math.log(v,10))
@@ -363,7 +369,17 @@ function states.pump(dt)
 
 		end
 	end
+	if (storage.depth*-1) > storage.maxDepth then
+		setRunning(false)
+		if storage.isDrill then
+			storage.state = "mine";
+		end
+		return
+	end
 	if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 1},storage.position), "foreground") then
+		return;
+	end
+	if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 2},storage.position), "foreground") then
 		return;
 	end
 	if liquid == nil then

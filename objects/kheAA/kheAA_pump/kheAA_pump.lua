@@ -2,10 +2,6 @@ require "/scripts/kheAA/excavatorCommon.lua"
 
 function init()
 	excavatorCommon.init(false,true);
-	powerNode=0
-	hiPumpNode=1
-	outDataNode=0
-	outLiquidNode=1
 end
 
 

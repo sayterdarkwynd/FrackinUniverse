@@ -54,8 +54,8 @@ function liquidLib.init()
 	if storage.liquidOuts == nil then
 		storage.liquidOuts = {};
 	end
-	storage.liquidInNode = config.getParameter("kheAA_liquidInNode")
-	storage.liquidOutNode = config.getParameter("kheAA_liquidOutNode")
+	storage.kheAA_liquidInNode = config.getParameter("kheAA_liquidInNode")
+	storage.kheAA_liquidOutNode = config.getParameter("kheAA_liquidOutNode")
 	if (root.liquidConfig) then
 		storage.canConfig=true
 	else
@@ -123,7 +123,7 @@ end
 
 
 function liquidLib.doPump()
-	if not transferUtil.powerLevel(powerNode) then
+	if not transferUtil.powerLevel(storage.logicInNode) then
 		return;
 	end
 	local pos = entity.position();
@@ -179,7 +179,7 @@ end
 
 function liquidLib.update(dt)
 	storage.liquidOuts={}
-	local tempList=object.getOutputNodeIds(outLiquidNode)
+	local tempList=object.getOutputNodeIds(storage.kheAA_liquidOutNode)
 	if tempList then
 		for id,node in pairs(tempList) do
 			local result=world.callScriptedEntity(id,"liquidLib.canReceiveLiquid")

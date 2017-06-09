@@ -1,8 +1,10 @@
 require "/scripts/kheAA/transferUtil.lua"
-local deltatime = 0;
 
 function init()
 	transferUtil.init()
+	storage.routerItems={}
+	storage.inContainers={}
+	storage.outContainers={}
 	initVars()
 	message.setHandler("sendConfig", sendConfig)
 	message.setHandler("setFilters", function (_, _, types) storage.filterType = types end)
@@ -14,30 +16,24 @@ function init()
 end
 
 function update(dt)
-	deltatime = deltatime + dt;
+	deltatime = (deltatime or 0) + dt;
 	if deltatime < 1 then
 		return;
 	end
 	deltatime = 0;
 	storage.routerItems=world.containerItems(entity.id())
-	transferUtil.updateInputs(inDataNode);
-	transferUtil.updateOutputs(outDataNode);
+	transferUtil.updateInputs(storage.kheAA_itemInNode);
+	transferUtil.updateOutputs(storage.kheAA_itemOutNode);
 	
-	if transferUtil.powerLevel(powerNode) then
+	if transferUtil.powerLevel(storage.logicInNode) then
 		transferUtil.routeItems();
-		object.setOutputNodeLevel(outDataNode,util.tableSize(storage.inContainers)>0)
+		object.setOutputNodeLevel(storage.kheAA_itemOutNode,util.tableSize(storage.inContainers)>0)
 	else
-		object.setOutputNodeLevel(outDataNode,false)
+		object.setOutputNodeLevel(storage.kheAA_itemOutNode,false)
 	end
 end
 
 function initVars()
-	powerNode=0
-	inDataNode=1
-	outDataNode=0
-	storage.routerItems={}
-	storage.inContainers={}
-	storage.outContainers={}
 	if storage.inputSlots == nil then
 		storage.inputSlots = {};
 	end
@@ -62,26 +58,6 @@ function initVars()
 end
 
 function sendConfig()
-	if storage.inputSlots == nil then
-		storage.inputSlots = {};
-	end
-	if storage.outputSlots == nil then
-		storage.outputSlots = {};
-	end
-	if storage.filterInverted == nil then
-		storage.filterInverted={}
-		for i=1,5 do
-			storage.filterInverted[i]=false;
-		end
-	end
-	if storage.filterType == nil then
-		storage.filterType={};
-		for i=1,5 do
-			storage.filterType[i]=-1;
-		end
-	end
-	if storage.invertSlots==nil then
-		storage.invertSlots={false,false}
-	end
+	initVars()
 	return({storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType,storage.invertSlots})
 end

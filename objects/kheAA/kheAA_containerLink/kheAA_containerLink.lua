@@ -19,7 +19,7 @@ function update(dt)
 	end
 	deltatime=0
 	findContainer()
-	object.setOutputNodeLevel(storage.itemOutNode,not storage.containerId==nil)
+	object.setOutputNodeLevel(storage.kheAA_itemOutNode,not storage.containerId==nil)
 end
 
 function findContainer()

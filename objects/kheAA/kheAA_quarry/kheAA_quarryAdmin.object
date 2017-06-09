@@ -12,10 +12,10 @@
 	"category" : "wire",
 	"price" : 15,
 
-	"inventoryIcon" : "/objects/kheAA/kheAA_quarryAdmin/kheAA_quarryAdminicon.png",
+	"inventoryIcon" : "/objects/kheAA/kheAA_quarry/kheAA_quarryicon.png",
 	"orientations" : [
 		{
-			"image" : "kheAA_quarryAdmin.png:<color>.off",
+			"image" : "kheAA_quarry.png:<color>.off",
 			"imagePosition" : [0, 0],
 
 			"spaceScan" : 0.1,
@@ -24,13 +24,13 @@
 		}
 	],
 
-	"scripts" : [ "/objects/kheAA/kheAA_quarryAdmin/kheAA_quarryAdmin.lua"],
+	"scripts" : [ "/objects/kheAA/kheAA_quarry/kheAA_quarry.lua"],
 	"scriptDelta" : 1,
 
-	"animation" : "/objects/kheAA/kheAA_quarryAdmin/kheAA_quarryAdmin.animation",
+	"animation" : "/objects/kheAA/kheAA_quarry/kheAA_quarry.animation",
 
 	"animationParts" : {
-		"quarry" : "kheAA_quarryAdmin.png",
+		"quarry" : "kheAA_quarry.png",
 		"drill" : "kheAA_drill.png",
 		"verPipe" : "kheAA_ver_pipe.png",
 		"horPipe" : "kheAA_hor_pipe.png",
@@ -46,5 +46,12 @@
 
 	"inputNodes" : [ [0, 0], [1,0]],
 	"outputNodes" : [ [0, 1]],
-	"lockedSlots" : [17]
+	"logicInNode":0,
+	"kheAA_itemInNode":0,
+	"kheAA_itemOutNode":0,
+	"kheAA_powerMiningNode":1,
+	"lockedSlots" : [17],
+	"kheAA_drillPower":2000,
+	"kheAA_maxDepth":2000,
+	"kheAA_maxWidth":2000
 }

@@ -1,3 +1,5 @@
+require "/objects/isn_sharedobjectscripts.lua"
+
 function isn_getCurrentPowerInput()
 	if type(storage.powerInNode)~="number" then
 		return 0

@@ -1,5 +1,4 @@
 require "/objects/power/isn_sharedpowerscripts.lua"
-require "/objects/isn_sharedobjectscripts.lua"
 
 function init()
 	if storage.currentstoredpower == nil then storage.currentstoredpower = 0 end
@@ -19,10 +18,8 @@ function update(dt)
 	if storage.currentstoredpower < storage.voltage then
 		animator.setAnimationState("meter", "d")
 	else
-		local powerlevel = isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)
-		if powerlevel ~= 0 then powerlevel = powerlevel / 10 end
-		powerlevel = isn_numericRange(powerlevel,0,10)
-		animator.setAnimationState("meter", tostring(math.floor(powerlevel)))
+		local powerlevel = math.floor(isn_numericRange(isn_getXPercentageOfY(storage.currentstoredpower,storage.powercapacity)/10,0,10))
+		animator.setAnimationState("meter", tostring(powerlevel))
 	end
 
 	local powerinput = isn_getCurrentPowerInput()
