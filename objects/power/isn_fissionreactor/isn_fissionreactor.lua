@@ -1,6 +1,4 @@
 require "/scripts/kheAA/transferUtil.lua"
-require "/objects/power/isn_sharedpowerscripts.lua"
-require "/objects/isn_sharedobjectscripts.lua"
 local deltaTime=0
 function init()
 	transferUtil.init()

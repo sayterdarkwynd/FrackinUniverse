@@ -1,6 +1,3 @@
-require "/objects/power/isn_sharedpowerscripts.lua"
-require "/objects/isn_sharedobjectscripts.lua"
-
 function init()
 	storage.checkticks = 0
 	storage.truepos = isn_getTruePosition()
@@ -17,7 +14,7 @@ end
 
 
 function isn_getCurrentPowerOutput(divide)
-	if isn_powerGenerationBlocked() == true then
+	if isn_powerGenerationBlocked == true then
 	  animator.setAnimationState("windState", "idle")
 	  return 0
 	end

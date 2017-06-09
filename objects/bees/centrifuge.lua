@@ -1,5 +1,3 @@
-require "/objects/power/isn_sharedpowerscripts.lua"
-require "/objects/isn_sharedobjectscripts.lua"
 require "/objects/generic/centrifuge_recipes.lua"
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"

@@ -3,7 +3,7 @@
   "colonyTags" : ["science"],
   "printable" : false,
   "rarity" : "common",
-  "description" : "Transmits power from ^blue;Upper Input^reset;. ^blue;Lower Input^reset; sets logic state.  You may need ^cyan;Watchers^reset; to keep distant stations running.",
+  "description" : "Transmits power. Use with care. You may need ^cyan;Watchers^reset; to keep distant stations running.",
   "shortdescription" : "Wire Relay",
   "race" : "generic",
 
@@ -23,7 +23,9 @@
     }
   ],
 
-  "scripts" : [ "/objects/power/fu_conduit/fu_conduit.lua"],
+  "scripts" : [ "/objects/power/fu_conduit/fu_conduit.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 15,
 
   "animation" : "/objects/power/fu_conduit/fu_conduit.animation",
@@ -33,14 +35,11 @@
   },
   "animationPosition" : [0, 0],
 
-  "inputNodes" : [ [-1, 0], [-1, -1] ],
+  "inputNodes" : [ [-1, -1], [-1, 0] ],
   "outputNodes" : [ [0, -1] ],
 
   "isn_powerSupplier" : true,
   "isn_powerReciever" : true,
-  "isn_powerPassthrough" : true,
-  "isn_powerInNode" : 0,
-  "isn_powerOutNode" : 0,
-  "logicInNode" : 1,
-  "logicOutNode" : 0
+  "isn_powerPassthrough" : true
+
 }

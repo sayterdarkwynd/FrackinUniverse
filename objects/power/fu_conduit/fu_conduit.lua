@@ -1,43 +1,30 @@
-require "/objects/power/isn_sharedpowerscripts.lua"
-require "/objects/isn_sharedobjectscripts.lua"
-
 function init()
+	
 	storage.active = storage.active or false
-	isn_powerInit()
-end
-
-function isn_getCurrentPowerOutput()
-	if storage.active then
-		return isn_getCurrentPowerInput(storage.powerInNode)
-	end
-	return 0
-end
-
-function nodeStuff()
-	storage.active=false
-	if storage.logicInNode and storage.powerOutNode then
-		if (not object.isInputNodeConnected(storage.logicInNode)) or object.getInputNodeLevel(storage.logicInNode) then
-			if isn_checkValidOutput(storage.powerOutNode) then
-				if isn_getCurrentPowerInput()>0 then
-					storage.active=true
-				end
-			end
-		end
-	end
-	animator.setAnimationState("switchState",(storage.active and "on") or "off")
-	if storage.logicOutNode then
-		object.setOutputNodeLevel(storage.logicOutNode, storage.active)
-	end
-end
-
-function onNodeConnectionChange()
-	nodeStuff()
-end
-
-function onInputNodeChange()
-	nodeStuff()
 end
 
 function update(dt)
-	nodeStuff()
+	checkOutputsSetLevels()
+end
+
+function isn_getCurrentPowerOutput(divide)
+	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
+	local voltage = isn_getCurrentPowerInput(true)
+	if voltage and divide and divisor > 0 then return voltage / divisor
+	else return voltage end
+end
+
+function checkOutputsSetLevels()
+	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
+	animator.setAnimationState("switchState",(storage.active and "on") or "off")
+	if isn_checkValidOutput() and storage.active then object.setOutputNodeLevel(0, true)
+	else object.setOutputNodeLevel(0, false) end
+end
+
+function onNodeConnectionChange()
+	checkOutputsSetLevels()
+end
+
+function onInputNodeChange(args)
+	checkOutputsSetLevels()
 end

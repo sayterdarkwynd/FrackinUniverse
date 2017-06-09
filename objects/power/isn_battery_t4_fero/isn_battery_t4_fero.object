@@ -30,16 +30,16 @@
   },
   "animationPosition" : [0, 0],
 
-  "scripts" : [ "/objects/power/isn_battery.lua"],
+  "scripts" : [ "/objects/power/isn_battery.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 50,
 
-  "outputNodes" : [ [0, 1] ],
-  "inputNodes" : [ [0, 0] ],
+  "outputNodes" : [ [1, 3] ],
+  "inputNodes" : [ [0, 1], [2, 1] ],
 
   "isn_powerSupplier" : true,
   "isn_powerReciever" : true,
   "isn_batteryCapacity" : 16000,
-  "isn_batteryVoltage" : 16,
-  "isn_powerInNode" : 0,
-  "isn_powerOutNode" : 0
+  "isn_batteryVoltage" : 16
 }

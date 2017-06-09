@@ -34,20 +34,15 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/objects/power/fu_quantumgenerator/fu_quantumgenerator.lua"],
+  "scripts" : [ "/objects/power/fu_quantumgenerator/fu_quantumgenerator.lua",
+                "/objects/power/isn_sharedpowerscripts.lua",
+		"/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 90,
   
-  "inputNodes" : [ [5,1],[1,2] ],
-  "outputNodes" : [ [5,2], [1,1],[5,4] ],
-  
-  "kheAA_itemInNode" : 1,
-  "kheAA_itemOutNode" : 1,
-  "isn_powerOutNode" : 2,
-  "logicInNode" : 0,
-  "logicOutNode" : 0,
+  "inputNodes" : [ [2, 4] ],
+  "outputNodes" : [ [2, 2] ],
   
   "isn_powerSupplier" : true,
-  
   "acceptablefuel" : {
     "biofuelcannister" : 30,
     "biofuelcannisteradv" : 40,
