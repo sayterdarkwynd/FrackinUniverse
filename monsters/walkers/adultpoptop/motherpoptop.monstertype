@@ -76,7 +76,7 @@
             "windupTime" : 0.5,
 
             "projectileType" : "fusoundwaveboss",      
-            "power" : 8,
+            "power" : 9,
             "projectileParameters" : {
               "renderLayer" : "Monster+1"
             },
@@ -114,22 +114,18 @@
         },       
        {
           "name" : "action-fire",
-          "cooldown" : 12,
+          "cooldown" : 9,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 11,
-            "minimumRange" : 0,
+            "maximumRange" : 30,
+            "minimumRange" : 2,
             "windupState" : "babyeat",
             "windupTime" : 1.1,
-            "projectileType" : "bloodvomit",
-            "projectileParameters" : {
-              "renderLayer" : "Monster+1",
-              "statusEffects" : [ "defenseboostneg35monster" ]
-            },
+            "projectileType" : "healingzoneboss",
             "power" : 5,
             "fireOffset" : [3.25, 0.6],
-            "projectileCount" : 3,
-            "projectileInterval" : 0.01,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.05,
             "fireSound" : "",
             "fireState" : "",
             "winddownState" : "",
@@ -194,31 +190,7 @@
         }    
       ],
 
-      "damageTakenActions" : [
-	{
-          "name" : "action-fire",
-          "cooldown" : 2.2,
-          "parameters" : {
-
-            "windupState" : "",
-            "windupTime" : 0.01,
-            "projectileType" : "electricplasmarocket",
-            "projectileParameters" : {
-              "timeToLive" : 0.2,
-              "renderLayer" : "Monster+1",
-              "statusEffects" : [ "electrified" ]
-            },
-            "fireSound" : "", //needs explosion sound or in projectile?
-            "fireState" : "jump",
-            "winddownState" : "fall",
-            "winddownTime" : 0.01,
-            "aimAtTarget" : false,
-            "aimDirection" : [0,-1],
-            "onGround" : true,
-            "fireDelay" : 0.01
-          }
-        }        
-      ],
+      "damageTakenActions" : [],
       
       "concurrentActions" : [
         {
