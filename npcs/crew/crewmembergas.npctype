@@ -21,12 +21,12 @@
             "type" : "EphemeralEffect",
             "effect" : "gasimmunity",
             "duration" : 300
-          },    
-          {
-            // Persistent effects are active while on the ship
-            "type" : "PersistentEffect",
-            "effect" : "regeneration1"
-          }
+          },
+	    {
+	      "type": "ShipUpgradeBenefit",
+	      "property": "maxFuel",
+	      "value": 100
+	    }  
         ],
         "type" : "chemist",
         "name" : "Scientist",
@@ -40,7 +40,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a boost whenever we're on the ship!"
+              "I'll give you a fuel boost using special gas whenever we're on the ship!"
             ]
           }
         },

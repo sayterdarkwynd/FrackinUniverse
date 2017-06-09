@@ -5,7 +5,7 @@ weaponBonus={
 }
 
 armorEffect={
-  {stat = "maxHealth", baseMultiplier = 1.24},
+  {stat = "maxHealth", baseMultiplier = 1.25},
   {stat = "sulphuricImmunity", amount = 1},
   {stat = "breathProtection", amount = 1}
 }

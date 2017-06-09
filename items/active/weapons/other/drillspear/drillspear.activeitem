@@ -1,0 +1,95 @@
+{
+  "itemName" : "drillspear",
+  "price" : 1080,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Pierce the heavens, or at least the earth.",
+  "shortdescription" : "Drill Spear",
+  "tooltipKind" : "base",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear"],
+
+  "inventoryIcon" : [
+    {"image" : "drillspear.png:1"},
+    {"image" : "drillspear_fullbright.png:1"}
+  ],
+
+  "animation" : "drillspear.animation",
+  "animationParts" : {},
+  "animationCustom" : {},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/other/drillspear/drillspearstab.lua"],
+    "class" : "DrillSpearStab",
+
+    "fireTime" : 1.2,
+    "baseDps" : 10.5
+  },
+
+  "altAbility" : {
+    "scripts" : ["/items/active/weapons/other/drillspear/drillcharge.lua"],
+    "class" : "DrillCharge",
+
+    "energyUsage" : 30,
+
+    "boostSpeed" : 25,
+    "boostForce" : 170,
+    "tileDamage" : 1.5,
+    "tileDamageRate" : 0.15,
+    "damageTileDepth" : 3,
+    
+    "damageTimeout" : 0.25,
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 25,
+      "baseDamage" : 3.5
+    },
+
+
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.5,
+        "armRotation" : -100,
+        "weaponRotation" : 10,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 0.75],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "winddown" : {
+        "duration" : 0.5,
+        "armRotation" : -85,
+        "weaponRotation" : -5,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

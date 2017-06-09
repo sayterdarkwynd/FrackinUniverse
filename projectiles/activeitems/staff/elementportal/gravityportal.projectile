@@ -1,7 +1,7 @@
 {
   "projectileName" : "gravityportal",
   "physics" : "laser",
-  "timeToLive" : 9,
+  "timeToLive" : 5,
   "image" : "fireportal.png",
   "animationCycle" : 0.35,
   "lightColor" : [90, 60, 110],
@@ -9,7 +9,14 @@
   "windupFrames" : 3,
   "winddownFrames" : 3,
   "piercing" : true,
+  
   "periodicActions" : [
+    {
+	"time" : 0.3,
+	"loop" : true,    
+      "action" : "config",
+      "file" : "/projectiles/explosions/gravityblast.config"
+    },  
     {
       "time" : 0,
       "repeat" : false,
@@ -21,9 +28,119 @@
       "repeat" : false,
       "action" : "sound",
       "options" : [ "/sfx/projectiles/astraltear_stop3.ogg" ]
-    }
+    },
+       {
+	"action":"projectile", 
+	"type":"redglobe", 
+	"time" : 1.0,
+	"loop" : true,
+	"fuzzAngle" : 360,
+	"inheritDamageFactor":1, 
+	  "config":{
+	    "speed" : 24,
+	    "piercing":true, 
+	    "onlyHitTerrain":true, 
+	    "damageType":"noDamage", 
+	    "damageKind":"noDamage", 
+	    "knockback":0, 
+	    "bounces":-1, 
+	    "timeToLive":2.0
+	  }
+	},		 
+	{
+	"action":"projectile", 
+	"type":"greenglobe", 
+	"time" : 1.2,
+	"loop" : true,
+	"fuzzAngle" : 360,
+	"inheritDamageFactor":1, 
+	  "config":{
+	    "speed" : 24,
+	    "piercing":true, 
+	    "onlyHitTerrain":true, 
+	    "damageType":"noDamage", 
+	    "damageKind":"noDamage", 
+	    "knockback":0, 
+	    "bounces":-1, 
+	    "timeToLive":2.0
+	  }
+	},		 
+	{
+	"action":"projectile", 
+	"type":"yellowglobe", 
+	"time" : 1.4,
+	"loop" : true,
+	"fuzzAngle" : 360,
+	"inheritDamageFactor":1, 
+	  "config":{
+	    "speed" : 24,
+	    "piercing":true, 
+	    "onlyHitTerrain":true, 
+	    "damageType":"noDamage", 
+	    "damageKind":"noDamage", 
+	    "knockback":0, 
+	    "bounces":-1, 
+	    "timeToLive":2.0
+	  }
+	},		 
+	{
+	"action":"projectile", 
+	"type":"whiteglobe", 
+	"time" : 1.6,
+	"loop" : true,
+	"fuzzAngle" : 360,
+	"inheritDamageFactor":1, 
+	  "config":{
+	    "speed" : 24,
+	    "piercing":true, 
+	    "onlyHitTerrain":true, 
+	    "damageType":"noDamage", 
+	    "damageKind":"noDamage", 
+	    "knockback":0, 
+	    "bounces":-1, 
+	    "timeToLive":2.0
+	  }
+	},		 
+	{
+	"action":"projectile", 
+	"type":"blueglobe", 
+	"time" : 1.8,
+	"loop" : true,
+	"fuzzAngle" : 360,
+	"inheritDamageFactor":1, 
+	  "config":{
+	    "speed" : 24,
+	    "piercing":true, 
+	    "onlyHitTerrain":true, 
+	    "damageType":"noDamage", 
+	    "damageKind":"noDamage", 
+	    "knockback":0, 
+	    "bounces":-1, 
+	    "timeToLive":2.0
+	  }
+	},		 
+	 {
+	   "time" : 0.3,
+	   "loop" : true,		 
+	   "action":"particle", 
+	   "rotate":true, 
+	   "specification":  {
+	     "type":"animated", 
+	     "looping":true, 
+	     "animation":"/animations/spacemonsterspawn/spacemonsterspawn.animation", 
+	     "position":[0,0], 
+	     "finalVelocity":[0,0], 
+	     "approach":[0,0], 
+	     "destructionAction":"shrink", 
+	     "destructionTime":0.4, 
+	     "fade":1, 
+	     "size":2, 
+	     "layer":"back", 
+	     "timeToLive":0.2
+	     }
+	 }    
   ],
-  "actionOnReap" : [
+  "actionOnReap" : [  
     {
       "action" : "config",
       "file" : "/projectiles/explosions/elementimpact/electricimpactmute.config"
@@ -43,7 +160,7 @@
 
   "projectileType" : "gravblast2",
   "projectileParameters" : {},
-  "spawnRate" : 0.3,
+  "spawnRate" : 0.6,
 
   "persistentAudio" : "/sfx/melee/barrier_create_electric.ogg",
 
@@ -51,10 +168,10 @@
   "physicsForces" : {
     "vacuum" : {
       "type" : "RadialForceRegion",
-      "outerRadius" : 24,
-      "innerRadius" : 12,
-      "baseTargetRadialVelocity" : -60,
-      "controlForce" : 700,
+      "outerRadius" : 56,
+      "innerRadius" : 40,
+      "targetRadialVelocity" : -120,
+      "controlForce" : 1200,
       "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"]
     }
   },

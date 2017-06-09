@@ -1,0 +1,39 @@
+{
+  "projectileName" : "healingzoneboss",
+  "physics" : "laser",
+  "timeToLive" : 1,
+  "image" : "weakenzone.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 12,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 0.15,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "bloodvomit2",
+      "inheritDamageFactor" :0.01,
+      "fuzzAngle" : 0
+   }
+  ],
+  "actionOnReap" : [],
+  "speed" : 0,
+  "power" : 0,
+
+  "onlyHitTerrain" : true,
+  "persistentStatusEffects" : ["regenmomma"],
+  "statusEffectArea" : [ [-6.0, 0], [-4.0, -4.0], [0, -6.0], [4.0, -4.0], [6.0, 0], [4.0, 4.0], [0, 6.0], [-4.0, 4.0] ],
+
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : ["/projectiles/activeitems/staff/healingzone/staffprojectilecustomheal.lua"],
+  
+  "persistentAudio" : "/sfx/projectiles/zone_healing_loop.ogg"
+}

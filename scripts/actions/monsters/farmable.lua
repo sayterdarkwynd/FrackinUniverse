@@ -26,10 +26,7 @@ function resetMonsterHarvest()
   storage.harvestTime = util.randomInRange(config.getParameter("harvestTime"))
 end
 
-function hasMonsterHarvest(args, output)
-  args = parseArgs(args, {
-  })
-
+function hasMonsterHarvest(args, board)
   if not storage.lastHarvest then
     resetMonsterHarvest()
   end
@@ -41,10 +38,7 @@ function hasMonsterHarvest(args, output)
   end
 end
 
-function dropMonsterHarvest(args, output)
-  args = parseArgs(args, {
-  })
-
+function dropMonsterHarvest(args, board)
   local treasurePool = config.getParameter("harvestPool")
   local treasure = root.createTreasure(treasurePool, monster.level())
   local spawnPosition = vec2.add(mcontroller.position(), config.getParameter("harvestSpawnOffset", {0, 0}))

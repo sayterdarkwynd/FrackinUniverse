@@ -5,7 +5,7 @@
   "inventoryIcon" : "hybridminergun.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
     "description" : "Combines protocite and zerchesium for an ultra-strong body.",
     "shortdescription" : "B-97 Miner",
     "learnBlueprintsOnPickup" : [ "hybridminer2" ],
@@ -111,5 +111,22 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+          "shortdescription" : "^cyan;B-97 Miner^reset; ^green;^reset;"   
+  },
+  "upgradeParameters2" : {
+          "shortdescription" : "^cyan;B-97 Miner^reset; ^cyan;^reset;"  
+  },
+  "upgradeParameters3" : {
+          "shortdescription" : "^cyan;B-97 Miner^reset; ^yellow;^reset;",
+	  "primaryAbility" : {
+	    "damageConfig" : {
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "cosmic",
+	      "knockback" : 5
+	    }
+	  }    
+  }
 }

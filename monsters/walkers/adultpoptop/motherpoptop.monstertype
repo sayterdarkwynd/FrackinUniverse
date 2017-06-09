@@ -47,7 +47,7 @@
       "hostileActions" : [ 
         {
           "name" : "action-leap", 
-          "cooldown" : 5,
+          "cooldown" : 3,
           "parameters" : {
             "minimumRange" : 0,
             "maximumRange" : 45,
@@ -64,20 +64,19 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        },        
-    
+        },      
         {
           "name" : "action-fire",
-	  "cooldown" : 7,
+	  "cooldown" : 5.2,
           "parameters" : {
-            "requireLineOfSight" : true,
+            "requireLineOfSight" : false,
             "maximumRange" : 20,
             "minimumRange" : 8,
-            "windupState" : "fire",
+            "windupState" : "fire2",
             "windupTime" : 0.5,
 
-            "projectileType" : "fusoundwave",
-            "power" : 8,
+            "projectileType" : "fusoundwaveboss",      
+            "power" : 9,
             
             "fireOffset" : [2.5, 0.3],
             "aimAtTarget" : true,
@@ -89,10 +88,10 @@
             "winddownState" : "",
             "winddownTime" : 0.6
           }
-        },                
+        },                             
         {
           "name" : "action-charge",
-          "cooldown" : 6.0,
+          "cooldown" : 3.0,
           "parameters" : {
             "maximumRange" : 15,
             "windupState" : "chargewindup",
@@ -112,18 +111,18 @@
         },       
        {
           "name" : "action-fire",
-          "cooldown" : 12,
+          "cooldown" : 9,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 11,
-            "minimumRange" : 0,
+            "maximumRange" : 30,
+            "minimumRange" : 2,
             "windupState" : "babyeat",
             "windupTime" : 1.1,
-            "projectileType" : "bloodvomit",
+            "projectileType" : "healingzoneboss",
             "power" : 5,
             "fireOffset" : [3.25, 0.6],
-            "projectileCount" : 3,
-            "projectileInterval" : 0.01,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.05,
             "fireSound" : "",
             "fireState" : "",
             "winddownState" : "",
@@ -185,33 +184,11 @@
           "parameters" : {
             "wanderTime" : [5, 15]
           }
-        },
-        {
-          "name" : "action-fire",
-          "cooldown" : 5.2,
-          "parameters" : {
-
-            "windupState" : "",
-            "windupTime" : 0.01,
-            "projectileType" : "electricplasmarocket",
-            "fireSound" : "", //needs explosion sound or in projectile?
-            "fireState" : "jump",
-            "winddownState" : "fall",
-            "winddownTime" : 0.01,
-            "aimAtTarget" : false,
-            "aimDirection" : [0,-1],
-            "onGround" : true,
-            "fireDelay" : 0.01,
-            "projectileParameters" : {
-              
-              "statusEffects" : [ 
-                "electrified"
-              ]
-            }
-          }
-        }       
+        }    
       ],
 
+      "damageTakenActions" : [],
+      
       "concurrentActions" : [
         {
           "name" : "action-spawncompanions",
@@ -225,25 +202,25 @@
       
       "concurrentHostileActions" : [  
         {
-          "name" : "action-charge",
-          "cooldown" : 3.0,
+          "name" : "action-leap", 
+          "cooldown" : 3,
           "parameters" : {
-            "maximumRange" : 15,
-            "windupState" : "chargewindup",
+            "minimumRange" : 0,
+            "maximumRange" : 45,
+            "maxXRange" : 45,
             "windupTime" : 0.3,
+            "windupState" : "roar",
 
-            "chargeTime" : 0.05,
-            "chargeSpeed" : 20,
-            "chargeControlForce" : 400,
-            "chargeState" : "charge",
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
-            "onGround" : false,
-            "winddownTime" : 0.05,
-            "winddownStopForce" : 500,
-            "winddownState" : "chargewinddown"
+            "leapVelocity" : 60,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
           }
-        }        
+        }      
       ]
     },
 

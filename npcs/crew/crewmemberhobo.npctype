@@ -1,0 +1,77 @@
+{
+  "type" : "crewmemberhobo",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "uncathat",
+        "chest" : "hoodiechest",
+        "legs" : "jeans2legs"
+      },
+
+      "role" : {
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "booze",
+            "duration" : 300
+          },
+	    {
+	      "type": "ShipUpgradeBenefit",
+	      "property": "maxFuel",
+	      "value": 250
+	    }  
+        ],
+        "type" : "chemist",
+        "name" : "Hobo",
+        "field" : "Intoxicology",
+        "uniformColorIndex" : 1
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Hey! My booze kin help fuel yer ship! Itsh shuuuper good! *hic*"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Here! Have shum boooze! *hic*"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran isss wildly intoxicated! Floran not drinking alone! You take some!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. Have some carbonated alcoholic beverage. This is not optional."
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "invisipuke" ]       
+          }
+        ] ]
+    ]
+  }
+}

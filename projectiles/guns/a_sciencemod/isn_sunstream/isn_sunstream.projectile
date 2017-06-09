@@ -15,6 +15,7 @@
   "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
   "lightColor" : [100, 100, 0],
   "damageKind" : "fireplasma",
+  "emitters" : [ "tinyrocketsmoke" ],
   "statusEffects" : [ "burning" ],
   "periodicActions" : [
     {
@@ -22,7 +23,16 @@
       "loop" : true,
       "action" : "projectile",
       "type" : "fuelairignition",
-      "fuzzAngle" : 360
+      "fuzzAngle" : 0
+   },
+    {
+      "time" : 1,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "magnorbhellfire2",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 0, "damageSourceKind" : "fireplasma" }
    }
   ],
   "actionOnReap" : [

@@ -21,8 +21,17 @@ function init()
 	self.gravityMod = config.getParameter("gravityMod",0.0)
 	self.gravityNormalize = config.getParameter("gravityNorm",false)
 	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
-	--sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
 	unifiedGravMod.init()
+	
+        --self.zeroGMovementParameters = { config.getParameter("zeroGMovementParameters") } -- goes in init
+	--self.zeroGMovementParameters.flySpeed = 1.5
+	--self.zeroGMovementParameters.airForce = 0.75
+	--self.zeroGMovementParameters.airFriction = 0
+	--self.zeroGMovementParameters.bounceFactor = 0.3  
+	
+        --mcontroller.controlParameters(self.zeroGMovementParameters)  -- goes in update
+        
+	
 	setSEBonusInit("fu_spacefarerset")
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
 	
@@ -45,8 +54,10 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"mininglaser"})
-	if weapons["either"] then
+	if weapons["primary"] and weapons["alt"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	elseif weapons["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,0.25))
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end
