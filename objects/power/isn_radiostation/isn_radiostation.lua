@@ -25,9 +25,9 @@ function onInteraction(args)
 	end
 	-- Functionality
 	local itemName = world.entityHandItem(args.sourceId, "primary")
-	if itemName == "wiretool" then isn_cycleFrequency(1)
-	elseif itemName == "painttool" then isn_cycleFrequency(-1)
-	else
+	
+	isn_cycleFrequency(1)
+
 		if storage.currentconfig == nil or storage.currentkey == nil then
 			animator.burstParticleEmitter("noSignal")
 			animator.playSound("error")
@@ -40,7 +40,7 @@ function onInteraction(args)
 			table.insert(tradingConfig.recipes, recipe)
 		end
 		return {"OpenCraftingInterface", tradingConfig}
-	end
+	
 end
 
 function update(dt)

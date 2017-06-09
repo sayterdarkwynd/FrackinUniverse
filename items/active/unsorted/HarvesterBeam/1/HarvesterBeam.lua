@@ -253,7 +253,7 @@ function fireBeam(primary)
 			for x = -1, 1 do
 				for y = -1, 1 do
 					local modBlock = vec2.add(blockCheck[1], {x,y})
-					if world.material(modBlock, "foreground") and (world.mod(modBlock, "foreground") == nil or canRemoveMod(world.mod(modBlock, "foreground"))) and world.material(vec2.add(modBlock, {0,1}), "foreground") == false and root.materialPath(world.material(modBlock, "foreground")) and root.assetJson(root.materialPath(world.material(modBlock, "foreground"))).soil then
+					if world.material(modBlock, "foreground") and (world.mod(modBlock, "foreground") == nil or canRemoveMod(world.mod(modBlock, "foreground"))) and world.material(vec2.add(modBlock, {0,1}), "foreground") == false and root.materialConfig(world.material(modBlock, "foreground")) and root.assetJson(root.materialConfig(world.material(modBlock, "foreground"))).soil then
 						world.placeMod(modBlock, "foreground", "tilled", nil, true)
 						animator.playSound("till")
 						world.damageTiles({blockCheck[1]}, "background", vec2.add(blockCheck[1], {0,1}), "plantish", 1, 1)
