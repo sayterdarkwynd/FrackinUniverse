@@ -1,21 +1,22 @@
 require "/scripts/kheAA/transferUtil.lua"
+local deltatime=0
 storage={}
 
 function init()
 	transferUtil.init()
 	storage.inContainers={}
 	storage.outContainers={}
+	inDataNode=0
+	outDataNode=0
 end
 
 function update(dt)
-	deltatime=(deltatime or 0)+dt
+	deltatime=deltatime+dt
 	if deltatime < 1 then
 		return
 	end
 	deltatime=0
-	transferUtil.updateInputs(storage.kheAA_itemInNode);
-	transferUtil.updateOutputs(storage.kheAA_itemOutNode);
-	if storage.logicOutNode then
-		object.setOutputNodeLevel(storage.logicOutNode,util.tableSize(storage.outContainers))
-	end
+	transferUtil.updateInputs(inDataNode);
+	transferUtil.updateOutputs(outDataNode);
+	object.setOutputNodeLevel(outDataNode,util.tableSize(storage.outContainers))
 end

@@ -5,6 +5,7 @@ function init()
 	pump=false
 	drill=false
 	vacuum=true
+	powerNode=0
 	excavatorCommon.init()	
 end
 

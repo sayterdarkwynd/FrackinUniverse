@@ -1,14 +1,16 @@
 require "/scripts/kheAA/liquidLib.lua"
 require "/scripts/kheAA/transferUtil.lua"
+local deltatime = 0;
 
 function init()
 	transferUtil.init()
 	liquidLib.init()
+	powerNode=0
 	receiveLiquid=true
 end
 
 function update(dt)
-	deltatime = (deltatime or 0) + dt;
+	deltatime = deltatime + dt;
 	if deltatime < 0.05 then
 		return
 	end

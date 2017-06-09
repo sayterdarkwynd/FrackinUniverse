@@ -5,6 +5,8 @@ local linkRange=1;
 function init()
 	transferUtil.init()
 	storage.receiveItems=true
+	inDataNode=0
+	outDataNode=0
 	storage.inContainers={}
 	storage.outContainers={}
 	storage.containerId=nil
@@ -19,7 +21,7 @@ function update(dt)
 	end
 	deltatime=0
 	findContainer()
-	object.setOutputNodeLevel(storage.kheAA_itemOutNode,not storage.containerId==nil)
+	object.setOutputNodeLevel(outDataNode,not storage.containerId==nil)
 end
 
 function findContainer()
