@@ -47,9 +47,7 @@
     }
   ],
 
-  "scripts" : [ "/objects/power/isn_atmosregulator/isn_atmosregenerator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
+  "scripts" : [ "/objects/power/isn_atmosregulator/isn_atmosregenerator.lua"],
   "scriptDelta" : 60,
 
   "animation" : "isn_atmosregulator.animation",
@@ -60,7 +58,9 @@
   
   "animationPosition" : [-80, 0],
 
-  "inputNodes" : [ [1, 2] ],
+  "inputNodes" : [ [0, 2],[-3,1] ],
   "isn_powerReciever" : true,
-  "isn_requiredPower" : 24
+  "isn_requiredPower" : 24,
+  "isn_powerInNode" : 0,
+  "logicInNode" : 1
 }

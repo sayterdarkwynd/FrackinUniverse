@@ -5,11 +5,10 @@ function init()
 	message.setHandler("transferUtil.sendConfig",transferUtil.sendConfig);
 	message.setHandler("transferItem", transferItem);
 	object.setInteractive(true);
-	inDataNode=0
 end
 
 function update()
-	transferUtil.updateInputs(inDataNode)
+	transferUtil.updateInputs(storage.kheAA_itemInNode)
 end
 
 function transferItem(_, _, itemData)

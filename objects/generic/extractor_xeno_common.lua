@@ -1,5 +1,7 @@
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
+require "/objects/power/isn_sharedpowerscripts.lua"
+require "/objects/isn_sharedobjectscripts.lua"
 local recipes
 local deltaTime=0
 

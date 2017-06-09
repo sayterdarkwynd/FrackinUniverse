@@ -1,3 +1,6 @@
+require "/objects/power/isn_sharedpowerscripts.lua"
+require "/objects/isn_sharedobjectscripts.lua"
+
 function update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
   local powerLevel = isn_getCurrentPowerInput(false)

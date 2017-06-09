@@ -5,7 +5,7 @@
 	"rarity" : "Common",
 	"description" : "Pours Liquids into the world.
 ^blue;Input^white;1^blue;: ^white;power switch
-^blue;Input^white;2^blue;: ^white;liquid network^reset;",
+^blue;Input^white;2^blue;: ^white;liquid/item network input^reset;",
 	"shortdescription" : "Spout",
 	"objectType" : "container",
 	"tooltipKind" : "container",
@@ -41,5 +41,8 @@
 	"frameCooldown" : 5,
 	"autoCloseCooldown" : 3600,
 
-	"inputNodes" : [ [-1, 0], [1, 0] ]
+	"inputNodes" : [ [-1, 0], [1, 0] ],
+	"logicInNode":0,
+	"kheAA_liquidInNode":1,
+	"kheAA_itemInNode":1
 }
