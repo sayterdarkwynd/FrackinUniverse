@@ -1,0 +1,49 @@
+{
+  "objectName" : "miningbench",
+  "colonyTags" : ["tech", "fu", "science"],
+  "printable" : false,
+  "rarity" : "uncommon",
+  "description" : "Upgrade your mining lasers",
+  "shortdescription" : "Mining Bench",
+  "race" : "ancient",
+  "category" : "other",
+  "price" : 0,
+  "lightColor" : [0, 0, 68],
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0.0,
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "miningbench.png:<frame>", "fullbright" : true }, { "image" : "miningbenchlit.png:<frame>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-24, 0],
+      "frames" : 13,
+      "animationCycle" : 1.2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "miningbench.png:<frame>", "fullbright" : true }, { "image" : "miningbenchlit.png:<frame>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-24, 0],
+      "frames" : 13,
+      "animationCycle" : 1.2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/scripted/miningbench/miningbench.config"
+}

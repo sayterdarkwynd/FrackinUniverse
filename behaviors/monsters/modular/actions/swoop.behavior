@@ -1,11 +1,12 @@
 {
   "name": "action-swoop",
-  "description": "",
+  "description": null,
   "scripts": [
     "/scripts/actions/world.lua",
     "/scripts/actions/projectiles.lua",
     "/scripts/actions/movement.lua",
     "/scripts/actions/math.lua",
+    "/scripts/actions/entity.lua",
     "/scripts/behavior.lua",
     "/scripts/actions/status.lua",
     "/scripts/actions/animator.lua",
@@ -22,8 +23,6 @@
     "minSwoopTime": 0.1,
     "gravityMultiplier": -1,
     "swoopTime": 0.5,
-    "xControlForce": 30,
-    "knockbackThreshold": 15,
     "skillName": "",
     "damageOnTouch": false
   },
@@ -31,39 +30,29 @@
     "title": "sequence",
     "type": "composite",
     "name": "sequence",
-    "parameters": {
-      "type": "sliding",
-      "state": "off",
-      "fromEntity": "attackTarget",
-      "toEntity": "fleeTarget"
-    },
+    "parameters": {},
     "children": [
       {
         "title": "parallel",
         "type": "composite",
         "name": "parallel",
         "parameters": {
-          "fail": 1,
-          "success": -1
+          "fail": {"value": 1},
+          "success": {"value": -1}
         },
         "children": [
           {
             "title": "sequence",
             "type": "composite",
             "name": "sequence",
-            "parameters": {
-              "type": "sliding",
-              "state": "off",
-              "fromEntity": "attackTarget",
-              "toEntity": "fleeTarget"
-            },
+            "parameters": {},
             "children": [
               {
                 "title": "entityPosition",
                 "type": "action",
                 "name": "entityPosition",
                 "parameters": {
-                  "entity": "target"
+                  "entity": {"key": "target"}
                 },
                 "output": {
                   "position": "targetPosition"
@@ -74,12 +63,12 @@
                 "type": "action",
                 "name": "projectileAimVector",
                 "parameters": {
-                  "fromPosition": "self",
-                  "toPosition": "targetPosition",
-                  "speed": "<swoopVelocity>",
-                  "collisionCheck": "<collisionCheck>",
-                  "useHighArc": "<highArc>",
-                  "gravityMultiplier": "<gravityMultiplier>"
+                  "collisionCheck": {"key": "<collisionCheck>"},
+                  "fromPosition": {"key": "self"},
+                  "gravityMultiplier": {"key": "<gravityMultiplier>"},
+                  "speed": {"key": "<swoopVelocity>"},
+                  "toPosition": {"key": "targetPosition"},
+                  "useHighArc": {"key": "<highArc>"}
                 },
                 "output": {
                   "aimVector": "aimVector"
@@ -90,8 +79,8 @@
                 "type": "action",
                 "name": "entityDirection",
                 "parameters": {
-                  "entity": "self",
-                  "target": "target"
+                  "entity": {"key": "self"},
+                  "target": {"key": "target"}
                 },
                 "output": {
                   "yDirection": "yDirection"
@@ -107,8 +96,8 @@
                   "type": "action",
                   "name": "greaterThan",
                   "parameters": {
-                    "first": "yDirection",
-                    "second": 0
+                    "first": {"key": "yDirection"},
+                    "second": {"value": 0}
                   }
                 }
               }
@@ -119,19 +108,27 @@
             "type": "module",
             "name": "action-windup",
             "parameters": {
-              "windupState": "<windupState>",
-              "skillName": "<skillName>"
+              "windupState": {"value": "<windupState>"},
+              "skillName": {"value": "<skillName>"}
             }
           }
         ]
+      },
+      {
+        "title": "setDamageOnTouch",
+        "type": "action",
+        "name": "setDamageOnTouch",
+        "parameters": {
+          "touchDamage": {"value": true}
+        }
       },
       {
         "title": "parallel",
         "type": "composite",
         "name": "parallel",
         "parameters": {
-          "fail": 1,
-          "success": -1
+          "fail": {"value": 1},
+          "success": {"value": -1}
         },
         "children": [
           {
@@ -139,37 +136,30 @@
             "type": "action",
             "name": "controlFlag",
             "parameters": {
-              "name": "attacking"
+              "bool": {"value": true}
+            },
+            "output": {
+              "bool": "attacking"
             }
           },
           {
             "title": "sequence",
             "type": "composite",
             "name": "sequence",
-            "parameters": {
-              "type": "sliding",
-              "state": "off",
-              "fromEntity": "attackTarget",
-              "toEntity": "fleeTarget"
-            },
+            "parameters": {},
             "children": [
               {
                 "title": "sequence",
                 "type": "composite",
                 "name": "sequence",
-                "parameters": {
-                  "type": "sliding",
-                  "state": "off",
-                  "fromEntity": "attackTarget",
-                  "toEntity": "fleeTarget"
-                },
+                "parameters": {},
                 "children": [
                   {
                     "title": "stat",
                     "type": "action",
                     "name": "stat",
                     "parameters": {
-                      "statName": "jumpModifier"
+                      "statName": {"value": "jumpModifier"}
                     },
                     "output": {
                       "value": "jumpModifier"
@@ -180,8 +170,8 @@
                     "type": "action",
                     "name": "multiply",
                     "parameters": {
-                      "number": "<swoopVelocity>",
-                      "factor": "jumpModifier"
+                      "factor": {"key": "jumpModifier"},
+                      "number": {"key": "<swoopVelocity>"}
                     },
                     "output": {
                       "result": "speedModifier"
@@ -192,8 +182,8 @@
                     "type": "action",
                     "name": "add",
                     "parameters": {
-                      "addend": "<swoopVelocity>",
-                      "number": "speedModifier"
+                      "addend": {"key": "<swoopVelocity>"},
+                      "number": {"key": "speedModifier"}
                     },
                     "output": {
                       "result": "speed"
@@ -206,8 +196,8 @@
                 "type": "action",
                 "name": "vecMultiply",
                 "parameters": {
-                  "first": "aimVector",
-                  "second": "speed"
+                  "first": {"key": "aimVector"},
+                  "number": {"key": "speed"}
                 },
                 "output": {
                   "vector": "swoopVelocity"
@@ -218,8 +208,8 @@
                 "type": "composite",
                 "name": "parallel",
                 "parameters": {
-                  "fail": 1,
-                  "success": -1
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
                 },
                 "children": [
                   {
@@ -231,19 +221,14 @@
                       "title": "sequence",
                       "type": "composite",
                       "name": "sequence",
-                      "parameters": {
-                        "type": "sliding",
-                        "state": "off",
-                        "fromEntity": "attackTarget",
-                        "toEntity": "fleeTarget"
-                      },
+                      "parameters": {},
                       "children": [
                         {
                           "title": "setNumber",
                           "type": "action",
                           "name": "setNumber",
                           "parameters": {
-                            "number": "<gravityMultiplier>"
+                            "number": {"key": "<gravityMultiplier>"}
                           },
                           "output": {
                             "number": "gravityMultiplier"
@@ -254,11 +239,8 @@
                           "type": "action",
                           "name": "controlParameters",
                           "parameters": {
-                            "parameters": {
-                              "airFriction": 0,
-                              "gravityEnabled": true,
-                              "gravityMultiplier": "gravityMultiplier"
-                            }
+                            "parameters": {"value": {"airFriction": 0, "gravityEnabled": true}},
+                            "gravityMultiplier": {"key": "gravityMultiplier"}
                           }
                         }
                       ]
@@ -274,19 +256,14 @@
                     "title": "sequence",
                     "type": "composite",
                     "name": "sequence",
-                    "parameters": {
-                      "type": "sliding",
-                      "state": "off",
-                      "fromEntity": "attackTarget",
-                      "toEntity": "fleeTarget"
-                    },
+                    "parameters": {},
                     "children": [
                       {
                         "title": "setVelocity",
                         "type": "action",
                         "name": "setVelocity",
                         "parameters": {
-                          "velocity": "swoopVelocity"
+                          "velocity": {"key": "swoopVelocity"}
                         }
                       },
                       {
@@ -299,25 +276,17 @@
                           "type": "action",
                           "name": "setAnimationState",
                           "parameters": {
-                            "state": "<swoopState>",
-                            "type": "body"
+                            "state": {"value": "<swoopState>"},
+                            "type": {"value": "body"}
                           }
                         }
                       },
-					{
-						"title": "setDamageOnTouch",
-						"type": "action",
-						"name": "setDamageOnTouch",
-						"parameters": {
-						"touchDamage" : true
-						}
-					},
                       {
                         "title": "timer",
                         "type": "action",
                         "name": "timer",
                         "parameters": {
-                          "time": "<minSwoopTime>"
+                          "time": {"value": "<minSwoopTime>"}
                         }
                       },
                       {
@@ -337,10 +306,7 @@
                                 "type": "action",
                                 "name": "boundsCollision",
                                 "parameters": {
-                                  "dirVector": [
-                                    1,
-                                    0
-                                  ]
+                                  "dirVector": {"value": [1, 0]}
                                 }
                               },
                               {
@@ -348,10 +314,7 @@
                                 "type": "action",
                                 "name": "boundsCollision",
                                 "parameters": {
-                                  "dirVector": [
-                                    -1,
-                                    0
-                                  ]
+                                  "dirVector": {"value": [-1, 0]}
                                 }
                               },
                               {
@@ -359,10 +322,7 @@
                                 "type": "action",
                                 "name": "boundsCollision",
                                 "parameters": {
-                                  "dirVector": [
-                                    0,
-                                    1
-                                  ]
+                                  "dirVector": {"value": [0, 1]}
                                 }
                               },
                               {
@@ -370,10 +330,7 @@
                                 "type": "action",
                                 "name": "boundsCollision",
                                 "parameters": {
-                                  "dirVector": [
-                                    0,
-                                    -1
-                                  ]
+                                  "dirVector": {"value": [0, -1]}
                                 }
                               }
                             ]
@@ -388,20 +345,15 @@
                                 "title": "sequence",
                                 "type": "composite",
                                 "name": "sequence",
-                                "parameters": {
-                                  "type": "sliding",
-                                  "state": "off",
-                                  "fromEntity": "attackTarget",
-                                  "toEntity": "fleeTarget"
-                                },
+                                "parameters": {},
                                 "children": [
                                   {
                                     "title": "greaterThan",
                                     "type": "action",
                                     "name": "greaterThan",
                                     "parameters": {
-                                      "first": "<swoopTime>",
-                                      "second": 0
+                                      "first": {"key": "<swoopTime>"},
+                                      "second": {"value": 0}
                                     }
                                   },
                                   {
@@ -409,7 +361,7 @@
                                     "type": "action",
                                     "name": "timer",
                                     "parameters": {
-                                      "time": "<swoopTime>"
+                                      "time": {"value": "<swoopTime>"}
                                     }
                                   }
                                 ]
@@ -437,17 +389,17 @@
         "type": "module",
         "name": "action-winddown",
         "parameters": {
-          "winddownState": "<winddownState>"
+          "winddownState": {"value": "<winddownState>"}
         }
-      },	  
-	{
-		"title": "setDamageOnTouch",
-		"type": "action",
-		"name": "setDamageOnTouch",
-		"parameters": {
-		"touchDamage" : "<damageOnTouch>"
-		}
-	}
+      },
+      {
+        "title": "setDamageOnTouch",
+        "type": "action",
+        "name": "setDamageOnTouch",
+        "parameters": {
+          "touchDamage": {"key": "<damageOnTouch>"}
+        }
+      }
     ]
   }
 }

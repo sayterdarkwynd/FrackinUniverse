@@ -14,7 +14,7 @@
             "cycle" : 0.5,
             "mode" : "loop",
             "properties" : {
-            "particleEmittersOff" : [ "spindust" ]
+            "particleEmittersOff" : [ "spindust", "rage", "statusfx" ]
             }
           },
           "jump" : {
@@ -35,7 +35,8 @@
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "statusfx" ],
+              "particleEmittersOn" : [ "rage" ]
             },
             "frameProperties" : {
               "immediateSound" : [ "", "/sfx/npc/smallbiped/canine_small_pain1.ogg", "", "/sfx/melee/bite_kill.ogg"]
@@ -49,7 +50,8 @@
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "statusfx" ],
+              "particleEmittersOn" : [ "rage" ]
             },
             "frameProperties" : {
               "immediateSound" : [ "/sfx/melee/bite.ogg", "", "/sfx/melee/bite.ogg", "", "/sfx/melee/bite.ogg", "", "/sfx/melee/bite.ogg", "" ]
@@ -61,7 +63,8 @@
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust", "rage" ],
+              "particleEmittersOn" : [ "statusfx" ] 
             }
           },
           "chargewinddown" : {
@@ -72,7 +75,7 @@
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust","rage", "statusfx" ]
             }
           },
           "charge" : {
@@ -82,7 +85,7 @@
               "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
               "immediateSound" : "/sfx/npc/monsters/monster_slash1.ogg",
-              "particleEmittersOff" : [ "spindust" ]
+              "particleEmittersOff" : [ "spindust","rage", "statusfx" ]
             }
           },
           "fire" : {
@@ -95,10 +98,22 @@
               "persistentSoundStopTime" : 1.25
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
+              "particleEmittersOff" : [ [ "spindust", "rage", "statusfx" ], ["rage", "statusfx"], ["rage", "statusfx"], ["rage", "statusfx"], ["rage", "statusfx"], ["rage", "statusfx"], ["rage", "statusfx"], ["spindust", "rage", "statusfx"] ],
               "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [] ]
             }
           },
+          "fire2" : {
+            "frames" : 8,
+            "cycle" : 1.0,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
+              "persistentSoundStopTime" : 1.25,
+              "particleEmittersOff" : [ "spindust","rage" ],
+              "particleEmittersOn" : [ "statusfx" ]
+            }
+          },          
           "roar" : {
             "frames" : 8,
             "cycle" : 0.53,
@@ -106,10 +121,11 @@
             "transition" : "idle",
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
-              "persistentSoundStopTime" : 1.25
+              "persistentSoundStopTime" : 1.25,
+              "particleEmittersOn" : [ "statusfx" ]
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
+              "particleEmittersOff" : [ [ "spindust", "rage" ], ["rage"], ["rage"], ["rage"], ["rage"], ["rage"], ["rage"], ["spindust", "rage"] ],
               "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [] ]
             }
           }
@@ -201,7 +217,12 @@
               "properties" : {
                 "image" : "<partImage>:roar.<frame>"
               }
-            },            
+            },  
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },             
             "roar" : {
               "properties" : {
                 "image" : "<partImage>:roar.<frame>"
@@ -256,6 +277,25 @@
         { "particle" : "mandrafloradust" }
       ]
     },
+    "statusfx" : {
+      "emissionRate" : 5,
+      "renderLayer" : "Monster+1",
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],    
+      "particles" : [
+        { "particle" : "castphysical" }   
+      ]
+    },      
+    "rage" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, -3.0, -1.0, 3.0 ],    
+      "renderLayer" : "Monster+1",
+      "particles" : [
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" }
+      ]
+    },    
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },

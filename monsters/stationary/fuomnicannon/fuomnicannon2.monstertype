@@ -1,0 +1,265 @@
+{
+  "type" : "fuomnicannon2",
+  "shortdescription" : "Omnicannon",
+  "description" : "An omni-directional point defence cannon",
+
+  "categories" : [ "fuomnicannon" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fuomnicannon.animation",
+
+  "dropPools" : [ { "default" : "servitorTreasure", "bow" : "servitorHunting" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "facingMode" : "transformation",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "hurtWaitForGround" : false,
+
+      "targetQueryRange" : 50,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 200,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-animate",
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "wake",
+            "animationTime" : 0.5
+          }
+        }
+      ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 50,
+            "minimumRange" : 2,
+            "windupTime" : 0.4,
+            "windupState" : "firewindup",
+
+            "projectileCount" : 5,
+            "projectileInterval" : 0.1,
+            "inaccuracy" : 0.08,
+            "projectileType" : "laser-1",
+            "projectileParameters" : {
+              "speed" : 50,
+              "power" : 15
+            },
+
+            "fireOffset" : [1.5, -0.125],
+            "rotationCenter" : [0.0, 0.5],
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "fireDelay" : 0.0,
+            "faceTarget" : true,
+            "rotateAim" : true,
+
+            "winddownState" : "",
+            "winddownTime" : 0.0
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport"
+        }
+      ],
+
+      "wanderActions" : [
+      ],
+
+      "concurrentActions" : [
+        {
+          "name" : "idle-crawl",
+          "parameters" : {
+            "stopForce" : 500
+          }
+        },
+        {
+          "name" : "action-globaltag",
+          "parameters" : {
+            "tagName" : "aggro",
+            "tag" : ""
+          }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "idle-crawl",
+          "parameters" : {
+            "stopForce" : 500
+          }
+        },
+        {
+          "name" : "action-globaltag",
+          "parameters" : {
+            "tagName" : "aggro",
+            "tag" : ".aggro"
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "mechenergypickup",
+            "projectileParameters" : {},
+            "aimDirection" : [1, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "selfDamagePoly" : [ [1.0, 1.5],  [1.5, 1.0],  [1.5, -1.0],  [1.0, -1.5],  [-1.0, -1.5],  [-1.5, -1.0],  [-1.5, 1.0],  [-1.0, 1.5] ],
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      },
+      "physicsEffectCategories" : ["stationarymonster"]
+    },
+
+    "bodyMaterialKind" : "robotic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "healthLevelFunction" : "spaceMonsterLevelHealthMultiplier",
+    "powerLevelFunction" : "spaceMonsterLevelPowerMultiplier",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/spacemonster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 75
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.3
+        },
+        "electricResistance" : {
+          "baseValue" : -0.2
+        },
+        "iceResistance" : {
+          "baseValue" : 0.6
+        },
+        "poisonResistance" : {
+          "baseValue" : 1.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.7
+        },
+        "shadowResistance" : {
+          "baseValue" : 1.0
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.3
+        } 
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

@@ -208,10 +208,14 @@ function doUpgrade()
 		   -- wands/staves	
 			if (itemConfig.config.primaryAbility.maxCastRange) then
 			  upgradedItem.parameters.primaryAbility = {
-			  energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3),
-			  maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
+			    maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
 			  }
 			end	
+			if (itemConfig.config.primaryAbility.energyCost) then
+			  upgradedItem.parameters.primaryAbility = {
+			    energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3)
+			  }
+			end			
 		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
 			
 			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) then

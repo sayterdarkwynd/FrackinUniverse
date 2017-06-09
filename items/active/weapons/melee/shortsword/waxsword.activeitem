@@ -13,10 +13,11 @@
 
   "inventoryIcon" : "waxsword.png",
 
-  "animation" : "comboshortsword.animation",
+  "animation" : "comboglowshortsword.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "waxsword.png"
+    "blade" : "waxsword.png",
+    "bladefullbright" : "waxsword.png"
   },
 
   "animationCustom" : { },
@@ -32,6 +33,21 @@
   },
   "critChance" : 1,
   "critBonus" : 2, 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
 
+
+  "upgradeParameters2" : {
+
+    "shortdescription" : "^cyan;God Cleaver^reset; ^yellow;^reset;",
+  "description" : "Somewhat dangerous.
+^cyan;Gods fear it. Women crave it.^reset;", 
+          "inventoryIcon" : "waxsword2.png",
+	  "animationParts" : {
+	    "blade" : "waxsword2.png",
+	    "bladefullbright" : "waxsword2fullbright.png"
+	  },    
+	    "critChance" : 14,
+	    "critBonus" : 24
+    }
 }
