@@ -1,5 +1,5 @@
 {
-  "type" : "fuomnicannon2",
+  "type" : "fuomnicannon",
   "shortdescription" : "Omnicannon",
   "description" : "An omni-directional point defence cannon",
 
@@ -31,6 +31,12 @@
       "keepTargetInRange" : 200,
       "targetOutOfSightTime" : 5.0,
 
+      "spawnActions" : [
+        {
+          "name" : "spawn-ceiling"
+        }
+      ],
+
       "foundTargetActions" : [
         {
           "name" : "action-animate",
@@ -55,10 +61,10 @@
             "windupTime" : 0.4,
             "windupState" : "firewindup",
 
-            "projectileCount" : 5,
-            "projectileInterval" : 0.1,
+            "projectileCount" : 3,
+            "projectileInterval" : 0,
             "inaccuracy" : 0.08,
-            "projectileType" : "laser-1",
+            "projectileType" : "cosmicplasma",
             "projectileParameters" : {
               "speed" : 50,
               "power" : 15
@@ -242,7 +248,7 @@
         },
         "cosmicResistance" : {
           "baseValue" : 0.3
-        } 
+        }
       },
 
       "resources" : {

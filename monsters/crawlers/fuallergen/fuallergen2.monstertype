@@ -1,9 +1,9 @@
 {
-  "type" : "fuallergen",
-  "shortdescription" : "Snarker Trap",
-  "description" : "Capable of spewing lethal toxic pollen.",
+  "type" : "fuallergen2",
+  "shortdescription" : "Gasser Trap",
+  "description" : "This flower is filled with toxic gas.",
 
-  "categories" : [ "fuallergen" ],
+  "categories" : [ "fuallergen2" ],
   "parts" : [ "body" ],
 
   "animation" : "fuallergen.animation",
@@ -60,15 +60,14 @@
             "windupState" : "hurt",
             "windupTime" : 0.4,
 
-            "projectileType" : "pollenburst",
+            "projectileType" : "miasma",
             "projectileCount" : 1,
             "fireOffset" : [0, 0],
             "power" : 10,
             "projectileParameters" : {
-              "speed" : 7.5,
+              "speed" : 3.25,
               "timeToLive" : 8.0
             },
-
             "faceTarget" : false,
             "rotationCenter": [0, 0],
 
@@ -234,8 +233,8 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.50,
-    "capturedMonsterName" : "Snarker Trap",
-    "capturedMonsterType" : "fuallergen",
+    "capturedMonsterName" : "Gasser Trap",
+    "capturedMonsterType" : "fuallergen2",
     "nametagColor" : [64, 200, 255]
   }
 }

@@ -1,14 +1,14 @@
 {
-  "type" : "futwigun",
-  "shortdescription" : "Ancient Cannon",
-  "description" : "Ready and able to kill you.",
+  "type" : "twigun",
+  "shortdescription" : "Twigun",
+  "description" : "A mass-produced autonomous defense turret. It tries very hard not to miss.",
 
-  "categories" : [ "futwigun" ],
+  "categories" : [ "twigun" ],
   "parts" : [ "body" ],
 
-  "animation" : "futwigun.animation",
+  "animation" : "twigun.animation",
 
-  "dropPools" : [ { "default" : "servitorTreasure", "bow" : "servitorHunting" } ],
+  "dropPools" : ["spaceRobot"],
 
   "baseParameters" : {
     "scripts" : [
@@ -30,6 +30,12 @@
       "keepTargetInSight" : true,
       "keepTargetInRange" : 200,
       "targetOutOfSightTime" : 5.0,
+
+      "spawnActions" : [
+        {
+          "name" : "spawn-ceiling"
+        }
+      ],
 
       "foundTargetActions" : [
         {
@@ -56,10 +62,10 @@
 
             "projectileCount" : 4,
             "projectileInterval" : 0.05,
-            "projectileType" : "precursorshotsmall2",
+            "projectileType" : "twigunbullet",
             "projectileParameters" : {
-              "speed" : 60,
-              "power" : 30
+              "speed" : 40,
+              "power" : 10
             },
             "fireOffsets" : [[1.5, 0.625], [1.5, -0.625]],
             "rotationCenter" : [0.0, 0.75],
@@ -217,6 +223,9 @@
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
           "baseValue" : 1.0
         }
       },
