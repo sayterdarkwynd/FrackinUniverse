@@ -28,12 +28,6 @@ function onInteraction(args)
 	
 	isn_cycleFrequency(1)
 
-		if storage.currentconfig == nil or storage.currentkey == nil then
-			animator.burstParticleEmitter("noSignal")
-			animator.playSound("error")
-			return
-		end
-		
 		local tradingConfig = { config = storage.currentconfig, recipes = { } }
 		for key, value in pairs(config.getParameter(storage.currentkey)) do
 			local recipe = { input = { { name = "money", count = value } }, output = { name = key } }
