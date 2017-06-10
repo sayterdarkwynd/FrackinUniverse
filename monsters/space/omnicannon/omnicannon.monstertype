@@ -1,14 +1,14 @@
 {
-  "type" : "fuomnicannon",
+  "type" : "omnicannon",
   "shortdescription" : "Omnicannon",
-  "description" : "An omni-directional point defence cannon",
+  "description" : "A hivemind of worm-like parasites interwoven into an old energy cannon.",
 
-  "categories" : [ "fuomnicannon" ],
+  "categories" : [ "omnicannon" ],
   "parts" : [ "body" ],
 
-  "animation" : "fuomnicannon.animation",
+  "animation" : "omnicannon.animation",
 
-  "dropPools" : [ { "default" : "servitorTreasure", "bow" : "servitorHunting" } ],
+  "dropPools" : [  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -31,6 +31,12 @@
       "keepTargetInRange" : 200,
       "targetOutOfSightTime" : 5.0,
 
+      "spawnActions" : [
+        {
+          "name" : "spawn-ceiling"
+        }
+      ],
+
       "foundTargetActions" : [
         {
           "name" : "action-animate",
@@ -47,21 +53,18 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 2,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 50,
+            "maximumRange" : 70,
             "minimumRange" : 2,
-            "windupTime" : 0.4,
-            "windupState" : "firewindup",
+            "windupTime" : 1.3,
+            "windupState" : "",
 
-            "projectileCount" : 3,
-            "projectileInterval" : 0,
-            "inaccuracy" : 0.08,
-            "projectileType" : "cosmicplasma",
+            "projectileCount" : 1,
+            "projectileType" : "omnicannonbullet",
             "projectileParameters" : {
-              "speed" : 50,
-              "power" : 15
+              "speed" : 30,
+              "power" : 20
             },
 
             "fireOffset" : [1.5, -0.125],
@@ -208,7 +211,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 75
+          "baseValue" : 125
         },
         "protection" : {
           "baseValue" : 0.0
@@ -219,30 +222,9 @@
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
-        "physicalResistance" : {
-          "baseValue" : 0.3
-        },
-        "electricResistance" : {
-          "baseValue" : -0.2
-        },
-        "iceResistance" : {
-          "baseValue" : 0.6
-        },
-        "poisonResistance" : {
+        "poisonStatusImmunity" : {
           "baseValue" : 1.0
-        },
-        "fireResistance" : {
-          "baseValue" : 0.5
-        },
-        "radioactiveResistance" : {
-          "baseValue" : 0.7
-        },
-        "shadowResistance" : {
-          "baseValue" : 1.0
-        },
-        "cosmicResistance" : {
-          "baseValue" : 0.3
-        } 
+        }
       },
 
       "resources" : {

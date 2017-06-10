@@ -1,9 +1,9 @@
 {
-  "type" : "fuallergen",
-  "shortdescription" : "Snarker Trap",
-  "description" : "Capable of spewing lethal toxic pollen.",
+  "type" : "fuallergen3",
+  "shortdescription" : "Seeder Trap",
+  "description" : "Releases toxic seeds when threatened",
 
-  "categories" : [ "fuallergen" ],
+  "categories" : [ "fuallergen3" ],
   "parts" : [ "body" ],
 
   "animation" : "fuallergen.animation",
@@ -52,23 +52,25 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 3,
+          "cooldown" : 3.0,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 20,
-            "minimumRange" : 3,
+            "minimumRange" : 0,
             "windupState" : "hurt",
             "windupTime" : 0.4,
 
-            "projectileType" : "pollenburst",
-            "projectileCount" : 1,
-            "fireOffset" : [0, 0],
-            "power" : 10,
-            "projectileParameters" : {
-              "speed" : 7.5,
-              "timeToLive" : 8.0
-            },
-
+            "aimAtTarget" : false,
+            "aimDirection" : [0, 1],
+            "projectileType" : "sporeseed",
+            "inaccuracy" : 0.5,
+            "projectileCount" : 10,
+            "projectileInterval" : 0.01,
+            "fireOffset" : [0.0, 0.0],
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "fireDelay" : 0.5,
+            "projectileParameters" : {},
             "faceTarget" : false,
             "rotationCenter": [0, 0],
 
@@ -234,8 +236,8 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.50,
-    "capturedMonsterName" : "Snarker Trap",
-    "capturedMonsterType" : "fuallergen",
+    "capturedMonsterName" : "Seeder Trap",
+    "capturedMonsterType" : "fuallergen3",
     "nametagColor" : [64, 200, 255]
   }
 }
