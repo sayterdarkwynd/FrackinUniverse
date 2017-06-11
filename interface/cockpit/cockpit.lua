@@ -10,7 +10,15 @@ require "/interface/cockpit/cockpitutil.lua"
 
 function init()
   View:init()
+
   self.clickEvents = {}
+  self.input = {
+    up = false,
+    left = false,
+    down = false,
+    right = false
+  }
+  self.zoomOut = false
   self.selection = {}
   self.focus = {}
   self.viewCoordinate = nil
@@ -22,10 +30,10 @@ function init()
   self.playTyping = true
 
   self.state = FSM:new()
-  if contains(player.shipUpgrades().capabilities, "planetTravel") then
+  if celestial.skyInHyperspace() then
+    self.state:set(transitState)
+  elseif contains(player.shipUpgrades().capabilities, "planetTravel") then
     self.state:set(systemScreenState, celestial.currentSystem())
-  elseif celestial.skyFlyingType() == "maintain" then
-    self.state:set(universeMoveState, {0, 0}, systems, systemPosition(celestial.currentSystem()), {system = celestial.currentSystem()}, {})
   else
     self.state:set(disabledState)
   end
@@ -49,6 +57,18 @@ function canvasClickEvent(position, button, isButtonDown)
     showTopLeftFrame(nil)
 
     table.insert(self.clickEvents, {position, button, isButtonDown})
+  end
+end
+
+function canvasKeyEvent(key, isDown)
+  if key == 65 then
+    self.input.up = isDown
+  elseif key == 43 then
+    self.input.left = isDown
+  elseif key == 61 then
+    self.input.down = isDown
+  elseif key == 46 then
+    self.input.right = isDown
   end
 end
 
@@ -82,6 +102,7 @@ function update(dt)
 
   View:render(dt)
 
+  self.zoomOut = false
   self.viewSelection = false
   self.clickEvents = {}
 
@@ -162,6 +183,10 @@ function goToQuest()
       self.focus = {system = coordinateSystem(coordinate), target = {"coordinate", coordinate}}
     end
   end
+end
+
+function zoomOut()
+  self.zoomOut = true
 end
 
 function addBookmark()
@@ -335,17 +360,30 @@ end
 
 -- Helpers
 
+--function fuelCost()
+--  local cost = config.getParameter("jumpFuelCost")
+--  return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
+--end
+
+
 function fuelCost()
   local cost = config.getParameter("jumpFuelCost") 
+  local distance = math.sqrt( ( (startposX - endPosX) ^ 2 ) + ( (startposY - endPosY) ^ 2 ) )
   
   -- FU needs custom math here for distance-based fuel cost
   --local cost = cost
   --sb.logInfo("%s",_ENV)
-  sb.logInfo("%s",self.travel)
-  sb.logInfo("%s",self.travel.system)
+  
+  self.one =  celestial.currentSystem()
+  self.two =  celestial.shipDestination()
+  
+  sb.logInfo("%s",self.one)
+  sb.logInfo("%s",self.two)
+  
   -- end FU fuel cost calculation
   return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
 end
+
 
 function canFlyShip(system)
   if not compare(system, celestial.currentSystem()) then
@@ -380,7 +418,32 @@ function disabledState()
   return self.state:set(systemScreenState, celestial.currentSystem())
 end
 
+function transitState()
+  View:reset()
+  View:setCamera("universe", systemPosition(celestial.currentSystem()), "system")
+  widget.setVisible("transitLabel", true)
+
+  local color = config.getParameter("transitColor")
+  local pulse = config.getParameter("transitPulse")
+
+  local timer = 0
+  while celestial.skyFlyingType() == "warp" do
+    timer = timer + script.updateDt()
+    local ratio = (math.sin((timer % 1) / 1 * math.pi * 2) + 1.0) / 2.0
+    color[4] = 255 * (pulse[1] + (ratio * (pulse[2] - pulse[1])))
+    widget.setFontColor("transitLabel", color)
+    coroutine.yield()
+  end
+
+  widget.setVisible("transitLabel", false)
+  return self.state:set(systemScreenState, celestial.currentSystem())
+end
+
 function systemUniverseTransition(fromSystem)
+  widget.setVisible("zoomOut", false)
+  widget.setVisible("remoteTitle", false)
+  widget.setVisible("remoteDescription", false)
+
   View:reset()
   pane.playSound(self.sounds.zoom, -1)
   View.drawSystem = true
@@ -419,6 +482,8 @@ function systemUniverseTransition(fromSystem)
 end
 
 function universeScreenState(startSystem)
+  widget.setVisible("zoomOut", false)
+
   View:reset()
 
   if startSystem then
@@ -428,6 +493,8 @@ function universeScreenState(startSystem)
   View.drawStars = true
   View.stars.currentSystem = celestial.currentSystem()
   View.stars.displayMarker = true
+
+  local scrollSpeed = config.getParameter("universeScrollSpeed")
 
   local systems = {}
   local lines = {}
@@ -465,6 +532,23 @@ function universeScreenState(startSystem)
       drag = vec2.sub(startDrag.screen, View:mousePosition())
       local position = vec2.add(startDrag.universe, vec2.div(drag, View:scale("universe", "universe")))
       View:setCamera("universe", View:clampUniversePosition(position), "universe")
+    else
+      -- if not dragging allow keyboard scrolling
+      local dir = {0, 0}
+      if self.input.up then
+        dir[2] = dir[2] + 1
+      end
+      if self.input.down then
+        dir[2] = dir[2] - 1
+      end
+      if self.input.left then
+        dir[1] = dir[1] - 1
+      end
+      if self.input.right then
+        dir[1] = dir[1] + 1
+      end
+      local position = vec2.add(View.universeCamera.position, vec2.mul(vec2.norm(dir), scrollSpeed * script.updateDt()))
+      View:setCamera("universe", position, "universe")
     end
 
     for _,click in pairs(takeInputEvents()) do
@@ -649,6 +733,8 @@ function universeMoveState(startPosition, systems, toPosition, travel, queued)
 end
 
 function universeSystemTransition(systems, lines, toSystem, warpIn)
+  widget.setVisible("zoomOut", false)
+
   View:reset()
   pane.playSound(self.sounds.zoom, -1)
   View.drawStars = true
@@ -668,13 +754,18 @@ function universeSystemTransition(systems, lines, toSystem, warpIn)
     View.system.mappedObjects = player.mappedObjects(toSystem)
   end
 
-  if not warpIn and compare(toSystem, celestial.currentSystem()) then
-    View.drawShip = true
+  local isCurrent = compare(toSystem, celestial.currentSystem())
+  if isCurrent then
+    if not warpIn then
+      View.drawShip = true
+    end
+  else
+    widget.setVisible("remoteTitle", true)
+    widget.setVisible("remoteDescription", true)
   end
 
   local universeStart = View.universeCamera.position
   local systemStart = vec2.mul(vec2.sub(universeStart, systemPosition(toSystem)), View.settings.universeSystemRatio)
-
 
   local timer = 0
   local transitionTime = 1.0
@@ -698,6 +789,8 @@ function universeSystemTransition(systems, lines, toSystem, warpIn)
 end
 
 function systemScreenState(system, warpIn)
+  widget.setVisible("zoomOut", true)
+
   View:reset()
   local planets = util.untilNotEmpty(function() return celestial.children(system) end)
 
@@ -772,7 +865,11 @@ function systemScreenState(system, warpIn)
       end
     end
 
-    local zoomOut = vec2.mag(View:toSystem(View:mousePosition())) > (View.settings.viewRadius + 10) / View.systemCamera.scale
+    if self.zoomOut then
+      return self.state:set(systemUniverseTransition, system)
+    end
+
+    local zoomOut = vec2.mag(View:toSystem(View:mousePosition())) - 20 > (View.settings.viewRadius) / View.systemCamera.scale
     if zoomOut then
       self.cursorOverride = config.getParameter("zoomOutCursor")
     end
@@ -849,7 +946,6 @@ function systemScreenState(system, warpIn)
     end
 
     if self.travel.system then
-      -- FU   can we set fuel cost here? 
       if isCurrent and compare(self.travel.system, system.location) then
         if self.travel.target then
           if self.travel.target[1] ~= "coordinate" or celestial.visitableParameters(self.travel.target[2]) then
@@ -902,6 +998,8 @@ function systemScreenState(system, warpIn)
 end
 
 function systemPlanetTransition(planets, toPlanet)
+  widget.setVisible("zoomOut", false)
+
   View:reset()
   pane.playSound(self.sounds.zoom, -1)
   local system = coordinateSystem(toPlanet)
@@ -944,6 +1042,8 @@ function systemPlanetTransition(planets, toPlanet)
 end
 
 function planetScreenState(planet)
+  widget.setVisible("zoomOut", true)
+
   View:reset()
 
   View.backgroundScale = View:bgScale("planet")
@@ -988,13 +1088,17 @@ function planetScreenState(planet)
       end
     end
 
+    if self.zoomOut then
+      return self.state:set(planetSystemTransition, planet)
+    end
+
     local newHover = closestLocationInRange(View:toSystem(View:mousePosition()), planet, 3)
     if newHover and not compare(hover, newHover) and not compare(newHover, selection) then
       pane.playSound(self.sounds.hover)
     end
     hover = newHover
 
-    local zoomOut = planetDistance(planet, View:toSystem(View:mousePosition())) > (View.settings.viewRadius + 10) / View.systemCamera.scale
+    local zoomOut = planetDistance(planet, View:toSystem(View:mousePosition())) - 2 > (View.settings.viewRadius) / View.systemCamera.scale
     if zoomOut then
       self.cursorOverride = config.getParameter("zoomOutCursor")
     end
@@ -1078,6 +1182,8 @@ function planetScreenState(planet)
 end
 
 function planetSystemTransition(fromPlanet)
+  widget.setVisible("zoomOut", false)
+
   View:reset()
   pane.playSound(self.sounds.zoom, -1)
   local system = coordinateSystem(fromPlanet)
