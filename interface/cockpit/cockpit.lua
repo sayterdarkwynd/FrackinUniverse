@@ -340,12 +340,9 @@ function fuelCost()
   
   -- FU needs custom math here for distance-based fuel cost
   --local cost = cost
-  sb.logInfo("%s",_ENV)
+  --sb.logInfo("%s",_ENV)
   sb.logInfo("%s",self.travel)
-  --local fuelPosition = self.system.target
-  --local shipPosition = self.travel  
-  --sb.logInfo("fuelPosition %s", fuelPosition)
-  --sb.logInfo("shipPosition %s", shipPosition)
+  sb.logInfo("%s",self.travel.system)
   -- end FU fuel cost calculation
   return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
 end
