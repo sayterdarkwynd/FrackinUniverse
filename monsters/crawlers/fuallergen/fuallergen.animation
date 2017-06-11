@@ -54,7 +54,7 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "transformationGroups" : [ "body", "facing" ]
+          "transformationGroups" : [ "body", "facing", "aim" ]
         },
         "partStates" : {
           "body" : {
@@ -85,13 +85,11 @@
       }
     }
   },
-  "globalTagDefaults" : {
-    "aggro" : ""
-  },
 
   "transformationGroups" : {
     "body" : { "interpolated" : true },
-    "facing" : { "interpolated" : false }
+    "facing" : { "interpolated" : false },
+    "aim" : {"interpolated" : true}
   },
 
   "effects" : {

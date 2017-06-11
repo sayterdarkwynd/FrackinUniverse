@@ -36,7 +36,7 @@
       "hostileActions" : [    
 	{
           "name" : "action-fire",
-	  "cooldown" : 6,
+	  "cooldown" : 9,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 24,
@@ -76,12 +76,12 @@
             "winddownState" : "die2",
             "winddownTime" : 1.0
           }
-        },      
+        }, 
         {
           "name" : "action-charge",
-          "cooldown" : 5.4,
+          "cooldown" : 5,
           "parameters" : {
-            "maximumRange" : 24,
+            "maximumRange" : 16,
             "windupState" : "chargewindup",
             "windupTime" : 1.15,
             "windupSound" : "charge",
@@ -97,61 +97,34 @@
             "winddownState" : "chargewinddown"
           }
         },              
-        {
-          "name" : "action-fire",
-	  "cooldown" : 4,
+	{
+          "name" : "action-leap", 
+          "cooldown" : 3,
           "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 7,
-            "minimumRange" : 0,
-            "windupState" : "firewindup",
-            "windupSound" : "",
-            "windupTime" : 0.5,
-            "onGround" : true,
-            "projectileType" : "firetitanswoosh",
-            "projectileParameters" : {
-              "damageSourceKind" : "fire",
-              "actionOnHit" : [
-		    {
-		      "action" : "config",
-		      "file" : "/projectiles/explosions/firetitanexplosion/firetitanexplosion.config"
-		    }              
-              ],
-              "periodicActions" : [             
-		    {
-		      "time":0.01, 
-		      "action":"projectile", 
-		      "type":"hellfireprojectile", 
-		      "config":{
-		        "speed":0, 
-		        "persistentAudio":"", 
-		        "timeToLive":0.01, 
-		        "power":0.0
-		      }
-		    }            
-                ]
-            },
-            "power" : 12,
-            "speed": 0,
-            "fireOffset" : [4.5, 0],
-            "aimAtTarget" : true,
-            "projectileCount" : 1,
-            "fireSound" : "hit",
-            "fireDelay" : 1.2,
-            "range": 50,
-            "fireState" : "fire",
-            "winddownState" : "firewinddown",
-            "winddownTime" : 1.8
+            "minimumRange" : 5,
+            "maximumRange" : 22,
+            "maxXRange" : 20,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 55,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
           }
-        }      
+        }             
       ],
 
       "periodicActions" : [],
       
-      "damageTakenActions" : [
+      "damageTakenActions" : [      
 	{
           "name" : "action-fire",
-          "cooldown" : 5,
+          "cooldown" : 5.5,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 50,
@@ -167,7 +140,7 @@
             "speed": 0,
             "fireOffset" : [1.5, 0.4],
             "aimAtTarget" : false,
-            "projectileCount" : 1,
+            "projectileCount" : 2,
             
             "fireSound" : "pew",
             "fireDelay" : 1.5,
@@ -178,11 +151,11 @@
         },      
 	{
           "name" : "action-fire",
-          "cooldown" : 4.9,
+          "cooldown" : 6.9,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 24,
-            "minimumRange" : 4,
+            "minimumRange" : 10,
             "windupState" : "die3",
             "windupSound" : "aggroHop",
             "windupTime" : 0,
@@ -253,7 +226,7 @@
       "wanderActions" : [
         {
           "name" : "wander-walk",
-          "cooldown" : 6.0,
+          "cooldown" : 3.0,
           "parameters" : {
             "wanderTime" : [5, 15],
             "canJump" : true,
@@ -271,14 +244,14 @@
       "concurrentHostileActions" : [ 
         {
           "name" : "action-trail-charge",
-          "cooldown" : 4.0,
+          "cooldown" : 8.0,
           "parameters" : {
             "maximumRange" : 24,
-            "minimumRange" : 5,
-            "windupTime" : 1.4,
+            "minimumRange" : 8,
+            "windupTime" : 1.15,
             "winddownTime" : 0.5,
-            "chargeSpeed" : 55,
-            "chargeControlForce" : 450,
+            "chargeSpeed" : 45,
+            "chargeControlForce" : 1200,
             "chargeTime" : 1.5,
             "aimAtTarget" : true,
             "wallKnockback" : true,
@@ -293,64 +266,64 @@
             "scalePower" : false
 
           }
-        },        
-	{
+        },       
+        {
           "name" : "action-fire",
-          "cooldown" : 8,
+	  "cooldown" : 2,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 50,
+            "maximumRange" : 7,
             "minimumRange" : 0,
-            "windupState" : "die5",
-            "windupSound" : "aggroHop",
-            "windupTime" : 0,
-            "inaccuracy" : 1.0,
-            "projectileType" : "healingzone",
+            "windupState" : "firewindup",
+            "windupSound" : "",
+            "windupTime" : 0.5,
+            "onGround" : true,
+            "projectileType" : "firetitanswoosh",
             "projectileParameters" : {
-              "timeToLive" : 2.0
+              "damageSourceKind" : "fire",
+              "actionOnHit" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/firetitanexplosion/firetitanexplosion.config"
+		    }              
+              ],
+              "periodicActions" : [             
+		    {
+		      "time":0.01, 
+		      "action":"projectile", 
+		      "type":"hellfireprojectile", 
+		      "config":{
+		        "speed":0, 
+		        "persistentAudio":"", 
+		        "timeToLive":0.01, 
+		        "power":0.0
+		      }
+		    }            
+                ]
             },
             "power" : 12,
             "speed": 0,
-            "fireOffset" : [1.5, 0.4],
-            "aimAtTarget" : false,
+            "fireOffset" : [4.5, 0],
+            "aimAtTarget" : true,
             "projectileCount" : 1,
-            
-            "fireSound" : "pew",
-            "fireDelay" : 1.5,
-            "fireState" : "",
-            "winddownState" : "die6",
-            "winddownTime" : 1.0
+            "fireSound" : "hit",
+            "fireDelay" : 1.2,
+            "range": 50,
+            "fireState" : "fire",
+            "winddownState" : "firewinddown",
+            "winddownTime" : 1.8
           }
-        },         
+        }, 
         {
           "name" : "action-statuseffect", 
-          "cooldown" : 50,
+          "cooldown" : 5,
           "parameters" : {
             "effect" : "nofalldamage",
             "duration" : 50
           }
-        },       
-        {
-          "name" : "action-leap", 
-          "cooldown" : 3,
-          "parameters" : {
-            "minimumRange" : 2,
-            "maximumRange" : 12,
-            "maxXRange" : 20,
-            "windupTime" : 0.3,
-            "windupState" : "idle",
-
-            "leapVelocity" : 55,
-            "collisionCheck" : true,
-            "highArc" : true,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        }      
+        }           
       ],
+      
       "deathActions" : [ ]      
 
     },

@@ -1,0 +1,240 @@
+{
+  "type" : "fuallergen2",
+  "shortdescription" : "Gasser Trap",
+  "description" : "This flower is filled with toxic gas.",
+
+  "categories" : [ "fuallergen2" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fuallergen.animation",
+
+  "dropPools" : [ "huntingplant" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "facingMode" : "transformation",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "hurtWaitForGround": false,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+      "hurtTime": 0.10,
+
+      "spawnActions" : [
+        {
+          "name" : "spawn-ceiling"
+        }
+      ],
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-animate",
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "hurt",
+            "animationTime" : 2.0
+          }
+        }
+      ],
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 3,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 3,
+            "windupState" : "hurt",
+            "windupTime" : 0.4,
+
+            "projectileType" : "miasma",
+            "projectileCount" : 1,
+            "fireOffset" : [0, 0],
+            "power" : 10,
+            "projectileParameters" : {
+              "speed" : 3.25,
+              "timeToLive" : 8.0
+            },
+            "faceTarget" : false,
+            "rotationCenter": [0, 0],
+
+            "winddownState" : "idle",
+            "winddownTime" : 0.2
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-animate",
+          "cooldown" : 5,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "hurt",
+            "animationTime" : 2.0
+          }
+        }
+      ],
+
+      "approachActions" : [],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport"
+        }
+      ],
+
+      "wanderActions" : [
+      ],
+
+      "concurrentActions" : [
+        {
+          "name" : "idle-crawl",
+          "parameters" : {
+            "stopForce" : 500,
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "idle-crawl",
+          "parameters" : {
+            "stopForce" : 500,
+            "resetHeading" : false
+          }
+        }
+      ]
+    },
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 6,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 30,
+        "statusEffects" : [ "paralysis" ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.82, 2.0],  [2.0, 0.82],  [2.0, -0.82],  [0.82, -2.0],  [-0.82, -2.0],  [-2.0, -0.82],  [-2.0, 0.82],  [-0.82, 2.0] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 0,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.82, 2.0],  [2.0, 0.82],  [2.0, -0.82],  [0.82, -2.0],  [-0.82, -2.0],  [-2.0, -0.82],  [-2.0, 0.82],  [-0.82, 2.0] ],
+
+
+      "mass" : 1.0,
+      "walkSpeed" : 0,
+      "runSpeed" : 0,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 0,
+        "jumpInitialPercentage" : 0,
+        "jumpHoldTime" : 0
+      },
+      "physicsEffectCategories" : ["stationarymonster"]
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.2
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 45
+        },
+        "protection" : {
+          "baseValue" : 0.2
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.50,
+    "capturedMonsterName" : "Gasser Trap",
+    "capturedMonsterType" : "fuallergen2",
+    "nametagColor" : [64, 200, 255]
+  }
+}
