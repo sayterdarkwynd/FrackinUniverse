@@ -1,0 +1,72 @@
+{
+  "projectileName" : "fushockbolt",
+  "physics" : "arrownosticky",
+  "image" : "fushockbolt.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKind" : "electricbow",
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "timeToLive" : 10,
+  "pointLight" : true,
+  "power" : 10.0,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "speed" : 100,
+  "statusEffects" : [
+    "shocked"
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/electrical_barrier_break1.ogg", "/sfx/projectiles/electrical_barrier_break2.ogg", "/sfx/projectiles/electrical_barrier_break3.ogg", "/sfx/projectiles/electrical_barrier_break4.ogg", "/sfx/projectiles/electrical_barrier_break5.ogg", "/sfx/projectiles/electrical_barrier_break6.ogg" ]
+    },
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/teslabolt/teslabolt.animation",
+            "approach" : [50, 50],
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.425,
+            "fade" : 1,
+            "light" : [25, 92, 107],
+            "size" : 0.5,
+            "layer" : "middle",
+            "timeToLive" : 0.425,
+            "variance" : {
+              "position" : [1, 1],
+              "finalVelocity" : [1.5, 1.5],
+              "timeToLive" : 1
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [49, 166, 255, 255],
+            "fade" : 0.9,
+            "position" : [0, 0],
+            "initialVelocity" : [-2, -3.0],
+            "finalVelocity" : [-2, -3.0],
+            "approach" : [0, 20],
+            "light" : [25, 92, 107],
+            "timeToLive" : 0.8,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [1, 1],
+              "initialVelocity" : [2, 3.0],
+              "size" : 0.5
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

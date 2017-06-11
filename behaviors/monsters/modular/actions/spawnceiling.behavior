@@ -1,0 +1,78 @@
+{
+  "name": "spawn-ceiling",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/world.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/movement.lua"
+  ],
+  "parameters": {
+    "avoidLiquid": true,
+    "maxHeight": 20
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "dungeonId",
+        "type": "action",
+        "name": "dungeonId",
+        "parameters": {
+          "position": {"key": "self"}
+        },
+        "output": {
+          "dungeonId": "dungeonId"
+        }
+      },
+      {
+        "title": "selector",
+        "type": "composite",
+        "name": "selector",
+        "parameters": {},
+        "children": [
+          {
+            "title": "ceilingPosition",
+            "type": "action",
+            "name": "ceilingPosition",
+            "parameters": {
+              "avoidLiquid": {"key": "<avoidLiquid>]"},
+              "maxHeight": {"key": "<maxHeight>"},
+              "minHeight": {"value": 1},
+              "position": {"key": "self"}
+            },
+            "output": {
+              "position": "position"
+            }
+          }
+        ]
+      },
+      {
+        "title": "breakVector",
+        "type": "action",
+        "name": "breakVector",
+        "parameters": {
+          "vector": {"key": "position"}
+        },
+        "output": {
+          "x": "x",
+          "y": "y"
+        }
+      },
+      {
+        "title": "setPosition",
+        "type": "action",
+        "name": "setPosition",
+        "parameters": {
+          "footPosition": {"value": true},
+          "position": {"key": "self"},
+          "x": {"key": "x"},
+          "y": {"key": "y"}
+        }
+      }
+    ]
+  }
+}
