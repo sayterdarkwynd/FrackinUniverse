@@ -113,7 +113,7 @@ function refreshList()
 		local name = item.parameters.shortdescription or conf.config.shortdescription
 		
 		if filterText ~= "" then
-			if string.find(string.upper(name), string.upper(filterText)) == nil then
+			if string.find(string.upper(name), string.upper(string.format(filterText))) == nil then
 				filterOk = false;
 			end
 		end
