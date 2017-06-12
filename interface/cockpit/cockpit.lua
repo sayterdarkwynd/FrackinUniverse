@@ -364,14 +364,29 @@ function fuelCost()
   local cost = config.getParameter("jumpFuelCost") 
 
   -- FU needs custom math here for distance-based fuel cost
-  self.one =  celestial.currentSystem()
-  self.two =  {location = self.travel.system, planet = 0, satellite = 0} 
-  --sb.logInfo("%s",self.one) 
-  --sb.logInfo("%s",self.two)
-  --sb.logInfo("%s",distanceMath)  
-  local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
-
-  cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2.25) 
+    self.one =  celestial.currentSystem()
+    self.two =  {location = self.travel.system, planet = 0, satellite = 0} 
+    local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
+    sb.logInfo("%s",distanceMath) 
+    if (distanceMath < 25) then
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1) 
+    elseif (distanceMath > 100) then
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 3.14) 
+    elseif (distanceMath >75) then
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2.5)      
+    elseif (distanceMath >50) then
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2)
+    elseif (distanceMath >35) then
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1.45)      
+    elseif (distanceMath >25) then
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1.15)  
+    else
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2.25) 
+    end
+    
+    if cost > 3000 then
+      cost = 3000
+    end
   -- end FU fuel cost calculation
 
   return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
@@ -862,7 +877,7 @@ function systemScreenState(system, warpIn)
       return self.state:set(systemUniverseTransition, system)
     end
 
-    local zoomOut = vec2.mag(View:toSystem(View:mousePosition())) - 20 > (View.settings.viewRadius) / View.systemCamera.scale
+    local zoomOut = vec2.mag(View:toSystem(View:mousePosition())) - 150 > (View.settings.viewRadius) / View.systemCamera.scale
     if zoomOut then
       self.cursorOverride = config.getParameter("zoomOutCursor")
     end
