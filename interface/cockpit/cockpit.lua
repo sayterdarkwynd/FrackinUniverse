@@ -369,10 +369,8 @@ function fuelCost()
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
     
     self.shipUpgradeList = player.shipUpgrades()
-    self.other = player.
     self.maxFuel = self.shipUpgradeList.maxFuel
-    self.shipMass = if world.type("unknown") then 15 else 0 end
-    self.shipMass = config.getParameter("shipMass")   -- why doesnt it find this? its in the shipupgrade.config file with a default
+    self.shipMass = config.getParameter("shipMass")   
     
     -- sb.logInfo("%s",distanceMath) 
     -- sb.logInfo("%s",self.shipUpgradeList)
