@@ -371,8 +371,7 @@ function fuelCost()
   --sb.logInfo("%s",distanceMath)  
   local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
 
-
-  cost = (config.getParameter("jumpFuelCost") + distanceMath) * 2
+  cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2.25) 
   -- end FU fuel cost calculation
 
   return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
