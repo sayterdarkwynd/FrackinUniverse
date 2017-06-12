@@ -18,20 +18,20 @@
         "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
-            "property" : "maxFuel",
-            "value" : 120
+            "property" : "shipSpeed",
+            "value" : 1.25
           },               
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "aetherimmunity",
             "duration" : 300
-          },         
-          {
+          }//,         
+          //{
             // Persistent effects are active while on the ship
-            "type" : "PersistentEffect",
-            "effect" : "shipMassSmall"
-          }
+          //  "type" : "PersistentEffect",
+          //  "effect" : "shipMassSmall"
+          //}
         ],
         "type" : "chemist",
         "name" : "Cyborg",
@@ -45,7 +45,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I will interface with SAIL and increase your ships speed, and reduce its relative mass with my awesomeness."
+              "I will interface with SAIL and increase your ships speed."
             ]
           }
         },
