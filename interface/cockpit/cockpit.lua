@@ -367,7 +367,18 @@ function fuelCost()
     self.one =  celestial.currentSystem()
     self.two =  {location = self.travel.system, planet = 0, satellite = 0} 
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
-    sb.logInfo("%s",distanceMath) 
+    
+    self.shipUpgradeList = player.shipUpgrades()
+    self.other = player.
+    self.maxFuel = self.shipUpgradeList.maxFuel
+    self.shipMass = if world.type("unknown") then 15 else 0 end
+    self.shipMass = config.getParameter("shipMass")   -- why doesnt it find this? its in the shipupgrade.config file with a default
+    
+    -- sb.logInfo("%s",distanceMath) 
+    -- sb.logInfo("%s",self.shipUpgradeList)
+    sb.logInfo("%s",self.shipMass)
+    -- sb.logInfo("%s",self.maxFuel)
+    
     if (distanceMath < 25) then
       cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1) 
     elseif (distanceMath > 100) then
@@ -384,7 +395,7 @@ function fuelCost()
       cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2.25) 
     end
     
-    if cost > 3000 then
+    if (cost > 3000) then  -- we max at 3k for now
       cost = 3000
     end
   -- end FU fuel cost calculation
