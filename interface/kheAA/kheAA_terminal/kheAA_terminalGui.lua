@@ -113,7 +113,7 @@ function refreshList()
 		local name = item.parameters.shortdescription or conf.config.shortdescription
 		
 		if filterText ~= "" then
-			if string.find(string.upper(name), string.upper(filterText)) == nil then
+			if string.find(string.upper(name), string.upper(formatpattern(filterText))) == nil then
 				filterOk = false;
 			end
 		end
@@ -230,4 +230,20 @@ function absolutePath(directory, path)
 	else
 		return directory..path
 	end
+end
+
+function formatpattern(str)
+  local str = string.gsub(str,"%(","%%(")
+  local str = string.gsub(str,"%)","%%)")
+  local str = string.gsub(str,"%.","%%.")
+  local str = string.gsub(str,"%%","%%%%")
+  local str = string.gsub(str,"%+","%%+")
+  local str = string.gsub(str,"%-","%%-")
+  local str = string.gsub(str,"%*","%%*")
+  local str = string.gsub(str,"%?","%%?")
+  local str = string.gsub(str,"%[","%%[")
+  local str = string.gsub(str,"%]","%%]")
+  local str = string.gsub(str,"%^","%%^")
+  local str = string.gsub(str,"%$","%%$")
+  return str
 end

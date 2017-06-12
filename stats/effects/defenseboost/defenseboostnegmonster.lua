@@ -12,7 +12,8 @@ function init()
 	     {stat = "electricResistance", amount = config.getParameter("defenseAmount2", 0)},
 	     {stat = "radioactiveResistance", amount = config.getParameter("defenseAmount2", 0)},
 	     {stat = "shadowResistance", amount = config.getParameter("defenseAmount2", 0)},
-	     {stat = "cosmicResistance", amount = config.getParameter("defenseAmount2", 0)}
+	     {stat = "cosmicResistance", amount = config.getParameter("defenseAmount2", 0)},
+	     {stat = "healingStatusImmunity", amount = 1 }
 	   })
 	   makeAlert()	   
    end
