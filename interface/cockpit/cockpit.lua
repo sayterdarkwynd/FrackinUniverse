@@ -371,11 +371,8 @@ function fuelCost()
     self.shipUpgradeList = player.shipUpgrades()
     self.maxFuel = self.shipUpgradeList.maxFuel
     self.shipMass = config.getParameter("shipMass")   
-    
-    -- sb.logInfo("%s",distanceMath) 
-    -- sb.logInfo("%s",self.shipUpgradeList)
+    player.upgradeShip("shipMass")
     sb.logInfo("%s",self.shipMass)
-    -- sb.logInfo("%s",self.maxFuel)
     
     if (distanceMath < 25) then
       cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1) 
