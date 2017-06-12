@@ -4,7 +4,7 @@ function init()
   animator.setParticleEmitterActive("healing", true)
   
   effect.addStatModifierGroup({
-    {stat = "shipMass", amount = 0.5}
+    {stat = "shipMass", amount = config.getParameter("shipMass")  }
   })
 end
 

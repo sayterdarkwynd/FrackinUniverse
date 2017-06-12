@@ -369,9 +369,9 @@ function fuelCost()
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
     
     self.shipUpgradeList = player.shipUpgrades()
-    self.maxFuel = self.shipUpgradeList.maxFuel
-    self.shipMass = config.getParameter("shipMass")   
-    --sb.logInfo("%s",self.shipMass)
+    self.maxFuel         = self.shipUpgradeList.maxFuel
+    self.shipMass        = (world.getProperty("ship.shipLevel") or 0.0) + status.stat("shipMass")
+    sb.logInfo("%s",self.shipMass)
     
     if (distanceMath < 25) then
       cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1) 
@@ -393,8 +393,10 @@ function fuelCost()
       cost = 3000
     end
   -- end FU fuel cost calculation
-
-  return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
+  self.finalValue = cost * self.shipMass
+  sb.logInfo("%s",self.finalValue)
+  return util.round(cost - self.finalValue or 0.0)
+  --return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))     
 end
 
 
