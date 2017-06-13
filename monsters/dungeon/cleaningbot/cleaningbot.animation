@@ -16,6 +16,11 @@
             "cycle" : 0.25,
             "mode" : "loop"
           },
+          "walk" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
           "aggro" : {
             "frames" : 1
           },
@@ -37,7 +42,27 @@
             "frames" : 1
           }
         }
-      }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }      
     },
 
     "parts" : {
@@ -52,6 +77,11 @@
             "move" : {
               "properties" : {
                 "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
               }
             },
             "aggro" : {
@@ -256,6 +286,31 @@
             }
           }
         }
+      ]
+},
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
       ]
     }
   },
