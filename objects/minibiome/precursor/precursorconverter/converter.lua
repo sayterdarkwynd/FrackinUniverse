@@ -4,6 +4,9 @@ local recipes =
 --liquids
 {inputs = { solidfuel=50 }, outputs = { precursorfluid=1 }, time = 1.0},
 {inputs = { liquidfuel=50 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { toxicwaste=25 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { irradiumore=25 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { irradiumbar=10 }, outputs = { precursorfluid=1 }, time = 1.0},
 {inputs = { supermatter=50 }, outputs = { precursorfluid=2 }, time = 2.0},
 {inputs = { uraniumrod=1 }, outputs = { precursorfluid=2 }, time = 2.0},
 {inputs = { plutoniumrod=1 }, outputs = { precursorfluid=3 }, time = 3.0},
