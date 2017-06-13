@@ -49,8 +49,6 @@ function init()
   animator.setGlobalTag("flipX", "")
   self.board:setNumber("facingDirection", mcontroller.facingDirection())
 
-  capturable.init()
-
   -- Listen to damage taken
   if not config.getParameter("parent") then
     self.damageTaken = damageListener("damageTaken", function(notifications)
