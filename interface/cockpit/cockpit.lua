@@ -360,36 +360,37 @@ end
 
 -- Helpers
 
+
+-- For FU
+function shipMassFind()    
+    self.shipMass = status.stat("shipMass") /10
+end
+-- end FU functions
+
+
 function fuelCost()
   local cost = config.getParameter("jumpFuelCost") 
 
   -- FU needs custom math here for distance-based fuel cost
     self.one =  celestial.currentSystem()
     self.two =  {location = self.travel.system, planet = 0, satellite = 0} 
+    
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
-    sb.logInfo("%s",distanceMath) 
-    if (distanceMath < 25) then
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1) 
-    elseif (distanceMath > 100) then
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 3.14) 
-    elseif (distanceMath >75) then
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2.5)      
-    elseif (distanceMath >50) then
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2)
-    elseif (distanceMath >35) then
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1.45)      
-    elseif (distanceMath >25) then
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 1.15)  
+    shipMassFind()
+
+    if distanceMath < 30 then
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2 ) -- nearby systems are relatively cheap to travel to
     else
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2.25) 
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * self.shipMass) -- but long range jumps are more complicated, and mass plays a factor in efficiency
     end
     
-    if cost > 3000 then
+    if (cost > 3000) then  -- we max at 3k for now until we can be certain on how effective crew are, and so forth
       cost = 3000
-    end
+    end    
   -- end FU fuel cost calculation
-
-  return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
+  
+  
+  return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))     
 end
 
 
@@ -877,7 +878,7 @@ function systemScreenState(system, warpIn)
       return self.state:set(systemUniverseTransition, system)
     end
 
-    local zoomOut = vec2.mag(View:toSystem(View:mousePosition())) - 150 > (View.settings.viewRadius) / View.systemCamera.scale
+    local zoomOut = vec2.mag(View:toSystem(View:mousePosition())) - 50 > (View.settings.viewRadius) / View.systemCamera.scale
     if zoomOut then
       self.cursorOverride = config.getParameter("zoomOutCursor")
     end

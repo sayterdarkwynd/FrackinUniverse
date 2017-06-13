@@ -21,12 +21,11 @@
             "type" : "EphemeralEffect",
             "effect" : "fireblock2",
             "duration" : 300
-          },
-	    {
-	      "type": "ShipUpgradeBenefit",
-	      "property": "maxFuel",
-	      "value": 220
-	    }  
+          },         
+          {
+            "type" : "PersistentEffect",
+            "effect" : "shipMassMed"
+          } 
         ],
         "type" : "chemist",
         "name" : "Volcanology",
@@ -40,7 +39,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "With my special materials, your fuel capacity is much better."
+              "With my special materials, your ship will be much lighter and use less fuel."
             ]
           }
         },
