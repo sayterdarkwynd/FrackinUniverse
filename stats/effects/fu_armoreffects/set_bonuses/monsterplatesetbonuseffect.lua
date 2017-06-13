@@ -1,6 +1,9 @@
 setName="fu_monsterplateset"
 
-weaponBonus={}
+weaponBonus={
+	{stat = "critChance", amount = 5},
+	{stat = "powerMultiplier", baseMultiplier = 1.15},  
+}
 
 armorBonus={
 	{stat = "tarImmunity", amount = 1},
@@ -31,7 +34,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"mininglaser"})
+	local weapons=weaponCheck({"bow", "crossbow"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

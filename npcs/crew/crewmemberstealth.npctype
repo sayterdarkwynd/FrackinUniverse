@@ -27,12 +27,12 @@
             "type" : "EphemeralEffect",
             "effect" : "biooozeimmunity",
             "duration" : 300
-          },         
-          {
-            // Persistent effects are active while on the ship
-            "type" : "PersistentEffect",
-            "effect" : "regeneration1"
-          }
+          },
+	    {
+	      "type": "ShipUpgradeBenefit",
+	      "property": "maxFuel",
+	      "value": 160
+	    }  
         ],
         "type" : "chemist",
         "name" : "Assassin",
@@ -46,7 +46,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a boost whenever we're on the ship!"
+              "I'll toss some contraband fuel into the fuel tank."
             ]
           }
         },

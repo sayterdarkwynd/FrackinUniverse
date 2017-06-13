@@ -102,20 +102,16 @@ function buildTradingConfig()
 end
 
 -- param item
-function addTradableItem(args, output)
-  args = parseArgs(args, {
-    item = nil
-  })
+function addTradableItem(args, board)
   if args.item == nil then return false end
-  local itemDescriptor = BData:getTable(args.item)
   if not itemDescriptor then return false end
   if type(itemDescriptor) == "string" then
-    itemDescriptor = { name = itemDescriptor }
+    args.item = { name = itemDescriptor }
   end
 
   storage.extraMerchantItems = storage.extraMerchantItems or {}
   for _,item in pairs(storage.extraMerchantItems) do
-    if compare(item, itemDescriptor) then
+    if compare(item, args.item) then
       return true
     end
   end
@@ -153,9 +149,7 @@ function getCategories()
   end
 end
 
-function enableTrading(args, output)
-  args = parseArgs(args, {})
-
+function enableTrading(args, board)
   if not self.tradingConfig then
     self.tradingConfig = buildTradingConfig()
   end

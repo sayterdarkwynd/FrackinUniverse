@@ -1,6 +1,6 @@
 {
   "name": "action-windup",
-  "description": "",
+  "description": null,
   "scripts": [
     "/scripts/actions/math.lua",
     "/scripts/actions/world.lua",
@@ -22,7 +22,7 @@
     "windupState": "windup",
     "windupStopForce": 0,
     "faceTarget": true,
-    "windupTime": 0.01,
+    "windupTime": 0.1,
     "aimAtTarget": false,
     "rotateToTarget": false,
     "wallCollisionCheck": false,
@@ -37,8 +37,8 @@
     "type": "composite",
     "name": "parallel",
     "parameters": {
-      "fail": 1,
-      "success": 1
+      "fail": {"value": 1},
+      "success": {"value": 1}
     },
     "children": [
       {
@@ -46,20 +46,15 @@
         "type": "composite",
         "name": "parallel",
         "parameters": {
-          "fail": 1,
-          "success": -1
+          "fail": {"value": 1},
+          "success": {"value": -1}
         },
         "children": [
           {
             "title": "sequence",
             "type": "composite",
             "name": "sequence",
-            "parameters": {
-              "type": "sliding",
-              "state": "off",
-              "fromEntity": "attackTarget",
-              "toEntity": "fleeTarget"
-            },
+            "parameters": {},
             "children": [
               {
                 "title": "selector",
@@ -77,8 +72,8 @@
                       "type": "action",
                       "name": "greaterThan",
                       "parameters": {
-                        "first": "<maxYRange>",
-                        "second": 0
+                        "first": {"key": "<maxYRange>"},
+                        "second": {"value": 0}
                       }
                     }
                   },
@@ -87,9 +82,9 @@
                     "type": "action",
                     "name": "entityInRange",
                     "parameters": {
-                      "entity": "target",
-                      "yRange": "<maxYRange>",
-                      "position": "self"
+                      "entity": {"key": "target"},
+                      "position": {"key": "self"},
+                      "yRange": {"key": "<maxYRange>"}
                     }
                   }
                 ]
@@ -110,8 +105,8 @@
                       "type": "action",
                       "name": "greaterThan",
                       "parameters": {
-                        "first": "<maxXRange>",
-                        "second": 0
+                        "first": {"key": "<maxXRange>"},
+                        "second": {"value": 0}
                       }
                     }
                   },
@@ -120,9 +115,9 @@
                     "type": "action",
                     "name": "entityInRange",
                     "parameters": {
-                      "entity": "target",
-                      "xRange": "<maxXRange>",
-                      "position": "self"
+                      "entity": {"key": "target"},
+                      "position": {"key": "self"},
+                      "xRange": {"key": "<maxXRange>"}
                     }
                   }
                 ]
@@ -143,8 +138,8 @@
                       "type": "action",
                       "name": "greaterThan",
                       "parameters": {
-                        "first": "<maximumRange>",
-                        "second": 0
+                        "first": {"key": "<maximumRange>"},
+                        "second": {"value": 0}
                       }
                     }
                   },
@@ -153,9 +148,9 @@
                     "type": "action",
                     "name": "entityInRange",
                     "parameters": {
-                      "entity": "target",
-                      "range": "<maximumRange>",
-                      "position": "self"
+                      "entity": {"key": "target"},
+                      "position": {"key": "self"},
+                      "range": {"key": "<maximumRange>"}
                     }
                   }
                 ]
@@ -170,9 +165,9 @@
                   "type": "action",
                   "name": "entityInRange",
                   "parameters": {
-                    "entity": "target",
-                    "range": "<minimumRange>",
-                    "position": "self"
+                    "entity": {"key": "target"},
+                    "position": {"key": "self"},
+                    "range": {"key": "<minimumRange>"}
                   }
                 }
               },
@@ -187,7 +182,7 @@
                     "type": "decorator",
                     "name": "optional",
                     "parameters": {
-                      "shouldRun": "<keepInRange>"
+                      "shouldRun": {"key": "<keepInRange>"}
                     },
                     "child": {
                       "title": "success",
@@ -216,7 +211,7 @@
               "type": "decorator",
               "name": "optional",
               "parameters": {
-                "shouldRun": "<onGround>"
+                "shouldRun": {"key": "<onGround>"}
               },
               "child": {
                 "title": "inverter",
@@ -233,12 +228,7 @@
                       "title": "sequence",
                       "type": "composite",
                       "name": "sequence",
-                      "parameters": {
-                        "type": "sliding",
-                        "state": "off",
-                        "fromEntity": "attackTarget",
-                        "toEntity": "fleeTarget"
-                      },
+                      "parameters": {},
                       "children": [
                         {
                           "title": "gravityEnabled",
@@ -277,12 +267,7 @@
         "title": "sequence",
         "type": "composite",
         "name": "sequence",
-        "parameters": {
-          "type": "sliding",
-          "state": "off",
-          "fromEntity": "attackTarget",
-          "toEntity": "fleeTarget"
-        },
+        "parameters": {},
         "children": [
           {
             "title": "inverter",
@@ -294,14 +279,14 @@
               "type": "decorator",
               "name": "optional",
               "parameters": {
-                "shouldRun": "<wallCollisionCheck>"
+                "shouldRun": {"key": "<wallCollisionCheck>"}
               },
               "child": {
                 "title": "wallCollision",
                 "type": "action",
                 "name": "wallCollision",
                 "parameters": {
-                  "direction": "facingDirection"
+                  "direction": {"key": "facingDirection"}
                 }
               }
             }
@@ -316,7 +301,7 @@
               "type": "decorator",
               "name": "optional",
               "parameters": {
-                "shouldRun": "<requireLineOfSight>"
+                "shouldRun": {"key": "<requireLineOfSight>"}
               },
               "child": {
                 "title": "inverter",
@@ -328,7 +313,7 @@
                   "type": "action",
                   "name": "entityInSight",
                   "parameters": {
-                    "entity": "target"
+                    "entity": {"key": "target"}
                   }
                 }
               }
@@ -344,8 +329,8 @@
               "type": "action",
               "name": "setAnimationState",
               "parameters": {
-                "state": "<windupState>",
-                "type": "<windupStateType>"
+                "state": {"value": "<windupState>"},
+                "type": {"value": "<windupStateType>"}
               }
             }
           },
@@ -359,8 +344,8 @@
               "type": "action",
               "name": "addEphemeralEffect",
               "parameters": {
-                "name": "<windupEffect>",
-                "duration": "<windupTime>"
+                "duration": {"key": "<windupTime>"},
+                "name": {"value": "<windupEffect>"}
               }
             }
           },
@@ -369,7 +354,7 @@
             "type": "action",
             "name": "setActiveSkillName",
             "parameters": {
-              "skillName": "<skillName>"
+              "skillName": {"value": "<skillName>"}
             }
           },
           {
@@ -377,8 +362,8 @@
             "type": "composite",
             "name": "parallel",
             "parameters": {
-              "fail": 1,
-              "success": -1
+              "fail": {"value": 1},
+              "success": {"value": -1}
             },
             "children": [
               {
@@ -391,11 +376,8 @@
                   "type": "action",
                   "name": "controlApproachVelocity",
                   "parameters": {
-                    "velocity": [
-                      0,
-                      0
-                    ],
-                    "force": "<windupStopForce>"
+                    "force": {"key": "<windupStopForce>"},
+                    "velocity": {"value": [0, 0]}
                   }
                 }
               },
@@ -409,26 +391,21 @@
                   "type": "decorator",
                   "name": "optional",
                   "parameters": {
-                    "shouldRun": "<aimAtTarget>"
+                    "shouldRun": {"key": "<aimAtTarget>"}
                   },
                   "child": {
                     "title": "sequence",
                     "type": "composite",
                     "name": "sequence",
-                    "parameters": {
-                      "type": "sliding",
-                      "state": "off",
-                      "fromEntity": "attackTarget",
-                      "toEntity": "fleeTarget"
-                    },
+                    "parameters": {},
                     "children": [
                       {
                         "title": "entityDirection",
                         "type": "action",
                         "name": "entityDirection",
                         "parameters": {
-                          "entity": "self",
-                          "target": "target"
+                          "entity": {"key": "self"},
+                          "target": {"key": "target"}
                         },
                         "output": {
                           "vector": "aimVector"
@@ -444,25 +421,20 @@
                           "type": "decorator",
                           "name": "optional",
                           "parameters": {
-                            "shouldRun": "<rotateToTarget>"
+                            "shouldRun": {"key": "<rotateToTarget>"}
                           },
                           "child": {
                             "title": "sequence",
                             "type": "composite",
                             "name": "sequence",
-                            "parameters": {
-                              "type": "sliding",
-                              "state": "off",
-                              "fromEntity": "attackTarget",
-                              "toEntity": "fleeTarget"
-                            },
+                            "parameters": {},
                             "children": [
                               {
                                 "title": "vecAngle",
                                 "type": "action",
                                 "name": "vecAngle",
                                 "parameters": {
-                                  "vector": "aimVector"
+                                  "vector": {"key": "aimVector"}
                                 },
                                 "output": {
                                   "angle": "aimAngle"
@@ -473,8 +445,8 @@
                                 "type": "action",
                                 "name": "add",
                                 "parameters": {
-                                  "addend": "aimAngle",
-                                  "number": "<rotationOffset>"
+                                  "addend": {"key": "aimAngle"},
+                                  "number": {"key": "<rotationOffset>"}
                                 },
                                 "output": {
                                   "result": "aimAngle"
@@ -485,8 +457,8 @@
                                 "type": "action",
                                 "name": "rotate",
                                 "parameters": {
-                                  "angle": "aimAngle",
-                                  "rate": 0
+                                  "angle": {"key": "aimAngle"},
+                                  "rate": {"value": 0}
                                 }
                               }
                             ]
@@ -507,29 +479,21 @@
                   "type": "decorator",
                   "name": "optional",
                   "parameters": {
-                    "shouldRun": "<faceTarget>"
+                    "shouldRun": {"key": "<faceTarget>"}
                   },
                   "child": {
                     "title": "sequence",
                     "type": "composite",
                     "name": "sequence",
-                    "parameters": {
-                      "type": "sliding",
-                      "state": "off",
-                      "fromEntity": "attackTarget",
-                      "toEntity": "fleeTarget"
-                    },
+                    "parameters": {},
                     "children": [
                       {
                         "title": "vecRotate",
                         "type": "action",
                         "name": "vecRotate",
                         "parameters": {
-                          "vector": [
-                            1,
-                            0
-                          ],
-                          "angle": "heading"
+                          "angle": {"key": "heading"},
+                          "vector": {"value": [1, 0]}
                         },
                         "output": {
                           "vector": "headingDirection"
@@ -540,8 +504,8 @@
                         "type": "action",
                         "name": "faceEntity",
                         "parameters": {
-                          "entity": "target",
-                          "headingDirection": "headingDirection"
+                          "entity": {"key": "target"},
+                          "headingDirection": {"key": "headingDirection"}
                         }
                       }
                     ]
@@ -553,7 +517,7 @@
                 "type": "action",
                 "name": "timer",
                 "parameters": {
-                  "time": "<windupTime>"
+                  "time": {"value": "<windupTime>"}
                 }
               }
             ]

@@ -1,23 +1,22 @@
 {
   "name" : "tentacleasteroid",
   "friendlyName" : "Tentacle Mass",
-  "statusEffects" : [ "biomeairless", "gravmeteor", "insanity" ],
-    "mainBlock" : "tentacleblock",
-    "subBlocks" : [ "andesite", "jellyblock", "fustomachblock" ],
-    "ores" : "ff_deepsurfaceshadowOres",
-  "gravityRange" : [0,14],
+  "statusEffects" : [ "biomeairless", "insanity" ],
+  "mainBlock" : "tentacleblock",
+  "subBlocks" : [ "andesite", "jellyblock", "fustomachblock" ],
+  "ores" : "ff_deepsurfaceshadowOres",
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 1, "tentaclecrawler" ],
-          [ 1, "tentaclegnat" ],
+        "pool" : [
+          [ 0.6, "tentaclecrawler" ],
+          [ 0.6, "tentaclegnat" ],
           [ 0.5, "tentaclespawner" ],
           [ 0.6, "tentaclebomb" ],
           [ 0.6, "tentacleghost" ],
           [ 0.6, "futentaclebarrier" ],
-          [ 1, "tentacleclam" ]
+          [ 0.6, "tentacleclam" ]
         ]
       }
     ],
@@ -32,7 +31,7 @@
       }
     }
   },
-  
+
   "parallax" : "/parallax/space/asteroids.parallax",
 
   "ambientNoises" : {
@@ -54,9 +53,9 @@
   },
 
   "hueShiftOptions" : [0],
-  
-  
-  
+
+
+
   "surfacePlaceables" : {
     "grassMod" : [ "tentaclegrass" ],
     "grassModDensity" : 0.9,
@@ -85,16 +84,16 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
-            [2.0, "tentaclepopbig" ], 
-            [0.8, "tentaclepopmed" ], 
-            [0.8, "tentaclepopsmall" ], 
+            "pool" : [
+            [2.0, "tentaclepopbig" ],
+            [0.8, "tentaclepopmed" ],
+            [0.8, "tentaclepopsmall" ],
             [0.8, "tentacleegg" ],
-            [0.4, "tentaclespawner1" ] 
+            [0.4, "tentaclespawner1" ]
             ]
           }
         ]
-      },      
+      },
       {
         "mode" : "floor",
         "priority" : 1.0,
@@ -166,7 +165,7 @@
             "parameters" : { }
           }
         ]
-      },      
+      },
       {
         "mode" : "ceiling",
         "priority" : 1.0,
@@ -180,7 +179,7 @@
             "parameters" : { }
           }
         ]
-      }   
+      }
     ]
   },
 
@@ -199,16 +198,16 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
-            [2.0, "tentaclepopbig" ], 
-            [0.8, "tentaclepopmed" ], 
-            [0.8, "tentaclepopsmall" ], 
+            "pool" : [
+            [2.0, "tentaclepopbig" ],
+            [0.8, "tentaclepopmed" ],
+            [0.8, "tentaclepopsmall" ],
             [0.8, "tentacleegg" ],
-            [0.4, "tentaclespawner1" ] 
+            [0.4, "tentaclespawner1" ]
             ]
           }
         ]
-      },  
+      },
       {
         "mode" : "floor",
         "priority" : 1.0,
@@ -236,7 +235,7 @@
             "parameters" : { }
           }
         ]
-      },      
+      },
       {
         "mode" : "ceiling",
         "priority" : 1.0,
@@ -250,7 +249,7 @@
             "parameters" : { }
           }
         ]
-      },      
+      },
       {
         "mode" : "ceiling",
         "priority" : 1.0,
@@ -279,6 +278,6 @@
       }
     ]
   }
-  
-  
+
+
 }

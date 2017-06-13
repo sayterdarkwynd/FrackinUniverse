@@ -1,10 +1,7 @@
 {
   "name": "action-burroweffect",
-  "description": "",
+  "description": null,
   "scripts": [
-    "/scripts/actions/monster.lua",
-    "/scripts/actions/entity.lua",
-    "/monsters/monster.lua",
     "/scripts/actions/sensor.lua",
     "/scripts/actions/animator.lua"
   ],
@@ -17,19 +14,14 @@
     "title": "sequence",
     "type": "composite",
     "name": "sequence",
-    "parameters": {
-      "type": "sliding",
-      "state": "off",
-      "fromEntity": "attackTarget",
-      "toEntity": "fleeTarget"
-    },
+    "parameters": {},
     "children": [
       {
         "title": "pointTileCollision",
         "type": "action",
         "name": "pointTileCollision",
         "parameters": {
-          "position": "self"
+          "position": {"key": "self"}
         }
       },
       {
@@ -37,8 +29,8 @@
         "type": "composite",
         "name": "parallel",
         "parameters": {
-          "fail": -1,
-          "success": 1
+          "fail": {"value": -1},
+          "success": {"value": 1}
         },
         "children": [
           {
@@ -46,37 +38,32 @@
             "type": "action",
             "name": "emitParticles",
             "parameters": {
-              "emitter": "<behindGroundEmitter>"
+              "emitter": {"key": "<behindGroundEmitter>"}
             }
           },
           {
             "title": "sequence",
             "type": "composite",
             "name": "sequence",
-            "parameters": {
-              "type": "sliding",
-              "state": "off",
-              "fromEntity": "attackTarget",
-              "toEntity": "fleeTarget"
-            },
+            "parameters": {},
             "children": [
               {
                 "title": "burstParticleEmitter",
                 "type": "action",
                 "name": "burstParticleEmitter",
                 "parameters": {
-                  "emitter": "<enterEmitter>"
+                  "emitter": {"value": "<enterEmitter>"}
                 }
               },
-		      {
-			    "title": "setGlobalTag",
-			    "type": "action",
-			    "name": "setGlobalTag",
-			    "parameters": {
-			      "type": "groundState",
-			      "tag": "below"
-			    }
-		      },
+              {
+                "title": "setGlobalTag",
+                "type": "action",
+                "name": "setGlobalTag",
+                "parameters": {
+                  "tag": {"key": "groundState"},
+                  "type": {"value": "below"}
+                }
+              },
               {
                 "title": "dynamic",
                 "type": "composite",
@@ -92,9 +79,7 @@
                       "title": "pointTileCollision",
                       "type": "action",
                       "name": "pointTileCollision",
-                      "parameters": {
-                        "position": "self"
-                      }
+                      "parameters": {}
                     }
                   },
                   {
@@ -110,18 +95,18 @@
                 "type": "action",
                 "name": "burstParticleEmitter",
                 "parameters": {
-                  "emitter": "<enterEmitter>"
+                  "emitter": {"key": "<exitEmitter>"}
                 }
               },
-		      {
-			    "title": "setGlobalTag",
-			    "type": "action",
-			    "name": "setGlobalTag",
-			    "parameters": {
-			      "type": "groundState",
-			      "tag": "above"
-			    }
-		      }
+              {
+                "title": "setGlobalTag",
+                "type": "action",
+                "name": "setGlobalTag",
+                "parameters": {
+                  "tag": {"key": "groundState"},
+                  "type": {"value": "above"}
+                }
+              }
             ]
           }
         ]

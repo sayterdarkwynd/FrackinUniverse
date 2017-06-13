@@ -36,7 +36,7 @@
       "hostileActions" : [
         {
           "name" : "action-animate",
-          "cooldown" : 12,
+          "cooldown" : 10,
           "parameters" : {
             "stateType" : "body",
             "state" : "roar",
@@ -45,7 +45,7 @@
         },
         {
           "name" : "action-charge",
-          "cooldown" : 6.0,
+          "cooldown" : 4.0,
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup",
@@ -85,7 +85,7 @@
         },
         {
           "name" : "action-fire",
-	  "cooldown" : 3,
+	  "cooldown" : 2,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 5,
@@ -164,13 +164,13 @@
     "movementSettings" : {
 	"collisionPoly" : [ [-2, -3.4], [1.75, -3.4], [1.75, 0.0], [-2, 0.0] ],
       "mass" : 1.0,
-      "walkSpeed" : 10,
-      "runSpeed" : 14,
+      "walkSpeed" : 14,
+      "runSpeed" : 20,
       "flySpeed" : 15,
       "airForce" : 50.0,
 
       "airJumpProfile" : {
-        "jumpSpeed" : 15.0            
+        "jumpSpeed" : 21.5            
       }
     },
 
@@ -236,6 +236,7 @@
     "capturable" : true,
 
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [94, 250, 25]
+    "nametagColor" : [94, 250, 25],
+    "captureCollectables" : { "fu_monster" : "reptar" }
   }
 }

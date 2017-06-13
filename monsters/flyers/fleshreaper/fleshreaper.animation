@@ -116,7 +116,27 @@
             }
           }
         }
-      }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      } 
     },
 
     "parts" : {
@@ -175,6 +195,11 @@
             "crash" : {
               "properties" : {
                 "image" : "<partImage>:crash.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt"
               }
             },            
             "ranged" : {

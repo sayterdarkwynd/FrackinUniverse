@@ -1,0 +1,36 @@
+{
+  "projectileName" : "lunarimicro2",
+  "image" : "lunarimicro.png",
+  "physics" : "laser",
+  "animationCycle" : 2,
+  "frameNumber" : 1,
+  "renderLayer" : "Object+1",
+  "power" : 6,
+  "speed" : 5,
+  "piercing" : true,
+  "initialVelocity" : 60,
+  "fullbright" : true,
+  "timeToLive" : 3,
+  "bounces" : 2,
+  "flippable" : true,
+  "orientationLocked" : false,
+
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/blocks/footstep_mud.ogg" ]
+    }
+  ],
+
+  "actionOnReap" : [
+    {
+      "time" : 0.3,
+      "loop" : true,		    
+      "action" : "config",
+      "file" : "/projectiles/explosions/teslaboom/teslaboomsmall.config",
+      "config" : { "power" : 6 }
+    }
+  ],
+
+  "damageKind" : "electric"
+}

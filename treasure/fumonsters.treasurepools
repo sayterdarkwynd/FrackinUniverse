@@ -113,7 +113,7 @@
       "pool" : [
         {"weight" : 0.5, "pool" : "furobotTreasure"},
         {"weight" : 0.3, "pool" : "ffmetallicbossChest"},
-        {"weight" : 0.20, "item" : [ "essence", 150]},
+        {"weight" : 0.1, "pool" :  "fuEssence" },
         {"weight" : 0.1, "item" : "stickofram"},
         {"weight" : 0.1, "item" : "staticcell"},
         {"weight" : 0.1, "item" : "servitorchassis"},
@@ -146,6 +146,7 @@
       ],
       "poolRounds" : [
         [0.20, 0],
+        [0.40, 1],
         [0.80, 1]
       ],
       "allowDuplication" : false
@@ -158,7 +159,8 @@
         {"weight" : 0.2, "item" : "stickofram"},
         {"weight" : 0.2, "item" : "servitorchassis"},
         {"weight" : 0.2, "item" : "servitorlaser"},
-        {"weight" : 0.2, "item" : "servitorbehaviorchip"}
+        {"weight" : 0.2, "item" : "servitorbehaviorchip"},
+        {"weight":0.1, "pool":"salvageComponent"}
       ],
       "poolRounds" : [
         [0.6, 0],
@@ -535,10 +537,10 @@
         { "item" : "eldertome" }
         ],
         "pool" : [
+        {"weight" : 0.2, "pool" : "fuEssenceHigh" },
         {"weight" : 0.008, "pool" : "artifactloot" },
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
-          {"weight" : 0.20, "item" : [ "essence", 550]},
           {"weight" : 0.0111, "item" : [ "protorockmaterial", 5]},
           {"weight" : 0.0005, "item" : [ "densiniumore", 12]},
           {"weight" : 0.0015, "item" : [ "densiniumore", 6]},
@@ -882,7 +884,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.40, "pool" : "money"},
-          {"weight" : 0.4, "item" : [ "essence", 100]},
+          {"weight" : 0.4, "pool" : "fuEssence" },
           {"weight" : 0.60, "item" : [ "greenslime", 1]},
           {"weight" : 0.80, "item" : [ "endomorphicjelly", 2]},
           {"weight" : 0.50, "item" : [ "endomorphicjelly", 3]},
@@ -958,7 +960,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.40, "pool" : "money"},
-          {"weight" : 0.1, "item" : [ "essence", 60]},
+          {"weight" : 0.1, "pool" : "fuEssenceHigh" },
           {"weight" : 0.25, "item" : [ "greenslime", 1]},
           {"weight" : 0.25, "item" : [ "endomorphicjelly", 1]},
           {"weight" : 0.25, "item" : [ "liquidslime", 2]}
@@ -984,7 +986,7 @@
         {"weight" : 0.001, "pool" : "artifactloot" },
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
-          {"weight" : 0.2, "item" : [ "essence", 160]},
+          {"weight" : 0.2, "pool" : "fuEssence" },
           {"weight" : 0.333, "item" : [ "polymer", 5]},
           {"weight" : 0.333, "item" : [ "circuitboard", 1]},
           {"weight" : 0.333, "item" : [ "laserdiode", 1]},
@@ -1292,7 +1294,67 @@
       }
     ]
 ],
-
+"dinoLootHuge" : [
+    [1, {
+        "pool" : [
+          {"weight" : 0.40, "pool" : "money"},
+	  {"weight" : 0.25, "item" : [ "alienmeat", 30]},
+          {"weight" : 0.20, "item" : [ "reptilescales", 20]},
+          {"weight" : 0.25, "item" : [ "sharpenedclaw", 5]},
+          {"weight" : 0.15, "item" : [ "dnasample", 8]},
+          {"weight" : 0.20, "item" : [ "monsterplating", 6]},
+        {"weight" : 0.06, "item" : "manipulatormodule"},
+        {"weight" : 0.01, "pool" : "basicTreasure"}
+        ],
+        "poolRounds" : [
+          [0.23, 1],
+          [0.33, 2]
+        ],
+      "allowDuplication" : true
+      }
+    ]
+],
+"dinoLootBoss" : [
+    [1, {
+        "pool" : [
+          {"weight" : 0.40, "pool" : "money"},
+	  {"weight" : 0.25, "item" : [ "alienmeat", 30]},
+          {"weight" : 0.20, "item" : [ "reptilescales", 20]},
+          {"weight" : 0.25, "item" : [ "sharpenedclaw", 5]},
+          {"weight" : 0.15, "item" : [ "dnasample", 8]},
+          {"weight" : 0.20, "item" : [ "monsterplating", 6]},
+        {"weight" : 0.06, "item" : "manipulatormodule"},
+        {"weight" : 0.01, "pool" : "basicTreasure"},
+        {"weight" : 1.0, "item" : "rareassaultrifle"},
+        {"weight" : 1.0, "item" : "rareshotgun"},
+        {"weight" : 1.0, "item" : "raresniperrifle"},
+        {"weight" : 1.0, "item" : "rarepistol"},
+        {"weight" : 1.0, "item" : "raremachinepistol"},
+        {"weight" : 0.7, "item" : "raregrenadelauncher"},
+        {"weight" : 0.7, "item" : "rarerocketlauncher"},
+        {"weight" : 0.007, "item" : "uncommonbroadsword"},
+        {"weight" : 0.007, "item" : "uncommonaxe"},
+        {"weight" : 0.007, "item" : "uncommonspear"},
+        {"weight" : 0.007, "item" : "uncommonhammer"},
+        {"weight" : 0.007, "item" : "uncommondagger"},
+        {"weight" : 0.007, "item" : "uncommonshortsword"},
+	        {"weight" : 0.008, "item" : "randomharpoongun"},
+	        {"weight" : 0.04, "item" : [ "fuearphones-recipe", 1]},
+	        {"weight" : 0.04, "item" : [ "fuhoodedmask-recipe", 1]},
+	  {"weight" : 0.004, "item" : [ "verdantcarbine-recipe", 1]},
+	  {"weight" : 0.004, "item" : [ "verdantrailgun-recipe", 1]},
+	        {"weight" : 0.005, "item" : [ "druidstaff-recipe", 1]},
+	        {"weight" : 0.003, "item" : [ "biopistol-recipe", 1]}
+        ],
+        "poolRounds" : [
+          [0.23, 1],
+          [0.33, 2],
+          [0.33, 3]
+        ],
+      "allowDuplication" : true
+      }
+    ]
+],
 
 "bogdinoLoot" : [
     [1, {
@@ -1415,7 +1477,7 @@
           {"weight" : 0.25, "item" : [ "magmawall2", 5]},
           {"weight" : 0.25, "item" : [ "magmawall3", 5]},
           {"weight" : 0.25, "item" : [ "magmawall4", 5]},
-          {"weight" : 0.1, "item" : [ "essence", 120]},
+          {"weight" : 0.2, "pool" : "fuEssence" },
           {"weight" : 0.005, "item" : [ "hellfireshield-recipe", 1]},
           {"weight" : 0.005, "item" : [ "hellfirehelm-recipe", 1]},
           {"weight" : 0.005, "item" : [ "hellfirechest-recipe", 1]},
@@ -1447,7 +1509,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.20, "pool" : "money"},
-          {"weight" : 0.1, "item" : [ "essence", 120]},
+          {"weight" : 0.1, "pool" : "fuEssence" },
           {"weight" : 0.25, "item" : [ "bloodsandmaterial", 25]},
           {"weight" : 0.25, "item" : [ "bloodstonematerial", 25]},
           {"weight" : 0.25, "item" : [ "bloodstonewall", 25]},
@@ -1476,7 +1538,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.20, "pool" : "money"},
-          {"weight" : 0.1, "item" : [ "essence", 120]},
+          {"weight" : 0.1, "pool" : "fuEssence" },
           {"weight" : 0.25, "item" : [ "tarstonematerial", 50]},
           {"weight" : 0.25, "item" : [ "tar", 50]},
           {"weight" : 0.25, "item" : [ "liquidblacktar", 50]},
@@ -1516,7 +1578,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.50, "pool" : "money"},
-          {"weight" : 0.1, "item" : [ "essence", 120]},
+          {"weight" : 0.1, "pool" : "fuEssence" },
           {"weight" : 0.25, "item" : [ "irradiatedwall", 25]},
           {"weight" : 0.25, "item" : [ "irradiatedwall2", 25]},
           {"weight" : 0.25, "item" : [ "irradiatedwall3", 25]},
@@ -1645,7 +1707,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.33, "pool" : "money"},
-          {"weight" : 0.1, "item" : [ "essence", 90]},
+          {"weight" : 0.1, "pool" : "fuEssence" },
           {"weight" : 0.33, "item" : [ "cryonicextract", 1]},
           {"weight" : 0.33, "item" : [ "icecrystal", 1]},
           {"weight" : 0.33, "item" : [ "monsterplating", 3]},
@@ -1665,7 +1727,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.33, "pool" : "money"},
-          {"weight" : 0.1, "item" : [ "essence", 90]},
+          {"weight" : 0.1, "pool" : "fuEssence" },
           {"weight" : 0.66, "item" : [ "hardenedcarapace", 1]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
         {"weight" : 0.01, "pool" : "basicTreasure"},
@@ -1684,7 +1746,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.33, "pool" : "money"},
-          {"weight" : 0.1, "item" : [ "essence", 120]},
+          {"weight" : 0.1, "pool" : "fuEssence" },
           {"weight" : 0.66, "item" : [ "hardenedcarapace", 1]},
           {"weight" : 0.33, "item" : [ "monsterplating", 3]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
@@ -1762,7 +1824,7 @@
           { "weight" : 1.0,  "item" : ["mutagene4", 1] }
         ],
         "pool" : [
-        {"weight" : 0.3, "item" : [ "essence", 110]},
+        {"weight" : 0.1, "pool" : "fuEssenceHigh" },
         {"weight" : 0.003, "pool" : "artifactloot" },
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
@@ -1900,7 +1962,7 @@
         {"weight" : 0.001, "pool" : "artifactloot" },
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
-        {"weight" : 0.1, "item" : [ "essence", 60]},
+        {"weight" : 0.1, "pool" : "fuEssence" },
           {"weight" : 0.20, "pool" : "money"},
           {"weight" : 0.3, "item" : "medkit"},
           {"weight" : 0.003, "item" : "teleportercore"},

@@ -3,7 +3,7 @@
   "shortdescription" : "The Shoggoth",
   "description" : "Enormous, malign and unknowable.",
   "categories" : [ "shoggoth" ],
-  "parts" : [  "chest", "eyebeam", "eyeglow" ],
+  "parts" : [  "chest", "eyeglow" ],
 
   "animation" : "shoggoth.animation",
   "colors" : "/monsters/colors.config",
@@ -37,12 +37,12 @@
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.90,
         "enterPhase" : "miniShoggothSpawnAttack",
-        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
+        "skills" : [ "eyeBeamAttack","tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
       },
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.75,
-        "skills" : [ "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
+        "skills" : [ "eyeBeamAttack","fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
       },      
       {
         "trigger" : "healthPercentage",
@@ -56,6 +56,7 @@
       },
       {
         "trigger" : "healthPercentage",
+        
         "healthPercentage" : 0.60,
         "enterPhase" : "miniShoggothSpawnAttack",
         "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
@@ -118,13 +119,13 @@
     "projectileSourcePosition" : [-2.5, -1.25],
     "projectileSourceOffset" : [7, 0],
 
-    "trackTargetDistance" : 100.0,
-    "switchTargetDistance" : 200,
-      "targetQueryRange" : 100,
+    "trackTargetDistance" : 180.0,
+    "switchTargetDistance" : 180,
+      "targetQueryRange" : 180,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 200,
-      "targetOutOfSightTime" : 220.0,
+      "keepTargetInRange" : 180,
+      "targetOutOfSightTime" : 180.0,
       
       
     "knockoutTime" : 0.5,
@@ -220,11 +221,11 @@
         "poisonResistance" : { "baseValue" : 0.4 },
         "fireResistance" : { "baseValue" :0.5 },
         "iceResistance" : { "baseValue" : 0.5 },
-        "electricResistance" : { "baseValue" : 0.2 },
-        "physicalResistance" : { "baseValue" : 0.4 },
-        "shadowResistance" : { "baseValue" : 0.95 },
-        "cosmicResistance" : { "baseValue" : 0.95 },
-        "radioactiveResistance" : { "baseValue" : 0.45 }
+        "electricResistance" : { "baseValue" : 0.4 },
+        "physicalResistance" : { "baseValue" : 0.6 },
+        "shadowResistance" : { "baseValue" : 0.99 },
+        "cosmicResistance" : { "baseValue" : 0.99 },
+        "radioactiveResistance" : { "baseValue" : 0.65 }
       },
       
       "resources" : {
@@ -237,7 +238,7 @@
     },
 
     "mouthOffset" : [1.0, -1.5],
-    "feetOffset" : [0, -21],
+    "feetOffset" : [0, -8],
     
     
     

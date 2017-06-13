@@ -1,0 +1,219 @@
+{
+  "metadata" : {
+    "name" : "hylotloceancityaether",
+    "species" : "hylotl",
+    "rules" : [
+    ],
+    "anchor" : [ "citylayout1_aether", "citylayout2_aether" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 50,
+    "protected" : true
+  },
+
+  "parts" : [
+
+    // BASE LAYOUTS
+    {
+      "name" : "citylayout1_aether",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "citylayout1_aether", "citylayout2_aether" ] ]
+      ],
+      "def" : [ "tmx", "citylayout1_aether.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "citylayout2_aether",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "citylayout1_aether", "citylayout2_aether" ] ]
+      ],
+      "def" : [ "tmx", "citylayout2_aether.json" ],
+      "chance" : 0
+    },
+
+    // BOTTOM FLOOR PIECES
+    {
+      "name" : "hylotlground1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "hylotlground1.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlground2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "hylotlground2.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlground3",
+      "rules" : [
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "hylotlground3.json" ],
+      "chance" : 1
+    },
+
+    // MIDDLE PIECES
+    {
+      "name" : "hylotlbedrooms2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "hylotlbedrooms2.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlrestaurant1",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlrestaurant1", "hylotlrestaurant1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlrestaurant1.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlrestaurant1clue",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotllibrary1clue", "hylotlrestaurant1", "hylotlrestaurant1clue", "hylotlroofgallery1clue", "hylotlroofgarden1clue", "hylotltoproof1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlrestaurant1clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotllibrary1",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotllibrary1", "hylotllibrary1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotllibrary1.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotllibrary1clue",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotllibrary1", "hylotllibrary1clue", "hylotlrestaurant1clue", "hylotlroofgallery1clue", "hylotlroofgarden1clue", "hylotltoproof1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotllibrary1clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlverticalwindows",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlverticalwindows" ] ]
+      ],
+      "def" : [ "tmx", "hylotlverticalwindows.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlvertical1",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlvertical1" ] ]
+      ],
+      "def" : [ "tmx", "hylotlvertical1.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlvertical2",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlvertical2" ] ]
+      ],
+      "def" : [ "tmx", "hylotlvertical2.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlvertical3",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlvertical3" ] ]
+      ],
+      "def" : [ "tmx", "hylotlvertical3.json" ],
+      "chance" : 0.1
+    },
+
+    // ROOF PIECES
+    {
+      "name" : "hylotlroofgallery1",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlroofgallery1", "hylotlroofgallery1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlroofgallery1.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlroofgallery1clue",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotllibrary1clue", "hylotlrestaurant1clue", "hylotlroofgallery1", "hylotlroofgallery1clue", "hylotlroofgarden1clue", "hylotltoproof1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlroofgallery1clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlroofgarden1",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlroofgarden1", "hylotlroofgarden1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlroofgarden1.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlroofgarden1clue",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotllibrary1clue", "hylotlrestaurant1clue", "hylotlroofgallery1clue", "hylotlroofgarden1", "hylotlroofgarden1clue", "hylotltoproof1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlroofgarden1clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlroofgarden2",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlroofgarden2" ] ]
+      ],
+      "def" : [ "tmx", "hylotlroofgarden2.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlroofgraveyard1",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlroofgraveyard1" ] ]
+      ],
+      "def" : [ "tmx", "hylotlroofgraveyard1.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotlroofdojo1",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlroofdojo1" ] ]
+      ],
+      "def" : [ "tmx", "hylotlroofdojo1.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotltoproof1",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotltoproof1", "hylotltoproof1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotltoproof1.json" ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "hylotltoproof1clue",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotllibrary1clue", "hylotlrestaurant1clue", "hylotlroofgallery1clue", "hylotlroofgarden1clue", "hylotltoproof1", "hylotltoproof1clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotltoproof1clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlroofgenerator",
+      "rules" : [
+        [ "doNotCombineWith", [ "hylotlroofgenerator" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "hylotlroofgenerator.json" ],
+      "chance" : 1
+    }
+  ]
+}

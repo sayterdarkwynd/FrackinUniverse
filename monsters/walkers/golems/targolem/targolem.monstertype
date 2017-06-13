@@ -36,7 +36,7 @@
           "parameters" : {
             "stateType" : "body",
             "state" : "windup",
-            "animationTime" : 1.0
+            "animationTime" : 0.6
           }
         }      
       ],
@@ -50,7 +50,7 @@
           "parameters" : {
             "stateType" : "body",
             "state" : "winddown",
-            "animationTime" : 1.0
+            "animationTime" : 0.6
           }
         },        
         {
@@ -59,7 +59,7 @@
           "parameters" : {
             "minimumRange" : 10,
             "maximumRange" : 20,
-            "windupTime" : 0.5,
+            "windupTime" : 0.6,
             "windupState" : "windup",
 
             "leapVelocity" : 45,
@@ -67,8 +67,7 @@
             "highArc" : true,
             "leapState" : "jump",
             "fallState" : "fall",
-            "range" : 20,
-            "winddownTime" : 0.5,
+            "winddownTime" : 0.6,
             "winddownState" : "winddown"
           }
         },         
@@ -77,10 +76,10 @@
 	  "cooldown" : 6,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
+            "maximumRange" : 25,
             "minimumRange" : 3,
-            "windupState" : "fire",
-            "windupTime" : 0.5,
+            "windupState" : "throw",
+            "windupTime" : 0.3,
 
             "projectileType" : "futarball2",
             "power" : 11,
@@ -88,10 +87,9 @@
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "fireSound" : "fire",
-            "range": 15,
             "fireState" : "",
-            "winddownState" : "windup",
-            "winddownTime" : 0.5
+            "winddownState" : "",
+            "winddownTime" : 1.8
           }
         },        
         {
@@ -102,7 +100,7 @@
             "maximumRange" : 9,
             "minimumRange" : 2,
             "windupState" : "windupreverse",
-            "windupTime" : 0.5,
+            "windupTime" : 0.6,
             
             "power" : 7,
             "fireOffset" : [2, 0.2],
@@ -111,37 +109,35 @@
             "projectileCount" : 6,
             "projectileInterval" : 0.01,            
             "fireSound" : "fire",
-            "range": 9,
             "fireState" : "throw",
-            
+            "fireDelay" : 0.2,
             "winddownState" : "windup",
-            "winddownTime" : 0.2
+            "winddownTime" : 0.6
           }
-        },        
+        },  
+        
         {
           "name" : "action-fire",
-	  "cooldown" : 11,
+	  "cooldown" : 6,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 0,
-            "windupState" : "windupreverse",
-            "windupTime" : 0.7,
+            "maximumRange" : 25,
+            "minimumRange" : 3,
+            "windupState" : "fire",
+            "windupTime" : 0.4,
 
             "projectileType" : "shadowcrabballweak",
-            "power" : 9,
-            "fireOffset" : [2, 0.5],
+            "power" : 11,
+            "fireOffset" : [3, 0],
             "aimAtTarget" : true,
-            "projectileCount" : 4,
-            "projectileInterval" : 0.13,
+            "projectileCount" : 1,
             "fireSound" : "fire",
-            "range": 15,
-            "fireState" : "throw",
-            
+            "fireState" : "",
+            "fireDelay" : 0.15,
             "winddownState" : "hurt",
-            "winddownTime" : 1
+            "winddownTime" : 0.6
           }
-        }      
+        }    
       ],
 
       "periodicActions" : [],
@@ -203,6 +199,22 @@
       ],
 
       "concurrentActions" : [ ],
+      "concurrentHostileActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 0.08,
+         "parameters" : {
+          "projectileType" : "fuhgravityexplosion",
+          "aimDirection" : [0,0],
+          "aimAtTarget" : true,
+	    "power":0.0,
+	    "speed" : 0,
+	    "damageType" : "NoDamage",
+	    "inaccuracy":0.0, 
+	    "fireOffset":[0,0]          
+         }
+        }       
+      ],
       
       "deathActions" : [
         {
@@ -303,7 +315,28 @@
         },        
         "powerMultiplier" : {
           "baseValue" : 1.45
-        }
+        },
+        "fireResistance" : {
+          "baseValue" : -0.55
+        },
+        "iceResistance" : {
+          "baseValue" : 0.9
+        }, 
+        "electricResistance" : {
+          "baseValue" : 0.75
+        }, 
+        "physicalResistance" : {
+          "baseValue" : 0.95
+        },  
+        "cosmicResistance" : {
+          "baseValue" : 0.25
+        },  
+        "shadowResistance" : {
+          "baseValue" : 0.25
+        }, 
+        "radioactiveResistance" : {
+          "baseValue" : 0.77
+        }        
       },
 
       "resources" : {
@@ -325,6 +358,7 @@
     "captureHealthFraction" : 0.24,
     "capturedMonsterName" : "Tar Golem",
     "capturedMonsterType" : "targolem", // turn into an adultpoptop when captured
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "targolem" }
   }
 }

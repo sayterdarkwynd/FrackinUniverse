@@ -8,7 +8,7 @@
 
   "animation" : "nanoswarm.animation",
 
-  "dropPools" : [ { "default" : "servitorTreasure", "bow" : "servitorHunting" } ],
+  "dropPools" : [ { "default" : "servitorTreasure", "bow" : "huntingmechanicalLarge" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -21,11 +21,11 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 50,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.0,
+      "keepTargetInRange" : 60,
+      "targetOutOfSightTime" : 10.0,
 
       "hurtWaitForGround" : false,
 
@@ -171,13 +171,13 @@
       "collisionPoly" : [ [0.625, 1], [1, 0.625], [1, -0.625], [0.625, -1], [-0.625, -1], [-1, -0.625], [-1, 0.625], [-0.625, 1] ],
 
       "mass" : 0.5,
-      "walkSpeed" : 4,
-      "runSpeed" : 12,
+      "walkSpeed" : 6,
+      "runSpeed" : 20,
       "gravityEnabled" : false,
 
       "airFriction" : 4,
       "airForce" : 50,
-      "flySpeed" : 15
+      "flySpeed" : 20
     },
 
     "bodyMaterialKind" : "robotic",
@@ -247,6 +247,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "nanoswarm" }
   }
 }

@@ -3,116 +3,82 @@
   "description": "",
   "scripts": [
     "/scripts/actions/animator.lua",
-    "/scripts/actions/time.lua",
-    "/scripts/behavior.lua",
     "/scripts/actions/position.lua",
-    "/scripts/actions/projectiles.lua",
-    "/scripts/actions/math.lua",
-    "/scripts/actions/world.lua",
     "/scripts/actions/movement.lua"
   ],
   "parameters": {
-  "rotateAim" : true,
-  "headOffset" : [0,0],
-  "lockBody" : true
+    "rotateAim": true,
+    "headOffset": [0, 0],
+    "lockBody": true
   },
   "root": {
-    "title": "sequence",
-    "type": "composite",
-    "name": "sequence",
-    "parameters": {
-      "type": "sliding",
-      "state": "off",
-      "fromEntity": "attackTarget",
-      "toEntity": "fleeTarget"
-    },
-    "children": [
-      {
-        "title": "succeeder",
-        "type": "decorator",
-        "name": "succeeder",
-        "parameters": {},
-        "child": {
-          "title": "optional",
-          "type": "decorator",
-          "name": "optional",
-          "parameters": {
-            "shouldRun": "<rotateAim>"
-          },
-          "child": {
-            "title": "parallel",
-            "type": "composite",
-            "name": "parallel",
-            "parameters": {
-              "fail": 1,
-              "success": -1
-            },
-            "children": [
-              {
-                "title": "sequence",
-                "type": "composite",
-                "name": "sequence",
-                "parameters": {
-                  "type": "sliding",
-                  "state": "off",
-                  "fromEntity": "attackTarget",
-                  "toEntity": "fleeTarget"
-                },
-                "children": [
-                  {
-                    "title": "resetTransformationGroup",
-                    "type": "action",
-                    "name": "resetTransformationGroup",
-                    "parameters": {
-                      "transformationGroup": "aim"
-                    }
-                  },
-                  {
-                    "title": "offsetPosition",
-                    "type": "action",
-                    "name": "offsetPosition",
-                    "parameters": {
-                      "offset": "<headOffset>",
-                      "position": "self"
-                    },
-                    "output": {
-                      "position": "offsetPosition"
-                    }
-                  },
-                  {
-                    "title": "entityAngle",
-                    "type": "action",
-                    "name": "entityAngle",
-                    "parameters": {
-                      "entity": "target",
-                      "facingDirection": "facingDirection",
-                      "heading": "heading",
-                      "position": "offsetPosition"
-                    },
-                    "output": {
-                      "angle": "entityAngle"
-                    }
-                  }
-                ]
-              },
-              {
-                "title": "transform",
-                "type": "action",
-                "name": "transform",
-                "parameters": {
-                  "group": "aim",
-                  "rotation": "entityAngle",
-                  "rotationCenter": [0,0],
-                  "translation": "<headOffset>"
-                }
+    "title": "succeeder",
+    "type": "decorator",
+    "name": "succeeder",
+    "parameters": {},
+    "child": {
+      "title": "parallel",
+      "type": "composite",
+      "name": "parallel",
+      "parameters": {
+        "fail": {"value": 1},
+        "success": {"value": -1}
+      },
+      "children": [
+        {
+          "title": "sequence",
+          "type": "composite",
+          "name": "sequence",
+          "parameters": {},
+          "children": [
+            {
+              "title": "resetTransformationGroup",
+              "type": "action",
+              "name": "resetTransformationGroup",
+              "parameters": {
+                "transformationGroup": {"key": "aim"}
               }
-            ]
+            },
+            {
+              "title": "offsetPosition",
+              "type": "action",
+              "name": "offsetPosition",
+              "parameters": {
+                "offset": {"value": "<headOffset>"},
+                "position": {"key": "self"}
+              },
+              "output": {
+                "position": "offsetPosition"
+              }
+            },
+            {
+              "title": "entityAngle",
+              "type": "action",
+              "name": "entityAngle",
+              "parameters": {
+                "entity": {"value": "target"},
+                "heading": {"value": "heading"},
+                "position": {"key": "offsetPosition"}
+              },
+              "output": {
+                "angle": "entityangle",
+                "direction": "facingDirection"
+              }
+            }
+          ]
+        },
+        {
+          "title": "transform",
+          "type": "action",
+          "name": "transform",
+          "parameters": {
+            "group": {"key": "aim"},
+            "rotation": {"key": "entityAngle"},
+            "rotationCenter": {"value": [0, 0]},
+            "translation": {"key": "<headOffset>"}
           }
         }
-      }
-
-    ]
+      ]
+    }
   }
 }
-
-

@@ -8,7 +8,7 @@
   "tooltipKind" : "gun",
   "category" : "swtjc_ewg_revolver",
   "twoHanded" : false,
-  "itemTags" : ["weapon","ranged","pistol"],
+  "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon"],
   "level" : 1,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -25,14 +25,14 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [1.0, 2.5],
-    "baseDps" : [6.5, 7.5],
+    "fireTime" : [0.7, 2.0],
+    "baseDps" : [5.25, 5.75],
     "energyUsage" : [19.5, 22.5],
-    "inaccuracy" : 0.02,
+    "inaccuracy" : 0.026,
 
     "projectileType" : "standardbullet",
     "projectileParameters" : {
-      "knockbackRange" : [10,20]
+      "knockbackRange" : [6,11]
     },
 
     "stances" : {

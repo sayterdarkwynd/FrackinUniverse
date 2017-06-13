@@ -1,0 +1,33 @@
+{
+  "projectileName" : "lunarishotinitiatemech",
+  "image" : "lunarishot.png",
+  "animationCycle" : 0.25,
+  "physics" : "lunari",
+  "frameNumber" : 2,
+  "lightColor" : [155, 147, 27],
+  "animationLoops" : true,
+  "speed" : 50,
+  "timeToLive" : 0,
+   "fullbright" : true,
+  "power" : 1.0,
+  "damagePoly" : [ [-2, 2], [-2, -2], [2, -2], [2, 2] ],
+  "supportsProcessing" : true,
+  "damageKind" : "electricplasma",
+  "emitters" : [ "lunariyellow" ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "lunarishotwobble",
+      "inheritDamageFactor" : 1,
+      "fuzzAngle" : 9,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "lunarishotwobble",
+      "inheritDamageFactor" : 1,
+      "fuzzAngle" : -9,
+      "angleAdjust" : 0
+    }    
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "itemName" : "furepairgun",
+  "price" : 160,
+  "inventoryIcon" : "repairgun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Repairs damaged mecha.",
+    "shortdescription" : "Mech Repair Tool",
+  "category" : "Tool",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "repairgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/objects/crystaltrap_off.ogg", "/sfx/objects/crystaltrap_on.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.78, -0.12],
+  "muzzleOffset" : [1.6, 0.525],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.05,
+    "baseDps" : 1,
+    "energyUsage" : 44,
+    "inaccuracy" : 0.032,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "mechenergypickup",
+    "projectileParameters" : { 
+      "speed" : 5,
+      "knockback" : 2,
+      "timeToLive" : 0.01,
+      "power" : 2.5
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.0,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 4,
+  "critBonus" : 4,
+
+  "altAbilityType" : "flashlight",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

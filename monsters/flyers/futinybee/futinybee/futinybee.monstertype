@@ -1,0 +1,242 @@
+{
+  "type" : "futinybee",
+  "shortdescription" : "Bee",
+  "description" : "Don't touch the pointy end.",
+
+  "categories" : [ "futinybee" ],
+  "parts" : [ "body" ],
+
+  "animation" : "futinybee.animation",
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bugnet" : "normalqueen"
+    }  
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-aggrohop",
+          "parameters" : {
+            "aggroHopSpeed" : 0.0,
+            "aggroHopWait" : 0.0,
+            "onGround" : false
+          }
+        }
+      ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ 
+        {
+          "name" : "action-swoop", 
+          "cooldown" : 1.0,
+          "parameters" : {
+            "minimumRange" : 3,
+            "maximumRange" : 10,
+            "onGround" : false,
+            "windupTime" : 0.6,
+
+            "gravityMultiplier" : -0.5,
+            "swoopVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopTime" : 0.5,
+
+            "winddownTime" : 0.5,
+            "winddownState" : "fly",
+            "winddownStopForce" : 20
+          }
+        }      
+      
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "approachTime" : 4.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 15,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "approachTime" : 4.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 15,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "land-fly",
+          "cooldown" : 15,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [2,4],
+            "landState" : "idle"
+          }
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [2,4],
+            "groundDistance" : 4,
+            "ceilingDistance" : 2,
+            "xVelocity" : 4,
+            "yVelocity" : 4
+          }
+        }
+      ],
+
+      "deathActions" : [],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
+      "damage" : 1,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ "fubeesting2" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 0.45,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 4,
+      "airForce" : 40,
+      "flySpeed" : 12
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 1
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 1,
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "futinybee" }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "objectName" : "extraenergycanister",
+  "colonyTags" : ["storage","industrial"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 55,
+  "description" : "A canister full of energy, perfect for resupplying mechs. Break it apart to get at what's inside!",
+  "shortdescription" : "Mech Energy Canister",
+  "race" : "generic",
+  "breakDropOptions" : [],
+
+  "apexDescription" : "Miniknog agents often carry these to refuel their mechs in the field.",
+  "avianDescription" : "A useful battery for quick mech recharging.",
+  "floranDescription" : "Iss to mechss what meatss iss to Floranss.",
+  "glitchDescription" : "Enthused. A mech could utilise the energy in this canister.",
+  "humanDescription" : "These are handy for when you can't get your mech to a proper refuelling stop.",
+  "hylotlDescription" : "The aesthetics of this energy container are wanting, but one supposes it is functional enough.",
+  "novakidDescription" : "These lil' tykes are useful when you're on the long trail.",
+
+  "inventoryIcon" : "pixeldispensericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "extraenergycanister.png:<color>",
+      "imagePosition" : [-12, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "smashable" : true,
+  "smashOnBreak" : false,
+  "smashSounds" : [ "/sfx/objects/metalbarrel_break1.ogg", "/sfx/objects/metalbarrel_break2.ogg", "/sfx/objects/metalbarrel_break3.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "generatorshard" } ],
+  "smashDropPool" : "empty",
+  
+  "scripts" : [
+    "/objects/scripts/explodingsmashable.lua"
+  ],
+  "explosionProjectile" : "extramechenergyprojectile",
+  "explosionOffset" : [1, 3]
+}

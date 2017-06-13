@@ -6,8 +6,6 @@ end
 
 
 function update(dt)
-sb.logInfo(heldItem)
-sb.logInfo(heldItem2)
     if heldItem or heldItem2  then
       if root.itemHasTag(heldItem, "dagger") or root.itemHasTag(heldItem, "shortsword") or root.itemHasTag(heldItem, "pistol") then
 	  setBonusInit("fu_swashbucklerset", {

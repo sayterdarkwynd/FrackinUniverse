@@ -27,12 +27,12 @@
             "type" : "EphemeralEffect",
             "effect" : "poisonblock2",
             "duration" : 300
-          },         
-          {
-            // Persistent effects are active while on the ship
-            "type" : "PersistentEffect",
-            "effect" : "regeneration1"
-          }
+          },
+	    {
+	      "type": "ShipUpgradeBenefit",
+	      "property": "maxFuel",
+	      "value": 150
+	    }          
         ],
         "type" : "soldier",
         "name" : "Cultist",
@@ -46,7 +46,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a boost whenever we're on the ship!"
+              "I'll pray to my dark lord, and fuel your ship with his rage!"
             ]
           }
         },

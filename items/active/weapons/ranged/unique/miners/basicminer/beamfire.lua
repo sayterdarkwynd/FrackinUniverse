@@ -5,6 +5,7 @@ require "/scripts/util.lua"
 BeamFire = WeaponAbility:new()
 
 function BeamFire:init()
+
   self.damageConfig.baseDamage = self.baseDps * self.fireTime
 
   self.weapon:setStance(self.stances.idle)
@@ -19,6 +20,7 @@ function BeamFire:init()
     animator.stopAllSounds("fireLoop")
     self.weapon:setStance(self.stances.idle)
   end
+ -- sb.logInfo("%s",self.damageConfig)
 end
 
 function BeamFire:update(dt, fireMode, shiftHeld)

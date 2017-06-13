@@ -8,7 +8,7 @@
   "tooltipKind" : "gun",
   "category" : "swtjc_ewg_beamRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","sniperrifle", "energy"],
+  "itemTags" : ["weapon","ranged","sniperrifle","energy","upgradeableWeapon"],
   "level" : 1,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -26,16 +26,17 @@
     "class" : "GunFire",
 
     "fireTime" : [0.02, 0.1],
-    "baseDps" : [9.5, 10.5],
+    "baseDps" : [9.5, 11.5],
     "energyUsage" : [28.5, 31.5],
     "inaccuracy" : 0.0,
 
-    "burstTime" : [0.0025, 0.005],
-    "burstCount" : [10, 20],
+    "burstTime" : [0.002, 0.005],
+    "burstCount" : [8, 18],
     "fireType" : "burst",
 
     "projectileParameters" : {
-      "knockbackRange" : [0.1,0.2]
+      "knockbackRange" : [0.1,0.2],
+      "fullbright" : true
     },
 
     "stances" : {

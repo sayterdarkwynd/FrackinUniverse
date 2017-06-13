@@ -1,6 +1,6 @@
 {
-  "name": "action-getbouncy",
-  "description": "",
+  "name": "action-get-bouncy",
+  "description": null,
   "scripts": [
     "/scripts/actions/status.lua"
   ],
@@ -11,26 +11,38 @@
     "title": "sequence",
     "type": "composite",
     "name": "sequence",
-    "parameters": {
-      "type": "sliding",
-      "state": "off",
-      "fromEntity": "attackTarget",
-      "toEntity": "fleeTarget"
-    },
+    "parameters": {},
     "children": [
       {
         "title": "action-windup",
         "type": "module",
         "name": "action-windup",
-        "parameters": {}
+        "parameters": {
+          "onGround": {"value": true},
+          "maxXRange": {"value": 0},
+          "maxYRange": {"value": 0},
+          "maximumRange": {"value": 10},
+          "minimumRange": {"value": 0},
+          "requireLineOfSight": {"value": true},
+          "windupState": {"value": "windup"},
+          "windupStopForce": {"value": 0},
+          "faceTarget": {"value": true},
+          "windupTime": {"value": 0.25},
+          "aimAtTarget": {"value": false},
+          "rotateToTarget": {"value": false},
+          "wallCollisionCheck": {"value": false},
+          "keepInRange": {"value": false},
+          "windupStateType": {"value": "body"},
+          "rotationOffset": {"value": 0}
+        }
       },
       {
         "title": "addEphemeralEffect",
         "type": "action",
         "name": "addEphemeralEffect",
         "parameters": {
-          "name": "bouncy",
-          "duration": 60
+          "duration": {"value": 60},
+          "name": {"value": "bouncy"}
         }
       }
     ]

@@ -1,0 +1,34 @@
+{
+  "objectName" : "deeponegame",
+  "colonyTags" : ["wtf","elder","ewfuckthat"],
+  "rarity" : "Legendary",
+  "category" : "decorative",
+  "price" : 210,
+  "printable" : false,
+
+  "description" : "An arcade machine with an interactive narrative game.",
+  "shortdescription" : "Humped By a Deep One",
+  "race" : "generic",
+
+  "inventoryIcon" : "beautifulattempticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "beautifulattempt.png:<color>.<frame>",
+      "imagePosition" : [-12, 0],
+      "frames" : 2,
+      "animationCycle" : 0.4,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : ["/interface/scripted/sbvn/sbvnobject.lua"],
+  "scriptDelta" : 0,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : {
+    "baseConfig" : "/interface/scripted/sbvn/sbvngui.config",
+    "gameFile" : "/interface/scripted/sbvn/games/cthululove/deepone.sbvn"
+  }
+}

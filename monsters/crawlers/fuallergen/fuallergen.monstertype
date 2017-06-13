@@ -1,7 +1,7 @@
 {
   "type" : "fuallergen",
   "shortdescription" : "Snarker Trap",
-  "description" : "Capable of spewing a lethal toxic pollen.",
+  "description" : "Capable of spewing lethal toxic pollen.",
 
   "categories" : [ "fuallergen" ],
   "parts" : [ "body" ],
@@ -17,8 +17,12 @@
 
     "behavior" : "monster",
 
+    "facingMode" : "transformation",
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
+
+      "hurtWaitForGround": false,
 
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
@@ -26,49 +30,52 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
       "hurtTime": 0.10,
-      "hurtWaitForGround": false,
-      "hurtWaitForGroundTime": 0.1,
+
+      "spawnActions" : [
+        {
+          "name" : "spawn-ceiling"
+        }
+      ],
 
       "foundTargetActions" : [
         {
           "name" : "action-animate",
-          "cooldown" : 5,
           "parameters" : {
             "stateType" : "body",
             "state" : "hurt",
             "animationTime" : 2.0
           }
-        }      
+        }
       ],
       "fleeActions" : [ ],
 
-      "hostileActions" : [       
+      "hostileActions" : [
         {
           "name" : "action-fire",
-	  "cooldown" : 3,
+          "cooldown" : 3,
           "parameters" : {
-            "requireLineOfSight" : false,
-            "maximumRange" : 8,
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
             "minimumRange" : 3,
             "windupState" : "hurt",
             "windupTime" : 0.4,
 
             "projectileType" : "pollenburst",
+            "projectileCount" : 1,
+            "fireOffset" : [0, 0],
             "power" : 10,
             "projectileParameters" : {
               "speed" : 7.5,
               "timeToLive" : 8.0
             },
-            "fireOffset" : [0, 0],
-            "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "fireSound" : "fire",
-            "range": 6,
-            "fireState" : "fire",
+
+            "faceTarget" : false,
+            "rotationCenter": [0, 0],
+
             "winddownState" : "idle",
             "winddownTime" : 0.2
           }
-        }       
+        }
       ],
 
       "periodicActions" : [
@@ -80,32 +87,40 @@
             "state" : "hurt",
             "animationTime" : 2.0
           }
-        }       
+        }
       ],
 
       "approachActions" : [],
 
       "followActions" : [
         {
-          "name" : "approach-teleport",
+          "name" : "approach-teleport"
+        }
+      ],
+
+      "wanderActions" : [
+      ],
+
+      "concurrentActions" : [
+        {
+          "name" : "idle-crawl",
           "parameters" : {
+            "stopForce" : 500,
+            "resetHeading" : false
           }
         }
       ],
 
-      "wanderActions" : [ 
+      "concurrentHostileActions" : [
         {
-          "name" : "wander-walk",
+          "name" : "idle-crawl",
           "parameters" : {
-            "wanderTime" : [5, 15]
+            "stopForce" : 500,
+            "resetHeading" : false
           }
-        }      
-      ],
-
-      "concurrentActions" : [ ]     
-      
+        }
+      ]
     },
-
 
     "damageParts" : {
       "body" : {
@@ -119,7 +134,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-2.0, -2.5], [2.0, -2.5], [0.5, 1.0], [-0.5, 1.0] ],
+      "poly" : [ [0.82, 2.0],  [2.0, 0.82],  [2.0, -0.82],  [0.82, -2.0],  [-0.82, -2.0],  [-2.0, -0.82],  [-2.0, 0.82],  [-0.82, 2.0] ],
       "damage" : 8,
 
       "teamType" : "enemy",
@@ -132,7 +147,8 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-2.0, -2.5], [2.0, -2.5], [0.5, 1.0], [-0.5, 1.0] ],
+      "collisionPoly" : [ [0.82, 2.0],  [2.0, 0.82],  [2.0, -0.82],  [0.82, -2.0],  [-0.82, -2.0],  [-2.0, -0.82],  [-2.0, 0.82],  [-0.82, 2.0] ],
+
 
       "mass" : 1.0,
       "walkSpeed" : 0,
@@ -144,7 +160,8 @@
         "jumpSpeed" : 0,
         "jumpInitialPercentage" : 0,
         "jumpHoldTime" : 0
-      }
+      },
+      "physicsEffectCategories" : ["stationarymonster"]
     },
 
     "bodyMaterialKind" : "organic",
@@ -182,13 +199,19 @@
         },
         "protection" : {
           "baseValue" : 0.2
-        },   
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
-        }, 
+        },
         "grit" : {
           "baseValue" : 1.0
-        },        
+        },
         "powerMultiplier" : {
           "baseValue" : 1.0
         }
@@ -213,6 +236,7 @@
     "captureHealthFraction" : 0.50,
     "capturedMonsterName" : "Snarker Trap",
     "capturedMonsterType" : "fuallergen", // turn into an adultpoptop when captured
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "fuallergen" }
   }
 }

@@ -15,7 +15,7 @@ function init()
    {stat = "electricStatusImmunity", amount = 1},
    {stat = "pressureProtection", amount = 1},
    {stat = "gasImmunity", amount = 1},
-   {stat = "gasImmunity", amount = 1},
+   {stat = "poisonStatusImmunity", amount = 1},
    {stat = "extremepressureProtection", amount = 1}})
 end
 

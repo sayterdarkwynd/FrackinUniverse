@@ -1,0 +1,349 @@
+{
+  "metadata" : {
+    "name" : "wreckunderwateraether",
+    "species" : "dummy",
+    "rules" : [
+    ],
+    "maxRadius" : 10000,
+    "anchor" : [ "entrance" ],
+    "maxParts" : 12,
+    "extendSurfaceFreeSpace" : 100
+  },
+  "tiles" : [
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    { //disabled
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    { //disabled
+      "value" : [120, 120, 120, 255]
+//      "rules" : [ [ "worldGenMustContainAirForeground" ], [ "allowOverdrawing" ] ]
+    },
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, entrance coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [127, 38, 255, 255],
+      "comment" : "upwards entrance coupler, connecto the the bright blue coupler",
+      "connector" : true,
+      "connector-value" : [0, 38, 255, 255],
+      "direction" : "up"
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [68, 62, 59, 255],
+      "comment" : "background rustymetal",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [130, 130, 130, 255],
+      "comment" : "background smoothmetal",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "smoothmetal" ] ]
+    },
+
+    {
+      "value" : [111, 98, 90, 255],
+      "comment" : "foreground rustymetal",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "front", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [171, 171, 171, 255],
+      "comment" : "foreground smoothmetal",
+      "brush" : [ [ "clear" ], [ "back", "smoothmetal" ], [ "front", "smoothmetal" ] ]
+    },
+
+    {
+      "value" : [253, 143, 77, 255],
+      "comment" : "wrecked stairs/platform",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "front", "wreckplatform" ] ]
+    },
+
+
+    {
+      "value" : [218, 2, 5, 255],
+      "comment" : "rustymetal background tiles, with wreckconsole1",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckconsole1" ] ]
+    },
+
+    {
+      "value" : [196, 24, 91, 255],
+      "comment" : "rustymetal background tiles, with wrecktable",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wrecktable" ] ]
+    },
+
+    {
+      "value" : [172, 2, 5, 255],
+      "comment" : "rustymetal background tiles, with wreckconsole2",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckconsole2" ] ]
+    },
+
+    {
+      "value" : [106, 2, 5, 255],
+      "comment" : "rustymetal background tiles, with wreckconsole3",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckconsole3" ] ]
+    },
+
+    {
+      "value" : [27, 2, 218, 255],
+      "comment" : "rustymetal background tiles, with wreckcrate1",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckcrate1" ] ]
+    },
+
+    {
+      "value" : [109, 45, 175, 255],
+      "comment" : "rustymetal background tiles, with wreckscreen",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckscreen" ] ]
+    },
+
+    {
+      "value" : [173, 24, 196, 255],
+      "comment" : "rustymetal background tiles, with wrecktv",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wrecktv" ] ]
+    },
+
+    {
+      "value" : [236, 94, 96, 255],
+      "comment" : "rustymetal background tiles, with wreckbed",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckbed" ] ]
+    },
+
+    {
+      "value" : [192, 200, 130, 255],
+      "comment" : "rustymetal background tiles, with wreckfan",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckfan" ] ]
+    },
+
+    {
+      "value" : [218, 83, 2, 255],
+      "comment" : "rustymetal background tiles, with wreckdoor",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckdoor" ] ]
+    },
+
+    {
+      "value" : [67, 89, 153, 255],
+      "comment" : "rustymetal background tiles, with wreckvendingmachine",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckvendingmachine" ] ]
+    },
+
+    {
+      "value" : [2, 218, 55, 255],
+      "comment" : "rustymetal background tiles, with wreckvat1",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckvat1" ] ]
+    },
+
+    {
+      "value" : [254, 211, 186, 255],
+      "comment" : "rustymetal background tiles, with wrecksupport",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wrecksupport" ] ]
+    },
+
+    {
+      "value" : [175, 45, 144, 255],
+      "comment" : "rustymetal background tiles, with wreckgenerator",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckgenerator" ] ]
+    },
+
+    {
+      "value" : [153, 99, 67, 255],
+      "comment" : "rustymetal background tiles, with wreckchair",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckchair" ] ]
+    },
+
+    {
+      "value" : [77, 122, 253, 255],
+      "comment" : "rustymetal background tiles, with wreckwiresceiling",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckwiresceiling" ] ]
+    },
+
+    {
+      "value" : [112, 218, 217, 255],
+      "comment" : "rustymetal background tiles, with wreckturbines",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckturbines" ] ]
+    },
+
+    {
+      "value" : [94, 184, 236, 255],
+      "comment" : "rustymetal background tiles, with wreckturbine2",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckturbine2" ] ]
+    },
+
+    {
+      "value" : [23, 87, 38, 255],
+      "comment" : "rustymetal background tiles, with wrecklocker",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wrecklocker" ] ]
+    },
+
+    {
+      "value" : [67, 153, 88, 255],
+      "comment" : "rustymetal background tiles, with wreckvent",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckvent" ] ]
+    },
+
+    {
+      "value" : [200, 130, 184, 255],
+      "comment" : "rustymetal background tiles, with wreckpanel2",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckpanel2" ] ]
+    },
+
+    {
+      "value" : [218, 112, 193, 255],
+      "comment" : "rustymetal background tiles, with wreckpanel1",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckpanel1" ] ]
+    },
+
+    {
+      "value" : [234, 231, 38, 255],
+      "comment" : "rustymetal background tiles, with electriclight",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "electriclight" ] ]
+    },
+
+    {
+      "value" : [218, 112, 153, 255],
+      "comment" : "rustymetal background tiles, with wrecksmalltable",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wrecksmalltable" ] ]
+    },
+
+    {
+      "value" : [253, 77, 211, 255],
+      "comment" : "rustymetal background tiles, with wreckboiler",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "object", "wreckboiler" ] ]
+    },
+
+    // STAGEHANDS
+
+    {
+      "value" : [166, 76, 255, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "wreckunderwater.cockpit"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 254, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "wreckunderwater.engineroom"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 253, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "clear" ], ["liquid", "liquidaether"], [ "back", "rustymetal" ], [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "wreckunderwater.interior"
+          }
+        }
+      ] ]
+    }
+  ],
+
+  "parts" : [
+    {
+      "name" : "entrance",
+      "rules" : [
+      ],
+      "def" : [ "image", [ "entrance.png" ] ]
+    },
+    {
+      "name" : "1",
+      "rules" : [
+      ],
+      "def" : [ "image", [ "1.png" ] ]
+    },
+    {
+      "name" : "2",
+      "rules" : [
+      ],
+      "def" : [ "image", [ "2.png" ] ]
+    },
+    {
+      "name" : "3",
+      "rules" : [
+      ],
+      "def" : [ "image", [ "3.png" ] ]
+    },
+    {
+      "name" : "4",
+      "rules" : [
+      ],
+      "def" : [ "image", [ "4.png" ] ]
+    },
+    {
+      "name" : "5",
+      "rules" : [
+      ],
+      "def" : [ "image", [ "5.png" ] ]
+    },
+    {
+      "name" : "6",
+      "rules" : [
+      ],
+      "def" : [ "image", [ "6.png" ] ]
+    },
+    {
+      "name" : "7",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "7.png" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "8",
+      "rules" : [
+      ],
+      "def" : [ "image", [ "7.png" ] ]
+    },
+    {
+      "name" : "9",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "7.png" ] ],
+      "chance" : 0
+    }
+  ]
+}

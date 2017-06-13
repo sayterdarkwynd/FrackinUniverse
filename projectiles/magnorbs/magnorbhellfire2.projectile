@@ -1,0 +1,45 @@
+{
+  "projectileName" : "magnorbhellfire2",
+  "image" : "magnorbhellfire.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 12,
+  "damageKind" : "fire",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 6,
+  "piercing" : true,
+  "timeToLive" : 2,
+  "lightColor" : [73, 43, 16],
+
+  "emitters" : [ "flamesfast" ],
+  "statusEffects" : [ "burning" ],
+  
+  "actionOnReap" : [ 
+    { "action" : "config", "file" : "/projectiles/explosions/firetitanexplosion/magnorbfireexplosion.config" }
+  ],
+  
+  "actionOnCollide" : [
+    { "action" : "config", "file" : "/projectiles/explosions/firetitanexplosion/magnorbfireexplosion.config" },
+    {
+      "action" : "projectile",
+      "type" : "firelight",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/fireball_bounce1.ogg",
+        "/sfx/projectiles/fireball_bounce2.ogg",
+        "/sfx/projectiles/fireball_bounce3.ogg"
+      ]
+    }
+  ],
+            
+  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
+}

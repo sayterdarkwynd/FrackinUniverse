@@ -1,9 +1,10 @@
 [
-    { "op": "add", "path": "/statusControllerSettings/primaryScriptSources/-", "value": "/scripts/mm_player_primary.lua" },
+    { "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-", "value": "/scripts/mm_player_primary.lua" },
     { "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/basictilegroundeffects.lua" },
     { "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/fu_tilegroundeffects.lua" },
     { "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value":  "/scripts/isn_geldetection.lua" },
     { "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value":  "/stats/player_primary_bars.lua" },
+    //{ "op": "add", "path": "/statusControllerSettings/primaryScriptSources/-", "value": "/scripts/modDefaults.lua" },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ffguide-codex"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "sciencebrochure"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fullwood1"} },
@@ -25,6 +26,7 @@
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "beerkeg" } },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "rainbarrel" } },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "darkalemash" } },
+    { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "premiumcyanider" } },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "wheatsprout" } },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "yeastwater" } },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "mashingtun" } },
@@ -394,9 +396,18 @@
 { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_sequencer3bitvinputs" } },
 { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_sequencer4bithinputs" } },
 { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_sequencer4bitvinputs" } },
-    
+
   {"op" : "add", 
   "path" : "/companionsConfig/uniformSlots/head",
   "value" : ["headCosmetic", "head" ]
-  }  
+  },
+  
+  {
+    "op": "add",
+    "path": "/statusControllerSettings/stats/shipMass",
+    "value": {
+      "baseValue": 31.4
+    }
+  }
+  
 ]

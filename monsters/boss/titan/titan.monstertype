@@ -33,12 +33,55 @@
       "foundTargetActions" : [],
       "fleeActions" : [],
 
-      "hostileActions" : [
+      "hostileActions" : [    
+	{
+          "name" : "action-fire",
+	  "cooldown" : 9,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 24,
+            "minimumRange" : 6,
+            "windupState" : "die",
+            "windupSound" : "aggroHop",
+            "windupTime" : 0,
+            "projectileType" : "distortionbomb",
+            "projectileParameters" : {
+              "timeToLive" : 3,
+              "physics" : "grenade",
+              "speed" : 44,
+              "bounces" : 2,
+              "damageSourceKind" : "radioactive",
+              "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+		    },
+		    {
+		      "action" : "projectile",
+		      "type" : "fuhgravityexplosion",
+		      "fuzzAngle" : 0,
+		      "inheritDamageFactor" : 0.15,
+		      "angleAdjust" : 0
+		    }   		    
+              ]
+            },
+            "power" : 12,
+            "speed": 0,
+            "fireOffset" : [1.5, 0.4],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "fireSound" : "pew",
+            "fireDelay" : 1.5,
+            "fireState" : "",
+            "winddownState" : "die2",
+            "winddownTime" : 1.0
+          }
+        }, 
         {
           "name" : "action-charge",
-          "cooldown" : 5.4,
+          "cooldown" : 5,
           "parameters" : {
-            "maximumRange" : 20,
+            "maximumRange" : 16,
             "windupState" : "chargewindup",
             "windupTime" : 1.15,
             "windupSound" : "charge",
@@ -53,35 +96,177 @@
             "winddownStopForce" : 1000,
             "winddownState" : "chargewinddown"
           }
-        },      
-        {
+        },              
+	{
+          "name" : "action-leap", 
+          "cooldown" : 3,
+          "parameters" : {
+            "minimumRange" : 5,
+            "maximumRange" : 22,
+            "maxXRange" : 20,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 55,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }             
+      ],
+
+      "periodicActions" : [],
+      
+      "damageTakenActions" : [      
+	{
           "name" : "action-fire",
-	  "cooldown" : 6,
+          "cooldown" : 5.5,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 7,
+            "maximumRange" : 50,
             "minimumRange" : 0,
-            "windupState" : "taunt",
-            "windupSound" : "",
-            "windupTime" : 1.3,
-            "projectileType" : "distortionbomb",
+            "windupState" : "die5",
+            "windupSound" : "aggroHop",
+            "windupTime" : 0,
+            "projectileType" : "healingzone",
+            "projectileParameters" : {
+              "timeToLive" : 2
+            },
+            "power" : 12,
+            "speed": 0,
+            "fireOffset" : [1.5, 0.4],
+            "aimAtTarget" : false,
+            "projectileCount" : 2,
+            
+            "fireSound" : "pew",
+            "fireDelay" : 1.5,
+            "fireState" : "",
+            "winddownState" : "die6",
+            "winddownTime" : 1.0
+          }
+        },      
+	{
+          "name" : "action-fire",
+          "cooldown" : 6.9,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 24,
+            "minimumRange" : 10,
+            "windupState" : "die3",
+            "windupSound" : "aggroHop",
+            "windupTime" : 0,
+            "inaccuracy" : 1.0,
+            "projectileType" : "distortionbomb2",
             "projectileParameters" : {
               "timeToLive" : 3,
               "physics" : "grenade",
-              "speed" : 20,
-              "damageSourceKind" : "radioactive"
+              "speed" : 64,
+              "fullbright" : true,
+              "bounces" : 2,
+              "damageSourceKind" : "radioactive",
+              "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/burstexplosion/radioactiveburstexplosion.config"
+		    }		    
+              ]
             },
-            "power" : 10,
+            "power" : 12,
             "speed": 0,
-            "fireOffset" : [4.5, 2],
+            "fireOffset" : [1.5, 0.4],
             "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "fireSound" : "",
+            "projectileCount" : 3,
+            
+            "fireSound" : "pew",
+            "fireDelay" : 1.5,
             "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 1.1
+            "winddownState" : "die4",
+            "winddownTime" : 1.0
+          }
+        }      
+      ],
+      
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }        
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
           }
         },         
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "wanderTime" : [5, 15],
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "concurrentActions" : [],
+      
+      "concurrentHostileActions" : [ 
+        {
+          "name" : "action-trail-charge",
+          "cooldown" : 8.0,
+          "parameters" : {
+            "maximumRange" : 24,
+            "minimumRange" : 8,
+            "windupTime" : 1.15,
+            "winddownTime" : 0.5,
+            "chargeSpeed" : 45,
+            "chargeControlForce" : 1200,
+            "chargeTime" : 1.5,
+            "aimAtTarget" : true,
+            "wallKnockback" : true,
+            "knockbackThreshold": 3,
+
+
+            "projectileType" : "firefinish",
+            "projectileParameters" : {},
+            "projectileInterval" : 0.05,
+            "offset" : [0,-1],
+            "power" : 0,
+            "scalePower" : false
+
+          }
+        },       
         {
           "name" : "action-fire",
 	  "cooldown" : 2,
@@ -128,97 +313,17 @@
             "winddownState" : "firewinddown",
             "winddownTime" : 1.8
           }
-        }      
-      ],
-
-      "periodicActions" : [
-           
-      ],
-      
-      "damageTakenActions" : [
-      
-      ],
-      
-      "approachActions" : [
-        {
-          "name" : "approach-walk",
-          "parameters" : {
-            "canJump" : true,
-            "maxJumps" : 5,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10
-          }
-        }        
-      ],
-
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },         
-        {
-          "name" : "approach-walk",
-          "parameters" : {
-            "canJump" : true,
-            "maxJumps" : 5,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10
-          }
-        }
-      ],
-
-      "wanderActions" : [
-        {
-          "name" : "wander-walk",
-          "cooldown" : 6.0,
-          "parameters" : {
-            "wanderTime" : [5, 15],
-            "canJump" : true,
-            "maxJumps" : 5,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10
-          }
-        }
-      ],
-
-      "concurrentActions" : [ ],
-      "concurrentHostileActions" : [           
+        }, 
         {
           "name" : "action-statuseffect", 
-          "cooldown" : 50,
+          "cooldown" : 5,
           "parameters" : {
-          "effect" : "nofalldamage",
-          "duration" : 50
+            "effect" : "nofalldamage",
+            "duration" : 50
           }
-        },              
-        {
-          "name" : "action-leap", 
-          "cooldown" : 3,
-          "parameters" : {
-            "minimumRange" : 2,
-            "maximumRange" : 12,
-            "maxXRange" : 20,
-            "windupTime" : 0.3,
-            "windupState" : "idle",
-
-            "leapVelocity" : 75,
-            "collisionCheck" : true,
-            "highArc" : true,
-            "leapState" : "jump",
-            "fallState" : "fall",
-
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        }      
+        }           
       ],
+      
       "deathActions" : [ ]      
 
     },

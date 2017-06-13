@@ -48,9 +48,13 @@
             "duration" : 300
           },         
           {
-            // Persistent effects are active while on the ship
             "type" : "PersistentEffect",
-            "effect" : "regeneration1"
+            "effect" : "shipMassLarge"
+          },
+          {
+            "type": "ShipUpgradeBenefit",
+            "property": "maxFuel",
+            "value": 300
           }
         ],
         "type" : "soldier",
@@ -108,12 +112,13 @@
         "Armchair <field> Expert"
       ],
 
+
+      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"],
       "defaultUniform" : {
         "head" : "duncecap",
         "chest" : "tshirtchest",
         "legs" : "jeans1legs"
-      },
-      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+      }      
     },
 
     "questGenerator" : {
@@ -124,413 +129,423 @@
     },
 
     "dialog" : {
-      "crewmember" : {
-        "offer" : {
-          "default" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."              
-            ]
+          "crewmember" : {         
+            "offer" : {
+              "default" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."              
+                ]
+              },
+              "apex" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "avian" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "hylotl" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "floran" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "glitch" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "penguin" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              }
+            },
+            "roleDescription" : {
+              "default" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "apex" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "avian" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "hylotl" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "floran" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "glitch" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "penguin" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              }
+            },
+            "respawned" : {
+              "default" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "floran" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "glitch" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              },
+              "penguin" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."   
+                ]
+              }
+            },
+            "combatBenefit" : {
+              "default" : {
+                "default" : [
+    		"Greg!!!!",
+    		".....Greg!",
+    		"Gregga greg! Greg?",
+    		"...Greg? GREGGGGG!!!!",
+    		"...............greg. Gregga greg."		
+                ]
+              }
+            },
+            "unfollow" : {
+              "default" : {
+                "default" : [
+    		"Greg.",
+    		".....Greg.",
+    		"Gregga greg.",
+    		"...Greg?",
+    		"...............greg."		
+                ]
+              },
+              "floran" : {
+                "default" : [
+    		"Greg.",
+    		".....Greg.",
+    		"Gregga greg.",
+    		"...Greg?",
+    		"...............greg."	
+                ]
+              },
+              "glitch" : {
+                "default" : [
+    		"Greg.",
+    		".....Greg.",
+    		"Gregga greg.",
+    		"...Greg?",
+    		"...............greg."
+                ]
+              },
+              "penguin" : {
+                "default" : [
+    		"Greg.",
+    		".....Greg.",
+    		"Gregga greg.",
+    		"...Greg?",
+    		"...............greg."
+                ]
+              }
+            },
+            "follow" : {
+              "default" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."
+                ]
+              },
+              "floran" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."
+                ]
+              },
+              "glitch" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."
+                ]
+              },
+              "penguin" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."
+                ]
+              }
+            },
+            "cantreach" : {
+              "default" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."
+                ]
+              },
+              "floran" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."
+                ]
+              },
+              "glitch" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."
+                ]
+              }
+            },
+              "penguin" : {
+                "default" : [
+                  "Greg?",
+                  "Greg. Greeeeg greg greg Greg?",
+                  "Greg!?",
+                  "Greg. Greg.",
+                  "Rainbow.",
+                  "Gregggggga gregga greg greg.",
+                  "Greg!? Greg. Gregga.",
+                  "Greg. Gregogreg."
+                ]
+              }
           },
-          "apex" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
+    
+          "tenant" : {
+            "grumbles" : {
+              "tagCriteria" : "/dialog/greg.config:tagCriteria",
+              "enclosedArea" : "/dialog/greg.config:enclosedArea",
+              "otherDeed" : "/dialog/greg.config:otherDeed",
+              "severe" : "/dialog/greg.config:severe",
+              "final" : "/dialog/greg.config:final"
+            },
+            "arrivedHome" : {
+              "beacon" : "/dialog/greg.config:beacon",
+              "rent" : "/dialog/greg.config:rent"
+            }
           },
-          "avian" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "hylotl" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "floran" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "penguin" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          }
-        },
-        "roleDescription" : {
-          "default" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "apex" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "avian" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "hylotl" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "floran" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "penguin" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          }
-        },
-        "respawned" : {
-          "default" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "floran" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          },
-          "penguin" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."   
-            ]
-          }
-        },
-        "unfollow" : {
-          "default" : {
-            "default" : [
-		"Greg.",
-		".....Greg.",
-		"Gregga greg.",
-		"...Greg?",
-		"...............greg."		
-            ]
-          },
-          "floran" : {
-            "default" : [
-		"Greg.",
-		".....Greg.",
-		"Gregga greg.",
-		"...Greg?",
-		"...............greg."	
-            ]
-          },
-          "glitch" : {
-            "default" : [
-		"Greg.",
-		".....Greg.",
-		"Gregga greg.",
-		"...Greg?",
-		"...............greg."
-            ]
-          },
-          "penguin" : {
-            "default" : [
-		"Greg.",
-		".....Greg.",
-		"Gregga greg.",
-		"...Greg?",
-		"...............greg."
-            ]
-          }
-        },
-        "follow" : {
-          "default" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."
-            ]
-          },
-          "floran" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."
-            ]
-          },
-          "penguin" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."
-            ]
-          }
-        },
-        "cantreach" : {
-          "default" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."
-            ]
-          },
-          "floran" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."
-            ]
-          }
-        },
-          "penguin" : {
-            "default" : [
-              "Greg?",
-              "Greg. Greeeeg greg greg Greg?",
-              "Greg!?",
-              "Greg. Greg.",
-              "Rainbow.",
-              "Gregggggga gregga greg greg.",
-              "Greg!? Greg. Gregga.",
-              "Greg. Gregogreg."
-            ]
-          }
-      },
-
-      "tenant" : {
-        "grumbles" : {
-          "tagCriteria" : "/dialog/greg.config:tagCriteria",
-          "enclosedArea" : "/dialog/greg.config:enclosedArea",
-          "otherDeed" : "/dialog/greg.config:otherDeed",
-          "severe" : "/dialog/greg.config:severe",
-          "final" : "/dialog/greg.config:final"
-        },
-        "arrivedHome" : {
-          "beacon" : "/dialog/greg.config:beacon",
-          "rent" : "/dialog/greg.config:rent"
-        }
-      },
-
-      "converse" : "/dialog/greg.config:converse",
-
-      "attack" : "/dialog/greg.config:attack",
-      "reattack" : "/dialog/greg.config:reattack",
-      "killedTarget" : "/dialog/greg.config:killedTarget",
-      "lostTarget" : "/dialog/greg.config:lostTarget",
-      "outOfSight" : "/dialog/greg.config:outOfSight",
-      "cheerOn" : "/dialog/greg.config:cheerOn",
-      "cantReach" : "/dialog/greg.config:cantReach"
-    }
+    
+          "converse" : "/dialog/greg.config:converse",
+    
+          "attack" : "/dialog/greg.config:attack",
+          "reattack" : "/dialog/greg.config:reattack",
+          "killedTarget" : "/dialog/greg.config:killedTarget",
+          "lostTarget" : "/dialog/greg.config:lostTarget",
+          "outOfSight" : "/dialog/greg.config:outOfSight",
+          "cheerOn" : "/dialog/greg.config:cheerOn",
+          "cantReach" : "/dialog/greg.config:cantReach"
+    }    
   },
 
   "movementParameters" : {
     // Run at the same speed as the player
-    "runSpeed" : 22.0
+    "runSpeed" : 20.0
   },
+
 
   "items" : {
     "default" : [
       [0, [
           {
-            "primary" : [ "negablade" ]
-          },
-          {
-            "primary" : [ "eyesword" ]
+            "primary" : [ "negablade" ],
+            "sheathedprimary" : [ "bugnet" ]
           }
         ] ]
     ]
   },
-
+  
   "statusControllerSettings" : {
     "statusProperties" : {
       "hitInvulnerability" : true,
@@ -543,13 +558,16 @@
 
     "stats" : {
       "maxHealth" : {
-        "baseValue" : 550.0
+        "baseValue" : 220.0
       },
       "powerMultiplier" : {
         "baseValue" : 0.25
       },
       "healthRegen" : {
         "baseValue" : 2.0
+      },
+      "beestingImmunity" : {
+        "baseValue" : 1.0
       }
     }
   }

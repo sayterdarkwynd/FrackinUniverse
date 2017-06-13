@@ -27,6 +27,8 @@ function update(dt)
   erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), "effigiumore") or 0)
   erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), "effigiumbar") or 0)
   erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), "solidfuel") or 0)
+  erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), "liquidfuel") or 0)
+  erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), "supermatter") or 0)
   local erchiusRatio = math.sqrt(math.min(1.0, erchiusCount / self.effectMaxErchius))
   if erchiusCount > 0 and self.spawnTimer > 0 then
     self.spawnTimer = self.spawnTimer - dt

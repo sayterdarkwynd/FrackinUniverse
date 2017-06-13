@@ -6,7 +6,7 @@
   "piercing" : false,
   "level" : 1,
   "frameNumber" : 6,
-  "speed" : 60,
+  "speed" : 240,
   "damageKindImage" : "icon.png",
   "pointLight" : false,
   "timeToLive" : 0.85,
@@ -19,5 +19,24 @@
       "file" : "/projectiles/explosions/precursorexplosion/precursorexplosionsmall2.config"
     }
   ],
-  "damageKind" : "radioactive"
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "ffteslasmall3",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   }
+  ],  
+  "damageKind" : "radioactive",
+
+  "scripts" : ["/scripts/projectiles/zigzagprojectile.lua"],
+  "scriptDelta" : 1,
+
+  "zigZagTime" : 0.1,
+  "zigZagAngle" : 0.5,
+
+  "persistentAudio" : "/sfx/projectiles/raygun_wobble_loop.ogg"
+  
 }

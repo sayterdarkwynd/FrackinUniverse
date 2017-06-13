@@ -1,3 +1,6 @@
+require "/objects/power/isn_sharedpowerscripts.lua"
+require "/objects/isn_sharedobjectscripts.lua"
+
 function init()
 	
 	object.setInteractive(true)
@@ -22,22 +25,16 @@ function onInteraction(args)
 	end
 	-- Functionality
 	local itemName = world.entityHandItem(args.sourceId, "primary")
-	if itemName == "wiretool" then isn_cycleFrequency(1)
-	elseif itemName == "painttool" then isn_cycleFrequency(-1)
-	else
-		if storage.currentconfig == nil or storage.currentkey == nil then
-			animator.burstParticleEmitter("noSignal")
-			animator.playSound("error")
-			return
-		end
-		
+	
+	isn_cycleFrequency(1)
+
 		local tradingConfig = { config = storage.currentconfig, recipes = { } }
 		for key, value in pairs(config.getParameter(storage.currentkey)) do
 			local recipe = { input = { { name = "money", count = value } }, output = { name = key } }
 			table.insert(tradingConfig.recipes, recipe)
 		end
 		return {"OpenCraftingInterface", tradingConfig}
-	end
+	
 end
 
 function update(dt)

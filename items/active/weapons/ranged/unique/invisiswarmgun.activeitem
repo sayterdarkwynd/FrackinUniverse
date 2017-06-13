@@ -1,0 +1,86 @@
+{
+  "itemName" : "invisiswarmgun",
+  "price" : 160,
+  "inventoryIcon" : "invisiswarmgun.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Horrify the enemy with clouds of stinging, angry bugs.",
+  "shortdescription" : "Swarm Gun",
+  "category" : "^#e43774;Upgradeable Weapon^reset;",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Bio-Weapon",
+  "itemTags" : ["weapon","ranged","assaultrifle", "bioweapon", "upgradeableWeapon" ],
+  "twoHanded" : true,
+  "learnBlueprintsOnPickup" : [ "swarmgun2" ],
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "invisiswarmgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/bulletmuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/hivebomb_impact.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.5, 0.8],
+  "muzzleOffset" : [0.3, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.7,
+    "baseDps" : 7.5,
+    "energyUsage" : 35.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "hiveswarm2",
+    "projectileParameters" : {
+      "speed" : 22
+    },
+    "statusEffects" : [ "weakenweather2" ],
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+  "critChance" : 4,
+  "critBonus" : 3,
+  "altAbilityType" : "lance",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
