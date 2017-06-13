@@ -2,7 +2,7 @@ require("/scripts/vec2.lua")
 function init()
   self.tookDamage = false
   self.dead = false
-
+  
   if rangedAttack then
     rangedAttack.loadConfig()
   end
@@ -127,7 +127,6 @@ function trackTargets(keepInSight, queryRange, trackingRange, switchTargetDistan
   if keepInSight == nil then keepInSight = true end
 
   if self.targetId == nil then
-    status.addEphemeralEffect("invulnerable",math.huge)
     table.insert(self.targets, util.closestValidTarget(queryRange))
   end
 
@@ -151,7 +150,6 @@ function trackTargets(keepInSight, queryRange, trackingRange, switchTargetDistan
   --Set target to be top of the list
   self.targetId = self.targets[1]
   if self.targetId then
-    status.removeEphemeralEffect("invulnerable")
     self.targetPosition = world.entityPosition(self.targetId)
   end
 end
@@ -159,18 +157,28 @@ end
 function validTarget(targetId, keepInSight, trackingRange)
   local entityType = world.entityType(targetId)
   if entityType ~= "player" and entityType ~= "npc" then
+    status.addEphemeralEffect("invulnerable",math.huge)
     return false
   end
 
-  if not world.entityExists(targetId) then return false end
+  if not world.entityExists(targetId) then 
+    status.addEphemeralEffect("invulnerable",math.huge)
+    return false 
+  end
 
-  if keepInSight and not entity.entityInSight(targetId) then return false end
+  if keepInSight and not entity.entityInSight(targetId) then 
+    status.addEphemeralEffect("invulnerable",math.huge)  
+    return false 
+  end
 
   if trackingRange then
     local distance = world.magnitude(mcontroller.position(), world.entityPosition(targetId))
-    if distance > trackingRange then return false end
+    if distance > trackingRange then 
+      status.addEphemeralEffect("invulnerable",math.huge)
+      return false 
+    end
   end
-
+  status.removeEphemeralEffect("invulnerable")
   return true
 end 
 
