@@ -127,6 +127,7 @@ function trackTargets(keepInSight, queryRange, trackingRange, switchTargetDistan
   if keepInSight == nil then keepInSight = true end
 
   if self.targetId == nil then
+    status.addEphemeralEffect("invulnerable",math.huge)
     table.insert(self.targets, util.closestValidTarget(queryRange))
   end
 
@@ -150,6 +151,7 @@ function trackTargets(keepInSight, queryRange, trackingRange, switchTargetDistan
   --Set target to be top of the list
   self.targetId = self.targets[1]
   if self.targetId then
+    status.removeEphemeralEffect("invulnerable")
     self.targetPosition = world.entityPosition(self.targetId)
   end
 end
