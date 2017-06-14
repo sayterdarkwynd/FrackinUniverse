@@ -17,7 +17,8 @@ local recipes =
 {inputs = { precursorfluid=50 }, outputs = { essence=400 }, time = 7.0},
 {inputs = { techcard=1 }, outputs = { essence=4 }, time = 1.0},
 {inputs = { upgrademodule=1 }, outputs = { essence=4 }, time = 1.0},
-{inputs = { manipulatormodule=1 }, outputs = { essence=3 }, time = 1.0}
+{inputs = { manipulatormodule=1 }, outputs = { essence=3 }, time = 1.0},
+{inputs = { crunchychick=1 }, outputs = { essence=20 }, time = 1.0}
 -- should have precursor resources crafted here, too
 }
 
