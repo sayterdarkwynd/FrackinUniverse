@@ -7,8 +7,7 @@ weaponBonus={
 
 armorBonus={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.35},
-        {stat = "shieldRegen", baseMultiplier = 1.35},
-        {stat = "shieldHealth", baseMultiplier = 1.35},
+        {stat = "shieldBonusShield", amount = 0.35},
         {stat = "perfectBlockLimitRegen", baseMultiplier = 1.35},
         {stat = "aetherImmunity", amount = 1},
         {stat = "extremepressureProtection", amount = 1},

@@ -75,7 +75,7 @@ function eyeBeamAttack.update(dt, stateData)
       eyeBeamAttack.blast(entity.targetSnapshot)
       stateData.timer = stateData.timer - dt
       if stateData.timer < 0 then
-        --animator.setAnimationState("firstBeams", "winddown")
+        animator.setAnimationState("firstBeams", "winddown")
         animator.setLightActive("beam1", false)
 
       end

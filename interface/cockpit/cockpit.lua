@@ -878,7 +878,7 @@ function systemScreenState(system, warpIn)
       return self.state:set(systemUniverseTransition, system)
     end
 
-    local zoomOut = vec2.mag(View:toSystem(View:mousePosition())) - 50 > (View.settings.viewRadius) / View.systemCamera.scale
+    local zoomOut = vec2.mag(View:toSystem(View:mousePosition())) - 150 > (View.settings.viewRadius) / View.systemCamera.scale
     if zoomOut then
       self.cursorOverride = config.getParameter("zoomOutCursor")
     end
@@ -1107,7 +1107,7 @@ function planetScreenState(planet)
     end
     hover = newHover
 
-    local zoomOut = planetDistance(planet, View:toSystem(View:mousePosition())) - 2 > (View.settings.viewRadius) / View.systemCamera.scale
+    local zoomOut = planetDistance(planet, View:toSystem(View:mousePosition())) - 10 > (View.settings.viewRadius) / View.systemCamera.scale
     if zoomOut then
       self.cursorOverride = config.getParameter("zoomOutCursor")
     end

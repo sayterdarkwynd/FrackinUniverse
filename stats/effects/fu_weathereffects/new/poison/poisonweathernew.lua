@@ -40,7 +40,11 @@ function checkEffectValid()
 	  self.usedIntro = nil	
 	  effect.expire()
 	end
-
+        if (status.statPositive("gasImmunity")) and world.type()=="strangesea" then 
+	  deactivateVisualEffects()
+	  self.usedIntro = nil	
+	  effect.expire()        
+        end
 	if ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  self.usedIntro = nil

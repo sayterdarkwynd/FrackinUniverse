@@ -4,6 +4,9 @@ local recipes =
 --liquids
 {inputs = { solidfuel=50 }, outputs = { precursorfluid=1 }, time = 1.0},
 {inputs = { liquidfuel=50 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { toxicwaste=25 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { irradiumore=25 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { irradiumbar=10 }, outputs = { precursorfluid=1 }, time = 1.0},
 {inputs = { supermatter=50 }, outputs = { precursorfluid=2 }, time = 2.0},
 {inputs = { uraniumrod=1 }, outputs = { precursorfluid=2 }, time = 2.0},
 {inputs = { plutoniumrod=1 }, outputs = { precursorfluid=3 }, time = 3.0},
@@ -11,8 +14,10 @@ local recipes =
 {inputs = { thoriumrod=1 }, outputs = { precursorfluid=5 }, time = 5.0},
 {inputs = { solariumstar=6 }, outputs = { precursorfluid=6 }, time = 6.0},
 {inputs = { ultronium=1 }, outputs = { precursorfluid=50 }, time = 6.0},
-{inputs = { precursorfluid=50 }, outputs = { essence=400 }, time = 7.0}
-
+{inputs = { precursorfluid=50 }, outputs = { essence=400 }, time = 7.0},
+{inputs = { techcard=1 }, outputs = { essence=4 }, time = 1.0},
+{inputs = { upgrademodule=1 }, outputs = { essence=4 }, time = 1.0},
+{inputs = { manipulatormodule=1 }, outputs = { essence=3 }, time = 1.0}
 -- should have precursor resources crafted here, too
 }
 
