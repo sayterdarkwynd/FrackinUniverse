@@ -8,9 +8,9 @@ function init()
   
   effect.addStatModifierGroup({
     {stat = "protection", baseMultiplier = 1.25},
-    {stat = "energyRegenPercentageRate", amount = 0.01},
-    {stat = "energyRegenBlockTime", amount = 3},
-    {stat = "shieldRegen", amount = 0}     
+    {stat = "energyRegenPercentageRate", baseMultiplier = 0},
+    {stat = "energyRegenBlockTime", baseMultiplier = 0},
+    {stat = "shieldStaminaRegen", baseMultiplier = 0}     
   })
   
 end

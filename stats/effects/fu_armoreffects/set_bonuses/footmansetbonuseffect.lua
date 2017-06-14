@@ -8,8 +8,7 @@ weaponBonus={
 
 armorBonus={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.17},
-        {stat = "shieldRegen", baseMultiplier = 1.17},
-        {stat = "shieldHealth", baseMultiplier = 1.17},
+        {stat = "shieldBonusShield", baseMultiplier = 1.17},
         {stat = "perfectBlockLimitRegen", baseMultiplier = 1.17}
 }
 

@@ -1,6 +1,138 @@
 [
   {
     "op": "add",
+    "path": "/fumechmining0",
+    "value": {
+      "stats": {
+        "power": 1,
+        "energy": 4
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+        "armClass": "GunArm",
+        "rotationLimits" : [-1.75, 1.75],
+        "fireOffset" : [4.65, -0.625],
+        "extendTime": 1,
+        "fireTime": 0.05,
+        "projectileType": "plasmashot",
+        "projectileCount" : 1,
+        "projectileParameters": {
+          "power": 0.075,
+          "timeToLive" : 0.15,
+          "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/hybridminerexplosion.config"
+	    }          
+          ]
+        }
+      },
+      "partImages": {
+        "<armName>": "arm/energyrifle.png",
+        "<armName>Fullbright": "arm/energyrifle_fullbright.png"
+      },
+      "defaultPrimaryColors" :   ["c36a5f", "994c49", "6f3130", "551d28"],
+      "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+      "animationCustom": {
+        "sounds": {
+          "<armName>Fire": [
+            "/sfx/weapons/illusion.ogg"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/fumechmining1",
+    "value": {
+      "stats": {
+        "power": 1,
+        "energy": 5
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+        "armClass": "GunArm",
+        "rotationLimits" : [-1.75, 1.75],
+        "fireOffset" : [4.65, -0.625],
+        "extendTime": 1,
+        "fireTime": 0.05,
+        "projectileType": "plasmashot",
+        "projectileCount" : 1,
+        "projectileParameters": {
+          "power": 0.075,
+          "timeToLive" : 0.30,
+          "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/hybridminerexplosion3.config"
+	    }          
+          ]
+        }
+      },
+      "partImages": {
+        "<armName>": "arm/energyrifle.png",
+        "<armName>Fullbright": "arm/energyrifle_fullbright.png"
+      },
+      "defaultPrimaryColors" :   ["c36a5f", "994c49", "6f3130", "551d28"],
+      "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+      "animationCustom": {
+        "sounds": {
+          "<armName>Fire": [
+            "/sfx/weapons/illusion.ogg"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/fumechmining2",
+    "value": {
+      "stats": {
+        "power": 1,
+        "energy": 6
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+        "armClass": "GunArm",
+        "rotationLimits" : [-1.75, 1.75],
+        "fireOffset" : [4.65, -0.625],
+        "extendTime": 1,
+        "fireTime": 0.05,
+        "projectileType": "plasmashot",
+        "projectileCount" : 1,
+        "projectileParameters": {
+          "power": 0.3,
+          "timeToLive" : 0.50,
+          "bounces" : 2,
+
+	  "actionOnReap" : [ 
+	    { "action" : "config", "file" : "/projectiles/explosions/hybridminerexplosion5.config" }
+	  ],          
+
+          "actionOnCollide" : [
+	    { "action" : "config","file" : "/projectiles/explosions/hybridminerexplosion5.config" }          
+          ]
+        }
+      },
+      "partImages": {
+        "<armName>": "arm/energyrifle.png",
+        "<armName>Fullbright": "arm/energyrifle_fullbright.png"
+      },
+      "defaultPrimaryColors" :   ["c36a5f", "994c49", "6f3130", "551d28"],
+      "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+      "animationCustom": {
+        "sounds": {
+          "<armName>Fire": [
+            "/sfx/weapons/illusion.ogg"
+          ]
+        }
+      }
+    }
+  },  
+  {
+    "op": "add",
     "path": "/fumechdensinium",
     "value": {
       "stats": {
