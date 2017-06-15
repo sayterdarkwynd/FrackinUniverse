@@ -1,0 +1,60 @@
+{
+  "projectileName" : "gravblastforce",
+  "physics" : "default",
+  "timeToLive" : 4,
+  "image" : "gravblast.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 4,
+  "windupFrames" : 0,
+  "winddownFrames" : 0,
+  
+  "speed" : 12,
+  "power" : 4,
+  "piercing" : false,
+  "onlyHitTerrain" : true,
+
+  "physicsCollisions" : {
+    "piece1" : {
+      "platform" : false,
+      "collision" : [ [-5, 0], [-5, -5], [0, -5], [5, -5], [5, 0], [5, 5], [0, 5], [-5, 5] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece2" : {
+      "platform" : false,
+      "collision" : [ [-5, 0], [-5, -5], [0, -5], [5, -5], [5, 0], [5, 5], [0, 5], [-5, 5] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece3" : {
+      "platform" : false,
+      "collision" : [ [-5, 0], [-5, -5], [0, -5], [5, -5], [5, 0], [5, 5], [0, 5], [-5, 5] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece4" : {
+      "platform" : false,
+      "collision" : [ [-5, 0], [-5, -5], [0, -5], [5, -5], [5, 0], [5, 5], [0, 5], [-5, 5] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    }
+  },
+
+  "renderLayer" : "ItemDrop+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "lightColor" : [120,0,0],
+  "damageKind" : "cosmicplasma",
+  "statuseffects" : [],
+  "emitters" : [ "fireplasma" ],
+
+  "bounces" : -1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+  
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+}
+
+
+
+
+
+
+
+
