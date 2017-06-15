@@ -51,16 +51,14 @@ function eyeBeamAttack.update(dt, stateData)
     -- This part controls the phases of the attack. At the end of each timer expiration
     --   the next animation is started. Then the control falls through to the next phase.
 
-    -- phase 1 - windup (steal underpants)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == config.getParameter("eyeBeamAttack.windupTime") then
       animator.setAnimationState("movement", "idle")
-      --animator.setAnimationState("firstBeams", "active")
+      animator.setAnimationState("firstBeams", "active")
       animator.playSound("turnHostile")
       end
       stateData.windupTimer = stateData.windupTimer - dt
       if stateData.windupTimer  < 0 then
-          --sb.logInfo("Help, I'm stuck in windup.")
           animator.setLightActive("beam1", true)
           animator.setAnimationState("firstBeams", "active")
           
@@ -71,9 +69,9 @@ function eyeBeamAttack.update(dt, stateData)
 
       end
       return false
-    -- phase 2 - active (????)
+
     elseif stateData.timer > 0 then
-      --sb.logInfo("Help I'm stuck blasting")
+
       eyeBeamAttack.blast(entity.targetSnapshot)
       stateData.timer = stateData.timer - dt
       if stateData.timer < 0 then
