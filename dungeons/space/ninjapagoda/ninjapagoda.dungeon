@@ -1,10 +1,10 @@
 {
   "metadata" : {
-    "name" : "flyingpyramid",
+    "name" : "ninjapagoda",
     "species" : "generic",
     "rules" : [
     ],
-    "anchor" : [ "base1", "base2" ],
+    "anchor" : [ "base1", "base2", "base3" ],
     "gravity" : 80,
     "maxRadius" : 1000000,
     "maxParts" : 3,
@@ -13,7 +13,7 @@
 
   "parts" : [
 
-  	//Hazard groups
+	//Hazard groups
 	
 {
       "name" : "smallgroup-low1",
@@ -367,7 +367,7 @@
       "chance" : 1,
       "markDungeonId" : false
     },
-  
+	
 	//Rooms
 
     {
@@ -461,42 +461,21 @@
       "chance" : 0
     },
 	{
-      "name" : "mapancienttemple",
+      "name" : "maptakeshi",
       "rules" : [
 		[ "maxSpawnCount", [1] ],
-		[ "ignorePartMaximumRule" ],
-        [ "doNotCombineWith", [ "mapskyboulevard", "maphydro" ] ]
+		[ "ignorePartMaximumRule" ]
       ],
-      "def" : [ "tmx", "mapancienttemple.json" ],
-      "chance" : 0
-    },
-	{
-      "name" : "mapskyboulevard",
-      "rules" : [
-		[ "maxSpawnCount", [1] ],
-		[ "ignorePartMaximumRule" ],
-        [ "doNotCombineWith", [ "mapancienttemple", "maphydro" ] ]
-      ],
-      "def" : [ "tmx", "mapskyboulevard.json" ],
-      "chance" : 0
-    },
-	{
-      "name" : "maphydro",
-      "rules" : [
-		[ "maxSpawnCount", [1] ],
-		[ "ignorePartMaximumRule" ],
-        [ "doNotCombineWith", [ "mapancienttemple", "mapskyboulevard" ] ]
-      ],
-      "def" : [ "tmx", "maphydro.json" ],
+      "def" : [ "tmx", "maptakeshi.json" ],
       "chance" : 0
     },
 	
-    //Pyramid Bases
+    //Pagoda Bases
 	
     {
       "name" : "base1",
       "rules" : [
-        [ "doNotCombineWith", [ "base1", "base2" ] ],
+        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "base1.json" ],
@@ -505,10 +484,19 @@
     {
       "name" : "base2",
       "rules" : [
-        [ "doNotCombineWith", [ "base1", "base2" ] ],
+        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "base2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "base3",
+      "rules" : [
+        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base3.json" ],
       "chance" : 0
     }
   ]
