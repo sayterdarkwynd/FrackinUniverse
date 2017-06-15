@@ -8,7 +8,7 @@
   "windupFrames" : 0,
   "winddownFrames" : 0,
   
-  "speed" : 12,
+  "speed" : 6,
   "power" : 4,
   "piercing" : false,
   "onlyHitTerrain" : true,
@@ -17,22 +17,22 @@
     "piece1" : {
       "platform" : false,
       "collision" : [ [-5, 0], [-5, -5], [0, -5], [5, -5], [5, 0], [5, 5], [0, 5], [-5, 5] ],
-      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"]
     },
     "piece2" : {
       "platform" : false,
       "collision" : [ [-5, 0], [-5, -5], [0, -5], [5, -5], [5, 0], [5, 5], [0, 5], [-5, 5] ],
-      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"]
     },
     "piece3" : {
       "platform" : false,
       "collision" : [ [-5, 0], [-5, -5], [0, -5], [5, -5], [5, 0], [5, 5], [0, 5], [-5, 5] ],
-      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"]
     },
     "piece4" : {
       "platform" : false,
       "collision" : [ [-5, 0], [-5, -5], [0, -5], [5, -5], [5, 0], [5, 5], [0, 5], [-5, 5] ],
-      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"]
     }
   },
 
@@ -48,7 +48,19 @@
 
   "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
   
-  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg",
+  
+  "periodicActions" : [
+    {
+      "time" : 0.3,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "gravblast2",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.25,
+      "config" : { "timeToLive" : 0.4, "speed" : 20, "renderLayer" : "Projectile+3" }
+    }  
+  ]
 }
 
 
