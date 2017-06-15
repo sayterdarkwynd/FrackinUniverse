@@ -6,9 +6,9 @@ function init()
 	    {stat = "protection", amount = self.valuea }
 	    }) 
 	else
-	  status.addEphemeralEffect("l6doomed", 5, entity.id())
-	  status.addEphemeralEffect("blacktarslow", 5, entity.id())
-          status.addEphemeralEffect("insanity", 5, entity.id())
+	  status.addEphemeralEffect("l6doomed", 6, entity.id())
+	  status.addEphemeralEffect("blacktarslow", 6, entity.id())
+          status.addEphemeralEffect("insanity", 6, entity.id())
           animator.setAnimationState("aura", "on")
           effect.addStatModifierGroup({{stat = "physicalResistance", amount = config.getParameter("resistanceAmount", 0)}})          
 	end
