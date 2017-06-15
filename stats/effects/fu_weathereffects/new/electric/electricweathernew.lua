@@ -25,7 +25,6 @@ function init()
 
   checkEffectValid()
 
-  self.isOn = 0
   script.setUpdateDelta(5)
 end
 
