@@ -1,136 +1,555 @@
 [
+
   {
     "op": "add",
     "path": "/fumechmining0",
     "value": {
       "stats": {
-        "power": 1,
-        "energy": 4
+        "power": 2,
+        "energy": 3
       },
       "partParameters": {
-        "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-        "armClass": "GunArm",
-        "rotationLimits" : [-1.75, 1.75],
-        "fireOffset" : [4.65, -0.625],
-        "extendTime": 1,
-        "fireTime": 0.05,
-        "projectileType": "plasmashot",
-        "projectileCount" : 1,
-        "projectileParameters": {
-          "power": 0.075,
-          "timeToLive" : 0.15,
-          "actionOnReap" : [
-	    {
-	      "action" : "config",
-	      "file" : "/projectiles/explosions/hybridminerexplosion.config"
-	    }          
-          ]
+        "script": "/vehicles/modularmech/armscripts/beamarm.lua",
+        "armClass": "BeamArm",
+        "rotationLimits": [
+          -1.75,
+          1.75
+        ],
+        "fireOffset": [
+          3.25,
+          0
+        ],
+        "windupTime": 0.5,
+        "fireTime": 0.1,
+        "winddownTime": 0.5,
+        "repeatFire": true,
+        "lockAim": false,
+        "beamSourceOffset": [
+          3.25,
+          2.5625
+        ],
+        "beamHeight": 0.5,
+        "beamLength": 15,
+        "beamParticleDensity": 0.75,
+        "beamTileDamage": 8,
+        "beamTileDamageDepth": 3
+      },
+      "damageSources": {
+        "<armName>Beam": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "line": [
+            [
+              3.25,
+              2.5
+            ],
+            [
+              33.25,
+              2.5
+            ]
+          ],
+          "damage": 1,
+          "damageSourceKind": "fireplasma",
+          "damageRepeatTimeout": 0.1,
+          "damageRepeatGroup": "<armName>Beam",
+          "knockback": 0,
+          "rayCheck": true
         }
       },
       "partImages": {
-        "<armName>": "arm/energyrifle.png",
-        "<armName>Fullbright": "arm/energyrifle_fullbright.png"
+        "<armName>": "arm/beamdrill.png",
+        "<armName>Fullbright": "arm/beamdrill_fullbright.png"
       },
-      "defaultPrimaryColors" :   ["c36a5f", "994c49", "6f3130", "551d28"],
-      "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+      "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+      ],
+      "defaultSecondaryColors": [
+        "e6e6e6",
+        "b6b6b6",
+        "7b7b7b",
+        "373737"
+      ],
       "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "active": {
+                  "properties": {
+                    "persistentSound": "/sfx/gun/magnorbs_shield_loop2.ogg"
+                  },
+                  "cycle": 0.1
+                },
+                "windup": {
+                  "cycle": 0.5
+                },
+                "winddown": {
+                  "cycle": 0.5
+                }
+              }
+            },
+            "<armName>Beam": {
+              "default": "off",
+              "states": {
+                "off": {},
+                "fire": {
+                  "frames": 4,
+                  "cycle": 0.25,
+                  "mode": "transition",
+                  "transition": "off"
+                }
+              }
+            }
+          },
+          "parts": {
+            "<armName>Beam": {
+              "properties": {
+                "zLevel": 10,
+                "offset": [
+                  3.25,
+                  2.0625
+                ],
+                "anchorPart": "<armName>",
+                "fullbright": true,
+                "centered": false,
+                "transformationGroups": [
+                  "<armName>Beam"
+                ]
+              },
+              "partStates": {
+                "<armName>Beam": {
+                  "fire": {
+                    "properties": {
+                      "image": "/vehicles/modularmech/beam/drillbeamminer.png:<frame>"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "particleEmitters": {
+          "<armName>Beam": {
+            "active": false,
+            "anchorPart": "<armName>",
+            "particles": [
+              {
+                "particle": {
+                  "type": "ember",
+                  "fullbright": true,
+                  "color": [
+                    0,
+                    100,
+                    255,
+                    150
+                  ],
+                  "light": [
+                    0,
+                    70,
+                    150
+                  ],
+                  "fade": 0.5,
+                  "destructionAction": "shrink",
+                  "destructionTime": 0.25,
+                  "initialVelocity": [
+                    0,
+                    0
+                  ],
+                  "timeToLive": 0.4,
+                  "layer": "middle",
+                  "variance": {
+                    "initialVelocity": [
+                      1,
+                      1
+                    ],
+                    "timeToLive": 0.2
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "transformationGroups": {
+          "<armName>Beam": {}
+        },
         "sounds": {
-          "<armName>Fire": [
-            "/sfx/weapons/illusion.ogg"
-          ]
+          "<armName>Windup": [],
+          "<armName>Fire": []
         }
       }
     }
   },
+
   {
     "op": "add",
     "path": "/fumechmining1",
     "value": {
       "stats": {
-        "power": 1,
+        "power": 3,
         "energy": 5
       },
       "partParameters": {
-        "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-        "armClass": "GunArm",
-        "rotationLimits" : [-1.75, 1.75],
-        "fireOffset" : [4.65, -0.625],
-        "extendTime": 1,
-        "fireTime": 0.05,
-        "projectileType": "plasmashot",
-        "projectileCount" : 1,
-        "projectileParameters": {
-          "power": 0.075,
-          "timeToLive" : 0.30,
-          "actionOnReap" : [
-	    {
-	      "action" : "config",
-	      "file" : "/projectiles/explosions/hybridminerexplosion3.config"
-	    }          
-          ]
+        "script": "/vehicles/modularmech/armscripts/beamarm.lua",
+        "armClass": "BeamArm",
+        "rotationLimits": [
+          -1.75,
+          1.75
+        ],
+        "fireOffset": [
+          3.25,
+          0
+        ],
+        "windupTime": 0.5,
+        "fireTime": 0.1,
+        "winddownTime": 0.5,
+        "repeatFire": true,
+        "lockAim": false,
+        "beamSourceOffset": [
+          3.25,
+          2.5625
+        ],
+        "beamHeight": 0.8,
+        "beamLength": 30,
+        "beamParticleDensity": 0.75,
+        "beamTileDamage": 12,
+        "beamTileDamageDepth": 4
+      },
+      "damageSources": {
+        "<armName>Beam": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "line": [
+            [
+              3.25,
+              2.5
+            ],
+            [
+              33.25,
+              2.5
+            ]
+          ],
+          "damage": 2,
+          "damageSourceKind": "fireplasma",
+          "damageRepeatTimeout": 0.1,
+          "damageRepeatGroup": "<armName>Beam",
+          "knockback": 0,
+          "rayCheck": true
         }
       },
       "partImages": {
-        "<armName>": "arm/energyrifle.png",
-        "<armName>Fullbright": "arm/energyrifle_fullbright.png"
+        "<armName>": "arm/beamdrill.png",
+        "<armName>Fullbright": "arm/beamdrill_fullbright.png"
       },
-      "defaultPrimaryColors" :   ["c36a5f", "994c49", "6f3130", "551d28"],
-      "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+      "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+      ],
+      "defaultSecondaryColors": [
+        "e6e6e6",
+        "b6b6b6",
+        "7b7b7b",
+        "373737"
+      ],
       "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "active": {
+                  "properties": {
+                    "persistentSound": "/sfx/gun/magnorbs_shield_loop2.ogg"
+                  },
+                  "cycle": 0.1
+                },
+                "windup": {
+                  "cycle": 0.5
+                },
+                "winddown": {
+                  "cycle": 0.5
+                }
+              }
+            },
+            "<armName>Beam": {
+              "default": "off",
+              "states": {
+                "off": {},
+                "fire": {
+                  "frames": 4,
+                  "cycle": 0.25,
+                  "mode": "transition",
+                  "transition": "off"
+                }
+              }
+            }
+          },
+          "parts": {
+            "<armName>Beam": {
+              "properties": {
+                "zLevel": 10,
+                "offset": [
+                  3.25,
+                  2.0625
+                ],
+                "anchorPart": "<armName>",
+                "fullbright": true,
+                "centered": false,
+                "transformationGroups": [
+                  "<armName>Beam"
+                ]
+              },
+              "partStates": {
+                "<armName>Beam": {
+                  "fire": {
+                    "properties": {
+                      "image": "/vehicles/modularmech/beam/drillbeamminer2.png:<frame>"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "particleEmitters": {
+          "<armName>Beam": {
+            "active": false,
+            "anchorPart": "<armName>",
+            "particles": [
+              {
+                "particle": {
+                  "type": "ember",
+                  "fullbright": true,
+                  "color": [
+                    0,
+                    255,
+                    0,
+                    150
+                  ],
+                  "light": [
+                    0,
+                    150,
+                    0
+                  ],
+                  "fade": 0.5,
+                  "destructionAction": "shrink",
+                  "destructionTime": 0.25,
+                  "initialVelocity": [
+                    0,
+                    0
+                  ],
+                  "timeToLive": 0.4,
+                  "layer": "middle",
+                  "variance": {
+                    "initialVelocity": [
+                      1,
+                      1
+                    ],
+                    "timeToLive": 0.2
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "transformationGroups": {
+          "<armName>Beam": {}
+        },
         "sounds": {
-          "<armName>Fire": [
-            "/sfx/weapons/illusion.ogg"
-          ]
+          "<armName>Windup": [],
+          "<armName>Fire": []
         }
       }
     }
   },
+
   {
     "op": "add",
     "path": "/fumechmining2",
     "value": {
       "stats": {
-        "power": 1,
+        "power": 4,
         "energy": 6
       },
       "partParameters": {
-        "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-        "armClass": "GunArm",
-        "rotationLimits" : [-1.75, 1.75],
-        "fireOffset" : [4.65, -0.625],
-        "extendTime": 1,
-        "fireTime": 0.05,
-        "projectileType": "plasmashot",
-        "projectileCount" : 1,
-        "projectileParameters": {
-          "power": 0.3,
-          "timeToLive" : 0.50,
-          "bounces" : 2,
-
-	  "actionOnReap" : [ 
-	    { "action" : "config", "file" : "/projectiles/explosions/hybridminerexplosion5.config" }
-	  ],          
-
-          "actionOnCollide" : [
-	    { "action" : "config","file" : "/projectiles/explosions/hybridminerexplosion5.config" }          
-          ]
+        "script": "/vehicles/modularmech/armscripts/beamarm.lua",
+        "armClass": "BeamArm",
+        "rotationLimits": [
+          -1.75,
+          1.75
+        ],
+        "fireOffset": [
+          3.25,
+          0
+        ],
+        "windupTime": 0.5,
+        "fireTime": 0.1,
+        "winddownTime": 0.5,
+        "repeatFire": true,
+        "lockAim": false,
+        "beamSourceOffset": [
+          3.25,
+          2.5625
+        ],
+        "beamHeight": 1,
+        "beamLength": 60,
+        "beamParticleDensity": 0.75,
+        "beamTileDamage": 24,
+        "beamTileDamageDepth": 6
+      },
+      "damageSources": {
+        "<armName>Beam": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "line": [
+            [
+              3.25,
+              2.5
+            ],
+            [
+              33.25,
+              2.5
+            ]
+          ],
+          "damage": 2,
+          "damageSourceKind": "fireplasma",
+          "damageRepeatTimeout": 0.1,
+          "damageRepeatGroup": "<armName>Beam",
+          "knockback": 0,
+          "rayCheck": true
         }
       },
       "partImages": {
-        "<armName>": "arm/energyrifle.png",
-        "<armName>Fullbright": "arm/energyrifle_fullbright.png"
+        "<armName>": "arm/beamdrill.png",
+        "<armName>Fullbright": "arm/beamdrill_fullbright.png"
       },
-      "defaultPrimaryColors" :   ["c36a5f", "994c49", "6f3130", "551d28"],
-      "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+      "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+      ],
+      "defaultSecondaryColors": [
+        "e6e6e6",
+        "b6b6b6",
+        "7b7b7b",
+        "373737"
+      ],
       "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "active": {
+                  "properties": {
+                    "persistentSound": "/sfx/gun/magnorbs_shield_loop2.ogg"
+                  },
+                  "cycle": 0.1
+                },
+                "windup": {
+                  "cycle": 0.5
+                },
+                "winddown": {
+                  "cycle": 0.5
+                }
+              }
+            },
+            "<armName>Beam": {
+              "default": "off",
+              "states": {
+                "off": {},
+                "fire": {
+                  "frames": 4,
+                  "cycle": 0.25,
+                  "mode": "transition",
+                  "transition": "off"
+                }
+              }
+            }
+          },
+          "parts": {
+            "<armName>Beam": {
+              "properties": {
+                "zLevel": 10,
+                "offset": [
+                  3.25,
+                  2.0625
+                ],
+                "anchorPart": "<armName>",
+                "fullbright": true,
+                "centered": false,
+                "transformationGroups": [
+                  "<armName>Beam"
+                ]
+              },
+              "partStates": {
+                "<armName>Beam": {
+                  "fire": {
+                    "properties": {
+                      "image": "/vehicles/modularmech/beam/drillbeamminer3.png:<frame>"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "particleEmitters": {
+          "<armName>Beam": {
+            "active": false,
+            "anchorPart": "<armName>",
+            "particles": [
+              {
+                "particle": {
+                  "type": "ember",
+                  "fullbright": true,
+                  "color": [
+                    255,
+                    0,
+                    255,
+                    150
+                  ],
+                  "light": [
+                    120,
+                    0,
+                    120
+                  ],
+                  "fade": 0.5,
+                  "destructionAction": "shrink",
+                  "destructionTime": 0.25,
+                  "initialVelocity": [
+                    0,
+                    0
+                  ],
+                  "timeToLive": 0.4,
+                  "layer": "middle",
+                  "variance": {
+                    "initialVelocity": [
+                      1,
+                      1
+                    ],
+                    "timeToLive": 0.2
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "transformationGroups": {
+          "<armName>Beam": {}
+        },
         "sounds": {
-          "<armName>Fire": [
-            "/sfx/weapons/illusion.ogg"
-          ]
+          "<armName>Windup": [],
+          "<armName>Fire": []
         }
       }
     }
-  },  
+  },
+
+  
   {
     "op": "add",
     "path": "/fumechdensinium",
