@@ -1,0 +1,158 @@
+{
+  "projectileName" : "greenglobeforce",
+  "physics" : "default",
+  "timeToLive" : 3,
+  "image" : "greenglobeforce.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 2,
+  "windupFrames" : 0,
+  "winddownFrames" : 0,
+  
+  "onlyHitTerrain" : false,  
+  "piercing":false, 
+  "universalDamage" : true,
+  
+  "lightColor":[-14,-67,-16],
+  
+  "inaccuracy" : 0,  
+  "bounces" : 1,
+  "speed" : 0,
+  "power" : 0,
+  "ignoreTerrain" : false,
+  "controlForce" : -5,
+  "targetTrackingForce" : 60,
+  "pickupDistance" : 1.8,
+  "snapDistance" : 4.0,
+  "minVelocity" : 1,
+  
+  "damageKind" : "NoDamage",
+  "baseDps" : 0,
+  "knockback" : 0,
+  
+  "actionOnCollide" : [
+            {
+              "action":"sound",
+              "options":["/sfx/gun/erchiuseyebeam_start.ogg"], 
+              "time":0.1, 
+              "repeat":false
+            }, 
+            {
+              "time":0.01, 
+              "repeat":true, 
+              "action":"projectile", 
+              "type":"greenglobe", 
+              "config":{
+                "statusEffects":[
+                  {"effect":"paralysis", "duration":10}, 
+                  {"effect":"bouncy", "duration":10}
+                ], 
+              "minVelocity":1, 
+              "ignoreTerrain":false, 
+              "speed":60.0, 
+              "angleAdjust":-35, 
+              "innacuracy":0.0, 
+              
+              "bounces":0, 
+              "knockback":80, 
+              "timeToLive":2.0, 
+                "actionOnReap":[
+                  {
+                    "action":"sound",
+                    "options":["/sfx/gun/elemental_lance.ogg"], 
+                    "time":0.0, 
+                    "repeat":false
+                  }, 
+                  {
+                    "time":0.01, 
+                    "repeat":true, 
+                    "action":"projectile", 
+                    "type":"pulsecannonexplosion", 
+                    "config":{
+                      "speed":0.0, 
+                      "innacuracy":0.0, 
+                      "processing":"?hueshift=-80", 
+                      "bounces":0, 
+                      "knockback":0, 
+                      "timeToLive":0.2, 
+                      "actionOnReap":[], 
+                      "power":0.0
+                    }
+                  }
+                ], 
+                "power":0.0
+              }
+            }
+  ],
+  "actionOnReap":[
+            {
+            "action":"sound",
+            "options":["/sfx/gun/erchiuseyebeam_start.ogg"], 
+            "time":0.1, 
+            "repeat":false
+            }, 
+            {
+            "time":0.01, 
+            "repeat":true, 
+            "action":"projectile", 
+            "type":"greenglobe", 
+            "config":{
+              "statusEffects":[
+                {"effect":"paralysis", "duration":10}, 
+                {"effect":"bouncy", "duration":10}
+              ], 
+              "minVelocity":1, 
+              "ignoreTerrain":false, 
+              "speed":50.0, 
+              "angleAdjust":-35, 
+              "innacuracy":0.0, 
+              "bounces":0, 
+              "knockback":80, 
+              "timeToLive":2.0, 
+                "actionOnReap":[
+                  {
+                    "action":"sound",
+                    "options":["/sfx/gun/elemental_lance.ogg"], 
+                    "time":0.0, 
+                    "repeat":false
+                  }, 
+                  {
+                    "time":0.01, 
+                    "repeat":true, 
+                    "action":"projectile", 
+                    "type":"pulsecannonexplosion", 
+                    "config":{
+                      "speed":0.0, 
+                      "innacuracy":0.0, 
+                      "processing":"?hueshift=-80", 
+                      "bounces":0, 
+                      "knockback":0, 
+                      "timeToLive":0.2, 
+                      "actionOnReap":[
+            {
+              "time":0.01, 
+              "repeat":true, 
+              "action":"projectile", 
+              "type":"bioboom"
+            }                      
+                      ], 
+                      "power":0.0
+                    }
+                  }
+                ], 
+                "power":0.0
+                }
+              }
+  ],
+            
+  "renderLayer" : "ItemDrop+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ "poisondrip" ],
+  
+  "scripts" : [
+    "/scripts/projectiles/boomerangprojectile.lua",
+    "/projectiles/guns/tentaclefist/tentaclefist.lua"
+  ],
+  
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+}

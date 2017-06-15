@@ -6,7 +6,7 @@
   "rarity" : "rare",
   "description" : "Bone-formed biological weapon.
 ^yellow;Inflicts bio-ooze effect^reset;
-^green;Spawns bio-ooze^reset;",
+^green;Aimable stun-balls^reset;",
     "shortdescription" : "Bio Rifle",
   "category" : "Bio Weapon",
   "level" : 4,
@@ -94,122 +94,6 @@
   "critBonus" : 12, 
 
   "altAbilityType" : "biogrenadelauncher",
-  
-  
-  "altAbility" : {
-    "baseDps":0, 
-    "fireTime":5.0, 
-    "innacuracy":0.0, 
-    "energyUsage":40, 
-    "projectileEnergyCost":80, 
-    "cooldownTime":1.5, 
-    "damageConfig":{
-      "damageSourceKind":"noDamage", 
-      "baseDps":0, 
-      "knockback":0
-    }, 
-    "spinRate":0, 
-    "projectileType":"invisibletentaclefist", 
-    "projectileCount":1, 
-    
-    "projectileParameters":{ 
-      "piercing":false, 
-      "periodicActions":[
-        {
-          "time":0.01, 
-          "repeat":true, 
-          "action":"projectile", 
-          "type":"greenglobe", 
-          "config":{
-            "speed":0.0, 
-            "innacuracy":0.0, 
-            "processing":
-              "?hueshift=30", 
-              "bounces":0, 
-              "knockback":0, 
-              "timeToLive":0.01, 
-              "actionOnReap":[], 
-              "power":0.0
-              }
-            }, 
-          {
-            "action":"sound",
-            "options":["/sfx/gun/electricrailgun1.ogg"], 
-            "time":0.1, 
-            "repeat":false
-          }, 
-          {
-            "action":"sound",
-            "options":["/sfx/gun/burstshot1.ogg"], 
-            "time":0.0, 
-            "repeat":false
-          }
-      ],
-          "power":0, 
-          "lightColor":[-14,-67,-16], 
-          "timeToLive":8.5, 
-          "controlForce":-5, 
-          "pickupDistance":1.8, 
-          "speed":0, 
-          "knockback":20, 
-          "actionOnReap":[
-            {
-            "action":"sound",
-            "options":["/sfx/gun/erchiuseyebeam_start.ogg"], 
-            "time":0.1, 
-            "repeat":false
-            }, 
-            {
-            "time":0.01, 
-            "repeat":true, 
-            "action":"projectile", 
-            "type":"redglobe", 
-            "config":{
-              "statusEffects":[
-                {"effect":"paralysis", "duration":10}, 
-                {"effect":"bouncy", "duration":10}
-              ], 
-              "minVelocity":1, 
-              "ignoreTerrain":false, 
-              "speed":50.0, 
-              "angleAdjust":-35, 
-              "innacuracy":0.0, 
-              "processing":"?hueshift=250", 
-              "bounces":0, 
-              "knockback":80, 
-              "timeToLive":2.0, 
-                "actionOnReap":[
-                  {
-                    "action":"sound",
-                    "options":["/sfx/gun/elemental_lance.ogg"], 
-                    "time":0.0, 
-                    "repeat":false
-                  }, 
-                  {
-                    "time":0.01, 
-                    "repeat":true, 
-                    "action":"projectile", 
-                    "type":"pulsecannonexplosion", 
-                    "config":{
-                      "speed":0.0, 
-                      "innacuracy":0.0, 
-                      "processing":"?hueshift=-80", 
-                      "bounces":0, 
-                      "knockback":0, 
-                      "timeToLive":0.2, 
-                      "actionOnReap":[], 
-                      "power":0.0
-                    }
-                  }
-                ], 
-                "power":0.0
-                }
-              }
-            ]          
-    }
-    
-  },
-  
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
