@@ -11,7 +11,7 @@ armorBonus={
 
 armorEffect={
 	{stat = "grit", amount = 0.12},
-        {stat = "shieldRegen", amount = 0.3},
+        {stat = "shieldStaminaRegen", amount = 0.3},
         {stat = "protoImmunity", amount = 1.0}
 }
 

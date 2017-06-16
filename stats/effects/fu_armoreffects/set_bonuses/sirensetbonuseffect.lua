@@ -5,12 +5,12 @@ armorBonus={
 	{stat = "protection", amount = 5},
 	{stat = "breathProtection", amount = 1.0},
 	{stat = "poisonResistance", amount = 0.22},
-	{stat = "shieldRegen", baseMultiplier = 1.15}
+	{stat = "shieldStaminaRegen", baseMultiplier = 1.15}
 }
 
 armorEffect={
 	{stat = "breathProtection", amount = 1.0},
-	{stat = "shieldRegen", baseMultiplier = 1.15}
+	{stat = "shieldStaminaRegen", baseMultiplier = 1.15}
 }
 
 setName="fu_sirenset"
