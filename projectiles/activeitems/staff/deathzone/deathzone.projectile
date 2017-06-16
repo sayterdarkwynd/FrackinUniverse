@@ -1,0 +1,40 @@
+{
+  "projectileName" : "deathzone",
+  "physics" : "laser",
+  "timeToLive" : 0.1,
+  "image" : "deathzone.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 12,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 0.25,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fungravityexplosion2",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 30, "damageSourceKind" : "shadow" }
+   }
+  ],
+  "actionOnReap" : [],
+  "speed" : 0,
+  "power" : 5,
+
+  "onlyHitTerrain" : true,
+  "persistentStatusEffects" : [ "tentacleeffect"  ],
+  "statusEffectArea" : [ [-3.0, 0], [-3.0, -3.0], [0, -3.0], [3.0, -3.0], [3.0, 0], [3.0, 3.0], [0, 3.0], [-3.0, 3.0] ],
+  "damageKind" : "shadow",
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : ["/projectiles/activeitems/staff/staffprojectile.lua"],
+
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+}

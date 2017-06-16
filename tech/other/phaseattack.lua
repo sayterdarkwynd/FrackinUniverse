@@ -16,7 +16,7 @@ function uninit()
 end
 
 function update(args)
-  if not self.specialLast and args.moves["special"] == 1 then
+  if not self.specialLast and args.moves["special1"] then
     attemptActivation()
   end
   self.specialLast = args.moves["special"] == 1

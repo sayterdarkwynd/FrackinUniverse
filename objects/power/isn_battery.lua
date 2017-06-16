@@ -76,8 +76,13 @@ function isn_getCurrentPowerOutput(divide)
 end
 
 function onNodeConnectionChange()
-	if isn_checkValidOutput() then object.setOutputNodeLevel(0, true)
-	else object.setOutputNodeLevel(0, false) end
+    if isn_checkValidOutput() then
+        storage.active = true;
+        object.setOutputNodeLevel(0, true);
+    else
+        storage.active = false;
+        object.setOutputNodeLevel(0, false);
+    end
 end
 
 function onInputNodeChange(args)

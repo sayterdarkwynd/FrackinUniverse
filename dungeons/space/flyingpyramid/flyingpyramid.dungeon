@@ -13,8 +13,9 @@
 
   "parts" : [
 
-    // ENEMY GROUPS
-    {
+  	//Hazard groups
+	
+{
       "name" : "smallgroup-low1",
       "rules" : [
         [ "ignorePartMaximumRule" ]
@@ -325,7 +326,48 @@
       "chance" : 1,
       "markDungeonId" : false
     },
+	
+    // HAZARD ZONE
+    {
+      "name" : "hazard-pirate1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/hazard-pirate1.json" ],
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "hazard-pirate2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/hazard-pirate2.json" ],
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "hazard-pirate3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/hazard-pirate3.json" ],
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+	
+	//Energy
 
+    {
+      "name" : "energycanister",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/extrahazards/energycanister.json" ],
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+  
 	//Rooms
 
     {

@@ -36,7 +36,7 @@ function update(args)
    if not self.specialLast and args.moves["special1"] then
     attemptActivation()
   end
-  self.specialLast = args.moves["special"] == 1
+  self.specialLast = args.moves["special1"]
   self.pressDown = args.moves["down"]
   if not args.moves["special1"] then		  
     self.forceTimer = nil		
@@ -55,8 +55,8 @@ function update(args)
       end
     
     if self.pressDown and self.bombTimer == 0 then
-      self.bombTimer = 1.1
-      local configBombDrop = { power = 10 }
+      self.bombTimer = 1.6
+      local configBombDrop = { power = 20 }
       animator.playSound("bombdrop")
       world.spawnProjectile("distortionbomb", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
     end

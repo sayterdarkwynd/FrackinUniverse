@@ -158,7 +158,7 @@ function isn_slotDecayCheck(slot, chance)
 		if math.random(1,60) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end
 	
-	if slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "neptuniumrod" then
+	if slotContent.name == "tritium" or slotContent.name == "deuterium" or slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "neptuniumrod" then
 		if math.random(1,80) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end	
 	

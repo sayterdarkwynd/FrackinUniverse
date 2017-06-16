@@ -54,8 +54,6 @@ function applyDamageRequest(damageRequest)
   local healthLost = math.min(damage, status.resource("health"))
   if healthLost > 0 and damageRequest.damageType ~= "Knockback" then
     status.modifyResource("health", -healthLost)
-    self.damageFlashTime = 0.07
-  end
     if hitType == "stronghit" then
       self.damageFlashTime = 0.07		
       self.damageFlashType = "strong"		
@@ -65,8 +63,8 @@ function applyDamageRequest(damageRequest)
     else		
       self.damageFlashTime = 0.07		
       self.damageFlashType = "default"		
-    end  
-  
+    end 
+  end
 
   status.addEphemeralEffects(damageRequest.statusEffects, damageRequest.sourceEntityId)
 
@@ -180,17 +178,12 @@ function update(dt)
   end
 end
 
-function inLiquid() --no fall damage while submerged in liquids, Period.
-	local excludeLiquidIds={49,50,62,63,64,66} --gases are not liquids.
-	local liquidID = 0
-	if mcontroller.liquidPercentage() > 0.1 then
-		liquidID = mcontroller.liquidId()
-    for i=1,excludeLiquidIds.n do
-      if excludeLiquidIds[i] == liquidID then
-				liquidID=0
-        break
-      end
+function inLiquid() --no fall damage while submerged in liquids
+    local excludeLiquidIds={[49] = true,[50] = true,[62] = true,[63] = true,[64] = true,[66] = true} --gases are not liquids.
+    local liquidID = 0
+    if mcontroller.liquidPercentage() > 0.1 then
+    liquidID = mcontroller.liquidId()
+       liquidID = excludeLiquidIds[liquidID] and 0 or liquidID 
     end
-	end
-	return liquidID > 0
+    return liquidID > 0
 end

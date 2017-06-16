@@ -25,8 +25,11 @@ function init()
     end
     storage.spawnPosition = groundSpawnPosition or position
   end
-  self.behavior = behavior.behavior(config.getParameter("behavior"), config.getParameter("behaviorConfig"), _ENV)
-  self.behaviorState = self.behavior:blackboard()
+
+
+  self.behavior = behavior.behavior(config.getParameter("behavior"), sb.jsonMerge(config.getParameter("behaviorConfig", {}), skillBehaviorConfig()), _ENV)
+
+  self.board = self.behavior:blackboard()
   self.board:setPosition("spawn", storage.spawnPosition)
 
   self.collisionPoly = mcontroller.collisionPoly()
@@ -38,9 +41,9 @@ function init()
     monster.setDeathParticleBurst(config.getParameter("deathParticles"))
   end
 
-  script.setUpdateDelta(1)
+  script.setUpdateDelta(config.getParameter("initialScriptDelta", 5))
   mcontroller.setAutoClearControls(false)
-  self.behaviorTickRate = config.getParameter("behaviorUpdateDelta", 5)
+  self.behaviorTickRate = config.getParameter("behaviorUpdateDelta", 2)
   self.behaviorTick = math.random(1, self.behaviorTickRate)
 
   animator.setGlobalTag("flipX", "")
@@ -87,14 +90,14 @@ function init()
 
 
   monster.setName("Magma Titan")
+
   monster.setDamageBar("special")
 
   monster.setInteractive(config.getParameter("interactive", false))
+
   monster.setAnimationParameter("chains", config.getParameter("chains"))
 end
 
--- This is called in update() using pcall
--- to catch errors
 function update(dt)
   if config.getParameter("facingMode", "control") == "transformation" then
     mcontroller.controlFace(1)
@@ -131,7 +134,6 @@ function update(dt)
     monster.setDamageOnTouch(self.touchDamageEnabled)
   end
 
-
   if self.behaviorTick >= self.behaviorTickRate then
     self.behaviorTick = self.behaviorTick - self.behaviorTickRate
     mcontroller.clearControls()
@@ -143,15 +145,14 @@ function update(dt)
     self.forceRegions:clear()
     self.damageSources:clear()
     self.damageParts = {}
-    self.board:clearControls()
     clearAnimation()
 
     if self.behavior then
       local board = self.behavior:blackboard()
-      self.board:setEntity("self", entity.id())
-      self.board:setPosition("self", mcontroller.position())
-      self.board:setNumber("dt", dt * self.behaviorTickRate)
-      self.board:setNumber("facingDirection", self.facingDirection or mcontroller.facingDirection())
+      board:setEntity("self", entity.id())
+      board:setPosition("self", mcontroller.position())
+      board:setNumber("dt", dt * self.behaviorTickRate)
+      board:setNumber("facingDirection", self.facingDirection or mcontroller.facingDirection())
 
       self.behavior:run(dt * self.behaviorTickRate)
     end
@@ -177,8 +178,21 @@ function update(dt)
     overrideCollisionPoly()
   end
   self.behaviorTick = self.behaviorTick + 1
+end
 
-  movement()
+function skillBehaviorConfig()
+  local skills = config.getParameter("skills", {})
+  local skillConfig = {}
+
+  for _,skillName in pairs(skills) do
+    local skillHostileActions = root.monsterSkillParameter(skillName, "hostileActions")
+    if skillHostileActions then
+      construct(skillConfig, "hostileActions")
+      util.appendLists(skillConfig.hostileActions, skillHostileActions)
+    end
+  end
+
+  return skillConfig
 end
 
 function interact(args)
@@ -193,8 +207,7 @@ end
 function die()
   if not capturable.justCaptured then
     if self.deathBehavior then
-      local deathBehaviorState = self.deathBehavior:init(_ENV)
-      self.deathBehavior:run(deathBehaviorState, script.updateDt())
+      self.deathBehavior:run(script.updateDt())
     end
     capturable.die()
   end
