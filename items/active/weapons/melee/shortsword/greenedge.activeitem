@@ -1,0 +1,42 @@
+{
+  "itemName" : "greenedge",
+  "price" : 22250,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A rather fast and poisonous sword.",
+  "shortdescription" : "Greenedge",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","bioweapon", "upgradeableWeapon"],
+
+  "inventoryIcon" : "greenedge.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "greenedge.png"
+  },
+
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.43,
+    "baseDps" : 7,
+    "comboSpeedFactor" : 0.08,
+    "damageConfig" : {
+      "damageSourceKind" : "radioactive"
+    }
+  },
+  "critChance" : 7,
+  "critBonus" : 4, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"//,
+  //"collectablesOnPickup" : { "fu_warrior2" : "greenedge" }
+
+}
