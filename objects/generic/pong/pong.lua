@@ -46,12 +46,12 @@ function update(dt)
 	end
   elseif isstarted then
   if posb.x <= 25 and posb.x >= 25-posb.dis and posl >= posb.y-42.5 and posl <= posb.y+2.5 then
-    local newangle = ((posb.y-posl-20)*3+(90*2-posb.angle))/2
+    local newangle = ((posb.y-posl-20)*4+(90*2-posb.angle))/2
 	posb.angle = newangle-360*math.floor(newangle/360)
     posb.x = 25
 	posb.dis = posb.dis + 0.1
   elseif posb.x >= 365 and posb.x <= 365+posb.dis and posr >= posb.y-42.5 and posr <= posb.y+2.5 then
-    local newangle = ((posb.y-posr-20)*-3+(180*2-posb.angle))/2
+    local newangle = ((posb.y-posr-20)*-4+(180*2-posb.angle))/2
 	posb.angle = newangle-360*math.floor(newangle/360)
 	posb.x = 365
 	posb.dis = posb.dis + 0.1
