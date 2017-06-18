@@ -56,10 +56,8 @@ function update(dt)
 	posb.x = 365
 	posb.dis = posb.dis + 0.1
 	if posb.angle < 91 then
-	  sb.logInfo('bug fixed')
 	  posb.angle = 225
 	elseif posb.angle > 271 then
-	  sb.logInfo('bug fixed')
 	  posb.angle = 135
 	end
   end
