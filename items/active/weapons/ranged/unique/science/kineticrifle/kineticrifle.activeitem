@@ -1,0 +1,94 @@
+{
+  "itemName" : "kineticrifle",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A truly unique weapon!
+^yellow;Incapacitate enemies^reset;
+^green;Redirect in zero-g",
+  "shortdescription" : "Redirector",
+  "tooltipKind" : "gun2",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
+  "inventoryIcon" : "isn_microwaverayicon.png",
+  "animation" : "isn_microwaveray.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_microwaveray.png",
+    "middlefullbright" : "isn_microwaverayfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3pink.png"
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [153, 45, 215]
+    }},
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/isn_heatray.ogg" ]
+    }
+  },
+  "baseOffset" : [0.87, 0.35],
+  "muzzleOffset" : [0.8, 0.225],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.08,
+    "baseDps" : 10.2,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileCount" : 1,
+    
+    "projectileType" : "waveblastgravity",
+    "projectileParameters" : {
+      "knockback" : 1.3,
+      "speed" : 15,
+      "timeToLive" : 0.35
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 4,
+  "critBonus" : 5,
+  "altAbilityType" : "furocketboom",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
