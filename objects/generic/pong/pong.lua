@@ -52,15 +52,9 @@ function update(dt)
 	posb.dis = posb.dis + 0.1
 	pane.playSound("/objects/generic/pong/paddle.ogg")
   elseif posb.x >= 365 and posb.x <= 365+posb.dis and posr >= posb.y-42.5 and posr <= posb.y+2.5 then
-    local newangle = ((posb.y-posr-20)*-3+(180*2-posb.angle))/2
-	posb.angle = newangle-360*math.floor(newangle/360)
+	posb.angle = (bounce((posb.y-posr-20)*3,90)+bounce(posb.angle,90))/2
 	posb.x = 365
 	posb.dis = posb.dis + 0.1
-	if posb.angle < 91 then
-	  posb.angle = 225
-	elseif posb.angle > 271 then
-	  posb.angle = 135
-	end
 	pane.playSound("/objects/generic/pong/paddle.ogg")
   end
   if posb.y < posr + 5 then
