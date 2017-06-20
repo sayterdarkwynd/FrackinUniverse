@@ -1,21 +1,22 @@
 {
   "projectileName" : "magnorbneutron",
-  "image" : "magnorbshadow.png",
+  "image" : "magnorbneutron.png",
   "pointLight" : false,
   "flippable" : true,
   "orientationLocked" : true,
 
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
-  "power" : 3.5,
-  "speed" : 15,
-  "damageKind" : "cosmicplasma",
+  "power" : 6.5,
+  "speed" : 40,
+  "damageKind" : "radioactive",
   "physics" : "laser",
   "fullbright" : true,
-  "bounces" : 6,
+  "bounces" : 2,
   "piercing" : true,
   "timeToLive" : 5,
-  "lightColor" : [63, 0, 76],
+  "lightColor" : [199, 199, 199],
 
+  "emitters" : [ "defaultwhite" ],
   "statusEffects" : [ ],
   
   "actionOnReap" : [ ],
@@ -34,7 +35,7 @@
   "actionOnCollide" : [
     {
       "action" : "projectile",
-      "type" : "ngravityexplosion",
+      "type" : "pullshot2",
       "fuzzAngle" : 0,
       "inheritDamageFactor" : 0.25,
       "angleAdjust" : 0
