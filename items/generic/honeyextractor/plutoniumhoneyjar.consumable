@@ -4,7 +4,22 @@
   "category" : "fuel",
   "price" : 45,
   "inventoryIcon" : "plutoniumhoneyjar.png",
-  "description" : "FUEL! DO NOT EAT!",
+  "description" : "Plutonium-enriched honey. Probably dangerous. Also useful, providing great healing.",
   "shortdescription" : "Plutonium Honey Jar",
-  "fuelAmount" : 12
+  "fuelAmount" : 12,
+  
+  "effects" : [ [
+    {
+        "effect" : "honeyheal4",
+        "duration" :30
+    },
+    {
+        "effect" : "fedhoney",
+        "duration" : 180
+    }
+  ] ],
+  "blockingEffects" : [
+    "fedhoney"
+  ]
+  
  }
