@@ -6,7 +6,7 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 8,
+            "frames" : 7,
             "cycle" : 1.2,
             "mode" : "loop",
             "frameProperties" : {
@@ -14,7 +14,7 @@
             }
           },
           "fly" : {
-            "frames" : 8,
+            "frames" : 7,
             "cycle" : 1.2,
             "mode" : "loop",
             "frameProperties" : {
@@ -23,13 +23,13 @@
           }, 
           
           "firewindup" : {
-            "frames" : 8,
+            "frames" :7,
             "cycle" : 2.5,
             "mode" : "transition",
             "transition" : "fire"
           }, 
           "firewinddown" : {
-            "frames" : 8,
+            "frames" : 7,
             "cycle" : 2.5,
             "mode" : "loop"
           },            
@@ -40,7 +40,7 @@
             "transition" : "firewinddown"
           },  
           "chargewindup" : {
-            "frames" : 8,
+            "frames" : 7,
             "cycle" : 0.25,
             "mode" : "loop",
             "properties" : {
@@ -48,7 +48,7 @@
             }
           },
           "chargewinddown" : {
-            "frames" : 8,
+            "frames" : 7,
             "cycle" : 0.25,
             "mode" : "loop",
             "properties" : {
@@ -61,25 +61,19 @@
             "mode" : "loop"
           },  
           "crash" : {
-            "frames" : 8,
+            "frames" : 7,
             "cycle" : 0.375,
             "mode" : "loop"
           },  
           "hurt" : {
             "frames" : 1,
             "cycle" : 0.75,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap3.ogg", "", "", "", "/sfx/npc/monsters/batong_flap3.ogg", "", "" ]
-            }
+            "mode" : "loop"
           },
           "stunned" : {
             "frames" : 1,
             "cycle" : 0.75,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap3.ogg", "", "", "", "/sfx/npc/monsters/batong_flap3.ogg", "", "" ]
-            }
+            "mode" : "loop"
           }
         }
       },
