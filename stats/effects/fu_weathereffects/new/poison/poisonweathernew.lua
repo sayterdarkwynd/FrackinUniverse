@@ -34,23 +34,32 @@ function checkEffectValid()
   if world.entityType(entity.id()) ~= "player" then
     deactivateVisualEffects()
     effect.expire()
+	return false;
   end
-	if (status.statPositive("poisonStatusImmunity")) or (status.statPositive("gasImmunity")) or (world.type()=="unknown") then
+  if  (world.type()=="unknown") then
 	  deactivateVisualEffects()
 	  self.usedIntro = nil	
 	  effect.expire()
-	elseif ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
+	  return false;
+  elseif (status.statPositive("poisonStatusImmunity")) or( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
 	  self.usedIntro = nil
 	  effect.expire() 
-	else
+	  return false;
+  elseif (status.statPositive("gasImmunity")) or (status.statPositive("poisongasImmunity")) then
+      deactivateVisualEffects()
+	  self.usedIntro = nil
+	  effect.expire() 
+	  return false
+  else
 	  -- activate visuals and check stats
-	  if (self.timerRadioMessage == 0) and not self.usedUntro then
+  if (self.timerRadioMessage == 0) and not self.usedIntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
 	    self.usedIntro = 1 
 	    self.timerRadioMessage = 10 
-	  end
-	end
+    end
+  end
+  return true;
 end
 
 
@@ -161,14 +170,11 @@ end
 
 function update(dt)
 
+  self.biomeTimer = self.biomeTimer - dt 
+  self.biomeTimer2 = self.biomeTimer2 - dt 
+  self.timerRadioMessage = self.timerRadioMessage - dt
 
-checkEffectValid()
-
-self.biomeTimer = self.biomeTimer - dt 
-self.biomeTimer2 = self.biomeTimer2 - dt 
-self.timerRadioMessage = self.timerRadioMessage - dt
-
---set the base stats
+  -- set the base stats
   self.baseRate = config.getParameter("baseRate",0)                
   self.baseDmg = config.getParameter("baseDmgPerTick",0)        
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
@@ -187,46 +193,46 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight() 
 
-      if (status.stat("poisonResistance",0) <= self.effectCutoffValue) then  
-        self.windLevel =  world.windLevel(mcontroller.position())
-        activateVisualEffects()
-        if self.windLevel >= 40 then
-                setWindPenalty() 
-                if self.timerRadioMessage == 0 then
-                  if not self.usedWind then
-                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
-                    self.timerRadioMessage = 220 
-                    self.usedWind = 1
-                  end
-		end
-        end
+  if (checkEffectValid()) then  
+      self.windLevel =  world.windLevel(mcontroller.position())
+      activateVisualEffects()
+      if self.windLevel >= 40 then
+          setWindPenalty() 
+          if self.timerRadioMessage == 0 then
+              if not self.usedWind then
+                  world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
+                  self.timerRadioMessage = 220 
+                  self.usedWind = 1
+              end
+		  end
+      end
 
-	self.damageApply = setEffectDamage()   
-	self.debuffApply = setEffectDebuff()  
+	  self.damageApply = setEffectDamage()   
+	  self.debuffApply = setEffectDebuff()  
 	
-	      if (self.biomeTimer2 <= 0) and (status.stat("powerMultiplier") >=0.05) then
-		    effect.addStatModifierGroup({
+	  if (self.biomeTimer2 <= 0) and (status.stat("powerMultiplier") >=0.05) then
+		  effect.addStatModifierGroup({
 		      {stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
-		    })
-		makeAlert()
-		self.biomeTimer2 = setEffectTime()
-	      end 
+		  })
+		  makeAlert()
+		  self.biomeTimer2 = setEffectTime()
+	  end 
         
-          status.modifyResource("health", -self.damageApply * dt)
+      status.modifyResource("health", -self.damageApply * dt)
         
-           if (status.stat("poisonResistance",0) <= 0) then 
-             self.modifier = 0 
-           end
+      if (status.stat("poisonResistance",0) <= 0) then 
+          self.modifier = 0 
+      end
            
-	   self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
-           if self.modifier <= 0.15 then 
-             self.modifier = 0.15 
-           end	
-             	mcontroller.controlModifiers({
-	         	airJumpModifier = 1 * self.modifier, 
-	         	speedModifier = (1 * self.modifier) + 0.1 
-             })               
-      end     
+	  self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
+      if self.modifier <= 0.15 then 
+          self.modifier = 0.15 
+      end	
+      mcontroller.controlModifiers({
+	      airJumpModifier = 1 * self.modifier, 
+	      speedModifier = (1 * self.modifier) + 0.1 
+      })               
+  end     
 end       
 
 function uninit()

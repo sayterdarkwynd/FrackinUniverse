@@ -17,7 +17,9 @@ end
 
 function update(dt)
   status.modifyResourcePercentage("health", self.healingRate * dt)
-  status.modifyResourcePercentage("energy", (-self.healingRate * dt) * 2)
+  if stat.resource("energy") then
+    status.modifyResourcePercentage("energy", (-self.healingRate * dt) * 2)
+  end
 end
 
 function uninit()

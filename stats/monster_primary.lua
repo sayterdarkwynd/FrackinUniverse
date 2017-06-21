@@ -183,7 +183,7 @@ function inLiquid() --no fall damage while submerged in liquids
     local liquidID = 0
     if mcontroller.liquidPercentage() > 0.1 then
     liquidID = mcontroller.liquidId()
-       liquidID = exludeLiquidIds[liquidID] and 0 or liquidID 
+       liquidID = excludeLiquidIds[liquidID] and 0 or liquidID 
     end
     return liquidID > 0
 end

@@ -25,9 +25,9 @@ function init()
      -- health effects
           self.critChance = config.getParameter("critChance", 0)
           self.critBonus = config.getParameter("critBonus", 0)
-          self.shieldBonusShield = config.getParameter("shieldBonusShield", 1)  -- bonus shield HP
-          self.shieldBonusRegen = config.getParameter("shieldBonusRegen", 1)  -- bonus shield regen time
- 	  self.shieldHealthRegen = config.getParameter("shieldHealthRegen", 1)
+          self.shieldBonusShield = config.getParameter("shieldBonusShield", 0)  -- bonus shield HP
+          self.shieldBonusRegen = config.getParameter("shieldBonusRegen", 0)  -- bonus shield regen time
+ 	  self.shieldHealthRegen = config.getParameter("shieldHealthRegen", 0)
  	  shieldEnergyRegen = config.getParameter("shieldEnergyRegen",0)
  	  shieldHealthBonus = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))
  	  shieldEnergyBonus = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))

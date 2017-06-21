@@ -1,0 +1,81 @@
+{
+  "itemName" : "magnorbneutron",
+  "level" : 6,
+  "price" : 9500,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Superior gravity orbs",
+  "shortdescription" : "Neutron Star Orbs",
+  "tooltipKind" : "magnorb",
+  "category" : "Magnorb",
+  "twoHanded" : true,
+  "itemTags" : [ "weapon", "magnorb", "shadow", "upgradeableWeapon" ],
+
+  "inventoryIcon" : "iconshadow.png",
+  "animation" : "magnorbneutron.animation",
+  "animationParts" : {
+    "glove" : "gloveneutron.png",
+    "orb1" : "orbneutron.png",
+    "orb2" : "orbneutron.png",
+    "orb3" : "orbneutron.png",
+    "orb4" : "orbneutron.png"
+  },
+
+  "animationCustom" : { 
+  
+    "lights" : { 
+      "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [85, 0, 92],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+      }
+    } 
+  
+  },
+
+  "scripts" : ["magnorbsquad.lua"],
+
+  "orbitRate" : 1.02,
+
+  "elementalType" : "shadow",
+
+  "projectileType" : "magnorbneutron",
+  
+  "projectileParameters" : {
+    "power" : 3.75,
+    "knockback" : 15,
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 30,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 1.0
+  },
+
+  "shieldKnockback" : 5,
+  "shieldEnergyCost" : 35,
+  "shieldHealth" : 110,
+  "shieldPower" : "Gravity Well",
+  "critChance" : 2,
+  "critBonus" : 2,
+  
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  }, 
+  "builder" : "/items/buildscripts/buildmagnorb.lua"
+}

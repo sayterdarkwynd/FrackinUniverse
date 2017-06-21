@@ -11,23 +11,18 @@
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/beamarm.lua",
         "armClass": "BeamArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          3.25,
-          0
-        ],
+        
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [3.25,0],
+        
         "windupTime": 0.5,
         "fireTime": 0.1,
         "winddownTime": 0.5,
+        
         "repeatFire": true,
         "lockAim": false,
-        "beamSourceOffset": [
-          3.25,
-          2.5625
-        ],
+        
+        "beamSourceOffset": [3.25,2.5625],
         "beamHeight": 0.5,
         "beamLength": 15,
         "beamParticleDensity": 0.75,
@@ -60,18 +55,8 @@
         "<armName>": "arm/beamdrill.png",
         "<armName>Fullbright": "arm/beamdrill_fullbright.png"
       },
-      "defaultPrimaryColors": [
-        "f4988c",
-        "d93a3a",
-        "932625",
-        "601119"
-      ],
-      "defaultSecondaryColors": [
-        "e6e6e6",
-        "b6b6b6",
-        "7b7b7b",
-        "373737"
-      ],
+      "defaultPrimaryColors" : ["f4988c", "d93a3a", "932625", "601119"],
+      "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
       "animationCustom": {
         "animatedParts": {
           "stateTypes": {
@@ -89,8 +74,7 @@
                 "winddown": {
                   "cycle": 0.5
                 }
-              }
-            },
+            }},
             "<armName>Beam": {
               "default": "off",
               "states": {
@@ -123,7 +107,7 @@
                 "<armName>Beam": {
                   "fire": {
                     "properties": {
-                      "image": "/vehicles/modularmech/beam/drillbeamminer.png:<frame>"
+                      "image": "/vehicles/modularmech/beam/drillbeamminer1.png:<frame>"
                     }
                   }
                 }
@@ -140,35 +124,19 @@
                 "particle": {
                   "type": "ember",
                   "fullbright": true,
-                  "color": [
-                    0,
-                    100,
-                    255,
-                    150
-                  ],
-                  "light": [
-                    0,
-                    70,
-                    150
-                  ],
+                  "color": [0,100,255,150 ],
+                  "light": [0,70,150],
                   "fade": 0.5,
                   "destructionAction": "shrink",
                   "destructionTime": 0.25,
-                  "initialVelocity": [
-                    0,
-                    0
-                  ],
+                  "initialVelocity": [0,0],
                   "timeToLive": 0.4,
                   "layer": "middle",
                   "variance": {
-                    "initialVelocity": [
-                      1,
-                      1
-                    ],
+                    "initialVelocity": [1,1],
                     "timeToLive": 0.2
                   }
-                }
-              }
+                } }
             ]
           }
         },
@@ -176,8 +144,10 @@
           "<armName>Beam": {}
         },
         "sounds": {
-          "<armName>Windup": [],
-          "<armName>Fire": []
+        "<armName>Windup" : [ "/sfx/gun/mech_beamdrill_windup.ogg" ],
+        "<armName>WinddownNoFire" : [],
+        "<armName>Winddown" : [ "/sfx/gun/mech_beamdrill_winddown.ogg" ],
+        "<armName>Fire" : []
         }
       }
     }
@@ -359,8 +329,10 @@
           "<armName>Beam": {}
         },
         "sounds": {
-          "<armName>Windup": [],
-          "<armName>Fire": []
+        "<armName>Windup" : [ "/sfx/gun/mech_beamdrill_windup.ogg" ],
+        "<armName>WinddownNoFire" : [],
+        "<armName>Winddown" : [ "/sfx/gun/mech_beamdrill_winddown.ogg" ],
+        "<armName>Fire" : []
         }
       }
     }
@@ -542,8 +514,10 @@
           "<armName>Beam": {}
         },
         "sounds": {
-          "<armName>Windup": [],
-          "<armName>Fire": []
+        "<armName>Windup" : [ "/sfx/gun/mech_beamdrill_windup.ogg" ],
+        "<armName>WinddownNoFire" : [],
+        "<armName>Winddown" : [ "/sfx/gun/mech_beamdrill_winddown.ogg" ],
+        "<armName>Fire" : []
         }
       }
     }

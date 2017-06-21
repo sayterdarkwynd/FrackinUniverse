@@ -5,7 +5,7 @@ function init()
 	self.doingAbility = false
 	self.jumpSpeedMultiplier = config.getParameter("jumpSpeedMultiplier")
 	self.fallGravityMultiplier = config.getParameter("fallGravityMultiplier")
-	self.fallDamageMultiplier = config.getParameter("fallGravityMultiplier")
+	self.fallDamageMultiplier = config.getParameter("fallDamageMultiplier")
 	self.flutterXVelocity = config.getParameter("flutterXVelocity")
 	self.flutterYVelocity = config.getParameter("flutterYVelocity")
 	self.flutterTime = config.getParameter("flutterTime")
