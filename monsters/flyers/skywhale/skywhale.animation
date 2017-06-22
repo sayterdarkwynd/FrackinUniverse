@@ -17,8 +17,8 @@
             "frames" : 7,
             "cycle" : 1.2,
             "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "", "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "" ]
+            "properties" : {
+              "immediateSound" : "/sfx/monsters/whale1.ogg"
             }
           }, 
           
@@ -26,7 +26,10 @@
             "frames" :7,
             "cycle" : 2.5,
             "mode" : "transition",
-            "transition" : "fire"
+            "transition" : "fire",
+            "properties" : {
+              "immediateSound" : "/sfx/monsters/whale3.ogg"
+            }
           }, 
           "firewinddown" : {
             "frames" : 7,
@@ -44,7 +47,7 @@
             "cycle" : 0.25,
             "mode" : "loop",
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/ignome_windup.ogg"
+              "immediateSound" : "/sfx/monsters/whale2.ogg"
             }
           },
           "chargewinddown" : {
@@ -52,7 +55,7 @@
             "cycle" : 0.25,
             "mode" : "loop",
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/ignome_winddown.ogg"
+              "immediateSound" : "/sfx/monsters/whale4.ogg"
             }
           },          
           "charge" : {
@@ -248,7 +251,7 @@
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
     "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
-    "ranged" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
+    "ranged" : [ "/sfx/monsters/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
     "crash" : [ "/sfx/melee/blunt_hit_organic.ogg" ]
   }
 }
