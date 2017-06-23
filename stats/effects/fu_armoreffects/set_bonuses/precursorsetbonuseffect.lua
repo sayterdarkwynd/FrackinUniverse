@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-require "/scripts/unifiedGravMod.lua"
 
 weaponBonus={
 	{stat = "powerMultiplier", baseMultiplier = 1.25}
@@ -14,29 +13,34 @@ armorBonus={
 setName="fu_precursorset"
 
 function init()
-	self.gravityMod = config.getParameter("gravityMod",0.0)
-	self.gravityNormalize = config.getParameter("gravityNorm",false)
-	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
-	--sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
-	unifiedGravMod.init()
+  self.liquidMovementParameter = {
+    gravityEnabled = true,
+    gravityMultiplier = 1.5,
+    airForce = 20.0,
+    airFriction = 0.0,
+    bounceFactor = 0.0
+  } 	
 	setSEBonusInit("fu_precursorset")
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
-	
 	setSEBonusInit(setName)
 	weaponBonusHandle=effect.addStatModifierGroup({})
-
 	checkWeapons()
-
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	--sb.logInfo("%s",_ENV)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	        unifiedGravMod.update(dt)
+	    if not mcontroller.onGround() then
+		mcontroller.controlParameters(self.liquidMovementParameter)
+		mcontroller.setYVelocity(math.min(-2,mcontroller.yVelocity() - 1));
+		--mcontroller.addMomentum({0, -80*dt})
+	    end	
 		checkWeapons()
-	end
+	end	
+
 end
 
 function checkWeapons()
