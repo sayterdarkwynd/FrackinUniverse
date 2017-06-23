@@ -1,6 +1,6 @@
 {
-  "projectileName" : "precursorshotsmall2",
-  "image" : "precursorshotsmall2.png",
+  "projectileName" : "precursorshot2a",
+  "image" : "precursorshot2.png",
   "animationCycle" : 1,
   "physics" : "rocket",
   "piercing" : false,
@@ -9,14 +9,15 @@
   "speed" : 60,
   "damageKindImage" : "icon.png",
   "pointLight" : false,
-  "timeToLive" : 0.85,
-   "lightColor" : [176, 157, 50],
-   "fullbright" : true,
+  "timeToLive" : 1.75,
+   "lightColor" : [232, 197, 6],
    "emitters" : ["defaultyellow"],
+   "fullbright" : true,
+
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/precursorexplosion/precursorexplosionsmall2.config"
+      "file" : "/projectiles/explosions/precursorexplosion/precursorexplosion2.config"
     }
   ],
   "periodicActions" : [
@@ -30,13 +31,11 @@
    }
   ],  
   "damageKind" : "radioactive",
-
   "scripts" : ["/scripts/projectiles/zigzagprojectile.lua"],
   "scriptDelta" : 1,
 
   "zigZagTime" : 0.1,
   "zigZagAngle" : 0.1,
 
-  "persistentAudio" : "/sfx/projectiles/raygun_wobble_loop.ogg"
-  
+  "persistentAudio" : "/sfx/projectiles/raygun_wobble_loop.ogg"  
 }

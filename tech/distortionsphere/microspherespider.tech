@@ -1,0 +1,49 @@
+{
+  "name" : "microspherespider",
+  "type" : "head",
+
+  "scripts" : ["microspherespider.lua"],
+  "animator" : "microsphere.animation",
+
+  "description" : "A microsphere that clings to walls [F]",
+  "shortDescription" : "Micro Spider Sphere",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/microspherespider.png",
+
+  "chipCost" : 5,
+
+  "animationParts" : {
+    "ballGlow" : "microsphereglow.png",
+    "ball" : "microspherespider.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.45, -0.25], [-0.25, -0.45], [0.25, -0.45], [0.45, -0.25], [0.45, 0.25], [0.25, 0.45], [-0.25, 0.45], [-0.45, 0.25] ],
+    "airForce" : 0.0,
+    "liquidForce" : 0.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 0.0
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 0.0,
+      "jumpControlForce" : 0.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ignorePlatforms" : true,
+
+  "ballSpeed" : 10,
+
+  "energyCost" : 50,
+
+  "ballRadius" : 0.5,
+  "ballFrames" : 8,
+
+  "damageDisableTime" : 0.2
+  
+}

@@ -2,13 +2,28 @@
   "name" : "fuironliquid",
   "liquidId" : 52,
   "description" : "An ocean of deadly molten metal.",
-  "tickDelta" : 3,
-  "color" : [50, 50, 50, 225],
+  "tickDelta" : 2,
+  "color" : [244, 187, 45, 225],
+  "radiantLight" : [100, 30, 74],
   "itemDrop" : "liquidironfu",
-  "interactions" : [ ],
   "statusEffects" : [ "swimming", "moltenmetal"  ],
 
-	"texture" : "/liquids/tartex.png",
-	"bottomLightMix" : [0, 0, 0],
-	"textureMovementFactor" : 0.4
+  "texture" : "/liquids/lavanotex.png",
+  "bottomLightMix" : [177, 118, 57],
+  "textureMovementFactor" : 1.6,
+  
+  "interactions" : [
+    {
+      "liquid" : 100,
+      "materialResult" : "retexaetherdust"
+    },
+    {
+      "liquid" : 2,
+      "liquidResult" : 2
+    },      
+    {
+      "liquid" : 45,
+      "liquidResult" : 70
+    }    
+  ]	
 }
