@@ -34,31 +34,6 @@
       "fleeActions" : [ ],
 
       "hostileActions" : [ 
-      
-       {
-          "name" : "action-fire",
-          "cooldown" : 40,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 5,
-            "windupState" : "firewindup",
-            "windupTime" : 2.5,
-
-            "projectileType" : "atomsmasher_shot",
-            "power" : 60,
-            "fireOffset" : [4, 0],
-            "aimAtTarget" : true,
-            "onGround" : false,
-            "fireState" : "fire",
-            "fireSound" : "fire",
-            "inaccuracy" : 0.05,
-            "projectileCount" : 1,
-            "projectileInterval" : 0.05,
-            "winddownState" : "firewinddown",
-            "winddownTime" : 3.7
-          }
-        },
         {
           "name" : "action-charge",
           "cooldown" : 2.5,
@@ -84,7 +59,23 @@
       ],
 
       "periodicActions" : [
-       ],
+        {
+          "name" : "action-projectile",
+          "cooldown" : 1,
+          "parameters" : {
+            "projectileCount" : 10,
+            "projectileType" : "gasburst",
+            "projectileParameters" : {
+              "timeToLive" : 2,
+              "speed" : 15
+            },
+            "power" : 20,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 3,
+            "fireOffset" : [0, 1]
+          }
+        }      
+      ],
 
       "approachActions" : [
         {
@@ -99,17 +90,23 @@
 
       "followActions" : [
         {
-          "name" : "approach-fly",
-          "parameters" : {
-            "minRange" : 14,
-            "maxRange" : 18
-          }          
+        "name":"approach-fly",
+        "parameters":{
+          "targetOffset":[0,5], 
+          "minRange":1, 
+          "maxRange":15
+          }
         }
       ],
 
       "wanderActions" : [
         {
+          "name" : "emerge-fly",
+            "flyState" : "hidden"
+        },      
+        {
           "name" : "wander-fly",
+          
           "parameters" : {
             "wanderTime" : [2,4],
             "groundDistance" : 8,
@@ -122,8 +119,88 @@
 
       "concurrentActions" : [ ],
 
-      "concurrentHostileActions" : [ ],
+      "concurrentHostileActions" : [ 
+      
+       {
+          "name" : "action-fire",
+          "cooldown" : 2,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "idle",
+            "windupTime" : 0.8,
 
+            "projectileType" : "gasburst",
+            "power" : 10,
+            "fireOffset" : [0, 0],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+            "inaccuracy" : 3.05,
+            "projectileCount" : 10,
+            "projectileInterval" : 0.05,
+            "projectileParameters" : {
+              "timeToLive" : 2,
+              "speed" : 25            
+            },
+            "winddownState" : "idle",
+            "winddownTime" : 0.8
+          }
+        },             
+       {
+          "name" : "action-fire",
+          "cooldown" : 40,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 5,
+            "windupState" : "firewindup",
+            "windupTime" : 2.5,
+
+            "projectileType" : "atomsmasher_shot",
+            "power" : 60,
+            "fireOffset" : [4, 0],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+            "inaccuracy" : 0.05,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.05,
+            "winddownState" : "firewinddown",
+            "winddownTime" : 3.7
+          }
+        }      
+      ],
+
+      "damageTakenActions" : [
+        {
+          "cooldown" : 10,
+          "name" : "action-invulnerable",
+          "parameters" : {
+            "windupTime" : 0.8,
+            "windupState" : "hide",
+            "winddownTime" : 0.8,
+            "winddownState" : "hide2",
+
+            "invulnerableTime" : 2
+          }
+        }     
+      ],
+
+      "invulnerableActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "flyState" : "hidden"
+          }
+        }
+      ],
+      
+      
       "deathActions" : [
         {
           "name" : "action-projectile",
