@@ -26,6 +26,3 @@ function update(dt)
 	    end	
 end
 
-function uninit()
-  status.removeEphemeralEffect("gravgenfieldarmor2")
-end
