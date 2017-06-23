@@ -11,12 +11,7 @@ function init()
     normalGroundFriction = 14.0,
     ambulatingGroundFriction = 1.0,
     collisionEnabled = true,
-    frictionEnabled = true,
-    
-  groundMovementMinimumSustain= 0.1,
-  groundMovementMaximumSustain= 0.25,
-  groundMovementCheckDistance=0.75    
-    
+    frictionEnabled = true 
   } 	
   script.setUpdateDelta(5)
 end
@@ -26,12 +21,11 @@ function update(dt)
 		--mcontroller.setYVelocity(math.min(-2,mcontroller.yVelocity() - 1));
 		mcontroller.addMomentum({0, -1*dt})
 		mcontroller.controlParameters(self.liquidMovementParameter)
-            elseif not mcontroller.onGround() then
+            else
                 mcontroller.controlParameters(self.liquidMovementParameter)
 	    end	
 end
 
 function uninit()
-  status.removeEphemeralEffect("gravgenfield")
-  status.removeEphemeralEffect("gravgenfieldarmor")
+  status.removeEphemeralEffect("gravgenfieldarmor2")
 end
