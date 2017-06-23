@@ -3,7 +3,7 @@
   "price" : 160,
   "inventoryIcon" : "mechgun.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "rare",
   "description" : "A rifle popular in ages long-past by those known as the Precursors",
   "shortdescription" : "Precursor Rifle",
   "category" : "Energy Gun",
@@ -22,9 +22,8 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_pistol3.ogg" ]
-    }
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_pistol3.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [44, 104, 164] } }
   },
 
   "baseOffset" : [1.36, 0.26],
@@ -40,12 +39,12 @@
     "fireTime" : 0.2,
     "baseDps" : 8,
     "energyUsage" : 24.5,
-    "inaccuracy" : 0.01,
+    "inaccuracy" : 0.05,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "precursorshot2",
+    "projectileType" : "precursorshot2a",
     "projectileParameters" : { 
       "knockback" : 3
     },
@@ -60,8 +59,8 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -69,8 +68,8 @@
 	    },
 	    "cooldown" : {
 	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
