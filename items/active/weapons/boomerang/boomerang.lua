@@ -129,7 +129,7 @@ function checkProjectiles()
     local newProjectileIds = {}
     for i, projectileId in ipairs(storage.projectileIds) do
       if world.entityExists(projectileId) then
-        local updatedProjectileIds = world.callScriptedEntity(projectileId, "boomerangProjectileIds")
+        local updatedProjectileIds = world.callScriptedEntity(projectileId, "projectileIds")
 
         if updatedProjectileIds then
           for j, updatedProjectileId in ipairs(updatedProjectileIds) do

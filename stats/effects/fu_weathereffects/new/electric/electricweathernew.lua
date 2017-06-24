@@ -25,29 +25,25 @@ function init()
 
   checkEffectValid()
 
-  self.isOn = 0
   script.setUpdateDelta(5)
 end
 
 --******* check effect and cancel ************
 function checkEffectValid()
-	  if world.entityType(entity.id()) ~= "player" then
+	  if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
 	    deactivateVisualEffects()
 	    effect.expire()
-	  end
-	if status.statPositive("biomeelectricImmunity") or world.type()=="unknown"  then
-	  deactivateVisualEffects()
-	  effect.expire()
-	end
-
-	if (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	else
-	  -- activate visuals and check stats
+	  end	 
+	  if (status.stat("electricResistance",0)  >= self.effectCutoffValue) or status.statPositive("biomeelectricImmunity") or world.type()=="unknown" or world.entityType(entity.id()) ~= "player" then
+	    deactivateVisualEffects()
+	    effect.expire()
+	  else
 	  if not self.usedIntro then
-	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
-	    self.usedIntro = 1
+	    if not (status.stat("electricResistance",0)  >= self.effectCutoffValue) or not status.statPositive("biomeelectricImmunity") then
+	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
+	      self.timerRadioMessage = 5
+	      self.usedIntro = 1
+	    end
 	  end
 	end
 end
@@ -138,11 +134,11 @@ end
 
 --**** Alert the player
 function activateVisualEffects()
-  effect.setParentDirectives("fade=0099cc=0.3")
+  --effect.setParentDirectives("fade=0099cc=0.3")
 end
 
 function deactivateVisualEffects()
-  effect.setParentDirectives("fade=0099cc=0.0")
+  --effect.setParentDirectives("fade=0099cc=0.0")
 end
 
 function makeAlert()
@@ -152,6 +148,10 @@ end
 
 function update(dt)
 checkEffectValid()
+ if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
+	    deactivateVisualEffects()
+	    effect.expire()
+ end	
 self.biomeTimer = self.biomeTimer - dt 
 self.biomeTimer2 = self.biomeTimer2 - dt 
 self.timerRadioMessage = self.timerRadioMessage - dt
@@ -187,7 +187,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
   
-      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue then
+      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue  and status.isResource("energy") then
 	  --makeAlert()
 	  activateVisualEffects()
           self.biomeTimer = setEffectTime()

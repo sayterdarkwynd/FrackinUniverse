@@ -8,7 +8,7 @@
   "tooltipKind" : "gun",
   "category" : "swtjc_ewg_beamRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","sniperrifle", "energy"],
+  "itemTags" : ["weapon","ranged","sniperrifle","energy","upgradeableWeapon"],
   "level" : 1,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -26,16 +26,17 @@
     "class" : "GunFire",
 
     "fireTime" : [0.02, 0.1],
-    "baseDps" : [9.5, 10.5],
+    "baseDps" : [9.5, 12],
     "energyUsage" : [28.5, 31.5],
     "inaccuracy" : 0.0,
 
-    "burstTime" : [0.0025, 0.005],
+    "burstTime" : [0.002, 0.005],
     "burstCount" : [10, 20],
     "fireType" : "burst",
 
     "projectileParameters" : {
-      "knockbackRange" : [0.1,0.2]
+      "knockbackRange" : [0.1,0.2],
+      "fullbright" : true
     },
 
     "stances" : {
@@ -82,31 +83,31 @@
     ],
     "elementalConfig" : {
       "fire" : {
-        "primaryAbility" : { "projectileType" : "fireplasma", "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+        "primaryAbility" : { "projectileType" : "fireplasma", "projectileParameters" : { "statusEffects" : [ "burning" ], "fullbright" : true } },
         "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "ice" : {
-        "primaryAbility" : { "projectileType" : "iceplasma", "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+        "primaryAbility" : { "projectileType" : "iceplasma", "projectileParameters" : { "statusEffects" : [ "frostslow" ], "fullbright" : true } },
         "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "poison" : {
-        "primaryAbility" : { "projectileType" : "poisonplasma", "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+        "primaryAbility" : { "projectileType" : "poisonplasma", "projectileParameters" : { "statusEffects" : [ "weakpoison" ], "fullbright" : true } },
         "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "electric" : {
-        "primaryAbility" : { "projectileType" : "electricplasma", "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+        "primaryAbility" : { "projectileType" : "electricplasma", "projectileParameters" : { "statusEffects" : [ "electrified" ], "fullbright" : true } },
         "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "radioactive" : {
-        "primaryAbility" : { "projectileType" : "radioactiveplasma", "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+        "primaryAbility" : { "projectileType" : "radioactiveplasma", "projectileParameters" : { "statusEffects" : [ "radiationburn" ], "fullbright" : true } },
         "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "shadow" : {
-        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ], "fullbright" : true } },
         "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "cosmic" : {
-        "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
+        "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ], "fullbright" : true } },
         "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       } 
     },
@@ -168,7 +169,7 @@
       "swtjc_ewg_cellspread",
       "swtjc_ewg_darkplasma",
       "swtjc_ewg_elementalspray",
-      "swtjc_ewg_explosivebubbles",
+      
       "swtjc_ewg_forceshield",
       "swtjc_ewg_globelauncher",
       "swtjc_ewg_phaseburst",

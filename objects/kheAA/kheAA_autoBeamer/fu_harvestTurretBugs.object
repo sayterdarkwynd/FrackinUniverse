@@ -1,0 +1,189 @@
+{
+	"objectName": "fu_autobeamer3bugs",
+	"colonyTags": ["wired"],
+	"printable": false,
+	"rarity": "legendary",
+	"objectType": "container",
+	"price": 150,
+	"slotCount": 0,
+	"uiConfig": "/interface/turret/standingturret.config",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"health": 5,
+	"description": "Harvester turret modified to grab bugs instead.",
+	"shortdescription": "Bug Harvester Turret",
+	"subtitle": "Automatic Harvesting",
+	"race": "generic",
+	"category": "wire",
+	"inventoryIcon": "icon.png",
+	"orientations": [{
+		"dualImage": "turretstand.png:bottom",
+
+		"imagePosition": [-16, 0],
+		"imageLayers": [{
+			"image": "turretstand.png:bottom"
+		}, {
+			"image": "turretgun.png:dead",
+			"position": [4, 12]
+		}],
+		"spaces": [
+			[-2, 0],
+			[-1, 0],
+			[0, 0],
+			[1, 0],
+			[-2, 1],
+			[-1, 1],
+			[0, 1],
+			[1, 1]
+		],
+		"anchors": ["bottom"],
+
+		"animationParts": {
+			"gun": "turretgun.png",
+			"gunfullbright": "turretgunfullbright.png",
+			"stand": "turretstand.png:bottom"
+		},
+		"animationPosition": [0, 16],
+		"animationCenterLine": 0,
+
+		"baseOffset": [0, 2],
+		"verticalScaling": false
+	}, {
+		"dualImage": "turretstand.png:top",
+
+		"imagePosition": [-16, -24],
+		"imageLayers": [{
+			"image": "turretstand.png:top"
+		}, {
+			"image": "turretgun.png:dead",
+			"position": [4, 12]
+		}],
+		"spaces": [
+			[-2, -1],
+			[-1, -1],
+			[0, -1],
+			[1, -1],
+			[-2, 0],
+			[-1, 0],
+			[0, 0],
+			[1, 0]
+		],
+		"anchors": ["top"],
+
+		"animationParts": {
+			"gun": "turretgun.png",
+			"gunfullbright": "turretgunfullbright.png",
+			"stand": "turretstand.png:top"
+		},
+		"animationPosition": [0, -8],
+		"animationCenterLine": 0,
+
+		"baseOffset": [0, -1],
+		"verticalScaling": false
+	}, {
+		"image": "turretstand.png:left",
+
+		"imagePosition": [0, 0],
+		"imageLayers": [{
+			"image": "turretstand.png:left"
+		}, {
+			"image": "turretgun.png:dead",
+			"position": [4, 12]
+		}],
+		"spaces": [
+			[0, 0],
+			[1, 0],
+			[0, 1],
+			[1, 1],
+			[0, 2],
+			[1, 2]
+		],
+		"anchors": ["left"],
+		"direction": "right",
+
+		"animationParts": {
+			"gun": "turretgun.png",
+			"gunfullbright": "turretgunfullbright.png",
+			"stand": "turretstand.png:left"
+		},
+		"animationPosition": [16, 16],
+
+		"baseOffset": [2, 2],
+		"verticalScaling": true
+	}, {
+		"image": "turretstand.png:left",
+
+		"imagePosition": [-24, 0],
+		"spaces": [
+			[-1, 0],
+			[0, 0],
+			[-1, 1],
+			[0, 1],
+			[-1, 2],
+			[0, 2]
+		],
+		"anchors": ["right"],
+		"direction": "left",
+
+		"imageLayers": [{
+			"image": "turretstand.png:left"
+		}, {
+			"image": "turretgun.png:dead",
+			"position": [4, 12]
+		}],
+		"flipImages": true,
+
+		"animationParts": {
+			"gun": "turretgun.png",
+			"gunfullbright": "turretgunfullbright.png",
+			"stand": "turretstand.png:left"
+		},
+		"animationPosition": [-10, 16],
+
+		"baseOffset": [-1, 2],
+		"verticalScaling": true
+	}],
+
+	"objectWidth": 4,
+
+	"animation": "standingturretbug.animation",
+
+	"scripts": [
+		"/objects/kheAA/kheAA_autoBeamer/standingturretbug.lua",
+		"/scripts/npcToyObject.lua",
+		"/scripts/stateMachine.lua"
+	],
+
+	"scriptDelta": 5,
+
+	"outputNodes": [
+		[0, 0]
+	],
+	"inputNodes": [
+		[0, 1]
+	],
+
+	"tipOffset": [2.5, 0],
+	"offAngle": -30,
+
+	"targetQueryRange": 12,
+	"maxFireAngle": 3,
+	
+	"fireTime": 1,
+
+	"npcToy": {
+		"influence": [
+			"turret"
+		],
+		"defaultReactions": {
+			"turret": [
+				[1.0, "pressbutton"],
+				[1.0, "oh"],
+				[1.0, "laugh"]
+			]
+		},
+		"preciseStandPositionLeft": [-1.0, 0.0],
+		"preciseStandPositionRight": [1.0, 0.0],
+		"maxNpcs": 1
+	}
+}

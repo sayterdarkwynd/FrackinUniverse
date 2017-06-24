@@ -10,14 +10,30 @@ fuWeatherLib.timerCounters={}
 function fuWeatherLib.init()
 	-- Environment Configuration --
 	--base values
+	
+	-- level at which resistance stops the effect
 	self.effectCutoff = config.getParameter("effectCutoff",0)
         self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
-	self.baseRate = config.getParameter("baseRate",0)				
+        
+        -- base infliction rate of the effect
+	self.baseRate = config.getParameter("baseRate",0)
+	
+	-- base damage per tick
 	self.baseDmg = config.getParameter("baseDmgPerTick",0)
 	self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
+	
+	-- biome temperature modifier
 	self.biomeTemp = config.getParameter("biomeTemp",0)			
-
-	self.biomeThreshold = config.getParameter("biomeThreshold",0)		-- base Modifier (tier)
+	
+	-- biome Level
+	self.threatLevel = world.threatLevel()
+	
+	--set final biomeTemp
+	self.biomeTemp = (self.biomeTemp) + ((self.threatLevel/25))
+	
+	self.biomeThreshold = config.getParameter("biomeThreshold",0)		-- base Modifier
+	
+	-- situational modifiers
 	self.biomeNightModifier = config.getParameter("biomeNightModifier",1)	-- if set to anything other than one, multiplies base by that during night
 	self.biomeDayModifier = config.getParameter("biomeDayModifier",1)	-- if set to anything other than one, multiplies base by that during day
 	self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
@@ -170,6 +186,11 @@ function toHex(num)
 	local hex = string.format("%X", math.floor(num + 0.5))
 	if num < 16 then hex = "0"..hex end
 	return hex
+end
+
+
+function threatLevel()
+	return world.threatLevel()
 end
 
 function undergroundCheck()

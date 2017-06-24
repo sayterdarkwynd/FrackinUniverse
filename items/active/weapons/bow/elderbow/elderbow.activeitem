@@ -1,0 +1,67 @@
+{
+  "itemName" : "elderbow",
+  "level" : 7,
+  "price" : 5000,
+  "inventoryIcon" : "elderbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "tooltipKind" : "bow2",
+  "weaponType" : "Bow",
+  "description" : "Ripe with malice.
+^cyan;Alt-Fire redirects arrow",
+  "shortdescription" : "Elder Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
+  "animationParts" : {
+    "bow" : "elderbow.png",
+    "bowfullbright" : "elderbowfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { 
+    "parts" : { 
+     "bow" : { 
+       "properties" : {
+          "offset" : [-0.1, 0]
+          }
+        },
+     "bowfullbright" : { 
+       "properties" : {
+          "offset" : [-0.1, 0]
+          }
+        }        
+      }     
+    },
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "elderbowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "elderarrow",
+    "powerProjectileType" : "chargedelderarrow",
+    "projectileParameters" : {
+      "power" : 6.8
+    }
+  },
+
+  "altAbilityType" : "elderreaim",
+
+  "critChance" : 8,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

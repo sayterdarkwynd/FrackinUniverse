@@ -1,0 +1,57 @@
+{
+  "itemName" : "aetheriumshortsword",
+  "price" : 15000,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A perfect weapon.",
+  "shortdescription" : "Aetherium Sansibar",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","aetherium", "upgradeableWeapon"],
+
+  "inventoryIcon" : "aetheriumshortsword.png",
+
+  "animation" : "comboglowshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aetheriumshortsword.png",
+    "bladefullbright" : "aetheriumshortswordfullbright.png"
+  },
+
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.56,
+    "baseDps" : 6.96,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicshortsword",
+      "statusEffects" : [ "defenseboostneg20" ],
+      "knockback" : 4,
+      "knockbackMode" : "facing",
+      "timeoutGroup" : "primary"
+    }
+  },
+  "critChance" : 6,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+	  "animationParts" : {
+	    "handle" : "",
+	    "blade" : "aetheriumscimitar.png",
+	    "bladefullbright" : "aetheriumscimitarfullbright.png"
+	  },  
+	  "inventoryIcon" : "aetheriumscimitar.png",
+	  "description" : "Aetherium Scimitar",
+	  "critChance" : 12,
+	  "critBonus" : 12	  
+  }
+
+}

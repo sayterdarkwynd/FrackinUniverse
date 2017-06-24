@@ -1,0 +1,112 @@
+{
+  "itemName" : "fugjallarhorn",
+  "price" : 5000,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "If there is beauty in destruction, why not also in its delivery?
+  ^yellow;Rockets spawn wolfpack rounds on detonation.^reset;",
+  "shortdescription" : "^#ffbe32;Gjallarhorn",
+  "tooltipKind" : "gun2",
+  "category" : "rocketLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","rocketLauncher"],
+  "level" : 7,
+
+  "inventoryIcon" : "gjallarhornicon.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "gjallarhorn.png",
+    "barrel" : "",
+    "grenadelauncher" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["gjallarhornfire.ogg"]
+    }
+  },
+
+  "baseOffset" : [-0.22, 0.6],
+  "muzzleOffset" : [3.5, 0.34],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 3.25,
+    "baseDps" : 7,
+    "energyUsage" : 75,
+    "inaccuracy" : 0.0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "gjallarrocket",
+    "projectileParameters" : {
+      "knockback" : 10
+    },
+	  
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.35,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  
+  "critChance" : 12,
+  "critBonus" : 20,
+
+  "altAbilityType" : "hailstrikealt",
+  "altAbility" : {
+    "energyCost" : 220,
+    "fireTime" : 4,
+    "projectileCount" : 2,
+    "projectileParameters" : {
+    "timeToLive" : 1,
+	  "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "gjallarrocket",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 1,
+	      "angleAdjust" : 180
+	    }
+	  ]    
+    } 
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

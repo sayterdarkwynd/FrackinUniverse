@@ -93,6 +93,7 @@
 
 "primaryAbilityType":"elementorb", 
 "primaryAbility":{
+"name" : "Gravity Siphon (F)",
 "energyCost":100, 
 "maxCastRange":30, 
 "projectileType":"electricorb", 
@@ -113,7 +114,13 @@
       "time":0.01, 
       "action":"projectile", 
       "type":"pulsecannonexplosion", 
-      "config":{"speed":0, "persistentAudio":"", "knockback":-50, "timeToLive":0.01, "power":0.0}
+      "config":{
+        "speed":0, 
+        "persistentAudio":"", 
+        "knockback":-50, 
+        "timeToLive":0.01, 
+        "power":0.0
+      }
     }, 
     {
       "time":0.01, 
@@ -132,7 +139,8 @@
         "foregroundRadius":3, 
         "backgroundRadius":0, 
         "explosiveDamageAmount":5.0, 
-        "delaySteps":2, "harvestLevel":10
+        "delaySteps":2, 
+        "harvestLevel":10
       }
     ]
   }
@@ -140,6 +148,7 @@
 
 "altAbilityType":"elementorb", 
 "altAbility":{
+  "name" : "Gravity Siphon (R)",
   "energyCost":200, 
   "maxCastRange":50, 
   "projectileType":"fireorb", 
@@ -156,9 +165,39 @@
     }, 
     "timeToLive":20, 
     "periodicActions":[
-    {"time":0.01, "action":"projectile", "type":"pulsecannonexplosion", "config":{"speed":0, "persistentAudio":"", "knockback":-50, "timeToLive":0.01, "power":0.0}}, 
-    {"time":0.01, "action":"projectile", "type":"hgravityexplosion", "config":{"speed":0, "persistentAudio":"", "knockback":-50, "timeToLive":0.01, "power":0.0}}, 
-    {"time":0.01, "action":"explosion", "foregroundRadius":0, "backgroundRadius":3, "explosiveDamageAmount":5.0, "delaySteps":2, "harvestLevel":10}
+    {
+      "time":0.01, 
+      "action":"projectile", 
+      "type":"pulsecannonexplosion", 
+      "config":{
+        "speed":0, 
+        "persistentAudio":"", 
+        "knockback":-50, 
+        "timeToLive":0.01, 
+        "power":0.0
+      }
+    }, 
+    {
+      "time":0.01, 
+      "action":"projectile", 
+      "type":"hgravityexplosion", 
+      "config":{
+        "speed":0, 
+        "persistentAudio":"", 
+        "knockback":-50, 
+        "timeToLive":0.01, 
+        "power":0.0
+      }
+    }, 
+    {
+      "time":0.01, 
+      "action":"explosion", 
+      "foregroundRadius":0, 
+      "backgroundRadius":3, 
+      "explosiveDamageAmount":5.0, 
+      "delaySteps":2, 
+      "harvestLevel":10
+    }
     ]
    }
   },

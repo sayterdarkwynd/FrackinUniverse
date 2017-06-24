@@ -1,0 +1,175 @@
+{
+  "type" : "precursormob",
+  "baseType" : "base",
+
+  "persistent" : true,
+
+  "damageTeam" : 2,
+
+  "dropPools" : [ "fuprecursorLoot" ],
+
+  "scriptConfig" : {
+    "behavior" : "hostileguard",
+
+    "behaviorConfig" : {
+      "leapWindup" : 0.35,
+      "rangedAimTime" : 0.05,
+      "rangedWindupTime" : 0.07,
+      "rangedMinFireTime": 0.1,
+      "rangedMaxFireTime": 0.7         
+    },
+
+    "aggressive" : true,
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ],
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [1.0, "patrol"]
+      ]
+    },
+
+    "dialog" : {
+      "converse" : "/dialog/combat.config:attack",
+      "hail" : "/dialog/combat.config:attack",
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/combat.config:reattack",
+      "killedTarget" : "/dialog/combat.config:killedTarget",
+      "lostTarget" : "/dialog/combat.config:lostTarget",
+      "outOfSight" : "/dialog/combat.config:outOfSight",
+      "cheerOn" : "/dialog/combat.config:cheerOn",
+      "cantReach" : "/dialog/combat.config:cantReach"
+    },
+
+    "combat" : {
+      "meleeWeaponWindups" : {
+        "default" : 0.25,
+        "broadsword" : 0.25,
+        "dagger" : 0.15,
+        "axe" : 0.25,
+        "hammer" : 0.4,
+        "shortsword" : 0.15,
+        "spear" : 0.35
+      },
+      "meleeWeaponCooldowns" : {
+        "default" : 0.6,
+        "broadsword" : 1.3,
+        "dagger" : 0.5,
+        "axe" : 1.2,
+        "hammer" : 1.6,
+        "shortsword" : 0.7,
+        "spear" : 1.2
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "fudrillspear" ]
+          },       
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "rockethammer" ]
+          },       
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "mechpistol" ]
+          },         
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "mechgun" ]
+          },       
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "precursorpistolice" ],
+            "secondary" : [ "precursorpistolshock" ]
+          },       
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "precursorpistol" ],
+            "secondary" : [ "precursorpistolbeam" ]
+          },      
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "fuvaporizer" ]
+          },       
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "mechpistol" ]
+          },      
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "chargesmg" ],
+            "secondary" : [ "chargesmg" ]
+          },   
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "precursorspear" ]
+          },          
+          {
+            "head" : [ { "name" : "fuprecursorhead" } ],
+            "chest" : [ { "name" : "fuprecursorchest" } ],
+            "legs" : [ { "name" : "fuprecursorpants" } ],
+            "primary" : [ "precursorbroadsword" ]
+          }
+        ] ]
+    ]
+  },
+
+  "touchDamage" : {
+    "damage" : 0,
+    "teamType" : "enemy",
+    "damageType" : "knockback",
+    "damageSourceKind" : "nodamage",
+    "damageRepeatGroup" : "npcTouchKnockback",
+    "damageRepeatTimeout" : 0.5,
+    "knockback" : 20,
+    "statusEffects" : [ ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 180.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 110.0
+      },      
+      "powerMultiplier" : {
+        "baseValue" : 0.85
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

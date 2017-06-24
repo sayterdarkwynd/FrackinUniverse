@@ -1,7 +1,11 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ 	
-	"mantizihoodhead",
-	"mantizipleblegs",
-	"mantiziplebchest"
-	] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizihoodhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizipleblegs" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantiziplebchest" }
+  ]
 ]

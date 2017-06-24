@@ -1,0 +1,86 @@
+{
+  "itemName" : "advalloycrossbow",
+  "price" : 1800,
+  "inventoryIcon" : "advalloycrossbow.png",
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A bulky crossbow. But it's not actually that heavy.",
+  "shortdescription" : "Alloy Crossbow",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "category" : "crossbow",
+  "itemTags" : ["weapon","ranged","crossbow"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "advalloycrossbow.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/crossbow1.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.40, 0.40],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.2,
+    "baseDps" : 4,
+    "energyUsage" : 28,
+    "inaccuracy" : 0.008,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "woodenbolt",
+    "projectileParameters" : {
+      "knockback" : 25
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "flashlight",
+  "critChance" : 4,
+  "critBonus" : 4,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

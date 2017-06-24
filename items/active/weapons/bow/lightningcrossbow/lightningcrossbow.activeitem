@@ -1,0 +1,86 @@
+{
+  "itemName" : "lightningcrossbow",
+  "price" : 1800,
+  "inventoryIcon" : "lightningcrossbow.png",
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Electrifying!",
+  "shortdescription" : "Lightning Crossbow",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "category" : "crossbow",
+  "itemTags" : ["weapon","ranged","crossbow"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "lightningcrossbow.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/crossbow1.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.40, 0.40],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.3,
+    "baseDps" : 3,
+    "energyUsage" : 28,
+    "inaccuracy" : 0.008,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fushockbolt",
+    "projectileParameters" : {
+      "knockback" : 25
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "shockburstshot",
+
+  "critChance" : 6,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

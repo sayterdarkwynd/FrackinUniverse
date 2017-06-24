@@ -4,18 +4,19 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Set Bonus: 
+  "description" : "Set Bonus:
 ^cyan;Immunity: Acid, Poison, Bio-ooze, Oxygen^reset;
 ^#e43774;Swim Boost 2^reset;
-^green;Increased stats on Oceans/Tidewater biomes^reset;",
+^green;+8% Crit, +15% Power, +5% Speed (Ocean/Tidewater biomes)^reset;",
   "shortdescription" : "Kraken Leggings",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "fudiverhead3", "fudiverchest3", "fudiverlegs3" ], 
+  "learnBlueprintsOnPickup" : [ "fudiverhead3", "fudiverchest3", "fudiverlegs3" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 4,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fudiverlegs2" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,15 +39,14 @@
       "amount" : 3
     }
   ],
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "statusEffects" : [
-    "swimboost2",
     "krakensetbonus",
     {
       "stat" : "fu_krakenset_legs",
       "amount" : 1
-    } 
-  ], 
+    }
+  ],
 
   "colorOptions" : [
     /* YELLOW */
@@ -62,7 +62,7 @@
     /* RED */
     { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
     /* ORANGE */
-    { "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },    
+    { "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },
     /* GREEN */
     { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216" },
     /* BLUE */

@@ -1,23 +1,25 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": 
-  [ 
-  "labchair", 
-  "labcomputer", 
-  "labcupboard", 
-  "labdoor", 
-  "labbookcase", 
-  "labtable", 
-  "fuokeahitechwall1", 
-  "fuokeahitechwall2",
-  "fuoperativehead",
-  "fuoperativechest",
-  "fuoperativelegs",
-  "zaibatsulegs", 
-  "zaibatsuchest",
-  "boosterlegs",
-  "boosterchest"
-  ] 
-  },
-  {"op":"replace","path":"/shortdescription","value":"Plastic Polymer"},
-  {"op":"replace","path":"/description","value":"A handy, simple plastic with many uses."}
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "labchair" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "labcomputer" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "labcupboard" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "labdoor" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "labbookcase" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "labtable" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuokeahitechwall1" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuokeahitechwall2" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuoperativehead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuoperativechest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuoperativelegs" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "zaibatsulegs" }, 
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "zaibatsuchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "boosterlegs" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "boosterchest" },
+    {"op":"replace","path":"/shortdescription","value":"Plastic Polymer"},
+    {"op":"replace","path":"/description","value":"A handy, simple plastic with many uses."}
+  ]
 ]

@@ -10,7 +10,7 @@
   "shortdescription" : "Graviton Pistol",
   "level" : 4,
   "category" : "Gravity Weapon",
-  "itemTags" : ["weapon","ranged","machinepistol", "energy"],
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "weaponType" : "Focused Gravity",
@@ -40,16 +40,17 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.35,
-    "baseDps" : 4.7,
+    "fireTime" : 0.25,
+    "baseDps" : 5.1,
     "energyUsage" : 30,
     "fireType" : "auto",
     "inaccuracy" : 0,
     "projectileCount" : 1,
-    "projectileType" : "gravitonorbsmall",
+    "projectileType" : "gravitonorbsmall4",
     "projectileParameters" : {
-      "speed" : 65,
-      "knockback" : 12
+      "speed" : 42,
+      "knockback" : 12,
+      "timeToLive" : 0.6
     },
     "stances" : {
       "idle" : {
@@ -61,18 +62,18 @@
         "allowFlip" : true
       },
       "fire" : {
-        "duration" : 0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "duration" : 0.05,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "duration" : 0.05,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : false,
 
         "allowRotate" : false,

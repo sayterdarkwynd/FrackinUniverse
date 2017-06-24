@@ -1,7 +1,11 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-        "fudesertwalkerhead", 
-        "fudesertwalkerchest", 
-        "fudesertwalkerpants"	
-	] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudesertwalkerhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudesertwalkerchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudesertwalkerpants" }
+  ]
 ]

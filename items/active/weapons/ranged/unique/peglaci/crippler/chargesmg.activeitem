@@ -1,18 +1,20 @@
 {
   "itemName" : "chargesmg",
-  "price" : 500,
+  "price" : 2500,
   "inventoryIcon" : "chargesmgicon.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "Depleted uranium rounds guarantee effectiveness.
+  "description" : "An ancient and terribly deadly sidearm.
 ^yellow;Inflicts radiation burn^reset;",
-  "shortdescription" : "XT-4 Crippler",
+  "shortdescription" : "Precursor Crippler",
   "level" : 4,
-  "category" : "Kinetic Sidearm",
-  "itemTags" : ["weapon","ranged","machinepistol", "energy"],
+  "category" : "machinepistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
+  "learnBlueprintsOnPickup" : [ "chargesmg" ],
   "animation" : "/items/active/weapons/ranged/gun.animation",
+  
   "animationParts" : {
     "butt" : "",
     "middle" : "chargesmg.png",
@@ -35,8 +37,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.1,
-    "baseDps" : 7,
-    "energyUsage" : 22,
+    "baseDps" : 4,
+    "energyUsage" : 27,
     "fireType" : "auto",
     "inaccuracy" : 0.02,
     "projectileCount" : 1,

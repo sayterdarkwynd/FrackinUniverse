@@ -23,9 +23,9 @@
 			"image": "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
 			"variants": 4,
 			"pingRange": 24,
-			"pingBandWidth": 10,
+			"pingBandWidth": 12,
 			"pingDuration": 2.5,
-			"pingCooldown": 8.0
+			"pingCooldown": 5.0
 		},
 		"animationDelta": 5,
 		
@@ -103,7 +103,7 @@
 
 
 		"metaBoundBox": [-4, -4, 4, 4],
-		"scale": 0.35,
+		"scale": 0.85,
 
 		"movementSettings": {
 			"collisionPoly" : [ [0.625, 0.9375], [1.125, 0.4375], [1.125, -0.4375], [0.625, -0.9375], [-0.625, -0.9375], [-1.125, -0.4375], [-1.125, 0.4375], [-0.625, 0.9375] ],
@@ -142,7 +142,7 @@
 
 			"stats": {
 				"maxHealth":{
-					"baseValue":20
+					"baseValue":120
 				},
 				"healthRegen":{
 					"baseValue":0.1
@@ -169,6 +169,7 @@
 		"feetOffset": [0, -8],
 		"capturable": true,
 		"captureHealthFraction": 1.0,
-		"nametagColor": [64, 200, 255]
+		"nametagColor": [64, 200, 255],
+		"captureCollectables" : { "fu_monster" : "miningdrone2" }
 	}
 }

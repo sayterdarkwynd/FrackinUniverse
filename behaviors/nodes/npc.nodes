@@ -1,0 +1,313 @@
+{
+  "setLounging": {
+    "type": "action",
+    "name": "setLounging",
+    "title": "setLounging",
+    "properties": {
+      "entity": {"type": "entity", "value": null}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "resetLounging": {
+    "type": "action",
+    "name": "resetLounging",
+    "title": "resetLounging",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "setItemSlot": {
+    "type": "action",
+    "name": "setItemSlot",
+    "title": "setItemSlot",
+    "properties": {
+      "definition": {"type": "json", "value": "uncommonrocketlauncher"},
+      "itemName": {"type": "string", "value": "generatedgun"},
+      "level": {"type": "number", "value": null},
+      "slot": {"type": "string", "value": "primary"}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "setAimPosition": {
+    "type": "action",
+    "name": "setAimPosition",
+    "title": "setAimPosition",
+    "properties": {
+      "offset": {"type": "vec2", "value": [0, 0]},
+      "position": {"type": "position", "key": "self"}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "emote": {
+    "type": "action",
+    "name": "emote",
+    "title": "",
+    "properties": {
+      "emote": {"type": "string", "value": null}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "setDeathParticleBurst": {
+    "type": "action",
+    "name": "setDeathParticleBurst",
+    "title": "setDeathParticleBurst",
+    "properties": {
+      "deathParticleBurst": {"type": "string", "value": null}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "setDropPools": {
+    "type": "action",
+    "name": "setDropPools",
+    "title": "setDropPools",
+    "properties": {
+      "dropPools": {"type": "list", "value": []}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "enableTrading": {
+    "type": "action",
+    "name": "enableTrading",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/merchant.lua",
+    "output": {}
+  },
+  "dance": {
+    "type": "action",
+    "name": "dance",
+    "title": "dance",
+    "properties": {
+      "dance": {"type": "string", "value": null}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "damageTeam": {
+    "type": "action",
+    "name": "damageTeam",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "output": {
+      "damageTeam": {"type": "number", "key": null}
+    }
+  },
+  "randomizeStatusText": {
+    "type": "action",
+    "name": "randomizeStatusText",
+    "title": "randomizeStatusText",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "equipArmor": {
+    "type": "action",
+    "name": "equipArmor",
+    "title": "",
+    "properties": {
+      "itemTable": {"type": "table", "value": null},
+      "vanitySlot": {"type": "bool", "value": false}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "inspectEntity": {
+    "type": "action",
+    "name": "inspectEntity",
+    "title": "",
+    "properties": {
+      "entity": {"type": "entity", "value": "target"}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/dialog.lua",
+    "output": {}
+  },
+  "receiveClueDialog": {
+    "type": "action",
+    "name": "receiveClueDialog",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {
+      "dialog": {"type": "table", "key": null},
+      "source": {"type": "entity", "key": null}
+    }
+  },
+  "primaryFire": {
+    "type": "action",
+    "name": "primaryFire",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "altFire": {
+    "type": "action",
+    "name": "altFire",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "primaryWeaponTag": {
+    "type": "action",
+    "name": "primaryWeaponTag",
+    "title": "primaryWeaponTag",
+    "properties": {
+      "tag": {"type": "string", "value": "bow"}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "lounge": {
+    "type": "action",
+    "name": "lounge",
+    "title": "",
+    "properties": {
+      "entity": {"type": "entity", "value": null}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "addTradableItem": {
+    "type": "action",
+    "name": "addTradableItem",
+    "title": "",
+    "properties": {
+      "item": {"type": "table", "value": null}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/merchant.lua",
+    "output": {}
+  },
+  "hasRangedPrimary": {
+    "type": "action",
+    "name": "hasRangedPrimary",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "hasMeleePrimary": {
+    "type": "action",
+    "name": "hasMeleePrimary",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "hasShield": {
+    "type": "action",
+    "name": "hasShield",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "hasMeleeSheathed": {
+    "type": "action",
+    "name": "hasMeleeSheathed",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "output": {}
+  },
+  "hasRangedSheathed": {
+    "type": "action",
+    "name": "hasRangedSheathed",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "output": {}
+  },
+  "hasShieldSheathed": {
+    "type": "action",
+    "name": "hasShieldSheathed",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "output": {}
+  },
+  "swapItemSlots": {
+    "type": "action",
+    "name": "swapItemSlots",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "output": {}
+  },
+  "canFire": {
+    "type": "action",
+    "name": "canFire",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "output": {}
+  },
+  "primaryWeaponTiming": {
+    "type": "action",
+    "name": "primaryWeaponTiming",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {
+      "cooldown": {"type": "number", "key": null},
+      "windup": {"type": "number", "key": null}
+    }
+  },
+  "endPrimaryFire": {
+    "type": "action",
+    "name": "endPrimaryFire",
+    "title": "",
+    "properties": {},
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {}
+  },
+  "friendlyTargeting": {
+    "type": "action",
+    "name": "friendlyTargeting",
+    "title": "friendlyTargeting",
+    "properties": {
+      "attackOnSight": {"type": "list", "value": []},
+      "broadcastInterval": {"type": "number", "value": 2},
+      "hostileDamageTeam": {"type": "json", "value": {"type": "enemy", "team": 1}},
+      "losTime": {"type": "number", "value": 8},
+      "queryRange": {"type": "number", "value": 50},
+      "trackingRange": {"type": "number", "value": 50}
+    },
+    "category": "npc",
+    "script": "/scripts/actions/npc.lua",
+    "output": {
+      "target": {"type": "entity", "key": null},
+      "attackOnSight": {"type": "list", "key": null}
+    }
+  }
+}

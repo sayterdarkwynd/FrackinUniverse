@@ -1,9 +1,13 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-	"mantizidrapedchest", 
-	"mantizidrapedlegs",
-	"cannoneerchest",
-	"cannoneerhead",
-	"cannoneerlegs"	
-	] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizidrapedchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizidrapedlegs" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "cannoneerchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "cannoneerhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "cannoneerlegs" }
+  ]
 ]

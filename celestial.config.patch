@@ -1,4 +1,5 @@
 [
+
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/chromatic",
   "value" : 
@@ -42,8 +43,44 @@
       "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant_<selector>.png",
       "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
       "maskRange" : [1, 25],
-      "maskPerPlanetRange" : [1, 1]  
+      "maskPerPlanetRange" : [3, 3]  
   }},  
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant2",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant2_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1,25],
+      "maskPerPlanetRange" : [1,1]  
+  }}, 
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant3",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant3_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [1, 3]  
+  }},   
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant4",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant4_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [2, 2]  
+  }},   
+  {"op" : "add", 
+  "path" : "/terrestrialHorizonGraphics/fugasgiant5",
+  "value" : 
+  {
+      "baseImages" : "/celestial/system/terrestrial/horizon/textures/fugasgiant5_<selector>.png",
+      "maskTextures" : "/celestial/system/terrestrial/horizon/masks/temperate/<mask>_<selector>.png",
+      "maskRange" : [1, 25],
+      "maskPerPlanetRange" : [1, 3]  
+  }},   
     {"op" : "add", 
     "path" : "/terrestrialHorizonGraphics/snowdark",
     "value" : 
@@ -505,6 +542,7 @@
       "maskRange" : [1, 25],
       "maskPerPlanetRange" : [3, 3]  
   }},
+  
   {"op" : "add", 
   "path" : "/terrestrialGraphics/chromatic",
   "value" : 
@@ -513,6 +551,7 @@
       "dynamicsImages" : "/celestial/system/terrestrial/dynamics/temperate/<num>.png",
       "dynamicsRange" : [1, 30] 
   }},
+  
   {"op" : "add", 
   "path" : "/terrestrialGraphics/arcticdark",
   "value" : 
@@ -820,14 +859,138 @@
       "dynamicsImages" : "/celestial/system/terrestrial/dynamics/temperate/<num>.png",
       "dynamicsRange" : [1, 30] 
   }}, 
+  
   {"op" : "add", 
   "path" : "/terrestrialGraphics/fugasgiant",
   "value" : 
   {
-      "baseImages" : "/celestial/system/terrestrial/biomes/fugasgiant/maskie<num>.png",
-      "dynamicsImages" : "/celestial/system/terrestrial/dynamics/temperate/<num>.png",
-      "dynamicsRange" : [1, 30] 
-  }},   
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        30
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 3,
+      "primaryHueShiftRange": [
+        0,
+        360
+      ],
+      "hueShiftOffsetRange": [
+        -360,
+        360
+      ]
+  }},
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant2",
+  "value" : 
+  {
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        20
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 2,
+      "primaryHueShiftRange": [
+        0,
+        360
+      ],
+      "hueShiftOffsetRange": [
+        -360,
+        360
+      ]
+  }},
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant3",
+  "value" : 
+  {
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        10
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 4,
+      "primaryHueShiftRange": [
+        0,
+        360
+      ],
+      "hueShiftOffsetRange": [
+        -360,
+        360
+      ]
+  }},
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant4",
+  "value" : 
+  {
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        25
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 2,
+      "primaryHueShiftRange": [
+        0,
+        360
+      ],
+      "hueShiftOffsetRange": [
+        -360,
+        360
+      ]
+  }},  
+  {"op" : "add", 
+  "path" : "/terrestrialGraphics/fugasgiant5",
+  "value" : 
+  {
+      "baseImage": "/celestial/system/gas_giant/gas_giant_base_<num>.png",
+      "shadowImages": "/celestial/system/gas_giant/shadows/<num>.png",
+      "shadowNumber": [
+        1,
+        9
+      ],
+      "dynamicsImages": "/celestial/system/gas_giant/gas_giant_dynamics/<num>.png",
+      "dynamicsRange": [
+        1,
+        25
+      ],
+      "overlayImages": "/celestial/system/gas_giant/gas_giant_clouds_<num>.png",
+      "overlayCount": 2,
+      "primaryHueShiftRange": [
+        0,
+        120
+      ],
+      "hueShiftOffsetRange": [
+        -160,
+        160
+      ]
+  }},
+  
   {"op" : "add", 
   "path" : "/terrestrialGraphics/protoworlddark",
   "value" : 
@@ -1223,41 +1386,42 @@
       "baseParameters" : {
         "typeName" : "binary1",
         "image" : "/celestial/system/binary1.png",
-        "twinkleTime" : [1.0, 1.5]
+        "twinkleTime" : [1.0, 1.5],
+        "spaceThreatLevel" : 3
       },
       "variationParameters" : [
-	  {
-	  "magnitude" : 3,
-	  "description" : "Small Binary Star",
-	  "imageScale" : 0.04,
-	  "twinkleFrames" : "/celestial/stars/star11pxfubinary.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star11px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 5,
-	  "description" : "Medium Binary Star",
-	  "imageScale" : 0.055,
-	  "twinkleFrames" : "/celestial/stars/star15pxfubinary.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star15px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 7,
-	  "description" : "Large Binary Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star19pxfubinary.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star19px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 9,
-	  "description" : "Huge Binary Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star21pxfubinary.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
-	  "brightness" : [1, 1]
-	  }
+    {
+    "magnitude" : 3,
+    "description" : "Small Binary Star",
+    "imageScale" : 0.04,
+    "twinkleFrames" : "/celestial/stars/star11pxfubinary.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star11px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 5,
+    "description" : "Medium Binary Star",
+    "imageScale" : 0.055,
+    "twinkleFrames" : "/celestial/stars/star15pxfubinary.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star15px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 7,
+    "description" : "Large Binary Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star19pxfubinary.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star19px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 9,
+    "description" : "Huge Binary Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star21pxfubinary.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
+    "brightness" : [1, 1]
+    }
       ],
       "orbitRegions" : [
         {
@@ -1266,7 +1430,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "binarySunScorching"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1281,7 +1445,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "binarySunHot"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1296,7 +1460,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "binarySunHabitable"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1310,7 +1474,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "binarySunCool"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1324,7 +1488,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "binarySunFrozen"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1343,41 +1507,42 @@
       "baseParameters" : {
         "typeName" : "redsun1",
         "image" : "/celestial/system/redsun1.png",
-        "twinkleTime" : [0.7, 1.0]
+        "twinkleTime" : [0.7, 1.0],
+        "spaceThreatLevel" : 3
       },
       "variationParameters" : [
-	  {
-	  "magnitude" : 3,
-	  "description" : "Small Red Star",
-	  "imageScale" : 0.04,
-	  "twinkleFrames" : "/celestial/stars/star7pxfured.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 5,
-	  "description" : "Medium Red Star",
-	  "imageScale" : 0.055,
-	  "twinkleFrames" : "/celestial/stars/star13pxfured.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 7,
-	  "description" : "Large Red Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star17pxfured.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 9,
-	  "description" : "Huge Red Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star21pxfured.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
-	  "brightness" : [1, 1]
-	  }
+    {
+    "magnitude" : 3,
+    "description" : "Small Red Star",
+    "imageScale" : 0.04,
+    "twinkleFrames" : "/celestial/stars/star7pxfured.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 5,
+    "description" : "Medium Red Star",
+    "imageScale" : 0.055,
+    "twinkleFrames" : "/celestial/stars/star13pxfured.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 7,
+    "description" : "Large Red Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star17pxfured.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 9,
+    "description" : "Huge Red Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star21pxfured.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
+    "brightness" : [1, 1]
+    }
       ],
       "orbitRegions" : [
         {
@@ -1386,7 +1551,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "redSunScorching"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1401,7 +1566,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "redSunHot"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1416,7 +1581,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "redSunHabitable"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1430,7 +1595,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "redSunCool"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1444,7 +1609,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "redSunFrozen"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1463,41 +1628,42 @@
       "baseParameters" : {
         "typeName" : "bluesun1",
         "image" : "/celestial/system/bluesun1.png",
-        "twinkleTime" : [1.0, 1.5]
+        "twinkleTime" : [1.0, 1.5],
+        "spaceThreatLevel" : 4
       },
       "variationParameters" : [
-	  {
-	  "magnitude" : 3,
-	  "description" : "Small Blue Star",
-	  "imageScale" : 0.04,
-	  "twinkleFrames" : "/celestial/stars/star7pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 5,
-	  "description" : "Medium Blue Star",
-	  "imageScale" : 0.055,
-	  "twinkleFrames" : "/celestial/stars/star13pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 7,
-	  "description" : "Large Blue Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star17pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 9,
-	  "description" : "Huge Blue Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star21pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
-	  "brightness" : [1, 1]
-	  }
+    {
+    "magnitude" : 3,
+    "description" : "Small Blue Star",
+    "imageScale" : 0.04,
+    "twinkleFrames" : "/celestial/stars/star7pxfublue.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 5,
+    "description" : "Medium Blue Star",
+    "imageScale" : 0.055,
+    "twinkleFrames" : "/celestial/stars/star13pxfublue.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 7,
+    "description" : "Large Blue Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star17pxfublue.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 9,
+    "description" : "Huge Blue Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star21pxfublue.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
+    "brightness" : [1, 1]
+    }
       ],
       "orbitRegions" : [
         {
@@ -1506,7 +1672,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunScorching"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1521,7 +1687,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunHot"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1536,7 +1702,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunHabitable"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1550,7 +1716,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunCold"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1564,7 +1730,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunFrozen"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1584,41 +1750,42 @@
       "baseParameters" : {
         "typeName" : "bluesun2",
         "image" : "/celestial/system/bluesun2.png",
-        "twinkleTime" : [1.0, 1.5]
+        "twinkleTime" : [1.0, 1.5],
+        "spaceThreatLevel" : 4
       },
       "variationParameters" : [
-	  {
-	  "magnitude" : 3,
-	  "description" : "Small Blue Star",
-	  "imageScale" : 0.04,
-	  "twinkleFrames" : "/celestial/stars/star7pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 5,
-	  "description" : "Medium Blue Star",
-	  "imageScale" : 0.055,
-	  "twinkleFrames" : "/celestial/stars/star13pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 7,
-	  "description" : "Large Blue Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star17pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 9,
-	  "description" : "Huge Blue Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star21pxfublue.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
-	  "brightness" : [1, 1]
-	  }
+    {
+    "magnitude" : 3,
+    "description" : "Small Blue Star",
+    "imageScale" : 0.04,
+    "twinkleFrames" : "/celestial/stars/star7pxfublue.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 5,
+    "description" : "Medium Blue Star",
+    "imageScale" : 0.055,
+    "twinkleFrames" : "/celestial/stars/star13pxfublue.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 7,
+    "description" : "Large Blue Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star17pxfublue.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 9,
+    "description" : "Huge Blue Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star21pxfublue.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
+    "brightness" : [1, 1]
+    }
       ],
       "orbitRegions" : [
         {
@@ -1627,7 +1794,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunScorching"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1642,7 +1809,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunHot"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1657,7 +1824,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunHabitable"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1671,7 +1838,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunCold"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1685,7 +1852,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blueSunFrozen"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1705,7 +1872,8 @@
       "baseParameters" : {
         "typeName" : "blacksun1",
         "image" : "/celestial/system/blacksun1.png",
-        "twinkleTime" : [3.0, 3.5]
+        "twinkleTime" : [3.0, 3.5],
+        "spaceThreatLevel" : 6
       },
       "variationParameters" : [
         {
@@ -1740,7 +1908,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blackSunScorching"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1754,7 +1922,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blackSunHot"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1768,7 +1936,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blackSunHabitable"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1782,7 +1950,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blackSunCool"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1796,7 +1964,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "blackSunFrozen"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1816,41 +1984,42 @@
       "baseParameters" : {
         "typeName" : "dying1",
         "image" : "/celestial/system/dyingstar1.png",
-        "twinkleTime" : [1.0, 1.5]
+        "twinkleTime" : [1.0, 1.5],
+        "spaceThreatLevel" : 5
       },
       "variationParameters" : [
-	  {
-	  "magnitude" : 3,
-	  "description" : "Small Green Star",
-	  "imageScale" : 0.04,
-	  "twinkleFrames" : "/celestial/stars/star7pxgreen.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 5,
-	  "description" : "Medium Green Star",
-	  "imageScale" : 0.055,
-	  "twinkleFrames" : "/celestial/stars/star13pxgreen.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 7,
-	  "description" : "Large Green Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star17pxgreen.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
-	  "brightness" : [1, 1]
-	  },
-	  {
-	  "magnitude" : 9,
-	  "description" : "Huge Green Star",
-	  "imageScale" : 0.075,
-	  "twinkleFrames" : "/celestial/stars/star21pxgreen.png",
-	  "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
-	  "brightness" : [1, 1]
-	  }
+    {
+    "magnitude" : 3,
+    "description" : "Small Green Star",
+    "imageScale" : 0.04,
+    "twinkleFrames" : "/celestial/stars/star7pxgreen.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star7px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 5,
+    "description" : "Medium Green Star",
+    "imageScale" : 0.055,
+    "twinkleFrames" : "/celestial/stars/star13pxgreen.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star13px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 7,
+    "description" : "Large Green Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star17pxgreen.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star17px.png",
+    "brightness" : [1, 1]
+    },
+    {
+    "magnitude" : 9,
+    "description" : "Huge Green Star",
+    "imageScale" : 0.075,
+    "twinkleFrames" : "/celestial/stars/star21pxgreen.png",
+    "twinkleBackground" : "/celestial/stars/backgrounds/star21px.png",
+    "brightness" : [1, 1]
+    }
       ],
       "orbitRegions" : [
         {
@@ -1859,7 +2028,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "dyingSunScorching"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1873,7 +2042,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "dyingSunHot"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1887,7 +2056,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "dyingSunHabitable"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1901,7 +2070,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "dyingSunCool"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1915,7 +2084,7 @@
           "bodyProbability" : 0.7,
           "planetaryTypes" : [
             {"weight" : 0.7, "item" : "dyingSunFrozen"},
-            {"weight" : 0.07, "item" : "GasGiant"},
+            {"weight" : 0.07, "item" : "fugasplanet"},
             {"weight" : 0.04, "item" : "AsteroidField"}
           ],
           "satelliteTypes" : [
@@ -1927,6 +2096,49 @@
     }
 },
 
+{
+    "op" : "add",
+    "path" : "/planetaryTypes/fugasplanet",
+    "value" : {
+      "satelliteProbability" : 0.6,
+      "maxSatelliteCount" : 6,
+      
+      "baseParameters" : {
+        "worldType" : "Terrestrial",
+        "description" : "Gassy Planet",
+        "smallImage": "/celestial/system/planet_large.png",
+        "terrestrialType" : [ "fugasgiant", "fugasgiant2", "fugasgiant3", "fugasgiant4", "fugasgiant5" ]
+      },
+
+      "variationParameters" : [
+        {
+          "imageScale" : 0.15,
+          "smallImageScale" : 0.6,
+          "worldSize" : "large"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.70,
+          "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.80,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.4,
+          "smallImageScale" : 0.85,
+          "worldSize" : "mammoth"
+        }
+      ]
+    }
+},
 
 
 {
@@ -1936,7 +2148,7 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Scorched Moons",
-
+        "smallImage": "/celestial/system/planet_small_scorched.png",
         "terrestrialType" : [ "tarball", "desertwastes", "desert", "infernus", "magma", "volcanic", "sulphuric", "scorchedcity" ]
       },
 
@@ -1968,7 +2180,7 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Hot Moon",
-
+        "smallImage": "/celestial/system/planet_small_hot.png",
         "terrestrialType" : [ "chromatic", "strangesea", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"desert",  "metallicmoon", "tarball", "mountainous", "fungus", "moon", "barren", "infernus", "magma", "volcanic", "sulphuric", "desertwastes", "ocean" ]
       },
 
@@ -2000,7 +2212,7 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Warm Moon",
-
+        "smallImage": "/celestial/system/planet_small_warm.png",
         "terrestrialType" : [ "crystalmoon", "strangesea", "eden", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"desert", "forest", "metallicmoon", "tarball", "mountainous", "tidewater", "fungus", "moon", "barren", "irradiated", "volcanic", "arboreal", "arboreal2", "atropus", "desertwastes", "protoworld", "alien", "ocean", "toxic", "bloodstonesea", "slimeworld", "thickjungle", "tabularasa" ]
       },
 
@@ -2032,7 +2244,7 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Habitable Moon",
-
+        "smallImage": "/celestial/system/planet_small_habitable.png",
         "terrestrialType" : [ "crystalmoon", "strangesea", "eden", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"forest", "mountainous", "tidewater", "fungus", "moon", "urbanwasteland", "ocean",  "metallicmoon", "desertwastes", "atropus", "savannah", "jungle", "alien", "toxic", "bog", "arboreal", "arboreal2", "bloodstonesea", "irradiated", "protoworld", "penumbra", "slimeworld", "thickjungle", "tabularasa" ]
       },
 
@@ -2065,7 +2277,7 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Cool Moon",
-
+        "smallImage": "/celestial/system/planet_small_cool.png",
         "terrestrialType" : [ "crystalmoon", "strangesea", "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ,"forest", "mountainous", "tidewater",  "urbanwasteland", "ocean", "tundra", "barren", "bog", "metallicmoon", "toxic", "arboreal", "arboreal2", "irradiated", "penumbra", "snow", "moon" ]
       },
 
@@ -2097,7 +2309,7 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Cold Moon",
-
+        "smallImage": "/celestial/system/planet_small_cold.png",
         "terrestrialType" : [ "crystalmoon", "strangesea", "moon_stone" , "moon", "snow", "tundra", "nitrogensea", "icewaste", "icemoon" ]
       },
 
@@ -2129,7 +2341,7 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Frozen Moon",
-
+        "smallImage": "/celestial/system/planet_small_frozen.png",
         "terrestrialType" : [ "crystalmoon", "moon_shadow", "moon", "nitrogensea", "snow", "icewaste", "icemoon" ]
       },
 
@@ -2164,8 +2376,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Mutated Moons",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_mutated.png",
         "terrestrialType" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" , "tarball", "fungus", "alien", "urbanwasteland", "ffunknown" ]
       },
 
@@ -2192,8 +2404,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Lightless Moon",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_dark.png",
         "terrestrialType" : [ "moon_shadow", "sulphuricdark", "icewastedark", "arborealdark", "atropusdark", "shadow", "icemoon", "metallicmoon", "ffunknown" ]
       },
 
@@ -2221,8 +2433,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Scorching Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_scorched.png",
         "terrestrialType" : [ "barren", "ffunknown", "sulphuric", "volcanic", "magma" ]
       },
 
@@ -2243,19 +2455,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2271,8 +2488,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Hot Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_hot.png",
         "terrestrialType" : [ "arboreal", "barren", "chromatic", "thickjungle", "ffunknown", "savannah" ]
       },
 
@@ -2293,9 +2510,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2312,7 +2544,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Habitable Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_habitable.png",
 
         "terrestrialType" : [ "arboreal", "barren", "bog", "mountainous", "thickjungle", "crystalmoon", "desert", "forest", "ocean", "ffunknown" ]
       },
@@ -2334,14 +2567,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2357,7 +2600,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Cool Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_cool.png",
 
         "terrestrialType" : [ "barren", "bog", "mountainous", "crystalmoon", "snow", "forest", "ocean", "ffunknown", "tundra" ]
       },
@@ -2379,19 +2623,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2409,8 +2658,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Frozen Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_frozen.png",
         "terrestrialType" : [ "crystalmoon", "snow", "arctic", "ffunknown", "tundra", "icewaste" ]
       },
 
@@ -2431,9 +2680,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2450,8 +2714,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Scorching Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_scorched.png",
         "terrestrialType" : [ "scorchedcity", "barren", "ffunknown", "sulphuric", "volcanic", "magma" ]
       },
 
@@ -2472,19 +2736,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2500,9 +2769,9 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Hot Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
-        "terrestrialType" : [ "fugasgiant", "scorchedcity", "barren", "bog", "urbanwasteland", "irradiated", "ffunknown", "superdense", "slimeworld", "jungle", "alien", "savannah", "midnight" ]
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_hot.png",
+        "terrestrialType" : [ "scorchedcity", "barren", "bog", "urbanwasteland", "irradiated", "ffunknown", "superdense", "slimeworld", "jungle", "alien", "savannah", "midnight" ]
       },
 
       "variationParameters" : [
@@ -2522,9 +2791,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2541,9 +2825,9 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Habitable Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
-        "terrestrialType" : [ "fugasgiant", "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "forest", "jungle", "alien", "ocean" ]
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_habitable.png",
+        "terrestrialType" : [ "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "forest", "jungle", "alien", "ocean" ]
       },
 
       "variationParameters" : [
@@ -2563,14 +2847,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2586,9 +2880,9 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Cool Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
-        "terrestrialType" : [ "fugasgiant", "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "thickjungle", "jungle", "alien", "toxic", "ocean", "metallicmoon", "tundra" ]
+        // "smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_cool.png",
+        "terrestrialType" : [ "arboreal", "barren", "bog", "urbanwasteland", "eden", "irradiated", "ffunknown", "superdense", "slimeworld", "thickjungle", "jungle", "alien", "toxic", "ocean", "metallicmoon", "tundra" ]
       },
 
       "variationParameters" : [
@@ -2608,19 +2902,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2638,9 +2937,9 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Frozen Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
-        "terrestrialType" : [ "fugasgiant", "crystalmoon", "snow", "arctic", "ffunknown", "tundra" ]
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_frozen.png",
+        "terrestrialType" : [ "crystalmoon", "snow", "arctic", "ffunknown", "tundra" ]
       },
 
       "variationParameters" : [
@@ -2660,9 +2959,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2680,8 +2994,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Scorching Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_scorched.png",
         "terrestrialType" : [ "scorchedcity", "ffunknown", "volcanic", "magma", "infernus", "tarball" ]
       },
 
@@ -2702,19 +3016,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2730,8 +3049,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Hot Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_hot.png",
         "terrestrialType" : [ "scorchedcity", "ffunknown", "volcanic", "magma", "infernus", "desertwastes", "tabularasa", "fungus", "tarball", "arboreal2" ]
       },
 
@@ -2752,9 +3071,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2771,8 +3105,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Habitable Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_habitable.png",
         "terrestrialType" : [ "barren", "scorchedcity", "volcanic", "urbanwasteland", "desertwastes", "tabularasa", "fungus", "tarball", "alien", "arboreal2", "toxic" ]
       },
 
@@ -2793,14 +3127,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2808,7 +3152,7 @@
 
 {
     "op" : "add",
-    "path" : "/planetaryTypes/blueSunCool",
+    "path" : "/planetaryTypes/blueSunCold",
     "value" : {
       "satelliteProbability" : 0.35,
       "maxSatelliteCount" : 2,
@@ -2816,8 +3160,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Cool Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_cool.png",
         "terrestrialType" : [ "savannah", "urbanwasteland", "desert", "tabularasa", "fungus", "tarball", "alien", "toxic", "jungle", "thickjungle" ]
       },
 
@@ -2838,19 +3182,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2868,8 +3217,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Frozen Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_frozen.png",
         "terrestrialType" : [ "snow", "arctic", "frozenvolcanic", "tundra" ]
       },
 
@@ -2890,9 +3239,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2909,8 +3273,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Scorching Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_scorched.png",
         "terrestrialType" : [ "sulphuric", "ffunknown", "volcanic", "magma", "strangesea" ]
       },
 
@@ -2931,19 +3295,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -2959,8 +3328,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Hot Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_hot.png",
         "terrestrialType" : [ "tidewater", "atropus", "bloodstonesea", "protoworld", "jungle", "arboreal2", "urbanwasteland", "strangesea", "alien", "desert" ]
       },
 
@@ -2981,9 +3350,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -3000,8 +3384,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Habitable Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_habitable.png",
         "terrestrialType" : [ "tidewater", "atropus", "bloodstonesea", "protoworld", "arboreal", "urbanwasteland", "strangesea", "alien", "desert" ]
       },
 
@@ -3022,14 +3406,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -3045,8 +3439,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Cool Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_cool.png",
         "terrestrialType" : [ "tidewater", "penumbra", "tundra", "barren", "alien", "strangesea", "desert" ]
       },
 
@@ -3067,19 +3461,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -3097,8 +3496,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Frozen Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_frozen.png",
         "terrestrialType" : [ "snow", "arctic", "nitrogensea", "tundra" ]
       },
 
@@ -3119,9 +3518,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -3138,8 +3552,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Scorching Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_scorched.png",
         "terrestrialType" : [ "sulphuricdark", "infernusdark", "magmadark", "shadow" ]
       },
 
@@ -3160,19 +3574,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -3188,8 +3607,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Hot Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_hot.png",
         "terrestrialType" : [ "tidewater", "atropusdark", "penumbra", "lightless", "shadow", "arborealdark", "sulphuricdark", "protoworlddark" ]
       },
 
@@ -3210,9 +3629,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -3229,8 +3663,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Habitable Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_habitable.png",
         "terrestrialType" : [ "aethersea", "atropusdark", "penumbra", "lightless", "shadow", "arborealdark", "sulphuricdark", "protoworlddark", "tidewater", "midnight" ]
       },
 
@@ -3251,14 +3685,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -3274,8 +3718,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Cool Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_cool.png",
         "terrestrialType" : [ "aethersea", "penumbra", "lightless", "atropusdark", "arborealdark", "strangesea", "desertwastesdark", "tidewater", "midnight", "metallicmoon" ]
       },
 
@@ -3296,19 +3740,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
         },
         {
-          "imageScale" : 0.27,
-          "smallImageScale" : 0.75,
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
           "worldSize" : "mega"
         },
         {
-          "imageScale" : 0.32,
-          "smallImageScale" : 0.80,
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
           "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }
@@ -3326,8 +3775,8 @@
       "baseParameters" : {
         "worldType" : "Terrestrial",
         "description" : "Frozen Planet",
-        "smallImage" : "/celestial/system/planet_small.png",
-
+        //"smallImage" : "/celestial/system/planet_small.png",
+        "smallImage": "/celestial/system/planet_small_frozen.png",
         "terrestrialType" : [ "aethersea", "snowdark", "arcticdark", "icewastedark", "tundradark", "penumbra", "shadow" ]
       },
 
@@ -3348,9 +3797,24 @@
           "worldSize" : "large"
         },
         {
-          "imageScale" : 0.21,
-          "smallImageScale" : 0.70,
+          "imageScale" : 0.18,
+          "smallImageScale" : 0.65,
           "worldSize" : "huge"
+        },
+        {
+          "imageScale" : 0.20,
+          "smallImageScale" : 0.7,
+          "worldSize" : "mega"
+        },
+        {
+          "imageScale" : 0.25,
+          "smallImageScale" : 0.75,
+          "worldSize" : "immense"
+        },
+        {
+          "imageScale" : 0.3,
+          "smallImageScale" : 0.8,
+          "worldSize" : "mammoth"
         }
       ]
     }

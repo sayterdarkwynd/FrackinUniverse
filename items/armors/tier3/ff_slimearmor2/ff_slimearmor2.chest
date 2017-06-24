@@ -6,7 +6,7 @@
   "rarity" : "Rare",
   "description" : "Set Bonus:
 ^cyan;+18% Poison/Radiation Resist, +10% Damage, +6% Crit (Slime weapons). ^reset;
-^e43774;Immune: Poison, Bioooze, Slime. Spawns minions. ^reset;
+^#e43774;Immune: Poison, Bioooze, Slime. Spawns minions. ^reset;
 ^green;Immune: Mud, Slime, Mud and Clay tiles^reset;", 
   "shortdescription" : "Black Slime Chest",
   "category" : "^#e43774;Upgradeable Armor^reset;",
@@ -23,8 +23,9 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
+  "collectablesOnPickup" : { "fu_armorprotection" : "ff_slimechest2" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

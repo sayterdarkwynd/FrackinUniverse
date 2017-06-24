@@ -1,0 +1,70 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "weapon" : {
+        "default" : "visible",
+        "states" : {
+          "visible" : {},
+          "hidden" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "chakram" : {
+        "properties" : {
+          "centered" : true,
+          "fullbright" : true,
+          "offset" : [0.375, 0.0],
+          "transformationGroups" : [ "weapon" ]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "visible" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            },
+            "hidden" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "chakramfullbright" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 2,
+          "offset" : [0.375, 0.0],
+          "transformationGroups" : [ "weapon" ]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "visible" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            },
+            "hidden" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }      
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {}
+  },
+
+  "sounds" : {
+    "throw" : [ ]
+  }
+}

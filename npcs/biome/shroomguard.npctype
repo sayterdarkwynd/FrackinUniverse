@@ -1,0 +1,58 @@
+{
+  "type" : "shroomguard",
+  "baseType" : "villageguard",
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "effectDirectives" : ""
+    }
+  },
+
+  "dropPools" : [ "shroomguardtreasure" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "greetingChance" : 0
+    },
+
+    "questGenerator" : { "pools" : [], "enableParticipation" : false },
+
+    "reactions" : {
+      "spontaneous" : [
+        [1.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "patrol"]
+      ]
+    },
+
+    "dialog" : {
+      "converse" : "/dialog/shroom.config:hail",
+      "accuse" : "/dialog/shroom.config:accuse",
+
+      "attack" : "/dialog/shroom.config:hail",
+      "reattack" : "/dialog/shroom.config:hail",
+      "killedTarget" : "/dialog/shroom.config:hail",
+      "lostTarget" : "/dialog/shroom.config:hail",
+      "outOfSight" : "/dialog/shroom.config:hail",
+      "cheerOn" : "/dialog/shroom.config:hail",
+      "cantReach" : "/dialog/shroom.config:hail",
+
+      "hail" : "/dialog/shroom.config:hail",
+      "comeBack" : "/dialog/shroom.config:hail"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "shroomhead" }, { "name" : "shroomhead2" }, { "name" : "shroomhead3" }, { "name" : "shroomhead4" } ],
+            "chest" : [ { "name" : "florantier2chest" } ],
+            "legs" : [ { "name" : "florantier2pants" } ],
+            "primary" : [
+              "npcbroadsword"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

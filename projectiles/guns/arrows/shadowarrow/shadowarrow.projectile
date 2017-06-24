@@ -1,0 +1,36 @@
+{
+  "projectileName" : "shadowarrow",
+  "physics" : "arrownosticky",
+  "image" : "shadowarrow.png",
+  "animationCycle" : 0.25,
+  "pointLight" : true,
+  "lightColor" : [245, 234, 45],
+  "frameNumber" : 1,
+  "emitters" : [ "arrowshadow" ],
+  "damageKindImage" : "icon.png",
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    }
+  ],
+  "power" : 5,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "damageKind" : "shadowbow",
+  "piercing" : false,
+  "statusEffects" : ["shadowgasfx"],
+	  "periodicActions" : [
+	    {
+	      "time" : 0.01,
+	      "action" : "projectile",
+	      "type" : "flyswarm",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.05,
+	      "angleAdjust" : 0,
+	      "config" : { "speed" : 12 }
+	    }
+	  ]  
+}

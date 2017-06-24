@@ -1,0 +1,43 @@
+{
+  "projectileName" : "chargedshadowarrow",
+  "physics" : "arrownosticky",
+  "image" : "chargedshadowarrow.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "emitters" : [ "arrowshadow" ],
+  "damageKindImage" : "icon.png",
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "power" : 20,
+  "knockback" : 20,
+  "speed" : 40,
+  "knockbackDirectional" : true,
+  "damageKind" : "shadowbow",
+  "piercing" : true,
+  "statusEffects" : ["shadowgasfx"],
+	  "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/shadowfireboom/shadowfireboom.config"
+	    },	  
+	    {
+	      "action" : "projectile",
+	      "type" : "hgravityexplosion",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "config" : { "timeToLive" : 1 },
+	      "angleAdjust" : 0
+	    }
+	  ],  
+	  "periodicActions" : [
+	    {
+	      "time" : 0.06,
+	      "action" : "projectile",
+	      "type" : "flyswarm",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.05,
+	      "angleAdjust" : 0,
+	      "config" : { "speed" : 12, "timeToLive" : 1 }
+	    }
+	  ]  
+}

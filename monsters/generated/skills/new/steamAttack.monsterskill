@@ -1,0 +1,41 @@
+{
+  "name" : "steamAttack",
+  "label" : "STEAM BURST",
+  "image" : "/monsters/generated/flying/skills/default.png",
+
+  "config" : {
+    "hostileActions" : [
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 5],
+        "parameters" : {
+          "skillName" : "steamAttack",
+
+          "maximumRange" : 10,
+          "minimumRange" : 1,
+          "windupEffect" : "",
+          
+          "fireDelay" : 0.3,
+          "projectileType" : "pipkindust",
+          "projectileParameters" : {
+              "power" : 2.2,
+	      "speed" : 30
+          },
+          "power" : 12,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 10,
+          "inaccuracy" : 0.1,
+          "projectileInterval" : 0.001
+        }
+      }
+    ]
+  },
+  
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/npc/monsters/pipkin_attack1.ogg", "/sfx/npc/monsters/pipkin_attack2.ogg" ]
+    }
+  }
+}
+

@@ -5,11 +5,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Set Bonus: ^cyan;???^reset;",
+  "description" : "Set Bonus: 
+^cyan;Protects against majority of effects^reset;",
   "shortdescription" : "Shoggoth Chestguard",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -23,21 +24,22 @@
   },
 
   "level" : 8,
+  "collectablesOnPickup" : { "fu_armorbalanced" : "shoggothchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.149
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.6
+      "amount" : 0.59
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 7
+      "amount" : 4
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",

@@ -7,11 +7,11 @@
   "description" : "A super-heavy fusion rocket launcher.
 ^yellow;Huge radius^reset;
 ^green;Destroys tiles",
-  "shortdescription" : "Reaper Cannon",
+  "shortdescription" : "Fusion Cannon",
   "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","rocketlauncher", "plasma"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "plasma", "upgradeableWeapon"],
   "inventoryIcon" : "isn_fusioncannonicon.png",
   "animation" : "isn_fusioncannon.animation",
   "animationParts" : {
@@ -19,7 +19,7 @@
     "middle" : "isn_fusioncannon.png",
     "middlefullbright" : "isn_fusioncannonfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
   },
   "animationCustom" : {
     "lights" : { "glow" : {
@@ -31,8 +31,8 @@
       "fire" : [ "/items/active/weapons/ranged/unique/science/fusioncannon/isn_magmacannon.wav" ]
     }
   },
-  "baseOffset" : [-0.35, 1.05],
-  "muzzleOffset" : [1.0, -0.165],
+  "baseOffset" : [-0.65, 1.0],
+  "muzzleOffset" : [2.5, -0.165],
 
   "scripts" : [
   "/items/active/weapons/ranged/gun.lua",
@@ -45,17 +45,13 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 2.6,
-    "baseDps" : 5.0,
-    "energyUsage" : 37.5,
+    "fireTime" : 3,
+    "baseDps" : 7,
+    "energyUsage" : 45.0,
     "inaccuracy" : 0,
     "fireType" : "auto",
 
-    "projectileType" : "isn_fusioncannon",
-    "projectileParameters" : {
-      "knockback" : 20,
-      "speed" : 50
-    },
+    "projectileType" : "isn_fusioncannon0",
     "projectileCount" : 1,
 
     "stances" : {
@@ -91,5 +87,25 @@
   "critBonus" : 12,
   "altAbilityType" : "fusionblast",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua", "/items/active/scripts/heavyweapon2.lua" ],
+    "shortdescription" : "^cyan;Blastmark^reset; ^yellow;^reset;",
+  "description" : "Increased projectile speed and knockback.^reset;",  
+    "critChance" : 12,
+    "critBonus" : 16,
+	  "primaryAbility" : {
+	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+	    "class" : "GunFire",
+
+	    "fireTime" : 2.4,
+	    "energyUsage" : 42,
+
+	    "projectileParameters" : {
+	      "knockback" : 24,
+	      "speed" : 75
+	    }
+	  }
+        }
 }

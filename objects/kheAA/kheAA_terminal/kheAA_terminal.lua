@@ -14,7 +14,7 @@ end
 
 function transferItem(_, _, itemData)
 	--dbg(itemData)
-	--itemData={containerID, index}, item, conf,pos
+	--itemData={containerID, index}, itemDescriptor, itemConfig,pos
 	local source = itemData[1][1];
 	if type(source)=="string"then
 		source=tonumber(source)
@@ -22,6 +22,7 @@ function transferItem(_, _, itemData)
 	local sourcePos=itemData[4]
 	local targetPos=itemData[5]
 	local slot = itemData[1][2];
+	local count= itemData[2].count
 	local awake,ping=transferUtil.containerAwake(source,sourcePos)
 	if not awake==true then
 		return
@@ -29,7 +30,7 @@ function transferItem(_, _, itemData)
 		if ping~=nil then
 			source=ping
 		end
-		local item = world.containerTakeAt(source, slot - 1);
+		local item = world.containerTakeNumItemsAt(source, slot - 1,count);
 		if item ~= nil then
 			world.spawnItem(item, targetPos or entity.position())
 		end

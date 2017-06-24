@@ -1,0 +1,47 @@
+{
+  "projectileName" : "gjallarrocket",
+  "image" : "gjallarrocket.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [239, 128, 38],
+  "pointLight" : true,
+  "timeToLive" : 4,
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 2,
+  "actionOnReap" : [
+    {
+	  "action" : "projectile",
+      "type" : "wolfback",
+      "inheritDamageFactor" : 0.3,
+	  "angleAdjust" : -120},
+	  
+	{ "action" : "projectile",
+	  "type" : "wolfback",
+	  "inheritDamageFactor" : 0.25,
+	  "angleAdjust" : -150},
+	  
+	{ "action" : "projectile",
+	  "type" : "wolfback",
+	  "inheritDamageFactor" : 0.25,
+	  "angleAdjust" : -180},
+
+	{ "action" : "projectile",
+	  "type" : "wolfback",
+	  "inheritDamageFactor" : 0.25,
+	  "angleAdjust" : -210},
+	  
+	{ "action" : "projectile",
+	  "type" : "wolfback",
+	  "inheritDamageFactor" : 0.25,
+	  "angleAdjust" : -240},  
+	  
+	{ "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+  }
+  ],
+  "emitters" : [ "rocketsmoke" ],
+  "speed" : 30.0,
+  "physics" : "rocket",
+  "damageKind" : "default"
+}

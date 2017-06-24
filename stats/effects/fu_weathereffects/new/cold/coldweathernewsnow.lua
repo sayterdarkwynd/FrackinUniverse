@@ -173,15 +173,16 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   underground = undergroundCheck()
   local lightLevel = getLight()  
 
-      if self.biomeTimer <= 0 and status.stat("iceResistance",0) < 1.0 then
+      if (self.biomeTimer <= 0) and (status.stat("iceResistance",0) < self.effectCutoffValue) then
+      
         if self.windLevel >= 40 then
-                setWindPenalty()   
-                if (self.timerRadioMessage <=0) then
-                   if not self.usedWind then
-                     world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
-                     self.timerRadioMessage = 10     
-                     self.usedWind = 1
-                   end
+		setWindPenalty()   
+		if (self.timerRadioMessage <=0) then
+		   if not self.usedWind then
+		     world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
+		     self.timerRadioMessage = 10     
+		     self.usedWind = 1
+		   end
 		end
         end
 
@@ -220,7 +221,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
             self.biomeTimer = setEffectTime()
       end 
       
-      if status.stat("iceResistance",0) < self.effectCutoffValue then      
+      if (status.stat("iceResistance",0)) < (self.effectCutoffValue) then      
            self.modifier = status.stat("iceResistance",0)
            if (status.stat("iceResistance",0) <= 0) then 
              self.modifier = 0 

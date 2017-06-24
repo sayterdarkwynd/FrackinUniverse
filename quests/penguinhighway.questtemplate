@@ -1,0 +1,27 @@
+  {
+  "id" : "penguinhighway.gearup",
+  "title" : "^green;Highway Havoc",
+  "text" : "The penguins' map shows their next assault target: a city on a distant planet known as Techno City. I should put a wrench in their invasion plans!",
+  "completionText" : "Wow, that was quite the horde of penguins! Something about this city gives me nostalgia, though...",
+  "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questReceiver"
+  },
+  "moneyRange" : [0, 0],
+  "missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
+  "rewards" : [
+      [ [ "humantier2head-recipe" ], [ "humantier2chest-recipe" ], [ "humantier2pants-recipe" ], [ "dreadwingaf", 1 ] ]
+   ],
+  "canBeAbandoned" : true,
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+		"portraits" : {
+		"default" : "player"
+		},
+	"associatedMission" : "penguinhighway",
+    "turnInDescription" : "Defeat the penguins attacking Techno City.",
+    "requireTurnIn" : true
+  }
+}

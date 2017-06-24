@@ -1,11 +1,15 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-  "furailgun", 
-  "fuaegisaltminigun", 
-  "fucloudgun", 
-	"mantizitier5apants",
-	"mantizitier5ahead",
-	"mantizitier5achest",
-	"densealloy"
-  ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "furailgun" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuaegisaltminigun" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fucloudgun" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier5apants" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier5ahead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier5achest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "densealloy" }
+  ]
 ]

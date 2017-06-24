@@ -1,0 +1,120 @@
+{
+  "globalTagDefaults" : {
+    "doorDirection" : "Right"
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "doorState" : {
+        "default" : "closed",
+        "states" : {
+          "open" : {
+            "frames" : 2,
+            "cycle" : 0.15
+          },
+          "closing" : {
+            "frames" : 2,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "closed"
+          },
+          "closed" : { },
+          "locking" : {
+            "frames" : 2,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "locked"
+          },
+          "locked" : { }
+        }
+      }
+    }, 
+    "parts" : {
+      "doorfullbright" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "doorState" : {
+            "open" : {
+              "properties" : {
+                "image" : "<partImage>:open<doorDirection>.<frame>"
+              }
+            },
+
+            "closing" : {
+              "properties" : {
+                "image" : "<partImage>:close<doorDirection>.<frame>"
+              }
+            },
+
+            "closed" : {
+              "properties" : {
+                "image" : "<partImage>:close<doorDirection>.2"
+              }
+            },
+
+            "locking" : {
+              "properties" : {
+                "image" : "<partImage>:close<doorDirection>.<frame>"
+              }
+            },
+
+            "locked" : {
+              "properties" : {
+                "image" : "<partImage>:close<doorDirection>.2"
+              }
+            }
+          }
+        }
+      },
+        
+      "door" : {
+        "properties" : {
+          "centered" : false
+        },
+        "partStates" : {
+          "doorState" : {
+            "open" : {
+              "properties" : {
+                "image" : "<partImage>:open<doorDirection>.<frame>"
+              }
+            },
+
+            "closing" : {
+              "properties" : {
+                "image" : "<partImage>:close<doorDirection>.<frame>"
+              }
+            },
+
+            "closed" : {
+              "properties" : {
+                "image" : "<partImage>:close<doorDirection>.2"
+              }
+            },
+
+            "locking" : {
+              "properties" : {
+                "image" : "<partImage>:close<doorDirection>.<frame>"
+              }
+            },
+
+            "locked" : {
+              "properties" : {
+                "image" : "<partImage>:close<doorDirection>.2"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "open" : [],
+    "close" : [],
+    "locked" : [ "/sfx/interface/clickon_error.ogg" ]
+  }
+}

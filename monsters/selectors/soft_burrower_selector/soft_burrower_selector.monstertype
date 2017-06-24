@@ -1,0 +1,160 @@
+{
+  "type" : "soft_burrower_selector",
+  "shortdescription" : "soft_burrower_selector",
+  "description" : "Used to spawn tier appropriate burrowers",
+  "categories" : [ "soft_burrower_selector" ],
+  "parts" : [ "body" ],
+  "animation" : "default.animation",
+  "dropPools" : [ ],
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/monsters/selectors/tiered_spawner.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+      "foundTargetActions" : [],
+      "fleeActions" : [],
+      "hostileActions" : [],
+      "approachActions" : [],
+      "wanderActions" : []
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.5,-0.5], [-0.5,0.5], [0.5,0.5], [0.5,-0.5] ],
+      "damage" : 14,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+
+      "collisionPoly" : [ [-0.5,-0.5], [-0.5,0.5], [0.5,0.5], [0.5,-0.5] ],
+
+      "gravityEnabled" : false,
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 7,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 65
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "pools" : [
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"],
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"],
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"],
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"],
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"],
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"],
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"],
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"],
+      ["sulphur_burrower","lead_burrower","berlinite_burrower","mascagnite_burrower","magnesium_burrower"]
+    ]
+  }
+}

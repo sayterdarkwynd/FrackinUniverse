@@ -1,0 +1,604 @@
+{
+  "name": "approach-fly",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/behavior.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/sensor.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/flying.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "avoidLiquid": true,
+    "usePathfinding": true,
+    "approachTime": 0,
+    "flyState": "fly",
+    "minRange": 0,
+    "maxRange": 0,
+    "maxAngle": 1,
+    "approachAngle": 10,
+    "excludeLiquidIds": [],
+    "idleState": ""
+  },
+  "root": {
+    "title": "parallel",
+    "type": "composite",
+    "name": "parallel",
+    "parameters": {
+      "fail": {"value": 1},
+      "success": {"value": 1}
+    },
+    "children": [
+      {
+        "title": "animate",
+        "type": "action",
+        "name": "animate",
+        "parameters": {
+          "fallback": {"value": "<idleState>"},
+          "state": {"value": "<flyState>"},
+          "type": {"value": "body"}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "entityPosition",
+                "type": "action",
+                "name": "entityPosition",
+                "parameters": {
+                  "entity": {"key": "target"}
+                },
+                "output": {
+                  "position": "targetPosition"
+                }
+              },
+              {
+                "title": "setNumber",
+                "type": "action",
+                "name": "setNumber",
+                "parameters": {
+                  "number": {"key": "<maxRange>"}
+                },
+                "output": {
+                  "number": "range"
+                }
+              },
+              {
+                "title": "listClear",
+                "type": "action",
+                "name": "listClear",
+                "parameters": {},
+                "output": {
+                  "list": "targetPositions"
+                }
+              },
+              {
+                "title": "repeater",
+                "type": "decorator",
+                "name": "repeater",
+                "parameters": {
+                  "maxLoops": {"value": -1},
+                  "untilSuccess": {"value": true}
+                },
+                "child": {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "setNumber",
+                      "type": "action",
+                      "name": "setNumber",
+                      "parameters": {
+                        "number": {"key": "<maxAngle>"}
+                      },
+                      "output": {
+                        "number": "angle"
+                      }
+                    },
+                    {
+                      "title": "succeeder",
+                      "type": "decorator",
+                      "name": "succeeder",
+                      "parameters": {},
+                      "child": {
+                        "title": "repeater",
+                        "type": "decorator",
+                        "name": "repeater",
+                        "parameters": {
+                          "maxLoops": {"value": 10},
+                          "untilSuccess": {"value": false}
+                        },
+                        "child": {
+                          "title": "sequence",
+                          "type": "composite",
+                          "name": "sequence",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "add",
+                              "type": "action",
+                              "name": "add",
+                              "parameters": {
+                                "addend": {"value": -0.2},
+                                "number": {"key": "angle"}
+                              },
+                              "output": {
+                                "result": "angle"
+                              }
+                            },
+                            {
+                              "title": "vecRotate",
+                              "type": "action",
+                              "name": "vecRotate",
+                              "parameters": {
+                                "angle": {"key": "angle"},
+                                "vector": {"value": [0, "range"]}
+                              },
+                              "output": {
+                                "vector": "targetOffset"
+                              }
+                            },
+                            {
+                              "title": "inverter",
+                              "type": "decorator",
+                              "name": "inverter",
+                              "parameters": {},
+                              "child": {
+                                "title": "lineTileCollision",
+                                "type": "action",
+                                "name": "lineTileCollision",
+                                "parameters": {
+                                  "collisionType": {"value": ["Null", "Block", "Dynamic"]},
+                                  "offset": {"key": "targetOffset"},
+                                  "position": {"key": "targetPosition"}
+                                }
+                              }
+                            },
+                            {
+                              "title": "offsetPosition",
+                              "type": "action",
+                              "name": "offsetPosition",
+                              "parameters": {
+                                "offset": {"key": "targetOffset"},
+                                "position": {"key": "targetPosition"}
+                              },
+                              "output": {
+                                "position": "offsetTargetPosition"
+                              }
+                            },
+                            {
+                              "title": "distance",
+                              "type": "action",
+                              "name": "distance",
+                              "parameters": {
+                                "from": {"key": "self"},
+                                "to": {"key": "offsetTargetPosition"}
+                              },
+                              "output": {
+                                "magnitude": "targetDistance",
+                                "vector": "toTarget"
+                              }
+                            },
+                            {
+                              "title": "inverter",
+                              "type": "decorator",
+                              "name": "inverter",
+                              "parameters": {},
+                              "child": {
+                                "title": "lineTileCollision",
+                                "type": "action",
+                                "name": "lineTileCollision",
+                                "parameters": {
+                                  "collisionType": {"value": ["Null", "Block", "Dynamic"]},
+                                  "offset": {"key": "toTarget"},
+                                  "position": {"key": "self"}
+                                }
+                              }
+                            },
+                            {
+                              "title": "greaterThan",
+                              "type": "action",
+                              "name": "greaterThan",
+                              "parameters": {
+                                "first": {"key": "targetDistance"},
+                                "second": {"key": "<minRange>"}
+                              }
+                            },
+                            {
+                              "title": "listPush",
+                              "type": "action",
+                              "name": "listPush",
+                              "parameters": {
+                                "list": {"key": "targetPositions"},
+                                "position": {"key": "offsetTargetPosition"}
+                              },
+                              "output": {
+                                "list": "targetPositions"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "title": "add",
+                      "type": "action",
+                      "name": "add",
+                      "parameters": {
+                        "addend": {"value": -1},
+                        "number": {"key": "range"}
+                      },
+                      "output": {
+                        "result": "range"
+                      }
+                    },
+                    {
+                      "title": "inverter",
+                      "type": "decorator",
+                      "name": "inverter",
+                      "parameters": {},
+                      "child": {
+                        "title": "greaterThan",
+                        "type": "action",
+                        "name": "greaterThan",
+                        "parameters": {
+                          "first": {"key": "maxRange"},
+                          "second": {"key": "<minRange>"}
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "title": "listShuffle",
+                "type": "action",
+                "name": "listShuffle",
+                "parameters": {
+                  "list": {"key": "targetPositions"}
+                },
+                "output": {
+                  "list": "targetPositions"
+                }
+              },
+              {
+                "title": "offsetPosition",
+                "type": "action",
+                "name": "offsetPosition",
+                "parameters": {
+                  "offset": {"value": [0, 0]},
+                  "position": {"key": "targetPosition"}
+                },
+                "output": {
+                  "position": "lastTargetPosition"
+                }
+              },
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "listGet",
+                    "type": "action",
+                    "name": "listGet",
+                    "parameters": {
+                      "list": {"key": "targetPositions"}
+                    },
+                    "output": {
+                      "position": "movePosition"
+                    }
+                  },
+                  {
+                    "title": "offsetPosition",
+                    "type": "action",
+                    "name": "offsetPosition",
+                    "parameters": {
+                      "offset": {"value": [0, 0]},
+                      "position": {"key": "targetPosition"}
+                    },
+                    "output": {
+                      "position": "movePosition"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "entityPosition",
+                    "type": "action",
+                    "name": "entityPosition",
+                    "parameters": {
+                      "entity": {"key": "target"}
+                    },
+                    "output": {
+                      "position": "targetPosition"
+                    }
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "distance",
+                        "type": "action",
+                        "name": "distance",
+                        "parameters": {
+                          "from": {"key": "targetPosition"},
+                          "to": {"key": "lastTargetPosition"}
+                        },
+                        "output": {
+                          "magnitude": "targetMoveDistance"
+                        }
+                      },
+                      {
+                        "title": "inverter",
+                        "type": "decorator",
+                        "name": "inverter",
+                        "parameters": {},
+                        "child": {
+                          "title": "greaterThan",
+                          "type": "action",
+                          "name": "greaterThan",
+                          "parameters": {
+                            "first": {"key": "targetMoveDistance"},
+                            "second": {"value": 2}
+                          }
+                        }
+                      },
+                      {
+                        "title": "distance",
+                        "type": "action",
+                        "name": "distance",
+                        "parameters": {
+                          "from": {"key": "self"},
+                          "to": {"key": "movePosition"}
+                        },
+                        "output": {
+                          "magnitude": "moveDistance",
+                          "vector": "toMovePosition"
+                        }
+                      },
+                      {
+                        "title": "inverter",
+                        "type": "decorator",
+                        "name": "inverter",
+                        "parameters": {},
+                        "child": {
+                          "title": "lineTileCollision",
+                          "type": "action",
+                          "name": "lineTileCollision",
+                          "parameters": {
+                            "collisionType": {"value": ["Null", "Block", "Dynamic"]},
+                            "offset": {"key": "toMovePosition"},
+                            "position": {"key": "self"}
+                          }
+                        }
+                      },
+                      {
+                        "title": "greaterThan",
+                        "type": "action",
+                        "name": "greaterThan",
+                        "parameters": {
+                          "first": {"key": "moveDistance"},
+                          "second": {"value": 1}
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "runner",
+                    "type": "action",
+                    "name": "runner",
+                    "parameters": {}
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "dynamic",
+            "type": "composite",
+            "name": "dynamic",
+            "parameters": {},
+            "children": [
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "optional",
+                    "type": "decorator",
+                    "name": "optional",
+                    "parameters": {
+                      "shouldRun": {"key": "<avoidLiquid>"}
+                    },
+                    "child": {
+                      "title": "failure",
+                      "type": "action",
+                      "name": "failure",
+                      "parameters": {}
+                    }
+                  },
+                  {
+                    "title": "parallel",
+                    "type": "composite",
+                    "name": "parallel",
+                    "parameters": {
+                      "fail": {"value": 1},
+                      "success": {"value": -1}
+                    },
+                    "children": [
+                      {
+                        "title": "lineLiquidCollision",
+                        "type": "action",
+                        "name": "lineLiquidCollision",
+                        "parameters": {
+                          "endLine": {"key": "movePosition"},
+                          "excludeLiquidIds": {"key": "<excludeLiquidIds>"},
+                          "startLine": {"key": "self"}
+                        }
+                      },
+                      {
+                        "title": "controlApproachVelocity",
+                        "type": "action",
+                        "name": "controlApproachVelocity",
+                        "parameters": {
+                          "force": {"value": 20},
+                          "velocity": {"value": [0, 0]}
+                        }
+                      },
+                      {
+                        "title": "runner",
+                        "type": "action",
+                        "name": "runner",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "entityInSight",
+                    "type": "action",
+                    "name": "entityInSight",
+                    "parameters": {
+                      "entity": {"key": "target"}
+                    }
+                  },
+                  {
+                    "title": "flyInGeneralDirection",
+                    "type": "action",
+                    "name": "flyInGeneralDirection",
+                    "parameters": {
+                      "maxAngle": {"key": "<approachAngle>"},
+                      "position": {"key": "movePosition"}
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "optional",
+                "type": "decorator",
+                "name": "optional",
+                "parameters": {
+                  "shouldRun": {"key": "<usePathfinding>"}
+                },
+                "child": {
+                  "title": "inverter",
+                  "type": "decorator",
+                  "name": "inverter",
+                  "parameters": {},
+                  "child": {
+                    "title": "moveToPosition",
+                    "type": "action",
+                    "name": "moveToPosition",
+                    "parameters": {
+                      "avoidLiquid": {"key": "<avoidLiquid>"},
+                      "groundPosition": {"value": false},
+                      "maxGround": {"value": 5},
+                      "minGround": {"value": -5},
+                      "position": {"key": "movePosition"},
+                      "run": {"value": false}
+                    }
+                  }
+                }
+              },
+              {
+                "title": "flyInGeneralDirection",
+                "type": "action",
+                "name": "flyInGeneralDirection",
+                "parameters": {
+                  "maxAngle": {"key": "<approachAngle>"},
+                  "position": {"key": "movePosition"}
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "selector",
+        "type": "composite",
+        "name": "selector",
+        "parameters": {},
+        "children": [
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "greaterThan",
+                "type": "action",
+                "name": "greaterThan",
+                "parameters": {
+                  "first": {"key": "<approachTime>"},
+                  "second": {"value": 0}
+                }
+              },
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": "<approachTime>"}
+                }
+              }
+            ]
+          },
+          {
+            "title": "runner",
+            "type": "action",
+            "name": "runner",
+            "parameters": {}
+          }
+        ]
+      }
+    ]
+  }
+}

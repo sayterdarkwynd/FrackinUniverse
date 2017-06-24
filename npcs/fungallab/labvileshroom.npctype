@@ -1,0 +1,80 @@
+{
+  "type" : "labvileshroom",
+  "baseType" : "hostile",
+
+
+  "dropPools" : [ "shroomguardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "converse" : "/dialog/shroom.config:hail",
+      "accuse" : "/dialog/shroom.config:accuse",
+
+      "attack" : "/dialog/shroom.config:hail",
+      "reattack" : "/dialog/shroom.config:hail",
+      "killedTarget" : "/dialog/shroom.config:hail",
+      "lostTarget" : "/dialog/shroom.config:hail",
+      "outOfSight" : "/dialog/shroom.config:hail",
+      "cheerOn" : "/dialog/shroom.config:hail",
+      "cantReach" : "/dialog/shroom.config:hail",
+
+      "hail" : "/dialog/shroom.config:hail",
+      "comeBack" : "/dialog/shroom.config:hail"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "evilmushroomhead", "parameters" : { "colorIndex" : 7 } } ],
+            "chest" : [ { "name" : "florantier2chest" } ],
+            "legs" : [ { "name" : "florantier2pants" } ],
+            "primary" : [
+              {"name" : "flamethrower", "parameters" : { "elementalType" : "poison", "primaryAbility" : { "projectileType" : "poisonthrower", "projectileParameters" : { "speed" : 50, "power" : 3.5, "damageType" : "IgnoresDef" }} } }
+            ],
+            "sheathedprimary" : [ 
+			 { "name" : "npcbroadsword", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["weakpoison"] } } } } 
+			]
+          }
+        ] ]
+    ]
+  },
+
+
+  "movementParameters" : {
+    "runSpeed" : 14,
+	"walkSpeed" : 14,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 100.0
+      },
+      "fallDamageMultiplier" : {
+        "baseValue" : 0.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.7
+      },
+	  "fireResistance" : {
+        "baseValue" : -0.5
+      },
+      "poisonResistance" : {
+        "baseValue" : 0.5
+      },
+      "poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      }
+    }
+  }
+}

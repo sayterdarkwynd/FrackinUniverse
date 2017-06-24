@@ -1,0 +1,76 @@
+{
+  "itemName" : "aetheriumaxe",
+  "price" : 11640,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Devastatingly sharp",
+  "shortdescription" : "Aetherium Axe",
+  "tooltipKind" : "sword2",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe", "elder", "upgradeableWeapon"],
+  "level" : 7,
+  "inventoryIcon" : "aetheriumaxe.png",
+
+  "animation" : "axeglow.animation",
+  "animationParts" : {
+    "blade" : "aetheriumaxe.png",
+    "bladefullbright" : "aetheriumaxefullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-0.5, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.5,
+    "baseDps" : 11,
+
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicaxe",
+      "statusEffects" : [ "defenseboostneg20" ],
+      "knockback" : 20,
+      "knockbackMode" : "facing"
+    },
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0.25, 2]
+      },
+      "windup" : {
+        "duration" : 0.4,
+        "weaponOffset" : [0.25, 2],
+
+        "minWindup" : 0.4,
+
+        "weaponAngle" : [
+          [0.7, "linear", -20, 0],
+          [0.85, "linear", 0, 50],
+          [0.925, "sin", 50, 45],
+          [1.0, "cos", 50, 45]
+        ],
+
+        "armAngle" : [
+          [1.0, "sin", -90, 50]
+        ]
+      },
+      "fire" : {
+        "weaponOffset" : [0.25, 2]
+      }
+    }
+  },
+  "critChance" : 8,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

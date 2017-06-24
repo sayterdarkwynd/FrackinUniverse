@@ -1,0 +1,85 @@
+{
+  "itemName" : "autocrossbow",
+  "price" : 1800,
+  "inventoryIcon" : "autocrossbow.png",
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "William Tell has nothing on this baby.",
+  "shortdescription" : "Auto-Crossbow",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "category" : "crossbow",
+  "itemTags" : ["weapon","ranged","crossbow"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "autocrossbow.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/crossbow1.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.40, 0.40],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.2,
+    "baseDps" : 10,
+    "energyUsage" : 28,
+    "inaccuracy" : 0.008,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "woodenbolt",
+    "projectileParameters" : {
+      "knockback" : 25
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "flashlight",
+  "critChance" : 3,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,61 @@
+{
+  "itemName" : "rimewind",
+  "price" : 960,
+  "inventoryIcon" : "rimewindicon.png",
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "Fires arrows imbued with crippling frost.",
+  "shortdescription" : "Rimewind",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 6,
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "rimewindfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "projectileType" : "icearrow",
+    "powerProjectileType" : "chargedicearrow",
+    "projectileParameters" : {
+      "power" : 8.7
+    }
+  },
+
+  "altAbilityType" : "bowshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "energyPerShot" : 35,
+    "projectileType" : "chargedicearrow",
+    "powerProjectileType" : "rimewindarrow",
+    "projectileParameters" : {
+      "power" : 10
+    }
+  },
+
+  "critChance" : 6,
+  "critBonus" : 6, 
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

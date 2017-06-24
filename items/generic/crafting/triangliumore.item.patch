@@ -1,24 +1,25 @@
 [
-  {
-    "op": "add",
-    "path": "/learnBlueprintsOnPickup",
-    "value": [
-      "triangliumpyramid"
-    ]
-  },
-  {
-    "op": "add",
-    "path": "/price",
-    "value": 80
-  },
-  {
-    "op": "replace",
-    "path": "/rarity",
-    "value": "rare"
-  },
-   {
-    "op": "replace",
-    "path": "/category",
-    "value": "craftingMaterial"
-  }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "triangliumpyramid" },
+    {
+      "op": "add",
+      "path": "/price",
+      "value": 80
+    },
+    {
+      "op": "replace",
+      "path": "/rarity",
+      "value": "rare"
+    },
+     {
+      "op": "replace",
+      "path": "/category",
+      "value": "craftingMaterial"
+    },
+    {"op": "add", "path": "/collectablesOnPickup", "value": { "fu_geology" : "triangliumore" } }
+  ]
 ]

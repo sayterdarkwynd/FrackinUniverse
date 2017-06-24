@@ -1,0 +1,40 @@
+{
+  "objectName" : "precursorlight",
+  "colonyTags" : ["outpost","light"],
+  "rarity" : "Common",
+  "description" : "A wall light.",
+  "shortdescription" : "Precursor Light",
+  "race" : "generic",
+  "printable" : true,
+
+  "category" : "light",
+  "price" : 45,
+  "lightColor" : [214, 217, 0],
+
+  "inventoryIcon" : "precursorlighticon.png",
+  "orientations" : [
+    {
+      "image" : "precursorlight.png:<color>.<frame>",
+      "imagePosition" : [-0, 0],
+      "animationPosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+  
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "precursorlight.png",
+    "fg" : "precursorlight.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+  
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

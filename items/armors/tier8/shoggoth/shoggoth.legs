@@ -5,35 +5,37 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Set Bonus: ^cyan;???^reset;",
+  "description" : "Set Bonus: 
+^cyan;Protects against majority of effects^reset;",
   "shortdescription" : "Shoggoth Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 8,
+  "collectablesOnPickup" : { "fu_armorbalanced" : "shoggothpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.2
+      "baseMultiplier" : 1.125
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.3
+      "amount" : 0.305
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 7
+      "amount" : 2
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 9
+      "amount" : 7
     }
   ],
 

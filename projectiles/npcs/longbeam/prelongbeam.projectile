@@ -1,0 +1,27 @@
+{
+  "projectileName" : "prelongbeam",
+  "image" : "prelongbeam.png",
+  "animationCycle" : 0.5,
+  "timeToLive" : 0.5,
+  "frameNumber" : 3,
+  "speed" : 0,
+  "orientationLocked" : false,
+  "damagePoly" : [  ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "damageKind" : "electric",
+  "lightColor" : [100, 0, 100],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "longbeam",
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/plasma_sniper2.ogg" ]
+    }
+  ],
+  "renderLayer" : "Player+1"
+}

@@ -4,12 +4,13 @@
   "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Massively dangerous. Do not touch.",
+  "description" : "Massively dangerous. Do not touch.
+^cyan;Inflicts Poison^reset;",
   "shortdescription" : "Coral Broadsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword"],
+  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
 
   "inventoryIcon" : "coralsword.png",
 
@@ -27,7 +28,10 @@
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.93,
-    "baseDps" : 11
+    "baseDps" : 11,
+    "damageConfig" : {
+      "statusEffects" : [ "weakpoison" ]
+    }
   },
 
   "altAbilityType" : "greatwave",

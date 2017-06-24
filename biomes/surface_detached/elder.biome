@@ -9,7 +9,9 @@
         "pool" : [ 
           [ 0.111, "starspawn" ],          
           [ 0.111, "deepone" ],
-          [ 0.111, "slime" ],
+          [ 0.111, "doomspirit" ],
+          [ 0.111, "fleshreaper" ],
+          [ 0.111, "ravager" ],
           [ 0.111, "fleshleech" ]
         ]
       },
@@ -146,6 +148,15 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "ice", "fuelders", "icewastemini" ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
           "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
@@ -163,7 +174,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [1, "statuspod" ] ],
+              "pool" : [ [1, "statuspod" ], [0.01, "elderaltar" ] ],
               "parameters" : { }
             }
           ]

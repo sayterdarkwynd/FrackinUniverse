@@ -1,5 +1,115 @@
 [
 
+{
+    "op": "add",
+    "path": "/planetTypes/forest/layers/surface/dungeons/-",
+    "value": [ 1.0, "greentower" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/desert/layers/surface/dungeons/-",
+    "value": [ 1.0, "greentower" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/snow/layers/surface/dungeons/-",
+    "value": [ 1.0, "greentower" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/jungle/layers/surface/dungeons/-",
+    "value": [ 1.0, "greentower" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/savannah/layers/surface/dungeons/-",
+    "value": [ 1.0, "greentower" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/tundra/layers/surface/dungeons/-",
+    "value": [ 1.0, "greentower" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/midnight/layers/surface/dungeons/-",
+    "value": [ 1.0, "greentower" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/volcanic/layers/surface/dungeons/-",
+    "value": [ 1.0, "greentower" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/scorchedcity/layers/surface/dungeons/-",
+    "value": [ 3.0, "weaponsfactory" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/scorchedcity/layers/surface/dungeons/-",
+    "value": [ 1.0, "weaponsfactory" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/snow/layers/surface/dungeons/-",
+    "value": [ 3.0, "weaponsfactory" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/midnight/layers/surface/dungeons/-",
+    "value": [ 1.0, "weaponsfactory" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/volcanic/layers/surface/dungeons/-",
+    "value": [ 1.0, "weaponsfactory" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/tundra/layers/surface/dungeons/-",
+    "value": [ 3.0, "weaponsfactory" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/tundra/layers/surface/dungeons/-",
+    "value": [ 1.0, "fungalden" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/snow/layers/surface/dungeons/-",
+    "value": [ 1.0, "fungalden" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/volcanic/layers/surface/dungeons/-",
+    "value": [ 1.0, "fungalden" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/midnight/layers/surface/dungeons/-",
+    "value": [ 1.0, "fungalden" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/alien/layers/surface/dungeons/-",
+    "value": [ 1.0, "fungalden" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/savannah/layers/surface/dungeons/-",
+    "value": [ 1.0, "fungalden" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/jungle/layers/surface/dungeons/-",
+    "value": [ 1.0, "fungalden" ]
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/forest/layers/surface/dungeons/-",
+    "value": [ 1.0, "fungalden" ]
+  },
   {
     "op": "add",
     "path": "/planetTypes/forest/layers/surface/dungeons/-",
@@ -175,7 +285,7 @@
         "secondaryRegionSize" : [0.2, 0.92],
         "secondaryRegionCount" : [1, 3],
         "subRegionSize" : [0.13, 0.47],
-        "dungeonCountRange" : [1, 3]
+        "dungeonCountRange" : [2, 4]
       },
       "layers" : {
         "space"        : { "baseHeight" : 3500, "layerLevel" : 3000 },
@@ -202,7 +312,7 @@
         "secondaryRegionSize" : [0.2, 0.92],
         "secondaryRegionCount" : [1, 4],
         "subRegionSize" : [0.15, 0.5],
-        "dungeonCountRange" : [2, 4]
+        "dungeonCountRange" : [2, 6]
       },
       "layers" : {
         "space"        : { "baseHeight" : 6500, "layerLevel" : 5700 },
@@ -226,7 +336,7 @@
         "secondaryRegionSize"   : [0.2, 0.92],
         "secondaryRegionCount" : [1, 5],
         "subRegionSize" : [0.15, 0.55],
-        "dungeonCountRange"     : [3, 5]
+        "dungeonCountRange"     : [3, 7]
       },
       "layers" : {
         "space"        : { "baseHeight" : 7500, "layerLevel" : 6600 },
@@ -240,7 +350,30 @@
       }
     }
   },    
-
+  { "op" : "add", "path" : "/planetSizes/mammoth",
+    "value" : {
+      "size" : [64000, 24000],
+      "gravityRange" : [120, 190],
+      "dayLengthRange" : [3200, 7000],
+      "layerDefaults" : {
+        "secondaryRegionPeriod" : [1500, 3000],
+        "secondaryRegionSize"   : [0.2, 0.92],
+        "secondaryRegionCount" : [1, 5],
+        "subRegionSize" : [0.15, 0.55],
+        "dungeonCountRange"     : [3, 8]
+      },
+      "layers" : {
+        "space"        : { "baseHeight" : 23500, "layerLevel" : 20600 },
+        "atmosphere"   : { "baseHeight" : 17500, "layerLevel" : 15500 },
+        "surface"      : { "baseHeight" : 14500, "layerLevel" : 9400 },
+        "subsurface"   : { "baseHeight" : 9200, "layerLevel" : 9000 },
+        "underground1" : { "baseHeight" : 7900, "layerLevel" : 7700 },
+        "underground2" : { "baseHeight" : 5400, "layerLevel" : 5200 },
+        "underground3" : { "baseHeight" : 2755, "layerLevel" : 950 },
+        "core"         : { "baseHeight" : 600,  "layerLevel" : 0    }
+      }
+    }
+  },  
 
 //garden
 
@@ -273,12 +406,12 @@
 
 //ocean
 
-{"op" : "add", "path" : "/planetTypes/ocean/layers/space", "value" : {"primaryRegion" : ["asteroids"]} },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/atmosphere", "value" : {"primaryRegion" : ["atmosphere"]} },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/underground1", "value" : {"primaryRegion" : ["shallowunderground"]} },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/core", "value" : {"primaryRegion" : ["core"]} },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/space", "value" : {"primaryRegion" : ["asteroids"]} },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/atmosphere", "value" : {"primaryRegion" : ["atmosphere"]} },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/underground1", "value" : {"primaryRegion" : ["shallowunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/core", "value" : {"primaryRegion" : ["core"]} },
 
 //savannah
 
@@ -312,12 +445,12 @@
 
 //toxic
 
-{"op" : "add", "path" : "/planetTypes/toxic/layers/space", "value" : {"primaryRegion" : ["asteroids"]} },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/atmosphere", "value" : {"primaryRegion" : ["atmosphere"]} },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/underground1", "value" : {"primaryRegion" : ["shallowunderground"]} },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/core", "value" : {"primaryRegion" : ["core"]} },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/space", "value" : {"primaryRegion" : ["asteroids"]} },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/atmosphere", "value" : {"primaryRegion" : ["atmosphere"]} },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/underground1", "value" : {"primaryRegion" : ["shallowunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/core", "value" : {"primaryRegion" : ["core"]} },
 
 //alien
 
@@ -331,12 +464,12 @@
 
 //arctic
 
-{"op" : "add", "path" : "/planetTypes/arctic/layers/space", "value" : {"primaryRegion" : ["asteroids"]} },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/atmosphere", "value" : {"primaryRegion" : ["atmosphere"]} },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/underground1", "value" : {"primaryRegion" : ["shallowunderground"]} },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/core", "value" : {"primaryRegion" : ["core"]} },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/space", "value" : {"primaryRegion" : ["asteroids"]} },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/atmosphere", "value" : {"primaryRegion" : ["atmosphere"]} },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/underground1", "value" : {"primaryRegion" : ["shallowunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/core", "value" : {"primaryRegion" : ["core"]} },
 
 //tundra
 
@@ -360,12 +493,12 @@
 
 //magma
 
-{"op" : "add", "path" : "/planetTypes/magma/layers/space", "value" : {"primaryRegion" : ["asteroids"]} },
-{"op" : "add", "path" : "/planetTypes/magma/layers/atmosphere", "value" : {"primaryRegion" : ["atmosphere"]} },
-{"op" : "add", "path" : "/planetTypes/magma/layers/underground1", "value" : {"primaryRegion" : ["shallowunderground"]} },
-{"op" : "add", "path" : "/planetTypes/magma/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
-{"op" : "add", "path" : "/planetTypes/magma/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
-{"op" : "add", "path" : "/planetTypes/magma/layers/core", "value" : {"primaryRegion" : ["core"]} },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/space", "value" : {"primaryRegion" : ["asteroids"]} },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/atmosphere", "value" : {"primaryRegion" : ["atmosphere"]} },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/underground1", "value" : {"primaryRegion" : ["shallowunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/core", "value" : {"primaryRegion" : ["core"]} },
 
 //volcanic
 
@@ -487,14 +620,12 @@
 
 //ocean
 {"op" : "add", "path" : "/planetTypes/ocean/layers/subsurface/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/underground1/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/underground2/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/underground3/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/core/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/underground1/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/underground2/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/underground3/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/ocean/layers/core/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/ocean/layers/subsurface/dungeons/-", "value" : [1.0, "wreckunderwater"] },
 {"op" : "add", "path" : "/planetTypes/ocean/layers/subsurface/dungeons/-", "value" : [1.0, "waterdungeon"] },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/subsurface/dungeons/-", "value" : [1.0, "hylotloceancity"] },
-{"op" : "add", "path" : "/planetTypes/ocean/layers/subsurface/dungeons/-", "value" : [1.0, "hylotlruinedcity"] },
 
 //jungle
 {"op" : "add", "path" : "/planetTypes/jungle/layers/surface/dungeons/-", "value" : [1.0, "apexresearchlab"] },
@@ -507,10 +638,10 @@
 
 //toxic
 {"op" : "add", "path" : "/planetTypes/toxic/layers/subsurface/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/underground1/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/underground2/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/underground3/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/toxic/layers/core/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/underground1/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/underground2/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/underground3/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/toxic/layers/core/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/toxic/layers/subsurface/dungeons/-", "value" : [1.0, "wreckunderpoison"] },
 
 
@@ -529,10 +660,10 @@
 
 //arctic
 {"op" : "add", "path" : "/planetTypes/arctic/layers/subsurface/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/underground1/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/underground2/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/underground3/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/arctic/layers/core/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/underground1/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/underground2/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/underground3/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/arctic/layers/core/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/arctic/layers/subsurface/dungeons/-", "value" : [1.0, "wreckunderwater"] },
 
 
@@ -565,10 +696,10 @@
 
 //magma
 {"op" : "add", "path" : "/planetTypes/magma/layers/subsurface/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/magma/layers/underground1/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/magma/layers/underground2/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/magma/layers/underground3/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/magma/layers/core/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/underground1/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/underground2/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/underground3/dungeons", "value" : [] },
+//{"op" : "add", "path" : "/planetTypes/magma/layers/core/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/magma/layers/subsurface/dungeons/-", "value" : [1.0, "wreckunderlava"] },
 
 
@@ -639,7 +770,7 @@
     },
     { "op" : "add", 
     "path" : "/planetTypes/garden/layers/surface/secondaryRegions", 
-    "value" : [ "birchforest", "cloudforest", "fieldofcarrots", "fieldofcorn", "fieldofgrape", "fieldofpotato", "fieldofbracken", "fieldoftomato", "fieldofwheat", "flowerforest", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "snowyforest", "taiga" ]
+    "value" : [ "birchforest", "fieldofcarrots", "fieldofcorn", "fieldofgrape", "fieldofpotato", "fieldofbracken", "fieldoftomato", "fieldofwheat", "flowerforest", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "snowyforest", "taiga" ]
     },
     { "op" : "add", 
     "path" : "/planetTypes/jungle/layers/surface/secondaryRegions", 
@@ -675,19 +806,34 @@
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/surface/secondaryRegions", 
-    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone" ]
+    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone", "crystalplain", "supermatterzonemoon", "aliendesert", "deadwoodmoon", "wastelandminimoon" ]
     },
     { "op" : "add", 
-    "path" : "/planetTypes/moon/layers/surface/subsurface", 
-    "value" : [ "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground" ]
+    "path" : "/planetTypes/moon/layers/subsurface/secondaryRegions", 
+    "value" : [ "ffcrystalcavern", "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "crystalmoonunderground", "fungusunderground", "icecaves", "luminouscaves" ]
     },
+    { "op" : "add", 
+    "path" : "/planetTypes/moon/layers/underground1/secondaryRegions", 
+    "value" : [ "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
+    },
+    { "op" : "add", 
+    "path" : "/planetTypes/moon/layers/underground2/secondaryRegions", 
+    "value" : [ "ffcrystalcavern", "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "crystalmoonunderground", "fungusunderground", "metallicunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
+    },
+    { "op" : "add", 
+    "path" : "/planetTypes/moon/layers/underground3/secondaryRegions", 
+    "value" : [ "ffcrystalcavern", "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "crystalmoonunderground", "fungusunderground", "metallicunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
+    },
+    { "op" : "add", 
+    "path" : "/planetTypes/moon/layers/core/primaryRegion", 
+    "value" : [ "core", "nitrogencore"]
+    },    
+    
     { "op" : "add", 
     "path" : "/planetTypes/ocean/layers/subsurface/secondaryRegions", 
     "value" : [ "deepseavent", "kelpforest", "coralreef" ]
     },
-    
-    
-    
+
   {
     "op": "add",
     "path": "/regionTypes/asteroids/gravityRange",
@@ -752,6 +898,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [ 1.0, "oceanfrontcity" ],
+	  [ 1.0, "fungalden" ],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -783,6 +932,7 @@
    "path" : "/planetTypes/strangesea",
    "value" : 
      {
+       "blendSize" : 30,
        "threatRange" : [3, 8],
        "layers" : {
       "space" : {
@@ -876,6 +1026,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [ 1.0, "oceanfrontcity" ],
+	  [ 1.0, "fungalden" ],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -952,6 +1105,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [ 1.0, "oceanfrontcity" ],
+	  [ 1.0, "fungalden" ],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -993,7 +1149,6 @@
       "surface" : {
           "primaryRegion" : [ "arboreal" ],
           "secondaryRegions" : [ "futentacle", "wartfield", "fieldofbracken", "ffhive", "aliendesert", "cactiplace", "crystalswamp", "birchforest", "alienforest", "cloudforest", "rainbowforest", "swamp", "elder", "corruptedforest", "fieldofwheat", "fieldofsugar",  "fieldofpotato", "fieldofcorn",  "fieldofgrape",  "fieldoftomato", "pineforest", "flowerforest", "snowyforest", "giantflowers", "forest", "jungle", "savannah", "snow",  "tundra" ],
-          "dungeonCountRange" : [2, 10],
              "dungeons" : [ 
              [1.0, "gregbase"], 
               [1.0, "apexspaceelevator"],
@@ -1035,7 +1190,10 @@
 	  [1.0, "aviandeeppyramid"],
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
-	  [ 1.0, "oceanfrontcity" ],
+	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
              ]
         },
@@ -1212,6 +1370,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
              ]
         },
@@ -1296,6 +1457,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]      
         },
@@ -1348,6 +1512,7 @@
           [1.0, "aviantomb"], 
           [1.0, "aviantemple"],
           [1.0, "humanprison"], 
+	  [1.0, "weaponsfactory"],
           [1.0, "hylotlruinedcastle"]
           ]
         },
@@ -1403,6 +1568,7 @@
           [1.0, "aviantomb"], 
           [1.0, "aviantemple"],
           [1.0, "humanprison"], 
+	  [1.0, "weaponsfactory"],
           [1.0, "hylotlruinedcastle"]
           ]
         },
@@ -1485,6 +1651,8 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]        
         },
@@ -1514,6 +1682,7 @@
     "path" : "/planetTypes/bloodstonesea",
     "value" : 
       {
+      "blendSize" : 30,
       "threatRange" : [4, 6],
       "layers" : {
       "space" : {
@@ -1607,6 +1776,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [4.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -1673,6 +1845,8 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -1759,6 +1933,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -1832,6 +2009,8 @@
 	  [1.0, "aviandeeppyramid"],
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
+	  [3.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -1901,6 +2080,8 @@
 	  [1.0, "aviandeeppyramid"],
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
+	  [3.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -1957,6 +2138,7 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [3.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -1986,6 +2168,7 @@
     "path" : "/planetTypes/arcticdark",
     "value" : 
       {
+        "blendSize" : 30,
         "threatRange" : [4, 5],
         "layers" : {
 
@@ -2016,6 +2199,7 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [3.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
            ]
          },
@@ -2074,6 +2258,7 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [3.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
            ]
          },
@@ -2135,6 +2320,7 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [3.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -2223,6 +2409,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [4.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -2310,6 +2499,7 @@
           [1.0, "apextestchamber"], 
           [1.0, "apextowerblock"], 
           [1.0, "humanbunker"], 
+	  [3.0, "weaponsfactory"],
           [1.0, "fuscifidungeon"]         
           ]
         },
@@ -2361,6 +2551,7 @@
           [1.0, "apextestchamber"], 
           [1.0, "apextowerblock"], 
           [1.0, "humanbunker"], 
+	  [3.0, "weaponsfactory"],
           [1.0, "fuscifidungeon"]          
           ]
         },
@@ -2410,6 +2601,7 @@
           [1.0, "humanbunker"], 
           [1.0, "fuscifidungeon"],           
           [1.0, "apextestfacility"],
+	  [3.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -2537,6 +2729,7 @@
    "path" : "/planetTypes/magmadark",
    "value" : 
      {
+       "blendSize" : 30,
        "threatRange" : [5, 7],
        "layers" : {
       "space" : {
@@ -2643,6 +2836,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -2695,6 +2891,8 @@
           [1.0, "humanbunker"], 
           [1.0, "fuscifidungeon"],
 	  [1.0, "aviandeeppyramid"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -2725,7 +2923,7 @@
     "value" : 
       {
       "gravityRange" : [50, 90],
-      "threatRange" : [4, 5],
+      "threatRange" : [4, 6],
       "layers" : {
       "space" : {
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
@@ -2743,6 +2941,7 @@
           [1.0, "apextowerblock"], 
           [1.0, "humanbunker"], 
           [1.0, "apexspaceelevator"],
+	  [1.0, "weaponsfactory"],
           [1.0, "fuscifidungeon"]          
           ]
         },
@@ -2778,7 +2977,7 @@
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
       },      
         "surface" : {
-          "primaryRegion" : [ "mountainous" ], 
+          "primaryRegion" : [ "mountainous", "mountainous2", "mountainous3", "mountainous4" ], 
 	  "secondaryRegions" : [ "wastelandmini", "ffhive", "birchforest", "alienforest", "cellfield", "reddesert", "finesand", "cloudforest", "swamp", "alpine", "spring", "glacial", "hotsprings", "rainbowforest"  ],
           
           "dungeons" : [ 
@@ -2827,6 +3026,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -2856,6 +3058,7 @@
     "path" : "/planetTypes/nitrogensea",
     "value" : 
       {
+      "blendSize" : 30,
       "threatRange" : [4, 5],
       "layers" : {
       "space" : {
@@ -2890,7 +3093,7 @@
           "secondaryRegions" : [ "icewasteunderground", "ffcrystalrealm", "crystalcave", "coralcavern", "fffrostcavern", "ffcrystalcavern", "ffcoralcave" ]
           },
         "underground3" : {
-        "primaryRegion" : [ "nitrogenseaunderground" ],
+          "primaryRegion" : [ "nitrogenseaunderground" ],
 	  "secondaryRegions" : [ "icewasteunderground", "ffcrystalrealm", "crystalcave", "coralcavern", "fffrostcavern", "ffcrystalcavern", "ffcoralcave" ]
 	  },
         "core" : {
@@ -2961,6 +3164,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]        
         },
@@ -3047,6 +3253,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]        
         },
@@ -3133,6 +3342,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]        
         },
@@ -3214,6 +3426,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [4.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]        
         },
@@ -3260,6 +3475,7 @@
           [1.0, "apextestchamber"], 
           [1.0, "humanbunker"], 
           [1.0, "fuscifidungeon"],
+	  [1.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -3306,6 +3522,7 @@
           [1.0, "apextestchamber"], 
           [1.0, "humanbunker"], 
           [1.0, "fuscifidungeon"],
+	  [1.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -3334,6 +3551,7 @@
     "path" : "/planetTypes/sulphuricocean",
     "value" : 
       {
+      "blendSize" : 30,
       "threatRange" : [3, 5],
       "layers" : {
       "space" : {
@@ -3390,6 +3608,7 @@
           [1.0, "humanbunker"], 
           [1.0, "fuscifidungeon"],
 	  [1.0, "aviandeeppyramid"],
+	  [1.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
            ]
          },
@@ -3418,6 +3637,7 @@
 {"op" : "add",
 "path" : "/planetTypes/tidewater",
 "value" : {       
+      "blendSize" : 30,
       "threatRange" : [4, 5],
       "layers" : {
       "space" : {
@@ -3514,6 +3734,9 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
+	  [1.0, "fungalden"],
+	  [1.0, "weaponsfactory"],
+	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -3597,6 +3820,7 @@
 	  [1.0, "aviandeeppyramid"],
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
+	  [3.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -3633,7 +3857,7 @@
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
       },      
         "surface" : {
-          "primaryRegion" : [ "urbanwasteland2" ],
+          "primaryRegion" : [ "urbanwasteland", "urbanwasteland2" ],
           "secondaryRegions" : [ "futentacle", "wartfield", "wastelandmini", "metalworks4", "metalhive", "parkinglot", "aliendesert", "metalworks", "metaljungle", "crystalswamp", "ffhive", "alienforest", "sulphuricmagma", "reddesert", "swamp", "bloodgulch", "hellhive", "corruptedforest", "deadwood",   "savannah"],
           
           "dungeons" : [ 
@@ -3682,6 +3906,7 @@
 	  [1.0, "aviandeeppyramid"],
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
+	  [3.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -3730,6 +3955,7 @@
           [1.0, "apextestfacility"],           
           [1.0, "fuscifidungeon"],            
           [1.0, "apexspaceelevator"],
+	  [1.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]          
         },
@@ -3737,13 +3963,13 @@
           "primaryRegion" : [ "moondesertunderground" ]
         },
         "underground1" : {
-          "primaryRegion" : [ "moondesertunderground" ]
+          "primaryRegion" : [ "moondesertunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground2" : {
-          "primaryRegion" : [ "moondesertunderground" ]
+          "primaryRegion" : [ "moondesertunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground3" : {
-          "primaryRegion" : [ "moondesertunderground" ]
+          "primaryRegion" : [ "moondesertunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "core" : {
           "primaryRegion" : [ "mooncore" ],
@@ -3775,6 +4001,7 @@
           [1.0, "apexbase"], 
           [1.0, "apextestfacility"],           
           [1.0, "fuscifidungeon"],
+	  [1.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]          
         },
@@ -3782,13 +4009,13 @@
           "primaryRegion" : [ "moonstoneunderground" ]
         },
         "underground1" : {
-          "primaryRegion" : [ "moonstoneunderground" ]
+          "primaryRegion" : [ "moonstoneunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground2" : {
-          "primaryRegion" : [ "moonstoneunderground" ]
+          "primaryRegion" : [ "moonstoneunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground3" : {
-          "primaryRegion" : [ "moonstoneunderground" ]
+          "primaryRegion" : [ "moonstoneunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "core" : {
           "primaryRegion" : [ "mooncore" ],
@@ -3820,6 +4047,7 @@
           [1.0, "apexbase"], 
           [1.0, "apextestfacility"],           
           [1.0, "fuscifidungeon"],
+	  [1.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -3827,13 +4055,13 @@
           "primaryRegion" : [ "moontoxicunderground" ]
         },
         "underground1" : {
-          "primaryRegion" : [ "moontoxicunderground" ]
+          "primaryRegion" : [ "moontoxicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground2" : {
-          "primaryRegion" : [ "moontoxicunderground" ]
+          "primaryRegion" : [ "moontoxicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground3" : {
-          "primaryRegion" : [ "moontoxicunderground" ]
+          "primaryRegion" : [ "moontoxicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "core" : {
           "primaryRegion" : [ "mooncore" ],
@@ -3871,13 +4099,13 @@
           "primaryRegion" : [ "moonvolcanicunderground" ]
         },
         "underground1" : {
-          "primaryRegion" : [ "moonvolcanicunderground" ]
+          "primaryRegion" : [ "moonvolcanicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground2" : {
-          "primaryRegion" : [ "moonvolcanicunderground" ]
+          "primaryRegion" : [ "moonvolcanicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "underground3" : {
-          "primaryRegion" : [ "moonvolcanicunderground" ]
+          "primaryRegion" : [ "moonvolcanicunderground","ffcrystalcavern", "crystalmoonunderground", "fungusunderground", "ffsupermatter", "icecaves", "luminouscaves", "fftarpitmoon", "ffshadowmoon", "metalworksundergroundmoon" ]
         },
         "core" : {
           "primaryRegion" : [ "mooncore" ],
@@ -3911,6 +4139,7 @@
           [1.0, "apexbase"], 
           [1.0, "apextestfacility"],           
           [1.0, "fuscifidungeon"],
+	  [1.0, "weaponsfactory"],
 	  [1.0, "alienjungleruins"]
           ]
         },
@@ -5002,7 +5231,20 @@
       ]
     }
   },
-
+  {"op" : "add", 
+  "path" : "/regionTypes/deadwoodmoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "fuquicksand" ],
+      "caveLiquidChanceRange" : [15, 55],  
+      "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "deadwoodmoon" ]]
+      ]
+    }
+  },
+  
   {"op" : "add", 
   "path" : "/regionTypes/desertoasis",
   "value" : 
@@ -5435,6 +5677,21 @@
         ]
       }
   },  
+
+  
+    {"op" : "add", 
+    "path" : "/regionTypes/supermatterzonemoon",
+    "value" : 
+    {
+        "caveLiquid" : [  "organicsoup", "fuel", "blacktar", "crystalliquid"  ],
+        "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface"  ],
+        "fgCaveSelector" : [ "denseCaves" ],
+        "biome" : [
+          [0, [ "supermatterzonemoon" ]]
+        ]
+      }
+  },  
+  
   
   {"op" : "add", 
   "path" : "/regionTypes/taiga",
@@ -5714,10 +5971,49 @@
        "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
        "caveLiquidChanceRange" : [50, 100],
        "biome" : [
-         [0, [ "mountainous", "mountainous2", "mountainous3", "mountainous4" ] ]
+         [0, [ "mountainous" ] ]
        ]
      }
    },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous2",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous2" ] ]
+       ]
+     }
+   },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous3",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous3" ] ]
+       ]
+     }
+   },
+   {"op" : "add", 
+   "path" : "/regionTypes/mountainous4",
+   "value" : 
+   {
+       "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
+       "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
+       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],    
+       "caveLiquidChanceRange" : [50, 100],
+       "biome" : [
+         [0, [ "mountainous4" ] ]
+       ]
+     }
+   },  
    
  {"op" : "add",
  "path": "/regionTypes/tidewater",
@@ -5739,6 +6035,7 @@
    "path" : "/planetTypes/aethersea",
    "value" : 
      {
+       "blendSize" : 30,
        "threatRange" : [5, 8],
        "layers" : {
         "surface" : {
@@ -5756,9 +6053,9 @@
           "secondaryRegions" : [ "energyorbforestaether2", "deepseaventaether", "crystaldesertaether", "supermatterzoneaether"  ],
           
           "dungeons" : [ 
-          [1.0, "wreckunderwater"], 
-          [1.0, "hylotlruinedcity"], 
-          [1.0, "hylotloceancity"]
+          [1.0, "wreckunderwateraether"], 
+          [1.0, "hylotlruinedcityaether"], 
+          [1.0, "hylotloceancityaether"]
           ]        
         },
         "underground1" : {
@@ -6572,6 +6869,19 @@
       ]
     }
   },
+
+  {"op" : "add", 
+  "path" : "/regionTypes/ffshadowmoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "poison", "bio_ooze", "shadowgas", "darkwater" ],
+      "caveLiquidChanceRange" : [45, 75],
+
+      "biome" : [
+        [0, [ "ffshadowmoon"]]
+      ]
+    }
+  },
   
   {"op" : "add", 
   "path" : "/regionTypes/ffshadow",
@@ -6975,6 +7285,18 @@
     }
   },
   {"op" : "add", 
+  "path" : "/regionTypes/fftarpitmoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "tarliquid", "blacktar" ],
+      "caveLiquidChanceRange" : [5, 75],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
+      "biome" : [
+        [0, [ "fftarpitmoon"] ]
+      ]
+    }
+  },  
+  {"op" : "add", 
   "path" : "/regionTypes/fftarpit",
   "value" : 
   {
@@ -7114,7 +7436,18 @@
     }
   }, 
   
-  
+	{
+		"op" : "add",
+		"path" : "/regionTypes/metalworksundergroundmoon",
+		"value" : {
+		    "fgCaveSelector" : [ "normalCaves" ],
+		    "bgCaveSelector" : [ "largeClumps" ],
+		    "subBlockSelector" : [ "largeClumps" ],
+		      "biome" : [
+		        [0, [ "metalworksundergroundmoon" ]]
+		      ]
+		    }
+	},  
 	{
 		"op" : "add",
 		"path" : "/regionTypes/metalworksunderground1",
@@ -7282,7 +7615,25 @@
         [0, [ "wastelandmini"] ]
       ]
     }
+  },  
+  
+  {"op" : "add", 
+  "path" : "/regionTypes/wastelandminimoon",
+  "value" : 
+  {
+      "caveLiquid" : [ "blacktar", "darkwater", "gravrain", "lava", "poison", "bio_ooze" ],
+      "caveLiquidChanceRange" : [25, 95],
+      
+      "blockSelector" : [ "remixedSurface", "remixedMildSurface","remixedMountainsSurface", "remixedFlatsSurface" ],
+      "subBlockSelector" : [ "largeClumps" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves" ],
+      
+      "biome" : [
+        [0, [ "wastelandminimoon"] ]
+      ]
+    }
   },   
+  
   {"op" : "add", 
   "path" : "/regionTypes/fleshcore",
   "value" : 
@@ -7409,6 +7760,9 @@
       {
       "threatRange" : [5, 7],
       "layers" : {
+      "space" : {
+        "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
+      },       
         "surface" : {
           "primaryRegion" : [ "fugasgiant" ],
           "secondaryRegions" : [ ],
@@ -7430,12 +7784,151 @@
           "secondaryRegions" : [  ]
           },
         "core" : {
-          "primaryRegion" : [ "gasgiantcorelayer" ]
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
         } 
         }
       }
    },
-
+    {"op" : "add", 
+    "path" : "/planetTypes/fugasgiant2",
+    "value" : 
+      {
+      "threatRange" : [5, 7],
+      "layers" : {
+      "space" : {
+        "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
+      },       
+        "surface" : {
+          "primaryRegion" : [ "fugasgiant2" ],
+          "secondaryRegions" : [ ],
+          "dungeons" : [ ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "fugasgiantunderground2" ]
+        },
+         "underground1" : {
+          "primaryRegion" : [ "fugasgiantunderground2" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground2" : {
+         "primaryRegion" : [ "fugasgiantunderground2" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground3" : {
+         "primaryRegion" : [ "fugasgiantunderground2" ],
+          "secondaryRegions" : [  ]
+          },
+        "core" : {
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
+        } 
+        }
+      }
+   },
+    {"op" : "add", 
+    "path" : "/planetTypes/fugasgiant3",
+    "value" : 
+      {
+      "threatRange" : [5, 7],
+      "layers" : {
+      "space" : {
+        "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
+      },       
+        "surface" : {
+          "primaryRegion" : [ "fugasgiant3" ],
+          "secondaryRegions" : [ ],
+          "dungeons" : [ ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "fugasgiantunderground3" ]
+        },
+         "underground1" : {
+          "primaryRegion" : [ "fugasgiantunderground3" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground2" : {
+         "primaryRegion" : [ "fugasgiantunderground3" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground3" : {
+         "primaryRegion" : [ "fugasgiantunderground3" ],
+          "secondaryRegions" : [  ]
+          },
+        "core" : {
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
+        } 
+        }
+      }
+   }, 
+    {"op" : "add", 
+    "path" : "/planetTypes/fugasgiant4",
+    "value" : 
+      {
+      "threatRange" : [5, 7],
+      "layers" : {
+      "space" : {
+        "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
+      },       
+        "surface" : {
+          "primaryRegion" : [ "fugasgiant4"],
+          "secondaryRegions" : [ ],
+          "dungeons" : [ ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "fugasgiantunderground4" ]
+        },
+         "underground1" : {
+          "primaryRegion" : [ "fugasgiantunderground4" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground2" : {
+         "primaryRegion" : [ "fugasgiantunderground4" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground3" : {
+         "primaryRegion" : [ "fugasgiantunderground4" ],
+          "secondaryRegions" : [  ]
+          },
+        "core" : {
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
+        } 
+        }
+      }
+   },  
+    {"op" : "add", 
+    "path" : "/planetTypes/fugasgiant5",
+    "value" : 
+      {
+      "threatRange" : [5, 7],
+      "layers" : {
+      "space" : {
+        "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
+      },       
+        "surface" : {
+          "primaryRegion" : [ "fugasgiant5" ],
+          "secondaryRegions" : [ ],
+          "dungeons" : [ ]
+        },
+        "subsurface" : {
+          "primaryRegion" : [ "fugasgiantunderground5" ]
+        },
+         "underground1" : {
+          "primaryRegion" : [ "fugasgiantunderground5" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground2" : {
+         "primaryRegion" : [ "fugasgiantunderground5" ],
+          "secondaryRegions" : [  ]
+          },
+        "underground3" : {
+         "primaryRegion" : [ "fugasgiantunderground5" ],
+          "secondaryRegions" : [  ]
+          },
+        "core" : {
+          "primaryRegion" : [ "gasgiantcorelayer", "gasgiantcorelayer2", "gasgiantcorelayer3" ]
+        } 
+        }
+      }
+   },   
   {"op" : "add", 
   "path" : "/regionTypes/fugasgiant",
   "value" : 
@@ -7450,9 +7943,62 @@
       ]
     }
   },
-
-
-  
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiant2",
+  "value" : 
+  {
+      "oceanLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "metallichydrogen" ],
+      "oceanLevelOffset" : 0, 
+      "caveLiquid" : [  "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas" ],
+      "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "biome" : [
+        [0, [ "fugasgiant2" ]]
+      ]
+    }
+  },
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiant3",
+  "value" : 
+  {
+      "oceanLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "metallichydrogen" ],
+      "oceanLevelOffset" : 0, 
+      "caveLiquid" : [  "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas" ],
+      "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "biome" : [
+        [0, [ "fugasgiant3" ]]
+      ]
+    }
+  },
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiant4",
+  "value" : 
+  {
+      "oceanLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "metallichydrogen" ],
+      "oceanLevelOffset" : 0, 
+      "caveLiquid" : [  "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas" ],
+      "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "biome" : [
+        [0, [ "fugasgiant4" ]]
+      ]
+    }
+  },  
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiant5",
+  "value" : 
+  {
+      "oceanLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "metallichydrogen" ],
+      "oceanLevelOffset" : 0, 
+      "caveLiquid" : [  "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas" ],
+      "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "biome" : [
+        [0, [ "fugasgiant5" ]]
+      ]
+    }
+  },
   
   {"op" : "add", 
   "path" : "/regionTypes/fugasgiantunderground",
@@ -7469,12 +8015,87 @@
       ]
     }
   },  
-  
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiantunderground2",
+  "value" : 
+  {
+      "oceanLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "metallichydrogen" ],
+      "oceanLevelOffset" : 1000,
+      "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel", "poison" ],
+      "caveLiquidChanceRange" : [55, 99], 
+      "biome" : [
+        [0, [ "fugasgiantunderground2"]]
+      ]
+    }
+  },
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiantunderground3",
+  "value" : 
+  {
+      "oceanLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "metallichydrogen" ],
+      "oceanLevelOffset" : 1000,
+      "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel", "poison" ],
+      "caveLiquidChanceRange" : [55, 99], 
+      "biome" : [
+        [0, [ "fugasgiantunderground3"]]
+      ]
+    }
+  },
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiantunderground4",
+  "value" : 
+  {
+      "oceanLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "metallichydrogen" ],
+      "oceanLevelOffset" : 1000,
+      "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel", "poison" ],
+      "caveLiquidChanceRange" : [55, 99], 
+      "biome" : [
+        [0, [ "fugasgiantunderground4"]]
+      ]
+    }
+  },  
+  {"op" : "add", 
+  "path" : "/regionTypes/fugasgiantunderground5",
+  "value" : 
+  {
+      "oceanLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "metallichydrogen" ],
+      "oceanLevelOffset" : 1000,
+      "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "fgCaveSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+      "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel", "poison" ],
+      "caveLiquidChanceRange" : [55, 99], 
+      "biome" : [
+        [0, [ "fugasgiantunderground5"]]
+      ]
+    }
+  },  
   {"op" : "add", 
   "path" : "/regionTypes/gasgiantcorelayer",
   "value" : 
     {
-      "oceanLiquid" : [ "metallichydrogen" ],
+      "oceanLiquid" : [ "metallichydrogen", "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel" ],
+      "oceanLevelOffset" : 1000,      
+      "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel" ],
+      "caveLiquidChanceRange" : [55, 99], 
+        "fgCaveSelector" : [ "empty" ],
+        "blockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+        "subBlockSelector" : [ "asteroids", "asteroidfield", "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
+        "biome" : [
+          [0, [ "gasgiantcorelayer" ]]
+        ]
+    }
+  },
+  {"op" : "add", 
+  "path" : "/regionTypes/gasgiantcorelayer2",
+  "value" : 
+    {
+      "oceanLiquid" : [ "metallichydrogen", "lava" ],
       "oceanLevelOffset" : 1000,      
       "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel" ],
       "caveLiquidChanceRange" : [55, 99], 
@@ -7482,9 +8103,25 @@
         "blockSelector" : [ "lowHillsSurface", "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface" ],
         "subBlockSelector" : [ "lowHillsSurface", "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface" ],
         "biome" : [
-          [0, [ "gasgiantcorelayer" ]]
+          [0, [ "gasgiantcorelayer2" ]]
         ]
     }
-  }
+  },
+  {"op" : "add", 
+  "path" : "/regionTypes/gasgiantcorelayer3",
+  "value" : 
+    {
+      "oceanLiquid" : [ "healingliquid" ],
+      "oceanLevelOffset" : 1000,      
+      "caveLiquid" : [ "poisongas", "helium3gas", "shadowgas", "funitrogengas", "fuhydrogengas", "fuel" ],
+      "caveLiquidChanceRange" : [55, 99], 
+        "fgCaveSelector" : [ "empty" ],
+        "blockSelector" : [ "lowHillsSurface", "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface" ],
+        "subBlockSelector" : [ "lowHillsSurface", "remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedFlatsSurface", "mesasSurface", "medHillsSurface" ],
+        "biome" : [
+          [0, [ "gasgiantcorelayer3" ]]
+        ]
+    }
+  }   
   
 ]

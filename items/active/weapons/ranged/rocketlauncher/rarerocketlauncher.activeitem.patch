@@ -16,33 +16,8 @@
   },
   {
     "op": "add",
-    "path": "/builderConfig/0/elementalFireSounds",
-    "value": {
-      "physical": [
-        "/sfx/gun/rocket2.ogg"
-      ],
-      "fire": [
-        "/sfx/gun/rocket_fire1.ogg"
-      ],
-      "electric": [
-        "/sfx/gun/rocket_electric1.ogg"
-      ],
-      "ice": [
-        "/sfx/gun/rocket_ice1.ogg"
-      ],
-      "poison": [
-        "/sfx/gun/rocket_poison1.ogg"
-      ],
-      "cosmic": [
-        "/sfx/gun/rocket_electric1.ogg"
-      ],
-      "radioactive": [
-        "/sfx/gun/rocket_poison1.ogg"
-      ],
-      "shadow": [
-        "/sfx/gun/rocket_fire1.ogg"
-      ]      
-    }
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
   },
   {
     "op": "replace",
@@ -58,6 +33,57 @@
     "op": "replace",
     "path": "/primaryAbility/inaccuracy",
     "value": 0.01
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "radioactiveplasmarocketstatus"
+      },
+      "fireSounds": [
+        "/sfx/gun/rocket_ice1.ogg" //placeholder
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "shadowplasmarocketstatus"
+      },
+      "fireSounds": [
+        "/sfx/gun/rocket_ice1.ogg" //placeholder
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "cosmicplasmarocketstatus"
+      },
+      "fireSounds": [
+        "/sfx/gun/rocket_ice1.ogg" //placeholder
+      ]
+    }
   },
   {
     "op": "replace",
@@ -78,6 +104,27 @@
     "op": "replace",
     "path": "/builderConfig/0/animationParts/barrel/variants",
     "value": 27
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalFireSounds/cosmic",
+    "value": [
+      "/sfx/gun/rocket_electric1.ogg" //placeholder
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalFireSounds/radioactive",
+    "value": [
+      "/sfx/gun/rocket_poison1.ogg" //placeholder
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalFireSounds/shadow",
+    "value": [
+      "/sfx/gun/rocket_fire1.ogg" //placeholder
+    ]
   },
   {
     "op": "add",

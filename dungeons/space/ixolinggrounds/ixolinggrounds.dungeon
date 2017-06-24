@@ -1,0 +1,187 @@
+{
+  "metadata" : {
+    "name" : "ixolinggrounds",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "base1", "base2", "base3" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 3,
+    "protected" : true
+},
+
+  "parts" : [
+  
+	//Rooms
+
+    {
+      "name" : "room1",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room2",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room2.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room3",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room3.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room4",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room4.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room5",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room5.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room6",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room6.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room7",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room7.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room8",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room8.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room9",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room9.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room10",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room10.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room11",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room11.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room12",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room12.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "mapevernight",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "mapverdantruins", "mapgrandarena" ] ]
+      ],
+      "def" : [ "tmx", "mapevernight.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "mapverdantruins",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "mapevernight", "mapgrandarena" ] ]
+      ],
+      "def" : [ "tmx", "mapverdantruins.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "mapgrandarena",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "mapevernight", "mapverdantruins" ] ]
+      ],
+      "def" : [ "tmx", "mapgrandarena.json" ],
+      "chance" : 0
+    },
+	
+    //Structure Bases
+	
+    {
+      "name" : "base1",
+      "rules" : [
+        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "base2",
+      "rules" : [
+        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "base3",
+      "rules" : [
+        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base3.json" ],
+      "chance" : 0
+    }
+  ]
+}

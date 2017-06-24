@@ -7,12 +7,12 @@
   "rarity" : "Rare",
    "description" : "Set Bonus:
 ^cyan;Immune: Cold, Ice Slip, Snow, Ice Status^reset;
-^e43774;50% Ice Resist^reset;
+^#e43774;50% Ice Resist^reset;
 ^green;+15% Physical Resist (Isogen weapons)^reset;", 
   "shortdescription" : "Isogen Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
@@ -26,6 +26,7 @@
   },
 
   "level" : 6,
+  "collectablesOnPickup" : { "fu_armorbalanced" : "fuisogenchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

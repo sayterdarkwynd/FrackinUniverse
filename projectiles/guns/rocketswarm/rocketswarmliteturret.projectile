@@ -1,0 +1,23 @@
+{
+  "projectileName" : "rocketswarmliteturret",
+  "image" : "rocketswarm.png",
+  "animationCycle" : 0.25,  
+  "physics" : "laser",
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "fallSpeed" : 0,
+  "lightColor" : [255, 255, 128],
+  "timeToLive" : 1.0,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/weakexplosion/weakexplosion.config"
+    }
+  ],
+  "power" : 5.0,
+  "damageKind" : "nodamage",
+  "emitters" : [ "smoke", "fireplasma" ]
+}

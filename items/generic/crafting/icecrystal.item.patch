@@ -1,8 +1,12 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-        "magnorbfrost",
-        "sciencefulegs",
-        "sciencefuhead",
-        "sciencefuchest"
-  ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "magnorbfrost" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "sciencefulegs" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "sciencefuhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "sciencefuchest" }
+  ]
 ]

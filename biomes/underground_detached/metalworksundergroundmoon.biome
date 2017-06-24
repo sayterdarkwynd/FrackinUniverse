@@ -1,0 +1,226 @@
+{
+  "name" : "metalworksundergroundmoon",
+  "friendlyName" : "Metal Caves",
+
+  "spawnProfile" : {
+    "groups" : [
+
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.04, "nanoswarm" ],
+          [ 0.06, "aquasnake" ],
+          [ 0.06, "sonicsnake" ],
+          [ 0.06, "spheresnake" ],
+          [ 0.07, "spikesnake" ],
+          [ 0.05, "spheresnake2" ],
+          [ 0.04, "fuomnicannon" ],
+          [ 0.04, "fuomnicannon2" ]
+        ]
+      },
+
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.1111, "scandroid" ],
+          [ 0.1111, "tintix" ],
+          [ 0.1111, "triplod" ],
+          [ 0.1111, "spiderwalker" ],
+          [ 0.1111, "spiderwalker2" ],
+          [ 0.1111, "bobot" ],
+          [ 0.1111, "fumechspider" ],
+          [ 0.1111, "fuglitchspider" ],
+          [ 0.05, "zombot" ],
+          [ 0.1, "cleaningbot" ],
+          [ 0.1, "repairbot" ],
+          [ 0.05, "warbot" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "fudrone" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+            "lavaImmunity" : {
+              "baseValue" : 1.0
+            },
+            "poisonStatusImmunity" : {
+              "baseValue" : 1.0
+            },
+            "fireStatusImmunity" : {
+              "baseValue" : 1.0
+            },
+            "ffextremeheatImmunity" : {
+              "baseValue" : 1.0
+            }
+        }
+      }
+    }
+  },
+
+  "mainBlock" : "junktech",
+  "subBlocks" : [ "rustymetal", "junk" ],
+  "ores" : "moondeepores",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "metal" ],
+    "grassModDensity" : 0.9,
+    "items" : [
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:potsRare",
+
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [
+              [0.50, "magmaceilingspike1" ],
+              [0.50, "magmaceilingspike2" ],
+              [0.50, "magmaceilingspike3" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:potsRare",
+
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [
+              [0.50, "magmagroundspike1" ],
+              [0.50, "magmagroundspike2" ],
+              [0.50, "magmagroundspike3" ],
+              [0.50, "copperrock" ],
+              [0.50, "copperrocksmall" ],
+              [0.50, "silverrock" ],
+              [0.50, "silverrocksmall" ],
+              [0.50, "goldrock" ],
+              [0.50, "goldrocksmall" ],
+
+
+              [0.50, "diamondrock" ],
+              [0.50, "diamondrocksmall" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
+       {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "techChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredPots",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "teslaspike"], [0.35,"apexsecuritycamera" ], [0.35, "metallicceiling1" ],[0.35, "metallicceiling2" ],[0.35, "metallicceiling3" ],[0.35, "metallicceiling4" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "invisiblelight"], [0.35, "invisiblesparker"], [0.35, "teslaspike"], [0.35, "tesla"], [0.35, "coppersupport"],[0.35, "junctionbox" ], [0.55, "device1" ], [0.35, "metallicmachine1" ],[0.35, "metallicmachine2" ],[0.35, "metallicmachine3" ],[0.35, "metallicmachine4" ],[0.35, "metallicmachine5" ],[0.35, "metallicmachine6" ],[0.35, "metallicmachine7" ],[0.35, "tetrapod" ],[0.35, "tech2" ],[0.35, "outpostcargocrate" ],[0.35, "outpostcargocrateshort" ],[0.35, "outpostgenerator" ],[0.35, "outpostconsole" ],[0.35, "outpostradardish" ],[0.35, "outpostsecurityconsole" ],[0.35, "outposttank" ],[0.35, "roofvent" ],[0.35, "outpostlamp" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ],[0.35, "ancientconsole" ], [0.35, "wreckconsole1" ], [0.35, "wreckconsole2" ], [0.35, "wreckconsole3" ], [ 0.35, "wreckturbine2" ], [ 0.35, "wreckturbines" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientpillar" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "parameters" : { }
+            }
+          ]
+        }
+    ]
+  },
+    "hueShiftOptions" : [0]
+}

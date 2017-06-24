@@ -116,7 +116,27 @@
             }
           }
         }
-      }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      } 
     },
 
     "parts" : {
@@ -252,6 +272,41 @@
             "layer" : "middle"
           }
         }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" }
       ]
     },
     "levelUp" : {

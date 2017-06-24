@@ -1,0 +1,99 @@
+{
+  "itemName" : "precursorpistol",
+  "price" : 160,
+  "inventoryIcon" : "precursorpistol.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Protects and heals.
+^yellow;Projects healing zones^reset;
+^green;Zone prevents Energy and Shield Regen^reset;",
+    "shortdescription" : "Precursor Protector",
+  "category" : "Bio Weapon",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/unique/precursorhealgun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "precursorpistol.png",
+    "middlefullbright" : "precursorpistolfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlered.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/biolaunch.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.5, 0.2],
+  "muzzleOffset" : [0.8, 0.125],
+  
+  "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 3.0,
+    "baseDps" : 0,
+    "energyUsage" : 1.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "healingzone2",
+    "projectileParameters" : { 
+      "speed" : 0,
+      "timeToLive" : 3
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 3.0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+  "critChance" : 4,
+  "critBonus" : 12, 
+
+    "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

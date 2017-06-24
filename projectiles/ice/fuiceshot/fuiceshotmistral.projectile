@@ -1,0 +1,54 @@
+{
+  "projectileName" : "fuiceshotmistral",
+  "physics" : "bullet",
+  "image" : "fuiceshot.png",
+  "damageKindImage" : "icon.png",
+  "speed" : 50,
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "power" : 6,
+  "piercing" : false,
+  "emitters" : [ "defaultwhite" ],
+  "damageKind" : "ice",
+   "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/mediumsnowballexplosion/mediumsnowballexplosion.config"
+    }
+  ],
+	    "periodicActions":[
+		    {
+		      "action":"particle",
+		      "repeat":true,
+		      "rotate":true,
+		      "specification":{
+			"destructionAction":"fade",
+			"destructionTime":0.2,
+			"fullbright":true,
+			"image":"/projectiles/activeitems/staff/elementbouncer/icebouncer.png:1",
+			"layer":"back",
+			"position":[0,0],
+			"timeToLive":0,
+			"type":"textured"
+			},
+		      "time":0
+		    },
+
+		    {
+		      "action":"particle",
+		      "repeat":true,
+		      "rotate":true,
+		      "specification":{
+			"destructionAction":"fade",
+			"destructionTime":0.2,
+			"fullbright":true,
+			"image":"/projectiles/activeitems/staff/elementbouncer/icebouncer.png:2",
+			"layer":"back",
+			"position":[0,0],
+			"timeToLive":0.03,
+			"type":"textured"
+			},
+		      "time":0.05
+		      }
+	    ] 
+}

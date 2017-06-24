@@ -4,12 +4,13 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "The chilling touch of frosty death",
+  "description" : "The chilling touch of frosty death
+^cyan;Inflicts Freezing^reset;",
   "shortdescription" : "Isogen Ruinblade",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","isogen"],
+  "itemTags" : ["weapon","melee","broadsword","isogen", "upgradeableWeapon"],
   "inventoryIcon" : "isogenbroadsword.png",
 
   "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
@@ -32,7 +33,46 @@
       "knockback" : 10,
        "damageSourceKind" : "ice",
        "statusEffects" : [ "freezefu" ]
-    }    
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "aimAngle" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }     
   },
 
   "altAbilityType" : "flamethrowersword",

@@ -1,12 +1,17 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-    "tier7bed",
-    "tier7chair",
-    "tier7door",
-    "tier7light",
-    "tier7switch",
-    "tier7table",  
-  "furavagerhead", 
-  "furavagerchest", 
-  "furavagerpants" ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tier7bed" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tier7chair" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tier7door" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tier7light" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tier7switch" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tier7table" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "furavagerhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "furavagerchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "furavagerpants" }
+  ]
 ]

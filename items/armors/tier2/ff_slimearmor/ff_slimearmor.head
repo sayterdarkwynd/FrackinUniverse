@@ -5,8 +5,8 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus:
-^cyan;+25% Poison Resist, Immune: Slime. Spawns minions.^reset;
-^e43774;+10% Damage, +6% Crit (Slime weapons)^reset;
+^cyan;+21% Poison Resist, Immune: Slime. Spawns minions.^reset;
+^#e43774;+10% Damage, +6% Crit (Slime weapons)^reset;
 ^green;Immune: Mud, Slime, Mud and Clay tiles^reset;", 
 "shortdescription" : "Slime Helm",
   "category" : "^#e43774;Upgradeable Armor^reset;",
@@ -15,8 +15,9 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
+  "collectablesOnPickup" : { "fu_armorprotection" : "ff_slimehead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

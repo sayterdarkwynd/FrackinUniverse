@@ -1,0 +1,74 @@
+{
+  "type" : "highwayzeldia",
+  "baseType" : "base",
+  
+  "identity" : {
+    "name" : "Zeldia",
+    "gender" : "female",
+	"hairType" : "10",
+    "race" : "avian"
+  },
+  
+  "persistent" : true,
+  "innateStatusEffects" : [ "invulnerable" ],
+  
+  "damageTeamType" : "ghostly",
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "simple",
+     "behaviorConfig" : {
+      "greetingChance" : 0
+    },   
+	"dialogMode" : "sequence",
+		
+    "dialog" : {
+	
+      "speak" : {
+        "default" : {
+          "default" : [
+            "A new face..."
+          ]
+        }
+      },
+	
+      "converse" : {
+        "default" : {
+          "default" : [
+            "Hmm. You responded to our distress signal? You certainly don't look like you're from around these parts. My name's Zeldia.",
+			"A Protector, you say? Well, that's close enough to being a Guardian...you might not be with SMASH, but we need all the help we can get.",
+			"The penguins are swarming all over the highway, causing all sorts of chaos. We're heavily outnumbered here, you'll be facing awful odds.",
+			"Some of my friends are out there, so they might even things out a bit. If you see them, tell them I said hi.",
+			"The penguins won't show you any mercy, so show them none! We've got to restore order to this city!"
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "back" : [
+              { "name" : "aviangodwingsback", "parameters" : { "colorIndex" : 8 } }
+            ],
+            "chest" : [
+              { "name" : "aviancommonershirt", "parameters" : { "colorIndex" : 8 } }
+            ],
+            "legs" : [
+              { "name" : "aviancommonerlegs", "parameters" : { "colorIndex" : 8 } }
+            ],
+            "primary" : [
+              { "name" : "clawglove", "parameters" : { "level" : 6 } }
+            ],
+            "alt" : [
+              { "name" : "clawglove", "parameters" : { "level" : 6 } }
+            ]		
+          }
+        ] ]
+    ]
+  }
+}

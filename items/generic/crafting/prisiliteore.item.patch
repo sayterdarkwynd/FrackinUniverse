@@ -1,8 +1,19 @@
 [
-        {"op":"replace","path":"/rarity","value":"uncommon"},
-	{"op":"replace","path":"/description","value":"Beautiful crystalline-metallic ore."},
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "prisilitestar" ] },
-	{"op":"add","path":"/radioMessagesOnPickup","value": [ "pickupPrism" ] },
-	{"op":"replace","path":"/price","value": 70 },
-	{"op":"replace","path":"/category","value":"craftingMaterial" }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op": "test", "path": "/radioMessagesOnPickup", "inverse" : true },
+    { "op": "add", "path": "/radioMessagesOnPickup", "value": [] }
+  ],
+  [
+    { "op": "add", "path": "/radioMessagesOnPickup/-", "value": "pickupPrism" },
+    { "op": "add", "path": "/learnBlueprintsOnPickup/-", "value": "prisilitestar" },
+    { "op": "replace", "path": "/rarity", "value": "uncommon" },
+    { "op": "replace", "path": "/description", "value": "Beautiful crystalline-metallic ore." },
+    { "op": "replace", "path": "/price", "value": 70 },
+    { "op": "replace", "path": "/category", "value": "craftingMaterial" },
+    {"op": "add", "path": "/collectablesOnPickup", "value": { "fu_geology" : "prisiliteore" } }
+  ]
 ]

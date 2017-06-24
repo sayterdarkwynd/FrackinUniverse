@@ -1,9 +1,13 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-	"mantiziruffianchest",
-	"mantiziruffianlegs",
-	"fudarkrobeshelmet",
-	"fudarkrobeschest",
-	"fudarkrobespants"
-	] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantiziruffianchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantiziruffianlegs" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudarkrobeshelmet" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudarkrobeschest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fudarkrobespants" }
+  ]
 ]

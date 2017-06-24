@@ -1,0 +1,29 @@
+{
+  "projectileName" : "wolfpack",
+  "image" : "wolfpack.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon2.png",
+  "lightColor" : [173, 255, 245],
+  "pointLight" : true,
+  "timeToLive" : 2,
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 4,
+  "actionOnReap" : [
+  
+	{ "action" : "config",
+      "file" : "/projectiles/explosions/smallregularexplosion/smallregularexplosion.config"
+  }
+ ],
+  "actionOnCollide" : [
+	{ "action" : "sound",
+	  "options" : [
+		"/sfx/gun/plasma_mp3.ogg"
+	  ]
+	}
+  ],
+  "emitters" : [ "rocketsmoke" ],
+  "speed" : 30.0,
+  "physics" : "rocket",
+  "damageKind" : "default"
+}

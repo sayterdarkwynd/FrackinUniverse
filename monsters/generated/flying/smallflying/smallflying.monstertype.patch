@@ -1,0 +1,152 @@
+[
+ 	{
+ 		"op":"replace",
+ 	   	"path":"/baseParameters/behaviorConfig/damageOnTouch",
+ 		"value": false
+ 	},
+	{
+ 		"op":"add",
+ 	   	"path":"/baseParameters/behaviorConfig/windupState",
+ 		"value": "windup"
+ 	},
+	{
+ 		"op":"add",
+ 	   	"path":"/baseParameters/behaviorConfig/winddownState",
+ 		"value": "winddown"
+ 	},
+	{
+ 		"op":"replace",
+ 	   	"path":"/baseParameters/behaviorConfig/swoopVelocity",
+ 		"value": 40
+ 	},
+ 	{
+		"op":"replace",
+		"path":"/baseParameters/behaviorConfig/approachActions",
+		"value": [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,5],
+            "maxRange" : 15
+          }
+        }
+      ]
+	},
+	{
+		"op":"add",
+		"path":"/baseParameters/skillCount",
+		"value": 2
+	},
+	{
+		"op":"replace",
+		"path":"/baseParameters/baseSkills",
+		"value": [ "pigeonSwoopAttack" ]
+	},
+	{
+		"op":"add",
+		"path":"/baseParameters/specialSkills",
+		"value": [ "flyingSwoopAttack",
+			    "pigeonSwoopAttack",
+			    "acidicSpitAttack", 
+			    "acidSprayAttack",
+			    "beamBurstAttack", 
+			    "bloodVomitAttack", 
+			    "blueFlameAttack",
+			    "boneRainAttack", 
+			    "bubbleBlastAttack",
+			    "burninghaloAttack",
+			    "cellBlastAttack", 
+			    "darkGravityBallAttack",
+			    "doubleBarbSprayAttack",
+			    "explosivePhlegmAttack",
+			    "eyeballShotAttack",
+			    "eyeballSprayAttack", 
+			    "fireballAttack", 
+			    "fireSwirlAttack",
+			    "fishBreathAttack", 
+			    "gasBelchAttack",    
+			    "glitterAttack", 
+			    "iceBlastAttack", 
+			    "icerockShotAttack",
+			    "leafyGustAttack",
+			    "lightBallAttack", 
+			    "miniDragonBreathAttack", 
+			    "mudBallAttack",
+			    "orbOfZotsAttack",
+			    "plasmaSweepAttack", 
+			    "plasmaTorpedoAttack", 
+			    "putridWaveAttack", 
+			    "rainbowVomitAttack",
+			    "rockRollAttack", 
+			    "shardSprayAttack",
+			    "shockingBoltAttack",
+			    "shockingWaveAttack", 
+			    "smokeRingAttack",
+			    "snotBubbleAttack",
+			    "snotShotAttack", 
+			    "staticDischargeAttack", 
+			    "waterGunAttack",
+			    "beetleSwarmAttack",
+			    "darkGasAttack",
+			    "flySwarmAttack",
+			    "iceShotAttack",
+			    "inkSprayAttack",
+			    "rockShotAttack",
+			    "seedSpitAttack",
+			    "sonicWaveAttack",
+			    "spiceCloudAttack",
+			    "tentacleShotAttack",
+			    "waveBlastAttack",
+			    "waveBlastAttack2",
+			    "waveBlastAttack3",
+			    "poisonVomitAttack2",
+			    "raptorstrikeAttack3",
+			    "raptorstrikeAttack4",
+			    "soundwaveAttack2",
+			    "windBlastAttack2",
+			    "windBlastAttack3",
+			    "windBlastAttack4",
+			    "shadowbeastAttack",
+			    "cageWall",
+			    "crystalAttack",
+			    "flamingAuraAttack",
+			    "glowcritterAttack",
+			    "glowcritterAttack2",
+			    "goopAttack",
+			    "gravAuraAttack",
+			    "iceAuraAttack",
+			    "iceBelchAttack",
+			    "kluexAuraAttack",
+			    "kluexBlastAttack",
+			    "poisonAuraAttack",
+			    "pullAuraAttack",
+			    "pushAuraAttack",
+			    "roarAttack",
+			    "seedAttack",
+			    "shitShowerAttack",
+			    "shockAuraAttack",
+			    "spinAssaultAttack",
+			    "steamAttack"
+			    ]
+	},
+	{
+		"op":"replace",
+		"path":"/baseParameters/knockoutTime",
+		"value": 0.1
+	},
+	{
+		"op":"replace",
+		"path":"/baseParameters/statusSettings/stats/knockbackStunTime/baseValue",
+		"value": 0.1
+	},
+	{
+		"op":"replace",
+		"path":"/baseParameters/statusSettings/stats/maxHealth/baseValue",
+		"value": 48
+	},
+	{
+		"op":"replace",
+		"path":"/baseParameters/statusSettings/stats/powerMultiplier/baseValue",
+		"value": 0.66
+	}
+]

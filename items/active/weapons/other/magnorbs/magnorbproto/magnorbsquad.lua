@@ -102,8 +102,6 @@ function update(dt, fireMode, shiftHeld)
   if fireMode == "alt" and availableOrbCount() == 4 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
-      
-     
       status.addEphemeralEffect("mage_shield_lvl1")
        status.setPersistentEffects("protomagnorb", {
         {stat = "protoImmunity", amount = 1}

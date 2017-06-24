@@ -1,0 +1,67 @@
+{
+  "projectileName" : "elderarrow",
+  "physics" : "default",
+  "bounces" : 0,
+  "periodicActions" : [
+    {
+      "action" : "particle",
+      "specification" : "peglacitrailgreen",
+      "time" : 0.05,
+      "repeat" : true
+    },
+    {
+      "action" : "particle",
+      "specification" : "eldritchstaff",
+      "time" : 0.07,
+      "repeat" : true
+    },
+    {
+      "action" : "particle",
+      "specification" : "elderarrowtrail",
+      "rotate" : true,
+      "time" : 0.032,
+      "repeat" : true
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_plasma.ogg"
+      ]
+    },
+    {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "peglacitrailgreen",
+          "time" : 0.1,
+          "repeat" : true
+        },
+        {
+          "action" : "particle",
+          "specification" : "eldritchstaff",
+          "time" : 0.1,
+          "repeat" : true
+        }
+      ]
+    }
+  ],
+  "image" : "elderarrow.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 2,
+  "lightColor" : [130, 70, 160],
+  "fullbright" : true,
+  "emitters" : ["defaultgreen"],
+  "timeToLive" : 10,
+  "damagePoly" : [ [-10, 0], [2, 4], [10, 0], [2, -4] ],
+  "power" : 20,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "damageKind" : "shadowbow",
+  "statusEffects" : ["insanity"],
+  "scripts" : ["/projectiles/guns/arrows/elderarrow/elderarrow.lua"],
+  "scriptDelta" : 1
+}

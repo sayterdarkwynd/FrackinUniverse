@@ -1,12 +1,17 @@
 [
-  {"op":"replace","path":"/rarity","value":"uncommon"},
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-  "aliencompound", 
-  "prismaticbow",
-  "fustarkillerhead",
-  "fustarkillerchest",
-  "fustarkillerpants"
-  ] },
-  {"op":"replace","path":"/price","value": 72 },
-  {"op":"replace","path":"/category","value":"craftingMaterial" }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "aliencompound" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "prismaticbow" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fustarkillerhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fustarkillerchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fustarkillerpants" },
+    { "op" : "replace", "path" : "/rarity", "value" : "uncommon" },
+    { "op" : "replace", "path" : "/price", "value" : 72 },
+    { "op" : "replace", "path" : "/category", "value" : "craftingMaterial" },
+    {"op": "add", "path": "/collectablesOnPickup", "value": { "fu_geology" : "prisilitestar" } }
+  ]
 ]

@@ -7,6 +7,12 @@
       {
         "select" : 1,
         "pool" : [ 
+          [ 0.1, "burrower_depth_selector" ]
+        ]
+      },      
+      {
+        "select" : 1,
+        "pool" : [ 
           [ 0.07, "tintix" ],     
           [ 0.07, "triplod" ],
           [ 0.07, "scandroid" ],        
@@ -67,6 +73,20 @@
 
   "undergroundPlaceables" : {
     "items" : [ 
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },    
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -285,7 +305,16 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "underground0amicrodungeons" ]
-      }               
+      },
+      {
+        "mode" : "floor",
+        "priority" : 99.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ultraRare",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "precursormicro" ]
+      }                
     ]
   },
 

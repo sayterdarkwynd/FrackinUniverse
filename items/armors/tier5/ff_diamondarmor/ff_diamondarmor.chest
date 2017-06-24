@@ -1,12 +1,13 @@
 {
   "itemName" : "ff_diamondarmorchest",
+  "price" : 700,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "Set Bonus:
 ^cyan;+30% Physical Resist^reset;
-^e43774;Immune: Acid, Bio-ooze^reset;
+^#e43774;Immune: Acid, Bio-ooze^reset;
 ^green;+5% Crit Chance (Broadswords)^reset;", 
   "shortdescription" : "Gishinanki Chestpiece",
   "category" : "chestarmour",
@@ -22,8 +23,9 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 5,
+  "collectablesOnPickup" : { "fu_armorprotection" : "ff_diamondarmorchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

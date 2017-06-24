@@ -1,5 +1,12 @@
 [
-	{"op":"add","path":"/fuelAmount","value": 100},
-	{"op":"add", "path":"/itemTags", "value":["reagent"]},
- 	{"op":"replace", "path":"/category", "value":"fuel"}
+  [
+    { "op": "test", "path": "/itemTags", "inverse" : true },
+    { "op": "add", "path": "/itemTags", "value": [] }
+  ],
+  [
+    {"op":"add","path":"/fuelAmount","value": 100},
+    {"op":"add", "path":"/itemTags/-", "value":"reagent"},
+    {"op":"replace", "path":"/category", "value":"fuel"},
+    {"op": "add", "path": "/collectablesOnPickup", "value": { "fu_isotopes" : "uraniumrod" } }
+  ]
 ]

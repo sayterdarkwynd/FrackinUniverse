@@ -40,13 +40,13 @@
           "name" : "approach-fly",
           "parameters" : {
             "approachAngle" : 30,
-            "minRange" : 2,
-            "maxRange" : 4            
+            "minRange" : 1.7,
+            "maxRange" : 2            
           }
         }
       ],
 
-      "followActions" : [
+      "followActions" : [       
         {
           "name" : "approach-teleport",
           "parameters" : {
@@ -80,18 +80,35 @@
         }
       ],
 
-      "concurrentActions" : [ ],
+      "concurrentActions" : [     
+      ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 0.08,
+         "parameters" : {
+          "projectileType" : "fuhgravityexplosion",
+          "aimDirection" : [0,0],
+          "aimAtTarget" : true,
+	    "power":0.0,
+	    "speed" : 0,
+	    "damageType" : "NoDamage",
+	    "inaccuracy":0.0, 
+	    "fireOffset":[0,0]          
+         }
+        }      
+      
+      ]
     },
 
     "touchDamage" : {
       "poly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -0.26], [0.26, -0.625], [-0.26, -0.625], [-0.625, -0.26], [-0.625, 0.26], [-0.26, 0.625] ],
-      "damage" : 8,
+      "damage" : 0.5,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "lash",
-      "knockback" : 20,
+      "damageSourceKind" : "shadow",
+      "knockback" : 0,
       "statusEffects" : [ "freezefu" ]
     },
 
@@ -142,15 +159,36 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 50
+          "baseValue" : 60
         },
         "protection" : {
           "baseValue" : 0.0
         },
         "healthRegen" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.2
         },
         "powerMultiplier" : {
+          "baseValue" : 0.05
+        },
+        "fireResistance" : {
+          "baseValue" : -1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : -0.4
+        },        
+        "electricResistance" : {
+          "baseValue" : -1.0
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.75
+        },        
+        "poisonResistance" : {
+          "baseValue" : -0.5
+        },
+        "shadowResistance" : {
+          "baseValue" : 1.0
+        },
+        "cosmicResistance" : {
           "baseValue" : 1.0
         }
       },
@@ -172,6 +210,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "squidbeast" }
   }
 }

@@ -310,12 +310,14 @@
         "powerMultiplier" : {
           "baseValue" : 1.45
         },
-        "poisonResistance" : { "baseValue" : 0 },
-        "fireResistance" : { "baseValue" : 0 },
+        "poisonResistance" : { "baseValue" : 0.99 },
+        "fireResistance" : { "baseValue" : 1 },
         "iceResistance" : { "baseValue" : -0.4 },
-        "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0 }
+        "electricResistance" : { "baseValue" : 0.8 },
+        "physicalResistance" : { "baseValue" : 0.8 },
+        "shadowResistance" : { "baseValue" : 0.6 },
+        "cosmicResistance" : { "baseValue" : 0.6 },
+        "radioactiveResistance" : { "baseValue" : 0.8 }
       },
 
       "resources" : {
@@ -335,6 +337,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.24,
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "magmagolem" }
   }
 }

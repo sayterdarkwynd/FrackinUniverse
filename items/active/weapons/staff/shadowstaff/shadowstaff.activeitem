@@ -1,0 +1,150 @@
+{
+  "itemName" : "shadowstaff",
+  "price" : 1440,
+  "maxStack" : 1,
+  "level" : 5,
+  "rarity" : "Legendary",
+  "description" : "This powerful staff summons a deadly shadow snake.",
+  "shortdescription" : "Shadow Staff",
+  "tooltipKind" : "base",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","upgradeableWeapon"],
+
+  "animation" : "/items/active/weapons/staff/shadowstaff/kluexstaff.animation",
+  "animationParts" : {
+    "staff" : "kluexstaff.png",
+    "stone" : "stone.png",
+    "chargeEffect" : "staffglow.png"
+  },
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [185, 24, 185]
+      }
+    },
+    "particleEmitters" : {
+      "physicalcharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "kluexstaff"}
+        ]
+      }
+    },
+
+    "sounds" : {
+      "physicalactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+    }
+  },
+
+  "inventoryIcon" : "kluexstaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.1,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "shadow",
+
+"primaryAbilityType":"elementorb", 
+"primaryAbility":{
+"energyCost":1000, 
+"maxCastRange":50, 
+"projectileType":"shadoworb", 
+"projectileParameters":{
+"baseDamage":0, 
+"processing":"?0", 
+"power":0, 
+"damageKind":"noDamage", 
+"damageType":"noDamage", 
+"controlMovement":{"maxSpeed":25, "controlForce":1000}, 
+"timeToLive":60, 
+"periodicActions":[{"time":0.05, "action":"projectile", "angleAdjust":-90, "type":"shadoworb", "config":{"speed":0, "persistentAudio":"", "timeToLive":0.5, "power":1}}]}},
+
+  "altAbilityType" : "elementorb",
+  "altAbility" : {
+    "energyCost":1000, 
+    "maxCastRange":50, 
+    "projectileType":"shadoworb",  
+    "projectileParameters":{
+      "baseDamage":0, 
+      "processing":"?0", 
+      "power":0, 
+      "damageKind":"shadow", 
+      "damageType":"noDamage", 
+      "controlMovement":{
+        "maxSpeed":10, 
+        "controlForce":1000
+      }, 
+      "timeToLive":60,
+      "periodicActions":[
+       { 
+        "time":0.01, 
+        "action":"projectile", 
+        "type":"flyswarm", 
+        "config":{
+          "speed":0, 
+          "timeToLive":1.0, 
+          "power":2
+         }
+       }
+      ]  
+     }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "shortdescription" : "Shadowreap^yellow;^reset;",
+    "controlMovement":{
+      "maxSpeed":35, 
+      "controlForce":1100
+    }
+  }
+}

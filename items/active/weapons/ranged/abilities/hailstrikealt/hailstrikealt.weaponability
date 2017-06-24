@@ -29,7 +29,7 @@
       }
     },
     "sounds" : {
-      "altFire" : [ "/sfx/weapons/explosion-large01.ogg" ]
+      "altFire" : [ "/sfx/weapons/lightbeam.wav" ]
     }
   },
 
@@ -43,7 +43,8 @@
     "projectileParameters" : {
       "knockbackRange" : [10, 20],
       "piercing" : true,
-      "speed" : 0
+      "speed" : 30,
+      "damageSourceKind" : "cosmic"
     },
     "elementalConfig" : {
       "physical" : {
@@ -98,12 +99,12 @@
           "damageKind" : "poison",
           "lightColor" : [26, 26, 26],
           "emitters" : [ "shadowsmoke2", "defaultgreen", "shadowsmoke2", "defaultgreen", "shadowsmoke2", "defaultgreen"  ],
-          "statusEffects" : [ "insanity" ]
+          "statusEffects" : [ "shadowgasfx" ]
         }
       },
       "cosmic" : {
         "projectileParameters" : {
-          "damageKind" : "poison",
+          "damageKind" : "cosmic",
           "lightColor" : [199, 45, 120],
           "emitters" : [ "plasmaflamemonster", "defaultgreen", "plasmaflamemonster", "defaultgreen", "plasmaflamemonster", "defaultgreen"  ],
           "statusEffects" : [ "percentarmorboostneg1" ]
@@ -111,13 +112,11 @@
       }
     },
 
-    // use baseDps and fireTime from primary fire
-
     "projectileCount" : 12,
     "inaccuracy" : 0.1,
-    "baseDps" : 18,
-    "energyUsage" : 60,
-    "fireTime" : 0.5,
+    "baseDps" : 4.4,
+    "energyUsage" : 66,
+    "fireTime" : 1.2,
     "fireType" : "auto",
 
     "stances" : {

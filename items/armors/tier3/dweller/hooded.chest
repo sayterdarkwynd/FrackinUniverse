@@ -6,7 +6,7 @@
   "rarity" : "rare",
   "description" : "Set Bonus:
 ^#c74eff;Immune: Slime, Mud, Ice, Snow, Tar^reset;
-^green;Ore Drone(Tier 3), +120% Mining Laser damage^reset;", 
+^green;+120% Mining Laser damage^reset;", 
   "shortdescription" : "Dweller Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -22,8 +22,9 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "hoodedchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -48,7 +49,6 @@
   ],
 
   "statusEffects" : [
-    "dwellerchestbonus",
     "dwellersetbonus",
     {
       "stat" : "fu_dwellerset_chest",

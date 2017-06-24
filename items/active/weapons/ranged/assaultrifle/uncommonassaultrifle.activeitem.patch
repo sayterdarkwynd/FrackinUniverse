@@ -20,6 +20,11 @@
     "value": "A fully automatic, military grade rifle, with decent stopping power and accuracy."
   },
   {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
     "op": "replace",
     "path": "/primaryAbility/fireTime/0",
     "value": 0.08
@@ -51,6 +56,93 @@
     "op": "replace",
     "path": "/primaryAbility/inaccuracy",
     "value": 0.04
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "radioactiveplasma"
+      },
+      "fireSounds": [
+        "/sfx/gun/mp1.ogg",
+        "/sfx/gun/mp2.ogg",
+        "/sfx/gun/mp3.ogg",
+        "/sfx/gun/ar1.ogg",
+        "/sfx/gun/ar2.ogg",
+        "/sfx/gun/ar3.ogg",
+        "/sfx/gun/ar4.ogg",
+        "/sfx/gun/ar5.ogg",
+        "/sfx/gun/ar6.ogg",
+        "/sfx/gun/grenade2.ogg",
+        "/sfx/gun/uzi1.ogg",
+        "/sfx/gun/uzi2.ogg",
+        "/sfx/gun/uzi3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "shadowplasma"
+      },
+      "fireSounds": [
+        "/sfx/gun/mp1.ogg",
+        "/sfx/gun/mp2.ogg",
+        "/sfx/gun/mp3.ogg",
+        "/sfx/gun/ar1.ogg",
+        "/sfx/gun/ar2.ogg",
+        "/sfx/gun/ar3.ogg",
+        "/sfx/gun/ar4.ogg",
+        "/sfx/gun/ar5.ogg",
+        "/sfx/gun/ar6.ogg",
+        "/sfx/gun/grenade2.ogg",
+        "/sfx/gun/uzi1.ogg",
+        "/sfx/gun/uzi2.ogg",
+        "/sfx/gun/uzi3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "cosmicplasma"
+      },
+      "fireSounds": [
+        "/sfx/gun/mp1.ogg",
+        "/sfx/gun/mp2.ogg",
+        "/sfx/gun/mp3.ogg",
+        "/sfx/gun/ar1.ogg",
+        "/sfx/gun/ar2.ogg",
+        "/sfx/gun/ar3.ogg",
+        "/sfx/gun/ar4.ogg",
+        "/sfx/gun/ar5.ogg",
+        "/sfx/gun/ar6.ogg",
+        "/sfx/gun/grenade2.ogg",
+        "/sfx/gun/uzi1.ogg",
+        "/sfx/gun/uzi2.ogg",
+        "/sfx/gun/uzi3.ogg"
+      ]
+    }
   },
   {
     "op": "replace",

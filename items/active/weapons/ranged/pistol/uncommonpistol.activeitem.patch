@@ -20,6 +20,11 @@
     "value": "Uncommon Semi-Automatic Pistol"
   },
   {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
     "op": "replace",
     "path": "/primaryAbility/fireTime/0",
     "value": 0.25
@@ -68,6 +73,75 @@
     "op": "replace",
     "path": "/primaryAbility/stances/cooldown/weaponRotation",
     "value": 5
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "radioactiveplasma"
+      },
+      "fireSounds": [
+        "/sfx/gun/mp1.ogg",
+        "/sfx/gun/mp2.ogg",
+        "/sfx/gun/mp3.ogg",
+        "/sfx/gun/uzi1.ogg",
+        "/sfx/gun/uzi2.ogg",
+        "/sfx/gun/uzi3.ogg",
+        "/sfx/gun/grapplegun.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "shadowplasma"
+      },
+      "fireSounds": [
+        "/sfx/gun/mp1.ogg",
+        "/sfx/gun/mp2.ogg",
+        "/sfx/gun/mp3.ogg",
+        "/sfx/gun/uzi1.ogg",
+        "/sfx/gun/uzi2.ogg",
+        "/sfx/gun/uzi3.ogg",
+        "/sfx/gun/grapplegun.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "cosmicplasma"
+      },
+      "fireSounds": [
+        "/sfx/gun/mp1.ogg",
+        "/sfx/gun/mp2.ogg",
+        "/sfx/gun/mp3.ogg",
+        "/sfx/gun/uzi1.ogg",
+        "/sfx/gun/uzi2.ogg",
+        "/sfx/gun/uzi3.ogg",
+        "/sfx/gun/grapplegun.ogg"
+      ]
+    }
   },
   {
     "op": "replace",

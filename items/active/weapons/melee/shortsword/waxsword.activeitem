@@ -6,17 +6,18 @@
   "rarity" : "common",
   "description" : "Useless",
   "shortdescription" : "Wax Sword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword"],
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
 
   "inventoryIcon" : "waxsword.png",
 
-  "animation" : "comboshortsword.animation",
+  "animation" : "comboglowshortsword.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "waxsword.png"
+    "blade" : "waxsword.png",
+    "bladefullbright" : "waxsword.png"
   },
 
   "animationCustom" : { },
@@ -32,6 +33,32 @@
   },
   "critChance" : 1,
   "critBonus" : 2, 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
 
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Wax Slasher^reset; ^yellow;^reset;",
+  "description" : "Actually capable of cutting.^reset;", 
+          "inventoryIcon" : "waxsword3.png",
+	  "animationParts" : {
+	    "blade" : "waxsword3.png",
+	    "bladefullbright" : "waxsword3.png"
+	  }          
+    },
+    
+  "upgradeParameters2" : {
+    "shortdescription" : "^cyan;God Cleaver^reset; ^yellow;^reset;",
+  "description" : "Somewhat dangerous.
+^cyan;Gods fear it. Women crave it.^reset;", 
+          "inventoryIcon" : "waxsword4.png",
+	  "animationParts" : {
+	    "blade" : "waxsword4.png",
+	    "bladefullbright" : "waxsword4.png"
+	  },    
+	    "critChance" : 14,
+	    "critBonus" : 24,
+	  "primaryAbility" : {
+	    "baseDps" : 12
+	  }
+    }
 }

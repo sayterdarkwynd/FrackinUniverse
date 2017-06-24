@@ -9,9 +9,9 @@
     "shortdescription" : "P-7 Miner",
     "learnBlueprintsOnPickup" : [ "penumbriteminer", "murdermanipulator" ],
   "category" : "^#e43774;Upgradeable Tool^reset;",
-  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser" ],
+  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser", "upgradeableWeapon" ],
   "twoHanded" : false,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "animation" : "protominer.animation",
   "animationParts" : {
     "beamorigin" : "rainbowmuzzle.png",
@@ -110,5 +110,22 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+          "shortdescription" : "^cyan;P-7 Miner^reset; ^green;^reset;"  
+  },
+  "upgradeParameters2" : {
+          "shortdescription" : "^cyan;P-7 Miner^reset; ^cyan;^reset;" 
+  },
+  "upgradeParameters3" : {
+          "shortdescription" : "^cyan;P-7 Miner^reset; ^yellow;^reset;",
+	  "primaryAbility" : {
+	    "damageConfig" : {
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "cosmic",
+	      "knockback" : 5
+	    }
+	  }    
+  }
 }

@@ -1,13 +1,19 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [
-    "whitedye",
-    "bonemealmaterial",
-    "bonematerial",
-    "throwingbones"
-    ] },
-    
-  {"op":"add","path":"/pickupQuestTemplates","value": [ "fuquest_bonespear" ] }    
-]  
-
-
-
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op": "test", "path": "/pickupQuestTemplates", "inverse" : true },
+    { "op": "add", "path": "/pickupQuestTemplates", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "whitedye" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bonemealmaterial" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuboneshield" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bonematerial" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "throwingbones" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fuflamewand" },
+    {"op":"add", "path":"/pickupQuestTemplates/-", "value": "fuquest_bonespear" }  
+  ]
+]

@@ -18,7 +18,10 @@ function initCommonParameters()
   self.transformedMovementParameters.runSpeed = self.ballSpeed
   self.transformedMovementParameters.walkSpeed = self.ballSpeed
   self.basePoly = mcontroller.baseParameters().standingPoly
-  self.collisionSet = {"Null", "Block", "Dynamic"}
+  self.collisionSet = {"Null", "Block", "Dynamic", "Slippery"}
+
+  self.forceDeactivateTime = config.getParameter("forceDeactivateTime", 3.0)
+  self.forceShakeMagnitude = config.getParameter("forceShakeMagnitude", 0.125)
 end
 
 function uninit()
@@ -29,10 +32,14 @@ end
 function update(args)
   restoreStoredPosition()
 
-  if not self.specialLast and args.moves["special"] == 1 then
+  if not self.specialLast and args.moves["special1"] then
     attemptActivation()
   end
-  self.specialLast = args.moves["special"] == 1
+  self.specialLast = args.moves["special1"]
+
+  if not args.moves["special1"] then
+    self.forceTimer = nil
+  end
 
   if self.active then
     mcontroller.controlParameters(self.transformedMovementParameters)
@@ -40,6 +47,8 @@ function update(args)
 
     updateAngularVelocity(args.dt)
     updateRotationFrame(args.dt)
+
+    checkForceDeactivate(args.dt)
   end
 
   updateTransformFade(args.dt)
@@ -63,9 +72,34 @@ function attemptActivation()
     if pos then
       mcontroller.setPosition(pos)
       deactivate()
-    else
-      -- error noise?
+    elseif not self.forceTimer then
+      animator.playSound("forceDeactivate", -1)
+      self.forceTimer = 0
     end
+  end
+end
+
+function checkForceDeactivate(dt)
+  animator.resetTransformationGroup("ball")
+
+  if self.forceTimer then
+    self.forceTimer = self.forceTimer + dt
+    mcontroller.controlModifiers({
+      movementSuppressed = true
+    })
+
+    local shake = vec2.mul(vec2.withAngle((math.random() * math.pi * 2), self.forceShakeMagnitude), self.forceTimer / self.forceDeactivateTime)
+    animator.translateTransformationGroup("ball", shake)
+    if self.forceTimer >= self.forceDeactivateTime then
+      deactivate()
+      self.forceTimer = nil
+    else
+      attemptActivation()
+    end
+    return true
+  else
+    animator.stopAllSounds("forceDeactivate")
+    return false
   end
 end
 
@@ -167,10 +201,6 @@ function activate()
   tech.setToolUsageSuppressed(true)
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   self.active = true
-  
-  
-
- 
 end
 
 function deactivate()
@@ -182,6 +212,7 @@ function deactivate()
   else
     animator.setAnimationState("ballState", "off")
   end
+  animator.stopAllSounds("forceDeactivate")
   animator.setGlobalTag("ballDirectives", "")
   tech.setParentHidden(false)
   tech.setParentOffset({0, 0})

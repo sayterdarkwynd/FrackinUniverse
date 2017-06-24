@@ -112,6 +112,7 @@ function update(dt, fireMode, shiftHeld)
   if fireMode == "alt" and availableOrbCount() == 4 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
+      status.addEphemeralEffect("fireburst")
        status.setPersistentEffects("hellfiremagnorb", {
         {stat = "fireStatusImmunity", amount = 1},
         {stat = "fireResistance", amount = 0.25}
@@ -123,6 +124,7 @@ function update(dt, fireMode, shiftHeld)
   else
     self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
     status.clearPersistentEffects("hellfiremagnorb") 
+    status.removeEphemeralEffect("fireburst")
     if self.shieldTransformTimer > 0 then
       setOrbAnimationState("unshield")
     end
@@ -278,6 +280,7 @@ function deactivateShield()
   activeItem.setItemShieldPolys()
   activeItem.setItemDamageSources()
   status.clearPersistentEffects("magnorbShield")
+  status.clearPersistentEffects("fireburst")
 end
 
 function setOrbPosition(spaceFactor, distance)

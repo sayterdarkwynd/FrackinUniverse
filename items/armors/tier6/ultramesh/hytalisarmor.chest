@@ -1,17 +1,18 @@
 {
   "itemName" : "hytalisarmorchest",
+  "price" : 950,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
    "description" : "Set Bonus:
 ^cyan;+50% Electric Resist^reset;
-^e43774;Immune: Pressure, Insanity, Aether^reset;
+^#e43774;Immune: Pressure, Insanity, Aether^reset;
 ^green;+35% Shield Stamina, Block, Shield Regen^reset;", 
   "shortdescription" : "Ultra-Mesh Breastplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -25,6 +26,7 @@
   },
 
   "level" : 6,
+  "collectablesOnPickup" : { "fu_armorprotection" : "hytalisarmorchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

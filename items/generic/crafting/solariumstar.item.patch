@@ -1,8 +1,13 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-	"solariumstar",
-	"mantizitier6apants",
-	"mantizitier6ahead",
-	"mantizitier6achest"
-	] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "solariumstar" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier6apants" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier6ahead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier6achest" },
+    {"op": "add", "path": "/collectablesOnPickup", "value": { "fu_isotopes" : "solariumstar" } }
+  ]
 ]

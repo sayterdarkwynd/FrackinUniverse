@@ -1,0 +1,26 @@
+{
+  "name" : "gasworld3",
+  "blockingStat" : "extremepressureProtection",
+
+  "effectConfig" : {
+          "effectCutoff" : "physicalResistance",
+          "effectCutoffValue" : 0.99,   
+	  "biomeTemp" : 1.3, 
+	  "biomeThreshold" : 0.5,
+	  "baseRate" : 0.35,
+	  "baseDebuffPerTick" : 10,
+	  "baseDmgPerTick" : 100,
+	  "situationPenalty" : 2.2,
+	  "liquidPenalty" : 1.7,
+	  "biomeNight" : 1.25
+  },
+  "defaultDuration" : 120,
+
+  "scripts" : [
+    "gasworldnew.lua"
+  ],
+
+  "animationConfig" : "gasworldnew.animation",
+  "label" : "Lethal Pressure",
+  "icon" : "/interface/statuses/pressure.png"
+}

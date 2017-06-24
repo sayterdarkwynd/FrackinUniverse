@@ -1,25 +1,26 @@
+require "/scripts/util.lua"
 spawnIds={}
 
 
 function init()
 	timer=1
 	monsterData=config.getParameter("monsterData",{type="gleap",persistent = true,damageTeamType = "friendly",aggressive = true,damageTeam = 0,level=1})
-	--message.setHandler("onDeath",deadPet)
-	--message.setHandler("onDespawn",despawnPet)
+	monsterData["owner"]=entity.uniqueId(entity.id())
+	message.setHandler("onDeath",deadPet)
 end
 
 
 function update(dt)
+	monsterData["owner"]=entity.uniqueId(entity.id())
 	refreshIds()
 	if timer >0 then
 		timer = timer - dt
 	else
-		if #spawnIds < config.getParameter("spawnLimit",math.huge) then
+		if #spawnIds < config.getParameter("spawnLimit",1) then
 			spawn()
 			timer=config.getParameter("spawnCooldown",15)
 		end
     end
-    
 end
 
 function getLevel()
@@ -27,14 +28,6 @@ function getLevel()
 	if world.threatLevel then return world.threatLevel() end
 	return 1
 end
-
---[[function deadPet()
-	--sb.logInfo("dead pet!")
-end
-
-function despawnPet()
-	--sb.logInfo("dead pet!")
-end]]
 
 function refreshIds()
 	local buffer={}
@@ -54,5 +47,9 @@ function spawn()
 	table.insert(spawnIds,tempMonsterID)
 end
 
-
-
+function deadPet(id)
+	local temp=contains(spawnIds,id)
+	if temp then 
+		table.remove(spawnIds,temp)
+	end
+end

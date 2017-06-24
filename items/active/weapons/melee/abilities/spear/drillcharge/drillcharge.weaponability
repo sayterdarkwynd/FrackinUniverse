@@ -1,0 +1,138 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "dashSwoosh" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {
+            },
+            "charge" : {
+              "frames" : 4,
+              "cycle" : 2.0,
+              "properties" : {
+                "persistentSound" : "/sfx/melee/drillspear_windup1.ogg"
+              }
+            },
+            "full" : {
+              "properties" : {
+                "immediateSound" : "/sfx/weapons/chainsword_flipslash.ogg"
+              }
+            }
+          }
+        }
+      },
+      "parts" : {
+        "dashSwoosh" : {
+          "properties" : {
+            "zLevel" : 1,
+            "centered" : true,
+            "transformationGroups" : ["swoosh"],
+            "offset" : [3.75, 0.0625],
+            "fullbright" : true,
+            "damageArea" : [[-6, 0], [-3.5, 1], [-1.5, 1], [1.5, 0], [-1.5, -1], [-3.5, -1]]
+          },
+          "partStates" : {
+            "dashSwoosh" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "charge" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/spear/fucharge/chargeswoosh.png:<frame>"
+                }
+              },
+              "full" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/spear/fucharge/chargeswoosh.png:4"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "animationScripts" : [
+    "/items/active/effects/lightning.lua"
+  ],
+
+  "ability" : {
+    "type" : "drillcharge",
+    "scripts" : ["/items/active/weapons/melee/abilities/spear/drillcharge/charge.lua"],
+    "name" : "Drill Charge",
+    "class" : "Charge",
+
+    "chargeTime" : 1.5,
+    "minChargeTime" : 0.35,
+    "chargeLevels" : 4,
+    // [width, forks, branching, color]
+    "lightningChargeLevels" : [
+      [1.15, 0, 0.05, [100, 100, 50, 50]],
+      [1.15, 0, 0.07, [160, 160, 185, 50]],
+      [1.15, 0, 0.09, [225, 225, 215, 50]],
+      [1.15, 0, 0.12, [255, 255, 255, 50]]
+    ],
+    "dashLightning" : [1, 0, 0.12, [255, 255, 255, 50]],
+
+    "dashMaxSpeed" : 400,
+    "dashControlForce" : 1600,
+    "maxDashTime" : 0.30,
+    "maxEnergyUsage" : 50,
+
+    "freezeTime" : 0.1,
+
+    "damageConfig" : {
+    	"baseDamage" : 6,
+    	"timeout" : 0.25,
+    	"timeoutGroup" : "alt"
+    },
+    "baseDps" : 8, // overrides baseDamage in damageConfig
+
+    "projectileType" : "drillspearexplosion",
+    "projectileConfig" : {
+      "speed" : 0,
+      "periodicActions" : [
+	    {
+	      "time" : 0,
+	      "loop" : true, 
+	      "action" : "projectile",
+	      "type" : "fusionmining",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0,
+
+	      "projectileParameters" : { 
+		"speed" : 61, 
+		"timeToLive" : 0.2
+		}
+	    }
+      ]
+    },
+
+    "cycleRotationOffsets" : [0, 7.5, -7.5],
+    "stances" : {
+      "charge" : {
+        "armRotation" : -135,
+        "weaponRotation" : 45,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 0.0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "dash" : {
+        "armRotation" : -25,
+        "weaponRotation" : -65,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 2.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

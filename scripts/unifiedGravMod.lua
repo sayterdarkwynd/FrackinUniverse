@@ -4,6 +4,7 @@ unifiedGravMod.gravHandler=nil
 function init()
 	unifiedGravMod.init()
 	unifiedGravMod.initSoft()
+	script.setUpdateDelta(5)
 end
 
 
@@ -54,6 +55,7 @@ function unifiedGravMod.refreshGrav(dt)
 			newGrav=newGrav+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
 		end
+		--sb.logInfo("%s",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,newGrav=newGrav,gravNorm=gravNorm})
 	end
 end
 

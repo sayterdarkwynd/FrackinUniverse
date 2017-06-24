@@ -94,5 +94,69 @@
 
   "altAbilityType" : "hailstrikealt",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua", "/items/active/scripts/heavyweapon2.lua" ],
+    "shortdescription" : "^cyan;Deathstrike^reset; ^yellow;^reset;",
+  "description" : "Perfection.
+^cyan;+2 projectiles^reset;  
+^yellow;Homing projectiles^reset;
+^green;Alt ignores walls^reset;", 
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "hailstrike.png",
+    "middlefullbright" : "hailstrikefullbright2.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },    
+    "critChance" : 4,
+    "critBonus" : 4,
+	  "primaryAbility" : {
+	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+	    "class" : "GunFire",
+
+	    "fireTime" : 0.14,
+	    "baseDps" : 10.5,
+	    "energyUsage" : 42,
+	    "inaccuracy" : 0.056,
+	    "fireType" : "auto",
+
+	    "projectileType" : "fuhailstrikeshot",
+	    "projectileParameters" : {
+	      "knockback" : 2.2,
+	      "speed" : 60
+	    },
+	    "projectileCount" : 2,
+
+	    "stances" : {
+	      "idle" : {
+		"armRotation" : 0,
+		"weaponRotation" : 0,
+		"twoHanded" : true,
+
+		"allowRotate" : true,
+		"allowFlip" : true
+	      },
+	      "fire" : {
+		"duration" : 0,
+		"armRotation" : 1,
+		"weaponRotation" : 1,
+		"twoHanded" : true,
+
+		"allowRotate" : false,
+		"allowFlip" : false
+	      },
+	      "cooldown" : {
+		"duration" : 0.0,
+		"armRotation" : 1,
+		"weaponRotation" : 1,
+		"twoHanded" : true,
+
+		"allowRotate" : false,
+		"allowFlip" : false
+	      }
+	    }
+	  }
+  }
 }

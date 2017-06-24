@@ -1,0 +1,251 @@
+{
+  "type" : "futinybeeerchius",
+  "shortdescription" : "Infected Bee",
+  "description" : "Don't touch the pointy end.",
+
+  "categories" : [ "futinybeeerchius" ],
+  "parts" : [ "body" ],
+
+  "animation" : "futinybeeerchius.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-aggrohop",
+          "parameters" : {
+            "aggroHopSpeed" : 0.0,
+            "aggroHopWait" : 0.0,
+            "onGround" : false
+          }
+        }
+      ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ 
+       {
+          "name" : "action-fire",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 12,
+            "minimumRange" : 1,
+            "windupState" : "fly",
+            "windupTime" : 0.6,
+
+            "projectileType" : "electricrain",
+            "projectileCount" : 1,
+            "projectileParameters" : { 
+              "damageSourceKind" : "cosmic",
+              "physics" : "laser",
+              "timeToLive" : 0.6
+              },
+            "inaccuracy" : 0,
+            "power" : 1,
+            "fireOffset" : [0.75, 0.25],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+            "fireDelay" : 0.1,
+
+            "fireArc": true,
+            "projectileSpeed": 50,
+            "gravityMultiplier": 0.6,
+
+            "winddownState" : "",
+            "winddownTime" : 1.0
+          }
+        }         
+      
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "approachTime" : 4.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 15,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "approachTime" : 4.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 15,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "land-fly",
+          "cooldown" : 15,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [2,4],
+            "landState" : "idle"
+          }
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [2,4],
+            "groundDistance" : 5,
+            "ceilingDistance" : 5,
+            "xVelocity" : 4,
+            "yVelocity" : 4
+          }
+        }
+      ],
+
+      "deathActions" : [],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
+      "damage" : 2,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "cosmic",
+      "knockback" : 20,
+      "statusEffects" : [ "percentarmorboostneg2" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 0.45,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 1,
+      "airForce" : 20,
+      "flySpeed" : 9
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 8
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 1,
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "futinybeeerchius" }
+  }
+}

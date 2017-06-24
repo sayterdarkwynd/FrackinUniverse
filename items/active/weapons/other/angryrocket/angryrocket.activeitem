@@ -4,12 +4,14 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Fires homing rockets.",
+  "description" : "Fires brutal rockets.
+^cyan;Heat-Seeking Alt (3 tick lock-on)^reset;
+^yellow;Alt slows, irradiates and burns!^reset;",
   "shortdescription" : "Spankr",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","rocketlauncher"],
+  "itemTags" : ["weapon","rocketlauncher", "upgradeableWeapon"],
 
   "inventoryIcon" : "angryrocket.png",
   "animation" : "angryrocket.animation",
@@ -28,23 +30,22 @@
   
   "scripts" : ["angryrocket.lua"],
   
-  "fireOffset" : [3.25, 0.625],
+  "fireOffset" : [3.0, 0.625],
   "critChance" : 6,
   "critBonus" : 8, 
   "primaryAbility" : {
     "energyUsage" : 112,
-    "baseDps" : 10,
-    "fireTime" : 3.0,
+    "baseDamage" : 22,
     "projectileType" : "rocketshell",
     "projectileCount" : 1
   },
   
   "altAbility" : {
     "energyUsage" : 112,
-    "baseDps" : 10,
-    "fireTime" : 3.0,
-    "projectileType" : "homingrocket",
+    "baseDamage" : 17.5,
+    "projectileType" : "homingrocket4",
     "projectileCount" : 1,
+
     "name" : "Life Seeker"
   },
     "builder" : "/items/buildscripts/buildunrandweapon.lua"

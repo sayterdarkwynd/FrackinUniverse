@@ -1,0 +1,125 @@
+{
+  "type" : "hostilefuultraelite",
+  "baseType" : "base",
+
+  "persistent" : true,
+
+  "damageTeam" : 2,
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "hostileguard",
+
+    "behaviorConfig" : {
+      "leapWindup" : 0.05,
+      "rangedAimTime" : 0.03,
+      "rangedWindupTime" : 0.1,
+      "rangedMinFireTime": 0.2,
+      "rangedMaxFireTime": 0.8    
+    },
+
+    "aggressive" : true,
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ],
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [1.0, "patrol"]
+      ]
+    },
+
+    "dialog" : {
+      "converse" : "/dialog/combat.config:attack",
+      "hail" : "/dialog/combat.config:attack",
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/macready.config:reattack",
+      "killedTarget" : "/dialog/macready.config:killedTarget",
+      "lostTarget" : "/dialog/macready.config:lostTarget",
+      "outOfSight" : "/dialog/macready.config:outOfSight",
+      "cheerOn" : "/dialog/macready.config:cheerOn",
+      "cantReach" : "/dialog/macready.config:cantReach"
+    },
+
+    "combat" : {
+      "meleeWeaponWindups" : {
+        "default" : 0.05,
+        "broadsword" : 0.1,
+        "dagger" : 0.05,
+        "axe" : 0.15,
+        "hammer" : 0.3,
+        "shortsword" : 0.05,
+        "spear" : 0.25
+      },
+      "meleeWeaponCooldowns" : {
+        "default" : 0.5,
+        "broadsword" : 1.0,
+        "dagger" : 0.7,
+        "axe" : 1.0,
+        "hammer" : 1.4,
+        "shortsword" : 1.0,
+        "spear" : 1.1
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "humantier1head" } ],
+            "chest" : [ { "name" : "humantier1chest" } ],
+            "legs" : [ { "name" : "humantier1pants" } ],
+            "primary" : [ "npcassaultrifle" ],
+            "sheathedprimary" : [ "npcbroadsword" ]
+          }
+        ] ]
+    ]
+  },
+
+  "touchDamage" : {
+    "damage" : 0,
+    "teamType" : "enemy",
+    "damageType" : "knockback",
+    "damageSourceKind" : "nodamage",
+    "damageRepeatGroup" : "npcTouchKnockback",
+    "damageRepeatTimeout" : 0.5,
+    "knockback" : 20,
+    "statusEffects" : [ ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 220.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 120.0
+      },      
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+      "protection" : {
+        "baseValue" : 15.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.5
+      },
+      "poisonResistance" : {
+        "baseValue" : 0.95
+      },
+      "pusImmunity" : {
+        "baseValue" : 1.0
+      },
+      "shadowResistance" : {
+        "baseValue" : 0.9
+      },
+      "cosmicResistance" : {
+        "baseValue" : 0.7
+      }
+    }
+  }
+}

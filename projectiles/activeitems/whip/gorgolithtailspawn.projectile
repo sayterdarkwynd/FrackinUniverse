@@ -1,0 +1,75 @@
+{
+  "projectileName" : "gorgolithtailspawn",
+  "physics" : "nocollision",
+  "image" : "whipcrackpoison.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "timeToLive" : 0.25,
+  "power" : 50,
+  "speed" : 0,
+  "piercing" : true,
+  "actionOnReap" : [],
+  "lightColor" : [60, 90, 30],
+  "damageKind" : "poisonlash",
+  "damagePoly" : [ [-6, 0], [0, 6], [6, 0], [0, -6] ],
+  "statusEffects" : ["weakpoison"],
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "periodicActions" : [
+    {
+	  "time" : 0, 
+	  "repeat" : false, 
+	  "action" : "loop", 
+	  "count" : 2, 
+	  "body" : [
+	    {
+		  "action" : "projectile", 
+		  "type" : "bomb", 
+		  "inheritDamageFactor" : 0.5, 
+		  "fuzzAngle" : 45, 
+		  "config" : {
+		    "timeToLive" : 2, 
+			"speed" : 20, 
+			"piercing" : true, 
+			"bounces" : 1, 
+			"actionOnReap" : [
+			  {
+			    "action" : "config", 
+				"file" : "/projectiles/explosions/bioboom/bioboom.config"
+			  }
+			], 
+			"actionOnCollide" : [
+			  {
+			    "action" : "projectile", 
+				"type" : "proximitymine", 
+				"inheritDamageFactor" : 1, 
+				"config" : {
+				  "processing" : "?replace;FFFF44=EFB5CE;D6D6D6=C67BA5;B9B9B9=730052;FF1D00=E739CE", 
+				  "timeToLive" : 5, 
+				  "speed" : 0, 
+				  "piercing" : true, 
+				  "damageType" : "noDamage", 
+				  "damageKind" : "noDamage", 
+				  "actionOnReap" : [
+				    {
+					  "action" : "sound", 
+					  "options":["/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg"]
+					}, 
+					{
+					  "action" : "projectile", 
+					  "type" : "bahamutboom", 
+					  "offset" : [0,2], 
+					  "fuzzAngle" : 20, 
+					  "inheritDamageFactor" : 1, 
+					  "config" : {"damageKind" : "poison"}
+					}
+				  ]
+				}
+			  }
+			]
+		  }
+		}
+	  ]
+	}
+  ]
+}

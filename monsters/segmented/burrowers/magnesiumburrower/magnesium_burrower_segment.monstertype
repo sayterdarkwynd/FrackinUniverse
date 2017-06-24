@@ -1,0 +1,205 @@
+{
+  "type" : "magnesium_burrower_segment",
+  "shortdescription" : "A segment of a camoflauged worm burrowing through the earth",
+  "description" : "A segment of a camoflauged burrowing worm",
+ 
+ "categories" : [ "magnesium_burrower_segment" ],
+  "parts" : [ "body" ],
+
+  "animation" : "magnesium_burrower_segment.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monstersegment.lua",
+      "/monsters/segmented/burrowers/burrower.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    "renderLayer" : "foregroundEntity",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [],
+
+      "periodicActions" : [],
+
+      "approachActions" : [],
+
+      "followActions" : [],
+
+      "wanderActions" : [],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "magnesiumdeath",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+      
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+      "damage" : 14,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+      "movementSettings" : {
+
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0.75,
+      "airForce" : 35,
+      "flySpeed" : 25
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.0,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : -1
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 999
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 750
+        },
+        "protection" : {
+          "baseValue" : 50.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.75
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.75
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.75
+        },
+        "shadowResistance" : {
+         "baseValue" : 0.25 
+        },
+        "shadowStatusImmunity" : {
+         "baseValue" : 0.25
+        },
+        "cosmicStatusImmunity" : { 
+         "baseValue" : 0.0 
+        },
+        "cosmicResistance" : { 
+         "baseValue" : 0.0 
+        },
+        "radioactiveStatusImmunity" : { 
+        "baseValue" : 0.5
+        },
+        "radioactiveResistance" : { 
+        "baseValue" : 0.75
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "segments" : 0,
+    "segmentMonster" : "magnesium_burrower_segment",
+    "radius" : 1.2,
+    "burrowProjectile" : "dirtburrow",
+    "burrowBurstProjectile" : "dirtburrowburst"
+  }
+}

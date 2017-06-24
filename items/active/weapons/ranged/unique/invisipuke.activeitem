@@ -1,0 +1,97 @@
+{
+  "itemName" : "invisipuke",
+  "price" : 160,
+  "inventoryIcon" : "invisipuke.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "PUKEY!
+^yellow;vomit!^reset;",
+  "shortdescription" : "Invisipuke!",
+  "category" : "Bio Weapon",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Gore Chucker",
+  "itemTags" : ["weapon","ranged","assaultrifle", "bioweapon", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "invisipuke.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/bloodvomit1.ogg", "/sfx/projectiles/bloodvomit2.ogg", "/sfx/projectiles/bloodvomit3.ogg", "/sfx/projectiles/bloodvomit4.ogg", "/sfx/projectiles/bloodvomit5.ogg", "/sfx/projectiles/bloodvomit6.ogg", "/sfx/projectiles/bloodvomit7.ogg" ]
+    }
+  },
+  
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    
+  "baseOffset" : [0.4, 0.2],
+  "muzzleOffset" : [0, 0.525],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.08,
+    "baseDps" : 5.7,
+    "energyUsage" : 20.0,
+    "inaccuracy" : 0.02,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "pusvomit3",
+    "projectileParameters" : { 
+      "speed" : 30,
+      "knockback" : 0
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.01,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 4,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

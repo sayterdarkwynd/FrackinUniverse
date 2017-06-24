@@ -20,6 +20,11 @@
     "value": "Common Handheld Grenade Launcher"
   },
   {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
     "op": "remove",
     "path": "/primaryAbility/fireTime/0"
   },
@@ -72,6 +77,63 @@
     "op": "replace",
     "path": "/primaryAbility/stances/cooldown/weaponRotation",
     "value": 5
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": [
+          "radioactiveplasmagrenade",
+          "radioactiveplasmaimpactgrenade",
+          "radioactivestickygrenade",
+          "radioactiveproximitymine"
+        ]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": [
+          "shadowplasmagrenade",
+          "shadowplasmaimpactgrenade",
+          "shadowstickygrenade",
+          "shadowproximitymine"
+        ]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": [
+          "cosmicplasmagrenade",
+          "cosmicplasmaimpactgrenade",
+          "cosmicstickygrenade",
+          "cosmicproximitymine"
+        ]
+      }
+    }
   },
   {
     "op": "replace",

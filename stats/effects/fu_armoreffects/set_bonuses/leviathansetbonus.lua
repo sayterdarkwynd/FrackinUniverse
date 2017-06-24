@@ -1,5 +1,5 @@
 setName="fu_leviathanset"
-setStatEffects={"leviathansetbonuseffect", "swimboost1"}
+setStatEffects={"leviathansetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

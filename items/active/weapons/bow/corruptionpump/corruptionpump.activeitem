@@ -1,0 +1,72 @@
+{
+  "itemName" : "corruptionpump",
+  "level" : 5,
+  "price" : 1500,
+  "inventoryIcon" : "corruptionpumpicon.png",
+  "maxStack" : 1,
+  "tooltipKind" : "bow2",
+  "rarity" : "Legendary",
+  "category" : "uniqueWeapon",
+  "description" : "Perfect for biowarfare",
+  "shortdescription" : "Corruption Pump",
+  "itemTags" : ["weapon"],
+
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "corruptionpump.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [1.0, -0.25]
+    }}}},
+    "sounds" : {
+      "draw" : [ ],
+      "release" : [ "/sfx/gun/pumpgun_blast1.ogg", "/sfx/gun/pumpgun_blast2.ogg", "/sfx/gun/pumpgun_blast3.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/pumpgun_blast1.ogg", "/sfx/gun/pumpgun_blast2.ogg", "/sfx/gun/pumpgun_blast3.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [2.5, 0.25],
+
+    "energyPerShot" : 45,
+
+    "cooldownTime" : 0.35,
+    "inaccuracy" : 0.01,
+
+    "drawFrameSelector" : "pollenpumpImageSelector",
+    "drawPowerMultiplier" : "pollenpumpPowerMultiplier",
+    "drawSpeedMultiplier" : "pollenpumpTimeMultiplier",
+
+    "projectileType" : "corruptpumpgas",
+    "powerProjectileType" : "corruptpumpgasspray",
+    "powerProjectileTime" : [1.0, 60],
+    "projectileParameters" : {
+      "speed" : 5,
+      "power" : 6.5
+    },
+
+    "drawArmFrames" : ["swim.2", "swim.2", "swimIdle.1"],
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -15
+      },
+      "fire" : {
+        "duration" : 0.3,
+
+        "frontArmFrame" : "swim.2"
+      }
+    }
+  },
+
+  "critChance" : 7,
+  "critBonus" : 7,
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

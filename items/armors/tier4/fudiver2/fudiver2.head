@@ -5,9 +5,9 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus: 
-^cyan;Immunity: Acid, Poison, Oxygen^reset;
+^cyan;Immunity: Acid, Poison, Bio-ooze, Oxygen^reset;
 ^#e43774;Swim Boost 2^reset;
-^green;Increased stats on Oceans/Tidewater biomes^reset;",
+^green;+8% Crit, +15% Power, +5% Speed (Ocean/Tidewater biomes)^reset;",
   "shortdescription" : "Kraken Helmet",
   "category" : "^#e43774;Upgradeable Armor^reset;",
   "tooltipKind" : "armornew2",
@@ -17,6 +17,7 @@
   "mask" : "mask.png",
 
   "level" : 4,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fudiverhead2" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,7 +40,7 @@
       "amount" : 4
     }
   ],
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "statusEffects" : [
     "headlamp3",
     "krakensetbonus",

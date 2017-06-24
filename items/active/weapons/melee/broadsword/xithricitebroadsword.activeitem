@@ -4,12 +4,13 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Powered by cosmic dust.",
+  "description" : "Powered by cosmic dust.
+^cyan;Inflicts Vulnerability^reset;",
   "shortdescription" : "Cosmic Broadsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","xithricite"],
+  "itemTags" : ["weapon","melee","broadsword","xithricite", "upgradeableWeapon"],
   "inventoryIcon" : "xithricitebroadsword.png",
 
   "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
@@ -27,15 +28,22 @@
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.7,
-    "baseDps" : 9.95,
+    "baseDps" : 6.95,
     "damageConfig" : {
-      "knockback" : 10,
+      "knockback" : 0,
        "statusEffects" : [ "defenseboostneg20" ],
        "damageSourceKind" : "cosmicbroadsword"
     }
   },
 
-  "altAbilityType" : "giantsword",
+  "altAbilityType" : "fuwaterslash",
+  "altAbility" : {
+    "name" : "Cosmic Bursts",
+    "projectileType" : "cosmicorbxithricite",
+    "energyUsage" : 60,
+    "cooldownTime" : 2.5,
+    "baseDamage" : 3
+  },
 
   "critChance" : 3,
   "critBonus" : 8,

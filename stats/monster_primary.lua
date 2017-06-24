@@ -42,18 +42,28 @@ function applyDamageRequest(damageRequest)
   end
 
   local hitType = damageRequest.hitType
-  local damageSourceKind = damageRequest.damageSourceKind
-    local elementalStat = root.elementalResistance(damageSourceKind)
-    local resistance = status.stat(elementalStat)
-    damage = damage - (resistance * damage)
-    if resistance ~= 0 and damage > 0 then
-      hitType = resistance > 0 and "weakhit" or "stronghit"
-    end
+  
+  
+  local elementalStat = root.elementalResistance(damageRequest.damageSourceKind)
+  local resistance = status.stat(elementalStat)
+  damage = damage - (resistance * damage)
+  if resistance ~= 0 and damage > 0 then
+    hitType = resistance > 0 and "weakhit" or "stronghit"
+  end
 
   local healthLost = math.min(damage, status.resource("health"))
   if healthLost > 0 and damageRequest.damageType ~= "Knockback" then
     status.modifyResource("health", -healthLost)
-    self.damageFlashTime = 0.07
+    if hitType == "stronghit" then
+      self.damageFlashTime = 0.07		
+      self.damageFlashType = "strong"		
+    elseif hitType == "weakhit" then		
+      self.damageFlashTime = 0.07		
+      self.damageFlashType = "weak"		
+    else		
+      self.damageFlashTime = 0.07		
+      self.damageFlashType = "default"		
+    end 
   end
 
   status.addEphemeralEffects(damageRequest.statusEffects, damageRequest.sourceEntityId)
@@ -71,14 +81,14 @@ function applyDamageRequest(damageRequest)
   if not status.resourcePositive("health") then
     hitType = "kill"
     --bows should cause hunting drops regardless of damageKind
-    if string.find(damageSourceKind, "bow") then
-      string.gsub(damageSourceKind, "fire", "")
-      string.gsub(damageSourceKind, "ice", "")
-      string.gsub(damageSourceKind, "electric", "")
-      string.gsub(damageSourceKind, "poison", "")
-      string.gsub(damageSourceKind, "shadow", "")
-      string.gsub(damageSourceKind, "radioactive", "")
-      string.gsub(damageSourceKind, "cosmic", "")
+    if string.find(elementalStat, "bow") then
+      string.gsub(elementalStat, "fire", "")
+      string.gsub(elementalStat, "ice", "")
+      string.gsub(elementalStat, "electric", "")
+      string.gsub(elementalStat, "poison", "")
+      string.gsub(elementalStat, "shadow", "")
+      string.gsub(elementalStat, "radioactive", "")
+      string.gsub(elementalStat, "cosmic", "")
     end
   end
   return {{
@@ -89,7 +99,7 @@ function applyDamageRequest(damageRequest)
     healthLost = healthLost,
     hitType = hitType,
     kind = "Normal",
-    damageSourceKind = damageSourceKind,
+    damageSourceKind = damageRequest.damageSourceKind,
     targetMaterialKind = status.statusProperty("targetMaterialKind")
   }}
 end
@@ -116,7 +126,7 @@ function update(dt)
     local curYPosition = mcontroller.yPosition()
     local yPosChange = curYPosition - (self.lastYPosition or curYPosition)
 
-	if self.fallDistance > minimumFallDistance and -self.lastYVelocity > minimumFallVel and mcontroller.onGround() then
+	if self.fallDistance > minimumFallDistance and -self.lastYVelocity > minimumFallVel and mcontroller.onGround() and not inLiquid() then
 	  --fall damage is proportional to max health, with 100.0 being the player's standard
 	  local healthRatio = status.stat("maxHealth") / 100.0
 
@@ -144,6 +154,11 @@ function update(dt)
 
   if self.damageFlashTime > 0 then
     local color = status.statusProperty("damageFlashColor") or "ff0000=0.85"
+    if self.damageFlashType == "strong" then		
+      color = status.statusProperty("strongDamageFlashColor") or "ffffff=1.0" or color		
+    elseif self.damageFlashType == "weak" then		
+      color = status.statusProperty("weakDamageFlashColor") or "000000=0.0" or color		
+    end    
     status.setPrimaryDirectives(string.format("fade=%s", color))
   else
     status.setPrimaryDirectives()
@@ -158,7 +173,17 @@ function update(dt)
     self.applyKnockback = nil
   end
 
-  if mcontroller.position()[2] < self.worldBottomDeathLevel then
+  if mcontroller.atWorldLimit(true) then
     status.setResourcePercentage("health", 0)
   end
+end
+
+function inLiquid() --no fall damage while submerged in liquids
+    local excludeLiquidIds={[49] = true,[50] = true,[62] = true,[63] = true,[64] = true,[66] = true} --gases are not liquids.
+    local liquidID = 0
+    if mcontroller.liquidPercentage() > 0.1 then
+    liquidID = mcontroller.liquidId()
+       liquidID = excludeLiquidIds[liquidID] and 0 or liquidID 
+    end
+    return liquidID > 0
 end

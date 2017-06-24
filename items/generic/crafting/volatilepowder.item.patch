@@ -1,3 +1,10 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "distortionsphere2_tech", "k3rifle" ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "distortionsphere2_tech" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "k3rifle" }
+  ]
 ]

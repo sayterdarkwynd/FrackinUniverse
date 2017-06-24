@@ -1,0 +1,63 @@
+{
+  "itemName" : "shadowstring",
+  "price" : 960,
+  "inventoryIcon" : "shadowstringicon.png",
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "The darkest bow on the market",
+  "shortdescription" : "Shadowstring",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 5,
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "shadowstringfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "projectileType" : "shadowarrow",
+    "powerProjectileType" : "chargedshadowarrow",
+    "projectileParameters" : {
+      "power" : 6.5
+    }
+  },
+
+  "altAbilityType" : "tripleshotshadow",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "chargedshadowarrow",
+    "projectileParameters" : {
+          "power" : 6.5
+    },
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
+  },
+
+  "critChance" : 5,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

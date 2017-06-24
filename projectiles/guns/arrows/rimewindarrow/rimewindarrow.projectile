@@ -1,0 +1,24 @@
+{
+  "projectileName" : "rimewindarrow",
+  "physics" : "arrownosticky",
+  "image" : "rimewindarrow.png",
+  "animationCycle" : 0.25,
+  "lightColor" : [96, 171, 191],
+  "frameNumber" : 1,
+  "emitters" : [ "arrowfrost" ],
+  "damageKindImage" : "/interface/statuses/ice.png",
+  "damageKind" : "icebow",
+  "damageType" : "NoDamage",
+  "power" : 10,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceexplosion4/iceexplosion4.config"
+    }
+  ]
+}

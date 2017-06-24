@@ -4,7 +4,7 @@ require "/scripts/interp.lua"
 function init()
   self.itemList = "itemScrollArea.itemList"
 
-  self.upgradeLevel = config.getParameter("upgradeLevel")
+  self.upgradeLevel = 8
 
   self.upgradeableWeaponItems = {}
   self.selectedItem = nil
@@ -19,10 +19,11 @@ function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
 
   local prevValue = root.evalFunction("weaponEssenceValue", itemConfig.parameters.level or itemConfig.config.level or 1)
-  local newValue = root.evalFunction("weaponEssenceValue", self.upgradeLevel)
+  local newValue = (root.evalFunction("weaponEssenceValue", self.upgradeLevel) * (itemConfig.parameters.level or itemConfig.config.level or 1)/3) + 200
 
   return math.floor(newValue - prevValue)
 end
+
 
 function populateItemList(forceRepop)
   local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon")
@@ -91,6 +92,13 @@ function itemSelected()
   end
 end
 
+function isArmor()
+  if (upgradedItem.parameters.category == "legarmor") or (upgradedItem.parameters.category == "chestarmor") or (upgradedItem.parameters.category == "headarmor") then
+     isArmorSet = 1
+  return isArmorSet
+  end
+end
+
 function doUpgrade()
   if self.selectedItem then
     local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
@@ -102,15 +110,147 @@ function doUpgrade()
         local consumedCurrency = player.consumeCurrency("essence", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
-                  local itemConfig = root.itemConfig(upgradedItem)
-          upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
-          upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) + 10
-          if upgradedItem.parameters.level > 10 then
-            upgradedItem.parameters.level = 10
-          end
+        
+          local itemConfig = root.itemConfig(upgradedItem)  
+		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
+		  if (itemConfig.parameters.baseDps) or (itemConfig.config.baseDps) then
+		    upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/20) )  -- increase DPS a bit
+		  end
+		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
+		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
+
+
+	 -- set Rarity
+	 if upgradedItem.parameters.level ==4 then
+	   upgradedItem.parameters.rarity = "uncommon"
+	 elseif upgradedItem.parameters.level == 5 then
+	   upgradedItem.parameters.rarity = "rare"
+	 elseif upgradedItem.parameters.level == 6 then
+	   upgradedItem.parameters.rarity = "legendary"
+	 elseif upgradedItem.parameters.level >= 7 then
+	   upgradedItem.parameters.rarity = "essential"	   
+	 end
+	 
+
+	 
+	 -- is it a tool?
+	 		if (itemConfig.config.category == "Tool") or (itemConfig.config.category == "tool") then
+	 		
+	 		  -- parasol
+	 		   if upgradedItem.parameters.fallingParameters then
+	 		     upgradedItem.parameters.fallingParameters.airForce = (itemConfig.parameters.airForce or itemConfig.config.airForce or 1) * 1.15 
+	 		     upgradedItem.parameters.fallingParameters.runSpeed = (itemConfig.parameters.runSpeed or itemConfig.config.runSpeed or 1) * 1.15 
+	 		     upgradedItem.parameters.fallingParameters.walkSpeed = (itemConfig.parameters.walkSpeed or itemConfig.config.walkSpeed or 1) * 1.15 
+	 		   end
+	 		   if upgradedItem.parameters.maxFallSpeed then
+	 		     upgradedItem.parameters.maxFallSpeed = (itemConfig.parameters.maxFallSpeed or itemConfig.config.maxFallSpeed or 1) - 4 
+	 		   end	 		
+	 		
+	 		    -- hoe, chainsaw, etc
+			    if upgradedItem.parameters.fireTime then
+			      upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
+			    end
+			    if upgradedItem.parameters.blockRadius then
+			      upgradedItem.parameters.blockRadius = (itemConfig.parameters.blockRadius or itemConfig.config.blockRadius or 1) + 1
+			    end	
+			    if upgradedItem.parameters.altBlockRadius then
+			      upgradedItem.parameters.altBlockRadius = (itemConfig.parameters.altBlockRadius or itemConfig.config.altBlockRadius or 1) + 1
+			    end			    
+			 end
+			  
+                  -- is it a shield?
+			  if (itemConfig.config.category == "shield") then
+			    if upgradedItem.parameters.cooldownTime then
+			      upgradedItem.parameters.cooldownTime = (itemConfig.parameters.cooldownTime or itemConfig.config.cooldownTime or 1) * 0.95 
+			    end
+			    if upgradedItem.parameters.perfectBlockTime then
+			      upgradedItem.parameters.perfectBlockTime = (itemConfig.parameters.perfectBlockTime or itemConfig.config.perfectBlockTime or 1) * 1.05
+			    end
+			    if upgradedItem.parameters.baseShieldHealth then
+			      upgradedItem.parameters.baseShieldHealth = (itemConfig.parameters.baseShieldHealth or itemConfig.config.baseShieldHealth or 1) * 1.15
+			    end
+			  end
+          upgradedItem.parameters.primaryAbility = {}   
+          
+                  -- is it a staff or wand?
+			  if (itemConfig.config.category == "staff") or (itemConfig.config.category == "wand") then
+			    upgradedItem.parameters.primaryAbility = {} 
+			    if (itemConfig.config.baseDamageFactor) then
+			      upgradedItem.parameters.baseDamageFactor = (itemConfig.parameters.baseDamageFactor or itemConfig.config.baseDamageFactor or 1) * 1.15 
+			    end
+--			    if (itemConfig.config.primaryAbility.energyCost) then
+--			      upgradedItem.parameters.primaryAbility.energyCost = (itemConfig.parameters.primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost or 1) * 1.08
+--			    end
+--			    if (itemConfig.config.primaryAbility.maxCastRange) then
+--			      upgradedItem.parameters.primaryAbility.maxCastRange = (itemConfig.parameters.primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange or 1) * 1.15
+--			    end		    
+			  end 
+			  
+                  -- magnorbs
+                  if (upgradedItem.parameters.orbitRate) then
+                    upgradedItem.parameters.shieldKnockback = (itemConfig.parameters.shieldKnockback or itemConfig.config.shieldKnockback or 1) + 1 
+                    upgradedItem.parameters.shieldEnergyCost = (itemConfig.parameters.shieldEnergyCost or itemConfig.config.shieldEnergyCost or 1) + 1 
+                    upgradedItem.parameters.shieldHealth = (itemConfig.parameters.shieldHealth or itemConfig.config.shieldHealth or 1) + 1 
+                  end  
+                  
+                  -- boomerangs and other projectileParameters based things (magnorbs here too , chakrams)
+		  if (upgradedItem.parameters.projectileParameters) then   
+		    upgradedItem.parameters.projectileParameters = { 
+		        power = itemConfig.config.primaryAbility.power + (upgradedItem.parameters.level/7),
+		        controlForce = itemConfig.config.primaryAbility.controlForce + (upgradedItem.parameters.level)
+		      }
+		  end   
+	  
+		  if (itemConfig.config.primaryAbility) then	 
+			  
+		    -- beams and miners
+			if (itemConfig.config.primaryAbility.beamLength) then
+			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
+			end
+		   -- wands/staves	
+			if (itemConfig.config.primaryAbility.maxCastRange) then
+			  upgradedItem.parameters.primaryAbility = {
+			    maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
+			  }
+			end	
+			if (itemConfig.config.primaryAbility.energyCost) then
+			  upgradedItem.parameters.primaryAbility = {
+			    energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3)
+			  }
+			end			
+		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
+			
+			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) then
+			  if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") then
+			    upgradedItem.parameters.primaryAbility.fireTime = upgradedItem.parameters.primaryAbility.fireTime
+			  else
+			    local fireTimeBase = itemConfig.config.primaryAbility.fireTime
+			    local fireTimeMod = ( upgradedItem.parameters.level/10 * 0.5)
+			    local fireTimeFinal = fireTimeBase * fireTimeMod 
+			    local fireTimeFinal2 = fireTimeBase - fireTimeFinal
+			    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2 
+			  end
+			end
+			
+		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
+			if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
+			    local baseDpsBase = itemConfig.config.primaryAbility.baseDps
+			    local baseDpsMod = (upgradedItem.parameters.level/20)
+			    local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
+			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
+			end			
+		  end
+	  
+	  sb.logInfo("Upgrading weapon : ")	  
+          sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
+          
           if itemConfig.config.upgradeParameters then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
           end
+          if (itemConfig.config.upgradeParameters2) and (upgradedItem.parameters.level) >= 5 then
+            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+          end
+          
         end
         player.giveItem(upgradedItem)
       end

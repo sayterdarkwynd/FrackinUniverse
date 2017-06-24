@@ -1,0 +1,106 @@
+{
+  "itemName" : "xithricitebow",
+  "price" : 960,
+  "inventoryIcon" : "xithricitebowicon.png",
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "Interdimensional Hunting",
+  "shortdescription" : "Xithricite Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 6,
+
+  "animation" : "/items/active/weapons/bow/energybow.animation",
+  "animationParts" : {
+    "bow" : "xithricitebow.png",
+    "bowFullbright" : "xithricitebowfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "bow" : { "properties" : {
+        "offset" : [0, 0]
+      }},
+      "bowFullbright" : { "properties" : {
+        "offset" : [0, 0]
+      }}
+    }},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/melee/laser_weapon_swing2.ogg" ],
+      "perfectRelease" : [ "/sfx/melee/laser_weapon_swing1.ogg" ]
+    }
+  },
+  "elementalType" : "cosmic",
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "drawSpeedMultiplier" : "constant",
+    "projectileType" : "cosmicarrow",
+    "powerProjectileType" : "chargedcosmicarrow",
+    "projectileParameters" : {
+      "power" : 8
+    }
+  },
+
+  "altAbilityType" : "tripleshot",
+  "altAbility" : {
+    "name" : "Chaos Arrow",
+    "energyPerShot" : 100,
+    "drawSpeedMultiplier" : "constant",
+    "projectileType" : "cosmicarrow",
+    "powerProjectileType" : "cosmicarrow",
+    "projectileParameters" : {
+      "power" : 4,
+      "speed" : 100,
+      "actionOnReap" : [
+        {
+          "action" : "projectile",
+          "type" : "chargedcosmicarrow",
+          "angleAdjust" : -50,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedcosmicarrow",
+          "angleAdjust" : -25,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedcosmicarrow",
+          "angleAdjust" : 0,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedcosmicarrow",
+          "angleAdjust" : 25,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedcosmicarrow",
+          "angleAdjust" : 50,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        }
+      ]
+    },
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
+  },
+
+  "critChance" : 6,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

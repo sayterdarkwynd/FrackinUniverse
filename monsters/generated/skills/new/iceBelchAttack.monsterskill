@@ -1,0 +1,42 @@
+{
+  "name" : "iceBelchAttack",
+  "label" : "GAS BELCH",
+  "image" : "/monsters/generated/skills/defaultpoison.png",
+
+  "config" : {
+    "hostileActions" : [ 
+      {
+        "name" : "action-fire",
+        "cooldown" : [3, 5],
+        "parameters" : {
+          "skillName" : "iceBelchAttack",
+
+          "maximumRange" : 8,
+          "minimumRange" : 1,
+          "windupEffect" : "castice",
+          
+          "fireDelay" : 0.3,
+          "projectileType" : "icegas",
+          "projectileParameters" : {
+            "power" : 5.5,
+            "speed" : 12,
+            "timeToLive" : 4
+          },
+          "power" : 5,
+          "aimAtTarget" : true,
+
+          "projectileCount" : 4,
+          "inaccuracy" : 0.1,
+          "projectileInterval" : 0.2
+        }
+      }
+    ]
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/pumpgun_blast1.ogg" ]
+    }
+  }
+}
+

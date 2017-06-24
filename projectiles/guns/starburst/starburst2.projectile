@@ -1,0 +1,46 @@
+{
+  "projectileName" : "starburst2",
+  "image" : "starburst.png",
+  "physics" : "laser",
+  "level" : 3,
+  "animationCycle" : 0.7,
+  "damageKindImage" : "icon.png",
+  "fullbright" : true,
+  "frameNumber" : 7,
+  "speed" : 45,
+  "timeToLive" : 0.7,
+  "bounces" : 0,
+  "power" : 8,
+  "lightColor" : [155, 147, 27],
+  "piercing" : false,
+  "damageKind" : "electric",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "lunarimicro",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    }      
+  ],    
+  "periodicActions" : [
+    {
+      "time" : 0.08,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "lunarimicro2",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },  
+    {
+      "time" : 0.3,
+      "loop" : true,		    
+      "action" : "config",
+      "file" : "/projectiles/explosions/teslaboom/teslaboomsmall.config",
+      "config" : { "power" : 6 }
+    } 	   
+  ],
+
+  "damagePoly" : [ [-18, 0], [-6, -6], [0, -18], [6, -6], [18, 0], [6, 6], [0, 18], [-6, 6] ]
+
+}

@@ -5,13 +5,14 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A cloud-laying ice weapon
-^yellow;Area-Damage weapon^reset;",
+^yellow;Blasts cause targets to slip^reset;
+^cyan;Alt-fire freezes enemies^reset;",
   "shortdescription" : "Coldsnap",
-  "category" : "Ice Cannon",
+  "category" : "Shotgun",
   "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Ice Cannon",
-  "itemTags" : ["weapon","ranged","rocketlauncher", "isogen" ],
+  "itemTags" : ["weapon","ranged","shotgun", "isogen", "upgradeableWeapon" ],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -37,18 +38,18 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.5,
-    "baseDps" : 6.8,
-    "energyUsage" : 34.0,
-    "inaccuracy" : 0,
+    "fireTime" : 0.8,
+    "baseDps" : 8.8,
+    "energyUsage" : 40.0,
+    "inaccuracy" : 0.08,
 
-    "projectileCount" : 1,
+    "projectileCount" : 8,
     "fireType" : "auto",
 
-    "projectileType" : "fufreezecannonshot",
+    "projectileType" : "iceshardsmall",
     "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 5
+      "speed" : 55,
+      "knockback" : 8
     },
 	  "stances" : {
 	    "idle" : {

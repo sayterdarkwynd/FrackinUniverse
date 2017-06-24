@@ -1,0 +1,37 @@
+{
+  "projectileName" : "weakenzone",
+  "physics" : "laser",
+  "timeToLive" : 10,
+  "image" : "weakenzone.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 12,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 9.7,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_disappear1.ogg" ]
+    }
+  ],
+  "actionOnReap" : [],
+  "speed" : 0,
+  "power" : 0,
+
+  "onlyHitTerrain" : true,
+  "persistentStatusEffects" : [ "defenseboostneg35monster" ],
+  "statusEffectArea" : [ [-6.0, 0], [-4.0, -4.0], [0, -6.0], [4.0, -4.0], [6.0, 0], [4.0, 4.0], [0, 6.0], [-4.0, 4.0] ],
+
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : ["/projectiles/activeitems/staff/staffprojectile.lua"],
+
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+}

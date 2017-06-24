@@ -1,5 +1,6 @@
 {
   "itemName" : "mobiuschest",
+  "price" : 700,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
@@ -9,7 +10,7 @@
   "shortdescription" : "Sentry Plate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -32,6 +33,7 @@
   ],
 
   "level" : 5,
+  "collectablesOnPickup" : { "fu_armorbalanced" : "mobiuschest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

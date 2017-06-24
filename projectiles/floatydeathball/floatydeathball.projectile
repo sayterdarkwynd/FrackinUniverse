@@ -1,9 +1,8 @@
 {
   "projectileName" : "floatydeathball",
-  "physics" : "floatydeath",
-  "speed" : 2,
-  "bounces" : 24,
-  "timeToLive" : 20,
+  "physics" : "laser",
+  "speed" : 15,
+  "timeToLive" : 10,
   "image" : "floatydeathball.png",
   "animationCycle" : 1.5,
   "animationLoops" : false,
@@ -11,25 +10,37 @@
   "flippable" : true,
   "fullbright" : true,
   "scripts" : [ "homingarrow.lua" ],
-  "baseHomingControlForce" : 9,
+  "baseHomingControlForce" : 2,
   "lightColor" : [160, 160, 0],
   "frameNumber" : 2,
+  "emitters" : [ "tinyrocketsmoke" ],
   "periodicActions" : [
     {
-      "time" : 0.09,
+      "time" : 0.14,
       "loop" : true,
       "action" : "projectile",
-      "type" : "plasmabullet",
-      "inheritDamageFactor" :0.25,
+      "type" : "flamethrowerflameff",
+      "inheritDamageFactor" :1,
       "fuzzAngle" : 360,
-      "projectileParameters" : { "damageKind" : "fireplasma" }
+      "projectileCount" : 4,
+      "projectileParameters" : { "damageSourceKind" : "fireplasma", "speed" : 20 }
+   },  
+    {
+      "time" : 0.25,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "magnorbhellfire2",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 30, "damageSourceKind" : "fireplasma" }
    }
   ],
+  
   "actionOnReap" : [
     {
-      "action" : "config",
-      "file" : "/projectiles/explosions/firetitanexplosion/firetitanexplosion.config"
-    },    
+          "action" : "config",
+          "file" : "/projectiles/explosions/hellfireexplosion/hellfireexplosion.config"
+    },   
     {
       "action" : "sound",
       "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]

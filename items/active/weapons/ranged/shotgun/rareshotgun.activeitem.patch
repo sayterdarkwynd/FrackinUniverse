@@ -15,6 +15,11 @@
     "value": 1140
   },
   {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
     "op": "replace",
     "path": "/description",
     "value": "Fires a spread that's lethal at close and mid range."
@@ -114,6 +119,84 @@
     "op": "replace",
     "path": "/primaryAbility/stances/cooldown/weaponRotation",
     "value": 5
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "radioactiveplasma",
+        "projectileParameters": {
+          "damageKind": "radioactiveplasmashotgun",
+          "statusEffects": [
+            "radiationburn"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_shotgun1.ogg",
+        "/sfx/gun/plasma_shotgun2.ogg",
+        "/sfx/gun/plasma_shotgun3.ogg",
+        "/sfx/gun/plasma_shotgun4.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "shadowplasma",
+        "projectileParameters": {
+          "damageKind": "shadowplasmashotgun",
+          "statusEffects": [
+            "shadowgasfx"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_shotgun1.ogg",
+        "/sfx/gun/plasma_shotgun2.ogg",
+        "/sfx/gun/plasma_shotgun3.ogg",
+        "/sfx/gun/plasma_shotgun4.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "cosmicplasma",
+        "projectileParameters": {
+          "damageKind": "cosmicplasmashotgun",
+          "statusEffects": [
+            "percentarmorboostneg2"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_shotgun1.ogg",
+        "/sfx/gun/plasma_shotgun2.ogg",
+        "/sfx/gun/plasma_shotgun3.ogg",
+        "/sfx/gun/plasma_shotgun4.ogg"
+      ]
+    }
   },
   {
     "op": "replace",

@@ -10,7 +10,7 @@
 
   "dropPools" : [
     {
-      "default" : "slimemonsterlargeTreasure",
+      "default" : "ffbasicTreasure",
       "bow" : "huntingminiboss",
       "brain" : "brain"
     }
@@ -60,7 +60,8 @@
           "name" : "approach-fly",
           "parameters" : {
             "targetOffset" : [0,4],
-            "minRange" : 4
+            "minRange" : 4,
+            "maxRange" : 15
           }
         }
       ],
@@ -75,7 +76,8 @@
           "name" : "approach-fly",
           "parameters" : {
             "targetOffset" : [0,4],
-            "minRange" : 4
+            "minRange" : 4,
+            "maxRange" : 15
           }
         }
       ],
@@ -107,9 +109,11 @@
 
       "concurrentHostileActions" : [ ]
     },
-    "skillCount" : 2,
-    "baseSkills" : [ 
+    "skillCount" : 3,
+    "baseSkills" : [ "raptorswoopAttack", "divebombAttack" ],
+    "specialSkills" : [
     "flyingSwoopAttack",
+    "pigeonSwoopAttack",
     "acidicSpitAttack", 
     "acidSprayAttack",
     "beamBurstAttack", 
@@ -168,7 +172,28 @@
     "soundwaveAttack2",
     "windBlastAttack2",
     "windBlastAttack3",
-    "windBlastAttack4"
+    "windBlastAttack4",
+    "shadowbeastAttack",
+    "cageWall",
+    "crystalAttack",
+    "flamingAuraAttack",
+    "glowcritterAttack",
+    "glowcritterAttack2",
+    "goopAttack",
+    "gravAuraAttack",
+    "iceAuraAttack",
+    "iceBelchAttack",
+    "kluexAuraAttack",
+    "kluexBlastAttack",
+    "poisonAuraAttack",
+    "pullAuraAttack",
+    "pushAuraAttack",
+    "roarAttack",
+    "seedAttack",
+    "shitShowerAttack",
+    "shockAuraAttack",
+    "spinAssaultAttack",
+    "steamAttack"
     ],
 
     "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
@@ -231,7 +256,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 124
+          "baseValue" : 164
         },
         "protection" : {
           "baseValue" : 0.0

@@ -1,5 +1,12 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-    "kirhostier1chest", "kirhostier1head", "kirhostier1pants", "heavypipe"
-    ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "kirhostier1chest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "kirhostier1head" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "kirhostier1pants" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "heavypipe" }
+  ]
 ]

@@ -6,8 +6,8 @@
   "rarity" : "uncommon",
   "description" : "Set Bonus:
 ^cyan;+21% Electric, 9% Physical Resist^reset;
-^e43774;Immune: Zero-G, Burning, Proto Poison, Oxygen, Gas ^reset;
-^green;+200% Mining Laser damage^reset;",   
+^#e43774;Immune: Zero-G, Burning, Proto Poison, Gas ^reset;
+^green;+200% Mining Laser damage, Oxygen Tank^reset;",  
   "shortdescription" : "Spacefarer Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -16,8 +16,9 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  
+    "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "spacefarerhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -56,7 +57,5 @@
       "stat" : "physicalResistance",
       "amount" : 0.03
     }
-  ],
-  
-  "collectablesOnPickup" : { "fu_armorsmith" : "spacefarerhead" }
+  ]
 }

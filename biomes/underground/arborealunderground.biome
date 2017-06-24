@@ -3,7 +3,7 @@
   "friendlyName" : "Arboreal Underground",
 
   "spawnProfile" : {
-    "groups" : [
+    "groups" : [     
       {
         "select" : 2,
         "pool" : [ 
@@ -61,6 +61,20 @@
     "grassMod" : [ "mossgrass2" ],
     "grassModDensity" : 0.9,
     "items" : [
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },    
            {
              "mode" : "ceiling",
              "priority" : 1.0,

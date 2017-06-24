@@ -6,6 +6,7 @@
   "rarity" : "Uncommon",
   "description" : "Set Bonus: 
 ^cyan;+15% Physical Resist^reset;
+^green;+15% Damage, +5% Crit Chance (Bow/Crossbow)^reset;
 ^#e43774;Immunity: Acid, Tar, Stings^reset;",
   "shortdescription" : "Monster Plate Helmet",
   "category" : "headarmour",
@@ -16,6 +17,7 @@
   "mask" : "mask.png",
 
   "level" : 4,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fumonsterplatedhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,7 +40,7 @@
       "amount" : 4
     }
   ],
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "statusEffects" : [
     "monsterplatesetbonus",
     {

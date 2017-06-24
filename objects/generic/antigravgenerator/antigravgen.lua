@@ -12,9 +12,6 @@ function update(dt)
 		storage.state=true
 	end
 	if storage.state then
-		--isn_projectileAllInRangeParams("fu_genericBlankProjectile",30,{"statusEffects":["isn_atmosprotection"]})
-		--isn_effectAllInRange("lowgrav",30)
 		isn_effectAllInRange("antigravgenfield",30)
-	end
-	--physics.setForceEnabled("jumpForce", storage.state)		
+	end	
 end

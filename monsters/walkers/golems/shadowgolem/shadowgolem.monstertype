@@ -49,10 +49,41 @@
         }       
       ],
 
-      "hostileActions" : [  
+      "hostileActions" : [ 
+      
+         {
+          "name" : "action-trail-charge",
+          "cooldown" : 9.0,
+          "parameters" : {
+            "maximumRange" : 20,
+            "minimumRange" : 5,
+            "windupTime" : 0.5,
+            "winddownTime" : 0.5,
+            "chargeSpeed" : 15,
+            "chargeControlForce" : 200,
+            "chargeTime" : 1.5,
+            "aimAtTarget" : true,
+            "wallKnockback" : false,
+            "knockbackThreshold": 3,
+
+
+            "projectileType" : "flyswarm",
+            "projectileParameters" : {
+              "speed" : 0,
+              "power" : 1,
+              "damageSourceKind" : "shadow"
+            },
+            "projectileInterval" : 0.01,
+            "offset" : [0,-1],
+            "power" : 0,
+            "scalePower" : false
+
+          }
+        },     
+
         {
           "name" : "action-charge",
-          "cooldown" : 9.0,
+          "cooldown" : 4.0,
           "parameters" : {
             "maximumRange" : 20,
             "windupState" : "chargewindup",

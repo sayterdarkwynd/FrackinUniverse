@@ -198,15 +198,17 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnoon", 1.0) -- send player a warning
 		    self.timerRadioMessage = 10  
 		    self.usedNoon = 1
+		    self.situationPenalty = config.getParameter("situationPenalty",0)
 		  end
         elseif daytime and lightLevel >= 15 then
                   if not self.usedSunrise then
 		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertsunrise", 1.0) -- send player a warning
 		    self.timerRadioMessage = 10  
 		    self.usedSunrise = 1
+		    self.situationPenalty = 0.8
 		  end  		  
         else
-          self.situationPenalty = config.getParameter("situationPenalty",0)
+          self.situationPenalty = 0.5
         end
         
 	if daytime then  

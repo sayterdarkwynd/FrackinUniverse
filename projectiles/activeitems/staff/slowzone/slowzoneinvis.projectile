@@ -1,0 +1,86 @@
+{
+  "projectileName" : "slowzoneinvis",
+  "physics" : "laser",
+  "timeToLive" : 1,
+  "image" : "slowzoneinvis.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 12,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+	    {
+              "time" : 0.1,
+              "repeat" : false,	    
+	      "action" : "projectile",
+	      "type" : "flamethrowerflameff",
+	      "fuzzAngle" : 360,
+	      "inheritDamageFactor" : 0.05,
+	      "config" : { "statusEffects" : [ "radiationburn" ] }
+	    },   
+    	    {
+              "time" : 0.3,
+              "repeat" : false,    	    
+    	      "action" : "config",
+    	      "file" : "/projectiles/explosions/hellfireexplosion/spankrexplosion.config"
+	    },     
+    {
+      "time" : 1,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_disappear1.ogg" ]
+    }
+  ],
+  "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "flamethrowerflameff",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.15,
+	      "config" : { "statusEffects" : [ "radiationburn" ] },
+	      "angleAdjust" : 90
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "flamethrowerflameff",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.15,
+	      "config" : { "statusEffects" : [ "radiationburn" ] },
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "flamethrowerflameff",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.15,
+	      "config" : { "statusEffects" : [ "radiationburn" ] },
+	      "angleAdjust" : -90
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "flamethrowerflameff",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.15,
+	      "config" : { "statusEffects" : [ "radiationburn" ] },
+	      "angleAdjust" : 180
+	    } 	  
+  ],
+  "speed" : 0,
+  "power" : 0,
+  "renderLayer" : "Player+1",
+
+  "onlyHitTerrain" : true,
+  "persistentStatusEffects" : ["staffslow", "radiationburn"],
+  "statusEffectArea" : [ [-6.0, 0], [-4.0, -4.0], [0, -6.0], [4.0, -4.0], [6.0, 0], [4.0, 4.0], [0, 6.0], [-4.0, 4.0] ],
+
+
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ ],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+  
+  "persistentAudio" : "/sfx/projectiles/zone_slow_loop.ogg"
+}

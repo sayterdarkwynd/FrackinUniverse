@@ -1,0 +1,26 @@
+{
+  "projectileName" : "burrow",
+  "image" : "invisibleprojectile.png",
+  "speed" : 0,
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageType" : "Environment",
+  "power" : 0,
+  "tileDamageType" : "blockish",
+  "actionOnReap" : [
+    {
+      "action" : "explosion",
+      
+      "foregroundRadius" : 2,
+      "backgroundRadius" : 0,
+      "explosiveDamageAmount" : 1,
+      "explosiveDamageKind" : "block"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/blocks/footstep_gravel.ogg" ]
+    }
+  ]
+}

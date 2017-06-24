@@ -1,0 +1,44 @@
+{
+  "name" : "shoggothAcidAttack2",
+  "label" : "Acid Attack",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/shoggoth/skills/shoggothacidattack2.lua" ],
+    "shoggothAcidAttack2" : {
+      "skillTime" : 1,
+      
+      "damagePerSecond" : 12,
+      "distanceRange" : [5,20],
+      "windupTime" : 0.1,
+      "periodTime" : 1,
+      "winddownTime" : 0.1,
+      "attacksLeft" : 1,
+      "bounces" : 0,
+      "projectile" : {
+        "type" : "madnesszone",
+        "config" : {
+          "timeToLive" : 4,
+          "power" : 17,
+          "speed" : 6,
+          "periodicActions" : [
+		    {
+		      "time" : 0.3,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "madnesszoneshoggoth",
+		      "inheritDamageFactor" :1,
+		      "fuzzAngle" : 360,
+		      "projectileParameters" : { 
+		        "speed" : 35, 
+		        "timeToLive" : 3, 
+		        "damageSourceKind" : "cosmic" 
+		        }
+		   }          
+          ]
+        },
+        "offset" : [0, -6]
+      }
+    }
+  }
+}

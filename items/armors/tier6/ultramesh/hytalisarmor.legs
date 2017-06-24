@@ -1,21 +1,23 @@
 {
   "itemName" : "hytalisarmorpants",
+  "price" : 375,
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
    "description" : "Set Bonus:
 ^cyan;+50% Electric Resist^reset;
-^e43774;Immune: Pressure, Insanity, Aether^reset;
+^#e43774;Immune: Pressure, Insanity, Aether^reset;
 ^green;+35% Shield Stamina, Block, Shield Regen^reset;", 
   "shortdescription" : "Ultra-Mesh Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 6,
+  "collectablesOnPickup" : { "fu_armorprotection" : "hytalisarmorpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

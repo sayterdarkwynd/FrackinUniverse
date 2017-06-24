@@ -1,0 +1,41 @@
+{
+  "projectileName" : "invisibleorb",
+  "physics" : "laser",
+  "timeToLive" : 6,
+  "image" : "invisibleorb.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [110, 70, 30],
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "action" : "loop",
+      "count" : 6,
+      "body" : []
+    }
+  ],
+  "actionOnReap" : [
+
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "noDamage",
+  "damagePoly" : [ [-10, 0], [-7, -7], [0, -10], [7, -7], [10, 0], [7, 7], [0, 10], [-7, 7] ],
+  "statusEffects" : [ ],
+  "damageRepeatTimeout" : 0.25,
+
+  "orientationLocked" : true,
+  "fullbright" : false,
+  "emitters" : [  ],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "controlMovement" : {
+    "maxSpeed" : 35,
+    "controlForce" : 1000
+  },
+  "persistentAudio" : ""
+}

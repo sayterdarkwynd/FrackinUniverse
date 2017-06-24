@@ -4,13 +4,14 @@
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A fantastic long-ranged rifle. Assassins love it.
-^yellow;Inflicts electrified status^reset;",
+  "description" : "A devastating long-ranged rifle.
+^yellow;Pierces tiles, increases damage with range^reset;
+^cyan;Efficient alt-fire^reset;",
   "shortdescription" : "Railgun",
   "tooltipKind" : "gun2",
   "category" : "sniperRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","sniperrifle", "energy"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "upgradeableWeapon"],
 
   "inventoryIcon" : [
     { "image" : "furailgun.png:idle.1" }
@@ -22,7 +23,7 @@
     "middle" : "furailgun.png",
     "middlefullbright" : "furailgunfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
   "animationCustom" : {
     "lights" : { "glow" : {
@@ -31,11 +32,11 @@
       "color" : [10, 10, 100]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/hvmarauder3.wav" ]
     }
   },
   "baseOffset" : [0.87, 0.35],
-  "muzzleOffset" : [1.5, 0.125],
+  "muzzleOffset" : [2, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -45,17 +46,17 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 1.25,
-    "baseDps" : 8.2,
-    "energyUsage" : 32,
+    "fireTime" : 2.0,
+    "baseDps" : 5.2,
+    "energyUsage" : 120,
     "inaccuracy" : 0,
     "fireType" : "auto",
 
-    "projectileType" : "furailgunshot",
+    "projectileType" : "furailgunshot0",
     "projectileParameters" : {
       "knockback" : 20,
-      "speed" : 110,
-      "statusEffects" : [ "electrified" ]
+      "speed" : 100,
+      "power" : 2
     },
     "projectileCount" : 1,
 
@@ -92,6 +93,15 @@
   "critChance" : 9,
   "critBonus" : 12,
   "altAbilityType" : "railgunshotpower",
+  "altAbility" : { 
+    "energyCost" : 80,
+    "projectileType" : "energyzone",
+    "name" : "Energy Zone",
+    "projectileParameters" : {
+      "timeToLive" : 8,
+      "speed" : 0
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

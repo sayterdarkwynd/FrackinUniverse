@@ -8,7 +8,7 @@
   "tooltipKind" : "gun",
   "category" : "swtjc_ewg_revolver",
   "twoHanded" : false,
-  "itemTags" : ["weapon","ranged","pistol"],
+  "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon"],
   "level" : 1,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -23,13 +23,14 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [1.0, 2.5],
-    "baseDps" : [7, 8],
-    "energyUsage" : [21, 24],
-    "inaccuracy" : 0.02,
+    "fireTime" : [0.7, 2.0],
+    "baseDps" : [5.8, 6.3],
+    "energyUsage" : [19.5, 22.5],
+    "inaccuracy" : 0.024,
 
+    "projectileType" : "standardbullet",
     "projectileParameters" : {
-      "knockbackRange" : [10,20]
+      "knockbackRange" : [9,16]
     },
 
     "stances" : {
@@ -96,7 +97,7 @@
         "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/dragonhead_fire1.ogg" ]
       },
       "shadow" : {
-        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "insanity" ] } },
+        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
         "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/dragonhead_fire1.ogg" ]
       },
       "cosmic" : {

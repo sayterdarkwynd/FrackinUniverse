@@ -15,6 +15,11 @@
     "value": "The ideal man-portable weapon of choice for taking down rampaging tanks, mecha, and giant monsters, if you can handle the long reload time."
   },
   {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
     "op": "replace",
     "path": "/primaryAbility/fireTime/0",
     "value": 2
@@ -56,7 +61,58 @@
       ],
       "shadow": [
         "/sfx/gun/rocket_fire1.ogg"
-      ]  
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "radioactiveplasmarocket"
+      },
+      "fireSounds": [
+        "/sfx/gun/rocket_ice1.ogg" //placeholder
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "shadowplasmarocket"
+      },
+      "fireSounds": [
+        "/sfx/gun/rocket_ice1.ogg" //placeholder
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "cosmicplasmarocket"
+      },
+      "fireSounds": [
+        "/sfx/gun/rocket_ice1.ogg" //placeholder
+      ]
     }
   },
   {

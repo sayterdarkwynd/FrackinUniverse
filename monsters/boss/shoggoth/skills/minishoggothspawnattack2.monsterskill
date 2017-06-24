@@ -1,0 +1,28 @@
+{
+  "name" : "miniShoggothSpawnAttack2",
+  "label" : "Spawn Mini",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/shoggoth/skills/minishoggothspawnattack2.lua" ],
+    "miniShoggothSpawnAttack2" : {
+      "skillTime" : 4,
+      
+      "damagePerSecond" : 10,
+      "distanceRange" : [10,100],
+      "windupTime" : 0.2,
+      "periodTime" : 0.35,
+      "winddownTime" : 0.2,
+      "attacksLeft" : 6,
+      "bounces" : 1,
+      "projectile" : {
+        "type" : "minishoggothspawn",
+        "config" : {
+          "power" : 25,
+          "speed" : 90
+        },
+        "offset" : [10, -5]
+      }
+    }
+  }
+}

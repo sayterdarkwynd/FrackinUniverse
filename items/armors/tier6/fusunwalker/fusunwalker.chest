@@ -1,17 +1,18 @@
 {
   "itemName" : "fusunwalkerchest",
+  "price" : 950,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "Set Bonus:
 ^cyan;40% Radiation Resist^reset;
-^e43774;Immune: Radiation, Heat, Cold, Pressure^reset;
-^green;+15% Plasma damage. Ore Drone (Tier6)", 
+^#e43774;Immune: Radiation, Heat, Cold, Pressure^reset;
+^green;+15% Plasma damage", 
   "shortdescription" : "Sunwalker Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
@@ -25,6 +26,7 @@
   },
 
   "level" : 6,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fusunwalkerchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -49,7 +51,6 @@
   ],
 
   "statusEffects" : [
-    "sunwalkerchestbonus",
     "sunwalkersetbonus",
     {
       "stat" : "fu_sunwalkerset_chest",

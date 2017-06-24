@@ -1,15 +1,19 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ 
-        "deckardchest", 
-        "deckardpants",
-        "deckardhead",
-	"mantizitier1pants",
-	"mantizitier1head",
-	"mantizitier1chest",
-	"leatherpants",
-	"leatherhead",
-	"leatherchest",	
-	"leathershield",
-	"ropewhip"
-  ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "deckardchest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "deckardpants" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "deckardhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier1pants" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier1head" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fumantizitier1chest" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "leatherpants" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "leatherhead" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "leatherchest" },	
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "leathershield" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "ropewhip" }
+  ]
 ]

@@ -16,7 +16,7 @@
       }
     },
     "sounds" : {
-      "altFire" : [ "/sfx/weapons/fucellgun.ogg" ]
+      "altFire" : [ "/sfx/weapons/sunstream.ogg" ]
     }
   },
 
@@ -26,20 +26,20 @@
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
 
-    "projectileType" : "densiniumblast",
+    "projectileType" : "powerblast",
     "projectileParameters" : {
       "piercing" : true
     },
 
     // use baseDps and fireTime from primary fire
-    "fireTime" : 1.2,
-    "baseDps" : 12.5,
+    "fireTime" : 1.52,
+    "baseDps" : 15.5,
     "fireType" : "auto",
-    "energyUsage" : 60.0,
+    "energyUsage" : 120.0,
 
     "stances" : {
       "fire" : {
-        "duration" : 0,
+        "duration" : 0.25,
         "armRotation" : 5,
         "weaponRotation" : 5,
         "twoHanded" : true,

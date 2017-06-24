@@ -1,7 +1,7 @@
 
 function init()
 
-if (status.stat("poisonResistance",0)  >= 1.0) or status.statPositive("poisonStatusImmunity") then
+if (status.stat("poisonResistance",0)  >= 0.75) or status.statPositive("poisonStatusImmunity") then
   effect.expire()
 end
 
@@ -46,7 +46,9 @@ end
 
   
 function update(dt)
-
+  	if ( status.stat("poisonResistance",0)  >= 0.75 ) then
+	  effect.expire() 
+	end  
       biomeTimer = biomeTimer - dt
       if biomeTimer <= 0 and status.stat("maxHealth") >= 1 then
         effect.addStatModifierGroup({{stat = "encumberance", amount = baseValue* (1) }})

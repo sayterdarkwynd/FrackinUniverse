@@ -1,0 +1,45 @@
+{
+  "itemName" : "precursorbroadsword",
+  "price" : 52000,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Impossibly sharp focused light forms the blade.
+^cyan;Inflicts Radiation Burn^reset;",
+  "shortdescription" : "Precursor Rendblade",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","xithricite", "upgradeableWeapon"],
+  "inventoryIcon" : "precursorbroadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "precursorbroadsword.png",
+    "bladefullbright" : "precursorbroadswordfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.82,
+    "baseDps" : 10.25,
+    "damageConfig" : {
+      "knockback" : 20,
+       "statusEffects" : [ "radiationburn" ],
+       "damageSourceKind" : "radioactivebroadsword"
+    }
+  },
+
+  "altAbilityType" : "travelingslash",
+  "altAbility" : { "projectileParameters" : { "timeToLive" : 3} },
+
+  "critChance" : 4,
+  "critBonus" : 12,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

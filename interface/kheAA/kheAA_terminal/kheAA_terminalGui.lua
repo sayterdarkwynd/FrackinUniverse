@@ -11,7 +11,7 @@ function init()
 	pos = world.entityPosition(pane.containerEntityId());
 	widget.addListItem("scrollArea.itemList")
 	filterText = "";
-	widget.focus("filterBox")
+	--widget.focus("filterBox")
 	refresh()
 end
 
@@ -84,16 +84,22 @@ function sortByName(itemA, itemB)
 end
 
 function getIcon(item, conf, listItem)
-	local icon = item.parameters.inventoryIcon or conf.config.inventoryIcon
-	if icon ~= nil and type(icon) == "string" then
+	local icon = item.parameters.inventoryIcon or conf.config.inventoryIcon or conf.config[(conf.config.category or "").."Icon"] or conf.config.icon
+	if icon then
+		if type(icon) == "string" then
 			icon = absolutePath(conf.directory, icon)
 			widget.setImage(itemList .. "." .. listItem .. ".itemIcon", icon)
-		elseif icon ~= nil and type(icon) == "table" then
+			--local imageSize = rect.size(root.nonEmptyRegion(icon))
+			--local scaleDown = math.max(math.ceil(imageSize[1] / iconSize[1]), math.ceil(imageSize[2] / iconSize[2]))
+			--widget.setImageScale(string.format("%s.%s.icon", self.list, item), 1 / scaleDown)
+		elseif type(icon) == "table" then
+			sb.logInfo("%s",icon)
 			for i,v in pairs(icon) do
 				local item = widget.addListItem(itemList .. "." .. listItem .. ".compositeIcon")
 				widget.setImage(itemList .. "." .. listItem .. ".compositeIcon." .. item ..".icon", absolutePath(conf.directory, v.image))
 			end
 		end
+	end
 end
 
 function refreshList()
@@ -102,22 +108,21 @@ function refreshList()
 	table.sort(items, sortByName);
 	for i = 1, #items do
 		local item = items[i][2]
-			local conf = items[i][3]
-			local filterOk = true;				
-				local name = conf.config.shortdescription
-				
-				if filterText ~= "" then
-			if string.find(string.upper(name), string.upper(filterText)) == nil then
+		local conf = items[i][3]
+		local filterOk = true;				
+		local name = item.parameters.shortdescription or conf.config.shortdescription
+		
+		if filterText ~= "" then
+			if string.find(string.upper(name), string.upper(formatpattern(filterText))) == nil then
 				filterOk = false;
 			end
 		end
 		if filterOk then
 			local listItem = widget.addListItem(itemList)
-					
-					widget.setText(itemList .. "." .. listItem .. ".itemName", name);
-					widget.setText(itemList .. "." .. listItem .. ".amount", "x" .. item.count);
-					pcall(getIcon, item, conf, listItem);
-					listItems[listItem] = items[i];
+			widget.setText(itemList .. "." .. listItem .. ".itemName", name);
+			widget.setText(itemList .. "." .. listItem .. ".amount", "x" .. item.count);
+			pcall(getIcon, item, conf, listItem);
+			listItems[listItem] = items[i];
 		end
 	end
 end
@@ -146,6 +151,76 @@ function request()
 	end
 end
 
+function requestAllButOne()
+	--pane.playerEntityId()
+	local selected = widget.getListSelected(itemList)
+	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
+		for i = 1, #items do
+			if items[i] == listItems[selected] then
+				local itemToSend=items[i]
+				itemToSend[2].count=itemToSend[2].count-1
+				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
+				--sb.logInfo(sb.printJson({playerPos=temp}))
+				
+				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
+				--table.remove(items, i);
+				items[i][2].count=1
+				deltatime=29.9
+				refreshList();
+				return;
+			end
+		end
+	end
+end
+
+--[[
+
+function addInputSlot()
+	local text = widget.getText("inputSlotCount")
+	if text ~= "" and tonumber(text) >= 0 then
+		local slot = tonumber(text);
+		for _,v in pairs(inputSlots) do
+			if v[1] == slot then
+				return;
+			end
+		end
+		local item = widget.addListItem(inputList);
+		widget.setText(inputList .. "." .. item .. ".slotNr", slot .. "");
+		table.insert(inputSlots, {slot, item})
+		syncInputSlots();
+	end
+end
+
+
+]]
+
+function requestOne()
+	local text = widget.getText("requestAmount")
+	if text ~= "" and tonumber(text) >= 0 then
+		--pane.playerEntityId()
+		--itemData={containerID, index}, itemDescriptor, itemConfig,pos
+		local selected = widget.getListSelected(itemList)
+		if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
+			for i = 1, #items do
+				if items[i] == listItems[selected] then
+					local itemToSend=copy(items[i])
+					--sb.logInfo("%s",itemToSend)
+					itemToSend[2].count=math.min(tonumber(text),itemToSend[2].count)
+	
+					table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
+					--sb.logInfo(sb.printJson({playerPos=temp}))
+					world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
+					--table.remove(items, i);
+					items[i][2].count=items[i][2].count-1
+					deltatime=29.9
+					refreshList();
+					return;
+				end
+			end
+		end
+	end
+end
+
 function absolutePath(directory, path)
 	if type(path) ~= "string" then
 		return false;
@@ -155,4 +230,20 @@ function absolutePath(directory, path)
 	else
 		return directory..path
 	end
+end
+
+function formatpattern(str)
+  local str = string.gsub(str,"%(","%%(")
+  local str = string.gsub(str,"%)","%%)")
+  local str = string.gsub(str,"%.","%%.")
+  local str = string.gsub(str,"%%","%%%%")
+  local str = string.gsub(str,"%+","%%+")
+  local str = string.gsub(str,"%-","%%-")
+  local str = string.gsub(str,"%*","%%*")
+  local str = string.gsub(str,"%?","%%?")
+  local str = string.gsub(str,"%[","%%[")
+  local str = string.gsub(str,"%]","%%]")
+  local str = string.gsub(str,"%^","%%^")
+  local str = string.gsub(str,"%$","%%$")
+  return str
 end

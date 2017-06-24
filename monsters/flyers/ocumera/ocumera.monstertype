@@ -8,7 +8,7 @@
 
   "animation" : "ocumera.animation",
 
-  "dropPools" : [ { "default" : "slimemonsterTreasure" } ],
+  "dropPools" : [ { "default" : "extraMonsterElectric" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -40,21 +40,22 @@
       "hostileActions" : [
        {
           "name" : "action-fire",
-          "cooldown" : 0.0,
+          "cooldown" : 2.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
+            "maximumRange" : 30,
             "minimumRange" : 5,
             "windupState" : "firewindup",
-            "windupTime" : 0.5,
-            "projectileType" : "preshortbeam",
+            "windupTime" : 0.1875,
+            "projectileType" : "prelongbeam",
             "power" : 10,
-	    "fireOffset" : [0,-1],
+            "fireOffset" : [-0.25,-0.5],
             "aimAtTarget" : true,
             "onGround" : false,
             "fireState" : "fire",
-            "fireSound" : "fire",
-            "winddownTime" : 0.5
+            "fireSound" : "",
+            "winddownTime" : 0.4625,
+            "holdAim" : true
           }
         }
       ],
@@ -65,7 +66,7 @@
           "name" : "approach-fly",
           "parameters" : {
             "minRange" : 4,
-            "maxRange" : 12
+            "maxRange" : 30
           }
         }
       ],
@@ -91,13 +92,13 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+      "poly" : [ [-1, 1.5], [1,1.5], [1, -1.5], [1,1.5] ],
       "damage" : 9,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
       "knockback" : 20,
-      "statusEffects" : [ {"effect" : "slimefriction", "duration" : 2.5} ]
+      "statusEffects" : [ ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -105,7 +106,7 @@
 
     "movementSettings" : {
       "collisionEnabled" : true,
-      "collisionPoly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+      "collisionPoly" : [ [-1, 1.5], [1,1.5], [1, -1.5], [1,1.5] ],
 
       "mass" : 1.0,
       "walkSpeed" : 4,
@@ -148,7 +149,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 79
+          "baseValue" : 64
         },
         "protection" : {
           "baseValue" : 0.0
@@ -160,7 +161,7 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.35
+          "baseValue" : 0.0
         },
         "fireResistance" : {
           "baseValue" : 0.0
@@ -205,6 +206,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "ocumera" }
   }
 }

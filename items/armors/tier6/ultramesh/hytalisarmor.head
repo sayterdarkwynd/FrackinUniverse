@@ -1,22 +1,24 @@
 {
   "itemName" : "hytalisarmorhead",
+  "price" : 575,
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
    "description" : "Set Bonus:
 ^cyan;+50% Electric Resist^reset;
-^e43774;Immune: Pressure, Insanity, Aether^reset;
+^#e43774;Immune: Pressure, Insanity, Aether^reset;
 ^green;+35% Shield Stamina, Block, Shield Regen^reset;", 
   "shortdescription" : "Ultra-Mesh Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
   "level" : 6,
+  "collectablesOnPickup" : { "fu_armorprotection" : "hytalisarmorhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

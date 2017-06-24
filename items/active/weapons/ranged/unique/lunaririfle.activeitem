@@ -12,7 +12,7 @@
   "level" : 2,
   "tooltipKind" : "gun2",
   "weaponType" : "Crystalline Rifle",
-  "itemTags" : ["weapon","ranged","assaultrifle", "energy","lunari"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy","lunari", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -29,7 +29,7 @@
   },
 
   "baseOffset" : [0.56, 0.2],
-  "muzzleOffset" : [1.445, 0.125],
+  "muzzleOffset" : [2, 0.125],
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -41,12 +41,12 @@
     "fireTime" : 0.35,
     "baseDps" : 8,
     "energyUsage" : 30,
-    "inaccuracy" : 0.025,
+    "inaccuracy" : 0,
 
     "projectileCount" : 2,
     "fireType" : "auto",
 
-    "projectileType" : "lunarishot",
+    "projectileType" : "lunarishotinitiate",
     "projectileParameters" : { 
       "speed" : 40,
       "knockback" : 2
@@ -94,6 +94,9 @@
   "critBonus" : 12,
 
   "altAbilityType" : "lunarishrapnelbomb",
+  "altAbility" : {
+    "name" : "Starshock"
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

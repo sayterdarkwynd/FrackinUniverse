@@ -1,0 +1,80 @@
+{
+  "itemName" : "aetheriumdagger",
+  "price" : 12040,
+  "maxStack" : 1,
+  "level" : 7,
+  "rarity" : "legendary",
+  "description" : "Assassination. With style.
+^cyan;Inflicts Vulnerability^reset;",
+  "shortdescription" : "Aetherium Punyal",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","xithricite", "upgradeableWeapon"],
+  "inventoryIcon" : "aetheriumdagger.png",
+
+  "animation" : "daggerglow.animation",
+  "animationParts" : {
+    "blade" : "aetheriumdagger.png",
+    "bladefullbright" : "aetheriumdaggerfullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [0.0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/energywhip_swing1.ogg", "/sfx/melee/energywhip_swing2.ogg" , "/sfx/melee/energywhip_swing3.ogg"  ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+
+    "class" : "MeleeSlash",
+    "fireTime" : 0.215,
+    "baseDps" : 7.54,
+    "damageConfig" : {
+      "knockback" : 10,
+       "statusEffects" : [ "defenseboostneg20" ],
+       "damageSourceKind" : "cosmicdagger"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.1, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -20,
+        "weaponRotation" : -20,
+        "weaponOffset" : [0.1, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0.1, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      }
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

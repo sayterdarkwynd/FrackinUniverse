@@ -1,21 +1,23 @@
 {
   "itemName" : "fusunwalkerpants",
+  "price" : 600,
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "Set Bonus:
 ^cyan;40% Radiation Resist^reset;
-^e43774;Immune: Radiation, Heat, Cold, Pressure^reset;
-^green;+15% Plasma damage. Detect nearby Ore, Caves, Enemies.", 
+^#e43774;Immune: Radiation, Heat, Cold, Pressure^reset;
+^green;+15% Plasma damage", 
   "shortdescription" : "Sunwalker Robes",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 6,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fusunwalkerpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

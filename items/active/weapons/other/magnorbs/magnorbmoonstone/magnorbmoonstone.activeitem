@@ -1,0 +1,64 @@
+{
+  "itemName" : "magnorbmoonstone",
+  "level" : 3,
+  "price" : 500,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Blasts foes with these energy-infused pellucid orbs. One handed.",
+  "shortdescription" : "Telebrium Orbs",
+  "tooltipKind" : "magnorb",
+  "category" : "Magnorb",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","magnorb","moonstone", "upgradeableWeapon"],
+
+  "inventoryIcon" : "iconmoonstone.png",
+  "animation" : "magnorbmoonstone.animation",
+  "animationParts" : {
+    "glove" : "glovemoonstone.png",
+    "orb1" : "magnorbmoonstone.png",
+    "orb2" : "magnorbmoonstone.png",
+    "orb3" : "magnorbmoonstone.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["magnorbmoonstone.lua"],
+
+  "orbitRate" : 0.25,
+  
+  "elementalType" : "poison",
+  
+  "projectileType" : "magnorbmoonstone",
+  "projectileParameters" : {
+    "power" : 3.8,
+    "knockback" : 14,
+
+    "returnOnHit" : false,
+    "ignoreTerrain" : false,
+    "controlForce" : 24,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 1.0
+  },
+
+  "shieldKnockback" : 0,
+  "shieldEnergyCost" : 0,
+  "shieldHealth" : 0,
+  "shieldPower" : "None",
+  "critChance" : 3,
+  "critBonus" : 4,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  }, 
+  "builder" : "/items/buildscripts/buildmagnorb.lua"
+}

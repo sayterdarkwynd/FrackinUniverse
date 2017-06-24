@@ -1,0 +1,30 @@
+{
+  "projectileName" : "furailgunshot0",
+  "image" : "shotgundart.png",
+  "animationCycle" : 0.1,
+  "piercing" : true,
+  "physics" : "illusion",
+  "bounces" : 0,
+  "frameNumber" : 3,  
+  "pointLight" : false,
+  "timeToLive" : 0,
+  "speed" :0,
+  "power" : 0,
+  "fullbright" : true,
+   "lightColor" : [40, 40, 100],
+  "damageKind" : "default",
+   "actionOnReap" : [ 
+    {
+      "time" : 0.03,
+      "action" : "config",
+      "file" : "/projectiles/explosions/blastingdynamite/railgunblast.config"
+    },     
+    {
+      "action" : "projectile",
+      "type" : "furailgunshot",
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 0
+    }
+  ]
+}
+

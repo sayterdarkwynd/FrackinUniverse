@@ -26,6 +26,7 @@ function build(directory, config, parameters, level, seed)
   config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))
 
   config.tooltipFields = {}
+  config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
   config.tooltipFields.subtitle = parameters.category
   config.tooltipFields.speedLabel = util.round(1 / config.primaryAbility.fireTime, 1)
   config.tooltipFields.damagePerShotLabel = util.round(config.primaryAbility.baseDps * config.primaryAbility.fireTime * config.damageLevelMultiplier, 1)

@@ -1,17 +1,18 @@
 {
   "itemName" : "ff_slimechest3",
+  "price" : 700,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus:
 ^cyan;+35/25% Poison/Radiation Resist, +10% Damage, +8% Crit (Slime weapons). ^reset;
-^e43774;Immune: Poison, Bioooze, Slime. Spawns minions. ^reset;
+^#e43774;Immune: Poison, Bioooze, Slime. Spawns minions. ^reset;
 ^green;Immune: Mud, Slime, Mud and Clay tiles^reset;", 
   "shortdescription" : "Red Slime Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -25,6 +26,7 @@
   },
 
   "level" : 5,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "ff_slimechest3" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

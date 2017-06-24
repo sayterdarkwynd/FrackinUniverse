@@ -36,7 +36,7 @@ function build(directory, config, parameters, level, seed)
   end
     -- *******************************
     -- FU ADDITIONS 
-
+      config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
       config.tooltipFields.shieldPowerLabel = configParameter("shieldPower")
       config.tooltipFields.shieldHealthLabel = (configParameter("shieldHealth",1) * configParameter("level",1))
       config.tooltipFields.forceLabel = config.projectileParameters.controlForce or 0

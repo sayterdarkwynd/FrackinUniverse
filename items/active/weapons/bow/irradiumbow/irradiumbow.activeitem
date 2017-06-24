@@ -1,0 +1,62 @@
+{
+  "itemName" : "irradiumbow",
+  "price" : 640,
+  "inventoryIcon" : "irradiumbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "Radioactive Hunting",
+  "shortdescription" : "Irradium Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 4,
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "irradiumbowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.125, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "drawFrameSelector" : "poisonBowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "irradiumarrow",
+    "powerProjectileType" : "chargedirradiumarrow",
+    "projectileParameters" : {
+      "power" : 8.7
+    }
+  },
+
+  "altAbilityType" : "zenshot",
+  "altAbility" : {
+    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "irradiumarrow",
+    "projectileParameters" : {
+      "power" : 8.125
+    }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

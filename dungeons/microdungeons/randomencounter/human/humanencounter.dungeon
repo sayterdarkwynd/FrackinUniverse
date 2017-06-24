@@ -4,7 +4,7 @@
     "species" : "dummy",
     "rules" : [
     ],
-    "anchor" : [ "smallbunker1", "prisontower1", "cavecamp1", "humancamp", "humanweird" ],
+    "anchor" : [ "smallbunker1", "prisontower1", "cavecamp1", "humancamp", "humanweird",  "colonytower", "colonybuilding"  ],
 
     "maxRadius" : 2000,
     "maxParts" : 100
@@ -1608,10 +1608,432 @@
           }
         }
       ] ]
+    },
+    
+    
+    
+ {
+      "value": [
+        6,
+        177,
+        64,
+        255
+      ],
+      "comment": "colonywall",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "composite01"
+        ],
+        [
+          "front",
+          "composite01"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        109,
+        91,
+        66,
+        255
+      ],
+      "comment": "colonyfloor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "smoothmetal"
+        ],
+        [
+          "front",
+          "smoothmetal"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        83,
+        147,
+        61,
+        255
+      ],
+      "comment": "colonyblock",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "junk"
+        ],
+        [
+          "front",
+          "junk"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        100,
+        16,
+        30,
+        255
+      ],
+      "comment": "colonybeamhbg",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "apexshipsupport"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        242,
+        203,
+        11,
+        255
+      ],
+      "comment": "colonybeamvbg",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "apexshipdetails"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        145,
+        158,
+        218,
+        255
+      ],
+      "comment": "colonywallbg",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "apexshipwall"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        254,
+        180,
+        29,
+        255
+      ],
+      "comment": "colonybeamv",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "apexshipsupport"
+        ],
+        [
+          "front",
+          "apexshipsupport"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        90,
+        59,
+        113,
+        255
+      ],
+      "comment": "colonybeamh",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "apexshipsupport"
+        ],
+        [
+          "front",
+          "apexshipsupport"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        239,
+        18,
+        180,
+        255
+      ],
+      "comment": "colonyblockbg",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "concrete"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        89,
+        93,
+        46,
+        255
+      ],
+      "comment": "colonydoor",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "fufrozendoor"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        132,
+        170,
+        247,
+        255
+      ],
+      "comment": "metalsupport",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "front",
+          "avaliplatform"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        159,
+        117,
+        118,
+        255
+      ],
+      "comment": "colonyrack",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "bunkerconsole3"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        220,
+        179,
+        101,
+        255
+      ],
+      "comment": "colonyposter",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "bunkerpanel1"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        195,
+        115,
+        54,
+        255
+      ],
+      "comment": "colonychest",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "bunkercrate",
+		  {
+		  "parameters": {
+              "treasurePools": [
+                "ffbasicTreasure"
+              ]
+            }
+			}
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        175,
+        145,
+        93,
+        255
+      ],
+      "comment": "colonylight",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "bunkerlighth"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        177,
+        210,
+        91,
+        255
+      ],
+      "comment": "colonyradio",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "microwave"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        99,
+        144,
+        99,
+        255
+      ],
+      "comment": "colonyantenna",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "object",
+          "prisoncabinet1"
+        ]
+      ],
+      "rules": [],
+      "connector": false
+    },
+    {
+      "value": [
+        179,
+        109,
+        127,
+        255
+      ],
+      "comment": "colonybeamha",
+      "brush": [
+        [
+          "clear"
+        ],
+        [
+          "back",
+          "concrete"
+        ],
+        [
+          "front",
+          "concrete"
+        ]
+      ],
+      "rules": []
     }
+    
+    
+    
+    
   ],
 
   "parts" : [
+    {
+      "def": [
+        "image",
+        [
+          "colonybuilding.png",
+          "colonybuildingobjects.png"
+        ]
+      ],
+      "rules": [],
+      "name": "colonytower"
+    },
+    {
+      "def": [
+        "image",
+        [
+          "colonybuilding-backgroundtiles.png",
+          "colonybuilding-objects.png"
+        ]
+      ],
+      "rules": [],
+      "name": "colonybuilding"
+    },
+    
+    
+    
     {
       "name" : "smallbunker1",
       "rules" : [ ],

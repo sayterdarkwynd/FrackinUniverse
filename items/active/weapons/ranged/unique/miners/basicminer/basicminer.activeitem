@@ -5,12 +5,12 @@
   "inventoryIcon" : "basicminergun.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "description" : "A neat little mining weapon. Does a bit of damage, too.",
   "shortdescription" : "Mining Laser",
   "learnBlueprintsOnPickup" : [ "protominer" ],
   "category" : "^#e43774;Upgradeable Tool^reset;",
-  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser" ],
+  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser", "upgradeableWeapon" ],
   "twoHanded" : false,
 
   "animation" : "basicminer.animation",
@@ -111,5 +111,22 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+          "shortdescription" : "^cyan;Mining Laser^reset; ^green;^reset;"  
+  },
+  "upgradeParameters2" : {
+          "shortdescription" : "^cyan;Mining Laser^reset; ^cyan;^reset;"   
+  },
+  "upgradeParameters3" : {
+          "shortdescription" : "^cyan;Mining Laser^reset; ^yellow;^reset;",
+	  "primaryAbility" : {
+	    "damageConfig" : {
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "cosmic",
+	      "knockback" : 5
+	    }
+	  }
+  }  
 }

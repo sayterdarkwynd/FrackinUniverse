@@ -5,13 +5,13 @@
   "inventoryIcon" : "penumbriteminergun.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-    "description" : "High-powered with a durable titanium/moonstone body.",
+    "description" : "High-powered with a durable titanium/telebrium body.",
     "shortdescription" : "A-7C Miner",
     "learnBlueprintsOnPickup" : [ "hybridminer" ],
   "category" : "^#e43774;Upgradeable Tool^reset;",
-  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser" ],
+  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser", "upgradeableWeapon" ],
   "twoHanded" : false,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "animation" : "penumbriteminer.animation",
   "animationParts" : {
     "beamorigin" : "rainbowmuzzle.png",
@@ -110,5 +110,22 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+          "shortdescription" : "^cyan;A-7C Miner^reset; ^green;^reset;"  
+  },
+  "upgradeParameters2" : {
+          "shortdescription" : "^cyan;A-7C Miner^reset; ^cyan;^reset;"  
+  },
+  "upgradeParameters3" : {
+          "shortdescription" : "^cyan;A-7C Miner^reset; ^yellow;^reset;",
+	  "primaryAbility" : {
+	    "damageConfig" : {
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "cosmic",
+	      "knockback" : 5
+	    }
+	  }    
+  }
 }

@@ -6,16 +6,29 @@
   "frameNumber" : 1,
   "pointLight" : false,
   "speed" : 70,
-  "knockback" : 20,
-  "knockbackDirectional" : true,
   "piercing" : true,
-  "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
-    }
-  ],
+  "knockback" : 8,
+  "knockbackDirectional" : true,
+  "lightColor" : [41, 227, 49],   
   "damageKind" : "shadowplasma",
   "emitters" : [ "barrierpoison" ],
-  "damagePoly" : [ [-12, -1], [14, -1], [14, 3], [-12, 3] ]
+  "damagePoly" : [ [-12, -1], [14, -1], [14, 3], [-12, 3] ],
+
+      "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/eldercarbineboom.config"
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "elderflamethrowerflameff",
+	      "inheritDamageFactor" : 0.15
+	    }        
+      ],
+      "actionOnReap" : [
+        {
+          "action" : "config",
+          "file" : "/projectiles/explosions/elder/eldercarbineboom.config"
+        }
+      ]      
 }

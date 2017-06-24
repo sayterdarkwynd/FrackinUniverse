@@ -1,0 +1,62 @@
+{
+  "itemName" : "carnagebow",
+  "level" : 5,
+  "price" : 640,
+  "inventoryIcon" : "carnagebowicon.png",
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "Fires homing arrows",
+  "shortdescription" : "Carnage Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "carnagebowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "poisonBowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "carnagearrow",
+    "powerProjectileType" : "carnagearrow",
+    "projectileParameters" : {
+      "power" : 6.5
+    }
+  },
+
+  "altAbilityType" : "bowshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "carnagearrow",
+    "projectileParameters" : {
+      "power" : 10
+    }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

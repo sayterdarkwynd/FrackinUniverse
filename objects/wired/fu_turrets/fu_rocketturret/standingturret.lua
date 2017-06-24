@@ -184,8 +184,8 @@ end
 -- Coroutine
 function autoFire()
   local level = math.max(1.0, world.threatLevel())
-  local power = 7 * math.max(1.0, world.threatLevel())
-  local fireTime = 1.35
+  local power = 5 * math.max(1.0, world.threatLevel())
+  local fireTime = 0.35
   local projectileParameters = { power = power , speed=42, knockback=10 }
   local energyUsage = 20
 
@@ -194,7 +194,7 @@ function autoFire()
 
     local rotation = animator.currentRotationAngle("gun")
     local aimVector = {object.direction() * math.cos(rotation), math.sin(rotation)}
-    world.spawnProjectile("rocketswarmlite", firePosition(), entity.id(), aimVector, false, projectileParameters)
+    world.spawnProjectile("rocketswarmliteturret", firePosition(), entity.id(), aimVector, false, projectileParameters)
     animator.playSound("fire")
     util.wait(fireTime)
   end

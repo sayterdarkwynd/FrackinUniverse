@@ -8,7 +8,7 @@
 
   "animation" : "magmagolem.animation",
 
-  "dropPools" : [ "ashgolemLoot" ],
+  "dropPools" : [ "ashgolemLoot", "ashgolemLoot", "ashgolemLoot" ],
 
   "baseParameters" : {
     "scripts" : [
@@ -310,12 +310,14 @@
         "powerMultiplier" : {
           "baseValue" : 1.75
         },
-        "poisonResistance" : { "baseValue" : 0 },
-        "fireResistance" : { "baseValue" : 0 },
+        "poisonResistance" : { "baseValue" : 0.99 },
+        "fireResistance" : { "baseValue" : 1 },
         "iceResistance" : { "baseValue" : -0.4 },
-        "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0 }
+        "electricResistance" : { "baseValue" : 0.8 },
+        "physicalResistance" : { "baseValue" : 0.8 },
+        "shadowResistance" : { "baseValue" : 0.6 },
+        "cosmicResistance" : { "baseValue" : 0.6 },
+        "radioactiveResistance" : { "baseValue" : 0.8 }
       },
 
       "resources" : {
@@ -337,6 +339,7 @@
     "captureHealthFraction" : 0.24,
     "capturedMonsterName" : "Magma Golem",
     "capturedMonsterType" : "magmagolem", // turn into an adultpoptop when captured
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "magmagolem" }
   }
 }

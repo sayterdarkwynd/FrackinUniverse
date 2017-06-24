@@ -20,6 +20,11 @@
     "value": "A fully automatic, military grade rifle, with decent stopping power and accuracy."
   },
   {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
     "op": "replace",
     "path": "/primaryAbility/fireTime/0",
     "value": 0.08
@@ -51,6 +56,87 @@
     "op": "replace",
     "path": "/primaryAbility/inaccuracy",
     "value": 0.04
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "radioactiveplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "radiationburn"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_mp1.ogg",
+        "/sfx/gun/plasma_mp2.ogg",
+        "/sfx/gun/plasma_mp3.ogg",
+        "/sfx/gun/plasma_ar1.ogg",
+        "/sfx/gun/plasma_ar2.ogg",
+        "/sfx/gun/plasma_ar3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "shadowplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "shadowgasfx"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_mp1.ogg",
+        "/sfx/gun/plasma_mp2.ogg",
+        "/sfx/gun/plasma_mp3.ogg",
+        "/sfx/gun/plasma_ar1.ogg",
+        "/sfx/gun/plasma_ar2.ogg",
+        "/sfx/gun/plasma_ar3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "cosmicplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "percentarmorboostneg2"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_mp1.ogg",
+        "/sfx/gun/plasma_mp2.ogg",
+        "/sfx/gun/plasma_mp3.ogg",
+        "/sfx/gun/plasma_ar1.ogg",
+        "/sfx/gun/plasma_ar2.ogg",
+        "/sfx/gun/plasma_ar3.ogg"
+      ]
+    }
   },
   {
     "op": "add",

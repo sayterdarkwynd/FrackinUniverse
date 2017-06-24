@@ -4,12 +4,13 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Hot and melty blade.",
+  "description" : "Hot and melty blade.
+^cyan;Inflicts Napalm^reset;",
   "shortdescription" : "Pyreite Broadsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","pyreite"],
+  "itemTags" : ["weapon","melee","broadsword","pyreite", "upgradeableWeapon"],
   "inventoryIcon" : "pyreitebroadsword.png",
 
   "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
@@ -32,9 +33,48 @@
       "knockback" : 10,
        "damageSourceKind" : "fire",
        "statusEffects" : [ "burningnapalm" ]
-    }
-  },
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "aimAngle" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "aimAngle" : 0,
 
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }    
+  },
+  
   "altAbilityType" : "flamethrowersword",
 
   "critChance" : 2,

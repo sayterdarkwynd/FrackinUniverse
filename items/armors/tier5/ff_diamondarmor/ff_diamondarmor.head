@@ -1,12 +1,13 @@
 {
   "itemName" : "ff_diamondarmorhead",
+  "price" : 450,
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "Set Bonus:
 ^cyan;+30% Physical Resist^reset;
-^e43774;Immune: Acid, Bio-ooze^reset;
+^#e43774;Immune: Acid, Bio-ooze^reset;
 ^green;+5% Crit Chance (Broadswords)^reset;", 
   "shortdescription" : "Gishinanki Helmet",
   "category" : "headarmour",
@@ -14,8 +15,9 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 5,
+  "collectablesOnPickup" : { "fu_armorprotection" : "ff_diamondarmorhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",

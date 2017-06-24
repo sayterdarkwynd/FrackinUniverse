@@ -1,5 +1,12 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [     
-    "furadaugment1", "fupoisonwand", "poisonprotectionback", "biooozeprotection"
-    ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "furadaugment1" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "fupoisonwand" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "poisonprotectionback" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "biooozeprotection" }
+  ]
 ]

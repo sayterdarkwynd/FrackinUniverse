@@ -1,3 +1,10 @@
 [
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "sandpillar1", "sandpillar2" ] }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "sandpillar1" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "sandpillar2" }
+  ]
 ]

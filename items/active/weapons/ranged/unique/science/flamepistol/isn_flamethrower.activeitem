@@ -9,7 +9,7 @@
   "shortdescription" : "Incinerator",
   "level" : 2,
   "category" : "Fire Cannon",
-  "itemTags" : ["weapon","ranged","flamethrower"],
+  "itemTags" : ["weapon","ranged","flamethrower", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -76,5 +76,20 @@
   },
   "critChance" : 2,
   "critBonus" : 2,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Burninator^reset; ^yellow;
+^cyan;Dual-flames and increased range^reset;",
+    
+	  "primaryAbility" : {
+	    "inaccuracy" : 0.07,
+            "projectileCount" : 2,
+	    "projectileParameters" : {
+	      "speed" : 30
+	    }          
+            
+	  }
+      }
 }

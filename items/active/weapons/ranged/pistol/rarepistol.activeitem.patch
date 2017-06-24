@@ -20,6 +20,11 @@
     "value": "Rare Semi-Automatic Pistol"
   },
   {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
     "op": "replace",
     "path": "/primaryAbility/fireTime/0",
     "value": 0.25
@@ -68,6 +73,78 @@
     "op": "replace",
     "path": "/primaryAbility/stances/cooldown/weaponRotation",
     "value": 5
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "radioactiveplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "radiationburn"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_pistol1.ogg",
+        "/sfx/gun/plasma_pistol2.ogg",
+        "/sfx/gun/plasma_pistol3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "shadowplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "shadowgasfx"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_pistol1.ogg",
+        "/sfx/gun/plasma_pistol2.ogg",
+        "/sfx/gun/plasma_pistol3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "cosmicplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "percentarmorboostneg2"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_pistol1.ogg",
+        "/sfx/gun/plasma_pistol2.ogg",
+        "/sfx/gun/plasma_pistol3.ogg"
+      ]
+    }
   },
   {
     "op": "replace",

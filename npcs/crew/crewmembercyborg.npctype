@@ -1,0 +1,82 @@
+{
+  "type" : "crewmembercyborg",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "rustyskul",
+        "chest" : "apextier6schest",
+        "legs" : "apextier6spants"
+        },
+
+      "role" : {
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "shipSpeed",
+            "value" : 1.25
+          },             
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "aetherimmunity",
+            "duration" : 300
+          },         
+          {
+            "type" : "PersistentEffect",
+            "effect" : "shipMassSmall"
+          }
+        ],
+        "type" : "chemist",
+        "name" : "Cyborg",
+        "field" : "Murder",
+        "uniformColorIndex" : 8
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I will interface with SAIL and increase your ships speed."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "I can protect you from the Aether!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran hasss things to help you out in the Aether!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can grant immunity to Aether!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "isn_annihilator" ],
+            "sheathedprimary" : [ "advalloyshortspear" ]
+          }
+        ] ]
+    ]
+  }
+}

@@ -10,9 +10,9 @@
   "shortdescription" : "Mistral Icethrower",
   "category" : "Ice Cannon",
   "level" : 4,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "weaponType" : "Ice Thrower",
-  "itemTags" : ["weapon","ranged","flamethrower", "isogen"],
+  "itemTags" : ["weapon","ranged","flamethrower", "isogen", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -38,19 +38,16 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1,
-    "baseDps" : 9.7,
-    "energyUsage" : 27.0,
+    "fireTime" : 0.2,
+    "baseDps" : 9,
+    "energyUsage" : 40.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "frostcannonarmshot",
-    "projectileParameters" : { 
-      "speed" : 30,
-      "knockback" : 3
-    },
+    "projectileType" : "fuiceshotmistral",
+    "projectileParameters" : {},
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0,
@@ -61,21 +58,21 @@
 	      "allowFlip" : true
 	    },
 	    "fire" : {
+	      "duration" : 0.05,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
 	      "duration" : 0,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
 	      "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.25,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
-
-	      "allowRotate" : false,
+	      "allowRotate" : true,
 	      "allowFlip" : false
 	    }
 	  }    
@@ -92,6 +89,7 @@
   "critChance" : 2,
   "critBonus" : 5,
   "altAbilityType" : "freezecannon",
+  "altAbility" : { "name" : "Ice Wall", "speed" :40},
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

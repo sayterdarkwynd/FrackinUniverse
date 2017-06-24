@@ -1,6 +1,19 @@
 [
-	{"op":"replace","path":"/description","value":"An unusually malleable, yet resilient metal."},
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "moonstonebar", "phasematter" ] },
-	{"op":"add","path":"/radioMessagesOnPickup","value": [ "pickupMoonstone" ] },
-	{"op":"replace","path":"/price","value": 60 }
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op": "test", "path": "/radioMessagesOnPickup", "inverse" : true },
+    { "op": "add", "path": "/radioMessagesOnPickup", "value": [] }
+  ],
+  [
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "moonstonebar" },
+    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "phasematter" },
+    { "op" : "add", "path" : "/radioMessagesOnPickup/-", "value" : "pickupMoonstone" },
+    { "op": "replace", "path": "/description", "value": "An unusually conductive crystal that channels energy." },
+    {"op": "replace", "path": "/price", "value": 60 },
+    {"op": "replace", "path": "/shortdescription", "value": "Telebrium Crystal" },
+    {"op": "add", "path": "/collectablesOnPickup", "value": { "fu_geology" : "moonstoneore" } }
+  ]
 ]

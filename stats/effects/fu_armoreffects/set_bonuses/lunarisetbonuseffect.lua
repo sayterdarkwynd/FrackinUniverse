@@ -2,7 +2,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
 	{stat = "critChance", amount = 15},
-	{stat = "powerMultiplier", amount = 0.15}
+	{stat = "powerMultiplier", amount = 0.15},
+	{stat = "shipMass", baseMultiplier = 0.90}
 }
 
 armorBonus={
@@ -23,12 +24,12 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	
-	checkWeapons()
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+
+		checkWeapons()
+	end
 end
 
 function checkWeapons()

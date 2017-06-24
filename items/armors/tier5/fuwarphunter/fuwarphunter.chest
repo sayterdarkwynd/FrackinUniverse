@@ -7,12 +7,12 @@
   "rarity" : "rare",
   "description" : "Set Bonus:
 ^cyan;30%/25% Electric/Physical Resist^reset;
-^e43774;Immune: Zero-G, Burning, Proto, Pressure, Oxygen, Gas^reset;
+^#e43774;Immune: Zero-G, Burning, Proto, Pressure, Oxygen, Gas^reset;
 ^green;+340% Mining Laser damage^reset;", 
   "shortdescription" : "Warp Miner Techjacket",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
@@ -26,6 +26,7 @@
   },
 
   "level" : 5,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fuwarphunterchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -85,6 +86,5 @@
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ],
-  "collectablesOnPickup" : { "fu_armorsmith" : "fuwarphunterchest" }
+  ]
 }

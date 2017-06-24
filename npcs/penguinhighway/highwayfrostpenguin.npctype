@@ -1,0 +1,39 @@
+{
+  "type" : "highwayfrostpenguin",
+  "baseType" : "hostile",
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [
+              {"name" : "flamethrower", "parameters" : { "elementalType" : "ice", "primaryAbility" : { "projectileType" : "icethrower", "projectileParameters" : { "speed" : 50, "power" : 8 }} } }
+            ]
+          }
+        ] ]
+    ]
+  },
+  
+  "movementParameters" : {
+    "runSpeed" : 10,
+	"walkSpeed" : 7,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+  
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 100.0
+      },
+      "fallDamageMultiplier" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

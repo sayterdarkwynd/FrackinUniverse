@@ -5,12 +5,12 @@
   "inventoryIcon" : "hybridminer2gun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
     "description" : "Blends penumbrite and durasteel with a large power unit.",
     "shortdescription" : "C-7 Miner",
     "learnBlueprintsOnPickup" : [ "hybridminer3" ],
   "category" : "^#e43774;Upgradeable Tool^reset;",
-  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser" ],
+  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser", "upgradeableWeapon" ],
   "twoHanded" : false,
 
   "animation" : "hybridminer2.animation",
@@ -111,5 +111,22 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+          "shortdescription" : "^cyan;C-7 Miner^reset; ^green;^reset;"
+  },
+  "upgradeParameters2" : {
+          "shortdescription" : "^cyan;C-7 Miner^reset; ^cyan;^reset;"
+  },
+  "upgradeParameters3" : {
+          "shortdescription" : "^cyan;C-7 Miner^reset; ^yellow;^reset;",
+	  "primaryAbility" : {
+	    "damageConfig" : {
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "cosmic",
+	      "knockback" : 5
+	    }
+	  }    
+  }
 }

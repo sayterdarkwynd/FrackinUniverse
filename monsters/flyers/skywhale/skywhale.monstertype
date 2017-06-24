@@ -1,0 +1,194 @@
+{
+  "type" : "skywhale",
+  "shortdescription" : "Sky Whale",
+  "description" : "Passive gas-guzzling behemoths.",
+  "categories" : [ "skywhale" ],
+  "parts" : [ "body" ],
+
+  "animation" : "skywhale.animation",
+
+  "dropPools" : [ { "default" : "gasbagLoot", "bow" : "gasbagLoot" } ],
+  
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+      "behavior" : "monster",
+      "aggressive" : false,
+      "seeThroughLiquid" : true,
+      
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ 
+        {
+          "name" : "action-charge",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "maximumRange" : 15,
+            "windupStopForce" : 50,
+            "windupTime" : 2.5,
+            "windupState" : "firewindup",
+            "onGround" : false,
+
+            "wallCollide" : true,
+            "aimAtTarget" : true,
+            "rotateToTarget" : false,
+            "chargeTime" : 4.45,
+            "chargeSpeed" : 85,
+            "chargeControlForce" : 550,
+
+            "winddownState" : "firewinddown",
+            "winddownStopForce" : 500,
+            "winddownTime" : 3.7
+          }
+        }
+      ],
+
+      "periodicActions" : [
+       ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "minRange" : 4,
+            "maxRange" : 12            
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "minRange" : 14,
+            "maxRange" : 18
+          }          
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [2,4],
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 14,
+            "yVelocity" : 12
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ],
+
+      "deathActions" : []
+      
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-6.5,4.562], [-7.5,2.25], [-7.875,0.625], [-7.188,-2.625], [-5.312,-4.5], [-2,-6.5], [2.375,-6.438], [6.875,-3.25], [8.375,-1.375], [8.812,-0.25], [8.5,0.938], [6.5,3.625], [5.25,4.75], [3.625,5.812], [0.625,6.438], [-3.312,5.625], [-5.562,5.125] ],
+      "damage" : 28,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 70,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-6.5,4.562], [-7.5,2.25], [-7.875,0.625], [-7.188,-2.625], [-5.312,-4.5], [-2,-6.5], [2.375,-6.438], [6.875,-3.25], [8.375,-1.375], [8.812,-0.25], [8.5,0.938], [6.5,3.625], [5.25,4.75], [3.625,5.812], [0.625,6.438], [-3.312,5.625], [-5.562,5.125] ],
+
+      "mass" : 12.0,
+      "walkSpeed" : 22,
+      "runSpeed" : 24,
+      "gravityEnabled" : false,
+
+      "airFriction" : 1,
+      "airForce" : 60,
+      "flySpeed" : 14
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 750
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 2.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.05,
+    "capturedMonsterType" : "skywhale", // turn into an adultpoptop when captured    
+    "nametagColor" : [64, 200, 255]
+  }
+}

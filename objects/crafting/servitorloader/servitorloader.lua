@@ -49,6 +49,7 @@ item =
 function scanButton()
 	local items=world.containerItems(entity.id())
 	if not items then return end
+	if not (#items > 0) then return end
 	for index,invItem in pairs(items)do
 		if index==1 then
 			if loadMonster(invItem) then return end

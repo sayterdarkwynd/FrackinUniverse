@@ -1,12 +1,13 @@
 {
   "itemName" : "sciencefuchest",
+  "price" : 700,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "Set Bonus:
 ^cyan;30% Ice Resist^reset;
-^e43774;Immune: Cold, Ice, Snow, Liq. Nitrogen^reset;", 
+^#e43774;Immune: Cold, Ice, Snow, Liq. Nitrogen^reset;", 
   "shortdescription" : "Arctic Parka",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -22,8 +23,9 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 5,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "sciencefuchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
