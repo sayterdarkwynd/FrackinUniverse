@@ -4,7 +4,9 @@
   "level" : 4,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "A traditional Hylotl weapon of war.",
+  "description" : "A traditional Hylotl weapon of war.
+^cyan;Huge striking power. Cold edged^reset;.
+^green;Slowing Alt^reset;",
   "shortdescription" : "Great Scion",
   "tooltipKind" : "sword2",
   "category" : "broadsword",
@@ -27,11 +29,22 @@
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 10.4
+    "baseDps" : 10.0,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
   },
 
   "altAbilityType" : "fuwaterslash",
-
+  "altAbility" : {
+    "baseDps" : 7,
+    "projectileParameters" : {
+      "baseDamage" : 16
+    },
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }    
+  },
   "critChance" : 2, 
   "critBonus" : 4, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",

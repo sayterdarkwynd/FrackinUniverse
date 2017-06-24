@@ -12,32 +12,22 @@ armorBonus={
 
 setName="fu_precursorset"
 
-function init()
-  self.liquidMovementParameter = {
-    gravityEnabled = true,
-    gravityMultiplier = 1.5,
-    airForce = 20.0,
-    airFriction = 0.0,
-    bounceFactor = 0.0
-  } 	
+function init()	
 	setSEBonusInit("fu_precursorset")
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
 	setSEBonusInit(setName)
+	
 	weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
+	
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
-	--sb.logInfo("%s",_ENV)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	    if not mcontroller.onGround() then
-		mcontroller.controlParameters(self.liquidMovementParameter)
-		mcontroller.setYVelocity(math.min(-2,mcontroller.yVelocity() - 1));
-		--mcontroller.addMomentum({0, -80*dt})
-	    end	
+	        status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end	
 
