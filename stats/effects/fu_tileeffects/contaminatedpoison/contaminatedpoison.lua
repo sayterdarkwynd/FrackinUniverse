@@ -32,7 +32,7 @@ function update(dt)
       })
   end
 
-  effect.setParentDirectives("fade=806e4f="..self.tickTimer * 0.4)
+  effect.setParentDirectives("fade=806e4f=0.8")
 
 end
 

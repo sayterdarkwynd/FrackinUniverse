@@ -4,7 +4,17 @@
   "category" : "fuel",
   "price" : 47,
   "inventoryIcon" : "radioactivehoneyjar.png",
-  "description" : "FUEL! DO NOT EAT!",
-  "shortdescription" : "Radioactive Honey Jar",
-  "fuelAmount" : 6
+  "description" : "Radioactive, but not dangerous. Increases radiation resistance by 30%. Also a fuel.",
+  "shortdescription" : "Mutagenic Honey Jar",
+  "fuelAmount" : 6,
+  "effects" : [ [
+    "furadiationresistance3",
+    {
+        "effect" : "fedhoney",
+        "duration" : 300
+    }
+  ] ],
+  "blockingEffects" : [
+    "fedhoney"
+  ]  
  }

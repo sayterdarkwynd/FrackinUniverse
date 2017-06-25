@@ -318,6 +318,7 @@ end
 
 function showJumpDialog(system, target)
   local fuelAmount = world.getProperty("ship.fuel")
+  
   if fuelAmount then
     widget.setVisible("jumpDialog", true)
 
@@ -365,6 +366,11 @@ end
 function shipMassFind()    
     self.shipMass = status.stat("shipMass") /10
 end
+
+function fuelBonusFind()    
+    self.fuelBonus = status.stat("maxFuel")
+end
+
 -- end FU functions
 
 

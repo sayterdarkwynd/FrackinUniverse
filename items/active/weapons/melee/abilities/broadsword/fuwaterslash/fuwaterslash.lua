@@ -72,6 +72,9 @@ function KunaiBlast:spawnProjectile(angleAdjust)
 end
 
 function KunaiBlast:damageAmount()
+  if not self.baseDamage then
+    self.baseDamage = 2
+  end
   return self.baseDamage * config.getParameter("damageLevelMultiplier")
 end
 

@@ -1,0 +1,50 @@
+{
+  "name" : "microspherebomb",
+  "type" : "head",
+
+  "scripts" : ["microspherebomb.lua"],
+  "animator" : "microsphere.animation",
+
+  "description" : "A microsphere [F]! [down] drops bombs.",
+  "shortDescription" : "Micro Bomb Sphere",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/microspherebomb.png",
+
+  "chipCost" : 5,
+
+  "animationParts" : {
+    "ballGlow" : "microsphereglow.png",
+    "ball" : "microsphere.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.45, -0.25], [-0.25, -0.45], [0.25, -0.45], [0.45, -0.25], [0.45, 0.25], [0.25, 0.45], [-0.25, 0.45], [-0.45, 0.25] ],
+    "runModifier" : 1,
+    "groundForce" : 400.0,
+    "normalGroundFriction" : 1.6,
+    "ambulatingGroundFriction" : 0.25,
+    "slopeSlidingFactor" : 0.5,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 0,
+      "jumpControlForce" : 0.0,
+      "jumpInitialPercentage" : 1.0,
+      "jumpHoldTime" : 0.0
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 1.0,
+      "jumpControlForce" : 0.5,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ballSpeed" : 16,
+
+  "energyCost" : 30,
+
+  "ballRadius" : 0.5,
+  "ballFrames" : 8
+}
