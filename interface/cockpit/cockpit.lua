@@ -390,8 +390,8 @@ function fuelCost()
       cost = ((config.getParameter("jumpFuelCost") + distanceMath) * self.shipMass) -- but long range jumps are more complicated, and mass plays a factor in efficiency
     end
     
-    if (cost > 3000) then  -- we max at 3k for now until we can be certain on how effective crew are, and so forth
-      cost = 3000
+    if (cost > 10000) then  -- max off 10k fuel travel
+      cost = 10000
     end    
   -- end FU fuel cost calculation
   
