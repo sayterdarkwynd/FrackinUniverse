@@ -32,10 +32,11 @@ function burrowEffect(dt)
 end
 
 function twistEffect()
+
 	self.twist = self.twist and self.twist or 0
-	self.newTwist = vec2.angle(mcontroller.velocity())
-	animator.rotateTransformationGroup("body", self.twist - self.newTwist)
-	self.twist = self.newTwist
+	animator.resetTransformationGroup("body")
+	animator.rotateTransformationGroup("body", -self.twist)
+
 end
 
 function update(dt)
@@ -74,13 +75,13 @@ function update(dt)
 		local distance 	= entity.distanceToEntity(self.parent)
 		local angle 	= vec2.angle(distance)
 		local magnitude = world.magnitude(mcontroller.position(),world.entityPosition(self.parent))
-		self.tilt = self.tilt and self.tilt or angle
+		self.twist = angle
+		twistEffect()
 		if magnitude > self.followRadius * 2 then
 			mcontroller.setPosition(world.entityPosition(self.parent))
 		end
 		if world.magnitude(mcontroller.position(),world.entityPosition(self.parent)) > self.followRadius then
 		  mcontroller.controlApproachVelocityAlongAngle(angle, self.flySpeed + magnitude, 1500)
-		twistEffect()
 		else
 		  mcontroller.setVelocity(vec2.approach(distance,world.entityPosition(self.parent),self.parentRadius))
 		end

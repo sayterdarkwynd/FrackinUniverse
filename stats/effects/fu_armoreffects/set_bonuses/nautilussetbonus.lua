@@ -1,5 +1,5 @@
 setName="fu_nautilusset"
-setStatEffects={"nautilussetbonuseffect", "swimboost1"}
+setStatEffects={"nautilussetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

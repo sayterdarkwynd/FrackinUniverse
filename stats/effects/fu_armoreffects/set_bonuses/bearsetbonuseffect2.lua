@@ -10,7 +10,7 @@ armorBonus={
 	{stat = "grit", amount = 0.3}
 }
 
-setName="fu_bearset"
+setName="fu_bearset2"
 
 function init()
 	setSEBonusInit(setName)

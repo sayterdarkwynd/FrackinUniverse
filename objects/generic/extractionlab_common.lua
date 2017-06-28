@@ -800,7 +800,7 @@ function getRecipes()
 	{ inputs = { matteritem = 50 }, outputs = { unstableparticles = { 1, 1, 2 } }, timeScale = { 2.2, 3.6666666666667 } },
 	{ inputs = { penumbriteore = 4 }, outputs = { rawminerals = { 9, 9, 10 } } },
 	{ inputs = { protociteore = 4 }, outputs = { rawminerals = { 9, 9, 10 } }, timeScale = { 2.2666666666667, 3.7777777777778 } },
-	{ inputs = { rawminerals = 4 }, outputs = { lead = { 1, 1, 1 } }, timeScale = { 2.2 } },
+	{ inputs = { rawminerals = 4 }, outputs = { lead = { 1, 1, 2 } }, timeScale = { 2.2 } },
 	{ inputs = { solaricrystal = 1 }, outputs = { solarishard = { 1, 2, 2 } } },
 	{ inputs = { solarishard = 20 }, outputs = { crystal = { 1, 1, 2 } }, timeScale = { 2.1333333333333, 3.5555555555556 } },
 	{ inputs = { zerchesiumore = 4 }, outputs = { fu_carbon = { 4, 4, 12 } }, timeScale = { 2.2, 3.6666666666667 } },
