@@ -5,22 +5,56 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Ancient. Evil.
+^green;Ultimate Combo^reset;  
 ^cyan;Annihilating Alt-Fire^reset;",
   "shortdescription" : "Elder Cleaver",
   "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","xithricite"],
+  "itemTags" : [ "weapon", "melee", "broadsword", "elder" ],
   "inventoryIcon" : "elderbroadsword2.png",
 
-  "animation" : "/items/active/weapons/melee/broadsword/comboaetheriumbroadsword.animation",
+  "animation" : "/items/active/weapons/melee/broadsword/comboelderbroadsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "elderbroadsword2.png",
     "bladefullbright" : "elderbroadsword2fullbright.png"
   },
-  "animationCustom":{ },
-  
+  "animationCustom":{ 
+	  "sounds" : {
+	    "fire":["/sfx/melee/charge_full_swing1.ogg"], 
+	    "fire2":["/sfx/melee/charge_full_swing3.ogg"], 
+	    "fire3":["/sfx/melee/charge_full_swing2.ogg"], 
+	    "fire4":["/sfx/melee/charge_full_swing2.ogg"], 
+	    "fire5":["/sfx/melee/charge_full_swing4.ogg"], 
+	    "fire6":["/sfx/melee/charge_full_swing2.ogg", "/sfx/melee/charge_full_swing1.ogg", "/sfx/melee/charge_full_swing3.ogg"],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  },  
+	  
+	"animatedParts":{
+	  "parts":{ 
+	    "swoosh": {
+		"partStates": {
+		    "swoosh":{
+			    "fire3" : {
+			      "properties":{"image":"/stats/effects/cultistshield/cultistshield.png:hit.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[-1, 0.2],"damageArea":[[3, 3], [3, -3], [-3, 3], [-3, -3]], "zLevel":10}
+			    },	
+			    "fire4" : {
+			      "properties":{"image":"/monsters/boss/cultistboss/beam.png:beam.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[22.5, 0.2],"damageArea":[[22.5, 0.4], [-22.5, 0.4], [-22.5, -0.4], [22.5, -0.4]], "zLevel":10}
+			    },	
+			    "fire5" : {
+			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[-1, 0.2],"damageArea":[[3, 3], [3, -3], [-3, 3], [-3, -3]], "zLevel":10}
+			    },	
+			    "fire6" : {
+				"properties":{"image":"/monsters/boss/cultistboss/beam.png:beam.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[22.5, 0.2],"damageArea":[[22.5, 0.4], [-22.5, 0.4], [-22.5, -0.4], [22.5, -0.4]], "zLevel":10}
+			    }			    
+		    }						    
+		}
+	     }
+	   } 
+	 }
+  },
+
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
   "elementalType" : "shadow",
@@ -30,9 +64,10 @@
     "fireTime":0.82, 
     "baseDps":10.25, 
     "damageConfig":{
-      "knockback":20, 
-      "statusEffects":["insanity"], 
-      "damageSourceKind":"shadowbroadsword"}, 
+        "knockback":20, 
+        "statusEffects":[ "insanity" ], 
+        "damageSourceKind": "elderbroadsword" 
+      }, 
       "comboSteps":6, 
       "swooshOffsetRegions":[
         [0.75, 0.0, 4.25, 5.0], 
@@ -44,20 +79,21 @@
       ], 
       "stepDamageConfig":[
         {"baseDamageFactor":1.0, "knockback":15}, 
-        {"baseDamageFactor":1.0, "knockback":15}, 
-        {"baseDamageFactor":0.6, "knockback":10}, 
-        {"baseDamageFactor":0.75, "knockback":10}, 
+        {"baseDamageFactor":0.8, "knockback":15}, 
+        {"baseDamageFactor":0.4, "knockback":10}, 
         {"baseDamageFactor":0.8, "knockback":10}, 
-        {"baseDamageFactor":1.23, "knockback":20}
+        {"baseDamageFactor":0.4, "knockback":10}, 
+        {"baseDamageFactor":1.0, "knockback":20}
         ], 
       "stances":{
         "idle":{
           "armRotation":-20, 
-          "weaponRotation":50, 
+          "weaponRotation":120, 
           "twoHanded":false, 
           "weaponOffset":[0,1], 
           "allowRotate":false, 
-          "allowFlip":true, "aimAngle":0
+          "allowFlip":true, 
+          "aimAngle":0
         }, 
         "windup1":{
           "duration":0.1, 
@@ -124,7 +160,17 @@
           }, 
         "wait2":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]}, 
         "windup3":{"duration":0.1, "armRotation":0, "weaponRotation":-60, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
-        "preslash3":{"duration":0}, "fire3":{"duration":0.1, "armRotation":-110, "weaponRotation":30, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "preslash3":{"duration":0}, 
+      
+        "fire3":{
+          "duration":0.15, 
+          "armRotation":-45, 
+          "weaponRotation":-55, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false,
+          "allowFlip":false
+          },         
         "wait3":{"duration":1.2, "armRotation":-110, "weaponRotation":30, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
         "windup4":{"duration":0.1, "armRotation":-140, "weaponRotation":50, "weaponOffset":[0,0], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
         "preslash4":{"duration":0}, "fire4":{"duration":0.2, "armRotation":-20, "weaponRotation":-70, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
@@ -168,7 +214,7 @@
       "timeToLive":1, 
       "knockback":0,  
       "periodicActions":[
-        {"action":"particle", "specification":"shadowswoosh1", "time":0.2, "repeat":true}
+        {"action":"particle", "specification":"cultiststaff", "time":0.2, "repeat":true}
       ], 
      "actionOnReap":[
     {

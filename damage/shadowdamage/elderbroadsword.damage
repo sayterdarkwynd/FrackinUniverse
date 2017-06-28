@@ -1,0 +1,2386 @@
+{
+  "kind" : "elderbroadsword",
+  "elementalType" : "shadow",
+  "effects" : {
+    "organic" : {
+      "hit" : {
+        "sounds" : [ "/sfx/melee/slash.ogg" ],
+        "particles" : [
+          [
+
+            {
+              "type" : "animated",
+              "animation" : "/animations/groundmist/groundmist.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [12, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [11, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            }
+          ]
+        ]
+      },
+      "stronghit" : {
+        "sounds" : [ [ "/sfx/melee/slash.ogg", "/sfx/melee/critical_hit.ogg" ] ],
+        "particles" : [
+          [
+            // CRITICAL SHADOW PUFF
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+
+            // NORMAL PARTICLES
+            {
+              "type" : "animated",
+              "animation" : "/animations/energybeamimpact/hybridminerimpact5.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [12, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [11, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            }
+          ]
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/2h_sword_kill_organic1.ogg", "/sfx/melee/2h_sword_kill_organic2.ogg" ],
+        "particles" : [
+          [
+
+            {
+              "type" : "animated",
+              "animation" : "/animations/energybeamimpact/hybridminerimpact3.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [12, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [11, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [210, 0, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            }
+          ]
+        ]
+      }
+    },
+
+    "robotic" : {
+      "hit" : {
+        "sounds" : [ "/sfx/melee/sword_hit_metal1.ogg", "/sfx/melee/sword_hit_metal2.ogg", "/sfx/melee/sword_hit_metal3.ogg", "/sfx/melee/sword_hit_metal4.ogg", "/sfx/melee/sword_hit_metal5.ogg", "/sfx/melee/sword_hit_metal6.ogg" ],
+        "particles" : [
+          [
+
+            {
+              "type" : "animated",
+              "animation" : "/animations/energybeamimpact/hybridminerimpact5.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            }
+          ]
+        ]
+      },
+      "stronghit" : {
+        "sounds" : [ [ "/sfx/melee/sword_hit_metal1.ogg", "/sfx/melee/critical_hit_heavy.ogg" ], [ "/sfx/melee/sword_hit_metal2.ogg", "/sfx/melee/critical_hit_heavy.ogg" ], [ "/sfx/melee/sword_hit_metal3.ogg", "/sfx/melee/critical_hit_heavy.ogg" ], [ "/sfx/melee/sword_hit_metal4.ogg", "/sfx/melee/critical_hit_heavy.ogg" ], [ "/sfx/melee/sword_hit_metal5.ogg", "/sfx/melee/critical_hit_heavy.ogg" ], [ "/sfx/melee/sword_hit_metal6.ogg", "/sfx/melee/critical_hit_heavy.ogg" ] ],
+        "particles" : [
+          [
+            // CRITICAL SHADOW PUFF
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+
+            // NORMAL PARTICLES
+            {
+              "type" : "animated",
+              "animation" : "/animations/energybeamimpact/hybridminerimpact2.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            }
+          ]
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/kill_robotic1.ogg", "/sfx/melee/kill_robotic2.ogg" ],
+        "particles" : [
+          [
+
+            {
+              "type" : "animated",
+              "animation" : "/animations/largehitspark/largehitspark.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            }
+          ]
+        ]
+      }
+    },
+    "wooden" : {
+      "hit" : {
+        "sounds" : [ "/sfx/melee/sword_hit_wood1.ogg", "/sfx/melee/sword_hit_wood2.ogg", "/sfx/melee/sword_hit_wood3.ogg" ],
+        "particles" : [
+          [
+
+            {
+              "type" : "animated",
+              "animation" : "/animations/largehitspark/largehitspark.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [12, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [11, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            }
+          ]
+        ]
+      },
+      "stronghit" : {
+        "sounds" : [ [ "/sfx/melee/sword_hit_wood1.ogg", "/sfx/melee/critical_hit_heavy.ogg" ], [ "/sfx/melee/sword_hit_wood2.ogg", "/sfx/melee/critical_hit_heavy.ogg" ], [ "/sfx/melee/sword_hit_wood3.ogg", "/sfx/melee/critical_hit_heavy.ogg" ] ],
+        "particles" : [
+          [
+            // CRITICAL SHADOW PUFF
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+
+            // NORMAL PARTICLES
+            {
+              "type" : "animated",
+              "animation" : "/animations/largehitspark/largehitspark.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [12, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [11, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            }
+          ]
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/kill_wood1.ogg", "/sfx/melee/kill_wood2.ogg" ],
+        "particles" : [
+          [
+
+            {
+              "type" : "animated",
+              "animation" : "/animations/largehitspark/largehitspark.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [12, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [11, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [164, 120, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.3,
+              "color" : [117, 76, 35, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 1.3
+              }
+            }
+          ]
+        ]
+      }
+    },
+
+    "stone" : {
+      "hit" : {
+        "sounds" : [ "/sfx/melee/sword_hit_stone1.ogg", "/sfx/melee/sword_hit_stone2.ogg", "/sfx/melee/sword_hit_stone3.ogg", "/sfx/melee/sword_hit_stone4.ogg" ],
+        "particles" : [
+          [
+            {
+              "type" : "animated",
+              "animation" : "/animations/largehitspark/largehitspark.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            }
+          ]
+        ]
+      },
+      "stronghit" : {
+        "sounds" : [ [ "/sfx/melee/sword_hit_stone1.ogg", "/sfx/melee/critical_hit.ogg" ], [ "/sfx/melee/sword_hit_stone2.ogg", "/sfx/melee/critical_hit.ogg" ], [ "/sfx/melee/sword_hit_stone3.ogg", "/sfx/melee/critical_hit.ogg" ], [ "/sfx/melee/sword_hit_stone4.ogg", "/sfx/melee/critical_hit.ogg" ] ],
+        "particles" : [
+          [
+            // CRITICAL SHADOW PUFF
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+            {
+              "type" : "animated",
+              "animation" : "/animations/shadowfx/shadowfx.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 5],
+              "approach" : [15, 15],
+              "timeToLive" : 0.7,
+              "layer" : "front",
+              "destructionTime" : 0.5,
+              "destructionAction" : "fade",
+              "variance" : {
+                "initialVelocity" : [10, 5]
+              }
+            },
+
+            // NORMAL PARTICLES
+            {
+              "type" : "animated",
+              "animation" : "/animations/largehitspark/largehitspark.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            }
+          ]
+        ]
+      },
+      "kill" : {
+        "sounds" : [ "/sfx/melee/kill_stone1.ogg", "/sfx/melee/kill_stone2.ogg", "/sfx/melee/kill_stone3.ogg", "/sfx/melee/kill_stone4.ogg", "/sfx/melee/kill_stone5.ogg" ],
+        "particles" : [
+          [
+            {
+              "type" : "animated",
+              "animation" : "/animations/largehitspark/largehitspark.animation",
+              "size" : 1,
+              "angularVelocity" : 0,
+              "fade" : 1,
+              "destructionTime" : 1,
+              "position" : [0, 0],
+              "initialVelocity" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [20, 0],
+              "timeToLive" : 0.3,
+              "layer" : "middle"
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [-7, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 7.0],
+              "finalVelocity" : [13, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [17, 6.0],
+              "finalVelocity" : [17, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.8,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [16, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            },
+
+            {
+              "type" : "ember",
+              "size" : 1.0,
+              "color" : [255, 200, 0, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [-3, 7.0],
+              "finalVelocity" : [-3, -19.0],
+              "approach" : [20, 30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1
+              }
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

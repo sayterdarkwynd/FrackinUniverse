@@ -19,7 +19,17 @@
     "blade" : "aetheriumcleaver.png",
     "bladefullbright" : "aetheriumcleaverfullbright.png"
   },
-  "animationCustom":{ },
+  "animationCustom":{ 
+	  "sounds" : {
+	    "fire":["/sfx/melee/mech_energysword_swing1.ogg"], 
+	    "fire2":["/sfx/melee/mech_energysword_swing2.ogg"], 
+	    "fire3":["/sfx/melee/mech_energysword_swing3.ogg"], 
+	    "fire4":["/sfx/melee/mech_energysword_swing4.ogg"], 
+	    "fire5":["/sfx/melee/mech_energysword_swing4.ogg"], 
+	    "fire6":["/sfx/melee/energywhip_impact3.ogg", "/sfx/melee/mech_energysword_windup2.ogg", "/sfx/melee/mech_energysword_windup2.ogg"],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }   
+  },
   
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
@@ -81,7 +91,19 @@
           "twoHanded":true, 
           "weaponOffset":[0,1], 
           "allowRotate":false,
-          "allowFlip":false
+          "allowFlip":false,
+          "periodicActions" : [
+		    {
+		      "time" : 0.01,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "flamethrowerflameff",
+		      "inheritDamageFactor" :1,
+		      "fuzzAngle" : 360,
+		      "projectileCount" : 1,
+		      "projectileParameters" : { "damageSourceKind" : "fireplasma", "speed" : 20 }
+		   }              
+            ]
           }, 
         "wait1":{
           "duration":1.2, 
@@ -196,6 +218,5 @@
 
   "critChance" : 5,
   "critBonus" : 12,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"//,
-  //"collectablesOnPickup" : { "fu_warrior2" : "aetheriumcleaver" }
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
