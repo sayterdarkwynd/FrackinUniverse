@@ -29,24 +29,24 @@
 	  "parts":{ 
 	    "swoosh": {
 		"partStates": {
-		    "swoosh":{
+		    "swoosh":{		    
 			    "fire3" : {
-			      "properties":{"image":"/stats/effects/cultistshield/cultistshield.png:hit.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[-1, 0.2],"damageArea":[ [3, 3], [3, -3], [-3, 3], [-3, -3] ], "zLevel":10}
+			      "properties":{"image":"/stats/effects/cultistshield/cultistshield.png:hit.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[0, 0.2],"damageArea":[ [3, 3], [3, -3], [-3, 3], [-3, -3] ], "zLevel":10}
 			    },	
 			    "fire4" : {
 			      "properties":{"image":"/monsters/boss/cultistboss/beam.png:beam.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[22.5, 0.2],"damageArea":[[22.5, 0.4], [-22.5, 0.4], [-22.5, -0.4], [22.5, -0.4]], "zLevel":10}
 			    },	
 			    "fire5" : {
-			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[-1, 0.2],"damageArea":[[4, 4], [4, -4], [-4, 4], [-4, -4]], "zLevel":10}
+			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[0, 0.2],"damageArea":[[4, 4], [4, -4], [-4, 4], [-4, -4]], "zLevel":10}
 			    },
 			    "preslash5" : {
-			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[-1, 0.2],"damageArea":[[3, 3], [3, -3], [-3, 3], [-3, -3]], "zLevel":10}
+			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[0, 0.2],"damageArea":[[3, 3], [3, -3], [-3, 3], [-3, -3]], "zLevel":10}
 			    },	
 			    "wait4" : {
-			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[-1, 0.2],"damageArea":[[3, 3], [3, -3], [-3, 3], [-3, -3]], "zLevel":10}
+			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[0, 0.2],"damageArea":[[3, 3], [3, -3], [-3, 3], [-3, -3]], "zLevel":10}
 			    },			    
 			    "windup5" : {
-			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[-1, 0.2],"damageArea":[[4, 4], [4, -4], [-4, 4], [-4, -4]], "zLevel":10}
+			      "properties":{"image":"/stats/effects/tsmd/mage_shield/mage_shield.png:on.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[0, 0.2],"damageArea":[[4, 4], [4, -4], [-4, 4], [-4, -4]], "zLevel":10}
 			    },				    
 			    "fire6" : {
 				"properties":{"image":"/monsters/boss/cultistboss/beam.png:beam.<frame>?replace;fdd14d=4dfd65;fd8f4d=57b76e", "fullbright" : true, "offset":[22.5, 0.2],"damageArea":[[22.5, 0.4], [-22.5, 0.4], [-22.5, -0.4], [22.5, -0.4]], "zLevel":10}
@@ -68,16 +68,16 @@
     "baseDps":10.25, 
     "damageConfig":{
         "knockback":20, 
-        "statusEffects":[ "insanity" ], 
+        "statusEffects":[ "shadowgasfx" ], 
         "damageSourceKind": "elderbroadsword" 
       }, 
       "comboSteps":6, 
       "swooshOffsetRegions":[
         [0.75, 0.0, 4.25, 5.0], 
-        [0, -4.25, 5, 0], 
-        [3.0, -0.5, 6.5, 2.0], 
+        [7.75, 17.0, 17, 19.0], 
+        [3.0, 3.0, 3.0, 3.0], 
         [1.5, -1.0, 5.5, 1.0], 
-        [0, -4.25, 5, 0], 
+        [5.0, -5.0, -5.0, 5.0], 
         [1.5, -1.0, 5.5, 1.0]
       ], 
       "stepDamageConfig":[
@@ -162,7 +162,7 @@
           "allowFlip":true
           }, 
         "wait2":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]}, 
-        "windup3":{"duration":0.1, "armRotation":0, "weaponRotation":-60, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
+        "windup3":{"duration":0.16, "armRotation":0, "weaponRotation":-60, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true}, 
         "preslash3":{"duration":0}, 
       
         "fire3":{
