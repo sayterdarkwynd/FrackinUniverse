@@ -1,0 +1,56 @@
+{
+  "type" : "crewmemberengineer2",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : true
+    },
+
+    "crew" : {
+      "role" : {
+        "type" : "engineer",
+        "name" : "Chief Engineer",
+        "field" : "Engineering",
+        "uniformColorIndex" : 5,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "shipSpeed",
+            "value" : 3.75
+          },
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.4
+          }          
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll keep your engines in good shape. Thrust velocity is up by 75%! Fuel efficiency is up 40%!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "protectoratechest" } ],
+            "legs" : [ { "name" : "protectoratepants" } ],
+            "sheathedprimary" : [ "npcpistol", "npcshortsword" ]
+          }
+        ] ]
+    ]
+  }
+}
