@@ -8,13 +8,45 @@
       "swoosh" : {
         "default" : "idle",
         "states" : {
-          "idle" : {},
+                  "idle" : {},
 		  "fire":{"frames":3, "cycle":0.1, "mode":"transition", "transition":"idle"}, 
 		  "fire2":{"frames":3, "cycle":0.1, "mode":"transition", "transition":"idle"}, 
-		  "fire3":{"frames":3, "cycle":0.1, "mode":"transition", "transition":"idle"}, 
-		  "fire4":{"frames":3, "cycle":0.1, "mode":"transition", "transition":"idle"}, 
-		  "fire5":{"frames":3, "cycle":0.1, "mode":"transition", "transition":"idle"}, 
-		  "fire6":{"frames":3, "cycle":0.2, "mode":"transition", "transition":"idle"}
+		  "fire3":{
+		    "frames":3, 
+		    "cycle":0.1, 
+		    "mode":"transition", 
+		    "transition":"idle",
+		    "properties" : {
+		      "immediateSound" : "/sfx/gun/erchiuseyebeam_stop.ogg"
+		    }		    
+		  }, 
+		  "fire4":{
+		    "frames":3, 
+		    "cycle":0.1, 
+		    "mode":"transition", 
+		    "transition":"idle",
+		    "properties" : {
+		      "immediateSound" : "/sfx/gun/erchiuseyebeam_start.ogg"
+		    }		
+		  }, 
+		  "fire5":{
+		    "frames":3, 
+		    "cycle":0.1, 
+		    "mode":"transition", 
+		    "transition":"idle",
+		    "properties" : {
+		      "immediateSound" : "/sfx/gun/erchiuseyebeam_stop.ogg"
+		    }		
+		  }, 
+		  "fire6":{
+		    "frames":3, 
+		    "cycle":0.2, 
+		    "mode":"transition", 
+		    "transition":"idle",
+		    "properties" : {
+		      "immediateSound" : "/sfx/gun/erchiuseyebeam_start.ogg"
+		    }		
+		  }
         }
       }
     },
