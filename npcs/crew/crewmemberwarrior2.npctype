@@ -1,5 +1,5 @@
 {
-  "type" : "crewmemberwarrior",
+  "type" : "crewmemberwarrior2",
   "baseType" : "base",
 
   "dropPools" : [ "villagertreasure" ],
@@ -7,7 +7,7 @@
   "damageTeamType" : "friendly",
 
   // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": -20 }, {"stat" : "powerMultiplier", "amount" : -0.6} ], 
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.5} ], 
 
   "persistent" : true,
 
@@ -37,7 +37,7 @@
 
       "role" : {
         "type" : "soldier",
-        "name" : "Warrior",
+        "name" : "Veteran",
         "field" : "Battle",
         "uniformColorIndex" : 5
       },
@@ -398,19 +398,18 @@
     "default" : [
       [0, [
           {
-            "head" : [ { "name" : "copperarmorhead" } ],
-            "chest" : [ { "name" : "copperarmorchest" } ],
-            "legs" : [ { "name" : "copperarmorpants" } ],
-            "primary" : [ "carbonblade" ],
-            "secondary" : [ "ironshield" ],
+            "head" : [ { "name" : "fuintrepidhead" } ],
+            "chest" : [ { "name" : "fuintrepidchest" } ],
+            "legs" : [ { "name" : "fuintrepidpants" } ],
+            "primary" : [ "metallichammer" ],
             "sheathedprimary" : [ "k3rifle" ]
           },
           {
-            "head" : [ { "name" : "deadbeathelmhead" } ],
-            "chest" : [ { "name" : "deadbeatleatherchest" } ],
-            "legs" : [ { "name" : "soldierpants" } ],
-            "primary" : [ "solarihammer" ],
-            "sheathedprimary" : [ "lasrifle" ]
+            "head" : [ { "name" : "mutaviskhead" } ],
+            "chest" : [ { "name" : "mutaviskchest" } ],
+            "legs" : [ { "name" : "mutavisklegs" } ],
+            "primary" : [ "advalloybroadsword" ],
+            "sheathedprimary" : [ "napalmcannon" ]
           }
         ] ]
     ]
