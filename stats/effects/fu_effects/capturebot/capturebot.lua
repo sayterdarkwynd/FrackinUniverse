@@ -11,13 +11,15 @@ function init()
 end
 
 function update(dt)
-  if not (status.isResource("food")) then
+	if world.entityType(entity.id()) ~= "monster" then
+	  effect.expire()
+	else
 	  status.setResourcePercentage("health", math.min(status.resourcePercentage("health"), self.healthPercentage))
 	    mcontroller.controlModifiers({
 	      facingSuppressed = true,
 	      movementSuppressed = true
 	    }) 
-  end
+	end
 end
 
 function uninit()

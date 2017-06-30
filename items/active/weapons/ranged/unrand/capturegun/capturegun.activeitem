@@ -1,0 +1,111 @@
+{
+  "itemName" : "capturegun",
+  "price" : 1500,
+  "inventoryIcon" : "capturegun.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Captures creatures. Handy.",
+  "shortdescription" : "Capture Gun",
+  "level" : 3,
+  "category" : "Liquid Gun",
+  "itemTags" : ["weapon","ranged","machinepistol"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "capturegun.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/pumpgun_blast1.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+  },
+
+  "baseOffset" : [0.8, 0.34],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 5.0,
+    "baseDps" : 5,
+    "energyUsage" : 25,
+    "fireType" : "auto",
+    "projectileCount" : 1,
+    "projectileType" : "monstercaptureenergy",
+    "projectileParameters" : {
+	"speed":80,       
+	"periodicActions" : [
+	   {
+	      "time" : 0.01,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "invisibleprojectile",
+	      "inheritDamageFactor" :0.0,
+	      "fuzzAngle" : 0,
+	      "projectileCount" : 1,
+	      "config" : { 
+		"statusEffects":[ 
+		    {"effect":"capturebot", "duration":5, "damageTeam" : "enemy" }
+		  ],  	      
+		  "power":0,
+		  "inaccuracy":0.0, 
+		  "speed":85, 
+		  "timeToLive":2.0 
+		}
+	   },	
+	   {
+	      "time" : 0.01,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "capturepod",
+	      "inheritDamageFactor" :0.2,
+	      "fuzzAngle" : 0,
+	      "projectileCount" : 1,
+	      "config" : { 	      
+		  "power":5,
+		  "inaccuracy":0.0, 
+		  "speed":85, 
+		  "timeToLive":2.0 
+		}
+	   }		
+	]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
