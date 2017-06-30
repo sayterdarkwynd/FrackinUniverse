@@ -7,8 +7,8 @@
   "description" : "Captures creatures. Handy.",
   "shortdescription" : "Capture Gun",
   "level" : 3,
-  "category" : "Liquid Gun",
-  "itemTags" : ["weapon","ranged","machinepistol"],
+  "category" : "assaultrifle",
+  "itemTags" : ["weapon","ranged","assaultrifle"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -28,55 +28,21 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 5.0,
+    "fireTime" : 2.0,
     "baseDps" : 5,
+    "inaccuracy" : 0,
     "energyUsage" : 25,
     "fireType" : "auto",
     "projectileCount" : 1,
-    "projectileType" : "monstercaptureenergy",
-    "projectileParameters" : {
-	"speed":80,       
-	"periodicActions" : [
-	   {
-	      "time" : 0.01,
-	      "repeat" : false,
-	      "action" : "projectile",
-	      "type" : "invisibleprojectile",
-	      "inheritDamageFactor" :0.0,
-	      "fuzzAngle" : 0,
-	      "projectileCount" : 1,
-	      "config" : { 
-		"statusEffects":[ 
-		    {"effect":"capturebot", "duration":5, "damageTeam" : "enemy" }
-		  ],  	      
-		  "power":0,
-		  "inaccuracy":0.0, 
-		  "speed":85, 
-		  "timeToLive":2.0 
-		}
-	   },	
-	   {
-	      "time" : 0.01,
-	      "repeat" : false,
-	      "action" : "projectile",
-	      "type" : "capturepod",
-	      "inheritDamageFactor" :0.2,
-	      "fuzzAngle" : 0,
-	      "projectileCount" : 1,
-	      "config" : { 	      
-		  "power":5,
-		  "inaccuracy":0.0, 
-		  "speed":85, 
-		  "timeToLive":2.0 
-		}
-	   }		
-	]
-    },
+    "projectileType" : "capturepodgun",
+        
+    
+    
     "stances" : {
       "idle" : {
         "armRotation" : 0,

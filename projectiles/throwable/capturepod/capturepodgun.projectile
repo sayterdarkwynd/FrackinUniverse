@@ -1,0 +1,20 @@
+{
+  "projectileName" : "capturepodgun",
+  "image" : "capturepod.png",
+  "physics" : "laser",
+  "frameNumber" : 1,
+  "windupFrames" : 1,
+  "animationCycle" : 0.05,
+  "intangibleWindup" : true,
+
+  "pointLight" : false,
+  "speed" : 40,
+  "power" : 0.0,
+  "damageKind" : "capture",
+  "damageTeam" : { "type" : "indiscriminate" },
+  "emitters" : [ "capturepodblue" ],
+  "piercing" : false,
+  "inaccuracy" : 0,
+  "statusEffects":[ {"effect":"capturebot", "duration":6, "damageTeam" : "enemy" } ], 
+  "scripts" : [ "capturepodgun.lua" ]
+}
