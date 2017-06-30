@@ -66,7 +66,7 @@ function update(args)
         for a = 0, math.pi, math.pi / 4 do
           local testPos = vec2.add(mcontroller.position(), vec2.rotate({moveX * 0.25, 0}, self.headingAngle + (moveX * a)))
           adjustment = moveX * a
-          if not world.polyCollision(poly.translate(poly.scale(mcontroller.collisionPoly(), 1.0), testPos), nil, self.normalCollisionSet) then
+          if not world.polyCollision(poly.translate(poly.scale(mcontroller.collisionPoly(), 0.8), testPos), nil, self.normalCollisionSet) then
             break
           end
         end
@@ -78,7 +78,7 @@ function update(args)
         adjustment = 0
         for a = 0, -math.pi, -math.pi / 4 do
           local testPos = vec2.add(mcontroller.position(), vec2.rotate({moveX * 0.25, 0}, self.headingAngle + (moveX * a)))
-          if world.polyCollision(poly.translate(poly.scale(mcontroller.collisionPoly(), 1.0), testPos), nil, self.normalCollisionSet) then
+          if world.polyCollision(poly.translate(poly.scale(mcontroller.collisionPoly(), 0.8), testPos), nil, self.normalCollisionSet) then
             break
           end
           adjustment = moveX * a
