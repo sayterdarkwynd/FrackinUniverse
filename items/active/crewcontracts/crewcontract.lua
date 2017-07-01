@@ -13,7 +13,7 @@ end
 
 
 function raceroller()
-  self.raceroller = math.random(18)
+  self.raceroller = math.random(20)
     if self.raceroller == 1 then 
       self.crewrace = "apex"
     elseif self.raceroller == 2 then
@@ -50,6 +50,10 @@ function raceroller()
       self.crewrace = "radien" 
     elseif self.raceroller == 18 then
       self.crewrace = "thelusian"
+    elseif self.raceroller == 19 then
+      self.crewrace = "fupeglaci" 
+    elseif self.raceroller == 20 then
+      self.crewrace = "fufaleni"        
     else
       self.crewrace = "human"
     end  
