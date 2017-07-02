@@ -155,7 +155,7 @@ function deactivateVisualEffects2()
 end
 
 -- visual indicator for effect
-function makeAlert()
+function makeAlert()  
         world.spawnProjectile("poisonsmoke",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
 end
 
@@ -200,11 +200,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
             sourceEntityId = entity.id()	
           })   
 
-          -- activate visuals and check stats
-	  --makeAlert()
 	  activateVisualEffects()
-	  
-	  -- set the timer
+
           self.biomeTimer = self.baseRate
       end 
       if self.biomeTimer2 <= 0 and status.stat("poisonResistance",0) < self.effectCutoffValue then  

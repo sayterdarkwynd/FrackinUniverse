@@ -1,0 +1,86 @@
+{
+  "itemName" : "tungstenmachinepistol",
+  "price" : 480,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A large handgun that packs a kick.",
+  "shortdescription" : "Tungsten Machine Pistol",
+  "tooltipKind" : "gun",
+  "category" : "machinePistol",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","machinepistol"],
+  "level" : 2,
+
+  "inventoryIcon" : "tungstenmachinepistol.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "tungstenmachinepistol.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/uzi1.ogg"]
+    }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 5,
+  
+  "baseOffset" : [0.3, 0.0],
+  "muzzleOffset" : [1.5, 0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.11,
+    "baseDps" : 7.0,
+    "energyUsage" : 21,
+    "inaccuracy" : 0.04,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockback" : 2
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

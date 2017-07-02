@@ -1,0 +1,83 @@
+{
+  "type" : "crewmemberchef2",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "chefhead",
+        "chest" : "chefchest",
+        "legs" : "cheflegs"
+        },
+
+      "role" : {
+        "benefits" : [
+          {
+            "type" : "feedpack2",
+            "value" : 1
+          },        
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.06
+          }
+        ],
+        "type" : "chemist",
+        "name" : "Line Chef",
+        "field" : "Cooking",
+        "uniformColorIndex" : 3
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll give you a 6% fuel efficiency boost whenever we're on the ship! I cook *that* well!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Warm meals from me will keep you fed!",
+              "Let me feed you!",
+              "I'm gonna fill your stomache with yum.",
+              "WOULD YOU LIKE THIS FINE SANDWICH, SIR? TAKE IT!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran hasss things to help you eat! Promise iss not a baby!",
+              "Floran can help out! I is feeds with foodss!",
+              "Floran hasss things to help! Meatss!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can help you out with a fine delicacy.",
+              "Excited. Perhaps you could do with a hot meal?",
+              "Intrigued. I wonder if this delicious nourishment will help you?",
+              "Helpful. Take this, it will help keep you fed!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "fryingpan" ]
+          }
+        ] ]
+    ]
+  }
+}

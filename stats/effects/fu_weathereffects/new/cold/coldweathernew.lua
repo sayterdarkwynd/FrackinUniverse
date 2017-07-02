@@ -149,6 +149,9 @@ end
 
 -- ice breath
 function makeAlert()
+	  local statusTextRegion = { 0, 1, 0, 1 }
+	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+	  animator.burstParticleEmitter("statustext")  
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
         world.spawnProjectile("iceinvis",mouthPosition,entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
 end

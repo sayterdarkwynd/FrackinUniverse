@@ -1,0 +1,59 @@
+{
+  "objectName" : "precursormachine",
+  "colonyTags" : ["precursor","ancient","storage"],
+  "rarity" : "rare",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "The purpose of this device is unclear.",
+  "shortdescription" : "Precursor Machine",
+  "race" : "generic",
+  "category" : "fridgeStorage",
+  "price" : 1280,
+  "lightColor" : [252, 255, 0],
+  "health" : 12.5,
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursormachine.png:<color>", "fullbright" : true }, { "image" : "precursormachinelit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "precursormachine.png:<color>", "fullbright" : true }, { "image" : "precursormachinelit.png:<color>" } ],
+      "direction" : "right",
+
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/fridge_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fridge_close.ogg" ],
+  "slotCount" : 128,
+  "uiConfig" : "/interface/chests/genechest128.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "itemAgeMultiplier" : 0.0,
+
+  "soundEffect" : "/sfx/objects/fridge_hum.ogg"
+
+}

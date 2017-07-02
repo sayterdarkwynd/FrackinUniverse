@@ -147,6 +147,9 @@ function deactivateVisualEffects()
 end
 
 function makeAlert()
+  local statusTextRegion = { 0, 1, 0, 1 }
+  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+  animator.burstParticleEmitter("statustext")  
         world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
         animator.playSound("bolt")
 end

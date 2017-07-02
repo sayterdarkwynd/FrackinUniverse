@@ -1,5 +1,5 @@
 setName="fu_queenset"
-setStatEffects={"queensetbonuseffect", "thorns"}
+setStatEffects={"queensetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
