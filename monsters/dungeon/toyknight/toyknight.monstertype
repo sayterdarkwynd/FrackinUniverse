@@ -1,0 +1,174 @@
+{
+  "type" : "toyknight",
+
+  "categories" : [ "toyknight" ],
+  "parts" : [ "body" ],
+
+  "animation" : "toyknight.animation",
+  "reversed" : false,
+
+  "dropPools" : ["toyknightTreasure"],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 30,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 1,
+          "parameters" : {
+            "maximumRange" : 5,
+            "windupState": "idle",
+            "winddownState": "idle",
+            "windupTime" : 0.4,
+
+            "aimAtTarget" : false,
+            "aimDirection" : [1, 0.5],
+            "chargeTime" : [0.3, 0.3],
+            "chargeSpeed" : 25,
+            "chargeControlForce" : 200,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "jumpState" : "jump",
+            "fallState" : "fall",
+            "moveState" : "run",
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [3, 9]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "collisionPoly" : [ [-0.325, -1.0], [-0.175, -1.25], [0.175, -1.25], [0.325, -1.0], [0.325, 0.325], [0.175, 0.61], [-0.175, 0.61], [-0.325, 0.325] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 0,
+
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4.0, -4.0, 4.0, 4.0],
+    "scale" : 0.5,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.75, -2.0], [-0.35, -2.5], [0.35, -2.5], [0.75, -2.0], [0.65, 0.65], [0.35, 1.22], [-0.35, 0.122], [-0.65, 0.65] ],
+      "mass" : 0.8,
+      "walkSpeed" : 3,
+      "runSpeed" : 5,
+
+      "airFriction" : 0.5,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 23.0,
+        "jumpInitialPercentage" : 0.75,
+        "jumpHoldTime" : 0.2
+      }
+    },
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "maxHealth" : {
+          "baseValue" : 20
+        },
+        "protection" : {
+          "baseValue" : 5.0
+        },
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        },
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

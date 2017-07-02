@@ -6,77 +6,36 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 7,
-            "cycle" : 1.2,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "", "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "" ]
-            }
+            "frames" : 1
           },
-          "fly" : {
-            "frames" : 7,
-            "cycle" : 1.2,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/npcs/monsters/whale1.ogg"
-            }
-          }, 
-          
-          "firewindup" : {
-            "frames" :7,
-            "cycle" : 2.5,
-            "mode" : "transition",
-            "transition" : "fire",
-            "properties" : {
-              "immediateSound" : "/sfx/npcs/monsters/whale3.ogg"
-            }
-          }, 
-          "firewinddown" : {
-            "frames" : 7,
-            "cycle" : 2.5,
+          "jump" : {
+            "frames" : 4
+          },
+          "fall" : {
+            "frames" : 2
+          },
+          "walk" : {
+            "frames" : 4,
+            "cycle" : 1,
             "mode" : "loop"
-          },            
-          "fire" : {
-            "frames" : 1,
-            "cycle" : 1.2,
-            "mode" : "transition",
-            "transition" : "firewinddown"
-          },  
+          },
+          "run" : {
+            "frames" : 4,
+            "cycle" : 0.75,
+            "mode" : "loop"
+          },
           "chargewindup" : {
-            "frames" : 7,
-            "cycle" : 0.25,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/npcs/monsters/whale2.ogg"
-            }
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "charge" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
           },
           "chargewinddown" : {
-            "frames" : 7,
-            "cycle" : 0.25,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/npcs/monsters/whale4.ogg"
-            }
-          },          
-          "charge" : {
-            "frames" : 1,
-            "cycle" : 0.55,
-            "mode" : "loop"
-          },  
-          "crash" : {
-            "frames" : 7,
-            "cycle" : 0.375,
-            "mode" : "loop"
-          },  
-          "hurt" : {
-            "frames" : 1,
-            "cycle" : 0.75,
-            "mode" : "loop"
-          },
-          "stunned" : {
-            "frames" : 1,
-            "cycle" : 0.75,
-            "mode" : "loop"
+            "frames" : 1
           }
         }
       },
@@ -88,16 +47,10 @@
             "frames" : 1
           },
           "stunned" : {
-            "frames" : 1,
-            "cycle" : 0.75,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "", "", "/sfx/npc/monsters/batong_flap3.ogg", "", "", "" ]
-            }
+            "frames" : 2
           }
         }
       },
-
       "releaseParticles" : {
         "default" : "off",
         "states" : {
@@ -117,67 +70,62 @@
             }
           }
         }
-      }      
+      }
     },
 
     "parts" : {
       "body" : {
         "properties" : {
           "transformationGroups" : [ "body" ],
-          "offset" : [0.25, -0.25]
+          "offset" : [-0.0625, 0.6875]
         },
         "partStates" : {
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:idle"
               }
             },
-            "fly" : {
+            "jump" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
-            "firewindup" : {
+            "fall" : {
               "properties" : {
-                "image" : "<partImage>:firewindup.<frame>"
+                "image" : "<partImage>:fall.<frame>"
               }
             },
-            "firewinddown" : {
+            "walk" : {
               "properties" : {
-                "image" : "<partImage>:firewinddown.<frame>"
+                "image" : "<partImage>:walk.<frame>"
               }
-            },              
-            "fire" : {
+            },
+            "run" : {
               "properties" : {
-                "image" : "<partImage>:fire.<frame>"
+                "image" : "<partImage>:walk.<frame>"
               }
             },
             "chargewindup" : {
               "properties" : {
-                "image" : "<partImage>:firewindup.<frame>"
+                "image" : "<partImage>:run.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>",
               }
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:firewinddown.<frame>"
-              }
-            },              
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:fire.<frame>"
-              }
-            },
-            "crash" : {
-              "properties" : {
-                "image" : "<partImage>:melee.<frame>"
+                "image" : "<partImage>:idle"
               }
             }
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:stunned"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           }
@@ -250,8 +198,6 @@
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
-    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
-    "ranged" : [ "/sfx/npcs/monsters/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
-    "crash" : [ "/sfx/melee/blunt_hit_organic.ogg" ]
+    "wallCrash" : [ "/sfx/npc/monsters/peblit_drop1.ogg" ]
   }
 }
