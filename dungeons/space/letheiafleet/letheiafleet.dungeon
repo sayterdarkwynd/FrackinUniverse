@@ -1,0 +1,46 @@
+{
+  "metadata" : {
+    "name" : "letheiafleet",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "letheiafleet" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 3,
+    "protected" : true
+},
+
+  "parts" : [
+  
+	//maps
+
+	{
+      "name" : "fleetmaplab",
+      "rules" : [
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "fleetmaplab.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "fleetmapfacility",
+      "rules" : [
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "fleetmapfacility.json" ],
+      "chance" : 0
+    },
+	
+    //Structure Bases
+	
+    {
+      "name" : "letheiafleet",
+      "rules" : [
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "letheiafleet.json" ],
+      "chance" : 0
+    }
+  ]
+}
