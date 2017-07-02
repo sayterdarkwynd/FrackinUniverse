@@ -1,0 +1,55 @@
+{
+  "type" : "letheiascientist",
+  "baseType" : "hostile",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "A corporate spy!",
+			"This is a restricted zone!",
+            "Where's your ID?"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "scientisthead" }, "" ],
+            "chest" : [ { "name" : "scientistchest", "parameters" : { "colorIndex" : [4] } } ],
+            "legs" : [ { "name" : "scientistlegs", "parameters" : { "colorIndex" : [4] } } ],
+            "primary" : [
+              {"name" : "flamethrower", "parameters" : { "elementalType" : "poison", "primaryAbility" : { "projectileType" : "poisonthrower", "projectileParameters" : { "speed" : 50, "power" : 3.0, "damageType" : "IgnoresDef" }} } }
+            ]
+          }
+        ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {
+
+    "stats" : {
+        "powerMultiplier" : {
+          "baseValue" : 0.7
+        },
+      "maxHealth" : {
+        "baseValue" : 50.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 400.0
+      },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+    }
+  }
+}
