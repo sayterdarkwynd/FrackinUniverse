@@ -1,0 +1,87 @@
+{
+  "type" : "letheiacaptain",
+  "baseType" : "hostile",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "challengeChestTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "The board of directors will hear of this!",
+			"Guess I'll have to deal with you personally!",
+            "How unfortunate."
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 18,
+	  "walkSpeed" : 18,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+  
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "captainshead", "parameters" : { "colorIndex" : [4] } } ],
+            "chest" : [ { "name" : "voyagerchest", "parameters" : { "colorIndex" : [4] } } ],
+            "legs" : [ { "name" : "voyagerlegs", "parameters" : { "colorIndex" : [4] } } ],
+            "primary" : [ 
+			  { "name" : "violiumbroadsword" } 
+			],
+            "sheathedprimary" : [ 
+			  { "name" : "electricrailgun" } 
+			]
+          }
+        ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {    
+    "stats" : {
+	"knockbackStunTime" : {
+		"baseValue" : 0.0
+	},
+	"grit" : {
+		"baseValue" : 1.0
+	},
+	"poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"electricStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"iceStatusImmunity" : {
+        "baseValue" : 1.0
+      },	  
+	"fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"specialStatusImmunity" : {
+		"baseValue" : 1.0
+	},
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+      "maxHealth" : {
+        "baseValue" : 450.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 3.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 75.0
+      }
+    }
+  }
+}
