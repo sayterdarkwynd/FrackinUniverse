@@ -1,5 +1,5 @@
 {
-  "type" : "magmagolem",
+  "type" : "magmagolempet",
   "shortdescription" : "Magma Beast",
   "description" : "All rage and fire. Best to avoid. Really quite dangerous.",
 
@@ -13,11 +13,8 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_deathbombmagma.lua",
-      "/scripts/golemancer/gol_monstermain.lua"
+      "/stats/monstereffects/monsterstatus_deathbombmagma.lua"
     ],
-  "tickEvoTime" : 3,
-  "evolutions" : [ "/scripts/golemancer/evolutions/megamagmagolem.evo", "/scripts/golemancer/evolutions/magmagolemdmg.evo" ],
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
@@ -337,8 +334,6 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.05,
-    "capturedMonsterName" : "Magma Golem",
-    "capturedMonsterType" : "magmagolempet", // turn into an adultpoptop when captured    
     "nametagColor" : [64, 200, 255],
     "captureCollectables" : { "fu_monster" : "magmagolem" }
   }
