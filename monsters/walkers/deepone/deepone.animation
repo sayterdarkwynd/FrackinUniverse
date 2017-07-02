@@ -16,11 +16,14 @@
             "mode" :"loop"
           },
           "hurt" : {
-            "frames" : 1
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/monsters/npc/quadruped/lion_attack1.ogg"
+            }       
           },
           "fire" : {
             "frames" : 1,
-            "cycle" : 1
+            "cycle" : 1     
           },
           "firewindup" : {
             "frames" : 4,
@@ -43,8 +46,7 @@
             "frames" : 1,
             "cycle" : 0.35,
             "properties" : {
-              "persistentSound" : "/sfx/monsters/npc/quadruped/lion_attack2.ogg",
-              "persistentSoundStopTime" : 2.2
+              "immediateSound" : "/sfx/npc/monsters/quadruped/lion_attack2.ogg"
             },
             "frameProperties" : {
               "particleEmittersOff" : [ [ "waterdrip" ], [], [], ["waterdrip"], [], [], [], ["waterdrip"] ],
@@ -57,8 +59,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/monsters/npc/quadruped/lion_idle2.ogg",
-              "persistentSoundStopTime" : 2.2
+              "immediateSound" : "/sfx/npc/monsters/quadruped/lion_idle2.ogg"
             },
             "frameProperties" : {
               "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
@@ -69,9 +70,7 @@
             "frames" : 4,
             "cycle" : 0.5,
             "properties" : {
-              "persistentSound" : "/sfx/monsters/troll/troll3.ogg",
-              "persistentSoundStopTime" : 2.0,
-              "immediateSound" : "/sfx/monsters/npc/monsters/oogler_charge.ogg"
+              "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg"
             },
             "frameProperties" : {
               "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
@@ -84,7 +83,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/monsters/troll/troll5.ogg",
+              "persistentSound" : "/sfx/npc/monsters/troll/troll5.ogg",
               "persistentSoundStopTime" : 1.25
             },
             "frameProperties" : {
@@ -303,9 +302,9 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/monsters/troll1.ogg", "/sfx/monsters/troll3.ogg", "/sfx/monsters/troll4.ogg", "/sfx/monsters/troll5.ogg" ],
-    "deathPuff" : [ "/sfx/monsters/deeponeturnhostile.ogg" ],
-    "turnHostile" : [ "/sfx/monsters/deeponeturnhostile.ogg" ],
-    "fire" : [ "/sfx/monsters/deeponeattack1.ogg" , "/sfx/monsters/deeponeattack2.ogg"  ]
+    "aggroHop" : [ "/sfx/npc/monsters/troll1.ogg", "/sfx/npc/monsters/troll3.ogg", "/sfx/npc/monsters/troll4.ogg", "/sfx/npc/monsters/troll5.ogg" ],
+    "deathPuff" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
+    "turnHostile" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
+    "fire" : [ "/sfx/npc/monsters/deeponeattack1.ogg" , "/sfx/npc/monsters/deeponeattack2.ogg"  ]
   }
 }
