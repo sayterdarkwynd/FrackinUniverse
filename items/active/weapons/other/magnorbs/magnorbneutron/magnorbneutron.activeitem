@@ -21,9 +21,9 @@
     "orb4" : "orbneutron.png"
   },
 
-  "animationCustom" : { 
-  
-    "lights" : { 
+  "animationCustom" : {
+
+    "lights" : {
       "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
@@ -34,18 +34,18 @@
       "flickerPeriodVariance" : 0.075,
       "flickerIntensityVariance" : 0.025
       }
-    } 
-  
+    }
+
   },
 
-  "scripts" : ["magnorbsquad.lua"],
+  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
 
   "orbitRate" : 1.02,
 
   "elementalType" : "shadow",
 
   "projectileType" : "magnorbneutron",
-  
+
   "projectileParameters" : {
     "power" : 3.75,
     "knockback" : 15,
@@ -56,13 +56,14 @@
     "snapDistance" : 1.0
   },
 
+  "count" : 4,
   "shieldKnockback" : 5,
   "shieldEnergyCost" : 35,
   "shieldHealth" : 110,
   "shieldPower" : "Gravity Well",
   "critChance" : 2,
   "critBonus" : 2,
-  
+
   "stances" : {
     "idle" : {
       "armRotation" : 10,
@@ -76,6 +77,6 @@
       "allowRotate" : true,
       "allowFlip" : true
     }
-  }, 
+  },
   "builder" : "/items/buildscripts/buildmagnorb.lua"
 }
