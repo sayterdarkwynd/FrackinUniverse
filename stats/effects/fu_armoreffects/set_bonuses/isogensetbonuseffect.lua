@@ -3,7 +3,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_isogenset"
 
 weaponBonus={
-  {stat = "physicalResistance", amount = 0.15}
+  {stat = "physicalResistance", amount = 0.15},
+  {stat = "critChance", amount = 5}
 }
 
 armorBonus={

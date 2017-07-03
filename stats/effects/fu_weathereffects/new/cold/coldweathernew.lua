@@ -149,9 +149,6 @@ end
 
 -- ice breath
 function makeAlert()
-	  local statusTextRegion = { 0, 1, 0, 1 }
-	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	  animator.burstParticleEmitter("statustext")  
         local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
         world.spawnProjectile("iceinvis",mouthPosition,entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
 end
@@ -220,7 +217,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         end
 
 	self.damageApply = setEffectDamage()   
-	self.debuffApply = setEffectDebuff()  
+	self.debuffApply = setEffectDebuff()
+	
         self.biomeTimer = setEffectTime()
         activateVisualEffects()
       end 
@@ -237,7 +235,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
              }) 
 		     self.damageApply = self.damageApply  
 		     status.modifyResource("health", -self.damageApply * dt)
-
+		  
 		   if status.isResource("food") then
 		     self.debuffApply = (self.debuffApply /120) 
 		     if status.resource("food") >= 2 then
