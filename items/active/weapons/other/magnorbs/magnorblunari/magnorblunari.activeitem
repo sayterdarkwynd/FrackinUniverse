@@ -12,20 +12,20 @@
   "itemTags" : ["weapon","magnorb","lunari", "upgradeableWeapon"],
 
   "inventoryIcon" : "iconlunari.png",
-  "animation" : "magnorbs.animation",
+  "animation" : "magnorblunari.animation",
   "animationParts" : {
-    "glove" : "glove2.png",
-    "orb1" : "orb2.png",
-    "orb2" : "orb2.png",
-    "orb3" : "orb2.png"
+    "glove" : "glovelunari.png",
+    "orb1" : "orblunari.png",
+    "orb2" : "orblunari.png",
+    "orb3" : "orblunari.png"
   },
   "animationCustom" : { },
 
-  "scripts" : ["magnorbs.lua"],
+  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
 
   "orbitRate" : 0.15,
 
-  "projectileType" : "magnorb2",
+  "projectileType" : "magnorblunari",
   "projectileParameters" : {
     "power" : 3.4,
     "knockback" : 5,
@@ -37,13 +37,14 @@
     "snapDistance" : 2.0
   },
 
+  "count" : 3,
   "shieldKnockback" : 15,
   "shieldEnergyCost" : 40,
   "shieldHealth" : 60,
   "shieldPower" : "Electric Resist",
   "critChance" : 2,
   "critBonus" : 2,
-  
+
   "stances" : {
     "idle" : {
       "armRotation" : 10,
@@ -57,6 +58,6 @@
       "allowRotate" : true,
       "allowFlip" : true
     }
-  }, 
+  },
   "builder" : "/items/buildscripts/buildmagnorb.lua"
 }

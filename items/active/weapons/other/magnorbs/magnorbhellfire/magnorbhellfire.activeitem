@@ -22,9 +22,9 @@
     "orb4" : "orbhellfire.png"
   },
 
-  "animationCustom" : { 
-  
-    "lights" : { 
+  "animationCustom" : {
+
+    "lights" : {
       "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
@@ -33,18 +33,18 @@
       "flickerMinIntensity" : 0.8,
       "flickerMaxIntensity" : 1
       }
-    } 
-  
+    }
+
   },
 
-  "scripts" : ["magnorbsquad.lua"],
+  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
 
   "orbitRate" : 0.60,
 
   "elementalType" : "fire",
 
   "projectileType" : "magnorbhellfire",
-  
+
   "projectileParameters" : {
     "power" : 4.05,
     "knockback" : 1,
@@ -55,13 +55,14 @@
     "snapDistance" : 1.0
   },
 
+  "count" : 4,
   "shieldKnockback" : 12,
   "shieldEnergyCost" : 40,
   "shieldHealth" : 60,
   "shieldPower" : "Fire Aura",
   "critChance" : 2,
   "critBonus" : 5,
-  
+
   "stances" : {
     "idle" : {
       "armRotation" : 10,
@@ -75,6 +76,6 @@
       "allowRotate" : true,
       "allowFlip" : true
     }
-  }, 
+  },
   "builder" : "/items/buildscripts/buildmagnorb.lua"
 }

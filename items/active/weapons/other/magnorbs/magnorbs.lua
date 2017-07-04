@@ -4,8 +4,8 @@ require "/scripts/status.lua"
 require "/scripts/activeitem/stances.lua"
 
 function init()
-self.critChance = config.getParameter("critChance", 0)
-self.critBonus = config.getParameter("critBonus", 0)
+  self.critChance = config.getParameter("critChance", 0)
+  self.critBonus = config.getParameter("critBonus", 0)
   activeItem.setCursor("/cursors/reticle0.cursor")
 
   self.projectileType = config.getParameter("projectileType")
@@ -14,22 +14,27 @@ self.critBonus = config.getParameter("critBonus", 0)
 
   self.cooldownTime = config.getParameter("cooldownTime", 0)
   self.cooldownTimer = self.cooldownTime
+  self.count = config.getParameter("count", 3)
 
   initStances()
 
-  storage.projectileIds = storage.projectileIds or {false, false, false}
+  storage.projectileIds = storage.projectileIds or {}
+  getProjectiles()
   checkProjectiles()
+
 
   self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
 
   animator.resetTransformationGroup("orbs")
-  for i = 1, 3 do
+  for i = 1, self.count do
     animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
   end
   setOrbPosition(1)
 
+  self.shieldPower = config.getParameter("shieldPower", nil)
   self.shieldActive = false
   self.shieldTransformTimer = 0
+
   self.shieldTransformTime = config.getParameter("shieldTransformTime", 0.1)
   self.shieldPoly = animator.partPoly("glove", "shieldPoly")
   self.shieldEnergyCost = config.getParameter("shieldEnergyCost", 50)
@@ -55,53 +60,53 @@ end
 
 
 
-  -- *******************************************************
-  -- FU Crit Damage Script
+-- *******************************************************
+-- FU Crit Damage Script
 
 function setCritDamageBoomerang(damage)
-	if not self.critChance then 
+	if not self.critChance then
 		self.critChance = config.getParameter("critChance", 0)
 	end
 	if not self.critBonus then
 		self.critBonus = config.getParameter("critBonus", 0)
 	end
 
-	if not self.critChance then 
+	if not self.critChance then
 		self.critChance = config.getParameter("critChance", 0)
 	end
 	if not self.critBonus then
 		self.critBonus = config.getParameter("critBonus", 0)
 	end
 
-     -- check their equipped weapon
-     -- Primary hand, or single-hand equip  
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     --used for checking dual-wield setups
-     local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
-     local weaponModifier = config.getParameter("critChance",0)
-     
+   -- check their equipped weapon
+   -- Primary hand, or single-hand equip
+   local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
+   --used for checking dual-wield setups
+   local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")
+   local weaponModifier = config.getParameter("critChance",0)
+
   if heldItem then
-      if root.itemHasTag(heldItem, "magnorb") then
-        self.critChance = 1 + weaponModifier
-      end
+    if root.itemHasTag(heldItem, "magnorb") then
+      self.critChance = 1 + weaponModifier
+    end
   end
-    --sb.logInfo("crit chance base="..self.critChance)
-  --critBonus is bonus damage done with crits
-  self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
+  -- sb.logInfo("crit chance base="..self.critChance)
+  -- critBonus is bonus damage done with crits
+  self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0
   -- this next modifier only applies if they have a multiply item equipped
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)+ status.stat("critChanceMultiplier",0)+ status.stat("critChance",0)) 
+  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)+ status.stat("critChanceMultiplier",0)+ status.stat("critChance",0))
   -- random dice roll. I've heavily lowered the chances, as it was far too high by nature of the random roll.
   self.critRoll = math.random(200)
-  
-  --apply the crit
+
+  -- apply the crit
   local crit = self.critRoll <= self.critChance
-    --sb.logInfo("crit roll="..self.critRoll)
+  --sb.logInfo("crit roll="..self.critRoll)
   damage = crit and (damage*2) + self.critBonus or damage
 
   if crit then
     if heldItem then
       -- exclude mining lasers
-      if not root.itemHasTag(heldItem, "mininggun") then 
+      if not root.itemHasTag(heldItem, "mininggun") then
         status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
       end
     end
@@ -117,9 +122,10 @@ function update(dt, fireMode, shiftHeld)
   updateStance(dt)
   checkProjectiles()
 
-  if fireMode == "alt" and availableOrbCount() == 3 and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
+  if fireMode == "alt" and availableOrbCount() == self.count and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
     if not self.shieldActive then
       activateShield()
+      addShieldEffect()
     end
     setOrbAnimationState("shield")
     self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
@@ -141,14 +147,13 @@ function update(dt, fireMode, shiftHeld)
   if self.shieldActive then
     if not status.resourcePositive("shieldStamina") or not status.overConsumeResource("energy", self.shieldEnergyCost * dt) then
       deactivateShield()
+      removeShieldEffect()
     else
       self.damageListener:update()
     end
   end
 
   if self.shieldTransformTimer > 0 then
-
-
     local transformRatio = self.shieldTransformTimer / self.shieldTransformTime
     setOrbPosition(1 - transformRatio * 0.7, transformRatio * 0.75)
     animator.resetTransformationGroup("orbs")
@@ -156,11 +161,12 @@ function update(dt, fireMode, shiftHeld)
   else
     if self.shieldActive then
       deactivateShield()
+      removeShieldEffect()
     end
 
     animator.resetTransformationGroup("orbs")
     animator.rotateTransformationGroup("orbs", -self.armAngle or 0)
-    for i = 1, 3 do
+    for i = 1, self.count do
       animator.rotateTransformationGroup("orb"..i, self.orbitRate * dt)
       animator.setAnimationState("orb"..i, storage.projectileIds[i] == false and "orb" or "hidden")
     end
@@ -178,7 +184,7 @@ function uninit()
 end
 
 function nextOrb()
-  for i = 1, 3 do
+  for i = 1, self.count do
     if not storage.projectileIds[i] then
       return i
     end
@@ -187,7 +193,7 @@ end
 
 function availableOrbCount()
   local available = 0
-  for i = 1, 3 do
+  for i = 1, self.count do
     if not storage.projectileIds[i] then
       available = available + 1
     end
@@ -204,14 +210,14 @@ end
 function fire(orbIndex)
   local params = copy(self.projectileParameters)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
-  
+
   params.power = setCritDamageBoomerang(params.power)
 
   params.ownerAimPosition = activeItem.ownerAimPosition()
   local firePos = firePosition(orbIndex)
-  
+
   if status.resourcePositive("energy") and not status.resourceLocked("energy") then
-  
+
 	  if world.lineCollision(mcontroller.position(), firePos) then return end
 	  local projectileId = world.spawnProjectile(
 	      self.projectileType,
@@ -227,11 +233,10 @@ function fire(orbIndex)
 	    animator.playSound("fire")
 	  end
 
-  -- FU adds energy drain to these otherwise OP with crit weapons
-     self.energyCost = 4 * config.getParameter("level", 1)
-     status.overConsumeResource("energy", self.energyCost)
+    -- FU adds energy drain to these otherwise OP with crit weapons
+    self.energyCost = 4 * config.getParameter("level", 1)
+    status.overConsumeResource("energy", self.energyCost)
   end
-  
 end
 
 function firePosition(orbIndex)
@@ -271,6 +276,7 @@ function activateShield()
       end
     end
   end)
+  addShieldEffect()
 end
 
 function deactivateShield()
@@ -284,15 +290,122 @@ function deactivateShield()
 end
 
 function setOrbPosition(spaceFactor, distance)
-  for i = 1, 3 do
+  for i = 1, self.count do
     animator.resetTransformationGroup("orb"..i)
     animator.translateTransformationGroup("orb"..i, {distance or 0, 0})
-    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - 2) / 3))
+    animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - 2) / self.count))
   end
 end
 
 function setOrbAnimationState(newState)
-  for i = 1, 3 do
+  for i = 1, self.count do
     animator.setAnimationState("orb"..i, newState)
+  end
+end
+
+-- shouldn't have to do this twice, but oh well...
+function addShieldEffect()
+  if self.shieldPower == "Regenerate" then
+    status.setPersistentEffects("atropusmagnorb", {
+     {stat = "healthRegen", amount = 2},
+     {stat = "poisonResistance", amount = 0.15}
+   })
+  elseif self.shieldPower == "Frost Aura" then
+    status.addEphemeralEffect("iceburst")
+    status.setPersistentEffects("frostmagnorb", {
+      {stat = "iceResistance", amount = 0.15}
+    })
+  elseif self.shieldPower == "Fire Aura" then
+    status.addEphemeralEffect("fireburst")
+    status.setPersistentEffects("hellfiremagnorb", {
+      {stat = "fireStatusImmunity", amount = 1},
+      {stat = "fireResistance", amount = 0.25}
+    })
+  elseif self.shieldPower == "Electric Resist" then
+    status.setPersistentEffects("lunarimagnorb", {
+     {stat = "electricResist", amount = 0.20}
+    })
+  elseif self.shieldPower == "Gravity Well" then
+    status.addEphemeralEffect("lowgrav_neutronmagnorb")
+    status.setPersistentEffects("neutronmagnorb", {
+      {stat = "aetherImmunity", amount = 1},
+      {stat = "cosmicResistance", amount = 0.25}
+    })
+  elseif self.shieldPower == "Force Field" then
+    status.addEphemeralEffect("mage_shield_lvl1")
+    status.setPersistentEffects("protomagnorb", {
+      {stat = "protoImmunity", amount = 1}
+    })
+  elseif self.shieldPower == "Reverse Gravity" then
+    status.addEphemeralEffect("lowgrav_shadowmagnorb")
+     status.setPersistentEffects("shadowmagnorb", {
+      {stat = "shadowImmunity", amount = 1},
+      {stat = "shadowResistance", amount = 0.25}
+    })
+  elseif self.shieldPower == "Slimey Defense" then
+    status.addEphemeralEffect("percentarmorboost10")
+    status.setPersistentEffects("slimemagnorb", {
+      {stat = "slimestickImmunity", amount = 1},
+      {stat = "slimefrictionImmunity", amount = 1},
+      {stat = "poisonResistance", amount = 0.15}
+    })
+  elseif self.shieldPower ~= nil and self.shieldPower ~= "none" then
+    sb.logError("shieldPower %s is undefined for function addShieldEffect in magnorbs.lua")
+  end
+end
+
+function removeShieldEffect()
+  if self.shieldPower == "Regenerate" then
+    status.clearPersistentEffects("atropusmagnorb", {
+     {stat = "healthRegen", amount = 2},
+     {stat = "poisonResistance", amount = 0.15}
+   })
+  elseif self.shieldPower == "Frost Aura" then
+    status.removeEphemeralEffect("iceburst")
+    status.clearPersistentEffects("frostmagnorb", {
+      {stat = "iceResistance", amount = 0.15}
+    })
+  elseif self.shieldPower == "Fire Aura" then
+    status.removeEphemeralEffect("fireburst")
+    status.clearPersistentEffects("hellfiremagnorb", {
+      {stat = "fireStatusImmunity", amount = 1},
+      {stat = "fireResistance", amount = 0.25}
+    })
+  elseif self.shieldPower == "Electric Resist" then
+    status.clearPersistentEffects("lunarimagnorb", {
+     {stat = "electricResist", amount = 0.20}
+    })
+  elseif self.shieldPower == "Gravity Well" then
+    status.removeEphemeralEffect("lowgrav_neutronmagnorb")
+    status.clearPersistentEffects("neutronmagnorb", {
+      {stat = "aetherImmunity", amount = 1},
+      {stat = "cosmicResistance", amount = 0.25}
+    })
+  elseif self.shieldPower == "Force Field" then
+    status.removeEphemeralEffect("mage_shield_lvl1")
+    status.clearPersistentEffects("protomagnorb", {
+      {stat = "protoImmunity", amount = 1}
+    })
+  elseif self.shieldPower == "Reverse Gravity" then
+    status.removeEphemeralEffect("lowgrav_shadowmagnorb")
+     status.clearPersistentEffects("shadowmagnorb", {
+      {stat = "shadowImmunity", amount = 1},
+      {stat = "shadowResistance", amount = 0.25}
+    })
+  elseif self.shieldPower == "Slimey Defense" then
+    status.removeEphemeralEffect("percentarmorboost10")
+    status.clearPersistentEffects("slimemagnorb", {
+      {stat = "slimestickImmunity", amount = 1},
+      {stat = "slimefrictionImmunity", amount = 1},
+      {stat = "poisonResistance", amount = 0.15}
+    })
+  elseif self.shieldPower ~= nil and self.shieldPower ~= "none" then
+    sb.logError("shieldPower %s is undefined for function removeShieldEffect in magnorbs.lua")
+  end
+end
+
+function getProjectiles()
+  for i = 1, self.count do
+    table.insert(storage.projectileIds, false)
   end
 end
