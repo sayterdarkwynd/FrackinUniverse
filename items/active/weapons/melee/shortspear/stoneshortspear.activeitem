@@ -1,0 +1,42 @@
+{
+  "itemName" : "stoneshortspear",
+  "price" : 50,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Great for early meat and hide gathering.",
+  "shortdescription" : "Primitive Shortspear",
+  "tooltipKind" : "sword",
+  "category" : "shortspear",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortspear", "spear", "upgradeableWeapon"],
+
+  "inventoryIcon" : "stoneshortspear.png",
+
+  "animation" : "/items/active/weapons/melee/shortspear/comboshortspear.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "stoneshortspear.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+ 
+  "aimOffset" : -1.0,
+  "muzzleOffset" : [0, 1.05],
+  
+  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+  
+  "critChance" : 1,
+  "critBonus" : 2, 
+  
+  "primaryAbilityType" : "shortspearcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 6.5
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
