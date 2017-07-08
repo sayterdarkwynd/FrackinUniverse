@@ -6,10 +6,7 @@ end
 
 function update(dt)
   transferUtil.loadSelfContainer()
-  if not storage.waterCount then 
-    storage.waterCount = 0 
-  end
-  storage.waterCount = math.min(storage.waterCount + dt,100)
+  storage.waterCount = math.min((storage.waterCount or 0) + dt,100)
   for i=2,#config.getParameter('wellslots') do
     if world.containerItemAt(entity.id(),i-1) and world.containerItemAt(entity.id(),i-1).name ~= config.getParameter('wellslots')[i].name then
       world.containerConsumeAt(entity.id(),i-1,world.containerItemAt(entity.id(),i-1).count)
