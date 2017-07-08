@@ -26,23 +26,25 @@
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility":{
-    "fireTime":0.82, 
-    "baseDps":6.35, 
+    "fireTime":0.72, 
+    "baseDps":8.35, 
     "damageConfig":{
       "knockback":20 
       }, 
-      "comboSteps":4, 
+      "comboSteps":5, 
       "swooshOffsetRegions":[
         [-0.75, 0.0, 4.25, 5.0], 
         [0, -4.25, 5, 0], 
         [3.0, -0.5, 6.5, 2.0], 
-        [0, -4.25, 5, 0]
+        [0, -4.25, 5, 0],
+        [-0.75, 0.0, 4.25, 5.0]
       ], 
       "stepDamageConfig":[
         {"baseDamageFactor":0.9, "knockback":10}, 
-        {"baseDamageFactor":1.1, "knockback":15}, 
+        {"baseDamageFactor":1.0, "knockback":25}, 
         {"baseDamageFactor":0.8, "knockback":10}, 
-        {"baseDamageFactor":1.1, "knockback":20}
+        {"baseDamageFactor":1.2, "knockback":35},
+        {"baseDamageFactor":0.6, "knockback":25}
         ], 
       "stances":{
 	"idle":{
@@ -51,11 +53,9 @@
 	  "weaponRotation":120, 
 	  "weaponOffset":[0.0,2.5], 
 	  "allowRotate":false, 
-	  "allowFlip":trued
+	  "allowFlip":true
 	}, 
 	
-
-        
         
         "windup1":{
           "duration":0.15, 
@@ -171,7 +171,7 @@
         
         
         "windup4":{
-          "duration":0.3, 
+          "duration":0.4, 
           "armRotation":80, 
           "weaponRotation":-50, 
           "weaponOffset":[0,2.4], 
@@ -181,7 +181,7 @@
         }, 
         "preslash4":{"duration":0}, 
         "fire4":{
-          "duration":0.15, 
+          "duration":0.2, 
           "armRotation":0, 
           "weaponRotation":-105, 
           "weaponOffset":[0,2.4], 
@@ -190,7 +190,7 @@
           "allowFlip":true
         }, 
         "wait4":{
-          "duration":0.35,
+          "duration":0.05,
           "armRotation":-20, 
           "weaponRotation":140, 
           "twoHanded":true, 
@@ -198,12 +198,42 @@
           "allowRotate":false, 
           "allowFlip":true, 
           "aimAngle":0
-        }
+        },
+        "windup5":{
+          "duration":0.15, 
+          "armRotation":-60, 
+          "weaponRotation":150, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false, 
+          "allowFlip":true        
+        }, 
+        "preslash5":{"duration":0}, 
+        "fire5":{
+          "duration":0.08, 
+          "armRotation":65, 
+          "weaponRotation":-125, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false,
+          "allowFlip":false
+        }, 
+        "wait5":{
+          "duration":0.05, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5]
+        }        
       }
     }, 
-
+    
+  "altAbilityType" : "parrykatana",
+  
   "critChance" : 1,
-  "critBonus" : 8,
+  "critBonus" : 12,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
