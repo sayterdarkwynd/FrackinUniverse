@@ -7,6 +7,7 @@
   "category" : "decorative",
   "price" : 750,
   "printable" : false,
+  "objectType" : "container",
   "learnBlueprintsOnPickup" : [ "liquidpumpwell", "handmill", "fu_growingtray", "designlab" ],
 
   "inventoryIcon" : "farmwellicon.png",
@@ -24,6 +25,13 @@
     }
   ],
     "outputNodes" : [ [2, 1] ],
-  "scripts" : [ "farmwell.lua" ],
-  "scriptDelta" : 320
+  "scripts" : [ "/scripts/well.lua" ],
+  "scriptDelta" : 320,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "liquidwater","ratio" : 10,"max" : 50}
+  ]
 }
