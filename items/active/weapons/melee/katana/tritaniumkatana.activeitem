@@ -1,23 +1,22 @@
 {
-  "itemName" : "advalloykatana",
-  "price" : 700,
-  "level" : 5,
+  "itemName" : "tritaniumkatana",
+  "price" : 400,
+  "level" : 2,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Finely made.
-^cyan;Causes targets to bleed^reset;.",
-  "shortdescription" : "Masters Katana",
+  "description" : "Heavy, but sharp as heck.",
+  "shortdescription" : "Tritanium Katana",
   "tooltipKind" : "sword2",
   "category" : "katana",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
-  "inventoryIcon" : "advalloykatana.png",
+  "inventoryIcon" : "tritaniumkatana.png",
 
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "advalloykatana.png"
+    "blade" : "tritaniumkatana.png"
   },
   "animationCustom":{},
 
@@ -27,28 +26,31 @@
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility":{
-    "fireTime":0.6, 
-    "baseDps":4.75, 
+    "fireTime":0.7, 
+    "baseDps":4.25, 
     "damageConfig":{
-      "knockback":20, 
-      "statusEffects":["bleedingshort"] 
+      "knockback":20
       }, 
-      "comboSteps":6, 
+      "comboSteps":8, 
       "swooshOffsetRegions":[
         [-0.75, 0.0, 4.25, 5.0], 
         [0, -4.25, 5, 0], 
         [3.0, -0.5, 6.5, 2.0], 
         [0, -4.25, 5, 0],
-        [-0.75, 0.0, 4.25, 5.0],
-        [0, -4.25, 5, 0]      
+        [-0.75, 0.0, 4.25, 5.0], 
+        [0, -4.25, 5, 0], 
+        [3.0, -0.5, 6.5, 2.0], 
+        [0, -4.25, 5, 0]        
       ], 
       "stepDamageConfig":[
         {"baseDamageFactor":0.9, "knockback":10}, 
         {"baseDamageFactor":1.1, "knockback":15}, 
         {"baseDamageFactor":0.8, "knockback":10}, 
         {"baseDamageFactor":1.1, "knockback":20},
-        {"baseDamageFactor":1.1, "knockback":15},
-        {"baseDamageFactor":0.9, "knockback":10}
+        {"baseDamageFactor":0.9, "knockback":10}, 
+        {"baseDamageFactor":1.1, "knockback":15}, 
+        {"baseDamageFactor":0.8, "knockback":10}, 
+        {"baseDamageFactor":1.1, "knockback":20}        
         ], 
       "stances":{
 	"idle":{
@@ -61,6 +63,8 @@
 	}, 
 	
 
+        
+        
         "windup1":{
           "duration":0.15, 
           "armRotation":-60, 
@@ -194,7 +198,7 @@
           "allowFlip":true
         }, 
         "wait4":{
-          "duration":0.15,
+          "duration":0.05,
           "armRotation":-20, 
           "weaponRotation":140, 
           "twoHanded":false, 
@@ -203,13 +207,12 @@
           "allowFlip":true, 
           "aimAngle":0
         },
-        
-        
+
            "windup5":{
              "duration":0.1, 
              "armRotation":-140, 
              "weaponRotation":50, 
-             "weaponOffset":[0,0], 
+             "weaponOffset":[0,2.4], 
              "twoHanded":false, 
              "allowRotate":false, 
              "allowFlip":true
@@ -219,7 +222,7 @@
              "duration":0.2, 
              "armRotation":-20, 
              "weaponRotation":-70, 
-             "weaponOffset":[0,1], 
+             "weaponOffset":[0,2.4], 
              "twoHanded":false, 
              "allowRotate":false, 
              "allowFlip":true
@@ -229,15 +232,15 @@
              "armRotation":-85, 
              "weaponRotation":-5, 
              "allowRotate":false, 
-             "allowFlip":true, 
-             "twoHanded":false, 
-             "weaponOffset":[0,1]
+             "allowFlip":false, 
+             "twoHanded":true, 
+             "weaponOffset":[0,2.4]
            }, 
            "windup6":{
              "duration":0.1, 
              "armRotation":-40, 
              "weaponRotation":-70, 
-             "weaponOffset":[0,1], 
+             "weaponOffset":[0,2.4], 
              "twoHanded":false, 
              "allowRotate":false, 
              "allowFlip":true
@@ -246,7 +249,7 @@
              "duration":0.025, 
              "armRotation":-10, 
              "weaponRotation":-75, 
-             "weaponOffset":[0,1], 
+             "weaponOffset":[0,2.4], 
              "twoHanded":false, 
              "allowRotate":false, 
              "allowFlip":true
@@ -255,22 +258,91 @@
              "duration":0.1, 
              "armRotation":50, 
              "weaponRotation":-80, 
-             "weaponOffset":[0,1], 
+             "weaponOffset":[0,2.4], 
              "twoHanded":false, 
              "allowRotate":false, 
              "allowFlip":true
            }, 
-          "wait6":{
-          "duration":0.08, 
+           "wait6":{
+             "duration":1.2, 
+             "armRotation":-85, 
+             "weaponRotation":-5, 
+             "allowRotate":false, 
+             "allowFlip":true, 
+             "twoHanded":false, 
+             "weaponOffset":[0,2.4]
+           }, 
+
+        "windup7":{
+          "duration":0.06, 
+          "armRotation":-100, 
+          "weaponRotation":-150, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":false, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "preslash7":{
+          "duration":0.025, 
+          "armRotation":-40, 
+          "weaponRotation":-130, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":false, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "fire7":{
+          "duration":0.02, 
+          "armRotation":40, 
+          "weaponRotation":-100, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":false, 
+          "allowRotate":false, 
+          "allowFlip":true
+          }, 
+        "wait7":{
+          "duration":0.02, 
           "armRotation":-85, 
           "weaponRotation":-5, 
           "allowRotate":false, 
           "allowFlip":true, 
           "twoHanded":false, 
-          "weaponOffset":[0,2.5]
-          }       
-
+          "weaponOffset":[0,2.4]
+        }, 
         
+        
+        
+        
+        
+        "windup8":{
+          "duration":0.3, 
+          "armRotation":80, 
+          "weaponRotation":-50, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":false, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "preslash8":{"duration":0}, 
+        "fire8":{
+          "duration":0.15, 
+          "armRotation":0, 
+          "weaponRotation":-105, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":false, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "wait8":{
+          "duration":0.15,
+          "armRotation":-20, 
+          "weaponRotation":140, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.4], 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "aimAngle":0
+        }        
       }
     }, 
 
