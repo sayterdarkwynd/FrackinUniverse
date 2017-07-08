@@ -13,7 +13,14 @@ end
 
 
 function raceroller()
-  self.raceroller = math.random(20)
+  self.isUnique = config.getParameter("isUnique")
+  
+  if self.isUnique then
+    self.crewrace = config.getParameter("race")
+  end
+  
+  if not self.isUnique then 
+    self.raceroller = math.random(20)
     if self.raceroller == 1 then 
       self.crewrace = "apex"
     elseif self.raceroller == 2 then
@@ -56,7 +63,8 @@ function raceroller()
       self.crewrace = "fufaleni"        
     else
       self.crewrace = "human"
-    end  
+    end
+  end    
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -90,7 +98,7 @@ function update(dt, fireMode, shiftHeld)
     local crewtype = config.getParameter("crewtype.crewname")
     local seed = math.random(255)
     local parameters = {}
-    local crewrace = self.crewrace
+      local crewrace = self.crewrace
       world.spawnNpc(activeItem.ownerAimPosition(), crewrace, crewtype, 1, seed, parameters)
       
     storage.firing = false

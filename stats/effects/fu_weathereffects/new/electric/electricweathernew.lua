@@ -38,10 +38,12 @@ function checkEffectValid()
 	    deactivateVisualEffects()
 	    effect.expire()
 	  else
-	  if not self.usedIntro then
+	  if not (self.usedIntro) or (self.usedIntro <= 0) then
 	    if not (status.stat("electricResistance",0)  >= self.effectCutoffValue) or not status.statPositive("biomeelectricImmunity") then
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
-	      self.timerRadioMessage = 5
+	      self.timerRadioMessage = 60
+	      self.usedIntro = 1
+	    else
 	      self.usedIntro = 1
 	    end
 	  end
