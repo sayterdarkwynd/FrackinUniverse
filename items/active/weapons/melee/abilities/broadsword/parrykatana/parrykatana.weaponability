@@ -1,0 +1,80 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "parryShield" : {
+          "default" : "inactive",
+          "states" : {
+            "inactive" : {},
+            "active" : {},
+            "block" : {
+              "frames" : 1,
+              "cycle" : 0.2,
+              "mode" : "transition",
+              "transition" : "active"
+            }
+          }
+        }
+      },
+      "parts" : {
+        "parryShield" : {
+          "properties" : {
+            "zLevel" : -1,
+            "centered" : true,
+            "offset" : [-0.75, -0.35],
+            "transformationGroups" : ["weapon"],
+            "rotationCenter" : [0, 0],
+            "shieldPoly" : [ [-0.25, -2.5], [-0.25, 2.0], [1.0, 2.75], [1.0, -1.0] ]
+          },
+          "partStates" : {
+            "parryShield" : {
+              "inactive" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "active" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/broadsword/parrykatana/parryshield.png:active"
+                }
+              },
+              "block" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/broadsword/parrykatana/parryshield.png:block"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "guard" : [ "/sfx/melee/sword_guard.ogg" ],
+      "parry" : [ "/sfx/melee/sword_parry.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Katana Parry",
+    "type" : "parrykatana",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/parrykatana/parrykatana.lua"],
+    "class" : "Parry",
+
+    "energyUsage" : 5,
+    "parryTime" : 0.2,
+    "cooldownTime" : 0.05,
+    "shieldHealth" : 100,
+    "stances" : {
+      "parry" : {
+        "armRotation" : 40,
+        "weaponRotation" : -200,
+        "twoHanded" : true,
+        "zLevel" : -1,
+        "weaponOffset" : [0, 2],
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  }
+}
