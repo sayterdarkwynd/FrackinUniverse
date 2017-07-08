@@ -4,8 +4,7 @@
   "level" : 3,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "This looks uncomfortable to get stabbed with.
-^cyan;Causes Bleeding^reset;",
+  "description" : "This looks uncomfortable to get stabbed with.",
   "shortdescription" : "Coral Katana",
   "tooltipKind" : "sword2",
   "category" : "katana",
@@ -30,7 +29,8 @@
     "fireTime":0.6, 
     "baseDps":5.25, 
     "damageConfig":{
-      "knockback":20
+      "knockback":20,
+      "damageSourceKind" : "poison"
       }, 
       "comboSteps":4, 
       "swooshOffsetRegions":[
@@ -40,8 +40,8 @@
         [0, -4.25, 5, 0]
       ], 
       "stepDamageConfig":[
-        {"baseDamageFactor":0.5, "knockback":10}, 
-        {"baseDamageFactor":0.8, "knockback":15}, 
+        {"baseDamageFactor":0.8, "knockback":10}, 
+        {"baseDamageFactor":1.0, "knockback":15}, 
         {"baseDamageFactor":0.4, "knockback":10}, 
         {"baseDamageFactor":1.1, "knockback":25}
         ], 
