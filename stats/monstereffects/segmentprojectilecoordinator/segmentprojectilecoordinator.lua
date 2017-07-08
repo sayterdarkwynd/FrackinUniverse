@@ -9,7 +9,6 @@ function init()
 	local totalSegments = coordinator.totalSegments
 	local level 		= coordinator.level
 
-
 	self.projectile 		= config.getParameter('projectile')
 	self.pulse 				= config.getParameter('pulse',1)
 	self.mode				= config.getParameter('mode','velocity')
@@ -45,10 +44,12 @@ function update(dt)
 				self.target = util.closestValidTarget(20)
 			end
 			
-			if world.entityExists(self.target) and entity.entityInSight(target) then
+			if world.entityExists(self.target) then
 
-				local vector = vec2.sub(world.entityPosition(target), mcontroller.position())
+
+				local vector = vec2.sub(world.entityPosition(self.target), mcontroller.position())
 				
+
 				world.spawnProjectile(self.projectile, mcontroller.position(), entity.id(), vector, self.track, {power = self.power})
 
 			end
