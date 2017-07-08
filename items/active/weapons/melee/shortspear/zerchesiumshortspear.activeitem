@@ -1,0 +1,42 @@
+{
+  "itemName" : "zerchesiumshortspear",
+  "price" : 550,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Doesn't feel so short to enemies.",
+  "shortdescription" : "Zerchesium Shortspear",
+  "tooltipKind" : "sword",
+  "category" : "shortspear",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortspear", "spear", "upgradeableWeapon"],
+
+  "inventoryIcon" : "zerchesiumshortspear.png",
+
+  "animation" : "/items/active/weapons/melee/shortspear/comboshortspear.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "zerchesiumshortspear.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+ 
+  "aimOffset" : -1.0,
+  "muzzleOffset" : [0, 1.05],
+  
+  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+  
+  "critChance" : 2,
+  "critBonus" : 3, 
+  
+  "primaryAbilityType" : "shortspearcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.655,
+    "baseDps" : 7.62
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
