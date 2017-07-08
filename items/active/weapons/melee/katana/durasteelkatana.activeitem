@@ -32,18 +32,20 @@
       "knockback":20, 
       "statusEffects":["bleedingshort"] 
       }, 
-      "comboSteps":4, 
+      "comboSteps":5, 
       "swooshOffsetRegions":[
         [-0.75, 0.0, 4.25, 5.0], 
         [0, -4.25, 5, 0], 
         [3.0, -0.5, 6.5, 2.0], 
-        [0, -4.25, 5, 0]
+        [0, -4.25, 5, 0],
+        [-0.75, 0.0, 4.25, 5.0],
       ], 
       "stepDamageConfig":[
         {"baseDamageFactor":0.9, "knockback":10}, 
         {"baseDamageFactor":1.1, "knockback":15}, 
         {"baseDamageFactor":0.8, "knockback":10}, 
-        {"baseDamageFactor":1.1, "knockback":20}
+        {"baseDamageFactor":1.1, "knockback":25},
+        {"baseDamageFactor":0.9, "knockback":20},
         ], 
       "stances":{
 	"idle":{
@@ -199,7 +201,36 @@
           "allowRotate":false, 
           "allowFlip":true, 
           "aimAngle":0
-        }
+        },
+
+        "windup5":{
+          "duration":0.15, 
+          "armRotation":-60, 
+          "weaponRotation":150, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false, 
+          "allowFlip":true        
+        }, 
+        "preslash5":{"duration":0}, 
+        "fire5":{
+          "duration":0.08, 
+          "armRotation":65, 
+          "weaponRotation":-125, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false,
+          "allowFlip":false
+        }, 
+        "wait5":{
+          "duration":0.05, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5]
+        }         
       }
     }, 
 
