@@ -41,10 +41,7 @@ function setCritDamage(damage)
 		self.critBonus = config.getParameter("critBonus", 0)
 	end
 
-     -- check their equipped weapon
-     -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     --used for checking dual-wield setups
      local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
      local weaponModifier = config.getParameter("critChance",0)
      
@@ -76,19 +73,11 @@ function setCritDamage(damage)
       end
 	end
   
-  --sb.logInfo("crit chance base="..self.critChance)
-  --sb.logInfo("crit chance bonus="..status.stat("critChance"))
-  --critBonus is bonus damage done with crits
   self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
-  -- this next modifier only applies if they have a multiply item equipped
   self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
-  --sb.logInfo("final chance ="..self.critChance)
-  -- random dice roll. I've heavily lowered the chances, as it was far too high by nature of the random roll.
   self.critRoll = math.random(200)
   
-  --apply the crit
   local crit = self.critRoll <= self.critChance
-  --sb.logInfo("crit roll="..self.critRoll)
   damage = crit and (damage*2) + self.critBonus or damage
 
   if crit then
@@ -96,15 +85,20 @@ function setCritDamage(damage)
       -- exclude mining lasers
       if not root.itemHasTag(heldItem, "mininggun") then 
         status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
+        -- *****************************************************************
+        --              weapon specific crit abilities!
+        -- *****************************************************************
+        if math.random(100) == 1 and root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") then -- Stun!!!!
+		params = { speed=20, power = 0 , damageKind = "default"} 	      
+		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)      
+        end
       end
     end
   end
 
   return damage
 end
-  -- *******************************************************
-  
-  
+
 function Weapon:update(dt, fireMode, shiftHeld)
 
   self.attackTimer = math.max(0, self.attackTimer - dt)

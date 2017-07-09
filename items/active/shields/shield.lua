@@ -269,13 +269,14 @@ function bashEnemy()
   
   -- lets limit how much damage they can do
   self.damageLimit = (self.energyval/50) + (status.stat("health")/50) 
-  
+
   if status.resourcePositive("perfectBlock") then
   	if self.stunValue >=100 then
 		self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
-		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash		      
+		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash	
+		params2 = { speed=20, power = 0 , damageKind = "default", knockback = 0 } -- Stun	
 		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
-		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
+		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params2)
 		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy	
 		animator.playSound("shieldBash")
 		animator.burstParticleEmitter("shieldBashHit")  	
