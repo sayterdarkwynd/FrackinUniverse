@@ -10,7 +10,7 @@ weaponBonus={
 
 weaponBonus2={
 	{stat = "critChance", amount = 4},
-	{stat = "critBonus", baseMultiplier = 1.10}
+	{stat = "critBonus", amount = 10}
 }
 
 armorBonus={
@@ -38,9 +38,8 @@ end
 
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword"})
-local weaponShield=weaponCheck({"dagger"})
-local weapons=weaponCheck({"shortsword","katana"})
+local weaponSword=weaponCheck({"katana"})
+local weapons=weaponCheck({"shortsword","dagger"})
 
 	if weaponSword["either"] and weaponShield["either"] then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
