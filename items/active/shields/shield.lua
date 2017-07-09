@@ -2,7 +2,7 @@ require "/scripts/util.lua"
 require "/scripts/status.lua"
 
 function init()
-  self.debug = tfalse
+  self.debug = false
   if self.debug then sb.logInfo("(FR) shield.lua init() for %s", activeItem.hand()) end
   
   self.aimAngle = 0
@@ -66,7 +66,6 @@ function init()
  	  
  	  status.setPersistentEffects("shieldEffects", {
  	  {stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
- 	  {stat = "baseShieldHealth", amount = config.getParameter("shieldBonusRegen", 0) },
  	  {stat = "energyRegenPercentageRate", amount = shieldEnergyRegen},
  	  {stat = "maxHealth", amount = shieldHealthBonus},
  	  {stat = "maxEnergy", amount = shieldEnergyBonus},
