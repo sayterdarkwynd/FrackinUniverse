@@ -61,7 +61,8 @@ function init()
  	  protectionXHeat = config.getParameter("protectionXHeat",0)
  	  protectionRads = config.getParameter("protectionRads",0)
  	  protectionXRads = config.getParameter("protectionXRads",0)	  
- 	  
+ 	  shieldBash = config.getParameter("shieldBash",0)
+ 	  shieldBashPush = config.getParameter("shieldBashPush",0)
  	  
  	  
  	  status.setPersistentEffects("shieldEffects", {
@@ -96,11 +97,13 @@ function init()
  	  {stat = "biomeheatImmunity", amount = protectionHeat},
  	  {stat = "ffextremeheatImmunity", amount = protectionXHeat},
  	  {stat = "biomeradiationImmunity", amount = protectionRads},
- 	  {stat = "ffextremeradiationImmunity", amount = protectionXRads}
+ 	  {stat = "ffextremeradiationImmunity", amount = protectionXRads},
+ 	  {stat = "shieldBash", amount = shieldBash},
+ 	  {stat = "shieldBashPush", amount = shieldBashPush}
  	  })
   -- end FU special effects
   
-  
+  species = world.entitySpecies(activeItem.ownerEntityId())
   
   animator.setGlobalTag("directives", "")
   animator.setAnimationState("shield", "idle")
@@ -221,11 +224,25 @@ function raiseShield()
   self.damageListener = damageListener("damageTaken", function(notifications)
     for _,notification in pairs(notifications) do
       if notification.hitType == "ShieldHit" then
+-- *** set up shield bash values *** --
+          self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash",0)
+	  if not status.resource("energy") then
+	    self.energyval= 0
+	  else     
+	    self.energyval= (status.resource("energy") / status.stat("maxEnergy")) * 100
+	  end 
+-- end shieldbash Init	          
         if status.resourcePositive("perfectBlock") then
+          if (self.energyval) >= 50 and (self.randomBash) >= 50 then -- Shield Bash when perfect blocking
+	    bashEnemy()
+          end            
           animator.playSound("perfectBlock")
           animator.burstParticleEmitter("perfectBlock")
           refreshPerfectBlock()
-        elseif status.resourcePositive("shieldStamina") then
+        elseif status.resourcePositive("shieldStamina") then   
+          if (self.energyval) >= 50 and (self.randomBash) >= 100 then -- Shield Bash when perfect blocking
+	    bashEnemy()
+          end         
           animator.playSound("block")
         else
           animator.playSound("break")
@@ -237,6 +254,48 @@ function raiseShield()
   end)
 
   refreshPerfectBlock()
+end
+
+function bashEnemy()
+  if not status.resource("energy") then 
+    self.energyValue = 0 
+  else
+    self.energyValue = status.resource("energy",0)
+  end
+
+  -- apply bonus stun
+  self.stunBonus = config.getParameter("shieldBash",0) + config.getParameter("shieldBashPush",0)
+  self.stunValue = math.random(100) + self.stunBonus
+  
+  -- lets limit how much damage they can do
+  self.damageLimit = (self.energyval/50) + (status.stat("health")/50) 
+  
+  if status.resourcePositive("perfectBlock") then
+  	if self.stunValue >=100 then
+		self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
+		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash		      
+		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
+		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
+		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy	
+		animator.playSound("shieldBash")
+		animator.burstParticleEmitter("shieldBashHit")  	
+  	else
+		self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
+		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash		      
+		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
+		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy		
+		animator.playSound("shieldBash")
+		animator.burstParticleEmitter("shieldBashHit")  	
+  	end
+
+  else
+		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 2
+		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash		      
+		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
+		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy
+		animator.playSound("shieldBash")
+		animator.burstParticleEmitter("shieldBashHit")  	
+  end
 end
 
 function refreshPerfectBlock()
