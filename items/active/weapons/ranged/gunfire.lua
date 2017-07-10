@@ -34,10 +34,7 @@ function GunFire:setCritDamage(damage)
 		self.critBonus = config.getParameter("critBonus", 0)
 	end
 
-     -- check their equipped weapon
-     -- Primary hand, or single-hand equip  
      local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     --used for checking dual-wield setups
      local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
      local weaponModifier = config.getParameter("critChance",0)
      
