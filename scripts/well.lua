@@ -30,8 +30,10 @@ function update(dt)
   storage.waterCount = storage.waterCount - amount * config.getParameter('wellslots')[1].ratio
   if amount > 0 and #config.getParameter('wellslots') > 1 then
     for i=2,#config.getParameter('wellslots') do
-      if math.random() <= config.getParameter('wellslots')[i].chance then
-        world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[i].name,count=config.getParameter('wellslots')[i].amount},i-1)
+      for j=1,amount do
+        if math.random() <= config.getParameter('wellslots')[i].chance then
+          world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[i].name,count=config.getParameter('wellslots')[i].amount},i-1)
+        end
       end
     end
   end
