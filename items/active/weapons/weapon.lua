@@ -47,39 +47,39 @@ function setCritDamage(damage)
      
   if heldItem then
       if root.itemHasTag(heldItem, "dagger") then
-        self.critChance = 0.35 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "shortsword") then
-        self.critChance = 0.25 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "broadsword") then
-        self.critChance = 0.3 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "hammer") then
-        self.critChance = 0.4 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "quarterstaff") then
-        self.critChance = 0.2 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "shortspear") then
-        self.critChance = 0.1 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "axe") then
-        self.critChance = 0.5 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "lance") then
-        self.critChance = 0.5 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "spear") then
-        self.critChance = 0.5 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "battleblade") then
-        self.critChance = 0.4 + weaponModifier
+        self.critChance = 0 + weaponModifier
       elseif root.itemHasTag(heldItem, "rapier") then
-        self.critChance = 0.2 + weaponModifier      
+        self.critChance = 0 + weaponModifier      
       elseif root.itemHasTag(heldItem, "whip") then
-        self.critChance = 0.2 + weaponModifier           
+        self.critChance = 0 + weaponModifier           
       end
 	end
   
-  self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
+  self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
   self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
   self.critRoll = math.random(200)
   
   local crit = self.critRoll <= self.critChance
-  damage = crit and (damage*2) + self.critBonus or damage
-
+  damage = crit and ((damage*2) + self.critBonus) or damage
+  self.critChance = 0
   if crit then
     if heldItem then
       -- exclude mining lasers

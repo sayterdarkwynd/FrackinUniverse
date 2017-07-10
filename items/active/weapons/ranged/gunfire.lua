@@ -22,7 +22,13 @@ self.critBonus = config.getParameter("critBonus", 0)
   
 end
 
-
+  self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
+  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
+  self.critRoll = math.random(200)
+  
+  local crit = self.critRoll <= self.critChance
+  damage = crit and ((damage*2) + self.critBonus) or damage
+  self.critChance = 0
 
 
   -- *******************************************************
@@ -44,40 +50,16 @@ function GunFire:setCritDamage(damage)
      local weaponModifier = config.getParameter("critChance",0)
      
   if heldItem then
-      if root.itemHasTag(heldItem, "pistol") then
-        self.critChance = 0.2 + weaponModifier
-      elseif root.itemHasTag(heldItem, "machinepistol") then
-        self.critChance = 0.1 + weaponModifier
-      elseif root.itemHasTag(heldItem, "assaultrifle") then
-        self.critChance = 0.13 + weaponModifier       
-      elseif root.itemHasTag(heldItem, "sniperrifle") then
-        self.critChance = 0.4 + weaponModifier  
-      elseif root.itemHasTag(heldItem, "energy") then
-        self.critChance = 0.2 + weaponModifier   
-      elseif root.itemHasTag(heldItem, "grenadelauncher") then
-        self.critChance = 0.6 + weaponModifier        
-      elseif root.itemHasTag(heldItem, "rifle") then
-        self.critChance = 0.4 + weaponModifier       
-      elseif root.itemHasTag(heldItem, "rocketlauncher") then
-        self.critChance = 1 + weaponModifier  
-      elseif root.itemHasTag(heldItem, "shotgun") then
-        self.critChance = 0.3 + weaponModifier  
-      elseif root.itemHasTag(heldItem, "flamethrower") then
-        self.critChance = 0.1 + weaponModifier              
-      end
+        self.critChance = 0 + weaponModifier              
   end
-    --sb.logInfo("crit chance base="..self.critChance)
-  --critBonus is bonus damage done with crits
-  self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
-  -- this next modifier only applies if they have a multiply item equipped
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)+ status.stat("critChanceMultiplier",0) + status.stat("critChance",0) ) 
-  -- random dice roll. I've heavily lowered the chances, as it was far too high by nature of the random roll.
+
+  self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
+  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
   self.critRoll = math.random(200)
   
-  --apply the crit
   local crit = self.critRoll <= self.critChance
-    --sb.logInfo("crit roll="..self.critRoll)
-  damage = crit and (damage*2) + self.critBonus or damage
+  damage = crit and ((damage*2) + self.critBonus) or damage
+  self.critChance = 0
 
   if crit then
     if heldItem then

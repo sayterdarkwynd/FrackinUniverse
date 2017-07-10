@@ -5,8 +5,7 @@ setName="fu_samuraiset"
 
 weaponBonus={
 	{stat = "powerMultiplier", baseMultiplier = 1.15},
-	{stat = "critChance", amount = 2},
-	{stat = "critBonus", amount = 10 }
+	{stat = "critChance", amount = 2}
 }
 
 weaponBonus2={
