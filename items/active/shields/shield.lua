@@ -21,6 +21,16 @@ function init()
   self.cooldownTime = config.getParameter("cooldownTime")
   self.forceWalk = config.getParameter("forceWalk", false)
   
+    animator.setGlobalTag("directives", "")
+    animator.setAnimationState("shield", "idle")
+    activeItem.setOutsideOfHand(true)
+  
+    self.stances = config.getParameter("stances")
+    setStance(self.stances.idle)
+    
+    self.blockCountShield = 0
+    species = world.entitySpecies(activeItem.ownerEntityId()) 
+    
    -- FU special effects
      -- health effects
           self.critChance = config.getParameter("critChance", 0)
@@ -268,7 +278,7 @@ function bashEnemy()
   self.stunValue = math.random(100) + self.stunBonus
   
   -- lets limit how much damage they can do
-  self.damageLimit = (self.energyval/50) + (status.stat("health")/50) 
+  self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.rand(6)
 
   if status.resourcePositive("perfectBlock") then
   	if self.stunValue >=100 then
@@ -316,6 +326,7 @@ function lowerShield()
   activeItem.setItemShieldPolys({})
   activeItem.setItemDamageSources({})
   self.cooldownTimer = self.cooldownTime
+  status.clearPersistentEffects("shieldBonus") 
 end
 
 function shieldHealth()
