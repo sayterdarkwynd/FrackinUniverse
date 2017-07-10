@@ -22,14 +22,6 @@ self.critBonus = config.getParameter("critBonus", 0)
   
 end
 
-  self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
-  self.critRoll = math.random(200)
-  
-  local crit = self.critRoll <= self.critChance
-  damage = crit and ((damage*2) + self.critBonus) or damage
-  self.critChance = 0
-
 
   -- *******************************************************
   -- FU Crit Damage Script
