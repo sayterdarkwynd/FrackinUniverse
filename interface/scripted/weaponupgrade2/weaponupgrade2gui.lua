@@ -112,14 +112,16 @@ function doUpgrade()
         if consumedCurrency then
         
           local itemConfig = root.itemConfig(upgradedItem)  
+                  self.baseValueMod = itemConfig.config.level -- store the original level in case we need it for calculations
 		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 		  if (itemConfig.parameters.baseDps) or (itemConfig.config.baseDps) then
 		    upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/20) )  -- increase DPS a bit
 		  end
 		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
 		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
+                  
 
-
+                 
 	 -- set Rarity
 	 if upgradedItem.parameters.level ==4 then
 	   upgradedItem.parameters.rarity = "uncommon"
@@ -135,7 +137,6 @@ function doUpgrade()
 	 
 	 -- is it a tool?
 	 		if (itemConfig.config.category == "Tool") or (itemConfig.config.category == "tool") then
-	 		
 	 		  -- parasol
 	 		   if upgradedItem.parameters.fallingParameters then
 	 		     upgradedItem.parameters.fallingParameters.airForce = (itemConfig.parameters.airForce or itemConfig.config.airForce or 1) * 1.15 
@@ -160,6 +161,8 @@ function doUpgrade()
 			  
                   -- is it a shield?
 			  if (itemConfig.config.category == "shield") then
+			    upgradedItem.parameters.shieldBash = (itemConfig.parameters.shieldBash or itemConfig.config.shieldBash or 1) + 0.5 + self.baseValueMod  
+		            upgradedItem.parameters.shieldBashPush = (itemConfig.parameters.shieldBashPush or itemConfig.config.shieldBashPush or 1) + 0.5  
 			    if upgradedItem.parameters.cooldownTime then
 			      upgradedItem.parameters.cooldownTime = (itemConfig.parameters.cooldownTime or itemConfig.config.cooldownTime or 1) * 0.95 
 			    end
@@ -177,13 +180,7 @@ function doUpgrade()
 			    upgradedItem.parameters.primaryAbility = {} 
 			    if (itemConfig.config.baseDamageFactor) then
 			      upgradedItem.parameters.baseDamageFactor = (itemConfig.parameters.baseDamageFactor or itemConfig.config.baseDamageFactor or 1) * 1.15 
-			    end
---			    if (itemConfig.config.primaryAbility.energyCost) then
---			      upgradedItem.parameters.primaryAbility.energyCost = (itemConfig.parameters.primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost or 1) * 1.08
---			    end
---			    if (itemConfig.config.primaryAbility.maxCastRange) then
---			      upgradedItem.parameters.primaryAbility.maxCastRange = (itemConfig.parameters.primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange or 1) * 1.15
---			    end		    
+			    end	    
 			  end 
 			  
                   -- magnorbs
@@ -221,7 +218,7 @@ function doUpgrade()
 		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
 			
 			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) then
-			  if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") then
+			  if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") then
 			    upgradedItem.parameters.primaryAbility.fireTime = upgradedItem.parameters.primaryAbility.fireTime
 			  else
 			    local fireTimeBase = itemConfig.config.primaryAbility.fireTime
@@ -231,14 +228,19 @@ function doUpgrade()
 			    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2 
 			  end
 			end
-			
+
 		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
 			if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
 			    local baseDpsBase = itemConfig.config.primaryAbility.baseDps
 			    local baseDpsMod = (upgradedItem.parameters.level/20)
 			    local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
 			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
-			end			
+			end	
+		  -- Can it STUN?	
+                  if (itemConfig.config.category == "hammer") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "quarterstaff") then
+ 		    upgradedItem.parameters.stunChance = (itemConfig.parameters.stunChance or itemConfig.config.stunChance or 1) + 0.5 + self.baseValueMod                    
+                  end     
+                  
 		  end
 	  
 	  sb.logInfo("Upgrading weapon : ")	  
