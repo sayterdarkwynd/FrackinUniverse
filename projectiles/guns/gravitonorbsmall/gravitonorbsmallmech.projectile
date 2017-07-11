@@ -1,0 +1,66 @@
+{
+  "projectileName" : "gravitonorbsmallmech",
+  "image" : "gravitonorbsmall.png",
+  "animationCycle" : 0.6,
+  "physics" : "laser",
+  "frameNumber" : 10,
+  "pointLight" : true,
+  "lightColor" : [120,0,120],
+  "damagePoly" : [ [-18, 0], [-6, -6], [0, -18], [6, -6], [18, 0], [6, 6], [0, 18], [-6, 6] ],
+  "speed" : 45,
+  "piercing" : true,
+  "timeToLive" : 1,
+   "fullbright" : true,
+  "emitters" : [ "jellyplasma" ],
+  "knockback" : 24,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/globeexplosions/magentaglobeexplosion/magentaglobeexplosion.config"
+    }
+  ],
+  "damageKind" : "cosmicplasma",
+  "periodicActions":[
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/gravitonorbsmall/gravitonorbsmall.png:3",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    },
+
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/gravitonorbsmall/gravitonorbsmall.png:4",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      }
+    ],
+    
+  "scripts" : ["/scripts/projectiles/sinewaveprojectile.lua"],
+  "scriptDelta" : 1,
+
+  "wavePeriod" : 0.25,
+  "waveAmplitude" : 0.3,
+
+  "persistentAudio" : "/sfx/projectiles/raygun_wobble_loop.ogg"
+}
