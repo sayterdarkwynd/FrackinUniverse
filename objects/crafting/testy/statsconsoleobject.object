@@ -1,0 +1,41 @@
+{
+  "objectName" : "statsconsole",
+  "colonyTags" : ["outpost","electronic"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 400,
+  "lightColor" : [120, 173, 173],
+  "printable" : false,
+
+  "description" : "Makes you feel good about yourself",
+  "shortdescription" : "Stats Console",
+  "race" : "generic",
+
+
+  "inventoryIcon" : "statsconsole.png",
+  "orientations" : [
+    {
+      "image" : "statsconsole.png",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "statsconsole.png",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "statsconsoleobject.lua" ],
+  "scriptDelta" : 0,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/objects/crafting/testy/statsconsolegui.config"
+}
