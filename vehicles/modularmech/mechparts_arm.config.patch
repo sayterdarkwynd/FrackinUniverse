@@ -779,64 +779,231 @@
       "animationCustom": {
         "sounds": {
           "<armName>Fire": [
-            "/sfx/gun/pulsecannon_blast1.ogg"
+            "/sfx/weapons/explosion-large01.ogg"
           ]
         }
       }
     }
   },
-
+  {
+    "op": "add",
+    "path": "/fumechchainsword",
+    "value": {
+      "stats": {
+        "power": 6,
+        "energy": 5
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/meleearm.lua",
+        "armClass": "MeleeArm",
+        "rotationLimits": [
+          -1,
+          1
+        ],
+        "fireOffset": [
+          4.5,
+          0.5
+        ],
+        "windupTime": 0.35,
+        "windupAngle": 0.8,
+        "swingTime": 0.08,
+        "fireTime": 0.25,
+        "fireAngle": -0.8,
+        "comboFireAngle": 0.8,
+        "cooldownTime": 0.6,
+        "cooldownAngle": -0.3,
+        "projectileType": "mechchainsawswoosh",
+        "projectileParameters": {
+          "power": 240,
+          "knockback": 32
+        },
+        "projectileTrackSource": true,
+        "projectileBaseDistance": 10,
+        "projectileTimeToLive": 0.35
+      },
+      "partImages": {
+        "<armName>": "arm/croc.png",
+        "<armName>Fullbright": "arm/crocfullbright.png"
+      },
+      "defaultPrimaryColors": [
+        "96cbe7",
+        "5588d4",
+        "344495",
+        "1a1c51"
+      ],
+      "defaultSecondaryColors": [
+        "96cbe7",
+        "5588d4",
+        "344495",
+        "1a1c51"
+      ],
+      "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "windup": {
+                  "properties": {
+                    "persistentSound": "/sfx/melee/mech_chainsaw_windup1.ogg",
+                    "persistentSoundRangeMultiplier": 1,
+                    "persistentSoundStopTime": 0.5
+                  }
+                },
+                "winddown": {
+                  "properties": {
+                    "persistentSound": "/sfx/melee/mech_chainsaw_winddown1.ogg",
+                    "persistentSoundRangeMultiplier": 1,
+                    "persistentSoundStopTime": 0.75
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sounds": {
+          "<armName>Fire": [
+            "/sfx/melee/mech_chainsaw_swing1.ogg",
+            "/sfx/melee/mech_chainsaw_swing2.ogg"
+          ]
+        },
+        "transformationGroups": {
+          "<armName>": {
+            "interpolated": false
+          }
+        }
+      }
+    }
+  },
+  
   {
     "op": "add",
     "path": "/fudualcannon",
     "value": {
       "stats": {
-        "power": 6,
-        "energy": 36
+        "power": 5,
+        "energy": 5
       },
       "partParameters": {
-        "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-        "armClass": "GunArm",
+        "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
+        "armClass": "GatlingArm",
         "rotationLimits": [
           -1.75,
           1.75
         ],
         "fireOffset": [
-          4.65,
-          -0.625
+          7.75,
+          0.0
         ],
-        "extendTime": 0.09,
-        "fireTime": 0.2,
+        "windupTime": 0.3,
+        "fireTime": 0.05,
         "projectileType": "mechdual",
-        "projectileCount" : 1,
         "projectileParameters": {
-          "power": 20
-        }
+          "power": 50
+        },
+        "projectileInaccuracy": 0.04
       },
       "partImages": {
-        "<armName>": "arm/fudualcannon.png",
-        "<armName>Fullbright": "arm/fudualcannonfullbright.png"
+        "<armName>": "arm/fuchaingun.png",
+        "<armName>Fullbright": "arm/fuchaingunfullbright.png"
       },
       "defaultPrimaryColors": [
-        "c36a5f",
-        "994c49",
-        "6f3130",
-        "551d28"
+        "c0ab5e",
+        "9b7e14",
+        "6b5509",
+        "342804"
       ],
       "defaultSecondaryColors": [
-        "e6e6e6",
-        "b6b6b6",
-        "7b7b7b",
-        "373737"
+        "cccccc",
+        "9e9e9e",
+        "616161",
+        "383838"
       ],
       "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "windup": {
+                  "properties": {
+                    "persistentSound": "/sfx/gun/mech_gatling_windup.ogg",
+                    "persistentSoundRangeMultiplier": 1,
+                    "persistentSoundStopTime": 0.2
+                  }
+                },
+                "active": {
+                  "cycle": 0.2
+                },
+                "winddown": {
+                  "properties": {
+                    "persistentSound": "/sfx/gun/mech_gatling_winddown.ogg",
+                    "persistentSoundRangeMultiplier": 1,
+                    "persistentSoundStopTime": 0.2
+                  }
+                }
+              }
+            }
+          }
+        },
+        "particleEmitters": {
+          "<armName>Fire": {
+            "active": false,
+            "burstCount": 3,
+            "anchorPart": "<armName>",
+            "particles": [
+              {
+                "particle": {
+                  "type": "ember",
+                  "size": 1,
+                  "position": [
+                    7.25,
+                    3.125
+                  ],
+                  "color": [
+                    200,
+                    150,
+                    0,
+                    255
+                  ],
+                  "light": [
+                    100,
+                    100,
+                    50
+                  ],
+                  "fullbright": true,
+                  "fade": 0.9,
+                  "initialVelocity": [
+                    20,
+                    0
+                  ],
+                  "finalVelocity": [
+                    0,
+                    -40
+                  ],
+                  "approach": [
+                    0,
+                    30
+                  ],
+                  "timeToLive": 0.3,
+                  "layer": "middle",
+                  "variance": {
+                    "initialVelocity": [
+                      5,
+                      5
+                    ],
+                    "timeToLive": 0.2
+                  }
+                }
+              }
+            ]
+          }
+        },
         "sounds": {
           "<armName>Fire": [
-            "/sfx/gun/pulsecannon_blast1.ogg"
+            "/sfx/gun/mech_gatling1.ogg"
           ]
         }
       }
     }
-  }     
+  }  
   
 ]
