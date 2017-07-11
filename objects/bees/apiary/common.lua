@@ -401,7 +401,7 @@ end
 
 
 function daytimeCheck()
-	daytime = world.timeOfDay() < 0.5 or world.type() == 'playerstation'-- true if daytime
+	daytime = world.timeOfDay() < 0.5 -- true if daytime
 end
 
 
