@@ -256,6 +256,9 @@ function raiseShield()
           animator.playSound("block")
         else
           animator.playSound("break")
+          if (self.energyval) <= 20 and (self.randomBash) >= 50 or (self.randomBash) >= 100 then -- if tired, we could end up stunned!
+	    status.addEphemeralEffect("stun",1)
+          end               
         end
         animator.setAnimationState("shield", "block")
         return
