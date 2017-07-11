@@ -122,27 +122,20 @@ function doUpgrade()
                   
 
                  
-		 -- set Rarity
-		 if upgradedItem.parameters.level ==4 then
-		   upgradedItem.parameters.rarity = "uncommon"
-		 elseif upgradedItem.parameters.level == 5 then
-		   upgradedItem.parameters.rarity = "rare"
-		 elseif upgradedItem.parameters.level == 6 then
-		   upgradedItem.parameters.rarity = "legendary"
-		 elseif upgradedItem.parameters.level >= 7 then
-		   upgradedItem.parameters.rarity = "essential"	   
-		 end
+	 -- set Rarity
+	 if upgradedItem.parameters.level ==4 then
+	   upgradedItem.parameters.rarity = "uncommon"
+	 elseif upgradedItem.parameters.level == 5 then
+	   upgradedItem.parameters.rarity = "rare"
+	 elseif upgradedItem.parameters.level == 6 then
+	   upgradedItem.parameters.rarity = "legendary"
+	 elseif upgradedItem.parameters.level >= 7 then
+	   upgradedItem.parameters.rarity = "essential"	   
+	 end
 	 
 
 	 
-	                -- is it a fishing rod?
-	 		if (itemConfig.config.category == "fishingRod") then
-	 		   if itemConfig.parameters.reelParameters then
-	 		        upgradedItem.parameters.reelParameters.reelOutLength = (itemConfig.parameters.reelParameters.reelOutLength or 1) +10
-				upgradedItem.parameters.reelParameters.reelSpeed = (itemConfig.parameters.reelParameters.reelSpeed or 1) +2
-				upgradedItem.parameters.reelParameters.lineBreakTime = (itemConfig.parameters.reelParameters.lineBreakTime or 1) +0.1
-	 		   end		    
-			 end	
+	 -- is it a tool?
 	 		if (itemConfig.config.category == "Tool") or (itemConfig.config.category == "tool") then
 	 		  -- parasol
 	 		   if upgradedItem.parameters.fallingParameters then
