@@ -1,0 +1,39 @@
+{
+  "projectileName" : "densiniumgravity",
+  "physics" : "laser",
+  "timeToLive" : 1.0,
+  "image" : "densiniumgravity.png",
+  "animationCycle" : 1.0,
+  "frameNumber" : 8,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "actionOnReap" : [],
+  "speed" : 0,
+  "power" : 0,
+
+  "onlyHitTerrain" : true,
+
+  "boundBox" : [-7, -7, 7, 7],
+  "physicsForces" : {
+    "pull" : {
+      "type" : "RadialForceRegion",
+      "categoryWhitelist" : ["player", "npc", "vehicle", "itemdrop"],
+      "outerRadius" : 7,
+      "innerRadius" : 3,
+      "targetRadialVelocity" : -40,
+      "controlForce" : 300
+    }
+  },
+
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ ],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "persistentAudio" : "/sfx/projectiles/zone_pull_loop.ogg"
+}
