@@ -1,0 +1,244 @@
+{
+  "type" : "densinium_burrower",
+  "shortdescription" : "A camoflauged worm burrowing through the earth",
+  "description" : "A camoflauged worm burrowing through the earth",
+
+  "categories" : [ "densinium_burrower" ],
+  "parts" : [ "bodylit", "body" ],
+
+  "animation" : "densinium_burrower.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monstersegment.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    "renderLayer" : "foregroundEntity+21",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      "seeThroughLiquid" : true,
+      "targetQueryRange" : 35,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 80,
+      "targetOutOfSightTime" : 5.0,
+      "damageTakenActions" : [ ],
+      "foundTargetActions" : [ ],
+      "fleeActions" : [ ],    
+      "hostileActions" : [ ],
+      "periodicActions" : [ ],
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+          "minRange" : 1,
+          "maxRange" : 1,
+          "targetOffset" : [0,-6],
+          "avoidLiquid" : false,
+          "usePathfinding" : false,
+          "approachAngle" : 5,
+          "stopForce" : 30
+          }
+        }
+      ],
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "ceilingDistance" : 3,
+            "groundDistance" : 16,
+            "xVelocity": 12,
+            "yVelocity": 18
+          }
+        }
+      ],
+       "concurrentHostileActions" : [
+        {
+          "name" : "action-burroweffect"
+        },
+        {
+          "name" : "action-aim-head"
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.75,
+          "parameters" : {
+            "projectileType" : "direstoneburrow"
+          }
+        }  
+      ],
+       "concurrentActions" : [
+        {
+          "name" : "action-burroweffect"
+        },
+        {
+          "name" : "action-aim-head"
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.75,
+          "parameters" : {
+            "projectileType" : "direstoneburrow"
+          }
+        }
+      ],
+      
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "densiniumdeath",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+      "damage" : 14,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+
+      "mass" : 2.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0.75,
+      "airForce" : 20,
+      "flySpeed" : 15
+
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.01,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 500
+        },
+        "protection" : {
+          "baseValue" : 25.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.11
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.5
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.5
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.5
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.75
+        },
+        "shadowResistance" : {
+         "baseValue" : -0.5 
+        },
+        "shadowStatusImmunity" : {
+         "baseValue" : 0.0
+        },
+        "cosmicStatusImmunity" : { 
+         "baseValue" : 1.5 
+        },
+        "cosmicResistance" : { 
+         "baseValue" : 1.5 
+        },
+        "radioactiveStatusImmunity" : { 
+        "baseValue" : 0
+        },
+        "radioactiveResistance" : { 
+        "baseValue" : 0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "segments" : 9,
+    "segmentMonster" : ["densinium_burrower_tail", "densinium_burrower_segment", "densinium_burrower_segment", "densinium_burrower_segment", "densinium_burrower_segment","densinium_burrower_segment","densinium_burrower_segment","densinium_burrower_segment","densinium_burrower_segment" ],
+    "radius" : 1.2,
+    "burrowProjectile" : "direstoneburrow",
+    "burrowBurstProjectile" : "direstoneburrowburst",
+    "projectileCoordinator" : "burrowercosmicpulse"
+  }
+}
