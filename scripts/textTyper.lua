@@ -42,7 +42,7 @@ function writerInit( textData, race, type )
 				if bracketEnd then
 					local format = string.sub(textCopy, i+1, bracketEnd-1)
 					if format == "playername" then
-						local playerName = "Serene"
+						local playerName = world.entityName(player.id())
 						for j = 1, string.len(playerName) do
 							table.insert(textData.toWrite, string.sub(playerName, j, j))
 						end
