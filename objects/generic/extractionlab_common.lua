@@ -16,7 +16,7 @@ end
 --   Order is basic (1), advanced (2), quantum (3)
 --
 --   Listing order is no guarantee of checking order
---   No checks are made for multi-input recipes being overridden by single-input recipes
+--   No checks are made for multi-input recipes being overridden by single-input recipesa
 function getRecipes()
 	return root.assetJson('/objects/generic/extractionlab_recipes.config')
 end
