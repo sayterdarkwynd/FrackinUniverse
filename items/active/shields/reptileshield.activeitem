@@ -20,13 +20,14 @@
   "animationCustom" : {
     "sounds" : {
       "raiseShield" : [ "/sfx/melee/sword_guard.ogg" ],
-      "perfectBlock" : [ "/sfx/melee/shield_block_floran_perfect.ogg" ],
-      "block" : [ "/sfx/melee/shield_block_floran.ogg" ],
-      "break" : [ "/sfx/melee/shield_break_floran.ogg" ]
+      "perfectBlock" : [ "/sfx/melee/shield_block_wood_perfect.ogg" ],
+      "shieldBash" : [ "/sfx/melee/blunt_hit_metal3.ogg", "/sfx/melee/dagger_hit_metal1.ogg" ],
+      "block" : [ "/sfx/melee/shield_block_wood.ogg" ],
+      "break" : [ "/sfx/melee/shield_break_wood.ogg" ]
     }
   },
 
-  "scripts" : [ "/items/active/shields/shield2.lua" ],
+  "scripts" : [ "/items/active/shields/shield.lua" ],
 
   // ***************   FU shield properties    *********************
   // if using shield2.lua, you must include these values
@@ -34,6 +35,8 @@
   "shieldEnergyRegen" : 0,
   "shieldHealthBonus" : 0.12,
   "shieldEnergyBonus" : 0,
+  "shieldBash" : 3,
+  "shieldBashPush" : 5,  
   "shieldProtection" : 0,
   "shieldStamina" : 0.08,
   "shieldFalling" : 0, 

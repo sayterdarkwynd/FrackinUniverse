@@ -1,21 +1,42 @@
 {
   "type" : "crewmembercyborg",
-  "baseType" : "crewmember",
+  "baseType" : "base",
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "damageTeamType" : "friendly",
+
+  // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": 0.2 }, {"stat" : "powerMultiplier", "amount" : -0.3} ], 
+
+  "persistent" : true,
 
   "scriptConfig" : {
+    "behavior" : "crewmember",
     "behaviorConfig" : {
-      "emptyHands" : false
+      "emptyHands" : false,
+
+      // Wander behavior config
+      "wanderTime" : 1,
+      "idleTime" : 10,
+      "outerHomeRange" : 20,
+      "innerHomeRange" : 15,
+
+      "hostileDamageTeam" : {"type" : "friendly", "team" : 1}
     },
 
     "crew" : {
-      "defaultUniform" : {
-        "head" : "rustyskul",
-        "chest" : "apextier6schest",
-        "legs" : "apextier6spants"
-        },
+      "recruitable" : true,
+
+      "recruitInteractAction" : {
+        "messageType" : "recruits.offerRecruit",
+        "messageArgs" : []
+      },
+
+      "powerMultiplierExponent" : 1.0,
 
       "role" : {
-        "benefits" : [
+	"benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "shipSpeed",
@@ -31,16 +52,86 @@
             "type" : "PersistentEffect",
             "effect" : "shipMassSmall"
           }
-        ],
+        ],      
         "type" : "chemist",
         "name" : "Cyborg",
-        "field" : "Murder",
+        "field" : "Obliteration",
         "uniformColorIndex" : 8
-      }
+      },
+
+      "ranks" : [
+        "Second-to-Last <role>",
+        "3rd Technical Assistant <field> Officer",
+        "Assistant Deputy <role> Guy/Gal",
+        "Trainee Apprentice <role>",
+        "Temporary Relief <role>",
+        "3rd Rear Lieutenant <role>",
+        "64th Commodore <role>",
+        "Standing <field> Officer",
+        "Sitting <field> Officer",
+        "Executive Coffee-Making <role>",
+        "Command Master Chief Petty <field> Officer",
+        "Independent <field> Auditor",
+        "Dependant <field> Auditor",
+        "Dreadnought <field> Officer",
+        "Trainee <field> Mastermind",
+        "Head of Petty <field> Arguments",
+        "Backup <role>",
+        "Reliable <field> Lacky",
+        "Theoretical <field> Advisor",
+        "Reliable <field> Lackey",
+        "Head of <field> operations",
+        "Wild Card <role>",
+        "Head of <field> Relations",
+        "Last-Minute <role>",
+        "Expert in <field> Diplomacy",
+        "<field> Innovation Manager",
+        "Loose Cannon <role>",
+        "Regional <field> Director",
+        "Private <field> Investigator",
+        "Temporal <field> Surveyor",
+        "Radical <field> Innovator",
+        "Independent Head of <field> Operations",
+        "Just your average <role>",
+        "Hobbyist <role>",
+        "Master of <field> Matters",
+        "Alternative <field> Advisory Representative",
+        "Runner-Up <field> Officer",
+        "Emergency <field> Officer",
+        "First Mate's Second-Cousin's Third <role>",
+        "Unpaid <field> Intern",
+        "<field> Student",
+        "<field> Forum Moderator",
+        "Rogue <field> Profiteer",
+        "Neutral Third Party <role>",
+        "Low Quality <field> Negotiations",
+        "Armchair <field> Expert"
+      ],
+
+      "defaultUniform" : {
+        "head" : "rustyskul",
+        "chest" : "apextier6schest",
+        "legs" : "apextier6spants"
+      },
+      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+    },
+
+    "questGenerator" : {
+      "enableParticipation" : false
     },
 
     "dialog" : {
       "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "Perhaps together we can annihilate our foes.",
+              "I wish to utilize my weaponry on the enemy. Hire me.",
+              "My programming requires that I obliterate the enemy. Hire me!",
+              "We should band together and annihilate your foes."
+            ]
+          }
+        },
         "roleDescription" : {
           "default" : {
             "default" : [
@@ -48,35 +139,202 @@
             ]
           }
         },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "I remain ever-ready to vanquish the enemy.",
+              "Circuits reset. Commencing program.",
+              "I seek retribution, fearless leader."
+            ]
+          }
+        },
+        
+        
         "combatBenefit" : {
           "default" : {
             "default" : [
-              "I can protect you from the Aether!"
+              "I can protect you from the Aether, and murder things"
             ]
           },
           "floran" : {
             "default" : [
-              "Floran hasss things to help you out in the Aether!"
+              "Floran hasss things to help you out in the Aether. I also excel at destructive tasks"
             ]
           },
           "glitch" : {
             "default" : [
-              "Eager. I can grant immunity to Aether!"
+              "Eager. I can grant immunity to Aether and target enemies with glee"
             ]
           }
+        },
+        
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "I'll just wait here.",
+              "I'll stay here. Come back when you need me, captain!",
+              "I'll stay here for now, captain.",
+              "Do you need me to stay here?",
+              "I'll stay here for now, then.",
+              "I'll stay here."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran should sstay here?",
+              "Floran will sstay here.",
+              "Floran will sstay, then..."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Obliging. I will remain here for now, then.",
+              "Patient. I can wait here, captain.",
+              "Amicable.  I will remain here if you want me to, captain.",
+              "Agreeable. I can stay here if you prefer, captain."
+            ]
+          },
+          "penguin" : {
+            "default" : [
+              "I'll just be here... Waiting...",
+              "Alright, boss, I'll wait here.",
+              "I can wait here.",
+              "I'll just wait here, rest my flippers."
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "Yes, captain!",
+              "Captain!",
+              "Let's get going!",
+              "Let's go, captain!",
+              "Are we going somewhere?"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Yesss, Captain!",
+              "Let'ss go!",
+              "Captain wantss Floran to follow?",
+              "Floran ready to go again!",
+              "Are we going ssomewhere?"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Humble. I shall follow, captain.",
+              "Alert. Shall we go, captain?",
+              "Solemn. Is it time to move, captain?",
+              "Inquisitive. Are we going somewhere?"
+            ]
+          },
+          "penguin" : {
+            "default" : [
+              "Okay, I'm ready, waddle on.",
+              "Let's go then.",
+              "You're the boss!",
+              "I'm coming."
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "I can't reach you!",
+              "You're too far!",
+              "Hey, wait up!",
+              "Don't go too far!",
+              "Let me catch up!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran too far away!",
+              "Floran iss left behind!",
+              "Floran not close enough to you!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Frustrated. I can't reach you!",
+              "Concerned. Wait for me!"
+            ]
+          }
+        },
+          "penguin" : {
+            "default" : [
+              "Hey, biggun! Let me catch up!",
+              "Don't get too far off!",
+              "Wait up, big guy!"
+            ]
+          }
+      },
+
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/grumble.config:tagCriteria",
+          "enclosedArea" : "/dialog/grumble.config:enclosedArea",
+          "otherDeed" : "/dialog/grumble.config:otherDeed",
+          "severe" : "/dialog/grumble.config:severe",
+          "final" : "/dialog/grumble.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/arrivedhome.config:beacon",
+          "rent" : "/dialog/arrivedhome.config:rent"
         }
-      }
+      },
+
+      "converse" : "/dialog/crewmember.config:converse",
+
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/combat.config:reattack",
+      "killedTarget" : "/dialog/combat.config:killedTarget",
+      "lostTarget" : "/dialog/combat.config:lostTarget",
+      "outOfSight" : "/dialog/combat.config:outOfSight",
+      "cheerOn" : "/dialog/combat.config:cheerOn",
+      "cantReach" : "/dialog/combat.config:cantReach"
     }
+  },
+
+  "movementParameters" : {
+    // Run at the same speed as the player
+    "runSpeed" : 20.0
   },
 
   "items" : {
     "default" : [
       [0, [
           {
-            "primary" : [ "isn_annihilator" ],
-            "sheathedprimary" : [ "advalloyshortspear" ]
+             "primary" : [ "isn_annihilator", "energyassault", "fusteampunkgun", "gravgun" ],
+            "secondary" : [ "phaseblade", "densiniumshield" ],
+            "sheathedprimary" : [ "metalliccleaver", "dblade", "heliosblade", "precursorbroadsword" ] 
           }
-        ] ]
+        ] ]  
     ]
+  },
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "hitInvulnerability" : true,
+      "hitInvulnerabilityThreshold" : 0.0333,
+      "hitInvulnerabilityTime" : 1,
+      "hitInvulnerabilityFlash" : 0.15,
+      "damageFlashOnDirectives" : "",
+      "damageFlashOffDirectives" : ""
+    },
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 350.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.15
+      },
+      "healthRegen" : {
+        "baseValue" : 2.2
+      }
+    }
   }
 }

@@ -3,7 +3,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_diamondset"
 
 weaponBonus={
-	{stat = "critChance", amount = 5}
+	{stat = "critChance", amount = 5},
+	{stat = "powerMultiplier", baseMultiplier = 1.25}
 }
 
 armorBonus={ }
@@ -26,7 +27,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"diamond","broadsword"})
+	local weapons=weaponCheck({"diamond","katana"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

@@ -21,9 +21,9 @@
     "orb3" : "orbproto.png",
     "orb4" : "orbproto.png"
   },
-  "animationCustom" : { 
-  
-    "lights" : { 
+  "animationCustom" : {
+
+    "lights" : {
       "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
@@ -34,18 +34,18 @@
       "flickerPeriodVariance" : 0.075,
       "flickerIntensityVariance" : 0.025
       }
-    } 
-  
+    }
+
   },
 
-  "scripts" : ["magnorbsquad.lua"],
+  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
 
   "orbitRate" : 3.02,
 
   "elementalType" : "electric",
 
   "projectileType" : "magnorbproto",
-  
+
   "projectileParameters" : {
     "power" : 3.56,
     "knockback" : 15,
@@ -57,13 +57,14 @@
     "snapDistance" : 1.0
   },
 
+  "count" : 4,
   "shieldKnockback" : 20,
   "shieldEnergyCost" : 40,
   "shieldHealth" : 70,
   "shieldPower" : "Force Field",
   "critChance" : 2,
   "critBonus" : 6,
-  
+
   "stances" : {
     "idle" : {
       "armRotation" : 10,
@@ -77,6 +78,6 @@
       "allowRotate" : true,
       "allowFlip" : true
     }
-  }, 
+  },
   "builder" : "/items/buildscripts/buildmagnorb.lua"
 }

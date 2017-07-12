@@ -1,11 +1,17 @@
 {
   "particleEmitters" : {
     "smoke" : {
-      "active" : true,
-      "emissionRate" : 20,
-      "fullbright" : true,
-      "particles" : [ 
-        
+      "emissionRate" : 15,
+      "offsetRegion" : [ 3.0, 1.0, 3.0, 1.0 ],
+      "particles" : [
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" }
       ]
     },
     "statustext" : {
@@ -15,8 +21,8 @@
         {
           "particle" : {
             "type" : "text",
-            "text" : "+ Crit +",
-            "size" : 0.5,
+            "text" : "Crit",
+            "size" : 0.4,
             "color" : [255, 125, 66, 255],
             "fade" : 0.4,
             "destructionAction" : "shrink",

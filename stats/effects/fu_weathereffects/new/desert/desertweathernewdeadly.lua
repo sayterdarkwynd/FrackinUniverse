@@ -239,8 +239,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	      end 
 
 	      if status.stat("fireResistance",0) <= self.effectCutoffValue then      
-		   status.modifyResource("health", -self.damageApply * dt)
-
+		   status.modifyResource("health", -self.damageApply * dt) 
 		   if (status.resource("health")) <= (status.resource("health")/4) then
 		     mcontroller.controlModifiers({
 			 airJumpModifier = 0.65, 

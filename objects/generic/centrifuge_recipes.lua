@@ -1,3 +1,3 @@
-function getRecipes() -- not sure 
+function getRecipes()
   return root.assetJson('/objects/generic/centrifuge_recipes.config')
 end

@@ -1,0 +1,88 @@
+{
+  "itemName" : "tungstensniperrifle",
+  "price" : 960,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Powerfully strong to cover long distances.",
+  "shortdescription" : "Tungsten Sniper Rifle",
+  "tooltipKind" : "gun",
+  "category" : "sniperRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","sniperrifle"],
+  "level" : 2,
+
+  "inventoryIcon" : "tungstensniperrifle.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "tungstensniperrifle.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/rifle1.ogg"]
+    }
+  },
+
+  "critChance" : 6,
+  "critBonus" : 8,
+  
+  "baseOffset" : [0.6, 0.3],
+  "muzzleOffset" : [2.9, -0.2],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.3,
+    "baseDps" : 8.5,
+    "energyUsage" : 25.5,
+    "inaccuracy" : 0.008,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockback" : 22
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "piercingshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
