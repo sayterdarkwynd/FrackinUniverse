@@ -1,15 +1,16 @@
 --	Author: zimberzimber
 
 --		Functions:
---	writerInit( testData, race, type )
---	  testData	= Table that holds data required for the script to function
+--	writerInit( textData, race, type )
+--	  textData	= Table that holds data required for the script to function
 --	  race		= String that holds a race name
 --	  context	= String that holds the context of the text
 --	Returns a formatted table holding a chain of strings for the updater to process
 --	Use this whenever starting/changing texts
 
---	writerUpdate( testData )
---	  testData	= Table that holds data required for the script to function
+--	writerUpdate( textData, sound )
+--	  textData	= Table that holds data required for the script to function
+--	  sound		= String holding the path to the sound file
 --	Updates the table with the new string
 
 --		Formats:
@@ -68,7 +69,7 @@ function writerInit( textData, race, type )
 	end
 end
 
-function writerUpdate(textData)
+function writerUpdate(textData, sound, volume)
 	if textData.textPause and textData.textPause > 0 then
 		textData.textPause = textData.textPause - 1
 		return
@@ -77,15 +78,28 @@ function writerUpdate(textData)
 		if write then
 			if string.len(write) > 1 then
 				if string.sub(write, 1, 5) == "[(tp)" then
-					textData.textPause = math.ceil(tonumber(string.gsub(write, "%D", "")))
+					local pause = string.gsub(write, "%D", "")
+					textData.textPause = math.ceil(tonumber(pause))
 					table.remove(textData.toWrite, 1)
 				else
 					textData.written = textData.written..write
 					table.remove(textData.toWrite, 1)
+					
+					if sound then
+						pane.playSound(sound, 0, math.random(7,10)/10)
+					end
 				end
 			else
 				textData.written = textData.written..write
 				table.remove(textData.toWrite, 1)
+				
+				if sound then
+					if volume then
+						pane.playSound(sound, 0, volume)
+					else
+						pane.playSound(sound, 0, 1)
+					end
+				end
 			end
 		end
 	end
