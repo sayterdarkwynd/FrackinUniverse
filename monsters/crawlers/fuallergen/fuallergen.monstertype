@@ -1,7 +1,7 @@
 {
   "type" : "fuallergen",
   "shortdescription" : "Snarker Trap",
-  "description" : "Capable of spewing a lethal toxic pollen.",
+  "description" : "Capable of spewing lethal toxic pollen.",
 
   "categories" : [ "fuallergen" ],
   "parts" : [ "body" ],
@@ -17,6 +17,8 @@
 
     "behavior" : "monster",
 
+    "facingMode" : "transformation",
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -28,6 +30,12 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
       "hurtTime": 0.10,
+
+      "spawnActions" : [
+        {
+          "name" : "spawn-ceiling"
+        }
+      ],
 
       "foundTargetActions" : [
         {
@@ -44,26 +52,26 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-	        "cooldown" : 3,
+          "cooldown" : 3,
           "parameters" : {
-            "requireLineOfSight" : false,
-            "maximumRange" : 8,
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
             "minimumRange" : 3,
             "windupState" : "hurt",
             "windupTime" : 0.4,
 
             "projectileType" : "pollenburst",
+            "projectileCount" : 1,
+            "fireOffset" : [0, 0],
             "power" : 10,
             "projectileParameters" : {
               "speed" : 7.5,
               "timeToLive" : 8.0
             },
-            "fireOffset" : [0, 0],
-            "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "fireSound" : "fire",
-            "range": 6,
-            "fireState" : "fire",
+
+            "faceTarget" : false,
+            "rotationCenter": [0, 0],
+
             "winddownState" : "idle",
             "winddownTime" : 0.2
           }
@@ -97,14 +105,8 @@
         {
           "name" : "idle-crawl",
           "parameters" : {
-            "stopForce" : 500
-          }
-        },
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ""
+            "stopForce" : 500,
+            "resetHeading" : false
           }
         }
       ],
@@ -113,19 +115,12 @@
         {
           "name" : "idle-crawl",
           "parameters" : {
-            "stopForce" : 500
-          }
-        },
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ".aggro"
+            "stopForce" : 500,
+            "resetHeading" : false
           }
         }
       ]
     },
-
 
     "damageParts" : {
       "body" : {
@@ -205,6 +200,12 @@
         "protection" : {
           "baseValue" : 0.2
         },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
@@ -235,6 +236,7 @@
     "captureHealthFraction" : 0.50,
     "capturedMonsterName" : "Snarker Trap",
     "capturedMonsterType" : "fuallergen", // turn into an adultpoptop when captured
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "fuallergen" }
   }
 }

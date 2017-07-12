@@ -9,7 +9,7 @@ armorBonus={}
 armorEffect={
 	{stat = "grit", amount = 0.20},
 	{stat = "gasImmunity", amount = 1},
-        {stat = "shieldRegen", amount = 0.3}
+        {stat = "shieldStaminaRegen", amount = 0.3}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

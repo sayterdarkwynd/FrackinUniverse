@@ -1,0 +1,222 @@
+{
+  "itemName" : "aetheriumcleaver",
+  "price" : 152000,
+  "level" : 8,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Nothing is more deadly and beautiful.
+^cyan;Annihilating Alt-Fire^reset;",
+  "shortdescription" : "Aetherium Cleaver",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","xithricite"],
+  "inventoryIcon" : "aetheriumcleaver.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/comboaetheriumcleaver.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aetheriumcleaver.png",
+    "bladefullbright" : "aetheriumcleaverfullbright.png"
+  },
+  "animationCustom":{ 
+	  "sounds" : {
+	    "fire":["/sfx/melee/mech_energysword_swing1.ogg"], 
+	    "fire2":["/sfx/melee/mech_energysword_swing2.ogg"], 
+	    "fire3":["/sfx/melee/mech_energysword_swing3.ogg"], 
+	    "fire4":["/sfx/melee/mech_energysword_swing4.ogg"], 
+	    "fire5":["/sfx/melee/mech_energysword_swing4.ogg"], 
+	    "fire6":["/sfx/melee/energywhip_impact3.ogg", "/sfx/melee/mech_energysword_windup2.ogg", "/sfx/melee/mech_energysword_windup2.ogg"],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }   
+  },
+  
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility":{
+    "fireTime":0.95, 
+    "baseDps":11.25, 
+    "damageConfig":{
+      "knockback":20, 
+      "statusEffects":["defenseboostneg20"], 
+      "damageSourceKind":"cosmicbroadsword"}, 
+      "comboSteps":4, 
+      "swooshOffsetRegions":[
+        [0.75, 0.0, 4.25, 5.0], 
+        [0, -4.25, 5, 0], 
+        [3.0, -0.5, 6.5, 2.0], 
+        [0, -4.25, 5, 0]
+      ], 
+      "stepDamageConfig":[
+        {"baseDamageFactor":1.2, "knockback":15}, 
+        {"baseDamageFactor":0.9, "knockback":15}, 
+        {"baseDamageFactor":1.5, "knockback":10}, 
+        {"baseDamageFactor":0.8, "knockback":10}
+        ], 
+      "stances":{
+        "idle":{
+          "armRotation":-20, 
+          "weaponRotation":50, 
+          "twoHanded":false, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "aimAngle":0
+        }, 
+        "windup1":{
+          "duration":0.1, 
+          "armRotation":90, 
+          "weaponRotation":-10, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false, 
+          "allowFlip":true
+          }, 
+        "preslash1":{
+          "duration":0.025, 
+          "armRotation":55, 
+          "weaponRotation":-45, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false, 
+          "allowFlip":false
+          }, 
+        "fire1":{
+          "duration":0.15, 
+          "armRotation":-45, 
+          "weaponRotation":-55, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false,
+          "allowFlip":false,
+          "periodicActions" : [
+		    {
+		      "time" : 0.01,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "flamethrowerflameff",
+		      "inheritDamageFactor" :1,
+		      "fuzzAngle" : 360,
+		      "projectileCount" : 1,
+		      "projectileParameters" : { "damageSourceKind" : "fireplasma", "speed" : 20 }
+		   }              
+            ]
+          }, 
+        "wait1":{
+          "duration":1.2, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1]
+        }, 
+        "windup2":{
+          "duration":0.3, 
+          "armRotation":-100, 
+          "weaponRotation":-150, 
+          "weaponOffset":[0,1], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "preslash2":{
+          "duration":0.025, 
+          "armRotation":-40, 
+          "weaponRotation":-130, 
+          "weaponOffset":[0,1], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "fire2":{
+          "duration":0.15, 
+          "armRotation":40, 
+          "weaponRotation":-100, 
+          "weaponOffset":[0,1], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+          }, 
+        "wait2":{
+          "duration":1.2, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1]
+        }, 
+        "windup3":{
+          "duration":0.3, 
+          "armRotation":90, 
+          "weaponRotation":-10, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false, 
+          "allowFlip":true        
+        }, 
+        "preslash3":{"duration":0}, 
+        "fire3":{
+          "duration":0.15, 
+          "armRotation":-45, 
+          "weaponRotation":-55, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false,
+          "allowFlip":false
+        }, 
+        "wait3":{
+          "duration":1.2, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":true, 
+          "weaponOffset":[0,1]
+        }, 
+        "windup4":{
+          "duration":0.3, 
+          "armRotation":-100, 
+          "weaponRotation":-150, 
+          "weaponOffset":[0,1], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "preslash4":{"duration":0}, 
+        "fire4":{
+          "duration":0.15, 
+          "armRotation":40, 
+          "weaponRotation":-100, 
+          "weaponOffset":[0,1], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "wait4":{
+          "armRotation":-20, 
+          "weaponRotation":50, 
+          "twoHanded":false, 
+          "weaponOffset":[0,1], 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "aimAngle":0
+        }
+      }
+    }, 
+
+  "altAbilityType":"futravelingslash", 
+  
+  "altAbility":{
+    "name" : "Aetheric Blast",
+    "energyUsage":300
+  },
+
+  "critChance" : 5,
+  "critBonus" : 12,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

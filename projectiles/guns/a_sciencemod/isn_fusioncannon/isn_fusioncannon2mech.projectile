@@ -1,0 +1,33 @@
+{
+  "projectileName" : "isn_fusioncannon2mech",
+  "image" : "isn_fusioncannon_shot.png",
+  "physics" : "laser",
+  "animationCycle" : 0.5,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 6,
+  "power" : 1,
+  "level" : 6,
+  "speed" : 1,
+    "fullbright" : true,
+  "timeToLive" : 5,
+  "bounces" : 0,
+  "piercing" : true,
+  "fallSpeed" : 10,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [255, 205, 0],
+  "damageKind" : "default",
+  "emitters" : [ "javelinred" ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "isn_fusioncannonblastmech",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/guns/a_sciencemod/isn_fusioncannon/isn_fusioncannon.config"
+    }
+  ]
+}

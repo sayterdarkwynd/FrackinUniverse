@@ -1,0 +1,46 @@
+{
+  "itemName" : "zerchesiumgreataxe",
+  "price" : 1600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A revolting bio-weapon
+^cyan;Inflicts Poison^reset;",
+  "shortdescription" : "Zerchesium Greataxe",
+  "tooltipKind" : "sword",
+  "category" : "greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon"],
+
+  "inventoryIcon" : "zerchesiumgreataxe.png",
+
+  "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "zerchesiumgreataxe.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.0,
+    "baseDps" : 10.5
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "fusuperflipslash",
+  "critChance" : 3,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 4
+}

@@ -7,7 +7,7 @@
   "damageTeamType" : "friendly",
 
   // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.5} ], 
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -20 }, {"stat" : "powerMultiplier", "amount" : -0.6} ], 
 
   "persistent" : true,
 
@@ -38,7 +38,7 @@
       "role" : {
         "type" : "soldier",
         "name" : "Warrior",
-        "field" : "Stabology",
+        "field" : "Battle",
         "uniformColorIndex" : 5
       },
 
@@ -401,7 +401,8 @@
             "head" : [ { "name" : "copperarmorhead" } ],
             "chest" : [ { "name" : "copperarmorchest" } ],
             "legs" : [ { "name" : "copperarmorpants" } ],
-            "primary" : [ "metallichammer" ],
+            "primary" : [ "carbonblade" ],
+            "secondary" : [ "ironshield" ],
             "sheathedprimary" : [ "k3rifle" ]
           },
           {
@@ -427,7 +428,7 @@
 
     "stats" : {
       "maxHealth" : {
-        "baseValue" : 350.0
+        "baseValue" : 150.0
       },
       "powerMultiplier" : {
         "baseValue" : 0.15

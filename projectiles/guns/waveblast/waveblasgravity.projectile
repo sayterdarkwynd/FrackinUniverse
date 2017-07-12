@@ -1,0 +1,29 @@
+{
+  "projectileName" : "waveblastgravity",
+  "image" : "waveblast.png",
+  "physics" : "bullet",
+  "animationCycle" : 0.14,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 6,
+  "power" : 5,
+  "level" : 5,
+  "speed" : 15,
+  "timeToLive" : 0.14,
+  "lightColor" : [255,165,0],
+  "periodicActions" : [
+    {
+      "time" : 0.01,
+      "repeat" : true,
+      "action" : "projectile",
+      "type" : "pullshot",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0
+    }
+  ], 
+
+  "emitters" : [ "gausssmoke" ],
+  "damageKind" : "fire",
+  
+  "piercing" : true
+}

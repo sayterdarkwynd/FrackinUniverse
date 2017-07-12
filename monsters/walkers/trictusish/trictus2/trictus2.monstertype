@@ -56,7 +56,7 @@
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
-            "winddownStopForce" : 300,
+            "winddownStopForce" : 100,
             "winddownState" : "",
             "winddownTime" : 0.5
           }
@@ -89,7 +89,7 @@
             "winddownState" : "winddown",
 
             "invulnerableState" : "windup",
-            "invulnerableTime" : 0.0
+            "invulnerableTime" : 0.25
           }
         }         
       ],
@@ -101,7 +101,7 @@
           "parameters" : {
 	    "moveState": "chargewindup",
 	    "idleState": "chargewinddown",
-	    "teleportMinDistance": 12,
+	    "teleportMinDistance": 15,
 	    "targetXDelta": 15,
 	    "groundMinHeight": -10,
 	    "groundMaxHeight": 10               
@@ -116,7 +116,7 @@
           "parameters" : {
 	    "moveState": "chargewindup",
 	    "idleState": "chargewinddown",
-	    "teleportMinDistance": 12,
+	    "teleportMinDistance": 15,
 	    "targetXDelta": 15,
 	    "groundMinHeight": -10,
 	    "groundMaxHeight": 10               
@@ -239,7 +239,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 80
+          "baseValue" : 70
         },
         "protection" : {
           "baseValue" : 0.0
@@ -297,6 +297,6 @@
     "capturable" : true,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "monsters" : "trictus" }
+    "captureCollectables" : { "fu_monster" : "trictus2" }
   }
 }

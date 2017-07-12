@@ -1,4 +1,98 @@
 [
+    {
+    "op": "add",
+    "path": "/customCollectionsTitle",
+    "value": "Custom Collections"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections",
+    "value": []
+  },
+  {
+    "op": "add",
+    "path": "/gui/scrollAreaCustom",
+    "value": {
+      "type": "scrollArea",
+      "rect": [ 38, 35, 256, 205 ],
+      "children": {
+        "customCollectionList": {
+          "type": "list",
+          "//callback": "selectCustomCollection",
+          "schema": {
+            "spacing": [ 4, 2 ],
+            "memberSize": [ 204, 11 ],
+            "listTemplate": {
+              "background": {
+                "type": "image",
+                "file": "/interface/scripted/collections/tab_customcollections_bg.png",
+                "position": [ 0, 1 ],
+                "zlevel": -1
+              },
+              "collectionName": {
+                "type": "label",
+                "position": [ 102, 1 ],
+                "hAnchor": "mid",
+                "width": 198,
+                "value": "Replace Me"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/gui/collectionTabs/buttons/0/position/1",
+    "value": 190
+  },
+  {
+    "op": "replace",
+    "path": "/gui/collectionTabs/buttons/1/position/1",
+    "value": 164
+  },
+  {
+    "op": "replace",
+    "path": "/gui/collectionTabs/buttons/2/position/1",
+    "value": 138
+  },
+  {
+    "op": "replace",
+    "path": "/gui/collectionTabs/buttons/3/position/1",
+    "value": 112
+  },
+  {
+    "op": "replace",
+    "path": "/gui/collectionTabs/buttons/4/position/1",
+    "value": 86
+  },
+  {
+    "op": "replace",
+    "path": "/gui/collectionTabs/buttons/5/position/1",
+    "value": 60
+  },
+  {
+    "op": "add",
+    "path": "/gui/collectionTabs/buttons/-",
+    "value": {
+      "selected": false,
+      "position": [ 4, 34 ],
+      "baseImage": "/interface/scripted/collections/tab_customcollections_deselect.png",
+      "baseImageChecked": "/interface/scripted/collections/tab_customcollections_select.png",
+      "pressedOffset": [ 0, 0 ],
+      "data": "customCollections"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/gui/collectionTabs/buttons/-",
+    "value": {
+      "visible": false,
+      "selected": false,
+      "data": "customCollectionsVisible"
+    }
+  },
   {
     "op": "test",
     "path": "/customCollectionsTitle",
@@ -37,6 +131,91 @@
   {
     "op": "add",
     "path": "/customCollections/-",
-    "value": "fu_armorsmith"
+    "value": "fu_bees"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_monster"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_plant"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_liquid"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_tech"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_isotopes"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_armorbalanced"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_armorexplorer"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_armorprotection"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_armortank"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_armormelee"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_armorpowermelee"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_armorranged"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_armorpowerranged"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_weaponbow"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_weaponchakram"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_weaponfist"
+  },
+  {
+    "op": "add",
+    "path": "/customCollections/-",
+    "value": "fu_weaponaxe"
   }
 ]

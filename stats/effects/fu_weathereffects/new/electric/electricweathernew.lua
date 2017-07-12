@@ -23,36 +23,29 @@ function init()
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
 
-
   checkEffectValid()
 
-  self.isOn = 0
   script.setUpdateDelta(5)
 end
 
 --******* check effect and cancel ************
 function checkEffectValid()
- if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
+	  if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
 	    deactivateVisualEffects()
 	    effect.expire()
- end	 
-	  if world.entityType(entity.id()) ~= "player" then
+	  end	 
+	  if (status.stat("electricResistance",0)  >= self.effectCutoffValue) or status.statPositive("biomeelectricImmunity") or world.type()=="unknown" or world.entityType(entity.id()) ~= "player" then
 	    deactivateVisualEffects()
 	    effect.expire()
-	  end
-	if status.statPositive("biomeelectricImmunity") or world.type()=="unknown"  then
-	  deactivateVisualEffects()
-	  effect.expire()
-	end
-
-	if (status.stat("electricResistance",0)  >= self.effectCutoffValue) then
-	  deactivateVisualEffects()
-	  effect.expire()
-	else
-	  -- activate visuals and check stats
-	  if not self.usedIntro then
-	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
-	    self.usedIntro = 1
+	  else
+	  if not (self.usedIntro) or (self.usedIntro <= 0) then
+	    if not (status.stat("electricResistance",0)  >= self.effectCutoffValue) or not status.statPositive("biomeelectricImmunity") then
+	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
+	      self.timerRadioMessage = 60
+	      self.usedIntro = 1
+	    else
+	      self.usedIntro = 1
+	    end
 	  end
 	end
 end
@@ -143,11 +136,11 @@ end
 
 --**** Alert the player
 function activateVisualEffects()
-  effect.setParentDirectives("fade=0099cc=0.3")
+  --effect.setParentDirectives("fade=0099cc=0.3")
 end
 
 function deactivateVisualEffects()
-  effect.setParentDirectives("fade=0099cc=0.0")
+  --effect.setParentDirectives("fade=0099cc=0.0")
 end
 
 function makeAlert()

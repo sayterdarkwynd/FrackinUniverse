@@ -1,0 +1,85 @@
+{
+  "type" : "crewmembercollector",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "fancaphead",
+        "chest" : "sciencefuchestnpc",
+        "legs" : "sciencefulegsnpc"
+        },
+
+      "role" : {
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.06
+          },               
+          {
+            // Persistent effects are active while on the ship
+            "type" : "PersistentEffect",
+            "effect" : "regeneration1"
+          }
+        ],
+        "type" : "chemist",
+        "name" : "Creature Hunter",
+        "field" : "Collector",
+        "uniformColorIndex" : 4
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll give you a 6% fuel efficiency boost whenever we're on the ship!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "IF WE MAKE EYE CONTACT WE MUST DO BATTLE.",
+              "WHAT STARTER 'MON DID YOU CHOOSE?",
+              "I SHOULD PROBABLY BRUSH MY TEETH.",
+              "NOBODY LIKES A LIAR."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran hasss things to help you out!",
+              "Floran can help out!",
+              "Floran hasss things to help!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can help you out!",
+              "Excited. Perhaps you could do with a power-up!",
+              "Intrigued. I wonder if this will help you?",
+              "Helpful. Take this, it will help!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "capturegun" ],
+            "sheathedprimary" : [ "npcdagger" ]
+          }
+        ] ]
+    ]
+  }
+}

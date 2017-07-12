@@ -1,15 +1,15 @@
 function honeyCheck(comb)
 	honeyMap = honeyMap or {
 		arcticcomb      = "snowhoneyjar",
-		aridcomb        = "honeyjar",
+		aridcomb        = "stronghoneyjar",
 		coppercomb      = "honeyjar",
-		durasteelcomb   = "honeyjar",
+		durasteelcomb   = "shellhoneyjar",
 		flowercomb      = "floralhoneyjar",
-		forestcomb      = "honeyjar",
+		forestcomb      = "greenhoneyjar",
 		godlycomb       = "mythicalhoneyjar",
-		goldcomb        = "honeyjar",
-		ironcomb        = "honeyjar",
-		junglecomb      = "honeyjar",
+		goldcomb        = "speedhoneyjar",
+		ironcomb        = "shellhoneyjar",
+		junglecomb      = "greenhoneyjar",
 		minercomb       = "honeyjar",
 		mooncomb        = "honeyjar",
 		morbidcomb      = "redhoneyjar",
@@ -20,18 +20,18 @@ function honeyCheck(comb)
 		preciouscomb    = "honeyjar",
 		radioactivecomb = "radioactivehoneyjar",
 		redcomb         = "redhoneyjar",
-		silvercomb      = "honeyjar",
---		suncomb         = "hothoneyjar",
+		silvercomb      = "shellhoneyjar",
+		suncomb         = "hothoneyjar",
 		solariumcomb    = "solariumhoneyjar",
-		titaniumcomb    = "honeyjar",
-		tungstencomb    = "honeyjar",
+		titaniumcomb    = "shellhoneyjar",
+		tungstencomb    = "shellhoneyjar",
 		volcaniccomb    = "hothoneyjar",
-		aegisaltcomb    = "honeyjar",
-		feroziumcomb    = "honeyjar",
-		violiumcomb     = "honeyjar",
+		aegisaltcomb    = "shellhoneyjar",
+		feroziumcomb    = "shellhoneyjar",
+		violiumcomb     = "shellhoneyjar",
 		liquidwater     = "liquidwastewater",
 		magmacomb       = "hothoneyjar",
-		eldercomb = "elderhoneyjar"
+		eldercomb       = "elderhoneyjar"
 	}
 
 	local item = comb

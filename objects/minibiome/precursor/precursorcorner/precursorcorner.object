@@ -1,30 +1,32 @@
 {
   "objectName" : "precursorcorner",
+  "colonyTags" : ["precursor","ancient"],
   "rarity" : "Common",
   "category" : "decorative",
-  "price" : 250,
+  "price" : 255,
+
+  "race" : "generic",
+
   "description" : "Ancient support beam",
   "shortdescription" : "Precursor Support Beam",
-  "race" : "human",
 
   "inventoryIcon" : "precursorcornericon.png",
   "orientations" : [
     {
-      "image" : "precursorcorner.png:<color>",
-
+      "image" : "precursorcornerright.png:<color>",
       "imagePosition" : [0, 0],
+      "direction" : "right",
 
       "spaceScan" : 0.1,
-      "anchors" : [ "left", "top" ]
+       "anchors" : [ "right" ]
     },
-
     {
-      "image" : "precursorcorner.png:<color>",
-
-      "imagePosition" : [0, 0],
+      "image" : "precursorcornerleft.png:<color>",
+      "imagePosition" : [-16, 0],
+      "direction" : "left",
 
       "spaceScan" : 0.1,
-      "anchors" : [ "right", "top" ]
+       "anchors" : [ "left" ]
     }
   ]
 }

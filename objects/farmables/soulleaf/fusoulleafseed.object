@@ -1,0 +1,72 @@
+{
+	"objectName": "fusoulleafseed",
+	"colonyTags": ["nature"],
+	"rarity": "Common",
+	"category": "seed",
+	"description": "Slow to grow, but produces useful essence.",
+	"shortdescription": "Soulleaf Seed",
+	"objectType": "farmable",
+	"printable": false,
+	"price": 40,
+	"inventoryIcon": "fusoulleafseedicon.png",
+	"tooltipKind": "seed",
+	"largeImage": "fusoulleafseed.png:default.3.0",
+	"collectablesOnPickup" : { "fu_plant" : "soulleaf" },
+	"orientations": [{
+		"dualImage": "fusoulleafseed.png:<color>.<stage>.<alt>",
+		"imagePosition": [0, 0],
+		"frames": 1,
+		"animationCycle": 0.5,
+		"spaces": [[1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3]],
+		"requireTilledAnchors": true,
+		"anchors": ["bottom"]
+	}],
+	"radioMessagesOnPickup": [ "pickupseed" ],
+	"stages": [{
+		"duration": [1170, 1230]
+	},
+	{
+		"duration": [1170, 1240]
+	},
+	{
+		"alts": 5,
+		"duration": [1140, 1250]
+	},
+	{
+		"alts": 5,
+		"harvestPool": "fusoulleafHarvest",
+		"resetToStage": 2
+	}
+	],
+	
+  "particleEmitter" : {
+    "emissionRate" : 1.0,
+    "emissionVariance" : 0.5,
+    "particle" : {
+      "type" : "ember",
+      "position" : [0.5, 0.3],
+      "size" : 1.0,
+      "color" : [188, 0, 188, 255],
+      "light" : [130, 0, 130],
+      "fade" : 0.75,
+      "initialVelocity" : [0.0, 5.0],
+      "finalVelocity" : [0.0, 3.0],
+      "approach" : [0, 20],
+      "timeToLive" : 2,
+      "layer" : "middle"
+    },
+    "particleVariance" : {
+      "initialVelocity" : [0.5, 2.0],
+      "position" : [0.4, 0]
+    }
+  },
+  "consumeSoilMoisture" : false,
+  "maxImmersion" : 0.5,
+          "touchDamage" : {
+            "poly" : [ [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0] ],
+            "damage" : 3,
+
+            "damageType" : "IgnoresDef",
+            "damageSourceKind" : "cosmic"
+          }
+}

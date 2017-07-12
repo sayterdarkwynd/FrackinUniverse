@@ -119,7 +119,7 @@
 	{"name":"approach-fly", 
 		"parameters":{
 		"targetOffset":[0,5], 
-		"minRange":5, "maxRange":15
+		"minRange":2, "maxRange":10
 		}
 	}
       ],
@@ -165,7 +165,9 @@
 	  "projectileType":"energyfist", 
 	  "projectileParameters":{
 		"speed":80, 
-		"statusEffects":[{"effect":"biomeradiation", "duration":30}, {"effect":"paralysis", "duration":10}], 
+		"statusEffects":[
+		  {"effect":"capturebot", "duration":10, "damageTeam" : "enemy" }
+		], 
 		"processing":"?0", 
 		"timeToLive":0.5, 
 		"power":0, 
@@ -298,6 +300,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 1.0,
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "servitorcapturebot" }
   }
 }

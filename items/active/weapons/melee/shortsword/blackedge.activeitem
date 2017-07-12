@@ -1,0 +1,42 @@
+{
+  "itemName" : "blackedge",
+  "price" : 22250,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Sleek and shadowy. Cool to the touch.",
+  "shortdescription" : "Blackedge",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","bioweapon", "upgradeableWeapon"],
+
+  "inventoryIcon" : "blackedge.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "blackedge.png"
+  },
+
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.33,
+    "baseDps" : 6.32,
+    "comboSpeedFactor" : 0.05,
+    "damageConfig" : {
+      "damageSourceKind" : "shadow"
+    }
+  },
+  "critChance" : 7,
+  "critBonus" : 4, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"//,
+  //"collectablesOnPickup" : { "fu_warrior2" : "blackedge" }
+
+}

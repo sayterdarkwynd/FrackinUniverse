@@ -1,0 +1,33 @@
+{
+  "id" : "shoggoth_unlocknew",
+  "mainQuest" : true,
+  "prerequisites" : [],
+  "title" : "^#1693d5;Expedition",
+  "text" : "I've found an ancient text, and am alarmed. Scrawled within are coordinates that match up exactly with a ^orange;recent research expedition^reset; we sent out to the fringes. I get no response when hailing them. S.A.I.L can take me there.",
+  "completionText" : "With no survivors, all that I have to report is...avoid this world. Recommending immediate sterilization of the site via orbital bombardment. No one should suffer that, ever again.",
+  "moneyRange" : [140000, 140001],
+  "rewards" : [],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "wagneridcard",
+        "count" : 1,
+        "consume" : true
+      }
+    ],
+    "associatedMission" : "shoggothmission"
+  }
+}

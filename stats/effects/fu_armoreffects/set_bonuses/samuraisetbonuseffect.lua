@@ -4,13 +4,14 @@ setName="fu_samuraiset"
 
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15},
-	{stat = "critChance", amount = 5}
+	{stat = "powerMultiplier", baseMultiplier = 1.15},
+	{stat = "critChance", amount = 2}
 }
 
 weaponBonus2={
-	{stat = "critChance", amount = 4},
-	{stat = "critBonus", baseMultiplier = 1.10}
+        {stat = "powerMultiplier", baseMultiplier = 1.15},
+        {stat = "critChance", amount = 1},
+	{stat = "protection", baseMultiplier = 1.1}
 }
 
 armorBonus={
@@ -28,24 +29,22 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	
-	checkWeapons()
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+		checkWeapons()
+	end
 end
 
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword"})
-local weaponShield=weaponCheck({"dagger"})
-local weapons=weaponCheck({"shortsword","broadsword"})
+local weaponSingle=weaponCheck({"katana"})
+local weaponDual=weaponCheck({"katana","dagger"})
 
-	if weaponSword["either"] and weaponShield["either"] then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
+	if weaponSingle["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-	elseif weapons["either"] then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)		
+	elseif weaponDual["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)				
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end

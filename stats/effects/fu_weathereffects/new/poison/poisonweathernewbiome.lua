@@ -16,8 +16,8 @@ function init()
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
-  sb.logInfo("my counter : "..self.usedIntro)
-  sb.logInfo("my counter : "..self.timerRadioMessage)
+  --sb.logInfo("my counter : "..self.usedIntro)
+  --sb.logInfo("my counter : "..self.timerRadioMessage)
   --conditionals
 
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too

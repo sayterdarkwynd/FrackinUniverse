@@ -8,7 +8,7 @@
 
   "animation" : "nanoswarm.animation",
 
-  "dropPools" : [ { "default" : "servitorTreasure", "bow" : "servitorHunting" } ],
+  "dropPools" : [ { "default" : "servitorTreasure", "bow" : "huntingmechanicalLarge" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -58,7 +58,7 @@
 	  "gravityMultiplier":-0.3, 
 	  "collisionCheck":true, 
 	  "highArc":false, 
-	  "swoopTime":0.75, 
+	  "swoopTime":1.1, 
 	  "winddownTime":0.1, 
 	  "winddownState":"fly", 
 	  "winddownStopForce":20
@@ -71,11 +71,11 @@
 	"cooldown":0.1, 
 	"parameters":{
 	  "skillName":"glitterBurst", 
-	  "projectileCount":3, 
+	  "projectileCount":1, 
 	  "projectileType":"hiveswarm", 
 	  "projectileParameters":{
 	    "speed":5, 
-	    "statusEffects":[ {"effect":"tarslow", "duration":6} ], 
+	    "statusEffects":[ { "effect":"electrified", "duration":3} ], 
 	    "power":0, 
 	    "actionOnReap":[], 
 	    "damageTeam":{"type":"enemy"}, 
@@ -122,7 +122,7 @@
 	  "projectileType":"hiveswarm", 
 	  "projectileParameters":{
 	    "speed":10, 
-	    "statusEffects":[{"effect":"tarslow", "duration":6}], 
+	    "statusEffects":[{"effect":"electrified", "duration":3}], 
 	    "power":0.3, 
 	    "actionOnReap":[], 
 	    "damageTeam":{"type":"enemy"}, 
@@ -247,6 +247,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "nanoswarm" }
   }
 }
