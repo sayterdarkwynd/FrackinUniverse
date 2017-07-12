@@ -111,6 +111,40 @@
   },
 
   "particleEmitters" : {
+
+      "confetti" : {
+        "offsetRegion" : [0.25, 1.75, 0.25, 2.0],
+        "emissionRate" : 500.0,
+        "emissionRateVariance" : 0.0,
+        "active" : false,
+        "particles" : [
+          {
+            // Red, drifting
+            "particle" : {
+		    "type" : "animated",
+		    "animation" : "/animations/shards/ancientenergy.animation",
+		    "initialVelocity" : [0.0, 3.0],
+		    "finalVelocity" : [0.0, 0.0],
+		    "approach" : [8, 8],
+		    "timeToLive" : 1.0,
+		    "layer" : "middle",
+		    "collidesForeground" : true,
+		    "fullbright" : true,
+		    "light" : [134, 71, 179, 255],
+		    "size" : 0.5,
+		    "variance" : {
+		      "position" : [0.75, 0.75],
+		      "initialVelocity" : [4, 4],
+		      "finalVelocity" : [4, 4],
+		      "rotation" : 180,
+		      "angularVelocity" : 180
+		    }
+            }
+          }
+        ]
+      
+    },
+    
     "blade":{
     "active":true, 
     "transformationGroups":["weapon"], 
@@ -225,6 +259,10 @@
     "fire16":["/sfx/melee/swing_spear.ogg"], 
     "fire17":["/sfx/melee/swing_shortsword.ogg"], 
     "fire18":["/sfx/melee/swing_spear.ogg"],    
-    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ],
+    "chargeUp1" : [ "/sfx/melee/charge_traildash1.ogg","/sfx/melee/charge_traildash2.ogg","/sfx/melee/charge_traildash3.ogg","/sfx/melee/charge_traildash4.ogg" ],
+    "chargeUp2" : [ "/sfx/melee/charge_traildash2.ogg" ],
+    "chargeUp3" : [ "/sfx/melee/charge_traildash3.ogg" ],
+    "chargeUp4" : [ "/sfx/melee/charge_traildash4.ogg" ]
   }
 }
