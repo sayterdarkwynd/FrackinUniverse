@@ -1,63 +1,65 @@
 {
-  "itemName" : "isogenkatana",
-  "price" : 1500,
+  "itemName" : "solariumkatana",
+  "price" : 2200,
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Cold as ice.",
-  "shortdescription" : "Isogen Katana",
+  "description" : "Cleave with sun power. 2 handed.",
+  "shortdescription" : "Solarium Katana",
   "tooltipKind" : "sword2",
   "category" : "katana",
-  "twoHanded" : false,
+  "twoHanded" : true,
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
-  "inventoryIcon" : "isogenkatana.png",
+  "inventoryIcon" : "solariumkatana.png",
 
-  "animation" : "combokatanaglow.animation",
+  "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "isogenkatana.png",
-    "bladefullbright" : "isogenkatanafullbright.png"
+    "blade" : "solariumkatana.png"
   },
   "animationCustom":{},
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "radioactive",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility":{
-    "fireTime":0.6, 
-    "baseDps":7.3, 
+    "fireTime":0.72, 
+    "baseDps":7.0, 
     "damageConfig":{
       "knockback":20,
-       "damageSourceKind" : "ice",
-       "statusEffects" : [ "freezefu" ]
+      "damageSourceKind" : "radioactive"
       }, 
-      "comboSteps":8, 
+      "comboSteps":10, 
       "swooshOffsetRegions":[
         [-0.75, 0.0, 4.25, 5.0], 
         [0, -4.25, 5, 0], 
         [3.0, -0.5, 6.5, 2.0], 
         [0, -4.25, 5, 0],
+        [-0.75, 0.0, 4.25, 5.0],
         [-0.75, 0.0, 4.25, 5.0], 
         [0, -4.25, 5, 0], 
         [3.0, -0.5, 6.5, 2.0], 
-        [0, -4.25, 5, 0]        
+        [0, -4.25, 5, 0],
+        [-0.75, 0.0, 4.25, 5.0]        
       ], 
       "stepDamageConfig":[
         {"baseDamageFactor":0.8, "knockback":10}, 
         {"baseDamageFactor":1.0, "knockback":15}, 
-        {"baseDamageFactor":0.6, "knockback":10}, 
-        {"baseDamageFactor":1.0, "knockback":20},
-        {"baseDamageFactor":0.4, "knockback":10}, 
-        {"baseDamageFactor":0.6, "knockback":15}, 
-        {"baseDamageFactor":0.7, "knockback":10}, 
-        {"baseDamageFactor":0.8, "knockback":20}        
-        ], 
+        {"baseDamageFactor":0.5, "knockback":10}, 
+        {"baseDamageFactor":1.0, "knockback":25},
+        {"baseDamageFactor":0.4, "knockback":20},
+        {"baseDamageFactor":0.8, "knockback":10}, 
+        {"baseDamageFactor":1.0, "knockback":15}, 
+        {"baseDamageFactor":0.5, "knockback":10}, 
+        {"baseDamageFactor":1.0, "knockback":25},
+        {"baseDamageFactor":0.4, "knockback":20}        
+        ],  
       "stances":{
 	"idle":{
-	  "twoHanded":false, 
+	  "twoHanded":true, 
 	  "armRotation":-20, 
 	  "weaponRotation":120, 
 	  "weaponOffset":[0.0,2.5], 
@@ -65,8 +67,6 @@
 	  "allowFlip":true
 	}, 
 	
-
-        
         
         "windup1":{
           "duration":0.15, 
@@ -345,12 +345,78 @@
           "allowRotate":false, 
           "allowFlip":true, 
           "aimAngle":0
+        },  
+        
+        
+        
+        
+        
+        "windup9":{
+          "duration":0.4, 
+          "armRotation":80, 
+          "weaponRotation":-50, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "preslash9":{"duration":0}, 
+        "fire9":{
+          "duration":0.2, 
+          "armRotation":0, 
+          "weaponRotation":-105, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":true, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "wait9":{
+          "duration":0.05,
+          "armRotation":-20, 
+          "weaponRotation":140, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.4], 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "aimAngle":0
+        },
+        "windup10":{
+          "duration":0.15, 
+          "armRotation":-60, 
+          "weaponRotation":150, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false, 
+          "allowFlip":true        
+        }, 
+        "preslash10":{"duration":0}, 
+        "fire10":{
+          "duration":0.08, 
+          "armRotation":65, 
+          "weaponRotation":-125, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false,
+          "allowFlip":false
+        }, 
+        "wait10":{
+          "duration":0.05, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":true, 
+          "weaponOffset":[0,2.5]
         }        
+        
+        
       }
     }, 
-
+    
+  "altAbilityType" : "parrykatana",
+  
   "critChance" : 1,
-  "critBonus" : 8,
+  "critBonus" : 12,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 

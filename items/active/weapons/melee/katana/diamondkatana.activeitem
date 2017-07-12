@@ -1,38 +1,36 @@
 {
-  "itemName" : "isogenkatana",
-  "price" : 1500,
-  "level" : 6,
+  "itemName" : "diamondkatana",
+  "price" : 1800,
+  "level" : 5,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Cold as ice.",
-  "shortdescription" : "Isogen Katana",
+  "description" : "2 handed,heavy and probably sharp.",
+  "shortdescription" : "Dense Katana",
   "tooltipKind" : "sword2",
   "category" : "katana",
-  "twoHanded" : false,
+  "twoHanded" : true,
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
-  "inventoryIcon" : "isogenkatana.png",
+  "inventoryIcon" : "zerchesiumkatana.png",
 
-  "animation" : "combokatanaglow.animation",
+  "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "isogenkatana.png",
-    "bladefullbright" : "isogenkatanafullbright.png"
+    "blade" : "diamondkatana.png"
   },
   "animationCustom":{},
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "cosmic",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility":{
-    "fireTime":0.6, 
-    "baseDps":7.3, 
+    "fireTime":0.82, 
+    "baseDps":7.4, 
     "damageConfig":{
       "knockback":20,
-       "damageSourceKind" : "ice",
-       "statusEffects" : [ "freezefu" ]
+      "damageSourceKind" : "cosmic"
       }, 
       "comboSteps":8, 
       "swooshOffsetRegions":[
@@ -348,9 +346,11 @@
         }        
       }
     }, 
-
-  "critChance" : 1,
-  "critBonus" : 8,
+    
+  "altAbilityType" : "parrykatana",
+  
+  "critChance" : 5,
+  "critBonus" : 2,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 

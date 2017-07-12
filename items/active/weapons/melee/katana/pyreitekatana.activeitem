@@ -1,29 +1,29 @@
 {
-  "itemName" : "isogenkatana",
+  "itemName" : "pyreitekatana",
   "price" : 1500,
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Cold as ice.",
-  "shortdescription" : "Isogen Katana",
+  "description" : "The heat of magma, mixed with bitter-cold steel.",
+  "shortdescription" : "Pyreite Katana",
   "tooltipKind" : "sword2",
   "category" : "katana",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
-  "inventoryIcon" : "isogenkatana.png",
+  "inventoryIcon" : "pyreitekatana.png",
 
   "animation" : "combokatanaglow.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "isogenkatana.png",
-    "bladefullbright" : "isogenkatanafullbright.png"
+    "blade" : "pyreitekatana.png",
+    "bladefullbright" : "pyreitekatanafullbright.png"
   },
   "animationCustom":{},
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "fire",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility":{
@@ -31,8 +31,8 @@
     "baseDps":7.3, 
     "damageConfig":{
       "knockback":20,
-       "damageSourceKind" : "ice",
-       "statusEffects" : [ "freezefu" ]
+       "damageSourceKind" : "fire",
+       "statusEffects" : [ "burning" ]
       }, 
       "comboSteps":8, 
       "swooshOffsetRegions":[
