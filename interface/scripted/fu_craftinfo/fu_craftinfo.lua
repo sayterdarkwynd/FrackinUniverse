@@ -6,14 +6,7 @@ require "objects/bees/honeymap.lua"
 ...
 ]]
 
-require "/objects/generic/extractionlab_common.lua"
-extractionLab = getRecipes() -- {inputs}, {outputs}
 
-require "/objects/generic/xenostation_common.lua"
-xenoLab = getRecipes() -- {inputs}, {outputs}
-
-require "/objects/generic/centrifuge_recipes.lua"
-centrifugeLab = getRecipes()  -- it's more complicated than the above two
 
 centrifuge = {}
 centrifuge2 = {}
@@ -37,6 +30,10 @@ uninit = nil
 initialised = false
 
 function init()
+	extractionLab = root.assetJson("/objects/generic/extractionlab_recipes.config") -- {inputs}, {outputs}
+	xenoLab = root.assetJson('/objects/generic/xenostation_recipes.config') -- {inputs}, {outputs}
+	centrifugeLab = root.assetJson("/objects/generic/centrifuge_recipes.config")  -- it's more complicated than the above two
+
 	self.matfilter = getFilter()
 	script.setUpdateDelta(1)
 
