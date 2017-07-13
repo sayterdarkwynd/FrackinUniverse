@@ -1,5 +1,5 @@
 
-require "/zz/scripts/textTyper.lua"
+require "/objects/test/textTyper.lua"
 textData = {}
 textData.currentRace = ""
 
