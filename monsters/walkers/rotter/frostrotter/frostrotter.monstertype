@@ -1,12 +1,12 @@
 {
-  "type" : "burntrotter",
-  "shortdescription" : "Burnt Rotter",
-  "description" : "A half-dead, fire-breathing abomination. Great with kids.",
+  "type" : "frostrotter",
+  "shortdescription" : "Frost Rotter",
+  "description" : "A half-dead, horrible thing. It wants to mate with your skull.",
 
-  "categories" : [ "burntrotter" ],
-  "parts" : [ "body", "bodyfullbright" ],
+  "categories" : [ "frostrotter" ],
+  "parts" : [ "body" ],
 
-  "animation" : "burntrotter.animation",
+  "animation" : "frostrotter.animation",
 
   "dropPools" : [ "rocktrollLoot" ],
 
@@ -37,18 +37,19 @@
 	  "cooldown" : 2,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
+            "maximumRange" : 30,
             "minimumRange" : 1,
             "windupState" : "flameattackwindup",
-            "windupTime" : 0.4,
+            "windupTime" : 0.5,
 
-            "projectileType" : "flamethrower",
-            "power" : 12,
+            "projectileType" : "funitrogencannonshot",
+            "power" : 20,
             "fireOffset" : [2.65, 0.15],
             "aimAtTarget" : true,
-            "projectileCount" : 8,
+            "projectileCount" : 1,
             "projectileInterval" : 0.01,
             "fireSound" : "flame",
+            "fireDelay" : 0.1,
             "fireState" : "flameattack",
             "winddownState" : "flameattackwinddown",
             "winddownTime" : 0.4
@@ -104,12 +105,12 @@
           "name" : "action-projectile",
           "cooldown" : 2,
           "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "firefinish",
+            "projectileCount" : 8,
+            "projectileType" : "fuicebeam",
+            "inaccuracy" : 3.14,
             "projectileParameters" : {},
             "power" : 6,
             "aimDirection" : [0, -1],
-            "inaccuracy" : 0,
             "fireOffset" : [0, 1]
           }
         }       
@@ -120,7 +121,7 @@
           "name" : "action-statuseffect",
           "cooldown" : 12,
           "parameters" : {
-          "effect" : "fireburstmonster",
+          "effect" : "fuiceresistance3",
           "duration" : 6
           }
         }
@@ -132,7 +133,7 @@
           "cooldown" : 2,
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "firefinish",
+            "projectileType" : "icestickyspikes",
             "projectileParameters" : {},
             "power" : 6,
             "aimDirection" : [0, -1],
@@ -162,12 +163,12 @@
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "hellfireexplosion",
+            "projectileType" : "coldsplosion3",
             "projectileParameters" : {},
-            "power" : 6,
-            "aimDirection" : [0, -1],
+            "power" : 8,
+            "aimDirection" : [0, 0],
             "inaccuracy" : 0,
-            "fireOffset" : [0, 1]
+            "fireOffset" : [0, 1.2]
           }
         }      
       ]
@@ -191,7 +192,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "entropicward" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -253,16 +254,16 @@
           "baseValue" : 0.05
         },
         "powerMultiplier" : {
-          "baseValue" : 1.45
+          "baseValue" : 1.25
         },
-        "fireResistance" : {
+        "iceResistance" : {
           "baseValue" : 1.0
         },
-        "fireStatusImmunity" : {
+        "iceStatusImmunity" : {
           "baseValue" : 1.0
         },        
-        "iceResistance" : {
-          "baseValue" : -0.8
+        "fireResistance" : {
+          "baseValue" : -0.5
         }        
       },
 
@@ -284,6 +285,6 @@
     "capturable" : true,
     "captureHealthFraction" : 0.24,
     "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "burntrotter" }
+    "captureCollectables" : { "fu_monster" : "frostrotter" }
   }
 }
