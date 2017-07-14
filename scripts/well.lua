@@ -30,9 +30,7 @@ function update(dt)
   storage.waterCount = storage.waterCount - amount * config.getParameter('wellslots')[1].ratio
   if amount > 0 and #config.getParameter('wellslots') > 1 then
     storage.count = (storage.count or 0) + amount
-	sb.logInfo(storage.count)
     if storage.count >= config.getParameter('wellslots')[1].secondarycount then
-	  sb.logInfo('test')
       storage.count = storage.count - config.getParameter('wellslots')[1].secondarycount
       for i=2,#config.getParameter('wellslots') do
         for j=1,amount do
