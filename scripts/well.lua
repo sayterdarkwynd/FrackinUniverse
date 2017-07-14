@@ -29,16 +29,14 @@ function update(dt)
   world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[1].name,count=amount},0)
   storage.waterCount = storage.waterCount - amount * config.getParameter('wellslots')[1].ratio
   if amount > 0 and #config.getParameter('wellslots') > 1 then
-    storage.count = (storage.count or 0) + amount
-    if storage.count >= config.getParameter('wellslots')[1].secondarycount then
-      storage.count = storage.count - config.getParameter('wellslots')[1].secondarycount
-      for i=2,#config.getParameter('wellslots') do
-        for j=1,amount do
-          if math.random() <= config.getParameter('wellslots')[i].chance then
-            world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[i].name,count=config.getParameter('wellslots')[i].amount},i-1)
-          end
+    for i=(storage.count or 0)+1,(storage.count or 0)+amount do
+      for j=2,#config.getParameter('wellslots') do
+        amountmod = math.min(math.floor(math.max(config.getParameter('wellslots')[j].count/config.getParameter('wellslots')[j].amount,1)),config.getParameter('wellslots')[j].amount)
+        if config.getParameter('wellslots')[j].chance > 0 and math.fmod(i,config.getParameter('wellslots')[j].count/amountmod) == 0 and math.random() <= config.getParameter('wellslots')[j].chance then
+          world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[j].name,count=config.getParameter('wellslots')[j].amount/amountmod},j-1)
         end
       end
     end
+    storage.count = (storage.count or 0) + amount
   end
 end
