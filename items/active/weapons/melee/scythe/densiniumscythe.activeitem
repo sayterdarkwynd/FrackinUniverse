@@ -7,9 +7,9 @@
   "description" : "Perhaps the deadliest curved blade around.",
   "shortdescription" : "Densinium Scythe",
   "tooltipKind" : "sword2",
-  "category" : "broadsword",
+  "category" : "scythe",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","densinium", "upgradeableWeapon"],
+  "itemTags" : [ "weapon", "melee","densinium", "scythe", "upgradeableWeapon"],
 
   "inventoryIcon" : "densiniumscythe.png",
 
@@ -27,7 +27,10 @@
   "primaryAbilityType" : "largeedgedcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 12
+    "baseDps" : 12,
+    "damageConfig" : {
+      "damageSourceKind" : "electric"
+    }
   },
 
   "altAbilityType" : "futravelingslash",
