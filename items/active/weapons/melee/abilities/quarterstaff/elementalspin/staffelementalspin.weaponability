@@ -54,7 +54,13 @@
       "electricSpin" : [ "/sfx/melee/elemental_spin_electric.ogg" ],
       "electricSpinFire" : [ "/sfx/melee/travelingslash_electric7.ogg" ],
       "poisonSpin" : ["/sfx/melee/elemental_spin_poison.ogg" ],
-      "poisonSpinFire" : ["/sfx/melee/travelingslash_poison1.ogg" ]
+      "poisonSpinFire" : ["/sfx/melee/travelingslash_poison1.ogg" ],
+      "shadowSpin" : ["/sfx/melee/elemental_spin_ice.ogg" ],
+      "shadowSpinFire" : ["/sfx/melee/travelingslash_ice2.ogg" ],
+      "cosmicSpin" : [ "/sfx/melee/elemental_spin_electric.ogg" ],
+      "cosmicSpinFire" : [ "/sfx/melee/travelingslash_electric7.ogg" ],
+      "radioactiveSpin" : ["/sfx/melee/elemental_spin_poison.ogg" ],
+      "radioactiveSpinFire" : ["/sfx/melee/travelingslash_poison1.ogg" ]      
     },
     "particleEmitters" : {
       "fireSpin" : {
@@ -106,7 +112,7 @@
           { "particle" : "iceswoosh3"}
         ]
       },
-    "shadowswoosh" : {
+    "shadowSpin" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
@@ -117,7 +123,7 @@
         { "particle" : "shadowswoosh3"}
       ]
     },
-    "radioactiveswoosh" : {
+    "radioactiveSpin" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 40,
@@ -127,7 +133,7 @@
         { "particle" : "poisonswoosh2"}
       ]
     },
-    "cosmicswoosh" : {
+    "cosmicSpin" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 40,
@@ -143,7 +149,7 @@
   "ability" : {
     "name" : "Energy Whirl",
     "type" : "staffelementalspin",
-    "scripts" : ["/items/active/weapons/melee/abilities/spear/elementalspin/elementalspin.lua"],
+    "scripts" : ["/items/active/weapons/melee/abilities/quarterstaff/elementalspin/elementalspin.lua"],
     "class" : "ElementalSpin",
 
     "energyUsage" : 60,
@@ -200,7 +206,7 @@
     "stances" : {
       "windup" : {
         "duration" : 0.35,
-        "armRotation" : -160,
+        "armRotation" : -20,
         "weaponRotation" : -40,
         "twoHanded" : false,
         "weaponOffset" : [0, 0],
