@@ -1,31 +1,38 @@
 {
-  "itemName" : "commonqs",
-  "price" : 100,
+  "itemName" : "goldquarterstaff",
+  "price" : 400,
   "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "This quarterstaff is perfect for enemies just out of reach.",
-  "shortdescription" : "Common Quarterstaff",
+  "level" : 3,
+  "rarity" : "uncommon",
+  "description" : "Cumbersome, but light and pretty.",
+  "shortdescription" : "Gold Quarterstaff",
   "tooltipKind" : "sword2",
   "category" : "Quarterstaff",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","quarterstaff", "upgradeableWeapon"],
-
+  
+  "inventoryIcon" : "goldquarterstaff.png",
+  
   "animation" : "combostaff.animation",
-  "animationParts" : { },
+  "animationParts" : { 
+    "handle" : "",
+    "blade" : "goldquarterstaff.png"  
+  },
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "fire",
 
   "aimOffset" : -1.0,
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
-    "fireTime" : [0.66, 0.99],
-    "baseDps" : [7, 8],
+    "fireTime" : 0.75,
+    "baseDps" : 7.2,
     "damageConfig":{
-      "knockback":[5,10]
+      "knockback":10,
+      "damageSourceKind" : "fire"
       }, 
       "comboSteps":6, 
       "swooshOffsetRegions":[
@@ -37,10 +44,10 @@
         [0, -4.25, 5, 0] 
       ], 
       "stepDamageConfig":[
-        {"baseDamageFactor":1.0, "knockback":15}, 
+        {"baseDamageFactor":0.9, "knockback":15}, 
         {"baseDamageFactor":0.6, "knockback":10}, 
         {"baseDamageFactor":1.0, "knockback":7}, 
-        {"baseDamageFactor":0.7, "knockback":9}, 
+        {"baseDamageFactor":0.5, "knockback":9}, 
         {"baseDamageFactor":0.7, "knockback":12}, 
         {"baseDamageFactor":1.2, "knockback":20}
         ], 
@@ -205,34 +212,14 @@
         	"wait6":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":true, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]}
       }
   },
+  
+  "altAbilityType" : "staffspin",
+  
   "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
 
   "critChance" : 1,
   "critBonus" : 4, 
   
-  "builder" : "/items/buildscripts/buildweapon.lua",
-  "builderConfig" : [{
-    "nameGenerator" : "qsnames.config:nameGen",
-    "animationParts" : {
-      "blade" : {
-        "path" : "qs/<variant>.png",
-        "variants" : 269,
-        "paletteSwap" : true
-      },
-      "handle" : {
-        "path" : "handle/<variant>.png",
-        "variants" : 71,
-        "paletteSwap" : true
-      }
-    },
-    "altAbilities" : [
-      "flurry",
-      "staffspin",
-      "uppercut",
-      "physicalshockwave",
-      "groundslam"
-    ],
-    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
-    "iconDrawables" : [ "handle", "blade" ]
-  }]
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
 }
