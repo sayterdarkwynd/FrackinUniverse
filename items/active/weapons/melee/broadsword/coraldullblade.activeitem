@@ -6,11 +6,11 @@
   "rarity" : "uncommon",
   "description" : "Made from the depths. And hate. Lots and lots of hate.
 ^cyan;Inflicts Poison^reset;",
-  "shortdescription" : "Coral Cleaver",
+  "shortdescription" : "Coral Longsword",
   "tooltipKind" : "sword2",
-  "category" : "battleblade",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword", "longsword", "upgradeableWeapon"],
 
   "inventoryIcon" : "coraldullblade.png",
 
@@ -25,17 +25,16 @@
 
   "elementalType" : "poison",
 
-  "primaryAbilityType" : "battlebladecoral",
+  "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
     "fireTime" : 0.73,
-    "baseDps" : 10.4,
+    "baseDps" : 9.0,
     "damageConfig" : {
       "damageSourceKind" : "poison",
       "statusEffects" : [ "weakpoison" ]
     }
   },
 
-  "altAbilityType" : "fububbleslash",
   "critChance" : 2, 
   "critBonus" : 4, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
