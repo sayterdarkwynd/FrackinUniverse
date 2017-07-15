@@ -1,0 +1,112 @@
+{
+  "itemName" : "uncommonlongsword",
+  "price" : 990,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A powerful one-handed sword.",
+  "shortdescription" : "Uncommon Longsword",
+  "tooltipKind" : "sword",
+  "category" : "broadsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword"],
+
+  "animation" : "combolongsword.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : [0.71, 0.9],
+    "baseDps" : [8.5, 9.2],
+    "damageConfig" : {
+      "damageSourceKind" : "<elementalType>broadsword"
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swordnames.config:nameGen",
+    "elementalType" : [
+      "fire",
+      "ice",
+      "electric",
+      "poison",
+      "shadow",
+      "radioactive",
+      "cosmic"
+    ],
+    "elementalConfig" : {
+      "fire" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "burning" ] } },
+        "animationCustom" : { "sounds" : {
+          "fire" : [ "/sfx/melee/swing_broadsword_fire1.ogg", "/sfx/melee/swing_broadsword_fire2.ogg", "/sfx/melee/swing_broadsword_fire3.ogg" ],
+          "fire2" : [ "/sfx/melee/swing_shortsword_fire1.ogg", "/sfx/melee/swing_shortsword_fire2.ogg", "/sfx/melee/swing_shortsword_fire3.ogg" ],
+          "fire3" : [ "/sfx/melee/swing_spear_fire1.ogg", "/sfx/melee/swing_spear_fire2.ogg", "/sfx/melee/swing_spear_fire3.ogg" ]
+        } }
+      },
+      "ice" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "frostslow" ] } },
+        "animationCustom" : { "sounds" : {
+          "fire" : [ "/sfx/melee/swing_broadsword_ice1.ogg", "/sfx/melee/swing_broadsword_ice2.ogg", "/sfx/melee/swing_broadsword_ice3.ogg" ],
+          "fire2" : [ "/sfx/melee/swing_shortsword_ice1.ogg", "/sfx/melee/swing_shortsword_ice2.ogg", "/sfx/melee/swing_shortsword_ice3.ogg" ],
+          "fire3" : [ "/sfx/melee/swing_spear_ice1.ogg", "/sfx/melee/swing_spear_ice2.ogg", "/sfx/melee/swing_spear_ice3.ogg" ]
+        } }
+      },
+      "poison" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "weakpoison" ] } },
+        "animationCustom" : { "sounds" : {
+          "fire" : [ "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg" ],
+          "fire2" : [ "/sfx/melee/swing_shortsword_poison1.ogg", "/sfx/melee/swing_shortsword_poison2.ogg", "/sfx/melee/swing_shortsword_poison3.ogg" ],
+          "fire3" : [ "/sfx/melee/swing_spear_poison1.ogg", "/sfx/melee/swing_spear_poison2.ogg", "/sfx/melee/swing_spear_poison3.ogg" ]
+        } }
+      },
+      "electric" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "electrified" ] } },
+        "animationCustom" : { "sounds" : {
+          "fire" : [ "/sfx/melee/swing_broadsword_electric1.ogg", "/sfx/melee/swing_broadsword_electric2.ogg", "/sfx/melee/swing_broadsword_electric3.ogg" ],
+          "fire2" : [ "/sfx/melee/swing_shortsword_electric1.ogg", "/sfx/melee/swing_shortsword_electric2.ogg", "/sfx/melee/swing_shortsword_electric3.ogg" ],
+          "fire3" : [ "/sfx/melee/swing_spear_electric1.ogg", "/sfx/melee/swing_spear_electric2.ogg", "/sfx/melee/swing_spear_electric3.ogg" ]
+        } }
+      },
+      "shadow" : {
+      "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "shadowgasfx" ] } },
+      "animationCustom" : { "sounds" : {
+        "fire" : [ "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg" ],
+        "fire2" : [ "/sfx/melee/swing_shortsword_poison1.ogg", "/sfx/melee/swing_shortsword_poison2.ogg", "/sfx/melee/swing_shortsword_poison3.ogg" ],
+        "fire3" : [ "/sfx/melee/swing_spear_poison1.ogg", "/sfx/melee/swing_spear_poison2.ogg", "/sfx/melee/swing_spear_poison3.ogg" ] }}
+      },
+      "radioactive" : {
+      "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "radiationburn" ] } },
+      "animationCustom" : { "sounds" : {
+        "fire" : [ "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg" ],
+        "fire2" : [ "/sfx/melee/swing_shortsword_poison1.ogg", "/sfx/melee/swing_shortsword_poison2.ogg", "/sfx/melee/swing_shortsword_poison3.ogg" ],
+        "fire3" : [ "/sfx/melee/swing_spear_poison1.ogg", "/sfx/melee/swing_spear_poison2.ogg", "/sfx/melee/swing_spear_poison3.ogg" ] }}
+      },
+      "cosmic" : {
+      "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] } },
+      "animationCustom" : { "sounds" : {
+        "fire" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
+        "fire2" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
+        "fire3" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ] }}
+
+      }      
+    },
+    "animationParts" : {
+      "blade" : {
+        "path" : "blade/<variant>.png",
+        "variants" : 46,
+        "paletteSwap" : true
+      },
+      "handle" : {
+        "path" : "handle/<variant>.png",
+        "variants" : 35,
+        "paletteSwap" : true
+      }
+    },
+    "altAbilities" : [],
+    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
+    "iconDrawables" : [ "blade", "handle" ]
+  }]
+}

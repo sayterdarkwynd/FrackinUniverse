@@ -12,7 +12,7 @@
 
   "animation" : "combostaff.animation",
   "animationParts" : { },
-  "animationCustom" : { },
+  "animationCustom" : {},
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
@@ -23,6 +23,7 @@
     "fireTime" : [0.55, 0.84],
     "baseDps" : [8, 9],
     "damageConfig":{
+      "damageSourceKind" : "<elementalType>hammer",
       "knockback": [8,15]
       }, 
       "comboSteps":6, 
@@ -264,7 +265,7 @@
     "altAbilities" : [
       "blinkexplosion",
       "barrier",
-      "elementalspin",
+      "staffelementalspin",
       "rocketspear",
       "shockwave",
       "elementalaura",

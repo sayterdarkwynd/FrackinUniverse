@@ -7,9 +7,9 @@
   "description" : "The blade of a bee queen",
   "shortdescription" : "Queen Blade",
   "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","bioweapon", "upgradeableWeapon"],
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword","bioweapon", "longsword", "upgradeableWeapon"],
 
   "inventoryIcon" : "fupetalsword.png",
 
@@ -24,13 +24,14 @@
 
   "elementalType" : "poison",
 
-  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 10
+    "baseDps" : 10,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }
   },
-
-  "altAbilityType" : "risingslash",
 
   "critChance" : 2, 
   "critBonus" : 5, 

@@ -8,9 +8,9 @@
 ^cyan;Inflicts Shadow Gas^reset;",
   "shortdescription" : "Phantasm Blade",
   "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","effigium", "upgradeableWeapon"],
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword","longsword","effigium", "upgradeableWeapon"],
 
   "inventoryIcon" : "effigiumbroadsword.png",
 
@@ -26,19 +26,17 @@
 
   "elementalType" : "shadow",
 
-  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
     "fireTime" : 0.93,
-    "baseDps" : 10.67,
+    "baseDps" : 9.37,
     "damageConfig" : {
       "damageSourceKind": "shadowbroadsword",
       "statusEffects" : [ "shadowgasfx" ]
     }
   },
 
-  "altAbilityType" : "traildash",
-
-  "critChance" : 4,
+  "critChance" : 2,
   "critBonus" : 3,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

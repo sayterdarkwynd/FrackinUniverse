@@ -8,7 +8,8 @@ function init()
     {stat = "biooozeImmunity", amount = 1},
     {stat = "blacktarImmunity", amount = 1},
     {stat = "liquidnitrogenImmunity", amount = 1},
-    {stat = "sulphuricImmunity", amount = 1}
+    {stat = "sulphuricImmunity", amount = 1},
+    {stat = "pusImmunity", amount = 1}
   })
 end
 
