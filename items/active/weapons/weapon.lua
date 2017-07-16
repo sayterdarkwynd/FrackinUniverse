@@ -93,7 +93,7 @@ function setCritDamage(damage)
 		params = { speed=50, power = 1, damageKind = "default"} 
 		world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),{0.2,0},false,params)   
         end          
-        if (self.stunChance) >= 100 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") then 
+        if (self.stunChance) >= 100 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") or root.itemHasTag(heldItem, "dagger") then 
 		params = { speed=30, power = 1, damageKind = "default"} 
 		world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),{0.2,0},false,params)   
         end        
