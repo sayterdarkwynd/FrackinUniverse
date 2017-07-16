@@ -7,13 +7,13 @@
   "description" : "Hellishly creepy. Devilishly stylish.",
   "shortdescription" : "Bone Cleaver",
   "tooltipKind" : "sword",
-  "category" : "Broadsword",
-  "twoHanded" : true,
+  "category" : "longsword",
+  "twoHanded" : false,
   "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
   "collectablesOnPickup" : { "fu_weaponbroadsword" : "fubonesword" },
   "inventoryIcon" : "fubonesword.png",
 
-  "animation" : "/items/active/weapons/melee/broadsword/combobattleblade2.animation",
+  "animation" : "combolongsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "fubonesword.png"
@@ -24,15 +24,13 @@
 
   "elementalType" : "physical",
 
-  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
     "fireTime" : 0.73,
     "baseDps" : 10.4
   },
 
-  "altAbilityType" : "risingslash",
-
-  "critChance" : 2, 
+  "critChance" : 1, 
   "critBonus" : 3, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
