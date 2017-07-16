@@ -15,7 +15,7 @@ function init()
 end
 
 function update(dt)
-  mcontroller.controlParameters({
+  mcontroller.controlModifiers({
         speedModifier = 1.55
     })
 end
