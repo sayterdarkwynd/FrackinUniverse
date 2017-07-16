@@ -5,15 +5,15 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "A lightweight yet strong blade.",
-  "shortdescription" : "Titanium Broadsword",
+  "shortdescription" : "Titanium Longsword",
   "tooltipKind" : "sword",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee", "longsword", "broadsword", "upgradeableWeapon"],
 
   "inventoryIcon" : "titaniumbroadsword.png",
 
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animation" : "combolongsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "titaniumbroadsword.png"
@@ -24,14 +24,13 @@
 
   "elementalType" : "physical",
 
-  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 8.5
   },
-
-  "altAbilityType" : "superspinslash",
+  
   "critChance" : 1,
-  "critBonus" : 2,
+  "critBonus" : 5,  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

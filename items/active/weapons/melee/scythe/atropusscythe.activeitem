@@ -1,35 +1,35 @@
 {
-  "itemName" : "fubonescythe",
-  "price" : 100,
-  "level" : 1,
+  "itemName" : "atropusscythe",
+  "price" : 1500,
+  "level" : 4,
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Perhaps the deadliest curved blade around.",
-  "shortdescription" : "Bone Scythe",
+  "rarity" : "legendary",
+  "description" : "Repulsive, yet deadly.",
+  "shortdescription" : "Fleshweave Scythe",
   "tooltipKind" : "sword2",
   "category" : "scythe",
   "twoHanded" : true,
-  "itemTags" : [ "weapon", "melee","densinium", "axe", "scythe", "upgradeableWeapon"],
+  "itemTags" : [ "weapon", "melee","atropus", "axe", "scythe", "upgradeableWeapon"],
 
-  "inventoryIcon" : "bonescythe.png",
+  "inventoryIcon" : "atropusscythe.png",
 
   "animation" : "/items/active/weapons/melee/scythe/largeedgedb.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "bonescythe.png"
+    "blade" : "atropusscythe.png"
   },
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
   "primaryAbilityType" : "largeedgedcombo",
   "primaryAbility" : {
-    "fireTime" : 0.83,
-    "baseDps" : 11,
+    "fireTime" : 0.76,
+    "baseDps" : 11.5,
     "damageConfig" : {
-      "damageSourceKind" : "slash"
+      "damageSourceKind" : "poison"
     },
     "stances" : {
       "idle" : {
@@ -131,8 +131,7 @@
     }
   },
 
-  "altAbilityType" : "spearspin",
-
+  "altAbilityType" : "futravelingslash",
   "critChance" : 2, 
   "critBonus" : 11, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
