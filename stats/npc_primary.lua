@@ -207,7 +207,7 @@ function inLiquid() --no fall damage while submerged in liquids, Period.
 	local liquidID = 0
 	if mcontroller.liquidPercentage() > 0.1 then
 		liquidID = mcontroller.liquidId()
-    for i=1,excludeLiquidIds.n do
+    for i=1,#excludeLiquidIds do
       if excludeLiquidIds[i] == liquidID then
 				liquidID=0
         break
