@@ -1,51 +1,57 @@
 {
-  "itemName" : "commonrapier",
+  "itemName" : "fucommonmace",
   "price" : 100,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "This swift melee weapon will make them bleed.",
-  "shortdescription" : "Common Rapier",
+  "description" : "A face-whacker!",
+  "shortdescription" : "Common Mace",
   "tooltipKind" : "sword2",
-  "category" : "rapier",
+  "category" : "mace",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword", "rapier", "upgradeableWeapon"],
-  "handGrip" : "wrap",
-  "animation" : "piercecombo.animation",
+  "itemTags" : ["weapon","melee", "mace", "upgradeableWeapon"],
+  "animation" : "combomace.animation",
   "animationParts" : { },
-  "animationCustom" : { },
+  "animationCustom" : { 
+    "parts" : {
+      "blade" : {
+        "offset" : [0, 4]
+      },
+      "handle" : {
+        "offset" : [0, 4]
+      }
+    }
+  },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
   "elementalType" : "physical",
   
-  "primaryAbilityType" : "piercecombo",
+  "primaryAbilityType" : "macecombo",
   "primaryAbility" : {
-    "fireTime" : [0.4, 0.7],
-    "baseDps" : [5, 5.5]
+    "fireTime" : [0.8, 1.3],
+    "baseDps" : [8, 9.5]
   },
-  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+  "fireSounds" : [ "/sfx/melee/swing_hammer.ogg" ],
 
   "critChance" : 1,
-  "critBonus" : 2, 
+  "critBonus" : 1, 
   
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
-    "nameGenerator" : "rapiernames.config:nameGen",
+    "nameGenerator" : "macenames.config:nameGen",
+    
     "animationParts" : {
       "blade" : {
         "path" : "blade/<variant>.png",
-        "variants" : 14,
+        "variants" : 2,
         "paletteSwap" : true
       },
       "handle" : {
         "path" : "handle/<variant>.png",
-        "variants" : 46,
+        "variants" : 56,
         "paletteSwap" : true
       }
     },
-    "altAbilities" : [
-
-    ],
     "palette" : "/items/active/weapons/colors/melee.weaponcolors",
     "iconDrawables" : [ "handle", "blade" ]
   }]

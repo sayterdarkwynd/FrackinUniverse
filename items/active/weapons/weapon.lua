@@ -89,15 +89,15 @@ function setCritDamage(damage)
         --              weapon specific crit abilities!
         -- *****************************************************************
         self.stunChance = math.random(100) + status.stat("stunChance",0) + config.getParameter("stunChance",0)
-        if (self.stunChance) >= 100 and root.itemHasTag(heldItem, "shortspear") or root.itemHasTag(heldItem, "spear") then 
+        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "shortspear") or root.itemHasTag(heldItem, "spear") then 
 		params = { speed=30, power = 1, damageKind = "default"} 
 		world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),{0.3,0},false,params)   
         end          
-        if (self.stunChance) >= 100 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") or root.itemHasTag(heldItem, "dagger") then 
+        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") or root.itemHasTag(heldItem, "dagger") then 
 		params = { speed=30, power = 1, damageKind = "default"} 
 		world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),{0.2,0},false,params)   
         end        
-        if (self.stunChance) >= 90 and root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace") then -- Stun!!!!
+        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace") then -- Stun!!!!
 		params = { speed=30, power = 1, damageKind = "default"} 
 		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0.2,0},false,params)   
         end
