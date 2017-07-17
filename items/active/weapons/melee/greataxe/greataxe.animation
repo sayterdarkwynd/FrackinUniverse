@@ -28,6 +28,7 @@
           "image" : "<partImage><paletteSwaps><directives>",
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
+          "offset" : [0.25, 3],
           "damageArea" : [[-1, 0.25], [-1, 1.5], [1.5, 1.75], [1.5, 0.0]],
           "groundImpactPoly" : [ [1, 1.75],  [1, 0.0],  [2, 0.0],  [2, 1.75] ]
         }
@@ -36,7 +37,7 @@
         "properties" : {
           "centered" : true,
           "image" : "<partImage><paletteSwaps><directives>",
-          "offset" : [0, 0],
+          "offset" : [0, 0.5],
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0]
         }
@@ -45,7 +46,7 @@
         "properties" : {
           "zLevel" : -1,
           "centered" : true,
-          "offset" : [0, 3.5],
+          "offset" : [0, 2],
           "transformationGroups" : ["swoosh"],
           "rotationCenter" : [0, 0]
         },
@@ -203,7 +204,7 @@
   },
 
   "sounds" : {
-    "fire" : [ ],
-    "groundImpact" : []
+    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+    "groundImpact" : [ "/sfx/melee/swing_broadsword.ogg" ]
   }
 }
