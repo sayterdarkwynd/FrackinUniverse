@@ -12,37 +12,7 @@
           },
           "fire" : {
             "frames" : 3,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "fire2" : {
-            "frames" : 3,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "fire3" : {
-            "frames" : 3,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "fire4" : {
-            "frames" : 3,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "fire5" : {
-            "frames" : 3,
-            "cycle" : 0.1,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
-          "fire6" : {
-            "frames" : 3,
-            "cycle" : 0.1,
+            "cycle" : 0.07,
             "mode" : "transition",
             "transition" : "idle"
           }
@@ -51,23 +21,33 @@
     },
 
     "parts" : {
-      "blade" : {
+      "bladefullbright" : {
         "properties" : {
-          "zLevel" : 0,
           "centered" : true,
-          "image" : "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
-          "offset" : [0, 1.875],
+          "zLevel" : 1,
+          "image" : "<partImage><paletteSwaps><directives>",
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
-          "damageArea" : [ [-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0] ]
+          "damageArea" : [[-1, 0.25], [-1, 1.5], [1.5, 1.75], [1.5, 0.0]],
+          "groundImpactPoly" : [ [1, 1.75],  [1, 0.0],  [2, 0.0],  [2, 1.75] ]
+        }
+      },
+      "blade" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 0,
+          "image" : "<partImage><paletteSwaps><directives>",
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0],
+          "damageArea" : [[-1, 0.25], [-1, 1.5], [1.5, 1.75], [1.5, 0.0]],
+          "groundImpactPoly" : [ [1, 1.75],  [1, 0.0],  [2, 0.0],  [2, 1.75] ]
         }
       },
       "handle" : {
         "properties" : {
-          "zLevel" : 1,
           "centered" : true,
-          "image" : "<partImage><paletteSwaps>?<directives>",
-          "offset" : [0, 1.875],
+          "image" : "<partImage><paletteSwaps><directives>",
+          "offset" : [0, 0],
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0]
         }
@@ -76,6 +56,7 @@
         "properties" : {
           "zLevel" : -1,
           "centered" : true,
+          "offset" : [0, 3.5],
           "transformationGroups" : ["swoosh"],
           "rotationCenter" : [0, 0]
         },
@@ -89,44 +70,8 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh2/<elementalType>swoosh.png:<frame>",
-                "offset" : [2.25, 0],
-                "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
-              }
-            },
-            "fire2" : {
-              "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh/<elementalType>swoosh.png:<frame>",
-                "offset" : [3, 1.0],
-                "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
-              }
-            },
-            "fire3" : {
-              "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh2/<elementalType>swoosh.png:<frame>",
-                "offset" : [2.25, 0],
-                "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
-              }
-            },
-			"fire4" : {
-              "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh2/<elementalType>swoosh.png:<frame>",
-                "offset" : [2.25, 0],
-                "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
-              }
-            },
-			"fire5" : {
-              "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh/<elementalType>swoosh.png:<frame>",
-                "offset" : [3.0, 1.0],
-                "damageArea" : [[-3, 1], [3.0, 1], [3.0, -1], [-3, -1]]
-              }
-            },
-			"fire6" : {
-              "properties" : {
-                "image" : "/items/active/weapons/melee/shortsword/swoosh2/<elementalType>swoosh.png:<frame>",
-                "offset" : [2.25, 0],
-                "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
+                "image" : "/items/active/weapons/melee/hammer/swoosh/<elementalType>swoosh.png:<frame>",
+                "damageArea" : [[-3.5, 2], [-2.5, 3], [1, 3], [3, 1.75], [4, -0.25], [4, -2.25], [3, -3.25], [0, -2.5]]
               }
             }
           }
@@ -144,16 +89,20 @@
     "physicalswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 1,
-      "burstCount" : 1,
-      "particles" : []
+      "emissionRate" : 50,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+      ]
     },
     "fireswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
-      "burstCount" : 4,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
       "particles" : [
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"},
         { "particle" : "fireswoosh1"},
         { "particle" : "fireswoosh2"},
         { "particle" : "fireswoosh3"}
@@ -163,7 +112,7 @@
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
-      "burstCount" : 3,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
       "particles" : [
         { "particle" : "electricswoosh1"},
         { "particle" : "electricswoosh2"},
@@ -174,8 +123,11 @@
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
-      "burstCount" : 3,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
       "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"},
         { "particle" : "poisonswoosh1"},
         { "particle" : "poisonswoosh2"},
         { "particle" : "fireswoosh2"}
@@ -185,8 +137,11 @@
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
-      "burstCount" : 3,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
       "particles" : [
+        { "particle" : "iceswoosh1"},
+        { "particle" : "iceswoosh2"},
+        { "particle" : "iceswoosh3"},
         { "particle" : "iceswoosh1"},
         { "particle" : "iceswoosh2"},
         { "particle" : "iceswoosh3"}
@@ -196,19 +151,25 @@
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
-      "burstCount" : 3,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
       "particles" : [
         { "particle" : "shadowswoosh1"},
         { "particle" : "shadowswoosh2"},
-        { "particle" : "shadowswoosh3"}
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke2"}
       ]
     },
     "radioactiveswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
-      "burstCount" : 3,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
       "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"},
         { "particle" : "radioactiveswoosh1"},
         { "particle" : "radioactiveswoosh2"},
         { "particle" : "poisonswoosh2"}
@@ -218,21 +179,42 @@
       "active" : false,
       "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
-      "burstCount" : 3,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
       "particles" : [
         { "particle" : "cosmicswoosh1"},
         { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"},
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
         { "particle" : "cosmicswoosh3"}
+      ]
+    },
+    "groundImpact" : {
+      "transformationGroups" : ["weapon"],
+      "particles" : [
+        {
+          "count" : 1,
+          "particle" : {
+            "type" : "animated",
+            "mode" : "LoopForever",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.4,
+            "position" : [1.0, 0.75],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [5, 5],
+            "timeToLive" : 0.4
+          }
+        }
       ]
     }
   },
 
   "sounds" : {
     "fire" : [ ],
-    "fire2" : [ ],
-    "fire3" : [ ],
-	"fire4" : [ ],
-    "fire5" : [ ],
-    "fire6" : [ ]
+    "groundImpact" : []
   }
 }
