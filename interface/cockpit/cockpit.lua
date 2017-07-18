@@ -379,12 +379,12 @@ end
 
 -- end FU functions
 
-function fuelCost()
+function fuelCost(travel)
   local cost = config.getParameter("jumpFuelCost") 
 
   -- FU needs custom math here for distance-based fuel cost
     self.one =  celestial.currentSystem()
-    self.two =  {location = self.travel.system, planet = 0, satellite = 0, system = self.travel.target} 
+    self.two =  {location = travel or self.travel.system, planet = 0, satellite = 0, system = self.travel.target} 
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
     shipMassFind()
 
@@ -696,7 +696,7 @@ function universeMoveState(startPosition, systems, toPosition, travel, queued)
 
   if travel and not celestial.skyFlying() then
 	  if not player.isAdmin() then		
-            world.setProperty("ship.fuel", world.getProperty("ship.fuel") - fuelCost())		
+            world.setProperty("ship.fuel", world.getProperty("ship.fuel") - fuelCost(travel.system))		
           end  
     celestial.flyShip(travel.system, travel.target)
     while not celestial.skyFlying() do
