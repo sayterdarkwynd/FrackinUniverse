@@ -379,14 +379,12 @@ end
 
 -- end FU functions
 
-
 function fuelCost()
   local cost = config.getParameter("jumpFuelCost") 
 
   -- FU needs custom math here for distance-based fuel cost
     self.one =  celestial.currentSystem()
-    self.two =  {location = self.travel.system, planet = 0, satellite = 0} 
-    
+    self.two =  {location = self.travel.system, planet = 0, satellite = 0, system = self.travel.target} 
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
     shipMassFind()
 
