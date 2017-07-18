@@ -1635,7 +1635,9 @@
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
       },
         "surface" : {
-          "primaryRegion" : [ "bloodstonesea" ]       
+          "primaryRegion" : [ "bloodstonesea" ],
+          "baseHeight" : 1150,
+          "layerLevel" : 1050       
         },
         "subsurface" : {
           "primaryRegion" : [ "bloodstoneseafloor" ],
@@ -2127,7 +2129,9 @@
 	      },          
 		"surface" : {
 		  "primaryRegion" : ["arcticdark"],
-		  "secondaryRegions" : [ "wartfield", "wastelandmini", "goreforest", "sulphuricmagma", "elder", "volcanic"  ]
+		  "secondaryRegions" : [ "wartfield", "wastelandmini", "goreforest", "sulphuricmagma", "elder", "volcanic"  ],
+          		"baseHeight" : 1150,
+          		"layerLevel" : 1050
 		},
 		"subsurface" : {
 		  "primaryRegion" : [ "icewasteunderground", "nitrogenseafloor" ]
@@ -2669,7 +2673,9 @@
 	      },          
 		"surface" : {
 		  "primaryRegion" : ["magmadark"],
-		  "secondaryRegions" : [ "wartfield", "wastelandmini", "goreforest", "sulphuricmagma", "elder", "volcanic"  ]
+		  "secondaryRegions" : [ "wartfield", "wastelandmini", "goreforest", "sulphuricmagma", "elder", "volcanic"  ],
+          		"baseHeight" : 1150,
+          		"layerLevel" : 1050
 		},
 		"subsurface" : {
 		  "primaryRegion" : ["magmaoceanfloor"],
@@ -2983,9 +2989,7 @@
       "space" : {
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
       },      
-      "atmosphere" : {
-        "primaryRegion" : [ "clouds" ]
-      },
+
         "surface" : {
           "primaryRegion" : [ "nitrogensea" ],
           "secondaryRegions" : [ "prism", "arctic", "elder",  "icewaste", "snow", "magicsnowland" ],
@@ -2998,7 +3002,9 @@
           [1.0, "hylotloceancity"], 
           [1.0, "hylotlruinedcity"],
 	  [1.0, "apexunderwaterlab"]
-          ]
+          ],
+          "baseHeight" : 1150,
+          "layerLevel" : 1050
         },
         "subsurface" : {
           "primaryRegion" : [ "nitrogenseafloor" ]
@@ -3565,7 +3571,9 @@
       },      
         "surface" : {
           "primaryRegion" : [ "tidewater" ], 
-	  "secondaryRegions" : [ "sulphuricoceandark", "breakwater", "corrupt", "estuarydark" ]
+	  "secondaryRegions" : [ "sulphuricoceandark", "breakwater", "corrupt", "estuarydark" ],
+          "baseHeight" : 1150,
+          "layerLevel" : 1050
         },
         "subsurface" : {
           "primaryRegion" : [ "tidewaterfloor" ],
@@ -4233,6 +4241,7 @@
   {
       "oceanLiquid" : [ "bloodliquid", "alienjuice", "darkwater", "pus" ],
       "caveLiquid" : [ "bloodliquid", "alienjuice", "darkwater", "pus" ],
+      "oceanLevelOffset" : 0, 
       "blockSelector" : [ "remixedIslandsSurface", "remixedFlatIslandsSurface", "remixedIslandTowersSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],     
       "biome" : [
@@ -4248,7 +4257,8 @@
       "oceanLiquid" : [ "bloodliquid" ],
       "oceanLevelOffset" : 1000,
       "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
-      "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],      
+      "fgCaveSelector" : [ "emptier" ],
+      "bgCaveSelector" : [ "emptiest" ],    
       "biome" : [
         [0, [ "bloodstoneseafloor" ]]
       ]
@@ -4485,7 +4495,7 @@
       "caveLiquid" : [ "lava" ],
       "oceanLiquid" : [ "lava" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [ "remixedIslandsSurface", "tidalflatsislandsurface", "breakwaterislandsurface", "fuislandssurface", "fuislandssurface2"  ],
+      "blockSelector" : [ "remixedIslandsSurface", "breakwaterislandsurface", "fuislandssurface"  ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves" ],
       "bgCaveSelector" : [ "coreCaves", "moonCaves", "solid" ],
       
@@ -6021,8 +6031,9 @@
        "oceanLiquid" : [ "liquidaether" ],
        "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "elderfluid", "alienjuice" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
-      "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],      
+      "blockSelector" : [ "ledgesSurface", "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
+      "fgCaveSelector" : [ "emptier" ],
+      "bgCaveSelector" : [ "emptiest" ],    
       "biome" : [ [0, [ "aetherseafloor" ] ] ]
     }
   },
@@ -6061,8 +6072,9 @@
        "oceanLiquid" : [ "beer", "healingliquid", "fuquicksand", "fuhoney", "fuhoneyred", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "sludge" ],
        "caveLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "elderfluid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "fuhoney", "helium3gas", "shadowgas", "wastewater", "poison", "lava", "sludge" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
-      "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],      
+      "blockSelector" : [ "ledgesSurface", "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
+      "fgCaveSelector" : [ "emptier" ],
+      "bgCaveSelector" : [ "emptiest" ],   
       "biome" : [ [0, [ "strangeseafloor" ]] ]
     }
   },
@@ -6231,7 +6243,7 @@
        "oceanLevelOffset" : 1000,
        "blockSelector" : [ "remixedSurface", "remixedMildSurface", "remixedCanyonsSurface", "asteroids"  ],
        "fgCaveSelector" : [ "surfaceCaves" ],
-
+       "bgCaveSelector" : [ "emptiest" ],
        "biome" : [
          [0, [ "tidewaterfloor" ]]
        ]
@@ -8047,93 +8059,26 @@
   
   
 //ocean
-   {"op" : "replace", 
+   {"op" : "add", 
    "path" : "/planetTypes/ocean",
-   "value" : 
-     {
-      "blendSize" : 30,
-      "threatRange" : [3, 3],
-      "layers" : {
-	      "space" : {
-		"primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
-	      },         
-        "surface" : {
-          "primaryRegion" : ["ocean"],
-          "secondaryRegions" : [ "deepseavent", "kelpforest", "coralreef" ]
-        },
-        "subsurface" : {
-          "primaryRegion" : ["oceanfloor"],
-          "dungeons" : [[1.0, "hylotloceancity"], [1.0, "hylotlruinedcity"], [0.5, "wreckunderwater"], [0.65, "waterdungeon"], [0.65, "apexunderwaterlab" ]]
-        }
-      }
+   "value" : {"layers" : {"subsurface" : {"dungeons" : [[0.5, "wreckunderwater"], [0.65, "waterdungeon"], [0.65, "apexunderwaterlab" ]]}}
    }
   }, 
 
 //toxic	
    {"op" : "replace", 
    "path" : "/planetTypes/toxic",
-   "value" : 
-     {
-      "blendSize" : 30,
-      "threatRange" : [4, 4],
-      "layers" : {
-	      "space" : {
-		"primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
-	      },         
-        "surface" : {
-          "primaryRegion" : ["toxic"],
-          "secondaryRegions" : [ "wartfield", "wastelandmini", "hellhive", "cactiplace", "crystalswamp", "blisterbushfield", "corruptedforest", "bloodgulch", "elder", "primevalforest", "sulphuricplain", "pitchfield" ]
-        },
-        "subsurface" : {
-          "primaryRegion" : ["toxicoceanfloor"],
-          "dungeons" : [ [0.07, "wreckunderpoison"] ]
-        }
-      }
-   }
+   "value" : {"layers" : {"subsurface" : {"dungeons" : [ [0.07, "wreckunderpoison"] ]}}}
   },
   
    {"op" : "replace", 
    "path" : "/planetTypes/arctic",
-   "value" : 
-     {
-      "blendSize" : 30,
-      "threatRange" : [5, 5],
-      "layers" : {
-	      "space" : {
-		"primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
-	      },         
-        "surface" : {
-          "primaryRegion" : ["arctic"],
-          "secondaryRegion" : [ "icefire", "taiga", "pineforest", "snowyforest" ]
-        },
-        "subsurface" : {
-          "primaryRegion" : ["arcticoceanfloor"],
-          "dungeons" : [ [0.5, "wreckunderwater"] ]
-        }
-      }
-   }
+   "value" : {"layers" : {"subsurface" : {"dungeons" : [ [0.5, "wreckunderwater"] ]}}}
   }, 
 
     
    {"op" : "replace", 
    "path" : "/planetTypes/magma",
-   "value" : 
-     {
-      "blendSize" : 30,
-      "threatRange" : [6, 6],
-       "layers" : {
-	      "space" : {
-		"primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ] 
-	      },          
-		"surface" : {
-		  "primaryRegion" : ["magma"],
-		  "secondaryRegions" : [ "sulphuricmagma", "pitchfield", "icefire", "sulphuricplain", "hellfirefield", "hellhive", "irradiatedwaste", "reddesert", "bloodgulch", "badlands", "ashgarden", "bloodstonefield", "dryriverbed" ]
-		},
-		"subsurface" : {
-		  "primaryRegion" : ["magmaoceanfloor"],
-		  "dungeons" : [ [0.05, "wreckunderlava"] ]
-		}       
-       }
-   }
+   "value" : {"layers" : {"subsurface" : {"dungeons" : [ [0.05, "wreckunderlava"] ]}}}
   }  
 ]
