@@ -1,0 +1,93 @@
+{
+  "itemName" : "furaregreataxe",
+  "price" : 100,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "This might harm foes.",
+  "shortdescription" : "Rare Greataxe",
+  "tooltipKind" : "sword2",
+  "category" : "greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","axe", "greataxe", "upgradeableWeapon"],
+
+  "animation" : "greataxe.animation",
+  "animationParts" : {},
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "greataxesmash",
+  "primaryAbility" : {
+    "fireTime" : [0.9,1.7],
+    "baseDps" : [12,14],
+    "damageConfig" : {
+      "damageSourceKind" : "<elementalType>axe"
+    }
+  },
+
+  "altAbilities" : [
+      "blinkexplosion",
+      "shockwave",
+      "elementalaura",
+      "elementalpillar"  
+  ],
+
+  "critChance" : 3,
+  "critBonus" : 5,
+  "stunChance" : 7,
+  
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "greataxenames.config:nameGen",
+    "elementalType" : [
+      "fire",
+      "ice",
+      "electric",
+      "poison",
+      "cosmic",
+      "shadow",
+      "radioactive"
+    ],
+    "elementalConfig" : {
+      "fire" : {
+        "fireSounds" : [ [ "/sfx/melee/swing_hammer_fire1.ogg", "/sfx/melee/swing_hammer_fire2.ogg", "/sfx/melee/swing_hammer_fire3.ogg" ] ]
+      },
+      "ice" : {
+        "fireSounds" : [ [ "/sfx/melee/swing_hammer_ice1.ogg", "/sfx/melee/swing_hammer_ice2.ogg", "/sfx/melee/swing_hammer_ice3.ogg" ] ]
+      },
+      "poison" : {
+        "fireSounds" : [ [ "/sfx/melee/swing_hammer_poison1.ogg", "/sfx/melee/swing_hammer_poison2.ogg", "/sfx/melee/swing_hammer_poison3.ogg" ] ]
+      },
+      "electric" : {
+        "fireSounds" : [ [ "/sfx/melee/swing_hammer_electric1.ogg", "/sfx/melee/swing_hammer_electric2.ogg", "/sfx/melee/swing_hammer_electric3.ogg" ] ]
+      },
+      "shadow" : {
+        "fireSounds" : [ [ "/sfx/melee/swing_hammer_poison1.ogg", "/sfx/melee/swing_hammer_poison2.ogg", "/sfx/melee/swing_hammer_poison3.ogg" ] ]
+      },
+      "radioactive" : {
+        "fireSounds" : [ [ "/sfx/melee/swing_hammer_poison1.ogg", "/sfx/melee/swing_hammer_poison2.ogg", "/sfx/melee/swing_hammer_poison3.ogg" ] ]
+      },
+      "cosmic" : {
+        "fireSounds" : [ [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ] ]
+      }
+    },          
+    "animationParts" : {
+      "blade" : {
+        "path" : "blade/<variant>.png",
+        "variants" : 50,
+        "paletteSwap" : true
+      },
+      "handle" : {
+        "path" : "handle/<variant>.png",
+        "variants" : 50,
+        "paletteSwap" : true
+      }
+    },
+    "altAbilities" : [],
+   
+    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
+    "iconDrawables" : [ "blade", "handle" ]
+  }]  
+}
