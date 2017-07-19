@@ -1,0 +1,42 @@
+{
+  "itemName" : "pyreitemace",
+  "price" : 890,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Masterful crafting, deadly edges.",
+  "shortdescription" : "pyreite Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "pyreitemace_ashey.png",
+
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "pyreitemace_ashey.png",
+    "bladefullbright" : "pyreitemace_asheyfullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":8.5,
+    "damageConfig" : {
+      "damageSourceKind" : "firehammer",
+      "statusEffects" : [ "burning" ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 8,
+  "stunChance" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

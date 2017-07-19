@@ -1,0 +1,42 @@
+{
+  "itemName" : "effigiummace",
+  "price" : 1100,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Phantoms don't care. They'll still kill ya. Design by Gezbo.",
+  "shortdescription" : "Phantasm Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "effigiummace_gezbo.png",
+
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "effigiummace_gezbo.png",
+    "bladefullbright" : "effigiummace_gezbofullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":8.3,
+    "damageConfig" : {
+      "damageSourceKind" : "shadowhammer",
+      "statusEffects" : [ "shadowgasfx" ]
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 1,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

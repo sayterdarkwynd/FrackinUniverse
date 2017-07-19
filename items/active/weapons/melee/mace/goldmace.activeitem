@@ -1,22 +1,22 @@
 {
-  "itemName" : "ironmace",
-  "price" : 100,
-  "level" : 1,
+  "itemName" : "goldmace",
+  "price" : 200,
+  "level" : 3,
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Well crafted, but heavy.",
-  "shortdescription" : "Iron Mace",
+  "rarity" : "uncommon",
+  "description" : "With a name like Maul, clearly you should share it with others! Design by Ashey.",
+  "shortdescription" : "Golden Maul",
   "tooltipKind" : "sword2",
   "category" : "mace",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
 
-  "inventoryIcon" : "ironmace.png",
-  "collectablesOnPickup" : { "fu_weaponmace" : "ironmace" },
+  "inventoryIcon" : "goldmace_ashey.png",
+
   "animation" : "combomace.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "ironmace.png"
+    "blade" : "goldmace_ashey.png"
   },
   "animationCustom":{},
 
@@ -27,11 +27,11 @@
   "primaryAbilityType" : "macecombo",
   "primaryAbility":{
     "fireTime":1, 
-    "baseDps":8.1
+    "baseDps":8.0
   },
-  "critChance" : 1,
-  "critBonus" : 1,
-  "stunChance" : 3,
+  "critChance" : 4,
+  "critBonus" : 4,
+  "stunChance" : 2,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

@@ -1,0 +1,42 @@
+{
+  "itemName" : "densiniummace",
+  "price" : 200,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Superior weapon for superior murder. Design by Gezbo.",
+  "shortdescription" : "Densinium Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "densiniummace_gezbo.png",
+
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "densiniummace_gezbo.png",
+    "bladefullbright" : "densiniummace_gezbofullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":8.6,
+    "damageConfig" : {
+      "damageSourceKind" : "electrichammer",
+      "statusEffects" : [ "electrified" ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 3,
+  "stunChance" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

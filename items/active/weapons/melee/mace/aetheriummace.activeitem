@@ -1,0 +1,42 @@
+{
+  "itemName" : "aetheriummace",
+  "price" : 1200,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Sparkling and deadly. Design by Ashey.",
+  "shortdescription" : "Aetherium Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "aetheriummace.png",
+
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aetheriummace_ashey.png",
+    "bladefullbright" : "aetheriummace_asheyfullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":9.2,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmichammer",
+      "statusEffects" : [ "defenseboostneg20" ]
+    }
+  },
+  "critChance" : 5,
+  "critBonus" : 3,
+  "stunChance" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

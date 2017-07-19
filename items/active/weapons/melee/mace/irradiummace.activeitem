@@ -1,37 +1,37 @@
 {
-  "itemName" : "ironmace",
-  "price" : 100,
+  "itemName" : "irradiummace",
+  "price" : 200,
   "level" : 1,
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Well crafted, but heavy.",
-  "shortdescription" : "Iron Mace",
+  "rarity" : "rare",
+  "description" : "Radiation-laced for extra merriment.",
+  "shortdescription" : "Irradium Mace",
   "tooltipKind" : "sword2",
   "category" : "mace",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
 
-  "inventoryIcon" : "ironmace.png",
-  "collectablesOnPickup" : { "fu_weaponmace" : "ironmace" },
+  "inventoryIcon" : "irradiummace_gezbo.png",
+
   "animation" : "combomace.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "ironmace.png"
+    "blade" : "irradiummace_gezbo.png"
   },
   "animationCustom":{},
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "radioactive",
 
   "primaryAbilityType" : "macecombo",
   "primaryAbility":{
     "fireTime":1, 
-    "baseDps":8.1
+    "baseDps":9
   },
   "critChance" : 1,
-  "critBonus" : 1,
-  "stunChance" : 3,
+  "critBonus" : 5,
+  "stunChance" : 5,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

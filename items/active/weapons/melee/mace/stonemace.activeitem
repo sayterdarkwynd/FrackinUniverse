@@ -1,22 +1,22 @@
 {
-  "itemName" : "ironmace",
-  "price" : 100,
+  "itemName" : "stonemace",
+  "price" : 200,
   "level" : 1,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Well crafted, but heavy.",
-  "shortdescription" : "Iron Mace",
+  "description" : "Literally a rock tied to a stick. Design by Dagnez",
+  "shortdescription" : "Stone Club",
   "tooltipKind" : "sword2",
   "category" : "mace",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
 
-  "inventoryIcon" : "ironmace.png",
-  "collectablesOnPickup" : { "fu_weaponmace" : "ironmace" },
+  "inventoryIcon" : "stonemace_dagnez.png",
+
   "animation" : "combomace.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "ironmace.png"
+    "blade" : "stonemace_dagnez.png"
   },
   "animationCustom":{},
 
@@ -27,11 +27,11 @@
   "primaryAbilityType" : "macecombo",
   "primaryAbility":{
     "fireTime":1, 
-    "baseDps":8.1
+    "baseDps":8
   },
   "critChance" : 1,
-  "critBonus" : 1,
-  "stunChance" : 3,
+  "critBonus" : 2,
+  "stunChance" : 6,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }
