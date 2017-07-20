@@ -22,7 +22,7 @@ local recipes =
 {inputs = { nocxiumbar=5, elderrelic1=1, elderrelic5=1 }, outputs = { elderarmorpants=1 }, time = 15.0 },
 {inputs = { nocxiumbar=6, elderrelic6=1, elderrelic11=1 }, outputs = { cultarmorhead=1 }, time = 15.0 },
 {inputs = { nocxiumbar=7, elderrelic7=1, elderrelic12=1 }, outputs = { cultarmorchest=1 }, time = 15.0 },
-{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 }
+{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 },
 {inputs = { cthulureward=1, elderrelic3=2, elderrelic14=1 }, outputs = { eldermace=1 }, time = 15.0 }
 }
 
