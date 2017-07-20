@@ -539,8 +539,12 @@ function workingBees()
 		local when = config.active or 'day'
 --		sb.logInfo ('Checking ' .. queen .. ' (' .. when .. ' / ' .. notnow .. ')')
 
-		if when ~= notnow then -- strictly, when == 'always' or == now
-			beeActiveWhen = when
+		if when ~= notnow or world.type() == "playerstation" then -- strictly, when == 'always' or == now
+			if when ~= notnow then 
+				beeActiveWhen = when 
+				else 
+				beeActiveWhen = "always" 
+			end
 
 			if self.doHoney then
 				-- read config; call functions returning config if specified
