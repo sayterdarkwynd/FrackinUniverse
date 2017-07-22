@@ -1,28 +1,29 @@
 {
-  "itemName" : "silverquarterstaff",
-  "price" : 200,
+  "itemName" : "solariumquarterstaff",
+  "price" : 700,
   "maxStack" : 1,
-  "level" : 2,
-  "rarity" : "Common",
-  "description" : "Shiny and wonderful. Whack your foes.",
-  "shortdescription" : "Silver Quarterstaff",
+  "level" : 6,
+  "rarity" : "legendary",
+  "description" : "Glowy and full of radiation.",
+  "shortdescription" : "Solarium Quarterstaff",
   "tooltipKind" : "sword2",
   "category" : "Quarterstaff",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","quarterstaff", "upgradeableWeapon"],
   
-  "inventoryIcon" : "silverstaff_gezbo.png",
+  "inventoryIcon" : "solariumstaff.png",
   "collectablesOnPickup" : { "fu_weaponquarterstaff" : "silverquarterstaff" },
   "animation" : "combostaff.animation",
   "animationParts" : { 
     "handle" : "",
-    "blade" : "silverstaff_gezbo.png"  
+    "blade" : "solariumstaff.png",
+    "bladefullbright" : "solariumstaff.png" 
   },
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "radioactive",
 
   "aimOffset" : -1.0,
 
@@ -32,7 +33,8 @@
     "baseDps" : 7.2,
     "damageConfig":{
       "knockback":10,
-      "damageSourceKind" : "poison"
+      "damageSourceKind" : "radioactive",
+      "statusEffects" : [ "radiationburn" ]
       }, 
       "comboSteps":6, 
       "swooshOffsetRegions":[

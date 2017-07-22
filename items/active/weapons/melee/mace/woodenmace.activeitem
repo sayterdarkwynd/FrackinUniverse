@@ -1,0 +1,37 @@
+{
+  "itemName" : "woodenmace",
+  "price" : 5,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "It's a piece of wood. You whack things with it. Design by Ashey.",
+  "shortdescription" : "Wooden Club",
+  "tooltipKind" : "sword",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "woodenclub_ashey.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "woodenmace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "woodenclub_ashey.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.86, 
+    "baseDps":8.0
+  },
+  "critChance" : 1,
+  "critBonus" : 3,
+  "stunChance" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}
