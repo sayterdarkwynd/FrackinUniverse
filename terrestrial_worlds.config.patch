@@ -548,6 +548,25 @@
 
 
 //garden
+
+  {
+    "op": "replace",
+    "path": "/planetTypes/garden/layers/surface/dungeonCountRange/0",
+    "value": 3
+  },
+  {
+    "op": "replace",
+    "path": "/planetTypes/garden/layers/surface/dungeonCountRange/1",
+    "value": 3
+  },
+  {
+    "op": "add",
+    "path": "/planetTypes/garden/layers/surface/dungeons/0",
+    "value": [
+      1,
+      "medic1"
+    ]
+  },
 {"op" : "add", "path" : "/planetTypes/garden/layers/subsurface/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground1/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground2/dungeons", "value" : [] },
@@ -753,11 +772,11 @@
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/surface/secondaryRegions", 
-    "value" : [ "moon_desert", "moon_volcanic", "moon_toxic", "moon_stone", "crystalplain", "supermatterzonemoon", "aliendesert", "deadwoodmoon", "wastelandminimoon" ]
+    "value" : [ "crystalplain", "supermatterzonemoon", "wastelandminimoon" ]
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/subsurface/secondaryRegions", 
-    "value" : [ "ffcrystalcavern", "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "crystalmoonunderground", "fungusunderground", "icecaves", "luminouscaves" ]
+    "value" : [ "ffcrystalcavern", "moondesertunderground", "moonvolcanicunderground", "moontoxicunderground", "moonstoneunderground", "crystalmoonunderground", "icecaves", "luminouscaves" ]
     },
     { "op" : "add", 
     "path" : "/planetTypes/moon/layers/underground1/secondaryRegions", 
