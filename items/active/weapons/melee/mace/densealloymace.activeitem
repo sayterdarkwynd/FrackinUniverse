@@ -1,0 +1,37 @@
+{
+  "itemName" : "densealloymace",
+  "price" : 200,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Well crafted, but heavy. Design by Gezbo.",
+  "shortdescription" : "Dense Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "densealloymace_gezbo.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "densealloymace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "densealloymace_gezbo.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1.1, 
+    "baseDps":8
+  },
+  "critChance" : 1,
+  "critBonus" : 1,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

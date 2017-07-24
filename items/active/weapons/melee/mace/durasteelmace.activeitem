@@ -1,0 +1,37 @@
+{
+  "itemName" : "durasteelmace",
+  "price" : 400,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Thick and weighty. Design by Sacre.",
+  "shortdescription" : "Durasteel Mace",
+  "tooltipKind" : "sword",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "durasteelmace_sacre.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "durasteelmace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "durasteelmace_sacre.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":8.2
+  },
+  "critChance" : 2,
+  "critBonus" : 5,
+  "stunChance" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

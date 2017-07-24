@@ -1,0 +1,135 @@
+{
+  "globalTagDefaults" : {
+    "hand" : "near",
+    "directives" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "shield" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "raised" : {},
+          "block" : {
+            "frames" : 1,
+            "cycle" : 0.12,
+            "mode" : "transition",
+            "transition" : "raised"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "shield" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "transformationGroups" : ["shield"],
+          "rotationCenter" : [0, 0],
+          "shieldPoly" : [ [-0.5, -1.75], [-0.5, 1.75], [0.75, 1.0], [0.75, -1.0] ]
+        },
+        "partStates" : {
+          "shield" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<hand>idle<directives>"
+              }
+            },
+            "raised" : {
+              "properties" : {
+                "image" : "<partImage>:<hand>raised<directives>"
+              }
+            },
+            "block" : {
+              "properties" : {
+                "image" : "<partImage>:<hand>raised<directives>",
+                "offset" : [-0.25, 0]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "shield" : {}
+  },
+
+  "sounds" : {
+    "raiseShield" : [ ],
+    "lowerShield" : [ ],
+    "perfectBlock" : [ ],
+    "shieldBash" : [ "/sfx/melee/blunt_hit_metal3.ogg", "/sfx/melee/dagger_hit_metal1.ogg" ],
+    "bonusEffect" : [ "/sfx/statuseffects/powerup.ogg" ],
+    "block" : [ ],
+    "break" : [ ]
+  },
+
+  "particleEmitters" : {
+    "perfectBlock" : {
+      "active" : false,
+      "transformationGroups" : ["shield"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.5, -1.0, 0.5, 1.0],
+      "particles" : [
+        { "particle" : "sparkle5"},
+        { "particle" : "sparkle5"}
+      ]
+    },
+    "shieldBashHit" : {
+      "active" : false,
+      "transformationGroups" : ["shield"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.5, -1.0, 0.5, 1.0],
+      "particles" : [
+        { "particle" : "charge"},
+        { "particle" : "charge"},      
+        { "particle" : "charge"},
+        { "particle" : "charge"}
+      ]
+    },    
+    "bonusBlock" : {
+      "active" : false,
+      "transformationGroups" : ["shield"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.5, -1.0, 0.5, 1.0],
+      "particles" : [
+        { "particle" : "healthcross"},
+        { "particle" : "healthcross"}
+      ]
+    },
+    "bonusBlock2" : {
+      "active" : false,
+      "transformationGroups" : ["shield"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.5, -1.0, 0.5, 1.0],
+      "particles" : [
+        { "particle" : "greencartoonstar"},
+        { "particle" : "greencartoonstar"}
+      ]
+    },
+    "bonusBlock3" : {
+      "active" : false,
+      "transformationGroups" : ["shield"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.5, -1.0, 0.5, 1.0],
+      "particles" : [
+        { "particle" : "redcartoonstar"},
+        { "particle" : "redcartoonstar"}
+      ]
+    },
+    "bonusBlock4" : {
+      "active" : false,
+      "transformationGroups" : ["shield"],
+      "emissionRate" : 90,
+      "offsetRegion" : [-0.5, -1.0, 0.5, 1.0],
+      "particles" : [
+        { "particle" : "greencartoonstar"},
+        { "particle" : "greencartoonstar"}
+      ]
+    }     
+    
+  }
+}

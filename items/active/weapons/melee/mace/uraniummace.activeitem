@@ -1,0 +1,42 @@
+{
+  "itemName" : "uraniummace",
+  "price" : 500,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Completely non-toxic",
+  "shortdescription" : "Uranium Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "uraniummace.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "uraniummace" },
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "uraniummace.png",
+    "bladefullbright" : "uraniummacefullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":8.12,
+    "damageConfig" : {
+      "damageSourceKind" : "radioactivehammer",
+      "statusEffects" : [ "defensebradiationburn" ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 3,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

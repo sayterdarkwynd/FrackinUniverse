@@ -1,0 +1,42 @@
+{
+  "itemName" : "solariummace",
+  "price" : 1200,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Honed into a perfect lethal shape",
+  "shortdescription" : "Solarium Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "solariummace_gezbo.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "solariummace" },
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "solariummace_gezbo.png",
+    "bladefullbright" : "solariummace_gezbofullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1.05, 
+    "baseDps":8.3,
+    "damageConfig" : {
+      "damageSourceKind" : "radioactivehammer",
+      "statusEffects" : [ "radiationburn" ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 10,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

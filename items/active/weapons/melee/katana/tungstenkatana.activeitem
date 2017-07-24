@@ -3,16 +3,16 @@
   "price" : 400,
   "level" : 2,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "common",
   "description" : "Heavy, but sharp as heck.",
   "shortdescription" : "Tungsten Katana",
-  "tooltipKind" : "sword2",
+  "tooltipKind" : "sword",
   "category" : "katana",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
   "inventoryIcon" : "tungstenkatana.png",
-
+  "collectablesOnPickup" : { "fu_weaponkatana" : "tungstenkatana" },
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
@@ -26,8 +26,8 @@
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility":{
-    "fireTime":0.87, 
-    "baseDps":4.25, 
+    "fireTime":0.7, 
+    "baseDps":6.5, 
     "damageConfig":{
       "knockback":20
       }, 
@@ -39,10 +39,10 @@
         [0, -4.25, 5, 0]
       ], 
       "stepDamageConfig":[
-        {"baseDamageFactor":0.9, "knockback":10}, 
-        {"baseDamageFactor":1.1, "knockback":15}, 
         {"baseDamageFactor":0.8, "knockback":10}, 
-        {"baseDamageFactor":1.1, "knockback":20}
+        {"baseDamageFactor":1.0, "knockback":15}, 
+        {"baseDamageFactor":0.6, "knockback":10}, 
+        {"baseDamageFactor":1.0, "knockback":20}
         ], 
       "stances":{
 	"idle":{
@@ -66,7 +66,8 @@
           "allowRotate":false, 
           "allowFlip":true        
         }, 
-        "preslash1":{"duration":0}, 
+        "preslash1":{"duration":0,          
+	  "playSounds" : ["chargeUp1"]  }, 
         "fire1":{
           "duration":0.08, 
           "armRotation":65, 
@@ -179,7 +180,8 @@
           "allowRotate":false, 
           "allowFlip":true
         }, 
-        "preslash4":{"duration":0}, 
+        "preslash4":{"duration":0,          
+	  "playSounds" : ["chargeUp2"]  }, 
         "fire4":{
           "duration":0.15, 
           "armRotation":0, 
@@ -190,7 +192,7 @@
           "allowFlip":true
         }, 
         "wait4":{
-          "duration":0.35,
+          "duration":0.15,
           "armRotation":-20, 
           "weaponRotation":140, 
           "twoHanded":false, 

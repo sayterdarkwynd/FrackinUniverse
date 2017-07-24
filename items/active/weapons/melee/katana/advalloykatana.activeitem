@@ -1,6 +1,6 @@
 {
   "itemName" : "advalloykatana",
-  "price" : 700,
+  "price" : 1700,
   "level" : 5,
   "maxStack" : 1,
   "rarity" : "rare",
@@ -13,7 +13,7 @@
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
   "inventoryIcon" : "advalloykatana.png",
-
+  "collectablesOnPickup" : { "fu_weaponkatana" : "advalloykatana" },
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
@@ -27,24 +27,28 @@
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility":{
-    "fireTime":0.75, 
-    "baseDps":4.25, 
+    "fireTime":0.6, 
+    "baseDps":7.2, 
     "damageConfig":{
       "knockback":20, 
       "statusEffects":["bleedingshort"] 
       }, 
-      "comboSteps":4, 
+      "comboSteps":6, 
       "swooshOffsetRegions":[
         [-0.75, 0.0, 4.25, 5.0], 
         [0, -4.25, 5, 0], 
         [3.0, -0.5, 6.5, 2.0], 
-        [0, -4.25, 5, 0]
+        [0, -4.25, 5, 0],
+        [-0.75, 0.0, 4.25, 5.0],
+        [0, -4.25, 5, 0]     
       ], 
       "stepDamageConfig":[
-        {"baseDamageFactor":0.9, "knockback":10}, 
-        {"baseDamageFactor":1.1, "knockback":15}, 
-        {"baseDamageFactor":0.8, "knockback":10}, 
-        {"baseDamageFactor":1.1, "knockback":20}
+        {"baseDamageFactor":0.5, "knockback":10}, 
+        {"baseDamageFactor":0.8, "knockback":15}, 
+        {"baseDamageFactor":0.5, "knockback":10}, 
+        {"baseDamageFactor":1.0, "knockback":20},
+        {"baseDamageFactor":0.4, "knockback":15},
+        {"baseDamageFactor":0.5, "knockback":10}
         ], 
       "stances":{
 	"idle":{
@@ -57,8 +61,6 @@
 	}, 
 	
 
-        
-        
         "windup1":{
           "duration":0.15, 
           "armRotation":-60, 
@@ -68,7 +70,8 @@
           "allowRotate":false, 
           "allowFlip":true        
         }, 
-        "preslash1":{"duration":0}, 
+        "preslash1":{"duration":0,          
+	  "playSounds" : ["chargeUp1"]  }, 
         "fire1":{
           "duration":0.08, 
           "armRotation":65, 
@@ -181,7 +184,8 @@
           "allowRotate":false, 
           "allowFlip":true
         }, 
-        "preslash4":{"duration":0}, 
+        "preslash4":{"duration":0,          
+	  "playSounds" : ["chargeUp2"]  }, 
         "fire4":{
           "duration":0.15, 
           "armRotation":0, 
@@ -192,7 +196,7 @@
           "allowFlip":true
         }, 
         "wait4":{
-          "duration":0.35,
+          "duration":0.15,
           "armRotation":-20, 
           "weaponRotation":140, 
           "twoHanded":false, 
@@ -200,7 +204,76 @@
           "allowRotate":false, 
           "allowFlip":true, 
           "aimAngle":0
-        }
+        },
+        
+        
+           "windup5":{
+             "duration":0.1, 
+             "armRotation":-140, 
+             "weaponRotation":50, 
+             "weaponOffset":[0,2.4], 
+             "twoHanded":false, 
+             "allowRotate":false, 
+             "allowFlip":true
+           }, 
+           "preslash5":{"duration":0}, 
+           "fire5":{
+             "duration":0.2, 
+             "armRotation":-20, 
+             "weaponRotation":-70, 
+             "weaponOffset":[0,2.4], 
+             "twoHanded":false, 
+             "allowRotate":false, 
+             "allowFlip":true
+           }, 
+           "wait5":{
+             "duration":1.2, 
+             "armRotation":-85, 
+             "weaponRotation":-5, 
+             "allowRotate":false, 
+             "allowFlip":false, 
+             "twoHanded":true, 
+             "weaponOffset":[0,2.4]
+           }, 
+           "windup6":{
+             "duration":0.1, 
+             "armRotation":-40, 
+             "weaponRotation":-70, 
+             "weaponOffset":[0,2.4], 
+             "twoHanded":false, 
+             "allowRotate":false, 
+             "allowFlip":true
+           }, 
+           "preslash6":{
+             "duration":0.025, 
+             "armRotation":-10, 
+             "weaponRotation":-75, 
+             "weaponOffset":[0,2.4], 
+             "twoHanded":false, 
+             "allowRotate":false, 
+             "allowFlip":true,          
+	     "playSounds" : ["chargeUp3"]  
+           }, 
+           "fire6":{
+             "duration":0.2, 
+             "armRotation":0, 
+             "weaponRotation":270, 
+             "weaponOffset":[0,2.4], 
+             "twoHanded":false, 
+             "allowRotate":false, 
+             "allowFlip":true
+           }, 
+          "wait6":{
+          "duration":0.18, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.5]
+          }       
+
+        
       }
     }, 
 

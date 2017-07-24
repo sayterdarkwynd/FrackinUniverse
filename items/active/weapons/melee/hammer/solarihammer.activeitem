@@ -11,7 +11,7 @@
   "itemTags" : ["weapon","melee","hammer","lunari", "upgradeableWeapon"],
   "level" : 2,
   "inventoryIcon" : "solarihammer.png",
-
+  "collectablesOnPickup" : { "fu_weaponhammer" : "solarihammer" },
   "animation" : "hammer.animation",
   "animationParts" : {
     "handle" : "",
@@ -19,7 +19,7 @@
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-3.0, 1.5]
+      "offset" : [-2.0, 1.5]
     }}}},
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
@@ -77,5 +77,7 @@
 
   "critChance" : 3,
   "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 3
 }

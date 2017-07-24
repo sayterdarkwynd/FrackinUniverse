@@ -1,0 +1,139 @@
+{
+  "itemName" : "fubonescythe",
+  "price" : 100,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Perhaps the deadliest curved blade around.",
+  "shortdescription" : "Bone Scythe",
+  "tooltipKind" : "sword2",
+  "category" : "scythe",
+  "twoHanded" : true,
+  "itemTags" : [ "weapon", "melee","densinium", "axe", "scythe", "upgradeableWeapon"],
+
+  "inventoryIcon" : "bonescythe.png",
+  "collectablesOnPickup" : { "fu_weaponscythe" : "fubonescythe" },
+  "animation" : "/items/active/weapons/melee/scythe/largeedgedb.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "bonescythe.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "largeedgedcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.83,
+    "baseDps" : 11,
+    "damageConfig" : {
+      "damageSourceKind" : "slash"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : -10,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup1" : {
+        "duration" : 0.35,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "weaponOffset":[0.4,1.7],
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "preslash1" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "weaponOffset":[0,2.5],
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire1" : {
+        "duration" : 0.15,
+        "armRotation" : -45,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "weaponOffset":[0.25,2.5],
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "wait1" : {
+        "duration" : 0.15,
+        "armRotation" : -45,
+        "weaponRotation" : -35,
+        "allowRotate" : false,
+        "weaponOffset":[0.25,2.5],
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "windup2" : {
+        "duration" : 0.25,
+        "armRotation" : -15,
+        "weaponRotation" : -60,
+        "weaponOffset" : [0.25, 2.5],
+        "twoHanded" : true,
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire2" : {
+        "duration" : 0.20,
+        "armRotation" : -140,
+        "weaponRotation" : 65,
+        "weaponOffset" : [0.25, 1.5],
+        "twoHanded" : true,
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "wait2" : {
+        "duration" : 0.16,
+        "armRotation" : -150,
+        "weaponRotation" : 55,
+        "weaponOffset" : [0.25, 1.0],
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "windup3" : {
+        "duration" : 0.15,
+        "armRotation" : -150,
+        "weaponRotation" : 55,
+        "weaponOffset" : [0.25, 0.5],
+        "twoHanded" : true,
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire3" : {
+        "duration" : 0.15,
+        "armRotation" : -15,
+        "weaponRotation" : -60,
+        "weaponOffset" : [0.25, 2.5],
+        "twoHanded" : true,
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "wait3" : {
+        "duration" : 0.2,
+        "armRotation" : 0,
+        "weaponRotation" : -40,
+        "weaponOffset" : [0.4,1.7],
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true
+      } 
+    }
+  },
+
+  "altAbilityType" : "spearspin",
+
+  "critChance" : 2, 
+  "critBonus" : 11, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

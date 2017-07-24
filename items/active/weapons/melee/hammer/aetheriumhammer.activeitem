@@ -1,0 +1,99 @@
+{
+  "itemName" : "aetheriumhammer",
+  "price" : 12000,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "legendary",
+  "description" : "Slam them with cosmic force
+^cyan;Inflicts Vulnerability^reset;",
+  "shortdescription" : "Aetherium Hammer",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer","upgradeableWeapon"],
+  "inventoryIcon" : "aetheriumhammer.png",
+  "collectablesOnPickup" : { "fu_weaponhammer" : "aetheriumhammerhammer" },
+  "animation" : "hammerglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aetheriumhammer.png",
+    "bladefullbright" : "aetheriumhammerfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { 
+      "parts" : { 
+	      "swoosh" : { 
+		"properties" : {"offset" : [-1, 2]}
+	      },
+	      "blade" : { 
+		"properties" : {"offset" : [-1, 0]}
+	      },      
+	      "bladefullbright" : { 
+		"properties" : {"offset" : [-1, 0]}
+	      }         
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.72,
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "statusEffects" : [ "defenseboostneg20" ],
+       "damageSourceKind" : "cosmichammer"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -10,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.5, 1.75]
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.4, 1.75],
+
+        // Windup animation
+        "idleHammerAngle" : -10,
+        "windupHammerAngle" : 0,
+        "dropHammerAngle" : 60,
+        "bounceHammerAngle" : 55,
+
+        "minWindup" : 0.7,
+        "windupBaseAngle" : -10,
+        "windupAngleRange" : 70
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.4, 2.0]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0.6, 2.0]
+      }
+    }
+  },
+
+  "altAbilityType" : "elementalaura",
+  "altAbility" : { },
+
+  "critChance" : 4,
+  "critBonus" : 7,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 8
+}

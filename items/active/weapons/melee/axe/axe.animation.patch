@@ -12,6 +12,24 @@
   },
   {
     "op" : "add",
+    "path" : "/particleEmitters/shadowswoosh",
+    "value": {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    }
+  },
+  {
+    "op" : "add",
     "path" : "/particleEmitters/radioactiveswoosh",
     "value": {
       "active" : false,
@@ -30,29 +48,11 @@
   },
   {
     "op" : "add",
-    "path" : "/particleEmitters/shadowswoosh",
-    "value": {
-      "active" : false,
-      "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
-      "particles" : [
-        { "particle" : "shadowswoosh1"},
-        { "particle" : "shadowswoosh2"},
-        { "particle" : "shadowswoosh3"},
-        { "particle" : "shadowsmoke1"},
-        { "particle" : "shadowsmoke1"},
-        { "particle" : "shadowsmoke2"}
-      ]
-    }
-  },
-  {
-    "op" : "add",
     "path" : "/particleEmitters/cosmicswoosh",
     "value": {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
+      "emissionRate" : 40,
       "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
       "particles" : [
         { "particle" : "cosmicswoosh1"},

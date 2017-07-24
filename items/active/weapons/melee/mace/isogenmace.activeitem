@@ -1,0 +1,42 @@
+{
+  "itemName" : "isogenmace",
+  "price" : 200,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Masterful crafting, deadly edges.",
+  "shortdescription" : "Isogen Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "isogenmace_ashey.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "isogenmace" },
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "isogenmace_ashey.png",
+    "bladefullbright" : "isogenmace_asheyfullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":8.65,
+    "damageConfig" : {
+      "damageSourceKind" : "icehammer",
+      "statusEffects" : [ "freezefu" ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 4,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

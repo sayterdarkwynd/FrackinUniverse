@@ -1,0 +1,57 @@
+{
+  "itemName" : "fucommonlongsword",
+  "price" : 200,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A powerful one-handed sword.",
+  "shortdescription" : "Common Longsword",
+  "tooltipKind" : "sword",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword"],
+
+  "animation" : "combolongsword.animation",
+  "animationParts" : { },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : [0.8, 1],
+    "baseDps" : [7.5, 8.5]
+  },
+  
+  "critChance" : 1,
+  "critBonus" : 5,   
+  
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swordnames.config:nameGen",
+    "animationParts" : {
+      "blade" : {
+        "path" : "blade/<variant>.png",
+        "variants" : 46,
+        "paletteSwap" : true
+      },
+      "handle" : {
+        "path" : "handle/<variant>.png",
+        "variants" : 35,
+        "paletteSwap" : true
+      }
+    },
+    "altAbilities" : [],
+   
+    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
+    "iconDrawables" : [ "blade", "handle" ]
+  }]
+}

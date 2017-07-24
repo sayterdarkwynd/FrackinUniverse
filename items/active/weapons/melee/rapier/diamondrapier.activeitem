@@ -1,0 +1,34 @@
+{
+  "itemName" : "diamondrapier",
+  "price" : 3600,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A sparkling, diamond rapier.",
+  "shortdescription" : "Diamond Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee","rapier", "upgradeableWeapon" ],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "diamondrapier.png",
+  "collectablesOnPickup" : { "fu_weaponrapier" : "diamondrapier" },
+  "animation" : "piercecombo.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "diamondrapier.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 5.36
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

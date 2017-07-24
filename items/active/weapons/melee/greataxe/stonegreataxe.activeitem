@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon"],
 
   "inventoryIcon" : "stonegreataxe.png",
-
+  "collectablesOnPickup" : { "fu_weapongreataxe" : "stonegreataxe" },
   "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
   "animationParts" : {
     "handle" : "",
@@ -21,6 +21,12 @@
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    },
+    "animatedParts" : { 
+      "parts" : { 
+        "blade" : { "properties" : {"offset" : [0, 0.5]}},
+        "swoosh" : { "properties" : {"offset" : [0, 2]}}    	
+      }
     }
   },
 
@@ -28,7 +34,7 @@
 
   "elementalType" : "physical",
 
-  "primaryAbilityType" : "hammersmash",
+  "primaryAbilityType" : "greataxesmash",
   "primaryAbility" : {
     "fireTime" : 0.8,
     "baseDps" : 9
@@ -39,5 +45,7 @@
   "altAbilityType" : "physicalshockwave",
   "critChance" : 3,
   "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 2
 }

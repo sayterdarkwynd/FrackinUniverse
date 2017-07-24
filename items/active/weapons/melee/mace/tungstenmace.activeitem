@@ -1,0 +1,37 @@
+{
+  "itemName" : "tungstenmace",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Super-useful death dealer.",
+  "shortdescription" : "Tungsten Mace",
+  "tooltipKind" : "sword",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "tungstenmace_sacre.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "tungstenmace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "tungstenmace_sacre.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":8.1
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+  "stunChance" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

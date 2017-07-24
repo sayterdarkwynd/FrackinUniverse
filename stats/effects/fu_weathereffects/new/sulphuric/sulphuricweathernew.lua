@@ -17,7 +17,7 @@ function init()
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = 1
   self.usedIntro = 0
-  
+  self.timerRadioMessage = 0
   --conditionals
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
   self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
@@ -29,30 +29,39 @@ function init()
   script.setUpdateDelta(5)
 end
 
---******* check effect and cancel ************
 function checkEffectValid()
   if world.entityType(entity.id()) ~= "player" then
     deactivateVisualEffects()
     effect.expire()
+	return false;
   end
-	if status.statPositive("sulphuricImmunity") or world.type()=="unknown" then
+  if  (world.type()=="unknown") then
 	  deactivateVisualEffects()
+	  self.usedIntro = nil	
 	  effect.expire()
-	end
-
-	-- checks strength of effect vs resistance
-	if ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
+	  return false;
+  elseif (status.statPositive("sulphuricImmunity")) or ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
 	  deactivateVisualEffects()
-	  effect.expire()   
-	else
+	  self.usedIntro = nil
+	  effect.expire() 
+	  return false;
+  elseif (status.statPositive("sulphuricImmunity")) then
+      deactivateVisualEffects()
+	  self.usedIntro = nil
+	  effect.expire() 
+	  return false
+  else
 	  -- activate visuals and check stats
-	  if not (self.usedIntro) or (self.usedIntro == 0) then 
+  if (self.timerRadioMessage == 0) and not self.usedIntro then
 	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
 	     self.usedIntro = 1
 	     self.timerRadioMessage = 220
-	  end	
-	end	
+    end
+  end
+  return true;
 end
+
+
 
 -- *******************Damage effects
 function setEffectDamage()

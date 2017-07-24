@@ -1,0 +1,39 @@
+{
+  "itemName" : "titaniumbroadsword",
+  "price" : 550,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A lightweight yet strong blade.",
+  "shortdescription" : "Titanium Longsword",
+  "tooltipKind" : "sword",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee", "longsword", "broadsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "titaniumbroadsword.png",
+
+  "animation" : "combolongsword.animation",
+
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "titaniumbroadsword" },
+  
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "titaniumbroadsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.83,
+    "baseDps" : 8.5
+  },
+  
+  "critChance" : 1,
+  "critBonus" : 5,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

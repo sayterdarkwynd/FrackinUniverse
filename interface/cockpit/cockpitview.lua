@@ -194,8 +194,8 @@ function View:render(dt)
   end
 
   local playerPosition = celestial.shipSystemPosition()
-  if playerPosition and vec2.mag(vec2.sub(playerPosition, self.player.position)) > 0.001 then
-    self.player.direction = vec2.norm(vec2.sub(playerPosition, self.player.position))
+  if playerPosition and (not self.player.position or vec2.mag(vec2.sub(playerPosition, self.player.position)) > 0.001) then
+    self.player.direction = vec2.norm(vec2.sub(playerPosition, self.player.position or vec2.mul(playerPosition, 2)))
     self.player.position = playerPosition
   end
   local destination = celestial.shipDestination()
@@ -424,7 +424,7 @@ function View:showPlanetInfo(planet)
 
   self.infoBox.update = function()
     local bookmark = newPlanetBookmark(planet)
-    if existingBookmark(coordinateSystem(planet), bookmark) then
+   if bookmark and existingBookmark(coordinateSystem(planet), bookmark) then
       widget.setText("planetinfo.inner.bookmark", config.getParameter("planetInfoBox.bookmarkButtonCaption.edit"))
       widget.setButtonEnabled("planetinfo.inner.bookmark", true)
     elseif bookmark then
@@ -883,7 +883,7 @@ function View:renderSystem(args, dt)
       View.canvas:drawImage(self.settings.hoverImage, self:sToScreen(position), 1, "white", true)
     end
   end
-  if args.destination and compare(View.universeCamera.position[1],celestial.currentSystem().location[1]) and compare(View.universeCamera.position[2],celestial.currentSystem().location[2]) then
+  if args.destination then
     if args.destination[1] == "orbit" then
       local position = celestial.planetPosition(args.destination[2].target)
       local radius = vec2.mag(args.destination[2].enterPosition) * self.systemCamera.scale
