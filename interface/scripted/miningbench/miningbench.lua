@@ -4,7 +4,7 @@ require "/scripts/interp.lua"
 function init()
   self.itemList = "itemScrollArea.itemList"
 
-  self.upgradeLevel = 10
+  self.upgradeLevel = 20
 
   self.upgradeableWeaponItems = {}
   self.selectedItem = nil

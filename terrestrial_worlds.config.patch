@@ -723,7 +723,7 @@
 {"op" : "add", "path" : "/planetTypes/barren/layers/underground3/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/barren/layers/core/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/barren/layers/surface/dungeons/-", "value" : [0.5, "wreck"] },
-
+{"op" : "add", "path" : "/planetTypes/barren/layers/surface/dungeons/-", "value" : [0.5, "fuwreck"] },
 
     { "op" : "add", 
     "path" : "/planetTypes/alien/layers/surface/secondaryRegions", 
@@ -1263,6 +1263,7 @@
    "path" : "/planetTypes/barren",
    "value" : 
      {
+       "threatRange" : [1, 6],
        "layers" : {
       "space" : {
         "primaryRegion" : [ "elderasteroid", "elderasteroid", "asteroids", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ]
@@ -4289,7 +4290,7 @@
   "path" : "/regionTypes/barren2",
   "value" : 
   {
-      "blockSelector" : [ "remixedSurface" ],
+      "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface"  ],
       "fgCaveSelector" : [ "surfaceCaves" ],    
 
       "biome" : [
@@ -4301,7 +4302,9 @@
   "path" : "/regionTypes/barren3",
   "value" : 
   {
-      "blockSelector" : [ "remixedSurface" ],
+      "caveLiquid" : [  "water", "lava", "poison", "alienjuice" ],
+      "caveLiquidChanceRange" : [20, 100],  
+      "blockSelector" : [ "remixedSpikesSurface", "remixedSwampySurface", "remixedSurface",  "remixedPoolsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],    
 
       "biome" : [
