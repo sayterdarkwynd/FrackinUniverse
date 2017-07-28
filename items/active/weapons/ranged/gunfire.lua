@@ -43,7 +43,7 @@ function GunFire:setCritDamage(damage)
   end
 
   self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
+  self.critChance = (self.critChance  + config.getParameter("shieldCritChance",0) + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
   self.critRoll = math.random(200)
   
   local crit = self.critRoll <= self.critChance
