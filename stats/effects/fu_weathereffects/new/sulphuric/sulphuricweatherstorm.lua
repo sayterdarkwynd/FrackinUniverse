@@ -50,7 +50,7 @@ function checkEffectValid()
       deactivateVisualEffects()
 	  self.usedIntro = nil
 	  effect.expire() 
-	  return false
+	  return false;
   else
 	  -- activate visuals and check stats
   if (self.timerRadioMessage == 0) and not self.usedIntro then
