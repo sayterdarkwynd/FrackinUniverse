@@ -155,7 +155,8 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
 
     if partType ~= "horn" then
       if self.partStatMap[partType] and thisPartConfig.stats then
-        -- ***** FU addition
+        -- ***** FU addition, thanks LoPhatKo for the aid on this!
+        -- load the arms stat table
         thisPartConfig.partParameters.stats = copy(thisPartConfig.stats)
         -- *****
         for stat, fMap in pairs(self.partStatMap[partType]) do
