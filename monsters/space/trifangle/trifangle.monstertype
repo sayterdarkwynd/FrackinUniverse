@@ -1,12 +1,12 @@
 {
-  "type" : "twigun",
-  "shortdescription" : "Twigun",
-  "description" : "A mass-produced autonomous defense turret. It tries very hard not to miss.",
+  "type" : "trifangle",
+  "shortdescription" : "Trifangle",
+  "description" : "An aggressive, pointy space machine. They do have individual personalities - they're just all uniquely angry.",
 
-  "categories" : [ "twigun" ],
+  "categories" : [ "trifangle" ],
   "parts" : [ "body" ],
 
-  "animation" : "twigun.animation",
+  "animation" : "trifangle.animation",
 
   "dropPools" : ["spaceRobot"],
 
@@ -20,114 +20,70 @@
 
     "facingMode" : "transformation",
 
+    "seeThroughLiquid" : false,
     "behaviorConfig" : {
       "damageOnTouch" : true,
-
-      "hurtWaitForGround" : false,
 
       "targetQueryRange" : 50,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 200,
-      "targetOutOfSightTime" : 5.0,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 10.0,
 
-      "spawnActions" : [
-        {
-          "name" : "spawn-ceiling"
-        }
-      ],
-
-      "foundTargetActions" : [
-        {
-          "name" : "action-animate",
-          "parameters" : {
-            "stateType" : "body",
-            "state" : "wake",
-            "animationTime" : 0.5
-          }
-        }
-      ],
-
-      "fleeActions" : [ ],
-
-      "hostileActions" : [
-        {
-          "name" : "action-fire",
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 80,
-            "minimumRange" : 2,
-            "windupTime" : 3.5,
-            "windupState" : "",
-
-            "projectileCount" : 4,
-            "projectileInterval" : 0.05,
-            "projectileType" : "twigunbullet",
-            "projectileParameters" : {
-              "speed" : 40,
-              "power" : 10
-            },
-            "fireOffsets" : [[1.5, 0.625], [1.5, -0.625]],
-            "rotationCenter" : [0.0, 0.75],
-            "fireSound" : "fire",
-            "fireStateType" : "attack",
-            "fireState" : "fire",
-            "fireDelay" : 0.0,
-            "faceTarget" : true,
-            "rotateAim" : true,
-            "holdAim" : true,
-            "damageRepeatGroup" : "",
-
-            "winddownState" : "",
-            "winddownTime" : 0.0
-          }
-        }
-      ],
-
-      "periodicActions" : [ ],
-
-      "approachActions" : [
-      ],
-
-      "followActions" : [
-        {
-          "name" : "approach-teleport"
-        }
-      ],
+      "hurtWaitForGround" : false,
 
       "wanderActions" : [
-      ],
-
-      "concurrentActions" : [
         {
-          "name" : "idle-crawl",
+          "name" : "action-stop",
           "parameters" : {
-            "stopForce" : 500
-          }
-        },
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ""
+            "stopForce" : 20
           }
         }
       ],
 
-      "concurrentHostileActions" : [
-        {
-          "name" : "idle-crawl",
+      "hostileActions" : [
+       {
+          "name" : "action-fire",
+          "cooldown" : 2,
           "parameters" : {
-            "stopForce" : 500
+            "requireLineOfSight" : true,
+            "maximumRange" : 25,
+            "minimumRange" : 10,
+            "windupStopForce" : 0,
+            "faceTarget" : false,
+            "rotateToTarget" : true,
+            "windupState" : "firewindup",
+            "windupTime" : 1.0,
+
+            "projectileType" : "firelasershot",
+            "projectileParameters" : {
+              "speed" : 40,
+              "power" : 25
+            },
+            "fireOffset" : [0, 0],
+            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "fire",
+
+            "winddownStopForce" : 0,
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.2
           }
         },
         {
-          "name" : "action-globaltag",
+          "name" : "approach-burn",
+          "cooldown" : 0.5,
           "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ".aggro"
+            "burnTime" : 0.5,
+            "approachDistance" : 15,
+            "rotateGroup" : "body",
+            "burnState" : "burn",
+            "idleState" : "burnwinddown"
           }
         }
+      ],
+
+      "approachActions" : [
       ],
 
       "deathActions" : [
@@ -146,11 +102,11 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
-      "damage" : 20,
+      "poly" : [ [0.625, 0.9375], [1.125, 0.4375], [1.125, -0.4375], [0.625, -0.9375], [-0.625, -0.9375], [-1.125, -0.4375], [-1.125, 0.4375], [-0.625, 0.9375] ],
+      "damage" : 10,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "impact",
       "knockback" : 20,
       "statusEffects" : [ ]
     },
@@ -158,23 +114,20 @@
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
-    "selfDamagePoly" : [ [1.0, 1.5],  [1.5, 1.0],  [1.5, -1.0],  [1.0, -1.5],  [-1.0, -1.5],  [-1.5, -1.0],  [-1.5, 1.0],  [-1.0, 1.5] ],
-
     "movementSettings" : {
-      "collisionPoly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
+      "collisionPoly" : [ [0.625, 0.9375], [1.125, 0.4375], [1.125, -0.4375], [0.625, -0.9375], [-0.625, -0.9375], [-1.125, -0.4375], [-1.125, 0.4375], [-0.625, 0.9375] ],
 
-      "mass" : 1.0,
+      "mass" : 2.0,
       "walkSpeed" : 4,
       "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "bounceFactor" : 0.25,
+      "groundFriction" : 10,
 
       "airFriction" : 0,
-
-      "airJumpProfile" : {
-        "jumpSpeed" : 45.0,
-        "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.0
-      },
-      "physicsEffectCategories" : ["stationarymonster"]
+      "airForce" : 100,
+      "flySpeed" : 15
     },
 
     "bodyMaterialKind" : "robotic",
@@ -205,16 +158,16 @@
 
       "stats" : {
         "grit" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.25
         },
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.3
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 125
+          "baseValue" : 100
         },
         "protection" : {
           "baseValue" : 0.0
@@ -223,6 +176,15 @@
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
           "baseValue" : 1.0
         },
         "poisonStatusImmunity" : {
@@ -235,22 +197,22 @@
           "baseValue" : 0
         },
         "electricResistance" : {
-          "baseValue" : -0.35
+          "baseValue" : 0
         },
         "fireResistance" : {
-          "baseValue" : 0.5
+          "baseValue" : 0
         },
         "iceResistance" : {
-          "baseValue" : 0.5
+          "baseValue" : 0
         },
         "cosmicResistance" : {
           "baseValue" : 0
         },
         "shadowResistance" : {
-          "baseValue" : 1
+          "baseValue" : 0
         },
         "radioactiveResistance" : {
-          "baseValue" : 1
+          "baseValue" : 0
         }
       },
 

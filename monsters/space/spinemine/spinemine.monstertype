@@ -1,14 +1,14 @@
 {
-  "type" : "omnicannon",
-  "shortdescription" : "Omnicannon",
-  "description" : "A hivemind of worm-like parasites interwoven into an old energy cannon.",
+  "type" : "spinemine",
+  "shortdescription" : "Spinemine",
+  "description" : "Explodes whenever it meets someone new. No-one knows how they aren't extinct already.",
 
-  "categories" : [ "omnicannon" ],
+  "categories" : [ "spinemine" ],
   "parts" : [ "body" ],
 
-  "animation" : "omnicannon.animation",
+  "animation" : "spinemine.animation",
 
-  "dropPools" : [  ],
+  "dropPools" : ["spaceRobotPassive"],
 
   "baseParameters" : {
     "scripts" : [
@@ -18,116 +18,67 @@
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
 
-    "facingMode" : "transformation",
-
+    "seeThroughLiquid" : false,
     "behaviorConfig" : {
-      "damageOnTouch" : true,
+      "damageOnTouch" : false,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 25,
+      "targetOutOfSightTime" : 0.0,
 
       "hurtWaitForGround" : false,
 
-      "targetQueryRange" : 50,
-      "targetOnDamage" : true,
-      "keepTargetInSight" : true,
-      "keepTargetInRange" : 200,
-      "targetOutOfSightTime" : 5.0,
-
-      "spawnActions" : [
+      "wanderActions" : [
         {
-          "name" : "spawn-ceiling"
-        }
-      ],
-
-      "foundTargetActions" : [
-        {
-          "name" : "action-animate",
+          "name" : "action-stop",
           "parameters" : {
-            "stateType" : "body",
-            "state" : "wake",
-            "animationTime" : 0.5
+            "stopForce" : 10
           }
         }
       ],
-
-      "fleeActions" : [ ],
 
       "hostileActions" : [
         {
-          "name" : "action-fire",
+          "name" : "action-suicide",
+          "cooldown" : 0,
           "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 70,
-            "minimumRange" : 2,
-            "windupTime" : 1.3,
-            "windupState" : "",
-
-            "projectileCount" : 1,
-            "projectileType" : "omnicannonbullet",
-            "projectileParameters" : {
-              "speed" : 30,
-              "power" : 20
-            },
-
-            "fireOffset" : [1.5, -0.125],
-            "rotationCenter" : [0.0, 0.5],
-            "fireSound" : "fire",
-            "fireState" : "fire",
-            "fireDelay" : 0.0,
-            "faceTarget" : true,
-            "rotateAim" : true,
-
-            "winddownState" : "",
-            "winddownTime" : 0.0
+            "minimumRange" : 0,
+            "maximumRange" : 7,
+            "onGround" : false,
+            "windupTime" : 0.05,
+            "windupStopForce" : 0,
+            "windupState" : ""
           }
         }
       ],
-
-      "periodicActions" : [ ],
 
       "approachActions" : [
-      ],
-
-      "followActions" : [
         {
-          "name" : "approach-teleport"
-        }
-      ],
-
-      "wanderActions" : [
-      ],
-
-      "concurrentActions" : [
-        {
-          "name" : "idle-crawl",
+          "name" : "approach-fly",
           "parameters" : {
-            "stopForce" : 500
-          }
-        },
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ""
-          }
-        }
-      ],
-
-      "concurrentHostileActions" : [
-        {
-          "name" : "idle-crawl",
-          "parameters" : {
-            "stopForce" : 500
-          }
-        },
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ".aggro"
+            "flyState" : "windup",
+            "idleState" : "winddown"
           }
         }
       ],
 
       "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "spacemineexplosion",
+            "projectileParameters" : {
+              "power" : 50,
+              "damageTeam" : { "type" : "enemy", "team" : 0 }
+            },
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        },
         {
           "name" : "action-projectile",
           "parameters" : {
@@ -142,41 +93,30 @@
       ]
     },
 
-    "touchDamage" : {
-      "poly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
-      "damage" : 10,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "slash",
-      "knockback" : 20,
-      "statusEffects" : [ ]
-    },
-
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
-    "selfDamagePoly" : [ [1.0, 1.5],  [1.5, 1.0],  [1.5, -1.0],  [1.0, -1.5],  [-1.0, -1.5],  [-1.5, -1.0],  [-1.5, 1.0],  [-1.0, 1.5] ],
-
     "movementSettings" : {
-      "collisionPoly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
+      "collisionPoly" : [ [0.75, 1.5], [1.5, 0.75], [1.5, -0.75], [0.75, -1.5], [-0.75, -1.5], [-1.5, -0.75], [-1.5, 0.75], [-0.75, 1.5] ]	,
 
-      "mass" : 1.0,
+      "mass" : 2.0,
       "walkSpeed" : 4,
       "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "bounceFactor" : 0,
+      "groundFriction" : 10,
 
       "airFriction" : 0,
+      "airForce" : 10,
+      "flySpeed" : 7,
 
-      "airJumpProfile" : {
-        "jumpSpeed" : 45.0,
-        "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.0
-      },
       "physicsEffectCategories" : ["stationarymonster"]
     },
 
     "bodyMaterialKind" : "robotic",
 
-    "knockoutTime" : 0.3,
+    "knockoutTime" : 0.1,
     "knockoutAnimationStates" : {
       "damage" : "stunned"
     },
@@ -205,13 +145,13 @@
           "baseValue" : 1.0
         },
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 125
+          "baseValue" : 200
         },
         "protection" : {
           "baseValue" : 0.0
@@ -220,6 +160,15 @@
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
           "baseValue" : 1.0
         },
         "poisonStatusImmunity" : {
@@ -232,7 +181,7 @@
           "baseValue" : 0
         },
         "electricResistance" : {
-          "baseValue" : -0.2
+          "baseValue" : 0
         },
         "fireResistance" : {
           "baseValue" : 0

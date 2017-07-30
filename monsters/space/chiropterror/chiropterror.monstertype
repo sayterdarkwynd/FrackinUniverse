@@ -1,12 +1,12 @@
 {
-  "type" : "twigun",
-  "shortdescription" : "Twigun",
-  "description" : "A mass-produced autonomous defense turret. It tries very hard not to miss.",
+  "type" : "chiropterror",
+  "shortdescription" : "Chiropterror",
+  "description" : "Its internal nitrogen reactor is constantly overloading, causing it to trail explosive bolts.",
 
-  "categories" : [ "twigun" ],
+  "categories" : [ "chiropterror" ],
   "parts" : [ "body" ],
 
-  "animation" : "twigun.animation",
+  "animation" : "chiropterror.animation",
 
   "dropPools" : ["spaceRobot"],
 
@@ -20,22 +20,17 @@
 
     "facingMode" : "transformation",
 
+    "seeThroughLiquid" : false,
     "behaviorConfig" : {
       "damageOnTouch" : true,
-
-      "hurtWaitForGround" : false,
 
       "targetQueryRange" : 50,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 200,
-      "targetOutOfSightTime" : 5.0,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 10.0,
 
-      "spawnActions" : [
-        {
-          "name" : "spawn-ceiling"
-        }
-      ],
+      "hurtWaitForGround" : false,
 
       "foundTargetActions" : [
         {
@@ -43,89 +38,48 @@
           "parameters" : {
             "stateType" : "body",
             "state" : "wake",
-            "animationTime" : 0.5
+            "animationTime" : 0.4
           }
-        }
-      ],
-
-      "fleeActions" : [ ],
-
-      "hostileActions" : [
-        {
-          "name" : "action-fire",
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 80,
-            "minimumRange" : 2,
-            "windupTime" : 3.5,
-            "windupState" : "",
-
-            "projectileCount" : 4,
-            "projectileInterval" : 0.05,
-            "projectileType" : "twigunbullet",
-            "projectileParameters" : {
-              "speed" : 40,
-              "power" : 10
-            },
-            "fireOffsets" : [[1.5, 0.625], [1.5, -0.625]],
-            "rotationCenter" : [0.0, 0.75],
-            "fireSound" : "fire",
-            "fireStateType" : "attack",
-            "fireState" : "fire",
-            "fireDelay" : 0.0,
-            "faceTarget" : true,
-            "rotateAim" : true,
-            "holdAim" : true,
-            "damageRepeatGroup" : "",
-
-            "winddownState" : "",
-            "winddownTime" : 0.0
-          }
-        }
-      ],
-
-      "periodicActions" : [ ],
-
-      "approachActions" : [
-      ],
-
-      "followActions" : [
-        {
-          "name" : "approach-teleport"
         }
       ],
 
       "wanderActions" : [
-      ],
-
-      "concurrentActions" : [
         {
-          "name" : "idle-crawl",
+          "name" : "action-stop",
           "parameters" : {
-            "stopForce" : 500
-          }
-        },
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ""
+            "stopForce" : 20
           }
         }
       ],
 
+      "approachActions" : [
+        {
+          "name" : "approach-leadorbit",
+          "parameters" : {
+            "flyState" : "fly",
+            "idleState" : "idle",
+            "distance" : 20,
+            "tangentialSpeed" : 20,
+            "tangentialForce" : 40
+          }
+        }
+      ],
+
+      "concurrentActions" : [
+      ],
+
       "concurrentHostileActions" : [
         {
-          "name" : "idle-crawl",
+          "name" : "action-projectile",
           "parameters" : {
-            "stopForce" : 500
-          }
-        },
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ".aggro"
+            "projectileCount" : 1,
+            "projectileType" : "chiropterrortrail",
+            "projectileParameters" : {
+              "power" : 8
+            },
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0.0]
           }
         }
       ],
@@ -146,11 +100,11 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
+      "poly" : [ [0.5, 1.5], [1.5, 0.5], [1.5, -0.5], [0.5, -1.5], [-0.5, -1.5], [-1.5, -0.5], [-1.5, 0.5], [-0.5, 1.5] ],
       "damage" : 20,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "impact",
       "knockback" : 20,
       "statusEffects" : [ ]
     },
@@ -158,23 +112,22 @@
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
-    "selfDamagePoly" : [ [1.0, 1.5],  [1.5, 1.0],  [1.5, -1.0],  [1.0, -1.5],  [-1.0, -1.5],  [-1.5, -1.0],  [-1.5, 1.0],  [-1.0, 1.5] ],
+    "selfDamagePoly" : [ [0.75, 1.75], [1.75, 0.75], [1.75, -0.75], [0.75, -1.75], [-0.75, -1.75], [-1.75, -0.75], [-1.75, 0.75], [-0.75, 1.75] ],
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
+      "collisionPoly" : [ [0.5, 1.5], [1.5, 0.5], [1.5, -0.5], [0.5, -1.5], [-0.5, -1.5], [-1.5, -0.5], [-1.5, 0.5], [-0.5, 1.5] ],
 
-      "mass" : 1.0,
+      "mass" : 2.0,
       "walkSpeed" : 4,
       "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "bounceFactor" : 0.25,
+      "groundFriction" : 10,
 
       "airFriction" : 0,
-
-      "airJumpProfile" : {
-        "jumpSpeed" : 45.0,
-        "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.0
-      },
-      "physicsEffectCategories" : ["stationarymonster"]
+      "airForce" : 120,
+      "flySpeed" : 40
     },
 
     "bodyMaterialKind" : "robotic",
@@ -205,16 +158,16 @@
 
       "stats" : {
         "grit" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.25
         },
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.3
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 125
+          "baseValue" : 75
         },
         "protection" : {
           "baseValue" : 0.0
@@ -225,32 +178,41 @@
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0
+          "baseValue" : 0.2
         },
         "poisonResistance" : {
-          "baseValue" : 0
+          "baseValue" : 1.0
         },
         "electricResistance" : {
-          "baseValue" : -0.35
+          "baseValue" : 0.4
         },
         "fireResistance" : {
-          "baseValue" : 0.5
-        },
-        "iceResistance" : {
-          "baseValue" : 0.5
-        },
-        "cosmicResistance" : {
           "baseValue" : 0
         },
-        "shadowResistance" : {
+        "iceResistance" : {
+          "baseValue" : 0
+        },
+        "cosmicResistance" : {
           "baseValue" : 1
         },
+        "shadowResistance" : {
+          "baseValue" : 0.99
+        },
         "radioactiveResistance" : {
-          "baseValue" : 1
+          "baseValue" : 0.8
         }
       },
 

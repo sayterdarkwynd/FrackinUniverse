@@ -1,18 +1,40 @@
 {
-  "type" : "twigun",
-  "shortdescription" : "Twigun",
-  "description" : "A mass-produced autonomous defense turret. It tries very hard not to miss.",
+  "type" : "rustick",
+  "shortdescription" : "Rustick",
+  "description" : "If they don't make a connection with another Rustick, they can get quite lonely.",
 
-  "categories" : [ "twigun" ],
+  "categories" : [ "rustick" ],
   "parts" : [ "body" ],
 
-  "animation" : "twigun.animation",
+  "animation" : "rustick.animation",
 
-  "dropPools" : ["spaceRobot"],
+  "dropPools" : ["spaceRobotPassive"],
 
   "baseParameters" : {
+    "aggressive" : false,
+
     "scripts" : [
       "/monsters/monster.lua"
+    ],
+
+    "animationScripts" : [
+      "/items/active/effects/chain.lua"
+    ],
+
+    "chains" : [
+      {
+        "segmentImage" : "/monsters/space/rustick/beam.png",
+        "segmentSize" : 1,
+        "fullbright" : true,
+        "sourcePart" : "beam",
+        "endPart" : "beam",
+        "jitter" : 0.0625,
+        "waveform" : {
+          "movement" : 20.0,
+          "amplitude" : 0.0625,
+          "frequency" : 3.0
+        }
+      }
     ],
 
     "behavior" : "monster",
@@ -26,68 +48,22 @@
       "hurtWaitForGround" : false,
 
       "targetQueryRange" : 50,
-      "targetOnDamage" : true,
+      "targetOnDamage" : false,
+      "targetOnNotification" : false,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 200,
       "targetOutOfSightTime" : 5.0,
 
-      "spawnActions" : [
-        {
-          "name" : "spawn-ceiling"
-        }
-      ],
-
       "foundTargetActions" : [
-        {
-          "name" : "action-animate",
-          "parameters" : {
-            "stateType" : "body",
-            "state" : "wake",
-            "animationTime" : 0.5
-          }
-        }
       ],
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [
-        {
-          "name" : "action-fire",
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 80,
-            "minimumRange" : 2,
-            "windupTime" : 3.5,
-            "windupState" : "",
-
-            "projectileCount" : 4,
-            "projectileInterval" : 0.05,
-            "projectileType" : "twigunbullet",
-            "projectileParameters" : {
-              "speed" : 40,
-              "power" : 10
-            },
-            "fireOffsets" : [[1.5, 0.625], [1.5, -0.625]],
-            "rotationCenter" : [0.0, 0.75],
-            "fireSound" : "fire",
-            "fireStateType" : "attack",
-            "fireState" : "fire",
-            "fireDelay" : 0.0,
-            "faceTarget" : true,
-            "rotateAim" : true,
-            "holdAim" : true,
-            "damageRepeatGroup" : "",
-
-            "winddownState" : "",
-            "winddownTime" : 0.0
-          }
-        }
-      ],
+      "hostileActions" : [ ],
 
       "periodicActions" : [ ],
 
-      "approachActions" : [
-      ],
+      "approachActions" : [ ],
 
       "followActions" : [
         {
@@ -100,16 +76,16 @@
 
       "concurrentActions" : [
         {
-          "name" : "idle-crawl",
+          "name" : "action-pairbeam",
           "parameters" : {
-            "stopForce" : 500
+            "monsterType" : "rustick",
+            "range" : 50
           }
         },
         {
-          "name" : "action-globaltag",
+          "name" : "idle-crawl",
           "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ""
+            "stopForce" : 500
           }
         }
       ],
@@ -119,13 +95,6 @@
           "name" : "idle-crawl",
           "parameters" : {
             "stopForce" : 500
-          }
-        },
-        {
-          "name" : "action-globaltag",
-          "parameters" : {
-            "tagName" : "aggro",
-            "tag" : ".aggro"
           }
         }
       ],
@@ -145,9 +114,25 @@
       ]
     },
 
+    "animationDamageParts" : {
+      "beam" : {
+        "anchorPart" : "beam",
+        "checkLineCollision" : true,
+        "bounces" : 0,
+        "damageSource" : {
+          "line" : [ [0.0, 0.0], [1.0, 0.0]],
+          "damage" : 80,
+          "damageRepeatTimeout" : 0.25,
+          "damageSourceKind" : "fireplasma",
+          "teamType" : "enemy",
+          "teamNumber" : 2
+        }
+      }
+    },
+
     "touchDamage" : {
-      "poly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
-      "damage" : 20,
+      "poly" : [ [0.75, 1.5], [1.5, 0.75], [1.5, -0.75], [0.75, -1.5], [-0.75, -1.5], [-1.5, -0.75], [-1.5, 0.75], [-0.75, 1.5] ],
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -158,10 +143,8 @@
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
-    "selfDamagePoly" : [ [1.0, 1.5],  [1.5, 1.0],  [1.5, -1.0],  [1.0, -1.5],  [-1.0, -1.5],  [-1.5, -1.0],  [-1.5, 1.0],  [-1.0, 1.5] ],
-
     "movementSettings" : {
-      "collisionPoly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
+      "collisionPoly" : [ [0.75, 1.5], [1.5, 0.75], [1.5, -0.75], [0.75, -1.5], [-0.75, -1.5], [-1.5, -0.75], [-1.5, 0.75], [-0.75, 1.5] ],
 
       "mass" : 1.0,
       "walkSpeed" : 4,
@@ -214,7 +197,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 125
+          "baseValue" : 150
         },
         "protection" : {
           "baseValue" : 0.0
@@ -223,6 +206,15 @@
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
           "baseValue" : 1.0
         },
         "poisonStatusImmunity" : {
@@ -235,22 +227,22 @@
           "baseValue" : 0
         },
         "electricResistance" : {
-          "baseValue" : -0.35
+          "baseValue" : 0
         },
         "fireResistance" : {
-          "baseValue" : 0.5
+          "baseValue" : 0
         },
         "iceResistance" : {
-          "baseValue" : 0.5
+          "baseValue" : 0
         },
         "cosmicResistance" : {
           "baseValue" : 0
         },
         "shadowResistance" : {
-          "baseValue" : 1
+          "baseValue" : 0
         },
         "radioactiveResistance" : {
-          "baseValue" : 1
+          "baseValue" : 0
         }
       },
 
