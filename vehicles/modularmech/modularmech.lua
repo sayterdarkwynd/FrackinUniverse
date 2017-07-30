@@ -136,7 +136,7 @@ function init()
   storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
-  
+   
   -- check for environmental hazards / protection
 
   local hazards = config.getParameter("hazardVulnerabilities")

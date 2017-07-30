@@ -60,7 +60,7 @@ function MechPartManager:new()
     },
     leftArm = {
       power = {
-	mechPower = "mechPowerModifier"       
+	--mechPower = "mechPowerModifier"       
       },
       energy = {
         energyDrain = "mechArmEnergyDrain"
@@ -68,7 +68,7 @@ function MechPartManager:new()
     },
     rightArm = {
       power = {
-	mechPower = "mechPowerModifier"       
+	--mechPower = "mechPowerModifier"       
       },
       energy = {
         energyDrain = "mechArmEnergyDrain"
