@@ -106,18 +106,12 @@ function init()
 
   self.protection = self.parts.body.protection
 
-  -- FU adjustments ***********************************************************************
-  storage.mechBodyTier =  self.parts.body.mechTier
-
   -- setup boosters
 
   self.airControlSpeed = self.parts.booster.airControlSpeed
   self.airControlForce = self.parts.booster.airControlForce
   self.flightControlSpeed = self.parts.booster.flightControlSpeed
   self.flightControlForce = self.parts.booster.flightControlForce
-
-  -- FU adjustments ***********************************************************************
-  storage.mechBoosterTier = self.parts.booster.mechTier
   
   -- setup legs
 
@@ -127,9 +121,6 @@ function init()
   self.jumpAirControlSpeed = self.parts.legs.jumpAirControlSpeed
   self.jumpAirControlForce = self.parts.legs.jumpAirControlForce
   self.jumpBoostTime = self.parts.legs.jumpBoostTime
-  
-  -- FU adjustments ***********************************************************************
-  storage.mechLegTier = self.parts.legs.mechTier
   
   -- setup arms
 
@@ -145,21 +136,6 @@ function init()
   storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
-
-
-  -- ******************************
-  -- FU Power Bonus (Tiers) for mechs
-  
-  -- if we dont have a mechTier on the part, assume its tier 1, so that no matter what a mech is always t3 for damage purposes
-  
-  self.mechTier = 3
- -- self.mechTier= self.mechTier --+ ( ( self.parts.legs.mechTier /100 ) + ( self.parts.body.mechTier/50 ) + ( self.parts.booster.mechTier /100 ) ) * 100
-  self.powerBonus = 1+ self.mechTier
-
-  self.parts.leftArm.projectileParameters.power = self.parts.leftArm.projectileParameters.power * self.powerBonus
-  self.parts.rightArm.projectileParameters.power = self.parts.rightArm.projectileParameters.power * self.powerBonus
-  sb.logInfo("power bonus = "..self.powerBonus)
-  sb.logInfo("power bonus 2 = "..self.parts.leftArm.projectileParameters.power)
   
   -- check for environmental hazards / protection
 
@@ -227,7 +203,7 @@ function init()
   self.crouch = 0.0 -- 0.0 ~ 1.0
   self.crouchTarget = 0.0
   self.crouchCheckMax = 7.0
-  self.bodyCrouchMax = -5.0
+  self.bodyCrouchMax = -4.0
   self.hipCrouchMax = 2.0
   
   self.crouchSettings = config.getParameter("crouchSettings")
@@ -291,7 +267,7 @@ function update(dt)
     return
   end
 
-  setFlightMode(world.gravity(mcontroller.position()) == 0)
+  setFlightMode(world.gravity(mcontroller.position()) == 0)-- or world.liquidAt(mcontroller.position()))--lpk:add liquidMovement
 
   -- update positions and movement
 
@@ -409,12 +385,12 @@ function update(dt)
         end
 
         if onGround then
-          if newControls.right then
+          if newControls.right and not newControls.left then 
             mcontroller.approachXVelocity(self.groundSpeed, self.groundControlForce)
             walking = true
           end
 
-          if newControls.left then
+          if newControls.left and not newControls.right then
             mcontroller.approachXVelocity(-self.groundSpeed, self.groundControlForce)
             walking = true
           end
@@ -439,20 +415,18 @@ function update(dt)
 		  self.crouchTarget = 0.0
 		  self.crouchOn = false
 		  
-		  while dist > 0 do
-			if (
-			world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {-2, dist})) or
-			world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {0, dist})) or
-			world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {2, dist}))
-			  )
-			  or newControls.down
-			then
-			  self.crouchOn = true
-			  self.crouchTarget = 1.0 - dist / self.crouchCheckMax
-			else
-			  break
-			end
-			dist = dist - 1
+		  while dist >= 0 do
+        if (newControls.down and not self.fallThroughSustain) or (
+          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {-2.5, dist})) or
+          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {0, dist})) or
+          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {2.5, dist}))
+          ) then
+          self.crouchOn = true
+          self.crouchTarget = 1.0 - dist / self.crouchCheckMax
+        else
+          break
+        end
+        dist = dist - 1
 		  end
 		  --end
 		  
@@ -460,11 +434,8 @@ function update(dt)
           local controlSpeed = self.jumpBoostTimer > 0 and self.jumpAirControlSpeed or self.airControlSpeed
           local controlForce = self.jumpBoostTimer > 0 and self.jumpAirControlForce or self.airControlForce
 
-		  local boostSpeedMult = 1.0
-		  if self.doubleTabBoostJump then
-			boostSpeedMult = self.doubleTabBoostSpeedMultTarget
-		  end
-		  
+          local boostSpeedMult = self.doubleTabBoostJump and self.doubleTabBoostSpeedMultTarget or 1.0
+		  		  
           if newControls.right then
             mcontroller.approachXVelocity(controlSpeed * boostSpeedMult, controlForce)
             boost({1, 0})
@@ -504,17 +475,16 @@ function update(dt)
       oldControls = self.lastControls
 
       self.aimPosition = nil
+      if not self.flightMode then -- crouch when unoccupied
+        self.crouchTarget = 0.5
+        self.crouchOn = true
+      end
     end
   end
   
   --crouch code is here
-  self.crouch = self.crouch + (self.crouchTarget - self.crouch) * 0.1
-  
-  if self.crouchOn then
-	mcontroller.applyParameters(self.crouchSettings)
-  else
-	mcontroller.applyParameters(self.noneCrouchSettings)
-  end
+  --self.crouch = self.crouch + (self.crouchTarget - self.crouch) * 0.1
+    self.crouch = util.lerp(0.1,self.crouch,self.crouchTarget) -- 
   --end
 
   -- update damage team (don't take damage without a driver)
@@ -537,8 +507,24 @@ function update(dt)
 
   -- decay and check energy
 
+--  if self.driverId then
+--    storage.energy = math.max(0, storage.energy - self.energyDrain * dt)
+--  end
+-- lpk - regen while idle, no drain while coasting
   if self.driverId then
-    storage.energy = math.max(0, storage.energy - self.energyDrain * dt)
+    local hasTouched = function (controls)
+      for _,control in pairs(controls) do
+        if control then return true end
+      end
+      return false
+    end
+    local energyDrain = self.energyDrain
+    if not hasTouched(newControls) and not hasTouched(oldControls) then --(not hasFired) then 
+      eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
+      energyDrain = -energyDrain*eMult
+    end
+    storage.energy = math.min(math.max(0, storage.energy - energyDrain * dt),self.energyMax)
+    world.debugText("%s / %s\n%s%%",storage.energy,self.energyMax,(storage.energy/self.energyMax)*100,{newPosition[1]-1.5,newPosition[2]+5},"white")
   end
 
   local inLiquid = world.liquidAt(mcontroller.position())
@@ -574,6 +560,12 @@ function update(dt)
         mcontroller.resetParameters(self.movementSettings)
       end
     end
+
+  if self.crouchOn then --lpk - dont set while in 0g
+	mcontroller.applyParameters(self.crouchSettings)
+  else
+	mcontroller.applyParameters(self.noneCrouchSettings)
+  end
 
     if self.fallThroughTimer > 0 or self.fallThroughSustain then
       mcontroller.applyParameters({ignorePlatformCollision = true})
@@ -646,6 +638,8 @@ function update(dt)
     animator.resetTransformationGroup("hips")
     local hipsOffset = math.max(-0.375, math.min(0, math.min(legs.front.offset[2] + 0.25, legs.back.offset[2] + 0.25))) + (self.crouch * self.hipCrouchMax)
     animator.translateTransformationGroup("hips", {0, hipsOffset})
+      world.debugPoint(vec2.add(mcontroller.position(),{0, hipsOffset}),"green")
+      world.debugPoint(mcontroller.position(),"yellow")
   end
 
   -- update and animate arms

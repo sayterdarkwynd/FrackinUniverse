@@ -28,6 +28,7 @@ function MechArm:update(dt)
 end
 
 function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, crouchValue)
+  self.crouchValue = crouchValue -- lpk: save crouch for use in shoulderPosition()
   self.driverId = driverId
   self.isFiring = isFiring
   self.wasFiring = wasFiring
@@ -35,7 +36,8 @@ function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, faci
   if self.frontPartImages or self.backPartImages then
     self:updateAnimationSide(facingDirection)
   end
-  self:updateAimInfo(aimPosition, facingDirection, crouchValue)
+  self:updateAimInfo(aimPosition, facingDirection)
+  world.debugPoint(self:shoulderPosition(),"green")
 end
 
 function MechArm:updateAnimationSide(facingDirection)
@@ -46,15 +48,15 @@ function MechArm:updateAnimationSide(facingDirection)
 end
 
 function MechArm:shoulderPosition()
-  return vec2.add(mcontroller.position(), self.shoulderOffset)
+  return vec2.add(mcontroller.position(), vec2.add(self.shoulderOffset, {0, self.crouchValue or 0}))--lpk: apply crouch here for arm script use
 end
 
-function MechArm:updateAimInfo(aimPosition, facingDirection, crouchValue)
+function MechArm:updateAimInfo(aimPosition, facingDirection)
   if aimPosition and facingDirection and not self.aimLocked then
     self.aimPosition = aimPosition
     self.facingDirection = facingDirection
 
-    local shoulderPos = vec2.add( self:shoulderPosition(), {0, crouchValue})
+    local shoulderPos = self:shoulderPosition()
     local baseAimVector = world.distance(aimPosition, shoulderPos)
     local aimAngle = vec2.angle(baseAimVector)
 
