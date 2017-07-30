@@ -1,4 +1,70 @@
 [
+	{ "op" : "replace", "path" : "/frontFootOffset", "value" : [-0.25, -4.0] },
+	{ "op" : "replace", "path" : "/backFootOffset", "value" : [0.375, -4.0] },
+	{ "op" : "replace", "path" : "/reachGroundDistance", "value" : [1.0, -1.0] },
+	{ "op" : "replace", "path" : "/legRadius", "value" : 0.825 },
+	
+	{
+		"op" : "replace", "path" : "/movementSettings/collisionPoly",
+		"value" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+		]
+	},
+	
+	{
+		"op" : "replace", "path" : "/damageSources/bumperGround/poly",
+		"value" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+		]
+	},
+	
+	{
+		"op" : "add", "path" : "/noneCrouchSettings",
+		"value" : {
+			"collisionPoly" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+			]
+		}
+	},
+	
+	{
+		"op" : "add", "path" : "/crouchSettings",
+		"value" : {
+			"collisionPoly" : [
+				[-2.625, -1.25],
+				[-0.125, -3.625],
+				[0.125, -3.625],
+				[2.625, -1.25],
+				[2.625, 0.0],
+				[0.875, 1.125],
+				[-0.875, 1.125],
+				[-2.625, 0.0]
+			]
+		}
+	},
+	
+	
   {
     "op": "add",
     "path": "/loungePositions/seat/statusEffects/2",
