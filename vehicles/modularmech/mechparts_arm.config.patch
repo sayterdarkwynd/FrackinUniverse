@@ -672,6 +672,54 @@
   
   {
     "op": "add",
+    "path": "/fumechirradium",
+    "value": {
+      "stats": {
+        "power": 4,
+        "energy": 5
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
+        "armClass": "GatlingArm",
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [5.2,0],
+        "extendTime": 0.5,
+        "fireTime": 0.3,
+        "projectileType": "irradiummecharm",
+
+        "projectileInaccuracy" : 0.2,
+        "projectileParameters": {
+          "power": 4
+        }
+      },
+      "partImages": {
+        "<armName>": "arm/fubeamrifle.png",
+        "<armName>Fullbright": "arm/fubeamriflefullbright.png"
+      },
+      "defaultPrimaryColors": [
+        "5f5b64",
+        "444248",
+        "2f2e32",
+        "252027"
+      ],
+      "defaultSecondaryColors": [
+        "dbf6ff",
+        "a6e7ff",
+        "67d7ff",
+        "15b9f4"
+      ],
+      "animationCustom": {
+        "sounds": {
+          "<armName>Fire": [
+            "/sfx/weapons/irradiumrifle.ogg"
+          ]
+        }
+      }
+    }
+  },
+  
+  {
+    "op": "add",
     "path": "/fumechdensinium",
     "value": {
       "stats": {
