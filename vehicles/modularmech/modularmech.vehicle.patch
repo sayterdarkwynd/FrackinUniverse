@@ -1,4 +1,70 @@
 [
+	{ "op" : "replace", "path" : "/frontFootOffset", "value" : [-0.25, -4.0] },
+	{ "op" : "replace", "path" : "/backFootOffset", "value" : [0.375, -4.0] },
+	{ "op" : "replace", "path" : "/reachGroundDistance", "value" : [1.0, -1.0] },
+	{ "op" : "replace", "path" : "/legRadius", "value" : 0.825 },
+	
+	{
+		"op" : "replace", "path" : "/movementSettings/collisionPoly",
+		"value" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+		]
+	},
+	
+	{
+		"op" : "replace", "path" : "/damageSources/bumperGround/poly",
+		"value" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+		]
+	},
+	
+	{
+		"op" : "add", "path" : "/noneCrouchSettings",
+		"value" : {
+			"collisionPoly" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+			]
+		}
+	},
+	
+	{
+		"op" : "add", "path" : "/crouchSettings",
+		"value" : {
+			"collisionPoly" : [
+				[-2.625, -1.25],
+				[-0.125, -3.625],
+				[0.125, -3.625],
+				[2.625, -1.25],
+				[2.625, 0.0],
+				[0.875, 1.125],
+				[-0.875, 1.125],
+				[-2.625, 0.0]
+			]
+		}
+	},
+	
+	
   {
     "op": "add",
     "path": "/loungePositions/seat/statusEffects/2",
@@ -60,7 +126,7 @@
     "path": "/hazardVulnerabilities/gasworld1",
     "value": {
       "energyDrain": 30,
-      "message": "biomeradiation_mech"
+      "message": "biomepressure_mech"
     }
   },
   {
@@ -68,7 +134,7 @@
     "path": "/hazardVulnerabilities/gasworld2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeradiation_mech"
+      "message": "biomepressure_mech"
     }
   },
   {
@@ -76,7 +142,7 @@
     "path": "/hazardVulnerabilities/gasworld3",
     "value": {
       "energyDrain": 30,
-      "message": "biomeradiation_mech"
+      "message": "biomepressure_mech"
     }
   },
   {
@@ -84,7 +150,7 @@
     "path": "/hazardVulnerabilities/aetherweathernew",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -92,7 +158,7 @@
     "path": "/hazardVulnerabilities/aetherweathernew2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -100,7 +166,7 @@
     "path": "/hazardVulnerabilities/aetherweathernew3",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -108,7 +174,7 @@
     "path": "/hazardVulnerabilities/ffbiomecold1",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomecold_mech"
     }
   },
   {
@@ -116,7 +182,7 @@
     "path": "/hazardVulnerabilities/ffbiomecold2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomecold_mech"
     }
   },
   {
@@ -124,7 +190,7 @@
     "path": "/hazardVulnerabilities/ffbiomecold3",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomecold_mech"
     }
   },
   {
@@ -132,7 +198,7 @@
     "path": "/hazardVulnerabilities/ffbiomeelectric2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeelectric_mech"
     }
   },
   {
@@ -140,7 +206,7 @@
     "path": "/hazardVulnerabilities/ffbiomeelectric3",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeelectric_mech"
     }
   },
   {
@@ -148,7 +214,7 @@
     "path": "/hazardVulnerabilities/desertweathernewdeadly",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -188,7 +254,7 @@
     "path": "/hazardVulnerabilities/biomepoison1",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomepoison_mech"
     }
   },
   {
@@ -196,7 +262,7 @@
     "path": "/hazardVulnerabilities/biomepoison2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomepoison_mech"
     }
   },
   {
@@ -204,7 +270,7 @@
     "path": "/hazardVulnerabilities/biomepoison3",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomepoison_mech"
     }
   },
   {
@@ -212,7 +278,7 @@
     "path": "/hazardVulnerabilities/biomepoisongas",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomepoison_mech"
     }
   },
   {
@@ -220,7 +286,7 @@
     "path": "/hazardVulnerabilities/poisonweathernew",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomepoison_mech"
     }
   },
   {
@@ -228,7 +294,7 @@
     "path": "/hazardVulnerabilities/poisonweathernewbiome",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomepoison_mech"
     }
   },
   {
@@ -236,7 +302,7 @@
     "path": "/hazardVulnerabilities/protoweather",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeproto_mech"
     }
   },
   {
@@ -244,7 +310,7 @@
     "path": "/hazardVulnerabilities/protoweather2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeproto_mech"
     }
   },
   {
@@ -252,7 +318,7 @@
     "path": "/hazardVulnerabilities/radioactiveweathernew",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeradiation_mech"
     }
   },
   {
@@ -260,7 +326,7 @@
     "path": "/hazardVulnerabilities/radioactiveweathernew2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeradiation_mech"
     }
   },
   {
@@ -268,7 +334,7 @@
     "path": "/hazardVulnerabilities/radioactiveweathernew3",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeradiation_mech"
     }
   },
   {
@@ -276,7 +342,7 @@
     "path": "/hazardVulnerabilities/sulphuricweatherstorm",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -284,7 +350,7 @@
     "path": "/hazardVulnerabilities/sulphuricweatherstorm2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -292,7 +358,7 @@
     "path": "/hazardVulnerabilities/sulphuricweatherstorm3",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -300,7 +366,7 @@
     "path": "/hazardVulnerabilities/sulphuricweathernew",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -308,7 +374,7 @@
     "path": "/hazardVulnerabilities/sulphuricweathernew2",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -316,7 +382,7 @@
     "path": "/hazardVulnerabilities/sulphuricweathernew3",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {
@@ -324,7 +390,7 @@
     "path": "/hazardVulnerabilities/sulphuricweathernew4",
     "value": {
       "energyDrain": 30,
-      "message": "biomeheat_mech"
+      "message": "biomeplaceholder_mech"
     }
   },
   {

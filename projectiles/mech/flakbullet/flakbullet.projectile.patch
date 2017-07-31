@@ -1,0 +1,148 @@
+[
+  {
+    "op": "add",
+    "path": "/actionOnHit",
+    "value": [
+      {
+        "action": "sound",
+        "options": [
+          "/sfx/projectiles/blast_small1.ogg",
+          "/sfx/projectiles/blast_small2.ogg",
+          "/sfx/projectiles/blast_small3.ogg"
+        ]
+      },
+      {
+        "action": "loop",
+        "count": 15,
+        "body": [
+          {
+            "action": "particle",
+            "specification": {
+              "type": "ember",
+              "size": 1,
+              "color": [
+                255,
+                200,
+                0,
+                255
+              ],
+              "light": [
+                100,
+                100,
+                50
+              ],
+              "fullbright": true,
+              "fade": 0.9,
+              "initialVelocity": [
+                0,
+                0
+              ],
+              "timeToLive": 0.25,
+              "layer": "middle",
+              "variance": {
+                "initialVelocity": [
+                  20,
+                  20
+                ],
+                "timeToLive": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "action": "loop",
+        "count": 2,
+        "body": [
+          {
+            "action": "sound",
+            "options": [
+              "/sfx/projectiles/bullet_ricochet1.ogg",
+              "/sfx/projectiles/bullet_ricochet2.ogg",
+              "/sfx/projectiles/bullet_ricochet3.ogg",
+              "/sfx/projectiles/bullet_ricochet4.ogg",
+              "/sfx/projectiles/bullet_ricochet5.ogg",
+              "/sfx/projectiles/bullet_ricochet6.ogg",
+              "/sfx/projectiles/bullet_ricochet7.ogg",
+              "/sfx/projectiles/bullet_ricochet8.ogg",
+              "/sfx/projectiles/bullet_ricochet9.ogg",
+              "/sfx/projectiles/bullet_ricochet10.ogg",
+              "/sfx/projectiles/bullet_ricochet11.ogg",
+              "/sfx/projectiles/bullet_ricochet12.ogg",
+              "/sfx/projectiles/bullet_ricochet13.ogg"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "projectile",
+        "type": "flaksplit",
+        "fuzzAngle": 360,
+        "inheritDamageFactor": 0.15,
+        "angleAdjust": 0
+      },
+      {
+        "action": "projectile",
+        "type": "flaksplit",
+        "fuzzAngle": 360,
+        "inheritDamageFactor": 0.15,
+        "angleAdjust": 0
+      },
+      {
+        "action": "projectile",
+        "type": "flaksplit",
+        "fuzzAngle": 360,
+        "inheritDamageFactor": 0.15,
+        "angleAdjust": 0
+      },
+      {
+        "action": "projectile",
+        "type": "flaksplit",
+        "fuzzAngle": 360,
+        "inheritDamageFactor": 0.15,
+        "angleAdjust": 0
+      },
+      {
+        "action": "projectile",
+        "type": "flaksplit",
+        "fuzzAngle": 360,
+        "inheritDamageFactor": 0.15,
+        "angleAdjust": 0
+      },
+      {
+        "action": "projectile",
+        "type": "flaksplit",
+        "fuzzAngle": 360,
+        "inheritDamageFactor": 0.15,
+        "angleAdjust": 0
+      },
+      {
+        "action": "projectile",
+        "type": "flaksplit",
+        "fuzzAngle": 360,
+        "inheritDamageFactor": 0.15,
+        "angleAdjust": 0
+      },
+      {
+        "action": "projectile",
+        "type": "flaksplit",
+        "fuzzAngle": 360,
+        "inheritDamageFactor": 0.15,
+        "angleAdjust": 0
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/onlyHitTerrain",
+    "value": false
+  },
+  {
+    "op": "add",
+    "path": "/actionOnReap/0",
+    "value": {
+      "action": "config",
+      "file": "/projectiles/explosions/smokeexplosion/smokeexplosion.config"
+    }
+  }
+]
