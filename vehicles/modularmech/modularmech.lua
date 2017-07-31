@@ -103,18 +103,15 @@ function init()
   self.parts = config.getParameter("parts")
 
   -- setup body
-
   self.protection = self.parts.body.protection
 
   -- setup boosters
-
   self.airControlSpeed = self.parts.booster.airControlSpeed
   self.airControlForce = self.parts.booster.airControlForce
   self.flightControlSpeed = self.parts.booster.flightControlSpeed
   self.flightControlForce = self.parts.booster.flightControlForce
   
   -- setup legs
-
   self.groundSpeed = self.parts.legs.groundSpeed
   self.groundControlForce = self.parts.legs.groundControlForce
   self.jumpVelocity = self.parts.legs.jumpVelocity

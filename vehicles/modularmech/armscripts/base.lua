@@ -92,6 +92,11 @@ function MechArm:rayCheck(firePosition)
   return not world.lineTileCollision(mcontroller.position(), firePosition)
 end
 
+
+function MechArm:gimmestats()
+    return self.stats
+end
+
 function MechArm:fire()
   local projectileIds = {}
 
