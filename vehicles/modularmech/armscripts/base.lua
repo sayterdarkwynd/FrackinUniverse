@@ -138,7 +138,6 @@ function MechArm:fire()
 
       -- apply FU damage bonus , to tier Mech damage
 
-        sb.logInfo("thing = "..self.penis)
         self.mechTier = (self.stats.power + self.stats.energy) /2
         self.multicount = self.stats.multicount
         if self.multicount then
