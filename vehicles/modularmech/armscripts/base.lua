@@ -133,7 +133,12 @@ function MechArm:fire()
 
       -- apply FU damage bonus , to tier Mech damage
         self.mechTier = (self.stats.power + self.stats.energy) /2
-        pParams.power = pParams.power * self.mechTier
+        self.multicount = self.stats.multicount
+        if self.multicount then
+          pParams.power = (pParams.power / self.multicount) * self.mechTier
+        else
+          pParams.power = pParams.power * self.mechTier
+        end
       --end
       
       local projectileId = world.spawnProjectile(

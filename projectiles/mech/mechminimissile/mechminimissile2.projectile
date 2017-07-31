@@ -1,0 +1,30 @@
+{
+  "projectileName" : "mechminimissile2",
+  "image" : "mechminimissile.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 3,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [100, 90, 50],
+  "pointLight" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosionknockback.config"
+    }
+  ],
+  "statusEffects" : [ ],
+  "emitters" : [ "tinyrocketsmoke" ],
+  "flippable" : true,
+  "power" : 4,
+  "speed" : 5.0,
+  "acceleration" : 70,
+  "timeToLive" : 1.25,
+  "physics" : "rocket",
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+
+  "scripts" : [ "/scripts/projectiles/guidedprojectile.lua" ],
+  "timeToLiveVariance" : 0.05,
+  "rotationRate" : 2.0,
+  "trackingLimit" : 2.0
+}
