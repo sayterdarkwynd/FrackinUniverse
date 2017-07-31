@@ -147,8 +147,10 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
     physicsCollisions = {}
   }
   
-  -- fu edit
-  --storage.mechStatSum = 0  
+  local mechStatSum = 0
+  local mechChestBonus = 0
+  local mechBoosterBonus = 0
+  local mechLegsBonus = 0
   
   for partType, itemDescriptor in pairs(itemSet) do
     local thisPartConfig = self:partConfig(partType, itemDescriptor)
@@ -158,18 +160,16 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
 
     if partType ~= "horn" then
       if self.partStatMap[partType] and thisPartConfig.stats then
-        -- ***** FU addition, thanks LoPhatKo for the aid on this!
+        -- ***** FU additions
         -- load the arms stat table
         thisPartConfig.partParameters.stats = copy(thisPartConfig.stats)
         
-        --look for stats
-		--for nam, sta in pairs(thisPartConfig.partParameters.stats) do
-		--	sb.logInfo("nam is %s", nam)
-		--	sb.logInfo("sta is %s", sta)
-		--	storage.mechStatSum = storage.mechStatSum + sta
-		--	sb.logInfo("mechtest mult %s", storage.mechStatSum)
-		--end        
-        -- *****
+	-- look for stats
+        for nam, sta in pairs(thisPartConfig.partParameters.stats) do
+          mechStatSum = mechStatSum + sta
+        end  
+
+        -- *****        
         for stat, fMap in pairs(self.partStatMap[partType]) do
           for param, fName in pairs(fMap) do
             thisPartConfig.partParameters[param] = root.evalFunction(fName, thisPartConfig.stats[stat])
@@ -192,7 +192,12 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
 
     params.animationCustom = util.mergeTable(params.animationCustom, thisPartConfig.animationCustom or {})
   end
-
+  
+  -- load stats
+  grabStats(mechStatSum)
+  mechStatSum = mechStatSum / 10
+  sb.logInfo("mech stats divided by 10 ="..mechStatSum)
+  
   return params
 end
 
@@ -216,4 +221,11 @@ function MechPartManager:buildSwapDirectives(partConfig, primaryIndex, secondary
     result = string.format("%s?replace=%s=%s", result, fromColor, secondaryColors[i])
   end
   return result
+end
+
+
+-- fu function for stats
+function grabStats(amount)
+	sb.logInfo("mechStatSum is %s", amount)
+	return amount;
 end
