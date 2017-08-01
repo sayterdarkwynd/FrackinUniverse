@@ -39,20 +39,7 @@ function BeamArm:windupState()
     coroutine.yield()
   end
 
-  if self.isFiring then
-  
-	  -- for FU scaling damage
-	  self:statSet()  
-	  self.mechTier = self.stats.power
-	  sb.logInfo("mechTier = "..self.stats.power)
-	  self.power = 1
-	  self.power = self.power * self.mechTier
-	  pParams = config.getParameter("")
-	  sb.logInfo(sb.printJson(pParams,1))
-	  self.damageup = partParameters.rightArm.damageSources.rightArmBeam.damage 
-	  self.damageup2 = self.damage
-	  sb.logInfo("dmg = "..self.damageup)
-	  
+  if self.isFiring then  
     self.state:set(self.fireState, self)
   else
     self.state:set(self.winddownState, self)
@@ -76,7 +63,30 @@ end
 
 function BeamArm:fireState()
   local stateTimer = self.fireTime
+  
 
+	-- for FU scaling damage ********************************************************
+	  self:statSet()  
+	  self.mechTier = self.stats.power
+	  pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
+	  self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+	  
+	  pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage * self.mechTier
+	  pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage * self.mechTier
+        -- Mech critical hits
+        if self.critChance >= 100 then
+          self.mechBonus = self.mechBonus * 2
+        end
+        
+          --apply final damage
+          pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage + self.mechBonus
+          pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage + self.mechBonus
+          
+          sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)	  
+	  
+	  --********************************************************************************** 
+	  
+	  
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
   local endPoint, beamCollision, beamLength = self:updateBeam()
@@ -89,7 +99,7 @@ function BeamArm:fireState()
   vehicle.setDamageSourceEnabled(self.armName .. "Beam", true)
 
   self.aimLocked = self.lockAim
-
+  
   if beamCollision and self.beamTileDamage > 0 then
     local maximumEndPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
     local damagePositions = world.collisionBlocksAlongLine(self.firePosition, maximumEndPoint, nil, self.beamTileDamageDepth)
@@ -138,6 +148,7 @@ function BeamArm:winddownState()
 end
 
 function BeamArm:updateBeam()
+
   local endPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
   local beamCollision = world.lineCollision(self.firePosition, endPoint)
   if beamCollision then

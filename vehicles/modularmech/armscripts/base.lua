@@ -152,15 +152,12 @@ function MechArm:fire()
         self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
         self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
-        
-        --sb.logInfo(sb.printJson(pParams2,1))
-        
+
 	if self.multicount then
 	  pParams.power = (pParams.power / self.multicount) * self.mechTier
 	else
 	  pParams.power = (pParams.power * self.mechTier) 
-	end	
-	
+	end	        
 
         -- Mech critical hits
         if self.critChance >= 100 then
