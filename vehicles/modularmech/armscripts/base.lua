@@ -99,7 +99,7 @@ function MechArm:statSet()
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechBonus = ((self.mechBonusBody  /2) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.5)) / 1
+        self.mechBonus = ((self.mechBonusBody  /2) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.5))
         --sb.logInfo("total mech part bonus = "..self.mechBonus)
 end
 
@@ -146,13 +146,25 @@ function MechArm:fire()
         self:statSet()
         self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
+        self.critChance = (self.parts.legs.stats.speed/2) + math.random(100)
+        
         if self.multicount then
           pParams.power = (pParams.power / self.multicount) * self.mechTier
         else
           pParams.power = (pParams.power * self.mechTier) 
         end
+        
+        -- Mech critical hits
+        if self.critChance >= 100 then
+          if self.multicount then
+            self.mechBonus = (self.mechBonus * 2) / self.multicount
+          else
+            self.mechBonus = self.mechBonus * 2
+          end
+        end
+        --apply final damage
           pParams.power = pParams.power + self.mechBonus
-        sb.logInfo("power total = "..pParams.power)
+          --sb.logInfo("power total = "..pParams.power)
       --end
       
       local projectileId = world.spawnProjectile(
