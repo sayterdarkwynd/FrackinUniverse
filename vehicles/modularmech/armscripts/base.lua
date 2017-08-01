@@ -164,10 +164,10 @@ function MechArm:fire()
         if self.critChance >= 100 then
           if self.multicount then
             self.mechBonus = (self.mechBonus * 2) / self.multicount
-            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
+            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)/5
           else
             self.mechBonus = self.mechBonus * 2
-            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
+            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)/5
           end
           
         end
