@@ -33,6 +33,9 @@ function isn_getCurrentPowerOutput(divide)
 	generated = generated * genmult
 	generated = math.min(generated,12)
 	
+	-- max output on custom stations
+	if world.type() == 'playerstation' then generated = 12 end
+	
 	local summationForDebug = string.format("P %.2f L %.2f", generated, light)
 	world.debugText(summationForDebug,{location[1]-(string.len(summationForDebug)*0.25),location[2]-3.5},"cyan")
 	
