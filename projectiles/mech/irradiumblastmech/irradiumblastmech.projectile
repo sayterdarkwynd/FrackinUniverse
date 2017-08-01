@@ -1,0 +1,30 @@
+{
+  "projectileName" : "irradiumblastmech",
+  "image" : "irradiumblastmech.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "fallSpeed" : 0,
+  "lightColor" : [52, 112, 153],
+  "pointLight" : true,
+  "emitters" : [ "electricplasma" ],
+  "flippable" : true,
+  "power" : 1,
+  "fullbright" : true,
+  "speed" : 42.0,
+  "acceleration" : 120,
+  "physics" : "rocket",
+  "damageKind" : "radioactive",
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmaboomsmall/plasmaboomsmall4.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "isn_irradiator_cloud2",
+      "inheritDamageFactor" : 0.25
+    }
+  ],
+  "statusEffects" : [ "radiationburn" ]
+}

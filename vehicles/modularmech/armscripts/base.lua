@@ -100,6 +100,9 @@ function MechArm:statSet()
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
         self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
+        self.energyMax = self.parts.body.energyMax
+        self.weaponDrain = (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
+        storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
         --sb.logInfo("total mech part bonus = "..self.mechBonus)
 end
 
@@ -108,6 +111,8 @@ function MechArm:fire()
 
   if self.aimAngle and self.aimVector and self.firePosition and self:rayCheck(self.firePosition) then
     local pParams = copy(self.projectileParameters)
+    local pParams2 = config.getParameter("") --copy(self.damageSources) -- for FU, beam weapons etc
+    
     if not self.projectileTrackSource and mcontroller.zeroG() then
       pParams.referenceVelocity = mcontroller.velocity()
     else
@@ -148,12 +153,30 @@ function MechArm:fire()
         self.multicount = self.stats.multicount
         self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
         
-        if self.multicount then
-          pParams.power = (pParams.power / self.multicount) * self.mechTier
-        else
-          pParams.power = (pParams.power * self.mechTier) 
-        end
+        sb.logInfo(sb.printJson(pParams2,1))
+        sb.logInfo("%s",pParams2.damage)
         
+	local arm = nil
+	for key,value in pairs(pParams2.damageSources) do
+	  if string.find(key,'rightArm') then
+	    arm = value
+	    break
+	  end
+	end
+	if arm.damage then
+		if self.multicount and pParams2.damageSources.damage then
+		  pParams2.damageSources.damage = (pParams2.damageSources.damage / self.multicount) * self.mechTier
+		elseif pParams.damage then
+		  pParams2.damageSources.damage = (pParams2.damageSources.damage * self.mechTier) 
+		end     	
+	else
+		if self.multicount then
+		  pParams.power = (pParams.power / self.multicount) * self.mechTier
+		else
+		  pParams.power = (pParams.power * self.mechTier) 
+		end	
+	end
+
         -- Mech critical hits
         if self.critChance >= 100 then
           if self.multicount then
@@ -161,6 +184,7 @@ function MechArm:fire()
           else
             self.mechBonus = self.mechBonus * 2
           end
+          
         end
         --apply final damage
           pParams.power = pParams.power + self.mechBonus

@@ -193,11 +193,6 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
     params.animationCustom = util.mergeTable(params.animationCustom, thisPartConfig.animationCustom or {})
   end
   
-  -- load stats
-  --grabStats(mechStatSum)
-  --mechStatSum = mechStatSum / 10
-  --sb.logInfo("mech stats divided by 10 ="..mechStatSum)
-  
   return params
 end
 
@@ -223,9 +218,3 @@ function MechPartManager:buildSwapDirectives(partConfig, primaryIndex, secondary
   return result
 end
 
-
--- fu function for stats
---function grabStats(amount)
---	sb.logInfo("mechStatSum is %s", amount)
---	return amount;
---end

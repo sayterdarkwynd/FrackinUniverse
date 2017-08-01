@@ -676,20 +676,22 @@
     "value": {
       "stats": {
         "power": 4,
-        "energy": 5
+        "energy": 5,
+        "multicount" : 3
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
         "armClass": "GunArm",
         "rotationLimits": [-1.75,1.75],
-        "fireOffset": [5.2,0],
-        "extendTime": 0.5,
-        "fireTime": 0.25,
-        "projectileType": "irradiummecharm",
+        "fireOffset": [5.3,0],
+        "extendTime": 0.725,
+        "fireTime": 1,
+        "projectileType": "irradiumblastmech",
 
-        "projectileInaccuracy" : 0.08,
+        "projectileInaccuracy" : 0.092,
+        "projectileCount" : 3,
         "projectileParameters": {
-          "power": 4
+          "power": 0.5
         }
       },
       "partImages": {
@@ -1001,18 +1003,18 @@
         "armClass": "MeleeArm",
         "rotationLimits": [-1,1],
         "fireOffset": [4.5,0.5],
-        "windupTime": 0.35,
+        "windupTime": 0.2,
         "windupAngle": 0.8,
         "swingTime": 0.07,
         "fireTime": 0.20,
         "fireAngle": -0.8,
         "comboFireAngle": 0.8,
-        "cooldownTime": 0.4,
+        "cooldownTime": 0.2,
         "cooldownAngle": -0.3,
         "projectileType": "mechchainsawswoosh",
         "projectileParameters": {
-          "power": 12.5,
-          "knockback": 24
+          "power": 11.25,
+          "knockback": 25
         },
         "projectileTrackSource": true,
         "projectileBaseDistance": 10,
