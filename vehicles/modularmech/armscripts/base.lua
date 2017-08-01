@@ -99,8 +99,8 @@ function MechArm:statSet()
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechBonus = ((self.mechBonusBody  /2) + (self.mechBonusBooster/ 6) + (self.mechBonusLegs / 4)) / 1
-        sb.logInfo("thing = "..self.mechBonus)
+        self.mechBonus = ((self.mechBonusBody  /2) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.5)) / 1
+        --sb.logInfo("total mech part bonus = "..self.mechBonus)
 end
 
 function MechArm:fire()
@@ -147,11 +147,11 @@ function MechArm:fire()
         self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
         if self.multicount then
-          pParams.power = ((pParams.power / self.multicount) + self.mechBonus) * self.mechTier
+          pParams.power = (pParams.power / self.multicount) * self.mechTier
         else
-          pParams.power = (pParams.power + self.mechBonus) * self.mechTier
+          pParams.power = (pParams.power * self.mechTier) 
         end
-        
+          pParams.power = pParams.power + self.mechBonus
         sb.logInfo("power total = "..pParams.power)
       --end
       
