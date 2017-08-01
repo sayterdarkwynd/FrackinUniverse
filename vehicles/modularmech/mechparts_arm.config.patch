@@ -234,7 +234,7 @@
         "droneOrbitDistance" : 5,         
         "droneMonsterType": "mechshielddrone",
         "droneParameters": {
-          "movementMode": "Standoff",
+          "movementMode": "Orbit",
           "standoffDistance": 6,
           "attackMode": "none",
           "duration": 120,
@@ -309,12 +309,12 @@
         "launchTiming": 0.25,
         "cooldownTime": 6,
         "maxDrones": 3,
-	    "droneOrbitRate" : 1,
+	    "droneOrbitRate" : 2,
         "droneOrbitDistance" : 5, 
         
         "droneMonsterType": "mechshielddrone",
         "droneParameters": {
-          "movementMode": "Standoff",
+          "movementMode": "Orbit",
           "standoffDistance": 6,
           "attackMode": "none",
           "duration": 120,
@@ -369,7 +369,7 @@
   {
     "op": "add",
     "path": "/shielddronelauncher/partParameters/droneOrbitRate",
-    "value": 1
+    "value": 3
   },
   {
     "op": "add",
@@ -379,7 +379,7 @@
   {
     "op": "replace",
     "path": "/shielddronelauncher/partParameters/cooldownTime",
-    "value": 4
+    "value": 8
   },
   {
     "op": "replace",
@@ -391,7 +391,16 @@
     "path": "/shielddronelauncher/partParameters/droneParameters/statusSettings/stats/flatMaxHealth/baseValue",
     "value": 2000
   },
-  
+  {
+    "op": "replace",
+    "path": "/shielddronelauncher/partParameters/droneParameters/movementMode",
+    "value": "Orbit"
+  },
+  {
+    "op": "replace",
+    "path": "/shielddronelauncher/partParameters/droneParameters/duration",
+    "value": 520
+  },  
   
   
   
