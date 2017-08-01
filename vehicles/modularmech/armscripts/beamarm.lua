@@ -66,21 +66,21 @@ function BeamArm:fireState()
   
 
 	-- for FU scaling damage ********************************************************
-	  self:statSet()  
-	  self.mechTier = self.stats.power
-	  pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
-	  self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+	--  self:statSet()  
+	--  self.mechTier = self.stats.power
+	--  pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
+	--  self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
 	  
-	  pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage * self.mechTier
-	  pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage * self.mechTier
+	--  pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage * self.mechTier
+	--  pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage * self.mechTier
         -- Mech critical hits
-        if self.critChance >= 100 then
-          self.mechBonus = self.mechBonus * 2
-        end
+        --if self.critChance >= 100 then
+        --  self.mechBonus = self.mechBonus * 2
+        --end
         
           --apply final damage
-          pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage + self.mechBonus
-          pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage + self.mechBonus
+          --pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage + self.mechBonus
+          --pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage + self.mechBonus
           
           --sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)	  
 	  
