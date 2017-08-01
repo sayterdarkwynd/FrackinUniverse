@@ -990,6 +990,91 @@
   },
   {
     "op": "add",
+    "path": "/fumechswordbreaker",
+    "value": {
+      "stats": {
+        "power": 4,
+        "energy": 4
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/meleearm.lua",
+        "armClass": "MeleeArm",
+        "rotationLimits": [-1,1],
+        "fireOffset": [4.5,0.5],
+        "windupTime": 0.35,
+        "windupAngle": 0.8,
+        "swingTime": 0.07,
+        "fireTime": 0.20,
+        "fireAngle": -0.8,
+        "comboFireAngle": 0.8,
+        "cooldownTime": 0.4,
+        "cooldownAngle": -0.3,
+        "projectileType": "mechchainsawswoosh",
+        "projectileParameters": {
+          "power": 12.5,
+          "knockback": 24
+        },
+        "projectileTrackSource": true,
+        "projectileBaseDistance": 10,
+        "projectileTimeToLive": 0.35
+      },
+      "partImages": {
+        "<armName>": "arm/swordbreaker.png",
+        "<armName>Fullbright": "arm/swordbreakerfullbright.png"
+      },
+      "defaultPrimaryColors": [
+        "96cbe7",
+        "5588d4",
+        "344495",
+        "1a1c51"
+      ],
+      "defaultSecondaryColors": [
+        "96cbe7",
+        "5588d4",
+        "344495",
+        "1a1c51"
+      ],
+      "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "windup": {
+                  "properties": {
+                    "persistentSound": "/sfx/melee/mech_energysword_windup1.ogg",
+                    "persistentSoundRangeMultiplier": 1,
+                    "persistentSoundStopTime": 0.5
+                  }
+                },
+                "winddown": {
+                  "properties": {
+                    "persistentSound": "/sfx/melee/mech_energysword_winddown1.ogg",
+                    "persistentSoundRangeMultiplier": 1,
+                    "persistentSoundStopTime": 0.75
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sounds": {
+          "<armName>Fire": [
+            "/sfx/melee/mech_energysword_swing1.ogg",
+            "/sfx/melee/mech_energysword_swing2.ogg",
+            "/sfx/melee/mech_energysword_swing3.ogg",
+            "/sfx/melee/mech_energysword_swing4.ogg"
+          ]
+        },
+        "transformationGroups": {
+          "<armName>": {
+            "interpolated": false
+          }
+        }
+      }
+    }
+  },  
+  {
+    "op": "add",
     "path": "/fumechchainsword",
     "value": {
       "stats": {
