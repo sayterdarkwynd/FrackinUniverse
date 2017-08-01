@@ -101,8 +101,8 @@ function MechArm:statSet()
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
         self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
         self.energyMax = self.parts.body.energyMax
-        self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
-        self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))
+        self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
+        self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
         storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
         --sb.logInfo("total mech part bonus = "..self.mechBonus)
 end
@@ -164,10 +164,10 @@ function MechArm:fire()
         if self.critChance >= 100 then
           if self.multicount then
             self.mechBonus = (self.mechBonus * 2) / self.multicount
-            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)/5
+            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
           else
             self.mechBonus = self.mechBonus * 2
-            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)/5
+            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
           end
           
         end
