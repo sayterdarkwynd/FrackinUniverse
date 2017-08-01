@@ -147,11 +147,6 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
     physicsCollisions = {}
   }
   
-  --local mechStatSum = 0
-  --local mechChestBonus = 0
-  --local mechBoosterBonus = 0
-  --local mechLegsBonus = 0
-  
   for partType, itemDescriptor in pairs(itemSet) do
     local thisPartConfig = self:partConfig(partType, itemDescriptor)
     if partType == "leftArm" or partType == "rightArm" then
@@ -162,12 +157,7 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
       if self.partStatMap[partType] and thisPartConfig.stats then
         -- ***** FU additions
         -- load the arms stat table
-        thisPartConfig.partParameters.stats = copy(thisPartConfig.stats)
-        
-	-- look for stats
-        --for nam, sta in pairs(thisPartConfig.partParameters.stats) do
-        --  mechStatSum = mechStatSum + sta
-        --end  
+        thisPartConfig.partParameters.stats = copy(thisPartConfig.stats)       
 
         -- *****        
         for stat, fMap in pairs(self.partStatMap[partType]) do

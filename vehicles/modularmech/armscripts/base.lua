@@ -153,29 +153,14 @@ function MechArm:fire()
         self.multicount = self.stats.multicount
         self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
         
-        sb.logInfo(sb.printJson(pParams2,1))
-        sb.logInfo("%s",pParams2.damage)
+        --sb.logInfo(sb.printJson(pParams2,1))
         
-	local arm = nil
-	for key,value in pairs(pParams2.damageSources) do
-	  if string.find(key,'rightArm') then
-	    arm = value
-	    break
-	  end
-	end
-	if arm.damage then
-		if self.multicount and pParams2.damageSources.damage then
-		  pParams2.damageSources.damage = (pParams2.damageSources.damage / self.multicount) * self.mechTier
-		elseif pParams.damage then
-		  pParams2.damageSources.damage = (pParams2.damageSources.damage * self.mechTier) 
-		end     	
+	if self.multicount then
+	  pParams.power = (pParams.power / self.multicount) * self.mechTier
 	else
-		if self.multicount then
-		  pParams.power = (pParams.power / self.multicount) * self.mechTier
-		else
-		  pParams.power = (pParams.power * self.mechTier) 
-		end	
-	end
+	  pParams.power = (pParams.power * self.mechTier) 
+	end	
+	
 
         -- Mech critical hits
         if self.critChance >= 100 then
