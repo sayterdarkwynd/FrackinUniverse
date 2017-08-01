@@ -140,7 +140,257 @@
   },
   
   
-  
+  {
+    "op": "add",
+    "path": "/shielddronelauncher0",
+    "value": {
+      "stats": {
+        "power": 3,
+        "energy": 3
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+        "armClass": "DroneLauncher",
+        "rotationLimits": [-0.7,0.6],
+        "fireOffset": [4,0],
+        "deployTime": 0.4,
+        "launchTiming": 0.25,
+        "cooldownTime": 10,
+        "maxDrones": 1,
+	    "droneOrbitRate" : 1,
+        "droneOrbitDistance" : 5,         
+        "droneMonsterType": "mechshielddrone",
+        "droneParameters": {
+          "movementMode": "Standoff",
+          "standoffDistance": 6,
+          "attackMode": "none",
+          "duration": 120,
+          "statusSettings": {
+            "stats": {
+              "flatMaxHealth": {
+                "baseValue": 2000
+              }
+            }
+          }
+        }
+      },
+      "partImages": {
+        "<armName>": "arm/shielddronelauncher.png",
+        "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+      },
+      "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+      ],
+      "defaultSecondaryColors": [
+        "838383",
+        "555555",
+        "383838",
+        "151515"
+      ],
+      "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "windup": {
+                  "mode": "end"
+                }
+              }
+            }
+          }
+        },
+        "sounds": {
+          "<armName>Activate": [
+            "/sfx/gun/mech_shielddrone1.ogg"
+          ],
+          "<armName>Recover": [
+            "/sfx/gun/mech_shielddrone_recover1.ogg"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/shielddronelauncher1",
+    "value": {
+      "stats": {
+        "power": 4,
+        "energy": 4
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+        "armClass": "DroneLauncher",
+        "rotationLimits": [-0.7,0.6],
+        "fireOffset": [4,0],
+        "deployTime": 0.4,
+        "launchTiming": 0.25,
+        "cooldownTime": 8,
+        "maxDrones": 2,
+	    "droneOrbitRate" : 1,
+        "droneOrbitDistance" : 5,         
+        "droneMonsterType": "mechshielddrone",
+        "droneParameters": {
+          "movementMode": "Standoff",
+          "standoffDistance": 6,
+          "attackMode": "none",
+          "duration": 120,
+          "statusSettings": {
+            "stats": {
+              "flatMaxHealth": {
+                "baseValue": 2000
+              }
+            }
+          }
+        }
+      },
+      "partImages": {
+        "<armName>": "arm/shielddronelauncher.png",
+        "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+      },
+      "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+      ],
+      "defaultSecondaryColors": [
+        "838383",
+        "555555",
+        "383838",
+        "151515"
+      ],
+      "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "windup": {
+                  "mode": "end"
+                }
+              }
+            }
+          }
+        },
+        "sounds": {
+          "<armName>Activate": [
+            "/sfx/gun/mech_shielddrone1.ogg"
+          ],
+          "<armName>Recover": [
+            "/sfx/gun/mech_shielddrone_recover1.ogg"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/shielddronelauncher2",
+    "value": {
+      "stats": {
+        "power": 5,
+        "energy": 5
+      },
+      "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+        "armClass": "DroneLauncher",
+        "rotationLimits": [
+          -0.7,
+          0.6
+        ],
+        "fireOffset": [
+          4,
+          0
+        ],
+        "deployTime": 0.4,
+        "launchTiming": 0.25,
+        "cooldownTime": 6,
+        "maxDrones": 3,
+	    "droneOrbitRate" : 1,
+        "droneOrbitDistance" : 5, 
+        
+        "droneMonsterType": "mechshielddrone",
+        "droneParameters": {
+          "movementMode": "Standoff",
+          "standoffDistance": 6,
+          "attackMode": "none",
+          "duration": 120,
+          "statusSettings": {
+            "stats": {
+              "flatMaxHealth": {
+                "baseValue": 2000
+              }
+            }
+          }
+        }
+      },
+      "partImages": {
+        "<armName>": "arm/shielddronelauncher.png",
+        "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+      },
+      "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+      ],
+      "defaultSecondaryColors": [
+        "838383",
+        "555555",
+        "383838",
+        "151515"
+      ],
+      "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "windup": {
+                  "mode": "end"
+                }
+              }
+            }
+          }
+        },
+        "sounds": {
+          "<armName>Activate": [
+            "/sfx/gun/mech_shielddrone1.ogg"
+          ],
+          "<armName>Recover": [
+            "/sfx/gun/mech_shielddrone_recover1.ogg"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/shielddronelauncher/partParameters/droneOrbitRate",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/shielddronelauncher/partParameters/droneOrbitDistance",
+    "value": 5
+  },
+  {
+    "op": "replace",
+    "path": "/shielddronelauncher/partParameters/cooldownTime",
+    "value": 4
+  },
+  {
+    "op": "replace",
+    "path": "/shielddronelauncher/partParameters/maxDrones",
+    "value": 4
+  },
+  {
+    "op": "replace",
+    "path": "/shielddronelauncher/partParameters/droneParameters/statusSettings/stats/flatMaxHealth/baseValue",
+    "value": 2000
+  },
   
   
   
