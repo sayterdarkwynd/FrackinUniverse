@@ -147,10 +147,10 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
     physicsCollisions = {}
   }
   
-  local mechStatSum = 0
-  local mechChestBonus = 0
-  local mechBoosterBonus = 0
-  local mechLegsBonus = 0
+  --local mechStatSum = 0
+  --local mechChestBonus = 0
+  --local mechBoosterBonus = 0
+  --local mechLegsBonus = 0
   
   for partType, itemDescriptor in pairs(itemSet) do
     local thisPartConfig = self:partConfig(partType, itemDescriptor)
@@ -165,9 +165,9 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
         thisPartConfig.partParameters.stats = copy(thisPartConfig.stats)
         
 	-- look for stats
-        for nam, sta in pairs(thisPartConfig.partParameters.stats) do
-          mechStatSum = mechStatSum + sta
-        end  
+        --for nam, sta in pairs(thisPartConfig.partParameters.stats) do
+        --  mechStatSum = mechStatSum + sta
+        --end  
 
         -- *****        
         for stat, fMap in pairs(self.partStatMap[partType]) do
@@ -194,9 +194,9 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
   end
   
   -- load stats
-  grabStats(mechStatSum)
-  mechStatSum = mechStatSum / 10
-  sb.logInfo("mech stats divided by 10 ="..mechStatSum)
+  --grabStats(mechStatSum)
+  --mechStatSum = mechStatSum / 10
+  --sb.logInfo("mech stats divided by 10 ="..mechStatSum)
   
   return params
 end
@@ -225,7 +225,7 @@ end
 
 
 -- fu function for stats
-function grabStats(amount)
-	sb.logInfo("mechStatSum is %s", amount)
-	return amount;
-end
+--function grabStats(amount)
+--	sb.logInfo("mechStatSum is %s", amount)
+--	return amount;
+--end

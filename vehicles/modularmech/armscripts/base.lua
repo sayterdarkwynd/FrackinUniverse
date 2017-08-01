@@ -27,11 +27,12 @@ function MechArm:update(dt)
   -- not implemented
 end
 
-function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, crouchValue)
+function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, crouchValue, parts)
   self.crouchValue = crouchValue -- lpk: save crouch for use in shoulderPosition()
   self.driverId = driverId
   self.isFiring = isFiring
   self.wasFiring = wasFiring
+  self.parts = copy(parts) -- for FU. Access with  self.parts.<partname>.stats  (self.parts.body.stats.protection )
   self.fireTriggered = isFiring and not wasFiring
   if self.frontPartImages or self.backPartImages then
     self:updateAnimationSide(facingDirection)
@@ -93,8 +94,13 @@ function MechArm:rayCheck(firePosition)
 end
 
 
-function MechArm:gimmestats()
-    return self.stats
+function MechArm:statSet()
+        self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
+        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
+        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
+        self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
+        self.mechBonus = ((self.mechBonusBody  /2) + (self.mechBonusBooster/ 6) + (self.mechBonusLegs / 4)) / 1
+        sb.logInfo("thing = "..self.mechBonus)
 end
 
 function MechArm:fire()
@@ -137,14 +143,16 @@ function MechArm:fire()
       end
 
       -- apply FU damage bonus , to tier Mech damage
-
-        self.mechTier = (self.stats.power + self.stats.energy) /2
+        self:statSet()
+        self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
         if self.multicount then
-          pParams.power = (pParams.power / self.multicount) * self.mechTier
+          pParams.power = ((pParams.power / self.multicount) + self.mechBonus) * self.mechTier
         else
-          pParams.power = pParams.power * self.mechTier
+          pParams.power = (pParams.power + self.mechBonus) * self.mechTier
         end
+        
+        sb.logInfo("power total = "..pParams.power)
       --end
       
       local projectileId = world.spawnProjectile(

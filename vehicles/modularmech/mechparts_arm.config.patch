@@ -7,7 +7,7 @@
   {
     "op": "replace",
     "path": "/flakcannon/partParameters/projectileParameters/power",
-    "value": 4
+    "value": 2
   },
   {
     "op": "replace",
@@ -724,7 +724,8 @@
     "value": {
       "stats": {
         "power": 6,
-        "energy": 6
+        "energy": 6,
+        "multicount" : 2
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
@@ -738,11 +739,12 @@
           -0.325
         ],
         "extendTime": 1,
-        "fireTime": 0.22,
+        "fireTime": 0.15,
         "projectileType": "densiniumrifleshot",
-        "projectileCount" : 3,
+        "projectileCount" : 2,
+        "projectileInaccuracy": 0.06,
         "projectileParameters": {
-          "power": 7
+          "power": 3
         }
       },
       "partImages": {
@@ -936,22 +938,16 @@
         "energy": 6
       },
       "partParameters": {
-        "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-        "armClass": "GunArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          7.65,
-          -0.625
-        ],
-        "extendTime": 0.5,
-        "fireTime": 4,
+        "script": "/vehicles/modularmech/armscripts/missileburstarm.lua",
+        "armClass": "MissileBurst",
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [7.65, -0.25],
+        "windupTime": 0.5,
+        "fireTime": 1,
+        "cooldownTime": 1,
         "projectileType": "isn_fusioncannon0mech",
-        "projectileCount" : 1,
         "projectileParameters": {
-          "power": 15
+          "power": 30
         }
       },
       "partImages": {
@@ -959,19 +955,33 @@
         "<armName>Fullbright": "arm/fuheatcannonfullbright.png"
       },
       "defaultPrimaryColors": [
-        "c36a5f",
-        "994c49",
-        "6f3130",
-        "551d28"
+        "909c4f",
+        "5f6c37",
+        "414d28",
+        "1b2211"
       ],
       "defaultSecondaryColors": [
-        "e6e6e6",
-        "b6b6b6",
-        "7b7b7b",
-        "373737"
+        "976750",
+        "714f3c",
+        "513a2d",
+        "36261e"
       ],
       "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+                "windup": {
+                  "mode": "end"
+                }
+              }
+            }
+          }
+        },
         "sounds": {
+          "<armName>Recover": [
+            "/sfx/gun/reload/rocket_reload_clip1.ogg"
+          ],
           "<armName>Fire": [
             "/sfx/weapons/explosion-large01.ogg"
           ]
