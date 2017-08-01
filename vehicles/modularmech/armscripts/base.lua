@@ -99,7 +99,7 @@ function MechArm:statSet()
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechBonus = ((self.mechBonusBody  /2) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.5))
+        self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
         --sb.logInfo("total mech part bonus = "..self.mechBonus)
 end
 
