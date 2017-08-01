@@ -146,7 +146,7 @@ function MechArm:fire()
         self:statSet()
         self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
-        self.critChance = (self.parts.legs.stats.speed/2) + math.random(100)
+        self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
         
         if self.multicount then
           pParams.power = (pParams.power / self.multicount) * self.mechTier
