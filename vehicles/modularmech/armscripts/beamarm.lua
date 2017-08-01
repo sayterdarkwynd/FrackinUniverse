@@ -82,7 +82,7 @@ function BeamArm:fireState()
           pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage + self.mechBonus
           pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage + self.mechBonus
           
-          sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)	  
+          --sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)	  
 	  
 	  --********************************************************************************** 
 	  
