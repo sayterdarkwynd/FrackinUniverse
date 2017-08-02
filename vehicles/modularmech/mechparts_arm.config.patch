@@ -30,15 +30,30 @@
     "value": 6.4
   },
   {
+    "op": "add",
+    "path": "/tommygun/stats/rapidFire",
+    "value": 1
+  },    
+  {
     "op": "replace",
     "path": "/gatling/partParameters/projectileParameters/power",
     "value": 5.3
   },
   {
+    "op": "add",
+    "path": "/gatling/stats/rapidFire",
+    "value": 1
+  },     
+  {
     "op": "replace",
     "path": "/dualrifle/partParameters/projectileParameters/power",
     "value": 4.2
   },
+  {
+    "op": "add",
+    "path": "/dualrifle/stats/rapidFire",
+    "value": 1
+  },   
   {
     "op": "replace",
     "path": "/splitshot/partParameters/projectileParameters/power",
@@ -52,8 +67,13 @@
   {
     "op": "replace",
     "path": "/teslastream/partParameters/projectileParameters/power",
-    "value": 4.2
+    "value": 3.2
   }, 
+  {
+    "op": "add",
+    "path": "/teslastream/stats/rapidFire",
+    "value": 1
+  },  
   {
     "op": "add",
     "path": "/beamsniper/stats/basePower",
@@ -422,7 +442,8 @@
       "stats": {
         "power": 3,
         "energy": 3,
-        "basePower" : 0.15
+        "basePower" : 0.15,
+        "rapidFire" : 2
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/beamarm.lua",
@@ -570,7 +591,8 @@
       "stats": {
         "power": 4,
         "energy": 4,
-        "basePower" : 1.5
+        "basePower" : 1.5,
+        "rapidFire" : 3
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/beamarm.lua",
@@ -741,7 +763,8 @@
       "stats": {
         "power": 6,
         "energy": 6,
-        "basePower" : 3
+        "basePower" : 3,
+        "rapidFire" : 3
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/beamarm.lua",
@@ -959,7 +982,8 @@
     "value": {
       "stats": {
         "power": 6,
-        "energy": 6
+        "energy": 6,
+        "rapidFire" : 3
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
@@ -1006,7 +1030,8 @@
     "value": {
       "stats": {
         "power": 3,
-        "energy": 3
+        "energy": 3,
+        "rapidFire" : 3
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
@@ -1380,26 +1405,21 @@
     "value": {
       "stats": {
         "power": 5,
-        "energy": 5
+        "energy": 5,
+        "rapidFire" : 5
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
         "armClass": "GatlingArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          7.75,
-          0.0
-        ],
-        "windupTime": 0.3,
-        "fireTime": 0.05,
+        "rotationLimits": [-1.75, 1.75],
+        "fireOffset": [7.75,0.0],
+        "windupTime": 1,
+        "fireTime": 0.08,
         "projectileType": "mechdual",
         "projectileParameters": {
-          "power": 5.2
+          "power": 0.05
         },
-        "projectileInaccuracy": 0.04
+        "projectileInaccuracy": 0.045
       },
       "partImages": {
         "<armName>": "arm/fuchaingun.png",

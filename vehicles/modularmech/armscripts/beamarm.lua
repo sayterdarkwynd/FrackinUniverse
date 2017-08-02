@@ -75,6 +75,10 @@ function BeamArm:fireState()
 
           self.applyBeamDamage = self.basePower * self.mechTier; 
           --Mech critical hits
+		if self.stats.rapidFire then 
+		  self.critMod = self.stats.rapidFire / 10
+		  self.critChance = self.critChance * self.critMod
+		end          
 		if self.critChance >= 100 then
 		  self.mechBonus = self.mechBonus * 2
 		end

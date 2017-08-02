@@ -161,7 +161,12 @@ function MechArm:fire()
 	end	        
 
         -- Mech critical hits
-        if self.critChance >= 100 then
+        if self.stats.rapidFire then 
+          self.critMod = self.stats.rapidFire / 10
+          self.critChance = self.critChance * self.critMod
+        end
+        
+        if (self.critChance) >= 100 then
           if self.multicount then
             self.mechBonus = (self.mechBonus * 2) / self.multicount
             storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
