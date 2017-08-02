@@ -203,8 +203,8 @@ function init()
   
   self.crouch = 0.0 -- 0.0 ~ 1.0
   self.crouchTarget = 0.0
-  self.crouchCheckMax = 7.0
-  self.bodyCrouchMax = -4.0
+  self.crouchCheckMax = 20.0 --[[ dafuq does this mean? check --]]
+  self.bodyCrouchMax = -2.0
   self.hipCrouchMax = 2.0
   
   self.crouchSettings = config.getParameter("crouchSettings")
