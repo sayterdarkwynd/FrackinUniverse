@@ -85,7 +85,23 @@ end
 
 function BeamArm:fireState()
   local stateTimer = self.fireTime
+  -- FU beam damage scaling *******************************************
+	  self:statSet()  
+	  self.mechTier = self.stats.power
+	  self.basePower = self.stats.basePower
 	  
+          pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
+          self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+
+          self.applyBeamDamage = self.basePower * self.mechTier; 
+          --Mech critical hits
+		if self.critChance >= 100 then
+		  self.mechBonus = self.mechBonus * 2
+		end
+
+          --apply final damage
+          self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
+  -- ********************************************************************	  
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
   local endPoint, beamCollision, beamLength = self:updateBeam()
@@ -105,7 +121,14 @@ function BeamArm:fireState()
     world.damageTiles(damagePositions, "foreground", self.firePosition, "beamish", self.beamTileDamage, 99)
     world.damageTiles(damagePositions, "background", self.firePosition, "beamish", self.beamTileDamage, 99)
   end
+    beamParams = {}
+    beamParams.timeToLive =  1
 
+    beamParams.speed =  120
+    beamParams.power =  self.applyBeamDamage
+    --FU Projectile spawn, to do scaled damage *******************************************************************************
+      world.spawnProjectile("fu_genericBlankProjectile", self.firePosition, self.driverId, self.aimVector , false, beamParams)
+    -- ***********************************************************************************************************************
   coroutine.yield()
 
   while stateTimer > 0 do

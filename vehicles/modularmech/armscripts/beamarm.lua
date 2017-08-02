@@ -8,7 +8,7 @@ end
 
 function BeamArm:update(dt)
   if self.state.state then
-    self.state:update()
+	self.state:update()
   end
 
   if not self.state.state then
@@ -64,30 +64,24 @@ end
 
 function BeamArm:fireState()
   local stateTimer = self.fireTime
-  
 
-	-- for FU scaling damage ********************************************************
-	--  self:statSet()  
-	--  self.mechTier = self.stats.power
-	--  pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
-	--  self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+  -- FU beam damage scaling *******************************************
+	  self:statSet()  
+	  self.mechTier = self.stats.power
+	  self.basePower = self.stats.basePower
 	  
-	--  pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage * self.mechTier
-	--  pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage * self.mechTier
-        -- Mech critical hits
-        --if self.critChance >= 100 then
-        --  self.mechBonus = self.mechBonus * 2
-        --end
-        
+          pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
+          self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+
+          self.applyBeamDamage = self.basePower * self.mechTier; 
+          --Mech critical hits
+		if self.critChance >= 100 then
+		  self.mechBonus = self.mechBonus * 2
+		end
+
           --apply final damage
-          --pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage + self.mechBonus
-          --pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage + self.mechBonus
-          
-          --sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)	  
-	  
-	  --********************************************************************************** 
-	  
-	  
+          self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
+  -- ********************************************************************
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
   local endPoint, beamCollision, beamLength = self:updateBeam()
@@ -100,14 +94,35 @@ function BeamArm:fireState()
   vehicle.setDamageSourceEnabled(self.armName .. "Beam", true)
 
   self.aimLocked = self.lockAim
-  
+    
   if beamCollision and self.beamTileDamage > 0 then
-    local maximumEndPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
-    local damagePositions = world.collisionBlocksAlongLine(self.firePosition, maximumEndPoint, nil, self.beamTileDamageDepth)
+    self.maximumEndPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
+    sb.logInfo("%s %s", self.firePosition, self.maximumEndPoint)
+    local damagePositions = world.collisionBlocksAlongLine(self.firePosition, self.maximumEndPoint, nil, self.beamTileDamageDepth)
     world.damageTiles(damagePositions, "foreground", self.firePosition, "beamish", self.beamTileDamage, 99)
     world.damageTiles(damagePositions, "background", self.firePosition, "beamish", self.beamTileDamage, 99)
   end
-
+    beamParams = {}
+    
+    beamParams.timeToLive =  1
+    if self.basePower == 0.15 then
+      beamParams.timeToLive =  0.1
+    elseif (self.basePower) == 1.5 then
+      beamParams.timeToLive =  0.22
+    elseif (self.basePower) == 2.5 then
+      beamParams.timeToLive =  0.22      
+    elseif (self.basePower) == 3 then
+      beamParams.timeToLive =  0.475
+    elseif (self.basePower) == 33 then
+      beamParams.timeToLive =  0.475      
+    end   
+    
+    beamParams.speed =  120
+    beamParams.power =  self.applyBeamDamage
+    --FU Projectile spawn, to do scaled damage *******************************************************************************
+      world.spawnProjectile("fu_genericBlankProjectile", self.firePosition, self.driverId, self.aimVector , false, beamParams)
+    -- ***********************************************************************************************************************
+    
   coroutine.yield()
 
   while stateTimer > 0 do

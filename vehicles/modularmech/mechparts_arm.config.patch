@@ -53,16 +53,26 @@
     "op": "replace",
     "path": "/teslastream/partParameters/projectileParameters/power",
     "value": 7
-  },
+  }, 
+  {
+    "op": "add",
+    "path": "/beamsniper/stats/basePower",
+    "value": 33
+  },  
   {
     "op": "replace",
     "path": "/beamsniper/damageSources/<armName>Beam/damage",
-    "value": 200
+    "value": 0
   },
+  {
+    "op": "add",
+    "path": "/beamdrill/stats/basePower",
+    "value": 2.5
+  },  
   {
     "op": "replace",
     "path": "/beamdrill/damageSources/<armName>Beam/damage",
-    "value": 5
+    "value": 0
   },
   
   {
@@ -410,8 +420,9 @@
     "path": "/fumechmining0",
     "value": {
       "stats": {
-        "power": 2,
-        "energy": 3
+        "power": 3,
+        "energy": 3,
+        "basePower" : 0.15
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/beamarm.lua",
@@ -439,16 +450,10 @@
           "enabled": false,
           "attachToPart": "<armName>",
           "line": [
-            [
-              3.25,
-              2.5
-            ],
-            [
-              33.25,
-              2.5
-            ]
+            [3.25,2.5],
+            [33.25,2.5]
           ],
-          "damage": 1,
+          "damage": 0,
           "damageSourceKind": "fireplasma",
           "damageRepeatTimeout": 0.1,
           "damageRepeatGroup": "<armName>Beam",
@@ -563,29 +568,21 @@
     "path": "/fumechmining1",
     "value": {
       "stats": {
-        "power": 3,
-        "energy": 5
+        "power": 4,
+        "energy": 4,
+        "basePower" : 1.5
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/beamarm.lua",
         "armClass": "BeamArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          3.25,
-          0
-        ],
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [3.25,0],
         "windupTime": 0.5,
         "fireTime": 0.1,
         "winddownTime": 0.5,
         "repeatFire": true,
         "lockAim": false,
-        "beamSourceOffset": [
-          3.25,
-          2.5625
-        ],
+        "beamSourceOffset": [3.25,2.5625],
         "beamHeight": 0.8,
         "beamLength": 30,
         "beamParticleDensity": 0.75,
@@ -597,16 +594,10 @@
           "enabled": false,
           "attachToPart": "<armName>",
           "line": [
-            [
-              3.25,
-              2.5
-            ],
-            [
-              33.25,
-              2.5
-            ]
+            [3.25,2.5],
+            [33.25,2.5]
           ],
-          "damage": 1.2,
+          "damage": 0,
           "damageSourceKind": "fireplasma",
           "damageRepeatTimeout": 0.1,
           "damageRepeatGroup": "<armName>Beam",
@@ -748,29 +739,21 @@
     "path": "/fumechmining2",
     "value": {
       "stats": {
-        "power": 4,
-        "energy": 6
+        "power": 6,
+        "energy": 6,
+        "basePower" : 3
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/beamarm.lua",
         "armClass": "BeamArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          3.25,
-          0
-        ],
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [3.25,0],
         "windupTime": 0.5,
         "fireTime": 0.1,
         "winddownTime": 0.5,
         "repeatFire": true,
         "lockAim": false,
-        "beamSourceOffset": [
-          3.25,
-          2.5625
-        ],
+        "beamSourceOffset": [3.25,2.5625],
         "beamHeight": 1,
         "beamLength": 60,
         "beamParticleDensity": 0.75,
@@ -781,17 +764,8 @@
         "<armName>Beam": {
           "enabled": false,
           "attachToPart": "<armName>",
-          "line": [
-            [
-              3.25,
-              2.5
-            ],
-            [
-              33.25,
-              2.5
-            ]
-          ],
-          "damage": 2,
+          "line": [[3.25,2.5],[33.25,2.5]],
+          "damage": 0,
           "damageSourceKind": "fireplasma",
           "damageRepeatTimeout": 0.1,
           "damageRepeatGroup": "<armName>Beam",
@@ -990,14 +964,8 @@
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
         "armClass": "GunArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          4.65,
-          -0.325
-        ],
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [4.65,-0.325],
         "extendTime": 1,
         "fireTime": 0.15,
         "projectileType": "densiniumrifleshotmech",
@@ -1043,14 +1011,8 @@
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
         "armClass": "GunArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          4.65,
-          -0.625
-        ],
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [4.65,-0.625],
         "extendTime": 1,
         "fireTime": 0.12,
         "projectileType": "gausscannonshot",
@@ -1095,14 +1057,8 @@
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
         "armClass": "GunArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          4.65,
-          -0.625
-        ],
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [4.65,-0.625],
         "extendTime": 1,
         "fireTime": 0.22,
         "projectileType": "lunarishotinitiatemech",
@@ -1147,14 +1103,8 @@
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
         "armClass": "GunArm",
-        "rotationLimits": [
-          -1.75,
-          1.75
-        ],
-        "fireOffset": [
-          4.65,
-          -0.625
-        ],
+        "rotationLimits": [-1.75,1.75],
+        "fireOffset": [4.65,-0.625],
         "extendTime": 1,
         "fireTime": 0.22,
         "projectileType": "lunarishotinitiatemech",
