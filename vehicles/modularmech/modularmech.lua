@@ -522,6 +522,7 @@ function update(dt)
     local energyDrain = self.energyDrain
     if not hasTouched(newControls) and not hasTouched(oldControls) then --(not hasFired) then 
       eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
+      eMult = eMult / 25
       energyDrain = -energyDrain*eMult
     end
     storage.energy = math.min(math.max(0, storage.energy - energyDrain * dt),self.energyMax)
