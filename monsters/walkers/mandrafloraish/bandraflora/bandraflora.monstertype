@@ -27,21 +27,48 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
 
-      "foundTargetActions" : [  ],
+      "foundTargetActions" : [ 
+        {
+          "name" : "action-statuseffect",
+          "parameters" : {
+          "effect" : "bandrafloraspawnbydamage",
+          "duration" : 600
+          }
+        }       
+       ],
 
       "fleeActions" : [],
 
       "hostileActions" : [
         {
-          "name" : "action-charge",
+          "name" : "action-fire",
+          "cooldown" : 0.5,
           "parameters" : {
-            "maximumRange" : 35,
+            "projectileCount" : 3,
+            "projectileType" : "poisonballoon",
+            "projectileParameters" : {},
+            "power" : 0,
+	    "fireState": "charge",
+	    "winddownState": "chargewinddown",
+	    "windupState": "chargewindup",
+	    "fireDelay" : 0.3,
+	    "fireArc" : true,
+	    "highArc" : true,
+            "maximumRange" : 7,
+            "minimumRange" : 0
+          }
+        },
+        {
+          "name" : "action-charge",
+	  "cooldown" : 3.0,
+          "parameters" : {
+            "maximumRange" : 15,
             "windupTime" : 0.6,
 
             "aimAtTarget" : true,
             "chargeTime" : 2,
-            "chargeSpeed" : 40,
-            "chargeControlForce" : 600,
+            "chargeSpeed" : 10,
+            "chargeControlForce" : 300,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
@@ -101,30 +128,9 @@
       ],
       
       "concurrentHostileActions" : [ 
-        {
-          "name" : "action-projectile",
-          "cooldown" : 0.5,
-          "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "poisonballoon",
-            "projectileParameters" : {},
-            "power" : 0,
-            "aimDirection" : [1, 1],
-            "inaccuracy" : 3.5,
-            "fireOffset" : [0, 0]
-          }
-        }       
       ],
       
       "concurrentActions" : [
-        {
-          "name" : "action-spawncompanions",
-          "parameters" : {
-            "maxCount" : 5,
-            "spawnCooldown" : 5.0,
-            "monsterType" : "bulbop2"
-          }
-        }       
       ],
       
       "wanderActions" : [
