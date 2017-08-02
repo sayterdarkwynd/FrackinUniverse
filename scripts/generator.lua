@@ -25,7 +25,6 @@ function update(dt)
   else
     storage.heat = math.max((storage.heat or 0) - dt*5,0)
   end
-  object.say(storage.heat)
   for i=1,#heat do
     if storage.heat >= heat[i].minheat then
 	  power.setPower(heat[i].power)
