@@ -1,36 +1,43 @@
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
+require '/scripts/power.lua'
 local recipes
 local deltaTime=0
 
 function init()
-	transferUtil.init()
-	self.mintick = config.getParameter("fu_mintick", 1)
-	self.timer = self.timer or self.mintick
-	self.crafting = false
-	self.output = nil
-	self.light = config.getParameter("lightColor")
+  if config.getParameter('powertype') then
+    power.init()
+	powered = true
+  else
+    powered = false
+  end
+  transferUtil.init()
+  self.mintick = config.getParameter("fu_mintick", 1)
+  self.timer = self.timer or self.mintick
+  self.crafting = false
+  self.output = nil
+  self.light = config.getParameter("lightColor")
 
-	self.techLevel = config.getParameter("fu_stationTechLevel", 1)
+  self.techLevel = config.getParameter("fu_stationTechLevel", 1)
 
-	storage.activeConsumption = false
-	if self.light then
-		object.setLightColor({0, 0, 0, 0})
-	end
+  storage.activeConsumption = false
+  if self.light then
+	object.setLightColor({0, 0, 0, 0})
+  end
 
-	recipes = getRecipes()
+  recipes = getRecipes()
 
 	-- generate reversed recipes here to avoid complicating the other code
-	local reversed = {}
-	for _, recipe in pairs(recipes) do
-		if recipe.reversible then
-			recipe.reversible = nil -- unmark it :-)
-			table.insert(reversed, { inputs = recipe.outputs, outputs = recipe.inputs, timeScale = recipe.timeScale })
-		end
+  local reversed = {}
+  for _, recipe in pairs(recipes) do
+	if recipe.reversible then
+	  recipe.reversible = nil -- unmark it :-)
+	  table.insert(reversed, { inputs = recipe.outputs, outputs = recipe.inputs, timeScale = recipe.timeScale })
 	end
-	for _, recipe in pairs(reversed) do
-		table.insert(recipes, recipe)
-	end
+  end
+  for _, recipe in pairs(reversed) do
+	table.insert(recipes, recipe)
+  end
 end
 
 function techlevelMap(v)
@@ -90,14 +97,6 @@ function update(dt)
 	else
 		deltaTime=deltaTime+dt
 	end
-	if config.getParameter("isn_requiredPower") and isn_hasRequiredPower() == false then
-		animator.setAnimationState("samplingarrayanim", "idle")
-		if self.light then
-			object.setLightColor({0, 0, 0, 0})
-		end
-		storage.activeConsumption = false
-		return
-	end
 
 	self.timer = self.timer - dt
 	if self.timer <= 0 then
@@ -119,6 +118,9 @@ function update(dt)
 			end
 		end
 	end
+	if powered then
+	  power.update(dt)
+	end
 end
 
 function startCrafting(result)
@@ -129,9 +131,12 @@ function startCrafting(result)
 
 		for k, v in pairs(result.inputs) do
 			-- if we ever do multiple inputs, FIXME undo partial consumption on failure
-			if not world.containerConsume(entity.id(), {item = k , count = techlevelMap(v)}) then
+			if not (world.containerAvailable(entity.id(),{item = k}) >= techlevelMap(v) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), {item = k , count = techlevelMap(v)})) then
 				return false
 			end
+		end
+		if powered and not power.consume(config.getParameter('isn_requiredPower')) then
+		  return false
 		end
                 self.timerMod = config.getParameter("fu_timerMod")
 		self.timer = ((techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)) + self.timerMod

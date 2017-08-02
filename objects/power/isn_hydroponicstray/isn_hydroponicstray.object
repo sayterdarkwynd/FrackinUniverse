@@ -3,7 +3,7 @@
   "printable" : false,
     "colonyTags" : [ "science" ],
   "rarity" : "rare",
-  "description" : "An advanced, powered growing tray. ^cyan;Requires ^orange;2u ^cyan;power^reset;",
+  "description" : "An advanced, powered growing tray. ^cyan;Requires ^orange;2W ^cyan;power^reset;",
   "shortdescription" : "^cyan;Hydroponics Tray^reset;",
   "race" : "generic",
   "category" : "wire",
@@ -32,9 +32,7 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/objects/power/isn_hydroponicstray/isn_hydroponicstray.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-				"/objects/isn_sharedobjectscripts.lua"],
+  "scripts" : [ "/scripts/power.lua","/objects/power/isn_hydroponicstray/isn_hydroponicstray.lua","/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 120,
 
   "animation" : "isn_hydroponicstray.animation",
@@ -47,7 +45,7 @@
 
   "inputNodes" : [ [1, 1] ],
   "outputNodes" : [ [1, 0] ],
-  "isn_powerReciever" : true,
+  "powertype" : "input",
   "isn_requiredPower" : 2,
   
   "isn_growthCap" : 50,

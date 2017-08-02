@@ -22,10 +22,8 @@
     }
   ],
   
-  "scripts" : [ "/objects/power/fu_powersensorlarge/fu_powersensorlarge.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 20,
+  "scripts" : [ "/scripts/power.lua","fu_powersensorlarge.lua" ],
+  "scriptDelta" : 60,
 
   "animation" : "fu_powersensorlarge.animation",
   "animationParts" : {
@@ -36,6 +34,5 @@
 
   "inputNodes" : [ [0, 0] ],
 
-  "isn_powerReciever" : true,
-  "isn_freePower" : true
+  "powertype" : "input"
 }

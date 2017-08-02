@@ -1,27 +1,25 @@
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
+require "/scripts/power.lua"
+
 local deltaTime=0
 function init()
+  power.init()
 	transferUtil.init()
 	object.setInteractive(true)
 	
-	if storage.growth == nil then storage.growth = 0 end
-	if storage.water == nil then storage.water = 0 end
-	if storage.fertSpeed == nil then storage.fertSpeed = false end
-	if storage.fertYield == nil then storage.fertYield = false end
-	if storage.fertSpeed2 == nil then storage.fertSpeed2 = false end
-	if storage.fertYield2 == nil then storage.fertYield2 = false end
-	if storage.fertSpeed3 == nil then storage.fertSpeed3 = false end
-	if storage.fertYield3 == nil then storage.fertYield3 = false end
-	if storage.yield == nil then storage.yield = 0 end
-	if storage.growthcap == nil then storage.growthcap = config.getParameter("isn_growthCap") end
-	if storage.activeConsumption == nil then storage.activeConsumption = false end
+	storage.growth = storage.growth or 0
+	storage.water = storage.water or 0
+	storage.yield = storage.yield or 0
+	storage.growthcap = storage.growthcap or config.getParameter("isn_growthCap")
+	storage.activeConsumption = storage.activeConsumption or false
 	storage.seedslot = 1
 	storage.waterslot = 2
 	storage.fertslot = 3
 end
 
 function update(dt)
+  power.update(dt)
 	if deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
@@ -29,14 +27,17 @@ function update(dt)
 		deltaTime=deltaTime+dt
 	end
 	storage.activeConsumption = false
-	if isn_hasRequiredPower() == false then
-		animator.setAnimationState("powlight", "off")
-		return
-	end
-	animator.setAnimationState("powlight", "on")
 	
 	if storage.currentseed == nil or storage.currentcrop == nil then
 		if isn_doSeedIntake() ~= true then return end
+	end
+	
+	if power.consume(config.getParameter('isn_requiredPower')*dt) then
+	  growthmod = 1
+	  animator.setAnimationState("powlight", "on")
+	else
+	  growthmod = 0.434782609
+	  animator.setAnimationState("powlight", "off")
 	end
 	
 	local growthperc = isn_getXPercentageOfY(storage.growth,storage.growthcap)
@@ -53,15 +54,15 @@ function update(dt)
 	if storage.water <= 0 and isn_doWaterIntake() ~= true then return end
 	storage.water = storage.water - 1
 	storage.activeConsumption = true
-	storage.growth = storage.growth + 1
-	if storage.fertSpeed == true then
-		storage.growth = storage.growth + 1
+	storage.growth = storage.growth + growthmod
+	if storage.fertSpeed then
+		storage.growth = storage.growth + growthmod
 	end
-	if storage.fertSpeed2 == true then
-	        storage.growth = storage.growth + 2
+	if storage.fertSpeed2 then
+	        storage.growth = storage.growth + growthmod * 2
 	end
-	if storage.fertSpeed3 == true then
-	        storage.growth = storage.growth + 3
+	if storage.fertSpeed3 then
+	        storage.growth = storage.growth + growthmod * 3
 	end	
 	if storage.growth >= storage.growthcap then
 		-- if connected to an object receiver, try to send the crop, else store locally
@@ -101,9 +102,9 @@ function isn_doSeedIntake()
 			storage.currentseed = key
 			storage.currentcrop = value
 			storage.yield = math.random(3,5)
-			if storage.fertYield == true then storage.yield = storage.yield * 2 end
-			if storage.fertYield2 == true then storage.yield = storage.yield * 3 end
-			if storage.fertYield3 == true then storage.yield = storage.yield * 4 end
+			if storage.fertYield then storage.yield = storage.yield * 2
+			elseif storage.fertYield2 then storage.yield = storage.yield * 3
+			elseif storage.fertYield3 then storage.yield = storage.yield * 4 end
 			world.containerConsume(entity.id(), {name = seed.name, count = 1, data={}})
 			return true
 		end
