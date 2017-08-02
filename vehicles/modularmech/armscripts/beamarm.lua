@@ -97,7 +97,7 @@ function BeamArm:fireState()
     
   if beamCollision and self.beamTileDamage > 0 then
     self.maximumEndPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
-    sb.logInfo("%s %s", self.firePosition, self.maximumEndPoint)
+    --sb.logInfo("%s %s", self.firePosition, self.maximumEndPoint)
     local damagePositions = world.collisionBlocksAlongLine(self.firePosition, self.maximumEndPoint, nil, self.beamTileDamageDepth)
     world.damageTiles(damagePositions, "foreground", self.firePosition, "beamish", self.beamTileDamage, 99)
     world.damageTiles(damagePositions, "background", self.firePosition, "beamish", self.beamTileDamage, 99)
