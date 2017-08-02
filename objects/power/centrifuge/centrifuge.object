@@ -3,7 +3,7 @@
   "colonyTags" : [ "science", "machines" ],
   "printable" : false,
   "rarity" : "uncommon",
-  "description" : "This advanced centrifuge efficiently separates immiscible liquids. ^cyan;Requires ^orange;5u ^cyan;power.^reset;",
+  "description" : "This advanced centrifuge efficiently separates immiscible liquids. ^cyan;Requires ^orange;5W ^cyan;power.^reset;",
   "shortdescription" : "^cyan;Lab Centrifuge^reset;",
   "subtitle" : "Extract items from resources",
   "race" : "generic",
@@ -32,9 +32,7 @@
     "centrifugefullbright" : "centrifugefullbright.png"
   },
 
-  "scripts" : [ "/objects/bees/centrifuge.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-                "/objects/isn_sharedobjectscripts.lua" ],
+  "scripts" : [ "/scripts/power.lua", "/objects/bees/centrifuge.lua" ],
                 
   "scriptDelta" : 25,
   "recipeGroup" : "centrifuge",
@@ -44,7 +42,7 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
-  "craftDelay": 1,
+  "craftDelay": 0.416666667,
   "itemChances": {
     "rarest": 0.01,
     "rare": 0.05,
@@ -59,6 +57,6 @@
   "outputNodes" : [ [0, 0] ],
 
   "centrifugeType" : "liquid",
-  "isn_powerReciever" : true,
+  "powertype" : "input",
   "isn_requiredPower" : 5
 }

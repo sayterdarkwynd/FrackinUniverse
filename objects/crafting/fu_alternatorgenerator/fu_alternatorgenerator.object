@@ -5,7 +5,7 @@
   "category" : "wire",
   "objectType" : "container",
   "price" : 200,
-  "description" : "A wood, coal or water burning power source. Max of 4u power.",
+  "description" : "A wood, coal or water burning power source. Max of 4W power.",
   "shortdescription" : "^cyan;Alternator Generator^white;",
   "race" : "generic",
   "printable" : false,
@@ -35,19 +35,25 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "fu_alternatorgenerator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 70,
+  "scripts" : [ "/scripts/power.lua","/scripts/generator.lua"],
+  "scriptDelta" : 60,
   
   "inputNodes" : [ [2, 2] ],
   "outputNodes" : [ [2, 1] ],
   
-  "isn_powerSupplier" : true,
+  "powertype" : "output",
   "acceptablefuel" : {
 	  "liquidwater" : 4,
 	  "waterbucket" : 4,
 	  "coalore" : 7,
 	  "logblock" : 7
-  }
+  },
+  "heat" : [
+    {"minheat" : 90,"animator" : {"screen" : "on","fans" : "on"},"sound" : true,"power" : 4,"light" : [166,166,166]},
+    {"minheat" : 70,"animator" : {"screen" : "on","fans" : "on"},"sound" : true,"power" : 3,"light" : [100,100,100]},
+    {"minheat" : 50,"animator" : {"screen" : "on","fans" : "on"},"sound" : true,"power" : 2,"light" : [100,100,100]},
+    {"minheat" : 30,"animator" : {"screen" : "on","fans" : "on"},"sound" : false,"power" : 1,"light" : [50,50,50]},
+    {"minheat" : 10,"animator" : {"screen" : "on","fans" : "on"},"sound" : false,"power" : 0,"light" : [50,50,50]},
+    {"minheat" : 0,"animator" : {"screen" : "off","fans" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
+  ]
 }

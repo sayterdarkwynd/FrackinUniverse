@@ -4,7 +4,7 @@
     "colonyTags" : [ "science" ],
   "category" : "wire",
   "price" : 2500,
-  "description" : "Uses sunlight to generate electricity. It can generate up to 2u of power in optimal conditions.",
+  "description" : "Uses sunlight to generate electricity. It can generate up to 2W of power in optimal conditions.",
   "shortdescription" : "^cyan;Solar Panel^reset;",
   "race" : "generic",
   "printable" : false,
@@ -33,12 +33,11 @@
   },
   "animationPosition" : [0, 0],
   
-  "scripts" : [ "/objects/power/isn_solarpanel/isn_solarpanel.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 50,
+  "scripts" : [ "/scripts/power.lua","isn_solarpanel.lua" ],
+  "scriptDelta" : 60,
   
   "outputNodes" : [ [2, 1] ],
   
-  "isn_powerSupplier" : true
+  "isn_powerSupplier" : true,
+  "powertype" : "output"
 }
