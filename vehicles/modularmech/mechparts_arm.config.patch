@@ -959,7 +959,7 @@
                 "animationCustom": {
                     "sounds": {
                         "<armName>Fire": [
-                            "/sfx/gun/pulsecannon_blast1.ogg"
+                            "/sfx/weapons/densiniumrifle.ogg"
                         ]
                     }
                 }
@@ -1054,7 +1054,7 @@
 				}
 			      },
 			      "sounds" : {
-				"<armName>Fire" : ["/sfx/gun/pulsecannon_blast1.ogg"]
+				"<armName>Fire" : ["/sfx/weapons/rifle2.ogg"]
 			      }                
                 }
             }
@@ -1386,20 +1386,22 @@
             "value": {
                 "stats": {
                     "power": 5,
-                    "energy": 4,
-                    "rapidFire": 5
+                    "energy": 5,
+                    "rapidFire": 3,
+                    "multicount" : 4
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
                     "armClass": "GatlingArm",
                     "rotationLimits": [-1.75, 1.75],
                     "fireOffset": [7.75, 0.0],
-                    "windupTime": 0.5,
-                    "fireTime": 0.15,
+                    "windupTime": 1.2,
+                    "fireTime": 0.14,
+                    "projectileCount" : 2,
                     "projectileType": "heavybullet",
                     "projectileParameters": {
-                        "power": 0.05,
-                        "timeToLive": 1.18
+                        "power": 0.008,
+                        "timeToLive": 1.0
                     },
                     "projectileInaccuracy": 0.045
                 },
@@ -1499,7 +1501,7 @@
                     },
                     "sounds": {
                         "<armName>Fire": [
-                            "/sfx/gun/mech_gatling1.ogg"
+                            "/sfx/weapons/fugauss.ogg"
                         ]
                     }
                 }
