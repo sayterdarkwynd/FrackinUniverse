@@ -984,7 +984,7 @@
                     "projectileCount": 1,
                     "projectileInaccuracy": 0.05,
                     "projectileParameters": {
-                        "power": 0.135
+                        "power": 0.08
                     }
                 },
                 "partImages": {
@@ -1465,11 +1465,12 @@
         }, {
             "op": "add",
             "path": "/xsm_roninbeam/stats/basePower",
-            "value": 33
+            "value": 0.05
         }, {
             "op": "add",
             "path": "/xsm_roninbeam/damageSources/<armName>Beam/damage",
             "value": 0
+            
         }
     ],
  
@@ -1479,7 +1480,7 @@
         }, {
             "op": "add",
             "path": "/xsm_thetabeam/stats/basePower",
-            "value": 30
+            "value": 2.25
         }, {
             "op": "replace",
             "path": "/xsm_thetabeam/damageSources/<armName>Beam/damage",
@@ -1493,11 +1494,11 @@
         }, {
             "op": "add",
             "path": "/xsm_sigmagun/partParameters/projectileParameters/power",
-            "value": 0.1
+            "value": 0.25
         }, {
             "op": "add",
             "path": "/xsm_sigmagun/stats/rapidFire",
-            "value": 5
+            "value": 4
         }
     ],
  
@@ -1507,11 +1508,11 @@
         }, {
             "op": "replace",
             "path": "/xsm_elitesigmagun/partParameters/projectileParameters/power",
-            "value": 0.1
+            "value": 0.3
         }, {
             "op": "add",
             "path": "/xsm_elitesigmagun/stats/rapidFire",
-            "value": 4.5
+            "value": 3.5
         }
     ],
  
@@ -1521,11 +1522,11 @@
         }, {
             "op": "replace",
             "path": "/xsm_piraterhogun/partParameters/projectileParameters/power",
-            "value": 1
+            "value": 0.33
         }, {
             "op": "add",
             "path": "/xsm_piraterhogun/stats/rapidFire",
-            "value": 4
+            "value": 5
         }
     ],
  
@@ -1535,13 +1536,13 @@
         }, {
             "op": "replace",
             "path": "/xsm_rhoblade/partParameters/projectileParameters/power",
-            "value": 30
+            "value": 12
         }
     ],
  
     [{
             "op": "test",
-            "path": "/dva_shotgunarm"
+            "path": "/xsm_pyrocutlass"
         }, {
             "op": "replace",
             "path": "/xsm_pyrocutlass/partParameters/projectileParameters/power",
@@ -1555,7 +1556,7 @@
         }, {
             "op": "replace",
             "path": "/dva_shotgunarm/partParameters/projectileParameters/power",
-            "value": 4
+            "value": 0.5
         }, {
             "op": "add",
             "path": "/dva_shotgunarm/stats/multicount",
@@ -1579,6 +1580,11 @@
         }, {
             "op": "replace",
             "path": "/xsm_sigmanade/partParameters/projectileParameters/power",
+            "value": 0.062
+        }, 
+        {
+            "op": "add",
+            "path": "/xsm_sigmanade/stats/multicount",
             "value": 20
         }
     ],
@@ -1589,7 +1595,12 @@
         }, {
             "op": "replace",
             "path": "/xsm_elitesigmanade/partParameters/projectileParameters/power",
-            "value": 22
+            "value": 0.06
+        }, 
+        {
+            "op": "add",
+            "path": "/xsm_sigmanade/stats/multicount",
+            "value": 20
         }
     ],
  
@@ -1599,6 +1610,11 @@
         }, {
             "op": "replace",
             "path": "/xsm_thetanade/partParameters/projectileParameters/power",
+            "value": 0.059
+        }, 
+        {
+            "op": "add",
+            "path": "/xsm_sigmanade/stats/multicount",
             "value": 20
         }
     ],
