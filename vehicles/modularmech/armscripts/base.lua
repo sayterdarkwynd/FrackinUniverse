@@ -178,6 +178,12 @@ function MechArm:fire()
         end
         
         --apply final damage
+        
+        if (self.mechBonus) >= (self.stats.power) then
+          self.randbonus = (1+ (self.mechBonus/100)) + math.random(6)
+          self.mechBonus = self.mechBonus + self.randbonus
+        end        
+        
           pParams.power = pParams.power + self.mechBonus
           --sb.logInfo("power total = "..pParams.power)
       --end

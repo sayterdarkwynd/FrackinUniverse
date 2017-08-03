@@ -53,7 +53,7 @@ function BeamArm:statSet()
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechBonus = ((self.mechBonusBody  /1.4) + (self.mechBonusBooster/ 2) + (self.mechBonusLegs / 1.7)) *2
+        self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
         self.energyMax = self.parts.body.energyMax
         self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
         self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
@@ -84,6 +84,11 @@ function BeamArm:fireState()
 		end
 
           --apply final damage
+        if (self.mechBonus) >= (self.stats.power) then
+          self.randbonus = (1+ (self.mechBonus/100)) + math.random(6)
+          self.mechBonus = self.mechBonus + self.randbonus
+        end 
+        
           self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
   -- ********************************************************************
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
