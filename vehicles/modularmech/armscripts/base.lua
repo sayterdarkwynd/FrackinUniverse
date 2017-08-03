@@ -95,6 +95,7 @@ end
 
 
 function MechArm:statSet()
+        self.mechBonusWeapon = self.stats.power + self.stats.energy
         self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
@@ -104,8 +105,6 @@ function MechArm:statSet()
         self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
         self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
         storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
-        --sb.logInfo("total mech part bonus = "..self.mechBonus)
-        
 end
 
 function MechArm:fire()
@@ -179,9 +178,9 @@ function MechArm:fire()
         
         --apply final damage
         
-        if (self.mechBonus) >= (self.stats.power) then
-          self.randbonus = (1+ (self.mechBonus/100)) + math.random(6)
-          self.mechBonus = self.mechBonus + self.randbonus
+        if (self.mechBonus) >= (self.mechBonusWeapon) then
+          self.randbonus = (self.mechBonus/100) * self.mechTier
+          self.mechBonus = self.mechBonus * (1 + self.randbonus)
         end        
         
           pParams.power = pParams.power + self.mechBonus
