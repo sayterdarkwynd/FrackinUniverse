@@ -1,0 +1,25 @@
+{
+  "projectileName" : "gausspistolshotmech",
+  "image" : "gausspistolshot.png",
+  "animationCycle" : 0.6,
+  "level" : 4,
+  "frameNumber" : 6,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [110, 80, 110],
+  "power" : 0,
+  "speed" : 65,
+  "timeToLive" : 0.8,
+  "knockback" : 2,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smallregularexplosion/smallregularexplosionmech.config"
+    }
+  ],
+  //"damageKind" : "fireplasma",
+  "damageKind" : "nodamage",
+  "physics" : "bullet",
+  "emitters" : [ "sparks" ]
+}

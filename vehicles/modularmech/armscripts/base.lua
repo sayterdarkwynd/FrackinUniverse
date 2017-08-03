@@ -161,7 +161,7 @@ function MechArm:fire()
 	end	        
 
         -- Mech critical hits
-        if self.stats.rapidFire then 
+        if (self.stats.rapidFire) then 
           self.critMod = self.stats.rapidFire / 10
           self.critChance = self.critChance * self.critMod
         end
@@ -174,8 +174,8 @@ function MechArm:fire()
             self.mechBonus = self.mechBonus * 2
             storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
           end
-          
         end
+        
         --apply final damage
           pParams.power = pParams.power + self.mechBonus
           --sb.logInfo("power total = "..pParams.power)

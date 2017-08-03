@@ -43,11 +43,16 @@
     "op": "add",
     "path": "/gatling/stats/rapidFire",
     "value": 1
-  },     
+  },    
+  {
+    "op": "add",
+    "path": "/dualrifle/stats/multicount",
+    "value": 2
+  },  
   {
     "op": "replace",
     "path": "/dualrifle/partParameters/projectileParameters/power",
-    "value": 4.2
+    "value": 2.2
   },
   {
     "op": "add",
@@ -996,7 +1001,7 @@
         "projectileCount" : 1,
         "projectileInaccuracy": 0.06,
         "projectileParameters": {
-          "power": 3.25
+          "power": 2.4
         }
       },
       "partImages": {
@@ -1031,19 +1036,20 @@
       "stats": {
         "power": 3,
         "energy": 3,
-        "rapidFire" : 3
+        "rapidFire" : 25
       },
       "partParameters": {
         "script": "/vehicles/modularmech/armscripts/gunarm.lua",
         "armClass": "GunArm",
         "rotationLimits": [-1.75,1.75],
-        "fireOffset": [4.65,-0.625],
+        "fireOffset": [3.65,0],
         "extendTime": 1,
-        "fireTime": 0.12,
-        "projectileType": "gausscannonshot",
+        "fireTime": 0.15,
+        "projectileType": "gausspistolshotmech",
         "projectileCount" : 1,
+        "projectileInaccuracy" : 0.05,
         "projectileParameters": {
-          "power": 6
+          "power": 0.2
         }
       },
       "partImages": {
@@ -1182,7 +1188,7 @@
         "cooldownTime": 1,
         "projectileType": "isn_fusioncannon0mech",
         "projectileParameters": {
-          "power": 31.5
+          "power": 40
         }
       },
       "partImages": {
@@ -1405,7 +1411,7 @@
     "value": {
       "stats": {
         "power": 5,
-        "energy": 5,
+        "energy": 4,
         "rapidFire" : 5
       },
       "partParameters": {
@@ -1413,11 +1419,12 @@
         "armClass": "GatlingArm",
         "rotationLimits": [-1.75, 1.75],
         "fireOffset": [7.75,0.0],
-        "windupTime": 1,
-        "fireTime": 0.08,
+        "windupTime": 0.5,
+        "fireTime": 0.15,
         "projectileType": "mechdual",
         "projectileParameters": {
-          "power": 0.05
+          "power": 0.05,
+          "timeToLive" : 1.18
         },
         "projectileInaccuracy": 0.045
       },
