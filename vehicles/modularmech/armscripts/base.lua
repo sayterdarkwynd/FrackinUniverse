@@ -105,6 +105,7 @@ function MechArm:statSet()
         self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
         storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
         --sb.logInfo("total mech part bonus = "..self.mechBonus)
+        
 end
 
 function MechArm:fire()
