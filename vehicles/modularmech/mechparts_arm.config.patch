@@ -971,20 +971,21 @@
                 "stats": {
                     "power": 3,
                     "energy": 3,
-                    "rapidFire": 25
+                    "rapidFire": 5
                 },
                 "partParameters": {
-                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-                    "armClass": "GunArm",
+                    "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
+                    "armClass": "GatlingArm",
                     "rotationLimits": [-1.75, 1.75],
                     "fireOffset": [3.65, 0],
                     "extendTime": 1,
+                    "windupTime" : 0.4,
                     "fireTime": 0.15,
                     "projectileType": "gausspistolshotmech",
                     "projectileCount": 1,
-                    "projectileInaccuracy": 0.05,
+                    "projectileInaccuracy": 0.04,
                     "projectileParameters": {
-                        "power": 0.08
+                        "power": 0.04
                     }
                 },
                 "partImages": {
@@ -1004,11 +1005,57 @@
                     "373737"
                 ],
                 "animationCustom": {
-                    "sounds": {
-                        "<armName>Fire": [
-                            "/sfx/gun/pulsecannon_blast1.ogg"
-                        ]
-                    }
+			"animatedParts" : { "stateTypes" : { "<armName>" : {
+				"states" : {
+				  "windup" : {
+				    "properties" : {
+				      "persistentSound" : "/sfx/gun/mech_gatling_windup.ogg",
+				      "persistentSoundRangeMultiplier" : 1.0,
+				      "persistentSoundStopTime" : 0.2
+				    }
+				  },
+				  "active" : {
+				    "cycle" : 0.3
+				  },
+				  "winddown" : {
+				    "properties" : {
+				      "persistentSound" : "/sfx/gun/mech_gatling_winddown.ogg",
+				      "persistentSoundRangeMultiplier" : 1.0,
+				      "persistentSoundStopTime" : 0.2
+				    }
+				  }
+				}
+			      }}},
+			      "particleEmitters" : {
+				"<armName>Fire" : {
+				  "active" : false,
+				  "burstCount" : 3,
+				  "anchorPart" : "<armName>",
+				  "particles" : [
+				    { "particle" : {
+					"type" : "ember",
+					"size" : 1.0,
+					"position" : [3.5, 3.0],
+					"color" : [200, 150, 0, 255],
+					"light" : [100, 100, 50],
+					"fullbright" : true,
+					"fade" : 0.9,
+					"initialVelocity" : [20.0, 0],
+					"finalVelocity" : [0.0, -40.0],
+					"approach" : [0, 30],
+					"timeToLive" : 0.2,
+					"layer" : "middle",
+					"variance" : {
+					  "initialVelocity" : [5, 5],
+					  "timeToLive" : 0.1
+					}
+				      } }
+				  ]
+				}
+			      },
+			      "sounds" : {
+				"<armName>Fire" : ["/sfx/gun/pulsecannon_blast1.ogg"]
+			      }                
                 }
             }
         }, {
@@ -1017,7 +1064,8 @@
             "value": {
                 "stats": {
                     "power": 3,
-                    "energy": 3
+                    "energy": 4,
+                    "multicount" : 2
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/gunarm.lua",
@@ -1029,7 +1077,7 @@
                     "projectileType": "lunarishotinitiatemech",
                     "projectileCount": 1,
                     "projectileParameters": {
-                        "power": 4
+                        "power": 1.2
                     }
                 },
                 "partImages": {
@@ -1348,7 +1396,7 @@
                     "fireOffset": [7.75, 0.0],
                     "windupTime": 0.5,
                     "fireTime": 0.15,
-                    "projectileType": "mechdual",
+                    "projectileType": "heavybullet",
                     "projectileParameters": {
                         "power": 0.05,
                         "timeToLive": 1.18
