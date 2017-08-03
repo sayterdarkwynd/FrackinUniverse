@@ -1,0 +1,23 @@
+{
+  "projectileName" : "irradiummecharm",
+  "image" : "fuicebeam.png",
+  "animationCycle" : 0.5,  
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 4,
+  "power" : 1,  
+  "timeToLive" : 1.2,
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmaboomsmall/plasmaboomsmall4.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "isn_irradiator_cloud2",
+      "inheritDamageFactor" : 0.15
+    }
+  ],
+  "lightColor" : [0, 0, 123],
+  "damageKind" : "radioactive",
+  "statusEffects" : [ "radiationburn" ]
+}

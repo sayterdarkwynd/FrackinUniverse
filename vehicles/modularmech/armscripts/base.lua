@@ -27,11 +27,12 @@ function MechArm:update(dt)
   -- not implemented
 end
 
-function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, crouchValue)
+function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, crouchValue, parts)
   self.crouchValue = crouchValue -- lpk: save crouch for use in shoulderPosition()
   self.driverId = driverId
   self.isFiring = isFiring
   self.wasFiring = wasFiring
+  self.parts = copy(parts) -- for FU. Access with  self.parts.<partname>.stats  (self.parts.body.stats.protection )
   self.fireTriggered = isFiring and not wasFiring
   if self.frontPartImages or self.backPartImages then
     self:updateAnimationSide(facingDirection)
@@ -92,11 +93,27 @@ function MechArm:rayCheck(firePosition)
   return not world.lineTileCollision(mcontroller.position(), firePosition)
 end
 
+
+function MechArm:statSet()
+        self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
+        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
+        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
+        self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
+        self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
+        self.energyMax = self.parts.body.energyMax
+        self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
+        self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
+        storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
+        --sb.logInfo("total mech part bonus = "..self.mechBonus)
+end
+
 function MechArm:fire()
   local projectileIds = {}
 
   if self.aimAngle and self.aimVector and self.firePosition and self:rayCheck(self.firePosition) then
     local pParams = copy(self.projectileParameters)
+    local pParams2 = config.getParameter("") --copy(self.damageSources) -- for FU, beam weapons etc
+    
     if not self.projectileTrackSource and mcontroller.zeroG() then
       pParams.referenceVelocity = mcontroller.velocity()
     else
@@ -132,8 +149,36 @@ function MechArm:fire()
       end
 
       -- apply FU damage bonus , to tier Mech damage
-        self.mechTier = (self.stats.power + self.stats.energy) /2
-        pParams.power = pParams.power * self.mechTier
+        self:statSet()
+        self.mechTier = self.stats.power
+        self.multicount = self.stats.multicount
+        self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+
+	if self.multicount then
+	  pParams.power = (pParams.power / self.multicount) * self.mechTier
+	else
+	  pParams.power = (pParams.power * self.mechTier) 
+	end	        
+
+        -- Mech critical hits
+        if (self.stats.rapidFire) then 
+          self.critMod = self.stats.rapidFire / 10
+          self.critChance = self.critChance * self.critMod
+        end
+        
+        if (self.critChance) >= 100 then
+          if self.multicount then
+            self.mechBonus = (self.mechBonus * 2) / self.multicount
+            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
+          else
+            self.mechBonus = self.mechBonus * 2
+            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
+          end
+        end
+        
+        --apply final damage
+          pParams.power = pParams.power + self.mechBonus
+          --sb.logInfo("power total = "..pParams.power)
       --end
       
       local projectileId = world.spawnProjectile(

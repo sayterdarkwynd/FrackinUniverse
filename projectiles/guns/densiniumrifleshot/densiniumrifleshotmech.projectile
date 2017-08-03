@@ -1,0 +1,36 @@
+{
+  "projectileName" : "densiniumrifleshotmech",
+  "physics" : "laser",
+  "bounces" : 0,
+  "speed" : 45,
+  "timeToLive" : 0.01,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [0, 60, 160],
+  "image" : "densiniumrifleshot.png",
+  "animationCycle" : 0.4,
+    "fullbright" : true,
+  "frameNumber" : 6,
+  "animationLoops" : false,
+  "power" : 0,
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : false,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "densiniumrifleshot2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : -4
+    },  
+    {
+      "action" : "projectile",
+      "type" : "densiniumrifleshot2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 4
+    }
+  ],
+  "damageKind" : "electric",
+  "emitters" : [ "iceplasma" ]
+}

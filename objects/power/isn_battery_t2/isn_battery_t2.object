@@ -4,8 +4,8 @@
     "colonyTags" : [ "science" ],
   "category" : "wire",
   "price" : 4500,
-  "description" : "A power storage unit. Stores up to 2500u of power and dispenses 5u when connected.",
-  "shortdescription" : "^cyan;2500u 5v Battery Unit^white;",
+  "description" : "A power storage unit. Stores up to 2500J of power and dispenses 5W when connected.",
+  "shortdescription" : "^cyan;2500J 5W Battery Unit^white;",
   "race" : "generic",
   "printable" : false,
   "learnBlueprintsOnPickup" : [ "isn_battery_t3_ceru", "fu_liquidcondenser" ],
@@ -34,13 +34,12 @@
   "scripts" : [ "/objects/power/isn_battery.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 50,
+  "scriptDelta" : 60,
 
   "outputNodes" : [ [1, 3] ],
   "inputNodes" : [ [0, 1], [2, 1] ],
 
-  "isn_powerSupplier" : true,
-  "isn_powerReciever" : true,
   "isn_batteryCapacity" : 2500,
-  "isn_batteryVoltage" : 5
+  "isn_batteryVoltage" : 5,
+  "powertype" : "battery"
 }

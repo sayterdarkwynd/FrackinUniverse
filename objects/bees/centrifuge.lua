@@ -1,36 +1,39 @@
 require "/objects/generic/centrifuge_recipes.lua"
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
+require '/scripts/power.lua'
 local deltaTime=0
 
 
 function init()
+  if config.getParameter('powertype') then
+    power.init()
+	powered = true
+  else
+    powered = false
+  end
   transferUtil.init()
-	storage.currentinput = nil
-	storage.currentoutput = nil
-	storage.bonusoutputtable = nil
-	storage.activeConsumption = false
+  storage.currentinput = nil
+  storage.currentoutput = nil
+  storage.bonusoutputtable = nil
+  storage.activeConsumption = false
 
-	self.centrifugeType = config.getParameter("centrifugeType") or error("centrifugeType is undefined in .object file") -- die horribly
+  self.centrifugeType = config.getParameter("centrifugeType") or error("centrifugeType is undefined in .object file") -- die horribly
 
-	self.itemChances = config.getParameter("itemChances")
-	self.inputSlot = config.getParameter("inputSlot",1)
+  self.itemChances = config.getParameter("itemChances")
+  self.inputSlot = config.getParameter("inputSlot",1)
 
-	self.needsPower = config.getParameter("isn_powerReciever",false)
+  self.initialCraftDelay = config.getParameter("craftDelay",0)
+  storage.craftDelay = storage.craftDelay or self.initialCraftDelay
+  storage.combsProcessed = storage.combsProcessed or { count = 0 }
+  --sb.logInfo("centrifuge: %s", storage.combsProcessed)
 
-	self.initialCraftDelay = config.getParameter("craftDelay",0)
-	storage.craftDelay = storage.craftDelay or self.initialCraftDelay
-	storage.combsProcessed = storage.combsProcessed or { count = 0 }
-	--sb.logInfo("centrifuge: %s", storage.combsProcessed)
-
-	self.combsPerJar = 3 -- ref. recipes
+  self.combsPerJar = 3 -- ref. recipes
 
   self.recipeTable = getRecipes()
   self.recipeTypes = self.recipeTable.recipeTypes[self.centrifugeType]
 
-	storage.init = true
-
-	object.setInteractive(true)
+  object.setInteractive(true)
 end
 
 function deciding(item)
@@ -43,43 +46,44 @@ function deciding(item)
 end
 
 function update(dt)
-	if deltaTime>1 then
-		transferUtil.loadSelfContainer()
-		deltaTime=0
-	else
-		deltaTime=deltaTime+dt
+  if deltaTime>1 then
+	transferUtil.loadSelfContainer()
+	deltaTime=0
+  else
+	deltaTime=deltaTime+dt
+  end
+  local input = world.containerItemAt(entity.id(),self.inputSlot-1)
+  if input then
+	local output = deciding(input)
+	if output and (not powered or power.consume(config.getParameter("isn_requiredPower")*config.getParameter("craftDelay"))) then
+	  workingCombs(input, output, dt)
+	  animator.setAnimationState("centrifuge", "working")
+	  storage.activeConsumption = true
+	  return
 	end
-	local input = world.containerItems(entity.id())[self.inputSlot]
-	if not self.needsPower or isn_hasRequiredPower() then
-		if input then
-			local output = deciding(input)
-			if output then
-				workingCombs(input, output)
-				animator.setAnimationState("centrifuge", "working")
-				storage.activeConsumption = true
-				return
-			end
-		end
-                
-		if storage.combsProcessed and storage.combsProcessed.count > 0 then
-			-- discard the stash if unclaimed by a jarrer within a reasonable time (twice the craft delay)
-			storage.combsProcessed.stale = (storage.combsProcessed.stale or (self.initialCraftDelay * 2)) - 1
-			if storage.combsProcessed.stale == 0 then
-				drawHoney() -- effectively clear the stash, stopping the jarrer from getting it
-			end
-		end
-	end
+  end
 
-	if (self.needsPower and isn_hasRequiredPower() == false) or storage.currentoutput == nil or clearSlotCheck(storage.currentoutput) == false then
-		animator.setAnimationState("centrifuge", "idle")
-		storage.craftDelay = self.initialCraftDelay
-		storage.activeConsumption = false
-		return
+  if storage.combsProcessed and storage.combsProcessed.count > 0 then
+	-- discard the stash if unclaimed by a jarrer within a reasonable time (twice the craft delay)
+	storage.combsProcessed.stale = (storage.combsProcessed.stale or (self.initialCraftDelay * 2)) - dt
+	if storage.combsProcessed.stale == 0 then
+	  drawHoney() -- effectively clear the stash, stopping the jarrer from getting it
 	end
+  end
+
+  if storage.currentoutput == nil or clearSlotCheck(storage.currentoutput) == false then
+	animator.setAnimationState("centrifuge", "idle")
+	storage.craftDelay = self.initialCraftDelay
+	storage.activeConsumption = false
+	return
+  end
+  if powered then
+    power.update(dt)
+  end
 end
 
-function workingCombs(input, output)
-	storage.craftDelay = storage.craftDelay - 1
+function workingCombs(input, output, dt)
+	storage.craftDelay = storage.craftDelay - dt
 
 	if storage.craftDelay <= 0 then
 		storage.craftDelay = self.initialCraftDelay
@@ -133,9 +137,9 @@ end
 
 -- Called by the honey jarrer
 function drawHoney()
-	if not storage.combsProcessed or storage.combsProcessed.count == 0 then return nil end
-	local ret = storage.combsProcessed
-	storage.combsProcessed = { count = 0 }
-	--sb.logInfo("STASH: Withdrawing")
-	return ret
+  if not storage.combsProcessed or storage.combsProcessed.count == 0 then return nil end
+  local ret = storage.combsProcessed
+  storage.combsProcessed = { count = 0 }
+  --sb.logInfo("STASH: Withdrawing")
+  return ret
 end

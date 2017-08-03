@@ -106,6 +106,7 @@ function init()
 
   self.protection = self.parts.body.protection
 
+
   -- setup boosters
 
   self.airControlSpeed = self.parts.booster.airControlSpeed
@@ -202,8 +203,8 @@ function init()
   
   self.crouch = 0.0 -- 0.0 ~ 1.0
   self.crouchTarget = 0.0
-  self.crouchCheckMax = 7.0
-  self.bodyCrouchMax = -4.0
+  self.crouchCheckMax = 20.0 --[[ dafuq does this mean? check --]]
+  self.bodyCrouchMax = -2.0
   self.hipCrouchMax = 2.0
   
   self.crouchSettings = config.getParameter("crouchSettings")
@@ -521,6 +522,7 @@ function update(dt)
     local energyDrain = self.energyDrain
     if not hasTouched(newControls) and not hasTouched(oldControls) then --(not hasFired) then 
       eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
+      eMult = eMult / 25
       energyDrain = -energyDrain*eMult
     end
     storage.energy = math.min(math.max(0, storage.energy - energyDrain * dt),self.energyMax)
@@ -650,7 +652,7 @@ function update(dt)
     animator.resetTransformationGroup(arm .. "Arm")
     animator.resetTransformationGroup(arm .. "ArmFlipper")
 
-    self[arm .. "Arm"]:updateBase(dt, self.driverId, newControls[fireControl], oldControls[fireControl], self.aimPosition, self.facingDirection, self.crouch * self.bodyCrouchMax)
+    self[arm .. "Arm"]:updateBase(dt, self.driverId, newControls[fireControl], oldControls[fireControl], self.aimPosition, self.facingDirection, self.crouch * self.bodyCrouchMax, self.parts) --FU adds self.parts
     self[arm .. "Arm"]:update(dt)
 
     if self.facingDirection < 0 then

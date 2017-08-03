@@ -2,7 +2,7 @@
   "objectName" : "isn_radiostationnew",
   "printable" : false,
   "rarity" : "Rare",
-  "description" : "Picks up on faster-than-light communications. Allows purchase of goods. Requires 4u of power.",
+  "description" : "Picks up on faster-than-light communications. Allows purchase of goods. Requires 4W of power.",
   "shortdescription" : "^cyan;Ansible Network^white;",
   "race" : "generic",
   "category" : "wire",
@@ -18,9 +18,7 @@
     }
   ],
   
-  "scripts" : [ "/objects/power/isn_radiostation/isn_radiostation.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
+  "scripts" : [ "/scripts/power.lua", "isn_radiostation.lua" ],
   "scriptDelta" : 60,
 
   "animation" : "isn_radiostationnew.animation",
@@ -31,7 +29,7 @@
   "animationPosition" : [0, 0],
 
   "inputNodes" : [ [1, 1] ],
-  "isn_powerReciever" : true,
+  "powertype" : "input",
   "isn_requiredPower" : 4,
   
   "isn_baseFrequencies" : {
