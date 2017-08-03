@@ -4,8 +4,8 @@
     "colonyTags" : [ "science" ],
   "category" : "wire",
   "price" : 2500,
-  "description" : "A power storage unit. Stores up to 1000u of power and dispenses 4u when connected.",
-  "shortdescription" : "^cyan;1000u 4v Battery Unit^reset;",
+  "description" : "A power storage unit. Stores up to 1000J of power and dispenses 4W when connected.",
+  "shortdescription" : "^cyan;1000J 4W Battery Unit^reset;",
   "race" : "generic",
   "printable" : false,
   "learnBlueprintsOnPickup" : [ "isn_battery_t2", "fu_blastfurnace" ],
@@ -34,13 +34,12 @@
   "scripts" : [ "/objects/power/isn_battery.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 50,
+  "scriptDelta" : 60,
 
   "outputNodes" : [ [1, 3] ],
   "inputNodes" : [ [0, 1], [2, 1] ],
 
-  "isn_powerSupplier" : true,
-  "isn_powerReciever" : true,
   "isn_batteryCapacity" : 1000,
-  "isn_batteryVoltage" : 4
+  "isn_batteryVoltage" : 4,
+  "powertype" : "battery"
 }

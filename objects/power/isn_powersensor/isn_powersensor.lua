@@ -1,6 +1,8 @@
+require'/scripts/power.lua'
+
 function update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
-  local powerLevel = isn_getCurrentPowerInput(false)
+  local powerLevel = power.getTotalEnergy()
   ---sb.logInfo("PSRD: powerLevel is " .. powerLevel)
 
   if not powerLevel then
@@ -10,5 +12,6 @@ function update(dt)
   elseif powerLevel > 19 then
     animator.setAnimationState("num", "excess")
   end
+  power.update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG END")
 end

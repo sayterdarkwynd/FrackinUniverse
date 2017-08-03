@@ -5,7 +5,7 @@
   "category" : "wire",
   "objectType" : "container",
   "price" : 3500,
-  "description" : "A fuel-burning generator. It can generate up to 10u of power.",
+  "description" : "A fuel-burning generator. It can generate up to 10W of power.",
   "shortdescription" : "^cyan;Combustion Generator^white;",
   "race" : "generic",
   "printable" : false,
@@ -41,15 +41,13 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/objects/power/isn_thermalgenerator/isn_thermalgenerator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 70,
+  "scripts" : [ "/scripts/power.lua","/scripts/generator.lua"],
+  "scriptDelta" : 60,
   
   "inputNodes" : [ [2, 2] ],
   "outputNodes" : [ [2, 1] ],
   
-  "isn_powerSupplier" : true,
+  "powertype" : "output",
   "acceptablefuel" : {
 	  "paper" : 2,
 	  "logblock" : 4,
@@ -61,5 +59,13 @@
 	  "biofuelcannisteradv" : 12,
 	  "supermatter" : 14,
 	  "biofuelcannistermax" : 16
-  }
+  },
+  "heat" : [
+    {"minheat" : 90,"animator" : {"screen" : "fast"},"sound" : true,"power" : 12,"light" : [166,166,166]},
+	{"minheat" : 70,"animator" : {"screen" : "med","fans" : "fast"},"sound" : true,"power" : 9,"light" : [100,100,100]},
+	{"minheat" : 50,"animator" : {"screen" : "med","fans" : "fast"},"sound" : true,"power" : 7,"light" : [100,100,100]},
+	{"minheat" : 30,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : false,"power" : 5,"light" : [50,50,50]},
+	{"minheat" : 10,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : false,"power" : 3,"light" : [50,50,50]},
+	{"minheat" : 0,"animator" : {"screen" : "off","fans" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
+  ]
 }

@@ -3,7 +3,7 @@
   "colonyTags" : [ "science", "machines" ],
   "printable" : false,
   "rarity" : "common",
-  "description" : "This advanced Sifter efficiently extracts materials from loose or powdery materials. ^cyan;Requires ^orange;6u ^cyan;power.^reset;",
+  "description" : "This advanced Sifter efficiently extracts materials from loose or powdery materials. ^cyan;Requires ^orange;6W ^cyan;power.^reset;",
   "shortdescription" : "^cyan;Powder Sifter^white;",
   "race" : "generic",
   "category" : "^orange;Extraction Device^reset;",
@@ -31,9 +31,7 @@
     "centrifugefullbright" : "isn_powdersifterfullbright.png"
   },
 
-  "scripts" : [ "/objects/bees/centrifuge.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-                "/objects/isn_sharedobjectscripts.lua" ],
+  "scripts" : [ "/scripts/power.lua", "/objects/bees/centrifuge.lua" ],
                 
   "scriptDelta" : 7,
   "recipeGroup" : "centrifuge",
@@ -44,7 +42,7 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
-  "craftDelay": 1,
+  "craftDelay": 0.116666667,
   "itemChances": {
     "rarest": 0.008,
     "rare": 0.03,
@@ -59,6 +57,6 @@
   "outputNodes" : [ [0, 0] ],
 
   "centrifugeType" : "powder",
-  "isn_powerReciever" : true,
+  "powertype" : "input",
   "isn_requiredPower" : 6
 }

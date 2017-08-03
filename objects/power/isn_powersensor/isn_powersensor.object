@@ -54,10 +54,8 @@
     }
   ],
   
-  "scripts" : [ "/objects/power/isn_powersensor/isn_powersensor.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 20,
+  "scripts" : [ "/scripts/power.lua","isn_powersensor.lua" ],
+  "scriptDelta" : 60,
 
   "animation" : "isn_powersensor.animation",
   "animationParts" : {
@@ -67,7 +65,6 @@
   "animationPosition" : [0, 0],
 
   "inputNodes" : [ [0, 0] ],
-  
-  "isn_powerReciever" : true,
-  "isn_freePower" : true
+
+  "powertype" : "input"
 }

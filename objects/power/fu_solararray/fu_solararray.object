@@ -4,7 +4,7 @@
     "colonyTags" : [ "science" ],
   "category" : "wire",
   "price" : 2500,
-  "description" : "Uses sunlight to generate electricity. It can generate much more power than smaller units. Can potentially generate over 4u.",
+  "description" : "Uses sunlight to generate electricity. It can generate much more power than smaller units. Can potentially generate over 4W.",
   "shortdescription" : "^cyan;Solar Array^white;",
   "race" : "generic",
   "printable" : false,
@@ -30,9 +30,10 @@
   "scripts" : [ "/objects/power/fu_solararray/fu_solararray.lua",
                 "/objects/power/isn_sharedpowerscripts.lua",
 		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 50,
+  "scriptDelta" : 60,
   
   "outputNodes" : [ [2, 1] ],
   
-  "isn_powerSupplier" : true
+  "isn_powerSupplier" : true,
+  "powertype" : "output"
 }
