@@ -56,7 +56,7 @@
   "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
   "animationCustom" : {
     "sounds" : {
-      "shoot" : [ ],
+      "shoot" : [ "/sfx/tech/mech_deactivate.ogg" ],
       "on" : [ ],
       "off" : [ ]
     }
@@ -69,15 +69,11 @@
 
   "fireTime" : 3.5, // rate of fire
   "fireTimeVariance" : 0.0, // variation in rate of fire
-  "projectile" : "mechenergypickup2", // name of projectile (required)
+  "projectile" : "mechenergypickup", // name of projectile (required)
   "projectileConfig" : { // extra configuration overrides for projectile
     "speed" : 0,
     "timeToLive" : 1
   },
   
-  "health" : 50,
-
-  "smashOnBreak" : true,
-  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
-  "smashParticles" : [ { "count" : 10, "particle" : "greystoneshard" } ]
+  "health" : 5
 }
