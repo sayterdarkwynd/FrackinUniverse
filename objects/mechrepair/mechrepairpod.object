@@ -48,7 +48,7 @@
     }
   ],
 
-  "scripts" : [ "/objects/wired/projectiletrap/projectiletrap.lua" ],
+  "scripts" : [ "/scripts/power.lua","mechrepair.lua" ],
   "scriptDelta" : 2,
   
   "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
@@ -60,7 +60,7 @@
     }
   },
 
-  "inputNodes" : [ [0, 0] ],
+  "inputNodes" : [ [0, 0],[0, 1] ],
 
   "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
   "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
@@ -73,5 +73,7 @@
     "timeToLive" : 1
   },
   
-  "health" : 5
+  "health" : 5,
+  "powertype" : "input",
+  "isn_requiredPower" : 20
 }
