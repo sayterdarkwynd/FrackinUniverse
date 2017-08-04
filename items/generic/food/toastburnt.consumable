@@ -1,0 +1,25 @@
+{
+  "itemName" : "toastburnt",
+  "rarity" : "Common",
+  "price" : 35,
+  "category" : "preparedFood",
+  "inventoryIcon" : "toastburnt.png",
+  "description" : "Left it in the toaster for too long.",
+  "shortdescription" : "Burnt Toast",
+  "effects" : [ [
+    {
+        "effect" : "maxhealthscalingboostfood",
+        "duration" : 45,
+		"healthModifier" : 1.10
+    }
+  ] ],
+  "foodValue" : 5,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}
