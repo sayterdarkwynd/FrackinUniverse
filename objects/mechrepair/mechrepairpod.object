@@ -1,0 +1,83 @@
+{
+  "objectName" : "mechrepairpod",
+  "colonyTags" : ["tech","mech"],
+  "printable" : false,
+  "rarity" : "Legendary",
+  "description" : "Periodically releases restorative nanites.",
+  "shortdescription" : "Mech Repair Pod",
+  "race" : "ancient",
+
+  "category" : "trap",
+  "price" : 0,
+
+  "inventoryIcon" : "ancientbouldertrapicon.png",
+  "orientations" : [
+    {
+      "image" : "ancientbouldertrap.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      
+      "direction" : "left",
+      "flipImages" : true,
+      
+      "animationPosition" : [-16, -16],
+      "animationParts" : {
+        "bg" : "ancientbouldertrap.png",
+        "fg" : "ancientbouldertrap.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "bgAnchors" : [ [-1, 1], [0, 1], [-2, 0], [1, 0], [-2, -1], [1, -1], [-1, -2], [0, -2] ]
+    },
+    {
+      "image" : "ancientbouldertrap.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "direction" : "right",
+      
+      "animationPosition" : [-16, -16],
+      "animationParts" : {
+        "bg" : "ancientbouldertrap.png",
+        "fg" : "ancientbouldertrap.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "bgAnchors" : [ [-1, 1], [0, 1], [-2, 0], [1, 0], [-2, -1], [1, -1], [-1, -2], [0, -2] ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/projectiletrap/projectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ ],
+      "on" : [ ],
+      "off" : [ ]
+    }
+  },
+
+  "inputNodes" : [ [0, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "fireTime" : 3.5, // rate of fire
+  "fireTimeVariance" : 0.0, // variation in rate of fire
+  "projectile" : "mechenergypickup2", // name of projectile (required)
+  "projectileConfig" : { // extra configuration overrides for projectile
+    "speed" : 0,
+    "timeToLive" : 1
+  },
+  
+  "health" : 50,
+
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
+  "smashParticles" : [ { "count" : 10, "particle" : "greystoneshard" } ]
+}
