@@ -2,51 +2,49 @@
   "objectName" : "mechrepairpod",
   "colonyTags" : ["tech","mech"],
   "printable" : false,
-  "rarity" : "Legendary",
+  "rarity" : "essential",
   "description" : "Periodically releases restorative nanites.",
   "shortdescription" : "Mech Repair Pod",
   "race" : "ancient",
 
   "category" : "trap",
-  "price" : 0,
-
+  "price" : 3000,
+  "lightColor" : [26, 38, 43],
   "inventoryIcon" : "ancientbouldertrapicon.png",
   "orientations" : [
     {
       "image" : "ancientbouldertrap.png:<color>.<frame>",
-      "imagePosition" : [-16, -16],
+      "imagePosition" : [-86, 0],
       
       "direction" : "left",
       "flipImages" : true,
       
-      "animationPosition" : [-16, -16],
+      "animationPosition" : [-86, 0],
       "animationParts" : {
         "bg" : "ancientbouldertrap.png",
-        "fg" : "ancientbouldertrap.png"
+        "fg" : "ancientbouldertrap_lit.png"
       },
-
+      "lightPosition" : [0, 2],
       "projectileDirection" : [0, -1],
       "projectilePosition" : [0, 0],
-
-      "spaceScan" : 0.1,
-      "bgAnchors" : [ [-1, 1], [0, 1], [-2, 0], [1, 0], [-2, -1], [1, -1], [-1, -2], [0, -2] ]
+      "anchors" : [ "bottom" ],
+      "spaceScan" : 0.1
     },
     {
       "image" : "ancientbouldertrap.png:<color>.<frame>",
-      "imagePosition" : [-16, -16],
+      "imagePosition" : [-86, 0],
       "direction" : "right",
       
-      "animationPosition" : [-16, -16],
+      "animationPosition" : [-86, 0],
       "animationParts" : {
         "bg" : "ancientbouldertrap.png",
-        "fg" : "ancientbouldertrap.png"
+        "fg" : "ancientbouldertrap_lit.png"
       },
-
+      "lightPosition" : [0, 2],
       "projectileDirection" : [0, -1],
       "projectilePosition" : [0, 0],
-
-      "spaceScan" : 0.1,
-      "bgAnchors" : [ [-1, 1], [0, 1], [-2, 0], [1, 0], [-2, -1], [1, -1], [-1, -2], [0, -2] ]
+      "anchors" : [ "bottom" ],
+      "spaceScan" : 0.1
     }
   ],
 
