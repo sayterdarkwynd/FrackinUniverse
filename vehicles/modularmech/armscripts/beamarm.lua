@@ -49,6 +49,7 @@ end
 
 
 function BeamArm:statSet()
+        self.mechBonusWeapon = self.stats.power + self.stats.energy
         self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
@@ -58,7 +59,6 @@ function BeamArm:statSet()
         self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
         self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
         storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
-        --sb.logInfo("total mech part bonus = "..self.mechBonus)
 end
 
 
@@ -83,8 +83,14 @@ function BeamArm:fireState()
 		  self.mechBonus = self.mechBonus * 2
 		end
 
-          --apply final damage
-          self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
+        --apply final damage
+        
+        if (self.mechBonus) >= (self.mechBonusWeapon) then
+          self.randbonus = (self.mechBonus/100) * self.mechTier
+          self.mechBonus = self.mechBonus * (1 + self.randbonus)
+        end          
+        
+        self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
   -- ********************************************************************
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
@@ -118,7 +124,9 @@ function BeamArm:fireState()
     elseif (self.basePower) == 3 then
       beamParams.timeToLive =  0.475
     elseif (self.basePower) == 33 then
-      beamParams.timeToLive =  0.475      
+      beamParams.timeToLive =  0.475  
+    elseif (self.basePower) > 33 then
+      beamParams.timeToLive =  1        
     end   
     
     beamParams.speed =  120
