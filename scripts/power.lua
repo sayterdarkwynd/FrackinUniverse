@@ -9,7 +9,6 @@ function init()
 end
 
 function power.update(dt)
-  object.say(entity.id())
   if config.getParameter('powertype') then
     if config.getParameter('powertype') == 'battery' then
       storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
