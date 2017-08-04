@@ -8,7 +8,7 @@ function update(dt)
   if storage.fueltime and storage.fueltime > 0 then
     storage.fueltime = math.max(storage.fueltime - dt,0)
   end
-  if not storage.fueltime or storage.fueltime == 0 then
+  if (not storage.fueltime or storage.fueltime == 0) and object.getInputNodeLevel(0) == 0 then
     storage.powermod = nil
     item = world.containerItemAt(entity.id(),0)
 	if item then
