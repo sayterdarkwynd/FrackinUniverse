@@ -1,17 +1,7 @@
 power = {}
 
 function power.init()
-  if config.getParameter('powertype') then
-    if not storage.entitylist then
-      if config.getParameter('powertype') == 'battery' then
-        storage.entitylist = {battery = {entity.id()},output = {},all = {entity.id()}}
-      elseif config.getParameter('powertype') == 'output' then
-        storage.entitylist = {battery = {},output = {entity.id()},all = {entity.id()}}
-      else
-        storage.entitylist = {battery = {},output = {},all = {entity.id()}}
-      end
-    end
-  end
+  onNodeConnectionChange()
 end
 
 function init()
@@ -20,28 +10,19 @@ end
 
 function power.update(dt)
   if config.getParameter('powertype') then
-    if self.initialized then
-      if config.getParameter('powertype') == 'battery' then
-        storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
-      else
-        power.sendPowerToBatteries()
+    if config.getParameter('powertype') == 'battery' then
+      storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
+    else
+      power.sendPowerToBatteries()
+    end
+    if storage.power and storage.power > 0 then
+      storage.energy = storage.power * dt
+	  if config.getParameter('powertype') == 'battery' then
+	    storage.energy = math.min(storage.energy,storage.storedenergy)
+        storage.storedenergy = storage.storedenergy - storage.energy
       end
-      if storage.power and storage.power > 0 then
-        storage.energy = storage.power * dt
-	    if config.getParameter('powertype') == 'battery' then
-	      storage.energy = math.min(storage.energy,storage.storedenergy)
-          storage.storedenergy = storage.storedenergy - storage.energy
-        end
-      else
-        storage.energy = 0
-      end
-	else
-      for i=1,#storage.entitylist.all do
-	    if not object.position(storage.entitylist.all[i]) then
-		  break
-		end
-	  end
-	  self.initialized = true
+    else
+      storage.energy = 0
     end
   end
 end
@@ -63,33 +44,31 @@ function power.remove(amount)
 end
 
 function power.consume(amount)
-  if self.initialized then
     if power.getTotalEnergy() >= amount then
-      for i=1,#storage.entitylist.output do
-	    energy = power.getEnergy(storage.entitylist.output[i])
-	    if energy > 0 then
-	      energy = math.min(energy,amount)
-		  world.callScriptedEntity(storage.entitylist.output[i],'power.remove',energy)
-		  amount = amount - energy
-	    end
-	    if amount == 0 then
-	      return true
-	    end
-	  end
-	  for i=1,#storage.entitylist.battery do
-	    energy = power.getEnergy(storage.entitylist.battery[i])
-	    if energy > 0 then
-	      energy = math.min(energy,amount)
-		  world.callScriptedEntity(storage.entitylist.battery[i],'power.remove',energy)
-		  amount = amount - energy
-	    end
-	    if amount == 0 then
-	      return true
-	    end
-	  end
-    else
-      return false
+    for i=1,#storage.entitylist.output do
+      energy = power.getEnergy(storage.entitylist.output[i])
+      if energy > 0 then
+        energy = math.min(energy,amount)
+  	    world.callScriptedEntity(storage.entitylist.output[i],'power.remove',energy)
+  	    amount = amount - energy
+      end
+      if amount == 0 then
+        return true
+      end
     end
+    for i=1,#storage.entitylist.battery do
+      energy = power.getEnergy(storage.entitylist.battery[i])
+      if energy > 0 then
+        energy = math.min(energy,amount)
+  	  world.callScriptedEntity(storage.entitylist.battery[i],'power.remove',energy)
+  	  amount = amount - energy
+      end
+      if amount == 0 then
+        return true
+      end
+    end
+  else
+    return false
   end
 end
 
@@ -138,9 +117,6 @@ function power.getTotalEnergy()
 end
 
 function power.getEnergy(id)
-  if not self.initialized then
-    return 0
-  end
   if not id or id == entity.id() then
     return storage.energy or 0
   else
