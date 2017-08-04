@@ -20,7 +20,6 @@ end
 
 function power.update(dt)
   if config.getParameter('powertype') then
-    sb.logInfo('Init: '..tostring(isinit()))
     if isinit() then
       if config.getParameter('powertype') == 'battery' then
         storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
@@ -45,7 +44,7 @@ function update(dt)
 end
 
 function isinit()
-  if storage.powerinit then
+  if self.powerinit then
     return true
   else
     for i=1,#storage.entitylist.all do
@@ -53,7 +52,7 @@ function isinit()
 		return false
 	  end
 	end
-	storage.powerinit = true
+	self.powerinit = true
 	return true
   end
 end
@@ -71,7 +70,6 @@ function power.remove(amount)
 end
 
 function power.consume(amount)
-  sb.logInfo('Initc: '..tostring(isinit()))
   if isinit() then
     if power.getTotalEnergy() >= amount then
       for i=1,#storage.entitylist.output do
