@@ -1689,7 +1689,7 @@
         }, {
             "op": "replace",
             "path": "/srm/partParameters/projectileParameters/power",
-            "value": 4
+            "value": 4.4
         }, {
             "op": "add",
             "path": "/srm/stats/multicount",
@@ -1700,10 +1700,11 @@
     [{
             "op": "test",
             "path": "/bhmappc"
-        }, {
+        }, 
+        {
             "op": "replace",
             "path": "/bhmappc/partParameters/projectileParameters/power",
-            "value": 33
+            "value": 42
         }
     ],
  
@@ -1711,9 +1712,14 @@
             "op": "test",
             "path": "/bhmaLB10X"
         }, {
+            "op": "add",
+            "path": "/bhmac10/stats/multicount",
+            "value": 4
+        },
+        {
             "op": "replace",
             "path": "/bhmaLB10X/partParameters/projectileParameters/power",
-            "value": 24
+            "value": 12
         }
     ],
  
@@ -1723,7 +1729,7 @@
         }, {
             "op": "replace",
             "path": "/bhmac10/partParameters/projectileParameters/power",
-            "value": 10
+            "value": 30
         }
     ],
  
