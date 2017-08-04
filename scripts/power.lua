@@ -1,7 +1,7 @@
 power = {}
 
 function power.init()
-  onNodeConnectionChange()
+  power.onNodeConnectionChange()
 end
 
 function init()
@@ -124,7 +124,11 @@ function power.getEnergy(id)
   end
 end
 
-function onNodeConnectionChange(arg)
+function onNodeConnectionChange()
+  power.onNodeConnectionChange()
+end
+
+function power.onNodeConnectionChange(arg)
   if config.getParameter('powertype') then
     if arg then
       entitylist = arg
@@ -152,7 +156,7 @@ function onNodeConnectionChange(arg)
 			      table.insert(entitylist.output,value)
 			    end
 		        table.insert(entitylist.all,value)
-			    entitylist = world.callScriptedEntity(value,'onNodeConnectionChange',entitylist)
+			    entitylist = world.callScriptedEntity(value,'power.onNodeConnectionChange',entitylist)
 		      elseif entitylist.all[j] == value then
 		        break
 		      end
@@ -175,7 +179,7 @@ function onNodeConnectionChange(arg)
 			      table.insert(entitylist.output,value)
 			    end
 		        table.insert(entitylist.all,value)
-			    entitylist = world.callScriptedEntity(value,'onNodeConnectionChange',entitylist)
+			    entitylist = world.callScriptedEntity(value,'power.onNodeConnectionChange',entitylist)
 		      elseif entitylist.all[j] == value then
 		        break
 		      end
