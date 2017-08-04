@@ -1,7 +1,7 @@
 power = {}
 
 function power.init()
-  onNodeConnectionChange()
+  power.onNodeConnectionChange()
 end
 
 function init()
