@@ -32,22 +32,25 @@ liquids = {
 
 function init()
   object.setInteractive(true)
-  self.timer = 1
+  storage.timer = storage.timer or 1
   power.init()
 end
 
 function update(dt)
-  self.timer = self.timer - dt
-  if self.timer <= 0 then
-    animator.setAnimationState("machineState", "idle")
-    if not world.liquidAt(entity.position()) then
-      if power.consume(config.getParameter('isn_requiredPower')) then
-	    local value = liquids[world.type()] or liquids.other
-	    world.spawnLiquid(entity.position(),value.liquid,0.5)
-		self.timer = value.cooldown
-		animator.setAnimationState("machineState", "active")
-	  end
-    end	  
+  if storage.timer > 0 then
+    if power.consume(config.getParameter('isn_requiredPower')*dt) then
+	  animator.setAnimationState("machineState", "active")
+      storage.timer = math.max(storage.timer - dt)
+	else
+      animator.setAnimationState("machineState", "idle")
+	end
+  elseif storage.timer == 0 then
+	local liquid = world.liquidAt(entity.position())
+	local value = liquids[world.type()] or liquids.other
+    if not liquid or (liquid[2] <= 0.5 and liquid[1] == value.liquid) then
+	  world.spawnLiquid(entity.position(),value.liquid,0.5)
+	  storage.timer = value.cooldown
+	end	  
   end
   power.update(dt)
 end
