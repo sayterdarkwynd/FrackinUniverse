@@ -1,10 +1,13 @@
 require '/scripts/power.lua'
+require "/scripts/kheAA/transferUtil.lua"
 
 function init()
   heat = config.getParameter('heat')
   power.init()
+  transferUtil.init()
 end
 function update(dt)
+  transferUtil.loadSelfContainer()
   if storage.fueltime and storage.fueltime > 0 then
     storage.fueltime = math.max(storage.fueltime - dt,0)
   end
