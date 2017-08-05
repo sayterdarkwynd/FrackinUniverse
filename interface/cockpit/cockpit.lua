@@ -25,22 +25,22 @@ function init()
   self.travel = {}
   self.viewSelection = false
   self.cursorOverride = nil
-
+  self.tooltipOverride = nil
+  
   self.sounds = config.getParameter("sounds")
   self.playTyping = true
 
   self.state = FSM:new()
-  if celestial.skyInHyperspace() then
-    self.state:set(transitState)
-  elseif contains(player.shipUpgrades().capabilities, "planetTravel") then
-    self.state:set(systemScreenState, celestial.currentSystem())
-  else
+  if not contains(player.shipUpgrades().capabilities, "planetTravel") then
     self.state:set(disabledState)
+  elseif celestial.skyInHyperspace() and celestial.currentSystem() then
+    self.state:set(transitState)
+  else
+    self.state:set(systemScreenState, celestial.currentSystem())
   end
 
   widget.registerMemberCallback("bookmarksFrame.bookmarkList.bookmarkItemList", "editBookmark", editBookmark)
   widget.registerMemberCallback("bookmarksFrame.bookmarkList.bookmarkItemList", "selectBookmark", selectBookmark)
-
   pane.playSound(self.sounds.open)
 
   player.lounge(pane.sourceEntity())
@@ -85,6 +85,9 @@ function createTooltip(screenPosition)
       return config.getParameter(string.format("topLeftButtonTooltips.%s", name))
     end
   end
+  if self.tooltipOverride then		
+    return self.tooltipOverride		
+  end  
   return View:tooltip(screenPosition)
 end
 
@@ -97,7 +100,8 @@ end
 function update(dt)
   self.selection = {}
   self.cursorOverride = nil
-
+  self.tooltipOverride = nil
+  
   self.state:update(dt)
 
   View:render(dt)
@@ -108,7 +112,7 @@ function update(dt)
 
   local questWorldId = player.currentQuestWorld()
   local coordinate = questWorldId and worldIdCoordinate(questWorldId)
-  if questWorldId and coordinate then
+  if questWorldId and coordinate and player.isMapped(coordinate) then
     widget.setButtonEnabled("goToQuest", true)
   else
     widget.setButtonEnabled("goToQuest", false)
@@ -137,7 +141,9 @@ end
 function updateBookmarks()
   local list = "bookmarksFrame.bookmarkList.bookmarkItemList"
   widget.clearListItems(list)
-  for _,p in pairs(player.orbitBookmarks()) do
+  local orbitBookmarks = player.orbitBookmarks()
+  table.sort(orbitBookmarks, function(a, b) return string.lower(a[2].bookmarkName) < string.lower(b[2].bookmarkName) end)
+  for _,p in pairs(orbitBookmarks) do
     local system, bookmark = locationCoordinate(p[1]), p[2]
     local newItem = string.format("%s.%s", list, widget.addListItem(list))
     widget.setText(string.format("%s.name", newItem), bookmark.bookmarkName)
@@ -240,8 +246,8 @@ function showBookmarkDialog(system, bookmark)
   else
     widget.setText("editBookmarkFrame.title", config.getParameter("bookmarks.newTitle"))
     widget.setButtonEnabled("editBookmarkFrame.remove", false)
-    widget.setImage("editBookmarkFrame.icon", string.format(config.getParameter("bookmarks.icon"), bookmark.icon))
   end
+  widget.setImage("editBookmarkFrame.icon", string.format(config.getParameter("bookmarks.icon"), bookmark.icon))
   widget.setText("editBookmarkFrame.planetName", bookmark.targetName)
   widget.setText("editBookmarkFrame.name", bookmark.bookmarkName)
   widget.focus("editBookmarkFrame.name")
@@ -373,14 +379,12 @@ end
 
 -- end FU functions
 
-
-function fuelCost()
+function fuelCost(travel)
   local cost = config.getParameter("jumpFuelCost") 
 
   -- FU needs custom math here for distance-based fuel cost
     self.one =  celestial.currentSystem()
-    self.two =  {location = self.travel.system, planet = 0, satellite = 0} 
-    
+    self.two =  {location = travel or self.travel.system, planet = 0, satellite = 0, system = self.travel.target} 
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
     shipMassFind()
 
@@ -458,7 +462,7 @@ function systemUniverseTransition(fromSystem)
   widget.setVisible("zoomOut", false)
   widget.setVisible("remoteTitle", false)
   widget.setVisible("remoteDescription", false)
-
+  widget.setVisible("systemName", false)
   View:reset()
   pane.playSound(self.sounds.zoom, -1)
   View.drawSystem = true
@@ -522,12 +526,32 @@ function universeScreenState(startSystem)
     View.stars.systems = systems
     View.stars.lines = lines
 
-    local hover = closestSystemInRange(View:toUniverse(View:mousePosition()), systems, 2.5)
-    if hover and not compare(hover, hover) and not compare(hover, selection) then
-      pane.playSound(self.sounds.hover)
-    end
-    hover = hover
 
+
+    local newHover = closestSystemInRange(View:toUniverse(View:mousePosition()), systems, 2.5)
+    if newHover and not compare(newHover, selection) then		    
+      local tooltip = config.getParameter("systemTooltip")		     
+      local tooltipGui = config.getParameter("systemTooltipConfig")
+      local name = celestial.planetName(newHover)		
+      if name then		
+        tooltipGui.name.value = name		
+        local starType = celestial.planetParameters(newHover).typeName or "default"		
+        tooltipGui.type.value = config.getParameter(string.format("starTypeNames.%s", starType))		
+        tooltipGui.type.color = config.getParameter(string.format("starTypeColors.%s", starType))		
+        local explored = player.isMapped(newHover)		
+        if explored then		
+          tooltipGui.explored.value, tooltipGui.explored.color = tooltip.exploredLabel.explored, tooltip.exploredLabelColor.explored		
+        else		
+          tooltipGui.explored.value, tooltipGui.explored.color = tooltip.exploredLabel.unexplored, tooltip.exploredLabelColor.unexplored		
+        end		
+        self.tooltipOverride = tooltipGui;		
+      end		
+      if not compare(newHover, hover) then		
+        pane.playSound(self.sounds.hover)		
+      end
+    end
+    hover = newHover
+    
     if self.viewCoordinate then
       local position = self.viewCoordinate
       self.viewCoordinate = nil
@@ -626,10 +650,6 @@ function universeScreenState(startSystem)
           local travelSystem = {location = self.travel.system, planet = 0, satellite = 0}
           View.stars.hover = nil
 
-          if not player.isAdmin() then
-            world.setProperty("ship.fuel", fuelAmount - cost)
-          end
-
           while not celestial.scanRegionFullyLoaded(View:systemScanRegion())
              or not celestial.scanRegionFullyLoaded(View:systemScanRegion(systemPosition(currentSystem))) do
             celestial.scanSystems(View:systemScanRegion())
@@ -675,6 +695,9 @@ function universeMoveState(startPosition, systems, toPosition, travel, queued)
   View.travel.displayMarker = true
 
   if travel and not celestial.skyFlying() then
+	  if not player.isAdmin() then		
+            world.setProperty("ship.fuel", world.getProperty("ship.fuel") - fuelCost(travel.system))		
+          end  
     celestial.flyShip(travel.system, travel.target)
     while not celestial.skyFlying() do
       coroutine.yield()
@@ -808,7 +831,10 @@ function systemScreenState(system, warpIn)
 
   View:reset()
   local planets = util.untilNotEmpty(function() return celestial.children(system) end)
-
+  
+  widget.setVisible("systemName", true)		
+  widget.setText("systemName", celestial.planetName(system))
+  
   local scale = View:systemScale(system)
   View:setCamera("system", {0, 0}, scale)
   View:setCamera("universe", systemPosition(system), "system")
@@ -1014,7 +1040,8 @@ end
 
 function systemPlanetTransition(planets, toPlanet)
   widget.setVisible("zoomOut", false)
-
+  widget.setVisible("systemName", false)
+  
   View:reset()
   pane.playSound(self.sounds.zoom, -1)
   local system = coordinateSystem(toPlanet)

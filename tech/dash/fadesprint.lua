@@ -1,4 +1,5 @@
 require "/tech/doubletap.lua"
+require "/scripts/vec2.lua"
 
 function init()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
@@ -6,10 +7,15 @@ function init()
   self.dashSpeedModifier = config.getParameter("dashSpeedModifier")
   self.groundOnly = config.getParameter("groundOnly")
   self.stopAfterDash = config.getParameter("stopAfterDash")
-
+ 
   self.dash = false
   self.effectDelay = 0
-
+  
+  self.chargeAttack = config.getParameter("chargeAttack",0)
+  self.chargeAttackPower = config.getParameter("chargeAttackPower",0)
+  self.hasChargeBonus = config.getParameter("hasChargeBonus",0)
+  self.isInvulnerable = config.getParameter("isInvulnerable",0)
+  
   self.doubleTap = DoubleTap:new({"left", "right"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
       local direction = dashKey == "left" and -1 or 1
       if not self.dashDirection
@@ -41,6 +47,14 @@ function update(args)
           
           animator.setAnimationState("dashing", "on")
           animator.setParticleEmitterActive("dashParticles", true)
+          
+          -- charge attack!
+	    if self.chargeAttack == 1 then
+	      local configBombDrop = { power = self.chargeAttackPower }
+	      world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
+	    end          
+          
+          
         else
           endDash()
         end
@@ -65,12 +79,10 @@ end
 function startDash(direction)
   self.dash = true
   self.dashDirection = direction
-  --status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   animator.setFlipped(self.dashDirection == -1)
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
 
-  --status.addPersistentEffect("fadeSprint", "camouflage25", math.huge)
   status.addPersistentEffect("fadeSprint", "invulnerable", math.huge)
 
   generateSkillEffectEnd()
@@ -98,11 +110,15 @@ end
 
 function generateSkillEffectEnd()
 
-  --status.addEphemeralEffect("camouflage25", 1)
-  status.addEphemeralEffect("invulnerable", 1)
-
-  --local configBombDrop = {
-  --  power = 5
-  --}
-  --world.spawnProjectile("distortionbomb", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
+    
+    if status.resource("energy") >= 50 and (self.hasChargeBonus) == 1 then
+      status.addEphemeralEffect("damagebonus3",2) 
+      animator.playSound("chargebonus")
+      status.consumeResource("energy", 50)
+    end
+    
+    if (self.isInvulnerable) == 1 then
+      status.addEphemeralEffect("invulnerable", 1)
+    end
+    
 end

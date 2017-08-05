@@ -1,0 +1,83 @@
+{
+  "animationParts" : { },
+  "animationCustom" : { },
+
+  "ability" : {
+    "name" : "Smash",
+    "type" : "greataxesmash",
+    "scripts" : ["/items/active/weapons/melee/abilities/greataxe/greataxesmash.lua"],
+    "class" : "HammerSmash",
+
+    "fireTime" : 1.5,
+    "baseDps" : 10.5,
+    "damageConfig" : {
+      "damageSourceKind" : "axe",
+      "statusEffects" : [ ],
+      "knockbackMode" : "facing",
+      "knockback" : 40
+    },
+    "smashMomentum" : [0, -45],
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [-0.125, 0.5],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 1.4],
+
+        "allowRotate" : false,
+        "allowFlip" : true,
+
+        "bounceTime" : 0.2,
+        "bounceWeaponAngle" : [
+          [0.75, "linear", 20, 60],
+          [0.875, "sin", 60, 55],
+          [1.0, "cos", 60, 55]
+        ],
+        "bounceArmAngle" : [
+          [1.0, "linear", 40, 50]
+        ],
+
+        "weaponAngle" : [
+          [1.0, "linear", -20, 20]
+        ],
+        "armAngle" : [
+          [1.0, "sin", -90, 40]
+        ]
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 2.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0, 2.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "spin" : {
+        "spinTimer" : 4,
+        "spinAngle" : 62.8
+      }
+    }
+  }
+}

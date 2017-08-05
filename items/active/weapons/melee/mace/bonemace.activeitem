@@ -1,0 +1,37 @@
+{
+  "itemName" : "bonemace",
+  "price" : 200,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Simple, but effective. Design by Sacre.",
+  "shortdescription" : "Bone Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "bonemace_sacre.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "bonemace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "bonemace_sacre.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.89, 
+    "baseDps":8
+  },
+  "critChance" : 1,
+  "critBonus" : 1,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

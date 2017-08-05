@@ -11,7 +11,7 @@
   "price" : 14450,
   "lightColor" : [ 100, 176, 191 ],
   "inventoryIcon" : "quantumextractoricon.png",
-  "description" : "The ultimate in block extraction technology. ^cyan;Requires ^orange;5u ^cyan;power.^reset;",
+  "description" : "The ultimate in block extraction technology. ^cyan;Requires ^orange;5W ^cyan;power.^reset;",
   "shortdescription" : "^cyan;Quantum Extractor^reset;",
   "subtitle" : "Resource converter",
   "orientations" : [
@@ -77,8 +77,7 @@
     "samplingarrayanim" : "quantumextractor.png"
   },
 
-
-  "isn_powerReciever" : true,
+  "powertype" : "input",
   "isn_requiredPower" : 5,
   "isn_liquidCollector" : false,
   "fu_mintick" : 0,
@@ -88,11 +87,7 @@
   "outputNodes" : [ [0, 1] ],
   "inputNodes" : [ [0, 0] ],
 
-  "scripts" : [
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua",
-		"/objects/generic/extractionlab_common.lua"
-   	      ],
+  "scripts" : [ "/scripts/power.lua", "/objects/isn_sharedobjectscripts.lua", "/objects/generic/extractionlab_common.lua" ],
 
   "scriptDelta" : 5,
 

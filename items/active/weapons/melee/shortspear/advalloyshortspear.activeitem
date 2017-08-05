@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","shortspear", "spear", "upgradeableWeapon"],
 
   "inventoryIcon" : "advalloyshortspear.png",
-
+  "collectablesOnPickup" : { "fu_weaponshortspear" : "advalloyshortspear" },
   "animation" : "/items/active/weapons/melee/shortspear/comboshortspear.animation",
   "animationParts" : {
     "handle": "",
@@ -30,12 +30,53 @@
   "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
   
   "critChance" : 2,
-  "critBonus" : 3, 
+  "critBonus" : 2, 
   
   "primaryAbilityType" : "shortspearcombo",
   "primaryAbility" : {
     "fireTime" : 0.625,
-    "baseDps" : 7.5
+    "baseDps" : 6,
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.3, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "hold" : true,
+        "duration" : 0.55,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.3, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.3,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : false,
+        "weaponOffset" : [0.3, 2.5],
+
+        "allowRotate" : true,
+        "allowFlip" : false
+      },
+      "hold" : {
+        "armRotation" : -30,
+        "weaponRotation" : -60,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.3, 2.0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

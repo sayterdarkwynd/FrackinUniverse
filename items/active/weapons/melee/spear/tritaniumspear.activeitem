@@ -1,0 +1,51 @@
+{
+  "itemName" : "tritaniumspear",
+  "price" : 1990,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "You should shove this in a foe. For science!",
+  "shortdescription" : "Tritanium Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","upgradeableWeapon"],
+
+  "inventoryIcon" : "tritaniumspear.png",
+  "collectablesOnPickup" : { "fu_weaponspear" : "tritaniumspear" },
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "tritaniumspear.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.92,
+    "baseDps" : 9.92,
+    "damageConfig" : {
+      "damageSourceKind" : "electric",
+      "statusEffects" : [ "electrified" ],
+      "knockback" : 10
+    }
+  },
+  "altAbilityType" : "rocketspear",
+  "altAbility" : { },
+
+  "critChance" : 1,
+  "critBonus" : 8,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

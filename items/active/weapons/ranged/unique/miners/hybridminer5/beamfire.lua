@@ -58,7 +58,7 @@ function BeamFire:fire()
       animator.setParticleEmitterActive("beamCollision", true)
       animator.resetTransformationGroup("beamEnd")
       animator.translateTransformationGroup("beamEnd", {beamLength, 0})
-      world.spawnProjectile("hybridminer4beam", beamEnd, endPos, {0, 0}, false)
+      world.spawnProjectile("hybridminer5beam", beamEnd, endPos, {0, 0}, false)
 
       if self.impactSoundTimer == 0 then
         animator.setSoundPosition("beamImpact", {beamLength, 0})

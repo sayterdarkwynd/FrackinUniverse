@@ -2,7 +2,7 @@
   "objectName" : "isn_atmosregulatornew",
   "rarity" : "legendary",
     "colonyTags" : [ "science" ],
-  "description" : "Generates a field that protects against environmental hazards. Requires 120u of power.",
+  "description" : "Generates a field that protects against environmental hazards. Requires 120W of power.",
   "shortdescription" : "^cyan;Atmospheric Regulator^white;",
   "race" : "generic",
   "price" : 412000,
@@ -42,9 +42,7 @@
     }
   ],
 
-  "scripts" : [ "/objects/power/isn_atmosregulator/isn_atmosregulator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
+  "scripts" : [ "/scripts/power.lua","isn_atmosregulator.lua","/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 60,
 
   "animation" : "isn_atmosregulatornew.animation",
@@ -57,6 +55,6 @@
   "animationPosition" : [-80, 0],
 
   "inputNodes" : [ [1, 2] ],
-  "isn_powerReciever" : true,
+  "powertype" : "input",
   "isn_requiredPower" : 120
 }

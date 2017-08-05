@@ -1,0 +1,37 @@
+{
+  "itemName" : "irradiummace",
+  "price" : 200,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Radiation-laced for extra merriment.",
+  "shortdescription" : "Irradium Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "irradiummace_gezbo.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "irradiummace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "irradiummace_gezbo.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.97, 
+    "baseDps":8.44
+  },
+  "critChance" : 1,
+  "critBonus" : 5,
+  "stunChance" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

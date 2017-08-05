@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
   "inventoryIcon" : "lunarikatana.png",
-
+  "collectablesOnPickup" : { "fu_weaponkatana" : "lunarikatana" },
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
@@ -67,7 +67,8 @@
           "allowRotate":false, 
           "allowFlip":true        
         }, 
-        "preslash1":{"duration":0}, 
+        "preslash1":{"duration":0,          
+	  "playSounds" : ["chargeUp1"]  }, 
         "fire1":{
           "duration":0.08, 
           "armRotation":65, 
@@ -180,7 +181,8 @@
           "allowRotate":false, 
           "allowFlip":true
         }, 
-        "preslash4":{"duration":0}, 
+        "preslash4":{"duration":0,          
+	  "playSounds" : ["chargeUp2"]  }, 
         "fire4":{
           "duration":0.15, 
           "armRotation":0, 
@@ -191,7 +193,7 @@
           "allowFlip":true
         }, 
         "wait4":{
-          "duration":0.15,
+          "duration":0.4,
           "armRotation":-20, 
           "weaponRotation":140, 
           "twoHanded":false, 

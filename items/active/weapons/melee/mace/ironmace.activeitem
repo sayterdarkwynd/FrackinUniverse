@@ -1,0 +1,37 @@
+{
+  "itemName" : "ironmace",
+  "price" : 100,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Well crafted, but heavy.",
+  "shortdescription" : "Iron Mace",
+  "tooltipKind" : "sword",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "ironmace.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "ironmace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ironmace.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.9, 
+    "baseDps":8.1
+  },
+  "critChance" : 1,
+  "critBonus" : 1,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

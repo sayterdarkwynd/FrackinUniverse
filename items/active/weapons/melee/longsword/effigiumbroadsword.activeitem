@@ -1,0 +1,41 @@
+{
+  "itemName" : "effigiumbroadsword",
+  "price" : 1600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Ghostly as a spirit.
+^cyan;Inflicts Shadow Gas^reset;",
+  "shortdescription" : "Phantasm Blade",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword","longsword","effigium", "upgradeableWeapon"],
+  "inventoryIcon" : "effigiumbroadsword.png",
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "effigiumbroadsword" },
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "effigiumbroadsword.png",
+    "bladefullbright" : "effigiumbroadswordfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.93,
+    "baseDps" : 9,
+    "damageConfig" : {
+      "damageSourceKind": "shadowbroadsword",
+      "statusEffects" : [ "shadowgasfx" ]
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 7,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

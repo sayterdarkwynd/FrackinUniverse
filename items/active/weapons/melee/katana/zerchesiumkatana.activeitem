@@ -3,7 +3,7 @@
   "price" : 1700,
   "level" : 4,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "uncommon",
   "description" : "A lethally edged weapon. 2 handed.",
   "shortdescription" : "Zerchesium Katana",
   "tooltipKind" : "sword2",
@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
   "inventoryIcon" : "zerchesiumkatana.png",
-
+  "collectablesOnPickup" : { "fu_weaponkatana" : "zerchesiumkatana" },
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
@@ -67,7 +67,8 @@
           "allowRotate":false, 
           "allowFlip":true        
         }, 
-        "preslash1":{"duration":0}, 
+        "preslash1":{"duration":0,          
+	  "playSounds" : ["chargeUp1"]  }, 
         "fire1":{
           "duration":0.08, 
           "armRotation":65, 
@@ -180,7 +181,8 @@
           "allowRotate":false, 
           "allowFlip":true
         }, 
-        "preslash4":{"duration":0}, 
+        "preslash4":{"duration":0,          
+	  "playSounds" : ["chargeUp2"]  }, 
         "fire4":{
           "duration":0.2, 
           "armRotation":0, 
@@ -209,7 +211,8 @@
           "allowRotate":false, 
           "allowFlip":true        
         }, 
-        "preslash5":{"duration":0}, 
+        "preslash5":{"duration":0,          
+	  "playSounds" : ["chargeUp3"]  }, 
         "fire5":{
           "duration":0.08, 
           "armRotation":65, 
@@ -220,7 +223,7 @@
           "allowFlip":false
         }, 
         "wait5":{
-          "duration":0.05, 
+          "duration":0.40, 
           "armRotation":-85, 
           "weaponRotation":-5, 
           "allowRotate":false, 

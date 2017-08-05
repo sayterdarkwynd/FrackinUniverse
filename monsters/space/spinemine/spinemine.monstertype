@@ -1,0 +1,220 @@
+{
+  "type" : "spinemine",
+  "shortdescription" : "Spinemine",
+  "description" : "Explodes whenever it meets someone new. No-one knows how they aren't extinct already.",
+
+  "categories" : [ "spinemine" ],
+  "parts" : [ "body" ],
+
+  "animation" : "spinemine.animation",
+
+  "dropPools" : ["spaceRobotPassive"],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : false,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 25,
+      "targetOutOfSightTime" : 0.0,
+
+      "hurtWaitForGround" : false,
+
+      "wanderActions" : [
+        {
+          "name" : "action-stop",
+          "parameters" : {
+            "stopForce" : 10
+          }
+        }
+      ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-suicide",
+          "cooldown" : 0,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 7,
+            "onGround" : false,
+            "windupTime" : 0.05,
+            "windupStopForce" : 0,
+            "windupState" : ""
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "flyState" : "windup",
+            "idleState" : "winddown"
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "spacemineexplosion",
+            "projectileParameters" : {
+              "power" : 50,
+              "damageTeam" : { "type" : "enemy", "team" : 0 }
+            },
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "mechenergypickup",
+            "projectileParameters" : {},
+            "aimDirection" : [1, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.75, 1.5], [1.5, 0.75], [1.5, -0.75], [0.75, -1.5], [-0.75, -1.5], [-1.5, -0.75], [-1.5, 0.75], [-0.75, 1.5] ]	,
+
+      "mass" : 2.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "bounceFactor" : 0,
+      "groundFriction" : 10,
+
+      "airFriction" : 0,
+      "airForce" : 10,
+      "flySpeed" : 7,
+
+      "physicsEffectCategories" : ["stationarymonster"]
+    },
+
+    "bodyMaterialKind" : "robotic",
+
+    "knockoutTime" : 0.1,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "healthLevelFunction" : "monsterLevelHealthMultiplier",
+    "powerLevelFunction" : "monsterLevelPowerMultiplier",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/spacemonster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "knockbackStunTime" : {
+          "baseValue" : 0
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 160
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0
+        },
+        "poisonResistance" : {
+          "baseValue" : 1
+        },
+        "electricResistance" : {
+          "baseValue" : -0.3
+        },
+        "fireResistance" : {
+          "baseValue" : -0.2
+        },
+        "iceResistance" : {
+          "baseValue" : 0.4
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.5
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.9
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.6
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

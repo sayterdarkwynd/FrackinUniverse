@@ -1,0 +1,25 @@
+{
+  "itemName" : "fu_toast",
+  "rarity" : "Common",
+  "price" : 75,
+  "category" : "preparedFood",
+  "inventoryIcon" : "fu_toast.png",
+  "description" : "You know what they say, all toasters toast toast.",
+  "shortdescription" : "Yeah Toast",
+  "effects" : [ [
+    {
+        "effect" : "maxhealthscalingboostfood",
+        "duration" : 180,
+		"healthModifier" : 1.25
+    }
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

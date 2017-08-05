@@ -1,14 +1,25 @@
+require'/scripts/power.lua'
+
 function update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
-  local powerLevel = isn_getCurrentPowerInput(false)
+  local powerLevel = tostring(math.floor(power.getTotalEnergy()))
   ---sb.logInfo("PSRD: powerLevel is " .. powerLevel)
-
-  if not powerLevel then
-    animator.setAnimationState("num", "invalid")
-  elseif powerLevel <= 128 then
-    animator.setAnimationState("num", tostring(math.floor(powerLevel)))
-  elseif powerLevel > 128 then
-    animator.setAnimationState("num", "excess")
+  if #powerLevel < 3 then
+    powerLevel = string.rep('0',3-#powerLevel)..powerLevel
   end
+  if not tonumber(powerLevel) then
+    animator.setAnimationState("one", "invalid")
+	animator.setAnimationState("ten", "invalid")
+	animator.setAnimationState("hundred", "invalid")
+  elseif tonumber(powerLevel) <= 999 then
+    animator.setAnimationState("one", string.sub(powerLevel,-1))
+	animator.setAnimationState("ten", string.sub(powerLevel,-2,-2))
+	animator.setAnimationState("hundred", string.sub(powerLevel,-3,-3))
+  else
+    animator.setAnimationState("one", "excess")
+	animator.setAnimationState("ten", "excess")
+	animator.setAnimationState("hundred", "excess")
+  end
+  power.update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG END")
 end

@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
   "inventoryIcon" : "durasteelkatana.png",
-
+  "collectablesOnPickup" : { "fu_weaponkatana" : "durasteelkatana" },
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
@@ -69,7 +69,8 @@
           "allowRotate":false, 
           "allowFlip":true        
         }, 
-        "preslash1":{"duration":0}, 
+        "preslash1":{"duration":0,          
+	  "playSounds" : ["chargeUp1"]  }, 
         "fire1":{
           "duration":0.08, 
           "armRotation":65, 
@@ -182,7 +183,8 @@
           "allowRotate":false, 
           "allowFlip":true
         }, 
-        "preslash4":{"duration":0}, 
+        "preslash4":{"duration":0,          
+	  "playSounds" : ["chargeUp2"]  }, 
         "fire4":{
           "duration":0.15, 
           "armRotation":0, 
@@ -223,7 +225,7 @@
           "allowFlip":false
         }, 
         "wait5":{
-          "duration":0.05, 
+          "duration":0.4, 
           "armRotation":-85, 
           "weaponRotation":-5, 
           "allowRotate":false, 
@@ -235,7 +237,7 @@
     }, 
 
   "critChance" : 1,
-  "critBonus" : 8,
+  "critBonus" : 9,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 

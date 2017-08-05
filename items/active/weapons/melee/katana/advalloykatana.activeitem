@@ -13,7 +13,7 @@
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
   "inventoryIcon" : "advalloykatana.png",
-
+  "collectablesOnPickup" : { "fu_weaponkatana" : "advalloykatana" },
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
@@ -70,7 +70,8 @@
           "allowRotate":false, 
           "allowFlip":true        
         }, 
-        "preslash1":{"duration":0}, 
+        "preslash1":{"duration":0,          
+	  "playSounds" : ["chargeUp1"]  }, 
         "fire1":{
           "duration":0.08, 
           "armRotation":65, 
@@ -183,7 +184,8 @@
           "allowRotate":false, 
           "allowFlip":true
         }, 
-        "preslash4":{"duration":0}, 
+        "preslash4":{"duration":0,          
+	  "playSounds" : ["chargeUp2"]  }, 
         "fire4":{
           "duration":0.15, 
           "armRotation":0, 
@@ -249,7 +251,8 @@
              "weaponOffset":[0,2.4], 
              "twoHanded":false, 
              "allowRotate":false, 
-             "allowFlip":true
+             "allowFlip":true,          
+	     "playSounds" : ["chargeUp3"]  
            }, 
            "fire6":{
              "duration":0.2, 
@@ -261,7 +264,7 @@
              "allowFlip":true
            }, 
           "wait6":{
-          "duration":0.18, 
+          "duration":0.4, 
           "armRotation":-85, 
           "weaponRotation":-5, 
           "allowRotate":false, 

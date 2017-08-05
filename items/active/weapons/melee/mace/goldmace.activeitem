@@ -1,0 +1,38 @@
+{
+  "itemName" : "goldmace",
+  "price" : 1200,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "With a name like Maul, clearly you should share it with others! Design by Ashey.
+^cyan;+10% Stun Chance",
+  "shortdescription" : "Golden Maul",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "goldmace_ashey.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "goldmace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "goldmace_ashey.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.75, 
+    "baseDps":6.5
+  },
+  "critChance" : 4,
+  "critBonus" : 1,
+  "stunChance" : 10,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

@@ -1,0 +1,36 @@
+{
+  "itemName" : "fubonesword",
+  "price" : 1500,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Hellishly creepy. Devilishly stylish.",
+  "shortdescription" : "Bone Cleaver",
+  "tooltipKind" : "sword",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "fubonesword" },
+  "inventoryIcon" : "fubonesword.png",
+
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fubonesword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.73,
+    "baseDps" : 10.4
+  },
+
+  "critChance" : 1, 
+  "critBonus" : 3, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

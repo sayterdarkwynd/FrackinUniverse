@@ -2,7 +2,7 @@
   "objectName" : "isn_atmosregulator",
   "rarity" : "legendary",
     "colonyTags" : [ "science" ],
-  "description" : "Generates a field that heals any lifeform within its area of effect. Requires 24u of power.",
+  "description" : "Generates a field that heals any lifeform within its area of effect. Requires 24W of power.",
   "shortdescription" : "^cyan;Regeneration Matrix^white;",
   "race" : "generic",
   "price" : 2000,
@@ -47,9 +47,7 @@
     }
   ],
 
-  "scripts" : [ "/objects/power/isn_atmosregulator/isn_atmosregenerator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
+  "scripts" : [ "/scripts/power.lua","isn_atmosregenerator.lua","/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 60,
 
   "animation" : "isn_atmosregulator.animation",
@@ -61,6 +59,6 @@
   "animationPosition" : [-80, 0],
 
   "inputNodes" : [ [1, 2] ],
-  "isn_powerReciever" : true,
+  "powertype" : "input",
   "isn_requiredPower" : 24
 }

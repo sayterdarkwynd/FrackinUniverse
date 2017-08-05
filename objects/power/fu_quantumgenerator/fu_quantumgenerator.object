@@ -5,7 +5,7 @@
   "category" : "wire",
   "objectType" : "container",
   "price" : 2500,
-  "description" : "Unmatched clean energy at 40 to 120u. Fuel type will decide power output.",
+  "description" : "Unmatched clean energy up to 128W. Fuel type will decide power output.",
   "shortdescription" : "^cyan;Quantum Reactor^white;",
   "race" : "generic",
   "printable" : false,
@@ -34,15 +34,13 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/objects/power/fu_quantumgenerator/fu_quantumgenerator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 90,
+  "scripts" : [ "/scripts/power.lua","fu_quantumgenerator.lua" ],
+  "scriptDelta" : 60,
   
-  "inputNodes" : [ [2, 4] ],
+  "inputNodes" : [ [2, 4],[0, 4] ],
   "outputNodes" : [ [2, 2] ],
   
-  "isn_powerSupplier" : true,
+  "powertype" : "output",
   "acceptablefuel" : {
     "biofuelcannister" : 30,
     "biofuelcannisteradv" : 40,
@@ -63,5 +61,13 @@
     "liquidmetallichydrogen" : 95,
     "liquiddeuterium" : 100,
     "liquidelderfluid" : 108
-  }
+  },
+  "heat" : [
+    {"minheat" : 70,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 20,"light" : [126,206,255]},
+    {"minheat" : 50,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 16,"light" : [126,206,255]},
+    {"minheat" : 30,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 12,"light" : [126,206,255]},
+    {"minheat" : 20,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 9,"light" : [126,206,255]},
+	{"minheat" : 5,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 5,"light" : [126,206,255]},
+	{"minheat" : 0,"animator" : {"screen" : "off","fans" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
+  ]
 }

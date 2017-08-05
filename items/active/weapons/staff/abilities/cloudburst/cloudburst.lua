@@ -9,7 +9,8 @@ function CloudBurst:init()
   self.elementalType = self.elementalType or self.weapon.elementalType
 
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
-  self.stances = config.getParameter("stances")
+
+  self.stances = config.getParameter("stances", self.stances)
 
   activeItem.setCursor("/cursors/reticle0.cursor")
   self.weapon:setStance(self.stances.idle)

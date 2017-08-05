@@ -1,0 +1,39 @@
+{
+  "itemName" : "aetheriumrapier",
+  "price" : 3600,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "My name is...",
+  "shortdescription" : "Aetherium Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee","rapier", "upgradeableWeapon" ],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "aetheriumrapier.png",
+  "collectablesOnPickup" : { "fu_weaponrapier" : "aetheriumrapier" },
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "aetheriumrapier.png",
+    "bladefullbright" : "aetheriumrapierfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 5.76,
+    "damageConfig" : {
+      "damageSourceKind":"cosmicbroadsword",
+      "statusEffects":["defenseboostneg20"]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,30 @@
+{
+  "projectileName" : "energyburstexplosion4",
+  "image" : "energyburstexplosion4.png",
+  "animationCycle" : 0.3,
+  "level" : 8,
+  "frameNumber" : 3,
+  "speed" : 0,
+  "fallSpeed" : 0,
+  "animationLoops" : true,
+  "fullbright" : true,
+  "piercing" : true,
+  "flippable" : true,
+  "pointLight" : true,
+  "lightColor" : [45,155,22],
+  "universalDamage" : true,
+  "timeToLive" : 1,
+  "damageKind" : "cosmic",
+  "emitters" : [ "tinyrocketsmoke" ],
+  
+  "periodicActions" : [  
+    {
+      "time" : 0.15,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "mineralpistolshot",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360
+   }
+  ]
+}

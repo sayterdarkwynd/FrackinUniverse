@@ -1,0 +1,38 @@
+{
+  "itemName" : "fucellsword",
+  "price" : 1500,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "A bizarre amalgamation of gene and metal.",
+  "shortdescription" : "Cell Blade",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword","bioweapon", "longsword", "upgradeableWeapon"],
+  "inventoryIcon" : "fucellsword.png",
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "fucellsword" },
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fucellsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.87,
+    "baseDps" : 8.7,
+    "damageConfig" : {
+      "damageSourceKind": "ice"
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

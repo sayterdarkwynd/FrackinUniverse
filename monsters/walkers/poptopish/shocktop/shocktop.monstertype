@@ -80,7 +80,6 @@
       "approachActions" : [
         {
           "name" : "approach-walk",
-          "cooldown" :  2,
           "parameters" : {
             "canJump" : true,
             "maxJumps" : 8,
@@ -89,12 +88,6 @@
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
             "minXRange" : 10,
-            "run" : true
-          }
-        },      
-        {
-          "name" : "approach-crawl",
-          "parameters" : {
             "run" : true
           }
         }
@@ -107,7 +100,17 @@
           }
         },
         {
-          "name" : "approach-crawl"
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "moveState" : "run",
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
         }
       ],
 
@@ -117,16 +120,15 @@
           "cooldown" : 3.0,
           "parameters" : {
             "moveState" : "stroll",
-            "wanderTime" : [2, 7]
+            "wanderTime" : [5, 20]
           }
-        },      
+        },
         {
-          "name" : "wander-crawl",
-          "cooldown" : [3,6],
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
           "parameters" : {
-            "wanderTime" : [6,12],
-            "idleTime" : [7,15],
-            "stopForce" : 500
+            "moveState" : "walk",
+            "wanderTime" : [5, 5]
           }
         }
       ]

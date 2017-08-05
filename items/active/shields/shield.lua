@@ -281,7 +281,7 @@ function bashEnemy()
   self.stunValue = math.random(100) + self.stunBonus
   
   -- lets limit how much damage they can do
-  self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.rand(6)
+  self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.random(6)
 
   if status.resourcePositive("perfectBlock") then
   	if self.stunValue >=100 then

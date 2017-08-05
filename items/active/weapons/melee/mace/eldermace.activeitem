@@ -1,0 +1,43 @@
+{
+  "itemName" : "eldermace",
+  "price" : 12200,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "I'm sure this is perfectly fine to hold for prolonged periods...
+Design by Ashey.",
+  "shortdescription" : "Elder Soulhammer",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "eldermace_ashey.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "eldermace" },
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "eldermace_ashey.png",
+    "bladefullbright" : "eldermace_asheyfullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.95, 
+    "baseDps":8.5,
+    "damageConfig" : {
+      "damageSourceKind" : "shadowhammer",
+      "statusEffects" : [ "shadowgasfx" ]
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 8,
+  "stunChance" : 10,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

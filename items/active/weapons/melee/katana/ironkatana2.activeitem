@@ -1,0 +1,179 @@
+{
+  "itemName" : "ironkatana2",
+  "price" : 500,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Well crafted, but heavy.",
+  "shortdescription" : "Kells Flawless Katana",
+  "tooltipKind" : "sword",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "ironkatana2.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "ironkatana2" },
+  "animation" : "combokatana.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ironkatana2.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility":{
+    "fireTime":0.65, 
+    "baseDps":6.75, 
+    "damageConfig":{
+      "knockback":25 
+      }, 
+      "comboSteps":3, 
+      "swooshOffsetRegions":[
+        [-0.75, 0.0, 4.25, 5.0], 
+        [0, -4.25, 5, 0], 
+        [3.0, -0.5, 6.5, 2.0]
+      ], 
+      "stepDamageConfig":[
+        {"baseDamageFactor":0.8, "knockback":10}, 
+        {"baseDamageFactor":1.0, "knockback":15}, 
+        {"baseDamageFactor":0.6, "knockback":20}
+        ], 
+      "stances":{
+
+	"idle":{
+	  "twoHanded":false, 
+	  "armRotation":-20, 
+	  "weaponRotation":120, 
+	  "weaponOffset":[0.0,2.5], 
+	  "allowRotate":false, 
+	  "allowFlip":true
+	}, 	
+
+        
+        
+        "windup1":{
+          "duration":0.15, 
+          "armRotation":-60, 
+          "weaponRotation":150, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false, 
+          "allowFlip":true
+      
+        }, 
+        "preslash1":{
+          "duration":0,          
+	  "playSounds" : ["chargeUp1"]  
+	}, 
+        "fire1":{
+          "duration":0.08, 
+          "armRotation":65, 
+          "weaponRotation":-125, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false,
+          "allowFlip":false
+        }, 
+        "wait1":{
+          "duration":0.05, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.5]
+        }, 
+        
+        
+        	
+        "windup2":{
+          "duration":0.05, 
+          "armRotation":90, 
+          "weaponRotation":-10, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false, 
+          "allowFlip":true
+          }, 
+        "preslash2":{
+          "duration":0.025, 
+          "armRotation":55, 
+          "weaponRotation":-45, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false, 
+          "allowFlip":false
+          }, 
+        "fire2":{
+          "duration":0.1, 
+          "armRotation":-45, 
+          "weaponRotation":-55, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.5], 
+          "allowRotate":false,
+          "allowFlip":false
+          }, 
+        "wait2":{
+          "duration":0.08, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.5]
+        }, 
+        
+        
+        
+        
+        
+        "windup3":{
+          "duration":0.12, 
+          "armRotation":-100, 
+          "weaponRotation":-150, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":false, 
+          "allowRotate":false, 
+          "allowFlip":true
+        }, 
+        "preslash3":{
+          "duration":0.025, 
+          "armRotation":-40, 
+          "weaponRotation":-130, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":false, 
+          "allowRotate":false, 
+          "allowFlip":true,          
+	  "playSounds" : ["chargeUp2"]  
+        }, 
+        "fire3":{
+          "duration":0.08, 
+          "armRotation":40, 
+          "weaponRotation":-100, 
+          "weaponOffset":[0,2.4], 
+          "twoHanded":false, 
+          "allowRotate":false, 
+          "allowFlip":true
+          }, 
+        "wait3":{
+          "duration":0.4, 
+          "armRotation":-85, 
+          "weaponRotation":-5, 
+          "allowRotate":false, 
+          "allowFlip":true, 
+          "twoHanded":false, 
+          "weaponOffset":[0,2.4]
+        }
+      }
+    }, 
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

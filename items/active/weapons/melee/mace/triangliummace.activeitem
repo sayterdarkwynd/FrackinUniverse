@@ -1,0 +1,40 @@
+{
+  "itemName" : "triangliummace",
+  "price" : 700,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Solarium and Trianglium. Together at last. Design by Leon.",
+  "shortdescription" : "Solangrium Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "triangliummace_leon.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "triangliummace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "triangliummace_leon.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.875, 
+    "baseDps":8.0,
+    "damageConfig" :{
+      "damageSourceKind" : "electric"
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+  "stunChance" : 11,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

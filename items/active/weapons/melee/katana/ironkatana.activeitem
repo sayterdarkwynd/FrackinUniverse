@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
   "inventoryIcon" : "ironkatana.png",
-
+  "collectablesOnPickup" : { "fu_weaponkatana" : "ironkatana" },
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
@@ -43,6 +43,7 @@
         {"baseDamageFactor":0.6, "knockback":20}
         ], 
       "stances":{
+
 	"idle":{
 	  "twoHanded":false, 
 	  "armRotation":-20, 
@@ -50,8 +51,7 @@
 	  "weaponOffset":[0.0,2.5], 
 	  "allowRotate":false, 
 	  "allowFlip":true
-	}, 
-	
+	}, 	
 
         
         
@@ -62,9 +62,13 @@
           "twoHanded":false, 
           "weaponOffset":[0,2.5], 
           "allowRotate":false, 
-          "allowFlip":true        
+          "allowFlip":true
+      
         }, 
-        "preslash1":{"duration":0}, 
+        "preslash1":{
+          "duration":0,          
+	  "playSounds" : ["chargeUp1"]  
+	}, 
         "fire1":{
           "duration":0.08, 
           "armRotation":65, 
@@ -143,7 +147,8 @@
           "weaponOffset":[0,2.4], 
           "twoHanded":false, 
           "allowRotate":false, 
-          "allowFlip":true
+          "allowFlip":true,          
+	  "playSounds" : ["chargeUp2"]  
         }, 
         "fire3":{
           "duration":0.08, 
@@ -155,7 +160,7 @@
           "allowFlip":true
           }, 
         "wait3":{
-          "duration":0.08, 
+          "duration":0.4, 
           "armRotation":-85, 
           "weaponRotation":-5, 
           "allowRotate":false, 
@@ -167,7 +172,7 @@
     }, 
 
   "critChance" : 1,
-  "critBonus" : 8,
+  "critBonus" : 6,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 

@@ -1,0 +1,79 @@
+{
+  "objectName" : "mechrepairpod",
+  "colonyTags" : ["tech","mech"],
+  "printable" : false,
+  "rarity" : "essential",
+  "description" : "Periodically releases restorative nanites. ^cyan;Requires 20w^reset;",
+  "shortdescription" : "Mech Repair Pod",
+  "race" : "ancient",
+
+  "category" : "trap",
+  "price" : 3000,
+  "lightColor" : [26, 38, 43],
+  "inventoryIcon" : "ancientbouldertrapicon.png",
+  "orientations" : [
+    {
+      "image" : "ancientbouldertrap_lit.png:<color>.<frame>",
+      "imagePosition" : [-86, 0],
+      
+      "direction" : "left",
+      "flipImages" : true,
+      
+      "animationPosition" : [-86, 0],
+      "animationParts" : {
+        "bg" : "ancientbouldertrap.png",
+        "fg" : "ancientbouldertrap_lit.png"
+      },
+      "lightPosition" : [0, 2],
+      "projectileDirection" : [0, 0],
+      "projectilePosition" : [0, 3],
+      "anchors" : [ "bottom" ],
+      "spaceScan" : 0.1
+    },
+    {
+      "image" : "ancientbouldertrap_lit.png:<color>.<frame>",
+      "imagePosition" : [-86, 0],
+      "direction" : "right",
+      
+      "animationPosition" : [-86, 0],
+      "animationParts" : {
+        "bg" : "ancientbouldertrap.png",
+        "fg" : "ancientbouldertrap_lit.png"
+      },
+      "lightPosition" : [0, 2],
+      "projectileDirection" : [0, 0],
+      "projectilePosition" : [0, 3],
+      "anchors" : [ "bottom" ],
+      "spaceScan" : 0.1
+    }
+  ],
+
+  "scripts" : [ "/scripts/power.lua","mechrepair.lua" ],
+  "scriptDelta" : 2,
+  
+  "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ "/sfx/tech/mech_deactivate.ogg" ],
+      "on" : [ ],
+      "off" : [ ]
+    }
+  },
+
+  "inputNodes" : [ [0, 0],[0, 1] ],
+  "outputNodes" : [ [1, 0] ],
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "fireTime" : 3.5, // rate of fire
+  "fireTimeVariance" : 0.0, // variation in rate of fire
+  "projectile" : "mechenergypickup", // name of projectile (required)
+  "projectileConfig" : { // extra configuration overrides for projectile
+    "speed" : 0,
+    "timeToLive" : 1
+  },
+  
+  "health" : 5,
+  "powertype" : "input",
+  "isn_requiredPower" : 20
+}

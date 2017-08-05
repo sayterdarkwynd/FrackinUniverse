@@ -1,0 +1,50 @@
+{
+  "itemName" : "fucommonmace",
+  "price" : 100,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A face-whacker!",
+  "shortdescription" : "Common Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee", "mace", "upgradeableWeapon"],
+  "animation" : "combomace.animation",
+  "animationParts" : { },
+  "animationCustom" : { 
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+  
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility" : {
+    "fireTime" : [0.8, 1.3],
+    "baseDps" : [7.0, 8.8]
+  },
+  "fireSounds" : [ "/sfx/melee/swing_hammer.ogg" ],
+
+  "critChance" : 1,
+  "critBonus" : 1, 
+  
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "macenames.config:nameGen",
+    
+    "animationParts" : {
+      "blade" : {
+        "path" : "blade/<variant>.png",
+        "variants" : 18,
+        "paletteSwap" : true
+      },
+      "handle" : {
+        "path" : "handle/<variant>.png",
+        "variants" : 15,
+        "paletteSwap" : true
+      }
+    },
+    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
+    "iconDrawables" : [ "handle", "blade" ]
+  }]
+}

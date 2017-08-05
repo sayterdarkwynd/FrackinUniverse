@@ -1,0 +1,42 @@
+{
+  "itemName" : "xithricitelongsword",
+  "price" : 2500,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Powered by cosmic dust.
+^cyan;Inflicts Vulnerability^reset;",
+  "shortdescription" : "Cosmic Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword", "longsword",  "upgradeableWeapon"],
+  "inventoryIcon" : "xithlongsword.png",
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "xithlongsword" },
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "xithlongsword.png",
+    "bladefullbright" : "xithlongswordfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "baseDps" : 8.25,
+    "damageConfig" : {
+      "knockback" : 0,
+       "statusEffects" : [ "defenseboostneg20" ],
+       "damageSourceKind" : "cosmicbroadsword"
+    }
+  },
+
+  "critChance" : 1, 
+  "critBonus" : 6, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

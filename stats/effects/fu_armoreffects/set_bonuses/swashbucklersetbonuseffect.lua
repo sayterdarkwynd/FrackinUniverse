@@ -38,7 +38,7 @@ end
 
 function 
 	checkWeapons()
-	local weapons=weaponCheck({"shortsword"})
+	local weapons=weaponCheck({"rapier","pistol"})
 	if weapons["both"] then
 		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus2,level))
 	elseif weapons["either"] then

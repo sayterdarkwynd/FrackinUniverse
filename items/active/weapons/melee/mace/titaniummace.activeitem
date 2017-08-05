@@ -1,0 +1,37 @@
+{
+  "itemName" : "titaniummace",
+  "price" : 300,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "Expensive and painful!",
+  "shortdescription" : "Titanium Mace",
+  "tooltipKind" : "sword",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "titaniummace_sacre.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "titaniummace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "titaniummace_sacre.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.976, 
+    "baseDps":8.2
+  },
+  "critChance" : 1,
+  "critBonus" : 1,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

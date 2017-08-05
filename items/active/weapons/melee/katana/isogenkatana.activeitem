@@ -1,9 +1,9 @@
 {
   "itemName" : "isogenkatana",
   "price" : 1500,
-  "level" : 7,
+  "level" : 6,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "legendary",
   "description" : "Cold as ice.",
   "shortdescription" : "Isogen Katana",
   "tooltipKind" : "sword2",
@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
 
   "inventoryIcon" : "isogenkatana.png",
-
+  "collectablesOnPickup" : { "fu_weaponkatana" : "isogenkatana" },
   "animation" : "combokatanaglow.animation",
   "animationParts" : {
     "handle" : "",
@@ -77,7 +77,8 @@
           "allowRotate":false, 
           "allowFlip":true        
         }, 
-        "preslash1":{"duration":0}, 
+        "preslash1":{"duration":0,          
+	  "playSounds" : ["chargeUp1"]  }, 
         "fire1":{
           "duration":0.1, 
           "armRotation":65, 
@@ -156,7 +157,8 @@
           "weaponOffset":[0,2.4], 
           "twoHanded":false, 
           "allowRotate":false, 
-          "allowFlip":true
+          "allowFlip":true,          
+	  "playSounds" : ["chargeUp2"]  
         }, 
         "fire3":{
           "duration":0.1, 
@@ -255,7 +257,8 @@
              "weaponOffset":[0,2.4], 
              "twoHanded":false, 
              "allowRotate":false, 
-             "allowFlip":true
+             "allowFlip":true,          
+	  "playSounds" : ["chargeUp4"]  
            }, 
            "fire6":{
              "duration":0.2, 
@@ -337,7 +340,7 @@
           "allowFlip":true
         }, 
         "wait8":{
-          "duration":0.15,
+          "duration":0.4,
           "armRotation":-20, 
           "weaponRotation":140, 
           "twoHanded":false, 
@@ -350,7 +353,7 @@
     }, 
 
   "critChance" : 1,
-  "critBonus" : 8,
+  "critBonus" : 10,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
