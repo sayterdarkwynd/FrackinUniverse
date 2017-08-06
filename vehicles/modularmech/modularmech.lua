@@ -203,7 +203,7 @@ function init()
   
   self.crouch = 0.0 -- 0.0 ~ 1.0
   self.crouchTarget = 0.0
-  self.crouchCheckMax = 20.0 --[[ dafuq does this mean? check --]]
+  self.crouchCheckMax = 20.0 
   self.bodyCrouchMax = -2.0
   self.hipCrouchMax = 2.0
   
@@ -522,7 +522,7 @@ function update(dt)
     local energyDrain = self.energyDrain
     if not hasTouched(newControls) and not hasTouched(oldControls) then --(not hasFired) then 
       eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
-      eMult = eMult / 25
+      eMult = eMult / 20
       energyDrain = -energyDrain*eMult
     end
     storage.energy = math.min(math.max(0, storage.energy - energyDrain * dt),self.energyMax)

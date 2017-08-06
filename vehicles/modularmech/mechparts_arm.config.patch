@@ -1672,24 +1672,14 @@
             "value": 20
         }
     ],
- 
-    [{
-            "op": "test",
-            "path": "/PTX-010_ChakramShooter"
-        }, {
-            "op": "replace",
-            "path": "/PTX-010_ChakramShooter/partParameters/projectileParameters/power",
-            "value": 15
-        }
-    ],
- 
+
     [{
             "op": "test",
             "path": "/srm"
         }, {
             "op": "replace",
             "path": "/srm/partParameters/projectileParameters/power",
-            "value": 4
+            "value": 4.4
         }, {
             "op": "add",
             "path": "/srm/stats/multicount",
@@ -1700,10 +1690,11 @@
     [{
             "op": "test",
             "path": "/bhmappc"
-        }, {
+        }, 
+        {
             "op": "replace",
             "path": "/bhmappc/partParameters/projectileParameters/power",
-            "value": 33
+            "value": 42
         }
     ],
  
@@ -1711,9 +1702,14 @@
             "op": "test",
             "path": "/bhmaLB10X"
         }, {
+            "op": "add",
+            "path": "/bhmac10/stats/multicount",
+            "value": 4
+        },
+        {
             "op": "replace",
             "path": "/bhmaLB10X/partParameters/projectileParameters/power",
-            "value": 24
+            "value": 12
         }
     ],
  
@@ -1723,10 +1719,20 @@
         }, {
             "op": "replace",
             "path": "/bhmac10/partParameters/projectileParameters/power",
-            "value": 10
+            "value": 30
         }
     ],
- 
+
+    [{
+            "op": "test",
+            "path": "/PTX-010_ChakramShooter"
+        }, {
+            "op": "replace",
+            "path": "/PTX-010_ChakramShooter/partParameters/projectileParameters/power",
+            "value": 2
+        }
+    ],
+    
     [{
             "op": "test",
             "path": "/PTX-010_PhotonRifle"

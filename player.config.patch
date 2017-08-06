@@ -1,4 +1,17 @@
 [
+
+  {
+    "op" : "add",
+    "path" : "/collisionParams",
+    "value" : {
+      "minimumFallDistance" : 14,
+      "fallDistanceDamageFactor" : 3,
+      "minimumFallVel" : 40,
+      "baseGravity" : 80,
+      "gravityDiffFactor" : 0.00111111
+    }
+  },
+  
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-", "value": "/scripts/mm_player_primary.lua" },
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/basictilegroundeffects.lua" },
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/fu_tilegroundeffects.lua" },
@@ -7,7 +20,8 @@
 
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "multitinytether"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "multitether"} },
-
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "statuetether"} },
+        
 	// crew
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract_janitor"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract"} },
