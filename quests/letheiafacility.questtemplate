@@ -1,0 +1,26 @@
+  {
+  "id" : "letheiafacility.gearup",
+  "title" : "^green;The Letheia Facility",
+  "text" : "Discovered in the Letheia Fleet is a map to a secluded Letheia Corporation facility. There's enough evidence here to warrant an investigation.",
+  "completionText" : "Perhaps with the facility shut down, the Letheia Corporation will stop its deeds... haha, who are you kidding?",
+  "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questReceiver"
+  },
+  "moneyRange" : [0, 0],
+  "rewards" : [
+      [ [ "humantier4head-recipe" ], [ "humantier4chest-recipe" ], [ "humantier4pants-recipe" ]]
+   ],
+  "canBeAbandoned" : true,
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+		"portraits" : {
+		"default" : "player"
+		},
+	"associatedMission" : "letheiafacility",
+    "turnInDescription" : "Raid the Letheia bioweapons facility.",
+    "requireTurnIn" : true
+  }
+}

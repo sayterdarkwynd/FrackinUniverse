@@ -1,0 +1,70 @@
+{
+  "objectName" : "statuetether",
+  "colonyTags" : ["misc"],
+  "rarity" : "Rare",
+  "category" : "storage",
+  "price" : 100,
+  "description" : "A statue multi-tether.",
+  "shortdescription" : "Statue multi-tether",
+  "race" : "generic",
+  "printable" : false,
+
+  "apexDescription" : "Several captured creatures can be tethered to this statue.",
+  "avianDescription" : "A pretty statue that pets can be tethered to.",
+  "floranDescription" : "Creaturess attached to ugly ssstatue ssstay here.",
+  "glitchDescription" : "Satisfied. Captured creatures placed in this statue will stay nearby.",
+  "humanDescription" : "A statue for captured creatures.",
+  "hylotlDescription" : "Once placed in this statue, captured creatures will not wander far.",
+  "novakidDescription" : "A handy statue for keepin' captured creatures from wanderin'.",
+
+  "objectType" : "container",
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/multitether.config",
+  "subtitle" : "",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "pettether.lua" ],
+
+  "damageTeam" : {
+    "type" : "friendly",
+    "team" : 0
+  },
+
+  "inventoryIcon" : "statuetethericon.png",
+
+  "animation" : "/objects/spawner/tinytether/tether.animation",
+  "animationParts" : {
+    "tether" : "statuetether.png",
+    "tetherlit" : "statuetetherlit.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "statuetether.png:off.<frame>", "fullbright" : true }, { "image" : "statuetether.png:off.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+      "animationCycle" : 1.2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "statuetether.png:off.<frame>", "fullbright" : true }, { "image" : "statuetether.png:off.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+      
+      "frames" : 1,
+      "animationCycle" : 1.2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ]
+}
