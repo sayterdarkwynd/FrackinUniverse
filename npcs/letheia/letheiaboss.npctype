@@ -1,0 +1,97 @@
+{
+  "type" : "letheiaboss",
+  "baseType" : "hostile",
+  
+    "identity" : {
+    "gender" : "male"
+  },
+
+  "levelVariance" : [0, 0],
+  "innateStatusEffects" : [ "regenerationaugment1" ],
+  "dropPools" : [ "challengeChestTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "hylotl" : {
+          "default" : [
+            "Oh my! More guests!"
+          ]
+        }
+      }
+    }
+  },
+  
+  "movementParameters" : {
+      "runSpeed" : 20,
+	  "walkSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.5
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "berethead", "parameters" : { "colorIndex" : 4 } }
+            ],
+            "chest" : [
+              { "name" : "strapchest", "parameters" : { "colorIndex" : 4 } }
+            ],
+            "legs" : [
+              { "name" : "voyagerlegs", "parameters" : { "colorIndex" : 4 } }
+            ],
+            "primary" : [ 
+			  { "name" : "npcbruisersword", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["frostslow"] } } } } 
+			],
+            "sheathedprimary" : [ 
+			  { "name" : "rareassaultrifle" } 
+			]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {    
+    "stats" : {
+	"grit" : {
+		"baseValue" : 1.0
+	},
+	"poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"electricStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"iceStatusImmunity" : {
+        "baseValue" : 1.0
+      },	  
+	"fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"specialStatusImmunity" : {
+		"baseValue" : 1.0
+	},
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+    "maxHealth" : {
+      "baseValue" : 500.0
+    },
+    "powerMultiplier" : {
+      "baseValue" : 1.8
+    },
+	"maxEnergy" : {
+      "baseValue" : 25.0
+      }
+    }
+  }
+}
