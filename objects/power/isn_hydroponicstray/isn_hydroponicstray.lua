@@ -29,7 +29,7 @@ function update(dt)
 	storage.activeConsumption = false
 	
 	if storage.currentseed == nil or storage.currentcrop == nil then
-		if isn_doSeedIntake() ~= true then return end
+		if isn_doSeedIntake() ~= true then animator.setAnimationState("powlight", "off") return end
 	end
 	
 	if power.consume(config.getParameter('isn_requiredPower')*dt) then
