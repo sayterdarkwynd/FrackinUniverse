@@ -41,7 +41,7 @@ function onInputNodeChange(args)
 end
 
 function shoot()
-  local query = world.entityQuery(entity.position(),3,{includedTypes={'vehicle'}})
+  local query = world.entityQuery(entity.position(),10,{includedTypes={'vehicle'}})
   local foundmech = false
   for i=1,#query do
     if world.entityName(query[i]) == 'modularmech' then
@@ -49,10 +49,21 @@ function shoot()
 	  break
 	end
   end
+  updateActive()
   if foundmech and power.consume(config.getParameter('isn_requiredPower')*self.fireTime) then
+    animator.setParticleEmitterActive("a1", active)
     animator.playSound("shoot")
+    animator.setAnimationState("trapState", "on")
+    object.setLightColor(config.getParameter("activeLightColor", {0, 0, 0, 0}))
+    object.setSoundEffectEnabled(true)
     local projectileDirection = vec2.rotate(self.projectileDirection, sb.nrand(self.inaccuracy, 0))
     world.spawnProjectile(self.projectile, self.projectilePosition, entity.id(), projectileDirection, false, self.projectileConfig)
+  else
+    animator.setParticleEmitterActive("a1", inactive)
+    animator.setAnimationState("trapState", "off")
+    object.setLightColor(config.getParameter("inactiveLightColor", {0, 0, 0, 0}))
+    object.setSoundEffectEnabled(false)
+    animator.playSound("off");
   end
 end
 

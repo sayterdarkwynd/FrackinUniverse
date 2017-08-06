@@ -51,11 +51,11 @@
   "scripts" : [ "/scripts/power.lua","mechrepair.lua" ],
   "scriptDelta" : 2,
   
-  "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
+  "animation" : "/objects/wired/projectiletrap/projectiletrap2.animation",
   "animationCustom" : {
     "sounds" : {
       "shoot" : [ "/sfx/tech/mech_deactivate.ogg" ],
-      "on" : [ ],
+      "on" : [ "/sfx/tech/mech_deactivate.ogg" ],
       "off" : [ ]
     }
   },
@@ -63,7 +63,7 @@
   "inputNodes" : [ [0, 0],[0, 1] ],
   "outputNodes" : [ [1, 0] ],
   "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
-  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+  "activeLightColor" : [26, 38, 43], // light color to emit when the object is 'on'
 
   "fireTime" : 3.5, // rate of fire
   "fireTimeVariance" : 0.0, // variation in rate of fire
