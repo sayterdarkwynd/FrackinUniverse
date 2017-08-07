@@ -36,7 +36,7 @@ function isn_powerGenerationBlocked()
   local location = isn_getTruePosition()
   if world.underground(location) then return true -- it's underground
   elseif world.liquidAt(location) then return true -- it's submerged in liquid
-  elseif world.windLevel(location) < 0.2 then return true end -- not enough wind
+  elseif world.windLevel(location) < 0.1 then return true end -- not enough wind
 end
 
 function isn_getTruePosition()
