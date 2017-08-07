@@ -11,8 +11,9 @@ function update(dt)
 	    local location = isn_getTruePosition() 
 	    local light = getLight(location)
 	    local powerLevel = config.getParameter("powerLevel",1) 
-        genmult = 1
-        if (light) <= 0.4 then genmult = 1
+	    
+                genmult = 1
+                if (light) <= 0.4 then genmult = 1
 		elseif (light) >= 0.8 then genmult = 4 * (1 + light)	                  
 		elseif (light) >= 0.75 then genmult = 4	  
 		elseif (light) >= 0.70 then genmult = 3 
