@@ -1,0 +1,53 @@
+{
+  "type" : "spiderdroidhostile",
+  "baseType" : "hostilefuhard",
+
+  "levelVariance" : [1, 2],
+
+  "dropPools" : [ "ffbanditTreasure" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "leapWindup" : 0.55,
+      "rangedAimTime" : 0.2,
+      "rangedWindupTime" : 0.01,
+      "rangedMinFireTime": 0.15,
+      "rangedMaxFireTime": 5      
+    }  
+  },
+  
+  "items" : {
+    "override" : [
+      [0,[
+          {
+            "primary" : [
+              "spiderdroidbeam"
+            ],
+            "alt" : [
+             "flashlight"
+            ]
+          }
+      ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 90.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 120.0
+      },      
+      "powerMultiplier" : {
+        "baseValue" : 0.65
+      },
+      "protection" : {
+        "baseValue" : 1.25
+      },
+      "healthRegen" : {
+        "baseValue" : 0.05
+      }
+    }
+  }
+}

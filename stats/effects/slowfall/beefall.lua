@@ -4,7 +4,7 @@ function init()
   local bounds = mcontroller.boundBox()
   self.liquidMovementParameter = {
     airJumpProfile = { 
-      jumpSpeed = 50
+      jumpSpeed = 30
     }
   }    
   script.setUpdateDelta(5)
