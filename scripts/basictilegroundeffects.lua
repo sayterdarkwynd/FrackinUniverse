@@ -138,7 +138,7 @@ brittleTiles = function(yVelChange,minimumFallVel, groundMat, offset)
 
     if brittle and self.fallDistance > brittle and yVelChange > minimumFallVel - brittle then
       local damage = math.random(currentTile["damage"])+1
-      local position = {self.position[1],math.floor(self.position()[2])}
+      local position = {self.position[1],math.floor(self.position[2])}
       world.damageTiles({vec2.add(position,{offset,-3})}, "foreground", position, "blockish", damage, 0)
       for y = -1, 0 do
         for x = -1, 1 do
