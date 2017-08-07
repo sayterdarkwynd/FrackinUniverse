@@ -1,11 +1,6 @@
 require '/scripts/power.lua'
 
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
 function update(dt)
-        daytime = daytimeCheck()
 	storage.checkticks = (storage.checkticks or 0) + dt
 	if storage.checkticks >= 10 then
 	  storage.checkticks = storage.checkticks - 10
@@ -17,8 +12,8 @@ function update(dt)
 	    local light = getLight(location)
 	    local powerLevel = config.getParameter("powerLevel",1) 
         genmult = 1
-                if daytime then genmult = 1 -- if it is daytime, lets apply this bonus
-		elseif (light) >= 0.80 then genmult = 4 * (1 + light)	                  
+        if (light) <= 0.4 then genmult = 1
+		elseif (light) >= 0.8 then genmult = 4 * (1 + light)	                  
 		elseif (light) >= 0.75 then genmult = 4	  
 		elseif (light) >= 0.70 then genmult = 3 
 		elseif (light) >= 0.60 then genmult = 2 		  
