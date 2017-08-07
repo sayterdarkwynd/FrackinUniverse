@@ -2,18 +2,17 @@ require '/scripts/power.lua'
 
 function update(dt)
 	storage.checkticks = (storage.checkticks or 0) + dt
-	      
-	local location = isn_getTruePosition() 
-	local light = world.lightLevel(location)
-	local powerLevel = config.getParameter("powerLevel",1) 
 	if storage.checkticks >= 10 then
 	  storage.checkticks = storage.checkticks - 10
 	  if isn_powerGenerationBlocked() then
 		animator.setAnimationState("meter", "0")
 		power.setPower(0)
 	  else
-                genmult = 1
-                if (light) <= 0.4 then genmult = 1
+	    local location = isn_getTruePosition() 
+	    local light = getLight(location)
+	    local powerLevel = config.getParameter("powerLevel",1) 
+        genmult = 1
+        if (light) <= 0.4 then genmult = 1
 		elseif (light) >= 0.8 then genmult = 4 * (1 + light)	                  
 		elseif (light) >= 0.75 then genmult = 4	  
 		elseif (light) >= 0.70 then genmult = 3 
@@ -38,14 +37,31 @@ function update(dt)
 	power.update(dt)
 end
 
+function getLight(location)
+  local reallight = world.lightLevel(location)
+  local objects = world.objectQuery(entity.position(), 20)
+  local lights = {}
+  for i=1,#objects do
+	local light = world.callScriptedEntity(objects[i],'object.getLightColor')
+	if light[1] > 0 or light[2] > 0 or light[3] > 0 then
+	  lights[objects[i]] = light
+	  world.callScriptedEntity(objects[i],'object.setLightColor',{0,0,0})
+	end
+  end
+  local light = (reallight-world.lightLevel(location))/3
+  object.say(light..','..reallight)
+  for key,value in pairs(lights) do
+    world.callScriptedEntity(key,'object.setLightColor',value)
+  end
+  return light
+end
 
 function isn_powerGenerationBlocked()
 	-- Power generation does not occur if...
 	local location = isn_getTruePosition()
 	if world.type == 'unknown' then return true -- it's on a ship
 	elseif world.underground(location) then return true -- it's underground
-	elseif world.lightLevel(location) < 0.2 then return true -- its light enough
-	elseif world.timeOfDay() > 0.50 then return true end -- its not daytime. might replace this last one if we can selectively ignore lights
+	elseif world.lightLevel(location) < 0.2 then return true end -- its light enough
 end
 
 function isn_getTruePosition()
