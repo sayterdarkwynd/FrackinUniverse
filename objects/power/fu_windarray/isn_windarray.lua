@@ -8,7 +8,7 @@ function update(dt)
 	  animator.setAnimationState("windState", "idle")
 	else
 	  local generated = math.min(math.abs(world.windLevel(isn_getTruePosition())),12)
-      object.say(generated)
+
 	  if generated >= 12 then
 	    animator.setAnimationState("windState", "active7")
 	  elseif generated >= 10 then

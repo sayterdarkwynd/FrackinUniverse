@@ -1,14 +1,17 @@
 require '/scripts/power.lua'
+require "/scripts/kheAA/transferUtil.lua"
 
 function init()
   heat = config.getParameter('heat')
   power.init()
+  transferUtil.init()
 end
 function update(dt)
+  transferUtil.loadSelfContainer()
   if storage.fueltime and storage.fueltime > 0 then
     storage.fueltime = math.max(storage.fueltime - dt,0)
   end
-  if not storage.fueltime or storage.fueltime == 0 then
+  if (not storage.fueltime or storage.fueltime == 0) and (not object.isInputNodeConnected(1) or object.getInputNodeLevel(1)) then
     item = world.containerItemAt(entity.id(),0)
 	if item then
 	  itemlist = config.getParameter('acceptablefuel')

@@ -1,7 +1,7 @@
 setName="fu_primusset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15}
+	{stat = "powerMultiplier", baseMultiplier = 0.25}
 }
 
 armorBonus={}

@@ -1,0 +1,44 @@
+{
+	"objectName" : "smartbox_splitter",
+	"colonyTags" : [ "smart", "box" ],
+	"rarity" : "common",
+	"race" : "generic",
+	"category" : "Smart Box",
+	"printable" : false,
+	"objectType" : "container",
+	"price" : 1750,
+	
+	"description" : "Splits a stack into 100s, 10s,
+and 1s (as well as it can).
+Item-Network compatible.",
+	"shortdescription" : "Stack Splitter",
+	"subtitle" : "Subtitle Test",
+	
+	"inventoryIcon" : "icon.png",
+	"orientations" : [
+		{
+			"dualImage" : "sprite.png",
+			"imagePosition" : [0, 0],
+			"frames" : 1,
+			"animationCycle" : 1.0,
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+	
+	"inputSlot" : 1,
+	
+	"inputNodes" : [ [0, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"acceptsItems" : true,
+	
+	"openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+	"slotCount" : 4,
+	"uiConfig" : "/interface/smartbox/splitter/splitter.config",
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+	
+	"scripts" : [ "/objects/smartbox/splitter/splitter.lua" ],
+	"scriptDelta" : 1
+}

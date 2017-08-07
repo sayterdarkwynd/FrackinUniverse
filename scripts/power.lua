@@ -1,18 +1,7 @@
 power = {}
 
 function power.init()
-  if config.getParameter('powertype') then
-    if not storage.entitylist then
-      if config.getParameter('powertype') == 'battery' then
-        storage.entitylist = {battery = {entity.id()},output = {},all = {entity.id()}}
-      elseif config.getParameter('powertype') == 'output' then
-        storage.entitylist = {battery = {},output = {entity.id()},all = {entity.id()}}
-      else
-        storage.entitylist = {battery = {},output = {},all = {entity.id()}}
-      end
-    end
-    time = 10
-  end
+  power.onNodeConnectionChange()
 end
 
 function init()
@@ -21,23 +10,19 @@ end
 
 function power.update(dt)
   if config.getParameter('powertype') then
-    if time > 0 then
-      time = time - dt
+    if config.getParameter('powertype') == 'battery' then
+      storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
     else
-      if config.getParameter('powertype') == 'battery' then
-        storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
-      else
-        power.sendPowerToBatteries()
+      power.sendPowerToBatteries()
+    end
+    if storage.power and storage.power > 0 then
+      storage.energy = storage.power * dt
+	  if config.getParameter('powertype') == 'battery' then
+	    storage.energy = math.min(storage.energy,storage.storedenergy)
+        storage.storedenergy = storage.storedenergy - storage.energy
       end
-      if storage.power and storage.power > 0 then
-        storage.energy = storage.power * dt
-	    if config.getParameter('powertype') == 'battery' then
-	      storage.energy = math.min(storage.energy,storage.storedenergy)
-          storage.storedenergy = storage.storedenergy - storage.energy
-        end
-      else
-        storage.energy = 0
-      end
+    else
+      storage.energy = 0
     end
   end
 end
@@ -59,29 +44,29 @@ function power.remove(amount)
 end
 
 function power.consume(amount)
-  if power.getTotalEnergy() >= amount then
+    if power.getTotalEnergy() >= amount then
     for i=1,#storage.entitylist.output do
-	  energy = power.getEnergy(storage.entitylist.output[i])
-	  if energy > 0 then
-	    energy = math.min(energy,amount)
-		world.callScriptedEntity(storage.entitylist.output[i],'power.remove',energy)
-		amount = amount - energy
-	  end
-	  if amount == 0 then
-	    return true
-	  end
-	end
-	for i=1,#storage.entitylist.battery do
-	  energy = power.getEnergy(storage.entitylist.battery[i])
-	  if energy > 0 then
-	    energy = math.min(energy,amount)
-		world.callScriptedEntity(storage.entitylist.battery[i],'power.remove',energy)
-		amount = amount - energy
-	  end
-	  if amount == 0 then
-	    return true
-	  end
-	end
+      energy = power.getEnergy(storage.entitylist.output[i])
+      if energy > 0 then
+        energy = math.min(energy,amount)
+  	    world.callScriptedEntity(storage.entitylist.output[i],'power.remove',energy)
+  	    amount = amount - energy
+      end
+      if amount == 0 then
+        return true
+      end
+    end
+    for i=1,#storage.entitylist.battery do
+      energy = power.getEnergy(storage.entitylist.battery[i])
+      if energy > 0 then
+        energy = math.min(energy,amount)
+  	  world.callScriptedEntity(storage.entitylist.battery[i],'power.remove',energy)
+  	  amount = amount - energy
+      end
+      if amount == 0 then
+        return true
+      end
+    end
   else
     return false
   end
@@ -139,7 +124,11 @@ function power.getEnergy(id)
   end
 end
 
-function onNodeConnectionChange(arg)
+function onNodeConnectionChange()
+  power.onNodeConnectionChange()
+end
+
+function power.onNodeConnectionChange(arg)
   if config.getParameter('powertype') then
     if arg then
       entitylist = arg
@@ -167,7 +156,7 @@ function onNodeConnectionChange(arg)
 			      table.insert(entitylist.output,value)
 			    end
 		        table.insert(entitylist.all,value)
-			    entitylist = world.callScriptedEntity(value,'onNodeConnectionChange',entitylist)
+			    entitylist = world.callScriptedEntity(value,'power.onNodeConnectionChange',entitylist)
 		      elseif entitylist.all[j] == value then
 		        break
 		      end
@@ -190,7 +179,7 @@ function onNodeConnectionChange(arg)
 			      table.insert(entitylist.output,value)
 			    end
 		        table.insert(entitylist.all,value)
-			    entitylist = world.callScriptedEntity(value,'onNodeConnectionChange',entitylist)
+			    entitylist = world.callScriptedEntity(value,'power.onNodeConnectionChange',entitylist)
 		      elseif entitylist.all[j] == value then
 		        break
 		      end
