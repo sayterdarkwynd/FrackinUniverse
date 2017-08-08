@@ -32,7 +32,6 @@ function update(dt)
   end
   for i=1,#heat do
     if storage.heat >= heat[i].minheat then
-	  object.say(storage.powermod or 0)
 	  power.setPower(heat[i].power + (storage.powermod or 0))
 	  local light = config.getParameter("lightColor", heat[i].light)
 	  local brightness = math.min(0.75,0.75*(storage.heat/90))

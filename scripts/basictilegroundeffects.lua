@@ -129,16 +129,13 @@ end
 
 
 brittleTiles = function(yVelChange,minimumFallVel, groundMat, offset)
-  --local groundMat, offset = groundContact()
-  --if mcontroller.onGround() and self.matCheck[groundMat] then
-    --local brittle = self.matCheck[groundMat][10] or 0
-    
   --if currentTile then
     local brittle = currentTile["brittle"] or false
+    local options = currentTile["options"] or false
 
     if brittle and self.fallDistance > brittle and yVelChange > minimumFallVel - brittle then
       local damage = math.random(currentTile["damage"])+1
-      local position = {self.position[1],math.floor(self.position()[2])}
+      local position = {self.position[1],math.floor(self.position[2])}
       world.damageTiles({vec2.add(position,{offset,-3})}, "foreground", position, "blockish", damage, 0)
       for y = -1, 0 do
         for x = -1, 1 do
@@ -149,13 +146,14 @@ brittleTiles = function(yVelChange,minimumFallVel, groundMat, offset)
           end
         end
       end
+
       world.spawnProjectile("invisibleprojectile", position, entity.id(), {0,0}, false, {
         timeToLive = 0,
         damageType = "noDamage",
         actionOnReap = {
           {
             action = "sound",
-            options = currentTile[options]
+            options = currentTile["options"] or false
           }
         }
       })
