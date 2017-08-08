@@ -26,10 +26,10 @@ function update(dt)
 		
 		local generated = math.min(powerLevel * genmult,36) -- max at 36 just in case.	
 		
-		if genmult >= 4 then animator.setAnimationState("meter", "4")
+		if genmult > 4 then animator.setAnimationState("meter", "4")
 		elseif genmult > 3 then animator.setAnimationState("meter", "3")
 		elseif genmult > 2 then animator.setAnimationState("meter", "2")
-		elseif genmult < 2 then animator.setAnimationState("meter", genmult)
+		elseif genmult > 0 then animator.setAnimationState("meter", "1")
 		else animator.setAnimationState("meter", "0")
 		end
 	        power.setPower(generated)
