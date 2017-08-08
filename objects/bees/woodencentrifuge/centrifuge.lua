@@ -39,7 +39,7 @@ function deciding(item)
 		                    copperore      = self.itemChances.common / 4,
 		                    tungstenore    = self.itemChances.common / 4,
 		                    durasteelore   = self.itemChances.rare},
-		mooncomb        = { hematite       = self.itemChances.common },
+		mooncomb        = { fu_carbon       = self.itemChances.common },
 		morbidcomb      = { ghostlywax     = self.itemChances.common,
 		                    bone           = self.itemChances.rare},
 		mythicalcomb    = { liquidhealing  = self.itemChances.rare,
