@@ -19,20 +19,21 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.2,
-    "baseDps" : 8.5,
-    "energyUsage" : 12.75,
-    "inaccuracy" : 0.01,
+    "fireTime" : 1,
+    "baseDps" : 9,
+    "energyUsage" : 22.75,
+    "inaccuracy" : 0,
 
     "projectileType" : "isn_terawattlaser",
     "projectileParameters" : {
-      "knockbackRange" : [10, 20]
+      "knockbackRange" : [1, 5],
+      "damageSourceKind" : "electric"
     },
 
     "stances" : {
