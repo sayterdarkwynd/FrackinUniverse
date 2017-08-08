@@ -1,24 +1,24 @@
 {
-  "itemName" : "curvesmg",
+  "itemName" : "curvepistol",
   "price" : 160,
-  "inventoryIcon" : "curvesmg_sacre.png",
+  "inventoryIcon" : "curvepistol_sacre.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A space pirate favorite for boarding raids.
+  "description" : "A space pirate sidearm.
 ^yellow;+Bouncy",
-  "shortdescription" : "Breach Blaster",
-  "category" : "Assault Rifle",
+  "shortdescription" : "Breach Pistol",
+  "category" : "Machine Pistol",
   "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","assaultrifle","energy","upgradeableWeapon"],
-  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","machinepistol","energy","upgradeableWeapon"],
+  "twoHanded" : false,
 
   "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "curvesmg_sacre.png",
-    "middlefullbright" : "curvesmgfullbright.png",
+    "middle" : "curvepistol_sacre.png",
+    "middlefullbright" : "curvepistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },
@@ -29,7 +29,7 @@
   },
 
   "baseOffset" : [1.5, 0.0],
-  "muzzleOffset" : [1.8, 0.325],
+  "muzzleOffset" : [1.0, 0.325],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -38,25 +38,25 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.3,
-    "baseDps" : 7,
+    "fireTime" : 0.2,
+    "baseDps" : 5.5,
     "energyUsage" : 24.0,
-    "inaccuracy" : 0.008,
+    "inaccuracy" : 0.02,
 
-    "projectileCount" : 1,
+    "projectileCount" : 2,
     "fireType" : "auto",
 
     "projectileType" : "fuenergyballshot",
     "projectileParameters" : { 
       "bounces" : 2,
-      "speed" : 60,
-      "knockback" : 10
+      "speed" : 50,
+      "knockback" : 6.5
     },
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0,
 	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+	      "twoHanded" : false,
 
 	      "allowRotate" : true,
 	      "allowFlip" : true
@@ -65,7 +65,7 @@
 	      "duration" : 0,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+	      "twoHanded" : false,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -74,7 +74,7 @@
 	      "duration" : 0.075,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+	      "twoHanded" : false,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -84,9 +84,7 @@
 
 
   "critChance" : 1,
-  "critBonus" : 5, 
-
-  "altAbilityType" : "blisteraltshot",
-
+  "critBonus" : 3, 
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
