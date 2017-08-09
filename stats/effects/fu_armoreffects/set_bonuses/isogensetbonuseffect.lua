@@ -9,12 +9,9 @@ weaponBonus={
 
 armorBonus={
 	{stat = "breathProtection", amount = 1},
-	{stat = "iceStatusImmunity", amount = 1},
-	{stat = "snowslowImmunity", amount = 1},
-	{stat = "slushslowImmunity", amount = 1},
-	{stat = "liquidnitrogenImmunity", amount = 1},
-	{stat = "iceslipImmunity", amount = 1},
-	{stat = "ffextremecoldImmunity", amount = 1}
+	{stat = "fireStatusImmunity", amount = 1},
+        {stat = "lavaImmunity", amount = 1},
+	{stat = "ffextremeheatImmunity", amount = 1}	
 }
 
 function init()

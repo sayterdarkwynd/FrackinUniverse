@@ -1,0 +1,95 @@
+{
+  "itemName" : "curvesmg",
+  "price" : 160,
+  "inventoryIcon" : "curvesmg_sacre.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A space pirate favorite for boarding raids.
+^yellow;+Bouncy and Burny",
+  "shortdescription" : "Breach Blaster",
+  "category" : "Assault Rifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Plasma",
+  "itemTags" : ["weapon","ranged","assaultrifle","plasma","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "curvesmg_sacre.png",
+    "middlefullbright" : "curvesmgfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/plasma_ar4.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.5, 0.0],
+  "muzzleOffset" : [1.8, 0.425],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.3,
+    "baseDps" : 4.55,
+    "energyUsage" : 24.0,
+
+    "projectileCount" : 1,
+    "fireType" : "burst",
+    "inaccuracy" : 0.03,
+    "burstTime" : 0.035,
+    "burstCount" : 4,
+
+    "projectileType" : "fuenergyballshot",
+    "projectileParameters" : { 
+      "bounces" : 2,
+      "speed" : 80,
+      "knockback" : 10,
+      "statusEffects" : [ "burning" ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : -2,
+	      "weaponRotation" : -2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 5, 
+
+  "altAbilityType" : "flashlight",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

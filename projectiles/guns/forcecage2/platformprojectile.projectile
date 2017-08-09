@@ -1,0 +1,80 @@
+{
+  "projectileName" : "fuplatformprojectile",
+  "physics" : "default",
+  "timeToLive" : 4,
+  "image" : "platformprojectile.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 3,
+  "windupFrames" : 3,
+  "windupTime" : 0.5,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_appear2.ogg" ]
+    },  
+    {
+      "time" : 4,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_disappear2.ogg" ]
+    }
+  ],
+      "actionOnReap" : [
+        {
+          "action" : "sound",
+          "options" : [
+            "/sfx/melee/staff_aura_activate.ogg"
+          ]
+        }
+      ],
+
+  "controlRotation" : {
+    "maxSpeed" : 0,
+    "rotation" : 0,
+    "controlForce" : 0,
+    "friction" : 1
+  },
+  "speed" : 0,
+  "power" : 4,
+
+  "onlyHitTerrain" : true,
+
+  "physicsCollisions" : {
+    "piece1" : {
+      "platform" : false,
+      "collision" : [ [-3.0, 0], [0, 0.25] ],
+      "categoryWhitelist" : [ "monster", "player", "npc" ]
+    },
+    "piece2" : {
+      "platform" : false,
+      "collision" : [ [0, 0.25], [3.0, 0] ],
+      "categoryWhitelist" : [ "monster", "player", "npc" ]
+    },
+    "piece3" : {
+      "platform" : false,
+      "collision" : [ [3.0, 0], [0, -0.25] ],
+      "categoryWhitelist" : [ "monster", "player", "npc" ]
+    },
+    "piece4" : {
+      "platform" : false,
+      "collision" : [ [0, -0.25], [-3.0, 0] ],
+      "categoryWhitelist" : [ "monster", "player", "npc" ]
+    }
+  },
+
+  "renderLayer" : "ItemDrop+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ "defaultblue" ],
+  "lightColor" : [0, 100, 200],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "/items/active/weapons/ranged/abilities/energynet/staffprojectile.lua" ],
+  
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+}

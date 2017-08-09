@@ -1,0 +1,90 @@
+{
+  "itemName" : "curveblaster",
+  "price" : 1600,
+  "inventoryIcon" : "curveblaster_sacre.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A unique plasma phase weapon specially designed for breaching hulls.
+^yellow;Burns targets",
+  "shortdescription" : "Breach Gun",
+  "category" : "Shotgun",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Plasma",
+  "itemTags" : ["weapon", "ranged", "shotgun", "plasma", "upgradeableWeapon" ],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/curveblaster.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "curveblaster_sacre.png",
+    "middlefullbright" : "curveblasterfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/wavebeam.wav" ]
+    }
+  },
+
+  "baseOffset" : [1.6, 0.3],
+  "muzzleOffset" : [2.2, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.72,
+    "baseDps" : 10.25,
+    "energyUsage" : 50.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fuenergyblade2",
+    "projectileParameters" : { 
+      "speed" : 62,
+      "knockback" : 20,
+      "statusEffects" : [ "burning" ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0.05,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.55,
+	      "armRotation" : 12,
+	      "weaponRotation" : 15,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 10,
+
+  "altAbilityType" : "energyplatform",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
