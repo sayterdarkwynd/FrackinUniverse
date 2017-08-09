@@ -5,13 +5,13 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A space pirate sidearm.
-^yellow;+Bouncy",
+^yellow;+Bouncy and Burny",
   "shortdescription" : "Breach Pistol",
   "category" : "Machine Pistol",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
-  "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","machinepistol","energy","upgradeableWeapon"],
+  "weaponType" : "Plasma",
+  "itemTags" : ["weapon","ranged","machinepistol","plasma","upgradeableWeapon"],
   "twoHanded" : false,
 
   "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
@@ -24,7 +24,7 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/wavebeam.wav" ]
+      "fire" : [ "/sfx/gun/plasma_ar4.ogg" ]
     }
   },
 
@@ -38,8 +38,8 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.2,
-    "baseDps" : 5.5,
+    "fireTime" : 0.35,
+    "baseDps" : 4.85,
     "energyUsage" : 24.0,
     "inaccuracy" : 0.02,
 
@@ -48,9 +48,10 @@
 
     "projectileType" : "fuenergyballshot",
     "projectileParameters" : { 
-      "bounces" : 2,
-      "speed" : 50,
-      "knockback" : 6.5
+      "bounces" : 3,
+      "speed" : 60,
+      "knockback" : 6.5,
+      "statusEffects" : [ "burning" ]
     },
 	  "stances" : {
 	    "idle" : {

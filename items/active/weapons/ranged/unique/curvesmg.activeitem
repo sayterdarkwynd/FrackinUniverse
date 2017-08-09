@@ -5,13 +5,13 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A space pirate favorite for boarding raids.
-^yellow;+Bouncy",
+^yellow;+Bouncy and Burny",
   "shortdescription" : "Breach Blaster",
   "category" : "Assault Rifle",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
-  "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","assaultrifle","energy","upgradeableWeapon"],
+  "weaponType" : "Plasma",
+  "itemTags" : ["weapon","ranged","assaultrifle","plasma","upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
@@ -24,12 +24,12 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/wavebeam.wav" ]
+      "fire" : [ "/sfx/gun/plasma_ar4.ogg" ]
     }
   },
 
   "baseOffset" : [1.5, 0.0],
-  "muzzleOffset" : [1.8, 0.325],
+  "muzzleOffset" : [1.8, 0.425],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -39,18 +39,21 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.3,
-    "baseDps" : 7,
+    "baseDps" : 4.55,
     "energyUsage" : 24.0,
-    "inaccuracy" : 0.008,
 
     "projectileCount" : 1,
-    "fireType" : "auto",
+    "fireType" : "burst",
+    "inaccuracy" : 0.03,
+    "burstTime" : 0.035,
+    "burstCount" : 4,
 
     "projectileType" : "fuenergyballshot",
     "projectileParameters" : { 
       "bounces" : 2,
-      "speed" : 60,
-      "knockback" : 10
+      "speed" : 80,
+      "knockback" : 10,
+      "statusEffects" : [ "burning" ]
     },
 	  "stances" : {
 	    "idle" : {
@@ -63,8 +66,8 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -72,8 +75,8 @@
 	    },
 	    "cooldown" : {
 	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : -2,
+	      "weaponRotation" : -2,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -86,7 +89,7 @@
   "critChance" : 1,
   "critBonus" : 5, 
 
-  "altAbilityType" : "blisteraltshot",
+  "altAbilityType" : "flashlight",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
