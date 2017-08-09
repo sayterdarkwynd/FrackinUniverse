@@ -1,37 +1,34 @@
 {
-  "itemName" : "aetheriumscythe",
-  "price" : 2500,
-  "level" : 7,
+  "itemName" : "stonescythe",
+  "price" : 100,
+  "level" : 1,
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Legendary death-dealer.
-^cyan;Eradicating Alt-Fire^reset;",
-  "shortdescription" : "Aetherium Scythe",
+  "rarity" : "common",
+  "description" : "Heavier than heck, but hey...painful!",
+  "shortdescription" : "Primitive Scythe",
   "tooltipKind" : "sword2",
   "category" : "scythe",
   "twoHanded" : true,
-  "itemTags" : [ "weapon", "melee","cosmic", "axe", "scythe", "upgradeableWeapon"],
+  "itemTags" : [ "weapon", "melee", "axe", "scythe", "upgradeableWeapon"],
 
-  "inventoryIcon" : "aetheriumscythe_carithekitty.png",
-
-  "animation" : "/items/active/weapons/melee/scythe/largeedgedbglow.animation",
+  "inventoryIcon" : "stonescythe_carithekitty.png",
+  "animation" : "/items/active/weapons/melee/scythe/largeedgedb.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "aetheriumscythe_carithekitty.png",
-    "bladefullbright" : "aetheriumscythefullbright.png"
+    "blade" : "stonescythe_carithekitty.png"
   },
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "physical",
 
   "primaryAbilityType" : "largeedgedcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.7,
+    "baseDps" : 9,
     "damageConfig" : {
-      "damageSourceKind" : "cosmic"
+      "damageSourceKind" : "slash"
     },
     "stances" : {
       "idle" : {
@@ -133,8 +130,9 @@
     }
   },
 
-  "altAbilityType" : "futravelingslash",
-  "critChance" : 4, 
-  "critBonus" : 14, 
+  "altAbilityType" : "spearspin",
+
+  "critChance" : 2, 
+  "critBonus" : 11, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

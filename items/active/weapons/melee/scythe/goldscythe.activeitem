@@ -1,37 +1,36 @@
 {
-  "itemName" : "aetheriumscythe",
-  "price" : 2500,
-  "level" : 7,
+  "itemName" : "goldscythe",
+  "price" : 400,
+  "level" : 3,
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Legendary death-dealer.
-^cyan;Eradicating Alt-Fire^reset;",
-  "shortdescription" : "Aetherium Scythe",
+  "rarity" : "uncommon",
+  "description" : "Polished to shiny perfection.
+^cyan;Poisoned Edge^reset;",
+  "shortdescription" : "Golden Scythe",
   "tooltipKind" : "sword2",
   "category" : "scythe",
   "twoHanded" : true,
-  "itemTags" : [ "weapon", "melee","cosmic", "axe", "scythe", "upgradeableWeapon"],
+  "itemTags" : [ "weapon", "melee","densinium", "axe", "scythe", "upgradeableWeapon"],
 
-  "inventoryIcon" : "aetheriumscythe_carithekitty.png",
-
-  "animation" : "/items/active/weapons/melee/scythe/largeedgedbglow.animation",
+  "inventoryIcon" : "goldscythe_carithekitty.png",
+  "animation" : "/items/active/weapons/melee/scythe/largeedgedb.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "aetheriumscythe_carithekitty.png",
-    "bladefullbright" : "aetheriumscythefullbright.png"
+    "blade" : "goldscythe_carithekitty.png"
   },
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "poison",
 
   "primaryAbilityType" : "largeedgedcombo",
   "primaryAbility" : {
-    "fireTime" : 0.83,
-    "baseDps" : 11.7,
+    "fireTime" : 0.75,
+    "baseDps" : 8.5,
     "damageConfig" : {
-      "damageSourceKind" : "cosmic"
+      "damageSourceKind" : "slash",
+      "statusEffects" : [ "weakpoison" ]
     },
     "stances" : {
       "idle" : {
@@ -133,8 +132,9 @@
     }
   },
 
-  "altAbilityType" : "futravelingslash",
-  "critChance" : 4, 
-  "critBonus" : 14, 
+  "altAbilityType" : "spearspin",
+
+  "critChance" : 2, 
+  "critBonus" : 11, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
