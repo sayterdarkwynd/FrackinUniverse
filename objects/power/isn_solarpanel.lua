@@ -13,7 +13,7 @@ function update(dt)
 	    local powerLevel = config.getParameter("powerLevel",1) 
                 genmult = 1
                 if (light) <= 0.38 then genmult = 1
-		elseif (light) >= 0.85 then genmult = 4 * (1 + light)	                  
+		elseif (light) >= 0.8 then genmult = 4 * (1 + light)	                  
 		elseif (light) >= 0.75 then genmult = 4	  
 		elseif (light) >= 0.65 then genmult = 3 
 		elseif (light) >= 0.55 then genmult = 2 		  
@@ -43,6 +43,7 @@ end
 
 function getLight(location)
   local reallight = world.lightLevel(location)
+  local light = world.lightLevel(location)
   local objects = world.objectQuery(entity.position(), 20)
   local lights = {}
   for i=1,#objects do
@@ -50,9 +51,10 @@ function getLight(location)
 	if light[1] > 0 or light[2] > 0 or light[3] > 0 then
 	  lights[objects[i]] = light
 	  world.callScriptedEntity(objects[i],'object.setLightColor',{0,0,0})
+	  local light = (reallight-world.lightLevel(location))/3
 	end
   end
-  local light = (reallight-world.lightLevel(location))/3
+
   for key,value in pairs(lights) do
     world.callScriptedEntity(key,'object.setLightColor',value)
   end
