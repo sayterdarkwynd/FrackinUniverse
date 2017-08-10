@@ -42,17 +42,17 @@ function update(dt)
 end
 
 function getLight(location)
-  local reallight = world.lightLevel(location)
   local objects = world.objectQuery(entity.position(), 20)
   local lights = {}
   for i=1,#objects do
 	local light = world.callScriptedEntity(objects[i],'object.getLightColor')
-	if light[1] > 0 or light[2] > 0 or light[3] > 0 then
+	if light and (light[1] > 0 or light[2] > 0 or light[3] > 0) then
 	  lights[objects[i]] = light
-	  world.callScriptedEntity(objects[i],'object.setLightColor',{0,0,0})
+	  world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/2,light[2]/2,light[3]/2})
 	end
   end
-  local light = (reallight-world.lightLevel(location))/3
+  local light = world.lightLevel(location)
+  object.say(light)
   for key,value in pairs(lights) do
     world.callScriptedEntity(key,'object.setLightColor',value)
   end
