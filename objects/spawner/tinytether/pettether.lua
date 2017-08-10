@@ -1,4 +1,4 @@
-require "/scripts/companions/petspawner.lua"
+require "/objects/spawner/tinytether/petspawner.lua"
 
 function init()
   petSpawner:init()
