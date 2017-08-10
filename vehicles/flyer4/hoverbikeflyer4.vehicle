@@ -1,0 +1,179 @@
+{
+  "name" : "hoverbikeflyer4",
+  "script" : "hoverbike.lua",
+  "boundBox" : [-5, -5, 5, 5],
+  "slaveControlTimeout" : 2.0,
+  "slaveControlHeartbeat" : 1.0,
+  "canBeHit" : true,
+  "animation" : "flyer.animation",
+
+  "animationCustom" : {
+
+    "particleEmitters" : {
+      "damageShards" : {
+        "transformationGroups" : ["flip", "rotation"],
+        "emissionRate" : 0.0,
+        "burstCount"  : 8,
+        "offsetRegion" : [-3, -1.5, 3, 1],
+        "particles" : [{ "particle" : "hoverbikekhakishard"},
+                       { "particle" : "fireshard"}]
+      },
+
+      "wreckage" : {
+        "transformationGroups" : ["flip", "rotation"],
+        "active" : false,
+        "emissionRate" : 0.0,
+        "particles" : [
+                       { "particle" : "hoverbikekhakiwreck1"},
+                       { "particle" : "hoverbikekhakiwreck2"},
+                       { "particle" : "hoverbikewreck3"},
+                       { "particle" : "hoverbikekhakiwreck4"},
+                       { "particle" : "hoverbikewreck5"},
+                       { "particle" : "hoverbikekhakiwreck6"}]
+      }
+    }
+  },
+
+  "scripts" : ["hoverbikecursor.lua"],
+
+  "loungePositions" : {
+    "drivingSeat" : {
+      "part" : "foreground",
+      "partAnchor" : "drivingSeatPosition",
+      "orientation" : "sit",
+      "statusEffects" : ["maxprotection" , "airimmunity", "extremepressureimmunity" ],
+      "emote" : "happy",
+      "dance" : "warmhands"
+    },
+    "passengerSeat" : {
+      "part" : "foreground",
+      "partAnchor" : "passengerSeatPosition",
+      "orientation" : "sit",
+      "statusEffects" : ["maxprotection" , "airimmunity", "extremepressureimmunity" ],
+      "emote" : "neutral",
+      "dance" : "typing"
+    }
+  },
+
+
+
+
+  "AimLimit" : 85,
+  "shuttleFireCycle" : 0.15,
+  "shuttleProjectile" : "hailstrikeshot",
+  "shuttleProjectileConfig" : { "power" : 15 },
+  
+  
+  
+  "levelApproachFactor" : 0.01,
+  "angleApproachFactor" : 0.025,
+  "maxGroundSearchDistance" : 10,
+  "maxAngle" : 60,
+  "hoverTargetDistance" : 2,
+  "hoverVelocityFactor" : 12,
+  "hoverControlForce" : 950,
+  "targetHorizontalVelocity" : 40,
+  "targetVerticalVelocity" : 40,
+  "horizontalControlForce" : 320,
+
+  "nearGroundDistance" : 12,
+  "jumpVelocity" : 20,
+  "jumpTimeout" : 0.01,
+
+  //Health and damage
+  "protection" : 80,
+  "maxHealth" : 5000,
+
+  "damageStateNames" : ["undamaged","scratched","dented","wrecked"],
+
+  "damageStatePassengerDances" : ["","","","panic"],
+
+  "damageStateDriverEmotes" : ["happy","happy","sad","annoyed"],
+  "damageStatePassengerEmotes" : ["happy","annoyed","sad","oh"],
+
+
+
+  "damageTakenEmote" : "oooh",
+  "damageEmoteTime" : 2.0,
+
+  "lightsInDamageState" : [
+                          ["headlightBeam","dashboardGlow"],
+                          ["headlightBeam","dashboardGlow"],
+                          ["headlightBeam","dashboardGlow"],
+                          ["headlightBeam"]
+                          ],
+
+  "minNotificationCollisionAccel" : 15,
+  "minDamageCollisionAccel" : 45,
+  "terrainCollisionDamage" : 15,
+
+
+  //Damage visual effects
+  "smokeParticleHealthThreshold" : 0.5,
+  "smokeRateAtZeroHealth" : 500,
+
+  "fireParticleHealthThreshold" : 0.25,
+  "fireRateAtZeroHealth" : 120,
+
+  "onFireHealthThreshold" : 0.225,
+  "damagePerSecondWhenOnFire" : 1.0,
+  "explosionConfig" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config",
+  "explosionDamage" : 10,
+
+
+
+  //Sound effects
+  "engineDamageSoundThreshold" : 0.40,
+
+  "intermittentDamageSoundThreshold" : 0.33,
+  "maxDamageSoundInterval" : 10,
+  "minDamageSoundInterval" : 1,
+
+  "engineIdlePitch" : 0.75,
+  "engineRevPitch" : 1.5,
+  "engineIdleVolume" : 1.0,
+  "engineRevVolume" : 1.5,
+
+  "materialKind" : "robotic",
+  "terrainCollisionDamageSourceKind" : "falling",
+  "accelerationTrackingCount" : 2,
+
+  "backSpringPositions" : [
+      [-3.0, 0.0],
+      [-4.0, 0.0],
+      [-5.0, 0.0],
+      [-6.0, 0.0]
+  ],
+
+  "frontSpringPositions" : [
+      [3.0, 0.0],
+      [4.0, 0.0],
+      [5.0, 0.0],
+      [6.0, 0.0]
+  ],
+
+  "bodySpringPositions" : [
+      [-4.0, -1.0],
+      [-2.0, -1.0],
+      [0.0, -1.0],
+      [2.0, -1.0],
+      [4.0, -1.0]
+  ],
+
+  "movementSettings" : {
+    "collisionPoly" : [[-4.0, 4.5], [-4.0, -4.5], [4.0, -4.5], [4.0, 4.5]],
+    "mass" : 4,
+    "airFriction" : 2,
+    "ignorePlatformCollision" : true,
+    "gravityEnabled" : true,
+    "collisionEnabled" : true
+  },
+
+  "occupiedMovementSettings" : {
+    "collisionPoly" : [[-6.7, 0.7], [-6.7, -2.7], [6.7, -2.7], [6.7, 0.7]],
+    "mass" : 4,
+    "gravityEnabled" : false,
+    "collisionEnabled" : true
+  }
+ 
+}
