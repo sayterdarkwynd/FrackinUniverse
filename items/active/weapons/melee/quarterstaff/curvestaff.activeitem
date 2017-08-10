@@ -1,23 +1,22 @@
 {
-  "itemName" : "densiniumquarterstaff",
+  "itemName" : "curvestaff",
   "price" : 4200,
   "maxStack" : 1,
   "level" : 6,
   "rarity" : "uncommon",
-  "description" : "An extremely dense, heavy staff.",
-  "shortdescription" : "Densinium Quarterstaff",
+  "description" : "Kinda swordy, for a staff. Ziiiip zaaaap!",
+  "shortdescription" : "Plasma Quarterstaff",
   "tooltipKind" : "sword2",
   "category" : "Quarterstaff",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","quarterstaff", "upgradeableWeapon"],
   
-  "inventoryIcon" : "densiniumquarterstaff.png",
-  "collectablesOnPickup" : { "fu_weaponquarterstaff" : "densiniumquarterstaff" },  
+  "inventoryIcon" : "curvestaff.png",
   "animation" : "combostaffglow.animation",
   "animationParts" : { 
     "handle" : "",
-    "blade" : "densiniumquarterstaff.png",
-    "bladefullbright" : "densiniumquarterstaff.png"
+    "blade" : "curvestaff.png",
+    "bladefullbright" : "curvestafffullbright.png"
   },
   "animationCustom" : { },
 
@@ -33,7 +32,8 @@
     "baseDps" : 7.2,
     "damageConfig":{
       "knockback":10,
-      "damageSourceKind" : "electric"
+      "damageSourceKind" : "electric",
+      "statusEffects" : [ "burning" ]
       }, 
       "comboSteps":6, 
       "swooshOffsetRegions":[
