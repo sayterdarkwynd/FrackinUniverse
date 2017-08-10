@@ -43,7 +43,6 @@ end
 
 function getLight(location)
   local reallight = world.lightLevel(location)
-  local light = world.lightLevel(location)
   local objects = world.objectQuery(entity.position(), 20)
   local lights = {}
   for i=1,#objects do
@@ -51,10 +50,9 @@ function getLight(location)
 	if light[1] > 0 or light[2] > 0 or light[3] > 0 then
 	  lights[objects[i]] = light
 	  world.callScriptedEntity(objects[i],'object.setLightColor',{0,0,0})
-	  local light = (reallight-world.lightLevel(location))/3
 	end
   end
-
+  local light = (reallight-world.lightLevel(location))/3
   for key,value in pairs(lights) do
     world.callScriptedEntity(key,'object.setLightColor',value)
   end
