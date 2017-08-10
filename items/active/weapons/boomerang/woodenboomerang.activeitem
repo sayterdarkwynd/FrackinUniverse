@@ -1,0 +1,75 @@
+{
+  "itemName" : "woodenboomerang",
+  "level" : 2,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "category" : "boomerang",
+  "description" : "State-of-the-art microthrusters guarantee that it will always return.",
+  "shortdescription" : "Boomerang",
+  "tooltipKind" : "base",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","upgradeableWeapon"],
+
+  "inventoryIcon" : "woodboomerang.png",
+  "animation" : "boomerang.animation",
+  "animationParts" : {
+    "boomerang" : "woodboomerang.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "woodboomerang",
+  "projectileParameters" : {
+    "power" : 3.85,
+    "knockback" : 20,
+
+    "ignoreTerrain" : false,
+    "controlForce" : 85,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 4.0
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  }
+}
