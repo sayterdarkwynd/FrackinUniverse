@@ -52,7 +52,6 @@ function getLight(location)
 	end
   end
   local light = world.lightLevel(location)
-  object.say(light)
   for key,value in pairs(lights) do
     world.callScriptedEntity(key,'object.setLightColor',value)
   end
