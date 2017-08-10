@@ -112,41 +112,60 @@ function weaponCheck(tags)
 	local heldItemAlt = world.entityHandItem(entity.id(), "alt")
 	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
 	local results={}
-	results["either"]=false
-	results["primary"]=false
-	results["alt"]=false
-	results["both"]=false
-	results["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
-	if heldItemPrimary~=nil and heldItemAlt~=nil then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
-				results["primary"]=true
-				results["alt"]=true
-				results["both"]=true
-				results["either"]=true
-			elseif root.itemHasTag(heldItemPrimary,tag) then
-				results["primary"]=true
-				results["either"]=true
-			elseif root.itemHasTag(heldItemAlt,tag) then
-				results["alt"]=true
-				results["either"]=true
+	local resultseither=false
+	local resultsprimary=false
+	local resultsalt=false
+	local resultsboth=false
+	local resultstwoHanded=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
+	if lastHeldPrimary ~= heldItemPrimary or lastHeldAlt ~= heldItemAlt then
+		lastHeldPrimary = heldItemPrimary
+		lastHeldAlt = heldItemAlt
+		if heldItemPrimary~=nil and heldItemAlt~=nil then
+			for _,tag in pairs(tags) do
+				if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
+					resultsprimary=true
+					resultsalt=true
+					resultsboth=true
+					resultseither=true
+					break
+				elseif root.itemHasTag(heldItemPrimary,tag) then
+					resultsprimary=true
+					resultseither=true
+					break
+				elseif root.itemHasTag(heldItemAlt,tag) then
+					resultsalt=true
+					resultseither=true
+					break
+				end
+			end
+		elseif heldItemPrimary~=nil then
+			for _,tag in pairs(tags) do
+				if root.itemHasTag(heldItemPrimary,tag) then
+					resultsprimary=true
+					resultseither=true
+					break
+				end
+			end
+		elseif heldItemAlt~=nil	then
+			for _,tag in pairs(tags) do
+				if root.itemHasTag(heldItemAlt,tag) then
+					resultsalt=true
+					resultseither=true
+					break
+				end
 			end
 		end
-	elseif heldItemPrimary~=nil then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemPrimary,tag) then
-				results["primary"]=true
-				results["either"]=true
-			end
-		end
-	elseif heldItemAlt~=nil	then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemAlt,tag) then
-				results["alt"]=true
-				results["either"]=true
-			end
-		end
+	else
+		--sb.logInfo("last results %s", lastResults)
+		return lastResults
 	end
+	results["either"]=resultseither
+	results["primary"]=resultsprimary
+	results["alt"]=resultsalt
+	results["both"]=resultsboth
+	results["twoHanded"]=resultstwoHanded
+	--sb.logInfo("just fuck my shit up senpai %s", results)
+	lastResults = results
 	return results
 end
 
