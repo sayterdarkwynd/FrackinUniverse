@@ -52,17 +52,17 @@ function update(dt)
 	end
 	
 	if storage.water <= 0 and isn_doWaterIntake() ~= true then return end
-	storage.water = storage.water - 1
+	storage.water = storage.water - dt / 2
 	storage.activeConsumption = true
-	storage.growth = storage.growth + growthmod
+	storage.growth = storage.growth + growthmod * dt
 	if storage.fertSpeed then
-		storage.growth = storage.growth + growthmod
+		storage.growth = storage.growth + growthmod * dt
 	end
 	if storage.fertSpeed2 then
-	        storage.growth = storage.growth + growthmod * 2
+	        storage.growth = storage.growth + growthmod * 2 * dt
 	end
 	if storage.fertSpeed3 then
-	        storage.growth = storage.growth + growthmod * 3
+	        storage.growth = storage.growth + growthmod * 3 * dt
 	end	
 	if storage.growth >= storage.growthcap then
 		-- if connected to an object receiver, try to send the crop, else store locally
