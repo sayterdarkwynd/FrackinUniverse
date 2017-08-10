@@ -1,36 +1,36 @@
 {
-  "itemName" : "woodenboomerang",
+  "itemName" : "fufrisbee",
   "level" : 2,
-  "price" : 10,
+  "price" : 1500,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "common",
   "category" : "boomerang",
-  "description" : "State-of-the-art microthrusters guarantee that it will always return.",
-  "shortdescription" : "Boomerang",
+  "description" : "A seemingly infinite supply of frisbees.",
+  "shortdescription" : "Stack o' Frisbees",
   "tooltipKind" : "boomerang",
   "twoHanded" : false,
   "itemTags" : ["weapon","boomerang","upgradeableWeapon"],
 
-  "inventoryIcon" : "woodboomerang.png",
+  "inventoryIcon" : "frisbee.png",
   "animation" : "boomerang.animation",
   "animationParts" : {
-    "boomerang" : "woodboomerang.png"
+    "boomerang" : "frisbee.png"
   },
   "animationCustom" : { },
   "scripts" : ["boomerang.lua"],
   "fireOffset" : [1.25, 0.5],
 
-  "cooldownTime" : 0.6,
+  "cooldownTime" : 1.5,
 
-  "projectileType" : "woodboomerang",
+  "projectileType" : "fufrisbeedisc",
   "projectileParameters" : {
     "power" : 3.85,
-    "knockback" : 20,
+    "knockback" : 10,
 
     "ignoreTerrain" : false,
-    "controlForce" : 85,
+    "controlForce" : 1,
     "pickupDistance" : 1.0,
-    "snapDistance" : 4.0
+    "snapDistance" : 20.0
   },
 
   "stances" : {
@@ -40,18 +40,20 @@
         "weapon" : "visible"
       },
       "allowRotate" : true,
-      "allowFlip" : true
+      "allowFlip" : true,
+      "weaponOffset" : [ -0.2, -0.6]
     },
     "windup" : {
       "duration" : 0.1,
       "transition" : "throw",
       "transitionFunction" : "fire",
-      "armRotation" : 70,
+      "armRotation" : -80,
       "animationState" : {
         "weapon" : "visible"
       },
       "allowRotate" : false,
-      "allowFlip" : false
+      "allowFlip" : false,
+      "weaponOffset" : [ -0.2, -0.6]
     },
     "throw" : {
       "armRotation" : 0,
@@ -72,6 +74,6 @@
       "allowFlip" : true
     }
   },
-  "critChance" : 4,
+  "critChance" : 12,
   "critBonus" : 2
 }
