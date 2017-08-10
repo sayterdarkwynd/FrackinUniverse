@@ -1,0 +1,83 @@
+{
+  "itemName" : "curvebroadsword",
+  "price" : 500,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Plasma-edged melee cleaver
+^cyan;Inflicts Burning^reset;",
+  "shortdescription" : "Breach Plasma Cleaver",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","plasma", "upgradeableWeapon"],
+  "inventoryIcon" : "curvebroadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "curvebroadsword.png",
+    "bladefullbright" : "curvebroadswordfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "baseDps" : 11,
+    "damageConfig" : {
+      "knockback" : 10,
+       "damageSourceKind" : "electric",
+       "statusEffects" : [ "burning" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "aimAngle" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }     
+  },
+
+  "altAbilityType" : "flamethrowersword",
+
+  "critChance" : 2, 
+  "critBonus" : 8, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
