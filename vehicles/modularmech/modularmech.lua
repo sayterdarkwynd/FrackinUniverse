@@ -537,13 +537,21 @@ function update(dt)
       but not if they are in a hostile environment to their body type. Additionally, the higher threat that the biome
       is, the slower the regeneration rate becomes, which should help to balance out energy cost.
       ***************************************************************************************** --]]
-      self.threatMod = (world.threatLevel()/10) / 3  -- threat calculation. we divide to minimize the impact
-      
-      -- reduce regen with threat level of biome
-      eMult = eMult - self.threatMod  
-      
-      --is the mech below 50% energy? if so, do not regen
-      if (storage.energy) < (self.energyMax/2) then eMult = 0 end
+        self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
+        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
+        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
+        self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
+   
+        self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact
+      --is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
+      self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10
+      self.storageValue = self.storageValue / 200
+      if (storage.energy) < (self.energyMax/2) then 
+        eMult = 0 
+      else
+        eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
+        sb.logInfo("thing = "..eMult)
+      end
       
       -- is their mech affected by the planet? if so, do not regen
       -- Otherwise, we apply the bonus
