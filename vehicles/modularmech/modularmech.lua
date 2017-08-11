@@ -141,6 +141,7 @@ function init()
   -- check for environmental hazards / protection
 
   local hazards = config.getParameter("hazardVulnerabilities")
+  
   for _, statusEffect in pairs(self.parts.body.hazardImmunities or {}) do
     hazards[statusEffect] = nil
   end
@@ -150,6 +151,13 @@ function init()
 
   for _, statusEffect in pairs(world.environmentStatusEffects(mcontroller.position())) do
     if hazards[statusEffect] then
+    
+      --[[ ************************************************************************
+           In FU we adjust things a bit. Mechs regen, but not if they are in hostile 
+           environs. So we set this below 
+      ***************************************************************************** --]]
+      self.regenPenalty = hazards[statusEffect].energyDrain or 0-- REGEN penalty
+     
       self.energyDrain = self.energyDrain + hazards[statusEffect].energyDrain
       world.sendEntityMessage(self.ownerEntityId, "queueRadioMessage", hazards[statusEffect].message, 1.5)
     end
@@ -522,8 +530,29 @@ function update(dt)
     local energyDrain = self.energyDrain
     if not hasTouched(newControls) and not hasTouched(oldControls) then --(not hasFired) then 
       eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
-      eMult = eMult / 20
-      energyDrain = -energyDrain*eMult
+      eMult = eMult 
+
+      --[[ ************************************************************************************
+      In Frackin Universe, mechs regen (which is initially from XS Mechs - Modular Edition. You rock, LoPhatKo!)
+      but not if they are in a hostile environment to their body type. Additionally, the higher threat that the biome
+      is, the slower the regeneration rate becomes, which should help to balance out energy cost.
+      ***************************************************************************************** --]]
+      self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact
+      
+      -- reduce regen with threat level of biome
+      eMult = eMult - self.threatMod  
+      
+      --is the mech below 50% energy? if so, do not regen
+      if (storage.energy) < (self.energyMax/2) then eMult = 0 end
+      
+      -- is their mech affected by the planet? if so, do not regen
+      -- Otherwise, we apply the bonus
+      if self.regenPenalty then 
+        energyDrain = energyDrain 
+      else
+        energyDrain = -energyDrain*eMult
+      end   
+    
     end
     storage.energy = math.min(math.max(0, storage.energy - energyDrain * dt),self.energyMax)
     world.debugText("%s / %s\n%s%%",storage.energy,self.energyMax,(storage.energy/self.energyMax)*100,{newPosition[1]-1.5,newPosition[2]+5},"white")
