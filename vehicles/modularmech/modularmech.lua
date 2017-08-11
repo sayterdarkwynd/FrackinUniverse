@@ -537,7 +537,7 @@ function update(dt)
       but not if they are in a hostile environment to their body type. Additionally, the higher threat that the biome
       is, the slower the regeneration rate becomes, which should help to balance out energy cost.
       ***************************************************************************************** --]]
-      self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact
+      self.threatMod = (world.threatLevel()/10) / 3  -- threat calculation. we divide to minimize the impact
       
       -- reduce regen with threat level of biome
       eMult = eMult - self.threatMod  
