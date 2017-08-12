@@ -23,6 +23,7 @@ function init()
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
 
+  self.usedIntro = 0
   checkEffectValid()
 
   script.setUpdateDelta(5)
@@ -41,7 +42,7 @@ function checkEffectValid()
 	  if not (self.usedIntro) or (self.usedIntro <= 0) then
 	    if not (status.stat("electricResistance",0)  >= self.effectCutoffValue) or not status.statPositive("biomeelectricImmunity") then
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
-	      self.timerRadioMessage = 60
+	      self.timerRadioMessage = 120
 	      self.usedIntro = 1
 	    else
 	      self.usedIntro = 1
@@ -178,9 +179,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   local lightLevel = getLight() 
   
   if not underground then  
-    if not self.usedSurface or self.usedSurface==0 then
-      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 60.0) -- send player a warning
-      self.timerRadioMessage = 120
+    if not (self.usedSurface) or (self.usedSurface)<=0 then
+      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 1.0) -- send player a warning
       self.usedSurface = 1
     end
     setSituationPenalty()
@@ -202,9 +202,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
 		setLiquidPenalty()
 		if (self.timerRadioMessage <= 0) then
-		  if not self.usedWater or self.usedWater==0 then
+		  if not self.usedWater or self.usedWater<=0 then
 		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricwater", 1.0) -- send player a warning
-		    self.timerRadioMessage = 10
 		    self.usedWater = 1
 		  end
 		end
