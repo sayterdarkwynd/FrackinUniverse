@@ -22,19 +22,22 @@ node list:
 
 function excavatorCommon.init(drill,pump)
 	local did=false
-	delta2=100
 	transferUtil.init()
 	storage.facing=util.clamp(object.direction(),0,1)
 	storage.isDrill=(drill==true)
 	storage.isPump=(pump==true)
 	storage.isVacuum=(vacuum==true)
+	step=(step or -0.2)
+	storage.maxWidth = config.getParameter("kheAA_maxWidth",20);
+	storage.maxDepth=config.getParameter("kheAA_maxDepth",20);
+	storage.drillPower=config.getParameter("kheAA_drillPower",10);
 	if drill == true or pump == true then
 		storage.width=0
 		did=true
 	end
 	if pump then
 		require "/scripts/kheAA/liquidLib.lua"
-		storage.depth=-1
+		storage.depth=0
 		liquidLib.init()
 		did=true
 	end
@@ -50,7 +53,9 @@ function excavatorCommon.init(drill,pump)
 end
 
 function excavatorCommon.cycle(dt)
-	if delta2 > 1 then
+	if not delta2 then
+		delta2=100
+	elseif delta2 > 1 then
 		transferUtil.loadSelfContainer()
 		if storage.isPump then
 			liquidLib.update(dt)
@@ -75,8 +80,8 @@ function excavatorCommon.cycle(dt)
 		deltatime=0
 	end
 	setRunning(true)
-	deltatime = deltatime + dt;
-	time = time + dt;
+	deltatime = (deltatime or 100) + dt
+	time = (time or (dt*-1)) + dt;
 	if time > 10 then
 		local pos = storage.position;
 		local x1 = world.xwrap(pos[1] - 1);
@@ -251,7 +256,7 @@ function states.mine(dt)
 	end
 
 	local absdrillPos = transferUtil.getAbsPos(storage.drillPos,storage.position);
-	if (storage.position[2]-absdrillPos[2]) > storage.drillRange then
+	if (storage.position[2]-absdrillPos[2]) > storage.maxDepth then
 		drillAnimReset()
 		drillReset()
 		setRunning(false)
@@ -363,9 +368,19 @@ function states.pump(dt)
 
 		end
 	end
+	if (storage.depth*-1) > storage.maxDepth then
+		setRunning(false)
+		if storage.isDrill then
+			storage.state = "mine";
+		end
+		return
+	end
 	if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 1},storage.position), "foreground") then
 		return;
 	end
+	--[[if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 2},storage.position), "foreground") then
+		return;
+	end]]
 	if liquid == nil then
 		if storage.isDrill then
 			storage.state = "moveDrill";
