@@ -547,12 +547,11 @@ function update(dt)
       self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10
       self.storageValue = self.storageValue / 200
       if (storage.energy) < (self.energyMax/2) then 
-        eMult = 0 
+        eMult = 0               
       else
         eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
-        sb.logInfo("thing = "..eMult)
       end
-      
+
       -- is their mech affected by the planet? if so, do not regen
       -- Otherwise, we apply the bonus
       if self.regenPenalty then 
