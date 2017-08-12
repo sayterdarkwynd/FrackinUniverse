@@ -1,0 +1,64 @@
+{
+  "objectName" : "extraweaponupgradeanvil",
+  "colonyTags" : ["ancient"],
+  "printable" : false,
+  "rarity" : "Legendary",
+  "description" : "This advanced ancient technology can raise the effectiveness of some weapons.",
+  "shortdescription" : "Super Weapon Upgrade Anvil",
+  "race" : "ancient",
+  "category" : "other",
+  "price" : 0,
+  "consumeOnPickup" : true,
+  "unbreakable" : true,
+  "health" : 1100020,
+  "lightColor" : [255, 0, 0],
+
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0.0,
+
+  "apexDescription" : "My scanner indicates that this anvil functions off crystal resonance. Is this Avian in origin?",
+  "avianDescription" : "This would appear to be Avian of make, and yet profoundly out of the reach of current Avian technology.",
+  "floranDescription" : "Floran push buttons. Make thingsss happen!",
+  "glitchDescription" : "Confused. This anvil appears to serve different purposes in different realities.",
+  "humanDescription" : "It reminds me of something out of an ancient video game. Bird-people, but not Avian. Hm.",
+  "hylotlDescription" : "This looks familiar, and yet...",
+  "novakidDescription" : "This here thing is confusin' the heck outta me. I need a time-out an' a stiff drink.",
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "extraweaponupgradeanvil.png:<frame>", "fullbright" : true }, { "image" : "extraweaponupgradeanvillit.png:<frame>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "extraweaponupgradeanvil.png:<frame>", "fullbright" : true }, { "image" : "extraweaponupgradeanvillit.png:<frame>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/scififurnace.ogg",
+  "soundEffectRangeMultiplier" : 1.0,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/scripted/weaponupgrade/weaponupgrade2gui.config"
+}
