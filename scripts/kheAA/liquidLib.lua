@@ -105,7 +105,7 @@ end
 
 function liquidLib.update(dt)
 	storage.liquidOuts={}
-	local tempList=object.getOutputNodeIds(storage.liquidOutNode)
+	local tempList=object.getOutputNodeIds(outLiquidNode)
 	if tempList then
 		for id,node in pairs(tempList) do
 			local result=world.callScriptedEntity(id,"liquidLib.canReceiveLiquid")

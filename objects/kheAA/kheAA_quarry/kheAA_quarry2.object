@@ -1,0 +1,55 @@
+{
+	"objectName" : "network_quarry2",
+	"colonyTags" : ["wired"],
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Mines blocks automatically.
+^blue;Input^white;1^blue;: ^white;power switch
+^blue;Input^white;2^blue;: ^white;high-power
+^red;Output: ^white;item network^reset;",
+	"shortdescription" : "Iron Quarry B",
+	"objectType" : "container",
+	"tooltipKind" : "container",
+	"race" : "generic",
+
+	"category" : "wire",
+	"price" : 15,
+
+	"inventoryIcon" : "/objects/kheAA/kheAA_quarry/ironquarryicon.png",
+	"orientations" : [
+		{
+			"image" : "ironquarry.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ],
+			"direction" : "right"
+		}
+	],
+
+	"scripts" : [ "/objects/kheAA/kheAA_quarry/kheAA_quarry.lua"],
+	"scriptDelta" : 1,
+
+	"animation" : "/objects/kheAA/kheAA_quarry/kheAA_quarry.animation",
+
+	"animationParts" : {
+		"quarry" : "ironquarry.png",
+		"drill" : "kheAA_drill_iron.png",
+		"verPipe" : "kheAA_ver_pipe.png",
+		"horPipe" : "kheAA_hor_pipe.png",
+		"connector" : "kheAA_connector.png"
+	},
+	"animationPosition" : [0, 0],
+	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+	"closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+	"slotCount" : 16,
+	"uiConfig" : "/interface/kheAA/kheAA_quarry/kheAA_quarryGui.config",
+	"frameCooldown" : 5,
+	"autoCloseCooldown" : 3600,
+	"kheAA_maxWidth":20,
+	"kheAA_maxDepth":150,
+	"kheAA_drillPower": 10,
+	"inputNodes" : [ [0, 0], [1,0]],
+	"outputNodes" : [ [0, 1]],
+	"lockedSlots" : [16]
+}
