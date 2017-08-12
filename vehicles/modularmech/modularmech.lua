@@ -136,10 +136,21 @@ function init()
   self.energyMax = self.parts.body.energyMax
   storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
-  self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
+  self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0) 
    
-  -- check for environmental hazards / protection
 
+  --[[ add Powerful gun drain 
+  if (self.parts.leftArm.stats.powerful) then
+    self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.powerful) 
+  end
+  if (self.parts.rightArm.stats.powerful) then
+    self.energyDrain = self.energyDrain + (self.parts.rightArm.stats.powerful)
+  end 
+  self.extraDrain1 = (self.parts.leftArm.stats.powerful or 0)
+  self.extraDrain2 = (self.parts.rightArm.stats.powerful or 0)
+  self.extraDrain = self.extraDrain1 + self.extraDrain2]]--
+
+  -- check for environmental hazards / protection
   local hazards = config.getParameter("hazardVulnerabilities")
   
   for _, statusEffect in pairs(self.parts.body.hazardImmunities or {}) do
@@ -157,8 +168,8 @@ function init()
            environs. So we set this below 
       ***************************************************************************** --]]
       self.regenPenalty = hazards[statusEffect].energyDrain or 0-- REGEN penalty
-     
-      self.energyDrain = self.energyDrain + hazards[statusEffect].energyDrain
+      
+      self.energyDrain = self.energyDrain + hazards[statusEffect].energyDrain 
       world.sendEntityMessage(self.ownerEntityId, "queueRadioMessage", hazards[statusEffect].message, 1.5)
     end
 
@@ -544,7 +555,7 @@ function update(dt)
    
         self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact
       --is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
-      self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10
+      self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10 
       self.storageValue = self.storageValue / 200
       if (storage.energy) < (self.energyMax/2) then 
         eMult = 0               
@@ -554,6 +565,7 @@ function update(dt)
 
       -- is their mech affected by the planet? if so, do not regen
       -- Otherwise, we apply the bonus
+      --energyDrain = energyDrain - self.extraDrain     if enabling the extra code for Powerful weapons
       if self.regenPenalty then 
         energyDrain = energyDrain 
       else
