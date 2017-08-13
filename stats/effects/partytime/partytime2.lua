@@ -1,7 +1,7 @@
 function init()
   self.timers = {}
   for i = 1, 4 do
-    self.timers[i] = 0.01 * 2 * math.pi
+    self.timers[i] = math.random() * 2 * math.pi
   end
   script.setUpdateDelta(3)
   self.timerColor = 1
@@ -16,7 +16,7 @@ function update(dt)
   
   if (self.songTimer)<1 then
     animator.playSound("dancemusic")
-    animator.setSoundVolume("dancemusic", 2)
+    --animator.setSoundVolume("dancemusic", 2,)
     self.songTimer = 112
   end 
 
@@ -41,8 +41,10 @@ function update(dt)
 
   for i = 1, 4 do
     self.timers[i] = self.timers[i] + dt
-    if self.timers[i] > (2 * math.pi) then self.timers[i] = self.timers[i] - 2 * math.pi end
-
+    if self.timers[i] > (2 * math.pi) then 
+      self.timers[i] = self.timers[i] - 2 * math.pi 
+    end
+    
     local lightAngle = math.cos(self.timers[i]) * 120 + (i * 90)
     animator.setLightPointAngle("light"..i, lightAngle)
   end
@@ -50,5 +52,5 @@ function update(dt)
 end
 
 function uninit()
-
+  animator.stopAllSounds("dancemusic")
 end
