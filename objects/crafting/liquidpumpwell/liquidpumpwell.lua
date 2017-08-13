@@ -11,7 +11,8 @@ object.setInteractive(true)
 end
 
 function onInteraction(args)
-  if not storage.waterCount then
+
+  if not storage.waterCount or world.type() == 'playerstation' or world.type()=='unknown' then
    storage.waterCount = 0
   end
   if storage.waterCount and storage.waterCount > 1200 then
