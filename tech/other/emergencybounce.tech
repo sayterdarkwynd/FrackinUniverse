@@ -2,17 +2,15 @@
   "name" : "emergencybounce",
   "type" : "head",
 
-  "scripts" : ["physicsfield.lua"],
-  "animator" : "physicsfield3.animation",
+  "scripts" : ["bounce.lua"],
+  "animator" : "bounce.animation",
 
-  "description" : "Zip around at super speed! ^orange;Dangerous. Use caution.^reset;",
-  "shortDescription" : "Physics Field III",
-  "rarity" : "Legendary",
-  "icon" : "/tech/boosterrocket3.png",
+  "description" : "Enables a protective bubble at high speeds.",
+  "shortDescription" : "Emergency Bounce",
+  "rarity" : "uncommon",
+  "icon" : "/tech/bounce.png",
   "chipCost" : 8,
-  "energyCostPerSecond" : 40,
-  "chargeTime" : 1,
-  "boostTime" : 0.10,
-  "boostSpeed" : 50,
-  "boostForce" : 550
+  "energyUsageRate" : 25.0,
+  "bounceFactor" : 0.9,
+  "bounceCollisionPoly" : [[-1.25, 2.5], [1.25, 2.5], [2.5, 1.25], [2.5, -1.25], [1.25, -2.5], [-1.25, -2.5], [-2.5, -1.25], [-2.5, 1.25]]
 }
