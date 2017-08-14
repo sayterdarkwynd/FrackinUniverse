@@ -1,0 +1,81 @@
+{
+  "itemName" : "furelocator4",
+  "price" : 1500,
+  "inventoryIcon" : "relocator4.png:0",
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Holds up to 6 friendly creatures in stasis in order to safely relocate them.",
+  "shortdescription" : "Relocator IV",
+  "level" : 1,
+  "category" : "Tool",
+  
+  "twoHanded" : true,
+
+  "animation" : "/items/active/unsorted/relocator/relocator.animation",
+  "animationParts" : {
+    "middle" : "relocator4.png",
+    "lit" : "relocatorlit.png"
+  },
+  "animationScripts" : ["/items/active/effects/chain.lua"],
+
+  "baseOffset" : [1.0, 0.375],
+  "muzzleOffset" : [1.25, 0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "retainScriptStorageInItem" : true,
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/unsorted/relocator/relocate.lua"],
+    "class" : "Relocate",
+
+    "maxStorage" : 6,
+
+    "maxRange" : 32,
+    "cooldownTime" : 0.5,
+
+    "beamReturnTime" : 0.1,
+
+    "chain" : {
+      "startOffset" : [0, 0],
+      "segmentImage" : "/items/active/unsorted/relocator/beam/beam.png",
+      "endSegmentImage" : "/items/active/unsorted/relocator/beam/beamend.png",
+      "segmentSize" : 0.48,
+      "overdrawLength" : 0.2,
+      "taper" : 0,
+      "waveform" : {
+        "frequency" : 2.0,
+        "amplitude" : 0,
+        "movement" : 0.0
+      },
+      "fullbright" : true
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "absorb" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

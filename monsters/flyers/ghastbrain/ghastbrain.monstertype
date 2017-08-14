@@ -1,0 +1,219 @@
+{
+  "type" : "ghastbrain",
+
+  "categories" : [ "ghastbrain" ],
+  "parts" : [ "body" ],
+
+  "animation" : "ghastbrain.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 25,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-animate",
+          "parameters" : {
+            "type" : "body",
+            "state" : "wakeup",
+            "animationTime" : 0.5
+          }
+        }
+      ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : [6, 12],
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "startsleep",
+            "winddownTime" : 0,
+            "winddownState" : "",
+
+            "invulnerableState" : "sleep",
+            "invulnerableTime" : 0.0
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "emerge-fly"
+        }
+      ],
+
+      "concurrentActions" : [  ],
+
+      "concurrentHostileActions" : [  ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.4, 0.95],  [0.95, 0.4], [0.95, -0.4], [0.4, -0.95], [-0.4, -0.95], [-0.95, -0.4], [-0.95, 0.4], [-0.4, 0.95] ],
+      "damage" : 4,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "radioactive",
+      "knockback" : 0,
+      "statusEffects" : [ "radiationburn" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : true,
+      "collisionPoly" : [ [0.4, 0.95],  [0.95, 0.4], [0.95, -0.4], [0.4, -0.95], [-0.4, -0.95], [-0.95, -0.4], [-0.95, 0.4], [-0.4, 0.95] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 15,
+      "runSpeed" : 15,
+      "gravityEnabled" : false,
+
+      "airFriction" : 2,
+      "airForce" : 10,
+      "flySpeed" : 20
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 48
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.5
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.5
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 1.0
+        }       
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}
