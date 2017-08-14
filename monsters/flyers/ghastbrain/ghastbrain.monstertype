@@ -6,7 +6,7 @@
 
   "animation" : "ghastbrain.animation",
 
-  "dropPools" : [ ],
+  "dropPools" : [ { "default" : "fleshreaperLoot", "bow" : "huntingghost" } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -19,11 +19,11 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 25,
+      "targetQueryRange" : 120,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
       "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.0,
+      "targetOutOfSightTime" : 25.0,
 
       "foundTargetActions" : [
         {
@@ -38,7 +38,30 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ ],
+      "hostileActions" : [    
+        {
+          "name" : "action-charge",
+          "cooldown" : 10,
+          "parameters" : {
+            "maximumRange" : 50,
+            "windupStopForce" : 50,
+            "windupTime" : 0,
+            "windupState" : "chargewindup",
+            "onGround" : false,
+
+            "wallCollide" : true,
+            "aimAtTarget" : true,
+            "rotateToTarget" : false,
+            "chargeTime" : 10,
+            "chargeSpeed" : 2,
+            "chargeControlForce" : 550,
+
+            "winddownState" : "chargewinddown",
+            "winddownStopForce" : 500,
+            "winddownTime" : 0
+          }
+        }      
+      ],
 
       "periodicActions" : [
         {
@@ -87,12 +110,35 @@
 
       "concurrentActions" : [  ],
 
-      "concurrentHostileActions" : [  ]
+      "concurrentHostileActions" : [ 
+        {
+          "name" : "action-charge",
+          "cooldown" : 60,
+          "parameters" : {
+            "maximumRange" : 50,
+            "windupStopForce" : 50,
+            "windupTime" : 1.6,
+            "windupState" : "chargewindup",
+            "onGround" : false,
+
+            "wallCollide" : true,
+            "aimAtTarget" : true,
+            "rotateToTarget" : false,
+            "chargeTime" : 0.45,
+            "chargeSpeed" : 24,
+            "chargeControlForce" : 550,
+
+            "winddownState" : "chargewinddown",
+            "winddownStopForce" : 500,
+            "winddownTime" : 1.6
+          }
+        }      
+      ]
     },
 
     "touchDamage" : {
       "poly" : [ [0.4, 0.95],  [0.95, 0.4], [0.95, -0.4], [0.4, -0.95], [-0.4, -0.95], [-0.95, -0.4], [-0.95, 0.4], [-0.4, 0.95] ],
-      "damage" : 4,
+      "damage" : 30,
 
       "teamType" : "enemy",
       "damageSourceKind" : "radioactive",
@@ -108,13 +154,13 @@
       "collisionPoly" : [ [0.4, 0.95],  [0.95, 0.4], [0.95, -0.4], [0.4, -0.95], [-0.4, -0.95], [-0.95, -0.4], [-0.95, 0.4], [-0.4, 0.95] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 15,
-      "runSpeed" : 15,
+      "walkSpeed" : 1,
+      "runSpeed" : 2,
       "gravityEnabled" : false,
 
       "airFriction" : 2,
       "airForce" : 10,
-      "flySpeed" : 20
+      "flySpeed" : 2
     },
 
     "bodyMaterialKind" : "organic",
@@ -148,7 +194,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 48
+          "baseValue" : 250
         },
         "protection" : {
           "baseValue" : 0.0
@@ -163,13 +209,13 @@
           "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "fireStatusImmunity" : {
           "baseValue" : 1.0
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "iceStatusImmunity" : {
           "baseValue" : 1.0
@@ -181,7 +227,7 @@
           "baseValue" : 1.0
         },
         "poisonResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
