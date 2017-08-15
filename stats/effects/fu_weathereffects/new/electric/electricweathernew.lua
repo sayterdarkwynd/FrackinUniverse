@@ -22,8 +22,6 @@ function init()
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-
-  self.usedIntro = 0
   checkEffectValid()
 
   script.setUpdateDelta(5)
@@ -39,13 +37,12 @@ function checkEffectValid()
 	    deactivateVisualEffects()
 	    effect.expire()
 	  else
-	  if (self.usedIntro) <= 0 then
+	  if not self.usedIntro then
 	    if not (status.stat("electricResistance",0)  >= self.effectCutoffValue) or not status.statPositive("biomeelectricImmunity") then
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
 	      self.timerRadioMessage = 10
 	      self.usedIntro = 1
 	    else
-	      self.usedIntro = 1
 	    end
 	  end
 	end
@@ -179,13 +176,12 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   local lightLevel = getLight() 
   
   if not underground then  
-    if not (self.usedSurface) then
+    if not self.usedSurface then
       world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 1.0) -- send player a warning
       self.usedSurface = 1
       self.timerRadioMessage = 10
     end
     setSituationPenalty()
-    
   end  
 
   self.damageApply = setEffectDamage()   

@@ -1,6 +1,5 @@
 require("/scripts/vec2.lua")
 function init()
-  self.usedIntro = 0
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -17,7 +16,7 @@ function init()
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
   
   --conditionals
-  self.usedIntro = 0
+
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
   self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
@@ -41,7 +40,7 @@ function checkEffectValid()
 	  effect.expire()
 	else
 	  if (status.stat("fireResistance") <= self.effectCutoffValue) then
-	    if self.usedIntro>0 and self.timerRadioMessage == 0 then
+	    if not self.usedIntro and self.timerRadioMessage == 0 then
 	      -- activate visuals and check stats
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
 	      self.usedIntro = 1
