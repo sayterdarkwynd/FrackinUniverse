@@ -1,0 +1,68 @@
+{
+  "type" : "crewmemberplur",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+     dddddddddd "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "cap",
+        "chest" : "hoodie",
+        "legs" : "jeans1"
+        },
+
+      "role" : {
+        "benefits" : [       
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.04
+          },        
+          {
+            "type" : "EphemeralEffect",
+            "effect" : "partytime2",
+            "duration" : 120
+          }
+        ],
+        "type" : "chemist",
+        "name" : "Party Party Party",
+        "field" : "Partyime Pal"
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll give you a 4% fuel efficiency boost whenever we're on the ship! I cook *that* well!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "YOU CAN'T ESCAPE THE PARTY!",
+              "LET'S PARRRRRRRRRRTY!",
+              "I CAN HELP... BY PARTYING EVEN HARDER!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "glowstickorange" ],
+            "alt" : [ "glowstickgreen" ]
+          }
+        ] ]
+    ]
+  }
+}
