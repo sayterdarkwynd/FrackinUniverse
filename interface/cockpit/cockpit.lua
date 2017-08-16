@@ -387,9 +387,6 @@ end
 
 function isConnected(system1,system2)
   constellation = celestial.scanConstellationLines({math.min(system1.location[1],system2.location[1]),math.min(system1.location[2],system2.location[2]),math.max(system1.location[1],system2.location[1]),math.max(system1.location[2],system2.location[2])})
-  sb.logInfo(sb.printJson(constellation))
-  sb.logInfo(sb.printJson(system1.location))
-  sb.logInfo(sb.printJson(system2.location))
   for i=1,#constellation do
     if (locationCompare(system1.location,constellation[i][1]) or locationCompare(system1.location,constellation[i][2])) and (locationCompare(system2.location,constellation[i][1]) or locationCompare(system2.location,constellation[i][2])) then
 	  return true
