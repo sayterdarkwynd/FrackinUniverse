@@ -377,6 +377,26 @@ function fuelBonusFind()
     self.fuelBonus = status.stat("maxFuel")
 end
 
+function locationCompare(loc1,loc2)
+  if loc1[1] == loc2[1] and loc1[2] == loc2[2] then
+    return true
+  else
+    return false
+  end
+end
+
+function isConnected(system1,system2)
+  constellation = celestial.scanConstellationLines({math.min(system1.location[1],system2.location[1]),math.min(system1.location[2],system2.location[2]),math.max(system1.location[1],system2.location[1]),math.max(system1.location[2],system2.location[2])})
+  sb.logInfo(sb.printJson(constellation))
+  sb.logInfo(sb.printJson(system1.location))
+  sb.logInfo(sb.printJson(system2.location))
+  for i=1,#constellation do
+    if (locationCompare(system1.location,constellation[i][1]) or locationCompare(system1.location,constellation[i][2])) and (locationCompare(system2.location,constellation[i][1]) or locationCompare(system2.location,constellation[i][2])) then
+	  return true
+	end
+  end
+  return false
+end
 -- end FU functions
 
 function fuelCost(travel)
@@ -394,9 +414,11 @@ function fuelCost(travel)
       cost = ((config.getParameter("jumpFuelCost") + distanceMath) * self.shipMass) -- but long range jumps are more complicated, and mass plays a factor in efficiency
     end
     
-    if (cost > 10000) then  -- max off 10k fuel travel
-      cost = 10000
-    end    
+	if cost < 1000 and isConnected(self.one,self.two) then
+	  cost = cost / 2
+	end
+	
+    cost = math.min(cost,10000) -- max off 10k fuel travel   
   -- end FU fuel cost calculation
   
   
