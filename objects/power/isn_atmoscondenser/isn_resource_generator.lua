@@ -53,7 +53,27 @@ local biomes = {
   fugasgiant = {
     rare = {output = "gasrareOutputs",cooldown = 7},
 	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
-	normal = {"gasOutputs",cooldown = 2}
+	normal = {output = "gasOutputs",cooldown = 2}
+  },
+  fugasgiant2 = {
+    rare = {output = "gasrareOutputs",cooldown = 7},
+	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
+	normal = {output = "gasOutputs",cooldown = 2}
+  },
+  fugasgiant3 = {
+    rare = {output = "gasrareOutputs",cooldown = 7},
+	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
+	normal = {output = "gasOutputs",cooldown = 2}
+  },
+  fugasgiant4 = {
+    rare = {output = "gasrareOutputs",cooldown = 7},
+	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
+	normal = {output = "gasOutputs",cooldown = 2}
+  },
+  fugasgiant5 = {
+    rare = {output = "gasrareOutputs",cooldown = 7},
+	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
+	normal = {output = "gasOutputs",cooldown = 2}
   },
   bog = {
     rare = {output = "bograreOutputs",cooldown = 5},
