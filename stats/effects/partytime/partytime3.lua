@@ -5,12 +5,19 @@ function init()
   end
   script.setUpdateDelta(3)
   self.timerColor = 1
+  self.songTimer = 0
   self.varColorMain = math.random(1,5)
 end
 
 function update(dt)
-
+  if (self.songTimer)< 0 then
+    self.songTimer=1
+  end
+  
+  if (self.songTimer)<1 then
     animator.playSound("dancemusic")
+    self.songTimer = 11.5
+  end 
 
     self.varColorMain = math.random(1,5)
   if self.timerColor == 0 then
@@ -29,6 +36,7 @@ function update(dt)
   end
   
   self.timerColor = self.timerColor - dt
+  self.songTimer = self.songTimer - dt
 
   for i = 1, 4 do
     self.timers[i] = self.timers[i] + dt
