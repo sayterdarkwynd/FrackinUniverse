@@ -1,4 +1,6 @@
 function init()
+  status.removeEphemeralEffect("partytime3")
+  status.removeEphemeralEffect("partytime4")
   self.timers = {}
   for i = 1, 4 do
     self.timers[i] = math.random() * 2 * math.pi

@@ -1,4 +1,6 @@
 function init()
+  status.removeEphemeralEffect("partytime4")
+  status.removeEphemeralEffect("partytime2")
   self.timers = {}
   for i = 1, 4 do
     self.timers[i] = math.random() * 2 * math.pi
@@ -16,26 +18,26 @@ function update(dt)
   
   if (self.songTimer)<1 then
     animator.playSound("dancemusic")
-    self.songTimer = 11.5
+    self.songTimer = 11.07
   end 
 
-    self.varColorMain = math.random(1,5)
+  self.varColorMain = math.random(1,5)
   if self.timerColor == 0 then
     if self.varColorMain == 1 then
-      effect.setParentDirectives(string.format("fade=00bb00=%.1f", self.varColorMain * 1))
+      effect.setParentDirectives(string.format("fade=00bb00=%.1f", self.varColorMain * 0.1))
     elseif self.varColorMain == 2 then
-      effect.setParentDirectives(string.format("fade=ffea00=%.1f", self.varColorMain * 1))
+      effect.setParentDirectives(string.format("fade=ffea00=%.1f", self.varColorMain * 0.1))
     elseif self.varColorMain == 3 then
-      effect.setParentDirectives(string.format("fade=ceffae=%.1f", self.varColorMain * 1))
+      effect.setParentDirectives(string.format("fade=ceffae=%.1f", self.varColorMain * 0.1))
     elseif self.varColorMain == 4 then
-      effect.setParentDirectives(string.format("fade=aecfea=%.1f", self.varColorMain * 1))
+      effect.setParentDirectives(string.format("fade=aecfea=%.1f", self.varColorMain * 0.1))
     elseif self.varColorMain == 5 then
-      effect.setParentDirectives(string.format("fade=55faba=%.1f", self.varColorMain * 1))
+      effect.setParentDirectives(string.format("fade=55faba=%.1f", self.varColorMain * 0.1))
     end
-    self.timerColor = 1
+    self.timerColor = 15
   end
   
-  self.timerColor = self.timerColor - dt
+  self.timerColor = self.timerColor - 1
   self.songTimer = self.songTimer - dt
 
   for i = 1, 4 do
