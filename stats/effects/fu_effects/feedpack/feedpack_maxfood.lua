@@ -1,5 +1,7 @@
 function init() 
-  effect.addStatModifierGroup({{stat = "maxFood", amount = config.getParameter("regenAmount", 0)}})
+  effect.addStatModifierGroup({
+      {stat = "maxFood", amount = config.getParameter("regenAmount", 0)}
+    })
 end
 
 function update(dt)

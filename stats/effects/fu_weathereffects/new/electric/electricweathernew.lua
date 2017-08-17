@@ -22,8 +22,6 @@ function init()
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
   self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
   self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-
-  self.usedIntro = 0
   checkEffectValid()
 
   script.setUpdateDelta(5)
@@ -39,13 +37,12 @@ function checkEffectValid()
 	    deactivateVisualEffects()
 	    effect.expire()
 	  else
-	  if not (self.usedIntro) or (self.usedIntro <= 0) then
+	  if not self.usedIntro then
 	    if not (status.stat("electricResistance",0)  >= self.effectCutoffValue) or not status.statPositive("biomeelectricImmunity") then
 	      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectric", 1.0) -- send player a warning
-	      self.timerRadioMessage = 120
+	      self.timerRadioMessage = 10
 	      self.usedIntro = 1
 	    else
-	      self.usedIntro = 1
 	    end
 	  end
 	end
@@ -81,7 +78,7 @@ end
 
 function setLiquidPenalty()
   if (self.liquidPenalty > 1) then
-    self.baseDmg = self.baseDmg * 2
+    self.baseDmg = self.baseDmg * 4
     self.baseDebuff = self.baseDebuff + self.liquidPenalty 
   end
 end
@@ -179,9 +176,10 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   local lightLevel = getLight() 
   
   if not underground then  
-    if not (self.usedSurface) or (self.usedSurface)<=0 then
+    if not self.usedSurface then
       world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 1.0) -- send player a warning
       self.usedSurface = 1
+      self.timerRadioMessage = 10
     end
     setSituationPenalty()
   end  
@@ -201,16 +199,16 @@ self.timerRadioMessage = self.timerRadioMessage - dt
         local mouthful = world.liquidAt(mouthposition)        
         if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
 		setLiquidPenalty()
-		if (self.timerRadioMessage <= 0) then
-		  if not self.usedWater or self.usedWater<=0 then
+		if (self.timerRadioMessage <= 0) and not self.usedWater then
 		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricwater", 1.0) -- send player a warning
 		    self.usedWater = 1
-		  end
+		    self.timerRadioMessage = 10
 		end
 	    inWater = 1
 	else
 	  isDry()
         end 
+       
       end 
 	  self.damageApply = setEffectDamage()   
 	  self.debuffApply = setEffectDebuff()

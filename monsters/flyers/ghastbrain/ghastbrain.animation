@@ -7,7 +7,7 @@
         "states" : {
           "sleep" : {
             "frames" : 1,
-            "cycle" : 1.0,
+            "cycle" : 2.0,
             "mode" : "loop",
             "properties" : {
 
@@ -36,17 +36,32 @@
             "cycle" : 0.8,
             "mode" : "loop",
             "properties" : {
-
+		"immediateSound" : "/sfx/npc/monsters/spookit_invulnerable.ogg"
             }
           },
           "fly" : {
             "frames" : 8,
+            "cycle" : 1.6,
+            "mode" : "loop"
+          },
+          "chargewindup" : {
+            "frames" : 8,
             "cycle" : 0.8,
+            "mode" : "loop"
+          },
+          "charge" : {
+            "frames" : 8,
+            "cycle" : 1.4,
             "mode" : "loop",
             "properties" : {
-             
+              "immediateSound" : "/sfx/npc/monsters/taroni_pickup.ogg"
             }
-          }
+          },
+          "chargewinddown" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          }          
         }
       },
       "damage" : {
@@ -116,7 +131,22 @@
               "properties" : {
                 "image" : "<partImage>:fly.<frame>"
               }
-            }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            }            
           },
           "damage" : {
             "stunned" : {
@@ -228,6 +258,7 @@
 
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/anglure_windup.ogg" ],
-    "deathPuff" : [ "/sfx/npc/monsters/taroni_throw.ogg" ]
+    "deathPuff" : [ "/sfx/npc/monsters/taroni_throw.ogg" ],
+    "crash" : [ "/sfx/melee/blunt_hit_organic.ogg" ]
   }
 }
