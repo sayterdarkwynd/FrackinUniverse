@@ -32,12 +32,12 @@ function transferUtil.initTypes()
 	transferUtil.itemTypes["material"]={"block","liquid","platform","breakable"} 
 	transferUtil.itemTypes["rail"]={"rail","railplatform","railpoint"} 
 	transferUtil.itemTypes["tool"]={"tool","fishingrod","miningtool","flashlight","wiretool","beamminingtool","tillingtool","paintingbeamtool","harvestingtool","musicalinstrument","grapplinghook","thrownitem"}
-	transferUtil.itemTypes["weapon"]={"assaultrifle","axe","boomerang","bow","broadsword","chakram","crossbow","dagger","fistweapon","grenadelauncher","hammer","machinepistol","pistol","rocketlauncher","shield","shortsword","shotgun","sniperrifle","spear","staff","wand","toy","uniqueweapon","whip","fu_upgrade","fu_warspear","fu_lance","fu_pierce","fu_scythe","quarterstaff","warblade","fu_keening"}
+	transferUtil.itemTypes["weapon"]={"assaultrifle","axe","boomerang","bow","broadsword","chakram","crossbow","dagger","fistweapon","grenadelauncher","hammer","machinepistol","pistol","rocketlauncher","shield","shortsword","shotgun","sniperrifle","spear","staff","wand","toy","uniqueweapon","whip","fu_upgrade","fu_warspear","fu_lance","fu_pierce","fu_scythe","quarterstaff","warblade","fu_keening", "xbow", "longsword", "greataxe","rapier","shortspear","katana","scythe", "mace", "lance", "energy", "magnorbs", "bioweapon" }
 	transferUtil.itemTypes["consumable"]={"drink","preparedfood","food","medicine"}
 	transferUtil.itemTypes["augments"]={"eppaugment","fishinglure","fishingreel","petcollar","clothingdye"}
 	transferUtil.itemTypes["building"]={"techmanagement","crafting","machinery","spawner","terraformer","trap","wire","light","furniture","decorative","door","fridgestorage","teleporter","teleportmarker","shippingcontainer","storage"}
 	transferUtil.itemTypes["farming"]={"seed","sapling","farmbeastegg","farmbeastfood","farmbeastfeed"}
-	transferUtil.itemTypes["armor"]={"headarmor", "chestarmor", "legsarmor", "backarmor","headarmour", "chestarmour", "legsarmour", "backarmour","enviroprotectionpack"} 
+	transferUtil.itemTypes["armor"]={"headarmor", "chestarmor", "legsarmor", "backarmor","headarmour", "chestarmour", "legsarmour", "backarmour","enviroprotectionpack", "t1armor", "t1armoru", "t2armor", "t2armoru", "t3armor", "t3armoru", "t4armor", "t4armoru", "t5armor", "t5armoru", "t6armor", "t6armoru", "t7armor", "t7armoru", "t8armor", "t8armoru"} 
 	transferUtil.itemTypes["cosmeticarmor"]={"chestwear","legwear","headwear","backwear"}
 	transferUtil.itemTypes["reagents"]={"craftingmaterial","cookingingredient","fuel"}
 	transferUtil.itemTypes["books"]={"blueprint", "codex"}
