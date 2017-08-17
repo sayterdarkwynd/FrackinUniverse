@@ -1,0 +1,264 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "sleep",
+        "states" : {
+          "sleep" : {
+            "frames" : 1,
+            "cycle" : 2.0,
+            "mode" : "loop",
+            "properties" : {
+
+            }
+          },
+          "wakeup" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/taroni_pickup.ogg"
+            }
+          },
+          "startsleep" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "sleep",
+            "properties" : {
+		"immediateSound" : "/sfx/npc/monsters/spookit_invulnerable.ogg"
+            }
+          },
+          "idle" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop",
+            "properties" : {
+		"immediateSound" : "/sfx/npc/monsters/spookit_invulnerable.ogg"
+            }
+          },
+          "fly" : {
+            "frames" : 8,
+            "cycle" : 1.6,
+            "mode" : "loop"
+          },
+          "chargewindup" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          },
+          "charge" : {
+            "frames" : 8,
+            "cycle" : 1.4,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/taroni_pickup.ogg"
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          }          
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 2,
+            "cycle" : 0.6
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.0, 0.0]
+        },
+        "partStates" : {
+          "body" : {
+            "sleep" : {
+              "properties" : {
+                "image" : "<partImage>:sleep.<frame>"
+              }
+            },
+            "wakeup" : {
+              "properties" : {
+                "image" : "<partImage>:wakeup.<frame>"
+              }
+            },
+            "startsleep" : {
+              "properties" : {
+                "image" : "<partImage>:startsleep.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            }            
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+  
+  "lights" : {
+    "glow" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [0, 0, 0],
+      "pointLight" : false
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ff0000;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "behindGroundEmitter" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ -0.5, -0.5, 0.5, 0.5 ],
+      "particles" : [
+        { "particle" : "bloodtrail" }
+      ]
+    },
+    "groundBurstEmitter" : {
+      "offsetRegion" : [ -0.5, -0.5, 0.5, 0.5 ],
+      "particles" : [
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" }
+      ]
+    },
+    "deathPoof" : {
+      "offsetRegion" : [ -0.5, -0.5, 0.5, 0.5 ],
+      "particles" : [
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },
+        { "particle" : "bloodtrail" },      
+        { "particle" : "shockwavedust" },
+        { "particle" : "shockwavedust" },
+        { "particle" : "shockwavedust" },
+        { "particle" : "shockwavedust" },
+        { "particle" : "shockwavedust" },
+        { "particle" : "shockwavedust" },
+        { "particle" : "shockwavedust" },
+        { "particle" : "shockwavedust" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/anglure_windup.ogg" ],
+    "deathPuff" : [ "/sfx/npc/monsters/taroni_throw.ogg" ],
+    "crash" : [ "/sfx/melee/blunt_hit_organic.ogg" ]
+  }
+}

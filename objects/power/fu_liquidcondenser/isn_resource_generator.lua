@@ -47,10 +47,19 @@ function update(dt)
   elseif storage.timer == 0 then
 	local liquid = world.liquidAt(entity.position())
 	local value = liquids[world.type()] or liquids.other
-    if not liquid or (liquid[2] <= 0.5 and liquid[1] == value.liquid) then
-	  world.spawnLiquid(entity.position(),value.liquid,0.5)
+
+	if world.type() == 'playerstation' or world.type() == 'unknown' then
 	  storage.timer = value.cooldown
-	end	  
+	else
+		if not liquid or (liquid[2] <= 0.5 and liquid[1] == value.liquid) then
+		  world.spawnLiquid(entity.position(),value.liquid,0.5)
+		  storage.timer = value.cooldown
+		end
+	end
   end
   power.update(dt)
 end
+
+
+
+

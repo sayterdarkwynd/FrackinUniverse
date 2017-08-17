@@ -1,0 +1,143 @@
+{
+  "type" : "crewmemberplur",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+    "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "caphead",
+        "chest" : "tshirtchest",
+        "legs" : "jeans1legs"
+        },
+      "powerMultiplierExponent" : 1.5,
+      "role" : {
+        "benefits" : [       
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.04
+          },    
+          {
+            "type" : "EphemeralEffect",
+            "effect" : "booze2",
+            "duration" : 120
+          },          
+          {
+            "type" : "EphemeralEffect",
+            "effect" : "partytime3",
+            "duration" : 9999
+          }
+        ],
+        "type" : "chemist",
+        "name" : "Party Party Party",
+        "field" : "Partyime Pal",
+        "uniformColorIndex" : 2
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+          "attack" : "/dialog/plurcombat.config:attack",
+          "reattack" : "/dialog/plurcombat.config:reattack",
+          "killedTarget" : "/dialog/plurcombat.config:killedTarget",
+          "lostTarget" : "/dialog/plurcombat.config:lostTarget",
+          "outOfSight" : "/dialog/plurcombat.config:outOfSight",
+          "cheerOn" : "/dialog/plurcombat.config:cheerOn",
+          "cantReach" : "/dialog/plurcombat.config:cantReach",
+          
+            "offer" : {
+              "default" : {
+                "default" : [
+              "Dude. Are you ready for the @#$%^$^#ing party or what?!?!",
+              "Wanna hang out?",
+              "HEY MAN, DO YOU WANT A LIGHT SHOW?!?!?!"       
+                ]
+              }
+            },
+            "roleDescription" : {
+              "default" : {
+                "default" : [
+              "PAAAAAAAAAAAAAAAAAAAAAAAAAAAARRRTY!",
+              "DID YOU SAY PARTY? I'M 300% POSITIVE THAT YOU DID!",
+              "MAN, YOU LOOK LIKE YOU NEED TO PARTY!" 
+                ]
+              }
+            },
+            "respawned" : {
+              "default" : {
+                "default" : [
+              "WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!",
+              "Holy crap that was intense. Wanna hug?",
+              "I just wanna touch everything right now.",
+              "PHEW! I THOUGHT THE PARTY WAS OVER, THERE!",
+              "PLUR BROUGHT ME BACK FOR ONE LAST PARTY!",
+              "I don't have syphillis.",
+              "My head hurts.",
+              "I think I talked to God." 
+                ]
+              }
+            },
+            "combatBenefit" : {
+              "default" : {
+                "default" : [
+    		"Dude.",
+    		"WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!",
+              "PAAAAAAAAAAAAAAAAAAAAAAAAAAAARRRTY!",
+              "DID YOU SAY PARTY? I'M 300% POSITIVE THAT YOU DID!",
+              "MAN, YOU LOOK LIKE YOU NEED TO PARTY!",
+              "I AM GOING TO PARTY THEM TO DEATH!"
+                ]
+              }
+            },
+            "unfollow" : {
+              "default" : {
+                "default" : [
+              "This place sucks.",
+              "Without music? You suck.",
+              "Dude."	
+                ]
+              }
+            },
+            "follow" : {
+              "default" : {
+                "default" : [
+              "!@#$#@%@ YES ARE YOU READY TO PARTY?!??",
+              "About time.",
+              "I swear I didn't touch your underwear, man."
+                ]
+              }
+            },
+            "cantreach" : {
+              "default" : {
+                "default" : [
+              "DUDE! SLOW THE HECK DOWN! I'M WASTED.",
+              "Cmon dude....you're too far.",
+              "Seriously? Slow down, Wally West.",
+              "I hate running.",
+              "CAN'T WE JUST STAY STILL AND DANCE?!?!?"
+                ]
+              }
+            }        
+        
+        
+        
+        
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "glowstickgreendagger" ],
+            "alt" : [ "glowstickyellowdagger" ]
+          }
+        ] ]
+    ]
+  }
+}
