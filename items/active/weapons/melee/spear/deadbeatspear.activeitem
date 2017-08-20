@@ -1,0 +1,51 @@
+{
+  "itemName" : "deadbeatspear",
+  "price" : 2780,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "This looks...unsafe. Let's try it on something!
+^cyan;Causes bleeding^reset;",
+  "shortdescription" : "Junk Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
+
+  "inventoryIcon" : "deadbeatspear_gamzam.png",
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "deadbeatspear_gamzam.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.8,
+    "baseDps" : 10.5,
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ "bleedingshort" ],
+      "knockback" : 12
+    }
+  },
+  "altAbilityType" : "parry",
+  "altAbility" : { },
+
+  "critChance" : 4,
+  "critBonus" : 1,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
