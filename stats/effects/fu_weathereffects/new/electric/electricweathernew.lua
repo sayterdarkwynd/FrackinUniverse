@@ -177,7 +177,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   
   if not underground then  
     if not self.usedSurface then
-      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 1.0) -- send player a warning
+      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 300.0) -- send player a warning
       self.usedSurface = 1
       self.timerRadioMessage = 10
     end
