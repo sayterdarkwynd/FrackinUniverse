@@ -45,14 +45,14 @@
     "op": "add",
     "path": "/baseParameters/statusSettings/stats/cosmicResistance",
     "value": {
-      "baseValue": 0.75
+      "baseValue": 0.99
     }
   },
   {
     "op": "add",
     "path": "/baseParameters/statusSettings/stats/shadowResistance",
     "value": {
-      "baseValue": 1
+      "baseValue": 0.8
     }
   },
   {
@@ -66,14 +66,14 @@
     "op": "add",
     "path": "/baseParameters/statusSettings/stats/electricResistance",
     "value": {
-      "baseValue": 0
+      "baseValue": 0.25
     }
   },
   {
     "op": "add",
     "path": "/baseParameters/statusSettings/stats/fireResistance",
     "value": {
-      "baseValue": 0
+      "baseValue": 0.25
     }
   },
   {
@@ -94,7 +94,111 @@
     "op": "add",
     "path": "/baseParameters/statusSettings/stats/physicalResistance",
     "value": {
-      "baseValue": 0
+      "baseValue": 0.3
     }
-  }
+  },
+
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 5600
+  },
+  
+  {
+    "op": "add",
+    "path": "/baseParameters/monsterSpawnGroups/-",
+    "value": {
+      "monsters": [
+        "ravager",
+        "fleshreaper",
+        "ravager"
+      ],
+      "biome": "atropus"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/monsterSpawnGroups/-",
+    "value": {
+      "monsters": [
+        "fualien",
+        "fubahamut",
+        "fualien"
+      ],
+      "biome": "protoworld"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/monsterSpawnGroups/-",
+    "value": {
+      "monsters": [
+        "servitor",
+        "spheresnake2",
+        "warbot"
+      ],
+      "biome": "metallicmoon"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/monsterSpawnGroups/-",
+    "value": {
+      "monsters": [
+        "burntrotter",
+        "magmagolem",
+        "flintlit"
+      ],
+      "biome": "infernus"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/monsterSpawnGroups/-",
+    "value": {
+      "monsters": [
+        "frostrotter",
+        "wisper7",
+        "cryopod"
+      ],
+      "biome": "icewaste"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/monsterSpawnGroups/-",
+    "value": {
+      "monsters": [
+        "eyejelly",
+        "eyejellyking",
+        "eyeslime",
+        "eyeslimeking",
+        "slimetop"
+      ],
+      "biome": "slimeworld"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/monsterSpawnGroups/-",
+    "value": {
+      "monsters": [
+        "motherpoptop",
+        "poptop",
+        "adultpoptop"
+      ],
+      "biome": "fieldofbamboo"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/monsterSpawnGroups/-",
+    "value": {
+      "monsters": [
+        "shadowgolem",
+        "shadowbat"
+      ],
+      "biome": "lightless"
+    }
+  }  
 ]

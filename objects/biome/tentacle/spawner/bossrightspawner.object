@@ -1,0 +1,79 @@
+{
+  "objectName" : "bossrightspawner",
+  "colonyTags" : [],
+  "rarity" : "Legendary",
+  "category" : "decorative",
+  "price" : 250,
+  "description" : "Ruin spawner.",
+  "shortdescription" : "Boss Right Spawner",
+  "race" : "tentacle",
+  "printable" : false,
+  "scannable" : false,
+
+  "inventoryIcon" : "bossrightspawner.png",
+  "orientations" : [
+    {
+      "dualImage" : "bossrightspawner.png",
+      "imagePosition" : [0, 0],
+
+      "metaBoundBox" : [-10, -7, 10, 7],
+      "spaces" : [ [10, 7] ]
+    }
+  ],
+
+  "animation" : "bossrightspawner.animation",
+  "animationPosition" : [84, 64],
+
+  "scripts" : [
+    "bossrightspawner.lua"
+  ],
+
+  "monsterQueryRange" : 150,
+
+  "objectWidth" : 21,
+  "spawnPoints" : {
+    "blob1" : {
+      "offset" : [1.0, 1.75],
+      "monster" : "tentaclegnat",
+      "count" : 3,
+      "interval" : 60
+    },
+    "blob2" : {
+      "offset" : [1.875, 2.75],
+      "monster" : "tentaclegnat",
+      "count" : 3,
+      "interval" : 60
+    },
+    "blob3" : {
+      "offset" : [3.0, 1.75],
+      "monster" : "tentaclegnat",
+      "count" : 3,
+      "interval" : 60
+    },
+    "blob4" : {
+      "offset" : [5.5, 2.75],
+      "monster" : "tentaclebomb",
+      "interval" : 40
+    },
+    "blob5" : {
+      "offset" : [6.0, 4.875],
+      "monster" : "tentaclebomb",
+      "interval" : 40
+    },
+    "blob6" : {
+      "offset" : [8.5, 3.75],
+      "monster" : "tentacleghost",
+      "interval" : 120
+    },
+    "blob7" : {
+      "offset" : [9.0, 2.75],
+      "monster" : "tentacleghost",
+      "interval" : 120
+    },
+    "blob8" : {
+      "offset" : [16.0, 12.25],
+      "monster" : "tentacleghost",
+      "interval" : 120
+    }
+  }
+}
