@@ -47,7 +47,7 @@
             "projectileParameters" : {
               "speed" : 30
             },
-            "power" : 15,
+            "power" : 12,
             "fireOffset" : [2, -1],
             "aimAtTarget" : true,
             "onGround" : false,
@@ -73,7 +73,7 @@
             "projectileParameters" : {
               "speed" : 40
             },
-            "power" : 10,
+            "power" : 8,
             "fireOffset" : [2, 0],
             "aimAtTarget" : true,
             "onGround" : false,
@@ -252,7 +252,7 @@
             "projectileParameters" : {
               "speed" : 25
             },
-            "power" : 10,
+            "power" : 8,
             "fireOffset" : [2, 0],
             "aimAtTarget" : true,
             "onGround" : false,
@@ -269,7 +269,7 @@
 
     "touchDamage" : {
       "poly" : [ [-2.2,2.5], [-2.2,-3], [1.7,-3.15], [1.5,2.55] ],
-      "damage" : 10,
+      "damage" : 8,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
@@ -324,7 +324,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 125
+          "baseValue" : 110
         },
         "protection" : {
           "baseValue" : 0.0
@@ -336,10 +336,10 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.75
         },
         "electricResistance" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.5
         },
         "iceResistance" : {
           "baseValue" : 0.5
@@ -355,7 +355,16 @@
         },        
         "fireResistance" : {
           "baseValue" : -0.5
-        }        
+        },        
+        "radioactiveResistance" : {
+          "baseValue" : 0.7
+        },        
+        "shadowResistance" : {
+          "baseValue" : 0.5
+        },        
+        "cosmicResistance" : {
+          "baseValue" : 0.2
+        }              
       },
 
       "resources" : {
