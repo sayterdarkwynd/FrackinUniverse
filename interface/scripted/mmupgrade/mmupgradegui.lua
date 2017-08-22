@@ -73,18 +73,18 @@ function performUpgrade(widgetName, widgetData)
 	  -- ***power
 	    self.tileDamageBonus = 2
 	  -- ***radius
-	    self.blockRadius = 2
+	    self.blockRadius = 1
 	  -- ***range
 	    self.beamgunRange = 2	
 
 	  if upgrade.setItemParameters.tileDamage then
-	    upgrade.setItemParameters.tileDamage = upgrade.setItemParameters.tileDamage or 0 + self.tileDamageBonus
-	    upgrade.setItemParameters.minBeamWidth = upgrade.setItemParameters.minBeamWidth or 0 + 0.05
-	    upgrade.setItemParameters.maxBeamWidth = upgrade.setItemParameters.maxBeamWidth or 0 + 0.05	      
+	    upgrade.setItemParameters.tileDamage = item.parameters.tileDamage or root.itemConfig(item).config.tileDamage + self.tileDamageBonus
+	    upgrade.setItemParameters.minBeamWidth = item.parameters.minBeamWidth or root.itemConfig(item).config.minBeamWidth + 0.05
+	    upgrade.setItemParameters.maxBeamWidth = item.parameters.maxBeamWidth or root.itemConfig(item).config.maxBeamWidth + 0.05      
 	  elseif upgrade.setItemParameters.blockRadius then
-	    upgrade.setItemParameters.blockRadius = upgrade.setItemParameters.blockRadius + self.blockRadius
-	    upgrade.setItemParameters.minBeamJitter = upgrade.setItemParameters.minBeamJitter or 0 + 0.5
-	    upgrade.setItemParameters.maxBeamJitter = upgrade.setItemParameters.maxBeamJitter or 0 + 0.5   	    
+	    upgrade.setItemParameters.blockRadius = item.parameters.blockRadius or root.itemConfig(item).config.blockRadius + self.blockRadius
+	    upgrade.setItemParameters.minBeamJitter = item.parameters.minBeamJitter or root.itemConfig(item).config.minBeamJitter + 0.5
+	    upgrade.setItemParameters.maxBeamJitter = item.parameters.maxBeamJitter or root.itemConfig(item).config.maxBeamJitter + 0.5  	    
 	  elseif upgrade.setItemParameters.bonusBeamGunRadius then
 	    upgrade.setItemParameters.bonusBeamgunRadius = upgrade.setItemParameters.bonusBeamgunRadius or 0 + self.beamgunRange
 	  end	
@@ -154,15 +154,12 @@ function updateCurrentUpgrades()
   local mm = player.essentialItem("beamaxe") or {}
   local currentUpgrades = mm.parameters.upgrades or {}
 
-  --if isOriginalMM()==1 then
 	  for i, v in ipairs(currentUpgrades) do
 	    self.currentUpgrades[v] = true
 	  end
-  --end
 end
 
 function hasPrereqs(prereqs)
-  --if isOriginalMM()==1 then
 	  for i, v in ipairs(prereqs) do
 	    if not self.currentUpgrades[v] then
 	      return false
@@ -170,23 +167,20 @@ function hasPrereqs(prereqs)
 	  end
 
 	  return true
-  --end
 end
 
 function selectedUpgradeAvailable()
-  --if isOriginalMM()==1 then
   return self.selectedUpgrade
      and not self.currentUpgrades[self.selectedUpgrade]
      and hasPrereqs(self.upgradeConfig[self.selectedUpgrade].prerequisites)
      and (player.hasCountOfItem("manipulatormodule") >= self.upgradeConfig[self.selectedUpgrade].moduleCost)
-  --end
 end
 
 function addItemParameters(slot, parameters)
   if isOriginalMM()==1 then
-  local item = player.essentialItem(slot)
-  util.mergeTable(item.parameters, parameters)
-  player.giveEssentialItem(slot, item)
+    local item = player.essentialItem(slot)
+    util.mergeTable(item.parameters, parameters)
+    player.giveEssentialItem(slot, item)
   end
 end
 

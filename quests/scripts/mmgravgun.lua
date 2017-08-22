@@ -94,23 +94,23 @@ function questComplete()
   end
 
   local mm = player.essentialItem("beamaxe")
-  local newmm = root.createItem("mmgravgun3")
+  local newmm = root.createItem("mmgravgun")
 
   -- Upgrades that this MM comes with
-  newmm.parameters.upgrades = { "power1", "power2", "power3", "size1", "size2", "size3", "size4", "size5", "size6", "liquidcollection" }
+  newmm.parameters.upgrades = { "power1", "power2", "power3", "size1", "size2", "size3", "liquidcollection" }
 
   -- Upgrades that the old MM may have obtained
   local possible = { "range1", "range2", "range3", "wiremode", "paintmode" }
 
   -- Add any upgrades from the old MM that we don't have
-  for _,x in pairs(mm.parameters.upgrades or {}) do
-      for _,y in pairs(possible) do
+  for _,x in ipairs(mm.parameters.upgrades or {}) do
+      for _,y in ipairs(possible) do
           if x == y then table.insert(newmm.parameters.upgrades, y) break end
       end
   end
 
   -- Add related stats to parameters
-  local config = root.itemConfig("mmgravgun3").config
+  local config = root.itemConfig("mmgravgun").config
   newmm.parameters.blockRadius = config.blockRadius
   newmm.parameters.tileDamage = config.tileDamage
   newmm.parameters.canCollectLiquid = config.canCollectLiquid
