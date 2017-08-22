@@ -1,0 +1,84 @@
+{
+  "itemName" : "cuterevolver",
+  "price" : 600,
+  "inventoryIcon" : "cuterevolver.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A revolver infused with the power of love.
+^yellow;High-Velocity Piercing Rounds^reset;",
+  "shortdescription" : "Cute Revolver",
+
+  "level" : 5,
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol","cute","upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "weaponType" : "Pistol",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "cuterevolver.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/protopistol.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [219, 112, 147] } }
+  },
+
+  "baseOffset" : [0.6, 0.25],
+  "muzzleOffset" : [1.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.65,
+    "baseDps" : 6.25,
+    "energyUsage" : 18.75,
+    "fireType" : "auto",
+    "inaccuracy" : 0.025,
+    "projectileCount" : 1,
+    "projectileType" : "piercingbullet",
+    "projectileParameters" : {
+      "damageKind" : "cosmicplasmabullet",
+      "speed" : 120
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 5,
+  "critBonus" : 6,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
