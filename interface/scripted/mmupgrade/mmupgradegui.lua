@@ -44,21 +44,20 @@ function selectUpgrade(widgetName, widgetData)
 end
 
 function isOriginalMM()
-  local mm = player.essentialItem("beamaxe").name or ""
-  if mm == "beamaxe" or 
-     mm == "beamaxeapex" or 
-     mm == "beamaxeelunite" or 
+  local mm = player.essentialItem("beamaxe").parameters.itemName or root.itemConfig(player.essentialItem("beamaxe")).config.itemName or ""
+  if mm == "beamaxe" or
+     mm == "beamaxeapex" or
+     mm == "beamaxeelunite" or
      mm == "beamaxehylotl" then
-     return 1
+     return true
   else
-     return 0
+     return false
   end
 end
 
 
-
 function performUpgrade(widgetName, widgetData)
-  if selectedUpgradeAvailable() then --and isOriginalMM()==1 then
+  if selectedUpgradeAvailable() then 
     local upgrade = self.upgradeConfig[self.selectedUpgrade]
     if player.consumeItem({name = "manipulatormodule", count = upgrade.moduleCost}) then
       if upgrade.setItem then
@@ -78,15 +77,15 @@ function performUpgrade(widgetName, widgetData)
 	    self.beamgunRange = 2	
 
 	  if upgrade.setItemParameters.tileDamage then
-	    upgrade.setItemParameters.tileDamage = item.parameters.tileDamage or root.itemConfig(item).config.tileDamage + self.tileDamageBonus
-	    upgrade.setItemParameters.minBeamWidth = item.parameters.minBeamWidth or root.itemConfig(item).config.minBeamWidth + 0.05
-	    upgrade.setItemParameters.maxBeamWidth = item.parameters.maxBeamWidth or root.itemConfig(item).config.maxBeamWidth + 0.05      
+	            upgrade.setItemParameters.tileDamage = (item.parameters.tileDamage or root.itemConfig(item).config.tileDamage) + self.tileDamageBonus 
+		    upgrade.setItemParameters.minBeamWidth = (item.parameters.minBeamWidth or root.itemConfig(item).config.minBeamWidth) + 0.05
+		    upgrade.setItemParameters.maxBeamWidth = (item.parameters.maxBeamWidth or root.itemConfig(item).config.maxBeamWidth) + 0.05   	    
 	  elseif upgrade.setItemParameters.blockRadius then
-	    upgrade.setItemParameters.blockRadius = item.parameters.blockRadius or root.itemConfig(item).config.blockRadius + self.blockRadius
-	    upgrade.setItemParameters.minBeamJitter = item.parameters.minBeamJitter or root.itemConfig(item).config.minBeamJitter + 0.5
-	    upgrade.setItemParameters.maxBeamJitter = item.parameters.maxBeamJitter or root.itemConfig(item).config.maxBeamJitter + 0.5  	    
+	            upgrade.setItemParameters.blockRadius = (item.parameters.blockRadius or root.itemConfig(item).config.blockRadius) + self.blockRadius 
+		    upgrade.setItemParameters.minBeamJitter = (item.parameters.minBeamJitter or root.itemConfig(item).config.minBeamJitter) + 0.06
+		    upgrade.setItemParameters.maxBeamJitter = (item.parameters.maxBeamJitter or root.itemConfig(item).config.maxBeamJitter) + 0.06  	    
 	  elseif upgrade.setItemParameters.bonusBeamGunRadius then
-	    upgrade.setItemParameters.bonusBeamgunRadius = upgrade.setItemParameters.bonusBeamgunRadius or 0 + self.beamgunRange
+	            upgrade.setItemParameters.bonusBeamgunRadius = (item.parameters.bonusBeamgunRadius or root.itemConfig(item).config.bonusBeamgunRadius) + self.beamgunRange
 	  end	
 	  --[[ End FU Special additions here --]]
 	  
@@ -177,11 +176,9 @@ function selectedUpgradeAvailable()
 end
 
 function addItemParameters(slot, parameters)
-  if isOriginalMM()==1 then
     local item = player.essentialItem(slot)
     util.mergeTable(item.parameters, parameters)
     player.giveEssentialItem(slot, item)
-  end
 end
 
 function resetTools()
