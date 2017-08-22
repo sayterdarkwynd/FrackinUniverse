@@ -92,24 +92,48 @@ function questComplete()
   for _, condition in pairs(self.conditions) do
     if condition.onQuestComplete then condition:onQuestComplete() end
   end
-  isOriginalMM()  
-  player.giveEssentialItem("beamaxe", "mmgravgun3")
-  
+
+  local mm = player.essentialItem("beamaxe")
+  local newmm = root.createItem("mmgravgun")
+
+  -- Upgrades that this MM comes with (fake size upgrades for MMM compatibility)
+  newmm.parameters.upgrades = { "size101", "size102", "size103", "size104", "size105", "size106", "liquidcollection" }
+
+  -- Upgrades that the old MM may have obtained
+  local possible = { "wiremode", "paintmode" }
+
+  -- Add any upgrades from the old MM that we don't have
+  for _,x in ipairs(mm.parameters.upgrades or {}) do
+      for _,y in ipairs(possible) do
+          if x == y then table.insert(newmm.parameters.upgrades, y) break end
+      end
+  end
+
+  -- Add related stats to parameters
+  local config = root.itemConfig("mmgravgun").config
+  newmm.parameters.blockRadius = config.blockRadius
+  newmm.parameters.tileDamage = config.tileDamage
+  newmm.parameters.canCollectLiquid = config.canCollectLiquid
+
+  -- Finally, give the player the new MM
+  player.giveEssentialItem("beamaxe", newmm)
+  status.setStatusProperty("bonusBeamGunRadius", 0)
+
   questutil.questCompleteActions()
 end
 
 
 function isOriginalMM()
   local mm = player.essentialItem("beamaxe").name or ""
-  if mm == "beamaxe" or 
-     mm == "beamaxeapex" or 
-     mm == "beamaxeelunite" or 
+  if mm == "beamaxe" or
+     mm == "beamaxeapex" or
+     mm == "beamaxeelunite" or
      mm == "beamaxehylotl" then
      return 1
   else
      player.removeEssentialItem("beamaxe")
      player.removeEssentialItem("wiretool")
-     player.removeEssentialItem("painttool")  
+     player.removeEssentialItem("painttool")
      return 0
   end
 end
