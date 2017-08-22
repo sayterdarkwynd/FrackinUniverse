@@ -6,9 +6,9 @@ local deltaTime=0
 
 local biomes = {
   aethersea = {
-    rare = {output = "aetherrareOutputs",cooldown = 6},
-	uncommon = {output = "aetheruncommonOutputs",cooldown = 3.5},
-	normal = {output = "aetherOutputs",cooldown = 2}
+    rare = {output = "aetherrareOutputs",cooldown = 10},
+	uncommon = {output = "aetheruncommonOutputs",cooldown = 6},
+	normal = {output = "aetherOutputs",cooldown = 3}
   },
   moon = {
     rare = {output = "moonrareOutputs",cooldown = 8},
@@ -41,19 +41,39 @@ local biomes = {
 	normal = {output = "moonOutputs",cooldown = 3}
   },
   atropus = {
-    rare = {output = "atropusrareOutputs",cooldown = 6},
+    rare = {output = "atropusrareOutputs",cooldown = 7},
 	uncommon = {output = "atropusuncommonOutputs",cooldown = 3.5},
 	normal = {output = "atropusOutputs",cooldown = 2}
   },
   atropusdark = {
-    rare = {output = "atropusrareOutputs",cooldown = 6},
+    rare = {output = "atropusrareOutputs",cooldown = 8},
 	uncommon = {output = "atropusuncommonOutputs",cooldown = 3.5},
 	normal = {output = "atropusOutputs",cooldown = 2}
   },
   fugasgiant = {
-    rare = {output = "gasrareOutputs",cooldown = 7},
+    rare = {output = "gasrareOutputs",cooldown = 10},
 	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
-	normal = {"gasOutputs",cooldown = 2}
+	normal = {output = "gasOutputs",cooldown = 2}
+  },
+  fugasgiant2 = {
+    rare = {output = "gasrareOutputs",cooldown = 10},
+	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
+	normal = {output = "gasOutputs",cooldown = 2}
+  },
+  fugasgiant3 = {
+    rare = {output = "gasrareOutputs",cooldown = 10},
+	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
+	normal = {output = "gasOutputs",cooldown = 2}
+  },
+  fugasgiant4 = {
+    rare = {output = "gasrareOutputs",cooldown = 10},
+	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
+	normal = {output = "gasOutputs",cooldown = 2}
+  },
+  fugasgiant5 = {
+    rare = {output = "gasrareOutputs",cooldown = 10},
+	uncommon = {output = "gasuncommonOutputs",cooldown = 4.5},
+	normal = {output = "gasOutputs",cooldown = 2}
   },
   bog = {
     rare = {output = "bograreOutputs",cooldown = 5},
@@ -126,37 +146,37 @@ local biomes = {
 	normal = {output = "oceanOutputs",cooldown = 2}
   },
   sulphuric = {
-    rare = {output = "sulphuricrareOutputs",cooldown = 5},
+    rare = {output = "sulphuricrareOutputs",cooldown = 6},
 	uncommon = {output = "sulphuricuncommonOutputs",cooldown = 3.5},
 	normal = {output = "sulphuricOutputs",cooldown = 2}
   },
   sulphuricdark = {
-    rare = {output = "sulphuricrareOutputs",cooldown = 5},
+    rare = {output = "sulphuricrareOutputs",cooldown = 6},
 	uncommon = {output = "sulphuricuncommonOutputs",cooldown = 3.5},
 	normal = {output = "sulphuricOutputs",cooldown = 2}
   },
   sulphuricocean = {
-    rare = {output = "sulphuricrareOutputs",cooldown = 5},
+    rare = {output = "sulphuricrareOutputs",cooldown = 6},
 	uncommon = {output = "sulphuricuncommonOutputs",cooldown = 3.5},
 	normal = {output = "sulphuricOutputs",cooldown = 2}
   },
   tarball = {
-    rare = {output = "tarballrareOutputs",cooldown = 7},
+    rare = {output = "tarballrareOutputs",cooldown = 6},
 	uncommon = {output = "tarballuncommonOutputs",cooldown = 4.5},
 	normal = {output = "tarballOutputs",cooldown = 2}
   },
   toxic = {
-    rare = {output = "toxicrareOutputs",cooldown = 5},
+    rare = {output = "toxicrareOutputs",cooldown = 7},
 	uncommon = {output = "toxicuncommonOutputs",cooldown = 3.5},
 	normal = {output = "toxicOutputs",cooldown = 2}
   },
   metallicmoon = {
-    rare = {output = "metallicrareOutputs",cooldown = 5},
+    rare = {output = "metallicrareOutputs",cooldown = 7},
 	uncommon = {output = "metallicuncommonOutputs",cooldown = 3.5},
 	normal = {output = "metallicOutputs",cooldown = 2}
   },
   lightless = {
-    rare = {output = "lightlessrareOutputs",cooldown = 5},
+    rare = {output = "lightlessrareOutputs",cooldown = 7},
 	uncommon = {output = "lightlessuncommonOutputs",cooldown = 3.5},
 	normal = {output = "lightlessOutputs",cooldown = 2}
   },

@@ -1,0 +1,178 @@
+{
+  "name" : "magmastormgreater",
+  "icon" : "/interface/cockpit/weather/magmastorm.png",
+
+  "particles" : [
+    {
+      "density" : 0.01,
+      "particle" : {
+        "type" : "animated",
+        "animation" : "/animations/firecharge/firecharge.animation",
+        "velocity" : [0, 0.20],
+        "fade" : 0.4,
+        "looping" : true,
+        "destructionTime" : 1.2,
+        "timeToLive" : 1.2,
+        "collidesForeground" : false,
+        "collidesLiquid" : true,
+        "ignoreWind" : true
+      }
+    },    
+        {
+      "density" : 0.02,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ember/1.png",
+        "velocity" : [0, -7],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.01,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ash/1.png",
+        "velocity" : [0, -6],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.01,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ash/2.png",
+        "velocity" : [0, -4],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.01,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ash/3.png",
+        "velocity" : [0, -5],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/firerain/rain1.png",
+        "velocity" : [0, -35.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/firerain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/firerain/rain2.png",
+        "velocity" : [0, -25.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/firerain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/firerain/rain3.png",
+        "velocity" : [0, -20.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/firerain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "lavabubblestorm",
+      "parameters" : {
+        "power" : 32
+      },
+      "velocity" : [30, -30],
+      "ratePerX" : 0.01,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.3
+    },
+    {
+      "projectile" : "firerain",
+      "parameters" : {
+        "power" : 12
+      },
+      "velocity" : [0, -30],
+      "ratePerX" : 0.0025,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "ash",
+      "parameters" : {
+        "power" : 0
+      },
+      "velocity" : [0, -10],
+      "ratePerX" : 0.05,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    }
+  ],
+
+  "duration" : [60, 120],
+  "maximumWind" : 15.0,
+  "lightningFrequency" : 6,
+  "weatherNoises" : [ "/sfx/weather/ThunderOnly.ogg" ]
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+  

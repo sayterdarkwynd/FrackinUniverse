@@ -64,11 +64,19 @@
     }
   },
 
-  "hueShiftOptions" : [ -300, -260, -240, -200, -160, -120, -100, -80, -60, -40, 0, 40, 60, 80, 100, 120, 160, 200, 240, 260, 300],
+  "hueShiftOptions" : [ 0 ],
   
   "weather" : [
     [0, [
-      "/weather.config:protoworld"
+      "/weather.config:protoworld",
+      "/weather.config:arborealrainy",
+      "/weather.config:thickjungle",
+      "/weather.config:fugentle",
+      "/weather.config:fugentlewindy",
+      "/weather.config:fugentlerainy",
+      "/weather.config:fugentleveryrainy",
+      "/weather.config:fugentlefoggy",
+      "/weather.config:fugentlepretty"  
     ]]
   ],
 
@@ -115,7 +123,7 @@
     },
 //white
     {
-      "mainColor" : [255, 255, 255],
+      "mainColor" : [200, 200, 200],
 
       "morningColors" : [ [255, 255, 255], [255, 255, 225] ],
       "dayColors" : [ [190, 190, 190], [190, 190, 190] ],
@@ -128,7 +136,7 @@
       "nightLightColor" : [90, 90, 90]
     },
      {
-       "mainColor" : [255, 0, 255],
+       "mainColor" : [200, 0, 255],
  
        "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
        "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
@@ -154,7 +162,7 @@
       "nightLightColor" : [40, 17, 17]
     },
     {
-      "mainColor" : [255, 255, 80],
+      "mainColor" : [200, 200, 80],
 
       "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
       "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
@@ -386,8 +394,8 @@
           "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 180,
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 0,
           "treeStemList" : [ "prototree" ],
           "treeFoliageList" : [ "protoleaves" ]
         },
@@ -398,7 +406,7 @@
           "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
+          "treeFoliageHueShiftMax" : 60,
           "treeStemHueShiftMax" : 15,
           "treeStemList" : [ "twisty", "woody", "oldwood", "crackly", "palmlike", "alienweird", "alienbubble", "alienstriped" ],
           "treeFoliageList" : [ "lushy", "junglepalm", "jungly", "jungleleaf", "alienbigleaf", "aliencircle" ]
@@ -410,8 +418,8 @@
           "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 300,
-          "treeStemHueShiftMax" : 300,
+          "treeFoliageHueShiftMax" : 60,
+          "treeStemHueShiftMax" : 20,
           "treeStemList" : [ "bubblevine", "glitteringroot2", "vineroot2", "twistedvine2" ],
           "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "nofoliagevine" ]
         },

@@ -135,9 +135,6 @@ function startCrafting(result)
 				return false
 			end
 		end
-		if powered and not power.consume(config.getParameter('isn_requiredPower')) then
-		  return false
-		end
                 self.timerMod = config.getParameter("fu_timerMod")
 		self.timer = ((techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)) + self.timerMod
 		self.output = result.outputs

@@ -1,0 +1,100 @@
+{
+  "itemName" : "cutegreataxe",
+  "level" : 5,
+  "price" : 850,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Super Choppy, Super Cute",
+  "shortdescription" : "Cute Greataxe",
+  "tooltipKind" : "sword2",
+  "category" : "greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","greataxe","cute","upgradeableWeapon"],
+
+  "inventoryIcon" : "cutegreataxe.png",
+
+  "animation" : "/items/active/weapons/melee/greataxe/greataxeglow.animation",
+  "animationParts" : {
+    "blade" : "cutegreataxe.png",
+    "bladefullbright" : "cutegreataxefullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : {
+          "properties" : {
+            "offset" : [0, 0.5]
+          }
+        },
+        "bladefullbright" : {
+          "properties" : {
+            "offset" : [0, 0.5]
+          }
+        },
+        "swoosh" : {
+          "properties" : {
+            "offset" : [0, 2]
+          },
+          "partStates" : {
+            "swoosh" : {
+              "fire" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/hammer/swoosh/cuteswoosh.png:<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      },
+      "cosmicCharge": {
+        "active": false,
+        "transformationGroups": [ "weapon" ],
+        "emissionRate": 30,
+        "offsetRegion": [ -1,0.5,1,2.5],
+        "particles": [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.8,
+    "baseDps" : 12,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicaxe"
+    }
+  },
+
+  "altAbilityType" : "shockwave",
+  "altAbility" : {
+    "elementalConfig" : { "cosmic" : {
+      "projectileType" : "cuteshockwave"
+    }}
+  },
+
+  "critChance" : 3,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

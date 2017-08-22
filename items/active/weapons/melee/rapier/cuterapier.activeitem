@@ -1,0 +1,107 @@
+{
+  "itemName" : "cuterapier",
+  "price" : 900,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A shiny, cute rapier.",
+  "shortdescription" : "Cute Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee","rapier", "cute", "upgradeableWeapon" ],
+  "inventoryIcon" : "cuterapier.png",
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "cuterapier.png",
+    "bladefullbright" : "cuterapierfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : {
+          "properties" : {
+            "offset" : [0, 2.1]
+          }
+        },
+        "bladefullbright" : {
+          "properties" : {
+            "offset" : [0, 2.1]
+          }
+        },
+        "swoosh" : {
+          "partStates" : {
+            "swoosh" : {
+              "fire" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/shortsword/swoosh2/cuteswoosh.png:<frame>",
+                  "offset" : [2.575, 0]
+                }
+              },
+              "fire2" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/shortsword/swoosh/cuteswoosh.png:<frame>",
+                  "offset" : [3.325, 1.0]
+                }
+              },
+              "fire3" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/shortsword/swoosh2/cuteswoosh.png:<frame>",
+                  "offset" : [2.575, 0]
+                }
+              },
+              "fire4" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/shortsword/swoosh2/cuteswoosh.png:<frame>",
+                  "offset" : [2.575, 0]
+                }
+              },
+              "fire5" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/shortsword/swoosh/cuteswoosh.png:<frame>",
+                  "offset" : [3.325, 1.0]
+                }
+              },
+              "fire6" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/shortsword/swoosh2/cuteswoosh.png:<frame>",
+                  "offset" : [2.575, 0]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 50,
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 5.36,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicbroadsword"
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

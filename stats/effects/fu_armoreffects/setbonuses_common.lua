@@ -13,6 +13,10 @@
 
 require "/scripts/util.lua"
 
+weaponCheckResults={}
+heldItemPrimary=nil
+heldItemAlt=nil
+
 function setBonusInit(setBonusName, setBonusStats, callbacks)
 	self.statGroup = nil
 	self.armourPresent = nil
@@ -20,11 +24,11 @@ function setBonusInit(setBonusName, setBonusStats, callbacks)
 	self.setBonusCheck = { setBonusName .. '_head', setBonusName .. '_chest', setBonusName .. '_legs' }
 	self.setBonusStats = setBonusStats
 	self.callbacks = callbacks or {}
-
 	--sb.logInfo("init for %s\nchecking for %s", setBonusName, self.setBonusCheck)
 end
 
 function setSEBonusInit(setBonusName, SetBonusEffects)
+	script.setUpdateDelta(6)
 	self.armourPresent = nil
 	self.setBonusName = setBonusName
 	self.setBonusCheck = { setBonusName .. '_head', setBonusName .. '_chest', setBonusName .. '_legs' }
@@ -108,46 +112,57 @@ function removeSetBonus()
 end
 
 function weaponCheck(tags)
-	local heldItemPrimary = world.entityHandItem(entity.id(), "primary")
-	local heldItemAlt = world.entityHandItem(entity.id(), "alt")
+	local tempPrimary=world.entityHandItem(entity.id(), "primary")
+	local tempAlt=world.entityHandItem(entity.id(), "alt")
+	local doThing=false
+	if tempPrimary~=heldItemPrimary then
+		heldItemPrimary = tempPrimary
+		doThing=true
+	end
+	if tempAlt~=heldItemAlt then
+		heldItemAlt = tempAlt
+		doThing=true
+	end
+	if not doThing then return weaponCheckResults end
+	
 	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
-	local results={}
-	results["either"]=false
-	results["primary"]=false
-	results["alt"]=false
-	results["both"]=false
-	results["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
+
+	weaponCheckResults["either"]=false
+	weaponCheckResults["primary"]=false
+	weaponCheckResults["alt"]=false
+	weaponCheckResults["both"]=false
+	weaponCheckResults["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
 	if heldItemPrimary~=nil and heldItemAlt~=nil then
 		for _,tag in pairs(tags) do
 			if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
-				results["primary"]=true
-				results["alt"]=true
-				results["both"]=true
-				results["either"]=true
+				weaponCheckResults["primary"]=true
+				weaponCheckResults["alt"]=true
+				weaponCheckResults["both"]=true
+				weaponCheckResults["either"]=true
 			elseif root.itemHasTag(heldItemPrimary,tag) then
-				results["primary"]=true
-				results["either"]=true
+				weaponCheckResults["primary"]=true
+				weaponCheckResults["either"]=true
 			elseif root.itemHasTag(heldItemAlt,tag) then
-				results["alt"]=true
-				results["either"]=true
+				weaponCheckResults["alt"]=true
+				weaponCheckResults["either"]=true
 			end
 		end
 	elseif heldItemPrimary~=nil then
 		for _,tag in pairs(tags) do
 			if root.itemHasTag(heldItemPrimary,tag) then
-				results["primary"]=true
-				results["either"]=true
+				weaponCheckResults["primary"]=true
+				weaponCheckResults["either"]=true
 			end
 		end
 	elseif heldItemAlt~=nil	then
 		for _,tag in pairs(tags) do
 			if root.itemHasTag(heldItemAlt,tag) then
-				results["alt"]=true
-				results["either"]=true
+				weaponCheckResults["alt"]=true
+				weaponCheckResults["either"]=true
 			end
 		end
 	end
-	return results
+	return weaponCheckResults
 end
 
 function uninit()

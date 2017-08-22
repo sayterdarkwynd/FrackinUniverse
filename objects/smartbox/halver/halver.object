@@ -1,0 +1,43 @@
+{
+	"objectName" : "smartbox_halver",
+	"colonyTags" : [ "smart", "box" ],
+	"rarity" : "common",
+	"race" : "generic",
+	"category" : "Smart Box",
+	"printable" : false,
+	"objectType" : "container",
+	"price" : 1750,
+	
+	"description" : "Splits a stack into 50% of its previous value",
+	"shortdescription" : "Stack Halver",
+	"subtitle" : "Smartbox",
+	
+	"inventoryIcon" : "icon.png",
+	"orientations" : [
+		{
+			"dualImage" : "sprite.png",
+			"imagePosition" : [0, 0],
+			"frames" : 1,
+			"animationCycle" : 1.0,
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+	
+	"inputSlot" : 1,
+	
+	"inputNodes" : [ [0, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"acceptsItems" : true,
+	"itemAgeMultiplier" : 0.0,
+	
+	"openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+	"slotCount" : 3,
+	"uiConfig" : "/interface/smartbox/halver.config",
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+	
+	"scripts" : [ "/objects/smartbox/halver/halver.lua" ],
+	"scriptDelta" : 1
+}

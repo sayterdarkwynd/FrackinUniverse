@@ -29,13 +29,9 @@
         "emissionRate" : 20,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "druidstaff"}
+          {"particle" : "defaultblue"}
         ]
       }
-    },
-
-    "sounds" : {
-      "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
     }
   },
 
@@ -89,113 +85,113 @@
     }
   },
 
-  "elementalType" : "poison",
+  "elementalType" : "physical",
 
-"primaryAbilityType":"elementorb", 
+"primaryAbilityType":"elementorb",
 "primaryAbility":{
 "name" : "Gravity Siphon (F)",
-"energyCost":100, 
-"maxCastRange":30, 
-"projectileType":"electricorb", 
+"energyCost":100,
+"maxCastRange":30,
+"projectileType":"electricorb",
 "projectileParameters":{
-  "baseDamage":0, 
-  "persistentAudio":"/sfx/npc/boss/crystalboss_beam.ogg", 
- 
-  "power":0, 
-  "damageKind":"noDamage", 
-  "damageType":"noDamage", 
+  "baseDamage":0,
+  "persistentAudio":"/sfx/npc/boss/crystalboss_beam.ogg",
+
+  "power":0,
+  "damageKind":"noDamage",
+  "damageType":"noDamage",
   "controlMovement":{
-    "maxSpeed":20, 
+    "maxSpeed":20,
     "controlForce":500
-  }, 
-  "timeToLive":20, 
+  },
+  "timeToLive":20,
   "periodicActions":[
     {
-      "time":0.01, 
-      "action":"projectile", 
-      "type":"pulsecannonexplosion", 
+      "time":0.01,
+      "action":"projectile",
+      "type":"pulsecannonexplosion",
       "config":{
-        "speed":0, 
-        "persistentAudio":"", 
-        "knockback":-50, 
-        "timeToLive":0.01, 
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
         "power":0.0
       }
-    }, 
+    },
     {
-      "time":0.01, 
-      "action":"projectile", 
-      "type":"hgravityexplosion", 
+      "time":0.01,
+      "action":"projectile",
+      "type":"hgravityexplosion",
       "config":{
-        "speed":0, 
-        "persistentAudio":"", 
-        "knockback":-50, 
-        "timeToLive":0.01, 
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
         "power":0.0}
-      }, 
+      },
       {
-        "time":0.01, 
-        "action":"explosion", 
-        "foregroundRadius":3, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":5.0, 
-        "delaySteps":2, 
+        "time":0.01,
+        "action":"explosion",
+        "foregroundRadius":3,
+        "backgroundRadius":0,
+        "explosiveDamageAmount":5.0,
+        "delaySteps":2,
         "harvestLevel":10
       }
     ]
   }
-}, 
+},
 
-"altAbilityType":"elementorb", 
+"altAbilityType":"elementorb",
 "altAbility":{
   "name" : "Gravity Siphon (R)",
-  "energyCost":200, 
-  "maxCastRange":50, 
-  "projectileType":"fireorb", 
+  "energyCost":200,
+  "maxCastRange":50,
+  "projectileType":"fireorb",
   "projectileParameters":{
-    "baseDamage":0, 
-    "persistentAudio":"/sfx/npc/boss/crystalboss_beamin.ogg", 
+    "baseDamage":0,
+    "persistentAudio":"/sfx/npc/boss/crystalboss_beamin.ogg",
 
-    "power":0, 
-    "damageKind":"noDamage", 
-    "damageType":"noDamage", 
+    "power":0,
+    "damageKind":"noDamage",
+    "damageType":"noDamage",
     "controlMovement":{
-      "maxSpeed":20, 
+      "maxSpeed":20,
       "controlForce":500
-    }, 
-    "timeToLive":20, 
+    },
+    "timeToLive":20,
     "periodicActions":[
     {
-      "time":0.01, 
-      "action":"projectile", 
-      "type":"pulsecannonexplosion", 
+      "time":0.01,
+      "action":"projectile",
+      "type":"pulsecannonexplosion",
       "config":{
-        "speed":0, 
-        "persistentAudio":"", 
-        "knockback":-50, 
-        "timeToLive":0.01, 
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
         "power":0.0
       }
-    }, 
+    },
     {
-      "time":0.01, 
-      "action":"projectile", 
-      "type":"hgravityexplosion", 
+      "time":0.01,
+      "action":"projectile",
+      "type":"hgravityexplosion",
       "config":{
-        "speed":0, 
-        "persistentAudio":"", 
-        "knockback":-50, 
-        "timeToLive":0.01, 
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
         "power":0.0
       }
-    }, 
+    },
     {
-      "time":0.01, 
-      "action":"explosion", 
-      "foregroundRadius":0, 
-      "backgroundRadius":3, 
-      "explosiveDamageAmount":5.0, 
-      "delaySteps":2, 
+      "time":0.01,
+      "action":"explosion",
+      "foregroundRadius":0,
+      "backgroundRadius":3,
+      "explosiveDamageAmount":5.0,
+      "delaySteps":2,
       "harvestLevel":10
     }
     ]

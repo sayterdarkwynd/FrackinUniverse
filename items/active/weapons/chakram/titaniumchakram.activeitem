@@ -1,0 +1,81 @@
+{
+  "itemName" : "futitaniumchakram",
+  "price" : 90,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "category" : "chakram",
+  "description" : "Crackling with destructive energy.",
+  "shortdescription" : "Titanium Chakram",
+  "tooltipKind" : "chakram",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","chakram", "upgradeableWeapon"],
+  "inventoryIcon" : "titaniumchakram.png",
+  "animation" : "chakram.animation",
+  "animationParts" : {
+    "chakram" : "titaniumchakram.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "critChance" : 6,
+  "critBonus" : 5, 
+  
+  "projectileType" : "titaniumchakramdisc",
+  "projectileParameters" : {
+    "knockback" : 2,
+    "power" : 2,
+    "damageRepeatTimeout" : 0.2,
+    "returnOnHit" : true,
+    "pickupDistance" : 1.0,
+
+    "hoverMaxDistance" : 15,
+    "hoverTime" : 0.8
+  },
+  "level" : 3,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  }, 
+  "builder" : "/items/buildscripts/buildchakram.lua"
+}

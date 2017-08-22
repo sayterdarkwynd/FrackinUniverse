@@ -202,6 +202,6 @@ function isn_getCurrentPowerOutput()
 	powercount = powercount + isn_powerSlotCheck(1)
 	powercount = powercount + isn_powerSlotCheck(2)
 	powercount = powercount + isn_powerSlotCheck(3)
-	object.say(powercount)
+	--object.say(powercount)
 	return powercount
 end

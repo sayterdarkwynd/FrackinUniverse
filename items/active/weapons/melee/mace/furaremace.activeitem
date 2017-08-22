@@ -2,9 +2,9 @@
   "itemName" : "furaremace",
   "price" : 1000,
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "Rare",
   "description" : "A face-whacker!",
-  "shortdescription" : "Common Mace",
+  "shortdescription" : "Rare Mace",
   "tooltipKind" : "sword2",
   "category" : "mace",
   "twoHanded" : false,
@@ -20,7 +20,7 @@
   "primaryAbilityType" : "macecombo",
   "primaryAbility" : {
     "fireTime" : [0.8, 1.3],
-    "baseDps" : [7.5, 9.2],
+    "baseDps" : [6.5, 8.2],
     "damageConfig" : {
       "damageSourceKind" : "<elementalType>hammer"
     }
@@ -44,24 +44,31 @@
     ],
     "elementalConfig" : {
       "fire" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "burning" ] } },
         "fireSounds" : [ [ "/sfx/melee/swing_hammer_fire1.ogg", "/sfx/melee/swing_hammer_fire2.ogg", "/sfx/melee/swing_hammer_fire3.ogg" ] ]
       },
       "ice" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "frostslow" ] } },
         "fireSounds" : [ [ "/sfx/melee/swing_hammer_ice1.ogg", "/sfx/melee/swing_hammer_ice2.ogg", "/sfx/melee/swing_hammer_ice3.ogg" ] ]
       },
       "poison" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "weakpoison" ] } },
         "fireSounds" : [ [ "/sfx/melee/swing_hammer_poison1.ogg", "/sfx/melee/swing_hammer_poison2.ogg", "/sfx/melee/swing_hammer_poison3.ogg" ] ]
       },
       "electric" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "electrified" ] } },
         "fireSounds" : [ [ "/sfx/melee/swing_hammer_electric1.ogg", "/sfx/melee/swing_hammer_electric2.ogg", "/sfx/melee/swing_hammer_electric3.ogg" ] ]
       },
       "shadow" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "shadowgasfx" ] } },
         "fireSounds" : [ [ "/sfx/melee/swing_hammer_poison1.ogg", "/sfx/melee/swing_hammer_poison2.ogg", "/sfx/melee/swing_hammer_poison3.ogg" ] ]
       },
       "radioactive" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "radiationburn" ] } },
         "fireSounds" : [ [ "/sfx/melee/swing_hammer_poison1.ogg", "/sfx/melee/swing_hammer_poison2.ogg", "/sfx/melee/swing_hammer_poison3.ogg" ] ]
       },
       "cosmic" : {
+        "primaryAbility" : { "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] } },
         "fireSounds" : [ [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ] ]
       }
     },      

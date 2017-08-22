@@ -1,0 +1,68 @@
+{
+  "itemName" : "cutespear",
+  "level" : 5,
+  "price" : 850,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Stabbing cuteness is wrong!",
+  "shortdescription" : "Cute Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","cute","upgradeableWeapon"],
+
+  "inventoryIcon" : "cutespear.png",
+
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "blade" : "cutespear.png",
+    "bladefullbright" : "cutespearfullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/spear/swoosh/cuteswoosh.png:<frame>" }}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 60,
+        "offsetRegion" : [3.5, -1.0, 7.5, 1.0],
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "fireTime" : 0.95,
+    "baseDps" : 10.5,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicspear"
+    }
+  },
+
+  "altAbilityType" : "rocketspear",
+  "altAbility" : {
+    "elementalConfig" : { "cosmic" : {
+      "projectileType" : "cutethrower"
+    }}
+  },
+
+
+  "critChance" : 2,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

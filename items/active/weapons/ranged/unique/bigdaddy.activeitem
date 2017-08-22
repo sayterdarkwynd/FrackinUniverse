@@ -7,7 +7,7 @@
   "description" : "A massive energy sniper rifle. Big impact.
 ^yellow;AoE Primary^reset;",
   "shortdescription" : "Instigator",
-  "category" : "Sniper Rifle",
+  "category" : "sniperRifle",
   "level" : 5,
   "tooltipKind" : "gun2",
   "weaponType" : "Sniper Rifle",
@@ -27,6 +27,21 @@
     }
   },
 
+  "animationScripts" : [
+    "/items/active/effects/laserbeam.lua"
+  ],
+  "scriptedAnimationParameters" : {
+    "beams" : [
+      {
+        "offset" : [1.8, 1.1],
+        "color" : [0, 255, 0, 128],
+        "length" : 60,
+        "segments" : 6,
+        "angle" : 0
+      }
+    ]
+  },
+  
   "baseOffset" : [2.5, 0.3],
   "muzzleOffset" : [2.445, 0.325],
 

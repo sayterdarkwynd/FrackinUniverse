@@ -1,0 +1,202 @@
+{
+  "name" : "biorain",
+  "icon" : "/interface/cockpit/weather/biorain.png",
+
+  "particles" : [
+        {
+      "density" : 0.03,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/acidrain/1.png",
+        "velocity" : [0, -12],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.025,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/acidrain/2.png",
+        "velocity" : [0, -11],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/acidrain/3.png",
+        "velocity" : [0, -14],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+	},  
+        {
+      "density" : 0.03,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/acidrain/1.png",
+        "velocity" : [0, -12],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.025,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/acidrain/2.png",
+        "velocity" : [0, -11],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/acidrain/3.png",
+        "velocity" : [0, -14],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+	},  
+	{
+
+      "density" : 0.0025,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/fog/1.png",
+        "velocity" : [0, -14],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }	  
+    },
+	{
+      "density" : 0.003,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/windstorm/6.png",
+        "velocity" : [0, -12],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+	{
+      "density" : 0.003,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/windstorm/7.png",
+        "velocity" : [0, -12],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "biorain",
+      "parameters" : {
+        "power" : 5
+      },
+      "velocity" : [30, -30],
+      "ratePerX" : 0.005,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.5
+    },
+    {
+      "projectile" : "biorain",
+      "parameters" : {
+        "power" : 12
+      },
+      "velocity" : [30, -30],
+      "ratePerX" : 0.0035,
+      "spawnAboveRegion" : 20,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.5
+    },  
+    {
+      "projectile" : "windstorm1",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -15],
+      "ratePerX" : 0.03,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "windstorm2",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -15],
+      "ratePerX" : 0.001,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+	    {
+      "projectile" : "windstorm3",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -15],
+      "ratePerX" : 0.004,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "windstorm4",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -15],
+      "ratePerX" : 0.0005,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    }
+  ],
+
+  "duration" : [60, 120],
+  "maximumWind" : 50.0,
+  "weatherNoises" : [ "/sfx/weather/WeatherDrizzle.ogg" ]
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+  

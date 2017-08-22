@@ -1,0 +1,89 @@
+{
+  "itemName" : "flyingv",
+  "price" : 900,
+  "maxStack" : 1,
+  "level" : 4,
+  "rarity" : "uncommon",
+  "description" : "Shred, Rip and Tear!",
+  "shortdescription" : "Lead Guitar",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "weaponType" : "Bitchin' Tunes",
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+  "inventoryIcon" : "flyingv.png",
+  "collectablesOnPickup" : { "fu_weaponhammer" : "zerchesiumhammer" },
+  "animation" : "hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "flyingv.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-3.0, 1.5]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+  "renderLayer" : "Player+3",
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.5,
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "fire",
+      "statusEffects" : [ "burning" ]
+    },    
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 115,
+        "weaponOffset" : [0.35, 1.7]
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.4, 1.75],
+
+        // Windup animation
+        "idleHammerAngle" : -10,
+        "windupHammerAngle" : 0,
+        "dropHammerAngle" : 60,
+        "bounceHammerAngle" : 55,
+
+        "minWindup" : 0.7,
+        "windupBaseAngle" : -10,
+        "windupAngleRange" : 70
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.4, 2.0]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0.6, 2.0]
+      }
+    }
+  },
+
+  "altAbilityType" : "fugroundslamice",
+  "altAbility" : { },
+
+  "critChance" : 6,
+  "critBonus" : 4, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 5
+}

@@ -1,6 +1,5 @@
 require("/scripts/vec2.lua")
 function init()
-  self.usedIntro = 0
   self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
     
   -- Environment Configuration --
@@ -31,6 +30,7 @@ end
 
 --******* check effect and cancel ************
 function checkEffectValid()
+  
   if world.entityType(entity.id()) ~= "player" then
     deactivateVisualEffects()
     effect.expire()

@@ -136,11 +136,23 @@ function init()
   self.energyMax = self.parts.body.energyMax
   storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
-  self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
+  self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0) 
    
-  -- check for environmental hazards / protection
 
+  --[[ add Powerful gun drain 
+  if (self.parts.leftArm.stats.powerful) then
+    self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.powerful) 
+  end
+  if (self.parts.rightArm.stats.powerful) then
+    self.energyDrain = self.energyDrain + (self.parts.rightArm.stats.powerful)
+  end 
+  self.extraDrain1 = (self.parts.leftArm.stats.powerful or 0)
+  self.extraDrain2 = (self.parts.rightArm.stats.powerful or 0)
+  self.extraDrain = self.extraDrain1 + self.extraDrain2]]--
+
+  -- check for environmental hazards / protection
   local hazards = config.getParameter("hazardVulnerabilities")
+  
   for _, statusEffect in pairs(self.parts.body.hazardImmunities or {}) do
     hazards[statusEffect] = nil
   end
@@ -150,7 +162,14 @@ function init()
 
   for _, statusEffect in pairs(world.environmentStatusEffects(mcontroller.position())) do
     if hazards[statusEffect] then
-      self.energyDrain = self.energyDrain + hazards[statusEffect].energyDrain
+    
+      --[[ ************************************************************************
+           In FU we adjust things a bit. Mechs regen, but not if they are in hostile 
+           environs. So we set this below 
+      ***************************************************************************** --]]
+      self.regenPenalty = hazards[statusEffect].energyDrain or 0-- REGEN penalty
+      
+      self.energyDrain = self.energyDrain + hazards[statusEffect].energyDrain 
       world.sendEntityMessage(self.ownerEntityId, "queueRadioMessage", hazards[statusEffect].message, 1.5)
     end
 
@@ -522,8 +541,37 @@ function update(dt)
     local energyDrain = self.energyDrain
     if not hasTouched(newControls) and not hasTouched(oldControls) then --(not hasFired) then 
       eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
-      eMult = eMult / 20
-      energyDrain = -energyDrain*eMult
+      eMult = eMult 
+
+      --[[ ************************************************************************************
+      In Frackin Universe, mechs regen (which is initially from XS Mechs - Modular Edition. You rock, LoPhatKo!)
+      but not if they are in a hostile environment to their body type. Additionally, the higher threat that the biome
+      is, the slower the regeneration rate becomes, which should help to balance out energy cost.
+      ***************************************************************************************** --]]
+        self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
+        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
+        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
+        self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
+   
+        self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact
+      --is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
+      self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10 
+      self.storageValue = self.storageValue / 200
+      if (storage.energy) < (self.energyMax/2) then 
+        eMult = 0               
+      else
+        eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
+      end
+
+      -- is their mech affected by the planet? if so, do not regen
+      -- Otherwise, we apply the bonus
+      --energyDrain = energyDrain - self.extraDrain     if enabling the extra code for Powerful weapons
+      if self.regenPenalty then 
+        energyDrain = energyDrain 
+      else
+        energyDrain = -energyDrain*eMult
+      end   
+    
     end
     storage.energy = math.min(math.max(0, storage.energy - energyDrain * dt),self.energyMax)
     world.debugText("%s / %s\n%s%%",storage.energy,self.energyMax,(storage.energy/self.energyMax)*100,{newPosition[1]-1.5,newPosition[2]+5},"white")
