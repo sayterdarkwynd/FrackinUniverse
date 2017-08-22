@@ -1,0 +1,217 @@
+{
+  "itemName" : "cutekatana",
+  "price" : 700,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A sharp blade made by a magical girl.",
+  "shortdescription" : "Cute Katana",
+  "tooltipKind" : "sword2",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "cute","upgradeableWeapon"],
+
+  "inventoryIcon" : "cutekatana.png",
+
+  "animation" : "combokatanaglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "cutekatana.png",
+    "bladefullbright" : "cutekatanafullbright.png"
+  },
+  "animationCustom" : { //override default swoosh and particles cause cuteness.
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>?flipy"}},
+      "fire2":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>"}},
+      "fire3":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>?flipy"}},
+      "fire4":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>"}}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility": {
+    "comboSteps": 4,
+    "fireTime" : 0.75,
+    "baseDps": 7.25,
+    "damageConfig": {
+      "damageSourceKind" : "cosmicshortsword"
+    },
+    "swooshOffsetRegions": [
+      [-0.75, 0.0, 4.25, 5.0],
+      [0, -4.25, 5, 0],
+      [3.0, -0.5, 6.5, 2.0],
+      [0, -4.25, 5, 0]
+    ],
+    "stepDamageConfig": [
+      {"baseDamageFactor":0.9, "knockback":10},
+      {"baseDamageFactor":1.1, "knockback":15},
+      {"baseDamageFactor":0.8, "knockback":10},
+      {"baseDamageFactor":1.1, "knockback":15}
+    ],
+    "stances": {
+    	"idle": {
+    	  "twoHanded":false,
+    	  "armRotation":-20,
+    	  "weaponRotation":120,
+    	  "weaponOffset":[0.0,2.5],
+    	  "allowRotate":false,
+    	  "allowFlip":true
+    	},
+      "windup1":{
+        "duration":0.15,
+        "armRotation":-60,
+        "weaponRotation":150,
+        "twoHanded":false,
+        "weaponOffset":[0,2.5],
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "preslash1": {
+        "duration":0
+      },
+      "fire1": {
+        "duration":0.08,
+        "armRotation":65,
+        "weaponRotation":-125,
+        "twoHanded":false,
+        "weaponOffset":[0,2.5],
+        "allowRotate":false,
+        "allowFlip":false
+      },
+      "wait1": {
+        "duration":0.05,
+        "armRotation":-85,
+        "weaponRotation":-5,
+        "allowRotate":false,
+        "allowFlip":true,
+        "twoHanded":false,
+        "weaponOffset":[0,2.5]
+      },
+      "windup2": {
+        "duration":0.05,
+        "armRotation":90,
+        "weaponRotation":-10,
+        "twoHanded":false,
+        "weaponOffset":[0,2.5],
+        "allowRotate":false,
+        "allowFlip":true
+        },
+      "preslash2": {
+        "duration":0.025,
+        "armRotation":55,
+        "weaponRotation":-45,
+        "twoHanded":false,
+        "weaponOffset":[0,2.5],
+        "allowRotate":false,
+        "allowFlip":false
+        },
+      "fire2": {
+        "duration":0.1,
+        "armRotation":-45,
+        "weaponRotation":-55,
+        "twoHanded":false,
+        "weaponOffset":[0,2.5],
+        "allowRotate":false,
+        "allowFlip":false
+        },
+      "wait2": {
+        "duration":0.08,
+        "armRotation":-85,
+        "weaponRotation":-5,
+        "allowRotate":false,
+        "allowFlip":true,
+        "twoHanded":false,
+        "weaponOffset":[0,2.5]
+      },
+      "windup3": {
+        "duration":0.12,
+        "armRotation":-100,
+        "weaponRotation":-150,
+        "weaponOffset":[0,2.4],
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "preslash3":{
+        "duration":0.025,
+        "armRotation":-40,
+        "weaponRotation":-130,
+        "weaponOffset":[0,2.4],
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "fire3": {
+        "duration":0.08,
+        "armRotation":40,
+        "weaponRotation":-100,
+        "weaponOffset":[0,2.4],
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "wait3": {
+        "duration":0.08,
+        "armRotation":-85,
+        "weaponRotation":-5,
+        "allowRotate":false,
+        "allowFlip":true,
+        "twoHanded":false,
+        "weaponOffset":[0,2.4]
+      },
+      "windup4": {
+        "duration":0.3,
+        "armRotation":80,
+        "weaponRotation":-50,
+        "weaponOffset":[0,2.4],
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "preslash4": {
+        "duration":0
+      },
+      "fire4": {
+        "duration":0.15,
+        "armRotation":0,
+        "weaponRotation":-105,
+        "weaponOffset":[0,2.4],
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "wait4": {
+        "duration":0.35,
+        "armRotation":-20,
+        "weaponRotation":140,
+        "twoHanded":false,
+        "weaponOffset":[0,2.4],
+        "allowRotate":false,
+        "allowFlip":true,
+        "aimAngle":0
+      }
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

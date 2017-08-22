@@ -1,0 +1,69 @@
+{
+  "itemName" : "cutebow",
+  "price" : 900,
+  "inventoryIcon" : "cutebowicon.png",
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "tooltipKind" : "bow",
+  "category" : "bow",
+  "description" : "This bow will break your heart.",
+  "shortdescription" : "Cute Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "cute","upgradeableWeapon"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 5,
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "cutebow.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/melee/laser_weapon_swing2.ogg" ],
+      "perfectRelease" : [ "/sfx/melee/laser_weapon_swing1.ogg" ]
+    }
+  },
+
+  "elementalType" : "cosmic",
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+	  "drawFrameSelector" : "bowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "cutearrow",
+    "powerProjectileType" : "chargedcutearrow",
+    "projectileParameters" : {
+      "emitters" : [ "arrowcute"],
+      "power" : 8.24
+    }
+  },
+
+  "altAbilityType" : "tripleshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawSpeedMultiplier" : "constant",
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "chargedcutearrow",
+    "projectileParameters" : {
+      "emitters" : [ "cutetrailfast"],
+      "power" : 6.0
+    },
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
+  },
+
+  "critChance" : 5,
+  "critBonus" : 3,
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

@@ -24,19 +24,19 @@
       }
     },
     "particleEmitters" : {
-      "physicalcharge" : {
+      "shadowcharge" : {
         "active" : false,
         "transformationGroups" : ["weapon"],
         "emissionRate" : 10,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "shadowsmoke"}
         ]
       }
     },
 
     "sounds" : {
-      "physicalactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+      "shadowactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
     }
   },
 
@@ -92,49 +92,49 @@
 
   "elementalType" : "shadow",
 
-"primaryAbilityType":"elementorb", 
+"primaryAbilityType":"elementorb",
 "primaryAbility":{
-"energyCost":1000, 
-"maxCastRange":50, 
-"projectileType":"shadoworb", 
+"energyCost":1000,
+"maxCastRange":50,
+"projectileType":"shadoworb",
 "projectileParameters":{
-"baseDamage":0, 
-"processing":"?0", 
-"power":0, 
-"damageKind":"noDamage", 
-"damageType":"noDamage", 
-"controlMovement":{"maxSpeed":25, "controlForce":1000}, 
-"timeToLive":60, 
+"baseDamage":0,
+"processing":"?0",
+"power":0,
+"damageKind":"noDamage",
+"damageType":"noDamage",
+"controlMovement":{"maxSpeed":25, "controlForce":1000},
+"timeToLive":60,
 "periodicActions":[{"time":0.05, "action":"projectile", "angleAdjust":-90, "type":"shadoworb", "config":{"speed":0, "persistentAudio":"", "timeToLive":0.5, "power":1}}]}},
 
   "altAbilityType" : "elementorb",
   "altAbility" : {
-    "energyCost":1000, 
-    "maxCastRange":50, 
-    "projectileType":"shadoworb",  
+    "energyCost":1000,
+    "maxCastRange":50,
+    "projectileType":"shadoworb",
     "projectileParameters":{
-      "baseDamage":0, 
-      "processing":"?0", 
-      "power":0, 
-      "damageKind":"shadow", 
-      "damageType":"noDamage", 
+      "baseDamage":0,
+      "processing":"?0",
+      "power":0,
+      "damageKind":"shadow",
+      "damageType":"noDamage",
       "controlMovement":{
-        "maxSpeed":10, 
+        "maxSpeed":10,
         "controlForce":1000
-      }, 
+      },
       "timeToLive":60,
       "periodicActions":[
-       { 
-        "time":0.01, 
-        "action":"projectile", 
-        "type":"flyswarm", 
+       {
+        "time":0.01,
+        "action":"projectile",
+        "type":"flyswarm",
         "config":{
-          "speed":0, 
-          "timeToLive":1.0, 
+          "speed":0,
+          "timeToLive":1.0,
           "power":2
          }
        }
-      ]  
+      ]
      }
   },
 
@@ -143,7 +143,7 @@
   "upgradeParameters" : {
     "shortdescription" : "Shadowreap^yellow;^reset;",
     "controlMovement":{
-      "maxSpeed":35, 
+      "maxSpeed":35,
       "controlForce":1100
     }
   }
