@@ -74,8 +74,9 @@ function performUpgrade(widgetName, widgetData)
 	  -- ***radius
 	    self.blockRadius = 1
 	  -- ***range
-	    self.beamgunRange = 2	
-
+	    self.beamgunRange = 2
+	    self.rangeBonus = root.itemConfig(item).config.rangeBonus or 0
+            self.totalRangeUp = self.beamgunRange + self.rangeBonus
 	  if upgrade.setItemParameters.tileDamage then
 	            upgrade.setItemParameters.tileDamage = (item.parameters.tileDamage or root.itemConfig(item).config.tileDamage) + self.tileDamageBonus 
 		    upgrade.setItemParameters.minBeamWidth = (item.parameters.minBeamWidth or root.itemConfig(item).config.minBeamWidth) + 0.05
@@ -84,8 +85,8 @@ function performUpgrade(widgetName, widgetData)
 	            upgrade.setItemParameters.blockRadius = (item.parameters.blockRadius or root.itemConfig(item).config.blockRadius) + self.blockRadius 
 		    upgrade.setItemParameters.minBeamJitter = (item.parameters.minBeamJitter or root.itemConfig(item).config.minBeamJitter) + 0.06
 		    upgrade.setItemParameters.maxBeamJitter = (item.parameters.maxBeamJitter or root.itemConfig(item).config.maxBeamJitter) + 0.06  	    
-	  elseif upgrade.setItemParameters.bonusBeamGunRadius then
-	            upgrade.setItemParameters.bonusBeamgunRadius = (item.parameters.bonusBeamgunRadius or root.itemConfig(item).config.bonusBeamgunRadius) + self.beamgunRange
+	  elseif upgrade.setStatusProperties.bonusBeamGunRadius then
+	            upgrade.setStatusProperties.bonusBeamGunRadius = (upgrade.setStatusProperties.bonusBeamGunRadius) + self.totalRangeUp
 	  end	
 	  --[[ End FU Special additions here --]]
 	  
