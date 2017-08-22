@@ -92,8 +92,26 @@ function questComplete()
   for _, condition in pairs(self.conditions) do
     if condition.onQuestComplete then condition:onQuestComplete() end
   end
+  isOriginalMM()  
   player.giveEssentialItem("beamaxe", "mmgravgun")
+  
   questutil.questCompleteActions()
+end
+
+
+function isOriginalMM()
+  local mm = player.essentialItem("beamaxe").name or ""
+  if mm == "beamaxe" or 
+     mm == "beamaxeapex" or 
+     mm == "beamaxeelunite" or 
+     mm == "beamaxehylotl" then
+     return 1
+  else
+     player.removeEssentialItem("beamaxe")
+     player.removeEssentialItem("wiretool")
+     player.removeEssentialItem("painttool")  
+     return 0
+  end
 end
 
 function update(dt)
