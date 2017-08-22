@@ -1,0 +1,85 @@
+{
+  "name" : "fuearthquakesevere",
+
+  "particles" : [
+    {
+
+      "density" : 0.075,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/weather/fublank.png",
+        "velocity" : [0, -40.5],
+        "approach" : [0, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 4,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.2,
+        "destructionImage" :  "/weather/earthquake/quakedust.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : false,
+        "ignoreWind" : true
+      }
+    },
+    {
+      "density" : 0.075,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/weather/fublank.png",
+        "velocity" : [0, -40.5],
+        "approach" : [0, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 4,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.2,
+        "destructionImage" :  "/weather/earthquake/quakedust.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : false,
+        "ignoreWind" : true
+      }
+    },
+    {
+      "density" : 0.075,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/weather/fublank.png",
+        "velocity" : [0, -40.5],
+        "approach" : [0, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 4,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.2,
+        "destructionImage" :  "/weather/earthquake/quakedust.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : false,
+        "ignoreWind" : true
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "fuearthquake",
+      "parameters" : {
+        "power" : 0
+      },
+      "velocity" : [0, -500],
+      "ratePerX" : 0.09,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 10,
+      "windAffectAmount" : 0
+    }
+  ],
+
+  "statusEffects" : [],
+
+  "duration" : [30, 60],
+  "maximumWind" : 0.0,
+
+  "weatherNoises" : [ ]
+}

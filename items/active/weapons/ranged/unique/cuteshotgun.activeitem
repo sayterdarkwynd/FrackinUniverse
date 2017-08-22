@@ -1,0 +1,87 @@
+{
+  "itemName" : "cuteshotgun",
+  "price" : 900,
+  "inventoryIcon" : "cuteshotgun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Blast your enemies head off with love!
+^yellow;High-Velocity Piercing Rounds^reset;",
+  "shortdescription" : "Cute Shotgun",
+
+  "level" : 5,
+  "category" : "shotgun",
+  "itemTags" : ["weapon","ranged","shotgun","cute","upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "weaponType" : "Shotgun",
+  "twoHanded" : true,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "cuteshotgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/shotgun1.ogg"]
+    }
+  },
+
+  "baseOffset" : [0.9, 0.25],
+  "muzzleOffset" : [2, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.2,
+    "baseDps" : 10.5,
+    "energyUsage" : 31.5,
+    "inaccuracy" : 0.13,
+
+    "projectileCount" : 8,
+    "fireType" : "auto",
+
+    "projectileType" : "piercingbullet",
+    "projectileParameters" : {
+      "damageKind" : "cosmicplasmashotgun",
+      "speed" : 120
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "burstshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

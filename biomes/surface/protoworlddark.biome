@@ -59,11 +59,19 @@
     }
   },
 
-  "hueShiftOptions" : [ -300, -260, -240, -200, -160, -120, -100, -80, -60, -40, 0, 40, 60, 80, 100, 120, 160, 200, 240, 260, 300],
+  "hueShiftOptions" : [ 0 ],
   
   "weather" : [
     [0, [
-      "/weather.config:protoworld"
+      "/weather.config:protoworld",
+      "/weather.config:arborealrainy",
+      "/weather.config:thickjungle",
+      "/weather.config:fugentle",
+      "/weather.config:fugentlewindy",
+      "/weather.config:fugentlerainy",
+      "/weather.config:fugentleveryrainy",
+      "/weather.config:fugentlefoggy",
+      "/weather.config:fugentlepretty"        
     ]]
   ],
 
@@ -192,8 +200,8 @@
   ],
   
   
-    "mainBlock" : "biodirt",
-    "subBlocks" : [ "biostone", "bioblock", "biogravel" ],
+    "mainBlock" : "bioblock",
+    "subBlocks" : [ "biostone", "bioblock2", "biogravel" ],
     "ores" : "ff_surfaceprotoOres",
 
   //"parallax" : "/parallax/surface/protoworld.parallax",
@@ -381,8 +389,8 @@
           "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 180,
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 0,
           "treeStemList" : [ "prototree" ],
           "treeFoliageList" : [ "protoleaves" ]
         },
@@ -393,7 +401,7 @@
           "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
+          "treeFoliageHueShiftMax" : 60,
           "treeStemHueShiftMax" : 15,
           "treeStemList" : [ "twisty", "woody", "oldwood", "crackly", "palmlike", "alienweird", "alienbubble", "alienstriped" ],
           "treeFoliageList" : [ "lushy", "junglepalm", "jungly", "jungleleaf", "alienbigleaf", "aliencircle" ]
@@ -405,8 +413,8 @@
           "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 300,
-          "treeStemHueShiftMax" : 300,
+          "treeFoliageHueShiftMax" : 60,
+          "treeStemHueShiftMax" : 20,
           "treeStemList" : [ "bubblevine", "glitteringroot2", "vineroot2", "twistedvine2" ],
           "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "nofoliagevine" ]
         },

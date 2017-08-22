@@ -1,0 +1,97 @@
+{
+  "name" : "mistyrain",
+  "icon" : "/interface/cockpit/weather/mistyrain.png",
+
+    "particles" : [
+      {
+  
+        "density" : 0.05,
+        "autoRotate" : true,
+  
+        "particle" : {
+          "type" : "textured",
+          "image" : "/particles/rain/1.png",
+          "velocity" : [0, -35.5],
+          "approach" : [15, 15],
+          "angularVelocity" : 0,
+          "timeToLive" : 100,
+          "destructionAction" : "Image",
+          "destructionTime" : 0.1,
+          "destructionImage" : "/particles/splash/1.png",
+          "collidesForeground" : true,
+          "collidesLiquid" : true
+        }
+      },
+      {
+        "density" : 0.05,
+        "autoRotate" : true,
+  
+        "particle" : {
+          "type" : "textured",
+          "image" : "/particles/rain/2.png",
+          "velocity" : [0, -25.5],
+          "approach" : [15, 15],
+          "angularVelocity" : 0,
+          "timeToLive" : 100,
+          "destructionAction" : "Image",
+          "destructionTime" : 0.1,
+          "destructionImage" : "/particles/splash/1.png",
+          "collidesForeground" : true,
+          "collidesLiquid" : true
+        }
+      },
+      {
+        "density" : 0.05,
+        "autoRotate" : true,
+  
+        "particle" : {
+          "type" : "textured",
+          "image" : "/particles/rain/3.png",
+          "velocity" : [0, -20.5],
+          "approach" : [15, 15],
+          "angularVelocity" : 0,
+          "timeToLive" : 100,
+          "destructionAction" : "Image",
+          "destructionTime" : 0.1,
+          "destructionImage" : "/particles/splash/1.png",
+          "collidesForeground" : true,
+          "collidesLiquid" : true
+        }
+      }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "fogprimer",
+      "parameters" : {
+        "power" : 0,
+        "timeToLive" : 2.4
+      },
+      "velocity" : [0, -30],
+      "ratePerX" : 0.015,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    }
+  ],
+
+
+
+  "duration" : [40, 400],
+  "lightningFrequency" : 0.05,
+  "maximumWind" : 0.0,
+  "weatherNoises" : [ "/sfx/weather/rain_medium.ogg" ]
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+  

@@ -1,0 +1,161 @@
+{
+  "name" : "firestorm",
+  "icon" : "/interface/cockpit/weather/firestorm.png",
+
+  "particles" : [
+    {
+      "density" : 0.01,
+      "particle" : {
+        "type" : "animated",
+        "image" : "/animations/ember1/ember1.animation",
+        "velocity" : [0, -3],
+        "angularVelocity" : 180,
+        "timeToLive" : 20,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "windAffectAmount" : 1.0
+      }
+    },
+    {
+      "density" : 0.01,
+        "particle" : {
+        "type" : "animated",
+        "image" : "/animations/ember2/ember2.animation",
+        "velocity" : [0, -4],
+        "angularVelocity" : 180,
+        "timeToLive" : 20,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "windAffectAmount" : 1.0
+      }
+    },
+    {
+      "density" : 0.025,
+        "particle" : {
+        "type" : "animated",
+        "image" : "/animations/ember3/ember3.animation",
+        "velocity" : [0, -3],
+        "angularVelocity" : 180,
+        "timeToLive" : 20,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "windAffectAmount" : 1.0
+      }
+    },    
+    {
+      "density" : 0.05,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ember/1.png",
+        "velocity" : [0, -3],
+        "angularVelocity" : 180,
+        "timeToLive" : 20,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "windAffectAmount" : 1.0
+      }
+    },
+    {
+      "density" : 0.1,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/firerain/rain1.png",
+        "velocity" : [0, -35.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/firerain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.075,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/firerain/rain2.png",
+        "velocity" : [0, -25.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/firerain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.01,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ash/1.png",
+        "velocity" : [0, -6],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.01,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ash/2.png",
+        "velocity" : [0, -4],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.01,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ash/3.png",
+        "velocity" : [0, -5],
+        "angularVelocity" : 180,
+        "timeToLive" : 100,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "fufirerain",
+      "parameters" : {
+        "power" : 6
+      },
+      "velocity" : [0, -30],
+      "ratePerX" : 0.0024,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.43
+    }, 
+    {
+      "projectile" : "ember",
+      "parameters" : {
+        "power" : 6
+      },
+      "velocity" : [0, -3],
+      "ratePerX" : 0.0055,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.5
+    }
+  ],
+
+  "duration" : [60, 120],
+  "lightningFrequency" : 2,
+  "maximumWind" : 105.0,
+  "weatherNoises" : [ "/sfx/weather/firerain.ogg" ]
+}
