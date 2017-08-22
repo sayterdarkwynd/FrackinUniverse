@@ -1,0 +1,161 @@
+{
+  "type" : "dollboss",
+  "shortdescription" : "Doll Face",
+
+  "categories" : [ "dollboss" ],
+  "parts" : [ "head", "hair", "handleft", "handright" ],
+
+  "animation" : "dollboss.animation",
+  "dropPools" : [
+    {
+      "default" : "dollfaceTreasure"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "metaBoundBox" : [-50, -50, 50, 50],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [[-6.0,0.5],[-1.5,6.125],[1.5,6.125],[6.0,0.5],[6.0,-1.5],[2.75,-5.125],[-2.75,-5.125],[-6.0,-1.5]],
+
+      "gravityEnabled" : false,
+      "mass" : 4.0,
+      "flySpeed" : 20,
+      "airForce" : 200.0,
+      "physicsEffectCategories" : ["boss"]
+    },
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathpoof",
+
+
+    "touchDamage" : {
+      "poly" : [[-6.0,0.5],[-1.5,6.125],[1.5,6.125],[6.0,0.5],[6.0,-1.5],[2.75,-5.125],[-2.75,-5.125],[-6.0,-1.5]],
+      "damage" : 20,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "shadowlash",
+      "knockback" : 30,
+      "statusEffects" : [ "insanity" ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 1200
+        },
+        "protection" : {
+          "baseValue" : 0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "specialStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "healingStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "stunImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        //should be immune to everything...
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "protoImmunity" : {
+          "baseValue" : 1.0
+        },
+        "bleedingImmunity" : {
+          "baseValue" : 1.0
+        },
+        "gasImmunity" : {
+          "baseValue" : 1.0
+        },
+        "shadowImmunity" : {
+          "baseValue" : 1.0
+        },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "radiationburnImmunity" : {
+          "baseValue" : 1.0
+        },
+        "sulphuricImmunity" : {
+          "baseValue" : 1.0
+        },
+        "penaltyBlock" : {
+          "baseValue" : 1.0
+        },
+        "critImmunity" : {
+          "baseValue" : 1.0
+        },
+        //Resistances, truly mean as hell
+        "physicalResistance" : { "baseValue" : 0.5 },
+        "fireResistance" : { "baseValue" :0.3 },
+        "iceResistance" : { "baseValue" : 0.6 },
+        "poisonResistance" : { "baseValue" : 0.4 },
+        "electricResistance" : { "baseValue" : 0.4 },
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "radioactiveResistance" : { "baseValue" : 0.7 },
+        "cosmicResistance" : { "baseValue" : -0.5 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0,
+          "maxValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 1.0
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}
