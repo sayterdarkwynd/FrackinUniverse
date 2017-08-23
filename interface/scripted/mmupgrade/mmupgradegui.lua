@@ -65,28 +65,20 @@ function performUpgrade(widgetName, widgetData)
       end
 
       if upgrade.setItemParameters then
-        local item = player.essentialItem(upgrade.essentialSlot)
-
-
+          local item = player.essentialItem(upgrade.essentialSlot)
 	  --[[ FU Special additions here --]]
-	  -- ***power
-	    self.tileDamageBonus = 2
-	  -- ***radius
-	    self.blockRadius = 1
-	  -- ***range
-	    self.beamgunRange = 2
-	    self.rangeBonus = root.itemConfig(item).config.rangeBonus or 0
-            self.totalRangeUp = self.beamgunRange + self.rangeBonus
+	  self.tileDamageBonus = 1.5
+	  self.blockRadius = 1
+	  local beamgunStats = root.itemConfig(item).config
+	    
 	  if upgrade.setItemParameters.tileDamage then
-	            upgrade.setItemParameters.tileDamage = (item.parameters.tileDamage or root.itemConfig(item).config.tileDamage) + self.tileDamageBonus 
-		    upgrade.setItemParameters.minBeamWidth = (item.parameters.minBeamWidth or root.itemConfig(item).config.minBeamWidth) + 0.05
-		    upgrade.setItemParameters.maxBeamWidth = (item.parameters.maxBeamWidth or root.itemConfig(item).config.maxBeamWidth) + 0.05   	    
+		upgrade.setItemParameters.tileDamage = (item.parameters.tileDamage or beamgunStats.tileDamage) + self.tileDamageBonus 
+		upgrade.setItemParameters.minBeamWidth = (item.parameters.minBeamWidth or beamgunStats.minBeamWidth) + 0.02
+		upgrade.setItemParameters.maxBeamWidth = (item.parameters.maxBeamWidth or beamgunStats.maxBeamWidth) + 0.02   	    
 	  elseif upgrade.setItemParameters.blockRadius then
-	            upgrade.setItemParameters.blockRadius = (item.parameters.blockRadius or root.itemConfig(item).config.blockRadius) + self.blockRadius 
-		    upgrade.setItemParameters.minBeamJitter = (item.parameters.minBeamJitter or root.itemConfig(item).config.minBeamJitter) + 0.06
-		    upgrade.setItemParameters.maxBeamJitter = (item.parameters.maxBeamJitter or root.itemConfig(item).config.maxBeamJitter) + 0.06  	    
-	  --elseif upgrade.setStatusProperties.bonusBeamGunRadius then
-	  --          upgrade.setStatusProperties.bonusBeamGunRadius = (upgrade.setStatusProperties.bonusBeamGunRadius) + self.totalRangeUp
+		upgrade.setItemParameters.blockRadius = (item.parameters.blockRadius or beamgunStats.blockRadius) + self.blockRadius 
+		upgrade.setItemParameters.minBeamJitter = (item.parameters.minBeamJitter or beamgunStats.minBeamJitter) + 0.04
+		upgrade.setItemParameters.maxBeamJitter = (item.parameters.maxBeamJitter or beamgunStats.maxBeamJitter) + 0.04  	    
 	  end	
 	  --[[ End FU Special additions here --]]
 	  
