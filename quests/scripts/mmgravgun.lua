@@ -96,7 +96,7 @@ function questComplete()
   local mm = player.essentialItem("beamaxe")
   local newmm = root.createItem("mmgravgun")
 
-  -- Upgrades that this MM comes with (fake size upgrades for MMM compatibility)
+  -- Upgrades that this MM comes with
   newmm.parameters.upgrades = { "liquidcollection" }
 
   -- Upgrades that the old MM may have obtained
