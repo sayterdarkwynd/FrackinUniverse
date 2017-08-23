@@ -117,7 +117,6 @@ function questComplete()
 
   -- Finally, give the player the new MM
   player.giveEssentialItem("beamaxe", newmm)
-  status.setStatusProperty("bonusBeamGunRadius", 0)
   questutil.questCompleteActions()
 end
 
