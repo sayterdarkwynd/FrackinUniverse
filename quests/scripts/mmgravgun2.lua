@@ -97,7 +97,7 @@ function questComplete()
   local newmm = root.createItem("mmgravgun2")
 
   -- Upgrades that this MM comes with
-  newmm.parameters.upgrades = { "range1", "range2", "range3", "liquidcollection", "paintmode" , "wiremode" }
+  newmm.parameters.upgrades = { "liquidcollection" }
 
   -- Upgrades that the old MM may have obtained
   local possible = { "range1", "range2", "range3", "wiremode", "paintmode" }
