@@ -89,7 +89,7 @@ function init()
   end
 
 
-  monster.setName("Uberilla")
+  monster.setName("Apex War-Born")
   monster.setDamageBar("special") 
 
   monster.setInteractive(config.getParameter("interactive", false))
