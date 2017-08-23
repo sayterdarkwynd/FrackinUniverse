@@ -97,10 +97,10 @@ function questComplete()
   local newmm = root.createItem("mmgravgun3")
 
   -- Upgrades that this MM comes with (fake size upgrades for MMM compatibility)
-  newmm.parameters.upgrades = { "size1", "size2", "size3", "size4", "size5", "size6", "liquidcollection" }
+  newmm.parameters.upgrades = { "liquidcollection" }
 
   -- Upgrades that the old MM may have obtained
-  local possible = { "wiremode", "paintmode" }
+  local possible = { "range1", "range2", "range3", "wiremode", "paintmode" }
 
   -- Add any upgrades from the old MM that we don't have
   for _,x in ipairs(mm.parameters.upgrades or {}) do
