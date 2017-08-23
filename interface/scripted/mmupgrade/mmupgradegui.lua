@@ -85,8 +85,8 @@ function performUpgrade(widgetName, widgetData)
 	            upgrade.setItemParameters.blockRadius = (item.parameters.blockRadius or root.itemConfig(item).config.blockRadius) + self.blockRadius 
 		    upgrade.setItemParameters.minBeamJitter = (item.parameters.minBeamJitter or root.itemConfig(item).config.minBeamJitter) + 0.06
 		    upgrade.setItemParameters.maxBeamJitter = (item.parameters.maxBeamJitter or root.itemConfig(item).config.maxBeamJitter) + 0.06  	    
-	  elseif upgrade.setStatusProperties.bonusBeamGunRadius then
-	            upgrade.setStatusProperties.bonusBeamGunRadius = (upgrade.setStatusProperties.bonusBeamGunRadius) + self.totalRangeUp
+	  --elseif upgrade.setStatusProperties.bonusBeamGunRadius then
+	  --          upgrade.setStatusProperties.bonusBeamGunRadius = (upgrade.setStatusProperties.bonusBeamGunRadius) + self.totalRangeUp
 	  end	
 	  --[[ End FU Special additions here --]]
 	  
