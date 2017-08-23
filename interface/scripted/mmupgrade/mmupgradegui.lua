@@ -67,7 +67,7 @@ function performUpgrade(widgetName, widgetData)
       if upgrade.setItemParameters then
           local item = player.essentialItem(upgrade.essentialSlot)
 	  --[[ FU Special additions here --]]
-	  self.tileDamageBonus = 1.5
+	  self.tileDamageBonus = 1.2
 	  self.blockRadius = 1
 	  local beamgunStats = root.itemConfig(item).config
 	    
