@@ -92,13 +92,12 @@ function questComplete()
   for _, condition in pairs(self.conditions) do
     if condition.onQuestComplete then condition:onQuestComplete() end
   end
-<<<<<<< HEAD
 
   local mm = player.essentialItem("beamaxe")
-  local newmm = root.createItem("mmgravgun")
+  local newmm = root.createItem("mmgravgun3")
 
   -- Upgrades that this MM comes with (fake size upgrades for MMM compatibility)
-  newmm.parameters.upgrades = { "size101", "size102", "size103", "size104", "size105", "size106", "liquidcollection" }
+  newmm.parameters.upgrades = { "size1", "size2", "size3", "size4", "size5", "size6", "liquidcollection" }
 
   -- Upgrades that the old MM may have obtained
   local possible = { "wiremode", "paintmode" }
@@ -111,52 +110,6 @@ function questComplete()
   end
 
   -- Add related stats to parameters
-  local config = root.itemConfig("mmgravgun").config
-  newmm.parameters.blockRadius = config.blockRadius
-  newmm.parameters.tileDamage = config.tileDamage
-  newmm.parameters.canCollectLiquid = config.canCollectLiquid
-
-  -- Finally, give the player the new MM
-  player.giveEssentialItem("beamaxe", newmm)
-  status.setStatusProperty("bonusBeamGunRadius", 0)
-
-  questutil.questCompleteActions()
-end
-=======
->>>>>>> 7c708b5202b5ec52816ec0366881bfd10f4e6774
-
-  local mm = player.essentialItem("beamaxe")
-  local newmm = root.createItem("mmgravgun3")
-
-<<<<<<< HEAD
-function isOriginalMM()
-  local mm = player.essentialItem("beamaxe").name or ""
-  if mm == "beamaxe" or
-     mm == "beamaxeapex" or
-     mm == "beamaxeelunite" or
-     mm == "beamaxehylotl" then
-     return 1
-  else
-     player.removeEssentialItem("beamaxe")
-     player.removeEssentialItem("wiretool")
-     player.removeEssentialItem("painttool")
-     return 0
-=======
-  -- Upgrades that this MM comes with
-  newmm.parameters.upgrades = { "range1", "range2", "range3", "liquidcollection", "paintmode" , "wiremode" }
-
-  -- Upgrades that the old MM may have obtained
-  local possible = { "range1", "range2", "range3", "wiremode", "paintmode" }
-
-  -- Add any upgrades from the old MM that we don't have
-  for _,x in ipairs(mm.parameters.upgrades or {}) do
-      for _,y in ipairs(possible) do
-          if x == y then table.insert(newmm.parameters.upgrades, y) break end
-      end
->>>>>>> 7c708b5202b5ec52816ec0366881bfd10f4e6774
-  end
-
-  -- Add related stats to parameters
   local config = root.itemConfig("mmgravgun3").config
   newmm.parameters.blockRadius = config.blockRadius
   newmm.parameters.tileDamage = config.tileDamage
@@ -164,6 +117,7 @@ function isOriginalMM()
 
   -- Finally, give the player the new MM
   player.giveEssentialItem("beamaxe", newmm)
+  status.setStatusProperty("bonusBeamGunRadius", 0)
   questutil.questCompleteActions()
 end
 

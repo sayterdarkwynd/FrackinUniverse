@@ -96,19 +96,11 @@ function questComplete()
   local mm = player.essentialItem("beamaxe")
   local newmm = root.createItem("mmgravgun2")
 
-<<<<<<< HEAD
-  -- Upgrades that this MM comes with (fake size upgrades for MMM compatibility)
-  newmm.parameters.upgrades = { "size101", "size102", "size103", "size104", "liquidcollection" }
+  -- Upgrades that this MM comes with
+  newmm.parameters.upgrades = { "size1", "size2", "size3", "size4", "liquidcollection", "paintmode" , "wiremode" }
 
   -- Upgrades that the old MM may have obtained
   local possible = { "wiremode", "paintmode" }
-=======
-  -- Upgrades that this MM comes with
-  newmm.parameters.upgrades = { "range1", "range2", "range3", "liquidcollection", "paintmode" , "wiremode" }
-
-  -- Upgrades that the old MM may have obtained
-  local possible = { "range1", "range2", "range3", "wiremode", "paintmode" }
->>>>>>> 7c708b5202b5ec52816ec0366881bfd10f4e6774
 
   -- Add any upgrades from the old MM that we don't have
   for _,x in ipairs(mm.parameters.upgrades or {}) do
@@ -125,11 +117,7 @@ function questComplete()
 
   -- Finally, give the player the new MM
   player.giveEssentialItem("beamaxe", newmm)
-<<<<<<< HEAD
   status.setStatusProperty("bonusBeamGunRadius", 0)
-
-=======
->>>>>>> 7c708b5202b5ec52816ec0366881bfd10f4e6774
   questutil.questCompleteActions()
 end
 
