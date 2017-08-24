@@ -1,0 +1,301 @@
+{
+  "type" : "poisonguardianboss",
+  "shortdescription" : "Ancient Guardian",
+  "categories" : [ "guardianboss" ],
+  "parts" : [ "body", "head", "hip", "lefthand", "swoosh", "righthand", "legs", "shield" ],
+
+  "animation" : "guardianboss.animation",
+  "reversed" : false,
+
+  "dropPools" : [ { "default" : "guardianTreasure" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/boss/guardianboss/guardian.lua"
+    ],
+    "animationScripts" : [
+      "/items/active/effects/chain.lua"
+    ],
+    "animationCustom" : {
+      "sounds" : {
+        // "groundHazardWindup" : [ "/sfx/melee/staff_charge1_poison.ogg" ],
+        "groundHazardLoop" : [ "/sfx/npc/boss/guardian_floorhazard_poison_loop.ogg" ],
+        "groundHazardWinddown" : [ "/sfx/npc/boss/guardian_floorhazard_poison_end.ogg" ],
+        "dashSwoosh" : [ "/sfx/gun/rocket_poison1.ogg" ]
+      }
+    },
+
+    "colorSwap" : { "da5302" : "869e45", "fd8f4d" : "bcd773", "fdd14d" : "e3f4b7" },
+
+    "behavior" : "guardian",
+    "elementalType" : "poison",
+
+    "handBeam" : {
+      "startSegmentImage" : "/monsters/boss/guardianboss/beams/<element>beamstart.png:<beamFrame>",
+      "segmentImage" : "/monsters/boss/guardianboss/beams/<element>beam.png:<beamFrame>",
+      "endSegmentImage" : "/monsters/boss/guardianboss/beams/<element>beamend.png:<beamFrame>",
+      "segmentSize" : 0.48,
+      "overdrawLength" : 0.2,
+      "taper" : 0,
+      "waveform" : {
+        "frequency" : 2.5,
+        "amplitude" : 0.125,
+        "movement" : 50.0
+      },
+      "fullbright" : true
+    },
+    "spawnBeam" : {
+      "startSegmentImage" : "/monsters/boss/guardianboss/beams/spawnbeamstart.png",
+      "segmentImage" : "/monsters/boss/guardianboss/beams/spawnbeam.png",
+      "endSegmentImage" : "/monsters/boss/guardianboss/beams/spawnbeamend.png",
+      "segmentSize" : 0.48,
+      "overdrawLength" : 0.2,
+      "taper" : 0,
+      "waveform" : {
+        "frequency" : 5.0,
+        "amplitude" : 0.0625,
+        "movement" : 50.0
+      },
+      "fullbright" : true
+    },
+
+    "renderLayer" : "Projectile-100",
+
+    "damageBar" : "None",
+
+    "metaBoundBox" : [-80, -50, 80, 50],
+    "scale" : 1.0,
+
+    "selfDamagePoly" : [ [2.5, 4], [2.5, -4], [-2.5, -4], [-2.5, 4] ],
+
+    "animationDamageParts" : {
+      "righthand" : {
+        "anchorPart" : "righthand",
+        "checkLineCollision" : true,
+        "bounces" : 0,
+        "damageSource" : {
+          "line" : [ [0, -0.5], [0, -100]],
+          "damage" : 10,
+          "damageSourceKind" : "poisonplasma",
+          "teamType" : "enemy",
+          "teamNumber" : 2
+        }
+      },
+      "bouncingbeam" : {
+        "anchorPart" : "righthand",
+        "checkLineCollision" : true,
+        "bounces" : 10,
+        "damageSource" : {
+          "line" : [ [0, -0.5], [0, -250]],
+          "damage" : 10,
+          "damageSourceKind" : "poisonplasma",
+          "teamType" : "enemy",
+          "teamNumber" : 2
+        }
+      },
+      "lefthand" : {
+        "anchorPart" : "lefthand",
+        "checkLineCollision" : true,
+        "bounces" : 0,
+        "damageSource" : {
+          "line" : [ [-1.0, -0.25], [-1.0, -100]],
+          "damage" : 10,
+          "damageSourceKind" : "poisonplasma",
+          "teamType" : "enemy",
+          "teamNumber" : 2
+        }
+      },
+      "shortrightbeam" : {
+        "anchorPart" : "lefthand",
+        "checkLineCollision" : true,
+        "bounces" : 0,
+        "damageSource" : {
+          "line" : [ [0, -0.5], [0, -10.5]],
+          "damage" : 10,
+          "damageSourceKind" : "poisonplasma",
+          "teamType" : "enemy",
+          "teamNumber" : 2
+        }
+      },
+      "shortleftbeam" : {
+        "anchorPart" : "lefthand",
+        "checkLineCollision" : true,
+        "bounces" : 0,
+        "damageSource" : {
+          "line" : [ [-1.0, -0.25], [-1.0, -10.25]],
+          "damage" : 10,
+          "damageSourceKind" : "poisonplasma",
+          "teamType" : "enemy",
+          "teamNumber" : 2
+        }
+      },
+      "weapon" : {
+        "anchorPart" : "swoosh",
+        "damageSource" : {
+          "poly" : [ [-0.75, 1.875], [0.75, 1.875], [2.5, 0.0], [2.5, -0.5], [0.75, -2.25], [-0.75, -2.25], [-2.25, -0.75], [-2.25, 0.25] ],
+          "damage" : 10,
+          "damageSourceKind" : "poisonhammer",
+          "teamType" : "enemy",
+          "teamNumber" : 2,
+          "knockback" : [40, 0]
+        }
+      }
+    },
+
+    "movementSettings" : {
+      "gravityEnabled" : false,
+      "collisionPoly" : [ [2, 4], [2, -4], [-2, -4], [-2, 4] ],
+      "mass" : 1.0,
+      "flySpeed" : 16,
+      "airFriction" : 12.0,
+      "airForce" : 500.0,
+      "physicsEffectCategories" : ["boss"]
+    },
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-5, -13.5], [5, -13.5], [5, 5], [-5, 5] ],
+      "damage" : 20,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "hammer",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "stone"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 2250
+        },
+        "protection" : {
+          "baseValue" : 0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : -0.2
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "specialStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "healingStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "stunImmunity" : {
+          "baseValue" : 1.0
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.6
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.3
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.5
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "protoImmunity" : {
+          "baseValue" : 1.0
+        },      
+        "bleedingImmunity" : {
+          "baseValue" : 1.0
+        },      
+        "gasImmunity" : {
+          "baseValue" : 1.0
+        },         
+        "shadowImmunity" : {
+          "baseValue" : 1.0
+        },         
+        "radiationburnImmunity" : {
+          "baseValue" : 1.0
+        },   
+        "sulphuricImmunity" : {
+          "baseValue" : 1.0
+        }, 
+        "ffextremeradiationImmunity" : {
+          "baseValue" : 1.0
+        },            
+        "ffextremecoldImmunity" : {
+          "baseValue" : 1.0
+        },            
+        "ffextremeheatImmunity" : {
+          "baseValue" : 1.0
+        },       
+        "penaltyBlock" : {
+          "baseValue" : 1.0
+        },   
+        "critImmunity" : {
+          "baseValue" : 1.0
+        }          
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0,
+          "maxValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 1.0
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}
