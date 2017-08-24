@@ -23,7 +23,7 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
-    "sounds" : {"fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]},
+    "sounds" : {"fire" : [ "/sfx/gun/ar5.ogg" ]},
     "lights" : { "muzzleFlash" : {"color" : [0, 177, 177] } }     
   },
   "baseOffset" : [1.5, -0.7],
@@ -39,10 +39,10 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.1,
-    "baseDps" : 6,
+    "fireTime" : 0.05,
+    "baseDps" : 7,
     "energyUsage" : 40.0,
-    "inaccuracy" : 0.3,
+    "inaccuracy" : 0.15,
 
     "projectileCount" : 3,
     "fireType" : "auto",
@@ -86,18 +86,19 @@
   "critBonus" : 23,
 
 "altAbility" : {
+    "name" : "Proto Orbs",
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.05,
-    "baseDps" : 3,
+    "fireTime" : 0.5,
+    "baseDps" : 12,
     "energyUsage" : 60,
     "fireType" : "auto",
-    "inaccuracy" : 1,
-    "projectileCount" : 1,
+    "inaccuracy" : 0.12,
+    "projectileCount" : 3,
     "projectileType" : "magnorbproto",
     "projectileParameters" : {
       "speed" : 40,
-      "timeToLive" : 2
+      "timeToLive" : 3
     },
     "stances" : {
       "idle" : {
@@ -128,7 +129,6 @@
       }
     }
 },  
-  //"altAbilityType" : "iongrenadelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
