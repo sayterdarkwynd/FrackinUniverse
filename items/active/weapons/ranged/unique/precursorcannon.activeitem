@@ -27,7 +27,7 @@
     "lights" : { "muzzleFlash" : {"color" : [0, 177, 177] } }     
   },
   "baseOffset" : [1.5, -0.7],
-  "muzzleOffset" : [3.0, 0.125],
+  "muzzleOffset" : [4.5, 0.125],
 
   "scripts" : [
   "/items/active/weapons/ranged/gun.lua",
@@ -40,14 +40,14 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.1,
-    "baseDps" : 5.75,
+    "baseDps" : 6,
     "energyUsage" : 40.0,
     "inaccuracy" : 0.3,
 
     "projectileCount" : 3,
     "fireType" : "auto",
 
-    "projectileType" : "lunarishotinitiate",
+    "projectileType" : "precursorshot2",
     "projectileParameters" : { 
       "speed" : 90,
       "knockback" : 12
@@ -92,11 +92,12 @@
     "baseDps" : 3,
     "energyUsage" : 60,
     "fireType" : "auto",
-    "inaccuracy" : 0.1,
-    "projectileCount" : 3,
-    "projectileType" : "chargeshotsmall",
+    "inaccuracy" : 1,
+    "projectileCount" : 1,
+    "projectileType" : "magnorbproto",
     "projectileParameters" : {
-      "speed" : 90
+      "speed" : 40,
+      "timeToLive" : 2
     },
     "stances" : {
       "idle" : {
