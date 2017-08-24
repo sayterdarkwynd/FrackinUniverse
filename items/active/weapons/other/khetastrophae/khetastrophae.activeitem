@@ -4,7 +4,7 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Fires grenades...LOTS of grenades.",
+  "description" : "Fires grenades...LOTS of grenades.\nDragoncat weapon of choice.\nHas a thumb trigger in addition to the normal two.",
   "shortdescription" : "Khetastrophae",
   "tooltipKind" : "gun",
   "category" : "uniqueWeapon",
@@ -36,6 +36,28 @@
   },
   
   "altAbility" : {
+    "energyUsage" : 125,
+    "baseDps" : 1,
+    "fireTime" : 3.25,
+    "projectileType" : "kheraegrenade",
+    "projectileCount" : 1,
+    "projectileParameters" : { "inheritDamageFactor" : 0.15},
+    "name" : "Erupting Bomb"
+  },
+  "primaryAbilityShift" : {
+	"recoil":{ "speed" : 20.0, "force" : 200.0 },
+    "energyUsage" : 95,
+    "baseDps" : 5.5,
+    "fireTime" : 2.25,
+    "inaccuracy" : 0.13,
+	
+    "projectileType" : "fireproximityminestatus",
+    "projectileCount" : 8,
+    "projectileParameters" : { "inheritDamageFactor" : 0.12 }
+  },
+  
+  "altAbilityShift" : {
+    "recoil":{ "speed" : 160.0, "force" : 1200.0 },
     "energyUsage" : 125,
     "baseDps" : 1,
     "fireTime" : 3.25,
