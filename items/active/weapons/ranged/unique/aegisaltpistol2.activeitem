@@ -4,8 +4,8 @@
   "inventoryIcon" : "aegisaltpistol2.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "As basic as it gets.",
-  "shortdescription" : "Practice Pistol",
+  "description" : "A basic, but broken Protectorate sidearm.",
+  "shortdescription" : "Damaged Pistol",
   "tooltipKind" : "gun",
   "level" : 1,
   "category" : "pistol",
@@ -14,14 +14,15 @@
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "middle" : "aegisaltpistol2.png",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/pistol1.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [44, 44, 44] } } 
+    "lights" : { "muzzleFlash" : {"color" : [70, 70, 70] } } 
   },
 
-  "muzzleOffset" : [0.8, 0.3],
+  "baseOffset" : [0.5,0.2],
+  "muzzleOffset" : [1.0, 0.3],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -31,8 +32,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1,
-    "baseDps" : 5.7,
-    "energyUsage" : 20,
+    "baseDps" : 5.25,
+    "energyUsage" : 15,
     "fireType" : "auto",
     "inaccuracy" : 0.001,
     "projectileCount" : 1,
