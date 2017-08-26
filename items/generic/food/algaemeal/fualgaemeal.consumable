@@ -1,0 +1,24 @@
+{
+  "itemName" : "fualgaemeal",
+  "rarity" : "Common",
+  "category" : "food",
+  "price" : 60,
+  "inventoryIcon" : "algae_meal.png",
+  "description" : "This tastes !@#!$!%! discusting",
+  "shortdescription" : "Compressed Algae",
+  "maxStack" : 1000,
+  "foodValue" : 60,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 15,
+  "effects" : [ [
+    {
+        "effect" : "negativehealth5",
+        "duration" : 10
+    }
+  ] ],
+  "blockingEffects" : [
+     "wellfed"
+  ]
+}
