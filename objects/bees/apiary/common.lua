@@ -5,20 +5,13 @@ local deltaTime=0
 DEFAULT_HONEY_CHANCE = 0.6
 DEFAULT_OFFSPRING_CHANCE = 0.4
 
-
-
---]]  CONCEPTUAL STUFF
-
-
-local lastTimeEdited = os.clock()
-if os.clock() >= lastTimeEdited + timeDiff then
-    -- do your update conditions.
-end
-
-use the above to track time for bee maturation while player isnt present
-
---]]
-
+--  CONCEPTUAL STUFF
+--local lastTimeEdited = os.clock()
+--if os.clock() >= lastTimeEdited + timeDiff then
+-- do your update conditions.
+--end
+--use the above to track time for bee maturation while player isnt present
+--
 
 function init()
 	transferUtil.init()
