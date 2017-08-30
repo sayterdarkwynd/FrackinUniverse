@@ -1,0 +1,80 @@
+{
+	"animatedParts" : {
+		"stateTypes" : {
+			"pumpState" : {
+				"default" : "off",
+				"states" : {
+					"off" : {
+						"frames" : 1
+					},
+					"on" : {
+						"frames" : 5,
+						"cycle" : 0.5,
+						"mode" : "loop"
+					}
+				}
+			},
+			"pipeState" : {
+				"default" : "off",
+				"states" : {
+					"off" : {
+						"frames" : 1
+					},
+					"idle" : {
+						"frames" : 1
+					},
+					"on" : {
+						"frames" : 4,
+						"cycle" : 0.5,
+						"mode" : "loop"
+					}
+				}
+			}
+		},
+
+		"parts" : {
+			"pump" : {
+				"properties" : {
+					"centered" : false
+				},
+
+				"partStates" : {
+					"pumpState" : {
+						"off" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.off"
+							}
+						},
+
+						"on" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.<frame>"
+							}
+						}
+					}
+				}
+			},
+			"pipe" : {
+				"properties" : {
+					"centered" : false,
+					"transformationGroups" : [ "pipe" ]
+				},
+
+				"partStates" : {
+					"pipeState" : {
+						"on" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.default"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+
+	"transformationGroups" : {
+		"pipe" : {"interpolated" : true}
+	}
+
+}
