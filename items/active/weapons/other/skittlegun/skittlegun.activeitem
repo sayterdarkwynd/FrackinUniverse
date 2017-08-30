@@ -1,0 +1,50 @@
+{
+	"itemName": "gregskittlegun",
+	"price": 15000,
+	"level": 6,
+	"maxStack": 1,
+	"rarity": "Legendary",
+	"description": "There's no telling what this does.",
+	"shortdescription": "Skittles",
+	"tooltipKind": "gun",
+	"category": "uniqueWeapon",
+	"twoHanded": true,
+	"itemTags": ["weapon", "ranged", "grenadelauncher", "upgradeableWeapon"],
+
+	"inventoryIcon": "skittlegun.png",
+	"animation": "skittlegun.animation",
+	"animationParts": {
+		"gun": "skittlegun.png"
+	},
+
+	"scripts": ["skittlegun.lua"],
+
+	"fireOffset": [3.25, 0.625],
+
+	"critChance": 6,
+	"critBonus": 8,
+	"elementalType": "cosmic",
+	"projectileElements": ["fire", "ice", "radioactive", "poison", "electric"],
+	"projectileElementsRare": ["cosmic", "shadow"],
+	"baseProjectileTypes": ["proximitymine", "<element>proximityminestatus", "stickygrenade", "<element>stickygrenadestatus", "acidgrenade", "bouncyclustergrenade", "<element>cloudgrenade", "clustergrenade", "gravitybomb", "erchiuscluster", "<element>plasmaimpactgrenade", "impactgrenade", "marioball", "mouse", "nailbomb", "pig", "pill", "shockbomb", "shrapnelbomb", "spikeball", "splitter", "thorngrenade", "cultistmolotov"],
+	"baseProjectileTypesRare": ["copperbomb","ironbomb","silverbomb","goldbomb","diamondbomb","hivebomb", "crystalbomb", "bellamortebomb"],
+	"primaryAbility": {
+		"energyUsage": 95,
+		"baseDps": 5.5,
+		"fireTime": 2.25,
+		"inaccuracy": 0.13,		
+		"projectileParameters": {
+			"inheritDamageFactor": 0.12
+		}
+	},
+	"primaryAbilityShift": {
+		"energyUsage": 9.5,
+		"baseDps": 5.5,
+		"fireTime": 0.225,
+		"inaccuracy": 0.13,
+		"projectileParameters": {
+			"inheritDamageFactor": 0.012
+		}
+	},
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+}
