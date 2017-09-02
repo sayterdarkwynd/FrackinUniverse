@@ -1,0 +1,77 @@
+{
+	"objectName": "network_pump_densium",
+	"colonyTags": ["wired"],
+	"printable": false,
+	"rarity": "Common",
+	"description": "Pumps liquids.\n^blue;Input^white;1^blue;: ^white;power switch\n^blue;Input^white;2^blue;: ^white;compression\n^red;Output^white;1^red;: ^white;item network\n^red;Output^white;2^red;: ^white;liquid network^reset;",
+	"shortdescription": "Densium Pump",
+	"objectType": "container",
+	"tooltipKind": "container",
+	"race": "generic",
+	"retainScriptStorageInItem": true,
+	"category": "wire",
+	"price": 15,
+
+	"inventoryIcon": "kheAA_pump_densiumicon.png",
+	"orientations": [{
+			"image": "kheAA_pump_densium.png:<color>.off",
+			"imagePosition": [0, 0],
+
+			"spaceScan": 0.1,
+			"anchors": ["top"],
+			"direction": "left"
+		},
+		{
+			"image": "kheAA_pump_densium.png:<color>.off",
+			"imagePosition": [0, 0],
+
+			"spaceScan": 0.1,
+			"anchors": ["top"],
+			"direction": "right"
+		},
+		{
+			"image": "kheAA_pump_densium.png:<color>.off",
+			"imagePosition": [0, 0],
+
+			"spaceScan": 0.1,
+			"anchors": ["right"],
+			"direction": "left"
+		},
+		{
+			"image": "kheAA_pump_densium.png:<color>.off",
+			"imagePosition": [0, 0],
+
+			"spaceScan": 0.1,
+			"anchors": ["left"],
+			"direction": "right"
+		}
+
+	],
+
+	"scripts": ["/objects/kheAA/kheAA_pump/kheAA_pump.lua"],
+	"scriptDelta": 1,
+
+	"animation": "/objects/kheAA/kheAA_pump/kheAA_pump_densium.animation",
+
+	"animationParts": {
+		"pump": "kheAA_pump_densium.png",
+		"pipe": "kheAA_ver_pipe_d.png"
+	},
+	"animationPosition": [0, 0],
+	"openSounds": ["/sfx/objects/woodenbox_open.ogg"],
+	"closeSounds": ["/sfx/objects/woodenbox_close.ogg"],
+	"slotCount": 16,
+	"uiConfig": "/interface/kheAA/kheAA_pump/kheAA_pumpGui.config",
+	"frameCooldown": 10,
+	"autoCloseCooldown": 3600,
+	"kheAA_maxDepth": 20,
+	"inputNodes": [
+		[0, 0],
+		[1, 0]
+	],
+	"outputNodes": [
+		[0, 1],
+		[1, 1]
+	],
+	"lockedSlots": [16]
+}
