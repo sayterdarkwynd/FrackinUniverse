@@ -1,8 +1,8 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 6},
-	{stat = "critBonus", baseMultiplier = 1.03},
+	{stat = "critChance", amount = 2},
+	{stat = "critBonus", baseMultiplier = 1.15},
 	{stat = "grit", amount = 0.15}
 }
 
@@ -34,7 +34,7 @@ function update(dt)
 end
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword","longsword","katana","rapier"})
+local weaponSword=weaponCheck({"shortsword","longsword","mace"})
 local weaponShield=weaponCheck({"shield"})
 
 	if weaponSword["either"] and weaponShield["either"] then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
