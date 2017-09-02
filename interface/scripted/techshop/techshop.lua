@@ -219,7 +219,7 @@ function doUnlock()
 
             if legit or player.isAdmin() then
                 for k,v in pairs(selectedData.recipe) do
-                    player.consumeItem(v.name, v.count)
+                    player.consumeItem(v)
                 end
                 player.makeTechAvailable(tech.name)
                 player.enableTech(tech.name)
