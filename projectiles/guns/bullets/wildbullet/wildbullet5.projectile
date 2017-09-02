@@ -1,0 +1,27 @@
+{
+  "projectileName" : "wildbullet5",
+  "image" : "wildbullet.png",
+  "bounces" : -1,
+  "piercing" : true,
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "timeToLive" : 0.1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "wildbullet6",
+      "fuzzAngle" : 30,
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 0
+    }
+  ],
+  "power" : 5.0,
+  "speed" : 75,
+  "damageKind" : "default"
+}

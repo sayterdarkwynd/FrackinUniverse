@@ -1,0 +1,22 @@
+{
+  "projectileName" : "plasmagrenade",
+  "physics" : "grenadezbomb",
+  "bounces" : 0,
+  "timeToLive" : 8,
+  "image" : "plasmagrenade.png",
+  "animationCycle" : 0.4,
+  "lightColor" : [253, 160, 57],
+  "frameNumber" : 8,
+  "piercing" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmaexplosion2/plasmaexplosion2.config"
+    }
+  ],
+  "power" : 60,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "emitters" : [ "sparks" ]
+}

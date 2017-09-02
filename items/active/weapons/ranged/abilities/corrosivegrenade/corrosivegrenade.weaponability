@@ -1,0 +1,53 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Corrosive Grenade",
+    "type" : "corrosivegrenade",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "corrosivegrenade",
+	"projectileParameters" : {
+     "speed" : 35
+},
+    "energyUsage" : 25,
+	
+    "fireType" : "auto",
+
+    "projectileCount" : 1,
+    "inaccuracy" : 0,
+    "baseDamage" : 9,
+    "fireTime" : 2.0,
+
+    "useParticleEmitter" : false,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.5, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.5, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}
