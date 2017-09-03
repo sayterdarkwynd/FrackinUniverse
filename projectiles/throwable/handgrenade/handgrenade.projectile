@@ -1,0 +1,21 @@
+{
+  "projectileName" : "handgrenade",
+  "physics" : "grenade",
+  "bounces" : 5,
+  "timeToLive" : 3,
+  "image" : "handgrenade.png",
+  "animationCycle" : 5,
+  "frameNumber" : 1,
+  "piercing" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bombblockexplosion/bombblockexplosion.config"
+    }
+  ],
+  "power" : 90,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "emitters" : [ "sparks" ]
+}

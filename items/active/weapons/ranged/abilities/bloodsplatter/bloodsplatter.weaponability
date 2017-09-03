@@ -1,0 +1,55 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/projectiles/bloodvomit1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Blood Splatter",
+    "type" : "bloodsplatter",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "bloodvomit",
+    "projectileParameters" : {
+     "speed" : 50,
+     "knockbackRange" : [20,30]
+    },
+
+    "energyUsage" : 20,
+	
+    "burstCount" : 5,
+    "burstTime" : 0.05,
+    "baseDamageMultiplier" : 0.5,
+    "fireType" : "burst",
+
+    "fireTime" : 0.66,
+    "projectileCount" : 1,
+    "inaccuracy" : 0.02,
+
+    "useParticleEmitter" : false,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  }
+}

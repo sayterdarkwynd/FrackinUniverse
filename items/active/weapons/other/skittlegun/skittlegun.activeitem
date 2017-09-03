@@ -1,10 +1,13 @@
 {
 	"itemName": "gregskittlegun",
 	"price": 15000,
-	"level": 6,
+	"level": 4,
 	"maxStack": 1,
 	"rarity": "Legendary",
-	"description": "There's no telling what this does.",
+	"description": "There's no telling what this does.
+^cyan;Primary Fire: Random grenade
+^orange;Primary + Shift: Rapid Fire mode
+^red;Alt coming soon",
 	"shortdescription": "Skittles",
 	"tooltipKind": "gun",
 	"category": "uniqueWeapon",
@@ -21,13 +24,13 @@
 
 	"fireOffset": [3.25, 0.625],
 
-	"critChance": 6,
-	"critBonus": 8,
+	"critChance": 2,
+	"critBonus": 4,
 	"elementalType": "cosmic",
 	"projectileElements": ["fire", "ice", "radioactive", "poison", "electric"],
 	"projectileElementsRare": ["cosmic", "shadow"],
 	"baseProjectileTypes": ["proximitymine", "<element>proximityminestatus", "stickygrenade", "<element>stickygrenadestatus", "acidgrenade", "bouncyclustergrenade", "<element>cloudgrenade", "clustergrenade", "gravitybomb", "erchiuscluster", "<element>plasmaimpactgrenade", "impactgrenade", "marioball", "mouse", "nailbomb", "pig", "pill", "shockbomb", "shrapnelbomb", "spikeball", "splitter", "thorngrenade", "cultistmolotov"],
-	"baseProjectileTypesRare": ["copperbomb","ironbomb","silverbomb","goldbomb","diamondbomb","hivebomb", "crystalbomb", "bellamortebomb","gravbomb","antigravbomb"],
+	"baseProjectileTypesRare": ["copperbomb","ironbomb","silverbomb","goldbomb","diamondbomb","hivebomb", "crystalbomb", "bellamortebomb","gravbomb","antigravbomb","nailbomb","stickblastingdynamite"],
 	"primaryAbility": {
 		"energyUsage": 95,
 		"baseDps": 5.5,
@@ -38,7 +41,7 @@
 		}
 	},
 	"primaryAbilityShift": {
-		"energyUsage": 9.5,
+		"energyUsage": 25,
 		"baseDps": 5.5,
 		"fireTime": 0.225,
 		"inaccuracy": 0.13,
@@ -46,5 +49,6 @@
 			"inheritDamageFactor": 0.012
 		}
 	},
+	
 	"builder": "/items/buildscripts/buildunrandweapon.lua"
 }
