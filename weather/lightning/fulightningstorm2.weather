@@ -1,0 +1,306 @@
+{
+  "name" : "fulightningstorm2",
+  "icon" : "/interface/cockpit/weather/lightningstorm.png",
+
+   "particles" : [
+    {
+      "density" : 0.003,
+      "particle" : {
+        "type" : "animated",
+        "animation" : "/animations/electriccharge/electriccharge.animation",
+        "velocity" : [0, 0.20],
+        "fade" : 0.4,
+        "looping" : true,
+        "destructionTime" : 0.4,
+        "timeToLive" : 0.4,
+        "collidesForeground" : false,
+        "collidesLiquid" : true,
+        "ignoreWind" : true
+      }
+    },   
+    {
+      "density" : 0.005,
+      "particle" : {
+        "type" : "animated",
+        "animation" : "/animations/electriccharge/electriccharge.animation",
+        "velocity" : [0, 0.10],
+        "fade" : 0.4,
+        "looping" : true,
+        "destructionTime" : 0.4,
+        "timeToLive" : 0.4,
+        "collidesForeground" : false,
+        "collidesLiquid" : true,
+        "ignoreWind" : true
+      }
+    },   
+    {
+      "density" : 0.005,
+      "particle" : {
+        "type" : "animated",
+        "animation" : "/animations/electriccharge/electriccharge.animation",
+        "velocity" : [0, 0.30],
+        "fade" : 0.4,
+        "looping" : true,
+        "destructionTime" : 0.4,
+        "timeToLive" : 0.4,
+        "collidesForeground" : false,
+        "collidesLiquid" : true,
+        "ignoreWind" : true
+      }
+    },  
+    {
+      "density" : 0.008,
+      "particle" : {
+        "type" : "animated",
+        "animation" : "/animations/electroshock/electroshock.animation",
+        "velocity" : [0, 0.20],
+        "fade" : 0.4,
+        "looping" : true,
+        "destructionTime" : 20,
+        "timeToLive" : 0.2,
+        "collidesForeground" : false,
+        "collidesLiquid" : true,
+        "ignoreWind" : true
+      }
+    },      
+         {
+       "density" : 0.03,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/windstorm/1.png",
+         "velocity" : [0, -12],
+         "angularVelocity" : 180,
+         "timeToLive" : 100,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+     },
+     {
+       "density" : 0.025,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/windstorm/2.png",
+         "velocity" : [0, -11],
+         "angularVelocity" : 180,
+         "timeToLive" : 100,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+     },
+     {
+       "density" : 0.15,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/windstorm/3.png",
+         "velocity" : [0, -14],
+         "angularVelocity" : 180,
+         "timeToLive" : 100,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+ 	},  
+     {
+       "density" : 0.01,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/windstorm/4.png",
+         "velocity" : [0, -14],
+         "angularVelocity" : 180,
+         "timeToLive" : 100,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+ 	},  
+     {
+       "density" : 0.005,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/windstorm/5.png",
+         "velocity" : [0, -14],
+         "angularVelocity" : 180,
+         "timeToLive" : 100,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }	  
+     },
+ 	{
+ 
+       "density" : 0.0025,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/fog/1.png",
+         "velocity" : [0, -14],
+         "angularVelocity" : 180,
+         "timeToLive" : 100,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }	  
+     },
+ 	{
+       "density" : 0.03,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/windstorm/6.png",
+         "velocity" : [0, -12],
+         "angularVelocity" : 180,
+         "timeToLive" : 100,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+     },
+ 	{
+       "density" : 0.03,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/windstorm/7.png",
+         "velocity" : [0, -12],
+         "angularVelocity" : 180,
+         "timeToLive" : 100,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+     }
+  ],
+  
+  "projectiles" : [
+    {
+      "projectile" : "ffteslasmall",
+      "parameters" : {
+        "power" : 6,
+        "statusEffects" : [ "electrified" ],
+          "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+		    }        
+          ]
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.01,
+      "spawnAboveRegion" : 20,
+      "spawnHorizontalPad" : 10,
+      "windAffectAmount" : 0.09
+    },
+    {
+      "projectile" : "ffteslasmall2",
+      "parameters" : {
+        "power" : 8,
+        "statusEffects" : [ "electrified" ],
+          "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
+		    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "firefinish",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }, 		    
+	    {
+	      "action" : "projectile",
+	      "type" : "zeroenergylesser2",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }          
+          ]
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.006,
+      "spawnAboveRegion" : 20,
+      "spawnHorizontalPad" : 10,
+      "windAffectAmount" : 0.08
+    },
+    {
+      "projectile" : "spacedust1",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.005,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "fftesla",
+      "parameters" : {
+        "power" : 16,
+        "statusEffects" : [ "electrified" ],
+          "actionOnReap" : [
+	    {
+	     "action" : "config",
+	     "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "firefinish",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }, 		    
+	    {
+	      "action" : "projectile",
+	      "type" : "zeroenergylesser2",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }          
+          ]
+      },
+      "velocity" : [0, -80],
+      "ratePerX" : 0.003,
+      "spawnAboveRegion" : 24,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.02
+    },
+    {
+      "projectile" : "fftesla",
+      "parameters" : {
+        "power" : 32,
+        "statusEffects" : [ "electrified" ],
+          "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
+		    },          
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/teslaboom/teslaboomnobreak.config"
+		    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "firefinish",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }, 		    
+	    {
+	      "action" : "projectile",
+	      "type" : "zeroenergylesser",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    }          
+          ]
+      },
+      "velocity" : [0, -80],
+      "ratePerX" : 0.001,
+      "spawnAboveRegion" : 24,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.0
+    }
+  ],
+
+  "statusEffects" : ["ffbiomeelectric2"],
+  "lightningFrequency" : 2,
+  "duration" : [50, 120],
+  "maximumWind" : 90.0,
+  "weatherNoises" : [ "/sfx/weather/ElectricStorm.ogg" ]
+}
+
+
+
+

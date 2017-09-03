@@ -7,11 +7,38 @@
           "image" : "<partImage>",
           "offset" : [0, 0.5]
         }
-      }
+      },
+      "gunfullbright" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage>",
+          "offset" : [0, 0.5],
+          "zLevel" : 2,
+          "fullbright" : true
+        }
+      }      
     }
   },
 
-  "particleEmitters" : {
+  "particleEmitters" : { 
+    "fullParticles" : {
+      "emissionRate" : 20.0,
+      "particles" : [
+        {
+          "particle" : "angryrocketreloadedfull",
+          "offset" : [0, 0.3]
+        }
+      ]
+    },    
+    "loadParticles" : {
+      "emissionRate" : 20.0,
+      "particles" : [
+        {
+          "particle" : "angryrocketreloaded",
+          "offset" : [0, 0.3]
+        }
+      ]
+    },  
     "fireParticles" : {
       "emissionRate" : 10.0,
       "particles" : [
@@ -33,6 +60,9 @@
 
   "sounds" : {
     "fire" : [ "/sfx/gun/rocket1.ogg" ],
+    "reloadsound" : [ "/sfx/tech/mech_activate1.ogg" ],
+    "reload1" : [ "/sfx/interface/stationtransponder_valid1.ogg" ],
+    "reload2" : [ "/sfx/interface/stationtransponder_valid2.ogg" ],   
     "trigger" : [ "/sfx/interface/rocket_lockon.ogg" ]
   }
 }

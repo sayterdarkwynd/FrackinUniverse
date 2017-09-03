@@ -1,0 +1,708 @@
+{
+  "name": "staffcombat",
+  "description": null,
+  "scripts": [
+    "/scripts/behavior.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/actions/npc.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "staffChargeTime": 1.3,
+    "staffMinChargedTime": 1,
+    "staffMaxChargedTime": 1,
+    "staffCooldownTime": 0.5,
+    "chargedProjectiles": false,
+    "projectileTimeToLive": 0,
+    "offset" : [0,0]
+  },
+  "root": {
+    "title": "parallel",
+    "type": "composite",
+    "name": "parallel",
+    "parameters": {
+      "fail": {"value": -1},
+      "success": {"value": -1}
+    },
+    "children": [
+      {
+        "title": "selector",
+        "type": "composite",
+        "name": "selector",
+        "parameters": {},
+        "children": [
+          {
+            "title": "groupResource",
+            "type": "action",
+            "name": "groupResource",
+            "parameters": {
+              "groupId": {"value": "combat"},
+              "name": {"value": "movePosition"}
+            },
+            "output": {
+              "position": "rangedPosition"
+            }
+          },
+          {
+            "title": "entityPosition",
+            "type": "action",
+            "name": "entityPosition",
+            "parameters": {
+              "entity": {"key": "target"}
+            },
+            "output": {
+              "position": "movePosition"
+            }
+          }
+        ]
+      },
+      {
+        "title": "dynamic",
+        "type": "composite",
+        "name": "dynamic",
+        "parameters": {},
+        "children": [
+          {
+            "title": "failer",
+            "type": "decorator",
+            "name": "failer",
+            "parameters": {},
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "groupResource",
+                      "type": "action",
+                      "name": "groupResource",
+                      "parameters": {
+                        "groupId": {"value": "combat"},
+                        "name": {"value": "minRange"}
+                      },
+                      "output": {
+                        "number": "minRange"
+                      }
+                    },
+                    {
+                      "title": "inverter",
+                      "type": "decorator",
+                      "name": "inverter",
+                      "parameters": {},
+                      "child": {
+                        "title": "entityInRange",
+                        "type": "action",
+                        "name": "entityInRange",
+                        "parameters": {
+                          "entity": {"key": "target"},
+                          "position": {"key": "self"},
+                          "range": {"value": 3}
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "groupResource",
+                      "type": "action",
+                      "name": "groupResource",
+                      "parameters": {
+                        "groupId": {"value": "combat"},
+                        "name": {"value": "maxRange"}
+                      },
+                      "output": {
+                        "number": "maxRange"
+                      }
+                    },
+                    {
+                      "title": "entityInRange",
+                      "type": "action",
+                      "name": "entityInRange",
+                      "parameters": {
+                        "entity": {"key": "target"},
+                        "position": {"key": "self"},
+                        "range": {"key": "maxRange"}
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "canFire",
+                  "type": "action",
+                  "name": "canFire",
+                  "parameters": {}
+                },
+                {
+                  "title": "parallel",
+                  "type": "composite",
+                  "name": "parallel",
+                  "parameters": {
+                    "fail": {"value": 1},
+                    "success": {"value": -1}
+                  },
+                  "children": [
+                    {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "parallel",
+                          "type": "composite",
+                          "name": "parallel",
+                          "parameters": {
+                            "fail": {"value": 1},
+                            "success": {"value": -1}
+                          },
+                          "children": [
+                            {
+                              "title": "primaryFire",
+                              "type": "action",
+                              "name": "primaryFire",
+                              "parameters": {}
+                            },
+                            {
+                              "title": "entityInSight",
+                              "type": "action",
+                              "name": "entityInSight",
+                              "parameters": {
+                                "entity": {"key": "target"}
+                              }
+                            },
+                            {
+                              "title": "faceEntity",
+                              "type": "action",
+                              "name": "faceEntity",
+                              "parameters": {
+                                "entity": {"key": "target"}
+                              }
+                            },
+                            {
+                              "title": "entityPosition",
+                              "type": "action",
+                              "name": "entityPosition",
+                              "parameters": {
+                                "entity": {"key": "target"}
+                              },
+                              "output": {
+                                "position": "targetPosition"
+                              }
+                            },
+                            {
+                              "title": "offsetPosition",
+                              "type": "action",
+                              "name": "offsetPosition",
+                              "parameters": {
+                                "offset": {"key": "<offset>"},
+                                "position": {"key": "targetPosition"}
+                              },
+                              "output": {
+                                "position": "aimPosition"
+                              }
+                            },
+                            {
+                              "title": "setAimPosition",
+                              "type": "action",
+                              "name": "setAimPosition",
+                              "parameters": {
+                                "position": {"key": "aimPosition"}
+                              }
+                            },
+                            {
+                              "title": "timer",
+                              "type": "action",
+                              "name": "timer",
+                              "parameters": {
+                                "time": {"value": "<staffChargeTime>"}
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "title": "selector",
+                          "type": "composite",
+                          "name": "selector",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "optional",
+                              "type": "decorator",
+                              "name": "optional",
+                              "parameters": {
+                                "shouldRun": {"key": "chargedProjectiles"}
+                              },
+                              "child": {
+                                "title": "sequence",
+                                "type": "composite",
+                                "name": "sequence",
+                                "parameters": {},
+                                "children": [
+                                  {
+                                    "title": "parallel",
+                                    "type": "composite",
+                                    "name": "parallel",
+                                    "parameters": {
+                                      "fail": {"value": -1},
+                                      "success": {"value": -1}
+                                    },
+                                    "children": [
+                                      {
+                                        "title": "primaryFire",
+                                        "type": "action",
+                                        "name": "primaryFire",
+                                        "parameters": {}
+                                      },
+                                      {
+                                        "title": "entityInSight",
+                                        "type": "action",
+                                        "name": "entityInSight",
+                                        "parameters": {
+                                          "entity": {"key": "target"}
+                                        }
+                                      },
+                                      {
+                                        "title": "faceEntity",
+                                        "type": "action",
+                                        "name": "faceEntity",
+                                        "parameters": {
+                                          "entity": {"key": "target"}
+                                        }
+                                      },
+                                      {
+                                        "title": "entityPosition",
+                                        "type": "action",
+                                        "name": "entityPosition",
+                                        "parameters": {
+                                          "entity": {"key": "target"}
+                                        },
+                                        "output": {
+                                          "position": "targetPosition"
+                                        }
+                                      },
+                                      {
+                                        "title": "offsetPosition",
+                                        "type": "action",
+                                        "name": "offsetPosition",
+                                        "parameters": {
+                                          "offset": {"key": "<offset>"},
+                                          "position": {"key": "targetPosition"}
+                                        },
+                                        "output": {
+                                          "position": "aimPosition"
+                                        }
+                                      },
+                                      {
+                                        "title": "setAimPosition",
+                                        "type": "action",
+                                        "name": "setAimPosition",
+                                        "parameters": {
+                                          "position": {"key": "aimPosition"}
+                                        }
+                                      },
+                                      {
+                                        "title": "sequence",
+                                        "type": "composite",
+                                        "name": "sequence",
+                                        "parameters": {},
+                                        "children": [
+                                          {
+                                            "title": "timer",
+                                            "type": "action",
+                                            "name": "timer",
+                                            "parameters": {
+                                              "time": {"value": "<staffMinChargedTime>"}
+                                            }
+                                          },
+                                          {
+                                            "title": "dynamic",
+                                            "type": "composite",
+                                            "name": "dynamic",
+                                            "parameters": {},
+                                            "children": [
+                                              {
+                                                "title": "dynamic",
+                                                "type": "composite",
+                                                "name": "dynamic",
+                                                "parameters": {},
+                                                "children": [
+                                                  {
+                                                    "title": "inverter",
+                                                    "type": "decorator",
+                                                    "name": "inverter",
+                                                    "parameters": {},
+                                                    "child": {
+                                                      "title": "entityInSight",
+                                                      "type": "action",
+                                                      "name": "entityInSight",
+                                                      "parameters": {
+                                                        "entity": {"key": "target"}
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "inverter",
+                                                    "type": "decorator",
+                                                    "name": "inverter",
+                                                    "parameters": {},
+                                                    "child": {
+                                                      "title": "canFire",
+                                                      "type": "action",
+                                                      "name": "canFire",
+                                                      "parameters": {}
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "timer",
+                                                    "type": "action",
+                                                    "name": "timer",
+                                                    "parameters": {
+                                                      "time": {"value": "<staffMaxChargedTime>"}
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "title": "runner",
+                                                "type": "action",
+                                                "name": "runner",
+                                                "parameters": {}
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "title": "endPrimaryFire",
+                                    "type": "action",
+                                    "name": "endPrimaryFire",
+                                    "parameters": {}
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "title": "sequence",
+                              "type": "composite",
+                              "name": "sequence",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "endPrimaryFire",
+                                  "type": "action",
+                                  "name": "endPrimaryFire",
+                                  "parameters": {}
+                                },
+                                {
+                                  "title": "parallel",
+                                  "type": "composite",
+                                  "name": "parallel",
+                                  "parameters": {
+                                    "fail": {"value": -1},
+                                    "success": {"value": -1}
+                                  },
+                                  "children": [
+                                    {
+                                      "title": "entityInSight",
+                                      "type": "action",
+                                      "name": "entityInSight",
+                                      "parameters": {
+                                        "entity": {"key": "target"}
+                                      }
+                                    },
+                                    {
+                                      "title": "entityPosition",
+                                      "type": "action",
+                                      "name": "entityPosition",
+                                      "parameters": {
+                                        "entity": {"key": "target"}
+                                      },
+                                      "output": {
+                                        "position": "targetPosition"
+                                      }
+                                    },
+                                    {
+                                      "title": "faceEntity",
+                                      "type": "action",
+                                      "name": "faceEntity",
+                                      "parameters": {
+                                        "entity": {"key": "target"}
+                                      }
+                                    },
+                                    {
+                                      "title": "offsetPosition",
+                                      "type": "action",
+                                      "name": "offsetPosition",
+                                      "parameters": {
+                                        "offset": {"key": "<offset>"},
+                                        "position": {"key": "targetPosition"}
+                                      },
+                                      "output": {
+                                        "position": "aimPosition"
+                                      }
+                                    },
+                                    {
+                                      "title": "setAimPosition",
+                                      "type": "action",
+                                      "name": "setAimPosition",
+                                      "parameters": {
+                                        "position": {"key": "aimPosition"}
+                                      }
+                                    },
+                                    {
+                                      "title": "dynamic",
+                                      "type": "composite",
+                                      "name": "dynamic",
+                                      "parameters": {},
+                                      "children": [
+                                        {
+                                          "title": "dynamic",
+                                          "type": "composite",
+                                          "name": "dynamic",
+                                          "parameters": {},
+                                          "children": [
+                                            {
+                                              "title": "inverter",
+                                              "type": "decorator",
+                                              "name": "inverter",
+                                              "parameters": {},
+                                              "child": {
+                                                "title": "entityInSight",
+                                                "type": "action",
+                                                "name": "entityInSight",
+                                                "parameters": {
+                                                  "entity": {"key": "target"}
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "title": "inverter",
+                                              "type": "decorator",
+                                              "name": "inverter",
+                                              "parameters": {},
+                                              "child": {
+                                                "title": "canFire",
+                                                "type": "action",
+                                                "name": "canFire",
+                                                "parameters": {}
+                                              }
+                                            },
+                                            {
+                                              "title": "timer",
+                                              "type": "action",
+                                              "name": "timer",
+                                              "parameters": {
+                                                "time": {"value": "<projectileTimeToLive>"}
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "title": "runner",
+                                          "type": "action",
+                                          "name": "runner",
+                                          "parameters": {}
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "title": "primaryFire",
+                                  "type": "action",
+                                  "name": "primaryFire",
+                                  "parameters": {}
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "title": "timer",
+                          "type": "action",
+                          "name": "timer",
+                          "parameters": {
+                            "time": {"value": "<staffCooldownTime>"}
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "title": "setAimPosition",
+                      "type": "action",
+                      "name": "setAimPosition",
+                      "parameters": {
+                        "position": {"key": "aimPosition"}
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "title": "selector",
+            "type": "composite",
+            "name": "selector",
+            "parameters": {},
+            "children": [
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "inverter",
+                    "type": "decorator",
+                    "name": "inverter",
+                    "parameters": {},
+                    "child": {
+                      "title": "canFire",
+                      "type": "action",
+                      "name": "canFire",
+                      "parameters": {}
+                    }
+                  },
+                  {
+                    "title": "hasMeleeSheathed",
+                    "type": "action",
+                    "name": "hasMeleeSheathed",
+                    "parameters": {}
+                  },
+                  {
+                    "title": "entityInSight",
+                    "type": "action",
+                    "name": "entityInSight",
+                    "parameters": {
+                      "entity": {"key": "target"}
+                    }
+                  },
+                  {
+                    "title": "swapItemSlots",
+                    "type": "action",
+                    "name": "swapItemSlots",
+                    "parameters": {}
+                  },
+                  {
+                    "title": "halt",
+                    "type": "action",
+                    "name": "halt",
+                    "parameters": {}
+                  }
+                ]
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "moveToPosition",
+                    "type": "action",
+                    "name": "moveToPosition",
+                    "parameters": {
+                      "avoidLiquid": {"value": true},
+                      "groundPosition": {"value": false},
+                      "maxGround": {"value": 5},
+                      "minGround": {"value": -10},
+                      "position": {"key": "rangedPosition"},
+                      "run": {"value": true}
+                    },
+                    "output": {
+                      "pathfinding": "rangedPathing"
+                    }
+                  },
+                  {
+                    "title": "succeeder",
+                    "type": "decorator",
+                    "name": "succeeder",
+                    "parameters": {},
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "groupResource",
+                          "type": "action",
+                          "name": "groupResource",
+                          "parameters": {
+                            "groupId": {"value": "combat"},
+                            "name": {"value": "minRange"}
+                          },
+                          "output": {
+                            "number": "minRange"
+                          }
+                        },
+                        {
+                          "title": "inverter",
+                          "type": "decorator",
+                          "name": "inverter",
+                          "parameters": {},
+                          "child": {
+                            "title": "entityInRange",
+                            "type": "action",
+                            "name": "entityInRange",
+                            "parameters": {
+                              "entity": {"key": "target"},
+                              "position": {"key": "self"},
+                              "range": {"key": "minRange"}
+                            }
+                          }
+                        },
+                        {
+                          "title": "faceEntity",
+                          "type": "action",
+                          "name": "faceEntity",
+                          "parameters": {
+                            "entity": {"key": "target"}
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "runner",
+                    "type": "action",
+                    "name": "runner",
+                    "parameters": {}
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "runner",
+        "type": "action",
+        "name": "runner",
+        "parameters": {}
+      }
+    ]
+  }
+}

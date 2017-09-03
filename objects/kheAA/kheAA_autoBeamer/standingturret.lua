@@ -1,8 +1,12 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/scripts/interp.lua"
+require "/scripts/epoch.lua"
+
+isTheDate=false
 
 function init()
+	checkIsTheDate()
   -- Positions and angles
   	--[[removableMods = {
 	["ash"] = true,
@@ -34,12 +38,18 @@ function init()
 end
 
 function update(dt)
-  self.state:update(dt)
+	if not deltaCheckDate or deltaCheckDate > 60 then
+		deltaCheckDate=0
+		checkIsTheDate()
+	else
+		deltaCheckDate=deltaCheckDate+dt
+	end
+	self.state:update(dt)
 
-  world.debugPoint(firePosition(), "green")
+	world.debugPoint(firePosition(), "green")
 end
 
-----------------------------------------------------------------------------------------------------------
+--
 -- States
 
 function offState()
@@ -122,7 +132,7 @@ function fireState(targetId)
   self.state:set(scanState)
 end
 
-----------------------------------------------------------------------------------------------------------
+--
 -- Helping functions, not states
 
 function active()
@@ -142,18 +152,29 @@ end
 
 -- Coroutine
 function autoFire(target)
-    local rotation = animator.currentRotationAngle("gun")
-    local aimVector = {object.direction() * math.cos(rotation), math.sin(rotation)}
-  while true do
-	world.damageTiles({world.entityPosition(target)}, "foreground", world.entityPosition(target), "plantish", 0.2, 1)
-	animator.playSound("fire")
-    util.wait(config.getParameter("fireTime",0.1))
-  end
+	local rotation = animator.currentRotationAngle("gun")
+	local aimVector = {object.direction() * math.cos(rotation), math.sin(rotation)}
+	while true do
+		if world.entityType(target)=="player" then
+			world.sendEntityMessage(target,"applyStatusEffect","nude")
+		else
+			world.damageTiles({world.entityPosition(target)}, "foreground", world.entityPosition(target), "plantish", 0.2, 1)
+		end
+		animator.playSound("fire")
+		util.wait(config.getParameter("fireTime",0.1))
+	end
 end
 
 -- Coroutine
 function findTarget()
 	local nearEntities = world.entityQuery(self.basePosition, self.targetQueryRange,{includedTypes={"plant","object"}})
+	if isTheDate then
+		local bumper=world.entityQuery(self.basePosition, self.targetQueryRange,{includedTypes={"player","npc"}})
+		for _,a in pairs(bumper) do
+			table.insert(nearEntities,a)
+		end
+	end
+	--sb.logInfo("%s",{nearEntities=nearEntities})
 	return util.find(nearEntities,
 		function(entityId)
 			local targetPosition = world.entityPosition(entityId)
@@ -166,14 +187,18 @@ function findTarget()
 			if not ( world.magnitude(toTarget) > 2.5 and math.abs(targetAngle) < util.toRadians(360) ) then
 				return false
 			end
-			if world.entityType(entityId) == "plant" then
+			
+			local eType=world.entityType(entityId)
+			
+			if eType == "plant" or eType =="player" or eType =="npc" then
 				return true
 			end
+			
 			local tStage=world.farmableStage(entityId)
 			if tStage ~= nil then
-				sb.logInfo("Stage:"..tStage)
+				--sb.logInfo("Stage:"..tStage)
 				stages=world.getObjectParameter(entityId,"stages")
-				sb.logInfo(sb.printJson(stages))
+				--sb.logInfo(sb.printJson(stages))
 				if stages ~= nil then
 					if stages[tStage+1].harvestPool ~= nil then
 						return true
@@ -196,14 +221,18 @@ function validTarget(entityId)
 	if not ( world.magnitude(toTarget) > 2.5 and math.abs(targetAngle) < util.toRadians(360) ) then
 		return false
 	end
-	if world.entityType(entityId) == "plant" then
+	
+	local eType=world.entityType(entityId)
+	
+	if eType == "plant" or eType =="player" or eType =="npc" then
 		return true
 	end
+	
 	local tStage=world.farmableStage(entityId)
 	if tStage ~= nil then
-		sb.logInfo("Stage:"..tStage)
+		--sb.logInfo("Stage:"..tStage)
 		stages=world.getObjectParameter(entityId,"stages")
-		sb.logInfo(sb.printJson(stages))
+		--sb.logInfo(sb.printJson(stages))
 		if stages ~= nil then
 			if stages[tStage+1].harvestPool ~= nil then
 				return true
@@ -211,4 +240,13 @@ function validTarget(entityId)
 		end
 	end
 	return false
+end
+
+function checkIsTheDate()
+	local epoDat=epoch.currentToTable()
+	if epoDat.day==1 and epoDat.month==4 then
+		isTheDate=true
+	else
+		isTheDate=false
+	end
 end

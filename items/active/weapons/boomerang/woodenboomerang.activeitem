@@ -1,12 +1,12 @@
 {
   "itemName" : "woodenboomerang",
-  "level" : 2,
+  "level" : 1,
   "price" : 10,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "common",
   "category" : "boomerang",
   "description" : "State-of-the-art microthrusters guarantee that it will always return.",
-  "shortdescription" : "Boomerang",
+  "shortdescription" : "Wooden Boomerang",
   "tooltipKind" : "boomerang",
   "twoHanded" : false,
   "itemTags" : ["weapon","boomerang","upgradeableWeapon"],
@@ -24,13 +24,13 @@
 
   "projectileType" : "woodboomerang",
   "projectileParameters" : {
-    "power" : 3.85,
+    "power" : 5,
     "knockback" : 20,
 
     "ignoreTerrain" : false,
-    "controlForce" : 85,
+    "controlForce" : 65,
     "pickupDistance" : 1.0,
-    "snapDistance" : 4.0
+    "snapDistance" : 2.0
   },
 
   "stances" : {
@@ -73,5 +73,7 @@
     }
   },
   "critChance" : 4,
-  "critBonus" : 2
+  "critBonus" : 2,
+
+  "builder" : "/items/buildscripts/buildboomerang.lua"
 }

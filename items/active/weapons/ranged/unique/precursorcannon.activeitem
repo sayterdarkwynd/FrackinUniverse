@@ -1,0 +1,134 @@
+{
+  "itemName" : "precursorcannonultra",
+  "price" : 160,
+  "inventoryIcon" : "precursorcannon_Link.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "DUDE. HOLY CRAP.
+^yellow;I am become death, eater of worlds.^reset;",
+  "shortdescription" : "Eradicator",
+  "category" : "rocketLauncher",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon"],
+  "handGrip" : "wrap",
+  "twoHanded" : true,
+  "animation" : "/items/active/weapons/ranged/unique/precursorcannon.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "precursorcannon_Link.png",
+    "middlefullbright" : "precursorcannonfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
+  "animationCustom" : {
+    "sounds" : {"fire" : [ "/sfx/gun/ar5.ogg" ]},
+    "lights" : { "muzzleFlash" : {"color" : [0, 177, 177] } }     
+  },
+  "baseOffset" : [1.5, -0.7],
+  "muzzleOffset" : [4.5, 0.125],
+
+  "scripts" : [
+  "/items/active/weapons/ranged/gun.lua",
+  "/items/active/scripts/heavyweapon.lua"
+  ],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.05,
+    "baseDps" : 7,
+    "energyUsage" : 40.0,
+    "inaccuracy" : 0.15,
+
+    "projectileCount" : 3,
+    "fireType" : "auto",
+
+    "projectileType" : "precursorshot2",
+    "projectileParameters" : { 
+      "speed" : 90,
+      "knockback" : 12
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 8,
+  "critBonus" : 23,
+
+"altAbility" : {
+    "name" : "Proto Orbs",
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.5,
+    "baseDps" : 12,
+    "energyUsage" : 60,
+    "fireType" : "auto",
+    "inaccuracy" : 0.12,
+    "projectileCount" : 3,
+    "projectileType" : "magnorbproto",
+    "projectileParameters" : {
+      "speed" : 40,
+      "timeToLive" : 3
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+},  
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

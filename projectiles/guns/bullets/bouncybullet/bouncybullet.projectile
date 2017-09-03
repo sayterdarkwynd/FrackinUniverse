@@ -1,0 +1,39 @@
+{
+  "projectileName" : "bouncybullet",
+  "image" : "bouncybullet.png",
+  "animationCycle" : 0.25,
+  "physics" : "laser",
+  "bounces" : 3,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    }
+  ],
+  "actionOnCollide" : [
+        {
+          "action" : "sound",
+          "options" : [
+            "/sfx/projectiles/bullet_ricochet1.ogg",
+            "/sfx/projectiles/bullet_ricochet2.ogg",
+            "/sfx/projectiles/bullet_ricochet3.ogg",
+            "/sfx/projectiles/bullet_ricochet4.ogg",
+            "/sfx/projectiles/bullet_ricochet5.ogg",
+            "/sfx/projectiles/bullet_ricochet6.ogg",
+            "/sfx/projectiles/bullet_ricochet7.ogg",
+            "/sfx/projectiles/bullet_ricochet8.ogg",
+            "/sfx/projectiles/bullet_ricochet9.ogg",
+            "/sfx/projectiles/bullet_ricochet10.ogg",
+            "/sfx/projectiles/bullet_ricochet11.ogg",
+            "/sfx/projectiles/bullet_ricochet12.ogg",
+            "/sfx/projectiles/bullet_ricochet13.ogg"
+          ]
+        }
+      ],
+  "power" : 5.0,
+  "speed" : 75,
+  "damageKind" : "default"
+}

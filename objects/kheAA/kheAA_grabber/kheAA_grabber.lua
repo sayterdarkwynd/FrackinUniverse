@@ -6,10 +6,11 @@ function init()
 	drill=false
 	vacuum=true
 	powerNode=0
-	excavatorCommon.init()	
+	excavatorCommon.init()
 end
 
 function update(dt)
+	transferUtil.loadSelfContainer()
 	excavatorCommon.cycle(dt)
 end
 

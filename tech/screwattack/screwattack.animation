@@ -1,0 +1,49 @@
+{
+  "globalTagDefaults" : {
+    "rotationFrame" : "0",
+    "ballDirectives" : ""
+  },
+  "animatedParts" : {
+    "stateTypes" : {
+      "screwattack" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+            "frames" : 8,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "player" : {
+        "partStates" : {
+          "screwattack" : {
+            "on" : {
+              "properties" : {
+                "zLevel" : 1,
+                "centered" : true,
+                "flip" : true,
+                "image" : "screwattack.png:<frameIndex>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "dash",
+          "flip" : true
+        }
+      ]
+    }
+  }
+}

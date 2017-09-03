@@ -2,13 +2,13 @@
   "id" : "shoggoth_unlocknew",
   "mainQuest" : true,
   "prerequisites" : [],
-  "title" : "^#1693d5;Expedition",
-  "text" : "I've found an ancient text, and am alarmed. Scrawled within are coordinates that match up exactly with a ^orange;recent research expedition^reset; we sent out to the fringes. I get no response when hailing them. S.A.I.L can take me there.",
-  "completionText" : "With no survivors, all that I have to report is...avoid this world. Recommending immediate sterilization of the site via orbital bombardment. No one should suffer that, ever again.",
-  "moneyRange" : [140000, 140001],
+  "title" : "^#1693d5;Delta Freya Expedition",
+  "text" : "Some sort of ancient tome...I wonder what could be inside?",
+  "completionText" : "I've found an ancient text, and am alarmed. Scrawled within are coordinates that match up exactly with a ^orange;recent research expedition^reset; we sent out to the fringes. I get no response when hailing them. S.A.I.L can take me there.",
+  "moneyRange" : [0,1],
   "rewards" : [],
   "speaker" : "questGiver",
-
+  "canBeAbandoned" : false,
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
@@ -23,10 +23,10 @@
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "wagneridcard",
+        "itemName" : "fugrimoire",
         "count" : 1,
-        "consume" : true
-      }
+        "consume" : false
+      }    
     ],
     "associatedMission" : "shoggothmission"
   }

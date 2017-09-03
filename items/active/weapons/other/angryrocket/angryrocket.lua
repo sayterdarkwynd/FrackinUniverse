@@ -54,6 +54,24 @@ function update(dt, fireMode, shiftHeld)
 			local amt=math.min(storage.onboardMax*percent*rate,storage.onboardMax-storage.onboard)
 			if status.consumeResource("energy",amt) then
 				storage.onboard=storage.onboard+amt
+				--[[ progressing sound fx
+				      if (storage.onboard == storage.onboardMax) then animator.playSound("reload2")	
+				--]]
+				if (storage.onboard >= (storage.onboardMax * 0.9)) and (storage.onboard <= ((storage.onboardMax * 0.9)+amt)) then
+					animator.playSound("reload2")
+					animator.playSound("reloadsound")
+				elseif (storage.onboard >= (storage.onboardMax * 0.8)) and (storage.onboard <= ((storage.onboardMax * 0.8)+amt)) then
+					animator.playSound("reload1")
+				elseif (storage.onboard >= (storage.onboardMax * 0.7)) and (storage.onboard <= ((storage.onboardMax * 0.7)+amt)) then
+					animator.playSound("reload1")
+				elseif (storage.onboard >= (storage.onboardMax * 0.6)) and (storage.onboard <= ((storage.onboardMax * 0.6)+amt)) then
+					animator.playSound("reload1")	
+				elseif (storage.onboard >= (storage.onboardMax * 0.5)) and (storage.onboard <= ((storage.onboardMax * 0.5)+amt)) then
+					animator.playSound("reload1")
+					animator.playSound("reloadsound")
+				elseif (storage.onboard >= (storage.onboardMax *0.4)) and (storage.onboard <= ((storage.onboardMax * 0.4)+amt)) then
+					animator.playSound("reload1")
+				end				
 			end
 		end
 		deltaPowerup=0

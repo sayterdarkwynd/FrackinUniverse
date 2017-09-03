@@ -45,7 +45,6 @@ end
 
 
 function update(args)
-
 local superJumpTime = 0.01
 
   if self.dashCooldownTimer > 0 then
@@ -67,6 +66,9 @@ local superJumpTime = 0.01
   self.doubleTap:update(args.dt, args.moves)
 
   if self.dashTimer > 0 then
+    local blastPower = { power = 3 + config.getParameter("chipCost",2)}
+    world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, true, blastPower)  
+    
     mcontroller.controlApproachVelocity({self.dashSpeed * self.dashDirection, self.dashYVel}, self.dashControlForce)
     mcontroller.controlMove(self.dashDirection, true)
     if self.airDashing then
@@ -107,6 +109,7 @@ function startDash(direction)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
+  
 -- ***end jump
 
 -- ***spawn projectile
