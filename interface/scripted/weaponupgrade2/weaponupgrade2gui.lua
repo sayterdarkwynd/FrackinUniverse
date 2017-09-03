@@ -225,7 +225,7 @@ function doUpgrade()
 		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
 			
 			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) then
-			  if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") then
+			  if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") then
 			    upgradedItem.parameters.primaryAbility.fireTime = upgradedItem.parameters.primaryAbility.fireTime
 			  else
 			    local fireTimeBase = itemConfig.config.primaryAbility.fireTime
@@ -244,7 +244,7 @@ function doUpgrade()
 			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
 			end	
 		  -- Can it STUN?	
-                  if (itemConfig.config.category == "hammer") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "quarterstaff") then
+                  if (itemConfig.config.category == "hammer") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "quarterstaff") then
  		    upgradedItem.parameters.stunChance = (itemConfig.parameters.stunChance or itemConfig.config.stunChance or 1) + 0.5 + self.baseValueMod                    
                   end     
                   
