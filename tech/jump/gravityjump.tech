@@ -5,7 +5,7 @@
   "scripts" : ["gravityjump.lua"],
   "animator" : "longjump3.animation",
 
-  "description" : "The ultra jump.",
+  "description" : "A damaging, low-grav mega jump.",
   "shortDescription" : "Gravity Jump",
   "rarity" : "essential",
   "icon" : "/tech/longjump.png",
@@ -14,22 +14,22 @@
 
   "multiJumpCount" : 4,
   
-  "jumpSpeedMultiplier" : 3.05,
-  "fallGravityMultiplier" : 0.15,
+  "jumpSpeedMultiplier" : 8,
+  "fallGravityMultiplier" : 0.25,
   "fallDamageMultiplier" : 0.01,
-  "flutterXVelocity" : 0.05,
-  "flutterYVelocity" : 0,
-  "flutterTime": 0,
+  "flutterXVelocity" : 25,
+  "flutterYVelocity" : 25,
+  "flutterTime": 0.25,
   "flutterAfterFall" : false,
   "flutterFall" : false,
-  "wallJumpXVelocity" : 32,
-  "wallGrabFreezeTime" : 0.50,
+  "wallJumpXVelocity" : 45,
+  "wallGrabFreezeTime" : 0.30,
   "wallSensors" : [ 1.0, 1.75, 2.5 ],
   "wallDetectThreshold" : 2,
   "wallReleaseTime" : 0.95,
   "wallSlideParameters" : {
     "airJumpProfile" : {
-      "jumpInitialPercentage" : 1,
+      "jumpInitialPercentage" : 1.4,
       "airForce" : 0,
       "airFriction" : 0
     }

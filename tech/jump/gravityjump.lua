@@ -170,6 +170,10 @@ function updateJumping(args)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
+  
+local configBombDrop = { power = 2 }
+world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
+  
 	local params = mcontroller.baseParameters()
 	params.airJumpProfile.jumpSpeed = params.airJumpProfile.jumpSpeed * self.jumpSpeedMultiplier
 	mcontroller.controlParameters(params)
