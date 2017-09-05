@@ -1,56 +1,54 @@
 {
-  "itemName" : "snubber",
-  "price" : 660,
-  "inventoryIcon" : "snubber.png",
+  "itemName" : "futriangliumsmg",
+  "price" : 360,
+  "inventoryIcon" : "triangliumsmg_ashey.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Fires 3-round bursts of diamond-tipped rounds
-^cyan;Piercing bursts^reset;",
-  "shortdescription" : "Snub Gun",
+  "rarity" : "rare",
+  "description" : "Ratta-tat-tat your foes with poisoned trianglium rounds
+^cyan;Inflicts poison^reset;",
+  "shortdescription" : "Vagabond",
   "category" : "machinePistol",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
 
-  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "energy"],
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
   "twoHanded" : false,
   "weaponType" : "machinePistol",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "snubber.png",
+    "middle" : "triangliumsmg_ashey.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/pistol3.ogg" ]
+      "fire" : [ "/sfx/gun/mp2.ogg" ]
     }
   },
 
-  "baseOffset" : [0.75, 0.35],
-  "muzzleOffset" : [2,0.25],
+  "baseOffset" : [0.9, 0.35],
+  "muzzleOffset" : [0.7,0.5],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.1,
-    "baseDps" : 2,
-    "energyUsage" : 22,
-    "inaccuracy" : 0.01,
+    "fireTime" : 0.08,
+    "baseDps" : 5,
+    "energyUsage" : 42,
+    "inaccuracy" : 0.008,
 
-    "projectileCount" : 2,
-    "fireType" : "burst",
-    "burstCount" : 3,
-    "burstTime" : 0.035,
+    "projectileCount" : 1,
+    "fireType" : "auto",
 
     "projectileType" : "tracerbullet",
     "projectileParameters" : {
       "speed" : 55,
-      "piercing" : true
+      "statusEfects" : [ "weakpoison" ]
     },
 
     "stances" : {
@@ -74,9 +72,9 @@
         "allowFlip" : true
       },
       "cooldown" : {
-        "duration" : 0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "duration" : 0.02,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : false,
 
         "allowRotate" : true,
@@ -86,8 +84,8 @@
     }
   },
 
-  "critChance" : 1,
-  "critBonus" : 10,
+  "critChance" : 3,
+  "critBonus" : 5,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

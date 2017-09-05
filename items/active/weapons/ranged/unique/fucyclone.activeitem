@@ -1,14 +1,13 @@
 {
-  "itemName" : "snubber",
-  "price" : 660,
-  "inventoryIcon" : "snubber.png",
+  "itemName" : "fucyclone",
+  "price" : 160,
+  "inventoryIcon" : "cyclone_uxie.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Fires 3-round bursts of diamond-tipped rounds
-^cyan;Piercing bursts^reset;",
-  "shortdescription" : "Snub Gun",
+  "rarity" : "rare",
+  "description" : "Launches tiny little pellets of death. Really, really fast.",
+  "shortdescription" : "Cyclone",
   "category" : "machinePistol",
-  "level" : 3,
+  "level" : 5,
   "tooltipKind" : "gun2",
 
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "energy"],
@@ -17,40 +16,39 @@
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "snubber.png",
+    "middle" : "cyclone_uxie.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/pistol3.ogg" ]
+      "fire" : [ "/sfx/gun/mp1.ogg" ]
     }
   },
 
-  "baseOffset" : [0.75, 0.35],
-  "muzzleOffset" : [2,0.25],
+  "baseOffset" : [1.2, 0.35],
+  "muzzleOffset" : [0.8,-0.15],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "fire",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.1,
-    "baseDps" : 2,
-    "energyUsage" : 22,
-    "inaccuracy" : 0.01,
+    "fireTime" : 0.05,
+    "baseDps" : 5,
+    "energyUsage" : 42,
+    "inaccuracy" : 0.075,
 
     "projectileCount" : 2,
-    "fireType" : "burst",
-    "burstCount" : 3,
-    "burstTime" : 0.035,
+    "fireType" : "auto",
 
-    "projectileType" : "tracerbullet",
+    "projectileType" : "fast",
     "projectileParameters" : {
       "speed" : 55,
-      "piercing" : true
+      "damageSourceKind" : "fire",
+      "statusEffects" : [ "burning" ]
     },
 
     "stances" : {
@@ -65,8 +63,8 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
         "twoHanded" : false,
 
         "allowRotate" : true,
@@ -75,8 +73,8 @@
       },
       "cooldown" : {
         "duration" : 0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : false,
 
         "allowRotate" : true,
@@ -86,8 +84,8 @@
     }
   },
 
-  "critChance" : 1,
-  "critBonus" : 10,
+  "critChance" : 3,
+  "critBonus" : 5,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
