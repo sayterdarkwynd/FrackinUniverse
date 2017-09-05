@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Fires 3-round bursts of diamond-tipped rounds
-^cyan;Piercing bursts^reset;",
+^cyan;Piercing bursts^reset;
+^#e43774;Hunting Weapon^reset;",
   "shortdescription" : "Snub Gun",
   "category" : "machinePistol",
   "level" : 3,
@@ -28,7 +29,7 @@
   },
 
   "baseOffset" : [0.75, 0.35],
-  "muzzleOffset" : [2,0.25],
+  "muzzleOffset" : [2,0],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -42,12 +43,12 @@
     "energyUsage" : 30,
     "inaccuracy" : 0.02,
 
-    "projectileCount" : 2,
+    "projectileCount" : 1,
     "fireType" : "burst",
     "burstCount" : 3,
     "burstTime" : 0.035,
 
-    "projectileType" : "tracerbullet",
+    "projectileType" : "huntingbullet",
     "projectileParameters" : {
       "speed" : 55,
       "piercing" : true
