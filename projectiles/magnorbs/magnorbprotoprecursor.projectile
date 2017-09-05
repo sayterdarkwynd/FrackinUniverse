@@ -1,0 +1,33 @@
+{
+  "projectileName" : "magnorbprotoprecursor",
+  "image" : "magnorbproto.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 55,
+  "damageKind" : "electric",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 12,
+  "piercing" : false,
+  "timeToLive" : 6,
+  "lightColor" : [15, 70, 6],
+  "statusEffects" : [ "electrified" ],
+  "actionOnReap" : [ ],  
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/precursorexplosion/precursorexplosionsmall.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/weapons/magnorbproto_impact1.ogg",
+        "/sfx/weapons/magnorbproto_impact2.ogg",
+        "/sfx/weapons/magnorbproto_impact3.ogg"
+      ]
+    }
+  ]
+}
