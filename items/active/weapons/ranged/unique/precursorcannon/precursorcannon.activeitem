@@ -1,0 +1,118 @@
+{
+  "itemName" : "precursorcannonnew",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "The compressed rage of the Precursors.
+^cyan;Charges Up^reset;",
+  "shortdescription" : "Precursor Annihilator",
+  "tooltipKind" : "gun2",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged"],
+  "level" : 6,
+
+  "inventoryIcon" : "precursorcannon.png",
+
+  "animation" : "precursorcannon.animation",
+  "animationParts" : {
+    "gun" : "precursorcannon_Link.png",
+    "gunfullbright" : "precursorcannonfullbright.png"
+  },
+  "animationCustom" : {
+    "lights" : { "muzzleFlash" : {"color" : [0, 177, 177] } }   
+  },
+  "muzzleOffset" : [4.5, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "chargefire",
+  "primaryAbility" : {
+    "chargeLevels" : [
+      {
+        "time" : 0,
+        "energyCost" : 5,
+        "cooldown" : 0.1,
+        "projectileType" : "precursorshot2",
+        "projectileParameters" : {
+	      "speed" : 65,
+	      "statusEffects" : [ "radiationburn" ]        
+        },
+        "inaccuracy" : 0.008,
+        "baseDamage" : 2.5,
+        "fireSound" : "fire"
+      },
+      {
+        "time" : 1.0,
+        "energyCost" : 40,
+        "cooldown" : 0.5,
+        "projectileType" : "precursorshot2",
+        "fireType" : "burst",
+        "projectileCount" : 12,
+        "inaccuracy" : 0.3,
+        "projectileParameters" : {
+	      "speed" : 90,
+	      "statusEffects" : [ "radiationburn" ]         
+        },
+        "baseDamage" : 12,
+        "fireSound" : "fire2"
+      }
+    ]
+  },
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  
+
+  "altAbility" : {
+    "name" : "Proto Orbs",
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.45,
+    "baseDps" : 12,
+    "energyUsage" : 60,
+    "fireType" : "burst",
+    
+    "burstCount" : 4,
+    "burstTime" : 0.05,
+    "inaccuracy" : 0.12,
+    "projectileCount" : 3,
+    "projectileType" : "magnorbprotoprecursor",
+    "projectileParameters" : {
+      "speed" : 40,
+      "timeToLive" : 3
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

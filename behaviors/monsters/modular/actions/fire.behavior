@@ -1,0 +1,938 @@
+{
+  "name": "action-fire",
+  "description": null,
+  "scripts": [
+    "/scripts/behavior.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {
+    "aimAtTarget": true,
+    "aimDirection": [1, 0],
+    "projectileType": "standardbullet",
+    "inaccuracy": 0,
+    "projectileCount": 1,
+    "projectileInterval": 0.25,
+    "fireOffset": [0, 0],
+    "fireOffsets": [],
+    "fireSound": "fire",
+    "fireState": "fire",
+    "winddownState": "firewinddown",
+    "windupState": "firewindup",
+    "fireDelay": 0,
+    "projectileParameters": {},
+    "fireArc": false,
+    "projectileSpeed": 0,
+    "highArc": false,
+    "faceTarget": true,
+    "rotateAim": false,
+    "rotationCenter": [0, 0],
+    "fireStateType": "body",
+    "skillName": "",
+    "fireParticleBurst": "",
+    "holdAim": false,
+    "damageRepeatGroup": "monsterfire",
+    "burstCount": 1,
+    "burstInterval": 0.25
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": 1},
+          "success": {"value": 1}
+        },
+        "children": [
+          {
+            "title": "parallel",
+            "type": "composite",
+            "name": "parallel",
+            "parameters": {
+              "fail": {"value": 1},
+              "success": {"value": -1}
+            },
+            "children": [
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "optional",
+                    "type": "decorator",
+                    "name": "optional",
+                    "parameters": {
+                      "shouldRun": {"key": "<holdAim>"}
+                    },
+                    "child": {
+                      "title": "hasFlag",
+                      "type": "action",
+                      "name": "hasFlag",
+                      "parameters": {
+                        "name": {"key": "holdAim"}
+                      }
+                    }
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "vecMultiply",
+                        "type": "action",
+                        "name": "vecMultiply",
+                        "parameters": {
+                          "first": {"key": "<rotationCenter>"},
+                          "second": {"value": ["facingDirection", 1]}
+                        },
+                        "output": {
+                          "vector": "rotationCenter"
+                        }
+                      },
+                      {
+                        "title": "vecRotate",
+                        "type": "action",
+                        "name": "vecRotate",
+                        "parameters": {
+                          "angle": {"key": "heading"},
+                          "vector": {"key": "rotationCenter"}
+                        },
+                        "output": {
+                          "vector": "rotationCenter"
+                        }
+                      },
+                      {
+                        "title": "offsetPosition",
+                        "type": "action",
+                        "name": "offsetPosition",
+                        "parameters": {
+                          "offset": {"key": "rotationCenter"},
+                          "position": {"key": "self"}
+                        },
+                        "output": {
+                          "position": "origin"
+                        }
+                      },
+                      {
+                        "title": "entityAngle",
+                        "type": "action",
+                        "name": "entityAngle",
+                        "parameters": {
+                          "entity": {"key": "target"},
+                          "heading": {"key": "heading"},
+                          "position": {"key": "origin"}
+                        },
+                        "output": {
+                          "angle": "entityAngle"
+                        }
+                      },
+                      {
+                        "title": "entityPosition",
+                        "type": "action",
+                        "name": "entityPosition",
+                        "parameters": {
+                          "entity": {"key": "target"}
+                        },
+                        "output": {
+                          "position": "targetPosition"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "action-windup",
+                    "type": "module",
+                    "name": "action-windup",
+                    "parameters": {
+                      "windupState": {"value": "<windupState>"},
+                      "faceTarget": {"key": "<faceTarget>"},
+                      "skillName": {"value": "<skillName>"}
+                    }
+                  },
+                  {
+                    "title": "succeeder",
+                    "type": "decorator",
+                    "name": "succeeder",
+                    "parameters": {},
+                    "child": {
+                      "title": "setAnimationState",
+                      "type": "action",
+                      "name": "setAnimationState",
+                      "parameters": {
+                        "state": {"value": "<fireState>"},
+                        "type": {"value": "<fireStateType>"}
+                      }
+                    }
+                  },
+                  {
+                    "title": "timer",
+                    "type": "action",
+                    "name": "timer",
+                    "parameters": {
+                      "time": {"value": "<fireDelay>"}
+                    }
+                  },
+                  {
+                    "title": "setNumber",
+                    "type": "action",
+                    "name": "setNumber",
+                    "parameters": {
+                      "number": {"value": 0}
+                    },
+                    "output": {
+                      "number": "shots"
+                    }
+                  },
+                  {
+                    "title": "setNumber",
+                    "type": "action",
+                    "name": "setNumber",
+                    "parameters": {
+                      "number": {"value": 0}
+                    },
+                    "output": {
+                      "number": "bursts"
+                    }
+                  },
+                  {
+                    "title": "parallel",
+                    "type": "composite",
+                    "name": "parallel",
+                    "parameters": {
+                      "fail": {"value": -1},
+                      "success": {"value": -1}
+                    },
+                    "children": [
+                      {
+                        "title": "controlFlag",
+                        "type": "action",
+                        "name": "controlFlag",
+                        "parameters": {
+                          "bool": {"value": true}
+                        },
+                        "output": {
+                          "bool": "holdAim"
+                        }
+                      },
+                      {
+                        "title": "repeater",
+                        "type": "decorator",
+                        "name": "repeater",
+                        "parameters": {
+                          "maxLoops": {"key": "<burstCount>"},
+                          "untilSuccess": {"value": false}
+                        },
+                        "child": {
+                          "title": "sequence",
+                          "type": "composite",
+                          "name": "sequence",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "repeater",
+                              "type": "decorator",
+                              "name": "repeater",
+                              "parameters": {
+                                "maxLoops": {"key": "<projectileCount>"},
+                                "untilSuccess": {"value": false}
+                              },
+                              "child": {
+                                "title": "sequence",
+                                "type": "composite",
+                                "name": "sequence",
+                                "parameters": {},
+                                "children": [
+                                  {
+                                    "title": "succeeder",
+                                    "type": "decorator",
+                                    "name": "succeeder",
+                                    "parameters": {},
+                                    "child": {
+                                      "title": "playSound",
+                                      "type": "action",
+                                      "name": "playSound",
+                                      "parameters": {
+                                        "loops": {"value": 0},
+                                        "sound": {"value": "<fireSound>"}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "title": "succeeder",
+                                    "type": "decorator",
+                                    "name": "succeeder",
+                                    "parameters": {},
+                                    "child": {
+                                      "title": "burstParticleEmitter",
+                                      "type": "action",
+                                      "name": "burstParticleEmitter",
+                                      "parameters": {
+                                        "emitter": {"value": "<fireParticleBurst>"}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "title": "listClear",
+                                    "type": "action",
+                                    "name": "listClear",
+                                    "parameters": {},
+                                    "output": {
+                                      "list": "fireOffsets"
+                                    }
+                                  },
+                                  {
+                                    "title": "selector",
+                                    "type": "composite",
+                                    "name": "selector",
+                                    "parameters": {},
+                                    "children": [
+                                      {
+                                        "title": "sequence",
+                                        "type": "composite",
+                                        "name": "sequence",
+                                        "parameters": {},
+                                        "children": [
+                                          {
+                                            "title": "listGet",
+                                            "type": "action",
+                                            "name": "listGet",
+                                            "parameters": {
+                                              "list": {"key": "<fireOffsets>"}
+                                            }
+                                          },
+                                          {
+                                            "title": "each",
+                                            "type": "decorator",
+                                            "name": "each",
+                                            "parameters": {
+                                              "list": {"key": "<fireOffsets>"},
+                                              "type": {"value": "vec2"}
+                                            },
+                                            "child": {
+                                              "title": "listPush",
+                                              "type": "action",
+                                              "name": "listPush",
+                                              "parameters": {
+                                                "list": {"key": "fireOffsets"},
+                                                "vec2": {"key": "eachItem"}
+                                              },
+                                              "output": {
+                                                "list": "fireOffsets"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "title": "listPush",
+                                        "type": "action",
+                                        "name": "listPush",
+                                        "parameters": {
+                                          "vec2": {"key": "<fireOffset>"}
+                                        },
+                                        "output": {
+                                          "list": "fireOffsets"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "title": "each",
+                                    "type": "decorator",
+                                    "name": "each",
+                                    "parameters": {
+                                      "list": {"key": "fireOffsets"},
+                                      "type": {"value": "vec2"}
+                                    },
+                                    "child": {
+                                      "title": "sequence",
+                                      "type": "composite",
+                                      "name": "sequence",
+                                      "parameters": {},
+                                      "children": [
+                                        {
+                                          "title": "sequence",
+                                          "type": "composite",
+                                          "name": "sequence",
+                                          "parameters": {},
+                                          "children": [
+                                            {
+                                              "title": "vecMultiply",
+                                              "type": "action",
+                                              "name": "vecMultiply",
+                                              "parameters": {
+                                                "first": {"key": "<aimDirection>"},
+                                                "second": {"value": ["facingDirection", 1]}
+                                              },
+                                              "output": {
+                                                "vector": "aimVector"
+                                              }
+                                            },
+                                            {
+                                              "title": "selector",
+                                              "type": "composite",
+                                              "name": "selector",
+                                              "parameters": {},
+                                              "children": [
+                                                {
+                                                  "title": "optional",
+                                                  "type": "decorator",
+                                                  "name": "optional",
+                                                  "parameters": {
+                                                    "shouldRun": {"key": "<rotateAim>"}
+                                                  },
+                                                  "child": {
+                                                    "title": "sequence",
+                                                    "type": "composite",
+                                                    "name": "sequence",
+                                                    "parameters": {},
+                                                    "children": [
+                                                      {
+                                                        "title": "distance",
+                                                        "type": "action",
+                                                        "name": "distance",
+                                                        "parameters": {
+                                                          "from": {"key": "origin"},
+                                                          "to": {"key": "targetPosition"}
+                                                        },
+                                                        "output": {
+                                                          "vector": "toTarget"
+                                                        }
+                                                      },
+                                                      {
+                                                        "title": "vecMultiply",
+                                                        "type": "action",
+                                                        "name": "vecMultiply",
+                                                        "parameters": {
+                                                          "first": {"key": "toTarget"},
+                                                          "second": {"value": ["facingDirection", 1]}
+                                                        },
+                                                        "output": {
+                                                          "vector": "toTarget"
+                                                        }
+                                                      },
+                                                      {
+                                                        "title": "vecAngle",
+                                                        "type": "action",
+                                                        "name": "vecAngle",
+                                                        "parameters": {
+                                                          "vector": {"key": "toTarget"}
+                                                        },
+                                                        "output": {
+                                                          "angle": "targetAngle"
+                                                        }
+                                                      },
+                                                      {
+                                                        "title": "vecRotate",
+                                                        "type": "action",
+                                                        "name": "vecRotate",
+                                                        "parameters": {
+                                                          "angle": {"key": "targetAngle"},
+                                                          "vector": {"key": "eachItem"}
+                                                        },
+                                                        "output": {
+                                                          "vector": "fireOffset"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "title": "setVector",
+                                                  "type": "action",
+                                                  "name": "setVector",
+                                                  "parameters": {
+                                                    "vector": {"key": "eachItem"}
+                                                  },
+                                                  "output": {
+                                                    "vector": "fireOffset"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "title": "vecMultiply",
+                                              "type": "action",
+                                              "name": "vecMultiply",
+                                              "parameters": {
+                                                "first": {"key": "fireOffset"},
+                                                "second": {"value": ["facingDirection", 1]}
+                                              },
+                                              "output": {
+                                                "vector": "fireOffset"
+                                              }
+                                            },
+                                            {
+                                              "title": "vecAdd",
+                                              "type": "action",
+                                              "name": "vecAdd",
+                                              "parameters": {
+                                                "first": {"key": "fireOffset"},
+                                                "second": {"key": "rotationCenter"}
+                                              },
+                                              "output": {
+                                                "vector": "fireOffset"
+                                              }
+                                            },
+                                            {
+                                              "title": "offsetPosition",
+                                              "type": "action",
+                                              "name": "offsetPosition",
+                                              "parameters": {
+                                                "offset": {"key": "fireOffset"},
+                                                "position": {"key": "self"}
+                                              },
+                                              "output": {
+                                                "position": "sourcePosition"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "title": "selector",
+                                          "type": "composite",
+                                          "name": "selector",
+                                          "parameters": {},
+                                          "children": [
+                                            {
+                                              "title": "optional",
+                                              "type": "decorator",
+                                              "name": "optional",
+                                              "parameters": {
+                                                "shouldRun": {"key": "<aimAtTarget>"}
+                                              },
+                                              "child": {
+                                                "title": "sequence",
+                                                "type": "composite",
+                                                "name": "sequence",
+                                                "parameters": {},
+                                                "children": [
+                                                  {
+                                                    "title": "distance",
+                                                    "type": "action",
+                                                    "name": "distance",
+                                                    "parameters": {
+                                                      "from": {"key": "origin"},
+                                                      "to": {"key": "targetPosition"}
+                                                    },
+                                                    "output": {
+                                                      "vector": "aimVector"
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "succeeder",
+                                                    "type": "decorator",
+                                                    "name": "succeeder",
+                                                    "parameters": {},
+                                                    "child": {
+                                                      "title": "optional",
+                                                      "type": "decorator",
+                                                      "name": "optional",
+                                                      "parameters": {
+                                                        "shouldRun": {"key": "<fireArc>"}
+                                                      },
+                                                      "child": {
+                                                        "title": "sequence",
+                                                        "type": "composite",
+                                                        "name": "sequence",
+                                                        "parameters": {},
+                                                        "children": [
+                                                          {
+                                                            "title": "projectileGravityMultiplier",
+                                                            "type": "action",
+                                                            "name": "projectileGravityMultiplier",
+                                                            "parameters": {
+                                                              "projectileName": {"value": "<projectileType>"}
+                                                            },
+                                                            "output": {
+                                                              "gravityMultiplier": "gravityMultiplier"
+                                                            }
+                                                          },
+                                                          {
+                                                            "title": "projectileAimVector",
+                                                            "type": "action",
+                                                            "name": "projectileAimVector",
+                                                            "parameters": {
+                                                              "collisionCheck": {"value": false},
+                                                              "fromPosition": {"key": "origin"},
+                                                              "gravityMultiplier": {"key": "gravityMultiplier"},
+                                                              "speed": {"key": "<projectileSpeed>"},
+                                                              "toPosition": {"key": "targetPosition"},
+                                                              "useHighArc": {"key": "<highArc>"}
+                                                            },
+                                                            "output": {
+                                                              "aimVector": "aimVector"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "title": "sequence",
+                                              "type": "composite",
+                                              "name": "sequence",
+                                              "parameters": {},
+                                              "children": [
+                                                {
+                                                  "title": "vecMultiply",
+                                                  "type": "action",
+                                                  "name": "vecMultiply",
+                                                  "parameters": {
+                                                    "first": {"key": "<aimDirection>"},
+                                                    "second": {"value": ["facingDirection", 1]}
+                                                  },
+                                                  "output": {
+                                                    "vector": "aimVector"
+                                                  }
+                                                },
+                                                {
+                                                  "title": "vecRotate",
+                                                  "type": "action",
+                                                  "name": "vecRotate",
+                                                  "parameters": {
+                                                    "angle": {"key": "heading"},
+                                                    "vector": {"key": "aimVector"}
+                                                  },
+                                                  "output": {
+                                                    "vector": "aimVector"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "title": "sequence",
+                                          "type": "composite",
+                                          "name": "sequence",
+                                          "parameters": {},
+                                          "children": [
+                                            {
+                                              "title": "multiply",
+                                              "type": "action",
+                                              "name": "multiply",
+                                              "parameters": {
+                                                "factor": {"value": -1},
+                                                "number": {"key": "<inaccuracy>"}
+                                              },
+                                              "output": {
+                                                "result": "minInaccuracy"
+                                              }
+                                            },
+                                            {
+                                              "title": "random",
+                                              "type": "action",
+                                              "name": "random",
+                                              "parameters": {
+                                                "max": {"key": "<inaccuracy>"},
+                                                "min": {"key": "minInaccuracy"}
+                                              },
+                                              "output": {
+                                                "number": "angleOffset"
+                                              }
+                                            },
+                                            {
+                                              "title": "vecRotate",
+                                              "type": "action",
+                                              "name": "vecRotate",
+                                              "parameters": {
+                                                "angle": {"key": "angleOffset"},
+                                                "vector": {"key": "aimVector"}
+                                              },
+                                              "output": {
+                                                "vector": "aimVector"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "title": "spawnProjectile",
+                                          "type": "action",
+                                          "name": "spawnProjectile",
+                                          "parameters": {
+                                            "aimVector": {"key": "aimVector"},
+                                            "angle": {"value": 0},
+                                            "damageRepeatGroup": {"key": "<damageRepeatGroup>"},
+                                            "offset": {"key": "fireOffset"},
+                                            "position": {"key": "self"},
+                                            "projectileConfig": {"value": "<projectileParameters>"},
+                                            "projectileType": {"value": "<projectileType>"},
+                                            "scalePower": {"value": true},
+                                            "sourceEntity": {"key": "self"},
+                                            "trackSource": {"value": false},
+                                            "uniqueRepeatGroup": {"value": true}
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "title": "add",
+                                    "type": "action",
+                                    "name": "add",
+                                    "parameters": {
+                                      "addend": {"value": 1},
+                                      "number": {"key": "shots"}
+                                    },
+                                    "output": {
+                                      "result": "shots"
+                                    }
+                                  },
+                                  {
+                                    "title": "succeeder",
+                                    "type": "decorator",
+                                    "name": "succeeder",
+                                    "parameters": {},
+                                    "child": {
+                                      "title": "selector",
+                                      "type": "composite",
+                                      "name": "selector",
+                                      "parameters": {},
+                                      "children": [
+                                        {
+                                          "title": "gte",
+                                          "type": "action",
+                                          "name": "gte",
+                                          "parameters": {
+                                            "first": {"key": "shots"},
+                                            "second": {"key": "<projectileCount>"}
+                                          }
+                                        },
+                                        {
+                                          "title": "sequence",
+                                          "type": "composite",
+                                          "name": "sequence",
+                                          "parameters": {},
+                                          "children": [
+                                            {
+                                              "title": "greaterThan",
+                                              "type": "action",
+                                              "name": "greaterThan",
+                                              "parameters": {
+                                                "first": {"key": "<projectileCount>"},
+                                                "second": {"value": 1}
+                                              }
+                                            },
+                                            {
+                                              "title": "timer",
+                                              "type": "action",
+                                              "name": "timer",
+                                              "parameters": {
+                                                "time": {"value": "<projectileInterval>"}
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "title": "add",
+                              "type": "action",
+                              "name": "add",
+                              "parameters": {
+                                "addend": {"value": 1},
+                                "number": {"key": "bursts"}
+                              },
+                              "output": {
+                                "result": "bursts"
+                              }
+                            },
+                            {
+                              "title": "succeeder",
+                              "type": "decorator",
+                              "name": "succeeder",
+                              "parameters": {},
+                              "child": {
+                                "title": "selector",
+                                "type": "composite",
+                                "name": "selector",
+                                "parameters": {},
+                                "children": [
+                                  {
+                                    "title": "gte",
+                                    "type": "action",
+                                    "name": "gte",
+                                    "parameters": {
+                                      "first": {"key": "bursts"},
+                                      "second": {"key": "<burstCount>"}
+                                    }
+                                  },
+                                  {
+                                    "title": "sequence",
+                                    "type": "composite",
+                                    "name": "sequence",
+                                    "parameters": {},
+                                    "children": [
+                                      {
+                                        "title": "greaterThan",
+                                        "type": "action",
+                                        "name": "greaterThan",
+                                        "parameters": {
+                                          "first": {"key": "<burstCount>"},
+                                          "second": {"value": 1}
+                                        }
+                                      },
+                                      {
+                                        "title": "timer",
+                                        "type": "action",
+                                        "name": "timer",
+                                        "parameters": {
+                                          "time": {"value": "<burstInterval>"}
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "succeeder",
+                "type": "decorator",
+                "name": "succeeder",
+                "parameters": {},
+                "child": {
+                  "title": "optional",
+                  "type": "decorator",
+                  "name": "optional",
+                  "parameters": {
+                    "shouldRun": {"key": "<faceTarget>"}
+                  },
+                  "child": {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "vecRotate",
+                        "type": "action",
+                        "name": "vecRotate",
+                        "parameters": {
+                          "angle": {"key": "heading"},
+                          "vector": {"value": [1, 0]}
+                        },
+                        "output": {
+                          "vector": "headingDirection"
+                        }
+                      },
+                      {
+                        "title": "faceEntity",
+                        "type": "action",
+                        "name": "faceEntity",
+                        "parameters": {
+                          "entity": {"key": "target"},
+                          "headingDirection": {"key": "headingDirection"}
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "selector",
+            "type": "composite",
+            "name": "selector",
+            "parameters": {},
+            "children": [
+              {
+                "title": "optional",
+                "type": "decorator",
+                "name": "optional",
+                "parameters": {
+                  "shouldRun": {"key": "<rotateAim>"}
+                },
+                "child": {
+                  "title": "transform",
+                  "type": "action",
+                  "name": "transform",
+                  "parameters": {
+                    "group": {"value": "aim"},
+                    "rotation": {"key": "entityAngle"},
+                    "rotationCenter": {"key": "<rotationCenter>"}
+                  }
+                }
+              },
+              {
+                "title": "runner",
+                "type": "action",
+                "name": "runner",
+                "parameters": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "action-winddown",
+        "type": "module",
+        "name": "action-winddown",
+        "parameters": {
+          "winddownState": {"value": "<winddownState>"}
+        }
+      },
+      {
+        "title": "succeeder",
+        "type": "decorator",
+        "name": "succeeder",
+        "parameters": {},
+        "child": {
+          "title": "optional",
+          "type": "decorator",
+          "name": "optional",
+          "parameters": {
+            "shouldRun": {"key": "<rotateAim>"}
+          },
+          "child": {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "aim"}
+            }
+          }
+        }
+      }
+    ]
+  }
+}
