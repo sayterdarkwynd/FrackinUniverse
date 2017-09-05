@@ -1,55 +1,52 @@
 {
-  "itemName" : "fucarbonhandcannon",
-  "price" : 460,
-  "inventoryIcon" : "carbonhandcannon.png",
+  "itemName" : "futritaniumpistol",
+  "price" : 160,
+  "inventoryIcon" : "tritaniumpistol.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A brutally effective pistol.
-^cyan;Counts as a shotgun or pistol^reset;",
-  "shortdescription" : "Blasthammer",
-  "category" : "pistol",
-  "level" : 4,
+  "description" : "Supreme fire rate with wild projectiles",
+  "shortdescription" : "Wildfire",
+  "category" : "machinePistol",
+  "level" : 5,
   "tooltipKind" : "gun2",
 
-  "itemTags" : ["weapon","ranged","shotgun","pistol", "upgradeableWeapon" ],
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "energy"],
   "twoHanded" : false,
-  "weaponType" : "shotgun",
+  "weaponType" : "machinePistol",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "carbonhandcannon.png",
+    "middle" : "tritaniumpistol.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlegreen.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/shotgun3.ogg" ]
+      "fire" : [ "/sfx/gun/plasma_sniper2.ogg" ]
     }
   },
 
   "baseOffset" : [1.2, 0.35],
-  "muzzleOffset" : [2,0],
+  "muzzleOffset" : [0.8,0.1],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "radioactive",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.5,
-    "baseDps" : 5.5,
-    "energyUsage" : 22,
-    "inaccuracy" : 0.3,
+    "fireTime" : 0.05,
+    "baseDps" : 7.65,
+    "energyUsage" : 34,
+    "inaccuracy" : 0.01,
 
-    "projectileCount" : 5,
+    "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "splitbullet2",
+    "projectileType" : "wildbullet",
     "projectileParameters" : {
-      "speed" : 75,
-      "damageSourceKind" : "radioactive",
-      "statusEffects" : [ "radiationburn" ]
+      "speed" : 62
     },
 
     "stances" : {
@@ -63,9 +60,9 @@
         "allowFlip" : true
       },
       "fire" : {
-        "duration" : 0.2,
-        "armRotation" : 2,
-        "weaponRotation" : 2,
+        "duration" : 0.01,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : false,
 
         "allowRotate" : true,
@@ -73,9 +70,9 @@
         "allowFlip" : true
       },
       "cooldown" : {
-        "duration" : 0.15,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "duration" : 0.05,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : false,
 
         "allowRotate" : true,
@@ -85,8 +82,8 @@
     }
   },
 
-  "critChance" : 2,
-  "critBonus" : 20,
+  "critChance" : 1,
+  "critBonus" : 5,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

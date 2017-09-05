@@ -1,0 +1,111 @@
+{
+  "projectileName" : "fireplasmabullet",
+  "physics" : "laser",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "plasmabullet.png",
+  "animationCycle" : 0.5,
+  "fullbright" : true,
+  "frameNumber" : 4,
+  "power" : 1,
+  "speed" : 55,
+  "emitters" : [ "tinyrocketsmoke" ],
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    }
+  ],
+  "lightColor" : [35, 100, 100],
+  "damageKind" : "fire",
+  
+  "actionOnCollide" : [
+    { "action" : "config",  "file" : "/projectiles/explosions/fireexplosion/fireexplosion.config" },
+    {
+      "action" : "projectile",
+      "type" : "firelight",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/fireball_bounce1.ogg",
+        "/sfx/projectiles/fireball_bounce2.ogg",
+        "/sfx/projectiles/fireball_bounce3.ogg"
+      ]
+    }
+  ],
+  
+    "periodicActions":[
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/plasmabullets/firebullet/plasmabullet.png:1",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    },
+
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/plasmabullets/firebullet/plasmabullet.png:2",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      },
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/plasmabullets/firebullet/plasmabullet.png:3",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      },
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/guns/plasmabullets/firebullet/plasmabullet.png:4",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      }      
+    ]
+        
+        
+}

@@ -1,55 +1,53 @@
 {
-  "itemName" : "fucarbonhandcannon",
+  "itemName" : "fupyreitepistol",
   "price" : 460,
-  "inventoryIcon" : "carbonhandcannon.png",
+  "inventoryIcon" : "pyreitepistol.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A brutally effective pistol.
-^cyan;Counts as a shotgun or pistol^reset;",
-  "shortdescription" : "Blasthammer",
+  "rarity" : "legendary",
+  "description" : "Absoultely brutal, but slow firing.
+^cyan;High-incendiary rounds^reset;",
+  "shortdescription" : "Vengeance",
   "category" : "pistol",
-  "level" : 4,
+  "level" : 6,
   "tooltipKind" : "gun2",
 
   "itemTags" : ["weapon","ranged","shotgun","pistol", "upgradeableWeapon" ],
   "twoHanded" : false,
-  "weaponType" : "shotgun",
+  "weaponType" : "pistol",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "carbonhandcannon.png",
+    "middle" : "pyreitepistol.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzleorange1.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/cplasmaex1.wav" ]
     }
   },
 
   "baseOffset" : [1.2, 0.35],
-  "muzzleOffset" : [2,0],
+  "muzzleOffset" : [0.6,0],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "radioactive",
+  "elementalType" : "fire",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1.5,
-    "baseDps" : 5.5,
-    "energyUsage" : 22,
-    "inaccuracy" : 0.3,
-
-    "projectileCount" : 5,
+    "baseDps" : 5,
+    "energyUsage" : 45,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "splitbullet2",
+    "projectileType" : "fireplasmabullet",
     "projectileParameters" : {
-      "speed" : 75,
-      "damageSourceKind" : "radioactive",
-      "statusEffects" : [ "radiationburn" ]
+      "damageSourceKind" : "fire",
+      "statusEffects" : [ "burning" ]
     },
 
     "stances" : {
@@ -85,8 +83,8 @@
     }
   },
 
-  "critChance" : 2,
-  "critBonus" : 20,
+  "critChance" : 4,
+  "critBonus" : 5,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

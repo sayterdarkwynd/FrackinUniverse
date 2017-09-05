@@ -1,55 +1,53 @@
 {
-  "itemName" : "fucarbonhandcannon",
+  "itemName" : "fuisogenpistol",
   "price" : 460,
-  "inventoryIcon" : "carbonhandcannon.png",
+  "inventoryIcon" : "isogenpistol.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A brutally effective pistol.
-^cyan;Counts as a shotgun or pistol^reset;",
-  "shortdescription" : "Blasthammer",
+  "rarity" : "legendary",
+  "description" : "Reap foes with icey death.
+^cyan;Slows targets^reset;",
+  "shortdescription" : "Icer",
   "category" : "pistol",
-  "level" : 4,
+  "level" : 6,
   "tooltipKind" : "gun2",
 
   "itemTags" : ["weapon","ranged","shotgun","pistol", "upgradeableWeapon" ],
   "twoHanded" : false,
-  "weaponType" : "shotgun",
+  "weaponType" : "pistol",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "carbonhandcannon.png",
+    "middle" : "isogenpistol.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/shotgun3.ogg" ]
+      "fire" : [ "/sfx/gun/mp3.ogg" ]
     }
   },
 
   "baseOffset" : [1.2, 0.35],
-  "muzzleOffset" : [2,0],
+  "muzzleOffset" : [0.7,0.1],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "radioactive",
+  "elementalType" : "ice",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.5,
-    "baseDps" : 5.5,
-    "energyUsage" : 22,
-    "inaccuracy" : 0.3,
-
-    "projectileCount" : 5,
+    "fireTime" : 0.1,
+    "baseDps" : 4.5,
+    "energyUsage" : 32,
+    "inaccuracy" : 0.031,
+    "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "splitbullet2",
+    "projectileType" : "iceplasma",
     "projectileParameters" : {
-      "speed" : 75,
-      "damageSourceKind" : "radioactive",
-      "statusEffects" : [ "radiationburn" ]
+      "damageSourceKind" : "ice",
+      "statusEffects" : [ "slow" ]
     },
 
     "stances" : {
@@ -63,9 +61,9 @@
         "allowFlip" : true
       },
       "fire" : {
-        "duration" : 0.2,
-        "armRotation" : 2,
-        "weaponRotation" : 2,
+        "duration" : 0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : false,
 
         "allowRotate" : true,
@@ -73,7 +71,7 @@
         "allowFlip" : true
       },
       "cooldown" : {
-        "duration" : 0.15,
+        "duration" : 0.08,
         "armRotation" : 0,
         "weaponRotation" : 0,
         "twoHanded" : false,
@@ -85,8 +83,8 @@
     }
   },
 
-  "critChance" : 2,
-  "critBonus" : 20,
+  "critChance" : 1,
+  "critBonus" : 1,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
