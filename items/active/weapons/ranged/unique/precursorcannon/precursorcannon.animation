@@ -4,25 +4,25 @@
 			"firing": {
 				"default": "off",
 				"states": {
-					"off": {
-						"frames": 1,
-						"cycle": 1.0,
-						"mode": "loop"
-					},
+					"off": {},
 					"charge": {
 						"frames": 4,
-						"cycle": 1.0,
+						"cycle": 2.2,
 						"mode": "transition",
 						"transition": "fullcharge",
 						"properties": {
-							"persistentSound": "/sfx/gun/dragonhead_charge2.ogg",
-							"persistentSoundStopTime": 0.5
+							"persistentSound": "/sfx/weapons/chargeupprecursor.ogg",
+							"persistentSoundStopTime": 2.2
 						}
 					},
 					"fullcharge": {
 						"frames": 3,
 						"cycle": 0.2,
-						"mode": "loop"
+						"mode": "loop",
+						"properties": {
+							"persistentSound": "/sfx/weapons/chargeprecursorloop.ogg",
+							"persistentSoundStopTime": 1.4
+						}
 					},
 					"fire": {
 						"frames": 1,
@@ -147,6 +147,6 @@
 
 	"sounds": {
 		"fire": ["/sfx/gun/dragonhead_fire1.ogg"],
-		"fire2": ["/sfx/weapons/plasmabeam.ogg", "/sfx/weapons/megagun.ogg"]
+		"fire2": ["/sfx/weapons/plasmabeam.ogg", "/sfx/weapons/megagun.ogg", "/sfx/weapons/annihbeam.wav"]
 	}
 }
