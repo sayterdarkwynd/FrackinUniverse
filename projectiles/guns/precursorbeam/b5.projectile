@@ -1,0 +1,33 @@
+{
+  "projectileName" : "precursorstarterb5",
+  "image" : "isn_plasmabeamshot2.png",
+  "physics" : "laser",
+  "animationCycle" : 0.3,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 5,
+  "power" : 1,
+  "level" : 6,
+    "fullbright" : true,
+  "speed" : 125,
+  "timeToLive" : 0.25,
+  "piercing" : false,
+  "supportsProcessing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [0, 222, 222],
+  "damageKind" : "plasma",
+  
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "isn_plasmablast2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/guns/precursorbeam/isn_plasmablast2.config"
+    }
+  ],
+  "emitter" : [ "electricplasma" ]
+}
