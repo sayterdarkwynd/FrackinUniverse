@@ -1,25 +1,25 @@
 {
-  "itemName" : "fuisogenpistol",
-  "price" : 460,
-  "inventoryIcon" : "isogenpistol.png",
+  "itemName" : "fuspawngun",
+  "price" : 160,
+  "inventoryIcon" : "fuspawngun.png",
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Reap foes with icey death.
-^cyan;Slows targets^reset;",
-  "shortdescription" : "Icer",
+  "rarity" : "uncommon",
+  "description" : "Needles of death.
+^cyan;Inflicts Poison^reset;",
+  "shortdescription" : "Floran Needler",
   "category" : "pistol",
-  "level" : 6,
+  "level" : 3,
   "tooltipKind" : "gun2",
 
-  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon" ],
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon","needler" ],
   "twoHanded" : false,
   "weaponType" : "pistol",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "isogenpistol.png",
+    "middle" : "fuspawngun.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+    "muzzleFlash" : "/animations/muzzleflash/greenstuffmuzzle.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -28,27 +28,23 @@
   },
 
   "baseOffset" : [1.2, 0.35],
-  "muzzleOffset" : [0.7,0.1],
+  "muzzleOffset" : [0.7,0.25],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "poison",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.1,
+    "fireTime" : 0.2,
     "baseDps" : 6.65,
     "energyUsage" : 32,
     "inaccuracy" : 0.031,
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "iceplasma",
-    "projectileParameters" : {
-      "damageSourceKind" : "ice",
-      "statusEffects" : [ "slow" ]
-    },
+    "projectileType" : "thornshot",
 
     "stances" : {
       "idle" : {
