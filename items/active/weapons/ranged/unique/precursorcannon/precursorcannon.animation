@@ -1,152 +1,152 @@
 {
-  "animatedParts" : {
-    "stateTypes" : {
-      "firing" : {
-        "default" : "off",
-        "states" : {
-          "off" : {},
-          "charge" : {
-            "frames" : 4,
-            "cycle" : 2.2,
-            "mode" : "transition",
-            "transition" : "fullcharge",
-            "properties" : {
-              "persistentSound" : "/sfx/weapons/chargeupprecursor.ogg",
-              "persistentSoundStopTime" : 2.2
-            }
-          },
-          "fullcharge" : {
-            "frames" : 3,
-            "cycle" : 0.2,
-            "mode" : "loop",
-            "properties" : {
-              "persistentSound" : "/sfx/weapons/chargeprecursorloop.ogg",
-              "persistentSoundStopTime" : 1.4
-            }            
-          },
-          "fire" : {
-            "frames" : 1,
-            "cycle" : 0.07,
-            "mode" : "transition",
-            "transition" : "off"
-          }
-        }
-      }
-    },
-
-    "parts" : {
-      "muzzleFlash" : {
-		"properties" : {
-		  "zLevel" : -1,
-		  "centered" : true,
-		  "offset" : [0, 0],
-		  "fullbright" : true,
-		  "transformationGroups" : ["muzzle"]
+	"animatedParts": {
+		"stateTypes": {
+			"firing": {
+				"default": "off",
+				"states": {
+					"off": {},
+					"charge": {
+						"frames": 4,
+						"cycle": 2.2,
+						"mode": "transition",
+						"transition": "fullcharge",
+						"properties": {
+							"persistentSound": "/sfx/weapons/chargeupprecursor.ogg",
+							"persistentSoundStopTime": 2.2
+						}
+					},
+					"fullcharge": {
+						"frames": 3,
+						"cycle": 0.2,
+						"mode": "loop",
+						"properties": {
+							"persistentSound": "/sfx/weapons/chargeprecursorloop.ogg",
+							"persistentSoundStopTime": 1.4
+						}
+					},
+					"fire": {
+						"frames": 1,
+						"cycle": 0.07,
+						"mode": "transition",
+						"transition": "off"
+					}
+				}
+			}
 		},
 
-		"partStates" : {
-		  "firing" : {
-		    "fire" : {
-		      "properties" : {
-			"image" : "<partImage>:<variant>.<frame>"
-		      }
-		    }
-		  }
+		"parts": {
+			"muzzleFlash": {
+				"properties": {
+					"zLevel": -1,
+					"centered": true,
+					"offset": [0, 0],
+					"fullbright": true,
+					"transformationGroups": ["muzzle"]
+				},
+
+				"partStates": {
+					"firing": {
+						"fire": {
+							"properties": {
+								"image": "<partImage>:<variant>.<frame>"
+							}
+						}
+					}
+				}
+			},
+			"gun": {
+				"properties": {
+					"centered": true,
+					"fullbright": true,
+					"offset": [1.5, -0.7],
+					"transformationGroups": ["weapon"]
+				},
+
+				"partStates": {
+					"firing": {
+						"off": {
+							"properties": {
+								"image": "<partImage>:off"
+							}
+						},
+						"charge": {
+							"properties": {
+								"image": "<partImage>:charge.<frame>"
+							}
+						},
+						"fullcharge": {
+							"properties": {
+								"image": "<partImage>:fullcharge.<frame>"
+							}
+						},
+						"fire": {
+							"properties": {
+								"image": "<partImage>:fire"
+							}
+						}
+					}
+				}
+			},
+			"gunfullbright": {
+				"properties": {
+					"centered": true,
+					"offset": [1.5, -0.7],
+					"transformationGroups": ["weapon"],
+					"zLevel": 2
+				},
+
+				"partStates": {
+					"firing": {
+						"off": {
+							"properties": {
+								"image": "<partImage>:off"
+							}
+						},
+						"charge": {
+							"properties": {
+								"image": "<partImage>:charge.<frame>"
+							}
+						},
+						"fullcharge": {
+							"properties": {
+								"image": "<partImage>:fullcharge.<frame>"
+							}
+						},
+						"fire": {
+							"properties": {
+								"image": "<partImage>:fire"
+							}
+						}
+					}
+				}
+			}
 		}
-      },    
-      "gun" : {
-        "properties" : {
-          "centered" : true,
-          "fullbright" : true,
-          "offset" : [1.5, -0.7],
-          "transformationGroups" : ["weapon"]
-        },
-
-        "partStates" : {
-          "firing" : {
-            "off" : {
-              "properties" : {
-                "image" : "<partImage>:empty"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:charge.<frame>"
-              }
-            },
-            "fullcharge" : {
-              "properties" : {
-                "image" : "<partImage>:fullcharge.<frame>"
-              }
-            },
-            "fire" : {
-              "properties" : {
-                "image" : "<partImage>:fire"
-              }
-            }
-          }
-        }
-      },
-      "gunfullbright" : {  
-        "properties" : {
-          "centered" : true,
-          "offset" : [1.5, -0.7],
-          "transformationGroups" : ["weapon"],
-          "zLevel" : 2
-        },
-
-        "partStates" : {
-          "firing" : {
-            "off" : {
-              "properties" : {
-                "image" : "<partImage>:empty"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:charge.<frame>"
-              }
-            },
-            "fullcharge" : {
-              "properties" : {
-                "image" : "<partImage>:fullcharge.<frame>"
-              }
-            },
-            "fire" : {
-              "properties" : {
-                "image" : "<partImage>:fire"
-              }
-            }
-          }
-        }
-      }
-    }
-  },
+	},
 
 
-  "particleEmitters" : {
-    "muzzleFlash" : {
-      "transformationGroups" : ["muzzle"],
-      "offsetRegion" : [0, 0, 0, 0],
-      "particles" : [ ]
-    }
-  },
+	"particleEmitters": {
+		"muzzleFlash": {
+			"transformationGroups": ["muzzle"],
+			"offsetRegion": [0, 0, 0, 0],
+			"particles": []
+		}
+	},
 
-  "lights" : {
-    "muzzleFlash" : {
-      "active" : false,
-      "position" : [0, 0],
-      "color" : [90, 90, 0]
-    }
-  },
-  
-  "transformationGroups" : {
-    "weapon" : {},
-    "muzzle" : {}
-  },
+	"lights": {
+		"muzzleFlash": {
+			"active": false,
+			"position": [0, 0],
+			"color": [90, 90, 0]
+		}
+	},
 
-  "sounds" : {
-    "fire" : [ "/sfx/gun/dragonhead_fire1.ogg" ],
-    "fire2" : [ "/sfx/weapons/plasmabeam.ogg", "/sfx/weapons/megagun.ogg", "/sfx/weapons/annihbeam.wav" ]
-  }
+	"transformationGroups": {
+		"weapon": {},
+		"muzzle": {}
+	},
+
+	"sounds": {
+		"fire": ["/sfx/gun/dragonhead_fire1.ogg"],
+		"fire2": ["/sfx/weapons/plasmabeam.ogg", "/sfx/weapons/megagun.ogg", "/sfx/weapons/annihbeam.wav"]
+	}
 }
