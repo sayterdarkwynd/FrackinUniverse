@@ -8,6 +8,19 @@
   "timeToLive" : 0.6,
   "damageKindImage" : "icon.png",
   "pointLight" : false,
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "wildbullet2",
+      "fuzzAngle" : 30,
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 0
+    }
+  ],  
   "actionOnCollide" : [
     {
       "action" : "config",
