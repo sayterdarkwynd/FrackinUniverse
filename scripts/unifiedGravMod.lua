@@ -48,8 +48,10 @@ function unifiedGravMod.refreshGrav(dt)
 		local newGrav=(gravMod*(self.gravMult2-gravBaseMod))--new effective gravity
 		local gravNorm=status.stat("gravityNorm")
 		if 0==world.gravity(entity.position()) then
-			mcontroller.addMomentum({0,-1*80*newGrav*0.2*dt})
+			--mcontroller.addMomentum({0,-1*80*newGrav*0.2*dt})
+			--temporary fix.
 		elseif self.flying then
+			--sb.logInfo("FLOATING!")
 			mcontroller.addMomentum({0,-1*world.gravity(entity.position())*newGrav*0.2*dt})
 		else
 			newGrav=newGrav+gravNorm+1.5
