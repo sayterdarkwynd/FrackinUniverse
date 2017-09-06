@@ -1,0 +1,59 @@
+{
+  "projectileName" : "precursorball",
+  "image" : "precursorball.png",
+  "animationCycle" : 1.0,
+  "level" : 6,
+  "physics" : "laser",
+  "frameNumber" : 6,
+  "pointLight" : true,
+  "damagePoly" : [ [-28, 0], [0, 12], [16, 16], [28, 0], [-16, -16], [0, -12] ],
+  "lightColor" : [204, 159, 5],
+  "speed" : 10,
+  "damageKind" : "radioactive",
+  "power" : 12,
+  "timeToLive" : 4,
+  "universalDamage" : true,
+  "piercing" : true,
+
+  "periodicActions" : [
+    {
+      "time" : 0.05,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "precursorshot2a",
+      "inheritDamageFactor" :0.15,
+      "fuzzAngle" : 360
+   }
+  ],
+  
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/atomsmasherboom/atomsmasherboomyellow.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "precursorstarter",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "precursorstarter",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "precursorstarter",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 0
+    }
+  ],
+  "emitters" : [ "defaultorange" ]
+}
+
+
