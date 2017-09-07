@@ -1,12 +1,26 @@
 {
   "frameGrid" : {
     "size" : [32, 32],
-    "dimensions" : [11, 3],
+    "dimensions" : [9, 3],
 
     "names" : [
-      [ null, "idle.1", "idle.2", "idle.3", "idle.4", "idle.5", "idle.6", "idle.7", "idle.8", "idle.9", "idle.10" ],
-      [ null, "fly.1", "fly.2", "fly.3", "fly.4", "fly.5", "fly.6", null, "windup.1", "windup.2", "windup.3" ],
-      [ "windup.4", "windup.5", "windup.6", null, "swoop.1", null, "hurt.1" ]
+      [ "landwindup.1", "landwindup.2", "landwindup.3", "idle", "flywindup.1", "flywindup.2", "flywindup.3"],
+      [ "fly.1", "fly.2", "fly.3", "fly.4", "fly.5"],
+      [ "chargewindup.1", "chargewindup.2", "chargewindup.3", "chargewindup.4", "chargewindup.5", "chargewindup.6", "charge.1","charge.2"]
     ]
+  },
+  "alias" : {
+    "swoop" : "fly.5",
+    "chargewinddown.1" : "chargewindup.6",
+    "chargewinddown.2" : "chargewindup.5",
+    "chargewinddown.3" : "chargewindup.4",
+    "chargewinddown.4" : "chargewindup.3",
+    "chargewinddown.5" : "chargewindup.2",
+    "chargewinddown.6" : "chargewindup.1",
+    "hurt.1": "fly.1",
+    "hurt.2": "fly.2",
+    "hurt.3": "fly.3",
+    "hurt.4": "fly.4",
+    "hurt.5": "fly.5"
   }
 }
