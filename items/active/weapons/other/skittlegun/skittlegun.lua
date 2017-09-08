@@ -4,11 +4,17 @@ require "/scripts/util.lua"
 gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
 
 function init()
-	baseProjectileTypes=config.getParameter("baseProjectileTypes",{"squirt"})
-	baseProjectileTypesRare=config.getParameter("baseProjectileTypesRare",{"squirt"})
-	totalProjectileTypes=#baseProjectileTypes+#baseProjectileTypesRare
-	projectileElements=config.getParameter("projectileElements",{""})
-	projectileElementsRare=config.getParameter("projectileElementsRare",{""})
+	projectileData=config.getParameter("projectileData")--{primary={common={},rare={}},alt={common={},rare={}}}
+	totalProjectileTypes={}
+	for k,v in pairs(projectileData) do--k=primary,alt
+		totalProjectileTypes[k]=(#v["common"] or 0)+(#v["rare"] or 0)
+	end
+	for k,_ in pairs(totalProjectileTypes) do--k=primary,alt
+		while totalProjectileTypes[k] > 16 do
+			totalProjectileTypes[k]=math.ceil(totalProjectileTypes[k]/2.0)
+		end
+	end
+	elementData=config.getParameter("elementData")
 	self.fireOffset = config.getParameter("fireOffset")
 	updateAim()
 
@@ -24,7 +30,7 @@ function setToolTipValues(ability)
 	local projectileCount=totalProjectileTypes
 	
 	activeItem.setInstanceValue("tooltipFields", {
-		damagePerShotLabel = damagePerShot(ability,projectileCount) * projectileCount,
+		damagePerShotLabel = damagePerShot(ability,1),
 		speedLabel = 1 / ability.fireTime,
 		energyPerShotLabel = ability.energyUsage
 	})
@@ -51,7 +57,7 @@ function update(dt, fireMode, shiftHeld)
 
 	if ability and storage.fireTimer <= 0 and not world.pointTileCollision(firePosition()) and status.overConsumeResource("energy", ability.energyUsage) then
 		storage.fireTimer = ability.fireTime or 1
-		fire(ability,shiftHeld)
+		fire(ability,fireMode,shiftHeld)
 	end
 
 	activeItem.setRecoil(self.recoilTimer > 0)
@@ -63,28 +69,40 @@ end
 	mcontroller.controlApproachVelocityAlongAngle(aimAngle, ability.recoil.speed*count, ability.recoil.force * ability.fireTime*count, true)
 end]]
 
-function fire(ability,throttle)
+function fire(ability,fireMode,throttle)
 	--sb.logInfo("%s",ability)
-	local projectileCount = throttle and 1 or math.floor(math.random(1,totalProjectileTypes))
+	local projectileCount = throttle and 1 or math.floor(math.random(1,totalProjectileTypes[fireMode]))
 	local params = {
 		power = damagePerShot(ability,projectileCount),
 		powerMultiplier = activeItem.ownerPowerMultiplier()
 	}
+	if fireMode=="alt" then
+		params.controlForce=140
+		params.ignoreTerrain=false
+		params.pickupDistance=1.5
+		params.snapDistance=4
+	end
 	for i = 1, projectileCount do
+		local buffer={}
+		local buffer2={}
 		local aimVec=aimVector(ability)
 		
 		local projectileType=""
 		if math.random(1,100) >= 99.0 then
-			projectileType=baseProjectileTypesRare[math.floor(math.random(1,#baseProjectileTypesRare))]
+			buffer=projectileData[fireMode]["rare"]
+			projectileType=buffer[math.floor(math.random(1,#buffer))]
 		else
-			projectileType=baseProjectileTypes[math.floor(math.random(1,#baseProjectileTypes))]
+			buffer=projectileData[fireMode]["common"]
+			projectileType=buffer[math.floor(math.random(1,#buffer))]
 		end
 		
 		local element=""
 		if math.random(1,100) >= 90.0 then
-			element=projectileElementsRare[math.floor(math.random(1,#projectileElementsRare))]
+			buffer2=elementData[fireMode]["rare"]
+			element=buffer2[math.floor(math.random(1,#buffer2))]
 		else
-			element=projectileElements[math.floor(math.random(1,#projectileElements))]
+			buffer2=elementData[fireMode]["common"]
+			element=buffer2[math.floor(math.random(1,#buffer2))]
 		end
 		
 		projectileType=string.gsub(projectileType,"<element>",element)
