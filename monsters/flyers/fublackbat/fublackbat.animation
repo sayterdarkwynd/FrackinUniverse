@@ -6,24 +6,55 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 10,
+            "frames" : 1,
             "cycle" : 1.0,
             "mode" : "loop"
           },
           "fly" : {
-            "frames" : 6,
+            "frames" : 5,
             "cycle" : 0.5,
             "mode" : "loop",
             "frameProperties" : {
-              "immediateSound" : [ "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "", "" ]
+              "immediateSound" : [ "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "", ""]
             }
           },
           "swoopwindup" : {
+            "frames" : 5,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },
+          "swoop" : {
+            "frames" : 1,
+            "cycle" : 1.0,
+            "mode" : "loop"
+          },
+          "landwindup" : {
+            "frames" : 3,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "flywindup" : {
+            "frames" : 3,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "fly"
+          },
+          "chargewindup" : {
             "frames" : 6,
             "cycle" : 0.6
           },
-          "swoop" : {
-            "frames" : 1
+          "chargewinddown" : {
+            "frames" : 6,
+            "cycle" : 0.6
+          },
+          "charge" : {
+            "frames" : 2,
+            "cycle" : 0.1,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : ["/sfx/npc/monsters/blackbat_charge.ogg" ]
+            }
           }
         }
       },
@@ -71,7 +102,7 @@
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:idle"
               }
             },
             "fly" : {
@@ -81,12 +112,37 @@
             },
             "swoopwindup" : {
               "properties" : {
-                "image" : "<partImage>:windup.<frame>"
+                "image" : "<partImage>:fly.<frame>"
               }
             },
             "swoop" : {
               "properties" : {
-                "image" : "<partImage>:swoop.<frame>"
+                "image" : "<partImage>:swoop"
+              }
+            },
+            "landwindup" : {
+              "properties" : {
+                "image" : "<partImage>:landwindup.<frame>"
+              }
+            },
+            "flywindup" : {
+              "properties" : {
+                "image" : "<partImage>:flywindup.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>"
               }
             }
           },
@@ -166,7 +222,7 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "aggroHop" : [ "" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
 }

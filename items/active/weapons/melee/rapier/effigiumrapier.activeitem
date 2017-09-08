@@ -1,0 +1,37 @@
+{ 
+ "itemName" : "effigiumrapier",
+ "price" : 620,
+ "level" : 5,
+ "maxStack" : 1,
+ "rarity" : "Rare",
+ "description" : "Ghostly as a spirit.",
+ "shortdescription" : "Phantasm Rapier",
+ "tooltipKind" : "sword2",
+ "catergory" : "Rapier",
+ "twoHanded" : false,
+ "itemTags" : ["weapon","melee","Rapier","effigium","upgradeableWeapon"],
+ "inventoryIcon" : "effigiumrapier.png",
+ "collectablesOnPickup" : { "fu_weaponrapier" : "effigiumrapier" }, 
+ "animation" : "piercecomboglow.animation",
+ "animationParts" : {
+  "handle": "",
+  "blade" : "effigiumrapier.png"
+  },
+ "animationCustom" : { },
+	
+ "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	
+ "elementalType" : "shadow",
+	
+ "primaryAbilityType" : "piercecombo",
+ "primaryAbility" : {
+   "fireTime" : 0.42,
+   "baseDps" : 5.36,
+   "damageConfig" : {
+     "damageSourceKind": "shadowbroadsword",
+     "statusEffects" : [ "shadowgasfx" ]
+   }
+ },
+  
+ "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
