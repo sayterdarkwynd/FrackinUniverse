@@ -6,55 +6,48 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 1,
+            "frames" : 6,
             "cycle" : 1.0,
             "mode" : "loop"
           },
-          "fly" : {
-            "frames" : 5,
-            "cycle" : 0.5,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "", ""]
-            }
-          },
-          "swoopwindup" : {
-            "frames" : 5,
-            "cycle" : 0.3,
-            "mode" : "loop"
-          },
-          "swoop" : {
-            "frames" : 1,
-            "cycle" : 1.0,
-            "mode" : "loop"
-          },
-          "landwindup" : {
+          "jump" : {
             "frames" : 3,
-            "cycle" : 0.6,
+            "cycle" : 0.75
+          },
+          "fall" : {
+            "frames" : 3,
+            "cycle" : 0.75
+          },
+          "walk" : {
+            "frames" : 6,
+            "cycle" : 1.0,
+            "mode" : "loop"
+          },
+          "run" : {
+            "frames" : 6,
+            "cycle" : 0.75,
+            "mode" : "loop"
+          },
+          "blink" : {
+            "frames" : 6,
+            "cycle" : 0.5,
             "mode" : "transition",
             "transition" : "idle"
-          },
-          "flywindup" : {
-            "frames" : 3,
-            "cycle" : 0.6,
-            "mode" : "transition",
-            "transition" : "fly"
-          },
-          "chargewindup" : {
+          }
+        }
+      },
+      "head" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
             "frames" : 6,
-            "cycle" : 0.6
+            "cycle" : 0.5,
+            "mode" : "loop"
           },
-          "chargewinddown" : {
+          "blink" : {
             "frames" : 6,
-            "cycle" : 0.6
-          },
-          "charge" : {
-            "frames" : 2,
-            "cycle" : 0.1,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : ["/sfx/npc/monsters/blackbat_charge.ogg" ]
-            }
+            "cycle" : 0.5
           }
         }
       },
@@ -65,8 +58,10 @@
           "none" : {
             "frames" : 1
           },
-          "stunned" : {
-            "frames" : 1
+          "blink" : {
+            "frames" : 6,
+            "cycle" : 0.5,
+            "mode" : "loop"
           }
         }
       },
@@ -96,60 +91,70 @@
       "body" : {
         "properties" : {
           "transformationGroups" : [ "body" ],
-          "offset" : [-0.375, 0.125]
+          "zLevel" : 0
         },
+
         "partStates" : {
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle"
+                "image" : "<partImage>:idle.<frame>"
               }
             },
-            "fly" : {
+            "jump" : {
               "properties" : {
-                "image" : "<partImage>:fly.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
-            "swoopwindup" : {
+            "fall" : {
               "properties" : {
-                "image" : "<partImage>:fly.<frame>"
+                "image" : "<partImage>:fall.<frame>"
               }
             },
-            "swoop" : {
+            "walk" : {
               "properties" : {
-                "image" : "<partImage>:swoop"
+                "image" : "<partImage>:walk.<frame>"
               }
             },
-            "landwindup" : {
+            "run" : {
               "properties" : {
-                "image" : "<partImage>:landwindup.<frame>"
-              }
-            },
-            "flywindup" : {
-              "properties" : {
-                "image" : "<partImage>:flywindup.<frame>"
-              }
-            },
-            "chargewindup" : {
-              "properties" : {
-                "image" : "<partImage>:chargewindup.<frame>"
-              }
-            },
-            "chargewinddown" : {
-              "properties" : {
-                "image" : "<partImage>:chargewinddown.<frame>"
-              }
-            },
-            "charge" : {
-              "properties" : {
-                "image" : "<partImage>:charge.<frame>"
+                "image" : "<partImage>:walk.<frame>"
               }
             }
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:blink.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "head" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "zLevel" : 1,
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "head" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "blink" : {
+              "properties" : {
+                "image" : "<partImage>:blink.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:blink.<frame>"
               }
             }
           }
@@ -159,23 +164,14 @@
   },
 
   "transformationGroups" : {
-    "body" : { "interpolated" : true }
-  },
-
-  "effects" : {
-    "blink" : {
-      "type" : "flash",
-      "time" : 0,
-      "directives" : "fade=ffffff;0.5"
-    }
+    "body" : {"interpolated" : true},
+    "aim" : {"interpolated" : true}
   },
 
   "particleEmitters" : {
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
-        { "particle" : "agrobatwing" },
-        { "particle" : "agrobatwingflipped" },
         { "particle" : "deathember" },
         { "particle" : "deathember" },
         { "particle" : "deathember" },
@@ -222,7 +218,14 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "" ],
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  },
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
   }
 }
