@@ -1,0 +1,100 @@
+{
+  "objectName" : "craftsawblade",
+  "colonyTags" : ["avian","aviantemple","evil"],
+  "rarity" : "Common",
+  "description" : "Wow, this looks sharp!",
+  "shortdescription" : "Crafted Sawblade Trap",
+  "race" : "avian",
+  "category" : "trap",
+  "price" : 90,
+
+  "apexDescription" : "Not the best way to deal with intruders, but not the worst either.",
+  "avianDescription" : "Avian protect their tombs well.",
+  "floranDescription" : "Sssharp. Perfect for hunt.",
+  "glitchDescription" : "Worried. This appears to be spinning at several thousand RPM.",
+  "humanDescription" : "If I knew I got to play with these, I wouldn't have skipped carpentry.",
+  "hylotlDescription" : "A well balanced spinning blade.",
+  "novakidDescription" : "Don't like blade too much, but these are all right",
+
+  "damageTeam" : { "type" : "indiscriminate" },
+  "inventoryIcon" : "/objects/avian/sawblade/sawbladeicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "/objects/avian/sawblade/sawbladeground.png:<color>.<frame>",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 3,
+      "animationCycle" : 0.2,
+
+      "spaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [-2, 1], [-1, 1], [0, 1], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "touchDamage" : {
+        "poly" : [ [-1.8, 0.3], [-0.8, 2.0], [0.8, 2.0], [1.8, 0.3] ],
+        "damage" : 25,
+        "damageType" : "IgnoresDef",
+        "damageSourceKind" : "sawblade"
+      }
+    },
+
+    {
+      "dualImage" : "/objects/avian/sawblade/sawbladeceiling.png:<color>.<frame>",
+
+      "imagePosition" : [-16, -8],
+      "frames" : 3,
+      "animationCycle" : 0.2,
+
+      "spaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [-2, -1], [-1, -1], [0, -1], [1, -1] ],
+      "anchors" : [ "top" ],
+
+      "touchDamage" : {
+        "poly" : [ [-1.8, 0.7], [-0.8, -1.0], [0.8, -1.0], [1.8, 0.7] ],
+        "damage" : 25,
+        "damageType" : "IgnoresDef",
+        "damageSourceKind" : "sawblade"
+      }
+    },
+
+    {
+      "image" : "/objects/avian/sawblade/sawbladeleft.png:<color>.<frame>",
+
+      "imagePosition" : [0, -16],
+      "frames" : 3,
+      "animationCycle" : 0.2,
+
+      "spaces" : [ [1, 1], [0, 1], [1, 0], [0, 0], [1, -1], [0, -1], [1, -2], [0, -2] ],
+      "anchors" : [ "left" ],
+
+      "touchDamage" : {
+        "poly" : [ [0.3, 2.0], [2, 0.8], [2, -0.8], [0.3, -2.0] ],
+        "damage" : 25,
+        "damageType" : "IgnoresDef",
+        "damageSourceKind" : "sawblade"
+      }
+    },
+
+    {
+      "image" : "/objects/avian/sawblade/sawbladeright.png:<color>.<frame>",
+
+      "imagePosition" : [-8, -16],
+      "frames" : 3,
+      "animationCycle" : 0.2,
+
+      "spaces" : [ [-1, 1], [0, 1], [-1, 0], [0, 0], [-1, -1], [0, -1], [-1, -2], [0, -2] ],
+      "anchors" : [ "right" ],
+
+      "touchDamage" : {
+        "poly" : [ [0.7, 2.0], [-1, 0.8], [-1, -0.8], [0.7, -2.0] ],
+        "damage" : 25,
+        "damageType" : "IgnoresDef",
+        "damageSourceKind" : "sawblade"
+      }
+    }
+  ],
+
+  //mollys first object (note: it was actually oven1, this is molly's first copy paste derp)
+
+  "soundEffect" : "/sfx/objects/sawblade.ogg",
+
+  "smashOnBreak" : false
+}
