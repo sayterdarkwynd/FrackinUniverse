@@ -11,7 +11,7 @@
   "price" : 32280,
   "lightColor" : [155, 155, 0],
   
-  "health" : 200,
+  "health" : 20,
   
   "printable" : false,
   "animation" : "precursoromegagenerator.animation",
@@ -24,15 +24,16 @@
   "inventoryIcon" : "icon.png",
   "orientations" : [
     {
-      "dualImage" : "precursoromegagenerator.png",
-      "imagePosition" : [-88, 0],
+      "dualImage" : "precursoromegagenerator.png:off",
+      "imagePosition" : [0, 0],
+      "frames" : 8,
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
   ],
 
   "slotCount" : 1,
-  "uiConfig" : "precursorgenerator.config",
+  "uiConfig" : "/objects/minibiome/precursor/precursoromegagenerator/precursorgenerator.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
@@ -47,14 +48,18 @@
   
   "powertype" : "output",
   "acceptablefuel" : {
-    "liquidwater" : 95
+    "liquidwater" : 2,
+    "elderfluid" : 150,
+    "precursorfluid" : 200,
+    "ultronium" : 120,
+    "crunchychick" : 1
   },
   "heat" : [
-    {"minheat" : 70,"animator" : {"base" : "powered"},"sound" : true,"power" : 50,"light" : [255, 255, 0]},
-    {"minheat" : 50,"animator" : {"base" : "powered"},"sound" : true,"power" : 35,"light" : [190, 190, 0]},
-    {"minheat" : 30,"animator" : {"base" : "powered"},"sound" : true,"power" : 20,"light" : [120, 120, 0]},
-    {"minheat" : 20,"animator" : {"base" : "powered"},"sound" : true,"power" : 15,"light" : [80, 80, 0]},
-    {"minheat" : 5,"animator" : {"base" : "powerup"},"sound" : true,"power" : 10,"light" : [55, 55, 0]},
+    {"minheat" : 50,"animator" : {"base" : "powered"},"sound" : true,"power" : 75,"light" : [255, 255, 0]},
+    {"minheat" : 40,"animator" : {"base" : "powered"},"sound" : true,"power" : 50,"light" : [190, 190, 0]},
+    {"minheat" : 20,"animator" : {"base" : "powered"},"sound" : true,"power" : 35,"light" : [120, 120, 0]},
+    {"minheat" : 7,"animator" : {"base" : "powered"},"sound" : true,"power" : 15,"light" : [80, 80, 0]},
+    {"minheat" : 1,"animator" : {"base" : "powerup"},"sound" : true,"power" : 5,"light" : [55, 55, 0]},
     {"minheat" : 0,"animator" : {"base" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
   ]  
 
