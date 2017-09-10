@@ -6,12 +6,13 @@
     "rarity" : "uncommon",
   "description" : "A rather large flame weapon
 ^yellow;Inflicts burning^reset;",
-  "shortdescription" : "Inferno Gun",
+  "shortdescription" : "Inferno",
   "level" : 4,
-  "category" : "flamethrower",
-  "itemTags" : ["weapon","ranged","flamethrower", "upgradeableWeapon"],
+  "category" : "assaultRifle",
+  "weaponType" : "Flamethrower",
+  "itemTags" : ["weapon","ranged","assaultrifle","flamethrower", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
-  "twoHanded" : false,
+  "twoHanded" : true,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -24,7 +25,7 @@
     "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
   },
 
-  "baseOffset" : [1.4, 0.34],
+  "baseOffset" : [1.0, 0.34],
   "muzzleOffset" : [3, 0.125],
 
   "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
@@ -76,6 +77,16 @@
   },
   "critChance" : 2,
   "critBonus" : 4,
+  
+  "altAbilityType" : "spatialcollapseblast",
+  "altAbility" : {
+    "fireTime" : 6,
+    "energyUsage" : 100,
+    "baseDps" : 10,
+    "name" : "Fireblast",
+    "projectileType" : "dragonprojectile"
+  },
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
 
     "upgradeParameters" : {
