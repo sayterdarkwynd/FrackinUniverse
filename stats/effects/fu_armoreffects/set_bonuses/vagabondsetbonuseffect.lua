@@ -5,10 +5,11 @@ setName="fu_vagabondset"
 weaponBonus={
 	{stat = "powerMultiplier", amount = 0.075}
 }
+weaponBonusBoth={
+	{stat = "powerMultiplier", amount = 0.15}
+}
 
 armorBonus={}
-
-
 
 function init()
 	setSEBonusInit(setName)
@@ -30,7 +31,9 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"pistol","machinepistol"})
-	if weapons["either"] then
+	if weapons["both"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonusBoth)
+	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
