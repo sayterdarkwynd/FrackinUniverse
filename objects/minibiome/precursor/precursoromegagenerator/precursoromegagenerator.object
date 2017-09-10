@@ -1,0 +1,61 @@
+{
+  "objectName" : "precursoromegagenerator",
+  "colonyTags" : ["precursor","ancient","storage"],
+  "rarity" : "legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "Some sort of ancient power source.",
+  "shortdescription" : "Precursor Generator",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 32280,
+  "lightColor" : [155, 155, 0],
+  
+  "health" : 200,
+  
+  "printable" : false,
+  "animation" : "precursoromegagenerator.animation",
+  "animationParts" : {
+    "base" : "precursoromegagenerator.png",
+    "basefullbright" : "precursoromegageneratorlit.png"
+  },
+  "animationPosition" : [0, 0],
+  
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "precursoromegagenerator.png",
+      "imagePosition" : [-88, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "slotCount" : 1,
+  "uiConfig" : "precursorgenerator.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/scripts/power.lua","precursorgenerator.lua" ],
+  "scriptDelta" : 60,
+  
+  "inputNodes" : [ [2, 4],[0, 4] ],
+  "outputNodes" : [ [2, 2] ],
+  
+  "soundEffect" : "/sfx/projectiles/astraltear_loop.ogg",
+  
+  
+  "powertype" : "output",
+  "acceptablefuel" : {
+    "liquidwater" : 95
+  },
+  "heat" : [
+    {"minheat" : 70,"animator" : {"base" : "powered"},"sound" : true,"power" : 50,"light" : [255, 255, 0]},
+    {"minheat" : 50,"animator" : {"base" : "powered"},"sound" : true,"power" : 35,"light" : [190, 190, 0]},
+    {"minheat" : 30,"animator" : {"base" : "powered"},"sound" : true,"power" : 20,"light" : [120, 120, 0]},
+    {"minheat" : 20,"animator" : {"base" : "powered"},"sound" : true,"power" : 15,"light" : [80, 80, 0]},
+    {"minheat" : 5,"animator" : {"base" : "powerup"},"sound" : true,"power" : 10,"light" : [55, 55, 0]},
+    {"minheat" : 0,"animator" : {"base" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
+  ]  
+
+}
