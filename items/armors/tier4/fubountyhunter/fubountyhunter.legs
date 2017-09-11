@@ -1,60 +1,50 @@
 {
-  "itemName" : "fubountyhunterchest",
-  "price" : 950,
-  "inventoryIcon" : "icons.png:chest",
+  "itemName" : "fubountyhunterpants",
+  "price" : 600,
+  "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus:
 ^cyan;+12% Physical Resist, 12% Fall Damage Reduction^reset;
 ^#e43774;+20% Damage (Flamethrower and Rocket Launcher)^reset;", 
-  "shortdescription" : "Bounty Hunter Plate",
-  "category" : "t3armor",
+  "shortdescription" : "Bounty Hunter Pants",
+  "category" : "t4armor",
   "tooltipKind" : "armornew2",
 
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
-  "level" : 3,
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "fubountyhunterchest" },
+  "level" : 4,
+  "collectablesOnPickup" : { "fu_armorpowerranged" : "fubountyhunterpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.35
+      "baseMultiplier" : 1.2
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.4
+      "amount" : 0.1
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 9
+      "amount" : 6
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 3
+      "amount" : 0
     }
   ],
 
-
   "statusEffects" : [
+    "liquidnitrogenimmunity",
     "bountyhuntersetbonus",
     {
-      "stat" : "fu_bountyhunterset_chest",
+      "stat" : "fu_bountyhunterset_legs",
       "amount" : 1
     },
     {
@@ -63,11 +53,10 @@
     }
   ],
 
-  "questTags" : [ "tier5armor" ],
-
   "colorOptions" : [
+
     /* BROWN */
-    { "ffca8a" : "67513b", "e0975c" : "503f2f", "a85636" : "3a2f24", "6f2919" : "29221b", "676f83" : "526b4a","3d3d51" : "3c4d37","24232f" : "283125" }
+    { "ffca8a" : "67513b", "e0975c" : "503f2f", "a85636" : "3a2f24", "6f2919" : "29221b", "676f83" : "526b4a","3d3d51" : "3c4d37","24232f" : "283125"  }
 
   ]
 }
