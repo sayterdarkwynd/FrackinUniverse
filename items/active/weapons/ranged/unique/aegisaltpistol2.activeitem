@@ -9,7 +9,8 @@
   "tooltipKind" : "gun2",
   "level" : 1,
   "category" : "pistol",
-  "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","pistol"],
+  "learnBlueprintsOnPickup" : [ "aegisaltpistol3" ],
   "weaponType" : "^#e43774;Upgradeable^reset;",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -75,129 +76,6 @@
 
   "critChance" : 2,
   "critBonus" : 2,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
-  
-  "upgradeParameters" : {
-    "shortdescription" : "^cyan;Protectorate Incapacitator^reset; ^yellow;^reset;",
-  "description" : "Fires two-round bursts.
-^cyan;+1 projectiles^reset;", 
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "aegisaltpistol2.png",
-    "barrel" : "",
-    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
-  },    
-    "critChance" : 8,
-    "critBonus" : 4,
-	  "primaryAbility" : {
-	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-	    "class" : "GunFire",
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
-	    "fireTime" : 0.7,
-	    "baseDps" : 6,
-	    "energyUsage" : 20,
-	    "inaccuracy" : 0.008,
-	    "fireType" : "burst",
-	    
-            "burstTime" : 0.075,
-    	    "burstCount" : 2,
-    
-            "projectileCount" : 1,
-	    "projectileType" : "bullet-2",
-	    "projectileParameters" : {"knockback" : 5,"speed" : 45},
-
-
-	    "stances" : {
-	      "idle" : {
-		"armRotation" : 0,
-		"weaponRotation" : 0,
-		"twoHanded" : false,
-
-		"allowRotate" : true,
-		"allowFlip" : true
-	      },
-	      "fire" : {
-		"duration" : 0,
-		"armRotation" : 1,
-		"weaponRotation" : 1,
-		"twoHanded" : false,
-
-		"allowRotate" : false,
-		"allowFlip" : false
-	      },
-	      "cooldown" : {
-		"duration" : 0.0,
-		"armRotation" : 1,
-		"weaponRotation" : 1,
-		"twoHanded" : false,
-
-		"allowRotate" : false,
-		"allowFlip" : false
-	      }
-	    }
-	  }
-  },
-  
-  "upgradeParameters2" : {
-    "shortdescription" : "^cyan;Protectorate Decimator^reset; ^yellow;^reset;",
-  "description" : "A finely-tuned pistol with deadly seeking rounds.
-^cyan;+1 projectiles^reset;  
-^yellow;Homing projectiles^reset;", 
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "aegisaltpistol2.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/particlemuzzle1.png"
-  },    
-    "critChance" : 4,
-    "critBonus" : 8,
-	  "primaryAbility" : {
-	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-	    "class" : "GunFire",
-
-	    "fireTime" : 0.5,
-	    "baseDps" : 6,
-	    "energyUsage" : 32,
-	    "inaccuracy" : 0.008,
-	    "fireType" : "burst",
-	    
-            "burstTime" : 0.1,
-    	    "burstCount" : 2,
-    
-            "projectileCount" : 2,
-	    "projectileType" : "chargeshotsmall",
-	    "projectileParameters" : { "knockback" : 8, "speed" : 60 },
-
-	    "stances" : {
-	      "idle" : {
-		"armRotation" : 0,
-		"weaponRotation" : 0,
-		"twoHanded" : false,
-
-		"allowRotate" : true,
-		"allowFlip" : true
-	      },
-	      "fire" : {
-		"duration" : 0,
-		"armRotation" : 1,
-		"weaponRotation" : 1,
-		"twoHanded" : false,
-
-		"allowRotate" : false,
-		"allowFlip" : false
-	      },
-	      "cooldown" : {
-		"duration" : 0.0,
-		"armRotation" : 1,
-		"weaponRotation" : 1,
-		"twoHanded" : false,
-
-		"allowRotate" : false,
-		"allowFlip" : false
-	      }
-	    }
-	  }
-  }
-  
 }
