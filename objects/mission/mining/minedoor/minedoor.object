@@ -1,0 +1,56 @@
+{
+  "objectName" : "minedoor",
+  "colonyTags" : ["human","lunarbase","door","mining"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 100,
+  "description" : "An industrial-looking metal door.",
+  "shortdescription" : "Miner's Door",
+  "race" : "human",
+
+  "apexDescription" : "This door could withstand a lot of firepower.",
+  "avianDescription" : "A robust metal door.",
+  "floranDescription" : "Big metal door looks imposssible to penetrate.",
+  "glitchDescription" : "Approving. A door made with tough metal.",
+  "humanDescription" : "A sturdy door of human origin.",
+  "hylotlDescription" : "An ugly door designed with function in mind.",
+  "novakidDescription" : "This door means business.",
+
+  "inventoryIcon" : "minedooricon.png",
+   
+  "orientations" : [
+    {
+      "dualImage" : "minedoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "minedoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

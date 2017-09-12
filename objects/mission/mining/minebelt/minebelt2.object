@@ -1,0 +1,81 @@
+{
+  "objectName" : "minebelt2",
+  "rarity" : "Common",
+  "description" : "A machine used to move large amounts of mined material.",
+  "shortdescription" : "Mining Conveyer Belt",
+  "race" : "human",
+  "category" : "wire",
+  "price" : 500,
+
+  "apexDescription" : "A Conveyer Belt, for moving heavy loads a short distance.",
+  "avianDescription" : "A Conveyer Belt, currently its moving.",
+  "floranDescription" : "Floran bored of fencesss.",
+  "glitchDescription" : "Indifferent. The conveyer belt is seemingly functional.",
+  "humanDescription" : "A short Conveyer Belt for moving heavy loads.",
+  "hylotlDescription" : "An uninteresting human construct.",
+
+  "inventoryIcon" : "minebelticon.png",
+  "orientations" : [
+    {
+      "image" : "minebelt2.png:<color>.off",
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-20, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "minebelt2.png:<color>.off",
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-20, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+    
+  ],
+
+
+
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "minebelt2.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },  
+  "animationParts" : {
+    "bg" : "minebelt2.png"   
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [0, 0] ],
+  "outputNodes" : [ [1, 0] ],
+  
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "console"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [2.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

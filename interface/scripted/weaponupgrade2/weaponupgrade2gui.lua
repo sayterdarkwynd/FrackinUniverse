@@ -253,10 +253,10 @@ function doUpgrade()
 	  sb.logInfo("Upgrading weapon : ")	  
           sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
           
-          if itemConfig.config.upgradeParameters then
+          if (itemConfig.config.upgradeParameters)  and (upgradedItem.parameters.level) > 3 then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
           end
-          if (itemConfig.config.upgradeParameters2) and (upgradedItem.parameters.level) >= 5 then
+          if (itemConfig.config.upgradeParameters2) and (upgradedItem.parameters.level) > 5 then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
           end
           
