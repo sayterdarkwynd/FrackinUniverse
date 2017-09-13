@@ -28,7 +28,7 @@
   },
 
   "baseOffset" : [1.6, -0.32],
-  "muzzleOffset" : [4, 0.125],
+  "muzzleOffset" : [3, 0.24],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -49,7 +49,9 @@
       "speed" : 90,
       "knockback" : 16,
       "knockbackDirectional" : true,
-      "lightColor" : [0, 66, 120]
+      "lightColor" : [30, 120, 170],
+      "statusEffects" : [ "bleedingshort" ],
+      "emitters" : [ "defaultblue" ]
     },
 	  "stances" : {
 	    "idle" : {
@@ -84,7 +86,26 @@
   "critChance" : 5,
   "critBonus" : 5,
 
-  "altAbilityType" : "superharpoon",
+  "altAbilityType" : "sparkles2",
+  "altAbility" : {
+    "name" : "Fusion Shredder",
+    "energyUsage" : 40,
+    "baseDps" : 7,
+    "projectileType" : "iceguardianpellet",
+    "projectileParameters" : {
+      "damageSourceKind" : "shadow",
+      "lightColor" : [30, 120, 170],
+      "statusEffects" : [ "bleedingshort" ],
+      "speed" : 12,
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/shadowimpact.config"
+	    }      
+      ],
+      "emitters" : [ "defaultblue" ]
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
