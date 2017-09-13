@@ -89,7 +89,7 @@
           "fullbright" : true,
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
-          "offset" : [-0.2, 3.55],
+          "offset" : [0, 4.5625],
           "damageArea" : [ [-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0] ]
         },
 
@@ -97,7 +97,7 @@
           "blade" : {
             "inactive" : {
               "properties" : {
-                "image" : "<partImage>:active.1?<directives>?<bladeDirectives>"
+                "image" : "<partImage>:extend.1?<directives>?<bladeDirectives>"
               }
             },
             "extend" : {
@@ -124,14 +124,14 @@
           "centered" : true,
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
-          "offset" : [-0.2, 3.55]
+          "offset" : [0, 4.5625]
         },
 
         "partStates" : {
           "blade" : {
             "inactive" : {
               "properties" : {
-                "image" : "<partImage>:active.1?<directives>?<bladeDirectives>"
+                "image" : "<partImage>:extend.1?<directives>?<bladeDirectives>"
               }
             },
             "extend" : {
@@ -160,7 +160,7 @@
           "image" : "<partImage><paletteSwaps>",
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
-          "offset" : [0, 1.5]
+          "offset" : [0, 0.125]
         }
       },
       "handlefullbright" : {
@@ -170,7 +170,7 @@
           "image" : "<partImage><paletteSwaps>?<directives>",
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
-          "offset" : [0, 1.5]
+          "offset" : [0, 0.125]
         }
       },
       "swoosh" : {
@@ -180,7 +180,7 @@
           "fullbright" : true,
           "transformationGroups" : ["swoosh"],
           "rotationCenter" : [0, 0],
-          "offset" : [-0.4, 1.5]
+          "offset" : [-0.4, 2.5]
         },
 
         "partStates" : {
@@ -242,7 +242,7 @@
     "blade" : {
       "active" : false,
       "transformationGroups" : ["weapon"],
-      "offsetRegion" : [-0.5, -0.75, 0.5, 2.0],
+      "offsetRegion" : [-0.5, 1.0, 0.5, 5.0],
       "emissionRate" : 5,
       "particles" : [
         { "particle" : "smoke"}
@@ -252,7 +252,7 @@
 
   "lights" : {
     "glow" : {
-      "position" : [0, 2.0],
+      "position" : [0, 3.0],
       "color" : [0, 30, 166],
       "transformationGroups" : ["weapon"]
     }

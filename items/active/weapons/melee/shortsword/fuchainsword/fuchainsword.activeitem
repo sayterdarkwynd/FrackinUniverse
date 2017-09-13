@@ -47,5 +47,29 @@
   "critChance" : 6,
   "critBonus" : 6,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+	"shortdescription" : "^cyan;Massacre Blade^reset; ^yellow;^reset;",
+	"description" : "Time to cut them down to size.
+^cyan;Causes Heavy Bleeding^reset;",
+	"inventoryIcon" : "warangelchainsawt8.png",
+	"animation" : "/items/active/weapons/melee/shortsword/fuchainsword/fuchainswordt8.animation",
+	"animationParts" : {
+	  "handle" : "handlet8.png",
+	  "handlefullbright" : "handlet8fullbright.png",
+	  "blade" : "bladet8.png",
+	  "bladefullbright" : "bladet8fullbright.png"
+	},
+	"primaryAbility" : {
+	  "damageConfig" : {
+		"statusEffects": [ "bleedinglong" ]
+      }
+	},
+	"altAbility" : {
+	  "energyUsage" : 40.0,
+	  "rotations" : 6,
+	  "jumpVelocity" : [75, 55]
+	}
+  }
 }
