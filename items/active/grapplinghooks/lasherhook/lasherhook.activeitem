@@ -4,7 +4,7 @@
   "inventoryIcon" : "lasherhookicon.png",
   "rarity" : "uncommon",
   "maxStack" : 1,
-  "description" : "Zip through the air like a boss.",
+  "description" : "Zip through the air like a boss, and slice foes too!",
   "shortdescription" : "Lasher Hook",
   "largeImage" : "lasherhookbig.png",
   "category" : "^#e43774;Upgradeable Tool^reset;",
@@ -27,7 +27,11 @@
   "projectileType" : "lasherhook",
   "projectileParameters" : {
     "speed" : 100,
-    "timeToLive" : 0.45
+    "timeToLive" : 0.45,
+    "power" : 5,
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact1.ogg"],"action":"sound"} ]
   },
 
   "ropeWidth" : 0.8,

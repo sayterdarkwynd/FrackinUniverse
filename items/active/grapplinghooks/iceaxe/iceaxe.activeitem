@@ -4,7 +4,7 @@
   "inventoryIcon" : "iceaxe.png",
   "rarity" : "rare",
   "maxStack" : 1,
-  "description" : "Useful for extremely short-ranged grappling. Survival tool.",
+  "description" : "Useful for extremely short-ranged grappling. Survival tool. Can also harm things.",
   "shortdescription" : "Ice Axe",
   "largeImage" : "iceaxe.png",
   "category" : "Tool",
@@ -25,13 +25,17 @@
   "projectileType" : "iceaxe",
   "projectileParameters" : {
     "speed" : 120,
-    "timeToLive" : 0.45
+    "timeToLive" : 0.45,
+    "power" : 5,
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact1.ogg"],"action":"sound"} ]
   },
 
   "ropeWidth" : 0.01,
   "ropeColor" : [122, 112, 110, 225],
 
-  "reelInDistance" : 1,
+  "reelInDistance" : 2,
   "reelOutLength" : 2,
   "breakLength" : 2,
   
