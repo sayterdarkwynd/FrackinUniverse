@@ -4,7 +4,7 @@
   "inventoryIcon" : "tethersnapicon.png",
   "rarity" : "rare",
   "maxStack" : 1,
-  "description" : "An amazing grappler. Use carefully. It is fast.",
+  "description" : "An amazing grappler. Use carefully. It is -very- fast.",
   "shortdescription" : "Nano-Tether",
   "largeImage" : "tethersnap.png",
   "category" : "Tool",
@@ -25,7 +25,8 @@
   "projectileType" : "tethersnap",
   "projectileParameters" : {
     "speed" : 120,
-    "timeToLive" : 0.45
+    "timeToLive" : 0.45,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact2.ogg"],"action":"sound"} ]
   },
 
   "ropeWidth" : 0.2,

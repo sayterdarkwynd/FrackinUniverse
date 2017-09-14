@@ -15,7 +15,7 @@
   "animation" : "fistweapon.animation",
   "animationParts" : {
     "weapon" : "apexclaws.png",
-    "swoosh" : "swoosh/powerpunchswoosh.png"
+    "swoosh" : "swoosh/electricswoosh.png"
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
@@ -30,8 +30,8 @@
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.15,
   
-  "comboSteps" : 3,
-  "comboTiming" : [0.2, 0.35],
+  "comboSteps" : 5,
+  "comboTiming" : [0.1, 0.35],
   "comboCooldown" : 0.25,
   "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/thunderpunch.combofinisher",
 
@@ -41,9 +41,9 @@
     "scripts" : ["/items/active/weapons/fist/punch.lua"],
     "class" : "Punch",
 
-    "freezeTime" : 0.13,
-    "fireTime" : 0.3,
-    "baseDps" : 8.0,
+    "freezeTime" : 0.15,
+    "fireTime" : 0.1,
+    "baseDps" : 13.0,
     "damageConfig" : {
       "statusEffects" : [ ],
       "damageSourceKind" : "electric",

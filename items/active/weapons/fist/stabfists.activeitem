@@ -15,7 +15,7 @@
   "animation" : "fistweapon.animation",
   "animationParts" : {
     "weapon" : "stabfists.png",
-    "swoosh" : "swoosh/clawswoosh.png"
+    "swoosh" : "swoosh/dashswoosh.png"
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
@@ -30,9 +30,9 @@
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.1,
 
-  "comboSteps" : 3,
-  "comboTiming" : [0.24, 0.45],
-  "comboCooldown" : 0.3,
+  "comboSteps" : 4,
+  "comboTiming" : [0.1, 0.45],
+  "comboCooldown" : 0.2,
   "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/uppercut.combofinisher",
 
   "freezeLimit" : 2,
@@ -41,9 +41,9 @@
     "scripts" : ["/items/active/weapons/fist/punch.lua"],
     "class" : "Punch",
 
-    "freezeTime" : 0.11,
-    "fireTime" : 0.3,
-    "baseDps" : 6,
+    "freezeTime" : 0.12,
+    "fireTime" : 0.15,
+    "baseDps" : 8,
     "damageConfig" : {
       "statusEffects" : [ ],
       "damageSourceKind" : "dagger",
@@ -93,7 +93,7 @@
         "recoil" : true
       },
       "fire" : {
-        "duration" : 0.1,
+        "duration" : 0.05,
         "armRotation" : 0,
         "weaponRotation" : 0,
         "weaponRotationCenter" : [-1.0, 0.0],
