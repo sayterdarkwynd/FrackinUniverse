@@ -146,7 +146,7 @@ function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("poisonbreath", mcontroller.boundBox())
   animator.setParticleEmitterActive("poisonbreath", true)
   local resist = status.stat("cosmicResistance", 0)
-  local multiply = {100 * math.min(resist, 0), 255 + self.multiply[2] * math.min(resist, 0), 255 + self.multiply[3] * math.min(resist, 0)}
+  local multiply = {100 * math.max(resist, 0), 255 + self.multiply[2] * math.max(resist, 0), 255 + self.multiply[3] * math.max(resist, 0)}
   local multiplyHex = string.format("%s%s%s", toHex(multiply[1]), toHex(multiply[2]), toHex(multiply[3]))
   effect.setParentDirectives(string.format("?saturation=%d?multiply=%s", self.saturation, multiplyHex))
 end
