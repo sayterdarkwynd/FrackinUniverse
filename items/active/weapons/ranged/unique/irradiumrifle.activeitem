@@ -84,6 +84,63 @@
   "critBonus" : 5,
 
   "altAbilityType" : "bouncingshot",
+  "altAbility" : {
+    "name" : "Barrier Sphere",
+    "projectileCount" : 2,
+    "inaccuracy" : 3.14,
+    "fireTime" : 2,
+    "energyUsage" : 40,
+    "baseDps" : 0.1,
+    "baseDpsFactor":0,
+    "projectileType" : "staticdischarge",
+    "projectileParameters":{
+      "periodicActions":[
+        {
+          "action":"sound",
+          "options":["/sfx/gun/erchiuseyebeam_stop.ogg"], 
+          "time":0.05, 
+          "repeat":false
+        }
+        ], 
+        "processing":"?hueshift=-60", 
+        "statusEffects":[], 
+        "bounces":0, 
+        "angleAdjust":180, 
+        "speed":0, 
+        "timeToLive":5.0, 
+        "power":0.0, 
+        "knockback":20, 
+        "actionOnReap":[]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0.5,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
