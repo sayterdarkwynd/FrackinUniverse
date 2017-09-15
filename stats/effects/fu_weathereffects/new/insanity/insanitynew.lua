@@ -156,34 +156,31 @@ function deactivateVisualEffects()
 end
 
 function messageCheck()
-  if not self.timerRadioMessage then self.timerRadioMessage = 8 end
-  sb.logInfo("timer = "..self.timerRadioMessage)
-  if self.timerRadioMessage == 0 then
           self.liquidPercent = mcontroller.liquidPercentage()
 	  if (self.liquidPercent) >= 0.5 then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 1.0) 
-			   self.timerRadioMessage = 600   
+			   self.timerRadioMessage = 20   
 	  end
 	  self.velocityVal = mcontroller.xVelocity()
 	  if (self.velocityVal) >= 10 then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectfast", 1.0) 
-			   self.timerRadioMessage = 600  
+			   self.timerRadioMessage = 20  
 	  end
 
 	  if mcontroller.zeroG() then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectgrav", 1.0) 
-			   self.timerRadioMessage = 600  
+			   self.timerRadioMessage = 20  
 	  end  
 
 	  if not mcontroller.onGround() then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair", 1.0) 
-			   self.timerRadioMessage = 600  
+			   self.timerRadioMessage = 20  
 	  end 
-  end
+
   
-  self.hungerLevel = hungerLevel()
+        self.hungerLevel = hungerLevel()
         if (self.windLevel >= 20) then
-                if self.timerRadioMessage == 0 then
+                if self.timerRadioMessage < 1 then
                   if not self.usedWind then
                     world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
                     self.timerRadioMessage = 5
@@ -191,6 +188,7 @@ function messageCheck()
                   end
 		end
         end
+        
         if status.isResource("food") then
 	     if ( self.hungerLevel <= 5) then
                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry4", 1.0) 
@@ -229,7 +227,6 @@ checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt
 self.biomeTimer2 = self.biomeTimer2 - dt
 self.timerRadioMessage = self.timerRadioMessage - dt
-if self.timerRadioMessage < 0 then self.timerRadioMessage = 8 end
 
 --set the base stats
   self.baseRate = config.getParameter("baseRate",0)
