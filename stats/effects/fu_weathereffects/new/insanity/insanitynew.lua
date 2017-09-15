@@ -156,7 +156,7 @@ function deactivateVisualEffects()
 end
 
 function messageCheck()
-  if self.timerRadioMessage = 0 then
+  if self.timerRadioMessage == 0 then
           self.liquidPercent = mcontroller.liquidPercentage()
 	  if (self.liquidPercent) >= 0.5 then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 1.0) 
