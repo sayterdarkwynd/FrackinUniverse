@@ -49,7 +49,7 @@ function checkEffectValid()
 	else
 	  -- inform them they are ill
 	  if not self.usedIntro then
-	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeinsanity", 1.0) -- send player a warning
+	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeinsanity", 1.0) 
 	    self.usedIntro = 1
 	  end
 
@@ -141,7 +141,6 @@ function toHex(num)
   return hex
 end
 
---*********alert the player that they are affected
 function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("poisonbreath", mcontroller.boundBox())
   animator.setParticleEmitterActive("poisonbreath", true)
@@ -157,11 +156,34 @@ function deactivateVisualEffects()
 end
 
 function messageCheck()
+  if self.timerRadioMessage = 0 then
+          self.liquidPercent = mcontroller.liquidPercentage()
+	  if (self.liquidPercent) >= 0.5 then
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 1.0) 
+			   self.timerRadioMessage = 600  
+	  end
+	  self.velocityVal = mcontroller.xVelocity()
+	  if (self.velocityVal) >= 10 then
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectfast", 1.0) 
+			   self.timerRadioMessage = 600  
+	  end
+
+	  if mcontroller.zeroG() then
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectgrav", 1.0) 
+			   self.timerRadioMessage = 600  
+	  end  
+
+	  if not mcontroller.onGround() then
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair", 1.0) 
+			   self.timerRadioMessage = 600  
+	  end 
+  end
+  
   self.hungerLevel = hungerLevel()
         if (self.windLevel >= 20) then
                 if self.timerRadioMessage == 0 then
                   if not self.usedWind then
-                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) -- send player a warning
+                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
                     self.timerRadioMessage = 5
                     self.usedWind = 1
                   end
@@ -169,25 +191,25 @@ function messageCheck()
         end
         if status.isResource("food") then
 	     if ( self.hungerLevel <= 5) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry4", 1.0) -- send player a warning
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry4", 1.0) 
                    self.timerRadioMessage = 20
              elseif (self.hungerLevel <= 10) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry3", 1.0) -- send player a warning
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry3", 1.0) 
                    self.timerRadioMessage = 20
              elseif (self.hungerLevel <= 20) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry2", 1.0) -- send player a warning
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry2", 1.0) 
                    self.timerRadioMessage = 20
              elseif (self.hungerLevel <= 30) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry1", 1.0) -- send player a warning
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry1", 1.0) 
                    self.timerRadioMessage = 20
              elseif (self.hungerLevel <= 40) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry5", 1.0) -- send player a warning
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry5", 1.0) 
                    self.timerRadioMessage = 20
              elseif (self.hungerLevel <= 50) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry6", 1.0) -- send player a warning
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry6", 1.0) 
                    self.timerRadioMessage = 20
              elseif (self.hungerLevel <= 60) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry7", 1.0) -- send player a warning
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry7", 1.0) 
                    self.timerRadioMessage = 20
  	     end
         end
