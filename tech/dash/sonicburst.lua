@@ -113,7 +113,7 @@ function startDash(direction)
 -- ***end jump
 
 -- ***spawn projectile
-    local damageConfig = { power = (status.stat("maxEnergy")/5),speed = 0,physics = "default" } 
+    local damageConfig = { power = (status.stat("maxEnergy")/5),speed = 0,damageSourceKind = "default" } 
     status.addEphemeralEffects{{effect = "nofalldamage", duration = self.cooldown}}
     world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
     world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {10, 0}, true, damageConfig)
