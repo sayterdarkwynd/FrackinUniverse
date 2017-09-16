@@ -157,24 +157,28 @@ end
 
 function messageCheck()
           self.liquidPercent = mcontroller.liquidPercentage()
-	  if (self.liquidPercent) >= 0.5 then
+	  if (self.liquidPercent) >= 0.5 and self.timerRadioMessage < 1 and not self.usedLiq then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 1.0) 
-			   self.timerRadioMessage = 20   
+			   self.timerRadioMessage = 20 
+			   self.usedLiq = 1
 	  end
 	  self.velocityVal = mcontroller.xVelocity()
-	  if (self.velocityVal) >= 10 then
+	  if (self.velocityVal) >= 10 and self.timerRadioMessage < 1 and not self.usedVel then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectfast", 1.0) 
 			   self.timerRadioMessage = 20  
+			   self.usedVel = 1
 	  end
 
-	  if mcontroller.zeroG() then
+	  if mcontroller.zeroG() and self.timerRadioMessage < 1 and not self.usedZero then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectgrav", 1.0) 
 			   self.timerRadioMessage = 20  
+			   self.usedZero = 1
 	  end  
 
-	  if not mcontroller.onGround() then
+	  if not mcontroller.onGround() and self.timerRadioMessage < 1 and not self.usedLeap then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair", 1.0) 
 			   self.timerRadioMessage = 20  
+			   self.usedLeap = 1
 	  end 
 
   
