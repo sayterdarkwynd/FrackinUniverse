@@ -834,3 +834,4 @@ function button3() commandProcessor(widget.getData("button3")) end
 function button4() commandProcessor(widget.getData("button4")) end
 function button5() commandProcessor(widget.getData("button5")) end
 function button6() commandProcessor(widget.getData("button6")) end
+function skiptext() skip() end
