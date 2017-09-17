@@ -112,7 +112,7 @@ function doUpgrade()
         if consumedCurrency then
         
           local itemConfig = root.itemConfig(upgradedItem)  
-                  self.baseValueMod = itemConfig.config.level -- store the original level in case we need it for calculations
+                  self.baseValueMod = itemConfig.config.level or 1 -- store the original level in case we need it for calculations
 		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 		  if (itemConfig.parameters.baseDps) or (itemConfig.config.baseDps) then
 		    upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/20) )  -- increase DPS a bit
