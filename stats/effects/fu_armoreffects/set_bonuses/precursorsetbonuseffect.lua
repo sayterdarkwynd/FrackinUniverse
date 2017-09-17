@@ -3,14 +3,12 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 weaponBonus={
 	{stat = "powerMultiplier", baseMultiplier = 1.15}
 }
-weaponBonus2={
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
-}
 
 armorBonus={
-	{stat = "critChance", amount = 15},
+	{stat = "critChance", amount = 5},
 	{stat = "asteroidImmunity", amount = 1},
-	{stat = "breathProtection", amount = 1}
+	{stat = "breathProtection", amount = 1},
+	{stat = "extremepressureProtection", amount = 1}
 }
 
 setName="fu_precursorset"
@@ -37,8 +35,8 @@ function update(dt)
 end
 
 function checkWeapons()
-local weaponSword=weaponCheck({"machinepistol","precursor"})
-local weaponShield=weaponCheck({"machinepistol","precursor"})
+local weaponSword=weaponCheck({"energy","precursor"})
+local weaponShield=weaponCheck({"energy","precursor"})
 
 	if weaponSword["either"] and weaponShield["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
