@@ -7,16 +7,26 @@
         "states" : {
           "idle" : {
             "frames" : 2,
-            "cycle" : 2.0,
+            "cycle" : 2.2,
             "mode" : "loop"
           },
-          "fly" : {
-            "frames" : 2,
+          "bite" : {
+            "frames" : 1,
             "cycle" : 1.0,
+            "mode" : "loop"
+          },          
+          "roar" : {
+            "frames" : 2,
+            "cycle" : 2.2,
             "mode" : "loop",
             "properties" : {
-              "immediateSound" : [ "/sfx/npc/monsters/crystalboss_pain1.ogg" ]
+              "immediateSound" : "/sfx/npc/boss/crystalboss_pain1.ogg"
             }
+          },          
+          "fly" : {
+            "frames" : 2,
+            "cycle" : 1.2,
+            "mode" : "loop"
           }
         }
       },
@@ -32,7 +42,7 @@
             "cycle" : 0.75,
             "mode" : "loop",
             "properties" : {
-              "immediateSound" : [ "/sfx/npc/monsters/crystalboss_pain2.ogg" ]
+              "immediateSound" : "/sfx/npc/boss/crystalboss_pain2.ogg"
             }
           }
         }
@@ -75,6 +85,11 @@
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:bite"
+              }
+            },  
+            "roar" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
               }
             },            
             "fly" : {
