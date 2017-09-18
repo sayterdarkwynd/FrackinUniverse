@@ -28,7 +28,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	        status.addEphemeralEffect("gravgenfieldarmor2",5)
+	        --status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end	
 
