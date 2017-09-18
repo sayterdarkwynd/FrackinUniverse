@@ -1,0 +1,57 @@
+{
+  "itemName" : "cuteshortsword",
+  "level" : 5,
+  "price" : 600,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Cute Broads are all the rage these days.",
+  "shortdescription" : "Cute Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","cute","upgradeableWeapon"],
+
+  "inventoryIcon" : "cuteshortsword.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/comboglowshortsword.animation",
+  "animationParts" : {
+    "blade" : "cuteshortsword.png",
+    "bladefullbright" : "cuteshortswordfullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/shortsword/swoosh/cuteswoosh.png:<frame>" }},
+      "fire2" : { "properties" : { "image" : "/items/active/weapons/melee/shortsword/swoosh2/cuteswoosh.png:<frame>" }}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 50,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicshortsword"
+    }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

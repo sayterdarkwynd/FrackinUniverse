@@ -1,0 +1,65 @@
+{
+  "itemName" : "cuteaxe",
+  "level" : 5,
+  "price" : 600,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Chops up enemies with cuteness",
+  "shortdescription" : "Cute Axe",
+  "tooltipKind" : "sword2",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe","cute","upgradeableWeapon"],
+
+  "inventoryIcon" : "cuteaxe.png",
+
+  "animation" : "/items/active/weapons/melee/axe/axeglow.animation",
+  "animationParts" : {
+    "blade" : "cuteaxe.png",
+    "bladefullbright" : "cuteaxefullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/axe/swoosh/cuteswoosh.png:<frame>" }}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"},
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.65,
+    "baseDps" : 6.8,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicaxe"
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
