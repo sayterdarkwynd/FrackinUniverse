@@ -1,0 +1,40 @@
+{
+  "itemName" : "isogenrapier",
+  "price" : 1200,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Icey-cold stabby side. Deadly in almost any hand.
+^cyan;Inflicts Frost Burn^reset;",
+  "shortdescription" : "Isogen Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon" ],
+  "inventoryIcon" : "isogenrapier_frann.png",
+
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "isogenrapier_frann.png",
+    "bladefullbright" : "isogenrapierfullbright.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 1, 
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.32,
+    "baseDps" : 5.0,
+    "damageConfig" : {
+      "damageSourceKind":"ice",
+      "statusEffects":[ "frozenburning" ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

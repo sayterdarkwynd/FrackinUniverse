@@ -20,7 +20,7 @@ function raceroller()
   end
   
   if not self.isUnique then 
-    self.raceroller = math.random(20)
+    self.raceroller = math.random(19)
     if self.raceroller == 1 then 
       self.crewrace = "apex"
     elseif self.raceroller == 2 then
@@ -58,9 +58,7 @@ function raceroller()
     elseif self.raceroller == 18 then
       self.crewrace = "thelusian"
     elseif self.raceroller == 19 then
-      self.crewrace = "fupeglaci" 
-    elseif self.raceroller == 20 then
-      self.crewrace = "fufaleni"        
+      self.crewrace = "fupeglaci"        
     else
       self.crewrace = "human"
     end
