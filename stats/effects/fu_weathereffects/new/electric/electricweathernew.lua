@@ -43,7 +43,7 @@ function checkEffectValid()
 	  --    self.timerRadioMessage = 10
 	  --    self.usedIntro = 1
 	  --  end
-	  end
+	  --end
 	  end
 end
 
