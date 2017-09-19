@@ -2,33 +2,23 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/scripts/rect.lua"
 
-dollbossShockWave = {}
-
-function dollbossShockWave:init()
-  storage.projectileType = config.getParameter("projectileType")
-  storage.projectileParameters = config.getParameter("projectileParameters")
-  storage.shockWaveBounds = config.getParameter("shockwaveBounds")
-  storage.shockWaveHeight = config.getParameter("shockwaveHeight")
-  storage.maxDistance = config.getParameter("maxDistance")
-end
-
 -- Helper functions
-function dollbossShockWave:fireShockwave(charge)
-  local impact, impactHeight = storage:impactPosition()
+function fireShockwave()
+  local impact, impactHeight = impactPosition()
 
   if impact then
-    local charge = math.floor(storage.maxDistance)
+    local charge = math.floor(config.getParameter("maxDistance"))
     local directions = {1, -1}
-    local positions = storage:shockwaveProjectilePositions(impact, charge, directions)
+    local positions = shockwaveProjectilePositions(impact, charge, directions)
     if #positions > 0 then
       --need to scale the power
-      local params = copy(storage.projectileParameters)
+      local params = copy(config.getParameter("projectileParameters"))
       params.power = scalePower(params.power)
       params.actionOnReap = {
         {
           action = "projectile",
           inheritDamageFactor = 1,
-          type = storage.projectileType
+          type = config.getParameter("projectileType")
         }
       }
       for i,position in pairs(positions) do
@@ -41,14 +31,14 @@ function dollbossShockWave:fireShockwave(charge)
   end
 end
 
-function dollbossShockWave:impactPosition()
+function impactPosition()
   local position = mcontroller.position()
   local bounds = mcontroller.boundBox()
-  local yoffset = {0,bounds[2]}
-  return vec2.add
+  local offset = {0,bounds[2]}
+  return vec2.add(position, offset)
 end
 
-function dollbossShockWave:shockwaveProjectilePositions(impactPosition, maxDistance, directions)
+function shockwaveProjectilePositions(impactPosition, maxDistance, directions)
   local positions = {}
 
   for _,direction in pairs(directions) do
@@ -57,9 +47,9 @@ function dollbossShockWave:shockwaveProjectilePositions(impactPosition, maxDista
     for i = 0, maxDistance do
       local continue = false
       for _,yDir in ipairs({0, -1, 1}) do
-        local wavePosition = {position[1] + direction * i, position[2] + 0.5 + yDir + storage.shockwaveHeight}
+        local wavePosition = {position[1] + direction * i, position[2] + 0.5 + yDir + config.getParameter("shockwaveHeight")}
         local groundPosition = {position[1] + direction * i, position[2] + yDir}
-        local bounds = rect.translate(storage.shockWaveBounds, wavePosition)
+        local bounds = rect.translate(config.getParameter("shockwaveBounds"), wavePosition)
 
         if world.pointTileCollision(groundPosition, {"Null", "Block", "Dynamic", "Slippery"}) and not world.rectTileCollision(bounds, {"Null", "Block", "Dynamic", "Slippery"}) then
           table.insert(positions, wavePosition)

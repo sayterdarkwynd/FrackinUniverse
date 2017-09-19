@@ -1,10 +1,9 @@
 {
   "name": "dollboss",
-  "description": null,
+  "description": "",
   "scripts": [
     "/scripts/behavior.lua",
     "/scripts/actions/entity.lua",
-    "/scripts/actions/notification.lua",
     "/scripts/actions/animator.lua",
     "/scripts/actions/monster.lua",
     "/scripts/actions/query.lua",
@@ -85,14 +84,6 @@
                             "name": "setDying",
                             "parameters": {
                               "shouldDie": {"value": false}
-                            }
-                          },
-                          {
-                            "title": "receivedNotification",
-                            "type": "action",
-                            "name": "receivedNotification",
-                            "parameters": {
-                              "type": {"value": "startboss"}
                             }
                           },
                           {
@@ -631,7 +622,7 @@
                                         "parameters": {
                                           "aimVector": {"key": "fireVector"},
                                           "offset": {"value": [0, 3]},
-                                          "projectileConfig": {"key": "<deathFlameConfig>\"="},
+                                          "projectileConfig": {"key": "<deathFlameConfig>"},
                                           "projectileType": {"value": "bluefire"}
                                         }
                                       },

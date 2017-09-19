@@ -14,10 +14,12 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua",
-      "/monsters/boss/dollboss/shockwave.lua" //needs to initialize variables in init.
+      "/monsters/monster.lua"
     ],
-
+    "initialScriptDelta" : 1,
+    "behaviorUpdateDelta" : 1,
+	
+	"behavior" : "dollboss",
     "behaviorConfig" : {
       "deathMovementParameters" : {
         "gravityEnabled" : true,
@@ -77,7 +79,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "shadowlash",
       "knockback" : 30,
-      "statusEffects" : [ "insanity" ]
+      "statusEffects" : [ "slow" ]
     },
 
     "statusSettings" : {

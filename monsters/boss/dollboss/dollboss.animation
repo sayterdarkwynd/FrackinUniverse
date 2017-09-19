@@ -3,99 +3,107 @@
     "stateTypes" : {
       "head" : {
         "default" : "sleeping",
-        "idle" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "screamwindup" : {
-          "frames" : 4,
-          "cycle" : 0.5
-        },
-        "screamwinddown" : {
-          "frames" : 4,
-          "cycle" : 0.5
-        },
-        "scream" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "laser" : {
-          "frames" : 2,
-          "cycle" : 0.25,
-          "mode" : "loop"
-        },
-        "spawn" : {
-          "frames" : 3,
-          "cycle" : 0.5,
-          "mode" : "transition",
-          "transition": "idle"
-        },
-        "sleeping" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "hurt" : {
-          "frames" : 1,
-          "cycle" : 0.5
+        "states" : {
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "screamwindup" : {
+            "frames" : 4,
+            "cycle" : 0.5
+          },
+          "screamwinddown" : {
+            "frames" : 4,
+            "cycle" : 0.5
+          },
+          "scream" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "laser" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "spawn" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition": "idle"
+          },
+          "sleeping" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "hurt" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          }
         }
       },
       "hair" : {
         "default" : "idle",
-        "idle" : {
-          "frames" : 4,
-          "cycle" : 0.4,
-          "mode" : "loop"
-        },
-        "hurt" : {
-          "frames" : 4,
-          "cycle" : 0.4,
-          "mode" : "loop"
+        "states" : {
+          "idle" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop"
+          },
+          "hurt" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop"
+          }
         }
       },
       "lefthand" : {
         "default" : "invisible",
-        "invisible" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "idle" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "slam" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "windup" : {
-          "frames" : 4,
-          "cycle" : 0.5
-        },
-        "winddown" : {
-          "frames" : 4,
-          "cycle" : 0.5
+        "states" : {
+          "invisible" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "slam" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "windup" : {
+            "frames" : 4,
+            "cycle" : 0.5
+          },
+          "winddown" : {
+            "frames" : 4,
+            "cycle" : 0.5
+          }
         }
       },
       "righthand" : {
         "default" : "invisible",
-        "invisible" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "idle" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "slam" : {
-          "frames" : 1,
-          "cycle" : 0.5
-        },
-        "windup" : {
-          "frames" : 4,
-          "cycle" : 0.5
-        },
-        "winddown" : {
-          "frames" : 4,
-          "cycle" : 0.5
+        "states" : {
+          "invisible" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "slam" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "windup" : {
+            "frames" : 4,
+            "cycle" : 0.5
+          },
+          "winddown" : {
+            "frames" : 4,
+            "cycle" : 0.5
+          }
         }
       },
       "sound" : {
@@ -291,7 +299,7 @@
       }
     }
   },
-  
+
   "globalTagDefaults" : {
     "incorpreal" : ""
   },
@@ -337,7 +345,38 @@
         { "particle" : "monstersplosion" }
       ]
     },
-    "deathPoof" : {},
+    "deathPoof" : {
+	  "emissionRate" : 1.0,
+      "offsetRegion" : [-6, -7, 6, 0],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/puff2c/puff2c.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 1,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" },
+        { "particle" : "dust4" }
+      ]
+	},
     "slam" : {
       "emissionRate" : 1.0,
       "offsetRegion" : [-6, -8, 6, 6],
