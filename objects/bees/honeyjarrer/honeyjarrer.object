@@ -3,7 +3,7 @@
   "colonyTags" : [ "bees" ],
   "printable" : false,
   "rarity" : "rare",
-  "description" : "Connect it to an Industrial Centrifuge, and add empty bottles! Requires 2W Power.",
+  "description" : "Connect it to an Industrial Centrifuge, and add empty bottles!",
   "shortdescription" : "^orange;Honey Jarring Machine^reset;",
   "subtitle" : "Fill your honey jars!",
   "race" : "generic",
@@ -30,7 +30,7 @@
   "animationParts" : {
     "jar" : "honeyjarrer.png"
   },
-  "scripts" : [ "/scripts/power.lua","/objects/bees/honeyjarrer/honeyjar.lua" ],
+  "scripts" : [ "/objects/bees/honeyjarrer/honeyjar.lua" ],
   "scriptDelta" : 12,
   "recipeGroup" : "honeyjarrer",
   "openSounds" : [ "/sfx/objects/florancrate_open.ogg" ],
@@ -38,8 +38,6 @@
   "uiConfig" : "/objects/bees/honeyjarrer/honeyjarrer.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  "inputNodes":[[0,0]],
-  "outputNodes":[[0,1]],
-  "powertype" : "input",
-  "isn_requiredPower" : 2  
+  "inputNodes":[[0,1]],
+  "outputNodes":[[0,0]]
 }
