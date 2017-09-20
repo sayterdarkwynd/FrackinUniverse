@@ -18,41 +18,43 @@
       "tileLimitTop" : 275,
       "parallax" : 1.2
     },
+    
+    {
+      "kind" : "foliage/treeback",
+      "offset" : [80, 110],
+      "parallax" : [6,4.99],
+      "directives" : "?saturation=-5?brightness=20",
+      "nohueshift" : true
+    },
+    
+   
     {
       "kind" : "fungusback",
       "baseCount" : 2,
       "offset" : [0, 360],
+      "noRandomOffset" : true,
       "parallax" : [5,5],
-      "nightCorrelation" : 0,
       "nohueshift" : true,
-      "unlit" : true
+      "fadePercent" : 0.05
     },
     {
       "kind" : "fungusbacklit",
       "baseCount" : 2,
       "offset" : [0, 360],
+      "noRandomOffset" : true,
       "parallax" : [5,5.001],
-      "nohueshift" : true
+      "nohueshift" : true,
+      "fadePercent" : 0.05,
+      "unlit" : true
     },
   
     {
       "kind" : "foliage/treefront",
-      "offset" : [0, 315],
+      "offset" : [0, 130],
       "parallax" : [4.5,4.7],
       "directives" : "?saturation=-10?brightness=5",
-      "nohueshift" : true,
-      "unlit" : true
+      "nohueshift" : true
     },
-    {
-      "kind" : "foliage/treeback",
-      "offset" : [0, 315],
-      "parallax" : [4.6,4.99],
-      "directives" : "?saturation=-5?brightness=10",
-      "nohueshift" : true,
-      "unlit" : true
-    },
-
- 
     
     {
       "kind" : "fungalgrassbelow1",
@@ -104,26 +106,30 @@
     
     {
       "kind" : "fungusfront",
-      "offset" : [0, 310],
+      "offset" : [0, 330],
+      "noRandomOffset" : true,
       "parallax" : [4.5,3],
       "modifiers" : "",
       "nohueshift" : true,
-      "unlit" : true
+      "fadePercent" : 0.02
     },
     {
       "kind" : "fungusfrontlit",
-      "offset" : [0, 310],
+      "offset" : [0, 330],
+      "noRandomOffset" : true,
       "parallax" : [4.5,3.001],
       "modifiers" : "",
-      "nohueshift" : true
+      "nohueshift" : true,
+      "fadePercent" : 0.02,
+      "unlit" : true
     }, 
     
-    //{
-    //  "kind" : "grassrare",
-    //  "baseCount" : 4,
-    //  "offset" : [0, 50],
-    //  "parallax" : [4.5, 3]
-    //},
+    {
+      "kind" : "fungusrare",
+      "baseCount" : 4,
+      "offset" : [0, 330],
+      "parallax" : [4.5, 3.01]
+    },
     //{
     //  "kind" : "gardentrees2",
     //  "offset" : [0, 30],
