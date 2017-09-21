@@ -1,0 +1,60 @@
+{
+  "objectName" : "precursorverticaldoor2",
+  "colonyTags" : ["precursor","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 100,
+  "description" : "Ancient and glowy",
+  "shortdescription" : "Precursor Sliding Door",
+  "race" : "precursor",
+
+  "inventoryIcon" : "precursorverticaldooricon.png",
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "precursorverticaldoor.png"
+  },
+  
+  "orientations" : [
+    {
+      "image" : "precursorverticaldoor.png:default",
+      "imagePosition" : [-16, -6],
+      "renderLayer" : "Object+5",
+      "animationPosition" : [-16, -6],
+      "flipImages" : true,
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ]
+    },
+    {
+      "image" : "precursorverticaldoor.png:default",
+      "imagePosition" : [-16, -6],
+      "renderLayer" : "Object+5",
+      "animationPosition" : [-16, -6],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ]
+    }
+  ],
+
+  "inputNodes" : [ [-2, 0] ],
+  "outputNodes" : [ [2, -1] ]
+}

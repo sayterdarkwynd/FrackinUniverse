@@ -13,6 +13,29 @@ DEFAULT_OFFSPRING_CHANCE = 0.4
 --use the above to track time for bee maturation while player isnt present
 --
 
+
+-- NEW PROPERTIES
+
+-- some way to check Fruit, Vegetable or Flower based on bee types preferences. Production of non-preferenced pollination is 25%, rather than 100%.
+-- queenAge = the older the queen, the better the hive gets. This is added to production totals. Max additional output is +5. Add +1 age per day (24 hours real-time, not game time). Regains 1HP per day if safe.
+-- queenLifespan = the total number of days a queen survives before dying and spawning a new queen to take over. This varies on breed.
+-- queenHealth = the older the queen, the more HP she has. Mite infestations will reduce her health and potentially kill her.
+
+-- mutationIncrease increases with Queen age as well, meaning that the older the queen the more likely the hive is to spawn weird mutations
+
+
+-- droneTotal = the total drones impact the total output of the hive. This total is added as (droneTotal). This total is added to beePower and has no cap.
+
+-- isFavoredEnvironment? = the environment is favorable to the bee, and no penalty is applied. If false, production is reduced and Mite infestation rates increase substantially (biome tier x default rate). 
+--  Additionally, the biome threat level is done in damage to the queens HP (per game day)
+
+-- frameCount = total frames adds to total production. Maximum is 50 frames. This is added to beePower. Should run in frame()
+
+-- miteModifier = when bees dont do well in environments, mites increase chance. However, with safeguards in check these totals can be mitigated. The number of Mite frames will increase mite-kill rates.
+
+
+
+
 function init()
 	transferUtil.init()
 	
@@ -22,7 +45,7 @@ function init()
 	if not self.spawnDelay or not contents then
 		self.queenSlot = config.getParameter ("queenSlot")				-- Apiary inventory slot number (indexed from 1)
 		self.droneSlot = config.getParameter ("droneSlot")				--
-		self.frameSlots = config.getParameter ("frameSlots")			--
+		self.frameSlots = config.getParameter ("frameSlots")			
 
 		self.spawnDelay = config.getParameter("spawnDelay")				-- A global spawn rate multiplier. Higher is slower.
 		self.spawnBeeBrake = config.getParameter("spawnBeeBrake")   	-- Individual spawn rates. Set to nil if none to be spawned.
@@ -296,9 +319,55 @@ function flowerCheck()
 			self.beePower = self.beePower + math.ceil(math.sqrt(#flowers) / 2)
 		end
 	end
-
+	
 	if self.beePower == noFlowersYet then
 		self.beePower = -1				--- If there are no flowers for the bees... they can't do anything.
+	elseif self.beePower >= 60 then
+		self.beePower = 60
+	end
+
+	local beePowerSay = "FC:bP = " .. self.beePower
+	local location = entity.position()
+	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
+	-- object.say(beePowerSay)
+end
+
+function vegetableCheck()
+	local vegetables
+	local noFlowersYet = self.beePower 			
+
+	for i, p in pairs(self.config.vegetables) do
+		vegetables = world.objectQuery(entity.position(), 80, {name = p})
+		if vegetables ~= nil then
+			self.beePower = self.beePower + math.ceil(math.sqrt(#vegetables) / 2)
+		end
+	end	
+	
+	if self.beePower == noFlowersYet then
+		self.beePower = -1			
+	elseif self.beePower >= 60 then
+		self.beePower = 60
+	end
+
+	local beePowerSay = "FC:bP = " .. self.beePower
+	local location = entity.position()
+	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
+	-- object.say(beePowerSay)
+end
+
+function fruitCheck()
+	local fruits
+	local noFlowersYet = self.beePower 			
+
+	for i, p in pairs(self.config.fruits) do
+		fruits = world.objectQuery(entity.position(), 80, {name = p})
+		if fruits ~= nil then
+			self.beePower = self.beePower + math.ceil(math.sqrt(#fruits) / 2)
+		end
+	end
+	
+	if self.beePower == noFlowersYet then
+		self.beePower = -1				
 	elseif self.beePower >= 60 then
 		self.beePower = 60
 	end
@@ -375,16 +444,12 @@ end
 
 
 function miteInfection()   ---Random mite infection.
----see if the container has room for more mites
-	local vmiteFitCheck = 	world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})
----see if the container is infected with mites
-	local vmiteInfectedCheck = 	world.containerConsume(entity.id(), { name= "vmite", count = 1, data={}})
+	local vmiteFitCheck = 	world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})     ---see if the container has room for more mites
+	local vmiteInfectedCheck = 	world.containerConsume(entity.id(), { name= "vmite", count = 1, data={}}) ---see if the container is infected with mites
 
----initial infection. with a 500ms polling rate, this runs at once per 60 minutes per apiary, an infection should happen.
----The previous comment doesn't actually make sense. It's not your imagination. -renbear
-	if math.random(1000) < 6 then
+	if math.random(100) < 6 then
 		if vmiteFitCheck == true then
-			world.containerAddItems(entity.id(), { name="vmite", count = 64, data={}})
+			world.containerAddItems(entity.id(), { name="vmite", count = 1, data={}})  		  -- add the mite
 		end
 	end
 
@@ -402,29 +467,25 @@ function miteInfection()   ---Random mite infection.
 		world.containerAddItems(entity.id(), { name="vmite", count = 60, data={}})
 		world.containerAddItems(entity.id(), { name="vmite", count = 60, data={}})
 		world.containerAddItems(entity.id(), { name="vmite", count = 60, data={}})
-		self.beePower = -1
+		self.beePower = -1    										   -- penalty gets applied here to production power. this needs to not be a flat -1, however, and instead penalize based on total mites present
 --		sb.logInfo ('Hive is infected')
 	end
 end
 
 
 function daytimeCheck()
-	daytime = world.timeOfDay() < 0.5 or world.type() == 'playerstation' -- true if daytime
+	daytime = world.timeOfDay() < 0.5 or world.type() == 'playerstation' -- true if daytime, otherwise false. Player space stations are an exception to the rule.
 end
 
 
 function setAnimationState()
 	if self.beePower < 0 then
---		sb.logInfo ('OFF')
 		animator.setAnimationState("bees", "off")
 	elseif beeActiveWhen == "day" then
---		sb.logInfo ('Day: ' .. (daytime and "on" or "off"))
 		animator.setAnimationState("bees", daytime and "on" or "off")
 	elseif beeActiveWhen == "night" then
---		sb.logInfo ('Night: ' .. (daytime and "off" or "on"))
 		animator.setAnimationState("bees", daytime and "off" or "on")
 	else
---		sb.logInfo ('Always? ' .. (beeActiveWhen or ''))
 		animator.setAnimationState("bees", beeActiveWhen == "always" and "on" or "off")
 	end
 end
@@ -450,8 +511,20 @@ function update(dt)
 		end
 	end
 
-	frame()   ---Checks to see if a frame in installed.
-	flowerCheck()
+	frame() 							---Checks to see if a frame in installed.
+	flowerCheck()    						--- checks flowers
+
+	--[
+	************************ NEW. This checks bee preference against what crops are nearby
+	if beeType = flowerBee then
+		flowerCheck()  
+	elseif beeType = vegetableBee then
+		vegetableCheck()
+	elseif beeType = fruitBee then
+	        fruitCheck()							
+	end
+	--]
+	
 	deciding()
 
 	if not self.doBees and not self.doItems and not self.doHoney and not self.doDrones then
@@ -547,6 +620,7 @@ function workingBees()
 		local when = config.active or 'day'
 --		sb.logInfo ('Checking ' .. queen .. ' (' .. when .. ' / ' .. notnow .. ')')
 
+		
 		if when ~= notnow or world.type() == "playerstation" then -- strictly, when == 'always' or == now
 			if when ~= notnow then 
 				beeActiveWhen = when 
