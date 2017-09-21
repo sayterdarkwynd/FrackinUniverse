@@ -14,25 +14,29 @@ DEFAULT_OFFSPRING_CHANCE = 0.4
 --
 
 
--- NEW PROPERTIES
+--[ 
+NEW PROPERTIES
 
--- some way to check Fruit, Vegetable or Flower based on bee types preferences. Production of non-preferenced pollination is 25%, rather than 100%.
--- queenAge = the older the queen, the better the hive gets. This is added to production totals. Max additional output is +5. Add +1 age per day (24 hours real-time, not game time). Regains 1HP per day if safe.
--- queenLifespan = the total number of days a queen survives before dying and spawning a new queen to take over. This varies on breed.
--- queenHealth = the older the queen, the more HP she has. Mite infestations will reduce her health and potentially kill her.
+some way to check Fruit, Vegetable or Flower based on bee types preferences. Production of non-preferenced pollination is 25%, rather than 100%.
 
--- mutationIncrease increases with Queen age as well, meaning that the older the queen the more likely the hive is to spawn weird mutations
+queenAge = the older the queen, the better the hive gets. This is added to production totals. Max additional output is +5. Add +1 age per day (24 hours real-time, not game time). Regains 1HP per day if safe.
+queenLifespan = the total number of days a queen survives before dying and spawning a new queen to take over. This varies on breed.
+queenHealth = the older the queen, the more HP she has. Mite infestations will reduce her health and potentially kill her.
+
+mutationIncrease increases with Queen age as well, meaning that the older the queen the more likely the hive is to spawn weird mutations
 
 
--- droneTotal = the total drones impact the total output of the hive. This total is added as (droneTotal). This total is added to beePower and has no cap.
+droneTotal = the total drones impact the total output of the hive. This total is added as (droneTotal). This total is added to beePower and has no cap.
 
--- isFavoredEnvironment? = the environment is favorable to the bee, and no penalty is applied. If false, production is reduced and Mite infestation rates increase substantially (biome tier x default rate). 
---  Additionally, the biome threat level is done in damage to the queens HP (per game day)
+isFavoredEnvironment? = the environment is favorable to the bee, and no penalty is applied. If false, production is reduced and Mite infestation rates increase substantially (biome tier x default rate). 
+Biome threat level is done in damage to the queens HP (per game day)
 
--- frameCount = total frames adds to total production. Maximum is 50 frames. This is added to beePower. Should run in frame()
+frameCount = total frames adds to total production. Maximum is 50 frames. This is added to beePower. Should run in frame()
 
--- miteModifier = when bees dont do well in environments, mites increase chance. However, with safeguards in check these totals can be mitigated. The number of Mite frames will increase mite-kill rates.
+miteModifier = when bees dont do well in environments, mites increase chance. However, with safeguards in check these totals can be mitigated. The number of Mite frames will increase mite-kill rates.
+miteCount = when mite counts are higher, we increase the effect of mites on the hive. Each Mite reduces BeePower by 1 to 2. This penalty is doubled in unfavorable biomes.
 
+--]
 
 
 
