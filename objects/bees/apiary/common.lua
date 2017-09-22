@@ -134,14 +134,11 @@ function getEquippedBees()
 
 	if queenName and droneName then
 		-- Apiaries function faster with more drones. 64 drones work just over twice as effecient as 1 drone. (well, exactly (13/6) times)
-		-- Does not matter in which slot the queen or the drone is
 		local count
 
 		if queen.name == queenName .. 'queen' and drone.name == droneName .. 'drone' then
---			sb.logInfo ('Found ' .. drone.count .. ' drones')
 			count = drone.count
 		elseif queen.name == queenName .. 'drone' and drone.name == droneName .. 'queen' then
---			sb.logInfo ('Found ' .. queen.count .. ' drones in queen slot')
 			queenName, droneName = droneName, queenName -- ensure that we return queen, drone when content is drone, queen
 			count = queen.count
 		end
@@ -170,7 +167,6 @@ function trySpawnBee(chance,type)
 	-- tries to spawn bees if we haven't in this round
 	-- Type is normally things "normal" or "bone", as the code inputs them in workingBees() or breedingBees(), this function uses them to spawn bee monsters. "normalbee" for example.
 	-- chance is a float value between 0.00 (will never spawn) and 1.00 (will always spawn)
---	if self.doBees then sb.logInfo ('Maybe spawning a bee') end
 	if self.doBees and math.random(100) <= 100 * chance and spaceForBees() then
 		world.spawnMonster(type .. "bee", object.toAbsolutePosition({ 2, 3 }), { level = 1 })	
 		self.doBees = false
@@ -179,7 +175,6 @@ end
 
 
 function trySpawnMutantBee(chance,type)
---	if self.doBees then sb.logInfo ('Maybe spawning a mutant bee') end
 	if self.doBees and math.random(100) <= 100 * (chance + self.mutationIncrease) and spaceForBees() then
 		world.spawnMonster(type .. "bee", object.toAbsolutePosition({ 2, 3 }), { level = 1 })
 		self.doBees = false
@@ -195,7 +190,6 @@ function droneStarter()
 
 	if contents[self.queenSlot] and contents[self.droneSlot] then
 		local beeQuanity = ((contents[self.queenSlot].count + contents[self.droneSlot].count) - 1)      -- I subtracted 1 since the queen inflates the total. Keep in mind either slot could be drones, easiest to add them and then subtract.
-
 		if beeQuanity < 81 then
 			bonus = math.ceil((81 - beeQuanity) / 40)
 		elseif self.limitDroneCount == true and beeQuanity > 200 then
@@ -208,7 +202,6 @@ end
 
 
 function trySpawnDrone(chance,type,amount)
---	if self.doDrones then sb.logInfo ('Maybe spawning some drones') end
 	if self.doDrones and math.random(100) <= 100 * chance then
 		local bonus, reduce = droneStarter()
 		if reduce then
@@ -222,7 +215,6 @@ end
 
 
 function trySpawnMutantDrone(chance,type,amount)
---	if self.doDrones then sb.logInfo ('Maybe spawning some mutant drones') end
 	if self.doDrones and math.random(100) <= 100 * (chance + self.mutationIncrease) then
 		world.containerAddItems(entity.id(), { name=type .. "drone", count = amount or 1, data={}})
 		self.doDrones = false -- why was this doItems?
@@ -231,7 +223,6 @@ end
 
 
 function trySpawnItems(chance,type,amount)
---	if self.doItems then sb.logInfo ('Maybe spawning items: ' .. type) end
 	-- analog to trySpawnBee() for items (like goldensand)
 	if self.doItems and math.random(100) <= 100 * chance then
 		world.containerAddItems(entity.id(), { name=type, count = amount or 1, data={}})
@@ -241,7 +232,6 @@ end
 
 
 function trySpawnHoney(chance,honeyType,amount)
---	if self.doHoney then sb.logInfo ('Maybe spawning honey: ' .. honeyType) end
 	if not self.doHoney then return nil end  --if the apiary isn't spawning honey, do nothing
 	amount = amount or 1  --- if not specified, just spawn 1 honeycomb.
 	local flowerIds = world.objectQuery(entity.position(), 25, {name="beeflower", order="nearest"})  --find all flowers within range
@@ -258,17 +248,17 @@ function expelQueens(type)   ---Checks how many queens are in the apiary, either
 	local queenLocate = type .. "queen"  ---Input the used bee type, and create a string such as "normal" .. "queen" = "normalqueen"
 
 	local slot = nil
-	if contents[self.queenSlot].name == queenLocate then	---is queen in slot17? (Top bee slot)
+	if contents[self.queenSlot].name == queenLocate then	
 		slot = self.queenSlot
-	elseif contents[self.droneSlot].name == queenLocate then	---is queen in slot17? (Top bee slot)
+	elseif contents[self.droneSlot].name == queenLocate then	
 		slot = self.droneSlot
 	end
 
-	if slot and contents[slot].count > 1 then			---how many queens, exactly?
-		local queenname = contents[slot].name		---sets the variable queenname to be use for queen removal
-		local queenremoval = (contents[slot].count - 1) ---How many queens are we removing?
-		--world.containerConsume(entity.id(), {name = queenname, count = queenremoval, data={}})  ---PEACE OUT, YA QUEENS --could take from storage, not just the queen slot
-		world.containerConsumeAt(entity.id(), slot - 1, queenremoval)  ---PEACE OUT, YA QUEENS -- slot-1 because of indexing differences (Lua's from 1 v. Starbound internal from 0)
+	if slot and contents[slot].count > 1 then								---how many queens, exactly?
+		local queenname = contents[slot].name								---sets the variable queenname to be use for queen removal
+		local queenremoval = (contents[slot].count - 1) 						---How many queens are we removing?
+		--world.containerConsume(entity.id(), {name = queenname, count = queenremoval, data={}})  	---PEACE OUT, YA QUEENS --could take from storage, not just the queen slot
+		world.containerConsumeAt(entity.id(), slot - 1, queenremoval)  					---PEACE OUT, YA QUEENS -- slot-1 because of indexing differences (Lua's from 1 v. Starbound internal from 0)
 		world.spawnItem(queenname, object.toAbsolutePosition({ 1, 2 }), queenremoval)			--- Oh, hi. Why are you on the ground? SHE THREW YOU OUT? THAT BITCH!
 	end
 end
@@ -288,7 +278,7 @@ end
 
 function flowerCheck()
 	local flowers
-	local noFlowersYet = self.beePower 			---- Check the initial "beePower" before flowers...
+	local noFlowersYet = self.beePower 			
 
 	for i, p in pairs(self.config.flowers) do
 		flowers = world.objectQuery(entity.position(), 80, {name = p})
@@ -298,7 +288,7 @@ function flowerCheck()
 	end
 	
 	if self.beePower == noFlowersYet then
-		self.beePower = -1				--- If there are no flowers for the bees... they can't do anything.
+		self.beePower = -1				
 	elseif self.beePower >= 60 then
 		self.beePower = 60
 	end
@@ -357,7 +347,7 @@ end
 
 
 function deciding()
-	if self.beePower < 0 then   ---if the apiary doesn't have bees, then stop.
+	if self.beePower < 0 then  
 		return
 	end
 
@@ -374,7 +364,6 @@ function deciding()
 		if self.spawnBeeCooldown <= 0 then
 			self.spawnBeeBrake = self.spawnBeeBrake * 2    	---each time a bee is spawned, the next bee takes longer, unless the world reloads. (Reduce Lag)
 			self.doBees = true
---			sb.logInfo('Chance of spawning a bee')
 			self.spawnBeeCooldown = ( self.spawnBeeBrake * self.spawnDelay ) - self.honeyModifier   ----these self.xModifiers reduce the cooldown by a static amount, only increased by frames.
 		else
 			self.doBees = false
@@ -386,7 +375,6 @@ function deciding()
 		if self.spawnDroneCooldown <= 0 then
 			-- self.spawnDroneBrake = self.spawnDroneBrake + 10
 			self.doDrones = true
---			sb.logInfo('Chance of spawning a drone')
 			self.spawnDroneCooldown = ( self.spawnDelay * self.spawnDroneBrake ) - self.droneModifier
 		else
 			self.doDrones = false
@@ -398,7 +386,6 @@ function deciding()
 		if self.spawnItemCooldown <= 0 then
 			-- self.spawnItemBrake = self.spawnItemBrake + 10
 			self.doItems = true
---			sb.logInfo('Chance of spawning an item')
 			self.spawnItemCooldown = ( self.spawnDelay * self.spawnItemBrake ) - self.itemModifier
 		else
 			self.doItems = false
@@ -410,7 +397,6 @@ function deciding()
 		if self.spawnHoneyCooldown <= 0 then
 			-- self.spawnHoneyBrake = self.spawnHoneyBrake + 10
 			self.doHoney = true
---			sb.logInfo('Chance of spawning honey')
 			self.spawnHoneyCooldown = ( self.spawnDelay * self.spawnHoneyBrake ) - self.honeyModifier
 		else
 			self.doHoney = false
@@ -420,13 +406,13 @@ function deciding()
 end
 
 
-function miteInfection()   ---Random mite infection.
+function miteInfection()   
 	local vmiteFitCheck = 	world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})     ---see if the container has room for more mites
 	local vmiteInfectedCheck = 	world.containerConsume(entity.id(), { name= "vmite", count = 1, data={}}) ---see if the container is infected with mites
 
 	if math.random(100) < 6 then
 		if vmiteFitCheck == true then
-			world.containerAddItems(entity.id(), { name="vmite", count = 1, data={}})  		  -- add the mite
+			world.containerAddItems(entity.id(), { name="vmite", count = 1, data={}})  		
 		end
 	end
 
@@ -451,7 +437,7 @@ end
 
 
 function daytimeCheck()
-	daytime = world.timeOfDay() < 0.5 or world.type() == 'playerstation' -- true if daytime, otherwise false. Player space stations are an exception to the rule.
+	daytime = world.timeOfDay() < 0.5 or world.type() == 'playerstation' 
 end
 
 
