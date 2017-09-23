@@ -476,18 +476,6 @@ function update(dt)
 
 	frame() 							---Checks to see if a frame in installed.
 	flowerCheck()    						--- checks flowers
-
-	--[
-	************************ NEW. This checks bee preference against what crops are nearby
-	if beeType = flowerBee then
-		flowerCheck()  
-	elseif beeType = vegetableBee then
-		vegetableCheck()
-	elseif beeType = fruitBee then
-	        fruitCheck()							
-	end
-	--]
-	
 	deciding()
 
 	if not self.doBees and not self.doItems and not self.doHoney and not self.doDrones then
