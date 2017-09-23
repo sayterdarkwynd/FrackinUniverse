@@ -198,6 +198,7 @@ function currentPhase()
 end
 
 function updatePhase(dt)
+  animator.playSound("turnHostile")
   if not self.phase then
     self.phase = 1
   end
