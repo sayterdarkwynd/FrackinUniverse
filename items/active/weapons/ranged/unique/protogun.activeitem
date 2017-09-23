@@ -37,17 +37,35 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.80,
-    "baseDps" : 9.75,
-    "energyUsage" : 32.0,
+    "baseDps" : 11,
+    "energyUsage" : 35.0,
     "inaccuracy" : 0.07,
 
-    "projectileCount" : 2,
+    "projectileCount" : 3,
     "fireType" : "auto",
 
     "projectileType" : "protoshot3",
     "projectileParameters" : { 
       "speed" : 50,
-      "knockback" : 5
+      "knockback" : 8,
+      "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ],      
+      "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ]      
     },
   "stances" : {
     "idle" : {
@@ -84,6 +102,9 @@
   "critBonus" : 3,
 
   "altAbilityType" : "protobomb",
+  "altAbility" : {
+    "baseDps" : 10
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
