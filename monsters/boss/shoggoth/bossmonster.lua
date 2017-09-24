@@ -64,7 +64,7 @@ function update(dt)
 
   if hasTarget() and status.resource("health") > 0 then
     if self.hadTarget == false then
-      animator.playSound("turnHostile")
+      
       self.hadTarget = true
     end
     script.setUpdateDelta(1)
