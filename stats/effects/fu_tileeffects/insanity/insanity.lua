@@ -13,6 +13,7 @@ end
 
 
 function activateVisualEffects()
+  
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
@@ -24,9 +25,12 @@ function activateVisualEffects2()
 end
 
 function update(dt)
+
   	if ( status.stat("shadowResistance",0)  >= 0.60 ) and ( status.stat("cosmicResistance",0)  >= 0.60 ) then
 	  effect.expire() 
 	end  
+	status.removeEphemeralEffect("insanityblurstat")
+	status.addEphemeralEffect( "insanityblurstat")	
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
@@ -43,5 +47,5 @@ end
 
 
 function uninit()
-  
+   
 end
