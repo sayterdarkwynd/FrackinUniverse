@@ -33,6 +33,7 @@ function init()
 	extractionLab = root.assetJson("/objects/generic/extractionlab_recipes.config") -- {inputs}, {outputs}
 	xenoLab = root.assetJson('/objects/generic/xenostation_recipes.config') -- {inputs}, {outputs}
 	centrifugeLab = root.assetJson("/objects/generic/centrifuge_recipes.config")  -- it's more complicated than the above two
+	liquidLab = root.assetJson("/objects/power/fu_liquidmixer/fu_liquidmixer_recipes.config")
 
 	self.matfilter = getFilter()
 	script.setUpdateDelta(1)
@@ -72,7 +73,8 @@ function init()
 		ironcentrifuge        = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		fu_blastfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace },
-		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter }
+		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter },
+		fu_liquidmixer        = { mats = getExtractionMats, spew = doExtraction, data = liquidLab }
 	}
 	recognisedObjects = {
 		-- in order of processing
@@ -87,7 +89,8 @@ function init()
 		"ironcentrifuge",
 		"woodencentrifuge",
 		"isn_arcsmelter",
-		"fu_blastfurnace"
+		"fu_blastfurnace",
+		"fu_liquidmixer"
 	}
 
 	for station, info in pairs(processObjects) do
