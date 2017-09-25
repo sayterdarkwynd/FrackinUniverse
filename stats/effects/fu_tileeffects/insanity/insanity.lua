@@ -29,8 +29,12 @@ function update(dt)
   	if ( status.stat("shadowResistance",0)  >= 0.60 ) and ( status.stat("cosmicResistance",0)  >= 0.60 ) then
 	  effect.expire() 
 	end  
-	status.removeEphemeralEffect("insanityblurstat")
-	status.addEphemeralEffect( "insanityblurstat")	
+	
+	if world.entityType(entity.id()) ~= "player" then
+		status.removeEphemeralEffect("insanityblurstat")
+		status.addEphemeralEffect( "insanityblurstat")	
+	end	
+
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
