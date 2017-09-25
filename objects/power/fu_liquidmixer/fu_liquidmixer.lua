@@ -98,7 +98,7 @@ function update(dt)
 	end
     self.timer = self.timer - dt
     if self.timer <= 0 then
-        if self.crafting then
+      if self.crafting then
 		if power.consume(config.getParameter('isn_requiredPower')) then
             for k,v in pairs(self.output) do
                 local leftover = {name = k, count = v}
@@ -117,10 +117,9 @@ function update(dt)
             self.crafting = false
             self.output = {}
             self.timer = self.mintick --reset timer to a safe minimum
-			
+		else
+			animator.setAnimationState("centrifuge", "idle")
         end
-	else
-		animator.setAnimationState("centrifuge", "idle")
 	end
 
         if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
