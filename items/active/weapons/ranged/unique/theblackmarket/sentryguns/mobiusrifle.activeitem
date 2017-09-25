@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A mainstay of advanced forces. Rivaled by few.
-^yellow;Inflicts frozen-fire^reset;",
+^yellow;Inflicts frozen-fire^reset;
+^cyan;Summons Shield Drones^reset;",
   "shortdescription" : "Sentry Rifle",
   "category" : "assaultRifle",
   "level" : 4,
@@ -28,7 +29,7 @@
   },
 
   "baseOffset" : [0.48, 0.62],
-  "muzzleOffset" : [2.545, 0.125],
+  "muzzleOffset" : [2.2, 0.0],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua", "/items/active/scripts/reloadweapon.lua" ],
 
@@ -37,21 +38,75 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.21,
+    "fireTime" : 0.5,
     "baseDps" : 4.8,
-    "energyUsage" : 27,
-    "inaccuracy" : 0.03,
-    "burstTime" : 0.075,
-    "burstCount" : 3,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
     "projectileCount" : 1,
-    "fireType" : "burst",
-
-    "projectileType" : "mobius",
-    //"projectileType" : "fubeamgunshot",
-    "projectileParameters" : { 
-      "speed" : 60,
-      "knockback" : 1
-    },
+    "fireType" : "auto",
+    
+    //"projectileType" : "mobius",
+    "projectileType" : "standardbullet",
+    "projectileParameters":{
+	  "statusEffects":[], 
+	  "bounces":0, 
+	  "speed":60, 
+	  "timeToLive":3.0, 
+	  "power" : 5,
+	  "damageSourceKind" : "electric",
+	  "knockback":0,
+	  "lightColor" : [255, 180, 0],    
+	    "periodicActions":[ 
+		  {
+		  "time":0.01, 
+		  "action":"projectile", 
+		  "type":"firelasershot", 
+		  "config":{
+		    "statusEffects":[], 
+		    "processing":"?hueshift=127",
+		    "speed":0, 
+		    "physics" : "laser",
+		    "bounces" :-1,
+		    "timeToLive":0.4, 
+		    "power":0.0, 
+		    "knockback":0
+		    }
+		  }
+	  ], 	  
+	  "actionOnReap" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+	    },	  	  
+	    {
+	      "action" : "projectile",
+	      "type" : "electricexplosion",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : {
+	        "speed" : 0
+	      }
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "plasmaflame",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.2,
+	      "timeToLive" : 0.5,
+	      "angleAdjust" : 35
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "plasmaflame",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.2,
+	      "timeToLive" : 0.5,
+	      "angleAdjust" : -35
+	    }
+	  ]
+  },
+  
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -83,38 +138,10 @@
   },
   "critChance" : 4,
   "critBonus" : 6,
-  "altAbilityType" : "fuerchiuslauncher",
+  "altAbilityType" : "fudronelauncher",
   "altAbility" : {
     "fireTime" : 2,
-    "name" : "Drone Launcher",
-    "baseDps" : 0,
-    "projectileCount" : 1,
-    "projectileParameters" : {
-      "timeToLive" : 0,
-      "power" : 0,
-      "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/smoke/smoke.config"
-    },
-    {
-      "action" : "sound",
-      "options" : [
-        "/sfx/blocks/crafting_tech1.ogg",
-        "/sfx/projectiles/crafting_tech2.ogg",
-        "/sfx/projectiles/mech_energy_refill.ogg"
-      ]
-    },     
- 	{
- 	  "action":"spawnmonster", 
- 	  "type":"sentryminidrone2", 
- 	  "offset":[0,0], 
- 	  "arguments":{
- 	    "damageTeamType":"friendly", "damageTeam":0
- 	  }
- 	} 
-      ]
-    }
+    "name" : "Shield Drones"
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

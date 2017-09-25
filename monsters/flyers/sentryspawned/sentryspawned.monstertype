@@ -45,8 +45,8 @@
           "cooldown" : 2,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 5,
+            "maximumRange" : 20,
+            "minimumRange" : 8,
             "windupStopForce" : 50,
             "windupState" : "fire",
             "windupTime" : 0.4,
@@ -57,7 +57,7 @@
             "projectileParameters" : {
               "speed" : 60
             },
-            "power" : 3,
+            "power" : 9,
             "fireOffset" : [0, 0],
             "aimAtTarget" : true,
             "onGround" : false,
@@ -93,15 +93,7 @@
         }
       ],
 
-      "wanderActions" : [    
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 20,
-          "parameters" : {
-          "effect" : "cultistshield",
-          "duration" : 2
-          }
-        },         
+      "wanderActions" : [             
         {
           "name" : "action-statuseffect",
           "cooldown" : 200,
@@ -124,20 +116,31 @@
           }
         }        
       ],
-
-      "concurrentActions" : [
-       
-      ],
       
-      "concurrentHostileActions" : [
+      "damageTakenActions" : [
         {
           "name" : "action-statuseffect", 
-          "cooldown" : 15,
+          "cooldown" : 10,
+          "parameters" : {
+          "effect" : "cultistshield",
+          "duration" : 5
+          }
+        }      
+      ],
+      
+      "concurrentActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 5,
           "parameters" : {
           "effect" : "cultistshield",
           "duration" : 5
           }
         }        
+      ],
+      
+      "concurrentHostileActions" : [
+      
       ],
       
       "deathActions" : [
@@ -213,16 +216,16 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 55
+          "baseValue" : 125
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "healthRegen" : {
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
-          "baseValue" : 1.0
+          "baseValue" : 1.2
         }
       },
 
