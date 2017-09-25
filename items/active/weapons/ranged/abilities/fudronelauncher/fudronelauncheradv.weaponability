@@ -32,8 +32,8 @@
   },
 
   "ability" : {
-    "name" : "Shield Drones",
-    "type" : "fudronelauncher",
+    "name" : "Assault Drones",
+    "type" : "fudronelauncheradv",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
 
@@ -78,11 +78,11 @@
           "loop" : false,
           "action" : "sound",
           "options" : [ "/sfx/tech/mech_activate4.ogg" ] 
-        },    	
+        },        
 	{
 	  "time" : 0.33,
 	  "action":"spawnmonster", 
-	  "type":"sentryminidrone2", 
+	  "type":"sentryspawned", 
 	  "offset":[0,0], 
 	  "arguments":{
 	    "damageTeamType":"friendly", "damageTeam":0,"level" : 4
