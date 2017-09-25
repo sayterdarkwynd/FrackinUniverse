@@ -51,6 +51,11 @@
       "speed" : 0,
       "timeToLive" : 0.2,
       "actionOnReap" : [
+      
+	    {
+	      "action" : "sound",
+	      "options" : ["/sfx/weapons/spatialcollapse.ogg"]
+	    },       
 	    {
 	      "action" : "projectile",
 	      "type" : "electricexplosion",
@@ -84,21 +89,15 @@
 	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:12","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
 	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:11","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
 	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:10","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:9","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.2]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:8","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.4]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:7","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.5]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:6","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.6]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.7]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:4","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.8]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.9]}}}  	    
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:9","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:8","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:7","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:6","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:4","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}}  	    
 	    ]
-	},
-	    {
-	      "time" : 0.2,
-	      "loop" : false,    
-	      "action" : "config",
-	      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
-	    }	
+	}	
       ]      
     },
     "projectileCount" : 1,

@@ -3,8 +3,8 @@
   "price" : 500,
   "inventoryIcon" : "mobiuspistol.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "Who invented this wonderful weapon? Give them a hug.
+    "rarity" : "legendary",
+  "description" : "A pistol with shrouded origins.
 ^yellow;Inflicts frozen-fire^reset;",
   "shortdescription" : "Sentry Pistol",
   "level" : 4,
@@ -17,7 +17,7 @@
     "butt" : "",
     "middle" : "mobiuspistol.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },      
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/pulsecannon2.ogg" ] },
@@ -25,24 +25,80 @@
   },
 
   "baseOffset" : [0.65, 0.18],
-  "muzzleOffset" : [2, 0],
+  "muzzleOffset" : [1.4, 0.12],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.3,
-    "baseDps" : 6,
+    "fireTime" : 0.5,
+    "baseDps" : 4.5,
     "energyUsage" : 25,
     "fireType" : "auto",
-    "inaccuracy" : 0.007,
+    "inaccuracy" : 0,
     "projectileCount" : 1,
-    "projectileType" : "mobius",
-    "projectileParameters" : {
-      "speed" : 60
+    "projectileType" : "standardbullet",
+    "projectileParameters":{
+	  "statusEffects":[], 
+	  "bounces":0, 
+	  "speed":60, 
+	  "timeToLive":3.0, 
+	  "power" : 5,
+	  "damageSourceKind" : "electric",
+	  "knockback":0,
+	  "lightColor" : [255, 180, 0],    
+	    "periodicActions":[ 
+		  {
+		  "time":0.01, 
+		  "action":"projectile", 
+		  "type":"firelasershot", 
+		  "config":{
+		    "statusEffects":[], 
+		    "processing":"?hueshift=127",
+		    "speed":0, 
+		    "physics" : "laser",
+		    "bounces" :-1,
+		    "timeToLive":0.4, 
+		    "power":0.0, 
+		    "knockback":0
+		    }
+		  }
+	  ], 	  
+	  "actionOnReap" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+	    },	  	  
+	    {
+	      "action" : "projectile",
+	      "type" : "electricexplosion",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : {
+	        "speed" : 0
+	      }
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "plasmaflame",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.2,
+	      "timeToLive" : 0.5,
+	      "angleAdjust" : 35
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "plasmaflame",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.2,
+	      "timeToLive" : 0.5,
+	      "angleAdjust" : -35
+	    }
+	  ]
     },
     "stances" : {
       "idle" : {
@@ -63,7 +119,7 @@
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.0,
+        "duration" : 0.075,
         "armRotation" : 2,
         "weaponRotation" : 2,
         "twoHanded" : false,
