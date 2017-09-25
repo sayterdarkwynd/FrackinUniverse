@@ -42,7 +42,7 @@
     "class" : "GunFire",
 
     "fireTime" : 2.6,
-    "baseDps" : 8.3,
+    "baseDps" : 4.3,
     "energyUsage" : 32,
     "inaccuracy" : 0,
     "fireType" : "auto",
@@ -86,6 +86,54 @@
   "critChance" : 6,
   "critBonus" : 12,
   "altAbilityType" : "irradiumshotgunshotpower",
+  "altAbility" : {
+    "baseDps" : 0.8,
+    "projectileParameters" : {
+      "power" : 0,
+      "timeToLive": 0,
+      
+      "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/crafting_tech1.ogg",
+        "/sfx/projectiles/crafting_tech2.ogg",
+        "/sfx/projectiles/mech_energy_refill.ogg"
+      ]
+    },   
+    
+    
+ 	{
+ 	  "action":"spawnmonster", 
+ 	  "type":"sentryspawned", 
+ 	  "offset":[0,0], 
+ 	  "arguments":{
+ 	    "damageTeamType":"friendly", "damageTeam":0
+ 	  }
+ 	},    
+ 	{
+ 	  "action":"spawnmonster", 
+ 	  "type":"sentryspawned", 
+ 	  "offset":[0,0], 
+ 	  "arguments":{
+ 	    "damageTeamType":"friendly", "damageTeam":0
+ 	  }
+ 	},    
+ 	{
+ 	  "action":"spawnmonster", 
+ 	  "type":"sentryspawned", 
+ 	  "offset":[0,0], 
+ 	  "arguments":{
+ 	    "damageTeamType":"friendly", "damageTeam":0
+ 	  }
+ 	} 
+      ]    
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

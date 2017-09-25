@@ -37,8 +37,8 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.11,
-    "baseDps" : 9.8,
+    "fireTime" : 0.21,
+    "baseDps" : 4.8,
     "energyUsage" : 27,
     "inaccuracy" : 0.03,
     "burstTime" : 0.075,
@@ -47,6 +47,7 @@
     "fireType" : "burst",
 
     "projectileType" : "mobius",
+    //"projectileType" : "fubeamgunshot",
     "projectileParameters" : { 
       "speed" : 60,
       "knockback" : 1
@@ -83,6 +84,38 @@
   "critChance" : 4,
   "critBonus" : 6,
   "altAbilityType" : "fuerchiuslauncher",
+  "altAbility" : {
+    "fireTime" : 2,
+    "name" : "Drone Launcher",
+    "baseDps" : 0,
+    "projectileCount" : 1,
+    "projectileParameters" : {
+      "timeToLive" : 0,
+      "power" : 0,
+      "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/crafting_tech1.ogg",
+        "/sfx/projectiles/crafting_tech2.ogg",
+        "/sfx/projectiles/mech_energy_refill.ogg"
+      ]
+    },     
+ 	{
+ 	  "action":"spawnmonster", 
+ 	  "type":"sentryminidrone2", 
+ 	  "offset":[0,0], 
+ 	  "arguments":{
+ 	    "damageTeamType":"friendly", "damageTeam":0
+ 	  }
+ 	} 
+      ]
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
