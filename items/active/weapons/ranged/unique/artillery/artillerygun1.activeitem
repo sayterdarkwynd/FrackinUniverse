@@ -1,0 +1,300 @@
+{
+  "itemName" : "artillerygun",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Call in an airstrike.",
+  "shortdescription" : "Artillery Radio",
+  "tooltipKind" : "gun2",
+  "category" : "rocketLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","rocketLauncher", "flamethrower", "upgradeableWeapon"],
+
+  "inventoryIcon" : [
+    { "image" : "splittergun.png:idle.1" }
+  ],
+
+  "animation" : "splittergun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "splittergun.png",
+    "middlefullbright" : "splittergunfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [80, 50, 30]
+    }},
+    "sounds" : {
+      "fire" : [ "/sfx/interface/nav_select.ogg" ]
+    }
+  },
+  "baseOffset" : [0.87, 0.35],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+
+  "critChance" : 15,
+  "critBonus" : 25,
+  
+  "primaryAbility" : {
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 3.0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    },
+    
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1,
+    "baseDps" : 0,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : "piercingbullet",
+    "projectileCount" : 1,
+    "projectileParameters" : {
+      "periodicActions":[],
+      "processing":"?hueshift=15",
+      "statusEffects":[],
+      "bounces":0,
+      "speed":220,
+      "timeToLive":0.4,
+      "power":5.0,
+      "knockback":0,
+      "actionOnReap":[  
+        {  
+          "action":"sound",
+          "options":[  
+            "/sfx/interface/nav_select.ogg"
+          ],
+          "time":0.1,
+          "repeat":false
+        },
+        {  
+          "time":0.0,
+          "angle":90,
+          "action":"projectile",
+          "offset":[0,7],
+          "type":"energyfist",
+          "piercing":true,
+          "config":{  
+            "damageTeam":{  
+              "type":"friendly"
+            },
+            "damageKind":"noDamage",
+                  "periodicActions" : [
+		      {  
+			"time":0.9,
+			"angle":-90,
+			"action":"projectile",
+			"type":"apebossmissile",
+			"config":{  
+			  "actionOnReap" : [
+			    {
+			      "action" : "config",
+			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+			    },                  
+			    {"action":"explosion", "foregroundRadius":7, "backgroundRadius":4, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                   
+			  ],
+			  "statusEffects":[],
+			  "speed":100,
+			  "timeToLive":1.6,
+			  "power":20.0,
+			  "knockback":0
+			}
+		      },              
+		      {  
+			"time":0.07,
+			"angle":-90,
+			"action":"projectile",
+			"type":"miniknogrocket",
+			"config":{  
+			  "actionOnReap" : [
+			    {
+			      "action" : "config",
+			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+			    },                  
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                   
+			  ],
+			  "statusEffects":[],
+			  "speed":100,
+			  "timeToLive":1.6,
+			  "power":20.0,
+			  "knockback":0
+			}
+		      }                  
+                  ],
+            "piercing":true,
+            "speed":120,
+            "processing":"?0",
+            "timeToLive":0.5,
+            "power":5.0,
+            "knockback":0,
+            
+            "actionOnReap":[  
+              {  
+                "time":0.0,
+                "offset":[-3,12],
+                "angle":-90,
+                "action":"projectile",
+                "type":"fireguidedrocket",
+                "config":{  
+                  "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+		    },                  
+		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                  
+                  ],                
+                  "statusEffects":[],
+                  "speed":100,
+                  "timeToLive":1.6,
+                  "power":20.0,
+                  "knockback":0
+                }
+              },
+              {  
+                "time":0.0,
+                "offset":[3,6],
+                "angle":-90,
+                "action":"projectile",
+                "type":"fireguidedrocket",
+                "config":{  
+                  "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+		    },                  
+		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                 
+                  ],                
+                  "statusEffects":[],
+                  "speed":100,
+                  "timeToLive":1.6,
+                  "power":20.0,
+                  "knockback":0
+                }
+              },
+              {  
+                "time":0.0,
+                "angle":-90,
+                "action":"projectile",
+                "type":"fireguidedrocket",
+                "config":{  
+                  "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+		    },                  
+		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                   
+                  ],
+                  "statusEffects":[],
+                  "speed":100,
+                  "timeToLive":1.6,
+                  "power":20.0,
+                  "knockback":0
+                }
+              } 
+            ]
+          }
+        },
+        {  
+          "time":0.0,
+          "angle":0,
+          "action":"projectile",
+          "type":"targetexplosion",
+          "config":{  
+            "statusEffects":[  
+
+            ],
+            "processing":"?hueshift=60",
+            "periodicActions":[  
+
+            ],
+            "piercing":true,
+            "damageTeam":{  
+              "type":"enemy"
+            },
+            "damageKind":"noDamage",
+            "speed":0,
+            "timeToLive":0.8,
+            "power":0.0,
+            "knockback":0,
+            "actionOnReap":[  
+
+            ]
+          }
+        }
+      ]
+    }
+
+
+  },
+
+  "altAbilityType":"explosiveshot",
+  "altAbility":{  
+    "name" : "Fury Field",
+    "firePositionPart":"barrel",
+    "fireTime":2.0,
+    "baseDps":0.0,
+    "energyUsage":20,
+    "projectileType":"kluexzone",
+    "inaccuracy":0.0,
+    "projectileCount":1,
+    "projectileParameters":{  
+      "periodicActions":[  
+        {  
+          "action":"sound",
+          "options":[  
+            "/sfx/gun/erchiuseyebeam_start.ogg"
+          ],
+          "time":0.1,
+          "repeat":false
+        }
+      ],
+      "processing":"?hueshift=90",
+      "speed":0,
+      "timeToLive":10.0,
+      "power":0,
+      "knockback":10,
+      "bounces":0,
+      "actionOnReap":[  
+
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
