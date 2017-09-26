@@ -45,9 +45,9 @@
           "cooldown" : 2,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
+            "maximumRange" : 24,
             "minimumRange" : 8,
-            "windupStopForce" : 50,
+            "windupStopForce" : 90,
             "windupState" : "fire",
             "windupTime" : 0.4,
 
@@ -57,7 +57,7 @@
             "projectileParameters" : {
               "speed" : 60
             },
-            "power" : 9,
+            "power" : 10,
             "fireOffset" : [0, 0],
             "aimAtTarget" : true,
             "onGround" : false,
@@ -109,9 +109,9 @@
           "name" : "wander-fly",
           "parameters" : {
             "wanderTime" : [2,4],
-            "groundDistance" : 8,
+            "groundDistance" : 10,
             "ceilingDistance" : 8,
-            "xVelocity" : 8,
+            "xVelocity" : 12,
             "yVelocity" : 12
           }
         }        
@@ -176,13 +176,13 @@
       "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
 
       "mass" : 0.5,
-      "walkSpeed" : 20,
+      "walkSpeed" : 24,
       "runSpeed" : 25,
       "gravityEnabled" : false,
 
       "airFriction" : 4,
-      "airForce" : 40,
-      "flySpeed" : 40
+      "airForce" : 50,
+      "flySpeed" : 50
     },
 
     "bodyMaterialKind" : "robotic",
