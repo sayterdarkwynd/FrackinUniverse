@@ -1,0 +1,57 @@
+{
+  "objectName" : "cropshipper_kheAA",
+  "colonyTags" : ["farming"],
+  "printable" : false,
+  "rarity" : "Rare",
+
+  "category" : "shippingContainer",
+  "price" : 3000,
+  "description" : "Sell food and produce to Terramart from the comfort of your own doorstep, by blasting it into space.\nNow can (only) be activated by wire.",
+  "shortdescription" : "Terramart Shipments - CAT Edition",
+  "race" : "generic",
+
+  "inventoryIcon" : "cropshippericon.png",
+  "orientations" : [
+    {
+      "direction" : "right",
+
+      "image" : "cropshipper.png:ready.1",
+      "imagePosition" : [-32, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "interactiveSpaces": [
+        [-2, 1], [-1, 1], [0, 1], [1, 1],
+        [-2, 2], [-1, 2], [0, 2], [1, 2],
+        [-2, 3], [-1, 3], [0, 3], [1, 3]
+      ]
+    }
+  ],
+
+  "animation" : "cropshipper.animation",
+  "animationPosition" : [-32, 0],
+
+  "health" : 1.5,
+
+  "objectType" : "container",
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "frameCount" : 1,
+  "slotCount" : 40,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "openFrameIndex" : 1,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/objects/generic/cropshipper/cropshipper.lua" ],
+  "scriptDelta" : 5,
+
+  "surfaceCheckInterval" : 2.0,
+  "surfaceCheckArea" : [-2, 0, 2, 40],
+
+  "launchDuration" : 3.5,
+  "launchTiming" : 1.1,
+  "launchPosition" : [0.125, 7.25],
+  "sellFactor" : 0.3
+}
