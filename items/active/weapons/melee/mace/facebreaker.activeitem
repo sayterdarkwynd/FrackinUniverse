@@ -1,0 +1,37 @@
+{
+  "itemName" : "facebreaker",
+  "price" : 1200,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Likely unpleasant to be smashed by. Solid durasteel.
+^cyan;+15% Stun Chance^reset;",
+  "shortdescription" : "Facebreaker",
+  "tooltipKind" : "sword",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "facebreaker.png",
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "facebreaker.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1.4, 
+    "baseDps":7
+  },
+  "critChance" : 4,
+  "critBonus" : 6,
+  "stunChance" : 15,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

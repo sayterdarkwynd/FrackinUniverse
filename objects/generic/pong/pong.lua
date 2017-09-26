@@ -40,6 +40,7 @@ function startgame()
   posl = 85
   posr = 85
   resetball()
+  secret = math.random() <= 0.01
 end
 
 function draw()
@@ -51,7 +52,11 @@ function draw()
   gameCanvas:drawRect({0,0,390,10},{255,255,255})
   gameCanvas:drawRect({10,posl,20,posl+40},{255,255,255})
   gameCanvas:drawRect({370,posr,380,posr+40},{255,255,255})
-  gameCanvas:drawRect({util.round(posb.x)-5,util.round(posb.y)-5,util.round(posb.x)+5,util.round(posb.y)+5},{255,255,255})
+  if secret then
+    gameCanvas:drawImage("/objects/generic/pong/kevin.png", {util.round(posb.x)-6.5,util.round(posb.y)-6.5}, 1)
+  else
+    gameCanvas:drawRect({util.round(posb.x)-5,util.round(posb.y)-5,util.round(posb.x)+5,util.round(posb.y)+5},{255,255,255})
+  end
 end
 
 function bounce(dir,angle)

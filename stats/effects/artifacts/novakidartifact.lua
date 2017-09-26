@@ -2,7 +2,7 @@ function init()
   effect.addStatModifierGroup({
     {stat = "radioactiveResistance", amount = config.getParameter("resist1")},
     {stat = "fireResistance", amount = config.getParameter("resist2")},
-    {stat = "powerMultiplier", amount = config.getParameter("damageBoost")}
+    {stat = "powerMultiplier", baseMultiplier = config.getParameter("damageBoost")}
   })
   
   script.setUpdateDelta(10)

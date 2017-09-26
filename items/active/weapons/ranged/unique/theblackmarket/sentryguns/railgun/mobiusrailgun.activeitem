@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "This beast absolutely murders the enemy!
-^yellow;Inflicts frozen-fire^reset;",
+^yellow;Inflicts frozen-fire^reset;
+^cyan;Summons Assault Drones^reset;",
   "shortdescription" : "Sentry Railgun",
   "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
@@ -18,7 +19,7 @@
     "middle" : "mobiusrailgun.png",
     "middlefullbright" : "mobiusrailgunfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },
   "animationCustom" : {
     "lights" : { "glow" : {
@@ -31,9 +32,12 @@
     }
   },
   "baseOffset" : [0, -0.55],
-  "muzzleOffset" : [3.0, 0.125],
+  "muzzleOffset" : [2.0, 0.07],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua", "/items/active/scripts/reloadweapon.lua" ],
+  "scripts" : [
+  "/items/active/weapons/ranged/gun.lua",
+    "/items/active/scripts/heavyweapon.lua" 
+  ],
 
   "elementalType" : "electric",
 
@@ -41,16 +45,129 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 2.6,
-    "baseDps" : 8.3,
-    "energyUsage" : 32,
+    "fireTime" : 2.5,
+    "baseDps" : 4.5,
+    "energyUsage" : 40,
     "inaccuracy" : 0,
     "fireType" : "auto",
 
-    "projectileType" : "mobiusrgun",
+    //"projectileType" : "mobiusrgun",
+    "projectileType" : "standardbullet",
     "projectileParameters" : {
       "knockback" : 20,
-      "speed" : 60
+      "damageSourceKind" : "electric",
+      "lightColor" : [120, 0, 44],
+      "piercing" : false,
+      "flippable" : true, 
+      "power" : 1,
+      "speed" : 80,      
+      "periodicActions" : [
+	  {
+	  "time":0.01, 
+	  "action":"projectile", 
+	  "type":"firelasershot2", 
+	  "config":{
+	    "damageSourceKind" : "electric",
+	    "statusEffects":[], 
+	    "processing":"?hueshift=127",
+	    "speed":0, 
+	    "timeToLive":0.4, 
+	    "bounces" : 0,
+	    "power":0.0, 
+	    "knockback":0
+	    }
+	  }        
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/energyburstexplosion/sentryrailgun.config"
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : 0
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : 35
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : -35
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : -0
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : -70
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : 70
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : -120
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : 120
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : -150
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : 150
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : -180
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "mobius",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.08,
+	      "angleAdjust" : 180
+	    }      
+      ]      
     },
     "projectileCount" : 1,
 
@@ -65,8 +182,8 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
+        "armRotation" : 4,
+        "weaponRotation" : 4,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -74,8 +191,8 @@
       },
       "cooldown" : {
         "duration" : 0.11,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
+        "armRotation" : 4,
+        "weaponRotation" : 4,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -85,7 +202,7 @@
   },
   "critChance" : 6,
   "critBonus" : 12,
-  "altAbilityType" : "irradiumshotgunshotpower",
+  "altAbilityType" : "fudronelauncheradv",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

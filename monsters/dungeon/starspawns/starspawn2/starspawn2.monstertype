@@ -39,7 +39,7 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 20,
-            "minimumRange" : 4,
+            "minimumRange" : 10,
             "onGround" : false,
             "windupState" : "",
             "windupStopForce" : 50,
@@ -119,8 +119,11 @@
             "windupTime" : 0.2,
 
             "projectileType" : "shadowswoosh",
-            "power" : 8,
-            "speed": 10,
+            "projectileParameters" : {
+              "statusEffects" : [ "superdarkstatmid" ]
+            },            
+            "power" : 9,
+            "speed": 15,
             "fireOffset" : [3, 0],
             "aimAtTarget" : true,
             "projectileCount" : 2,
@@ -137,14 +140,14 @@
 	  "cooldown" : 12,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 12,
-            "minimumRange" : 4,
+            "maximumRange" : 7,
+            "minimumRange" : 2,
             "windupState" : "hidewinddown2",
             "windupTime" : 0.7,
 
             "projectileType" : "chaosswoosh",
             "power" : 11,
-            "speed": 10,
+            "speed": 20,
             "fireOffset" : [4, 0],
             "aimAtTarget" : true,
             "fireSound" : "fire4",
@@ -158,7 +161,7 @@
           "name" : "action-charge",
           "cooldown" : 20.0,
           "parameters" : {
-            "maximumRange" : 20,
+            "maximumRange" : 12,
             "windupState" : "hidewinddown2",
             "windupTime" : 0.8,
 
@@ -180,18 +183,20 @@
           "cooldown" : 15.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 4,
+            "maximumRange" : 30,
+            "minimumRange" : 12,
             "onGround" : false,
             "windupState" : "hidewinddown2",
             "windupStopForce" : 50,
             "windupTime" : 0.2,
 
             "projectileType" : "floatydeathballelder",
+            
             "projectileParameters" : {
               "speed" : 1,
               "timeToLive" : 5,
-              "physics" : "laser"
+              "physics" : "laser",
+              "statusEffects" : [ "superdarkstatmid" ]
             },
             "power" : 5,
             "fireOffset" : [0.0, 0.0],
@@ -270,16 +275,16 @@
     "concurrentHostileActions" : [
         {
           "name" : "action-fire",
-	  "cooldown" : 1,
+	  "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 2,
+            "maximumRange" : 3,
             "minimumRange" : 0,
             "windupState" : "",
             "windupTime" : 0.2,
 
             "projectileType" : "elderbladeswoosh",
-            "projectileParameters" : { "speed" : 0, "statusEffects" : [ "insanity" ], "fullbright" : true },
+            "projectileParameters" : { "speed" : 0, "statusEffects" : [ "superdarkstatmid" ], "fullbright" : true },
             "power" : 8,
             "speed": 10,
             "fireOffset" : [4.6, 0],
@@ -294,10 +299,10 @@
         },        
         {
           "name" : "action-fire",
-	  "cooldown" : 1,
+	  "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 2,
+            "maximumRange" : 3,
             "minimumRange" : 0,
             "windupState" : "",
             "windupTime" : 0.2,

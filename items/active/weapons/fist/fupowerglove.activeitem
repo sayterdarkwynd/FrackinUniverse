@@ -14,7 +14,7 @@
   "animation" : "fistweapon.animation",
   "animationParts" : {
     "weapon" : "powerglove.png",
-    "swoosh" : "swoosh/clawswoosh.png"
+    "swoosh" : "swoosh/powerpunchswoosh.png"
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
@@ -29,7 +29,7 @@
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.1,
 
-  "comboSteps" : 3,
+  "comboSteps" : 7,
   "comboTiming" : [0.2, 0.5],
   "comboCooldown" : 0.2,
   "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/sonicslash.combofinisher",
@@ -41,14 +41,14 @@
     "class" : "Punch",
 
     "freezeTime" : 0.15,
-    "fireTime" : 0.3,
-    "baseDps" : 7.0,
+    "fireTime" : 0.15,
+    "baseDps" : 12.25,
     "damageConfig" : {
       "statusEffects" : [ ],
       "damageSourceKind" : "cosmic",
       "knockback" : [0, 15],
       "timeoutGroup" : "primary",
-      "timeout" : 0.14
+      "timeout" : 0.1
     },
     "stances" : {
       "idle" : {
@@ -57,7 +57,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.25, -0.575],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : true,
 
         "frontArmFrame" : "run.2",
@@ -70,7 +70,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.625, -0.125],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "swimIdle.1",
@@ -83,7 +83,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.75, -0.125],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "swimIdle.1",
@@ -98,7 +98,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [0.125, -0.25],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "rotation",

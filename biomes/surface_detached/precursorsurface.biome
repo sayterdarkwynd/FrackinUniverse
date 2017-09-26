@@ -1,0 +1,331 @@
+{
+  "name" : "precursorsurface",
+  "friendlyName" : "Precursor Ruins",
+  "statusEffects" : [ ],
+  "airless" : true,
+  "breathable" : false,
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 4,
+        "pool" : [ 
+          [ 0.003, "fuchiropterror" ],     
+          [ 0.007, "futrifangle" ], 
+          [ 0.04, "fuomnicannon" ],           
+          [ 0.007, "servitor" ],
+          [ 0.05, "fumechspider" ],   
+          [ 0.04, "minidrone" ],
+          [ 0.06, "futwigun" ],
+          [ 0.06, "repairbot"]  
+        ]
+      },    
+      {
+        "select" : 2,
+        "pool" : [ 
+          [ 0.003, "nanoswarm" ], 
+          [ 0.003, "fuheavydrone" ],
+          [ 0.1, "precursorwarbot" ] 
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "fudrone" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+            "poisonStatusImmunity" : {
+              "baseValue" : 1.0
+            }
+        }
+      }
+    }
+  },
+  
+  "hueShiftOptions" : [0],
+  
+  "mainBlock" : "precursorsloped",
+  "subBlocks" : [ "precursorpanel", "precursordetail" ],
+  "ores" : "ff_metalmoonstandardores",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "metal" ],
+    "grassModDensity" : 0.9,
+      "items" : [
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:potsRare",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                "pool" : [ 
+              	[0.50, "groundspike1" ],
+              	[0.50, "groundspike2" ],
+              	[0.50, "groundspike3" ],
+              	[0.50, "groundspike4" ],
+              	[0.50, "copperrock" ], 
+              	[0.50, "copperrocksmall" ],
+              	[0.50, "silverrock" ],
+              	[0.50, "silverrocksmall" ],
+             	[0.50, "goldrock" ],
+             	[0.50, "goldrocksmall" ],
+              	[0.50, "diamondrock" ],
+              	[0.50, "diamondrocksmall" ]
+                ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none", "ice" ]
+        },      
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "precursormicrosurface" ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistPlatform",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "iceplatforming" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "fuprecursorChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "teslaspike"], [0.35,"apexsecuritycamera" ], [0.35, "metallicceiling1" ],[0.35, "metallicceiling2" ],[0.35, "metallicceiling3" ],[0.35, "metallicceiling4" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "parameters" : { }
+            }
+          ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "invisiblelight"], [0.35, "invisiblesparker"], [0.35, "teslaspike"], [0.35, "tesla"], [0.35, "coppersupport"],[0.35, "junctionbox" ], [0.55, "device1" ], [0.35, "metallicmachine1" ],[0.35, "metallicmachine2" ],[0.35, "metallicmachine3" ],[0.35, "metallicmachine4" ],[0.35, "metallicmachine5" ],[0.35, "metallicmachine6" ],[0.35, "metallicmachine7" ],[0.35, "tetrapod" ],[0.35, "tech2" ],[0.35, "outpostcargocrate" ],[0.35, "outpostcargocrateshort" ],[0.35, "outpostgenerator" ],[0.35, "outpostconsole" ],[0.35, "outpostradardish" ],[0.35, "outpostsecurityconsole" ],[0.35, "outposttank" ],[0.35, "roofvent" ],[0.35, "outpostlamp" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ],[0.35, "ancientconsole" ], [0.35, "wreckconsole1" ], [0.35, "wreckconsole2" ], [0.35, "wreckconsole3" ], [ 0.35, "wreckturbine2" ], [ 0.35, "wreckturbines" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientpillar" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "diodiaseed" ] ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        }
+        
+      ]
+    },
+    "undergroundPlaceables" : {
+      "grassMod" : [ "metal" ],
+      "grassModDensity" : 0.2,
+      "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "techChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "teslaspike"], [0.35,"apexsecuritycamera" ], [0.35, "metallicceiling1" ],[0.35, "metallicceiling2" ],[0.35, "metallicceiling3" ],[0.35, "metallicceiling4" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "parameters" : { }
+            }
+          ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "invisiblelight"], [0.35, "invisiblesparker"], [0.35, "teslaspike"], [0.35, "tesla"], [0.35, "coppersupport"],[0.35, "junctionbox" ], [0.55, "device1" ], [0.35, "metallicmachine1" ],[0.35, "metallicmachine2" ],[0.35, "metallicmachine3" ],[0.35, "metallicmachine4" ],[0.35, "metallicmachine5" ],[0.35, "metallicmachine6" ],[0.35, "metallicmachine7" ],[0.35, "tetrapod" ],[0.35, "tech2" ],[0.35, "outpostcargocrate" ],[0.35, "outpostcargocrateshort" ],[0.35, "outpostgenerator" ],[0.35, "outpostconsole" ],[0.35, "outpostradardish" ],[0.35, "outpostsecurityconsole" ],[0.35, "outposttank" ],[0.35, "roofvent" ],[0.35, "outpostlamp" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ],[0.35, "ancientconsole" ], [0.35, "wreckconsole1" ], [0.35, "wreckconsole2" ], [0.35, "wreckconsole3" ], [ 0.35, "wreckturbine2" ], [ 0.35, "wreckturbines" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientpillar" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "parameters" : { }
+            }
+          ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredPots",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "teslaspike"], [0.35,"apexsecuritycamera" ], [0.35, "metallicceiling1" ],[0.35, "metallicceiling2" ],[0.35, "metallicceiling3" ],[0.35, "metallicceiling4" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "parameters" : { }
+            }
+          ]
+        }     
+      ]
+    }
+}

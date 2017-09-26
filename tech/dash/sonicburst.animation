@@ -1,0 +1,34 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "zeroburst",
+          "flip" : true
+        },
+        {
+          "particle" : "frozenflames",
+          "flip" : true
+        }        
+      ]
+    }
+  },
+
+  "sounds" : {
+    "startDash" : [ "/sfx/weapons/wavebeam.wav" ],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ]
+  }
+}

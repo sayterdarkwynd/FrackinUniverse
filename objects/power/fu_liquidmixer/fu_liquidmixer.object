@@ -1,0 +1,50 @@
+{
+  "objectName" : "fu_liquidmixer",
+  "colonyTags" : [ "science", "machines" ],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "This machine mixes liquids together in a controlled environment. ^cyan;Requires ^orange;10W ^cyan;power.^reset;",
+  "shortdescription" : "^cyan;Liquid Mixer^white;",
+  "race" : "generic",
+  "category" : "^orange;Extraction Device^reset;",
+  "objectType" : "container",
+  "hydrophobic" : false,
+
+  "inventoryIcon" : "fu_liquidmixericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_liquidmixer.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "animation" : "fu_liquidmixer.animation",
+  "animationParts" : {
+    "centrifuge" : "fu_liquidmixer.png",
+    "centrifugefullbright" : "fu_liquidmixerfullbright.png"
+  },
+
+  "scripts" : [ "/scripts/power.lua", "/objects/power/fu_liquidmixer/fu_liquidmixer.lua" ],
+                
+  "scriptDelta" : 5,
+  "recipeGroup" : "centrifuge",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 3,
+  "uiConfig" : "/objects/power/fu_liquidmixer/fu_liquidmixer.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "inputSlot": 1,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+  
+  "powertype" : "input",
+  "isn_requiredPower" : 10
+}
