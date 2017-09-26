@@ -19,7 +19,7 @@
     "middle" : "mobiusrailgun.png",
     "middlefullbright" : "mobiusrailgunfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },
   "animationCustom" : {
     "lights" : { "glow" : {
@@ -46,7 +46,7 @@
     "class" : "GunFire",
 
     "fireTime" : 2.5,
-    "baseDps" : 3,
+    "baseDps" : 4.5,
     "energyUsage" : 40,
     "inaccuracy" : 0,
     "fireType" : "auto",
@@ -65,7 +65,7 @@
 	  {
 	  "time":0.01, 
 	  "action":"projectile", 
-	  "type":"firelasershot", 
+	  "type":"firelasershot2", 
 	  "config":{
 	    "damageSourceKind" : "electric",
 	    "statusEffects":[], 
@@ -182,8 +182,8 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
+        "armRotation" : 4,
+        "weaponRotation" : 4,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -191,8 +191,8 @@
       },
       "cooldown" : {
         "duration" : 0.11,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
+        "armRotation" : 4,
+        "weaponRotation" : 4,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -202,41 +202,7 @@
   },
   "critChance" : 6,
   "critBonus" : 12,
-  "altAbilityType" : "fudronelauncher",
-  "altAbility" : {
-    "name" : "Assault Drones",
-    "baseDps" : 0,
-    "projectileParameters" : {
-      "power" : 0,
-      "timeToLive": 0,
-      "actionOnReap" : [ 
- 	{
- 	  "action":"spawnmonster", 
- 	  "type":"sentryspawned", 
- 	  "offset":[0,0], 
- 	  "arguments":{
- 	    "damageTeamType":"friendly", "damageTeam":0,"level" : 4
- 	  }
- 	},    
- 	{
- 	  "action":"spawnmonster", 
- 	  "type":"sentryspawned", 
- 	  "offset":[0,0], 
- 	  "arguments":{
- 	    "damageTeamType":"friendly", "damageTeam":0,"level" : 4
- 	  }
- 	},    
- 	{
- 	  "action":"spawnmonster", 
- 	  "type":"sentryspawned", 
- 	  "offset":[0,0], 
- 	  "arguments":{
- 	    "damageTeamType":"friendly", "damageTeam":0,"level" : 4
- 	  }
- 	} 
-      ]    
-    }
-  },
+  "altAbilityType" : "fudronelauncheradv",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

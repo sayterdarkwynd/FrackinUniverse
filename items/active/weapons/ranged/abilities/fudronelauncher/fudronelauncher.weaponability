@@ -13,7 +13,7 @@
       }
     }},
     "sounds" : {
-      "altFire" : [ "/sfx/tech/mech_activate3.ogg", "/sfx/tech/mech_activate2.ogg" ]
+      "altFire" : [ "/sfx/tech/mech_activate4.ogg" ]
     },
     
     "particleEmitters" : {
@@ -32,80 +32,86 @@
   },
 
   "ability" : {
-    "name" : "Drones",
+    "name" : "Shield Drones",
     "type" : "fudronelauncher",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
 
     "elementalConfig" : {
-      "physical" : { "projectileType" : "standardbullet" },
-      "fire" : { "projectileType" : "standardbullet" },
-      "electric" : { "projectileType" : "standardbullet" },
-      "ice" : { "projectileType" : "standardbullet" },
-      "poison" : { "projectileType" : "standardbullet" },
-      "shadow" : { "projectileType" : "standardbullet" },
-      "radioactive" : { "projectileType" : "standardbullet" },
-      "cosmic" : { "projectileType" : "standardbullet" }
+      "physical" : { "projectileType" : "botpod2" },
+      "fire" : { "projectileType" : "botpod2" },
+      "electric" : { "projectileType" : "botpod2" },
+      "ice" : { "projectileType" : "botpod2" },
+      "poison" : { "projectileType" : "botpod2" },
+      "shadow" : { "projectileType" : "botpod2" },
+      "radioactive" : { "projectileType" : "botpod2" },
+      "cosmic" : { "projectileType" : "botpod2" }
     },
     "projectileParameters" : {
       "speed" : 0,
-      "timeToLive" : 0.2,
-      "actionOnReap" : [
-	    {
-	      "action" : "projectile",
-	      "type" : "electricexplosion",
-	      "inheritDamageFactor" : 0.02,
-	      "config" : { "speed" : 0},
-	      "fuzzAngle" : 0,
-	      "angleAdjust" : 0
-	    },       
+      "timeToLive" : 1,
+      "periodicActions" : [
 	{
-	  "action":"spawnmonster", 
-	  "type":"sentryminidrone2", 
-	  "offset":[0,0], 
-	  "arguments":{
-	    "damageTeamType":"friendly", "damageTeam":0,"level" : 4
-	  }
-	}, 	    
-	{
-	  "action":"spawnmonster", 
-	  "type":"sentryminidrone2", 
-	  "offset":[0,0], 
-	  "arguments":{
-	    "damageTeamType":"friendly", "damageTeam":0,"level" : 4
-	  }
-	}     
-      ],    
-      "periodicActions" : [     
-	{
-	  "time":0,
+	  "time":0.33,
 	  "action":"option",
 	  "options":[     
 	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:12","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
 	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:11","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
 	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:10","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:9","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.2]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:8","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.4]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:7","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.5]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:6","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.6]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.7]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:4","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.8]}}},
-	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2.9]}}}  	    
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:9","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:8","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:7","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:6","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:4","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}}  	    
 	    ]
-	},
+	}, 
+        {
+          "time" : 0.33,
+          "loop" : false,
+          "action" : "sound",
+          "options" : [ "/sfx/tech/mech_activate4.ogg" ] 
+        },    
+        {
+          "time" : 0.66,
+          "loop" : false,
+          "action" : "sound",
+          "options" : [ "/sfx/tech/mech_activate4.ogg" ] 
+        },    	
+	{
+	  "time" : 0.33,
+	  "action":"spawnmonster", 
+	  "type":"sentryminidrone2", 
+	  "offset":[0,0], 
+	  "arguments":{
+	    "damageTeamType":"friendly", "damageTeam":0,"level" : 4
+	  }
+	}      
+      ],
+      "actionOnReap" : [
 	    {
-	      "time" : 0.2,
-	      "loop" : false,    
-	      "action" : "config",
-	      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
-	    }	
-      ]      
+	      "action" : "sound",
+	      "options" : ["/sfx/weapons/spatialcollapse.ogg"]
+	    },       
+	    {
+	      "action" : "projectile",
+	      "type" : "electricexplosion",
+	      "inheritDamageFactor" : 0.02,
+	      "config" : { 
+	        "speed" : 0,
+	        "projectileParameters" : {"periodicActions" : []}
+	      },
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0
+	    }       
+      ]     
     },
     "projectileCount" : 1,
     "inaccuracy" : 0,
     "baseDamage" : 0,
-    "energyUsage" : 25,
-    "fireTime" : 3,
+    "energyUsage" : 50,
+    "fireTime" : 4,
     "fireType" : "auto",
     "speed" : 0,
     "timeToLive" : 0,

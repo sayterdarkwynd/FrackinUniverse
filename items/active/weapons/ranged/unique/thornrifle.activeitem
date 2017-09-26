@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Stab the hell out of your foolish foes
-^yellow;Inflicts poison^reset;",
+^yellow;Inflicts poison^reset;
+^cyan;Summons Pterobombs^reset;",
   "shortdescription" : "Thorn Rifle",
   "category" : "sniperRifle",
   "level" : 3,
@@ -85,9 +86,9 @@
 
   "altAbilityType" : "explosiveshot",
   "altAbility" : {
-    "name" : "Living Bomb",
+    "name" : "Bio-Spawn",
     "baseDps" : 5,
-    "fireTime" : 1.5,
+    "fireTime" : 5,
     "energyUsage" : 20,
     "projectileParameters" : {
       "timeToLive" : 0.2,
@@ -100,20 +101,17 @@
       "action" : "sound",
       "options" : [
         "/sfx/blocks/footstep_brains.ogg",
-        "/sfx/projectiles/goocluster_pop.ogg",
-        "/sfx/projectiles/bonebounce1.ogg",
-        "/sfx/projectiles/bonebounce3.ogg",
-        "/sfx/projectiles/bonebounce5.ogg"
+        "/sfx/projectiles/goocluster_pop.ogg"
       ]
     },     
  	{
  	  "action":"spawnmonster", 
- 	  "type":"tentaclebomb", 
+ 	  "type":"pteropodsummoned", 
  	  "offset":[0,0], 
  	  "arguments":{
  	    "damageTeamType":"friendly", "damageTeam":0
  	  }
- 	} 
+ 	} 	
       ]
     }    
   },

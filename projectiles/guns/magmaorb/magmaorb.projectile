@@ -23,6 +23,22 @@
 	      "action" : "config",
 	      "file" : "/projectiles/explosions/magmaorbboom/magmaorbboom.config"
 	    },
+	    {
+	      "action":"explosion", 
+	      "foregroundRadius":5, 
+	      "backgroundRadius":2, 
+	      "explosiveDamageAmount":15.0, 
+	      "delaySteps":2, 
+	      "harvestLevel":10
+	    },		    
+	    {
+	      "action":"explosion", 
+	      "foregroundRadius":34, 
+	      "backgroundRadius":17, 
+	      "explosiveDamageAmount":5.0, 
+	      "delaySteps":2, 
+	      "harvestLevel":10
+	    },	    
 	    { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 18 },
 	      {
 		"action":"projectile",
@@ -30,13 +46,23 @@
 		"angle":50,
 		"fuzzAngle":10,
 		"config":{
-		  "power":6.66,
+		  "power":20,
 		  "processing":"?scalenearest=4.5",
 		  "knockback":24,
 		  "animationCycle":0.2,
 		  "timeToLive":0.2,
 		  
 		  "actionOnReap" : [
+		    {
+		      "time":0.1,
+		      "loop" : false,
+		      "action":"explosion", 
+		      "foregroundRadius":16, 
+		      "backgroundRadius":6, 
+		      "explosiveDamageAmount":2.5, 
+		      "delaySteps":2, 
+		      "harvestLevel":8
+		    },		  
 		    {
 		      "action":"projectile",
 		      "type":"mechexplosion",
@@ -67,19 +93,7 @@
 				  "bounces":-1,
 				  "piercing":true
 				  }
-			      }, 			
-			  {
-			    "time":0,
-			    "repeat":false,
-			    "action":"loop",
-			    "count":7,
-			    "body":[
-			      {
-				"action":"sound",
-				"options": ["/sfx/gun/grenadeblast_fire1.ogg","/sfx/gun/grenadeblast_fire2.ogg","/sfx/gun/grenadeblast_fire3.ogg"]
 			      }
-			    ]				  
-			  }
 			]
 		      }		    
 		    }
@@ -103,7 +117,8 @@
 		  "actionOnCollide":[],
 		  "actionOnReap":[],
 		  "processing":"?scalenearest=0",
-		  "bounces":-1,"piercing":true
+		  "bounces":-1,
+		  "piercing":true
 		  }
 	      }    
 	    ]

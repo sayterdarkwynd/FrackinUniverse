@@ -3,7 +3,7 @@
   "price" : 160,
   "inventoryIcon" : "mobiusrifle.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "legendary",
   "description" : "A mainstay of advanced forces. Rivaled by few.
 ^yellow;Inflicts frozen-fire^reset;
 ^cyan;Summons Shield Drones^reset;",
@@ -20,7 +20,7 @@
     "butt" : "",
     "middle" : "mobiusrifle.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -38,8 +38,8 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.5,
-    "baseDps" : 4.8,
+    "fireTime" : 0.4,
+    "baseDps" : 6,
     "energyUsage" : 30,
     "inaccuracy" : 0,
     "projectileCount" : 1,
@@ -50,7 +50,7 @@
     "projectileParameters":{
 	  "statusEffects":[], 
 	  "bounces":0, 
-	  "speed":60, 
+	  "speed":80, 
 	  "timeToLive":3.0, 
 	  "power" : 5,
 	  "damageSourceKind" : "electric",
@@ -60,9 +60,8 @@
 		  {
 		  "time":0.01, 
 		  "action":"projectile", 
-		  "type":"firelasershot", 
+		  "type":"firelasershot2", 
 		  "config":{
-		    "statusEffects":[], 
 		    "processing":"?hueshift=127",
 		    "speed":0, 
 		    "physics" : "laser",
@@ -139,10 +138,6 @@
   "critChance" : 4,
   "critBonus" : 6,
   "altAbilityType" : "fudronelauncher",
-  "altAbility" : {
-    "fireTime" : 2,
-    "name" : "Shield Drones"
-  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
