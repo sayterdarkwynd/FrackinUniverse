@@ -23,22 +23,12 @@
 		"fuzzAngle":10,
 		"config":{
 		  "power":20,
-		  "processing":"?scalenearest=1.5",
+		  "processing":"?scalenearest=1.1",
 		  "knockback":24,
 		  "animationCycle":0.2,
 		  "timeToLive":0.2,
 		  
-		  "actionOnReap" : [
-		    {
-		      "time":0.1,
-		      "loop" : false,
-		      "action":"explosion", 
-		      "foregroundRadius":7, 
-		      "backgroundRadius":0, 
-		      "explosiveDamageAmount":2.5, 
-		      "delaySteps":2, 
-		      "harvestLevel":10
-		    },		  
+		  "actionOnReap" : [	  
 		    {
 		      "action":"projectile",
 		      "type":"mechexplosion",
@@ -46,7 +36,7 @@
 		      "fuzzAngle":10,
 		      "config":{
 			"power":20,
-			"processing":"?scalenearest=3",
+			"processing":"?scalenearest=2.2",
 			"knockback":150,
 			"animationCycle":0.4,
 			"timeToLive":0.4,
