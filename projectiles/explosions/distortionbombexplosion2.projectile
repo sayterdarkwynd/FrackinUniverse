@@ -1,0 +1,80 @@
+{
+  "projectileName" : "distortionbombexplosion2",
+  "image" : "mineralpistolexplosion.png",
+  "animationCycle" : 0.2,
+  "level" : 3,
+  "frameNumber" : 4,
+  "speed" : 0,
+  "fullbright" : true,
+  "fallSpeed" : 0,
+  "power" : 5,
+  "lightColor" : [0, 125, 0],
+  "damagePoly" : [ [-18, 0], [-12, -12], [0, -18], [12, -12], [18, 0], [12, 12], [0, 18], [-12, 12] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "universalDamage" : false,
+  "damageKind" : "default",
+  "actionOnReap" : [
+{
+		"action":"projectile",
+		"type":"mechexplosion",
+		"angle":50,
+		"fuzzAngle":10,
+		"config":{
+		  "power":20,
+		  "processing":"?scalenearest=1.5",
+		  "knockback":24,
+		  "animationCycle":0.2,
+		  "timeToLive":0.2,
+		  
+		  "actionOnReap" : [
+		    {
+		      "time":0.1,
+		      "loop" : false,
+		      "action":"explosion", 
+		      "foregroundRadius":7, 
+		      "backgroundRadius":0, 
+		      "explosiveDamageAmount":2.5, 
+		      "delaySteps":2, 
+		      "harvestLevel":10
+		    },		  
+		    {
+		      "action":"projectile",
+		      "type":"mechexplosion",
+		      "angle":50,
+		      "fuzzAngle":10,
+		      "config":{
+			"power":20,
+			"processing":"?scalenearest=3",
+			"knockback":150,
+			"animationCycle":0.4,
+			"timeToLive":0.4,
+			"periodicActions":[
+			      {
+				"time":0.05,
+				"action":"projectile",
+				"type":"redglobe",
+				"angleAdjust":180,
+				"fuzzAngle":80,
+				"config":{
+				  "knockback":-20,
+				  "power":3,
+				  "speed":400,
+				  "timeToLive":0.03,
+				  "periodicActions":[],
+				  "actionOnCollide":[],
+				  "actionOnReap":[],
+				  "processing":"?scalenearest=0",
+				  "bounces":-1,
+				  "piercing":true
+				  }
+			      }
+			]
+		      }		    
+		    }
+		  ]
+		}
+	      }     
+  ]
+}
