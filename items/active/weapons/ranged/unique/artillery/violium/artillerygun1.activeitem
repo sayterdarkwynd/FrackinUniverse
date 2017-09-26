@@ -4,12 +4,13 @@
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Call in an airstrike.",
-  "shortdescription" : "Artillery Radio",
+  "description" : "Call in a devastating missile strike. Obliterates tiles.
+^cyan;Alt-fire increases damage^reset;",
+  "shortdescription" : "Volatile Missile Salvo",
   "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","rocketLauncher", "flamethrower", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","rocketLauncher", "upgradeableWeapon"],
 
   "inventoryIcon" : [
     { "image" : "splittergun.png:idle.1" }
@@ -79,7 +80,7 @@
 
     "fireTime" : 1,
     "baseDps" : 0,
-    "energyUsage" : 30,
+    "energyUsage" : 50,
     "inaccuracy" : 0,
     "fireType" : "auto",
 
@@ -91,7 +92,7 @@
       "statusEffects":[],
       "bounces":0,
       "speed":220,
-      "timeToLive":0.4,
+      "timeToLive":1,
       "power":5.0,
       "knockback":0,
       "actionOnReap":[  
@@ -104,7 +105,7 @@
           "repeat":false
         },
         {  
-          "time":0.0,
+          "time":2.0,
           "angle":90,
           "action":"projectile",
           "offset":[0,7],
