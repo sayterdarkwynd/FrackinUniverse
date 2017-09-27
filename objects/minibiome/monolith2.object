@@ -1,33 +1,35 @@
 {
   "objectName" : "monolith2",
   "rarity" : "Common",
-  "category" : "pot",
-  "price" : 400,
+  "category" : "decorative",
+  "price" : 1400,
   "printable" : false,  
-  "description" : "Who could have built this?",
+  "description" : "Who could have built this? What does it represent? It's awful.",
   "shortdescription" : "Strange Monument",
-  "lightColor" : [171, 177, 39],
+  "lightColor" : [0, 70, 0],
   "inventoryIcon" : "monolith2.png",
   "health" : 100,
   "orientations" : [
     {
-      "image" : "monolith2.png:<color>",
-      "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+      "imageLayers" : [ { "image" : "monolith2.png:<color>" }, { "image" : "monolith2fullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-15, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "monolith2.png:<color>" }, { "image" : "monolith2fullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-15, 0],
 
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
-  "smashDropOptions" : [
-    [ [ "monolith2", 1, { } ] ]
-  ],
 
-  "breakDropOptions" : [
-    [ [ "monolith2", 1, { } ] ]
-  ],
   "biomePlaced" : true
 }
