@@ -4,9 +4,10 @@
   "inventoryIcon" : "verdantrailgun.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Nature's wrath sure is poisonous.
-^yellow;Inflicts poison^reset;",
-  "shortdescription" : "Verdant Railgun",
+  "description" : "A deadly mix of plant and machine.
+^cyan;Inflicts poison^reset;
+^#e43774;6-round microbursts (x6 dmg)",
+  "shortdescription" : "Verdant Rifle",
   "category" : "sniperRifle",
   "level" : 4,
   "tooltipKind" : "gun2",
@@ -37,17 +38,18 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1,
+    "fireTime" : 0.2,
     "baseDps" : 8.0,
-    "energyUsage" : 25.0,
-    "inaccuracy" : 0.001,
+    "energyUsage" : 35.0,
+    "inaccuracy" : 0,
 
     "projectileCount" : 1,
-    "fireType" : "auto",
-
+    "fireType" : "burst",
+    "burstCount" : 6,
+    "burstTime" : 0.01,
     "projectileType" : "toxicdart",
     "projectileParameters" : { 
-      "speed" : 92,
+      "speed" : 110,
       "knockback" : 12.5
     },
   "stances" : {
@@ -82,7 +84,8 @@
 
   "critChance" : 8,
   "critBonus" : 12,
-  "altAbilityType" : "markedshot",
+  "altAbilityType" : "biogrenadelauncher",
+
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

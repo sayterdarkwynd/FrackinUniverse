@@ -1,0 +1,62 @@
+{
+  "objectName" : "precursortrap1",
+  "colonyTags" : ["precursor","evil"],
+  "printable" : false,
+  "rarity" : "Legendary",
+  "description" : "Whatever this thing emits, it isn't wonderful.",
+  "shortdescription" : "Precursor Trap",
+  "race" : "precursor",
+
+  "category" : "trap",
+  "price" : 0,
+
+  "inventoryIcon" : "precursortrapicon.png",
+  "orientations" : [
+    {
+      "image" : "precursortrap1.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "flipImages" : false,
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "bgAnchors" : [ [-1, 1], [0, 1], [-2, 0], [1, 0], [-2, -1], [1, -1], [-1, -2], [0, -2] ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/projectiletrap/projectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "/objects/minibiome/precursor/precursortrap/projectiletrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ "/sfx/weapons/energyassault.ogg" ],
+      "on" : [  ],
+      "off" : [ ]
+    }
+  },
+      "animationPosition" : [-16, -16],
+      "animationParts" : {
+        "bg" : "precursortrap1.png",
+        "fg" : "precursortrap1lit.png"
+      },
+  "inputNodes" : [ [0, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 120, 120], // light color to emit when the object is 'on'
+
+  "fireTime" : 1.5, // rate of fire
+  "fireTimeVariance" : 0.25, // variation in rate of fire
+  "projectile" : "precursorshottrap", // name of projectile (required)
+  "projectileConfig" : { // extra configuration overrides for projectile
+    "damageTeam" : { "type" : "indiscriminate" },
+    "power" : 30
+  },
+  
+  "health" : 5,
+
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
+  "smashParticles" : [ { "count" : 10, "particle" : "greystoneshard" } ]
+}

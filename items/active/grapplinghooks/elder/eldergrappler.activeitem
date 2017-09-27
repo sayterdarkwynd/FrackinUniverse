@@ -4,7 +4,7 @@
   "inventoryIcon" : "lasherhookicon.png",
   "rarity" : "Legendary",
   "maxStack" : 1,
-  "description" : "Though creepy, this is a fun thing to play with.",
+  "description" : "A fascinating grappling hook dripping with poison.",
   "shortdescription" : "Elder Hook",
   "largeImage" : "lasherhookbig.png",
   "category" : "Tool",
@@ -25,7 +25,13 @@
   "projectileType" : "grapplehook",
   "projectileParameters" : {
     "speed" : 100,
-    "timeToLive" : 0.65
+    "timeToLive" : 0.65,
+    "power" : 20,
+    "damageSourceKind" : "poison",
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact3.ogg"],"action":"sound"} ],
+    "statusEffects" : [ "weakpoison" ]
   },
 
   "ropeWidth" : 0.8,

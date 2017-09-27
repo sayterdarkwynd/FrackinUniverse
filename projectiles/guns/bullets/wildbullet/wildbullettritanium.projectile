@@ -1,0 +1,40 @@
+{
+  "projectileName" : "wildbullettritanium",
+  "image" : "wildbullet.png",
+  "bounces" : -1,
+  "piercing" : false,
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "timeToLive" : 0.6,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "wildbullet2",
+      "fuzzAngle" : 30,
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 0
+    }
+  ],  
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "wildbullet2",
+      "fuzzAngle" : 30,
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 0
+    }
+  ],
+  "power" : 5.0,
+  "speed" : 75,
+  "damageKind" : "default"
+}

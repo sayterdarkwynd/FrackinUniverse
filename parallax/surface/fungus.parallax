@@ -5,7 +5,7 @@
   "layers" : [
     {
       "kind" : "divider/dirt",
-      "offset" : [0, 200],
+      "offset" : [0, 350],
       "nohueshift" : true,
       "lightMapped" : true,
       "parallax" : 1.199
@@ -15,52 +15,162 @@
       "nohueshift" : true,
       "lightMapped" : true,
       "repeatY" : true,
-      "tileLimitTop" : 125,
+      "tileLimitTop" : 275,
       "parallax" : 1.2
     },
-    {
-      "kind" : "fungusback",
-      "baseCount" : 2,
-      "offset" : [0, 360],
-      "parallax" : 9,
-      "nightCorrelation" : 0,
-      "minSpeed" : 0,
-      "maxSpeed" : 0,
-      "lightningFrequency" : 0.15,
-      "modifiers" : "?brightness=20?saturation=-10",
-      "fadePercent" : 0.35
-    },
-
-    {
-      "kind" : "fungusfront",
-      "offset" : [0, 310],
-      "parallax" : 2.4,
-      "nightCorrelation" : 0,
-      "minSpeed" : 0,
-      "maxSpeed" : 0,
-      "modifiers" : ""
-    },
-    {
-      "kind" : "foliage/treefront",
-      "offset" : [0, 275],
-      "parallax" : 2.5,
-      "directives" : "?saturation=-5?brightness=10",
-      "fadePercent" : 0.03
-    },
-    {
-      "kind" : "foliage/treefront",
-      "offset" : [0, 255],
-      "parallax" : 3,
-      "directives" : "?saturation=-10?brightness=5",
-      "fadePercent" : 0.03
-    },
+    
     {
       "kind" : "foliage/treeback",
-      "offset" : [0, 235],
-      "parallax" : 3.5,
-      "directives" : "?saturation=-5?brightness=10",
-      "fadePercent" : 0.03
+      "offset" : [80, 110],
+      "parallax" : [6,4.99],
+      "directives" : "?saturation=-20?brightness=20",
+      "nohueshift" : true
     },
+    
+   
+    {
+      "kind" : "fungusback",
+      "offset" : [0, 360],
+      "noRandomOffset" : true,
+      "parallax" : [5,5],
+      "nohueshift" : true,
+      "fadePercent" : 0.05
+    },
+    {
+      "kind" : "fungusbacklit",
+      "offset" : [0, 360],
+      "noRandomOffset" : true,
+      "parallax" : [5,5.001],
+      "nohueshift" : true,
+      "fadePercent" : 0.05,
+      "directives" : "?saturation=-15",
+      "unlit" : true
+    },
+  
+    {
+      "kind" : "foliage/treefront",
+      "offset" : [0, 130],
+      "parallax" : [4.5,4.7],
+      "directives" : "?saturation=-10",
+      "nohueshift" : true
+    },
+    
+    {
+      "kind" : "fungalgrassbelow1",
+      "offset" : [0, 190],
+      "parallax" : [1.8, 2]
+    },
+    {
+      "kind" : "fungalgrassbelow2",
+      "offset" : [0, 190],
+      "parallax" : [1.8001, 2]
+    },
+    {
+      "kind" : "fungalgrassbelow3",
+      "offset" : [0, 190],
+      "parallax" : [1.8002, 2]
+    },
+    {
+      "kind" : "fungalgrassbelow3",
+      "offset" : [0, 330],
+      "parallax" : [1.8, 2]
+    },
+    {
+      "kind" : "fungalgrass1",
+      "offset" : [0, 50],
+      "parallax" : [1.8, 2]
+    },
+    //{
+    //  "kind" : "gardentrees1",
+    //  "offset" : [0, 50],
+    //  "parallax" : [1.81, 2],
+    //  "fadePercent" : 0.05
+    //},
+    {
+      "kind" : "fungalgrass2",
+      "offset" : [0, 50],
+      "parallax" : [2, 2.2]
+    },
+    {
+      "kind" : "fungalgrass3",
+      "offset" : [0, 50],
+      "parallax" : [3, 2.4]
+    },
+    {
+      "kind" : "fungalgrass4",
+      "offset" : [0, 50],
+      "parallax" : [4, 2.8]
+    },
+    
+    
+    {
+      "kind" : "fungusfront",
+      "offset" : [0, 340],
+      "noRandomOffset" : true,
+      "parallax" : [4.5,3],
+      "modifiers" : "",
+      "nohueshift" : true,
+      "fadePercent" : 0.02
+    },
+    {
+      "kind" : "fungusfrontlit",
+      "offset" : [0, 340],
+      "noRandomOffset" : true,
+      "parallax" : [4.5,3.001],
+      "modifiers" : "",
+      "nohueshift" : true,
+      "fadePercent" : 0.02,
+      "unlit" : true
+    }, 
+    
+    {
+      "kind" : "fungusrare",
+      "baseCount" : 4,
+      "offset" : [0, 330],
+      "parallax" : [4.5, 3.01]
+    },
+    //{
+    //  "kind" : "gardentrees2",
+    //  "offset" : [0, 30],
+    //  "parallax" : [4.51, 3.2],
+    //  "fadePercent" : 0.1
+    //},
+    {
+      "kind" : "fungalgrass5",
+      "offset" : [0, 50],
+      "parallax" : [5, 3.4]
+    },
+    {
+      "kind" : "fungalgrass6",
+      "offset" : [0, 50],
+      "parallax" : [6, 3.6]
+    },
+    {
+      "kind" : "fungalgrass7",
+      "offset" : [0, 50],
+      "parallax" : [7, 3.8],
+      "fadePercent" : 0.1
+    },
+    {
+      "kind" : "fungalgrass8",
+      "offset" : [0, 50],
+      "parallax" : [8, 4],
+      "fadePercent" : 0.12
+    },
+    {
+      "kind" : "fungalgrass9",
+      "baseCount" : 2,
+      "offset" : [0, 41],
+      "parallax" : [8, 4.2],
+      "fadePercent" : 0.1
+    },
+    {
+      "kind" : "fungalgrassgreen",
+      "baseCount" : 1,
+      "offset" : [0, 450],
+      "parallax" : [8.1, 4.2]
+    },
+
 
     {
       "kind" : "clouds3",

@@ -1,13 +1,14 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "powerMultiplier", baseMultiplier = 1.15}
 }
 
 armorBonus={
-	{stat = "critChance", amount = 15},
+	{stat = "critChance", amount = 5},
 	{stat = "asteroidImmunity", amount = 1},
-	{stat = "breathProtection", amount = 1}
+	{stat = "breathProtection", amount = 1},
+	{stat = "extremepressureProtection", amount = 1}
 }
 
 setName="fu_precursorset"
@@ -27,18 +28,21 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	        status.addEphemeralEffect("gravgenfieldarmor2",5)
+	        --status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end	
 
 end
 
 function checkWeapons()
-local weaponSword=weaponCheck({"machinepistol"})
-local weaponShield=weaponCheck({"machinepistol"})
+local weaponSword=weaponCheck({"energy","precursor"})
+local weaponShield=weaponCheck({"energy","precursor"})
 
 	if weaponSword["either"] and weaponShield["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	elseif weaponSword["either"] or weaponShield["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end

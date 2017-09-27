@@ -3,7 +3,6 @@ function init()
   self.pumped = self.pumped or 0
   storage.ispump     = storage.ispump      or false
   storage.ispumppres = storage.ispumppres  or false
-  storage.outputProtected = storage.outputProtected or false
   storage.state = storage.state or false
   output(storage.state)
   self.timer = 0
@@ -25,10 +24,8 @@ function pump(inputPos,outputPos)
     if inliq and inliq[2] > 0.1 then  --if input has liquid
         local outliq = world.liquidAt(outputPos)
         if (storage.ispumppres or (not outliq or (outliq[1] == inliq[1] and outliq[2] < 1))) then --if output has no liquid or (liquid ids are the same and outliquidlever < 2)
-            if storage.outputProtected then world.setTileProtection(world.dungeonId(storage.outputPos), false) end
-            world.destroyLiquid(inputPos)
+            world.forceDestroyLiquid(inputPos)
             world.spawnLiquid(outputPos,inliq[1],inliq[2]*1.01)
-            if storage.outputProtected then world.setTileProtection(world.dungeonId(storage.outputPos), true) end
             return true
         end
     end
@@ -61,8 +58,6 @@ function setoutputpump()
         else
             storage.outputPos = world.entityPosition(outputid)
             var = world.entityName(outputid)
-            --tile protection will break the pumps if we dont store it and toggle it before and after each pump sequence.
-            storage.outputProtected = world.isTileProtected(storage.outputPos)
         end
         storage.ispump     = var == "pumpoutfuelder"
         storage.ispumppres = var == "pumpoutpressurefuelder"

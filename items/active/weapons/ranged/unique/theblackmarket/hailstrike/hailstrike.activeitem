@@ -35,8 +35,8 @@
       "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
     }
   },
-  "baseOffset" : [0, -0.55],
-  "muzzleOffset" : [2.2, 0],
+  "baseOffset" : [0.8, -0.55],
+  "muzzleOffset" : [2.2, -0.25],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua", "/items/active/scripts/heavyweapon2.lua"],
 
@@ -105,11 +105,14 @@
 ^green;Alt ignores walls^reset;", 
   "animationParts" : {
     "butt" : "",
-    "middle" : "hailstrike.png",
-    "middlefullbright" : "hailstrikefullbright2.png",
+    "middle" : "deathstrike.png",
+    "middlefullbright" : "deathstrikefullbright.png",
     "barrel" : "",
     "muzzleFlash" : ""
-  },    
+    },
+    "inventoryIcon" : [
+    { "image" : "deathstrike.png:idle.1" }
+    ],
     "critChance" : 4,
     "critBonus" : 4,
 	  "primaryAbility" : {

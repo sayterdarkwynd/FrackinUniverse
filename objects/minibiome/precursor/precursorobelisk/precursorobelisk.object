@@ -1,0 +1,67 @@
+{
+  "objectName" : "precursorobelisk",
+  "colonyTags" : [ "precursor", "table" ],
+  "printable" : false,
+  "rarity" : "legendary",
+  "description" : "Some sort of...pillar. It looks like there's a place for a palm.",
+  "shortdescription" : "Precursor Obelisk",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 500,
+  "rooting" : true,
+  "inventoryIcon" : "precursorobeliskicon.png",
+  "orientations" : [
+    {
+      "direction" : "left",
+      "imageLayers" : [ { "image" : "precursorobelisk.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorobelisklit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "direction" : "right",
+      "imageLayers" : [ { "image" : "precursorobelisk.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorobelisklit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }    
+  ],
+  
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallbutton.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "precursorobelisk.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "interval" : 15,
+
+  "npcToy": {
+    "ownerOnly": true,
+    "influence" : [ "wallbutton" ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

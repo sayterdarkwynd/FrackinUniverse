@@ -1,0 +1,113 @@
+{
+  "itemName" : "fuhellclaw",
+  "price" : 200,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Flaming claws? Yes please. Just...don't burn your hands.
+^cyan;Inflicts Burning^reset;",
+  "shortdescription" : "Hellion Claw",
+  "tooltipKind" : "fist2",
+  "category" : "fistWeapon",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","fist", "upgradeableWeapon"],
+  "inventoryIcon" : "hellclaw.png:front",
+  "animation" : "fistweapon.animation",
+  "animationParts" : {
+    "weapon" : "hellclaw.png",
+    "swoosh" : "swoosh/clawswoosh.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
+      "damageArea" : [[-1, -1.1], [2.1, -0.6], [2.1, 0.8], [-1, 1.3]]
+    }}}}}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : [ "fistweapon.lua" ],
+
+  "needsEdgeTrigger" : true,
+  "edgeTriggerGrace" : 0.1,
+
+  "comboSteps" : 6,
+  "comboTiming" : [0.2, 0.6],
+  "comboCooldown" : 0.2,
+  "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/megadashslash.combofinisher",
+
+  "freezeLimit" : 2,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/fist/punch.lua"],
+    "class" : "Punch",
+
+    "freezeTime" : 0.15,
+    "fireTime" : 0.2,
+    "baseDps" : 6.0,
+    "damageConfig" : {
+      "damageSourceKind" : "fire",
+      "statusEffects" : [ "burning" ],
+      "knockback" : [0, 15],
+      "timeoutGroup" : "primary",
+      "timeout" : 0.1
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 45,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.25, -0.575],
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "frontArmFrame" : "run.2",
+        "backArmFrame" : "jump.3"
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.625, -0.125],
+
+        "allowRotate" : true,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "swimIdle.1",
+        "backArmFrame" : "swim.1"
+      },
+      "windup2" : {
+        "duration" : 0.05,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.75, -0.125],
+
+        "allowRotate" : true,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "swimIdle.1",
+        "backArmFrame" : "swim.1",
+
+        "recoil" : true
+      },
+      "fire" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [0.125, -0.25],
+
+        "allowRotate" : true,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "rotation",
+        "backArmFrame" : "rotation"
+      }
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 4, 
+  "builder" : "/items/buildscripts/buildfist.lua"
+}

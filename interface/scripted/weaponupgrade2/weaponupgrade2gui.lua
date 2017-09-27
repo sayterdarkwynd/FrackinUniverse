@@ -112,7 +112,7 @@ function doUpgrade()
         if consumedCurrency then
         
           local itemConfig = root.itemConfig(upgradedItem)  
-                  self.baseValueMod = itemConfig.config.level -- store the original level in case we need it for calculations
+                  self.baseValueMod = itemConfig.config.level or 1 -- store the original level in case we need it for calculations
 		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 		  if (itemConfig.parameters.baseDps) or (itemConfig.config.baseDps) then
 		    upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/20) )  -- increase DPS a bit
@@ -225,7 +225,7 @@ function doUpgrade()
 		  -- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing 
 			
 			if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) then
-			  if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") then
+			  if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "scythe") then
 			    upgradedItem.parameters.primaryAbility.fireTime = upgradedItem.parameters.primaryAbility.fireTime
 			  else
 			    local fireTimeBase = itemConfig.config.primaryAbility.fireTime
@@ -244,7 +244,7 @@ function doUpgrade()
 			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
 			end	
 		  -- Can it STUN?	
-                  if (itemConfig.config.category == "hammer") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "quarterstaff") then
+                  if (itemConfig.config.category == "hammer") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "quarterstaff") then
  		    upgradedItem.parameters.stunChance = (itemConfig.parameters.stunChance or itemConfig.config.stunChance or 1) + 0.5 + self.baseValueMod                    
                   end     
                   
@@ -253,10 +253,10 @@ function doUpgrade()
 	  sb.logInfo("Upgrading weapon : ")	  
           sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
           
-          if itemConfig.config.upgradeParameters then
+          if (itemConfig.config.upgradeParameters)  and (upgradedItem.parameters.level) > 3 then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
           end
-          if (itemConfig.config.upgradeParameters2) and (upgradedItem.parameters.level) >= 5 then
+          if (itemConfig.config.upgradeParameters2) and (upgradedItem.parameters.level) > 5 then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
           end
           

@@ -51,7 +51,7 @@ function update(dt)
 		animator.setAnimationState("jar", storage.combsProcessed.count and storage.combsProcessed.count > 0 and "working" or "idle")
 
 		-- So long as the stash count is at least 3 and there is at least one empty bottle in the jarrer, a full jar will be produced. The stash is then reduced.
-		if storage.combsProcessed.count and storage.combsProcessed.count >= combsPerJar and ( world.containerConsume(entity.id(), { name= "bottle", count = 1, data={}}) == true ) then
+		if storage.combsProcessed.count and storage.combsProcessed.count >= combsPerJar and ( world.containerConsume(entity.id(), { name= "bottle", count = 1, data={}}) == true ) or ( world.containerConsume(entity.id(), { name= "emptyhoneyjar", count = 1, data={}}) == true ) then
 			--sb.logInfo ("producing one %s", stash.type)
 			local throw = world.containerAddItems(entity.id(), { name = storage.combsProcessed.type, count = 1, data={}})
 			if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around

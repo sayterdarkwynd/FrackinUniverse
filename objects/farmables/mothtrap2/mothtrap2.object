@@ -1,0 +1,74 @@
+{
+  "objectName" : "mothtrap2",
+  "colonyTags" : ["outdoor","light"],
+  "printable" : false,
+  "rarity" : "uncommon",
+  "category" : "light",
+  "price" : 110,
+  "description" : "Attracts moths. Moths produce more silk!",
+  "shortdescription" : "Moth Trap II",
+  "race" : "generic",
+
+  "apexDescription" : "This can be used to collect silk fibre, if you leave it long enough.",
+  "avianDescription" : "I can use this to collect silk fibre.",
+  "floranDescription" : "Sssilly moths, leaving behind preciousss sssilk fibre.",
+  "glitchDescription" : "Proud. Glitch farm moths to make the finest silk.",
+  "humanDescription" : "Isn't it weird that such a fancy material starts with these little moths?",
+  "hylotlDescription" : "Using this I can collect silk fibre to weave into silk cloth, a most luxurious material.",
+  "novakidDescription":  "Silk is a bit fancy for the likes of me, but I can sell it!",
+
+  "inventoryIcon" : "mothtrap2icon.png",
+  "orientations" : [
+    {
+      "image" : "mothtrap2.png:1",
+      "imagePosition" : [-16, 0],
+      "animationPosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "mothtrap2.png:1",
+      "imagePosition" : [-16, 0],
+      "animationPosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "mothtrap2.animation",
+  "animationParts" : {
+    "light" : "mothtrap2lit.png",
+    "post" : "mothtrap2.png"
+  },
+
+  "scripts" : [ "/objects/scripts/harvestable.lua" ],
+  "scriptDelta" : 60,
+
+  "activeTimeRange" : [0.65, 1.0],
+  "activeAnimationStates" : {
+    "light" : "on"
+  },
+  "inactiveAnimationStates" : {
+    "light" : "off"
+  },
+
+  "itemDropOffset" : [0.5, 2.5],
+  "stages" : [
+    {
+      "duration" : [145, 155]
+    },
+    {
+      "duration" : [145, 155]
+    },
+    {
+      "harvestPool" : "silkHarvest2"
+    }
+  ]
+}

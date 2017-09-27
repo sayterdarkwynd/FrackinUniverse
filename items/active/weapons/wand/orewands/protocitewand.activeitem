@@ -11,11 +11,19 @@
   "itemTags" : ["weapon","wand","upgradeableWeapon"],
   "tooltipKind" : "staff",
 
-  "animation" : "/items/active/weapons/wand/wand.animation",
+  "animation" : "/items/active/weapons/staff/staff.animation",
   "animationParts" : {
-    "wand" : "protocitewand.png",
+    "staff" : "protocitewand.png",
     "stone" : "",
     "chargeEffect" : "/items/active/weapons/staff/generated/glow/poison.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "wand" : { "properties" : { "offset" : [0, 0.5] } },
+		"chargeEffect" : { "properties" : { "offset" : [0, 0] } }
+      }
+    }
   },
 
   "inventoryIcon" : "protocitewand.png",

@@ -1,0 +1,85 @@
+{
+  "itemName" : "coreshortspear",
+  "price" : 100,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Searingly fun for everyone!",
+  "shortdescription" : "Core Shortspear",
+  "tooltipKind" : "sword",
+  "category" : "shortspear",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortspear", "spear", "upgradeableWeapon"],
+
+  "inventoryIcon" : "coreshortspear_dubshoe.png",
+  "animation" : "/items/active/weapons/melee/shortspear/comboshortspear.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "coreshortspear_dubshoe.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+ 
+  "aimOffset" : -1.0,
+  "muzzleOffset" : [0, 1.05],
+  
+  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+  
+  "critChance" : 1,
+  "critBonus" : 2, 
+  
+  "primaryAbilityType" : "shortspearcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 5.5,
+    "damageConfig" : {
+      "statusEffects" : [ "burning" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.3, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "hold" : true,
+        "duration" : 0.55,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.3, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.3,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : false,
+        "weaponOffset" : [0.3, 2.5],
+
+        "allowRotate" : true,
+        "allowFlip" : false
+      },
+      "hold" : {
+        "armRotation" : -30,
+        "weaponRotation" : -60,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.3, 2.0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

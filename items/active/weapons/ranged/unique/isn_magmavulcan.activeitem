@@ -5,8 +5,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Ejects deadly balls of burning iron and magma
-^yellow;Spawns lava and molten metal^reset;
-^green;Destroys tiles",
+^yellow;Spawns molten metal. Evil!^reset;
+^green;Destroys tiles, lives and dreams.",
   "shortdescription" : "Pyre Vulcan",
   "category" : "grenadeLauncher",
   "level" : 5,
@@ -62,7 +62,28 @@
     "projectileType" : "isn_magmavulcantiny",
     "projectileParameters" : { 
       "speed" : 70,
-      "knockback" : 6.5
+      "knockback" : 6.5,
+      "periodicActions" : [
+        {
+	"time":0.05,
+	"action":"projectile",
+	"type":"redglobe",
+	"angleAdjust":180,
+	"fuzzAngle":80,
+	"config":{
+	  "knockback":-20,
+	  "power":3,
+	  "speed":400,
+	  "timeToLive":0.03,
+	  "periodicActions":[],
+	  "actionOnCollide":[],
+	  "actionOnReap":[],
+	  "processing":"?scalenearest=0",
+	  "bounces":-1,
+	  "piercing":true
+	  }
+        }    
+      ]  
     },
 	  "stances" : {
 	    "idle" : {
