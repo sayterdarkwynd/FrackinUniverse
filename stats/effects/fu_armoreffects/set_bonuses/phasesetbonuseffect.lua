@@ -4,7 +4,7 @@ armorBonus={
 	{stat ="electricStatusImmunity" , amount = 1 },
 	{stat ="pressureProtection" , amount = 1 },
 	{stat ="extremepressureProtection" , amount = 1 },
-	{stat ="critChance" , amount = 1 }
+	{stat ="critChance" , amount = 5 }
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
