@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_fleshset"
 
 weaponBonus={
-  {stat = "critChance", amount = 15}
+  {stat = "critChance", amount = 6}
 }
 
 armorBonus={

@@ -1,7 +1,7 @@
 setName="fu_leatherset"
 
 weaponBonus={
-	{stat = "critChance", amount = 6},
+	{stat = "critChance", amount = 5},
         {stat = "powerMultiplier", amount = 0.05}
 }
 

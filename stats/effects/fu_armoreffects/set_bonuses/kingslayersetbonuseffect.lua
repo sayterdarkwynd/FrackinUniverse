@@ -1,7 +1,7 @@
 setName="fu_kingslayerset"
 
 weaponBonus={
-	{stat = "critChance", amount = 6}
+	{stat = "critChance", amount = 3}
 }
 
 armorEffect={
