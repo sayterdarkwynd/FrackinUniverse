@@ -1,0 +1,46 @@
+{
+  "itemName" : "solariumkatana",
+  "price" : 2200,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Cleave with sun power. 2 handed.",
+  "shortdescription" : "Solarium Katana",
+  "tooltipKind" : "sword2",
+  "category" : "katana",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "solariumkatana.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "solariumkatana" },
+  "animation" : "combokatanaglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "solariumkatana.png",
+    "bladefullbright" : "solariumkatanafullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "katanacombo2h",
+  "primaryAbility":{
+    "fireTime":0.72, 
+    "baseDps":7.0, 
+    "damageConfig":{
+      "knockback":20,
+      "damageSourceKind" : "radioactive"
+      }, 
+      "comboSteps":10
+    }, 
+    
+  "altAbilityType" : "parrykatana",
+  
+  "critChance" : 1,
+  "critBonus" : 12,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

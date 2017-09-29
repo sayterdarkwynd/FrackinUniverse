@@ -3,11 +3,10 @@
   "baseType" : "base",
 
   "dropPools" : [ "villagertreasure" ],
-
+  "disableWornArmor" : false,
   "damageTeamType" : "friendly",
 
-  // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.5} ], 
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.25} ], 
 
   "persistent" : true,
 
@@ -215,6 +214,22 @@
 		      "Let's find the enemy! This terrain is not even a bother to us!",
 		      "I'll help us to prowl the jungle unhindered!",
 		      "Mud? Clay? Hah. Walk on through."
+		    ]
+		  },
+		  "floran" : {
+		    "default" : [
+		      "Floransss sstabbing sskills protect you from jungless.",
+		      "Floran will find enemy to ssstab! This terrain is not even a bother to Floran!",
+		      "Floran help you hunt in jungle!",
+		      "Mud? Clay? Hah. Floran ssstill hunt."
+		    ]
+		  },
+		  "glitch" : {
+		    "default" : [
+		      "Statement. My tough-as-nails training will protect you from jungles.",
+		      "Eager. Let's find the enemy! This terrain is not even a bother to us!",
+		      "Boastful. I'll help us to prowl the jungle unhindered!",
+		      "Proud. Mud? Clay? Hah. Walk on through."
 		    ]
 		  }
 		},             

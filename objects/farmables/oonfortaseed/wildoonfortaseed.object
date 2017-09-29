@@ -8,20 +8,32 @@
   "objectType" : "farmable",
   "printable" : false, 
   
-  "lightColor" : [90, 90, 90],
+  "lightColor" : [30, 30, 0],
   "inventoryIcon" : "oonfortaseedicon.png",
-  "orientations" : [
-    {
-      "dualImage" : "oonfortaseed.png:<color>.<stage>.<alt>",
+   "orientations" : [
+	{
+      "imageLayers" : [ { "image" : "oonfortaseed.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "oonfortaseedlit.png:<color>.<stage>.<alt>" } ],
+      "direction" : "left",
+      "flipImages" : true,
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
+	"spaces" : [ [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6] ],
+	"requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
 
-      "spaces" : [ [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6] ],
+    },
+	{
+      "imageLayers" : [ { "image" : "oonfortaseed.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "oonfortaseedlit.png:<color>.<stage>.<alt>" } ],
+      "direction" : "right",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "spaces" : [ [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6] ],     
       "requireTilledAnchors" : false,
       "anchors" : [ "bottom" ]
-    }
-  ],
+    }   
+  ], 
   "stages" : [
     {
       "duration" : [120, 240]

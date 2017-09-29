@@ -59,8 +59,8 @@
             "flyState" : "fly",
             "idleState" : "idle",
             "distance" : 30,
-            "tangentialSpeed" : 30,
-            "tangentialForce" : 60
+            "tangentialSpeed" : 20,
+            "tangentialForce" : 40
           }
         }
       ],
@@ -71,9 +71,10 @@
       "concurrentHostileActions" : [
         {
           "name" : "action-projectile",
+          "cooldown" : 0.5,
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "chiropterrortrail",
+            "projectileType" : "darkplasma2",
             "projectileParameters" : {
               "power" : 10
             },
@@ -119,15 +120,15 @@
 
       "mass" : 2.0,
       "walkSpeed" : 4,
-      "runSpeed" : 12,
+      "runSpeed" : 14,
       "gravityEnabled" : false,
 
-      "bounceFactor" : 0.35,
+      "bounceFactor" : 0.15,
       "groundFriction" : 20,
 
       "airFriction" : 0,
-      "airForce" : 120,
-      "flySpeed" : 18
+      "airForce" : 90,
+      "flySpeed" : 14
     },
 
     "bodyMaterialKind" : "robotic",
@@ -138,7 +139,8 @@
     },
     "deathParticles" : "deathPoof",
     "knockoutEffect" : "",
-
+    "healthLevelFunction" : "monsterLevelHealthMultiplier",
+    "powerLevelFunction" : "monsterLevelPowerMultiplier",
     "statusSettings" : {
       "statusProperties" : {
         "targetMaterialKind" : "robotic"

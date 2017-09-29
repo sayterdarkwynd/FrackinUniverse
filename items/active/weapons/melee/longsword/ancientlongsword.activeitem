@@ -1,0 +1,45 @@
+{
+  "itemName" : "ancientlongsword",
+  "price" : 3600,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A weapon of the ancients.",
+  "shortdescription" : "Ancient's Warblade",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword","upgradeableWeapon"],
+  "inventoryIcon" : "alienswad_sacre.png",
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "alienswad_sacre.png",
+    "bladefullbright" : "alienswadfullbright.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.89,
+    "baseDps" : 8,
+    "damageConfig" : {
+      "damageSourceKind": "cosmic"
+    }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 12,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

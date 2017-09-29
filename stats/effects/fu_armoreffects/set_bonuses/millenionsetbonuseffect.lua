@@ -10,8 +10,7 @@ armorBonus={
 	{stat = "blacktarImmunity", amount = 1},
         {stat = "gasImmunity", amount = 1},
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.30},
-        {stat = "shieldRegen", baseMultiplier = 1.30},
-        {stat = "shieldHealth", baseMultiplier = 1.30},
+        {stat = "shieldBonusShield", amount = 0.30},
         {stat = "perfectBlockLimitRegen", baseMultiplier = 1.30}
 }
 

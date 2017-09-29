@@ -5,11 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus: 
-^cyan;Immunity: Shadow Taint, Insanity^reset;
+^cyan;Immunity: Insanity^reset;
 ^#e43774;15% Shadow Resist^reset;
-^green;+15% Crit (Bio-weapon)^reset;",
+^green;+6% Crit (Bio-weapon)^reset;",
   "shortdescription" : "Flesh Chestplate",
-  "category" : "chestarmour",
+  "category" : "t4armor",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -25,6 +25,7 @@
   },
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 4,
+  "collectablesOnPickup" : { "fu_armorranged" : "cultfleshchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -56,7 +57,7 @@
     },
     {
       "stat" : "shadowResistance",
-      "amount" : 0.1
+      "amount" : 0.05
     }
   ]
 

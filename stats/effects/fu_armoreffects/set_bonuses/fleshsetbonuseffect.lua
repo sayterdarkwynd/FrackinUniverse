@@ -3,10 +3,12 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_fleshset"
 
 weaponBonus={
-  {stat = "powerMultiplier", amount = 0.30}
+  {stat = "critChance", amount = 6}
 }
 
-armorBonus={}
+armorBonus={
+  {stat = "insanityImmunity", amount = 1}
+}
 
 function init()
 	setSEBonusInit(setName)
@@ -30,9 +32,9 @@ end
 function 
 	checkWeapons()
 	local weapons=weaponCheck({"bioweapon"})
-if weapons["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+	if weapons["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end

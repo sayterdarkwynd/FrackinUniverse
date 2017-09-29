@@ -1,0 +1,86 @@
+{
+  "type" : "crewmemberradien",
+  "baseType" : "crewmember",
+  "npcname" : "Sievert Gray",
+  "disableWornArmor" : false,
+    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.25} ], 
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "fudesertwalkerhead",
+        "chest" : "fudesertwalkerchest",
+        "legs" : "fudesertwalkerpants"
+        },
+
+      "role" : {
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.75
+          },        
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "ffextremeradiationimmunity",
+            "duration" : 300
+          }
+        ],
+        "type" : "chemist",
+        "name" : "Radien Explorer",
+        "field" : "Radien Explorer",
+        "uniformColorIndex" : 6
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll give you a massive fuel efficiency boost whenever we're on the ship!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "I absorb radiation! Handy, that!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran hasss things to help you out!",
+              "Floran can help out!",
+              "Floran hasss things to help!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can help you out!",
+              "Excited. Perhaps you could do with a power-up!",
+              "Intrigued. I wonder if this will help you?",
+              "Helpful. Take this, it will help!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "advalloydagger" ],
+            "alt" : ["durasteelshield"],
+            "sheathedprimary" : [ "furailgun" ]
+          }
+        ] ]
+    ]
+  }
+}

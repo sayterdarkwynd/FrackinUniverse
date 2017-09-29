@@ -8,16 +8,18 @@ function init()
   
   effect.addStatModifierGroup({
     {stat = "protection", baseMultiplier = 1.25},
-    {stat = "energyRegenPercentageRate", amount = 0.01},
-    {stat = "energyRegenBlockTime", amount = 3},
-    {stat = "shieldRegen", amount = 0}     
+    {stat = "energyRegenPercentageRate", baseMultiplier = 0},
+    {stat = "energyRegenBlockTime", baseMultiplier = 0},
+    {stat = "shieldStaminaRegen", baseMultiplier = 0}     
   })
   
 end
 
 function update(dt)
   status.modifyResourcePercentage("health", self.healingRate * dt)
-  status.modifyResourcePercentage("energy", (-self.healingRate * dt) * 2)
+  if stat.resource("energy") then
+    status.modifyResourcePercentage("energy", (-self.healingRate * dt) * 2)
+  end
 end
 
 function uninit()

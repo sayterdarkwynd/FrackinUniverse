@@ -1,0 +1,30 @@
+{
+  "projectileName" : "pullshot2",
+  "image" : "fungravityexplosion.png",
+  "animationCycle" : 0.7,
+  "animationLoops" : false,
+  "physics" : "illusion",
+  "frameNumber" : 6,
+  "pointLight" : false,
+  "speed" : 0,
+  "power" : 0,
+  "level" : 0,
+  "bounces" : -1,
+
+  "timeToLive" : 0.1,
+
+  "orientationLocked" : true,
+
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 4,
+      "innerRadius" : 4,
+      "targetRadialVelocity" : -25,
+      "controlForce" : 1500,
+      "categoryWhitelist" : [ "monster", "player", "npc" ]
+    }
+  },
+
+  "clientEntityMode" : "ClientSlaveOnly"
+}

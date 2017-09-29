@@ -1,0 +1,79 @@
+{
+  "itemName" : "manstopper",
+  "price" : 500,
+  "inventoryIcon" : "manstopper.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Styled after the classics but updated with smart ammo.
+^cyan;Homing bullets^reset;",
+  "shortdescription" : "BK7 Manstopper",
+  "level" : 4,
+  "category" : "pistol",
+  "itemTags" : ["weapon", "ranged", "pistol", "upgradeableWeapon"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "manstopper.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/revolver2.ogg" ] }  
+  },
+
+  "baseOffset" : [0.5, 0.14],
+  "muzzleOffset" : [1.2, 0.325],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.6,
+    "baseDps" : 6.6,
+    "energyUsage" : 40,
+    "fireType" : "auto",
+    "inaccuracy" : 0.03,
+    "projectileCount" : 1,
+    "projectileType" : "homingbullet",
+    "projectileParameters" : {
+      "speed" : 65,
+      "knockback" : 15
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 5,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

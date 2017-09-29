@@ -1,0 +1,65 @@
+{
+  "type" : "fusorceror",
+  "baseType" : "hostilefuhard",
+
+  "levelVariance" : [0, 1],
+
+  "dropPools" : [ "ffbanditTreasure" ],
+  "scriptConfig" : {
+    "dialog" : {
+      "converse" : "/dialog/macready.config:attack",
+      "hail" : "/dialog/macready.config:attack",
+      "attack" : "/dialog/macready.config:attack",
+      "reattack" : "/dialog/macready.config:reattack",
+      "killedTarget" : "/dialog/macready.config:killedTarget",
+      "lostTarget" : "/dialog/macready.config:lostTarget",
+      "outOfSight" : "/dialog/macready.config:outOfSight",
+      "cheerOn" : "/dialog/macready.config:cheerOn",
+      "cantReach" : "/dialog/macready.config:cantReach"
+    }  
+  },
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "caretakerhead" } ],
+            "chest" : [ { "name" : "caretakerchest" } ],
+            "legs" : [ { "name" : "caretaker2legs" } ],
+            "primary" : [
+              "cultiststaff2"
+            ]
+          },
+          {
+            "head" : [ { "name" : "cultfleshhead", "parameters" : { "colorIndex" : 7 } } ],
+            "chest" : [ { "name" : "cultarmorchest", "parameters" : { "colorIndex" : 7 } } ],
+            "legs" : [ { "name" : "cultarmorpants", "parameters" : { "colorIndex" : 7 } } ],
+            "primary" : [
+              "cultiststaff3"
+            ]
+          },
+          {
+            "head" : [ { "name" : "fudarkrobeshelmet", "parameters" : { "colorIndex" : 7 } } ],
+            "chest" : [ { "name" : "fudarkrobeschest", "parameters" : { "colorIndex" : 7 } } ],
+            "legs" : [ { "name" : "fudarkrobespants", "parameters" : { "colorIndex" : 7 } } ],
+            "primary" : [
+              "cultiststaff1"
+            ],
+            "alt" : [
+              "flashlight"
+            ]
+          },
+          {
+            "head" : [ { "name" : "cultarmorhead", "parameters" : { "colorIndex" : 7 } } ],
+            "chest" : [ { "name" : "cultarmorchest", "parameters" : { "colorIndex" : 7 } } ],
+            "legs" : [ { "name" : "cultarmorpants", "parameters" : { "colorIndex" : 7 } } ],
+            "primary" : [
+              "druidstaff"
+            ],
+            "alt" : [
+              "bloodyknife"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

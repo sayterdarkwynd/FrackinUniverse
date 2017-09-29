@@ -1,0 +1,152 @@
+{
+  "type" : "heavydrone",
+  "shortdescription" : "Heavy Drone",
+  "description" : "The pinnacle of automated defense technology. Their onboard AI is more cheerful than you may first assume.",
+
+  "categories" : [ "heavydrone" ],
+  "parts" : [ "body", "face", "frontgun", "backgun" ],
+  "partParameters" : "heavydrone.partparams",
+
+  "animation" : "heavydrone.animation",
+
+  "dropPools" : ["spaceRobot"],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/space/heavydrone/heavydrone.lua"
+    ],
+
+    "approachPadding" : 8,
+    "tangentialSpeed" : 10,
+    "switchAngleTime" : 4.0,
+
+    "touchDamage" : {
+      "poly" : [ [-4.0, 0.5], [-2.0, 2.0], [2.0, 2.0], [4.0, 0.5], [4.0, -0.5], [2.0, -2.0], [-2.0, -2.0], [-4.0, -0.5] ],
+      "damage" : 30,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "impact",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-4.0, 0.5], [-2.0, 2.0], [2.0, 2.0], [4.0, 0.5], [4.0, -0.5], [2.0, -2.0], [-2.0, -2.0], [-4.0, -0.5] ],
+
+      "mass" : 2.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0,
+      "airForce" : 35,
+      "flySpeed" : 35
+    },
+
+    "bodyMaterialKind" : "robotic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "healthLevelFunction" : "monsterLevelHealthMultiplier",
+    "powerLevelFunction" : "monsterLevelPowerMultiplier",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/spacemonster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 0.5
+        },
+        "knockbackStunTime" : {
+          "baseValue" : 0.2
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 350
+        },
+        "protection" : {
+          "baseValue" : 0.15
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.15
+        },
+        "poisonResistance" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : -0.2
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.99
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.8
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

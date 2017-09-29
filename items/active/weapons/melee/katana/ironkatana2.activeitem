@@ -1,0 +1,42 @@
+{
+  "itemName" : "ironkatana2",
+  "price" : 500,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Well crafted, but heavy.",
+  "shortdescription" : "Kells Flawless Katana",
+  "tooltipKind" : "sword",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "ironkatana2.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "ironkatana2" },
+  "animation" : "combokatana.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ironkatana2.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "katanacombo",
+  "primaryAbility":{
+    "fireTime":0.65, 
+    "baseDps":6.75, 
+    "damageConfig":{
+      "knockback":25 
+      }, 
+      "comboSteps":3
+    }, 
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

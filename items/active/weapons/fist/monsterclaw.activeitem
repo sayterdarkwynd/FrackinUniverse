@@ -1,15 +1,17 @@
 {
   "itemName" : "fumonsterclaw",
-  "price" : 1000,
+  "price" : 200,
   "level" : 5,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Are these...severed monster hands? AWESOME!",
+  "description" : "Are these...severed monster hands? AWESOME! Causes bleeding.
+^cyan;Inflicts Bleeding^reset;",
   "shortdescription" : "Mutaclaw",
   "tooltipKind" : "fist2",
   "category" : "fistWeapon",
   "twoHanded" : false,
   "itemTags" : ["weapon","fist", "upgradeableWeapon"],
+  "collectablesOnPickup" : { "fu_weaponfist" : "fumonsterclaw" },
   "inventoryIcon" : "monsterclaw.png:front",
   "animation" : "fistweapon.animation",
   "animationParts" : {
@@ -29,8 +31,8 @@
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.1,
 
-  "comboSteps" : 3,
-  "comboTiming" : [0.2, 0.5],
+  "comboSteps" : 4,
+  "comboTiming" : [0.1, 0.8],
   "comboCooldown" : 0.2,
   "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/dashslash.combofinisher",
 
@@ -40,11 +42,11 @@
     "scripts" : ["/items/active/weapons/fist/punch.lua"],
     "class" : "Punch",
 
-    "freezeTime" : 0.15,
-    "fireTime" : 0.3,
-    "baseDps" : 6.0,
+    "freezeTime" : 0.2,
+    "fireTime" : 0.2,
+    "baseDps" : 9.0,
     "damageConfig" : {
-      "statusEffects" : [ ],
+      "statusEffects" : [ "bleedingshort" ],
       "damageSourceKind" : "dagger",
       "knockback" : [0, 15],
       "timeoutGroup" : "primary",
@@ -57,7 +59,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.25, -0.575],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : true,
 
         "frontArmFrame" : "run.2",
@@ -70,7 +72,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.625, -0.125],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "swimIdle.1",
@@ -83,7 +85,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.75, -0.125],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "swimIdle.1",
@@ -92,13 +94,13 @@
         "recoil" : true
       },
       "fire" : {
-        "duration" : 0.1,
+        "duration" : 0.01,
         "armRotation" : 0,
         "weaponRotation" : 0,
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [0.125, -0.25],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "rotation",

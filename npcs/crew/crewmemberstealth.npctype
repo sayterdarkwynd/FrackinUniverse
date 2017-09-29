@@ -1,7 +1,8 @@
 {
   "type" : "crewmemberstealth",
   "baseType" : "crewmember",
-
+  "disableWornArmor" : false,
+    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.25} ], 
   "scriptConfig" : {
     "behaviorConfig" : {
       "emptyHands" : false
@@ -47,6 +48,16 @@
           "default" : {
             "default" : [
               "I'll toss some contraband fuel into the fuel tank."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran putsss fuel into fuel tank."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Statement. I'll put some contraband fuel into the fuel tank."
             ]
           }
         },

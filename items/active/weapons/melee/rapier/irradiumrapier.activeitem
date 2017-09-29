@@ -1,0 +1,42 @@
+{
+  "itemName" : "irradiumrapier",
+  "price" : 400,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "A swift and dangerous radioactive blade.
+^cyan;Causes Radiation Burns^reset;",
+  "shortdescription" : "Irradium Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon" ],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "irradiumrapier.png",
+  "collectablesOnPickup" : { "fu_weaponrapier" : "irradiumrapier" },
+
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "irradiumrapier.png",
+    "bladefullbright" : "irradiumrapierfullbright.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 1, 
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.32,
+    "baseDps" : 5.0,
+    "damageConfig" : {
+      "damageSourceKind":"radioactive",
+      "statusEffects":["radiationburn"]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

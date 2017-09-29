@@ -5,7 +5,7 @@
   "category" : "wire",
   "objectType" : "container",
   "price" : 11000,
-  "description" : "Uses radioactive materials to generate power. Can generate from 4u to 80u. Higher power will be ^red;highly radioactive^reset;.",
+  "description" : "Uses radioactive materials to generate power. Can generate from 4W to 80W. Higher power will be ^red;highly radioactive^reset;.",
   "shortdescription" : "^cyan;Fission Reactor^white;",
   "race" : "generic",
   "printable" : false,
@@ -40,12 +40,11 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/objects/power/isn_fissionreactornew/isn_fissionreactor.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 80,
+  "scripts" : [ "/scripts/power.lua","isn_fissionreactor.lua" ],
+  "scriptDelta" : 60,
   
   "inputNodes" : [ [2, 4] ],
   "outputNodes" : [ [2, 2] ],
-  "isn_powerSupplier" : true
+  "isn_powerSupplier" : true,
+  "powertype" : "output"
 }

@@ -3,13 +3,15 @@ setName="fu_guardianset"
 weaponBonus={
 	{stat = "grit", baseMultiplier = 1.25}
 }
+weaponBonus2={
+	{stat = "powerMultiplier", baseMultiplier = 1.15}
+}
 
 
 armorBonus={
+        {stat = "shieldBash", amount = 20},
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.25},
-        {stat = "shieldRegen", baseMultiplier = 1.25},
-        {stat = "shieldHealth", baseMultiplier = 1.25},
-        {stat = "perfectBlockLimitRegen", baseMultiplier = 1.25}
+        {stat = "shieldBonusShield", amount = 0.25}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -32,9 +34,15 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"shield"})
+	local weapons2=weaponCheck({"mace"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end
+	if weapons2["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end	
 end

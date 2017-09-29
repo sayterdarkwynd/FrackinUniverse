@@ -25,7 +25,9 @@ function init()
      -- health effects
           self.critChance = config.getParameter("critChance", 0)
           self.critBonus = config.getParameter("critBonus", 0)
- 	  self.shieldHealthRegen = config.getParameter("shieldHealthRegen", 1)
+          self.shieldBonusShield = config.getParameter("shieldBonusShield", 0)  -- bonus shield HP
+          self.shieldBonusRegen = config.getParameter("shieldBonusRegen", 0)  -- bonus shield regen time
+ 	  self.shieldHealthRegen = config.getParameter("shieldHealthRegen", 0)
  	  shieldEnergyRegen = config.getParameter("shieldEnergyRegen",0)
  	  shieldHealthBonus = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))
  	  shieldEnergyBonus = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))
@@ -63,6 +65,7 @@ function init()
  	  
  	  
  	  status.setPersistentEffects("shieldEffects", {
+ 	  {stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
  	  {stat = "energyRegenPercentageRate", amount = shieldEnergyRegen},
  	  {stat = "maxHealth", amount = shieldHealthBonus},
  	  {stat = "maxEnergy", amount = shieldEnergyBonus},
@@ -95,9 +98,8 @@ function init()
  	  {stat = "biomeradiationImmunity", amount = protectionRads},
  	  {stat = "ffextremeradiationImmunity", amount = protectionXRads}
  	  })
- 	  
- 
   -- end FU special effects
+  
   
   
   animator.setGlobalTag("directives", "")

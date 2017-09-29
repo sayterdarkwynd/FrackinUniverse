@@ -19,7 +19,9 @@
     "parts" : {
       "samplingarrayanim" : {
         "properties" : {
-          "centered" : false
+          "centered" : false,
+          "zLevel" : 1,
+          "fullbright" : true
         },
 
         "partStates" : {
@@ -37,7 +39,29 @@
             }
           }
         }
-      }
+      },
+      "samplingarrayanimlit" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2
+        },
+
+        "partStates" : {
+          "samplingarrayanim" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            },
+
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            }
+          }
+        }
+      }      
     }
   }
 }

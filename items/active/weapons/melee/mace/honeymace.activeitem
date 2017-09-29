@@ -1,0 +1,41 @@
+{
+  "itemName" : "honeymace",
+  "price" : 400,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Probably not too effective. It's delicious, and thats what counts! Design by freetorule",
+  "shortdescription" : "Honeyed Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "honeymace_freetorule.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "honeymace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "honeymace_freetorule.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.8, 
+    "baseDps":6.0,
+    "damageConfig" : {
+      "damageSourceKind" : "poisonhammer",
+      "statusEffects" : [ "weakpoison" ]
+    }
+  },
+  "critChance" : 4,
+  "critBonus" : 1,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

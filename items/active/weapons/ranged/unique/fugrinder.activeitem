@@ -1,0 +1,95 @@
+{
+  "itemName" : "fugrinder",
+  "price" : 1160,
+  "inventoryIcon" : "grinder.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "This is the pinnacle of kinetic rifle technology.
+^yellow;Extreme Fire Rate^reset;",
+  "shortdescription" : "Grinder",
+  "category" : "assaultRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Assault Rifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "grinder.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/uzi1.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.7, 0.4],
+  "muzzleOffset" : [2.4, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.01,
+    "baseDps" : 12,
+    "energyUsage" : 37.5,
+    "inaccuracy" : 0.08,
+
+    "projectileCount" : 4,
+    "fireType" : "auto",
+
+    "projectileType" : "bullet-2",
+    "projectileParameters" : { 
+      "speed" : 72,
+      "knockback" : 4
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.01,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+
+  "critChance" : 2,
+  "critBonus" : 9,
+  "altAbilityType" : "explosiveburst",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

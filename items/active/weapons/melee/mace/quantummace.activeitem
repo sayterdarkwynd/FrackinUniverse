@@ -1,0 +1,41 @@
+{
+  "itemName" : "quantummace",
+  "price" : 1200,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Don't ask, because Science.",
+  "shortdescription" : "Quantum Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "quantummace_gezbo.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "quantummace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "quantummace_gezbo.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1, 
+    "baseDps":7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "electrichammer",
+      "statusEffects" : [ "electrified" ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 1,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

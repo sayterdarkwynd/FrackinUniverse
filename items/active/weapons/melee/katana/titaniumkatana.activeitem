@@ -1,0 +1,42 @@
+{
+  "itemName" : "titaniumkatana",
+  "price" : 600,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "An exceptionally fine two-man sword.",
+  "shortdescription" : "Titanium Katana",
+  "tooltipKind" : "sword",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "titaniumkatana.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "titaniumkatana" },
+  "animation" : "combokatana.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "titaniumkatana.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "katanacombo",
+  "primaryAbility":{
+    "fireTime":0.65, 
+    "baseDps":6.5, 
+    "damageConfig":{
+      "knockback":20
+      }, 
+      "comboSteps":4
+    }, 
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

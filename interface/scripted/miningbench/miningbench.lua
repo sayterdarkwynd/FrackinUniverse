@@ -4,7 +4,7 @@ require "/scripts/interp.lua"
 function init()
   self.itemList = "itemScrollArea.itemList"
 
-  self.upgradeLevel = 10
+  self.upgradeLevel = 20
 
   self.upgradeableWeaponItems = {}
   self.selectedItem = nil
@@ -107,9 +107,6 @@ function doUpgrade()
         
           local itemConfig = root.itemConfig(upgradedItem)  
 		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
-		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
-		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
-
 
 	 -- set Rarity
 	 if upgradedItem.parameters.level ==4 then
@@ -118,7 +115,7 @@ function doUpgrade()
 	   upgradedItem.parameters.rarity = "rare"
 	 elseif upgradedItem.parameters.level == 6 then
 	   upgradedItem.parameters.rarity = "legendary"
-	 elseif upgradedItem.parameters.level >= 7 then
+	 elseif upgradedItem.parameters.level >= 8 then
 	   upgradedItem.parameters.rarity = "essential"	   
 	 end
 	 

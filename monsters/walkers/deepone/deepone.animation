@@ -16,20 +16,23 @@
             "mode" :"loop"
           },
           "hurt" : {
-            "frames" : 1
-          },         
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/lion_attack1.ogg"
+            }       
+          },
           "fire" : {
             "frames" : 1,
-            "cycle" : 1
+            "cycle" : 1     
           },
           "firewindup" : {
             "frames" : 4,
             "cycle" : 0.4
-          }, 
+          },
           "firewinddown" : {
             "frames" : 4,
             "cycle" : 0.4
-          },           
+          },
           "jump" : {
             "frames" : 1,
             "cycle" : 0.5,
@@ -43,13 +46,12 @@
             "frames" : 1,
             "cycle" : 0.35,
             "properties" : {
-              "persistentSound" : "/sfx/npc/quadruped/lion_attack2.ogg",
-              "persistentSoundStopTime" : 2.2
+              "immediateSound" : "/sfx/npc/quadruped/lion_attack2.ogg"
             },
             "frameProperties" : {
               "particleEmittersOff" : [ [ "waterdrip" ], [], [], ["waterdrip"], [], [], [], ["waterdrip"] ],
               "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], ["waterdrip"], [], ["waterdrip"] ]
-            }            
+            }
           },
           "chargewinddown" : {
             "frames" : 1,
@@ -57,26 +59,23 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/npc/quadruped/lion_idle2.ogg",
-              "persistentSoundStopTime" : 2.2
+              "immediateSound" : "/sfx/npc/monsters/quadruped/lion_idle2.ogg"
             },
             "frameProperties" : {
               "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
               "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], ["waterdrip"], [], [] ]
-            }            
-          },        
+            }
+          },
           "charge" : {
             "frames" : 4,
             "cycle" : 0.5,
             "properties" : {
-              "persistentSound" : "/sfx/troll/troll3.ogg",
-              "persistentSoundStopTime" : 2.0,
               "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg"
             },
             "frameProperties" : {
               "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
               "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], [], ["waterdrip"], [] ]
-            }            
+            }
           },
           "roar" : {
             "frames" : 5,
@@ -84,7 +83,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/troll/troll5.ogg",
+              "persistentSound" : "/sfx/npc/monsters/troll/troll5.ogg",
               "persistentSoundStopTime" : 1.25
             },
             "frameProperties" : {
@@ -184,37 +183,37 @@
               "properties" : {
                 "image" : "<partImage>:hurt"
               }
-            },            
+            },
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:melee.<frame>",
-                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
+                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
               }
             },
             "melee" : {
               "properties" : {
                 "image" : "<partImage>:melee.<frame>",
-                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
+                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
               }
-            },            
+            },
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:fire",
-                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
+                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
               }
             },
             "firewindup" : {
               "properties" : {
                 "image" : "<partImage>:firewindup.<frame>",
-                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
+                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
               }
             },
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:firewinddown.<frame>",
-                "damageArea" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ]
+                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
               }
-            } 
+            }
           },
           "damage" : {
             "stunned" : {
@@ -239,7 +238,7 @@
       "directives" : "fade=ffffff;0.5"
     }
   },
-  
+
   "particleEmitters" : {
     "waterdrip" : {
       "emissionRate" : 15,
@@ -251,7 +250,7 @@
         { "particle" : "waterdrip" },
         { "particle" : "waterdrip" },
         { "particle" : "waterdrip" }
-        
+
       ]
     },
     "deathPoof" : {
@@ -303,9 +302,9 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/troll/troll1.ogg", "/sfx/troll/troll3.ogg", "/sfx/troll/troll4.ogg", "/sfx/troll/troll5.ogg" ],
-    "deathPuff" : [ "/sfx/deepone/turnhostile.ogg" ],
-    "turnHostile" : [ "/sfx/deepone/turnhostile.ogg" ],
-    "fire" : [ "/sfx/deepone/attack1.ogg" , "/sfx/deepone/attack2.ogg"  ]
+    "aggroHop" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
+    "deathPuff" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
+    "turnHostile" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
+    "fire" : [ "/sfx/npc/monsters/deeponeattack1.ogg" , "/sfx/npc/monsters/deeponeattack2.ogg"  ]
   }
 }

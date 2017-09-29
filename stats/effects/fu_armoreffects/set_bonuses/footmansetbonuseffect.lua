@@ -1,15 +1,14 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 6},
-	{stat = "critBonus", baseMultiplier = 1.03},
+	{stat = "critChance", amount = 2},
+	{stat = "critBonus", baseMultiplier = 1.15},
 	{stat = "grit", amount = 0.15}
 }
 
 armorBonus={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.17},
-        {stat = "shieldRegen", baseMultiplier = 1.17},
-        {stat = "shieldHealth", baseMultiplier = 1.17},
+        {stat = "shieldBonusShield", baseMultiplier = 1.17},
         {stat = "perfectBlockLimitRegen", baseMultiplier = 1.17}
 }
 
@@ -35,10 +34,9 @@ function update(dt)
 end
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword"})
+local weaponSword=weaponCheck({"shortsword","longsword","mace"})
 local weaponShield=weaponCheck({"shield"})
 
-	local weapons=weaponCheck({"shortsword","shield"})
 	if weaponSword["either"] and weaponShield["either"] then--setting to either means we can have shortsword with anything else, or broadsword. setting to both means broadsword or dual wield shortswords.
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

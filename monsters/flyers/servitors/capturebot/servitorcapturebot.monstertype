@@ -119,7 +119,7 @@
 	{"name":"approach-fly", 
 		"parameters":{
 		"targetOffset":[0,5], 
-		"minRange":5, "maxRange":15
+		"minRange":2, "maxRange":10
 		}
 	}
       ],
@@ -165,7 +165,9 @@
 	  "projectileType":"energyfist", 
 	  "projectileParameters":{
 		"speed":80, 
-		"statusEffects":[{"effect":"biomeradiation", "duration":30}, {"effect":"paralysis", "duration":10}], 
+		"statusEffects":[
+		  {"effect":"capturebot", "duration":10, "damageTeam" : "enemy" }
+		], 
 		"processing":"?0", 
 		"timeToLive":0.5, 
 		"power":0, 
@@ -264,18 +266,54 @@
         "healthRegen" : {
           "baseValue" : 0.0
         },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
-        "physicalResistance" : {
-          "baseValue" : 0.20
-        },
         "electricResistance" : {
-          "baseValue" : -0.5
-        }
+          "baseValue" : -0.3
+        },        
+        "fireResistance" : {
+          "baseValue" : 0.2
+        },       
+        "fireStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "iceResistance" : {
+          "baseValue" : 0.2
+        },       
+        "iceStatusImmunity" : {
+          "baseValue" : 1
+        },        
+        "poisonResistance" : {
+          "baseValue" : 0.7
+        },        
+        "poisonStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.25
+        },        
+        "cosmicResistance" : {
+          "baseValue" : 0.0
+        },        
+        "radioactiveResistance" : {
+          "baseValue" : 0.7
+        },        
+        "shadowResistance" : {
+          "baseValue" : 0.5
+        },        
+        "extremepressureImmunity" : {
+          "baseValue" : 1
+        },        
+        "shadowImmunity" : {
+          "baseValue" : 1
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1
+        },
+        "darknessImmunity" : {
+          "baseValue" : 1
+        } 
       },
 
       "resources" : {

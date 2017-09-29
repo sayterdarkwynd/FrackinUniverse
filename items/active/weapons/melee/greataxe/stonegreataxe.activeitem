@@ -1,0 +1,51 @@
+{
+  "itemName" : "stonegreataxe",
+  "price" : 80,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Great for early meat and hide gathering.",
+  "shortdescription" : "Primitive Greataxe",
+  "tooltipKind" : "sword",
+  "category" : "greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon"],
+
+  "inventoryIcon" : "stonegreataxe.png",
+  "collectablesOnPickup" : { "fu_weapongreataxe" : "stonegreataxe" },
+  "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "stonegreataxe.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    },
+    "animatedParts" : { 
+      "parts" : { 
+        "blade" : { "properties" : {"offset" : [0, 0.5]}},
+        "swoosh" : { "properties" : {"offset" : [0, 2]}}    	
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "greataxesmash",
+  "primaryAbility" : {
+    "fireTime" : 0.8,
+    "baseDps" : 9
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "physicalshockwave",
+  "critChance" : 3,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 4
+}

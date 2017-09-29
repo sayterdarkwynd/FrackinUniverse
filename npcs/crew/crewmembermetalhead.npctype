@@ -1,0 +1,131 @@
+{
+  "type" : "crewmembermetalhead",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+    "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "metalheadhead",
+        "chest" : "tshirtchest",
+        "legs" : "jeans2legs"
+        },
+      "powerMultiplierExponent" : 1.5,
+      "role" : {
+        "benefits" : [       
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.04
+          },             
+          {
+            "type" : "EphemeralEffect",
+            "effect" : "partytime4",
+            "duration" : 9999
+          }
+        ],
+        "type" : "chemist",
+        "name" : "Axe-Wielder",
+        "field" : "Riffs and Fills",
+        "uniformColorIndex" : 2
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+          "attack" : "/dialog/plurcombat.config:attack",
+          "reattack" : "/dialog/plurcombat.config:reattack",
+          "killedTarget" : "/dialog/plurcombat.config:killedTarget",
+          "lostTarget" : "/dialog/plurcombat.config:lostTarget",
+          "outOfSight" : "/dialog/plurcombat.config:outOfSight",
+          "cheerOn" : "/dialog/plurcombat.config:cheerOn",
+          "cantReach" : "/dialog/plurcombat.config:cantReach",
+          
+            "offer" : {
+              "default" : {
+                "default" : [
+                "I'm practicing. What do you want?",
+                "Wanna form a band, man?",
+                "Check out these riffs, mother#$@$#@$@!",
+                "I have some pretty sick ideas when it comes to badass licks, man." 
+                ]
+              }
+            },
+            "roleDescription" : {
+              "default" : {
+                "default" : [
+              "*guitar sounds*",
+              "*gives the horns*",
+              "I bring the metal." 
+                ]
+              }
+            },
+            "respawned" : {
+              "default" : {
+                "default" : [
+                  "Man, Satan kinda sucked. Back to riffing." 
+                ]
+              }
+            },
+            "combatBenefit" : {
+              "default" : {
+                "default" : [
+    		"Dude.",
+    		"WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!",
+                "I play guitar. What the #@$@$#@ do you think I do?",
+                "Honestly, dude. Look at what's in my hand. Clearly I am a chef.",
+                "Let's rock!",
+                "The crowd will be insane tonight!"
+                ]
+              }
+            },
+            "unfollow" : {
+              "default" : {
+                "default" : [
+                "This place sucks.",
+                "Without music? You suck.",
+                "Dude."	
+                ]
+              }
+            },
+            "follow" : {
+              "default" : {
+                "default" : [
+                "While you were out I wrote 12 new riffs!",
+                "You ready to record , finally? I've been waiting forever.",
+                "I've had like, 15 beers while you were gone. What took so long?."
+                ]
+              }
+            },
+            "cantreach" : {
+              "default" : {
+                "default" : [
+              "Guy, I'm carrying a guitar here. Slow the hell down.",
+              "This crap may be awesome, but it isn't *light* , douchebag! Slow down.",
+              "Do I look like a superhuman? I can't run that fast.",
+              "I hate running.",
+              "Hello? I'm trying to tune my guitar. *mutters*"
+                ]
+              }
+            }        
+        
+        
+        
+        
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "flyingv" ]
+          }
+        ] ]
+    ]
+  }
+}

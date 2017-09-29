@@ -1,0 +1,35 @@
+{
+  "itemName" : "ironrapier",
+  "price" : 50,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "It's a rapier. Made of iron.",
+  "shortdescription" : "Iron Rapier",
+  "tooltipKind" : "sword",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon"],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "ironrapier.png",
+  "collectablesOnPickup" : { "fu_weaponrapier" : "ironrapier" },
+  "animation" : "piercecombo.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "ironrapier.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 1, 
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 5.36
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -2,7 +2,7 @@
   "objectName" : "isn_atmoscondenser",
   "rarity" : "rare",
     "colonyTags" : [ "science" ],
-  "description" : "Condenses the atmosphere into usable reagents. Requires 5u of power.",
+  "description" : "Condenses the atmosphere into usable reagents. Requires 15W of power.",
   "shortdescription" : "^cyan;Atmospheric Condenser^white;",
   "race" : "generic",
   "category" : "storage",
@@ -17,9 +17,7 @@
   "humanDescription" : "Let's find the mega condenser! Am I saying that too fast?",
   "hylotlDescription" : "To pull an ocean out of thin air is just plain madness.",
   
-  "scripts" : [ "/objects/power/isn_atmoscondenser/isn_resource_generator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
+  "scripts" : [ "/scripts/power.lua","/objects/power/isn_atmoscondenser/isn_resource_generator.lua","/objects/isn_sharedobjectscripts.lua"],
   "scriptDelta" : 120,
   
   "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
@@ -141,8 +139,8 @@
   
   "inputNodes" : [ [1, 1] ],
   "outputNodes" : [ [2, 1] ],
-  "isn_powerReciever" : true,
-  "isn_requiredPower" : 5,
+  "powertype" : "input",
+  "isn_requiredPower" : 15,
   "isn_liquidCollector" : false,
   
   "inventoryIcon" : "isn_atmoscondenser_inv.png",

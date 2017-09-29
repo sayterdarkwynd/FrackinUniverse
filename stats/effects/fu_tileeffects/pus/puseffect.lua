@@ -16,6 +16,10 @@ function setEffectTime()
   return (  self.tickTimer *  math.min(   1 - math.min( status.stat("physicalResistance",0) ),0.45))
 end
 
+function deactivateVisualEffects()
+  animator.setParticleEmitterActive("drips", false)
+end
+
 function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
   animator.setParticleEmitterActive("drips", true)

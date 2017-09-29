@@ -1,0 +1,87 @@
+{
+  "projectileName" : "fuenergyblade2",
+  "image" : "energyblade2.png",
+  "physics" : "laser",
+  "timeToLive" : 0.7,
+  "animationCycle" : 0.7,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 7,
+  "level" : 4,
+  "power" : 0.1,
+  "fullbright" : true,
+  "lightColor" : [0, 90, 195],
+  "speed" : 60,
+  "piercing" : true,
+  "bounces" : 0,
+  "damagePoly" : [ [4,30], [-4,30], [-4,-30], [4,-30] ],
+  "damageKind" : "electricplasma",
+  "emitters" : [ "energyplasma" ], 
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+
+  "controlForce" : 100,
+  "snapDistance" : 0.3,
+  "pickupDistance" : 0.3,
+  "returnOnHit" : false,
+  "returning" : true,
+  "ignoreTerrain" : true,
+  
+  "periodicActions" : [
+    {
+      "time" : 0.1,
+      "loop" : true,    
+      "action" : "config",
+      "file" : "/projectiles/explosions/penetratorexplosion.config"
+    },
+    {
+      "time" : 0.2,
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/blinkout/blinkout.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [3.5, 3.5],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.85,
+            "fade" : 1,
+            "size" : 0.8,
+            "layer" : "middle",
+            "timeToLive" : 0.45,
+            "variance" : {
+              "size" : 0.3,
+              "position" : [2.3, 1.0],
+              "initialVelocity" : [2.0, 2.0]
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/cloudpuff/cloudpuff.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1.0, 1.0],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.35,
+            "fade" : 1,
+            "size" : 0.4,
+            "layer" : "back",
+            "timeToLive" : 0.35,
+            "variance" : {
+              "position" : [3.0, 1.0],
+              "initialVelocity" : [2.5, 2.5]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ]
+  }

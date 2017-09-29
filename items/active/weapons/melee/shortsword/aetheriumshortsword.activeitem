@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","shortsword","aetherium", "upgradeableWeapon"],
 
   "inventoryIcon" : "aetheriumshortsword.png",
-
+  "collectablesOnPickup" : { "fu_weaponshortsword" : "aetheriumshortsword" },
   "animation" : "comboglowshortsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -38,8 +38,20 @@
       "timeoutGroup" : "primary"
     }
   },
-  "critChance" : 6,
-  "critBonus" : 4,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "critChance" : 3,
+  "critBonus" : 1,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+	  "animationParts" : {
+	    "handle" : "",
+	    "blade" : "aetheriumscimitar.png",
+	    "bladefullbright" : "aetheriumscimitarfullbright.png"
+	  },  
+	  "inventoryIcon" : "aetheriumscimitar.png",
+	  "description" : "Aetherium Scimitar",
+	  "critChance" : 12,
+	  "critBonus" : 12	  
+  }
 
 }

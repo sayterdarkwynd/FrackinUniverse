@@ -1,0 +1,37 @@
+{
+  "itemName" : "quietusmace",
+  "price" : 200,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Hefty and dangerous, with a high crit Stun chance.",
+  "shortdescription" : "Quietus Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "quietusmace.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "quietusmace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "quietusmace.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.988, 
+    "baseDps":7.5
+  },
+  "critChance" : 4,
+  "critBonus" : 1,
+  "stunChance" : 15,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

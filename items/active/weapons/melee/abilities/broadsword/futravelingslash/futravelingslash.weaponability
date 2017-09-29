@@ -6,7 +6,10 @@
       "iceTravelSlash" : [ "/sfx/melee/travelingslash_ice2.ogg" ],
       // "electricTravelSlash" : [ "/sfx/melee/travelingslash_electric1.ogg", "/sfx/melee/travelingslash_electric2.ogg", "/sfx/melee/travelingslash_electric3.ogg" ],
       "electricTravelSlash" : [ "/sfx/melee/travelingslash_electric4.ogg" ],
-      "poisonTravelSlash" : [ "/sfx/melee/travelingslash_poison2.ogg" ]
+      "poisonTravelSlash" : [ "/sfx/melee/travelingslash_poison2.ogg" ],
+      "shadowTravelSlash" : [ "/sfx/melee/travelingslash_poison2.ogg" ],
+      "cosmicTravelSlash" : [ "/sfx/melee/travelingslash_electric3.ogg" ],
+      "radioactiveTravelSlash" : [ "/sfx/melee/travelingslash_poison3.ogg" ]
     }
   },
 
@@ -17,7 +20,7 @@
     "class" : "TravelingSlash",
 
     "projectileOffset" : [0,0],
-    "elementalConfig" : {
+    "elementalConfig" : { //todo check damageKind
       "physical" : {},
       "fire" : {
         "projectileType" : "waveblast"
@@ -30,6 +33,15 @@
       },
       "electric" : {
         "projectileType" : "electricblast"
+      },
+      "shadow" : {
+        "projectileType" : "darkbeamchar"
+      },
+      "cosmic" : {
+	      "projectileType":"energyburstaetherium"
+      },
+      "radioactive" : {
+        "projectileType" : "miniwobbleshot2"
       }
     },
 

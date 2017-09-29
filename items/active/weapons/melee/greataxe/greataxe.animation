@@ -28,6 +28,7 @@
           "image" : "<partImage><paletteSwaps><directives>",
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
+          "offset" : [0.25, 0],
           "damageArea" : [[-1, 0.25], [-1, 1.5], [1.5, 1.75], [1.5, 0.0]],
           "groundImpactPoly" : [ [1, 1.75],  [1, 0.0],  [2, 0.0],  [2, 1.75] ]
         }
@@ -45,7 +46,7 @@
         "properties" : {
           "zLevel" : -1,
           "centered" : true,
-          "offset" : [0, 3.5],
+          "offset" : [0, 2],
           "transformationGroups" : ["swoosh"],
           "rotationCenter" : [0, 0]
         },
@@ -136,6 +137,48 @@
         { "particle" : "iceswoosh3"}
       ]
     },
+    "shadowswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    },
+    "radioactiveswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    },
+    "cosmicswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"},
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    },
     "groundImpact" : {
       "transformationGroups" : ["weapon"],
       "particles" : [
@@ -161,7 +204,7 @@
   },
 
   "sounds" : {
-    "fire" : [ ],
-    "groundImpact" : []
+    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+    "groundImpact" : [ "/sfx/melee/swing_broadsword.ogg" ]
   }
 }

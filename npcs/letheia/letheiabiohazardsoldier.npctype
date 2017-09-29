@@ -1,0 +1,57 @@
+{
+  "type" : "letheiabiohazardsoldier",
+  "baseType" : "hostile",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "A corporate spy!",
+			"This is a restricted zone!",
+            "Where's your ID?"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "hazmathead", "parameters" : { "colorIndex" : [4] } } ],
+            "chest" : [ { "name" : "hazmatchest", "parameters" : { "colorIndex" : [4] } } ],
+            "legs" : [ { "name" : "hazmatlegs", "parameters" : { "colorIndex" : [4] } } ],
+            "back" : [ { "name" : "hazmatback", "parameters" : { "colorIndex" : 4 } } ],
+            "primary" : [
+              { "name" : "npcpetcapturepod", "parameters" : { "pets" : ["tentaclespawner","moontant","tentacleghost","tentaclebomb","tentaclecrawler","tentacleclam"] } }
+            ],
+            "sheathedprimary" : [ { "name" : "npcrocketlauncher", "parameters" : { "primaryAbility" : { "projectileParameters" : { "actionOnReap" : [{"action" : "config","file" : "/projectiles/explosions/regularexplosion2/poisonexplosionknockback.config"}] } } } } ]
+          }
+        ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {
+
+    "stats" : {
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 400.0
+      },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+    }
+  }
+}

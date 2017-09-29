@@ -1,8 +1,7 @@
 setName="fu_hopliteset"
 
 weaponBonus={
-	{stat = "critChance", amount = 6},
-        {stat = "powerMultiplier", baseMultiplier = 1.15}
+	{stat = "critChance", amount = 6}
 }
 
 armorBonus={
@@ -11,8 +10,10 @@ armorBonus={
 
 armorEffect={
 	{stat = "grit", amount = 0.12},
-        {stat = "shieldRegen", amount = 0.3},
-        {stat = "protoImmunity", amount = 1.0}
+        {stat = "shieldStaminaRegen", amount = 0.2},
+        {stat = "protoImmunity", amount = 1.0},
+        {stat = "shieldBash", amount = 10},
+        {stat = "shieldBashPush", amount = 2}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

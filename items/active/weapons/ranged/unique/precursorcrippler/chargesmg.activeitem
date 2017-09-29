@@ -1,0 +1,81 @@
+{
+  "itemName" : "chargesmg",
+  "price" : 2500,
+  "inventoryIcon" : "chargesmgicon.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "An ancient and terribly deadly sidearm.
+^yellow;Inflicts radiation burn^reset;",
+  "shortdescription" : "Precursor Crippler",
+  "level" : 4,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "precursor", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "learnBlueprintsOnPickup" : [ "chargesmg" ],
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "chargesmg.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_ar3.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [10, 125, 10] } }
+  },
+
+  "baseOffset" : [0.8, 0.34],
+  "muzzleOffset" : [1.1, 0.175],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.1,
+    "baseDps" : 4,
+    "energyUsage" : 27,
+    "fireType" : "auto",
+    "inaccuracy" : 0.02,
+    "projectileCount" : 1,
+    "projectileType" : "smgdart",
+    "projectileParameters" : {
+      "speed" : 52
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.01,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.01,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

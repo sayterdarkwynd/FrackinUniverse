@@ -4,40 +4,55 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "The invisible helm of a very visible queen.",
+  "description" : "Set Bonus:
+^cyan;+21% Physical Immunity, Beesting Immunity^reset;
+^green;+8% Crit and x3 Crit Damage (Bee weapons), +20% Damage (bee weapons)^reset;
+^#e43774;Deadly Radiation Immunity^reset;",
   "shortdescription" : "Queen's Head",
-  "category" : "headarmour",
+  "category" : "t5armor",
   "tooltipKind" : "armornew2",
 
 "level" : 5,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fuqueenhead" },
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
   "itemTags" : [ "upgradeableWeapon" ],
-  "statusEffects" : [
   
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.7
-    },  
+      "baseMultiplier" : 1.09
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 22
+      "amount" : 0.42
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 36
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 25
-    },
-    "beestingimmunity",
-    "honeyslowimmunity"
+      "amount" : 4
+    }
   ],
   
+  "statusEffects" : [
+    "queensetbonus",
+    {
+      "stat" : "fu_queenset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.07
+    }
+  ],  
  "colorOptions" : [
     /* DEFAULT */
     { "ffb400" : "ffb400", "d09b1d" : "d09b1d", "a67c16" : "a67c16", "795910" : "795910" },

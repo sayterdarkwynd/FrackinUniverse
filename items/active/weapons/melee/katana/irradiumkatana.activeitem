@@ -1,0 +1,47 @@
+{
+  "itemName" : "irradiumkatana",
+  "price" : 1400,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Radioactive stabby fun. 2 handed.",
+  "shortdescription" : "Irradium Katana",
+  "tooltipKind" : "sword2",
+  "category" : "katana",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "irradiumkatana.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "irradiumkatana" },
+  "animation" : "combokatanaglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "irradiumkatana.png",
+    "bladefullbright" : "irradiumkatanafullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "katanacombo2h",
+  "primaryAbility":{
+    "fireTime":0.72, 
+    "baseDps":6.7, 
+    "damageConfig":{
+      "knockback":20,
+      "damageSourceKind" : "radioactive",
+      "statusEffects" : [ "radiationburn" ]
+      }, 
+      "comboSteps":5
+    }, 
+    
+  "altAbilityType" : "parrykatana",
+  
+  "critChance" : 1,
+  "critBonus" : 12,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

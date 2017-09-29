@@ -1,0 +1,44 @@
+{
+  "itemName" : "fuambersword",
+  "price" : 1500,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Made from finely honed amber",
+  "shortdescription" : "Amber Blade",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword", "longsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "fuambersword.png",
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "fuambersword" },
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fuambersword.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.83,
+    "baseDps" : 9
+  },
+
+  "critChance" : 2,
+  "critBonus" : 5,   
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

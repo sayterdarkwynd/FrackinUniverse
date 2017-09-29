@@ -6,17 +6,18 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "Set Bonus:
-^cyan;Immune: Heat, Lav, Burning^reset;
-^#e43774;50% Fire Resist^reset;
+^cyan;Immune: Cold, Ice Slip, Snow, Freeze, Nitrogen^reset;
+^#e43774;60% Ice Resist^reset;
 ^green;+25% Damage (Pyreite weapons)^reset;", 
   "shortdescription" : "Pyreite Greaves",
-  "category" : "legarmour",
+  "category" : "t6armor",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 6,
+  "collectablesOnPickup" : { "fu_armorbalanced" : "fupyreitepants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,7 +48,7 @@
       "amount" : 1
     },
     {
-      "stat" : "fireResistance",
+      "stat" : "iceResistance",
       "amount" : 0.10
     }
   ],

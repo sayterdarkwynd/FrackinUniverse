@@ -1,0 +1,91 @@
+{
+  "itemName" : "futriangliumsmg",
+  "price" : 360,
+  "inventoryIcon" : "triangliumsmg_ashey.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Ratta-tat-tat your foes with poisoned trianglium rounds
+^cyan;Inflicts poison^reset;",
+  "shortdescription" : "Vagabond",
+  "category" : "machinePistol",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
+  "twoHanded" : false,
+  "weaponType" : "machinePistol",
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "triangliumsmg_ashey.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/mp2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.9, 0.35],
+  "muzzleOffset" : [0.7,0.5],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.08,
+    "baseDps" : 6,
+    "energyUsage" : 42,
+    "inaccuracy" : 0.008,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "tracerbullet",
+    "projectileParameters" : {
+      "speed" : 55,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.2, 0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "weaponOffset" : [-0.5, 0],
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "weaponOffset" : [-0.5, 0],
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -4,14 +4,14 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "Great for early meat and hide gathering.",
-  "shortdescription" : "Stone Dagger",
+  "shortdescription" : "Primitive Dagger",
   "tooltipKind" : "sword",
   "category" : "dagger",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
   "level" : 1,
   "inventoryIcon" : "stonedagger.png",
-
+  "collectablesOnPickup" : { "fu_weapondagger" : "stonedagger" },
   "animation" : "dagger.animation",
   "animationParts" : {
     "blade" : "stonedagger.png",
@@ -70,6 +70,7 @@
       }
     }
   },
+  
   "critChance" : 1, 
   "critBonus" : 2, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

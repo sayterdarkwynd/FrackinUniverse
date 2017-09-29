@@ -4,37 +4,53 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "A queen's skirt and boots.",
+  "description" : "Set Bonus:
+^cyan;+21% Physical Immunity, Beesting Immunity^reset;
+^green;+8% Crit and x3 Crit Damage (Bee weapons), +20% Damage (bee weapons)^reset;
+^#e43774;Deadly Radiation Immunity^reset;",
   "shortdescription" : "Queen's Skirt",
-  "category" : "legarmour",
+  "category" : "t5armor",
   "tooltipKind" : "armornew2",
   "level" : 5,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fuqueenlegs" },
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
-  "statusEffects" : [
+  
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.55
-    },  
+      "baseMultiplier" : 1.07
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 9
+      "amount" : 0.32
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 50
+      "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 15
-    },
-    "beestingimmunity",
-    "honeyslowimmunity"
+      "amount" : 3
+    }
   ],
   
+  "statusEffects" : [
+    "queensetbonus",
+    {
+      "stat" : "fu_queenset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.07
+    }
+  ],  
  "colorOptions" : [
     /* DEFAULT */
     { "ffb400" : "ffb400", "d09b1d" : "d09b1d", "a67c16" : "a67c16", "795910" : "795910" },

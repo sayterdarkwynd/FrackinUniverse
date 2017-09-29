@@ -1,0 +1,25 @@
+{
+  "itemName" : "fupearpie",
+  "rarity" : "uncommon",
+  "price" : 35,
+  "category" : "preparedFood",
+  "inventoryIcon" : "pearpie.png",
+  "description" : "Pie.",
+  "shortdescription" : "Pear Pie",
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 90,
+	"energyModifier" : 1.25
+    }
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 2.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

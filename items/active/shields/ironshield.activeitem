@@ -5,7 +5,7 @@
   "level" : 1,
   "rarity" : "common",
   "tooltipKind" : "shieldnew", 
-  "description" : "^green;+0.08% HP Regen^reset;",
+  "description" : "^green;+20% Fall Reduction^reset;",
   "shortdescription" : "Iron Shield",
   "category" : "shield",
   "twoHanded" : false,
@@ -19,13 +19,14 @@
   "animationCustom" : {
     "sounds" : {
       "raiseShield" : [ "/sfx/melee/sword_guard.ogg" ],
-      "perfectBlock" : [ "/sfx/melee/shield_block_floran_perfect.ogg" ],
-      "block" : [ "/sfx/melee/shield_block_floran.ogg" ],
-      "break" : [ "/sfx/melee/shield_break_floran.ogg" ]
+      "perfectBlock" : [ "/sfx/melee/shield_block_metal_perfect.ogg" ],
+      "shieldBash" : [ "/sfx/melee/blunt_hit_metal3.ogg", "/sfx/melee/dagger_hit_metal1.ogg" ],
+      "block" : [ "/sfx/melee/shield_block_metal.ogg" ],
+      "break" : [ "/sfx/melee/shield_break_metal.ogg" ]
     }
   },
 
-  "scripts" : [ "/items/active/shields/shield2.lua" ],
+  "scripts" : [ "/items/active/shields/shield.lua" ],
 
   // ***************   FU shield properties    *********************
   // if using shield2.lua, you must include these values
@@ -33,6 +34,8 @@
   "shieldEnergyRegen" : 0,
   "shieldHealthBonus" : 0,
   "shieldEnergyBonus" : 0,
+  "shieldBash" : 1,
+  "shieldBashPush" : 2,  
   "shieldProtection" : 0,
   "shieldStamina" : 0.20,
   "shieldFalling" : 0.2, 

@@ -1,0 +1,45 @@
+{
+  "itemName" : "crystallineblade",
+  "price" : 1500,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Beautiful, shiny and deadly.",
+  "shortdescription" : "Crystal Blade",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword", "longsword",  "upgradeableWeapon"],
+  "inventoryIcon" : "crystallineblade.png",
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "crystallineblade" },
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "crystallineblade.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "baseDps" : 8.75,
+    "damageConfig" : {
+      "damageSourceKind" : "electric"
+    }
+  },
+
+  "critChance" : 2, 
+  "critBonus" : 5, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

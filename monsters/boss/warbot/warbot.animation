@@ -34,7 +34,7 @@
             "frames" : 4,
             "cycle" : 1.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg",
               "particleEmittersOff" : [ "charge" ]
             }             
           }, 
@@ -42,7 +42,7 @@
             "frames" : 5,
             "cycle" : 1.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg",
               "particleEmittersOff" : [ "charge" ]
             }             
           },          
@@ -50,7 +50,7 @@
             "frames" : 6,
             "cycle" : 1.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg",
               "particleEmittersOff" : [ "charge" ]
             }            
           },
@@ -108,7 +108,7 @@
             "frames" : 1,
             "cycle" : 0.35,
             "properties" : {
-             "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg",
+             "immediateSound" : "/sfx/npc/boss/robotboss_pain1.ogg",
              "particleEmittersOff" : [ "charge" ]
             }
           },
@@ -116,7 +116,7 @@
             "frames" : 1,
             "cycle" : 0.35,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain2.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain2.ogg",
               "particleEmittersOff" : [ "charge" ]
             }
           },          
@@ -126,7 +126,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain3.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain3.ogg",
               "particleEmittersOff" : [ "charge" ]
             }
           },
@@ -136,7 +136,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain1.ogg",
               "particleEmittersOff" : [ "charge" ]
             }
           },           
@@ -144,7 +144,7 @@
             "frames" : 3,
             "cycle" : 0.5,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain2.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain2.ogg",
               "particleEmittersOff" : [ "charge" ]
             }
           },
@@ -152,7 +152,7 @@
             "frames" : 3,
             "cycle" : 0.5,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain3.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain3.ogg",
               "particleEmittersOff" : [ "charge" ]
             }
           },   
@@ -160,7 +160,7 @@
             "frames" : 1,
             "cycle" : 0.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg",
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain1.ogg",
               "particleEmittersOff" : [ "charge" ]
             }
           },            
@@ -170,7 +170,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/npc/unique/robotboss_turnhostile.ogg",
+              "persistentSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg",
               "persistentSoundStopTime" : 1.25,
               "particleEmittersOff" : [ "charge" ]
             }
@@ -208,8 +208,7 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "transformationGroups" : [ "body" ],
-          "offset" : [2.0625, 0.6875]
+          "transformationGroups" : [ "body" ]
         },
         "partStates" : {
           "body" : {
@@ -302,8 +301,7 @@
             },            
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:fire.<frame>",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+                "image" : "<partImage>:fire.<frame>"
               }
             }
           },
@@ -406,15 +404,15 @@
 
 
   "sounds" : {
-    "turnHostile" : [ "/sfx/npc/unique/robotboss_turnhostile.ogg" ],
-    "idle" :["/sfx/npc/unique/robotboss_idle1.ogg"],
+    "turnHostile" : [ "/sfx/npc/boss/robotboss_turnhostile.ogg" ],
+    "idle" :["/sfx/npc/boss/robotboss_idle1.ogg"],
     "fire" :["/sfx/weapons/explosion2.ogg"],
     "chestgun" :["/sfx/weapons/explosion-large01.ogg"],
     "dualgun" :["/sfx/weapons/k3.ogg"],
-    "melee" :["/sfx/monsters/toss1.ogg"],
-    "shooting" :["/sfx/monsters/toss1.ogg"],
-    "deathPuff" :["/sfx/npc/unique/robotboss_pain1.ogg"],
-    "attackSound" :["/sfx/npc/unique/robotboss_pain2.ogg"],
-    "aggroHop" :["/sfx/npc/unique/robotboss_pain3.ogg"]
+    "melee" :["/sfx/npc/monsters/toss1.ogg"],
+    "shooting" :["/sfx/npc/monsters/toss1.ogg"],
+    "deathPuff" :["/sfx/npc/boss/robotboss_pain1.ogg"],
+    "attackSound" :["/sfx/npc/boss/robotboss_pain2.ogg"],
+    "aggroHop" :["/sfx/npc/boss/robotboss_pain3.ogg"]
   }
 }

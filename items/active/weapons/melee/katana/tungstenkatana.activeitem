@@ -1,0 +1,42 @@
+{
+  "itemName" : "tungstenkatana",
+  "price" : 400,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Heavy, but sharp as heck.",
+  "shortdescription" : "Tungsten Katana",
+  "tooltipKind" : "sword",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "tungstenkatana.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "tungstenkatana" },
+  "animation" : "combokatana.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "tungstenkatana.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "katanacombo",
+  "primaryAbility":{
+    "fireTime":0.7, 
+    "baseDps":6.5, 
+    "damageConfig":{
+      "knockback":20
+      }, 
+      "comboSteps":4
+    }, 
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

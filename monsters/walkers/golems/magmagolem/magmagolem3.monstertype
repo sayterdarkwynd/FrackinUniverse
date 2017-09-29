@@ -231,7 +231,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-5.375,-0.188], [-2.812,-5.312], [2.375,-5.312], [3.312,2.562], [-2.375,2.75], [-3.688,0.312], [-5,0.062] ],
+      "poly" : [ [-1.375,1.583], [-1.958,0.958], [-1.625,-4.792], [-1.042,-5.583], [0.333,-5.625], [0.875,-4.792], [0.875,0.75], [0.042,1.708] ],
       "damage" : 32,
 
       "teamType" : "enemy",
@@ -244,7 +244,7 @@
     "scale" : 1.7,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-5.375,-0.188], [-2.812,-5.312], [2.375,-5.312], [3.312,2.562], [-2.375,2.75], [-3.688,0.312], [-5,0.062] ],
+      "collisionPoly" : [ [-1.375,1.583], [-1.958,0.958], [-1.625,-4.792], [-1.042,-5.583], [0.333,-5.625], [0.875,-4.792], [0.875,0.75], [0.042,1.708] ],
 
       "mass" : 2.5,
       "walkSpeed" : 7,
@@ -310,12 +310,14 @@
         "powerMultiplier" : {
           "baseValue" : 1.75
         },
-        "poisonResistance" : { "baseValue" : 0 },
-        "fireResistance" : { "baseValue" : 0 },
+        "poisonResistance" : { "baseValue" : 0.99 },
+        "fireResistance" : { "baseValue" : 1 },
         "iceResistance" : { "baseValue" : -0.4 },
-        "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0 }
+        "electricResistance" : { "baseValue" : 0.8 },
+        "physicalResistance" : { "baseValue" : 0.8 },
+        "shadowResistance" : { "baseValue" : 0.6 },
+        "cosmicResistance" : { "baseValue" : 0.6 },
+        "radioactiveResistance" : { "baseValue" : 0.8 }
       },
 
       "resources" : {

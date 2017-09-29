@@ -5,13 +5,13 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "A durable energy blade.
-^cyan;Destroys blocks^reset;",
+^cyan;High-damage energy weapon^reset;",
   "shortdescription" : "Particle Blade",
   "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","broadsword","energy", "upgradeableWeapon"],
-
+  "collectablesOnPickup" : { "fu_weaponbroadsword" : "mineralblade" },
   "inventoryIcon" : "mineralblade.png",
 
   "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
@@ -36,6 +36,5 @@
 
   "critChance" : 2, 
   "critBonus" : 12, 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
-    "collectablesOnPickup" : { "fu_warrior" : "mineralblade" }
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

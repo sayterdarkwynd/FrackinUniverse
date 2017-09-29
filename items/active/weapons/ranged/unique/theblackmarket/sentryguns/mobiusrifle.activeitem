@@ -3,15 +3,16 @@
   "price" : 160,
   "inventoryIcon" : "mobiusrifle.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "legendary",
   "description" : "A mainstay of advanced forces. Rivaled by few.
-^yellow;Inflicts frozen-fire^reset;",
+^yellow;Inflicts frozen-fire^reset;
+^cyan;Summons Shield Drones^reset;",
   "shortdescription" : "Sentry Rifle",
-  "category" : "Energy Gun",
+  "category" : "assaultRifle",
   "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","rifle", "energy", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","assaultRifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -19,16 +20,16 @@
     "butt" : "",
     "middle" : "mobiusrifle.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_ar2.ogg" ]
+      "fire" : [ "/sfx/gun/pulsecannon2.ogg" ]
     }
   },
 
   "baseOffset" : [0.48, 0.62],
-  "muzzleOffset" : [2.545, 0.125],
+  "muzzleOffset" : [2.2, 0.0],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua", "/items/active/scripts/reloadweapon.lua" ],
 
@@ -37,20 +38,74 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.11,
-    "baseDps" : 9.8,
-    "energyUsage" : 27,
-    "inaccuracy" : 0.03,
-    "burstTime" : 0.075,
-    "burstCount" : 3,
+    "fireTime" : 0.4,
+    "baseDps" : 6.5,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
     "projectileCount" : 1,
-    "fireType" : "burst",
-
-    "projectileType" : "mobius",
-    "projectileParameters" : { 
-      "speed" : 60,
-      "knockback" : 1
-    },
+    "fireType" : "auto",
+    
+    //"projectileType" : "mobius",
+    "projectileType" : "standardbullet",
+    "projectileParameters":{
+	  "statusEffects":[], 
+	  "bounces":0, 
+	  "speed":95, 
+	  "timeToLive":3.0, 
+	  "power" : 5.25,
+	  "damageSourceKind" : "electric",
+	  "knockback":0,
+	  "lightColor" : [255, 180, 0],    
+	  "periodicActions":[ 
+		  {
+		  "time":0.01, 
+		  "action":"projectile", 
+		  "type":"firelasershot2", 
+		  "config":{
+		    "processing":"?hueshift=127",
+		    "speed":0, 
+		    "physics" : "laser",
+		    "bounces" :-1,
+		    "timeToLive":0.4, 
+		    "power":1, 
+		    "knockback":0
+		    }
+		  }
+	  ], 	  
+	  "actionOnReap" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+	    },	  	  
+	    {
+	      "action" : "projectile",
+	      "type" : "electricexplosion",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : {
+	        "speed" : 0
+	      }
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "plasmaflame",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.2,
+	      "timeToLive" : 0.5,
+	      "angleAdjust" : 35
+	    },
+			    {
+	      "action" : "projectile",
+	      "type" : "plasmaflame",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.2,
+	      "timeToLive" : 0.5,
+	      "angleAdjust" : -35
+	    }
+	  ]
+  },
+  
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -82,7 +137,7 @@
   },
   "critChance" : 4,
   "critBonus" : 6,
-  "altAbilityType" : "fuerchiuslauncher",
+  "altAbilityType" : "fudronelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

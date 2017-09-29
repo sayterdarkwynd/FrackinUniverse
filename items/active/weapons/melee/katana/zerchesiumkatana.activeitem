@@ -1,0 +1,45 @@
+{
+  "itemName" : "zerchesiumkatana",
+  "price" : 1700,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "A lethally edged weapon. 2 handed.",
+  "shortdescription" : "Zerchesium Katana",
+  "tooltipKind" : "sword2",
+  "category" : "katana",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "zerchesiumkatana.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "zerchesiumkatana" },
+  "animation" : "combokatana.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "zerchesiumkatana.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "katanacombo2h",
+  "primaryAbility":{
+    "fireTime":0.72, 
+    "baseDps":7.0, 
+    "damageConfig":{
+      "knockback":20,
+      "damageSourceKind" : "ice"
+      }, 
+      "comboSteps":5
+    }, 
+    
+  "altAbilityType" : "parrykatana",
+  
+  "critChance" : 1,
+  "critBonus" : 12,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

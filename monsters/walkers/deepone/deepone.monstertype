@@ -66,7 +66,7 @@
             "projectileType" : "raptorbite",
             "projectileCount" : 1,
             "power" : 8,
-            "speed": 30,
+            "speed": 40,
             
             "fireOffset" : [2.5, -0.5],
             "aimAtTarget" : true,
@@ -84,7 +84,7 @@
             "maximumRange" : 15,
             "minimumRange" : 8,
             "windupState" : "firewindup",
-            "windupTime" : 0.4,
+            "windupTime" : 0.3,
 
             "projectileType" : "randomfish",
             "projectileCount" : 5,
@@ -174,7 +174,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ],
+      "poly" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ],
       "damage" : 22,
 
       "teamType" : "enemy",
@@ -187,7 +187,7 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-2.25,1.2], [-2.05,-5.85], [1.05,-5.9], [1.25,-1.45], [1.95,-1.4], [1.6,1.25] ],
+      "collisionPoly" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ],
 
       "mass" : 2.5,
       "walkSpeed" : 5,
@@ -233,10 +233,10 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 120
+          "baseValue" : 200
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "insanityImmunity" : {
           "baseValue" : 1.0
@@ -249,9 +249,9 @@
         "iceResistance" : { "baseValue" : 0.2 },
         "electricResistance" : { "baseValue" : 0 },
         "physicalResistance" : { "baseValue" : 0.3 },
-        "shadowResistance" : { "baseValue" : 0.8 },
+        "shadowResistance" : { "baseValue" : 0.99 },
         "radioactiveResistance" : { "baseValue" : 0.3 },
-        "cosmicResistance" : { "baseValue" : 0.8 }
+        "cosmicResistance" : { "baseValue" : 1.0 }
       },
 
       "resources" : {

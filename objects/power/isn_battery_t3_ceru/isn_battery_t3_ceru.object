@@ -4,8 +4,8 @@
     "colonyTags" : [ "science" ],
   "category" : "wire",
   "price" : 5500,
-  "description" : "A power storage unit. Stores up to 4000u of power and dispenses 6u when connected.",
-  "shortdescription" : "^cyan;4000u 6v Battery Unit^white;",
+  "description" : "A power storage unit. Stores up to 4000J of power and dispenses 8W when connected.",
+  "shortdescription" : "^cyan;4000J 6W Battery Unit^white;",
   "race" : "generic",
   "printable" : false,
     "learnBlueprintsOnPickup" : [ "isn_battery_t3_fero" ],
@@ -31,16 +31,13 @@
   },
   "animationPosition" : [0, 0],
 
-  "scripts" : [ "/objects/power/isn_battery.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 50,
+  "scripts" : [ "/scripts/power.lua","/objects/power/isn_battery.lua","/objects/isn_sharedobjectscripts.lua"],
+  "scriptDelta" : 60,
 
   "outputNodes" : [ [1, 3] ],
   "inputNodes" : [ [0, 1], [2, 1] ],
 
-  "isn_powerSupplier" : true,
-  "isn_powerReciever" : true,
   "isn_batteryCapacity" : 4000,
-  "isn_batteryVoltage" : 6
+  "isn_batteryVoltage" : 8,
+  "powertype" : "battery"
 }

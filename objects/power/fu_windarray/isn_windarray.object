@@ -4,7 +4,7 @@
     "colonyTags" : [ "science" ],
   "category" : "wire",
   "price" : 2500,
-  "description" : "Uses wind to generate electricity. Can be unreliable, but exceptional when you have ample wind. Can generate up to 12u.",
+  "description" : "Uses wind to generate electricity. Can be unreliable, but exceptional when you have ample wind. Can generate up to 12W.",
   "shortdescription" : "^cyan;Wind Turbine^white;",
   "race" : "generic",
   "printable" : false,
@@ -35,12 +35,10 @@
   },
   "animationPosition" : [0, 0],
   
-  "scripts" : [ "/objects/power/fu_windarray/isn_windarray.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 50,
+  "scripts" : [ "/scripts/power.lua","isn_windarray.lua" ],
+  "scriptDelta" : 60,
   
   "outputNodes" : [ [2, 1] ],
   
-  "isn_powerSupplier" : true
+  "powertype" : "output"
 }

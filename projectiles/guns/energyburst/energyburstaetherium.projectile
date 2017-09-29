@@ -1,0 +1,155 @@
+{
+  "projectileName" : "energyburstaetherium",
+  "image" : "energyburst.png",
+  "animationCycle" : 0.3,
+  "level" : 7,
+  "frameNumber" : 3,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [45,45,155],
+  "power" : 10,
+  "speed" : 42,
+  "timeToLive" : 1,
+  "fullbright" : true,
+  "damagePoly" : [ [-35, 0], [-35, -73], [0, -73], [35, -73], [35, 0], [35, 73], [0, 73], [-35, 73] ],
+  "damageKind" : "electricplasma",
+  "physics" : "laser",
+  "knockback" : -20,
+	      "actionOnReap":[
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/energyburstexplosion/energyburstexplosion.config"
+		    },	      
+		{
+		      "action":"projectile", 
+		      "type":"deathzone", 
+		      "inheritDamageFactor":0.5, 
+		      "angleAdjust":0, 
+		      "fuzzAngle":0, 
+		      "config":{
+			"piercing":true, 
+			"speed":0, 
+			"timeToLive":2, 
+			"knockback":0,  
+			"periodicActions":[
+				  {
+				    "action":"particle", 
+				    "specification":"cosmicswoosh1", 
+				    "time":0.2, 
+				    "repeat":true
+				  },
+				{
+				  "time" : 0.14,
+				  "loop" : true,
+				  "action":"projectile", 
+				  "type":"fuhailstrikeshot", 
+				  "inheritDamageFactor":0.03, 
+				  "fuzzAngle" : 360,
+				  "config":{ 
+				    "damageTeam":{"type":"friendly"}
+				  }
+				}          
+			 ], 
+			 "actionOnReap":[
+			      {
+				"action":"projectile", 
+				"type":"fuhailstrikeshot", 
+				"inheritDamageFactor":0.5, 
+				"fuzzAngle":180, 
+				"config":{
+				  "timeToLive":0, 
+				  "processing":"?0", 
+				  "actionOnReap":[
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":36, 
+					  "config":{ 
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}, 
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":72, 
+					  "config":{
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}, 
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":108, 
+					  "config":{
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}, 
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":144, 
+					  "config":{
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}, 
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":180, 
+					  "config":{
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}, 
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":216, 
+					  "config":{
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}, 
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":252, 
+					  "config":{
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}, 
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":288, 
+					  "config":{
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}, 
+					{
+					  "action":"projectile", 
+					  "type":"fuhailstrikeshot", 
+					  "inheritDamageFactor":0.03, 
+					  "angleAdjust":324, 
+					  "config":{
+					    "damageTeam":{"type":"friendly"}
+					  }
+					}
+				  ]
+				}
+			      }, 
+			      {
+				"action":"config", 
+				"file":"/projectiles/explosions/burstexplosion/cosmicburstexplosion.config"
+			      }
+			 ]
+		      }	  
+		}
+	    ]    
+}

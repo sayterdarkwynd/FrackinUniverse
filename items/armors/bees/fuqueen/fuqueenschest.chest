@@ -4,9 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "The armor of a Honey Bee Queen.",
+  "description" : "Set Bonus:
+^cyan;+21% Physical Immunity, Beesting Immunity^reset;
+^green;+8% Crit and x3 Crit Damage (Bee weapons), +20% Damage (bee weapons)^reset;
+^#e43774;Deadly Radiation Immunity^reset;",
   "shortdescription" : "Queen's Dress",
-  "category" : "chestarmour",
+  "category" : "t5armor",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -20,29 +23,43 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
+  "level" : 5,
+  "collectablesOnPickup" : { "fu_armorexplorer" : "fuqueenchest" },
   "itemTags" : [ "upgradeableWeapon" ],
-  "statusEffects" : [
+  
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.05
-    },  
+      "baseMultiplier" : 1.18
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37
+      "amount" : 0.62
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 60
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 35
+      "amount" : 5
+    }
+  ],
+  
+  "statusEffects" : [
+    "queensetbonus",
+    {
+      "stat" : "fu_queenset_chest",
+      "amount" : 1
     },
-    "beestingimmunity",
-    "honeyslowimmunity"
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.07
+    }
   ],
   
  "colorOptions" : [

@@ -1,0 +1,37 @@
+{
+  "itemName" : "ballmace",
+  "price" : 600,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Well crafted, but heavy. Design by zimberzimber.",
+  "shortdescription" : "Balls of Steel",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "ballsofsteel_zimberzimber.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "ballmace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ballsofsteel_zimberzimber.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.85, 
+    "baseDps":7.89
+  },
+  "critChance" : 1,
+  "critBonus" : 10,
+  "stunChance" : 7,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

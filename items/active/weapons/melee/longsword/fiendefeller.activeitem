@@ -1,0 +1,47 @@
+{
+  "itemName" : "fiendefeller",
+  "price" : 9600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Blade of a fallen legend.
+^cyan;Inflicts Bleeding^reset;",
+  "shortdescription" : "Fiendefeller",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword","upgradeableWeapon"],
+  "inventoryIcon" : "fiendefeller.png",
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "fiendefeller" },
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fiendefeller.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "baseDps" : 10,
+    "damageConfig" : {
+      "damageSourceKind": "radioactive",
+      "statusEffects" : [ "bleedinglong" ]
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 5,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

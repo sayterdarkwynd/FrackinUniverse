@@ -1,0 +1,47 @@
+{
+  "itemName" : "fupetalsword",
+  "price" : 1500,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "The blade of a bee queen",
+  "shortdescription" : "Queen Blade",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword","bioweapon", "longsword", "upgradeableWeapon"],
+  "inventoryIcon" : "fupetalsword.png",
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "fupetalsword" },
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fupetalsword.png",
+    "bladefullbright" : "fupetalswordfullbright.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.85,
+    "baseDps" : 8.55,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 8,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

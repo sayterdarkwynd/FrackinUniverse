@@ -8,43 +8,14 @@
   "frameNumber" : 1,
   "pointLight" : false,
   "speed" :20,
-   "timeToLive" : 0.01,
+   "timeToLive" : 0.8,
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
-    },
-	{
-      "action" : "projectile",
-      "type" : "irradiumshotgunshot2",
-      "inheritDamageFactor" : 0.2,
-      "angleAdjust" : 0
-    },
-    {
-      "action" : "projectile",
-      "type" : "irradiumshotgunshot2",
-      "inheritDamageFactor" : 0.2,
-      "angleAdjust" : -5
-    },
-    {
-      "action" : "projectile",
-      "type" : "irradiumshotgunshot2",
-      "inheritDamageFactor" : 0.2,
-      "angleAdjust" : 5
-    },
-	{
-      "action" : "projectile",
-      "type" : "irradiumshotgunshot2",
-      "inheritDamageFactor" : 0.2,
-      "angleAdjust" : -10
-    },
-    {
-      "action" : "projectile",
-      "type" : "irradiumshotgunshot2",
-      "inheritDamageFactor" : 0.2,
-      "angleAdjust" : 10
     }
   ],
   "damageKind" : "radioactiveplasmashotgun",
-  "emitters" : [ "peglacitrail" ]
+  "emitters" : [ "peglacitrail" ],
+  "statusEffects" : [ "radiationburn" ]
 }

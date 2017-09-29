@@ -8,8 +8,7 @@ weaponBonus={
 
 armorBonus={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.15},
-        {stat = "shieldRegen", baseMultiplier = 1.15},
-        {stat = "shieldHealth", baseMultiplier = 1.15},
+        {stat = "shieldBonusShield", amount = 0.15},
         {stat = "perfectBlockLimitRegen", baseMultiplier = 1.15}
 }
 
@@ -35,10 +34,10 @@ end
 
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword"})
+local weaponSword=weaponCheck({"shortsword","mace"})
 local weaponShield=weaponCheck({"shield"})
 
-	local weapons=weaponCheck({"shortsword","shield"})
+	local weapons=weaponCheck({"shortsword","shield","mace"})
 	if weaponSword["either"] and weaponShield["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

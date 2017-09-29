@@ -1,0 +1,68 @@
+{
+  "name" : "gasgiantstorm3",
+  "icon" : "/interface/cockpit/weather/sulphurstorm.png",
+
+  "particles" : [
+    {
+
+      "density" : 0.04,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/gasgiantcloud/1.png",
+        "velocity" : [0, -2],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 6,
+        "collidesForeground" : false,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.02,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ember/1.png",
+        "velocity" : [0, -2],
+        "angularVelocity" : 180,
+        "timeToLive" : 5,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.03,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ember/1.png",
+        "velocity" : [0, -1],
+        "angularVelocity" : 180,
+        "timeToLive" : 5,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.04,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ember/1.png",
+        "velocity" : [0, -2],
+        "angularVelocity" : 180,
+        "timeToLive" : 5,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    }
+  ],
+
+  "projectiles" : [ ],
+
+  "statusEffects" : ["sandstorm"],
+
+  "duration" : [120, 1220],
+  "maximumWind" : 92.0,
+  "lightningFrequency" : 1.0,
+  "weatherNoises" : [ "/sfx/weather/WindTornado.ogg" ]
+}

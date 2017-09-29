@@ -1,7 +1,8 @@
 {
   "type" : "crewmembervolcanologist",
   "baseType" : "crewmember",
-
+  "disableWornArmor" : false,
+    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
   "scriptConfig" : {
     "behaviorConfig" : {
       "emptyHands" : false
@@ -40,6 +41,16 @@
           "default" : {
             "default" : [
               "With my special materials, your ship will be much lighter and use less fuel."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran help ship be fassst."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Statement. With my special materials, your ship will be much lighter and use less fuel."
             ]
           }
         },

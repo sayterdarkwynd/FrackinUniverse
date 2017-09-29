@@ -17,7 +17,6 @@ function init()
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
   
   --conditionals
-
   self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
   self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
   self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
@@ -239,8 +238,7 @@ self.timerRadioMessage = self.timerRadioMessage - dt
 	      end 
 
 	      if status.stat("fireResistance",0) <= self.effectCutoffValue then      
-		   status.modifyResource("health", -self.damageApply * dt)
-
+		   status.modifyResource("health", -self.damageApply * dt) 
 		   if (status.resource("health")) <= (status.resource("health")/4) then
 		     mcontroller.controlModifiers({
 			 airJumpModifier = 0.65, 

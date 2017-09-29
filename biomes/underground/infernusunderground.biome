@@ -3,16 +3,11 @@
   "friendlyName" : "Scorching Caverns",
 
   "spawnProfile" : {
-    "groups" : [
-      {
-        "select" : 1,
-        "pool" : [ 
-          [ 0.1, "burrower_depth_selector" ]
-        ]
-      },     
+    "groups" : [     
       {
         "select" : 3,
         "pool" : [ 
+	  [ 0.09, "burrower_depth_selector" ],        
           [ 0.02, "magmagolem" ],     
           [ 0.06, "fuashgolem" ],
           [ 0.1111, "crabcano" ],        
@@ -326,16 +321,7 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "underground0cmicrodungeons" ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 99.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:ultraRare",
-
-        "type" : "microdungeon",
-        "microdungeons" : [ "precursormicro" ]
-      }        
+      }       
     ]
   },
     "hueShiftOptions" : [0]

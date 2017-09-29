@@ -231,7 +231,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-3.062,2.188], [-3,-5.438], [2.25,-5.625], [1.875,3.562], [-1.125,3.625], [-1.188,2.25] ],
+      "poly" : [ [-1.375,1.583], [-1.958,0.958], [-1.625,-4.792], [-1.042,-5.583], [0.333,-5.625], [0.875,-4.792], [0.875,0.75], [0.042,1.708] ],
       "damage" : 22,
 
       "teamType" : "enemy",
@@ -244,7 +244,7 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-3.062,2.188], [-3,-5.438], [2.25,-5.625], [1.875,3.562], [-1.125,3.625], [-1.188,2.25] ],
+      "collisionPoly" : [ [-1.375,1.583], [-1.958,0.958], [-1.625,-4.792], [-1.042,-5.583], [0.333,-5.625], [0.875,-4.792], [0.875,0.75], [0.042,1.708] ],
 
       "mass" : 2.5,
       "walkSpeed" : 5,
@@ -310,12 +310,14 @@
         "powerMultiplier" : {
           "baseValue" : 1.45
         },
-        "poisonResistance" : { "baseValue" : 0 },
-        "fireResistance" : { "baseValue" : 0 },
+        "poisonResistance" : { "baseValue" : 0.99 },
+        "fireResistance" : { "baseValue" : 1 },
         "iceResistance" : { "baseValue" : -0.4 },
-        "electricResistance" : { "baseValue" : 0 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0 }
+        "electricResistance" : { "baseValue" : 0.8 },
+        "physicalResistance" : { "baseValue" : 0.8 },
+        "shadowResistance" : { "baseValue" : 0.6 },
+        "cosmicResistance" : { "baseValue" : 0.6 },
+        "radioactiveResistance" : { "baseValue" : 0.8 }
       },
 
       "resources" : {
@@ -334,7 +336,9 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-    "captureHealthFraction" : 0.24,
+    "captureHealthFraction" : 0.05,
+    "capturedMonsterName" : "Magma Golem",
+    "capturedMonsterType" : "magmagolempet", // turn into an adultpoptop when captured    
     "nametagColor" : [64, 200, 255],
     "captureCollectables" : { "fu_monster" : "magmagolem" }
   }

@@ -1,0 +1,90 @@
+{
+  "name" : "sandstormlesser",
+
+  "particles" : [
+    {
+
+      "density" : 0.005,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/sandcloud/1.png",
+        "velocity" : [0, -2],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 20,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "destructionAction" : "shrink",
+        "destructionTime" : 2,
+        "ignoreWind" : false
+      }
+    },
+    {
+      "density" : 0.015,
+      "particle" : {
+        "type" : "ember",
+        "color" : [253, 198, 137],
+        "size" : 1.0,
+        "velocity" : [0, -2],
+        "timeToLive" : 20,
+        "destructionAction" : "shrink",
+        "destructionTime" : 0.5,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    },
+    {
+      "density" : 0.015,
+      "particle" : {
+        "type" : "ember",
+        "color" : [198, 156, 109],
+        "size" : 1.0,
+        "velocity" : [0, -1],
+        "timeToLive" : 20,
+        "destructionAction" : "shrink",
+        "destructionTime" : 2,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    },
+    {
+      "density" : 0.015,
+      "particle" : {
+        "type" : "ember",
+        "color" : [199, 178, 154],
+        "size" : 1.0,
+        "velocity" : [0, -2],
+        "timeToLive" : 20,
+        "destructionAction" : "shrink",
+        "destructionTime" : 2,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "sandstorm",
+      "parameters" : {
+        "power" : 0
+      },
+      "velocity" : [0, 0],
+      "ratePerX" : 0.005,
+      "spawnAboveRegion" : 10,
+      "spawnHorizontalPad" : 10,
+      "windAffectAmount" : 1
+    }
+  ],
+
+  "statusEffects" : [ "sandstorm" ],
+
+  "duration" : [50, 240],
+  "maximumWind" : 42.0,
+  "weatherNoises" : [ "/sfx/weather/sandstorm.ogg" ]
+}

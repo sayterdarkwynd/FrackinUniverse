@@ -23,23 +23,16 @@
     }
   ],
 
-  "scripts" : [ "/objects/power/fu_conduit/fu_conduit.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 15,
+  "scripts" : [ "/scripts/power.lua" ],
+  "scriptDelta" : 0,
 
   "animation" : "/objects/power/fu_conduit/fu_conduit.animation",
-
-  "animationParts" : {
-    "switch" : "fu_conduit.png"
-  },
+  "animationParts" : { "switch" : "fu_conduit.png" },
   "animationPosition" : [0, 0],
 
   "inputNodes" : [ [-1, -1], [-1, 0] ],
   "outputNodes" : [ [0, -1] ],
 
-  "isn_powerSupplier" : true,
-  "isn_powerReciever" : true,
-  "isn_powerPassthrough" : true
+  "powertype" : "relay"
 
 }

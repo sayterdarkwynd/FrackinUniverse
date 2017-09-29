@@ -6,17 +6,18 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus: 
-^cyan;Immunity: Oxygen, Zero-G^reset;
-^#e43774;40% Radiation Resist^reset;
-^green;+15% Crit, +25 Damage (Dual Machinepistol)^reset;",
-  "shortdescription" : "Precursor Robes",
-  "category" : "legarmour",
+^cyan;Immunity: Oxygen, Zero-G, Pressure^reset;
+^#e43774;40% Radiation & Cosmic Resist^reset;
+^green;+5% Crit, +15% Damage (Energy/Precursor)^reset;",
+  "shortdescription" : "Precursor Greaves",
+  "category" : "t5armor",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 5,
+  "collectablesOnPickup" : { "fu_armorpowerranged" : "fuprecursorpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -49,10 +50,15 @@
     {
       "stat" : "radioactiveResistance",
       "amount" : 0.1
-    } 
+    },
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.1
+    }  
   ],
 
   "colorOptions" : [
+        { "ffca8a" : "616161", "e0975c" : "515151", "a85636" : "333333", "6f2919" : "191a19", "5ce0bb" : "fcff00" },
    /* RED */
     { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
     /* BLACK */

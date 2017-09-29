@@ -5,7 +5,7 @@
   "persistent" : true,
 
   "damageTeam" : 2,
-
+  //"disableWornArmor" : true,
   "dropPools" : [ "guardtreasure" ],
 
   "scriptConfig" : {
@@ -33,7 +33,9 @@
     },
 
     "dialog" : {
-      "attack" : "/dialog/macready.config:attack",
+      "converse" : "/dialog/combat.config:attack",
+      "hail" : "/dialog/combat.config:attack",
+      "attack" : "/dialog/combat.config:attack",
       "reattack" : "/dialog/macready.config:reattack",
       "killedTarget" : "/dialog/macready.config:killedTarget",
       "lostTarget" : "/dialog/macready.config:lostTarget",
@@ -104,7 +106,7 @@
         "baseValue" : 15.0
       },
       "healthRegen" : {
-        "baseValue" : 0.5
+        "baseValue" : 0.05
       },
       "poisonResistance" : {
         "baseValue" : 0.95

@@ -8,7 +8,7 @@
 ^cyan;+7.5% Fall Damage Resist, +5 Health^reset; 
 ^green;(Lush/Forest biomes) +5 Health, 5% Power, 5% Physical Resistance^reset;", 
   "shortdescription" : "Bone Mask",
-  "category" : "^#e43774;Upgradeable Armor^reset;",
+  "category" : "t1armoru",
   "tooltipKind" : "armor",
   "learnBlueprintsOnPickup" : [ "fubonearmor2head" ],
   "maleFrames" : "head.png",
@@ -16,6 +16,7 @@
   "mask" : "mask.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 1,
+  "collectablesOnPickup" : { "fu_armorprotection" : "fubonearmorhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -44,6 +45,5 @@
       "stat" : "fu_boneset_head",
       "amount" : 1
     }         
-  ],
-  "collectablesOnPickup" : { "fu_armorsmith" : "fubonearmorhead" }
+  ]
 }

@@ -3,16 +3,11 @@
   "friendlyName" : "wastelandunderground",
 
     "spawnProfile" : {
-    "groups" : [
+    "groups" : [      
       {
         "select" : 1,
         "pool" : [ 
-          [ 0.1, "burrower_depth_selector" ]
-        ]
-      },      
-      {
-        "select" : 1,
-        "pool" : [ 
+          [ 0.03, "burrower_depth_selector" ],
           [ 0.07, "tintix" ],     
           [ 0.07, "triplod" ],
           [ 0.07, "scandroid" ],        
@@ -305,15 +300,6 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "underground0amicrodungeons" ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 99.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:ultraRare",
-
-        "type" : "microdungeon",
-        "microdungeons" : [ "precursormicro" ]
       }                
     ]
   },

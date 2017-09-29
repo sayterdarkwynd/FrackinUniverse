@@ -1,7 +1,8 @@
 {
   "type" : "crewmembercultist",
   "baseType" : "crewmember",
-
+  "disableWornArmor" : false,
+    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
   "scriptConfig" : {
     "behaviorConfig" : {
       "emptyHands" : false
@@ -47,6 +48,16 @@
           "default" : {
             "default" : [
               "I'll pray to my dark lord, and fuel your ship with his rage!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran pray to dark lord and fuel ship with its rage!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Manic. I'll pray to my dark lord, and fuel your ship with his rage!"
             ]
           }
         },

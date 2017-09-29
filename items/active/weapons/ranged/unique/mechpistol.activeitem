@@ -8,10 +8,10 @@
   "shortdescription" : "Precursor Pistol",
       "learnBlueprintsOnPickup" : [ "protominer" ],
   "level" : 4,
-  "category" : "Energy Gun",
-  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "precursor", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
-  "weaponType" : "Pistol",
+  "weaponType" : "Energy",
   "twoHanded" : false,
   "animation" : "precursorpistol.animation",
   "animationParts" : {
@@ -19,10 +19,10 @@
     "middle" : "mechpistol.png",
     "middlefullbright" : "mechpistolfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/projectiles/swing_electric1.ogg" ] },
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_pistol3.ogg" ] },
     "lights" : { "muzzleFlash" : {"color" : [44, 104, 164] } }
   },
 
@@ -36,11 +36,11 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.12,
+    "fireTime" : 0.15,
     "baseDps" : 6.4,
     "energyUsage" : 22,
     "fireType" : "auto",
-    "inaccuracy" : 0.001,
+    "inaccuracy" : 0.05,
     "projectileCount" : 1,
     "projectileType" : "precursorshotsmall2",
     "stances" : {
@@ -74,6 +74,6 @@
   },
   
   "critChance" : 3,
-  "critBonus" : 3,
+  "critBonus" : 13,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

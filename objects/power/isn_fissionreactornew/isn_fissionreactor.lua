@@ -1,26 +1,24 @@
 require "/scripts/kheAA/transferUtil.lua"
+require "/scripts/power.lua"
+require '/objects/isn_sharedobjectscripts.lua'
+
 local deltaTime=0
 
 function init()
+    power.init()
 	transferUtil.init()
 	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
         storage.critChance = 50
-	
 	object.setInteractive(true)
-	
-	if storage.radiation == nil then storage.radiation = 0 end
-	if storage.active == nil then storage.active = true end
-	if storage.batteryHold == nil then storage.batteryHold = false end
-end
-
-function onInputNodeChange(args)
-	if object.isInputNodeConnected(0) then
-		if object.getInputNodeLevel(0) == true then storage.active = true
-		else storage.active = false
-		end
-	else storage.active = true
-	end
+	radiation = {
+	  {amount = 100, state = 'danger'},
+	  {amount = 60, state = 'warn'},
+	  {amount = 1, state = 'safe'},
+	  {amount = 0, state = 'off'}
+	}
+	storage.radiation = storage.radiation or 0
+	storage.active = true
 end
 
 function update(dt)
@@ -30,79 +28,44 @@ function update(dt)
 	else
 		deltaTime=deltaTime+dt
 	end
-	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
-	-- sb.logInfo("devices found: %s", devices)
-	local fullBattery = false
-	local spendingPower = false
-	for key,value in pairs(devices) do
-		-- sb.logInfo("Checking device %s", value)
-		if world.callScriptedEntity(value, "isn_isBattery") then
-			local currentBatteryStorage = world.callScriptedEntity(value, "isn_getCurrentPowerStorage")
-			if currentBatteryStorage > 98 then
-				fullBattery = true
-			else
-				if storage.batteryHold and currentBatteryStorage > 90 then
-					fullBattery = true
-				else
-					spendingPower = true
-				end
-			end
-		else
-			if not world.callScriptedEntity(value, "isn_doesNotConsumePower") then
-				spendingPower = true
-			end
-		end
-	end
-	if fullBattery and not spendingPower then
-		storage.batteryHold = true
-		-- sb.logInfo("Battery full and no other consumers connected, shutting down")
-	else
-		storage.batteryHold = false
+	
+	for i=1,#radiation do
+	  if storage.radiation >= radiation[i].amount then
+	    animator.setAnimationState("hazard", "off")
+	    break
+	  end
 	end
 
-	if storage.radiation >= 100 then
-		animator.setAnimationState("hazard", "danger")
-	elseif storage.radiation >= 60 then
-		animator.setAnimationState("hazard", "warn")
-	elseif storage.radiation >= 1 then
-		animator.setAnimationState("hazard", "safe")
-	else 
-		animator.setAnimationState("hazard", "off")
-	end
-
-	if not storage.active or storage.batteryHold then
-		storage.radiation = storage.radiation - 5
-		storage.radiation = isn_numericRange(storage.radiation,0,120)
+	if not storage.active then
+		storage.radiation = math.max(storage.radiation - dt*5,0)
 		animator.setAnimationState("screen", "off")
+		power.update(dt)
 		return
 	end
 	
-	if isn_slotDecayCheck(0,1) == true then isn_doSlotDecay(0) end
-	if isn_slotDecayCheck(1,1) == true then isn_doSlotDecay(1) end
-	if isn_slotDecayCheck(2,1) == true then isn_doSlotDecay(2) end
-	if isn_slotDecayCheck(3,1) == true then isn_doSlotDecay(3) end
+	if isn_slotDecayCheck(0,1) then isn_doSlotDecay(0) end
+	if isn_slotDecayCheck(1,1) then isn_doSlotDecay(1) end
+	if isn_slotDecayCheck(2,1) then isn_doSlotDecay(2) end
+	if isn_slotDecayCheck(3,1) then isn_doSlotDecay(3) end
 	
-	local power = isn_getCurrentPowerOutput(false)
-	if power > 11 then
+	local powerout = isn_getCurrentPowerOutput()
+	power.setPower(powerout)
+	if powerout > 11 then
 	  animator.setAnimationState("screen", "on")
-	elseif power >= 6 then
+	elseif powerout >= 6 then
 	  animator.setAnimationState("screen", "med")
-	elseif power >= 1 then 
+	elseif powerout >= 1 then
 	  animator.setAnimationState("screen", "slow")
-	elseif power <= 0 then
+	elseif powerout <= 0 then
 	  animator.setAnimationState("screen", "off")
 	end
 	
-	local rads = -4
-	rads = rads + power
-	if rads > 0 then rads = rads * 2 end
-	local waste =  world.containerAvailable(entity.id(),"toxicwaste")
-	local tritium =  world.containerAvailable(entity.id(),"tritium")
-	if waste >= 75 then
+	local rads = -4 + powerout
+	rads = rads > 0 and rads * 2 or rads
+	if world.containerAvailable(entity.id(),"toxicwaste") >= 75 then
 		rads = rads + 5
 	end
-	storage.radiation = storage.radiation + rads
-	storage.radiation = isn_numericRange(storage.radiation,0,120)
+	storage.radiation = math.min(storage.radiation + rads,120)
 
 	local myLocation = entity.position()
 	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red"); 
@@ -122,31 +85,29 @@ function update(dt)
 	if storage.radiation >= 120 then
 		isn_projectileAllInRange("isn_fissionrads",16)
 	end
+	power.update(dt)
 end
 
 function isn_powerSlotCheck(slotnum)
-	local contents = world.containerItems(entity.id())
-	local slotContent = world.containerItemAt(entity.id(),slotnum)
-	
-	if slotContent == nil then return 0 end
-	if slotContent.name == "biofuelcannister" then return 4
-	elseif slotContent.name == "biofuelcannisteradv" then return 4
-	elseif slotContent.name == "biofuelcannistermax" then return 5
-	elseif slotContent.name == "uraniumrod" then return 6
-	elseif slotContent.name == "neptuniumrod" then return 6
-	elseif slotContent.name == "tritium" then return 6	
-	elseif slotContent.name == "deuterium" then return 7
-	elseif slotContent.name == "thoriumrod" then return 7	
-	elseif slotContent.name == "enricheduranium" then return 8
-	elseif slotContent.name == "plutoniumrod" then return 10
-	elseif slotContent.name == "enrichedplutonium" then return 12
-	elseif slotContent.name == "solariumstar" then return 15
-	elseif slotContent.name == "ultronium" then return 20
-	else return 0 end
+	fuel = {
+	  biofuelcannister = 4,
+	  biofuelcannisteradv = 4,
+	  biofuelcannistermax = 5,
+	  uraniumrod = 6,
+	  neptuniumrod = 6,
+	  tritium = 6,
+	  deuterium = 7,
+	  thoriumrod = 7,
+	  enricheduranium = 8,
+	  plutoniumrod = 10,
+	  enrichedplutonium = 12,
+	  solariumstar = 15,
+	  ultronium = 20
+	}
+	return fuel[world.containerItemAt(entity.id(),slotnum) and world.containerItemAt(entity.id(),slotnum).name or 'nil'] or 0
 end
 
 function isn_slotDecayCheck(slot, chance)
-	local contents = world.containerItems(entity.id())
 	local slotContent = world.containerItemAt(entity.id(),slot)
 	local myLocation = entity.position()
 
@@ -158,7 +119,7 @@ function isn_slotDecayCheck(slot, chance)
 		if math.random(1,60) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end
 	
-	if slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "neptuniumrod" then
+	if slotContent.name == "tritium" or slotContent.name == "deuterium" or slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "neptuniumrod" then
 		if math.random(1,80) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
 	end	
 	
@@ -235,23 +196,12 @@ function isn_doSlotDecay(slot)
 	        
 end
 
-function isn_getCurrentPowerOutput(divide)
-	if storage.batteryHold or not storage.active then return 0 end
-
-	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
-	if divisor < 1 then divisor = 1 end
-
-	local powercount = 0
-	powercount = powercount + isn_powerSlotCheck(0)
+function isn_getCurrentPowerOutput()
+	if not storage.active then return 0 end
+	local powercount =  isn_powerSlotCheck(0)
 	powercount = powercount + isn_powerSlotCheck(1)
 	powercount = powercount + isn_powerSlotCheck(2)
 	powercount = powercount + isn_powerSlotCheck(3)
-	
-	if divide == true then return powercount / divisor
-	else return powercount end
-end
-
-function onNodeConnectionChange()
-	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
-	else object.setOutputNodeLevel(0, false) end
+	--object.say(powercount)
+	return powercount
 end

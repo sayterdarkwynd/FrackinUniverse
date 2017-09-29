@@ -5,7 +5,7 @@
   "persistent" : true,
 
   "damageTeam" : 2,
-
+  //"disableWornArmor" : false,
   "dropPools" : [ "guardtreasure" ],
 
   "scriptConfig" : {
@@ -33,13 +33,14 @@
     },
 
     "dialog" : {
+      "converse" : "/dialog/combat.config:attack",
+      "hail" : "/dialog/combat.config:attack",
       "attack" : "/dialog/combat.config:attack",
       "reattack" : "/dialog/combat.config:reattack",
       "killedTarget" : "/dialog/combat.config:killedTarget",
       "lostTarget" : "/dialog/combat.config:lostTarget",
       "outOfSight" : "/dialog/combat.config:outOfSight",
-      "cheerOn" : "/dialog/combat.config:cheerOn",
-      "cantReach" : "/dialog/combat.config:cantReach"
+      "cheerOn" : "/dialog/combat.config:cheerOn"
     },
 
     "combat" : {

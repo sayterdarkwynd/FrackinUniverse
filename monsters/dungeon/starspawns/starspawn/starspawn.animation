@@ -12,7 +12,7 @@
             "mode" :"loop",
             "properties" : {
               "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
-            }            
+            }
           },
           "walk" : {
             "frames" : 8,
@@ -20,50 +20,50 @@
             "mode" :"loop",
             "properties" : {
               "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
-            }      
+            }
           },
           "fire" : {
             "frames" : 6,
             "cycle" : 0.6,
             "properties" : {
-              "immediateSound" : "/sfx/starspawn/attack.ogg",
+              "immediateSound" : "/sfx/npc/monsters/attack.ogg",
               "particleEmittersOn" : [ "cosmic" ],
               "particleEmittersOff" : [ "poisonous", "ball" ]
-            }             
-          }, 
+            }
+          },
           "fire2" : {
             "frames" : 8,
             "cycle" : 0.8,
             "properties" : {
-              "immediateSound" : "/sfx/starspawn/attack2.ogg",
+              "immediateSound" : "/sfx/npc/monsters/attack2.ogg",
               "particleEmittersOn" : [ "poisonous" ],
               "particleEmittersOff" : [ "cosmic", "ball" ]
-            }             
-          },          
+            }
+          },
           "fire3" : {
             "frames" : 4,
             "cycle" : 0.4,
             "properties" : {
-              "immediateSound" : "/sfx/starspawn/starspawn1.ogg",
+              "immediateSound" : "/sfx/npc/monsters/starspawn1.ogg",
               "particleEmittersOn" : [ "ball" ],
               "particleEmittersOff" : [ "poisonous", "cosmic" ]
-            }            
+            }
           },
           "firewindup" : {
             "frames" : 4,
             "cycle" : 0.4,
             "properties" : {
               "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
-            }  
-          }, 
-          
+            }
+          },
+
           "firewinddown" : {
             "frames" : 4,
             "cycle" : 0.4,
             "properties" : {
               "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
-            }  
-          },           
+            }
+          },
           "jump" : {
             "frames" : 8,
             "cycle" : 0.8,
@@ -72,17 +72,17 @@
           "fall" : {
             "frames" : 1,
             "cycle" : 0.5
-          }, 
+          },
           "jumpwindup" : {
             "frames" : 1,
             "cycle" : 0.2,
             "properties" : {
-              "immediateSound" : "/sfx/npc/unique/robotboss_pain1.ogg"
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain1.ogg"
             }
           }
         }
-      },           
-      
+      },
+
       "damage" : {
         "priority" : 3,
         "default" : "none",
@@ -139,7 +139,7 @@
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
-            },            
+            },
             "fall" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -149,7 +149,7 @@
               "properties" : {
                 "image" : "<partImage>:firewinddown.<frame>"
               }
-            },            
+            },
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:fire.<frame>",
@@ -167,7 +167,7 @@
                 "image" : "<partImage>:fire3.<frame>",
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
-            }            
+            }
           },
           "damage" : {
             "stunned" : {
@@ -206,7 +206,7 @@
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
-            },            
+            },
             "fall" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -229,7 +229,7 @@
                 "image" : "<partImage>:fire3.<frame>",
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
-            }            
+            }
           },
           "damage" : {
             "stunned" : {
@@ -267,7 +267,7 @@
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
-            },            
+            },
             "fall" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -290,7 +290,7 @@
                 "image" : "<partImage>:fire3.<frame>",
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
-            }            
+            }
           },
           "damage" : {
             "stunned" : {
@@ -300,7 +300,7 @@
             }
           }
         }
-      }      
+      }
     }
   },
 
@@ -315,7 +315,7 @@
       "directives" : "fade=ffffff;0.5"
     }
   },
-  
+
   "lights" : {
     "glow" : {
       "active" : true,
@@ -324,7 +324,7 @@
       "pointLight" : true
     }
   },
-  
+
   "particleEmitters" : {
     "ball" : {
       "emissionRate" : 15,
@@ -340,7 +340,7 @@
         { "particle" : "levitationair" },
         { "particle" : "levitationair" }
       ]
-    },    
+    },
     "cosmic" : {
       "emissionRate" : 15,
       "offsetRegion" : [3,3, -3, 5],
@@ -356,7 +356,7 @@
         { "particle" : "piercingspark" },
         { "particle" : "piercingspark" }
       ]
-    },  
+    },
     "poisonous" : {
       "emissionRate" : 10,
       "offsetRegion" : [1.0,3.0,-1.0,5.0],
@@ -441,19 +441,17 @@
     }
   },
 
-
-
   "sounds" : {
-    "turnHostile" : [ "/sfx/starspawn/attack.ogg" ],
-    "idle" :["/sfx/npc/unique/robotboss_idle1.ogg"],
+    "turnHostile" : [ "/sfx/npc/monsters/starspawnattack.ogg" ],
+    "idle" :["/sfx/npc/boss/robotboss_idle1.ogg"],
     "fire" :["/sfx/weapons/explosion2.ogg"],
     "chestgun" :["/sfx/weapons/energypew.ogg"],
     "dualgun" :["/sfx/weapons/k3.ogg"],
-    "melee" :["/sfx/monsters/toss1.ogg"],
-    "shooting" :["/sfx/monsters/toss1.ogg"],
-    "deathPuff" :["/sfx/starspawn/starspawn1.ogg"],
-    "attackSound" :["/sfx/starspawn/attack.ogg"],
-    "aggroHop" :["/sfx/starspawn/attack2.ogg"],
+    "melee" :["/sfx/npc/monsters/toss1.ogg"],
+    "shooting" :["/sfx/npc/monsters/toss1.ogg"],
+    "deathPuff" :["/sfx/npc/monsters/starspawn1.ogg"],
+    "attackSound" :["/sfx/npc/monsters/starspawnattack.ogg"],
+    "aggroHop" :["/sfx/npc/monsters/starspawnattack2.ogg"],
     "blinkSound" : [ "/sfx/gun/lightningcoil3.ogg" ]
   }
 }

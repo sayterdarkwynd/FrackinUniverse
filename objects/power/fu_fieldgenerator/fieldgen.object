@@ -1,0 +1,71 @@
+{
+  "objectName" : "fieldgen",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "printable" : false,
+  "price" : 0,
+  "rarity" : "rare",
+  "objectType" : "physics",
+  "description" : "You didn't see anything.",
+  "shortdescription" : "^orange;Field Generator^white;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "inventoryIcon" : "armoryicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "antigravgen.png:<color>.<frame>", "fullbright" : true }, { "image" : "antigravgenlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-30, -30, 30, 30]
+    },
+    {
+      "imageLayers" : [ { "image" : "antigravgen.png:<color>.<frame>", "fullbright" : true }, { "image" : "antigravgenlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-30, -30, 30, 30]
+    }
+  ],
+
+  "scripts" : [
+  "/scripts/npcToyObject.lua"
+  ],
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  },
+  "inputNodes" : [ [0, 0] ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

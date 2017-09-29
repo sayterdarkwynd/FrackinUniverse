@@ -1,0 +1,92 @@
+{
+  "itemName" : "fuobliterator",
+  "price" : 2160,
+  "inventoryIcon" : "obliterator_retoid.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Definitely not office-safe.
+^cyan;Reduces defenses of target^reset;
+^#e43774;Energy^reset;",
+  "shortdescription" : "Obliterator",
+  "category" : "pistol",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy"],
+  "twoHanded" : false,
+  "weaponType" : "pistol",
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "obliterator_retoid.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/dynamiteexplosion.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.2, 0.35],
+  "muzzleOffset" : [1.7,0.3],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 3,
+    "baseDps" : 8.5,
+    "energyUsage" : 80,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fusionblaster2",
+    "projectileParameters" : {
+      "speed" : 80,
+      "statusEffects" : [ "percentarmorboostneg2" ]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.2, 0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "weaponOffset" : [-0.5, 0],
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "weaponOffset" : [-0.5, 0],
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

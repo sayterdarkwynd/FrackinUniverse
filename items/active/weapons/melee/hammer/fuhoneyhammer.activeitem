@@ -8,10 +8,10 @@
   "tooltipKind" : "sword2",
   "category" : "hammer",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon", "bees"],
   "level": 4,
   "inventoryIcon" : "honeyhammer.png",
-
+  "collectablesOnPickup" : { "fu_weaponhammer" : "fuhoneyhammer" },
   "animation" : "hammer.animation",
   "animationParts" : {
     "handle" : "",
@@ -79,5 +79,7 @@
   "altAbility" : { },
   "critChance" : 5,
   "critBonus" : 1,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 7
 }

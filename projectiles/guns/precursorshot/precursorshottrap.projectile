@@ -1,0 +1,49 @@
+{
+  "projectileName" : "precursorshottrap",
+  "image" : "precursorshot2.png",
+  "animationCycle" : 1,
+  "physics" : "rocket",
+  "piercing" : false,
+  "level" : 1,
+  "frameNumber" : 6,
+  "speed" : 60,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "timeToLive" : 1.75,
+   "lightColor" : [232, 197, 6],
+   "emitters" : ["defaultyellow"],
+   "fullbright" : true,
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/precursorexplosion/precursorexplosionsmall3.config"
+    },  
+    {
+      "action" : "projectile",
+      "type" : "pollenburst2",
+      "fuzzAngle" : 0,
+      "config" : { "timeToLive" : 1.5 },
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 0
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "ffteslasmall3",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   }
+  ],  
+  "damageKind" : "radioactive",
+  "scripts" : ["/scripts/projectiles/zigzagprojectile.lua"],
+  "scriptDelta" : 1,
+
+  "zigZagTime" : 0.1,
+  "zigZagAngle" : 0.1,
+
+  "persistentAudio" : "/sfx/projectiles/raygun_wobble_loop.ogg"  
+}

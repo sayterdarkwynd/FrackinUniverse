@@ -1,0 +1,44 @@
+{
+  "itemName" : "aetheriumkatana",
+  "price" : 4500,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "There isn't any katana that can top this.",
+  "shortdescription" : "Aetherium Katana",
+  "tooltipKind" : "sword2",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "aetheriumkatana.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "aetheriumkatana" },
+  "animation" : "combokatanaglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aetheriumkatana.png",
+    "bladefullbright" : "aetheriumkatanafullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "katanacombo",
+  "primaryAbility":{
+    "fireTime":0.72, 
+    "baseDps":8.0, 
+    "damageConfig":{
+      "knockback":20,
+      "damageSourceKind" : "cosmic"
+      }, 
+      "comboSteps":10   
+    }, 
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

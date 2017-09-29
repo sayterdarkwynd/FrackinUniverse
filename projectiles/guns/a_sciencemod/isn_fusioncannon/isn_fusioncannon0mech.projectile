@@ -1,0 +1,91 @@
+{
+  "projectileName" : "isn_fusioncannon0mech",
+  "image" : "isn_fusioncannon_shot.png",
+  "physics" : "illusion",
+  "animationCycle" : 0.5,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 6,
+  "power" : 1,
+  "level" : 6,
+  "speed" : 0,
+  "fullbright" : true,
+  "timeToLive" : 0.5,
+  "bounces" : 0,
+  "piercing" : false,
+  "fallSpeed" : 0,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [0, 140, 255],
+  "damageKind" : "electric",
+  "emitters" : [ "electricplasmapurple", "electricplasma","lightningthrowertrail" ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "isn_fusioncannonmech",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 0
+    }
+  ],
+    "periodicActions":[
+    {
+      "time" : 0,
+      "loop" : true, 
+      "action" : "projectile",
+      "type" : "fusionmining",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0,
+      
+      "projectileParameters" : { 
+        "speed" : 61, 
+        "timeToLive" : 0.2
+        }
+    },    
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/plasmaexplosion2.ogg" ]
+    },    
+    {
+      "time" : 0.2,
+      "loop" : true,
+      "action" : "sound",
+      "options" : [ "/sfx/gun/lightningcoil1.ogg" ]
+    },
+    {
+      "time" : 0.5,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/annihbeam.wav" ]
+    },   
+	    {
+	      "time" : 0.05,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "isn_fusion_cloud",
+	      "inheritDamageFactor" :0.05,
+	      "config" : { "timeToLive" : 0.5, "speed" : 5 },
+	      "fuzzAngle" : 360,
+	      "renderLayer" : "Projectile-10",
+	      "projectileParameters" : { 
+	      "damageSourceKind" : "electric", 
+	      "statusEffects" : [ "electrified" ]
+	      }
+	   },    
+	    {
+	      "time" : 0,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "electricorb",
+	      "inheritDamageFactor" :0.15,
+	      "config" : { "timeToLive" : 0.5 },
+	      "fuzzAngle" : 360,
+	      "renderLayer" : "Projectile-10",
+	      "projectileParameters" : { 
+	        "damageSourceKind" : "electric", 
+	        "statusEffects" : [ "electrified" ]        
+	      }
+	   }
+    ]  
+}

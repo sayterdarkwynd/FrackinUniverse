@@ -1,0 +1,39 @@
+{
+  "type" : "fuhobo",
+  "baseType" : "hostilefu",
+  "npcname" : "Greg",
+  "levelVariance" : [0, 1],
+
+  "dropPools" : [ "fusoulleafHarvest" ],
+  
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : "/dialog/greg.config:attack",
+      "reattack" : "/dialog/greg.config:reattack",
+      "killedTarget" : "/dialog/greg.config:killedTarget",
+      "lostTarget" : "/dialog/greg.config:lostTarget",
+      "outOfSight" : "/dialog/greg.config:outOfSight",
+      "cheerOn" : "/dialog/greg.config:cheerOn",
+      "cantReach" : "/dialog/greg.config:cantReach"      
+    }
+  },  
+  
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "uncathat" } ],
+            "chest" : [ { "name" : "hoodiechest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "jeans2legs", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [ "advalloydagger" ]
+          },
+          {
+            "head" : [ { "name" : "uncathat" } ],
+            "chest" : [ { "name" : "hoodiechest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "jeans2legs", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [ "kineticrifle" ]
+          }          
+        ] ]
+    ]
+  }
+}   

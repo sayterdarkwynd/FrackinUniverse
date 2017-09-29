@@ -1,0 +1,43 @@
+{
+  "particleEmitters" : {
+    "smoke" : {
+      "active" : true,
+      "emissionRate" : 40,
+      "transformationGroups" : ["smoke"],
+      "particles" : [ 
+        { "particle" : "blurshadowradiallarge" } 
+      ]
+    },
+    "statustext" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "Shadow Tainted",
+            "size" : 1.0,
+            "color" : [66, 0, 66, 205],
+            "fade" : 1,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 0],
+            "timeToLive" : 1,
+            "variance" : {}
+          }
+        }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
+  },
+
+
+  "sounds" : {
+    "burn" : [ "/sfx/melee/astraltear1.ogg" ]
+  }
+}

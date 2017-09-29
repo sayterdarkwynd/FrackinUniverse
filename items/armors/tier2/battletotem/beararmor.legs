@@ -5,17 +5,18 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Immune to slush. Set Bonus:
-^cyan;+7.5 to 22.5% Crit Chance with Hammers/Axes^reset;
-^green;Immune: Cold, Ice status effects.^reset;",
+^cyan;+5.5 Crit Chance, +15% Dmg with 2-handed melee and axes^reset;
+^green;+15% Ice Resistance, Ice status effects.",
   "shortdescription" : "Battle Totem Greaves",
   "learnBlueprintsOnPickup" : [ "fubearlegs2" ],
-  "category" : "^#e43774;Upgradeable Armor^reset;",
+  "category" : "t2armoru",
   "tooltipKind" : "armor",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
+  "collectablesOnPickup" : { "fu_armortank" : "fubearlegs" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -44,7 +45,8 @@
     {
       "stat" : "fu_bearset_legs",
       "amount" : 1
-    }
+    },
+    { "stat" : "iceResistance", "amount" : 0.05}
   ],
 
   "colorOptions" : [

@@ -1,0 +1,85 @@
+{
+  "itemName" : "aetheriumdisc",
+  "price" : 13000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "category" : "chakram",
+  "description" : "Slice em up with cosmic power.",
+  "shortdescription" : "Aether Disc",
+  "tooltipKind" : "chakram",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","chakram", "upgradeableWeapon"],
+  "collectablesOnPickup" : { "fu_weaponchakram" : "aetheriumdisc" },
+  "inventoryIcon" : "aetheriumdisc.png",
+  "animation" : "chakramglow.animation",
+  "animationParts" : {
+    "chakram" : "aetheriumdisc.png",
+    "chakramfullbright" : "aetheriumdiscfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "critChance" : 6,
+  "critBonus" : 5, 
+  
+  "projectileType" : "aetheriumdisc",
+  "projectileParameters" : {
+    "knockback" : 12,
+    "power" : 7,
+    "damageRepeatTimeout" : 0.05,
+    "damageConfig" : { "damageSourceKind" : "cosmic" },
+    "returnOnHit" : true,
+    "pickupDistance" : 1.0,
+
+    "hoverMaxDistance" : 90,
+    "maxDistance" : 90,
+    "hoverTime" : 0.5
+  },
+  "level" : 7,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  }, 
+  "builder" : "/items/buildscripts/buildchakram.lua"
+}

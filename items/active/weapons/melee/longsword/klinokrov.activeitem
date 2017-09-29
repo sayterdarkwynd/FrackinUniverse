@@ -1,0 +1,48 @@
+{
+  "itemName" : "klinokrov",
+  "price" : 11600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Blade of a fallen legend.
+^cyan;Inflicts Shadow Gas^reset;",
+  "shortdescription" : "Klinokrov",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword","upgradeableWeapon"],
+  "inventoryIcon" : "klinokrov.png",
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "klinokrov" },
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "klinokrov.png",
+    "bladefullbright" : "klinokrovfullbright.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 1.4,
+    "baseDps" : 11,
+    "damageConfig" : {
+      "damageSourceKind": "shadowbroadsword",
+      "statusEffects" : [ "shadowgasfx" ]
+    }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 12,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,91 @@
+{
+  "itemName" : "fualienlaser",
+  "price" : 160,
+  "inventoryIcon" : "alienlaser.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "An alien laser blaster, very colourful.",
+  "shortdescription" : "Alien Laser",
+  "category" : "pistol",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy"],
+  "twoHanded" : false,
+  "weaponType" : "Disruptor",
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "alienlaser.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3pink.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/plasma_sniper2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.2, 0.35],
+  "muzzleOffset" : [1.6,0.45],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.7,
+    "baseDps" : 5,
+    "energyUsage" : 22,
+    "inaccuracy" : 0.005,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "alienblast",
+    "projectileParameters" : {
+      "speed" : 75,
+      "damageSourceKind" : "electric",
+      "statusEffects" : [ "electrified" ]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.2, 0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "weaponOffset" : [-0.5, 0],
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "weaponOffset" : [-0.5, 0],
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 10,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,104 @@
+{
+  "itemName" : "bigdaddy",
+  "price" : 760,
+  "inventoryIcon" : "bigdaddy.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A massive energy sniper rifle. Big impact.
+^yellow;AoE Primary^reset;",
+  "shortdescription" : "Instigator",
+  "category" : "sniperRifle",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "bigdaddy.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/bulletmuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/explosion-large01.ogg" ]
+    }
+  },
+
+  "animationScripts" : [
+    "/items/active/effects/laserbeam.lua"
+  ],
+  "scriptedAnimationParameters" : {
+    "beams" : [
+      {
+        "offset" : [1.8, 1.1],
+        "color" : [0, 255, 0, 128],
+        "length" : 60,
+        "segments" : 6,
+        "angle" : 0
+      }
+    ]
+  },
+  
+  "baseOffset" : [2.5, 0.3],
+  "muzzleOffset" : [2.445, 0.325],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+  
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 3,
+    "baseDps" : 8.0,
+    "energyUsage" : 50.0,
+    "recoilForce" : 20,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileType" : "extrasmissile2",
+    "projectileParameters" : { 
+      "speed" : 92,
+      "knockback" : 12.5,
+      "statusEffects" : [ "burning" ],
+      "damageSourceKind" : "fire"
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "critChance" : 8,
+  "critBonus" : 12,
+  "altAbilityType" : "swtjc_ewg_repelgrenades",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

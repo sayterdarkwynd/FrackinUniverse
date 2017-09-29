@@ -1,20 +1,37 @@
 function init()
-	params=mcontroller.baseParameters()
-	effect.addStatModifierGroup({{stat = "asteroidImmunity", amount = 1}})
-	self.movementParams = mcontroller.baseParameters()
-	script.setUpdateDelta(5)
+  effect.addStatModifierGroup({ {stat = "asteroidImmunity", amount = 1} })
+  self.liquidMovementParameter = {
+    gravityEnabled = true,
+    gravity = 90,
+    gravityMultiplier = 1.5,
+    airForce = 20.0,
+    airFriction = 0.0,
+    bounceFactor = 0.0,
+    groundForce = 100.0,
+    normalGroundFriction = 14.0,
+    ambulatingGroundFriction = 1.0,
+    collisionEnabled = true,
+    frictionEnabled = true,
+    
+  groundMovementMinimumSustain= 0.1,
+  groundMovementMaximumSustain= 0.25,
+  groundMovementCheckDistance=0.75    
+    
+  } 	
+  script.setUpdateDelta(5)
 end
 
 function update(dt)
-	if params.collisionEnabled then
-		--local magic=-102.4*dt
-		local magic=-102.4*dt
-		if params.gravityEnabled then
-			mcontroller.addMomentum({0,magic})
-		else
-			mcontroller.addMomentum({0,magic*0.2})
-		end
-	end
-	local temp=(effect.duration()-math.floor(effect.duration()))
-	if  temp < 2/3 and temp > 0 then effect.expire() end
+	    if mcontroller.zeroG() then
+		--mcontroller.setYVelocity(math.min(-2,mcontroller.yVelocity() - 1));
+		mcontroller.addMomentum({0, -1*dt})
+		mcontroller.controlParameters(self.liquidMovementParameter)
+            elseif not mcontroller.onGround() then
+                mcontroller.controlParameters(self.liquidMovementParameter)
+	    end	
+end
+
+function uninit()
+  status.removeEphemeralEffect("gravgenfield")
+  status.removeEphemeralEffect("gravgenfieldarmor")
 end

@@ -7,6 +7,7 @@
   "category" : "decorative",
   "price" : 750,
   "printable" : false,
+  "objectType" : "container",
   "learnBlueprintsOnPickup" : [ "fu_liquidcondenser" ],
   "inventoryIcon" : "liquidpumpwellicon.png",
   "orientations" : [
@@ -23,6 +24,15 @@
     }
   ],
     "outputNodes" : [ [2, 1] ],
-  "scripts" : [ "liquidpumpwell.lua" ],
-  "scriptDelta" : 10
+  "scripts" : [ "/scripts/well.lua" ],
+  "scriptDelta" : 10,
+  "slotCount" : 3,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "liquidwater","ratio" : 1,"max" : 1000},
+	{"name" : "methanol","amount" : 5,"chance" : 0.02,"count" : 50},
+	{"name" : "algaegreen","amount" : 5,"chance" : 0.16,"count" : 50}
+  ]
 }

@@ -1,0 +1,42 @@
+{
+  "itemName" : "ironkatana",
+  "price" : 200,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Well crafted, but heavy.",
+  "shortdescription" : "Iron Katana",
+  "tooltipKind" : "sword",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "ironkatana.png",
+  "collectablesOnPickup" : { "fu_weaponkatana" : "ironkatana" },
+  "animation" : "combokatana.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ironkatana.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "katanacombo",
+  "primaryAbility":{
+    "fireTime":0.75, 
+    "baseDps":6.5, 
+    "damageConfig":{
+      "knockback":20 
+      }, 
+      "comboSteps":3
+    }, 
+
+  "critChance" : 1,
+  "critBonus" : 6,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

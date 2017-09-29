@@ -1,0 +1,37 @@
+{
+  "itemName" : "aegisaltmace",
+  "price" : 600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A dense slab of whackin' fun",
+  "shortdescription" : "Aegisalt Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "aegisaltmace.png",
+  "collectablesOnPickup" : { "fu_weaponmace" : "aegisaltmace" },
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aegisaltmace.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1.2, 
+    "baseDps":7.2
+  },
+  "critChance" : 1,
+  "critBonus" : 8,
+  "stunChance" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

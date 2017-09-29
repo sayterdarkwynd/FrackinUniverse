@@ -1,0 +1,44 @@
+{
+  "projectileName" : "firebouncer2",
+  "physics" : "laser",
+  "timeToLive" : 5,
+  "image" : "firebouncer.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [120, 60, 30],
+  "frameNumber" : 4,
+
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/fireball_spit.ogg" ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "fireshard"
+        }
+      ]
+    }
+  ],
+  "speed" : 50,
+  "power" : 1,
+  "piercing" : true,
+  "damageKind" : "fire",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "burning" ],
+
+  "fullbright" : true,
+  "emitters" : [ "fireplasma" ],
+
+  "bounces" : 0,
+  "scripts" : []
+}

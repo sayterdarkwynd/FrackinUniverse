@@ -33,7 +33,7 @@
     }},
     "sounds" : {
       "fire" : [ "/sfx/weapons/hvmarauder1.wav" ]
-    }
+    }       
   },
   "baseOffset" : [1.0, 0.35],
   "muzzleOffset" : [1.5, 0.125],
@@ -46,8 +46,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.13,
-    "baseDps" : 9.6,
+    "fireTime" : 0.15,
+    "baseDps" : 9.25,
     "energyUsage" : 25,
     "inaccuracy" : 0.008,
     "fireType" : "auto",
@@ -72,17 +72,17 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
         "twoHanded" : true,
 
         "allowRotate" : false,
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "duration" : 0.08,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -93,7 +93,14 @@
   "critChance" : 4,
   "critBonus" : 6,
   "altAbilityType" : "shrapnelshard",
-  "altAbility" : { "name" : "Static Shocks" },
+  "altAbility" : { 
+    "name" : "Static Shocks",
+    "projectileType" : "electricguardianbullet",
+    "baseDps" : 3,
+    "protectileParameters" : {
+          
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

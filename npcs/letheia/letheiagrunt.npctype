@@ -1,0 +1,52 @@
+{
+  "type" : "letheiagrunt",
+  "baseType" : "hostile",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Halt! Who are you?",
+			"This is a restricted zone!",
+            "Only employees of Letheia Corp allowed here!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "humantier1head" } ],
+            "chest" : [ { "name" : "voyagerchest", "parameters" : { "colorIndex" : [4] } } ],
+            "legs" : [ { "name" : "voyagerlegs", "parameters" : { "colorIndex" : [4] } } ],
+            "primary" : [
+              "rarepistol", "raremachinepistol", "rareassaultrifle"
+            ],
+			"alt" : [
+              "riotshield"
+            ]
+          }
+        ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {
+
+    "stats" : {
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+      "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

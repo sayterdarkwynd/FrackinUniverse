@@ -1,6 +1,6 @@
 {
   "itemName" : "fuboneclaws",
-  "price" : 1000,
+  "price" : 20,
   "level" : 1,
   "maxStack" : 1,
   "rarity" : "common",
@@ -10,7 +10,7 @@
   "category" : "fistWeapon",
   "twoHanded" : false,
   "itemTags" : ["weapon","fist", "upgradeableWeapon"],
-
+  "collectablesOnPickup" : { "fu_weaponfist" : "fuboneclaws" },
   "inventoryIcon" : "boneclaws.png:front",
   "animation" : "fistweapon.animation",
   "animationParts" : {
@@ -30,10 +30,10 @@
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.1,
 
-  "comboSteps" : 3,
-  "comboTiming" : [0.2, 0.5],
+  "comboSteps" : 4,
+  "comboTiming" : [0.1, 0.5],
   "comboCooldown" : 0.2,
-  "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/dashslash.combofinisher",
+  "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/backdash.combofinisher",
 
   "freezeLimit" : 2,
 
@@ -42,8 +42,8 @@
     "class" : "Punch",
 
     "freezeTime" : 0.13,
-    "fireTime" : 0.2,
-    "baseDps" : 6.0,
+    "fireTime" : 0.22,
+    "baseDps" : 8.0,
     "damageConfig" : {
       "statusEffects" : [ ],
       "damageSourceKind" : "dagger",
@@ -58,7 +58,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.25, -0.575],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : true,
 
         "frontArmFrame" : "run.2",
@@ -71,7 +71,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.625, -0.125],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "swimIdle.1",
@@ -84,7 +84,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.75, -0.125],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "swimIdle.1",
@@ -99,7 +99,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [0.125, -0.25],
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false,
 
         "frontArmFrame" : "rotation",
@@ -109,5 +109,6 @@
   },
   "critChance" : 2,
   "critBonus" : 2, 
+  "fistBonus" : 3,
   "builder" : "/items/buildscripts/buildfist.lua"
 }

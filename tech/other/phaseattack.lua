@@ -6,8 +6,8 @@ end
 
 function initCommonParameters()
   self.energyCost = config.getParameter("energyCost")
-  self.deactiveDelayMax = 0.3
-  self.deactiveDelay = 0
+  self.deactiveDelayMax = 0.6
+  self.deactiveDelay = 1
   self.deactiveReady = false
 end
 
@@ -16,10 +16,10 @@ function uninit()
 end
 
 function update(args)
-  if not self.specialLast and args.moves["special"] == 1 then
+  if not self.specialLast and args.moves["special1"] then
     attemptActivation()
   end
-  self.specialLast = args.moves["special"] == 1
+  self.specialLast = args.moves["special1"]
 
   if args.moves["primaryFire"] or args.moves["altFire"] then
     self.deactiveReady = true

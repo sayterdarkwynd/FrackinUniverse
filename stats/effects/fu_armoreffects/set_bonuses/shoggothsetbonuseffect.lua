@@ -19,6 +19,7 @@ armorBonus={
 		{stat = "protoImmunity", amount = 1},
 		{stat = "shadowImmunity", amount = 1},
 		{stat = "pressureImmunity", amount = 1},
+		{stat = "darknessImmunity", amount = 1},
 		{stat = "radiationburnImmunity", amount = 1}
 	}
 

@@ -1,0 +1,79 @@
+{
+  "itemName" : "curvedagger",
+  "price" : 1200,
+  "maxStack" : 1,
+  "level" : 4,
+  "rarity" : "rare",
+  "description" : "Charged plasma-laced dagger. Handy, that.
+^cyan;Inflicts Burning^reset;",
+  "shortdescription" : "Breach Knife",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "weaponType" : "Plasma",
+  "itemTags" : ["weapon","melee","dagger","plasma", "upgradeableWeapon"],
+  "inventoryIcon" : "curvedagger_sacre.png",
+  "animation" : "daggerglow.animation",
+  "animationParts" : {
+    "blade" : "curvedagger_sacre.png",
+    "bladefullbright" : "curvedaggerfullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [0.0, 0]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+    "fireTime" : 0.45,
+    "baseDps" : 5.5,
+    "damageConfig" : {
+      "damageSourceKind" : "electric",
+      "knockback" : 10,
+       "statusEffects" : [ "burning" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.1, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -20,
+        "weaponRotation" : -20,
+        "weaponOffset" : [0.1, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0.1, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      }
+    }
+  },
+  "critChance" : 3, 
+  "critBonus" : 3, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

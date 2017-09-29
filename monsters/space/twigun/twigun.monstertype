@@ -25,11 +25,11 @@
 
       "hurtWaitForGround" : false,
 
-      "targetQueryRange" : 50,
+      "targetQueryRange" : 100,//was 50
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 200,
-      "targetOutOfSightTime" : 5.0,
+      "targetOutOfSightTime" : 3.0,
 
       "spawnActions" : [
         {
@@ -62,10 +62,11 @@
 
             "projectileCount" : 4,
             "projectileInterval" : 0.05,
+            "inaccuracy" : 0.035,
             "projectileType" : "twigunbullet",
             "projectileParameters" : {
-              "speed" : 40,
-              "power" : 10
+              "speed" : 42,
+              "power" : 14
             },
             "fireOffsets" : [[1.5, 0.625], [1.5, -0.625]],
             "rotationCenter" : [0.0, 0.75],
@@ -147,7 +148,7 @@
 
     "touchDamage" : {
       "poly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
-      "damage" : 20,
+      "damage" : 14,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -186,8 +187,8 @@
     "deathParticles" : "deathPoof",
     "knockoutEffect" : "",
 
-    "healthLevelFunction" : "spaceMonsterLevelHealthMultiplier",
-    "powerLevelFunction" : "spaceMonsterLevelPowerMultiplier",
+    "healthLevelFunction" : "monsterLevelHealthMultiplier",
+    "powerLevelFunction" : "monsterLevelPowerMultiplier",
 
     "statusSettings" : {
       "statusProperties" : {
@@ -214,7 +215,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 125
+          "baseValue" : 110
         },
         "protection" : {
           "baseValue" : 0.0
@@ -227,6 +228,30 @@
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.15
+        },
+        "poisonResistance" : {
+          "baseValue" : 0
+        },
+        "electricResistance" : {
+          "baseValue" : -0.35
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0
+        },
+        "shadowResistance" : {
+          "baseValue" : 1
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 1
         }
       },
 

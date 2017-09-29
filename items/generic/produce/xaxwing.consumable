@@ -4,15 +4,19 @@
   "price" : 5,
   "inventoryIcon" : "xaxwing.png",
   "description" : "Effect:
-^cyan;Levitation^reset;",
+^cyan;Levitation 60s^reset;
+^green;Immunity to Grav Rain for 300s^reset;",
   "shortdescription" : "Xax Wing",
   "category" : "food",
 
       "effects" : [ [
       {
+        "effect" : "gravrainimmunity",
+        "duration" : 300
+      },      
+      {
         "effect" : "levitation",
         "duration" : 60
-      },
-      "helium3Immunity"
+      }
     ] ]
 }

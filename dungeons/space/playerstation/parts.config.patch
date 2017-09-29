@@ -17,9 +17,9 @@
 			
 			"input" : [
 				["titaniumbar", 50],
-				["goldbar", 70],
-				["silverbar", 120],
-				["wire", 200]
+				["glass", 50],
+				["ff_plastic", 120],
+				["wire", 50]
 			]
 		}
 	},
@@ -43,9 +43,9 @@
 			
 			"input" : [
 				["titaniumbar", 75],
-				["goldbar", 100],
-				["silverbar", 125],
-				["wire", 200]
+				["glass", 100],
+				["ff_plastic", 155],
+				["wire", 100]
 			]
 		}
 	},
@@ -63,14 +63,38 @@
 			
 			"icon" : "/dungeons/space/playerstation/solarhall1.png",
 			"displayName" : "Solar Hall Tier 1",
+			"description" : "A hallway with solar panels on top.",
+			
+			"input" : [
+				["titaniumbar", 40],
+				["ff_plastic", 50],
+				["silverbar", 60],
+				["wire", 110],
+				["isn_solarpanel", 3]
+			]
+		}
+	},
+	{"op":"add", "path" : "/parts/solarhall2", "value":
+		{
+			"placeable" : true,
+			"dungeon" : "playerstation-solarhall2",
+			"tiles" : [
+				[0, 0]
+			],
+			"anchors" : [
+				[[1, 0], [0, 0]],
+				[[-1, 0], [0, 0]]
+			],
+			
+			"icon" : "/dungeons/space/playerstation/solarhall2.png",
+			"displayName" : "Solar Hall Tier 2",
 			"description" : "A hallway with solar arrays on top.",
 			
 			"input" : [
 				["titaniumbar", 40],
-				["goldbar", 50],
+				["ff_plastic", 50],
 				["silverbar", 60],
 				["wire", 110],
-				["isn_battery_t1", 1],
 				["fu_solararray", 3]
 			]
 		}
@@ -94,10 +118,36 @@
 			
 			"input" : [
 				["titaniumbar", 40],
-				["goldbar", 50],
+				["ff_plastic", 50],
 				["silverbar", 60],
 				["wire", 100],
 				["glass", 80]
+			]
+		}
+	},
+	{"op":"add", "path" : "/parts/greenhouselarge", "value":
+		{
+			"placeable" : true,
+			"dungeon" : "playerstation-greenhouselarge",
+			"tiles" : [
+				[0, 0],[1, 0],[0, 1],[1, 1]
+			],
+			"anchors" : [
+				[[1, 0], [1, 0]],
+				[[-1, 0], [0, 0]],
+				[[0, -1], [0, 0]]
+			],
+			
+			"icon" : "/dungeons/space/playerstation/greenhouselarge.png",
+			"displayName" : "Large Greenhouse",
+			"description" : "A large greenhouse.",
+			
+			"input" : [
+				["titaniumbar", 100],
+				["ff_plastic", 110],
+				["silverbar", 130],
+				["wire", 200],
+				["glass", 160]
 			]
 		}
 	}

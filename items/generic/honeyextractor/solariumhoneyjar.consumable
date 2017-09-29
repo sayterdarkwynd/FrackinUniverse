@@ -4,7 +4,18 @@
   "category" : "fuel",
   "price" : 60,
   "inventoryIcon" : "solariumhoneyjar.png",
-  "description" : "FUEL! DO NOT EAT!",
-  "shortdescription" : "Solarium Honey Jar",
-  "fuelAmount" : 20
+  "description" : "Top-shelf stuff. All resists gain +30% for 1 minute. Can fuel ships.",
+  "shortdescription" : "Quasar Honey Jar",
+  "fuelAmount" : 20,
+  
+  "effects" : [ [
+    "furesistall",
+    {
+        "effect" : "fedhoney",
+        "duration" : 60
+    }
+  ] ],
+  "blockingEffects" : [
+    "fedhoney"
+  ]
  }

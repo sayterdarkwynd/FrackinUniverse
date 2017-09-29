@@ -1,0 +1,275 @@
+{
+  "type" : "crewmemberLoveliusSmythe",
+  "baseType" : "base",
+  "npcname" : "Lovelius Smythe",
+  "dropPools" : [ "villagertreasure" ],
+
+  "damageTeamType" : "friendly",
+
+  // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -1 }, {"stat" : "powerMultiplier", "amount" : -0.10} ], 
+
+  "persistent" : true,
+
+"defenseAmount" : 25,
+
+  "scriptConfig" : {
+    "behavior" : "crewmember",
+    "behaviorConfig" : {
+      "emptyHands" : false,
+
+      // Wander behavior config
+      "wanderTime" : 1,
+      "idleTime" : 10,
+      "outerHomeRange" : 20,
+      "innerHomeRange" : 15,
+
+      "hostileDamageTeam" : {"type" : "friendly", "team" : 1}
+    },
+
+    "crew" : {
+      "recruitable" : true,
+
+      "recruitInteractAction" : {
+        "messageType" : "recruits.offerRecruit",
+        "messageArgs" : []
+      },
+
+      "powerMultiplierExponent" : 1.0,
+
+        
+      "role" : {
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "defense4",
+            "duration" : 300
+          },         
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "insanityimmunity",
+            "duration" : 300
+          },  
+	    {
+	      "type": "ShipUpgradeBenefit",
+	      "property": "maxFuel",
+	      "value": 450
+	    } 
+        ],
+        "type" : "chemist",
+        "name" : "Occult Scholar",
+        "field" : "Investigation",
+        "uniformColorIndex" : 3
+      },
+
+      "ranks" : [
+        "Second-to-Last <role>",
+        "3rd Technical Assistant <field> Officer",
+        "Assistant Deputy <role> Guy/Gal",
+        "Trainee Apprentice <role>",
+        "Temporary Relief <role>",
+        "3rd Rear Lieutenant <role>",
+        "64th Commodore <role>",
+        "Standing <field> Officer",
+        "Sitting <field> Officer",
+        "Executive Coffee-Making <role>",
+        "Command Master Chief Petty <field> Officer",
+        "Independent <field> Auditor",
+        "Dependant <field> Auditor",
+        "Dreadnought <field> Officer",
+        "Trainee <field> Mastermind",
+        "Head of Petty <field> Arguments",
+        "Backup <role>",
+        "Reliable <field> Lacky",
+        "Theoretical <field> Advisor",
+        "Reliable <field> Lackey",
+        "Head of <field> operations",
+        "Wild Card <role>",
+        "Head of <field> Relations",
+        "Last-Minute <role>",
+        "Expert in <field> Diplomacy",
+        "<field> Innovation Manager",
+        "Loose Cannon <role>",
+        "Regional <field> Director",
+        "Private <field> Investigator",
+        "Temporal <field> Surveyor",
+        "Radical <field> Innovator",
+        "Independent Head of <field> Operations",
+        "Just your average <role>",
+        "Hobbyist <role>",
+        "Master of <field> Matters",
+        "Alternative <field> Advisory Representative",
+        "Runner-Up <field> Officer",
+        "Emergency <field> Officer",
+        "First Mate's Second-Cousin's Third <role>",
+        "Unpaid <field> Intern",
+        "<field> Student",
+        "<field> Forum Moderator",
+        "Rogue <field> Profiteer",
+        "Neutral Third Party <role>",
+        "Low Quality <field> Negotiations",
+        "Armchair <field> Expert"
+      ],
+
+
+      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"],
+      "defaultUniform" : {
+        "head" : "randolphcarterhat",
+        "chest" : "smartchest",
+        "legs" : "smartpants"
+      }      
+    },
+
+    "questGenerator" : {
+      "enableParticipation" : false
+    },
+
+    "dialog" : {
+          "crewmember" : {         
+            "offer" : {
+              "default" : {
+                "default" : [
+              "I'M FREE! AT LONG LAST! Sire, I would travel with you as thanks!",
+              "Glorious, wonderful oxygen. Do yourself a favor: Don't be friends with Avians. That sucked ass. I'll follow you now, if you'll have me.",
+              "Let us unravel secrets together, now that you've so graciously freed me."       
+                ]
+              }
+            },
+            "roleDescription" : {
+              "default" : {
+                "default" : [
+              "I can shield you from damage, and from madness!",
+              "You need not fear insanity if I'm around, sir!",
+              "I can ward you against foul madness-inducing things!" 
+                ]
+              }
+            },
+            "respawned" : {
+              "default" : {
+                "default" : [
+              "I'm back? Again? What madness is this?",
+              "I am positive I just died. Did I?",
+              "I'm back! And alive!",
+              "I'm back and in one piece!",
+              "I'm alive again! That's good.",
+              "I don't think I respawned properly...",
+              "My head hurts.",
+              "What was I doing just before I died?" 
+                ]
+              }
+            },
+            "combatBenefit" : {
+              "default" : {
+                "default" : [
+    		"To battle!",
+    		"Let us vanquish these cursed foes!",
+    		"Like a squallid hellhound, I engage Beast Mode!"
+                ]
+              }
+            },
+            "unfollow" : {
+              "default" : {
+                "default" : [
+              "I'll just wait here.",
+              "I'll stay here. Come back when you need me, captain!",
+              "I'll stay here for now, captain.",
+              "Do you need me to stay here?",
+              "I'll stay here for now, then.",
+              "I'll stay here."	
+                ]
+              }
+            },
+            "follow" : {
+              "default" : {
+                "default" : [
+              "Yes, captain!",
+              "Good idea sir!",
+              "Let's get going!",
+              "Let's go, captain!",
+              "Are we going somewhere?"
+                ]
+              }
+            },
+            "cantreach" : {
+              "default" : {
+                "default" : [
+              "I can't reach you!",
+              "You're too far!",
+              "Hey, wait up!",
+              "Don't go too far!",
+              "Let me catch up!"
+                ]
+              }
+            }
+          },
+    
+          "tenant" : {
+            "grumbles" : {
+              "tagCriteria" : "/dialog/greg.config:tagCriteria",
+              "enclosedArea" : "/dialog/greg.config:enclosedArea",
+              "otherDeed" : "/dialog/greg.config:otherDeed",
+              "severe" : "/dialog/greg.config:severe",
+              "final" : "/dialog/greg.config:final"
+            },
+            "arrivedHome" : {
+              "beacon" : "/dialog/greg.config:beacon",
+              "rent" : "/dialog/greg.config:rent"
+            }
+          },
+    
+          "converse" : "/dialog/greg.config:converse",
+    
+          "attack" : "/dialog/greg.config:attack",
+          "reattack" : "/dialog/greg.config:reattack",
+          "killedTarget" : "/dialog/greg.config:killedTarget",
+          "lostTarget" : "/dialog/greg.config:lostTarget",
+          "outOfSight" : "/dialog/greg.config:outOfSight",
+          "cheerOn" : "/dialog/greg.config:cheerOn",
+          "cantReach" : "/dialog/greg.config:cantReach"
+    }    
+  },
+
+  "movementParameters" : {
+    "runSpeed" : 20.0
+  },
+
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "durasteelrevolver" ],
+            "secondary" : [ "fuflashlight" ]
+          }
+        ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "hitInvulnerability" : true,
+      "hitInvulnerabilityThreshold" : 0.0333,
+      "hitInvulnerabilityTime" : 1,
+      "hitInvulnerabilityFlash" : 0.15,
+      "damageFlashOnDirectives" : "",
+      "damageFlashOffDirectives" : ""
+    },
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 220.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.32
+      },
+      "healthRegen" : {
+        "baseValue" : 2.0
+      },
+      "beestingImmunity" : {
+        "baseValue" : 1.0
+      }
+    }
+  }
+}

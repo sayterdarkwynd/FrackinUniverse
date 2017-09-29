@@ -4,12 +4,14 @@
   "price" : 500,
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "This creation fires controlled shadow threads. Weird.",
+  "description" : "This creation fires controlled shadow threads. Weird.
+^cyan;Debilitating debuffs^reset;
+^green;Dooms enemies^reset;",
   "shortdescription" : "Shadow Lurch",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "uniqueWeapon",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","livingweapon","assaultrifle"],
+  "itemTags" : ["weapon","ranged","livingweapon","assaultrifle","upgradeableWeapon"],
 
   "inventoryIcon" : "shadowtentaclegun.png",
 
@@ -43,13 +45,13 @@
       "taper" : 0.3,
       "segmentImage" : "/items/active/weapons/other/tentaclegun/shadowsegment.png",
       "endSegmentImage" : "/items/active/weapons/other/tentaclegun/shadowend.png",
-      "segmentSize" : 1.0
+      "segmentSize" : 0.6
     },
 
     "guideProjectiles" : true,
     "maxLength" : 2,
 
-    "baseDps" : 7.5,
+    "baseDps" : 10.5,
     "fireTime" : 0.25,
     "maxProjectiles" : 20,
     "energyUsage" : 40,
@@ -59,8 +61,20 @@
     "projectileParameters" : {
       "knockback" : 12,
       "speed" : 60,
-      "timeToLive" : 1,
-      "damageSourceKind" : "shadow"
+      "timeToLive" : 0.5,
+      "damageSourceKind" : "shadow",
+      "statusEffects" : [ "shadowgasfx", "blacktarslow" ],
+      "actionOnReap" : [
+
+	    {
+	      "action" : "projectile",
+	      "type" : "fungravityexplosion",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :0, "timeToLive" : 1},
+	      "angleAdjust" : 0
+	    }
+      ]
     }
   },
 
@@ -77,9 +91,9 @@
 
     "guideProjectiles" : false,
 
-    "baseDps" : 7.5,
+    "baseDps" : 15.5,
 
-    "fireTime" : 2.0,
+    "fireTime" : 3.0,
     "maxProjectiles" : 20,
     "energyUsage" : 50,
     "inaccuracy" : 3.14,
@@ -94,10 +108,72 @@
       "knockbackDirectional" : true,
       "speed" : 30,
       "ignoreTerrain" : false,
-      "bounces" : 6,
-      "timeToLive" : 10,
+      "bounces" : 2,
+      "timeToLive" : 2,
       "minVelocity" : 20,
-      "damageSourceKind" : "shadow"
+      "damageSourceKind" : "shadow",
+      "periodicActions" : [
+	    {
+	      "time" : 0.1,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "time" : 0.5,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "time" : 0.9,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "time" : 1.3,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "time" : 1.7,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    } 	    
+      ],      
+      "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :0, "timeToLive" : 1},
+	      "angleAdjust" : 0
+	    }      
+      ]
     }
   },
 

@@ -110,8 +110,8 @@
     "movementSettings" : {
       "collisionPoly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
       "mass" : 7,
-      "walkSpeed" : 3,
-      "runSpeed" : 4,
+      "walkSpeed" : 5,
+      "runSpeed" : 9,
       "jumpSpeed" : 0,
       "airforce" : 0
     },
@@ -145,7 +145,7 @@
 
     "touchDamage" : {
       "poly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-      "damage" : 24,
+      "damage" : 32,
 
       "teamType" : "enemy",
       "damageSourceKind" : "cosmic",
@@ -185,6 +185,12 @@
         "fireStatusImmunity" : {
           "baseValue" : 1.0
         },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },      
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
         "insanityImmunity" : {
           "baseValue" : 1.0
         },
@@ -199,13 +205,7 @@
         },         
         "shadowImmunity" : {
           "baseValue" : 1.0
-        }, 
-        "biooozeImmunity" : {
-          "baseValue" : 1.0
-        },      
-        "electricStatusImmunity" : {
-          "baseValue" : 1.0
-        },
+        },         
         "radiationburnImmunity" : {
           "baseValue" : 1.0
         },   
@@ -217,7 +217,10 @@
         },       
         "penaltyBlock" : {
           "baseValue" : 1.0
-        },         
+        },   
+        "critImmunity" : {
+          "baseValue" : 1.0
+        },          
         "poisonResistance" : { "baseValue" : 0.4 },
         "fireResistance" : { "baseValue" :0.5 },
         "iceResistance" : { "baseValue" : 0.5 },

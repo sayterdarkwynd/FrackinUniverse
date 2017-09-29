@@ -1,0 +1,25 @@
+  {
+  "id" : "letheiafleet.gearup",
+  "title" : "^green;Letheia Fleet Complete!",
+  "text" : "I did it! I took on the entire fleet and survived!",
+  "completionText" : "It seems like a miracle that I survived this onslaught. Perhaps the battleship has leads on Letheia Corp's dastardly deeds.",
+  "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questReceiver"
+  },
+  "moneyRange" : [0, 0],
+  "rewards" : [
+      [ [ "humantier3head-recipe" ], [ "humantier3chest-recipe" ], [ "humantier3pants-recipe" ], [ "drillspear" ]]
+   ],
+  "canBeAbandoned" : true,
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+		"portraits" : {
+		"default" : "player"
+		},
+    "turnInDescription" : "Poke the strange crystal again to get your reward.",
+    "requireTurnIn" : true
+  }
+}

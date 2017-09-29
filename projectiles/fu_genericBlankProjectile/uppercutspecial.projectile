@@ -1,0 +1,33 @@
+{
+	"projectileName": "uppercutspecial",
+	"image": "blankpng.png",
+	"animationCycle": 0.1,
+	"frameNumber": 1,
+	"speed": 50,
+	"damagePoly": [
+		[-18, 0],
+		[-12, -12],
+		[0, -18],
+		[12, -12],
+		[18, 0],
+		[12, 12],
+		[0, 18],
+		[-12, 12]
+	],
+	"animationLoops": false,
+	"piercing": true,
+	"flippable": true,
+	"power": 0,
+	"universalDamage": true,
+	"damageKind": "direct",
+	"damageType": "IgnoresDef",
+	"timeToLive": 0.1,
+	"statusEffects": [ "bleedingshort" ],
+	"actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/tinyboom/uppercut.config"
+	    }
+	  ],
+	  "emitters" : [ "defaultred" ]
+}

@@ -16,6 +16,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		status.modifyResourcePercentage("health", 0.01 * dt)
+		status.modifyResourcePercentage("health", 0.04 * dt)
 	end
 end

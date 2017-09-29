@@ -1,0 +1,60 @@
+{
+  "objectName" : "scentedalveary",
+  "colonyTags" : [ "hive", "bees", "insects" ],
+  "rarity" : "Legendary",
+  "description" : "A large bee breeding apiary. It's much faster than the smaller apiary, and holds 2 frames. Won't spawn bees.",
+  "shortdescription" : "^orange;Giant Scented Apiary^reset;",
+  "race" : "generic",
+  "subtitle" : "Harvest honey!",
+  "category" : "crafting",
+  "price" : 500,
+  "objectType" : "container",
+  "printable" : false,
+
+  "inventoryIcon" : "scentedalvearyicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "scentedalveary.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+
+
+  "animation" : "/objects/bees/scentedalveary/scentedalveary.animation",
+  "animationParts" : {
+    "beacon" : "scentedalveary.png"
+  },
+  "animationPosition" : [0, 0],
+  "recipeGroup" : "beetrap",
+  "openSounds" : [ "/sfx/objects/florancrate_open.ogg" ],
+  "scripts" : [ "/objects/bees/apiary/common.lua" ],
+  "scriptDelta" : 140,
+  "slotCount" : 40,
+  "uiConfig" : "/interface/bees/alveary/alveary.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  // from normalapiary.object
+  "spawnDelay" : 1.05,
+  //"spawnBeeBrake" : nil,
+  "spawnItemBrake" : 150,
+  "spawnHoneyBrake" : 350,
+  "spawnDroneBrake" : 250,
+  "limitDroneCount" : true,
+
+  "beeStingChance" : 0.5,
+  "beeStingOffset" : [ 2.5, 2.5 ],
+
+  "beePowerScaling" :  2,
+
+  "queenSlot" : 1,
+  "droneSlot" : 2,
+  "frameSlots" : [ 3, 4 ],
+  "inputNodes":[[0,0]],
+  "outputNodes":[[0,1]]
+}
