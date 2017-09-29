@@ -17,6 +17,7 @@
 		"angle":50,
 		"fuzzAngle":10,
 		"config":{
+		  "damageSourceKind" : "fire",
 		  "power":5,
 		  "processing":"?scalenearest=3.5",
 		  "knockback":24,
@@ -25,11 +26,11 @@
 		  
 		  "actionOnReap" : [
 		    {
-		      "time":0.1,
+		      "time":0.25,
 		      "loop" : false,
 		      "action":"explosion", 
-		      "foregroundRadius":6, 
-		      "backgroundRadius":4, 
+		      "foregroundRadius":10, 
+		      "backgroundRadius":5, 
 		      "explosiveDamageAmount":2.5, 
 		      "delaySteps":2, 
 		      "harvestLevel":8
@@ -40,9 +41,10 @@
 		      "angle":50,
 		      "fuzzAngle":10,
 		      "config":{
+		        "damageSourceKind" : "fire",
 			"power":5,
 			"processing":"?scalenearest=5",
-			"knockback":150,
+			"knockback":90,
 			"animationCycle":0.4,
 			"timeToLive":0.4
 		      }		    
@@ -54,55 +56,56 @@
       "action" : "config",
       "file" : "/projectiles/explosions/minesplosionbig/minesplosionbig.config"
     },    
-	{
+    {
       "action" : "projectile",
       "type" : "fuminelayershot3",
-      "inheritDamageFactor" : 0.125,
+      "inheritDamageFactor" : 0.02,
       "angleAdjust" : 0
     },
 	{
       "action" : "projectile",
       "type" : "fuminelayershot3",
-      "inheritDamageFactor" : 0.125,
+      "inheritDamageFactor" : 0.02,
       "angleAdjust" : 45
     },
 	{
       "action" : "projectile",
       "type" : "fuminelayershot3",
-      "inheritDamageFactor" : 0.125,
+      "inheritDamageFactor" : 0.02,
       "angleAdjust" : -45
     },
 	{
       "action" : "projectile",
       "type" : "fuminelayershot3",
-      "inheritDamageFactor" : 0.125,
+      "inheritDamageFactor" : 0.02,
       "angleAdjust" : -90
     },
 	{
       "action" : "projectile",
       "type" : "fuminelayershot3",
-      "inheritDamageFactor" : 0.125,
+      "inheritDamageFactor" : 0.02,
       "angleAdjust" : 90
     },
 	{
       "action" : "projectile",
       "type" : "fuminelayershot3",
-      "inheritDamageFactor" : 0.125,
+      "inheritDamageFactor" : 0.02,
       "angleAdjust" : 135
     },{
       "action" : "projectile",
       "type" : "fuminelayershot3",
-      "inheritDamageFactor" : 0.125,
+      "inheritDamageFactor" : 0.02,
       "angleAdjust" : -135
     },
-	{
+    {
       "action" : "projectile",
       "type" : "fuminelayershot3",
-      "inheritDamageFactor" : 0.125,
+      "inheritDamageFactor" : 0.02,
       "angleAdjust" : 180
     }
   ],
-  "damageKind" : "default",
+  "damageKind" : "fire",
+  "statusEffects" : [ "burning" ],
   "emitters" : [ "peglacitrail" ]
 }
 
