@@ -11,18 +11,49 @@
   "timeToLive" : 4,
   "lightColor" : [40, 40, 40],
   "actionOnReap" : [
+	{
+		"action":"projectile",
+		"type":"blastingdynamite",
+		"angle":50,
+		"fuzzAngle":10,
+		"config":{
+		  "power":5,
+		  "processing":"?scalenearest=3.5",
+		  "knockback":24,
+		  "animationCycle":0.2,
+		  "timeToLive":0.2,
+		  
+		  "actionOnReap" : [
+		    {
+		      "time":0.1,
+		      "loop" : false,
+		      "action":"explosion", 
+		      "foregroundRadius":6, 
+		      "backgroundRadius":4, 
+		      "explosiveDamageAmount":2.5, 
+		      "delaySteps":2, 
+		      "harvestLevel":8
+		    },		  
+		    {
+		      "action":"projectile",
+		      "type":"mechexplosion",
+		      "angle":50,
+		      "fuzzAngle":10,
+		      "config":{
+			"power":5,
+			"processing":"?scalenearest=5",
+			"knockback":150,
+			"animationCycle":0.4,
+			"timeToLive":0.4
+		      }		    
+		    }
+		  ]
+		}
+	      },  
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/minesplosion/minesplosion.config"
-    },
-	 {
-      "action" : "config",
-      "file" : "/projectiles/explosions/molotovexplosion/molotovexplosion.config"
-    },
-	 {
-      "action" : "config",
       "file" : "/projectiles/explosions/minesplosionbig/minesplosionbig.config"
-    },
+    },    
 	{
       "action" : "projectile",
       "type" : "fuminelayershot3",

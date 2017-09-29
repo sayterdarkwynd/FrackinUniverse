@@ -45,18 +45,19 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.6,
+    "fireTime" : 1,
     "baseDps" : 10.0,
     "energyUsage" : 35,
-    "inaccuracy" : 0,
+    "inaccuracy" : 0.09,
     "fireType" : "auto",
 
     "projectileType" : "irradiumshotgunshot1",
+    "projectileCount" : 5,
+    
     "projectileParameters" : {
       "knockback" : 4,
       "speed" : 60
     },
-    "projectileCount" : 3,
 
     "stances" : {
       "idle" : {
@@ -90,6 +91,8 @@
   "critChance" : 6,
   "critBonus" : 5,
   "altAbilityType" : "irradiumshotgunshotpower",
-
+  "altAbility" : {
+    "projectileCount" : 1
+  },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
