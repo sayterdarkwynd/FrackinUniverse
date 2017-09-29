@@ -25,7 +25,10 @@ function update(dt)
 	else
 		effect.setStatModifierGroup(
 		armorBonusHandle,armorBonus)
-		checkWeapons()		
+		checkWeapons()	
+		
+		status.modifyResourcePercentage("health", 0.0006 * dt)
+		
 	end
 end
 
