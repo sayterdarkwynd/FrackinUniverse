@@ -1,0 +1,48 @@
+{
+  "objectName" : "fu_precursorspawner",
+  "colonyTags" : ["precursor","ancient"],
+  "rarity" : "Legendary",
+  "description" : "Spawns monsters depending on what monster is in a capture pod. Uses precursor quantum fluid as fuel.",
+  "shortdescription" : "Precursor Spawner",
+  "race" : "human",
+  "printable" : false,
+  "category" : "spawner",
+  
+  "health" : 100000,
+
+  "animation" : "fu_precursorspawner.animation",
+  "animationParts" : {
+    "base" : "fu_precursorspawner.png",
+    "basefullbright" : "fu_precursorspawnerlit.png"
+  },
+  "animationPosition" : [-64, 0],
+  
+  "inventoryIcon" : "fu_precursorspawnericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_precursorspawner.png:off",
+      "imagePosition" : [-64, 0],
+      "frames" : 8,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/spawner/fu_precursorspawner/fu_precursorspawner.lua" ],
+  "scriptDelta" : 10,
+
+  "inputNodes" : [ [-1, 0] ],
+
+  "spawner" : {
+    "fuelType" : "precursorfluid",
+	"podType" : "filledcapturepod",
+	"spawnTime" : "10"
+  },
+  
+  "objectType" : "container",
+  "slotCount" : 2,
+  "uiConfig" : "/interface/objectcrafting/fu_precursorspawner.config",
+  "subtitle" : "",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}
