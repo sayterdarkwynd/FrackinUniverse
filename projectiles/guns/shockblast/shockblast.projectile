@@ -15,7 +15,18 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/electricexplosion/electricexplosion.config"
+      "file" : "/projectiles/explosions/zapsplosion/zapsplosion.config"
+    },  
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/shotgun4.ogg" ]
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 4,
+      "backgroundRadius" : 0,
+      "explosiveDamageAmount" : 5,
+      "delaySteps" : 2
     },
     {
       "action" : "projectile",
@@ -39,5 +50,6 @@
       "angleAdjust" : -35
     }
   ],
-  "emitters" : [ "electricswoosh" ]
+  "emitters" : [ "electricswoosh" ],
+  "statusEffects" : [ "electrified" ]
 }

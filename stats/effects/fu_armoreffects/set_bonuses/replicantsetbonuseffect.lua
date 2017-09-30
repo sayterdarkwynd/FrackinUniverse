@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 15}
+	{stat = "critChance", amount = 5}
 }
 
 weaponBonus2={
@@ -36,8 +36,8 @@ end
 
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword","broadsword"})
-local weaponShield=weaponCheck({"shortsword","broadsword"})
+local weaponSword=weaponCheck({"shortsword","broadsword","rapier","longsword","katana"})
+local weaponShield=weaponCheck({"shortsword","broadsword","rapier","longsword","katana"})
 
 	if weaponSword["either"] and weaponShield["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)

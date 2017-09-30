@@ -1,8 +1,8 @@
 setName="fu_irradiumset"
 
 weaponBonus1={
-	{stat = "critBonus", baseMultiplier = 1.05},
-	{stat = "radioactiveResistance", amount = 0.1}
+	{stat = "critChance", amount = 5},
+	{stat = "radioactiveResistance", amount = 0.10}
 }
 
 armorBonus={ 

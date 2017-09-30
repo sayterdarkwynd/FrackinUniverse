@@ -1,0 +1,45 @@
+{
+  "projectileName" : "fuguardiandamagebuff",
+  "physics" : "laser",
+  "timeToLive" : 10,
+  "image" : "fuguardiandamagebuff.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 12,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/melee/staff_aura_activate.ogg" ]
+    },
+    {
+      "time" : 2.5,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_disappear1.ogg" ]
+    }
+  ],
+
+  "actionOnReap" : [],
+  "speed" : 0,
+  "power" : 0,
+
+  "onlyHitTerrain" : false,
+  "persistentStatusEffects" : ["damagebonus3"],
+  "damagePoly" : [ [-32, 13], [-13, 32], [13, 32], [32, 13], [32, -13], [13, -32], [-13, -32], [-32, -13] ],
+
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : ["/projectiles/activeitems/staff/staffprojectile.lua"],
+  
+    "persistentAudio" : "/sfx/projectiles/zone_power_loop.ogg"
+}

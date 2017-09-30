@@ -22,13 +22,21 @@
     "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
   "animationCustom" : {
+    "particleEmitters":{  
+      "altMuzzleFlash":{  
+        "offsetRegion":[0.3,0.125,1.2,1.2],
+        "emissionRate":0.0,
+        "particles":[{"particle":"energyblade2"}]
+      }
+    },  
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/dkmarauder3.wav" ],
+      "altFire":["/sfx/melee/laser_weapon_swing1.ogg"]
     }
   },
 
   "baseOffset" : [1.2, 0.22],
-  "muzzleOffset" : [1, 0.125],
+  "muzzleOffset" : [1.5, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -38,7 +46,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.11,
-    "baseDps" : 9.2,
+    "baseDps" : 8,
     "energyUsage" : 30,
     "inaccuracy" : 0.012,
     "burstTime" : 0.075,
@@ -82,7 +90,102 @@
   },
   "critChance" : 4,
   "critBonus" : 8,
-  "altAbilityType" : "spray",
+  "altAbilityType" : "piercingshot",
+  "altAbility" : {
+    "stances":{  
+      "idle":{  
+        "armRotation":0,
+        "weaponRotation":0,
+        "twoHanded":true,
+        "allowRotate":true,
+        "allowFlip":true,
+        "weaponOffset":[  
+          -1,
+          -2
+        ]
+      },
+      "fire":{  
+        "duration":0,
+        "armRotation":3,
+        "weaponRotation":-6,
+        "twoHanded":true,
+        "allowRotate":false,
+        "allowFlip":false,
+        "weaponOffset":[  
+          -1,
+          -2
+        ]
+      },
+      "cooldown":{  
+        "duration":0.0,
+        "armRotation":3,
+        "weaponRotation":-6,
+        "twoHanded":true,
+        "allowRotate":false,
+        "allowFlip":false,
+        "weaponOffset":[  
+          -1,
+          -2
+        ]
+      }
+    },  
+    "name" : "Stun Sphere",
+    "baseDps" : 0,
+    "fireTime" : 0.01,
+    "energyUsage" : 40,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",    
+    "projectileType":"meleeslash",
+    "projectileParameters":{  
+      "periodicActions":[  
+
+      ],
+      "piercing":false,
+      "damageKind":"hidden",
+      "processing":"?0",
+      "statusEffects":[  
+        {  
+          "effect":"levitation",
+          "duration":0.2
+        },
+        {  
+          "effect":"electricaura",
+          "duration":0.2
+        },
+        {  
+          "effect":"stun",
+          "duration":0.2
+        }
+      ],
+      "bounces":0,
+      "speed":100,
+      "timeToLive":0.5,
+      "power":0.0,
+      "knockback":0,
+      "actionOnReap":[  
+        {  
+          "time":0.01,
+          "offset":[  
+            0,
+            0
+          ],
+          "angle":0,
+          "action":"projectile",
+          "type":"gravitysphere",
+          "config":{  
+            "statusEffects":[],
+            "damageKind":"hidden",
+            "processing":"?0",
+            "speed":8,
+            "timeToLive":0.0,
+            "power":0.0,
+            "knockback":0
+          }
+        }
+      ]
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

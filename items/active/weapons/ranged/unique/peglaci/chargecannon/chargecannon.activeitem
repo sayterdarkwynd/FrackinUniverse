@@ -1,17 +1,17 @@
 {
   "itemName" : "chargecannon",
-  "price" : 1500,
+  "price" : 800,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Charge and release.
+  "description" : "Charge and release radioactive-electric blasts.
 ^yellow;Increases damage with charge^reset;",
-  "shortdescription" : "Charge Blaster",
+  "shortdescription" : "Rad Charger",
   "tooltipKind" : "gun2",
-  "category" : "energy",
+  "category" : "shotgun",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged", "rocketlauncher", "energy", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged", "shotgun", "energy", "upgradeableWeapon"],
   "level" : 4,
-  "weaponType" : "Charge Gun",
+  "weaponType" : "shotgun",
   "inventoryIcon" : "chargecannonicon.png",
 
   "animation" : "chargecannon.animation",
@@ -26,7 +26,7 @@
   },
 
   "baseOffset" : [1.2, 0.26],
-  "muzzleOffset" : [1.4, 0.5],
+  "muzzleOffset" : [1.2, 0.5],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -34,24 +34,30 @@
 
   "primaryAbilityType" : "chargefire",
   "primaryAbility" : {
+    "baseDps" : 7,
+    "energyUsage" : 30,
     "chargeLevels" : [
       {
         "time" : 0,
         "energyCost" : 5,
         "cooldown" : 0.1,
-        "projectileType" : "chargecannonshot",
-        "projectileParameters" : {},
-        "inaccuracy" : 0.008,
-        "baseDamage" : 1.5,
+        "projectileType" : "fuplasmashot",
+        "projectileParameters" : {
+          "processing":"?hueshift=-20"
+        },
+        "baseDamage" : 2.4,
         "fireSound" : "fire"
       },
       {
         "time" : 1.0,
         "energyCost" : 40,
         "cooldown" : 0.5,
-        "projectileType" : "chargecannonshotpower",
-        "projectileParameters" : {},
-        "inaccuracy" : 0,
+        "projectileType" : "fuplasmashot",
+        "projectileCount": 3,
+        "inaccuracy" : 0.08,
+        "projectileParameters" : {
+          "processing":"?hueshift=-40"
+        },
         "baseDamage" : 7,
         "fireSound" : "fire2"
       }

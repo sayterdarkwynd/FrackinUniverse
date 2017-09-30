@@ -17,7 +17,7 @@
     "butt" : "",
     "middle" : "protopistol.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
   },      
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/weapons/protopistol.ogg" ] },
@@ -26,8 +26,8 @@
   
   "learnBlueprintsOnPickup" : [ "isn_terawattlaser" ],
   
-  "baseOffset" : [1.4, 0.46],
-  "muzzleOffset" : [1.0, 0.1],
+  "baseOffset" : [1.4, 0.40],
+  "muzzleOffset" : [0.74, 0.1],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -44,7 +44,25 @@
     "projectileCount" : 1,
     "projectileType" : "protoshot",
     "projectileParameters" : {
-      "speed" : 55
+      "speed" : 50,
+      "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ],      
+      "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ]        
     },
     "stances" : {
       "idle" : {
