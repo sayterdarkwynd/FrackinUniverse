@@ -58,6 +58,28 @@
         },
         {
           "name" : "action-fire",
+	  "cooldown" : 15,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 35,
+            "minimumRange" : 25,
+            "windupState" : "teslawindup",
+            "windupTime" : 1.32,
+
+            "projectileType" : "turretpod",
+            "power" : 6,
+            
+            "fireOffset" : [1.0, 1],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "fireSound" : "attack",
+            "fireState" : "hurt",
+            "winddownState" : "chargewinddown",
+            "winddownTime" : 0.45
+          }
+        },         
+        {
+          "name" : "action-fire",
 	        "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
@@ -82,7 +104,7 @@
         },         
         {
           "name" : "action-fire",
-	        "cooldown" : 8,
+	  "cooldown" : 8,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 24,
@@ -105,7 +127,7 @@
         },        
         {
           "name" : "action-fire",
-	        "cooldown" : 5,
+	  "cooldown" : 5,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 12,
@@ -232,7 +254,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 520
+          "baseValue" : 820
         },
         "protection" : {
           "baseValue" : 0.2
