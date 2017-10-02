@@ -5,15 +5,20 @@
   "spawnProfile" : {
     "groups" : [     
       {
-        "select" : 2,
-        "pool" : [ 
-          [ 0.03, "burrower_depth_selector" ],
-          [ 0.09, "sulphurtroll" ]
+        "select" : 3,
+        "pool" : [   
+          [ 0.09, "sulphurtroll" ],
+          [ 0.09, "furatthing2" ],
+          [ 0.09, "glump" ],
+          [ 0.09, "ixoling2" ],
+          [ 0.09, "fureptar" ] 
         ]
-      },
+      },     
       {
         "select" : 2,
         "pool" : [
+          [ 0.03, "burrower_depth_selector" ],
+          [ 0.03, "burrower_depth_selector" ],        
           [ 0.4, "fuscorpion" ],
           [ 0.3, "funewt" ]
         ]
@@ -75,16 +80,24 @@
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
+             "distribution" : "/biomes/distributions.config:ffCommon",
    
              "type" : "object",
              "objectSets" : [
                {
                  "pool" : [ 
+              [0.50, "savannahceilingspike1" ],
+              [0.50, "savannahceilingspike2" ],
+              [0.50, "savannahceilingspike3" ],
+              [0.50, "savannahceilingspike4" ],                 
               [0.50, "desertceilingspike1" ],
               [0.50, "desertceilingspike2" ],
               [0.50, "desertceilingspike3" ],
-              [0.50, "desertceilingspike4" ]
+              [0.50, "desertceilingspike4" ],
+              [0.50, "magmaceilingspike1" ],
+              [0.50, "magmaceilingspike2" ],
+              [0.50, "magmaceilingspike3" ]
+              
                  ],
                  "parameters" : { "startingStage" : 3 }
                }
@@ -94,26 +107,23 @@
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
+             "distribution" : "/biomes/distributions.config:ffCommon",
    
              "type" : "object",
              "objectSets" : [
                {
                  "pool" : [ 
+              [0.50, "savannahgroundspike1" ],
+              [0.50, "savannahgroundspike2" ],
+              [0.50, "savannahgroundspike3" ],
+              [0.50, "savannahgroundspike4" ],                 
               [0.50, "desertgroundspike1" ],
               [0.50, "desertgroundspike2" ],
               [0.50, "desertgroundspike3" ],
               [0.50, "desertgroundspike4" ],
-              [0.50, "copperrock" ], 
-              [0.50, "copperrocksmall" ],
-              [0.50, "silverrock" ],
-              [0.50, "silverrocksmall" ],
-              [0.50, "goldrock" ],
-              [0.50, "goldrocksmall" ],
-              
-              
-              [0.50, "diamondrock" ],
-              [0.50, "diamondrocksmall" ]
+              [0.50, "magmagroundspike1" ],
+              [0.50, "magmagroundspike2" ],
+              [0.50, "magmagroundspike3" ]              
                  ],
                  "parameters" : { "startingStage" : 3 }
                }
@@ -168,6 +178,118 @@
                "parameters" : { }
              }
            ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundOreRocks",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+              [0.50, "copperrock" ], 
+              [0.50, "copperrocksmall" ],
+              [0.50, "silverrock" ],
+              [0.50, "silverrocksmall" ],
+              [0.50, "goldrock" ],
+              [0.50, "goldrocksmall" ],
+              [0.50, "diamondrock" ],
+              [0.50, "diamondrocksmall" ]            
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundBiomeEncounterDungeon",
+	"type" : "microdungeon",
+        "microdungeons" : [ "undergroundencounterdungeons" ]
+      },        
+      {
+        "mode" : "floor",
+        "priority" : 99.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "underground3cmicrodungeons" ]
+      },      
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundVines",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 180,
+        "treeStemList" : [ "twistedvine" ],
+        "treeFoliageList" : [ "dreamy" ]
+      },      
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },      
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:layer1Chests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:layer1Chests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },        
+        {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["rock20", "sulphurdirt", "meteoriterock"]}
+          }
+        ]
         },
       {
         "mode" : "floor",

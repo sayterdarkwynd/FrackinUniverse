@@ -1,4 +1,5 @@
-frackinRaces = false
+
+
 
 function init()
 	self.data = root.assetJson("/interface/scripted/statWindow/statWindow.config")
@@ -8,16 +9,19 @@ function init()
 	widget.setText("characterName", "^blue;"..world.entityName(player.id()))
 
 	local playerRace = player.species()
-	widget.setImage("characterSuit", "/interface/scripted/techupgrade/suits/"..playerRace.."-"..player.gender()..".png")
-
-	if frackinRaces then
-		-- widget.setText("racialLabel", "Racial traits - "..playerRace)
-		widget.setVisible("racialDesc", true)
-	else
-		widget.setText("racialLabel", "SoonTM")
+	local recognized = false
+	for _,race in ipairs(self.data.races) do
+		if race == playerRace then
+			recognized = true
+			break
+		end
 	end
-
-	populateRacialDescription()
+	
+	if recognized then
+		widget.setImage("characterSuit", "/interface/scripted/techupgrade/suits/"..playerRace.."-"..player.gender()..".png")
+	else
+		widget.setImage("characterSuit", "/interface/scripted/techupgrade/suits/novakid-"..player.gender()..".png") -- Novakid because it has the least amount features
+	end
 end
 
 function update()
@@ -45,21 +49,6 @@ function update()
 	end
 end
 
-function populateRacialDescription()
-	widget.clearListItems("racialDesc.textList")
-
-	-- using 'for i' loop because 'i/pairs' tends to fuck up order
-
-	--[[
-	for i = 1, #racialDescription.positive do
-		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
-		local text = "^green;"..racialDescription.positive[i]
-		widget.setText(listItem..".trait", text)
-	end
-
-	for i = 1, #racialDescription.negative do
-		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
-		local text = "^red;"..racialDescription.negative[i]
-		widget.setText(listItem..".trait", text)
-	end]]
+function expand()
+	player.interact("ScriptPane", "/interface/scripted/statWindow/extraStatsWindow.config", player.id())
 end

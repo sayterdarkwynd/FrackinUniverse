@@ -7,9 +7,10 @@
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 1,
+        "select" : 2,
         "pool" : [ 
-          [ 0.05, "sulphurtroll" ]
+          [ 0.05, "sulphurtroll" ],
+          [ 0.09, "ixoling2" ]
         ]
       },
       {
@@ -56,7 +57,10 @@
   
   "weather" : [
     [0, [
-      "/weather.config:sulphuric"
+      "/weather.config:sulphuric",
+      "/weather.config:sulphuric2",
+      "/weather.config:sulphuriccalm",
+      "/weather.config:sulphuricinsane"
     ]]
   ],
 
@@ -100,7 +104,7 @@
       "dayLightColor" : [202, 138, 100],
       "eveningLightColor" : [202, 100, 100],
       "nightLightColor" : [40, 17, 17]
-    },
+    },    
     {
       "mainColor" : [255, 255, 80],
 
@@ -113,7 +117,72 @@
       "dayLightColor" : [202, 138, 100],
       "eveningLightColor" : [202, 100, 100],
       "nightLightColor" : [40, 17, 17]
-    }
+    },
+    {
+      "mainColor" : [207, 195, 134],
+
+      "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
+      "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
+      "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [202, 177, 100],
+      "dayLightColor" : [202, 138, 100],
+      "eveningLightColor" : [202, 100, 100],
+      "nightLightColor" : [40, 17, 17]
+    },
+    {
+      "mainColor" : [233, 202, 43],
+
+      "morningColors" : [ [255, 224, 43], [252, 230, 43] ],
+      "dayColors" : [ [255, 222, 50], [255, 200, 44] ],
+      "eveningColors" : [ [254, 200, 69], [254, 200, 60] ],
+      "nightColors" : [ [60, 60, 0], [20, 10, 0] ],
+
+      "morningLightColor" : [222, 207, 40],
+      "dayLightColor" : [202, 170, 10],
+      "eveningLightColor" : [180, 150, 7],
+      "nightLightColor" : [40, 30, 0]
+    },
+     {
+      "mainColor" : [180, 40, 0],
+
+      "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
+      "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
+      "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [202, 177, 100],
+      "dayLightColor" : [202, 138, 100],
+      "eveningLightColor" : [202, 100, 100],
+      "nightLightColor" : [40, 17, 17]
+    },  
+    {
+      "mainColor" : [90, 90, 20],
+
+      "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
+      "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
+      "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [202, 177, 100],
+      "dayLightColor" : [202, 138, 100],
+      "eveningLightColor" : [202, 100, 100],
+      "nightLightColor" : [40, 17, 17]
+    },     
+    {
+      "mainColor" : [255, 177, 80],
+
+      "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
+      "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
+      "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [202, 177, 100],
+      "dayLightColor" : [202, 138, 100],
+      "eveningLightColor" : [202, 100, 100],
+      "nightLightColor" : [40, 17, 17]
+    }   
   ],
   
   
@@ -163,12 +232,19 @@
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
+             "distribution" : "/biomes/distributions.config:ffCommon",
    
              "type" : "object",
              "objectSets" : [
                {
                  "pool" : [ 
+              [0.50, "savannahgroundspike1" ],
+              [0.50, "savannahgroundspike2" ],
+              [0.50, "savannahgroundspike3" ],
+              [0.50, "savannahgroundspike4" ],                 
+              [0.50, "magmagroundspike1" ],
+              [0.50, "magmagroundspike2" ],
+              [0.50, "magmagroundspike3" ],                 
               [0.50, "groundspike1" ],
               [0.50, "groundspike2" ],
               [0.50, "groundspike3" ],
@@ -178,6 +254,29 @@
                }
              ]
            },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundOreRocks",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+              [0.50, "copperrock" ], 
+              [0.50, "copperrocksmall" ],
+              [0.50, "silverrock" ],
+              [0.50, "silverrocksmall" ],
+              [0.50, "goldrock" ],
+              [0.50, "goldrocksmall" ],
+              [0.50, "diamondrock" ],
+              [0.50, "diamondrocksmall" ]            
+            ],
+            "parameters" : { }
+          }
+        ]
+      },           
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -255,6 +354,33 @@
     },
     "undergroundPlaceables" : {
       "items" : [
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffCommon",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+              [0.50, "savannahceilingspike1" ],
+              [0.50, "savannahceilingspike2" ],
+              [0.50, "savannahceilingspike3" ],
+              [0.50, "savannahceilingspike4" ],
+              [0.50, "desertceilingspike1" ],
+              [0.50, "desertceilingspike2" ],
+              [0.50, "desertceilingspike3" ],
+              [0.50, "desertceilingspike4" ],
+              [0.50, "magmaceilingspike1" ],
+              [0.50, "magmaceilingspike2" ],
+              [0.50, "magmaceilingspike3" ]
+              
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },      
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -283,6 +409,67 @@
             }
           ]
         },
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:potsRare",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+              [0.50, "savannahgroundspike1" ],
+              [0.50, "savannahgroundspike2" ],
+              [0.50, "savannahgroundspike3" ],
+              [0.50, "savannahgroundspike4" ],                 
+              [0.50, "magmagroundspike1" ],
+              [0.50, "magmagroundspike2" ],
+              [0.50, "magmagroundspike3" ],                 
+              [0.50, "groundspike1" ],
+              [0.50, "groundspike2" ],
+              [0.50, "groundspike3" ],
+              [0.50, "groundspike4" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundOreRocks",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+              [0.50, "copperrock" ], 
+              [0.50, "copperrocksmall" ],
+              [0.50, "silverrock" ],
+              [0.50, "silverrocksmall" ],
+              [0.50, "goldrock" ],
+              [0.50, "goldrocksmall" ],
+              [0.50, "diamondrock" ],
+              [0.50, "diamondrocksmall" ]            
+            ],
+            "parameters" : { }
+          }
+        ]
+      }, 
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundVines",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 180,
+        "treeStemList" : [ "twistedvine" ],
+        "treeFoliageList" : [ "dreamy" ]
+      },       
         {
           "mode" : "floor",
           "priority" : 1.0,
