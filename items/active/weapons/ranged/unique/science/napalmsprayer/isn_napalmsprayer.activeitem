@@ -25,7 +25,7 @@
   },
 
   "baseOffset" : [1.4, 0.34],
-  "muzzleOffset" : [2.8, 0.145],
+  "muzzleOffset" : [2.4, 0.2],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -34,7 +34,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.2,
+    "fireTime" : 0.9,
     "baseDps" : 7.8,
     "energyUsage" : 20,
     "fireType" : "auto",
@@ -42,7 +42,29 @@
     "projectileCount" : 1,
     "projectileType" : "isn_napalmsprayer",
     "projectileParameters" : {
-      "speed" : 52
+      "speed" : 52,
+		    "actionOnReap" : [
+			  { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 0.2 },
+			    {
+			      "action" : "config",
+			      "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
+			    }			  
+		    ] ,      
+	  "periodicActions":[ 
+		  {
+		  "time":0.01, 
+		  "action":"projectile", 
+		  "type":"firelasershot3", 
+		  "config":{
+		    "speed":0, 
+		    "physics" : "laser",
+		    "bounces" :-1,
+		    "timeToLive":0.4, 
+		    "power":1, 
+		    "knockback":0
+		    }
+		  }	  
+	  ]	  
     },
     "stances" : {
       "idle" : {
@@ -63,9 +85,9 @@
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "duration" : 0.1,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,

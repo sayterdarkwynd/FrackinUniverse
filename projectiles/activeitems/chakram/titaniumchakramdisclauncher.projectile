@@ -1,0 +1,40 @@
+{
+  "projectileName" : "titaniumchakramdisclauncher",
+  "image" : "titaniumchakramdisc.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 8,
+  "damageKindImage" : "icon.png",
+  "flippable" : false,
+  "orientationLocked" : true,
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "damageKind" : "sawblade",
+  "physics" : "laser",
+  "bounces" : 10,
+  "piercing" : true,
+  "fullbright" : false,
+
+
+      "actionOnCollide" : [
+	    {
+	      "time" : 0,
+	      "repeat" : false,
+	      "action" : "sound",
+	      "options" : [ "/sfx/tools/pickaxe_ore.ogg" ]
+	    }
+      ],
+	"periodicActions":[
+	    {
+	      "action":"sound",
+	      "options":["/sfx/projectiles/spit2.ogg"], 
+	      "time":0.0, 
+	      "repeat":false
+	    }
+	],    
+      "knockback" : 8,
+      "timeToLive":5.0, 
+      "speed" : 60,
+      "power":0.3, 
+      "actionOnReap":[], 
+      
+    "persistentAudio" : "/sfx/objects/sawblade.ogg"
+}

@@ -86,7 +86,58 @@
       "body" : {
         "properties" : {
           "transformationGroups" : [ "body" ],
-          "offset" : [0.0, -0.5]
+          "offset" : [0.0, -0.5],
+          "zLevel" : 1,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<aggro>idle.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:<aggro>idle.<frame>"
+              }
+            },
+            "aggroidle" : {
+              "properties" : {
+                "image" : "<partImage>:aggro.<frame>"
+              }
+            },            
+            "aggro" : {
+              "properties" : {
+                "image" : "<partImage>:aggro.<frame>"
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire2.<frame>"
+              }
+            },            
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      },
+      
+      "bodyfullbright" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.0, -0.5],
+          "zLevel" : 2
         },
         "partStates" : {
           "body" : {
@@ -130,6 +181,7 @@
           }
         }
       }
+      
     }
   },
   "globalTagDefaults" : {

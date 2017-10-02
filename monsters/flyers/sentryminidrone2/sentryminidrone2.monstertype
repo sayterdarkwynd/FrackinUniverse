@@ -46,18 +46,17 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 20,
-            "minimumRange" : 4,
+            "minimumRange" : 6,
             "windupStopForce" : 50,
             "windupState" : "fire",
             "windupTime" : 0.4,
 
             "projectileType" : "laser-1",
             "projectileCount" : 1,
-            "projectileInterval" : 0.01,
             "projectileParameters" : {
               "speed" : 60
             },
-            "power" : 5,
+            "power" : 10,
             "fireOffset" : [0, 0],
             "aimAtTarget" : true,
             "onGround" : false,
@@ -104,10 +103,10 @@
         },      
         {
           "name" : "action-statuseffect", 
-          "cooldown" : 20,
+          "cooldown" : 10,
           "parameters" : {
           "effect" : "cultistshield",
-          "duration" : 2
+          "duration" : 5
           }
         },         
         {
@@ -125,8 +124,8 @@
           "name" : "wander-fly",
           "parameters" : {
             "wanderTime" : [2,4],
-            "groundDistance" : 8,
-            "ceilingDistance" : 8,
+            "groundDistance" : 10,
+            "ceilingDistance" : 6,
             "xVelocity" : 8,
             "yVelocity" : 12
           }
@@ -134,18 +133,29 @@
       ],
 
       "concurrentActions" : [
-       
-      ],
-      
-      "concurrentHostileActions" : [
         {
           "name" : "action-statuseffect", 
-          "cooldown" : 15,
+          "cooldown" : 5,
           "parameters" : {
           "effect" : "cultistshield",
           "duration" : 5
           }
         }        
+      ],
+      
+      "concurrentHostileActions" : [
+       
+      ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "cultistshield",
+          "duration" : 5
+          }
+        }      
       ],
       
       "deathActions" : [
@@ -221,17 +231,62 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 45
+          "baseValue" : 90
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "healthRegen" : {
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
-        }
+        },
+        "electricResistance" : {
+          "baseValue" : -0.3
+        },        
+        "fireResistance" : {
+          "baseValue" : 0.2
+        },       
+        "fireStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "iceResistance" : {
+          "baseValue" : 0.2
+        },       
+        "iceStatusImmunity" : {
+          "baseValue" : 1
+        },        
+        "poisonResistance" : {
+          "baseValue" : 0.7
+        },        
+        "poisonStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.25
+        },        
+        "cosmicResistance" : {
+          "baseValue" : 0.25
+        },        
+        "radioactiveResistance" : {
+          "baseValue" : 0.8
+        },        
+        "shadowResistance" : {
+          "baseValue" : 0.5
+        },        
+        "extremepressureImmunity" : {
+          "baseValue" : 1
+        },        
+        "shadowImmunity" : {
+          "baseValue" : 1
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1
+        },
+        "darknessImmunity" : {
+          "baseValue" : 1
+        } 
       },
 
       "resources" : {

@@ -10,16 +10,116 @@
   "power" : 1,
   "speed" : 55,
   "timeToLive" : 1.2,
-  "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/magmaorbboom/magmaorbboom.config"
-    },
-    { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 18 },
-    { "action" : "liquid", "liquid" : "lava", "quantity" : 4 }
-  ],
   "damagePoly" : [ [-40, 0], [-40, -12], [0, -12], [40, -12], [40, 0], [40, 12], [0, 12], [-40, 12] ],
   "damageKind" : "fire",
   "physics" : "grenadezbomb",
-  "emitters" : [ "flamesfast" ]
+  "emitters" : [ "flamesfast" ],
+  
+  
+  
+  
+	"actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/magmaorbboom/magmaorbboom.config"
+	    },
+	    {
+	      "action":"explosion", 
+	      "foregroundRadius":5, 
+	      "backgroundRadius":2, 
+	      "explosiveDamageAmount":15.0, 
+	      "delaySteps":2, 
+	      "harvestLevel":10
+	    },		    
+	    {
+	      "action":"explosion", 
+	      "foregroundRadius":34, 
+	      "backgroundRadius":17, 
+	      "explosiveDamageAmount":5.0, 
+	      "delaySteps":2, 
+	      "harvestLevel":10
+	    },	    
+	    { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 18 },
+	      {
+		"action":"projectile",
+		"type":"mechexplosion",
+		"angle":50,
+		"fuzzAngle":10,
+		"config":{
+		  "power":20,
+		  "processing":"?scalenearest=4.5",
+		  "knockback":24,
+		  "animationCycle":0.2,
+		  "timeToLive":0.2,
+		  
+		  "actionOnReap" : [
+		    {
+		      "time":0.1,
+		      "loop" : false,
+		      "action":"explosion", 
+		      "foregroundRadius":16, 
+		      "backgroundRadius":6, 
+		      "explosiveDamageAmount":2.5, 
+		      "delaySteps":2, 
+		      "harvestLevel":8
+		    },		  
+		    {
+		      "action":"projectile",
+		      "type":"mechexplosion",
+		      "angle":50,
+		      "fuzzAngle":10,
+		      "config":{
+			"power":20,
+			"processing":"?scalenearest=6",
+			"knockback":150,
+			"animationCycle":0.4,
+			"timeToLive":0.4,
+			"periodicActions":[
+			      {
+				"time":0.05,
+				"action":"projectile",
+				"type":"redglobe",
+				"angleAdjust":180,
+				"fuzzAngle":80,
+				"config":{
+				  "knockback":-20,
+				  "power":3,
+				  "speed":400,
+				  "timeToLive":0.03,
+				  "periodicActions":[],
+				  "actionOnCollide":[],
+				  "actionOnReap":[],
+				  "processing":"?scalenearest=0",
+				  "bounces":-1,
+				  "piercing":true
+				  }
+			      }
+			]
+		      }		    
+		    }
+		  ]
+		}
+	      }    
+	    ],  
+	    "periodicActions" : [
+	      {
+		"time":0.05,
+		"action":"projectile",
+		"type":"redglobe",
+		"angleAdjust":180,
+		"fuzzAngle":80,
+		"config":{
+		  "knockback":-20,
+		  "power":3,
+		  "speed":900,
+		  "timeToLive":0.03,
+		  "periodicActions":[],
+		  "actionOnCollide":[],
+		  "actionOnReap":[],
+		  "processing":"?scalenearest=0",
+		  "bounces":-1,
+		  "piercing":true
+		  }
+	      }    
+	    ]
 }

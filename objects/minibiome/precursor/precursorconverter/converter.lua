@@ -13,6 +13,8 @@ local recipes =
 {inputs = { neptuniumrod=1 }, outputs = { precursorfluid=4 }, time = 4.0},
 {inputs = { thoriumrod=1 }, outputs = { precursorfluid=5 }, time = 5.0},
 {inputs = { solariumstar=6 }, outputs = { precursorfluid=6 }, time = 6.0},
+{inputs = { enricheduranium=1 }, outputs = { precursorfluid=20 }, time = 6.0},
+{inputs = { enrichedplutonium=1}, outputs = { precursorfluid=30 }, time = 6.0},
 {inputs = { ultronium=1 }, outputs = { precursorfluid=50 }, time = 6.0},
 {inputs = { precursorfluid=50 }, outputs = { essence=400 }, time = 7.0},
 {inputs = { techcard=1 }, outputs = { essence=4 }, time = 1.0},

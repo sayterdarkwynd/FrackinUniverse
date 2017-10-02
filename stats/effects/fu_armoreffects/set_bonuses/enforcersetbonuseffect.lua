@@ -7,7 +7,8 @@ weaponBonus2={
 	{stat = "powerMultiplier", amount = 0.35}
 }
 armorBonus={
-  {stat = "liquidnitrogenImmunity", amount = 1.0}
+  {stat = "liquidnitrogenImmunity", amount = 1.0},
+  {stat = "darknessImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
