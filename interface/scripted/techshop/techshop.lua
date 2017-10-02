@@ -228,8 +228,10 @@ function doUnlock()
 					tech.item = tech.item:gsub("_tech", "")
 					local techItem = root.assetJson("/tech/items/" .. tech.item .. ".item")
 					local techBlueprints = techItem.learnBlueprintsOnPickup
-					for _,blueprint in pairs (techBlueprints) do
-						player.giveBlueprint(blueprint)
+					if techBlueprints then
+						for _,blueprint in pairs (techBlueprints) do
+							player.giveBlueprint(blueprint)
+						end
 					end
                 end
             end
