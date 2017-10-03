@@ -1,69 +1,64 @@
 {
-  "name" : "fulightningstorm2",
+  "name" : "fulightningrain2",
   "icon" : "/interface/cockpit/weather/lightningstorm.png",
 
    "particles" : [
-    {
-      "density" : 0.003,
-      "particle" : {
-        "type" : "animated",
-        "animation" : "/animations/electriccharge/electriccharge.animation",
-        "velocity" : [0, 0.20],
-        "fade" : 0.4,
-        "looping" : true,
-        "destructionTime" : 0.4,
-        "timeToLive" : 0.4,
-        "collidesForeground" : false,
-        "collidesLiquid" : true,
-        "ignoreWind" : true
-      }
-    },   
-    {
-      "density" : 0.005,
-      "particle" : {
-        "type" : "animated",
-        "animation" : "/animations/electriccharge/electriccharge.animation",
-        "velocity" : [0, 0.10],
-        "fade" : 0.4,
-        "looping" : true,
-        "destructionTime" : 0.4,
-        "timeToLive" : 0.4,
-        "collidesForeground" : false,
-        "collidesLiquid" : true,
-        "ignoreWind" : true
-      }
-    },   
-    {
-      "density" : 0.005,
-      "particle" : {
-        "type" : "animated",
-        "animation" : "/animations/electriccharge/electriccharge.animation",
-        "velocity" : [0, 0.30],
-        "fade" : 0.4,
-        "looping" : true,
-        "destructionTime" : 0.4,
-        "timeToLive" : 0.4,
-        "collidesForeground" : false,
-        "collidesLiquid" : true,
-        "ignoreWind" : true
-      }
-    },  
-    {
-      "density" : 0.008,
-      "particle" : {
-        "type" : "animated",
-        "animation" : "/animations/electroshock/electroshock.animation",
-        "velocity" : [0, 0.20],
-        "fade" : 0.4,
-        "looping" : true,
-        "destructionTime" : 20,
-        "timeToLive" : 0.2,
-        "collidesForeground" : false,
-        "collidesLiquid" : true,
-        "ignoreWind" : true
-      }
-    },      
-         {
+      {
+  
+        "density" : 0.05,
+        "autoRotate" : true,
+  
+        "particle" : {
+          "type" : "textured",
+          "image" : "/particles/rain/1.png",
+          "velocity" : [0, -35.5],
+          "approach" : [15, 15],
+          "angularVelocity" : 0,
+          "timeToLive" : 100,
+          "destructionAction" : "Image",
+          "destructionTime" : 0.1,
+          "destructionImage" : "/particles/splash/1.png",
+          "collidesForeground" : true,
+          "collidesLiquid" : true
+        }
+      },
+      {
+        "density" : 0.05,
+        "autoRotate" : true,
+  
+        "particle" : {
+          "type" : "textured",
+          "image" : "/particles/rain/2.png",
+          "velocity" : [0, -25.5],
+          "approach" : [15, 15],
+          "angularVelocity" : 0,
+          "timeToLive" : 100,
+          "destructionAction" : "Image",
+          "destructionTime" : 0.1,
+          "destructionImage" : "/particles/splash/1.png",
+          "collidesForeground" : true,
+          "collidesLiquid" : true
+        }
+      },
+      {
+        "density" : 0.05,
+        "autoRotate" : true,
+  
+        "particle" : {
+          "type" : "textured",
+          "image" : "/particles/rain/3.png",
+          "velocity" : [0, -20.5],
+          "approach" : [15, 15],
+          "angularVelocity" : 0,
+          "timeToLive" : 100,
+          "destructionAction" : "Image",
+          "destructionTime" : 0.1,
+          "destructionImage" : "/particles/splash/1.png",
+          "collidesForeground" : true,
+          "collidesLiquid" : true
+        }
+      },     
+      {
        "density" : 0.03,
        "particle" : {
          "type" : "textured",
@@ -1018,13 +1013,24 @@
       "spawnAboveRegion" : 24,
       "spawnHorizontalPad" : 30,
       "windAffectAmount" : 0.0
+    },
+    {
+      "projectile" : "water",
+      "parameters" : {
+        "power" : 0
+      },
+      "velocity" : [0, -30],
+      "ratePerX" : 0.1,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
     }
   ],
 
-  "statusEffects" : ["ffbiomeelectric2"],
-  "lightningFrequency" : 2,
+  "statusEffects" : ["ffbiomeelectric2","wet"],
+  "lightningFrequency" : 6,
   "duration" : [50, 120],
-  "maximumWind" : 90.0,
+  "maximumWind" : 80.0,
   "weatherNoises" : [ "/sfx/weather/ElectricStorm.ogg" ]
 }
 
