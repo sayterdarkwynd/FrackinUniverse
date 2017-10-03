@@ -11,7 +11,7 @@
             "cycle" : 1,
             "properties" : {
               "immediateSound" : "/sfx/npc/boss/ixoling_hatch2.ogg"
-            } 
+            }            
           },
           "fall" : {
             "frames" : 1
@@ -70,6 +70,7 @@
     "parts" : {
       "body" : {
         "properties" : {
+          "transformationGroups" : [ "facing", "body" ],
           "centered" : true,
           "offset" : [0,1]
         },
@@ -114,6 +115,10 @@
     }
   },
 
+  "transformationGroups" : {
+    "body" : { "interpolated" : true },
+    "facing" : { "interpolated" : false }
+  },
 
   "lights" : {
     "glow" : {
