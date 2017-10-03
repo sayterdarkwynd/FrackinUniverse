@@ -275,10 +275,7 @@ function questStart_FUStart()
   --if not (self.tagStartMission) then
   if not player.hasCompletedQuest("fu_start_MA") then
 	  player.startQuest("fu_start_MA")
-	  self.tagStartMission = 1
-  --elseif not player.hasCompletedQuest("fu_start_MA2") then
-  --	  player.startQuest("fu_start_MA2") 
-  end
+  end	  
 end
 
 
@@ -292,7 +289,6 @@ function commandProcessor(command)
 	elseif command == "Quest" then
 		local stage = textData.questData.current.stage
 		if stage == 0 then	-- Requesting a quest
-		        questStart_FUStart()
 			updateQuestDetails(textData.questData.current.difficulty)
 			writerInit(textData, textData[textData.currentRace]["questStage"..stage])
 			modifyButtons("Accept", false, false, false, false, "Decline")
@@ -318,6 +314,7 @@ function commandProcessor(command)
 	elseif command == "Accept" then
 		textData.questData.current.stage = 1
 		writerInit(textData, textData[textData.currentRace].questAccept)
+		questStart_FUStart()
 		resetGUI()
 		
 	elseif command == "Decline" then
