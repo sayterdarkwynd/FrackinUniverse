@@ -115,14 +115,14 @@ textData.questData = {
 ----------------------------------------------------------------------------
 
 stationGoods = {
-	{name = "foodgoods",		basePrice = 100,	baseAmount = 80,	stock = 200,},
-	{name = "mineralgoods",		basePrice = 150,	baseAmount = 80,	stock = 100,},
-	{name = "medicalgoods",		basePrice = 250,	baseAmount = 130,	stock = 120,},
-	{name = "electronicgoods",	basePrice = 350,	baseAmount = 220,	stock = 80,	},
-	{name = "chemicalgoods",	basePrice = 500,	baseAmount = 100,	stock = 60,	},
-	{name = "luxurygoods",		basePrice = 650,	baseAmount = 100,	stock = 90,	},
-	{name = "militarygoods",	basePrice = 800,	baseAmount = 50,	stock = 35,	},
-	{name = "contrabandgoods",	basePrice = 1000,	baseAmount = 5,		stock = 2,	},
+	{name = "foodgoods",		basePrice = 12,	baseAmount = 2,	stock = 0,},
+	{name = "mineralgoods",		basePrice = 12,	baseAmount = 2,	stock = 0,},
+	{name = "medicalgoods",		basePrice = 12,	baseAmount = 4,	stock = 0,},
+	{name = "electronicgoods",	basePrice = 12,	baseAmount = 1,	stock = 0,},
+	{name = "chemicalgoods",	basePrice = 25,	baseAmount = 2,	stock = 0,},
+	{name = "luxurygoods",		basePrice = 200,baseAmount = 5,	stock = 0,},
+	{name = "militarygoods",	basePrice = 0,	baseAmount = 1,	stock = 0,},
+	{name = "contrabandgoods",	basePrice = 300,baseAmount = 0,	stock = 0,},
 }
 
 stationSpecials = {}
@@ -131,23 +131,23 @@ stationSpecials = {}
 stationSpecials.medical = {
 	cooldown = 30,			-- In seconds, since purchase
 	purchaseTime = 0,		-- Player time when purhased
-	{ "^yellow;Miners Sense",			5000,	"/items/generic/other/yellowstim.png",		"runboost",	10,	"Increases mining equipment efficiency, and allows you to detect ores in a small radius around you.\nIn return, reduces damage output, and movement speed."},
-	{ "^red;Berserks Rage",				6000,	"/items/generic/other/redstim.png", 		"runboost",	10,	"Increases damage output, energy regeneration, and speed.\nIn return, drastically reduces defence and makes you more suspectible to knockbacks."},
-	{ "^blue;Oceanids Embrace",			7000,	"/items/generic/other/bluestim.png",		"runboost",	10,	"Renders you immune to breathing effects and gasses, while also greatly boosting your swiming speed.\nIn return, your movement, energy and health regenerations are slowed down."},
+	{ "^yellow;Miners Sense",		5000,	"/items/generic/other/yellowstim.png",		"runboost",	10,	"Increases mining equipment efficiency, and allows you to detect ores in a small radius around you.\nIn return, reduces damage output, and movement speed."},
+	{ "^red;Berserks Rage",			6000,	"/items/generic/other/redstim.png", 		"runboost",	10,	"Increases damage output, energy regeneration, and speed.\nIn return, drastically reduces defence and makes you more suspectible to knockbacks."},
+	{ "^blue;Oceanids Embrace",		7000,	"/items/generic/other/bluestim.png",		"runboost",	10,	"Renders you immune to breathing effects and gasses, while also greatly boosting your swiming speed.\nIn return, your movement, energy and health regenerations are slowed down."},
 	{ "^green;Survivalists Instincts",	4500,	"/items/generic/other/greenstim.png",		"runboost",	10,	"Hunger rate is drastically reduced, while drop rates and health are increased.\nIn return, Once you beam down on a planet, your only way back up is death."},
 	{ "^orange;Warriors Vendetta",		5700,	"/items/generic/other/orangestim.png",		"runboost",	10,	"Damage output, health, armor, and resistances are increased.\nIn return, if you do not kill something for more than 30 seconds, you will start losing health."},
-	{ "^#9932CC;Test Vial #83",			8338,	"/items/generic/other/synthesisstim.png",	"runboost",	10,	"A strange enhancer with seemingly random effect.\nConstantly applies random buffs and debuffs."},
+	{ "^#9932CC;Test Vial #83",		8338,	"/items/generic/other/synthesisstim.png",	"runboost",	10,	"A strange enhancer with seemingly random effect.\nConstantly applies random buffs and debuffs."},
 }
 
 --	{ displayed name, price, icon, description }
 stationSpecials.military = {
 	mercHired = false,
-	{ "^gray;Spec Ops",					5000,	"/items/armors/human/human-tier4/icons.png:head",			"A soldier specialized in fucking up franchises.\n^green;+25% damage, +10 protection"},
-	{ "Ghost Unit",						6000,	"/items/armors/apex/apex-tier6manipulator/icons.png:head", 	"A soldier specialized in not getting a promised game.\n^green;+10% crit chance, +33% crit damage"},
-	{ "^orange;Combat Engineer",		7000,	"/items/armors/human/human-tier6separator/icons.png:head",	"A soldier specialized in capturing structures by recoloring them, and then disappearing into thin air.\n^green;+20% fuel efficiency, +20% ship speed"},
+	{ "^gray;Spec Ops",			5000,	"/items/armors/human/human-tier4/icons.png:head",			"A soldier specialized in ruining franchises.\n^green;+25% damage, +10 protection"},
+	{ "Ghost Unit",				6000,	"/items/armors/apex/apex-tier6manipulator/icons.png:head", 	        "A soldier specialized in not getting a promised game.\n^green;+10% crit chance, +33% crit damage"},
+	{ "^orange;Combat Engineer",		7000,	"/items/armors/human/human-tier6separator/icons.png:head",	        "A soldier specialized in capturing structures by recoloring them, and then disappearing into thin air.\n^green;+20% fuel efficiency, +20% ship speed"},
 	{ "^red;Pyrotechnics Specialist",	4500,	"/items/armors/human/human-tier4/icons.png:head",			"A soldier specialized in burning stuff. Unsure if male or female. Maybe its not even human.\n^green;+33% fire resistance, +33% fire damage"},
-	{ "^pink;Psychic Manipulator",		5700,	"/items/armors/human/human-tier4/icons.png:head",			"A soldier specialized in screaming 'Yuri!' at things and setting them on fire.\n^green;Insanity immunity, lesser monsters are docile."},
-	{ "^#9932CC;Project Nemesis",		8338,	"/items/armors/human/human-tier4/icons.png:head",			"A badass beast, carring all sorts of heavy weaponry with it, which is also able to sniff out zombie virus infected chicks.\n^green;+40% Badass"},
+	{ "^pink;Psychic Manipulator",		5700,	"/items/armors/human/human-tier4/icons.png:head",			"A soldier specialized in screaming at things and setting them on fire.\n^green;Insanity immunity, lesser monsters are docile."},
+	{ "^#9932CC;Project Nemesis",		8338,	"/items/armors/human/human-tier4/icons.png:head",			"A bad-ass beast, carrying all sorts of heavy weaponry with it, which is also able to sniff out zombie virus infected chicks.\n^green;+40% Badass"},
 }
 
 --	{ item in, amount in, item out, amount out, skip}
@@ -155,9 +155,9 @@ stationSpecials.military = {
 stationSpecials.scientific = {
 	{ "feroziumore",		1,	"coalore",		20	},
 	{ "aegisaltore",		5,	"diamond",		1	},
-	{ "alienweirdwood",		3,	"ancientbones",	1	},
-	{ "artificialbrain",	1,	"basic",		50	},
-	{ "battery",			1,	"biosample",	20	},
+	{ "alienweirdwood",		3,	"ancientbones",	        1	},
+	{ "artificialbrain",	        1,	"basic",		50	},
+	{ "battery",			1,	"biosample",	        20	},
 }
 
 ---------------------- PORTRAIT ANIMATION VALUES ----------------------
@@ -272,11 +272,12 @@ end
 
 -- Special quest data for FU
 function questStart_FUStart()
-  if not (self.tagStartMission) then
+  --if not (self.tagStartMission) then
+  if not player.hasCompletedQuest("fu_start_MA") then
 	  player.startQuest("fu_start_MA")
 	  self.tagStartMission = 1
-  elseif player.hasCompletedQuest("fu_start_MA") then
-	  player.startQuest("fu_start_MA2") 
+  --elseif not player.hasCompletedQuest("fu_start_MA2") then
+  --	  player.startQuest("fu_start_MA2") 
   end
 end
 
