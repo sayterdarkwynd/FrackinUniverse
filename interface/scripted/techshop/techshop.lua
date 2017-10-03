@@ -224,7 +224,15 @@ function doUnlock()
                 player.makeTechAvailable(tech.name)
                 player.enableTech(tech.name)
                 if tech.item then
-                    player.giveItem(tech.item)
+                    world.sendEntityMessage(player.id(), "addCollectable", "fu_tech", tech.item)
+					tech.item = tech.item:gsub("_tech", "")
+					local techItem = root.assetJson("/tech/items/" .. tech.item .. ".item")
+					local techBlueprints = techItem.learnBlueprintsOnPickup
+					if techBlueprints then
+						for _,blueprint in pairs (techBlueprints) do
+							player.giveBlueprint(blueprint)
+						end
+					end
                 end
             end
         end
