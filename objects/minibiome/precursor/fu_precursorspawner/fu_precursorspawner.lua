@@ -24,12 +24,20 @@ function update(dt)
 						monsterType = pet.config.type
 						monsterSeed = pet.config.parameters.seed
 						monsterColour = pet.config.parameters.colors
+						monsterAggro = pet.config.parameters.aggressive
+						dropPool = {}
+						dropPool["default"] = "empty"
 						spawnPosition = vec2.add(object.position(), {0, 8})
+						--if world.threatLevel() < 5 then
+							--monsterLevel = 5
+						--else
+							monsterLevel = world.threatLevel()
+						--end
 							if monsterType and monsterSeed then
 								if monsterColour then
-									world.spawnMonster(monsterType, spawnPosition, {level = world.threatLevel(), seed = monsterSeed, colors = monsterColour});
+									world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, dropPools = dropPool, aggressive = monsterAggro});
 								else
-									world.spawnMonster(monsterType, spawnPosition, {level = world.threatLevel(), seed = monsterSeed});
+									world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, dropPools = dropPool, aggressive = monsterAggro});
 								end
 							end
 						end
