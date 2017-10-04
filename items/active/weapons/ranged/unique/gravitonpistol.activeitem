@@ -26,7 +26,10 @@
   },      
   
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/weapons/gravitongun.ogg" ] },
+    "sounds" : { 
+      "fire" : [ "/sfx/weapons/gravitongun.ogg" ],
+      "cooldown" : [ "/sfx/interface/aichatter2.ogg" ]
+    },
     "lights" : { "muzzleFlash" : {"color" : [75, 0, 124] } }  
   },
 
@@ -36,12 +39,14 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
-
+  
+  "isReloader" : 1,
+  
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.25,
-    "baseDps" : 5.1,
+    "fireTime" : 0.5,
+    "baseDps" : 5.5,
     "energyUsage" : 30,
     "fireType" : "auto",
     "inaccuracy" : 0,
@@ -53,31 +58,28 @@
       "timeToLive" : 0.6
     },
     "stances" : {
-      "idle" : {
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-
-        "allowRotate" : true,
-        "allowFlip" : true
+      "idle":{  
+        "armRotation":0,
+        "weaponRotation":0,
+        "twoHanded":false,
+        "allowRotate":true,
+        "allowFlip":true
       },
-      "fire" : {
-        "duration" : 0.05,
-        "armRotation" : 4,
-        "weaponRotation" : 4,
-        "twoHanded" : false,
-
-        "allowRotate" : false,
-        "allowFlip" : false
+      "fire":{  
+        "duration":0.1,
+        "armRotation":3,
+        "weaponRotation":8,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
       },
-      "cooldown" : {
-        "duration" : 0.05,
-        "armRotation" : 4,
-        "weaponRotation" : 4,
-        "twoHanded" : false,
-
-        "allowRotate" : false,
-        "allowFlip" : false
+      "cooldown":{  
+        "duration":0.2,
+        "armRotation":-7,
+        "weaponRotation":-360,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
       }
     }
   },
