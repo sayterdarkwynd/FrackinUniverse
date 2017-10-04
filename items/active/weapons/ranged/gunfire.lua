@@ -7,6 +7,7 @@ GunFire = WeaponAbility:new()
 function GunFire:init()
 self.critChance = config.getParameter("critChance", 0)
 self.critBonus = config.getParameter("critBonus", 0)
+self.isReloader = config.getParameter("isReloader",0)
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
@@ -99,6 +100,10 @@ function GunFire:auto()
 
   self.cooldownTimer = self.fireTime
   self:setState(self.cooldown)
+  self.isReloader = config.getParameter("isReloader",0)
+  if (self.isReloader) >= 1 then
+    animator.playSound("cooldown") -- adds new sound to reload
+  end
 end
 
 function GunFire:burst()
