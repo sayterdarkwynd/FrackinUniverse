@@ -37,15 +37,31 @@
     "projectileType" : "fuplatformprojectile",
     "projectileParameters" : {
       "timeToLive" : 5,
-      "speed" : 1
+      "speed" : 1,
+      "periodicActions" : [
+        
+	    {
+	      "action" : "projectile",
+	      "time" : 0.3,
+	      "type" : "icegas",
+	      "fuzzAngle" : 360,
+	      "inheritDamageFactor" : 0.05,
+	      "angleAdjust" : 0,
+	      "config" : {
+	        "timeToLive" : 1,
+	        "speed" : 5,
+	        "statusEffects" : [ "stun" ]
+	      }
+	    }        
+      ]      
     },
     
     "projectileCount" : 1,
     
     "inaccuracy" : 0,
-    "baseDps" : 15,
-    "energyUsage" : 75,
-    "fireTime" : 4,
+    "baseDps" : 3,
+    "energyUsage" : 67,
+    "fireTime" : 3,
     "fireType" : "auto",
 
     "firePositionPart" : "grenadelauncher",
