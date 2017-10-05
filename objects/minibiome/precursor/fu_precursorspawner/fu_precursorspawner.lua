@@ -1,10 +1,13 @@
 require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
+require '/scripts/power.lua'
 local crafting = false
 
 function init()
+	power.init()
 	self = config.getParameter("spawner")
 	self.timer = self.spawnTime
+	powered = false
 end
 
 function update(dt)
@@ -18,6 +21,14 @@ function update(dt)
 				if podSlot == self.podType then
 					world.containerConsumeAt(entity.id(),0,1)
 					self.timer = self.spawnTime
+					if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
+						emp()
+						powered = true
+						animator.setAnimationState("base", "overclocked")
+					else
+						powered = false
+						animator.setAnimationState("base", "on")
+					end
 					crafting = true
 				end
 			end
@@ -38,16 +49,27 @@ function update(dt)
 					dropPool = {}
 					dropPool["default"] = "empty"
 					spawnPosition = vec2.add(object.position(), {0, 8})
-					--if world.threatLevel() < 5 then
-						--monsterLevel = 5
-					--else
+					if world.threatLevel() < 5 then
+						monsterLevel = 5
+					else
 						monsterLevel = world.threatLevel()
-					--end
+					end
 						if monsterType and monsterSeed then
-							if monsterColour then
-								world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, dropPools = dropPool, aggressive = monsterAggro});
+							if powered == true then
+								if power.consume(config.getParameter('isn_requiredPower')) then
+									emp()
+									if monsterColour then
+										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, aggressive = monsterAggro});
+									else
+										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, aggressive = monsterAggro});
+									end
+								end
 							else
-								world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, dropPools = dropPool, aggressive = monsterAggro});
+								if monsterColour then
+									world.spawnMonster(monsterType, spawnPosition, {level = world.threatLevel(), seed = monsterSeed, colors = monsterColour, dropPools = dropPool, aggressive = monsterAggro});
+								else
+									world.spawnMonster(monsterType, spawnPosition, {level = world.threatLevel(), seed = monsterSeed, dropPools = dropPool, aggressive = monsterAggro});
+								end
 							end
 						end
 					end
@@ -58,7 +80,9 @@ function update(dt)
 	end
 	if not crafting and self.timer <= 0 then
 		self.timer = self.spawnTime
+		animator.setAnimationState("base", "off")
 	end
+	power.update(dt)
 end
 
 function getInputContents(slot)
@@ -81,4 +105,14 @@ function wireCheck()
 	return true
 	end
 	return false
+end
+
+function emp()
+	local objects = world.objectQuery(entity.position(), self.empRadius)
+	for _,object in pairs (objects) do
+		local isTurret = world.getObjectParameter(object, "maxEnergy")
+		if isTurret then
+			world.breakObject(object, false)
+		end
+	end
 end
