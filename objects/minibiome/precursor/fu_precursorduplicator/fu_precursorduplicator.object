@@ -1,0 +1,51 @@
+{
+  "objectName" : "fu_precursorduplicator",
+  "colonyTags" : ["precursor","ancient"],
+  "rarity" : "Legendary",
+  "description" : "Place fuel in the top left slot to duplicate the item in the bottom left slot. ^cyan;Requires ^orange;200W ^cyan;power.^reset;",
+  "shortdescription" : "Precursor Duplicator",
+  "race" : "human",
+  "printable" : false,
+  "category" : "crafting",
+  
+  "health" : 100000,
+
+  "animation" : "fu_precursorduplicator.animation",
+  "animationParts" : {
+    "base" : "fu_precursorduplicator.png",
+    "basefullbright" : "fu_precursorduplicatorlit.png"
+  },
+  "animationPosition" : [-64, 0],
+  
+  "inventoryIcon" : "fu_precursorduplicatoricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_precursorduplicator.png:off",
+      "imagePosition" : [-64, 0],
+      "frames" : 8,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/power.lua", "/objects/minibiome/precursor/fu_precursorduplicator/fu_precursorduplicator.lua" ],
+  "scriptDelta" : 10,
+
+  "inputNodes" : [ [-1, 0] ],
+
+  "duplicator" : {
+    "fuel" : ["precursorfluid", "plutoniumrod"],
+	"inputOutput" : ["copperbar", "silverbar"],
+	"craftTime" : 1
+  },
+  
+  "objectType" : "container",
+  "slotCount" : 3,
+  "uiConfig" : "/interface/objectcrafting/fu_precursorduplicator.config",
+  "subtitle" : "",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+  
+  "powertype" : "input",
+  "isn_requiredPower" : 200
+}
