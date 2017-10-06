@@ -12,39 +12,49 @@ step=0;
 time = 0;
 --[[
 node list:
-	powerNode
-	hiPumpNode
-	outDataNode
-	outLiquidNode
-	hiMineNode
+	storage.logicNode
+	storage.pumpHPNode
+	storage.outDataNode
+	storage.spoutNode
+	storage.drillHPNode
 
 ]]
 
-function excavatorCommon.init(drill,pump)
-	local did=false
+function excavatorCommon.init()
 	transferUtil.init()
 	storage.facing=util.clamp(object.direction(),0,1)
-	storage.isDrill=(drill==true)
-	storage.isPump=(pump==true)
-	storage.isVacuum=(vacuum==true)
+	storage.isDrill=config.getParameter("kheAA_isDrill",false)
+	storage.isPump=config.getParameter("kheAA_isPump",false)
+	storage.isVacuum=config.getParameter("kheAA_isVacuum",false)
+	--storage.logicNode=config.getParameter("kheAA_logicNode");
+	--storage.inDataNode=config.getParameter("kheAA_inDataNode");
+	--storage.outDataNode=config.getParameter("kheAA_outDataNode");
 	step=(step or -0.2)
-	storage.maxWidth = config.getParameter("kheAA_maxWidth",20);
-	storage.maxDepth=config.getParameter("kheAA_maxDepth",20);
-	storage.drillPower=config.getParameter("kheAA_drillPower",10);
-	if drill == true or pump == true then
-		storage.width=0
-		did=true
+
+	if storage.isDrill == true or storage.isPump == true then
+		storage.maxDepth=config.getParameter("kheAA_maxDepth",20);
 	end
-	if pump then
+	
+	if storage.isPump then
 		require "/scripts/kheAA/liquidLib.lua"
+		storage.pumpHPNode=config.getParameter("kheAA_powerPumpNode");
+		storage.spoutNode=config.getParameter("kheAA_spoutNode");
 		storage.depth=0
 		liquidLib.init()
-		did=true
 	end
-	if vacuum then
-		did=true
+	
+	if storage.isDrill then
+		storage.drillPower=config.getParameter("kheAA_drillPower",10);
+		storage.drillHPNode=config.getParameter("kheAA_powerMineNode");
+		storage.maxWidth = config.getParameter("kheAA_maxWidth",20);
+		storage.width=0
 	end
-	if did then
+	
+	if storage.isVacuum then
+		storage.vacuumRange=config.getParameter("kheAA_vacuumRange")
+	end
+	
+	if storage.isDrill or storage.isPump or storage.isVacuum then
 		storage.state="start"
 		anims()
 	else
@@ -69,7 +79,7 @@ function excavatorCommon.cycle(dt)
 		return
 	end
 	
-	if transferUtil.powerLevel(powerNode) then
+	if transferUtil.powerLevel(storage.logicNode) then
 		if storage.state=="stop" then
 			setRunning(true)
 			storage.state="start"
@@ -183,9 +193,15 @@ end
 
 
 
-function excavatorCommon.grab(grabPos,range)
-	if range == nil then range = 5 end
-	local drops = world.itemDropQuery(grabPos,range);
+function excavatorCommon.grab(grabPos)
+	if not storage.vacuumRange then
+		if not missingRangeCheck then
+			sb.logInfo("Uh-oh, an object at %s is missing vacuum range!",entity.position())
+			missingRangeCheck=true
+		end
+		return
+	end
+	local drops = world.itemDropQuery(grabPos,storage.vacuumRange);
 	--local size=world.containerItemsCanFit(storage.containerId,drops[i])
 	for i = 1, #drops do
 		local item = world.takeItemDrop(drops[i]);
@@ -207,7 +223,7 @@ function states.mine(dt)
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=2
-				if true or storage.isVacuum then
+				if storage.isVacuum then
 					excavatorCommon.grab(redrillPosFore)
 				end
 				return
@@ -219,7 +235,7 @@ function states.mine(dt)
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
 				reDrillLevelFore=0
-				if true or storage.isVacuum then
+				if storage.isVacuum then
 					excavatorCommon.grab(redrillPosFore)
 				end
 				return
@@ -234,7 +250,9 @@ function states.mine(dt)
 			if world.material(redrillPosBack,"background") then
 				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=2
-				excavatorCommon.grab(redrillPosBack)
+				if storage.isVacuum then
+					excavatorCommon.grab(redrillPosFore)
+				end
 				return
 			else
 				reDrillLevelBack=0
@@ -244,7 +262,7 @@ function states.mine(dt)
 			if world.material(redrillPosBack,"background") then
 				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=0
-				if true or storage.isVacuum then
+				if storage.isVacuum then
 					excavatorCommon.grab(redrillPosBack)
 				end
 				return
@@ -278,7 +296,7 @@ function states.mine(dt)
 			end
 		end
 	end
-	if transferUtil.powerLevel(hiMineNode,true) then
+	if transferUtil.powerLevel(storage.drillHPNode,true) then
 		world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", storage.drillPower)
 		if world.material(absdrillPos,"background") then
 			world.damageTiles({absdrillPos}, "background", absdrillPos, "plantish", storage.drillPower)
@@ -292,7 +310,7 @@ function states.mine(dt)
 	storage.drillTarget = excavatorCommon.getNextDrillTarget();
 	deltatime=0.1
 	storage.state = "moveDrill";
-	if true or storage.isVacuum then
+	if storage.isVacuum then
 		excavatorCommon.grab(absdrillPos)
 	end
 	
@@ -312,7 +330,7 @@ function states.pump(dt)
 		storage.liquids[liquid[1]] = storage.liquids[liquid[1]] + liquid[2];
 	end
 	
-	if not transferUtil.powerLevel(hiPumpNode,true) then
+	if not transferUtil.powerLevel(storage.pumpHPNode,true) then
 		for k,v in pairs(storage.liquids) do
 			if v >= 1 then
 				local level=10^math.floor(math.log(v,10))

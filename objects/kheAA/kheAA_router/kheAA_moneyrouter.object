@@ -1,16 +1,16 @@
 {
-	"objectName" : "network_router",
+	"objectName" : "network_moneyrouter",
 	"colonyTags" : [],
 	"printable" : false,
 	"rarity" : "Common",
 	"notItemStorage":true,
 	"category" : "wire",
 	"price" : 500,
-	"description" : "Moves items between containers.
+	"description" : "Moves money between containers.
 ^blue;Input^white;1^blue;: ^white;power switch
 ^blue;Input^white;2^blue;: ^white;item network
 ^red;Output: ^white;item network^reset;",
-	"shortdescription" : "Item Transference Device",
+	"shortdescription" : "Money Transference Device",
 	"race" : "generic",
 
 	"inventoryIcon" : "kheAA_routericon.png",
@@ -33,12 +33,8 @@
 
 	"health" : 1.5,
 
-	"objectType" : "container",
-
 	"openSounds" : [ "/sfx/objects/mannequin_open.ogg" ],
 	"closeSounds" : [ "/sfx/objects/mannequin_close.ogg" ],
-	"slotCount" : 5,
-	"uiConfig" : "/interface/kheAA/kheAA_router/kheAA_routerGui.config",
 	"frameCooldown" : 5,
 	"autoCloseCooldown" : 3600,
 	"inputNodes" : [ [0, 0],[1,0] ],
@@ -48,7 +44,7 @@
 	"kheAA_outDataNode":0,
 	
 
-	"scripts" : [ "kheAA_router.lua" ],
+	"scripts" : [ "kheAA_moneyrouter.lua" ],
 	"scriptDelta" : 5,
 	"itemAgeMultiplier" : 0.0
 }

@@ -1,5 +1,4 @@
 require "/scripts/kheAA/transferUtil.lua"
-local deltatime = 0;
 
 function init()
 	transferUtil.init()
@@ -14,27 +13,24 @@ function init()
 end
 
 function update(dt)
-	deltatime = deltatime + dt;
+	deltatime = (deltatime or 0) + dt;
 	if deltatime < 1 then
 		return;
 	end
 	deltatime = 0;
 	storage.routerItems=world.containerItems(entity.id())
-	transferUtil.updateInputs(inDataNode);
-	transferUtil.updateOutputs(outDataNode);
+	transferUtil.updateInputs();
+	transferUtil.updateOutputs();
 	
-	if transferUtil.powerLevel(powerNode) then
+	if transferUtil.powerLevel(storage.logicNode) then
 		transferUtil.routeItems();
-		object.setOutputNodeLevel(outDataNode,util.tableSize(storage.inContainers)>0)
+		object.setOutputNodeLevel(storage.outDataNode,util.tableSize(storage.inContainers)>0)
 	else
-		object.setOutputNodeLevel(outDataNode,false)
+		object.setOutputNodeLevel(storage.outDataNode,false)
 	end
 end
 
 function initVars()
-	powerNode=0
-	inDataNode=1
-	outDataNode=0
 	storage.routerItems={}
 	storage.inContainers={}
 	storage.outContainers={}
