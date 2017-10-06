@@ -26,7 +26,7 @@ function init()
   -- set desaturation effect
   self.multiply = config.getParameter("multiplyColor")
   self.saturation = 0
-
+  self.randyrandy= math.random(7)
   checkEffectValid()
 
   script.setUpdateDelta(5)
@@ -183,46 +183,56 @@ function messageCheck()
 
   
         self.hungerLevel = hungerLevel()
-        if (self.windLevel >= 20) then
-                if self.timerRadioMessage < 1 then
-                  if not self.usedWind then  
-                    self.randyrandy=math.random(7)
-                    if (self.randyrandy) == 0 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectkyle", 60.0)
-                    elseif (self.randyrandy) == 1 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmike", 60.0)
-                    elseif (self.randyrandy) == 2 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmusic", 60.0)
-                    elseif (self.randyrandy) == 3 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwee", 60.0)
-                    elseif (self.randyrandy) == 4 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectneat", 60.0)
-                    elseif (self.randyrandy) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 60.0)
-                    elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 60.0) 
-                    elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 60.0)
-                    end
-                    self.timerRadioMessage = 5
-                    self.usedWind = 1
-                  end
-		end
+        if (self.windLevel >= 5) then  
+	  if not (self.usedWind) and (self.timerRadioMessage) < 1 then  
+	    
+	    if (self.randyrandy) == 0 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectkyle", 1.0)
+	    elseif (self.randyrandy) == 1 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmike", 1.0)
+	    elseif (self.randyrandy) == 2 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmusic", 1.0)
+	    elseif (self.randyrandy) == 3 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwee", 1.0)
+	    elseif (self.randyrandy) == 4 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectneat", 1.0)
+	    elseif (self.randyrandy) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 1.0)
+	    elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
+	    elseif (self.randyrandy) == 7 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 1.0)
+	    end
+	    self.timerRadioMessage = 120
+	    self.usedWind = 1
+	  end
         end
         
-        if status.isResource("food") then
-	     if ( self.hungerLevel <= 5) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry4", 60.0) 
+        if status.resource("health") <= status.stat("maxHealth") and (self.timerRadioMessage) < 1 then
+	    if (self.randyrandy) == 0 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying", 1.0)
+	    elseif (self.randyrandy) == 1 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying2", 1.0)
+	    elseif (self.randyrandy) == 2 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying3", 1.0)
+	    elseif (self.randyrandy) == 3 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying4", 1.0)
+	    elseif (self.randyrandy) == 4 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying5", 1.0)
+	    elseif (self.randyrandy) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 1.0)
+	    elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
+	    elseif (self.randyrandy) == 7 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 1.0)
+	    end        
+        end
+        
+        if status.isResource("food") and (self.timerRadioMessage) < 1 then
+	     if (self.hungerLevel < 5) then
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry4", 1.0) 
                    self.timerRadioMessage = 60
-             elseif (self.hungerLevel <= 10) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry3", 60.0) 
+             elseif (self.hungerLevel < 10) then
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry3", 1.0) 
                    self.timerRadioMessage = 60
-             elseif (self.hungerLevel <= 20) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry2", 60.0) 
+             elseif (self.hungerLevel < 20) then
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry2", 1.0) 
                    self.timerRadioMessage = 60
-             elseif (self.hungerLevel <= 30) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry1", 60.0) 
+             elseif (self.hungerLevel < 30) then
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry1", 1.0) 
                    self.timerRadioMessage = 60
-             elseif (self.hungerLevel <= 40) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry5", 60.0) 
+             elseif (self.hungerLevel < 40) then
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry5", 1.0) 
                    self.timerRadioMessage = 60
-             elseif (self.hungerLevel <= 50) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry6", 60.0) 
+             elseif (self.hungerLevel < 50) then
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry6", 1.0) 
                    self.timerRadioMessage = 60
-             elseif (self.hungerLevel <= 60) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry7", 60.0) 
+             elseif (self.hungerLevel < 60) then
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry7", 1.0) 
                    self.timerRadioMessage = 60
  	     end
         end
@@ -240,7 +250,7 @@ checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt
 self.biomeTimer2 = self.biomeTimer2 - dt
 self.timerRadioMessage = self.timerRadioMessage - dt
-
+sb.logInfo("timer = "..self.timerRadioMessage)
 --set the base stats
   self.baseRate = config.getParameter("baseRate",0)
   self.baseDmg = config.getParameter("baseDmgPerTick",0)
