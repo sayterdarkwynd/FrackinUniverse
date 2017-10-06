@@ -159,25 +159,25 @@ function messageCheck()
           self.liquidPercent = mcontroller.liquidPercentage()
 	  if (self.liquidPercent) >= 0.5 and self.timerRadioMessage < 1 and not self.usedLiq then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 1.0) 
-			   self.timerRadioMessage = 20 
+			   self.timerRadioMessage = 60 
 			   self.usedLiq = 1
 	  end
 	  self.velocityVal = mcontroller.xVelocity()
 	  if (self.velocityVal) >= 10 and self.timerRadioMessage < 1 and not self.usedVel then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectfast", 1.0) 
-			   self.timerRadioMessage = 20  
+			   self.timerRadioMessage = 60  
 			   self.usedVel = 1
 	  end
 
 	  if mcontroller.zeroG() and self.timerRadioMessage < 1 and not self.usedZero then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectgrav", 1.0) 
-			   self.timerRadioMessage = 20  
+			   self.timerRadioMessage = 60  
 			   self.usedZero = 1
 	  end  
 
 	  if not mcontroller.onGround() and self.timerRadioMessage < 1 and not self.usedLeap then
 			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair", 1.0) 
-			   self.timerRadioMessage = 20  
+			   self.timerRadioMessage = 60  
 			   self.usedLeap = 1
 	  end 
 
@@ -185,8 +185,17 @@ function messageCheck()
         self.hungerLevel = hungerLevel()
         if (self.windLevel >= 20) then
                 if self.timerRadioMessage < 1 then
-                  if not self.usedWind then
-                    world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
+                  if not self.usedWind then  
+                    self.randyrandy=math.random(7)
+                    if (self.randyrandy) == 0 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectkyle", 60.0)
+                    elseif (self.randyrandy) == 1 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmike", 60.0)
+                    elseif (self.randyrandy) == 2 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmusic", 60.0)
+                    elseif (self.randyrandy) == 3 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwee", 60.0)
+                    elseif (self.randyrandy) == 4 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectneat", 60.0)
+                    elseif (self.randyrandy) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 60.0)
+                    elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 60.0) 
+                    elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 60.0)
+                    end
                     self.timerRadioMessage = 5
                     self.usedWind = 1
                   end
@@ -195,26 +204,26 @@ function messageCheck()
         
         if status.isResource("food") then
 	     if ( self.hungerLevel <= 5) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry4", 1.0) 
-                   self.timerRadioMessage = 20
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry4", 60.0) 
+                   self.timerRadioMessage = 60
              elseif (self.hungerLevel <= 10) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry3", 1.0) 
-                   self.timerRadioMessage = 20
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry3", 60.0) 
+                   self.timerRadioMessage = 60
              elseif (self.hungerLevel <= 20) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry2", 1.0) 
-                   self.timerRadioMessage = 20
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry2", 60.0) 
+                   self.timerRadioMessage = 60
              elseif (self.hungerLevel <= 30) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry1", 1.0) 
-                   self.timerRadioMessage = 20
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry1", 60.0) 
+                   self.timerRadioMessage = 60
              elseif (self.hungerLevel <= 40) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry5", 1.0) 
-                   self.timerRadioMessage = 20
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry5", 60.0) 
+                   self.timerRadioMessage = 60
              elseif (self.hungerLevel <= 50) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry6", 1.0) 
-                   self.timerRadioMessage = 20
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry6", 60.0) 
+                   self.timerRadioMessage = 60
              elseif (self.hungerLevel <= 60) then
-                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry7", 1.0) 
-                   self.timerRadioMessage = 20
+                   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry7", 60.0) 
+                   self.timerRadioMessage = 60
  	     end
         end
 end
@@ -252,9 +261,9 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   local lightLevel = getLight()
 
       if (status.stat("cosmicResistance") < self.effectCutoffValue) then
-             mcontroller.controlModifiers({
-	         speedModifier = (-status.stat("cosmicResistance",0))-0.2
-             })
+             --mcontroller.controlModifiers({
+	     --    speedModifier = (-status.stat("cosmicResistance",0))-0.2
+             --})
              activateVisualEffects()
       end
 
