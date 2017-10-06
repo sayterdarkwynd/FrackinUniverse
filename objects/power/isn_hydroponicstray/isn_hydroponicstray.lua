@@ -136,48 +136,50 @@ function isn_doSeedIntake()
 		end
 	end
 	
-	local saplings = world.containerItems(entity.id(), storage.seedslot)
-	for _,sapling in pairs(saplings) do
-		local stemType = sapling.parameters.stemName
-		local foliageType = sapling.parameters.foliageName
-		if stemType and foliageType then
-			primaryItems = {}
-			secondaryItems = {}
-			saplingParameters = {}
-			local stemPath = root.treeStemDirectory(stemType)
-			local stemJson = root.assetJson(stemPath .. stemType .. ".modularstem")
-			local stemInfo = stemJson.dropConfig.drops
-			for _,stemDrops in pairs(stemInfo) do
-				for _,stem in pairs(stemDrops) do
-					primaryItems[stem.item] = stem.item
-				end
-				if primaryItems then
-					local foliagePath = root.treeFoliageDirectory(foliageType)
-					local foliageJson = root.assetJson(foliagePath .. foliageType .. ".modularfoliage")
-					local foliageInfo = foliageJson.dropConfig.drops
-					for _,foliageDrops in pairs(foliageInfo) do
-						for _,foliage in pairs(foliageDrops) do
-							secondaryItems[foliage.item] = foliage.item
-						end
+	if seed.name == "sapling" then
+		local saplings = world.containerItems(entity.id(), storage.seedslot)
+		for _,sapling in pairs(saplings) do
+			local stemType = sapling.parameters.stemName
+			local foliageType = sapling.parameters.foliageName
+			if stemType and foliageType then
+				primaryItems = {}
+				secondaryItems = {}
+				saplingParameters = {}
+				local stemPath = root.treeStemDirectory(stemType)
+				local stemJson = root.assetJson(stemPath .. stemType .. ".modularstem")
+				local stemInfo = stemJson.dropConfig.drops
+				for _,stemDrops in pairs(stemInfo) do
+					for _,stem in pairs(stemDrops) do
+						primaryItems[stem.item] = stem.item
 					end
-					saplingParameters = sapling.parameters
-					storage.currentseed = "sapling"
-					storage.currentcrop = "logblock"
-					storage.yield = math.random(3,5)
-					secondaryYield = math.random(1,2)
-					if storage.fertYield then storage.yield = storage.yield * 2
-					secondaryYield = secondaryYield * 1
-					elseif storage.fertYield2 then storage.yield = storage.yield * 3
-					secondaryYield = secondaryYield * 2
-					elseif storage.fertYield3 then storage.yield = storage.yield * 4 
-					secondaryYield = secondaryYield * 3 end
-					world.containerConsume(entity.id(), {name = "sapling", count = 1, data={}})
-					return true
+					if primaryItems then
+						local foliagePath = root.treeFoliageDirectory(foliageType)
+						local foliageJson = root.assetJson(foliagePath .. foliageType .. ".modularfoliage")
+						local foliageInfo = foliageJson.dropConfig.drops
+						for _,foliageDrops in pairs(foliageInfo) do
+							for _,foliage in pairs(foliageDrops) do
+								secondaryItems[foliage.item] = foliage.item
+							end
+						end
+						saplingParameters = sapling.parameters
+						storage.currentseed = "sapling"
+						storage.currentcrop = "logblock"
+						storage.yield = math.random(3,5)
+						secondaryYield = math.random(1,2)
+						if storage.fertYield then storage.yield = storage.yield * 2
+						secondaryYield = secondaryYield * 1
+						elseif storage.fertYield2 then storage.yield = storage.yield * 3
+						secondaryYield = secondaryYield * 2
+						elseif storage.fertYield3 then storage.yield = storage.yield * 4 
+						secondaryYield = secondaryYield * 3 end
+						world.containerConsume(entity.id(), {name = "sapling", count = 1, data={}})
+						return true
+					end
 				end
 			end
 		end
+	else return false
 	end
-	return false
 end
 
 function isn_doFertIntake()

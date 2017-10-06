@@ -1,0 +1,69 @@
+{
+  "projectileName" : "magnorbpyreite",
+  "image" : "magnorbhellfire.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1,
+  "speed" : 50,
+  "damageKind" : "fire",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 0,
+  "piercing" : true,
+  "timeToLive" : 1,
+  "lightColor" : [73, 43, 16],
+
+  "emitters" : [ "flamesfast" ],
+  "statusEffects" : [ "burning" ],
+  
+  "actionOnReap" : [ 
+    { "action" : "config", "file" : "/projectiles/explosions/elementimpact/fireimpact.config" },
+    { "action" : "config", "file" : "/projectiles/explosions/smokeexplosion/smokeexplosion.config" },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/fireball_bounce1.ogg",
+        "/sfx/projectiles/fireball_bounce2.ogg",
+        "/sfx/projectiles/fireball_bounce3.ogg"
+      ]
+    }    
+  ],
+
+    "periodicActions":[
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/activeitems/staff/elementbouncer/firebouncer.png:1",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    },
+
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/activeitems/staff/elementbouncer/firebouncer.png:2",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      }
+    ]
+}
