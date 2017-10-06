@@ -12,7 +12,6 @@ function init()
 	launchDuration = config.getParameter("launchDuration")
 	launchTiming = config.getParameter("launchTiming")
 	launchPosition = vec2.add(config.getParameter("launchPosition"), entity.position())
-
 	if checkSurface then
 		onSurface = surfaceCheck()
 	else
@@ -23,9 +22,18 @@ function init()
 	else
 		animator.setAnimationState("shipper", "error")
 	end
+	object.setInteractive(true)
 end
 
 function update(dt)
+
+	if not containerUpdateTimer or containerUpdateTimer > 1 then
+		containerUpdateTimer=0
+		transferUtil.loadSelfContainer()
+	else
+		containerUpdateTimer=containerUpdateTimer+dt
+	end
+	
 	if checkSurface then
 		surfaceCheckTimer = surfaceCheckTimer - dt
 		if surfaceCheckTimer <= 0 then
@@ -55,8 +63,17 @@ function update(dt)
 			animator.setAnimationState("shipper", "open")
 		end
 	end
-
-	--object.setInteractive(onSurface and not launchTimer)
+	
+	if object.getInputNodeLevel(storage.logicNode) or not object.isInputNodeConnected(storage.logicNode) then
+		if not launchStartTimer or launchStartTimer > 1 then
+			launchStartTimer=0
+			startLaunch()
+		else
+			launchStartTimer=launchStartTimer+dt
+		end
+	elseif launchStartTimer ~= 0 then
+		launchStartTimer=0
+	end
 end
 
 function surfaceCheck()
@@ -74,7 +91,6 @@ function startLaunch()
 	launchTimer = 0
 	animator.setAnimationState("shipper", "ship")
 
-	--object.setInteractive(false)
 	world.containerTakeAll(entity.id())
 	world.containerAddItems(entity.id(),{"money",value})
 end
@@ -94,7 +110,7 @@ function valueOfContents()
 	local value = 0
 	local itemCount=0
 	local allItems = world.containerItems(entity.id())
-	for item,_ in pairs(allItems) do
+	for slot,item in pairs(allItems) do
 		if item.name=="money" then
 			value = value + item.count
 		else

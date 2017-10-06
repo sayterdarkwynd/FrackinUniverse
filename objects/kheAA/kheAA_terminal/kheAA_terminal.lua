@@ -5,11 +5,16 @@ function init()
 	message.setHandler("transferUtil.sendConfig",transferUtil.sendConfig);
 	message.setHandler("transferItem", transferItem);
 	object.setInteractive(true);
-	inDataNode=0
 end
 
-function update()
-	transferUtil.updateInputs(inDataNode)
+function update(dt)
+	deltaTime=(deltaTime or 0)+dt
+	if deltaTime >= 1 then
+		deltaTime=0
+	else
+		return
+	end
+	transferUtil.updateInputs(storage.inDataNode)
 end
 
 function transferItem(_, _, itemData)

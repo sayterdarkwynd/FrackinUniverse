@@ -1,10 +1,7 @@
 require "/scripts/kheAA/excavatorCommon.lua"
 
 function init()
-	excavatorCommon.init(true,false);
-	powerNode=0
-	hiMineNode=1
-	outDataNode=0
+	excavatorCommon.init();
 end
 
 function anims()
