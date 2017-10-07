@@ -2,20 +2,16 @@
 
 function init()
 	message.setHandler("setTimerValues",setValues)
-	message.setHandler("resetTimerValues",function() storage.state=-2 end)
-	if storage.state and storage.state==-2 then
-		storage.leftValue=26
-		storage.midValue=2
-		storage.rightValue=2
-	else
-		storage.leftValue=storage.leftValue or 26
-		storage.midValue=storage.midValue or 2
-		storage.rightValue=storage.rightValue or 2
-	end
+	message.setHandler("sendConfig",sendConfig)
+	message.setHandler("resetTimerValues",resetValues)
+	storage.leftValue=storage.leftValue or 26
+	storage.midValue=storage.midValue or 2
+	storage.rightValue=storage.rightValue or 2
 	storage.state=-1
 	runCircuit()
 	--doAnim()
 	script.setUpdateDelta(1)
+	object.setInteractive(true)
 end
 
 function runCircuit()
@@ -53,6 +49,14 @@ function setValues(_,_,values)
 	init()
 end
 
+function resetValues(_)
+	storage.state=-2
+	storage.leftValue=26
+	storage.midValue=2
+	storage.rightValue=2
+	return storage
+end
+
 function doAnim()
 	animator.setAnimationState("switchState", (storage.state >= 0) and "on" or "off")
 end
@@ -63,4 +67,8 @@ end
 
 function onNodeConnectionChange()
 	init()
+end
+
+function sendConfig()
+	return storage
 end
