@@ -5,6 +5,10 @@ require "/scripts/kheAA/transferUtil.lua"
 function init()
 	transferUtil.init()
 	sellFactor = config.getParameter("sellFactor")
+	if not sellFactor then
+		animator.setAnimationState("shipper", "error")
+		return
+	end
 	surfaceCheckArea = rect.translate(config.getParameter("surfaceCheckArea"), entity.position())
 	surfaceCheckInterval = config.getParameter("surfaceCheckInterval")
 	surfaceCheckTimer = surfaceCheckInterval
@@ -26,6 +30,10 @@ function init()
 end
 
 function update(dt)
+	if not sellFactor then
+		animator.setAnimationState("shipper", "error")
+		return
+	end
 
 	if not containerUpdateTimer or containerUpdateTimer > 1 then
 		containerUpdateTimer=0
@@ -107,6 +115,7 @@ function spawnProjectile()
 end
 
 function valueOfContents()
+
 	local value = 0
 	local itemCount=0
 	local allItems = world.containerItems(entity.id())
