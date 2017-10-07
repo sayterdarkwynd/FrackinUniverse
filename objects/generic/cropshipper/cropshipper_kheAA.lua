@@ -115,7 +115,7 @@ function valueOfContents()
 			value = value + item.count
 		else
 			local price = root.itemConfig(item).config.price or 0
-			value = value + price * item.count
+			value = value + (price * item.count*sellFactor)
 			itemCount = itemCount + 1
 		end
 	end

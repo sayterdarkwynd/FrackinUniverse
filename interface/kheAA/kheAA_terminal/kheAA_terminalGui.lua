@@ -93,7 +93,7 @@ function getIcon(item, conf, listItem)
 			--local scaleDown = math.max(math.ceil(imageSize[1] / iconSize[1]), math.ceil(imageSize[2] / iconSize[2]))
 			--widget.setImageScale(string.format("%s.%s.icon", self.list, item), 1 / scaleDown)
 		elseif type(icon) == "table" then
-			sb.logInfo("%s",icon)
+			--sb.logInfo("%s",icon)
 			for i,v in pairs(icon) do
 				local item = widget.addListItem(itemList .. "." .. listItem .. ".compositeIcon")
 				widget.setImage(itemList .. "." .. listItem .. ".compositeIcon." .. item ..".icon", absolutePath(conf.directory, v.image))
