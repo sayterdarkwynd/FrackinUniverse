@@ -1,0 +1,93 @@
+{
+  "projectileName" : "webspitfrank",
+  "image" : "webspitfrank.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "piercing" : false,
+  "pointLight" : false,
+  "actionOnReap" : [
+	{
+	  "time" : 0, 
+	  "repeat" : false, 
+	  "action" : "loop", 
+	  "count" : 5,
+	  "body": [ {
+        "action" : "projectile",
+        "type" : "tilesprayer",
+	    "fuzzAngle" : 50,
+	    "config" : { 
+		  "tileSprayed" : "spidersilkblockmik",
+		  "timeToLive" : 0.2,
+		  "layerSprayed" : "foreground",
+		  "waitUntil" : 5,
+		  "speed" : 30
+		  }
+		}
+	  ]
+    },
+	{
+	  "time" : 0, 
+	  "repeat" : false, 
+	  "action" : "loop", 
+	  "count" : 5,
+	  "body": [ {
+        "action" : "projectile",
+        "type" : "tilesprayer",
+	    "fuzzAngle" : 50,
+		"angleAdjust" : 90,
+	    "config" : { 
+		  "tileSprayed" : "spidersilkblockmik",
+		  "timeToLive" : 0.2,
+		  "layerSprayed" : "foreground",
+		  "waitUntil" : 5,
+		  "speed" : 30
+		  }
+		}
+	  ]
+    },
+	{
+	  "time" : 0, 
+	  "repeat" : false, 
+	  "action" : "loop", 
+	  "count" : 5,
+	  "body": [ {
+        "action" : "projectile",
+        "type" : "tilesprayer",
+	    "fuzzAngle" : 50,
+		"angleAdjust" : 180,
+	    "config" : { 
+		  "tileSprayed" : "spidersilkblockmik",
+		  "timeToLive" : 0.2,
+		  "layerSprayed" : "foreground",
+		  "waitUntil" : 5,
+		  "speed" : 30
+		  }
+		}
+	  ]
+    },
+	{
+	  "time" : 0, 
+	  "repeat" : false, 
+	  "action" : "loop", 
+	  "count" : 5,
+	  "angleAdjust" : 270,
+	  "body": [ {
+        "action" : "projectile",
+        "type" : "tilesprayer",
+	    "fuzzAngle" : 50,
+	    "config" : { 
+		  "tileSprayed" : "spidersilkblockmik",
+		  "timeToLive" : 0.2,
+		  "layerSprayed" : "foreground",
+		  "waitUntil" : 5,
+		  "speed" : 30
+		  }
+		}
+	  ]
+    }
+  ],
+  "power": 5,
+  "speed" : 50,
+  "damageKind" : "default",
+  "statusEffects" : [ "webstick" ]
+}
