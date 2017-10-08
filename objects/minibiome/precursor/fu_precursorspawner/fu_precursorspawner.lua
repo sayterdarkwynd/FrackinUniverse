@@ -2,6 +2,7 @@ require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
 require '/scripts/power.lua'
 local crafting = false
+local requiredPower = 0
 
 function init()
 	power.init()
@@ -19,17 +20,21 @@ function update(dt)
 				slot = 1
 				podSlot = getInputContents(slot)
 				if podSlot == self.podType then
-					world.containerConsumeAt(entity.id(),0,1)
-					self.timer = self.spawnTime
 					if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
-						emp()
-						powered = true
-						animator.setAnimationState("base", "overclocked")
-					else
-						powered = false
-						animator.setAnimationState("base", "on")
+						--if power.getTotalEnergy() >= config.getParameter('isn_requiredPowerOverclocked') then
+							--world.containerConsumeAt(entity.id(),0,1)
+							--self.timer = self.spawnTime/2
+							--animator.setAnimationState("base", "overclocked")
+							--requiredPower = config.getParameter('isn_requiredPowerOverclocked')
+							--crafting = true
+						--else
+							world.containerConsumeAt(entity.id(),0,1)
+							self.timer = self.spawnTime
+							animator.setAnimationState("base", "on")
+							requiredPower = config.getParameter('isn_requiredPower')
+							crafting = true
+						--end
 					end
-					crafting = true
 				end
 			end
 		end
@@ -37,38 +42,38 @@ function update(dt)
 	self.timer = self.timer - dt
 	if self.timer <= 0 then
 		if crafting == true then
-			local items = world.containerItems(entity.id(), 1)
-			for _,item in pairs(items) do
-				pets = (item.parameters.pets)
-				if pets then
-					for _,pet in pairs(pets) do
-					monsterType = pet.config.type
-					monsterSeed = pet.config.parameters.seed
-					monsterColour = pet.config.parameters.colors
-					monsterAggro = pet.config.parameters.aggressive
-					dropPool = {}
-					dropPool["default"] = "empty"
-					spawnPosition = vec2.add(object.position(), {0, 8})
-					if world.threatLevel() < 5 then
-						monsterLevel = 5
-					else
-						monsterLevel = world.threatLevel()
-					end
-						if monsterType and monsterSeed then
-							if powered == true then
-								if power.consume(config.getParameter('isn_requiredPower')) then
-									emp()
+			if power.consume(requiredPower) then
+				local items = world.containerItems(entity.id(), 1)
+				for _,item in pairs(items) do
+					pets = (item.parameters.pets)
+					if pets then
+						for _,pet in pairs(pets) do
+						monsterType = pet.config.type
+						monsterSeed = pet.config.parameters.seed
+						monsterColour = pet.config.parameters.colors
+						monsterAggro = pet.config.parameters.aggressive
+						blacklisted = checkBlacklist(monsterType)
+						dropPool = {}
+						dropPool["default"] = "empty"
+						spawnPosition = vec2.add(object.position(), {0, 8})
+						if world.threatLevel() < 5 then
+							monsterLevel = 5
+						else
+							monsterLevel = world.threatLevel()
+						end
+							if monsterType and monsterSeed then
+								if blacklisted == true then
 									if monsterColour then
-										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, aggressive = monsterAggro});
+										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, dropPools = dropPool, aggressive = monsterAggro, capturable = false, relocatable = false});
 									else
-										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, aggressive = monsterAggro});
+										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, dropPools = dropPool, aggressive = monsterAggro, capturable = false, relocatable = false});
 									end
-								end
-							else
-								if monsterColour then
-									world.spawnMonster(monsterType, spawnPosition, {level = world.threatLevel(), seed = monsterSeed, colors = monsterColour, dropPools = dropPool, aggressive = monsterAggro});
 								else
-									world.spawnMonster(monsterType, spawnPosition, {level = world.threatLevel(), seed = monsterSeed, dropPools = dropPool, aggressive = monsterAggro});
+									if monsterColour then
+										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, aggressive = monsterAggro, capturable = false, relocatable = false});
+									else
+										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, aggressive = monsterAggro, capturable = false, relocatable = false});
+									end
 								end
 							end
 						end
@@ -94,6 +99,16 @@ function getInputContents(slot)
 	return contents
 end
 
+function checkBlacklist(monster)
+	blacklist = root.assetJson('/objects/minibiome/precursor/fu_precursorspawner/fu_precursorspawnerblacklist.config')
+	for _,blacklistMonster in pairs (blacklist) do
+		if monster == blacklistMonster then
+			return true
+		end
+	end
+	return false
+end
+
 function wireCheck()
 	if object.isInputNodeConnected(0) == true then
 		if object.getInputNodeLevel(0) == true then
@@ -105,14 +120,4 @@ function wireCheck()
 	return true
 	end
 	return false
-end
-
-function emp()
-	local objects = world.objectQuery(entity.position(), self.empRadius)
-	for _,object in pairs (objects) do
-		local isTurret = world.getObjectParameter(object, "maxEnergy")
-		if isTurret then
-			world.breakObject(object, false)
-		end
-	end
 end
