@@ -11,7 +11,7 @@ end
 
 function update(dt)
 	transferUtil.loadSelfContainer()
-	excavatorCommon.grab(entity.position(), config.getParameter("range"))
+	excavatorCommon.grab(entity.position())
 	world.breakObject(world.objectAt(entity.position()), true)
 end
 
