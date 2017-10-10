@@ -6,7 +6,7 @@
   "rarity" : "uncommon",
   "pickupQuestTemplates" : [ ],
   "category" : "enviroProtectionPack",
-  "description" : "Acid Immunity. +10% Physical Resist. Helpful on ^red;acidic^reset; planets. Provides air.",
+  "description" : "Acid Immunity. +10% Physical Resist. Helpful on ^red;acidic^reset; planets. Provides limited air.",
   "shortdescription" : "Acid EPP",
   
 
@@ -22,10 +22,18 @@
     {
       "stat" : "physicalResistance",
       "amount" : 0.1
+    },   
+    {
+      "stat" : "maxBreath",
+      "amount" : 200
+    },    
+    {
+      "stat" : "breathDepletionRate",
+      "amount" : -2
     },
     {
-      "stat" : "breathProtection",
-      "amount" : 1.0
+      "stat" : "breathRegenerationRate",
+      "amount" : 20
     }    
   ],
 
