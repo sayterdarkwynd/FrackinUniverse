@@ -4,7 +4,7 @@ function init()
 end
 
 function update(dt)
-	world.placeObject("fu_pickuprangetemp", world.entityPosition(entity.id()), 1, {range = config.getParameter("range")})
+	world.placeObject("fu_pickuprangetemp", world.entityPosition(entity.id()), 1, {kheAA_vacuumRange = config.getParameter("range")})
 end
 
 function uninit()

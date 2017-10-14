@@ -2158,5 +2158,21 @@
   ],
   "shadowgolemminiLoot" : [
     [1, {  "fill" : [ { "item" : [ "shadowgasliquid", 2]  }  ] } ]
+  ],
+  "frankLoot" : [
+    [1, {
+      "pool" : [
+        {"weight" : 0.33, "pool" : "money"},
+        {"weight" : 0.33, "item" : [ "liquidpus", 10]},
+		{"weight" : 0.33, "item" : [ "spidersilkblock", 25]}
+      ],
+      "poolRounds" : [
+        [0.75, 4],
+		[0.25, 6]
+      ],
+      "allowDuplication" : true,
+	  "fill" : [{ "item" : [ "venomsample", 3]}]
+      }
+    ]
   ]
 }

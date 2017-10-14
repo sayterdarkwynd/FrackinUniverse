@@ -64,6 +64,7 @@ function addInputSlot()
 	local text = widget.getText("inputSlotCount")
 	if text ~= "" and tonumber(text) >= 0 then
 		local slot = tonumber(text);
+		widget.setText("inputSlotCount", slot + 1);
 		for _,v in pairs(inputSlots) do
 			if v[1] == slot then
 				return;
@@ -80,6 +81,7 @@ function addOutputSlot()
 	local text = widget.getText("outputSlotCount")
 	if text ~= "" and tonumber(text) >= 0 then
 		local slot = tonumber(text);
+		widget.setText("outputSlotCount", slot + 1);
 		for _,v in pairs(outputSlots) do
 			if v[1] == slot then
 				return;
