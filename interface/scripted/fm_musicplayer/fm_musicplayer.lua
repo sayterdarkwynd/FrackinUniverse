@@ -25,7 +25,7 @@ end
 
 function reloadCraftable()
     for _,v in pairs(self.currentList or {}) do
-        widget.setVisible(v..".notcraftableoverlay", not hasIngredients(widget.getData(v).recipe))
+        widget.setVisible(v..".notcraftableoverlay")
     end
 end
 
@@ -36,73 +36,23 @@ end
 
 function updateCounts()
     local listItem = widget.getListSelected(self.itemList)
-    if not listItem then
-        for i=1,4 do
-            widget.setItemSlotItem("ingredient"..i, nil)
-            widget.setText("ingLabel"..i, "")
-            widget.setText("ingName"..i, "")
-        end
-        return
-    end
 
     local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
-
-    for i=1,4 do
-        local ingredient = itemData.recipe[i]
-        if ingredient then
-            widget.setText("ingLabel"..i, player.hasCountOfItem(ingredient.name).."/"..ingredient.count)
-            if player.hasCountOfItem(ingredient.name) < ingredient.count then
-                widget.setFontColor("ingLabel"..i, "red")
-            else
-                widget.setFontColor("ingLabel"..i, "white")
-            end
-        else
-            break
-        end
-    end
 end
 
 function populateItemList(forceRepop)
-    local shopTechs = config.getParameter("techs")
+    local shopTechs = config.getParameter("music")
     local availableTechs = {}
     for _,v in pairs(shopTechs) do
         local legit = true
 
-        -- test for prerequisite techs
-        if v.prereq then
-            for _,p in pairs(v.prereq or {}) do
-                local found = false
-                for d,x in pairs(player.enabledTechs()) do
-                    if x == p then found = true break end
-                end
-                if not found then legit = false break end
-            end
-        end
-
-        -- test for completed quests
-        if v.mission then
-            for _,p in pairs(v.mission) do
-                if not player.hasCompletedQuest(p) then legit = false break end
-            end
-        end
-
-        -- test for recipe learned
-        if legit and v.recipeReq then
-            legit = player.blueprintKnown(v.item)
-        end
-
         if legit and (self.currentFilter ~= "") then
-            legit = root.techConfig(v.name).type == self.currentFilter
+            legit = v.category == self.currentFilter
         end
 
         if legit and (self.currentSearch ~= "") then
             -- Search by item name and then by tech name
-            legit = (v.item and (string.find(v.item:lower(), self.currentSearch) ~= nil)) or
-                    (string.find(root.techConfig(v.name).shortDescription:lower(), self.currentSearch) ~= nil)
-        end
-
-        if legit and self.availableFilter then
-            legit = hasIngredients(v.recipe)
+            legit = (v.name and (string.find(v.name:lower(), self.currentSearch) ~= nil))
         end
 
         if legit then table.insert(availableTechs, v) end
@@ -116,37 +66,29 @@ function populateItemList(forceRepop)
         self.currentList = {}
 
         for i, tech in ipairs(self.availableTechs) do
-            local config = root.techConfig(tech.name)
 
             local listWidget = widget.addListItem(self.itemList)
             local listItem = string.format("%s.%s", self.itemList, listWidget)
             table.insert(self.currentList, listItem)
 
-            local name = config.shortDescription
 
-            widget.setText(listItem..".itemName", tech.musicName)
-            widget.setItemSlotItem(listItem..".itemIcon", root.createItem(tech.item or "techcard"))
+            widget.setText(listItem..".itemName", tech.name)
+            widget.setItemSlotItem(listItem..".itemIcon", tech.icon or "fm_placeholder")
 
             widget.setData(listItem,
             {
                 index = i,
                 tech = tech.name,
-                recipe = tech.recipe
+				image = tech.image,
+				description = tech.description
             })
 
             widget.setVisible(listItem..".moneyIcon", false)
             widget.setText(listItem..".priceLabel", "")
-            widget.setVisible(string.format("%s.notcraftableoverlay", listItem), not hasIngredients(tech.recipe))
+            widget.setVisible(string.format("%s.notcraftableoverlay", listItem))
 
             if tech.name == self.selectedTech then
                 widget.setListSelected(self.itemList, listWidget)
-            end
-
-            for i,v in ipairs(player.availableTechs()) do
-                if v == tech.name then
-                    widget.setVisible(listItem..".newIcon", false)
-                    break
-                end
             end
         end
 
@@ -156,13 +98,11 @@ function populateItemList(forceRepop)
 end
 
 function setCanUnlock(recipe)
-    local enableButton = false
-
-    if recipe then
-        enableButton = hasIngredients(recipe)
-    end
-
-    widget.setButtonEnabled("btnCraft", enableButton)
+	if recipe then
+		widget.setButtonEnabled("btnCraft", true)
+	else
+		widget.setButtonEnabled("btnCraft", false)
+	end
 end
 
 function itemSelected()
@@ -171,36 +111,11 @@ function itemSelected()
 
     if listItem then
         local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
-        setCanUnlock(itemData.recipe)
+        setCanUnlock("unlock")
         self.selectedTech = itemData.tech
 
-        widget.setText("techDescription", "The music plays until it's finished and won't stop otherwise unless you quit starbound. It's considered SFX and they stack.")
-        widget.setImage("techIcon", "/items/generic/fm_placeholder.png")
-
-        for i=1,4 do
-            if itemData.recipe[i] then
-                widget.setItemSlotItem("ingredient"..i, root.createItem(itemData.recipe[i].name))
-                widget.setText("ingLabel"..i, player.hasCountOfItem(itemData.recipe[i].name).."/"..itemData.recipe[i].count)
-                widget.setText("ingName"..i, root.itemConfig(itemData.recipe[i].name).config.shortdescription)
-                if player.hasCountOfItem(itemData.recipe[i].name) < itemData.recipe[i].count then
-                    widget.setFontColor("ingLabel"..i, "red")
-                else
-                    widget.setFontColor("ingLabel"..i, "white")
-                end
-            else
-                widget.setItemSlotItem("ingredient"..i, nil)
-                widget.setText("ingName"..i, "")
-                widget.setText("ingLabel"..i, "")
-            end
-        end
-    else
-        for i=1,4 do
-            widget.setItemSlotItem("ingredient"..i, nil)
-            widget.setText("ingLabel"..i, "")
-        end
-
-        widget.setText("techDescription", "")
-        widget.setImage("techIcon", "")
+        widget.setText("techDescription", itemData.description or "Replaces the background music with the selected one. The music player object plays music when a player is nearby and the music player is switched on. The portable music player plays music until the music is changed or reset.")
+        widget.setImage("techIcon", itemData.image or "/items/generic/fm_placeholder.png")
     end
 end
 
@@ -208,39 +123,23 @@ function doUnlock()
     if self.selectedItem then
         local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
         local tech = self.availableTechs[selectedData.index]
-
-        local legit = true
+		
         if tech then
-            for k,v in pairs(selectedData.recipe) do
-                if player.hasCountOfItem(v.name) < v.count then
-                    legit = not legit
-                end
-            end
-
-            if legit or player.isAdmin() then
-                for k,v in pairs(selectedData.recipe) do
-                    player.consumeItem(v)
-                end
-				--sb.logInfo(tostring(mode))
-				pane.playSound(tech.music)
+			local entityID = pane.sourceEntity()
+			local entityType = world.entityType(entityID)
+			music = {}
+			table.insert(music, tech.musicDirectory)
+			if entityType == "object" then
+				world.sendEntityMessage(entityID, "changeMusic", music)
 				pane.dismiss()
-            end
+			else
+				world.sendEntityMessage(player.id(), "playAltMusic", music, 2.0)
+				pane.dismiss()
+			end
         end
 
         populateItemList(true)
     end
-end
-
-function hasIngredients(recipe)
-    -- hax for the hax god
-    if player.isAdmin() then return true end
-
-    for k,v in pairs(recipe) do
-        if player.hasCountOfItem(v.name) < v.count then
-            return false
-        end
-    end
-    return true
 end
 
 function categories()
