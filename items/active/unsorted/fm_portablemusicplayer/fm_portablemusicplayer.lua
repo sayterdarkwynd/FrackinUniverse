@@ -2,7 +2,7 @@ function activate(fireMode)
     if fireMode == "primary" then
 		activeItem.interact("ScriptPane", "/interface/scripted/fm_musicplayer/fm_musicplayer.config")
 	elseif fireMode == "alt" then
-		--activeItem.interact("ScriptPane", "/interface/scripted/fm_musicplayer/fm_musicplayer.config")
+		world.sendEntityMessage(player.id(), "stopAltMusic", 2.0)
 	end
 end
 

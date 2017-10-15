@@ -1,4 +1,3 @@
-require "/objects/power/fu_liquidmixer/fu_liquidmixer_recipes.lua"
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/power.lua'
@@ -7,8 +6,7 @@ local deltaTime=0
 function init()
 	power.init()
 	transferUtil.init()
-    self.timer = 1
-    self.mintick = 1
+    self.timer = config.getParameter("craftingSpeed")
     self.crafting = false
     self.output = {}
 	self.recipeTable = getRecipes()
@@ -89,7 +87,6 @@ end
 
 
 function update(dt)
-	if not self.mintick then init() end
 	if deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
@@ -116,7 +113,7 @@ function update(dt)
             end
             self.crafting = false
             self.output = {}
-            self.timer = self.mintick --reset timer to a safe minimum
+            self.timer = config.getParameter("craftingSpeed")
 		else
 			animator.setAnimationState("centrifuge", "idle")
         end
@@ -124,7 +121,7 @@ function update(dt)
 
         if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
             if not startCrafting(getValidRecipes(getInputContents())) then
-				self.timer = self.mintick
+				self.timer = config.getParameter("craftingSpeed")
 				animator.setAnimationState("centrifuge", "idle")
 			end --set timeout if there were no recipes
         end
@@ -135,6 +132,7 @@ end
 
 
 function startCrafting(result)
+	if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
     if next(result) == nil then return false
     else _,result = next(result)
 
@@ -143,10 +141,15 @@ function startCrafting(result)
         end
 
         self.crafting = true
-        self.timer = 0.1
+        self.timer = config.getParameter("craftingSpeed")
         self.output = result.outputs
 		animator.setAnimationState("centrifuge", "working")
 
         return true
     end
+	end
+end
+
+function getRecipes()
+  return root.assetJson('/objects/power/fu_liquidmixer/fu_liquidmixer_recipes.config')
 end
