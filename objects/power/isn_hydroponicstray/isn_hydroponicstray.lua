@@ -78,7 +78,9 @@ function update(dt)
 			if secondaryItems then
 				for _,item in pairs (secondaryItems) do
 				if item == "sapling" then
-					world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(0,1), parameters = saplingParameters})
+					if saplingParameters.stemName then
+						world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(0,1), parameters = saplingParameters})
+					end
 				else
 					fu_sendOrStoreItems(0, {name = item, count = secondaryYield}, {0, 1, 2})
 				end
@@ -88,7 +90,9 @@ function update(dt)
 			fu_sendOrStoreItems(0, {name = storage.currentcrop, count = storage.yield}, {0, 1, 2})
 		end
 		if saplingParameters then
-			world.containerAddItems(entity.id(), {name = storage.currentseed, count = 1, parameters = saplingParameters})
+			if saplingParameters.stemName then
+				world.containerAddItems(entity.id(), {name = storage.currentseed, count = 1, parameters = saplingParameters})
+			end
 		else
 			world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,2), data={}})
 		end
