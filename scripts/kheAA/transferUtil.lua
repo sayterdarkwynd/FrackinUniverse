@@ -22,6 +22,11 @@ function transferUtil.init()
 	if storage.init==nil then
 		storage.init=true
 	end
+	storage.disabled=(entity.entityType() ~= "object")
+	if storage.disabled then
+		sb.logInfo("transferUtil automation functions are disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
+		return
+	end
 	storage.position=entity.position()
 	storage.logicNode=config.getParameter("kheAA_logicNode")
 	storage.inDataNode=config.getParameter("kheAA_inDataNode");
@@ -49,6 +54,7 @@ end
 
 
 function transferUtil.routeItems()
+	if storage.disabled then return end
 	if util.tableSize(storage.inContainers) == 0 then return end
 	if util.tableSize(storage.outContainers) == 0 then return end
 	
@@ -108,6 +114,7 @@ end
 
 
 function transferUtil.routeMoney()
+	if storage.disabled then return end
 	if util.tableSize(storage.inContainers) == 0 then return end
 	if util.tableSize(storage.outContainers) == 0 then return end
 	
@@ -179,6 +186,7 @@ function transferUtil.containerAwake(targetContainer,targetPos)
 end
 
 function transferUtil.zoneAwake(targetBox)
+	if storage.disabled then return end
 	if type(targetBox) ~= "table" then
 		dbg({"zoneawake failure, invalid input:",targetBox})
 		return nil
@@ -256,6 +264,7 @@ end
 function transferUtil.updateInputs()
 	storage.input={}
 	storage.inContainers={}
+	if storage.disabled then return end
 	if not storage.inDataNode then
 		return
 	end
@@ -275,6 +284,7 @@ end
 function transferUtil.updateOutputs()
 	storage.output={}
 	storage.outContainers={}
+	if storage.disabled then return end
 	if not storage.outDataNode then
 		return
 	end

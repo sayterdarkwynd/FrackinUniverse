@@ -22,6 +22,10 @@ node list:
 
 function excavatorCommon.init()
 	transferUtil.init()
+	if storage.disabled then
+		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
+		return
+	end
 	storage.facing=util.clamp(object.direction(),0,1)
 	storage.isDrill=config.getParameter("kheAA_isDrill",false)
 	storage.isPump=config.getParameter("kheAA_isPump",false)
@@ -51,6 +55,12 @@ function excavatorCommon.init()
 	end
 	
 	if storage.isVacuum then
+		--[[if not world.takeItemDrop then
+			storage.isVacuum=false
+			sb.logInfo("Vacuum code set to run on client entity. Functionality disabled.")--shouldnt technically ever run.
+		else
+			storage.vacuumRange=config.getParameter("kheAA_vacuumRange")
+		end]]
 		storage.vacuumRange=config.getParameter("kheAA_vacuumRange")
 	end
 	
@@ -63,6 +73,7 @@ function excavatorCommon.init()
 end
 
 function excavatorCommon.cycle(dt)
+	if storage.disabled then return end
 	if not delta2 then
 		delta2=100
 	elseif delta2 > 1 then
@@ -134,9 +145,13 @@ function states.moveDrillBar(dt)
 	animator.translateTransformationGroup("horizontal", {2,1});
 	if step >= 1 then
 		step = 0;
-		storage.width = storage.width + 1;
-		local pos = storage.position;
-		local searchPos = {world.xwrap(pos[1] + storage.width + 2), pos[2] + 1};
+		if (storage.width < storage.maxWidth) then
+			local searchPos = {world.xwrap(storage.position[1] + storage.width + 2), storage.position[2] + 1};
+			if not world.material(searchPos, "foreground") then
+				storage.width = storage.width + 1;
+			end
+		end
+		local searchPos = {world.xwrap(storage.position[1] + storage.width + 2), storage.position[2] + 1};
 		if storage.width >= storage.maxWidth or world.material(searchPos, "foreground") then
 			animator.setAnimationState("drillState", "on");
 			renderDrill(storage.drillPos)
@@ -149,21 +164,21 @@ function states.moveDrillBar(dt)
 end
 
 function states.moveDrill(dt)
-	local drillPos = storage.drillPos;
+	--local storage.drillPos = storage.drillPos;
 	local drillTarget = storage.drillTarget;
 	local drillDir = excavatorCommon.getDir();
 	if step >= 1 then
 		step = 0;
-		drillPos[1] = drillPos[1] + drillDir[1];
-		drillPos[2] = drillPos[2] + drillDir[2];
-		renderDrill({drillPos[1], drillPos[2]})
+		storage.drillPos[1] = storage.drillPos[1] + drillDir[1];
+		storage.drillPos[2] = storage.drillPos[2] + drillDir[2];
+		renderDrill({storage.drillPos[1], storage.drillPos[2]})
 	end
 	if deltatime >= 0.05 then
 		step = step + 0.1;
 		deltatime = 0;
-		renderDrill({drillPos[1] + drillDir[1] * step, drillPos[2] + drillDir[2] * step})
+		renderDrill({storage.drillPos[1] + drillDir[1] * step, storage.drillPos[2] + drillDir[2] * step})
 	end
-	if drillPos[1] == drillTarget[1] and drillPos[2] == drillTarget[2] then
+	if storage.drillPos[1] == drillTarget[1] and storage.drillPos[2] == drillTarget[2] then
 		if storage.isPump then
 			storage.state = "pump";
 		else
@@ -275,8 +290,8 @@ function states.mine(dt)
 
 	local absdrillPos = transferUtil.getAbsPos(storage.drillPos,storage.position);
 	if (storage.position[2]-absdrillPos[2]) > storage.maxDepth then
-		drillAnimReset()
 		drillReset()
+		anims()
 		setRunning(false)
 		storage.state="stop"
 		return
