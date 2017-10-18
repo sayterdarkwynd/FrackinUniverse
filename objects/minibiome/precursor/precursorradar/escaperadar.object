@@ -9,12 +9,13 @@
   "price" : 120,
   "printable" : false,
   "lightColor" : [122, 131, 36],
-
+  "smashOnBreak" : true,
+ 
 
   "inventoryIcon" : "icon.png",
   "orientations" : [
     {
-      "imageLayers" : [ { "image" : "escaperadar.png:<color>", "fullbright" : true }, { "image" : "escaperadarlit.png:<color>" } ],
+      "imageLayers" : [ { "image" : "escaperadar.png:<color>" }, { "image" : "escaperadarlit.png:<color>" } ],
       "flipImages" : true,
       "direction" : "left",
       "lightPosition" : [0, 1],
@@ -24,10 +25,11 @@
       "animationCycle" : 1.0,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "detectArea" : [ [-3, 0], [3, 5] ]
     },
     {
-      "imageLayers" : [ { "image" : "escaperadar.png:<color>", "fullbright" : true }, { "image" : "escaperadarlit.png:<color>" } ],
+      "imageLayers" : [ { "image" : "escaperadar.png:<color>" }, { "image" : "escaperadarlit.png:<color>" } ],
       "direction" : "right",
       "lightPosition" : [-1, 1],
 
@@ -36,11 +38,16 @@
       "animationCycle" : 1.0,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "detectArea" : [ [-3, 0], [3, 5] ]
     }
   ],
+  "scripts" : [ "/objects/portals/extrateleportradar/extrateleportradar.lua" ],
+  "scriptDelta" : 20,
+  "health" : 10,
+  "smashSounds" : [ "/sfx/objects/metalbarrel_break3.ogg" ],
+  "smashParticles" : [ { "count" : 10, "particle" : "generatorshard" } ],
   
-  "turnInQuests" : [ ],
-
-  "scriptDelta" : 0
+  "destination" : "InstanceWorld:precursordungeon2:%s:%s",
+  "vanishTime" : 15
 }
