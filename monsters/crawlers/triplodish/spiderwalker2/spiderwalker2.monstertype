@@ -1,12 +1,12 @@
 {
   "type" : "spiderwalker2",
-  "shortdescription" : "Spiderwalker",
-  "description" : "It watches you through its big lens. And crawls to murder you.",
+  "shortdescription" : "Precursor Spider Droid",
+  "description" : "Fires vaporizer blasts at its closest friends.",
 
-  "categories" : [ "spiderwalker" ],
+  "categories" : [ "spiderwalker2" ],
   "parts" : [ "body", "head" ],
 
-  "animation" : "spiderwalker.animation",
+  "animation" : "spiderwalker2.animation",
 
   "dropPools" : [ { "default" : "triplodTreasure", "bow" : "triplodHunting" } ],
 
@@ -37,7 +37,7 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 0.25,
+          "cooldown" : 0.3,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 15,
@@ -47,9 +47,9 @@
             "windupState" : "idle",
 
             "projectileType" : "fuvaporizer",
-            "projectileCount" : 10,
+            "projectileCount" : 1,
             "projectileInterval" : 0.001,
-            "power" : 12,
+            "power" : 15,
             "fireOffset" : [0.0, 0.75],
             "fireSound" : "fire",
             "fireState" : "",
