@@ -4,6 +4,7 @@ armorBonus2={
 		{stat = "critChance", amount = 3},
 		{stat = "powerMultiplier", amount = 0.15},
 		{stat = "sulphuricImmunity", amount = 1},
+		{stat = "gasImmunity", amount = 1},
 		{stat = "poisonStatusImmunity", amount = 1},
 		{stat = "maxBreath", amount = 700},
 		{stat = "breathRegeneration", baseMultiplier = 1.5}
