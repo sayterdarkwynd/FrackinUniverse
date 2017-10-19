@@ -72,9 +72,11 @@ function init()
 		industrialcentrifuge  = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		ironcentrifuge        = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		isn_powdersifter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		fu_woodensifter       = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		fu_blastfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace },
 		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter },
-		fu_liquidmixer        = { mats = getExtractionMats, spew = doExtraction, data = liquidLab }
+		fu_liquidmixer        = { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab }
 	}
 	recognisedObjects = {
 		-- in order of processing
@@ -88,6 +90,8 @@ function init()
 		"industrialcentrifuge",
 		"ironcentrifuge",
 		"woodencentrifuge",
+		"isn_powdersifter",
+		"fu_woodensifter",
 		"isn_arcsmelter",
 		"fu_blastfurnace",
 		"fu_liquidmixer"
@@ -156,9 +160,10 @@ function registerMaterial(mat, station)
 		end
 		-- saplings are special-cased
 		local sapling = mat == 'sapling'
-		if not sapling and root.createItem({ name = mat }).name == 'perfectlygenericitem' then
+		if not sapling and not root.itemConfig(mat) then
 			materialsMissing[mat] = true
-			sb.logWarn("Crafting Info Display found non-existent item '%s'", mat)
+			-- commented out the creation of warnings cause recipes exist for mods not always installed
+			-- sb.logWarn("Crafting Info Display found non-existent item '%s'", mat) 
 			return
 		end
 		local data = root.itemConfig({ name = mat, data = { stemName = 'pineytree' } })
@@ -308,6 +313,39 @@ function doExtraction(list, recipes, itemIn, itemOut, objectName)
 	if not output then doNothing(itemIn, list) end
 end
 
+function doLiquidInteraction(list, recipes, itemIn, itemOut, objectName)
+	local conf = root.itemConfig({name = objectName})
+
+	local techLevel = conf.config.fu_stationTechLevel
+	local output = false
+
+	addHeadingItem(conf, list)
+
+	if itemIn then
+		for _, recipe in pairs(recipes) do
+			if recipe.inputs[itemIn] or (recipe.reversible and checkValue(recipe.outputs[itemIn], techLevel)) then
+				for item, _ in pairs(recipe.outputs) do
+					if not materialsMissing[item] then
+						output = addTextItem("=",concatExtracted(recipe.inputs, techLevel) .. " >> " .. concatExtracted(recipe.outputs, techLevel), list)
+					end 
+				end
+			end
+		end
+	elseif itemOut then
+		for _, recipe in pairs(recipes) do
+			if checkValue(recipe.outputs[itemOut], techLevel) or (recipe.reversible and recipe.inputs[itemOut]) then
+				for item, _ in pairs(recipe.inputs) do
+					if not materialsMissing[item] then
+						output = addTextItem("<=", concatExtracted(recipe.inputs, techLevel), list)
+					end
+				end
+			end
+		end
+	end
+
+	if not output then doNothing(itemIn, list) end
+end
+
 function checkValue(counts, techLevel)
 	if type(counts) == 'table' then return counts[techLevel] ~= nil end
 	return counts ~= nil
@@ -353,8 +391,13 @@ function doSepOrSmelt(list, recipes, itemIn, itemOut)
 		end
 	elseif itemOut then
 		for input, outputs in pairs(recipes.main) do
+			if outputs == itemOut then 
+				output = addTextItem("<=", itemName(input), list) 
+			end
+		end
+		for input, outputs in pairs(recipes.extra) do
 			if outputs[itemOut] then
-				output = addTextItem("<=", input, list)
+				output = addTextItem("<=", itemName(input,"^grey;"), list)
 			end
 		end
 	end
@@ -415,7 +458,10 @@ function doSeparate(list, recipes, itemIn, itemOut, objectName)
 				local recipeGroup = recipes[recipeGroups[i]]
 				for input, outputs in pairs(recipeGroup) do
 					if outputs[itemOut] then
-						output = addTextItem("<=", input, list)
+						local iname = itemName(input,"^grey;")  
+						if iname then -- check because some sifter recipes are for mods & could not exist
+							output = addTextItem("<=", iname, list)
+						end
 					end
 				end
 			end
