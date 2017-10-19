@@ -1,7 +1,7 @@
 {
-  "type" : "spiderwalker2",
-  "shortdescription" : "Precursor Spider Droid",
-  "description" : "Fires laser blasts at any chosen target.",
+  "type" : "spiderwalker3",
+  "shortdescription" : "Precursor Bomb Droid",
+  "description" : "Loves to serve its primary function: kaboom.",
 
   "categories" : [ "spiderwalker2" ],
   "parts" : [ "body", "head" ],
@@ -37,20 +37,26 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 0.3,
+          "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 20,
+            "maximumRange" : 50,
             "minimumRange" : 1,
-            "windupTime" : 0.5,
+            "windupTime" : 1.0,
             "windupStopForce" : 50,
             "windupState" : "idle",
 
-            "projectileType" : "isn_terawattlaser",
-            "projectileCount" : 3,
-            "projectileInterval" : 0.001,
+            "projectileType" : "distortionbomb",
+            "projectileCount" : 1,
+            "projectileParameters" : {
+              "timeToLive" : 10,
+              "speed" : 50
+            },
+            "aimAtTarget" : true,
             "power" : 10,
-            "fireOffset" : [0.8, 0.75],
+            "fireArc": true,
+            "highArc": true,
+            "fireOffset" : [0, 0.2],
             "fireSound" : "fire",
             "fireState" : "",
             "fireDelay" : 0.0,
@@ -63,22 +69,22 @@
       ],
 
       "periodicActions" : [ 
-        //{
-        //  "name" : "action-projectile",
-        //  "cooldown" : 5,
-        //  "parameters" : {
-        //    "projectileCount" : 1,
-        //    "projectileType" : "distortionbomb",
-        //    "projectileParameters" : {
-        //      "timeToLive" : 10,
-        //      "speed" : 0
-        //    },
-        //    "power" : 10,
-        //    "aimDirection" : [0, -1],
-        //    "inaccuracy" : 0,
-        //    "fireOffset" : [0, 2]
-        //  }
-        //}    
+        {
+          "name" : "action-projectile",
+          "cooldown" : 5,
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "distortionbomb",
+            "projectileParameters" : {
+              "timeToLive" : 10,
+              "speed" : 0
+            },
+            "power" : 10,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 2]
+          }
+        }    
       ],
 
       "approachActions" : [
@@ -121,7 +127,23 @@
       "concurrentHostileActions" : [
         {
           "name" : "idle-crawl"
-        }        
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 7,
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "distortionbomb",
+            "projectileParameters" : {
+              "timeToLive" : 10,
+              "speed" : 0
+            },
+            "power" : 10,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 2]
+          }
+        }         
       ]
     },
 
@@ -219,6 +241,6 @@
     "capturable" : true,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "spiderwalker2" }
+    "captureCollectables" : { "fu_monster" : "spiderwalker3" }
   }
 }
