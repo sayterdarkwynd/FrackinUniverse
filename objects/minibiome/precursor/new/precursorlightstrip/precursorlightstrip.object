@@ -1,0 +1,44 @@
+{
+  "objectName" : "precursorlightstrip",
+  "colonyTags" : ["precursor", "light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "printable" : false,
+  "lightColor" : [255, 255, 0],
+  "flickerDistance" : 0.1,
+  "flickerStrength" : 0.02,
+  "flickerTiming" : 1,
+  "unlit" : true,
+  "price" : 230,
+  "description" : "A reliable lightsource that has worked for eons.",
+  "shortdescription" : "Precursor Light",
+
+  "inventoryIcon" : "precursorlightstripicon.png",
+  "orientations" : [
+    {
+      "image" : "precursorlightstrip.png:<color>.off",
+      "imagePosition" : [-8, 0],
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/fluorescent_light_quiet.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+  
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "precursorlightstrip.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+  
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

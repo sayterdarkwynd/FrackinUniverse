@@ -1,0 +1,50 @@
+{
+  "objectName" : "precursorcomputer",
+  "colonyTags" : ["precursor"],
+  "rarity" : "legendary",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 1506,
+  "description" : "Ancient computers, their data long-since corrupted.",
+  "shortdescription" : "Precursor Computer",
+
+  "lightColor" : [99, 99, 0],
+
+  "inventoryIcon" : "precursorcomputericon.png",
+  "orientations" : [
+    {
+	  "imageLayers" : [ { "image" : "precursorcomputer.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorcomputerlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 1,
+      "lightPosition" : [0, 3],
+
+      "spaceScan" : 0.1,
+      "flipImages" : true,
+      "direction" : "left",
+      "anchors" : [ "bottom" ]
+    },
+    {
+	  "imageLayers" : [ { "image" : "precursorcomputer.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorcomputerlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 1,
+      "lightPosition" : [1, 3],
+
+      "spaceScan" : 0.1,
+      "direction" : "right",
+      "anchors" : [ "bottom" ]
+    }
+  ],  
+
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : ["console"],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [ 0.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}
