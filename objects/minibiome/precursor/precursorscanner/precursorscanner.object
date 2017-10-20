@@ -1,0 +1,60 @@
+{
+  "objectName" : "precursorscanner",
+  "colonyTags" : ["precursor","wired"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "category" : "wire",
+  "price" : 15,
+  "description" : "Perfect for all your automated door needs!",
+  "shortdescription" : "Proximity Scanner",
+  "race" : "generic",
+
+  "apexDescription" : "It's a proximity device. It'll sense when I get close to it.",
+  "avianDescription" : "A proximity device. It could trigger something if I'm near.",
+  "floranDescription" : "Ssscanning eye on the wall. It's looking at me!",
+  "glitchDescription" : "Suspicious. This proximity scanner might be aware of me.",
+  "humanDescription" : "A proximity sensor. It can tell when I'm near.",
+  "hylotlDescription" : "This scanning device can tell when I'm present.",
+  "novakidDescription" : "A proximity scanner. Is it watching me right now?",
+
+  "inventoryIcon" : "scannericon.png",
+  "orientations" : [
+    {
+      "image" : "precursorscanner.png:<frame>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/proximitysensor/proximitysensor.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/scanner/scanner.animation",
+  "animationParts" : {
+    "switch" : "precursorscanner.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, 0] ],
+  
+  "interactive" : false,
+
+  "detectDuration" : 3,
+  "detectEntityTypes" : [ "creature" ],
+  "detectArea" : [ [0.5, 0.5], 3 ],
+
+  "npcToy": {
+    "ownerOnly" : true,
+    "influence" : [
+      "proximitysensor"
+    ],
+    "defaultReactions" : {},
+    "maxNpcs" : 1
+  }
+}

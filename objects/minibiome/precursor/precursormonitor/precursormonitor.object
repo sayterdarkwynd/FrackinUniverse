@@ -1,0 +1,50 @@
+{
+  "objectName" : "precursormonitor",
+  "colonyTags" : ["precursor"],
+  "rarity" : "legendary",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 1506,
+  "description" : "Ancient but fancy screen.",
+  "shortdescription" : "Precursor Monitor",
+
+  "lightColor" : [99, 99, 0],
+
+  "inventoryIcon" : "precursormonitoricon.png",
+  "orientations" : [
+    {
+	  "imageLayers" : [ { "image" : "precursormonitor.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursormonitorlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 1,
+      "lightPosition" : [0, 3],
+
+      "spaceScan" : 0.1,
+      "flipImages" : true,
+      "direction" : "left",
+      "anchors" : [ "background" ]
+    },
+    {
+	  "imageLayers" : [ { "image" : "precursormonitor.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursormonitorlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 1,
+      "lightPosition" : [1, 3],
+
+      "spaceScan" : 0.1,
+      "direction" : "right",
+      "anchors" : [ "background" ]
+    }
+  ],  
+
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : ["console"],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [ 0.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

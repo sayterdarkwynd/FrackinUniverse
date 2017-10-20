@@ -1,0 +1,44 @@
+{
+  "objectName" : "precursorsmallcontainer",
+  "colonyTags" : ["precursor", "storage"],
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "category" : "storage",
+  "printable" : false,
+  "price" : 240,
+  "description" : "Sturdy and of ancient design. Stores a lot for so small a space.",
+  "shortdescription" : "Small Precursor Container",
+  
+  "health" : 6,
+
+  "inventoryIcon" : "precursorsmallcontainericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursorsmallcontainer.png:<color>.<key>", "fullbright" : true }, { "image" : "precursorsmallcontainerlit.png:<color>.<key>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "precursorsmallcontainer.png:<color>.<key>", "fullbright" : true }, { "image" : "precursorsmallcontainerlit.png:<color>.<key>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 9,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 10,
+  "autoCloseCooldown" : 3600
+}
