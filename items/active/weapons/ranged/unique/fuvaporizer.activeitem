@@ -68,7 +68,7 @@
 	    },	
 	    {
 	      "action" : "sound",
-	      "options" : [ "/sfx/melee/fleshwhip_impact1.ogg" ]
+	      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
 	    }	
 	]        
     },
@@ -109,22 +109,132 @@
   "altAbility" : {
     "name" : "Bio-Disruptor",
     "projectileType" : "plasmaball",
-    "projectileCount" : 10,
+    "projectileCount" : 5,
     "energyCost" : 100,
     "baseDps" : 5,
     "inaccuracy" : 0.3,
     "projectileParameters" : {
       "damageSourceKind" : "radioactive",
-      "speed" : 40,
-      "timeToLive" : 3,
+      "speed" : 5,
+      "piercing" : true,
+      "timeToLive" : 1,
       "knockback" : 10,
+      "bounces" : 1,
       "statusEffects":[{"effect":"paralysis", "duration":2.0}], 
 	"actionOnReap":[
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
+	    },	
 	    {
 	      "action" : "projectile",
 	      "inheritDamageFactor" : 0,
 	      "type" : "teslaboomsmall"
-	    }
+	    },
+	    {
+	      "action" : "projectile",
+	      "inheritDamageFactor" : 0,
+	      "type" : "plasmaball",
+	      "config" : { 
+		      "damageSourceKind" : "radioactive",
+		      "speed" : 10,
+		      "piercing" : true,
+		      "timeToLive" : 1,
+		      "knockback" : 10,
+		      "bounces" : 1,
+		      "processing":"?hueshift=-165",
+		      "statusEffects":[{"effect":"paralysis", "duration":2.0}],
+		      "actionOnReap" : [
+			    {
+			      "action" : "sound",
+			      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
+			    },	
+			    {
+			      "action" : "projectile",
+			      "inheritDamageFactor" : 0,
+			      "type" : "teslaboomsmall"
+			    },		      
+			    {
+			      "action" : "projectile",
+			      "inheritDamageFactor" : 0,
+			      "type" : "plasmaball",
+			      "config" : { 
+				      "damageSourceKind" : "radioactive",
+				      "speed" : 20,
+				      "piercing" : true,
+				      "timeToLive" : 1,
+				      "knockback" : 10,
+				      "bounces" : 1,
+				      "processing":"?hueshift=-165",
+				      "statusEffects":[{"effect":"paralysis", "duration":2.0}],
+				      "actionOnReap" : [
+					    {
+					      "action" : "sound",
+					      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
+					    },					      
+					    {
+					      "action" : "projectile",
+					      "inheritDamageFactor" : 0,
+					      "type" : "teslaboomsmall"
+					    },				      
+					    {
+					      "action" : "projectile",
+					      "inheritDamageFactor" : 0,
+					      "type" : "plasmaball",
+					      "config" : { 
+						      "damageSourceKind" : "radioactive",
+						      "speed" : 40,
+						      "piercing" : true,
+						      "timeToLive" : 1,
+						      "knockback" : 10,
+						      "bounces" : 1,
+						      "processing":"?hueshift=-165",
+						      "statusEffects":[{"effect":"paralysis", "duration":2.0}],
+						      "actionOnReap" : [
+							    {
+							      "action" : "sound",
+							      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
+							    },							      
+							    {
+							      "action" : "projectile",
+							      "inheritDamageFactor" : 0,
+							      "type" : "teslaboomsmall"
+							    },						      
+							    {
+							      "action" : "projectile",
+							      "inheritDamageFactor" : 0,
+							      "type" : "plasmaball",
+							      "config" : { 
+								      "damageSourceKind" : "radioactive",
+								      "speed" : 80,
+								      "piercing" : true,
+								      "timeToLive" : 1,
+								      "knockback" : 10,
+								      "bounces" : 5,
+								      "processing":"?hueshift=-165",
+								      "statusEffects":[{"effect":"paralysis", "duration":2.0}],	
+								      "actionOnReap" : [
+									    {
+									      "action" : "sound",
+									      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
+									    },									      
+									    {
+									      "action" : "projectile",
+									      "inheritDamageFactor" : 0,
+									      "type" : "teslaboomsmall"
+									    }								      
+								      ]
+							      }
+							    }
+						      ]							      
+						      }
+					    }
+				      ]				      
+				      }
+		            }
+		      ]
+	      }
+	    }	    
 	]        
     }
   },
