@@ -23,6 +23,7 @@ function initCommonParameters()
   self.collisionSet = {"Null", "Block", "Dynamic", "Slippery"}
   self.forceDeactivateTime = config.getParameter("forceDeactivateTime", 3.0)
   self.forceShakeMagnitude = config.getParameter("forceShakeMagnitude", 0.125)
+  self.mouthPosition = status.statusProperty("mouthPosition")
 end
 
 function uninit()
@@ -210,7 +211,7 @@ function activate()
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   self.active = true
   status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 5}})
-  
+  status.setStatusProperty("mouthPosition", {0,0})
 
  
 end
@@ -233,6 +234,7 @@ function deactivate()
   self.angle = 0
   self.active = false
   status.clearPersistentEffects("ballprotection")
+  status.setStatusProperty("mouthPosition", self.mouthPosition)
 end
 
 function minY(poly)
