@@ -1,0 +1,123 @@
+{
+  "itemName" : "precursorcannon",
+  "price" : 160,
+  "inventoryIcon" : "precursorcannon.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A curious, unique weapon of ancient design.
+^yellow;Electricity-charged^reset;
+^green;Incredible knockback^reset;",
+    "shortdescription" : "Precursor Harbinger",
+  "category" : "shotgun",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","shotgun", "energy", "precursor", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/precursorcannon.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "precursorcannon.png",
+    "middlefullbright" : "precursorcannonfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.55, 0.5],
+  "muzzleOffset" : [2.7, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.2,
+    "baseDps" : 6.5,
+    "energyUsage" : 30.5,
+    "inaccuracy" : 0.1,
+    "projectileCount" : 5,
+    "fireType" : "auto",
+
+    "projectileType" : "electricguardianbullet",
+    "projectileParameters" : { 
+	"periodicActions":[], 
+	"processing":"?hueshift=-105",
+	"statusEffects":[{"effect":"electrified", "duration":1.5}], 
+	"bounces":0, 
+	"speed" : 60,
+	"timeToLive":1, 
+	"power":0.0, 
+	"knockback":20, 
+	"actionOnReap":[
+	    {
+	      "action" : "projectile",
+	      "inheritDamageFactor" : 0.01,
+	      "type" : "teslaboomsmall"
+	    },	
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/melee/fleshwhip_impact1.ogg" ]
+	    }	
+	]    
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 1,
+	      "weaponRotation" : 1,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 6,
+  "altAbilityType" : "piercingshot",
+  "altAbility" : {
+    "fireTime" : 2.0,
+    "name" : "Force Blast",
+    "energyUsage" : 30,
+    "projectileType" : "plasmatorpedo",
+    "projectileParameters" : { 
+	"periodicActions":[], 
+	"processing":"?hueshift=-105",
+	"statusEffects":[{"effect":"bouncy", "duration":1.0}], 
+	"bounces":0, 
+	"speed":75, 
+	"timeToLive":0.04, 
+	"power":0.0, 
+	"knockback":50, 
+	"actionOnReap":[]    
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
