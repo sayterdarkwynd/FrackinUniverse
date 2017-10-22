@@ -27,22 +27,31 @@
     "type" : "kbshot",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
-
-    "projectileType" : "plasmatorpedo",
+    
+    "projectileType" : "fuplasmatorpedo",
     "projectileCount" : 1,
     "fireTime" : 2,
+    "baseDps" : 3,
     "inaccuracy" : 0,
     "projectileParameters" : {
         "piercing" : true,
 	"periodicActions":[], 
 	"processing":"?hueshift=-195",
-	"statusEffects":[{"effect":"bouncy", "duration":1.0}], 
+	"statusEffects":[{"effect":"electricaura", "duration":2.0},{"effect":"electriccharge", "duration":2.0},{"effect":"levitation", "duration":2.0}], 
 	"bounces":0, 
 	"speed":75, 
 	"timeToLive":0.04, 
 	"power":0.0, 
-	"knockback":50, 
-	"actionOnReap":[]   
+	"knockback":35, 
+	"actionOnReap":[
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 3,
+	      "backgroundRadius" : 3,
+	      "explosiveDamageAmount" : 0.05,
+	      "delaySteps" : 2
+	    }	
+	]   
     },
 
 
