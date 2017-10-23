@@ -24,15 +24,38 @@
       }
 },
 
-	{"op":"add","path":"/surfacePlaceables/items/-","value":{
-			"mode" : "floor",
-			"priority" : 3.0,
-			"variants" : 1,
-			"distribution" : "/biomes/distributions.config:randomEncounter",
+    {"op":"add","path":"/surfacePlaceables/items/-","value":{
+            "mode" : "floor",
+            "priority" : 3.0,
+            "variants" : 1,
+             "distribution" : "/biomes/distributions.config:randomEncounter",
 
-			"type" : "microdungeon",
-			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
-		} 
+            "type" : "microdungeon",
+            "microdungeons" : [ "newavianmicro", "minigreenruins" ]
+        } 
+    },
+
+    {"op":"add","path":"/surfacePlaceables/items/-","value":{
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.25, "icicleshoot1" ],
+              [0.35, "icicleshoot2" ],
+              [0.35, "icicleshoot3" ],
+              [0.25, "icicleshoot4" ],
+              [0.25, "icicleshoot5" ],
+              [0.25, "icicleshoot6" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        }
 	},
 
 	{"op":"add","path":"/surfacePlaceables/items/-","value":{
