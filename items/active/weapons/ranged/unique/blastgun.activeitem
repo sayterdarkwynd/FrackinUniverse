@@ -44,13 +44,13 @@
       }
     },
     "sounds" : {
-      "fire" : [ "/sfx/gun/rocket2.ogg" ]
+      "fire" : [ "/sfx/weapons/hvmarauder4.wav" ]
     }
   },
 
 
   "baseOffset" : [0.30, 0.385],
-  "muzzleOffset" : [2.65, 0.25],
+  "muzzleOffset" : [2.3, 0.25],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -61,16 +61,17 @@
     "class" : "GunFire",
 
     "fireTime" : 0.3,
-    "baseDps" : 10,
+    "baseDps" : 11,
     "energyUsage" : 50,
     "inaccuracy" : 0.14,
 
-    "projectileCount" : 3,
+    "projectileCount" : 7,
     "fireType" : "auto",
 
-    "projectileType" : "splitbullet2",
+    "projectileType" : "tracerbullet",
     "projectileParameters" : {
-      "knockback" : 20
+      "knockback" : 20,
+      "processing":"?hueshift=-75"
     },
 
     "stances" : {
@@ -104,7 +105,9 @@
   },
 
   "altAbilityType" : "swtjc_ewg_stickyspread",
-  "altAbility" : { "fireTime" : 1.5 },
-
+  "altAbility" : { "fireTime" : 1.5, "projectileParameters" : { "processing":"?hueshift=0" } },
+  "critChance" : 3,
+  "critBonus" : 3,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

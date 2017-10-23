@@ -123,7 +123,7 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 50,
-            "minimumRange" : 10,
+            "minimumRange" : 15,
             "windupState" : "firewindup",
             "windupTime" : 1.5,
 
@@ -200,7 +200,7 @@
 	  "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 12,
+            "maximumRange" : 20,
             "minimumRange" : 2,
             "windupState" : "wavewindup",
             "windupTime" : 1.37,
@@ -221,6 +221,18 @@
         }
       ],
 
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 45,
+          "parameters" : {
+          "effect" : "radioactiveaura",
+          "duration" : 15
+          }
+        }          
+      ],
+      
+      
       "periodicActions" : [],
 
       "approachActions" : [
