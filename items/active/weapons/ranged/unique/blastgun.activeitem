@@ -1,0 +1,109 @@
+{
+  "itemName" : "blastgun",
+  "price" : 800,
+  "inventoryIcon" : "blastcannon.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "A really dangerous sort of shotgun.",
+  "shortdescription" : "Blast Gun",
+  "level" : 2,
+  "tooltipKind" : "gun2",
+  "category" : "shogtun",
+  "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "blastgun.png",
+    "middleunlit" : "",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middleunlit" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [0.30, 0.385],
+            "transformationGroups" : ["weapon"],
+            "fullbright" : true,
+            "zLevel" : 1
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/gun/rocket2.ogg" ]
+    }
+  },
+
+
+  "baseOffset" : [0.30, 0.385],
+  "muzzleOffset" : [3, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.3,
+    "baseDps" : 8,
+    "energyUsage" : 40,
+    "inaccuracy" : 0.14,
+
+    "projectileCount" : 3,
+    "fireType" : "auto",
+
+    "projectileType" : "splitbullet2",
+    "projectileParameters" : {
+      "knockback" : 20
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "swtjc_ewg_homingrocketfast",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
