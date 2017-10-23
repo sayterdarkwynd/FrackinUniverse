@@ -58,6 +58,28 @@
         },
         {
           "name" : "action-fire",
+	  "cooldown" : 20,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 35,
+            "minimumRange" : 25,
+            "windupState" : "teslawindup",
+            "windupTime" : 1.32,
+
+            "projectileType" : "turretpod2",
+            "power" : 3,
+            
+            "fireOffset" : [1.0, 1],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "fireSound" : "attack",
+            "fireState" : "hurt",
+            "winddownState" : "chargewinddown",
+            "winddownTime" : 0.45
+          }
+        },        
+        {
+          "name" : "action-fire",
 	  "cooldown" : 15,
           "parameters" : {
             "requireLineOfSight" : true,
@@ -218,10 +240,30 @@
             "winddownState" : "chargewinddown",
             "winddownTime" : 0.45
           }
-        }
+        }       
       ],
 
       "concurrentHostileActions" : [
+        {
+          "name" : "action-leap", 
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 5,
+            "maximumRange" : 75,
+            "maxXRange" : 40,
+            "windupTime" : 0.5,
+            "windupState" : "wavewindup",
+
+            "leapVelocity" : 60,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "chargewindup",
+            "fallState" : "chargewinddown",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },        
         {
           "name" : "action-statuseffect", 
           "cooldown" : 45,
@@ -255,7 +297,7 @@
           "name" : "approach-teleport",
           "parameters" : {
           }
-        },
+        },       
         {
           "name" : "approach-walk",
           "parameters" : {
@@ -270,7 +312,7 @@
         }
       ],
 
-      "wanderActions" : [
+      "wanderActions" : [     
         {
           "name" : "wander-walk",
           "cooldown" : 6.0,
