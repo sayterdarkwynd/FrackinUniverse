@@ -80,15 +80,30 @@
         },         
         {
           "name" : "action-fire",
-	        "cooldown" : 3,
+	        "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 35,
-            "minimumRange" : 25,
+            "maximumRange" : 25,
+            "minimumRange" : 5,
             "windupState" : "teslawindup",
             "windupTime" : 1.32,
 
             "projectileType" : "precursorshot2a",
+            "projectileParameters" : {
+              "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/precursorexplosion/precursorexplosion2.config"
+		    },              
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 3,
+		      "backgroundRadius" : 0,
+		      "explosiveDamageAmount" : 5,
+		      "delaySteps" : 0
+		    }              
+              ]
+            },
             "power" : 6,
             
             "fireOffset" : [1.0, 1],
@@ -107,12 +122,67 @@
 	  "cooldown" : 8,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 24,
-            "minimumRange" : 13,
+            "maximumRange" : 50,
+            "minimumRange" : 10,
             "windupState" : "firewindup",
             "windupTime" : 1.5,
 
             "projectileType" : "precursorball",
+            "projectileParameters" : {
+		  "periodicActions" : [
+		    {
+		      "time" : 0.05,
+		      "loop" : true,
+		      "action" : "explosion",
+		      "foregroundRadius" : 3,
+		      "backgroundRadius" : 3,
+		      "explosiveDamageAmount" : 5,
+		      "delaySteps" : 0
+		    },			  
+		    {
+		      "time" : 0.05,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "precursorshot2a",
+		      "inheritDamageFactor" :0.15,
+		      "fuzzAngle" : 360
+		   }
+		  ],            
+		  "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/atomsmasherboom/atomsmasherboomyellow.config"
+		    },
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 5,
+		      "backgroundRadius" : 0,
+		      "explosiveDamageAmount" : 40,
+		      "delaySteps" : 0
+		    },		    
+		    {
+		      "action" : "projectile",
+		      "type" : "precursorstarter",
+		      "fuzzAngle" : 360,
+		      "inheritDamageFactor" : 0.3,
+		      "angleAdjust" : 0
+		    },
+		    {
+		      "action" : "projectile",
+		      "type" : "precursorstarter",
+		      "fuzzAngle" : 360,
+		      "inheritDamageFactor" : 0.3,
+		      "angleAdjust" : 0
+		    },
+		    {
+		      "action" : "projectile",
+		      "type" : "precursorstarter",
+		      "fuzzAngle" : 360,
+		      "inheritDamageFactor" : 0.3,
+		      "angleAdjust" : 0
+		    }
+		  ]
+            },            
             "power" : 12,
             
             "fireOffset" : [-2, 0],
@@ -127,7 +197,7 @@
         },        
         {
           "name" : "action-fire",
-	  "cooldown" : 5,
+	  "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 12,
@@ -137,6 +207,7 @@
 
             "projectileType" : "waveblast",
             "power" : 7,
+            "projectileParameters" : { "speed" : 80 },
             
             "fireOffset" : [1.0, 0],
             "aimAtTarget" : true,
