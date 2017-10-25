@@ -1,23 +1,19 @@
 function init()
-  self.value = config.getParameter("refresh")
-  script.setUpdateDelta(self.value)
+  script.setUpdateDelta(config.getParameter("refresh"))
 end
 
 function update(dt)
-	item = config.getParameter("item")
-	count = world.entityHasCountOfItem(entity.id(), item)
-	maxAmount = config.getParameter("maxAmount")
-	if count and count < maxAmount then
-		configAmount = config.getParameter("amount")
-		if count + configAmount > maxAmount then
-			amount = maxAmount - count
-		else
-			amount = configAmount
-		end
-		world.spawnItem(item, entity.position(), amount, {price = 0})
-	end
-end
-
-function uninit()
-  
+    item = config.getParameter("item")
+    count = world.entityHasCountOfItem(entity.id(), item)
+    maxAmount = config.getParameter("maxAmount")
+    configAmount = config.getParameter("amount")
+    maxDrop = math.min(configAmount, 1000)
+    for _, entityID in pairs (world.itemDropQuery(entity.position(), 5)) do
+        if world.itemDropItem(entityID).name == item then
+            return
+        end
+    end
+    if count and count < maxAmount then
+        world.spawnItem(item, entity.position(), math.min(configAmount, maxAmount - count), {price = 0})
+    end
 end
