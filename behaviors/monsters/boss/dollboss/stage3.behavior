@@ -21,14 +21,6 @@
           "parameters": {}
         },
         {
-          "title": "Summon",
-          "type": "module",
-          "name": "dollboss-summon",
-          "parameters": {
-            "spawnCount": {"value": 8}
-          }
-        },
-        {
           "title": "Slam",
           "type": "module",
           "name": "dollboss-slam",
@@ -68,6 +60,29 @@
           "type": "module",
           "name": "dollboss-sweep",
           "parameters": {}
+        },
+        {
+          "title": "succeeder",
+          "type": "decorator",
+          "name": "succeeder",
+          "parameters": {},
+          "child": {
+            "title": "cooldown",
+            "type": "decorator",
+            "name": "cooldown",
+            "parameters": {
+              "cooldown": {"value": 25},
+              "onFail": {"value": false}
+            },
+            "child": {
+              "title": "Summon",
+              "type": "module",
+              "name": "dollboss-summon",
+              "parameters": {
+                "spawnCount": {"value": 8}
+              }
+            }
+          }
         }
       ]
     }

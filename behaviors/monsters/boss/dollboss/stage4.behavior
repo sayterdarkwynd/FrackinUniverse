@@ -37,12 +37,6 @@
           "parameters": {},
           "children": [
             {
-              "title": "Dollface Return",
-              "type": "module",
-              "name": "dollboss-return",
-              "parameters": {}
-            },
-            {
               "title": "repeater",
               "type": "decorator",
               "name": "repeater",
@@ -55,6 +49,12 @@
                 "name": "sequence",
                 "parameters": {},
                 "children": [
+                  {
+                    "title": "Dollface Return",
+                    "type": "module",
+                    "name": "dollboss-return",
+                    "parameters": {}
+                  },
                   {
                     "title": "Slam",
                     "type": "module",
@@ -97,11 +97,26 @@
                     "parameters": {}
                   },
                   {
-                    "title": "Summon",
-                    "type": "module",
-                    "name": "dollboss-summon",
-                    "parameters": {
-                      "spawnCount": {"value": 10}
+                    "title": "succeeder",
+                    "type": "decorator",
+                    "name": "succeeder",
+                    "parameters": {},
+                    "child": {
+                      "title": "cooldown",
+                      "type": "decorator",
+                      "name": "cooldown",
+                      "parameters": {
+                        "cooldown": {"value": 40},
+                        "onFail": {"value": false}
+                      },
+                      "child": {
+                        "title": "Summon",
+                        "type": "module",
+                        "name": "dollboss-summon",
+                        "parameters": {
+                          "spawnCount": {"value": 10}
+                        }
+                      }
                     }
                   }
                 ]

@@ -1,0 +1,55 @@
+{
+  "objectName" : "cutedesk",
+  "colonyTags" : ["storage","pretty"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A cute little desk.",
+  "shortdescription" : "Cute Desk",
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 130,
+  "health" : 1.5,
+
+  "apexDescription" : "A desk for paperwork. It's covered in ink stains.",
+  "avianDescription" : "A desk built for an academic.",
+  "floranDescription" : "Scholarss put ink on paper here.",
+  "glitchDescription" : "Cheerful. This is a desk suitable for scholars.",
+  "humanDescription" : "A writing desk. The surface is covered in splattered ink.",
+  "hylotlDescription" : "The Hylotl practice calligraphy on desks like these.",
+  "novakidDescription" : "An old writin' desk.",
+
+  "inventoryIcon" : "cutedeskicon.png",
+  "orientations" : [
+    {
+      "image" : "cutedesk.png:default",
+      "imagePosition" : [-24, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1] ]
+    },
+    {
+      "image" : "cutedesk.png:default",
+      "imagePosition" : [-24, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1] ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "slotCount" : 9,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}
