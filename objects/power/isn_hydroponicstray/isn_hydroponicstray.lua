@@ -17,9 +17,9 @@ function init()
 	storage.waterslot = 2
 	storage.fertslot = 3
 	storage.primaryItems = storage.primaryItems or nil
-	storage.secondaryItems = storage.secondaryItems or {}
+	storage.secondaryItems = storage.secondaryItems or nil
 	storage.secondaryYield = storage.secondaryYield or 0
-	storage.saplingParameters = storage.saplingParameters or {}
+	storage.saplingParameters = storage.saplingParameters or nil
 end
 
 function update(dt)
