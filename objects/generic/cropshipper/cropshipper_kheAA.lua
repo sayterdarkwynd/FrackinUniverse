@@ -123,7 +123,7 @@ function valueOfContents()
 		if item.name=="money" then
 			value = value + item.count
 		else
-			local price = root.itemConfig(item).config.price or 0
+			local price = item.parameters.price or root.itemConfig(item).config.price or 0
 			value = value + (price * item.count*sellFactor)
 			itemCount = itemCount + 1
 		end

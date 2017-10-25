@@ -36,7 +36,7 @@ end
 
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword"})
+local weaponSword=weaponCheck({"shortsword","rapier","katana"})
 local weaponShield=weaponCheck({"shield"})
 
 	local weapons=weaponCheck({"shortsword","shield"})

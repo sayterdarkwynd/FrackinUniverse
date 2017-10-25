@@ -1,0 +1,152 @@
+{
+  "objectName" : "armoryoutpost",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "rarity" : "Essential",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "breakDropOptions" : [],
+
+  "price" : 50,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+              
+  "pickupQuestTemplates" : [ "fuquest_armory" ],
+  "animation" : "armory.animation",
+  "animationPosition" : [0, 23],
+
+  "inventoryIcon" : "armory1icon.png",
+  "placementImage" : "armory.png:default.default",
+  "placementImagePosition" : [-44, 0],    
+
+  "description" : "Create special weapons and armor",
+  "shortdescription" : "^orange;Armorworks^white;",
+
+  "learnBlueprintsOnPickup" : [],
+
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "armorworks",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "armory1icon.png",
+        "placementImage" : "armory.png:default.default",
+        "placementImagePosition" : [-44, 0],    
+
+        "description" : "Create special weapons and armor",
+        "shortdescription" : "^orange;Armorworks^white;"
+      },
+
+      "interactData" : {
+
+      },
+      "craftingSound" : "/sfx/interface/crafting_anvil.ogg",
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "assemblyline",
+
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "armory2icon.png",
+        "placementImage" : "armory2.png:default.default",
+        "placementImagePosition" : [-44, 0],    
+
+        "description" : "Even more advanced gear.",
+        "shortdescription" : "^orange;Assembly Line^white;"
+      },
+
+      "interactData" : {
+       
+      },
+
+      "learnBlueprintsOnPickup" : [],
+      "craftingSound" : "/sfx/interface/crafting_tech1.ogg",
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "armory",
+
+      "itemSpawnParameters" : {
+        "price" : 750,
+        "inventoryIcon" : "armory3icon.png",
+        "placementImage" : "armory3.png:default.default",
+        "placementImagePosition" : [-44, 0],    
+
+        "description" : "The best weapons and armor. Period.",
+        "shortdescription" : "^orange;Armory^white;"
+      },
+
+      "interactData" : {
+       
+      },
+
+      "learnBlueprintsOnPickup" : []
+    }
+  ],
+
+  "orientations" : [
+    {
+      "image" : "armory.png:default.<frame>",
+      "imagePosition" : [-44, 0],    
+      "direction" : "left",
+      "flipImages" : true,
+      "spaces" : [
+        [-6, 5],[-5, 5],[-4, 5],[-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5],[3, 5],[4, 5],[5, 5],
+        [-6, 4],[-5, 4],[-4, 4],[-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4],[3, 4],[4, 4],[5, 4],
+        [-6, 3],[-5, 3],[-4, 3],[-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3],[3, 3],[4, 3],[5, 3],
+        [-6, 2],[-5, 2],[-4, 2],[-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],[3, 2],[4, 2],[5, 2],
+        [-6, 1],[-5, 1],[-4, 1],[-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],[3, 1],[4, 1],[5, 1],
+        [-6, 0],[-5, 0],[-4, 0],[-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0],[3, 0],[4, 0],[5, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "armory.png:default.<frame>",
+      "imagePosition" : [-44, 0],    
+      "direction" : "right",
+      "spaces" : [
+
+        [-5, 5],[-4, 5],[-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5],[3, 5],[4, 5],[5, 5],
+        [-5, 4],[-4, 4],[-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4],[3, 4],[4, 4],[5, 4],
+        [-5, 3],[-4, 3],[-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3],[3, 3],[4, 3],[5, 3],
+        [-5, 2],[-4, 2],[-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],[3, 2],[4, 2],[5, 2],
+        [-5, 1],[-4, 1],[-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],[3, 1],[4, 1],[5, 1],
+        [-5, 0],[-4, 0],[-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0],[3, 0],[4, 0],[5, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "npcToy" : {
+    "influence" : [
+      "furnace",
+      "furnace",
+      "furnaceComplete"
+    ],
+    "defaultReactions" : {
+      "furnace" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
+      ],
+      "furnaceComplete" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"],
+        [1.0, "pokefire"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
+  }
+}
