@@ -3,7 +3,7 @@
   "colonyTags" : [ "fu", "science", "scienceoutpost", "combat", "laser" ],
   "rarity" : "Essential",
   "race" : "generic",
-  "category" : "decoration",
+  "category" : "crafting",
 
   "breakDropOptions" : [],
 
@@ -44,7 +44,9 @@
         "shortdescription" : "^orange;Machining Table^white;"
       },
 
-      "interactData" : { "config" : "/interface/windowconfig/fuempty.config" },
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config" 
+      },
       "craftingSound" : "/sfx/interface/crafting_anvil.ogg",
       "upgradeSoundEffect" : "fanfare",
       "upgradeParticleEffect" : "dust"
@@ -62,7 +64,11 @@
         "description" : "Create more complicated gear",
         "shortdescription" : "^orange;Auto-Assembler^white;"
       },
-      "interactData" : { "config" : "/interface/windowconfig/fuempty.config" },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config" 
+      },
+
       "learnBlueprintsOnPickup" : [ ],
       "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg",
       "upgradeSoundEffect" : "fanfare2",
@@ -77,10 +83,16 @@
         "inventoryIcon" : "prototyper3icon.png",
         "placementImage" : "prototyper3lit.png:default.default",
         "placementImagePosition" : [-28, 0],    
-        "interactData" : { "config" : "/interface/windowconfig/fuempty.config" },
+
         "description" : "Create advanced technology",
         "shortdescription" : "^orange;Matter Assembler^white;"
-      }
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config" 
+      },
+
+      "learnBlueprintsOnPickup" : [ "labdoorhuge", "labhatchhuge", "labhatchplatformlarge" ]
     }
   ],
 
