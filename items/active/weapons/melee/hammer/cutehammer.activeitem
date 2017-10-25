@@ -1,0 +1,77 @@
+{
+  "itemName" : "cutehammer",
+  "level" : 5,
+  "price" : 850,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Knock your enemies away with cuteness.",
+  "shortdescription" : "Cute Hammer",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer","cute","upgradeableWeapon"],
+
+  "inventoryIcon" : "cutehammer.png",
+
+  "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
+  "animationParts" : {
+    "blade" : "cutehammer.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/hammer/swoosh/cuteswoosh.png:<frame>" }}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      },
+      "cosmicCharge": {
+        "active": false,
+        "transformationGroups": [ "weapon" ],
+        "emissionRate": 30,
+        "offsetRegion": [ -1,0.5,1,2.5],
+        "particles": [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.3,
+    "baseDps" : 10.5,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmichammer"
+    }
+  },
+
+  "altAbilityType" : "elementalpillar",
+  "altAbility" : {
+    "elementalConfig" : { "cosmic" : {
+      "projectileType" : "cutepillar"
+    }}
+  },
+
+  "critChance" : 3,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
