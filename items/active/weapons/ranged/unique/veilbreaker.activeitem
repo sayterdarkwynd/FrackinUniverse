@@ -1,9 +1,9 @@
 {
   "itemName" : "veilbreaker",
-  "price" : 800,
+  "price" : 500,
   "inventoryIcon" : "veilbreaker.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "rare",
   "description" : "A brutal and efficient weapon.",
   "shortdescription" : "Veilbreaker",
   "level" : 5,
@@ -18,7 +18,7 @@
     "middle" : "veilbreaker.png",
     "middleunlit" : "",
     "barrel" : "",
-    "muzzleFlash" : "/items/active/weapons/ranged/bulletmuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
   },
   "animationCustom" : {
     "animatedParts" : {
@@ -50,7 +50,7 @@
 
 
   "baseOffset" : [0.50, 0.385],
-  "muzzleOffset" : [2.3, 0.25],
+  "muzzleOffset" : [2.3, 0.0],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -63,12 +63,12 @@
     "fireTime" : 0.3,
     "baseDps" : 10,
     "energyUsage" : 50,
-    "inaccuracy" : 0.24,
+    "inaccuracy" : 0.14,
 
-    "projectileCount" : 3,
+    "projectileCount" : 5,
     "fireType" : "auto",
 
-    "projectileType" : "trishot2",
+    "projectileType" : "splitbullet2",
     "projectileParameters" : {
       "knockback" : 10
     },
@@ -93,8 +93,8 @@
       },
       "cooldown" : {
         "duration" : 0.25,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "armRotation" : 3,
+        "weaponRotation" : 4,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -103,8 +103,36 @@
     }
   },
 
-  "altAbilityType" : "swtjc_ewg_stickyspread",
-  "altAbility" : { "fireTime" : 1.5, "projectileParameters" : { "processing":"?hueshift=0" } },
+  "altAbilityType" : "explosiveshot",
+  "altAbility" : {
+    "name" : "Gravity Bomb",
+    "fireTime" : 3,
+    "projectileCount" : 1,
+    "energyUsage" : 50,
+    "inaccuracy" : 0,
+    "projectileType" : "gravitymine",
+    "projectileParameters" : {
+      "piercing" : false,
+      "speed" : 30,
+      "timeToLive" : 1,
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/fuwavebeamexplosion/fuwavebeamexp2.config"
+	    },      
+	    {
+	      "action" : "projectile",
+	      "type" : "gravitysphere",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.3,
+	      "angleAdjust" : 0,
+	      "config" : { "speed" : 0 }
+	    }      
+      ]
+    }
+    
+  },
+
   "critChance" : 3,
   "critBonus" : 3,
   

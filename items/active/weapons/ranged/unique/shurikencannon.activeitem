@@ -1,6 +1,6 @@
 {
   "itemName" : "shurikencannon",
-  "price" : 800,
+  "price" : 300,
   "inventoryIcon" : "shurikencannon.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
@@ -117,12 +117,51 @@
   "altAbility" : {
     "name" : "Shuriken Trap",
     "firePositionPart":"barrel",
-    "fireTime":1.8, 
-    "baseDps":2.4, 
+    "fireTime":2, 
+    "baseDps":4, 
     "energyUsage":15, 
     "projectileType":"throwingstartrap", 
-    "inaccuracy":0.3,
-    "projectileCount":3
+    "inaccuracy":0.12,
+    "projectileCount":3,
+    "projectileParameters" : {
+      "timeToLive" : 3,
+      "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "throwingstartrap",
+	      "fuzzAngle" : -180,
+	      "inheritDamageFactor" : 0.75,
+	      "angleAdjust" : -180,
+	      "config" : {
+	              "timeToLive" : 1,
+		      "actionOnReap" : [
+			    {
+			      "action" : "projectile",
+			      "type" : "throwingstartrap",
+			      "fuzzAngle" : -180,
+			      "inheritDamageFactor" : 0.5,
+			      "angleAdjust" : -180,
+			      "config" : {
+			              "timeToLive" : 1,
+				      "actionOnReap" : [
+					    {
+					      "action" : "projectile",
+					      "type" : "throwingstartrap",
+					      "fuzzAngle" : -180,
+					      "inheritDamageFactor" : 0.25,
+					      "angleAdjust" : -180,
+					      "config" : {
+					        "timeToLive" : 3
+					      }
+					    }      
+				      ]
+			      }
+			    }      
+		      ]	      
+	      }
+	    }      
+      ]
+    }
   },
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
