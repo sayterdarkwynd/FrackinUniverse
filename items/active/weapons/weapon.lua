@@ -33,7 +33,7 @@ end
   -- *******************************************************
   -- FU Crit Damage Script
 
-function setCritDamage(damage)
+function Weapon:setCritDamage(damage)
 	if not self.critChance then 
 		self.critChance = config.getParameter("critChance", 0)
 	end
@@ -71,7 +71,7 @@ function setCritDamage(damage)
       elseif root.itemHasTag(heldItem, "whip") then
         self.critChance = 0 + weaponModifier           
       end
-	end
+  end
   
   self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
   self.critChance = (self.critChance  + config.getParameter("shieldCritChance",0) + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
@@ -80,7 +80,9 @@ function setCritDamage(damage)
   local crit = self.critRoll <= self.critChance
   damage = crit and ((damage*2) + self.critBonus) or damage
   self.critChance = 0
+  
   if crit then
+    self:updateAim()
     if heldItem then
       -- exclude mining lasers
       if not root.itemHasTag(heldItem, "mininggun") then 
@@ -89,23 +91,46 @@ function setCritDamage(damage)
         --              weapon specific crit abilities!
         -- *****************************************************************
         self.stunChance = math.random(100) + status.stat("stunChance",0) + config.getParameter("stunChance",0)
-        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "shortspear") or root.itemHasTag(heldItem, "spear") then 
-		params = { speed=30, power = 1, damageKind = "default"} 
-		world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),aimVector,false,params)   
+        self.daggerChance = math.random(100) + status.stat("daggerChance",0) + config.getParameter("daggerChance",0)
+        self.poisonChance = math.random(100) + status.stat("poisonChance",0) + config.getParameter("poisonChance",0)
+        self.fireChance = math.random(100) + status.stat("fireChance",0) + config.getParameter("fireChance",0)
+        self.electricChance = math.random(100) + status.stat("electricChance",0) + config.getParameter("electricChance",0)
+        self.physicalChance = math.random(100) + status.stat("physicalChance",0) + config.getParameter("physicalChance",0)
+        self.shadowChance = math.random(100) + status.stat("shadowChance",0) + config.getParameter("shadowChance",0)
+        self.radioactiveChance = math.random(100) + status.stat("radioactiveChance",0) + config.getParameter("radioactiveChance",0)
+        self.cosmicChance = math.random(100) + status.stat("cosmicChance",0) + config.getParameter("cosmicChance",0)
+        
+        if (self.daggerChance) >= 95 and root.itemHasTag(heldItem, "dagger") or root.itemHasTag(heldItem, "dagger") then 
+		params = { speed=14, power = 1, damageKind = "default"} 
+		world.spawnProjectile("daggerCrit",mcontroller.position(),activeItem.ownerEntityId(),self:aimVectorSpecial(),true,params)   
+        end     
+        if (self.stunChance) >= 99 and root.itemHasTag(heldItem, "spear") then 
+		params = { speed=55, power = 1, damageKind = "default"} 
+		world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),self:aimVectorSpecial(),false,params)   
+        end         
+        if (self.stunChance) >= 99 and root.itemHasTag(heldItem, "shortspear") then 
+		params = { speed=20, power = 1, damageKind = "default"} 
+		world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),self:aimVectorSpecial(),false,params)   
         end          
-        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") or root.itemHasTag(heldItem, "dagger") then 
+        if (self.stunChance) >= 99 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") then 
 		params = { speed=30, power = 1, damageKind = "default"} 
-		world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),aimVector,false,params)   
+		world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),self:aimVectorSpecial(),false,params)   
         end        
-        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace") then -- Stun!!!!
-		params = { speed=30, power = 1, damageKind = "default"} 
-		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),aimVector,false,params)   
+        if (self.stunChance) >= 99 and root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace") then -- Stun!!!!
+		params = { speed=35, power = 1, damageKind = "default"} 
+		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),self:aimVectorSpecial(),false,params)   
         end
       end
     end
   end
 
   return damage
+end
+
+function Weapon:aimVectorSpecial()
+	  local aimVector = vec2.rotate({1, 0}, self.aimAngle)
+	  aimVector[1] = aimVector[1] * self.aimDirection
+	  return aimVector
 end
 
 function Weapon:update(dt, fireMode, shiftHeld)
@@ -312,7 +337,7 @@ function Weapon:damageSource(damageConfig, damageArea, damageTimeout)
       -- **********************************************
       -- FU Critical Hit script      
       -- damage = damage,
-      damage = setCritDamage(damage),
+      damage = self:setCritDamage(damage),
       
       -- **********************************************
       
