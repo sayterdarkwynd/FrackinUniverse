@@ -1,0 +1,44 @@
+{
+  "itemName" : "penumbramace",
+  "price" : 100,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Infused with penumbrite and poisons.
+^cyan;Inflicts poison^reset;
+^green;+5 Stun Chance^reset;",
+  "shortdescription" : "Penumbra Mace",
+  "tooltipKind" : "sword",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "penumbramace_IgRAzm.png",
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "penumbramace_IgRAzm.png",
+    "bladefullbright" : "penumbramacefullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.9, 
+    "baseDps":6.8,
+    "damageConfig" : {
+      "damageSourceKind" : "poison",
+      "statusEffects" : [ "weakpoison" ]
+    }
+  },
+  
+  "critChance" : 3,
+  "critBonus" : 2,
+  "stunChance" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}
