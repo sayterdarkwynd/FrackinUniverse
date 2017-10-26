@@ -109,10 +109,21 @@
     }
   },
 
-  "altAbilityType" : "swtjc_ewg_stickyspread",
-  "altAbility" : { "fireTime" : 1.5, "projectileParameters" : { "processing":"?hueshift=0" } },
   "critChance" : 3,
   "critBonus" : 3,
+  
+  
+  "altAbilityType" : "explosiveshot",
+  "altAbility" : {
+    "name" : "Shuriken Trap",
+    "firePositionPart":"barrel",
+    "fireTime":1.8, 
+    "baseDps":2.4, 
+    "energyUsage":15, 
+    "projectileType":"throwingstartrap", 
+    "inaccuracy":0.3,
+    "projectileCount":3
+  },
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
