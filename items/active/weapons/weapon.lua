@@ -109,7 +109,7 @@ function Weapon:setCritDamage(damage)
 		world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),self:aimVectorSpecial(),false,params)   
         end         
         if (self.stunChance) >= 99 and root.itemHasTag(heldItem, "shortspear") then 
-		params = { speed=20, power = 1, damageKind = "default"} 
+		params = { speed=22, power = 1, damageKind = "default"} 
 		world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),self:aimVectorSpecial(),false,params)   
         end          
         if (self.stunChance) >= 99 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") then 
