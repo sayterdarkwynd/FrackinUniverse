@@ -107,14 +107,15 @@
   "altAbility" : {
     "name" : "Gravity Bomb",
     "fireTime" : 3,
+    "baseDps" : 1,
     "projectileCount" : 1,
-    "energyUsage" : 50,
+    "energyUsage" : 30,
     "inaccuracy" : 0,
     "projectileType" : "gravitymine",
     "projectileParameters" : {
       "piercing" : false,
       "speed" : 30,
-      "timeToLive" : 1,
+      "timeToLive" : 1,    
       "actionOnReap" : [
 	    {
 	      "action" : "config",
@@ -124,7 +125,7 @@
 	      "action" : "projectile",
 	      "type" : "gravitysphere",
 	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.3,
+	      "inheritDamageFactor" : 0.1,
 	      "angleAdjust" : 0,
 	      "config" : { "speed" : 0 }
 	    }      
