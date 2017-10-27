@@ -1,0 +1,48 @@
+{
+  "objectName" : "fu_perfecttalllamp",
+  "colonyTags" : ["light"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [230, 230, 230],
+  "description" : "A perfect tall lamp.",
+  "shortdescription" : "Perfect Tall Lamp",
+  "race" : "generic",
+
+  "inventoryIcon" : "fu_perfecttalllampicon.png",
+  "orientations" : [
+	{
+      "imageLayers" : [ { "image" : "ffu_perfecttalllamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_perfecttalllamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+	  "flipImages" : true,
+      
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_perfecttalllamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_perfecttalllamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+      
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "fu_perfecttalllamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+  
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+  
+}

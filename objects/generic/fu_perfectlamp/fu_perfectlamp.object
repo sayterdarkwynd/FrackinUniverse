@@ -1,0 +1,38 @@
+{
+  "objectName" : "fu_perfectlamp",
+  "colonyTags" : ["light"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [230, 230, 230],
+  "description" : "A perfect lamp.",
+  "shortdescription" : "Perfect Lamp",
+  "race" : "generic",
+
+  "inventoryIcon" : "fu_perfectlampicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_perfectlamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_perfectlamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+      
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "fu_perfectlamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+  
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+  
+}
