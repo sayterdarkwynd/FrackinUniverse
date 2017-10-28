@@ -4,8 +4,13 @@ beeCentrifuge = deciding() -- input: {outputs}
 
 require "objects/bees/honeymap.lua"
 ...
-]]
+NOTE: for the LEGEND
+		each station functions differently, you will NOT get same quantities with different stations even if the color is identical.
+		colors are just general indicators.
+		colors vary from green to variants of yellows to variants of reds
+		green mean you'll get lots, yellows less, reds even less
 
+]]
 
 
 centrifuge = {}
@@ -27,19 +32,27 @@ NOSTATIONS = "recipeList.nostations"
 update = nil
 uninit = nil
 
-initialised = false
+--initialised = false
+
+nearbystationsfound = {}
 
 function init()
+	--if initialised then
+	--	sb.logWarn("Crafting Info Display skipping init") -- this is actually NEVER executed, leaving it here for now
+	--	return
+	--end
+	--initialised = true
+	--sb.logWarn("Crafting Info Display init")
+
 	extractionLab = root.assetJson("/objects/generic/extractionlab_recipes.config") -- {inputs}, {outputs}
 	xenoLab = root.assetJson('/objects/generic/xenostation_recipes.config') -- {inputs}, {outputs}
-	centrifugeLab = root.assetJson("/objects/generic/centrifuge_recipes.config")  -- it's more complicated than the above two
+	centrifugeLab = root.assetJson("/objects/generic/centrifuge_recipes.config")  -- it's more complicated than the above two & also includes sifter
 	liquidLab = root.assetJson("/objects/power/fu_liquidmixer/fu_liquidmixer_recipes.config")
 
 	self.matfilter = getFilter()
-	script.setUpdateDelta(1)
+	-- script.setUpdateDelta(1) -- is there even a reason for this ? commented out
+	script.setUpdateDelta(0) -- imported from update() function
 
-	if initialised then return end
-	initialised = true
 
 	local getLists = function(name)
 		local conf = root.itemConfig({name = name})
@@ -58,27 +71,8 @@ function init()
 	blastFurnace = getLists("fu_blastfurnace")
 	arcSmelter = getLists("isn_arcsmelter")
 
-	processObjects = {
-		extractionlab         = { mats = getExtractionMats, spew = doExtraction, data = extractionLab },
-		extractionlab_roof    = { map = "extractionlab" },
-		extractionlabadv      = { mats = getExtractionMats, spew = doExtraction, data = extractionLab },
-		extractionlabadv_roof = { map = "extractionlabadv" },
-		quantumextractor      = { mats = getExtractionMats, spew = doExtraction, data = extractionLab },
-		quantumextractor_roof = { map = "quantumextractor" },
-		xenostation           = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
-		xenostationadvnew     = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
-		centrifuge            = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
-		centrifuge2           = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
-		industrialcentrifuge  = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
-		ironcentrifuge        = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
-		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
-		isn_powdersifter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
-		fu_woodensifter       = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
-		fu_blastfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace },
-		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter },
-		fu_liquidmixer        = { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab }
-	}
-	recognisedObjects = {
+	-- relocalized  to before getNearbyStations execution
+	recognisedObjects = { -- we need this one for the ordering of display results
 		-- in order of processing
 		"quantumextractor",
 		"extractionlabadv",
@@ -96,6 +90,76 @@ function init()
 		"fu_blastfurnace",
 		"fu_liquidmixer"
 	}
+	recognisedObjectsKey = { -- true is a dummy value, this table was added as a convenience to avoid looping through
+		["quantumextractor"] = true,
+		["extractionlabadv"] = true,
+		["extractionlab"] = true,
+		["xenostationadvnew"] = true,
+		["xenostation"] = true,
+		["centrifuge2"] = true,
+		["centrifuge"] = true,
+		["industrialcentrifuge"] = true,
+		["ironcentrifuge"] = true,
+		["woodencentrifuge"] = true,
+		["isn_powdersifter"] = true,
+		["fu_woodensifter"] = true,
+		["isn_arcsmelter"] = true,
+		["fu_blastfurnace"] = true,
+		["fu_liquidmixer"] = true
+	}
+	nearbystationsfound = getNearbyStations() -- this should limit the searching for stations nearby everytime the lists are updated
+	-- however it also means if a new station is added, you need to exit & reenter the lab directory//craftinfo for it to show
+
+	local found = nearbystationsfound
+	-- this will make processObjects only contain information about found nearbystations
+	if found["quantumextractor"] then
+		processObjects["quantumextractor"]		= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
+	if found["extractionlabadv"] then
+		processObjects["extractionlabadv"]		= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
+	if found["extractionlab"] then
+		processObjects["extractionlab"]			= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
+	if found["xenostationadvnew"] then
+		processObjects["xenostationadvnew"]		= { mats = getExtractionMats, spew = doExtraction, data = xenoLab } end
+	if found["xenostation"] then
+		processObjects["xenostation"]			= { mats = getExtractionMats, spew = doExtraction, data = xenoLab } end
+	if found["centrifuge2"] then
+		processObjects["centrifuge2"]			= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["centrifuge"] then
+		processObjects["centrifuge"]			= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["industrialcentrifuge"] then
+		processObjects["industrialcentrifuge"]	= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["ironcentrifuge"] then
+		processObjects["ironcentrifuge"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["woodencentrifuge"] then
+		processObjects["woodencentrifuge"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["isn_powdersifter"] then
+		processObjects["isn_powdersifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["fu_woodensifter"] then
+		processObjects["fu_woodensifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["isn_arcsmelter"] then
+		processObjects["isn_arcsmelter"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter } end
+	if found["fu_blastfurnace"] then
+		processObjects["fu_blastfurnace"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace } end
+	if found["fu_liquidmixer"] then
+		processObjects["fu_liquidmixer"]		= { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab } end
+
+--[[	processObjects = {
+		extractionlab         = { mats = getExtractionMats, spew = doExtraction, data = extractionLab },
+		extractionlabadv      = { mats = getExtractionMats, spew = doExtraction, data = extractionLab },
+		quantumextractor      = { mats = getExtractionMats, spew = doExtraction, data = extractionLab },
+		xenostation           = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
+		xenostationadvnew     = { mats = getExtractionMats, spew = doExtraction, data = xenoLab },
+		centrifuge            = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		centrifuge2           = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		industrialcentrifuge  = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		ironcentrifuge        = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		isn_powdersifter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		fu_woodensifter       = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		fu_blastfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace },
+		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter },
+		fu_liquidmixer        = { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab }
+	}	]]--
 
 	for station, info in pairs(processObjects) do
 		if info.mats then
@@ -108,19 +172,21 @@ function init()
 		return a.id < b.id
 	end)
 
+	populateMaterialsList() -- importing what's in the update function
 end
 
-function update()
-	script.setUpdateDelta(0)
-	populateMaterialsList()
-end
+-- function update()
+	-- script.setUpdateDelta(0)
+	-- populateMaterialsList()
+	-- sb.logWarn("Crafting Info Display Passing Through Update")
+-- end
 
 function getFilter()
 	return widget.getText('tbFind'):gsub('^ +', ''):gsub(' +$', ''):gsub('  +', ' '):lower()
 end
 
-function onInteraction(args)
-end
+-- function onInteraction(args)
+-- end
 
 function tbFind()
 	local newfilter = getFilter()
@@ -163,7 +229,7 @@ function registerMaterial(mat, station)
 		if not sapling and not root.itemConfig(mat) then
 			materialsMissing[mat] = true
 			-- commented out the creation of warnings cause recipes exist for mods not always installed
-			-- sb.logWarn("Crafting Info Display found non-existent item '%s'", mat) 
+			-- sb.logInfo("Crafting Info Display found non-existent item '%s'", mat)
 			return
 		end
 		local data = root.itemConfig({ name = mat, data = { stemName = 'pineytree' } })
@@ -182,8 +248,9 @@ end
 
 function populateMaterialsList()
 	widget.clearListItems(MATERIALS)
+	-- sb.logWarn("Crafting Info Display - is going through populateMaterialsList")
 	local listed = false
-	local found = getNearbyStations()
+	local found = nearbystationsfound -- getNearbyStations()
 
 	if found then
 		local filter = self.matfilter
@@ -212,13 +279,13 @@ function populateResultsList(itemIn, itemOut)
 	widget.clearListItems(RECIPES)
 	widget.setVisible(BLANK, false)
 	widget.setVisible(NOSTATIONS, false)
-
+	-- sb.logWarn("Crafting Info Display - is populating the result list"  )
 	if not itemIn and not itemOut then
 		widget.setVisible(BLANK, true)
 		return
 	end
 
-	local found = getNearbyStations()
+	local found = nearbystationsfound -- getNearbyStations()
 	if not found then
 		widget.setVisible(NOSTATIONS, true)
 		return
@@ -236,6 +303,7 @@ function populateResultsList(itemIn, itemOut)
 
 	-- hack: resize widgets in the list to account for possible text wrapping
 	-- this will IGNORE some size + spacing settings!
+
 	local schema = config.getParameter('gui.recipeList.children.recipes.schema')
 	local spacing = schema.spacing[2]
 	local y = spacing * 2 -- convenience for later subtraction
@@ -282,64 +350,40 @@ end
 
 function doExtraction(list, recipes, itemIn, itemOut, objectName)
 	local conf = root.itemConfig({name = objectName})
-
 	local techLevel = conf.config.fu_stationTechLevel
 	local output = false
 
 	addHeadingItem(conf, list)
 
 	if itemIn then
-		for _, recipe in pairs(recipes) do
+		local listresults = {}
+		for index, recipe in pairs(recipes) do
 			if recipe.inputs[itemIn] or (recipe.reversible and checkValue(recipe.outputs[itemIn], techLevel)) then
 				for item, _ in pairs(recipe.outputs) do
 					if not materialsMissing[item] then
-						output = addTextItem("=>", concatExtracted(recipe.outputs, techLevel), list)
+						listresults[item] = index
+						output = true
 					end
 				end
 			end
+		end
+		if output then
+			output = addTextItem("=>", concatExtracted(listresults, recipes, techLevel, nil, itemIn, true), list) -- reverse ins/outs
 		end
 	elseif itemOut then
-		for _, recipe in pairs(recipes) do
+		local listresults = {}
+		for index, recipe in pairs(recipes) do
 			if checkValue(recipe.outputs[itemOut], techLevel) or (recipe.reversible and recipe.inputs[itemOut]) then
 				for item, _ in pairs(recipe.inputs) do
-					if not materialsMissing[item] then
-						output = addTextItem("<=", concatExtracted(recipe.inputs, techLevel), list)
+					if not materialsMissing[item]  then -- and checkvalue(recipe.inputs[item],techLevel) -- NOTE : do we need to check again ?
+						listresults[item] = index
+						output = true
 					end
 				end
 			end
 		end
-	end
-
-	if not output then doNothing(itemIn, list) end
-end
-
-function doLiquidInteraction(list, recipes, itemIn, itemOut, objectName)
-	local conf = root.itemConfig({name = objectName})
-
-	local techLevel = conf.config.fu_stationTechLevel
-	local output = false
-
-	addHeadingItem(conf, list)
-
-	if itemIn then
-		for _, recipe in pairs(recipes) do
-			if recipe.inputs[itemIn] or (recipe.reversible and checkValue(recipe.outputs[itemIn], techLevel)) then
-				for item, _ in pairs(recipe.outputs) do
-					if not materialsMissing[item] then
-						output = addTextItem("=",concatExtracted(recipe.inputs, techLevel) .. " >> " .. concatExtracted(recipe.outputs, techLevel), list)
-					end 
-				end
-			end
-		end
-	elseif itemOut then
-		for _, recipe in pairs(recipes) do
-			if checkValue(recipe.outputs[itemOut], techLevel) or (recipe.reversible and recipe.inputs[itemOut]) then
-				for item, _ in pairs(recipe.inputs) do
-					if not materialsMissing[item] then
-						output = addTextItem("<=", concatExtracted(recipe.inputs, techLevel), list)
-					end
-				end
-			end
+		if output then
+			output = addTextItem("<=", concatExtracted(listresults, recipes, techLevel, nil,itemOut), list)
 		end
 	end
 
@@ -351,20 +395,126 @@ function checkValue(counts, techLevel)
 	return counts ~= nil
 end
 
-function concatExtracted(list, techLevel, sep)
+function concatExtracted(list, recipes, techLevel, sep, itemInOut, InOutReverse)
+	-- InOutReverse allows to decide whether itemInOut is an In or an Out
+	-- blue for ratio > 1
+	-- green for ratio 1
+	-- red for ratio 1 / 50
+	-- orange for 1/25
+	-- ...
 	if list == nil then return sep or "" end
-	local out = sep or ""
-	local sep = sep and ", " or ""
-	for item, counts in pairs(list) do
-		if checkValue(counts, techLevel) then
-			if materials[item] then
-				out = out .. sep .. itemName(item)
-				sep = ', '
-			end
+	local out = ""
+	local sep2 = ""
+	for item, k in pairs(list) do -- k is a list of all indexed valid recipes
+		local ratio = nil
+		local inps = recipes[k].inputs
+		local outs = recipes[k].outputs
+		local itemA = InOutReverse and item or itemInOut
+		local itemB = InOutReverse and itemInOut or item
+		--sb.logWarn("output/input %s/%s  techlevel %s", outs, inps, techLevel)
+		if inps ~= nil and outs ~= nil and outs[itemA] ~= nil and inps[itemB] ~= nil then --
+			--sb.logWarn("type %s / %s", type(outs[itemA]), type(inps[itemB]))
+			local multiplier = (type(outs[itemA]) == "table" and outs[itemA][techLevel] ~= nil and outs[itemA][techLevel]) or outs[itemA]
+			local divisor = (type(inps[itemB]) == "table" and inps[itemB][techLevel] ~= nil and inps[itemB][techLevel]) or inps[itemB]
+			ratio =  multiplier/divisor
 		end
+		--sb.logWarn("crafting ratio of %s/%s is %s", itemA, itemB, ratio)
+			if ratio then
+				local colour =  ratio > 1 and "^green;"
+					or ratio == 1 and "^darkgreen;"
+					or ratio >= 0.1 and "^yellow;"
+					or ratio >= 0.04 and "^orange;"
+					or "^red;"
+					--or string.format("^#FF%02X00;", math.floor(ratio*800))
+				out = out .. sep2 .. itemName(item,colour)
+			else
+				out = out .. sep2 .. itemName(item,"^gray;")
+			end
+			sep2 = sep or ", "
 	end
 	return out
 end
+
+-- Liquid Mixer
+
+function doLiquidInteraction(list, recipes, itemIn, itemOut, objectName)
+	local conf = root.itemConfig({name = objectName})
+	local output = false
+
+	addHeadingItem(conf, list)
+	--sb.logWarn("liquids : in %s out %s",itemIn,itemOut)
+
+	if itemIn then
+		if itemIn ~= "liquidelderfluid" then
+			for _, recipe in pairs(recipes) do
+				if recipe.inputs[itemIn] then --or (recipe.reversible and checkValue(recipe.outputs[itemIn], techLevel))
+					for item, resultquantity in pairs(recipe.outputs) do
+						if not materialsMissing[item] then
+							output = addTextItem("=",concatLiquid(recipe.inputs, nil," & ") .. " >> " .. concatLiquid(recipe.outputs, resultquantity), list)
+						end
+					end
+				end
+			end
+		else
+			output = addTextItem("=", "??? & ??? >> ???", list)
+		end
+	elseif itemOut then
+		if itemOut ~= "liquidelderfluid" then
+			local listitems={}
+			local k = 0
+			for _, recipe in pairs(recipes) do
+				if  recipe.outputs[itemOut] then -- checkValue(recipe.outputs[itemOut], techLevel) or (recipe.reversible and recipe.inputs[itemOut]) then
+					for item, _ in pairs(recipe.inputs) do
+						k=k+1
+						if not materialsMissing[item] then
+							listitems[k] = concatLiquid(recipe.inputs, nil," & ")
+							output = true
+						end
+					end
+				end
+			end
+			-- remove dupes
+			local hash = {}
+			local result = {}
+			for _,v in ipairs(listitems) do
+				if (not hash[v]) then
+					result[#result+1] = v
+					hash[v] = true
+				end
+			end
+
+			if output then
+				for index, inputs in pairs(result) do
+					addTextItem("<=", inputs,list)
+				end
+			end
+		else
+			output = addTextItem("<=", "??? & ???", list)
+		end
+	end
+
+	if not output then doNothing(itemIn, list) end
+end
+
+function concatLiquid(list, resultquantity, sep)
+	if list == nil then return sep or "" end
+	local out = ""
+	local sep2 = ""
+
+	for item, counts in pairs(list) do
+			if materials[item] then
+				if resultquantity then
+					local colour =  string.format("^#FF%02X00;", math.floor(resultquantity*80+70))
+					out = out .. sep2 .. itemName(item,colour)
+				else
+					out = out .. sep2 .. itemName(item)
+				end
+				sep2 = sep or ", "
+			end
+	end
+	return out
+end
+
 
 -- Separators and smelters
 
@@ -387,36 +537,54 @@ function doSepOrSmelt(list, recipes, itemIn, itemOut)
 
 	if itemIn then
 		if recipes.main[itemIn] or recipes.extra[itemIn] then
-			output = addTextItem("=>", concatRandom(recipes.extra[itemIn], recipes.main[itemIn]), list)
+			output = addTextItem("=>", concatRandom(recipes.extra[itemIn], recipes.main, itemIn), list)
 		end
 	elseif itemOut then
+		local listitems = {}
+		local listitemsextra = {}
 		for input, outputs in pairs(recipes.main) do
-			if outputs == itemOut then 
-				output = addTextItem("<=", itemName(input), list) 
+			if outputs == itemOut then
+				listitems[input] = true
+				output = true
 			end
 		end
 		for input, outputs in pairs(recipes.extra) do
 			if outputs[itemOut] then
-				output = addTextItem("<=", itemName(input,"^grey;"), list)
+				listitemsextra[input] = outputs[itemOut]
+				output = true
 			end
+		end
+		if output then
+			output = addTextItem("<=", concatRandom(listitemsextra, listitems, itemOut, true), list)
 		end
 	end
 
 	if not output then doNothing(itemIn, list) end
 end
 
-function concatRandom(list, guaranteed)
-	if list == nil then return guaranteed and itemName(guaranteed) or "" end
-
-	local out = guaranteed and itemName(guaranteed) or ""
-	local sep = guaranteed and materials[guaranteed] and "; " or ""
-	for item, chance in pairs(list) do
-		if item ~= guaranteed and materials[item] then
-			local colour = chance <= 25
-				   and string.format("^#FF%02X00;", math.floor(chance * chance * 255 / 625))
-				    or string.format("^#%02XFF00;", math.floor((10000 - chance * chance) * 255 / 9375))
-			out = out .. sep .. itemName(item, colour)
-			sep = ', '
+function concatRandom(list, guaranteed,itemA,expand)
+	local out = ""
+	local sep = ""
+	if guaranteed then -- probably unnecessary though better safe than sorry
+		if not expand then
+			out = guaranteed[itemA] and itemName(guaranteed[itemA]) or ""
+			sep = guaranteed[itemA] and materials[guaranteed[itemA]] and ", " or ""
+		else -- expand exists means guaranteed should be treated as a list
+			for input, _ in pairs(guaranteed) do --lose true values
+				out = out .. sep .. itemName(input)
+				sep = ", "
+			end
+		end
+	end
+	if list then
+		for item, chance in pairs(list) do
+			if materials[item] then
+				local colour = chance <= 25
+					   and string.format("^#FF%02X00;", math.floor(chance * chance * 255 / 625))
+						or string.format("^#%02XFF00;", math.floor((10000 - chance * chance) * 255 / 9375))
+				out = out .. sep .. itemName(item, colour)
+				sep = ', '
+			end
 		end
 	end
 	return out
@@ -453,18 +621,21 @@ function doSeparate(list, recipes, itemIn, itemOut, objectName)
 			end
 		end
 	elseif itemOut then
+		local listitems = {}
 		for i = #recipeGroups,1,-1 do
-			if not output then
-				local recipeGroup = recipes[recipeGroups[i]]
-				for input, outputs in pairs(recipeGroup) do
-					if outputs[itemOut] then
-						local iname = itemName(input,"^grey;")  
-						if iname then -- check because some sifter recipes are for mods & could not exist
-							output = addTextItem("<=", iname, list)
-						end
+			local recipeGroup = recipes[recipeGroups[i]]
+			for input, outputs in pairs(recipeGroup) do
+				if outputs[itemOut] then
+					local iname = itemName(input,"^grey;")
+					if iname then -- check because some sifter recipes are for mods & could not exist
+						listitems[input] = outputs[itemOut] -- extract chances to make itemout from input
+						output = true
 					end
 				end
 			end
+		end
+		if output then
+			output = addTextItem("<=", concatSepRandom(listitems, conf.config.itemChances), list)
 		end
 	end
 
@@ -482,7 +653,7 @@ function concatSepRandom(list, chanceTable)
 			local chance = chanceTable[chanceBase] / chanceDivisor * 100
 			local colour = chance <= 25
 				   and string.format("^#FF%02X00;", math.floor(chance * chance * 255 / 625))
-				    or string.format("^#%02XFF00;", math.floor((10000 - chance * chance) * 255 / 9375))
+					or string.format("^#%02XFF00;", math.floor((10000 - chance * chance) * 255 / 9375))
 			out = out .. sep .. itemName(item, colour)
 			sep = ', '
 		end
@@ -502,9 +673,9 @@ function getNearbyStations()
 	local foundone = false
 	for _, id in pairs(nearby) do
 		local name = world.entityName(id)
-		local obj = processObjects[name]
-		if obj and obj.map then name = obj.map end
-		if processObjects[name] then
+		-- local obj = processObjects[name]
+		-- if obj and obj.map then name = obj.map end -- this was an exception for roof extractors, they don't exist anymore
+		if recognisedObjectsKey[name] then --processObjects[name] -- why processobjects in here ??????
 			found[name] = true
 			foundone = true
 		end
@@ -533,6 +704,15 @@ function rescale(image, x, y)
 end
 
 function addTextItem(direction, text, list)
+	-- sb.logWarn("Crafting Info Display - is displaying :  '%s'", text)
+	local path = string.format("%s.%s", RECIPES, widget.addListItem(RECIPES))
+	widget.setText(path .. ".text", text)
+	if direction then widget.setText(path .. ".direction", direction) end
+	table.insert(list, path)
+	return true
+end
+
+function addTextToList(direction, text, list)
 	local path = string.format("%s.%s", RECIPES, widget.addListItem(RECIPES))
 	widget.setText(path .. ".text", text)
 	if direction then widget.setText(path .. ".direction", direction) end
