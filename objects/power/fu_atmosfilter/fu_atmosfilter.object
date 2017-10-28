@@ -1,25 +1,19 @@
 {
-  "objectName" : "isn_atmosregulator",
+  "objectName" : "fu_atmosfilter",
   "rarity" : "legendary",
-    "colonyTags" : [ "science" ],
-  "description" : "Generates a field that heals any lifeform within its area of effect. Requires 60W of power.",
-  "shortdescription" : "^cyan;Regeneration Matrix^white;",
+  "colonyTags" : [ "science" ],
+  "description" : "Generates a field that protects against environmental hazards. Requires 120W of power.",
+  "shortdescription" : "^cyan;Atmospheric Filter^white;",
   "race" : "generic",
-  "price" : 2000,
   "category" : "wire",
   "printable" : false,
+  "health" : 30,
+  "rooting" : true,
 
-  "apexDescription" : "Ahhh. Refreshing.",
-  "avianDescription" : "I feel better.",
-  "floranDescription" : "Healy box make floran happy.",
-  "glitchDescription" : "Reassured. I won't die while standing near this machine.",
-  "humanDescription" : "I won't have to worry about the peril of death near this thing!",
-  "hylotlDescription" : "This will provide excellent healing at a constant rate.",
-
-  "inventoryIcon" : "isn_atmosregulator_inv.png",
+  "inventoryIcon" : "fu_atmosfiltericon.png",
   "orientations" : [
     {
-      "image" : "isn_atmosregulator_base.png:<color>.<frame>",
+      "image" : "fu_atmosfilter.png:<color>.<frame>",
       "flipImages" : true,
       "direction" : "left",
 
@@ -33,7 +27,7 @@
       "anchors" : [ "bottom" ]
     },
     {
-      "image" : "isn_atmosregulator_base.png:<color>.<frame>",
+      "image" : "fu_atmosfilter.png:<color>.<frame>",
       "direction" : "right",
 
       "imagePosition" : [-80, 0],
@@ -53,25 +47,25 @@
   "objectType" : "container",
   "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
   "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
-  "slotCount" : 0,
+  "slotCount" : 1,
   "uiConfig" : "/interface/objectcrafting/fu_atmosfilter<slots>.config",
   "frameCooldown" : 5,
   "autoCloseCooldown" : 3600,
   
   "atmos" : {
-	"range" : 500,
-	"objectEffects" : ["isn_atmosregen"]
+	"range" : 500
   },
 
-  "animation" : "isn_atmosregulator.animation",
+  "animation" : "fu_atmosfilter.animation",
+  
   "animationParts" : {
-    "bg" : "isn_atmosregulator_base.png",
-    "fg" : "isn_atmosregulator_lit.png"
+    "bg" : "fu_atmosfilter.png",
+    "fg" : "fu_atmosfilterlit.png"
   },
   
   "animationPosition" : [-80, 0],
 
   "inputNodes" : [ [1, 2] ],
   "powertype" : "input",
-  "isn_requiredPower" : 60
+  "isn_requiredPower" : 120
 }
