@@ -2,14 +2,14 @@
   "objectName" : "fu_atmosfilter",
   "rarity" : "legendary",
   "colonyTags" : [ "science" ],
-  "description" : "Generates a field that protects against environmental hazards. Requires 120W of power.",
+  "description" : "Generates a field that protects against environmental hazards. Requires 60W of power.",
   "shortdescription" : "^cyan;Atmospheric Filter^white;",
   "race" : "generic",
   "category" : "wire",
   "printable" : false,
   "health" : 30,
   "rooting" : true,
-
+  "learnBlueprintsOnPickup" : [ "isn_atmosregulatornew", "isn_atmosregulator" ],
   "inventoryIcon" : "fu_atmosfiltericon.png",
   "orientations" : [
     {
@@ -53,7 +53,7 @@
   "autoCloseCooldown" : 3600,
   
   "atmos" : {
-	"range" : 500
+	"range" : 150
   },
 
   "animation" : "fu_atmosfilter.animation",
@@ -67,5 +67,5 @@
 
   "inputNodes" : [ [1, 2] ],
   "powertype" : "input",
-  "isn_requiredPower" : 120
+  "isn_requiredPower" : 60
 }
