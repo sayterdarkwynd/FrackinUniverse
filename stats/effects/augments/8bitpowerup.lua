@@ -1,5 +1,6 @@
 function init()
   local bounds = mcontroller.boundBox()
+  script.setUpdateDelta(10)
 end
 
 function update(dt)
