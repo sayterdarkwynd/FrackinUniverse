@@ -9,7 +9,7 @@ function update(dt)
     configAmount = config.getParameter("amount")
     maxDrop = math.min(configAmount, 1000)
     for _, entityID in pairs (world.itemDropQuery(entity.position(), 5)) do
-        if world.itemDropItem(entityID).name == item then
+        if world.entityName(entityID) == item then
             return
         end
     end
