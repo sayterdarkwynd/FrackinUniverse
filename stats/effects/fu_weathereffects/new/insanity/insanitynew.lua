@@ -246,14 +246,14 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight()
-      if (self.resistTotal) < self.effectCutoffValue) then
+      if (self.resistTotal) < (self.effectCutoffValue) then
              --mcontroller.controlModifiers({
 	     --    speedModifier = (-self.resistTotal)-0.2
              --})
              activateVisualEffects()
       end
 
-      if (self.biomeTimer <= 0) and (self.resistTotal) < self.effectCutoffValue) then
+      if (self.biomeTimer <= 0) and (self.resistTotal) < (self.effectCutoffValue) then
 	status.modifyResource("health", -self.damageApply * dt)
 	status.modifyResource("food", -self.damageApply * dt)
 
@@ -291,13 +291,13 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
 	  end 
   
   
-      if (self.biomeTimer2 <= 0) and (status.stat("cosmicResistance",0) < 1.0) then
+      if (self.biomeTimer2) <= 0 and (self.resistTotal) < 1.0 then
             effect.addStatModifierGroup({
               {stat = "protection", amount = -self.baseDebuff  },
               {stat = "maxEnergy", amount = -(self.baseDebuff*2)  }
             })
         makeAlert()
-        self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("cosmicResistance",0))) * 2
+        self.biomeTimer2 = (self.biomeTimer * (1 + self.resistTotal)) * 2
       end
 end
 
