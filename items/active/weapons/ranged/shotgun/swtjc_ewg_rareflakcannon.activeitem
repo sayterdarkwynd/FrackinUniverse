@@ -13,7 +13,15 @@
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : { },
-  "animationCustom" : { },
+  "animationCustom" : { 
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    }  
+  },
   "baseOffset" : [-2.5, 0.375],
   "muzzleOffset" : [0.0, 0.125],
 

@@ -1,6 +1,6 @@
 {
   "name": "action-fire",
-  "description": null,
+  "description": "",
   "scripts": [
     "/scripts/behavior.lua",
     "/scripts/actions/math.lua",
@@ -204,54 +204,54 @@
                       "number": {"value": 0}
                     },
                     "output": {
-                      "number": "shots"
-                    }
-                  },
-                  {
-                    "title": "setNumber",
-                    "type": "action",
-                    "name": "setNumber",
-                    "parameters": {
-                      "number": {"value": 0}
-                    },
-                    "output": {
                       "number": "bursts"
                     }
                   },
                   {
-                    "title": "parallel",
-                    "type": "composite",
-                    "name": "parallel",
+                    "title": "repeater",
+                    "type": "decorator",
+                    "name": "repeater",
                     "parameters": {
-                      "fail": {"value": -1},
-                      "success": {"value": -1}
+                      "maxLoops": {"key": "<burstCount>"},
+                      "untilSuccess": {"value": false}
                     },
-                    "children": [
-                      {
-                        "title": "controlFlag",
-                        "type": "action",
-                        "name": "controlFlag",
-                        "parameters": {
-                          "bool": {"value": true}
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "setNumber",
+                          "type": "action",
+                          "name": "setNumber",
+                          "parameters": {
+                            "number": {"value": 0}
+                          },
+                          "output": {
+                            "number": "shots"
+                          }
                         },
-                        "output": {
-                          "bool": "holdAim"
-                        }
-                      },
-                      {
-                        "title": "repeater",
-                        "type": "decorator",
-                        "name": "repeater",
-                        "parameters": {
-                          "maxLoops": {"key": "<burstCount>"},
-                          "untilSuccess": {"value": false}
-                        },
-                        "child": {
-                          "title": "sequence",
+                        {
+                          "title": "parallel",
                           "type": "composite",
-                          "name": "sequence",
-                          "parameters": {},
+                          "name": "parallel",
+                          "parameters": {
+                            "fail": {"value": -1},
+                            "success": {"value": -1}
+                          },
                           "children": [
+                            {
+                              "title": "controlFlag",
+                              "type": "action",
+                              "name": "controlFlag",
+                              "parameters": {
+                                "bool": {"value": true}
+                              },
+                              "output": {
+                                "bool": "holdAim"
+                              }
+                            },
                             {
                               "title": "repeater",
                               "type": "decorator",
@@ -756,71 +756,71 @@
                                   }
                                 ]
                               }
-                            },
-                            {
-                              "title": "add",
-                              "type": "action",
-                              "name": "add",
-                              "parameters": {
-                                "addend": {"value": 1},
-                                "number": {"key": "bursts"}
+                            }
+                          ]
+                        },
+                        {
+                          "title": "add",
+                          "type": "action",
+                          "name": "add",
+                          "parameters": {
+                            "addend": {"value": 1},
+                            "number": {"key": "bursts"}
+                          },
+                          "output": {
+                            "result": "bursts"
+                          }
+                        },
+                        {
+                          "title": "succeeder",
+                          "type": "decorator",
+                          "name": "succeeder",
+                          "parameters": {},
+                          "child": {
+                            "title": "selector",
+                            "type": "composite",
+                            "name": "selector",
+                            "parameters": {},
+                            "children": [
+                              {
+                                "title": "gte",
+                                "type": "action",
+                                "name": "gte",
+                                "parameters": {
+                                  "first": {"key": "bursts"},
+                                  "second": {"key": "<burstCount>"}
+                                }
                               },
-                              "output": {
-                                "result": "bursts"
-                              }
-                            },
-                            {
-                              "title": "succeeder",
-                              "type": "decorator",
-                              "name": "succeeder",
-                              "parameters": {},
-                              "child": {
-                                "title": "selector",
+                              {
+                                "title": "sequence",
                                 "type": "composite",
-                                "name": "selector",
+                                "name": "sequence",
                                 "parameters": {},
                                 "children": [
                                   {
-                                    "title": "gte",
+                                    "title": "greaterThan",
                                     "type": "action",
-                                    "name": "gte",
+                                    "name": "greaterThan",
                                     "parameters": {
-                                      "first": {"key": "bursts"},
-                                      "second": {"key": "<burstCount>"}
+                                      "first": {"key": "<burstCount>"},
+                                      "second": {"value": 1}
                                     }
                                   },
                                   {
-                                    "title": "sequence",
-                                    "type": "composite",
-                                    "name": "sequence",
-                                    "parameters": {},
-                                    "children": [
-                                      {
-                                        "title": "greaterThan",
-                                        "type": "action",
-                                        "name": "greaterThan",
-                                        "parameters": {
-                                          "first": {"key": "<burstCount>"},
-                                          "second": {"value": 1}
-                                        }
-                                      },
-                                      {
-                                        "title": "timer",
-                                        "type": "action",
-                                        "name": "timer",
-                                        "parameters": {
-                                          "time": {"value": "<burstInterval>"}
-                                        }
-                                      }
-                                    ]
+                                    "title": "timer",
+                                    "type": "action",
+                                    "name": "timer",
+                                    "parameters": {
+                                      "time": {"value": "<burstInterval>"}
+                                    }
                                   }
                                 ]
                               }
-                            }
-                          ]
+                            ]
+                          }
                         }
-                      }
-                    ]
+                      ]
+                    }
                   }
                 ]
               },

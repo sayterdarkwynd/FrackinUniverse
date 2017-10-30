@@ -1,0 +1,67 @@
+{
+  "itemName" : "magnorbcute",
+  "level" : 5,
+  "price" : 900,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "TK is your best friend.",
+  "shortdescription" : "Cute Magnorbs",
+  "tooltipKind" : "magnorb",
+  "category" : "Magnorb",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","magnorb", "cute","upgradeableWeapon"],
+  "emitters" : [ "hearts" ],
+  "inventoryIcon" : "iconcute.png",
+  "animation" : "magnorbscute.animation",
+  "animationParts" : {
+    "glove" : "glovecute.png",
+    "orb1" : "orbcute.png",
+    "orb2" : "orbcute.png",
+    "orb3" : "orbcute.png",
+    "orb4" : "orbcute.png",
+    "orb5" : "orbcute.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+
+  "orbitRate" : 0.45,
+
+  "elementalType" : "cosmic",
+
+  "projectileType" : "magnorbcute",
+  "projectileParameters" : {
+    "power" : 3.75,
+    "knockback" : 5,
+
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 50,
+    "pickupDistance" : 2.5,
+    "snapDistance" : 2.0
+  },
+
+  "count" : 5,
+  "shieldKnockback" : 14,
+  "shieldEnergyCost" : 40,
+  "shieldHealth" : 50,
+  "shieldPower" : "Regenerate",
+  "critChance" : 1,
+  "critBonus" : 4,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  },
+  "builder" : "/items/buildscripts/buildmagnorb.lua"
+}

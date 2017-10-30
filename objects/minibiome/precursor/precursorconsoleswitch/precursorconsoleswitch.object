@@ -1,0 +1,53 @@
+{
+  "objectName" : "precursorconsoleswitch",
+  "colonyTags" : ["precursor","ancient","wired"],
+  "rarity" : "legendary",
+  "category" : "decorative",
+  "price" : 695,
+  "printable" : true,
+  "lightColor" : [122, 122, 22],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+  "description" : "A touch-screen console with unrecognizable symbols",
+  "shortdescription" : "Precursor Console",
+
+  "inventoryIcon" : "precursorconsoleicon.png",
+  "orientations" : [
+    {
+      "direction" : "left",
+      "imageLayers" : [ { "image" : "precursorconsole.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorconsolelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 3,
+      "animationCycle" : 0.8,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "direction" : "right",
+      "imageLayers" : [ { "image" : "precursorconsole.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorconsolelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 3,
+      "animationCycle" : 0.8,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }  
+  ],
+
+  "scripts" : [ "/objects/wired/switch/switch.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "precursorconsole.png"
+  },
+  "animationPosition" : [-8, 0],
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ]
+}

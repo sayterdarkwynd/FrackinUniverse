@@ -1,0 +1,58 @@
+{
+  "objectName" : "precursorteleporter2",
+  "colonyTags" : ["precursor"],
+  "objectType" : "teleporter",
+  "rarity" : "Legendary",
+  "description" : "A personal teleporter, connects to bookmarked locations. \n^red;Destroyed when broken.",
+  "shortdescription" : "Precursor Teleporter",
+  "price" : 3000,
+  "printable" : false,
+
+  "category" : "teleporter",
+  "lightColor" : [255, 236, 157],
+  "lightPosition" : [0, 1],
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/exitteleporter.config",
+
+  "inventoryIcon" : "precursorteleportericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursorteleporter.png:<color>", "fullbright" : true }, { "image" : "precursorteleporterlit.png:<color>" } ],
+      "imagePosition" : [-64, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-4, 0], [-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], [3, 0], [3, 0] ]
+    }
+  ],
+
+  "health" : 20,
+
+  "breakDropPool" : "remoteteleporter",
+
+  "teleporterFootPosition" : [0, 1],
+
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+  "npcToy" : {
+    "influence" : [
+      "teleporter",
+      "teleporterComplete"
+    ],
+    "defaultReactions" : {
+      "teleporter" : [
+        [1.0, "beamaway"]
+      ],
+      "teleporterComplete" : [
+        [1.0, "vomit"],
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [0, 0.0],
+    "preciseStandPositionRight" : [0, 0.0],
+    "maxNpcs" : 1
+  }
+}

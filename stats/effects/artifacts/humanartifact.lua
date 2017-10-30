@@ -1,8 +1,8 @@
 function init()
   effect.addStatModifierGroup({
-    {stat = "maxEnergy", baseMultiplier = 1.35},
-    {stat = "cosmicResistance", amount = 0.3},
-    {stat = "powerMultiplier", baseMultiplier = 1.2}
+    {stat = "maxEnergy", baseMultiplier = 1.20},
+    {stat = "cosmicResistance", amount = 0.2},
+    {stat = "powerMultiplier", baseMultiplier = 1.10}
   })
   script.setUpdateDelta(10)
 end

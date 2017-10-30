@@ -1,7 +1,7 @@
 setName="fu_krakenset"
 
 armorBonus2={
-		{stat = "critChance", amount = 5},
+		{stat = "critChance", amount = 4},
 		{stat = "powerMultiplier", amount = 0.15},
 		{stat = "sulphuricImmunity", amount = 1},
 		{stat = "gasImmunity", amount = 1},

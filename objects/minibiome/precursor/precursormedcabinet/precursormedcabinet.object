@@ -1,0 +1,40 @@
+{
+  "objectName" : "precursormedcabinet",
+  "colonyTags" : ["precursor", "storage"],
+  "rarity" : "legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "category" : "storage",
+  "printable" : true,
+  "price" : 440,
+  "description" : "Unmistakably for medical storage.",
+  "shortdescription" : "Precursor Medi-Vac",
+  "race" : "avikan",
+  
+  "health" : 6,
+
+  "inventoryIcon" : "precursormedcabineticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursormedcabinet.png:<color>"}, { "image" : "precursormedcabinetlit.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-11, -8],
+      "direction" : "left",
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "precursormedcabinet.png:<color>"}, { "image" : "precursormedcabinetlit.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-11, -8],
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }    
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 9,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 10,
+  "autoCloseCooldown" : 3600
+}

@@ -1,0 +1,56 @@
+{
+  "objectName" : "precursorartifact",
+  "colonyTags" : ["precursor"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 500,
+  "description" : "This relic tantalizes you with its potential value. Take it!",
+  "shortdescription" : "Precursor Artefact",
+  "race" : "centens",
+  
+  "health" : 5,
+
+  "inventoryIcon" : "precursorartifacticon.png",
+  "orientations" : [
+    {
+	  "imageLayers" : [ { "image" : "precursorartifact.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorartifactlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 8,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left"
+
+    },
+    {
+	  "imageLayers" : [ { "image" : "precursorartifact.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorartifactlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 8,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+
+    }
+  ],
+  
+  "scripts" : [
+    "/objects/scripts/thea-interactpickup.lua"
+  ],
+  "scriptDelta" : 5,
+  
+  "spawnableItem" : "microsphereprecursor_tech",
+
+  "animation" : "precursorartifact.animation",
+  "animationParts" : {
+    "interactiveObject" : "precursorartifact.png",
+    "interactiveObjectlit" : "precursorartifactlit.png"
+  },
+  "animationPosition" : [0, 0]
+}

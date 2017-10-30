@@ -1,8 +1,8 @@
 function init()
-    status.setPersistentEffects("berserk", {
-      {stat = "maxHealth", baseMultiplier = 0.8 },
-      {stat = "powerMultiplier", baseMultiplier = 1.2 }
-    })  
+	effect.addStatModifierGroup({
+	{stat = "maxHealth", baseMultiplier = 0.8},
+	{stat = "powerMultiplier", baseMultiplier = 1.2 }
+	})
 end
 
 function update(dt)
@@ -10,5 +10,5 @@ function update(dt)
 end
 
 function uninit()
-  status.clearPersistentEffects("berserk")
+  
 end

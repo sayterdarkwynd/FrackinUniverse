@@ -1,0 +1,38 @@
+{
+  "objectName" : "fu_perfectwalllight",
+  "colonyTags" : ["light"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [230, 230, 230],
+  "description" : "A perfect wall light.",
+  "shortdescription" : "Perfect Wall Light",
+  "race" : "generic",
+
+  "inventoryIcon" : "fu_perfectwalllighticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_perfectwalllight.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_perfectwalllightlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+      
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+  
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "fu_perfectwalllight.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+  
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+  
+}

@@ -1,0 +1,80 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "liftState" : {
+        "default" : "up",
+        "states" : {
+          "up" : {
+            "frames" : 1
+          },
+          "down" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "forceLift" : {
+        "properties" : {
+		  "zLevel" : 0,
+          "centered" : false
+        },
+        "partStates" : {
+          "liftState" : {
+            "up" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.up"
+              }
+            },
+            "down" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.down"
+              }
+            }
+          }
+        }
+      },
+	  "forceLiftLights" : {
+        "properties" : {
+		  "zLevel" : 1,
+		  "fullbright" : true,
+          "centered" : false
+        },
+        "partStates" : {
+          "liftState" : {
+            "up" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.up"
+              }
+            },
+            "down" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.down"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  
+  "particleEmitters" : {
+	"up" : {
+	  "active" : false,
+      "emissionRate" : 13.0,
+      "offsetRegion" : [0, 1, 5, 30],
+      "particles" : [
+        { "particle" : "precursorforceliftup"}
+      ]
+    },
+	"down" : {
+	  "active" : false,
+      "emissionRate" : 13.0,
+      "offsetRegion" : [0, 1, 5, 30],
+      "particles" : [
+        { "particle" : "precursorforceliftdown"}
+      ]
+    }
+  }
+}

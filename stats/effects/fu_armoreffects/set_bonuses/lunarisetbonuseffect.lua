@@ -7,7 +7,7 @@ weaponBonus={
 }
 
 armorBonus={
-		{stat = "energyRegenPercentageRate", baseMultiplier = 1.25},
+		{stat = "energyRegenPercentageRate", baseMultiplier = 1.12},
 		{stat = "energyRegenBlockTime", baseMultiplier = 0.85}
 }
 

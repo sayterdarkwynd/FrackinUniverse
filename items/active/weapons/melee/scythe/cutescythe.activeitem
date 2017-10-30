@@ -1,0 +1,228 @@
+{
+  "itemName" : "cutescythe",
+  "price" : 1000,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Why is this cute again?",
+  "shortdescription" : "Cute Scythe",
+  "tooltipKind" : "sword2",
+  "category" : "scythe",
+  "twoHanded" : true,
+  "itemTags" : [ "weapon", "melee","cute", "axe", "scythe", "upgradeableWeapon"],
+
+  "inventoryIcon" : "cutescythe.png",
+  "animation" : "/items/active/weapons/melee/scythe/largeedgedbglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "cutescythe.png",
+    "bladefullbright" : "cutescythe.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : {
+          "properties" : {
+            "offset" : [0.65, 1.875]
+          }
+        },
+        "bladefullbright" : {
+          "properties" : {
+            "offset" : [0.65, 1.875]
+          }
+        },
+        "swoosh" : {
+          "partStates" : {
+            "swoosh" : {
+              "fire" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>"
+                }
+              },
+              "fire2" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/broadsword/swoosh2/cuteswoosh.png:<frame>"
+                }
+              },
+              "fire3" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/broadsword/swoosh3/cuteswoosh.png:<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 50,
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    },
+    "sounds" : {
+      "cosmicTravelSlash" : [ "/sfx/melee/travelingslash_electric3.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "largeedgedcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.76,
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmic"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : -10,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup1" : {
+        "duration" : 0.35,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "weaponOffset":[0.4,1.7],
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "preslash1" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "weaponOffset":[0,2.5],
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire1" : {
+        "duration" : 0.15,
+        "armRotation" : -45,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "weaponOffset":[0.25,2.5],
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "wait1" : {
+        "duration" : 0.15,
+        "armRotation" : -45,
+        "weaponRotation" : -35,
+        "allowRotate" : false,
+        "weaponOffset":[0.25,2.5],
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "windup2" : {
+        "duration" : 0.25,
+        "armRotation" : -15,
+        "weaponRotation" : -60,
+        "weaponOffset" : [0.25, 2.5],
+        "twoHanded" : true,
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire2" : {
+        "duration" : 0.20,
+        "armRotation" : -140,
+        "weaponRotation" : 65,
+        "weaponOffset" : [0.25, 1.5],
+        "twoHanded" : true,
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "wait2" : {
+        "duration" : 0.16,
+        "armRotation" : -150,
+        "weaponRotation" : 55,
+        "weaponOffset" : [0.25, 1.0],
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "windup3" : {
+        "duration" : 0.15,
+        "armRotation" : -150,
+        "weaponRotation" : 55,
+        "weaponOffset" : [0.25, 0.5],
+        "twoHanded" : true,
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire3" : {
+        "duration" : 0.15,
+        "armRotation" : -15,
+        "weaponRotation" : -60,
+        "weaponOffset" : [0.25, 2.5],
+        "twoHanded" : true,
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "wait3" : {
+        "duration" : 0.2,
+        "armRotation" : 0,
+        "weaponRotation" : -40,
+        "weaponOffset" : [0.4,1.7],
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true
+      }
+    }
+  },
+
+  "altAbilityType" : "futravelingslash",
+  "altAbility" : {
+    "name" : "Kawaii Blast",
+    "type" : "futravelingslash",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/futravelingslash/futravelingslash.lua"],
+    "class" : "TravelingSlash",
+
+    "elementalConfig" : {
+      "cosmic":
+      {
+        "projectileType":  "kawaiiblast"
+      }
+    },
+
+    "baseDamage" : 8,
+    "energyUsage" : 120,
+    "cooldownTime" : 1.5,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.25,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 11,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

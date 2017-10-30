@@ -1,0 +1,140 @@
+{
+  "objectName" : "chemlaboutpost",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "rarity" : "Essential",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "breakDropOptions" : [],
+
+  "price" : 50,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+              
+  "pickupQuestTemplates" : [ "fuquest_biochem" ],
+  
+  "animation" : "chemlab.animation",
+  "animationPosition" : [0, 24],
+
+  "inventoryIcon" : "chemlab1icon.png",
+  "placementImage" : "chemlab1.png:default.default",
+  "placementImagePosition" : [-28, 0],    
+
+  "description" : "Play with chemicals. Endless fun.",
+  "shortdescription" : "^orange;Alchemy Table^white;",
+
+  "learnBlueprintsOnPickup" : [ "fucopperbomb", "fuironbomb", "glowbomb" ],
+
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "alchemytable",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "chemlab1icon.png",
+        "placementImage" : "chemlab1.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "Experiment with chemicals. Super fun.",
+        "shortdescription" : "^orange;Alchemy Table^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config"
+      },
+
+      
+      "craftingSound" : "/sfx/interface/crafting_medical.ogg",
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "chemistrylab",
+
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "chemlab2icon.png",
+        "placementImage" : "chemlab2.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "More advanced experiments. More kaboom.",
+        "shortdescription" : "^orange;Chemistry Lab^white;"
+      },
+      "initialRecipeUnlocks" : [ "unstableparticles" ],
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config"
+      },
+
+      "learnBlueprintsOnPickup" : [],
+      "craftingSound" : "/sfx/interface/crafting_medical.ogg",
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "biochemlab",
+
+      "itemSpawnParameters" : {
+        "price" : 750,
+        "inventoryIcon" : "chemlab3icon.png",
+        "placementImage" : "chemlab3.png:default.default",
+        "placementImagePosition" : [-28, 0],    
+
+        "description" : "Superior chemistry and biology experiments",
+        "shortdescription" : "^orange;Bio-Chem Lab^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config"
+      },
+
+      "learnBlueprintsOnPickup" : []
+    }
+  ],
+
+  "orientations" : [
+    {
+      "image" : "chemlab1.png:default.<frame>",
+      "imagePosition" : [-28, 0],    
+      "direction" : "left",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "chemlab1.png:default.<frame>",
+      "imagePosition" : [-28, 0],    
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "npcToy" : {
+    "influence" : [
+      "furnace",
+      "furnace",
+      "furnaceComplete"
+    ],
+    "defaultReactions" : {
+      "furnace" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
+      ],
+      "furnaceComplete" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"],
+        [1.0, "pokefire"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
+  }
+}
