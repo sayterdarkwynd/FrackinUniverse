@@ -65,6 +65,7 @@ function update(args)
       releaseWall()
     elseif jumpActivated and status.overConsumeResource("energy", self.energyCost) then
       doWallJump()
+      animator.playSound("wallJumpSound")
     else
       if lrInput and lrInput ~= self.wall then
         self.wallReleaseTimer = self.wallReleaseTimer + args.dt
