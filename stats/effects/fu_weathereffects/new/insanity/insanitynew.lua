@@ -10,7 +10,7 @@ function init()
   self.baseDmg = config.getParameter("baseDmgPerTick",0)
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
   self.biomeTemp = config.getParameter("biomeTemp",0)
-
+  self.resistTotal = (status.stat("cosmicResistance",0) + (status.stat("shadowResistance",0) /2
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("cosmicResistance",0)) *10)
@@ -224,6 +224,7 @@ end
 
 function update(dt)
 checkEffectValid()
+self.resistTotal = (status.stat("cosmicResistance",0) + (status.stat("shadowResistance",0) /2
 self.biomeTimer = self.biomeTimer - dt
 self.biomeTimer2 = self.biomeTimer2 - dt
 self.timerRadioMessage = self.timerRadioMessage - dt
@@ -246,15 +247,14 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight()
-
-      if (status.stat("cosmicResistance") < self.effectCutoffValue) then
+      if (self.resistTotal) < self.effectCutoffValue) then
              --mcontroller.controlModifiers({
-	     --    speedModifier = (-status.stat("cosmicResistance",0))-0.2
+	     --    speedModifier = (-self.resistTotal)-0.2
              --})
              activateVisualEffects()
       end
 
-      if (self.biomeTimer <= 0) and (status.stat("cosmicResistance",0) < self.effectCutoffValue) then
+      if (self.biomeTimer <= 0) and (self.resistTotal) < self.effectCutoffValue) then
 	status.modifyResource("health", -self.damageApply * dt)
 	status.modifyResource("food", -self.damageApply * dt)
 
