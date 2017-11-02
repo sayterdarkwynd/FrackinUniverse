@@ -19,6 +19,7 @@ function update(dt)
 	    if item.name == key then
 	      world.containerConsumeAt(entity.id(),0,1)
 	      storage.fueltime = value
+		  break
 		end
 	  end
 	end
