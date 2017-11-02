@@ -75,8 +75,36 @@ function questlineSelected()
 		
 		if string.find(id, self.GD.unavailableQuestlineString) then
 			id = string.gsub(id, self.GD.unavailableQuestlineString.."_", "")
-			widget.setText("questTitle", id.." ^red;[UNAVAILABLE]")
-			widget.setText("questText", tostring(self.QD.strings.questlines[id].description))
+			widget.setText("questTitle", tostring(self.QD.strings.questlines[id].title))
+			
+			local text = "^red;UNAVAILABLE!^reset;\nRequirements:"
+			sb.logError("%s", id)
+			for loc, tbl in ipairs(self.QD.lines) do
+				sb.logError("%s", loc)
+				if tbl.id == id then
+					sb.logError("%s", tbl.id)
+					for _, quest in ipairs(self.QD.lines[loc].requirements) do
+						local tempConfig = root.questConfig(quest)
+						
+						if player.hasCompletedQuest(quest) then
+							text = text.."\n - ^green;"..tempConfig.title.."^reset;"
+						elseif player.hasQuest(quest) then
+							text = text.."\n - ^cyan;"..tempConfig.title.."^reset;"
+						elseif player.canStartQuest(quest) then
+							text = text.."\n - ^yellow;"..tempConfig.title.."^reset;"
+						else
+							if config.secret then
+								text = text.."\n - ^red;???^reset;"
+							else
+								text = text.."\n - ^red;"..tempConfig.title.."^reset;"
+							end
+						end
+					end
+					break
+				end
+			end
+			
+			widget.setText("questText", text)
 			widget.setButtonEnabled("questButton", false)
 		else
 			if self.QD.strings.questlines[id] then
@@ -133,22 +161,27 @@ function updateQuestList()
 			if player.hasCompletedQuest(questID) then
 				widget.setText(path..".questName", tostring(config.title))
 				widget.setFontColor(path..".questName", "green")
+				widget.setImage(path..".status", "/interface/scripted/fu_tutorialQuestList/status.png:complete")
 				
 			elseif player.hasQuest(questID) then
 				widget.setText(path..".questName", tostring(config.title))
 				widget.setFontColor(path..".questName", "cyan")
+				widget.setImage(path..".status", "/interface/scripted/fu_tutorialQuestList/status.png:inProgress")
 				
 			elseif player.canStartQuest(questID) then
 				widget.setText(path..".questName", tostring(config.title))
 				widget.setFontColor(path..".questName", "yellow")
+				widget.setImage(path..".status", "/interface/scripted/fu_tutorialQuestList/status.png:available")
 		
 			else
 				if config.secret then
 					widget.setText(path..".questName", "???")
 					widget.setFontColor(path..".questName", "red")
+					widget.setImage(path..".status", "/interface/scripted/fu_tutorialQuestList/status.png:secret")
 				else
 					widget.setText(path..".questName", tostring(config.title))
 					widget.setFontColor(path..".questName", "red")
+					widget.setImage(path..".status", "/interface/scripted/fu_tutorialQuestList/status.png:unavailable")
 				end
 			end
 		else
@@ -254,11 +287,31 @@ function questSelected()
 					
 				else
 					if config.secret then
-						widget.setText("questTitle", tostring("^red;???"))
+						widget.setText("questTitle", "^red;???")
 						widget.setText("questText", "?????")
 					else
-						widget.setText("questTitle", tostring(config.title).." ^red;[UNAVAILABLE]")
-						widget.setText("questText", tostring(config.text))
+						widget.setText("questTitle", tostring(config.title))
+						
+						local text = "^red;UNAVAILABLE!^reset;\nRequirements:"
+						for i, quest in ipairs(config.prerequisites) do
+							local tempConfig = root.questConfig(quest)
+							
+							if player.hasCompletedQuest(quest) then
+								text = text.."\n - ^green;"..tempConfig.title.."^reset;"
+							elseif player.hasQuest(quest) then
+								text = text.."\n - ^cyan;"..tempConfig.title.."^reset;"
+							elseif player.canStartQuest(quest) then
+								text = text.."\n - ^yellow;"..tempConfig.title.."^reset;"
+							else
+								if config.secret then
+									text = text.."\n - ^red;???^reset;"
+								else
+									text = text.."\n - ^red;"..tempConfig.title.."^reset;"
+								end
+							end
+						end
+						
+						widget.setText("questText", text)
 					end
 					widget.setButtonEnabled("questButton", false)
 				end
