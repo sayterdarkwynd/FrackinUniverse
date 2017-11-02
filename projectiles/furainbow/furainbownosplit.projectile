@@ -1,0 +1,48 @@
+{
+  "projectileName" : "furainbownosplit",
+  "image" : "furainbow.png",
+  "physics" : "laser",
+  "animationCycle" : 1.0,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 1,
+  "power" : 5,
+  "speed" : 15,
+  "timeToLive" : 1,
+  "piercing" : false,
+  "damagePoly" : [ [-5, 3], [5, 3], [5, -3], [-5, -3] ],
+  "damageKind" : "default",
+  "lightColor" : [75, 95, 125],
+  "statusEffects" : [ "glow" ],
+  "periodicActions":[ 
+	  {
+	  "time":0.05, 
+	  "action":"projectile", 
+	  "type":"furainbownosplit2", 
+	  "config":{
+	    "speed":0, 
+	    "physics" : "laser",
+	    "bounces" :-1,
+	    "timeToLive":0.25, 
+	    "power":1, 
+	    "knockback":0
+	    }
+	  }	  
+  ],	
+  "actionOnReap" : [
+    {
+      "action" : "particle",
+      "specification" : {
+        "animation" : "/animations/lightsmoke/lightsmoke.animation",
+        "size" : 1.0,
+        "timeToLive" : 0.05,
+        "variance" : {
+          "position" : [0.5, 0]
+        }
+      }
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/npcs/rainbow/rainbowexplosion.config"
+    }
+  ]
+}

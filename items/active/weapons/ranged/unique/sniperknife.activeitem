@@ -1,0 +1,82 @@
+{
+  "itemName" : "sniperknife",
+  "price" : 100,
+  "inventoryIcon" : "sniperknife.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Shoots knives. Barely.
+^yellow;Barely shoots knives. Barely.^reset;",
+  "shortdescription" : "Sniper Knife",
+  "level" : 2,
+  "category" : "dagger",
+  "itemTags" : ["weapon","ranged","machinepistol","dagger", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "weaponType" : "Dagger",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "sniperknife.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/greenburstmuzzle.png"
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/needler1.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+  },
+
+  "baseOffset" : [1.0, 0.34],
+  "muzzleOffset" : [0.68, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.76,
+    "baseDps" : 8.7,
+    "energyUsage" : 20,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "throwingknife",
+    "projectileParameters" : {
+      "speed" : 32
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 3, 
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

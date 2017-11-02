@@ -15,7 +15,7 @@ function init()
   
   --timers
   self.biomeTimer = self.baseRate
-  self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
+  self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
 
   checkEffectValid()
 

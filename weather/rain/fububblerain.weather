@@ -1,0 +1,40 @@
+{
+  "name" : "fububblerain",
+  "icon" : "/interface/cockpit/weather/drizzle.png",
+  "particles" : [
+        {
+      "density" : 0.003,
+      "particle" : {
+        "type" : "animated",
+        "animation" : "/animations/bubbleboost/bubbleboost.animation",
+        "velocity" : [0, -40],
+        "fade" : 0.5,
+        "looping" : true,
+        "destructionTime" : 20,
+        "timeToLive" : 20,
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    }
+  ],
+
+  "projectiles" : [ 
+    {
+      "projectile" : "bubblerain",
+      "parameters" : {
+        "power" : 12
+      },
+      "velocity" : [30, -30],
+      "ratePerX" : 0.003,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.0
+    }  
+  ],
+  
+  "duration" : [30, 120],
+  "lightningFrequency" : 0,
+  "weatherNoises" : [ "/sfx/weather/ashstorm.ogg" ],
+  "maximumWind" : 40.0
+}

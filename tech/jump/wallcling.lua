@@ -3,12 +3,15 @@ require "/scripts/vec2.lua"
 require "/scripts/poly.lua"
 
 function init()
+  self.energyCost = config.getParameter("energyCost")
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.multiJumpModifier = config.getParameter("multiJumpModifier")
 
   self.wallSlideParameters = config.getParameter("wallSlideParameters")
   self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
+  self.wallJumpYVelocity = config.getParameter("wallJumpYVelocity")
   self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime")
+  self.wallGrabIsTriangle = config.getParameter("wallGrabIsTriangle")
   self.wallGrabFreezeTimer = 0
   self.wallReleaseTime = config.getParameter("wallReleaseTime")
   self.wallReleaseTimer = 0
@@ -49,8 +52,9 @@ function update(args)
 
     if not checkWall(self.wall) or status.statPositive("activeMovementAbilities") then
       releaseWall()
-    elseif jumpActivated then
-      doWallJump()
+    elseif jumpActivated and status.overConsumeResource("energy", self.energyCost) then
+	      doWallJump()
+	      animator.playSound("wallJumpSound")        
     else
       if lrInput and lrInput ~= self.wall then
         self.wallReleaseTimer = self.wallReleaseTimer + args.dt
@@ -109,7 +113,10 @@ function doWallJump()
   mcontroller.controlJump(true)
   animator.playSound("wallJumpSound")
   animator.burstParticleEmitter("wallJump."..self.wall)
-  mcontroller.setXVelocity(self.wall == "left" and self.wallJumpXVelocity or -self.wallJumpXVelocity)
+  local vel = mcontroller.velocity()
+  vel[1] = self.wall == "left" and self.wallJumpXVelocity or -self.wallJumpXVelocity
+  vel[2] = self.wallJumpYVelocity
+  mcontroller.setVelocity(vel)
   releaseWall()
 end
 

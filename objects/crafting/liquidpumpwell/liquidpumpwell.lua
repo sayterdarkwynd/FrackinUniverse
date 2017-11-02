@@ -11,6 +11,7 @@ object.setInteractive(true)
 end
 
 function onInteraction(args)
+
   if not storage.waterCount then
    storage.waterCount = 0
   end

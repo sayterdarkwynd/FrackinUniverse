@@ -6,14 +6,15 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
+        "pool" : [
           [ 0.03, "burrower_depth_selector" ],
-          [ 0.1111, "fumoontant" ],     
-          [ 0.1111, "swarpion" ],        
+          [ 0.1111, "fumoontant" ],
+          [ 0.1111, "swarpion" ],
           [ 0.1111, "lumoth" ],
-          [ 0.1111, "crutter" ],     
+          [ 0.1111, "crutter" ],
           [ 0.1111, "gleap" ],
-          [ 0.1111, "scandroid" ]
+          [ 0.1111, "scandroid" ],
+          [ 0.1111, "fuallergen2" ]
         ]
       },
       {
@@ -84,17 +85,17 @@
             "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
           }
         ]
-      },    
+      },
            {
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "savannahceilingspike1" ],
               [0.50, "savannahceilingspike2" ],
               [0.50, "savannahceilingspike3" ],
@@ -109,23 +110,23 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "savannahgroundspike1" ],
               [0.50, "savannahgroundspike2" ],
               [0.50, "savannahgroundspike3" ],
               [0.50, "savannahgroundspike4" ],
-              [0.50, "copperrock" ], 
+              [0.50, "copperrock" ],
               [0.50, "copperrocksmall" ],
               [0.50, "silverrock" ],
               [0.50, "silverrocksmall" ],
               [0.50, "goldrock" ],
               [0.50, "goldrocksmall" ],
-              
-              
+
+
               [0.50, "diamondrock" ],
               [0.50, "diamondrocksmall" ]
                  ],
@@ -200,13 +201,13 @@
           "treeStemList" : [ "bubblevine", "glitteringroot2", "vineroot2", "twistedvine2" ],
           "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "nofoliagevine" ]
         },
-           
+
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
@@ -224,8 +225,8 @@
           "type" : "object",
           "objectSets" : [
             {
-        "pool" : [ 
-              [0.50, "bioplant1" ], 
+        "pool" : [
+              [0.50, "bioplant1" ],
               [0.50, "bioplant2" ],
               [0.50, "bioplant3" ],
               [0.50, "bioplant4" ],
@@ -258,7 +259,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "plynth1" ],
               [0.35, "plynth2" ],
               [0.35, "monolith1" ],
@@ -280,14 +281,14 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildalgaeseed" ],
               [0.35, "wilderithianalgaeseed" ],
               [0.35, "wildblisterbushplantseed" ],
               [0.35, "wildighantseed" ],
               [0.35, "wildpasakavineseed" ],
               [0.35, "wildslimeplantseed" ],
-              [0.35, "wildvextongueseed" ] 
+              [0.35, "wildvextongueseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }
@@ -301,16 +302,7 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "underground1dmicrodungeons" ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 99.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:ultraRare",
-
-        "type" : "microdungeon",
-        "microdungeons" : [ "precursormicro" ]
-      }                
+      }
     ]
   },
     "hueShiftOptions" : [0]

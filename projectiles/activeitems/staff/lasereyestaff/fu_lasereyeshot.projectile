@@ -5,21 +5,20 @@
   "animationCycle" : 1,
   "damageKindImage" : "fu_lasereyeshot.png",
   "frameNumber" : 1,
-  "power" : 2,
-  "speed" : 120,
+  "level" : 5,
+  "power" : 5,
+  "speed" : 60,
   "timeToLive" : 0.5,
   "piercing" : true,
-  "bounces" : 2,
-  "supportsProcessing" : true,
   "damagePoly" : [ [-25, 1], [25, 1], [25, -1], [-25, -1] ],
   "lightColor" : [0, 255, 0],
+  "fullbright" : true,
+  "pointLight" : true,
   "damageKind" : "electricplasma",
-  "scripts" : [ "/scripts/projectiles/timedactions.lua" ],
-  "scriptDelta" : 1,
-
-  "timedActions" : [
+  "periodicActions" : [
     {
-      "delayTime" : 0,
+      "time" : 0,
+      "loop" : false,
       "action" : "sound",
       "options" : ["/sfx/gun/plasma_pistol1.ogg" , "/sfx/gun/plasma_pistol2.ogg" , "/sfx/gun/plasma_pistol3.ogg" ]
     }

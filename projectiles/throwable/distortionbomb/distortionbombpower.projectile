@@ -1,0 +1,29 @@
+{
+  "projectileName" : "distortionbombpower",
+  "physics" : "stickybomb",
+  "bounces" : -1,
+  "timeToLive" : 1.35,
+  "image" : "distortionbomb.png",
+  "animationCycle" : 1.35,
+  "lightColor" : [0, 75, 0],
+  "frameNumber" : 7,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/distortionbombexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "ngravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0,
+      "config" : { "timeToLive" : 0.1 }
+    }
+  ],
+  "power" : 60,
+  "damageType" : "NoDamage",
+  "damageKind" : "cosmic",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "emitters" : [ "sparks" ]
+}

@@ -4,7 +4,7 @@
   "inventoryIcon" : "lasherhookicon.png",
   "rarity" : "rare",
   "maxStack" : 1,
-  "description" : "A more advanced lasher hook.",
+  "description" : "A more advanced lasher hook that also deals more damage.",
   "shortdescription" : "Lasher Hook II",
   "largeImage" : "lasherhookbig.png",
   "category" : "Tool",
@@ -25,7 +25,12 @@
   "projectileType" : "lasherhook",
   "projectileParameters" : {
     "speed" : 100,
-    "timeToLive" : 0.55
+    "timeToLive" : 0.55,
+    "power" : 10,
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact1.ogg"],"action":"sound"} ],
+    "statusEffects" : [ "weakpoison" ]
   },
 
   "ropeWidth" : 0.8,

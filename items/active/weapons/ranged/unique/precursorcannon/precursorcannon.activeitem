@@ -1,0 +1,151 @@
+{
+  "itemName" : "precursorcannonnew",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "The compressed rage of the Precursors.
+^cyan;Charges Up^reset;",
+  "shortdescription" : "Precursor Annihilator",
+  "tooltipKind" : "gun2",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","energy","precursor", "upgradeableWeapon"],
+  "level" : 6,
+
+  "inventoryIcon" : "precursorcannon.png",
+
+  "animation" : "precursorcannon.animation",
+  "animationParts" : {
+    "gun" : "precursorcannon_Link.png",
+    "gunfullbright" : "precursorcannonfullbright.png",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "lights" : { "muzzleFlash" : {"color" : [204, 159, 5] } }   
+  },
+  "muzzleOffset" : [6, -0.4],
+
+  "scripts" : [
+    "/items/active/weapons/ranged/gun.lua",
+    "/items/active/scripts/heavyweapon.lua"
+  ],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "chargefire",
+  "primaryAbility" : {
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    },  
+    "chargeLevels" : [
+      {
+        "time" : 0,
+        "energyCost" : 35,
+        "cooldown" : 0.1,
+        "projectileType" : "radioactiveplasma",
+        "projectileParameters" : {
+	      "speed" : 50,
+	      "power" : 3
+        },
+        "inaccuracy" : 0,
+        "baseDamage" : 1.4,
+        "fireSound" : "fire"
+      },
+      {
+        "time" : 1.0,
+        "energyCost" : 40,
+        "cooldown" : 0.5,
+        "projectileType" : "precursorball",
+        "fireType" : "burst",
+        "projectileCount" : 1,
+        "inaccuracy" : 0,
+        "projectileParameters" : {
+	      "speed" : 20,
+	      "statusEffects" : [ "radiationburn" ],
+	      "power" : 8
+        },
+        "baseDamage" : 8,
+        "fireSound" : "fire2"
+      }
+    ]
+  },
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  
+
+  "altAbility" : {
+    "name" : "Photon Spread",
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.5,
+    "baseDps" : 5,
+    "energyUsage" : 35,
+    "fireType" : "burst",
+    
+    "burstCount" : 5,
+    "burstTime" : 0.1,
+    "inaccuracy" : 0.12,
+    "projectileCount" : 3,
+    "projectileType" : "precursorshot2a",
+    "projectileParameters" : {
+      "speed" : 40,
+      "timeToLive" : 3
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

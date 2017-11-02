@@ -20,11 +20,11 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 22,
+      "targetQueryRange" : 75,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.5,
+      "keepTargetInRange" : 150,
+      "targetOutOfSightTime" : 15.5,
       "hurtTime": 0.12,
       "hurtWaitForGround": false,
       "hurtWaitForGroundTime": 0.1,
@@ -39,7 +39,7 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 30,
-            "minimumRange" : 4,
+            "minimumRange" : 12,
             "onGround" : false,
             "windupState" : "firewindup",
             "windupTime" : 0.5,
@@ -113,7 +113,7 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 20,
-            "minimumRange" : 4,
+            "minimumRange" : 12,
             "onGround" : false,
             "windupState" : "magiccharge",
             "windupTime" : 1,
@@ -142,7 +142,7 @@
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 12,
-            "minimumRange" : 4,
+            "minimumRange" : 5,
             "windupState" : "chargewindup",
             "windupTime" : 0.7,
 
@@ -162,12 +162,15 @@
 	  "cooldown" : 6,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 6,
-            "minimumRange" : 2,
+            "maximumRange" : 5,
+            "minimumRange" : 0,
             "windupState" : "chargewindup2",
             "windupTime" : 0.5,
 
             "projectileType" : "shadowswoosh",
+            "projectileParameters" : {
+              "statusEffects" : [ "superdarkstatlarge" ]
+            },            
             "power" : 8,
             "speed": 10,
             "fireOffset" : [3, 0],
@@ -275,7 +278,7 @@
             "windupTime" : 0.4,
 
             "projectileType" : "elderbladeswoosh",
-            "projectileParameters" : { "speed" : 0, "statusEffects" : [ "insanity" ], "fullbright" : true },
+            "projectileParameters" : { "speed" : 0, "statusEffects" : [ "superdarkstatmid" ], "fullbright" : true },
             "power" : 8,
             "speed": 10,
             "fireOffset" : [4.6, 0],
@@ -290,7 +293,7 @@
         },        
         {
           "name" : "action-fire",
-	  "cooldown" : 3,
+	  "cooldown" : 7,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 6,

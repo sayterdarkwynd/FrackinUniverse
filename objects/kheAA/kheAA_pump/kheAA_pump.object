@@ -1,76 +1,82 @@
 {
-	"objectName" : "network_pump",
-	"colonyTags" : ["wired"],
-	"printable" : false,
-	"rarity" : "Common",
-	"description" : "Pumps liquids.
-^blue;Input^white;1^blue;: ^white;power switch
-^blue;Input^white;2^blue;: ^white;compression
-^red;Output^white;1^red;: ^white;item network
-^red;Output^white;2^red;: ^white;liquid network^reset;",
-	"shortdescription" : "Pump",
-	"objectType" : "container",
-	"tooltipKind" : "container",
-	"race" : "generic",
-	"retainScriptStorageInItem" : true,
-	"category" : "wire",
-	"price" : 15,
+	"objectName": "network_pump",
+	"colonyTags": ["wired"],
+	"printable": false,
+	"rarity": "Common",
+	"description": "Pumps liquids.\n^blue;Input^white;1^blue;: ^white;power switch\n^blue;Input^white;2^blue;: ^white;compression\n^red;Output^white;1^red;: ^white;item network\n^red;Output^white;2^red;: ^white;liquid network^reset;",
+	"shortdescription": "Iron Pump",
+	"objectType": "container",
+	"tooltipKind": "container",
+	"race": "generic",
+	"retainScriptStorageInItem": true,
+	"category": "wire",
+	"price": 15,
 
-	"inventoryIcon" : "kheAA_pumpicon.png",
-	"orientations" : [
-	{
-			"image" : "kheAA_pump.png:<color>.off",
-			"imagePosition" : [0, 0],
+	"inventoryIcon": "kheAA_pumpicon.png",
+	"orientations": [{
+			"image": "kheAA_pump.png:<color>.off",
+			"imagePosition": [0, 0],
 
-			"spaceScan" : 0.1,
-			"anchors" : [ "top" ],
-			"direction" : "left"
+			"spaceScan": 0.1,
+			"anchors": ["top"],
+			"direction": "left"
 		},
 		{
-			"image" : "kheAA_pump.png:<color>.off",
-			"imagePosition" : [0, 0],
+			"image": "kheAA_pump.png:<color>.off",
+			"imagePosition": [0, 0],
 
-			"spaceScan" : 0.1,
-			"anchors" : [ "top" ],
-			"direction" : "right"
+			"spaceScan": 0.1,
+			"anchors": ["top"],
+			"direction": "right"
 		},
 		{
-			"image" : "kheAA_pump.png:<color>.off",
-			"imagePosition" : [0, 0],
+			"image": "kheAA_pump.png:<color>.off",
+			"imagePosition": [0, 0],
 
-			"spaceScan" : 0.1,
-			"anchors" : [ "right" ],
-			"direction" : "left"
+			"spaceScan": 0.1,
+			"anchors": ["right"],
+			"direction": "left"
 		},
 		{
-			"image" : "kheAA_pump.png:<color>.off",
-			"imagePosition" : [0, 0],
+			"image": "kheAA_pump.png:<color>.off",
+			"imagePosition": [0, 0],
 
-			"spaceScan" : 0.1,
-			"anchors" : [ "left" ],
-			"direction" : "right"
+			"spaceScan": 0.1,
+			"anchors": ["left"],
+			"direction": "right"
 		}
-	
+
 	],
 
-	"scripts" : [ "/objects/kheAA/kheAA_pump/kheAA_pump.lua"],
-	"scriptDelta" : 1,
+	"scripts": ["/objects/kheAA/kheAA_pump/kheAA_pump.lua"],
+	"scriptDelta": 1,
 
-	"animation" : "/objects/kheAA/kheAA_pump/kheAA_pump.animation",
+	"animation": "/objects/kheAA/kheAA_pump/kheAA_pump.animation",
 
-	"animationParts" : {
-		"pump" : "kheAA_pump.png",
-		"pipe" : "kheAA_ver_pipe.png"
+	"animationParts": {
+		"pump": "kheAA_pump.png",
+		"pipe": "kheAA_ver_pipe.png"
 	},
-	"animationPosition" : [0, 0],
-	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
-	"closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
-	"slotCount" : 16,
-	"uiConfig" : "/interface/kheAA/kheAA_pump/kheAA_pumpGui.config",
-	"frameCooldown" : 5,
-	"autoCloseCooldown" : 3600,
-
-	"inputNodes" : [ [0, 0],[1,0] ],
-	"outputNodes" : [ [0, 1],[1,1] ],
-	"lockedSlots" : [16]
+	"animationPosition": [0, 0],
+	"openSounds": ["/sfx/objects/woodenbox_open.ogg"],
+	"closeSounds": ["/sfx/objects/woodenbox_close.ogg"],
+	"slotCount": 16,
+	"uiConfig": "/interface/kheAA/kheAA_pump/kheAA_pumpGui.config",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"kheAA_maxDepth": 20,
+	"inputNodes": [
+		[0, 0],
+		[1, 0]
+	],
+	"outputNodes": [
+		[0, 1],
+		[1, 1]
+	],
+	"kheAA_logicNode":0,
+	"kheAA_isPump":true,
+	"kheAA_powerPumpNode":1,
+	"kheAA_outDataNode":0,
+	"kheAA_spoutNode":1,
+	"lockedSlots": [16]
 }

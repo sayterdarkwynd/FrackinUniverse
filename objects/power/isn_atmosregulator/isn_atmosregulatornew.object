@@ -42,8 +42,21 @@
     }
   ],
 
-  "scripts" : [ "/scripts/power.lua","isn_atmosregulator.lua","/objects/isn_sharedobjectscripts.lua" ],
+  "scripts" : [ "/scripts/power.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua","/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 60,
+  
+  "objectType" : "container",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 0,
+  "uiConfig" : "/interface/objectcrafting/fu_atmosfilter<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+  
+  "atmos" : {
+	"range" : 500,
+	"objectEffects" : ["isn_atmosprotection"]
+  },
 
   "animation" : "isn_atmosregulatornew.animation",
   

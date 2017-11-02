@@ -1,0 +1,90 @@
+{
+  "itemName" : "fupyreitepistol",
+  "price" : 460,
+  "inventoryIcon" : "pyreitepistol.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Absoultely brutal, but slow firing.
+^cyan;High-incendiary rounds^reset;",
+  "shortdescription" : "Vengeance",
+  "category" : "pistol",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon" ],
+  "twoHanded" : false,
+  "weaponType" : "pistol",
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "pyreitepistol.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzleorange1.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/cplasmaex1.wav" ]
+    }
+  },
+
+  "baseOffset" : [1.2, 0.35],
+  "muzzleOffset" : [0.6,0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.5,
+    "baseDps" : 6.5,
+    "energyUsage" : 45,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fireplasmabullet",
+    "projectileParameters" : {
+      "damageSourceKind" : "fire",
+      "statusEffects" : [ "burning" ]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [-0.2, 0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "weaponOffset" : [-0.5, 0],
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "weaponOffset" : [-0.5, 0],
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

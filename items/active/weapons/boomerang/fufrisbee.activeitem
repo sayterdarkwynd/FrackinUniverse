@@ -1,0 +1,81 @@
+{
+  "itemName" : "fufrisbee",
+  "level" : 2,
+  "price" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "category" : "boomerang",
+  "description" : "A seemingly infinite supply of frisbees.",
+  "shortdescription" : "Stack o' Frisbees",
+  "tooltipKind" : "boomerang",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","boomerang","upgradeableWeapon"],
+
+  "inventoryIcon" : "frisbee.png",
+  "animation" : "boomerang.animation",
+  "animationParts" : {
+    "boomerang" : "frisbee.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "cooldownTime" : 1.5,
+
+  "projectileType" : "fufrisbeedisc",
+  "projectileParameters" : {
+    "power" : 3.85,
+    "knockback" : 10,
+
+    "ignoreTerrain" : false,
+    "controlForce" : 1,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 20.0
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true,
+      "weaponOffset" : [ -0.2, -0.6]
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : -80,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false,
+      "weaponOffset" : [ -0.2, -0.6]
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "critChance" : 12,
+  "critBonus" : 2,
+
+  "builder" : "/items/buildscripts/buildboomerang.lua"
+}

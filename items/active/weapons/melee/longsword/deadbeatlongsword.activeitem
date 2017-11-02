@@ -1,0 +1,46 @@
+{
+  "itemName" : "deadbeatlongsword",
+  "price" : 2500,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Looks crappy. Cuts deep.
+^cyan;Causes bleeding^reset;",
+  "shortdescription" : "Junk Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : [ "weapon", "melee", "longsword",  "upgradeableWeapon"],
+  "inventoryIcon" : "deadbeatlongsword_gamzam.png",
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "deadbeatlongsword_gamzam.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "baseDps" : 8.75,
+    "damageConfig" : {
+      "damageSourceKind" : "slash",
+      "statusEffects" : [ "bleedingshort" ]
+    }
+  },
+
+  "critChance" : 4, 
+  "critBonus" : 1, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

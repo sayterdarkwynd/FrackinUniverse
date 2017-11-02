@@ -1,0 +1,40 @@
+{
+  "itemName" : "deadbeatmace",
+  "price" : 2600,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Dense, deadly and heavy.
+^cyan;Causes bleeding^reset;",
+  "shortdescription" : "Junk Mace",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "deadbeatmace_gamzam.png",
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "deadbeatmace_gamzam.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1.2, 
+    "baseDps":7.2,
+    "damageSourceKind" : "hammer",
+    "statusEffects" : [ "bleedingshort" ],
+      "knockback" : 20
+  },
+  "critChance" : 4,
+  "critBonus" : 1,
+  "stunChance" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

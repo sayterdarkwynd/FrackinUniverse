@@ -1,0 +1,58 @@
+{
+  "objectName" : "fm_musicplayer",
+  "colonyTags" : ["musical"],
+  "rarity" : "Common",
+  "category" : "decorative",
+
+  "description" : "Can play music when switched on (using wiring).",
+  "shortdescription" : "Music Player",
+  "race" : "generic",
+  "learnBlueprintsOnPickup" : ["fm_portablemusicplayer"],
+
+  "inventoryIcon" : "fm_musicplayericon.png",
+  "orientations" : [
+    {
+      "image" : "fm_musicplayerleft.png:<color>.<frame>",
+      "imagePosition" : [-12, 0],
+      "animationPosition" : [-12, 0],
+      "animationParts" : {
+        "bg" : "fm_musicplayerleft.png",
+        "fg" : "fm_musicplayerleftlit.png"
+      },
+      "direction" : "left",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "fm_musicplayer.png:<color>.<frame>",
+      "imagePosition" : [-12, 0],
+      "animationPosition" : [-12, 0],
+      "animationParts" : {
+        "bg" : "fm_musicplayer.png",
+        "fg" : "fm_musicplayerlit.png"
+      },
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+	
+  "animation" : "fm_musicplayer.animation",
+  "animationParts" : {
+    "bg" : "fm_musicplayer.png",
+    "fg" : "fm_musicplayerlit.png"
+  },
+  "animationPosition" : [-8, 0],
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+  
+  "inputNodes" : [ [0, 0] ],
+  
+  "scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayerobject.lua"],
+  "scriptDelta" : 7,	
+  
+  "soundEffect" : "",
+  "soundEffectRangeMultiplier" : 1.0,
+  "broadcastArea" : [-30, -30, 30, 30]
+}

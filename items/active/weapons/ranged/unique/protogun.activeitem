@@ -12,7 +12,7 @@
   "weaponType" : "Energy",
   "itemTags" : ["weapon","ranged","shotgun", "energy", "upgradeableWeapon" ],
   "twoHanded" : true,
-  "category" : "Energy Shotgun",
+  "category" : "shotgun",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -27,7 +27,7 @@
   },
 
   "baseOffset" : [1.7, 0.32],
-  "muzzleOffset" : [1.645, -0.225],
+  "muzzleOffset" : [1.2, 0.15],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -37,17 +37,35 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.80,
-    "baseDps" : 9.75,
-    "energyUsage" : 32.0,
+    "baseDps" : 11,
+    "energyUsage" : 35.0,
     "inaccuracy" : 0.07,
 
-    "projectileCount" : 2,
+    "projectileCount" : 3,
     "fireType" : "auto",
 
     "projectileType" : "protoshot3",
     "projectileParameters" : { 
       "speed" : 50,
-      "knockback" : 5
+      "knockback" : 8,
+      "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ],      
+      "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ]      
     },
   "stances" : {
     "idle" : {
@@ -84,6 +102,48 @@
   "critBonus" : 3,
 
   "altAbilityType" : "protobomb",
+  "altAbility" : {
+    "fireTime" : 3,
+    "name" : "Blaster Ball",
+    "baseDps" : 10,
+    "projectileParameters" : {
+      "timeToLive" : 10,
+      "knockback" : 20,
+      "piercing" : true,
+      "periodicActions" : [
+	    {
+	      "time" : 0.1,
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/protopistol.ogg" ]
+	    },      
+	    {
+	      "time" : 0.1,
+	      "action" : "projectile",
+	      "type" : "protoshot",
+	      "fuzzAngle" : 360,
+	      "inheritDamageFactor" : 0.1
+	    }	      
+      ],
+      "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }       
+      ],      
+      "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ]        
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -5,7 +5,7 @@
   "scripts" : ["armorsphere.lua"],
   "animator" : "armorsphere.animation",
 
-  "description" : "An armored sphere! Drop bombs with ^green;[down]^reset;. ^green;[F]",
+  "description" : "An armored sphere! Drop power-bombs with ^green;[down]^reset;. ^green;[F]",
   "shortDescription" : "Armor Sphere",
   "rarity" : "Uncommon",
   "icon" : "/tech/armorsphere.png",
@@ -20,22 +20,22 @@
   "transformedMovementParameters" : {
     "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
     "runModifier" : 1,
-    "groundForce" : 400.0,
-    "normalGroundFriction" : 1.6,
+    "groundForce" : 450.0,
+    "normalGroundFriction" : 1.5,
     "ambulatingGroundFriction" : 0.25,
-    "slopeSlidingFactor" : 0.5,
+    "slopeSlidingFactor" : 1,
 
     "airJumpProfile" : {
-      "jumpSpeed" : 0,
-      "jumpControlForce" : 0.0,
+      "jumpSpeed" : 25,
+      "jumpControlForce" : 700.0,
       "jumpInitialPercentage" : 1.0,
-      "jumpHoldTime" : 0.0
+      "jumpHoldTime" : 0.1
     },
 
     "liquidJumpProfile" : {
       "jumpSpeed" : 1.0,
       "jumpControlForce" : 0.5,
-
+      "liquidImpedance" : 0.1,
       "multiJump" : false,
       "autoJump" : false
     }

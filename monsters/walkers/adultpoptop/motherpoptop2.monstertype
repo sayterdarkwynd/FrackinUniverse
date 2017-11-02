@@ -1,0 +1,350 @@
+{
+  "type" : "motherpoptop2",
+  "shortdescription" : "Mother Poptop",
+  "description" : "This one has...babies with knives? How the...",
+
+  "categories" : [ "adultpoptop" ],
+  "parts" : [ "body" ],
+
+  "animation" : "adultpoptop.animation",
+
+  "dropPools" : [ { "default" : "motherpoptopTreasure", "bow" : "motherpoptopTreasure" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+      "hurtTime": 0.10,
+      "hurtWaitForGround": false,
+      "hurtWaitForGroundTime": 0.1,
+      
+
+      "foundTargetActions" : [ 
+        {
+          "name" : "action-animate",
+          "cooldown" : 8,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 0.53
+          }
+        }        
+      ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [      
+        {
+          "name" : "action-fire",
+	  "cooldown" : 4.5,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 20,
+            "minimumRange" : 8,
+            "windupState" : "fire2",
+            "windupTime" : 0.5,
+
+            "projectileType" : "fusoundwaveboss",      
+            "power" : 9,
+            
+            "fireOffset" : [2.5, 0.3],
+            "aimAtTarget" : true,
+            "projectileCount" : 5,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "range": 20,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.6
+          }
+        },    
+        {
+          "name" : "action-fire",
+	  "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 20,
+            "minimumRange" : 1,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.3,
+
+            "projectileType" : "rocktrollswoosh",      
+            "projectectileParameters" : {
+              "timeToLive" : 0.01,
+              "speed":60
+            },
+            "power" : 22,
+            
+            "fireOffset" : [5, 0.3],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "fireSound" : "",
+            "fireState" : "charge",
+            "winddownState" : "chargewinddown",
+            "winddownTime" : 0.2
+          }
+        },         
+        {
+          "name" : "action-charge",
+          "cooldown" : 2.75,
+          "parameters" : {
+            "maximumRange" : 15,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.3,
+
+            "chargeTime" : 0.1,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 1000,
+            "chargeState" : "charge",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 1000,
+            "winddownState" : "chargewinddown"
+          }
+        },       
+       {
+          "name" : "action-fire",
+          "cooldown" : 8.5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 60,
+            "minimumRange" : 0,
+            "windupState" : "babyeat",
+            "windupTime" : 1.1,
+            "projectileType" : "healingzoneboss",
+            "power" : 5,
+            "fireOffset" : [3.25, 0.6],
+            "projectileCount" : 1,
+            "projectileInterval" : 0.05,
+            "fireSound" : "",
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.6,
+            "aimAtTarget" : true,
+            "onGround" : false
+          }
+        }  
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-animate",
+          "cooldown" : 12,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 0.53
+          }
+        }    
+      ],
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }       
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }        
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }    
+      ],
+
+      "damageTakenActions" : [],
+      
+      "concurrentActions" : [
+        {
+          "name" : "action-spawncompanions",
+          "parameters" : {
+            "maxCount" : 3,
+            "spawnCooldown" : 5.0,
+            "monsterType" : "knifetop"
+          }
+        }       
+      ],
+      
+      "concurrentHostileActions" : [  
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 20,
+          "parameters" : {
+          "effect" : "nofalldamage",
+          "duration" : 120
+          }
+        },      
+        {
+          "name" : "action-leap", 
+          "cooldown" : 3,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 25,
+            "maxXRange" : 35,
+            "windupTime" : 0.3,
+            "windupState" : "roar",
+
+            "leapVelocity" : 40,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }      
+      ]
+    },
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 13,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 20,
+        "statusEffects" : [ ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ "negativehealth" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+
+      "mass" : 2.5,
+      "walkSpeed" : 9,
+      "runSpeed" : 11,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 35.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.23
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 300
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.05
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterName" : "Adult Poptop",
+    "capturedMonsterType" : "adultpoptop", // turn into an adultpoptop when captured
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "monsters" : "adultpoptop" }
+  }
+}

@@ -2,7 +2,7 @@
     [{
             "op": "add",
             "path": "/flakcannon/stats/multicount",
-            "value": 8
+            "value": 4
         },{
             "op": "replace",
             "path": "/flakcannon/partParameters/fireTime",
@@ -26,7 +26,7 @@
         }, {
             "op": "replace",
             "path": "/tommygun/partParameters/projectileParameters/power",
-            "value": 4.5
+            "value": 4.7
         }, {
             "op": "add",
             "path": "/tommygun/stats/rapidFire",
@@ -34,7 +34,7 @@
         }, {
             "op": "replace",
             "path": "/gatling/partParameters/projectileParameters/power",
-            "value": 4.5
+            "value": 4.7
         }, {
             "op": "add",
             "path": "/gatling/stats/rapidFire",
@@ -46,7 +46,7 @@
         }, {
             "op": "replace",
             "path": "/dualrifle/partParameters/projectileParameters/power",
-            "value": 2.32
+            "value": 2.5
         }, {
             "op": "add",
             "path": "/dualrifle/stats/rapidFire",
@@ -87,10 +87,10 @@
             "op": "add",
             "path": "/missilerack/stats/multicount",
             "value": 8
-        }, {
+        },{
             "op": "replace",
             "path": "/missilerack/partParameters/projectileParameters/power",
-            "value": 72
+            "value": 12.5
         }, {
             "op": "replace",
             "path": "/homingmissile/partParameters/projectileParameters/power",
@@ -130,7 +130,7 @@
         }, {
             "op": "replace",
             "path": "/drill/damageSources/<armName>Drill/damage",
-            "value": 5.5
+            "value": 6.5
         }, {
             "op": "replace",
             "path": "/plasmadronelauncher/partParameters/droneParameters/gun/projectileParameters/power",
@@ -1081,7 +1081,7 @@
                     "projectileType": "lunarishotinitiatemech",
                     "projectileCount": 1,
                     "projectileParameters": {
-                        "power": 1.2
+                        "power": 0.7
                     }
                 },
                 "partImages": {
@@ -1391,7 +1391,7 @@
                 "stats": {
                     "power": 5,
                     "energy": 5,
-                    "rapidFire": 3,
+                    "rapidFire": 5,
                     "multicount" : 4
                 },
                 "partParameters": {
@@ -1399,15 +1399,15 @@
                     "armClass": "GatlingArm",
                     "rotationLimits": [-1.75, 1.75],
                     "fireOffset": [7.75, 0.0],
-                    "windupTime": 1.2,
+                    "windupTime": 0.375,
                     "fireTime": 0.12,
                     "projectileCount" : 2,
                     "projectileType": "heavybullet",
                     "projectileParameters": {
-                        "power": 0.008,
+                        "power": 0.002,
                         "timeToLive": 1.0
                     },
-                    "projectileInaccuracy": 0.045
+                    "projectileInaccuracy": 0.05
                 },
                 "partImages": {
                     "<armName>": "arm/fuchaingun.png",
@@ -1510,8 +1510,502 @@
                     }
                 }
             }
-        }
+        },
+
+	{
+	    "op": "add",
+	    "path": "/drill2",
+	    "value": {
+	      "stats": {
+		"power": 4,
+		"energy": 4
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/drillarm.lua",
+		"armClass": "DrillArm",
+		"rotationLimits": [
+		  -1,
+		  1
+		],
+		"drillTipOffset": [
+		  8,
+		  0
+		],
+		"drillSourceOffsets": [
+		  [
+		    1,
+		    -2
+		  ],
+		  [
+		    1,
+		    0
+		  ],
+		  [
+		    1,
+		    2
+		  ]
+		],
+		"tileDamage": 1.35,
+		"tileDamageRate": 0.15,
+		"damageTileDepth": 6,
+		"spinUpDownTime": 0.6
+	      },
+	      "damageSources": {
+		"<armName>Drill": {
+		  "enabled": false,
+		  "attachToPart": "<armName>",
+		  "poly": [
+		    [
+		      8,
+		      2.5
+		    ],
+		    [
+		      2,
+		      0.75
+		    ],
+		    [
+		      2,
+		      4.25
+		    ]
+		  ],
+		  "damage": 15,
+		  "damageSourceKind": "fire",
+		  "damageRepeatTimeout": 0.2,
+		  "damageRepeatGroup": "<armName>Drill",
+		  "knockback": 30,
+		  "rayCheck": true
+		}
+	      },
+	      "physicsCollisions": {
+		"<armName>Drill": {
+		  "enabled": false,
+		  "attachToPart": "<armName>",
+		  "collision": [
+		    [
+		      7,
+		      2.5
+		    ],
+		    [
+		      1,
+		      0.75
+		    ],
+		    [
+		      1,
+		      4.25
+		    ]
+		  ],
+		  "collisionKind": "slippery",
+		  "categoryWhitelist": [
+		    "monster"
+		  ]
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/drill2.png",
+		"<armName>Fullbright": "arm/drill_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"838383",
+		"555555",
+		"383838",
+		"151515"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "loop",
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_windup2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			},
+			"active": {
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_active2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			},
+			"winddown": {
+			  "mode": "loop",
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_winddown2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			}
+		      }
+		    }
+		  },
+		  "parts": {
+		    "<armName>": {
+		      "partStates": {
+			"<armName>": {
+			  "winddown": {
+			    "properties": {
+			      "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+			    }
+			  }
+			}
+		      }
+		    },
+		    "<armName>Fullbright": {
+		      "partStates": {
+			"<armName>": {
+			  "winddown": {
+			    "properties": {
+			      "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+			    }
+			  }
+			}
+		      }
+		    }
+		  }
+		}
+	      }
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/drill3",
+	    "value": {
+	      "stats": {
+		"power": 5,
+		"energy": 5
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/drillarm.lua",
+		"armClass": "DrillArm",
+		"rotationLimits": [
+		  -1,
+		  1
+		],
+		"drillTipOffset": [
+		  8,
+		  0
+		],
+		"drillSourceOffsets": [
+		  [
+		    1,
+		    -2
+		  ],
+		  [
+		    1,
+		    0
+		  ],
+		  [
+		    1,
+		    2
+		  ]
+		],
+		"tileDamage": 2.35,
+		"tileDamageRate": 0.15,
+		"damageTileDepth": 10,
+		"spinUpDownTime": 0.6
+	      },
+	      "damageSources": {
+		"<armName>Drill": {
+		  "enabled": false,
+		  "attachToPart": "<armName>",
+		  "poly": [
+		    [
+		      8,
+		      2.5
+		    ],
+		    [
+		      2,
+		      0.75
+		    ],
+		    [
+		      2,
+		      4.25
+		    ]
+		  ],
+		  "damage": 25,
+		  "damageSourceKind": "fire",
+		  "damageRepeatTimeout": 0.2,
+		  "damageRepeatGroup": "<armName>Drill",
+		  "knockback": 30,
+		  "rayCheck": true
+		}
+	      },
+	      "physicsCollisions": {
+		"<armName>Drill": {
+		  "enabled": false,
+		  "attachToPart": "<armName>",
+		  "collision": [
+		    [
+		      7,
+		      2.5
+		    ],
+		    [
+		      1,
+		      0.75
+		    ],
+		    [
+		      1,
+		      4.25
+		    ]
+		  ],
+		  "collisionKind": "slippery",
+		  "categoryWhitelist": [
+		    "monster"
+		  ]
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/drill3.png",
+		"<armName>Fullbright": "arm/drill_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"838383",
+		"555555",
+		"383838",
+		"151515"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "loop",
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_windup2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			},
+			"active": {
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_active2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			},
+			"winddown": {
+			  "mode": "loop",
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_winddown2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			}
+		      }
+		    }
+		  },
+		  "parts": {
+		    "<armName>": {
+		      "partStates": {
+			"<armName>": {
+			  "winddown": {
+			    "properties": {
+			      "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+			    }
+			  }
+			}
+		      }
+		    },
+		    "<armName>Fullbright": {
+		      "partStates": {
+			"<armName>": {
+			  "winddown": {
+			    "properties": {
+			      "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+			    }
+			  }
+			}
+		      }
+		    }
+		  }
+		}
+	      }
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/drill4",
+	    "value": {
+	      "stats": {
+		"power": 6,
+		"energy": 6
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/drillarm.lua",
+		"armClass": "DrillArm",
+		"rotationLimits": [
+		  -1,
+		  1
+		],
+		"drillTipOffset": [
+		  8,
+		  0
+		],
+		"drillSourceOffsets": [
+		  [
+		    1,
+		    -2
+		  ],
+		  [
+		    1,
+		    0
+		  ],
+		  [
+		    1,
+		    2
+		  ]
+		],
+		"tileDamage": 3.35,
+		"tileDamageRate": 0.15,
+		"damageTileDepth": 12,
+		"spinUpDownTime": 0.6
+	      },
+	      "damageSources": {
+		"<armName>Drill": {
+		  "enabled": false,
+		  "attachToPart": "<armName>",
+		  "poly": [
+		    [
+		      8,
+		      2.5
+		    ],
+		    [
+		      2,
+		      0.75
+		    ],
+		    [
+		      2,
+		      4.25
+		    ]
+		  ],
+		  "damage": 35,
+		  "damageSourceKind": "fire",
+		  "damageRepeatTimeout": 0.2,
+		  "damageRepeatGroup": "<armName>Drill",
+		  "knockback": 30,
+		  "rayCheck": true
+		}
+	      },
+	      "physicsCollisions": {
+		"<armName>Drill": {
+		  "enabled": false,
+		  "attachToPart": "<armName>",
+		  "collision": [
+		    [
+		      7,
+		      2.5
+		    ],
+		    [
+		      1,
+		      0.75
+		    ],
+		    [
+		      1,
+		      4.25
+		    ]
+		  ],
+		  "collisionKind": "slippery",
+		  "categoryWhitelist": [
+		    "monster"
+		  ]
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/drill4.png",
+		"<armName>Fullbright": "arm/drill_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"838383",
+		"555555",
+		"383838",
+		"151515"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "loop",
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_windup2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			},
+			"active": {
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_active2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			},
+			"winddown": {
+			  "mode": "loop",
+			  "properties": {
+			    "persistentSound": "/sfx/melee/mech_drill_winddown2.ogg",
+			    "persistentSoundRangeMultiplier": 1,
+			    "persistentSoundStopTime": 0.2
+			  }
+			}
+		      }
+		    }
+		  },
+		  "parts": {
+		    "<armName>": {
+		      "partStates": {
+			"<armName>": {
+			  "winddown": {
+			    "properties": {
+			      "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+			    }
+			  }
+			}
+		      }
+		    },
+		    "<armName>Fullbright": {
+		      "partStates": {
+			"<armName>": {
+			  "winddown": {
+			    "properties": {
+			      "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+			    }
+			  }
+			}
+		      }
+		    }
+		  }
+		}
+	      }
+	    }
+	  }	  
     ],
+
+
+
+
  
     [{
             "op": "test",
@@ -1519,7 +2013,7 @@
         }, {
             "op": "add",
             "path": "/xsm_roninbeam/stats/basePower",
-            "value": 0.05
+            "value": 0.025
         }, {
             "op": "add",
             "path": "/xsm_roninbeam/damageSources/<armName>Beam/damage",
@@ -1534,7 +2028,7 @@
         }, {
             "op": "add",
             "path": "/xsm_thetabeam/stats/basePower",
-            "value": 2.25
+            "value": 1.85
         }, {
             "op": "replace",
             "path": "/xsm_thetabeam/damageSources/<armName>Beam/damage",
@@ -1679,7 +2173,7 @@
         }, {
             "op": "replace",
             "path": "/srm/partParameters/projectileParameters/power",
-            "value": 4.4
+            "value": 4.5
         }, {
             "op": "add",
             "path": "/srm/stats/multicount",
@@ -1694,7 +2188,7 @@
         {
             "op": "replace",
             "path": "/bhmappc/partParameters/projectileParameters/power",
-            "value": 42
+            "value": 45
         }
     ],
  
@@ -1719,7 +2213,7 @@
         }, {
             "op": "replace",
             "path": "/bhmac10/partParameters/projectileParameters/power",
-            "value": 30
+            "value": 40.25
         }
     ],
 

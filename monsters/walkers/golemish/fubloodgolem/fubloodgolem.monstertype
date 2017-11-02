@@ -1,6 +1,6 @@
 {
   "type" : "fubloodgolem",
-  "shortdescription" : "Blood Beast",
+  "shortdescription" : "Hemogolem",
   "description" : "This shouldn't even be possible, but there you have it. I dare you to lick one.",
   "categories" : [ "fubloodgolem" ],
   "parts" : [ "body" ],
@@ -39,7 +39,27 @@
             "state" : "roar",
             "animationTime" : 2.2
           }
-        },      
+        }, 
+        {
+          "name" : "action-leap", 
+          "cooldown" : 5,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 10,
+            "maxXRange" : 9,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },        
         {
           "name" : "action-fire",
           "cooldown" : 2.0,
@@ -122,7 +142,27 @@
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
-        }
+        },
+        {
+          "name" : "action-leap", 
+          "cooldown" : 2,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 10,
+            "maxXRange" : 9,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }        
       ],
 
       "wanderActions" : [

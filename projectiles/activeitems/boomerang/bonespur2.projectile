@@ -1,0 +1,31 @@
+{
+  "projectileName" : "bonespur2",
+  "image" : "bonespur.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 8,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "flippable" : false,
+  "orientationLocked" : true,
+
+  "statusEffects" : [ ],
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "power" : 4.2,
+  "speed" : 120,
+  "damageKind" : "poison",
+  "physics" : "laser",
+  "bounces" : -1,
+  "piercing" : true,
+  "timeToLive" : 1,
+  "emitters" : [ "acidsquirt" ],
+  "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
+
+  "scripts" : [ "boomerangprojectile.lua" ],
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+    }  
+  ]
+}

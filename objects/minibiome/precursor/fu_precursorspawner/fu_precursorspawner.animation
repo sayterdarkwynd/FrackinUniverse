@@ -1,0 +1,44 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "base" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1},
+		  "on" : {"frames" : 1},
+		  "overclocked" : {"frames" : 1}
+        }
+      }
+    },
+
+    "parts" : {
+      "base" : {
+	"properties" : {
+	"zLevel" : 2,
+	"centered" : false,
+	"fullbright" : true 
+	},
+        "partStates" : {
+          "base" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+			"on" : {"properties" : {"image" : "<partImage>:on"}},
+			"overclocked" : {"properties" : {"image" : "<partImage>:overclocked"}}
+          }
+        }
+      },
+      "basefullbright" : {
+	"properties" : {
+	"zLevel" : 3,
+	"centered" : false
+	},
+        "partStates" : {
+          "base" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+			"on" : {"properties" : {"image" : "<partImage>:on"}},
+			"overclocked" : {"properties" : {"image" : "<partImage>:overclocked"}}
+          }
+        }
+      }      
+    }
+  }
+}

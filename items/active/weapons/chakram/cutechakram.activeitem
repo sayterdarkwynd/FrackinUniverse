@@ -1,0 +1,83 @@
+{
+  "itemName" : "cutechakram",
+  "price" : 750,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "category" : "chakram",
+  "description" : "^yellow;Bounces off walls^reset;",
+  "shortdescription" : "Cute Chakram",
+  "tooltipKind" : "chakram",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","chakram","cute","upgradeableWeapon"],
+
+  "level" : 5,
+
+  "inventoryIcon" : "cutechakram.png",
+  "animation" : "chakramglow.animation",
+  "animationParts" : {
+    "chakram" : "cutechakram.png",
+    "chakramfullbright" : "cutechakramfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "cutechakram",
+  "projectileParameters" : {
+    "knockback" : 2,
+    "power" : 4,
+    "damageRepeatTimeout" : 0.2,
+    "pickupDistance" : 1.0,
+    "maxDistance" : 20
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "critChance": 12,
+  "critBonus": 7,
+
+  "builder" : "/items/buildscripts/buildchakram.lua"
+}

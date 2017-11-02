@@ -1,0 +1,36 @@
+{
+	"objectName" : "fu_pickuprangetemp",
+	"colonyTags" : ["wired"],
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Grabs items from the world.",
+	"shortdescription" : "Grabber",
+	"tooltipKind" : "container",
+	"race" : "generic",
+	"smashOnBreak" : true,
+
+	"category" : "wire",
+	"price" : 15,
+
+	"inventoryIcon" : "fu_pickuprangetempicon.png",
+	"orientations" : [
+		{
+			"image" : "fu_pickuprangetemp.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1
+		}
+	],
+
+	"scripts" : [ "/objects/generic/fu_pickuprangetemp/fu_pickuprangetemp.lua"],
+	"scriptDelta" : 1,
+
+	"animation" : "/objects/generic/fu_pickuprangetemp/fu_pickuprangetemp.animation",
+
+	"animationParts" : {
+		"grabber" : "fu_pickuprangetemp.png"
+	},
+	"animationPosition" : [0, 0],
+	"kheAA_isVacuum" : true,
+	"kheAA_vacuumRange" : "5"
+}

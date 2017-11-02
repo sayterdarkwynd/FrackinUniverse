@@ -65,7 +65,9 @@ function update(dt)
     end
   end
   if storage.input and input and storage.input.name == input.name then
-    if storage.timer > 0 and (not powered or power.consume(config.getParameter("isn_requiredPower")*dt)) then
+    if storage.timer > 0 and (not powered or (power.getTotalEnergy() >= config.getParameter("isn_requiredPower")*(1-(cent or 0))-1 and power.consume(config.getParameter("isn_requiredPower")*dt))) then
+	  cent = (cent or 0) + dt
+	  if cent >= 1 then cent = cent-1 end
 	  animator.setAnimationState("centrifuge", "working")
 	  storage.timer = math.max(storage.timer - dt,0)
 	elseif storage.timer == 0 then

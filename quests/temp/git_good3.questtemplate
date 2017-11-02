@@ -1,0 +1,33 @@
+{
+	"id" : "git_gud_3",
+	"prerequisites" : [ "git_gud_2" ],
+	"title" : "Git Gud 3",
+	"text" : "It's time to git gud. 3",
+	"completionText" : "gratz, you've gitten gud.",
+	"moneyRange" : [1, 9999],
+	"rewards" : [],
+	"speaker" : "questGiver",
+	
+	"secret" : true,
+	
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"requireTurnIn" : false,
+		"turnInDescription" : "Git gud by finding two Aegisalt Ores",
+		
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+		
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "aegisaltore",
+				"count" : 3,
+				"consume" : false
+			}
+		]
+	}
+}

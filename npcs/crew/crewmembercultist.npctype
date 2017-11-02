@@ -1,7 +1,8 @@
 {
   "type" : "crewmembercultist",
   "baseType" : "crewmember",
-
+  "disableWornArmor" : false,
+    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
   "scriptConfig" : {
     "behaviorConfig" : {
       "emptyHands" : false
@@ -9,9 +10,9 @@
 
     "crew" : {
       "defaultUniform" : {
-        "head" : "fuarmoredcultisthead",
-        "chest" : "fuarmoredcultistchest",
-        "legs" : "fuarmoredcultistlegs"
+        "head" : "cultarmorhead",
+        "chest" : "cultarmorchest",
+        "legs" : "cultarmorpants"
       },
 
       "role" : {
@@ -93,8 +94,8 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "cultiststaffmelee" ],
-            "sheathedprimary" : [ "eyecannon" ]          
+            "primary" : [ "carbonquarterstaff", "curvestaff", "cultiststaffmelee",  "bloodyknife", "fubonepickaxe", "effigiumdagger" ],
+            "sheathedprimary" : [ "eyecannon", "sniperknife", "thornslinger", "elderpistol", "elderrepeater", "ff_icechucker", "aegisaltpistol3", "blistergun", "blisterpistol", "biopistol", "biogun" ]          
           }
         ] ]
     ]

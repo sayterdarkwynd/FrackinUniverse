@@ -100,7 +100,7 @@ function MechArm:statSet()
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
+        self.mechBonus = ((self.mechBonusBody * 0.75) + (self.mechBonusBooster * 0.35) + (self.mechBonusLegs * 0.5))
         self.energyMax = self.parts.body.energyMax
         self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
         self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
@@ -154,7 +154,7 @@ function MechArm:fire()
         self.multicount = self.stats.multicount
         self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
 
-	if self.multicount then
+	if (self.multicount) then
 	  pParams.power = (pParams.power / self.multicount) * self.mechTier
 	else
 	  pParams.power = (pParams.power * self.mechTier) 
@@ -168,7 +168,7 @@ function MechArm:fire()
         
         if (self.critChance) >= 100 then
           if self.multicount then
-            self.mechBonus = (self.mechBonus * 2) / self.multicount
+            self.mechBonus = (self.mechBonus * 2 ) / self.multicount
             storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
           else
             self.mechBonus = self.mechBonus * 2

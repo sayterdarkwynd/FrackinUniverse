@@ -9,7 +9,7 @@
   "shortdescription" : "Gauss Pistol",
 
   "level" : 4,
-  "category" : "Kinetic Pistol",
+  "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "weaponType" : "Pistol",
@@ -22,6 +22,13 @@
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
   "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-0.8, 0.0] }
+        ]
+      }
+    },   
     "sounds" : { "fire" : [ "/sfx/weapons/fugausspistol.ogg" ] },
     "lights" : { "muzzleFlash" : {"color" : [44, 104, 164] } }
   },

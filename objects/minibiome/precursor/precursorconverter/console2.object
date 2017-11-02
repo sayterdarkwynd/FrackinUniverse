@@ -1,0 +1,84 @@
+{
+  "objectName" : "precursorconverter2",
+  "colonyTags" : [ "fu", "science", "precursor" ],
+  "rarity" : "rare",
+  "race" : "generic",
+  "category" : "^orange;Convert Erchius into stuff...^reset;",
+  "printable" : false,
+  "objectType" : "container",
+  "price" : 450,
+  "inventoryIcon" : "extractionlabicon.png",
+  "description" : "Converts stuff into other stuff",
+  "shortdescription" : "^cyan;Faulty Erchius Converter^white;",
+  "subtitle" : "Resource converter",
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "console.png:<color>.<frame>", "fullbright" : true }, { "image" : "consolelit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "console.png",
+          "samplingarrayanimlit" : "consolelit.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "console.png:<color>.<frame>", "fullbright" : true }, { "image" : "consolelit.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "console.png",
+          "samplingarrayanimlit" : "consolelit.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "console.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "console.png"
+  },
+  "scripts" : [ "/objects/minibiome/precursor/precursorconverter/converterfake.lua",
+                "/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 200,
+  "recipeGroup" : "converter",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 12,
+  "uiConfig" : "/interface/extractor/extractor.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "outputNodes" : [ [0, 1] ],
+  "inputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  },
+
+  "fu_mintick" : 1,
+  "fu_stationTechLevel" : 1,
+  "fu_timerMod" : 4
+}

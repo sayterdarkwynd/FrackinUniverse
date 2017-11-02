@@ -1,0 +1,81 @@
+{
+  "itemName" : "futinydancer",
+  "price" : 500,
+  "inventoryIcon" : "tinydancer.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Teeny tiny, adorable murder devices.
+^cyan;Energy^reset;",
+  "shortdescription" : "Tiny Dancer",
+  "level" : 5,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "energy"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "tinydancer.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/marauder1.wav" ] },
+    "lights" : { "muzzleFlash" : {"color" : [124, 0, 30] } }  
+  },
+
+  "baseOffset" : [1.0, 0.34],
+  "muzzleOffset" : [0.2, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.25,
+    "baseDps" : 7,
+    "energyUsage" : 20,
+    "fireType" : "auto",
+    "inaccuracy" : 0.02,
+    "projectileCount" : 1,
+    "projectileType" : "plasmabullet",
+    "projectileParameters" : {
+      "speed" : 55
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

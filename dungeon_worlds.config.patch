@@ -57,7 +57,23 @@
       "biome" : "shoggothbiome"
       }
 },
-
+{
+    "op": "add",
+    "path": "/precursordungeon2",
+    "value": 
+      {
+      "primaryDungeon":"precursordungeon2",
+      
+      "threatLevel":5,
+      "gravity":100,
+      "airless" : false,
+      "worldSize":[2000,2000],
+      "dungeonBaseHeight" : 1400,
+      "dungeonSurfaceHeight" : 1500,
+      "ambientLightLevel":[15,10,25],          
+      "biome" : "irradiatedunderground"
+      }
+},
   {
     "op" : "add",
     "path" : "/flyingpyramid",
@@ -147,6 +163,44 @@
       "ambientLightLevel" : [32, 32, 32],
 	  "ambientNoises" : "/sfx/environmental/space_loop4.ogg",
       "musicTrack" : "/music/desert-battle-2.ogg",
+      "environmentStatusEffects" : ["biomeairless"],
+      "worldEdgeForceRegions" : "TopAndBottom",
+      "biome" : "space"
+    }
+  },
+  
+  {
+    "op" : "add",
+    "path" : "/wizardabode",
+    "value" : {
+      "primaryDungeon" : "wizardabode",
+      "threatLevel" : 1,
+      "gravity" : 0,
+      "worldSize" : [750, 500],
+      "dungeonBaseHeight" : 250,
+      "dungeonSurfaceHeight" : 250,
+      "ambientLightLevel" : [32, 32, 32],
+	  "ambientNoises" : "/sfx/environmental/space_loop4.ogg",
+      "musicTrack" : "/music/magickaforest.ogg",
+      "environmentStatusEffects" : ["biomeairless"],
+      "worldEdgeForceRegions" : "TopAndBottom",
+      "biome" : "space"
+    }
+  },
+  
+  {
+    "op" : "add",
+    "path" : "/apexweaponsplatform",
+    "value" : {
+      "primaryDungeon" : "apexweaponsplatform",
+      "threatLevel" : 1,
+      "gravity" : 0,
+      "worldSize" : [1300, 500],
+      "dungeonBaseHeight" : 250,
+      "dungeonSurfaceHeight" : 250,
+      "ambientLightLevel" : [32, 32, 32],
+	  "ambientNoises" : "/sfx/environmental/space_loop4.ogg",
+      "musicTrack" : "/music/the-apex.ogg",
       "environmentStatusEffects" : ["biomeairless"],
       "worldEdgeForceRegions" : "TopAndBottom",
       "biome" : "space"

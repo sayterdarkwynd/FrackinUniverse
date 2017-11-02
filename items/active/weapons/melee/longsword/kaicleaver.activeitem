@@ -1,0 +1,48 @@
+{
+  "itemName" : "kaicleaver",
+  "price" : 400,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A brutal looking zerchesium cleaver.
+^cyan;Causes long bleed^reset;
+^green;Counts as Hunting weapon^reset;",
+  "shortdescription" : "Kai Cleaver",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : [ "weapon", "melee", "broadsword", "longsword", "upgradeableWeapon" ],
+
+  "inventoryIcon" : "kaicleaver.png",
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "kaicleaver.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.80,
+    "baseDps" : 7.8,
+    "damageConfig" : {
+      "damageSourceKind" : "bow",
+      "statusEffects" : [ "bleedinglong" ]
+    }
+  },
+
+  "critChance" : 5,
+  "critBonus" : 2,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

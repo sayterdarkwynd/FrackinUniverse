@@ -1,0 +1,49 @@
+{
+  "itemName" : "flashlight_new",
+  "price" : 100,
+  "category" : "Tool",
+  "inventoryIcon" : "flashlighticon.png",
+  "rarity" : "common",
+  "maxStack" : 1,
+  "description" : "A crappy flashlight",
+  "shortdescription" : "Faulty Flashlight",
+  "largeImage" : "flashlightlarge.png",
+  "tooltipKind" : "tool",
+  "image" : "flashlight.png",
+  "handPosition" : [-2, 0],
+  "lightPosition" : [4, 0],
+  "learnBlueprintsOnPickup" : [ "flashlight" ],
+  "lightColor" : [175, 175, 175],
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+  
+  "beamLevel" : 5,
+  "beamAmbience" : 0.4,
+  
+  "particleEmitter" : {
+    "emissionRate" : 1.0,
+    "emissionVariance" : 0.5,
+
+    "particle" : {
+      "type" : "ember",
+      "position" : [0.5, 0.3],
+      "size" : 1.0,
+      "color" : [255, 100, 0, 255],
+      "light" : [150, 50, 50],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, 5.0],
+      "finalVelocity" : [0.0, 3.0],
+      "approach" : [0, 20],
+      "timeToLive" : 2,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0.5, 2.0],
+      "position" : [0.4, 0]
+    }
+  }  
+}

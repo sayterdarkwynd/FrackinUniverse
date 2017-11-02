@@ -1,0 +1,300 @@
+{
+	"projectileName": "poptopswooshsetup",
+	"image": "blankpng.png",
+	"animationCycle": 0.1,
+	"frameNumber": 1,
+	"speed": 0,
+	"damagePoly": [
+		[-18, 0],
+		[-12, -12],
+		[0, -18],
+		[12, -12],
+		[18, 0],
+		[12, 12],
+		[0, 18],
+		[-12, 12]
+	],
+	"animationLoops": false,
+	"piercing": true,
+	"flippable": true,
+	"power": 0,
+	"universalDamage": true,
+	"damageKind": "ice",
+	"damageType": "IgnoresDef",
+	"timeToLive": 0.8,
+	"statusEffects": [],
+	"actionOnReap" : [
+	    {
+              "time" : 0.8,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/npc/quadruped/tiger_pain2.ogg" ]
+	    },  	
+	  {
+	  "action" : "projectile",
+	  "type" : "poptopswoosh",
+	  "inheritDamageFactor" : 1,
+	  "fuzzAngle" : 0,
+	  "offset" : [0,2],
+	  "config" : {
+	      "speed" : 0,
+	      "timeToLive" : 0.8
+	    }
+	  }	
+	],
+        "periodicActions" : [
+        {
+          "time" : 0.28,
+          "loop" : false,        
+          "action" : "config",
+          "file" : "/projectiles/boss/guardianboss/guardianlargeexplosion/iceguardianlargeexplosionisogen.config"
+        },       
+	    {
+	      "time" : 0.15,
+	      "action" : "loop",
+	      "count" : 4,
+	      "body" : [
+		{
+		  "action" : "particle",
+		  "specification" : "iceshard"
+		}
+	      ]
+	    },      
+        {
+          "time" : 0.35,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+	    {
+              "time" : 0.35,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    },        
+        {
+          "time" : 0.5,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+        {
+          "time" : 0.5,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+	    {
+              "time" : 0.5,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    },          
+        {
+          "time" : 0.55,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },   
+	    {
+              "time" : 0.55,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    },          
+        {
+          "time" : 0.6,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+        {
+          "time" : 0.66,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+	    {
+              "time" : 0.6,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    },          
+        {
+          "time" : 0.7,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+        {
+          "time" : 0.70,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        }, 
+	    {
+              "time" : 0.7,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    },          
+        {
+          "time" : 0.73,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        }, 
+	    {
+              "time" : 0.73,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    },          
+        {
+          "time" : 0.77,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },  
+	    {
+              "time" : 0.77,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    }, 
+	    {
+              "time" : 0.80,
+              "loop" :false,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    },  	    
+        {
+          "time" : 0.8,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+        {
+          "time" : 0.8,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+        {
+          "time" : 0.8,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },
+        {
+          "time" : 0.8,
+          "loop" :false,
+          "action" : "projectile",
+          "type" : "glassslide",
+          "fuzzAngle" : 360,
+          "config" : {
+            "timeToLive" : 1
+          }
+        },        
+	{  
+          "time":0,
+          "loop" : true,
+          "action":"particle",
+          "specification":{  
+            "type":"ember",
+            "light":[  
+              0,
+              0,
+              180
+            ],
+            "size":0.5,
+            "color":[  
+              0,
+              77,
+              180,
+              50
+            ],
+            "initialVelocity":[  
+              0.0,
+              10.0
+            ],
+            "finalVelocity":[  
+              0.0,
+              3.0
+            ],
+            "approach":[  
+              0.0,
+              3.0
+            ],
+            "timeToLive":0.5,
+            "fade":1,
+            "destructionAction":"shrink",
+            "destructionTime":0.2,
+            "layer":"front",
+            "variance":{  
+              "initialVelocity":[  
+                0.0,
+                0.0
+              ],
+              "position":[  
+                2.2,
+                0.2
+              ],
+              "size":2
+            }
+          }
+        }      
+      ]	
+}

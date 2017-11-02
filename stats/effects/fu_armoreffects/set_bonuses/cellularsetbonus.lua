@@ -1,5 +1,5 @@
 setName="fu_cellularset"
-setStatEffects={"cellularsetbonuseffect", "glowyellow2"}
+setStatEffects={"cellularsetbonuseffect", "glowyellow2" }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

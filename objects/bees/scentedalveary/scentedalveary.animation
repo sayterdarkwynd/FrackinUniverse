@@ -1,0 +1,98 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "beaconState" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 0.15
+          },
+          "active" : {
+            "frames" : 1,
+            "cycle" : 0.7,
+            "mode" : "loop"
+          }
+        }
+      },
+      "bees" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "bees" ]
+            }
+          },
+          "on" : {
+            "frames" : 3,
+            "cycle" : 0.8,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/bees/buzzing/hive.ogg",
+              "particleEmittersOn" : [ "bees" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "bees" : {
+        "partStates" : {
+          "bees" : {
+            "on" : {
+              "properties" : {
+                "centered" : false,
+                "image" : "alvearybees.png:<frameIndex>"
+              }
+            }
+          }
+        }
+      },
+      "beacon" : {
+        "properties" : {
+          "centered" : false,
+		  "back" : true
+        },
+
+        "partStates" : {
+          "beaconState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "scentedalveary.png"
+              }
+            },
+
+            "active" : {
+              "properties" : {
+                "image" : "scentedalveary.png"
+              }
+            }
+          }
+        }
+      }
+
+    }
+  },
+
+  "particleEmitters" : {
+    "bees" : {
+      "emissionRate" : 0.8,
+      "particles" : [
+        {
+          "particle" : "bees",
+          "offset" : [-0, 0]
+        },
+        {
+          "particle" : "bees",
+          "offset" : [-1, 0]
+        },
+        {
+          "particle" : "bees",
+          "offset" : [-2, 0]
+        }
+      ]
+    }
+  }
+}
+

@@ -2,7 +2,7 @@
   "objectName" : "fu_blastfurnace",
   "rarity" : "rare",
   "colonyTags" : [ "science" ],
-  "description" : "A superior furnace for smelting mass quantities. ^cyan;Requires ^orange;4W ^cyan;power.^reset;",
+  "description" : "A superior furnace for smelting mass quantities. ^cyan;Requires ^orange;22W ^cyan;power.^reset;",
   "shortdescription" : "^cyan;Blast Furnace^white;",
   "race" : "generic",
   "category" : "^orange;Extraction Device^reset;",
@@ -21,7 +21,8 @@
   "animation" : "/objects/power/fu_blastfurnace/fu_blastfurnace.animation",
 
   "animationParts" : {
-    "fu_blastfurnace" : "fu_blastfurnace.png"
+    "fu_blastfurnace" : "fu_blastfurnace.png",
+	"fu_blastfurnacefullbright" : "fu_blastfurnacefullbright.png"
   },
   "animationPosition" : [0, 0],
 
@@ -40,7 +41,7 @@
   "outputNodes" : [ [2, 1] ],
 
   "powertype" : "input",
-  "isn_requiredPower" : 2,
+  "isn_requiredPower" : 22,
   "fu_timer" : 0.5,
   "fu_extraConsumptionChance" : 0.25,
 
@@ -62,7 +63,7 @@
 	  "feroziumore" : "refinedferozium",
 	  "solariumore" : "solariumstar",
 	  "alienrock" : "ff_silicon",
-	  "protorock" : "fu_carbon",
+	  "protorockmaterial" : "fu_carbon",
 	  "bars" : "fu_carbon",
 	  "blaststone" : "ff_silicon",
 	  "bonematerial" : "geneticmaterial",
@@ -70,22 +71,17 @@
 	  "crystalblock" : "ff_silicon",
 	  "direstone" : "ff_silicon",
 	  "drysand" : "glass",
-	  //"goldblock" : "goldbar",
 	  "heavyironbars" : "fu_carbon",
-	  //"ironblock" : "ironbar",
 	  "junktech" : "ironore",
 	  "magmarock" : "ff_silicon",
 	  "meteoriterock" : "ff_silicon",
 	  "moonrock" : "ff_silicon",
 	  "moonstone" : "ff_silicon",
 	  "obsidian" : "blackglass",
-	  //"platinumblock" : "platinumbar",
 	  "rustyblock" : "ironore",
 	  "rustymetal" : "ironore",
 	  "sand" : "glass",
 	  "sand2" : "glass",
-	  //"silverblock" : "silverbar",
-	  //"treasurehoard" : "goldbar",
 	  "corefragmentore" : "liquidlava",
 	  "metallic" : "ironore",
 
@@ -131,7 +127,7 @@
       "platinumore" : { "ff_silicon" : 16,"mineralsample" : 12 },
       "titaniumore" : { "ff_silicon" : 16,"mineralsample" : 13 },
       "alienrock" : { "fu_nitrogen" : 11,"vialproto" : 18,"liquidnitrogenitem" : 16 },
-      "protorock" : { "fu_nitrogen" : 11,"aliencompound" : 18,"liquidbioooze" : 24 },
+      "protorockmaterial" : { "fu_nitrogen" : 11,"aliencompound" : 18,"liquidbioooze" : 24 },
       "bars" : { "ironore" : 16 },
       "blaststone" : { "ironore" : 16,"sulphur" : 16,"liquidlava" : 16 },
       "bonematerial" : { "bone" : 16,"dnasample" : 15},

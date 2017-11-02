@@ -1094,15 +1094,14 @@
 
     [-1.00, "White"],
     [-0.30, "Orange"],
-    [-0.20, "binary1"],
     [-0.12, "Yellow"],
-    [-0.06, "dying1"],
-    [-0.01, "redsun1"],
-    [0.00, "Blue"],
-    [0.01, "bluesun1"],
-    [0.06, "bluesun2"],
+    [0.00, "Blue"],   
     [0.12, "Red"],
+    [0.05, "bluesun1"], 
+    [0.05, "redsun1"],     
     [0.20, "blacksun1"],
+    [0.25, "dying1"],
+    [0.30, "binary1"],    
     [0.30, ""]
   ]
 },
@@ -1158,7 +1157,10 @@
 "value":"sulphuric"
 },
 
-
+{"op":"add",
+"path":"/planetaryTypes/Tier4/baseParameters/terrestrialType/-",
+"value":"irradiated"
+},
 {"op":"add",
 "path":"/planetaryTypes/Tier4/baseParameters/terrestrialType/-",
 "value":"arboreal"
@@ -1244,7 +1246,10 @@
 "path":"/satelliteTypes/Tier3/baseParameters/terrestrialType/-",
 "value":"crystalmoon"
 },
-
+{"op":"add",
+"path":"/satelliteTypes/Tier4/baseParameters/terrestrialType/-",
+"value":"irradiated"
+},
 {"op":"add",
 "path":"/satelliteTypes/Tier3/baseParameters/terrestrialType/-",
 "value":"thickjungle"
@@ -1281,7 +1286,10 @@
 "path":"/satelliteTypes/Tier4/baseParameters/terrestrialType/-",
 "value":"thickjungle"
 },
-
+{"op":"add",
+"path":"/satelliteTypes/Tier5/baseParameters/terrestrialType/-",
+"value":"irradiated"
+},
 {"op":"add",
 "path":"/satelliteTypes/Tier5/baseParameters/terrestrialType/-",
 "value":"arboreal2"
@@ -1329,7 +1337,10 @@
 "path":"/satelliteTypes/Tier5/baseParameters/terrestrialType/-",
 "value":"moon_shadow"
 },
-
+{"op":"add",
+"path":"/satelliteTypes/Tier6/baseParameters/terrestrialType/-",
+"value":"irradiated"
+},
 {"op":"add",
 "path":"/satelliteTypes/Tier6/baseParameters/terrestrialType/-",
 "value":"arboreal2"
@@ -1382,7 +1393,7 @@
     "op" : "add",
     "path" : "/systemTypes/binary1",
     "value" : {
-      "selectionWeight" : 0.3,
+      "selectionWeight" : 0.2,
       "baseParameters" : {
         "typeName" : "binary1",
         "image" : "/celestial/system/binary1.png",
@@ -1503,7 +1514,7 @@
     "op" : "add",
     "path" : "/systemTypes/redsun1",
     "value" : {
-      "selectionWeight" : 0.35,
+      "selectionWeight" : 0.22,
       "baseParameters" : {
         "typeName" : "redsun1",
         "image" : "/celestial/system/redsun1.png",
@@ -1624,7 +1635,7 @@
     "op" : "add",
     "path" : "/systemTypes/bluesun1",
     "value" : {
-      "selectionWeight" : 0.3,
+      "selectionWeight" : 0.22,
       "baseParameters" : {
         "typeName" : "bluesun1",
         "image" : "/celestial/system/bluesun1.png",
@@ -1868,7 +1879,7 @@
     "op" : "add",
     "path" : "/systemTypes/blacksun1",
     "value" : {
-      "selectionWeight" : 0.2,
+      "selectionWeight" : 0.1,
       "baseParameters" : {
         "typeName" : "blacksun1",
         "image" : "/celestial/system/blacksun1.png",
@@ -1980,7 +1991,7 @@
     "op" : "add",
     "path" : "/systemTypes/dying1",
     "value" : {
-      "selectionWeight" : 0.2,
+      "selectionWeight" : 0.14,
       "baseParameters" : {
         "typeName" : "dying1",
         "image" : "/celestial/system/dyingstar1.png",
@@ -2100,8 +2111,8 @@
     "op" : "add",
     "path" : "/planetaryTypes/fugasplanet",
     "value" : {
-      "satelliteProbability" : 0.6,
-      "maxSatelliteCount" : 6,
+      "satelliteProbability" : 0.8,
+      "maxSatelliteCount" : 8,
       
       "baseParameters" : {
         "worldType" : "Terrestrial",
@@ -2470,7 +2481,7 @@
         "description" : "Hot Planet",
         //"smallImage" : "/celestial/system/planet_small.png",
         "smallImage": "/celestial/system/planet_small_hot.png",
-        "terrestrialType" : [ "arboreal", "barren", "chromatic", "thickjungle", "ffunknown", "savannah" ]
+        "terrestrialType" : [ "irradiated", "arboreal", "barren", "chromatic", "thickjungle", "ffunknown", "savannah" ]
       },
 
       "variationParameters" : [
@@ -2507,7 +2518,7 @@
         //"smallImage" : "/celestial/system/planet_small.png",
         "smallImage": "/celestial/system/planet_small_habitable.png",
 
-        "terrestrialType" : [ "arboreal", "barren", "bog", "mountainous", "thickjungle", "crystalmoon", "desert", "forest", "ocean", "ffunknown" ]
+        "terrestrialType" : [ "irradiated", "arboreal", "barren", "bog", "mountainous", "thickjungle", "crystalmoon", "desert", "forest", "ocean", "ffunknown" ]
       },
 
       "variationParameters" : [
@@ -2543,7 +2554,7 @@
         //"smallImage" : "/celestial/system/planet_small.png",
         "smallImage": "/celestial/system/planet_small_cool.png",
 
-        "terrestrialType" : [ "barren", "bog", "mountainous", "crystalmoon", "snow", "forest", "ocean", "ffunknown", "tundra" ]
+        "terrestrialType" : [ "irradiated", "barren", "bog", "mountainous", "crystalmoon", "snow", "forest", "ocean", "ffunknown", "tundra" ]
       },
 
       "variationParameters" : [

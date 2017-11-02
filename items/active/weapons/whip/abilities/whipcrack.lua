@@ -217,13 +217,13 @@ function WhipCrack:crackDamage()
 end
 
 function WhipCrack:findAnchor()
-  local objectsNearCursor = world.objectQuery(activeItem.ownerAimPosition(), 5, {boundMode = "metaboundbox", order = "nearest"})
+  local objectsNearCursor = world.objectQuery(activeItem.ownerAimPosition(), 7, {boundMode = "metaboundbox", order = "nearest"})
   if #objectsNearCursor > 0 then
     local anchorValid = nil
     for _, anchorObject in pairs(objectsNearCursor) do
       local objectName = world.entityName(anchorObject)
-      local objectConfig = { pcall(root.itemConfig, objectName) } -- want [1]=true, [2]=config
-      if objectConfig[1] == true and objectConfig[2].config.category == "light" then
+      local objectConfig = root.itemConfig(objectName)
+       if objectConfig and objectConfig.config.category == "light" then
         anchorValid = anchorObject
         break
       end

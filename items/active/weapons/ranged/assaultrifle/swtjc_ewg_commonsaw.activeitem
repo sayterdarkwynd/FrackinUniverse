@@ -13,7 +13,15 @@
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : { },
-  "animationCustom" : { },
+  "animationCustom" : { 
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    }    
+  },
   "baseOffset" : [-1.0, 0.25],
   "muzzleOffset" : [0.0, 0.3125],
 
@@ -26,7 +34,7 @@
     "class" : "GunFire",
 
     "fireTime" : [0.08, 0.14],
-    "baseDps" : [11, 12],
+    "baseDps" : [9, 10],
     "energyUsage" : [33, 36],
     "inaccuracy" : 0.08,
 

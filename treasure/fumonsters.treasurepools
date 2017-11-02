@@ -1,4 +1,53 @@
 {
+  "dollfaceTreasure": [
+    [1, {
+      "fill" : [
+        {"item" : "crewcontract_magicalgirl"}
+      ],
+      "pool" : [
+        {"weight" : 1.0, "pool" : "fucuteequipment"}
+      ],
+      "poolRounds" : [
+        [0.9, 0],
+        [0.1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "toyTreasure": [
+    [1, {
+      "fill" : [
+        {"weight" : 0.5, "pool" : "money"},
+        {"weight" : 0.5, "pool" : "fuEssence"}
+      ],
+      "pool" : [
+        {"weight" : 1.0, "pool" : "fucuteequipment"}
+      ],
+      "poolRounds" : [
+        [0.95, 0],
+        [0.05, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "darkmetroidTreasure" : [
+    [1, {
+      "pool" : [
+        {"weight" : 0.05, "pool" : "fuEssence"},
+        {"weight" : 0.05, "pool" : "petcollars2"},
+        {"weight" : 0.05, "pool" : "fuLootStims"},
+        {"weight" : 0.2, "pool" : "fuBasicMaterials"},
+        {"weight" : 0.2, "pool" : "fuBasicChemMaterials"},
+        {"weight" : 0.2, "pool" : "fuGenes"}
+      ],
+      "poolRounds" : [
+        [0.80, 0],
+        [0.70, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+
   "gasbagLoot" : [
     [1, {
         "pool" : [
@@ -127,7 +176,7 @@
         {"weight" : 0.1, "item" : "precursorgel"},
         {"weight" : 0.1, "item" : "precursorgrease"},
         {"weight" : 0.1, "item" : "precursorram"}
-        
+
       ],
       "poolRounds" : [
         [0.90, 0],
@@ -139,7 +188,7 @@
         [0.30, 6],
         [0.20, 7],
         [0.10, 8],
-        [0.05, 9]        
+        [0.05, 9]
       ],
       "allowDuplication" : false
       }
@@ -153,7 +202,7 @@
         {"weight" : 0.2, "item" : "staticcell"},
         {"weight" : 0.1, "item" : "servitorchassis"},
         {"weight" : 0.1, "item" : "servitorlaser"},
-        {"weight" : 0.1, "item" : "servitorbehaviorchip"}     
+        {"weight" : 0.1, "item" : "servitorbehaviorchip"}
       ],
       "poolRounds" : [
         [0.20, 0],
@@ -182,7 +231,7 @@
         {"weight" : 0.1, "item" : "precursorfuelcell"},
         {"weight" : 0.1, "item" : "precursorgel"},
         {"weight" : 0.1, "item" : "precursorgrease"},
-        {"weight" : 0.1, "item" : "precursorram"}           
+        {"weight" : 0.1, "item" : "precursorram"}
       ],
       "poolRounds" : [
         [0.6, 0],
@@ -482,8 +531,8 @@
         {"weight" : 0.0166, "item" : [ "ff_mercury", 6]},
         {"weight" : 0.001, "item" : "deathbringer"},
         {"weight" : 0.001, "item" : "deathbringer-recipe"},
-        {"weight" : 0.001, "item" : "shadowburst"},    
-        {"weight" : 0.001, "item" : "shadowburst-recipe"}, 
+        {"weight" : 0.001, "item" : "shadowburst"},
+        {"weight" : 0.001, "item" : "shadowburst-recipe"},
         {"weight" : 0.01, "item" :  [ "eldertable-recipe", 1]},
         {"weight" : 0.01, "item" :  [ "elderchair-recipe", 1]},
         {"weight" : 0.01, "item" :  [ "elderbed-recipe", 1]},
@@ -580,7 +629,7 @@
         {"weight" : 0.012, "item" :  [ "fuarmoredcultistchest", 1]},
         {"weight" : 0.012, "item" :  [ "fuarmoredcultistlegs", 1]},
         {"weight" : 0.001, "item" : "deathbringer"},
-        {"weight" : 0.001, "item" : "shadowburst"},        
+        {"weight" : 0.001, "item" : "shadowburst"},
         {"weight" : 0.012, "item" :  [ "eldershield", 1]},
         {"weight" : 0.012, "item" :  [ "elderarmorhead", 1]},
         {"weight" : 0.012, "item" :  [ "elderarmorchest", 1]},
@@ -791,7 +840,7 @@
         {"weight" : 0.012, "item" :  [ "cultiststaff3-recipe", 1]},
         {"weight" : 0.003, "item" :  [ "brainslug", 1]},
         {"weight" : 0.001, "item" : "deathbringer"},
-        {"weight" : 0.001, "item" : "shadowburst"},        
+        {"weight" : 0.001, "item" : "shadowburst"},
         {"weight" : 0.012, "item" :  [ "eldertome", 1]},
         {"weight" : 0.025, "item" :  [ "elderrelic1", 1]},
         {"weight" : 0.025, "item" :  [ "elderrelic2", 1]},
@@ -2140,5 +2189,21 @@
   ],
   "shadowgolemminiLoot" : [
     [1, {  "fill" : [ { "item" : [ "shadowgasliquid", 2]  }  ] } ]
+  ],
+  "frankLoot" : [
+    [1, {
+      "pool" : [
+        {"weight" : 0.33, "pool" : "money"},
+        {"weight" : 0.33, "item" : [ "liquidpus", 10]},
+		{"weight" : 0.33, "item" : [ "spidersilkblock", 25]}
+      ],
+      "poolRounds" : [
+        [0.75, 4],
+		[0.25, 6]
+      ],
+      "allowDuplication" : true,
+	  "fill" : [{ "item" : [ "venomsample", 3]}]
+      }
+    ]
   ]
 }

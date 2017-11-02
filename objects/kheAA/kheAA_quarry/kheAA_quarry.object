@@ -7,7 +7,7 @@
 ^blue;Input^white;1^blue;: ^white;power switch
 ^blue;Input^white;2^blue;: ^white;high-power
 ^red;Output: ^white;item network^reset;",
-	"shortdescription" : "Quarry",
+	"shortdescription" : "Iron Quarry",
 	"objectType" : "container",
 	"tooltipKind" : "container",
 	"race" : "generic",
@@ -46,8 +46,16 @@
 	"uiConfig" : "/interface/kheAA/kheAA_quarry/kheAA_quarryGui.config",
 	"frameCooldown" : 5,
 	"autoCloseCooldown" : 3600,
-
+	"kheAA_maxWidth":20,
+	"kheAA_maxDepth":150,
+	"kheAA_drillPower": 10,
 	"inputNodes" : [ [0, 0], [1,0]],
 	"outputNodes" : [ [0, 1]],
+	"kheAA_logicNode":0,
+	"kheAA_outDataNode":0,
+	"kheAA_isDrill":true,
+	"kheAA_isVacuum":true,
+	"kheAA_vacuumRange":12,
+	"kheAA_powerDrillNode":1,
 	"lockedSlots" : [16]
 }

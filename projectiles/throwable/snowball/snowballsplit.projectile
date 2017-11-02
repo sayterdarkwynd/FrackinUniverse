@@ -1,0 +1,22 @@
+{
+  "projectileName" : "snowballsplit",
+  "speed" : 11,
+  "physics" : "grenade",
+  "image" : "snowball.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "damageKind" : "snowball",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/snowballexplosion/snowballexplosion.config"
+    },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "snow",
+      "radius" : 1
+    }
+  ],
+  "emitters" : [ "defaultwhite" ]
+}

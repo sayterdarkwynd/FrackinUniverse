@@ -1,0 +1,92 @@
+{
+  "itemName" : "cutedagger",
+  "level" : 5,
+  "price" : 500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Favorite weapon of cute, Kunoichi assassins",
+  "shortdescription" : "Cute Dagger",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","cute","upgradeableWeapon"],
+
+  "inventoryIcon" : "cutedagger.png",
+
+  "animation" : "/items/active/weapons/melee/dagger/daggerglow.animation",
+  "animationParts" : {
+    "blade" : "cutedagger.png",
+    "bladefullbright" : "cutedaggerfullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/dagger/swoosh/cuteswoosh.png:<frame>" }}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "aimOffset" : 0.0,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+
+    "fireTime" : 0.42,
+    "baseDps" : 9.0,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicdagger",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 15,
+      "timeoutGroup" : "primary"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -20,
+        "weaponRotation" : -20,
+        "weaponOffset" : [0, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      }
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

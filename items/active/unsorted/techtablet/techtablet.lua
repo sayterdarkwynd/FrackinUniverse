@@ -1,9 +1,8 @@
 function activate(fireMode)
     if fireMode == "primary" then
-		activeItem.interact("ScriptPane", "/interface/scripted/techupgrade/techupgradegui.config")
+		activeItem.interact("ScriptPane", "/interface/scripted/techshop/techshop.config")
 	elseif fireMode == "alt" then
-		--activeItem.interact("OpenCraftingInterface", "/objects/power/isn_radiostation/configs/isn_miningvendor.config")
-		activeItem.interact("ScriptPane", "/interface/scripted/vehiclerepair/vehiclerepairgui.config")
+		activeItem.interact("ScriptPane", "/interface/scripted/techupgrade/techupgradegui.config")
 	end
 end
 

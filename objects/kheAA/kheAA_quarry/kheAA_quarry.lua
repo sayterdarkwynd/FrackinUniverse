@@ -1,13 +1,7 @@
 require "/scripts/kheAA/excavatorCommon.lua"
 
 function init()
-	excavatorCommon.init(true,false);
-	storage.maxWidth = 20;
-	storage.drillRange=200;
-	storage.drillPower=10;
-	powerNode=0
-	hiMineNode=1
-	outDataNode=0
+	excavatorCommon.init();
 end
 
 function anims()

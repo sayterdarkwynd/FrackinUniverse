@@ -1,0 +1,165 @@
+{
+  "itemName" : "precursorpistolgrav",
+  "price" : 160,
+  "inventoryIcon" : "precursorpistolgrav.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Allows the user to slow their relation to gravity.
+^yellow;Gravitic force can occasionally cause injury.^reset;",
+  "shortdescription" : "Precursor Gravity Shunt",
+  "category" : "Energy Weapon",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "weaponType" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "energy", "precursor", "upgradeableWeapon"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/unique/precursorhealgun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "precursorpistolgrav.png",
+    "middlefullbright" : "precursorpistolgravfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/aegisaltpistol_stop.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.5, -0.1],
+  "muzzleOffset" : [0.8, 0.125],
+  
+  "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "baseDps":0.0,
+    "energyUsage":2,
+    "fireTime":0.01,
+    "inaccuracy":0.0,
+    "fireType":"auto",
+    "projectileCount":1,
+
+    "projectileType" : "yellowglobeexplosion",
+	"projectileParameters":{ 
+		"periodicActions":[  
+			{  
+			  "time":0.0,
+			  "action":"particle",
+			  "specification":{  
+			    "type":"ember",
+			    "size":0.4,
+			    "light":[  
+			      204,
+			      204,
+			      0
+			    ],
+			    "color":[  
+			      204,
+			      204,
+			      0,
+			      190
+			    ],
+			    "initialVelocity":[  
+			      0.0,
+			      -9.0
+			    ],
+			    "finalVelocity":[  
+			      0.0,
+			      -3.0
+			    ],
+			    "approach":[  
+			      0.0,
+			      -1.0
+			    ],
+			    "timeToLive":0.1,
+			    "fade":1,
+			    "destructionAction":"shrink",
+			    "destructionTime":0.6,
+			    "layer":"front",
+			    "variance":{  
+			      "initialVelocity":[  
+				0.0,
+				0.0
+			      ],
+			      "position":[  
+				0.9,
+				0.9
+			      ],
+			      "size":1
+			    }
+			  }
+			}
+		      ],
+		      "processing":"?hueshift=?0",
+		      "damageTeam":{  
+			"type":"indiscriminate"
+		      },
+		      "damageKind":"hidden",
+		      "statusEffects":[  
+			{ "effect":"levitation","duration":0.3},
+			{ "effect":"shiprunboost","duration":0.3},
+			{ "effect":"jumpboostfood","duration":0.3},
+			{  "effect":"jumpboost20","duration":0.3},
+			{  "effect":"runboostfood","duration":0.3},
+			{ "effect":"runboost","duration":0.3},
+			{ "effect":"runboost20","duration":0.3},
+			{  "effect":"lowgrav","duration":0.3}
+		      ],
+		      "bounces":0,
+		      "speed":0,
+		      "timeToLive":0.3,
+		      "power":0.0,
+		      "knockback":0,
+		      "actionOnReap":[]
+	},    
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0.2,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0.05,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.0,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
+          { "particle" : "dripslime", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+  "critChance" : 4,
+  "critBonus" : 12, 
+
+    "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

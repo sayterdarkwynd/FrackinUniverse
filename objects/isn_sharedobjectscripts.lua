@@ -42,19 +42,19 @@ function isn_getListLength(arg)
 	return listlength
 end
 
-function isn_effectTypesInRange(effect,tilerange,types)
+function isn_effectTypesInRange(effect,tilerange,types,duration)
 	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
 	for key, value in pairs(targetlist) do
-		world.sendEntityMessage(value,"applyStatusEffect",effect)
+		world.sendEntityMessage(value,"applyStatusEffect",effect,duration)
 	end
 end
 
-function isn_effectPlayersInRange(effect,tilerange)
-	isn_effectTypesInRange(effect,tilerange,{"player"})
+function isn_effectPlayersInRange(effect,tilerange,duration)
+	isn_effectTypesInRange(effect,tilerange,{"player"},duration)
 end
 
-function isn_effectAllInRange(effect,tilerange)
-	isn_effectTypesInRange(effect,tilerange,{"creature"})
+function isn_effectAllInRange(effect,tilerange,duration)
+	isn_effectTypesInRange(effect,tilerange,{"creature"},duration)
 end
 
 function isn_projectileTypesInRange(projtype,tilerange,types)

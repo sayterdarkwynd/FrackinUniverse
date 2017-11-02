@@ -5,9 +5,9 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A massive energy sniper rifle. Big impact.
-^yellow;AoE Primary^reset;",
+^yellow;AoE Denial Primary^reset;",
   "shortdescription" : "Instigator",
-  "category" : "Sniper Rifle",
+  "category" : "sniperRifle",
   "level" : 5,
   "tooltipKind" : "gun2",
   "weaponType" : "Sniper Rifle",
@@ -19,16 +19,34 @@
     "butt" : "",
     "middle" : "bigdaddy.png",
     "barrel" : "",
-    "muzzleFlash" : "/items/active/weapons/ranged/bulletmuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
   },
   "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/weapons/explosion-large01.ogg" ]
-    }
+      "sounds":{  
+        "fire" : [ "/sfx/weapons/explosion-large01.ogg" ],
+        "cooldown":[ "/sfx/weapons/chargereload1.ogg" ]
+    }    
   },
 
+  "animationScripts" : [
+    "/items/active/effects/laserbeam.lua"
+  ],
+  "scriptedAnimationParameters" : {
+    "beams" : [
+      {
+        "offset" : [1.8, 1.1],
+        "color" : [0, 255, 0, 128],
+        "length" : 60,
+        "segments" : 6,
+        "angle" : 0
+      }
+    ]
+  },
+  
+  "isReloader" : 1,
+  
   "baseOffset" : [2.5, 0.3],
-  "muzzleOffset" : [2.445, 0.325],
+  "muzzleOffset" : [3.6, 0.325],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -37,14 +55,14 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 3,
-    "baseDps" : 8.0,
+    "fireTime" : 2,
+    "baseDps" : 9.0,
     "energyUsage" : 50.0,
     "recoilForce" : 20,
     "projectileCount" : 1,
     "fireType" : "auto",
     "inaccuracy" : 0,
-    "projectileType" : "extrasmissile2",
+    "projectileType" : "plasmashot2",
     "projectileParameters" : { 
       "speed" : 92,
       "knockback" : 12.5,
@@ -62,7 +80,7 @@
     },
     "fire" : {
       "duration" : 0,
-      "armRotation" : 5,
+      "armRotation" : 3,
       "weaponRotation" : 5,
       "twoHanded" : true,
 
@@ -70,9 +88,9 @@
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.075,
-      "armRotation" : 5,
-      "weaponRotation" : 5,
+      "duration" : 0.15,
+      "armRotation" : -5,
+      "weaponRotation" : 8,
       "twoHanded" : true,
 
       "allowRotate" : false,

@@ -1,0 +1,49 @@
+{
+  "name" : "microsphereprecursor",
+  "type" : "head",
+
+  "scripts" : ["microsphereprecursor.lua"],
+  "animator" : "microsphereprecursor.animation",
+
+  "description" : "Fast. Wall-cling. Repulsor Bursts[DOWN] [F]",
+  "shortDescription" : "Precursor Microsphere",
+  "rarity" : "legendary",
+  "icon" : "/tech/microsphereprecursor.png",
+
+  "chipCost" : 5,
+
+  "animationParts" : {
+    "ballGlow" : "microsphereglowprecursor.png",
+    "ball" : "microsphereprecursor.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.45, -0.25], [-0.25, -0.45], [0.25, -0.45], [0.45, -0.25], [0.45, 0.25], [0.25, 0.45], [-0.25, 0.45], [-0.45, 0.25] ],
+    "airForce" : 0.0,
+    "liquidForce" : 90.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 0.0
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 0.0,
+      "jumpControlForce" : 0.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ignorePlatforms" : true,
+
+  "ballSpeed" : 15,
+
+  "energyCost" : 2,
+
+  "ballRadius" : 0.5,
+  "ballFrames" : 8,
+
+  "damageDisableTime" : 0.15
+  
+}

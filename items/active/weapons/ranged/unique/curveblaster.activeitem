@@ -4,14 +4,14 @@
   "inventoryIcon" : "curveblaster_sacre.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A unique weapon specially designed for breaching hulls.
-^yellow;Phase Blasts^reset;",
+  "description" : "A unique plasma phase weapon specially designed for breaching hulls.
+^yellow;Burns targets",
   "shortdescription" : "Breach Gun",
   "category" : "Shotgun",
   "level" : 4,
   "tooltipKind" : "gun2",
-  "weaponType" : "Energy",
-  "itemTags" : ["weapon", "ranged", "shotgun", "energy", "upgradeableWeapon" ],
+  "weaponType" : "Plasma",
+  "itemTags" : ["weapon", "ranged", "shotgun", "plasma", "upgradeableWeapon" ],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/curveblaster.animation",
@@ -49,7 +49,8 @@
     "projectileType" : "fuenergyblade2",
     "projectileParameters" : { 
       "speed" : 62,
-      "knockback" : 20
+      "knockback" : 20,
+      "statusEffects" : [ "burning" ]
     },
 	  "stances" : {
 	    "idle" : {

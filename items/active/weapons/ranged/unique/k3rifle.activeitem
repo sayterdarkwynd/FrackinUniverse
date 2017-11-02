@@ -7,7 +7,7 @@
   "description" : "Made with that second shot in mind. Sporting.
 ^yellow;Burst fire^reset;",
     "shortdescription" : "K3 Double-Tap",
-  "category" : "Kinetic Carbine",
+  "category" : "assaultRifle",
   "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Energy",
@@ -22,6 +22,13 @@
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
   },
   "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    },    
     "sounds" : {
       "fire" : [ "/sfx/weapons/k3.ogg" ]
     }
@@ -32,7 +39,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],

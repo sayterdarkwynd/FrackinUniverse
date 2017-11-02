@@ -1,7 +1,7 @@
-{ 
-  "type" : "fublackbat", 
-  "shortdescription" : "Vampire Bat", 
-  "description" : "Due to its sensitive eyes it prefers dark settings, like caves.",
+{
+  "type" : "fublackbat",
+  "shortdescription" : "Vampire Bat",
+  "description" : "These highly aggressive blood suckers prefer dark places.",
 
   "categories" : [ "fublackbat" ],
   "parts" : [ "body" ],
@@ -31,9 +31,34 @@
 
       "fleeActions" : [ ],
 
+      "swoopActions" : [
+        {
+          "name" : "action-charge",
+          "parameters" : {
+            "windupState": "chargewindup",
+            "winddownState": "chargewinddown",
+            "chargeState": "charge",
+            "chargeSpeed": 25,
+            "chargeControlForce": 100,
+            "chargeTime": 1.5,
+            "wallCollide": false,
+            "aimAtTarget": true,
+            "inaccuracy": 0,
+            "aimDirection": [1, 0],
+            "rotateToTarget": false,
+            "chargeStateType": "body",
+            "rotationOffset": 0,
+            "skillName": "",
+            "wallCrashVelocity": [-10, 20],
+            "wallKnockback": false,
+            "damageOnTouch": true
+          }
+        }
+      ],
+
       "hostileActions" : [
         {
-          "name" : "action-swoop", 
+          "name" : "action-multiswoop",
           "cooldown" : 1.0,
           "parameters" : {
             "minimumRange" : 3,
@@ -47,9 +72,10 @@
             "highArc" : false,
             "swoopTime" : 0.5,
 
-            "winddownTime" : 0.5,
-            "winddownState" : "fly",
-            "winddownStopForce" : 20
+            "windupState" : "fly",
+            "winddownTime" : 0.01,
+            "winddownState" : "chargewindup",
+            "winddownStopForce" : 500
           }
         }
       ],
@@ -85,7 +111,8 @@
             "landDirection" : [0, 1],
             "flySpeed" : 12,
             "flyControlForce" : 5,
-            "idleTime" : [5,10]
+            "idleTime" : [5,10],
+            "landState" : "landwindup"
           }
         },
         {
@@ -95,7 +122,8 @@
             "groundDistance" : 8,
             "ceilingDistance" : 8,
             "xVelocity" : 8,
-            "yVelocity" : 12
+            "yVelocity" : 12,
+            "flyState" : "flywindup"
           }
         }
       ],
@@ -112,7 +140,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "drain"]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -162,7 +190,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 35
+          "baseValue" : 20
         },
         "protection" : {
           "baseValue" : 0.0
@@ -172,6 +200,12 @@
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.7
+        },
+        "cosmicResistance" : {
+          "baseValue" : -0.5
         }
       },
 

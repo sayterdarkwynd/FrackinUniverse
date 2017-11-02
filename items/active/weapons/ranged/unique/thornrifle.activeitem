@@ -3,11 +3,12 @@
   "price" : 160,
   "inventoryIcon" : "thornrifle.png",
   "maxStack" : 1,
-  "rarity" : "common",
+  "rarity" : "uncommon",
   "description" : "Stab the hell out of your foolish foes
-^yellow;Inflicts poison^reset;",
+^yellow;Inflicts poison^reset;
+^cyan;Summons Pterobombs^reset;",
   "shortdescription" : "Thorn Rifle",
-  "category" : "Dart Rifle",
+  "category" : "sniperRifle",
   "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Sniper Rifle",
@@ -83,7 +84,37 @@
   "critChance" : 6,
   "critBonus" : 7,
 
-  "altAbilityType" : "markedshot",
+  "altAbilityType" : "explosiveshot",
+  "altAbility" : {
+    "name" : "Bio-Spawn",
+    "baseDps" : 5,
+    "fireTime" : 5,
+    "energyUsage" : 20,
+    "projectileParameters" : {
+      "timeToLive" : 0.2,
+      "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg"
+      ]
+    },     
+ 	{
+ 	  "action":"spawnmonster", 
+ 	  "type":"pteropodsummoned", 
+ 	  "offset":[0,0], 
+ 	  "arguments":{
+ 	    "damageTeamType":"friendly", "damageTeam":0
+ 	  }
+ 	} 	
+      ]
+    }    
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

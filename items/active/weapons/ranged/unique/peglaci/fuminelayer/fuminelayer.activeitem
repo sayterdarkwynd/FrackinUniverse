@@ -5,8 +5,8 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Make minced-meat with minefields
-^yellow;Inflict electrified status^reset;
-^green;Area-effect weapon^reset;",
+^yellow;Inflicts burning^reset;
+^green;Devastates large area^reset;",
   "shortdescription" : "Mine Launcher",
   "tooltipKind" : "gun2",
   "category" : "grenadeLauncher",
@@ -40,15 +40,15 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "fire",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
     "fireTime" : 1.2,
-    "baseDps" : 6.0,
-    "energyUsage" : 20,
+    "baseDps" : 4,
+    "energyUsage" : 30,
     "inaccuracy" : 0.008,
     "fireType" : "auto",
 
@@ -89,7 +89,7 @@
       }
     }
   },
-  "critChance" : 6,
+  "critChance" : 1,
   "critBonus" : 12,
   "altAbilityType" : "fubigmine",
 

@@ -2,9 +2,9 @@
   "animationParts" : { },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_axe.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_hammer.ogg" ]
+      "fire" : [ "/sfx/melee/swing_mace2.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_mace1.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_mace3.ogg" ]
     }
   },
 
@@ -25,32 +25,31 @@
       [1.5, -1.0, 5.5, 1.0]
     ],
 
-    // cooldown time multiplier for steps after the first, compounded per combo step
     "comboSpeedFactor" : 1,
 
-    "edgeTriggerGrace" : 0.75,
+    "edgeTriggerGrace" : 1,
 
-    "fireTime" : 1,
+    "fireTime" : 0.5,
     "baseDps" : 7.5,
 
     "damageConfig" : {
-      "damageSourceKind" : "broadsword",
+      "damageSourceKind" : "hammer",
       "statusEffects" : [ ],
       "knockbackMode" : "facing",
       "timeout" : 0.3
     },
     "stepDamageConfig" : [
       {
-        "baseDamageFactor" : 0.9,
-        "knockback" : 15
+        "baseDamageFactor" : 0.8,
+        "knockback" : 14.5
       },
       {
         "baseDamageFactor" : 0.7,
-        "knockback" : 15
+        "knockback" : 10
       },
       {
         "baseDamageFactor" : 1.0,
-        "knockback" : 15
+        "knockback" : 17
       }
     ],
 
@@ -62,7 +61,7 @@
         "allowFlip" : true
       },
       "windup1" : {
-        "duration" : 0.25,
+        "duration" : 0.20,
         "armRotation" : 80,
         "weaponRotation" : 0,
         "twoHanded" : false,
@@ -80,7 +79,7 @@
         "allowFlip" : false
       },
       "fire1" : {
-        "duration" : 0.35,
+        "duration" : 0.25,
         "armRotation" : -45,
         "weaponRotation" : -55,
         "twoHanded" : false,
@@ -89,7 +88,7 @@
         "allowFlip" : false
       },
       "wait1" : {
-        "duration" : 0.3,
+        "duration" : 0.25,
         "armRotation" : -45,
         "weaponRotation" : -55,
         "allowRotate" : false,
@@ -106,7 +105,7 @@
         "allowRotate" : false
       },
       "fire2" : {
-        "duration" : 0.4,
+        "duration" : 0.3,
         "armRotation" : -150,
         "weaponRotation" : 55,
         "weaponOffset" : [0, 0],
@@ -115,7 +114,7 @@
         "allowRotate" : false
       },
       "wait2" : {
-        "duration" : 0.5,
+        "duration" : 0.2,
         "armRotation" : -150,
         "weaponRotation" : 55,
         "weaponOffset" : [0, 0],
@@ -124,7 +123,7 @@
         "twoHanded" : false
       },
       "windup3" : {
-        "duration" : 0.4,
+        "duration" : 0.25,
         "armRotation" : 80,
         "weaponRotation" : 0,
         "twoHanded" : false,
@@ -142,7 +141,7 @@
         "allowFlip" : false
       },
       "fire3" : {
-        "duration" : 0.3,
+        "duration" : 0.2,
         "armRotation" : -45,
         "weaponRotation" : -55,
         "twoHanded" : false,
