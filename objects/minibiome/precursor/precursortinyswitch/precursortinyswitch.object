@@ -1,0 +1,53 @@
+{
+  "objectName" : "precursortinyswitch",
+  "colonyTags" : [ "wired", "precursor" ],
+  "printable" : true,
+  "rarity" : "Common",
+  "description" : "Some sort of ancient touch sensitive switch.",
+  "shortdescription" : "Tiny Touch Screen",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 20,
+
+  "inventoryIcon" : "precursortinyswitchicon.png",
+  "orientations" : [
+    {
+      "image" : "precursortinyswitch.png:<color>.off",
+      "imagePosition" : [0, -2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle4.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/precursorbuzz1.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "precursortinyswitch.png"
+  },
+  "animationPosition" : [0, -2],
+
+  "outputNodes" : [ [0, -1] ],
+
+  "interval" : 15,
+
+  "npcToy": {
+    "ownerOnly": true,
+    "influence" : [ "wallbutton" ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}
