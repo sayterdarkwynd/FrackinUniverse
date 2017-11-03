@@ -1,0 +1,34 @@
+{
+  "id" : "create_arcsmelter",
+  "prerequisites" : [ "create_blackglass" ],
+  "title" : "Smelting Masterclass",
+  "text" : "There is an expensive but ^green;very powerful^reset; piece of technology called an ^orange;arc smelter^reset; which will increase smelting yields a great deal. Prove you can ^orange;build one^reset; with your ^orange;Power Station^reset; and I'll toss you a bonus.",
+  "completionText" : "Fantastic work! Truly amazing. As promised, your reward: ^orange;lots of money^reset;",
+  "moneyRange" : [12220, 15320],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+
+
+    "requireTurnIn" : true,
+        "turnInDescription" : "Bring the ^orange;Arc Smelter^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "isn_arcsmelter",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id" : "create_greenhouse",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Greenhouse",
+  "text" : "Every great botanist needs to start somewhere. With a ^orange;Greenhouse^reset; in your home you can craft all sorts of plants that bestow ^orange;fantastic buffs and abilities^reset; to make your life easier. Build one now.",
+  "completionText" : "Don't forget that certain plants are ^orange;almost essential^reset; for a viable gene-research laboratory. At the very least, you'll want Mutavisk and Bracken seeds for the resources they produce.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : false,
+    
+    "turnInDescription" : "Bring the ^green;Armorworks^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "designlab",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

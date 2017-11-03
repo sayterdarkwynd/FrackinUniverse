@@ -1,0 +1,33 @@
+{
+  "id" : "1boozekit",
+  "prerequisites" : [  ],
+  "title" : "Making a Booze Kit",
+  "text" : "So you want to make your own booze? Great! I'll help you. You must start by crafting a ^green;Booze Kit^white;. Place it against a wall and you can start your path to becoming a Brew Master!",
+  "completionText" : "Your path to brewing enlightment has started. Before we really start with the alcohol though, you must first use the Booze Kit to craft the other stations you'll require.",
+  "moneyRange" : [120, 220],
+  "rewards" : [ [ [ "biospore", 5 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+        "turnInDescription" : "Bring the ^orange;booze kit^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "boozekit",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

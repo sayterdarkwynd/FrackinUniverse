@@ -1,0 +1,26 @@
+{
+  "id" : "fuquest_powergeneration1",
+  "prerequisites" : [ "create_matterassembler" ],  
+  "title" : "Power Source",
+  "text" : "An ^orange;Alternator^reset; provides you with power. To fuel it, you'll need ^green;water, water buckets, or coal^reset;. To wire it to things, you'll first need to ^orange;unlock Wiring on your Matter Manipulator or build a Mechanic's Wrench^reset;.",
+  "completionText" : "Try throwing some water in there now to give your new Alternator some life!",
+  "rewards" : [],
+  "moneyRange" : [10, 10],
+  "canBeAbandoned" : false,
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_alternatorgenerator",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

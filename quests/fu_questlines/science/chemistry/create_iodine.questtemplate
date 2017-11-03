@@ -1,0 +1,33 @@
+{
+  "id" : "create_iodine",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Essential Ingredient",
+  "text" : "You'll need to find some ^green;caliche stone^reset; if you want to get ^orange;iodine^reset;. Throw ^orange;batches of caliche stone^reset; into your ^green;extraction lab^reset; and bring me some! You'll find them on ^orange;desert biomes^reset;.",
+  "completionText" : "Good work! Several basic ingredients such as iodine are essential. So stay stocked! You'll need iodine specifically to make graphene and high quality fertilizers!",
+  "moneyRange" : [ 400,640 ],
+  "rewards" : [ [ [ "rewardbag" , 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^orange;iodine^reset; to ^green;Bella^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "iodine",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id" : "create_methyliodide",
+  "prerequisites" : [ "create_iodine" ],
+  "title" : "Deadly Chemistry",
+  "text" : "I need a particularly dangerous chemical known as ^orange;methyl iodide^reset;. That will do the trick for this mixture. I'd grab it myself but this might explode! Can you help me out?",
+  "completionText" : "Methyl iodide is your key ingredient in ^green;pesticides and fertilizers.^reset; you'll want it if you are going to be growing plants.",
+  "moneyRange" : [ 400, 640 ],
+  "rewards" : [ [ [ "rewardbag" , 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^orange;methyl iodide^reset; to the ^green;purple-armored scientist^reset; at the top floor of the ^orange;Science Outpost^reset;.",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "methyliodide",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

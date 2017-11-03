@@ -1,0 +1,31 @@
+{
+  "id" : "2brew_a",
+  "prerequisites" : [ "1boozekit" ],
+  "title" : "Brewing",
+  "text" : "Now let's start. Make some ^green;bottles^white; with your ^orange;furnace^white;. Three...no, four bottles should do.",
+  "completionText" : "Now we need to fill'em up, right? Here, take some seeds, you'll need them. Make sure you grow and harvest them.",
+  "moneyRange" : [120, 220],
+  "rewards" : [ [ [ "wartweedseed", 5 ], [ "wheatseed", 5 ], [ "grapesseed", 5 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "bottle",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

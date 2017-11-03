@@ -1,0 +1,36 @@
+{
+  "id" : "create_ignuschili",
+  "prerequisites" : [ "create_regengene" ],
+  "title" : "I like it Hot!",
+  "text" : "I love spicy foods but getting what I need here is a pain. Using a ^orange;Gene Design Lab^white; could you perhaps ^green;make me some Ignus Chili seeds?^reset;. I'd reward you for the effort.",
+  "completionText" : "I can't wait to make some chili with these!",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "carbonplate", 4 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^green;Ignus Chili Seeds^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ignuschiliseed",
+        "count" : 3,
+        "consume" : true
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id" : "4malt",
+  "prerequisites" : [ "3hops" ],
+  "title" : "Malt",
+  "text" : "Time to use some new stations. First, put one piece of ^orange;wheat^white; into the ^green;Rain Barrel^white;. Once it's soaked, put it into the ^green;Sprouting Table^white;. Then take your sprouted wheat and place it into a ^orange;Campfire^white;.",
+  "completionText" : "Nice. Note that if you need dark malt, you just need to put back your malt into the ^orange;Furnace^white; and cook it some more.",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+        "turnInDescription" : "Bring the ^orange;malt^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "malt",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

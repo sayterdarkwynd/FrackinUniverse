@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_tissueculture",
+  "title" : "Cultural Differences",
+  "text" : "^orange;Seeds^reset; are best extracted for useful ^orange;tissue culture^reset;. Without them you will be unable to complete a ^orange;DNA Sample^reset; which is rather important to your success.",
+  "completionText" : "Remember: Almost everything natural can extract, and more besides. Experiment, and you'll find some truly interesting things.",
+  "rewards" : [
+    [ [ "phosphorus", 2] ]
+  ],
+  "moneyRange" : [10, 10],
+  "canBeAbandoned" : false,
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "tissueculture",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

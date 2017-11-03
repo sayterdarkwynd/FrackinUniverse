@@ -1,0 +1,34 @@
+{
+  "id" : "extractor5",
+  "prerequisites" : [ "extractor4" ],
+  "title" : "The Extractor V",
+  "text" : "^orange;Meat^reset; is both delicious and useful. ^orange;Extract some meat^reset; and bring me 5 of the results.",
+  "completionText" : "Genetic material comes from many things, not just meat. Remember that if it is alive and full of cells, it just might give you some.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "coalore", 50 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+    
+    "turnInDescription" : "Bring the ^green;Genetic Material^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "geneticmaterial",
+        "count" : 5,
+        "consume" : false
+      }
+    ]
+  }
+}

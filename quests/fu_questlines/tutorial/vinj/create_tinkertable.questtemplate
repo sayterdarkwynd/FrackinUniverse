@@ -1,0 +1,36 @@
+{
+  "id" : "create_tinkertable",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Tinkering",
+  "text" : "Without a ^orange;Tinker Table^reset; you'll be hard-pressed to create ^orange;augments, upgrades and specialist tools^reset;. When you get a chance, try building one.",
+  "completionText" : "Might I recommend starting with a Mining Laser? They are truly effective tools to use for rapidly digging through dirt!",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : false,
+    
+    "turnInDescription" : "Bring the ^green;Armorworks^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "nanofabricator",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

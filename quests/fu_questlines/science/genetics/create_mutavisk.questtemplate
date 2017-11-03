@@ -1,0 +1,34 @@
+{
+  "id" : "create_mutavisk",
+  "prerequisites" : [ "create_plastic" ],
+  "title" : "Mutavisk Headware",
+  "text" : "A task for you: Use a ^orange;Clothing Fabricator^reset; and produce a ^orange;mutavisk helm^reset;. I'll pay well for it, as I am in dire need.",
+  "completionText" : "Thanks to you, I can finally take a trip to an irradiated world with my complete ^orange;Mutavisk Armor Set^reset;!",
+  "moneyRange" : [720, 920],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+
+
+    "requireTurnIn" : true,
+        "turnInDescription" : "Bring the ^orange;Mutavisk Helmet^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "mutaviskhead",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

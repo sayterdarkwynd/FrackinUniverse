@@ -1,0 +1,48 @@
+{
+  "id" : "create_matterassembler",
+  "prerequisites" : [ ],
+  "title" : "Mechanical",
+  "text" : "Greetings, traveller. I am Vinalisj, the Director of the Corvex Research team. I'm on vacation, but I know talent when I see it. I can offer you a position on my staff if you can prove your worth. Make a ^orange;Machining Table^white;. ^green;Build one on your default crafting menu [C]^reset; and bring it here.",
+  "completionText" : "Great! This card contains directions to the facility I spoke of. You should head there and...regrettably...speak with Kevin. He might have work for you. Also, please use this handy ^orange;Tricorder^reset;, as it will help you access ^orange;quests and status information^reset;.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "sciencebrochure", 1 ], [ "statustablet", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "canBeAbandoned" : false,
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  
+  "parameters" : {
+    "questGiver" : {
+      "type" : "entity",
+      "indicator" : "/interface/quests/questreceiver.animation"
+    }  
+  },
+  
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+
+    "turnInDescription" : "Bring the ^green;Machining Table^reset; to ^orange;Vinalisj^reset;.",
+
+    "initialCompassTarget" : {
+      "targetType" : "parameter",
+      "target" : "questGiver"
+    },
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "prototyper",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
