@@ -1,6 +1,13 @@
 function activate(fireMode)
-	activeItem.interact("ScriptPane", "/interface/scripted/statWindow/statWindow.config", player.id())
+    if fireMode == "primary" then
+		activeItem.interact("ScriptPane", "/interface/scripted/statWindow/statWindow.config")
+		animator.playSound("activate")
+	elseif fireMode == "alt" then
+		activeItem.interact("ScriptPane", "/interface/scripted/fu_tutorialQuestList/fu_tutorialQuestList.config")
+		animator.playSound("activate")
+	end
 end
+
 
 function update()
 	if mcontroller.crouching() then

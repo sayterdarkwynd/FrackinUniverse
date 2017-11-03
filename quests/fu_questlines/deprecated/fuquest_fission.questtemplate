@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_fission",
+  "title" : "He who smelt it...",
+  "text" : "To process advanced ores, you'll need a ^orange;Fission Furnace^reset;. It can melt down even the strongest metals. But you've got some work to do to get one! Why not start by making some ^orange;protocite bars^reset; in a lesser furnace.",
+  "completionText" : "You won't get far without one of these doing its work on the higher-strength metals you are bound to find. Always have it ready to go. It will never let you down!",
+  "rewards" : [
+    [ [ "lead", 15] ]
+  ],
+  "moneyRange" : [1510, 2550],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "protocitebar",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

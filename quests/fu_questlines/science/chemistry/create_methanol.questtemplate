@@ -1,0 +1,33 @@
+{
+  "id" : "create_methanol",
+  "prerequisites" : [ "create_extractor" ],
+  "title" : "A Useful Alcohol",
+  "text" : "I could use some ^orange;methanol^white; but don't have the materials handy. Bring me ^orange;10 methanol^reset; and I'll toss you something useful in return. Not a grenade. Promise.",
+  "completionText" : "Excellent. This will be quite useful, and goes quite appreciated. Take this, and perhaps you can get more use out of it than I ever could.",
+  "moneyRange" : [120, 220],
+  "rewards" : [ [ [ "fubreathaugment1", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+
+
+    "requireTurnIn" : true,
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "methanol",
+        "count" : 10,
+        "consume" : true
+      }
+    ]
+  }
+}

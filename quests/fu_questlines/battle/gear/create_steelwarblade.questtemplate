@@ -1,0 +1,32 @@
+{
+  "id" : "create_steelwarblade",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Sharpening the Blade",
+  "text" : "I'll be blunt. My sword sucks. Make me a new one. Go craft a ^orange;steel warblade^reset; in your ^green;Assembly Line^reset;! You'll need to upgrade your ^orange;Armorworks^reset; first.",
+  "completionText" : "Excellent, enjoy cutting stuff up. Here, take this off my hands.",
+  "moneyRange" : [300, 500],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+    "turnInDescription" : "Bring the ^orange;steel warblade^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "hardenedsteelblade",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

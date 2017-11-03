@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_powerstation",
+  "title" : "Powering Up",
+  "text" : "You've built an ^orange;Electronics Center^reset;! Now you can ^green;truly^reset; start doing some advanced stuff. Start by building an ^orange;Alternator generator^reset;.",
+  "completionText" : "Solar panels generate power, and most other stations built here require that power to operate. Next, build the ^orange;1000 4v Battery Unit^reset;.",
+  "rewards" : [
+    [ [ "biofuelcannister", 20] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_alternatorgenerator",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

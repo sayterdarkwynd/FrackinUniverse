@@ -1,0 +1,33 @@
+{
+  "id" : "create_icecrystal",
+  "prerequisites" : [ "create_watcher" ],
+  "title" : "Icy Situation ",
+  "text" : "I've heard of ^orange;ice crystals^reset; before, but I have yet to actually see one. Can you bring me one? I have no idea where they even come from!",
+  "completionText" : "Have a nice hunk of cash as my thanks.",
+  "moneyRange" : [ 640, 920 ],
+  "rewards" : [ [ [ "rewardbag", 1] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^orange;ice crystal^reset; to the ^green;scientist^reset; at the first floor of the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "icecrystal",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

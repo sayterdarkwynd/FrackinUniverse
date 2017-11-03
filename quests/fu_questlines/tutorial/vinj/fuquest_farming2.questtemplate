@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_farming2",
+  "title" : "Stab for Noms",
+  "text" : "When you're starving, you have some options. A ^orange;campfire^reset; cooks your meat. It's fast, but you'll need a bow, hunting spear, bone spear or hunting rifle to obtain the meat. ^orange;Get some^reset; and cook it. Then noms.",
+  "completionText" : "You could also take time to craft yourself a ^orange;hoe^reset; and set to work making a viable farm. It will feed you far more in the long-term without risking death.",
+  "rewards" : [
+    [ [ "mooshiegg", 1 ], [ "leather", 4 ] ]
+  ],
+  "moneyRange" : [10, 10],
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "cookedalienmeat",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

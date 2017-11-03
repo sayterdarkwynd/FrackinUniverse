@@ -1,0 +1,36 @@
+{
+  "id" : "create_armory",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Armorworks",
+  "text" : "With an ^orange;Armorworks^reset; you can start really delving into combat. As you upgrade this station, you'll gain access to a ^orange;huge variety^reset; of weapons and armors. You'll even uncover alien weapons from other realities! Try building an ^orange;armorworks^orange; now.",
+  "completionText" : "Don't forget to upgrade this station whenever you have the resources to do so. It is absolutely worth the effort.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : false,
+    
+    "turnInDescription" : "Bring the ^green;Armorworks^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "armory",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id" : "create_solarpanel",
+  "prerequisites" : [ "create_silicon" ],
+  "title" : "Solar Power",
+  "text" : "Powered stations are a ^orange;huge productivity booster^white;. To start with, you'll need a ^orange;Solar Panel^reset; to produce energy. Build one on a ^orange;Power Station^reset;.",
+  "completionText" : "Now you've started the engineering path of your adventure. I suggest getting some other machines up soon!",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "starmasterhelm-recipe", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : true,
+    
+    "turnInDescription" : "Bring the ^green;Solar Panel^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "isn_solarpanel",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

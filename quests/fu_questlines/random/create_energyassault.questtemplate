@@ -1,0 +1,34 @@
+{
+  "id" : "create_energyassault",
+  "prerequisites" : [  ],
+  "title" : "The Pew Pew",
+  "text" : "I keep getting devoured on this planet! It sucks! Could you build me an ^orange;F4 Energy Rifle^reset; to help me survive? I'd compensate you well enough...",
+  "completionText" : "I'm not much of a scientist... so umm take this.",
+  "moneyRange" : [220, 320],
+  "rewards" : [ [ [ "rewardbag" , 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+
+
+    "requireTurnIn" : true,
+        "turnInDescription" : "Bring the ^orange;f4 Energy Rifle^reset; to ^green;me^reset;.",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "energyassault",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

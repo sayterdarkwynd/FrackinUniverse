@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_farming1",
+  "title" : "Feeling Thirsty?",
+  "text" : "A ^orange;Well^reset; is extremely important, for it provides life-giving water for numerous purposes. Build one at a ^orange;Foraging Table^reset;. Once it fills for a bit, ^green;Harvest some water^reset;",
+  "completionText" : "Water in wells will gradually increase. When you have 100 or more, you can harvest water. These can be used in crafting, thrown to create lakes or placed in a Hydroponics Tray.",
+  "rewards" : [
+    [ [ "henegg", 1 ], [ "logblock", 12 ], [ "copperore", 8 ] ]
+  ],
+  "moneyRange" : [10, 10],
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "farmwell",
+        "count" : 1,
+        "consume" : false
+      }    
+    ]
+  }
+}

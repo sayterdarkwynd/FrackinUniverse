@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_xeno",
+  "title" : "Using the Sprouting Table",
+  "text" : "So you've built a ^orange;Sprouting Table^reset;? Why are you looking so clueless? It's simple: Toss in ^orange;a potato seed^reset; and wait about 60 seconds. You'll get a useful ^orange;gene type^reset; for your botany research, or other goods",
+  "completionText" : "Constructing a ^orange;Xeno Station^reset; upon upgrading your Machining Table is a good idea, as they are ^green;much faster^reset;! Effectively every plant seed can be placed within seed labs, and each one will produce different results. Start with basic plants, and work up from there.",
+  "rewards" : [
+    [ [ "saltpeter", 6] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gene_resist",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id" : "fuquest_bonespear",
+  "title" : "Path of the Hunter",
+  "text" : "^orange;Bone^reset; is pretty useful right now. With it, you can fashion weapons and armor. Try making a ^orange;Bone Spear^reset; on your ^orange;anvil^reset;.",
+  "completionText" : "The bone spear has a useful alternate attack. ^orange;Hunters Thrust^reset; counts as bow damage, making it a deadly hunting implement that also causes bleed damage! In turn, you will be able to get more ^green;leather^reset; to craft even more goods!",
+  "rewards" : [
+    [ [ "geneticmaterial", 10] ]
+  ],
+  "moneyRange" : [200, 350],
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fubonespear",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id" : "1beestation",
+  "prerequisites" : [  ],
+  "title" : "Beekeeping 101",
+  "text" : "Care to try a simpler life, ^green;breeding bees^white; and reaping the profits? Build a ^orange;Bee Station^white; and you can get started.",
+  "completionText" : "With the ^orange;Bee Station^white;, you'll be able to craft a whole new array of goods you've likely not seen before!",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    "followUp" : "2apiary",
+    "requireTurnIn" : false,
+    "canBeAbandoned" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "beestation",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

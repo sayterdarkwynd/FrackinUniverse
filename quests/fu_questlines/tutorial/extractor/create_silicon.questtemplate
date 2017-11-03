@@ -1,0 +1,36 @@
+{
+  "id" : "create_silicon",
+  "prerequisites" : [ "create_extractor" ],
+  "title" : "Silicon Knight",
+  "text" : "Instructive. Now that you have an ^orange;Extraction Lab^reset; you can start cutting your teeth on all sorts of new creations. Try getting at least 50 ^green;sand^reset; and extracting from it to get ^orange;silicon^reset;.",
+  "completionText" : "Encouraging. Try the same thing with other materials such as wood, dirt, stone...heck, almost anything really. You'll find all sorts of things if you just give it a try!",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^green;10 silicon^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ff_silicon",
+        "count" : 10,
+        "consume" : false
+      }
+    ]
+  }
+}

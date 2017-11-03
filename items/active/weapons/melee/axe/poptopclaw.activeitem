@@ -1,0 +1,48 @@
+{
+  "itemName" : "poptopclaw",
+  "price" : 140,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Carved from the still-twitching corpse of a Mama Poptop. You monster.",
+  "shortdescription" : "Mama Poptop Claw",
+  "tooltipKind" : "sword2",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+  "level" : 2,
+  "inventoryIcon" : "poptopclaw.png",
+
+  "animation" : "axe.animation",
+  "animationParts" : {
+    "blade" : "poptopclaw.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-1.0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.47,
+    "baseDps" : 9,
+    "damageConfig" : {
+      "damageSourceKind" : "axe",
+      "knockback" : 18,
+      "statusEffects" : [ "bleedingshort" ]
+    }
+  },
+  "critChance" : 7,
+  "critBonus" : 3, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

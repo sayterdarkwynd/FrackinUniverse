@@ -1,0 +1,32 @@
+{
+  "id" : "5plantflowers",
+  "prerequisites" : [ "4bees" ],
+  "title" : "Flowers",
+  "text" : "Bees won't be happy without flowers to pollinate. Get a ^orange;red flower^white; to plant next to your apiary and your bees will get going!",
+  "completionText" : "Pretty much any flower will do, by the way. And be patient. Bees take time to breed, and they only ^orange;'do it'^reset; when there are flowers and sun. Bee Flowers are their favorite, and will make them work hardest.",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "followUp" : "6centrifuge",
+    "requireTurnIn" : false,
+    "canBeAbandoned" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "flowerred",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

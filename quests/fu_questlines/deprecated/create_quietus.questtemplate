@@ -1,0 +1,32 @@
+{
+  "id" : "create_quietus",
+  "prerequisites" : [ "create_designlab" ],
+  "title" : "We gots 6000 dollars!",
+  "text" : "I'm offering 6000 pixels for a bit of aid, if you can spare a few moments? I need 5 ^orange;quietus bars^reset; in order to finish my work. Can you bring some to me?",
+  "completionText" : "Well done, ol' chap. As promised: The cash. Enjoy.",
+  "moneyRange" : [6000, 6001],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "requireTurnIn" : true,
+        "turnInDescription" : "Bring the ^orange;5 Quietus Bars^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "quietusbar",
+        "count" : 5,
+        "consume" : true
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id" : "7combs",
+  "prerequisites" : [ "6centrifuge" ],
+  "title" : "Honeycombs",
+  "text" : "Once your bees have been busy a while ^orange;collect the combs from your apiary^reset;.",
+  "completionText" : "Now you'll need another station to process this resource. Shall we continue?",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "followUp" : "8extractcombs",
+    "requireTurnIn" : false,
+    "canBeAbandoned" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "normalcomb",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

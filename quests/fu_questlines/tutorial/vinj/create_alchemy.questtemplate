@@ -1,0 +1,36 @@
+{
+  "id" : "create_alchemy",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Alchemy",
+  "text" : "^green;Fertilizer, liquids, explosive components^reset; and ^green;particles^reset;  are all potential creations of the  ^orange;Alchemy Table^reset;. It will develop into a far more advanced lab over time. Build one now to explore this science.",
+  "completionText" : "Nicely done. Now you'll need to find some space for this in your own base.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : false,
+    
+    "turnInDescription" : "Bring the ^green;Chemlab^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "chemlab",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

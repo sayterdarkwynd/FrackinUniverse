@@ -1,0 +1,33 @@
+{
+  "id" : "create_plastic",
+  "prerequisites" : [ "create_iodine" ],
+  "title" : "Getting into Plastics",
+  "text" : "If you're going to make it as a scientist, you are going to need ^orange;Advanced Plastic^reset;. Find some ^orange;oil^reset; from a ^green;Desert^reset; or from ^orange;bones^reset; and then head to your ^orange;Bio Lab^reset;. Bring me back one single piece!",
+  "completionText" : "Excellent! You'll need a lot of plastic, so keep well stocked.",
+  "moneyRange" : [ 640, 960],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^orange;Advanced Plastic^reset; to ^green;me^reset; at the ^green;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ff_plastic",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
