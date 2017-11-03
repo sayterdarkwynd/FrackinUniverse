@@ -27,6 +27,14 @@ function init()
 end
 
 function update(dt)
+    -- put this here to remove flickering
+    if self.adminMode and not player.isAdmin() then
+        self.availableTechs = {}
+        self.lockedTechs = config.getParameter("techs")
+        self.adminMode = false
+        self.forceRepop = true
+    end
+
     -- each update, check to see if any new techs have been unlocked, and update accordingly
     for i,tech in pairs(self.lockedTechs) do
         if player.blueprintKnown(tech.item) then
@@ -47,9 +55,6 @@ function update(dt)
             self.adminMode = true
             self.forceRepop = true
         end
-    elseif self.adminMode then
-        self.adminMode = false
-        self.forceRepop = true
     end
 
     updateSearch()
