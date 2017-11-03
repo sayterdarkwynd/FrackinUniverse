@@ -1,5 +1,6 @@
 function activate(fireMode)
 	activeItem.interact("ScriptPane", "/interface/scripted/fu_tutorialQuestList/fu_tutorialQuestList.config", player.id())
+	animator.playSound("activate")
 end
 
 function update()
