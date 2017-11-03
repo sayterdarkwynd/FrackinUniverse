@@ -1,0 +1,36 @@
+{
+  "id" : "fuquest_mamapoptop",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Big Mama [BOSS]",
+  "text" : "I've heard that there is a rather large and aggressive beast lurking in the ^green;nearby mines^reset;. Perhaps you could take it out for the safety of all?",
+  "completionText" : "Well done. And a grisly trophy of your victory, too! Have a bit of spending cash for the effort.",
+  "moneyRange" : [50, 80],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : true,
+    
+    "turnInDescription" : "Bring the ^green;Fission Reactor^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "poptopclaw",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
