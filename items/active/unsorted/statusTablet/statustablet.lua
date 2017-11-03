@@ -2,7 +2,7 @@ function activate(fireMode)
     if fireMode == "primary" then
 		activeItem.interact("ScriptPane", "/interface/scripted/statWindow/statWindow.config", player.id())
     elseif fireMode == "alt" then
-		activeItem.interact("ScriptPane", "/interface/scripted/fu_tutorialQuestList/fu_tutorialQuestList.config", player.id())
+		activeItem.interact("ScriptPane", "/interface/scripted/fu_tutorialQuestList/fu_tutorialQuestList.config")
     end
 end
 
