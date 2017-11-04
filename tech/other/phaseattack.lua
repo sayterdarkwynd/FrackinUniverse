@@ -43,7 +43,8 @@ function update(args)
 end
 
 function attemptActivation()
-  if not self.active then
+  self.comboValue = status.resource("energy") / status.stat("maxEnergy")
+  if not self.active and self.comboValue >=0.50 then
     activate()
   elseif self.active then
     deactivate()
@@ -54,6 +55,7 @@ function activate()
   if not self.active then
     status.addPersistentEffect("booster", "powerboost", math.huge)
 	world.setProperty("hide[" .. tostring(entity.id()) .. "]", true)
+	animator.playSound("activate")
   end
 
   self.active = true
@@ -64,6 +66,7 @@ function deactivate()
   if self.active then
     status.clearPersistentEffects("booster")
 	world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
+	animator.playSound("deactivate")
   end
 
   self.active = false
