@@ -1,0 +1,32 @@
+{
+  "id" : "fuquest_gorgolith",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Massive Abomination [BOSS]",
+  "text" : "Rare, and absolutely deadly, are the ^orange;Gorgolith^reset;. Find one and kill it. Your best bet is on a ^orange;Protoworld^reset;.",
+  "completionText" : "Few can say they have hunted and killed one of these. I salute your skill.",
+  "moneyRange" : [320, 380],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "player",
+      "questComplete" : "player"
+    },
+    
+    "requireTurnIn" : false,
+    "turnInDescription" : "Bring the ^green;Gorgolith Tail^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gorgolithtail",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
