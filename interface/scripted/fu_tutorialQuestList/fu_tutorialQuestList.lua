@@ -352,7 +352,7 @@ function questSelected()
 			
 			local config = root.questConfig(id)
 			if config then
-				if player.hasCompletedQuest(id) or player.hasQuest(id) then
+				if player.hasCompletedQuest(id) then
 					widget.setText("questTitle", tostring(config.title))
 					widget.setText("textScrollArea.questText", tostring(config.text))
 					widget.setButtonEnabled("questButton", false)
