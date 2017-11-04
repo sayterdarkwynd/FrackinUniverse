@@ -1,18 +1,18 @@
 {
-  "type" : "bighairyfrank",
-  "shortdescription" : "Massive Spider",
+  "type" : "bighairyfrankboss",
+  "shortdescription" : "Megarachnid",
   "description" : "Loves your delicious ground-walker insides.",
 
-  "categories" : [ "bighairyfrank" ],
+  "categories" : [ "bighairyfrank2" ],
   "parts" : [ "body" ],
 
-  "animation" : "bighairyfrank.animation",
+  "animation" : "bighairyfrank2.animation",
 
-  "dropPools" : [ "frankLoot" ],
+  "dropPools" : [ "frankLootBoss" ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/boss/megaspider/monster.lua"
     ],
 
     "behavior" : "monster",
@@ -165,7 +165,7 @@
 
     "touchDamage" : {
       "poly" : [ [3, 1.5], [3, -1.5], [0.5, -2.5], [-2.5, -1.5], [-2.5, 1.5], [0.5, 2.5] ],
-      "damage" : 19,
+      "damage" : 24,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -174,14 +174,14 @@
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 1.0,
+    "scale" : 1.44,
 
     "movementSettings" : {
 
       "collisionEnabled" : true,
       "collisionPoly" : [ [2.5, 1.5], [2.5, -1.5], [-2.5, -1.5], [-2.5, 1.5] ],
 
-      "mass" : 4.0,
+      "mass" : 7.0,
       "walkSpeed" : 4,
       "runSpeed" : 12,
       "gravityEnabled" : false,
@@ -220,7 +220,7 @@
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 90
+          "baseValue" : 300
         },
         "protection" : {
           "baseValue" : 25.0
@@ -235,25 +235,25 @@
           "baseValue" : 0.11
         },
         "fireResistance" : {
-          "baseValue" : -0.5
+          "baseValue" : -0.35
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : 0.2
+          "baseValue" : 0.24
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.3
+          "baseValue" : 0.4
         },
         "electricStatusImmunity" : {
           "baseValue" : 0.0
         },
         "poisonResistance" : {
-          "baseValue" : 0.75
+          "baseValue" : 0.9
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
@@ -265,17 +265,17 @@
           "baseValue" : 1.0
         },
         "shadowResistance" : {
-         "baseValue" : 0.2 
+         "baseValue" : 0.75 
         },
         "shadowImmunity" : {
          "baseValue" : 1
         },
         "cosmicResistance" : { 
-         "baseValue" : 0.5 
+         "baseValue" : 0.0 
         },
         "radiationburnImmunity" : { 
           "baseValue" : 1
-        },        
+        },
         "radioactiveResistance" : { 
           "baseValue" : 0.5
         }
@@ -296,9 +296,6 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
-	"capturedMonsterType" : "bighairyfrank",
-	"nametagColor" : [64, 200, 255],
-	"captureHealthFraction" : 0.4
+    "capturable" : false
   }
 }
