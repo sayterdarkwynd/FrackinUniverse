@@ -127,7 +127,7 @@ function questlineSelected()
 						elseif player.canStartQuest(quest) then
 							text = text.."\n - ^yellow;"..tempConfig.title.."^reset;"
 						else
-							if config.secret then
+							if tempConfig.secret then
 								text = text.."\n - ^red;???^reset;"
 							else
 								text = text.."\n - ^red;"..tempConfig.title.."^reset;"
@@ -380,7 +380,7 @@ function questSelected()
 							elseif player.canStartQuest(quest) then
 								text = text.."\n - ^yellow;"..tempConfig.title.."^reset;"
 							else
-								if config.secret then
+								if tempConfig.secret then
 									text = text.."\n - ^red;???^reset;"
 								else
 									text = text.."\n - ^red;"..tempConfig.title.."^reset;"
