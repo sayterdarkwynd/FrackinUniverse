@@ -5,7 +5,7 @@ function init()
 	
 	questlineButton()
 	widget.setText("questTitle",	self.QD.strings.instructions.title )
-	widget.setText("questText",		self.QD.strings.instructions.description )
+	widget.setText("textScrollArea.questText",		self.QD.strings.instructions.description )
 	self.questListIDs = {}
 end
 
@@ -31,9 +31,11 @@ function instructions()
 		end
 	end
 	
+	widget.clearListItems("textScrollArea.rewardList")
+	widget.setPosition("textScrollArea.questText", {0, 0})
 	widget.setButtonEnabled("questButton", false)
 	widget.setText("questTitle",	self.QD.strings.instructions.title )
-	widget.setText("questText",		self.QD.strings.instructions.description )
+	widget.setText("textScrollArea.questText",		self.QD.strings.instructions.description )
 end
 
 
@@ -59,6 +61,38 @@ function populateQueslineList()
 			local path = "questlineList.list."..widget.addListItem("questlineList.list")
 			widget.setData(path..".banner", tbl.id)
 			widget.setImage(path..".banner", "/interface/scripted/fu_tutorialQuestList/banners/"..tbl.id..".png:default")
+			
+			if status.resource("fuQueslineComplet_"..tbl.id) > 0 then
+				widget.setVisible(path..".completeImage", true)
+			else
+				local complete = true
+				for _, subline in ipairs(tbl.sublines) do
+					if complete then
+						for _, questID in ipairs(self.QD.sublines[subline]) do
+							if not player.hasCompletedQuest(questID) then
+								complete = false
+								break
+							end
+						end
+					end
+				end
+				
+				if complete then
+					widget.setVisible(path..".completeImage", true)
+					status.setResource("fuQueslineComplet_"..tbl.id, 1)
+					pane.playSound("/sfx/objects/colonydeed_partyhorn.ogg")
+					
+					if tbl.moneyRange then
+						player.addCurrency("money", math.random(tbl.moneyRange[1], tbl.moneyRange[2]))
+					end
+					
+					if tbl.rewards then
+						for _, rewardTbl in ipairs(tbl.rewards) do
+							player.giveItem({ name = rewardTbl[1], count = rewardTbl[2] })
+						end
+					end
+				end
+			end
 		elseif not tbl.secret then
 			local path = "questlineList.list."..widget.addListItem("questlineList.list")
 			widget.setData(path..".banner", self.GD.unavailableQuestlineString.."_"..tbl.id)
@@ -68,6 +102,9 @@ function populateQueslineList()
 end
 
 function questlineSelected()
+	widget.setPosition("textScrollArea.questText", {0, 0})
+	widget.clearListItems("textScrollArea.rewardList")
+	
 	local listItem = widget.getListSelected("questlineList.list")
 	if listItem then
 		listItem = "questlineList.list."..listItem
@@ -78,11 +115,8 @@ function questlineSelected()
 			widget.setText("questTitle", tostring(self.QD.strings.questlines[id].title))
 			
 			local text = "^red;UNAVAILABLE!^reset;\nRequirements:"
-			sb.logError("%s", id)
 			for loc, tbl in ipairs(self.QD.lines) do
-				sb.logError("%s", loc)
 				if tbl.id == id then
-					sb.logError("%s", tbl.id)
 					for _, quest in ipairs(self.QD.lines[loc].requirements) do
 						local tempConfig = root.questConfig(quest)
 						
@@ -104,19 +138,59 @@ function questlineSelected()
 				end
 			end
 			
-			widget.setText("questText", text)
+			widget.setText("textScrollArea.questText", text)
 			widget.setButtonEnabled("questButton", false)
 		else
 			if self.QD.strings.questlines[id] then
 				widget.setText("questTitle", tostring(self.QD.strings.questlines[id].title))
-				widget.setText("questText", tostring(self.QD.strings.questlines[id].description))
+				widget.setText("textScrollArea.questText", tostring(self.QD.strings.questlines[id].description))
 			else
 				widget.setText("questTitle", "^red;ERROR")
-				widget.setText("questText", "Missing string table for '"..id.."' questline")
+				widget.setText("textScrollArea.questText", "Missing string table for '"..id.."' questline")
 			end
 			widget.setButtonEnabled("questButton", true)
+			
+			for loc, tbl in ipairs(self.QD.lines) do
+				if tbl.id == id then
+				
+					local path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
+					widget.setVisible(path..".rewardsLabel", true)
+					widget.setVisible(path..".rewardsPixelIcon", true)
+					widget.setVisible(path..".rewardsPixels", true)
+					
+					widget.setPosition("textScrollArea.questText", {0, self.GD.rewardListItemHeight})
+					
+					if self.QD.lines[loc].moneyRange then
+						if self.QD.lines[loc].moneyRange[1] == self.QD.lines[loc].moneyRange[2] then
+							widget.setText(path..".rewardsPixels", self.QD.lines[loc].moneyRange[1])
+						else
+							widget.setText(path..".rewardsPixels", self.QD.lines[loc].moneyRange[1].." - "..self.QD.lines[loc].moneyRange[2])
+						end
+					else
+						widget.setText(path..".rewardsPixels", "0")
+					end
+					
+					if self.QD.lines[loc].rewards then
+						path = ""
+						for count, reward in ipairs(self.QD.lines[loc].rewards) do
+							if count % self.GD.rewardItemSlotCount == 1 then
+								path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
+								widget.setVisible(path..".reward1", true)
+								widget.setItemSlotItem(path..".reward1", {name = reward[1], count = reward[2]})
+								
+								local textHeigh = widget.getPosition("textScrollArea.questText")
+								textHeigh[2] = textHeigh[2] + self.GD.rewardListItemHeight
+								widget.setPosition("textScrollArea.questText", textHeigh)
+							else
+								widget.setItemSlotItem(path..".reward"..count % self.GD.rewardItemSlotCount, {name = reward[1], count = reward[2]})
+								widget.setVisible(path..".reward"..count % self.GD.rewardItemSlotCount, true)
+							end
+						end
+					end
+					break
+				end
+			end
 		end
-		
 		
 		local buttons = {
 			base = "/interface/scripted/fu_tutorialQuestList/questlineListOverlay.png:selected",
@@ -148,7 +222,7 @@ function questlineButton()
 	widget.setVisible("questlineList", true)
 	
 	widget.setText("questTitle", "Select a questline" )
-	widget.setText("questText", "" )
+	widget.setText("textScrollArea.questText", "" )
 	
 	populateQueslineList()
 end
@@ -259,6 +333,9 @@ function populateQuestList()
 end
 
 function questSelected()
+	widget.setPosition("textScrollArea.questText", {0, 0})
+	widget.clearListItems("textScrollArea.rewardList")
+	
 	local listItem = widget.getListSelected("questList.list")
 	if listItem then
 		listItem = "questList.list."..listItem
@@ -277,18 +354,18 @@ function questSelected()
 			if config then
 				if player.hasCompletedQuest(id) or player.hasQuest(id) then
 					widget.setText("questTitle", tostring(config.title))
-					widget.setText("questText", tostring(config.text))
+					widget.setText("textScrollArea.questText", tostring(config.text))
 					widget.setButtonEnabled("questButton", false)
 					
 				elseif player.canStartQuest(id) then
 					widget.setText("questTitle", tostring(config.title))
-					widget.setText("questText", tostring(config.text))
+					widget.setText("textScrollArea.questText", tostring(config.text))
 					widget.setButtonEnabled("questButton", true)
 					
 				else
 					if config.secret then
 						widget.setText("questTitle", "^red;???")
-						widget.setText("questText", "?????")
+						widget.setText("textScrollArea.questText", "?????")
 					else
 						widget.setText("questTitle", tostring(config.title))
 						
@@ -311,13 +388,51 @@ function questSelected()
 							end
 						end
 						
-						widget.setText("questText", text)
+						widget.setText("textScrollArea.questText", text)
 					end
 					widget.setButtonEnabled("questButton", false)
 				end
+				
+				if player.hasCompletedQuest(id) or player.hasQuest(id) or player.canStartQuest(id) then
+					
+					local path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
+					widget.setVisible(path..".rewardsLabel", true)
+					widget.setVisible(path..".rewardsPixelIcon", true)
+					widget.setVisible(path..".rewardsPixels", true)
+					
+					widget.setPosition("textScrollArea.questText", {0, self.GD.rewardListItemHeight})
+					
+					if config.moneyRange then
+						if config.moneyRange[1] == config.moneyRange[2] then
+							widget.setText(path..".rewardsPixels", config.moneyRange[1])
+						else
+							widget.setText(path..".rewardsPixels", config.moneyRange[1].." - "..config.moneyRange[2])
+						end
+					else
+						widget.setText(path..".rewardsPixels", "0")
+					end
+					
+					if config.rewards and config.rewards[1] then
+						path = ""
+						for count, rewardTbl in pairs(config.rewards[1]) do
+							if count % self.GD.rewardItemSlotCount == 1 then
+								path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
+								widget.setVisible(path..".reward1", true)
+								widget.setItemSlotItem(path..".reward1", {name = rewardTbl[1], count = rewardTbl[2]})
+								
+								local textHeigh = widget.getPosition("textScrollArea.questText")
+								textHeigh[2] = textHeigh[2] + self.GD.rewardListItemHeight
+								widget.setPosition("textScrollArea.questText", textHeigh)
+							else
+								widget.setItemSlotItem(path..".reward"..count % self.GD.rewardItemSlotCount, {name = rewardTbl[1], count = rewardTbl[2]})
+								widget.setVisible(path..".reward"..count % self.GD.rewardItemSlotCount, true)
+							end
+						end
+					end
+				end
 			else
 				widget.setText("questTitle", "^red;ERROR")
-				widget.setText("questText", "Missing string table for '"..id.."' questline")
+				widget.setText("textScrollArea.questText", "Missing string table for '"..id.."' questline")
 			end
 			
 			if self.lastSelected and self.lastSelected ~= listItem then
@@ -342,7 +457,7 @@ function questButton()
 			widget.setVisible("questList", true)
 			widget.setVisible("questlineList", false)
 			widget.setText("questTitle", "Select a quest")
-			widget.setText("questText", "")
+			widget.setText("textScrollArea.questText", "")
 			
 			self.QD.current.line = questline
 			populateQuestList()
