@@ -1,0 +1,32 @@
+{
+  "id" : "fuquest_titan",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Titanus Wrex [BOSS]",
+  "text" : "A nasty pirate named Wrex has been obliterating outer-rim systems of late. Can you please ^orange;kill him^reset; to save countless lives?",
+  "completionText" : "I can rest easier knowing that colony ships carrying human survivors won't be attacked by that madman!",
+  "moneyRange" : [520, 580],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "requireTurnIn" : false,
+    "turnInDescription" : "Bring the ^green;Stormwarden^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "stormwarden",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
