@@ -1,0 +1,46 @@
+{
+  "objectName" : "precursorenergypod",
+  "colonyTags" : ["precursor", "storage"],
+  "rarity" : "legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "category" : "storage",
+  "printable" : true,
+  "price" : 1200,
+  "description" : "This pod stores energy!",
+  "shortdescription" : "Energy Storage Pod",
+  "race" : "generic",
+  
+  "health" : 30,
+
+  "inventoryIcon" : "precursorenergypodicon.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursorenergypod.png:<color>.<key>"}, { "image" : "precursorenergypodlit.png:<color>.<key>", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : false,
+      "direction" : "right"
+    },
+    {
+      "imageLayers" : [ { "image" : "precursorenergypod.png:<color>.<key>"}, { "image" : "precursorenergypodlit.png:<color>.<key>", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left"
+    }
+
+   ],
+
+  "openSounds" : [ "/sfx/objects/precursorpod_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/precursorpod_close.ogg" ],
+  "slotCount" : 24,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 10,
+  "autoCloseCooldown" : 3600
+}
