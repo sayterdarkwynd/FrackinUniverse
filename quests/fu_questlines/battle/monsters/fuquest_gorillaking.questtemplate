@@ -1,0 +1,34 @@
+{
+  "id" : "fuquest_gorillaking",
+  "prerequisites" : [ "create_aichip" ],
+  "title" : "The War-Born [BOSS]",
+  "text" : "Not long ago, the abominable Miniknog perfected a warrior variant of their genome. It must be stamped out! Kill one of the ^orange;Apex War-Born^reset; and you'll be rewarded.",
+  "completionText" : "One down...thousands to go. But it's a start. If you see any more...end their suffering.",
+  "moneyRange" : [520, 580],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "secret" : true,
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "requireTurnIn" : false,
+    "turnInDescription" : "Bring the ^green;Claws^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fuapexclaws",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id" : "fuquest_warbot",
+  "prerequisites" : [ "create_tritium" ],
+  "title" : "Warbot [BOSS]",
+  "text" : "On ^green;Cyber Spheres^reset; or ^green;Wastelands^reset; there often walk dangerous battle machines known as ^orange;War Bots^reset;. Take one down, and I'll pay you well.",
+  "completionText" : "Good job. The fact that you survived that firepower says much of your prowess in battle. I would not want to mess with you.",
+  "moneyRange" : [610, 650],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "secret" : true,
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "requireTurnIn" : false,
+    "turnInDescription" : "Bring the ^green;Targetting Chip^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "warbotartifact",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
