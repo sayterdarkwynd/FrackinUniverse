@@ -86,6 +86,7 @@ end
 
 function spawnVisualThorns(count)
     if status.resource("energy") >=5 then
+    animator.playSound("creepy")
       self.energyCalculation = (status.resource("energy") / status.stat("maxEnergy") ) /2
       status.modifyResourcePercentage("energy", -self.energyCalculation)  
 	  if count == nil then count = 1 end
