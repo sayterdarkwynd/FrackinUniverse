@@ -7,14 +7,15 @@
     [ [ "glass", 2] ]
   ],
   "moneyRange" : [10, 10],
-  "canBeAbandoned" : false,
+
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
     "portraits" : {
       "default" : "player"
     },
-    "followUp" : "fuquest_mineral",
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
     "conditions" : [
       {
         "type" : "gatherItem",
