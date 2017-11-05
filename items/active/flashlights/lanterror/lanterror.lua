@@ -20,9 +20,10 @@ function update(dt, fireMode, shiftHeld, moves)
       animator.playSound("flashlight")
       animator.setParticleEmitterActive("activatedLight", self.active)
       status.addEphemeralEffect("erchiusimmunity", math.huge)
+      status.addEphemeralEffect("ghostburst", math.huge)
       self.lastFireMode = fireMode
-      self.timer= 0
-    else
+      self.timer= self.timer - dt
+    else    
       self.timer= 3
       self.lastFireMode = fireMode
     end
@@ -39,7 +40,7 @@ end
 
 
 function uninit()
-  self.timer = 3
   animator.setParticleEmitterActive("activatedLight", false)
   status.removeEphemeralEffect("erchiusimmunity")  
+  status.removeEphemeralEffect("ghostburst") 
 end
