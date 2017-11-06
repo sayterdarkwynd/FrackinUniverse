@@ -45,6 +45,7 @@ end
 function attemptActivation()
   self.comboValue = status.resource("energy") / status.stat("maxEnergy")
   if not self.active and self.comboValue >=0.50 then
+    status.setResourcePercentage("energyRegenBlock", 5.0)
     activate()
   elseif self.active then
     deactivate()
