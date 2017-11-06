@@ -48,7 +48,7 @@ function shoggothChargeAttack.update(dt, stateData)
         end
       end
       animator.playSound("shoggothChomp")
-      world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 20)
+      world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 30)
 
       -- self.state.pickState({stun=true,duration=config.getParameter("chargeAttack.crashStunTime")})
     end

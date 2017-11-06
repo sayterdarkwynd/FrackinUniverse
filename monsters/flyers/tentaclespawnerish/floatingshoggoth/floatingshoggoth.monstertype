@@ -1,0 +1,257 @@
+{
+  "type" : "floatingshoggoth",
+  "shortdescription" : "Shoggoth Spawn",
+  "description" : "You should probably murder this immediately.",
+
+  "categories" : [ "floatingshoggoth" ],
+  "parts" : [ "body" ],
+
+  "animation" : "floatingshoggoth.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 70,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 70,
+      "targetOutOfSightTime" : 15.0,
+
+      "foundTargetActions" : [ ],
+      "fleeActions" : [ ],
+      "hostileActions" : [ ],
+      "approachActions" : [
+	{
+          "name":"approach-swarm", 
+          "parameters":{ "usePathfinding": true }
+        }       
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+	{
+          "name":"approach-swarm", 
+          "parameters":{ "usePathfinding": true }
+        }          
+      ],
+
+      "wanderActions" : [ 
+        {
+          "name" : "wander-fly"
+        }      
+      ],
+      
+      "periodicActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 1,
+         "parameters" : {
+          "projectileType" : "pusvomit2",
+          "projectileParameters" : { "damageSourceKind" : "shadow" },
+          "aimDirection" : [0,-1],
+          "aimAtTarget" : false,
+          "power" : 5
+         }
+        }      
+      ],
+      
+      "concurrentActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 1,
+         "parameters" : {
+          "projectileType" : "darkwatervomit",
+          "projectileParameters" : { "damageSourceKind" : "shadow" },
+          "aimDirection" : [0,-1],
+          "aimAtTarget" : false,
+          "power" : 5
+         }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 1,
+         "parameters" : {
+          "projectileType" : "pusvomit3",
+          "projectileParameters" : { "damageSourceKind" : "cosmic" },
+          "aimDirection" : [0,-1],
+          "aimAtTarget" : false,
+          "power" : 5
+         }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "darkwatervomit",
+            "power" : 6,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }      
+      ],
+      
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 4,
+            "inaccuracy" : 3.14,
+            "projectileType" : "pusvomit3",
+            "power" : 6,
+            "aimDirection" : [0, 1],
+            "fireOffset" : [0, 0]
+          }
+        }       
+      ]
+      
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -0.26], [0.26, -0.625], [-0.26, -0.625], [-0.625, -0.26], [-0.625, 0.26], [-0.26, 0.625] ],
+      "damage" : 3,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.4,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -0.26], [0.26, -0.625], [-0.26, -0.625], [-0.625, -0.26], [-0.625, 0.26], [-0.26, 0.625] ],
+
+      "mass" : 1,
+      "walkSpeed" : 4,
+      "runSpeed" : 8,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0.1,
+      "airForce" : 25,
+      "flySpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.05
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 115
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.25
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },         
+        "fireResistance" : {
+          "baseValue" : -0.35
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.7
+        },            
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "fallDamageMultiplier" : {
+          "baseValue" : 0
+        } 
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}
