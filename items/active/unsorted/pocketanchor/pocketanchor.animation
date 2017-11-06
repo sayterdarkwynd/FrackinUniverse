@@ -1,0 +1,42 @@
+{
+    "animatedParts" : {
+      "parts" : {
+      "body" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0, 0],
+          "image" : "pocketanchor.png"        
+          }
+        }
+      }
+    },
+    "lights" : {
+      "flashlightSpread" : {
+        "active" : false,
+        "position" : [0, 0],
+        "color" : [0, 150, 50]
+      },  
+      "flashlight" : {
+        "active" : false,
+        "position" : [0, 0],
+        "color" : [0, 150, 50],
+        "pointLight" : false
+      }
+    },
+    "sounds" : {
+      "flashlight" : [ "/sfx/tools/teleport_down.ogg" ],
+      "flashlight2" : [ "/sfx/tech/hoverbike_idle_loop.ogg" ]
+    },
+    
+   "particleEmitters" : {
+     "activatedLight" : {
+      "emissionRate" : 4,
+      "offsetRegion" : [-1, -1, 1, 1],     
+       "particles" : [       
+         { "particle" : "astraltearsparkle1" },
+         { "particle" : "astraltearsparkle2" },
+         { "particle" : "astraltearsparkle3" }
+        ]
+      }
+    }
+  }
