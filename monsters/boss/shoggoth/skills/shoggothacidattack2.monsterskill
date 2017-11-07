@@ -21,7 +21,7 @@
           "timeToLive" : 4,
           "power" : 17,
           "speed" : 6,
-          "periodicActions" : [
+          "periodicActions" : [   
 		    {
 		      "time" : 0.3,
 		      "loop" : true,
@@ -32,10 +32,29 @@
 		      "projectileParameters" : { 
 		        "speed" : 35, 
 		        "timeToLive" : 3, 
-		        "damageSourceKind" : "cosmic" 
-		        }
-		   }          
-          ]
+		        "damageSourceKind" : "cosmic",
+		        "periodicAction" : [
+			    {
+			      "time" : 0.2,
+			      "action" : "explosion",
+			      "foregroundRadius" : 3,
+			      "backgroundRadius" : 0,
+			      "explosiveDamageAmount" : 1,
+			      "delaySteps" : 2
+			    }		        
+		        ]
+		      }
+		    }          
+          ],
+          "actionOnReap" : [
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 3,
+	      "backgroundRadius" : 0,
+	      "explosiveDamageAmount" : 20,
+	      "delaySteps" : 2
+	    }             
+          ] 
         },
         "offset" : [0, -6]
       }

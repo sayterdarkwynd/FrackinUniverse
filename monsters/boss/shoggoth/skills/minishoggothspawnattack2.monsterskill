@@ -16,10 +16,19 @@
       "attacksLeft" : 6,
       "bounces" : 1,
       "projectile" : {
-        "type" : "minishoggothspawn2",
+        "type" : "minishoggothspawn",
         "config" : {
           "power" : 25,
-          "speed" : 90
+          "speed" : 90,
+          "actionOnReap" : [
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 3,
+	      "backgroundRadius" : 0,
+	      "explosiveDamageAmount" : 10,
+	      "delaySteps" : 2
+	    }             
+          ] 
         },
         "offset" : [10, -5]
       }

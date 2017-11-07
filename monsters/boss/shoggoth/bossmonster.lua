@@ -78,7 +78,7 @@ function update(dt)
       self.phase = nil
       self.lastPhase = nil
       setPhaseStates(self.phases)
-      status.setResource("health", status.stat("maxHealth"))
+      --status.setResource("health", status.stat("maxHealth"))
 
       if bossReset then bossReset() end
     end
@@ -95,7 +95,20 @@ end
 
 function damage(args)
   self.tookDamage = true
-
+  self.randval = math.random(100)
+  self.randval2 = math.random(10)
+  self.healthLevel = status.resource("health") / status.stat("maxHealth")
+  
+  if (self.randval) >=110 then
+    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{0,0},false,params)
+  elseif (self.randval) >= 100 and (self.randval2) == 10 and (self.healthLevel) <= 0.90 then
+    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,params)
+  elseif (self.randval) >= 100 and (self.randval2) >= 9 and (self.healthLevel) <= 0.75 then
+    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,params)  
+  elseif (self.randval) >= 100 and (self.randval2) >= 8 and (self.healthLevel) <= 0.50 then
+    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,params)      
+  end
+  
   if status.resource("health") <= 0 then
     local inState = self.state.stateDesc()
     animator.playSound("deathPuff")

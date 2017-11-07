@@ -3,7 +3,15 @@ eyeBeamAttack = {}
 --------------------------------------------------------------------------------
 function eyeBeamAttack.enter()
   if not hasTarget() then
-    return nil
+    return {
+    timer = config.getParameter("eyeBeamAttack.skillTime", 2),
+    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 1),
+    distanceRange = config.getParameter("eyeBeamAttack.distanceRange"),
+    winddownTimer = config.getParameter("eyeBeamAttack.winddownTime"),
+    windupTimer = config.getParameter("eyeBeamAttack.windupTime"),
+    targetSnapshot = {0, 0},
+    blasting = false    
+    }
   end
 
   return {

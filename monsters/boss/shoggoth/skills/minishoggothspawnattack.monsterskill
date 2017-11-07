@@ -19,7 +19,16 @@
         "type" : "minishoggothspawn",
         "config" : {
           "power" : 20,
-          "speed" : 70
+          "speed" : 70,
+          "actionOnReap" : [
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 3,
+	      "backgroundRadius" : 0,
+	      "explosiveDamageAmount" : 10,
+	      "delaySteps" : 2
+	    }             
+          ] 
         },
         "offset" : [10, -5]
       }
