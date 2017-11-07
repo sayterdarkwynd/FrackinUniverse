@@ -6,16 +6,17 @@
   "parameters" : {
     "scripts" : [ "/monsters/boss/shoggoth/skills/tentacleswipeattack.lua" ],
     "tentacleSwipeAttack" : {
-      "skillTime" : 0.7,
+      "skillTime" : 2.4,
       
       "damagePerSecond" : 40,
-      "distanceRange" : [0, 20],
-      "windupTime" : 0.4,
+      "distanceRange" : [0, 30],
+      "windupTime" : 1.2,
       "winddownTime" : 1.2,
+      "fireDelay" : 1.2,
       "projectile" : {
         "type" : "shoggothswipe",
         "config" : {
-          "power" : 35,
+          "power" : 50,
           "speed" : 20,
           "timeToLive" : 0.2,
           "actionOnReap" : [
@@ -23,7 +24,7 @@
 	      "action" : "explosion",
 	      "foregroundRadius" : 6,
 	      "backgroundRadius" : 0,
-	      "explosiveDamageAmount" : 30,
+	      "explosiveDamageAmount" : 40,
 	      "delaySteps" : 2
 	    },           
 	    {
@@ -31,20 +32,18 @@
 	      "file" : "/projectiles/explosions/elementimpact/radioactiveimpact3.config"
 	    },
 	    {
-	      "action" : "liquid",
-	      "liquid" : "elderfluid",
-	      "quantity" : 0.45
-	    },
-	    {
 	      "action" : "projectile",
-	      "type" : "shadowtravelingswoosh",
+	      "type" : "shoggothwebblast",
 	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 1,
-	      "angleAdjust" : 0
+	      "inheritDamageFactor" : 0.35,
+	      "angleAdjust" : 0,
+	      "config" : {
+	        "speed" : 13
+	      }
 	    }          
           ]
         },
-        "offset" : [18, -12.5]
+        "offset" : [14, -12.5]
       }
     }
   }

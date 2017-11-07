@@ -60,8 +60,8 @@
          "name":"action-projectile",
          "cooldown" : 1,
          "parameters" : {
-          "projectileType" : "pusvomit2",
-          "projectileParameters" : { "damageSourceKind" : "shadow" },
+          "projectileType" : "healingzone",
+          "projectileParameters" : { "damageSourceKind" : "shadow", "timeToLive" : 0.5 },
           "aimDirection" : [0,-1],
           "aimAtTarget" : false,
           "power" : 5
@@ -74,8 +74,8 @@
          "name":"action-projectile",
          "cooldown" : 1,
          "parameters" : {
-          "projectileType" : "darkwatervomit",
-          "projectileParameters" : { "damageSourceKind" : "shadow" },
+          "projectileType" : "healingzone",
+          "projectileParameters" : { "damageSourceKind" : "shadow", "timeToLive" : 0.5 },
           "aimDirection" : [0,-1],
           "aimAtTarget" : false,
           "power" : 5
@@ -97,18 +97,7 @@
         }
       ],
 
-      "damageTakenActions" : [
-        {
-          "name" : "action-projectile",
-          "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "darkwatervomit",
-            "power" : 6,
-            "aimDirection" : [0, 0],
-            "fireOffset" : [0, 0]
-          }
-        }      
-      ],
+      "damageTakenActions" : [],
       
       "deathActions" : [
         {
@@ -131,7 +120,7 @@
 		      "action" : "explosion",
 		      "foregroundRadius" : 4,
 		      "backgroundRadius" : 0,
-		      "explosiveDamageAmount" : 20,
+		      "explosiveDamageAmount" : 40,
 		      "delaySteps" : 2
 		    },
 		    {
@@ -160,7 +149,7 @@
 					      "action" : "explosion",
 					      "foregroundRadius" : 2,
 					      "backgroundRadius" : 0,
-					      "explosiveDamageAmount" : 3,
+					      "explosiveDamageAmount" : 5,
 					      "delaySteps" : 2
 					    } 					
 					]				      
@@ -177,7 +166,7 @@
 				      "action" : "explosion",
 				      "foregroundRadius" : 2,
 				      "backgroundRadius" : 0,
-				      "explosiveDamageAmount" : 3,
+				      "explosiveDamageAmount" : 5,
 				      "delaySteps" : 2
 				    }    
 				]		        
@@ -209,7 +198,7 @@
 					      "action" : "explosion",
 					      "foregroundRadius" : 2,
 					      "backgroundRadius" : 0,
-					      "explosiveDamageAmount" : 3,
+					      "explosiveDamageAmount" : 5,
 					      "delaySteps" : 2
 					    } 					
 					]				      
@@ -226,7 +215,7 @@
 				      "action" : "explosion",
 				      "foregroundRadius" : 2,
 				      "backgroundRadius" : 0,
-				      "explosiveDamageAmount" : 3,
+				      "explosiveDamageAmount" : 5,
 				      "delaySteps" : 2
 				    }    
 				]		        
@@ -258,7 +247,7 @@
 					      "action" : "explosion",
 					      "foregroundRadius" : 2,
 					      "backgroundRadius" : 0,
-					      "explosiveDamageAmount" : 3,
+					      "explosiveDamageAmount" : 5,
 					      "delaySteps" : 2
 					    } 					
 					]				      
@@ -275,7 +264,7 @@
 				      "action" : "explosion",
 				      "foregroundRadius" : 2,
 				      "backgroundRadius" : 0,
-				      "explosiveDamageAmount" : 3,
+				      "explosiveDamageAmount" : 5,
 				      "delaySteps" : 2
 				    }    
 				]		        
@@ -307,7 +296,7 @@
 					      "action" : "explosion",
 					      "foregroundRadius" : 2,
 					      "backgroundRadius" : 0,
-					      "explosiveDamageAmount" : 3,
+					      "explosiveDamageAmount" : 5,
 					      "delaySteps" : 2
 					    } 					
 					]				      
@@ -324,7 +313,7 @@
 				      "action" : "explosion",
 				      "foregroundRadius" : 2,
 				      "backgroundRadius" : 0,
-				      "explosiveDamageAmount" : 3,
+				      "explosiveDamageAmount" : 5,
 				      "delaySteps" : 2
 				    }    
 				]		        
@@ -398,7 +387,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 115
+          "baseValue" : 315
         },
         "protection" : {
           "baseValue" : 0.0
@@ -419,7 +408,7 @@
           "baseValue" : 1.0
         },         
         "fireResistance" : {
-          "baseValue" : -0.35
+          "baseValue" : -0.25
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0

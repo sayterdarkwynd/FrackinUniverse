@@ -8,49 +8,108 @@
           "idle" : {
             "frames" : 16,
             "cycle" : 2,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }  
           },
+          "idle2" : {
+            "frames" : 16,
+            "cycle" : 2,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "acidUp" ],
+              "particleEmittersOn" : [ "slimeUp" ]
+            }  
+          },
+          "idle3" : {
+            "frames" : 16,
+            "cycle" : 2,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp" ],
+              "particleEmittersOn" : [ "acidUp" ]
+            }  
+          },          
           "jump" : {
             "frames" : 16,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }  
           },
           "walk" : {
             "frames" : 8,
             "cycle" : 1.6,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }  
           },
           "run" : {
             "frames" : 8,
             "cycle" : 0.8,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }  
           },
           "chargeWindup" : {
             "frames" : 16,
             "cycle" : 1.6,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "slimeUp","acidUp" ],
+              "particleEmittersOn" : [ "chargeUp" ]
+            }  
           },
           "charge" : {
             "frames" : 4,
             "cycle" : 1.0,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }  
           },
           "death" : {
             "frames" : 16,
             "cycle" : 2.0,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }  
           },
           "knockback" : {
             "frames" : 16,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }  
           },
           "knockout" : {
             "frames" : 16,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }  
           },
+          "meleewindup" : {
+            "cycle": 2.4,
+            "frames" : 24,
+            "mode" : "transition",
+            "transition" : "swipe",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "acidUp" ],
+              "particleEmittersOn" : [ "slimeUp" ],
+              "immediateSound" : "/sfx/melee/lash_kill_organic.ogg"
+            }
+          },          
           "swipe" : {
             "cycle": 1.6,
             "frames" : 16,
             "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "acidUp" ],
+              "particleEmittersOn" : [ "slimeUp" ],
               "immediateSound" : "/sfx/melee/lash_kill_organic.ogg"
             }
           }
@@ -61,14 +120,17 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 1
+            "frames" : 16,
+            "cycle" : 2,
+            "mode" : "loop"
           },
           "active" : {
             "frames" : 8,
             "cycle" : 1.6,
             "mode" : "loop",
             "properties" : {
-              "persistentSound" : "/sfx/npc/boss/crystalboss_beam.ogg"
+              "persistentSound" : "/sfx/npc/boss/crystalboss_beam.ogg",
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
             }
           },
           "windup" : {
@@ -77,14 +139,17 @@
             "mode" : "transition",
             "transition" : "active",
             "properties" : {
-              "immediateSound" : "/sfx/npc/boss/crystalboss_beamin.ogg"
+              "immediateSound" : "/sfx/npc/boss/crystalboss_beamin.ogg",
+              "particleEmittersOff" : [ "slimeUp", "acidUp" ],
+              "particleEmittersOn" : [ "chargeUp" ]
             }
           },
           "winddown" : {
             "frames" : 8,
             "cycle" : 1.6,
             "properties" : {
-              "immediateSound" : "/sfx/npc/boss/crystalboss_beamout.ogg"
+              "immediateSound" : "/sfx/npc/boss/crystalboss_beamout.ogg",
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
             }
           }
         }
@@ -94,24 +159,49 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 2
+            "frames" : 16,
+            "cycle" : 2,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/crystalboss_beamout.ogg",
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+            }
           },
           "melee" : {
             "frames" : 4,
             "cycle" : 0.4,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/crystalboss_beamout.ogg",
+              "particleEmittersOff" : [ "slimeUp","acidUp" ],
+              "particleEmittersOn" : [ "chargeUp" ]
+            }
           },
           "charge" : {
-            "frames" : 1
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/crystalboss_beamout.ogg",
+              "particleEmittersOff" : [ "chargeUp", "acidUp" ],
+              "particleEmittersOn" : [ "slimeUp" ]
+            }
           },
           "chargeAttack" : {
             "frames" : 4,
             "cycle" : 0.6,
-            "mode" : "end"
+            "mode" : "end",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/crystalboss_beamout.ogg",
+              "particleEmittersOff" : [ "chargeUp", "slimeUp", "acidUp" ]
+            }
           },
           "shooting" : {
-            "frames" : 1
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/crystalboss_beamout.ogg",
+              "particleEmittersOff" : [ "chargeUp", "slimeUp" ],
+              "particleEmittersOn" : [ "acidUp" ]
+            }
           }
         }
       },
@@ -170,6 +260,16 @@
                 "image" : "<partImage>:idle.<frame>"
               }
             },
+            "idle2" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "idle3" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },            
             "walk" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
@@ -212,7 +312,7 @@
             },
             "swipe" : {
               "properties" : {
-                "image" : "<partImage>:swipe.<frame>"
+                "image" : "<partImage>:meleewindup.<frame>"
 
               }
             }
@@ -433,6 +533,129 @@
       ]
     },
 
+    "chargeUp" : {
+      "particles" : [
+        { "particle" : "radioactivefx" },
+        { "particle" : "radioactivefx" },
+        { "particle" : "radiationburndust" },
+        { "particle" : "radiationburndust2" },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/energybeamimpact/basicminerimpact.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 0.7,
+            "destructionTime" : 1,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/energybeamimpact/hybridminerimpact3.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 0.7,
+            "destructionTime" : 1,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.75,
+            "layer" : "middle"
+          }
+        }
+      ]
+    },  
+    "acidUp" : {
+      "particles" : [
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/firecharge/firecharge.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/crystaltrail/crystaltrail.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.75,
+            "layer" : "middle"
+          }
+        }
+      ]
+    },   
+    
+    "slimeUp" : {
+      "particles" : [
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/cosmicsparkle/cosmicsparkle.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/erchiussmoke/erchiussmoke.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.75,
+            "layer" : "middle"
+          }
+        }
+      ]
+    }, 
+    
+    
     "deathPoof" : {
       
       "particles" : [
