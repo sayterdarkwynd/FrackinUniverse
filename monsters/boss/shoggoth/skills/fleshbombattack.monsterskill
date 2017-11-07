@@ -6,9 +6,9 @@
   "parameters" : {
     "scripts" : [ "/monsters/boss/shoggoth/skills/fleshbombattack.lua" ],
     "fleshBombAttack" : {
-      "skillTime" : 8,
+      "skillTime" : 5,
       
-      "damagePerSecond" : 2000,
+      "damagePerSecond" : 20,
       "distanceRange" : [12,120],
       "windupTime" : 0.5,
       "winddownTime" : 1.0,
@@ -21,12 +21,14 @@
           "speed" : 40,
           "actionOnReap" : [
 	    {
-	      "action" : "explosion",
-	      "foregroundRadius" : 4,
-	      "backgroundRadius" : 0,
-	      "explosiveDamageAmount" : 15,
-	      "delaySteps" : 2
-	    }             
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/acidexplosionshoggoth/acidexplosionshoggoth.config"
+	    },
+	    {
+	      "action" : "liquid",
+	      "liquid" : "pus",
+	      "quantity" : 5
+	    }          
           ] 
         },
         "offset" : [0, -10]

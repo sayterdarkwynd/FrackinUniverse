@@ -5,7 +5,7 @@ function eyeBeamAttack.enter()
   if not hasTarget() then
     return {
     timer = config.getParameter("eyeBeamAttack.skillTime", 2),
-    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 1),
+    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 0),
     distanceRange = config.getParameter("eyeBeamAttack.distanceRange"),
     winddownTimer = config.getParameter("eyeBeamAttack.winddownTime"),
     windupTimer = config.getParameter("eyeBeamAttack.windupTime"),
@@ -16,7 +16,7 @@ function eyeBeamAttack.enter()
 
   return {
     timer = config.getParameter("eyeBeamAttack.skillTime", 2),
-    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 1),
+    damagePerSecond = config.getParameter("eyeBeamAttack.damagePerSecond", 0),
     distanceRange = config.getParameter("eyeBeamAttack.distanceRange"),
     winddownTimer = config.getParameter("eyeBeamAttack.winddownTime"),
     windupTimer = config.getParameter("eyeBeamAttack.windupTime"),

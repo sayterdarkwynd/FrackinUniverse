@@ -8,29 +8,30 @@
     "eyeBeamAttack" : {
       "skillTime" : 2,
       
-      "damagePerSecond" : 1,
+      "damagePerSecond" : 0.01,
       "distanceRange" : [20,300],
       "windupTime" : 2.4,
       "winddownTime" : 1.6,
       
       "projectile" : {
-        //"type" : "shoggotheyebeam",
-        //"type" : "shoggothboss",
-        "type" : "shoggothcontrol",
+        "type" : "shoggothboss",
         "config" : {
-          "power" : 1,
-          "speed" : 90,
+          "speed" : 70,
           "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/acidexplosionshoggoth/fxshoggoth.config"
+	    },
 	    {
 	      "action" : "explosion",
 	      "foregroundRadius" : 3,
 	      "backgroundRadius" : 0,
-	      "explosiveDamageAmount" : 2,
+	      "explosiveDamageAmount" : 1,
 	      "delaySteps" : 2
-	    }             
+	    }	    
           ]      
         },
-        "offset" : [13.5, -4.0]
+        "offset" : [10, -6]
       }
     }
   }
