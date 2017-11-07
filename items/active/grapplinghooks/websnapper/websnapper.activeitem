@@ -1,0 +1,47 @@
+{
+  "itemName" : "websnapper",
+  "price" : 3000,
+  "inventoryIcon" : "websnappericon.png",
+  "rarity" : "Legendary",
+  "maxStack" : 1,
+  "description" : "Well, that's pretty useful. And a bit horrifying.",
+  "shortdescription" : "Web Shooter",
+  "largeImage" : "websnapperbig.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+
+  "scripts" : ["/items/active/grapplinghooks/grapplinghook.lua"],
+    "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "animation" : "websnapper.animation",
+
+  "fireOffset" : [0, 0],
+  "ropeOffset" : [-1.2, 0],
+  "ropeVisualOffset" : [0.75, 0],
+  "handGrip" : "wrap",
+  "consumeOnUse" : false,
+
+  "projectileType" : "webhook",
+  "projectileParameters" : {
+    "speed" : 100,
+    "timeToLive" : 0.7,
+    "power" : 10,
+    "damageSourceKind" : "radioactive",
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact3.ogg"],"action":"sound"} ],
+    "statusEffects" : [ "radiationburn" ]
+  },
+
+  "ropeWidth" : 1.2,
+  "ropeColor" : [245, 245, 245, 255],
+
+  "reelInDistance" : 4.5,
+  "reelOutLength" : 220,
+  "breakLength" : 220,
+  "minSwingDistance" : 1.0, 
+  "reelSpeed" : 50,
+  "controlForce" : 1000,
+  "groundLagTime" : 0.05
+}

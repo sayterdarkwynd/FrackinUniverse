@@ -1,0 +1,35 @@
+{
+  "id" : "fuquest_titan",
+  "prerequisites" : [ "create_protocite" ],
+  "title" : "Wrexor Nar [BOSS]",
+  "text" : "A nasty pirate named Wrexor Nar has been harassing outer-rim systems of late and destabilizing new colonies. Can you please ^orange;kill him^reset; to save countless lives?",
+  "completionText" : "I can rest easier now, knowing that colony ships carrying human survivors will no longer be attacked by that madman!",
+  "moneyRange" : [520, 580],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "secret" : true,
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "turnInDescription" : "Bring the ^green;Stormwarden^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "stormwarden",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

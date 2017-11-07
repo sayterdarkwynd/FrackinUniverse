@@ -8,14 +8,15 @@
     [ [ "scientistlegs", 1] ]
   ],
   "moneyRange" : [10, 10],
-  "canBeAbandoned" : false,
+
   "updateDelta" : 10,
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
     "portraits" : {
       "default" : "player"
     },
-    "followUp" : "fuquest_dna",
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
     "conditions" : [
       {
         "type" : "gatherItem",

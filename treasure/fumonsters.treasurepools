@@ -158,6 +158,9 @@
   ],
   "warbotTreasure" : [
     [1, {
+      "fill" : [
+        {"item" : "warbotartifact"}
+      ],    
       "pool" : [
         {"weight" : 0.5, "pool" : "furobotTreasure"},
         {"weight" : 0.3, "pool" : "ffmetallicbossChest"},
@@ -2195,14 +2198,24 @@
       "pool" : [
         {"weight" : 0.33, "pool" : "money"},
         {"weight" : 0.33, "item" : [ "liquidpus", 10]},
-		{"weight" : 0.33, "item" : [ "spidersilkblock", 25]}
+	{"weight" : 0.33, "item" : [ "spidersilkblock", 25]}
       ],
-      "poolRounds" : [
-        [0.75, 4],
-		[0.25, 6]
-      ],
+      "poolRounds" : [[0.75, 4],[0.25, 6]],
       "allowDuplication" : true,
 	  "fill" : [{ "item" : [ "venomsample", 3]}]
+      }
+    ]
+  ],
+  "frankLootBoss" : [
+    [1, {
+      "fill" : [ { "item" : [ "websnapper", 1]  }, { "item" : [ "venomsample", 10]}  ],
+      "pool" : [
+        {"weight" : 0.33, "pool" : "money"},
+        {"weight" : 0.33, "item" : [ "liquidpus", 10]},
+	{"weight" : 0.33, "item" : [ "spidersilkblock", 25]}
+      ],
+      "poolRounds" : [[0.75, 4],[0.25, 6]],
+      "allowDuplication" : true
       }
     ]
   ]

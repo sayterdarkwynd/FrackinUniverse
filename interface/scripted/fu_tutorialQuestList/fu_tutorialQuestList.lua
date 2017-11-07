@@ -1,4 +1,3 @@
-
 function init()
 	self.GD = root.assetJson("/interface/scripted/fu_tutorialQuestList/fu_tutorialQuestList.config")
 	self.QD = root.assetJson("/interface/scripted/fu_tutorialQuestList/questData.config")
@@ -352,16 +351,14 @@ function questSelected()
 			
 			local config = root.questConfig(id)
 			if config then
-				if player.hasCompletedQuest(id) or player.hasQuest(id) then
+				if player.hasCompletedQuest(id) then
 					widget.setText("questTitle", tostring(config.title))
 					widget.setText("textScrollArea.questText", tostring(config.text))
 					widget.setButtonEnabled("questButton", false)
-					
 				elseif player.canStartQuest(id) then
 					widget.setText("questTitle", tostring(config.title))
 					widget.setText("textScrollArea.questText", tostring(config.text))
 					widget.setButtonEnabled("questButton", true)
-					
 				else
 					if config.secret then
 						widget.setText("questTitle", "^red;???")

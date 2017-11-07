@@ -26,49 +26,36 @@
 
     "phases" : [
       {
-        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
+        "skills" : [ "shoggothChargeAttack" ]
       },
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.95,
-        "skills" : [ "shoggothChargeAttack" ]
-      },      
+        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2","fleshBombAttack" ]
+      },        
       {
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.90,
-        "enterPhase" : "miniShoggothSpawnAttack",
-        "skills" : [ "eyeBeamAttack","tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.75,
-        "skills" : [ "eyeBeamAttack","fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack2" ]
-      },      
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.70,
         "skills" : [ "shoggothChargeAttack" ]
-      },      
+      },                  
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.65,
-        "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
+        "healthPercentage" : 0.85,
+        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2","fleshBombAttack" ]
       },
       {
         "trigger" : "healthPercentage",
-        
-        "healthPercentage" : 0.60,
-        "enterPhase" : "miniShoggothSpawnAttack",
-        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2" ]
-      },   
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.57,
+        "healthPercentage" : 0.80,
         "skills" : [ "shoggothChargeAttack" ]
       },       
       {
         "trigger" : "healthPercentage",
-        "healthPercentage" : 0.55,
+        "healthPercentage" : 0.75,
+        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2","fleshBombAttack", "miniShoggothSpawnAttack"  ]
+      },        
+      {
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.70,
         "enterPhase" : "miniShoggothSpawnAttack",
         "skills" : [ "fleshBombAttack", "shoggothAcidAttack2" ]
       },
@@ -102,16 +89,16 @@
         "trigger" : "healthPercentage",
         "healthPercentage" : 0.05,
         "skills" : [ "shoggothChargeAttack" ]
-      }      
+      }         
     ],
 
     "scale" : 1,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-      "mass" : 7,
-      "walkSpeed" : 5,
-      "runSpeed" : 9,
+      "collisionPoly" : [ [-14, -16], [14, -16], [14, 0], [-14, 0] ],
+      "mass" : 25,
+      "walkSpeed" : 2,
+      "runSpeed" : 4,
       "jumpSpeed" : 0,
       "airforce" : 0
     },
@@ -123,7 +110,7 @@
     "switchTargetDistance" : 180,
       "targetQueryRange" : 180,
       "targetOnDamage" : true,
-      "keepTargetInSight" : true,
+      "keepTargetInSight" : false,
       "keepTargetInRange" : 180,
       "targetOutOfSightTime" : 180.0,
       
@@ -140,11 +127,11 @@
 
     "metaBoundBox" : [-16, -16, 10, 10],
 
-    "blockedSensors" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-    "fallSensors" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
+    "blockedSensors" : [ [-14, -16], [14, -16], [14, 0], [-14, 0] ],
+    "fallSensors" : [ [-14, -16], [14, -16], [14, 0], [-14, 0] ],
 
     "touchDamage" : {
-      "poly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
+      "poly" : [ [-14, -16], [14, -16], [14, 0], [-14, 0] ],
       "damage" : 32,
 
       "teamType" : "enemy",

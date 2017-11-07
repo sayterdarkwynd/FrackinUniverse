@@ -1,0 +1,67 @@
+{
+    "animatedParts" : {
+      "parts" : {
+      "flashlight" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0, -0.7],
+          "image" : "lanterror.png"        
+          }
+        },
+      "flashlightfullbright" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0, -0.7],
+          "image" : "lanterrorfullbright.png",
+          "fullbright" : false,
+          "zLevel" : 1
+          }
+        }        
+      }
+    },
+    "lights" : {
+      "flashlightSpread" : {
+        "active" : false,
+        "position" : [0, 0],
+        "color" : [0, 150, 50]
+      },  
+      "flashlight" : {
+        "active" : false,
+        "position" : [0, 0],
+        "color" : [0, 150, 50],
+        "pointLight" : false
+      }
+    },
+    "sounds" : {
+      "flashlight" : [ "/sfx/npc/monsters/ignome_charge2.ogg" ],
+      "flashlight2" : [ "/sfx/humanoid/test_hylotlhurt_male1.ogg" ]
+    },
+    
+   "particleEmitters" : {
+     "activatedLight" : {
+      "emissionRate" : 1,
+      "offsetRegion" : [-1, -1, 1, 1],     
+       "particles" : [
+         { "particle" : "poisondrip3" },
+         {
+           "particle" : {
+             "type" : "animated",
+             "animation" : "/animations/groundmist/groundmist.animation",
+             "size" : 0.5,
+             "angularVelocity" : 15,
+             "fade" : 1,
+             "destructionTime" : 2,
+             "position" : [0, 0],
+             "initialVelocity" : [0, 1],
+             "finalVelocity" : [0, 3],
+             "approach" : [1, 2],
+             "timeToLive" : 0.4,
+             "layer" : "middle"
+           }
+          }
+        ]
+      }
+    }
+    
+    
+  }

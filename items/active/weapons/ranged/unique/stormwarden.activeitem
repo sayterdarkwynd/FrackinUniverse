@@ -1,0 +1,100 @@
+{
+  "itemName" : "stormwarden",
+  "price" : 360,
+  "inventoryIcon" : "stormwarden.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Launches rapid-fire bomblets.",
+  "shortdescription" : "Stormwarden",
+  "category" : "grenadeLauncher",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Grenade Launcher",
+  "itemTags" : ["weapon","ranged","grenadelauncher","upgradeableWeapon"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "stormwarden.png",
+    "middlefullbright" : "stormwardenfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/purplemuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/mech_gatling1.ogg" ]
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [0, 55, 108],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
+  },
+
+  "baseOffset" : [1.5, 0.0],
+  "muzzleOffset" : [1.645, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.15,
+    "baseDps" : 5,
+    "energyUsage" : 21.0,
+    "inaccuracy" : 0.06,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "elementalType" : "fire",
+    
+    "projectileType" : "distortionbomb",
+    "projectileParameters" : { 
+      "statusEffects" : [ "burning" ],
+      "speed" : 50,
+      "knockback" : 10,
+      "timeToLive" : 5
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 5,
+  "critBonus" : 3, 
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

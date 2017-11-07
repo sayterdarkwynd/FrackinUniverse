@@ -52,8 +52,7 @@ end
 
 function update(dt)
   self.tookDamage = false
-  --monster.say("I love you")
-  world.spawnProjectile("pushzone2",mcontroller.position(),entity.id(),{0,-35},false,params)
+  world.spawnProjectile("pushzone2",mcontroller.position(),entity.id(),{0,-60},false,params)
   trackTargets(self.keepTargetInSight, self.queryTargetDistance, self.trackTargetDistance, self.switchTargetDistance)
 
   for skillName, params in pairs(self.skillParameters) do
@@ -79,7 +78,7 @@ function update(dt)
       self.phase = nil
       self.lastPhase = nil
       setPhaseStates(self.phases)
-      status.setResource("health", status.stat("maxHealth"))
+      --status.setResource("health", status.stat("maxHealth"))
 
       if bossReset then bossReset() end
     end
@@ -96,12 +95,22 @@ end
 
 function damage(args)
   self.tookDamage = true
-
+  self.randval = math.random(100)
+  self.healthLevel = status.resource("health") / status.stat("maxHealth")
+  spit1={ power = 0, speed = 15, timeToLive = 0.2 }
+  
+  if (self.randval) >= 99 and (self.healthLevel) <= 0.80 then
+    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)
+  elseif (self.randval) >= 98 and (self.healthLevel) <= 0.65 then
+    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)  
+  elseif (self.randval) >= 97 and (self.healthLevel) <= 0.50 then
+    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)      
+  end
+  
   if status.resource("health") <= 0 then
     local inState = self.state.stateDesc()
     animator.playSound("deathPuff")
     if inState ~= "dieState" and not self.state.pickState({ die = true }) then
-      
       self.state.endState()
       self.dead = true
     end

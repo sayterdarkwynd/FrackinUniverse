@@ -1,0 +1,91 @@
+{
+  "globalTagDefaults" : {
+    "rotationFrame" : "0",
+    "ballDirectives" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "ballState" : {
+        "default" : "off",
+        "states" : {
+          "deactivate" : {
+            "frames" : 3,
+            "cycle" : 0.12,
+            "mode" : "transition",
+            "transition" : "off"
+          },
+          "off" : { },
+          "activate" : {
+            "frames" : 3,
+            "cycle" : 0.12,
+            "mode" : "transition",
+            "transition" : "on"
+          },
+          "on" : { }
+        }
+      }
+    },
+
+    "parts" : {
+      "ballGlow" : {
+        "partStates" : {
+          "ballState" : {
+            "on" : {
+              "properties" : {
+                "zLevel" : 1,
+                "centered" : true,
+                "fullbright" : true,
+                "image" : "<partImage>:<rotationFrame><ballDirectives>"
+              }
+            }
+          }
+        }
+      },
+      "ball" : {
+        "partStates" : {
+          "ballState" : {
+            "deactivate" : {
+              "properties" : {
+                "centered" : true,
+                "offset" : [0, 0],
+                "fullbright" : true,
+                "image" : "transform.png:deactivate.<frame>"
+              }
+            },
+            "activate" : {
+              "properties" : {
+                "centered" : true,
+                "offset" : [0, 1.5],
+                "fullbright" : true,
+                "image" : "transform.png:activate.<frame>"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "centered" : true,
+                "image" : "<partImage>:<rotationFrame><ballDirectives>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "activateParticles" : {
+      "particles" : [ ]
+    },
+    "deactivateParticles" : {
+      "particles" : [ ]
+    }
+  },
+
+  "sounds" : {
+    "activate" : [ "/sfx/tech/tech_dash.ogg" ],
+    "bombdrop" : [ "/sfx/interface/nav_select.ogg" ],
+    "bombcharged" : [ "/sfx/interface/rocket_lockon.ogg" ],
+    "deactivate" : [ "/sfx/tech/tech_blink2.ogg" ]
+  }
+}
