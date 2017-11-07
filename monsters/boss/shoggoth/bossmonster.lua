@@ -98,16 +98,16 @@ function damage(args)
   self.randval = math.random(100)
   self.randval2 = math.random(10)
   self.healthLevel = status.resource("health") / status.stat("maxHealth")
-  spit1={ power = 0, speed = 30 }
+  spit1={ power = 0, speed = 15, timeToLive = 0.2 }
+  spit2={ power = 0, speed = 15, timeToLive = 0.1 }
   
-  
-  if (self.randval) >=96 then
-    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{0,0},false,params)
-  elseif (self.randval) >= 95 and (self.randval2) >= 6 and (self.healthLevel) <= 0.90 then
+  if (self.randval) >=97 then
+    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{0,0},false,spit2)
+  elseif (self.randval2) >= 97 and (self.healthLevel) <= 0.90 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)
-  elseif (self.randval) >= 95 and (self.randval2) >= 4 and (self.healthLevel) <= 0.75 then
+  elseif (self.randval2) >= 96 and (self.healthLevel) <= 0.75 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)  
-  elseif (self.randval) >= 95 and (self.randval2) >= 2 and (self.healthLevel) <= 0.50 then
+  elseif (self.randval2) >= 95 and (self.healthLevel) <= 0.50 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)      
   end
   
