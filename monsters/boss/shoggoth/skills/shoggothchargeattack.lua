@@ -37,9 +37,6 @@ function shoggothChargeAttack.update(dt, stateData)
     --projectile interval check and spawn
     if stateData.currentPeriod < 0 then
       if isBlocked() then
-      --CRASH
-      -- animator.playSound("chargeCrash")
-
       local crashTiles = {}
       local basePos = config.getParameter("projectileSourcePosition", {0, 0})
       for xOffset = 2, 22 do
@@ -49,15 +46,12 @@ function shoggothChargeAttack.update(dt, stateData)
       end
       animator.playSound("shoggothChomp")
       world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 30)
-
-      -- self.state.pickState({stun=true,duration=config.getParameter("chargeAttack.crashStunTime")})
     end
       -- shoggothChargeAttack.chomp(targetDir)
       stateData.currentPeriod = stateData.intervalTime
     else
       stateData.currentPeriod = stateData.currentPeriod - dt
     end
-
 
     if math.abs(toTarget[1]) > stateData.distanceRange[2] then
       animator.setAnimationState("movement", "run")
@@ -69,9 +63,7 @@ function shoggothChargeAttack.update(dt, stateData)
     else
       stateData.swiping = true
     end
-
   end
-
 
   return false
 end

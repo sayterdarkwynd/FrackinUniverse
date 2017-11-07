@@ -22,12 +22,17 @@
           "speed" : 90,
           "actionOnReap" : [
 	    {
-	      "action" : "explosion",
-	      "foregroundRadius" : 3,
-	      "backgroundRadius" : 0,
-	      "explosiveDamageAmount" : 10,
-	      "delaySteps" : 2
-	    }             
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/acidexplosionshoggoth/acidexplosionshoggoth.config"
+	    },          
+	    {
+	      "action" : "spawnmonster",
+	      "type" : "minishoggoth",
+	      "offset" : [0, 2],
+	      "arguments" : {
+		"aggressive" : true
+	      }
+	    }          
           ] 
         },
         "offset" : [10, -5]

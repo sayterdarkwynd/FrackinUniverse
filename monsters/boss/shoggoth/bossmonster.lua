@@ -101,9 +101,9 @@ function damage(args)
   
   if (self.randval) >= 99 and (self.healthLevel) <= 0.80 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)
-  elseif (self.randval) >= 90 and (self.healthLevel) <= 0.65 then
+  elseif (self.randval) >= 98 and (self.healthLevel) <= 0.65 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)  
-  elseif (self.randval) >= 85 and (self.healthLevel) <= 0.50 then
+  elseif (self.randval) >= 97 and (self.healthLevel) <= 0.50 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)      
   end
   
@@ -111,7 +111,6 @@ function damage(args)
     local inState = self.state.stateDesc()
     animator.playSound("deathPuff")
     if inState ~= "dieState" and not self.state.pickState({ die = true }) then
-      
       self.state.endState()
       self.dead = true
     end
