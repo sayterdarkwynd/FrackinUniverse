@@ -101,9 +101,9 @@ function damage(args)
   spit1={ power = 0, speed = 15, timeToLive = 0.2 }
   spit2={ power = 0, speed = 15, timeToLive = 0.1 }
   
-  if (self.randval) >=97 then
-    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{0,0},false,spit2)
-  elseif (self.randval2) >= 97 and (self.healthLevel) <= 0.90 then
+  if (self.randval) >=95 then
+    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{0,-5},false,spit2)
+  elseif (self.randval2) >= 97 and (self.healthLevel) <= 1 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)
   elseif (self.randval2) >= 96 and (self.healthLevel) <= 0.75 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)  
