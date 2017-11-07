@@ -151,42 +151,42 @@ function questlineSelected()
 			
 			for loc, tbl in ipairs(self.QD.lines) do
 				if tbl.id == id then
-				
-					local path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
-					widget.setVisible(path..".rewardsLabel", true)
-					widget.setVisible(path..".rewardsPixelIcon", true)
-					widget.setVisible(path..".rewardsPixels", true)
-					
-					widget.setPosition("textScrollArea.questText", {0, self.GD.rewardListItemHeight})
-					
-					if self.QD.lines[loc].moneyRange then
-						if self.QD.lines[loc].moneyRange[1] == self.QD.lines[loc].moneyRange[2] then
-							widget.setText(path..".rewardsPixels", self.QD.lines[loc].moneyRange[1])
-						else
-							widget.setText(path..".rewardsPixels", self.QD.lines[loc].moneyRange[1].." - "..self.QD.lines[loc].moneyRange[2])
-						end
-					else
-						widget.setText(path..".rewardsPixels", "0")
-					end
-					
-					if self.QD.lines[loc].rewards then
-						path = ""
-						for count, reward in ipairs(self.QD.lines[loc].rewards) do
-							if count % self.GD.rewardItemSlotCount == 1 then
-								path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
-								widget.setVisible(path..".reward1", true)
-								widget.setItemSlotItem(path..".reward1", {name = reward[1], count = reward[2]})
-								
-								local textHeigh = widget.getPosition("textScrollArea.questText")
-								textHeigh[2] = textHeigh[2] + self.GD.rewardListItemHeight
-								widget.setPosition("textScrollArea.questText", textHeigh)
+					if (self.QD.lines[loc].moneyRange and self.QD.lines[loc].moneyRange[2] > 0) or (self.QD.lines[loc].rewards and #self.QD.lines[loc].rewards > 0) then
+						local path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
+						widget.setVisible(path..".rewardsLabel", true)
+						
+						widget.setPosition("textScrollArea.questText", {0, self.GD.rewardListItemHeight})
+						
+						if self.QD.lines[loc].moneyRange and self.QD.lines[loc].moneyRange[2] > 0 then
+							widget.setVisible(path..".rewardsPixelIcon", true)
+							widget.setVisible(path..".rewardsPixels", true)
+							
+							if self.QD.lines[loc].moneyRange[1] == self.QD.lines[loc].moneyRange[2] then
+								widget.setText(path..".rewardsPixels", self.QD.lines[loc].moneyRange[1])
 							else
-								widget.setItemSlotItem(path..".reward"..count % self.GD.rewardItemSlotCount, {name = reward[1], count = reward[2]})
-								widget.setVisible(path..".reward"..count % self.GD.rewardItemSlotCount, true)
+								widget.setText(path..".rewardsPixels", self.QD.lines[loc].moneyRange[1].." - "..self.QD.lines[loc].moneyRange[2])
 							end
 						end
+						
+						if self.QD.lines[loc].rewards then
+							path = ""
+							for count, reward in ipairs(self.QD.lines[loc].rewards) do
+								if count % self.GD.rewardItemSlotCount == 1 then
+									path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
+									widget.setVisible(path..".reward1", true)
+									widget.setItemSlotItem(path..".reward1", {name = reward[1], count = reward[2]})
+									
+									local textHeigh = widget.getPosition("textScrollArea.questText")
+									textHeigh[2] = textHeigh[2] + self.GD.rewardListItemHeight
+									widget.setPosition("textScrollArea.questText", textHeigh)
+								else
+									widget.setItemSlotItem(path..".reward"..count % self.GD.rewardItemSlotCount, {name = reward[1], count = reward[2]})
+									widget.setVisible(path..".reward"..count % self.GD.rewardItemSlotCount, true)
+								end
+							end
+						end
+						break
 					end
-					break
 				end
 			end
 		end
@@ -355,7 +355,7 @@ function questSelected()
 					widget.setText("questTitle", tostring(config.title))
 					widget.setText("textScrollArea.questText", tostring(config.text))
 					widget.setButtonEnabled("questButton", false)
-				elseif player.canStartQuest(id) then
+				elseif player.canStartQuest(id) or player.hasQuest(id) then
 					widget.setText("questTitle", tostring(config.title))
 					widget.setText("textScrollArea.questText", tostring(config.text))
 					widget.setButtonEnabled("questButton", true)
@@ -391,38 +391,38 @@ function questSelected()
 				end
 				
 				if player.hasCompletedQuest(id) or player.hasQuest(id) or player.canStartQuest(id) then
-					
-					local path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
-					widget.setVisible(path..".rewardsLabel", true)
-					widget.setVisible(path..".rewardsPixelIcon", true)
-					widget.setVisible(path..".rewardsPixels", true)
-					
-					widget.setPosition("textScrollArea.questText", {0, self.GD.rewardListItemHeight})
-					
-					if config.moneyRange then
-						if config.moneyRange[1] == config.moneyRange[2] then
-							widget.setText(path..".rewardsPixels", config.moneyRange[1])
-						else
-							widget.setText(path..".rewardsPixels", config.moneyRange[1].." - "..config.moneyRange[2])
-						end
-					else
-						widget.setText(path..".rewardsPixels", "0")
-					end
-					
-					if config.rewards and config.rewards[1] then
-						path = ""
-						for count, rewardTbl in pairs(config.rewards[1]) do
-							if count % self.GD.rewardItemSlotCount == 1 then
-								path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
-								widget.setVisible(path..".reward1", true)
-								widget.setItemSlotItem(path..".reward1", {name = rewardTbl[1], count = rewardTbl[2]})
-								
-								local textHeigh = widget.getPosition("textScrollArea.questText")
-								textHeigh[2] = textHeigh[2] + self.GD.rewardListItemHeight
-								widget.setPosition("textScrollArea.questText", textHeigh)
+					if (config.moneyRange and config.moneyRange[2] > 0) or (config.rewards and #config.rewards > 0) then
+						local path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
+						widget.setVisible(path..".rewardsLabel", true)
+						
+						widget.setPosition("textScrollArea.questText", {0, self.GD.rewardListItemHeight})
+						
+						if config.moneyRange and config.moneyRange[2] > 0 then
+							widget.setVisible(path..".rewardsPixelIcon", true)
+							widget.setVisible(path..".rewardsPixels", true)
+							
+							if config.moneyRange[1] == config.moneyRange[2] then
+								widget.setText(path..".rewardsPixels", config.moneyRange[1])
 							else
-								widget.setItemSlotItem(path..".reward"..count % self.GD.rewardItemSlotCount, {name = rewardTbl[1], count = rewardTbl[2]})
-								widget.setVisible(path..".reward"..count % self.GD.rewardItemSlotCount, true)
+								widget.setText(path..".rewardsPixels", config.moneyRange[1].." - "..config.moneyRange[2])
+							end
+						end
+						
+						if config.rewards and config.rewards[1] then
+							path = ""
+							for count, rewardTbl in pairs(config.rewards[1]) do
+								if count % self.GD.rewardItemSlotCount == 1 then
+									path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
+									widget.setVisible(path..".reward1", true)
+									widget.setItemSlotItem(path..".reward1", {name = rewardTbl[1], count = rewardTbl[2]})
+									
+									local textHeigh = widget.getPosition("textScrollArea.questText")
+									textHeigh[2] = textHeigh[2] + self.GD.rewardListItemHeight
+									widget.setPosition("textScrollArea.questText", textHeigh)
+								else
+									widget.setItemSlotItem(path..".reward"..count % self.GD.rewardItemSlotCount, {name = rewardTbl[1], count = rewardTbl[2]})
+									widget.setVisible(path..".reward"..count % self.GD.rewardItemSlotCount, true)
+								end
 							end
 						end
 					end
