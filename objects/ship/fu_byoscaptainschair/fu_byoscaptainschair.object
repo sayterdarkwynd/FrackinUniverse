@@ -1,0 +1,56 @@
+{
+  "objectName" : "fu_byoscaptainschair",
+  "colonyTags" : ["misc"],
+  "itemTags" : ["captainschair"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "loungeable",
+
+  "description" : "The Captain sits here to fly the ship.",
+  "shortdescription" : "Captain's Chair",
+  "race" : "generic",
+  "category" : "furniture",
+
+  "apexDescription" : "Ahh... Sweet freedom. I can use the ship's navigator from this chair.",
+  "avianDescription" : "The Captain's chair. That's me! I can use the ship's navigator from this chair.",
+  "floranDescription" : "Best chair on ship. Floran can sit here to ussse navigator and fly ship!",
+  "glitchDescription" : "Excited. Sitting on the Captain's chair allows me to fly this ship. Where to next?",
+  "humanDescription" : "The Captain's chair. The person sitting here decides where the ship goes!",
+  "hylotlDescription" : "Sitting on the Captain's chair allows me to fly this ship.",
+  "novakidDescription" : "The Captain's chair. The guy who sits here decides where the ship goes! That's me!",
+
+  "inventoryIcon" : "fu_byoscaptainschairicon.png",
+  "orientations" : [
+    {
+      "image" : "fu_byoscaptainschair.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left",
+      "sitPosition" : [1.6, 22.5]
+    },
+    {
+      "image" : "fu_byoscaptainschair.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "sitPosition" : [1.6, 22.5]
+    }
+  ],
+  
+  "scripts" : [ "fu_byoscaptainschair.lua" ],
+  "scriptDelta" : 60,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/cockpit/cockpit.config",
+
+  "sitFlipDirection" : false
+}

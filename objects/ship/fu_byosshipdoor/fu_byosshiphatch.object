@@ -1,0 +1,58 @@
+{
+  "objectName" : "fu_byosshiphatch",
+  "colonyTags" : ["door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "A hatch suitable for a spaceship.",
+  "shortdescription" : "Ship Hatch",
+  "race" : "generic",
+
+  "apexDescription" : "Hatch designs like this are common on ships.",
+  "avianDescription" : "A spaceship hatch.",
+  "floranDescription" : "Ssspaceship hatch.",
+  "glitchDescription" : "Informed. A standard ship hatch.",
+  "humanDescription" : "A spaceship hatch.",
+  "hylotlDescription" : "A basic ship hatch.",
+  "novakidDescription" : "A hatch, the type you'd find on a ship.",
+
+  "inventoryIcon" : "fu_byosshiphatchicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_byosshiphatch.png:default",
+      "imagePosition" : [-16, -20],
+      "renderLayer" : "Object+5",
+
+      "spaces" : [ 
+                    [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], 
+                    [-2, -1], [-1, -1], [0, -1], [1, -1], [2, -1]
+      ],
+      "anchors" : [ "left", "right" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "fu_byosshiphatch.png"
+  },
+  "animationPosition" : [-16, -20],
+
+  "inputNodes" : [ [-2, 0] ],
+  "outputNodes" : [ [2, -1] ]
+}

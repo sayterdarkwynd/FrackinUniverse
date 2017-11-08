@@ -1,0 +1,152 @@
+{
+  "objectName" : "fu_smallthruster",
+  "colonyTags" : [],
+  "scannable" : false,
+  "rarity" : "Common",
+  "description" : "A thruster used for non-FTL travel. Increase ship speed.",
+  "shortdescription" : "Small Ship Thruster",
+  "race" : "generic",
+
+  "apexDescription" : "A booster. These have been known to malfunction and explode.",
+  "avianDescription" : "A booster, the wings of a ship.",
+  "floranDescription" : "Ssscary fire.",
+  "glitchDescription" : "Analyse. Temperature too high to measure.",
+  "humanDescription" : "This thing eats through fuel.",
+  "hylotlDescription" : "Propulsion.",
+
+  "category" : "light",
+  "lightColor" : [59, 183, 255],
+  "pointLight" : true,
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+
+  "inventoryIcon" : "fu_smallthrustericon.png",
+  "orientations" : [
+    {
+      "image" : "fu_smallthruster.png:on.1",
+      "imagePosition" : [-11, -21],
+
+      "animationParts" : {
+        "booster" : "fu_smallthruster.png"
+      },
+      "animationPosition" : [-11, -21],
+      "fullbright" : true,
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaces" : [ 
+        [-1, 0], [0, 0], [1, 0],
+        [-1, -1], [0, -1], [1, -1],
+        [-1, -2], [0, -2], [1, -2]
+      ],
+      "anchors" : [ "top" ],
+
+      "touchDamage" : {
+        "poly" : [ [-0.75, 1], [-0.75, 0.5], [1.75, 0.5], [1.75, 1] ],
+        "damage" : 100,
+        "knockback" : 50,
+
+        "damageType" : "Environment",
+        "damageSourceKind" : "plasma"
+      }
+    },
+    {
+      "image" : "fu_smallthruster.png:on.1",
+      "imagePosition" : [-10, -21],
+          
+      "animationParts" : {
+        "booster" : "fu_smallthruster.png"
+      },
+      "animationPosition" : [-10, -21],
+      "fullbright" : true,
+
+      "direction" : "right",
+
+      "spaces" : [ 
+        [-1, 0], [0, 0], [1, 0],
+        [-1, -1], [0, -1], [1, -1],
+        [-1, -2], [0, -2], [1, -2]
+      ],
+      "anchors" : [ "top" ],
+
+      "touchDamage" : {
+        "poly" : [ [-0.75, 1], [-0.75, 0.5], [1.75, 0.5], [1.75, 1] ],
+        "damage" : 100,
+        "knockback" : 50,
+
+        "damageType" : "Environment",
+        "damageSourceKind" : "plasma"
+      }
+    },
+    {
+      "image" : "fu_smallthrusterflip.png:on.1",
+      "imagePosition" : [-11, 1],
+          
+      "animationParts" : {
+        "booster" : "fu_smallthrusterflip.png"
+      },
+      "animationPosition" : [-11, 1],
+      "fullbright" : true,
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaces" : [
+        [-1, 2], [0, 2], [1, 2],
+        [-1, 1], [0, 1], [1, 1],
+        [-1, 0], [0, 0], [1, 0]
+      ],
+      "anchors" : [ "bottom" ],
+
+      "touchDamage" : {
+        "poly" : [ [-0.75, 0], [-0.75, 0.5], [1.75, 0.5], [1.75, 0] ],
+        "damage" : 100,
+        "knockback" : 50,
+
+        "damageType" : "Environment",
+        "damageSourceKind" : "plasma"
+      }
+    },
+    {
+      "image" : "fu_smallthrusterflip.png:on.1",
+      "imagePosition" : [-10, 1],
+          
+      "animationParts" : {
+        "booster" : "fu_smallthrusterflip.png"
+      },
+      "animationPosition" : [-10, 1],
+      "fullbright" : true,
+
+      "direction" : "right",
+
+      "spaces" : [
+        [-1, 2], [0, 2], [1, 2],
+        [-1, 1], [0, 1], [1, 1],
+        [-1, 0], [0, 0], [1, 0]
+      ],
+      "anchors" : [ "bottom" ],
+
+      "touchDamage" : {
+        "poly" : [ [-0.75, 0], [-0.75, 0.5], [1.75, 0.5], [1.75, 0] ],
+        "damage" : 100,
+        "knockback" : 50,
+
+        "damageType" : "Environment",
+        "damageSourceKind" : "plasma"
+      }
+    }
+  ],
+
+  "animation" : "/objects/ship/boosters/boosterflame.animation",
+
+  "soundEffect" : "/sfx/objects/smallboosterflame.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+  
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "shipSpeed" : 1
+  }
+}
