@@ -56,13 +56,31 @@
             "windupState" : "firewindup",
 
             "aimAtTarget" : true,
-            "projectileType" : "sulphurtrollswoosh",
-            "power" : 11,
+            "projectileType" : "energyswoosh",
+            "power" : 20,
             "aimDirection" : [0.7, 0.4],
             "fireOffset" : [2.75, 0.4],
             "projectileCount" : 1,
             "projectileParameters" : {
-              "speed": 25
+              "speed": 25,
+              "statusEffects" : [ "electrified" ],
+              "actionOnReap" : [
+		    {
+		      "action" : "projectile",
+		      "type" : "energyburst",
+		      "fuzzAngle" : 0,
+		      "inheritDamageFactor" : 0,
+		      "angleAdjust" : 0
+		    },              
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 5,
+		      "backgroundRadius" : 0,
+		      "explosiveDamageAmount" : 20,
+		      "harvestLevel" : 99,
+		      "delaySteps" : 2
+		    }              
+              ]
             },
             "fireState" : "charge",
             "fireTime" : 0.6,
@@ -128,11 +146,11 @@
           "parameters" : {
             "minimumRange" : 2,
             "maximumRange" : 12,
-            "maxXRange" : 20,
+            "maxXRange" : 30,
             "windupTime" : 0.3,
             "windupState" : "idle",
 
-            "leapVelocity" : 55,
+            "leapVelocity" : 60,
             "collisionCheck" : true,
             "highArc" : true,
             "leapState" : "jump",
