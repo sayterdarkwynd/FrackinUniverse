@@ -1,0 +1,61 @@
+{
+  "objectName" : "fu_shipcraftingtable",
+  "colonyTags" : ["crafting"],
+  "rarity" : "Essential",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fu_shipcraftingtable.config",
+	"filter" : [ "fu_shipcrafting" ],
+	"initialRecipeUnlocks" : ["fu_ftldrive", "fu_crewbed", "fu_fueltank", "fu_byoscaptainschair", "fu_byosfuelhatch", "fu_byosshipdoor", "fu_byosshiphatch", "fu_byosshiplocker", "fu_byostechstationdeco", "fu_byosteleporterdeco"]
+  },
+  "printable" : false,
+  "description" : "Used to produce ship components.",
+  "shortdescription" : "^orange;Ship Component Assembler^white;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "lightColor" : [179, 103, 62],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+  
+  "inventoryIcon" : "fu_shipcraftingtableicon.png",
+  "orientations" : [
+    {
+      "image" : "fu_shipcraftingtable.png:<frame>",
+      "flipImages" : true,
+      "imagePosition" : [-32, 0],
+      "animationPosition" : [-32, 0],
+      "frames" : 41,
+      "animationCycle" : 4.1,
+
+      "lightPosition" : [1, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "fu_shipcraftingtable.png:<frame>",
+      "imagePosition" : [-32, 0],
+      "animationPosition" : [-32, 0],
+      "frames" : 41,
+      "animationCycle" : 4.1,
+
+      "lightPosition" : [-1, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "fu_shipcraftingtable.animation",
+  "animationParts" : {
+    "bg" : "fu_shipcraftingtable.png",
+    "fg" : "fu_shipcraftingtablefullbright.png"
+  }
+}
