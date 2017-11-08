@@ -1,0 +1,56 @@
+{
+  "objectName" : "fu_byosshipdoor",
+  "colonyTags" : ["door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "A door suitable for a spaceship.",
+  "shortdescription" : "Ship Door",
+  "race" : "generic",
+
+  "apexDescription" : "Doors like this are common on ships.",
+  "avianDescription" : "A spaceship door.",
+  "floranDescription" : "Ssspaceship door.",
+  "glitchDescription" : "Informed. A standard ship door.",
+  "humanDescription" : "A spaceship door.",
+  "hylotlDescription" : "A basic ship door.",
+  "novakidDescription" : "A door, the type you'd find on a ship.",
+
+
+  "inventoryIcon" : "fu_byosshipdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_byosshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "fu_byosshipdoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

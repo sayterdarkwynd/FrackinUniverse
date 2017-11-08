@@ -1,0 +1,73 @@
+{
+  "objectName" : "fu_byosteleporterdeco",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Trusty teleporter, what would we do without you?",
+  "shortdescription" : "Teleporter",
+  "race" : "generic",
+
+  "apexDescription" : "The ship's teleporter. Teleporting feels like riding a rollercoaster at the speed of light.",
+  "avianDescription" : "The teleporter! Teleporting feels like flying.",
+  "floranDescription" : "Ship teleporter. Floran feel confusssed during teleport.",
+  "glitchDescription" : "Smug. A teleporter. I am able to enter a sleep mode during the teleport process.",
+  "humanDescription" : "The teleporter! Teleporting is such a rush.",
+  "hylotlDescription" : "A teleporter. Teleporting feels like diving into the ocean from a mountain top.",
+  "novakidDescription" : "Ship's teleporter. Let's take her for a spin!",
+
+  "category" : "teleporter",
+  "lightColor" : [99, 132, 153],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+
+  "particleEmitter" : {
+    "emissionRate" : 3,
+    "emissionVariance" : 0.5,
+
+    "particle" : {
+      "type" : "ember",
+      "position" : [-0.5, 5],
+      "size" : 1.0,
+      "color" : [64, 190, 255, 255],
+      "light" : [50, 50, 150],
+      "fade" : 0.9,
+      "destructionAction" : "shrink",
+      "destructionTime" : 0.5,
+      "initialVelocity" : [0.0, 0.0],
+      "finalVelocity" : [0.0, 0.0],
+      "approach" : [0, 1],
+      "timeToLive" : 1.5,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0, 5],
+      "finalVelocity" : [0, 1],
+      "position" : [1.5, 0],
+      "size" : 0.5
+    }
+  },
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/shipteleporter.config",
+
+  "soundEffect" : "/sfx/objects/shipengine.ogg",
+  "soundEffectRangeMultiplier" : 1.5,
+
+  "inventoryIcon" : "fu_byosteleportericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_byosteleporter.png:<color>", "fullbright" : true }, { "image" : "fu_byosteleporterlit.png:<color>" } ],
+
+      "imagePosition" : [-32, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [-2, 9], [-1, 9], [0, 9], [1, 9] ]
+    }
+  ]
+}
