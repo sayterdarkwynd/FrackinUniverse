@@ -1,0 +1,42 @@
+{
+  "objectName" : "tinylocker",
+  "colonyTags" : ["storage"],
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+
+  "category" : "storage",
+  "price" : 500,
+  "description" : "A locker with a wide metal door.",
+  "shortdescription" : "Tiny Locker",
+  "printable" : true,
+  "race" : "generic",
+  "health" : 25,
+
+  "apexDescription" : "A storage locker.",
+  "avianDescription" : "A metal box, probably built for storage.",
+  "floranDescription" : "Ssstorage.",
+  "glitchDescription" : "Neutral. A small amount of wall storage.",
+  "humanDescription" : "There's no lock on this locker...",
+  "hylotlDescription" : "Useful storage.",
+  "novakidDescription" : "This locker doesn't actually lock.",
+
+  "inventoryIcon" : "tinylockericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "tinylocker.png:<color>.<key>"}, { "image" : "tinylockerlit.png:<color>.<key>", "fullbright" : true } ],
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+
+  ],
+
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/locker_close.ogg" ],
+  "slotCount" : 64,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}
