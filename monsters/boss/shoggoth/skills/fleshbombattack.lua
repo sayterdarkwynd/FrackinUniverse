@@ -49,7 +49,7 @@ function fleshBombAttack.update(dt, stateData)
       animator.setAnimationState("movement", "idle4")
       
       self.randValNum = math.random(100)
-      if self.randValNum >=50 then
+      if self.randValNum >=80 then
         animator.playSound("attackMain")
       end      
 	  animator.setParticleEmitterOffsetRegion("chargeUp", mcontroller.boundBox())

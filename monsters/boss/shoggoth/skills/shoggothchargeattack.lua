@@ -45,8 +45,8 @@ function shoggothChargeAttack.update(dt, stateData)
       end
       
       self.randValNum = math.random(100)
-      if self.randValNum >=99 then
-        animator.playSound("attackMain")
+      if self.randValNum >=90 then
+        animator.playSound("idleBreath")
       end      
       animator.playSound("shoggothChomp")
       world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 30)

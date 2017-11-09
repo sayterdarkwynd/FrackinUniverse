@@ -48,8 +48,8 @@ function tentacleSwipeAttack.update(dt, stateData)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == config.getParameter("tentacleSwipeAttack.windupTime") then
       	animator.setAnimationState("movement", "swipe") 
+      	
       self.randValNum = math.random(100)
-      
       if self.randValNum >=75 then
         animator.playSound("attackMain")
       end      	

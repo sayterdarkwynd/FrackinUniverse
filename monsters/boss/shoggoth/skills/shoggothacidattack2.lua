@@ -55,8 +55,8 @@ function shoggothAcidAttack2.update(dt, stateData)
       animator.setAnimationState("movement", "idle5")
       
       self.randValNum = math.random(100)
-      if self.randValNum >=50 then
-        animator.playSound("attackMain")
+      if self.randValNum >=80 then
+        animator.playSound("idleBreath")
       end      
 	  animator.setParticleEmitterOffsetRegion("madUp", mcontroller.boundBox())
 	  animator.setParticleEmitterActive("madUp", true)        

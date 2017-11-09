@@ -101,13 +101,13 @@ function damage(args)
   self.soundPlay = math.random(2)
   spit1={ power = 0, speed = 15, timeToLive = 0.2 }
 
-  if (self.randval2) >= 100  and (self.healthLevel) <= 0.80 then
+  if (self.randval2) >= 80  and (self.healthLevel) <= 0.80 then
     animator.playSound("hurt")
   end  
   
   if (self.randval) >= 99  then
     world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
-    if self.randval >=2 then animator.playSound("swoop") end
+    animator.playSound("shoggothChomp")
   end
   
   if (self.randval) >= 99 and (self.healthLevel) <= 0.80 then

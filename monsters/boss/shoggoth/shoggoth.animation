@@ -196,7 +196,7 @@
           "charge" : {
             "frames" : 1,
             "properties" : {
-              "immediateSound" : "/sfx/shoggoth/shoggoth1.ogg",
+              "immediateSound" : "/sfx/shoggoth/shoggothidle1.ogg",
               "particleEmittersOff" : [ "chargeUp", "acidUp" ],
               "particleEmittersOn" : [ "slimeUp" ]
             }
@@ -919,17 +919,80 @@
     }
   },
   "sounds" : {
-    "turnHostile" : [ "/sfx/shoggoth/shoggothhostile.ogg", "/sfx/shoggoth/shoggoth4.ogg", "/sfx/shoggoth/shoggothgreeting.ogg" ],
-    "attackMain" : [ "/sfx/shoggoth/growl.ogg", "/sfx/shoggoth/shoggoth1.ogg", "/sfx/shoggoth/shoggoth2a.ogg", "/sfx/shoggoth/shoggoth3.ogg", "/sfx/shoggoth/shoggoth2.ogg", "/sfx/shoggoth/shoggothaggro.ogg" ],
-    "deathPuff" : [ "/sfx/shoggoth/death.ogg" ],
-    "idleBreath" : [ "/sfx/shoggoth/shoggothbreath.ogg" ],
-    "hurt" : [ "/sfx/shoggoth/growl.ogg", "/sfx/shoggoth/shoggothsqueal.ogg"  ],
-    "swoop" : [ "/sfx/npc/monsters/skill_chargeup2.ogg" ],
-    "spit" : [ "/sfx/projectiles/spit1.ogg","/sfx/projectiles/spit2.ogg"  ],
-    "fleshBomb" : [ "/sfx/projectiles/goo_spit1.ogg","/sfx/projectiles/goo_spit2.ogg"  ],
-    "madnessZone" : [ "/sfx/shoggoth/shoggothcall1.ogg" , "/sfx/shoggoth/shoggothcalllong1.ogg"  ],
-    "squish" : [ "/sfx/shoggoth/shoggothsquish.ogg", "/sfx/projectiles/snowball_impact.ogg", "/sfx/projectiles/tentacle_loop.ogg" ],
-    "giveBirth" : [ "/sfx/npc/boss/spiderboss_shellrestore.ogg" ],
+  
+    "turnHostile" : [ 
+      "/sfx/shoggoth/shoggothaggro.ogg",
+      "/sfx/shoggoth/shoggothaggro2.ogg",
+      "/sfx/shoggoth/shoggothhostile.ogg", 
+      "/sfx/shoggoth/shoggothhostile1.ogg", 
+      "/sfx/shoggoth/shoggothhostile2.ogg", 
+      "/sfx/shoggoth/shoggothgreeting.ogg" 
+    ],
+    
+    "idle" : [
+      "/sfx/shoggoth/shoggothidle1.ogg",
+      "/sfx/shoggoth/shoggothidle2.ogg",
+      "/sfx/shoggoth/shoggothidle3.ogg",
+      "/sfx/shoggoth/shoggothbreath.ogg" 
+    ], 
+    
+    "walk" : [
+      "/sfx/shoggoth/shoggothsquirt.ogg" 
+    ],
+    
+    "attackMain" : [ 
+      "/sfx/shoggoth/shoggothattack1.ogg",
+      "/sfx/shoggoth/shoggothhurt1.ogg",
+      "/sfx/shoggoth/shoggothhurt2.ogg",
+      "/sfx/shoggoth/shoggothhurt3.ogg",
+      "/sfx/shoggoth/shoggothhurt4.ogg"       
+    ],
+
+    "deathPuff" : [ 
+      "/sfx/shoggoth/death.ogg" 
+    ],
+    
+    "idleBreath" : [ 
+        "/sfx/shoggoth/shoggothbreath.ogg",
+        "/sfx/shoggoth/growl2.ogg"
+    ],
+    
+    "hurt" : [ 
+      "/sfx/shoggoth/growl.ogg", 
+      "/sfx/shoggoth/shoggothsqueal.ogg",
+      "/sfx/shoggoth/shoggothhurt.ogg"
+    ],
+    
+    "swoop" : [ 
+      "/sfx/npc/monsters/skill_chargeup2.ogg"
+    ],
+    
+    "spit" : [ 
+      "/sfx/projectiles/spit1.ogg",
+      "/sfx/projectiles/spit2.ogg"  
+    ],
+    
+    "fleshBomb" : [ 
+      "/sfx/projectiles/goo_spit1.ogg",
+      "/sfx/projectiles/goo_spit2.ogg"
+    ],
+    
+    "madnessZone" : [ 
+      "/sfx/shoggoth/shoggothcall1.ogg" , 
+      "/sfx/shoggoth/shoggothcalllong1.ogg"  
+    ],
+    
+    "squish" : [ 
+      "/sfx/shoggoth/shoggothsquish.ogg", 
+      "/sfx/projectiles/snowball_impact.ogg", 
+      "/sfx/projectiles/tentacle_loop.ogg" 
+    ],
+    
+    "giveBirth" : [ 
+      "/sfx/npc/boss/spiderboss_shellrestore.ogg",
+      "/sfx/shoggoth/shoggothbirth.ogg"
+    ],
+    
     "shoggothChomp" : [ "/sfx/melee/bite_robotic1.ogg" ]
   },
   "effects" : {
