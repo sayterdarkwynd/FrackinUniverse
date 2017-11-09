@@ -10,33 +10,47 @@
             "cycle" : 2,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ],         
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp", "whipUp", "madUp"   ],         
               "persistentSound" : "/sfx/shoggoth/shoggothbreath.ogg"
             }  
           },
           "idle2" : {
             "frames" : 16,
             "cycle" : 2,
-            "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "acidUp" ],
+              "particleEmittersOff" : [ "chargeUp", "acidUp", "whipUp", "madUp"  ],
               "particleEmittersOn" : [ "slimeUp" ]
             }  
           },
           "idle3" : {
             "frames" : 16,
-            "cycle" : 2,
-            "mode" : "loop",
+            "cycle" : 0.5,
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp" ],
+              "particleEmittersOff" : [ "chargeUp", "slimeUp", "whipUp", "madUp"  ],
               "particleEmittersOn" : [ "acidUp" ]
             }  
-          },          
+          }, 
+          "idle4" : {
+            "frames" : 16,
+            "cycle" : 1.2,
+            "properties" : {
+              "particleEmittersOff" : [ "slimeUp", "whipUp", "acidUp", "madUp"  ],
+              "particleEmittersOn" : [ "chargeUp" ]
+            }  
+          },  
+          "idle5" : {
+            "frames" : 16,
+            "cycle" : 1.25,
+            "properties" : {
+              "particleEmittersOff" : [ "slimeUp", "whipUp", "acidUp", "chargeUp"  ],
+              "particleEmittersOn" : [ "madUp" ]
+            }  
+          },           
           "jump" : {
             "frames" : 16,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp", "whipUp", "madUp"   ]
             }  
           },
           "walk" : {
@@ -44,7 +58,7 @@
             "cycle" : 1.6,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ],         
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp", "madUp"  ],         
               "persistentSound" : "/sfx/shoggoth/shoggothsquish.ogg"
             }  
           },
@@ -53,7 +67,7 @@
             "cycle" : 0.8,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ],         
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp", "madUp"  ],         
               "persistentSound" : "/sfx/shoggoth/shoggothsquish.ogg"
             }  
           },
@@ -62,7 +76,7 @@
             "cycle" : 1.6,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "slimeUp","acidUp" ],
+              "particleEmittersOff" : [ "slimeUp","acidUp", "whipUp", "madUp"   ],
               "particleEmittersOn" : [ "chargeUp" ]
             }  
           },
@@ -71,7 +85,7 @@
             "cycle" : 1.0,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp", "whipUp", "madUp"   ]
             }  
           },
           "death" : {
@@ -79,21 +93,21 @@
             "cycle" : 2.0,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp", "whipUp", "madUp"   ]
             }  
           },
           "knockback" : {
             "frames" : 16,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp", "whipUp", "madUp"   ]
             }  
           },
           "knockout" : {
             "frames" : 16,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp" ]
+              "particleEmittersOff" : [ "chargeUp", "slimeUp","acidUp", "whipUp", "madUp"   ]
             }  
           },
           "meleewindup" : {
@@ -102,7 +116,7 @@
             "mode" : "transition",
             "transition" : "swipe",
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "acidUp" ],
+              "particleEmittersOff" : [ "chargeUp", "acidUp", "whipUp", "madUp"   ],
               "particleEmittersOn" : [ "slimeUp" ]            
             }
           },          
@@ -110,8 +124,8 @@
             "cycle": 1.6,
             "frames" : 16,
             "properties" : {
-              "particleEmittersOff" : [ "chargeUp", "acidUp" ],
-              "particleEmittersOn" : [ "slimeUp" ]     
+              "particleEmittersOff" : [ "chargeUp", "acidUp", "acidUp", "madUp"   ],
+              "particleEmittersOn" : [ "whipUp"  ]     
             }
           }
         }
@@ -530,22 +544,21 @@
   "particleEmitters" : {
     "damage" : {
       "emissionRate" : 0.7,
-      "particles" : [
-      ]
+      "particles" : []
     },
 
     "chargeUp" : {
-      "emissionRate" : 4,
-      "offsetRegion" : [ -14.0, 20.0, 14.0, 20.0 ],    
+      "emissionRate" : 7,
+      "offsetRegion" : [ -20.0, 20.0, 20.0, 30.0 ],    
       "particles" : [
-        { "particle" : "radioactivefx" },
-        { "particle" : "radioactivefx" },
-        { "particle" : "radiationburndust" },
-        { "particle" : "radiationburndust2" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
         {
           "particle" : {
             "type" : "animated",
-            "animation" : "/animations/energybeamimpact/basicminerimpact.animation",
+            "animation" : "/animations/groundmist/groundmist.animation",
             "size" : 1,
             "angularVelocity" : 35,
             "fade" : 0.7,
@@ -561,67 +574,119 @@
         {
           "particle" : {
             "type" : "animated",
-            "animation" : "/animations/energybeamimpact/hybridminerimpact3.animation",
+            "animation" : "/animations/shadowdrip/shadowdrip2.animation",
             "size" : 1,
-            "angularVelocity" : 35,
-            "fade" : 0.7,
-            "destructionTime" : 1,
+            "angularVelocity" : 60,
+            "fade" : 0.65,
+            "destructionTime" : 0.8,
             "position" : [0, 0],
             "initialVelocity" : [0, 0],
             "finalVelocity" : [0, 0],
             "approach" : [1, 1],
-            "timeToLive" : 0.75,
+            "timeToLive" : 0.7,
             "layer" : "middle"
           }
         }
       ]
-    },  
-    "acidUp" : {
-      "emissionRate" : 4,
-      "offsetRegion" : [ -14.0, 20.0, 14.0, 20.0 ],    
+    }, 
+    "madUp" : {
+      "emissionRate" : 2,
+      "offsetRegion" : [ 0, 5.0, 0, 10.0 ],    
       "particles" : [
-        { "particle" : "shoggothsquirt" },
-        { "particle" : "shoggothsquirt" },
-        { "particle" : "shoggothsquirt" },
-        { "particle" : "shoggothsquirt" },
+        { "particle" : "shadowsmoke" },
+        { "particle" : "shadowsmoke2" },      
+        { "particle" : "peglacitrailpurplelong" },
+        { "particle" : "peglacitrailpurple" },
         {
           "particle" : {
             "type" : "animated",
-            "animation" : "/animations/firecharge/firecharge.animation",
+            "animation" : "/animations/cultcloud/cultcloud.animation",
             "size" : 1,
-            "angularVelocity" : 35,
+            "angularVelocity" : 0,
             "fade" : 1,
-            "destructionTime" : 7,
+            "destructionTime" : 1,
             "position" : [0, 0],
             "initialVelocity" : [0, 0],
             "finalVelocity" : [0, 0],
             "approach" : [1, 1],
-            "timeToLive" : 0.4,
+            "timeToLive" : 1,
             "layer" : "middle"
           }
-        },
+        },        
         {
           "particle" : {
             "type" : "animated",
-            "animation" : "/animations/crystaltrail/crystaltrail.animation",
+            "animation" : "/animations/cultpoof/cultpoof.animation",
             "size" : 1,
-            "angularVelocity" : 35,
+            "angularVelocity" : 0,
             "fade" : 1,
-            "destructionTime" : 7,
+            "destructionTime" : 1,
             "position" : [0, 0],
             "initialVelocity" : [0, 0],
             "finalVelocity" : [0, 0],
             "approach" : [1, 1],
-            "timeToLive" : 0.75,
+            "timeToLive" : 1,
+            "layer" : "middle"
+          }
+        }
+      ]
+    },      
+    "acidUp" : {
+      "emissionRate" : 2,
+      "offsetRegion" : [ 3.0, 8.0, 8.0, 15.0 ],    
+      "particles" : [
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust2" },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "size" : 1,
+            "angularVelocity" : 0,
+            "fade" : 0.7,
+            "destructionTime" : 0.5,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 1,
+            "layer" : "middle"
+          }
+        },        
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisoncharge/poisoncharge.animation",
+            "size" : 1,
+            "angularVelocity" : 0,
+            "fade" : 0.7,
+            "destructionTime" : 0.5,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 1,
             "layer" : "middle"
           }
         }
       ]
     },   
+    "whipUp" : {
+      "emissionRate" : 2,
+      "offsetRegion" : [ 12.0, 4.0, 16.0, 9.0 ],    
+      "particles" : [
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" },
+        { "particle" : "shoggothsquirt" }
+      ]
+    }, 
     
     "slimeUp" : {
-      "emissionRate" : 4,
-      "offsetRegion" : [ -14.0, 20.0, 14.0, 20.0 ],
+      "emissionRate" : 2,
+      "offsetRegion" : [ -3.0, 20.0, 3.0, 20.0 ],
       "particles" : [
         { "particle" : "shoggothsquirt" },
         { "particle" : "shoggothsquirt" },

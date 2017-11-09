@@ -52,7 +52,14 @@ function shoggothAcidAttack2.update(dt, stateData)
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == config.getParameter("shoggothAcidAttack2.windupTime") then
-      animator.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle5")
+      
+      self.randValNum = math.random(100)
+      if self.randValNum >=50 then
+        animator.playSound("attackMain")
+      end      
+	  animator.setParticleEmitterOffsetRegion("madUp", mcontroller.boundBox())
+	  animator.setParticleEmitterActive("madUp", true)        
       end
       stateData.windupTimer = stateData.windupTimer - dt
 
