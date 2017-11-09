@@ -51,6 +51,7 @@ function fleshBombAttack.update(dt, stateData)
       stateData.windupTimer = stateData.windupTimer - dt
     elseif stateData.winddownTimer > 0 then
       if stateData.winddownTimer == config.getParameter("fleshBombAttack.winddownTime") then
+        animator.playSound("fleshBomb")
         fleshBombAttack.bomb(toTarget)
       end
       stateData.winddownTimer = stateData.winddownTimer - dt

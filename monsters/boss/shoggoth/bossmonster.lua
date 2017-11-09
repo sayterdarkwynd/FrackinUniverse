@@ -63,7 +63,6 @@ function update(dt)
 
   if hasTarget() and status.resource("health") > 0 then
     if self.hadTarget == false then
-      
       self.hadTarget = true
     end
     script.setUpdateDelta(1)
@@ -86,6 +85,7 @@ function update(dt)
     if status.resource("health") > 0 then script.setUpdateDelta(10) end
 
     if not self.state.update(dt) then
+            animator.playSound("turnHostile")
       self.state.pickState()
     end
   end
@@ -96,19 +96,31 @@ end
 function damage(args)
   self.tookDamage = true
   self.randval = math.random(100)
+  self.randval2 = math.random(100)
   self.healthLevel = status.resource("health") / status.stat("maxHealth")
+  self.soundPlay = math.random(2)
   spit1={ power = 0, speed = 15, timeToLive = 0.2 }
+
+  if (self.randval2) >= 100  and (self.healthLevel) <= 0.80 then
+    animator.playSound("hurt")
+  end  
   
   if (self.randval) >= 99  then
     world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
+    if self.randval >=2 then animator.playSound("swoop") end
   end
   
   if (self.randval) >= 99 and (self.healthLevel) <= 0.80 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)
+    if self.randval >=2 then animator.playSound("giveBirth") end
   elseif (self.randval) >= 99 and (self.healthLevel) <= 0.65 then
-    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)  
+    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1) 
+    if self.randval >=2 then animator.playSound("giveBirth") end
+    animator.playSound("giveBirth")
   elseif (self.randval) >= 99 and (self.healthLevel) <= 0.50 then
-    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)      
+    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1) 
+    if self.randval >=2 then animator.playSound("giveBirth") end
+    animator.playSound("giveBirth")
   end
   
   if status.resource("health") <= 0 then
@@ -248,6 +260,7 @@ function setPhaseStates(phases)
     end
     if phase.enterPhase then
       table.insert(self.phaseSkills[i], 1, phase.enterPhase)
+      animator.playSound("attackMain")
     end
     self.phaseStates[i] = stateMachine.create(self.phaseSkills[i])
 

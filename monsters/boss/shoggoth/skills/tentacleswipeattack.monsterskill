@@ -19,7 +19,13 @@
           "power" : 50,
           "speed" : 20,
           "timeToLive" : 0.2,
-          "actionOnReap" : [
+          "statusEffects" : [],
+          
+          "actionOnReap" : [ 
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/melee/lash_kill_organic.ogg" ]
+	    },            
 	    {
 	      "action" : "explosion",
 	      "foregroundRadius" : 6,

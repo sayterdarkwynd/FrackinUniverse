@@ -59,6 +59,7 @@ function shoggothAcidAttack2.update(dt, stateData)
     -- additional step here: iterate through three spits first
     elseif stateData.attacksLeft > 0 then
       if stateData.periodTimer < 0 then
+        animator.playSound("madnessZone")
         shoggothAcidAttack2.spit(toTarget)
         stateData.periodTimer = 1
         stateData.attacksLeft = stateData.attacksLeft - 1
