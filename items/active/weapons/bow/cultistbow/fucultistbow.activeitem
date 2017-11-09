@@ -1,0 +1,65 @@
+{
+  "itemName" : "fucultistbow",
+  "level" : 4,
+  "price" : 450,
+  "inventoryIcon" : "fucultistbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "tooltipKind" : "bow2",
+  "weaponType" : "Bow",
+  "description" : "Because who doesn't want a bow that can aim with its own eye?",
+  "shortdescription" : "Cultist Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "upgradeableWeapon"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "fucultistbowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "physical",
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "poisonBowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "cultisarrow",
+    "powerProjectileType" : "chargedironarrow",
+    "projectileParameters" : {
+      "power" : 8.65
+    }
+  },
+
+  "altAbilityType" : "zenshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "cultisarrow",
+    "projectileParameters" : {
+      "power" : 8.125,
+      "actionOnReap" : []
+    },
+    "splitDelay" : 0.2,
+    "splitAngle" : 2
+  },
+  
+  "critChance" : 7,
+  "critBonus" : 4, 
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

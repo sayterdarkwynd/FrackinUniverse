@@ -1,0 +1,43 @@
+{
+  "itemName" : "fucultistshortsword",
+  "price" : 500,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Finely made from...flesh and other gross crap.
+^cyan;Inflicts bleeding",
+  "shortdescription" : "Cultist Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "fucultistshortsword.png",
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fucultistshortsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  
+  
+  "primaryAbilityType" : "shortswordcombo2",
+  "primaryAbility" : {
+    "fireTime" : 0.63,
+    "baseDps" : 7,
+    "damageConfig" : {
+      "statusEffects" : [ "bleedingshort" ]
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 1,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}
