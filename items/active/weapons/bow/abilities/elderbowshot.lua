@@ -1,4 +1,5 @@
 require "/scripts/vec2.lua"
+require "/items/active/weapons/crits.lua"
 
 -- Bow primary ability
 BowShot = WeaponAbility:new()
@@ -6,8 +7,6 @@ BowShot = WeaponAbility:new()
 function BowShot:init()
   storage.projectiles = storage.projectiles or {}
 
-  self.critChance = config.getParameter("critChance", 0)
-  self.critBonus = config.getParameter("critBonus", 0)
   self.energyPerShot = self.energyPerShot or 0
 
   self.drawTime = 0
@@ -19,61 +18,6 @@ function BowShot:init()
     self:reset()
   end
 end
-
-
-  -- *******************************************************
-  -- FU Crit Damage Script
-
-function BowShot:setCritDamage(damage)
-	if not self.critChance then
-		self.critChance = config.getParameter("critChance", 0)
-	end
-	if not self.critBonus then
-		self.critBonus = config.getParameter("critBonus", 0)
-	end
-     -- check their equipped weapon
-     -- Primary hand, or single-hand equip
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     --used for checking dual-wield setups
-     local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")
-     local weaponModifier = config.getParameter("critChance",0)
-
-  if heldItem then
-      if root.itemHasTag(heldItem, "bow") then
-        self.critChance = 0.25 + weaponModifier
-      elseif root.itemHasTag(heldItem, "crossbow") then
-        self.critChance = 0.25 + weaponModifier
-      end
-  end
-    --sb.logInfo("crit chance base="..self.critChance)
-
-  --critBonus is bonus damage done with crits
-  self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0
-  -- this next modifier only applies if they have a multiply item equipped
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)+ status.stat("critChanceMultiplier",0) + status.stat("critChance",0))
-  -- random dice roll. I've heavily lowered the chances, as it was far too high by nature of the random roll.
-  self.critRoll = math.random(200)
-
-  --apply the crit
-
-  local crit = self.critRoll <= self.critChance
-    --sb.logInfo("crit roll="..self.critRoll)
-  damage = crit and (damage*2) + self.critBonus or damage
-
-  if crit then
-    if heldItem then
-      -- exclude mining lasers
-      if not root.itemHasTag(heldItem, "mininggun") then
-        status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
-      end
-    end
-  end
-
-  return damage
-end
-  -- *******************************************************
-
-
 
 function BowShot:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
@@ -162,7 +106,7 @@ function BowShot:currentProjectileParameters()
   projectileParameters.speed = projectileParameters.speed * root.evalFunction(self.drawSpeedMultiplier, self.drawTime)
   projectileParameters.power = projectileParameters.power or projectileConfig.power
   --projectileParameters.power = projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime) + BowShot:setCritDamage(damage)
-  projectileParameters.power = BowShot:setCritDamage( projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime))
+  projectileParameters.power = Crits.setCritDamage(self, projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime))
   projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
 
   return projectileParameters
