@@ -1,3 +1,4 @@
+require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
 
 function byos()
@@ -8,6 +9,15 @@ function byos()
 end
 
 function racial()
+	local teleporters = world.entityQuery(world.entityPosition(player.id()), 100, {includedTypes = {"object"}})
+    teleporters = util.filter(teleporters, function(entityId)
+		if string.find(world.entityName(entityId), "teleporterTier0") then
+			return true
+		end
+    end)
+    if #teleporters > 0 then
+		player.lounge(teleporters[1])
+    end
 	player.upgradeShip({shipLevel = 1})
 end
 
