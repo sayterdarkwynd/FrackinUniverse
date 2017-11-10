@@ -1,6 +1,6 @@
 function init()
-  status.removeEphemeralEffect("partytime5")
   status.removeEphemeralEffect("partytime4")
+  status.removeEphemeralEffect("partytime3")  
   status.removeEphemeralEffect("partytime2")
   self.timers = {}
   for i = 1, 4 do
@@ -36,7 +36,7 @@ function update(dt)
   
   if (self.songTimer)< 1 then
     animator.playSound("dancemusic")
-    self.songTimer = 11.07
+    self.songTimer = 60
   end 
 
   self.varColorMain = math.random(1,5)
@@ -71,5 +71,5 @@ function update(dt)
 end
 
 function uninit()
-  animator.stopAllSounds("dancemusic")
+  
 end
