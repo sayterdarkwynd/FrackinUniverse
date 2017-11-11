@@ -30,8 +30,7 @@ function update(dt)
 	  effect.expire() 
 	end  
 	
-	if world.entityType(entity.id()) ~= "player" then
-		status.removeEphemeralEffect("insanityblurstat")
+	if world.entityType(entity.id()) == "player" then
 		status.addEphemeralEffect( "insanityblurstat")	
 	end	
 
