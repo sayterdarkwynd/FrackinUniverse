@@ -1,0 +1,31 @@
+{
+  "id" : "fu_byosftldrive",
+  "prerequisites" : [ "fu_byosshipcraftingtable" ],
+  "title" : "Space Travel",
+  "text" : "To travel through space I need to build a new ^orange;FTL Drive^reset;. Maybe someone who can repair ships can give me the erchius crystals I need.",
+  "completionText" : "All I need to do is place the ^orange;FTL Drive^reset; and I can travel through space.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "player",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "player",
+      "questComplete" : "player"
+    },
+    
+    "requireTurnIn" : false,
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_ftldrive",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
