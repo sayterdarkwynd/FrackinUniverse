@@ -12,19 +12,37 @@
           "idle" : {
             "frames" : 1,
             "mode" : "loop",
-            "cycle" : 1
+            "cycle" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "webshot" ]
+            }  
           },
           "fly" : {
             "frames" : 8,
             "mode" : "loop",
-            "cycle" : 1
+            "cycle" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "webshot" ]
+            }  
           },
-		  "fire" : {
+	  "fire" : {
             "frames" : 1,
             "cycle" : 0.25,
             "mode" : "transition",
-            "transition" : "idle"
-          }
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOff" : [ "webshot" ]
+            }  
+          },
+	  "fire2" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOn" : [ "webshot" ]
+            }  
+          }          
         }
       },
 	  
@@ -80,11 +98,16 @@
                 "image" : "<partImage>:fly.<frame>"
               }
             },
-			"fire" : {
+	    "fire" : {
               "properties" : {
                 "image" : "<partImage>:fire.<frame>"
               }
             },
+	    "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },            
             "damage" : {
               "stunned" : {
                 "properties" : {
@@ -126,6 +149,12 @@
   "lights" : { },
 
   "particleEmitters" : {
+    "webshot" : {
+      "emissionRate" : 0.5,
+      "particles" : [
+        { "particle" : "webstickparticle" }
+      ]
+    },  
     "deathPoof" : {
       "particles" : [
         { "particle" : "deathfizz1left" },
