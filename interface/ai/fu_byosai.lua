@@ -4,7 +4,7 @@ require "/scripts/pathutil.lua"
 function byos()
 	player.startQuest("fu_byos")
 	player.startQuest("fu_shipupgrades")
-	player.giveBlueprint("fu_shipcraftingtable")
+	--player.giveBlueprint("fu_shipcraftingtable")   deprecated. matter assembler does this now.
 	world.sendEntityMessage("bootup", "byos", race())
 end
 
