@@ -1,6 +1,6 @@
 {
   "type" : "fuwastelandraider",
-  "baseType" : "hostilefuhard",
+  "baseType" : "hostilefu",
 
   "levelVariance" : [1, 2],
 
@@ -8,11 +8,11 @@
 
   "scriptConfig" : {
     "behaviorConfig" : {
-      "leapWindup" : 0.55,
+      "leapWindup" : 0.45,
       "rangedAimTime" : 0.2,
-      "rangedWindupTime" : 0.01,
+      "rangedWindupTime" : 0.55,
       "rangedMinFireTime": 0.15,
-      "rangedMaxFireTime": 5      
+      "rangedMaxFireTime": 2     
     }  
   },
   
@@ -20,9 +20,9 @@
     "override" : [
       [0, [
           {
-            "head" : [ { "name" : "fureconhead" } ],
-            "chest" : [ { "name" : "fureconchest" } ],
-            "legs" : [ { "name" : "fureconpants" } ],
+            "head" : [ { "name" : "wastelandhead2" } ],
+            "chest" : [ { "name" : "wastelandchest2" } ],
+            "legs" : [ { "name" : "wastelandlegs2" } ],
             "primary" : [
               "crankpistol",
               "laspistol",
@@ -41,12 +41,12 @@
             "legs" : [ { "name" : "chitinlegs", "parameters" : { "colorIndex" : 2 } } ],
             "primary" : [
               "murdermanipulator",
-              "lunariscythe",
+              "tungstenmace",
               "zerchesiumspear",
               "furaregreataxe"
             ],
             "alt" : [
-             "murdermanipulator"
+             "flashlight"
             ]
           },
           {
@@ -57,8 +57,8 @@
               "durasteelshotgun",
               "crankgun",
               "fuminelayer",
-              "quantummace",
-              "crystallineblade"
+              "durasteelmace",
+              "facebreaker"
             ]
           },
           {
@@ -73,9 +73,9 @@
             ]
           },
           {
-            "head" : [ { "name" : "enforcerhead" } ],
-            "chest" : [ { "name" : "enforcerchest", "parameters" : { "colorIndex" : 2 } } ],
-            "legs" : [ { "name" : "enforcerpants", "parameters" : { "colorIndex" : 2 } } ],
+            "head" : [ { "name" : "wastelandhead" } ],
+            "chest" : [ { "name" : "wastelandchest" } ],
+            "legs" : [ { "name" : "wastelandlegs" } ],
             "primary" : [
               "longarm",
               "crankpistol",
@@ -83,21 +83,20 @@
               "carbonkatana"
             ],
             "alt" : [
-              "flashlight",
-              "carbonkatana" 
+              "flashlight"
             ]
           },
           {
-            "head" : [ { "name" : "fuintrepidhead" } ],
-            "chest" : [ { "name" : "fuintrepidchest", "parameters" : { "colorIndex" : 1 } } ],
-            "legs" : [ { "name" : "fuintrepidpants", "parameters" : { "colorIndex" : 1 } } ],
+            "head" : [ { "name" : "rusthead2" } ],
+            "chest" : [ { "name" : "rustchest2" } ],
+            "legs" : [ { "name" : "rustlegs2" } ],
             "primary" : [
               "metallichammer",
-              "carbonkatana",
-              "effigiumbroadsword"
+              "metalliccleaver",
+              "metallicsword"
             ],
             "alt" : [
-              "randomharpoongun" 
+              "flashlight" 
             ]            
           },
           {
@@ -107,7 +106,7 @@
             "primary" : [
               "ionrifle",
               "fusteampunkgun",
-              "effigiumbroadsword"
+              "metallicspear"
             ]
           },
           {
@@ -121,34 +120,21 @@
             ]
           },
           {
-            "head" : [ { "name" : "irradiumhelm" } ],
-            "chest" : [ { "name" : "irradiumchest" } ],
-            "legs" : [ { "name" : "irradiumlegs" } ],
+            "head" : [ { "name" : "deckardhead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "deckardchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "deckardpants", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
+              "metallicsword",
+              "metallicspear",            
               "fusteampunkgun", 
               "curvepistol",
               "advalloykatana"
-            ],
-            "alt" : [
-              "irradiumspear",
-              "advalloykatana"
-            ]            
+            ]           
           },
           {
-            "head" : [ { "name" : "ff_slimehead" } ],
-            "chest" : [ { "name" : "ff_slimechest" } ],
-            "legs" : [ { "name" : "ff_slimelegs" } ],
-            "primary" : [
-              "slimelauncher",
-              "veilbreaker",
-              "irradiumspear",
-              "solarisword"
-            ]
-          },
-          {
-            "head" : [ { "name" : "tw_spacesuithead" } ],
-            "chest" : [ { "name" : "tw_spacesuitchest" } ],
-            "legs" : [ { "name" : "tw_spacesuitlegs" } ],
+            "head" : [ { "name" : "wastelandhead" } ],
+            "chest" : [ { "name" : "wastelandchest" } ],
+            "legs" : [ { "name" : "wastelandlegs" } ],
             "primary" : [
               "slimelauncher",
               "k3rifle",
@@ -157,22 +143,21 @@
             ]
           },
           {
-            "head" : [ { "name" : "tacticalhead" } ],
-            "chest" : [ { "name" : "tacticalchest" } ],
-            "legs" : [ { "name" : "tacticalpants" } ],
+            "head" : [ { "name" : "wastelandhead2" } ],
+            "chest" : [ { "name" : "wastelandchest2" } ],
+            "legs" : [ { "name" : "wastelandlegs2" } ],
             "primary" : [
+              "fustingergun",
               "biogun",
               "aegisaltpistol3",
               "ff_icechucker",
-              "longarmpistol"
-            ],
-            "alt" : [
-              "fustingergun", 
+              "longarmpistol",
+              "fualienlaser",
               "carvelle",
               "fugausspistol",
-              "fualienlaser",
-              "longarmpistol"
-            ]            
+               "copperquarterstaff",
+               "curvestaff"              
+            ]         
           }
         ] ]
     ]
@@ -184,7 +169,7 @@
         "baseValue" : 70.0
       },
       "maxEnergy" : {
-        "baseValue" : 100.0
+        "baseValue" : 70.0
       },      
       "powerMultiplier" : {
         "baseValue" : 0.65
