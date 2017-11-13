@@ -18,10 +18,29 @@
   "novakidDescription" : "A door, the type you'd find on a ship.",
 
 
-  "inventoryIcon" : "fu_byosshipdooricon.png",
+  "inventoryIcon" : "/objects/ship/apexshipdoor/apexshipdooricon.png",
+  "placementImage" : "/objects/ship/apexshipdoor/apexshipdoor.png:default",
+  "placementImagePosition" : [-20, 0],
   "orientations" : [
     {
-      "dualImage" : "fu_byosshipdoor.png:default",
+      "dualImage" : "/objects/ship/fu_byosshipdoor/fu_byosshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+	  "spaces" : [
+	  [-1,2], [0,4],
+	  [-1,2], [0,3],
+	  [-1,2], [0,2],
+	  [-1,1], [0,1],
+	  [-1,0], [0,0]
+	  ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "dualImage" : "/objects/ship/apexshipdoor/apexshipdoor.png:default",
       "imagePosition" : [-20, 0],
       "renderLayer" : "Object+5",
 
@@ -30,8 +49,9 @@
     }
   ],
 
-  "scripts" : [ "/objects/wired/door/door.lua" ],
-  "scriptDelta" : 5,
+  "scripts" : [ "fu_byosshipdoor.lua", "/objects/ship/fu_byosobjectdeath.lua" ],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
 
   "animation" : "/objects/wired/door/door.animation",
   "animationCustom" : {
@@ -54,5 +74,6 @@
   "inputNodes" : [ [-1, 4] ],
   "outputNodes" : [ [0, 0] ],
   "racialiserType" : "shipdoor",
-  "retainObjectParametersInItem" : true
+  "retainObjectParametersInItem" : true,
+  "doorState" : "close"
 }

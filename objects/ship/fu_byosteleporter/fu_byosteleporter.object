@@ -4,7 +4,7 @@
   "printable" : false,
   "rarity" : "Common",
   "description" : "Trusty teleporter, what would we do without you? Sets your ship spawn.",
-  "shortdescription" : "Teleporter (spawn)",
+  "shortdescription" : "Spawn Teleporter",
   "race" : "generic",
 
   "apexDescription" : "The ship's teleporter. Teleporting feels like riding a rollercoaster at the speed of light.",
@@ -55,10 +55,38 @@
   "soundEffect" : "/sfx/objects/shipengine.ogg",
   "soundEffectRangeMultiplier" : 1.5,
 
-  "inventoryIcon" : "fu_byosteleportericon.png",
+  "inventoryIcon" : "/objects/ship/teleporter/teleportericon.png",
+  "placementImage" : "/objects/ship/teleporter/teleporter.png:default",
+  "placementImagePosition" : [-32, 0],
   "orientations" : [
     {
-      "imageLayers" : [ { "image" : "fu_byosteleporter.png:<color>", "fullbright" : true }, { "image" : "fu_byosteleporterlit.png:<color>" } ],
+      "imageLayers" : [ { "image" : "/objects/ship/fu_byosteleporter/fu_byosteleporter.png:<color>", "fullbright" : true }, { "image" : "/objects/ship/fu_byosteleporter/fu_byosteleporterlit.png:<color>" } ],
+
+      "imagePosition" : [-32, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [-2, 9], [-1, 9], [0, 9], [1, 9] ],
+	  "spaces" : [
+	    [-4, 9], [-3, 9], [-2, 9], [-1, 9], [0, 9], [1, 9], [2, 9], [3, 9],
+	    [-4, 8], [-3, 8], [-2, 8], [-1, 8], [0, 8], [1, 8], [2, 8], [3, 8],
+	    [-4, 7], [-3, 7], [-2, 7], [-1, 7], [0, 7], [1, 7], [2, 7], [3, 7],
+		[-4, 6], [-3, 6], [-2, 6], [-1, 6], [0, 6], [1, 6], [2, 6], [3, 6],
+	    [-4, 5], [-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5], [3, 5],
+	    [-4, 4], [-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4], [3, 4],
+	    [-4, 3], [-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3], [3, 3],
+	    [-4, 2], [-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2], [3, 2],
+	    [-4, 1], [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1], [3, 1],
+	    [-4, 0], [-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], [3, 0]
+	  ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/teleporter/teleporter.png:<color>", "fullbright" : true }, { "image" : "/objects/ship/teleporter/teleporterlit.png:<color>" } ],
 
       "imagePosition" : [-32, 0],
       "frames" : 1,
@@ -71,7 +99,9 @@
     }
   ],
   
-  "scripts" : [ "fu_byosteleporter.lua" ],
+  "scripts" : [ "fu_byosteleporter.lua", "/objects/ship/fu_byosobjectdeath.lua" ],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
   "racialiserType" : "teleporter",
   "retainObjectParametersInItem" : true
 }

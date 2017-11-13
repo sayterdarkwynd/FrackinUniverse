@@ -17,10 +17,25 @@
   "hylotlDescription" : "A basic ship hatch.",
   "novakidDescription" : "A hatch, the type you'd find on a ship.",
 
-  "inventoryIcon" : "fu_byosshiphatchicon.png",
+  "inventoryIcon" : "/objects/ship/apexshipdoor/apexshiphatchicon.png",
+  "placementImage" : "/objects/ship/apexshipdoor/apexshiphatch.png:default",
+  "placementImagePosition" : [-16, -20],
   "orientations" : [
     {
-      "dualImage" : "fu_byosshiphatch.png:default",
+      "dualImage" : "/objects/ship/fu_byosshipdoor/fu_byosshiphatch.png:default",
+      "imagePosition" : [-16, -20],
+      "renderLayer" : "Object+5",
+
+      "spaces" : [ 
+                    [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], 
+                    [-2, -1], [-1, -1], [0, -1], [1, -1], [2, -1]
+      ],
+      "anchors" : [ "left", "right" ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "dualImage" : "/objects/ship/apexshipdoor/apexshiphatch.png:default",
       "imagePosition" : [-16, -20],
       "renderLayer" : "Object+5",
 
@@ -32,8 +47,9 @@
     }
   ],
 
-  "scripts" : [ "/objects/wired/door/door.lua" ],
-  "scriptDelta" : 5,
+  "scripts" : [ "fu_byosshipdoor.lua", "/objects/ship/fu_byosobjectdeath.lua" ],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
 
   "animation" : "/objects/wired/door/door.animation",
   "animationCustom" : {
@@ -56,5 +72,6 @@
   "inputNodes" : [ [-2, 0] ],
   "outputNodes" : [ [2, -1] ],
   "racialiserType" : "shiphatch",
-  "retainObjectParametersInItem" : true
+  "retainObjectParametersInItem" : true,
+  "doorState" : "close"
 }
