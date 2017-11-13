@@ -16,7 +16,3 @@ function update()
 		world.setProperty("fu_byos.inWarp", false)
 	end
 end
-
-function die()
-	storage.watchBox = nil
-end
