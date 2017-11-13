@@ -1,0 +1,90 @@
+{
+  "itemName" : "crankrifle",
+  "price" : 120,
+  "inventoryIcon" : "crankrepeater_sacre.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Rusty nails can -only- equal happy smiles.
+^yellow;Inflicts bleeding^reset;",
+  "shortdescription" : "Grinder",
+  "category" : "assaultRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Assault Rifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "crankrepeater_sacre.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },
+  "animationCustom" : { 
+    "sounds" : { "fire" : [ "/sfx/weapons/nailgun.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [55, 55, 84] } } 
+  },
+
+  "baseOffset" : [0.9, 0.4],
+  "muzzleOffset" : [2.5, 0.22],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.1,
+    "baseDps" : 10,
+    "energyUsage" : 32.5,
+    "inaccuracy" : 0.034,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+    "projectileType" : "rustynail",
+
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.01,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+
+  "critChance" : 2,
+  "critBonus" : 9,
+  "altAbilityType" : "explosiveburst",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

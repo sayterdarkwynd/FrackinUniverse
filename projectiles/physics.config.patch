@@ -21,6 +21,29 @@
    }
  },
  
+ { 
+  "op" : "add",
+  "path" : "/nailgun",
+  "value" : 
+   {
+      "mass" : 0.6,
+      "gravityMultiplier" : 0.12,
+      "bounceFactor" : 0.5,
+      "stopOnFirstBounce" : true,
+      "maxMovementPerStep" : 0.4,
+      "stickyCollision" : true,
+      "stickyForce" : 20.0,      
+      "groundSlideMovementEnabled" : true,
+      "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+      "ignorePlatformCollision" : true,
+  
+      "airFriction" : 0.05,
+      "liquidFriction" : 6.0,
+      "groundFriction" : 8.0,
+      "maximumCorrection" : 0.25
+   }
+ },
+
   {"op":"add","path":"/floatydeath","value":{
     "mass" : 0.0,
     "gravityMultiplier" : -0.05,

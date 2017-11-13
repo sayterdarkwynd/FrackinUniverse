@@ -1,0 +1,79 @@
+{
+  "itemName" : "crankpistol",
+  "price" : 100,
+  "inventoryIcon" : "crankpistol_sacre.png",
+    "maxStack" : 1,
+    "rarity" : "uncommon",
+  "description" : "Rusty nail pistol! Super fun!
+^yellow;Inflicts bleeding^reset;",
+  "shortdescription" : "Crank Pistol",
+  "level" : 4,
+  "category" : "pistol",
+  "itemTags" : [ "weapon","ranged","pistol","upgradeableWeapon" ],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "crankpistol_sacre.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/nailgun.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [55, 55, 84] } }  
+  },
+
+  "baseOffset" : [0.5, 0.34],
+  "muzzleOffset" : [1.3, 0.3],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1,
+    "baseDps" : 5.7,
+    "energyUsage" : 20,
+    "fireType" : "auto",
+    "inaccuracy" : 0.001,
+    "projectileCount" : 1,
+    "projectileType" : "rustynail",
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 3, 
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
