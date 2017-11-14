@@ -137,7 +137,7 @@ end
 
 function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, secondaryColorIndex)
   local params = {
-    parts = {},
+    parts = {hornName = (itemSet.horn and itemSet.horn.name)},
     partDirectives = {},
     partImages = {},
     animationCustom = {},
