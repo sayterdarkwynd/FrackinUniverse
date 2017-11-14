@@ -11,6 +11,9 @@ function init()
 	else
 		self.image = self.imageconfig[1].dualImage or self.imageconfig[1].image
 	end
+	if config.getParameter("imageFlipped") then
+		self.image = self.image .. "?flipx"
+	end
 	self.imageLayers = self.imageconfig[1].imageLayers
 	imageSize = root.imageSize(self.image:gsub("<frame>", 1):gsub("<color>", "default"):gsub("<key>", 1))
 	imageOffset = self.imageconfig[1].imagePosition
