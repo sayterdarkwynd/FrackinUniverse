@@ -12,8 +12,10 @@ function init()
 		world.breakObject(world.objectAt(vec2.add(position, {-20,-2})), true)
 		world.breakObject(world.objectAt(vec2.add(position, {16,-2})), true)
 		world.breakObject(world.objectAt(vec2.add(position, {19,1})), true)
+		world.breakObject(world.objectAt(vec2.add(position, {23,-2})), true)
 		world.breakObject(world.objectAt(vec2.add(position, {4,7})), true)
 		world.breakObject(world.objectAt(vec2.add(position, {11,7})), true)
+		world.breakObject(world.objectAt(vec2.add(position, {19,2})), true)
 		world.breakObject(world.objectAt(vec2.add(position, {-3,7})), true)
 		world.breakObject(world.objectAt(vec2.add(position, {-10,7})), true)
 		baseStats = config.getParameter("baseStats")
@@ -29,13 +31,21 @@ end
 function update(dt)
 	if byos then
 		if counter == 1 then
-			world.placeObject("fu_byostechstation", vec2.add(position, {11,0}), _, {shipPetType = getNewParameters(true, _).shipPetType})
-			world.placeObject("fu_byosshiplocker", vec2.add(position, {-10,0}), _, {treasurePools = getNewParameters(_, true).treasurePools})
-			world.placeObject("fu_byosteleporter", vec2.add(position, {-20,-2}))
-			world.placeObject("fu_byosshipdoor", vec2.add(position, {16,-2}))
-			world.placeObject("fu_byosfuelhatch", vec2.add(position, {19,1}))
+			parameters = getBYOSParameters("techstation", true, _)
+			world.placeObject("fu_byostechstation", vec2.add(position, {11,0}), _, {shipPetType = parameters.shipPetType, inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription, dialog = parameters.dialog})
+			parameters = getBYOSParameters("shiplocker", _, true)
+			world.placeObject("fu_byosshiplocker", vec2.add(position, {-10,0}), _, {treasurePools = parameters.treasurePools, inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription})
+			parameters = getBYOSParameters("teleporter")
+			world.placeObject("fu_byosteleporter", vec2.add(position, {-20,-2}), _, {inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription})
+			parameters = getBYOSParameters("shipdoor")
+			world.placeObject("fu_byosshipdoor", vec2.add(position, {16,-2}), _, {inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription})
+			parameters = getBYOSParameters("fuelhatch")
+			world.placeObject("fu_byosfuelhatch", vec2.add(position, {19,1}), _, {inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription})
+			parameters = getBYOSParameters("captainschair")
+			world.placeObject("fu_byoscaptainschair", vec2.add(position, {23,-2}), _, {inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription, sitFlipDirection = parameters.sitFlipDirection})
 			world.placeObject("apexshiplight", vec2.add(position, {4,7}))
 			world.placeObject("apexshiplight", vec2.add(position, {11,7}))
+			world.placeObject("apexshiplight", vec2.add(position, {19,2}))
 			world.placeObject("apexshiplight", vec2.add(position, {-3,7}))
 			world.placeObject("apexshiplight", vec2.add(position, {-10,7}))
 			object.smash(true)
@@ -51,5 +61,5 @@ function racialiserBootUp()
 			return num
 		end
 	end
-	return 5
+	return 1
 end

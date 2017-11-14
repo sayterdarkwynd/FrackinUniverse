@@ -30,24 +30,18 @@ end
 
 function reload()
 	if itemType then
-		for num, info in pairs (raceInfo) do
-			if num == count then
-				for key, value in pairs (info) do
-					if key == itemType then
-						if itemType == "pet" then
-							if value.unique and root.itemConfig(info.techstation.name) then
-								widget.setText("lblText", info.petName)
-								return nil
-							end
-						elseif value.unique and root.itemConfig(value.name) then
-							widget.setText("lblText", info.name)
-							return value
-						end
-					end
+		info = raceInfo[count]
+		value = info[itemType]
+			if itemType == "pet" then
+				if value.unique and root.itemConfig(info.techstation.name) then
+					widget.setText("lblText", info.petName)
+					return nil
 				end
-				changeRace()
+			elseif value.unique and root.itemConfig(value.name) then
+				widget.setText("lblText", info.name)
+				return value
 			end
-		end
+		changeRace()
 	end
 	widget.setText("lblText", "")
 end
@@ -81,30 +75,79 @@ end
 
 function getNewParameters(pet, treasure)
 	itemConfig = root.itemConfig(itemNew)
+	info = raceInfo[count]
 	newParameters = {}
 	if itemConfig then
+		if item then
+			shortDescriptionNew = item.config.shortdescription .. " (" .. info.name .. ")"
+			newParameters = util.mergeTable(newParameters, {shortdescription = shortDescriptionNew})
+		end
 		inventoryIconNew = itemConfig.directory .. itemConfig.config.inventoryIcon
 		newParameters = util.mergeTable(newParameters, {inventoryIcon = inventoryIconNew})
-		orientationsNew = itemConfig.config.orientations
-		newParameters = util.mergeTable(newParameters, {orientations = orientationsNew})
+		orientationsNew, placementImageNew, placementImagePositionNew = getNewOrientations()
+		newParameters = util.mergeTable(newParameters, {imageConfig = orientationsNew, placementImage = placementImageNew, placementImagePosition = placementImagePositionNew})
+		sitFlipDirectionNew = itemConfig.config.sitFlipDirection
+		newParameters = util.mergeTable(newParameters, {sitFlipDirection = sitFlipDirectionNew})
+		dialogNew = itemConfig.config.dialog
+		newParameters = util.mergeTable(newParameters, {dialog = dialogNew})
 	end
 	if pet then
-		for num, info in pairs (raceInfo) do
-			if num == count then
-				newPet = info.pet.name
-				break
-			end
+		if not itemConfig and item then
+			shortDescriptionNew = item.config.shortdescription .. " (" .. info.petName .. ")"
+			newParameters = util.mergeTable(newParameters, {shortdescription = shortDescriptionNew})
 		end
-		newParameters = util.mergeTable(newParameters, {shipPetType = newPet})
+		petNew = info.pet.name
+		newParameters = util.mergeTable(newParameters, {shipPetType = petNew})
 	end
 	if treasure then
-		for num, info in pairs (raceInfo) do
-			if num == count then
-				newTreasurePools = info.starterTreasure.name
-				break
-			end
-		end
-		newParameters = util.mergeTable(newParameters, {treasurePools = {newTreasurePools}})
+		treasurePoolsNew = info.starterTreasure.name
+		newParameters = util.mergeTable(newParameters, {treasurePools = {treasurePoolsNew}})
 	end
 	return newParameters
+end
+
+function getNewOrientations()
+	newPlacementImage = nil
+	newOrientations = itemConfig.config.orientations
+	for num, _ in pairs (newOrientations) do
+		imageLayers = newOrientations[num].imageLayers
+		if imageLayers then
+			for num2, _ in pairs (imageLayers) do
+				imageLayer = imageLayers[num2].image
+				newOrientations[num].imageLayers[num2].image = itemConfig.directory .. imageLayer
+				if not newPlacementImage then
+					newPlacementImage = newOrientations[num].imageLayers[num2].image:gsub("<frame>", 1):gsub("<color>", "default"):gsub("<key>", 1)
+				end
+			end
+		end
+		dualImage = newOrientations[num].dualImage
+		if dualImage then
+			newOrientations[num].dualImage = itemConfig.directory .. dualImage
+			if not newPlacementImage then
+				newPlacementImage = newOrientations[num].dualImage:gsub("<frame>", 1):gsub("<color>", "default"):gsub("<key>", 1)
+			end
+		end
+		image = newOrientations[num].image
+		if image and not imageLayers then --Avali teleporter fix
+			newOrientations[num].image = itemConfig.directory .. image
+			if not newPlacementImage then
+				newPlacementImage = newOrientations[num].image:gsub("<frame>", 1):gsub("<color>", "default"):gsub("<key>", 1)
+			end
+		end
+		if not newPlacementImagePosition then
+			newPlacementImagePosition = newOrientations[num].imagePosition
+		end
+	end
+	return newOrientations, newPlacementImage, newPlacementImagePosition
+end
+
+function getBYOSParameters(itemType, pet, treasure) --figure out how to give them the name change
+	if itemType then
+		info = raceInfo[count]
+		value = info[itemType]
+		if root.itemConfig(value.name) then
+			itemNew = value
+		end
+	end
+	return getNewParameters(pet, treasure)
 end

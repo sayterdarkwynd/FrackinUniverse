@@ -23,10 +23,29 @@
   "hylotlDescription" : "This console allows me to communicate with SAIL.",
   "novakidDescription" : "This here station lets me talk with SAIL.",
 
-  "inventoryIcon" : "fu_byostechstationicon.png",
+  "inventoryIcon" : "/objects/ship/techstation/apexrecordplayericon.png",
+  "placementImage" : "/objects/ship/techstation/techstation.png:default.0",
+  "placementImagePosition" : [-16, -8],
   "orientations" : [
     {
-      "imageLayers" : [ { "image" : "fu_byostechstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_byostechstationlit.png:<color>.<frame>" } ],
+      "imageLayers" : [ { "image" : "/objects/ship/fu_byostechstation/fu_byostechstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/fu_byostechstation/fu_byostechstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 32,
+      "animationCycle" : 3.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+	  "spaces" : [
+	  [-2,1],  [-1,1],  [0,1],
+	  [-2,0],  [-1,0],  [0,0],
+	  [-2,-1], [-1,-1], [0,-1]
+	  ]
+
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/techstation/techstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/techstation/techstationlit.png:<color>.<frame>" } ],
       "imagePosition" : [-16, -8],
       "frames" : 32,
       "animationCycle" : 3.0,
@@ -36,8 +55,11 @@
 
     }
   ],
-
+  
+  "scripts" : ["/objects/ship/fu_byosobjectdeath.lua"],
   "animation" : "/objects/ship/techstation.animation",
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
   "racialiserType" : "techstation",
   "retainObjectParametersInItem" : true
 }
