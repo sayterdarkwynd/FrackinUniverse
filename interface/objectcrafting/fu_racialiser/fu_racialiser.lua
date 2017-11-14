@@ -86,8 +86,8 @@ function getNewParameters(pet, treasure)
 		newParameters = util.mergeTable(newParameters, {inventoryIcon = inventoryIconNew})
 		orientationsNew, placementImageNew, placementImagePositionNew = getNewOrientations()
 		newParameters = util.mergeTable(newParameters, {imageConfig = orientationsNew, placementImage = placementImageNew, placementImagePosition = placementImagePositionNew})
-		sitFlipDirectionNew = itemConfig.config.sitFlipDirection
-		newParameters = util.mergeTable(newParameters, {sitFlipDirection = sitFlipDirectionNew})
+		imageFlippedNew = itemConfig.config.sitFlipDirection
+		newParameters = util.mergeTable(newParameters, {imageFlipped = imageFlippedNew})
 		dialogNew = itemConfig.config.dialog
 		newParameters = util.mergeTable(newParameters, {dialog = dialogNew})
 	end
@@ -138,10 +138,16 @@ function getNewOrientations()
 			newPlacementImagePosition = newOrientations[num].imagePosition
 		end
 	end
+	positionOverride = info[itemType].positionOverride
+	if positionOverride then
+		newOrientations[1].imagePosition = positionOverride
+		newPlacementImagePosition = positionOverride
+	end
 	return newOrientations, newPlacementImage, newPlacementImagePosition
 end
 
-function getBYOSParameters(itemType, pet, treasure) --figure out how to give them the name change
+function getBYOSParameters(BYOSItemType, pet, treasure) --figure out how to give them the name change
+	itemType = BYOSItemType
 	if itemType then
 		info = raceInfo[count]
 		value = info[itemType]
