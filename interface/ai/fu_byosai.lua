@@ -5,7 +5,7 @@ function byos()
 	player.startQuest("fu_byos")
 	player.startQuest("fu_shipupgrades")
 	--player.giveBlueprint("fu_shipcraftingtable")   deprecated. matter assembler does this now.
-	world.sendEntityMessage("bootup", "byos", race())
+	world.sendEntityMessage("bootup", "byos", player.species())
 end
 
 function racial()
@@ -19,10 +19,4 @@ function racial()
 		player.lounge(teleporters[1])
     end
 	player.upgradeShip({shipLevel = 1})
-end
-
-function race()
-	shipPets = root.assetJson('/interface/ai/fu_byosshippets.config')
-	race = player.species()
-	return race
 end
