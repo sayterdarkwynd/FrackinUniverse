@@ -124,6 +124,8 @@ function init()
   self.jumpBoostTime = self.parts.legs.jumpBoostTime
   
   -- setup arms
+  
+  self.aimassist = self.parts.hornName == 'mechaimassist'
 
   require(self.parts.leftArm.script)
   self.leftArm = _ENV[self.parts.leftArm.armClass]:new(self.parts.leftArm, "leftArm", {2.375, 2.0}, self.ownerUuid)
@@ -368,7 +370,12 @@ function update(dt)
       self.aimPosition = vehicle.aimPosition("seat")
 
       if newControls.Special1 and not self.lastControls.Special1 then
-        animator.playSound("horn")
+	    if self.parts.hornName == 'mechaimassist' then
+		  self.aimassist = not self.aimassist
+		  animator.playSound('aimassist'..(self.aimassist and 'on' or 'off'))
+		else
+          animator.playSound("horn")
+		end
       end
 
       if self.flightMode then
@@ -693,14 +700,26 @@ function update(dt)
   end
 
   -- update and animate arms
-
   for _, arm in pairs({"left", "right"}) do
     local fireControl = (arm == "left") and "PrimaryFire" or "AltFire"
+	local aim = self.aimPosition
+	if self.aimassist and self.aimPosition and self[arm..'Arm'].projectileType then
+	  local projectile = root.projectileConfig(self[arm..'Arm'].projectileType)
+	  if projectile.speed and projectile.speed > 0 then
+	    local armVec = world.xwrap(vec2.add(vec2.add(mcontroller.position(),{0, self.walkBobMagnitude * math.sin(math.pi * (((self.legCycle * 2) - self.armBobDelay) % 1)) + (self.crouch * self.bodyCrouchMax)}),arm == 'left' and {2.375,1.798} or {-2.375,1.798}))
+		local mechVec = mcontroller.velocity()
+		local aimAngle = vec2.angle(world.distance(self.aimPosition,armVec))
+		local mechVel = mechVec[1]*-1*math.sin(aimAngle)+mechVec[2]*math.cos(aimAngle)
+		local dist = world.magnitude(armVec,self.aimPosition)-self[arm..'Arm'].fireOffset[1]
+		local aimOffset = (mechVel ~= 0 and math.atan(mechVel*(dist/projectile.speed),dist) or 0)
+	    aim = world.xwrap(vec2.add(armVec,{math.cos(aimAngle-aimOffset),math.sin(aimAngle-aimOffset)}))
+	  end
+	end
 
     animator.resetTransformationGroup(arm .. "Arm")
     animator.resetTransformationGroup(arm .. "ArmFlipper")
 
-    self[arm .. "Arm"]:updateBase(dt, self.driverId, newControls[fireControl], oldControls[fireControl], self.aimPosition, self.facingDirection, self.crouch * self.bodyCrouchMax, self.parts) --FU adds self.parts
+    self[arm .. "Arm"]:updateBase(dt, self.driverId, newControls[fireControl], oldControls[fireControl], aim, self.facingDirection, self.crouch * self.bodyCrouchMax, self.parts) --FU adds self.parts
     self[arm .. "Arm"]:update(dt)
 
     if self.facingDirection < 0 then
