@@ -37,19 +37,25 @@ end
 function update(dt)
   self.state:update(dt)
 
-  if storage.complete then
-    quest.setCanTurnIn(true)
+  if storage.stage == 2 then
+    if player.hasCountOfItem("supermatter") >= 20 then
+	  quest.setCanTurnIn(true)
+    else
+      quest.setCanTurnIn(false)
+    end
   end
 end
 
 function questComplete()
   if player.hasCompletedQuest("fu_byos") then
-    player.giveItem({name = "supermatter", count = 20})
+    quest.addReward(config.getParameter("BYOSRewards"))
+	quest.setCompletionText(config.getParameter("BYOSCompletionText"))
   else
     player.upgradeShip(config.getParameter("shipUpgrade"))
     player.playCinematic(config.getParameter("shipUpgradeCinema"))
   end
   
+  player.consumeItem({name = "supermatter", count = 20})
   setPortraits()
   questutil.questCompleteActions()
 end
@@ -88,8 +94,7 @@ function turnIn()
   quest.setIndicators({})
   quest.setCompassDirection(nil)
   quest.setObjectiveList({{config.getParameter("descriptions.turnIn"), false}})
-  quest.setCanTurnIn(true)
-
+  
   local findMechanic = util.uniqueEntityTracker(self.mechanicUid, self.compassUpdate)
   while storage.stage == 2 do
     questutil.pointCompassAt(findMechanic())
