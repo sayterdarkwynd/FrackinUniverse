@@ -791,6 +791,9 @@ function update(dt)
 
   -- animate bobbing and landing
 
+  -- FU timer ***********************************
+  time = (time or 1) - dt
+
   animator.resetTransformationGroup("body")
   if self.flightMode then
     local newFlightOffset = {
@@ -843,31 +846,34 @@ function update(dt)
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
     
-    -- mech ground thump damage (FU)
-    	animator.playSound("landingThud") --land sound
-    	animator.burstParticleEmitter("legImpact")
-    	self.explosivedamage = math.abs(mcontroller.velocity()[2]) * self.mechMass
-
-    	if self.explosivedamage >= 25 then  -- cap for impact damage
-    	  self.explosivedamage = 25
-    	end
+    -- mech ground thump damage (FU) ************************************
+        animator.playSound("landingThud") --land sound
+	animator.burstParticleEmitter("legImpact")
 	
-	self.thumpParamsBig = {  
-	  power = (self.mechMass * 1.5)/2, -- divides by two because two projectiles are spawning
+	
+	if time <= 0 then
+	  time = 1
+	  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,40)
+          self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,1000)
+          self.appliedDamage = self.baseDamage 
+	  self.thumpParamsBig = {  
+	  power = self.appliedDamage, 
 	  damageTeam = {type = "friendly"}, 
 	  actionOnReap = {
-	    {
-	      action='explosion',
-	      foregroundRadius=math.abs(mcontroller.velocity()[2])/5.4,
-	      backgroundRadius=0,
-	      explosiveDamageAmount= self.explosivedamage,
-	      harvestLevel = 99,
-	      delaySteps=2
-	    }
-	  } 
-	}   
-	world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
-	world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
+	      {
+		action='explosion',
+		foregroundRadius=math.abs(mcontroller.velocity()[2])/5.4,
+		backgroundRadius=0,
+		explosiveDamageAmount= self.explosivedamage,
+		harvestLevel = 99,
+		delaySteps=2
+	      }
+	    } 
+	  }   
+	  sb.logInfo("explosive damage = "..self.explosivedamage)	  
+	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
+	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
+	end
   end
   
   
