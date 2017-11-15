@@ -847,13 +847,18 @@ function update(dt)
     	animator.playSound("landingThud") --land sound
     	animator.burstParticleEmitter("legImpact")
     	self.explosivedamage = math.abs(mcontroller.velocity()[2]) * self.mechMass
+
+    	if self.explosivedamage >= 25 then  -- cap for impact damage
+    	  self.explosivedamage = 25
+    	end
+	
 	self.thumpParamsBig = {  
-	  power = self.mechMass * 1.5,
+	  power = (self.mechMass * 1.5)/2, -- divides by two because two projectiles are spawning
 	  damageTeam = {type = "friendly"}, 
 	  actionOnReap = {
 	    {
 	      action='explosion',
-	      foregroundRadius=math.abs(mcontroller.velocity()[2])/6,
+	      foregroundRadius=math.abs(mcontroller.velocity()[2])/5.4,
 	      backgroundRadius=0,
 	      explosiveDamageAmount= self.explosivedamage,
 	      harvestLevel = 99,
