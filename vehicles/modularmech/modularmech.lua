@@ -568,6 +568,15 @@ function update(dt)
       --is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
       self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10 
       self.storageValue = self.storageValue / 200
+      
+      if (storage.energy) < (self.energyMax*0.15) then 
+        animator.setParticleEmitterActive("highDamage", true) -- land fx
+      elseif (storage.energy) < (self.energyMax*0.25) then 
+        animator.setParticleEmitterActive("midDamage", true) -- land fx
+      elseif (storage.energy) < (self.energyMax*0.40) then              
+        animator.setParticleEmitterActive("lowDamage", true) -- land fx
+      end
+      
       if (storage.energy) < (self.energyMax/2) then 
         eMult = 0               
       else

@@ -68,7 +68,45 @@
 	{ "op" : "replace", "path" : "/animatedParts/parts/backLegJoint/partStates/backFoot/preview/properties/offset", "value" : [0.625, -0.25] },
 	
 
-
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/highDamage",
+	    "value": {
+	      "transformationGroups": ["body"],
+	      "emissionRate": 36,
+	      "offsetRegion": [-2,-3.2,2,3.2],
+	      "particles": [
+		{"particle": "sparks"},
+		{"particle": "firesmoke"}
+	      ]
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/midDamage",
+	    "value": {
+	      "transformationGroups": ["body"],
+	      "emissionRate": 24,
+	      "offsetRegion": [-2,-3.2,2,3.2],
+	      "particles": [
+		{"particle": "sparks"},
+		{"particle": "firesmoke"}
+	      ]
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/lowDamage",
+	    "value": {
+	      "transformationGroups": ["body"],
+	      "emissionRate": 12,
+	      "offsetRegion": [-2,-3.2,2,3.2],
+	      "particles": [
+		{"particle": "sparks"},
+		{"particle": "firesmoke"}
+	      ]
+	    }
+	  },		  
 	  {
 	    "op": "add",
 	    "path": "/particleEmitters/legImpact",
@@ -88,7 +126,11 @@
 	    "value": [
 	      "/sfx/objects/metalbarrel_break1.ogg",
 	      "/sfx/objects/metalbarrel_break2.ogg",
-	      "/sfx/objects/metalbarrel_break3.ogg"
+	      "/sfx/objects/metalbarrel_break3.ogg",
+	      "/sfx/tech/mechthump1.ogg",
+	      "/sfx/tech/mechthump2.ogg",
+	      "/sfx/tech/mechthump3.ogg",
+	      "/sfx/tech/mechthump4.ogg"
 	    ]
   	}
 ]
