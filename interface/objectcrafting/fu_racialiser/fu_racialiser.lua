@@ -6,7 +6,7 @@ function init()
     count = 1
 	itemType = nil
 	raceAmount = raceAmount()
-	change = 1
+	change = -1
 	itemNew = reload()
 end
 
@@ -32,15 +32,19 @@ function reload()
 	if itemType then
 		info = raceInfo[count]
 		value = info[itemType]
+		if value then
 			if itemType == "pet" then
 				if value.unique and root.itemConfig(info.techstation.name) then
 					widget.setText("lblText", info.petName)
+					change = -1
 					return nil
 				end
 			elseif value.unique and root.itemConfig(value.name) then
 				widget.setText("lblText", info.name)
+				change = -1
 				return value
 			end
+		end
 		changeRace()
 	end
 	widget.setText("lblText", "")
@@ -80,6 +84,7 @@ function getNewParameters(pet, treasure)
 	if itemConfig then
 		if item then
 			shortDescriptionNew = item.config.shortdescription .. " (" .. info.name .. ")"
+			sb.logInfo(tostring(shortDescriptionNew))
 			newParameters = util.mergeTable(newParameters, {shortdescription = shortDescriptionNew})
 		end
 		inventoryIconNew = itemConfig.directory .. itemConfig.config.inventoryIcon
@@ -108,6 +113,7 @@ end
 
 function getNewOrientations()
 	newPlacementImage = nil
+	newPlacementImagePosition = nil
 	newOrientations = itemConfig.config.orientations
 	for num, _ in pairs (newOrientations) do
 		imageLayers = newOrientations[num].imageLayers
@@ -154,6 +160,7 @@ function getBYOSParameters(BYOSItemType, pet, treasure) --figure out how to give
 		if root.itemConfig(value.name) then
 			itemNew = value
 		end
+		item = root.itemConfig("fu_byos" .. itemType)
 	end
 	return getNewParameters(pet, treasure)
 end
