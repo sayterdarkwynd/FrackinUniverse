@@ -181,10 +181,6 @@ function init()
       end
     end
     
-    -- FU bonus stats
-    self.fuMechAblativeArmor = 0 -- bonus defense
-    self.fuMechMass = 0 -- bonus mass (affects land speed, stomp damage)
-    
   end
 
   vehicle.setLoungeStatusEffects("seat", seatStatusEffects)
@@ -559,22 +555,44 @@ function update(dt)
       but not if they are in a hostile environment to their body type. Additionally, the higher threat that the biome
       is, the slower the regeneration rate becomes, which should help to balance out energy cost.
       ***************************************************************************************** --]]
+        
         self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-   
+        self.mechMassBase = self.mechBonusTotal / 16
+        self.mechMassArmor = self.parts.body.stats.protection / self.parts.body.stats.energy
+        self.mechMass = self.mechMassBase + self.mechMassArmor 
+        
         self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact
       --is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
       self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10 
       self.storageValue = self.storageValue / 200
-      
       if (storage.energy) < (self.energyMax*0.15) then 
-        animator.setParticleEmitterActive("highDamage", true) -- land fx
+        animator.setParticleEmitterActive("highDamage", true) -- land fx 
+        animator.setParticleEmitterActive("midDamage", false) -- land fx
+        animator.setParticleEmitterActive("lowDamage", false) -- land fx  
+        animator.setParticleEmitterActive("minorDamage", false) -- land fx 
       elseif (storage.energy) < (self.energyMax*0.25) then 
+        animator.setParticleEmitterActive("highDamage", false) -- land fx 
         animator.setParticleEmitterActive("midDamage", true) -- land fx
-      elseif (storage.energy) < (self.energyMax*0.40) then              
-        animator.setParticleEmitterActive("lowDamage", true) -- land fx
+        animator.setParticleEmitterActive("lowDamage", false) -- land fx 
+        animator.setParticleEmitterActive("minorDamage", false) -- land fx 
+      elseif (storage.energy) < (self.energyMax*0.40) then 
+        animator.setParticleEmitterActive("midDamage", false) -- land fx
+        animator.setParticleEmitterActive("highDamage", false) -- land fx
+        animator.setParticleEmitterActive("lowDamage", true) -- land fx   
+        animator.setParticleEmitterActive("minorDamage", false) -- land fx 
+      elseif (storage.energy) < (self.energyMax*0.60) then              
+        animator.setParticleEmitterActive("lowDamage", false) -- land fx
+        animator.setParticleEmitterActive("midDamage", false) -- land fx
+        animator.setParticleEmitterActive("highDamage", false) -- land fx  
+        animator.setParticleEmitterActive("minorDamage", true) -- land fx 
+      else
+        animator.setParticleEmitterActive("lowDamage", false) -- land fx
+        animator.setParticleEmitterActive("midDamage", false) -- land fx
+        animator.setParticleEmitterActive("highDamage", false) -- land fx
+        animator.setParticleEmitterActive("minorDamage", false) -- land fx 
       end
       
       if (storage.energy) < (self.energyMax/2) then 
@@ -657,7 +675,7 @@ function update(dt)
     if math.floor(self.legCycle * 2) ~= math.floor(newLegCycle * 2) then
       triggerStepSound()   
       -- mech ground thump damage (FU)
-      self.thumpParamsMini = { power = 1, damageTeam = {type = "friendly"} }
+      self.thumpParamsMini = { power = self.mechMass, damageTeam = {type = "friendly"} }
               
       world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
     end
@@ -801,7 +819,7 @@ function update(dt)
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
     
-    animator.setParticleEmitterActive("legImpact", false) -- land fx
+  
     
   else
     -- TODO: make this less complicated
@@ -827,8 +845,22 @@ function update(dt)
     
     -- mech ground thump damage (FU)
     	animator.playSound("landingThud") --land sound
-    	animator.setParticleEmitterActive("legImpact", true) -- land fx    
-	self.thumpParamsBig = { power = 1, damageTeam = {type = "friendly"} }     
+    	animator.burstParticleEmitter("legImpact")
+    	self.explosivedamage = math.abs(mcontroller.velocity()[2]) * self.mechMass
+	self.thumpParamsBig = {  
+	  power = self.mechMass * 1.5,
+	  damageTeam = {type = "friendly"}, 
+	  actionOnReap = {
+	    {
+	      action='explosion',
+	      foregroundRadius=math.abs(mcontroller.velocity()[2])/6,
+	      backgroundRadius=0,
+	      explosiveDamageAmount= self.explosivedamage,
+	      harvestLevel = 99,
+	      delaySteps=2
+	    }
+	  } 
+	}   
 	world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
 	world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
   end
