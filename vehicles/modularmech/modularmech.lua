@@ -819,7 +819,7 @@ function update(dt)
     -- mech ground thump damage (FU)
     	animator.playSound("landingThud") --land sound
     	animator.setParticleEmitterActive("legImpact", true) -- land fx    
-	self.thumpParamsBig = { power = 2, damageTeam = {type = "friendly"} }     
+	self.thumpParamsBig = { power = 1, damageTeam = {type = "friendly"} }     
 	world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
 	world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
   end
