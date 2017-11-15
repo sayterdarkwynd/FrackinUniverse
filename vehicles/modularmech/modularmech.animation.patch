@@ -68,17 +68,21 @@
 	{ "op" : "replace", "path" : "/animatedParts/parts/backLegJoint/partStates/backFoot/preview/properties/offset", "value" : [0.625, -0.25] },
 	
 
+
+
+    
+    
 	  {
 	    "op": "add",
 	    "path": "/particleEmitters/highDamage",
 	    "value": {
 	      "transformationGroups": ["body"],
-	      "emissionRate": 36,
-	      "offsetRegion": [-2,-3.2,2,3.2],
-	      "particles": [
-		{"particle": "sparks"},
-		{"particle": "firesmoke"}
-	      ]
+	      "emissionRate": 0,a
+	      "offsetRegion": [-2,2,2,4.2],
+      		"particles" : [ { "particle" : "burningdust"},
+                      { "particle" : "campfireflames"},
+                      { "particle" : "fireshard"},
+                      { "particle" : "burningvehiclesmokeback"}]
 	    }
 	  },
 	  {
@@ -86,12 +90,12 @@
 	    "path": "/particleEmitters/midDamage",
 	    "value": {
 	      "transformationGroups": ["body"],
-	      "emissionRate": 24,
-	      "offsetRegion": [-2,-3.2,2,3.2],
-	      "particles": [
-		{"particle": "sparks"},
-		{"particle": "firesmoke"}
-	      ]
+	      "emissionRate": 0,
+	      "offsetRegion": [-2,2,2,4.2],
+      "particles" : [ { "particle" : "burningdust"},
+                      { "particle" : "campfireflames"},
+                      { "particle" : "fireshard"},
+                      { "particle" : "burningvehiclesmokeback"}]
 	    }
 	  },
 	  {
@@ -99,12 +103,9 @@
 	    "path": "/particleEmitters/lowDamage",
 	    "value": {
 	      "transformationGroups": ["body"],
-	      "emissionRate": 12,
-	      "offsetRegion": [-2,-3.2,2,3.2],
-	      "particles": [
-		{"particle": "sparks"},
-		{"particle": "firesmoke"}
-	      ]
+	      "emissionRate": 0,
+	      "offsetRegion": [-2,2,2,4.2],
+      "particles" : [ { "particle" : "burningvehiclesmokefront"} ]
 	    }
 	  },		  
 	  {
