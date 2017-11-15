@@ -180,6 +180,11 @@ function init()
         table.insert(seatStatusEffects, statusEffect)
       end
     end
+    
+    -- FU bonus stats
+    self.fuMechAblativeArmor = 0 -- bonus defense
+    self.fuMechMass = 0 -- bonus mass (affects land speed, stomp damage)
+    
   end
 
   vehicle.setLoungeStatusEffects("seat", seatStatusEffects)
@@ -641,7 +646,11 @@ function update(dt)
     newLegCycle = self.legCycle + ((newPosition[1] - self.lastPosition[1]) * self.facingDirection) / (4 * self.legRadius)
 
     if math.floor(self.legCycle * 2) ~= math.floor(newLegCycle * 2) then
-      triggerStepSound()
+      triggerStepSound()   
+      -- mech ground thump damage (FU)
+      self.thumpParamsMini = { power = 1, damageTeam = {type = "friendly"} }
+              
+      world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
     end
 
     self.legCycle = newLegCycle
@@ -807,9 +816,12 @@ function update(dt)
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
     
-    animator.playSound("landingThud") --land sound
-    animator.setParticleEmitterActive("legImpact", true) -- land fx
-    
+    -- mech ground thump damage (FU)
+    	animator.playSound("landingThud") --land sound
+    	animator.setParticleEmitterActive("legImpact", true) -- land fx    
+	self.thumpParamsBig = { power = 2, damageTeam = {type = "friendly"} }     
+	world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
+	world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
   end
   
   
