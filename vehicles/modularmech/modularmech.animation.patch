@@ -65,5 +65,31 @@
 	{ "op" : "replace", "path" : "/animatedParts/parts/frontLegJoint/partStates/frontFoot/preview/properties/offset", "value" : [0.75, -0.25] },
 	
 	{ "op" : "replace", "path" : "/animatedParts/parts/backLegJoint/properties/offset", "value" : [0.75, -1.125] },
-	{ "op" : "replace", "path" : "/animatedParts/parts/backLegJoint/partStates/backFoot/preview/properties/offset", "value" : [0.625, -0.25] }
+	{ "op" : "replace", "path" : "/animatedParts/parts/backLegJoint/partStates/backFoot/preview/properties/offset", "value" : [0.625, -0.25] },
+	
+
+
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/legImpact",
+	    "value": {
+	      "transformationGroups": ["backLeg","frontLeg"],
+	      "emissionRate": 4,
+	      "offsetRegion": [0,0,0,0],
+	      "particles": [
+		{"particle": "smoke"},
+		{"particle": "gausssmoke"},
+		{"particle": "fuvolcanosmoke"}
+	      ]
+	    }
+	  },	
+	  {
+	    "op": "add",
+	    "path": "/sounds/landingThud",
+	    "value": [
+	      "/sfx/objects/metalbarrel_break1.ogg",
+	      "/sfx/objects/metalbarrel_break2.ogg",
+	      "/sfx/objects/metalbarrel_break3.ogg"
+	    ]
+  	}
 ]

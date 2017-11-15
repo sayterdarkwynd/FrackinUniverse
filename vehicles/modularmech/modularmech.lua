@@ -430,8 +430,7 @@ function update(dt)
               self.fallThroughSustain = true
             else
               jump()
-			  
-			  self.doubleTabBoostJump = self.doubleTabBoostOn
+		self.doubleTabBoostJump = self.doubleTabBoostOn
             end
           else
             self.jumpBoostTimer = 0
@@ -783,6 +782,9 @@ function update(dt)
     local armOffset = {0, self.walkBobMagnitude * math.sin(math.pi * armCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
+    
+    animator.setParticleEmitterActive("legImpact", false) -- land fx
+    
   else
     -- TODO: make this less complicated
     local landingCycleTotal = 1.0 + math.max(self.boosterBobDelay, self.armBobDelay)
@@ -804,8 +806,13 @@ function update(dt)
     local armOffset = {0, -self.landingBobMagnitude * 0.25 * math.sin(math.pi * armCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
+    
+    animator.playSound("landingThud") --land sound
+    animator.setParticleEmitterActive("legImpact", true) -- land fx
+    
   end
-
+  
+  
   self.lastPosition = newPosition
   self.lastVelocity = newVelocity
   self.lastOnGround = onGround
