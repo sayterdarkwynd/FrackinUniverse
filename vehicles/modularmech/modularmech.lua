@@ -560,15 +560,20 @@ function update(dt)
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechMassBase = self.mechBonusTotal / 16
-        self.mechMassArmor = self.parts.body.stats.protection / self.parts.body.stats.energy
-        self.mechMass = self.mechMassBase + self.mechMassArmor 
+
+        if not self.parts.body.stats.mechMass then self.parts.body.stats.mechMass = 0 end
+        self.mechMassBase = self.parts.body.stats.mechMass   -- mass for damage calculations for falling/impact
         
-        self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact
+        self.mechMassArmor = self.parts.body.stats.protection / self.parts.body.stats.energy  --energy/protection multiplier
+        self.mechMass = self.mechMassBase * self.mechMassArmor 
+        
+        self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact of effects
+        
       --is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
       self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10 
       self.storageValue = self.storageValue / 200
-      if (storage.energy) < (self.energyMax*0.15) then 
+      
+      if (storage.energy) < (self.energyMax*0.15) then -- play damage effects at certain health percentages
         animator.setParticleEmitterActive("highDamage", true) -- land fx 
         animator.setParticleEmitterActive("midDamage", false) -- land fx
         animator.setParticleEmitterActive("lowDamage", false) -- land fx  
@@ -676,8 +681,9 @@ function update(dt)
       triggerStepSound()   
       -- mech ground thump damage (FU)
       self.thumpParamsMini = { power = self.mechMass, damageTeam = {type = "friendly"} }
-              
-      world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
+      if self.mechMassBase > 0 then        
+        world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
+      end
     end
 
     self.legCycle = newLegCycle
@@ -851,28 +857,29 @@ function update(dt)
 	animator.burstParticleEmitter("legImpact")
 	
 	
-	if time <= 0 then
-	  time = 1
-	  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,40)
-          self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,1000)
-          self.appliedDamage = self.baseDamage 
-	  self.thumpParamsBig = {  
-	  power = self.appliedDamage, 
-	  damageTeam = {type = "friendly"}, 
-	  actionOnReap = {
-	      {
-		action='explosion',
-		foregroundRadius=math.abs(mcontroller.velocity()[2])/5.4,
-		backgroundRadius=0,
-		explosiveDamageAmount= self.explosivedamage,
-		harvestLevel = 99,
-		delaySteps=2
-	      }
-	    } 
-	  }   
-	  sb.logInfo("explosive damage = "..self.explosivedamage)	  
-	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
-	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
+	if self.mechMassBase > 0 then -- can they use mass?
+		if time <= 0 then
+		  time = 1
+		  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,40)
+		  self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,1000)
+		  self.appliedDamage = self.baseDamage 
+		  self.thumpParamsBig = {  
+		  power = self.appliedDamage, 
+		  damageTeam = {type = "friendly"}, 
+		  actionOnReap = {
+		      {
+			action='explosion',
+			foregroundRadius=math.abs(mcontroller.velocity()[2])/5.4,
+			backgroundRadius=0,
+			explosiveDamageAmount= self.explosivedamage,
+			harvestLevel = 99,
+			delaySteps=2
+		      }
+		    } 
+		  }   	  
+		  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
+		  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
+		end
 	end
   end
   

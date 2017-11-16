@@ -33,7 +33,8 @@ function MechPartManager:new()
         energyDrain = "mechBodyEnergyDrain"
       },
       protection = {
-        protection = "mechBodyProtection"
+        protection = "mechBodyProtection",
+        mechMass = "mechBodyMass"
       }
     },
     booster = {
