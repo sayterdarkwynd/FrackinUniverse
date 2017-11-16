@@ -564,12 +564,11 @@ function update(dt)
         if not self.parts.body.stats.mechMass then self.parts.body.stats.mechMass = 0 end
         if not self.parts.booster.stats.mechMass then self.parts.booster.stats.mechMass = 0 end
         if not self.parts.legs.stats.mechMass then self.parts.legs.stats.mechMass = 0 end
+        if not self.parts.leftArm.stats.mechMass then self.parts.leftArm.stats.mechMass = 0 end
+        if not self.parts.rightArm.stats.mechMass then self.parts.rightArm.stats.mechMass = 0 end
         
-        self.mechMassBase = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass   -- mass for damage calculations for falling/impact
-        sb.logInfo("body = "..self.parts.body.stats.mechMass)
-        sb.logInfo("booster = "..self.parts.booster.stats.mechMass)
-        sb.logInfo("legs = "..self.parts.legs.stats.mechMass)
-        self.mechMassArmor = self.parts.body.stats.protection / self.parts.body.stats.energy  --energy/protection multiplier
+        self.mechMassBase = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass  -- mass for damage calculations for falling/impact
+        self.mechMassArmor = self.parts.body.stats.protection / self.parts.body.stats.energy  --energy/protection multiplier. This ensures the mech body is always the biggest game-changer.
         self.mechMass = self.mechMassBase * self.mechMassArmor 
         
         self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact of effects
