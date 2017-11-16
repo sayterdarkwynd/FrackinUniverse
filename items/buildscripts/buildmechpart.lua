@@ -48,7 +48,7 @@ function build(directory, config, parameters, level, seed)
     
     if partConfig.stats then
       for statName, statValue in pairs(partConfig.stats) do
-        local clampedValue = statName == 'mechMass' and math.max(2, math.min(10, math.floor(statValue/2)*2)) or math.max(3, math.min(7, math.floor(statValue)))        
+        local clampedValue = statName == 'mechMass' and math.max(2, math.min(10, math.floor(statValue/2)*2),1) or math.max(3, math.min(7, math.floor(statValue)))        
         config.tooltipFields[statName .. "StatImage"] = "/interface/tooltips/statbar.png:" .. clampedValue
       end
     end
