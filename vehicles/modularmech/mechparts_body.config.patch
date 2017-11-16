@@ -2172,6 +2172,7 @@
 			}
 		}
 	],
+		
 	[
 	{ "op": "test", "path": "/zaku", "inverse" : false },
 	{ "op": "test", "path": "/zaku/partParameters", "inverse" : false },
@@ -2299,21 +2300,25 @@
 			]
 		}
 	],
-
 	[
-	{ "op": "test", "path": "/xsm_roninrhomech", "inverse" : false },
-	{ "op": "test", "path": "/xsm_roninrhomech/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/xsm_roninrhomech/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/dvamech", "inverse" : false },
+	{ "op": "test", "path": "/dvamech/partParameters", "inverse" : false },	
+	{ "op": "test", "path": "/dvamech/partParameters/hazardImmunities", "inverse" : true },		
 
 		{
 			"op": "add",
-			"path": "/xsm_roninrhomech/partParameters/hazardImmunities",
+			"path": "/dvamech/partParameters/hazardImmunities",
 			"value": [
 				"desertweathernew",
+				"desertweathernewdeadly",
 				"jungleheatweather",
 				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
 				"sulphuricweathernew",
+				"sulphuricweathernew2",
 				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
 				"gasworld1",
 				"gasworld2",
 				"gasworld3",
@@ -2331,8 +2336,150 @@
 				"coldweathernew",
 				"ffbiomecold0",
 				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
 				"biomeheat",
 				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],	
+	[
+	{ "op": "test", "path": "/xsm_thetamech", "inverse" : false },
+	{ "op": "test", "path": "/xsm_thetamech/partParameters", "inverse" : false },
+	
+	{ "op": "test", "path": "/xsm_thetamech/stats/mechMass", "inverse" : false },
+	{ "op": "add", "path": "/xsm_thetamech/stats/mechMass","value": 10 },
+	
+	{ "op": "test", "path": "/xsm_thetamech/partParameters/hazardImmunities", "inverse" : true },		
+
+		{
+			"op": "add",
+			"path": "/xsm_thetamech/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	[
+	{ "op": "test", "path": "/xsm_piraterhomech", "inverse" : false },
+	{ "op": "test", "path": "/xsm_piraterhomech/partParameters", "inverse" : false },
+	
+	{ "op": "test", "path": "/xsm_piraterhomech/stats/mechMass", "inverse" : false },
+	{ "op": "add", "path": "/xsm_piraterhomech/stats/mechMass","value": 7 },
+	
+	{ "op": "test", "path": "/xsm_piraterhomech/partParameters/hazardImmunities", "inverse" : true },		
+
+		{
+			"op": "add",
+			"path": "/xsm_piraterhomech/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew"
+			]
+		}
+	],
+	
+	
+	[
+	{ "op": "test", "path": "/xsm_roninrhomech", "inverse" : false },
+	{ "op": "test", "path": "/xsm_roninrhomech/partParameters", "inverse" : false },
+	
+	{ "op": "test", "path": "/xsm_roninrhomech/stats/mechMass", "inverse" : false },
+	{ "op": "add", "path": "/xsm_roninrhomech/stats/mechMass","value": 5 },
+	
+	{ "op": "test", "path": "/xsm_roninrhomech/partParameters/hazardImmunities", "inverse" : true },	
+
+		{
+			"op": "add",
+			"path": "/xsm_roninrhomech/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
 				"heatweathernew"
 			]
 		}
@@ -2426,12 +2573,39 @@
 			"op": "add",
 			"path": "/xsm_elitesigma/partParameters/hazardImmunities",
 			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
 				"coldweathernew",
 				"ffbiomecold0",
-				"desertweathernew",
-				"jungleheatweather",
-				"poisonweathernewbiome",
-				"poisonweathernew"
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
 			]
 		}
 	],

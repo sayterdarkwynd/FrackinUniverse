@@ -562,8 +562,13 @@ function update(dt)
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
 
         if not self.parts.body.stats.mechMass then self.parts.body.stats.mechMass = 0 end
-        self.mechMassBase = self.parts.body.stats.mechMass   -- mass for damage calculations for falling/impact
+        if not self.parts.booster.stats.mechMass then self.parts.booster.stats.mechMass = 0 end
+        if not self.parts.legs.stats.mechMass then self.parts.legs.stats.mechMass = 0 end
         
+        self.mechMassBase = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass   -- mass for damage calculations for falling/impact
+        sb.logInfo("body = "..self.parts.body.stats.mechMass)
+        sb.logInfo("booster = "..self.parts.booster.stats.mechMass)
+        sb.logInfo("legs = "..self.parts.legs.stats.mechMass)
         self.mechMassArmor = self.parts.body.stats.protection / self.parts.body.stats.energy  --energy/protection multiplier
         self.mechMass = self.mechMassBase * self.mechMassArmor 
         
@@ -853,16 +858,13 @@ function update(dt)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
     
     -- mech ground thump damage (FU) ************************************
-        animator.playSound("landingThud") --land sound
-	animator.burstParticleEmitter("legImpact")
-	
-	
+	  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,55)
+	  self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,300)
+	  self.appliedDamage = self.baseDamage /2
+		  
 	if self.mechMassBase > 0 then -- can they use mass?
 		if time <= 0 then
 		  time = 1
-		  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,40)
-		  self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,1000)
-		  self.appliedDamage = self.baseDamage 
 		  self.thumpParamsBig = {  
 		  power = self.appliedDamage, 
 		  damageTeam = {type = "friendly"}, 
@@ -881,6 +883,16 @@ function update(dt)
 		  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
 		end
 	end
+	
+        if self.mechMass >= 15 and (self.explosivedamage) >= 40 then 
+          animator.playSound("landingThud")
+          animator.playSound("heavyBoom")
+          animator.burstParticleEmitter("legImpactHeavy")
+        else
+          animator.playSound("landingThud") 
+          animator.burstParticleEmitter("legImpact")
+        end
+        
   end
   
   

@@ -117,7 +117,29 @@
 	      "offsetRegion": [-2,2,2,4.2],
               "particles" : [ { "particle" : "sparks"} ]
 	    }
-	  },	  
+	  },
+	  
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/legImpactHeavy",
+	    "value": {
+	      "transformationGroups": ["backLeg","frontLeg"],
+	      "emissionRate": 0,
+	      "offsetRegion": [-4,-3.4,4,-3.2],
+	      "particles": [
+		{"particle":"fusmoke"},
+		{"particle":"fusmoke"},
+		{"particle":"fuvolcanopoof"},	
+		{"particle":"fuvolcanopoof"},		
+		{"particle":"fuvolcanopoof"},	
+		{"particle":"fuvolcanopoof"},
+		{"particle":"fuvolcanosmoke"},
+		{"particle": "burningvehiclesmokefront"},
+		{"particle": "burningvehiclesmokefront"}
+	      ]
+	    }
+	  },	
+	  
 	  {
 	    "op": "add",
 	    "path": "/particleEmitters/legImpact",
@@ -144,5 +166,12 @@
 	      "/sfx/tech/mechthump3.ogg",
 	      "/sfx/tech/mechthump4.ogg"
 	    ]
-  	}
+  	 },
+	  {
+	    "op": "add",
+	    "path": "/sounds/heavyBoom",
+	    "value": [
+	      "/sfx/weapons/stonehit.ogg", "/sfx/weapons/explosionunderwater.ogg"
+	    ]
+  	}  	 
 ]
