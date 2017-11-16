@@ -1,91 +1,74 @@
 require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
 require '/scripts/power.lua'
-local crafting = false
 local requiredPower = 0
 
 function init()
 	power.init()
 	self = config.getParameter("spawner")
-	self.timer = self.spawnTime
+	self.timer = self.defaultSpawnTime
 	powered = false
 end
 
 function update(dt)
 	if wireCheck() == true then
-		if crafting == false then
+		if not crafting then
 			local slot = 0
 			local fuelSlot = getInputContents(slot)
-			if fuelSlot == self.fuelType then
-				slot = 1
-				podSlot = getInputContents(slot)
-				if podSlot == self.podType then
+			if fuelSlot.name == self.fuelType then
+				local slot = 1
+				local podSlot = getInputContents(slot)
+				if podSlot.name == self.podType then
 					if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
-						--if power.getTotalEnergy() >= config.getParameter('isn_requiredPowerOverclocked') then
-							--world.containerConsumeAt(entity.id(),0,1)
-							--self.timer = self.spawnTime/2
-							--animator.setAnimationState("base", "overclocked")
-							--requiredPower = config.getParameter('isn_requiredPowerOverclocked')
-							--crafting = true
-						--else
-							world.containerConsumeAt(entity.id(),0,1)
-							self.timer = self.spawnTime
-							animator.setAnimationState("base", "on")
-							requiredPower = config.getParameter('isn_requiredPower')
-							crafting = true
-						--end
+						world.containerConsumeAt(entity.id(),0,1)
+						pets = (podSlot.parameters.pets)
+						pet = root.monsterParameters(pets[1].config.type)
+						spawnTime = pet.statusSettings.stats.maxHealth.baseValue * self.spawnTimeMultiplier
+						self.timer = spawnTime or self.defaultSpawnTime
+						requiredPower = config.getParameter('isn_requiredPower')
+						crafting = true
 					end
 				end
 			end
 		end
 	end
 	self.timer = self.timer - dt
-	if self.timer <= 0 then
-		if crafting == true then
-			if power.consume(requiredPower) then
-				local items = world.containerItems(entity.id(), 1)
-				for _,item in pairs(items) do
-					pets = (item.parameters.pets)
-					if pets then
-						for _,pet in pairs(pets) do
-						monsterType = pet.config.type
-						monsterSeed = pet.config.parameters.seed
-						monsterColour = pet.config.parameters.colors
-						monsterAggro = pet.config.parameters.aggressive
-						blacklisted = checkBlacklist(monsterType)
-						dropPool = {}
-						dropPool["default"] = "empty"
-						spawnPosition = vec2.add(object.position(), {0, 8})
-						if world.threatLevel() < 5 then
-							monsterLevel = 5
-						else
-							monsterLevel = world.threatLevel()
-						end
-							if monsterType and monsterSeed then
-								if blacklisted == true then
-									if monsterColour then
-										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, dropPools = dropPool, aggressive = monsterAggro, capturable = false, relocatable = false});
-									else
-										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, dropPools = dropPool, aggressive = monsterAggro, capturable = false, relocatable = false});
-									end
-								else
-									if monsterColour then
-										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, aggressive = monsterAggro, capturable = false, relocatable = false});
-									else
-										world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, aggressive = monsterAggro, capturable = false, relocatable = false});
-									end
-								end
-							end
-						end
+	if crafting then
+		if animator.animationState == "off" then
+			animator.playSound("on")
+		else
+			animator.playSound("running", -1)
+		end
+		animator.setAnimationState("base", "on")
+	else
+		if animator.animationState("base") == "on" then
+			animator.stopAllSounds("running")
+			animator.playSound("off")
+		end
+		animator.setAnimationState("base", "off")
+	end
+	if self.timer <= 0 and crafting then
+		if power.consume(requiredPower) then
+			if pets then
+				monsterType = pets[1].config.type
+				monsterSeed = pets[1].config.parameters.seed
+				monsterColour = pets[1].config.parameters.colors
+				monsterAggro = pets[1].config.parameters.aggressive
+				blacklisted = checkBlacklist(monsterType)
+				dropPool = {}
+				dropPool["default"] = "empty"
+				spawnPosition = vec2.add(object.position(), {0, 5})
+				monsterLevel = math.max(5, world.threatLevel())
+				if monsterType and monsterSeed then
+					if blacklisted == true then
+						world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, dropPools = dropPool, aggressive = monsterAggro, capturable = false, relocatable = false});
+					else
+						world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, aggressive = monsterAggro, capturable = false, relocatable = false});
 					end
 				end
 			end
 			crafting = false
 		end
-	end
-	if not crafting and self.timer <= 0 then
-		self.timer = self.spawnTime
-		animator.setAnimationState("base", "off")
 	end
 	power.update(dt)
 end
@@ -94,7 +77,7 @@ function getInputContents(slot)
 	local stack = world.containerItemAt(entity.id(),slot)
 	local contents = {}
 	if stack then
-		contents = stack.name
+		contents = stack
 	end
 	return contents
 end
