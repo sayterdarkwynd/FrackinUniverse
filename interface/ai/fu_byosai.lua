@@ -13,7 +13,9 @@ end
 function byos()
 	player.startQuest("fu_byos")
 	player.startQuest("fu_shipupgrades")
-	--player.giveBlueprint("fu_shipcraftingtable")   deprecated. matter assembler does this now.
+	for _, recipe in pairs (root.assetJson("/interface/ai/fu_byosrecipes.config")) do
+		player.giveBlueprint(recipe)
+	end
 	world.sendEntityMessage("bootup", "byos", player.species())
 end
 
