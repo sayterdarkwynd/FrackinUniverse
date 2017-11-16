@@ -36,8 +36,13 @@ function update(dt)
 	if crafting then
 		if animator.animationState == "off" then
 			animator.playSound("on")
+			soundTimer = 1.131
 		else
-			animator.playSound("running", -1)
+			if not soundTimer or soundTimer <= 0 then
+				animator.playSound("running", -1)
+			else
+				soundTimer = soundTimer - dt
+			end
 		end
 		animator.setAnimationState("base", "on")
 	else
