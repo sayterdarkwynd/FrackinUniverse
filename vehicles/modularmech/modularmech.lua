@@ -865,26 +865,24 @@ function update(dt)
 	  storage.energy = math.max(0, storage.energy - (self.baseDamage /35))
 	end
 	
-	if (self.mechMassBase) > 0 then -- can they use mass?
-		if time <= 0 then
-		  time = 1
-		  self.thumpParamsBig = {  
-		  power = self.appliedDamage, 
-		  damageTeam = {type = "friendly"}, 
-		  actionOnReap = {
-		      {
-			action='explosion',
-			foregroundRadius=math.abs(mcontroller.velocity()[2])/5.4,
-			backgroundRadius=0,
-			explosiveDamageAmount= self.explosivedamage,
-			harvestLevel = 99,
-			delaySteps=2
-		      }
-		    } 
-		  }   	  
-		  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
-		  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
-		end
+	if self.mechMassBase > 0 and time <= 0 then
+	  time = 1
+	  self.thumpParamsBig = {  
+	  power = self.appliedDamage, 
+	  damageTeam = {type = "friendly"}, 
+	  actionOnReap = {
+	      {
+		action='explosion',
+		foregroundRadius=math.abs(mcontroller.velocity()[2])/5.4,
+		backgroundRadius=0,
+		explosiveDamageAmount= self.explosivedamage,
+		harvestLevel = 99,
+		delaySteps=2
+	      }
+	    } 
+	  }   	  
+	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
+	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
 	end
 	
         if self.mechMass >= 15 and (self.explosivedamage) >= 40 then 
