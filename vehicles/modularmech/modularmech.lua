@@ -865,7 +865,7 @@ function update(dt)
 	  self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2
 	  -- sb.logInfo("value = "..self.baseDamageMechfall)	  
 	  
-	if (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
+	if (self.mechMass) >= 12 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
 	  storage.energy = math.max(0, storage.energy - (self.baseDamage /50))
 	end
 	
