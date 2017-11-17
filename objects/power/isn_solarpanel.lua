@@ -59,13 +59,11 @@ function getLight(location)
 end
 
 function isn_powerGenerationBlocked()
-	-- Power generation does not occur if...
-	local location = isn_getTruePosition()
-	if world.type == 'unknown' then return true -- it's on a ship
-	elseif world.underground(location) then return true -- it's underground
-	elseif world.lightLevel(location) < 0.2 then return true end -- its light enough
-end
-
+    -- Power generation does not occur if...
+    local location = isn_getTruePosition()
+    return world.type == 'unknown' or world.underground(location) or world.lightLevel(location) < 0.2
+end	
+	
 function isn_getTruePosition()
   storage.truepos = storage.truepos or {entity.position()[1] + math.random(2,3), entity.position()[2] + 1}
   return storage.truepos
