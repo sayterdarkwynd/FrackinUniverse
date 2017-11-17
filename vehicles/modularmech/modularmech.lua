@@ -860,7 +860,12 @@ function update(dt)
 	  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,55)
 	  self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,300)
 	  self.appliedDamage = self.baseDamage /2
-	if (self.baseDamage) >= 205 and (self.jumpBoostTimer) == 0 then  -- if it falls too hard, the mech takes some damage based on how far its gone (max 55)
+	  
+	-- if it falls too hard, the mech takes some damage based on how far its gone
+	  self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2
+	  -- sb.logInfo("value = "..self.baseDamageMechfall)	  
+	  
+	if (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
 	  storage.energy = math.max(0, storage.energy - (self.baseDamage /50))
 	end
 	
