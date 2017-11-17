@@ -61,7 +61,7 @@ end
 function isn_powerGenerationBlocked()
     -- Power generation does not occur if...
     local location = isn_getTruePosition()
-    return world.type == 'unknown' or world.underground(location) or world.lightLevel(location) < 0.2
+    return world.underground(location) or world.lightLevel(location) < 0.2 --or world.type == 'unknown'
 end	
 	
 function isn_getTruePosition()
