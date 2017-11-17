@@ -45,6 +45,12 @@ function swapMM(name)
             table.insert(swapItem.parameters.upgrades, "paintmode")
         end
 
+        -- give new MMs the liquid collection upgrade if they have liquid collection enabled by default
+        if root.itemConfig(swapItem).config.canCollectLiquid and not contains(swapItem.parameters.upgrades or {}, "liquidcollection") then
+            swapItem.parameters.upgrades = swapItem.parameters.upgrades or {}
+            table.insert(swapItem.parameters.upgrades, "liquidcollection")
+        end
+
         if mm.name == origTool("beamaxe") then
             swapItem.parameters.originalMM = mm
 
