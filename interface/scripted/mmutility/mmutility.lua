@@ -165,7 +165,7 @@ function setSpinnersEnabled()
     --widget.setChecked("collectBlocksCheckbox", getStat(mm, "harvestLevel") == 99)
 
     local paint = player.essentialItem("painttool")
-    if paint and paint.name ~= "painttool" then
+    if not paint or paint.name ~= "painttool" then
         widget.setFontColor("paintSizeLabel", "darkgray")
         widget.setFontColor("paintSizeSpinnerLB", "darkgray")
         widget.setFontColor("altPaintSizeLabel", "darkgray")
