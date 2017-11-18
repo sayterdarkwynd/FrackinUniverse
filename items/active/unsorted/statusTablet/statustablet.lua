@@ -1,11 +1,12 @@
-function activate(fireMode)
-    if fireMode == "primary" then
+function activate(fireMode, shiftHeld)
+    if shiftHeld then
+        activeItem.interact("ScriptPane", "/interface/scripted/mmutility/mmutility.config")
+    elseif fireMode == "primary" then
 		activeItem.interact("ScriptPane", "/interface/scripted/statWindow/statWindow.config")
-		animator.playSound("activate")
 	elseif fireMode == "alt" then
 		activeItem.interact("ScriptPane", "/interface/scripted/fu_tutorialQuestList/fu_tutorialQuestList.config")
-		animator.playSound("activate")
 	end
+    animator.playSound("activate")
 end
 
 
