@@ -61,7 +61,7 @@ function populateQueslineList()
 			widget.setData(path..".banner", tbl.id)
 			widget.setImage(path..".banner", "/interface/scripted/fu_tutorialQuestList/banners/"..tbl.id..".png:default")
 			
-			if status.resource("fuQueslineComplet_"..tbl.id) > 0 then
+			if status.statusProperty("fuQueslineComplet_"..tbl.id, false) then
 				widget.setVisible(path..".completeImage", true)
 			else
 				local complete = true
@@ -78,7 +78,7 @@ function populateQueslineList()
 				
 				if complete then
 					widget.setVisible(path..".completeImage", true)
-					status.setResource("fuQueslineComplet_"..tbl.id, 1)
+					status.setStatusProperty("fuQueslineComplet_"..tbl.id, true)
 					pane.playSound("/sfx/objects/colonydeed_partyhorn.ogg")
 					
 					if tbl.moneyRange then
@@ -473,4 +473,3 @@ function questButton()
 		widget.setButtonEnabled("questButton", false)
 	end
 end
-
