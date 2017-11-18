@@ -914,8 +914,21 @@ function onInteraction(args)
 end
 
 function applyDamage(damageRequest)
+ 
   local energyLost = math.min(storage.energy, damageRequest.damage * (1 - self.protection))
-
+  
+  -- FU damage resistance from Mass********************************************************
+  self.massProtection = self.parts.body.stats.protection * ((self.parts.body.stats.mechMass)/10)
+  self.rand= math.random(10)
+  if (self.parts.body.stats.protection) >=4 
+    and (energyLost) <= (self.massProtection) 
+    and (self.rand) <= 1 then 
+      energyLost = 0
+      animator.playSound("landingThud") 
+      animator.burstParticleEmitter("blockDamage")
+  end  
+  
+  
   storage.energy = storage.energy - energyLost
 
   if storage.energy == 0 then
