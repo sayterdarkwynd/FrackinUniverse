@@ -5,7 +5,7 @@
 -----     Adding a new questline     -----
 ------------------------------------------
 
-Add a table into the "lines" array, and fill in the following variables:
+Add a table into the "lines" array, and fill in the following variables: ( * means optional)
 	id				- A string used as the questlines identifier. This is NOT displayed to the user. The display name is added separetly in a different table.
 	sublines		- An array holding strings of subline IDs. Sublines hold quests, and by adding a subline to the questline you're adding them to the questline. Added in a separate table.
 *	requirements	- An array of questIds the player has to complete before the questline is accessible.
@@ -72,21 +72,6 @@ There is a template named "example" in the same folder you can use as a base
 ------------------------------------------
 --------     More Information     --------
 ------------------------------------------
-
-You **MUST** add a new resource to the player for each new questline you add.
-Just copy paste this into the "player.config.patch" file and replace "tutorial" with the name of the questline
-
-{
-	"op": "add",
-	"path": "/statusControllerSettings/resources/fuQueslineComplet_tutorial",
-	"value": {
-		"maxValue" : 1,
-		"deltaValue" : 0,
-		"initialValue" : 0
-	}
-}
-
-----------
 
 Quests can be secret too, but instead of being hidden from the player like the questline, they display as "???" without any information.
 To tag a quest as secret, simply add   "secret" : true,   to the quests .questtemplate file
@@ -160,7 +145,3 @@ Example for a full questData.config file with 3 queslines (one hidden), 4 sublin
 		}
 	}
 }
-
-
-
-
