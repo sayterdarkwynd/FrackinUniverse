@@ -28,12 +28,11 @@ end
 --------------------------------------------------------------------------------
 function shoggothChargeAttack.update(dt, stateData)
   if not hasTarget() then return true end
-
   local toTarget = world.distance(self.targetPosition, mcontroller.position())
   local targetDir = util.toDirection(toTarget[1])
 
   if not stateData.swiping then 
-
+    
     --projectile interval check and spawn
     if stateData.currentPeriod < 0 then
       if isBlocked() then
@@ -44,6 +43,11 @@ function shoggothChargeAttack.update(dt, stateData)
           table.insert(crashTiles, monster.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
         end
       end
+      
+      self.randValNum = math.random(100)
+      if self.randValNum >=90 then
+        animator.playSound("idleBreath")
+      end      
       animator.playSound("shoggothChomp")
       world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 30)
     end

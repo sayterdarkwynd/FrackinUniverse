@@ -1,0 +1,35 @@
+{
+  "objectName" : "fu_shipengine",
+  "rarity" : "essential",
+  "colonyTags" : [ "science" ],
+  "category" : "furniture",
+  "description" : "An engine for a space ship. Allows you to travel through space. Requires an FTL drive to leave the solar system.",
+  "shortdescription" : "^cyan;Ship Engine^white;",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "fu_shipengineicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_shipengine_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_shipengine.animation",
+  "animationParts" : {
+    "screen" : "fu_shipengine_screen.png",
+    "fans" : "fu_shipengine_fans.png",
+    "base" : "fu_shipengine_base.png"
+  },
+  "animationPosition" : [0, 0],
+  
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "capabilities" : [
+    "planetTravel"
+  ],
+  "maxAmount" : 1
+}

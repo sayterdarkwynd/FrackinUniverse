@@ -13,12 +13,13 @@
   "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
   "twoHanded" : true,
 
+  "learnBlueprintsOnPickup" : [ "furepairgun2" ],
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "repairgun.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
+    "muzzleFlash" : "/animations/muzzleflash/fuelectricmuzzle.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -26,7 +27,7 @@
     }
   },
 
-  "baseOffset" : [0.78, -0.12],
+  "baseOffset" : [1.3, 0],
   "muzzleOffset" : [1.2, 0.225],
 
   "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
@@ -36,14 +37,14 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1,
+    "fireTime" : 0.1,
     "baseDps" : 1,
-    "energyUsage" : 144,
+    "energyUsage" : 20,
     "inaccuracy" : 0.032,
     "projectileCount" : 1,
     "fireType" : "auto",
     
-    "projectileType" : "fumechenergypickup",
+    "projectileType" : "fumechenergypickupminor",
     "projectileParameters" : { 
       "speed" : 5,
       "knockback" : 2,

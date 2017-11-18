@@ -48,13 +48,14 @@ function miniShoggothSpawnAttack.update(dt, stateData)
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == config.getParameter("miniShoggothSpawnAttack.windupTime") then
-      animator.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle2")
       end
       stateData.windupTimer = stateData.windupTimer - dt
 
     -- additional step here: iterate through three spits first
     elseif stateData.attacksLeft > 0 then
       if stateData.periodTimer < 0 then
+        animator.playSound("squish")
         miniShoggothSpawnAttack.spit(toTarget)
         stateData.periodTimer = 1
         stateData.attacksLeft = stateData.attacksLeft - 1

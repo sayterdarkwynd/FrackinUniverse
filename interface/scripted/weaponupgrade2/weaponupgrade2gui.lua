@@ -117,11 +117,10 @@ function doUpgrade()
 		  if (itemConfig.parameters.baseDps) or (itemConfig.config.baseDps) then
 		    upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/20) )  -- increase DPS a bit
 		  end
-		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 1  -- increase Crit Chance
+		  
+		  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 0.5  -- increase Crit Chance
 		  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage    
-                  
 
-                 
 		 -- set Rarity
 		 if upgradedItem.parameters.level ==4 then
 		   upgradedItem.parameters.rarity = "uncommon"

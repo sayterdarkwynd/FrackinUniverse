@@ -31,7 +31,7 @@ function init()
   self.playTyping = true
 
   self.state = FSM:new()
-  if not contains(player.shipUpgrades().capabilities, "planetTravel") then
+  if not contains(player.shipUpgrades().capabilities, "planetTravel") and (not world.getProperty("fu_byos.planetTravel") or world.getProperty("fu_byos.planetTravel") <= 0) then
     self.state:set(disabledState)
   elseif celestial.skyInHyperspace() and celestial.currentSystem() then
     self.state:set(transitState)
@@ -684,7 +684,9 @@ function universeScreenState(startSystem)
           self.travel = {}
         end
       elseif self.travel.confirmed == nil then
-        showJumpDialog(self.travel.system, self.travel.target)
+		if contains(player.shipUpgrades().capabilities, "planetTravel") or world.getProperty("fu_byos.systemTravel") > 0 then
+		  showJumpDialog(self.travel.system, self.travel.target)
+		end
       end
     end
 

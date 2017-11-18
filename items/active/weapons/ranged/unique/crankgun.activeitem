@@ -1,0 +1,83 @@
+{
+  "itemName" : "crankgun",
+  "price" : 120,
+  "inventoryIcon" : "crankgun_sacre.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Fires bursts of nasty sharpened flechettes.
+^yellow;Inflicts bleeding^reset;",
+  "shortdescription" : "Crank Cannon",
+  "category" : "shotgun",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Shotgun",
+  "itemTags" : ["weapon","ranged","shotgun", "upgradeableWeapon"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "crankgun_sacre.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/nailgun.ogg" ],
+      "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
+    },
+    "lights" : { "muzzleFlash" : {"color" : [55, 55, 84] } }     
+  },
+
+  "baseOffset" : [1.5, 0.32],
+  "muzzleOffset" : [1.645, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.4,
+    "baseDps" : 9.6,
+    "energyUsage" : 31,
+    "inaccuracy" : 0.07,
+
+    "projectileCount" : 6,
+    "fireType" : "auto",
+    "projectileType" : "rustynail",
+
+    "stances" : {
+      "idle":{  
+        "armRotation":0,
+        "weaponRotation":0,
+        "twoHanded":false,
+        "allowRotate":true,
+        "allowFlip":true
+      },
+      "fire":{  
+        "duration":0.1,
+        "armRotation":3,
+        "weaponRotation":8,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "cooldown":{  
+        "duration":0.2,
+        "armRotation":-7,
+        "weaponRotation":-360,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      }
+    }
+  },
+
+  "critChance" : 5,
+  "critBonus" : 3,
+  "isReloader" : 1,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

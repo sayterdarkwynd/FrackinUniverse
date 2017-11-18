@@ -205,6 +205,29 @@
   ],
   
   
+  "fuprecursorLootBoss" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1.0, "item" : ["essence", 1500]}
+      ],    
+      "pool" : [
+        {"weight" : 0.1, "pool" :  "fuEssence" },
+        {"weight" : 0.2, "pool" :  "fuprecursorLore" },
+        {"weight" : 0.5, "pool" :  "fuprecursorResources" },
+        {"weight" : 0.1, "pool" :  "fuprecursorWeapons" },
+        {"weight" : 0.007, "pool" : "artifactloot" },
+        {"weight" : 0.07, "pool" : "augments"},
+        {"weight" : 0.07, "pool" : "petcollars2"}
+      ],
+      "poolRounds" : [
+        [0.33, 1],
+        [0.43, 2],
+        [0.53, 3]
+      ],
+      "allowDuplication" : true
+    } ]
+  ],
+  
   
   "fuStrangeFood" : [
     [1, {

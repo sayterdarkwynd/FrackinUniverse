@@ -1,0 +1,61 @@
+{
+  "objectName" : "fu_shipcraftingtable",
+  "colonyTags" : ["crafting"],
+  "rarity" : "Essential",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fu_shipcraftingtable.config",
+	"filter" : [ "fu_shipcrafting" ],
+	"initialRecipeUnlocks" : ["fu_byoscaptainschair", "fu_byosfuelhatch", "fu_byosshipdoor", "fu_byosshiphatch", "fu_byosshiplocker", "fu_byostechstationdeco", "fu_byosteleporterdeco", "fu_byospethouse", "fu_racialiser", "SIV_shipApexEdgeMed", "SIV_shipApexEdgeSmall", "SIV_shipApexGunDecoLarge", "SIV_shipApexGunDecoMed", "SIV_shipApexGunDecoSmall", "SIV_shipApexGunPlatformLarge", "SIV_shipApexGunPlatformMed", "SIV_shipApexGunPlatformSmall", "SIV_shipApexPad1", "SIV_shipApexPad2", "SIV_shipApexPlatformSec1", "SIV_shipApexPlatformSec2", "SIV_shipApexTrimBlock", "SIV_shipApexTrimEdge", "SIV_shipApexTrimPlatform", "SIV_shipArmorPadRoof", "SIV_shipArmorPadSide", "SIV_shipArmorSmall", "SIV_shipAvianCapHalf", "SIV_shipAvianGem", "SIV_shipAvianGemCap", "SIV_shipAvianGunDecoSqr", "SIV_shipAvianLower", "SIV_shipAvianSlope", "SIV_shipAvianSlopeEdge", "SIV_shipBlueMid1", "SIV_shipBlueMid2", "SIV_shipBlueMidSlope1", "SIV_shipBlueMidSlope2", "SIV_shipBlueSlope1", "SIV_shipBlueSlope2", "SIV_shipBlueSlope3", "SIV_shipBlueSlopeDouble", "SIV_shipBlueSlopeStripe1", "SIV_shipGlitchTower", "SIV_shipGlitchTowerSide", "SIV_shipGlitchTrimSlope", "SIV_shipGlitchTrimThin", "SIV_shipGlitchWedge", "SIV_shipGlitchWedgeSide", "SIV_shipHumanGunDecoSmall", "SIV_shipHumanWingBend", "SIV_shipHumanWingStrait", "SIV_shipHylotlGunDecoMed", "SIV_shipHylotlWingHuge", "SIV_shipIntakeBody", "SIV_shipIntakeFront", "SIV_shipIntakeSide", "SIV_shipRadBody", "SIV_shipRadFront", "SIV_shipRadRound", "SIV_shipTrimThin", "SIV_shipTrimThinDark", "SIV_shipTrimThinFront", "SIV_shipTrimThinFrontDark", "fu_ftldrivedeco", "fu_byoscaptainschairdeco"]
+  },
+  "printable" : false,
+  "description" : "Used to produce ship components.",
+  "shortdescription" : "^orange;Ship Component Assembler^white;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "lightColor" : [ 0, 103, 162],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+  
+  "inventoryIcon" : "fu_shipcraftingtableicon.png",
+  "orientations" : [
+    {
+      "image" : "fu_shipcraftingtable.png:<frame>",
+      "flipImages" : true,
+      "imagePosition" : [-32, 0],
+      "animationPosition" : [-32, 0],
+      "frames" : 41,
+      "animationCycle" : 4.1,
+
+      "lightPosition" : [1, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "fu_shipcraftingtable.png:<frame>",
+      "imagePosition" : [-32, 0],
+      "animationPosition" : [-32, 0],
+      "frames" : 41,
+      "animationCycle" : 4.1,
+
+      "lightPosition" : [-1, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "fu_shipcraftingtable.animation",
+  "animationParts" : {
+    "bg" : "fu_shipcraftingtable.png",
+    "fg" : "fu_shipcraftingtablefullbright.png"
+  }
+}

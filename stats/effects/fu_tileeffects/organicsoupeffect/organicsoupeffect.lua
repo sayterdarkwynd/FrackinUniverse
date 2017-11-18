@@ -28,7 +28,7 @@ function update(dt)
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
 	  if (hungerLevel < hungerMax) then
-	    adjustedHunger = hungerLevel + (hungerLevel * 0.011)
+	    adjustedHunger = hungerLevel + (hungerLevel * 0.015)
 	    status.setResource("food", adjustedHunger)
 	  end
   end

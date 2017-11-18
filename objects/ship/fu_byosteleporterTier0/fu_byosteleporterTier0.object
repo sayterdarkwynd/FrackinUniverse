@@ -1,0 +1,57 @@
+{
+  "objectName" : "fu_byosteleporterTier0",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  
+  "category" : "decorative",
+  "description" : "Trusty teleporter, what would we do without you?",
+  "shortdescription" : "Teleporter",
+  "race" : "generic",
+
+  "apexDescription" : "The ship's teleporter. I need to power it up.",
+  "avianDescription" : "The teleporter! If only this one was powered up.",
+  "floranDescription" : "Ship teleporter. This one dead.",
+  "glitchDescription" : "Disappointed. A teleporter without power. I need to power it up.",
+  "humanDescription" : "The teleporter! Too bad it isn't powered up.",
+  "hylotlDescription" : "This teleporter is off.",
+  "novakidDescription" : "Ship's teleporter. I need to power her up!",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [ ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "fu_byosteleportericonTier0.png",
+  "orientations" : [
+    {
+      "image" : "fu_byosteleporterTier0.png:<color>",
+
+      "imagePosition" : [-32, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [-2, 9], [-1, 9], [0, 9], [1, 9] ],
+
+      "sitPosition" : [-8, 8]
+    }
+  ],
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua"
+  ],
+  
+  "sounds" : [ "/sfx/interface/clickon_error.ogg" ],
+
+  "soundEffect" : "/sfx/objects/shipengine.ogg",
+  "soundEffectRangeMultiplier" : 1.5
+  
+}

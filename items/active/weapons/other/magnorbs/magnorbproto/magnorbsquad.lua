@@ -2,6 +2,7 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/status.lua"
 require "/scripts/activeitem/stances.lua"
+require "/items/active/weapons/crits.lua"
 
 function init()
   activeItem.setCursor("/cursors/reticle0.cursor")
@@ -50,49 +51,6 @@ function init()
   updateHand()
 end
 
-  -- *******************************************************
-  -- FU Crit Damage Script
-
-function setCritDamageBoomerang(damage)
-     -- check their equipped weapon
-     -- Primary hand, or single-hand equip  
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     --used for checking dual-wield setups
-     local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
-     local weaponModifier = config.getParameter("critChance",0)
-     
-  if heldItem then
-      if root.itemHasTag(heldItem, "magnorb") then
-        self.critChance = 1 + weaponModifier
-      end
-  end
-    --sb.logInfo("crit chance base="..self.critChance)
-  
-  --critBonus is bonus damage done with crits
-  self.critBonus = ( ( ( (status.stat("critBonus") + config.getParameter("critBonus",0)) * self.critChance ) /100 ) /2 ) or 0  
-  -- this next modifier only applies if they have a multiply item equipped
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0)+ status.stat("critChanceMultiplier",0)+ status.stat("critChance",0)) 
-  -- random dice roll. I've heavily lowered the chances, as it was far too high by nature of the random roll.
-  self.critRoll = math.random(200)
-  
-  --apply the crit
-  local crit = self.critRoll <= self.critChance
-    --sb.logInfo("crit roll="..self.critRoll)
-  damage = crit and (damage*2) + self.critBonus or damage
-
-  if crit then
-    if heldItem then
-      -- exclude mining lasers
-      if not root.itemHasTag(heldItem, "mininggun") then 
-        status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
-      end
-    end
-  end
-
-  return damage
-end
-  -- *******************************************************
-
 function update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(0, self.cooldownTimer)
 
@@ -105,7 +63,7 @@ function update(dt, fireMode, shiftHeld)
       status.addEphemeralEffect("mage_shield_lvl1")
        status.setPersistentEffects("protomagnorb", {
         {stat = "protoImmunity", amount = 1}
-      })       
+      })
     end
     setOrbAnimationState("shield")
     self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
@@ -193,12 +151,12 @@ function fire(orbIndex)
   local params = copy(self.projectileParameters)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.ownerAimPosition = activeItem.ownerAimPosition()
-  
-  params.power = setCritDamageBoomerang(params.power)
-  
+
+  params.power = Crits.setCritDamage(self, params.power)
+
   local firePos = firePosition(orbIndex)
   if status.resourcePositive("energy") and not status.resourceLocked("energy") then
-  
+
 	  if world.lineCollision(mcontroller.position(), firePos) then return end
 	  local projectileId = world.spawnProjectile(
 	      self.projectileType,
@@ -217,7 +175,7 @@ function fire(orbIndex)
      self.energyCost = 5 * config.getParameter("level", 1)
      status.overConsumeResource("energy", self.energyCost)
   end
-  
+
 end
 
 function firePosition(orbIndex)

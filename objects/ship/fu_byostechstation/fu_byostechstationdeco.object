@@ -1,0 +1,65 @@
+{
+  "objectName" : "fu_byostechstationdeco",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "interactAction" : "OpenAiInterface",
+
+  "category" : "decorative",
+
+  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short.",
+  "shortdescription" : "S.A.I.L Interface",
+  "race" : "generic",
+
+  "lightColor" : [61, 88, 102],
+  "lightPosition" : [-1, 0],
+
+  "apexDescription" : "I can talk to SAIL through this console.",
+  "avianDescription" : "I can use this station to talk to SAIL.",
+  "floranDescription" : "Floran use thisss magic panel to talk to SAIL!",
+  "glitchDescription" : "Happy. This station allows me to talk to SAIL.",
+  "humanDescription" : "This station allows me to communicate with SAIL.",
+  "hylotlDescription" : "This console allows me to communicate with SAIL.",
+  "novakidDescription" : "This here station lets me talk with SAIL.",
+
+  "inventoryIcon" : "/objects/ship/techstation/apexrecordplayericon.png",
+  "placementImage" : "/objects/ship/techstation/techstation.png:default.0",
+  "placementImagePosition" : [-16, -8],
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/fu_byostechstation/fu_byostechstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/fu_byostechstation/fu_byostechstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 32,
+      "animationCycle" : 3.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+	  "spaces" : [
+	  [-2,1],  [-1,1],  [0,1],
+	  [-2,0],  [-1,0],  [0,0],
+	  [-2,-1], [-1,-1], [0,-1]
+	  ]
+
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/techstation/techstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/techstation/techstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 32,
+      "animationCycle" : 3.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+  
+  "scripts" : ["/objects/ship/fu_byosobjectdeath.lua"],
+  "animation" : "/objects/ship/techstation.animation",
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
+  "racialiserType" : "techstation",
+  "retainObjectParametersInItem" : true
+}

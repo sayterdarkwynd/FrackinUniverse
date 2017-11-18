@@ -46,11 +46,19 @@ function fleshBombAttack.update(dt, stateData)
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == config.getParameter("fleshBombAttack.windupTime") then
-      animator.setAnimationState("movement", "idle")
+      animator.setAnimationState("movement", "idle4")
+      
+      self.randValNum = math.random(100)
+      if self.randValNum >=80 then
+        animator.playSound("attackMain")
+      end      
+	  animator.setParticleEmitterOffsetRegion("chargeUp", mcontroller.boundBox())
+	  animator.setParticleEmitterActive("chargeUp", true)       
       end
       stateData.windupTimer = stateData.windupTimer - dt
     elseif stateData.winddownTimer > 0 then
       if stateData.winddownTimer == config.getParameter("fleshBombAttack.winddownTime") then
+        animator.playSound("fleshBomb")
         fleshBombAttack.bomb(toTarget)
       end
       stateData.winddownTimer = stateData.winddownTimer - dt
