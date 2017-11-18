@@ -1,0 +1,298 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 16,
+            "cycle" : 1.0,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "charge1", "charge2", "charge3" ],
+              "persistentSound" : "/sfx/npc/monsters/kluexsentry_fly_loop.ogg"
+            }
+          },
+          "fly" : {
+            "frames" : 16,
+            "cycle" : 1.0,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "charge1", "charge2", "charge3" ],
+              "persistentSound" : "/sfx/npc/monsters/kluexsentry_fly_loop.ogg"
+            }
+          },
+          "fire" : {
+            "frames" : 22,
+            "cycle" : 0.7,
+            "properties" : {
+              "particleEmittersOff" : [ "charge1", "charge2", "charge3" ],
+              "immediateSound" : "/sfx/npc/monsters/kluexsentry_windup2.ogg",
+              "persistentSound" : "/sfx/npc/monsters/kluexsentry_fly_loop.ogg"
+            }
+          },
+          "fire2" : {
+            "frames" : 22,
+            "cycle" : 0.7,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/kluexsentry_windup2.ogg",
+              "persistentSound" : "/sfx/npc/monsters/kluexsentry_fly_loop.ogg",
+              "particleEmittersOff" : [ "charge2", "charge3"  ],
+              "particleEmittersOn" : [ "charge1" ]                         
+            }
+          },
+          "fire3" : {
+            "frames" : 22,
+            "cycle" : 0.7,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/kluexsentry_windup2.ogg",
+              "persistentSound" : "/sfx/npc/monsters/kluexsentry_fly_loop.ogg",
+              "particleEmittersOff" : [ "charge1", "charge3"  ],
+              "particleEmittersOn" : [ "charge2" ]                         
+            }
+          },
+          "fire4" : {
+            "frames" : 22,
+            "cycle" : 0.7,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/kluexsentry_windup2.ogg",
+              "persistentSound" : "/sfx/npc/monsters/kluexsentry_fly_loop.ogg",
+              "particleEmittersOff" : [ "charge1", "charge2" ],
+              "particleEmittersOn" : [ "charge3" ]              
+            }
+          }          
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0, 0],
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "fire4" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            }            
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "bodylit" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0, 0],
+          "zLevel" : 2,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "fire4" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "charge1" : {
+      "emissionRate" : 3,
+      "particles" : [
+        { "particle" : "sparkle1" },
+        { "particle" : "sparkle2" },
+        { "particle" : "sparkle3" }
+      ]
+    },  
+    "charge2" : {
+      "emissionRate" : 2,
+      "particles" : [
+        { "particle" : "sparkle4" },
+        { "particle" : "sparkle5" },
+        { "particle" : "sparkle6" }
+      ]
+    },  
+    "charge3" : {
+      "emissionRate" : 1,
+      "particles" : [
+        { "particle" : "astraltearsparkle1" },
+        { "particle" : "astraltearsparkle2" },
+        { "particle" : "astraltearsparkle3" }
+      ]
+    },      
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "electricswoosh1" },
+        { "particle" : "electricswoosh2" },
+        { "particle" : "electricswoosh1" },
+        { "particle" : "electricswoosh2" },
+        
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [60, 15, 15],
+      "pointLight" : true,
+      "anchorPart" : "body"
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "fire" : [ "/sfx/melee/giantsword_charge_full.ogg" ]
+  }
+}

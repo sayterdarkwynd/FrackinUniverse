@@ -1,0 +1,89 @@
+{
+  "itemName" : "furelicshield",
+  "price" : 800,
+  "maxStack" : 1,
+  "level" : 1,
+  "rarity" : "rare",
+  "shortdescription" : "Relic Shield",
+  "category" : "shield",
+  "tooltipKind" : "shieldnew",  
+  "description" : "^green;+10% Shieldbash, +3% Crit^reset;",
+  "twoHanded" : false,
+  "itemTags" : ["shield", "upgradeableWeapon"],
+
+  "inventoryIcon" : "images/boneshield.png:nearidle",
+
+  "animation" : "shield.animation",
+  "animationParts" : {
+    "shield" : "images/boneshield.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "raiseShield" : [ "/sfx/melee/sword_guard.ogg" ],
+      "perfectBlock" : [ "/sfx/melee/shield_block_floran_perfect.ogg" ],
+      "shieldBash" : [ "/sfx/melee/blunt_hit_metal3.ogg", "/sfx/melee/dagger_hit_metal1.ogg" ],
+      "block" : [ "/sfx/melee/shield_block_floran.ogg" ],
+      "break" : [ "/sfx/melee/shield_break_floran.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/items/active/shields/shield.lua" ],
+
+  // ***************   FU shield properties    *********************
+  // if using shield2.lua, you must include these values
+  "shieldHealthRegen" : 0,
+  "shieldEnergyRegen" : 0.08,
+  "shieldHealthBonus" : 0.06,
+  "shieldEnergyBonus" : 0,
+  "shieldBash" : 10,
+  "shieldBashPush" : 4,  
+  "shieldProtection" : 0,
+  "shieldStamina" : 0.05,
+  "shieldFalling" : 0, 
+  "shieldCritChance" : 3,
+  "shieldCritBonus" : 0,      
+  "protectionBee" : 0,
+  "protectionAcid" : 0,
+  "protectionBlacktar" : 0,
+  "protectionBioooze" : 0,
+  "protectionPoison" : 0,
+  "protectionLava" : 0,
+  "protectionFire" : 0,
+  "protectionProto" : 0,
+  "protectionCold" : 0,
+  "protectionHeat" : 0,
+  "protectionRads" : 0,
+  "protectionXCold" : 0,
+  "protectionXHeat" : 0,
+  "protectionXRads" : 0,
+  "protectionInsanity" : 0, 
+  "protectionShock" : 0,
+  "protectionSlime" : 0,
+  // end FU shield properties
+
+  "minActiveTime" : 0.2,
+
+  "forceWalk" : true,
+  "baseShieldHealth" : 50,
+  "cooldownTime" : 0.55,
+
+  "perfectBlockDirectives" : "?border=4;CCAA55FF;00000000",
+  "perfectBlockTime" : 0.25,
+  
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "raised" : {
+      "armRotation" : 0,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  },
+
+  "builder" : "/items/buildscripts/fubuildunrandshield.lua"
+}
