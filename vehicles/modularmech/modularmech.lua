@@ -684,8 +684,22 @@ function update(dt)
     if math.floor(self.legCycle * 2) ~= math.floor(newLegCycle * 2) then
       triggerStepSound()   
       -- mech ground thump damage (FU)
-      self.thumpParamsMini = { power = self.mechMass, damageTeam = {type = "friendly"} }
-      if self.mechMassBase > 3 then  -- 3 tonne minimum        
+      self.thumpParamsMini = { 
+        power = self.mechMass, 
+        damageTeam = {type = "friendly"},
+	  actionOnReap = {
+	      {
+		action='explosion',
+		foregroundRadius=2,
+		backgroundRadius=0,
+		explosiveDamageAmount= 0.25,
+		harvestLevel = 99,
+		delaySteps=2
+	      }
+	    }        
+      }
+    
+      if self.mechMassBase > 4 then  -- 4 tonne minimum or tiles dont suffer at all.       
         world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
       end
     end
