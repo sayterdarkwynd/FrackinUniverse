@@ -29,7 +29,7 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 2.0,
+          "cooldown" : 4.0,
           "parameters" : {
             "onGround" : false,
             "requireLineOfSight" : true,
@@ -40,6 +40,8 @@
             "windupStopForce" : 200,
 
             "projectileType" : "energycrystal",
+            "projectileParameters" : { "power":9 },
+            
             "fireOffset" : [0, -2.0],
             "fireSound" : "fire",
             "fireState" : "",
@@ -56,13 +58,13 @@
             "requireLineOfSight" : true,
             "maximumRange" : 100,
             "minimumRange" : 2,
-            "windupState" : "fire2",
+            "windupState" : "fire3",
             "windupTime" : 1.6,
             "windupStopForce" : 200,
 
             "projectileType" : "flamethrowerff",
             "projectileCount" : 8,
-            "projectileParameters" : { "speed" : 30 },
+            "projectileParameters" : { "speed" : 10, "power" : 3 },
             "projectileInterval" : 0.03,
             "fireOffset" : [0, -2.0],
             "fireSound" : "fire2",
@@ -77,6 +79,32 @@
       "concurrentHostileActions" :[
         {
           "name" : "action-fire",
+          "cooldown" : 3,
+          "parameters" : {
+            "onGround" : false,
+            "requireLineOfSight" : true,
+            "maximumRange" : 100,
+            "minimumRange" : 2,
+            "windupState" : "fire2",
+            "windupTime" : 0.6,
+            "windupStopForce" : 200,
+
+            "projectileType" : "delayedplasmaball",
+            "projectileParameters" : { "power":10 },
+            
+            "fireOffset" : [0, -3.0],
+            "fireSound" : "fire",
+            "fireState" : "",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }       
+      ],    
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
           "cooldown" : 8.0,
           "parameters" : {
             "onGround" : false,
@@ -89,36 +117,12 @@
 
             "projectileType" : "energyassault",
             "projectileCount" : 12,
+            "projectileParameters" : { "power":8 },
             "projectileInterval" : 0,
             "inaccuracy" : 3.14,
             
             "fireOffset" : [0, -2.0],
-            "fireSound" : "fire",
-            "fireState" : "",
-
-            "winddownState" : "",
-            "winddownTime" : 0.1
-          }
-        } 
-      ],    
-      
-      "damageTakenActions" : [
-        {
-          "name" : "action-fire",
-          "cooldown" : 0.5,
-          "parameters" : {
-            "onGround" : false,
-            "requireLineOfSight" : true,
-            "maximumRange" : 100,
-            "minimumRange" : 2,
-            "windupState" : "fire3",
-            "windupTime" : 0.6,
-            "windupStopForce" : 200,
-
-            "projectileType" : "delayedplasmaball",
-
-            "fireOffset" : [0, -3.0],
-            "fireSound" : "fire",
+            "fireSound" : "fire3",
             "fireState" : "",
 
             "winddownState" : "",
@@ -174,8 +178,8 @@
 
       "teamType" : "enemy",
       "damageSourceKind" : "hammer",
-      "knockback" : 20,
-      "statusEffects" : [ ]
+      "knockback" : 40,
+      "statusEffects" : [ "slow" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -219,7 +223,7 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.15
         },
         "knockbackThreshold" : {
           "baseValue" : 9
