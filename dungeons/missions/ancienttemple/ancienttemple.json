@@ -13011,7 +13011,7 @@
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"treasurePools\" : [ \"basicChestTreasure\" ] }"
+                     "parameters":"{ \"treasurePools\" : [ \"basicChestTreasure\" ,\"salvageComponent\"] }"
                     },
                  "propertytypes":
                     {
@@ -13031,7 +13031,7 @@
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"treasurePools\" : [ \"basicChestTreasure\" ] }"
+                     "parameters":"{ \"treasurePools\" : [ \"basicChestTreasure\",\"salvageComponent\",\"salvageComponent\" ] }"
                     },
                  "propertytypes":
                     {
@@ -13051,7 +13051,7 @@
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"treasurePools\" : [ \"challengeChestTreasure\" ,\"salvageComponent\"] }"
+                     "parameters":"{ \"treasurePools\" : [ \"challengeChestTreasure\" ,\"salvageComponent\",\"salvageComponent\",\"salvageComponent\"] }"
                     },
                  "propertytypes":
                     {
@@ -13091,7 +13091,7 @@
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"treasurePools\" : [ \"basicChestTreasure\" ] }"
+                     "parameters":"{ \"treasurePools\" : [ \"basicChestTreasure\" ,\"salvageComponent\"] }"
                     },
                  "propertytypes":
                     {
@@ -13251,7 +13251,7 @@
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"treasurePools\" : [ \"chestMoney\",\"salvageComponent\" ] }"
+                     "parameters":"{ \"treasurePools\" : [ \"chestMoney\",\"salvageComponent\",\"salvageComponent\",\"salvageComponent\",\"salvageComponent\" ] }"
                     },
                  "propertytypes":
                     {
@@ -13311,7 +13311,7 @@
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"treasurePools\" : [ \"challengeChestTreasure\" ,\"salvageComponent\"] }"
+                     "parameters":"{ \"treasurePools\" : [ \"challengeChestTreasure\" ,\"salvageComponent\",\"salvageComponent\",\"salvageComponent\"] }"
                     },
                  "propertytypes":
                     {
@@ -13466,7 +13466,7 @@
                  "y":1632
                 }, 
                 {
-                 "height":48,
+                 "height":80,
                  "id":2213,
                  "name":"",
                  "properties":
@@ -13482,9 +13482,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":80,
+                 "width":40,
                  "x":3776,
-                 "y":2808
+                 "y":2792
                 }, 
                 {
                  "gid":508,
@@ -13953,6 +13953,142 @@
                  "width":8,
                  "x":952,
                  "y":1232
+                }, 
+                {
+                 "gid":3788,
+                 "height":16,
+                 "id":2338,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":3472,
+                 "y":2848
+                }, 
+                {
+                 "gid":3689,
+                 "height":8,
+                 "id":2339,
+                 "name":"",
+                 "properties":
+                    {
+                     "parameters":"{ \"detectArea\" : [ [-50, 30], [-2, 0] ], \"detectEntityTypes\" : [ \"player\" ]}"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":3728,
+                 "y":3112
+                }, 
+                {
+                 "gid":3104,
+                 "height":16,
+                 "id":2340,
+                 "name":"",
+                 "properties":
+                    {
+                     "parameters":"{ \"spawner\" : { \"monsterTypes\" : [\"kluexsentry2\"], \"monsterLevel\" : [2, 2], \"monsterParams\" : { \"aggressive\" : true }, \"position\" : [0, 0], \"positionVariance\" : [0, 0], \"frequency\" : [1, 2], \"stock\" : 1, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":3504,
+                 "y":2848
+                }, 
+                {
+                 "height":336,
+                 "id":2343,
+                 "name":"",
+                 "properties":
+                    {
+                     "parameters":"{ \"messageType\" : \"playAltMusic\", \"messageArgs\" : [[\"\/music\/fighter.ogg\"], 2.0] }",
+                     "stagehand":"messenger"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string",
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":520,
+                 "x":3184,
+                 "y":2776
+                }, 
+                {
+                 "height":104,
+                 "id":2344,
+                 "name":"",
+                 "properties":
+                    {
+                     "parameters":"{ \"messageType\" : \"playAltMusic\", \"messageArgs\" : [[\"\/music\/depth.ogg\"], 2.0] }",
+                     "stagehand":"messenger"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string",
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":384,
+                 "y":1416
+                }, 
+                {
+                 "height":136,
+                 "id":2345,
+                 "name":"",
+                 "properties":
+                    {
+                     "parameters":"{ \"messageType\" : \"playAltMusic\", \"messageArgs\" : [[\"\/music\/robotech.ogg\"], 2.0] }",
+                     "stagehand":"messenger"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string",
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":960,
+                 "y":1232
+                }, 
+                {
+                 "height":96,
+                 "id":2346,
+                 "name":"",
+                 "properties":
+                    {
+                     "parameters":"{ \"messageType\" : \"playAltMusic\", \"messageArgs\" : [[\"\/music\/floodedcomplex.ogg\"], 2.0] }",
+                     "stagehand":"messenger"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string",
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":72,
+                 "x":3704,
+                 "y":2776
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -19622,6 +19758,46 @@
                  "width":8,
                  "x":3616,
                  "y":2968
+                }, 
+                {
+                 "height":0,
+                 "id":2341,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":-264,
+                         "y":-272
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3736,
+                 "y":3104
+                }, 
+                {
+                 "height":0,
+                 "id":2342,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":24,
+                         "y":-8
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3480,
+                 "y":2840
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -19629,7 +19805,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2338,
+ "nextobjectid":2347,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "templategroups":[],

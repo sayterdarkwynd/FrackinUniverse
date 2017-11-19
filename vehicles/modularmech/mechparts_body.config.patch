@@ -1,6 +1,80 @@
 [
 	[
-
+  {
+    "op": "add",
+    "path": "/apexproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/avianproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/floranproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/glitchproto/stats/mechMass",
+    "value": 1
+  },  
+  {
+    "op": "add",
+    "path": "/hylotlproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/humanproto/stats/mechMass",
+    "value": 1
+  },  
+  {
+    "op": "add",
+    "path": "/novakidproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/pirate/stats/mechMass",
+    "value": 3
+  },  
+  {
+    "op": "add",
+    "path": "/penguin/stats/mechMass",
+    "value": 3
+  },  
+  {
+    "op": "add",
+    "path": "/cultist/stats/mechMass",
+    "value": 3
+  },  
+  {
+    "op": "add",
+    "path": "/reactor/stats/mechMass",
+    "value": 5
+  },  
+  {
+    "op": "add",
+    "path": "/avian/stats/mechMass",
+    "value": 2
+  },  
+  {
+    "op": "add",
+    "path": "/floran/stats/mechMass",
+    "value": 2
+  },
+  {
+    "op": "add",
+    "path": "/hylotl/stats/mechMass",
+    "value": 4
+  },
+  {
+    "op": "add",
+    "path": "/novakid/stats/mechMass",
+    "value": 3
+  },  
   {
     "op": "add",
     "path": "/military/stats/mechMass",
@@ -15,6 +89,16 @@
     "op": "add",
     "path": "/apex/stats/mechMass",
     "value": 4
+  },
+  {
+    "op": "add",
+    "path": "/shark/stats/mechMass",
+    "value": 6
+  },  
+  {
+    "op": "add",
+    "path": "/iris/stats/mechMass",
+    "value": 5
   },  
   {
     "op": "add",
@@ -25,6 +109,16 @@
     "op": "add",
     "path": "/human/stats/mechMass",
     "value": 5
+  },  
+  {
+    "op": "add",
+    "path": "/cultist2/stats/mechMass",
+    "value": 3
+  },  
+  {
+    "op": "add",
+    "path": "/protector/stats/mechMass",
+    "value": 7
   },  
   {
     "op": "add",
@@ -2046,7 +2140,7 @@
 	    "stats" : {
 	      "energy" : 3,
 	      "protection" : 4,
-	      "mechMass" : 4
+	      "mechMass" : 5
 	    },
 	    "partParameters" : {
 	      "hazardImmunities" : [
@@ -2092,7 +2186,8 @@
     "value" : {
 	    "stats" : {
 	      "energy" : 3,
-	      "protection" : 2
+	      "protection" : 2,
+	      "mechMass" : 2
 	    },
 	    "partParameters" : {
 	      "hazardImmunities" : [
@@ -2135,7 +2230,8 @@
     "value" : {
 	    "stats" : {
 	      "energy" : 4,
-	      "protection" : 3
+	      "protection" : 3,
+	      "mechMass" : 3
 	    },
 	    "partParameters" : {
 	      "hazardImmunities" : [
@@ -2342,6 +2438,7 @@
 	[
 	{ "op": "test", "path": "/rx78", "inverse" : false },
 	{ "op": "test", "path": "/rx78/partParameters", "inverse" : false },
+	
 	{ "op": "test", "path": "/rx78/partParameters/hazardImmunities", "inverse" : true },	
 
 		{
@@ -2387,7 +2484,8 @@
 	],
 	[
 	{ "op": "test", "path": "/dvamech", "inverse" : false },
-	{ "op": "test", "path": "/dvamech/partParameters", "inverse" : false },	
+	{ "op": "add","path": "/dvamech/stats/mechMass","value": 2 },	
+	{ "op": "test", "path": "/dvamech/partParameters", "inverse" : false },		
 	{ "op": "test", "path": "/dvamech/partParameters/hazardImmunities", "inverse" : true },		
 
 		{
@@ -2433,13 +2531,9 @@
 	],	
 	[
 	{ "op": "test", "path": "/xsm_thetamech", "inverse" : false },
-	{ "op": "test", "path": "/xsm_thetamech/partParameters", "inverse" : false },
-	
-	{ "op": "test", "path": "/xsm_thetamech/stats/mechMass", "inverse" : false },
 	{ "op": "add", "path": "/xsm_thetamech/stats/mechMass","value": 10 },
-	
-	{ "op": "test", "path": "/xsm_thetamech/partParameters/hazardImmunities", "inverse" : true },		
-
+	{ "op": "test", "path": "/xsm_thetamech/partParameters", "inverse" : false },
+	{ "op": "test", "path": "/xsm_thetamech/partParameters/hazardImmunities", "inverse" : true },	
 		{
 			"op": "add",
 			"path": "/xsm_thetamech/partParameters/hazardImmunities",
@@ -2480,14 +2574,11 @@
 				"heatweathernew"
 			]
 		}
-	],
+	],	
 	[
 	{ "op": "test", "path": "/xsm_piraterhomech", "inverse" : false },
-	{ "op": "test", "path": "/xsm_piraterhomech/partParameters", "inverse" : false },
-	
-	{ "op": "test", "path": "/xsm_piraterhomech/stats/mechMass", "inverse" : false },
 	{ "op": "add", "path": "/xsm_piraterhomech/stats/mechMass","value": 7 },
-	
+	{ "op": "test", "path": "/xsm_piraterhomech/partParameters", "inverse" : false },
 	{ "op": "test", "path": "/xsm_piraterhomech/partParameters/hazardImmunities", "inverse" : true },		
 
 		{
@@ -2527,10 +2618,8 @@
 	
 	[
 	{ "op": "test", "path": "/xsm_roninrhomech", "inverse" : false },
+	{ "op": "add","path": "/xsm_roninrhomech/stats/mechMass","value": 5 },
 	{ "op": "test", "path": "/xsm_roninrhomech/partParameters", "inverse" : false },
-	
-	{ "op": "test", "path": "/xsm_roninrhomech/stats/mechMass", "inverse" : false },
-	{ "op": "add", "path": "/xsm_roninrhomech/stats/mechMass","value": 5 },
 	
 	{ "op": "test", "path": "/xsm_roninrhomech/partParameters/hazardImmunities", "inverse" : true },	
 
@@ -2571,6 +2660,7 @@
 	],
 	[
 	{ "op": "test", "path": "/xsm_rhomech", "inverse" : false },
+        { "op": "add","path": "/xsm_rhomech/stats/mechMass","value": 5 },		
 	{ "op": "test", "path": "/xsm_rhomech/partParameters", "inverse" : false },
 	{ "op": "test", "path": "/xsm_rhomech/partParameters/hazardImmunities", "inverse" : true },		
 		{
@@ -2607,7 +2697,8 @@
 	],
 	[
 	{ "op": "test", "path": "/xsm_sigma", "inverse" : false },
-	{ "op": "test", "path": "/xsm_sigma/partParameters", "inverse" : false },
+        { "op": "add","path": "/xsm_sigma/stats/mechMass","value": 4 },	
+	{ "op": "test", "path": "/xsm_sigma/partParameters", "inverse" : false },	
 	{ "op": "test", "path": "/xsm_sigma/partParameters/hazardImmunities", "inverse" : true },		
 		{
 			"op": "add",
@@ -2651,6 +2742,7 @@
 	],
 	[
 	{ "op": "test", "path": "/xsm_elitesigma", "inverse" : false },
+        { "op": "add","path": "/xsm_elitesigma/stats/mechMass","value": 5 },	
 	{ "op": "test", "path": "/xsm_elitesigma/partParameters", "inverse" : false },
 	{ "op": "test", "path": "/xsm_elitesigma/partParameters/hazardImmunities", "inverse" : true },		
 
@@ -3151,6 +3243,7 @@
 	],
 	[
 	{ "op": "test", "path": "/mechbodyavali", "inverse" : false },
+	{ "op": "add", "path": "/mechbodyavali/stats/mechMass","value": 5 },	
 	{ "op": "test", "path": "/mechbodyavali/partParameters", "inverse" : false },
 	{ "op": "test", "path": "/mechbodyavali/partParameters/hazardImmunities", "inverse" : true },		
 		{

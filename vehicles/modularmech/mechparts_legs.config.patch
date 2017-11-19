@@ -1,5 +1,15 @@
 [
-
+  [
+  {
+    "op": "add",
+    "path": "/simple/stats/mechMass",
+    "value": 1
+  }, 
+  {
+    "op": "add",
+    "path": "/hopper/stats/mechMass",
+    "value": 2
+  },   
   {
     "op": "add",
     "path": "/twinjet/stats/mechMass",
@@ -10,6 +20,11 @@
     "path": "/arc/stats/mechMass",
     "value": 3
   },
+  {
+    "op": "add",
+    "path": "/sleek/stats/mechMass",
+    "value": 1
+  },   
   {
     "op": "add",
     "path": "/ronin/stats/mechMass",
@@ -25,8 +40,6 @@
     "path": "/hermes/stats/mechMass",
     "value": 3
   },
-  
-  
   {
     "op": "replace",
     "path": "/simple/stats/speed",
@@ -43,7 +56,8 @@
     "value" : {
     "stats" : {
       "speed" : 2,
-      "jump" : 2
+      "jump" : 2,
+      "mechMass" : 1
     },
     "partParameters" : {},
     "partImages" : {
@@ -66,7 +80,8 @@
     "value" : {
     "stats" : {
       "speed" : 3,
-      "jump" : 3
+      "jump" : 3,
+      "mechMass" : 1
     },
     "partParameters" : {},
     "partImages" : {
@@ -90,7 +105,7 @@
     "stats" : {
       "speed" : 2,
       "jump" : 4,
-      "mechMass" : 3
+      "mechMass" : 4
     },
     "partParameters" : {},
     "partImages" : {
@@ -114,7 +129,7 @@
     "stats" : {
       "speed" : 3,
       "jump" : 5,
-      "mechMass" : 4
+      "mechMass" : 5
     },
     "partParameters" : {},
     "partImages" : {
@@ -185,7 +200,8 @@
     "value": {
       "stats": {
         "speed": 4,
-        "jump": 8
+        "jump": 8,
+        "mechMass" : 2
       },
       "partParameters": {},
       "partImages": {
@@ -246,4 +262,17 @@
       "animationCustom": {}
     }
   }
+  ],
+	[
+	  { "op": "test", "path": "/xsm_thetamech", "inverse" : false },
+	  { "op": "add", "path": "/xsm_thetamech/stats/mechMass","value": 5 }	
+	],
+	[
+	  { "op": "test", "path": "/xsm_piraterhomech", "inverse" : false },
+	  { "op": "add", "path": "/xsm_piraterhomech/stats/mechMass","value": 4 }	
+	],
+	[
+	  { "op": "test", "path": "/dvamech", "inverse" : false },
+	  { "op": "add", "path": "/dvamech/stats/mechMass","value": 1 }	
+	]		
 ]

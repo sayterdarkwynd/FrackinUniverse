@@ -220,9 +220,10 @@ function updatePreview()
 
     local energyMax = params.parts.body.energyMax
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
-    local mechMass = params.parts.body.mechMass + params.parts.booster.mechMass + params.parts.legs.mechMass
     widget.setText("lblEnergy", string.format(self.energyFormat, energyMax))
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
+    
+    local mechMass = params.parts.body.mechMass + params.parts.booster.mechMass + params.parts.legs.mechMass + params.parts.leftArm.mechMass + params.parts.rightArm.mechMass    
     widget.setText("lblMass", string.format(self.massFormat, mechMass))
   else
     widget.setVisible("imgEnergyBar", false)
