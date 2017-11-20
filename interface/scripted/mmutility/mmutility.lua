@@ -90,7 +90,6 @@ function swapTool(name)
             player.giveEssentialItem(tool, swapItem)
             widget.setItemSlotItem(name, swapItem)
         end
-        sb.logInfo(sb.print(swapItem))
     end
 
     resetSpinners()
@@ -213,6 +212,7 @@ function upgradeTransfer(mm1, mm2)
     if root.itemConfig(mm2).config.canCollectLiquid and not contains(mm2.parameters.upgrades or {}, "liquidcollection") then
         table.insert(mm2.parameters.upgrades, "liquidcollection")
     end
+    if #mm2.parameters.upgrades == 0 then mm2.parameters.upgrades = nil end
 end
 
 -- Returns the current maximum size of this MM
@@ -308,7 +308,6 @@ function paintSizeSpinner.up()
 end
 function paintSizeSpinner.down()
     local paint = player.essentialItem("painttool")
-    sb.logInfo(sb.print(root.itemType(paint.name)))
     if not paint or root.itemType(paint.name) ~= "paintingbeamtool" then return end
     if getStat(paint, "blockRadius") > 1 then
         paint.parameters.blockRadius = getStat(paint, "blockRadius") - 1
