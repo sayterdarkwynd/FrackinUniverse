@@ -303,6 +303,22 @@
     "grassMod" : [ "bloodstonegrass", "darkgrass", "blackslimegrass" ],
     "grassModDensity" : 0.9,
       "items" : [
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffunCommon",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+                   [0.50, "wildlumivineseed" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },         
         {
           "mode" : "floor",
           "priority" : 1.0,

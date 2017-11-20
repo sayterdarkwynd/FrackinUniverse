@@ -604,13 +604,13 @@ function update(dt)
         animator.setParticleEmitterActive("minorDamage", false) -- land fx 
       end
       
-      if (storage.energy) < (self.energyMax/2) then 
+      if (storage.energy) < (self.energyMax/2) or (self.mechMass) > 18 then 
         eMult = 0               
       else
         eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
       end
 
-      -- is their mech affected by the planet? if so, do not regen
+      -- is their mech affected by the planet? if so, do not regen. Likewise, if their mass is too high, do not regen.
       -- Otherwise, we apply the bonus
       --energyDrain = energyDrain - self.extraDrain     if enabling the extra code for Powerful weapons
       if self.regenPenalty then 
@@ -684,8 +684,22 @@ function update(dt)
     if math.floor(self.legCycle * 2) ~= math.floor(newLegCycle * 2) then
       triggerStepSound()   
       -- mech ground thump damage (FU)
-      self.thumpParamsMini = { power = self.mechMass, damageTeam = {type = "friendly"} }
-      if self.mechMassBase > 0 then        
+      self.thumpParamsMini = { 
+        power = self.mechMass, 
+        damageTeam = {type = "friendly"},
+	  actionOnReap = {
+	      {
+		action='explosion',
+		foregroundRadius=2,
+		backgroundRadius=0,
+		explosiveDamageAmount= 0.25,
+		harvestLevel = 99,
+		delaySteps=2
+	      }
+	    }        
+      }
+    
+      if self.mechMassBase > 4 then  -- 4 tonne minimum or tiles dont suffer at all.       
         world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
       end
     end
@@ -866,7 +880,7 @@ function update(dt)
 	  -- sb.logInfo("value = "..self.baseDamageMechfall)	  
 	  
 	if (self.mechMass) >= 12 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
-	  storage.energy = math.max(0, storage.energy - (self.baseDamage /50))
+	  storage.energy = math.max(0, storage.energy - (self.baseDamage /100))
 	end
 	
 	if self.mechMassBase > 0 and time <= 0 then
@@ -889,7 +903,7 @@ function update(dt)
 	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
 	end
 	
-        if self.mechMass >= 15 and (self.explosivedamage) >= 40 then 
+        if self.mechMass >= 14 and (self.explosivedamage) >= 40 then 
           animator.playSound("landingThud")
           animator.playSound("heavyBoom")
           animator.burstParticleEmitter("legImpactHeavy")
@@ -914,8 +928,21 @@ function onInteraction(args)
 end
 
 function applyDamage(damageRequest)
+ 
   local energyLost = math.min(storage.energy, damageRequest.damage * (1 - self.protection))
-
+  
+  -- FU damage resistance from Mass********************************************************
+  self.massProtection = self.parts.body.stats.protection * ((self.parts.body.stats.mechMass)/10)
+  self.rand= math.random(10)
+  if (self.parts.body.stats.protection) >=4 
+    and (energyLost) <= (self.massProtection) 
+    and (self.rand) <= 1 then 
+      energyLost = 0
+      animator.playSound("landingThud") 
+      animator.burstParticleEmitter("blockDamage")
+  end  
+  
+  
   storage.energy = storage.energy - energyLost
 
   if storage.energy == 0 then
