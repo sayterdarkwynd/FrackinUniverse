@@ -9,7 +9,7 @@
   "category" : "uniqueWeapon",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","upgradeableWeapon"],
-  "level" : 8,
+  "level" : 6, 
 
   "inventoryIcon" : "extrachargebeamicon.png",
 
@@ -46,13 +46,15 @@
         "energyCost" : 50,
         "cooldown" : 0.5,
         "projectileType" : "chargeshotlarge",
-        "projectileParameters" : { "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
-    } ],
-	  "damageType" : "NoDamage"	
-  },
+        "projectileParameters" : { 
+		"actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
+		    }
+		 ],
+	"damageType" : "NoDamage"	
+        },
         "inaccuracy" : 0,
         "baseDamage" : 14,
         "fireSound" : "fire2"
