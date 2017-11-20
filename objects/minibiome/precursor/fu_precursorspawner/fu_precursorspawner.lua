@@ -6,13 +6,16 @@ local requiredPower = 0
 function init()
 	power.init()
 	self = config.getParameter("spawner")
-	self.timer = self.defaultSpawnTime
+	storage.timer = self.defaultSpawnTime
+	if storage.crafting == true then
+		animator.playSound("running", -1)
+	end
 	powered = false
 end
 
 function update(dt)
-	if wireCheck() == true then
-		if not crafting then
+	if wireCheck() then
+		if not storage.crafting then
 			local slot = 0
 			local fuelSlot = getInputContents(slot)
 			if fuelSlot.name == self.fuelType then
@@ -21,26 +24,27 @@ function update(dt)
 				if podSlot.name == self.podType then
 					if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
 						world.containerConsumeAt(entity.id(),0,1)
-						pets = (podSlot.parameters.pets)
-						pet = root.monsterParameters(pets[1].config.type)
+						storage.pets = (podSlot.parameters.pets)
+						pet = root.monsterParameters(storage.pets[1].config.type)
 						spawnTime = pet.statusSettings.stats.maxHealth.baseValue * self.spawnTimeMultiplier
-						self.timer = spawnTime or self.defaultSpawnTime
+						storage.timer = spawnTime or self.defaultSpawnTime
 						requiredPower = config.getParameter('isn_requiredPower')
-						crafting = true
+						storage.crafting = true
 					end
 				end
 			end
 		end
 	end
-	self.timer = self.timer - dt
-	if crafting then
-		if animator.animationState == "off" then
+	storage.timer = storage.timer - dt
+	if storage.crafting then
+		if animator.animationState("base") == "off" then
 			animator.playSound("on")
 			soundTimer = 1.131
 		else
-			if not soundTimer or soundTimer <= 0 then
+			if soundTimer and soundTimer <= 0 then
 				animator.playSound("running", -1)
-			else
+				soundTimer = nil
+			elseif soundTimer then
 				soundTimer = soundTimer - dt
 			end
 		end
@@ -52,13 +56,13 @@ function update(dt)
 		end
 		animator.setAnimationState("base", "off")
 	end
-	if self.timer <= 0 and crafting then
+	if storage.timer <= 0 and storage.crafting then
 		if power.consume(requiredPower) then
-			if pets then
-				monsterType = pets[1].config.type
-				monsterSeed = pets[1].config.parameters.seed
-				monsterColour = pets[1].config.parameters.colors
-				monsterAggro = pets[1].config.parameters.aggressive
+			if storage.pets then
+				monsterType = storage.pets[1].config.type
+				monsterSeed = storage.pets[1].config.parameters.seed
+				monsterColour = storage.pets[1].config.parameters.colors
+				monsterAggro = storage.pets[1].config.parameters.aggressive
 				blacklisted = checkBlacklist(monsterType)
 				dropPool = {}
 				dropPool["default"] = "empty"
@@ -72,7 +76,7 @@ function update(dt)
 					end
 				end
 			end
-			crafting = false
+			storage.crafting = false
 		end
 	end
 	power.update(dt)
