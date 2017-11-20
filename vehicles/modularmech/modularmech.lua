@@ -603,9 +603,11 @@ function update(dt)
         animator.setParticleEmitterActive("highDamage", false) -- land fx
         animator.setParticleEmitterActive("minorDamage", false) -- land fx 
       end
-      
-      if (storage.energy) < (self.energyMax/2) or (self.mechMass) > 18 then 
-        eMult = 0               
+
+      if (storage.energy) < (self.energyMax/2) then 
+        eMult = 0  
+      elseif (self.mechMassBase) > 18 then
+        eMult = 0
       else
         eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
       end
@@ -618,6 +620,8 @@ function update(dt)
       else
         energyDrain = -energyDrain*eMult
       end   
+      
+      
     
     end
     storage.energy = math.min(math.max(0, storage.energy - energyDrain * dt),self.energyMax)
@@ -699,7 +703,7 @@ function update(dt)
 	    }        
       }
     
-      if self.mechMassBase > 4 then  -- 4 tonne minimum or tiles dont suffer at all.       
+      if self.mechMassBase > 5 then  -- 5 tonne minimum or tiles dont suffer at all.       
         world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
       end
     end
