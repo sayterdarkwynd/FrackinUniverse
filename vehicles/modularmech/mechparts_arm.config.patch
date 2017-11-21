@@ -2514,5 +2514,45 @@
             "path": "/PTX-010_ChakramShooter/partParameters/projectileParameters/power",
             "value": 15
         }
-    ]
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/cworks_mmarm"
+        }, {
+            "op": "add",
+            "path": "/cworks_mmarm/stats/mechMass",
+            "value": 5
+        }, {
+            "op": "replace",
+            "path": "/cworks_mmarm/damageSources/<armName>Beam/damage",
+            "value": 2
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/cworks_fatalcircuitarm"
+        }, {
+            "op": "add",
+            "path": "/cworks_fatalcircuitarm/stats/mechMass",
+            "value": 5
+        }, {
+            "op": "replace",
+            "path": "/cworks_fatalcircuitarm/partParameters/projectileParameters/power",
+            "value": 40
+        }
+    ],  
+    [{
+            "op": "test",
+            "path": "/cworks_missilearmdrone"
+        }, {
+            "op": "add",
+            "path": "/cworks_missilearmdrone/stats/mechMass",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/cworks_missilearmdrone/partParameters/droneParameters/gun/projectileParameters/power",
+            "value": 11
+        }
+    ]    
 ]
