@@ -2115,7 +2115,77 @@
 		}
 	      }
 	    }
-	  }	  
+	  },
+	  
+	  
+	  
+          {
+            "op": "add",
+            "path": "/flakcannon2",
+            "value": {
+		"stats" : {
+		      "power" : 3,
+		      "energy" : 3,
+		      "multicount" : 2,
+		      "mechMass" : 1
+		    },
+		    "partParameters" : {
+		      "script" : "/vehicles/modularmech/armscripts/gunarm.lua",
+		      "armClass" : "GunArm",
+
+		      "rotationLimits" : [-1.75, 1.75],
+		      "fireOffset" : [4.3, 0.1],
+
+		      "extendTime" : 1.0,
+
+		      "fireTime" : 0.44,
+
+		      "projectileType" : "flakbullet2",
+		      "projectileParameters" : {
+			"power" : 0.8,
+			"damageTeam" : "enemy"
+		      }
+		    },
+		    "partImages" : {
+		      "<armName>" : "arm/flakcannon2.png",
+		      "<armName>Fullbright" : "arm/flakcannon_fullbright.png"
+		    },
+		    "defaultPrimaryColors" : ["9da8af", "676f83", "3d3d51", "24232f"],
+		    "defaultSecondaryColors" : ["c0ab5e", "9b7e14", "6b5509", "342804"],
+		    "animationCustom" : {
+		      "particleEmitters" : {
+			"<armName>Fire" : {
+			  "active" : false,
+			  "burstCount" : 5,
+			  "anchorPart" : "<armName>",
+			  "offsetRegion" : [4.0, 2.875, 4.05, 2.375],
+			  "particles" : [
+			    { "particle" : {
+				"type" : "ember",
+				"size" : 1.0,
+				"color" : [255, 200, 0, 255],
+				"light" : [100, 100, 50],
+				"fullbright" : true,
+				"fade" : 0.9,
+				"initialVelocity" : [10.0, 0],
+				"finalVelocity" : [0.0, -50.0],
+				"approach" : [0, 20],
+				"timeToLive" : 0.6,
+				"layer" : "middle",
+				"variance" : {
+				  "initialVelocity" : [5, 5],
+				  "timeToLive" : 0.2
+				}
+			      } }
+			  ]
+			}
+		      },
+		      "sounds" : {
+			"<armName>Fire" : ["/sfx/gun/mech_flakcannon1.ogg", "/sfx/gun/mech_flakcannon2.ogg", "/sfx/gun/mech_flakcannon3.ogg"]
+		      }
+		    }
+              }
+            }	  
     ],
 
     [{

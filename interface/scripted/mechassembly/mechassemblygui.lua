@@ -223,7 +223,12 @@ function updatePreview()
     widget.setText("lblEnergy", string.format(self.energyFormat, energyMax))
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
     
-    local mechMass = params.parts.body.mechMass + params.parts.booster.mechMass + params.parts.legs.mechMass + params.parts.leftArm.mechMass + params.parts.rightArm.mechMass    
+    sb.logInfo("body = "..params.parts.body.stats.mechMass)
+    sb.logInfo("legs = "..params.parts.legs.stats.mechMass)
+    sb.logInfo("booster = "..params.parts.booster.stats.mechMass)
+    sb.logInfo("r arm = "..params.parts.rightArm.stats.mechMass)
+    sb.logInfo("l arm = "..params.parts.leftArm.stats.mechMass)
+    local mechMass = params.parts.body.stats.mechMass + params.parts.booster.stats.mechMass + params.parts.legs.stats.mechMass + params.parts.leftArm.stats.mechMass + params.parts.rightArm.stats.mechMass    
     widget.setText("lblMass", string.format(self.massFormat, mechMass))
   else
     widget.setVisible("imgEnergyBar", false)
