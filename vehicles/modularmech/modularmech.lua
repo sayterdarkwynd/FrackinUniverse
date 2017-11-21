@@ -936,6 +936,8 @@ function applyDamage(damageRequest)
   local energyLost = math.min(storage.energy, damageRequest.damage * (1 - self.protection))
   
   -- FU damage resistance from Mass********************************************************
+  -- if mech is higher than rank 4 in protection (body), they have a chance to deflect incoming damage below a threshold
+  
   self.massProtection = self.parts.body.stats.protection * ((self.parts.body.stats.mechMass)/10)
   self.rand= math.random(10)
   if (self.parts.body.stats.protection) >=4 
