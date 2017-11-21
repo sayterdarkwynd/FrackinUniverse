@@ -16,7 +16,7 @@
   "inventoryIcon" : "precursorgroundlighticon.png",
   "orientations" : [
     {
-      "image" : "precursorgroundlight.png:<frame>",
+      "image" : "precursorgroundlight.png:<frame>.off",
       "imagePosition" : [0, 0],
       "animationCycle" : 0.5,
 
@@ -26,5 +26,16 @@
 
     }
   ],
-  "inputNodes" : [ [0, 0] ]
+  "inputNodes" : [ [0, 0] ],
+  
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "precursorgroundlight.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+  
+  "interactive" : false
 }
