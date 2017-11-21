@@ -229,7 +229,9 @@ function updatePreview()
     --sb.logInfo("booster = "..params.parts.booster.stats.mechMass)
     --sb.logInfo("right arm = "..params.parts.rightArm.stats.mechMass)
     --sb.logInfo("left arm = "..params.parts.leftArm.stats.mechMass)
+    
     local mechMass = params.parts.body.stats.mechMass + params.parts.booster.stats.mechMass + params.parts.legs.stats.mechMass + params.parts.leftArm.stats.mechMass + params.parts.rightArm.stats.mechMass    
+    if not mechMass then mechMass = 0 end
     widget.setText("lblMass", string.format(self.massFormat, mechMass))
   else
     widget.setVisible("imgEnergyBar", false)
