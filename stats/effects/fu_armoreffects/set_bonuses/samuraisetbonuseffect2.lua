@@ -11,7 +11,7 @@ weaponBonus={
 weaponBonus2={
         {stat = "powerMultiplier", baseMultiplier = 1.15},
         {stat = "critChance", amount = 1},
-	{stat = "protection", baseMultiplier = 1.2}
+	{stat = "protection", baseMultiplier = 1.14}
 }
 
 armorBonus={
