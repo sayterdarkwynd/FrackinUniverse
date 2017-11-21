@@ -1,0 +1,36 @@
+{
+  "objectName" : "fu_fuelpurifier",
+  "colonyTags" : [ "science", "machines" ],
+  "printable" : false,
+  "rarity" : "legendary",
+  "description" : "Purifies fuel before it reaches your ships FTL drive. Increases fuel efficiency.",
+  "shortdescription" : "^cyan;Fuel Purifier^reset;",
+  "race" : "generic",
+  "category" : "furniture",
+
+  "inventoryIcon" : "fu_fuelpurifiericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_fuelpurifier.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "animation" : "fu_fuelpurifier.animation",
+  "animationParts" : {
+    "centrifuge" : "fu_fuelpurifier.png",
+    "centrifugefullbright" : "fu_fuelpurifierfullbright.png"
+  },
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "fuelEfficiency" : 0.05
+  }
+}

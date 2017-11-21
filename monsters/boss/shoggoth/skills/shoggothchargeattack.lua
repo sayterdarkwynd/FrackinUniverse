@@ -28,18 +28,14 @@ end
 --------------------------------------------------------------------------------
 function shoggothChargeAttack.update(dt, stateData)
   if not hasTarget() then return true end
-
   local toTarget = world.distance(self.targetPosition, mcontroller.position())
   local targetDir = util.toDirection(toTarget[1])
 
   if not stateData.swiping then 
-
+    
     --projectile interval check and spawn
     if stateData.currentPeriod < 0 then
       if isBlocked() then
-      --CRASH
-      -- animator.playSound("chargeCrash")
-
       local crashTiles = {}
       local basePos = config.getParameter("projectileSourcePosition", {0, 0})
       for xOffset = 2, 22 do
@@ -47,17 +43,19 @@ function shoggothChargeAttack.update(dt, stateData)
           table.insert(crashTiles, monster.toAbsolutePosition({basePos[1] + xOffset, basePos[2] + yOffset}))
         end
       end
+      
+      self.randValNum = math.random(100)
+      if self.randValNum >=90 then
+        animator.playSound("idleBreath")
+      end      
       animator.playSound("shoggothChomp")
-      world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 20)
-
-      -- self.state.pickState({stun=true,duration=config.getParameter("chargeAttack.crashStunTime")})
+      world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 30)
     end
       -- shoggothChargeAttack.chomp(targetDir)
       stateData.currentPeriod = stateData.intervalTime
     else
       stateData.currentPeriod = stateData.currentPeriod - dt
     end
-
 
     if math.abs(toTarget[1]) > stateData.distanceRange[2] then
       animator.setAnimationState("movement", "run")
@@ -69,9 +67,7 @@ function shoggothChargeAttack.update(dt, stateData)
     else
       stateData.swiping = true
     end
-
   end
-
 
   return false
 end

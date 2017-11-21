@@ -1,0 +1,54 @@
+{
+  "projectileName" : "plasmashot2",
+  "image" : "plasmashot2.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [80, 80, 150],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "rocket",
+  "speed" : 1.0,
+  "knockback" : 60,
+  "acceleration" : 100,
+  "emitters" : [ "defaultblue", "arrowflames", "spectralsparkle" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/extrasmissileexplosion/extrasmissileexplosionsniper.config"
+    }
+  ],  
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+    },
+    {
+      "time" : 0.02,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+          "type" : "ember",
+          "size" : 2,
+          "color" : [164, 81, 196],
+          "position" : [0, 0],
+          "destructionAction" : "fade",
+          "destructionTime" : 0.2,
+          "fade" : 1,
+          "layer" : "middle",
+          "timeToLive" : 0.2,
+          "variance" : {
+            "initialVelocity" : [2.0, 2.0],
+            "position" : [1, 1]
+          }
+      }
+    }
+  ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damageKind" : "fire",
+  "damageType" : "NoDamage",
+  "piercing" : false
+}

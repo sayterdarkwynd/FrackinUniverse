@@ -1,0 +1,28 @@
+{
+  "id" : "fuquest_bracken",
+  "title" : "Silky Smooth",
+  "text" : "Sweet. Now that you have a ^orange;Greenhouse^reset; we can really get working! The first plant you'll probably want to make is the ^orange;bracken tree^reset;, as the silk it creates ultimately leads to ^green;advanced plastic^reset;. Without plastic, you're sunk. Silk also sells for a decent profit. Win-Win.",
+  "completionText" : "Bravo. You'll need a ^green;lot of plastic^reset; so keep stocked! Now let's help you see in the dark, shall we?",
+  "rewards" : [
+    [ [ "circuitboard", 10] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "brackentreeseed",
+        "count" : 3,
+        "consume" : false
+      }
+    ]
+  }
+}

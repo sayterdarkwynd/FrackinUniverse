@@ -1,0 +1,66 @@
+{
+  "objectName" : "fu_byosshiplocker",
+  "colonyTags" : ["storage"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+
+  "category" : "storage",
+  "description" : "A locker. Store some stuff, why don't you?",
+  "shortdescription" : "Shiplocker",
+  "race" : "generic",
+
+  "lightColor" : [61, 88, 102],
+  "lightPosition" : [0, 0],
+
+  "apexDescription" : "The ship's storage system.",
+  "avianDescription" : "A device that holds many items for safe keeping.",
+  "floranDescription" : "Ssstorage.",
+  "glitchDescription" : "Pleased. This ship's storage system is indeed useful.",
+  "humanDescription" : "A storage locker. That's handy!",
+  "hylotlDescription" : "An elegant storage solution.",
+  "novakidDescription" : "A locker, for puttin' things in.",
+
+  "inventoryIcon" : "/objects/ship/apexshiplocker/shiplockericon.png",
+  "placementImage" : "/objects/ship/apexshiplocker/apexshiplocker.png:default.0",
+  "placementImagePosition" : [-16, -8],
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/fu_byosshiplocker/fu_byosshiplocker.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/fu_byosshiplocker/fu_byosshiplockerlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+	  "spaces" : [
+	  [-2,1],  [-1,1],  [0,1],  [1,1],
+	  [-2,0],  [-1,0],  [0,0],  [1,0],
+	  [-2,-1], [-1,-1], [0,-1], [1,-1]
+	  ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/apexshiplocker/apexshiplocker.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/apexshiplocker/apexshiplockerlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/gunchest_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/gunchest_close.ogg" ],
+  "slotCount" : 64,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 11,
+  "autoCloseCooldown" : 3600,
+  
+  "scripts" : [ "/objects/ship/fu_byosobjectdeath.lua" ],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
+  "racialiserType" : "shiplocker",
+  "retainObjectParametersInItem" : true
+}

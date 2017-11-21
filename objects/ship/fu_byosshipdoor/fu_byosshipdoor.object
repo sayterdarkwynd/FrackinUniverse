@@ -1,0 +1,79 @@
+{
+  "objectName" : "fu_byosshipdoor",
+  "colonyTags" : ["door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "A door suitable for a spaceship.",
+  "shortdescription" : "Ship Door",
+  "race" : "generic",
+
+  "apexDescription" : "Doors like this are common on ships.",
+  "avianDescription" : "A spaceship door.",
+  "floranDescription" : "Ssspaceship door.",
+  "glitchDescription" : "Informed. A standard ship door.",
+  "humanDescription" : "A spaceship door.",
+  "hylotlDescription" : "A basic ship door.",
+  "novakidDescription" : "A door, the type you'd find on a ship.",
+
+
+  "inventoryIcon" : "/objects/ship/apexshipdoor/apexshipdooricon.png",
+  "placementImage" : "/objects/ship/apexshipdoor/apexshipdoor.png:default",
+  "placementImagePosition" : [-20, 0],
+  "orientations" : [
+    {
+      "dualImage" : "/objects/ship/fu_byosshipdoor/fu_byosshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+	  "spaces" : [
+	  [-1,4], [0,4],
+	  [-1,3], [0,3],
+	  [-1,2], [0,2],
+	  [-1,1], [0,1],
+	  [-1,0], [0,0]
+	  ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "dualImage" : "/objects/ship/apexshipdoor/apexshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "fu_byosshipdoor.lua", "/objects/ship/fu_byosobjectdeath.lua" ],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "fu_byosshipdoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ],
+  "racialiserType" : "shipdoor",
+  "retainObjectParametersInItem" : true,
+  "doorState" : "close"
+}

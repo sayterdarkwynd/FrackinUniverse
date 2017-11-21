@@ -1,0 +1,304 @@
+{
+  "type" : "bighairyfrank",
+  "shortdescription" : "Massive Spider",
+  "description" : "Loves your delicious ground-walker insides.",
+
+  "categories" : [ "bighairyfrank" ],
+  "parts" : [ "body" ],
+
+  "animation" : "bighairyfrank.animation",
+
+  "dropPools" : [ "frankLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      "seeThroughLiquid" : false,
+      "targetQueryRange" : 50,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 10.0,
+      "damageTakenActions" : [ ],
+      "foundTargetActions" : [ ],
+      "fleeActions" : [ ],    
+      "hostileActions" : [
+	    {
+          "name" : "action-fire",
+          "cooldown" : 8.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 60,
+            "minimumRange" : 10,
+            "windupState" : "fire2",
+            "windupTime" : 1.0,
+	    "projectileInterval" : 0,
+            "projectileCount" : 2,
+	    "inaccuracy" : 0.1,
+            "projectileType" : "webspitfrank",
+            "power" : 10,
+            "fireOffset" : [0, 0],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
+            "fireDelay" : 0.3,
+            "fireSound" : "fire",
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },
+	    {
+          "name" : "action-fire",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 20,
+            "minimumRange" : 1,
+            "windupState" : "",
+            "windupTime" : 1.0,
+	    "projectileInterval" : 0,
+            "projectileCount" : 3,
+	    "inaccuracy" : 0.3,
+            "projectileType" : "pusvomit",
+            "power" : 9,
+            "fireOffset" : [0, 0],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
+            "fireDelay" : 0.2,
+            "fireSound" : "fire",
+			"projectileParameters" : {
+			  "statusEffects" : [ "webstick" ],
+			  "speed" : 40,
+			  "animationCycle" : 1,
+			  "timeToLive" : 1
+			},
+			
+            "projectileSpeed": 40,
+            "gravityMultiplier": 0.6,
+	    "fireArc" : true,
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 0.25,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 100,
+            "minimumRange" : 0,
+            "windupState" : "",
+            "windupTime" : 0,
+	    "projectileInterval" : 0,
+            "projectileCount" : 5,
+	    "inaccuracy" : 3,
+            "projectileType" : "tilesprayer",
+	    "projectileParameters" : {
+	    "speed" : 15
+	},
+            "fireOffset" : [0, 0],
+            "aimAtTarget" : false,
+            "fireState" : "",
+            "fireDelay" : 0,
+            "fireSound" : "",
+            "winddownState" : "",
+            "winddownTime" : 0
+          }
+        }		],
+      "periodicActions" : [ ],
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+          "minRange" : 1,
+          "maxRange" : 1,
+          "targetOffset" : [0,-3],
+          "avoidLiquid" : true,
+          "usePathfinding" : true,
+          "approachAngle" : 5,
+          "stopForce" : 100
+          }
+        }
+      ],
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "ceilingDistance" : 10,
+            "groundDistance" : 10,
+            "xVelocity": 12,
+            "yVelocity": 18
+          }
+        }
+      ],
+       "concurrentHostileActions" : [ 
+	   { 
+	   "name" : "action-aim-head" 
+	   } ],
+       "concurrentActions" : [ 
+	   { 
+	   "name" : "action-aim-head"
+	   } ],
+      "deathActions" : [ {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 10,
+	    "inaccuracy" : 3,
+            "projectileType" : "pusvomit",
+            "power" : 9,
+	    "projectileParameters" : {
+	      "statusEffects" : [ "webstick" ],
+	      "animationCycle" : 1,
+	      "timeToLive" : 1
+	    },
+            "aimDirection" : [0, 1],
+            "fireOffset" : [0, 0]
+          }
+        } ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [3, 1.5], [3, -1.5], [0.5, -2.5], [-2.5, -1.5], [-2.5, 1.5], [0.5, 2.5] ],
+      "damage" : 19,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+
+      "collisionEnabled" : true,
+      "collisionPoly" : [ [2.5, 1.5], [2.5, -1.5], [-2.5, -1.5], [-2.5, 1.5] ],
+
+      "mass" : 4.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 4,
+      "airForce" : 40,
+      "flySpeed" : 15
+
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.01,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 90
+        },
+        "protection" : {
+          "baseValue" : 25.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.11
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.2
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.3
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.75
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+	"pusImmunity" : {
+          "baseValue" : 1.0
+        },
+	"webstickImmunity" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : {
+         "baseValue" : 0.2 
+        },
+        "shadowImmunity" : {
+         "baseValue" : 1
+        },
+        "cosmicResistance" : { 
+         "baseValue" : 0.5 
+        },
+        "radiationburnImmunity" : { 
+          "baseValue" : 1
+        },        
+        "radioactiveResistance" : { 
+          "baseValue" : 0.5
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+	"capturedMonsterType" : "bighairyfrank",
+	"nametagColor" : [64, 200, 255],
+	"captureHealthFraction" : 0.4
+  }
+}

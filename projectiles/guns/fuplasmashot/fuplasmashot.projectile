@@ -1,0 +1,56 @@
+{
+  "projectileName" : "fuplasmashot",
+  "image" : "fuplasmashot.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [50, 50, 150],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "laser",
+  "emitters" : [ "defaultblue" ],
+  
+  "statusEffects" : [ "electrified" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/zapsplosion/zapsplosion.config"
+    }          
+  ],  
+  
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+    },
+    {
+      "time" : 0.04,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+          "type" : "ember",
+          "size" : 2,
+          "color" : [66, 66, 196],
+          "position" : [0, 0],
+          "destructionAction" : "fade",
+          "destructionTime" : 0.2,
+          "fade" : 1,
+          "layer" : "middle",
+          "timeToLive" : 0.2,
+          "variance" : {
+            "initialVelocity" : [1.0, 3.0],
+            "position" : [1, 1]
+          }
+      }
+    }
+  ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damageKind" : "radioactive",
+  "damageType" : "IgnoresDef",
+  "piercing" : false,
+
+  "speed" : 60
+}

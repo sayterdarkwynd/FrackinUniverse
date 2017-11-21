@@ -200,6 +200,29 @@
       "brush" : [ [ "clear" ], [ "back", "crosshatch" ] ]
     },
 
+
+    {
+      "value" : [22, 99, 99, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "precursorfloor" ], [ "front", "precursorfloor" ] ]
+    },
+    {
+      "value" : [22, 77, 77, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "precursorwall" ] ]
+    },
+    {
+      "value" : [22, 55, 77, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "precursorsloped" ] ]
+    },
+    {
+      "value" : [22, 77, 99, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "precursorsloped" ], [ "front", "precursorsloped" ] ]
+    },    
+    
+    
     {
       "value" : [237, 230, 26, 255],
       "comment" : "foreground crosshatch",
@@ -211,7 +234,11 @@
       "comment" : "background fullwood1",
       "brush" : [ [ "clear" ], [ "back", "fullwood1" ] ]
     },
-
+    {
+      "value" : [66, 22, 66, 255],
+      "comment" : "foreground sand",
+      "brush" : [ [ "clear" ], [ "back", "sand2" ], [ "front", "sand2" ] ]
+    },   
     {
       "value" : [117, 185, 21, 255],
       "comment" : "foreground fullwood1",
@@ -607,7 +634,12 @@
       "comment" : "miningchest facing left",
       "brush" : [ [ "clear" ], [ "object", "miningchest", { "direction" : "left" } ] ]
     },
-
+    {
+      "value" : [44, 77, 99, 255],
+      "comment" : "artifact",
+      "brush" : [ [ "clear" ], [ "object", "precursorartifacttutorial", { "direction" : "right" } ] ]
+    },
+    
     {
       "value" : [242, 90, 24, 255],
       "comment" : "miningchest facing right",
@@ -992,7 +1024,6 @@
       ],
       "def" : [ "image", [ "campsite2left.png", "campsite2-objects.png" ] ]
     },
-
     {
       "name" : "campsite2right",
       "rules" : [

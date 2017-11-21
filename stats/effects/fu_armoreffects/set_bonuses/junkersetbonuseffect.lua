@@ -7,8 +7,8 @@ weaponBonus={ { stat = "powerMultiplier" , baseMultiplier = 1.25} }
 armorBonus={
   {stat = "gasImmunity", amount = 1.0},
   {stat = "sulphuricImmunity", amount = 1.0},
-  {stat = "energyRegenBlockTime", baseMultiplier = 0.25},
-  {stat = "energyRegenPercentageRate", amount = 0.25}
+  {stat = "energyRegenBlockTime", baseMultiplier = 1.75},
+  {stat = "energyRegenPercentageRate", amount = 0.15}
 }
 
 function init()

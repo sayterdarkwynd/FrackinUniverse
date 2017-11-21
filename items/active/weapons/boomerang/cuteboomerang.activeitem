@@ -1,0 +1,82 @@
+{
+  "itemName" : "cuteboomerang",
+  "price" : 750,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "category" : "boomerang",
+  "description" : "Sailor Kelp's main weapon is a boomerang, you know.",
+  "shortdescription" : "Cute Boomerang",
+  "tooltipKind" : "boomerang",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","boomerang", "cute","upgradeableWeapon"],
+
+  "level" : 5,
+
+  "inventoryIcon" : "cuteboomerang.png",
+  "animation" : "boomerangglow.animation",
+  "animationParts" : {
+    "boomerang" : "cuteboomerang.png",
+    "boomerangfullbright" : "cuteboomerangfullbright.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+  "fireAngleOffset" : 10,
+
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "cuteboomerang",
+  "projectileParameters" : {
+    "power" : 3,
+    "knockback" : 20,
+
+    "ignoreTerrain" : false,
+    "controlForce" : 165,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 1.0
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+  },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "critChance": 4,
+  "critBonus": 3,
+
+  "builder" : "/items/buildscripts/buildboomerang.lua"
+}

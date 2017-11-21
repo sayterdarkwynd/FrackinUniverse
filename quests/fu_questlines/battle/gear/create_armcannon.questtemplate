@@ -1,0 +1,34 @@
+{
+  "id" : "create_armcannon",
+  "prerequisites" : [  "create_steelwarblade" ],
+  "title" : "Gunnery Chief",
+  "text" : "Troubled: I am in need of aid. I must admit I am a terrible engineer and cannot craft an ^green;arm cannon^reset; at the ^orange;armory^reset;. Might you assist? I am wealthy and can pay you!",
+  "completionText" : "Delighted: Thank you for you aid. As promised: the cash ! Take this off my hands too, if you don't mind.",
+  "moneyRange" : [ 640, 960 ],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+
+    "turnInDescription" : "Bring the ^orange;arm cannon^reset; to the ^green;annoying guy^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "armcannon",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

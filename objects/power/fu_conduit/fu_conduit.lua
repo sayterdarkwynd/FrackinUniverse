@@ -1,30 +1,42 @@
 function init()
-	
-	storage.active = storage.active or false
+  if storage.on == nil then
+    storage.on = true
+  end
 end
 
-function update(dt)
-	checkOutputsSetLevels()
-end
-
-function isn_getCurrentPowerOutput(divide)
-	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
-	local voltage = isn_getCurrentPowerInput(true)
-	if voltage and divide and divisor > 0 then return voltage / divisor
-	else return voltage end
-end
-
-function checkOutputsSetLevels()
-	storage.active = (object.isInputNodeConnected(0) and object.getInputNodeLevel(0)) or (object.isInputNodeConnected(1) and object.getInputNodeLevel(1))
-	animator.setAnimationState("switchState",(storage.active and "on") or "off")
-	if isn_checkValidOutput() and storage.active then object.setOutputNodeLevel(0, true)
-	else object.setOutputNodeLevel(0, false) end
+function isPower()
+  return storage.on
 end
 
 function onNodeConnectionChange()
-	checkOutputsSetLevels()
+  if not object.isInputNodeConnected(1) then
+    storage.on = true
+  end
+  if storage.on then
+    power.onNodeConnectionChange()
+  end
 end
 
 function onInputNodeChange(args)
-	checkOutputsSetLevels()
+  if not object.isInputNodeConnected(1) then
+    storage.on = true
+	return
+  end
+  if args.node == 1 then
+    storage.on = args.level
+    for i=0,object.inputNodeCount()-1 do
+	  for value in pairs(object.getInputNodeIds(i)) do
+	    if world.callScriptedEntity(value,'isPower') then
+		  world.callScriptedEntity(value,'power.onNodeConnectionChange')
+		end
+	  end
+	end
+	for i=0,object.outputNodeCount()-1 do
+	  for value in pairs(object.getOutputNodeIds(i)) do
+	    if world.callScriptedEntity(value,'isPower') then
+		  world.callScriptedEntity(value,'power.onNodeConnectionChange')
+		end
+	  end
+	end
+  end
 end

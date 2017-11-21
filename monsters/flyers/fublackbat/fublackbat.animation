@@ -18,6 +18,11 @@
               "immediateSound" : [ "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "", ""]
             }
           },
+          "hurt" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },          
           "swoopwindup" : {
             "frames" : 5,
             "cycle" : 0.3,
@@ -66,7 +71,7 @@
             "frames" : 1
           },
           "stunned" : {
-            "frames" : 1
+            "frames" : 5
           }
         }
       },
@@ -125,6 +130,11 @@
                 "image" : "<partImage>:landwindup.<frame>"
               }
             },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },            
             "flywindup" : {
               "properties" : {
                 "image" : "<partImage>:flywindup.<frame>"

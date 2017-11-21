@@ -1,0 +1,44 @@
+{
+  "projectileName" : "throwingstartrap",
+  "image" : "throwingstardisc.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 8,
+  "damageKindImage" : "icon.png",
+  "flippable" : false,
+  "orientationLocked" : true,
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "damageKind" : "sawblade",
+  "physics" : "sticky",
+  "piercing" : true,
+  "emitters" : [ "sparks" ],
+  "statusEffects" : [ "bleedingshort" ],
+  "fullbright" : false,
+
+  "speed":80, 
+  "timeToLive":5.0, 
+  "power":0.3, 
+  "knockback":0, 
+  "bounces":0, 
+  "actionOnReap":[],
+  "periodicActions":[
+	    {
+	      "action":"sound",
+	      "options":["/sfx/projectiles/spit2.ogg"], 
+	      "time":0.0, 
+	      "repeat":false
+	    } 
+      ],       
+      
+      "actionOnCollide" : [
+      
+	    {
+	      "time" : 0,
+	      "repeat" : false,
+	      "action" : "sound",
+	      "options" : [ "/sfx/tools/pickaxe_ore.ogg" ]
+	    }
+      ],  
+      
+    "persistentAudio" : "/sfx/objects/sawblade.ogg"
+}
+

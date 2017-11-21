@@ -3,6 +3,7 @@ require "/scripts/vec2.lua"
 require "/scripts/poly.lua"
 
 function init()
+  self.energyCost = config.getParameter("energyCost")
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.multiJumpModifier = config.getParameter("multiJumpModifier")
 
@@ -62,8 +63,9 @@ function update(args)
 
     if not checkWall(self.wall) or status.statPositive("activeMovementAbilities") then
       releaseWall()
-    elseif jumpActivated then
+    elseif jumpActivated and status.overConsumeResource("energy", self.energyCost) then
       doWallJump()
+      animator.playSound("wallJumpSound")
     else
       if lrInput and lrInput ~= self.wall then
         self.wallReleaseTimer = self.wallReleaseTimer + args.dt

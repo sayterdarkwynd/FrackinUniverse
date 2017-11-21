@@ -1,7 +1,7 @@
 setName="fu_protectorset"
 
 weaponBonus={
-	{stat = "critChance", amount = 12}
+	{stat = "critChance", amount = 4}
 }
 
 armorBonus={}
@@ -20,15 +20,14 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-	status.removeEphemeralEffect( "damageheal" )
-else
-	status.addEphemeralEffect( "damageheal" )
-	checkWeapons()
-	checkArmor()
-end
-
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+		status.removeEphemeralEffect( "damageheal" )
+	else
+		status.addEphemeralEffect( "damageheal" )
+		checkWeapons()
+		checkArmor()
+	end
 end
 
 function checkArmor()
@@ -40,7 +39,7 @@ function checkArmor()
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"shortsword","broadsword","dagger","knife"})
+	local weapons=weaponCheck({ "shortsword","broadsword", "longsword", "katana", "dagger", "knife", "axe", "greataxe", "chakram", "rapier", "scythe" })
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

@@ -1,0 +1,96 @@
+{
+  "projectileName" : "flakbullet2",
+  "image" : "flakbullet.png",
+  "physics" : "bullet",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKind" : "standardbullet",
+  "fullbright" : false,
+  "flippable" : true,
+  "emitters" : [ "fireplasma" ],
+  "actionOnReap" : [  
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/heavybulletexplosion/heavybulletexplosion.config"
+    }  
+  ],
+  "actionOnHit" : [
+      {
+        "action": "sound",
+        "options": [
+          "/sfx/projectiles/blast_small1.ogg",
+          "/sfx/projectiles/blast_small2.ogg",
+          "/sfx/projectiles/blast_small3.ogg"
+        ]
+      },
+      {
+        "action": "loop",
+        "count": 15,
+        "body": [
+          {
+            "action": "particle",
+            "specification": {
+              "type": "ember",
+              "size": 1,
+              "color": [255,200,0,255],
+              "light": [100,100,50],
+              "fullbright": true,
+              "fade": 0.9,
+              "initialVelocity": [0,0],
+              "timeToLive": 0.25,
+              "layer": "middle",
+              "variance": {
+                "initialVelocity": [20,20],
+                "timeToLive": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "action": "loop",
+        "count": 2,
+        "body": [
+          {
+            "action": "sound",
+            "options": [
+              "/sfx/projectiles/bullet_ricochet1.ogg",
+              "/sfx/projectiles/bullet_ricochet2.ogg",
+              "/sfx/projectiles/bullet_ricochet3.ogg",
+              "/sfx/projectiles/bullet_ricochet4.ogg",
+              "/sfx/projectiles/bullet_ricochet5.ogg",
+              "/sfx/projectiles/bullet_ricochet6.ogg",
+              "/sfx/projectiles/bullet_ricochet7.ogg",
+              "/sfx/projectiles/bullet_ricochet8.ogg",
+              "/sfx/projectiles/bullet_ricochet9.ogg",
+              "/sfx/projectiles/bullet_ricochet10.ogg",
+              "/sfx/projectiles/bullet_ricochet11.ogg",
+              "/sfx/projectiles/bullet_ricochet12.ogg",
+              "/sfx/projectiles/bullet_ricochet13.ogg"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "projectile",
+        "type": "flakbullet",
+        "fuzzAngle": 0,
+        "inheritDamageFactor": 0.25,
+        "config" : { "timeToLive" : 0.01 }
+      },      
+      {
+        "action": "projectile",
+        "type": "flaksplit2",
+        "fuzzAngle": 0,
+        "inheritDamageFactor": 0.25
+      },
+      {
+        "action": "config",
+        "file": "/projectiles/explosions/smokeexplosion/smokeexplosion.config"
+      }    
+  ],
+  "statusEffects" : [ ],
+  "power" : 5.0,
+  "speed" : 84,
+  "knockback" : 15
+}

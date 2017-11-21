@@ -32,7 +32,7 @@
       "color" : [10, 10, 100]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/shocklance.ogg" ]
     }
   },
   "baseOffset" : [0.77, -0.15],
@@ -47,16 +47,17 @@
     "class" : "GunFire",
 
     "fireTime" : 1.0,
-    "baseDps" : 6.0,
+    "baseDps" : 8.5,
     "energyUsage" : 20,
     "inaccuracy" : 0,
     "fireType" : "auto",
-
+    "damageConfig" : {
+      "statusEffects" : [ "electrified" ]
+    },
     "projectileType" : "fushocklanceshot",
     "projectileParameters" : {
       "knockback" : 10,
-      "speed" : 80,
-      "statusEffects" : [ "electrified" ]
+      "speed" : 80
     },
     "projectileCount" : 1,
 

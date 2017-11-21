@@ -15,7 +15,7 @@ function init()
   
   --timers
   self.biomeTimer = self.baseRate
-  self.biomeTimer2 = (self.baseRate * (1 + status.stat("fireResistance",0)) *10)
+  self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
 
   checkEffectValid()
 
@@ -88,7 +88,7 @@ end
 function setWindPenalty()
   self.windLevel =  world.windLevel(mcontroller.position())
   if (self.windLevel > 1) then
-    self.biomeThreshold = self.biomeThreshold + (self.windlevel / 100)
+    self.biomeThreshold = self.biomeThreshold + (self.windLevel / 100)
   end  
 end
 

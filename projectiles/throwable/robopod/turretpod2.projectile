@@ -1,0 +1,44 @@
+{
+  "projectileName" : "turretpod2",
+  "image" : "turretpod.png",
+  "animationCycle" : 0.25,
+  "physics" : "grenade",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 40,
+  "power" : 0.1,
+  "damageKind" : "default",
+  "emitters" : [ "capturepodred" ],
+  "bounces" : -1,
+  "piercing" : true,
+  "pureArcDuration" : 1,
+  "returnCollisionDuration" : 2,
+  "orientationLocked" : true,
+  "timeToLive" : 1,
+  "returnCollisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+  "collisionPoly" : [ [ -1, -1 ], [ 1, -1 ], [ 1, 1 ], [ -1, 1 ] ],
+
+      "actionOnReap" : [
+        {
+          "action" : "sound",
+          "options" : [ "/sfx/tech/mech_activate4.ogg" ] 
+        },       
+	{
+	  "time" : 0.33,
+	  "action":"spawnmonster", 
+	  "type":"futrifangle", 
+	  "offset":[0,0]
+	},        
+	    {
+	      "action" : "projectile",
+	      "type" : "electricexplosion",
+	      "inheritDamageFactor" : 0.02,
+	      "config" : { 
+	        "speed" : 0,
+	        "projectileParameters" : {"periodicActions" : []}
+	      },
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0
+	    }       
+      ] 
+}

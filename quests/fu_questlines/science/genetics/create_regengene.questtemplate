@@ -1,0 +1,34 @@
+{
+  "id" : "create_regengene",
+  "prerequisites" : [ "create_fertilizer" ],
+  "title" : "Gene Splicing 101",
+  "text" : "My ^orange;Xeno Lab^reset; is on the fritz and I need ^orange;1 Regen Gene^reset; to complete my work and get it ready for an event! Can you help me out?",
+  "completionText" : "Thanks to you, the symposium will be a success! As gratitude, have this instrument of brutal and calculated murder.",
+  "moneyRange" : [320, 440],
+  "rewards" : [ [ [ "isn_flintlock-recipe", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+
+    "turnInDescription" : "Bring a ^green;Regen Gene^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gene_regen",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

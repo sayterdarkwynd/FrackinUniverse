@@ -1,0 +1,141 @@
+{
+  "itemName" : "veilbreaker",
+  "price" : 500,
+  "inventoryIcon" : "veilbreaker.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A brutal and efficient weapon.",
+  "shortdescription" : "Veilbreaker",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "category" : "shotgun",
+  "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "veilbreaker.png",
+    "middleunlit" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middleunlit" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [0.30, 0.385],
+            "transformationGroups" : ["weapon"],
+            "fullbright" : true,
+            "zLevel" : 1
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/veilbreaker.ogg" ]
+    }
+  },
+
+
+  "baseOffset" : [0.50, 0.385],
+  "muzzleOffset" : [2.3, 0.0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.3,
+    "baseDps" : 10,
+    "energyUsage" : 50,
+    "inaccuracy" : 0.14,
+
+    "projectileCount" : 5,
+    "fireType" : "auto",
+
+    "projectileType" : "splitbullet2",
+    "projectileParameters" : {
+      "knockback" : 10
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 3,
+        "weaponRotation" : 4,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "explosiveshot",
+  "altAbility" : {
+    "name" : "Gravity Bomb",
+    "fireTime" : 3,
+    "baseDps" : 1,
+    "projectileCount" : 1,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
+    "projectileType" : "gravitymine",
+    "projectileParameters" : {
+      "piercing" : false,
+      "speed" : 30,
+      "timeToLive" : 1,    
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/fuwavebeamexplosion/fuwavebeamexp2.config"
+	    },      
+	    {
+	      "action" : "projectile",
+	      "type" : "gravitysphere",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.1,
+	      "angleAdjust" : 0,
+	      "config" : { "speed" : 0 }
+	    }      
+      ]
+    }
+    
+  },
+
+  "critChance" : 3,
+  "critBonus" : 3,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

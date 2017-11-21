@@ -1,0 +1,35 @@
+{
+  "id" : "create_extractor",
+  "prerequisites" : [ "fuquest_extractor" ],
+  "title" : "Extraction 101",
+  "text" : "Any self-respecting scientist has an ^orange;Extraction Lab^reset;. It's like sorcery! Stuff goes in, better stuff comes out! Make one in your ^orange;Auto-Assembler^reset;.",
+  "completionText" : "You'll have limitless options when it comes to using that thing. Try building some other science stations now, such as a ^orange;Bio-Chem Lab^reset;.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+    
+    "turnInDescription" : "Bring the ^green;Extraction Lab^reset; to the ^orange;Human Scientist^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "extractionlab",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

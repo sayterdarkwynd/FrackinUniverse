@@ -1,13 +1,13 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 15},
+	{stat = "critChance", amount = 4},
 	{stat = "powerMultiplier", amount = 0.15},
 	{stat = "shipMass", baseMultiplier = 0.90}
 }
 
 armorBonus={
-		{stat = "energyRegenPercentageRate", baseMultiplier = 1.25},
+		{stat = "energyRegenPercentageRate", baseMultiplier = 1.12},
 		{stat = "energyRegenBlockTime", baseMultiplier = 0.85}
 }
 

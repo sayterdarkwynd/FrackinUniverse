@@ -1,0 +1,226 @@
+{
+  "type" : "ixolingsulphuricbaby",
+  "shortdescription" : "Sulphuric Ixoling",
+  "description" : "If it survives for 200 years, it might become an Ixodoom.",
+
+  "categories" : [ "ixolingsulphuric" ],
+  "parts" : [ "body" ],
+
+  "animation" : "ixolingsulphuric.animation",
+  "reversed" : false,
+
+  "dropPools" : [ "ixolingTreasure" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    "facingMode" : "transformation",
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 100,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 60,
+      "targetOutOfSightTime" : 2.5,
+      
+      "wanderActions" : [
+        {
+          "name" : "wander-crawl",
+          "cooldown" : [1,3],
+          "parameters" : {
+            "wanderTime" : [5,9],
+            "idleTime" : [2,7],
+            "stopForce" : 300
+          }
+        }      
+      ],
+      "hostileActions" : [
+        {
+          "name" : "action-leap",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 30,
+            "windupState" : "attack",
+            "windupTime" : 0.3,
+
+            "leapVelocity" : 50,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "leapState" : "attack",
+            "fallState" : "fall",
+
+            "winddownTime" : 0.5,
+            "winddownState" : "idle"
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "wander-crawl",
+          "cooldown" : [1,3],
+          "parameters" : {
+            "wanderTime" : [5,9],
+            "idleTime" : [2,7],
+            "stopForce" : 300
+          }
+        },      
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 2,
+            "jumpXVelocity" : 16,
+            "jumpYVelocity" : 35,
+            "jumpXControlForce" : 25,
+            "jumpState" : "attack",
+            "fallState" : "fall"
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "wander-crawl",
+          "cooldown" : [1,3],
+          "parameters" : {
+            "wanderTime" : [5,9],
+            "idleTime" : [2,7],
+            "stopForce" : 300
+          }
+        },        
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 2,
+            "jumpXVelocity" : 20,
+            "jumpYVelocity" : 40,
+            "jumpXControlForce" : 25,
+            "jumpState" : "attack",
+            "fallState" : "fall"
+          }
+        }
+      ],
+      
+      "deathActions" : [
+        {
+         "name":"action-projectile",
+         "parameters" : {
+          "projectileType" : "sulphurdeath",
+          "aimDirection" : [0,0],
+          "aimAtTarget" : false
+         }
+        }        
+      ],
+
+      "damageTakenActions" : [
+
+      ]      
+    },
+
+    "pathing" : {
+      "canOpenDoors" : false
+    },
+
+    "scale" : 0.5,
+
+    "knockoutTime" : 0.3,
+    "knockoutEffect" : "",
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1, -0.6], [-0.6, -1], [0.6, -1], [1, -0.6], [1, 0.6], [0.6, 1], [-0.6, 1], [-1, 0.6] ],
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12
+    },
+    "metaBoundBox" : [-2, -2, 2, 2],
+
+    "touchDamage" : {
+      "poly" : [ [-1, -0.6], [-0.6, -1], [0.6, -1], [1, -0.6], [1, 0.6], [0.6, 1], [-0.6, 1], [-1, 0.6] ],
+      "damage" : 4,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : []
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 15
+        },
+        "protection" : {
+          "baseValue" : 35
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [1.0, -1.5],
+    "feetOffset" : [0, -21],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

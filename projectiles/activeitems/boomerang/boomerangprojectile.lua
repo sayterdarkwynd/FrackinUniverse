@@ -3,10 +3,10 @@ require "/scripts/vec2.lua"
 function init()
   self.returning = config.getParameter("returning", false)
   self.returnOnHit = config.getParameter("returnOnHit", false)
-  self.controlForce = config.getParameter("controlForce")
-  self.pickupDistance = config.getParameter("pickupDistance")
-  self.snapDistance = config.getParameter("snapDistance")
-  self.timeToLive = config.getParameter("timeToLive")
+  self.controlForce = config.getParameter("controlForce") or 40
+  self.pickupDistance = config.getParameter("pickupDistance") or 1
+  self.snapDistance = config.getParameter("snapDistance") or 1
+  self.timeToLive = config.getParameter("timeToLive") or 1
   self.speed = config.getParameter("speed")
   self.ignoreTerrain = config.getParameter("ignoreTerrain")
   self.ownerId = projectile.sourceEntity()
@@ -32,7 +32,7 @@ function update(dt)
     end
 
     if not self.returning then
-      mcontroller.approachVelocity({0, 0}, self.controlForce)
+      mcontroller.approachVelocity({0, 0}, self.controlForce) 
       if (not self.ignoreTerrain and mcontroller.isColliding()) or vec2.mag(mcontroller.velocity()) < self.minVelocity then
         self.returning = true
       end

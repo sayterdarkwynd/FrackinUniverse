@@ -1,0 +1,32 @@
+{
+  "id" : "create_teleportercore",
+  "prerequisites" : [  "create_mutavisk" ],
+  "title" : "Shortest distance is zero",
+  "text" : "I am in dire need of your assistance. ^orange;I need a teleporter core^reset; to finish my teleporter. You can craft one in your ^orange;Matter Assembler^reset;.",
+  "completionText" : "Without teleporter cores, you won't be able to craft several useful technologies. Plus, teleporters are just plain ^green;fun^reset;!!!",
+  "moneyRange" : [1250 , 2250],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+    "turnInDescription" : "Bring the ^orange;teleporter core^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "teleportercore",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

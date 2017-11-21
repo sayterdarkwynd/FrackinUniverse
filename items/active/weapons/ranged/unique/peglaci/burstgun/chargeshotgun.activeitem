@@ -5,7 +5,7 @@
   "rarity" : "uncommon",
   "description" : "A potent incendiary weapon
 ^yellow;Inflicts Burn^reset;",
-  "shortdescription" : "Scorch Burstgun",
+  "shortdescription" : "Fahrenheit 451",
   "tooltipKind" : "gun2",
   "category" : "shotgun",
   "twoHanded" : true,
@@ -33,27 +33,338 @@
 
   "primaryAbilityType" : "chargefire",
   "primaryAbility" : {
+    "baseDps" : 5,
+    "energyUsage" : 20,
     "chargeLevels" : [
       {
-        "time" : 0,
-        "energyCost" : 15,
-        "cooldown" : 0.1,
-        "projectileType" : "fushotgundart1",
-        "projectileParameters" : {},
-        "inaccuracy" : 0.008,
-        "baseDamage" : 1.5,
+        "time" : 0.25,
+        "energyCost" : 12,
+        "cooldown" : 0.15,
+        "projectileType" : "fireguardianbullet",
+        "projectileParameters" : {
+          "speed" : 30, 
+          "knockback" : 10,
+	  "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [
+		"/sfx/projectiles/fireball_bounce1.ogg",
+		"/sfx/projectiles/fireball_bounce2.ogg",
+		"/sfx/projectiles/fireball_bounce3.ogg"
+	      ]
+	    }
+	  ],	          
+          "periodicActions" : [
+	    {
+	      "time" : 0.06,
+	      "action" : "projectile",
+	      "type" : "firebouncer2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : { 
+		"speed" : 0, 
+		"knockback" : 10,
+		"timeToLive" : 0.05, 
+		"actionOnReap" : [
+		    {
+		      "action" : "loop",
+		      "count" : 4,
+		      "body" : [
+			{
+			  "action" : "particle",
+			  "specification" : "fireshard"
+			}
+		      ]
+		    }	        
+		]  
+	      }
+	    }           
+          ],
+          "scripts" : []          
+        },
+        "inaccuracy" : 0,
+        "baseDamage" : 3,
         "fireSound" : "fire"
       },
       {
-        "time" : 1.0,
+        "time" : 0.45,
         "energyCost" : 40,
-        "cooldown" : 0.5,
-        "projectileType" : "fushotgundartpower",
-        "projectileParameters" : {},
-        "inaccuracy" : 0,
-        "baseDamage" : 7,
+        "cooldown" : 0.35,
+        "projectileType" : "fireguardianbullet",
+        "projectileCount" : 2,
+        "projectileParameters" : { 
+	  "speed" : 35,
+	  "knockback" : 10,
+	  "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [
+		"/sfx/projectiles/fireball_bounce1.ogg",
+		"/sfx/projectiles/fireball_bounce2.ogg",
+		"/sfx/projectiles/fireball_bounce3.ogg"
+	      ]
+	    }
+	  ],	  
+          "periodicActions" : [
+	    {
+	      "time" : 0.06,
+	      "action" : "projectile",
+	      "type" : "firebouncer2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : { 
+		"speed" : 0, 
+		"timeToLive" : 0.05, 
+		"knockback" : 10,
+		"actionOnReap" : [
+		    {
+		      "action" : "loop",
+		      "count" : 4,
+		      "body" : [
+			{
+			  "action" : "particle",
+			  "specification" : "fireshard"
+			}
+		      ]
+		    }	        
+		]  
+	      }
+	    }           
+          ],
+          "scripts" : []    
+        },
+        "inaccuracy" : 0.08,
+        "baseDamage" : 4,
         "fireSound" : "fire2"
-      }
+      },
+      {
+        "time" : 0.85,
+        "energyCost" : 80,
+        "cooldown" : 0.5,
+        "projectileType" : "fireguardianbullet",
+        "projectileCount" : 3,
+        "projectileParameters" : { 
+	  "speed" : 40,  
+	  "knockback" : 10,
+	  "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [
+		"/sfx/projectiles/fireball_bounce1.ogg",
+		"/sfx/projectiles/fireball_bounce2.ogg",
+		"/sfx/projectiles/fireball_bounce3.ogg"
+	      ]
+	    }
+	  ],	  
+          "periodicActions" : [
+	    {
+	      "time" : 0.06,
+	      "action" : "projectile",
+	      "type" : "firebouncer2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { 
+		"speed" : 0, 
+		"timeToLive" : 0.05, 
+		"actionOnReap" : [
+		    {
+		      "action" : "loop",
+		      "count" : 4,
+		      "body" : [
+			{
+			  "action" : "particle",
+			  "specification" : "fireshard"
+			}
+		      ]
+		    }	        
+		]  
+	      }
+	    }           
+          ],
+          "scripts" : []   
+        },
+        "inaccuracy" : 0.08,
+        "baseDamage" : 5,
+        "fireSound" : "fire2"
+      },
+      {
+        "time" : 1.2,
+        "energyCost" : 110,
+        "cooldown" : 0.65,
+        "projectileType" : "fireguardianbullet",
+        "projectileCount" : 4,
+        "projectileParameters" : { 
+	  "speed" : 45,
+	  "knockback" : 10,
+	  "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [
+		"/sfx/projectiles/fireball_bounce1.ogg",
+		"/sfx/projectiles/fireball_bounce2.ogg",
+		"/sfx/projectiles/fireball_bounce3.ogg"
+	      ]
+	    }
+	  ],		  
+          "periodicActions" : [
+	    {
+	      "time" : 0.06,
+	      "action" : "projectile",
+	      "type" : "firebouncer2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : { 
+	        "speed" : 0,
+	        "knockback" : 10,
+	        "timeToLive" : 0.05,
+		"actionOnReap" : [
+		    {
+		      "action" : "loop",
+		      "count" : 4,
+		      "body" : [
+			{
+			  "action" : "particle",
+			  "specification" : "fireshard"
+			}
+		      ]
+		    }	        
+		] 	        
+	      }
+	    }          
+          ],
+          "scripts" : []    
+        },
+        "inaccuracy" : 0.092,
+        "baseDamage" : 5.5,
+        "fireSound" : "fire2"
+      },
+      {
+        "time" : 1.6,
+        "energyCost" : 150,
+        "cooldown" : 0.70,
+        "projectileType" : "fireguardianbullet",
+        "projectileCount" : 5,
+        "projectileParameters" : { 
+	  "speed" : 45,
+	  "knockback" : 10,
+	  "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [
+		"/sfx/projectiles/fireball_bounce1.ogg",
+		"/sfx/projectiles/fireball_bounce2.ogg",
+		"/sfx/projectiles/fireball_bounce3.ogg"
+	      ]
+	    }
+	  ],		  
+          "periodicActions" : [
+	    {
+	      "time" : 0.06,
+	      "action" : "projectile",
+	      "type" : "firebouncer2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : { 
+	        "knockback" : 10,
+	        "speed" : 0, 
+	        "timeToLive" : 0.05,
+		"actionOnReap" : [
+		    {
+		      "action" : "loop",
+		      "count" : 4,
+		      "body" : [
+			{
+			  "action" : "particle",
+			  "specification" : "fireshard"
+			}
+		      ]
+		    }	        
+		]  
+	      }
+	    }          
+          ],
+          "scripts" : []
+        },
+        "inaccuracy" : 0.12,
+        "baseDamage" : 6,
+        "fireSound" : "fire2"
+      },
+      {
+        "time" : 2,
+        "energyCost" : 200,
+        "cooldown" : 0.75,
+        "projectileType" : "fireguardianbullet",
+        "projectileCount" : 6,
+        "projectileParameters" : { 
+	  "speed" : 50,
+	  "knockback" : 10,
+	  "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [
+		"/sfx/projectiles/fireball_bounce1.ogg",
+		"/sfx/projectiles/fireball_bounce2.ogg",
+		"/sfx/projectiles/fireball_bounce3.ogg"
+	      ]
+	    }
+	  ],		  
+          "periodicActions" : [
+	    {
+	      "time" : 0.06,
+	      "action" : "projectile",
+	      "type" : "firebouncer2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : { 
+	        "knockback" : 10,
+	        "speed" : 0, 
+	        "timeToLive" : 0.05,
+		"actionOnReap" : [
+		    {
+		      "action" : "loop",
+		      "count" : 4,
+		      "body" : [
+			{
+			  "action" : "particle",
+			  "specification" : "fireshard"
+			}
+		      ]
+		    }	        
+		]  
+	      }
+	    }          
+          ],
+          "scripts" : []
+        },
+        "inaccuracy" : 0.17,
+        "baseDamage" : 6.5,
+        "fireSound" : "fire2"
+      }       
     ]
   },
   "critChance" : 5,

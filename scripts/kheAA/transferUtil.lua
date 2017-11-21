@@ -22,7 +22,15 @@ function transferUtil.init()
 	if storage.init==nil then
 		storage.init=true
 	end
+	storage.disabled=(entity.entityType() ~= "object")
+	if storage.disabled then
+		sb.logInfo("transferUtil automation functions are disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
+		return
+	end
 	storage.position=entity.position()
+	storage.logicNode=config.getParameter("kheAA_logicNode")
+	storage.inDataNode=config.getParameter("kheAA_inDataNode");
+	storage.outDataNode=config.getParameter("kheAA_outDataNode");
 end
 
 function transferUtil.initTypes()
@@ -46,6 +54,7 @@ end
 
 
 function transferUtil.routeItems()
+	if storage.disabled then return end
 	if util.tableSize(storage.inContainers) == 0 then return end
 	if util.tableSize(storage.outContainers) == 0 then return end
 	
@@ -103,6 +112,49 @@ function transferUtil.routeItems()
 end
 
 
+
+function transferUtil.routeMoney()
+	if storage.disabled then return end
+	if util.tableSize(storage.inContainers) == 0 then return end
+	if util.tableSize(storage.outContainers) == 0 then return end
+	
+	for sourceContainer,sourcePos in pairs(storage.inContainers) do
+		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
+		if ping1 ~= nil then
+			sourceContainer=ping1
+		end
+		for targetContainer,targetPos in pairs(storage.outContainers) do
+			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
+			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
+			if ping2 ~= nil then
+				targetContainer=ping2
+			end
+			if targetAwake == true and sourceAwake == true then
+				local sourceItems=world.containerItems(sourceContainer)
+				if sourceItems ~= nil then 
+					for indexIn,item in pairs(sourceItems) do
+						local conf=root.itemConfig(item.name)
+						--sb.logInfo("%s",conf)
+						if conf.config.currency then
+							local leftOverItems=world.containerAddItems(targetContainer,item)
+							if leftOverItems~=nil then
+								world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
+								item=leftOverItems
+							else
+								world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
+								break
+							end
+						end
+					end
+				end
+			else
+				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
+			end
+		end
+	end
+end
+
+
 function transferUtil.containerAwake(targetContainer,targetPos)
 	if type(targetPos) ~= "table" then
 		return nil,nil
@@ -134,6 +186,7 @@ function transferUtil.containerAwake(targetContainer,targetPos)
 end
 
 function transferUtil.zoneAwake(targetBox)
+	if storage.disabled then return end
 	if type(targetBox) ~= "table" then
 		dbg({"zoneawake failure, invalid input:",targetBox})
 		return nil
@@ -208,10 +261,14 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 	
 end
 
-function transferUtil.updateInputs(dataNode)
+function transferUtil.updateInputs()
 	storage.input={}
 	storage.inContainers={}
-	storage.input=object.getInputNodeIds(dataNode);
+	if storage.disabled then return end
+	if not storage.inDataNode then
+		return
+	end
+	storage.input=object.getInputNodeIds(storage.inDataNode);
 	local buffer={}
 	for inputSource,nodeValue in pairs(storage.input) do
 		local temp=world.callScriptedEntity(inputSource,"transferUtil.sendContainerInputs")
@@ -224,10 +281,14 @@ function transferUtil.updateInputs(dataNode)
 	storage.inContainers=buffer
 end
 
-function transferUtil.updateOutputs(dataNode)
+function transferUtil.updateOutputs()
 	storage.output={}
 	storage.outContainers={}
-	storage.output=object.getOutputNodeIds(dataNode);
+	if storage.disabled then return end
+	if not storage.outDataNode then
+		return
+	end
+	storage.output=object.getOutputNodeIds(storage.outDataNode);
 	local buffer={}
 	for outputSource,nodeValue in pairs(storage.output) do
 		local temp=world.callScriptedEntity(outputSource,"transferUtil.sendContainerOutputs")
@@ -390,7 +451,7 @@ end
 
 function transferUtil.powerLevel(node,explicit)
 	if(node==nil)then
-		node=0
+		return not explicit
 	end
 	if explicit==nil then
 		explicit=false

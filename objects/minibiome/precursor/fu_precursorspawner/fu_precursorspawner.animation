@@ -1,0 +1,46 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "base" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1},
+		  "on" : {"frames" : 8, "mode" : "loop"}
+        }
+      }
+    },
+
+    "parts" : {
+      "base" : {
+	"properties" : {
+	"zLevel" : 2,
+	"centered" : false 
+	},
+        "partStates" : {
+          "base" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+			"on" : {"properties" : {"image" : "<partImage>:on.<frame>"}}
+          }
+        }
+      },
+      "basefullbright" : {
+	"properties" : {
+	"zLevel" : 3,
+	"centered" : false,
+	"fullbright" : true
+	},
+        "partStates" : {
+          "base" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+			"on" : {"properties" : {"image" : "<partImage>:on.<frame>"}}
+          }
+        }
+      }      
+    }
+  },
+  "sounds" : {
+	"on" : ["/sfx/objects/precursorspawner_startup.ogg"],
+	"running" : ["/sfx/objects/precursorspawner_running.ogg"],
+	"off" : ["/sfx/objects/precursorspawner_shutdown.ogg"]
+  }
+}

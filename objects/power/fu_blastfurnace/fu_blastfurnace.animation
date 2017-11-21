@@ -19,6 +19,28 @@
     "parts" : {
       "fu_blastfurnace" : {
         "properties" : {
+		  "zLevel" : 1,
+          "centered" : false,
+		  "fullbright" : true
+        },
+        "partStates" : {
+          "furnaceState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.idle"
+              }
+            },
+            "active" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.active<frame>"
+              }
+            }
+          }
+        }
+      },
+	  "fu_blastfurnacefullbright" : {
+        "properties" : {
+		  "zLevel" : 2,
           "centered" : false
         },
         "partStates" : {

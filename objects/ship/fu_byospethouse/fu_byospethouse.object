@@ -1,0 +1,48 @@
+{
+  "objectName" : "fu_byospethouse",
+  "colonyTags" : ["misc"],
+  "rarity" : "Common",
+
+  "category" : "storage",
+  "description" : "Just big enough for a small animal to fit comfortably inside. Comes with a free pet.",
+  "shortdescription" : "Pet House",
+  "race" : "generic",
+  "printable" : false,
+
+  "apexDescription" : "Home sweet home to a beloved pet.",
+  "avianDescription" : "Some kind of small house for a creature. I bet my bunny would love it!",
+  "floranDescription" : "Floran sssnake usually live in tall grasss. Pet housse unnatural.",
+  "glitchDescription" : "Happy. This kennel would suit my prized piglet.",
+  "humanDescription" : "Just another thoughtful gift for my ungrateful feline companion to ignore.", 
+  "hylotlDescription" : "This isn't a conventional house for a crasberry, but it will do.",
+  "novakidDescription" : "A pet house! A lil on the cramped side but who's complainin'?",
+
+  "inventoryIcon" : "fu_byospethouse.png",
+  "orientations" : [
+    {
+      "image" : "fu_byospethouse.png",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaces" : [ [-1, 0], [0, 0], [1, 0], [-1, 1], [0, 1], [1, 1], [-1, 2], [0, 2], [1, 2] ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "fu_byospethouse.png",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaces" : [ [-1, 0], [0, 0], [1, 0], [-1, 1], [0, 1], [1, 1], [-1, 2], [0, 2], [1, 2] ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+   "scripts" : [
+    "fu_byospethouse.lua", "/objects/ship/fu_byosobjectdeath.lua"
+  ],
+  "scriptDelta" : 20,
+  "shipPetType" : "petweasel",
+  "spawnOffset" : [0, 1],
+  "racialiserType" : "pet",
+  "retainObjectParametersInItem" : true
+}

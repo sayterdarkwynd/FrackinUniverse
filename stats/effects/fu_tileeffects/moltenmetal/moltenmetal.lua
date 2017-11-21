@@ -1,10 +1,18 @@
 function init()
   script.setUpdateDelta(5)
-  self.tickTime = 0.85
+  self.tickTime = 0.5
   self.tickTimer = self.tickTime
   self.baseDamage = setEffectDamage()
-  self.baseTime = setEffectTime() 
+  self.baseTime = 0.5 
   activateVisualEffects()
+  
+  status.applySelfDamageRequest({
+      damageType = "IgnoresDef",
+      damage = self.baseDamage,
+      damageSourceKind = "fire",
+      sourceEntityId = entity.id()
+    })
+    
 end
 
 function deactivateVisualEffects()
@@ -25,16 +33,17 @@ function setEffectDamage()
 end
 
 function setEffectTime()
-  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.45))
+  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.5))
 end
 
 function update(dt)
-  	if ( status.stat("fireResistance",0)  >= 0.75 ) then
+  	if ( status.stat("fireResistance",0)  >= 1.0 ) then
   	  deactivateVisualEffects()
 	  effect.expire() 
 	end  
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
+    self.baseDamage = self.baseDamage +3
     self.tickTimer = self.tickTime
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
@@ -44,9 +53,12 @@ function update(dt)
       })
   end
 
-  effect.setParentDirectives("fade=AA00AA="..self.tickTimer * 0.4)
+  effect.setParentDirectives("fade=AA00AA="..self.tickTimer * 0.25)
 end
 
+function onExpire()
+  status.addEphemeralEffect("burning")
+end
 
 function uninit()
   

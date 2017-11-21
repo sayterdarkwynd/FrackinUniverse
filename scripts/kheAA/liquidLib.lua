@@ -7,6 +7,8 @@ function liquidLib.init()
 	if storage.liquidOuts == nil then
 		storage.liquidOuts = {};
 	end
+	
+	storage.inLiquidNode=config.getParameter("kheAA_inLiquidNode")--doesn't actually do anything, doesn't matter at this point.
 end
 
 function liquidLib.itemToLiquidId(item)
@@ -105,7 +107,10 @@ end
 
 function liquidLib.update(dt)
 	storage.liquidOuts={}
-	local tempList=object.getOutputNodeIds(outLiquidNode)
+	if not storage.inLiquidNode then
+		return
+	end
+	local tempList=object.getOutputNodeIds(storage.inLiquidNode)
 	if tempList then
 		for id,node in pairs(tempList) do
 			local result=world.callScriptedEntity(id,"liquidLib.canReceiveLiquid")

@@ -4,7 +4,7 @@
   "rarity" : "Common",
   "category" : "decorative",
 
-  "description" : "Can play music.",
+  "description" : "Can play music when switched on (using wiring).",
   "shortdescription" : "Music Player",
   "race" : "generic",
   "learnBlueprintsOnPickup" : ["fm_portablemusicplayer"],
@@ -37,7 +37,7 @@
       "anchors" : [ "bottom" ]
     }
   ],
-
+	
   "animation" : "fm_musicplayer.animation",
   "animationParts" : {
     "bg" : "fm_musicplayer.png",
@@ -45,5 +45,14 @@
   },
   "animationPosition" : [-8, 0],
   "interactAction" : "ScriptPane",
-  "interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config"
+  "interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+  
+  "inputNodes" : [ [0, 0] ],
+  
+  "scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayerobject.lua"],
+  "scriptDelta" : 7,	
+  
+  "soundEffect" : "",
+  "soundEffectRangeMultiplier" : 1.0,
+  "broadcastArea" : [-30, -30, 30, 30]
 }

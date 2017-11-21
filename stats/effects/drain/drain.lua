@@ -1,7 +1,7 @@
 function init()
   animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
   animator.setParticleEmitterEmissionRate("healing", config.getParameter("emissionRate", 3))
-  animator.setParticleEmitter("healing", false)
+  animator.setParticleEmitterActive("healing", false)
 
   self.visualDuration = config.getParameter("visualDuration") or 0.2
 

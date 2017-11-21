@@ -23,12 +23,12 @@
   },
 
   "ability" : {
-    "name" : "Magma Spray",
+    "name" : "Scorching Spray",
     "type" : "funapalmspray",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
 
-    "projectileType" : "fulavaprojectile",
+    "projectileType" : "isn_napalmsprayer",
     "elementalConfig" : {
       "physical" : { "projectileParameters" : { } },
       "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
@@ -48,7 +48,40 @@
     "inaccuracy" : 0.15,
     "fireType" : "auto",
     "projectileCount" : 1,
-
+    "projectileParameters" : {
+      "timeToLive" : 0.1,
+	  "actionOnReap" : [ 
+	  { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 0.2 },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
+	    },	
+	    {
+	      "action" : "projectile",
+	      "type" : "magnorbhellfire2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : -20,
+	      "config" : {
+	        "projectileParameters" : {
+	          "power" : 10
+	        }
+	      }
+	    }, 	    
+	    {
+	      "action" : "projectile",
+	      "type" : "magnorbhellfire2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 20,
+	      "config" : {
+	        "projectileParameters" : {
+	          "power" : 10
+	        }
+	      }
+	    }        
+	  ]    
+    
+    },
+    
     "stances" : {
       "fire" : {
         "duration" : 0.02,

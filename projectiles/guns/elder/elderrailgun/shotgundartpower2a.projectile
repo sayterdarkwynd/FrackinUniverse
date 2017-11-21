@@ -1,28 +1,31 @@
 {
   "projectileName" : "elderrailgunshotpower2a",
   "image" : "shotgundartpower.png",
-  "animationCycle" : 0.5,
+  "animationCycle" : 0.4,
   "piercing" : true,
   "physics" : "gas",
-  "bounces" : 0,
-  "frameNumber" : 1,
+  "bounces" : 8,
+  "frameNumber" : 4,
   "pointLight" : false,
-  "timeToLive" : 0.01,
+  "timeToLive" : 1,
   "speed" :60,
   "fullbright" : true,
-  "lightColor" : [40, 150, 40],
-   "actionOnReap" : [
-	{
+  "lightColor" : [0, 30, 0],
+  "periodicActions" : [
+    {
+      "time" : 0.15,
+      "loop" : true,
       "action" : "config",
-      "file" :"/projectiles/guns/elder/elderrailgun/elderrailgunexplosion.config"
-    },
-	{
-      "action" : "projectile",
-      "type" : "elderrailgunshotpowerwait2",
-      "inheritDamageFactor" : 0.6,
-      "angleAdjust" : 0
-    }
-  ],
+      "file" : "/projectiles/explosions/elementimpact/shadowimpactmute.config"
+   },
+    {
+      "time" : 0.3,
+      "loop" : true,
+      "action" : "config",
+      "file" : "/projectiles/guns/elder/elderrailgun/elderrailgunexplosion.config"
+   }   
+  ],  
+  
   "damageKind" : "shadowplasmashotgun",
   "emitters" : [ "peglacitrailgreen" ]
 }

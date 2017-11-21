@@ -1,0 +1,73 @@
+{
+  "objectName" : "fu_crewbed2",
+  "colonyTags" : ["misc"],
+  "rarity" : "Legendary",
+  "description" : "These cosy beds can stack on top of each other.",
+  "shortdescription" : "Crew Bunk",
+  "race" : "generic",
+  "category" : "furniture",
+  "printable" : false,
+  "lightColor" : [20, 29, 33],
+
+  "apexDescription" : "A basic bunk bed.",
+  "avianDescription" : "This bunk bed looks rather basic.",
+  "floranDescription" : "Floran would like to sssleep in bunk bed.",
+  "glitchDescription" : "Sentimental. A bunk bed, not dissimilar from those at the Protectorate academy.",
+  "humanDescription" : "A bunk bed. Not terribly spacious, but surprisingly comfortable.",
+  "hylotlDescription" : "I have fond memories of sleeping in such a bed at the Protectorate academy.",
+  "novakidDescription" : "A regular bunk bed.",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage" : "/objects/mission/lunarbasebunk/lunarbasebunkcover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed1"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "fu_crewbedicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_crewbed.png:<color>", "fullbright" : true }, { "image" : "fu_crewbedlit.png:<color>" } ],
+      "flipImages" : true,
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      
+      "lightPosition" : [-3, 1],
+      
+      "sitPosition" : [-4, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_crewbed.png:<color>", "fullbright" : true }, { "image" : "fu_crewbedlit.png:<color>"} ],
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      
+      "lightPosition" : [3, 1],
+      
+      "sitPosition" : [-12, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "collision" : "platform"
+    }
+    
+  ],
+  
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "crewSize" : 2
+  }
+}

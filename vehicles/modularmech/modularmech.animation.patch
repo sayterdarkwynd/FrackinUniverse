@@ -65,5 +65,122 @@
 	{ "op" : "replace", "path" : "/animatedParts/parts/frontLegJoint/partStates/frontFoot/preview/properties/offset", "value" : [0.75, -0.25] },
 	
 	{ "op" : "replace", "path" : "/animatedParts/parts/backLegJoint/properties/offset", "value" : [0.75, -1.125] },
-	{ "op" : "replace", "path" : "/animatedParts/parts/backLegJoint/partStates/backFoot/preview/properties/offset", "value" : [0.625, -0.25] }
+	{ "op" : "replace", "path" : "/animatedParts/parts/backLegJoint/partStates/backFoot/preview/properties/offset", "value" : [0.625, -0.25] },
+	
+
+
+
+    
+    
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/highDamage",
+	    "value": {
+	      "transformationGroups": ["body"],
+	      "emissionRate": 24,
+	      "offsetRegion": [-2,2,2,4.2],
+              "particles" : [ { "particle" : "burningdust"},
+                      { "particle" : "campfireflames"},
+                      { "particle" : "fireshard"},
+                      { "particle" : "burningvehiclesmokeback"}]
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/midDamage",
+	    "value": {
+	      "transformationGroups": ["body"],
+	      "emissionRate": 12,
+	      "offsetRegion": [-2,2,2,4.2],
+              "particles" : [ { "particle" : "burningdust"},
+                      { "particle" : "campfireflames"},
+                      { "particle" : "fireshard"},
+                      { "particle" : "burningvehiclesmokeback"}]
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/lowDamage",
+	    "value": {
+	      "transformationGroups": ["body"],
+	      "emissionRate": 6,
+	      "offsetRegion": [-2,2,2,4.2],
+              "particles" : [ { "particle" : "burningvehiclesmokefront"} ]
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/minorDamage",
+	    "value": {
+	      "transformationGroups": ["body"],
+	      "emissionRate": 6,
+	      "offsetRegion": [-2,2,2,4.2],
+              "particles" : [ { "particle" : "sparks"} ]
+	    }
+	  },
+	  
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/legImpactHeavy",
+	    "value": {
+	      "transformationGroups": ["backLeg","frontLeg"],
+	      "emissionRate": 0,
+	      "offsetRegion": [-4,-3.4,4,-3.2],
+	      "particles": [
+		{"particle":"fusmoke"},
+		{"particle":"fusmoke"},
+		{"particle":"fuvolcanopoof"},	
+		{"particle":"fuvolcanopoof"},		
+		{"particle":"fuvolcanopoof"},	
+		{"particle":"fuvolcanopoof"},
+		{"particle":"fuvolcanosmoke"},
+		{"particle": "burningvehiclesmokefront"},
+		{"particle": "burningvehiclesmokefront"}
+	      ]
+	    }
+	  },	
+	  
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/legImpact",
+	    "value": {
+	      "transformationGroups": ["backLeg","frontLeg"],
+	      "emissionRate": 0,
+	      "offsetRegion": [-4,-3.4,4,-3.2],
+	      "particles": [
+		{"particle": "fusmoke"},
+		{"particle":"fuvolcanopoof"},
+		{"particle": "burningvehiclesmokefront"}
+	      ]
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/blockDamage",
+	    "value": {
+	      "transformationGroups": ["body"],
+	      "emissionRate": 0,
+	      "offsetRegion": [-4,-3.4,4,-3.2],
+	      "particles": [
+		{"particle": "shockwavedust"}
+	      ]
+	    }
+	  },	  
+	  {
+	    "op": "add",
+	    "path": "/sounds/landingThud",
+	    "value": [
+	      "/sfx/tech/mechthump1.ogg",
+	      "/sfx/tech/mechthump2.ogg",
+	      "/sfx/tech/mechthump3.ogg",
+	      "/sfx/tech/mechthump4.ogg"
+	    ]
+  	 },
+	  {
+	    "op": "add",
+	    "path": "/sounds/heavyBoom",
+	    "value": [
+	      "/sfx/weapons/stonehit.ogg", "/sfx/weapons/explosionunderwater.wav"
+	    ]
+  	}  	 
 ]

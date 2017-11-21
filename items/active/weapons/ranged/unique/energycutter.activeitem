@@ -1,0 +1,354 @@
+{
+  "itemName" : "energycutter",
+  "price" : 1600,
+  "inventoryIcon" : "energycutter.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Built to cut through hulls. Energy weapon.
+^cyan;Short range. Slows target.^reset;
+^green;Alt-Fire causes bleed, electrified^reset;",
+  "shortdescription" : "Breach Cutter",
+  "level" : 3,
+  "category" : "energy",
+  "tooltipKind" : "gun2",
+  "weaponType" : "rocketLauncher",
+  "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "energycutter.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire":[  
+        "/sfx/gun/lightningcoil3.ogg",
+        "/sfx/gun/lightningcoil2.ogg"
+      ],
+      "altFire":[  
+        "/sfx/tools/chainsaw_rev_down.ogg"
+      ]
+    }
+  },
+
+  "baseOffset" : [0.75, -0.5],
+  "muzzleOffset" : [1.25, 0.120],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.01,
+    "baseDps" : 5,
+    "energyUsage" : 80,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "plasmatorpedo2",
+    "projectileParameters" : { 
+      "statusEffects" : [ "stun" ],
+      "periodicActions":[  
+        {
+          "time":0,
+          "action" : "explosion",
+          "foregroundRadius" : 2,
+          "backgroundRadius" : 0,
+          "explosiveDamageAmount" : 4,
+          "harvestLevel" : 99,
+          "delaySteps" : 2
+        },      
+        {  
+          "time":0,
+          "action":"particle",
+          "specification":{  
+            "type":"ember",
+            "light":[  
+              0,
+              0,
+              255
+            ],
+            "size":0.5,
+            "color":[  
+              0,
+              0,
+              180,
+              50
+            ],
+            "initialVelocity":[  
+              0.0,
+              10.0
+            ],
+            "finalVelocity":[  
+              0.0,
+              -3.0
+            ],
+            "approach":[  
+              0.0,
+              -1.0
+            ],
+            "timeToLive":0.5,
+            "fade":1,
+            "destructionAction":"shrink",
+            "destructionTime":0.2,
+            "layer":"front",
+            "variance":{  
+              "initialVelocity":[  
+                0.0,
+                0.0
+              ],
+              "position":[  
+                2.2,
+                0.2
+              ],
+              "size":2
+            }
+          }
+        }
+      ],
+      "bounces":0,
+      "speed":1,
+      "power":8.5,
+      "knockback":1,
+      "processing":"?hueshift=-60",
+      "actionOnReap":[  
+        {
+          "action" : "explosion",
+          "foregroundRadius" : 2,
+          "backgroundRadius" : 0,
+          "explosiveDamageAmount" : 4,
+          "harvestLevel" : 99,
+          "delaySteps" : 2
+        }, 	    
+        {  
+          "time":0.1,
+          "action":"projectile",
+          "type":"electro",
+          "config":{  
+            "statusEffects":[  
+
+            ],
+            "emitters":[  
+
+            ],
+            "processing":"?0",
+            "speed":35,
+            "timeToLive":0.01,
+            "power":0.5,
+            "knockback":1
+          }
+        }
+      ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 3,
+	      "weaponRotation" : -6,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.0,
+	      "armRotation" : 3,
+	      "weaponRotation" : -6,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 5,
+  "critBonus" : 13,
+  "altAbilityType":"explosiveshot",
+  "altAbility":{  
+    "firePositionPart":"barrel",
+    "fireTime":1.0,
+    "burstTime":0.04,
+    "burstCount":3,
+    "fireType":"burst",
+    "baseDps":2,
+    "cooldownTime":1.0,
+    "energyUsage":20,
+    "projectileType":"fu_genericBlankProjectile",
+    "projectileParameters":{ 
+      "speed":0,
+      "timeToLive":0.01,
+      "knockback":10,
+      "bounces":0,    
+      "statusEffects" : [ "bleedinglong", "electrified" ],
+      "piercing" : true,
+      "processing":"?hueshift=-60",
+      "periodicActions":[  
+        {
+          "time":0,
+          "loop" : true,
+          "action" : "explosion",
+          "foregroundRadius" : 2,
+          "backgroundRadius" : 2,
+          "explosiveDamageAmount" : 3,
+          "harvestLevel" : 99,
+          "delaySteps" : 2
+        },       
+        {  
+          "time":0,
+          "action":"particle",
+          "specification":{  
+            "type":"ember",
+            "light":[  
+              0,
+              0,
+              255
+            ],
+            "size":0.5,
+            "color":[  
+              0,
+              0,
+              180,
+              50
+            ],
+            "initialVelocity":[  
+              0.0,
+              10.0
+            ],
+            "finalVelocity":[  
+              0.0,
+              -3.0
+            ],
+            "approach":[  
+              0.0,
+              -1.0
+            ],
+            "timeToLive":0.5,
+            "fade":1,
+            "destructionAction":"shrink",
+            "destructionTime":0.2,
+            "layer":"front",
+            "variance":{  
+              "initialVelocity":[  
+                0.0,
+                0.0
+              ],
+              "position":[  
+                2.2,
+                0.2
+              ],
+              "size":2
+            }
+          }
+        }
+      ],
+
+      "actionOnReap":[  
+      {
+	    "action" : "projectile",
+	    "type" : "plasmatorpedo2",
+	    "fuzzAngle" : 0,
+	    "inheritDamageFactor" : 1.0,
+	    "angleAdjust" : 0,
+	    "config" : {
+	              "processing":"?hueshift=-60",
+		      "speed":60,
+		      "timeToLive":1.0,
+		      "knockback":10,
+		      "bounces":0,    
+		      "statusEffects" : [ "bleedinglong", "electrified" ],
+		      "piercing" : true,
+		      "periodicActions":[  
+			{
+			  "time":0,
+			  "loop" : true,
+			  "action" : "explosion",
+			  "foregroundRadius" : 2,
+			  "backgroundRadius" : 2,
+			  "explosiveDamageAmount" : 3,
+			  "harvestLevel" : 99,
+			  "delaySteps" : 2
+			},       
+			{  
+			  "time":0,
+			  "action":"particle",
+			  "specification":{  
+			    "type":"ember",
+			    "light":[  
+			      0,
+			      0,
+			      255
+			    ],
+			    "size":0.5,
+			    "color":[  
+			      0,
+			      0,
+			      180,
+			      50
+			    ],
+			    "initialVelocity":[  
+			      0.0,
+			      10.0
+			    ],
+			    "finalVelocity":[  
+			      0.0,
+			      -3.0
+			    ],
+			    "approach":[  
+			      0.0,
+			      -1.0
+			    ],
+			    "timeToLive":0.5,
+			    "fade":1,
+			    "destructionAction":"shrink",
+			    "destructionTime":0.2,
+			    "layer":"front",
+			    "variance":{  
+			      "initialVelocity":[  
+				0.0,
+				0.0
+			      ],
+			      "position":[  
+				2.2,
+				0.2
+			      ],
+			      "size":2
+			    }
+			  }
+			}
+		      ],
+		      "actionOnReap" : [
+			    {
+			      "action" : "config",
+			      "file" : "/projectiles/explosions/atomsmasherboom/atomsmasherboombasic.config"
+			    }		      
+		      ]
+	    }
+      },        
+        {  
+          "action":"sound",
+          "options":[  
+            "/sfx/tools/chainsaw_rev_up.ogg"
+          ]
+        }
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

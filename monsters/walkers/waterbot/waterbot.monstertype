@@ -1,7 +1,7 @@
 {
   "type" : "waterbot",
-  "shortdescription" : "Water Bot",
-  "description" : "This robot serves one purpose: Moisten.",
+  "shortdescription" : "Precursor Blast Droid",
+  "description" : "Wanders endlessly, blasting with abandon. Well armored.",
   "categories" : [ "waterbot" ],
   "parts" : [ "body" ],
   "reversed" : true,
@@ -17,8 +17,8 @@
     "behavior" : "monster",
 
     "behaviorConfig" : {
-      "damageOnTouch" : false,
-      "aggressive" : false,
+      "damageOnTouch" : true,
+      "aggressive" : true,
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "targetEntityTypes" : [ "player", "npc", "monster" ],
@@ -30,19 +30,45 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [],
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "maximumRange" : 30,
+            "minimumRange" : 0,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "precursorshot2",
+            "fireOffset" : [0, 2],
+
+            "aimAtTarget" : false,
+            "projectileCount" : 20,
+            "projectileInterval" : 0.008,
+            "inaccuracy" : 3.14,
+            "aimDirection" : [0,1],
+            "power" : 5,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+
+            "winddownState" : ""
+          }
+        }      
+      ],
 
       "periodicActions" : [
         {
           "name" : "action-fire",
           "cooldown" : 2.5,
           "parameters" : {
-            "maximumRange" : 12,
-            "minimumRange" : 1,
+            "maximumRange" : 30,
+            "minimumRange" : 0,
             "windupState" : "firewindup",
             "windupTime" : 0.5,
 
-            "projectileType" : "fusquirtwater",
+            "projectileType" : "precursorshot2",
             "fireOffset" : [0, 0.75],
 
             "aimAtTarget" : false,
@@ -57,23 +83,7 @@
 
             "winddownState" : ""
           }
-        },      
-        {
-          "name" : "action-projectile",
-          "cooldown" : 2,
-          "parameters" : {
-            "projectileCount" : 4,
-            "projectileType" : "fusquirtwater",
-            "projectileParameters" : { 
-    		"damageTeam" : { "type" : "friendly" },
-    		"speed" : 30
-            },
-            "power" : 0,
-            "aimDirection" : [0,1],
-            "inaccuracy" : 0.2,
-            "fireOffset" : [0, 0.4]
-          }
-        }      
+        }     
       ],
 
       "approachActions" : [       
@@ -85,32 +95,7 @@
         }
       ],
 
-      "wanderActions" : [ 
-        {
-          "name" : "action-fire",
-          "cooldown" : 2.5,
-          "parameters" : {
-            "maximumRange" : 12,
-            "minimumRange" : 1,
-            "windupState" : "firewindup",
-            "windupTime" : 0.5,
-
-            "projectileType" : "fusquirtwater",
-            "fireOffset" : [0, 0.75],
-
-            "aimAtTarget" : false,
-            "projectileCount" : 12,
-            "projectileInterval" : 0.05,
-            "inaccuracy" : 0.2,
-            "aimDirection" : [0,1],
-            "power" : 0,
-            "fireSound" : "fire",
-            "fireState" : "fire",
-
-
-            "winddownState" : ""
-          }
-        },      
+      "wanderActions" : [      
         {
           "name" : "wander-walk",
           "cooldown" : 6.0,
@@ -122,8 +107,8 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-1.375,1.625], [-1.792,-1.875], [1.75,-1.833], [1.542,1.583] ],
-      "damage" : 0,
+      "poly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.75],  [-0.8125, -1.75], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -135,7 +120,7 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-1.375,1.625], [-1.792,-1.875], [1.75,-1.833], [1.542,1.583] ],
+      "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.75],  [-0.8125, -1.75], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
 
       "mass" : 1.0,
       "walkSpeed" : 4,
@@ -181,10 +166,10 @@
           "baseValue" : 12
         },
         "maxHealth" : {
-          "baseValue" : 80
+          "baseValue" : 120
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -192,15 +177,29 @@
         "liquidnitrogenImmunity" : {
           "baseValue" : 1.0
         },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },  
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },  
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },        
         "powerMultiplier" : {
           "baseValue" : 0.0
         },
-        "poisonResistance" : { "baseValue" : 0 },
+        "poisonResistance" : { "baseValue" : 1.0 },
         "fireResistance" : { "baseValue" : 0.8 },
         "iceResistance" : { "baseValue" : 0 },
         "electricResistance" : { "baseValue" : -0.45 },
-        "physicalResistance" : { "baseValue" : 0 },
-        "shadowResistance" : { "baseValue" : 0 }
+        "physicalResistance" : { "baseValue" : 0.4 },
+        "shadowResistance" : { "baseValue" : 0.5 },
+        "radioactiveResistance" : { "baseValue" : 0.7 },
+        "cosmicResistance" : { "baseValue" : 0.4 }
       },
 
       "resources" : {
@@ -219,7 +218,7 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-    "captureHealthFraction" : 0.8,
+    "captureHealthFraction" : 0.1,
     "nametagColor" : [64, 200, 255],
     "captureCollectables" : { "fu_monster" : "waterbot" }
   }

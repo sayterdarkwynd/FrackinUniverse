@@ -9,8 +9,8 @@
   "category" : "shotgun",
   "level" : 3,
   "tooltipKind" : "gun2",
-  "weaponType" : "Crystalline",
-  "itemTags" : ["weapon","ranged","shotgun", "upgradeableWeapon"],
+  "weaponType" : "Crystal Weapon",
+  "itemTags" : ["weapon", "ranged", "shotgun", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -22,7 +22,8 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/vashtagun.ogg" ]
+      "fire" : [ "/sfx/weapons/vashtagun.ogg" ],
+      "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
     }
   },
 
@@ -36,7 +37,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.50,
+    "fireTime" : 1.2,
     "baseDps" : 9.33,
     "energyUsage" : 27.5,
     "inaccuracy" : 0.10,
@@ -47,41 +48,39 @@
     "projectileType" : "crystalshardsmall",
     "projectileParameters" : { 
       "speed" : 50,
-      "knockback" : 4
+      "knockback" : 7
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
-
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
-
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
-
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+    "stances" : {
+      "idle":{  
+        "armRotation": 0,
+        "weaponRotation": 0,
+        "twoHanded": true,
+        "allowRotate": true,
+        "allowFlip": true
+      },
+      "fire":{  
+        "duration": 0.1,
+        "armRotation": 3,
+        "weaponRotation": 8,
+        "twoHanded": true,
+        "allowRotate": false,
+        "allowFlip": true
+      },
+      "cooldown":{  
+        "duration": 0.3,
+        "armRotation": -7,
+        "weaponRotation": -355,
+        "twoHanded": true,
+        "allowRotate": false,
+        "allowFlip": true
+      }
+    }
   },
 
   "critChance" : 4,
   "critBonus" : 6,
-
+  "isReloader" : 1,
+  
   "altAbilityType" : "crystalbomb",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

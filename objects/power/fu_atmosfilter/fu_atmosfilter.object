@@ -1,0 +1,71 @@
+{
+  "objectName" : "fu_atmosfilter",
+  "rarity" : "legendary",
+  "colonyTags" : [ "science" ],
+  "description" : "Generates a field that protects against environmental hazards. Requires 60W of power.",
+  "shortdescription" : "^cyan;Atmospheric Filter^white;",
+  "race" : "generic",
+  "category" : "wire",
+  "printable" : false,
+  "health" : 30,
+  "rooting" : true,
+  "learnBlueprintsOnPickup" : [ "isn_atmosregulatornew", "isn_atmosregulator" ],
+  "inventoryIcon" : "fu_atmosfiltericon.png",
+  "orientations" : [
+    {
+      "image" : "fu_atmosfilter.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+
+      "imagePosition" : [-80, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      
+      "lightPosition" : [-2, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "fu_atmosfilter.png:<color>.<frame>",
+      "direction" : "right",
+
+      "imagePosition" : [-80, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      
+      "lightPosition" : [1, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/power.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua","/objects/isn_sharedobjectscripts.lua" ],
+  "scriptDelta" : 60,
+  
+  "objectType" : "container",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 1,
+  "uiConfig" : "/interface/objectcrafting/fu_atmosfilter<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+  
+  "atmos" : {
+	"range" : 150
+  },
+
+  "animation" : "fu_atmosfilter.animation",
+  
+  "animationParts" : {
+    "bg" : "fu_atmosfilter.png",
+    "fg" : "fu_atmosfilterlit.png"
+  },
+  
+  "animationPosition" : [-80, 0],
+
+  "inputNodes" : [ [1, 2] ],
+  "powertype" : "input",
+  "isn_requiredPower" : 60
+}

@@ -1,0 +1,209 @@
+{
+  "id" : "fuquest_explore1",
+  "mainQuest" : true,
+  "prerequisites" : [ "outpostclue" ],
+  "title" : "Find Clues to Locate the Floran Artifact",
+  "text" : "Now that you're familiar with scanning, ^green;we need to start finding these ^orange;artifacts^white;, dear. Yes, the Floran one first... Their colonies will contain vital ^orange;clues^reset; to its whereabouts. Floran live all over nowadays, but still prefer the dense ^orange;forest^white; vegetation of planets found around ^orange;gentle stars^white;. Good luck dear, and thank you.",
+  "completionText" : "You did it! That was the last clue we needed. I know just where the Floran artifact is now.",
+  "moneyRange" : [50, 50],
+  "rewards" : [
+    [ ["rewardbag", 1] ]
+  ],
+  "canBeAbandoned" : false,
+  "questGiverIndicator" : "mainquestgiver",
+  "questReceiverIndicator" : "mainquestreceiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/clues.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questReceiver"
+    },
+    "descriptions" : {
+      "findClues" : "^green;Scan objects^reset; to find ^orange;Floran clues^reset;",
+      "turnIn" : "Return to ^orange;Esther^reset; at the ^orange;Ark^reset;"
+    },
+    "turnInEntityUid" : "estheroutpost",
+
+    "targetValue" : 50,
+    "objectValues" : {
+      "floranbonedisplay1" : 2,
+      "floranbonedisplay2" : 4,
+      "floranbookcase" : 4,
+      "floranpainting1" : 2,
+      "floranpainting2" : 4,
+      "floranpainting3" : 2,
+      "floranscreen2" : 2,
+      "huntingdisplay1" : 3,
+      "huntingbigstatue" : 5,
+      "huntingstatue" : 3,
+      "huntingtrophy1" : 2,
+      "huntingtrophy2" : 2,
+      "huntingtrophy3" : 2,
+      "huntingweaponrack1" : 2,
+      "plantpanel" : 4,
+      "planturn1" : 2,
+      "planturn2" : 1,
+      "championspeardisplay" : 20,
+      "floranhunterpainting" : 20,
+      "ixolingpike" : 20,
+      "floranspinneret" : 20,
+      "floranwebbing" : 20
+    },
+    "radioMessages" : {
+      "uniqueProgress" : {
+        "championspeardisplay" : {
+          "messageId" : "floran_mission1_up1",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "Traditional Floran culture places great importance on their hunts and their hunters... I'm certain that will have an impact upon the location of their artifact.'.",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        "floranhunterpainting" : {
+          "messageId" : "floran_mission1_up2",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "This image depicts a Floran hunter, their garb seems almost ceremonial.",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        "ixolingpike" : {
+          "messageId" : "floran_mission1_up3",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "The creature that these remains belonged to aren't native to this area - I'll look through my taxonomic records and see if I can discover its origins and importance.",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        "floranspinneret" : {
+          "messageId" : "floran_mission1_up4",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "This spinneret is unusually large - what kind of creature could support such an organ? This is evidently a prized trophy. I wonder...",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        "floranwebbing" : {
+          "messageId" : "floran_mission1_up5",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "This glutinous webbing is of unusual hue and texture. The species that produced it must be unique in its characteristics, and probably limited in its environment.",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        }
+      },
+      "genericProgress" : [
+        {
+          "messageId" : "floran_mission1_gp1",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "Hmmm, how curious... I need to cross-reference this.",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp2",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "Hm, I wonder...",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp3",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "The Floran don't pay much attention to history, but they greatly value tradition. It's helpful to build a picture of the culture.",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp4",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "A clue of small implication, but relevant nonetheless!",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp5",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "Violence reigns in Floran culture - sometimes disorderly, sometimes organised in nature.",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp6",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "This confirms something that I had speculated upon!",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp7",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "Interesting find! Keep going, you're doing well!",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp8",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "Interesting that they should value such an item, and display it in this way.",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp9",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "How peculiar! But surprising information can be even more valuable than expected information...",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        },
+        {
+          "messageId" : "floran_mission1_gp10",
+          "type" : "quest",
+          "unique" : false,
+          "senderName" : "Esther",
+          "text" : "Every clue gets us closer!",
+          "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+        }
+      ],
+      "startWithProgress" : {
+        "messageId" : "floran_mission1_swp",
+        "type" : "quest",
+        "unique" : false,
+        "senderName" : "Esther",
+        "text" : "It appears you've already found some items that provide clues towards the artifact's whereabouts. I'll begin my analysis on these while you search for more!",
+        "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+      },
+      "startAlreadyComplete" : {
+        "messageId" : "floran_mission1_sac",
+        "type" : "quest",
+        "unique" : false,
+        "senderName" : "Esther",
+        "text" : "You're quite the collector of Floran antiquities! It appears you've already located enough clues to to allow me to identify the location of the Artifact!",
+        "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+      },
+      "complete" : {
+        "messageId" : "floran_mission1_c",
+        "type" : "quest",
+        "unique" : false,
+        "senderName" : "Esther",
+        "text" : "Wonderful - I believe I now know just where the Artifact might be! ^#71f2f6;Come and meet me back at the Ark when you're ready^white;, dear.",
+        "portraitImage" : "/interface/chatbubbles/esthertalk.png:<frame>"
+      }
+    },
+
+    "dialogClueValue" : 4,
+    "dialogClueSpecies" : "floran",
+    "clueDialog" : "/dialog/clues.config:floran"
+  }
+}

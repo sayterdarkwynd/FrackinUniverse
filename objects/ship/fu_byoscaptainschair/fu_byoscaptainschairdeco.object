@@ -1,0 +1,93 @@
+{
+  "objectName" : "fu_byoscaptainschairdeco",
+  "colonyTags" : ["misc"],
+  "itemTags" : ["captainschair"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "loungeable",
+
+  "description" : "Someone sits here to pretend to fly a ship.",
+  "shortdescription" : "Decorative Captain's Chair",
+  "race" : "generic",
+  "category" : "furniture",
+
+  "apexDescription" : "Ahh... Sweet freedom. I can use the ship's navigator from this chair.",
+  "avianDescription" : "The Captain's chair. That's me! I can use the ship's navigator from this chair.",
+  "floranDescription" : "Best chair on ship. Floran can sit here to ussse navigator and fly ship!",
+  "glitchDescription" : "Excited. Sitting on the Captain's chair allows me to fly this ship. Where to next?",
+  "humanDescription" : "The Captain's chair. The person sitting here decides where the ship goes!",
+  "hylotlDescription" : "Sitting on the Captain's chair allows me to fly this ship.",
+  "novakidDescription" : "The Captain's chair. The guy who sits here decides where the ship goes! That's me!",
+
+  "inventoryIcon" : "/objects/ship/apexcaptainschair/captainschairicon.png",
+  "placementImage" : "/objects/ship/apexcaptainschair/apexcaptainschair.png:default",
+  "placementImagePosition" : [-12, 0],
+  "orientations" : [
+    {
+      "image" : "/objects/ship/fu_byoscaptainschair/fu_byoscaptainschair.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left",
+      "sitPosition" : [1.6, 22.5],
+	  "spaces" : [
+	  [-1,2],  [0,2],
+	  [-1,1],  [0,1],
+	  [-1,0], [0,0]
+	  ]
+    },
+    {
+      "image" : "/objects/ship/fu_byoscaptainschair/fu_byoscaptainschair.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "sitPosition" : [1.6, 22.5],
+	  "spaces" : [
+	  [-1,2], [0,2],
+	  [-1,1], [0,1],
+	  [-1,0], [0,0]
+	  ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "image" : "/objects/ship/apexcaptainschair/apexcaptainschair.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left",
+      "sitPosition" : [1.6, 22.5]
+    },
+    {
+      "image" : "/objects/ship/apexcaptainschair/apexcaptainschair.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "sitPosition" : [1.6, 22.5]
+    }
+  ],
+  
+  "scripts" : [ "/objects/ship/fu_byosobjectdeath.lua" ],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
+
+  "sitFlipDirection" : false,
+  "racialiserType" : "captainschair",
+  "retainObjectParametersInItem" : true
+}

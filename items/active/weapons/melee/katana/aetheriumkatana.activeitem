@@ -4,7 +4,8 @@
   "level" : 7,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "There isn't any katana that can top this.",
+  "description" : "There isn't any katana that can top this.
+^cyan;Massive 10-hit combo!",
   "shortdescription" : "Aetherium Katana",
   "tooltipKind" : "sword2",
   "category" : "katana",
@@ -28,7 +29,7 @@
   "primaryAbilityType" : "katanacombo",
   "primaryAbility":{
     "fireTime":0.72, 
-    "baseDps":8.0, 
+    "baseDps":8, 
     "damageConfig":{
       "knockback":20,
       "damageSourceKind" : "cosmic"
@@ -38,7 +39,18 @@
 
   "critChance" : 1,
   "critBonus" : 8,
-  
+  "upgradeParameters": {
+    "description" : "Holy be thy spirit.",
+	"shortdescription" : "Aetherium Soulslasher",
+	"inventoryIcon" : "aetheriumkatanat8.png",
+	"animationParts" : {
+      "blade" : "aetheriumkatanat8.png",
+      "bladefullbright" : "aetheriumkatanafullbrightt8.png"
+    },
+	"primaryAbility":{
+	  "fireTime":0.6
+	  }
+  },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

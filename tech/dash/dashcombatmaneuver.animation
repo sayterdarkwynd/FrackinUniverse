@@ -1,0 +1,40 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "chargeParticles" : {
+      "emissionRate" : 20.0,
+      "particles" : [
+        {
+          "particle" : "defaultblue",
+          "flip" : false
+        }
+      ]
+    },  
+    "dashParticles" : {
+      "emissionRate" : 20.0,
+      "particles" : [
+        {
+          "particle" : "dash",
+          "flip" : true
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "startDash" : [ "/sfx/tech/tech_dash.ogg" ],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "chargebonus" : [ "/sfx/objects/crystaltrap_on2.ogg" ]
+  }
+}

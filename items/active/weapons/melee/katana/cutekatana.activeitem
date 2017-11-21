@@ -1,0 +1,64 @@
+{
+  "itemName" : "cutekatana",
+  "price" : 700,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A sharp blade made by a magical girl.",
+  "shortdescription" : "Cute Katana",
+  "tooltipKind" : "sword2",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "cute","upgradeableWeapon"],
+
+  "inventoryIcon" : "cutekatana.png",
+
+  "animation" : "combokatanaglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "cutekatana.png",
+    "bladefullbright" : "cutekatanafullbright.png"
+  },
+  "animationCustom" : { //override default swoosh and particles cause cuteness.
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>?flipy"}},
+      "fire2":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>"}},
+      "fire3":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh3/cuteswoosh.png:<frame>"}},
+      "fire4":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>"}},
+      "fire5":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>?flipy"}},
+      "fire6":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh3/cuteswoosh.png:<frame>"}}      
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "katanacombo",
+  "primaryAbility": {
+    "comboSteps": 6,
+    "fireTime" : 0.75,
+    "baseDps": 7.25,
+    "damageConfig": {
+      "damageSourceKind" : "cosmicshortsword"
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

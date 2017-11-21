@@ -1,0 +1,18 @@
+{
+  "projectileName" : "sulphuricrain2",
+  "physics" : "weather",
+  "image" : "sulphuricrain.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "damageKind" : "default",
+  "damageType" : "IgnoresDef",  
+  "actionOnReap" : [
+    { "action" : "liquid", "liquid" : "sulphuricacid", "quantity" : 1.0 },  
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "tilled",
+      "newMod" : "tilleddry",
+      "radius" : 5
+    }
+  ]
+}

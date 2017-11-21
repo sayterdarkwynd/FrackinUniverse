@@ -1,0 +1,44 @@
+{
+  "projectileName" : "magnorbhellfire3",
+  "image" : "magnorbhellfire.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 12,
+  "damageKind" : "fire",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 0,
+  "piercing" : true,
+  "timeToLive" : 2,
+  "lightColor" : [73, 43, 16],
+  "controlForce" : 10,
+  "emitters" : [ "flamesfast" ],
+  "statusEffects" : [ "burning" ],
+  
+  "knockback" : 10,
+  "actionOnReap" : [ 
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+    }
+  ],
+  
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/fireball_bounce1.ogg",
+        "/sfx/projectiles/fireball_bounce2.ogg",
+        "/sfx/projectiles/fireball_bounce3.ogg"
+      ]
+    }
+  ],
+  "scripts" : []
+}

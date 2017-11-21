@@ -1,0 +1,32 @@
+{
+  "id" : "11honeyjarrer",
+  "prerequisites" : [ "10industrialcentrifuge" ],
+  "title" : "Jarring Honey",
+  "text" : "To make the most out of your bee farm, you'll want to harvest honey. Try to build a ^orange;Honey Jarrer^reset; to aid with this process. Toss in some honey jars while you're at it.",
+  "completionText" : "From here on out, it's up to you to experiment and breed the best bees you can! Bee all you can bee!",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "followUp" : "12breeding",
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "honeyjarrer",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

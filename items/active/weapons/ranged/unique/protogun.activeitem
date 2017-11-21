@@ -27,7 +27,7 @@
   },
 
   "baseOffset" : [1.7, 0.32],
-  "muzzleOffset" : [1.645, -0.225],
+  "muzzleOffset" : [1.2, 0.15],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -103,7 +103,46 @@
 
   "altAbilityType" : "protobomb",
   "altAbility" : {
-    "baseDps" : 10
+    "fireTime" : 3,
+    "name" : "Blaster Ball",
+    "baseDps" : 10,
+    "projectileParameters" : {
+      "timeToLive" : 10,
+      "knockback" : 20,
+      "piercing" : true,
+      "periodicActions" : [
+	    {
+	      "time" : 0.1,
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/protopistol.ogg" ]
+	    },      
+	    {
+	      "time" : 0.1,
+	      "action" : "projectile",
+	      "type" : "protoshot",
+	      "fuzzAngle" : 360,
+	      "inheritDamageFactor" : 0.1
+	    }	      
+      ],
+      "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }       
+      ],      
+      "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }     
+      ]        
+    }
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

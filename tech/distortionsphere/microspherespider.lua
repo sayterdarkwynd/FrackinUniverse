@@ -1,4 +1,4 @@
-require "/tech/distortionsphere/distortionsphere.lua"
+require "/tech/distortionsphere/fu_distortionspherebase.lua"
 require "/scripts/rect.lua"
 require "/scripts/poly.lua"
 require "/scripts/status.lua"

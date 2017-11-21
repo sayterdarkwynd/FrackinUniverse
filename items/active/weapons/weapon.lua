@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/items/active/weapons/crits.lua"
 
 -- handles weapon stances, animations, and abilities
 Weapon = {}
@@ -17,8 +18,6 @@ function Weapon:new(weaponConfig)
 end
 
 function Weapon:init()
-self.critChance = config.getParameter("critChance", 0)
-self.critBonus = config.getParameter("critBonus", 0)
   self.attackTimer = 0
   self.aimAngle = 0
   self.aimDirection = 1
@@ -27,85 +26,7 @@ self.critBonus = config.getParameter("critBonus", 0)
   for _,ability in pairs(self.abilities) do
     ability:init()
   end
-    
-end
 
-  -- *******************************************************
-  -- FU Crit Damage Script
-
-function setCritDamage(damage)
-	if not self.critChance then 
-		self.critChance = config.getParameter("critChance", 0)
-	end
-	if not self.critBonus then
-		self.critBonus = config.getParameter("critBonus", 0)
-	end
-
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
-     local weaponModifier = config.getParameter("critChance",0)
-     
-  if heldItem then
-      if root.itemHasTag(heldItem, "dagger") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "shortsword") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "broadsword") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "hammer") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "quarterstaff") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "shortspear") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "axe") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "lance") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "spear") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "battleblade") then
-        self.critChance = 0 + weaponModifier
-      elseif root.itemHasTag(heldItem, "rapier") then
-        self.critChance = 0 + weaponModifier      
-      elseif root.itemHasTag(heldItem, "whip") then
-        self.critChance = 0 + weaponModifier           
-      end
-	end
-  
-  self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
-  self.critChance = (self.critChance  + config.getParameter("shieldCritChance",0) + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
-  self.critRoll = math.random(200)
-  
-  local crit = self.critRoll <= self.critChance
-  damage = crit and ((damage*2) + self.critBonus) or damage
-  self.critChance = 0
-  if crit then
-    if heldItem then
-      -- exclude mining lasers
-      if not root.itemHasTag(heldItem, "mininggun") then 
-        status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
-        -- *****************************************************************
-        --              weapon specific crit abilities!
-        -- *****************************************************************
-        self.stunChance = math.random(100) + status.stat("stunChance",0) + config.getParameter("stunChance",0)
-        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "shortspear") or root.itemHasTag(heldItem, "spear") then 
-		params = { speed=30, power = 1, damageKind = "default"} 
-		world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),aimVector,false,params)   
-        end          
-        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") or root.itemHasTag(heldItem, "dagger") then 
-		params = { speed=30, power = 1, damageKind = "default"} 
-		world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),aimVector,false,params)   
-        end        
-        if (self.stunChance) >= 95 and root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace") then -- Stun!!!!
-		params = { speed=30, power = 1, damageKind = "default"} 
-		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),aimVector,false,params)   
-        end
-      end
-    end
-  end
-
-  return damage
 end
 
 function Weapon:update(dt, fireMode, shiftHeld)
@@ -148,7 +69,7 @@ function Weapon:update(dt, fireMode, shiftHeld)
   end
 
   self:clearDamageSources()
-  
+
 end
 
 function Weapon:uninit()
@@ -308,14 +229,14 @@ function Weapon:damageSource(damageConfig, damageArea, damageTimeout)
     return {
       poly = damagePoly,
       line = damageLine,
-      
+
       -- **********************************************
-      -- FU Critical Hit script      
+      -- FU Critical Hit script
       -- damage = damage,
-      damage = setCritDamage(damage),
-      
+      damage = Crits.setCritDamage(self, damage),
+
       -- **********************************************
-      
+
       trackSourceEntity = damageConfig.trackSourceEntity,
       sourceEntity = activeItem.ownerEntityId(),
       team = activeItem.ownerTeam(),

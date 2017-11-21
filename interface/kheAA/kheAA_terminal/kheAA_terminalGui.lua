@@ -33,7 +33,7 @@ function update(dt)
 		if promise==nil then
 			promise=world.sendEntityMessage(pane.containerEntityId(),"transferUtil.sendConfig")
 		end
-		if not promise:finished() then	
+		if not promise:finished() then
 		end
 	end
 end
@@ -44,7 +44,7 @@ function refresh()
 	if storage==nil then
 		init()
 	end
-	
+
 	local blankList=false
 	if storage.inContainers==nil then
 		blankList=true
@@ -64,7 +64,7 @@ function containerFound(containerID,pos)
 	if containerID == nil then return false end
 	--if not world.regionActive(rectPos) then return false end
 	if not world.entityExists(containerID) then return false end
-	
+
 	local containerItems = world.containerItems(containerID)
 	for index,item in pairs(containerItems) do
 		local conf = root.itemConfig(item, item.level or nil, item.seed or nil)
@@ -76,11 +76,17 @@ end
 
 
 function sortByName(itemA, itemB)
-	local sort = itemA[3].config.shortdescription < itemB[3].config.shortdescription;
+	local sort = getName(itemA[3].config.shortdescription) < getName(itemB[3].config.shortdescription);
 	if itemA[3].config.shortdescription == itemB[3].config.shortdescription then
 		sort = itemA[2].count < itemB[2].count;
 	end
-	return sort; 
+	return sort;
+end
+
+function getName(fullName)
+	pattern = "%^#%w%w%w%w%w%w;"
+	name = string.gsub(fullName, pattern, "")
+	return (fullName:gsub("^%l", string.upper))
 end
 
 function getIcon(item, conf, listItem)
@@ -93,7 +99,7 @@ function getIcon(item, conf, listItem)
 			--local scaleDown = math.max(math.ceil(imageSize[1] / iconSize[1]), math.ceil(imageSize[2] / iconSize[2]))
 			--widget.setImageScale(string.format("%s.%s.icon", self.list, item), 1 / scaleDown)
 		elseif type(icon) == "table" then
-			sb.logInfo("%s",icon)
+			--sb.logInfo("%s",icon)
 			for i,v in pairs(icon) do
 				local item = widget.addListItem(itemList .. "." .. listItem .. ".compositeIcon")
 				widget.setImage(itemList .. "." .. listItem .. ".compositeIcon." .. item ..".icon", absolutePath(conf.directory, v.image))
@@ -109,9 +115,9 @@ function refreshList()
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
-		local filterOk = true;				
+		local filterOk = true;
 		local name = item.parameters.shortdescription or conf.config.shortdescription
-		
+
 		if filterText ~= "" then
 			if string.find(string.upper(name), string.upper(formatpattern(filterText))) == nil then
 				filterOk = false;
@@ -141,7 +147,7 @@ function request()
 				local itemToSend=items[i]
 				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
 				--sb.logInfo(sb.printJson({playerPos=temp}))
-				
+
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 				table.remove(items, i);
 				refreshList();
@@ -161,7 +167,7 @@ function requestAllButOne()
 				itemToSend[2].count=itemToSend[2].count-1
 				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
 				--sb.logInfo(sb.printJson({playerPos=temp}))
-				
+
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 				--table.remove(items, i);
 				items[i][2].count=1
@@ -206,7 +212,7 @@ function requestOne()
 					local itemToSend=copy(items[i])
 					--sb.logInfo("%s",itemToSend)
 					itemToSend[2].count=math.min(tonumber(text),itemToSend[2].count)
-	
+
 					table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
 					--sb.logInfo(sb.printJson({playerPos=temp}))
 					world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)

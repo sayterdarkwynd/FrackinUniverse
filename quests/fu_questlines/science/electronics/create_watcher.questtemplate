@@ -1,0 +1,34 @@
+{
+  "id" : "create_watcher",
+  "prerequisites" : [ "fuquest_powerstation" ],
+  "title" : "Long Distance Power",
+  "text" : "Powered stations are a ^orange;huge productivity booster^white;. With a ^orange;Watcher^reset; they are even more versatile! Try crafting a ^orange;watcher^reset; in your ^green;Power Station^reset; and bring it to me.",
+  "completionText" : "Watchers are special. They will keep powered devices within their range ^gray;(20 blocks)^reset; running while you are away, planetside. Leaving a planet will ^orange;reset all of your watchers^reset;. ^red;Don't overuse them!^reset; Your SAIL can only track so many before it slows down.",
+  "moneyRange" : [400 , 640 ],
+  "rewards" : [ [ [ "starmasterhelm-recipe", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+    
+    "turnInDescription" : "Bring the ^orange;Watcher^reset; to the ^green;purple-armored scientist^reset; at the top floor of the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_watcher",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

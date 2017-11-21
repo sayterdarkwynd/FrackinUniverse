@@ -1,0 +1,50 @@
+{
+  "objectName" : "precursorforcelift",
+  "objectType" : "physics",
+  "colonyTags" : ["precursor"],
+  "printable" : true,
+  "rarity" : "Common",
+  "description" : "This devise propels objects and creatures with energy rather than mechanics.",
+  "shortdescription" : "Precursor Repulsion Lift",
+
+  "category" : "decorative",
+  "price" : 100,
+
+  "inventoryIcon" : "precursorforcelifticon.png",
+  "orientations" : [
+    {
+      "image" : "precursorforcelift.png:<color>.up",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/precursordirectionalforcelift.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/minibiome/precursor/precursorforcelift/precursorforcelift.animation",
+
+  "animationParts" : {
+    "forceLift" : "precursorforcelift.png",
+    "forceLiftLights" : "precursorforceliftlights.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [-1, 0] ],
+  "physicsForces" : {
+    "liftForceUp" : {
+      "type" : "DirectionalForceRegion",
+      "rectRegion" : [0, 0, 5, 27],
+      "yTargetVelocity" : 12,
+      "controlForce" : 1000
+    },
+	"liftForceDown" : {
+      "type" : "DirectionalForceRegion",
+      "rectRegion" : [0, 0, 5, 27],
+      "yTargetVelocity" : -12,
+      "controlForce" : 1000
+    }
+  }
+}

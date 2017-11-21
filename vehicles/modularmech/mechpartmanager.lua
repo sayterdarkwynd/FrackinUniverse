@@ -33,13 +33,15 @@ function MechPartManager:new()
         energyDrain = "mechBodyEnergyDrain"
       },
       protection = {
-        protection = "mechBodyProtection"
+        protection = "mechBodyProtection",
+        mechMass = "mechBodyMass"
       }
     },
     booster = {
       speed = {
         airControlSpeed = "mechBoosterAirControlSpeed",
-        flightControlSpeed = "mechBoosterFlightControlSpeed"
+        flightControlSpeed = "mechBoosterFlightControlSpeed",
+        mechMass = "mechBodyMass"
       },
       control = {
         airControlForce = "mechBoosterAirControlForce",
@@ -49,7 +51,8 @@ function MechPartManager:new()
     legs = {
       speed = {
         groundSpeed = "mechLegsGroundSpeed",
-        groundControlForce = "mechLegsGroundControlForce"
+        groundControlForce = "mechLegsGroundControlForce",
+        mechMass = "mechBodyMass"
       },
       jump = {
         jumpVelocity = "mechLegsJumpVelocity",
@@ -60,7 +63,8 @@ function MechPartManager:new()
     },
     leftArm = {
       power = {
-	--mechPower = "mechPowerModifier"       
+	--mechPower = "mechPowerModifier",
+        mechMass = "mechBodyMass"       
       },
       energy = {
         energyDrain = "mechArmEnergyDrain"
@@ -68,7 +72,8 @@ function MechPartManager:new()
     },
     rightArm = {
       power = {
-	--mechPower = "mechPowerModifier"       
+	--mechPower = "mechPowerModifier",
+        mechMass = "mechBodyMass"       
       },
       energy = {
         energyDrain = "mechArmEnergyDrain"
@@ -137,7 +142,7 @@ end
 
 function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, secondaryColorIndex)
   local params = {
-    parts = {},
+    parts = {hornName = (itemSet.horn and itemSet.horn.name)},
     partDirectives = {},
     partImages = {},
     animationCustom = {},

@@ -1,0 +1,34 @@
+{
+  "id" : "create_circuitboard",
+  "prerequisites" : [ "fuquest_prototyper" , "fuquest_silicon" ],
+  "title" : "Hardware Matters",
+  "text" : "Instructive: Now that you have silicon and wire why not combine the two at your ^orange;matter assembler^reset; and craft a ^orange;Circuit Board^reset;?",
+  "completionText" : "Encouraging: You will need a large amount of circuits. You should use that one to craft an armory.",
+  "moneyRange" : [ 200,400 ],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+
+    "turnInDescription" : "Bring the ^orange;circuit board^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "circuitboard",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
