@@ -238,7 +238,7 @@ function init()
   self.doubleTabCheckDelay = 0.0
   self.doubleTabCheckDelayTime = 0.3
   self.doubleTabBoostCrouchTargetTo = 0.15
-  self.doubleTabBoostSpeedMultTarget = 2.5
+  self.doubleTabBoostSpeedMultTarget = 3.0
   self.doubleTabBoostSpeedMult = 1.0
   
   self.doubleTabBoostJump = false
@@ -431,7 +431,7 @@ function update(dt)
               self.fallThroughSustain = true
             else
               jump()
-		self.doubleTabBoostJump = self.doubleTabBoostOn
+	      self.doubleTabBoostJump = self.doubleTabBoostOn
             end
           else
             self.jumpBoostTimer = 0
@@ -703,7 +703,7 @@ function update(dt)
 	    }        
       }
     
-      if self.mechMassBase > 5 then  -- 5 tonne minimum or tiles dont suffer at all.       
+      if self.mechMassBase > 8 then  -- 8 tonne minimum or tiles dont suffer at all.       
         world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
       end
     end
@@ -907,7 +907,7 @@ function update(dt)
 	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
 	end
 	
-        if self.mechMass >= 14 and (self.explosivedamage) >= 40 then 
+        if self.mechMass >= 20 and (self.explosivedamage) >= 40 then 
           animator.playSound("landingThud")
           animator.playSound("heavyBoom")
           animator.burstParticleEmitter("legImpactHeavy")
@@ -1089,7 +1089,12 @@ end
 function doubleTabBoost(dt, newControls, oldControls)
 	if self.doubleTabBoostOn then
 	
-		self.doubleTabBoostSpeedMult = self.doubleTabBoostSpeedMultTarget
+	self.doubleTabBoostSpeedMult = math.max(self.doubleTabBoostSpeedMultTarget - (self.mechMass/10),1.0)   --mech mass affects running boost speed
+
+        
+		sb.logInfo("self.mechMass = "..self.mechMass)
+		sb.logInfo("self.doubleTabBoostSpeedMult = "..self.doubleTabBoostSpeedMult)
+		
 		self.crouch = self.doubleTabBoostCrouchTargetTo
 		self.facingDirection = self.doubleTabBoostDirection == "right" and 1 or -1
 		mcontroller.approachXVelocity(self.groundSpeed * self.doubleTabBoostSpeedMult * self.facingDirection, self.groundControlForce)
