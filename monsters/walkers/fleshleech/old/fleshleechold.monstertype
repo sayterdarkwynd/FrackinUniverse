@@ -1,6 +1,6 @@
 {
-  "type" : "fleshleech",
-  "shortdescription" : "fleshleech",
+  "type" : "fleshleechold",
+  "shortdescription" : "Flesh Leech",
   "description" : "A horrid and amorphous mutation. Probably not cuddly. Why not find out?",
 
   "categories" : [ "fleshleech" ],
@@ -16,10 +16,8 @@
     ],
 
     "behavior" : "monster",
-    "deathBehavior" : "monster-death",
-    
     "facingMode" : "transformation",
-
+    "deathBehavior" : "monster-death",
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -27,40 +25,74 @@
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.0,
+      "targetOutOfSightTime" : 2.5,
 
-      "foundTargetActions" : [ ],
+      "foundTargetActions" : [ 
+        { "name" : "action-aggrohop" } 
+      ],
 
-      "fleeActions" : [ ],
+      "fleeActions" : [],
 
       "hostileActions" : [
         {
-          "name" : "action-leap",
-          "cooldown" : 4.0,
+          "name" : "action-fire",
+	  "cooldown" : 2,
           "parameters" : {
-            "onGround" : false,
-            "minimumRange" : 5,
-            "maximumRange" : 20,
-            "windupTime" : 0.0,
-            "windupState" : "",
+            "requireLineOfSight" : true,
+            "maximumRange" : 8,
+            "minimumRange" : 3,
+            "windupState" : "fire",
+            "windupTime" : 0.4,
 
-            "leapVelocity" : 10,
-            "collisionCheck" : true,
-            "highArc" : false,
-            "leapState" : "fall",
-            "fallState" : "fall",
+            "projectileType" : "pusvomit3",
+            "power" : 5,
+            
+            "fireOffset" : [1.0, -1.3],
+            "aimAtTarget" : true,
+            "projectileCount" : 4,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "range": 8,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.25
+          }
+        },
+        {
+          "name" : "action-fire",
+	    "cooldown" : 1,
+            "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 5,
+            "minimumRange" : 0,
+            "windupState" : "fire",
+            "windupTime" : 0.2,
 
-            "winddownState" : "idle",
-            "winddownTime" : 0.0
+            "projectileType" : "chomp",
+            "power" : 7,
+            "fireOffset" : [3.5, -1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "range": 5,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.1
           }
         }
       ],
 
-      "periodicActions" : [ ],
+      "periodicActions" : [
+
+      ],
 
       "approachActions" : [
         {
-          "name" : "approach-crawl"
+          "name" : "approach-crawl",
+          "parameters" : {
+            "resetHeading" : false
+          }
         }
       ],
 
@@ -71,29 +103,29 @@
           }
         },
         {
-          "name" : "approach-crawl"
+          "name" : "approach-crawl",
+          "parameters" : {
+            "resetHeading" : false
+          }
         }
       ],
 
       "wanderActions" : [
         {
           "name" : "wander-crawl",
-          "cooldown" : [3,6],
           "parameters" : {
-            "wanderTime" : [2,4],
-            "idleTime" : [3,6],
-            "stopForce" : 200
+            "wanderTime" : [5, 15]
           }
         }
       ],
 
-      "concurrentActions" : [ ],
+      "concurrentActions" : [
+        ],
 
       "concurrentHostileActions" : [
-        {
-          "name" : "idle-crawl"
-        }
-      ],
+        { "name" : "idle-crawl" }
+		],
+
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -108,11 +140,10 @@
           }
         }
       ]
-      
     },
 
     "touchDamage" : {
-      "poly" : [ [0.31, 0.75],  [0.75, 0.31],  [0.75, -0.31],  [0.31, -0.75],  [-0.31, -0.75],  [-0.75, -0.31],  [-0.75, 0.31],  [-0.31, 0.75] ],
+      "poly" : [ [-1.667,-2.208], [-1.625,-2.542], [-1.208,-2.792], [0.75,-2.792], [1.167,-2.5], [1.167,-2.25], [1,-2.083], [-1.292,-2] ],
       "damage" : 8,
 
       "teamType" : "enemy",
@@ -125,11 +156,17 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.31, 0.75],  [0.75, 0.31],  [0.75, -0.31],  [0.31, -0.75],  [-0.31, -0.75],  [-0.75, -0.31],  [-0.75, 0.31],  [-0.31, 0.75] ],
+      "collisionPoly" : [ [-1.667,-2.208], [-1.625,-2.542], [-1.208,-2.792], [0.75,-2.792], [1.167,-2.5], [1.167,-2.25], [1,-2.083], [-1.292,-2] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 4,
-      "runSpeed" : 6
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
+      "flySpeed" : 15,
+      "airForce" : 50.0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 15.0            
+      }
     },
 
     "bodyMaterialKind" : "organic",
@@ -146,8 +183,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesEnvironmentStatusEffects" : false,
       "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -207,6 +244,7 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : false,
+
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255]
   }
