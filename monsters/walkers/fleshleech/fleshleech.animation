@@ -11,7 +11,10 @@
           "walk" : {
             "frames" : 7,
             "cycle" : 0.7,
-            "mode" : "loop"
+            "mode" : "loop",
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/fleshleechmove1.ogg", "", "/sfx/npc/monsters/fleshleechmove2.ogg", "", "/sfx/npc/monsters/fleshleechmove3.ogg", "", "/sfx/npc/monsters/fleshleechmove2.ogg" ]
+            }
           },
           "fall" : {
             "frames" : 1
@@ -151,7 +154,8 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+    "aggroHop" : [ "/sfx/npc/monsters/fleshleechaggro.ogg" ],
+    "squish" : [ "/sfx/npc/monsters/fleshleechmove1.ogg", "/sfx/npc/monsters/fleshleechmove2.ogg" ],
+    "deathPuff" : [ "/sfx/npc/monsters/fleshleechhit.ogg" ]
   }
 }
