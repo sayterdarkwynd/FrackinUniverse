@@ -880,8 +880,7 @@ function update(dt)
 	  self.appliedDamage = self.baseDamage /2
 	  
 	-- if it falls too hard, the mech takes some damage based on how far its gone
-	  self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2
-	  -- sb.logInfo("value = "..self.baseDamageMechfall)	  
+	  self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2	  
 	  
 	if (self.mechMass) >= 12 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
 	  storage.energy = math.max(0, storage.energy - (self.baseDamage /100))
@@ -1089,12 +1088,11 @@ end
 function doubleTabBoost(dt, newControls, oldControls)
 	if self.doubleTabBoostOn then
 	
-	self.doubleTabBoostSpeedMult = math.max(self.doubleTabBoostSpeedMultTarget - (self.mechMass/10),1.0)   --mech mass affects running boost speed
-
-        
-		sb.logInfo("self.mechMass = "..self.mechMass)
-		sb.logInfo("self.doubleTabBoostSpeedMult = "..self.doubleTabBoostSpeedMult)
-		
+	        -- FU CHANGES ****************************
+	        --mech mass affects sprint speed for mech
+	        self.doubleTabBoostSpeedMult = math.max(self.doubleTabBoostSpeedMultTarget - (self.mechMass/10),1.0)   
+                -- ***************************************
+                
 		self.crouch = self.doubleTabBoostCrouchTargetTo
 		self.facingDirection = self.doubleTabBoostDirection == "right" and 1 or -1
 		mcontroller.approachXVelocity(self.groundSpeed * self.doubleTabBoostSpeedMult * self.facingDirection, self.groundControlForce)
