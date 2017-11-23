@@ -882,30 +882,42 @@ function update(dt)
 	-- if it falls too hard, the mech takes some damage based on how far its gone
 	  self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2	  
 	  
-	if (self.mechMass) >= 12 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
-	  storage.energy = math.max(0, storage.energy - (self.baseDamage /100))
+	if self.mechMassBase >= 15 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
+	  storage.energy = math.max(0, storage.energy - (self.baseDamage /200))
 	end
-	
+
 	if self.mechMassBase > 0 and time <= 0 then
-	  time = 1
-	  self.thumpParamsBig = {  
-	  power = self.appliedDamage, 
-	  damageTeam = {type = "friendly"}, 
-	  actionOnReap = {
-	      {
-		action='explosion',
-		foregroundRadius=math.abs(mcontroller.velocity()[2])/5.4,
-		backgroundRadius=0,
-		explosiveDamageAmount= self.explosivedamage,
-		harvestLevel = 99,
-		delaySteps=2
-	      }
-	    } 
-	  }   	  
-	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, self.thumpParamsBig)
-	  world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, self.thumpParamsBig)
+	    time = 1
+	    local thumpParamsBig = {  
+		power = self.appliedDamage, 
+		damageTeam = {type = "friendly"}, 
+		actionOnReap = {
+		    {
+			action='explosion',
+			foregroundRadius=math.abs(mcontroller.velocity()[2]),
+			backgroundRadius=0,
+			explosiveDamageAmount= self.explosivedamage,
+			harvestLevel = 99,
+			delaySteps=2
+		    }
+		} 
+	    }
+
+	    if self.mechMassBase >= 20 then
+		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / (6 - (self.mechMass/24))
+		thumpParamsBig.actionOnReap[1].backgroundRadius = thumpParamsBig.actionOnReap[1].backgroundRadius / 6
+		thumpParamsBig.actionOnReap[1].explosiveDamageAmount = thumpParamsBig.actionOnReap[1].explosiveDamageAmount * 1.5
+	    elseif self.mechMassBase >= 11 then
+		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 7.4
+	    else
+		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 10
+	    end
+
+	    world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, thumpParamsBig)
+	    world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, thumpParamsBig)
 	end
 	
+	-- separate so that it always applies regardless of actual damage, because it looks cool 
         if self.mechMass >= 20 and (self.explosivedamage) >= 40 then 
           animator.playSound("landingThud")
           animator.playSound("heavyBoom")
