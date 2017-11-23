@@ -238,7 +238,7 @@ function init()
   self.doubleTabCheckDelay = 0.0
   self.doubleTabCheckDelayTime = 0.3
   self.doubleTabBoostCrouchTargetTo = 0.15
-  self.doubleTabBoostSpeedMultTarget = 3.0
+  self.doubleTabBoostSpeedMultTarget = 3.5
   self.doubleTabBoostSpeedMult = 1.0
   
   self.doubleTabBoostJump = false
