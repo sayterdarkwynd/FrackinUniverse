@@ -606,7 +606,7 @@ function update(dt)
 
       if (storage.energy) < (self.energyMax/2) then 
         eMult = 0  
-      elseif (self.mechMassBase) > 18 then
+      elseif (self.mechMassBase) > 20 then
         eMult = 0
       else
         eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
