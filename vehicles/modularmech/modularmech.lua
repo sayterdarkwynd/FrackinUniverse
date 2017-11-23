@@ -125,6 +125,7 @@ function init()
   -- setup arms
   
   self.aimassist = self.parts.hornName == 'mechaimassist'
+  self.masscancel = self.parts.hornName == 'mechmasscancel'
 
   require(self.parts.leftArm.script)
   self.leftArm = _ENV[self.parts.leftArm.armClass]:new(self.parts.leftArm, "leftArm", {2.375, 2.0}, self.ownerUuid)
@@ -412,7 +413,10 @@ function update(dt)
       if newControls.Special1 and not self.lastControls.Special1 then
 	    if self.parts.hornName == 'mechaimassist' then
 		  self.aimassist = not self.aimassist
-		  animator.playSound('aimassist'..(self.aimassist and 'on' or 'off'))
+		  animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
+		elseif self.parts.hornName == 'mechmasscancel' then
+		  self.masscancel = not self.masscancel
+		  animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
 		else
           animator.playSound("horn")
 		end
@@ -595,6 +599,7 @@ function update(dt)
       is, the slower the regeneration rate becomes, which should help to balance out energy cost.
       ***************************************************************************************** --]]
       activateFUMechStats()
+	  self.mechMass = self.masscancel and 0 or self.mechMass
 
       if (storage.energy) < (self.energyMax*0.15) then -- play damage effects at certain health percentages
         animator.setParticleEmitterActive("highDamage", true) -- land fx 
