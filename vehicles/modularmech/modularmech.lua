@@ -1126,7 +1126,7 @@ function doubleTabBoost(dt, newControls, oldControls)
 	
 	        -- FU CHANGES ****************************
 	        --mech mass affects sprint speed for mech
-	        self.doubleTabBoostSpeedMult = math.max(self.doubleTabBoostSpeedMultTarget - (self.mechMass/10),1.0)   
+	        self.doubleTabBoostSpeedMult = math.max(self.doubleTabBoostSpeedMultTarget - (self.mechMass/15),1.0)   
                 -- ***************************************
                 
 		self.crouch = self.doubleTabBoostCrouchTargetTo
