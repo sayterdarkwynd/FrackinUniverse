@@ -27,9 +27,11 @@ function renamePet()
 				newPodUuid = sb.makeUuid()
 				item.parameters.pets[1].name = newName
 				item.parameters.pets[1].config.parameters.shortdescription = newName
-				item.parameters.currentPets[1].name = newName
-				item.parameters.currentPets[1].config.parameters.shortdescription = newName
-				item.parameters.currentPets[1].podUuid = newPodUuid
+				if item.parameters.currentPets then
+					item.parameters.currentPets[1].name = newName
+					item.parameters.currentPets[1].config.parameters.shortdescription = newName
+					item.parameters.currentPets[1].podUuid = newPodUuid
+				end
 				item.parameters.tooltipFields.subtitle = newName
 				item.parameters.subtitle = newName
 				item.parameters.podUuid = newPodUuid
