@@ -18,8 +18,10 @@ function update(dt)
 		maxFuelShip = world.getProperty("fu_byos.maxFuel")
 		shipFuelEfficiency = round(world.getProperty("ship.fuelEfficiency"), 3)
 		fuelEfficiencyShip = world.getProperty("fu_byos.fuelEfficiency")
-		shipShipSpeed = world.getProperty("ship.shipSpeed")
+		shipShipSpeed = player.shipUpgrades().shipSpeed
 		shipSpeedShip = world.getProperty("fu_byos.shipSpeed")
+		shipShipMass = status.stat("shipMass")
+		shipMassShip = world.getProperty("fu_byos.shipMass")
 		if world.getProperty("fu_byos.inWarp") then
 			--world.spawnProjectile("explosivebullet", vec2.add(entity.position(), {50,0}), entity.id(), {-1, 0}, false, {}) -- disabled until properly implemented
 		end
@@ -49,12 +51,12 @@ function update(dt)
 			end
 			fuelEfficiencyNew, fuelEfficiencyShipNew = calculateNew("fuelEfficiency", fuelEfficiencyShip, fuelEfficiencyShipOld, shipFuelEfficiency)
 			if fuelEfficiencyShipNew ~= fuelEfficiencyShipOld then
-				sb.logInfo(fuelEfficiencyShipNew .. " ~= " .. fuelEfficiencyShipOld)
+				--sb.logInfo(fuelEfficiencyShipNew .. " ~= " .. fuelEfficiencyShipOld)
 				player.upgradeShip({fuelEfficiency = fuelEfficiencyNew})
 				fuelEfficiencyShipOld = fuelEfficiencyShipNew
 			end
 		end ]]--
-		--[[ if shipSpeedShip then
+		if shipSpeedShip then
 			if shipSpeedNew then
 				if shipShipSpeed ~= shipSpeedNew then
 					shipSpeedShipOld = 0
@@ -65,8 +67,8 @@ function update(dt)
 				player.upgradeShip({shipSpeed = shipSpeedNew})
 				shipSpeedShipOld = shipSpeedShipNew
 			end
-		end ]]--
-		
+		end
+		--effect.addStatModifierGroup({stat = "shipMass", amount = 10 }) --Figure out best way to add shipMass
 		
 		
 		if maxFuelNew and world.getProperty("ship.fuel") > maxFuelNew then

@@ -45,9 +45,7 @@ function build(directory, config, parameters, level, seed)
 
     config.tooltipFields = config.tooltipFields or {}
     config.tooltipFields.objectImage = drawables
-    
-    partConfig.stats.mechMass = partConfig.stats.mechMass or 0  -- make sure there is no nil
-    
+
     if partConfig.stats then
       for statName, statValue in pairs(partConfig.stats) do
         
@@ -59,6 +57,7 @@ function build(directory, config, parameters, level, seed)
       end
     end
     
+    partConfig.stats.mechMass = partConfig.stats.mechMass or 0  -- make sure there is no nil    
     config.tooltipFields.mechMassStatLabel = partConfig.stats.mechMass or 0
     
     if config.mechPart[1] == "arm" then

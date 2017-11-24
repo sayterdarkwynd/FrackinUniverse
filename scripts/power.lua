@@ -195,7 +195,6 @@ function power.onNodeConnectionChange(arg)
       for i=2,#entitylist.all do
         world.callScriptedEntity(entitylist.all[i],'updateList',entitylist)
 	  end
-	  entitylist.all = nil
     end
   end
 end

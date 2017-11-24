@@ -33,6 +33,85 @@
     }]
   ],
   
+  "furobotTreasure" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.2, "pool" : "money"},
+        {"weight" : 0.02, "pool" : "augments"},
+        {"weight" : 0.05, "item" : "manipulatormodule"},
+        {"weight" : 0.1, "item" : "wire"},
+        {"weight" : 0.1, "item" : "stickofram"},
+        {"weight" : 0.01, "pool" : "fuprecursorResources"},
+        {"weight" : 0.1, "pool" : "fusalvageComponent"}
+      ],
+      "poolRounds" : [
+        [0.4, 0],
+        [0.5, 1],
+        [0.1, 2]
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 0.03, "pool" : "augments"},
+        {"weight" : 0.63, "pool" : "money"},
+        {"weight" : 0.06, "item" : "manipulatormodule"},
+        {"weight" : 0.10, "item" : "laserdiode"},
+        {"weight" : 0.10, "item" : "wire"},
+        {"weight" : 0.10, "item" : "siliconboard"},
+        {"weight" : 0.01, "pool" : "fuprecursorResources"},
+        {"weight" : 0.1, "pool" : "fusalvageComponent"}
+      ],
+      "poolRounds" : [
+        [0.2, 0],
+        [0.6, 1],
+        [0.2, 2]
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 0.03, "pool" : "augments"},
+        {"weight" : 0.48, "pool" : "money"},
+        {"weight" : 0.06, "item" : "manipulatormodule"},
+        {"weight" : 0.15, "item" : "laserdiode"},
+        {"weight" : 0.15, "item" : "staticcell"},
+        {"weight" : 0.15, "item" : "siliconboard"},
+        {"weight" : 0.01, "pool" : "fuprecursorResources"},
+        {"weight" : 0.1, "pool" : "fusalvageComponent"}
+      ],
+      "poolRounds" : [
+        [0.1, 0],
+        [0.6, 1],
+        [0.3, 2]
+      ]
+    }]
+  ],
+  
+  "furobotHunting" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.1, "item" : "stickofram"},
+        {"weight" : 0.1, "item" : "siliconboard"},
+        {"weight" : 0.2, "item" : "smallbattery"},
+        {"weight" : 0.2, "item" : "wire"},        
+        {"weight" : 0.1, "item" : "servitorchassis"},
+        {"weight" : 0.1, "item" : "servitorlaser"},
+        {"weight" : 0.1, "item" : "servitorbehaviorchip"},      
+        {"weight" : 0.1, "pool" : "fusalvageComponent"}
+      ]
+    }]
+  ],
+  
+  "furobotHuntingnoChassis" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.2, "item" : "stickofram"},
+        {"weight" : 0.2, "item" : "siliconboard"},
+        {"weight" : 0.2, "item" : "smallbattery"},
+        {"weight" : 0.2, "item" : "wire"},            
+        {"weight" : 0.2, "pool" : "fusalvageComponent"}
+      ]
+    }]
+  ],  
   
   "fuspaceElevatorChest" : [
     [1, {
@@ -1624,9 +1703,6 @@
         {"weight" : 0.0366, "item" : [ "ff_plastic", 6]},
         {"weight" : 0.0366, "item" : [ "iodine", 4]},
         {"weight" : 0.0366, "item" : [ "ff_mercury", 6]},
-        {"weight" : 0.012, "item" : [ "trooperhead", 1]},
-        {"weight" : 0.012, "item" : [ "trooperhead2", 1]},
-        {"weight" : 0.012, "item" : [ "targetinggoggles", 1]},
         {"weight" : 0.005, "item" :  [ "yellowguardianback-recipe", 1]},
         {"weight" : 0.005, "item" :  [ "blueguardianback-recipe", 1]},
         {"weight" : 0.005, "item" :  [ "pinkguardianback-recipe", 1]},
@@ -1644,22 +1720,22 @@
         {"weight" : 0.012, "item" :  [ "atropuschest-recipe", 1]},
         {"weight" : 0.012, "item" :  [ "longarmpistol-recipe", 1]},
         {"weight" : 0.012, "item" :  [ "longarm-recipe", 1]},
-        {"weight" : 0.015, "item" :  [ "eldertome", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic1", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic2", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic3", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic4", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic5", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic6", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic7", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic8", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic9", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic10", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic11", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic12", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic13", 1]},
-        {"weight" : 0.015, "item" :  [ "elderrelic14", 1]},
-        {"weight" : 0.012, "item" :  [ "brainslug", 1]},
+        {"weight" : 0.001, "item" :  [ "eldertome", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic1", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic2", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic3", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic4", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic5", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic6", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic7", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic8", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic9", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic10", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic11", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic12", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic13", 1]},
+        {"weight" : 0.001, "item" :  [ "elderrelic14", 1]},
+        {"weight" : 0.004, "item" :  [ "brainslug", 1]},
         {"weight" : 0.008, "item" : ["isogenbar", 1]},
         {"weight" : 0.008, "item" : ["pyreitebar", 1]},
         {"weight" : 0.001, "item" : ["tritaniumbar", 1]},

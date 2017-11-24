@@ -6,6 +6,7 @@ function init()
   self.visualDuration = config.getParameter("visualDuration") or 0.2
 
   self.damageMultiplier = config.getParameter("damageMultiplier") or 0.01
+  self.drainMultiplier = config.getParameter("drainMultiplier") or 0.01
   self.border = config.getParameter("border")
 
   self.cooldown = config.getParameter("cooldown") or 0.5

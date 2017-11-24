@@ -1,6 +1,80 @@
 [
 	[
-
+  {
+    "op": "add",
+    "path": "/apexproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/avianproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/floranproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/glitchproto/stats/mechMass",
+    "value": 1
+  },  
+  {
+    "op": "add",
+    "path": "/hylotlproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/humanproto/stats/mechMass",
+    "value": 1
+  },  
+  {
+    "op": "add",
+    "path": "/novakidproto/stats/mechMass",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/pirate/stats/mechMass",
+    "value": 3
+  },  
+  {
+    "op": "add",
+    "path": "/penguin/stats/mechMass",
+    "value": 3
+  },  
+  {
+    "op": "add",
+    "path": "/cultist/stats/mechMass",
+    "value": 3
+  },  
+  {
+    "op": "add",
+    "path": "/reactor/stats/mechMass",
+    "value": 5
+  },  
+  {
+    "op": "add",
+    "path": "/avian/stats/mechMass",
+    "value": 2
+  },  
+  {
+    "op": "add",
+    "path": "/floran/stats/mechMass",
+    "value": 2
+  },
+  {
+    "op": "add",
+    "path": "/hylotl/stats/mechMass",
+    "value": 4
+  },
+  {
+    "op": "add",
+    "path": "/novakid/stats/mechMass",
+    "value": 3
+  },  
   {
     "op": "add",
     "path": "/military/stats/mechMass",
@@ -15,6 +89,16 @@
     "op": "add",
     "path": "/apex/stats/mechMass",
     "value": 4
+  },
+  {
+    "op": "add",
+    "path": "/shark/stats/mechMass",
+    "value": 6
+  },  
+  {
+    "op": "add",
+    "path": "/iris/stats/mechMass",
+    "value": 5
   },  
   {
     "op": "add",
@@ -25,6 +109,16 @@
     "op": "add",
     "path": "/human/stats/mechMass",
     "value": 5
+  },  
+  {
+    "op": "add",
+    "path": "/cultist2/stats/mechMass",
+    "value": 3
+  },  
+  {
+    "op": "add",
+    "path": "/protector/stats/mechMass",
+    "value": 7
   },  
   {
     "op": "add",
@@ -1918,7 +2012,7 @@
     "value" : {
 	    "stats" : {
 	      "energy" : 3,
-	      "protection" : 4,
+	      "protection" : 5,
 	      "mechMass" : 7
 	    },
 	    "partParameters" : {
@@ -2046,7 +2140,7 @@
 	    "stats" : {
 	      "energy" : 3,
 	      "protection" : 4,
-	      "mechMass" : 4
+	      "mechMass" : 5
 	    },
 	    "partParameters" : {
 	      "hazardImmunities" : [
@@ -2092,7 +2186,8 @@
     "value" : {
 	    "stats" : {
 	      "energy" : 3,
-	      "protection" : 2
+	      "protection" : 2,
+	      "mechMass" : 2
 	    },
 	    "partParameters" : {
 	      "hazardImmunities" : [
@@ -2135,7 +2230,8 @@
     "value" : {
 	    "stats" : {
 	      "energy" : 4,
-	      "protection" : 3
+	      "protection" : 3,
+	      "mechMass" : 3
 	    },
 	    "partParameters" : {
 	      "hazardImmunities" : [
@@ -2259,9 +2355,8 @@
 	],
 		
 	[
-	{ "op": "test", "path": "/zaku", "inverse" : false },
-	{ "op": "test", "path": "/zaku/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/zaku/partParameters/hazardImmunities", "inverse" : true },
+	{ "op": "test", "path": "/zaku" },
+	{ "op": "add","path": "/zaku/stats/mechMass","value": 5 },
 	  {
 	    "op": "add",
 	    "path": "/zaku/partParameters/hazardImmunities",
@@ -2295,9 +2390,8 @@
 	  }
 	],
 	[
-	{ "op": "test", "path": "/zaku2", "inverse" : false },
-	{ "op": "test", "path": "/zaku2/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/zaku2/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/zaku2" },
+	{ "op": "add","path": "/zaku2/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/zaku2/partParameters/hazardImmunities",
@@ -2340,10 +2434,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/rx78", "inverse" : false },
-	{ "op": "test", "path": "/rx78/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/rx78/partParameters/hazardImmunities", "inverse" : true },	
-
+	{ "op": "test", "path": "/rx78" },
+	{ "op": "add","path": "/rx78/stats/mechMass","value": 5 },	
 		{
 			"op": "add",
 			"path": "/rx78/partParameters/hazardImmunities",
@@ -2386,10 +2478,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/dvamech", "inverse" : false },
-	{ "op": "test", "path": "/dvamech/partParameters", "inverse" : false },	
-	{ "op": "test", "path": "/dvamech/partParameters/hazardImmunities", "inverse" : true },		
-
+	{ "op": "test", "path": "/dvamech" },
+	{ "op": "add","path": "/dvamech/stats/mechMass","value": 2 },		
 		{
 			"op": "add",
 			"path": "/dvamech/partParameters/hazardImmunities",
@@ -2432,64 +2522,13 @@
 		}
 	],	
 	[
-	{ "op": "test", "path": "/xsm_thetamech", "inverse" : false },
-	{ "op": "test", "path": "/xsm_thetamech/partParameters", "inverse" : false },
-	
-	{ "op": "test", "path": "/xsm_thetamech/stats/mechMass", "inverse" : false },
-	{ "op": "add", "path": "/xsm_thetamech/stats/mechMass","value": 10 },
-	
-	{ "op": "test", "path": "/xsm_thetamech/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/xsm_thetamech"},
+	{ "op": "add", "path": "/xsm_thetamech/stats/mechMass","value": 10 }
 
-		{
-			"op": "add",
-			"path": "/xsm_thetamech/partParameters/hazardImmunities",
-			"value": [
-				"desertweathernew",
-				"desertweathernewdeadly",
-				"jungleheatweather",
-				"protoweather",
-				"protoweather2",
-				"aetherweathernew",
-				"sulphuricweathernew",
-				"sulphuricweathernew2",
-				"sulphuricweatherstorm",
-				"sulphuricweatherstorm2",
-				"gasworld1",
-				"gasworld2",
-				"gasworld3",
-				"biomeradiation",
-				"radioactiveweathernew",
-				"radioactiveweathernew2",
-				"radioactiveweathernew3",
-				"poisonweathernew",
-				"poisonweathernewbiome",
-				"biomepoisongas",
-				"biomepoison1",
-				"biomepoison2",
-				"biomepoison3",
-				"biomecold",
-				"coldweathernew",
-				"ffbiomecold0",
-				"ffbiomecold1",
-				"ffbiomecold2",
-				"ffbiomecold3",
-				"biomeheat",
-				"ffbiomeheat1",
-				"ffbioimeheat2",
-				"heatweathernew2",
-				"heatweathernew"
-			]
-		}
-	],
+	],	
 	[
-	{ "op": "test", "path": "/xsm_piraterhomech", "inverse" : false },
-	{ "op": "test", "path": "/xsm_piraterhomech/partParameters", "inverse" : false },
-	
-	{ "op": "test", "path": "/xsm_piraterhomech/stats/mechMass", "inverse" : false },
-	{ "op": "add", "path": "/xsm_piraterhomech/stats/mechMass","value": 7 },
-	
-	{ "op": "test", "path": "/xsm_piraterhomech/partParameters/hazardImmunities", "inverse" : true },		
-
+	{ "op": "test", "path": "/xsm_piraterhomech" },
+	{ "op": "add", "path": "/xsm_piraterhomech/stats/mechMass","value": 7 },		
 		{
 			"op": "add",
 			"path": "/xsm_piraterhomech/partParameters/hazardImmunities",
@@ -2526,14 +2565,8 @@
 	
 	
 	[
-	{ "op": "test", "path": "/xsm_roninrhomech", "inverse" : false },
-	{ "op": "test", "path": "/xsm_roninrhomech/partParameters", "inverse" : false },
-	
-	{ "op": "test", "path": "/xsm_roninrhomech/stats/mechMass", "inverse" : false },
-	{ "op": "add", "path": "/xsm_roninrhomech/stats/mechMass","value": 5 },
-	
-	{ "op": "test", "path": "/xsm_roninrhomech/partParameters/hazardImmunities", "inverse" : true },	
-
+	{ "op": "test", "path": "/xsm_roninrhomech"},
+	{ "op": "add","path": "/xsm_roninrhomech/stats/mechMass","value": 5 },
 		{
 			"op": "add",
 			"path": "/xsm_roninrhomech/partParameters/hazardImmunities",
@@ -2570,9 +2603,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/xsm_rhomech", "inverse" : false },
-	{ "op": "test", "path": "/xsm_rhomech/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/xsm_rhomech/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/xsm_rhomech" },
+        { "op": "add","path": "/xsm_rhomech/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/xsm_rhomech/partParameters/hazardImmunities",
@@ -2606,9 +2638,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/xsm_sigma", "inverse" : false },
-	{ "op": "test", "path": "/xsm_sigma/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/xsm_sigma/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/xsm_sigma"},
+        { "op": "add","path": "/xsm_sigma/stats/mechMass","value": 4 },			
 		{
 			"op": "add",
 			"path": "/xsm_sigma/partParameters/hazardImmunities",
@@ -2650,9 +2681,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/xsm_elitesigma", "inverse" : false },
-	{ "op": "test", "path": "/xsm_elitesigma/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/xsm_elitesigma/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/xsm_elitesigma" },
+        { "op": "add","path": "/xsm_elitesigma/stats/mechMass","value": 5 },	
 
 		{
 			"op": "add",
@@ -2696,9 +2726,8 @@
 	],
 
 	[
-	{ "op": "test", "path": "/thatvan3", "inverse" : false },
-	{ "op": "test", "path": "/thatvan3/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/thatvan3/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/thatvan3"},
+	{ "op": "add","path": "/thatvan3/stats/mechMass","value": 5 },
 		{
 			"op": "add",
 			"path": "/thatvan3/partParameters/hazardImmunities",
@@ -2713,9 +2742,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/thatvan4", "inverse" : false },
-	{ "op": "test", "path": "/thatvan4/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/thatvan4/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/thatvan4"},
+	{ "op": "add","path": "/thatvan4/stats/mechMass","value": 6 },
 		{
 			"op": "add",
 			"path": "/thatvan4/partParameters/hazardImmunities",
@@ -2733,9 +2761,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/thatvan5", "inverse" : false },
-	{ "op": "test", "path": "/thatvan5/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/thatvan5/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/thatvan5"},	
+	{ "op": "add","path": "/thatvan5/stats/mechMass","value": 7 },
 		{
 			"op": "add",
 			"path": "/thatvan5/partParameters/hazardImmunities",
@@ -2756,9 +2783,9 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/thatvan6", "inverse" : false },
-	{ "op": "test", "path": "/thatvan6/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/thatvan6/partParameters/hazardImmunities", "inverse" : true },
+	{ "op": "test", "path": "/thatvan6"},	
+	{ "op": "add","path": "/thatvan6/stats/mechMass","value": 8 },
+	
 		{
 			"op": "add",
 			"path": "/thatvan6/partParameters/hazardImmunities",
@@ -2785,9 +2812,8 @@
 	],
 
 	[
-	{ "op": "test", "path": "/mekanor1", "inverse" : false },
-	{ "op": "test", "path": "/mekanor1/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor1/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mekanor1" },	
+	{ "op": "add","path": "/mekanor1/stats/mechMass","value": 5 },	
 		{
 			"op": "add",
 			"path": "/mekanor1/partParameters/hazardImmunities",
@@ -2804,9 +2830,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mekanor2", "inverse" : false },
-	{ "op": "test", "path": "/mekanor2/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor2/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mekanor2" },	
+	{ "op": "add","path": "/mekanor2/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/mekanor2/partParameters/hazardImmunities",
@@ -2823,9 +2848,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mekanor3", "inverse" : false },
-	{ "op": "test", "path": "/mekanor3/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor3/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/mekanor3" },	
+	{ "op": "add","path": "/mekanor3/stats/mechMass","value": 5 },			
 		{
 			"op": "add",
 			"path": "/mekanor3/partParameters/hazardImmunities",
@@ -2842,9 +2866,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mekanor4", "inverse" : false },
-	{ "op": "test", "path": "/mekanor4/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor4/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mekanor4"},	
+	{ "op": "add","path": "/mekanor4/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/mekanor4/partParameters/hazardImmunities",
@@ -2861,9 +2884,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mekanor5", "inverse" : false },
-	{ "op": "test", "path": "/mekanor5/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor5/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mekanor5" },	
+	{ "op": "add","path": "/mekanor5/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/mekanor5/partParameters/hazardImmunities",
@@ -2880,9 +2902,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mekanor6", "inverse" : false },
-	{ "op": "test", "path": "/mekanor6/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor6/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mekanor6"},	
+	{ "op": "add","path": "/mekanor6/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/mekanor6/partParameters/hazardImmunities",
@@ -2899,9 +2920,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mekanor7", "inverse" : false },
-	{ "op": "test", "path": "/mekanor7/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor7/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mekanor7" },	
+	{ "op": "add","path": "/mekanor7/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/mekanor7/partParameters/hazardImmunities",
@@ -2918,9 +2938,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mekanor8", "inverse" : false },
-	{ "op": "test", "path": "/mekanor8/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor8/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mekanor8" },	
+	{ "op": "add","path": "/mekanor8/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/mekanor8/partParameters/hazardImmunities",
@@ -2937,9 +2956,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mekanor9", "inverse" : false },
-	{ "op": "test", "path": "/mekanor9/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mekanor9/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mekanor9" },	
+	{ "op": "add","path": "/mekanor9/stats/mechMass","value": 5 },		
 		{
 			"op": "add",
 			"path": "/mekanor9/partParameters/hazardImmunities",
@@ -2956,9 +2974,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/bigfloli", "inverse" : false },
-	{ "op": "test", "path": "/bigfloli/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/bigfloli/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/bigfloli"},
+	{"op": "add","path": "/bigfloli/stats/mechMass","value": 6},
 		{
 			"op": "add",
 			"path": "/bigfloli/partParameters/hazardImmunities",
@@ -2997,9 +3014,8 @@
 	],
 
 	[
-	{ "op": "test", "path": "/PTX-010", "inverse" : false },
-	{ "op": "test", "path": "/PTX-010/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/PTX-010/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/PTX-010" },
+	{"op": "add","path": "/PTX-010/stats/mechMass","value": 6},
 		{
 			"op": "add",
 			"path": "/PTX-010/partParameters/hazardImmunities",
@@ -3014,9 +3030,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/debx", "inverse" : false },
-	{ "op": "test", "path": "/debx/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/debx/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/debx" },	
+	{"op": "add","path": "/debx/stats/mechMass","value": 4},
 		{
 			"op": "add",
 			"path": "/debx/partParameters/hazardImmunities",
@@ -3031,9 +3046,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/debn", "inverse" : false },
-	{ "op": "test", "path": "/debn/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/debn/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/debn" },
+	{"op": "add","path": "/debn/stats/mechMass","value": 4},
 		{
 			"op": "add",
 			"path": "/debn/partParameters/hazardImmunities",
@@ -3048,9 +3062,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/deba", "inverse" : false },
-	{ "op": "test", "path": "/deba/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/deba/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/deba"},
+	{"op": "add","path": "/deba/stats/mechMass","value": 4},
 		{
 			"op": "add",
 			"path": "/deba/partParameters/hazardImmunities",
@@ -3065,9 +3078,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/humanc", "inverse" : false },
-	{ "op": "test", "path": "/humanc/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/humanc/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/humanc"},
+        {"op": "add","path": "/humanc/stats/mechMass","value": 4},	
 		{
 			"op": "add",
 			"path": "/humanc/partParameters/hazardImmunities",
@@ -3082,9 +3094,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/debm", "inverse" : false },
-	{ "op": "test", "path": "/debm/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/debm/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/debm"},	
+	{"op": "add","path": "/debm/stats/mechMass","value": 4},
 		{
 			"op": "add",
 			"path": "/debm/partParameters/hazardImmunities",
@@ -3100,8 +3111,7 @@
 	],
 	[
 	{ "op": "test", "path": "/sludge", "inverse" : false },
-	{ "op": "test", "path": "/sludge/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/sludge/partParameters/hazardImmunities", "inverse" : true },	
+	{"op": "add","path": "/sludge/stats/mechMass","value": 3},
 		{
 			"op": "add",
 			"path": "/sludge/partParameters/hazardImmunities",
@@ -3116,9 +3126,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/mmklll", "inverse" : false },
-	{ "op": "test", "path": "/mmklll/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mmklll/partParameters/hazardImmunities", "inverse" : true },	
+	{ "op": "test", "path": "/mmklll"},
+	{"op": "add","path": "/mmklll/stats/mechMass","value": 4},
 		{
 			"op": "add",
 			"path": "/mmklll/partParameters/hazardImmunities",
@@ -3133,9 +3142,8 @@
 		}
 	],
 	[
-	{ "op": "test", "path": "/bhm", "inverse" : false },
-	{ "op": "test", "path": "/bhm/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/bhm/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "test", "path": "/bhm"},
+	{"op": "add","path": "/bhm/stats/mechMass","value": 3},
 		{
 			"op": "add",
 			"path": "/bhm/partParameters/hazardImmunities",
@@ -3151,8 +3159,7 @@
 	],
 	[
 	{ "op": "test", "path": "/mechbodyavali", "inverse" : false },
-	{ "op": "test", "path": "/mechbodyavali/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mechbodyavali/partParameters/hazardImmunities", "inverse" : true },		
+	{ "op": "add", "path": "/mechbodyavali/stats/mechMass","value": 5 },			
 		{
 			"op": "add",
 			"path": "/mechbodyavali/partParameters/hazardImmunities",
@@ -3192,11 +3199,408 @@
 	],
 	[	
 	{ "op": "test", "path": "/mechbodyavaliproto", "inverse" : false },
-	{ "op": "test", "path": "/mechbodyavaliproto/partParameters", "inverse" : false },
-	{ "op": "test", "path": "/mechbodyavaliproto/partParameters/hazardImmunities", "inverse" : true },
+        	
+	{ "op": "add", "path": "/mechbodyavali/stats/mechMass","value": 1 },
 		{
 			"op": "add",
 			"path": "/mechbodyavaliproto/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	
+	[
+	{ "op": "test", "path": "/cworks_seatrobot" },
+	{ "op": "add", "path": "/cworks_seatrobot/stats/mechMass","value": 3 },		
+		{
+			"op": "add",
+			"path": "/cworks_seatrobot/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew"
+			]
+		}
+	],
+	
+	[
+	{ "op": "test", "path": "/cworks_megashead" },
+	{ "op": "add", "path": "/cworks_megashead/stats/mechMass","value": 4 },		
+		{
+			"op": "add",
+			"path": "/cworks_megashead/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew"
+			]
+		}
+	],	
+	[
+	{ "op": "test", "path": "/cworks_heavydrone" },
+	{ "op": "add", "path": "/cworks_heavydrone/stats/mechMass","value": 6 },		
+		{
+			"op": "add",
+			"path": "/cworks_heavydrone/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	[
+	{ "op": "test", "path": "/cworks_fatalcircuitbody" },
+	{ "op": "add", "path": "/cworks_fatalcircuitbody/stats/mechMass","value": 7 },		
+		{
+			"op": "add",
+			"path": "/cworks_fatalcircuitbody/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	
+	[
+	{ "op": "test", "path": "/cworks_actbody" },
+	{ "op": "add", "path": "/cworks_actbody/stats/mechMass","value": 2 },		
+		{
+			"op": "add",
+			"path": "/cworks_actbody/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],	
+	
+	[
+	{ "op": "test", "path": "/avikanproto" },
+	{ "op": "add", "path": "/avikanproto/stats/mechMass","value": 1 }
+	],
+	[
+	{ "op": "test", "path": "/drodenproto" },
+	{ "op": "add", "path": "/drodenproto/stats/mechMass","value": 1 }
+	],	
+	[
+	{ "op": "test", "path": "/trinkproto" },
+	{ "op": "add", "path": "/trinkproto/stats/mechMass","value": 1 }
+	],	
+	[
+	{ "op": "test", "path": "/cworks_actbody" },
+	{ "op": "add", "path": "/cworks_actbody/stats/mechMass","value": 2 },		
+		{
+			"op": "add",
+			"path": "/cworks_actbody/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	
+	[
+	{ "op": "test", "path": "/droden" },
+	{ "op": "add", "path": "/droden/stats/mechMass","value": 3 },		
+		{
+			"op": "add",
+			"path": "/avikan/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],	
+	[
+	{ "op": "test", "path": "/trink" },
+	{ "op": "add", "path": "/trink/stats/mechMass","value": 7 },		
+		{
+			"op": "add",
+			"path": "/avikan/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],	
+	[
+	{ "op": "test", "path": "/avikan" },
+	{ "op": "add", "path": "/avikan/stats/mechMass","value": 5 },		
+		{
+			"op": "add",
+			"path": "/avikan/partParameters/hazardImmunities",
 			"value": [
 				"desertweathernew",
 				"desertweathernewdeadly",
