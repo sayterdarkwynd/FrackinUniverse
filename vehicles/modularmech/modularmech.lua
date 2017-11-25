@@ -125,7 +125,7 @@ function init()
   -- setup arms
   
   self.aimassist = self.parts.hornName == 'mechaimassist'
-  self.masscancel = self.parts.hornName == 'mechmasscancel'
+  self.masscancel = self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4'
 
   require(self.parts.leftArm.script)
   self.leftArm = _ENV[self.parts.leftArm.armClass]:new(self.parts.leftArm, "leftArm", {2.375, 2.0}, self.ownerUuid)
@@ -413,13 +413,7 @@ function update(dt)
 	    if self.parts.hornName == 'mechaimassist' then
 		  self.aimassist = not self.aimassist
 		  animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
-		elseif self.parts.hornName == 'mechmasscancel' then
-		  self.masscancel = not self.masscancel
-		elseif self.parts.hornName == 'mechmasscancel2' then
-		  self.masscancel = not self.masscancel
-		elseif self.parts.hornName == 'mechmasscancel3' then
-		  self.masscancel = not self.masscancel
-		elseif self.parts.hornName == 'mechmasscancel4' then
+		elseif self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4' then
 		  self.masscancel = not self.masscancel		  
 		  animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
 		else
@@ -604,8 +598,19 @@ function update(dt)
       is, the slower the regeneration rate becomes, which should help to balance out energy cost.
       ***************************************************************************************** --]]
       activateFUMechStats()
-	  self.mechMass = self.masscancel and 0 or self.mechMass
-
+	  
+	  if self.masscancel then
+	    if self.parts.hornName == 'mechmasscancel' then
+		  self.mechMass = self.mechMass * 0.75
+		elseif self.parts.hornName == 'mechmasscancel2' then
+		  self.mechMass = self.mechMass * 0.5
+		elseif self.parts.hornName == 'mechmasscancel3' then
+		  self.mechMass = self.mechMass * 0.25
+		elseif self.parts.hornName == 'mechmasscancel4' then
+		  self.mechMass = 0
+		end
+	  end
+	  
       if (storage.energy) < (self.energyMax*0.15) then -- play damage effects at certain health percentages
         animator.setParticleEmitterActive("highDamage", true) -- land fx 
         animator.setParticleEmitterActive("midDamage", false) -- land fx
