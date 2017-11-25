@@ -140,7 +140,6 @@ function init()
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0) 
    
-
   --[[ add Powerful gun drain 
   if (self.parts.leftArm.stats.powerful) then
     self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.powerful) 
@@ -416,6 +415,12 @@ function update(dt)
 		  animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
 		elseif self.parts.hornName == 'mechmasscancel' then
 		  self.masscancel = not self.masscancel
+		elseif self.parts.hornName == 'mechmasscancel2' then
+		  self.masscancel = not self.masscancel
+		elseif self.parts.hornName == 'mechmasscancel3' then
+		  self.masscancel = not self.masscancel
+		elseif self.parts.hornName == 'mechmasscancel4' then
+		  self.masscancel = not self.masscancel		  
 		  animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
 		else
           animator.playSound("horn")
