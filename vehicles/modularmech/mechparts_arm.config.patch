@@ -1308,24 +1308,24 @@
 	      "power" : 10,
 	      "energy" : 10,
 	      "mechMass" : 9,
-	      "basePower" : 40
+	      "basePower" : 35
 	    },
 	    "partParameters" : {
-	      "script" : "/vehicles/modularmech/armscripts/xsm_beamarm.lua",
+	      "script" : "/vehicles/modularmech/armscripts/xsm_beamarm2.lua",
 	      "armClass" : "BeamArm",
               //      "rotationOffset" : [-8.0,0],
 
 	      "rotationLimits" : [-1.75, 1.75],
 	      "fireOffset" : [8.5, 0.0],
 
-	      "windupTime" : 0.5,
-	      "fireTime" : 0.5,
-	      "winddownTime" : 0.75,
+	      "windupTime" : 1,
+	      "fireTime" : 2,
+	      "winddownTime" : 0,
 
 	      "repeatFire" : false,
 	      "lockAim" : true,
 
-	      "beamSourceOffset" : [8.0, -1.25],
+	      "beamSourceOffset" : [8.5, 1.5],
 	      "beamHeight" : 3,
 	      "beamLength" : 100,
 	      "beamParticleDensity" : 2,
@@ -1339,8 +1339,8 @@
 		"enabled" : false,
 		"attachToPart" : "<armName>",
 
-		"line" : [ [0.5, 3.0], [108.5, -3.0] ],
-		"damage" : 200,
+		"line" : [ [0.5, 1.0], [108.5, -1.0] ],
+		"damage" : 100,
 		"damageSourceKind" : "cosmic",
 		"damageRepeatTimeout" : 0.3,
 		"damageRepeatGroup" : "<armName>Beam",
@@ -1360,7 +1360,8 @@
 		"stateTypes" : {
 		  "<armName>" : { "states" : {
 		    "windup" : {
-		      "cycle" : 0.5
+		      "frames" : 8,
+		      "cycle" : 1
 		    },
 		    "active" : {
 		      "frames" : 11,
@@ -1369,7 +1370,8 @@
 		      "transition" : "idle"
 		    },
 		    "winddown" : {
-		      "cycle" : 0.5
+		      "frames" : 1,
+		      "cycle" : 1
 		    }
 		  }},
 		  "<armName>Beam" : {
@@ -1408,7 +1410,7 @@
 		  "<armName>Beam" : {
 		    "properties" : {
 		      "zLevel" : 10,
-		      "offset" : [8.0, 1.0],
+		      "offset" : [8.5, 1.0],
 		      "anchorPart" : "<armName>",
 		      "fullbright" : true,
 		      "centered" : false,
@@ -1431,8 +1433,9 @@
 		  "active" : false,
 		  "anchorPart" : "<armName>",
 		  "offset" : [0,4],
-		  "particles" : [
-		    { "particle" : {
+		  "particles" : [			
+		    { 
+		      "particle" : {
 			"type" : "ember",
 			"fullbright" : true,
 			"color" : [77, 143, 254, 150],
@@ -1447,7 +1450,27 @@
 			  "initialVelocity" : [1, 1],
 			  "timeToLive" : 0.4
 			}
-		      } }
+		      } 
+		    },
+		    { 
+		      "particle" : {
+			"type" : "ember",
+			"fullbright" : true,
+			"position" : [0, 1.5],
+			"color" : [77, 143, 254, 150],
+			"light" : [4, 83, 218],
+			"fade" : 0.5,
+			"destructionAction" : "shrink",
+			"destructionTime" : 0.25,
+			"initialVelocity" : [0, 0],
+			"timeToLive" : 0.4,
+			"layer" : "middle",
+			"variance" : {
+			  "initialVelocity" : [1, 1],
+			  "timeToLive" : 0.4
+			}
+		      } 
+		    }		    
 		  ]
 		}
 	      },
@@ -1455,8 +1478,8 @@
 		"<armName>Beam" : {}
 	      },
 	      "sounds" : {
-		"<armName>Windup" : ["/sfx/weapons/cultistboom1.ogg"],
-		"<armName>Fire" : ["/sfx/weapons/cultistboom2.ogg"]
+		"<armName>Windup" : ["/sfx/weapons/chargeprecursorloop.ogg"],
+		"<armName>Fire" : ["/sfx/weapons/elderburst.ogg"]
 	      }
 	    }
 	  }            

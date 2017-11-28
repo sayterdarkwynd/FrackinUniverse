@@ -125,11 +125,6 @@ function BeamArm:fireState()
   if beamCollision and self.beamTileDamage > 0 then
     local maximumEndPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
     local damagePositions = world.collisionBlocksAlongLine(self.firePosition, maximumEndPoint, nil, self.beamTileDamageDepth)
-	trueDamagePositions = {}
-	for _,damagePosition in pairs (damagePositions) do
-		table.insert(trueDamagePositions, vec2.add(damagePosition, {1,1}))
-		table.insert(trueDamagePositions, vec2.add(damagePosition, {-1,-1}))
-	end
     world.damageTiles(trueDamagePositions, "foreground", self.firePosition, "beamish", self.beamTileDamage, 99)
     world.damageTiles(trueDamagePositions, "background", self.firePosition, "beamish", self.beamTileDamage, 99)
   end
