@@ -80,7 +80,7 @@ function BeamArm:fireState()
 	  
           pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
           
-          self.applyBeamDamage = (self.basePower * self.mechTier)/38
+          self.applyBeamDamage = (self.basePower * self.mechTier)/36
 
   -- ********************************************************************
   
