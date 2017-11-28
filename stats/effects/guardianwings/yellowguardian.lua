@@ -1,4 +1,5 @@
 function init()
+ script.setUpdateDelta(5)
 end
 
 function update(dt)

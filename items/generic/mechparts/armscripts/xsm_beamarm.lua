@@ -9,7 +9,6 @@ function BeamArm:init()
   end
 end
 
-
 function BeamArm:update(dt)
   if self.state.state then
     self.state:update()
@@ -50,51 +49,8 @@ function BeamArm:windupState()
   end
 end
 
-
-function BeamArm:statSet()
-        self.mechBonusWeapon = self.stats.power + self.stats.energy
-        self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
-        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
-        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
-        self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
-        self.energyMax = self.parts.body.energyMax
-        self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
-        self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
-        storage.energy = math.min(math.max(0, storage.energy - self.weaponDrain),self.energyMax)
-end
-
 function BeamArm:fireState()
   local stateTimer = self.fireTime
-
-  -- FU beam damage scaling *******************************************
-	  self:statSet()  
-	  self.mechTier = self.stats.power
-	  self.basePower = self.stats.basePower or 1
-	  
-          pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
-          self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
-
-          self.applyBeamDamage = self.basePower * self.mechTier; 
-          --Mech critical hits
-		if (self.stats.rapidFire) then 
-		  self.critMod = self.stats.rapidFire / 10
-		  self.critChance = self.critChance * self.critMod
-		end          
-		if (self.critChance) >= 100 then
-		  self.mechBonus = self.mechBonus * 2
-		end
-
-        --apply final damage
-        
-        if (self.mechBonus) >= (self.mechBonusWeapon) then
-          self.randbonus = (self.mechBonus/100) * self.mechTier
-          self.mechBonus = self.mechBonus * (1 + self.randbonus)
-        end          
-        
-        self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
-  -- ********************************************************************
-  
   local beamEndTimer = 0
 
   if not self:rayCheck(self.firePosition) then -- don't fire if sticking thru wall
@@ -113,8 +69,6 @@ function BeamArm:fireState()
 
   self.aimLocked = self.lockAim
 
-
-
   coroutine.yield()
 
   while stateTimer > 0 do
@@ -130,28 +84,10 @@ function BeamArm:fireState()
   end
     
     if beamCollision and beamEndTimer <= 0 and self.beamEndProjectile then
-      world.spawnProjectile(self.beamEndProjectile, {endPoint[1],endPoint[2]}, self.driverId, {0, 0}, false)
+      world.spawnProjectile(self.beamEndProjectile, {endPoint[1],endPoint[2] - self.beamHeight}, self.driverId, {0, 0}, false)
       beamEndTimer = self.beamEndTimer
     end
-    
-    beamParams = {}
-    beamParams.speed =  200
-    
-    beamParams.timeToLive =  1
-    if self.basePower == 0.05 then
-      beamParams.timeToLive =  0.23
-    elseif (self.basePower) == 2.25 then
-      beamParams.timeToLive =  0.1
-      beamParams.speed =  900
-    elseif (self.basePower) >= 34 then
-      beamParams.timeToLive =  2        
-    end   
-    
-    beamParams.power =  self.applyBeamDamage      
-    --FU Projectile spawn, to do scaled damage *******************************************************************************
-      world.spawnProjectile("fu_genericBlankProjectile", self.firePosition, self.driverId, self.aimVector , false, beamParams)
-    -- ***********************************************************************************************************************
-    
+
     animator.setParticleEmitterBurstCount(self.armName .. "Beam", math.ceil(self.beamParticleDensity * beamLength / 10))
     animator.burstParticleEmitter(self.armName .. "Beam")
 

@@ -1302,49 +1302,164 @@
         }, {
             "op": "add",
             "path": "/fuultracannon",
-            "value": {
-                "stats": {
-                    "power": 6,
-                    "energy": 6,
-                    "mechMass": 4
-                },
-                "partParameters": {
-                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-                    "armClass": "GunArm",
-                    "rotationLimits": [-1.75, 1.75],
-                    "fireOffset": [4.65, -0.625],
-                    "extendTime": 1,
-                    "fireTime": 0.22,
-                    "projectileType": "lunarishotinitiatemech",
-                    "projectileCount": 2,
-                    "projectileParameters": {
-                        "power": 8
-                    }
-                },
-                "partImages": {
-                    "<armName>": "arm/futhetamechgun.png",
-                    "<armName>Fullbright": "arm/futhetamechgunfullbright.png"
-                },
-                "defaultPrimaryColors": [
-                    "c36a5f",
-                    "994c49",
-                    "6f3130",
-                    "551d28"
-                ],
-                "defaultSecondaryColors": [
-                    "e6e6e6",
-                    "b6b6b6",
-                    "7b7b7b",
-                    "373737"
-                ],
-                "animationCustom": {
-                    "sounds": {
-                        "<armName>Fire": [
-                            "/sfx/gun/pulsecannon_blast1.ogg"
-                        ]
-                    }
-                }
-            }
+            "value": 
+	  {
+	    "stats" : {
+	      "power" : 10,
+	      "energy" : 10,
+	      "mechMass" : 9,
+	      "basePower" : 40
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/xsm_beamarm.lua",
+	      "armClass" : "BeamArm",
+              //      "rotationOffset" : [-8.0,0],
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [8.5, 0.0],
+
+	      "windupTime" : 0.5,
+	      "fireTime" : 0.5,
+	      "winddownTime" : 0.75,
+
+	      "repeatFire" : false,
+	      "lockAim" : true,
+
+	      "beamSourceOffset" : [8.0, -1.25],
+	      "beamHeight" : 3,
+	      "beamLength" : 100,
+	      "beamParticleDensity" : 2,
+	      "beamTileDamage" : 10,
+	      "beamTileDamageDepth" : 20,
+	      "beamEndTimer" : 0.5,
+	      "beamEndProjectile" : "ultrabeamend"
+	    },
+	    "damageSources" : {
+	      "<armName>Beam" : {
+		"enabled" : false,
+		"attachToPart" : "<armName>",
+
+		"line" : [ [0.5, 3.0], [108.5, -3.0] ],
+		"damage" : 200,
+		"damageSourceKind" : "cosmic",
+		"damageRepeatTimeout" : 0.3,
+		"damageRepeatGroup" : "<armName>Beam",
+		"knockback" : 50,
+
+		"rayCheck" : true
+	      }
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/fumegacannoncombined.png",
+	      "<armName>Fullbright" : "arm/fumegacannonfullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["ef978b", "bd3616", "790e00", "59140c"],
+	    "defaultSecondaryColors" : ["9da8af", "676f83", "3d3d51", "24232f"],
+	    "animationCustom" : {
+	      "animatedParts" : {
+		"stateTypes" : {
+		  "<armName>" : { "states" : {
+		    "windup" : {
+		      "cycle" : 0.5
+		    },
+		    "active" : {
+		      "frames" : 11,
+		      "cycle" : 0.75,
+		      "mode" : "transition",
+		      "transition" : "idle"
+		    },
+		    "winddown" : {
+		      "cycle" : 0.5
+		    }
+		  }},
+		  "<armName>Beam" : {
+		    "default" : "off",
+		    "states" : {
+		      "off" : {},
+		      "fire" : {
+			"frames" : 5,
+			"cycle" : 0.5,
+			"mode" : "transition",
+			"transition" : "off",
+			"properties" : {
+			  "persistentSound" : "/sfx/gun/rocket1.ogg",
+			  "persistentSoundRangeMultiplier" : 1.0,
+			  "persistentSoundStopTime" : 0.2
+			}
+
+		      }
+		    }
+		  }
+		},
+		"parts" : {
+		  "<armName>" : {
+		    "properties" : {
+		      "centered" : true
+		    }		    
+		  },	
+		  "<armName>Fullbright" : {
+		    "properties" : {
+		      "zLevel" : 1,
+		      "offset" : [-8.5, 0.15],
+		      "fullbright" : true,
+		      "centered" : true
+		    }
+		  },			  
+		  "<armName>Beam" : {
+		    "properties" : {
+		      "zLevel" : 10,
+		      "offset" : [8.0, 1.0],
+		      "anchorPart" : "<armName>",
+		      "fullbright" : true,
+		      "centered" : false,
+		      "transformationGroups" : ["<armName>Beam"]
+		    },
+		    "partStates" : {
+		      "<armName>Beam" : {
+			"fire" : {
+			  "properties" : {
+			    "image" : "/vehicles/modularmech/beam/ultrabeam.png:<frame>"
+			  }
+			}
+		      }
+		    }
+		  }
+		}
+	      },
+	      "particleEmitters" : {
+		"<armName>Beam" : {
+		  "active" : false,
+		  "anchorPart" : "<armName>",
+		  "offset" : [0,4],
+		  "particles" : [
+		    { "particle" : {
+			"type" : "ember",
+			"fullbright" : true,
+			"color" : [77, 143, 254, 150],
+			"light" : [4, 83, 218],
+			"fade" : 0.5,
+			"destructionAction" : "shrink",
+			"destructionTime" : 0.25,
+			"initialVelocity" : [0, 0],
+			"timeToLive" : 0.4,
+			"layer" : "middle",
+			"variance" : {
+			  "initialVelocity" : [1, 1],
+			  "timeToLive" : 0.4
+			}
+		      } }
+		  ]
+		}
+	      },
+	      "transformationGroups" : {
+		"<armName>Beam" : {}
+	      },
+	      "sounds" : {
+		"<armName>Windup" : ["/sfx/weapons/cultistboom1.ogg"],
+		"<armName>Fire" : ["/sfx/weapons/cultistboom2.ogg"]
+	      }
+	    }
+	  }            
         }, {
             "op": "add",
             "path": "/fuheatcannon",
