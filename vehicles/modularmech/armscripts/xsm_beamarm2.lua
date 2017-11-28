@@ -18,6 +18,11 @@ function BeamArm:update(dt)
   if not self.state.state then
     if self.isFiring then
       self.state:set(self.windupState, self)
+      animator.setParticleEmitterActive(self.armName .. "Charge", true)
+      animator.setParticleEmitterActive(self.armName .. "Smoke", true)
+    else
+      animator.setParticleEmitterActive(self.armName .. "Charge", false)
+      animator.setParticleEmitterActive(self.armName .. "Smoke", false)
     end
   end
 
@@ -34,7 +39,8 @@ function BeamArm:windupState()
 
   animator.setAnimationState(self.armName, "windup")
   animator.playSound(self.armName .. "Windup")
-
+  
+  
   while stateTimer > 0 do
     animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
@@ -73,16 +79,9 @@ function BeamArm:fireState()
 	  self.basePower = self.stats.basePower or 1
 	  
           pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
-          self.applyBeamDamage = (self.basePower/2) * self.mechTier
+          
+          self.applyBeamDamage = (self.basePower * self.mechTier)/38
 
-        --apply final damage
-        
-        if (self.mechBonus) >= (self.mechBonusWeapon) then
-          self.randbonus = (self.mechBonus/100) * self.mechTier
-          self.mechBonus = self.mechBonus * (1 + self.randbonus)
-        end          
-        
-        self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
   -- ********************************************************************
   
   local beamEndTimer = 0
@@ -132,19 +131,12 @@ function BeamArm:fireState()
     beamParams = {}
     beamParams.speed =  200
     
-    beamParams.timeToLive =  1
-    if self.basePower == 0.05 then
-      beamParams.timeToLive =  0.23
-    elseif (self.basePower) == 2.25 then
-      beamParams.timeToLive =  0.1
-      beamParams.speed =  900
-    elseif (self.basePower) >= 34 then
-      beamParams.timeToLive =  2        
-    end   
+    beamParams.timeToLive =  0.5
+
     
     beamParams.power =  self.applyBeamDamage      
     --FU Projectile spawn, to do scaled damage *******************************************************************************
-      world.spawnProjectile("fu_genericBlankProjectile", self.firePosition, self.driverId, self.aimVector , false, beamParams)
+      world.spawnProjectile("fumechBeam", self.firePosition, self.driverId, self.aimVector , false, beamParams)
     -- ***********************************************************************************************************************
     
     animator.setParticleEmitterBurstCount(self.armName .. "Beam", math.ceil(self.beamParticleDensity * beamLength / 5))
