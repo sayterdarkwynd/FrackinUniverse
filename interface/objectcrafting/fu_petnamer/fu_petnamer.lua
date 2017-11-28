@@ -23,6 +23,12 @@ function renamePet()
 		if validItem then
 			world.containerConsumeAt(container, 0, 1)
 			newName = widget.getText("nameTextbox")
+			if not item.parameters.pets[1].config.parameters.monsterTypeName then
+				item.parameters.pets[1].config.parameters.monsterTypeName = item.parameters.pets[1].name
+				if item.parameters.currentPets then
+					item.parameters.currentPets[1].config.parameters.monsterTypeName = item.parameters.pets[1].name
+				end
+			end
 			if newName and newName ~= "" then
 				item.parameters.pets[1].name = newName
 				item.parameters.pets[1].config.parameters.shortdescription = newName
