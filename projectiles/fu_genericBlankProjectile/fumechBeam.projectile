@@ -21,6 +21,58 @@
 	"position" : [0,-2],
 	"universalDamage": true,
 	"damageKind": "cosmic",
-	"timeToLive": 1,
-	"statusEffects": []
+	"timeToLive": 0.5,
+	"statusEffects": [],
+	"periodicActions" : [
+
+
+	    {
+	      "action":"particle",
+	      "repeat":true,
+	      "rotate":true,
+	      "specification":{
+				"type" : "ember",
+				"fullbright" : true,
+				"position" : [0, 1],
+				"color" : [77, 143, 254, 150],
+				"light" : [4, 83, 218],
+				"fade" : 0.5,
+				"destructionAction" : "shrink",
+				"destructionTime" : 0.25,
+				"initialVelocity" : [0, 0],
+				"timeToLive" : 0.4,
+				"layer" : "middle",
+				"variance" : {
+				  "initialVelocity" : [1, 1],
+				  "timeToLive" : 0.4
+				}
+		},
+	      "time":0
+	    },
+	    {
+	      "action":"particle",
+	      "repeat":true,
+	      "rotate":true,
+	      "specification":{
+				"type" : "ember",
+				"fullbright" : true,
+				"position" : [0, -1],
+				"color" : [77, 143, 254, 150],
+				"light" : [4, 83, 218],
+				"fade" : 0.5,
+				"destructionAction" : "shrink",
+				"destructionTime" : 0.25,
+				"initialVelocity" : [0, 0],
+				"timeToLive" : 0.4,
+				"layer" : "middle",
+				"variance" : {
+				  "initialVelocity" : [1, 1],
+				  "timeToLive" : 0.4
+				}
+		},
+	      "time":0
+	    }    
+    
+    
+	]
 }

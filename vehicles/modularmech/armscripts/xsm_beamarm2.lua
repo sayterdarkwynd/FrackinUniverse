@@ -80,7 +80,7 @@ function BeamArm:fireState()
 	  
           pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
           
-          self.applyBeamDamage = (self.basePower * self.mechTier)/36
+          self.applyBeamDamage = (self.basePower * self.mechTier) + math.random(50)
 
   -- ********************************************************************
   
@@ -102,7 +102,13 @@ function BeamArm:fireState()
 
   self.aimLocked = self.lockAim
 
-
+    --FU Projectile spawn, to do scaled damage *******************************************************************************
+      beamParams = {}
+      beamParams.speed =  200
+      beamParams.timeToLive =  0.5
+      beamParams.power =  self.applyBeamDamage       
+      world.spawnProjectile("fumechBeam", self.firePosition, self.driverId, self.aimVector , false, beamParams)
+    -- ***********************************************************************************************************************
 
   coroutine.yield()
 
@@ -127,20 +133,11 @@ function BeamArm:fireState()
       world.spawnProjectile(self.beamEndProjectile, {endPoint[1],endPoint[2]}, self.driverId, {0, 0}, false)
       beamEndTimer = self.beamEndTimer
     end
-    
-    beamParams = {}
-    beamParams.speed =  200
-    
-    beamParams.timeToLive =  0.5
+
 
     
-    beamParams.power =  self.applyBeamDamage      
-    --FU Projectile spawn, to do scaled damage *******************************************************************************
-      world.spawnProjectile("fumechBeam", self.firePosition, self.driverId, self.aimVector , false, beamParams)
-    -- ***********************************************************************************************************************
-    
-    animator.setParticleEmitterBurstCount(self.armName .. "Beam", math.ceil(self.beamParticleDensity * beamLength / 5))
-    animator.burstParticleEmitter(self.armName .. "Beam")
+    --animator.setParticleEmitterBurstCount(self.armName .. "Beam", math.ceil(self.beamParticleDensity * beamLength / 5))
+    --animator.burstParticleEmitter(self.armName .. "Beam")
 
     local dt = script.updateDt()
     stateTimer = stateTimer - dt
