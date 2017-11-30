@@ -133,25 +133,23 @@ function init()
   require(self.parts.rightArm.script)
   self.rightArm = _ENV[self.parts.rightArm.armClass]:new(self.parts.rightArm, "rightArm", {-2.375, 2.0}, self.ownerUuid)
 
-  -- setup energy pool
+  -- setup energy pool     ***********************************************
 
   self.energyMax = self.parts.body.energyMax
   storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0) 
    
-  --[[ add Powerful gun drain 
-  if (self.parts.leftArm.stats.powerful) then
-    self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.powerful) 
+  -- guns marked as Powerful (have basePower stat) have increased energy drain, affecting total mech drain ************************************************
+  if (self.parts.leftArm.stats.basePower) then
+    self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.basePower/50) 
   end
-  if (self.parts.rightArm.stats.powerful) then
-    self.energyDrain = self.energyDrain + (self.parts.rightArm.stats.powerful)
+  if (self.parts.rightArm.stats.basePower) then
+    self.energyDrain = self.energyDrain + (self.parts.rightArm.stats.basePower/50)
   end 
-  self.extraDrain1 = (self.parts.leftArm.stats.powerful or 0)
-  self.extraDrain2 = (self.parts.rightArm.stats.powerful or 0)
-  self.extraDrain = self.extraDrain1 + self.extraDrain2]]--
 
-  -- check for environmental hazards / protection
+
+  -- check for environmental hazards / protection *************************
   local hazards = config.getParameter("hazardVulnerabilities")
   
   for _, statusEffect in pairs(self.parts.body.hazardImmunities or {}) do
