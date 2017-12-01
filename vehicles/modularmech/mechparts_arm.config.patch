@@ -651,7 +651,7 @@
                     "deployTime": 0.5,
                     "launchTiming": 0.25,
                     "cooldownTime": 1,
-                    "maxDrones": 5,
+                    "maxDrones": 6,
                     "droneOrbitRate": 0.25,
                     "droneOrbitDistance": 7,
                     "droneMonsterType": "mechmultidrone3",
@@ -678,6 +678,180 @@
 			    "speed" : 60,
 			    "power" : 4,
 			    "statusEffects" : [ "electrified", "stun" ]
+			  },
+
+			  "projectileCount" : 1
+			}
+		      }
+                },
+                "partImages": {
+                    "<armName>": "arm/shielddronelauncher.png",
+                    "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],
+                "animationCustom": {
+                    "animatedParts": {
+                        "stateTypes": {
+                            "<armName>": {
+                                "states": {
+                                    "windup": {
+                                        "mode": "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sounds": {
+                        "<armName>Activate": [
+                            "/sfx/gun/mech_shielddrone1.ogg"
+                        ],
+                        "<armName>Recover": [
+                            "/sfx/gun/mech_shielddrone_recover1.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
+            "path": "/powerdrone1",
+            "value": {
+                "stats": {
+                    "power": 6,
+                    "energy": 5,
+                    "mechMass": 3
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+                    "armClass": "DroneLauncher",
+                    "rotationLimits": [-0.7, 0.6],
+                    "fireOffset": [4, 0],
+                    "deployTime": 0.5,
+                    "launchTiming": 0.25,
+                    "cooldownTime": 2,
+                    "maxDrones": 3,
+                    "droneOrbitRate": 0.05,
+                    "droneOrbitDistance": 7,
+                    "droneMonsterType": "mechmultidrone",
+		      "droneParameters" : {
+			"movementMode" : "Orbit",
+
+			"attackMode" : "Target",
+			"targetRange" : 50,
+
+			"duration" : 120,
+
+			"statusSettings" : { "stats" : {
+			  "flatMaxHealth" : { "baseValue" : 300 }
+			}},
+
+			"gun" : {
+			  "fireDelay" : 0.1,
+
+			  "fireTime" : 1.5,
+			  "fireOffset" : [2, 0],
+
+			  "projectileType" : "laser-1",
+			  "projectileParameters" : {
+			    "speed" : 80,
+			    "power" : 30
+			  },
+
+			  "projectileCount" : 1
+			}
+		      }
+                },
+                "partImages": {
+                    "<armName>": "arm/shielddronelauncher.png",
+                    "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],
+                "animationCustom": {
+                    "animatedParts": {
+                        "stateTypes": {
+                            "<armName>": {
+                                "states": {
+                                    "windup": {
+                                        "mode": "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sounds": {
+                        "<armName>Activate": [
+                            "/sfx/gun/mech_shielddrone1.ogg"
+                        ],
+                        "<armName>Recover": [
+                            "/sfx/gun/mech_shielddrone_recover1.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
+            "path": "/powerdrone2",
+            "value": {
+                "stats": {
+                    "power": 8,
+                    "energy": 6,
+                    "mechMass": 3
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+                    "armClass": "DroneLauncher",
+                    "rotationLimits": [-0.7, 0.6],
+                    "fireOffset": [4, 0],
+                    "deployTime": 0.5,
+                    "launchTiming": 0.25,
+                    "cooldownTime": 2,
+                    "maxDrones": 3,
+                    "droneOrbitRate": 0.05,
+                    "droneOrbitDistance": 7,
+                    "droneMonsterType": "mechmultidrone",
+		      "droneParameters" : {
+			"movementMode" : "Orbit",
+
+			"attackMode" : "Target",
+			"targetRange" : 60,
+
+			"duration" : 120,
+
+			"statusSettings" : { "stats" : {
+			  "flatMaxHealth" : { "baseValue" : 300 }
+			}},
+
+			"gun" : {
+			  "fireDelay" : 0.1,
+
+			  "fireTime" : 1.5,
+			  "fireOffset" : [2, 0],
+
+			  "projectileType" : "laser-1",
+			  "projectileParameters" : {
+			    "speed" : 80,
+			    "power" : 50
 			  },
 
 			  "projectileCount" : 1
