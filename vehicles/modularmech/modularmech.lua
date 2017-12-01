@@ -598,7 +598,7 @@ function update(dt)
       activateFUMechStats()
 	  
 	  if self.masscancel then
-	    if self.parts.hornName == 'mechmasscancel' then
+		if self.parts.hornName == 'mechmasscancel' then
 		  self.mechMass = self.mechMass * 0.75
 		elseif self.parts.hornName == 'mechmasscancel2' then
 		  self.mechMass = self.mechMass * 0.5
