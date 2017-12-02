@@ -193,6 +193,35 @@
             "path": "/spikefist/partParameters/projectileParameters/power",
             "value": 26.5
         }, {
+	    "op": "replace",
+	    "path": "/spikefist/partParameters/projectileParameters/controlForce",
+	    "value": 80
+	}, {
+	    "op": "add",
+	    "path": "/spikefist/partParameters/projectileParameters/actionOnCollide",
+	    "value": [
+	      {
+		"action": "sound",
+		"options": [
+		  "/sfx/weapons/explosion1.ogg",
+		  "/sfx/weapons/explosion2.ogg"
+		]
+	      },
+	      {
+		"action": "projectile",
+		"inheritDamageFactor": 0,
+		"type": "burstjumpboom3"
+	      },
+	      {
+		"action": "explosion",
+		"foregroundRadius": 4,
+		"backgroundRadius": 2,
+		"explosiveDamageAmount": 32,
+		"harvestLevel": 99,
+		"delaySteps": 2
+	      }
+	    ]
+	  },{
             "op": "add",
             "path": "/chainsaw/stats/mechMass",
             "value": 4
@@ -761,10 +790,10 @@
 			  "fireTime" : 1.5,
 			  "fireOffset" : [2, 0],
 
-			  "projectileType" : "laser-1",
+			  "projectileType" : "fumechsniper",
 			  "projectileParameters" : {
-			    "speed" : 90,
-			    "power" : 40
+			    "speed" : 120,
+			    "power" : 50
 			  },
 
 			  "projectileCount" : 1
@@ -845,12 +874,12 @@
 			"gun" : {
 			  "fireDelay" : 0.1,
 
-			  "fireTime" : 1.5,
+			  "fireTime" : 1.25,
 			  "fireOffset" : [2, 0],
 
-			  "projectileType" : "laser-1",
+			  "projectileType" : "fumechsniper",
 			  "projectileParameters" : {
-			    "speed" : 95,
+			    "speed" : 120,
 			    "power" : 60
 			  },
 
@@ -2940,7 +2969,188 @@
 		      }
 		    }
               }
-            }	  
+            },
+ 
+	  {
+	    "op": "add",
+	    "path": "/spikefist2",
+	    "value": {
+	      "stats": {
+		"power": 4,
+		"energy": 4,
+		"mechMass" : 2
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/boomerangarm.lua",
+		"armClass": "Boomerang",
+		"rotationLimits": [
+		  -1.75,
+		  1.75
+		],
+		"fireOffset": [
+		  3.5,
+		  -0.75
+		],
+		"windupTime": 0.2,
+		"fireTime": 0.6,
+		"projectileType": "spikefistrocket",
+		"projectileParameters": {
+		  "speed": 60,
+		  "power": 15,
+		  "knockback": 25,
+		  "knockbackDirectional": true,
+		  "ignoreTerrain": false,
+		  "controlForce": 80,
+		  "pickupDistance": 1,
+		  "snapDistance": 5,
+		  "actionOnCollide" : [
+		    {
+		      "action" : "sound",
+		      "options" : [ "/sfx/weapons/explosion1.ogg", "/sfx/weapons/explosion2.ogg" ]
+		    },		  
+		    {
+		      "action" : "projectile",
+		      "inheritDamageFactor" : 0,
+		      "type" : "burstjumpboom3"
+		    },		  
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 4,
+		      "backgroundRadius" : 2,
+		      "explosiveDamageAmount" : 32,
+		      "harvestLevel" : 99,
+		      "delaySteps" : 2
+		    }		  
+		  ]
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/spikefist.png",
+		"<armName>Fullbright": "arm/spikefist_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"ffffa7",
+		"e2c344",
+		"a46e06",
+		"642f00"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "end"
+			}
+		      }
+		    }
+		  }
+		},
+		"sounds": {
+		  "<armName>Recover": [
+		    "/sfx/gun/reload/rocket_reload_clip1.ogg"
+		  ],
+		  "<armName>Fire": [
+		    "/sfx/gun/rocket2.ogg"
+		  ]
+		}
+	      }
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/spikefist3",
+	    "value": {
+	      "stats": {
+		"power": 8,
+		"energy": 8,
+		"mechMass" : 4
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/boomerangarm.lua",
+		"armClass": "Boomerang",
+		"rotationLimits": [
+		  -1.75,
+		  1.75
+		],
+		"fireOffset": [
+		  3.5,
+		  -0.75
+		],
+		"windupTime": 0.2,
+		"fireTime": 0.6,
+		"projectileType": "plasmafistrocket",
+		"projectileParameters": {
+		  "speed": 60,
+		  "power": 30,
+		  "knockback": 0,
+		  "knockbackDirectional": true,
+		  "ignoreTerrain": false,
+		  "controlForce": 80,
+		  "pickupDistance": 1,
+		  "snapDistance": 5,
+		  "statusEffects" : [ "electrified", "stun"],	
+		  "actionOnCollide" : [
+                    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/elementalimpact/electricimpact.config"
+		    },		  	  
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 4,
+		      "backgroundRadius" : 2,
+		      "explosiveDamageAmount" : 25,
+		      "harvestLevel" : 99,
+		      "delaySteps" : 2
+		    }		  
+		  ]
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/spikefist3.png",
+		"<armName>Fullbright": "arm/spikefist3_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"ffffa7",
+		"e2c344",
+		"a46e06",
+		"642f00"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "end"
+			}
+		      }
+		    }
+		  }
+		},
+		"sounds": {
+		  "<armName>Recover": [
+		    "/sfx/gun/reload/rocket_reload_clip1.ogg"
+		  ],
+		  "<armName>Fire": [
+		    "/sfx/gun/rocket2.ogg"
+		  ]
+		}
+	      }
+	    }
+	  } 	  
     ],
 
     [{
