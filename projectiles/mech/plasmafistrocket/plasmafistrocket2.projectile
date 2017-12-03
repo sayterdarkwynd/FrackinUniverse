@@ -1,5 +1,5 @@
 {
-  "projectileName" : "plasmafistrocket",
+  "projectileName" : "plasmafistrocket2",
   "image" : "plasmafistrocket.png",
   "animationCycle" : 1.0,
   "frameNumber" : 1,
@@ -17,7 +17,7 @@
   "power" : 5.0,
   "speed" : 90,
   "damageKind" : "electric",
-  "damageRepeatTimeout" : 0.25,
+  "damageRepeatTimeout" : 0.05,
 
   "statusEffects" : [ "electrified", "stun"],	
   "actionOnReap" : [ 
@@ -45,7 +45,19 @@
     }
   ],
 
-  "periodicActions" : [  
+  "periodicActions" : [
+    {
+      "time":0.01,
+      "action":"projectile",
+      "type":"hgravityexplosion",
+      "config":{
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
+        "power":0.0
+      }
+    },  
     {
       "action" : "config",
       "time" : 0.05,
@@ -54,11 +66,11 @@
     },	  
     {
       "action" : "explosion",
-      "time" : 0.05,
+      "time" : 0.03,
       "loop" : true,
       "foregroundRadius" : 2,
       "backgroundRadius" : 2,
-      "explosiveDamageAmount" : 5.5,
+      "explosiveDamageAmount" : 2.5,
       "harvestLevel" : 99,
       "delaySteps" : 2
     },	  

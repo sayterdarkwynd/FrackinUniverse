@@ -3062,8 +3062,7 @@
 		}
 	      }
 	    }
-	  },
-	  {
+	  },{
 	    "op": "add",
 	    "path": "/spikefist3",
 	    "value": {
@@ -3135,7 +3134,79 @@
 		}
 	      }
 	    }
-	  } 	  
+	  },{
+	    "op": "add",
+	    "path": "/spikefist4",
+	    "value": {
+	      "stats": {
+		"power": 10,
+		"energy": 10,
+		"mechMass" : 4
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/boomerangarm.lua",
+		"armClass": "Boomerang",
+		"rotationLimits": [
+		  -1.75,
+		  1.75
+		],
+		"fireOffset": [
+		  3.5,
+		  -0.75
+		],
+		"windupTime": 0.2,
+		"fireTime": 0.6,
+		"projectileType": "plasmafistrocket2",
+		"projectileParameters": {
+		  "speed": 60,
+		  "power": 5,
+		  "knockback": 25,
+		  "knockbackDirectional": true,
+		  "ignoreTerrain": false,
+		  "controlForce": 65,
+		  "pickupDistance": 1,
+		  "snapDistance": 5
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/spikefist3.png",
+		"<armName>Fullbright": "arm/spikefist3_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"ffffa7",
+		"e2c344",
+		"a46e06",
+		"642f00"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "end"
+			}
+		      }
+		    }
+		  }
+		},
+		"sounds": {
+		  "<armName>Recover": [
+		    "/sfx/weapons/fucellgun.ogg"
+		  ],
+		  "<armName>Fire": [
+		    "/sfx/weapons/energyweapon2.ogg"
+		  ]
+		}
+	      }
+	    }
+	  }	  
     ],
 
     [{
