@@ -3,23 +3,35 @@
   "image" : "plasmafistrocket.png",
   "animationCycle" : 1.0,
   "frameNumber" : 1,
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
   "pointLight" : false,
   "flippable" : true,
   "orientationLocked" : false,
-  "actionOnReap" : [ ],
-  "fullbright" : true,
-  "statusEffects" : [ ],
-  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
-  "power" : 5.0,
-  "speed" : 90,
-  "damageKind" : "hammer",
-  "damageRepeatTimeout" : 0.25,
+  "fullbright" : true,  
   "physics" : "illusion",
   "bounces" : 12,
   "piercing" : true,
   "timeToLive" : 5,
   "light" : [0, 100, 150],
+  
+  "power" : 5.0,
+  "speed" : 90,
+  "damageKind" : "electric",
+  "damageRepeatTimeout" : 0.25,
+
+  "statusEffects" : [ "electrified", "stun"],	
+  "actionOnReap" : [ 
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    }	  
+  ],
+
   "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    },	  
     {
       "action" : "sound",
       "options" : [
@@ -35,12 +47,18 @@
 
   "periodicActions" : [
     {
+      "action" : "config",
+      "time" : 0.05,
+      "loop" : true,      
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    },	  
+    {
       "action" : "explosion",
-      "time" : 0.1,
+      "time" : 0.05,
       "loop" : true,
-      "foregroundRadius" : 3,
-      "backgroundRadius" : 1,
-      "explosiveDamageAmount" : 25,
+      "foregroundRadius" : 2,
+      "backgroundRadius" : 2,
+      "explosiveDamageAmount" : 5.5,
       "harvestLevel" : 99,
       "delaySteps" : 2
     },	  
@@ -49,7 +67,7 @@
       "repeat" : true,
 
       "action" : "loop",
-      "count" : 2,
+      "count" : 0.05,
       "body" : [
         {
           "action" : "particle",

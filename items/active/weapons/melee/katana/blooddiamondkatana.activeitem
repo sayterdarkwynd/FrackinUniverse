@@ -5,19 +5,20 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Gleaming with lethal promise.
-^yellow;6 hit combo^reset;",
+^yellow;6 hit combo^reset;
+^green;Combos cause bleeding^reset;",
   "shortdescription" : "Blood Diamond Katana",
   "tooltipKind" : "sword2",
   "category" : "katana",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+  "itemTags" : [ "weapon","melee","katana", "upgradeableWeapon" ],
 
   "inventoryIcon" : "blooddiamondkatana.png",
 
   "animation" : "combokatana.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "carbonkatana.png"
+    "blade" : "blooddiamondkatana.png"
   },
   "animationCustom":{},
 
@@ -28,19 +29,19 @@
   "primaryAbilityType" : "katanacombo2h",
   "primaryAbility":{
     "fireTime":0.85, 
-    "baseDps":7.0, 
+    "baseDps":6.2, 
     "damageConfig":{
       "knockback":5,
       "damageSourceKind" : "shadow"
       }, 
       "comboSteps":6,
 	    "stepDamageConfig" : [
-		{"baseDamageFactor":0.7, "knockback":12}, 
-		{"baseDamageFactor":0.7, "knockback":12}, 
-		{"baseDamageFactor":0.7, "knockback":12}, 
+		{"baseDamageFactor":0.5, "knockback":12}, 
+		{"baseDamageFactor":0.6, "knockback":12}, 
+		{"baseDamageFactor":0.6, "knockback":12}, 
 		{"baseDamageFactor":1.0, "knockback":12, "statusEffects":["bleedingshort"]},
-		{"baseDamageFactor":0.7, "knockback":12, "statusEffects":["bleedingshort"]},
-		{"baseDamageFactor":0.7, "knockback":12, "statusEffects":["bleedingshort"]}        
+		{"baseDamageFactor":0.5, "knockback":12, "statusEffects":["bleedingshort"]},
+		{"baseDamageFactor":0.6, "knockback":12, "statusEffects":["bleedingshort"]}        
 	    ]         
     }, 
 
