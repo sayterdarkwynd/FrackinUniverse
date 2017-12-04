@@ -31,7 +31,7 @@ function update(dt)
 	
 	for i=1,#radiation do
 	  if storage.radiation >= radiation[i].amount then
-	    animator.setAnimationState("hazard", "off")
+	    animator.setAnimationState("hazard", radiation[i].state)
 	    break
 	  end
 	end
