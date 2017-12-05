@@ -6,6 +6,7 @@ end
 
 function initCommonParameters()
   self.energyCost = config.getParameter("energyCost")
+  self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.deactiveDelayMax = 0.6
   self.deactiveDelay = 1
   self.deactiveReady = false
@@ -15,13 +16,16 @@ function uninit()
   deactivate()
 end
 
+
 function update(args)
+
+
   if not self.specialLast and args.moves["special1"] then
     attemptActivation()
   end
   self.specialLast = args.moves["special1"]
 
-  if args.moves["primaryFire"] or args.moves["altFire"] then
+  if args.moves["primaryFire"] or args.moves["altFire"] or status.resource("energy") <=0 then
     self.deactiveReady = true
   end
 
@@ -39,7 +43,9 @@ function update(args)
 end
 
 function attemptActivation()
-  if not self.active and status.overConsumeResource("energy", self.energyCost) then
+  self.comboValue = status.resource("energy") / status.stat("maxEnergy")
+  if not self.active and self.comboValue >=0.50 then
+    status.setResourcePercentage("energyRegenBlock", 5.0)
     activate()
   elseif self.active then
     deactivate()
@@ -50,6 +56,7 @@ function activate()
   if not self.active then
     status.addPersistentEffect("booster", "powerboost", math.huge)
 	world.setProperty("hide[" .. tostring(entity.id()) .. "]", true)
+	animator.playSound("activate")
   end
 
   self.active = true
@@ -60,6 +67,7 @@ function deactivate()
   if self.active then
     status.clearPersistentEffects("booster")
 	world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
+	animator.playSound("deactivate")
   end
 
   self.active = false

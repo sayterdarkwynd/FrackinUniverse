@@ -2,24 +2,26 @@
   "particleEmitters" : {
     "drips" : {
       "enabled" : true,
-      "emissionRate" : 20.0,
+      "emissionRate" : 4,
+      "offsetRegion" : [ -1.0, 2.0, 1.0, 2.0 ],
       "particles" : [
         {
           "particle" : {
             "type" : "ember",
-            "size" : 1.5,
-            "color" : [60, 60, 0, 230],
-            "fade" : 0.9,
+            "size" : 0.85,
+            "color" : [60, 90, 60, 255],
+            "fade" : 0.4,
             "destructionAction" : "shrink",
             "destructionTime" : 0.8,
-            "position" : [0.0, 0.0],
+            "position" : [0.0, -2],
             "offsetRegion" : [0, 0, 0, 0],
-            "initialVelocity" : [0, -3.0],
-            "finalVelocity" : [0, -55],
-            "approach" : [0, 30],
-            "timeToLive" : 0.6,
+            "initialVelocity" : [0, 2.0],
+            "finalVelocity" : [0, 2],
+            "approach" : [0, 2],
+            "timeToLive" : 0.9,
             "variance" : {
-              "size" : 0.5
+              "initialVelocity" : [0, 0],
+              "size" : 0.3
             }
           }
         }

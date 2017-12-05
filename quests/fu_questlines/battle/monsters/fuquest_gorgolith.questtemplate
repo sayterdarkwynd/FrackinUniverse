@@ -1,0 +1,35 @@
+{
+  "id" : "fuquest_gorgolith",
+  "prerequisites" : [ "create_regengene" ],
+  "title" : "Gorgolith [BOSS]",
+  "text" : "Rare, and horrifically deadly, the ^orange;Gorgolith^reset; prowl ^orange;Protoworlds^reset; looking for delicious prey. Find one and kill it.",
+  "completionText" : "Few can say they have hunted and killed one of these. I salute your skill.",
+  "moneyRange" : [320, 380],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+
+  "secret" : true,
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "player",
+      "questComplete" : "player"
+    },
+    
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "turnInDescription" : "Bring the ^green;Gorgolith Tail^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "gorgolithtail",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

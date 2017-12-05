@@ -10,7 +10,7 @@ function init()
   self.baseDmg = config.getParameter("baseDmgPerTick",0)
   self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
   self.biomeTemp = config.getParameter("biomeTemp",0)
-
+  self.resistTotal = status.stat("cosmicResistance",0) + status.stat("shadowResistance",0) /2
   --timers
   self.biomeTimer = self.baseRate
   self.biomeTimer2 = (self.baseRate * (1 + status.stat("cosmicResistance",0)) *10)
@@ -96,7 +96,7 @@ end
 function setWindPenalty()
   self.windLevel =  world.windLevel(mcontroller.position())
   if (self.windLevel > 1) then
-    self.biomeThreshold = self.biomeThreshold + (self.windlevel / 100)
+    self.biomeThreshold = self.biomeThreshold + (self.windLevel / 100)
   end
 end
 
@@ -246,15 +246,14 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight()
-
-      if (status.stat("cosmicResistance") < self.effectCutoffValue) then
+      if (self.resistTotal) < (self.effectCutoffValue) then
              --mcontroller.controlModifiers({
-	     --    speedModifier = (-status.stat("cosmicResistance",0))-0.2
+	     --    speedModifier = (-self.resistTotal)-0.2
              --})
              activateVisualEffects()
       end
 
-      if (self.biomeTimer <= 0) and (status.stat("cosmicResistance",0) < self.effectCutoffValue) then
+      if (self.biomeTimer <= 0) and (self.resistTotal) < (self.effectCutoffValue) then
 	status.modifyResource("health", -self.damageApply * dt)
 	status.modifyResource("food", -self.damageApply * dt)
 
@@ -292,13 +291,13 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
 	  end 
   
   
-      if (self.biomeTimer2 <= 0) and (status.stat("cosmicResistance",0) < 1.0) then
+      if (self.biomeTimer2) <= 0 and (self.resistTotal) < 1.0 then
             effect.addStatModifierGroup({
               {stat = "protection", amount = -self.baseDebuff  },
               {stat = "maxEnergy", amount = -(self.baseDebuff*2)  }
             })
         makeAlert()
-        self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("cosmicResistance",0))) * 2
+        self.biomeTimer2 = (self.biomeTimer * (1 + self.resistTotal)) * 2
       end
 end
 

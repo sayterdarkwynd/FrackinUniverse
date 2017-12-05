@@ -1,0 +1,35 @@
+{
+  "id" : "create_aichip",
+  "prerequisites" : [ "create_ignuschili" ],
+  "title" : "Contraband",
+  "text" : "AI is expressly forbidden on my homeworld. But I need an ^orange;AI Chip^white; for my research! ^green;Can you please bring me one? I would reward you nicely^reset;.",
+  "completionText" : "Thanks. I've transferred payment for your troubles directly to your account.",
+  "moneyRange" : [2200, 3300],
+  "rewards" : [],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+
+    "turnInDescription" : "Bring the AI Chip to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "aichip",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

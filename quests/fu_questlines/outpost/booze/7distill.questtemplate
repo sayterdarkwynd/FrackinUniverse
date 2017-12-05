@@ -1,0 +1,51 @@
+{
+  "id" : "7distill",
+  "prerequisites" : [ "6beer" ],
+  "title" : "Distillation",
+  "text" : "Let's get what we need for our next beverage. Mash some ^orange;apples, pears, grapes and peaches^white;.",
+  "completionText" : "Now let's move on to something a little harder. Something with some oomph!",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+        "turnInDescription" : "Bring the ^orange;mashed fruits^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "applemash",
+        "count" : 1,
+        "consume" : false
+      },
+      {
+        "type" : "gatherItem",
+        "itemName" : "pearmash",
+        "count" : 1,
+        "consume" : false
+      },
+      {
+        "type" : "gatherItem",
+        "itemName" : "grapemash",
+        "count" : 1,
+        "consume" : false
+      },
+      {
+        "type" : "gatherItem",
+        "itemName" : "peachmash",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -18,14 +18,13 @@ armorBonus={
 setName="fu_spacefarerset2"
 
 function init()
-	setSEBonusInit("fu_spacefarerset")
+	setSEBonusInit("fu_spacefarerset2")
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
 	
 	setSEBonusInit(setName)
 	weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
-
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
@@ -33,7 +32,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	        status.addEphemeralEffect("gravgenfieldarmor2",5)
+	       -- status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end
 end

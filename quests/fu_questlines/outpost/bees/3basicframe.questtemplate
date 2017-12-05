@@ -1,0 +1,32 @@
+{
+  "id" : "3basicframe",
+  "prerequisites" : [ "2apiary" ],
+  "title" : "Basic Frame",
+  "text" : "A ^orange;Basic Frame^reset; is placed within an apiary to act as housing for the bees. Create one now.",
+  "completionText" : "There are ^orange;many types of frames^reset;, and different bees will prefer certain types. You'll need to be creative.",
+  "moneyRange" : [120, 220],
+  "rewards" : [ [ [ "bugnet", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "followUp" : "4bees",
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "basicframe",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

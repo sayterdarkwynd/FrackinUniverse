@@ -1,0 +1,39 @@
+{
+  "id" : "fuquest_mamapoptop",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Mama Poptop [BOSS]",
+  "text" : "I've heard that there is a rather large and aggressive beast lurking in the ^green;lush mines^reset;. Perhaps you could take it out for the safety of all?",
+  "completionText" : "Well done. And a grisly trophy of your victory, too! Have a bit of spending cash for the effort.",
+  "moneyRange" : [50, 80],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+
+  "secret" : true,
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    
+    "turnInDescription" : "Bring the ^green;Poptop Claw^reset; to ^orange;me^reset; at my ^orange;vacation house^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "poptopclaw",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

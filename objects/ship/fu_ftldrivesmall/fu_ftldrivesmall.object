@@ -1,0 +1,35 @@
+{
+  "objectName" : "fu_ftldrivesmall",
+  "rarity" : "essential",
+  "colonyTags" : [ "science" ],
+  "category" : "furniture",
+  "description" : "An ftl drive for a space ship. Allows you to travel through space.",
+  "shortdescription" : "^cyan;Small FTL Drive^white;",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "fu_ftldriveicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_ftldrivesmall_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_ftldrivesmall.animation",
+  "animationParts" : {
+    "screen" : "fu_ftldrivesmall_screen.png",
+    "fans" : "fu_ftldrivesmall_fans.png",
+    "base" : "fu_ftldrivesmall_base.png"
+  },
+  "animationPosition" : [0, 0],
+  
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "capabilities" : [
+    "systemTravel",
+    "planetTravel"
+  ]
+}

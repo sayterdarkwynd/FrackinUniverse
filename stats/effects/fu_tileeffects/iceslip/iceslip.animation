@@ -2,22 +2,28 @@
   "particleEmitters" : {
     "iceslip" : {
       "enabled" : true,
-      "emissionRate" : 5.0,
+      "emissionRate" : 4,
+      "offsetRegion" : [ -1.0, 2.0, 1.0, 2.0 ],
       "particles" : [
+       
         {
           "particle" : {
             "type" : "ember",
-            "size" : 1,
-            "color" : [250, 250, 250, 220],
-            "fade" : 0.9,
+            "size" : 0.65,
+            "color" : [225, 225, 255, 230],
+            "fade" : 0.4,
             "destructionAction" : "shrink",
-            "destructionTime" : 0.3,
-            "position" : [0.0, 0.0],
+            "destructionTime" : 0.8,
+            "position" : [0.0, -2],
             "offsetRegion" : [0, 0, 0, 0],
-            "initialVelocity" : [0, -0.5],
-            "finalVelocity" : [0, -8],
-            "approach" : [0, 10],
-            "timeToLive" : 0.4
+            "initialVelocity" : [0, 2.0],
+            "finalVelocity" : [0, 2],
+            "approach" : [0, 2],
+            "timeToLive" : 0.9,
+            "variance" : {
+              "initialVelocity" : [0, 0],
+              "size" : 0.4
+            }
           }
         }
       ]

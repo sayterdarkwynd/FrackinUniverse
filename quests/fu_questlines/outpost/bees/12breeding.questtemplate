@@ -1,0 +1,33 @@
+{
+  "id" : "12breeding",
+  "prerequisites" : [ "11honeyjarrer" ],
+  "title" : "Breeding New Variants",
+  "text" : "So, you've got apiaries, honey bees and forest bees. Now, I wonder: ^green;what would happen^reset; if you put a ^orange;forest queen^reset; and some ^orange;honey drones^reset; into that ^orange;giant apiary^reset;? The resulting ^orange;queen^reset; is your goal.",
+  "completionText" : "You can create numerous types of bees using a similar method with other strains. ^orange;Not all bees^reset; can be bred with every family-type. You'll need to experiment yourself to find out what works.",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "followUp" : "13mites",
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "hardyqueen",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

@@ -20,7 +20,6 @@ end
 
 function update(dt)
   	if ( status.stat("iceResistance",0)  >= 0.75 ) then
-  	  deactivateVisualEffects()
 	  effect.expire() 
 	end  
   mcontroller.controlModifiers({

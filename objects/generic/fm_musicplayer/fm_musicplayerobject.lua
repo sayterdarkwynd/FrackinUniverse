@@ -7,7 +7,6 @@ function init()
 	wired = wireCheck()
 	setLightState(wired)
 	message.setHandler("changeMusic", function(_, _, music)
-		sb.logInfo(tostring(music))
 		object.setConfigParameter("soundEffect", music)
 	end)
 end

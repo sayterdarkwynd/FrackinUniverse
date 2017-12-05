@@ -1,12 +1,11 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/items/active/weapons/crits.lua"
 
 -- Base gun fire ability
 GunFire = WeaponAbility:new()
 
 function GunFire:init()
-self.critChance = config.getParameter("critChance", 0)
-self.critBonus = config.getParameter("critBonus", 0)
 self.isReloader = config.getParameter("isReloader",0)
   self.weapon:setStance(self.stances.idle)
 
@@ -15,55 +14,7 @@ self.isReloader = config.getParameter("isReloader",0)
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
-  
--- **** FU VARS
-  local heldItem = world.entityHandItem(activeItem.ownerEntityId(), "primary")
-  local heldItem2 = world.entityHandItem(activeItem.ownerEntityId(), "alt")
-  local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")
-  
 end
-
-
-  -- *******************************************************
-  -- FU Crit Damage Script
-
-function GunFire:setCritDamage(damage)
-	if not self.critChance then 
-		self.critChance = config.getParameter("critChance", 0)
-	end
-	if not self.critBonus then
-		self.critBonus = config.getParameter("critBonus", 0)
-	end
-
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
-     local weaponModifier = config.getParameter("critChance",0)
-     
-  if heldItem then
-        self.critChance = 0 + weaponModifier              
-  end
-
-  self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
-  self.critChance = (self.critChance  + config.getParameter("shieldCritChance",0) + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
-  self.critRoll = math.random(200)
-  
-  local crit = self.critRoll <= self.critChance
-  damage = crit and ((damage*2) + self.critBonus) or damage
-  self.critChance = 0
-
-  if crit then
-    if heldItem then
-      -- exclude mining lasers
-      if not root.itemHasTag(heldItem, "mininggun") then 
-        status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
-      end
-    end
-  end
-
-  return damage
-end
-  -- *******************************************************
-
 
 function GunFire:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
@@ -195,9 +146,9 @@ function GunFire:energyPerShot()
   return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
 end
 
-function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount 
-    return  GunFire:setCritDamage(self.baseDamage or (self.baseDps * self.fireTime) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount)
-end  
+function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
+    return Crits.setCritDamage(self, self.baseDamage or (self.baseDps * self.fireTime) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount)
+end
 
 
 function GunFire:uninit()

@@ -43,14 +43,14 @@
             "windupTime" : 0.6,
 
             "chargeTime" : 1,
-            "chargeSpeed" : 45,
+            "chargeSpeed" : 55,
             "chargeControlForce" : 1200,
             "chargeState" : "charge",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
             "fireSound" : "chargeSound",
             "winddownTime" : 0.2,
-            "winddownStopForce" : 1200,
+            "winddownStopForce" : 1100,
             "winddownState" : "chargewinddown"
           }
         },             
@@ -65,7 +65,7 @@
             "windupTime" : 0.3,
 
             "projectileType" : "raptorbite3",
-            "power" : 10,
+            "power" : 15,
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : false,
             "projectileCount" : 1,
@@ -88,7 +88,7 @@
             "windupTime" : 0.40,
 
             "projectileType" : "bahamuttentacle1",
-            "power" : 7,
+            "power" : 9,
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : true,
             "fireSound" : "attackSound",
@@ -208,7 +208,7 @@
             "windupTime" : 0.6,
 
             "projectileType" : "bahamuttentacle2",
-            "power" : 5,
+            "power" : 8,
             "fireOffset" : [5.5, 1],
             "aimAtTarget" : true,
             "fireSound" : "attackSound",
@@ -246,11 +246,11 @@
 
     "touchDamage" : {
       "poly" : [ [-5,0.5], [-5,-8], [4.625,-8], [2.25,-0.125] ],
-      "damage" : 12,
+      "damage" : 20,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
-      "knockback" : 12,
+      "knockback" : 40,
       "statusEffects" : [ "weakpoison" ]
     },
 
@@ -322,7 +322,7 @@
           "baseValue" : 0.0
         },        
         "powerMultiplier" : {
-          "baseValue" : 1.32
+          "baseValue" : 1.25
         },
         "penaltyBlock" : {
           "baseValue" : 1.0
@@ -356,8 +356,7 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-    "capturedMonsterType" : "fubahamut2", // turn into an adultpoptop when captured
-    "captureHealthFraction" : 0.2,
+    "captureHealthFraction" : 0.005,
     "nametagColor" : [94, 250, 25],
     "captureCollectables" : { "fu_monster" : "fubahamut" }
   }

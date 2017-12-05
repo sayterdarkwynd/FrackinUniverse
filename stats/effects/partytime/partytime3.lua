@@ -1,4 +1,5 @@
 function init()
+  status.removeEphemeralEffect("partytime5")
   status.removeEphemeralEffect("partytime4")
   status.removeEphemeralEffect("partytime2")
   self.timers = {}
@@ -12,11 +13,28 @@ function init()
 end
 
 function update(dt)
+  if entity.entityType("monster") or entity.entityType("npc") then
+      self.randScream = math.random(1000)
+	  if self.randScream >= 999 then
+	     if entity.entityType("monster") then monster.say("PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARTY!!!!!") end
+	     if entity.entityType("npc") then npc.say("PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARTY!!!!!") end
+	  elseif self.randScream >= 998 then
+	     if entity.entityType("monster") then monster.say("WOOOOOOOOOOOOOOO THIS IS AWESOME!!!") end
+	     if entity.entityType("npc") then npc.say("WOOOOOOOOOOOOOOO THIS IS AWESOME!!!") end
+	  elseif self.randScream >= 997 then
+	     if entity.entityType("monster") then monster.say("WHY THE HELL AM I SCREECHING SO LOUDLY?") end
+	     if entity.entityType("npc") then npc.say("I MAY HAVE JUST SOILED MYSELF IN MY OVEREXUBERANT EXCITEMENT.") end
+	  elseif self.randScream >= 996 then
+	     if entity.entityType("monster") then monster.say("HEY, WANT A LIGHT SHOW?!?!?!") end
+	     if entity.entityType("npc") then npc.say("HEY, WANT A LIGHT SHOW?!?!?!") end
+	  end
+  end
+  
   if (self.songTimer)< 0 then
     self.songTimer=1
   end
   
-  if (self.songTimer)<1 then
+  if (self.songTimer)< 1 then
     animator.playSound("dancemusic")
     self.songTimer = 11.07
   end 

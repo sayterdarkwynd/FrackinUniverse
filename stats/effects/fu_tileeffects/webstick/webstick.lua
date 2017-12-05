@@ -1,5 +1,6 @@
 function init()
-
+	    animator.setParticleEmitterOffsetRegion("webstick", mcontroller.boundBox())
+	    animator.setParticleEmitterActive("webstick", true)
 end
 
 function update(dt)

@@ -1,0 +1,32 @@
+{
+  "id" : "create_laspistol",
+  "prerequisites" : [ "create_clothingfabricator" ],
+  "title" : "I need a sidearm",
+  "text" : "Kevin dressed a doll as my mother, naked, in my living room when I was passed out. I need a ^orange;Laser Pistol^reset; to blast his head right off of his torso. Can you make one?",
+  "completionText" : "Fantastic. Now I just need to somehow get the sack to do it. Ugh. That guy. Screw that guy.",
+  "moneyRange" : [220, 320],
+  "rewards" : [ [ [ "ammoniumsulfate", 5 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "laspistol",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

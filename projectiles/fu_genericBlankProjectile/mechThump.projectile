@@ -1,0 +1,26 @@
+{
+	"projectileName": "mechThump",
+	"image": "blankpng.png",
+	"animationCycle": 0.1,
+	"frameNumber": 1,
+	"speed": 200,
+  	"damagePoly" : [ [-15, 0], [-9, -9], [0, -15], [9, -9], [15, 0], [9, 9], [0, 15], [-9, 9] ],
+
+	"animationLoops": false,
+	"piercing": true,
+	"flippable": true,
+	"power": 2,
+	"universalDamage": true,
+	"damageKind": "hammer",
+	"timeToLive": 0.01,
+	"statusEffects": [],
+	"actionOnReap" : [
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 2,
+	      "backgroundRadius" : 0,
+	      "explosiveDamageAmount" : 0.4,
+	      "delaySteps" : 2
+	    }	
+	]
+}

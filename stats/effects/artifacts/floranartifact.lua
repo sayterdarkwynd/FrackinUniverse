@@ -3,6 +3,7 @@ function init()
     {stat = "maxHealth", baseMultiplier = config.getParameter("healthBonus")},
     {stat = "maxEnergy", baseMultiplier = config.getParameter("energyBonus")},
     {stat = "iceResistance", amount = config.getParameter("iceResistance",0)},
+    {stat = "electricResistance", amount = config.getParameter("electricResistance",0)},
     {stat = "electricStatusImmunity", amount = 1}
   })
   

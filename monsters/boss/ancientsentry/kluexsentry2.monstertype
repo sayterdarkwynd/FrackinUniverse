@@ -1,0 +1,276 @@
+{
+  "type" : "kluexsentry2",
+  "shortdescription" : "Abberant Kluex Sentry",
+  "description" : "A stone temple guardian, animated with ancient technology.",
+
+  "categories" : [ "kluexsentry2" ],
+  "parts" : [ "body", "bodylit" ],
+
+  "animation" : "kluexsentry2.animation",
+
+  "dropPools" : [ "kluexsentryTreasure", "ancientruinsBoss" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/boss/ancientsentry/ancientsentry.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 40,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 5.0,
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "onGround" : false,
+            "requireLineOfSight" : true,
+            "maximumRange" : 100,
+            "minimumRange" : 2,
+            "windupState" : "fire",
+            "windupTime" : 0.6,
+            "windupStopForce" : 200,
+
+            "projectileType" : "energycrystal",
+            "projectileParameters" : { "power":9 },
+            
+            "fireOffset" : [0, -2.0],
+            "fireSound" : "fire",
+            "fireState" : "",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 8.0,
+          "parameters" : {
+            "onGround" : false,
+            "requireLineOfSight" : true,
+            "maximumRange" : 100,
+            "minimumRange" : 2,
+            "windupState" : "fire3",
+            "windupTime" : 1.6,
+            "windupStopForce" : 200,
+
+            "projectileType" : "flamethrowerff",
+            "projectileCount" : 8,
+            "projectileParameters" : { "speed" : 10, "power" : 3 },
+            "projectileInterval" : 0.03,
+            "fireOffset" : [0, -2.0],
+            "fireSound" : "fire2",
+            "fireState" : "",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }       
+      ],
+      
+      "concurrentHostileActions" :[
+        {
+          "name" : "action-fire",
+          "cooldown" : 3,
+          "parameters" : {
+            "onGround" : false,
+            "requireLineOfSight" : true,
+            "maximumRange" : 100,
+            "minimumRange" : 2,
+            "windupState" : "fire2",
+            "windupTime" : 0.6,
+            "windupStopForce" : 200,
+
+            "projectileType" : "delayedplasmaball",
+            "projectileParameters" : { "power":10 },
+            
+            "fireOffset" : [0, -3.0],
+            "fireSound" : "fire",
+            "fireState" : "",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }       
+      ],    
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 8.0,
+          "parameters" : {
+            "onGround" : false,
+            "requireLineOfSight" : true,
+            "maximumRange" : 100,
+            "minimumRange" : 2,
+            "windupState" : "fire4",
+            "windupTime" : 1.6,
+            "windupStopForce" : 200,
+
+            "projectileType" : "energyassault",
+            "projectileCount" : 12,
+            "projectileParameters" : { "power":8 },
+            "projectileInterval" : 0,
+            "inaccuracy" : 3.14,
+            
+            "fireOffset" : [0, -2.0],
+            "fireSound" : "fire3",
+            "fireState" : "",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }       
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : 30,
+            "groundDistance" : 15,
+            "ceilingDistance" : 4,
+            "xVelocity" : 8,
+            "yVelocity" : 12
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly"
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : 1,
+            "groundDistance" : 8,
+            "ceilingDistance" : 4,
+            "xVelocity" : 6,
+            "yVelocity" : 8
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ]
+    },
+
+
+    "touchDamage" : {
+      "poly" : [ [0.875, 2.625], [1.625, 1.875], [1.625, -1.875], [0.875, -2.625], [-0.875, -2.625], [-1.625, -1.875], [-1.625, 1.875], [-0.875, 2.625] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "hammer",
+      "knockback" : 40,
+      "statusEffects" : [ "slow" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.875, 2.625], [1.625, 1.875], [1.0, -1.875], [0.375, -2.625], [-0.375, -2.625], [-1.0, -1.875], [-1.625, 1.875], [-0.875, 2.625] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 2,
+      "airForce" : 20,
+      "flySpeed" : 15
+    },
+
+    "bodyMaterialKind" : "stone",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "stone"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.15
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 560
+        },
+        "protection" : {
+          "baseValue" : 0.35
+        },
+        "healthRegen" : {
+          "baseValue" : 0.01
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.12
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

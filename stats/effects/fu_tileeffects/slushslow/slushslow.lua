@@ -2,6 +2,8 @@ function init()
   local slows = status.statusProperty("slows", {})
   slows["slushslow"] = 0.3
   status.setStatusProperty("slows", slows)
+  animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
+  animator.setParticleEmitterActive("drips", true)  
 end
 
 function update(dt)

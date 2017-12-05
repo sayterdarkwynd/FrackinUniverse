@@ -1,0 +1,34 @@
+{
+  "id" : "extractor4",
+  "prerequisites" : [ "extractor3" ],
+  "title" : "The Extractor IV",
+  "text" : "^orange;Plant fibre^reset; is plentiful enough that extracting some for a little ^orange;tissue culture^reset; won't hurt. Bring me 5.",
+  "completionText" : "You're doing great. As a thanks, take this. It's rare, but it might come in handy some day.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "vialproto", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+    "turnInDescription" : "Bring the ^green;Tissue Culture^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "tissueculture",
+        "count" : 5,
+        "consume" : false
+      }
+    ]
+  }
+}

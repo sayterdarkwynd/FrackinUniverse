@@ -1,0 +1,157 @@
+{
+  "type" : "fuwastelandraiderhard",
+  "baseType" : "hostilefuhard",
+
+  "levelVariance" : [1, 2],
+
+  "dropPools" : [ "ffjunkerTreasureBoss" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "leapWindup" : 0.45,
+      "rangedAimTime" : 0.55,
+      "rangedWindupTime" : 0.15,
+      "rangedMinFireTime": 0.15,
+      "rangedMaxFireTime": 3      
+    }  
+  },
+  
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "kirhostier2head" } ],
+            "chest" : [ { "name" : "kirhostier2chest" } ],
+            "legs" : [ { "name" : "kirhostier2pants" } ],
+            "primary" : [
+              "crankpistol",
+              "laspistol",
+              "lasrifle",
+              "thornrifle",
+              "verdantcarbine",
+              "furaregreataxe"
+            ],
+            "alt" : [
+             "flashlight"
+            ]
+          },
+          {
+            "head" : [ { "name" : "ff_gasmask" } ],
+            "chest" : [ { "name" : "chitinchest", "parameters" : { "colorIndex" : 2 } } ],
+            "legs" : [ { "name" : "chitinlegs", "parameters" : { "colorIndex" : 2 } } ],
+            "primary" : [
+              "murdermanipulator",
+              "tungstenmace",
+              "zerchesiumspear",
+              "furaregreataxe"
+            ],
+            "alt" : [
+             "flashlight"
+            ]
+          },
+          {
+            "head" : [ { "name" : "kirhostier2head", "parameters" : { "colorIndex" : 2 } } ],
+            "chest" : [ { "name" : "kirhostier2chest", "parameters" : { "colorIndex" : 2 } } ],
+            "legs" : [ { "name" : "kirhostier2pants", "parameters" : { "colorIndex" : 2 } } ],
+            "primary" : [
+              "durasteelshotgun",
+              "crankgun",
+              "fuminelayer",
+              "durasteelmace",
+              "facebreaker"
+            ]
+          },
+          {
+            "head" : [ { "name" : "wastelandhead", "parameters" : { "colorIndex" : 3 } } ],
+            "chest" : [ { "name" : "wastelandchest", "parameters" : { "colorIndex" : 3 } } ],
+            "legs" : [ { "name" : "wastelandlegs", "parameters" : { "colorIndex" : 3 } } ],
+            "primary" : [
+              "lasrifle", 
+              "crankrifle",
+              "durasteelkatana",
+              "densealloymace"
+            ]
+          },
+          {
+            "head" : [ { "name" : "enforcerhead", "parameters" : { "colorIndex" : 2 } } ],
+            "chest" : [ { "name" : "enforcerchest", "parameters" : { "colorIndex" : 2 } } ],
+            "legs" : [ { "name" : "enforcerpants", "parameters" : { "colorIndex" : 2 } } ],
+            "primary" : [
+              "longarm",
+              "crankpistol",
+              "npcshotgun",
+              "carbonkatana"
+            ],
+            "alt" : [
+             "flashlight"
+            ]
+          },
+          {
+            "head" : [ { "name" : "fureconhead", "parameters" : { "colorIndex" : 6 } } ],
+            "chest" : [ { "name" : "fureconchest", "parameters" : { "colorIndex" : 6 } } ],
+            "legs" : [ { "name" : "fureconpants", "parameters" : { "colorIndex" : 6 } } ],
+            "primary" : [
+              "carvelle",
+              "blastgun",
+              "bigdaddy"
+            ]            
+          },
+          {
+            "head" : [ { "name" : "deckardhead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "deckardchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "deckardpants", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [
+              "ionrifle",
+              "fusteampunkgun",
+              "metallicspear",            
+              "thornrifle",
+              "crankrifle",
+              "crankgun",            
+              "fusteampunkgun", 
+              "curvepistol",
+              "advalloykatana",
+              "metallicsword",
+              "metallicspear"              
+            ]          
+          },
+          {
+            "head" : [ { "name" : "tacticalhead" } ],
+            "chest" : [ { "name" : "tacticalchest" } ],
+            "legs" : [ { "name" : "tacticalpants" } ],
+            "primary" : [
+              "fustingergun",
+              "biogun",
+              "aegisaltpistol3",
+              "ff_icechucker",
+              "longarmpistol",
+              "fualienlaser",
+              "carvelle",
+	      "copperquarterstaff",
+              "curvestaff",              
+              "fugausspistol"
+            ]          
+          }
+        ] ]
+    ]
+  },
+  
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 90.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 130.0
+      },      
+      "powerMultiplier" : {
+        "baseValue" : 0.65
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

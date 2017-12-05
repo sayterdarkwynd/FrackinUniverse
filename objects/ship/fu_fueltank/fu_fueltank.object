@@ -1,0 +1,43 @@
+{
+  "objectName" : "fu_fueltank",
+  "colonyTags" : ["mechanical"],
+  "rarity" : "Legendary",
+  "description" : "A tank for storing ship fuel. Holds 1000 Fuel.",
+  "shortdescription" : "Fuel Tank",
+  "race" : "generic",
+  "printable" : false,
+  "category" : "furniture",
+  "lightColor" : [16, 23, 26],
+
+  "inventoryIcon" : "fu_fueltankicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_fueltank.png:<color>", "fullbright" : true }, { "image" : "fu_fueltanklit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [-16, -0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_fueltank.png:<color>", "fullbright" : true }, { "image" : "fu_fueltanklit.png:<color>" } ],
+      "direction" : "right",
+      
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [-16, -0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "maxFuel" : 1000
+  }
+}

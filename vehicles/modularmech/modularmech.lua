@@ -106,7 +106,6 @@ function init()
 
   self.protection = self.parts.body.protection
 
-
   -- setup boosters
 
   self.airControlSpeed = self.parts.booster.airControlSpeed
@@ -124,6 +123,9 @@ function init()
   self.jumpBoostTime = self.parts.legs.jumpBoostTime
   
   -- setup arms
+  
+  self.aimassist = self.parts.hornName == 'mechaimassist'
+  self.masscancel = self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4'
 
   require(self.parts.leftArm.script)
   self.leftArm = _ENV[self.parts.leftArm.armClass]:new(self.parts.leftArm, "leftArm", {2.375, 2.0}, self.ownerUuid)
@@ -131,26 +133,23 @@ function init()
   require(self.parts.rightArm.script)
   self.rightArm = _ENV[self.parts.rightArm.armClass]:new(self.parts.rightArm, "rightArm", {-2.375, 2.0}, self.ownerUuid)
 
-  -- setup energy pool
+  -- setup energy pool     ***********************************************
 
   self.energyMax = self.parts.body.energyMax
   storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0) 
    
-
-  --[[ add Powerful gun drain 
-  if (self.parts.leftArm.stats.powerful) then
-    self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.powerful) 
+  -- guns marked as Powerful (have basePower stat) have increased energy drain, affecting total mech drain ************************************************
+  if (self.parts.leftArm.stats.basePower) then
+    self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.basePower/50) 
   end
-  if (self.parts.rightArm.stats.powerful) then
-    self.energyDrain = self.energyDrain + (self.parts.rightArm.stats.powerful)
+  if (self.parts.rightArm.stats.basePower) then
+    self.energyDrain = self.energyDrain + (self.parts.rightArm.stats.basePower/50)
   end 
-  self.extraDrain1 = (self.parts.leftArm.stats.powerful or 0)
-  self.extraDrain2 = (self.parts.rightArm.stats.powerful or 0)
-  self.extraDrain = self.extraDrain1 + self.extraDrain2]]--
 
-  -- check for environmental hazards / protection
+
+  -- check for environmental hazards / protection *************************
   local hazards = config.getParameter("hazardVulnerabilities")
   
   for _, statusEffect in pairs(self.parts.body.hazardImmunities or {}) do
@@ -178,6 +177,7 @@ function init()
         table.insert(seatStatusEffects, statusEffect)
       end
     end
+    
   end
 
   vehicle.setLoungeStatusEffects("seat", seatStatusEffects)
@@ -235,11 +235,51 @@ function init()
   self.doubleTabCheckDelay = 0.0
   self.doubleTabCheckDelayTime = 0.3
   self.doubleTabBoostCrouchTargetTo = 0.15
-  self.doubleTabBoostSpeedMultTarget = 2.5
+  self.doubleTabBoostSpeedMultTarget = 3.0
   self.doubleTabBoostSpeedMult = 1.0
   
   self.doubleTabBoostJump = false
 end
+
+
+
+-- this function activates all the relevant stats that FU needs to call on for mech parts
+-- **************************************************************************************
+function activateFUMechStats()
+          self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
+          self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
+          self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
+          self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
+
+	  -- Failsafe to make certain there is never a nil value for mech part mass
+          if not self.parts.body.stats.mechMass then self.parts.body.stats.mechMass = 0 end
+          if not self.parts.booster.stats.mechMass then self.parts.booster.stats.mechMass = 0 end
+          if not self.parts.legs.stats.mechMass then self.parts.legs.stats.mechMass = 0 end
+          if not self.parts.leftArm.stats.mechMass then self.parts.leftArm.stats.mechMass = 0 end
+          if not self.parts.rightArm.stats.mechMass then self.parts.rightArm.stats.mechMass = 0 end
+        
+          self.mechMassBase = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass  -- mass for damage calculations for falling/impact
+          self.mechMassArmor = self.parts.body.stats.protection / self.parts.body.stats.energy  --energy/protection multiplier. This ensures the mech body is always the biggest game-changer.
+          self.mechMass = self.mechMassBase * self.mechMassArmor 
+        
+          self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact of effects
+
+	  -- *********************** movement penalties for Mass *****************************************************
+	  if self.mechMassBase > 15 then  -- is the mech a heavy mech?
+	          -- setup booster mass modifier
+		  self.airControlSpeed = self.parts.booster.airControlSpeed - (self.mechMass/30)
+		  self.flightControlSpeed = self.parts.booster.flightControlSpeed - (self.mechMass/30)
+
+		  -- setup legs affected by mass modifier
+		  self.groundSpeed = self.parts.legs.groundSpeed - (self.mechMass/20)
+		  self.jumpVelocity = self.parts.legs.jumpVelocity - (self.mechMass/20)
+	  end
+
+          -- *********************is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
+          self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10 
+          self.storageValue = self.storageValue / 200
+end
+
 
 function update(dt)
   -- despawn if owner has left the world
@@ -368,7 +408,15 @@ function update(dt)
       self.aimPosition = vehicle.aimPosition("seat")
 
       if newControls.Special1 and not self.lastControls.Special1 then
-        animator.playSound("horn")
+	    if self.parts.hornName == 'mechaimassist' then
+		  self.aimassist = not self.aimassist
+		  animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
+		elseif self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4' then
+		  self.masscancel = not self.masscancel		  
+		  animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
+		else
+          animator.playSound("horn")
+		end
       end
 
       if self.flightMode then
@@ -423,8 +471,7 @@ function update(dt)
               self.fallThroughSustain = true
             else
               jump()
-			  
-			  self.doubleTabBoostJump = self.doubleTabBoostOn
+	      self.doubleTabBoostJump = self.doubleTabBoostOn
             end
           else
             self.jumpBoostTimer = 0
@@ -548,22 +595,56 @@ function update(dt)
       but not if they are in a hostile environment to their body type. Additionally, the higher threat that the biome
       is, the slower the regeneration rate becomes, which should help to balance out energy cost.
       ***************************************************************************************** --]]
-        self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
-        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
-        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
-        self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-   
-        self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact
-      --is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
-      self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10 
-      self.storageValue = self.storageValue / 200
+      activateFUMechStats()
+	  
+	  if self.masscancel then
+		if self.parts.hornName == 'mechmasscancel' then
+		  self.mechMass = self.mechMass * 0.75
+		elseif self.parts.hornName == 'mechmasscancel2' then
+		  self.mechMass = self.mechMass * 0.5
+		elseif self.parts.hornName == 'mechmasscancel3' then
+		  self.mechMass = self.mechMass * 0.25
+		elseif self.parts.hornName == 'mechmasscancel4' then
+		  self.mechMass = 0
+		end
+	  end
+	  
+      if (storage.energy) < (self.energyMax*0.15) then -- play damage effects at certain health percentages
+        animator.setParticleEmitterActive("highDamage", true) -- land fx 
+        animator.setParticleEmitterActive("midDamage", false) -- land fx
+        animator.setParticleEmitterActive("lowDamage", false) -- land fx  
+        animator.setParticleEmitterActive("minorDamage", false) -- land fx 
+      elseif (storage.energy) < (self.energyMax*0.25) then 
+        animator.setParticleEmitterActive("highDamage", false) -- land fx 
+        animator.setParticleEmitterActive("midDamage", true) -- land fx
+        animator.setParticleEmitterActive("lowDamage", false) -- land fx 
+        animator.setParticleEmitterActive("minorDamage", false) -- land fx 
+      elseif (storage.energy) < (self.energyMax*0.40) then 
+        animator.setParticleEmitterActive("midDamage", false) -- land fx
+        animator.setParticleEmitterActive("highDamage", false) -- land fx
+        animator.setParticleEmitterActive("lowDamage", true) -- land fx   
+        animator.setParticleEmitterActive("minorDamage", false) -- land fx 
+      elseif (storage.energy) < (self.energyMax*0.60) then              
+        animator.setParticleEmitterActive("lowDamage", false) -- land fx
+        animator.setParticleEmitterActive("midDamage", false) -- land fx
+        animator.setParticleEmitterActive("highDamage", false) -- land fx  
+        animator.setParticleEmitterActive("minorDamage", true) -- land fx 
+      else
+        animator.setParticleEmitterActive("lowDamage", false) -- land fx
+        animator.setParticleEmitterActive("midDamage", false) -- land fx
+        animator.setParticleEmitterActive("highDamage", false) -- land fx
+        animator.setParticleEmitterActive("minorDamage", false) -- land fx 
+      end
+
       if (storage.energy) < (self.energyMax/2) then 
-        eMult = 0               
+        eMult = 0  
+      elseif (self.mechMassBase) > 20 then
+        eMult = 0
       else
         eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
       end
 
-      -- is their mech affected by the planet? if so, do not regen
+      -- is their mech affected by the planet? if so, do not regen. Likewise, if their mass is too high, do not regen.
       -- Otherwise, we apply the bonus
       --energyDrain = energyDrain - self.extraDrain     if enabling the extra code for Powerful weapons
       if self.regenPenalty then 
@@ -571,6 +652,8 @@ function update(dt)
       else
         energyDrain = -energyDrain*eMult
       end   
+      
+      
     
     end
     storage.energy = math.min(math.max(0, storage.energy - energyDrain * dt),self.energyMax)
@@ -635,7 +718,26 @@ function update(dt)
     newLegCycle = self.legCycle + ((newPosition[1] - self.lastPosition[1]) * self.facingDirection) / (4 * self.legRadius)
 
     if math.floor(self.legCycle * 2) ~= math.floor(newLegCycle * 2) then
-      triggerStepSound()
+      triggerStepSound()   
+      -- mech ground thump damage (FU)
+      self.thumpParamsMini = { 
+        power = self.mechMass, 
+        damageTeam = {type = "friendly"},
+	  actionOnReap = {
+	      {
+		action='explosion',
+		foregroundRadius=2,
+		backgroundRadius=0,
+		explosiveDamageAmount= 0.25,
+		harvestLevel = 99,
+		delaySteps=2
+	      }
+	    }        
+      }
+    
+      if self.mechMassBase > 8 then  -- 8 tonne minimum or tiles dont suffer at all.       
+        world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
+      end
     end
 
     self.legCycle = newLegCycle
@@ -693,14 +795,26 @@ function update(dt)
   end
 
   -- update and animate arms
-
   for _, arm in pairs({"left", "right"}) do
     local fireControl = (arm == "left") and "PrimaryFire" or "AltFire"
+	local aim = self.aimPosition
+	if self.aimassist and self.aimPosition and self[arm..'Arm'].projectileType then
+	  local projectile = root.projectileConfig(self[arm..'Arm'].projectileType)
+	  if projectile.speed and projectile.speed > 0 then
+	    local armVec = world.xwrap(vec2.add(vec2.add(mcontroller.position(),{0, self.walkBobMagnitude * math.sin(math.pi * (((self.legCycle * 2) - self.armBobDelay) % 1)) + (self.crouch * self.bodyCrouchMax)}),arm == 'left' and {2.375,1.798} or {-2.375,1.798}))
+		local mechVec = mcontroller.velocity()
+		local aimAngle = vec2.angle(world.distance(self.aimPosition,armVec))
+		local mechVel = mechVec[1]*-1*math.sin(aimAngle)+mechVec[2]*math.cos(aimAngle)
+		local dist = world.magnitude(armVec,self.aimPosition)-self[arm..'Arm'].fireOffset[1]
+		local aimOffset = (mechVel ~= 0 and math.atan(mechVel*(dist/projectile.speed),dist) or 0)
+	    aim = world.xwrap(vec2.add(armVec,{math.cos(aimAngle-aimOffset),math.sin(aimAngle-aimOffset)}))
+	  end
+	end
 
     animator.resetTransformationGroup(arm .. "Arm")
     animator.resetTransformationGroup(arm .. "ArmFlipper")
 
-    self[arm .. "Arm"]:updateBase(dt, self.driverId, newControls[fireControl], oldControls[fireControl], self.aimPosition, self.facingDirection, self.crouch * self.bodyCrouchMax, self.parts) --FU adds self.parts
+    self[arm .. "Arm"]:updateBase(dt, self.driverId, newControls[fireControl], oldControls[fireControl], aim, self.facingDirection, self.crouch * self.bodyCrouchMax, self.parts) --FU adds self.parts
     self[arm .. "Arm"]:update(dt)
 
     if self.facingDirection < 0 then
@@ -737,6 +851,9 @@ function update(dt)
 
   -- animate bobbing and landing
 
+  -- FU timer ***********************************
+  time = (time or 1) - dt
+
   animator.resetTransformationGroup("body")
   if self.flightMode then
     local newFlightOffset = {
@@ -764,6 +881,9 @@ function update(dt)
     local armOffset = {0, self.walkBobMagnitude * math.sin(math.pi * armCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
+    
+  
+    
   else
     -- TODO: make this less complicated
     local landingCycleTotal = 1.0 + math.max(self.boosterBobDelay, self.armBobDelay)
@@ -785,8 +905,63 @@ function update(dt)
     local armOffset = {0, -self.landingBobMagnitude * 0.25 * math.sin(math.pi * armCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
-  end
+    
+    -- mech ground thump damage (FU) ************************************
+	  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,55)
+	  self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,300)
+	  self.appliedDamage = self.baseDamage /2
+	  
+	-- if it falls too hard, the mech takes some damage based on how far its gone
+	  self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2	  
+	  
+	if self.mechMassBase >= 15 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
+	  storage.energy = math.max(0, storage.energy - (self.baseDamage /200))
+	end
 
+	if self.mechMassBase > 0 and time <= 0 then
+	    time = 1
+	    local thumpParamsBig = {  
+		power = self.appliedDamage, 
+		damageTeam = {type = "friendly"}, 
+		actionOnReap = {
+		    {
+			action='explosion',
+			foregroundRadius=math.abs(mcontroller.velocity()[2]),
+			backgroundRadius=0,
+			explosiveDamageAmount= self.explosivedamage,
+			harvestLevel = 99,
+			delaySteps=2
+		    }
+		} 
+	    }
+
+	    if self.mechMassBase >= 20 then
+		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / (6 - (self.mechMass/24))
+		thumpParamsBig.actionOnReap[1].backgroundRadius = thumpParamsBig.actionOnReap[1].backgroundRadius / 6
+		thumpParamsBig.actionOnReap[1].explosiveDamageAmount = thumpParamsBig.actionOnReap[1].explosiveDamageAmount * 1.5
+	    elseif self.mechMassBase >= 11 then
+		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 7.4
+	    else
+		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 10
+	    end
+
+	    world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, thumpParamsBig)
+	    world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, thumpParamsBig)
+	end
+	
+	-- separate so that it always applies regardless of actual damage, because it looks cool 
+        if self.mechMass >= 20 and (self.explosivedamage) >= 40 then 
+          animator.playSound("landingThud")
+          animator.playSound("heavyBoom")
+          animator.burstParticleEmitter("legImpactHeavy")
+        else
+          animator.playSound("landingThud") 
+          animator.burstParticleEmitter("legImpact")
+        end
+        
+  end
+  
+  
   self.lastPosition = newPosition
   self.lastVelocity = newVelocity
   self.lastOnGround = onGround
@@ -800,8 +975,23 @@ function onInteraction(args)
 end
 
 function applyDamage(damageRequest)
+ 
   local energyLost = math.min(storage.energy, damageRequest.damage * (1 - self.protection))
-
+  
+  -- FU damage resistance from Mass********************************************************
+  -- if mech is higher than rank 4 in protection (body), they have a chance to deflect incoming damage below a threshold
+  
+  self.massProtection = self.parts.body.stats.protection * ((self.parts.body.stats.mechMass)/10)
+  self.rand= math.random(10)
+  if (self.parts.body.stats.protection) >=4 
+    and (energyLost) <= (self.massProtection) 
+    and (self.rand) <= 1 then 
+      energyLost = 0
+      animator.playSound("landingThud") 
+      animator.burstParticleEmitter("blockDamage")
+  end  
+  
+  
   storage.energy = storage.energy - energyLost
 
   if storage.energy == 0 then
@@ -942,7 +1132,11 @@ end
 function doubleTabBoost(dt, newControls, oldControls)
 	if self.doubleTabBoostOn then
 	
-		self.doubleTabBoostSpeedMult = self.doubleTabBoostSpeedMultTarget
+	        -- FU CHANGES ****************************
+	        --mech mass affects sprint speed for mech
+	        self.doubleTabBoostSpeedMult = math.max(self.doubleTabBoostSpeedMultTarget - (self.mechMass/15),1.0)   
+                -- ***************************************
+                
 		self.crouch = self.doubleTabBoostCrouchTargetTo
 		self.facingDirection = self.doubleTabBoostDirection == "right" and 1 or -1
 		mcontroller.approachXVelocity(self.groundSpeed * self.doubleTabBoostSpeedMult * self.facingDirection, self.groundControlForce)
