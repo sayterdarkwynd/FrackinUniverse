@@ -3495,6 +3495,36 @@
             "value": 20
         }
     ],
+    
+    [{
+            "op": "test",
+            "path": "/redlaserbeam"
+        },{
+            "op": "add",
+            "path": "/redlaserbeam/stats/mechMass",
+            "value": 5
+        },{
+            "op": "add",
+            "path": "/redlaserbeam/stats/energy",
+            "value": 7
+        },{
+            "op": "add",
+            "path": "/redlaserbeam/stats/power",
+            "value": 7
+        },   {
+            "op": "add",
+            "path": "/redlaserbeam/stats/basePower",
+            "value": 1.125
+        },{
+            "op": "replace",
+            "path": "/redlaserbeam/damageSources/<armName>Beam/damage",
+            "value": 0
+        },{
+            "op": "replace",
+            "path": "/redlaserbeam/partParameters/script",
+            "value": "/vehicles/modularmech/armscripts/xsm_beamarm.lua"
+        }
+    ],    
 
     [{
             "op": "test",
@@ -3651,6 +3681,73 @@
             "op": "replace",
             "path": "/linerifle/partParameters/projectileParameters/power",
             "value": 50
+        }
+    ],
+
+    [{
+            "op": "test",
+            "path": "/dnac"
+        }, {
+            "op": "add",
+            "path": "/dnac/stats/mechMass",
+            "value": 5
+        },{
+            "op": "add",
+            "path": "/dnac/stats/rapidFire",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/dnac/partParameters/projectileParameters/power",
+            "value": 0.05
+        }
+    ],
+
+    [{
+            "op": "test",
+            "path": "/dnrl"
+        }, {
+            "op": "add",
+            "path": "/dnac/stats/mechMass",
+            "value": 5
+        },{
+            "op": "add",
+            "path": "/dnac/stats/multicount",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/dnac/partParameters/projectileParameters/power",
+            "value": 15
+        }
+    ],
+
+    [{
+            "op": "test",
+            "path": "/dnlc"
+        },{
+            "op": "add",
+            "path": "/dnlc/stats/mechMass",
+            "value": 5
+        }, {
+            "op": "add",
+            "path": "/dnlc/stats/basePower",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/dnlc/damageSources/<armName>Beam/damage",
+            "value": 0
+        }
+    ],    
+    [{
+            "op": "test",
+            "path": "/dncf"
+        },{
+            "op": "add",
+            "path": "/dncf/stats/mechMass",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/dncf/partParameters/projectileParameters/power",
+            "value": 26
         }
     ]
 ]
