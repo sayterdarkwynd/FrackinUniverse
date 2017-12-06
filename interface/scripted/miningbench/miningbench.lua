@@ -126,7 +126,7 @@ function doUpgrade()
 			  
 		    -- beams and miners
 			if (itemConfig.config.primaryAbility.beamLength) then
-			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + ( upgradedItem.parameters.level * 3.14 )
+			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + ( upgradedItem.parameters.level + 2 )
 			  upgradedItem.parameters.primaryAbility.energyUsage= itemConfig.config.primaryAbility.energyUsage + ( upgradedItem.parameters.level /10 )
 			end
 		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
