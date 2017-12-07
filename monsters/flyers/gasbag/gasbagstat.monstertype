@@ -12,24 +12,14 @@
   
   "baseParameters" : {
     "scripts" : [
-      "/monsters/flyers/horrors/horror2/erchiusghost.lua"
+      "/monsters/monster.lua"
     ], 
-    "speedupRange" : [75, 225],
-    "maxSpeed" : 50,
-
-    // The min speed depends on the erchius amount of the player
-    "minSpeedRange" : [0.2, 20],
-    "erchiusRange" : [0, 8000],
-
-    "emissionRange" : 10,
-    "maxEmissionRate" : 50,
-    
       "renderLayer" : "ForegroundEntity",
       "behavior" : "monster",
       "deathBehavior" : "monster-death",
-      "aggressive" : true,
+      "aggressive" : false,
       "seeThroughLiquid" : true,
-      
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
       
@@ -241,7 +231,7 @@
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 1.0,
+    "scale" : 1.2,
 
     "movementSettings" : {
       "collisionPoly" : [ [-6.5,4.562], [-7.5,2.25], [-7.875,0.625], [-7.188,-2.625], [-5.312,-4.5], [-2,-6.5], [2.375,-6.438], [6.875,-3.25], [8.375,-1.375], [8.812,-0.25], [8.5,0.938], [6.5,3.625], [5.25,4.75], [3.625,5.812], [0.625,6.438], [-3.312,5.625], [-5.562,5.125] ],
