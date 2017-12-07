@@ -20,6 +20,7 @@ function init()
   self.dps = 0
 
   self.spawnTimer = 0.5
+  status.addEphemeralEffect("negativemiasma",1)
 end
 
 function update(dt)
@@ -34,7 +35,7 @@ function update(dt)
     self.spawnTimer = self.spawnTimer - dt
   end
   
-  status.addEphemeralEffect("negativemiasma",1)
+
   if status.resource("energy") == 0 then
     status.modifyResource("health", ((-self.dps * dt)/20))
   end
@@ -75,7 +76,7 @@ function update(dt)
         keepAlive = true
       }
       world.spawnMonster("erchiusghost3", vec2.add(mcontroller.position(), config.getParameter("ghostSpawnOffset")), parameters)
-      self.spawnTimer = 60.0
+      self.spawnTimer = 10.0
     end
   end
 
