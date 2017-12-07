@@ -1,0 +1,138 @@
+{
+  "type" : "erchiusghost3",
+  "shortdescription" : "Erchius Ghost",
+  "description" : "When it closes its eyes it becomes immune to attacks by entering a different plane of existence.",
+
+  "categories" : [ "erchiusghost3" ],
+  "parts" : [ "body" ],
+
+  "animation" : "erchiusghost3.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/ghosts/erchiusghost3/erchiusghost3.lua"
+    ],
+
+    "speedupRange" : [75, 175],
+    "maxSpeed" : 80,
+
+    // The min speed depends on the erchius amount of the player
+    "minSpeedRange" : [0.5, 10],
+    "erchiusRange" : [0, 8000],
+
+    "emissionRange" : 20,
+    "maxEmissionRate" : 100,
+
+   "renderLayer" : "Projectile-100",
+
+    "touchDamage" : {
+      "poly" : [ [1.25, 2.55], [1.75, 2.05],  [2.25, -3.55], [1.75, -3.95],  [-1.75, -3.95], [-2.25, -3.55],  [-1.75, 2.05], [-1.25, 2.55] ],
+      "damage" : 1,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "cosmic",
+      "knockback" : 0,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [1.25, 2.55], [1.75, 2.05],  [2.25, -3.55], [1.75, -3.95],  [-1.75, -3.95], [-2.25, -3.55],  [-1.75, 2.05], [-1.25, 2.55] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0.5,
+      "airForce" : 50,
+      "flySpeed" : 2,
+
+      "physicsEffectCategories" : [ "boss" ]
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : { "damage" : "stunned" },
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [ "/stats/monster_primary.lua" ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 200
+        },
+        "protection" : {
+          "baseValue" : 0
+        },
+        "invulnerable" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.95
+        },        
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}
