@@ -1,0 +1,121 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 12,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/erchiusghost_loop.ogg",
+              "persistentSoundRangeMultiplier" : 0.5
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "fullbright" : true,
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.0, 0.125]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<near>idle.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "globalTagDefaults" : {
+    "near" : ""
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  //"lights" : {
+  //  "glow" : {
+  //    "active" : true,
+  //    "position" : [0, 0],
+  //    "color" : [140, 50, 140],
+  //    "pointLight" : true
+  //  }
+  //},
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "erchius" : {
+      "active" : true,
+      "emissionRate" : 0,
+      "offsetRegion" : [-2.25, -4.0, 2.25, 2.5],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            //"color" : [140, 70, 140, 255],
+             "color" : [0, 0, 0, 0],
+            "position" : [0, 0],
+            "initialVelocity" : [0, 6.0],
+            //"light" : [140, 70, 140],
+            "light" : [0, 0, 0],
+            "timeToLive" : 0.8,
+            "destructionAction" : "fade",
+            "destructionTime" : 0.2,
+            "layer" : "front",
+            "fullbright" : true,
+            "variance" : {
+              "initialVelocity" : [0, 2.0],
+              "size" : 1.0
+            }
+          }
+        }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+      ]
+    }
+  },
+
+  "sounds" : {
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  }
+}
