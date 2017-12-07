@@ -20,7 +20,7 @@ function init()
   self.dps = 0
 
   self.spawnTimer = 0.5
-  status.addEphemeralEffect("negativemiasma",1)
+  status.addEphemeralEffect("negativemiasma",math.huge)
 end
 
 function update(dt)
@@ -95,4 +95,5 @@ function toHex(num)
 end
 
 function uninit()
+ status.clearEphemeralEffects()
 end
