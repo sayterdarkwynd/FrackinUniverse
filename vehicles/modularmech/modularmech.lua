@@ -265,7 +265,7 @@ function activateFUMechStats()
           self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact of effects
 
 	  -- *********************** movement penalties for Mass *****************************************************
-	  if self.mechMassBase > 15 then  -- is the mech a heavy mech?
+	  if self.mechMassBase > 20 then  -- is the mech a heavy mech?
 	          -- setup booster mass modifier
 		  self.airControlSpeed = self.parts.booster.airControlSpeed - (self.mechMass/30)
 		  self.flightControlSpeed = self.parts.booster.flightControlSpeed - (self.mechMass/30)
@@ -273,6 +273,14 @@ function activateFUMechStats()
 		  -- setup legs affected by mass modifier
 		  self.groundSpeed = self.parts.legs.groundSpeed - (self.mechMass/20)
 		  self.jumpVelocity = self.parts.legs.jumpVelocity - (self.mechMass/20)
+	  elseif self.mechMassBase > 15 then
+	          -- setup booster mass modifier
+		  self.airControlSpeed = self.parts.booster.airControlSpeed - (self.mechMass/60)
+		  self.flightControlSpeed = self.parts.booster.flightControlSpeed - (self.mechMass/60)
+
+		  -- setup legs affected by mass modifier
+		  self.groundSpeed = self.parts.legs.groundSpeed - (self.mechMass/40)
+		  self.jumpVelocity = self.parts.legs.jumpVelocity - (self.mechMass/40)	  
 	  end
 
           -- *********************is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
@@ -638,7 +646,7 @@ function update(dt)
 
       if (storage.energy) < (self.energyMax/2) then 
         eMult = 0  
-      elseif (self.mechMassBase) > 20 then
+      elseif (self.mechMassBase) > 22 then
         eMult = 0
       else
         eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
