@@ -1,0 +1,85 @@
+{
+  "itemName" : "cutearmgun",
+  "price" : 500,
+  "inventoryIcon" : "cutearmgun_rockcat.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Attaches to the forearm. Fires deadly blasts.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Arm Blaster",
+  "level" : 4,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "cutearmgun_rockcat.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/hailstrike.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+  },
+
+  "baseOffset" : [0.0, 0.34],
+  "muzzleOffset" : [1.0, 0.05],
+  "handGrip" : "wrap",
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+  "learnBlueprintsOnPickup" : [], 
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.2,
+    "baseDps" : 6.5,
+    "energyUsage" : 24,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "lightpellet",
+    "projectileParameters" : {
+      "speed" : 60,
+      "fullbright" : true,
+      "damageKind" : "cosmic"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

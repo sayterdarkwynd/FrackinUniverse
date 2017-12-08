@@ -1,0 +1,108 @@
+{
+  "itemName" : "cutemachinegun",
+  "price" : 500,
+  "inventoryIcon" : "cutemachinegun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Light up the room. With death.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Machinegun",
+  "category" : "assaultRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "assaultRifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugaussmachinegun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "cutemachinegun.png",
+    "middlefullbright" : "cutemachinegunfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    },   
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.7, 0.4],
+  "muzzleOffset" : [2.4, 0.24],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.08,
+    "baseDps" : 9.7,
+    "energyUsage" : 37.0,
+    "inaccuracy" : 0.08,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "lightpellet",
+    "projectileParameters" : { 
+      "speed" : 60,
+      "knockback" : 4,
+      "fullbright" : true,
+      "damageKind" : "cosmic"
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+
+  "critChance" : 1,
+  "critBonus" : 4,
+  "altAbilityType" : "swtjc_ewg_attractgrenades",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

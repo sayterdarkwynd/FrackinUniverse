@@ -1,0 +1,90 @@
+{
+  "itemName" : "cutesniperrifle",
+  "price" : 450,
+  "inventoryIcon" : "cutesniperrifle.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Lancing, dangerous projectiles.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Rifle",
+  "category" : "sniperRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle","energy", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "cutesniperrifle.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/obliterator.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.3, 0.35],
+  "muzzleOffset" : [3, 0.325],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 2,
+    "baseDps" : 5.5,
+    "energyUsage" : 50.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "lightpellet",
+    "projectileParameters" : { 
+      "speed" : 90,
+      "knockback" : 25,
+      "damageKind" : "cosmic"
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 12,
+
+  "altAbilityType" : "swtjc_ewg_clusterbomb",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
