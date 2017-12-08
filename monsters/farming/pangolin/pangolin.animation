@@ -1,0 +1,182 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "damage" : {
+        "priority" : 2,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "body" : {
+        "priority" : 1,
+        "default" : "invisible",
+
+        "states" : {
+          "invisible" : {
+          },
+          "spawn" : {
+            "frames" : 10,
+            "cycle" : 1.0,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/monster_grow.ogg"
+            }
+          },
+          "idle" : {
+            "frames" : 1
+          },
+          "sleep" : {
+            "frames" : 1
+          },
+          "graze" : {
+            "frames" : 3,
+            "cycle" : 0.225,
+            "mode" : "transition",
+            "transition" : "grazeloop"
+          },
+          "grazeloop" : {
+            "frames" : 6,
+            "cycle" : 0.45,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/monster_grazing.ogg",
+              "persistentSoundRangeMultiplier" : 0.5
+            }
+          },
+          "grazewinddown" : {
+            "frames" : 3,
+            "cycle" : 0.225,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 0.6,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.15
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "spawn" : {
+        "properties" : {
+          "offset" : [0.0, 0.875],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "body" : {
+            "spawn" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>"
+              }
+            }
+          }
+        }
+      },
+      "body" : {
+        "properties" : {
+          "offset" : [0.25, 0.875]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<harvested>idle.<frame>"
+              }
+            },
+            "sleep" : {
+              "properties" : {
+                "image" : "<partImage>:<harvested>sleep.<frame>"
+              }
+            },
+            "graze" : {
+              "properties" : {
+                "image" : "<partImage>:<harvested>graze.<frame>"
+              }
+            },
+            "grazeloop" : {
+              "properties" : {
+                "image" : "<partImage>:<harvested>grazeloop.<frame>"
+              }
+            },
+            "grazewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:<harvested>grazewinddown.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:<harvested>walk.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:<harvested>fall.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:<harvested>hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "globalTagDefaults" : {
+    "harvested" : ""
+  },
+
+  "particleEmitters" : {
+    "harvestable" : {
+      "active" : false,
+      "emissionRate" : 4.0,
+      "offsetRegion" : [-2.25, -1.625, 2.25, 1.625],
+      "particles" : [
+        { "particle" : "burningdustfront" },
+        { "particle" : "crabcanosmoke" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }       
+      ]
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "sounds" : {
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "harvest" : [ "/sfx/npc/quadruped/goathead_idle1.ogg", "/sfx/npc/quadruped/goathead_idle2.ogg", "/sfx/npc/quadruped/goathead_turnhostile.ogg" ]
+  }
+}

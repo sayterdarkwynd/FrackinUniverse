@@ -1,34 +1,41 @@
 {
-  "type" : "fufirefluffalo",
+  "type" : "pangobaby",
+  "shortdescription" : "Pangolin Pup",
+  "description" : "A newborn pangolin's diet is...well, sand. Mostly.",
 
-  "categories" : [ "firefluffalo" ],
-  "parts" : [ "body", "spawn" ],
+  "categories" : [ "pangobaby" ],
+  "parts" : [ "body" ],
 
-  "animation" : "firefluffalo.animation",
+  "animation" : "pangobaby.animation",
   "reversed" : false,
 
-  "dropPools" : [ { "default" : "huntingquadruped" } ],
+  "dropPools" : [ { "default" : "hunting" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+
+  "tickEvoTime" : 5,
+  "evolutions" : [ "/scripts/golemancer/evolutions/pangobabygrow.evo" ],
 
     "persistent" : true,
 
-    "behavior" : "farmable",
+    "behavior" : "farmablebaby",
 
-    "harvestTime" : [500, 900],
-    "harvestSpawnOffset" : [0, 0],
-    "harvestPool" : "fireFluffaloHarvest",
+    "evolveType" : "pangolinevolution",
+    "spawnOffset" : [0.0, 1.25],
+    "spawnPoly" : [ [1.5, 1.625], [2.25, 0.875], [2.25, -0.875], [1.5, -1.625], [-1.5, -1.625], [-2.25, -0.875], [-2.25, 0.875], [-1.5, 1.625] ],
+    "evolveTime" : 100,
 
-    "metaBoundBox" : [-4.0, -4.0, 4.0, 4.0],
+    "metaBoundBox" : [-2.0, -2.0, 2.0, 2.0],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [1.5, 1.625], [2.25, 0.875], [2.25, -0.875], [1.5, -1.625], [-1.5, -1.625], [-2.25, -0.875], [-2.25, 0.875], [-1.5, 1.625] ],
+      "collisionPoly" : [ [-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5] ],
 
-      "mass" : 1.0,
+      "mass" : 0.5,
       "walkSpeed" : 5,
       "runSpeed" : 5,
       "jumpSpeed" : 5
@@ -47,8 +54,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesEnvironmentStatusEffects" : false,
       "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -64,43 +71,16 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 120
+          "baseValue" : 30
         },
         "protection" : {
           "baseValue" : 0.0
         },
         "healthRegen" : {
-          "baseValue" : 4.0
+          "baseValue" : 1.5
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
-        },
-        "physicalResistance" : {
-          "baseValue" : 0.0
-        },
-        "fireResistance" : {
-          "baseValue" : 0.5
-        },
-        "fireStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "iceResistance" : {
-          "baseValue" : -0.5
-        },
-        "iceStatusImmunity" : {
-          "baseValue" : 0.0
-        },
-        "electricResistance" : {
-          "baseValue" : 0.0
-        },
-        "electricStatusImmunity" : {
-          "baseValue" : 0.0
-        },
-        "poisonResistance" : {
-          "baseValue" : 0.0
-        },
-        "poisonStatusImmunity" : {
-          "baseValue" : 0.0
         }
       },
 
@@ -117,10 +97,12 @@
       }
     },
 
-    "mouthOffset" : [12, 0],
+    "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : false,
-    "relocatable" : true,
+    "capturable" : true,
+    "relocatable" : true,    
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterType" : "pangobaby",
     "nametagColor" : [64, 200, 255]
   }
 }
