@@ -92,7 +92,7 @@ function endDash()
   
   if self.stopAfterDash then
     if status.resource("energy") >= 50 then
-      status.addEphemeralEffect("damagebonus3",0.45) -- give bonus damage!!!!!! 
+      status.addEphemeralEffect("damagebonus3",0.6) -- give bonus damage!!!!!! 
       animator.playSound("chargebonus")
       status.consumeResource("energy", 50)
     end
