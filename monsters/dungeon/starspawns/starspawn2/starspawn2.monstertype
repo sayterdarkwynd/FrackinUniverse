@@ -47,7 +47,7 @@
 
             "projectileType" : "elderburst",
             "projectileParameters" : {
-              "speed" : 40
+              "speed" : 40,"damageType" : "shadow"
             },
             "power" : 12,
             "fireOffset" : [0.0, 0.0],
@@ -120,7 +120,7 @@
 
             "projectileType" : "shadowswoosh",
             "projectileParameters" : {
-              "statusEffects" : [ "superdarkstatmid" ]
+              "statusEffects" : [ "superdarkstatmid" ],"damageType" : "shadow"
             },            
             "power" : 9,
             "speed": 15,
@@ -146,6 +146,9 @@
             "windupTime" : 0.7,
 
             "projectileType" : "chaosswoosh",
+            "projectileParameters" : {
+              "damageType" : "shadow"
+            },             
             "power" : 11,
             "speed": 20,
             "fireOffset" : [4, 0],
@@ -196,6 +199,7 @@
               "speed" : 1,
               "timeToLive" : 5,
               "physics" : "laser",
+              "damageKind" : "shadow"                          
               "statusEffects" : [ "superdarkstatmid" ]
             },
             "power" : 5,
