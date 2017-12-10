@@ -74,7 +74,6 @@ function update(dt)
 			if shipShipMass + shipMassModifier ~= shipMassTotal then
 				shipMassModifier = shipMassTotal - shipShipMass
 			end
-			sb.logInfo(shipMassModifier)
 			status.addPersistentEffect("byos", {stat = "shipMass", amount = shipMassModifier})
 		end
 		if maxFuelNew and world.getProperty("ship.fuel") > maxFuelNew then
