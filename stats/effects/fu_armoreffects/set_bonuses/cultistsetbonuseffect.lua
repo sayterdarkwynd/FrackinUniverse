@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_cultistset"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "powerMultiplier", baseMultiplier = 1.15}
 }
 
 armorBonus={
