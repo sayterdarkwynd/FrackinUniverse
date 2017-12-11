@@ -84,7 +84,6 @@ function getNewParameters(pet, treasure)
 	if itemConfig then
 		if item then
 			shortDescriptionNew = item.config.shortdescription .. " (" .. info.name .. ")"
-			sb.logInfo(tostring(shortDescriptionNew))
 			newParameters = util.mergeTable(newParameters, {shortdescription = shortDescriptionNew})
 		end
 		inventoryIconNew = itemConfig.directory .. itemConfig.config.inventoryIcon
