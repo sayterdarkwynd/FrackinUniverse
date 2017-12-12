@@ -92,10 +92,10 @@ function endDash()
   
   if self.stopAfterDash then
     self.specialModifier = status.resource("energy") / status.stat("maxEnergy")
-    if status.resource("energy") > 50 then -- give bonus damage!!!!!! 
+    if status.resource("energy") > 20 then -- give bonus damage!!!!!! 
       status.addEphemeralEffect("damagebonus3",self.specialModifier) 
       animator.playSound("chargebonus")
-      status.consumeResource("energy", 50)
+      status.consumeResource("energy", (self.specialModifier*75))
     end
     local movementParams = mcontroller.baseParameters()
     local currentVelocity = mcontroller.velocity()
