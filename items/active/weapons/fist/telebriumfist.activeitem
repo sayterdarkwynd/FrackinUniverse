@@ -1,21 +1,19 @@
 {
-  "itemName" : "fumonsterclaw",
+  "itemName" : "telebriumfist",
   "price" : 200,
-  "level" : 5,
+  "level" : 2,
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Are these... severed monster hands? AWESOME!
-^cyan;Inflicts Bleeding^reset;",
-  "shortdescription" : "Mutaclaw",
+  "rarity" : "common",
+  "description" : "Refined for light and deadly punches",
+  "shortdescription" : "Telebrium Cestus",
   "tooltipKind" : "fist2",
   "category" : "fistWeapon",
   "twoHanded" : false,
   "itemTags" : ["weapon","fist", "upgradeableWeapon"],
-  "collectablesOnPickup" : { "fu_weaponfist" : "fumonsterclaw" },
-  "inventoryIcon" : "monsterclaw.png:front",
+  "inventoryIcon" : "telebriumfist.png:front",
   "animation" : "fistweapon.animation",
   "animationParts" : {
-    "weapon" : "monsterclaw.png",
+    "weapon" : "telebriumfist.png",
     "swoosh" : "swoosh/clawswoosh.png"
   },
   "animationCustom" : {
@@ -43,11 +41,10 @@
     "class" : "Punch",
 
     "freezeTime" : 0.2,
-    "fireTime" : 0.2,
-    "baseDps" : 9.0,
+    "fireTime" : 0.18,
+    "baseDps" : 8.5,
     "damageConfig" : {
-      "statusEffects" : [ "bleedingshort" ],
-      "damageSourceKind" : "dagger",
+      "damageSourceKind" : "poison",
       "knockback" : [0, 15],
       "timeoutGroup" : "primary",
       "timeout" : 0.1
