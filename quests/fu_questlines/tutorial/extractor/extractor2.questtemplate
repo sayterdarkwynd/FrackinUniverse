@@ -2,8 +2,8 @@
   "id" : "extractor2",
   "prerequisites" : [ "extractor1" ],
   "title" : "The Extractor II",
-  "text" : "Next, why don't you go and fetch 50 ^orange;cobblestone^reset; and toss it in your extractor. ^orange;Raw minerals^reset; should be produced. ^green;Bring 5 to me^reset;.",
-  "completionText" : "I think maybe you're starting to see how this works. Next?",
+  "text" : "Next, why don't you go and fetch 50 ^orange;of nearly any natural tile^reset; and toss it in your extractor. ^orange;Research^reset; should be produced.",
+  "completionText" : "I think maybe you're starting to see how this works. Depending on the resource you input, the outcome will vary. Research is common, and can be stockpiled as a currency.",
   "moneyRange" : [0, 0],
   "rewards" : [ [ [ "ironore", 20 ] ] ],
   "speaker" : "questGiver",
@@ -19,12 +19,12 @@
     
     "canBeAbandoned" : true,
     "requireTurnIn" : false,  
-    "turnInDescription" : "Bring the ^green;Raw Minerals^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+    "turnInDescription" : "Gather ^green;Research^reset; from ^orange;Extraction^reset;",
 
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "rawminerals",
+        "itemName" : "fuscienceresource",
         "count" : 5,
         "consume" : false
       }
