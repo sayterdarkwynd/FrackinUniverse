@@ -97,10 +97,10 @@ function isn_powerSlotCheck(slotnum)
 	  biofuelcannister = 4,
 	  biofuelcannisteradv = 4,
 	  biofuelcannistermax = 5,
-	  uraniumrod = 6,
-	  neptuniumrod = 6,
-	  tritium = 6,
-	  deuterium = 7,
+	  deuterium = 6,	  
+	  uraniumrod = 7,
+	  neptuniumrod = 7,
+	  tritium = 9,
 	  thoriumrod = 9, -- gets increased power from 7 to 9 (+28%), but loses in consumption rate, from 1/100 to 1/80 (-25%)
 	  enricheduranium = 10, -- gets increased power from 8 to 10 + gain efficiency from 1/100 to 1/500
 	  plutoniumrod = 10,
@@ -121,22 +121,18 @@ function isn_slotDecayCheck(slot, chance)
 
 	if slotContent.name == "biofuelcannister" or slotContent.name == "biofuelcannisteradv" or slotContent.name == "biofuelcannistermax" then
 		if math.random(1,60) <= chance then 
-			--I have commented out the world.debugText cause that seems unecessary ???? Whismerhill
-			--world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan");
 			return true
 		end
 	end
 	
 	if slotContent.name == "tritium" or slotContent.name == "deuterium" or slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "neptuniumrod" or slotContent.name == "thoriumrod" or slotContent.name == "solariumstar" then
 		if math.random(1,80) <= chance then
-			--world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan");
 			return true
 		end
 	end
 	-- low decay rate gets even lower : from 1/100 to 1/500 e.g. fuel should be 5x more durable
 	if slotContent.name == "enricheduranium" or slotContent.name == "enrichedplutonium" or slotContent.name == "ultronium" then
 		if math.random(1,500) <= chance then 
-			--world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan");
 			return true
 		end
 	end	
