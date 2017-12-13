@@ -15,13 +15,10 @@ function update(dt)
     item = world.containerItemAt(entity.id(),0)
 	if item then
 	  itemlist = config.getParameter('acceptablefuel')
-	  for key,value in pairs(itemlist) do
-	    if item.name == key then
-	      world.containerConsumeAt(entity.id(),0,1)
-	      storage.fueltime = value
-		  break
-		end
-	  end
+      if itemlist[item.name] then
+          world.containerConsumeAt(entity.id(),0,1)
+          storage.fueltime = itemlist[item.name]
+      end
 	end
   end
   if storage.fueltime and storage.fueltime > 0 then
