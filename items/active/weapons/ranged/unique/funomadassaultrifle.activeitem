@@ -1,0 +1,89 @@
+{
+  "itemName" : "funomadassaultrifle",
+  "price" : 160,
+  "inventoryIcon" : "nomadassaultrifle.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Superior weaponry offering unsurpassed utility.
+^yellow;Counts as Hunting weapon^reset;
+^green;Causes Rad Burn^reset;",
+    "shortdescription" : "Nomad Combat Rifle",
+  "category" : "assaultRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "assaultRifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "densinium", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/nomadassaultrifle.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "nomadassaultrifle.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/dkmarauder3.wav" ]
+    }
+  },
+
+  "baseOffset" : [-0.35, -0.10],
+  "muzzleOffset" : [2.845, 0.425],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.11,
+    "baseDps" : 8,
+    "energyUsage" : 30.5,
+    "inaccuracy" : 0.0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "poisonguardianpellet",
+    "projectileParameters" : { 
+      "knockback" : 4,
+      "damageKind" : "radioactivebow",
+      "statusEffects" : [ "radiationburn" ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 2,
+  "altAbilityType" : "lance",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

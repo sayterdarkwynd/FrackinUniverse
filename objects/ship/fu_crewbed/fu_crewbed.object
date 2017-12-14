@@ -2,20 +2,13 @@
   "objectName" : "fu_crewbed",
   "colonyTags" : ["misc"],
   "rarity" : "Legendary",
-  "description" : "These cosy beds can stack on top of each other. Increases max crew by 1.",
+  "description" : "These cosy beds can stack on top of each other. ^yellow;Crew +1^reset; and ^orange;Mass +1^reset;",
   "shortdescription" : "Crew Bed",
   "race" : "generic",
   "category" : "furniture",
   "printable" : false,
   "lightColor" : [20, 29, 33],
 
-  "apexDescription" : "A basic bunk bed.",
-  "avianDescription" : "This bunk bed looks rather basic.",
-  "floranDescription" : "Floran would like to sssleep in bunk bed.",
-  "glitchDescription" : "Sentimental. A bunk bed, not dissimilar from those at the Protectorate academy.",
-  "humanDescription" : "A bunk bed. Not terribly spacious, but surprisingly comfortable.",
-  "hylotlDescription" : "I have fond memories of sleeping in such a bed at the Protectorate academy.",
-  "novakidDescription" : "A regular bunk bed.",
   "learnBlueprintsOnPickup" : [ "fu_crewbed2" ],
   "objectType" : "loungeable",
   "sitFlipDirection" : true,
@@ -40,7 +33,7 @@
       
       "lightPosition" : [-3, 1],
       
-      "sitPosition" : [-4, 14.3],
+      "sitPosition" : [-2, 14.3],
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ],
@@ -55,7 +48,7 @@
       
       "lightPosition" : [3, 1],
       
-      "sitPosition" : [-12, 14.3],
+      "sitPosition" : [-14, 14.3],
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ],
@@ -68,6 +61,7 @@
   "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
   "scriptDelta" : 60,
   "stats" : {
-    "crewSize" : 1
+    "crewSize" : 1,
+    "shipMass" : 1
   }
 }

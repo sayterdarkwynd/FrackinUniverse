@@ -125,6 +125,7 @@ function init()
   -- setup arms
   
   self.aimassist = self.parts.hornName == 'mechaimassist'
+  self.masscancel = self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4'
 
   require(self.parts.leftArm.script)
   self.leftArm = _ENV[self.parts.leftArm.armClass]:new(self.parts.leftArm, "leftArm", {2.375, 2.0}, self.ownerUuid)
@@ -132,26 +133,23 @@ function init()
   require(self.parts.rightArm.script)
   self.rightArm = _ENV[self.parts.rightArm.armClass]:new(self.parts.rightArm, "rightArm", {-2.375, 2.0}, self.ownerUuid)
 
-  -- setup energy pool
+  -- setup energy pool     ***********************************************
 
   self.energyMax = self.parts.body.energyMax
   storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0) 
    
-
-  --[[ add Powerful gun drain 
-  if (self.parts.leftArm.stats.powerful) then
-    self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.powerful) 
+  -- guns marked as Powerful (have basePower stat) have increased energy drain, affecting total mech drain ************************************************
+  if (self.parts.leftArm.stats.basePower) then
+    self.energyDrain = self.energyDrain + (self.parts.leftArm.stats.basePower/50) 
   end
-  if (self.parts.rightArm.stats.powerful) then
-    self.energyDrain = self.energyDrain + (self.parts.rightArm.stats.powerful)
+  if (self.parts.rightArm.stats.basePower) then
+    self.energyDrain = self.energyDrain + (self.parts.rightArm.stats.basePower/50)
   end 
-  self.extraDrain1 = (self.parts.leftArm.stats.powerful or 0)
-  self.extraDrain2 = (self.parts.rightArm.stats.powerful or 0)
-  self.extraDrain = self.extraDrain1 + self.extraDrain2]]--
 
-  -- check for environmental hazards / protection
+
+  -- check for environmental hazards / protection *************************
   local hazards = config.getParameter("hazardVulnerabilities")
   
   for _, statusEffect in pairs(self.parts.body.hazardImmunities or {}) do
@@ -237,7 +235,7 @@ function init()
   self.doubleTabCheckDelay = 0.0
   self.doubleTabCheckDelayTime = 0.3
   self.doubleTabBoostCrouchTargetTo = 0.15
-  self.doubleTabBoostSpeedMultTarget = 3.5
+  self.doubleTabBoostSpeedMultTarget = 3.0
   self.doubleTabBoostSpeedMult = 1.0
   
   self.doubleTabBoostJump = false
@@ -267,7 +265,7 @@ function activateFUMechStats()
           self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact of effects
 
 	  -- *********************** movement penalties for Mass *****************************************************
-	  if self.mechMassBase > 15 then  -- is the mech a heavy mech?
+	  if self.mechMassBase > 20 then  -- is the mech a heavy mech?
 	          -- setup booster mass modifier
 		  self.airControlSpeed = self.parts.booster.airControlSpeed - (self.mechMass/30)
 		  self.flightControlSpeed = self.parts.booster.flightControlSpeed - (self.mechMass/30)
@@ -275,6 +273,14 @@ function activateFUMechStats()
 		  -- setup legs affected by mass modifier
 		  self.groundSpeed = self.parts.legs.groundSpeed - (self.mechMass/20)
 		  self.jumpVelocity = self.parts.legs.jumpVelocity - (self.mechMass/20)
+	  elseif self.mechMassBase > 15 then
+	          -- setup booster mass modifier
+		  self.airControlSpeed = self.parts.booster.airControlSpeed - (self.mechMass/60)
+		  self.flightControlSpeed = self.parts.booster.flightControlSpeed - (self.mechMass/60)
+
+		  -- setup legs affected by mass modifier
+		  self.groundSpeed = self.parts.legs.groundSpeed - (self.mechMass/40)
+		  self.jumpVelocity = self.parts.legs.jumpVelocity - (self.mechMass/40)	  
 	  end
 
           -- *********************is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
@@ -412,7 +418,10 @@ function update(dt)
       if newControls.Special1 and not self.lastControls.Special1 then
 	    if self.parts.hornName == 'mechaimassist' then
 		  self.aimassist = not self.aimassist
-		  animator.playSound('aimassist'..(self.aimassist and 'on' or 'off'))
+		  animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
+		elseif self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4' then
+		  self.masscancel = not self.masscancel		  
+		  animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
 		else
           animator.playSound("horn")
 		end
@@ -595,7 +604,19 @@ function update(dt)
       is, the slower the regeneration rate becomes, which should help to balance out energy cost.
       ***************************************************************************************** --]]
       activateFUMechStats()
-
+	  
+	  if self.masscancel then
+		if self.parts.hornName == 'mechmasscancel' then
+		  self.mechMass = self.mechMass * 0.75
+		elseif self.parts.hornName == 'mechmasscancel2' then
+		  self.mechMass = self.mechMass * 0.5
+		elseif self.parts.hornName == 'mechmasscancel3' then
+		  self.mechMass = self.mechMass * 0.25
+		elseif self.parts.hornName == 'mechmasscancel4' then
+		  self.mechMass = 0
+		end
+	  end
+	  
       if (storage.energy) < (self.energyMax*0.15) then -- play damage effects at certain health percentages
         animator.setParticleEmitterActive("highDamage", true) -- land fx 
         animator.setParticleEmitterActive("midDamage", false) -- land fx
@@ -625,7 +646,7 @@ function update(dt)
 
       if (storage.energy) < (self.energyMax/2) then 
         eMult = 0  
-      elseif (self.mechMassBase) > 20 then
+      elseif (self.mechMassBase) > 22 then
         eMult = 0
       else
         eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
@@ -1121,7 +1142,7 @@ function doubleTabBoost(dt, newControls, oldControls)
 	
 	        -- FU CHANGES ****************************
 	        --mech mass affects sprint speed for mech
-	        self.doubleTabBoostSpeedMult = math.max(self.doubleTabBoostSpeedMultTarget - (self.mechMass/10),1.0)   
+	        self.doubleTabBoostSpeedMult = math.max(self.doubleTabBoostSpeedMultTarget - (self.mechMass/15),1.0)   
                 -- ***************************************
                 
 		self.crouch = self.doubleTabBoostCrouchTargetTo

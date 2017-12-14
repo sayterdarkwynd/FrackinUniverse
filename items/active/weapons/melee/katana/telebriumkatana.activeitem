@@ -1,0 +1,42 @@
+{
+  "itemName" : "telebriumkatana",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Super light and agile.
+^yellow;4 hit combo^reset;",
+  "shortdescription" : "Telebrium Katana",
+  "tooltipKind" : "sword",
+  "category" : "katana",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon"],
+
+  "inventoryIcon" : "telebriumkatana.png",
+  "animation" : "combokatana.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "telebriumkatana.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "katanacombo",
+  "primaryAbility":{
+    "fireTime":0.60, 
+    "baseDps":6.3, 
+    "damageConfig":{
+      "knockback":20
+      }, 
+      "comboSteps":4
+    }, 
+
+  "critChance" : 2,
+  "critBonus" : 5,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

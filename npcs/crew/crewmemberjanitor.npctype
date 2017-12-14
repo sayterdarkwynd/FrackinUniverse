@@ -1,0 +1,70 @@
+{
+  "type" : "crewmemberjanitor",
+  "baseType" : "crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : true
+    },
+
+    "crew" : {
+      "role" : {
+        "benefits" : [
+	    {
+	      "type": "PersistentEffect",
+	      "property": "shipMass",
+	      "value": 0.9
+	    }  
+        ],      
+        "type" : "janitor",
+        "name" : "Janitor",
+        "field" : "Cleanliness",
+        "uniformColorIndex" : 11
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'm <selfname>... The janitor.",
+              "The name's <selfname>... The janitor."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran is <selfname>... Floran's job is to sssweep. A lot.",
+              "Floran's name is <selfname>. <selfname the Janitor."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Bored. I'm <selfname>... The janitor.",
+              "Underwhelmed. A job is a job, but still..."
+            ]
+          },
+          "novakid" : {
+            "default" : [
+              "When a floor get's all dusty, someone's gotta sweep. That's the way it is.",
+              "The name's <selfname>, the Janitor. I take whatever work I can get round here."
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "protectoratechest" } ],
+            "legs" : [ { "name" : "protectoratepants" } ],
+            "primary" : [ "broom" ],
+            "sheathedprimary" : [ "npcassaultrifle", "npcdagger" ]
+          }
+        ] ]
+    ]
+  }
+}

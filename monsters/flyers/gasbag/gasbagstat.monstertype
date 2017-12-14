@@ -1,0 +1,354 @@
+{
+  "type" : "gasbagstat",
+  "shortdescription" : "Valus Gas Bag",
+  "description" : "Hostile bags of gas. They feed on subatomic organic particles they create via annihilation.",
+  "categories" : [ "gasbag" ],
+  "reversed" : true,
+  "parts" : [ "body" ],
+
+  "animation" : "gasbag.animation",
+
+  "dropPools" : [ { "default" : "gasbagLoot", "bow" : "gasbagLoot" } ],
+  
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ], 
+      "renderLayer" : "ForegroundEntity",
+      "behavior" : "monster",
+      "deathBehavior" : "monster-death",
+      "aggressive" : false,
+      "seeThroughLiquid" : true,
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ 
+        {
+          "name" : "action-charge",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "maximumRange" : 15,
+            "windupStopForce" : 50,
+            "windupTime" : 2.5,
+            "windupState" : "firewindup",
+            "onGround" : false,
+
+            "wallCollide" : true,
+            "aimAtTarget" : true,
+            "rotateToTarget" : false,
+            "chargeTime" : 4.45,
+            "chargeSpeed" : 85,
+            "chargeControlForce" : 550,
+
+            "winddownState" : "firewinddown",
+            "winddownStopForce" : 500,
+            "winddownTime" : 3.7
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 1,
+          "parameters" : {
+            "projectileCount" : 10,
+            "projectileType" : "gasburst",
+            "projectileParameters" : {
+              "timeToLive" : 2,
+              "speed" : 15
+            },
+            "power" : 20,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 3,
+            "fireOffset" : [0, 1]
+          }
+        }      
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "minRange" : 4,
+            "maxRange" : 12            
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+        "name":"approach-fly",
+        "parameters":{
+          "targetOffset":[0,5], 
+          "minRange":1, 
+          "maxRange":15
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "emerge-fly",
+            "flyState" : "hidden"
+        },      
+        {
+          "name" : "wander-fly",
+          
+          "parameters" : {
+            "wanderTime" : [2,4],
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 4,
+            "yVelocity" : 12
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ 
+      
+       {
+          "name" : "action-fire",
+          "cooldown" : 2,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "idle",
+            "windupTime" : 0.8,
+
+            "projectileType" : "gasburst",
+            "power" : 10,
+            "fireOffset" : [0, 0],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+            "inaccuracy" : 3.05,
+            "projectileCount" : 10,
+            "projectileInterval" : 0.05,
+            "projectileParameters" : {
+              "timeToLive" : 2,
+              "speed" : 25            
+            },
+            "winddownState" : "idle",
+            "winddownTime" : 0.8
+          }
+        },             
+       {
+          "name" : "action-fire",
+          "cooldown" : 40,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 90,
+            "minimumRange" : 2,
+            "windupState" : "firewindup",
+            "windupTime" : 2.5,
+
+            "projectileType" : "atomsmasher_shot",
+            "power" : 60,
+            "fireOffset" : [4, 0],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+            "inaccuracy" : 0.05,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.05,
+            "winddownState" : "firewinddown",
+            "winddownTime" : 3.7
+          }
+        }      
+      ],
+
+      "damageTakenActions" : [
+        {
+          "cooldown" : 10,
+          "name" : "action-invulnerable",
+          "parameters" : {
+            "windupTime" : 0.8,
+            "windupState" : "hide",
+            "winddownTime" : 0.8,
+            "winddownState" : "hide2",
+
+            "invulnerableTime" : 2
+          }
+        }     
+      ],
+
+      "invulnerableActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "flyState" : "hidden"
+          }
+        }
+      ],
+      
+      
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "atomsmasher_shot",
+            "projectileParameters" : {
+              "timeToLive" : 0.05
+            },
+            "power" : 60,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 1]
+          }
+        }
+      ]
+      
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-6.5,4.562], [-7.5,2.25], [-7.875,0.625], [-7.188,-2.625], [-5.312,-4.5], [-2,-6.5], [2.375,-6.438], [6.875,-3.25], [8.375,-1.375], [8.812,-0.25], [8.5,0.938], [6.5,3.625], [5.25,4.75], [3.625,5.812], [0.625,6.438], [-3.312,5.625], [-5.562,5.125] ],
+      "damage" : 28,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 70,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.2,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-6.5,4.562], [-7.5,2.25], [-7.875,0.625], [-7.188,-2.625], [-5.312,-4.5], [-2,-6.5], [2.375,-6.438], [6.875,-3.25], [8.375,-1.375], [8.812,-0.25], [8.5,0.938], [6.5,3.625], [5.25,4.75], [3.625,5.812], [0.625,6.438], [-3.312,5.625], [-5.562,5.125] ],
+
+      "mass" : 12.0,
+      "walkSpeed" : 2,
+      "runSpeed" : 4,
+      "gravityEnabled" : false,
+
+      "airFriction" : 4,
+      "airForce" : 40,
+      "flySpeed" : 4
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 750
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 2.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireResistance" : {
+          "baseValue" : 0.3
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.3
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : -0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.5
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.5
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.5
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.05,
+    "capturedMonsterName" : "Gas Bag",
+    "capturedMonsterType" : "gasbag2", // turn into an adultpoptop when captured    
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "fu_monster" : "gasbag2" }
+  }
+}

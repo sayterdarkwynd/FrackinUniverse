@@ -9,7 +9,7 @@
       "skillTime" : 2.4,
       
       "damagePerSecond" : 40,
-      "distanceRange" : [0, 30],
+      "distanceRange" : [0, 50],
       "windupTime" : 1.2,
       "winddownTime" : 1.2,
       "fireDelay" : 1.2,
@@ -19,8 +19,8 @@
           "power" : 50,
           "speed" : 20,
           "timeToLive" : 0.2,
-          "statusEffects" : [],
-          
+          "statusEffects" : [ "stun" ],
+
           "actionOnReap" : [ 
 	    {
 	      "action" : "sound",
@@ -44,7 +44,18 @@
 	      "inheritDamageFactor" : 0.35,
 	      "angleAdjust" : 0,
 	      "config" : {
-	        "speed" : 13
+	        "speed" : 13,
+		  "periodicActions" : [
+		    {
+		      "action" : "explosion",
+		      "time" : 0.02,
+		      "loop" : true,
+		      "foregroundRadius" : 7,
+		      "backgroundRadius" : 0,
+		      "explosiveDamageAmount" : 1.45,
+		      "delaySteps" : 2
+		    }           
+		  ]	        
 	      }
 	    }          
           ]

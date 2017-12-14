@@ -9,6 +9,8 @@ function init()
 end
 
 function update()
+	self.currency = player.currency("fuscienceresource")
+	widget.setText("lblScience", self.currency )
 	if widget.active("questList") then
 		updateQuestList()
 	end
@@ -210,6 +212,7 @@ function questlineSelected()
 end
 
 function questlineButton()
+  
 	self.lastSelected = nil
 	widget.setImage("questlineBanner", "/assetmissing.png")
 	widget.clearListItems("questList.list")
@@ -222,7 +225,6 @@ function questlineButton()
 	
 	widget.setText("questTitle", "Select a questline" )
 	widget.setText("textScrollArea.questText", "" )
-	
 	populateQueslineList()
 end
 

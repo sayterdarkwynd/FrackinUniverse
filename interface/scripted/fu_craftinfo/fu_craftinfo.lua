@@ -445,51 +445,55 @@ function doLiquidInteraction(list, recipes, itemIn, itemOut, objectName)
 	--sb.logWarn("liquids : in %s out %s",itemIn,itemOut)
 
 	if itemIn then
-		if itemIn ~= "liquidelderfluid" then
-			for _, recipe in pairs(recipes) do
-				if recipe.inputs[itemIn] then --or (recipe.reversible and checkValue(recipe.outputs[itemIn], techLevel))
-					for item, resultquantity in pairs(recipe.outputs) do
-						if not materialsMissing[item] then
+		local unknown
+		for _, recipe in pairs(recipes) do
+			if recipe.inputs[itemIn] then --or (recipe.reversible and checkValue(recipe.outputs[itemIn], techLevel))
+				for item, resultquantity in pairs(recipe.outputs) do
+					if not materialsMissing[item] then
+						if not recipe.inputs["liquidelderfluid"] and item ~= "liquidelderfluid" then
 							output = addTextItem("=",concatLiquid(recipe.inputs, nil," & ") .. " >> " .. concatLiquid(recipe.outputs, resultquantity), list)
+						else
+							if not unknown then
+								output = addTextItem("=", "??? & ??? >> ???", list)
+								unknown = true
+							end
 						end
 					end
 				end
 			end
-		else
-			output = addTextItem("=", "??? & ??? >> ???", list)
 		end
 	elseif itemOut then
-		if itemOut ~= "liquidelderfluid" then
-			local listitems={}
-			local k = 0
-			for _, recipe in pairs(recipes) do
-				if  recipe.outputs[itemOut] then -- checkValue(recipe.outputs[itemOut], techLevel) or (recipe.reversible and recipe.inputs[itemOut]) then
-					for item, _ in pairs(recipe.inputs) do
-						k=k+1
-						if not materialsMissing[item] then
+		local listitems={}
+		local k = 0
+		for _, recipe in pairs(recipes) do
+			if  recipe.outputs[itemOut] then -- checkValue(recipe.outputs[itemOut], techLevel) or (recipe.reversible and recipe.inputs[itemOut]) then
+				for item, _ in pairs(recipe.inputs) do
+					k=k+1
+					if not materialsMissing[item] then
+						if not recipe.inputs["liquidelderfluid"] then
 							listitems[k] = concatLiquid(recipe.inputs, nil," & ")
-							output = true
+						else
+							listitems[k] = "??? & ???"
 						end
+						output = true
 					end
 				end
 			end
-			-- remove dupes
-			local hash = {}
-			local result = {}
-			for _,v in ipairs(listitems) do
-				if (not hash[v]) then
-					result[#result+1] = v
-					hash[v] = true
-				end
+		end
+		-- remove dupes
+		local hash = {}
+		local result = {}
+		for _,v in ipairs(listitems) do
+			if (not hash[v]) then
+				result[#result+1] = v
+				hash[v] = true
 			end
+		end
 
-			if output then
-				for index, inputs in pairs(result) do
-					addTextItem("<=", inputs,list)
-				end
+		if output then
+			for index, inputs in pairs(result) do
+				addTextItem("<=", inputs,list)
 			end
-		else
-			output = addTextItem("<=", "??? & ???", list)
 		end
 	end
 

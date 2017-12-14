@@ -110,8 +110,39 @@
     }
   },
 
-  "altAbilityType" : "swtjc_ewg_rocketjump",
-
+  "altAbilityType" : "explosiveshot",
+  "altAbility" : {
+    "name" : "Blocker Blast",
+    "projectileParameters" : {
+      "actionOnReap" : [
+        {
+          "action" : "sound",
+          "options" : [
+            "/sfx/melee/staff_aura_activate.ogg"
+          ]
+        },
+        {
+          "action" : "projectile",
+          "type" : "pushzone",
+          "config" : { "timeToLive": 4}
+        },        
+        {
+          "action" : "projectile",
+          "type" : "pushzone",
+          "config" : { "timeToLive": 4}
+        },
+        {
+          "action" : "projectile",
+          "type" : "impactgrenade",
+          "inheritDamageFactor" : 0.5
+        }
+      ],
+      "statusEffects" : [ "stun" ]
+      
+      
+    }
+  },
+  
   "critChance" : 4,
   "critBonus" : 2,
   
