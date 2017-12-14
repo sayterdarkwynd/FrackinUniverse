@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_cuteset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 1.15}
+	{stat = "powerMultiplier", baseMultiplier = 1.20}
 }
 
 armorBonus={
@@ -31,7 +31,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"cute"})
+	local weapons=weaponCheck({"energy"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 		return true

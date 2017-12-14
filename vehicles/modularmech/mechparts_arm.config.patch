@@ -43,7 +43,7 @@
         },{
             "op": "add",
             "path": "/tommygun/stats/mechMass",
-            "value": 1
+            "value": 2
         }, {
             "op": "replace",
             "path": "/tommygun/partParameters/projectileParameters/power",
@@ -55,7 +55,7 @@
         },{
             "op": "add",
             "path": "/gatling/stats/mechMass",
-            "value": 2
+            "value": 3
         }, {
             "op": "replace",
             "path": "/gatling/partParameters/projectileParameters/power",
@@ -83,7 +83,7 @@
         },{
             "op": "add",
             "path": "/splitshot/stats/mechMass",
-            "value": 3
+            "value": 4
         }, {
             "op": "replace",
             "path": "/splitshot/partParameters/projectileParameters/power",
@@ -91,7 +91,7 @@
         },{
             "op": "add",
             "path": "/wobbleshot/stats/mechMass",
-            "value": 1
+            "value": 2
         }, {
             "op": "replace",
             "path": "/wobbleshot/partParameters/projectileParameters/power",
@@ -103,7 +103,7 @@
         },{
             "op": "add",
             "path": "/teslastream/stats/mechMass",
-            "value": 1
+            "value": 2
         }, {
             "op": "add",
             "path": "/teslastream/stats/rapidFire",
@@ -111,7 +111,7 @@
         },{
             "op": "add",
             "path": "/beamsniper/stats/mechMass",
-            "value": 2
+            "value": 4
         },  {
             "op": "add",
             "path": "/beamsniper/stats/basePower",
@@ -123,7 +123,7 @@
         },{
             "op": "add",
             "path": "/beamdrill/stats/mechMass",
-            "value": 1
+            "value": 3
         }, {
             "op": "add",
             "path": "/beamdrill/stats/basePower",
@@ -135,7 +135,7 @@
         },{
             "op": "add",
             "path": "/missilerack/stats/mechMass",
-            "value": 3
+            "value": 4
         }, {
             "op": "add",
             "path": "/missilerack/stats/multicount",
@@ -147,7 +147,7 @@
         },{
             "op": "add",
             "path": "/homingmissile/stats/mechMass",
-            "value": 4
+            "value": 5
         }, {
             "op": "replace",
             "path": "/homingmissile/partParameters/projectileParameters/power",
@@ -155,7 +155,7 @@
         },{
             "op": "add",
             "path": "/guidedmissiles/stats/mechMass",
-            "value": 4
+            "value": 5
         }, {
             "op": "add",
             "path": "/guidedmissiles/stats/multicount",
@@ -167,7 +167,7 @@
         }, {
             "op": "add",
             "path": "/clustermine/stats/mechMass",
-            "value": 2
+            "value": 4
         },{
             "op": "add",
             "path": "/clustermine/stats/multicount",
@@ -179,7 +179,7 @@
         },{
             "op": "add",
             "path": "/gravitymine/stats/mechMass",
-            "value": 5
+            "value": 6
         }, {
             "op": "replace",
             "path": "/gravitymine/partParameters/projectileParameters/power",
@@ -193,6 +193,35 @@
             "path": "/spikefist/partParameters/projectileParameters/power",
             "value": 26.5
         }, {
+	    "op": "replace",
+	    "path": "/spikefist/partParameters/projectileParameters/controlForce",
+	    "value": 80
+	}, {
+	    "op": "add",
+	    "path": "/spikefist/partParameters/projectileParameters/actionOnCollide",
+	    "value": [
+	      {
+		"action": "sound",
+		"options": [
+		  "/sfx/weapons/explosion1.ogg",
+		  "/sfx/weapons/explosion2.ogg"
+		]
+	      },
+	      {
+		"action": "projectile",
+		"inheritDamageFactor": 0,
+		"type": "burstjumpboom3"
+	      },
+	      {
+		"action": "explosion",
+		"foregroundRadius": 4,
+		"backgroundRadius": 2,
+		"explosiveDamageAmount": 32,
+		"harvestLevel": 99,
+		"delaySteps": 2
+	      }
+	    ]
+	  },{
             "op": "add",
             "path": "/chainsaw/stats/mechMass",
             "value": 4
@@ -209,10 +238,6 @@
             "path": "/energyblade/partParameters/projectileParameters/power",
             "value": 15
         },{
-            "op": "add",
-            "path": "/energyblade/stats/mechMass",
-            "value": 1
-        }, {
             "op": "replace",
             "path": "/drill/damageSources/<armName>Drill/damage",
             "value": 6.5
@@ -231,7 +256,7 @@
         }, {
             "op": "add",
             "path": "/multidronelauncher/stats/mechMass",
-            "value": 3
+            "value": 5
         },{
             "op": "replace",
             "path": "/multidronelauncher/partParameters/droneParameters/gun/projectileParameters/power",
@@ -243,7 +268,7 @@
                 "stats": {
                     "power": 3,
                     "energy": 3,
-                    "mechMass": 1
+                    "mechMass": 2
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
@@ -316,7 +341,7 @@
                 "stats": {
                     "power": 4,
                     "energy": 4,
-                    "mechMass": 1
+                    "mechMass": 3
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
@@ -389,7 +414,7 @@
                 "stats": {
                     "power": 5,
                     "energy": 5,
-                    "mechMass": 2
+                    "mechMass": 4
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
@@ -462,7 +487,445 @@
                     }
                 }
             }
+        },{
+            "op": "add",
+            "path": "/pointdefense",
+            "value": {
+                "stats": {
+                    "power": 1,
+                    "energy": 1,
+                    "mechMass": 3
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+                    "armClass": "DroneLauncher",
+                    "rotationLimits": [-0.7, 0.6],
+                    "fireOffset": [4, 0],
+                    "deployTime": 0.4,
+                    "launchTiming": 0.25,
+                    "cooldownTime": 1,
+                    "maxDrones": 8,
+                    "droneOrbitRate": 0.25,
+                    "droneOrbitDistance": 5,
+                    "droneMonsterType": "mechmultidrone2",
+		      "droneParameters" : {
+			"movementMode" : "Orbit",
+
+			"attackMode" : "Target",
+			"targetRange" : 10,
+
+			"duration" : 120,
+
+			"statusSettings" : { "stats" : {
+			  "flatMaxHealth" : { "baseValue" : 90 }
+			}},
+
+			"gun" : {
+			  "fireDelay" : 0.1,
+
+			  "fireTime" : 0.1,
+			  "fireOffset" : [2, 0],
+
+			  "projectileType" : "laser-1",
+			  "projectileParameters" : {
+			    "speed" : 70,
+			    "power" : 1,
+			    "statusEffects" : [ "stun" ]
+			  },
+
+			  "projectileCount" : 1
+			}
+		      }
+                },
+                "partImages": {
+                    "<armName>": "arm/shielddronelauncher.png",
+                    "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],
+                "animationCustom": {
+                    "animatedParts": {
+                        "stateTypes": {
+                            "<armName>": {
+                                "states": {
+                                    "windup": {
+                                        "mode": "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sounds": {
+                        "<armName>Activate": [
+                            "/sfx/gun/mech_shielddrone1.ogg"
+                        ],
+                        "<armName>Recover": [
+                            "/sfx/gun/mech_shielddrone_recover1.ogg"
+                        ]
+                    }
+                }
+            }
         }, {
+            "op": "add",
+            "path": "/pointdefense2",
+            "value": {
+                "stats": {
+                    "power": 3,
+                    "energy": 3,
+                    "mechMass": 4
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+                    "armClass": "DroneLauncher",
+                    "rotationLimits": [-0.7, 0.6],
+                    "fireOffset": [4, 0],
+                    "deployTime": 0.5,
+                    "launchTiming": 0.25,
+                    "cooldownTime": 1,
+                    "maxDrones": 6,
+                    "droneOrbitRate": 0.25,
+                    "droneOrbitDistance": 7,
+                    "droneMonsterType": "mechmultidrone3",
+		      "droneParameters" : {
+			"movementMode" : "Orbit",
+
+			"attackMode" : "Target",
+			"targetRange" : 12,
+
+			"duration" : 120,
+
+			"statusSettings" : { "stats" : {
+			  "flatMaxHealth" : { "baseValue" : 110 }
+			}},
+
+			"gun" : {
+			  "fireDelay" : 0.1,
+
+			  "fireTime" : 0.1,
+			  "fireOffset" : [2, 0],
+
+			  "projectileType" : "electricguardianbullet",
+			  "projectileParameters" : {
+			    "speed" : 60,
+			    "power" : 2,
+			    "statusEffects" : [ "electrified", "stun" ]
+			  },
+
+			  "projectileCount" : 1
+			}
+		      }
+                },
+                "partImages": {
+                    "<armName>": "arm/shielddronelauncher.png",
+                    "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],
+                "animationCustom": {
+                    "animatedParts": {
+                        "stateTypes": {
+                            "<armName>": {
+                                "states": {
+                                    "windup": {
+                                        "mode": "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sounds": {
+                        "<armName>Activate": [
+                            "/sfx/gun/mech_shielddrone1.ogg"
+                        ],
+                        "<armName>Recover": [
+                            "/sfx/gun/mech_shielddrone_recover1.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
+            "path": "/pointdefense3",
+            "value": {
+                "stats": {
+                    "power": 5,
+                    "energy": 5,
+                    "mechMass": 4
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+                    "armClass": "DroneLauncher",
+                    "rotationLimits": [-0.7, 0.6],
+                    "fireOffset": [4, 0],
+                    "deployTime": 0.5,
+                    "launchTiming": 0.25,
+                    "cooldownTime": 1,
+                    "maxDrones": 6,
+                    "droneOrbitRate": 0.25,
+                    "droneOrbitDistance": 7,
+                    "droneMonsterType": "mechmultidrone3",
+		      "droneParameters" : {
+			"movementMode" : "Orbit",
+
+			"attackMode" : "Target",
+			"targetRange" : 12,
+
+			"duration" : 120,
+
+			"statusSettings" : { "stats" : {
+			  "flatMaxHealth" : { "baseValue" : 225 }
+			}},
+
+			"gun" : {
+			  "fireDelay" : 0.1,
+
+			  "fireTime" : 0.1,
+			  "fireOffset" : [2, 0],
+
+			  "projectileType" : "densiniumrifleshot",
+			  "projectileParameters" : {
+			    "speed" : 60,
+			    "power" : 4,
+			    "statusEffects" : [ "electrified", "stun" ]
+			  },
+
+			  "projectileCount" : 1
+			}
+		      }
+                },
+                "partImages": {
+                    "<armName>": "arm/shielddronelauncher.png",
+                    "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],
+                "animationCustom": {
+                    "animatedParts": {
+                        "stateTypes": {
+                            "<armName>": {
+                                "states": {
+                                    "windup": {
+                                        "mode": "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sounds": {
+                        "<armName>Activate": [
+                            "/sfx/gun/mech_shielddrone1.ogg"
+                        ],
+                        "<armName>Recover": [
+                            "/sfx/gun/mech_shielddrone_recover1.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
+            "path": "/powerdrone1",
+            "value": {
+                "stats": {
+                    "power": 6,
+                    "energy": 5,
+                    "mechMass": 3
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+                    "armClass": "DroneLauncher",
+                    "rotationLimits": [-0.7, 0.6],
+                    "fireOffset": [4, 0],
+                    "deployTime": 0.5,
+                    "launchTiming": 0.25,
+                    "cooldownTime": 2,
+                    "maxDrones": 3,
+                    "droneOrbitRate": 0.05,
+                    "droneOrbitDistance": 7,
+                    "droneMonsterType": "mechmultidrone",
+		      "droneParameters" : {
+			"movementMode" : "Orbit",
+
+			"attackMode" : "Target",
+			"targetRange" : 60,
+
+			"duration" : 120,
+
+			"statusSettings" : { "stats" : {
+			  "flatMaxHealth" : { "baseValue" : 300 }
+			}},
+
+			"gun" : {
+			  "fireDelay" : 0.1,
+
+			  "fireTime" : 1.5,
+			  "fireOffset" : [2, 0],
+
+			  "projectileType" : "fumechsniper",
+			  "projectileParameters" : {
+			    "speed" : 120,
+			    "power" : 50
+			  },
+
+			  "projectileCount" : 1
+			}
+		      }
+                },
+                "partImages": {
+                    "<armName>": "arm/shielddronelauncher.png",
+                    "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],
+                "animationCustom": {
+                    "animatedParts": {
+                        "stateTypes": {
+                            "<armName>": {
+                                "states": {
+                                    "windup": {
+                                        "mode": "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sounds": {
+                        "<armName>Activate": [
+                            "/sfx/gun/mech_shielddrone1.ogg"
+                        ],
+                        "<armName>Recover": [
+                            "/sfx/gun/mech_shielddrone_recover1.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
+            "path": "/powerdrone2",
+            "value": {
+                "stats": {
+                    "power": 8,
+                    "energy": 6,
+                    "mechMass": 3
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
+                    "armClass": "DroneLauncher",
+                    "rotationLimits": [-0.7, 0.6],
+                    "fireOffset": [4, 0],
+                    "deployTime": 0.5,
+                    "launchTiming": 0.25,
+                    "cooldownTime": 2,
+                    "maxDrones": 3,
+                    "droneOrbitRate": 0.05,
+                    "droneOrbitDistance": 7,
+                    "droneMonsterType": "mechmultidrone",
+		      "droneParameters" : {
+			"movementMode" : "Orbit",
+
+			"attackMode" : "Target",
+			"targetRange" : 70,
+
+			"duration" : 120,
+
+			"statusSettings" : { "stats" : {
+			  "flatMaxHealth" : { "baseValue" : 300 }
+			}},
+
+			"gun" : {
+			  "fireDelay" : 0.1,
+
+			  "fireTime" : 1.25,
+			  "fireOffset" : [2, 0],
+
+			  "projectileType" : "fumechsniper",
+			  "projectileParameters" : {
+			    "speed" : 120,
+			    "power" : 60
+			  },
+
+			  "projectileCount" : 1
+			}
+		      }
+                },
+                "partImages": {
+                    "<armName>": "arm/shielddronelauncher.png",
+                    "<armName>Fullbright": "arm/shielddronelauncher_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],
+                "animationCustom": {
+                    "animatedParts": {
+                        "stateTypes": {
+                            "<armName>": {
+                                "states": {
+                                    "windup": {
+                                        "mode": "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sounds": {
+                        "<armName>Activate": [
+                            "/sfx/gun/mech_shielddrone1.ogg"
+                        ],
+                        "<armName>Recover": [
+                            "/sfx/gun/mech_shielddrone_recover1.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
             "op": "add",
             "path": "/shielddronelauncher/partParameters/droneOrbitRate",
             "value": 3
@@ -499,7 +962,7 @@
                     "energy": 3,
                     "basePower": 0.15,
                     "rapidFire": 2,
-                    "mechMass": 1
+                    "mechMass": 2
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/beamarm.lua",
@@ -648,7 +1111,7 @@
                     "energy": 4,
                     "basePower": 1.5,
                     "rapidFire": 3,
-                    "mechMass": 2
+                    "mechMass": 3
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/beamarm.lua",
@@ -818,7 +1281,7 @@
                     "energy": 6,
                     "basePower": 3,
                     "rapidFire": 3,
-                    "mechMass": 3
+                    "mechMass": 4
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/beamarm.lua",
@@ -984,7 +1447,7 @@
                     "power": 4,
                     "energy": 5,
                     "multicount": 3,
-                    "mechMass": 2
+                    "mechMass": 3
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/gunarm.lua",
@@ -1033,7 +1496,8 @@
                     "power": 6,
                     "energy": 6,
                     "rapidFire": 3,
-                    "mechMass": 4
+                    "mechMass": 4,
+                    "basePower" : 8
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/gunarm.lua",
@@ -1196,16 +1660,16 @@
                     "<armName>Fullbright": "arm/lunariarmfullbright.png"
                 },
                 "defaultPrimaryColors": [
-                    "c36a5f",
-                    "994c49",
-                    "6f3130",
-                    "551d28"
+                    "fffa70",
+                    "e9d31b",
+                    "d1b412",
+                    "927c03"
                 ],
                 "defaultSecondaryColors": [
-                    "e6e6e6",
-                    "b6b6b6",
-                    "7b7b7b",
-                    "373737"
+                    "6a6a6a",
+                    "555555",
+                    "2b2b2b",
+                    "202020"
                 ],
                 "animationCustom": {
                     "sounds": {
@@ -1218,49 +1682,270 @@
         }, {
             "op": "add",
             "path": "/fuultracannon",
-            "value": {
-                "stats": {
-                    "power": 6,
-                    "energy": 6,
-                    "mechMass": 4
-                },
-                "partParameters": {
-                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-                    "armClass": "GunArm",
-                    "rotationLimits": [-1.75, 1.75],
-                    "fireOffset": [4.65, -0.625],
-                    "extendTime": 1,
-                    "fireTime": 0.22,
-                    "projectileType": "lunarishotinitiatemech",
-                    "projectileCount": 2,
-                    "projectileParameters": {
-                        "power": 8
-                    }
-                },
-                "partImages": {
-                    "<armName>": "arm/futhetamechgun.png",
-                    "<armName>Fullbright": "arm/futhetamechgunfullbright.png"
-                },
-                "defaultPrimaryColors": [
-                    "c36a5f",
-                    "994c49",
-                    "6f3130",
-                    "551d28"
-                ],
-                "defaultSecondaryColors": [
-                    "e6e6e6",
-                    "b6b6b6",
-                    "7b7b7b",
-                    "373737"
-                ],
-                "animationCustom": {
-                    "sounds": {
-                        "<armName>Fire": [
-                            "/sfx/gun/pulsecannon_blast1.ogg"
-                        ]
-                    }
-                }
-            }
+            "value": 
+	  {
+	    "stats" : {
+	      "power" : 10,
+	      "energy" : 12,
+	      "mechMass" : 9,
+	      "basePower" : 45
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/xsm_beamarm2.lua",
+	      "armClass" : "BeamArm",
+              //      "rotationOffset" : [-8.0,0],
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [8.5, -0.8],
+
+	      "windupTime" : 2,
+	      "fireTime" : 2,
+	      "winddownTime" : 0,
+
+	      "repeatFire" : false,
+	      "lockAim" : true,
+
+	      "beamSourceOffset" : [8.5, 1.5],
+	      "beamHeight" : 3,
+	      "beamLength" : 100,
+	      "beamParticleDensity" : 2,
+	      "beamTileDamage" : 10,
+	      "beamTileDamageDepth" : 20,
+	      "beamEndTimer" : 0.15,
+	      "beamEndProjectile" : "ultrabeamend"
+	    },
+	    "damageSources" : {
+	      "<armName>Beam" : {
+		"enabled" : false,
+		"attachToPart" : "<armName>",
+
+		"line" : [ [0.5, 1.0], [108.5, -1.0] ],
+		"damage" : 15,
+		"damageSourceKind" : "cosmic",
+		"damageRepeatTimeout" : 0.3,
+		"damageRepeatGroup" : "<armName>Beam",
+		"knockback" : 50,
+
+		"rayCheck" : true
+	      }
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/fumegacannoncombined.png",
+	      "<armName>Fullbright" : "arm/fumegacannonfullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["ef978b", "bd3616", "790e00", "59140c"],
+	    "defaultSecondaryColors" : ["9da8af", "676f83", "3d3d51", "24232f"],
+	    "animationCustom" : {
+	      "animatedParts" : {
+		"stateTypes" : {
+		  "<armName>" : { "states" : {
+		    "windup" : {
+		      "frames" : 8,
+		      "cycle" : 2
+		    },
+		    "active" : {
+		      "frames" : 11,
+		      "cycle" : 0.75,
+		      "mode" : "transition",
+		      "transition" : "idle"
+		    },
+		    "winddown" : {
+		      "frames" : 1,
+		      "cycle" : 1
+		    }
+		  }},
+		  "<armName>Beam" : {
+		    "default" : "off",
+		    "states" : {
+		      "off" : {},
+		      "fire" : {
+			"frames" : 5,
+			"cycle" : 0.5,
+			"mode" : "transition",
+			"transition" : "off",
+			"properties" : {
+			  "persistentSound" : "/sfx/gun/rocket1.ogg",
+			  "persistentSoundRangeMultiplier" : 1.0,
+			  "persistentSoundStopTime" : 0.2
+			}
+
+		      }
+		    }
+		  }
+		},
+		"parts" : {
+		  "<armName>" : {
+		    "properties" : {
+		      "centered" : true
+		    }		    
+		  },	
+		  "<armName>Fullbright" : {
+		    "properties" : {
+		      "offset" : [-8.5, 0.15],
+		      "fullbright" : true,
+		      "centered" : true
+		    }
+		  },
+		  "<armName>Beam" : {
+		    "properties" : {
+		      "zLevel" : 10,
+		      "offset" : [8.5, 1.0],
+		      "anchorPart" : "<armName>",
+		      "fullbright" : true,
+		      "centered" : false,
+		      "transformationGroups" : ["<armName>Beam"]
+		    },
+		    "partStates" : {
+		      "<armName>Beam" : {
+			"fire" : {
+			  "properties" : {
+			    "image" : "/vehicles/modularmech/beam/ultrabeam.png:<frame>"
+			  }
+			}
+		      }
+		    }
+		  }
+		}
+	      },
+	      "particleEmitters" : {
+		"<armName>Smoke" : {
+		  "active" : false,
+		  "anchorPart" : "<armName>",
+		  "emissionRate" : 10,
+		  
+		  "offsetRegion": [-1,0,3,-2],
+		  "particles" : [
+		    { 
+		      "particle" : {
+			    "type" : "animated",
+			    "animation" : "/animations/dust2/dust2.animation",
+			    "position" : [-5.2, 3],
+			    "finalVelocity" : [0, 4],
+			    "approach" : [50, 50],
+			    "destructionAction" : "shrink",
+			    "destructionTime" : 0.85,
+			    "fade" : 1,
+			    "size" : 1,
+			    "layer" : "front",
+			    "timeToLive" : 1.5,
+			    "variance" : {"initialVelocity" : [0.0, 2.0], "rotation" : 180},
+			    "angularVelocity" : 7.0		    
+		      }
+		    }		    
+		  ]
+		},
+		
+		"<armName>Charge" : {
+		  "active" : false,
+		  "anchorPart" : "<armName>",
+		  "emissionRate" : 5,
+		  "offset" : [0,4],
+		  "particles" : [
+		    { 
+		      "particle" : {
+			    "type" : "animated",
+			    "animation" : "/animations/shards/fubeamenergy.animation",
+			    "initialVelocity" : [0.0, 2.0],
+			    "finalVelocity" : [0.0, 0.0],
+			    "approach" : [8, 8],
+			    "position" : [9.25,2.5],
+			    "timeToLive" : 0.5,
+			    "layer" : "middle",
+			    "collidesForeground" : true,
+			    "fullbright" : true,
+			    "light" : [134, 71, 179, 255],
+			    "size" : 0.25,
+			    "variance" : {
+			      "position" : [0.75, 0.75],
+			      "initialVelocity" : [2, 2],
+			      "finalVelocity" : [2, 2],
+			      "rotation" : 180,
+			      "angularVelocity" : 180
+			    }
+		      } 
+		    },
+		    { 
+		      "particle" : {
+			    "type" : "animated",
+			    "animation" : "/animations/shards/fubeamenergy.animation",
+			    "initialVelocity" : [0.0, 2.0],
+			    "finalVelocity" : [0.0, 0.0],
+			    "approach" : [8, 8],
+			    "position" : [9.25,1.5],
+			    "timeToLive" : 0.5,
+			    "layer" : "middle",
+			    "collidesForeground" : true,
+			    "fullbright" : true,
+			    "light" : [134, 71, 179, 255],
+			    "size" : 0.25,
+			    "variance" : {
+			      "position" : [0.75, 0.75],
+			      "initialVelocity" : [3, 3],
+			      "finalVelocity" : [3, 3],
+			      "rotation" : 180,
+			      "angularVelocity" : 180
+			    }
+
+		      } 
+		    }		    
+		  ]
+		},	      
+	      
+	      
+		"<armName>Beam" : {
+		  "active" : false,
+		  "anchorPart" : "<armName>",
+		  "offset" : [0,4],
+		  "particles" : [		  
+		    { 
+		      "particle" : {
+			"type" : "ember",
+			"fullbright" : true,
+			"color" : [77, 143, 254, 150],
+			"light" : [4, 83, 218],
+			"fade" : 0.5,
+			"destructionAction" : "shrink",
+			"destructionTime" : 0.25,
+			"initialVelocity" : [0, 0],
+			"timeToLive" : 0.4,
+			"layer" : "middle",
+			"variance" : {
+			  "initialVelocity" : [1, 1],
+			  "timeToLive" : 0.4
+			}
+		      } 
+		    },
+		    { 
+		      "particle" : {
+			"type" : "ember",
+			"fullbright" : true,
+			"position" : [0, 1.5],
+			"color" : [77, 143, 254, 150],
+			"light" : [4, 83, 218],
+			"fade" : 0.5,
+			"destructionAction" : "shrink",
+			"destructionTime" : 0.25,
+			"initialVelocity" : [0, 0],
+			"timeToLive" : 0.4,
+			"layer" : "middle",
+			"variance" : {
+			  "initialVelocity" : [1, 1],
+			  "timeToLive" : 0.4
+			}
+		      } 
+		    }		    
+		  ]
+		}
+	      },
+	      "transformationGroups" : {
+		"<armName>Beam" : {}
+	      },
+	      "sounds" : {
+		"<armName>Windup" : ["/sfx/weapons/mechbeamcharge.ogg"],
+		"<armName>Fire" : ["/sfx/weapons/mechbeamfire.ogg"]
+	      }
+	    }
+	  }            
         }, {
             "op": "add",
             "path": "/fuheatcannon",
@@ -1321,13 +2006,113 @@
                     }
                 }
             }
+        },{
+            "op": "add",
+            "path": "/fuhuntergun",
+            "value": {
+                "stats": {
+                    "power": 4,
+                    "energy": 5,
+                    "mechMass": 2
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [7.8, 0],
+                    "extendTime": 0.725,
+                    "fireTime": 0.725,
+                    "projectileType": "fulaserpistol",
+                    "projectileInaccuracy": 0,
+                    "projectileCount": 1,
+                    "projectileParameters": {
+		      "speed" : 120,
+		      "damageKind" : "bow",
+		      "piercing" : true,
+		      "power" : 8
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/fusniperrifle2.png",
+                    "<armName>Fullbright": "arm/fusniperriflefullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "c44f4f",
+                    "953f3f",
+                    "723434",
+                    "470c0c"
+                ],
+                "defaultSecondaryColors": [
+                    "b0b0b0",
+                    "8b8b8b",
+                    "5c5c5c",
+                    "444444"
+                ],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/gun/plasma_sniper2.ogg"
+                        ]
+                    }
+                }
+            }
         }, {
+            "op": "add",
+            "path": "/fuhuntergun2",
+            "value": {
+                "stats": {
+                    "power": 6,
+                    "energy": 7,
+                    "mechMass": 3
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [7.8, 0],
+                    "extendTime": 0.725,
+                    "fireTime": 0.725,
+                    "projectileType": "fulaserpistol",
+                    "projectileInaccuracy": 0,
+                    "projectileCount": 1,
+                    "projectileParameters": {
+		      "speed" : 120,
+		      "damageKind" : "bow",
+		      "piercing" : true,
+		      "power" : 9
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/fusniperrifle.png",
+                    "<armName>Fullbright": "arm/fusniperriflefullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "c44f4f",
+                    "953f3f",
+                    "723434",
+                    "470c0c"
+                ],
+                "defaultSecondaryColors": [
+                    "b0b0b0",
+                    "8b8b8b",
+                    "5c5c5c",
+                    "444444"
+                ],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/gun/plasma_sniper2.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
             "op": "add",
             "path": "/fumechswordbreaker",
             "value": {
                 "stats": {
                     "power": 4,
-                    "energy": 4,
+                    "energy": 3,
                     "mechMass": 3
                 },
                 "partParameters": {
@@ -1343,7 +2128,7 @@
                     "comboFireAngle": 0.8,
                     "cooldownTime": 0.2,
                     "cooldownAngle": -0.3,
-                    "projectileType": "mechchainsawswoosh",
+                    "projectileType": "fumechbladeswoosh",
                     "projectileParameters": {
                         "power": 11.25,
                         "knockback": 25
@@ -1411,9 +2196,9 @@
             "path": "/fumechchainsword",
             "value": {
                 "stats": {
-                    "power": 6,
-                    "energy": 5,
-                    "mechMass": 3
+                    "power": 7,
+                    "energy": 6,
+                    "mechMass": 4
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/meleearm.lua",
@@ -1428,15 +2213,15 @@
                     ],
                     "windupTime": 0.35,
                     "windupAngle": 0.8,
-                    "swingTime": 0.08,
-                    "fireTime": 0.25,
+                    "swingTime": 0.1,
+                    "fireTime": 0.35,
                     "fireAngle": -0.8,
                     "comboFireAngle": 0.8,
-                    "cooldownTime": 0.6,
+                    "cooldownTime": 0.5,
                     "cooldownAngle": -0.3,
-                    "projectileType": "mechchainsawswoosh",
+                    "projectileType": "fumechchainsawswoosh",
                     "projectileParameters": {
-                        "power": 18,
+                        "power": 20,
                         "knockback": 32
                     },
                     "projectileTrackSource": true,
@@ -1448,16 +2233,16 @@
                     "<armName>Fullbright": "arm/crocfullbright.png"
                 },
                 "defaultPrimaryColors": [
-                    "96cbe7",
-                    "5588d4",
-                    "344495",
-                    "1a1c51"
+                    "595959",
+                    "3f3f3f",
+                    "2c2c2c",
+                    "141414"
                 ],
                 "defaultSecondaryColors": [
-                    "96cbe7",
-                    "5588d4",
-                    "344495",
-                    "1a1c51"
+                    "595959",
+                    "3f3f3f",
+                    "2c2c2c",
+                    "141414"
                 ],
                 "animationCustom": {
                     "animatedParts": {
@@ -1501,10 +2286,10 @@
             "value": {
                 "stats": {
                     "power": 3,
-                    "energy": 5,
+                    "energy": 9,
                     "rapidFire": 5,
-                    "multicount" : 4,
-                    "mechMass": 4
+                    "multicount" : 6,
+                    "mechMass": 8
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
@@ -1631,7 +2416,7 @@
 	      "stats": {
 		"power": 4,
 		"energy": 4,
-                "mechMass": 1
+                "mechMass": 2
 	      },
 	      "partParameters": {
 		"script": "/vehicles/modularmech/armscripts/drillarm.lua",
@@ -2184,7 +2969,306 @@
 		      }
 		    }
               }
-            }	  
+            },
+ 
+	  {
+	    "op": "add",
+	    "path": "/spikefist2",
+	    "value": {
+	      "stats": {
+		"power": 4,
+		"energy": 4,
+		"mechMass" : 2
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/boomerangarm.lua",
+		"armClass": "Boomerang",
+		"rotationLimits": [
+		  -1.75,
+		  1.75
+		],
+		"fireOffset": [
+		  3.5,
+		  -0.75
+		],
+		"windupTime": 0.2,
+		"fireTime": 0.6,
+		"projectileType": "spikefistrocket",
+		"projectileParameters": {
+		  "speed": 60,
+		  "power": 15,
+		  "knockback": 25,
+		  "knockbackDirectional": true,
+		  "ignoreTerrain": false,
+		  "controlForce": 80,
+		  "pickupDistance": 1,
+		  "snapDistance": 5,
+		  "actionOnCollide" : [
+		    {
+		      "action" : "sound",
+		      "options" : [ "/sfx/weapons/explosion1.ogg", "/sfx/weapons/explosion2.ogg" ]
+		    },		  
+		    {
+		      "action" : "projectile",
+		      "inheritDamageFactor" : 0,
+		      "type" : "burstjumpboom3"
+		    },		  
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 4,
+		      "backgroundRadius" : 2,
+		      "explosiveDamageAmount" : 32,
+		      "harvestLevel" : 99,
+		      "delaySteps" : 2
+		    }		  
+		  ]
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/spikefist.png",
+		"<armName>Fullbright": "arm/spikefist_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"ffffa7",
+		"e2c344",
+		"a46e06",
+		"642f00"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "end"
+			}
+		      }
+		    }
+		  }
+		},
+		"sounds": {
+		  "<armName>Recover": [
+		    "/sfx/gun/reload/rocket_reload_clip1.ogg"
+		  ],
+		  "<armName>Fire": [
+		    "/sfx/gun/rocket2.ogg"
+		  ]
+		}
+	      }
+	    }
+	  },{
+	    "op": "add",
+	    "path": "/spikefist3",
+	    "value": {
+	      "stats": {
+		"power": 8,
+		"energy": 8,
+		"mechMass" : 4
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/boomerangarm.lua",
+		"armClass": "Boomerang",
+		"rotationLimits": [
+		  -1.75,
+		  1.75
+		],
+		"fireOffset": [
+		  3.5,
+		  -0.75
+		],
+		"windupTime": 0.2,
+		"fireTime": 0.6,
+		"projectileType": "plasmafistrocket",
+		"projectileParameters": {
+		  "speed": 60,
+		  "power": 15,
+		  "knockback": 20,
+		  "knockbackDirectional": true,
+		  "ignoreTerrain": false,
+		  "controlForce": 65,
+		  "pickupDistance": 1,
+		  "snapDistance": 5
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/spikefist3.png",
+		"<armName>Fullbright": "arm/spikefist3_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"ffffa7",
+		"e2c344",
+		"a46e06",
+		"642f00"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "end"
+			}
+		      }
+		    }
+		  }
+		},
+		"sounds": {
+		  "<armName>Recover": [
+		    "/sfx/weapons/fucellgun.ogg"
+		  ],
+		  "<armName>Fire": [
+		    "/sfx/weapons/energyweapon2.ogg"
+		  ]
+		}
+	      }
+	    }
+	  },{
+	    "op": "add",
+	    "path": "/spikefist4",
+	    "value": {
+	      "stats": {
+		"power": 10,
+		"energy": 10,
+		"mechMass" : 4
+	      },
+	      "partParameters": {
+		"script": "/vehicles/modularmech/armscripts/boomerangarm.lua",
+		"armClass": "Boomerang",
+		"rotationLimits": [
+		  -1.75,
+		  1.75
+		],
+		"fireOffset": [
+		  3.5,
+		  -0.75
+		],
+		"windupTime": 0.2,
+		"fireTime": 0.6,
+		"projectileType": "plasmafistrocket2",
+		"projectileParameters": {
+		  "speed": 60,
+		  "power": 5,
+		  "knockback": 25,
+		  "knockbackDirectional": true,
+		  "ignoreTerrain": false,
+		  "controlForce": 65,
+		  "pickupDistance": 1,
+		  "snapDistance": 5
+		}
+	      },
+	      "partImages": {
+		"<armName>": "arm/spikefist3.png",
+		"<armName>Fullbright": "arm/spikefist3_fullbright.png"
+	      },
+	      "defaultPrimaryColors": [
+		"f4988c",
+		"d93a3a",
+		"932625",
+		"601119"
+	      ],
+	      "defaultSecondaryColors": [
+		"ffffa7",
+		"e2c344",
+		"a46e06",
+		"642f00"
+	      ],
+	      "animationCustom": {
+		"animatedParts": {
+		  "stateTypes": {
+		    "<armName>": {
+		      "states": {
+			"windup": {
+			  "mode": "end"
+			}
+		      }
+		    }
+		  }
+		},
+		"sounds": {
+		  "<armName>Recover": [
+		    "/sfx/weapons/fucellgun.ogg"
+		  ],
+		  "<armName>Fire": [
+		    "/sfx/weapons/energyweapon2.ogg"
+		  ]
+		}
+	      }
+	    }
+	  },
+	  
+	  {
+            "op": "add",
+            "path": "/fusentrygun",
+            "value": {
+                "stats": {
+                    "power": 2,
+                    "energy": 8,
+                    "mechMass": 1,
+                    "basePower" : 15
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [4.65, -0.625],
+                    "extendTime": 1,
+                    "fireTime": 10,
+                    "projectileType": "minirocketflyer",
+                    "projectileCount": 1,
+                    "projectileInaccuracy": 0.06,
+                    "projectileParameters": {
+                          "power": 1.65,
+			  "actionOnReap" : [
+			    {
+			      "action" : "spawnmonster",
+			      "type" : "twigunpet",
+			      "offset" : [0, 0.55],
+			      "level" : 3
+			    },
+			    {
+			      "action" : "config",   
+			      "file" : "/projectiles/explosions/elementimpact/cosmicimpact.config"
+			    }
+			  ]                        
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/fusentrygun.png",
+                    "<armName>Fullbright": "arm/fusentrygun_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "5f5b64",
+                    "444248",
+                    "2f2e32",
+                    "252027"
+                ],
+                "defaultSecondaryColors": [
+                    "7a7a7a",
+                    "555555",
+                    "333333",
+                    "151515"
+                ],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/weapons/densiniumrifle.ogg"
+                        ]
+                    }
+                }
+            }
+        }	  
     ],
 
     [{
@@ -2193,7 +3277,7 @@
         },{
             "op": "add",
             "path": "/xsm_roninbeam/stats/mechMass",
-            "value": 3
+            "value": 5
         }, {
             "op": "add",
             "path": "/xsm_roninbeam/stats/basePower",
@@ -2211,7 +3295,7 @@
         }, {
             "op": "add",
             "path": "/xsm_gravholdbeam/stats/mechMass",
-            "value": 2
+            "value": 4
         }
     ],
     [{
@@ -2220,7 +3304,7 @@
         }, {
             "op": "add",
             "path": "/xsm_gravpullbeam/stats/mechMass",
-            "value": 2
+            "value": 4
         }
     ],    
     [{
@@ -2229,7 +3313,7 @@
         }, {
             "op": "add",
             "path": "/xsm_thetabeam/stats/mechMass",
-            "value": 6
+            "value": 8
         },{
             "op": "add",
             "path": "/xsm_thetabeam/stats/basePower",
@@ -2247,7 +3331,7 @@
         }, {
             "op": "add",
             "path": "/xsm_sigmagun/stats/mechMass",
-            "value": 1
+            "value": 3
         },{
             "op": "add",
             "path": "/xsm_sigmagun/partParameters/projectileParameters/power",
@@ -2265,7 +3349,7 @@
         }, {
             "op": "add",
             "path": "/xsm_elitesigmagun/stats/mechMass",
-            "value": 2
+            "value": 4
         },{
             "op": "replace",
             "path": "/xsm_elitesigmagun/partParameters/projectileParameters/power",
@@ -2283,7 +3367,7 @@
         }, {
             "op": "add",
             "path": "/xsm_piraterhogun/stats/mechMass",
-            "value": 2
+            "value": 4
         },{
             "op": "replace",
             "path": "/xsm_piraterhogun/partParameters/projectileParameters/power",
@@ -2301,7 +3385,7 @@
         }, {
             "op": "add",
             "path": "/xsm_rhoblade/stats/mechMass",
-            "value": 2
+            "value": 4
         },{
             "op": "replace",
             "path": "/xsm_rhoblade/partParameters/projectileParameters/power",
@@ -2315,7 +3399,7 @@
         }, {
             "op": "add",
             "path": "/xsm_pyrocutlass/stats/mechMass",
-            "value": 2
+            "value": 4
         },{
             "op": "replace",
             "path": "/xsm_pyrocutlass/partParameters/projectileParameters/power",
@@ -2329,7 +3413,7 @@
         }, {
             "op": "add",
             "path": "/dva_shotgunarm/stats/mechMass",
-            "value": 1
+            "value": 2
         },{
             "op": "replace",
             "path": "/dva_shotgunarm/partParameters/projectileParameters/power",
@@ -2347,7 +3431,7 @@
         }, {
             "op": "add",
             "path": "/xsm_roninrhocannon/stats/mechMass",
-            "value": 4
+            "value": 5
         },{
             "op": "replace",
             "path": "/xsm_roninrhocannon/partParameters/projectileParameters/power",
@@ -2411,6 +3495,36 @@
             "value": 20
         }
     ],
+    
+    [{
+            "op": "test",
+            "path": "/redlaserbeam"
+        },{
+            "op": "add",
+            "path": "/redlaserbeam/stats/mechMass",
+            "value": 5
+        },{
+            "op": "add",
+            "path": "/redlaserbeam/stats/energy",
+            "value": 7
+        },{
+            "op": "add",
+            "path": "/redlaserbeam/stats/power",
+            "value": 7
+        },   {
+            "op": "add",
+            "path": "/redlaserbeam/stats/basePower",
+            "value": 1.125
+        },{
+            "op": "replace",
+            "path": "/redlaserbeam/damageSources/<armName>Beam/damage",
+            "value": 0
+        },{
+            "op": "replace",
+            "path": "/redlaserbeam/partParameters/script",
+            "value": "/vehicles/modularmech/armscripts/xsm_beamarm.lua"
+        }
+    ],    
 
     [{
             "op": "test",
@@ -2554,5 +3668,86 @@
             "path": "/cworks_missilearmdrone/partParameters/droneParameters/gun/projectileParameters/power",
             "value": 11
         }
-    ]    
+    ],
+
+    [{
+            "op": "test",
+            "path": "/linerifle"
+        }, {
+            "op": "add",
+            "path": "/linerifle/stats/mechMass",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/linerifle/partParameters/projectileParameters/power",
+            "value": 50
+        }
+    ],
+
+    [{
+            "op": "test",
+            "path": "/dnac"
+        }, {
+            "op": "add",
+            "path": "/dnac/stats/mechMass",
+            "value": 5
+        },{
+            "op": "add",
+            "path": "/dnac/stats/rapidFire",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/dnac/partParameters/projectileParameters/power",
+            "value": 0.05
+        }
+    ],
+
+    [{
+            "op": "test",
+            "path": "/dnrl"
+        }, {
+            "op": "add",
+            "path": "/dnac/stats/mechMass",
+            "value": 5
+        },{
+            "op": "add",
+            "path": "/dnac/stats/multicount",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/dnac/partParameters/projectileParameters/power",
+            "value": 15
+        }
+    ],
+
+    [{
+            "op": "test",
+            "path": "/dnlc"
+        },{
+            "op": "add",
+            "path": "/dnlc/stats/mechMass",
+            "value": 5
+        }, {
+            "op": "add",
+            "path": "/dnlc/stats/basePower",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/dnlc/damageSources/<armName>Beam/damage",
+            "value": 0
+        }
+    ],    
+    [{
+            "op": "test",
+            "path": "/dncf"
+        },{
+            "op": "add",
+            "path": "/dncf/stats/mechMass",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/dncf/partParameters/projectileParameters/power",
+            "value": 26
+        }
+    ]
 ]

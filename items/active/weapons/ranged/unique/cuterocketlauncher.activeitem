@@ -1,0 +1,100 @@
+{
+  "itemName" : "cuterocketlauncher",
+  "price" : 550,
+  "inventoryIcon" : "cuterocketlauncher.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Multicolored blasts of joy!
+^yellow;Counts as 'energy' for set bonuses^reset;",
+    "shortdescription" : "Prismatic Rocket Launcher",
+  "level" : 4,
+  "category" : "rocketLauncher", 
+  "tooltipKind" : "gun2",
+  "weaponType" : "Rifle",
+  "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "cuterocketlauncher.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/darknessblast.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.4, 0.8],
+  "muzzleOffset" : [2.65, 0.25],
+  "learnBlueprintsOnPickup" : [  ],
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.35,
+    "baseDps" : 5.8,
+    "energyUsage" : 35.0,
+    "inaccuracy" : 0.01,
+
+    "projectileCount" : 4,
+    "fireType" : "auto",
+    
+    "projectileType" : "fuwidebeamshotrocket",
+    "projectileParameters" : { 
+      "speed" : 80,
+      "knockback" : 20,
+      "timeToLive" : 4
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+
+  "critChance" : 2,
+  "critBonus" : 3,
+
+  "altAbilityType" : "swtjc_ewg_bouncingorbitals",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

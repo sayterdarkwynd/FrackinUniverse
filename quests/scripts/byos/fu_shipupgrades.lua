@@ -20,7 +20,6 @@ function update(dt)
 		fuelEfficiencyShip = world.getProperty("fu_byos.fuelEfficiency")
 		shipShipSpeed = player.shipUpgrades().shipSpeed
 		shipSpeedShip = world.getProperty("fu_byos.shipSpeed")
-		shipShipMass = status.stat("shipMass")
 		shipMassShip = world.getProperty("fu_byos.shipMass")
 		if world.getProperty("fu_byos.inWarp") then
 			--world.spawnProjectile("explosivebullet", vec2.add(entity.position(), {50,0}), entity.id(), {-1, 0}, false, {}) -- disabled until properly implemented
@@ -68,9 +67,15 @@ function update(dt)
 				shipSpeedShipOld = shipSpeedShipNew
 			end
 		end
-		--effect.addStatModifierGroup({stat = "shipMass", amount = 10 }) --Figure out best way to add shipMass
-		
-		
+		if shipMassShip then
+			status.clearPersistentEffects("byos")
+			shipShipMass = status.stat("shipMass")
+			shipMassTotal, shipMassModifier = calculateNew("shipMass", shipMassShip, 0, shipShipMass)
+			if shipShipMass + shipMassModifier ~= shipMassTotal then
+				shipMassModifier = shipMassTotal - shipShipMass
+			end
+			status.addPersistentEffect("byos", {stat = "shipMass", amount = shipMassModifier})
+		end
 		if maxFuelNew and world.getProperty("ship.fuel") > maxFuelNew then
 			world.setProperty("ship.fuel", maxFuelNew)
 		end
@@ -78,14 +83,13 @@ function update(dt)
 end
 
 function calculateNew(stat, modifier, oldModifier, currentAmount)
-	for configStat, info in pairs (upgradeConfig) do
-		if configStat == stat then
-			statModifier = math.max(modifier, info.min or -math.huge)
-			statModifier = math.min(statModifier, info.max or math.huge)
-			statNew = math.max(currentAmount + (statModifier - oldModifier), info.totalMin or -math.huge)
-			statNew = math.min(statNew, info.totalMax or math.huge)
-			return statNew, statModifier
-		end
+	info = upgradeConfig[stat]
+	if info then
+		statModifier = math.max(modifier, info.min or -math.huge)
+		statModifier = math.min(statModifier, info.max or math.huge)
+		statNew = math.max(currentAmount + (statModifier - oldModifier), info.totalMin or -math.huge)
+		statNew = math.min(statNew, info.totalMax or math.huge)
+		return statNew, statModifier
 	end
 end
 

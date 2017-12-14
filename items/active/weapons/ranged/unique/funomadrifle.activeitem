@@ -1,0 +1,146 @@
+{
+  "itemName" : "funomadrifle",
+  "price" : 460,
+  "inventoryIcon" : "nomadgun.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Highly useful weapon for wanderers.
+^yellow;Counts as Hunting weapon^reset;
+^green;Causes Rad Burn^reset;",
+  "shortdescription" : "Nomad Rifle",
+  "category" : "sniperRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Coilgun",
+  "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/funomadgun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "nomadgun.png",
+    "middlefullbright" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    },   
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/beam.wav" ]
+    }
+  },
+
+  "baseOffset" : [0.7, 0.4],
+  "muzzleOffset" : [2.6, 0.0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.7,
+    "baseDps" : 7.6,
+    "energyUsage" : 32.0,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "poisonguardianbullet",
+    "projectileParameters" : { 
+      "speed" : 90,
+      "knockback" : 25,
+      "damageKind" : "radioactivebow",
+      "statusEffects" : [ "radiationburn" ],
+	    "periodicActions":[
+	    {
+	      "action":"particle",
+	      "repeat":true,
+	      "rotate":true,
+	      "specification":{
+		"destructionAction":"fade",
+		"destructionTime":0.2,
+		"fullbright":true,
+		"image":"/projectiles/boss/guardianboss/guardianpellet/poisonguardianpellet.png",
+		"layer":"back",
+		"position":[0,0],
+		"timeToLive":0,
+		"type":"textured"
+		},
+	      "time":0
+	    },
+
+	    {
+	      "action":"particle",
+	      "repeat":true,
+	      "rotate":true,
+	      "specification":{
+		"destructionAction":"fade",
+		"destructionTime":0.2,
+		"fullbright":true,
+		"image":"/projectiles/boss/guardianboss/guardianpellet/poisonguardianpellet.png",
+		"layer":"back",
+		"position":[0,0],
+		"timeToLive":0.03,
+		"type":"textured"
+		},
+	      "time":0.05
+	      }
+	    ]      
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "radioactivedrip1", "offset" : [0.0, 0.0] },
+          { "particle" : "radioactivedrip2", "offset" : [0.0, 0.0] },
+          { "particle" : "radioactivedrip3", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+
+  "critChance" : 4,
+  "critBonus" : 4,
+  "altAbilityType" : "explosiveburst",
+  "altAbility" : {
+    "name" : "Radiation Burst",
+    "baseDps" : 4
+  },
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

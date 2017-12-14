@@ -1,7 +1,7 @@
 setName="fu_legioniiset"
 
 weaponBonus={
-	{stat = "critChance", amount = 10}
+	{stat = "critChance", amount = 4}
 }
 
 armorBonus={}

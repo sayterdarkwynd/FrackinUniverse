@@ -17,9 +17,10 @@ end
 
 function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
-
-  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *2
-  local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)/25) *2)
+  --local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *2
+  --local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)/25) *2)
+  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *650
+  local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)) *650)
   return math.floor(prevValue)
 end
 
@@ -32,8 +33,8 @@ function populateItemList(forceRepop)
 
   widget.setVisible("emptyLabel", #upgradeableWeaponItems == 0)
 
-  local playerModule = player.hasCountOfItem("manipulatormodule", true)
-
+  --local playerModule = player.hasCountOfItem("manipulatormodule", true)
+  local playerModule = player.currency("fuscienceresource")
   if forceRepop or not compare(upgradeableWeaponItems, self.upgradeableWeaponItems) then
     self.upgradeableWeaponItems = upgradeableWeaponItems
     widget.clearListItems(self.itemList)
@@ -66,7 +67,8 @@ function populateItemList(forceRepop)
 end
 
 function showWeapon(item, price)
-  local playerModule =  player.hasCountOfItem("manipulatormodule", true)
+  --local playerModule =  player.hasCountOfItem("manipulatormodule", true)
+    local playerModule = player.currency("fuscienceresource")
   local enableButton = false
 
   if item then
@@ -101,7 +103,8 @@ function doUpgrade()
       local consumedItem = player.consumeItem(upgradeItem, false, true)
       if consumedItem then
         --local consumedCurrency = player.consumeItem("manipulatormodule", false, selectedData.price)
-        local consumedCurrency = player.consumeItem({name = "manipulatormodule", count = selectedData.price}, false, true)
+        --local consumedCurrency = player.consumeItem({name = "manipulatormodule", count = selectedData.price}, false, true) 
+        local consumedCurrency = player.consumeCurrency("fuscienceresource", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
         
@@ -126,7 +129,7 @@ function doUpgrade()
 			  
 		    -- beams and miners
 			if (itemConfig.config.primaryAbility.beamLength) then
-			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + ( upgradedItem.parameters.level * 3.14 )
+			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + ( upgradedItem.parameters.level + 2 )
 			  upgradedItem.parameters.primaryAbility.energyUsage= itemConfig.config.primaryAbility.energyUsage + ( upgradedItem.parameters.level /10 )
 			end
 		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly

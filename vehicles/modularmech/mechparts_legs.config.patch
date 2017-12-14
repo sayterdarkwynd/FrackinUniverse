@@ -115,7 +115,7 @@
       "frontLeg" : "leg/heavyleg.png",
       "frontLegFullbright" : "leg/heavyleg_fullbright.png",
       "frontLegJoint" : "legjoint/heavy.png",
-      "hips" : "hips/ronin.png"
+      "hips" : "hips/heavy2.png"
     },
     "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
     "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
@@ -133,19 +133,43 @@
     },
     "partParameters" : {},
     "partImages" : {
-      "backLeg" : "leg/heavyleg.png",
-      "backLegFullbright" : "leg/heavyleg_fullbright.png",
+      "backLeg" : "leg/heavyleg2.png",
+      "backLegFullbright" : "leg/heavyleg2_fullbright.png",
       "backLegJoint" : "legjoint/heavy.png",
-      "frontLeg" : "leg/heavyleg.png",
-      "frontLegFullbright" : "leg/heavyleg_fullbright.png",
+      "frontLeg" : "leg/heavyleg2.png",
+      "frontLegFullbright" : "leg/heavyleg2_fullbright.png",
       "frontLegJoint" : "legjoint/heavy.png",
-      "hips" : "hips/ronin.png"
+      "hips" : "hips/heavy2.png"
     },
     "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
     "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
     "animationCustom" : {}
     }
   },  
+  {
+    "op" : "add",
+    "path" : "/falconleg3",
+    "value" : {
+    "stats" : {
+      "speed" : 4,
+      "jump" : 6,
+      "mechMass" : 7
+    },
+    "partParameters" : {},
+    "partImages" : {
+      "backLeg" : "leg/heavyleg3.png",
+      "backLegFullbright" : "leg/heavyleg3_fullbright.png",
+      "backLegJoint" : "legjoint/heavy.png",
+      "frontLeg" : "leg/heavyleg3.png",
+      "frontLegFullbright" : "leg/heavyleg3_fullbright.png",
+      "frontLegJoint" : "legjoint/heavy.png",
+      "hips" : "hips/heavy2.png"
+    },
+    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+    "animationCustom" : {}
+    }
+  },   
   {
     "op" : "add",
     "path" : "/fuexplorerleg",
@@ -263,7 +287,10 @@
     }
   }
   ],
-  
+  	[
+  	  { "op": "test", "path": "/avikan"},
+  	  { "op": "add", "path": "/avikan/stats/mechMass","value": 4 }	
+	],  
   	[
   	  { "op": "test", "path": "/xsm_sigmamech"},
   	  { "op": "add", "path": "/xsm_sigmamech/stats/mechMass","value": 4 }	
@@ -291,5 +318,30 @@
 	[
 	  { "op": "test", "path": "/dvamech"},
 	  { "op": "add", "path": "/dvamech/stats/mechMass","value": 1 }	
-	]		
+	],
+	
+	
+
+	[
+	  { "op": "test", "path": "/shadel"},
+	  { "op": "add", "path": "/shadel/stats/mechMass","value": 5 }	
+	],
+	[
+	  { "op": "test", "path": "/sludgel"},
+	  { "op": "add", "path": "/sludgel/stats/mechMass","value": 6 }	
+	],
+	[
+	  { "op": "test", "path": "/mmkllll"},
+	  { "op": "add", "path": "/mmkllll/stats/mechMass","value": 4 }	
+	],
+	[
+	  { "op": "test", "path": "/bhml"},
+	  { "op": "add", "path": "/bhml/stats/mechMass","value": 4 }	
+	],
+	
+	[
+	  { "op": "test", "path": "/dnt"},
+	  { "op": "add", "path": "/dnt/stats/mechMass","value": 4 }	
+	]	
+	
 ]

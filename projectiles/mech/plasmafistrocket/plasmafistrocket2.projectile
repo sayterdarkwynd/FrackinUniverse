@@ -1,0 +1,113 @@
+{
+  "projectileName" : "plasmafistrocket2",
+  "image" : "plasmafistrocket.png",
+  "animationCycle" : 1.0,
+  "frameNumber" : 1,
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : false,
+  "fullbright" : true,  
+  "physics" : "illusion",
+  "bounces" : 12,
+  "piercing" : true,
+  "timeToLive" : 5,
+  "light" : [0, 100, 150],
+  
+  "power" : 5.0,
+  "speed" : 90,
+  "damageKind" : "electric",
+  "damageRepeatTimeout" : 0.05,
+
+  "statusEffects" : [ "electrified", "stun"],	
+  "actionOnReap" : [ 
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    }	  
+  ],
+
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    },	  
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/melee/fist_hit_metal1.ogg",
+        "/sfx/melee/fist_hit_metal2.ogg",
+        "/sfx/melee/fist_hit_metal3.ogg",
+        "/sfx/melee/fist_hit_metal4.ogg",
+        "/sfx/melee/fist_hit_metal5.ogg",
+        "/sfx/melee/fist_hit_metal6.ogg"
+      ]
+    }
+  ],
+
+  "periodicActions" : [
+    {
+      "time":0.01,
+      "action":"projectile",
+      "type":"hgravityexplosion",
+      "config":{
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
+        "power":0.0
+      }
+    },  
+    {
+      "action" : "config",
+      "time" : 0.05,
+      "loop" : true,      
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    },	  
+    {
+      "action" : "explosion",
+      "time" : 0.03,
+      "loop" : true,
+      "foregroundRadius" : 2,
+      "backgroundRadius" : 2,
+      "explosiveDamageAmount" : 2.5,
+      "harvestLevel" : 99,
+      "delaySteps" : 2
+    },	  
+    {
+      "time" : 0.05,
+      "repeat" : true,
+
+      "action" : "loop",
+      "count" : 0.05,
+      "body" : [
+        {
+          "action" : "particle",
+          "rotate" : true,
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "position" : [-1.5, 0],
+            "color" : [0, 150, 220, 255],
+            "light" : [0, 100, 150],
+            "fullbright" : true,
+            "fade" : 0.9,
+            "initialVelocity" : [-6.0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [2, 9],
+            "timeToLive" : 0.5,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0, 1],
+              "initialVelocity" : [5, 9],
+              "timeToLive" : 0.5,
+              "size" : 0.65
+            }
+          }
+        }
+      ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ]
+}

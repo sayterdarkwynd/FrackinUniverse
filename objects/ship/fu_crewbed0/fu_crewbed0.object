@@ -1,0 +1,62 @@
+{
+  "objectName" : "fu_crewbed0",
+  "colonyTags" : ["misc"],
+  "rarity" : "legendary",
+  "description" : "These crappy beds attach to a wall. Horribly uncomfortable. ^yellow;Crew +1^reset;",
+  "shortdescription" : "Crew Bed",
+  "race" : "generic",
+  "category" : "furniture",
+  "printable" : false,
+  "lightColor" : [20, 29, 33],
+  
+  "learnBlueprintsOnPickup" : [ "fu_crewbed" ],
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage" : "/objects/ship/fu_crewbed0/fu_crewbedcover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed1"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "fu_crewbed0icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_crewbed0.png:<color>"} ],
+      "flipImages" : true,
+      "imagePosition" : [-24, 8],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      
+      "sitPosition" : [-4, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "direction" : "left",
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_crewbed0.png:<color>" }],
+      "imagePosition" : [-24, 8],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      
+      "sitPosition" : [-13, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "direction" : "right",
+      "collision" : "platform"
+    }
+    
+  ],
+  
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "crewSize" : 1
+  }
+}

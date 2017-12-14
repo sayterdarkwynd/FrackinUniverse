@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/scripts/companions/capturable.lua"
 
 function init()
   self.pathing = {}
@@ -60,7 +61,8 @@ function init()
   end
 
   self.lastInteract = 0
-  monster.setInteractive(false)
+  monster.setInteractive(true)
+  capturable.init()
 end
 
 function receiveNotification(notification)
@@ -100,6 +102,7 @@ function update(dt)
     util.debugText(self.state.stateDesc(), mcontroller.position(), "blue")
   end
   drawDebugResources()
+  capturable.update(dt)
 end
 
 function setAnchor(entityId)
@@ -147,7 +150,7 @@ function findAnchor()
     end
   end
 
-  if not storage.home then
+  if not storage.home and not capturable.ownerUuid() then
     status.setResource("health", 0)
   else
     -- Pet spawned by a colony deed -- allow the pet to continue living until
@@ -370,4 +373,17 @@ function move(direction, options)
   end
 
   return false, "ledge"
+end
+
+function shouldDie()
+  return status.resource("health") <= 0 or capturable.justCaptured
+end
+
+function die()
+  if not capturable.justCaptured then
+    if self.deathBehavior then
+      self.deathBehavior:run(script.updateDt())
+    end
+    capturable.die()
+  end
 end

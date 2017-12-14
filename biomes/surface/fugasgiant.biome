@@ -3,14 +3,16 @@
   "friendlyName" : "Gas Giant",
   "airless" : true,
 
-  "statusEffects" : [ "gasworld1" ],
+  "statusEffects" : [ "gasworld1", "erchiussickness3" ],
   
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 1,
+        "select" : 2,
         "pool" : [ 
-          [ 0.05, "gasbag" ]
+          [ 0.45, "gasbag" ],
+          [ 0.05, "gasbagstat" ],
+          [ 0.50, "skywhale" ]
         ]
       }
     ],

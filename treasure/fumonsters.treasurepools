@@ -57,10 +57,10 @@
     [1, {
         "pool" : [
           {"weight" : 0.0333, "item" : [ "liquidmetallichydrogen", 150]},
-          {"weight" : 0.0333, "item" : [ "dnasample", 150]},
+          {"weight" : 0.0333, "item" : [ "fuscienceresource", 150]},
           {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-          {"weight" : 0.0200, "item" : [ "cellmateria", 50]},
-          {"weight" : 0.0366, "item" : [ "mineralsample", 15]},
+          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
+          {"weight" : 0.0366, "item" : [ "fuscienceresource", 15]},
           {"weight" : 0.0366, "item" : [ "iodine", 4]},
           {"weight" : 0.0366, "item" : [ "ff_mercury", 6]}
         ],
@@ -79,7 +79,7 @@
         {"item" : "rawfish", "amount" : 3}
       ],
       "pool" : [
-        {"weight" : 0.400, "item" : "geneticmaterial"},
+        {"weight" : 0.400, "item" : "fuscienceresource"},
         {"weight" : 0.600, "item" : "kelp"}
       ],
       "poolRounds" : [
@@ -122,13 +122,13 @@
       "pool" : [
         {"weight" : 0.20, "pool" : "money"},
         {"weight" : 0.0333, "item" : [ "monsterplating", 15]},
-        {"weight" : 0.0333, "item" : [ "dnasample", 15]},
+        {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
         {"weight" : 0.0211, "item" : [ "protociteore", 5]},
         {"weight" : 0.0211, "item" : [ "penumbriteore", 8]},
         {"weight" : 0.0211, "item" : [ "metalchunk", 5]},
         {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-        {"weight" : 0.0200, "item" : [ "cellmateria", 50]},
-        {"weight" : 0.0366, "item" : [ "mineralsample", 15]},
+        {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
+        {"weight" : 0.0366, "item" : [ "fuscienceresource", 15]},
         {"weight" : 0.0366, "item" : [ "iodine", 4]},
         {"weight" : 0.0366, "item" : [ "ff_mercury", 6]},
         {"weight" : 0.012, "item" : [ "trooperhead", 1]},
@@ -171,20 +171,9 @@
         {"weight" : 0.3, "pool" : "ffmetallicbossChest"},
         {"weight" : 0.3, "pool" : "fuEssence" },
         {"weight" : 0.1, "item" : "staticcell"},
-        {"weight" : 0.1, "item" : "servitorchassis"},
-        {"weight" : 0.1, "item" : "servitorlaser"},
-        {"weight" : 0.1, "item" : "servitorbehaviorchip"},
-        {"weight" : 0.1, "item" : "precursorbattery"},
-        {"weight" : 0.1, "item" : "precursorcharger"},
-        {"weight" : 0.1, "item" : "precursorchip"},
-        {"weight" : 0.1, "item" : "precursorcore"},
-        {"weight" : 0.1, "item" : "precursordatadrive"},
-        {"weight" : 0.1, "item" : "precursorfluid"},
-        {"weight" : 0.1, "item" : "precursorfuelcell"},
-        {"weight" : 0.1, "item" : "precursorgel"},
-        {"weight" : 0.1, "item" : "precursorgrease"},
-        {"weight" : 0.1, "item" : "precursorram"}
-
+    	  {"weight" : 0.1, "item" : ["ff_spareparts", 1]},
+    	  {"weight" : 0.1, "item" : ["laserdiode", 1]},
+    	  {"weight" : 0.1, "item" : ["fuprocessor", 1]}
       ],
       "poolRounds" : [
         [0.90, 0],
@@ -202,15 +191,16 @@
       }
     ]
   ],
+  
   "servitorTreasure" : [
     [1, {
       "pool" : [
         {"weight" : 0.5, "pool" : "robotTreasure"},
         {"weight" : 0.2, "item" : "stickofram"},
         {"weight" : 0.2, "item" : "staticcell"},
-        {"weight" : 0.1, "item" : "servitorchassis"},
-        {"weight" : 0.1, "item" : "servitorlaser"},
-        {"weight" : 0.1, "item" : "servitorbehaviorchip"}
+    	  {"weight" : 0.1, "item" : ["ff_spareparts", 1]},
+    	  {"weight" : 0.1, "item" : ["laserdiode", 1]},
+    	  {"weight" : 0.1, "item" : ["fuprocessor", 1]}
       ],
       "poolRounds" : [
         [0.20, 0],
@@ -221,30 +211,19 @@
       }
     ]
   ],
+  
   "servitorHunting" : [
     [1, {
       "pool" : [
-        {"weight" : 0.2, "item" : "staticcell"},
-        {"weight" : 0.2, "item" : "stickofram"},
-        {"weight" : 0.2, "item" : "servitorchassis"},
-        {"weight" : 0.2, "item" : "servitorlaser"},
-        {"weight" : 0.2, "item" : "servitorbehaviorchip"},
-        {"weight" : 0.1, "pool":"salvageComponent"},
-        {"weight" : 0.1, "item" : "precursorbattery"},
-        {"weight" : 0.1, "item" : "precursorcharger"},
-        {"weight" : 0.1, "item" : "precursorchip"},
-        {"weight" : 0.1, "item" : "precursorcore"},
-        {"weight" : 0.1, "item" : "precursordatadrive"},
-        {"weight" : 0.1, "item" : "precursorfluid"},
-        {"weight" : 0.1, "item" : "precursorfuelcell"},
-        {"weight" : 0.1, "item" : "precursorgel"},
-        {"weight" : 0.1, "item" : "precursorgrease"},
-        {"weight" : 0.1, "item" : "precursorram"}
+        {"weight" : 0.1, "item" : "staticcell"},
+        {"weight" : 0.1, "item" : "stickofram"},
+    	  {"weight" : 0.1, "item" : ["ff_spareparts", 1]},
+    	  {"weight" : 0.1, "item" : ["laserdiode", 1]},
+    	  {"weight" : 0.1, "item" : ["fuprocessor", 1]}, 
+        {"weight" : 0.5, "pool" : "fusalvageComponent"}
       ],
       "poolRounds" : [
-        [0.6, 0],
-        [0.5, 1],
-        [0.4, 2]
+        [1, 0]
       ],
       "allowDuplication" : false
       }
@@ -415,9 +394,9 @@
         {"weight" : 0.05, "item" : [ "vanusflower", 1]},
         {"weight" : 0.05, "item" : [ "sharpenedclaw", 1]},
         {"weight" : 0.05, "item" : [ "venomsample", 1]},
-        {"weight" : 0.05, "item" : [ "rawminerals", 5]},
-        {"weight" : 0.05, "item" : [ "saltpeter", 9]},
-        {"weight" : 0.1, "item" : [ "ff_resin", 12]},
+        {"weight" : 0.05, "item" : [ "fuscienceresource", 5]},
+        {"weight" : 0.05, "item" : [ "volatilepowder", 9]},
+        {"weight" : 0.1, "item" : [ "agaranichor", 12]},
         {"weight" : 0.05, "item" : [ "glassmaterial", 25]},
         {"weight" : 0.05, "item" : [ "liquidwater", 3]},
         {"weight" : 0.05, "item" : [ "liquidwater", 5]},
@@ -474,13 +453,13 @@
         "pool" : [
           {"weight" : 0.20, "pool" : "money"},
           {"weight" : 0.0333, "item" : [ "monsterplating", 15]},
-          {"weight" : 0.0333, "item" : [ "nutrientpaste", 15]},
-	  {"weight" : 0.0333, "item" : [ "rawminerals", 15]},
-          {"weight" : 0.0333, "item" : [ "geneticmaterial", 15]},
-          {"weight" : 0.0333, "item" : [ "dnasample", 15]},
-          {"weight" : 0.0333, "item" : [ "tissueculture", 15]},
+          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
+	  {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
+          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
+          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
+          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
           {"weight" : 0.0333, "item" : [ "laboil", 1]},
-          {"weight" : 0.0211, "item" : [ "saltpeter", 9]},
+          {"weight" : 0.0211, "item" : [ "volatilepowder", 9]},
           {"weight" : 0.0211, "item" : [ "magnesiumore", 9]},
           {"weight" : 0.0211, "item" : [ "mascagniteore", 9]},
           {"weight" : 0.0210, "item" : [ "cinnabarore", 5]},
@@ -494,16 +473,16 @@
           {"weight" : 0.0250, "item" : [ "fleshstrand", 50]},
           {"weight" : 0.0200, "item" : [ "fleshstrand", 100]},
           {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-          {"weight" : 0.0200, "item" : [ "cellmateria", 50]},
+          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
           {"weight" : 0.0366, "item" : [ "biospore", 5]},
-          {"weight" : 0.0366, "item" : [ "cellmateria", 5]},
-          {"weight" : 0.0366, "item" : [ "dnasample", 5]},
-          {"weight" : 0.0366, "item" : [ "mineralsample", 5]},
+          {"weight" : 0.0366, "item" : [ "cellmatter", 5]},
+          {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
+          {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
           {"weight" : 0.0366, "item" : [ "methanol", 30]},
           {"weight" : 0.0366, "item" : [ "phosphorus", 3]},
           {"weight" : 0.0366, "item" : [ "silk", 15]},
-          {"weight" : 0.0366, "item" : [ "ff_resin", 12]},
-          {"weight" : 0.0326, "item" : [ "ff_resin", 24]},
+          {"weight" : 0.0366, "item" : [ "agaranichor", 12]},
+          {"weight" : 0.0326, "item" : [ "agaranichor", 24]},
           {"weight" : 0.0366, "item" : [ "ff_plastic", 6]},
           {"weight" : 0.0366, "item" : [ "iodine", 4]},
           {"weight" : 0.0366, "item" : [ "ff_mercury", 6]},
@@ -564,13 +543,13 @@
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 0.20, "pool" : "money"},
-        {"weight" : 0.0333, "item" : [ "nutrientpaste", 15]},
-        {"weight" : 0.0333, "item" : [ "rawminerals", 15]},
-        {"weight" : 0.0333, "item" : [ "geneticmaterial", 15]},
-        {"weight" : 0.0333, "item" : [ "dnasample", 15]},
-        {"weight" : 0.0333, "item" : [ "tissueculture", 15]},
+        {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
+        {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
+        {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
+        {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
+        {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
         {"weight" : 0.0333, "item" : [ "laboil", 1]},
-        {"weight" : 0.0111, "item" : [ "saltpeter", 9]},
+        {"weight" : 0.0111, "item" : [ "volatilepowder", 9]},
         {"weight" : 0.0111, "item" : [ "magnesiumore", 9]},
         {"weight" : 0.0111, "item" : [ "mascagniteore", 9]},
         {"weight" : 0.0110, "item" : [ "cinnabarore", 5]},
@@ -587,9 +566,9 @@
         {"weight" : 0.0015, "item" : [ "densiniumore", 6]},
         {"weight" : 0.0166, "item" : [ "algaegreen", 5]},
         {"weight" : 0.0166, "item" : [ "biospore", 5]},
-        {"weight" : 0.0166, "item" : [ "cellmateria", 5]},
-        {"weight" : 0.0166, "item" : [ "dnasample", 5]},
-        {"weight" : 0.0166, "item" : [ "mineralsample", 5]},
+        {"weight" : 0.0166, "item" : [ "cellmatter", 5]},
+        {"weight" : 0.0166, "item" : [ "fuscienceresource", 5]},
+        {"weight" : 0.0166, "item" : [ "fuscienceresource", 5]},
         {"weight" : 0.0166, "item" : [ "methanol", 30]},
         {"weight" : 0.0166, "item" : [ "phosphorus", 3]},
         {"weight" : 0.0166, "item" : [ "silk", 15]},
@@ -1110,7 +1089,7 @@
         {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 0.2, "pool" : "fuEssence" },
         {"weight" : 0.333, "item" : [ "polymer", 5]},
-        {"weight" : 0.333, "item" : [ "circuitboard", 1]},
+        {"weight" : 0.333, "item" : [ "siliconboard", 1]},
         {"weight" : 0.333, "item" : [ "laserdiode", 1]},
         {"weight" : 0.333, "item" : [ "stickofram", 1]},
         {"weight" : 0.40, "pool" : "money"},
@@ -1396,9 +1375,9 @@
     	  {"weight" : 0.10, "item" : [ "raptoregg3", 1]},
     	  {"weight" : 0.10, "item" : [ "raptoregg4", 1]},
     	  {"weight" : 0.10, "item" : [ "raptoregg5", 1]},
-        {"weight" : 0.20, "item" : [ "reptilescales", 1]},
+        {"weight" : 0.20, "item" : [ "monsterplating", 1]},
         {"weight" : 0.25, "item" : [ "sharpenedclaw", 1]},
-        {"weight" : 0.15, "item" : [ "dnasample", 1]},
+        {"weight" : 0.15, "item" : [ "fuscienceresource", 1]},
         {"weight" : 0.20, "item" : [ "monsterplating", 3]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
         {"weight" : 0.01, "pool" : "basicTreasure"}
@@ -1416,9 +1395,9 @@
       "pool" : [
         {"weight" : 0.40, "pool" : "money"},
         {"weight" : 0.25, "item" : [ "alienmeat", 30]},
-        {"weight" : 0.20, "item" : [ "reptilescales", 20]},
+        {"weight" : 0.20, "item" : [ "monsterplating", 20]},
         {"weight" : 0.25, "item" : [ "sharpenedclaw", 5]},
-        {"weight" : 0.15, "item" : [ "dnasample", 8]},
+        {"weight" : 0.15, "item" : [ "fuscienceresource", 8]},
         {"weight" : 0.20, "item" : [ "monsterplating", 6]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
         {"weight" : 0.01, "pool" : "basicTreasure"}
@@ -1436,9 +1415,9 @@
       "pool" : [
         {"weight" : 0.40, "pool" : "money"},
     	  {"weight" : 0.25, "item" : [ "alienmeat", 30]},
-        {"weight" : 0.20, "item" : [ "reptilescales", 20]},
+        {"weight" : 0.20, "item" : [ "monsterplating", 20]},
         {"weight" : 0.25, "item" : [ "sharpenedclaw", 5]},
-        {"weight" : 0.15, "item" : [ "dnasample", 8]},
+        {"weight" : 0.15, "item" : [ "fuscienceresource", 8]},
         {"weight" : 0.20, "item" : [ "monsterplating", 6]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
         {"weight" : 0.01, "pool" : "basicTreasure"},
@@ -1477,7 +1456,7 @@
       "pool" : [
     	  {"weight" : 0.25, "item" : [ "alienmeat", 3]},
     	  {"weight" : 0.50, "item" : [ "leather", 1]},
-        {"weight" : 0.10, "item" : [ "reptilescales", 1]},
+        {"weight" : 0.10, "item" : [ "monsterplating", 1]},
         {"weight" : 0.15, "item" : [ "monsterplating", 1]}
       ],
       "poolRounds" : [
@@ -1495,7 +1474,7 @@
         {"weight" : 0.15, "item" : [ "liquidpus", 20]},
         {"weight" : 0.25, "item" : [ "liquidpoison", 20]},
         {"weight" : 0.55, "item" : [ "livingroot", 1]},
-        {"weight" : 0.30, "item" : [ "cellmateria", 4]},
+        {"weight" : 0.30, "item" : [ "cellmatter", 4]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
         {"weight" : 0.01, "pool" : "basicTreasure"}
       ],
@@ -1528,55 +1507,7 @@
       }
     ]
   ],
-  "furobotTreasure" : [
-    [0, {
-      "pool" : [
-        {"weight" : 0.85, "pool" : "money"},
-        {"weight" : 0.03, "pool" : "augments"},
-        {"weight" : 0.04, "item" : "manipulatormodule"},
-        {"weight" : 0.10, "item" : "wire"},
-        {"weight" : 0.10, "item" : "stickofram"},
-        {"weight" : 0.01, "pool" : "basicTreasure"}
-      ],
-      "poolRounds" : [
-        [0.4, 0],
-        [0.5, 1],
-        [0.1, 2]
-      ]
-    }],
-    [1.9, {
-      "pool" : [
-        {"weight" : 0.03, "pool" : "augments"},
-        {"weight" : 0.63, "pool" : "money"},
-        {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.10, "item" : "laserdiode"},
-        {"weight" : 0.10, "item" : "wire"},
-        {"weight" : 0.10, "item" : "circuitboard"},
-        {"weight" : 0.01, "pool" : "basicTreasure"}
-      ],
-      "poolRounds" : [
-        [0.2, 0],
-        [0.6, 1],
-        [0.2, 2]
-      ]
-    }],
-    [3.9, {
-      "pool" : [
-        {"weight" : 0.03, "pool" : "augments"},
-        {"weight" : 0.48, "pool" : "money"},
-        {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.15, "item" : "laserdiode"},
-        {"weight" : 0.15, "item" : "staticcell"},
-        {"weight" : 0.15, "item" : "circuitboard"},
-        {"weight" : 0.01, "pool" : "basicTreasure"}
-      ],
-      "poolRounds" : [
-        [0.1, 0],
-        [0.6, 1],
-        [0.3, 2]
-      ]
-    }]
-  ],
+
   "ashgolemLoot" : [
     [1, {
       "pool" : [
@@ -1598,7 +1529,7 @@
         {"weight" : 0.20, "item" : [ "cinnabarore", 4]},
         {"weight" : 0.15, "item" : [ "cinnabarore", 8]},
         {"weight" : 0.10, "item" : [ "cinnabarore", 12]},
-        {"weight" : 0.30, "item" : [ "cellmateria", 4]},
+        {"weight" : 0.30, "item" : [ "cellmatter", 4]},
         {"weight" : 0.85, "item" : [ "scorchedcore", 1]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
         {"weight" : 0.01, "pool" : "basicTreasure"}
@@ -1626,7 +1557,7 @@
         {"weight" : 0.25, "item" : [ "quietusore", 1]},
         {"weight" : 0.15, "item" : [ "quietusore", 3]},
         {"weight" : 0.10, "item" : [ "quietusore", 5]},
-        {"weight" : 0.30, "item" : [ "cellmateria", 4]},
+        {"weight" : 0.30, "item" : [ "cellmatter", 4]},
         {"weight" : 0.05, "item" : [ "quietusore", 7]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
         {"weight" : 0.01, "pool" : "basicTreasure"}
@@ -1664,7 +1595,7 @@
         {"weight" : 0.50, "item" : [ "liquiddarkwater", 12]},
         {"weight" : 0.30, "item" : [ "liquidblacktar", 14]},
         {"weight" : 0.30, "item" : [ "tar", 14]},
-        {"weight" : 0.30, "item" : [ "cellmateria", 4]},
+        {"weight" : 0.30, "item" : [ "cellmatter", 4]},
         {"weight" : 0.20, "item" : [ "laboil", 24]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
         {"weight" : 0.01, "pool" : "ffbasicTreasure"}
@@ -1692,7 +1623,7 @@
         {"weight" : 0.20, "item" : [ "liquidsulphuricacid", 12]},
         {"weight" : 0.15, "item" : [ "liquidpus", 12]},
         {"weight" : 0.10, "item" : [ "ff_mercury", 12]},
-        {"weight" : 0.30, "item" : [ "cellmateria", 4]},
+        {"weight" : 0.30, "item" : [ "cellmatter", 4]},
         {"weight" : 0.05, "item" : [ "liquidbioooze", 12]},
         {"weight" : 0.85, "item" : [ "venomsample", 1]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
@@ -2056,16 +1987,16 @@
         {"weight" : 0.0250, "item" : [ "fleshstrand", 50]},
         {"weight" : 0.0200, "item" : [ "fleshstrand", 100]},
         {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-        {"weight" : 0.0200, "item" : [ "cellmateria", 50]},
+        {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
         {"weight" : 0.0366, "item" : [ "biospore", 5]},
-        {"weight" : 0.0366, "item" : [ "cellmateria", 5]},
-        {"weight" : 0.0366, "item" : [ "dnasample", 5]},
-        {"weight" : 0.0366, "item" : [ "mineralsample", 5]},
+        {"weight" : 0.0366, "item" : [ "cellmatter", 5]},
+        {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
+        {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
         {"weight" : 0.0366, "item" : [ "methanol", 30]},
         {"weight" : 0.0366, "item" : [ "phosphorus", 3]},
         {"weight" : 0.0366, "item" : [ "silk", 15]},
-        {"weight" : 0.0366, "item" : [ "ff_resin", 12]},
-        {"weight" : 0.0326, "item" : [ "ff_resin", 24]},
+        {"weight" : 0.0366, "item" : [ "agaranichor", 12]},
+        {"weight" : 0.0326, "item" : [ "agaranichor", 24]},
         {"weight" : 0.0366, "item" : [ "ff_plastic", 6]},
         {"weight" : 0.0366, "item" : [ "iodine", 4]},
         {"weight" : 0.0366, "item" : [ "ff_mercury", 6]},
@@ -2161,16 +2092,16 @@
         {"weight" : 0.0250, "item" : [ "fleshstrand", 50]},
         {"weight" : 0.0200, "item" : [ "fleshstrand", 100]},
         {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-        {"weight" : 0.0200, "item" : [ "cellmateria", 50]},
+        {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
         {"weight" : 0.0366, "item" : [ "biospore", 5]},
-        {"weight" : 0.0366, "item" : [ "cellmateria", 5]},
-        {"weight" : 0.0366, "item" : [ "dnasample", 5]},
-        {"weight" : 0.0366, "item" : [ "mineralsample", 5]},
+        {"weight" : 0.0366, "item" : [ "cellmatter", 5]},
+        {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
+        {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
         {"weight" : 0.0366, "item" : [ "methanol", 30]},
         {"weight" : 0.0366, "item" : [ "phosphorus", 3]},
         {"weight" : 0.0366, "item" : [ "silk", 15]},
-        {"weight" : 0.0366, "item" : [ "ff_resin", 12]},
-        {"weight" : 0.0326, "item" : [ "ff_resin", 24]},
+        {"weight" : 0.0366, "item" : [ "agaranichor", 12]},
+        {"weight" : 0.0326, "item" : [ "agaranichor", 24]},
         {"weight" : 0.0366, "item" : [ "ff_plastic", 6]},
         {"weight" : 0.0366, "item" : [ "iodine", 4]},
         {"weight" : 0.0366, "item" : [ "ff_mercury", 6]},
