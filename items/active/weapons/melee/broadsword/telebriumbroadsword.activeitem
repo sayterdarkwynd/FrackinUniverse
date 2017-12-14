@@ -1,0 +1,36 @@
+{
+  "itemName" : "telebriumbroadsword",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Sharp and moony.",
+  "shortdescription" : "Telebrium Broadsword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
+  "inventoryIcon" : "telebriumbroadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "telebriumbroadsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.93,
+    "baseDps" : 11
+  },
+
+  "altAbilityType" : "greatwave",
+  "critChance" : 2, 
+  "critBonus" : 6, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

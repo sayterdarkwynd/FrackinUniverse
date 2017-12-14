@@ -26,7 +26,7 @@
     ],
 
     // cooldown time multiplier for steps after the first, compounded per combo step
-    "comboSpeedFactor" : 0.9,
+    "comboSpeedFactor" : 0.85,
 
     "edgeTriggerGrace" : 1.0,
 
@@ -41,16 +41,16 @@
     },
     "stepDamageConfig" : [
       {
-        "baseDamageFactor" : 1.2,
-        "knockback" : -10
-      },
-      {
         "baseDamageFactor" : 1.0,
-        "knockback" : -10
+        "knockback" : -5
       },
       {
-        "baseDamageFactor" : 0.3,
-        "knockback" : 27
+        "baseDamageFactor" : 0.95,
+        "knockback" : -12
+      },
+      {
+        "baseDamageFactor" : 0.8,
+        "knockback" : 30
       }      
     ],
 
@@ -62,7 +62,7 @@
         "allowFlip" : true
       },
       "windup1" : {
-        "duration" : 0.35,
+        "duration" : 0.30,
         "armRotation" : 90,
         "weaponRotation" : -10,
         "twoHanded" : true,
@@ -80,7 +80,7 @@
         "allowFlip" : false
       },
       "fire1" : {
-        "duration" : 0.15,
+        "duration" : 0.145,
         "armRotation" : -45,
         "weaponRotation" : -45,
         "twoHanded" : true,
@@ -89,7 +89,7 @@
         "allowFlip" : false
       },
       "wait1" : {
-        "duration" : 0.15,
+        "duration" : 0.14,
         "armRotation" : -45,
         "weaponRotation" : -35,
         "allowRotate" : false,
@@ -98,7 +98,7 @@
         "twoHanded" : true
       },
       "windup2" : {
-        "duration" : 0.25,
+        "duration" : 0.225,
         "armRotation" : -15,
         "weaponRotation" : -60,
         "weaponOffset" : [0.25, 2.5],
@@ -116,7 +116,7 @@
         "allowRotate" : false
       },
       "wait2" : {
-        "duration" : 0.16,
+        "duration" : 0.15,
         "armRotation" : -150,
         "weaponRotation" : 55,
         "weaponOffset" : [0.25, 1.0],
@@ -125,7 +125,7 @@
         "twoHanded" : true
       },
       "windup3" : {
-        "duration" : 0.15,
+        "duration" : 0.14,
         "armRotation" : -150,
         "weaponRotation" : 55,
         "weaponOffset" : [0.25, 0.5],
@@ -143,7 +143,7 @@
         "allowRotate" : false
       },
       "wait3" : {
-        "duration" : 0.2,
+        "duration" : 0.185,
         "armRotation" : 0,
         "weaponRotation" : -40,
         "weaponOffset" : [0.4,1.7],

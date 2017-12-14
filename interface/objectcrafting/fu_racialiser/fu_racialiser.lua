@@ -84,7 +84,6 @@ function getNewParameters(pet, treasure)
 	if itemConfig then
 		if item then
 			shortDescriptionNew = item.config.shortdescription .. " (" .. info.name .. ")"
-			sb.logInfo(tostring(shortDescriptionNew))
 			newParameters = util.mergeTable(newParameters, {shortdescription = shortDescriptionNew})
 		end
 		inventoryIconNew = itemConfig.directory .. itemConfig.config.inventoryIcon
@@ -152,7 +151,7 @@ function getNewOrientations()
 	return newOrientations, newPlacementImage, newPlacementImagePosition
 end
 
-function getBYOSParameters(BYOSItemType, pet, treasure) --figure out how to give them the name change
+function getBYOSParameters(BYOSItemType, pet, treasure)
 	itemType = BYOSItemType
 	if itemType then
 		info = raceInfo[count]

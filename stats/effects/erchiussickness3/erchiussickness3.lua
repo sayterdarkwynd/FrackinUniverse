@@ -34,16 +34,14 @@ function update(dt)
     self.spawnTimer = self.spawnTimer - dt
   end
   
-  status.addEphemeralEffect("negativemiasma",1)
-  if status.resource("energy") == 0 then
-    status.modifyResource("health", ((-self.dps * dt)/20))
+  if status.resource("energy") < 2 then
+    status.modifyResource("health", ((-self.dps * dt)/12))
   end
-  status.modifyResource("energy", ((-self.dps * dt)*1.25))
+  status.modifyResource("energy", ((-self.dps * dt)*1.05))
   
   local monsterPosition = self.findMonster()
   if monsterPosition then
     if not self.messaged then
-     -- world.sendEntityMessage(entity.id(), "queueRadioMessage", "erchiussickness")
       self.messaged = true
     end
 
@@ -52,8 +50,9 @@ function update(dt)
     animator.rotateTransformationGroup("smoke", vec2.angle(distance))
 
     local damageDistanceRatio = 1 - math.min(1.0, math.max(0.0, vec2.mag(distance) / self.damageDistance))
+    
     self.dps = damageDistanceRatio * self.maxDps
-
+  
     local effectDistance = interp.linear(erchiusRatio, self.effectDistance[1], self.effectDistance[2])
     local effectDistanceRatio = 1 - math.min(1.0, math.max(0.0, vec2.mag(distance) / effectDistance))
     animator.setParticleEmitterEmissionRate("smoke", self.emissionRate * effectDistanceRatio)
@@ -62,6 +61,8 @@ function update(dt)
     self.saturation = math.floor(-self.desaturateAmount * effectDistanceRatio)
 
     world.sendEntityMessage(self.monsterUniqueId, "setErchiusLevel", erchiusCount)
+
+    
   elseif monsterPosition == nil then
     self.saturation = 0
     animator.setLightActive("glow", false)
@@ -75,7 +76,7 @@ function update(dt)
         keepAlive = true
       }
       world.spawnMonster("erchiusghost3", vec2.add(mcontroller.position(), config.getParameter("ghostSpawnOffset")), parameters)
-      self.spawnTimer = 60.0
+      self.spawnTimer = 10.0
     end
   end
 
