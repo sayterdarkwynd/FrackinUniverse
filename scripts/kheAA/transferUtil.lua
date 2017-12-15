@@ -441,24 +441,24 @@ function transferUtil.getType(item)
 	elseif itemRoot.config.category then
 		itemCat=itemRoot.config.category
 	elseif itemRoot.config.projectileType then
-		itemCat="thrownitem"
+		itemCat="throwableItem"
 	--[[elseif itemRoot.config.itemTags then
 		for _,tag in pairs(itemRoot.config.itemTags) do
 
 		end]]
 	end
 	if itemCat then
-		return string.lower(itemCat)
+		return itemCat
 	elseif not unhandled[item.name] then
 		sb.logInfo("Unhandled Item:\n%s",itemRoot)
 		unhandled[item.name]=true
 	end
-	return string.lower(item.name)
+	return item.name
 end
 
 function transferUtil.getCategory(item)
 	local itemCat=transferUtil.getType(item)
-	return transferUtil.itemTypes[itemCat] or "generic"
+	return transferUtil.itemTypes[itemCat] or "generi"
 end
 
 function transferUtil.loadSelfContainer()
