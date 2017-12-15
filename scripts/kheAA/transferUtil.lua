@@ -58,8 +58,10 @@ function transferUtil.routeItems()
 				local sourceItems=world.containerItems(sourceContainer)
 				if sourceItems then
 					for indexIn,item in pairs(sourceItems) do
-						if transferUtil.checkFilter(item) then
+						local pass,mod = transferUtil.checkFilter(item)
+						if pass then
 							if transferUtil.validInputSlot(indexIn) then
+								item.count = item.count - (item.count % mod)
 								if util.tableSize(storage.outputSlots) > 0 then
 									for indexOut=1,world.containerSize(targetContainer) do
 										if transferUtil.validOutputSlot(indexOut) then
@@ -292,8 +294,9 @@ function transferUtil.checkFilter(item)
 	if #routerItems == 0 then
 		return true
 	end
-	local invertcheck = nil
-	local noninvertcheck = nil
+	local invertcheck = nil     -- Inverted conditions are match-all
+	local noninvertcheck = nil  -- Non-inverted conditions are match-any
+	local mod = nil             -- Stack comparison check is match-any (first match has priority)
 	for slot,rItem in pairs(routerItems) do
 		if not noninvertcheck or storage.filterInverted[slot] then
 			local result = false
@@ -308,14 +311,21 @@ function transferUtil.checkFilter(item)
 				result = false
 			end
 			if storage.filterInverted[slot] then
-				invertcheck = not result
-				if result then return false end
+				result = not result
+				invertcheck = result
+				if not result then return false end
 			else
 				noninvertcheck = result
 			end
+			if result and not mod then
+				mod = rItem.count
+			end
 		end
 	end
-	return (noninvertcheck and invertcheck) or (noninvertcheck == nil and invertcheck) or (noninvertcheck and invertcheck == nil)
+	return (noninvertcheck and invertcheck)
+			or (noninvertcheck == nil and invertcheck)
+			or (noninvertcheck and invertcheck == nil),
+			mod or 1
 end
 
 function transferUtil.findNearest(source,sourcePos,targetList)
@@ -443,7 +453,7 @@ function transferUtil.getType(item)
 	elseif itemRoot.config.category then
 		itemCat=itemRoot.config.category
 	elseif itemRoot.config.projectileType then
-		itemCat="thrownitem"
+		itemCat="throwableitem"
 	--[[elseif itemRoot.config.itemTags then
 		for _,tag in pairs(itemRoot.config.itemTags) do
 
@@ -461,7 +471,7 @@ end
 function transferUtil.getCategory(item)
 	local itemCat=transferUtil.getType(item)
 	--sb.logInfo("%s::%s",itemCat,string.lower(transferUtil.itemTypes[itemCat] or "generic"))
-	return string.lower(transferUtil.itemTypes[itemCat] or "generic")
+	return transferUtil.itemTypes[itemCat] or "generic"
 end
 
 function transferUtil.loadSelfContainer()
