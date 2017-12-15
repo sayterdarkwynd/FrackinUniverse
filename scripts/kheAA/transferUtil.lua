@@ -433,6 +433,8 @@ function transferUtil.getType(item)
 		return "generic"
 	elseif item.name == "sapling" then
 		return item.name
+	elseif item.currency then
+		return "currency"
 	end
 	local itemRoot = root.itemConfig(item)
 	local itemCat
@@ -458,7 +460,8 @@ end
 
 function transferUtil.getCategory(item)
 	local itemCat=transferUtil.getType(item)
-	return transferUtil.itemTypes[itemCat] or "generic"
+	--sb.logInfo("%s::%s",itemCat,string.lower(transferUtil.itemTypes[itemCat] or "generic"))
+	return string.lower(transferUtil.itemTypes[itemCat] or "generic")
 end
 
 function transferUtil.loadSelfContainer()
