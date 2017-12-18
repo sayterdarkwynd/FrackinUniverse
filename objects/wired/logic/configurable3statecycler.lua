@@ -1,6 +1,7 @@
 --khe was here! No really. dragoncat code work.
 
 function init()
+	guiConfig = root.assetJson("/interface/scripted/logicgates/3statecyclerGUI.config")
 	message.setHandler("setTimerValues",setValues)
 	message.setHandler("sendConfig",sendConfig)
 	message.setHandler("resetTimerValues",resetValues)
@@ -43,18 +44,18 @@ function update(dt)
 end
 
 function setValues(_,_,values)
-	storage.leftValue=values[0]
-	storage.midValue=values[1]
-	storage.rightValue=values[2]
+	for k,v in pairs(values) do
+		storage[k]=v
+	end
 	init()
 end
 
-function resetValues(_)
+function resetValues()
 	storage.state=-2
 	storage.leftValue=26
 	storage.midValue=2
 	storage.rightValue=2
-	return storage
+	return {leftValue=storage.leftValue,midValue=storage.midValue,rightValue=storage.rightValue}
 end
 
 function doAnim()
@@ -71,4 +72,8 @@ end
 
 function sendConfig()
 	return storage
+end
+
+function onInteraction(args)
+  return {"ScriptPane", guiConfig}
 end
