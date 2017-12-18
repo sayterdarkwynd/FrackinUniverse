@@ -76,6 +76,7 @@ function transferUtil.routeItems()
 										end
 									end
 								else
+									--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
 									local leftOverItems=world.containerAddItems(targetContainer,item)
 									if leftOverItems then
 										local tempQuantity=item.count-leftOverItems.count
@@ -229,7 +230,7 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 			return false
 		end
 	end
-
+	--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
 	local leftOverItems = world.containerAddItems(target, item)
 	if leftOverItems ~= nil then
 		if drop then
