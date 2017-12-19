@@ -1,0 +1,350 @@
+{
+  "type" : "crewmember_spacestationwarmonger",
+  "baseType" : "base",
+  "disableWornArmor" : false,
+  "dropPools" : [ "villagertreasure" ],
+
+  "damageTeamType" : "friendly",
+
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
+
+  "persistent" : true,
+
+  "scriptConfig" : {
+    "behavior" : "crewmember",
+    "behaviorConfig" : {
+      "emptyHands" : false,
+
+      // Wander behavior config
+      "wanderTime" : 1,
+      "idleTime" : 10,
+      "outerHomeRange" : 20,
+      "innerHomeRange" : 15,
+
+      "hostileDamageTeam" : {"type" : "friendly", "team" : 1}
+    },
+
+    "crew" : {
+      "recruitable" : true,
+
+      "recruitInteractAction" : {
+        "messageType" : "recruits.offerRecruit",
+        "messageArgs" : []
+      },
+
+      "powerMultiplierExponent" : 1.0,
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Breacher",
+        "field" : "Destruction",
+        "uniformColorIndex" : 8
+      },
+
+      "ranks" : [
+        "Second-to-Last <role>",
+        "3rd Technical Assistant <field> Officer",
+        "Assistant Deputy <role> Guy/Gal",
+        "Trainee Apprentice <role>",
+        "Temporary Relief <role>",
+        "3rd Rear Lieutenant <role>",
+        "64th Commodore <role>",
+        "Standing <field> Officer",
+        "Sitting <field> Officer",
+        "Executive Coffee-Making <role>",
+        "Command Master Chief Petty <field> Officer",
+        "Independent <field> Auditor",
+        "Dependant <field> Auditor",
+        "Dreadnought <field> Officer",
+        "Trainee <field> Mastermind",
+        "Head of Petty <field> Arguments",
+        "Backup <role>",
+        "Reliable <field> Lacky",
+        "Theoretical <field> Advisor",
+        "Reliable <field> Lackey",
+        "Head of <field> operations",
+        "Wild Card <role>",
+        "Head of <field> Relations",
+        "Last-Minute <role>",
+        "Expert in <field> Diplomacy",
+        "<field> Innovation Manager",
+        "Loose Cannon <role>",
+        "Regional <field> Director",
+        "Private <field> Investigator",
+        "Temporal <field> Surveyor",
+        "Radical <field> Innovator",
+        "Independent Head of <field> Operations",
+        "Just your average <role>",
+        "Hobbyist <role>",
+        "Master of <field> Matters",
+        "Alternative <field> Advisory Representative",
+        "Runner-Up <field> Officer",
+        "Emergency <field> Officer",
+        "First Mate's Second-Cousin's Third <role>",
+        "Unpaid <field> Intern",
+        "<field> Student",
+        "<field> Forum Moderator",
+        "Rogue <field> Profiteer",
+        "Neutral Third Party <role>",
+        "Low Quality <field> Negotiations",
+        "Armchair <field> Expert"
+      ],
+
+      "defaultUniform" : {
+        "head" : "fumantizitier5ahead",
+        "chest" : "fumantizitier5achest",
+        "legs" : "fumantizitier5apants"
+      },
+      "uniformSlots" : ["head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+    },
+
+    "questGenerator" : {
+      // Disable participation of crewmembers in generated quests until the
+      // generated quest system knows how to deal with entities that can
+      // disappear from the world and/or change uniqueId.
+      "enableParticipation" : false
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "Hello adventurer, mind if I join you and KICK SOME ASS?!?!?",
+              "Look at that gear! Let me travel with you, and we can DECIMATE THE OPPOSITION!",
+              "I'M ALL ANGRY, ALL THE TIME! YOU WANT TO HIRE ME, DON'T YOU, YOU WEAK SISSY?!?!?!",
+              "Hire me. That is not a request."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Hello adventurer, maybe Floran join you and SSSTAB SOME ASS?!?!?",
+              "Look at that gear! Let Floran go with you and SSSTAB THE PREY!",
+              "FLORAN ALL ANGRY, ALL THE TIME! YOU WANT TO HIRE FLORAN MAYBE YOU WEAK NO-SSSTABBY?!?!?!",
+              "Hire Floran. That isss not request."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. Hello adventurer, mind if I join you and KICK SOME ASS?!?!?",
+              "Impressed. Look at that gear! Let me travel with you, and we can DECIMATE THE OPPOSITION!",
+              "Statement. I'M ALL ANGRY, ALL THE TIME! YOU WANT TO HIRE ME, DON'T YOU, YOU WEAK SISSY?!?!?!",
+              "Statement. Hire me. That is not a request."
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'M READY TO STAB, SHOOT AND KILL WHATEVER YOU ASK ME TO!",
+              "Do you happen to have a burrito? I've grown rather peckish.",
+              "Ever wonder what sawing someone in half with BULLETS would be like? LET'S TRY!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "FLORAN READY TO SSTAB, SHOOT AND KILL ALL THE PREY!",
+              "Do you have burrito? Floran hungry.",
+              "Floran wonder what sssawing ssomeone in half with BULLETSS would be like? MAYBE FLORAN TRY!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Statement. I'M READY TO STAB, SHOOT AND KILL WHATEVER YOU ASK ME TO!",
+              "Request. Do you happen to have a burrito? I've grown rather peckish.",
+              "Murderous. Ever wonder what sawing someone in half with BULLETS would be like? LET'S TRY!"
+            ]
+          }
+        },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "I'M GOING TO FIND THAT THING AND MURDER IT IN VENGEANCE!",
+              "CRAP! ANOTHER GLORIOUS DEATH? THAT'S 42 THIS WEEK!",
+              "I'm already missing murder! Get me back out there, Sir!",
+              "I need to cave in the skull of whatever just killed me."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "FLORAN GOING TO FIND THAT THING AND STAB IT IN VENGEANCE!",
+              "CRAP! ANOTHER GLORIOUSSSS DEATH? THAT'SSS 42 THISS WEEK!",
+              "Floran already missssing murder! Get Floran back out there, Sssir!",
+              "Floran need to cave in the ssskull of whatever jusst killed Floran."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Murderous. I'M GOING TO FIND THAT THING AND MURDER IT IN VENGEANCE!",
+              "Incorrigible. CRAP! ANOTHER GLORIOUS DEATH? THAT'S 42 THIS WEEK!",
+              "Eager. I'm already missing murder! Get me back out there, Sir!",
+              "Vengeful. I need to cave in the skull of whatever just killed me."
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "WHAT? TOO MANY AWESOME BULLETS FOR YOU, SISSY?",
+              "SIR, YES SIR!",
+              "But...how can I murder things without tagging along?",
+              "Sir, are you sure that is wise? I can't kill things from here.",
+              "Fine. I'll stay. Just...sit here and be bored. Whatever.",
+              "I'll stay here."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "WHAT? TOO MANY AWESOME BULLETS FOR YOU, SSSISSSSY?",
+              "SSIR, YESSSS SIR!",
+              "But...how can Floran ssstab thingss when Floran here?",
+              "Sssir, Floran no kill thingsss from here.",
+              "Fine. Floran sstay. Jusst...sssit here and no stab. Whatever.",
+              "Floran stay here."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Critical. WHAT? TOO MANY AWESOME BULLETS FOR YOU, SISSY?",
+              "Obedient. SIR, YES SIR!",
+              "Perplexed. But...how can I murder things without tagging along?",
+              "Curious. Sir, are you sure that is wise? I can't kill things from here.",
+              "Irritated. I'll stay. Just...sit here and be bored. Whatever.",
+              "Statement. I'll stay here."
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "FOR THE GLORY OF BATTLE, WE RIDE!",
+              "SIR, YES SIR!",
+              "DEATH TIME!",
+              "Your foes will be vanquished, and ale shall be drank.",
+              "Let's get a move on, then!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "FOR THE HUNT!",
+              "SSIR, YES SSSSIR!",
+              "DEATH TIME!",
+              "Floran good at hunting prey.",
+              "Floran want sssstab!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. FOR THE GLORY OF BATTLE, WE RIDE!",
+              "Obedient. SIR, YES SIR!",
+              "Murderous. DEATH TIME!",
+              "Enthusiastic. Your foes will be vanquished, and ale shall be drank.",
+              "Impatient. Let's get a move on, then!"
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "I can't kills things for you from here!",
+              "You're too far! Come back sir!",
+              "Hey, wait up! The hell is your problem?",
+              "Don't go too far! Again! Do I smell bad?",
+              "Let me catch up! Sheesh."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran too far away!",
+              "Floran iss left behind!",
+              "Floran not close enough to you!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Frustrated. I can't reach you!",
+              "Concerned. Wait for me!"
+            ]
+          }
+        },
+          "penguin" : {
+            "default" : [
+              "Hey, biggun! Let me catch up!",
+              "Don't get too far off!",
+              "Wait up, big guy!"
+            ]
+          }
+      },
+
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/grumble.config:tagCriteria",
+          "enclosedArea" : "/dialog/grumble.config:enclosedArea",
+          "otherDeed" : "/dialog/grumble.config:otherDeed",
+          "severe" : "/dialog/grumble.config:severe",
+          "final" : "/dialog/grumble.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/arrivedhome.config:beacon",
+          "rent" : "/dialog/arrivedhome.config:rent"
+        }
+      },
+
+      "converse" : "/dialog/crewmember.config:converse",
+
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/combat.config:reattack",
+      "killedTarget" : "/dialog/combat.config:killedTarget",
+      "lostTarget" : "/dialog/combat.config:lostTarget",
+      "outOfSight" : "/dialog/combat.config:outOfSight",
+      "cheerOn" : "/dialog/combat.config:cheerOn",
+      "cantReach" : "/dialog/combat.config:cantReach"
+    }
+  },
+
+  "movementParameters" : {
+    "runSpeed" : 16.0
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "curveblaster" ],
+            "sheathedprimary" : [ "curvebroadsword" ]
+          },      
+          {
+            "primary" : [ "curvepistol" ],
+            "sheathedprimary" : [ "curveblaster" ]
+          },      
+          {
+            "primary" : [ "curvesmg" ],
+            "sheathedprimary" : [ "curveblaster" ]
+          }           
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "hitInvulnerability" : true,
+      "hitInvulnerabilityThreshold" : 0.0233,
+      "hitInvulnerabilityTime" : 0.7,
+      "hitInvulnerabilityFlash" : 0.15,
+      "damageFlashOnDirectives" : "",
+      "damageFlashOffDirectives" : ""
+    },
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 300.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.5
+      },
+      "healthRegen" : {
+        "baseValue" : 2.3
+      }
+    }
+  }
+}
