@@ -61,7 +61,7 @@ function init()
   end
 
   self.lastInteract = 0
-  monster.setInteractive(true)
+  monster.setInteractive(false)
   capturable.init()
 end
 
