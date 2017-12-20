@@ -100,7 +100,7 @@ function MechArm:statSet()
         self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
         self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechBonus = ((self.mechBonusBody * 0.75) + (self.mechBonusBooster * 0.35) + (self.mechBonusLegs * 0.5))
+        self.mechBonus = ((self.mechBonusBody /2 ) + (self.mechBonusBooster /6) + (self.mechBonusLegs /4)) 
         self.energyMax = self.parts.body.energyMax
         self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
         self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
@@ -153,20 +153,25 @@ function MechArm:fire()
         self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
         self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
-
-	if (self.multicount) then
+        
+	if (self.multicount) then  -- if its a spread-type projectile we divide by the number of projectiles before applying tier modifier
 	  pParams.power = (pParams.power / self.multicount) * self.mechTier
 	else
 	  pParams.power = (pParams.power * self.mechTier) 
 	end	        
+        
+        if (self.stats.flamethrower) then 
+          self.critMod = 0
+          self.critChance = 0 
+          pParams.power = (pParams.power  / self.stats.flamethrower)
+        end
 
-        -- Mech critical hits
-        if (self.stats.rapidFire) then 
+        if (self.stats.rapidFire) then -- if fast-firing, we reduce the chance to crit
           self.critMod = self.stats.rapidFire / 10
           self.critChance = self.critChance * self.critMod
         end
         
-        if (self.critChance) >= 100 then
+        if (self.critChance) >= 100 then --apply the crit if it hits. divide bonus by multicount if it is a spread shot
           if self.multicount then
             self.mechBonus = (self.mechBonus * 2 ) / self.multicount
             storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
@@ -175,16 +180,8 @@ function MechArm:fire()
             storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
           end
         end
-        
-        --apply final damage
-        
-        if (self.mechBonus) >= (self.mechBonusWeapon) then
-          self.randbonus = (self.mechBonus/100) * self.mechTier
-          self.mechBonus = self.mechBonus * (1 + self.randbonus)
-        end        
-        
-          pParams.power = pParams.power + self.mechBonus
-          --sb.logInfo("power total = "..pParams.power)
+
+          pParams.power = pParams.power + self.mechBonus --apply the final damage
       --end
       
       local projectileId = world.spawnProjectile(
