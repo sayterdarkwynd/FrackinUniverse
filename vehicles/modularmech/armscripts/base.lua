@@ -151,15 +151,10 @@ function MechArm:fire()
 
         self:statSet()
         
+ 	-- ****************************** FU mass computation ***************************
+          self.mechMass = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass or 0   
+          
         -- ****************************** FU damage computation ***************************
-          if not self.parts.body.stats.mechMass then self.parts.body.stats.mechMass = 0 end
-          if not self.parts.booster.stats.mechMass then self.parts.booster.stats.mechMass = 0 end
-          if not self.parts.legs.stats.mechMass then self.parts.legs.stats.mechMass = 0 end
-          if not self.parts.leftArm.stats.mechMass then self.parts.leftArm.stats.mechMass = 0 end
-          if not self.parts.rightArm.stats.mechMass then self.parts.rightArm.stats.mechMass = 0 end
-        
-          self.mechMass = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass or 0
-
         self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
 
