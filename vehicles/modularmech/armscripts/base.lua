@@ -171,13 +171,15 @@ function MechArm:fire()
 	  self.critChance = 0 
 	end
         
-       -- *************************** Determine Critical Hits ********************************   
+       -- *************************** Determine Critical Hits ********************************  
+        self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+        
         if (self.stats.rapidFire) then -- if fast-firing, we reduce the chance to crit
           self.critMod = self.stats.rapidFire / 10
           self.critChance = self.critChance * self.critMod
         end
         
-        self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+        
         if (self.critChance) >= 100 then 
           if self.multicount then
             self.mechBonus = (self.mechBonus * 2 ) / self.multicount
