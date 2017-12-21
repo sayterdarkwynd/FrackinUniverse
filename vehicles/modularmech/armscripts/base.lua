@@ -96,11 +96,11 @@ end
 
 function MechArm:statSet()
         self.mechBonusWeapon = self.stats.power + self.stats.energy
-        self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
-        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
-        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
+        self.mechBonusBody = (self.parts.body.stats.protection + self.parts.body.stats.energy)/2
+        self.mechBonusBooster = (self.parts.booster.stats.control + self.parts.booster.stats.speed )/6
+        self.mechBonusLegs = (self.parts.legs.stats.speed + self.parts.legs.stats.jump )/4
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-        self.mechBonus = ((self.mechBonusBody /2 ) + (self.mechBonusBooster /6) + (self.mechBonusLegs /4)) 
+        self.mechBonus = (self.mechBonusBody) + (self.mechBonusBooster) + (self.mechBonusLegs) 
         self.energyMax = self.parts.body.energyMax
         self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
         self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
@@ -148,30 +148,37 @@ function MechArm:fire()
         pParams.speed = util.randomInRange(self.projectileRandomSpeed)
       end
 
-      -- apply FU damage bonus , to tier Mech damage
+
         self:statSet()
+        
+        -- ****************************** FU damage computation ***************************
         self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
-        self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
-        
-	if (self.multicount) then  -- if its a spread-type projectile we divide by the number of projectiles before applying tier modifier
-	  pParams.power = (pParams.power / self.multicount) * self.mechTier
-	else
-	  pParams.power = (pParams.power * self.mechTier) 
-	end	        
-        
-        if (self.stats.flamethrower) then 
-          self.critMod = 0
-          self.critChance = 0 
-          pParams.power = (pParams.power  / self.stats.flamethrower)
-        end
 
+        pParams.power = pParams.power * self.mechTier
+
+	-- *****special-case weapons
+	if (self.multicount) then  -- if its a spread-type projectile we divide by the number of projectiles before applying tier modifier
+	  pParams.power = (pParams.power / self.multicount) 
+	end			
+	if (self.stats.flamethrower) then 
+	  self.critMod = 0
+	  self.critChance = 0 
+	  pParams.power = (pParams.power  / self.stats.flamethrower)
+	end
+	if (self.stats.beam) then 
+	  self.critMod = 0
+	  self.critChance = 0 
+	end
+        
+       -- *************************** Determine Critical Hits ********************************   
         if (self.stats.rapidFire) then -- if fast-firing, we reduce the chance to crit
           self.critMod = self.stats.rapidFire / 10
           self.critChance = self.critChance * self.critMod
         end
         
-        if (self.critChance) >= 100 then --apply the crit if it hits. divide bonus by multicount if it is a spread shot
+        self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+        if (self.critChance) >= 100 then 
           if self.multicount then
             self.mechBonus = (self.mechBonus * 2 ) / self.multicount
             storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
@@ -180,9 +187,8 @@ function MechArm:fire()
             storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)
           end
         end
-
-          pParams.power = pParams.power + self.mechBonus --apply the final damage
-      --end
+        pParams.power = (pParams.power + self.mechBonus) --apply the final damage
+      -- **************************** END FU COMPUTATION ************************************
       
       local projectileId = world.spawnProjectile(
           self.projectileType,
