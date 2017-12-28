@@ -1,17 +1,5 @@
 [
-
-  {
-    "op": "replace",
-    "path": "/scorchedcity/layers/surface/dungeons/16/1",
-    "value": "glitchvillagefire"
-  },
-  {
-    "op": "replace",
-    "path": "/volcanic/layers/surface/dungeons/16/1",
-    "value": "glitchvillagefire"
-  },
-  
-  
+ 
 { "op" : "replace", "path" : "/planetDefaults/dayLengthRange", "value" : [500, 1440] },
 
 { "op" : "add", 
@@ -227,6 +215,7 @@
 {"op" : "add", "path" : "/planetTypes/scorchedcity/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
 {"op" : "add", "path" : "/planetTypes/scorchedcity/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
 {"op" : "add", "path" : "/planetTypes/scorchedcity/layers/core", "value" : {"primaryRegion" : ["core"]} },
+  {"op": "replace","path": "/planetTypes/scorchedcity/layers/surface/dungeons/16/1","value": "glitchvillagefire"},
 
 //moon
 
@@ -250,24 +239,9 @@
 
 //garden
 
-  {
-    "op": "replace",
-    "path": "/planetTypes/garden/layers/surface/dungeonCountRange/0",
-    "value": 3
-  },
-  {
-    "op": "replace",
-    "path": "/planetTypes/garden/layers/surface/dungeonCountRange/1",
-    "value": 3
-  },
-  {
-    "op": "add",
-    "path": "/planetTypes/garden/layers/surface/dungeons/0",
-    "value": [
-      1,
-      "medic1"
-    ]
-  },
+  {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/0","value": 3},
+  {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/1","value": 3},
+  {"op": "add","path": "/planetTypes/garden/layers/surface/dungeons/0","value": [1,"medic1"]},
 {"op" : "add", "path" : "/planetTypes/garden/layers/subsurface/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground1/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground2/dungeons", "value" : [] },
@@ -443,7 +417,11 @@
 {"op" : "add", "path" : "/planetTypes/volcanic/layers/surface/dungeons/-", "value" : [1.0, "alienjungleruins"] },
 {"op" : "add", "path" : "/planetTypes/volcanic/layers/surface/dungeons/-", "value" : [1.0, "weaponsfactory"] },
 {"op" : "add", "path" : "/planetTypes/volcanic/layers/surface/dungeons/-", "value" : [1.0, "greentower"] },
-
+  {
+    "op": "replace",
+    "path": "/planetTypes/volcanic/layers/surface/dungeons/16/1",
+    "value": "glitchvillagefire"
+  },
 
 //scorchedcity
 {"op" : "add", "path" : "/planetTypes/scorchedcity/layers/subsurface/dungeons", "value" : [] },

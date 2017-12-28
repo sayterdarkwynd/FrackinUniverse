@@ -88,7 +88,19 @@
             "winddownStopForce" : 1000,
             "winddownState" : "chargewinddown"
           }
-        },       
+        }       
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-animate",
+          "cooldown" : 12,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 0.53
+          }
+        },
        {
           "name" : "action-fire",
           "cooldown" : 8.5,
@@ -110,19 +122,7 @@
             "aimAtTarget" : true,
             "onGround" : false
           }
-        }  
-      ],
-
-      "periodicActions" : [
-        {
-          "name" : "action-animate",
-          "cooldown" : 12,
-          "parameters" : {
-            "stateType" : "body",
-            "state" : "roar",
-            "animationTime" : 0.53
-          }
-        }    
+        }         
       ],
       "approachActions" : [
         {
@@ -233,7 +233,7 @@
 
     "touchDamage" : {
       "poly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
-      "damage" : 12,
+      "damage" : 15,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -294,16 +294,13 @@
           "baseValue" : 300
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "healthRegen" : {
           "baseValue" : 0.05
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
-        },
-        "physicalResistance" : {
-          "baseValue" : 0.5
         }
       },
 
@@ -323,7 +320,7 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
-    "captureHealthFraction" : 0.5,
+    "captureHealthFraction" : 0.25,
     "capturedMonsterName" : "Adult Poptop",
     "capturedMonsterType" : "adultpoptop", // turn into an adultpoptop when captured
     "nametagColor" : [64, 200, 255],
