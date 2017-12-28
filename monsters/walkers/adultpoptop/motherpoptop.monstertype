@@ -20,12 +20,12 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 50,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
-      "hurtTime": 0.10,
+      "keepTargetInRange" : 120,
+      "targetOutOfSightTime" : 5,
+      "hurtTime": 0.05,
       "hurtWaitForGround": false,
       "hurtWaitForGroundTime": 0.1,
       
@@ -44,26 +44,47 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [      
+      "hostileActions" : [  
         {
           "name" : "action-fire",
-	  "cooldown" : 4.5,
+          "cooldown" : 6.14,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 60,
+            "minimumRange" : 0,
+            "windupState" : "babyeat",
+            "windupTime" : 1.1,
+            "projectileType" : "healingzoneboss",
+            "power" : 4,
+            "fireOffset" : [3.25, 0.6],
+            "projectileCount" : 1,
+            "projectileInterval" : 0.05,
+            "fireSound" : "",
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.6,
+            "aimAtTarget" : true,
+            "onGround" : false
+          }
+        },       
+        {
+          "name" : "action-fire",
+	  "cooldown" : 4,
           "parameters" : {
             "requireLineOfSight" : false,
-            "maximumRange" : 20,
-            "minimumRange" : 8,
+            "maximumRange" : 15,
+            "minimumRange" : 2,
             "windupState" : "fire2",
-            "windupTime" : 0.5,
+            "windupTime" : 1.1,
 
             "projectileType" : "fusoundwaveboss",      
-            "power" : 9,
+            "power" : 10,
             
             "fireOffset" : [2.5, 0.3],
             "aimAtTarget" : true,
-            "projectileCount" : 5,
+            "projectileCount" : 4,
             "projectileInterval" : 0.01,
             "fireSound" : "fire",
-            "range": 20,
             "fireState" : "",
             "winddownState" : "",
             "winddownTime" : 0.6
@@ -73,7 +94,7 @@
           "name" : "action-charge",
           "cooldown" : 2.75,
           "parameters" : {
-            "maximumRange" : 15,
+            "maximumRange" : 20,
             "windupState" : "chargewindup",
             "windupTime" : 0.3,
 
@@ -93,6 +114,22 @@
 
       "periodicActions" : [
         {
+          "name" : "action-spawncompanions",
+          "parameters" : {
+            "maxCount" : 4,
+            "spawnCooldown" : 1.0,
+            "monsterType" : "poptopmicro"
+          }
+        },        
+        {
+          "name" : "action-spawncompanions",
+          "parameters" : {
+            "maxCount" : 1,
+            "spawnCooldown" : 8.0,
+            "monsterType" : "poptop"
+          }
+        },        
+        {
           "name" : "action-animate",
           "cooldown" : 12,
           "parameters" : {
@@ -100,30 +137,9 @@
             "state" : "roar",
             "animationTime" : 0.53
           }
-        },
-       {
-          "name" : "action-fire",
-          "cooldown" : 8.5,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 60,
-            "minimumRange" : 0,
-            "windupState" : "babyeat",
-            "windupTime" : 1.1,
-            "projectileType" : "healingzoneboss",
-            "power" : 5,
-            "fireOffset" : [3.25, 0.6],
-            "projectileCount" : 1,
-            "projectileInterval" : 0.05,
-            "fireSound" : "",
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.6,
-            "aimAtTarget" : true,
-            "onGround" : false
-          }
-        }         
+        }        
       ],
+      
       "approachActions" : [
         {
           "name" : "approach-walk",
@@ -167,26 +183,11 @@
         }    
       ],
 
-      "damageTakenActions" : [],
-      
-      "concurrentActions" : [
-        {
-          "name" : "action-spawncompanions",
-          "parameters" : {
-            "maxCount" : 4,
-            "spawnCooldown" : 1.0,
-            "monsterType" : "poptopmicro"
-          }
-        },        
-        {
-          "name" : "action-spawncompanions",
-          "parameters" : {
-            "maxCount" : 1,
-            "spawnCooldown" : 8.0,
-            "monsterType" : "poptop"
-          }
-        }       
+      "damageTakenActions" : [
+     
       ],
+      
+      "concurrentActions" : [ ],
       
       "concurrentHostileActions" : [  
         {
@@ -199,7 +200,7 @@
         },      
         {
           "name" : "action-leap", 
-          "cooldown" : 3,
+          "cooldown" : 2,
           "parameters" : {
             "minimumRange" : 0,
             "maximumRange" : 35,
@@ -262,7 +263,7 @@
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.3,
+    "knockoutTime" : 0.1,
     "knockoutAnimationStates" : {
       "damage" : "stunned"
     },
@@ -285,7 +286,7 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.23
+          "baseValue" : 0.05
         },
         "knockbackThreshold" : {
           "baseValue" : 9
@@ -294,14 +295,17 @@
           "baseValue" : 300
         },
         "protection" : {
-          "baseValue" : 0.5
+          "baseValue" : 0.4
         },
         "healthRegen" : {
           "baseValue" : 0.05
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
-        }
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.40
+        }        
       },
 
       "resources" : {
