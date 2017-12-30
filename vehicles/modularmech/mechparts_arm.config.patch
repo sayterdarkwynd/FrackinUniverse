@@ -11,7 +11,7 @@
         }, {
             "op": "replace",
             "path": "/flakcannon/partParameters/projectileParameters/power",
-            "value": 1.5
+            "value": 2.2
         },{
             "op": "add",
             "path": "/heatrifle/stats/mechMass",
@@ -188,7 +188,8 @@
             "op": "replace",
             "path": "/spikefist/partParameters/projectileParameters/power",
             "value": 26.5
-        }, {
+        }, 
+        {
 	    "op": "replace",
 	    "path": "/spikefist/partParameters/projectileParameters/controlForce",
 	    "value": 80
@@ -525,7 +526,7 @@
 			  "projectileType" : "laser-1",
 			  "projectileParameters" : {
 			    "speed" : 70,
-			    "power" : 2,
+			    "power" : 1,
 			    "statusEffects" : [ "stun" ]
 			  },
 
@@ -613,7 +614,7 @@
 			  "projectileType" : "electricguardianbullet",
 			  "projectileParameters" : {
 			    "speed" : 60,
-			    "power" : 3,
+			    "power" : 2,
 			    "statusEffects" : [ "electrified", "stun" ]
 			  },
 
@@ -1442,7 +1443,7 @@
                 "stats": {
                     "power": 4,
                     "energy": 5,
-                    "multicount": 3,
+                    "multicount": 2,
                     "mechMass": 3
                 },
                 "partParameters": {
@@ -1457,7 +1458,7 @@
                     "projectileInaccuracy": 0.092,
                     "projectileCount": 3,
                     "projectileParameters": {
-                        "power": 0.75
+                        "power": 2.5
                     }
                 },
                 "partImages": {
@@ -1492,8 +1493,7 @@
                     "power": 6,
                     "energy": 6,
                     "rapidFire": 3,
-                    "mechMass": 4,
-                    "basePower" : 8
+                    "mechMass": 4
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/gunarm.lua",
@@ -1506,7 +1506,7 @@
                     "projectileCount": 1,
                     "projectileInaccuracy": 0.06,
                     "projectileParameters": {
-                        "power": 4.65
+                        "power": 5
                     }
                 },
                 "partImages": {
@@ -1538,8 +1538,8 @@
             "path": "/fugaussmecha",
             "value": {
                 "stats": {
-                    "power": 2,
-                    "energy": 3,
+                    "power": 3,
+                    "energy": 4,
                     "rapidFire": 5,
                     "mechMass": 2
                 },
@@ -1550,12 +1550,12 @@
                     "fireOffset": [3.65, 0],
                     "extendTime": 1,
                     "windupTime" : 0.4,
-                    "fireTime": 0.15,
+                    "fireTime": 0.13,
                     "projectileType": "gausspistolshotmech",
                     "projectileCount": 1,
                     "projectileInaccuracy": 0.04,
                     "projectileParameters": {
-                        "power": 0.04
+                        "power": 3.5
                     }
                 },
                 "partImages": {
@@ -1648,7 +1648,7 @@
                     "projectileType": "lunarishotinitiatemech",
                     "projectileCount": 1,
                     "projectileParameters": {
-                        "power": 0.72
+                        "power": 3.5
                     }
                 },
                 "partImages": {
@@ -1684,7 +1684,7 @@
 	      "power" : 10,
 	      "energy" : 12,
 	      "mechMass" : 9,
-	      "basePower" : 45
+	      "basePower" : 60
 	    },
 	    "partParameters" : {
 	      "script" : "/vehicles/modularmech/armscripts/xsm_beamarm2.lua",
@@ -2008,7 +2008,7 @@
             "value": {
                 "stats": {
                     "power": 4,
-                    "energy": 5,
+                    "energy": 3,
                     "mechMass": 2
                 },
                 "partParameters": {
@@ -2025,7 +2025,7 @@
 		      "speed" : 120,
 		      "damageKind" : "bow",
 		      "piercing" : true,
-		      "power" : 8
+		      "power" : 9
                     }
                 },
                 "partImages": {
@@ -2058,7 +2058,7 @@
             "value": {
                 "stats": {
                     "power": 6,
-                    "energy": 7,
+                    "energy": 5,
                     "mechMass": 3
                 },
                 "partParameters": {
@@ -2108,7 +2108,7 @@
             "value": {
                 "stats": {
                     "power": 4,
-                    "energy": 3,
+                    "energy": 2,
                     "mechMass": 3
                 },
                 "partParameters": {
@@ -2126,7 +2126,7 @@
                     "cooldownAngle": -0.3,
                     "projectileType": "fumechbladeswoosh",
                     "projectileParameters": {
-                        "power": 11.25,
+                        "power": 22,
                         "knockback": 25
                     },
                     "projectileTrackSource": true,
@@ -2217,7 +2217,7 @@
                     "cooldownAngle": -0.3,
                     "projectileType": "fumechchainsawswoosh",
                     "projectileParameters": {
-                        "power": 20,
+                        "power": 30,
                         "knockback": 32
                     },
                     "projectileTrackSource": true,
@@ -2297,7 +2297,7 @@
                     "projectileCount" : 2,
                     "projectileType": "heavybullet",
                     "projectileParameters": {
-                        "power": 0.002,
+                        "power": 0.05,
                         "timeToLive": 1.0
                     },
                     "projectileInaccuracy": 0.08
@@ -2462,7 +2462,7 @@
 		      4.25
 		    ]
 		  ],
-		  "damage": 15,
+		  "damage": 20,
 		  "damageSourceKind": "fire",
 		  "damageRepeatTimeout": 0.2,
 		  "damageRepeatGroup": "<armName>Drill",
@@ -2918,11 +2918,11 @@
 
 		      "extendTime" : 1.0,
 
-		      "fireTime" : 0.44,
+		      "fireTime" : 0.42,
 
 		      "projectileType" : "flakbullet2",
 		      "projectileParameters" : {
-			"power" : 2
+			"power" : 2.2
 		      }
 		    },
 		    "partImages" : {
@@ -3082,7 +3082,7 @@
 		"projectileType": "plasmafistrocket",
 		"projectileParameters": {
 		  "speed": 60,
-		  "power": 15,
+		  "power": 25,
 		  "knockback": 20,
 		  "knockbackDirectional": true,
 		  "ignoreTerrain": false,
@@ -3154,7 +3154,7 @@
 		"projectileType": "plasmafistrocket2",
 		"projectileParameters": {
 		  "speed": 60,
-		  "power": 5,
+		  "power": 12,
 		  "knockback": 25,
 		  "knockbackDirectional": true,
 		  "ignoreTerrain": false,
@@ -3276,7 +3276,7 @@
         }, {
             "op": "add",
             "path": "/xsm_roninbeam/stats/basePower",
-            "value": 0.025
+            "value": 0.03
         }, {
             "op": "add",
             "path": "/xsm_roninbeam/damageSources/<armName>Beam/damage",
@@ -3312,7 +3312,7 @@
         },{
             "op": "add",
             "path": "/xsm_thetabeam/stats/basePower",
-            "value": 1.85
+            "value": 1.5
         }, {
             "op": "replace",
             "path": "/xsm_thetabeam/damageSources/<armName>Beam/damage",
@@ -3330,7 +3330,7 @@
         },{
             "op": "add",
             "path": "/xsm_sigmagun/partParameters/projectileParameters/power",
-            "value": 0.25
+            "value": 1.5
         }, {
             "op": "add",
             "path": "/xsm_sigmagun/stats/rapidFire",
@@ -3348,7 +3348,7 @@
         },{
             "op": "replace",
             "path": "/xsm_elitesigmagun/partParameters/projectileParameters/power",
-            "value": 0.3
+            "value": 0.5
         }, {
             "op": "add",
             "path": "/xsm_elitesigmagun/stats/rapidFire",
@@ -3366,7 +3366,7 @@
         },{
             "op": "replace",
             "path": "/xsm_piraterhogun/partParameters/projectileParameters/power",
-            "value": 0.33
+            "value": 1.75
         }, {
             "op": "add",
             "path": "/xsm_piraterhogun/stats/rapidFire",
@@ -3384,7 +3384,7 @@
         },{
             "op": "replace",
             "path": "/xsm_rhoblade/partParameters/projectileParameters/power",
-            "value": 12
+            "value": 17
         }
     ],
  
@@ -3412,7 +3412,7 @@
         },{
             "op": "replace",
             "path": "/dva_shotgunarm/partParameters/projectileParameters/power",
-            "value": 0.5
+            "value": 0.25
         }, {
             "op": "add",
             "path": "/dva_shotgunarm/stats/multicount",
@@ -3430,7 +3430,7 @@
         },{
             "op": "replace",
             "path": "/xsm_roninrhocannon/partParameters/projectileParameters/power",
-            "value": 20
+            "value": 11
         }
     ],
  
@@ -3444,12 +3444,12 @@
         },{
             "op": "replace",
             "path": "/xsm_sigmanade/partParameters/projectileParameters/power",
-            "value": 0.062
+            "value": 1.5
         }, 
         {
             "op": "add",
             "path": "/xsm_sigmanade/stats/multicount",
-            "value": 20
+            "value": 4
         }
     ],
  
@@ -3463,12 +3463,12 @@
         },{
             "op": "replace",
             "path": "/xsm_elitesigmanade/partParameters/projectileParameters/power",
-            "value": 0.06
+            "value": 1	
         }, 
         {
             "op": "add",
             "path": "/xsm_sigmanade/stats/multicount",
-            "value": 20
+            "value": 4
         }
     ],
  
@@ -3482,12 +3482,12 @@
         },{
             "op": "replace",
             "path": "/xsm_thetanade/partParameters/projectileParameters/power",
-            "value": 0.059
+            "value": 1.5
         }, 
         {
             "op": "add",
             "path": "/xsm_sigmanade/stats/multicount",
-            "value": 20
+            "value": 4
         }
     ],
     
@@ -3531,11 +3531,11 @@
         },{
             "op": "replace",
             "path": "/srm/partParameters/projectileParameters/power",
-            "value": 4.5
+            "value": 20
         }, {
             "op": "add",
             "path": "/srm/stats/multicount",
-            "value": 13
+            "value": 8
         }
     ],
  
@@ -3561,15 +3561,10 @@
             "op": "add",
             "path": "/bhmaLB10X/stats/mechMass",
             "value": 5
-        }, {
-            "op": "add",
-            "path": "/bhmaLB10X/stats/multicount",
-            "value": 4
-        },
-        {
+        },{
             "op": "replace",
             "path": "/bhmaLB10X/partParameters/projectileParameters/power",
-            "value": 12
+            "value": 20
         }
     ],
  
@@ -3583,7 +3578,7 @@
         }, {
             "op": "replace",
             "path": "/bhmac10/partParameters/projectileParameters/power",
-            "value": 40.25
+            "value": 14
         }
     ],
 
@@ -3648,7 +3643,7 @@
         }, {
             "op": "replace",
             "path": "/cworks_fatalcircuitarm/partParameters/projectileParameters/power",
-            "value": 40
+            "value": 20
         }
     ],  
     [{
@@ -3661,7 +3656,7 @@
         },{
             "op": "replace",
             "path": "/cworks_missilearmdrone/partParameters/droneParameters/gun/projectileParameters/power",
-            "value": 11
+            "value": 16
         }
     ],
 
@@ -3693,7 +3688,7 @@
         },{
             "op": "replace",
             "path": "/dnac/partParameters/projectileParameters/power",
-            "value": 0.05
+            "value": 1
         }
     ],
 
@@ -3711,7 +3706,7 @@
         },{
             "op": "replace",
             "path": "/dnac/partParameters/projectileParameters/power",
-            "value": 15
+            "value": 20
         }
     ],
 
@@ -3742,13 +3737,9 @@
         },{
             "op": "replace",
             "path": "/dncf/partParameters/projectileParameters/power",
-            "value": 26
+            "value": 24
         }
     ],
-    
-    
-    
-    
     
     [{
             "op": "test",
@@ -3760,15 +3751,11 @@
         },{
             "op": "replace",
             "path": "/incinerator/stats/power",
-            "value": 5
+            "value": 4
         },{
             "op": "replace",
             "path": "/incinerator/stats/energy",
             "value": 6
-        },{
-            "op": "add",
-            "path": "/incinerator/stats/flamethrower",
-            "value": 20
         },{
             "op": "add",
             "path": "/incinerator/stats/multicount",
@@ -3776,7 +3763,7 @@
         },{
             "op": "replace",
             "path": "/incinerator/partParameters/projectileParameters/power",
-            "value": 0.005
+            "value": 3.55
         }
     ],
     
@@ -3823,7 +3810,7 @@
         },{
             "op": "add",
             "path": "/conjurer/partParameters/projectileParameters/power",
-            "value": 4
+            "value": 15
         }
     ],
     [{
@@ -3848,7 +3835,7 @@
         },{
             "op": "add",
             "path": "/summoner/partParameters/projectileParameters/power",
-            "value": 4
+            "value": 20
         }
     ]        
 ]

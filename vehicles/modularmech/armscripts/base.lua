@@ -151,6 +151,9 @@ function MechArm:fire()
 
         self:statSet()
         
+ 	-- ****************************** FU mass computation ***************************
+          self.mechMass = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass or 0   
+          
         -- ****************************** FU damage computation ***************************
         self.mechTier = self.stats.power
         self.multicount = self.stats.multicount
@@ -172,8 +175,7 @@ function MechArm:fire()
 	end
         
        -- *************************** Determine Critical Hits ********************************  
-        self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
-        
+        self.critChance = (self.parts.body.stats.energy/2)  + math.random(100)
         if (self.stats.rapidFire) then -- if fast-firing, we reduce the chance to crit
           self.critMod = self.stats.rapidFire / 10
           self.critChance = self.critChance * self.critMod
