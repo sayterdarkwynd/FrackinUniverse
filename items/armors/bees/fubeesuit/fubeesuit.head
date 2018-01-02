@@ -13,23 +13,31 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 "level" : 1,
-  "statusEffects" : [
+
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.20
+      "baseMultiplier" : 1.05
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 4
+      "amount" : 0.25
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 4
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 3
-    },
+      "amount" : 2
+    }
+  ],
+  
+  "statusEffects" : [
     "beestingimmunity"
   ],
 
