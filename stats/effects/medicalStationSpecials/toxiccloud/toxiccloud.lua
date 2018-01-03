@@ -9,7 +9,7 @@ function init()
 		{stat = "foodDelta", amount = config.getParameter("foodConsumption", 0)}
 	})
 	
-	local data = root.assetJson("/projectiles/status/medicalStationSpecials/toxicCloud/toxiccloud.projectile")
+	local data = root.assetJson("/projectiles/medicalStationSpecials/toxicCloud/toxiccloud.projectile")
 	self.baseDamage = data.power
 	
 	baseInit(self.dummyStatus)
