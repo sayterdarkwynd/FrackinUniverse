@@ -561,19 +561,17 @@
 
 	
 	// BYOS
-	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_crewbed0" } },
 	
-  {"op" : "add",
-  "path" : "/companionsConfig/uniformSlots/head",
-  "value" : ["headCosmetic", "head" ]
-  },
-
-  {
-    "op": "add",
-    "path": "/statusControllerSettings/stats/shipMass",
-    "value": {
-      "baseValue": 31.4
-    }
-  }
+	// Info Window Popup
+	{ "op": "add", "path" : "/deploymentConfig/scripts/-", "value" : "/scripts/fu_updateInfoWindow.lua"},
+	
+	// Companiom Uniform Slot
+	{ "op" : "add", "path" : "/companionsConfig/uniformSlots/head", "value" : ["headCosmetic", "head" ]},
+	
+	// Space Station Charisma Stat
+	{ "op": "add", "path": "/statusControllerSettings/stats/fuCharisma", "value": { "baseValue": 1.00 } },
+	
+	// Ship Mass
+	{ "op": "add", "path": "/statusControllerSettings/stats/shipMass", "value": { "baseValue": 31.4 } }
 ]
