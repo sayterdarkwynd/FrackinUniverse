@@ -292,7 +292,7 @@ function transferUtil.checkFilter(item)
 	end
 	routerItems=world.containerItems(entity.id())
 	if #routerItems == 0 then
-		return true
+		return true, 1
 	end
 	local invertcheck = nil     -- Inverted conditions are match-all
 	local noninvertcheck = nil  -- Non-inverted conditions are match-any
