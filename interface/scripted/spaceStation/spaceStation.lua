@@ -507,11 +507,13 @@ function commandProcessor(wd)
 		
 		populateShopList()
 		writerInit(textData, "")
+		widget.setText("text", "")
 		modifyButtons("Sell", false, false, false, false, "Back")
 		
 	elseif command == "Trade Goods" then
 		populateGoodsList()
 		writerInit(textData, "")
+		widget.setText("text", "")
 		
 		widget.setVisible("playerPixels", true)
 		widget.setPosition("playerPixels", self.data.pixelDisplayTradePos)
@@ -640,6 +642,7 @@ function commandProcessor(wd)
 		
 		populateShopList()
 		writerInit(textData, "")
+		widget.setText("text", "")
 		modifyButtons("Sell", false, false, false, false, "Back")
 	elseif command == "Sell" then
 		resetGUI()
@@ -658,6 +661,7 @@ function commandProcessor(wd)
 		end
 		
 		writerInit(textData, "")
+		widget.setText("text", "")
 		modifyButtons("Buy", false, false, false, false, "Back")
 	elseif command == "Goodbye" then
 		pane.dismiss()
@@ -831,7 +835,7 @@ end
 -- Skip text when clicking on dialogue box
 function canvasClickEvent(position, button, isButtonDown)
 	if isButtonDown then
-		writerSkip(textData)
+		writerSkip(textData, "text")
 	end
 end
 
