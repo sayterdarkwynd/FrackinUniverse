@@ -1,0 +1,40 @@
+{
+  "objectName" : "poptopcavern",
+  "rarity" : "Common",
+  "description" : "Seems to lead somewhere. I can hear roars in the distance.",
+  "shortdescription" : "Cavern Doorway",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 120,
+  "printable" : false,
+ 
+
+  "inventoryIcon" : "caverndoor.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "caverndoor.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "detectArea" : [ [-3, 0], [3, 5] ]
+    }
+  ],
+  "scripts" : [ "/objects/portals/extrateleportradar/extrateleportradar.lua" ],
+  "scriptDelta" : 20,
+  
+  "hasObjectItem" : false,
+  "unbreakable" : true,
+  "health" : 100000,
+  "consumeOnPickup" : true,
+  "rooting" : true,
+  
+  "destination" : "InstanceWorld:cavedungeon:%s:%s",
+  "vanishTime" : 999999999999
+}

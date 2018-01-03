@@ -1,5 +1,5 @@
 [
-  
+ 
 { "op" : "replace", "path" : "/planetDefaults/dayLengthRange", "value" : [500, 1440] },
 
 { "op" : "add", 
@@ -215,6 +215,7 @@
 {"op" : "add", "path" : "/planetTypes/scorchedcity/layers/underground2", "value" : {"primaryRegion" : ["midunderground"]} },
 {"op" : "add", "path" : "/planetTypes/scorchedcity/layers/underground3", "value" : {"primaryRegion" : ["deepunderground"]} },
 {"op" : "add", "path" : "/planetTypes/scorchedcity/layers/core", "value" : {"primaryRegion" : ["core"]} },
+  {"op": "replace","path": "/planetTypes/scorchedcity/layers/surface/dungeons/16/1","value": "glitchvillagefire"},
 
 //moon
 
@@ -238,24 +239,9 @@
 
 //garden
 
-  {
-    "op": "replace",
-    "path": "/planetTypes/garden/layers/surface/dungeonCountRange/0",
-    "value": 3
-  },
-  {
-    "op": "replace",
-    "path": "/planetTypes/garden/layers/surface/dungeonCountRange/1",
-    "value": 3
-  },
-  {
-    "op": "add",
-    "path": "/planetTypes/garden/layers/surface/dungeons/0",
-    "value": [
-      1,
-      "medic1"
-    ]
-  },
+  {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/0","value": 3},
+  {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/1","value": 3},
+  {"op": "add","path": "/planetTypes/garden/layers/surface/dungeons/0","value": [1,"medic1"]},
 {"op" : "add", "path" : "/planetTypes/garden/layers/subsurface/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground1/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground2/dungeons", "value" : [] },
@@ -431,7 +417,11 @@
 {"op" : "add", "path" : "/planetTypes/volcanic/layers/surface/dungeons/-", "value" : [1.0, "alienjungleruins"] },
 {"op" : "add", "path" : "/planetTypes/volcanic/layers/surface/dungeons/-", "value" : [1.0, "weaponsfactory"] },
 {"op" : "add", "path" : "/planetTypes/volcanic/layers/surface/dungeons/-", "value" : [1.0, "greentower"] },
-
+  {
+    "op": "replace",
+    "path": "/planetTypes/volcanic/layers/surface/dungeons/16/1",
+    "value": "glitchvillagefire"
+  },
 
 //scorchedcity
 {"op" : "add", "path" : "/planetTypes/scorchedcity/layers/subsurface/dungeons", "value" : [] },
@@ -2410,6 +2400,7 @@
           [1.0, "evilfortress"], 
           [1.0, "glitchcastle"],
           [1.0, "glitchvillage"], 
+          [1.0, "glitchvillagefire"], 
           [1.0, "aviantomb"], 
           [1.0, "aviannativevillage"], 
           [1.0, "avianvillage"], 
@@ -2482,6 +2473,7 @@
           [1.0, "evilfortress"], 
           [1.0, "glitchcastle"],
           [1.0, "glitchvillage"], 
+          [1.0, "glitchvillagefire"],  
           [1.0, "aviantomb"], 
           [1.0, "aviannativevillage"], 
           [1.0, "avianvillage"], 
@@ -4185,6 +4177,7 @@
           [1.0, "evilfortress"], 
           [1.0, "glitchcastle"],
           [1.0, "glitchvillage"], 
+          [1.0, "glitchvillagefire"],  
           [1.0, "apexbase"], 
           [1.0, "apextestfacility"], 
           [1.0, "apexcity"], 
@@ -4271,6 +4264,7 @@
           [1.0, "evilfortress"], 
           [1.0, "glitchcastle"],
           [1.0, "glitchvillage"], 
+          [1.0, "glitchvillagefire"],  
           [1.0, "apexbase"], 
           [1.0, "apextestfacility"], 
           [1.0, "apexcity"], 
@@ -4727,7 +4721,6 @@
     }
   },
 
-
   {"op" : "add", 
   "path" : "/regionTypes/barren2",
   "value" : 
@@ -4925,7 +4918,7 @@
       "caveLiquid" : [ "shadowgas" ],
       "oceanLiquid" : [ "shadowgas" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [  "emptier", "emptiest", "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
+      "blockSelector" : [ "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves" ],
       "bgCaveSelector" : [ "coreCaves", "moonCaves", "solid" ],
      
@@ -4942,7 +4935,7 @@
       "caveLiquid" : [ "shadowgas" ],
       "oceanLiquid" : [ "shadowgas" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [  "emptier", "emptiest", "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
+      "blockSelector" : [  "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves" ],
       "bgCaveSelector" : [ "coreCaves", "moonCaves", "solid" ],
       
@@ -4959,7 +4952,7 @@
       "caveLiquid" : [ "lava" ],
       "oceanLiquid" : [ "lava" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [ "emptier", "emptiest", "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves"  ],
+      "blockSelector" : [ "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves"  ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves" ],
       "bgCaveSelector" : [ "coreCaves", "moonCaves", "solid" ],
       
@@ -4976,7 +4969,7 @@
       "caveLiquid" : [ "water" ],
       "oceanLiquid" : [ "water" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [  "emptier", "emptiest", "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
+      "blockSelector" : [  "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
       "bgCaveSelector" : [ "coreCaves", "moonCaves", "solid" ],
       
@@ -4993,7 +4986,7 @@
       "caveLiquid" : [ "helium3gas" ],
       "oceanLiquid" : [ "helium3gas" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [  "emptier", "emptiest", "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
+      "blockSelector" : [  "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves" ],
       "bgCaveSelector" : [ "coreCaves", "moonCaves", "solid" ],
     
@@ -5010,7 +5003,7 @@
       "caveLiquid" : [ "helium3gas" ],
       "oceanLiquid" : [ "helium3gas" ],
       "oceanLevelOffset" : 1000,
-      "blockSelector" : [  "emptier", "emptiest", "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
+      "blockSelector" : [  "iceclouds", "gassea", "denseCaves", "normalCaves", "moonCaves" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "acidPoolCaves" ],
       "bgCaveSelector" : [ "coreCaves", "moonCaves", "solid" ],
      
@@ -7842,7 +7835,18 @@
       ]
     }
   },  
-  
+  {"op" : "add", 
+  "path" : "/regionTypes/mamapoptop",
+  "value" : 
+  {
+      "caveLiquid" : [ "water" ],
+      "caveLiquidChanceRange" : [5, 25],
+      "fgCaveSelector" : [ "normalCaves" ],
+      "biome" : [
+        [0, [ "mamapoptop"]]
+      ]
+    }
+  },   
   {"op" : "add", 
   "path" : "/regionTypes/lightlessunderground",
   "value" : 

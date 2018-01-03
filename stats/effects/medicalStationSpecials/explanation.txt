@@ -1,0 +1,36 @@
+
+This text document is dedicated to explaining the question "Zimber, what in the ungodly fuck have you done here and why?"
+
+What I attempted (and managed) to achieve was temporary effects that persist through death
+Since ephemeral effects are removed on death, persistent effects were my only option
+Which is why I made a base file so I won't have to copy-paste a lot, and its a lot easier to make changes
+
+Because persistent effects don't count down visually on the status bar (below the healthbar), I had to add an ephemeral dummy effect
+It does nothing other than appear on the status bar, and check if the timer for the persistent effect ran out (explained later)
+Its added via the persistent effect, and removed the same way every ephemeral effect is removed (or if the timer for the persistent effect ran out)
+Including death, which is why the persistent effect occasionally checks if the ephemeral effect is still there
+If not, its re-added
+
+The persistent effect counts down using the "fuMedicalEnhancerDuration" status property.
+So if you are to get more than one effect, they will behave under the same timer, essentially setting the first effects duration to the second ones
+This is not a problem because I'm limiting the player to have only one such effect at a time
+Should you want to have more of these, you'll have to use multiple status properties, one for each effect to prevent any overrides
+
+When the effect should expire, the persistent effect adds an ephemeral effect that exists solely to remove all the persistent effects which were added by the medical station
+The killer effect expires itself on init, and does the removing on uninit
+Thats because persistent effects don't like removing themselves with "clearPersistentEffects"
+
+In addition, I gave the player an option to remove these effects if they want to, which gets me to why dummies check the status property as well
+If the persistent effect is removed, the dummy will keep on going. So if it sees that the status property is <= 0, it commits sudoku
+I would've used the "removeEphemeralEffect" function on the persistent effects uninit, IF IT DIDN'T CRASH FOR SOME FUCKING REASON WITH A VAGUE ERROR
+
+There is also a cooldown on when the player can aquire these effects so player can't stack them, can't be constantly have one, and can't switch them around like socks with the remove option
+That cooldown is tracked through a separate status property called "fuMedicalEnhancerCooldown", and its managed by the "medicalStatusCooldown" persistent effect
+All it does is reduce it by 1 every second. Thats it.
+Its added by any effect (through the base) if the player doesn't already have it
+
+The reason I'm using status properties is because I can control them at will, and they don't get reset on death unlike resources.
+
+Another odd occurance is that Starbound reacts oddly when it comes to the "clearPersistentEffects" function, and some specific/combinations of strings in effect names
+So if you notice some effects are misspelled, thats on purpose.
+Why it does that? No clue. But I do know that for some reason it goes into companion/follower stuff and tries to clear some nonexistant effects

@@ -1,40 +1,42 @@
 --	Author: zimberzimber
 
 --		Instructions:
---	Link the GUI that you wish to have a typed text in (instead of a "BAM! NINE MILLION CHARACTERS IN ONE SECOND")
+--	Link the GUI that you wish to have a typed in text (instead of a "BAM! NINE MILLION CHARACTERS IN ONE SECOND")
 --	Make sure the GUI has a 'scriptDelta' (I suggest 2), and have the 'update' function in the .lua file call the 'writerUpdate' update
 --	You !MUST! create a table (even an empty one) and pass it down to any function thats used in the typer
 --	Should a function (button clicked, init, etc...) display text, just call 'writerInit' with the right parameters
---	The script will not automatically update the text on the GUI, you have to do that through the GUIs 'update' function inside the .lua file
 
 --		Functions:
 --	writerInit( textData, string )
---	  textData	= Table that holds data required for the script to function
---	  string	= The string you want printed
+--		textData	= Table that holds data required for the script to function
+--		string		= The string you want printed
 --	Returns a formatted table holding a chain of strings for the updater to process
 --	Use this whenever starting/changing texts
 
---	writerUpdate( textData, sound )
---	  textData	= Table that holds data required for the script to function
---	  sound		= String holding the path to a sound file to play with each printed character
---	Updates the table with the new string
+--	writerUpdate( textData, widget )
+--		textData	= Table that holds data required for the script to function
+--		wd			= [Optional] The widget that should have its text updated
+--		sound		= [Optional] The sound you want to play with each typed character
+--		volume		= [Optional] The volume of the sound
+--		cutoffSound	= [Optional] Should the sound be cut-off in the middle when typing the next character?
 
 --	writerSkip( textData )
---	  textData	= Table that holds data required for the script to function
+--		textData	= Table that holds data required for the script to function
+--		wd			= [Optional] The widget that should have its text updated
 --	Instantly prints the entire text, skipping the typing part
 
 --		Formats:
 --	Regular formats that start with ^ and end with ; are automatically compressed
---	[(data)x]	 = Inserts data from a table inside textData. For instance, [(data)questData.location] will insert whats in 'textData.questData.location'
---	[(pause)x]	 = Pause the text for a short time, x being the number of 'update cycles' you want to skip text reading.
---	[(instant)x] = Write a text instantly, x being the text
---	[playername] = Writes the players name
---	[(scramble)x]= Scrambling letters, x being the number or scrambling letters to insert
---	[(function)x]= Call a function from the textData table, x being its location in the textData table (x = "example" , textData.example)
+--	[(data)x]		= Inserts data from a table inside textData. For instance, [(data)questData.location] will insert whats in 'textData.questData.location'
+--	[(pause)x]		= Pause the text for a short time, x being the number of 'update cycles' you want to skip text reading.
+--	[(instant)x]	= Write a text instantly, x being the text
+--	[(playername)]	= Writes the players name
+--	[(scramble)x]	= Scrambling letters, x being the number or scrambling letters to insert
+--	[(function)x]	= Call a function from the textData table, x being its location in the textData table (x = "example" , textData.example)
 
 allowedScrambleCharacters = {"a", "b", "d", "e", "g", "h", "n", "o", "p", "q", "s", "u", "v", "y", "z", "A", "B", "D", "G", "H", "J", "K", "N", "O", "P", "Q", "R", "S", "U", "V", "X", "Y", "0", "2", "3", "4", "5", "6", "7", "8", "9", "_", "~" }
 
-function writerInit( textData, str )
+function writerInit(textData, str)
 	if not textData then
 		sb.logError("----------[ ] writerInit in textTyper recieved no textData table, writing aborted.", "")
 		return
@@ -73,7 +75,7 @@ function writerInit( textData, str )
 				local bracketEnd = string.find(textCopy, "]", i)
 				if bracketEnd then
 					local format = string.sub(textCopy, i+1, bracketEnd-1)
-					if format == "playername" then
+					if format == "(playername)" then
 						formatPause = bracketEnd - i
 						
 						local playerName = world.entityName(player.id())
@@ -138,7 +140,7 @@ function writerInit( textData, str )
 	end
 end
 
-function writerSplitTableString( str )
+function writerSplitTableString(str)
 	local split = {}
 	local copy = str
 	local temp = ""
@@ -156,7 +158,7 @@ function writerSplitTableString( str )
 	return split
 end
 
-function writerUpdate( textData, sound, volume )
+function writerUpdate(textData, wd, sound, volume, cutoffSound)
 	if not textData.isFinished then
 		if textData.textPause and textData.textPause > 0 then
 			textData.textPause = textData.textPause - 1
@@ -164,6 +166,23 @@ function writerUpdate( textData, sound, volume )
 		else
 			local write = textData.toWrite[1]
 			if write then
+				if cutoffSound and sound then
+					if type(sound) == "table" then
+						for _, snd in ipairs(sound) do
+							pane.stopAllSounds(snd)
+						end
+					else
+						pane.stopAllSounds(sound)
+					end
+				end
+				
+				if sound then
+					if type(sound) == "table" then
+						pane.playSound(sound[math.random(1, #sound)], 0, (volume or 1))
+					else
+						pane.playSound(sound, 0, (volume or 1))
+					end
+				end
 				
 				local length = string.len(textData.written)
 				if textData.functionCalls and textData.functionCalls[length] then
@@ -179,20 +198,16 @@ function writerUpdate( textData, sound, volume )
 						textData.written = textData.written..write
 						table.remove(textData.toWrite, 1)
 						
-						if sound then
-							pane.playSound(sound, 0, math.random(7,10)/10)
+						if wd then
+							widget.setText(wd, textData.written)
 						end
 					end
 				else
 					textData.written = textData.written..write
 					table.remove(textData.toWrite, 1)
 					
-					if sound then
-						if volume then
-							pane.playSound(sound, 0, volume)
-						else
-							pane.playSound(sound, 0, 1)
-						end
+					if wd then
+						widget.setText(wd, textData.written)
 					end
 				end
 			else
@@ -202,7 +217,7 @@ function writerUpdate( textData, sound, volume )
 	end
 end
 
-function writerSkip( textData )
+function writerSkip(textData, wd)
 	if not textData.isFinished then
 		for i = 1, #textData.toWrite do
 			local write = textData.toWrite[i]
@@ -215,12 +230,16 @@ function writerSkip( textData )
 			end
 		end
 		
+		if wd then
+			widget.setText(wd, textData.written)
+		end
+		
 		textData.textPause = 0
 		textData.isFinished = true
 	end
 end
 
-function writerScrambling( textData )
+function writerScrambling(textData)
 	if not textData or not textData.scrambingLetters then return end
 	
 	for _, coords in ipairs(textData.scrambingLetters) do
@@ -244,5 +263,15 @@ function writerScrambling( textData )
 			
 			textData.written = preScramble..replacement..postScramble
 		end
+	end
+end
+
+function writerStopSounds(textData)
+	if type(textData.sound) == "table" then
+		for _, snd in ipairs(textData.sound) do
+			pane.stopAllSounds(snd)
+		end
+	else
+		pane.stopAllSounds(textData.sound)
 	end
 end
