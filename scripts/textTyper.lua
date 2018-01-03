@@ -22,6 +22,7 @@
 
 --	writerSkip( textData )
 --		textData	= Table that holds data required for the script to function
+--		wd			= [Optional] The widget that should have its text updated
 --	Instantly prints the entire text, skipping the typing part
 
 --		Formats:
@@ -216,7 +217,7 @@ function writerUpdate(textData, wd, sound, volume, cutoffSound)
 	end
 end
 
-function writerSkip(textData)
+function writerSkip(textData, wd)
 	if not textData.isFinished then
 		for i = 1, #textData.toWrite do
 			local write = textData.toWrite[i]
@@ -227,6 +228,10 @@ function writerSkip(textData)
 			else
 				textData.written = textData.written..write
 			end
+		end
+		
+		if wd then
+			widget.setText(wd, textData.written)
 		end
 		
 		textData.textPause = 0
