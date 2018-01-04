@@ -41,7 +41,9 @@ end
 function transferUtil.routeItems()
 	if storage.disabled then return end
 	if util.tableSize(storage.inContainers) == 0 then return end
-	if util.tableSize(storage.outContainers) == 0 then return end
+
+	local outputSize = util.tableSize(storage.outContainers)
+	if outputSize == 0 then return end
 
 	for sourceContainer,sourcePos in pairs(storage.inContainers) do
 		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
@@ -61,6 +63,15 @@ function transferUtil.routeItems()
 						local pass,mod = transferUtil.checkFilter(item)
 						if pass then
 							if transferUtil.validInputSlot(indexIn) then
+								if storage.roundRobin then
+									-- Maximum amount per container
+									storage.RRPKT = math.floor((item.count / outputSize) % mod)
+									storage.RRPKT = math.floor(item.count / outputSize - storage.RRPKT)
+
+									-- Amount left in the round-robin
+									storage.RRAMT = item.count
+									item.count = storage.RRPKT
+								end
 								item.count = item.count - (item.count % mod)
 								if util.tableSize(storage.outputSlots) > 0 then
 									for indexOut=1,world.containerSize(targetContainer) do
@@ -68,7 +79,7 @@ function transferUtil.routeItems()
 											local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
 											if leftOverItems then
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-												item=leftOverItems
+												item = leftOverItems
 											else
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 												break
@@ -88,12 +99,22 @@ function transferUtil.routeItems()
 										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 									end
 								end
+								if storage.roundRobin then
+									storage.RRAMT = storage.RRAMT - storage.RRPKT
+									item.count = storage.RRAMT
+									storage.RRAMT = nil
+									storage.RRPKT = nil
+								end
 							end
 						end
 					end
 				end
 			else
 				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
+			end
+			if storage.roundRobin then
+				-- Count down on those outputs!
+				outputSize = outputSize - 1
 			end
 		end
 	end
