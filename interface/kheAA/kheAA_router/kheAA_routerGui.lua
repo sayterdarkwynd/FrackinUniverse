@@ -1,6 +1,15 @@
 local inputList = "inputSlotScrollArea.inputSlotList";
 local outputList = "outputSlotScrollArea.outputSlotList";
 
+buttons = {
+	invertButtons = {
+		item1ButtonInvert = 1,
+		item2ButtonInvert = 2,
+		item3ButtonInvert = 3,
+		item4ButtonInvert = 4,
+		item5ButtonInvert = 5
+	}
+}
 
 function init()
 	inputSlots = {};
@@ -34,6 +43,7 @@ function initialize(conf)
 	filterInverted=conf[3]
 	filterType=conf[4]
 	invertSlots=conf[5]
+	widget.setChecked("roundRobinMode", conf[6])
 	redrawListSlots(inputList, inputSlots);
 	redrawListSlots(outputList, outputSlots);
 	redrawItemFilters()
@@ -95,7 +105,7 @@ end
 
 function subFromListSlots(list, slots, notify)
 	local item = widget.getListSelected(list)
-	if item ~= nil then
+	if item then
 		for k,v in pairs(slots) do
 			if v[2] == item then
 				table.remove(slots, k)
@@ -124,7 +134,7 @@ function redrawListSlots(list, slots)
 end
 
 function invSlots()
-	if not initialized==true then return end
+	if not initialized then return end
 	invertSlots[1]=widget.getChecked("invInputSlot")
 	invertSlots[2]=widget.getChecked("invOutputSlot")
 	world.sendEntityMessage(myBox, "setInvertSlots", invertSlots);
@@ -145,8 +155,8 @@ function redrawItemFilters()
 end
 
 function redrawInvertButtons()
-	for i=1,5 do
-		widget.setChecked("item"..i.."ButtonInvert",filterInverted[i])
+	for name,i in pairs(buttons.invertButtons) do
+		widget.setChecked(name,filterInverted[i])
 	end
 end
 
@@ -156,19 +166,22 @@ function redrawInvertSlotButtons()
 end
 
 function itemFilters()
-	if not initialized==true then return end
+	if not initialized then return end
 	for i=1,5 do
 		filterType[i]=widget.getSelectedOption("item"..i.."Filter")
 	end
 	world.sendEntityMessage(myBox, "setFilters", filterType);
 end
 
-function invertButtons()
-	if not initialized==true then return end
-	for i=1,5 do
-		filterInverted[i]=widget.getChecked("item"..i.."ButtonInvert")
-	end
+function invertButtons(name)
+	if not initialized then return end
+	filterInverted[buttons.invertButtons[name]] = widget.getChecked(name)
 	world.sendEntityMessage(myBox, "setInverts", filterInverted);
+end
+
+function roundRobinToggle(name)
+	roundRobin = widget.getChecked(name)
+	world.sendEntityMessage(myBox, "setRR", roundRobin)
 end
 
 
