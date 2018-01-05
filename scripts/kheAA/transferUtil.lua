@@ -73,7 +73,17 @@ function transferUtil.routeItems()
 									item.count = storage.RRPKT
 								end
 								item.count = item.count - (item.count % mod)
-								if util.tableSize(storage.outputSlots) > 0 then
+								local outputSlotCount = (storage.invertSlots[2] and (world.containerSize(targetContainer) - util.tableSize(storage.outputSlots))) or util.tableSize(storage.outputSlots)
+								if outputSlotCount > 0 then
+									if storage.roundRobinSlots then
+										-- Maximum amount per slot
+										storage.RRSPKT = math.floor((item.count / outputSlotCount) % mod)
+										storage.RRSPKT = math.floor(item.count / outputSlotCount - storage.RRSPKT)
+
+										-- Amount left in the round-robin
+										storage.RRSAMT = item.count
+										item.count = storage.RRSPKT
+									end
 									for indexOut=1,world.containerSize(targetContainer) do
 										if transferUtil.validOutputSlot(indexOut) then
 											local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
@@ -82,10 +92,21 @@ function transferUtil.routeItems()
 												item = leftOverItems
 											else
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-												break
+												if not storage.roundRobinSlots then
+													break
+												end
 											end
 										end
+										if storage.roundRobinSlots then
+											if storage.RRSAMT < storage.RRSPKT then break end
+											storage.RRSAMT = storage.RRSAMT - storage.RRSPKT
+											item.count = storage.RRSPKT
+										end
+										-- Count down on those output slots!
+										outputSlotCount = outputSlotCount - 1
 									end
+									storage.RRSPKT = nil
+									storage.RRSAMT = nil
 								else
 									--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
 									local leftOverItems=world.containerAddItems(targetContainer,item)
