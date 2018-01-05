@@ -843,33 +843,48 @@ end
 --------------------------- SHOP ---------------------------
 ------------------------------------------------------------
 
-function populateShopList()
+function populateShopList(firstInit)
 	widget.clearListItems("shopScrollList.itemList")
 	shopListIDs = {}
 	
 	for _, item in ipairs(objectData.shopItems) do
-		local config = root.itemConfig(item)
-		if config then
-			local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
-			local basePrice = config.config.price or 1
-			basePrice = math.max(basePrice,1) -- No charities
+		if type(item) == "table" then
 			
-			local price = calculateShopPrice(basePrice, true)
-			
-			widget.setItemSlotItem(listItem..".item", item)
-			widget.setText(listItem..".name", config.config.shortdescription)
-			widget.setText(listItem..".price", price)
-			
-			local maxStack = config.config.maxStack
-			if not maxStack then
-				maxStack = 1000
-			end
-			
-			table.insert(shopListIDs, listItem)
-			widget.setData(listItem, { name = config.config.itemName, price = price, maxStack = maxStack })
+			local config = root.itemConfig(item.name)
+			-- if config then
+				local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
+				local price = math.max((item.parameters.price or config.config.price or 1), 1)
+				
+				if item.parameters.level then
+					price = price * (math.max(item.parameters.level * 0.5, 1))
+				end
+				price = calculateShopPrice(price, true)
+				
+				widget.setText(listItem..".name", item.parameters.shortdescription or config.config.shortdescription)
+				widget.setItemSlotItem(listItem..".item", item)
+				widget.setText(listItem..".price", price)
+				widget.setData(listItem, { name = item.name, price = price, maxStack = config.config.maxStack, isWeapon = true })
+			-- end
 		else
-			sb.logError("")
-			sb.logError("ERROR - Failed to retrieve config for '%s' item from the '%s' shop item pool", item, objectData.stationType)
+			local config = root.itemConfig(item)
+			if config then
+				local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
+				local isWeapon = false
+				local basePrice = math.max(config.config.price or 1, 1)
+				local maxStack = config.config.maxStack or 1000
+				
+				local price = calculateShopPrice(basePrice, true)
+				
+				widget.setText(listItem..".name", config.config.shortdescription)
+				widget.setItemSlotItem(listItem..".item", item)
+				widget.setText(listItem..".price", price)
+				widget.setData(listItem, { name = config.config.itemName, price = price, maxStack = maxStack })
+				
+				table.insert(shopListIDs, listItem)
+			else
+				sb.logError("")
+				sb.logError("ERROR - Failed to retrieve config for '%s' item from the '%s' shop item pool", item, objectData.stationType)
+			end
 		end
 	end
 	
@@ -937,8 +952,9 @@ end
 
 function shopRestock()
 	-- Clear table
-	for i in ipairs(objectData.shopItems) do
-		objectData.shopItems[i] = nil
+	local length = #objectData.shopItems
+	for i = 1, length do
+		table.remove(objectData.shopItems, length - i + 1)
 	end
 	
 	local uniqueAmount = math.random(stationData.shop.minUniqueItems, stationData.shop.maxUniqueItems)
@@ -947,17 +963,65 @@ function shopRestock()
 	local indexes = getRandomTableIndexes(stationData.shop.potentialStock[objectData.stationType], uniqueAmount)
 	for _, i in ipairs(indexes) do
 		local item = stationData.shop.potentialStock[objectData.stationType][i]
-		if not item then item = "azazaz" end
-		
-		table.insert(objectData.shopItems, item)
+		if item then
+			local config = root.itemConfig(item)
+			if config then
+				if root.itemHasTag(item, "weapon") then
+					local level = 0
+					local price = config.config.price or 1
+					price = math.max(price, 1)
+					
+					local roll = math.random(1,100)
+					local tiers = stationData.shop.weaponLevelRates
+					for i = 1, #tiers do
+						if roll < tiers[#tiers - i + 1] then
+							level = i
+							break
+						end
+					end
+					
+					item = root.createItem(item, level)
+					
+					item.parameters.price = price
+				end
+				
+				table.insert(objectData.shopItems, item)
+			end
+		else
+			logError("ERROR - INVALID ITEM '%s' WAS NOT ADDED TO SHOP", item)
+		end
 	end
 	
 	indexes = getRandomTableIndexes(stationData.shop.potentialStock.generic, genericAmount)
 	for _, i in ipairs(indexes) do
 		local item = stationData.shop.potentialStock.generic[i]
-		if not item then item = "azazaz" end
-		
-		table.insert(objectData.shopItems, item)
+		if item then
+			local config = root.itemConfig(item)
+			if config then
+				if root.itemHasTag(item, "weapon") then
+					local level = 0
+					local price = config.config.price or 1
+					price = math.max(price, 1)
+					
+					local roll = math.random(1,100)
+					local tiers = stationData.shop.weaponLevelRates
+					for i = 1, #tiers do
+						if roll < tiers[#tiers - i + 1] then
+							level = i
+							break
+						end
+					end
+					
+					item = root.createItem(item, level)
+					
+					item.parameters.price = price
+				end
+				
+				table.insert(objectData.shopItems, item)
+			end
+		else
+			logError("ERROR - INVALID ITEM '%s' WAS NOT ADDED TO SHOP", item)
+		end
 	end
 end
 
@@ -967,8 +1031,18 @@ function shopBuy()
 		amount = tonumber(amount)
 		if amount and amount > 0 then
 			if player.consumeCurrency("money", stationData.selected.price * amount) then
-				player.giveItem({ name = stationData.selected.name, count = amount })
 				widget.playSound("/sfx/objects/coinstack_small"..math.random(1,3)..".ogg")
+				
+				if stationData.selected.isWeapon then
+					local slot = widget.getListSelected("shopScrollList.itemList")
+					local item = widget.itemSlotItem("shopScrollList.itemList."..slot..".item")
+					
+					for i = 1, amount do
+						player.giveItem(item)
+					end
+				else
+					player.giveItem({ name = stationData.selected.name, count = amount })
+				end
 			end
 		end
 	end
