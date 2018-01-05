@@ -1,5 +1,5 @@
-require "/scripts/deployment/playermechdeployment.lua"
-origInit = init
+
+local origInit = init
 
 function init()
 	origInit()
@@ -10,5 +10,5 @@ function init()
 		player.interact("ScriptPane", "/interface/scripted/fu_updateInfoWindow/updateInfoWindow.config", player.id())
 	end
 	
-	sb.logInfo("Launched Frackin' Universe version %s", data.version)
+	sb.logInfo("Frackin' Universe version %s", data.version)
 end
