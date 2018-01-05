@@ -34,16 +34,17 @@ end
 
 function initialize(conf)
 	inputSlots={}
-	for k,v in pairs(conf[1]) do
+	for k,v in pairs(conf[1] or {}) do
 		inputSlots[k]={v,"-1"}
 	end
-	for k,v in pairs(conf[2]) do
+	for k,v in pairs(conf[2] or {}) do
 		outputSlots[k]={v,"-1"}
 	end
 	filterInverted=conf[3]
 	filterType=conf[4]
 	invertSlots=conf[5]
 	widget.setChecked("roundRobinMode", conf[6])
+	widget.setChecked("roundRobinSlotMode", conf[7])
 	redrawListSlots(inputList, inputSlots);
 	redrawListSlots(outputList, outputSlots);
 	redrawItemFilters()
@@ -182,6 +183,11 @@ end
 function roundRobinToggle(name)
 	roundRobin = widget.getChecked(name)
 	world.sendEntityMessage(myBox, "setRR", roundRobin)
+end
+
+function roundRobinSlotToggle(name)
+	roundRobin = widget.getChecked(name)
+	world.sendEntityMessage(myBox, "setRRS", roundRobin)
 end
 
 
