@@ -46,6 +46,8 @@ function populateQueslineList()
 	widget.setButtonEnabled("questButton", false)
 	widget.setText("questButton", "Select")
 	
+	local questlineStatuses = status.statusProperty("fuQuestlinesComplete", "")
+	
 	for _, tbl in ipairs(self.QD.lines) do
 		local available = true
 		
@@ -63,7 +65,7 @@ function populateQueslineList()
 			widget.setData(path..".banner", tbl.id)
 			widget.setImage(path..".banner", "/interface/scripted/fu_tutorialQuestList/banners/"..tbl.id..".png:default")
 			
-			if status.statusProperty("fuQueslineComplet_"..tbl.id, false) then
+			if string.find(questlineStatuses, tbl.id..";") then
 				widget.setVisible(path..".completeImage", true)
 			else
 				local complete = true
@@ -80,11 +82,15 @@ function populateQueslineList()
 				
 				if complete then
 					widget.setVisible(path..".completeImage", true)
-					status.setStatusProperty("fuQueslineComplet_"..tbl.id, true)
+					questlineStatuses = questlineStatuses..tbl.id..";"
 					pane.playSound("/sfx/objects/colonydeed_partyhorn.ogg")
 					
 					if tbl.moneyRange then
-						player.addCurrency("money", math.random(tbl.moneyRange[1], tbl.moneyRange[2]))
+						if type(tbl.moneyRange) == "table" then
+							player.addCurrency("money", math.random(tbl.moneyRange[1], tbl.moneyRange[2]))
+						else
+							player.addCurrency("money", math.random(tbl.moneyRange[1], tbl.moneyRange[2]))
+						end
 					end
 					
 					if tbl.rewards then
@@ -100,6 +106,8 @@ function populateQueslineList()
 			widget.setImage(path..".banner", "/interface/scripted/fu_tutorialQuestList/banners/"..tbl.id..".png:unavailable")
 		end
 	end
+	
+	status.setStatusProperty("fuQuestlinesComplete", questlineStatuses)
 end
 
 function questlineSelected()
