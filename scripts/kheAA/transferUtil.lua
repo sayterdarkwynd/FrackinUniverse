@@ -43,7 +43,7 @@ function transferUtil.routeItems()
 	if util.tableSize(storage.inContainers) == 0 then return end
 
 	local outputSizeG = util.tableSize(storage.outContainers)
-	if outputSize == 0 then return end
+	if outputSizeG == 0 then return end
 
 	for sourceContainer,sourcePos in pairs(storage.inContainers) do
 		local outputSize = outputSizeG
