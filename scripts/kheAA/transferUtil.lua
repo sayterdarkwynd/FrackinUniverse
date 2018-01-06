@@ -105,7 +105,6 @@ function transferUtil.routeItems()
 										end
 										-- Count down on those output slots!
 										outputSlotCount = outputSlotCount - 1
-										if outputSlotCount < 1 then break end
 									end
 									storage.RRSPKT = nil
 									storage.RRSAMT = nil
