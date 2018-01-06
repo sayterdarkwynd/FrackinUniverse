@@ -8,6 +8,7 @@
   "shortdescription" : "Bee Keeper's Armor",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
+  "itemTags" : [ "upgradeableWeapon" ],  
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
@@ -19,24 +20,31 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  "itemTags" : [ "upgradeableWeapon" ],
-  "statusEffects" : [
+  
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.32
+      "baseMultiplier" : 1.15
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 5
+      "amount" : 0.45
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 5
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 4
-    },
+      "amount" : 2
+    }
+  ],
+  
+  "statusEffects" : [
     "beestingimmunity"
   ],
 

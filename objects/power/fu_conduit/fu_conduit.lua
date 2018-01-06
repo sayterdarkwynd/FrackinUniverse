@@ -1,3 +1,5 @@
+require '/scripts/power.lua'
+
 function init()
   if storage.on == nil then
     storage.on = true
