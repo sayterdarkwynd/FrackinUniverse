@@ -42,10 +42,11 @@ function transferUtil.routeItems()
 	if storage.disabled then return end
 	if util.tableSize(storage.inContainers) == 0 then return end
 
-	local outputSize = util.tableSize(storage.outContainers)
+	local outputSizeG = util.tableSize(storage.outContainers)
 	if outputSize == 0 then return end
 
 	for sourceContainer,sourcePos in pairs(storage.inContainers) do
+		local outputSize = outputSizeG
 		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
 		if ping1 ~= nil then
 			sourceContainer=ping1
@@ -104,6 +105,7 @@ function transferUtil.routeItems()
 										end
 										-- Count down on those output slots!
 										outputSlotCount = outputSlotCount - 1
+										if outputSlotCount < 1 then break end
 									end
 									storage.RRSPKT = nil
 									storage.RRSAMT = nil
