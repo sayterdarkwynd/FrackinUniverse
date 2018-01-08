@@ -22,16 +22,16 @@ function evolveFluffalo()
 end
 
 function resetMonsterHarvest()
-  storage.lastHarvest = world.time()
-  storage.harvestTime = util.randomInRange(config.getParameter("harvestTime"))
+  storage.produceRequired = util.randomInRange(config.getParameter("harvestTime"))
+  storage.producePercent = 0
 end
 
 function hasMonsterHarvest(args, board)
-  if not storage.lastHarvest then
+  if not storage.producePercent then
     resetMonsterHarvest()
   end
-
-  if world.time() - storage.lastHarvest >= storage.harvestTime then
+  storage.producePercent = storage.producePercent + 0.333333333 * ((storage.happiness or 50)/100) * math.max(math.min(((storage.food or 100)-10)/10,1),0)
+  if storage.producePercent >= storage.produceRequired then
     return true
   else
     return false
@@ -47,5 +47,71 @@ function dropMonsterHarvest(args, board)
     world.spawnItem(item, spawnPosition)
   end
   resetMonsterHarvest()
+  return true
+end
+
+function eatFood(args)
+  if not args.entity then return false end
+  local foodlist = root.assetJson('/scripts/actions/monsters/farmable.config').foodlists
+  local diet = config.getParameter('diet','omnivore')
+  local eaten = false
+  for pos,item in pairs(world.containerItems(args.entity)) do
+    local itemConfig = root.itemConfig(item).config
+    if diet == 'omnivore' then
+	  for _,value in pairs(foodlist.herbivore) do
+	    if item.name == value then
+	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
+		  if world.containerConsumeAt(args.entity,pos-1,consume) then
+		    storage.food = storage.food + consume * itemConfig.foodValue
+		    eaten = true
+		    break
+		  end
+		end
+	  end
+	  for _,value in pairs(foodlist.carnivore) do
+	    if item.name == value then
+	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
+		  if world.containerConsumeAt(args.entity,pos-1,consume) then
+		    storage.food = storage.food + consume * itemConfig.foodValue
+		    eaten = true
+		    break
+		  end
+		end
+	  end
+	else
+	  for _,value in pairs(foodlist[diet]) do
+	    if item.name == value then
+	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
+		  if world.containerConsumeAt(args.entity,pos-1,consume) then
+		    storage.food = storage.food + consume * itemConfig.foodValue
+		    eaten = true
+		    break
+		  end
+		end
+	  end
+	end
+	if storage.food >= 80 then
+	  break
+	end
+  end
+  return eaten
+end
+
+function getFood()
+  return true,{food=storage.food}
+end
+
+function removeFood(args)
+  storage.food = math.max((storage.food or 100) - args.amount,0)
+  return true
+end
+
+function happinessCalculation()
+  storage.happiness = storage.happiness or 50
+  if storage.food < 20 then
+    storage.happiness = storage.happiness - 0.00462962963
+  else
+    storage.happiness = storage.happiness + 0.00462962963
+  end
   return true
 end
