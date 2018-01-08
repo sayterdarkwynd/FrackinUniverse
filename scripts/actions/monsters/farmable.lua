@@ -102,7 +102,7 @@ function getFood()
 end
 
 function removeFood(args)
-  storage.food = math.max((storage.food or 100) - args.amount,0)
+  storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
   return true
 end
 
