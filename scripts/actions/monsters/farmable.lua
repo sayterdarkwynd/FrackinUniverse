@@ -89,10 +89,11 @@ function eatFood(args)
 		  end
 		end
 	  end
-	end
-	if storage.food >= 80 then
+	end     
+        if storage.food >= 100 then      
 	  break
 	end
+	
   end
   return eaten
 end
@@ -103,15 +104,24 @@ end
 
 function removeFood(args)
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
+  local configBombDrop = { }
+        if storage.food <= 0 then
+          world.spawnProjectile("fu_sad", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)        
+        elseif storage.food >=50 then
+          world.spawnProjectile("fu_hungry", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)        
+        elseif storage.food >= 80 then
+          world.spawnProjectile("fu_happy", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)        
+	end
+	
   return true
 end
 
 function happinessCalculation()
   storage.happiness = storage.happiness or 50
   if storage.food < 20 then
-    storage.happiness = storage.happiness - 0.00462962963
+    storage.happiness = math.max(storage.happiness - 0.00462962963,0)
   else
-    storage.happiness = storage.happiness + 0.00462962963
+    storage.happiness = math.min(storage.happiness + 0.00462962963,100)
   end
   return true
 end
