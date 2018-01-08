@@ -98,7 +98,6 @@ function eatFood(args)
 end
 
 function getFood()
-  monster.say(tostring(storage.food))
   return true,{food=storage.food}
 end
 
