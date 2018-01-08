@@ -9,6 +9,8 @@ function init()
 	message.setHandler("setInvertSlots", function (_, _, inverted) storage.invertSlots = inverted end)
 	message.setHandler("setInputSlots", function (msg, _, slots) storage.inputSlots = slots end)
 	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)
+	message.setHandler("setRR", function (msg, _, rr) storage.roundRobin = rr end)
+	message.setHandler("setRRS", function (msg, _, rr) storage.roundRobinSlots = rr end)
 	object.setInteractive(true)
 end
 
@@ -21,7 +23,7 @@ function update(dt)
 	storage.routerItems=world.containerItems(entity.id())
 	transferUtil.updateInputs();
 	transferUtil.updateOutputs();
-	
+
 	if transferUtil.powerLevel(storage.logicNode) then
 		transferUtil.routeItems();
 		object.setOutputNodeLevel(storage.outDataNode,util.tableSize(storage.inContainers)>0)
@@ -58,26 +60,26 @@ function initVars()
 end
 
 function sendConfig()
-	if storage.inputSlots == nil then
+	if not storage.inputSlots then
 		storage.inputSlots = {};
 	end
-	if storage.outputSlots == nil then
+	if not storage.outputSlots then
 		storage.outputSlots = {};
 	end
-	if storage.filterInverted == nil then
+	if not storage.filterInverted then
 		storage.filterInverted={}
 		for i=1,5 do
 			storage.filterInverted[i]=false;
 		end
 	end
-	if storage.filterType == nil then
+	if not storage.filterType then
 		storage.filterType={};
 		for i=1,5 do
 			storage.filterType[i]=-1;
 		end
 	end
-	if storage.invertSlots==nil then
+	if not storage.invertSlots then
 		storage.invertSlots={false,false}
 	end
-	return({storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType,storage.invertSlots})
+	return {storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType,storage.invertSlots,storage.roundRobin or false,storage.roundRobinSlots or false}
 end
