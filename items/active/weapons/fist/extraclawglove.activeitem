@@ -9,7 +9,7 @@
   "tooltipKind" : "fistweapon",
   "category" : "fistWeapon",
   "twoHanded" : false,
-  "itemTags" : ["weapon","fist", "upgradeableWeapon"],
+  "itemTags" : ["weapon", "fist", "upgradeableWeapon"],
 
   "inventoryIcon" : "extraclawglove.png:front",
   "animation" : "fistweapon.animation",
@@ -31,11 +31,11 @@
   "edgeTriggerGrace" : 0.2,
 
   "comboSteps" : 4,
-  "comboTiming" : [0.1, 0.75],
+  "comboTiming" : [0.2, 0.75],
   "comboCooldown" : 0.2,
   "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/sonicslash.combofinisher",
 
-  "freezeLimit" : 5,
+  "freezeLimit" : 0,
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/fist/punch.lua"],
@@ -99,7 +99,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [0.125, -0.25],
 
-        "allowRotate" : true,
+        "allowRotate" : false,
         "allowFlip" : false,
 
         "frontArmFrame" : "rotation",
@@ -107,7 +107,6 @@
       }
     }
   },
-  "critChance" : 5,
-  "critBonus" : 5, 
+
   "builder" : "/items/buildscripts/buildfist.lua"
 }
