@@ -537,27 +537,29 @@ function commandProcessor(wd)
 			end
 			
 		elseif type == "medical" then
-			modifyButtons("Acquire", "Remove", false, false, false, "Back")
-			widget.setButtonEnabled("button1", false)
+			writerInit(textData, "[(instant)^red;Medical station special is temporarily disabled due to player corrupting bugs]")
 			
-			if status.statusProperty("fuMedicalEnhancerDuration", 0) <= 0 then
-				widget.setButtonEnabled("button2", false)
-			end
+			-- modifyButtons("Acquire", "Remove", false, false, false, "Back")
+			-- widget.setButtonEnabled("button1", false)
 			
-			local cooldown = math.floor(status.statusProperty("fuMedicalEnhancerCooldown", 0))
-			if player.isAdmin() then cooldown = 0 end
+			-- if status.statusProperty("fuMedicalEnhancerDuration", 0) <= 0 then
+				-- widget.setButtonEnabled("button2", false)
+			-- end
 			
-			if cooldown == 0 then
-				widget.setPosition("playerPixels", self.data.pixelDisplaySpecialPos)
-				widget.setVisible("specialsScrollList", true)
-				widget.setVisible("playerPixels", true)
+			-- local cooldown = math.floor(status.statusProperty("fuMedicalEnhancerCooldown", 0))
+			-- if player.isAdmin() then cooldown = 0 end
+			
+			-- if cooldown == 0 then
+				-- widget.setPosition("playerPixels", self.data.pixelDisplaySpecialPos)
+				-- widget.setVisible("specialsScrollList", true)
+				-- widget.setVisible("playerPixels", true)
 				
-				populateSpecialList()
-				writerInit(textData, textData[objectData.stationRace]["medicalSpecial"])
-			else
-				textData.medicalSpecialCooldownRemaining = toTime(cooldown)
-				writerInit(textData, textData[objectData.stationRace].cooldownEnhancer)
-			end
+				-- populateSpecialList()
+				-- writerInit(textData, textData[objectData.stationRace]["medicalSpecial"])
+			-- else
+				-- textData.medicalSpecialCooldownRemaining = toTime(cooldown)
+				-- writerInit(textData, textData[objectData.stationRace].cooldownEnhancer)
+			-- end
 			
 		elseif type == "scientific" then
 			widget.setVisible("scientificSpecialList", true)
@@ -843,7 +845,7 @@ end
 --------------------------- SHOP ---------------------------
 ------------------------------------------------------------
 
-function populateShopList(firstInit)
+function populateShopList()
 	widget.clearListItems("shopScrollList.itemList")
 	shopListIDs = {}
 	
