@@ -10,9 +10,6 @@
         "particles" : [
           { "particle" : "fireswoosh1"},
           { "particle" : "fireswoosh2"},
-          { "particle" : "fireswoosh3"},
-          { "particle" : "fireswoosh1"},
-          { "particle" : "fireswoosh2"},
           { "particle" : "fireswoosh3"}
         ]
       }
@@ -42,16 +39,16 @@
 
     // use baseDps and fireTime from primary fire
 
-    "baseDps" : 24,
-    "energyUsage" : 105,
-    "fireTime" : 0.04,
-    "inaccuracy" : 0.15,
+    "baseDps" : 8,
+    "energyUsage" : 70,
+    "fireTime" : 0.75,
+    "inaccuracy" : 0,
     "fireType" : "auto",
     "projectileCount" : 1,
     "projectileParameters" : {
-      "timeToLive" : 0.1,
+      "timeToLive" : [0.001,0.4],
 	  "actionOnReap" : [ 
-	  { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 0.2 },
+	    { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 0.2 },
 	    {
 	      "action" : "config",
 	      "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
@@ -66,7 +63,18 @@
 	          "power" : 10
 	        }
 	      }
-	    }, 	    
+	    }, 	
+	    {
+	      "action" : "projectile",
+	      "type" : "magnorbhellfire2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : {
+	        "projectileParameters" : {
+	          "power" : 10
+	        }
+	      }
+	    },	    
 	    {
 	      "action" : "projectile",
 	      "type" : "magnorbhellfire2",
