@@ -77,7 +77,9 @@ function SonicSlash:fire()
 end
 
 function SonicSlash:aimVector()
-  return {mcontroller.facingDirection(), 0}
+  local aimVector = vec2.rotate({1, 0}, self.weapon.aimAngle)
+  aimVector[1] = aimVector[1] * mcontroller.facingDirection()
+  return aimVector
 end
 
 function SonicSlash:damageAmount()
