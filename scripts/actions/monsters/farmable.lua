@@ -126,15 +126,14 @@ function displayHappiness()
 	    world.spawnProjectile("fu_hungry",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	  end     
 	self.timer = 90
-	
   end
 end
 
 function checkPoop()
   if storage.food >=50 then
         self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
-  	self.randPoop = math.random(420) - self.foodMod
-  	if self.randPoop <= 1.14 then
+  	self.randPoop = math.random(500) - self.foodMod
+  	if self.randPoop <= 1 then
   	  animator.playSound("deathPuff")
   	  world.spawnItem("poop", mcontroller.position(), 1)
 	end  
