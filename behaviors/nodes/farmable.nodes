@@ -48,13 +48,24 @@
 	  "food": {"type": "number", "key": null}
 	}
   },
+  "findTrough": {
+    "type": "action",
+	"name": "findTrough",
+	"title": "",
+	"properties" : {
+	  "position": {"type": "position", "key": "self"}
+	},
+	"category": "farmable",
+	"script": "/scripts/actions/monsters/farmable.lua",
+    "output": {
+      "entity": {"type": "entity", "key": null}
+    }
+  },
   "removeFood": {
     "type": "action",
     "name": "removeFood",
     "title": "removeFood",
-    "properties": {
-      "amount": {"type": "number", "value": null}
-    },
+    "properties": {},
     "category": "farmable",
     "script": "/scripts/actions/monsters/farmable.lua",
     "output": {}

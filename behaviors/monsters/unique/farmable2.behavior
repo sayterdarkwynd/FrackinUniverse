@@ -10,7 +10,6 @@
     "/scripts/actions/movement.lua",
     "/scripts/actions/math.lua",
     "/scripts/actions/position.lua",
-    "/scripts/actions/query.lua",
     "/scripts/actions/world.lua"
   ],
   "parameters": {
@@ -524,76 +523,6 @@
                     }
                   },
                   {
-                    "title": "cooldown",
-                    "type": "decorator",
-                    "name": "cooldown",
-                    "parameters": {
-                      "cooldown": {"key": "<grazeCooldown>"},
-                      "onFail": {"value": false},
-                      "onSuccess": {"value": true}
-                    },
-                    "child": {
-                      "title": "sequence",
-                      "type": "composite",
-                      "name": "sequence",
-                      "parameters": {},
-                      "children": [
-                        {
-                          "title": "cooldown",
-                          "type": "decorator",
-                          "name": "cooldown",
-                          "parameters": {
-                            "cooldown": {"value": 2},
-                            "onFail": {"value": true},
-                            "onSuccess": {"value": true}
-                          },
-                          "child": {
-                            "title": "chance",
-                            "type": "action",
-                            "name": "chance",
-                            "parameters": {
-                              "chance": {"value": 0.25}
-                            }
-                          }
-                        },
-                        {
-                          "title": "setAnimationState",
-                          "type": "action",
-                          "name": "setAnimationState",
-                          "parameters": {
-                            "state": {"value": "idle"},//was "graze"
-                            "type": {"value": "body"}
-                          }
-                        },
-                        {
-                          "title": "timer",
-                          "type": "action",
-                          "name": "timer",
-                          "parameters": {
-                            "time": {"value": "<grazeTime>"}
-                          }
-                        },
-                        {
-                          "title": "setAnimationState",
-                          "type": "action",
-                          "name": "setAnimationState",
-                          "parameters": {
-                            "state": {"value": "idle"},// was "grazewinddown"
-                            "type": {"value": "body"}
-                          }
-                        },
-                        {
-                          "title": "timer",
-                          "type": "action",
-                          "name": "timer",
-                          "parameters": {
-                            "time": {"value": 0.5}
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
                     "title": "sequence",
                     "type": "composite",
                     "name": "sequence",
@@ -666,13 +595,11 @@
                     }
                   },
                   {
-                    "title": "findObject",
+                    "title": "findTrough",
                     "type": "action",
-                    "name": "findObject",
+                    "name": "findTrough",
                     "parameters": {
-                      "position": {"key": "pos"},
-                      "range": {"value": 100},
-                      "name": {"value": "trough"}
+                      "position": {"key": "pos"}
                     },
                     "output": {
                       "entity": "entityid"

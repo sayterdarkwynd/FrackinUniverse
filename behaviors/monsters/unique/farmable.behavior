@@ -10,7 +10,6 @@
     "/scripts/actions/movement.lua",
     "/scripts/actions/math.lua",
     "/scripts/actions/position.lua",
-    "/scripts/actions/query.lua",
     "/scripts/actions/world.lua"
   ],
   "parameters": {
@@ -666,13 +665,11 @@
                     }
                   },
                   {
-                    "title": "findObject",
+                    "title": "findTrough",
                     "type": "action",
-                    "name": "findObject",
+                    "name": "findTrough",
                     "parameters": {
-                      "position": {"key": "pos"},
-                      "range": {"value": 100},
-                      "name": {"value": "trough"}
+                      "position": {"key": "pos"}
                     },
                     "output": {
                       "entity": "entityid"
