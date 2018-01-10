@@ -163,9 +163,13 @@ function transferUtil.routeMoney()
 			if targetAwake == true and sourceAwake == true then
 				local sourceItems=world.containerItems(sourceContainer)
 				for indexIn,item in pairs(sourceItems or {}) do
-					local conf = root.itemConfig(item.name)
+					--local conf = root.itemConfig(item.name)
 					--sb.logInfo("%s",conf)
-					if conf.config.currency then
+					--if conf.config.currency then
+					if unhandled[item.name] then
+						break
+					end
+					if transferUtil.getType(item) == "currency" then
 						local leftOverItems = world.containerAddItems(targetContainer,item)
 						if leftOverItems then
 							world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
@@ -491,6 +495,9 @@ function transferUtil.getType(item)
 		return "currency"
 	end
 	local itemRoot = root.itemConfig(item)
+	if itemRoot.config.currency then
+		return "currency"
+	end
 	local itemCat
 	if itemRoot.category then
 		itemCat=itemRoot.category
