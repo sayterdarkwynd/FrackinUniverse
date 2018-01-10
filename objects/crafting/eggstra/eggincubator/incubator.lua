@@ -11,6 +11,7 @@ function init()
     egg = {"fuhenbaby", 400, 0.5},
     henegg = {"fuhenbaby", 400, 1},
     primedegg = {"fuhenbaby", 200, 1},
+    poptopegg = {"fupoptopfarm", 600, 1},
     raptoregg = {"furaptor4", 1200, 1},
     raptoregg2 = {"furaptor5", 1200, 1},
     raptoregg3 = {"furaptor9", 1200, 1},

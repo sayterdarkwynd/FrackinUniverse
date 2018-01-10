@@ -1,0 +1,40 @@
+{
+  "objectName" : "poptopegg",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "farmBeastEgg",
+  "price" : 1000,
+
+  "description" : "Hatches into a adorable floofy carnivore.",
+  "shortdescription" : "Poptop Egg",
+  "race" : "generic",
+
+  "inventoryIcon" : "poptopegg.png:idle.1",
+  "orientations" : [
+    {
+      "image" : "poptopegg.png:idle.1",
+      "imagePosition" : [-7, -3],
+
+      "spaces" : [ [-1, 0], [-1, 1], [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/farmables/eggs/farmableegg.animation",
+  "animationPosition" : [-7, -3],
+  "animationParts" : {
+    "egg" : "poptopegg.png"
+  },
+
+  "scripts" : ["/objects/farmables/eggs/farmableegg.lua"],
+  "scriptDelta" : 60,
+
+  "hatchTime" : 40,
+  "forceHatchTime" : 80,
+
+  "spawnMonster" : "fupoptopfarm",
+  "spawnOffset" : [0.5, 0.5]
+}
