@@ -106,6 +106,11 @@ function getFood()
 end
 
 function removeFood(args)
+  self.timerPoop = (self.timerPoop or 90) - 1
+          if self.timerPoop <= 0 then
+	    checkPoop()
+	    self.timerPoop = 90
+	  end       
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)	
   return true
 end
@@ -117,10 +122,8 @@ function displayHappiness()
 	    world.spawnProjectile("fu_sad", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	  elseif storage.food >= 80 then 
 	    world.spawnProjectile("fu_happy", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	    checkPoop()
 	  elseif storage.food >=50 then
 	    world.spawnProjectile("fu_hungry",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	    checkPoop()
 	  end     
 	self.timer = 90
 	
@@ -128,16 +131,14 @@ function displayHappiness()
 end
 
 function checkPoop()
-      -- does the animal need to poop?
+  if storage.food >=50 then
         self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
   	self.randPoop = math.random(420) - self.foodMod
-  	if self.randPoop < 1 then self.randPoop = 1 end
-  	--sb.logInfo("poop roll = "..self.randPoop)
-  	--sb.logInfo("mod = "..self.foodMod)
   	if self.randPoop <= 1.14 then
   	  animator.playSound("deathPuff")
   	  world.spawnItem("poop", mcontroller.position(), 1)
-	end	
+	end  
+  end
 end
 
 function happinessCalculation()
