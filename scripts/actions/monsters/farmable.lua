@@ -104,7 +104,6 @@ function getFood()
   if not self.timer then self.timer = 60 end
   self.timer = self.timer - 1
   if self.timer == 0 then
-    checkPoop()
     displayHappiness()
   end
   return true,{food=storage.food}
@@ -121,20 +120,26 @@ function displayHappiness()
 	  if storage.food <= 0 then
 	    world.spawnProjectile("fu_sad", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	  elseif storage.food >= 80 then
+	    checkPoop()
 	    world.spawnProjectile("fu_happy", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	  elseif storage.food >=50 then
+	    checkPoop()
 	    world.spawnProjectile("fu_hungry",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	  end  
 	self.timer = 60
+	
   end
 end
 
 function checkPoop()
-	self.randPoop = math.random(100) - storage.food
-	
-	if self.randPoop == 1 and storage.food >= 50 then
+        storage.food = storage.food or 0
+	self.poopTotal = storage.food/20
+	self.poopTotalMod = storage.food/4
+	self.randPoop = math.random(50) - self.poopTotalMod
+	if self.randPoop == 0 and storage.food >= 10 then
 	  animator.playSound("deathPuff")
-	  world.spawnItem("poop", mcontroller.position(), 1)
+	  world.spawnItem("poop", mcontroller.position(), self.poopTotal)
+	  storage.food = storage.food - 2
 	end
 end
 
