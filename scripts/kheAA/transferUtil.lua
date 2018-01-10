@@ -61,6 +61,9 @@ function transferUtil.routeItems()
 				local sourceItems=world.containerItems(sourceContainer)
 				if sourceItems then
 					for indexIn,item in pairs(sourceItems) do
+						if unhandled[item.name] then
+							break
+						end
 						local pass,mod = transferUtil.checkFilter(item)
 						if pass then
 							if transferUtil.validInputSlot(indexIn) then
