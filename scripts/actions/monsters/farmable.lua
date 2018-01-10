@@ -131,7 +131,8 @@ end
 
 function checkPoop()
 	self.randPoop = math.random(100)
-	if self.randPoop == 1 then
+	
+	if self.randPoop == 1 and storage.food >= 50 then
 	  animator.playSound("deathPuff")
 	  world.spawnItem("poop", mcontroller.position(), 1)
 	end
