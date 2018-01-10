@@ -100,9 +100,11 @@ function eatFood(args)
 end
 
 function getFood()
+
   if not self.timer then self.timer = 60 end
   self.timer = self.timer - 1
   if self.timer == 0 then
+    checkPoop()
     displayHappiness()
   end
   return true,{food=storage.food}
@@ -125,6 +127,14 @@ function displayHappiness()
 	  end  
 	self.timer = 60
   end
+end
+
+function checkPoop()
+	self.randPoop = math.random(2000)
+	if self.randPoop == 1 then
+	  animator.playSound("deathPuff")
+	  world.spawnItem("poop", mcontroller.position(), 1)
+	end
 end
 
 function happinessCalculation()
