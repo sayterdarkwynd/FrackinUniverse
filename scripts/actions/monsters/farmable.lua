@@ -133,6 +133,7 @@ function checkPoop()
   	self.randPoop = math.random(500) - self.foodMod
   	if self.randPoop < 1 then self.randPoop = 1 end
   	sb.logInfo("poop roll = "..self.randPoop)
+  	sb.logInfo("mod = "..self.foodMod)
   	if self.randPoop <= 1.14 then
   	  animator.playSound("deathPuff")
   	  world.spawnItem("poop", mcontroller.position(), 1)
