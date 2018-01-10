@@ -10,7 +10,7 @@ function init()
 	message.setHandler("setInvertSlots", function (_, _, inverted) storage.invertSlots = inverted end)
 	message.setHandler("setInputSlots", function (msg, _, slots) storage.inputSlots = slots end)
 	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)
-	object.setInteractive(true)
+	object.setInteractive(false)
 end
 
 function update(dt)
