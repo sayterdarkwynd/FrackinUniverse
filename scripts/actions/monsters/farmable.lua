@@ -130,7 +130,7 @@ function displayHappiness()
 end
 
 function checkPoop()
-	self.randPoop = math.random(2000)
+	self.randPoop = math.random(100)
 	if self.randPoop == 1 then
 	  animator.playSound("deathPuff")
 	  world.spawnItem("poop", mcontroller.position(), 1)
