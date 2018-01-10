@@ -100,11 +100,11 @@ function eatFood(args)
 end
 
 function getFood()
-  if not self.timer then self.timer = 30 end
+  if not self.timer then self.timer = 60 end
   self.timer = self.timer - 1
   if self.timer == 0 then
     displayHappiness()
-    self.timer = 30
+    self.timer = 60
   end
   return true,{food=storage.food}
 end

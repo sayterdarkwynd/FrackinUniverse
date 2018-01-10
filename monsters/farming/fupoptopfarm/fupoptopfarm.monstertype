@@ -1,16 +1,16 @@
 {
-  "type" : "fufluffalo",
+  "type" : "fupoptopfarm",
 
-  "categories" : [ "fluffalo" ],
+  "categories" : [ "fupoptopfarm" ],
   "parts" : [ "body", "spawn" ],
 
-  "animation" : "fluffalo.animation",
+  "animation" : "fupoptopfarm.animation",
   "reversed" : false,
 
   "dropPools" : [ { "default" : "huntingquadruped" } ],
 
-  "diet" : "herbivore",
-  "hungerTime" : 20,
+  "diet" : "carnivore",
+  "hungerTime" : 10,
   
   "baseParameters" : {
     "scripts" : [
@@ -19,17 +19,17 @@
 
     "persistent" : true,
 
-    "behavior" : "farmable",
+    "behavior" : "farmable2",
 
     "harvestTime" : [500, 900],
     "harvestSpawnOffset" : [0, 0],
-    "harvestPool" : "defaultFluffaloHarvest",
+    "harvestPool" : "poptopHarvest",
 
     "metaBoundBox" : [-4.0, -4.0, 4.0, 4.0],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [1.5, 1.625], [2.25, 0.875], [2.25, -0.875], [1.5, -1.625], [-1.5, -1.625], [-2.25, -0.875], [-2.25, 0.875], [-1.5, 1.625] ],
+      "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.55],  [-0.8125, -1.55], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
 
       "mass" : 1.0,
       "walkSpeed" : 5,
@@ -98,7 +98,7 @@
     "capturable" : true,
     "relocatable" : true,    
     "captureHealthFraction" : 0.5,
-    "capturedMonsterType" : "fluffalobaby", 
+    "capturedMonsterType" : "fupoptopfarm", 
     "nametagColor" : [64, 200, 255]
   }
 }
