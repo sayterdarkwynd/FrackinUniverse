@@ -100,12 +100,8 @@ function eatFood(args)
 end
 
 function getFood()
-
-  if not self.timer then self.timer = 60 end
-  self.timer = self.timer - 1
-  if self.timer == 0 then
-    displayHappiness()
-  end
+  self.timer = (self.timer or 90) - 1
+  displayHappiness()	
   return true,{food=storage.food}
 end
 
@@ -119,28 +115,28 @@ function displayHappiness()
 	local configBombDrop = { speed = 10}
 	  if storage.food <= 0 then
 	    world.spawnProjectile("fu_sad", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	  elseif storage.food >= 80 then
-	    checkPoop()
+	  elseif storage.food >= 80 then 
 	    world.spawnProjectile("fu_happy", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	  elseif storage.food >=50 then
 	    checkPoop()
+	  elseif storage.food >=50 then
 	    world.spawnProjectile("fu_hungry",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	  end  
-	self.timer = 60
+	    checkPoop()
+	  end     
+	self.timer = 90
 	
   end
 end
 
 function checkPoop()
-        storage.food = storage.food or 0
-	self.poopTotal = storage.food/20
-	self.poopTotalMod = storage.food/4
-	self.randPoop = math.random(50) - self.poopTotalMod
-	if self.randPoop == 0 and storage.food >= 10 then
-	  animator.playSound("deathPuff")
-	  world.spawnItem("poop", mcontroller.position(), self.poopTotal)
-	  storage.food = storage.food - 2
-	end
+      -- does the animal need to poop?
+        self.foodMod = storage.food/4 * self.hungerTime
+  	self.randPoop = math.random(500) - self.foodMod
+  	if self.randPoop < 1 then self.randPoop = 1 end
+  	sb.logInfo("poop roll = "..self.randPoop)
+  	if self.randPoop <= 1.14 then
+  	  animator.playSound("deathPuff")
+  	  world.spawnItem("poop", mcontroller.position(), 1)
+	end	
 end
 
 function happinessCalculation()
