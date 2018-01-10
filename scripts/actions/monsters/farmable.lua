@@ -130,7 +130,7 @@ function displayHappiness()
 end
 
 function checkPoop()
-	self.randPoop = math.random(100)
+	self.randPoop = math.random(100) - storage.food
 	
 	if self.randPoop == 1 and storage.food >= 50 then
 	  animator.playSound("deathPuff")
