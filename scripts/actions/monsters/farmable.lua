@@ -50,6 +50,41 @@ function dropMonsterHarvest(args, board)
   return true
 end
 
+function findTrough(args)
+  local troughtypelist = root.assetJson('/scripts/actions/monsters/farmable.config').troughlist
+  local troughlist = {}
+  for i = 1,#troughtypelist do
+    local objectList = world.objectQuery(args.position,100,{name = troughtypelist[i], order = "nearest"})
+	if #objectList > 0 then
+	  table.insert(troughlist,objectList[1])
+	end
+  end
+  local isEmpty = true
+  for key,value in pairs(troughlist) do
+    isEmpty = false
+	break
+  end
+  if isEmpty then return false end
+  local troughdislist = {}
+  for _,value in pairs(troughlist) do
+    troughdislist[value] = world.magnitude(args.position,world.entityPosition(value))
+  end
+  for key,value in pairs(troughdislist) do
+    for key2,value2 in pairs(troughdislist) do
+      if key ~= key2 then
+        if value > value2 then
+          troughdislist[key] = nil
+        else
+          troughdislist[key2] = nil
+        end
+      end
+    end
+  end
+  for key,value in pairs(troughdislist) do
+    return true,{entity = key}
+  end
+end
+
 function eatFood(args)
   if not args.entity then return false end
   local foodlist = root.assetJson('/scripts/actions/monsters/farmable.config').foodlists
