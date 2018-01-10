@@ -130,7 +130,7 @@ end
 function checkPoop()
       -- does the animal need to poop?
         self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
-  	self.randPoop = math.random(500) - self.foodMod
+  	self.randPoop = math.random(420) - self.foodMod
   	if self.randPoop < 1 then self.randPoop = 1 end
   	--sb.logInfo("poop roll = "..self.randPoop)
   	--sb.logInfo("mod = "..self.foodMod)
