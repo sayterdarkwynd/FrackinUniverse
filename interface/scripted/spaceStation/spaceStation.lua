@@ -537,29 +537,21 @@ function commandProcessor(wd)
 			end
 			
 		elseif type == "medical" then
-			writerInit(textData, "[(instant)^red;Medical station special is temporarily disabled due to player corrupting bugs]")
+			writerInit(textData, "[(instant)^red;Temporary disabled due to player corrupting bugs]")
 			
-			-- modifyButtons("Acquire", "Remove", false, false, false, "Back")
-			-- widget.setButtonEnabled("button1", false)
+			modifyButtons("Acquire", "Remove", false, false, false, "Back")
+			widget.setButtonEnabled("button1", false)
 			
-			-- if status.statusProperty("fuMedicalEnhancerDuration", 0) <= 0 then
-				-- widget.setButtonEnabled("button2", false)
-			-- end
+			if not status.statusProperty("fuEnhancerActive", false) then
+				widget.setButtonEnabled("button2", false)
+			end
 			
-			-- local cooldown = math.floor(status.statusProperty("fuMedicalEnhancerCooldown", 0))
-			-- if player.isAdmin() then cooldown = 0 end
+			widget.setPosition("playerPixels", self.data.pixelDisplaySpecialPos)
+			widget.setVisible("specialsScrollList", true)
+			widget.setVisible("playerPixels", true)
 			
-			-- if cooldown == 0 then
-				-- widget.setPosition("playerPixels", self.data.pixelDisplaySpecialPos)
-				-- widget.setVisible("specialsScrollList", true)
-				-- widget.setVisible("playerPixels", true)
-				
-				-- populateSpecialList()
-				-- writerInit(textData, textData[objectData.stationRace]["medicalSpecial"])
-			-- else
-				-- textData.medicalSpecialCooldownRemaining = toTime(cooldown)
-				-- writerInit(textData, textData[objectData.stationRace].cooldownEnhancer)
-			-- end
+			populateSpecialList()
+			writerInit(textData, textData[objectData.stationRace]["medicalSpecial"])
 			
 		elseif type == "scientific" then
 			widget.setVisible("scientificSpecialList", true)
@@ -601,31 +593,34 @@ function commandProcessor(wd)
 	elseif command == "Acquire" then
 		local special = stationData.selected
 		if special then
-			
-			local price = stationData.medical[stationData.selected.index][2]
-			if player.consumeCurrency("money", price) then
-				local effect = stationData.medical[stationData.selected.index][4]
-				
-				status.setStatusProperty("fuMedicalEnhancerDuration", stationData.medical[stationData.selected.index][5])
-				status.setStatusProperty("fuMedicalEnhancerCooldown", stationData.medicalSpecialCooldown)
-				status.addPersistentEffect("medicalStationSpecials", effect)
-				
-				writerInit(textData, textData[objectData.stationRace].acquireEnhancer)
-				resetGUI()
+			if status.statusProperty("fuEnhancerActive", false) then
+				writerInit(textData, textData[objectData.stationRace].activeEnhancer)
 			else
-				writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+				local price = stationData.medical[stationData.selected.index][2]
+				if player.consumeCurrency("money", price) then
+					local effect = stationData.medical[stationData.selected.index][4]
+					status.addEphemeralEffect(effect, 300, player.id())
+					
+					writerInit(textData, textData[objectData.stationRace].acquireEnhancer)
+					resetGUI()
+				else
+					writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+				end
 			end
 		end
 	
 	elseif command == "Remove" then
-		if player.consumeCurrency("money", stationData.medicalEnhancerRemoveCost) then
-			-- enhancers should handle getting removed by themselves when the resource is 0
-			status.setStatusProperty("fuMedicalEnhancerDuration", 0)
-			
-			widget.setButtonEnabled("button2", false)
-			writerInit(textData, textData[objectData.stationRace].removeEnhancer)
-		else
-			writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+		if status.statusProperty("fuEnhancerActive", false) then
+			if player.consumeCurrency("money", stationData.medicalEnhancerRemoveCost) then
+				for _, tbl in ipairs(stationData.medical) do
+					status.removeEphemeralEffect(tbl[4])
+				end
+				
+				widget.setButtonEnabled("button2", false)
+				writerInit(textData, textData[objectData.stationRace].removeEnhancer)
+			else
+				writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+			end
 		end
 	elseif command == "Buy" then
 		resetGUI()
@@ -1518,13 +1513,7 @@ function specialSelected()
 		stationData.selected = widget.getData("specialsScrollList.itemList."..listItem)
 		widget.setButtonEnabled("button1", true)
 		
-		if objectData.stationType == "medical" then
-			writerInit(textData, stationData.medical[stationData.selected.index][6])
-		elseif objectData.stationType == "military" then
-			writerInit(textData, stationData.military[stationData.selected.index][5])
-		else
-			writerInit(textData, "ERROR - No or wrong station type")
-		end
+		writerInit(textData, stationData[objectData.stationType][stationData.selected.index][5])
 	else
 		widget.setButtonEnabled("button1", false)
 		writerInit(textData, "No item selected.\nHow the fuck did you achieve this?\nSeriously, I'm impressed.\n\nReport this I guess?")
