@@ -25,7 +25,7 @@ function update()
 end
 
 function initialize(conf)
-	sb.logInfo("conf: %s",conf)
+	--sb.logInfo("conf: %s",conf)
 	for k,v in pairs(conf) do
 		box[k]=v
 	end
@@ -109,5 +109,5 @@ function fillBoxes()
 	widget.setText("inputLeft",tostring(box.leftValue))
 	widget.setText("inputMid",tostring(box.midValue))
 	widget.setText("inputRight",tostring(box.rightValue))
-	sb.logInfo("fillboxes: %s",box)
+	--sb.logInfo("fillboxes: %s",box)
 end
