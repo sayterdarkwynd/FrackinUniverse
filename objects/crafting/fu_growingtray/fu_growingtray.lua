@@ -4,33 +4,20 @@ local deltaTime=0
 function init()
 	transferUtil.init()
 	object.setInteractive(true)
-	
+
 	if storage.growth == nil then storage.growth = 0 end
 	if storage.water == nil then storage.water = 0 end
 	if storage.fertSpeed == nil then storage.fertSpeed = 0 end
 	if storage.fertYield == nil then storage.fertYield = 0 end
-        if storage.liquidMod == nil then storage.liquidMod = 0 end
+        if storage.liquidMod == nil then storage.liquidMod = 2 end
+        if storage.seedMod == nil then storage.seedMod = 3 end
 	if storage.yield == nil then storage.yield = 0 end
 	if storage.growthcap == nil then storage.growthcap = config.getParameter("isn_growthCap") end
 	if storage.activeConsumption == nil then storage.activeConsumption = false end
 
 	storage.seedslot = 1
 	storage.waterslot = 2
-	storage.fertslot = 3
-	
-	
-	-- new
-	--if not storage.growth then storage.growth = false end
-	--if not storage.water then storage.water = false end	
-	--if not storage.fertYield then storage.fertYield = false end
-	--if not storage.fertSpeed then storage.fertSpeed = false end
-	--if not storage.yield then storage.yield = false end
-	--if not storage.growthcap then storage.growthcap = config.getParameter("isn_growthCap") end
-	--if not storage.activeConsumption then storage.activeConsumption = false end
-	--if not storage.liquidMod then storage.liquidMod = false end
-	--storage.seedslot = 1
-	--storage.waterslot = 2
-	--storage.fertslot = 3		
+	storage.fertslot = 3	
 end
 
 function update(dt)
@@ -110,7 +97,7 @@ function isn_doSeedIntake()
 			if storage.fertYield == 1 then storage.yield = storage.yield * 2 end
 			if storage.fertYield == 2 then storage.yield = storage.yield * 3 end
 			if storage.fertYield == 3 then storage.yield = storage.yield * 4 end
-			world.containerConsume(entity.id(), {name = seed.name, count = 1, data={}})
+			world.containerConsume(entity.id(), {name = seed.name, count = storage.seedMod, data={}})
 			return true
 		end
 	end
@@ -118,8 +105,8 @@ function isn_doSeedIntake()
 end
 
 function isn_doFertIntake()
-	storage.fertSpeed = false
-	storage.fertYield = false
+	storage.fertSpeed = 0
+	storage.fertYield = 0
 
 	local contents = world.containerItems(entity.id())
 	local fert = contents[storage.fertslot]
@@ -130,41 +117,57 @@ function isn_doFertIntake()
 			if value == 1 then --basic speed
 				storage.fertSpeed = 1
 				storage.liquidMod = 2
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
 			elseif value == 2 then -- basic yield
 				storage.fertYield = 1
 				storage.liquidMod = 2
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
 			elseif value == 3 then --basic speed, good yield
 				storage.fertSpeed = 1
 				storage.fertYield = 2
 				storage.liquidMod = 2
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
 			elseif value == 4 then -- good speed, basic yield
 				storage.fertSpeed = 2
 				storage.fertYield = 1
 				storage.liquidMod = 2
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
 			elseif value == 5 then -- great speed,good yield
 				storage.fertSpeed = 3
 				storage.fertYield = 2
 				storage.liquidMod = 2
-				world.containerConsume(entity.id(), {name = fert.name, count = 2, data={}})--consumes additional seed
+				storage.seedMod = 2
+				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
 			elseif value == 6 then -- great speed,great yield
-				storage.fertSpeed = 3
+				storage.fertSpeed = 2
 				storage.fertYield = 3	
 				storage.liquidMod = 2
-				world.containerConsume(entity.id(), {name = fert.name, count = 2, data={}})--consumes additional seed
+				storage.seedMod = 1
+				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true	
 			elseif value == 7 then -- low liquid consumption
-				storage.liquidMod = 1				
-				world.containerConsume(entity.id(), {name = fert.name, count = 2, data={}})--consumes additional seed
-				return true				
+				storage.liquidMod = 1	
+				storage.fertSpeed = 1
+				storage.fertYield = 1
+				storage.seedMod = 2
+				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
+				return true	
+			else
+				storage.liquidMod = 2	
+				storage.fertSpeed = 0
+				storage.fertYield = 0
+				storage.seedMod = 3
+				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
+				return true			
 			end
 		end
 	end

@@ -1,10 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus1={
-	{stat = "powerMultiplier", amount = 0.25}
-}
-weaponBonus2={
-	{stat = "powerMultiplier", amount = 0.35}
+	{stat = "powerMultiplier", amount = 0.20}
 }
 
 armorBonus={
@@ -33,16 +30,12 @@ end
 
 
 function checkWeapons()
-local weaponShotgun=weaponCheck({"shotgun"})
-local weaponAssault=weaponCheck({"assaultrifle"})
+local weaponShotgun=weaponCheck({"shotgun","assaultrifle"})
 
-	if weaponAssault["primary"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus1)
-	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
-	end
-	if weaponShotgun["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)
+	if weaponShotgun["primary"] and weaponShotgun["alt"] then
+            effect.setStatModifierGroup(weaponBonusHandle,weaponBonus1)
+	elseif weaponShotgun ["either"] then
+	    effect.setStatModifierGroup(weaponBonusHandle,weaponBonus1,0.15)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end
