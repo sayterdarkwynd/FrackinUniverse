@@ -7,18 +7,30 @@ function init()
 	
 	if storage.growth == nil then storage.growth = 0 end
 	if storage.water == nil then storage.water = 0 end
-	if storage.fertSpeed == nil then storage.fertSpeed = false end
-	if storage.fertYield == nil then storage.fertYield = false end
-	if storage.fertSpeed2 == nil then storage.fertSpeed2 = false end
-	if storage.fertYield2 == nil then storage.fertYield2 = false end
-	if storage.fertSpeed3 == nil then storage.fertSpeed3 = false end
-	if storage.fertYield3 == nil then storage.fertYield3 = false end
+	if storage.fertSpeed == nil then storage.fertSpeed = 0 end
+	if storage.fertYield == nil then storage.fertYield = 0 end
+        if storage.liquidMod == nil then storage.liquidMod = 0 end
 	if storage.yield == nil then storage.yield = 0 end
 	if storage.growthcap == nil then storage.growthcap = config.getParameter("isn_growthCap") end
 	if storage.activeConsumption == nil then storage.activeConsumption = false end
+
 	storage.seedslot = 1
 	storage.waterslot = 2
 	storage.fertslot = 3
+	
+	
+	-- new
+	--if not storage.growth then storage.growth = false end
+	--if not storage.water then storage.water = false end	
+	--if not storage.fertYield then storage.fertYield = false end
+	--if not storage.fertSpeed then storage.fertSpeed = false end
+	--if not storage.yield then storage.yield = false end
+	--if not storage.growthcap then storage.growthcap = config.getParameter("isn_growthCap") end
+	--if not storage.activeConsumption then storage.activeConsumption = false end
+	--if not storage.liquidMod then storage.liquidMod = false end
+	--storage.seedslot = 1
+	--storage.waterslot = 2
+	--storage.fertslot = 3		
 end
 
 function update(dt)
@@ -50,18 +62,16 @@ function update(dt)
 	storage.water = storage.water - 1
 	storage.activeConsumption = true
 	storage.growth = storage.growth + 1
-	if storage.fertSpeed == true then
+	if storage.fertSpeed == 1 then
 		storage.growth = storage.growth + 1
 	end
-	if storage.fertSpeed2 == true then
+	if storage.fertSpeed == 2 then
 	        storage.growth = storage.growth + 2
 	end
-	if storage.fertSpeed3 == true then
+	if storage.fertSpeed == 3 then
 	        storage.growth = storage.growth + 3
 	end	
 	if storage.growth >= storage.growthcap then
-		-- if connected to an object receiver, try to send the crop, else store loally
-		-- Wired Industry's item router is one such device
 		fu_sendOrStoreItems(0, {name = storage.currentcrop, count = storage.yield}, {0, 1, 2})
 		world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,2), data={}})
 		isn_doFertIntake()
@@ -77,7 +87,7 @@ function isn_doWaterIntake()
 	for key, value in pairs(config.getParameter("isn_waterInputs")) do
 		if water.name == key then
 			storage.water = value
-			world.containerConsume(entity.id(), {name = water.name, count = 1, data={}})
+			world.containerConsume(entity.id(), {name = water.name, count = storage.liquidMod, data={}})
 			return true
 		end
 	end
@@ -97,9 +107,9 @@ function isn_doSeedIntake()
 			storage.currentseed = key
 			storage.currentcrop = value
 			storage.yield = math.random(3,5)
-			if storage.fertYield == true then storage.yield = storage.yield * 2 end
-			if storage.fertYield2 == true then storage.yield = storage.yield * 3 end
-			if storage.fertYield3 == true then storage.yield = storage.yield * 4 end
+			if storage.fertYield == 1 then storage.yield = storage.yield * 2 end
+			if storage.fertYield == 2 then storage.yield = storage.yield * 3 end
+			if storage.fertYield == 3 then storage.yield = storage.yield * 4 end
 			world.containerConsume(entity.id(), {name = seed.name, count = 1, data={}})
 			return true
 		end
@@ -110,39 +120,51 @@ end
 function isn_doFertIntake()
 	storage.fertSpeed = false
 	storage.fertYield = false
-	storage.fertSpeed2 = false
-	storage.fertYield2 = false
-	storage.fertSpeed3 = false
-	storage.fertYield3 = false
+
 	local contents = world.containerItems(entity.id())
 	local fert = contents[storage.fertslot]
 	if fert == nil then return false end
 	
 	for key, value in pairs(config.getParameter("isn_fertInputs")) do
 		if fert.name == key then
-			if value == 1 then
-				storage.fertSpeed = true
+			if value == 1 then --basic speed
+				storage.fertSpeed = 1
+				storage.liquidMod = 2
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
-			elseif value == 2 then
-				storage.fertYield = true
+			elseif value == 2 then -- basic yield
+				storage.fertYield = 1
+				storage.liquidMod = 2
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
-			elseif value == 3 then
-				storage.fertSpeed = true
-				storage.fertYield = true
+			elseif value == 3 then --basic speed, good yield
+				storage.fertSpeed = 1
+				storage.fertYield = 2
+				storage.liquidMod = 2
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
-			elseif value == 4 then
-				storage.fertSpeed2 = true
-				storage.fertYield2 = true
+			elseif value == 4 then -- good speed, basic yield
+				storage.fertSpeed = 2
+				storage.fertYield = 1
+				storage.liquidMod = 2
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
-			else
-				storage.fertSpeed3 = true
-				storage.fertYield3 = true				
-				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
+			elseif value == 5 then -- great speed,good yield
+				storage.fertSpeed = 3
+				storage.fertYield = 2
+				storage.liquidMod = 2
+				world.containerConsume(entity.id(), {name = fert.name, count = 2, data={}})--consumes additional seed
 				return true
+			elseif value == 6 then -- great speed,great yield
+				storage.fertSpeed = 3
+				storage.fertYield = 3	
+				storage.liquidMod = 2
+				world.containerConsume(entity.id(), {name = fert.name, count = 2, data={}})--consumes additional seed
+				return true	
+			elseif value == 7 then -- low liquid consumption
+				storage.liquidMod = 1				
+				world.containerConsume(entity.id(), {name = fert.name, count = 2, data={}})--consumes additional seed
+				return true				
 			end
 		end
 	end
