@@ -36,7 +36,7 @@ function checkWeapons()
 local weaponShotgun=weaponCheck({"shotgun"})
 local weaponAssault=weaponCheck({"assaultrifle"})
 
-	if weaponAssault["either"] then
+	if weaponAssault["primary"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus1)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
