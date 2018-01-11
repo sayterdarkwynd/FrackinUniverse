@@ -166,9 +166,6 @@ function transferUtil.routeMoney()
 					--local conf = root.itemConfig(item.name)
 					--sb.logInfo("%s",conf)
 					--if conf.config.currency then
-					if unhandled[item.name] then
-						break
-					end
 					if transferUtil.getType(item) == "currency" then
 						local leftOverItems = world.containerAddItems(targetContainer,item)
 						if leftOverItems then
@@ -488,7 +485,7 @@ end
 
 function transferUtil.getType(item)
 	if not item.name then
-		return "generic"
+		return "unhandled"
 	elseif item.name == "sapling" then
 		return item.name
 	elseif item.currency then
@@ -513,16 +510,15 @@ function transferUtil.getType(item)
 	if itemCat then
 		return string.lower(itemCat)
 	elseif not unhandled[item.name] then
-		sb.logInfo("Unhandled Item:\n%s",itemRoot)
+		--sb.logInfo("Unhandled Item:\n%s",itemRoot)
 		unhandled[item.name]=true
 	end
-	return string.lower(item.name)
+	return "unhandled"
 end
 
 function transferUtil.getCategory(item)
 	local itemCat=transferUtil.getType(item)
-	--sb.logInfo("%s::%s",itemCat,string.lower(transferUtil.itemTypes[itemCat] or "generic"))
-	return transferUtil.itemTypes[itemCat] or "generic"
+	return transferUtil.itemTypes[itemCat] or "unhandled"
 end
 
 function transferUtil.loadSelfContainer()
