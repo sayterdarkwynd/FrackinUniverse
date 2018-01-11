@@ -48,19 +48,15 @@ function update(dt)
 	if storage.water <= 0 and isn_doWaterIntake() ~= true then return end
 	storage.water = storage.water - 1
 	storage.activeConsumption = true
-	storage.growth = storage.growth + 1
-	if storage.fertSpeed == 1 then
-		storage.growth = storage.growth + 1
+	storage.growth = storage.growth * dt
+	
+	if storage.fertSpeed then
+		storage.growth = storage.growth + storage.fertSpeed * dt
 	end
-	if storage.fertSpeed == 2 then
-	        storage.growth = storage.growth + 2
-	end
-	if storage.fertSpeed == 3 then
-	        storage.growth = storage.growth + 3
-	end	
+	
 	if storage.growth >= storage.growthcap then
+		world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,3), data={}})
 		fu_sendOrStoreItems(0, {name = storage.currentcrop, count = storage.yield}, {0, 1, 2})
-		world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,2), data={}})
 		isn_doFertIntake()
 		isn_doSeedIntake()
 	end
@@ -97,6 +93,7 @@ function isn_doSeedIntake()
 			if storage.fertYield == 1 then storage.yield = storage.yield * 2 end
 			if storage.fertYield == 2 then storage.yield = storage.yield * 3 end
 			if storage.fertYield == 3 then storage.yield = storage.yield * 4 end
+			
 			world.containerConsume(entity.id(), {name = seed.name, count = storage.seedMod, data={}})
 			return true
 		end

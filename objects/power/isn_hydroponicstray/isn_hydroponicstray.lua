@@ -64,18 +64,19 @@ function update(dt)
 	storage.water = storage.water - dt / 2
 	storage.activeConsumption = true
 	storage.growth = storage.growth + growthmod * dt
-	if storage.fertSpeed == 1 then
-		storage.growth = storage.growth + growthmod * dt
+	
+	if storage.fertSpeed then
+		storage.growth = storage.growth + growthmod + storage.fertSpeed * dt
 	end
-	if storage.fertSpeed == 2 then
-	        storage.growth = storage.growth + growthmod * 2 * dt
-	end
-	if storage.fertSpeed == 3 then
-	        storage.growth = storage.growth + growthmod * 3 * dt
-	end	
+	
 	if storage.growth >= storage.growthcap then
-		-- if connected to an object receiver, try to send the crop, else store locally
-		-- Wired Industry's item router is one such device
+		if storage.saplingParameters then
+			if storage.saplingParameters.stemName then
+			world.containerAddItems(entity.id(), {name = storage.currentseed, count = 1, parameters = storage.saplingParameters})
+			end
+		else
+			world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,3), data={}})
+		end	
 		if storage.primaryItems then
 			for _,item in pairs (storage.primaryItems) do
 				fu_sendOrStoreItems(0, {name = item, count = storage.yield}, {0, 1, 2})
@@ -94,13 +95,7 @@ function update(dt)
 		else
 			fu_sendOrStoreItems(0, {name = storage.currentcrop, count = storage.yield}, {0, 1, 2})
 		end
-		if storage.saplingParameters then
-			if storage.saplingParameters.stemName then
-				world.containerAddItems(entity.id(), {name = storage.currentseed, count = 1, parameters = storage.saplingParameters})
-			end
-		else
-			world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,2), data={}})
-		end
+
 		isn_doFertIntake()
 		isn_doSeedIntake()
 	end
