@@ -48,10 +48,10 @@ function update(dt)
 	if storage.water <= 0 and isn_doWaterIntake() ~= true then return end
 	storage.water = storage.water - 1
 	storage.activeConsumption = true
-	storage.growth = storage.growth * dt
+	storage.growth = storage.growth + 1
 	
 	if storage.fertSpeed then
-		storage.growth = storage.growth + storage.fertSpeed * dt
+		storage.growth = storage.growth + storage.fertSpeed + 1
 	end
 	
 	if storage.growth >= storage.growthcap then
