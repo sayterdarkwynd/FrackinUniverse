@@ -25,5 +25,69 @@
     "category": "farmable",
     "script": "/scripts/actions/monsters/farmable.lua",
     "output": {}
+  },
+  "eatFood": {
+    "type": "action",
+    "name": "eatFood",
+    "title": "eatFood",
+    "properties": {
+      "entity": {"type": "entity", "value": null}
+    },
+    "category": "farmable",
+    "script": "/scripts/actions/monsters/farmable.lua",
+    "output": {}
+  },
+  "getFood": {
+    "type": "action",
+    "name": "getFood",
+    "title": "getFood",
+    "properties": {},
+    "category": "farmable",
+    "script": "/scripts/actions/monsters/farmable.lua",
+    "output": {
+	  "food": {"type": "number", "key": null}
+	}
+  },
+  "findTrough": {
+    "type": "action",
+	"name": "findTrough",
+	"title": "",
+	"properties" : {
+	  "position": {"type": "position", "key": "self"}
+	},
+	"category": "farmable",
+	"script": "/scripts/actions/monsters/farmable.lua",
+    "output": {
+      "entity": {"type": "entity", "key": null}
+    }
+  },
+  "removeFood": {
+    "type": "action",
+    "name": "removeFood",
+    "title": "removeFood",
+    "properties": {},
+    "category": "farmable",
+    "script": "/scripts/actions/monsters/farmable.lua",
+    "output": {}
+  },
+  "getHappiness": {
+    "type": "action",
+    "name": "getHappiness",
+    "title": "getHappiness",
+    "properties": {},
+    "category": "farmable",
+    "script": "/scripts/actions/monsters/farmable.lua",
+    "output": {
+	  "happiness": {"type": "number", "key": null}
+	}
+  },
+  "happinessCalculation": {
+    "type": "action",
+    "name": "happinessCalculation",
+    "title": "happinessCalculation",
+    "properties": {},
+    "category": "farmable",
+    "script": "/scripts/actions/monsters/farmable.lua",
+    "output": {}
   }
 }

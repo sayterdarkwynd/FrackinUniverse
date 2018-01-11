@@ -41,9 +41,12 @@ end
 function transferUtil.routeItems()
 	if storage.disabled then return end
 	if util.tableSize(storage.inContainers) == 0 then return end
-	if util.tableSize(storage.outContainers) == 0 then return end
+
+	local outputSizeG = util.tableSize(storage.outContainers)
+	if outputSizeG == 0 then return end
 
 	for sourceContainer,sourcePos in pairs(storage.inContainers) do
+		local outputSize = outputSizeG
 		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
 		if ping1 ~= nil then
 			sourceContainer=ping1
@@ -61,20 +64,50 @@ function transferUtil.routeItems()
 						local pass,mod = transferUtil.checkFilter(item)
 						if pass then
 							if transferUtil.validInputSlot(indexIn) then
+								if storage.roundRobin then
+									-- Maximum amount per container
+									storage.RRPKT = math.floor((item.count / outputSize) % mod)
+									storage.RRPKT = math.floor(item.count / outputSize - storage.RRPKT)
+
+									-- Amount left in the round-robin
+									storage.RRAMT = item.count
+									item.count = storage.RRPKT
+								end
 								item.count = item.count - (item.count % mod)
-								if util.tableSize(storage.outputSlots) > 0 then
+								local outputSlotCount = (storage.invertSlots[2] and (world.containerSize(targetContainer) - util.tableSize(storage.outputSlots))) or util.tableSize(storage.outputSlots)
+								if outputSlotCount > 0 then
+									if storage.roundRobinSlots then
+										-- Maximum amount per slot
+										storage.RRSPKT = math.floor((item.count / outputSlotCount) % mod)
+										storage.RRSPKT = math.floor(item.count / outputSlotCount - storage.RRSPKT)
+
+										-- Amount left in the round-robin
+										storage.RRSAMT = item.count
+										item.count = storage.RRSPKT
+									end
 									for indexOut=1,world.containerSize(targetContainer) do
 										if transferUtil.validOutputSlot(indexOut) then
 											local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
 											if leftOverItems then
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-												item=leftOverItems
+												item = leftOverItems
 											else
 												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-												break
+												if not storage.roundRobinSlots then
+													break
+												end
 											end
 										end
+										if storage.roundRobinSlots then
+											if storage.RRSAMT < storage.RRSPKT then break end
+											storage.RRSAMT = storage.RRSAMT - storage.RRSPKT
+											item.count = storage.RRSPKT
+										end
+										-- Count down on those output slots!
+										outputSlotCount = outputSlotCount - 1
 									end
+									storage.RRSPKT = nil
+									storage.RRSAMT = nil
 								else
 									--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
 									local leftOverItems=world.containerAddItems(targetContainer,item)
@@ -88,12 +121,22 @@ function transferUtil.routeItems()
 										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 									end
 								end
+								if storage.roundRobin then
+									storage.RRAMT = storage.RRAMT - storage.RRPKT
+									item.count = storage.RRAMT
+									storage.RRAMT = nil
+									storage.RRPKT = nil
+								end
 							end
 						end
 					end
 				end
 			else
 				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
+			end
+			if storage.roundRobin then
+				-- Count down on those outputs!
+				outputSize = outputSize - 1
 			end
 		end
 	end
@@ -120,9 +163,10 @@ function transferUtil.routeMoney()
 			if targetAwake == true and sourceAwake == true then
 				local sourceItems=world.containerItems(sourceContainer)
 				for indexIn,item in pairs(sourceItems or {}) do
-					local conf = root.itemConfig(item.name)
+					--local conf = root.itemConfig(item.name)
 					--sb.logInfo("%s",conf)
-					if conf.config.currency then
+					--if conf.config.currency then
+					if transferUtil.getType(item) == "currency" then
 						local leftOverItems = world.containerAddItems(targetContainer,item)
 						if leftOverItems then
 							world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
@@ -293,7 +337,7 @@ function transferUtil.checkFilter(item)
 	end
 	routerItems=world.containerItems(entity.id())
 	if #routerItems == 0 then
-		return true,1
+		return true, 1
 	end
 	local invertcheck = nil     -- Inverted conditions are match-all
 	local noninvertcheck = nil  -- Non-inverted conditions are match-any
@@ -441,13 +485,16 @@ end
 
 function transferUtil.getType(item)
 	if not item.name then
-		return "generic"
+		return "unhandled"
 	elseif item.name == "sapling" then
 		return item.name
 	elseif item.currency then
 		return "currency"
 	end
 	local itemRoot = root.itemConfig(item)
+	if itemRoot.config.currency then
+		return "currency"
+	end
 	local itemCat
 	if itemRoot.category then
 		itemCat=itemRoot.category
@@ -463,16 +510,15 @@ function transferUtil.getType(item)
 	if itemCat then
 		return string.lower(itemCat)
 	elseif not unhandled[item.name] then
-		sb.logInfo("Unhandled Item:\n%s",itemRoot)
+		--sb.logInfo("Unhandled Item:\n%s",itemRoot)
 		unhandled[item.name]=true
 	end
-	return string.lower(item.name)
+	return "unhandled"
 end
 
 function transferUtil.getCategory(item)
 	local itemCat=transferUtil.getType(item)
-	--sb.logInfo("%s::%s",itemCat,string.lower(transferUtil.itemTypes[itemCat] or "generic"))
-	return transferUtil.itemTypes[itemCat] or "generic"
+	return transferUtil.itemTypes[itemCat] or "unhandled"
 end
 
 function transferUtil.loadSelfContainer()

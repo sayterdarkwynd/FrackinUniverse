@@ -3,7 +3,7 @@
   "printable" : false,
     "colonyTags" : [ "science" ],
   "rarity" : "rare",
-  "description" : "An advanced, powered growing tray. ^cyan;Requires ^orange;2W ^cyan;power^reset;",
+  "description" : "An advanced, powered growing tray. Can also grow saplings. ^cyan;Requires ^orange;2W ^cyan;power^reset;",
   "shortdescription" : "^cyan;Hydroponics Tray^reset;",
   "race" : "generic",
   "category" : "wire",
@@ -50,26 +50,43 @@
   
   "isn_growthCap" : 100,
 
+
   "isn_waterInputs" : {
-    "waterbucket" : 15,
-    "liquidwater" : 10,
-    "swampwater" : 12,
-    "liquidalienjuice" : 15,
-    "liquidblood" : 20,
-    "liquidorganicsoup" : 25,
-    "liquidaether" : 27,
-    "liquidhealing" : 30
+    "waterbucket" : 6,
+    "liquidwater" : 6,
+    "swampwater" : 7,
+    "liquidblood" : 7,
+    "pus" : 8,
+    "liquidalienjuice" : 9,
+    "liquidorganicsoup" : 10,
+    "liquidaether" : 12,
+    "liquidhealing" : 15
   },
 
   "isn_fertInputs" : {
+  
+        //+1 fertilization speed, requires 2 liquid
         "rottenfood" : 1,
         "fu_mulch" : 1,
-	"ff_fertilizer" : 1,
+
+	//+1 fertilization yield, requires 2 liquid
 	"poop" : 2,
-	"ff_fertilizer2" : 2,
+        "agaranichor" : 2,
+        
+	//+2 fertilization yield, +1 speed, requires 2 liquid
 	"liquidelderfluid" : 3,
-	"gene_reproductive" : 4,
-	"ff_fertilizer3" : 5
+	
+	//+2 fertilization speed, +1 yield, requires 2 liquid
+	"ff_fertilizer2" : 4,
+	
+	//+3 fertilization speed, +2 yield, requires 2 liquid
+	"ff_fertilizer" : 5,
+	
+	//+2 fertilization speed, +3 yield, requires 2 liquid
+	"ff_fertilizer3" : 6,
+	
+	//+1 fertilization speed, +1 yield, requires 1 liquid
+	"gene_reproductive" : 7
   },
 
   "isn_seedOutputs" : {
