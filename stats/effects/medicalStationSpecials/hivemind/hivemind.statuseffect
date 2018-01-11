@@ -1,0 +1,18 @@
+{
+	"name" : "medicalhivemind",
+	"label" : "^orange;[E]^reset; Hivemind",
+	"icon" : "/interface/statuses/medicalStationSpecials/hivemind.png",
+
+	"defaultDuration" : 5,
+	"scripts" : [ "hivemind.lua" ],
+	
+	"effectConfig" : {
+		"healthDrainPcnt" : 0.005, // Drains X% of current health every interval
+		"minHealthPcnt" : 0.10,
+		"drainInterval" : 0.5,
+		"spawnInterval" : 2,
+		"spawnBaseDamage" : 35,
+		"spawnSearchRadius" : 500,
+		"spawnSpeed" : 100
+	}
+}
