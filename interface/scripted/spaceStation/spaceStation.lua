@@ -537,8 +537,6 @@ function commandProcessor(wd)
 			end
 			
 		elseif type == "medical" then
-			writerInit(textData, "[(instant)^red;Temporary disabled due to player corrupting bugs]")
-			
 			modifyButtons("Acquire", "Remove", false, false, false, "Back")
 			widget.setButtonEnabled("button1", false)
 			
