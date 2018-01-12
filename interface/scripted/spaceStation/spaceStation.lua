@@ -844,22 +844,19 @@ function populateShopList()
 	
 	for _, item in ipairs(objectData.shopItems) do
 		if type(item) == "table" then
+			local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
+			local price = item.parameters.price
+			if item.parameters.level then
+				price = price * (math.max(item.parameters.level * 0.5, 1))
+			end
+			price = calculateShopPrice(price, true)
 			
-			local config = root.itemConfig(item.name)
-			-- if config then
-				local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
-				local price = math.max((item.parameters.price or config.config.price or 1), 1)
-				
-				if item.parameters.level then
-					price = price * (math.max(item.parameters.level * 0.5, 1))
-				end
-				price = calculateShopPrice(price, true)
-				
-				widget.setText(listItem..".name", item.parameters.shortdescription or config.config.shortdescription)
-				widget.setItemSlotItem(listItem..".item", item)
-				widget.setText(listItem..".price", price)
-				widget.setData(listItem, { name = item.name, price = price, maxStack = config.config.maxStack, isWeapon = true })
-			-- end
+			widget.setText(listItem..".name", item.parameters.shortdescription or "")
+			widget.setItemSlotItem(listItem..".item", item)
+			widget.setText(listItem..".price", price)
+			widget.setData(listItem, { name = item.name, price = price, maxStack = 1, isWeapon = true })
+			
+			table.insert(shopListIDs, listItem)
 		else
 			local config = root.itemConfig(item)
 			if config then
@@ -891,7 +888,7 @@ function checkShopAvailability()
 	for _, listItem in ipairs(shopListIDs) do
 		local data = widget.getData(listItem)
 		
-		if data.price >= player.currency("money") then
+		if data.price > player.currency("money") then
 			widget.setVisible(listItem..".unavailableOverlay", true)
 			widget.setFontColor(listItem..".price", "red")
 		else
@@ -963,8 +960,7 @@ function shopRestock()
 			if config then
 				if root.itemHasTag(item, "weapon") then
 					local level = 0
-					local price = config.config.price or 1
-					price = math.max(price, 1)
+					local price = math.max(config.config.price or 1, 1)
 					
 					local roll = math.random(1,100)
 					local tiers = stationData.shop.weaponLevelRates
