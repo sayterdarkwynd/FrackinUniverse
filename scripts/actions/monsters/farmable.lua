@@ -92,7 +92,7 @@ function eatFood(args)
   local eaten = false
   for pos,item in pairs(world.containerItems(args.entity)) do
     local itemConfig = root.itemConfig(item).config
-    if diet == 'omnivore' then
+        if diet == 'omnivore' then
 	  for _,value in pairs(foodlist.herbivore) do
 	    if item.name == value then
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
@@ -102,17 +102,7 @@ function eatFood(args)
 		    break
 		  end
 		end
-	  end
-	  for _,value in pairs(foodlist.special1) do
-	    if item.name == value then
-	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
-		  if world.containerConsumeAt(args.entity,pos-1,consume) then
-		    storage.food = storage.food + consume * itemConfig.foodValue
-		    eaten = true
-		    break
-		  end
-		end
-	  end	  
+	  end  
 	  for _,value in pairs(foodlist.carnivore) do
 	    if item.name == value then
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
@@ -123,6 +113,27 @@ function eatFood(args)
 		  end
 		end
 	  end
+	elseif diet == 'partialomnivore' then
+	  for _,value in pairs(foodlist.herbivore) do
+	    if item.name == value then
+	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
+		  if world.containerConsumeAt(args.entity,pos-1,consume) then
+		    storage.food = storage.food + consume * itemConfig.foodValue
+		    eaten = true
+		    break
+		  end
+		end
+	  end  
+	  for _,value in pairs(foodlist.partialomnivore) do
+	    if item.name == value then
+	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
+		  if world.containerConsumeAt(args.entity,pos-1,consume) then
+		    storage.food = storage.food + consume * itemConfig.foodValue
+		    eaten = true
+		    break
+		  end
+		end
+	  end	
 	else
 	  for _,value in pairs(foodlist[diet]) do
 	    if item.name == value then
