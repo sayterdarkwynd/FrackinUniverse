@@ -30,11 +30,13 @@ function init()
         startDash(dashKey == "left" and -1 or 1)
       end
     end)
-  
+    
+  status.addPersistentEffect("wallClingPenalty", "percentenergyboostneg20", math.huge);
 end
 
 function uninit()
   status.clearPersistentEffects("movementAbility")
+  status.clearPersistentEffects("wallClingPenalty")
   tech.setParentDirectives()
 end
 
