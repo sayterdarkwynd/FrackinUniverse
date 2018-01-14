@@ -162,16 +162,15 @@ function getFood()
 end
 
 function removeFood(args)
-  self.eggType = config.getParameter("eggType")
-  self.mateTimer = config.getParameter("mateTime")
-  
   self.timerPoop = (self.timerPoop or 90) - 1
-  
           if self.timerPoop <= 0 then
 	    checkPoop()
-	    checkMate()
 	    self.timerPoop = 90
-	  end       
+	  end      
+  	  
+  storage.mateTimer = math.max((storage.mateTimer or 60) - 0.277777778/config.getParameter('mateTimer',60),0)
+  checkMate()
+  
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)	
   return true
 end
@@ -203,12 +202,13 @@ end
 
 
 function checkMate()
-  self.mateTimer = self.mateTimer - 1
+  self.eggType = config.getParameter("eggType")
   self.randChance = math.random(10)
-  if storage.happiness == 100 and self.mateTimer <= 0 and self.randChance == 1 then
+  sb.logInfo("value = "..storage.mateTimer)
+  if storage.happiness >= 50 and storage.mateTimer <= 0 and self.randChance == 1 then
     animator.playSound("deathPuff")
     world.spawnItem( self.eggType, mcontroller.position(), 1 )
-    self.mateTimer = config.getParameter("mateTime")
+    --storage.mateTimer = config.getParameter("mateTime")
   end  
 end
 
