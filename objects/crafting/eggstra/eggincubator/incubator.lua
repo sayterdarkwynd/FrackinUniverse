@@ -17,6 +17,7 @@ function init()
     raptoregg3 = {"furaptor9", 1200, 1},
     raptoregg4 = {"furaptor10", 1200, 1},
     raptoregg5 = {"furaptor11", 1200, 1},
+    pangolinegg = {"pangobaby", 600, 1},
     firefluffaloegg = {"fufirefluffalo", 800, 1},
     poisonfluffaloegg =  {"fupoisonfluffalo", 800, 1},
     icefluffaloegg = {"fuicefluffalo", 800, 1},
