@@ -31,12 +31,14 @@ function init()
       end
     end)
     
-  status.addPersistentEffect("wallClingPenalty", "percentenergyboostneg20", math.huge);
+  status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig", math.huge);
+ -- status.addPersistentEffect("wallClingPenalty2", "feedpackneg", math.huge);
 end
 
 function uninit()
   status.clearPersistentEffects("movementAbility")
   status.clearPersistentEffects("wallClingPenalty")
+  status.clearPersistentEffects("wallClingPenalty2")
   tech.setParentDirectives()
 end
 
