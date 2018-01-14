@@ -31,8 +31,14 @@ function init()
       end
     end)
     
-  status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig", math.huge);
- -- status.addPersistentEffect("wallClingPenalty2", "feedpackneg", math.huge);
+  if status.stat(food) then
+    status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig", math.huge);
+    status.addPersistentEffect("wallClingPenalty2", "feedpackneg", math.huge);
+  else
+    status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig2", math.huge);
+  end
+  
+
 end
 
 function uninit()
