@@ -31,7 +31,7 @@ function init()
       end
     end)
     
-  if status.stat(food) then
+  if status.isResource("food") then
     status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig", math.huge);
     status.addPersistentEffect("wallClingPenalty2", "feedpackneg", math.huge);
   else
