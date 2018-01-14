@@ -1,11 +1,11 @@
 {
-  "name" : "mutaviskheal",
+  "name" : "heal_long4",
   "blockingStat" : "healingStatusImmunity",
   "effectConfig" : {
-    "healAmount" : 80,
-    "emissionRate" : 8
+    "healAmount" : 180,
+    "emissionRate" : 3
   },
-  "defaultDuration" : 1,
+  "defaultDuration" : 10,
 
   "scripts" : [
     "heal.lua"
@@ -13,6 +13,6 @@
 
   "animationConfig" : "heal.animation",
 
-  "label" : "Heals 80 hp",
+  "label" : "Restores 180 health over 10 seconds, and instantly cures most status effects.",
   "icon" : "/interface/statuses/heal.png"
 }
