@@ -262,11 +262,11 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
      
       if (self.biomeTimer <= 0) and (self.resistTotal) < (self.effectCutoffValue) then
         
-        --self.madnessTotal = self.madnessTotal + math.random(1,200)
-        --if self.madnessTotal >= math.random(10000) then
-        --  world.spawnItem("fumadnessresource", mcontroller.position(),math.random(2))
-        --  self.madnessTotal = self.madnessTotal * 0.75
-        --end
+        self.madnessTotal = self.madnessTotal + math.random(1,200)
+        if self.madnessTotal >= math.random(10000) then
+          world.spawnItem("fumadnessresource", mcontroller.position(),math.random(2))
+          self.madnessTotal = self.madnessTotal * 0.75
+        end
     
 	status.modifyResource("health", -self.damageApply * dt)
 	status.modifyResource("food", -self.damageApply * dt)
