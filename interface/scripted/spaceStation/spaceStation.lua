@@ -596,8 +596,20 @@ function commandProcessor(wd)
 			else
 				local price = stationData.medical[stationData.selected.index][2]
 				if player.consumeCurrency("money", price) then
+					local hasHandler = false
+					for _, tbl in ipairs(status.activeUniqueStatusEffectSummary()) do
+						if tbl[1] == "medicalStatusHandler" then
+							hasHandler = true
+							break
+						end
+					end
+					
+					if not hasHandler then
+						status.addPersistentEffect("fu_medstation", "medicalStatusHandler")
+					end
+					
 					local effect = stationData.medical[stationData.selected.index][4]
-					status.addEphemeralEffect(effect, 300, player.id())
+					status.setStatusProperty("fuEnhancerActive", effect)
 					
 					writerInit(textData, textData[objectData.stationRace].acquireEnhancer)
 					resetGUI()
@@ -610,11 +622,8 @@ function commandProcessor(wd)
 	elseif command == "Remove" then
 		if status.statusProperty("fuEnhancerActive", false) then
 			if player.consumeCurrency("money", stationData.medicalEnhancerRemoveCost) then
-				for _, tbl in ipairs(stationData.medical) do
-					status.removeEphemeralEffect(tbl[4])
-				end
-				
 				widget.setButtonEnabled("button2", false)
+				status.setStatusProperty("fuEnhancerActive", false)
 				writerInit(textData, textData[objectData.stationRace].removeEnhancer)
 			else
 				writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
