@@ -71,7 +71,7 @@ function update(dt)
 	else
 		animator.setAnimationState("growth", "0")
 	end
-	
+	sb.logInfo("growth: %s, stage %s next fluid: %s", storage.growth, storage.currentStage, storage.stage[storage.currentStage].val)
 	-- check if we need to consume some fluid and do so if needed.
 	if storage.hasFluid == false or storage.growth >= storage.stage[storage.currentStage].val then
 		-- if somehow we skip over a stage, do multiple checks to use fluid.
@@ -89,7 +89,7 @@ function update(dt)
 	storage.activeConsumption = true
 	
 	--compute growth
-	storage.growth = storage.growth + storage.growthRate + storage.growthFluid + storage.growthFert
+	storage.growth = storage.growth + storage.growthRate + storage.growthFluid + storage.growthFert + 100
 	
 	--check if we are grown.
 	if storage.growth >= storage.growthCap then
@@ -118,8 +118,11 @@ function isn_doWaterIntake()
 	for key, value in pairs(config.getParameter("isn_waterInputs")) do
 		if water.name == key and type(value) == "table" then
 			local amount, boost = value[1], value[2]
-			if amount == nil or boost == nil then return false end
-			storage.fluid = amount
+			if amount == nil or boost == nil then
+				sb.logWarning("[fu_growingtray] found valid fluid named %s however either amount (%s) or boost (%s) was invalid.", key, amount, boost)
+				return false
+			end
+			storage.fluid = storage.fluid + amount
 			storage.growthFluid = boost
 			world.containerConsume(entity.id(), {name = water.name, count = 1, data={}})
 			return true
@@ -158,7 +161,7 @@ function isn_readSeedData()
 	if storage.currentseed == nil then return false end
 	local seedConfig = root.itemConfig(storage.currentseed).config
 	if seedConfig["objectType"] ~= "farmable" then return false end
-	storage.stages = -1
+	storage.stages = 0
 	storage.resetStage = 0
 	--pairs() has an undefined order...
 	local index = 1
@@ -172,7 +175,7 @@ function isn_readSeedData()
 			storage.stage[index] = stage
 		else
 			if curStage.harvestPool ~= nil then storage.harvestPool = curStage.harvestPool end
-			if curStage.resetToStage ~= nil then storage.resetStage = curStage.resetToStage end
+			if curStage.resetToStage ~= nil then storage.resetStage = curStage.resetToStage + 1 end
 		end
 		index = index + 1
 	end
@@ -180,9 +183,17 @@ function isn_readSeedData()
 	return true
 end
 
---Generates growth data used to tell when plant is ready for harvest and when it uses fluid.
+--[[
+Generates growth data to tell when a plant is ready for harvest and when it uses fluid.
+Notes:
+-As a rule plants only have 2 growth stages.  Perennial plants should have a 3rd stage but
+ not always (some mods skipped the data).  This stage is basically death stage but doesn't
+ seem to be used.  Either way even perennial plants are harvestable after the 3rd stage and
+ that's what matters.
+]]--
 function isn_genGrowthData(initStage)
 	if initStage == nil then initStage = 1 end
+	local maxStage = math.min(2, storage.stages)
 	--Make sure some things make sense for a perennial, if not act like it's annual
 	if initStage > storage.stages then
 		--maybe toss something to the log...?
@@ -191,16 +202,15 @@ function isn_genGrowthData(initStage)
 	end
 	storage.currentStage = initStage
 	storage.growthCap = 0
-	--Intentionally computing from initial stage to 1 less than maximum stages.  Final stage isn't growth.
-	--Perennials regrow from variable initial stage, all plants harvest in final stage.
 	local index = initStage
-	while index < storage.stages do
+	while index <= maxStage do
 		local stage = storage.stage[index]
 		if type(stage) == nil then return false end
 		storage.growthCap = storage.growthCap + math.random(stage.min, stage.max)
 		stage.val = storage.growthCap
 		index = index + 1
 	end
+	sb.logInfo("stage data %s", storage.stage)
 	return true
 end
 
@@ -247,7 +257,7 @@ function isn_doSeedIntake()
 	--Set default of how many picks of the pool we get.
 	storage.yield = 1
 	--consume some fertilizer (which modifies some stats)
-	isn_doFertIntake()
+	sb.logInfo("fertintake test: %s", isn_doFertIntake())
 	--consume some fluid (which modifies some stats), order matters as fertilizer changes fluid needs.
 	storage.hasFluid = isn_doFluidConsume()
 	--consume a seed.
@@ -257,16 +267,20 @@ function isn_doSeedIntake()
 end
 
 --consumes a unit of fertilizer and alters some variables based on what was consumed.
---TODO: Verify my error checking by having malformed data.
 function isn_doFertIntake()
 	local contents = world.containerItems(entity.id())
 	local fert = contents[storage.fertslot]
 	if fert == nil then return false end
+	storage.fluidUse = 1
+	storage.growthFert = 0
 	
 	for key, value in pairs(config.getParameter("isn_fertInputs")) do
 		if fert.name == key and type(value) == "table" then
 			local use, boost, yield = value[1], value[2], value[3]
-			if use == nil or boost == nil or yield == nil then return false end
+			if use == nil or boost == nil or yield == nil then
+				sb.logWarning("[fu_growingtray] found valid fertilizer named %s however one of use (%s), boost (%s), or yield (%s) was invalid.", key, use, boost, yield)
+				return false
+			end
 			storage.fluidUse = use
 			storage.growthFert = boost
 			storage.yield = storage.yield + yield
