@@ -157,8 +157,9 @@ end
 
 function getFood()
   self.timer = (self.timer or 90) - 1
+  happinessCalculation()
   displayHappiness()
-  checkSoil()
+  checkMate()
   return true,{food=storage.food}
 end
 
@@ -172,18 +173,7 @@ function removeFood(args)
     --checkSoil()   --work on later
     self.timerPoop = 90
   end    
-  
-  -- we see if the creature can lay eggs here
-  if storage.food >=70 then  
-          self.randChance = math.random(100)
-	  self.eggType = config.getParameter("eggType")	 
-	  if storage.mateTimer <= 0 and self.randChance <= 0 then
-	    animator.playSound("deathPuff")
-	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
-	    storage.mateTimer = config.getParameter("mateTime")
-	  end  
-  end
-  
+
   return true
 end
 
@@ -212,16 +202,28 @@ function displayHappiness()
   end
 end
 
+function checkMate()
+  -- we see if the creature can lay eggs here
+  if storage.happiness >=70 then  
+          self.randChance = math.random(100)
+	  self.eggType = config.getParameter("eggType")	 
+	  if storage.mateTimer <= 0 and self.randChance <= 0 then
+	    animator.playSound("harvest")
+	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
+	    storage.mateTimer = config.getParameter("mateTime")
+	  end  
+  end
+end
+
 function checkPoop()
   self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
-  self.randPoop = math.random(500) - self.foodMod
+  self.randPoop = math.random(550) - self.foodMod
   if self.randPoop <= 1 then
     animator.playSound("deathPuff")
     world.spawnItem("poop", mcontroller.position(), 1) -- poop to fertilize trays
   end  
   if self.randPoop >= 300 then
-    animator.playSound("deathPuff")
-    world.spawnLiquid(mcontroller.position(), 1, 2) --water urination to water soil
+    world.spawnLiquid(mcontroller.position(), 1, 3) --water urination to water soil
   end   
 end
 
@@ -230,6 +232,7 @@ function checkSoil()
   local tileModConfig = root.assetJson('/scripts/actions/monsters/farmable.config').tileMods
   configBombDrop = { speed = 20}
   if world.mod(mcontroller.position(), "foreground") then
+    --setAnimationState("body", "graze")
     for _,value in pairs(tileMods.mainTiles) do
       if world.mod(mcontroller.position(), "foreground") == value then
         world.spawnProjectile("grazingprojectilespray",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
