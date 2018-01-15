@@ -150,8 +150,17 @@ function eatFood(args)
         if storage.food >= 100 then      
 	  break
 	end
-	
-  end
+  end  
+  
+
+	  if diet == 'carnivore' then
+		  world.spawnProjectile("fu_carnivore", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
+	  elseif diet == 'omnivore' or diet == 'specialomnivore' then
+		  world.spawnProjectile("fu_omnivore", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
+	  elseif diet == 'herbivore' then
+		  world.spawnProjectile("fu_herbivore", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
+	  end	
+	  
   return eaten
 end
 
@@ -166,11 +175,10 @@ end
 function removeFood(args)
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
   storage.mateTimer = math.max((storage.mateTimer or 60) - 0.277777778/config.getParameter('mateTimer',60),0)
-    
+  
   self.timerPoop = (self.timerPoop or 90) - 1
   if self.timerPoop <= 0 and storage.food >= 50 then
     checkPoop()
-    --checkSoil()   --work on later
     self.timerPoop = 90
   end    
 
@@ -207,23 +215,34 @@ function checkMate()
   if storage.happiness >=70 then  
           self.randChance = math.random(100)
 	  self.eggType = config.getParameter("eggType")	 
-	  if storage.mateTimer <= 0 and self.randChance <= 0 then
+	  if storage.mateTimer <= 0 and self.randChance <= 0 then 
+	  
+	    if storage.happiness == 100 then  -- they are happy, and produce more eggs, and can mate again sooner than unhappy animals
+		    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
+		    storage.mateTimer = 40  -- full happiness pets mate sooner
+		    animator.playSound("deathPuff")		    
+	    else
+		    world.spawnItem( self.eggType, mcontroller.position(), 1 )
+		    storage.mateTimer = config.getParameter("mateTime")
+		    animator.playSound("deathPuff")	    
+	    end
+
+	  elseif storage.mateTimer <= 0.1 then
 	    animator.playSound("harvest")
-	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
-	    storage.mateTimer = config.getParameter("mateTime")
+	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	  end  
   end
 end
 
 function checkPoop()
   self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
-  self.randPoop = math.random(550) - self.foodMod
+  self.randPoop = math.random(800) - self.foodMod
   if self.randPoop <= 1 then
     animator.playSound("deathPuff")
     world.spawnItem("poop", mcontroller.position(), 1) -- poop to fertilize trays
   end  
-  if self.randPoop >= 300 then
-    world.spawnLiquid(mcontroller.position(), 1, 3) --water urination to water soil
+  if self.randPoop >= 720 then
+    world.spawnLiquid(mcontroller.position(), 1, 1) --water urination to water soil
   end   
 end
 
