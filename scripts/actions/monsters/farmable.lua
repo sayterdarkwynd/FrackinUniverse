@@ -151,10 +151,7 @@ function eatFood(args)
 	  break
 	end
   end  
-  
-           
-
-	  
+        
   return eaten
 end
 
@@ -169,7 +166,6 @@ end
 function removeFood(args)
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
   storage.mateTimer = math.max((storage.mateTimer or 60) - 0.277777778/config.getParameter('mateTimer',60),0)
-  
   self.timerPoop = (self.timerPoop or 90) - 1
   if self.timerPoop <= 0 and storage.food >= 50 then
     checkPoop()
@@ -191,18 +187,17 @@ function happinessCalculation()
 end
 
 function displayFoodType()
+  storage.hungerTime = config.getParameter('hungerTime',20) 
   local diet = config.getParameter('diet','omnivore')
-  storage.hungerTime = storage.hungerTime or 1
-
-	  if diet == 'carnivore' and storage.hungerTime == 1 and storage.food < 60 then
+	  if diet == 'carnivore' and storage.hungerTime == 1 then
 		  world.spawnProjectile("fu_carnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 180
-	  elseif diet == 'omnivore' or diet == 'specialomnivore' and storage.hungerTime == 1 and storage.food < 60 then
+		  storage.hungerTime = 5
+	  elseif diet == 'omnivore' or diet == 'specialomnivore' and storage.hungerTime == 1 then
 		  world.spawnProjectile("fu_omnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 180
-	  elseif diet == 'herbivore' and storage.hungerTime == 1 and storage.food < 60 then
+		  storage.hungerTime = 5
+	  elseif diet == 'herbivore' and storage.hungerTime == 1 then
 		  world.spawnProjectile("fu_herbivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 180
+		  storage.hungerTime = 5
 	  else
 	    	  storage.hungerTime = storage.hungerTime - 1
 	  end	
