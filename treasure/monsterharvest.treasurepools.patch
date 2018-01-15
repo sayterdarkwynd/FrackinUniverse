@@ -36,9 +36,32 @@
 			"poolRounds":[[1,1]]}]]
 },
   {
+    "op": "remove",
+    "path": "/defaultFluffaloHarvest/0/1/poolRounds"
+  },
+  {
+    "op": "add",
+    "path": "/defaultFluffaloHarvest/0/1/pool/0/count",
+    "value": 1
+  },
+  {
     "op": "replace",
     "path": "/defaultFluffaloHarvest/0/1/pool/0/weight",
-    "value": 0.4
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/defaultFluffaloHarvest/0/1/pool/0/item",
+    "value": "cottonwool"
+  },
+  {
+    "op": "add",
+    "path": "/defaultFluffaloHarvest/0/1/pool/-",
+    "value": {
+      "weight": 0.4,
+      "item": "plantfibre",
+      "count": 5
+    }
   },
   {
     "op": "add",
@@ -48,20 +71,6 @@
       "item": "fuscienceresource",
       "count": 5
     }
-  },
-  {
-    "op": "add",
-    "path": "/defaultFluffaloHarvest/0/1/pool/-",
-    "value": {
-      "weight": 0.5,
-      "item": "cottonwool",
-      "count": 1
-    }
-  }, 
-
-  {
-    "op": "remove",
-    "path": "/defaultFluffaloHarvest/0/1/poolRounds"
   },
   
   {
