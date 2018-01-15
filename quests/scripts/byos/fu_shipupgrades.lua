@@ -13,6 +13,15 @@ end
 
 function update(dt)
 	if player.worldId() == player.ownShipWorldId() then
+		if not initFinished then
+			initFinished = true
+			if world.getProperty("ship.level") == 0 then
+				isBYOS = true
+				for _, recipe in pairs (root.assetJson(config.getParameter("byosRecipes"))) do
+					player.giveBlueprint(recipe)
+				end
+			end
+		end
 		crewSizeShip = world.getProperty("fu_byos.crewSize")
 		shipMaxFuel = world.getProperty("ship.maxFuel")
 		maxFuelShip = world.getProperty("fu_byos.maxFuel")
@@ -23,6 +32,13 @@ function update(dt)
 		shipMassShip = world.getProperty("fu_byos.shipMass")
 		if world.getProperty("fu_byos.inWarp") then
 			--world.spawnProjectile("explosivebullet", vec2.add(entity.position(), {50,0}), entity.id(), {-1, 0}, false, {}) -- disabled until properly implemented
+		end
+		if isBYOS then
+			if not world.tileIsOccupied(mcontroller.position(), false) then
+				lifeSupport(false)
+			else
+				lifeSupport(true)
+			end
 		end
 		if crewSizeShip then
 			crewSizeNew, _ = calculateNew("crewSize", crewSizeShip, 0, 0)
@@ -78,6 +94,25 @@ function update(dt)
 		end
 		if maxFuelNew and world.getProperty("ship.fuel") > maxFuelNew then
 			world.setProperty("ship.fuel", maxFuelNew)
+		end
+	end
+end
+
+function uninit()
+	lifeSupport(true)
+end
+
+function lifeSupport(isOn)
+	if isOn then
+		mcontroller.clearControls()
+		status.removeEphemeralEffect("fu_nooxygen")
+		lifeSupportInit = false
+	else
+		mcontroller.controlParameters({gravityEnabled = false})
+		status.addEphemeralEffect("fu_nooxygen", 3)
+		if not lifeSupportInit then
+			mcontroller.setVelocity({0, 0})
+			lifeSupportInit = true
 		end
 	end
 end

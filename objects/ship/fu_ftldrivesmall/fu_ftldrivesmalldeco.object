@@ -8,11 +8,11 @@
   "race" : "generic",
   "printable" : false,
 
-  "inventoryIcon" : "fu_ftldriveicon.png",
+  "inventoryIcon" : "fu_ftldrivesmallicon.png",
   "orientations" : [
     {
-      "dualImage" : "fu_ftldrivesmall_base.png",
-      "imagePosition" : [0, 0],
+      "dualImage" : "fu_ftldrivesmall.png",
+      "imagePosition" : [-30, 0],
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
@@ -20,9 +20,11 @@
 
   "animation" : "fu_ftldrivesmall.animation",
   "animationParts" : {
-    "screen" : "fu_ftldrivesmall_screen.png",
-    "fans" : "fu_ftldrivesmall_fans.png",
-    "base" : "fu_ftldrivesmall_base.png"
+    "base" : "fu_ftldrivesmall.png",
+	"fullbright" : "fu_ftldrivesmallfullbright.png"
   },
-  "animationPosition" : [0, 0]
+  "animationPosition" : [-30, 0],
+  
+  "scripts" : [ "/objects/ship/fu_ftldriveanimation.lua" ],
+  "scriptDelta" : 60
 }
