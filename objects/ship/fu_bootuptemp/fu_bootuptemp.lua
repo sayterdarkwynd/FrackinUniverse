@@ -1,4 +1,4 @@
-require "/scripts/pathutil.lua"
+require "/scripts/vec2.lua"
 require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
 
 function init()
@@ -32,17 +32,17 @@ function update(dt)
 	if byos then
 		if counter == 1 then
 			parameters = getBYOSParameters("techstation", true, _)
-			world.placeObject("fu_byostechstation", vec2.add(position, {11,0}), _, {shipPetType = parameters.shipPetType, inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription, dialog = parameters.dialog, placementImagePosition = parameters.placementImagePosition})
+			world.placeObject("fu_byostechstation", vec2.add(position, {11,0}), _, parameters)
 			parameters = getBYOSParameters("shiplocker", _, true)
-			world.placeObject("fu_byosshiplocker", vec2.add(position, {-10,0}), _, {treasurePools = parameters.treasurePools, inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription, placementImagePosition = parameters.placementImagePosition})
+			world.placeObject("fu_byosshiplocker", vec2.add(position, {-10,0}), _, parameters)
 			parameters = getBYOSParameters("teleporter")
-			world.placeObject("fu_byosteleporter", vec2.add(position, {-20,-2}), _, {inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription, placementImagePosition = parameters.placementImagePosition})
+			world.placeObject("fu_byosteleporter", vec2.add(position, {-20,-2}), _, parameters)
 			parameters = getBYOSParameters("shipdoor")
-			world.placeObject("fu_byosshipdoor", vec2.add(position, {16,-2}), _, {inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription, placementImagePosition = parameters.placementImagePosition})
+			world.placeObject("fu_byosshipdoor", vec2.add(position, {16,-2}), _, parameters)
 			parameters = getBYOSParameters("fuelhatch")
-			world.placeObject("fu_byosfuelhatch", vec2.add(position, {19,1}), _, {inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription, placementImagePosition = parameters.placementImagePosition})
+			world.placeObject("fu_byosfuelhatch", vec2.add(position, {19,1}), _, parameters)
 			parameters = getBYOSParameters("captainschair")
-			world.placeObject("fu_byoscaptainschair", vec2.add(position, {23,-2}), _, {inventoryIcon = parameters.inventoryIcon, placementImage = parameters.placementImage, imageConfig = parameters.imageConfig, shortDescription = parameters.shortDescription, imageFlipped = parameters.imageFlipped, placementImagePosition = parameters.placementImagePosition})
+			world.placeObject("fu_byoscaptainschair", vec2.add(position, {23,-2}), _, parameters)
 			world.placeObject("apexshiplight", vec2.add(position, {4,7}))
 			world.placeObject("apexshiplight", vec2.add(position, {11,7}))
 			world.placeObject("apexshiplight", vec2.add(position, {19,2}))

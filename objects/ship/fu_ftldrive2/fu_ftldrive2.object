@@ -1,0 +1,43 @@
+{
+  "objectName" : "fu_ftldrive2",
+  "rarity" : "essential",
+  "colonyTags" : [ "science" ],
+  "category" : "furniture",
+  "description" : "An ftl drive for a space ship. Allows you to travel through space. ^yellow;Impulse Speed +25%^reset; and ^orange;Mass +3^reset;",
+  "shortdescription" : "^cyan;FTL Drive^white;",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "fu_ftldrive2icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_ftldrive2.png:off",
+      "imagePosition" : [-28, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "animation" : "fu_ftldrive2.animation",
+  "animationParts" : {
+    "base" : "fu_ftldrive2.png",
+	"fullbright" : "fu_ftldrive2fullbright.png"
+  },
+  "animationPosition" : [-28, 0],
+  
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/objects/ship/fu_ftldriveanimation.lua" ],
+  "scriptDelta" : 60,
+  
+  "stats" : {
+    "shipSpeed" : 3.75,
+    "shipMass" : 3
+  },
+  "capabilities" : [
+    "systemTravel",
+    "planetTravel"
+  ],
+  "maxAmountGroups" : {
+    "ftlDrive" : 1
+  },
+  "byosOnly" : true
+}
