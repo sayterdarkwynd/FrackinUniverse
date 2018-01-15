@@ -89,7 +89,7 @@ function update(dt)
 	storage.activeConsumption = true
 	
 	--compute growth
-	storage.growth = storage.growth + storage.growthRate + storage.growthFluid + storage.growthFert + 100
+	storage.growth = storage.growth + storage.growthRate + storage.growthFluid + storage.growthFert
 	
 	--check if we are grown.
 	if storage.growth >= storage.growthCap then
