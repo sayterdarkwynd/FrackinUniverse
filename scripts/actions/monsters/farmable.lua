@@ -157,21 +157,44 @@ end
 
 function getFood()
   self.timer = (self.timer or 90) - 1
-  displayHappiness()	
+  displayHappiness()
+  checkSoil()
   return true,{food=storage.food}
 end
 
 function removeFood(args)
-  self.timerPoop = (self.timerPoop or 90) - 1
-          if self.timerPoop <= 0 then
-	    checkPoop()
-	    self.timerPoop = 90
-	  end      
-  	  
+  storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
   storage.mateTimer = math.max((storage.mateTimer or 60) - 0.277777778/config.getParameter('mateTimer',60),0)
-  checkMate()
+    
+  self.timerPoop = (self.timerPoop or 90) - 1
+  if self.timerPoop <= 0 and storage.food >= 50 then
+    checkPoop()
+    --checkSoil()   --work on later
+    self.timerPoop = 90
+  end    
   
-  storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)	
+  -- we see if the creature can lay eggs here
+  if storage.food >=70 then  
+          self.randChance = math.random(100)
+	  self.eggType = config.getParameter("eggType")	 
+	  if storage.mateTimer <= 0 and self.randChance <= 0 then
+	    animator.playSound("deathPuff")
+	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
+	    storage.mateTimer = config.getParameter("mateTime")
+	  end  
+  end
+  
+  return true
+end
+
+
+function happinessCalculation()
+  storage.happiness = storage.happiness or 50
+  if storage.food < 20 then
+    storage.happiness = math.max(storage.happiness - 0.00462962963,0)
+  else
+    storage.happiness = math.min(storage.happiness + 0.00462962963,100)
+  end  
   return true
 end
 
@@ -190,34 +213,28 @@ function displayHappiness()
 end
 
 function checkPoop()
-  if storage.food >=50 then
-        self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
-  	self.randPoop = math.random(500) - self.foodMod
-  	if self.randPoop <= 1 then
-  	  animator.playSound("deathPuff")
-  	  world.spawnItem("poop", mcontroller.position(), 1)
-	end  
-  end
-end
-
-
-function checkMate()
-  self.eggType = config.getParameter("eggType")
-  self.randChance = math.random(10)
-  sb.logInfo("value = "..storage.mateTimer)
-  if storage.happiness >= 50 and storage.mateTimer <= 0 and self.randChance == 1 then
+  self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
+  self.randPoop = math.random(500) - self.foodMod
+  if self.randPoop <= 1 then
     animator.playSound("deathPuff")
-    world.spawnItem( self.eggType, mcontroller.position(), 1 )
-    --storage.mateTimer = config.getParameter("mateTime")
+    world.spawnItem("poop", mcontroller.position(), 1) -- poop to fertilize trays
   end  
+  if self.randPoop >= 300 then
+    animator.playSound("deathPuff")
+    world.spawnLiquid(mcontroller.position(), 1, 2) --water urination to water soil
+  end   
 end
 
-function happinessCalculation()
-  storage.happiness = storage.happiness or 50
-  if storage.food < 20 then
-    storage.happiness = math.max(storage.happiness - 0.00462962963,0)
-  else
-    storage.happiness = math.min(storage.happiness + 0.00462962963,100)
-  end  
-  return true
+
+function checkSoil()
+  local tileModConfig = root.assetJson('/scripts/actions/monsters/farmable.config').tileMods
+  configBombDrop = { speed = 20}
+  if world.mod(mcontroller.position(), "foreground") then
+    for _,value in pairs(tileMods.mainTiles) do
+      if world.mod(mcontroller.position(), "foreground") == value then
+        world.spawnProjectile("grazingprojectilespray",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
+      end
+    end
+    storage.food = storage.food + 10
+  end
 end
