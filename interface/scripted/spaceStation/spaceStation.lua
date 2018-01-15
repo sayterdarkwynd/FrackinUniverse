@@ -221,7 +221,7 @@ function firstTimeInit()
 		objectData.specialsTable = {
 			invested = 0,
 			investing = 0,
-			investRequired = 100,
+			investRequired = stationData.trading.initialInvestRequired,
 			investLevel = 1
 		}
 	else
@@ -1225,19 +1225,19 @@ function calculateShopPrice(base, isBuying)
 			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel
 		end
 		
-		totalMult = self.data.shopBuyMult - (status.stat("fuCharisma") - 1) - (tradingOutpostMult * 0.01)
-		totalMult = math.max(totalMult, self.data.shopBuyMultMin)
+		totalMult = stationData.shop.initBuyMult - status.statusProperty("fuCharisma", 0) * stationData.trading.charismaBuyPriceReduction - tradingOutpostMult
+		totalMult = math.max(totalMult, stationData.shop.minBuyMult)
 		
-		return math.floor(base * totalMult)
+		return closestWhole(base * totalMult)
 	else
 		if objectData.stationType == "trading" then 
 			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel
 		end
 		
-		totalMult = self.data.shopSellMult + (status.stat("fuCharisma") - 1) + (tradingOutpostMult * 0.01)
-		totalMult = math.max(math.min(totalMult, self.data.shopSellMultMax), 0)
+		totalMult = stationData.shop.initSellMult + status.statusProperty("fuCharisma", 0) * stationData.trading.charismaSellPriceIncrease + tradingOutpostMult
+		totalMult = math.max(math.min(totalMult, stationData.shop.maxSellMult), 0)
 		
-		return math.floor(base * totalMult)
+		return closestWhole(base * totalMult)
 	end
 end
 
@@ -1670,8 +1670,15 @@ function specialsTableInit()
 	widget.setVisible("benefitsSellPriceMult", true)
 	
 	widget.setText("investLevel", "Lvl "..tostring(objectData.specialsTable.investLevel))
-	widget.setText("benefitsBuyPriceMult", "-"..tostring(objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel).."%")
-	widget.setText("benefitsSellPriceMult", "+"..tostring(objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel).."%")
+	
+	local charismaBuy = status.statusProperty("fuCharisma", 0) * 100 * stationData.trading.charismaBuyPriceReduction
+	local charismaSell = status.statusProperty("fuCharisma", 0) * 100 * stationData.trading.charismaSellPriceIncrease
+	
+	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
+	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
+	
+	widget.setText("benefitsBuyPriceMult", tostring(buyPcnt).."%")
+	widget.setText("benefitsSellPriceMult", tostring(sellPcnt).."%")
 		
 	widget.setVisible("playerPixels", true)
 	widget.setPosition("playerPixels", self.data.pixelDisplayInvestPos)
@@ -1698,26 +1705,32 @@ function invest()
 		objectData.specialsTable.investLevel = objectData.specialsTable.investLevel + 1
 		widget.setText("investLevel", "Lvl "..tostring(objectData.specialsTable.investLevel))
 		
-		objectData.specialsTable.investRequired = 100 + (objectData.specialsTable.investLevel * 123)
+		objectData.specialsTable.investRequired = closestWhole(stationData.trading.initialInvestRequired * (stationData.trading.investRequirementMult ^ objectData.specialsTable.investLevel))
 	end
 	
 	-- Disable some elements and increase charisma stat when reaching max level
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
-		writerInit(textData, textData[objectData.stationRace]["specialsTableMax"])
+		writerInit(textData, textData[objectData.stationRace].tradingSpecialMax)
 		widget.setText("investRequired", "Fully upgraded!")
 		widget.setButtonEnabled("investButton", false)
 		widget.setButtonEnabled("investMax", false)
 		widget.setText("investAmount", "")
 		
-		-- Increase max level stations counter
+		status.setStatusProperty("fuCharisma", status.statusProperty("fuCharisma", 0) + 1)
 	else
 		objectData.specialsTable.investing = 0
 		widget.setText("investAmount", "")
 		widget.setText("investRequired", "Required: "..tostring(objectData.specialsTable.investRequired - objectData.specialsTable.invested))
 	end
 	
-	widget.setText("benefitsBuyPriceMult", "-"..tostring(objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel).."%")
-	widget.setText("benefitsSellPriceMult", "+"..tostring(objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel).."%")
+	local charismaBuy = status.statusProperty("fuCharisma", 0) * stationData.trading.charismaBuyPriceReduction * 100
+	local charismaSell = status.statusProperty("fuCharisma", 0) * stationData.trading.charismaSellPriceIncrease * 100
+	
+	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
+	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
+	
+	widget.setText("benefitsBuyPriceMult", tostring(buyPcnt).."%")
+	widget.setText("benefitsSellPriceMult", tostring(sellPcnt).."%")
 	
 	updateBar(false)
 	updateBar(true)
