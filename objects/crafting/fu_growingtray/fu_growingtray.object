@@ -41,7 +41,9 @@
   "outputNodes" : [ [1, 0] ],
   
   // base rate of growth outside of code.
-  "isn_growthPerTick" : 1,
+  // Went with double since the common growth time of plants is around 40 (low side) for each phase.
+  // original code had a growth time of 30.
+  "isn_growthPerTick" : 2,
   
   "isn_waterInputs" : {
 	// Altered these stats somewhat as the old mechanic of fluid use per tick isn't active.
@@ -54,12 +56,12 @@
 	"waterbucket" : [1,0],
     "liquidwater" : [1,0],
     "swampwater" : [2,0],
-    "liquidblood" : [2,0],
-    "pus" : [2,0],
-    "liquidalienjuice" : [3,0],
-    "liquidorganicsoup" : [4,0],
-    "liquidaether" : [5,0],
-    "liquidhealing" : [8,0]
+    "liquidblood" : [2,1],
+    "pus" : [2,2],
+    "liquidalienjuice" : [3,1],
+    "liquidorganicsoup" : [4,1],
+    "liquidaether" : [5,1],
+    "liquidhealing" : [8,3]
   },
 
   "isn_fertInputs" : {

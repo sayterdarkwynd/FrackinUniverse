@@ -19,6 +19,8 @@ function init()
 	--this next check is necessary because of some inconsistencies in Starbound storage save/load.
 	--Quite often when using a numeric key it loads back as string representation of number key.
 	--Sometimes when using a string representation of number key it loads back as numeric key.
+	local flagReadSeed = false
+	local flagGenGrowth = false
 	if storage.stage ~= nil and storage.stages ~= nil then
 		local index = 1
 		while index <= storage.stages do
@@ -27,15 +29,31 @@ function init()
 			end
 			index = index + 1
 		end
-		--considering adding integer index check here too and trigger full recompute if check fails.
+		--while we are here, verify the data looks valid...
+		while index <= 2 do
+			if type(storage.stage[index]) == nil then
+				flagReadSeed = true
+				break
+			end
+			if storage.stage[index].min == nil or storage.stage[index].max == nil then
+				flagReadSeed = true
+				break
+			end
+			if storage.stage[index].val == nil then
+				flagGenGrowth = true
+				break
+			end
+		end
 	end
 	--variables which require more work to initialize if invalid.
-	if storage.stage == nil or storage.growthCap == nil or storage.stages == nil then
+	if storage.stage == nil or storage.growthCap == nil or storage.stages == nil or flagReadSeed == true then
 		storage.stage = {}
 		if isn_readSeedData() == true then
 			isn_genGrowthData()
+			flagGenGrowth = false
 		end
 	end
+	if flagGenGrowth == true then isn_genGrowthData() end
 	
 	if storage.activeConsumption == nil then storage.activeConsumption = false end
 	
@@ -78,7 +96,7 @@ function update(dt)
 		repeat
 			storage.hasFluid = isn_doFluidConsume()
 			--don't change currentStage unless it's apt to.
-			if storage.hasFluid == true and storage.stage[storage.currentStage].val < storage.growth then
+			if storage.hasFluid == true and storage.growth >= storage.stage[storage.currentStage].val then
 				storage.currentStage = storage.currentStage + 1
 			end
 		until (storage.hasFluid == false or storage.currentStage >= storage.stages or storage.growth < storage.stage[storage.currentStage].val)
@@ -210,7 +228,6 @@ function isn_genGrowthData(initStage)
 		stage.val = storage.growthCap
 		index = index + 1
 	end
-	sb.logInfo("stage data %s", storage.stage)
 	return true
 end
 
@@ -257,7 +274,7 @@ function isn_doSeedIntake()
 	--Set default of how many picks of the pool we get.
 	storage.yield = 1
 	--consume some fertilizer (which modifies some stats)
-	sb.logInfo("fertintake test: %s", isn_doFertIntake())
+	isn_doFertIntake()
 	--consume some fluid (which modifies some stats), order matters as fertilizer changes fluid needs.
 	storage.hasFluid = isn_doFluidConsume()
 	--consume a seed.
