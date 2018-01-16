@@ -171,7 +171,9 @@ function removeFood(args)
     checkPoop()
     self.timerPoop = 90
   end    
+  
   displayFoodType()
+  
   return true
 end
 
@@ -187,8 +189,9 @@ function happinessCalculation()
 end
 
 function displayFoodType()
-  storage.hungerTime = config.getParameter('hungerTime',20) 
+  storage.hungerTime = config.getParameter('hungerTime',0) 
   local diet = config.getParameter('diet','omnivore')
+  local configBombDrop = { speed = 10}
 	  if diet == 'carnivore' and storage.hungerTime == 1 then
 		  world.spawnProjectile("fu_carnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
 		  storage.hungerTime = 20
