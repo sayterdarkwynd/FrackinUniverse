@@ -1,0 +1,46 @@
+{
+  "id" : "create_matterassembler2",
+  "prerequisites" : [ ],
+  "title" : "Gathering necessary parts",
+  "text" : "Using your ^orange;Tricorder^reset; you can ^green;right-click^reset; to open up a Quest interface. I suggest following some of the tasks I have provided. Try selecting the quest asking for ^orange;wire^reset;!",
+  "completionText" : "A cavern somewhere on this world is emitting ^orange;archaic energy^reset; that likely has all you need to get out of here! I suggest investigating once you are better equipped.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "sciencebrochure", 1 ], [ "glass", 2 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  
+  "parameters" : {
+    "questGiver" : {
+      "type" : "entity",
+      "indicator" : "/interface/quests/questreceiver.animation"
+    }  
+  },
+  
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+
+    "turnInDescription" : "Bring the ^green;Wire^reset; to ^orange;Vinalisj^reset;.",
+
+    "initialCompassTarget" : {
+      "targetType" : "parameter",
+      "target" : "questGiver"
+    },
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "wire",
+        "count" : 9,
+        "consume" : false
+      }
+    ]
+  }
+}
