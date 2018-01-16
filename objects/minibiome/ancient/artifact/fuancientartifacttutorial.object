@@ -1,0 +1,56 @@
+{
+  "objectName" : "fuancientartifacttutorial",
+  "colonyTags" : ["precursor"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 500,
+  "description" : "This relic tantalizes you with its potential value. Take it!",
+  "shortdescription" : "Ancient Artefact",
+  "race" : "ancient",
+  
+  "health" : 5,
+
+  "inventoryIcon" : "fuancientartifacticon.png",
+  "orientations" : [
+    {
+	  "imageLayers" : [ { "image" : "fuancientartifact.png:<color>.<frame>", "fullbright" : true }, { "image" : "fuancientartifactlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left"
+
+    },
+    {
+	  "imageLayers" : [ { "image" : "fuancientartifact.png:<color>.<frame>", "fullbright" : true }, { "image" : "fuancientartifactlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+
+    }
+  ],
+  
+  "scripts" : [
+    "/objects/scripts/thea-interactpickup.lua"
+  ],
+  "scriptDelta" : 5,
+  
+  "spawnableItem" : "combatmaneuvering1_tech",
+
+  "animation" : "fuancientartifact.animation",
+  "animationParts" : {
+    "interactiveObject" : "fuancientartifact.png",
+    "interactiveObjectlit" : "fuancientartifactlit.png"
+  },
+  "animationPosition" : [0, 0]
+}

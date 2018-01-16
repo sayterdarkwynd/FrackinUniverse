@@ -1,0 +1,43 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "interactiveObject" : {
+        "default" : "filled",
+        "states" : {
+          "filled" : {
+            "frames" : 5,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          },
+          "empty" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "interactiveObject" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "interactiveObject" : {
+            "filled" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            },
+
+            "empty" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.empty"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
