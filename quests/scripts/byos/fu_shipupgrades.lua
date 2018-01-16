@@ -3,12 +3,10 @@ require "/quests/scripts/questutil.lua"
 require "/quests/scripts/portraits.lua"
 
 function init()
-	if player.worldId() == player.ownShipWorldId() then
-		upgradeConfig = root.assetJson("/quests/scripts/byos/fu_shipupgrades.config")
-		maxFuelShipOld = 0
-		fuelEfficiencyShipOld = 0
-		shipSpeedShipOld = 0
-	end
+	upgradeConfig = root.assetJson("/quests/scripts/byos/fu_shipupgrades.config")
+	maxFuelShipOld = 0
+	fuelEfficiencyShipOld = 0
+	shipSpeedShipOld = 0
 end
 
 function update(dt)
@@ -108,12 +106,17 @@ function lifeSupport(isOn)
 		status.removeEphemeralEffect("fu_nooxygen")
 		lifeSupportInit = false
 	else
-		mcontroller.controlParameters({gravityEnabled = false})
-		status.addEphemeralEffect("fu_nooxygen", 3)
-		if not lifeSupportInit then
-			mcontroller.setVelocity({0, 0})
-			lifeSupportInit = true
+		if status.statusProperty("fu_byosgravgenfield", 0) > 0 then
+			mcontroller.clearControls()
+			lifeSupportInit = false
+		else
+			mcontroller.controlParameters({gravityEnabled = false})
+			if not lifeSupportInit then
+				mcontroller.setVelocity({0, 0})
+				lifeSupportInit = true
+			end
 		end
+		status.addEphemeralEffect("fu_nooxygen", 3)
 	end
 end
 
