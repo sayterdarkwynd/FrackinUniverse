@@ -1,0 +1,66 @@
+{
+  "objectName" : "fuancientartifacttutorial",
+  "colonyTags" : ["precursor"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 500,
+  "description" : "This relic tantalizes you with its potential value. Take it!",
+  "shortdescription" : "Ancient Artefact",
+  "race" : "ancient",
+  
+  "health" : 5,
+
+  "lightColor" : [153, 138, 107],
+
+  "flickerPeriod" : 2.4,
+  "flickerMinIntensity" : 0.9,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0.025,
+  
+  "inventoryIcon" : "fuancientartifacticon.png",
+  "orientations" : [
+    {
+	  "imageLayers" : [ { "image" : "fuancientartifact.png:<color>.<frame>", "fullbright" : true }, { "image" : "fuancientartifactlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [-2, 6]
+
+    },
+    {
+	  "imageLayers" : [ { "image" : "fuancientartifact.png:<color>.<frame>", "fullbright" : true }, { "image" : "fuancientartifactlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "lightPosition" : [1, 6]
+
+    }
+  ],
+  
+  "scripts" : [
+    "/objects/scripts/thea-interactpickup.lua"
+  ],
+  "scriptDelta" : 5,
+  
+  "spawnableItem" : "longjump_tech",
+
+  "animation" : "fuancientartifact.animation",
+  "animationParts" : {
+    "interactiveObject" : "fuancientartifact.png",
+    "interactiveObjectlit" : "fuancientartifactlit.png"
+  },
+  "animationPosition" : [0, 0]
+}
