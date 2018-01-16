@@ -191,13 +191,13 @@ function displayFoodType()
   local diet = config.getParameter('diet','omnivore')
 	  if diet == 'carnivore' and storage.hungerTime == 1 then
 		  world.spawnProjectile("fu_carnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 5
+		  storage.hungerTime = 20
 	  elseif diet == 'omnivore' or diet == 'specialomnivore' and storage.hungerTime == 1 then
 		  world.spawnProjectile("fu_omnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 5
+		  storage.hungerTime = 20
 	  elseif diet == 'herbivore' and storage.hungerTime == 1 then
 		  world.spawnProjectile("fu_herbivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 5
+		  storage.hungerTime = 20
 	  else
 	    	  storage.hungerTime = storage.hungerTime - 1
 	  end	
@@ -219,26 +219,27 @@ end
 
 function checkMate()
   -- we see if the creature can lay eggs here
-  if storage.happiness >=70 then  
-          self.randChance = math.random(100)
-	  self.eggType = config.getParameter("eggType")	 
-	  if storage.mateTimer <= 0 and self.randChance <= 0 then 
-	  
-	    if storage.happiness == 100 then  -- they are happy, and produce more eggs, and can mate again sooner than unhappy animals
-		    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
-		    storage.mateTimer = 40  -- full happiness pets mate sooner
-		    animator.playSound("deathPuff")		    
-	    else
-		    world.spawnItem( self.eggType, mcontroller.position(), 1 )
-		    storage.mateTimer = config.getParameter("mateTime")
-		    animator.playSound("deathPuff")	    
-	    end
-
-	  elseif storage.mateTimer <= 0.1 then
-	    animator.playSound("harvest")
-	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	  end  
+  self.randChance = math.random(100)
+  self.eggType = config.getParameter("eggType")	
+  
+  if storage.mateTimer <= 0.1 then
+    animator.playSound("harvest")
+    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
   end
+  
+  if storage.mateTimer <= 0 and self.randChance <= 0 and storage.happiness >=70 then 
+    if storage.happiness == 100 then  -- they are happy, and produce more eggs, and can mate again sooner than unhappy animals
+	    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
+	    storage.mateTimer = 40  -- full happiness pets mate sooner
+	    animator.playSound("deathPuff")
+
+    else
+	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
+	    storage.mateTimer = config.getParameter("mateTime")
+	    animator.playSound("deathPuff")	    
+    end
+  end 
+  
 end
 
 function checkPoop()
@@ -248,7 +249,7 @@ function checkPoop()
     animator.playSound("deathPuff")
     world.spawnItem("poop", mcontroller.position(), 1) -- poop to fertilize trays
   end  
-  if self.randPoop >= 720 then
+  if self.randPoop >= 700 then
     world.spawnLiquid(mcontroller.position(), 1, 1) --water urination to water soil
   end   
 end
