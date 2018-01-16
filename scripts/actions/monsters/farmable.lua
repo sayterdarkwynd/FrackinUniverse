@@ -82,7 +82,7 @@ function findTrough(args)
   end
   for key,value in pairs(troughdislist) do
     return true,{entity = key}
-  end
+  end  
 end
 
 function eatFood(args)
@@ -151,7 +151,7 @@ function eatFood(args)
 	  break
 	end
   end  
-        
+  displayFoodType()        
   return eaten
 end
 
@@ -171,9 +171,6 @@ function removeFood(args)
     checkPoop()
     self.timerPoop = 90
   end    
-  
-  displayFoodType()
-  
   return true
 end
 
@@ -189,20 +186,14 @@ function happinessCalculation()
 end
 
 function displayFoodType()
-  storage.hungerTime = config.getParameter('hungerTime',0) 
   local diet = config.getParameter('diet','omnivore')
-  local configBombDrop = { speed = 10}
-	  if diet == 'carnivore' and storage.hungerTime == 1 then
+  local configBombDrop = { speed = 10 }
+	  if diet == 'carnivore' then
 		  world.spawnProjectile("fu_carnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 20
-	  elseif diet == 'omnivore' or diet == 'specialomnivore' and storage.hungerTime == 1 then
+	  elseif diet == 'omnivore' or diet == 'specialomnivore' then
 		  world.spawnProjectile("fu_omnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 20
-	  elseif diet == 'herbivore' and storage.hungerTime == 1 then
+	  elseif diet == 'herbivore' then
 		  world.spawnProjectile("fu_herbivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-		  storage.hungerTime = 20
-	  else
-	    	  storage.hungerTime = storage.hungerTime - 1
 	  end	
 end
 
