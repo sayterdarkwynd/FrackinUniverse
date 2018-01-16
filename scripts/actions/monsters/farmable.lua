@@ -151,7 +151,10 @@ function eatFood(args)
 	  break
 	end
   end  
-  displayFoodType()        
+  
+  self.timer2 = (self.timer2 or 180) - 1
+  displayFoodType()   
+  
   return eaten
 end
 
@@ -186,6 +189,7 @@ function happinessCalculation()
 end
 
 function displayFoodType()
+  if self.timer2 <= 0 then
   local diet = config.getParameter('diet','omnivore')
   local configBombDrop = { speed = 10 }
 	  if diet == 'carnivore' then
@@ -194,7 +198,9 @@ function displayFoodType()
 		  world.spawnProjectile("fu_omnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
 	  elseif diet == 'herbivore' then
 		  world.spawnProjectile("fu_herbivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
-	  end	
+	  end
+	  self.timer2 = 180
+  end	  
 end
 
 function displayHappiness()
