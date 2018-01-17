@@ -140,8 +140,14 @@ function gateFound()
   quest.setProgress(nil)
   quest.setCompassDirection(nil)
   player.radioMessage("gaterepair-gateFound1")
-  player.radioMessage("gaterepair-gateFound1b")
-  player.radioMessage("gaterepair-gateFound2")
+  
+    -- FU
+    if player.hasItem({name = "sciencebrochure", count = 1}) and storage.stage < 5 then 
+  	player.radioMessage("gaterepair-gateFound1b")
+  	player.radioMessage("gaterepair-gateFound2")
+    end
+    
+
   storage.stage = 3
 
   util.wait(14)
@@ -152,7 +158,12 @@ end
 function collectRepairItem()
   quest.setCompassDirection(nil)
 
+  local findGate = util.uniqueEntityTracker("ancientgate2", self.compassUpdate)
   while storage.stage == 3 do
+    self.gateUid = "ancientgate2"
+    local result = findGate()
+    questutil.pointCompassAt(result)
+    
     quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
     quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)
     if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
