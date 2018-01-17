@@ -1,11 +1,11 @@
 {
   "id" : "create_matterassembler2",
   "prerequisites" : [ ],
-  "title" : "Gathering necessary parts",
-  "text" : "Using your ^orange;Tricorder^reset; you can ^green;right-click^reset; to open up a Quest interface. I suggest following some of the tasks I have provided. Try selecting the quest asking for ^orange;wire^reset;!",
-  "completionText" : "A cavern somewhere on this world is emitting ^orange;archaic energy^reset; that likely has all you need to get out of here! I suggest investigating once you are better equipped.",
+  "title" : "Ambulary?",
+  "text" : "I should be able to jury-rig a working ^orange;Ambulon Batery^reset; without much effort using about ^orange;9 Wire^reset;. Hook me up with that, and we can get you out of here via the ^orange;dark caverns^reset; within a nearby ^green;surface mine^reset;.",
+  "completionText" : "Perfect. A jurry-rigged Ambulon Battery! This should open the cavern! It's emitting ^orange;archaic energy^reset; that can only mean one thing: ^orange;Portal^reset;!",
   "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "sciencebrochure", 1 ], [ "glass", 2 ] ] ],
+  "rewards" : [ [ [ "precursorbattery", 1 ] ] ],
   "speaker" : "questGiver",
   
   "updateDelta" : 10,
@@ -24,7 +24,8 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-
+    
+    "followUp" : "create_matterassembler3",
     "requireTurnIn" : true,
 
     "turnInDescription" : "Bring the ^green;Wire^reset; to ^orange;Vinalisj^reset;.",
@@ -39,7 +40,7 @@
         "type" : "gatherItem",
         "itemName" : "wire",
         "count" : 9,
-        "consume" : false
+        "consume" : true
       }
     ]
   }
