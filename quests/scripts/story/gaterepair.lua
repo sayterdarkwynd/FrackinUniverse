@@ -127,7 +127,7 @@ function findGate()
   while true do
     local result = findGate()
     questutil.pointCompassAt(result)
-    if result and world.magnitude(mcontroller.position(), result) < self.findRange then
+    if result and world.magnitude(mcontroller.position(), result) < 50 then
       self.state:set(gateFound)
     end
     coroutine.yield()
@@ -140,13 +140,8 @@ function gateFound()
   quest.setProgress(nil)
   quest.setCompassDirection(nil)
   player.radioMessage("gaterepair-gateFound1")
-  
-    -- FU
-    if player.hasItem({name = "sciencebrochure", count = 1}) and storage.stage < 5 then 
-  	player.radioMessage("gaterepair-gateFound1b")
-  	player.radioMessage("gaterepair-gateFound2")
-    end
-    
+  player.radioMessage("gaterepair-gateFound1b")
+  player.radioMessage("gaterepair-gateFound2")
 
   storage.stage = 3
 
