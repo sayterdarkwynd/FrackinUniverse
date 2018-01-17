@@ -140,7 +140,7 @@ function gateFound()
   quest.setProgress(nil)
   quest.setCompassDirection(nil)
   player.radioMessage("gaterepair-gateFound1")
-  player.radioMessage("gaterepair-gateFound1b")
+  --player.radioMessage("gaterepair-gateFound1b")
   player.radioMessage("gaterepair-gateFound2")
 
   storage.stage = 3
