@@ -52,6 +52,13 @@ function requiredPower()
 	return config.getParameter("isn_requiredPower") or 0
 end
 
+--Returns active seed when tray is removed from world, much like how plants work.
+function die()
+	if storage.currentseed ~= nil then
+		world.spawnItem(storage.currentseed, entity.position())
+	end
+end
+
 --Updates the state of the object.
 function update(dt)
 	if deltaTime > 1 then
