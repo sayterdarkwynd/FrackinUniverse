@@ -50,11 +50,11 @@ end
 function update(dt)
   self.state:update(dt)
 
-  -- FU
-    if player.hasItem({name = "statustablet", count = 1}) and storage.stage < 5 then 
-      self.gateUid = "ancientgate2"
-    end
-    
+
+  if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 then 
+    self.gateUid = "ancientgate2"
+  end
+  
   -- Skip ahead if the gate is already active 
   if storage.stage < 5 and gateActive() then
     storage.stage = 5
@@ -191,6 +191,7 @@ function repairGate()
     -- Go back to last stage if player loses core fragments
     if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       storage.stage = 3
+      self.gateUid = "ancientgate2"
       self.state:set(self.stages[storage.stage])
     end
 
