@@ -26,7 +26,7 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "fu_growingtray.lua","/objects/isn_sharedobjectscripts.lua" ],
+  "scripts" : [ "/objects/isn_unifiedgrowingtray.lua","/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 500,
 
   "animation" : "fu_growingtray.animation",
@@ -40,44 +40,61 @@
   "inputNodes" : [ [1, 1] ],
   "outputNodes" : [ [1, 0] ],
   
-  // base rate of growth outside of code.
-  // Went with double since the common growth time of plants is around 40 (low side) for each phase.
-  // original code had a growth time of 30.
-  "isn_growthPerTick" : 2,
+  //"isn_growthCap" : 30,
+  //Balancing note: The value above is the old number of growth to complete to be finished.
+  //but the old code also only grew 1 point every 8 seconds or so.
+  //New lua code grows however much since the last update.
+  //So old code plants took about 240 seconds to grow.
+  //New code, on average plants have about 150-200 growth points.
+  //Went with 1 since that puts things somewhat close to how old code worked.
+  
+  // Base rate of growth.  This is additive.
+  "isn_growthPerSecond" : 1,
   
   "isn_waterInputs" : {
-	// Altered these stats somewhat as the old mechanic of fluid use per tick isn't active.
-	// Because of that opted to have different fluids increase the growth speed as well as still
-	// retaining fluid values.  This is to aid in balance tuning without code editing.
-	// Most seeds have 3 growth phases and so would use 3 fluid units.
+    // Old values are remarked for reference when balancing.
+	// Altered these stats somewhat as the old mechanic of 'water' use per tick isn't active.
+	// Because of that opted to have different items increase the growth speed as well as still
+	// retaining 'water' values.  This is to aid in balance tuning without code editing.
+	// Most seeds have 2 growth phases and so would use 2 'water' units.
 	// Most plants in dirt use 1 water per phase.
     
-	// [fluid value, growth boost]
+	// ['water' value, growth boost]
+	//"waterbucket" : 8,
 	"waterbucket" : [1,0],
+    //"liquidwater" : 8,
     "liquidwater" : [1,0],
+    //"swampwater" : 9,
     "swampwater" : [2,0],
+    //"liquidblood" : 9,
     "liquidblood" : [2,1],
+    //"pus" : 9,
     "pus" : [2,2],
+    //"liquidalienjuice" : 10,
     "liquidalienjuice" : [3,1],
+    //"liquidorganicsoup" : 11,
     "liquidorganicsoup" : [4,1],
+    //"liquidaether" : 12,
     "liquidaether" : [5,1],
+    //"liquidhealing" : 15
     "liquidhealing" : [8,3]
   },
 
   "isn_fertInputs" : {
-	//Tweaked this some to use a similar mechanic to new fluid.
+	//Tweaked this some to use a similar mechanic to new 'water'.
 	//Fertilizer is consumed once at the start of a plant's growth cycle.
 	//Also consumed again when a plant's growth phase resets (perennial instead of annual).
+    //Used the remarks near the original lines to fill in the blanks.
 	
-	//[fluid use, growth boost, additional yield]
+	//['water' use, growth boost, additional yield, additional seeds taken]
 	
 	//+1 fertilization speed, requires 2 liquid
 	"rottenfood" : [2,1,0],
 	"fu_mulch" : [2,1,0],
 
 	//+1 fertilization yield, requires 2 liquid
-	"poop" : [2,1,1],
-	"agaranichor" : [2,1,1],
+	"poop" : [2,0,1],
+	"agaranichor" : [2,0,1],
 	
 	//+2 fertilization yield, +1 speed, requires 2 liquid
 	"liquidelderfluid" : [2,1,2],
