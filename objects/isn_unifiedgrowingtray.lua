@@ -75,8 +75,6 @@ function update(dt)
 		if isn_doSeedIntake() ~= true then return end
 	end
 	
-	sb.logInfo("growth: %s, stage %s next fluid: %s", storage.growth, storage.currentStage, storage.stage[storage.currentStage].val)
-	
 	local growthmod = dt
 	if requiredPower() > 0 then
 		if power.consume(requiredPower()*dt) then
@@ -107,7 +105,6 @@ function update(dt)
 	
 	--Compute growth (we aren't dry right now)
 	storage.growth = storage.growth + ((storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod)
-	sb.logInfo("growthRate: %s", storage.growthRate)
 	
 	--Check if we should try to use more fluid due to growth.
 	--Since we only need to watch for transition from stage 1 to stage 2
