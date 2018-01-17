@@ -2,10 +2,10 @@
   "id" : "create_matterassembler2",
   "prerequisites" : [ ],
   "title" : "Gathering necessary parts",
-  "text" : "To properly repair this ^green;Ambulon Battery^reset; we only need some ^orange;wire^reset;! Make some in your ^orange;Machining Table^reset;. I should be able to jury-rig a working cell from just that!",
-  "completionText" : "A cavern somewhere on this world is emitting ^orange;archaic energy^reset;. Bring the ^green;Ambulon Battery^reset; with you to the ^orange;source of the energy surge^reset;. You'll likely still need a catalyst such as ^orange;Core Fragments^reset; to activate it.",
+  "text" : "Using your ^orange;Tricorder^reset; you can ^green;right-click^reset; to open up a Quest interface. I suggest following some of the tasks I have provided. Try selecting the quest asking for ^orange;wire^reset;!",
+  "completionText" : "A cavern somewhere on this world is emitting ^orange;archaic energy^reset; that likely has all you need to get out of here! I suggest investigating once you are better equipped.",
   "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "precursorbattery", 1 ] ] ],
+  "rewards" : [ [ [ "sciencebrochure", 1 ], [ "glass", 2 ] ] ],
   "speaker" : "questGiver",
   
   "updateDelta" : 10,
@@ -24,8 +24,7 @@
       "questStarted" : "questGiver",
       "questComplete" : "questGiver"
     },
-    
-    "followUp" : "create_matterassembler3",
+
     "requireTurnIn" : true,
 
     "turnInDescription" : "Bring the ^green;Wire^reset; to ^orange;Vinalisj^reset;.",
@@ -35,12 +34,12 @@
       "target" : "questGiver"
     },
     
-    "conditions" : [ 
+    "conditions" : [
       {
         "type" : "gatherItem",
         "itemName" : "wire",
         "count" : 9,
-        "consume" : true
+        "consume" : false
       }
     ]
   }
