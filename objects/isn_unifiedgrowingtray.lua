@@ -18,30 +18,46 @@ function init()
 	storage.resetStage = storage.resetStage or 0		--Stage to jump back to post harvest (perennial)
 	storage.hasFluid = storage.hasFluid or false		--If false soil is dry and no further growth.
 	storage.hasTree = storage.hasTree or false			--Used to track if seed data is sapling/tree.
-	--Checks which cause reset of growth data if failed
-	if storage.currentseed ~= nil and storage.harvestPool ~= nil then
-		--Storage.stages is the upper bound of the stage array
-		if storage.stages == nil then isn_readSeedData() end
-		--If Starbound stored stage keys as tostring(number), copy them back to keys of number.
-		if type(storage.stage["1"]) == "table" then storage.stage[1] = storage.stage["1"] end
-		if type(storage.stage["2"]) == "table" then storage.stage[2] = storage.stage["2"] end
-		--storage.stage is information about each stage of the plant (only 1 and 2 are important).
-		if type(storage.stage) ~= "table" then isn_readSeedData() end
-		if type(storage.stage[1]) ~= "table" or
-			type(storage.stage[2]) ~= "table" then isn_readSeedData() end
-		--storage.stage[].min and storage.stage[].max are the range of times for a given stage.
-		if storage.stage[1].min == nil or storage.stage[1].max == nil or
-			storage.stage[2] == nil or storage.stage[2].max == nil then isn_readSeedData() end
-		--storage.stage[].val is how long the current plant takes to reach the next stage.
-		if storage.stage[1].val == nil or storage.stage[2].val == nil or
-			storage.growthCap == nil then isn_genGrowthData() end
-	end
 	
 	if storage.activeConsumption == nil then storage.activeConsumption = false end
 	
 	storage.seedslot = 1
 	storage.waterslot = 2
 	storage.fertslot = 3
+	
+	--Checks which cause reset of growth data if failed, plased at end so we can return
+	if storage.currentseed ~= nil and storage.harvestPool ~= nil then
+		--Storage.stages is the upper bound of the stage array
+		if storage.stages == nil then
+			if isn_readSeedData() == false then
+				storage.currentseed = nil
+				return
+			end
+		end
+		--storage.stage is information about each stage of the plant.
+		if type(storage.stage) ~= "table" then
+			if isn_readSeedData() == false then
+				storage.currentseed = nil
+				return
+			end
+		end
+		--If Starbound stored stage keys as tostring(number), copy them back to keys of number.
+		for i = 1, storage.stages do
+			if type(storage.stage[tostring(i)]) == "table" then
+				storage.stage[i] = storage.stage[tostring(i)]
+			end
+			if type(storage.stage[i]) ~= table then isn_readSeedData() end
+			--storage.stage[].min and storage.stage[].max are the range of times for a given stage.
+			if storage.stage[i].min == nil or storage.stage[i].max == nil then
+				if isn_readSeedData() == false then
+					storage.currentseed = nil
+					return
+				end
+			end
+			--storage.stage[].val is how long the current plant takes to reach the next stage.
+			if storage.stage[i].val == nil then isn_genGrowthData() end
+		end
+	end
 end
 
 --Config checkers
@@ -107,11 +123,15 @@ function update(dt)
 	storage.growth = storage.growth + ((storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod)
 	
 	--Check if we should try to use more fluid due to growth.
-	--Since we only need to watch for transition from stage 1 to stage 2
-	-- this is a lot simpler than it would need to be for more than 1 watch point.
-	if storage.currentStage == 1 and storage.growth >= storage.stage[1].val then
-		storage.hasFluid = isn_doFluidConsume()
-		storage.currentStage = storage.currentStage + 1
+	if storage.currentStage < storage.stages then
+		--multiple stages might have happened, make sure we use apt fluid before resuming flow.
+		while true do
+			if storage.currentStage >= storage.stages then break end
+			if storage.growth < storage.stage[storage.currentStage].val then break end
+			if storage.hasFluid == false then break end
+			storage.hasFluid = isn_doFluidConsume()
+			storage.currentStage = storage.currentStage + 1
+		end
 	end
 	
 	--If the above fluid use left us dry stop here (don't output items) and try again later.
@@ -210,7 +230,7 @@ function isn_readSeedData()
 	local index = 1
 	while seedConfig.stages[index] ~= nil do
 		local curStage = seedConfig.stages[index]
-		if type(curStage.duration) == "table" and index <= 2 then
+		if type(curStage.duration) == "table" then
 			storage.stages = index
 			local stage = {}
 			stage.min = curStage.duration[1] or 10
@@ -218,7 +238,7 @@ function isn_readSeedData()
 			storage.stage[index] = stage
 		else
 			if curStage.harvestPool ~= nil then storage.harvestPool = curStage.harvestPool end
-			if curStage.resetToStage ~= nil then storage.resetStage = curStage.resetToStage end
+			if curStage.resetToStage ~= nil then storage.resetStage = curStage.resetToStage + 1 end
 			if curStage.tree ~= nil then 
 				if curStage.tree == true then
 					if isn_readSaplingData() == false then return false end
@@ -285,7 +305,6 @@ Notes:
 ]]--
 function isn_genGrowthData(initStage)
 	if initStage == nil then initStage = 1 end
-	local maxStage = math.min(2, storage.stages)
 	--Make sure some things make sense for a perennial, if not act like it's annual
 	if initStage > storage.stages then
 		--maybe toss something to the log...?
@@ -295,7 +314,7 @@ function isn_genGrowthData(initStage)
 	storage.currentStage = initStage
 	storage.growthCap = 0
 	local index = initStage
-	while index <= maxStage do
+	while index <= storage.stages do
 		local stage = storage.stage[index]
 		if type(stage) == nil then return false end
 		storage.growthCap = storage.growthCap + math.random(stage.min, stage.max)
