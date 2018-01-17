@@ -221,22 +221,19 @@ function checkMate()
   -- we see if the creature can lay eggs here
   self.randChance = math.random(100)
   self.eggType = config.getParameter("eggType")	
-  
-  if storage.mateTimer <= 0.1 then
-    animator.playSound("harvest")
-    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-  end
-  
+
   if storage.mateTimer <= 0 and self.randChance <= 0 and storage.happiness >=70 then 
     if storage.happiness == 100 then  -- they are happy, and produce more eggs, and can mate again sooner than unhappy animals
 	    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
 	    storage.mateTimer = 40  -- full happiness pets mate sooner
-	    animator.playSound("deathPuff")
+	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
+	    animator.playSound("harvest")
 
     else
 	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
 	    storage.mateTimer = config.getParameter("mateTime")
-	    animator.playSound("deathPuff")	    
+	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
+	    animator.playSound("harvest")	    
     end
   end 
   
