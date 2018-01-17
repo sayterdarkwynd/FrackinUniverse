@@ -218,7 +218,7 @@ function isn_readSeedData()
 			storage.stage[index] = stage
 		else
 			if curStage.harvestPool ~= nil then storage.harvestPool = curStage.harvestPool end
-			if curStage.resetToStage ~= nil then storage.resetStage = curStage.resetToStage + 1 end
+			if curStage.resetToStage ~= nil then storage.resetStage = curStage.resetToStage end
 			if curStage.tree ~= nil then 
 				if curStage.tree == true then
 					if isn_readSaplingData() == false then return false end
@@ -312,10 +312,12 @@ function isn_doRecyclePlant()
 	if storage.hasTree == true then return isn_doSeedIntake() end
 	local seed = isn_readContainerSeed()
 	--If the seed in the seed slot isn't what's being grown now, re-init growth.
-	if seed ~= nil and storage.currentseed.name ~= seed.name then
-		--give the perennial seed back before swapping plants
-		fu_sendOrStoreItems(0, storage.currentseed, {0, 1, 2})
-		return isn_doSeedIntake()
+	if seed ~= nil then
+		if storage.currentseed.name ~= seed.name then
+			--give the perennial seed back before swapping plants
+			fu_sendOrStoreItems(0, storage.currentseed, {0, 1, 2})
+			return isn_doSeedIntake()
+		end
 	end
 	--If the current plant isn't perennial, re-init growth.
 	if storage.resetStage < 1 then return isn_doSeedIntake() end
