@@ -1,9 +1,9 @@
 {
   "id" : "create_matterassembler3",
-  "prerequisites" : [ ],
+  "prerequisites" : [ "create_matterassembler2" ],
   "title" : "Promises",
-  "text" : "Best of luck in your travels, friend! When you can, check out the ^green;Science Outpost^reset; to explore your scientific potential in greater depth. We could use bright minds like yours on the team!",
-  "completionText" : "Best of luck in your travels, friend! When you can, check out the ^green;Science Outpost^reset; to explore your scientific potential in greater depth. We could use bright minds like yours on the team!",
+  "text" : "When you can, check out the ^green;Science Outpost^reset; to explore your scientific potential in greater depth. We could use bright minds like yours on the team!",
+  "completionText" : "You can access the ^green;Science Outpost^reset; at any time via your ships SAIL.",
   "moneyRange" : [0, 0],
   "rewards" : [ [ [ "sciencebrochure", 1 ] ] ],
   "speaker" : "questGiver",
@@ -26,8 +26,6 @@
     },
 
     "requireTurnIn" : false,
-
-    "turnInDescription" : "Escape the planet!",
 
     "initialCompassTarget" : {
       "targetType" : "parameter",

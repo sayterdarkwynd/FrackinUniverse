@@ -1,11 +1,11 @@
 {
   "id" : "create_matterassembler2",
-  "prerequisites" : [ ],
+  "prerequisites" : [ "create_matterassembler" ],
   "title" : "Ambulary?",
-  "text" : "I should be able to jury-rig a working ^orange;Ambulon Batery^reset; without much effort using about ^orange;9 Wire^reset;. Hook me up with that, and we can get you out of here via the ^orange;dark caverns^reset; within a nearby ^green;surface mine^reset;.",
-  "completionText" : "Perfect. A jurry-rigged Ambulon Battery! This should open the cavern! It's emitting ^orange;archaic energy^reset; that can only mean one thing: ^orange;Portal^reset;!",
+  "text" : "You can select a wide variety of quests through your ^orange;Tricorder^reset;. Use the ^green;Right-Click^reset; function to find and complete the quest to create ^orange;wire^reset;/",
+  "completionText" : "Pretty simple, right? Now, perhaps you should investigate the ^orange;archaic energy source^reset; mentioned in that broadcast. There's a ^green;Mine somewhere on the planets surface^reset; you should check.",
   "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "precursorbattery", 1 ] ] ],
+  "rewards" : [ [ [ "glass", 2 ],[ "sciencebrochure", 1 ] ] ],
   "speaker" : "questGiver",
   
   "updateDelta" : 10,
@@ -25,7 +25,6 @@
       "questComplete" : "questGiver"
     },
     
-    "followUp" : "create_matterassembler3",
     "requireTurnIn" : true,
 
     "turnInDescription" : "Bring the ^green;Wire^reset; to ^orange;Vinalisj^reset;.",
