@@ -2,11 +2,25 @@
   {
     "op": "replace",
     "path": "/scriptConfig/descriptions/collectRepairItem",
-    "value": "^orange;Enter the Caves^reset; and collect ^orange;Core Fragments^reset;"
+    "value": "Locate the ^orange;Energy Source^reset; in the ^orange;Cavern^reset;."
   },
   {
     "op": "replace",
     "path": "/scriptConfig/descriptions/findGate",
-    "value": "Find the ^orange;Welcoming Beacon^reset;"
+    "value": "Find the source of the ^orange;Welcoming Beacon^reset;."
+  },
+  
+  {
+    "op": "add",
+    "path": "/scriptConfig/outpostBookmark2",
+    "value": {
+      "bookmarkName": "Science Outpost",
+      "targetName": "",
+      "icon": "outpost",
+      "target": [
+        "instanceworld:scienceoutpost",
+        "scienceoutpost"
+      ]
+    }
   }
 ]

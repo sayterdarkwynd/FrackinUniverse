@@ -2,10 +2,10 @@
   "id" : "create_matterassembler2",
   "prerequisites" : [ "create_matterassembler" ],
   "title" : "Ambulary?",
-  "text" : "You can select a wide variety of quests through your ^orange;Tricorder^reset;. Use the ^green;Right-Click^reset; function to find and complete the quest to create ^orange;wire^reset;.",
-  "completionText" : "Pretty simple, right? Now, perhaps you should investigate the ^orange;archaic energy source^reset; mentioned in that broadcast. There's a ^green;Mine somewhere on the planets surface^reset; you should check.",
+  "text" : "Use your ^orange;Machining Table^reset; now, and create ^orange;9 Wire^reset;. We'll need it to fix your ships Transducer Coil!",
+  "completionText" : "I can jury-rig a fix with these wires, thanks. Now, perhaps you could investigate the ^orange;archaic energy source^reset; I've been detecting recently. I need to know what it is!",
   "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "glass", 2 ],[ "sciencebrochure", 1 ] ] ],
+  "rewards" : [ [ [ "glass", 2 ] ] ],
   "speaker" : "questGiver",
   
   "updateDelta" : 10,
@@ -33,6 +33,8 @@
       "targetType" : "parameter",
       "target" : "questGiver"
     },
+    
+    "associatedMission" : "scienceoutpostfu",
     
     "conditions" : [
       {
