@@ -131,8 +131,6 @@ function update(dt)
 		animator.setAnimationState("growth", "0")
 	end
 	
-	sb.logInfo("[%s] growth %s/%s stage %s", storage.currentseed.name, storage.growth, storage.growthCap, storage.currentStage)
-	
 	--Check if a previous fluid use failed...
 	if storage.hasFluid == false then storage.hasFluid = isn_doFluidConsume() end
 	if storage.hasFluid ~= true then return end	--Failed again?  No growth nor outputs.
@@ -140,7 +138,7 @@ function update(dt)
 	storage.activeConsumption = true
 	
 	--Compute growth (we aren't dry right now)
-	storage.growth = storage.growth + ((storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod) + 500
+	storage.growth = storage.growth + ((storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod)
 	
 	--Check if we should try to use more fluid due to growth.
 	if storage.currentStage < storage.stages then
@@ -323,9 +321,7 @@ end
 function isn_genGrowthData(initStage)
 	if initStage == nil then initStage = 1 end
 	--Make sure some things make sense for a perennial, if not act like it's annual
-	sb.logInfo("[genGrowthData] initStage: %s stages %s", initStage, storage.stages)
 	if initStage > storage.stages then
-		sb.logInfo("[genGrowthData] initStage didn't make sense so reset it.")
 		--maybe toss something to the log...?
 		initStage = 1
 		storage.resetStage = 0
@@ -353,9 +349,7 @@ function isn_doRecyclePlant()
 	local seed = isn_readContainerSeed()
 	--If the seed in the seed slot isn't what's being grown now, re-init growth.
 	if seed ~= nil then
-		sb.logInfo("[Recycle] Found a seed in slot: %s", seed)
 		if storage.currentseed.name ~= seed.name then
-			sb.logInfo("[Recycle] It's different then current seed: %s", storage.currentseed)
 			--give the perennial seed back before swapping plants
 			local count = storage.seedUse or cSeedUse()
 			local descriptor = {name = storage.currentseed.name, count = count, data={}}
@@ -365,10 +359,8 @@ function isn_doRecyclePlant()
 	end
 	--If the current plant isn't perennial, re-init growth.
 	if storage.resetStage < 1 then
-		sb.logInfo("[%s] is annual: %s", storage.currentseed.name, storage.resetStage)
 		return isn_doSeedIntake()
 	end
-	sb.logInfo("[%s] is perennial: %s", storage.currentseed.name, storage.resetStage)
 	
 	storage.growth = 0
 	
