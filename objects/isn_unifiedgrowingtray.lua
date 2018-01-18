@@ -6,14 +6,17 @@ function init()
 	transferUtil.init()
 	object.setInteractive(true)
 	
+	--Variables who's state is configurable.
+	storage.growthRate = storage.growthRate or cGrowthRate()	--Amount of growth per second
+	storage.seedUse = storage.seedUse or cSeedUse()				--Number of seeds to use per cycle
+	storage.yield = storage.yield or cYield()					--harvestPool picks when grown
+	storage.fluidUse = storage.fluidUse or cFluidUse()			--Amount of fluid to use per stage
+	
 	--Variables who's state are simple and can use values picked from nowhere safely.
-	storage.growth = storage.growth or 0				--Plant growth completed
-	storage.growthRate = storage.growthRate or 1		--Amount of growth per second
+	storage.growth = storage.growth or 0 				--Plant growth completed
 	storage.growthFluid = storage.growthFluid or 0		--Growth boost from fluids
 	storage.growthFert = storage.growthFert or 0		--Growth boost from fertilizer
-	storage.yield = storage.yield or 1					--harvestPool picks when grown
 	storage.fluid = storage.fluid or 0					--Stored fluid
-	storage.fluidUse = storage.fluidUse or 1			--Amount of fluid to use per stage
 	storage.currentStage = storage.currentStage or 1	--Current plant stage
 	storage.resetStage = storage.resetStage or 0		--Stage to jump back to post harvest (perennial)
 	storage.hasFluid = storage.hasFluid or false		--If false soil is dry and no further growth.
@@ -25,7 +28,8 @@ function init()
 	storage.waterslot = 2
 	storage.fertslot = 3
 	
-	--Checks which cause reset of growth data if failed, plased at end so we can return
+	--Checks which cause reset of seed/growth data if failed,
+	--placed at end so we can return without breaking any other init stuff.
 	if storage.currentseed ~= nil and storage.harvestPool ~= nil then
 		--Storage.stages is the upper bound of the stage array
 		if storage.stages == nil then
@@ -61,17 +65,31 @@ function init()
 end
 
 --Config checkers
-function handlesSaplings()
+function cHandlesSaplings()
 	return config.getParameter("isn_growSaplings") or false
 end
-function requiredPower()
+function cRequiredPower()
 	return config.getParameter("isn_requiredPower") or 0
 end
+function cGrowthRate()
+	return config.getParameter("isn_baseGrowthPerSecond") or 4
+end
+function cSeedUse()
+	return config.getParameter("isn_defaultSeedUse") or 4
+end
+function cYield()
+	return config.getParameter("isn_baseYields") or 4
+end
+function cFluidUse()
+	return config.getParameter("isn_defaultWaterUse") or 4
+end
 
---Returns active seed when tray is removed from world, much like how plants work.
+--Returns active seed when tray is removed from world, much like how plants
+--work.
 function die()
 	if storage.currentseed ~= nil then
-		world.spawnItem(storage.currentseed, entity.position())
+		local count = storage.seedUse or cSeedUse()
+		world.spawnItem(storage.currentseed, entity.position(), count)
 	end
 end
 
@@ -92,8 +110,8 @@ function update(dt)
 	end
 	
 	local growthmod = dt
-	if requiredPower() > 0 then
-		if power.consume(requiredPower()*dt) then
+	if cRequiredPower() > 0 then
+		if power.consume(cRequiredPower()*dt) then
 			animator.setAnimationState("powlight", "on")
 		else
 			growthmod = growthmod * 0.434782609
@@ -113,6 +131,8 @@ function update(dt)
 		animator.setAnimationState("growth", "0")
 	end
 	
+	sb.logInfo("[%s] growth %s/%s stage %s", storage.currentseed.name, storage.growth, storage.growthCap, storage.currentStage)
+	
 	--Check if a previous fluid use failed...
 	if storage.hasFluid == false then storage.hasFluid = isn_doFluidConsume() end
 	if storage.hasFluid ~= true then return end	--Failed again?  No growth nor outputs.
@@ -120,7 +140,7 @@ function update(dt)
 	storage.activeConsumption = true
 	
 	--Compute growth (we aren't dry right now)
-	storage.growth = storage.growth + ((storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod)
+	storage.growth = storage.growth + ((storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod) + 500
 	
 	--Check if we should try to use more fluid due to growth.
 	if storage.currentStage < storage.stages then
@@ -166,7 +186,8 @@ function update(dt)
 	
 end
 
---Updates internal fluid levels and modifies a growth variable depending on liquid in slot.
+--Updates internal fluid levels and modifies a growth variable depending on
+--liquid in slot.
 function isn_doWaterIntake()
 	local contents = world.containerItems(entity.id())
 	local water = contents[storage.waterslot]
@@ -191,8 +212,8 @@ end
 --Attempts to use up some fluid
 function isn_doFluidConsume()
 	if storage.fluid < storage.fluidUse then
-		--Not enough internal fluid to keep growing, attempt to consume some liquid.
-		--May need to consume multiple liquids to get fluid level high enough.
+		--Not enough internal fluid to keep growing, attempt to consume an item.
+		--May need to consume multiple items to get fluid level high enough.
 		while (storage.fluid < storage.fluidUse) do
 			if isn_doWaterIntake() == false then return false end
 		end
@@ -210,11 +231,12 @@ function isn_readContainerSeed()
 	--Reused the validity check here as it's useful to know if the seed is valid in almost every case.
 	local seedConfig = root.itemConfig(seed).config
 	if seedConfig.objectType ~= "farmable" then return nil end
-	if seedConfig.objectName == "sapling" and handlesSaplings() ~= true then return nil end
+	if seedConfig.objectName == "sapling" and cHandlesSaplings() ~= true then return nil end
 	return seed
 end
 
---Reads the currentseed's data.  Return false if there was a problem with the seed/data.
+--Reads the currentseed's data.  Return false if there was a problem with the
+--seed/data.
 function isn_readSeedData()
 	if storage.currentseed == nil then return false end
 	local seedConfig = root.itemConfig(storage.currentseed).config
@@ -252,7 +274,8 @@ function isn_readSeedData()
 	return true
 end
 
---Reads sapling data and does minimal verification that we indeed have a valid sapling.
+--Reads sapling data and does minimal verification that we indeed have a valid
+--sapling.
 function isn_readSaplingData()
 	if type(storage.currentseed.parameters) ~= "table" then return false end
 	local stemType = storage.currentseed.parameters.stemName
@@ -295,18 +318,14 @@ function isn_genSaplingDrops()
 	return drops
 end
 
---[[
-Generates growth data to tell when a plant is ready for harvest and when it uses fluid.
-Notes:
--As a rule plants only have 2 growth stages.  Perennial plants should have a 3rd stage but
- not always (some mods skipped the data).  This stage is basically death stage but doesn't
- seem to be used.  Either way even perennial plants are harvestable after the 3rd stage and
- that's what matters.
-]]--
+--Generates growth data to tell when a plant is ready for harvest and when it
+--needs to be watered.
 function isn_genGrowthData(initStage)
 	if initStage == nil then initStage = 1 end
 	--Make sure some things make sense for a perennial, if not act like it's annual
+	sb.logInfo("[genGrowthData] initStage: %s stages %s", initStage, storage.stages)
 	if initStage > storage.stages then
+		sb.logInfo("[genGrowthData] initStage didn't make sense so reset it.")
 		--maybe toss something to the log...?
 		initStage = 1
 		storage.resetStage = 0
@@ -325,33 +344,55 @@ function isn_genGrowthData(initStage)
 end
 
 --Init perennial plants (regrow stage)
---If the plant isn't perennial or there is a different (valid) seed in the seed slot, start from scratch.
+--If the plant isn't perennial or there is a different (valid) seed in the seed
+--slot, start from scratch.
 function isn_doRecyclePlant()
 	--Trees always use new seeds...
 	if storage.hasTree == true then return isn_doSeedIntake() end
+	
 	local seed = isn_readContainerSeed()
 	--If the seed in the seed slot isn't what's being grown now, re-init growth.
 	if seed ~= nil then
+		sb.logInfo("[Recycle] Found a seed in slot: %s", seed)
 		if storage.currentseed.name ~= seed.name then
+			sb.logInfo("[Recycle] It's different then current seed: %s", storage.currentseed)
 			--give the perennial seed back before swapping plants
-			fu_sendOrStoreItems(0, storage.currentseed, {0, 1, 2})
+			local count = storage.seedUse or cSeedUse()
+			local descriptor = {name = storage.currentseed.name, count = count, data={}}
+			fu_sendOrStoreItems(0, descriptor, {0, 1, 2})
 			return isn_doSeedIntake()
 		end
 	end
 	--If the current plant isn't perennial, re-init growth.
-	if storage.resetStage < 1 then return isn_doSeedIntake() end
+	if storage.resetStage < 1 then
+		sb.logInfo("[%s] is annual: %s", storage.currentseed.name, storage.resetStage)
+		return isn_doSeedIntake()
+	end
+	sb.logInfo("[%s] is perennial: %s", storage.currentseed.name, storage.resetStage)
 	
 	storage.growth = 0
 	
-	--Read config data
-	storage.growthRate = config.getParameter("isn_growthPerSecond")
-	--Generate growth data, pass the resetStage along to make sure we only re-grow from that stage.
-	isn_genGrowthData(storage.resetStage)
-	--Set how many picks of the pool we get.
-	storage.yield = 1
-	--Consume some fertilizer (which modifies some stats)
-	isn_doFertIntake()
-	--Consume some fluid (which modifies some stats), order matters as fertilizer changes fluid needs.
+	--set defaults that fertilizer can change or modify
+	storage.growthRate = cGrowthRate()
+	storage.fluidUse = cFluidUse()
+	storage.seedUse = cSeedUse()
+	storage.yield = cYield()
+	
+	local fertName = isn_doFertProcess()
+	
+	--Generate growth data.
+	if isn_genGrowthData() == false then
+		storage.currentseed = nil
+		storage.harvestPool = nil
+		return false
+	end
+	--All state tests passed and we are ready to continue growing, consume some items.
+	
+	--Consume a unit of fertilizer.
+	if fertName ~= nil then
+		world.containerConsume(entity.id(), {name = fertName, count = 1, data={}})
+	end
+	--Consume some fluid.
 	storage.hasFluid = isn_doFluidConsume()
 	
 	return true
@@ -372,46 +413,68 @@ function isn_doSeedIntake()
 		return false 
 	end
 	
-	--Read config data
-	storage.growthRate = config.getParameter("isn_growthPerSecond")
+	--set defaults that fertilizer can change or modify
+	storage.growthRate = cGrowthRate()
+	storage.fluidUse = cFluidUse()
+	storage.seedUse = cSeedUse()
+	storage.yield = cYield()
+	
+	--Since we might need to consume multiple seeds we delay fertilizer USE
+	--until we know we have enough resources to proceed.
+	--Otherwise we could end up consuming all the fertilizer without growing anything.
+	local fertName = isn_doFertProcess()
+	
+	--verify we have enough seeds to proceed.
+	if storage.currentseed.count < storage.seedUse then
+		storage.currentseed = nil
+		storage.harvestPool = nil
+		return false
+	end
+	
 	--Generate growth data.
 	if isn_genGrowthData() == false then
 		storage.currentseed = nil
+		storage.harvestPool = nil
 		return false
 	end
-	--Set default of how many picks of the pool we get.
-	storage.yield = 1
-	--Consume some fertilizer (which modifies some stats)
-	isn_doFertIntake()
-	--Consume some fluid (which modifies some stats), order matters as fertilizer changes fluid needs.
+	--All state tests passed and we are ready to grow, consume some items.
+	
+	--Consume a unit of fertilizer.
+	if fertName ~= nil then
+		world.containerConsume(entity.id(), {name = fertName, count = 1, data={}})
+	end
+	--Consume some fluid.
 	storage.hasFluid = isn_doFluidConsume()
 	--Consume a seed.
-	world.containerConsume(entity.id(), {name = seed.name, count = 1, data={}})
+	world.containerConsume(entity.id(), {name = seed.name, count = storage.seedUse, data={}})
 	
 	return true
 end
 
---Consumes a unit of fertilizer and alters some variables based on what was consumed.
-function isn_doFertIntake()
+--Reads the current fertilizer slot and modifies growing state data based on
+--what is found there.
+--Returns nil if nothing to do, otherwise a string of the itemname to be used.
+function isn_doFertProcess()
 	local contents = world.containerItems(entity.id())
 	local fert = contents[storage.fertslot]
-	if fert == nil then return false end
+	if fert == nil then return nil end
 	storage.fluidUse = 1
 	storage.growthFert = 0
 	
 	for key, value in pairs(config.getParameter("isn_fertInputs")) do
 		if fert.name == key and type(value) == "table" then
-			local use, boost, yield = value[1], value[2], value[3]
+			local seeds, use, boost, yield = value[1], value[2], value[3], value[4]
 			if use == nil or boost == nil or yield == nil then
-				sb.logWarning("[fu_growingtray] Found valid fertilizer named %s however one of use (%s), boost (%s), or yield (%s) was invalid.", key, use, boost, yield)
-				return false
+				sb.logWarning("[fu_growingtray] Found valid fertilizer named %s however one of the following are invalid:", key)
+				sb.logWarning("                 use (%s), boost (%s), or yield (%s) was invalid.", seeds, use, boost, yield)
+				return nil
 			end
+			storage.seedUse = seeds
 			storage.fluidUse = use
 			storage.growthFert = boost
 			storage.yield = storage.yield + yield
-			world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
-			return true
+			return fert.name
 		end
 	end
-	return false
+	return nil
 end
