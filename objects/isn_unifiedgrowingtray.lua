@@ -2,6 +2,8 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 local deltaTime=0
+local fastForwardSeconds = 600 -- 10 minutes
+local maxFastForwardSeconds = 3600 -- 1 hour
 function init()
 	transferUtil.init()
 	object.setInteractive(true)
@@ -109,9 +111,29 @@ function update(dt)
 		if isn_doSeedIntake() ~= true then return end
 	end
 	
-	local growthmod = dt
+	--Figure out how long it's been since our last update.
+	local secondsThisUpdate = dt
+	if storage.lastWorldTime ~= nil then
+		secondsThisUpdate = world.time() - storage.lastWorldTime
+		if secondsThisUpdate < 0 then secondsThisUpdate = dt end
+	end
+	storage.lastWorldTime = world.time()
+	
+	--Don't allow infinite fast forward time.
+	if secondsThisUpdate > maxFastForwardSeconds then secondsThisUpdate = maxFastForwardSeconds end
+	
+	--Use this to fast forward in increments.  This is intentionally lossy since accuracy costs server load.
+	if secondsThisUpdate > fastForwardSeconds then
+		storage.lastWorldTime = storage.lastWorldTime - (secondsThisUpdate - fastForwardSeconds)
+		secondsThisUpdate = fastForwardSeconds
+	end
+	
+	--useful for debugging...
+	--sb.logInfo("[%s], growth %s/%s seconds %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
+	
+	local growthmod = secondsThisUpdate
 	if cRequiredPower() > 0 then
-		if power.consume(cRequiredPower()*dt) then
+		if power.consume(cRequiredPower()*secondsThisUpdate) then
 			animator.setAnimationState("powlight", "on")
 		else
 			growthmod = growthmod * 0.434782609
@@ -370,7 +392,18 @@ function isn_doRecyclePlant()
 	storage.seedUse = cSeedUse()
 	storage.yield = cYield()
 	
+	local oldSeedCount = storage.seedUse
 	local fertName = isn_doFertProcess()
+	if oldSeedCount > storage.seedUse then
+		--Give back seeds the new fertilizer doesn't need.
+		local descriptor = {name = storage.currentseed.name, count = (oldSeedCount - storage.seedUse), data={}}
+		fu_sendOrStoreItems(0, descriptor, {1, 2})
+	elseif oldSeedCount < storage.seedUse then
+		--Give back all the seeds and restart growth since we need more seeds.
+		local descriptor = {name = storage.currentseed.name, count = oldSeedCount, data={}}
+		fu_sendOrStoreItems(0, descriptor, {1, 2})
+		return isn_doSeedIntake()
+	end
 	
 	--Generate growth data.
 	if isn_genGrowthData() == false then
