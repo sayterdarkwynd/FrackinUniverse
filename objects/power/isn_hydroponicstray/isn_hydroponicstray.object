@@ -50,13 +50,13 @@
   
   //"isn_growthCap" : 100,
   //Balancing note: the value above is the old number to complete growth.
-  //Since the new code works about the same as the old for growth, about 8 growth
-  //completed per update.  that means about 12.5 updates to finish growing originally.
-  //since plants take around 150 to 200 growth now (depending on plant)
-  //going with growth rate of 1.5 (could also go with 2)
   
   //Amount of growth per second for this table.
   "isn_baseGrowthPerSecond" : 1.5,
+  
+  //Rate (as in multiplier) applied to growth when the tray is unpowered.
+  "isn_unpoweredGrowthRate" : 0.434782609,
+  //When printed (sb.logInfo()) shows as 0.434783 whether variable assigned or config read.
   
   //Balance note: The reason for the number 4 below is the graphic shows 4 plants growing.
   

@@ -87,6 +87,9 @@ end
 function cFluidUse()
 	return config.getParameter("isn_defaultWaterUse") or 4
 end
+function cUnpoweredGrowthRate()
+	return config.getParameter("isn_unpoweredGrowthRate") or 0.434782609
+end
 
 --Returns active seed when tray is removed from world, much like how plants
 --work.
@@ -136,23 +139,23 @@ function update(dt)
 		secondsThisUpdate = fastForwardSeconds
 	end
 	
-	--Adjust our fast forward time by available power...
-	local availPower = power.getTotalEnergy()
-	if powerReq * secondsThisUpdate > availPower and availPower >= minFastForwardSeconds * powerReq then
-		local pwrIncrement = availPower / powerReq
-		storage.lastWorldTime = storage.lastWorldTime - (secondsThisUpdate - pwrIncrement)
-		secondsThisUpdate = pwrIncrement
-	end
-	
 	--useful for debugging...
 	--sb.logInfo("[%s], growth %s/%s seconds %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
 	
 	local growthmod = secondsThisUpdate
 	if powerReq > 0 then
-		if power.consume(powerReq*secondsThisUpdate) then
+	--Adjust our fast forward time by available power...
+		local availPower = power.getTotalEnergy()
+		if powerReq * secondsThisUpdate > availPower and availPower >= minFastForwardSeconds * powerReq then
+			local pwrIncrement = availPower / powerReq
+			storage.lastWorldTime = storage.lastWorldTime - (secondsThisUpdate - pwrIncrement)
+			secondsThisUpdate = pwrIncrement
+			growthmod = secondsThisUpdate
+		end
+		if power.consume(powerReq * secondsThisUpdate) then
 			animator.setAnimationState("powlight", "on")
 		else
-			growthmod = growthmod * 0.434782609
+			growthmod = growthmod * cUnpoweredGrowthRate()
 			animator.setAnimationState("powlight", "off")
 		end
 	end
