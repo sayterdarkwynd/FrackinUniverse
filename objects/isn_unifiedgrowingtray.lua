@@ -144,8 +144,6 @@ function update(dt)
 		secondsThisUpdate = pwrIncrement
 	end
 	
-	sb.logInfo("power %s", power.getTotalEnergy())
-	
 	--useful for debugging...
 	--sb.logInfo("[%s], growth %s/%s seconds %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
 	
@@ -154,7 +152,6 @@ function update(dt)
 		if power.consume(powerReq*secondsThisUpdate) then
 			animator.setAnimationState("powlight", "on")
 		else
-			sb.logInfo("insufficient power...")
 			growthmod = growthmod * 0.434782609
 			animator.setAnimationState("powlight", "off")
 		end
