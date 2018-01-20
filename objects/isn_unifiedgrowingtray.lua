@@ -2,9 +2,11 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 local deltaTime=0
-local fastForwardSeconds = 600 -- 10 minutes
-local maxFastForwardSeconds = 3600 -- 1 hour
+local fastForwardSeconds = 600 -- Typical chunk to fast forward by, 10 minutes
+local maxFastForwardSeconds = 3600 -- Maximum total time allowed to fast forward, 1 hour
+local minFastForwardSeconds = 60 -- Minimum allowed time to fastforward before we just give up and let the power fail.
 function init()
+	if cRequiredPower() > 0 then power.init() end
 	transferUtil.init()
 	object.setInteractive(true)
 	
@@ -97,6 +99,8 @@ end
 
 --Updates the state of the object.
 function update(dt)
+	local powerReq = cRequiredPower()
+	if powerReq > 0 then power.update(dt) end
 	if deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
@@ -108,6 +112,10 @@ function update(dt)
 	
 	--Try to start growing if data indicates we aren't.
 	if storage.currentseed == nil or storage.harvestPool == nil then
+		--Clear the lastWorldTime so we don't get free fast forwards after not
+		--having a seed for an hour or so...
+		--We do this here and not in isn_doSeedIntake to preserve fast forward data.
+		storage.lastWorldTime = nil
 		if isn_doSeedIntake() ~= true then return end
 	end
 	
@@ -128,14 +136,25 @@ function update(dt)
 		secondsThisUpdate = fastForwardSeconds
 	end
 	
+	--Adjust our fast forward time by available power...
+	local availPower = power.getTotalEnergy()
+	if powerReq * secondsThisUpdate > availPower and availPower >= minFastForwardSeconds * powerReq then
+		local pwrIncrement = availPower / powerReq
+		storage.lastWorldTime = storage.lastWorldTime - (secondsThisUpdate - pwrIncrement)
+		secondsThisUpdate = pwrIncrement
+	end
+	
+	sb.logInfo("power %s", power.getTotalEnergy())
+	
 	--useful for debugging...
 	--sb.logInfo("[%s], growth %s/%s seconds %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
 	
 	local growthmod = secondsThisUpdate
-	if cRequiredPower() > 0 then
-		if power.consume(cRequiredPower()*secondsThisUpdate) then
+	if powerReq > 0 then
+		if power.consume(powerReq*secondsThisUpdate) then
 			animator.setAnimationState("powlight", "on")
 		else
+			sb.logInfo("insufficient power...")
 			growthmod = growthmod * 0.434782609
 			animator.setAnimationState("powlight", "off")
 		end
