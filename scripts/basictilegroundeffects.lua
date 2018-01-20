@@ -50,7 +50,7 @@ function update(dt)
       applyTileEffects()
       
       -- check if player gets Research randomly
-      if not self.researchTimer then self.researchTimer == 0 end
+      if not self.researchTimer then self.researchTimer = 0 end
       if self.researchTimer == 0 then
         checkResearchBonus()
         self.researchTimer = 100
