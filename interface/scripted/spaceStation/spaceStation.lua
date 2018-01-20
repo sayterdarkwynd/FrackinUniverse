@@ -1,5 +1,6 @@
-
+require "/scripts/researchGenerators.lua"
 require "/scripts/textTyper.lua"
+require "/scripts/researchGenerators.lua"
 
 function init()
 	self.data = root.assetJson("/interface/scripted/spaceStation/spaceStation.config")
@@ -1689,6 +1690,7 @@ function specialsTableInit()
 	else
 		writerInit(textData, textData[objectData.stationRace].tradingSpecialMax)
 		widget.setText("investRequired", "Fully upgraded!")
+		checkResearchBonus()
 		widget.setButtonEnabled("investButton", false)
 		widget.setButtonEnabled("investMax", false)
 		widget.setText("investAmount", "")
@@ -1715,7 +1717,7 @@ function invest()
 		widget.setButtonEnabled("investButton", false)
 		widget.setButtonEnabled("investMax", false)
 		widget.setText("investAmount", "")
-		
+		checkResearchBonus()
 		status.setStatusProperty("fuCharisma", status.statusProperty("fuCharisma", 0) + 1)
 	else
 		objectData.specialsTable.investing = 0
@@ -1739,6 +1741,7 @@ end
 function investMax()
 	objectData.specialsTable.investing = math.min(math.min(objectData.specialsTable.investRequired - objectData.specialsTable.invested, 99999), player.currency("money"))
 	widget.setText("investAmount", objectData.specialsTable.investing)
+	checkResearchBonus()
 end
 
 function investAmount(wd)

@@ -8,6 +8,7 @@ tileEffects = {}
 currentTile = {}
 collisionParams = {}
 
+require "/scripts/researchGenerators.lua"
 
 function init()
   tileMaterials()
@@ -47,6 +48,16 @@ function update(dt)
 
     if currentTile then
       applyTileEffects()
+      
+      -- check if player gets Research randomly
+      if not self.researchTimer then self.researchTimer == 0 end
+      if self.researchTimer == 0 then
+        checkResearchBonus()
+        self.researchTimer = 100
+      else
+        self.researchTimer = self.researchTimer - dt
+      end
+      
       --applyTileEffects(groundMat)
       softness = currentTile["softness"]
       --softness = self.matCheck[groundMat][9]
