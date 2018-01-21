@@ -154,8 +154,22 @@ function update(dt)
 		local deltaGrowth = (storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod
 		local newGrowth = storage.growth + deltaGrowth
 		if newGrowth > storage.stage[storage.currentStage].val then
-			local growthDif = newGrowth - storage.stage[storage.currentStage].val
-			local refundTime = (growthDif / deltaGrowth) * secondsThisUpdate
+			local refundTime
+			local growthDif
+			local failToStages = false
+			if newGrowth > storage.growthCap then
+				local stageDif = storage.stages - storage.currentStage
+				growthDif = newGrowth - storage.growthCap
+				local hasFluid = true
+				if stageDif > 0 then hasFluid = isn_doFluidConsume(stageDif) end
+				if not hasFluid then failToStages = true end
+			else
+				failToStages = true
+			end
+			if failToStages then
+				growthDif = newGrowth - storage.stage[storage.currentStage].val
+			end
+			refundTime = (growthDif / deltaGrowth) * secondsThisUpdate
 			storage.lastWorldTime = storage.lastWorldTime - refundTime
 			newGrowth = newGrowth - growthDif
 		end
@@ -230,11 +244,12 @@ function isn_doWaterIntake(fluidNeed)
 end
 
 --Attempts to use up some fluid
-function isn_doFluidConsume()
-	if storage.fluid < storage.fluidUse then
-		if not isn_doWaterIntake(storage.fluidUse - storage.fluid) then return false end
+function isn_doFluidConsume(multiplier)
+	local useFluid = multiplier and storage.fluidUse * multiplier or storage.fluidUse
+	if storage.fluid < useFluid then
+		if not isn_doWaterIntake(useFluid - storage.fluid) then return false end
 	end
-	storage.fluid = storage.fluid - storage.fluidUse
+	storage.fluid = storage.fluid - useFluid
 	return true
 end
 
