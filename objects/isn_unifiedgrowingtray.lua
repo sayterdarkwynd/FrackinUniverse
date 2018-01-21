@@ -6,7 +6,8 @@ local fastForwardSeconds = 600 -- Typical chunk to fast forward by, 10 minutes
 local maxFastForwardSeconds = 3600 -- Maximum total time allowed to fast forward, 1 hour
 local minFastForwardSeconds = 60 -- Minimum allowed time to fastforward before we just give up and let the power fail.
 function init()
-	if cRequiredPower() > 0 then power.init() end
+	self.requiredPower = config.getParameter("isn_requiredPower") or 0
+	if self.requiredPower > 0 then power.init() end
 	transferUtil.init()
 	object.setInteractive(true)
 	
@@ -36,15 +37,15 @@ function init()
 	--placed at end so we can return without breaking any other init stuff.
 	if storage.currentseed ~= nil and storage.harvestPool ~= nil then
 		--Storage.stages is the upper bound of the stage array
-		if storage.stages == nil then
-			if isn_readSeedData() == false then
+		if not storage.stages then
+			if not isn_readSeedData() then
 				storage.currentseed = nil
 				return
 			end
 		end
 		--storage.stage is information about each stage of the plant.
 		if type(storage.stage) ~= "table" then
-			if isn_readSeedData() == false then
+			if not isn_readSeedData() then
 				storage.currentseed = nil
 				return
 			end
@@ -56,14 +57,14 @@ function init()
 			end
 			if type(storage.stage[i]) ~= table then isn_readSeedData() end
 			--storage.stage[].min and storage.stage[].max are the range of times for a given stage.
-			if storage.stage[i].min == nil or storage.stage[i].max == nil then
-				if isn_readSeedData() == false then
+			if not (storage.stage[i].min and storage.stage[i].max) then
+				if not isn_readSeedData() then
 					storage.currentseed = nil
 					return
 				end
 			end
 			--storage.stage[].val is how long the current plant takes to reach the next stage.
-			if storage.stage[i].val == nil then isn_genGrowthData() end
+			if not storage.stage[i].val then isn_genGrowthData() end
 		end
 	end
 end
@@ -71,9 +72,6 @@ end
 --Config checkers
 function cHandlesSaplings()
 	return config.getParameter("isn_growSaplings") or false
-end
-function cRequiredPower()
-	return config.getParameter("isn_requiredPower") or 0
 end
 function cGrowthRate()
 	return config.getParameter("isn_baseGrowthPerSecond") or 4
@@ -94,7 +92,7 @@ end
 --Returns active seed when tray is removed from world, much like how plants
 --work.
 function die()
-	if storage.currentseed ~= nil then
+	if storage.currentseed then
 		local count = storage.seedUse or cSeedUse()
 		world.spawnItem(storage.currentseed, entity.position(), count)
 	end
@@ -102,8 +100,7 @@ end
 
 --Updates the state of the object.
 function update(dt)
-	local powerReq = cRequiredPower()
-	if powerReq > 0 then power.update(dt) end
+	if self.requiredPower > 0 then power.update(dt) end
 	if deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
@@ -114,24 +111,21 @@ function update(dt)
 	storage.activeConsumption = false
 	
 	--Try to start growing if data indicates we aren't.
-	if storage.currentseed == nil or storage.harvestPool == nil then
-		--Clear the lastWorldTime so we don't get free fast forwards after not
-		--having a seed for an hour or so...
-		--We do this here and not in isn_doSeedIntake to preserve fast forward data.
+	if not (storage.currentseed and storage.harvestPool) then
 		storage.lastWorldTime = nil
 		if isn_doSeedIntake() ~= true then return end
 	end
 	
 	--Figure out how long it's been since our last update.
 	local secondsThisUpdate = dt
-	if storage.lastWorldTime ~= nil then
+	if storage.lastWorldTime then
 		secondsThisUpdate = world.time() - storage.lastWorldTime
 		if secondsThisUpdate < 0 then secondsThisUpdate = dt end
 	end
 	storage.lastWorldTime = world.time()
 	
 	--Don't allow infinite fast forward time.
-	if secondsThisUpdate > maxFastForwardSeconds then secondsThisUpdate = maxFastForwardSeconds end
+	secondsThisUpdate = math.min(secondsThisUpdate,maxFastForwardSeconds)
 	
 	--Use this to fast forward in increments.  This is intentionally lossy since accuracy costs server load.
 	if secondsThisUpdate > fastForwardSeconds then
@@ -143,16 +137,16 @@ function update(dt)
 	--sb.logInfo("[%s], growth %s/%s seconds %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
 	
 	local growthmod = secondsThisUpdate
-	if powerReq > 0 then
-	--Adjust our fast forward time by available power...
+	if self.requiredPower > 0 then
+		--Adjust our fast forward time by available power...
 		local availPower = power.getTotalEnergy()
-		if powerReq * secondsThisUpdate > availPower and availPower >= minFastForwardSeconds * powerReq then
-			local pwrIncrement = availPower / powerReq
+		if self.requiredPower * secondsThisUpdate > availPower and availPower >= minFastForwardSeconds * self.requiredPower then
+			local pwrIncrement = availPower / self.requiredPower
 			storage.lastWorldTime = storage.lastWorldTime - (secondsThisUpdate - pwrIncrement)
 			secondsThisUpdate = pwrIncrement
 			growthmod = secondsThisUpdate
 		end
-		if power.consume(powerReq * secondsThisUpdate) then
+		if power.consume(self.requiredPower * secondsThisUpdate) then
 			animator.setAnimationState("powlight", "on")
 		else
 			growthmod = growthmod * cUnpoweredGrowthRate()
@@ -173,8 +167,10 @@ function update(dt)
 	end
 	
 	--Check if a previous fluid use failed...
-	if storage.hasFluid == false then storage.hasFluid = isn_doFluidConsume() end
-	if storage.hasFluid ~= true then return end	--Failed again?  No growth nor outputs.
+	if not storage.hasFluid then
+		storage.hasFluid = isn_doFluidConsume()
+		if not storage.hasFluid then return end --Failed again?  No growth nor outputs.
+	end
 	
 	storage.activeConsumption = true
 	
@@ -187,7 +183,7 @@ function update(dt)
 		while true do
 			if storage.currentStage >= storage.stages then break end
 			if storage.growth < storage.stage[storage.currentStage].val then break end
-			if storage.hasFluid == false then break end
+			if not storage.hasFluid then break end
 			storage.hasFluid = isn_doFluidConsume()
 			storage.currentStage = storage.currentStage + 1
 		end
@@ -195,19 +191,21 @@ function update(dt)
 	
 	--If the above fluid use left us dry stop here (don't output items) and try again later.
 	--Yes this may generate 1 more (unnecessary) growth spurt but it won't use more fluid.
-	if storage.hasFluid ~= true then return end
+	if not storage.hasFluid then return end
 	
 	--Check if we are grown.
 	if storage.growth >= storage.growthCap then
 		--Spawn our output...
 		for i = 1, storage.yield do
+			--Generate the items.
 			local itemDescriptors = nil
-			if storage.hasTree == true then
+			if storage.hasTree then
 				itemDescriptors = isn_genSaplingDrops()
 			elseif root.isTreasurePool(storage.harvestPool) then
 				itemDescriptors = root.createTreasure(storage.harvestPool, world.threatLevel())
 			end
-			if itemDescriptors ~= nil then
+			--'Drop' the items.
+			if type(itemDescriptors) == "table" then
 				for _, itemDescriptor in pairs(itemDescriptors) do
 					local mask = {0, 1, 2}
 					if itemDescriptor.name == storage.currentseed.name then
@@ -227,21 +225,23 @@ end
 
 --Updates internal fluid levels and modifies a growth variable depending on
 --liquid in slot.
-function isn_doWaterIntake()
+--optional arg fluidNeed is amount of fluid required to top up to.
+function isn_doWaterIntake(fluidNeed)
 	local contents = world.containerItems(entity.id())
 	local water = contents[storage.waterslot]
-	if water == nil then return false end
+	if not water then return false end
 	
 	for key, value in pairs(config.getParameter("isn_waterInputs")) do
 		if water.name == key and type(value) == "table" then
 			local amount, boost = value[1], value[2]
-			if amount == nil or boost == nil then
+			if not (amount and boost) or (amount and amount <= 0) then
 				sb.logWarning("[fu_growingtray] found valid fluid named %s however either amount (%s) or boost (%s) was invalid.", key, amount, boost)
 				return false
 			end
-			storage.fluid = storage.fluid + amount
+			local itemCount = (fluidNeed and math.min(water.count, math.ceil(fluidNeed / amount))) or 1
+			storage.fluid = storage.fluid + (amount * itemCount)
 			storage.growthFluid = boost
-			world.containerConsume(entity.id(), {name = water.name, count = 1, data={}})
+			world.containerConsume(entity.id(), {name = water.name, count = itemCount, data={}})
 			return true
 		end
 	end
@@ -251,13 +251,8 @@ end
 --Attempts to use up some fluid
 function isn_doFluidConsume()
 	if storage.fluid < storage.fluidUse then
-		--Not enough internal fluid to keep growing, attempt to consume an item.
-		--May need to consume multiple items to get fluid level high enough.
-		while (storage.fluid < storage.fluidUse) do
-			if isn_doWaterIntake() == false then return false end
-		end
+		if not isn_doWaterIntake(storage.fluidUse - storage.fluid) then return false end
 	end
-	--Consume some fluid
 	storage.fluid = storage.fluid - storage.fluidUse
 	return true
 end
@@ -266,18 +261,18 @@ end
 function isn_readContainerSeed()
 	local contents = world.containerItems(entity.id())
 	local seed = contents[storage.seedslot]
-	if seed == nil then return nil end
-	--Reused the validity check here as it's useful to know if the seed is valid in almost every case.
+	if not seed then return end
+	--Verify the seed is valid for use.
 	local seedConfig = root.itemConfig(seed).config
 	if seedConfig.objectType ~= "farmable" then return nil end
-	if seedConfig.objectName == "sapling" and cHandlesSaplings() ~= true then return nil end
+	if seedConfig.objectName == "sapling" and not cHandlesSaplings() then return nil end
 	return seed
 end
 
 --Reads the currentseed's data.  Return false if there was a problem with the
 --seed/data.
 function isn_readSeedData()
-	if storage.currentseed == nil then return false end
+	if not storage.currentseed then return false end
 	local seedConfig = root.itemConfig(storage.currentseed).config
 	storage.stages = 0
 	storage.resetStage = 0
@@ -298,18 +293,17 @@ function isn_readSeedData()
 			stage.max = curStage.duration[2] or stage.min
 			storage.stage[index] = stage
 		else
-			if curStage.harvestPool ~= nil then storage.harvestPool = curStage.harvestPool end
-			if curStage.resetToStage ~= nil then storage.resetStage = curStage.resetToStage + 1 end
-			if curStage.tree ~= nil then 
-				if curStage.tree == true then
-					if isn_readSaplingData() == false then return false end
-					storage.harvestPool = ""
-				end
+			--We expect this branch to only happen once but just in case we use 'or'.
+			storage.harvestPool = curStage.harvestPool or storage.harvestPool
+			storage.resetStage = (curStage.resetToStage and curStage.resetToStage + 1) or storage.resetStage
+			if curStage.tree then
+				if not isn_readSaplingData() then return false end
+				storage.harvestPool = ""
 			end
 		end
 		index = index + 1
 	end
-	if index == 1 then return false end -- seed data was invalid.
+	if index == 1 then return false end
 	return true
 end
 
@@ -319,29 +313,25 @@ function isn_readSaplingData()
 	if type(storage.currentseed.parameters) ~= "table" then return false end
 	local stemType = storage.currentseed.parameters.stemName
 	local foliageType = storage.currentseed.parameters.foliageName
-	--Not sure if there is any saplings which only have one or the other of stem/foliage but
-	-- just in case the aspects are separated.
-	if stemType then
-		local stemPath = root.treeStemDirectory(stemType)
-		local stemJson = root.assetJson(stemPath .. stemType .. ".modularstem")
-		storage.stemDrops = stemJson.dropConfig.drops
-		storage.hasTree = true
-	end
-	if foliageType then
-		local foliagePath = root.treeFoliageDirectory(foliageType)
-		local foliageJson = root.assetJson(foliagePath .. foliageType .. ".modularfoliage")
-		storage.foliageDrops = foliageJson.dropConfig.drops
-		storage.hasTree = true
-	end
-	if storage.hasTree == true then return true end
-	return false
+	if not (stemType and foliageType) then return false end
+	local stemPath = root.treeStemDirectory(stemType)
+	local stemJson = root.assetJson(stemPath .. stemType .. ".modularstem")
+	storage.stemDrops = stemJson.dropConfig.drops
+	local foliagePath = root.treeFoliageDirectory(foliageType)
+	local foliageJson = root.assetJson(foliagePath .. foliageType .. ".modularfoliage")
+	storage.foliageDrops = foliageJson.dropConfig.drops
+	storage.hasTree = true
+	return true
 end
 
 --Generates drop data for a sapling
+--[[
+If I follow correctly, the stem and the foliage each can have a single item type drop.
+That drop is randomly picked from "dropConfig/drops" table.
+Equal weight, each drop line is a single item type and coresponding count.
+Also foliage is the only source for saplings.
+]]--
 function isn_genSaplingDrops()
-	--If I follow correctly, the stem and the foliage each can have a single drop
-	--That drop is randomly picked from "dropConfig/drops"
-	--Equal weight, each drop line is a single item.
 	local drops = {}
 	local dropCount = 1
 	if type(storage.stemDrops) == "table" then
@@ -353,19 +343,18 @@ function isn_genSaplingDrops()
 		if drops[dropCount].name == "sapling" then drops[dropCount].parameters = storage.currentseed.parameters end
 		dropCount = dropCount + 1
 	end
-	if dropCount == 1 then return nil end
+	if dropCount == 1 then return end
 	return drops
 end
 
 --Generates growth data to tell when a plant is ready for harvest and when it
 --needs to be watered.
 function isn_genGrowthData(initStage)
-	if initStage == nil then initStage = 1 end
+	initStage = initStage or 1
 	--Make sure some things make sense for a perennial, if not act like it's annual
 	if initStage > storage.stages then
-		--maybe toss something to the log...?
 		initStage = 1
-		storage.resetStage = 0
+		storage.resetStage = 1
 	end
 	storage.currentStage = initStage
 	storage.growthCap = 0
@@ -385,15 +374,15 @@ end
 --slot, start from scratch.
 function isn_doRecyclePlant()
 	--Trees always use new seeds...
-	if storage.hasTree == true then return isn_doSeedIntake() end
+	if storage.hasTree then return isn_doSeedIntake() end
 	
 	local seed = isn_readContainerSeed()
 	--If the seed in the seed slot isn't what's being grown now, re-init growth.
-	if seed ~= nil then
+	if seed then
 		if storage.currentseed.name ~= seed.name then
 			--give the perennial seed back before swapping plants
-			local count = storage.seedUse or cSeedUse()
-			local descriptor = {name = storage.currentseed.name, count = count, data={}}
+			local itemCount = storage.seedUse or cSeedUse()
+			local descriptor = {name = storage.currentseed.name, count = itemCount, data={}}
 			fu_sendOrStoreItems(0, descriptor, {0, 1, 2})
 			return isn_doSeedIntake()
 		end
@@ -404,6 +393,9 @@ function isn_doRecyclePlant()
 	end
 	
 	storage.growth = 0
+	animator.setAnimationState("growth", "0")
+	
+	local oldSeedCount = storage.seedUse
 	
 	--set defaults that fertilizer can change or modify
 	storage.growthRate = cGrowthRate()
@@ -411,7 +403,6 @@ function isn_doRecyclePlant()
 	storage.seedUse = cSeedUse()
 	storage.yield = cYield()
 	
-	local oldSeedCount = storage.seedUse
 	local fertName = isn_doFertProcess()
 	if oldSeedCount > storage.seedUse then
 		--Give back seeds the new fertilizer doesn't need.
@@ -423,9 +414,8 @@ function isn_doRecyclePlant()
 		fu_sendOrStoreItems(0, descriptor, {1, 2})
 		return isn_doSeedIntake()
 	end
-	
 	--Generate growth data.
-	if isn_genGrowthData() == false then
+	if not isn_genGrowthData() then
 		storage.currentseed = nil
 		storage.harvestPool = nil
 		return false
@@ -433,7 +423,7 @@ function isn_doRecyclePlant()
 	--All state tests passed and we are ready to continue growing, consume some items.
 	
 	--Consume a unit of fertilizer.
-	if fertName ~= nil then
+	if fertName then
 		world.containerConsume(entity.id(), {name = fertName, count = 1, data={}})
 	end
 	--Consume some fluid.
@@ -445,14 +435,15 @@ end
 --Initialize plant activity (start from scratch)
 function isn_doSeedIntake()
 	storage.growth = 0
+	animator.setAnimationState("growth", "0")
 	storage.currentseed = nil
 	storage.harvestPool = nil
 	
 	--Read/init seed data
 	local seed = isn_readContainerSeed()
-	if seed == nil then return false end
+	if not seed then return false end
 	storage.currentseed = seed
-	if isn_readSeedData() == false then
+	if not isn_readSeedData() then
 		storage.currentseed = nil
 		return false 
 	end
@@ -476,7 +467,7 @@ function isn_doSeedIntake()
 	end
 	
 	--Generate growth data.
-	if isn_genGrowthData() == false then
+	if not isn_genGrowthData() then
 		storage.currentseed = nil
 		storage.harvestPool = nil
 		return false
@@ -484,12 +475,12 @@ function isn_doSeedIntake()
 	--All state tests passed and we are ready to grow, consume some items.
 	
 	--Consume a unit of fertilizer.
-	if fertName ~= nil then
+	if fertName then
 		world.containerConsume(entity.id(), {name = fertName, count = 1, data={}})
 	end
 	--Consume some fluid.
 	storage.hasFluid = isn_doFluidConsume()
-	--Consume a seed.
+	--Consume seed.
 	world.containerConsume(entity.id(), {name = seed.name, count = storage.seedUse, data={}})
 	
 	return true
@@ -501,17 +492,17 @@ end
 function isn_doFertProcess()
 	local contents = world.containerItems(entity.id())
 	local fert = contents[storage.fertslot]
-	if fert == nil then return nil end
+	if not fert then return end
 	storage.fluidUse = 1
 	storage.growthFert = 0
 	
 	for key, value in pairs(config.getParameter("isn_fertInputs")) do
 		if fert.name == key and type(value) == "table" then
 			local seeds, use, boost, yield = value[1], value[2], value[3], value[4]
-			if use == nil or boost == nil or yield == nil then
+			if not (seeds and use and boost and yield) then
 				sb.logWarning("[fu_growingtray] Found valid fertilizer named %s however one of the following are invalid:", key)
 				sb.logWarning("                 use (%s), boost (%s), or yield (%s) was invalid.", seeds, use, boost, yield)
-				return nil
+				return
 			end
 			storage.seedUse = seeds
 			storage.fluidUse = use
@@ -520,5 +511,5 @@ function isn_doFertProcess()
 			return fert.name
 		end
 	end
-	return nil
+	return
 end
