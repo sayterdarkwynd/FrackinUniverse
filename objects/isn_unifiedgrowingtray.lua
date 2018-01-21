@@ -284,7 +284,7 @@ function isn_readSeedData()
 	storage.foliageDrops = nil
 	--pairs() has an undefined order...
 	local index = 1
-	while seedConfig.stages[index] ~= nil do
+	while seedConfig.stages[index] do
 		local curStage = seedConfig.stages[index]
 		if type(curStage.duration) == "table" then
 			storage.stages = index
