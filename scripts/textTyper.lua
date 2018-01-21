@@ -10,7 +10,7 @@
 --	writerInit( textData, string )
 --		textData	= Table that holds data required for the script to function
 --		string		= The string you want printed
---	Returns a formatted table holding a chain of strings for the updater to process
+--	Modifies the table into a formatted table holding a chain of strings for the updater to process
 --	Use this whenever starting/changing texts
 
 --	writerUpdate( textData, widget )

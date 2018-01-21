@@ -21,7 +21,7 @@ function update(dt)
 		end	  
 		
 		if world.type() == 'playerstation' then  genmult = 3.75 end -- player space station always counts as high power, but never MAX power.
-		if world.liquidAt(location) then genmult = genmult * 0.5 end -- water halves the output
+		if world.liquidAt(location)then genmult = genmult * 0.05 end -- water significantly reduces the output
 		
 		local generated = math.min(powerLevel * genmult,36) -- max at 36 just in case.	
 

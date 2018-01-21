@@ -1,0 +1,40 @@
+{
+  "objectName" : "pangolinegg",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "farmBeastEgg",
+  "price" : 620,
+
+  "description" : "Hatches into a tiny pangolin. Happy little omnivores.",
+  "shortdescription" : "Pangolin Egg",
+  "race" : "generic",
+
+  "inventoryIcon" : "pangolinegg.png:idle.1",
+  "orientations" : [
+    {
+      "image" : "pangolinegg.png:idle.1",
+      "imagePosition" : [-7, -3],
+
+      "spaces" : [ [-1, 0], [-1, 1], [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/farmables/eggs/farmableegg.animation",
+  "animationPosition" : [-7, -3],
+  "animationParts" : {
+    "egg" : "pangolinegg.png"
+  },
+
+  "scripts" : ["/objects/farmables/eggs/farmableegg.lua"],
+  "scriptDelta" : 60,
+
+  "hatchTime" : 1000,
+  "forceHatchTime" : 1000,
+
+  "spawnMonster" : "pangobaby",
+  "spawnOffset" : [0.5, 0.5]
+}

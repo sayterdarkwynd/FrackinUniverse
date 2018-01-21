@@ -1,20 +1,8 @@
 
 function init()
-	self.second = 1
+	status.clearAllPersistentEffects()
+	status.clearEphemeralEffects()
 end
 
-function update(dt)
-	if self.second <= 0 then
-		local cooldown = status.statusProperty("fuMedicalEnhancerCooldown", 0)
-		if cooldown > 0 then
-			status.setStatusProperty("fuMedicalEnhancerCooldown", cooldown - 1)
-		end
-		
-		self.second = 1
-	else
-		self.second = self.second - dt
-	end
-end
-
--- Should never happen
+function update(dt) sb.logError("I'm still alive :D") end
 function uninit() end

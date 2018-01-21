@@ -2,7 +2,6 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
-	self.dummyStatus = "medicalhypopanicdummy"
 	self.energyPcntForMaxSpeed = config.getParameter("energyPcntForMaxSpeed", 0)
 	self.maxSpeedBonus = config.getParameter("maxSpeedBonus", 0)
 	self.oldHealth = status.resource("health")
@@ -14,7 +13,7 @@ function init()
 	}
 	
 	self.modifierGroupID = effect.addStatModifierGroup(modifierTable)
-	baseInit(self.dummyStatus)
+	baseInit()
 end
 
 function update(dt)
@@ -40,9 +39,9 @@ function update(dt)
 		mcontroller.controlModifiers({ speedModifier = 1 + self.maxSpeedBonus })
 	end
 	
-	baseUpdate(dt, self.dummyStatus)
+	baseUpdate(dt)
 end
 
 function uninit()
-	baseUninit(self.dummyStatus, self.modifierGroupID)
+	baseUninit(self.modifierGroupID)
 end

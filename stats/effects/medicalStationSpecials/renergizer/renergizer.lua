@@ -2,8 +2,6 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
-	self.dummyStatus = "medicalrenergizerdummy"
-	
 	local modifierTable = {
 		{stat = "maxEnergy", amount = config.getParameter("energyMax", 0)},
 		{stat = "foodDelta", effectiveMultiplier = config.getParameter("foodDeltaMult", 0)},
@@ -12,13 +10,13 @@ function init()
 	}
 	
 	self.modifierGroupID = effect.addStatModifierGroup(modifierTable)
-	baseInit(self.dummyStatus)
+	baseInit()
 end
 
 function update(dt)
-	baseUpdate(dt, self.dummyStatus)
+	baseUpdate(dt)
 end
 
 function uninit()
-	baseUninit(self.dummyStatus, self.modifierGroupID)
+	baseUninit(self.modifierGroupID)
 end

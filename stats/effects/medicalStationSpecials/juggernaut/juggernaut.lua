@@ -2,7 +2,6 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
-	self.dummyStatus = "medicaljuggernautdummy"
 	self.speedMultiplier = config.getParameter("speedMultiplier", 0)
 	
 	local modifierTable = {
@@ -11,15 +10,15 @@ function init()
 	}
 	
 	self.modifierGroupID = effect.addStatModifierGroup(modifierTable)
-	baseInit(self.dummyStatus)
+	baseInit()
 end
 
 function update(dt)
 	mcontroller.controlModifiers({ speedModifier = self.speedMultiplier })
-	baseUpdate(dt, self.dummyStatus)
+	baseUpdate(dt)
 end
 
 function uninit()
 	baseUninit(self.dummyStatus, self.modifierGroupID)
-	baseUninit(self.dummyStatus, nil)
+	baseUninit()
 end

@@ -7,9 +7,9 @@ function init()
 		return
 	end
 	if not storage.appliedStats then
-		storage.appliedStats = {capabilities = config.getParameter("capabilities"), stats = config.getParameter("stats"), maxAmount = config.getParameter("maxAmount")}
+		storage.appliedStats = {capabilities = config.getParameter("capabilities"), stats = config.getParameter("stats"), maxAmount = config.getParameter("maxAmount"), maxAmountGroups = config.getParameter("maxAmountGroups")}
 		if not storage.notNew then
-			if not maxAmountCheck(true) then
+			if not validCheck(true) then
 				applyStats(1)
 			end
 		end
@@ -19,7 +19,7 @@ end
 function die()
 	if reload then
 		applyStats(-1)
-		maxAmountCheck(false)
+		validCheck(false)
 	end
 end
 
@@ -44,7 +44,12 @@ function statChange(stat, amount, multiplier)
 	world.setProperty("fu_byos." .. stat, baseAmount + (amount * multiplier))
 end
 
-function maxAmountCheck(new)
+function validCheck(new)
+	if config.getParameter("byosOnly") and world.getProperty("ship.level") ~= 0 then
+		object.smash(false)
+		reload = false
+		return true
+	end
 	if storage.appliedStats.maxAmount then
 		maxAmountProperty = "fu_byos.object." .. object.name()
 		objectAmount = world.getProperty(maxAmountProperty) or 0
@@ -58,6 +63,23 @@ function maxAmountCheck(new)
 			end
 		else
 			world.setProperty(maxAmountProperty, objectAmount - 1)
+		end
+	end
+	if storage.appliedStats.maxAmountGroups then
+		for groupName, groupMaxAmount in pairs (storage.appliedStats.maxAmountGroups) do
+			maxAmountProperty = "fu_byos.group." .. groupName
+			groupAmount = world.getProperty(maxAmountProperty) or 0
+			if new then
+				if groupAmount and groupAmount >= groupMaxAmount then
+					object.smash(false)
+					reload = false
+					return true
+				else
+					world.setProperty(maxAmountProperty, groupAmount + 1)
+				end
+			else
+				world.setProperty(maxAmountProperty, groupAmount - 1)
+			end
 		end
 	end
 end

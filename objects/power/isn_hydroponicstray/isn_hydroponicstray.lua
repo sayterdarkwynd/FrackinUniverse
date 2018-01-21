@@ -8,6 +8,11 @@ function init()
 	transferUtil.init()
 	object.setInteractive(true)
 	
+	storage.fertSpeed = storage.fertSpeed or 0
+	storage.fertYield = storage.fertYield or 0
+	storage.liquidMod = storage.liquidMod or 2
+	storage.seedMod = storage.seedMod or 3
+	
 	storage.growth = storage.growth or 0
 	storage.water = storage.water or 0
 	storage.yield = storage.yield or 0
@@ -59,18 +64,19 @@ function update(dt)
 	storage.water = storage.water - dt / 2
 	storage.activeConsumption = true
 	storage.growth = storage.growth + growthmod * dt
+	
 	if storage.fertSpeed then
-		storage.growth = storage.growth + growthmod * dt
+		storage.growth = storage.growth + growthmod + storage.fertSpeed * dt
 	end
-	if storage.fertSpeed2 then
-	        storage.growth = storage.growth + growthmod * 2 * dt
-	end
-	if storage.fertSpeed3 then
-	        storage.growth = storage.growth + growthmod * 3 * dt
-	end	
+	
 	if storage.growth >= storage.growthcap then
-		-- if connected to an object receiver, try to send the crop, else store locally
-		-- Wired Industry's item router is one such device
+		if storage.saplingParameters then
+			if storage.saplingParameters.stemName then
+			world.containerAddItems(entity.id(), {name = storage.currentseed, count = 1, parameters = storage.saplingParameters})
+			end
+		else
+			world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,3), data={}})
+		end	
 		if storage.primaryItems then
 			for _,item in pairs (storage.primaryItems) do
 				fu_sendOrStoreItems(0, {name = item, count = storage.yield}, {0, 1, 2})
@@ -89,13 +95,7 @@ function update(dt)
 		else
 			fu_sendOrStoreItems(0, {name = storage.currentcrop, count = storage.yield}, {0, 1, 2})
 		end
-		if storage.saplingParameters then
-			if storage.saplingParameters.stemName then
-				world.containerAddItems(entity.id(), {name = storage.currentseed, count = 1, parameters = storage.saplingParameters})
-			end
-		else
-			world.containerAddItems(entity.id(), {name = storage.currentseed, count = math.random(1,2), data={}})
-		end
+
 		isn_doFertIntake()
 		isn_doSeedIntake()
 	end
@@ -109,7 +109,7 @@ function isn_doWaterIntake()
 	for key, value in pairs(config.getParameter("isn_waterInputs")) do
 		if water.name == key then
 			storage.water = value
-			world.containerConsume(entity.id(), {name = water.name, count = 1, data={}})
+			world.containerConsume(entity.id(), {name = water.name, count = storage.liquidMod, data={}})
 			return true
 		end
 	end
@@ -129,10 +129,10 @@ function isn_doSeedIntake()
 			storage.currentseed = key
 			storage.currentcrop = value
 			storage.yield = math.random(3,5)
-			if storage.fertYield then storage.yield = storage.yield * 2
-			elseif storage.fertYield2 then storage.yield = storage.yield * 3
-			elseif storage.fertYield3 then storage.yield = storage.yield * 4 end
-			world.containerConsume(entity.id(), {name = seed.name, count = 1, data={}})
+			if storage.fertYield == 1 then storage.yield = storage.yield * 2
+			elseif storage.fertYield == 2 then storage.yield = storage.yield * 3
+			elseif storage.fertYield == 3 then storage.yield = storage.yield * 4 end
+			world.containerConsume(entity.id(), {name = seed.name, count = storage.seedMod, data={}})
 			storage.primaryItems = nil
 			storage.secondaryItems = nil
 			storage.saplingParameters = nil
@@ -170,11 +170,11 @@ function isn_doSeedIntake()
 						storage.currentcrop = "logblock"
 						storage.yield = math.random(3,5)
 						storage.secondaryYield = math.random(1,2)
-						if storage.fertYield then storage.yield = storage.yield * 2
+						if storage.fertYield == 1 then storage.yield = storage.yield * 2
 						storage.secondaryYield = storage.secondaryYield * 1
-						elseif storage.fertYield2 then storage.yield = storage.yield * 3
+						elseif storage.fertYield == 2 then storage.yield = storage.yield * 3
 						storage.secondaryYield = storage.secondaryYield * 2
-						elseif storage.fertYield3 then storage.yield = storage.yield * 4 
+						elseif storage.fertYield == 3 then storage.yield = storage.yield * 4 
 						storage.secondaryYield = storage.secondaryYield * 3 end
 						world.containerConsume(entity.id(), {name = "sapling", count = 1, data={}})
 						return true
@@ -187,41 +187,68 @@ function isn_doSeedIntake()
 end
 
 function isn_doFertIntake()
-	storage.fertSpeed = false
-	storage.fertYield = false
-	storage.fertSpeed2 = false
-	storage.fertYield2 = false
-	storage.fertSpeed3 = false
-	storage.fertYield3 = false
+	storage.fertSpeed = 0
+	storage.fertYield = 0
 	local contents = world.containerItems(entity.id())
 	local fert = contents[storage.fertslot]
 	if fert == nil then return false end
 	
 	for key, value in pairs(config.getParameter("isn_fertInputs")) do
 		if fert.name == key then
-			if value == 1 then
-				storage.fertSpeed = true
+			if value == 1 then --basic speed
+				storage.fertSpeed = 1
+				storage.liquidMod = 2
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
-			elseif value == 2 then
-				storage.fertYield = true
+			elseif value == 2 then -- basic yield
+				storage.fertYield = 1
+				storage.liquidMod = 2
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
-			elseif value == 3 then
-				storage.fertSpeed = true
-				storage.fertYield = true
+			elseif value == 3 then --basic speed, good yield
+				storage.fertSpeed = 1
+				storage.fertYield = 2
+				storage.liquidMod = 2
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
-			elseif value == 4 then
-				storage.fertSpeed2 = true
-				storage.fertYield2 = true
+			elseif value == 4 then -- good speed, basic yield
+				storage.fertSpeed = 2
+				storage.fertYield = 1
+				storage.liquidMod = 2
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
 				return true
+			elseif value == 5 then -- great speed,good yield
+				storage.fertSpeed = 3
+				storage.fertYield = 2
+				storage.liquidMod = 2
+				storage.seedMod = 2
+				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
+				return true
+			elseif value == 6 then -- great speed,great yield
+				storage.fertSpeed = 2
+				storage.fertYield = 3	
+				storage.liquidMod = 2
+				storage.seedMod = 1
+				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
+				return true	
+			elseif value == 7 then -- low liquid consumption
+				storage.liquidMod = 1	
+				storage.fertSpeed = 1
+				storage.fertYield = 1
+				storage.seedMod = 2
+				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
+				return true	
 			else
-				storage.fertSpeed3 = true
-				storage.fertYield3 = true				
+				storage.liquidMod = 2	
+				storage.fertSpeed = 0
+				storage.fertYield = 0
+				storage.seedMod = 3
 				world.containerConsume(entity.id(), {name = fert.name, count = 1, data={}})
-				return true
+				return true			
 			end
 		end
 	end

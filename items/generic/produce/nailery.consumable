@@ -8,5 +8,19 @@
   "category" : "food",
 
   "shortdescription" : "Nailery",
-  "learnBlueprintsOnPickup" : [ "nailbomb" ]
+  "learnBlueprintsOnPickup" : [ "nailbomb" ],
+  "maxStack" : 1000,
+  "effects": [
+    [
+      {
+        "effect": "weakpoison",
+        "duration": 5
+      }
+    ]
+  ],
+  "blockingEffects": [
+    "weakpoison"
+  ],
+  "foodValue" : 40,
+  "tooltipKind" : "food"
 }

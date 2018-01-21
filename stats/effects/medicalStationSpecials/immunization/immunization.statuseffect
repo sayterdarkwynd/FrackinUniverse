@@ -1,42 +1,43 @@
 {
 	"name" : "medicalimmunization",
+	"label" : "^orange;[E]^reset; Immunization",
+	"icon" : "/interface/statuses/medicalStationSpecials/immunization.png",
 
 	"defaultDuration" : 5,
 	"scripts" : [ "immunization.lua" ],
 	
 	"effectConfig" : {
-		"allResistMult" : 0.5,
-		"resistances" : [
-			"physicalResistance",
-			"fireResistance",
-			"poisonResistance",
-			"iceResistance",
-			"electricResistance",
-			"radioactiveResistance",
-			"cosmicResistance",
-			"shadowResistance"
-		],
+		"powerMult" : 0.9,
+		"protectionMult" : 0.9,
 		"statImmunities" : [
-			"ffextremeradiationImmunity",
-			"biomeradiationImmunity",
-			"ffextremeheatImmunity",
-			"biomeheatImmunity",
-			"ffextremecoldImmunity",
-			"biomecoldImmunity",
 			"biooozeImmunity",
 			"shadowgasImmunity",
 			"sulphuricImmunity",
 			"fireStatusImmunity",
 			"liquidnitrogenImmunity",
-			"breathProtection",
 			"poisonStatusImmunity",
 			"slushslowImmunity",
 			"snowslowImmunity",
 			"protoImmunity",
 			"shadowImmunity",
-			"pressureImmunity",
 			"darknessImmunity",
-			"radiationburnImmunity"
+			"radiationburnImmunity",
+			"electricStatusImmunity",
+			"iceStatusImmunity",
+			"stunImmunity",
+			"slimeImmunity",
+			"tarStatusImmunity",
+			"beestingImmunity",
+			"boozeImmunity",
+			"sandstormImmunity"
+		],
+		"statusesWithoutBlockingStat" : [
+			"rootfu",
+			"freeze",
+			"freezefu",
+			"freezefu2",
+			"frozenburning",
+			"slow"
 		]
 	}
 }

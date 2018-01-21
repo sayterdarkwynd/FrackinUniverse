@@ -1,7 +1,7 @@
 {
   "type" : "fudodofarmbaby",
   "shortdescription" : "Copperbeak",
-
+  "description" : "A handy farm animal, since they digest their food into copper pellets. Carnivore.",
   "categories" : [ "fudodofarm" ],
   "parts" : [ "body", "spawn" ],
 
@@ -9,17 +9,21 @@
   "reversed" : false,
 
   "dropPools" : [ { "default" : "huntingflying" } ],
-
+  
+  "diet" : "carnivore",
+  "hungerTime" : 10,
+  
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua",
       "/scripts/golemancer/gol_monstermain.lua"
     ],
-
+  "diet" : "carnivore",
+  "hungerTime" : 10,
     "tickEvoTime" : 5,
     "evolutions" : [ "/scripts/golemancer/evolutions/copperbeakgrow.evo" ],
     
-    "persistent" : false,
+    "persistent" : true,
 
     "behavior" : "farmablebaby",
 

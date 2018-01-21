@@ -42,10 +42,11 @@ function transferUtil.routeItems()
 	if storage.disabled then return end
 	if util.tableSize(storage.inContainers) == 0 then return end
 
-	local outputSize = util.tableSize(storage.outContainers)
-	if outputSize == 0 then return end
+	local outputSizeG = util.tableSize(storage.outContainers)
+	if outputSizeG == 0 then return end
 
 	for sourceContainer,sourcePos in pairs(storage.inContainers) do
+		local outputSize = outputSizeG
 		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
 		if ping1 ~= nil then
 			sourceContainer=ping1
@@ -162,9 +163,10 @@ function transferUtil.routeMoney()
 			if targetAwake == true and sourceAwake == true then
 				local sourceItems=world.containerItems(sourceContainer)
 				for indexIn,item in pairs(sourceItems or {}) do
-					local conf = root.itemConfig(item.name)
+					--local conf = root.itemConfig(item.name)
 					--sb.logInfo("%s",conf)
-					if conf.config.currency then
+					--if conf.config.currency then
+					if transferUtil.getType(item) == "currency" then
 						local leftOverItems = world.containerAddItems(targetContainer,item)
 						if leftOverItems then
 							world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
@@ -483,13 +485,16 @@ end
 
 function transferUtil.getType(item)
 	if not item.name then
-		return "generic"
+		return "unhandled"
 	elseif item.name == "sapling" then
 		return item.name
 	elseif item.currency then
 		return "currency"
 	end
 	local itemRoot = root.itemConfig(item)
+	if itemRoot.config.currency then
+		return "currency"
+	end
 	local itemCat
 	if itemRoot.category then
 		itemCat=itemRoot.category
@@ -505,16 +510,15 @@ function transferUtil.getType(item)
 	if itemCat then
 		return string.lower(itemCat)
 	elseif not unhandled[item.name] then
-		sb.logInfo("Unhandled Item:\n%s",itemRoot)
+		--sb.logInfo("Unhandled Item:\n%s",itemRoot)
 		unhandled[item.name]=true
 	end
-	return string.lower(item.name)
+	return "unhandled"
 end
 
 function transferUtil.getCategory(item)
 	local itemCat=transferUtil.getType(item)
-	--sb.logInfo("%s::%s",itemCat,string.lower(transferUtil.itemTypes[itemCat] or "generic"))
-	return transferUtil.itemTypes[itemCat] or "generic"
+	return transferUtil.itemTypes[itemCat] or "unhandled"
 end
 
 function transferUtil.loadSelfContainer()

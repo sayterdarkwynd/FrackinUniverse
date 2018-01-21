@@ -1,5 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/scripts/researchGenerators.lua"
 
 function init()
   self.itemList = "itemScrollArea.itemList"
@@ -158,6 +159,8 @@ function doUpgrade()
                    
         end
         player.giveItem(upgradedItem)
+	      -- check if player gets Research randomly
+		checkResearchBonus()
       end
     end
     populateItemList(true)

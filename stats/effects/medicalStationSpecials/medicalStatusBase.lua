@@ -1,65 +1,24 @@
-
-function baseInit(dummyStatus)
-	self.dummyCheckCooldown = 1
-	self.killedEffects = false
-	self.second = 1
+function baseInit()
+	effect.modifyDuration(300 - effect.duration())
 	
-	local foundCooldownStatus = false
-	local effects = status.activeUniqueStatusEffectSummary()
-	for _, e in ipairs(effects) do
-		if e[1] == "medicalStatusCooldown" then
-			foundCooldownStatus = true
-			break
-		end
-	end
-	
-	if not foundCooldownStatus then
-		status.addPersistentEffect("", "medicalStatusCooldown")
-	end
-	
-	local timeLeft = status.statusProperty("fuMedicalEnhancerDuration", 0)
-	status.addEphemeralEffect(dummyStatus, timeLeft)
+	self.checkInterval = 10
+	self.checkCooldown = 0
 end
 
-function baseUpdate(dt, dummyStatus)
-	local timeLeft = status.statusProperty("fuMedicalEnhancerDuration", 0)
-	
-	if self.second <= 0 then
-		status.setStatusProperty("fuMedicalEnhancerDuration", timeLeft-1)
-		timeLeft = timeLeft - 1
-		self.second = 1
-	else
-		self.second = self.second - dt
-	end
-	
-	if timeLeft <= 0 then
-		if not self.killedEffects then
-			status.addEphemeralEffect("medicalStatusKiller", 0.1)
-			self.killedEffects = true
-		end
-	else
-		if self.dummyCheckCooldown <= 0 then
-			local foundDummy = false
-			local effects = status.activeUniqueStatusEffectSummary()
-			for _, e in ipairs(effects) do
-				if e[1] == dummyStatus then
-					foundDummy = true
-					break
-				end
-			end
-			
-			if not foundDummy then
-				status.addEphemeralEffect(dummyStatus, timeLeft)
-			end
-			
-			self.dummyCheckCooldown = 1
+function baseUpdate(dt)
+	if status.statusProperty("fuEnhancerActive", false) then
+		if self.checkCooldown <= 0 then
+			self.checkCooldown = self.checkInterval
+			effect.modifyDuration(300 - effect.duration())
 		else
-			self.dummyCheckCooldown = self.dummyCheckCooldown - dt
+			self.checkCooldown = self.checkCooldown - dt
 		end
+	else
+		effect.expire()
 	end
 end
 
-function baseUninit(dummyStatus, modifierGroupID)
+function baseUninit()
 	if modifierGroupID then
 		effect.removeStatModifierGroup(modifierGroupID)
 	end

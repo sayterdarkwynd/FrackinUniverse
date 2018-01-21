@@ -1,0 +1,106 @@
+{
+  "type" : "fupoptopfarm",
+
+  "categories" : [ "fupoptopfarm" ],
+  "parts" : [ "body", "spawn" ],
+
+  "animation" : "fupoptopfarm.animation",
+  "reversed" : false,
+
+  "dropPools" : [ { "default" : "huntingquadruped" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+    
+    "eggType" : "poptopegg",
+    "mateTime" : 60,      
+    "diet" : "carnivore",
+    "hungerTime" : 10,
+    
+    "persistent" : true,
+
+    "behavior" : "farmable2",
+
+    "harvestTime" : [400, 800],
+    "harvestSpawnOffset" : [0, 0],
+    "harvestPool" : "poptopHarvest",
+
+    "metaBoundBox" : [-4.0, -4.0, 4.0, 4.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.55],  [-0.8125, -1.55], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+    "deathParticles" : "deathPoof",
+
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 90
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 4.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [12, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "relocatable" : true,    
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterType" : "fupoptopfarm", 
+    "nametagColor" : [64, 200, 255]
+  }
+}
