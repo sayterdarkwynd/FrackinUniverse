@@ -2,8 +2,6 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 local deltaTime=0
-local maxFastForwardSeconds = 7200 -- Maximum total time allowed to fast forward, 2 hour
-local freePowerSeconds = 10	-- How many seconds of fast forward time use only 1 power draw.
 function init()
 	self.requiredPower = config.getParameter("isn_requiredPower") or 0
 	self.handlesSaplings = config.getParameter("isn_growSaplings") or false
@@ -12,6 +10,9 @@ function init()
 	self.baseYield = config.getParameter("isn_baseYields") or 4
 	self.defaultFluidUse = config.getParameter("isn_defaultWaterUse") or 4
 	self.unpoweredGrowthRate = config.getParameter("isn_unpoweredGrowthRate") or 0.434782609
+	self.maxFastForwardSeconds = config.getParameter("isn_maxFastForwardSeconds") or 6000 -- Maximum total time allowed to fast forward, 1 hour, 40 minutes
+	self.freePowerSeconds = config.getParameter("isn_freePowerSeconds") or 10 -- How many seconds of fast forward time use only 1 power draw.
+	
 	
 	if self.requiredPower > 0 then power.init() end
 	transferUtil.init()
@@ -41,33 +42,35 @@ function init()
 	
 	--Checks which cause reset of seed/growth data if failed,
 	--placed at end so we can return without breaking any other init stuff.
-	if storage.currentseed ~= nil and storage.harvestPool ~= nil then
+	if storage.currentseed and storage.harvestPool then
 		--Storage.stages is the upper bound of the stage array
-		if not storage.stages then
-			if not isn_readSeedData() then
-				storage.currentseed = nil
-				return
-			end
-		end
 		--storage.stage is information about each stage of the plant.
-		if type(storage.stage) ~= "table" then
-			if not isn_readSeedData() then
-				storage.currentseed = nil
-				return
-			end
+		if ( not storage.stages or type(storage.stages) ~= "table" ) and not isn_readSeedData() then
+			storage.currentseed = nil
+			return
 		end
 		--If Starbound stored stage keys as tostring(number), copy them back to keys of number.
 		for i = 1, storage.stages do
 			if type(storage.stage[tostring(i)]) == "table" then
 				storage.stage[i] = storage.stage[tostring(i)]
 			end
-			if type(storage.stage[i]) ~= table then isn_readSeedData() end
+		end
+		--Make sure the data is valid.
+		for i = 1, storage.stages do
+			if type(storage.stage[i]) ~= table then
+				if not isn_readSeedData() then
+					storage.currentseed = nil
+					return
+				end
+				break
+			end
 			--storage.stage[].min and storage.stage[].max are the range of times for a given stage.
 			if not (storage.stage[i].min and storage.stage[i].max) then
 				if not isn_readSeedData() then
 					storage.currentseed = nil
 					return
 				end
+				break
 			end
 			--storage.stage[].val is how long the current plant takes to reach the next stage.
 			if not storage.stage[i].val then isn_genGrowthData() end
@@ -99,7 +102,7 @@ function update(dt)
 	--Try to start growing if data indicates we aren't.
 	if not (storage.currentseed and storage.harvestPool) then
 		storage.lastWorldTime = nil
-		if isn_doSeedIntake() ~= true then return end
+		if isn_doSeedIntake() then return end
 	end
 	
 	--Figure out how long it's been since our last update.
@@ -111,9 +114,9 @@ function update(dt)
 	storage.lastWorldTime = world.time()
 	
 	--Don't allow infinite fast forward time.
-	secondsThisUpdate = math.min(secondsThisUpdate,maxFastForwardSeconds)
+	secondsThisUpdate = math.min(secondsThisUpdate, self.maxFastForwardSeconds)
 	
-	local usePower = (secondsThisUpdate <= freePowerSeconds) and true or false
+	local usePower = (secondsThisUpdate <= self.freePowerSeconds) and true or false
 	
 	--useful for debugging...
 	--sb.logInfo("[%s], growth %s/%s seconds this update %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
@@ -357,7 +360,7 @@ function isn_genGrowthData(initStage)
 	local index = initStage
 	while index <= storage.stages do
 		local stage = storage.stage[index]
-		if type(stage) == nil then return false end
+		if type(stage) ~= "table" then return false end
 		storage.growthCap = storage.growthCap + math.random(stage.min, stage.max)
 		stage.val = storage.growthCap
 		index = index + 1
