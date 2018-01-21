@@ -1,0 +1,81 @@
+{
+  "type" : "japaneseruinsarcher",
+  "baseType" : "hostile",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "basicTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "hylotl" : {
+          "default" : [
+            "You should not...be here...",
+			"Cursed...",
+            "This place...will be your death...",
+            "No..."
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 12,
+	  "walkSpeed" : 12,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+  
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "insidioushead", "parameters" : { "colorIndex" : 3 } }
+            ],
+            "chest" : [
+              { "name" : "hylotltier3chest", "parameters" : { "colorIndex" : 3 } }
+            ],
+            "legs" : [
+              { "name" : "hylotltier3pants", "parameters" : { "colorIndex" : 3 } }
+            ],
+            "primary" : [
+              "npcpetcapturepod"
+            ],
+            "sheathedprimary" : [ { "name" : "npctungstenbow", "parameters" : { "primaryAbility" : { "projectileType" : "chargedflamearrow", "powerProjectileType" : "chargedflamearrow" } } } ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {    
+    "stats" : {
+	"knockbackStunTime" : {
+		"baseValue" : 0.0
+	},
+	"grit" : {
+		"baseValue" : 1.0
+	},
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+	  "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}
