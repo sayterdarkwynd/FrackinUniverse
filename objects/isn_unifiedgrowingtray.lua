@@ -2,20 +2,26 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 local deltaTime=0
-local fastForwardSeconds = 600 -- Typical chunk to fast forward by, 10 minutes
-local maxFastForwardSeconds = 3600 -- Maximum total time allowed to fast forward, 1 hour
-local minFastForwardSeconds = 60 -- Minimum allowed time to fastforward before we just give up and let the power fail.
+local maxFastForwardSeconds = 7200 -- Maximum total time allowed to fast forward, 2 hour
+local freePowerSeconds = 10	-- How many seconds of fast forward time use only 1 power draw.
 function init()
 	self.requiredPower = config.getParameter("isn_requiredPower") or 0
+	self.handlesSaplings = config.getParameter("isn_growSaplings") or false
+	self.baseGPS = config.getParameter("isn_baseGrowthPerSecond") or 4
+	self.seedUse = config.getParameter("isn_defaultSeedUse") or 4
+	self.baseYield = config.getParameter("isn_baseYields") or 4
+	self.defaultFluidUse = config.getParameter("isn_defaultWaterUse") or 4
+	self.unpoweredGrowthRate = config.getParameter("isn_unpoweredGrowthRate") or 0.434782609
+	
 	if self.requiredPower > 0 then power.init() end
 	transferUtil.init()
 	object.setInteractive(true)
 	
 	--Variables who's state is configurable.
-	storage.growthRate = storage.growthRate or cGrowthRate()	--Amount of growth per second
-	storage.seedUse = storage.seedUse or cSeedUse()				--Number of seeds to use per cycle
-	storage.yield = storage.yield or cYield()					--harvestPool picks when grown
-	storage.fluidUse = storage.fluidUse or cFluidUse()			--Amount of fluid to use per stage
+	storage.growthRate = storage.growthRate or self.baseGPS		--Amount of growth per second
+	storage.seedUse = storage.seedUse or self.seedUse			--Number of seeds to use per cycle
+	storage.yield = storage.yield or self.baseYield				--harvestPool picks when grown
+	storage.fluidUse = storage.fluidUse or self.defaultFluidUse	--Amount of fluid to use per stage
 	
 	--Variables who's state are simple and can use values picked from nowhere safely.
 	storage.growth = storage.growth or 0 				--Plant growth completed
@@ -69,31 +75,11 @@ function init()
 	end
 end
 
---Config checkers
-function cHandlesSaplings()
-	return config.getParameter("isn_growSaplings") or false
-end
-function cGrowthRate()
-	return config.getParameter("isn_baseGrowthPerSecond") or 4
-end
-function cSeedUse()
-	return config.getParameter("isn_defaultSeedUse") or 4
-end
-function cYield()
-	return config.getParameter("isn_baseYields") or 4
-end
-function cFluidUse()
-	return config.getParameter("isn_defaultWaterUse") or 4
-end
-function cUnpoweredGrowthRate()
-	return config.getParameter("isn_unpoweredGrowthRate") or 0.434782609
-end
-
 --Returns active seed when tray is removed from world, much like how plants
 --work.
 function die()
 	if storage.currentseed then
-		local count = storage.seedUse or cSeedUse()
+		local count = storage.seedUse or self.seedUse
 		world.spawnItem(storage.currentseed, entity.position(), count)
 	end
 end
@@ -127,29 +113,19 @@ function update(dt)
 	--Don't allow infinite fast forward time.
 	secondsThisUpdate = math.min(secondsThisUpdate,maxFastForwardSeconds)
 	
-	--Use this to fast forward in increments.  This is intentionally lossy since accuracy costs server load.
-	if secondsThisUpdate > fastForwardSeconds then
-		storage.lastWorldTime = storage.lastWorldTime - (secondsThisUpdate - fastForwardSeconds)
-		secondsThisUpdate = fastForwardSeconds
-	end
+	local usePower = (secondsThisUpdate <= freePowerSeconds) and true or false
 	
 	--useful for debugging...
-	--sb.logInfo("[%s], growth %s/%s seconds %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
+	--sb.logInfo("[%s], growth %s/%s seconds this update %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
 	
-	local growthmod = secondsThisUpdate
-	if self.requiredPower > 0 then
+	local growthmod = usePower and secondsThisUpdate or (secondsThisUpdate * self.unpoweredGrowthRate)
+	
+	if usePower and self.requiredPower > 0 then
 		--Adjust our fast forward time by available power...
-		local availPower = power.getTotalEnergy()
-		if self.requiredPower * secondsThisUpdate > availPower and availPower >= minFastForwardSeconds * self.requiredPower then
-			local pwrIncrement = availPower / self.requiredPower
-			storage.lastWorldTime = storage.lastWorldTime - (secondsThisUpdate - pwrIncrement)
-			secondsThisUpdate = pwrIncrement
-			growthmod = secondsThisUpdate
-		end
-		if power.consume(self.requiredPower * secondsThisUpdate) then
+		if power.consume(self.requiredPower * dt) then
 			animator.setAnimationState("powlight", "on")
 		else
-			growthmod = growthmod * cUnpoweredGrowthRate()
+			growthmod = growthmod * self.unpoweredGrowthRate
 			animator.setAnimationState("powlight", "off")
 		end
 	end
@@ -174,16 +150,21 @@ function update(dt)
 	
 	storage.activeConsumption = true
 	
-	--Compute growth (we aren't dry right now)
-	storage.growth = storage.growth + ((storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod)
+	if storage.currentStage <= storage.stages then
+		local deltaGrowth = (storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod
+		local newGrowth = storage.growth + deltaGrowth
+		if newGrowth > storage.stage[storage.currentStage].val then
+			local growthDif = newGrowth - storage.stage[storage.currentStage].val
+			local refundTime = (growthDif / deltaGrowth) * secondsThisUpdate
+			storage.lastWorldTime = storage.lastWorldTime - refundTime
+			newGrowth = newGrowth - growthDif
+		end
+		storage.growth = newGrowth
+	end
 	
-	--Check if we should try to use more fluid due to growth.
+	--Check if we should try to use more fluid due to growth. (DON'T check the last stage)
 	if storage.currentStage < storage.stages then
-		--multiple stages might have happened, make sure we use apt fluid before resuming flow.
-		while true do
-			if storage.currentStage >= storage.stages then break end
-			if storage.growth < storage.stage[storage.currentStage].val then break end
-			if not storage.hasFluid then break end
+		if storage.growth >= storage.stage[storage.currentStage].val then
 			storage.hasFluid = isn_doFluidConsume()
 			storage.currentStage = storage.currentStage + 1
 		end
@@ -265,7 +246,7 @@ function isn_readContainerSeed()
 	--Verify the seed is valid for use.
 	local seedConfig = root.itemConfig(seed).config
 	if seedConfig.objectType ~= "farmable" then return nil end
-	if seedConfig.objectName == "sapling" and not cHandlesSaplings() then return nil end
+	if seedConfig.objectName == "sapling" and not self.handlesSaplings then return nil end
 	return seed
 end
 
@@ -381,7 +362,7 @@ function isn_doRecyclePlant()
 	if seed then
 		if storage.currentseed.name ~= seed.name then
 			--give the perennial seed back before swapping plants
-			local itemCount = storage.seedUse or cSeedUse()
+			local itemCount = storage.seedUse or self.seedUse
 			local descriptor = {name = storage.currentseed.name, count = itemCount, data={}}
 			fu_sendOrStoreItems(0, descriptor, {0, 1, 2})
 			return isn_doSeedIntake()
@@ -398,10 +379,10 @@ function isn_doRecyclePlant()
 	local oldSeedCount = storage.seedUse
 	
 	--set defaults that fertilizer can change or modify
-	storage.growthRate = cGrowthRate()
-	storage.fluidUse = cFluidUse()
-	storage.seedUse = cSeedUse()
-	storage.yield = cYield()
+	storage.growthRate = self.baseGPS
+	storage.fluidUse = self.defaultFluidUse
+	storage.seedUse = self.seedUse
+	storage.yield = self.baseYield
 	
 	local fertName = isn_doFertProcess()
 	if oldSeedCount > storage.seedUse then
@@ -449,10 +430,10 @@ function isn_doSeedIntake()
 	end
 	
 	--set defaults that fertilizer can change or modify
-	storage.growthRate = cGrowthRate()
-	storage.fluidUse = cFluidUse()
-	storage.seedUse = cSeedUse()
-	storage.yield = cYield()
+	storage.growthRate = self.baseGPS
+	storage.fluidUse = self.defaultFluidUse
+	storage.seedUse = self.seedUse
+	storage.yield = self.baseYield
 	
 	--Since we might need to consume multiple seeds we delay fertilizer USE
 	--until we know we have enough resources to proceed.
