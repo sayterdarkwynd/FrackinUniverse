@@ -13,7 +13,7 @@ function init()
 
   self.gateUid = config.getParameter("gateUid")
   
-  if player.hasItem({name = "statustablet", count = 1}) then
+  if player.hasItem({name = "statustablet", count = 1}) and storage.stage >= 3 then
     self.gateUid = "ancientgate2"
   else
     self.gateUid = "ancientgate"
@@ -172,7 +172,8 @@ function gateFound()
   player.radioMessage("gaterepair-gateFound2")
 
   storage.stage = 3
-
+  self.gateUid = "ancientgate2"
+  
   util.wait(14)
 
   self.state:set(self.stages[storage.stage])
