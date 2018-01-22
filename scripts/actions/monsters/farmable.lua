@@ -92,7 +92,7 @@ function eatFood(args)
   local eaten = false
   for pos,item in pairs(world.containerItems(args.entity)) do
     local itemConfig = root.itemConfig(item).config
-    if itemConfig.category == "food" and not itemConfig.foodValue then itemConfig.foodValue = 1 end
+    if itemConfig.category == "food" and not itemConfig.foodValue then itemConfig.foodValue = 10 end
     
         if diet == 'omnivore' then
 	  for _,value in pairs(foodlist.herbivore) do
