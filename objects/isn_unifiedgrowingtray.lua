@@ -45,7 +45,7 @@ function init()
 	if storage.currentseed and storage.harvestPool then
 		--Storage.stages is the upper bound of the stage array
 		--storage.stage is information about each stage of the plant.
-		if ( not storage.stages or type(storage.stages) ~= "table" ) and not isn_readSeedData() then
+		if ( not storage.stages or type(storage.stage) ~= "table" ) and not isn_readSeedData() then
 			storage.currentseed = nil
 			return
 		end
@@ -55,25 +55,27 @@ function init()
 				storage.stage[i] = storage.stage[tostring(i)]
 			end
 		end
-		--Make sure the data is valid.
+		--Make sure each element of seed data is valid.
 		for i = 1, storage.stages do
-			if type(storage.stage[i]) ~= table then
-				if not isn_readSeedData() then
-					storage.currentseed = nil
-					return
-				end
-				break
-			end
 			--storage.stage[].min and storage.stage[].max are the range of times for a given stage.
-			if not (storage.stage[i].min and storage.stage[i].max) then
+			--storage.stage[].val is how long the current plant takes to reach the next stage.
+			if type(storage.stage[i]) ~= table or not (storage.stage[i].min and storage.stage[i].max) then
 				if not isn_readSeedData() then
 					storage.currentseed = nil
 					return
 				end
 				break
 			end
-			--storage.stage[].val is how long the current plant takes to reach the next stage.
-			if not storage.stage[i].val then isn_genGrowthData() end
+		end
+		--Make sure growth data is valid.
+		for i = 1, storage.stages do
+			if not storage.stage[i].val then
+				if not isn_genGrowthData() then
+					storage.currentseed = nil
+					return
+				end
+				break
+			end
 		end
 	end
 end
@@ -102,7 +104,7 @@ function update(dt)
 	--Try to start growing if data indicates we aren't.
 	if not (storage.currentseed and storage.harvestPool) then
 		storage.lastWorldTime = nil
-		if isn_doSeedIntake() then return end
+		if not isn_doSeedIntake() then return end
 	end
 	
 	--Figure out how long it's been since our last update.
