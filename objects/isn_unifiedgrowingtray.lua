@@ -201,6 +201,8 @@ function update(dt)
 			end
 			storage.lastWorldTime = storage.lastWorldTime - refundTime
 			newGrowth = newGrowth - growthDif
+		else
+			storage.ffCycles = 0
 		end
 		storage.growth = newGrowth
 	end
