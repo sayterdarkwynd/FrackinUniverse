@@ -220,8 +220,11 @@ end
 function checkMate()
   -- we see if the creature can lay eggs here
   self.randChance = math.random(100)
+  
   self.eggType = config.getParameter("eggType")	
-
+  
+  if not self.eggType then self.eggType = "henegg" end
+  
   if storage.mateTimer <= 0 and self.randChance <= 0 and storage.happiness >=70 then 
     if storage.happiness == 100 then  -- they are happy, and produce more eggs, and can mate again sooner than unhappy animals
 	    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
