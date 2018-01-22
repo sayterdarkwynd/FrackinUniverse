@@ -172,7 +172,9 @@ function removeFood(args)
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
   storage.mateTimer = math.max((storage.mateTimer or 60) - 0.277777778/config.getParameter('mateTimer',60),0)
   self.timerPoop = (self.timerPoop or 90) - 1
-  if self.timerPoop <= 0 and storage.food >= 50 then
+  local diet = config.getParameter('diet','omnivore')
+  
+  if self.timerPoop <= 0 and storage.food >= 50 and not diet == "robo" then
     checkPoop()
     self.timerPoop = 90
   end    

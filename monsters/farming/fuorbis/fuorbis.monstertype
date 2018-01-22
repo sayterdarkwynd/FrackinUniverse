@@ -1,0 +1,106 @@
+{
+  "type" : "fuorbis",
+
+  "categories" : [ "fuorbis" ],
+  "parts" : [ "body", "spawn" ],
+
+  "animation" : "fuorbis.animation",
+  "reversed" : false,
+
+  "dropPools" : [ { "default" : "furobotTreasure" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+    
+  "eggType" : "fuorbisegg",
+  "mateTime" : 120,    
+  "diet" : "robo",
+  "hungerTime" : 22,
+  
+    "persistent" : true,
+
+    "behavior" : "farmable",
+
+    "harvestTime" : [600, 1000],
+    "harvestSpawnOffset" : [0, 0],
+    "harvestPool" : "fuorbisHarvest",
+
+    "metaBoundBox" : [-4.0, -4.0, 4.0, 4.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.475, 0.975], [0.825, 0.625], [0.825, -0.625], [0.475, -1.375], [-0.475, -1.375], [-0.825, -0.625], [-0.825, 0.625], [-0.475, 0.975] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "robotic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+    "deathParticles" : "deathPoof",
+
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 90
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 4.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [12, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "relocatable" : true,    
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterType" : "fuorbis",
+    "nametagColor" : [64, 200, 255]
+  }
+}
