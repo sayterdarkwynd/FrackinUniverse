@@ -3,18 +3,36 @@ require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 local deltaTime=0
 function init()
-	self.requiredPower = config.getParameter("isn_requiredPower") or 0
+	self.requiredPower = config.getParameter("isn_requiredPower")
+	if type(self.requiredPower) ~= "number" then self.requiredPower = 0 end
 	self.handlesSaplings = config.getParameter("isn_growSaplings") or false
-	self.baseGPS = config.getParameter("isn_baseGrowthPerSecond") or 4
-	self.seedUse = config.getParameter("isn_defaultSeedUse") or 4
-	self.baseYield = config.getParameter("isn_baseYields") or 4
-	self.defaultFluidUse = config.getParameter("isn_defaultWaterUse") or 4
-	self.unpoweredGrowthRate = config.getParameter("isn_unpoweredGrowthRate") or 0.434782609
-	self.maxFastForwardSeconds = config.getParameter("isn_maxFastForwardSeconds") or 6000 -- Maximum total time allowed to fast forward, 1 hour, 40 minutes
-	self.freePowerSeconds = config.getParameter("isn_freePowerSeconds") or 10 -- How many seconds of fast forward time use only 1 power draw.
+	if type(self.handlesSaplings) ~= "boolean" then self.handlesSaplings = false end
+	self.baseGPS = config.getParameter("isn_baseGrowthPerSecond")
+	if type(self.baseGPS) ~= "number" or self.baseGPS <= 0 then self.baseGPS = 4 end
+	self.seedUse = config.getParameter("isn_defaultSeedUse")
+	if type(self.seedUse) ~= "number" or self.seedUse < 1 then self.seedUse = 4 end
+	self.baseYield = config.getParameter("isn_baseYields")
+	if type(self.baseYield) ~= "number" or self.baseYield < 1 then self.baseYield = 4 end
+	self.defaultFluidUse = config.getParameter("isn_defaultWaterUse")
+	if type(self.defaultFluidUse) ~= "number" or self.defaultFluidUse <= 0 then
+			self.defaultFluidUse = 4 end
+	self.unpoweredGrowthRate = config.getParameter("isn_unpoweredGrowthRate")
+	if type(self.unpoweredGrowthRate) ~= "number" or self.unpoweredGrowthRate <= 0 then
+			self.unpoweredGrowthRate = 0.434782609 end
+	self.maxFastForwardSeconds = config.getParameter("isn_maxFastForwardSeconds")
+	if type(self.maxFastForwardSeconds) ~= "number" then self.maxFastForwardSeconds = 6000
 	
+	if self.requiredPower > 0 then
+		self.freePowerSeconds = config.getParameter("isn_freePowerSeconds") or 10
+		local scriptDelta = config.getParameter("scriptDelta") or 1 --Validity of this should be handled by Starbound.
+		local minTime = 2 * scriptDelta
+		if type(self.freePowerSeconds) ~= "number" or self.freePowerSeconds < minTime then
+				self.freePowerSeconds = minTime end
+		if self.maxFastForwardSeconds < self.freePowerSeconds then
+				self.maxFastForwardSeconds = self.freePowerSeconds end
+		power.init()
+	end
 	
-	if self.requiredPower > 0 then power.init() end
 	transferUtil.init()
 	object.setInteractive(true)
 	
@@ -118,20 +136,22 @@ function update(dt)
 	--Don't allow infinite fast forward time.
 	secondsThisUpdate = math.min(secondsThisUpdate, self.maxFastForwardSeconds)
 	
-	local usePower = (secondsThisUpdate <= self.freePowerSeconds) and true or false
-	
 	--useful for debugging...
 	--sb.logInfo("[%s], growth %s/%s seconds this update %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
 	
-	local growthmod = usePower and secondsThisUpdate or (secondsThisUpdate * self.unpoweredGrowthRate)
+	local growthmod = secondsThisUpdate
 	
-	if usePower and self.requiredPower > 0 then
-		--Adjust our fast forward time by available power...
-		if power.consume(self.requiredPower * dt) then
-			animator.setAnimationState("powlight", "on")
-		else
+	if self.requiredPower > 0 then
+		if (secondsThisUpdate <= self.freePowerSeconds) then
+			--Adjust our fast forward time by available power...
+			if power.consume(self.requiredPower * dt) then
+				animator.setAnimationState("powlight", "on")
+			else
+				growthmod = growthmod * self.unpoweredGrowthRate
+				animator.setAnimationState("powlight", "off")
+			end
+		else 
 			growthmod = growthmod * self.unpoweredGrowthRate
-			animator.setAnimationState("powlight", "off")
 		end
 	end
 	
@@ -234,7 +254,7 @@ function isn_doWaterIntake(fluidNeed)
 	for key, value in pairs(config.getParameter("isn_waterInputs")) do
 		if water.name == key and type(value) == "table" then
 			local amount, boost = value[1], value[2]
-			if not (amount and boost) or (amount and amount <= 0) then
+			if type(amount) ~= "number" or amount <= 0 or type(boost) ~= "number" then
 				sb.logWarning("[fu_growingtray] found valid fluid named %s however either amount (%s) or boost (%s) was invalid.", key, amount, boost)
 				return false
 			end
@@ -500,7 +520,8 @@ function isn_doFertProcess()
 	for key, value in pairs(config.getParameter("isn_fertInputs")) do
 		if fert.name == key and type(value) == "table" then
 			local seeds, use, boost, yield = value[1], value[2], value[3], value[4]
-			if not (seeds and use and boost and yield) then
+			if type(seeds) ~= "number" or seeds < 1 or type(use) ~= "number" or use <= 0 or
+					type(boost) ~= "number" or type(yield) ~= number then
 				sb.logWarning("[fu_growingtray] Found valid fertilizer named %s however one of the following are invalid:", key)
 				sb.logWarning("                 use (%s), boost (%s), or yield (%s) was invalid.", seeds, use, boost, yield)
 				return
