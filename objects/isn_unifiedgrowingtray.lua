@@ -19,8 +19,9 @@ function init()
 	self.unpoweredGrowthRate = config.getParameter("isn_unpoweredGrowthRate")
 	if type(self.unpoweredGrowthRate) ~= "number" or self.unpoweredGrowthRate <= 0 then
 			self.unpoweredGrowthRate = 0.434782609 end
-	self.maxFastForwardSeconds = config.getParameter("isn_maxFastForwardSeconds")
-	if type(self.maxFastForwardSeconds) ~= "number" then self.maxFastForwardSeconds = 6000
+	self.maxFastForwardCycles = config.getParameter("isn_maxFastForwardCycles")
+	if type(self.maxFFCycles) ~= "number" or self.maxFFCycles < 0 then
+			self.maxFFCycles = 2 end
 	
 	if self.requiredPower > 0 then
 		self.freePowerSeconds = config.getParameter("isn_freePowerSeconds") or 10
@@ -28,13 +29,13 @@ function init()
 		local minTime = 2 * scriptDelta
 		if type(self.freePowerSeconds) ~= "number" or self.freePowerSeconds < minTime then
 				self.freePowerSeconds = minTime end
-		if self.maxFastForwardSeconds < self.freePowerSeconds then
-				self.maxFastForwardSeconds = self.freePowerSeconds end
 		power.init()
 	end
 	
 	transferUtil.init()
 	object.setInteractive(true)
+	
+	storage.ffCycles = storage.ffCycles or 0	-- count of how many fast forwards have been completed.
 	
 	--Variables who's state is configurable.
 	storage.growthRate = storage.growthRate or self.baseGPS		--Amount of growth per second
@@ -133,11 +134,8 @@ function update(dt)
 	end
 	storage.lastWorldTime = world.time()
 	
-	--Don't allow infinite fast forward time.
-	secondsThisUpdate = math.min(secondsThisUpdate, self.maxFastForwardSeconds)
-	
 	--useful for debugging...
-	--sb.logInfo("[%s], growth %s/%s seconds this update %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
+	sb.logInfo("[%s], growth %s/%s seconds this update %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
 	
 	local growthmod = secondsThisUpdate
 	
@@ -194,7 +192,13 @@ function update(dt)
 			if failToStages then
 				growthDif = newGrowth - storage.stage[storage.currentStage].val
 			end
-			refundTime = (growthDif / deltaGrowth) * secondsThisUpdate
+			if storage.ffCycles < self.maxFFCycles then
+				storage.ffCycles = storage.ffCycles + 1
+				refundTime = (growthDif / deltaGrowth) * secondsThisUpdate
+			else
+				storage.ffCycles = 0
+				refundTime = 0
+			end
 			storage.lastWorldTime = storage.lastWorldTime - refundTime
 			newGrowth = newGrowth - growthDif
 		end
@@ -255,7 +259,7 @@ function isn_doWaterIntake(fluidNeed)
 		if water.name == key and type(value) == "table" then
 			local amount, boost = value[1], value[2]
 			if type(amount) ~= "number" or amount <= 0 or type(boost) ~= "number" then
-				sb.logWarning("[fu_growingtray] found valid fluid named %s however either amount (%s) or boost (%s) was invalid.", key, amount, boost)
+				sb.logWarn("[fu_growingtray] found valid fluid named %s however either amount (%s) or boost (%s) was invalid.", key, amount, boost)
 				return false
 			end
 			local itemCount = (fluidNeed and math.min(water.count, math.ceil(fluidNeed / amount))) or 1
@@ -521,9 +525,9 @@ function isn_doFertProcess()
 		if fert.name == key and type(value) == "table" then
 			local seeds, use, boost, yield = value[1], value[2], value[3], value[4]
 			if type(seeds) ~= "number" or seeds < 1 or type(use) ~= "number" or use <= 0 or
-					type(boost) ~= "number" or type(yield) ~= number then
-				sb.logWarning("[fu_growingtray] Found valid fertilizer named %s however one of the following are invalid:", key)
-				sb.logWarning("                 use (%s), boost (%s), or yield (%s) was invalid.", seeds, use, boost, yield)
+					type(boost) ~= "number" or type(yield) ~= "number" then
+				sb.logWarn("[fu_growingtray] Found valid fertilizer named %s however one of the following are invalid:", key)
+				sb.logWarn("                 seeds (%s), use (%s), boost (%s), or yield (%s) was invalid.", seeds, use, boost, yield)
 				return
 			end
 			storage.seedUse = seeds
