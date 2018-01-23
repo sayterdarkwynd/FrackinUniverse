@@ -9,7 +9,7 @@ function init()
 end
 
 function update(dt)
-  status.modifyResource("health", self.healingRate)
+    status.modifyResource("health", (self.healingRate - self.penaltyRate) * dt)
 end
 
 function uninit()
