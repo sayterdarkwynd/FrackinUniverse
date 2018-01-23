@@ -12,9 +12,17 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "hgravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "config" : { "timeToLive" : 0.05 },
+      "angleAdjust" : 0
     }
   ],
-  "lightColor" : [73, 10, 0],
+  "lightColor" : [122, 22, 22],
   "damageKind" : "plasma"
 }

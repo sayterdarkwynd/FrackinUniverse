@@ -1,45 +1,56 @@
 {
-  "itemName" : "arconback",
-  "price" : 1000,
-  "inventoryIcon" : "heatprotectionicon.png",
-  "tooltipKind" : "baseaugment",
-  "rarity" : "rare",
-  "pickupQuestTemplates" : [ ],
-  "category" : "enviroProtectionPack",
-  "description" : "+25% Cosmic Resist, Acid Immunity. Helpful on ^red;Aether^reset; planets. Provides limited air.",
-  "shortdescription" : "ArCon EPP",
-  
-
-  "maleFrames" : "back.png",
-  "femaleFrames" : "back.png",
+  "itemName" : "conquerorlegs",
+  "price" : 600,
+  "inventoryIcon" : "icons.png:pants",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
+  "rarity" : "rare",
+   "description" : "Set Bonus:
+^cyan;+12% Physical Resist^reset;
+^#e43774;Immune: Cold, Radiation, Poison, Oxygen^reset;
+^green;+2 Crit, +35% Crit Damage, +25% Damage (Eelctric/Plasma)^reset;",
+  "shortdescription" : "ArCon Greaves",
+  "category" : "t5armor",
+  "tooltipKind" : "armornew2",
+  "itemTags" : [ "upgradeableWeapon" ],
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
 
-  "statusEffects" : [
+  "level" : 5,
+  "leveledStatusEffects" : [
     {
-      "stat" : "sulphuricImmunity",
-      "amount" : 1.0
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.05
     },
     {
-      "stat" : "cosmicResistance",
-      "amount" : 0.25
-    },   
-    {
-      "stat" : "maxBreath",
-      "amount" : 200
-    },    
-    {
-      "stat" : "breathDepletionRate",
-      "amount" : -2
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.36
     },
     {
-      "stat" : "breathRegenerationRate",
-      "amount" : 20
-    }    
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
+    }
   ],
 
-  "acceptsAugmentType" : "back",
-  "radioMessagesOnPickup" : [ "pickupepp" ],
-  
+  "statusEffects" : [
+    "conquerorsetbonus",
+    {
+      "stat" : "fu_conquerorset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.04
+    }
+  ],
   "colorOptions" : [
     // WHITE
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },  
@@ -66,4 +77,7 @@
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
   ] 
+  
 }
+
+
