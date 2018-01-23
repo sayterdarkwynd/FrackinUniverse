@@ -3,9 +3,9 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_conquerorset"
 
 weaponBonus={
-  {stat = "critChance", amount = 2},
-  {stat = "critBonus", baseMultiplier = 1.3},
-  {stat = "powerMultiplier", baseMultiplier = 1.25}
+  {stat = "critChance", amount = 1},
+  {stat = "critBonus", baseMultiplier = 1.25},
+  {stat = "powerMultiplier", baseMultiplier = 1.15}
 }
 
 armorBonus={

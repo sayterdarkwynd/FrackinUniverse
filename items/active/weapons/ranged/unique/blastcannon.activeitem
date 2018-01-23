@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A powerful dual-plasma blast cannon.
-^cyan;Counts as plasma for set bonuses.^reset;",
+^cyan;Counts as 'plasma' for set bonuses.^reset;
+^yellow;Inflicts Stun. Weaken with alt-fire.^reset;",
   "shortdescription" : "ArCon Cannon",
   "level" : 5,
   "tooltipKind" : "gun2",
@@ -62,7 +63,7 @@
     "class" : "GunFire",
 
     "fireTime" : 1.5,
-    "baseDps" : 5.5,
+    "baseDps" : 6.14,
     "energyUsage" : 40,
     "inaccuracy" : 0.05,
 
@@ -71,7 +72,8 @@
 
     "projectileType" : "fuplasmatorpedo2",
     "projectileParameters" : {
-      "knockback" : 40
+      "knockback" : 40,
+      "statusEffects" : [ "stun","vulnerability" ]
     },
 
     "stances" : {
@@ -104,11 +106,7 @@
     }
   },
 
-  "altAbilityType" : "swtjc_ewg_darkplasma",
-  "altAbility" : {
-    "fireTime" : 3,
-    "baseDps" : 2
-  },
+  "altAbilityType" : "fu_darkplasma",
   "critChance" : 3,
   "critBonus" : 10,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
