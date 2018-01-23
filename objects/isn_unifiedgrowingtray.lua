@@ -3,32 +3,20 @@ require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 local deltaTime=0
 function init()
-	self.requiredPower = config.getParameter("isn_requiredPower")
-	if type(self.requiredPower) ~= "number" then self.requiredPower = 0 end
+	self.requiredPower = config.getParameter("isn_requiredPower") or 0
 	self.handlesSaplings = config.getParameter("isn_growSaplings") or false
-	if type(self.handlesSaplings) ~= "boolean" then self.handlesSaplings = false end
-	self.baseGPS = config.getParameter("isn_baseGrowthPerSecond")
-	if type(self.baseGPS) ~= "number" or self.baseGPS <= 0 then self.baseGPS = 4 end
-	self.seedUse = config.getParameter("isn_defaultSeedUse")
-	if type(self.seedUse) ~= "number" or self.seedUse < 1 then self.seedUse = 4 end
-	self.baseYield = config.getParameter("isn_baseYields")
-	if type(self.baseYield) ~= "number" or self.baseYield < 1 then self.baseYield = 4 end
-	self.defaultFluidUse = config.getParameter("isn_defaultWaterUse")
-	if type(self.defaultFluidUse) ~= "number" or self.defaultFluidUse <= 0 then
-			self.defaultFluidUse = 4 end
-	self.unpoweredGrowthRate = config.getParameter("isn_unpoweredGrowthRate")
-	if type(self.unpoweredGrowthRate) ~= "number" or self.unpoweredGrowthRate <= 0 then
-			self.unpoweredGrowthRate = 0.434782609 end
-	self.maxFastForwardCycles = config.getParameter("isn_maxFastForwardCycles")
-	if type(self.maxFFCycles) ~= "number" or self.maxFFCycles < 0 then
-			self.maxFFCycles = 2 end
-	
+	self.baseGPS = config.getParameter("isn_baseGrowthPerSecond") or 4
+	self.seedUse = config.getParameter("isn_defaultSeedUse") or 4
+	self.baseYield = config.getParameter("isn_baseYields") or 4
+	self.defaultFluidUse = config.getParameter("isn_defaultWaterUse") or 4
+	self.unpoweredGrowthRate = config.getParameter("isn_unpoweredGrowthRate") or 0.434782609
+	self.maxFFCycles = config.getParameter("isn_maxFastForwardCycles") or 2
 	if self.requiredPower > 0 then
-		self.freePowerSeconds = config.getParameter("isn_freePowerSeconds") or 10
-		local scriptDelta = config.getParameter("scriptDelta") or 1 --Validity of this should be handled by Starbound.
-		local minTime = 2 * scriptDelta
-		if type(self.freePowerSeconds) ~= "number" or self.freePowerSeconds < minTime then
-				self.freePowerSeconds = minTime end
+		self.freePowerSeconds = config.getParameter("isn_freePowerSeconds")
+		if not self.freePowerSeconds then
+			local scriptDelta = config.getParameter("scriptDelta") or 60
+			self.freePowerSeconds = 2.1 * (scriptDelta / 60)
+		end
 		power.init()
 	end
 	
@@ -69,6 +57,7 @@ function init()
 			return
 		end
 		--If Starbound stored stage keys as tostring(number), copy them back to keys of number.
+		--This caused me quite a lot of headaches when it happened without this check.
 		for i = 1, storage.stages do
 			if type(storage.stage[tostring(i)]) == "table" then
 				storage.stage[i] = storage.stage[tostring(i)]
@@ -135,7 +124,7 @@ function update(dt)
 	storage.lastWorldTime = world.time()
 	
 	--useful for debugging...
-	sb.logInfo("[%s], growth %s/%s seconds this update %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
+	--sb.logInfo("[%s], growth %s/%s seconds this update %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
 	
 	local growthmod = secondsThisUpdate
 	
@@ -257,19 +246,14 @@ function isn_doWaterIntake(fluidNeed)
 	local water = contents[storage.waterslot]
 	if not water then return false end
 	
-	for key, value in pairs(config.getParameter("isn_waterInputs")) do
-		if water.name == key and type(value) == "table" then
-			local amount, boost = value[1], value[2]
-			if type(amount) ~= "number" or amount <= 0 or type(boost) ~= "number" then
-				sb.logWarn("[fu_growingtray] found valid fluid named %s however either amount (%s) or boost (%s) was invalid.", key, amount, boost)
-				return false
-			end
-			local itemCount = (fluidNeed and math.min(water.count, math.ceil(fluidNeed / amount))) or 1
-			storage.fluid = storage.fluid + (amount * itemCount)
-			storage.growthFluid = boost
-			world.containerConsume(entity.id(), {name = water.name, count = itemCount, data={}})
-			return true
-		end
+	local waterInputs = config.getParameter("isn_waterInputs") or {}
+	if waterInputs[water.name] then
+		local amount = waterInputs[water.name][1]
+		local itemCount = (fluidNeed and math.min(water.count, math.ceil(fluidNeed / amount))) or 1
+		storage.fluid = storage.fluid + (amount * itemCount)
+		storage.growthFluid = waterInputs[water.name][2]
+		world.containerConsume(entity.id(), {name = water.name, count = itemCount, data={}})
+		return true
 	end
 	return false
 end
@@ -357,6 +341,10 @@ If I follow correctly, the stem and the foliage each can have a single item type
 That drop is randomly picked from "dropConfig/drops" table.
 Equal weight, each drop line is a single item type and coresponding count.
 Also foliage is the only source for saplings.
+
+We don't make assumptions about the stem or folliage drop tables.  We know
+there are some trees that don't drop saplings (probably due to empty drop
+table), there may also be stems with empty drop tables.
 ]]--
 function isn_genSaplingDrops()
 	local drops = {}
@@ -523,21 +511,13 @@ function isn_doFertProcess()
 	storage.fluidUse = 1
 	storage.growthFert = 0
 	
-	for key, value in pairs(config.getParameter("isn_fertInputs")) do
-		if fert.name == key and type(value) == "table" then
-			local seeds, use, boost, yield = value[1], value[2], value[3], value[4]
-			if type(seeds) ~= "number" or seeds < 1 or type(use) ~= "number" or use <= 0 or
-					type(boost) ~= "number" or type(yield) ~= "number" then
-				sb.logWarn("[fu_growingtray] Found valid fertilizer named %s however one of the following are invalid:", key)
-				sb.logWarn("                 seeds (%s), use (%s), boost (%s), or yield (%s) was invalid.", seeds, use, boost, yield)
-				return
-			end
-			storage.seedUse = seeds
-			storage.fluidUse = use
-			storage.growthFert = boost
-			storage.yield = storage.yield + yield
-			return fert.name
-		end
+	local fertInputs = config.getParameter("isn_fertInputs") or {}
+	if fertInputs[fert.name] then
+		storage.seedUse = fertInputs[fert.name][1]
+		storage.fluidUse = fertInputs[fert.name][2]
+		storage.growthFert = fertInputs[fert.name][3]
+		storage.yield = storage.yield + fertInputs[fert.name][4]
+		return fert.name
 	end
 	return
 end
