@@ -3,11 +3,11 @@
   "price" : 800,
   "inventoryIcon" : "blastcannon.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A powerful plasma blast, paired with swift and deadly homing alternate.
+  "rarity" : "rare",
+  "description" : "A powerful dual-plasma blast cannon.
 ^cyan;Counts as plasma for set bonuses.^reset;",
   "shortdescription" : "ArCon Cannon",
-  "level" : 2,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
   "itemTags" : ["weapon","ranged","rocketlauncher","plasma","upgradeableWeapon"],
@@ -62,7 +62,7 @@
     "class" : "GunFire",
 
     "fireTime" : 1.5,
-    "baseDps" : 9,
+    "baseDps" : 5.5,
     "energyUsage" : 40,
     "inaccuracy" : 0.05,
 
@@ -104,7 +104,11 @@
     }
   },
 
-  "altAbilityType" : "swtjc_ewg_homingrocketfast",
+  "altAbilityType" : "swtjc_ewg_darkplasma",
+  "altAbility" : {
+    "fireTime" : 3,
+    "baseDps" : 2
+  },
   "critChance" : 3,
   "critBonus" : 10,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
