@@ -172,9 +172,8 @@ function removeFood(args)
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
   storage.mateTimer = math.max((storage.mateTimer or 60) - 0.277777778/config.getParameter('mateTimer',60),0)
   self.timerPoop = (self.timerPoop or 90) - 1
-  local diet = config.getParameter('diet','omnivore')
   
-  if self.timerPoop <= 0 and storage.food >= 50 and not diet == "robo" then
+  if self.timerPoop <= 0 and storage.food >= 50 then
     checkPoop()
     self.timerPoop = 90
   end    
@@ -249,15 +248,17 @@ end
 function checkPoop()
   self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
   self.randPoop = math.random(800) - self.foodMod
-  if self.randPoop <= 1 then
+  self.foodType = config.getParameter("diet","omnivore")
+  if self.randPoop <= 1 and not self.foodType == "robo" then
     animator.playSound("deathPuff")
     world.spawnItem("poop", mcontroller.position(), 1) -- poop to fertilize trays
   end  
-  if self.randPoop >= 700 then
+  if self.randPoop >= 700 and not self.foodType == "robo" then
     world.spawnLiquid(mcontroller.position(), 1, 1) --water urination to water soil
-  end   
+  end     
 end
-
+  
+  
 
 function checkSoil()
   local tileModConfig = root.assetJson('/scripts/actions/monsters/farmable.config').tileMods

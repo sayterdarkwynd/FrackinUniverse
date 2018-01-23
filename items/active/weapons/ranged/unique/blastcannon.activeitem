@@ -4,12 +4,13 @@
   "inventoryIcon" : "blastcannon.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "A powerful primary rocket, paired with swift and deadly homing alternate.",
-  "shortdescription" : "Blast Cannon",
+  "description" : "A powerful plasma blast, paired with swift and deadly homing alternate.
+^cyan;Counts as plasma for set bonuses.^reset;",
+  "shortdescription" : "ArCon Cannon",
   "level" : 2,
   "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
-  "itemTags" : ["weapon","ranged","rocketlauncher","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","rocketlauncher","plasma","upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -18,7 +19,7 @@
     "middle" : "blastcannon.png",
     "middleunlit" : "",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
   "animationCustom" : {
     "animatedParts" : {
@@ -49,7 +50,7 @@
   },
 
 
-  "baseOffset" : [0.30, 0.385],
+  "baseOffset" : [0.05, 0.6],
   "muzzleOffset" : [3, 0.15],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
@@ -61,14 +62,14 @@
     "class" : "GunFire",
 
     "fireTime" : 1.5,
-    "baseDps" : 8,
+    "baseDps" : 9,
     "energyUsage" : 40,
-    "inaccuracy" : 0.0,
+    "inaccuracy" : 0.05,
 
-    "projectileCount" : 1,
+    "projectileCount" : 2,
     "fireType" : "auto",
 
-    "projectileType" : "minirocket3",
+    "projectileType" : "fuplasmatorpedo2",
     "projectileParameters" : {
       "knockback" : 40
     },
