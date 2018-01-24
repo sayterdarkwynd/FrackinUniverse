@@ -368,6 +368,7 @@ function update(dt)
   -- update driver
 
   local driverId = vehicle.entityLoungingIn("seat")
+
   if driverId and not self.driverId then
     animator.setAnimationState("power", "activate")
   elseif self.driverId and not driverId then
@@ -914,6 +915,9 @@ function update(dt)
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
     
+    
+    if vehicle.entityLoungingIn("seat") then
+    
     -- mech ground thump damage (FU) ************************************
 	  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,55)
 	  self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,300)
@@ -967,8 +971,9 @@ function update(dt)
           animator.burstParticleEmitter("legImpact")
         end
         
+    end
   end
-  
+  --
   
   self.lastPosition = newPosition
   self.lastVelocity = newVelocity
