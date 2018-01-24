@@ -50,6 +50,41 @@ function dropMonsterHarvest(args, board)
   return true
 end
 
+function findTrough(args)
+  local troughtypelist = root.assetJson('/scripts/actions/monsters/farmable.config').troughlist
+  local troughlist = {}
+  for i = 1,#troughtypelist do
+    local objectList = world.objectQuery(args.position,100,{name = troughtypelist[i], order = "nearest"})
+	if #objectList > 0 then
+	  table.insert(troughlist,objectList[1])
+	end
+  end
+  local isEmpty = true
+  for key,value in pairs(troughlist) do
+    isEmpty = false
+	break
+  end
+  if isEmpty then return false end
+  local troughdislist = {}
+  for _,value in pairs(troughlist) do
+    troughdislist[value] = world.magnitude(args.position,world.entityPosition(value))
+  end
+  for key,value in pairs(troughdislist) do
+    for key2,value2 in pairs(troughdislist) do
+      if key ~= key2 then
+        if value > value2 then
+          troughdislist[key] = nil
+        else
+          troughdislist[key2] = nil
+        end
+      end
+    end
+  end
+  for key,value in pairs(troughdislist) do
+    return true,{entity = key}
+  end
+end
+
 function eatFood(args)
   if not args.entity then return false end
   local foodlist = root.assetJson('/scripts/actions/monsters/farmable.config').foodlists
@@ -106,6 +141,11 @@ function getFood()
 end
 
 function removeFood(args)
+  self.timerPoop = (self.timerPoop or 90) - 1
+          if self.timerPoop <= 0 then
+	    checkPoop()
+	    self.timerPoop = 90
+	  end       
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)	
   return true
 end
@@ -117,27 +157,22 @@ function displayHappiness()
 	    world.spawnProjectile("fu_sad", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	  elseif storage.food >= 80 then 
 	    world.spawnProjectile("fu_happy", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	    checkPoop()
 	  elseif storage.food >=50 then
 	    world.spawnProjectile("fu_hungry",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	    checkPoop()
 	  end     
 	self.timer = 90
-	
   end
 end
 
 function checkPoop()
-      -- does the animal need to poop?
+  if storage.food >=50 then
         self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
-  	self.randPoop = math.random(420) - self.foodMod
-  	if self.randPoop < 1 then self.randPoop = 1 end
-  	--sb.logInfo("poop roll = "..self.randPoop)
-  	--sb.logInfo("mod = "..self.foodMod)
-  	if self.randPoop <= 1.14 then
+  	self.randPoop = math.random(500) - self.foodMod
+  	if self.randPoop <= 1 then
   	  animator.playSound("deathPuff")
   	  world.spawnItem("poop", mcontroller.position(), 1)
-	end	
+	end  
+  end
 end
 
 function happinessCalculation()
