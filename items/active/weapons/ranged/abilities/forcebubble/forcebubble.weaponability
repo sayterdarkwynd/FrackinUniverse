@@ -1,0 +1,87 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [-0.75, -0.375],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0.75, -0.125],
+          "image" : ""
+        }
+      }
+    }},
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "rotationGroup" : "weapon",
+        "emissionRate" : 8,
+        "offsetPart" : "muzzleFlash",
+        "offsetRegion" : [0.5, 1.0, 1.0, 1.5],
+        "particles" : [
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/objects/mineralcannonshot.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Force Bubble",
+    "type" : "forcebubble",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "staticdischarge",
+    "projectileParameters" : {
+	"periodicActions":[
+		{
+		  "action":"sound",
+		  "options":["/sfx/objects/mineralcannonshot.ogg"], 
+		  "time":0.05, 
+		  "repeat":false
+		}
+	], 
+	"processing":"?hueshift=-60", 
+	"statusEffects":[], 
+	"bounces":0, 
+	"angleAdjust":180, 
+	"speed":0, 
+	"timeToLive":5.0, 
+	"power":0.0, "knockback":20, 
+	"actionOnReap":[]
+    },
+    "projectileCount" : 1,
+    "inaccuracy" : 0,
+    "baseDps" : 4.5,
+    "energyUsage" : 50,
+    "fireTime" : 2.0,
+    "fireType" : "auto",
+
+    "firePositionPart" : "grenadelauncher",
+    "hidePrimaryMuzzleFlash" : true,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

@@ -37,7 +37,7 @@ function update(args)
     attemptActivation()
   end
   self.specialLast = args.moves["special1"]
-  self.pressDown = args.moves["down"]
+  self.pressDown = args.moves["primaryFire"]
 
   if not args.moves["special1"] then
     self.forceTimer = nil
