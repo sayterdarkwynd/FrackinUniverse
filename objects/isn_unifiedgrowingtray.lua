@@ -131,6 +131,7 @@ function update(dt)
 	if not storage.hasFluid then
 		storage.hasFluid = isn_doFluidConsume()
 		if not storage.hasFluid then
+			storage.lastWorldTime = nil -- we ran out of resources, forget about saved time.
 			if self.requiredPower > 0 then animator.setAnimationState("powlight", "off") end
 			return
 		end
