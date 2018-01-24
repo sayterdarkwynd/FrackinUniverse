@@ -13,7 +13,7 @@ function init()
 	self.spawnSpeed = config.getParameter("spawnSpeed", 0)
 	self.spawnInterval = 0
 	
-	baseInit(self.dummyStatus)
+	baseInit()
 end
 
 function update(dt)
@@ -43,9 +43,9 @@ function update(dt)
 		self.spawnInterval = self.spawnInterval - dt
 	end
 	
-	baseUpdate(dt, self.dummyStatus)
+	baseUpdate(dt)
 end
 
 function uninit()
-	baseUninit(self.dummyStatus, nil)
+	baseUninit()
 end

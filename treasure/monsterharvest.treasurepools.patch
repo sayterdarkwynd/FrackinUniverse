@@ -1,13 +1,26 @@
 [
 {
 	"op":"add",
+	"path":"/fuorbisHarvest",
+	"value":[[0,{
+			"pool":[
+			{"weight":0.24, "item":[ "salvagearm", 1] },
+			{"weight":0.24, "item":[ "salvagebody", 1] },
+			{"weight":0.24, "item":[ "salvagebooster", 1] },
+			{"weight":0.24, "item":[ "salvagelegs", 1] },
+			{"weight":0.04, "item":[ "fuscienceresource", 10] }
+			],
+			"poolRounds":[[1,1]]}]]
+},
+{
+	"op":"add",
 	"path":"/poptopHarvest",
 	"value":[[0,{
 			"pool":[
 			{"weight":0.40, "item":[ "sharpenedclaw", 1] },
 			{"weight":0.30, "item":[ "sharpenedclaw", 2] },
 			{"weight":0.25, "item":[ "sharpenedclaw", 3] },
-			{"weight":0.05, "item":[ "fuscienceresource", 1] }
+			{"weight":0.05, "item":[ "fuscienceresource", 10] }
 			],
 			"poolRounds":[[1,1]]}]]
 },
@@ -19,7 +32,19 @@
 			{"weight":0.40, "item":[ "monsterplating", 1] },
 			{"weight":0.30, "item":[ "monsterplating", 2] },
 			{"weight":0.25, "item":[ "monsterplating", 3] },
-			{"weight":0.05, "item":[ "fuscienceresource", 1] }
+			{"weight":0.05, "item":[ "fuscienceresource", 10] }
+			],
+			"poolRounds":[[1,1]]}]]
+},
+{
+	"op":"add",
+	"path":"/dodoHarvestIron",
+	"value":[[0,{
+			"pool":[
+			{"weight":0.40, "item":[ "ironore", 1] },
+			{"weight":0.30, "item":[ "ironore", 2] },
+			{"weight":0.25, "item":[ "ironore", 3] },
+			{"weight":0.05, "item":[ "fuscienceresource", 10] }
 			],
 			"poolRounds":[[1,1]]}]]
 },
@@ -31,14 +56,37 @@
 			{"weight":0.40, "item":[ "copperore", 1] },
 			{"weight":0.30, "item":[ "copperore", 2] },
 			{"weight":0.25, "item":[ "copperore", 3] },
-			{"weight":0.05, "item":[ "fuscienceresource", 1] }
+			{"weight":0.05, "item":[ "fuscienceresource", 10] }
 			],
 			"poolRounds":[[1,1]]}]]
 },
   {
+    "op": "remove",
+    "path": "/defaultFluffaloHarvest/0/1/poolRounds"
+  },
+  {
+    "op": "add",
+    "path": "/defaultFluffaloHarvest/0/1/pool/0/count",
+    "value": 1
+  },
+  {
     "op": "replace",
     "path": "/defaultFluffaloHarvest/0/1/pool/0/weight",
-    "value": 0.9
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/defaultFluffaloHarvest/0/1/pool/0/item",
+    "value": "cottonwool"
+  },
+  {
+    "op": "add",
+    "path": "/defaultFluffaloHarvest/0/1/pool/-",
+    "value": {
+      "weight": 0.4,
+      "item": "plantfibre",
+      "count": 5
+    }
   },
   {
     "op": "add",
@@ -46,9 +94,10 @@
     "value": {
       "weight": 0.1,
       "item": "fuscienceresource",
-      "count": 5
+      "count": 10
     }
   },
+  
   {
     "op": "replace",
     "path": "/fireFluffaloHarvest/0/1/pool/0/weight",

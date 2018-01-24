@@ -1,7 +1,7 @@
 {
   "type" : "fudodofarm",
   "shortdescription" : "Copperbeak",
-  "description" : "A handy farm animal, since they digest their food into copper pellets.",
+  "description" : "A handy farm animal, since they digest their food into copper pellets. Carnivore.",
   "categories" : [ "fudodofarm" ],
   "parts" : [ "body", "spawn" ],
 
@@ -9,17 +9,17 @@
   "reversed" : false,
 
   "dropPools" : [ { "default" : "huntingflying" } ],
-
-
-  "diet" : "carnivore",
-  "hungerTime" : 15,
   
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
     ],
+    
+  "eggType" : "copperbeakegg",
+  "mateTime" : 60,    
   "diet" : "carnivore",
   "hungerTime" : 15,
+  
     "persistent" : true,
 
     "behavior" : "farmable",
@@ -46,7 +46,7 @@
     "knockoutEffect" : "",
     "deathParticles" : "deathPoof",
 
-    "damageTeamType" : "friendly",
+    "damageTeamType" : "passive",
 
     "statusSettings" : {
       "statusProperties" : {

@@ -2,7 +2,6 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
-	self.dummyStatus = "medicalexperimentaldummy"
 	self.effectInterval = 0
 	self.equalityScore = 0.5
 	self.doubleChance = config.getParameter("doubleChance", 0) * 0.01
@@ -10,7 +9,7 @@ function init()
 	self.positiveEffects = config.getParameter("positiveEffects", 0)
 	self.negativeEffects = config.getParameter("negativeEffects", 0)
 	
-	baseInit(self.dummyStatus)
+	baseInit()
 end
 
 function update(dt)
@@ -48,9 +47,9 @@ function update(dt)
 		self.effectInterval = self.effectInterval - dt
 	end
 	
-	baseUpdate(dt, self.dummyStatus)
+	baseUpdate(dt)
 end
 
 function uninit()
-	baseUninit(self.dummyStatus, self.modifierGroupID)
+	baseUninit()
 end

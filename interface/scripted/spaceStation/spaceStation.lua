@@ -1,5 +1,6 @@
-
+require "/scripts/researchGenerators.lua"
 require "/scripts/textTyper.lua"
+require "/scripts/researchGenerators.lua"
 
 function init()
 	self.data = root.assetJson("/interface/scripted/spaceStation/spaceStation.config")
@@ -221,7 +222,7 @@ function firstTimeInit()
 		objectData.specialsTable = {
 			invested = 0,
 			investing = 0,
-			investRequired = 100,
+			investRequired = stationData.trading.initialInvestRequired,
 			investLevel = 1
 		}
 	else
@@ -537,29 +538,19 @@ function commandProcessor(wd)
 			end
 			
 		elseif type == "medical" then
-			writerInit(textData, "[(instant)^red;Medical station special is temporarily disabled due to player corrupting bugs]")
+			modifyButtons("Acquire", "Remove", false, false, false, "Back")
+			widget.setButtonEnabled("button1", false)
 			
-			-- modifyButtons("Acquire", "Remove", false, false, false, "Back")
-			-- widget.setButtonEnabled("button1", false)
+			if not status.statusProperty("fuEnhancerActive", false) then
+				widget.setButtonEnabled("button2", false)
+			end
 			
-			-- if status.statusProperty("fuMedicalEnhancerDuration", 0) <= 0 then
-				-- widget.setButtonEnabled("button2", false)
-			-- end
+			widget.setPosition("playerPixels", self.data.pixelDisplaySpecialPos)
+			widget.setVisible("specialsScrollList", true)
+			widget.setVisible("playerPixels", true)
 			
-			-- local cooldown = math.floor(status.statusProperty("fuMedicalEnhancerCooldown", 0))
-			-- if player.isAdmin() then cooldown = 0 end
-			
-			-- if cooldown == 0 then
-				-- widget.setPosition("playerPixels", self.data.pixelDisplaySpecialPos)
-				-- widget.setVisible("specialsScrollList", true)
-				-- widget.setVisible("playerPixels", true)
-				
-				-- populateSpecialList()
-				-- writerInit(textData, textData[objectData.stationRace]["medicalSpecial"])
-			-- else
-				-- textData.medicalSpecialCooldownRemaining = toTime(cooldown)
-				-- writerInit(textData, textData[objectData.stationRace].cooldownEnhancer)
-			-- end
+			populateSpecialList()
+			writerInit(textData, textData[objectData.stationRace]["medicalSpecial"])
 			
 		elseif type == "scientific" then
 			widget.setVisible("scientificSpecialList", true)
@@ -601,31 +592,43 @@ function commandProcessor(wd)
 	elseif command == "Acquire" then
 		local special = stationData.selected
 		if special then
-			
-			local price = stationData.medical[stationData.selected.index][2]
-			if player.consumeCurrency("money", price) then
-				local effect = stationData.medical[stationData.selected.index][4]
-				
-				status.setStatusProperty("fuMedicalEnhancerDuration", stationData.medical[stationData.selected.index][5])
-				status.setStatusProperty("fuMedicalEnhancerCooldown", stationData.medicalSpecialCooldown)
-				status.addPersistentEffect("medicalStationSpecials", effect)
-				
-				writerInit(textData, textData[objectData.stationRace].acquireEnhancer)
-				resetGUI()
+			if status.statusProperty("fuEnhancerActive", false) then
+				writerInit(textData, textData[objectData.stationRace].activeEnhancer)
 			else
-				writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+				local price = stationData.medical[stationData.selected.index][2]
+				if player.consumeCurrency("money", price) then
+					local hasHandler = false
+					for _, tbl in ipairs(status.activeUniqueStatusEffectSummary()) do
+						if tbl[1] == "medicalStatusHandler" then
+							hasHandler = true
+							break
+						end
+					end
+					
+					if not hasHandler then
+						status.addPersistentEffect("fu_medstation", "medicalStatusHandler")
+					end
+					
+					local effect = stationData.medical[stationData.selected.index][4]
+					status.setStatusProperty("fuEnhancerActive", effect)
+					
+					writerInit(textData, textData[objectData.stationRace].acquireEnhancer)
+					resetGUI()
+				else
+					writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+				end
 			end
 		end
 	
 	elseif command == "Remove" then
-		if player.consumeCurrency("money", stationData.medicalEnhancerRemoveCost) then
-			-- enhancers should handle getting removed by themselves when the resource is 0
-			status.setStatusProperty("fuMedicalEnhancerDuration", 0)
-			
-			widget.setButtonEnabled("button2", false)
-			writerInit(textData, textData[objectData.stationRace].removeEnhancer)
-		else
-			writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+		if status.statusProperty("fuEnhancerActive", false) then
+			if player.consumeCurrency("money", stationData.medicalEnhancerRemoveCost) then
+				widget.setButtonEnabled("button2", false)
+				status.setStatusProperty("fuEnhancerActive", false)
+				writerInit(textData, textData[objectData.stationRace].removeEnhancer)
+			else
+				writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+			end
 		end
 	elseif command == "Buy" then
 		resetGUI()
@@ -851,22 +854,19 @@ function populateShopList()
 	
 	for _, item in ipairs(objectData.shopItems) do
 		if type(item) == "table" then
+			local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
+			local price = item.parameters.price
+			if item.parameters.level then
+				price = price * (math.max(item.parameters.level * 0.5, 1))
+			end
+			price = calculateShopPrice(price, true)
 			
-			local config = root.itemConfig(item.name)
-			-- if config then
-				local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
-				local price = math.max((item.parameters.price or config.config.price or 1), 1)
-				
-				if item.parameters.level then
-					price = price * (math.max(item.parameters.level * 0.5, 1))
-				end
-				price = calculateShopPrice(price, true)
-				
-				widget.setText(listItem..".name", item.parameters.shortdescription or config.config.shortdescription)
-				widget.setItemSlotItem(listItem..".item", item)
-				widget.setText(listItem..".price", price)
-				widget.setData(listItem, { name = item.name, price = price, maxStack = config.config.maxStack, isWeapon = true })
-			-- end
+			widget.setText(listItem..".name", item.parameters.shortdescription or "")
+			widget.setItemSlotItem(listItem..".item", item)
+			widget.setText(listItem..".price", price)
+			widget.setData(listItem, { name = item.name, price = price, maxStack = 1, isWeapon = true })
+			
+			table.insert(shopListIDs, listItem)
 		else
 			local config = root.itemConfig(item)
 			if config then
@@ -898,7 +898,7 @@ function checkShopAvailability()
 	for _, listItem in ipairs(shopListIDs) do
 		local data = widget.getData(listItem)
 		
-		if data.price >= player.currency("money") then
+		if data.price > player.currency("money") then
 			widget.setVisible(listItem..".unavailableOverlay", true)
 			widget.setFontColor(listItem..".price", "red")
 		else
@@ -970,8 +970,7 @@ function shopRestock()
 			if config then
 				if root.itemHasTag(item, "weapon") then
 					local level = 0
-					local price = config.config.price or 1
-					price = math.max(price, 1)
+					local price = math.max(config.config.price or 1, 1)
 					
 					local roll = math.random(1,100)
 					local tiers = stationData.shop.weaponLevelRates
@@ -1178,7 +1177,7 @@ function calculateSellPrice()
 		for column = 1, self.data.shopSellSlots[2] do
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
-				local config = root.itemConfig(slotItem.name)
+				local config = root.itemConfig(slotItem.name, slotItem.parameters.level, slotItem.parameters.seed)
 				local itemPrice = config.config.price
 				if itemPrice then
 					total = itemPrice * slotItem.count + total
@@ -1227,19 +1226,19 @@ function calculateShopPrice(base, isBuying)
 			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel
 		end
 		
-		totalMult = self.data.shopBuyMult - (status.stat("fuCharisma") - 1) - (tradingOutpostMult * 0.01)
-		totalMult = math.max(totalMult, self.data.shopBuyMultMin)
+		totalMult = stationData.shop.initBuyMult - status.statusProperty("fuCharisma", 0) * stationData.trading.charismaBuyPriceReduction - tradingOutpostMult
+		totalMult = math.max(totalMult, stationData.shop.minBuyMult)
 		
-		return math.floor(base * totalMult)
+		return closestWhole(base * totalMult)
 	else
 		if objectData.stationType == "trading" then 
 			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel
 		end
 		
-		totalMult = self.data.shopSellMult + (status.stat("fuCharisma") - 1) + (tradingOutpostMult * 0.01)
-		totalMult = math.max(math.min(totalMult, self.data.shopSellMultMax), 0)
+		totalMult = stationData.shop.initSellMult + status.statusProperty("fuCharisma", 0) * stationData.trading.charismaSellPriceIncrease + tradingOutpostMult
+		totalMult = math.max(math.min(totalMult, stationData.shop.maxSellMult), 0)
 		
-		return math.floor(base * totalMult)
+		return closestWhole(base * totalMult)
 	end
 end
 
@@ -1518,13 +1517,7 @@ function specialSelected()
 		stationData.selected = widget.getData("specialsScrollList.itemList."..listItem)
 		widget.setButtonEnabled("button1", true)
 		
-		if objectData.stationType == "medical" then
-			writerInit(textData, stationData.medical[stationData.selected.index][6])
-		elseif objectData.stationType == "military" then
-			writerInit(textData, stationData.military[stationData.selected.index][5])
-		else
-			writerInit(textData, "ERROR - No or wrong station type")
-		end
+		writerInit(textData, stationData[objectData.stationType][stationData.selected.index][5])
 	else
 		widget.setButtonEnabled("button1", false)
 		writerInit(textData, "No item selected.\nHow the fuck did you achieve this?\nSeriously, I'm impressed.\n\nReport this I guess?")
@@ -1678,8 +1671,15 @@ function specialsTableInit()
 	widget.setVisible("benefitsSellPriceMult", true)
 	
 	widget.setText("investLevel", "Lvl "..tostring(objectData.specialsTable.investLevel))
-	widget.setText("benefitsBuyPriceMult", "-"..tostring(objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel).."%")
-	widget.setText("benefitsSellPriceMult", "+"..tostring(objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel).."%")
+	
+	local charismaBuy = status.statusProperty("fuCharisma", 0) * 100 * stationData.trading.charismaBuyPriceReduction
+	local charismaSell = status.statusProperty("fuCharisma", 0) * 100 * stationData.trading.charismaSellPriceIncrease
+	
+	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
+	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
+	
+	widget.setText("benefitsBuyPriceMult", tostring(buyPcnt).."%")
+	widget.setText("benefitsSellPriceMult", tostring(sellPcnt).."%")
 		
 	widget.setVisible("playerPixels", true)
 	widget.setPosition("playerPixels", self.data.pixelDisplayInvestPos)
@@ -1690,6 +1690,7 @@ function specialsTableInit()
 	else
 		writerInit(textData, textData[objectData.stationRace].tradingSpecialMax)
 		widget.setText("investRequired", "Fully upgraded!")
+		checkResearchBonus()
 		widget.setButtonEnabled("investButton", false)
 		widget.setButtonEnabled("investMax", false)
 		widget.setText("investAmount", "")
@@ -1706,26 +1707,32 @@ function invest()
 		objectData.specialsTable.investLevel = objectData.specialsTable.investLevel + 1
 		widget.setText("investLevel", "Lvl "..tostring(objectData.specialsTable.investLevel))
 		
-		objectData.specialsTable.investRequired = 100 + (objectData.specialsTable.investLevel * 123)
+		objectData.specialsTable.investRequired = closestWhole(stationData.trading.initialInvestRequired * (stationData.trading.investRequirementMult ^ objectData.specialsTable.investLevel))
 	end
 	
 	-- Disable some elements and increase charisma stat when reaching max level
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
-		writerInit(textData, textData[objectData.stationRace]["specialsTableMax"])
+		writerInit(textData, textData[objectData.stationRace].tradingSpecialMax)
 		widget.setText("investRequired", "Fully upgraded!")
 		widget.setButtonEnabled("investButton", false)
 		widget.setButtonEnabled("investMax", false)
 		widget.setText("investAmount", "")
-		
-		-- Increase max level stations counter
+		checkResearchBonus()
+		status.setStatusProperty("fuCharisma", status.statusProperty("fuCharisma", 0) + 1)
 	else
 		objectData.specialsTable.investing = 0
 		widget.setText("investAmount", "")
 		widget.setText("investRequired", "Required: "..tostring(objectData.specialsTable.investRequired - objectData.specialsTable.invested))
 	end
 	
-	widget.setText("benefitsBuyPriceMult", "-"..tostring(objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel).."%")
-	widget.setText("benefitsSellPriceMult", "+"..tostring(objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel).."%")
+	local charismaBuy = status.statusProperty("fuCharisma", 0) * stationData.trading.charismaBuyPriceReduction * 100
+	local charismaSell = status.statusProperty("fuCharisma", 0) * stationData.trading.charismaSellPriceIncrease * 100
+	
+	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
+	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
+	
+	widget.setText("benefitsBuyPriceMult", tostring(buyPcnt).."%")
+	widget.setText("benefitsSellPriceMult", tostring(sellPcnt).."%")
 	
 	updateBar(false)
 	updateBar(true)
@@ -1734,6 +1741,7 @@ end
 function investMax()
 	objectData.specialsTable.investing = math.min(math.min(objectData.specialsTable.investRequired - objectData.specialsTable.invested, 99999), player.currency("money"))
 	widget.setText("investAmount", objectData.specialsTable.investing)
+	checkResearchBonus()
 end
 
 function investAmount(wd)

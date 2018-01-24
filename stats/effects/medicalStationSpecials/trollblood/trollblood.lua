@@ -2,7 +2,6 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
-	self.dummyStatus = "medicaltrollblooddummy"
 	self.oldHealth = status.resource("health")
 	self.regenPcnt = config.getParameter("regenPcnt", 0) * 0.01
 	self.regenInstances = config.getParameter("regenDuration", 0) / config.getParameter("regenInterval", 0)
@@ -14,7 +13,7 @@ function init()
 		{stat = "energyRegenBlockTime", amount = config.getParameter("energyBlockIncrease", 0)}
 	})
 	
-	baseInit(self.dummyStatus)
+	baseInit()
 end
 
 function update(dt)
@@ -48,9 +47,9 @@ function update(dt)
 	end
 	
 	self.oldHealth = status.resource("health")
-	baseUpdate(dt, self.dummyStatus)
+	baseUpdate(dt)
 end
 
 function uninit()
-	baseUninit(self.dummyStatus, self.modifierGroupID)
+	baseUninit(self.modifierGroupID)
 end

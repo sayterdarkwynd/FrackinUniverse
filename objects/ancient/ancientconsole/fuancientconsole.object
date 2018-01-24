@@ -1,0 +1,81 @@
+{
+  "objectName" : "fuancientconsole",
+  "colonyTags" : ["ancient"],
+  "rarity" : "Legendary",
+  "category" : "other",
+  "price" : 0,
+  "printable" : false,
+
+  "description" : "This looks like the control panel for the gate. It still seems to work.",
+  "shortdescription" : "Ancient Console",
+  "offeredQuests" : [ ],
+  "race" : "ancient",
+
+  "apexDescription" : "An extremely old piece of technology.",
+  "avianDescription" : "This console must be as old at the gate itself. That's old!",
+  "floranDescription" : "Ancient controlsss for the ancient gate.",
+  "glitchDescription" : "Impressed. The control panel for the gate, it looks very old indeed.",
+  "humanDescription" : "The gate control panel. It must be as old as the gate.",
+  "hylotlDescription" : "The gate console. Like the gate, it is a mystery.",
+  "novakidDescription" : "Let's see if I can't get this old thing workin'.",
+
+  "lightColor" : [113, 89, 128],
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "ancientconsole.png:<color>.<frame>", "fullbright" : true }, { "image" : "ancientconsolelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-46, 0],
+      "animationPosition" : [1, 14],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "lightPosition" : [0, 1],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0] ],
+
+      "detectArea" : [ [-2, 0], [2.3, 5] ]
+    },
+    {
+      "imageLayers" : [ { "image" : "ancientconsole.png:<color>.<frame>", "fullbright" : true }, { "image" : "ancientconsolelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-33, 0],
+      "animationPosition" : [14, 14],
+
+      "direction" : "right",
+
+      "lightPosition" : [0, 1],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-1, 0], [0, 0], [1, 0], [2, 0], [3, 0], [4, 0] ],
+
+      "detectArea" : [ [-0.3, 0], [4, 5] ]
+    }
+  ],
+
+  "animation" : "/objects/ancient/ancientconsole/ancientconsole.animation",
+  "animationParts" : {
+    "bg" : "ancientconsole.png",
+    "fg" : "ancientconsolelit.png",
+    "portal" : "portal.png"
+  },
+
+  "uniqueId" : "ancientgate2",
+
+  "scripts" : [ "/objects/ancient/ancientconsole/fuancientconsole.lua" ],
+  "scriptDelta" : 20,
+
+  // standard behavior on terrestrial worlds; this is magically replaced for non-terrestrial
+  // world (i.e. floating dungeon gates)
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/gatewarp.config",
+
+  "inactiveInteractAction" : "ScriptPane",
+  "inactiveInteractData" : "/interface/scripted/ancientconsole/ancientconsolegui.config"
+}

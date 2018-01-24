@@ -1,0 +1,40 @@
+{
+  "objectName" : "ironbeakegg",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "farmBeastEgg",
+  "price" : 500,
+
+  "description" : "Hatches into a tiny chick and matures into a Ironbeak. The adult Ironbeak produces iron.",
+  "shortdescription" : "Ironbeak Egg",
+  "race" : "generic",
+
+  "inventoryIcon" : "ironbeakegg.png:idle.1",
+  "orientations" : [
+    {
+      "image" : "ironbeakegg.png:idle.1",
+      "imagePosition" : [-7, -3],
+
+      "spaces" : [ [-1, 0], [-1, 1], [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/farmables/eggs/farmableegg.animation",
+  "animationPosition" : [-7, -3],
+  "animationParts" : {
+    "egg" : "ironbeakegg.png"
+  },
+
+  "scripts" : ["/objects/farmables/eggs/farmableegg.lua"],
+  "scriptDelta" : 60,
+
+  "hatchTime" : 1000,
+  "forceHatchTime" : 1000,
+
+  "spawnMonster" : "fudodofarmironbaby",
+  "spawnOffset" : [0.5, 0.5]
+}

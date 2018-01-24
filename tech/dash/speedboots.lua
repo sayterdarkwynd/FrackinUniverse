@@ -30,11 +30,21 @@ function init()
         startDash(dashKey == "left" and -1 or 1)
       end
     end)
+    
+  if status.isResource("food") then
+    status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig", math.huge);
+    status.addPersistentEffect("wallClingPenalty2", "feedpackneg", math.huge);
+  else
+    status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig2", math.huge);
+  end
   
+
 end
 
 function uninit()
   status.clearPersistentEffects("movementAbility")
+  status.clearPersistentEffects("wallClingPenalty")
+  status.clearPersistentEffects("wallClingPenalty2")
   tech.setParentDirectives()
 end
 

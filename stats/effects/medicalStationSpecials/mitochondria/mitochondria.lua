@@ -2,11 +2,10 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
-	self.dummyStatus = "medicalmitochondriadummy"
 	self.regenInterval = config.getParameter("regenInterval", 0)
 	self.energyToHealth = config.getParameter("energyToHealth", 0)
 	
-	baseInit(self.dummyStatus)
+	baseInit()
 end
 
 function update(dt)
@@ -25,9 +24,9 @@ function update(dt)
 		self.regenInterval = self.regenInterval - dt
 	end
 	
-	baseUpdate(dt, self.dummyStatus)
+	baseUpdate(dt)
 end
 
 function uninit()
-	baseUninit(self.dummyStatus, nil)
+	baseUninit()
 end

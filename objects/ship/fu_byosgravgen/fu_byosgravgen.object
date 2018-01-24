@@ -1,0 +1,67 @@
+{
+  "objectName" : "fu_byosgravgen",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "printable" : false,
+  "price" : 1600,
+  "rarity" : "rare",
+  "objectType" : "physics",
+  "description" : "Generates a gravity field on your ship. Has a range of 30 blocks.",
+  "shortdescription" : "^orange;Ship Gravity Generator^white;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "inventoryIcon" : "fu_byosgravgenicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_byosgravgen.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_byosgravgenlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-30, -30, 30, 30]
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_byosgravgen.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_byosgravgenlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-30, -30, 30, 30]
+    }  
+  ],
+  
+  "scripts" : [ 
+  "/scripts/npcToyObject.lua", 
+  "fu_byosgravgen.lua",
+  "/objects/isn_sharedobjectscripts.lua"
+  ],
+  
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  },
+  "inputNodes" : [ [0, 0] ],
+  "range" : 30
+}

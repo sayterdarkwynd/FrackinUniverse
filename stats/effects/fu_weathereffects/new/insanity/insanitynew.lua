@@ -28,6 +28,8 @@ function init()
   self.multiply = config.getParameter("multiplyColor")
   self.saturation = 0
   
+  self.madnessTotal = config.getParameter("madnessTotal",0)
+  
   checkEffectValid()
 
   script.setUpdateDelta(5)
@@ -162,6 +164,8 @@ function messageCheck()
   self.hungerLevel = hungerLevel()
   self.liquidPercent = mcontroller.liquidPercentage()
 
+
+      
   if (self.liquidPercent) >= 0.5 and self.timerRadioMessage < 1 and not self.usedLiq then
 		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 1.0) 
 		   self.timerRadioMessage = 60 
@@ -223,6 +227,7 @@ end
 
 
 function update(dt)
+
 checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt
 self.biomeTimer2 = self.biomeTimer2 - dt
@@ -252,8 +257,17 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
              --})
              activateVisualEffects()
       end
+      
 
+     
       if (self.biomeTimer <= 0) and (self.resistTotal) < (self.effectCutoffValue) then
+        
+       -- self.madnessTotal = self.madnessTotal + math.random(1,200)
+       -- if self.madnessTotal >= math.random(10000) then
+       --   world.spawnItem("fumadnessresource", mcontroller.position(),math.random(2))
+       --   self.madnessTotal = self.madnessTotal * 0.75
+       -- end
+    
 	status.modifyResource("health", -self.damageApply * dt)
 	status.modifyResource("food", -self.damageApply * dt)
 
@@ -292,6 +306,12 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
   
   
       if (self.biomeTimer2) <= 0 and (self.resistTotal) < 1.0 then
+      
+
+
+        effect.addStatModifierGroup({
+          {stat = "darknessImmunity", amount = 1}
+        })
             effect.addStatModifierGroup({
               {stat = "protection", amount = -self.baseDebuff  },
               {stat = "maxEnergy", amount = -(self.baseDebuff*2)  }

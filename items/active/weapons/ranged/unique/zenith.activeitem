@@ -1,0 +1,81 @@
+{
+  "itemName" : "zenith",
+  "price" : 220,
+  "inventoryIcon" : "zenith.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "ArCon forces always have this handy.
+^cyan;Counts as 'plasma' for set bonuses.^reset;",
+  "shortdescription" : "ArCon Zenith",
+  "tooltipKind" : "gun2",
+  "level" : 5,
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","plasma","pistol"],
+  "weaponType" : "^#e43774;Upgradeable^reset;",
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "barrel" : "",
+    "middle" : "zenith.png",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/dkmarauder3.wav" ] },
+    "lights" : { "muzzleFlash" : {"color" : [122, 22, 22] } } 
+  },
+
+  "baseOffset" : [0.74,0.26],
+  "muzzleOffset" : [1.5, 0.42],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.78,
+    "baseDps" : 5.2,
+    "energyUsage" : 17,
+    "fireType" : "auto",
+    "inaccuracy" : 0.001,
+    "projectileCount" : 1,
+    "projectileType" : "brainbullet2",
+    "projectileParameters" : {
+      "speed" : 60
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.075,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

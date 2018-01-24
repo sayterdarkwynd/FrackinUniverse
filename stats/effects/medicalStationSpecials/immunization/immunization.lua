@@ -2,25 +2,28 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
-	self.dummyStatus = "medicalimmunizationdummy"
+	local modifierTable = {
+		{stat = "powerMultiplier", effectiveMultiplier = config.getParameter("powerMult", 0)},
+		{stat = "protection", effectiveMultiplier = config.getParameter("protectionMult", 0)}
+	}
 	
-	local modifierTable = {}
 	for _, immunityStat in ipairs(config.getParameter("statImmunities", 0)) do
 		table.insert(modifierTable, {stat = immunityStat, amount = 1})
 	end
 	
-	for _, resist in ipairs(config.getParameter("resistances", 0)) do
-		table.insert(modifierTable, {stat = resist, effectiveMultiplier = config.getParameter("allResistMult", 0)})
-	end
-	
+	self.ephemeralResist = config.getParameter("statusesWithoutBlockingStat", 0)
 	self.modifierGroupID = effect.addStatModifierGroup(modifierTable)
-	baseInit(self.dummyStatus)
+	baseInit()
 end
 
 function update(dt)
-	baseUpdate(dt, self.dummyStatus)
+	for _, effect in ipairs(self.ephemeralResist) do
+		status.removeEphemeralEffect(effect)
+	end
+	
+	baseUpdate(dt)
 end
 
 function uninit()
-	baseUninit(self.dummyStatus, self.modifierGroupID)
+	baseUninit(self.modifierGroupID)
 end
