@@ -3,6 +3,7 @@ require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 local deltaTime=0
 function init()
+	--Initialize session/configuration variables.
 	self.requiredPower = config.getParameter("isn_requiredPower") or 0
 	self.handlesSaplings = config.getParameter("isn_growSaplings") or false
 	self.baseGPS = config.getParameter("isn_baseGrowthPerSecond") or 4
@@ -23,69 +24,78 @@ function init()
 	transferUtil.init()
 	object.setInteractive(true)
 	
-	storage.ffCycles = storage.ffCycles or 0	-- count of how many fast forwards have been completed.
-	
-	--Variables who's state is configurable.
-	storage.growthRate = storage.growthRate or self.baseGPS		--Amount of growth per second
-	storage.seedUse = storage.seedUse or self.seedUse			--Number of seeds to use per cycle
-	storage.yield = storage.yield or self.baseYield				--harvestPool picks when grown
-	storage.fluidUse = storage.fluidUse or self.defaultFluidUse	--Amount of fluid to use per stage
-	
-	--Variables who's state are simple and can use values picked from nowhere safely.
-	storage.growth = storage.growth or 0 				--Plant growth completed
-	storage.growthFluid = storage.growthFluid or 0		--Growth boost from fluids
-	storage.growthFert = storage.growthFert or 0		--Growth boost from fertilizer
-	storage.fluid = storage.fluid or 0					--Stored fluid
-	storage.currentStage = storage.currentStage or 1	--Current plant stage
-	storage.resetStage = storage.resetStage or 0		--Stage to jump back to post harvest (perennial)
-	storage.hasFluid = storage.hasFluid or false		--If false soil is dry and no further growth.
-	storage.hasTree = storage.hasTree or false			--Used to track if seed data is sapling/tree.
-	
-	if storage.activeConsumption == nil then storage.activeConsumption = false end
-	
 	storage.seedslot = 1
 	storage.waterslot = 2
 	storage.fertslot = 3
 	
-	--Checks which cause reset of seed/growth data if failed,
-	--placed at end so we can return without breaking any other init stuff.
-	if storage.currentseed and storage.harvestPool then
-		--Storage.stages is the upper bound of the stage array
-		--storage.stage is information about each stage of the plant.
-		if ( not storage.stages or type(storage.stage) ~= "table" ) and not isn_readSeedData() then
-			storage.currentseed = nil
-			return
-		end
-		--If Starbound stored stage keys as tostring(number), copy them back to keys of number.
-		--This caused me quite a lot of headaches when it happened without this check.
-		for i = 1, storage.stages do
-			if type(storage.stage[tostring(i)]) == "table" then
-				storage.stage[i] = storage.stage[tostring(i)]
-			end
-		end
-		--Make sure each element of seed data is valid.
-		for i = 1, storage.stages do
-			--storage.stage[].min and storage.stage[].max are the range of times for a given stage.
-			--storage.stage[].val is how long the current plant takes to reach the next stage.
-			if type(storage.stage[i]) ~= table or not (storage.stage[i].min and storage.stage[i].max) then
-				if not isn_readSeedData() then
-					storage.currentseed = nil
-					return
-				end
-				break
-			end
-		end
-		--Make sure growth data is valid.
-		for i = 1, storage.stages do
-			if not storage.stage[i].val then
-				if not isn_genGrowthData() then
-					storage.currentseed = nil
-					return
-				end
-				break
-			end
-		end
+	--If Starbound stored stage keys as tostring(number), copy them back to keys of number.
+	--This caused me quite a lot of headaches when it happened without this check.
+	local index = storage.stages and type(storage.stage) == "table" and 1 or 0
+	while index > 0 and storage.stage[tostring(index)] do
+		storage.stage[index] = storage.stage[tostring(i)]
+		index = index + 1
 	end
+	--Long term debugging line which will be handy in deciding if above code should keep existing.
+	if index > 1 then sb.logWarn("Detected Starbound storing numeric keys as strings and corrected.") end
+	
+	--Because there is a lot to check PER entity we check just one value and then
+	--do a deeper check and recovery if that one failed.
+	
+	--storage.<variable> items should be in storage.version branch.
+	
+	--NOTE: If any storage variables are added or meanings changed, increment the number.
+	if not storage.version or storage.version < 1 then
+		storage.version = 1	--Stick to whole numbers.
+		
+		if storage.activeConsumption == nil then storage.activeConsumption = false end
+		
+		--Variables who's state is configurable.
+		storage.growthRate = storage.growthRate or self.baseGPS		--Amount of growth per second
+		storage.seedUse = storage.seedUse or self.seedUse			--Number of seeds to use per cycle
+		storage.yield = storage.yield or self.baseYield				--harvestPool picks when grown
+		storage.fluidUse = storage.fluidUse or self.defaultFluidUse	--Amount of fluid to use per stage
+		
+		--Variables who's state are simple and can use values picked from nowhere safely.
+		storage.growth = storage.growth or 0 				--Plant growth completed
+		storage.growthFluid = storage.growthFluid or 0		--Growth boost from fluids
+		storage.growthFert = storage.growthFert or 0		--Growth boost from fertilizer
+		storage.fluid = storage.fluid or 0					--Stored fluid
+		storage.currentStage = storage.currentStage or 1	--Current plant stage
+		storage.resetStage = storage.resetStage or 0		--Stage to jump back to post harvest (perennial)
+		storage.hasFluid = storage.hasFluid or false		--If false soil is dry and no further growth.
+		storage.hasTree = storage.hasTree or false			--Used to track if seed data is sapling/tree.
+		storage.ffCycles = storage.ffCycles or 0			--Count of how many fast forwards have been completed.
+		
+		--Checks which cause reset of seed/growth data if failed,
+		--placed at end so we can return without breaking any other init stuff.
+		if storage.currentseed and storage.harvestPool then
+			--Make sure seed data structure is valid.
+			if ( not storage.stages or type(storage.stage) ~= "table" ) and not isn_readSeedData() then
+				storage.currentseed = nil
+				return
+			end
+			--Make sure seed data is valid.
+			for i = 1, storage.stages do
+				if type(storage.stage[i]) ~= table or not (storage.stage[i].min and storage.stage[i].max) then
+					if not isn_readSeedData() then
+						storage.currentseed = nil
+						return
+					end
+					break
+				end
+			end
+			--Make sure growth data is valid.
+			for i = 1, storage.stages do
+				if not storage.stage[i].val then
+					if not isn_genGrowthData() then
+						storage.currentseed = nil
+						return
+					end
+					break
+				end
+			end
+		end
+	end -- Avoid adding new init() code below this line as there is a chance it won't be executed.
 end
 
 --Returns active seed when tray is removed from world, much like how plants
@@ -99,7 +109,6 @@ end
 
 --Updates the state of the object.
 function update(dt)
-	if self.requiredPower > 0 then power.update(dt) end
 	if deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
@@ -160,8 +169,6 @@ function update(dt)
 		if not storage.hasFluid then return end --Failed again?  No growth nor outputs.
 	end
 	
-	storage.activeConsumption = true
-	
 	if storage.currentStage <= storage.stages then
 		local deltaGrowth = (storage.growthRate + storage.growthFluid + storage.growthFert) * growthmod
 		local newGrowth = storage.growth + deltaGrowth
@@ -207,6 +214,8 @@ function update(dt)
 	--If the above fluid use left us dry stop here (don't output items) and try again later.
 	--Yes this may generate 1 more (unnecessary) growth spurt but it won't use more fluid.
 	if not storage.hasFluid then return end
+	
+	storage.activeConsumption = true
 	
 	--Check if we are grown.
 	if storage.growth >= storage.growthCap then
