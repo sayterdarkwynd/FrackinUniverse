@@ -121,7 +121,19 @@ function update(dt)
 	--Try to start growing if data indicates we aren't.
 	if not (storage.currentseed and storage.harvestPool) then
 		storage.lastWorldTime = nil
-		if not isn_doSeedIntake() then return end
+		if not isn_doSeedIntake() then
+			if self.requiredPower > 0 then animator.setAnimationState("powlight", "off") end
+			return
+		end
+	end
+	
+	--Check if a previous fluid use failed...
+	if not storage.hasFluid then
+		storage.hasFluid = isn_doFluidConsume()
+		if not storage.hasFluid then
+			if self.requiredPower > 0 then animator.setAnimationState("powlight", "off") end
+			return
+		end
 	end
 	
 	--Figure out how long it's been since our last update.
@@ -132,8 +144,7 @@ function update(dt)
 	end
 	storage.lastWorldTime = world.time()
 	
-	--useful for debugging...
-	--sb.logInfo("[%s], growth %s/%s seconds this update %s", storage.currentseed.name, storage.growth, storage.growthCap, secondsThisUpdate)
+	storage.activeConsumption = true
 	
 	local growthmod = secondsThisUpdate
 	
@@ -161,12 +172,6 @@ function update(dt)
 		animator.setAnimationState("growth", "1")
 	else
 		animator.setAnimationState("growth", "0")
-	end
-	
-	--Check if a previous fluid use failed...
-	if not storage.hasFluid then
-		storage.hasFluid = isn_doFluidConsume()
-		if not storage.hasFluid then return end --Failed again?  No growth nor outputs.
 	end
 	
 	if storage.currentStage <= storage.stages then
@@ -214,8 +219,6 @@ function update(dt)
 	--If the above fluid use left us dry stop here (don't output items) and try again later.
 	--Yes this may generate 1 more (unnecessary) growth spurt but it won't use more fluid.
 	if not storage.hasFluid then return end
-	
-	storage.activeConsumption = true
 	
 	--Check if we are grown.
 	if storage.growth >= storage.growthCap then
