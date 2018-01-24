@@ -915,10 +915,11 @@ function update(dt)
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
     
+   
+    -- ************************************ MECH MASS IMPACT (FU) ************************************
+    if vehicle.entityLoungingIn("seat") then  -- only check mech mass application on terrain if the player is within the mech, to prevent weird cratering issues
     
-    if vehicle.entityLoungingIn("seat") then
-    
-    -- mech ground thump damage (FU) ************************************
+
 	  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,55)
 	  self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,300)
 	  self.appliedDamage = self.baseDamage /2
