@@ -309,30 +309,32 @@ function doneOpening()
 		
 		lootData = data.loot.pools[lootPool][rarity][math.random(1, #data.loot.pools[lootPool][rarity])]
 		
-		if lootData.item then
-			local cfg = root.itemConfig(lootData.item)
-			item = root.createItem(lootData.item, lootData.level, lootData.seed)
-			item.shortdescription = cfg.config.shortdescription
-			item.count = lootData.amount or 1
+		if (lootData.treasurePool and root.isTreasurePool(lootData.treasurePool)) or lootData.item then
+			local cfg = nil
+			local item = nil
 			
-			if not item.name then
-				item.name = cfg.config.itemName
+			if lootData.treasurePool and root.isTreasurePool(lootData.treasurePool) then
+				local treasure = root.createTreasure(lootData.treasurePool, lootData.level or 1)
+				cfg = root.itemConfig(lootData.item)
+				item = root.createItem(treasure[1].name, lootData.level, lootData.seed)
+				item.shortdescription = cfg.config.shortdescription
+				item.count = treasure[1].count or 1
+			else
+				cfg = root.itemConfig(lootData.item)
+				item = root.createItem(lootData.item, lootData.level, lootData.seed)
+				item.shortdescription = cfg.config.shortdescription
+				item.count = lootData.amount or 1
 			end
 			
-			world.spawnItem(item, world.entityPosition(player.id()))
-			
-			if not title then
-				title = item.shortdescription
-				if title then
-					if item.count and item.count > 1 then
-						title = title.."s x"..item.count
-					end
-					
-					if lootData.level then
-						title = "Tier "..lootData.level.." "..title
-					end
-				else
-					title = item.name
+			if item then
+				if not item.name then
+					item.name = cfg.config.itemName
+				end
+				
+				world.spawnItem(item, world.entityPosition(player.id()))
+				
+				if not title then
+					title = item.shortdescription
 					if title then
 						if item.count and item.count > 1 then
 							title = title.."s x"..item.count
@@ -342,23 +344,34 @@ function doneOpening()
 							title = "Tier "..lootData.level.." "..title
 						end
 					else
-						title = "No title. Report this."
+						title = item.name
+						if title then
+							if item.count and item.count > 1 then
+								title = title.."s x"..item.count
+							end
+							
+							if lootData.level then
+								title = "Tier "..lootData.level.." "..title
+							end
+						else
+							title = "No title. Report this."
+						end
 					end
 				end
+				
+				if not subtitle then
+					subtitle = data.loot.poolData[rarity].name
+				end
+				
+				vfx.flash.targetColor = data.loot.poolData[rarity].color
+				textColor = data.loot.poolData[rarity].color
+				
+				widget.setPosition("itemBG", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
+				widget.setPosition("item", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
+				widget.setItemSlotItem("item", item)
+				widget.setVisible("itemBG", true)
+				widget.setVisible("item", true)
 			end
-			
-			if not subtitle then
-				subtitle = data.loot.poolData[rarity].name
-			end
-			
-			vfx.flash.targetColor = data.loot.poolData[rarity].color
-			textColor = data.loot.poolData[rarity].color
-			
-			widget.setPosition("itemBG", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
-			widget.setPosition("item", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
-			widget.setItemSlotItem("item", item)
-			widget.setVisible("itemBG", true)
-			widget.setVisible("item", true)
 		end
 		
 		local funcData = nil
