@@ -981,6 +981,9 @@ function shopRestock()
 					end
 					
 					item = root.createItem(item, level)
+					if not item.name then
+						item.name = config.shortdescription
+					end
 					
 					item.parameters.price = price
 				end
