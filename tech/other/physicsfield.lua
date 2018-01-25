@@ -29,9 +29,11 @@ function update(args)
     self.available = true
   end
   
-if args.moves["special1"] then 
-  status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.5}}
-  self.boostSpeed = 0 
+if args.moves["special1"] and status.overConsumeResource("energy", 0.07) then 
+  status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2}}
+  self.boostSpeed = 0
+elseif args.moves["special1"] then
+  self.boostSpeed = 0
 else
   self.boostSpeed = config.getParameter("boostSpeed")
 end
