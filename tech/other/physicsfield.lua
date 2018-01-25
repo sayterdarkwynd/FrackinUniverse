@@ -19,13 +19,13 @@ end
 function update(args)
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
-  self.cancelJump = args.moves["special1"]
   self.stateTimer = math.max(0, self.stateTimer - args.dt)
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
     if self.state ~= "idle" then
       idle()
     end
+
     self.available = true
   end
 
@@ -35,30 +35,24 @@ function update(args)
       if args.moves["right"] then direction[1] = direction[1] + 1 end
       if args.moves["left"] then direction[1] = direction[1] - 1 end
       if args.moves["up"] then direction[2] = direction[2] + 1 end
-      if args.moves["down"] then direction[2] = direction[2] - 1 end   
-      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end	
-      boost(direction)  
+      if args.moves["down"] then direction[2] = direction[2] - 1 end
+      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end
+      boost(direction)
     end
   elseif self.state == "boost" then
       local direction = {0, 0}
       if args.moves["right"] then direction[1] = direction[1] + 1 end
       if args.moves["left"] then direction[1] = direction[1] - 1 end
       if args.moves["up"] then direction[2] = direction[2] + 1 end
-      if args.moves["down"] then direction[2] = direction[2] - 1 end 
-      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end	
+      if args.moves["down"] then direction[2] = direction[2] - 1 end
+      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end
       boost(direction)  
     if args.moves["jump"] then
 	  if status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
 	    mcontroller.controlApproachVelocity(self.boostVelocity, self.boostForce)
 	  else
 	    idle()
-	  end  
-    elseif args.moves["special1"] then
-	  if status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
-	    mcontroller.controlApproachVelocity(2, 2)
-	  else
-	    idle()
-	  end 	  
+	  end
     else
       idle()
     end
@@ -68,7 +62,11 @@ function update(args)
 end
 
 function canRocketJump()
-  return self.available and not mcontroller.canJump()
+  return self.available
+      --and not mcontroller.jumping()
+      and not mcontroller.canJump()
+      --and not mcontroller.liquidMovement()
+      and not status.statPositive("activeMovementAbilities")
 end
 
 function boost(direction)
