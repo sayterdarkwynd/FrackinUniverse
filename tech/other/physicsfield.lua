@@ -21,13 +21,13 @@ function update(args)
   self.lastJump = args.moves["jump"]
   self.stateTimer = math.max(0, self.stateTimer - args.dt)
 
-  if mcontroller.groundMovement() or mcontroller.liquidMovement() then
-    if self.state ~= "idle" then
-      idle()
-    end
+  --if mcontroller.groundMovement() or mcontroller.liquidMovement() then
+    --if self.state ~= "idle" then
+    --  idle()
+    --end
 
-    self.available = true
-  end
+    --self.available = true
+  --end
   
 if args.moves["special1"] and status.overConsumeResource("energy", 0.07) then 
   status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2}}
