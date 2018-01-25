@@ -43,6 +43,15 @@ function update(args)
       boost(direction)
     end
   elseif self.state == "boost" then
+      local direction = {0, 0}
+      if args.moves["right"] then direction[1] = direction[1] + 1 end
+      if args.moves["left"] then direction[1] = direction[1] - 1 end
+      if args.moves["up"] then direction[2] = direction[2] + 1 end
+      if args.moves["down"] then direction[2] = direction[2] - 1 end
+
+      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end
+	
+      boost(direction)  
     if args.moves["jump"] then
 	  if status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
 	    mcontroller.controlApproachVelocity(self.boostVelocity, self.boostForce)
@@ -62,7 +71,7 @@ function canRocketJump()
       --and not mcontroller.jumping()
       and not mcontroller.canJump()
       --and not mcontroller.liquidMovement()
-      and not status.statPositive("activeMovementAbilities")
+      --and not status.statPositive("activeMovementAbilities")
 end
 
 function boost(direction)
