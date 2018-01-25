@@ -187,23 +187,22 @@ function collectRepairItem()
   
   local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
   while storage.stage == 3 do
-    self.gateUid = "ancientgate2"
-    local result = findGate()
-    questutil.pointCompassAt(result)
-    
-    quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
-    quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)
+
     if player.hasItem({name = "statustablet", count = 1}) then
-      self.gateUid = "ancientgate2"
+      quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
+      quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)    
+      self.gateUid = "ancientgate2" 
     else
+      quest.setObjectiveList({{self.descriptions.makeTable, false}})    
       self.gateUid = "ancientgate"
       player.radioMessage("fu_start_needstricorder")
     end
-    coroutine.yield()
+       local result = findGate()
+       questutil.pointCompassAt(result)   
+       coroutine.yield()   
   end
 
   quest.setObjectiveList({})
-
   self.state:set(self.stages[storage.stage])
 end
 
@@ -227,6 +226,12 @@ function repairGate()
       storage.stage = 3
       self.gateUid = "ancientgate2"
       self.state:set(self.stages[storage.stage])
+    elseif not player.hasItem({name = "statustablet", count = 1}) then
+      storage.stage = 3
+      quest.setObjectiveList({{self.descriptions.makeTable, false}})    
+      self.gateUid = "ancientgate"
+      player.radioMessage("fu_start_needstricorder")
+      questutil.pointCompassAt(findGate())
     end
 
     coroutine.yield()
