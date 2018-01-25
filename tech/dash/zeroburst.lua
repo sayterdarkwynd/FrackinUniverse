@@ -23,8 +23,8 @@ function init()
   self.doubleTap = DoubleTap:new({"up"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
       if self.dashTimer == 0
           and self.dashCooldownTimer == 0
-          and groundValid()
-          and not mcontroller.crouching()
+          --and groundValid()
+          --and not mcontroller.crouching()
           and not status.statPositive("activeMovementAbilities") then
 
         startDash(dashKey == "up" and 0 or 0)
@@ -96,7 +96,7 @@ function groundValid()
 end
 
 function startDash(direction)
- if status.overConsumeResource("energy", self.energyCost) and groundValid() then 
+ if status.overConsumeResource("energy", self.energyCost) then --and groundValid() then 
    status.setResourcePercentage("energyRegenBlock", 5.0)
 
   self.dashDirection = direction
