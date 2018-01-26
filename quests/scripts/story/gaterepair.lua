@@ -168,10 +168,9 @@ function gateFound()
   player.radioMessage("gaterepair-gateFound1")
   --player.radioMessage("gaterepair-gateFound1b")
   player.radioMessage("gaterepair-gateFound2")
-
   storage.stage = 3
   self.gateUid = "ancientgate"
-  util.wait(8)
+  util.wait(14)
 
   self.state:set(self.stages[storage.stage])
 end
