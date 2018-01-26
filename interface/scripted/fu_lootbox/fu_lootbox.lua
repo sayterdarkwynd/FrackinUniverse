@@ -40,7 +40,9 @@ vfx = {}
 funcs = {
 	bees = function(params)
 		world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
-		return {title = "Bees!!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
+		
+		-- Can return a table that can override the title, the subtitle, the image displayed after opening a box, the text color, and the flash color
+		return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
 	end
 }
 
@@ -370,7 +372,7 @@ function doneOpening()
 			
 			if lootData.treasurePool and root.isTreasurePool(lootData.treasurePool) then
 				local treasure = root.createTreasure(lootData.treasurePool, lootData.level or 1)
-				cfg = root.itemConfig(lootData.item)
+				cfg = root.itemConfig(treasure[1].name)
 				item = root.createItem(treasure[1].name, lootData.level, lootData.seed)
 				item.shortdescription = cfg.config.shortdescription
 				item.count = treasure[1].count or 1
@@ -392,7 +394,7 @@ function doneOpening()
 					title = item.shortdescription
 					if title then
 						if item.count and item.count > 1 then
-							title = title.."s x"..item.count
+							title = title.." x"..item.count
 						end
 						
 						if lootData.level then
@@ -402,7 +404,7 @@ function doneOpening()
 						title = item.name
 						if title then
 							if item.count and item.count > 1 then
-								title = title.."s x"..item.count
+								title = title.." x"..item.count
 							end
 							
 							if lootData.level then
@@ -755,5 +757,3 @@ function rollDice(dice, sides, mod)
 	
 	return sum
 end
-
-
