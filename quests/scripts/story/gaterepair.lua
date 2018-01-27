@@ -227,6 +227,7 @@ function repairGate()
     if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
       storage.stage = 3
       self.gateUid = "ancientgate2"
+      questutil.pointCompassAt(findGate())
       self.state:set(self.stages[storage.stage])
     elseif not player.hasItem({name = "statustablet", count = 1}) then
       storage.stage = 3
