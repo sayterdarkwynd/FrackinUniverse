@@ -39,14 +39,33 @@ vfx = {}
 
 funcs = {
 	bees = function(params)
-		world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
-		
-		-- Can return a table that can override the title, the subtitle, the image displayed after opening a box, the text color, and the flash color
-		return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
-	end
+		if self.random == 1 then
+		  --bees
+		  world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
+		  -- Can return a table that can override the title, the subtitle, the image displayed after opening a box, the text color, and the flash color
+		  return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
+		elseif self.random == 2 then
+		  -- poptops
+		  world.spawnProjectile("fu_poptopsack", world.entityPosition(player.id()))
+		  return {title = "Poptops!", subtitle = "Adorable Rabid Poptops!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFCCAA", flashColor = "#FFCCAA" }
+		elseif self.random == 3 then
+		  -- chicks
+		  world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
+		  return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }
+		elseif self.random == 4 then
+		  -- wolves
+		  world.spawnProjectile("fuwolfcase2", world.entityPosition(player.id()))
+		  return {title = "Wolves!", subtitle = "Rabid Angry Carnivores!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }		
+		else
+		  -- chicks
+		  world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
+		  return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }		
+		end
+        end	
 }
 
 function init()
+        self.random = math.random(10)
 	canvas = widget.bindCanvas("canvas")
 	data = root.assetJson("/interface/scripted/fu_lootbox/lootboxData.config")
 	vfx = data.vfx
@@ -58,6 +77,8 @@ function init()
 	local canvasSize = canvas:size()
 	vfx.title.position = {canvasSize[1] * 0.5, canvasSize[2] * 0.5 + vfx.title.yOffset}
 	vfx.subtitle.position = {canvasSize[1] * 0.5, canvasSize[2] * 0.5 + vfx.subtitle.yOffset}
+	
+	self.level = world.threatLevel()
 	
 	setNewPos(true)
 end
