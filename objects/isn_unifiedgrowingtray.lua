@@ -124,7 +124,7 @@ function growPlant(growthmod, dt)
 
 		-- Go to reset stage for perennial plants and full reset for others
 		local seed = world.containerItems(entity.id())[seedslot]
-		if seed.name ~= storage.currentseed.name then
+		if seed and seed.name ~= storage.currentseed.name then
 			storage.currentseed.count = 1
 			fu_sendOrStoreItems(0, storage.currentseed, avoid)
 			storage.currentStage = 1
