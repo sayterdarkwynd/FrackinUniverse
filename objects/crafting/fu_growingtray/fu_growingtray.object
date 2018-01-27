@@ -1,124 +1,96 @@
 {
-  "objectName" : "fu_growingtray",
-  "printable" : false,
+    "objectName" : "fu_growingtray",
+    "printable" : false,
     "colonyTags" : [ "science", "farming", "plants", "farm" ],
-  "rarity" : "Common",
-  "description" : "Grows crops more quickly and efficiently via fertilizers and controlled conditions.",
-  "shortdescription" : "^cyan;Growing Tray^reset;",
-  "race" : "generic",
-  "category" : "wire",
-  "objectType" : "container",
-  "price" : 40,
-  "learnBlueprintsOnPickup" : [ "isn_hydroponicstray" ],
-  "inventoryIcon" : "fu_growingtray_inv.png",
-  
-  "orientations" : [
-    {
-      "dualImage" : "fu_growingtray_base.png",
-      "imagePosition" : [0, 0],
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+    "rarity" : "Common",
+    "description" : "Grows crops more quickly and efficiently via fertilizers and controlled conditions.",
+    "shortdescription" : "^cyan;Growing Tray^reset;",
+    "race" : "generic",
+    "category" : "wire",
+    "objectType" : "container",
+    "price" : 40,
+    "learnBlueprintsOnPickup" : [ "isn_hydroponicstray" ],
+    "inventoryIcon" : "fu_growingtray_inv.png",
+
+    "orientations" : [
+        {
+            "dualImage" : "fu_growingtray_base.png",
+            "imagePosition" : [0, 0],
+            "spaceScan" : 0.1,
+            "anchors" : [ "bottom" ]
+        }
+    ],
+
+    "slotCount" : 11,
+    "uiConfig" : "/objects/crafting/fu_growingtray/fu_growingtray.config",
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+    "scripts" : [ "/objects/isn_unifiedgrowingtray.lua","/objects/isn_sharedobjectscripts.lua" ],
+    "scriptDelta" : 60,
+
+    "animation" : "fu_growingtray.animation",
+    "animationParts" : {
+        "growth" : "fu_growingtray_growth.png",
+        "powlight" : "fu_growingtray_powlight.png",
+        "base" : "fu_growingtray_base.png"
+    },
+    "animationPosition" : [0, 0],
+
+    "inputNodes" : [ [1, 1] ],
+    "outputNodes" : [ [1, 0] ],
+
+    // Base rate of growth. (1 is vanilla speed)
+    "baseGrowthPerSecond" : 5,
+    "defaultWaterUse" : 2,
+    "defaultSeedUse" : 1,
+    "baseYields" : 1,
+
+    "waterInputs" : {
+        // Water can provide the same bonuses as fertilizer on use (these stack).
+        // A water item can provide one or more "units" of water.
+
+        "waterbucket" : { "value" : 1 },
+        "liquidwater" : { "value" : 1 },
+        "swampwater" : { "value" : 1 },
+        "liquidblood" : { "value" : 2 },
+        "pus" : { "value" : 2 },
+        "liquidalienjuice" : { "value" : 3 },
+        "liquidorganicsoup" : { "value" : 4 },
+        "liquidaether" : { "value" : 5 },
+        "liquidhealing" : { "value" : 6 }
+    },
+
+    "fertInputs" : {
+        //Tweaked this some to use a similar mechanic to new 'water'.
+        //Fertilizer is consumed once at the start of a plant's growth cycle.
+        //Also consumed again when a plant's growth phase resets (perennial instead of annual).
+        //Used the remarks near the original lines to fill in the blanks.
+
+        //Effects are additive. Valid values are "growthRate", "yield", "seedUse", and "fluidUse"
+
+        //+1 speed
+        "rottenfood" : { "growthRate" : 1 },
+        "fu_mulch" : { "growthRate" : 1 },
+
+        //+1 yield
+        "poop" : { "yield" : 1 },
+        "agaranichor" : { "yield" : 1 },
+
+        //+2 yield, +1 speed
+        "liquidelderfluid" : { "growthRate" : 1, "yield" : 2 },
+        "liquidorganicsoup" : { "growthRate" : 1, "yield" : 2 },
+
+        //+2 speed, +1 yield
+        "ff_fertilizer2" : { "growthRate" : 2, "yield" : 1 },
+
+        //+3 speed, +2 yield
+        "ff_fertilizer" : { "growthRate" : 3, "yield" : 2 },
+
+        //+2 speed, +3 yield
+        "ff_fertilizer3" : { "growthRate" : 2, "yield" : 3 },
+
+        //+1 speed, +1 yield, reduces water use rate
+        "gene_reproductive" : { "growthRate" : 1, "yield" : 1, "fluidUse" : -0.5 }
     }
-  ],
-    
-  "slotCount" : 11,
-  "uiConfig" : "/objects/crafting/fu_growingtray/fu_growingtray.config",
-  "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600,
-  
-  "scripts" : [ "/objects/isn_unifiedgrowingtray.lua","/objects/isn_sharedobjectscripts.lua" ],
-  "scriptDelta" : 500,
-
-  "animation" : "fu_growingtray.animation",
-  "animationParts" : {
-    "growth" : "fu_growingtray_growth.png",
-    "powlight" : "fu_growingtray_powlight.png",
-    "base" : "fu_growingtray_base.png"
-  },
-  "animationPosition" : [0, 0],
-
-  "inputNodes" : [ [1, 1] ],
-  "outputNodes" : [ [1, 0] ],
-  
-  //"isn_growthCap" : 30,
-  //Balancing note: The value above is the old number of growth to complete to be finished.
-  //but the old code also only grew 1 point every 8 seconds or so.
-  //New lua code grows however much since the last update.
-  //So old code plants took about 240 seconds to grow.
-  //New code, on average plants have about 150-200 growth points.
-  //Went with 1 since that puts things somewhat close to how old code worked.
-  
-  // Base rate of growth.  This is additive.
-  "isn_baseGrowthPerSecond" : 1,
-  //Default water requirement per plant phase.  This is the internal 'water' value not items.
-  
-  //Balance note: The reason for the number 4 below is the graphic shows 4 plants growing.
-  
-  "isn_defaultWaterUse" : 4,
-  //Default number of seeds, used when no fertilizer is present.
-  "isn_defaultSeedUse" : 4,
-  //Default number of yields, used when no fertilizer is present.
-  "isn_baseYields" : 4,
-  
-  "isn_waterInputs" : {
-    // Old values are remarked for reference when balancing.
-	// Altered these stats somewhat as the old mechanic of 'water' use per tick isn't active.
-	// Because of that opted to have different items increase the growth speed as well as still
-	// retaining 'water' values.  This is to aid in balance tuning without code editing.
-	// Most seeds have 2 growth phases and so would use 2 'water' units.
-	// Most plants in dirt use 1 water per phase.
-    
-	// ['water' value, growth boost]
-	//"waterbucket" : 8,
-	"waterbucket" : [1,0],
-    //"liquidwater" : 8,
-    "liquidwater" : [1,0],
-    //"swampwater" : 9,
-    "swampwater" : [2,0],
-    //"liquidblood" : 9,
-    "liquidblood" : [2,1],
-    //"pus" : 9,
-    "pus" : [2,2],
-    //"liquidalienjuice" : 10,
-    "liquidalienjuice" : [3,1],
-    //"liquidorganicsoup" : 11,
-    "liquidorganicsoup" : [4,1],
-    //"liquidaether" : 12,
-    "liquidaether" : [5,1],
-    //"liquidhealing" : 15
-    "liquidhealing" : [8,3]
-  },
-
-  "isn_fertInputs" : {
-	//Tweaked this some to use a similar mechanic to new 'water'.
-	//Fertilizer is consumed once at the start of a plant's growth cycle.
-	//Also consumed again when a plant's growth phase resets (perennial instead of annual).
-    //Used the remarks near the original lines to fill in the blanks.
-	
-	//[seeds required, 'water' use, growth boost, additional yield]
-	
-	//+1 fertilization speed, requires 2 liquid
-	"rottenfood" : [2,1,0,1],
-	"fu_mulch" : [2,1,0,1],
-
-	//+1 fertilization yield, requires 2 liquid
-	"poop" : [2,0,1,1],
-	"agaranichor" : [2,0,1,1],
-	
-	//+2 fertilization yield, +1 speed, requires 2 liquid
-	"liquidelderfluid" : [2,1,2,1],
-	"liquidorganicsoup" : [2,1,2,1],
-	
-	//+2 fertilization speed, +1 yield, requires 2 liquid
-	"ff_fertilizer2" : [2,2,1,1],
-	
-	//+3 fertilization speed, +2 yield, requires 2 liquid
-	"ff_fertilizer" : [2,3,2,1],
-	
-	//+2 fertilization speed, +3 yield, requires 2 liquid
-	"ff_fertilizer3" : [2,2,3,1],
-	
-	//+1 fertilization speed, +1 yield, requires 1 liquid
-	"gene_reproductive" : [1,1,1,1]
-  }
 }
