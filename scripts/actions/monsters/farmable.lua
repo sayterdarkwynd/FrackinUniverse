@@ -89,9 +89,12 @@ function eatFood(args)
   if not args.entity then return false end
   local foodlist = root.assetJson('/scripts/actions/monsters/farmable.config').foodlists
   local diet = config.getParameter('diet','omnivore')
+
   local eaten = false
   for pos,item in pairs(world.containerItems(args.entity)) do
     local itemConfig = root.itemConfig(item).config
+    if itemConfig.category == "food" and not itemConfig.foodValue then itemConfig.foodValue = 10 end
+    
         if diet == 'omnivore' then
 	  for _,value in pairs(foodlist.herbivore) do
 	    if item.name == value then
@@ -113,7 +116,7 @@ function eatFood(args)
 		  end
 		end
 	  end
-	elseif diet == 'partialomnivore' then
+	elseif diet == 'specialomnivore' then
 	  for _,value in pairs(foodlist.herbivore) do
 	    if item.name == value then
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
@@ -124,7 +127,7 @@ function eatFood(args)
 		  end
 		end
 	  end  
-	  for _,value in pairs(foodlist.partialomnivore) do
+	  for _,value in pairs(foodlist.specialomnivore) do
 	    if item.name == value then
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
 		  if world.containerConsumeAt(args.entity,pos-1,consume) then
@@ -145,7 +148,8 @@ function eatFood(args)
 		  end
 		end
 	  end
-	end      
+	end   
+  	
 	displayHappiness()
         if storage.food >= 100 then      
 	  break
@@ -170,6 +174,7 @@ function removeFood(args)
   storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
   storage.mateTimer = math.max((storage.mateTimer or 60) - 0.277777778/config.getParameter('mateTimer',60),0)
   self.timerPoop = (self.timerPoop or 90) - 1
+  
   if self.timerPoop <= 0 and storage.food >= 50 then
     checkPoop()
     self.timerPoop = 90
@@ -220,8 +225,11 @@ end
 function checkMate()
   -- we see if the creature can lay eggs here
   self.randChance = math.random(100)
+  
   self.eggType = config.getParameter("eggType")	
-
+  
+  if not self.eggType then self.eggType = "henegg" end
+  
   if storage.mateTimer <= 0 and self.randChance <= 0 and storage.happiness >=70 then 
     if storage.happiness == 100 then  -- they are happy, and produce more eggs, and can mate again sooner than unhappy animals
 	    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
@@ -239,18 +247,32 @@ function checkMate()
   
 end
 
-function checkPoop()
+function checkPoop() -- poop to fertilize trays , pee to water soil, etc   
   self.foodMod = storage.food/20 * config.getParameter('hungerTime',20)
-  self.randPoop = math.random(800) - self.foodMod
-  if self.randPoop <= 1 then
-    animator.playSound("deathPuff")
-    world.spawnItem("poop", mcontroller.position(), 1) -- poop to fertilize trays
-  end  
-  if self.randPoop >= 700 then
-    world.spawnLiquid(mcontroller.position(), 1, 1) --water urination to water soil
-  end   
+  storage.canPoop = config.getParameter('canPoop',1)
+  
+	 if storage.canPoop == 2 then  -- is robot
+	   self.randPoop = math.random(1120) - self.foodMod
+		  if self.randPoop <= 1 then
+		    animator.playSound("deathPuff")
+		    world.spawnItem("ff_spareparts", mcontroller.position(), 1) 
+		  elseif self.randPoop >=950 then
+		    animator.playSound("deathPuff")
+		    world.spawnLiquid(mcontroller.position(), 5, 1) --water urination to water soil
+		  end   
+	 else
+	   self.randPoop = math.random(920) - self.foodMod
+		  if self.randPoop <= 1 then
+		    animator.playSound("deathPuff")
+		    world.spawnItem("poop", mcontroller.position(), 1)   
+		  elseif self.randPoop <= 1 then 
+		    animator.playSound("deathPuff")
+		    world.spawnItem("ff_spareparts", mcontroller.position(), 1)   
+		  end 	 
+	 end
 end
-
+  
+  
 
 function checkSoil()
   local tileModConfig = root.assetJson('/scripts/actions/monsters/farmable.config').tileMods

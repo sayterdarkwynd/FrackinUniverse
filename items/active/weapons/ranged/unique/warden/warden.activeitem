@@ -1,0 +1,103 @@
+{
+  "itemName" : "warden",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A dangerously powerful minigun.
+^cyan;Counts as 'plasma' for set bonuses^reset;
+^yellow;Increases speed as it fires.^reset;",
+  "shortdescription" : "ArCon Warden",
+  "tooltipKind" : "gun2",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle", "plasma", "upgradeableWeapon"],
+  "inventoryIcon" : "wardenicon.png",
+  "animation" : "warden.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "warden.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [2.7, 0.5],
+      "color" : [122, 21, 21]
+    }},
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/protopistol.ogg" ]
+    }
+  },
+  "baseOffset" : [1.3, 0.7],
+  "muzzleOffset" : [2.6, 0.115],
+
+  "scripts" : [    
+    "/items/active/scripts/modifiablegun.lua",
+    "/items/active/scripts/windupinaccurateweaponlesser.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.24,
+    "baseDps" : 4,
+    "energyUsage" : 33,
+    "fireType" : "auto",
+    
+    "projectileCount" : 1,
+    "inaccuracy" : 0.03,
+    "projectileType" : "brainbullet2",
+    "projectileParameters" : {
+      "knockback" : 0,
+      "speed" : 60
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 0,
+  "critBonus" : 0,
+  
+  "altAbilityType" : "railgunshotpower",
+  "altAbility" : { 
+    "energyCost" : 40,
+    "projectileType" : "energyzone",
+    "name" : "Energy Zone",
+    "projectileParameters" : {
+      "timeToLive" : 4,
+      "speed" : 0
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

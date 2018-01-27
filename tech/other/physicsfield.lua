@@ -19,16 +19,24 @@ end
 function update(args)
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
-
   self.stateTimer = math.max(0, self.stateTimer - args.dt)
 
-  if mcontroller.groundMovement() or mcontroller.liquidMovement() then
-    if self.state ~= "idle" then
-      idle()
-    end
+  --if mcontroller.groundMovement() or mcontroller.liquidMovement() then
+    --if self.state ~= "idle" then
+    --  idle()
+    --end
 
-    self.available = true
-  end
+    --self.available = true
+  --end
+  
+if args.moves["special1"] and status.overConsumeResource("energy", 0.07) then 
+  status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2}}
+  self.boostSpeed = 0
+elseif args.moves["special1"] then
+  self.boostSpeed = 0
+else
+  self.boostSpeed = config.getParameter("boostSpeed")
+end
 
   if self.state == "idle" then
     if jumpActivated and canRocketJump() then
@@ -38,11 +46,18 @@ function update(args)
       if args.moves["up"] then direction[2] = direction[2] + 1 end
       if args.moves["down"] then direction[2] = direction[2] - 1 end
 
-      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end
-	
+      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end    
       boost(direction)
     end
   elseif self.state == "boost" then
+      local direction = {0, 0}
+      if args.moves["right"] then direction[1] = direction[1] + 1 end
+      if args.moves["left"] then direction[1] = direction[1] - 1 end
+      if args.moves["up"] then direction[2] = direction[2] + 1 end
+      if args.moves["down"] then direction[2] = direction[2] - 1 end
+
+      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end
+      boost(direction)  
     if args.moves["jump"] then
 	  if status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
 	    mcontroller.controlApproachVelocity(self.boostVelocity, self.boostForce)

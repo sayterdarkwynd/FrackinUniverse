@@ -1,4 +1,26 @@
 [
-{"op": "add","path": "/critChance","value": 1},
-{"op": "add","path": "/critBonus","value": 1}
+{"op": "add","path": "/critChance","value": 0},
+{"op": "add","path": "/critBonus","value": 0},
+  {
+    "op": "add",
+    "path": "/upgradeParameters",
+    "value": {
+      "shortdescription": "^cyan;Protectorate Blade^reset; ^yellow;^reset;",
+      "description": "Fixed and improved.",
+      "animationParts": {
+        "blade": "brokenblade2.png"
+      },
+      "critChance": 1,
+      "critBonus": 4,
+      "primaryAbility": {
+        "fireTime": 0.75,
+        "baseDps": 8
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  }
 ]

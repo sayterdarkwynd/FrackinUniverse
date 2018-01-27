@@ -1,0 +1,40 @@
+{
+  "objectName" : "fuorbisegg",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "farmBeastEgg",
+  "price" : 1300,
+
+  "description" : "Hatches into a robotic Orbis, which regularly regurgitates spare parts",
+  "shortdescription" : "Orbis Egg",
+  "race" : "generic",
+
+  "inventoryIcon" : "fuorbisegg.png:idle.1",
+  "orientations" : [
+    {
+      "image" : "fuorbisegg.png:idle.1",
+      "imagePosition" : [-7, -3],
+
+      "spaces" : [ [-1, 0], [-1, 1], [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/farmables/eggs/farmableegg.animation",
+  "animationPosition" : [-7, -3],
+  "animationParts" : {
+    "egg" : "fuorbisegg.png"
+  },
+
+  "scripts" : ["/objects/farmables/eggs/farmableegg.lua"],
+  "scriptDelta" : 60,
+
+  "hatchTime" : 1000,
+  "forceHatchTime" : 1000,
+
+  "spawnMonster" : "fuorbis",
+  "spawnOffset" : [0.5, 0.5]
+}
