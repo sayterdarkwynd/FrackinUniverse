@@ -58,10 +58,10 @@ function update(dt)
 
   vinjGreeting()
 
-  if player.hasItem({name = "statustablet", count = 1}) then
-    self.gateUid = "ancientgate2"
-  else
+  if not player.hasItem({name = "statustablet", count = 1}) then
     self.gateUid = "ancientgate"
+  else
+    self.gateUid = "ancientgate2"  
   end
     
 
@@ -148,6 +148,7 @@ function findGate()
   quest.setObjectiveList({{self.descriptions.findGate, false}})
 
   -- Wait until the player is no longer on the ship
+  -- it is hard-set to ancientgate rather than self.gateUid to make sure the initial pointer goes to the right place.
   local findGate = util.uniqueEntityTracker("ancientgate", self.compassUpdate)
   while true do
     local result = findGate()
