@@ -1,0 +1,24 @@
+{
+  "id" : "japaneseruins.gearup",
+  "title" : "^green;Mount Gigant",
+  "text" : "An ancient Hylotl mountain is said to be cursed. Dare you investigate?",
+  "completionText" : "I've traversed the entirety of this mountain. Whatever was going on here, seems like the ancients were ultimately responsible for it.",
+  "speaker" : "player",
+  "moneyRange" : [5000, 5000],
+  "rewards" : [
+      [ [ "hylotltier2chest-recipe" ], [ "hylotltier2head-recipe" ], [ "hylotltier2pants-recipe" ], [ "oculobaf", 1 ], [ "tinticaf", 1 ], ["essence", 2000 ]
+   ],
+  "canBeAbandoned" : true,
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+		"missionUnlockedCinema" : "/cinematics/coordinates.cinematic",		
+		"portraits" : {
+		"default" : "player"
+		},
+    "associatedMission" : "japaneseruins",
+    "turnInDescription" : "Investigate the peak of Mount Gigant.",
+    "requireTurnIn" : true
+  }
+}
