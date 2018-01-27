@@ -464,9 +464,20 @@
       "name" : "maptakeshi",
       "rules" : [
 		[ "maxSpawnCount", [1] ],
-		[ "ignorePartMaximumRule" ]
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "mapjapaneseruins" ] ]
       ],
       "def" : [ "tmx", "maptakeshi.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "mapjapaneseruins",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "maptakeshi" ] ]
+      ],
+      "def" : [ "tmx", "mapjapaneseruins.json" ],
       "chance" : 0
     },
 	
