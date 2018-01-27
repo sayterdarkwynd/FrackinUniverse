@@ -11,7 +11,7 @@ function init()
   self.gateRepairItem = config.getParameter("gateRepairItem")
   self.gateRepairCount = config.getParameter("gateRepairCount")
 
-  if player.hasItem({name = "statustablet", count = 1}) then
+  if player.hasItem({name = "statustablet", count = 1}) and storage.stage >= 3 then
     self.gateUid = "ancientgate2"
   else
     self.gateUid = config.getParameter("gateUid")
@@ -57,7 +57,7 @@ function update(dt)
 
   vinjGreeting()
 
-  if not player.hasItem({name = "statustablet", count = 1}) then
+  if not player.hasItem({name = "statustablet", count = 1}) and storage.stage >= 3 then
     self.gateUid = "ancientgate2"
   else
     self.gateUid = config.getParameter("gateUid")
@@ -110,7 +110,7 @@ end
 
 function explore()
   quest.setObjectiveList({{self.descriptions.explore, false}})
-
+  self.gateUid = config.getParameter("gateUid")
   -- Wait until the player is no longer on the ship
   local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
   local buffer = 0
