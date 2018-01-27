@@ -11,10 +11,10 @@ function init()
   self.gateRepairItem = config.getParameter("gateRepairItem")
   self.gateRepairCount = config.getParameter("gateRepairCount")
 
-  if player.hasItem({name = "statustablet", count = 1}) and storage.stage >= 3 then
+  if player.hasItem({name = "statustablet", count = 1}) then
     self.gateUid = "ancientgate2"
   else
-    self.gateUid = config.getParameter("gateUid")
+    self.gateUid = "ancientgate"
   end
   
   self.techstationUid = config.getParameter("techstationUid")
@@ -50,6 +50,7 @@ end
 
 function questStart()
   player.upgradeShip(config.getParameter("shipUpgrade"))
+  self.gateUid = "ancientgate"
 end
 
 function update(dt)
@@ -57,10 +58,10 @@ function update(dt)
 
   vinjGreeting()
 
-  if not player.hasItem({name = "statustablet", count = 1}) and storage.stage >= 3 then
+  if player.hasItem({name = "statustablet", count = 1}) then
     self.gateUid = "ancientgate2"
   else
-    self.gateUid = config.getParameter("gateUid")
+    self.gateUid = "ancientgate"
   end
     
 
@@ -111,13 +112,11 @@ end
 function explore()
   quest.setObjectiveList({{self.descriptions.explore, false}})
   self.gateUid = config.getParameter("gateUid")
+  
   -- Wait until the player is no longer on the ship
   local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
   local buffer = 0
   while storage.exploreTimer < self.exploreTime do
-    -- quest.setProgress(math.min(storage.exploreTimer / self.exploreTime, 1.0)) -- Debug
-    buffer = buffer + script.updateDt()
-
     local gatePosition = findGate()
     if gatePosition then
       -- Gate is on this world, put buffer onto the exploration timer
@@ -149,11 +148,11 @@ function findGate()
   quest.setObjectiveList({{self.descriptions.findGate, false}})
 
   -- Wait until the player is no longer on the ship
-  local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
+  local findGate = util.uniqueEntityTracker("ancientgate", self.compassUpdate)
   while true do
     local result = findGate()
     questutil.pointCompassAt(result)
-    if result and world.magnitude(mcontroller.position(), result) < 50 then
+    if result and world.magnitude(mcontroller.position(), result) < 100 then
       self.state:set(gateFound)
     end
     coroutine.yield()
