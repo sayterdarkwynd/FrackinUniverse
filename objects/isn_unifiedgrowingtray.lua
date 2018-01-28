@@ -13,6 +13,7 @@ function init()
 		yield = config.getParameter("baseYields", 1),                -- Multiplier on treasurepools generated
 		fluidUse = config.getParameter("defaultWaterUse", 1)         -- Fluid units consumed per stage
 	}
+	multipliers = { "growthRate" }
 
 	if not storage.fert then storage.fert = {} end
 	if not storage.water then storage.water = {} end
@@ -60,7 +61,7 @@ end
 function die()
 	if storage.currentseed then
 		local count = getFertSum("seedUse")
-		storage.currentseed.count = 1
+		storage.currentseed.count = count
 		world.spawnItem(storage.currentseed, entity.position(), count)
 	end
 end
@@ -124,17 +125,22 @@ function growPlant(growthmod, dt)
 
 		-- Go to reset stage for perennial plants and full reset for others
 		local seed = world.containerItems(entity.id())[seedslot]
-		if seed and seed.name ~= storage.currentseed.name then
-			storage.currentseed.count = 1
+		if seed and seed.name ~= storage.currentseed.name and not stage().resetToStage then
+			storage.currentseed.count = getFertSum("seedUse")
 			fu_sendOrStoreItems(0, storage.currentseed, avoid)
 			storage.currentStage = 1
 			storage.growth = 0
 			storage.currentseed = nil
 		elseif stage().resetToStage then
+			if stage().resetToStage <= 0 then stage().resetToStage = 1 end
 			storage.currentStage = stage().resetToStage
 			storage.growth = stage().val
 			resetBonuses()
-			doFertProcess()
+			local fertName = doFertProcess()
+			if fertName then
+				storage.fert = self.fertInputs[fertName]
+				world.containerConsume(entity.id(), {name = fertName, count = 1, data={}})
+			end
 			storage.hasFluid = doFluidConsume()
 		else
 			storage.currentStage = 1
@@ -146,7 +152,11 @@ end
 
 -- Gets the current effective value of a fertilizer-affected modifier.
 function getFertSum(name)
-	return defaults[name] + (storage.fert[name] or 0) + (storage.water[name] or 0)
+	local bonus = (storage.fert[name] or 0) + (storage.water[name] or 0)
+	if multipliers[name] then
+		return defaults[name] * (bonus == 0 and 1 or bonus)
+	end
+	return defaults[name] + bonus
 end
 
 --Updates internal fluid levels, consumes required fluid units, and updates any fluid bonuses.
@@ -158,7 +168,6 @@ function doWaterIntake(fluidNeed)
 		storage.water = self.liquidInputs[water.name]
 		local amt = math.min(water.count, math.ceil(fluidNeed / storage.water.value))
 		storage.fluid = storage.fluid + (amt * storage.water.value)
-		sb.logInfo("Consuming "..amt.." water; ".."Needed "..fluidNeed.." units")
 		world.containerConsume(entity.id(), {name = water.name, count = amt})
 		return true
 	end
@@ -189,6 +198,7 @@ end
 --seed/data.
 function readSeedData()
 	if not storage.currentseed then return false end
+	if storage.currentseed.name == "sapling" then return false end
 	local stages = (storage.currentseed.parameters and storage.currentseed.parameters.stages) or root.itemConfig(storage.currentseed).config.stages
 	storage.stages = #stages
 	storage.stage = stages
