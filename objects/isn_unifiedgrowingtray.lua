@@ -9,9 +9,14 @@ fertslot = 3
 function init()
 	defaults = {
 		growthRate = config.getParameter("baseGrowthPerSecond", 4),  -- Multiplier on vanilla plant growth speed
-		seedUse = config.getParameter("defaultSeedUse", 1),          -- Amount of seeds consumed per plant (for perennials, starting cost)
+		seedUse = config.getParameter("defaultSeedUse", 3),          -- Amount of seeds consumed per plant (for perennials, starting cost)
 		yield = config.getParameter("baseYields", 1),                -- Multiplier on treasurepools generated
 		fluidUse = config.getParameter("defaultWaterUse", 1)         -- Fluid units consumed per stage
+		-- geneBonus   the bonus granted by X when attempting to mutate the strain
+		-- seedUseMutation    chance for spontaneous mutation/gene treatment
+		-- yieldMutation     chance for spontaneous mutation/gene treatment
+		-- ??
+		-- ??
 	}
 	multipliers = { "growthRate" }
 

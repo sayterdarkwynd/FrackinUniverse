@@ -11,6 +11,13 @@ function init()
 		player.interact("ScriptPane", "/interface/scripted/fu_updateInfoWindow/updateInfoWindow.config", player.id())
 	end
 	
+	message.setHandler("fu_key", function(_, _, requiredItem)
+		if player.hasItem(requiredItem) then
+			return true
+		end
+		return false
+	end)
+	
 	--[[
 	local goods = {"foodgoods", "medicalgoods", "electronicgoods", "militarygoods"}
 	for _, g in ipairs(goods) do
