@@ -2,6 +2,8 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 
+timer = 0
+
 seedslot = 1
 waterslot = 2
 fertslot = 3
@@ -18,7 +20,7 @@ function init()
 		-- ??
 		-- ??
 	}
-	multipliers = { "growthRate" }
+	multipliers = { "growthRate" } -- Which stats should be calculated as multipliers
 
 	if not storage.fert then storage.fert = {} end
 	if not storage.water then storage.water = {} end
@@ -45,6 +47,14 @@ end
 
 --Updates the state of the object.
 function update(dt)
+
+	-- Updates container status (for ITD management)
+	if timer >= 1 then
+		timer = 0
+		transferUtil.loadSelfContainer()
+	end
+	timer = timer + dt
+
 	if self.requiredPower then power.update(dt) end
 
 	storage.activeConsumption = false
@@ -130,15 +140,14 @@ function growPlant(growthmod, dt)
 
 		-- Go to reset stage for perennial plants and full reset for others
 		local seed = world.containerItems(entity.id())[seedslot]
-		if seed and seed.name ~= storage.currentseed.name and not stage().resetToStage then
+		if seed and seed.name ~= storage.currentseed.name and stage().resetToStage then
 			storage.currentseed.count = getFertSum("seedUse")
 			fu_sendOrStoreItems(0, storage.currentseed, avoid)
 			storage.currentStage = 1
 			storage.growth = 0
 			storage.currentseed = nil
 		elseif stage().resetToStage then
-			if stage().resetToStage <= 0 then stage().resetToStage = 1 end
-			storage.currentStage = stage().resetToStage
+			storage.currentStage = stage().resetToStage + 1
 			storage.growth = stage().val
 			resetBonuses()
 			local fertName = doFertProcess()
@@ -159,9 +168,9 @@ end
 function getFertSum(name)
 	local bonus = (storage.fert[name] or 0) + (storage.water[name] or 0)
 	if multipliers[name] then
-		return defaults[name] * (bonus == 0 and 1 or bonus)
+		return defaults[name] * (bonus <= 0 and 1 or bonus)
 	end
-	return defaults[name] + bonus
+	return math.max(defaults[name] + bonus, 0)
 end
 
 --Updates internal fluid levels, consumes required fluid units, and updates any fluid bonuses.
