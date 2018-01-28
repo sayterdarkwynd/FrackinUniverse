@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/scripts/messageutil.lua"
 
 function init()
   self.detectArea = config.getParameter("detectArea")
@@ -63,25 +64,37 @@ function init()
 end
 
 function onInteraction()
-
-    if not storage.active then
-      return {config.getParameter("inactiveInteractAction"), config.getParameter("inactiveInteractData")}
-    else
-      return {config.getParameter("interactAction"), config.getParameter("interactData")}
-    end
+	if storage.tricorder then
+      if not storage.active then
+        return {config.getParameter("inactiveInteractAction"), config.getParameter("inactiveInteractData")}
+      else
+	    return {config.getParameter("interactAction"), config.getParameter("interactData")}
+      end
+	else
+	  return {config.getParameter("noTricorderInteractAction"), config.getParameter("noTricorderInteractData")}
+	end
 end
 
 function update(dt)
 
---promises:add(world.sendEntityMessage(playerId, "messageName"), function(variable)
---    if variable then
---        return {config.getParameter("interactAction"), config.getParameter("interactData")}
---    end
---end, function()
---    return {config.getParameter("interactAction"), config.getParameter("interactData")} --for if they don't have the quest (if you set the entity message there)
---end)
+  promises:update()
 
   if self.isOutpostGate == 1 then
+	if not storage.tricorder then
+      local messagePlayers = world.playerQuery(object.position(), config.getParameter("tricorderCheckRange")) --make range a JSON value
+	  if messagePlayers then
+        for _, playerId in pairs (messagePlayers) do
+          promises:add(world.sendEntityMessage(playerId, "fu_key", "statustablet"), function(successful)
+	        if successful then
+	          storage.tricorder = true
+	        end
+          end, function()
+		    sb.logWarn("Either the player query is detecting some non-players or the message can't be recieved.")
+          end)
+	    end
+	  end
+	end
+	
     if storage.active then
       local players = world.entityQuery(self.detectArea[1], self.detectArea[2], {
           includedTypes = {"player"},

@@ -68,6 +68,7 @@
   "uniqueId" : "ancientgate2",
   
   "requiresTricorder" : 1,
+  "tricorderCheckRange" : 10,
   
   
   "scripts" : [ "/objects/ancient/ancientconsole/fuancientconsole.lua" ],
@@ -80,5 +81,8 @@
   "interactData" : "/interface/warping/gatewarp.config",
 
   "inactiveInteractAction" : "ScriptPane",
-  "inactiveInteractData" : "/interface/scripted/ancientconsole/ancientconsolegui.config"
+  "inactiveInteractData" : "/interface/scripted/ancientconsole/ancientconsolegui.config",
+  
+  "noTricorderInteractAction" : "ShowPopup",
+  "noTricorderInteractData" : {"message" : "You can't seem to interact with this object. Perhaps you need some sort of high tech device?"}
 }
