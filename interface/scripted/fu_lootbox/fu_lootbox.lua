@@ -39,12 +39,33 @@ vfx = {}
 
 funcs = {
 	bees = function(params)
-		world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
-		return {title = "Bees!!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
-	end
+		if self.random == 1 then
+		  --bees
+		  world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
+		  -- Can return a table that can override the title, the subtitle, the image displayed after opening a box, the text color, and the flash color
+		  return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
+		elseif self.random == 2 then
+		  -- poptops
+		  world.spawnProjectile("fu_poptopsack", world.entityPosition(player.id()))
+		  return {title = "Poptops!", subtitle = "Adorable Rabid Poptops!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFCCAA", flashColor = "#FFCCAA" }
+		elseif self.random == 3 then
+		  -- chicks
+		  world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
+		  return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }
+		elseif self.random == 4 then
+		  -- wolves
+		  world.spawnProjectile("fuwolfcase2", world.entityPosition(player.id()))
+		  return {title = "Wolves!", subtitle = "Rabid Angry Carnivores!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }		
+		else
+		  -- chicks
+		  world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
+		  return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }		
+		end
+        end	
 }
 
 function init()
+        self.random = math.random(10)
 	canvas = widget.bindCanvas("canvas")
 	data = root.assetJson("/interface/scripted/fu_lootbox/lootboxData.config")
 	vfx = data.vfx
@@ -56,6 +77,8 @@ function init()
 	local canvasSize = canvas:size()
 	vfx.title.position = {canvasSize[1] * 0.5, canvasSize[2] * 0.5 + vfx.title.yOffset}
 	vfx.subtitle.position = {canvasSize[1] * 0.5, canvasSize[2] * 0.5 + vfx.subtitle.yOffset}
+	
+	self.level = world.threatLevel()
 	
 	setNewPos(true)
 end
@@ -147,81 +170,136 @@ function draw()
 		else
 			if not isAnimating then
 				for i, tbl in ipairs(vfx.boxes.instances) do
-					local imgSize = root.imageSize(data.boxes[tbl.index].img)
-					if mousePos[1] >= tbl.pos[1] and mousePos[1] <= tbl.pos[1] + imgSize[1] then
-						if mousePos[2] >= tbl.pos[2] and mousePos[2] <= tbl.pos[2] + imgSize[2] then
-							hovered = i
-							break
+					if i == 1 or i == 2 or i == #vfx.boxes.instances then
+						local imgSize = root.imageSize(data.boxes[tbl.index].img)
+						if mousePos[1] >= tbl.pos[1] and mousePos[1] <= tbl.pos[1] + imgSize[1] then
+							if mousePos[2] >= tbl.pos[2] and mousePos[2] <= tbl.pos[2] + imgSize[2] then
+								hovered = i
+								break
+							end
 						end
 					end
 				end
 			end
 		end
 		
-		for i, tbl in ipairs(vfx.boxes.instances) do
-			local imgSize = root.imageSize(data.boxes[tbl.index].img)
-			local midPoint = {}
-			local color = "#FFFFFF"
-			
-			midPoint[1] = tbl.pos[1] + (imgSize[1] * 0.5)
-			midPoint[2] = tbl.pos[2] + (imgSize[2] * 0.5)
-			
-			if isOpening then					
-				if i == 1 then
-					color = "#FFFFFF"
-				elseif i == 2 or i == #vfx.boxes.instances then
-					color = "#666666"..vfx.boxes.fadeOut
-				else
-					color = "#333333"..vfx.boxes.fadeOut
-				end
-
-				if i == 1 then
-					local rotation = math.random(math.floor(vfx.openingTime*-20), math.floor(vfx.openingTime*20))*0.01
-					canvas:drawImageDrawable(data.boxes[tbl.index].img, midPoint, tbl.scale, color, rotation)
-					canvas:drawImageDrawable("/interface/scripted/fu_lootbox/presentWhite.png", midPoint, tbl.scale, "#FFFFFF"..vfx.boxes.fadeIn, rotation)
-				else
-					canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale, color, true)
-				end
-			else
-				if i == 1 then
-					color = "#FFFFFF"
-				elseif i == 2 or i == #vfx.boxes.instances then
-					color = "#666666"
-				else
-					color = "#333333"
-				end
+		for i, _ in ipairs(vfx.boxes.instances) do
+			if i == #vfx.boxes.instances then
+				local ind = i
+				local tbl = vfx.boxes.instances[ind]
 				
-				if hovered == i then
-					if i == 1 then
-						canvas:drawImageDrawable(data.boxes[tbl.index].img, midPoint, tbl.scale, color, math.random(-10, 10) * 0.01)
+				local imgSize = root.imageSize(data.boxes[tbl.index].img)
+				local midPoint = {}
+				local color = "#FFFFFF"
+				
+				midPoint[1] = tbl.pos[1] + (imgSize[1] * 0.5)
+				midPoint[2] = tbl.pos[2] + (imgSize[2] * 0.5)
+				
+				if isOpening then
+					if ind == 1 then
+						color = "#FFFFFF"
+					elseif ind == 2 or ind == #vfx.boxes.instances then
+						color = "#666666"..vfx.boxes.fadeOut
 					else
-						canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale + 0.1, color, true)
+						color = "#333333"..vfx.boxes.fadeOut
+					end
+
+					if ind == 1 then
+						local rotation = math.random(math.floor(vfx.openingTime*-20), math.floor(vfx.openingTime*20))*0.01
+						canvas:drawImageDrawable(data.boxes[tbl.index].img, midPoint, tbl.scale, color, rotation)
+						canvas:drawImageDrawable("/interface/scripted/fu_lootbox/presentWhite.png", midPoint, tbl.scale, "#FFFFFF"..vfx.boxes.fadeIn, rotation)
+					else
+						canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale, color, true)
 					end
 				else
-					canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale, color, true)
+					if ind == 1 then
+						color = "#FFFFFF"
+					elseif ind == 2 or ind == #vfx.boxes.instances then
+						color = "#666666"
+					else
+						color = "#333333"
+					end
+					
+					if hovered == ind then
+						if ind == 1 then
+							canvas:drawImageDrawable(data.boxes[tbl.index].img, midPoint, tbl.scale, color, math.random(-10, 10) * 0.01)
+						else
+							canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale + 0.1, color, true)
+						end
+					else
+						canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale, color, true)
+					end
 				end
 			end
 			
-			canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]+1, vfx.title.position[2]}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
-			canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]-1, vfx.title.position[2]}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
-			canvas:drawText(vfx.title.text, {position = {vfx.title.position[1], vfx.title.position[2]+1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
-			canvas:drawText(vfx.title.text, {position = {vfx.title.position[1], vfx.title.position[2]-1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
-			canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]+1, vfx.title.position[2]+1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
-			canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]+1, vfx.title.position[2]-1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
-			canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]-1, vfx.title.position[2]-1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
-			canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]-1, vfx.title.position[2]+1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
-			canvas:drawText(vfx.title.text, {position = vfx.title.position, horizontalAnchor = "mid"}, vfx.title.fontSize, vfx.title.color..vfx.title.alpha)
-			
-			canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]+1, vfx.subtitle.position[2]}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
-			canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]-1, vfx.subtitle.position[2]}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
-			canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1], vfx.subtitle.position[2]+1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
-			canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1], vfx.subtitle.position[2]-1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
-			canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]+1, vfx.subtitle.position[2]+1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
-			canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]+1, vfx.subtitle.position[2]-1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
-			canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]-1, vfx.subtitle.position[2]-1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
-			canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]-1, vfx.subtitle.position[2]+1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
-			canvas:drawText(vfx.subtitle.text, {position = vfx.subtitle.position, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, vfx.subtitle.color..vfx.subtitle.alpha)
+			local ind = #vfx.boxes.instances - i + 1
+			if ind < #vfx.boxes.instances then
+				local tbl = vfx.boxes.instances[ind]
+				
+				local imgSize = root.imageSize(data.boxes[tbl.index].img)
+				local midPoint = {}
+				local color = "#FFFFFF"
+				
+				midPoint[1] = tbl.pos[1] + (imgSize[1] * 0.5)
+				midPoint[2] = tbl.pos[2] + (imgSize[2] * 0.5)
+				
+				if isOpening then
+					if ind == 1 then
+						color = "#FFFFFF"
+					elseif ind == 2 or ind == #vfx.boxes.instances then
+						color = "#666666"..vfx.boxes.fadeOut
+					else
+						color = "#333333"..vfx.boxes.fadeOut
+					end
+
+					if ind == 1 then
+						local rotation = math.random(math.floor(vfx.openingTime*-20), math.floor(vfx.openingTime*20))*0.01
+						canvas:drawImageDrawable(data.boxes[tbl.index].img, midPoint, tbl.scale, color, rotation)
+						canvas:drawImageDrawable("/interface/scripted/fu_lootbox/presentWhite.png", midPoint, tbl.scale, "#FFFFFF"..vfx.boxes.fadeIn, rotation)
+					else
+						canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale, color, true)
+					end
+				else
+					if ind == 1 then
+						color = "#FFFFFF"
+					elseif ind == 2 or ind == #vfx.boxes.instances then
+						color = "#666666"
+					else
+						color = "#333333"
+					end
+					
+					if hovered == ind then
+						if ind == 1 then
+							canvas:drawImageDrawable(data.boxes[tbl.index].img, midPoint, tbl.scale, color, math.random(-10, 10) * 0.01)
+						else
+							canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale + 0.1, color, true)
+						end
+					else
+						canvas:drawImage(data.boxes[tbl.index].img, midPoint, tbl.scale, color, true)
+					end
+				end
+			end
 		end
+		
+		canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]+1, vfx.title.position[2]}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
+		canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]-1, vfx.title.position[2]}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
+		canvas:drawText(vfx.title.text, {position = {vfx.title.position[1], vfx.title.position[2]+1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
+		canvas:drawText(vfx.title.text, {position = {vfx.title.position[1], vfx.title.position[2]-1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
+		canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]+1, vfx.title.position[2]+1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
+		canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]+1, vfx.title.position[2]-1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
+		canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]-1, vfx.title.position[2]-1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
+		canvas:drawText(vfx.title.text, {position = {vfx.title.position[1]-1, vfx.title.position[2]+1}, horizontalAnchor = "mid"}, vfx.title.fontSize, "#000000"..vfx.title.alpha)
+		canvas:drawText(vfx.title.text, {position = vfx.title.position, horizontalAnchor = "mid"}, vfx.title.fontSize, vfx.title.color..vfx.title.alpha)
+		
+		canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]+1, vfx.subtitle.position[2]}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
+		canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]-1, vfx.subtitle.position[2]}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
+		canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1], vfx.subtitle.position[2]+1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
+		canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1], vfx.subtitle.position[2]-1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
+		canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]+1, vfx.subtitle.position[2]+1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
+		canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]+1, vfx.subtitle.position[2]-1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
+		canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]-1, vfx.subtitle.position[2]-1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
+		canvas:drawText(vfx.subtitle.text, {position = {vfx.subtitle.position[1]-1, vfx.subtitle.position[2]+1}, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, "#000000"..vfx.subtitle.alpha)
+		canvas:drawText(vfx.subtitle.text, {position = vfx.subtitle.position, horizontalAnchor = "mid"}, vfx.subtitle.fontSize, vfx.subtitle.color..vfx.subtitle.alpha)
 	end
 	
 	canvas:drawImageDrawable(vfx.ring.img, vfx.ring.pos, vfx.ring.scale, nil, nil)
@@ -309,56 +387,69 @@ function doneOpening()
 		
 		lootData = data.loot.pools[lootPool][rarity][math.random(1, #data.loot.pools[lootPool][rarity])]
 		
-		if lootData.item then
-			local cfg = root.itemConfig(lootData.item)
-			item = root.createItem(lootData.item, lootData.level, lootData.seed)
-			item.shortdescription = cfg.config.shortdescription
-			item.count = lootData.amount or 1
+		if (lootData.treasurePool and root.isTreasurePool(lootData.treasurePool)) or lootData.item then
+			local cfg = nil
+			local item = nil
 			
-			if not item.name then
-				item.name = cfg.config.itemName
+			if lootData.treasurePool and root.isTreasurePool(lootData.treasurePool) then
+				local treasure = root.createTreasure(lootData.treasurePool, lootData.level or 1)
+				cfg = root.itemConfig(treasure[1].name)
+				item = root.createItem(treasure[1].name, lootData.level, lootData.seed)
+				item.shortdescription = cfg.config.shortdescription
+				item.count = treasure[1].count or 1
+			else
+				cfg = root.itemConfig(lootData.item)
+				item = root.createItem(lootData.item, lootData.level, lootData.seed)
+				item.shortdescription = cfg.config.shortdescription
+				item.count = lootData.amount or 1
 			end
 			
-			world.spawnItem(item, world.entityPosition(player.id()))
-			
-			if not title then
-				title = item.shortdescription
-				if title then
-					if item.count and item.count > 1 then
-						title = title.."s x"..item.count
-					end
-					
-					if lootData.level then
-						title = "Tier "..lootData.level.." "..title
-					end
-				else
-					title = item.name
+			if item then
+				if not item.name then
+					item.name = cfg.config.itemName
+				end
+				
+				world.spawnItem(item, world.entityPosition(player.id()))
+				
+				if not title then
+					title = item.shortdescription
 					if title then
 						if item.count and item.count > 1 then
-							title = title.."s x"..item.count
+							title = title.." x"..item.count
 						end
 						
 						if lootData.level then
 							title = "Tier "..lootData.level.." "..title
 						end
 					else
-						title = "No title. Report this."
+						title = item.name
+						if title then
+							if item.count and item.count > 1 then
+								title = title.." x"..item.count
+							end
+							
+							if lootData.level then
+								title = "Tier "..lootData.level.." "..title
+							end
+						else
+							title = "No title. Report this."
+						end
 					end
 				end
+				
+				if not subtitle then
+					subtitle = data.loot.poolData[rarity].name
+				end
+				
+				vfx.flash.targetColor = data.loot.poolData[rarity].color
+				textColor = data.loot.poolData[rarity].color
+				
+				widget.setPosition("itemBG", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
+				widget.setPosition("item", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
+				widget.setItemSlotItem("item", item)
+				widget.setVisible("itemBG", true)
+				widget.setVisible("item", true)
 			end
-			
-			if not subtitle then
-				subtitle = data.loot.poolData[rarity].name
-			end
-			
-			vfx.flash.targetColor = data.loot.poolData[rarity].color
-			textColor = data.loot.poolData[rarity].color
-			
-			widget.setPosition("itemBG", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
-			widget.setPosition("item", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
-			widget.setItemSlotItem("item", item)
-			widget.setVisible("itemBG", true)
-			widget.setVisible("item", true)
 		end
 		
 		local funcData = nil
@@ -442,7 +533,12 @@ function setNewPos(isInit)
 				tbl.targetScale = vfx.boxes.sideScale
 				tbl.scale = vfx.boxes.sideScale
 			else
-				
+				tbl.pos[1] = (vfx.boxes.rightPos[1] - vfx.boxes.leftPos[1]) / (#vfx.boxes.instances - 3) * (i - 2)
+				tbl.pos[2] = vfx.boxes.backYOffset
+				tbl.targetPos[1] = (vfx.boxes.rightPos[1] - vfx.boxes.leftPos[1]) / (#vfx.boxes.instances - 3) * (i - 2)
+				tbl.targetPos[2] = vfx.boxes.backYOffset
+				tbl.targetScale = vfx.boxes.backScale
+				tbl.scale = vfx.boxes.backScale
 			end
 		end
 	else
@@ -460,7 +556,9 @@ function setNewPos(isInit)
 				tbl.targetPos[2] = vfx.boxes.rightPos[2]
 				tbl.targetScale = vfx.boxes.sideScale
 			else
-				
+				tbl.targetPos[1] = (vfx.boxes.rightPos[1] - vfx.boxes.leftPos[1]) / (#vfx.boxes.instances - 3) * (i - 2)
+				tbl.targetPos[2] = vfx.boxes.backYOffset
+				tbl.targetScale = vfx.boxes.backScale
 			end
 		end
 	end

@@ -23,8 +23,8 @@ function init()
   self.doubleTap = DoubleTap:new({"up"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
       if self.dashTimer == 0
           and self.dashCooldownTimer == 0
-          and groundValid()
-          and not mcontroller.crouching()
+          --and groundValid()
+          --and not mcontroller.crouching()
           and not status.statPositive("activeMovementAbilities") then
 
         startDash(dashKey == "up" and 0 or 0)
@@ -96,12 +96,9 @@ function groundValid()
 end
 
 function startDash(direction)
--- ***energy cost
- if status.overConsumeResource("energy", self.energyCost) and groundValid() then 
+ if status.overConsumeResource("energy", self.energyCost) then --and groundValid() then 
    status.setResourcePercentage("energyRegenBlock", 5.0)
--- ***end energy cost
 
--- ***start jump
   self.dashDirection = direction
   self.dashTimer = self.dashDuration
   self.airDashing = not mcontroller.groundMovement()
@@ -109,14 +106,11 @@ function startDash(direction)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
-  
--- ***end jump
 
--- ***spawn projectile
-    local damageConfig = { power = (status.stat("maxEnergy")/5),speed = 0,physics = "default" } 
-    status.addEphemeralEffects{{effect = "nofalldamage", duration = self.cooldown}}
-    world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
--- ***end projectile
+  local damageConfig = { power = (status.stat("maxEnergy")/5),speed = 0,physics = "default" } 
+  status.addEphemeralEffects{{effect = "nofalldamage", duration = self.cooldown}}
+  world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
+
  end
 end
 
