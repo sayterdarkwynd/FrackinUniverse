@@ -20,7 +20,7 @@ function init()
 		-- ??
 		-- ??
 	}
-	multipliers = { "growthRate" } -- Which stats should be calculated as multipliers
+	multipliers = { growthRate=true } -- Which stats should be calculated as multipliers
 
 	if not storage.fert then storage.fert = {} end
 	if not storage.water then storage.water = {} end
