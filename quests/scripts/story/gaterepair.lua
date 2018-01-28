@@ -60,14 +60,12 @@ function update(dt)
 
   if not player.hasItem({name = "statustablet", count = 1}) then
     self.gateUid = "ancientgate"
-  else
+  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 then 
     self.gateUid = "ancientgate2"  
+  else
+    self.gateUid = "ancientgate2" 
   end
-    
 
-  if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 then 
-    self.gateUid = "ancientgate2"
-  end
   
   -- Skip ahead if the gate is already active 
   if storage.stage < 5 and gateActive() and player.hasItem({name = "statustablet", count = 1}) then

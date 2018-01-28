@@ -72,6 +72,15 @@ function onInteraction()
 end
 
 function update(dt)
+
+--promises:add(world.sendEntityMessage(playerId, "messageName"), function(variable)
+--    if variable then
+--        return {config.getParameter("interactAction"), config.getParameter("interactData")}
+--    end
+--end, function()
+--    return {config.getParameter("interactAction"), config.getParameter("interactData")} --for if they don't have the quest (if you set the entity message there)
+--end)
+
   if self.isOutpostGate == 1 then
     if storage.active then
       local players = world.entityQuery(self.detectArea[1], self.detectArea[2], {
