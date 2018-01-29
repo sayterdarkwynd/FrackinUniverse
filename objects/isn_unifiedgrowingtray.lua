@@ -99,7 +99,7 @@ end
 function updateState()
 	--Compute which graphic should be displayed and update.
 	local growthperc = isn_getXPercentageOfY(math.min(storage.growth, storage.growthCap), storage.growthCap)
-	animator.setAnimationState("growth", sb.print(math.floor(growthperc / 25)))
+	animator.setAnimationState("growth", sb.print(math.min(math.floor(growthperc / 25), 3)))
 end
 
 -- Performs a plant growth tick, including water consumption and harvesting
