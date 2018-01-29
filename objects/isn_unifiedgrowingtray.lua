@@ -148,7 +148,7 @@ function growPlant(growthmod, dt)
 			storage.currentseed = nil
 		elseif stage().resetToStage then
 			storage.currentStage = stage().resetToStage + 1
-			storage.growth = stage().val
+			storage.growth = storage.currentStage == 1 and 0 or storage.stage[storage.currentStage - 1].val
 			resetBonuses()
 			local fertName = doFertProcess()
 			if fertName then
@@ -264,6 +264,7 @@ function doSeedIntake()
 	if storage.currentseed.count < getFertSum("seedUse") then
 		storage.currentseed = nil
 		storage.harvestPool = nil
+		storage.fert = {}
 		return false
 	end
 
@@ -271,13 +272,13 @@ function doSeedIntake()
 	if not genGrowthData() then
 		storage.currentseed = nil
 		storage.harvestPool = nil
+		storage.fert = {}
 		return false
 	end
 	--All state tests passed and we are ready to grow, consume some items.
 
 	--Consume a unit of fertilizer.
 	if fertName then
-		storage.fert = self.fertInputs[fertName]
 		world.containerConsume(entity.id(), {name = fertName, count = 1, data={}})
 	end
 
@@ -293,6 +294,7 @@ function doFertProcess()
 	local fert = world.containerItems(entity.id())[fertslot]
 
 	if fert and self.fertInputs[fert.name] and fert.count > 0 then
+		storage.fert = self.fertInputs[fert.name]
 		return fert.name
 	end
 	storage.fert = {}
