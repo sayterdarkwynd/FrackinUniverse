@@ -30,11 +30,41 @@
 
       "hostileActions" : [
         {
+          "name" : "action-fire",
+          "cooldown" : 0.2,
+          "parameters" : {
+
+            "maximumRange" : 15,
+            "minimumRange" : 1,
+
+            "windupState" : "hopfull",
+            "windupTime" : 0.24,
+            "projectileType" : "unfriendlybubble2",
+            "projectileCount" : 20,
+            
+            "projectileParameters" : {
+              "speed" : 50,
+              "timeToLive" : 10,
+              "power" : 8
+            },
+            "inaccuracy" : 0.8,
+            "projectileInterval" : 0,
+            "fireSound" : "deathPuff",
+            "fireState" : "fall",
+            "winddownState" : "land",
+            "winddownTime" : 0.05,
+            "aimAtTarget" : true,
+            "aimDirection" : [0,0],
+            "onGround" : true,
+            "fireDelay" : 0.2
+          }
+        },      
+        {
           "name" : "action-hop",
           "cooldown" : [3, 6],
           "parameters" : {
             "verticalSpeed" : 25,
-            "horizontalSpeed" : 10,
+            "horizontalSpeed" : 30,
             "hopSequence" : 1,
             "timeBetweenHops" : 0.15,
             "windupTime" : 0.4,
@@ -103,7 +133,7 @@
 
     "touchDamage" : {
       "poly" : [ [-0.6875, -0.775], [-0.4375, -1.025], [0.4375, -1.025], [0.6875, -0.775], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
-      "damage" : 7,
+      "damage" : 9,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
@@ -117,7 +147,7 @@
     "movementSettings" : {
       "collisionPoly" : [ [-0.6875, -0.775], [-0.4375, -1.025], [0.4375, -1.025], [0.6875, -0.775], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
 
-      "mass" : 1.0,
+      "mass" : 1.21,
       "walkSpeed" : 5,
       "runSpeed" : 5,
       "jumpSpeed" : 5
@@ -154,7 +184,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 200
+          "baseValue" : 120
         },
         "grit" : {
           "baseValue" : 1.0
@@ -166,16 +196,16 @@
           "baseValue" : 1.0
         },
         "powerMultiplier" : {
-          "baseValue" : 1.0
+          "baseValue" : 1.15
         },
         "physicalResistance" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.325
         },
         "fireResistance" : {
-          "baseValue" : -0.5
+          "baseValue" : 1
         },
         "fireStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.0
         },
         "iceResistance" : {
           "baseValue" : 0.15
@@ -187,7 +217,7 @@
           "baseValue" : 0.15
         },
         "electricStatusImmunity" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "poisonResistance" : {
           "baseValue" : 1.0
@@ -220,7 +250,6 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "pandorasboxmonsters" : "pandorasboxtentaclam" }
+    "nametagColor" : [199, 199, 25]
   }
 }
