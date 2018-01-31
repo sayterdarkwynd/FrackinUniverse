@@ -16,7 +16,11 @@ function update(dt)
 	end
 	deltatime=0
 	findContainer()
+	storage.containerSize=world.containerSize(storage.containerId)
+	storage.containerFill=util.tableSize(world.containerItems(storage.containerId) or {})
 	object.setOutputNodeLevel(storage.outDataNode,not storage.containerId==nil)
+	object.setOutputNodeLevel(1,(storage.containerFill or 0) > 0)
+	object.setOutputNodeLevel(2,(storage.containerFill and storage.containerSize) and (storage.containerFill==storage.containerSize))
 end
 
 function findContainer()

@@ -2,9 +2,10 @@
 	"objectName" : "network_containerlink",
 	"printable" : false,
 	"rarity" : "Common",
-	"description" : "Place directly next to container to connect it to your item network.
+	"description" : "Place next to container.
 ^blue;Input: ^white;item network
-^red;Output: ^white;item network^reset;",
+^red;Lower output: ^white;item network^reset;
+^red;Upper outputs: ^white;Partial/Complete Fill^reset;",
 	"shortdescription" : "Storage Bridge",
 	"race" : "generic",
 
@@ -34,7 +35,7 @@
 	"scriptDelta" : 5,
 
 	"inputNodes" : [[0,0]],
-	"outputNodes" : [[1,0]],
+	"outputNodes" : [[1,0],[0,1],[1,1]],
 	"kheAA_inDataNode":0,
 	"kheAA_outDataNode":0,
 
