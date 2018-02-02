@@ -60,9 +60,7 @@ function update(dt)
 
   if not player.hasItem({name = "statustablet", count = 1}) then
     self.gateUid = "ancientgate"
-  elseif player.hasItem({name = "statustablet", count = 1}) then  
-    self.gateUid = "ancientgate2"
-  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 then 
+  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 or player.hasItem({name = "statustablet", count = 1}) then 
     self.gateUid = "ancientgate2"  
   else
     self.gateUid = "ancientgate2" 
@@ -72,6 +70,7 @@ function update(dt)
   -- Skip ahead if the gate is already active 
   if storage.stage < 5 and gateActive() and player.hasItem({name = "statustablet", count = 1}) then
     storage.stage = 5
+    self.gateUid = "ancientgate2" 
     self.state:set(gateRepaired)
   elseif storage.stage < 5 and gateActive() and not player.hasItem({name = "statustablet", count = 1}) then
     player.radioMessage("fu_start_needstricorder2")
@@ -118,11 +117,11 @@ function explore()
   local buffer = 0
   while storage.exploreTimer < self.exploreTime do
     local gatePosition = findGate()
-    if gatePosition or storage.exploreTimer >= 200 then
+    if gatePosition then
       -- Gate is on this world, put buffer onto the exploration timer
       storage.exploreTimer = storage.exploreTimer + buffer
       buffer = 0
-      if world.magnitude(mcontroller.position(), gatePosition) < 50 then
+      if world.magnitude(mcontroller.position(), gatePosition) < 200 then
         self.state:set(gateFound)
         coroutine.yield()
       end
@@ -169,6 +168,7 @@ function gateFound()
   --player.radioMessage("gaterepair-gateFound1b")
   player.radioMessage("gaterepair-gateFound2")
   storage.stage = 3
+  self.gateUid = "ancientgate"
   util.wait(14)
 
   self.state:set(self.stages[storage.stage])
@@ -177,7 +177,7 @@ end
 function collectRepairItem()
   quest.setCompassDirection(nil)
 
-  quest.setParameter("ancientgate", {type = "entity", uniqueId = "ancientgate2"})
+  quest.setParameter("ancientgate", {type = "entity", uniqueId = self.gateUid})
   quest.setIndicators({"ancientgate"})
   
   local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
