@@ -60,6 +60,8 @@ function update(dt)
 
   if not player.hasItem({name = "statustablet", count = 1}) then
     self.gateUid = "ancientgate"
+  elseif player.hasItem({name = "statustablet", count = 1}) then  
+    self.gateUid = "ancientgate2"
   elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 then 
     self.gateUid = "ancientgate2"  
   else
@@ -116,7 +118,7 @@ function explore()
   local buffer = 0
   while storage.exploreTimer < self.exploreTime do
     local gatePosition = findGate()
-    if gatePosition then
+    if gatePosition or storage.exploreTimer >= 200 then
       -- Gate is on this world, put buffer onto the exploration timer
       storage.exploreTimer = storage.exploreTimer + buffer
       buffer = 0
@@ -167,7 +169,6 @@ function gateFound()
   --player.radioMessage("gaterepair-gateFound1b")
   player.radioMessage("gaterepair-gateFound2")
   storage.stage = 3
-  self.gateUid = "ancientgate"
   util.wait(14)
 
   self.state:set(self.stages[storage.stage])
@@ -176,7 +177,7 @@ end
 function collectRepairItem()
   quest.setCompassDirection(nil)
 
-  quest.setParameter("ancientgate", {type = "entity", uniqueId = self.gateUid})
+  quest.setParameter("ancientgate", {type = "entity", uniqueId = "ancientgate2"})
   quest.setIndicators({"ancientgate"})
   
   local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
