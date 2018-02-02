@@ -45,18 +45,22 @@ end
 function populateList(collectionName)
 -- BEGIN CUSTOM CODE
   local collectionName = collectionName or widget.getSelectedData("collectionTabs")
-  if collectionName == "customCollectionsVisible" then return end -- special case: do nothing
+  local isCustomCollection = collectionName ~= nil and string.match(collectionName, "customCollections");
+  if collectionName ~= nil and string.match(collectionName, "Visible") then
+    return
+  end -- special case: do nothing
 
   widget.clearListItems(self.customList)
 -- END CUSTOM CODE
   widget.clearListItems(self.list)
   self.collectionName = collectionName
 --BEGIN CUSTOM CODE
-  if collectionName == "customCollections" then
-    local collections = config.getParameter("customCollections")
+  if isCustomCollection then
+    local collections = config.getParameter(collectionName)
+    local collectionTitle = config.getParameter(collectionName .. "Title")
     table.sort(collections)
 
-    widget.setText("selectLabel", config.getParameter("customCollectionsTitle"))
+    widget.setText("selectLabel", collectionTitle)
     widget.setVisible("emptyLabel", false)
     widget.setVisible("scrollArea", false)
     widget.setVisible("scrollAreaCustom", true)
@@ -68,7 +72,7 @@ function populateList(collectionName)
       widget.setData(path, collection)
       widget.setText(path .. ".collectionName", collectionInfo.title)
     end
--- END CUSTOM CODE -- below, self.collectionName → collectionName
+-- END CUSTOM CODE -- below, self.collectionName ? collectionName
   elseif collectionName then
     self.customCollectionName = collectionName -- CUSTOM - needed to avoid reset to custom collection view
     local collection = root.collection(collectionName)
@@ -127,7 +131,7 @@ function createTooltip(screenPosition)
 end
 
 function selectCollection(index, data)
-  populateList()
+  populateList(data)
 end
 
 function selectCustomCollection(index, data)
