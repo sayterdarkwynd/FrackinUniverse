@@ -6,15 +6,21 @@
   "animatedParts" : {
     "stateTypes" : {
       "firing" : {
-        "default" : "off",
+        "default" : "fire",
         "states" : {
           "off" : {},
           "fire" : {
             "frames" : 2,
             "cycle" : 0.1,
             "mode" : "transition",
-            "transition" : "off"
-          }
+            "transition" : "afterFire"
+          },
+	  "afterFire" : {
+		"frames" : 3,
+		"cycle" : 0.085,
+		"mode" : "transition",
+		"transition" : "off"
+	  }
         }
       },
       "middle" : {
@@ -22,14 +28,21 @@
         "states" : {
           "idle" : {
             "frames" : 1,
-            "cycle" : 0.3,
+            "cycle" : 0.1,
             "mode" : "loop"
           },
           "fire" : {
             "frames" : 2,
-            "cycle" : 0.4,
-            "mode" : "loop"
-          }          
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "afterFire"
+          },
+	  "afterFire" : {
+		"frames" : 3,
+		"cycle" : 0.085,
+		"mode" : "transition",
+		"transition" : "off"
+	  }         
         }
       }
     },
@@ -51,26 +64,37 @@
         },
         "partStates" : {
           "firing" : {
-            "fire" : {
-              "properties" : {
-                "image" : "<partImage>:fire.<frame><paletteSwaps>"
-              }
-            },
-            "idle" : {
-              "properties" : {
-                "image" : "<partImage>:default.<frame><paletteSwaps>"
-              }
-            }            
+			//replaced fire with afterfire
+		"fire" : {
+			"properties" : {
+				"image" : "<partImage>:idle.1<paletteSwaps>"
+			}
+		},
+		"afterFire" : {
+			"properties" : {
+				"image" : "<partImage>:fire.<frame><paletteSwaps>"
+			}
+		},
+		"off" : {
+			"properties" : {
+				"image" : "<partImage>:idle.1<paletteSwaps>"
+			}
+		}        
           },        
           "middle" : {
-            "fire" : {
-              "properties" : {
-                "image" : "<partImage>:fire.<frame><paletteSwaps>"
-              }
-            },          
+		"fire" : {
+			"properties" : {
+				"image" : "<partImage>:idle.1<paletteSwaps>"
+			}
+		},
+		"afterFire" : {
+			"properties" : {
+				"image" : "<partImage>:fire.<frame><paletteSwaps>"
+			}
+		},          
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:default.<frame><paletteSwaps>"
+                "image" : "<partImage>:idle.1<paletteSwaps>"
               }
             }
           }

@@ -1,11 +1,11 @@
 {
   "id" : "create_matterassembler2",
   "prerequisites" : [ "create_matterassembler" ],
-  "title" : "Ambulary?",
-  "text" : "Use your ^orange;Machining Table^reset; now, and create ^orange;9 Wire^reset;. We'll need it to fix your ships Transducer Coil!",
-  "completionText" : "I can jury-rig a fix with these wires, thanks. Your ^orange;FTL Drive^reset; needs replacing, though. Now, perhaps you could investigate the ^orange;archaic energy source^reset; I've been detecting recently. I need to know what it is!",
+  "title" : "Repairing Your Teleporter",
+  "text" : "Use your ^orange;Machining Table^reset; now, and create ^orange;9 Wire^reset; and ^green;bring them to me^reset;. I'll jury-rig a fix for your ^green;Teleporter^reset; so that you can ^green;warp to distant locations^reset; such as the ^orange;Science Outpost^reset;!.",
+  "completionText" : "I have a ^orange;Personal Tricorder^reset; here for you! ^orange;Try out its ^green;3^orange; primary functions^reset; as soon as possible. Open up the ^green;Right-Click^reset; menu from it and look for a task you wish to attempt. Select it.", 
   "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "glass", 2 ] ] ],
+  "rewards" : [ [ [ "statustablet", 1 ] ] ],
   "speaker" : "questGiver",
   
   "updateDelta" : 10,
@@ -21,13 +21,12 @@
   "scriptConfig" : {
 
     "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
+      "default" : "player"
     },
     
     "requireTurnIn" : true,
 
-    "turnInDescription" : "Bring the ^green;Wire^reset; to ^orange;Vinalisj^reset;.",
+    "turnInDescription" : "Bring the ^green;9 Wires^reset; to ^orange;Vinalisj^reset;.",
 
     "initialCompassTarget" : {
       "targetType" : "parameter",

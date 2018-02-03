@@ -44,8 +44,8 @@ end
 
 function populateList(collectionName)
 -- BEGIN CUSTOM CODE
-  local isCustomCollection = collectionName ~= nil and string.match(collectionName, "customCollections");
   local collectionName = collectionName or widget.getSelectedData("collectionTabs")
+  local isCustomCollection = collectionName ~= nil and string.match(collectionName, "customCollections");
   if collectionName ~= nil and string.match(collectionName, "Visible") then
     return
   end -- special case: do nothing
@@ -72,7 +72,7 @@ function populateList(collectionName)
       widget.setData(path, collection)
       widget.setText(path .. ".collectionName", collectionInfo.title)
     end
--- END CUSTOM CODE -- below, self.collectionName → collectionName
+-- END CUSTOM CODE -- below, self.collectionName ? collectionName
   elseif collectionName then
     self.customCollectionName = collectionName -- CUSTOM - needed to avoid reset to custom collection view
     local collection = root.collection(collectionName)

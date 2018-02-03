@@ -60,7 +60,7 @@ function update(dt)
 
   if not player.hasItem({name = "statustablet", count = 1}) then
     self.gateUid = "ancientgate"
-  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 then 
+  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 or player.hasItem({name = "statustablet", count = 1}) then 
     self.gateUid = "ancientgate2"  
   else
     self.gateUid = "ancientgate2" 
@@ -70,6 +70,7 @@ function update(dt)
   -- Skip ahead if the gate is already active 
   if storage.stage < 5 and gateActive() and player.hasItem({name = "statustablet", count = 1}) then
     storage.stage = 5
+    self.gateUid = "ancientgate2" 
     self.state:set(gateRepaired)
   elseif storage.stage < 5 and gateActive() and not player.hasItem({name = "statustablet", count = 1}) then
     player.radioMessage("fu_start_needstricorder2")
@@ -120,7 +121,7 @@ function explore()
       -- Gate is on this world, put buffer onto the exploration timer
       storage.exploreTimer = storage.exploreTimer + buffer
       buffer = 0
-      if world.magnitude(mcontroller.position(), gatePosition) < 50 then
+      if world.magnitude(mcontroller.position(), gatePosition) < 200 then
         self.state:set(gateFound)
         coroutine.yield()
       end
