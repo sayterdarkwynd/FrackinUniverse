@@ -7,6 +7,8 @@ function init()
 	storage.containerId=nil
 	storage.containerPos={0,0}
 	storage.linkRange=config.getParameter("kheAA_linkRange",16)
+	storage.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
+	storage.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
 end
 
 function update(dt)
@@ -16,11 +18,22 @@ function update(dt)
 	end
 	deltatime=0
 	findContainer()
-	storage.containerSize=world.containerSize(storage.containerId)
-	storage.containerFill=util.tableSize(world.containerItems(storage.containerId) or {})
 	object.setOutputNodeLevel(storage.outDataNode,not storage.containerId==nil)
-	object.setOutputNodeLevel(1,(storage.containerFill or 0) > 0)
-	object.setOutputNodeLevel(2,(storage.containerFill and storage.containerSize) and (storage.containerFill==storage.containerSize))
+	
+	
+
+	if storage.outPartialFillNode or storage.outCompleteFillNode then
+		storage.containerSize=world.containerSize(storage.containerId)
+		storage.containerFill=util.tableSize(world.containerItems(storage.containerId) or {})
+		
+		if storage.outPartialFillNode then
+			object.setOutputNodeLevel(storage.outPartialFillNode,(storage.containerFill or 0) > 0)
+		end
+		if storage.outCompleteFillNode then
+			object.setOutputNodeLevel(storage.outCompleteFillNode,(storage.containerFill and storage.containerSize) and (storage.containerFill==storage.containerSize))
+		end
+	end
+
 end
 
 function findContainer()

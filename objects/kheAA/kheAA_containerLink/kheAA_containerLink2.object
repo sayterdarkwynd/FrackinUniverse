@@ -1,10 +1,12 @@
 {
-	"objectName" : "network_containerlink",
+	"objectName" : "network_containerlink2",
 	"printable" : false,
 	"rarity" : "Common",
 	"description" : "Place next to container.
-^blue;Input: ^white;item network^reset;",
-	"shortdescription" : "Storage Bridge",
+^blue;Input: ^white;item network
+^red;Lower output: ^white;item network^reset;
+^red;Upper outputs: ^white;Partial/Complete Fill^reset;",
+	"shortdescription" : "Storage Bridge V2",
 	"race" : "generic",
 
 	"category" : "wire",
@@ -33,9 +35,11 @@
 	"scriptDelta" : 5,
 
 	"inputNodes" : [[0,0]],
-	"outputNodes" : [[1,0]],
+	"outputNodes" : [[1,0],[0,1],[1,1]],
 	"kheAA_inDataNode":0,
 	"kheAA_outDataNode":0,
+	"kheAA_outPartialFillNode":1,
+	"kheAA_outCompleteFillNode":2,
 
 	"interval" : 5
 }
