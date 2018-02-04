@@ -2,11 +2,15 @@
 timer = 0
 
 function init()
-	local data = root.assetJson("/_FUversioning.config")
+	data = root.assetJson("/_FUversioning.config")
 	widget.setText("textScrollBox.text", data.text)
 	widget.setText("version", "FU "..data.version)
 	widget.setButtonEnabled("close", false)
-	timer = data.minimumUptime
+	if status.statusProperty("FUversion", "0") ~= data.version then
+		timer = data.minimumUptime
+	else
+		timer = 0
+	end
 end
 
 function close()
@@ -27,5 +31,7 @@ end
 function uninit()
 	if timer > 0 then
 		player.interact("ScriptPane", "/interface/scripted/fu_updateInfoWindow/updateInfoWindow.config")
+		return
 	end
+	status.setStatusProperty("FUversion", data.version)
 end
