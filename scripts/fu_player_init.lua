@@ -7,7 +7,6 @@ function init()
 	
 	local data = root.assetJson("/_FUversioning.config")
 	if status.statusProperty("FUversion", "0") ~= data.version then
-		status.setStatusProperty("FUversion", data.version)
 		player.interact("ScriptPane", "/interface/scripted/fu_updateInfoWindow/updateInfoWindow.config", player.id())
 	end
 	

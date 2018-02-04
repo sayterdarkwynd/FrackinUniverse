@@ -10,11 +10,22 @@ function init()
 end
 
 function update(dt)
-	if player.worldId() == player.ownShipWorldId() then
+	if world.type() == "unknown" then
 		shipLevel = world.getProperty("ship.level")
+		if shipLevel == 0 then
+			if not world.tileIsOccupied(mcontroller.position(), false) then
+				lifeSupport(false)
+			else
+				lifeSupport(true)
+			end
+		else
+			lifeSupport(true)
+		end
+	end
+	if player.worldId() == player.ownShipWorldId() then
 		if not initFinished then
 			initFinished = true
-			if shipLevel == 0 then
+			if player.hasCompletedQuest("fu_byos") then
 				for _, recipe in pairs (root.assetJson(config.getParameter("byosRecipes"))) do
 					player.giveBlueprint(recipe)
 				end
@@ -30,15 +41,6 @@ function update(dt)
 		shipMassShip = world.getProperty("fu_byos.shipMass")
 		if world.getProperty("fu_byos.inWarp") then
 			--world.spawnProjectile("explosivebullet", vec2.add(entity.position(), {50,0}), entity.id(), {-1, 0}, false, {}) -- disabled until properly implemented
-		end
-		if shipLevel == 0 then
-			if not world.tileIsOccupied(mcontroller.position(), false) then
-				lifeSupport(false)
-			else
-				lifeSupport(true)
-			end
-		else
-			lifeSupport(true)
 		end
 		if crewSizeShip then
 			crewSizeNew, _ = calculateNew("crewSize", crewSizeShip, 0, 0)
