@@ -51,7 +51,7 @@ end
 
 
 function liquidLib.doPump()
-	if not transferUtil.powerLevel(storage.logicInNode) then
+	if not transferUtil.powerLevel(storage.logicNode) then
 		return;
 	end
 	local pos = entity.position();
