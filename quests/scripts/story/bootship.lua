@@ -69,10 +69,7 @@ function wakeSail()
 
     local shipUpgrades = player.shipUpgrades()
     if shipUpgrades.shipLevel > 0 or player.hasQuest("fu_byos") then
-	  promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
-        quest.complete()
-	  end, function()
-	  end)
+	  world.sendEntityMessage(self.techstationUid, "activateShip")
     end
     coroutine.yield()
   end
