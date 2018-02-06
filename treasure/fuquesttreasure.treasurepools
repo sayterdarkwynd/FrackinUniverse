@@ -2,14 +2,24 @@
   "fuStarterDungeonTreasure" : [
     [1, {  
       "fill" : [
-        {"weight" : 1.0, "pool" : "salvageComponent" }
-        {"weight" : 1.0, "pool" : "salvageComponent" }
+        {"weight" : 1.0, "pool" : "salvageComponent" },
+        {"weight" : 1.0, "pool" : "salvageComponent" },
         {"weight" : 1.0, "pool" : "salvageComponent" },
         {"weight" : 1.0, "pool" : "challengeChestTreasure" }
       ],
       "allowDuplication" : true
     }]
   ],
+  
+"starterExplosive" : [
+    [1, {
+      "pool" : [
+        {"weight" : 0.10, "item" : "commonrocketlauncher"},
+        {"weight" : 0.90, "item" : ["bomb", 5]}
+      ]
+    } ]
+  ],    
+  
   "fuWastesBookTreasure" : [
 	    [1, 
 	      { "fill" : [ {"weight" : 1, "item" : ["fugrimoire", 1]} 
@@ -31,6 +41,7 @@
       "allowDuplication" : true
     }]
   ],
+  
   "wagnerTreasure" : [
     [1, {
       "fill" : [
@@ -42,14 +53,7 @@
     }]
   ],
   
-"starterExplosive" : [
-    [1, {
-      "pool" : [
-        {"weight" : 0.10, "item" : "commonrocketlauncher"},
-        {"weight" : 0.90, "item" : ["bomb", 5]}
-      ]
-    } ]
-  ],   
+ 
   
 "precursorUnlock" : [
     [1, {
