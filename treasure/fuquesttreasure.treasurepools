@@ -1,4 +1,15 @@
 {
+  "fuStarterDungeonTreasure" : [
+    [1, {  
+      "fill" : [
+        {"weight" : 1.0, "pool" : "salvageComponent" }
+        {"weight" : 1.0, "pool" : "salvageComponent" }
+        {"weight" : 1.0, "pool" : "salvageComponent" },
+        {"weight" : 1.0, "pool" : "challengeChestTreasure" }
+      ],
+      "allowDuplication" : true
+    }]
+  ],
   "fuWastesBookTreasure" : [
 	    [1, 
 	      { "fill" : [ {"weight" : 1, "item" : ["fugrimoire", 1]} 
@@ -33,8 +44,9 @@
   
 "starterExplosive" : [
     [1, {
-      "fill" : [
-        {"item" : ["commonrocketlauncher", 1]}
+      "pool" : [
+        {"weight" : 0.10, "item" : "commonrocketlauncher"},
+        {"weight" : 0.90, "item" : ["bomb", 5]}
       ]
     } ]
   ],   
