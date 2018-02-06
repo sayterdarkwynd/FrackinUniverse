@@ -6,54 +6,59 @@
   "rarity" : "rare",
   "description" : "A dangerously powerful minigun.
 ^cyan;Counts as 'plasma' for set bonuses^reset;
-^yellow;Increases speed as it fires.^reset;",
+^yellow;Heavy. Extreme fire rate^reset;",
   "shortdescription" : "ArCon Warden",
   "tooltipKind" : "gun2",
   "category" : "assaultRifle",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","assaultrifle", "plasma", "upgradeableWeapon"],
   "inventoryIcon" : "wardenicon.png",
+
+"cursor" : "/cursors/fuwardenreticle.cursor",
+
   "animation" : "warden.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "warden.png",
+    "middle" : "wardenicon.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png",
+    "charge" : "warden.png",
+    "chargehold" : "wardenhold.png"
   },
   "animationCustom" : {
-    "lights" : { "glow" : {
-      "active" : true,
-      "position" : [2.6, 0.115],
-      "color" : [122, 21, 21]
-    }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/protopistol.ogg" ]
+      "fire" : [ "/sfx/weapons/protopistol.ogg" ],
+	  "chargeLoop" : [ "/sfx/melee/charge_up8.ogg" ],
+	  "holdLoop" : [ "/sfx/objects/camera_pan_loop.ogg" ],
+	  "discharge" : [ "/sfx/weapons/protopistol.ogg" ]
     }
   },
-  "baseOffset" : [0.3, -0.9],
-  "muzzleOffset" : [2.6, 0.115],
 
-  "scripts" : [    
-    "/items/active/scripts/modifiablegun.lua",
-    "/items/active/scripts/windupinaccurateweaponlesser.lua"],
+  "baseOffset" : [0.5, -1.0],
+  "muzzleOffset" : [2.0, 0.315],
+
+  "scripts" : ["/items/active/scripts/thea-gun.lua","/items/active/scripts/heavyweapon.lua"],
 
   "elementalType" : "radioactive",
-
+  
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    "scripts" : ["/items/active/weapons/ranged/abilities/thea-minigun.lua"],
+    "class" : "TheaMinigun",
 
-    "fireTime" : 0.185,
-    "baseDps" : 5,
-    "energyUsage" : 26,
-    "fireType" : "auto",
-    
-    "projectileCount" : 1,
-    "inaccuracy" : 0.03,
+    "fireTime" : 0.06,
+    "baseDps" : 20,
+    "energyUsage" : 40.0,
+    "inaccuracy" : 0.050,
+	
+	"chargeTime" : 1.45,
+	"resetTime" : 1.45,
+	
+	"walkWhileFiring" : true,
+
     "projectileType" : "brainbullet2",
-    "projectileParameters" : {
-      "knockback" : 0,
-      "speed" : 60
+	"projectileCount" : 1,
+	"projectileParameters" : { 
+      "knockback" : 3.5
     },
 
     "stances" : {
@@ -65,39 +70,57 @@
         "allowRotate" : true,
         "allowFlip" : true
       },
+      "charge" : {
+        "armRotation" : -2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
       "fire" : {
-        "duration" : 0,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
+        "armRotation" : 6,
+        "weaponRotation" : 6,
+	    "weaponOffset" : [-0.15, 0],
         "twoHanded" : true,
 
         "allowRotate" : false,
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
+        "duration" : 0.05,
+        "armRotation" : 6,
+        "weaponRotation" : 6,
+	    "weaponOffset" : [-0.15, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "discharge" : {
+        "duration" : 0.1,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,
         "allowFlip" : false
       }
-    }
+	}
   },
-  "critChance" : 0,
-  "critBonus" : 0,
   
+  "critChance" : 0.5,
+  "critBonus" : 3,
   "altAbilityType" : "railgunshotpower",
   "altAbility" : { 
-    "energyCost" : 40,
+    "energyCost" : 100,
     "projectileType" : "energyzone",
     "name" : "Energy Zone",
     "projectileParameters" : {
-      "timeToLive" : 4,
+      "timeToLive" : 12,
       "speed" : 0
     }
   },
-
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
