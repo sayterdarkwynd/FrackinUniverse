@@ -25,12 +25,21 @@
     "charge" : "warden.png",
     "chargehold" : "wardenhold.png"
   },
+  
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/weapons/arconpew.ogg" ],
 	  "chargeLoop" : [ "/sfx/weapons/arconcharge.ogg" ],
 	  "holdLoop" : [ "/sfx/objects/camera_pan_loop.ogg" ],
 	  "discharge" : [ "/sfx/weapons/arconwinddown.ogg" ]
+    },
+    "particleEmitters" : {
+      "chargeUp" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
     }
   },
 
