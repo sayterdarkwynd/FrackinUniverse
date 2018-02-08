@@ -94,15 +94,6 @@
       "time":0
     },      
       {
-        "time":0.01, 
-        "action":"explosion", 
-        "foregroundRadius":1.5, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":0.25, 
-        "delaySteps":2, 
-        "harvestLevel":1
-      },
-      {
         "time":0.0,
         "action":"projectile",
         "type":"standardbullet",
@@ -134,6 +125,15 @@
         }      
       ],
       "actionOnCollide":[
+      {
+        "time":0.01, 
+        "action":"explosion", 
+        "foregroundRadius":2, 
+        "backgroundRadius":0, 
+        "explosiveDamageAmount":3, 
+        "delaySteps":2, 
+        "harvestLevel":1
+      },      
         {
           "action" : "projectile",
           "type" : "plasmaball2",

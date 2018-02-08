@@ -76,15 +76,6 @@
       
       "periodicActions" : [
       {
-        "time":0.01, 
-        "action":"explosion", 
-        "foregroundRadius":2, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":0.6, 
-        "delaySteps":2, 
-        "harvestLevel":1
-      },
-      {
         "time":0.0,
         "action":"projectile",
         "type":"standardbullet",
@@ -116,6 +107,15 @@
         }      
       ],
       "actionOnCollide":[
+      {
+        "time":0.01, 
+        "action":"explosion", 
+        "foregroundRadius":2, 
+        "backgroundRadius":0, 
+        "explosiveDamageAmount":3.5, 
+        "delaySteps":2, 
+        "harvestLevel":1
+      },      
         {
           "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"], 
           "time":0.05, 
