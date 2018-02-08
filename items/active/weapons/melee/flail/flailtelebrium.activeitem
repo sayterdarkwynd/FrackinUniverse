@@ -1,0 +1,162 @@
+{
+  "itemName" : "flailtelebrium",
+  "level" : 2,
+  "price" : 20,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Laced with telebrium. Pretty.
+^cyan;Breaks blocks^reset;
+^yellow;Inflicts poison^reset;",
+  "shortdescription" : "Telebrium Striker",
+  "tooltipKind" : "gun2",
+  "category" : "Striker",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","flail","energy","upgradeableWeapon"],
+
+  "inventoryIcon" : "telebriumflail.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "telebriumflail.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : ["/sfx/projectiles/electric_barrier_shock1.ogg"],
+      "fire" : [ "/sfx/projectiles/electrical_barrier_break4.ogg", "/sfx/projectiles/electrical_barrier_break5.ogg", "/sfx/electrical_barrier_break4/electrical_barrier_break6.ogg" ],
+      "altFire" : [ "/sfx/gun/wormgun_burst.ogg" ]
+    }
+  },
+  "baseOffset" : [0.8, 0.2],
+  "muzzleOffset" : [-0.1, 0],
+
+  "handGrip" : "wrap",
+  "critChance" : 1,
+  "critBonus" : 20,
+  "stunChance" : 10,
+  
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementType" : "poison",
+  
+  "primaryAbilityType" : "tentaclegun",
+  "primaryAbility" : {
+    "chain" : {
+      "arcRadiusRatio" : [8, 8],    
+      "taper" : 0.0, 
+      "segmentImage" : "/items/active/weapons/melee/flail/flailchaintelebrium.png?scale=1",
+      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballtelebrium.png",
+      "segmentSize" : 0.75
+    },
+
+    "guideProjectiles" : true,
+    "maxLength" : 3,
+
+    "baseDps" : 23,
+    "chainDps" : 9,
+    "fireTime" : 0.28,
+    "maxProjectiles" : 1,
+    "energyUsage" : 17,
+    "inaccuracy" : 0,
+
+    "projectileType" : "invisibletentaclefist",
+    "projectileParameters" : {
+      "controlForce":280,
+      "targetTrackingForce":0,
+      "processing":"?hueshift=15",
+      
+      "knockback" : 30,
+      "piercing":false,
+      "speed" : 80,
+      "bounces":-1, 
+      "timeToLive" : 1, 
+      "damageSourceKind" : "poison",
+      
+      "statusEffects" : [ "weakpoison" ],
+      
+      "periodicActions" : [
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/magnorbs/magnorbmoonstone.png",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    },      
+      {
+        "time":0.01, 
+        "action":"explosion", 
+        "foregroundRadius":1.5, 
+        "backgroundRadius":0, 
+        "explosiveDamageAmount":0.25, 
+        "delaySteps":2, 
+        "harvestLevel":1
+      },
+      {
+        "time":0.0,
+        "action":"projectile",
+        "type":"standardbullet",
+        "angleAdjust":20,
+        "config":{
+          "power":0,
+          "knockback":0,
+          "damageType":"nodamage",
+          "speed":0,
+          "processing":"?scalenearest=0.2",
+          "timeToLive":0,
+            "actionOnReap":[
+              {
+                "action":"particle",
+                "rotate":false,
+                "specification":{
+                  "type":"textured",
+                  "image":"/items/active/weapons/melee/flail/flailblank.png",
+                  "fullbright":true,
+                  "timeToLive":0,
+                  "destructionTime":0.01,
+                  "size":1.0,
+                  "destructionAction":"shrink",
+                  "position":[-0.85,0.0]
+                }
+              }
+            ]
+          }
+        }      
+      ],
+      "actionOnCollide":[
+        {
+          "action" : "projectile",
+          "type" : "plasmaball2",
+          "fuzzAngle" : 0,
+          "inheritDamageFactor" : 0.1,
+          "angleAdjust" : 0
+        },    
+        {
+          "action":"sound","options":["/sfx/projectiles/goocluster_pop.ogg"], 
+          "time":0.05, 
+          "repeat":false
+        }
+      ],      
+      "actionOnReap" : [
+        {
+          "action":"sound",
+          "options":["/sfx/tools/axe_chop_heavy.ogg", "/sfx/tools/axe_chop_flesh3.ogg", "/sfx/tools/axe_chop_normal.ogg"], 
+          "time":0.05, 
+          "repeat":false
+        }
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

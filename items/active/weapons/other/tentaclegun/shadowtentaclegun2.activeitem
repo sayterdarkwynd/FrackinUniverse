@@ -1,0 +1,239 @@
+{
+  "itemName" : "shadowtentaclegun2",
+  "level" : 6,
+  "price" : 500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "This creation fires controlled shadow threads. Weird.
+^cyan;Debilitating debuffs. Elder/Bio^reset;
+^green;alt-fire Dooms enemies^reset;",
+  "shortdescription" : "Shadow Lurch",
+  "tooltipKind" : "gun2",
+  "category" : "assaultRifle",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","flail","upgradeableWeapon"],
+
+  "inventoryIcon" : "shadowtentaclegun.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "shadowtentaclegun.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : ["/sfx/gun/aegisaltpistol_start.ogg"],
+      "fire" : [ "/sfx/gun/wormgun1.ogg", "/sfx/gun/wormgun2.ogg", "/sfx/gun/wormgun3.ogg" ],
+      "altFire" : [ "/sfx/gun/wormgun_burst.ogg" ]
+    }
+  },
+  "baseOffset" : [-0.06, 0.2],
+  "muzzleOffset" : [1.4, 0.15],
+
+
+  "critChance" : 4,
+  "critBonus" : 5,
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "tentaclegun",
+  "primaryAbility" : {
+    "chain" : {
+      "arcRadiusRatio" : [8, 8],    
+      "taper" : 0.0, 
+      "segmentImage" : "/items/active/weapons/melee/flail/flailchain.png?scale=1",
+      "endSegmentImage" : "/items/active/weapons/melee/flail/flailchain.png?scale=1",
+      "segmentSize" : 0.75
+    },
+
+    "guideProjectiles" : true,
+    "maxLength" : 2,
+
+    "baseDps" : 10.5,
+    "chainDps" : 4,
+    "fireTime" : 0.3,
+    "maxProjectiles" : 1,
+    "energyUsage" : 40,
+    "inaccuracy" : 0,
+
+    "projectileType" : "invisibletentaclefist",
+    "projectileParameters" : {
+      "controlForce":350,
+      "targetTrackingForce":0,
+      "processing":"?hueshift=60",
+      
+      "knockback" : 20,
+      "piercing":true,
+      "speed" : 80,
+      "bounces":-1, 
+      "timeToLive" : 6, 
+      "damageSourceKind" : "shadow",
+      
+      "statusEffects" : [ "shadowgasfx", "blacktarslow" ],
+      "periodicActions" : [
+      {
+        "time":0.01, 
+        "action":"explosion", 
+        "foregroundRadius":2.5, 
+        "backgroundRadius":0, 
+        "explosiveDamageAmount":5.0, 
+        "delaySteps":2, 
+        "harvestLevel":1
+      },
+      {
+        "action":"sound",
+        "options":["/sfx/melee/sword_guard.ogg"], 
+        "time":0.0, "repeat":false
+      }, 
+      {
+        "time":0.0,
+        "action":"projectile",
+        "type":"standardbullet",
+        "angleAdjust":20,
+        "config":{
+          "power":0,
+          "knockback":0,
+          "damageType":"nodamage",
+          "speed":0,
+          "processing":"?scalenearest=0.2",
+          "timeToLive":0,
+            "actionOnReap":[
+              {
+                "action":"particle",
+                "rotate":false,
+                "specification":{
+                  "type":"textured",
+                  "image":"/items/active/weapons/melee/flail/flailball1.png",
+                  "fullbright":true,
+                  "timeToLive":0,
+                  "destructionTime":0.01,
+                  "size":1.0,
+                  "destructionAction":"shrink","position":[0.0,0.0]
+                }
+              }
+            ]
+          }
+        }      
+      ],
+      "actionOnCollide":[
+        {
+          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"], 
+          "time":0.05, 
+          "repeat":false}
+        ],      
+      "actionOnReap" : [
+        {
+          "action":"sound",
+          "options":["/sfx/melee/sword_hit_metal4.ogg"], 
+          "time":0.05, 
+          "repeat":false
+        }
+      ]
+    }
+  },
+
+  "altAbilityType" : "shadowtentaclegun",
+  "altAbility" : {
+    "name" : "Tentacle Burst",
+
+    "chain" : {
+      "taper" : 0.5,
+      "segmentImage" : "/items/active/weapons/other/tentaclegun/shadowsegment.png",
+      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/shadowend.png",
+      "segmentSize" : 1.0
+    },
+
+    "guideProjectiles" : false,
+
+    "baseDps" : 15.5,
+
+    "fireTime" : 3.0,
+    "maxProjectiles" : 20,
+    "energyUsage" : 50,
+    "inaccuracy" : 3.14,
+
+    "fireSound" : "altFire",
+
+    "projectileCount" : 20,
+    "projectileType" : "invisibletentaclefistnosound",
+    "projectileTracksUser" : true,
+    "projectileParameters" : {
+      "knockback" : 30,
+      "knockbackDirectional" : true,
+      "speed" : 30,
+      "ignoreTerrain" : false,
+      "bounces" : 2,
+      "timeToLive" : 2,
+      "minVelocity" : 20,
+      "damageSourceKind" : "shadow",
+      "periodicActions" : [
+	    {
+	      "time" : 0.1,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "time" : 0.5,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "time" : 0.9,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "time" : 1.3,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "time" : 1.7,
+	      "repeat" : false,
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :2, "timeToLive" : 0.2},
+	      "angleAdjust" : 0
+	    } 	    
+      ],      
+      "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "deathzone",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.01,
+	      "config" : { "speed" :0, "timeToLive" : 1},
+	      "angleAdjust" : 0
+	    }      
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
