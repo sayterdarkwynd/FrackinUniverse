@@ -1,31 +1,30 @@
 {
-  "itemName" : "flailtelebrium",
-  "level" : 2,
+  "itemName" : "flaildurasteel",
+  "level" : 4,
   "price" : 20,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Laced with telebrium. Pretty.
-^cyan;Breaks blocks^reset;
-^yellow;Inflicts poison^reset;",
-  "shortdescription" : "Telebrium Striker",
+  "description" : "Heavy, cumbersome and awesome.
+^cyan;Breaks blocks^reset;",
+  "shortdescription" : "Durasteel Striker",
   "tooltipKind" : "gun2",
   "category" : "Striker",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","flail","energy","upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","flail","upgradeableWeapon"],
 
-  "inventoryIcon" : "telebriumflail.png",
+  "inventoryIcon" : "durasteelflail.png",
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "telebriumflail.png",
+    "middle" : "durasteelflail.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
   "animationCustom" : {
     "sounds" : {
-      "throw" : ["/sfx/projectiles/electric_barrier_shock1.ogg"],
-      "fire" : [ "/sfx/projectiles/electrical_barrier_break4.ogg", "/sfx/projectiles/electrical_barrier_break5.ogg", "/sfx/electrical_barrier_break4/electrical_barrier_break6.ogg" ],
+      "throw" : ["/sfx/tools/axe_chop_heavy.ogg"],
+      "fire" : [ "/sfx/melee/whip_swing1.ogg","/sfx/melee/whip_swing2.ogg","/sfx/melee/whip_swing3.ogg" ],
       "altFire" : [ "/sfx/gun/wormgun_burst.ogg" ]
     }
   },
@@ -39,31 +38,30 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementType" : "poison",
-  
+
   "primaryAbilityType" : "tentaclegun",
   "primaryAbility" : {
     "chain" : {
       "arcRadiusRatio" : [8, 8],    
       "taper" : 0.0, 
-      "segmentImage" : "/items/active/weapons/melee/flail/flailchaintelebrium.png?scale=1",
-      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballtelebrium.png",
+      "segmentImage" : "/items/active/weapons/melee/flail/flailchaindurasteel.png?scale=1",
+      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballdurasteel.png",
       "segmentSize" : 0.70
     },
 
     "guideProjectiles" : true,
-    "maxLength" : 3,
+    "maxLength" : 2,
 
-    "baseDps" : 23,
-    "chainDps" : 9,
-    "fireTime" : 0.56,
+    "baseDps" : 25,
+    "chainDps" : 6,
+    "fireTime" : 0.6,
     "maxProjectiles" : 1,
-    "energyUsage" : 21,
+    "energyUsage" : 20,
     "inaccuracy" : 0,
 
     "projectileType" : "invisibletentaclefist",
     "projectileParameters" : {
-      "controlForce":280,
+      "controlForce":350,
       "targetTrackingForce":0,
       "processing":"?hueshift=15",
       
@@ -72,33 +70,17 @@
       "speed" : 80,
       "bounces":-1, 
       "timeToLive" : 1, 
-      "damageSourceKind" : "poison",
+      "damageSourceKind" : "plasma",
       
-      "statusEffects" : [ "weakpoison" ],
+      "statusEffects" : [ ],
       
       "periodicActions" : [
-    {
-      "action":"particle",
-      "repeat":true,
-      "rotate":true,
-      "specification":{
-	"destructionAction":"fade",
-	"destructionTime":0.2,
-	"fullbright":true,
-	"image":"/projectiles/magnorbs/magnorbmoonstone.png",
-	"layer":"back",
-	"position":[0,0],
-	"timeToLive":0,
-	"type":"textured"
-	},
-      "time":0
-    },      
       {
         "time":0.01, 
         "action":"explosion", 
-        "foregroundRadius":1.5, 
+        "foregroundRadius":2, 
         "backgroundRadius":0, 
-        "explosiveDamageAmount":0.25, 
+        "explosiveDamageAmount":1.25, 
         "delaySteps":2, 
         "harvestLevel":1
       },
@@ -135,14 +117,7 @@
       ],
       "actionOnCollide":[
         {
-          "action" : "projectile",
-          "type" : "plasmaball2",
-          "fuzzAngle" : 0,
-          "inheritDamageFactor" : 0.1,
-          "angleAdjust" : 0
-        },    
-        {
-          "action":"sound","options":["/sfx/projectiles/goocluster_pop.ogg"], 
+          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"], 
           "time":0.05, 
           "repeat":false
         }
