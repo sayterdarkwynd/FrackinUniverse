@@ -1,23 +1,24 @@
 {
-  "itemName" : "flailiron",
-  "level" : 1,
-  "price" : 40,
+  "itemName" : "flaildensinium",
+  "level" : 6,
+  "price" : 600,
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "Heavy, cumbersome and awesome.
-^cyan;Breaks blocks^reset;",
-  "shortdescription" : "Iron Striker",
+^cyan;Breaks blocks^reset;
+^yellow;Stuns enemies^reset;",
+  "shortdescription" : "Densinium Striker",
   "tooltipKind" : "gun2",
   "category" : "Striker",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","flail","upgradeableWeapon"],
 
-  "inventoryIcon" : "ironflail.png",
+  "inventoryIcon" : "densiniumflail.png",
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "ironflail.png",
+    "middle" : "densiniumflail.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -38,22 +39,22 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-
+  "elementType" : "electric",
   "primaryAbilityType" : "tentaclegun",
   "primaryAbility" : {
     "chain" : {
       "arcRadiusRatio" : [8, 8],    
       "taper" : 0.0, 
-      "segmentImage" : "/items/active/weapons/melee/flail/flailchaincopper.png?scale=1",
-      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballcopper.png",
+      "segmentImage" : "/items/active/weapons/melee/flail/flailchaindensinium.png?scale=1",
+      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballdensinium.png",
       "segmentSize" : 0.70
     },
 
     "guideProjectiles" : true,
-    "maxLength" : 2,
+    "maxLength" : 3,
 
-    "baseDps" : 25,
-    "chainDps" : 6,
+    "baseDps" : 27,
+    "chainDps" : 9,
     "fireTime" : 0.6,
     "maxProjectiles" : 1,
     "energyUsage" : 20,
@@ -61,20 +62,21 @@
 
     "projectileType" : "invisibletentaclefist",
     "projectileParameters" : {
-      "controlForce":350,
+      "controlForce":330,
       "targetTrackingForce":0,
-      "processing":"?hueshift=10",
+      "processing":"?hueshift=15",
       
       "knockback" : 30,
       "piercing":false,
       "speed" : 80,
       "bounces":-1, 
       "timeToLive" : 1, 
-      "damageSourceKind" : "plasma",
+      "damageSourceKind" : "electric",
       
-      "statusEffects" : [ ],
+      "statusEffects" : [ "stun" ],
       
       "periodicActions" : [
+
       {
         "time":0.0,
         "action":"projectile",
@@ -110,9 +112,9 @@
       {
         "time":0.01, 
         "action":"explosion", 
-        "foregroundRadius":2, 
+        "foregroundRadius":2.5, 
         "backgroundRadius":0, 
-        "explosiveDamageAmount":2.5, 
+        "explosiveDamageAmount":7, 
         "delaySteps":2, 
         "harvestLevel":1
       },      
