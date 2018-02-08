@@ -1,7 +1,7 @@
 setName="fu_intrepidset"
 
 weaponBonus={
-	{stat = "critChance", amount = 6},
+	{stat = "critChance", amount = 2},
         {stat = "powerMultiplier", baseMultiplier = 1.20}
 }
 
@@ -47,7 +47,7 @@ end
 
 function 
 	checkWeapons()
-	local weapons=weaponCheck({"hammer"})
+	local weapons=weaponCheck({"hammer","flail"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
