@@ -30,7 +30,17 @@
       "targetOutOfSightTime" : 20.5,
       "hurtWaitForGround": false,
 
-      "foundTargetActions" : [  ],
+      "foundTargetActions" : [ 
+        {
+          "name" : "action-animate",
+          "cooldown" : 15,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 0.53
+          }
+        }      
+      ],
 
       "fleeActions" : [],
 
@@ -44,6 +54,34 @@
             "animationTime" : 0.53
           }
         },      
+        {
+          "name" : "action-fire",
+          "cooldown" : 6,
+          "parameters" : {
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "firewindup",
+            "windupTime" : 0.4,
+
+            "projectileType" : "futarball",
+            "fireOffset" : [0.875, 0.625],
+
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.15,
+            "inaccuracy" : 0,
+            "aimDirection" : [0,1],
+            "power" : 8,
+            "fireDelay" : 0.2,
+            "fireArc" : true,
+            "gravityMultiplier" : 0.25,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+
+            "winddownState" : ""
+          }
+        },         
         {
           "name" : "action-charge",
           "cooldown" : 7.0,

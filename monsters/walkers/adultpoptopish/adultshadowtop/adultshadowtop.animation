@@ -31,7 +31,7 @@
             "frames" : 3,
             "cycle" : 0.5,
             "properties" : {
-              "persistentSound" : "/sfx/npc/monsters/pandorasboxadultnocttop_attackroar1.ogg",
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
               "particleEmittersOff" : [ "spindust" ]
             }
@@ -42,7 +42,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/npc/monsters/pandorasboxadultnocttop_attackroar1.ogg",
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
               "particleEmittersOff" : [ "spindust" ]
             }
@@ -51,9 +51,9 @@
             "frames" : 3,
             "cycle" : 0.3,
             "properties" : {
-              "persistentSound" : "/sfx/npc/monsters/pandorasboxadultnocttop_attackroar1.ogg",
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
-              "immediateSound" : "/sfx/npc/monsters/pandorasboxadultnocttop_slash1.ogg",
+              "immediateSound" : "/sfx/npc/monsters/monster_slash1.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }
           },
@@ -63,14 +63,28 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/npc/monsters/pandorasboxadultnocttop_roar1.ogg",
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
               "persistentSoundStopTime" : 1.25
             },
             "frameProperties" : {
               "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
               "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [] ]
             }
-          }
+          },
+          "fire" : {
+            "frames" : 8,
+            "cycle" : 0.53,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
+              "persistentSoundStopTime" : 1.25
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ ], [], [], [], [], [], [], [] ],
+              "particleEmittersOn" : [ [], [], [], [], [], [], [], [] ]
+            }
+          }          
         }
       },
       "damage" : {
@@ -217,6 +231,11 @@
                 "image" : "<partImage>:roarwinddown.<frame>"
               }
             },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },            
             "roar" : {
               "properties" : {
                 "image" : "<partImage>:roar.<frame>"
@@ -320,7 +339,7 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/pandorasboxadultnocttop_aggro.ogg" ],
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
 }
