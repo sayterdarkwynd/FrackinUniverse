@@ -35,7 +35,7 @@
               "persistentSoundStopTime" : 1.0,
               "particleEmittersOff" : [ "spindust" ]
             }
-          },
+          },         
           "chargewinddown" : {
             "frames" : 1,
             "cycle" : 0.1,
@@ -76,10 +76,6 @@
             "cycle" : 0.53,
             "mode" : "transition",
             "transition" : "idle",
-            "properties" : {
-              "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
-              "persistentSoundStopTime" : 1.25
-            },
             "frameProperties" : {
               "particleEmittersOff" : [ [ ], [], [], [], [], [], [], [] ],
               "particleEmittersOn" : [ [], [], [], [], [], [], [], [] ]
@@ -160,6 +156,21 @@
                 "image" : "<partImage>:roarwinddown.<frame>"
               }
             },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },  
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },               
             "roar" : {
               "properties" : {
                 "image" : "<partImage>:roar.<frame>"
@@ -231,6 +242,16 @@
                 "image" : "<partImage>:roarwinddown.<frame>"
               }
             },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:roarwinddown.<frame>"
+              }
+            },            
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:roar.<frame>"
@@ -339,6 +360,7 @@
   },
 
   "sounds" : {
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
