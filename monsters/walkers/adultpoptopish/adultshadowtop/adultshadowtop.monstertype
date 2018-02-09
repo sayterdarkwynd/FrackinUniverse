@@ -46,7 +46,7 @@
         },      
         {
           "name" : "action-charge",
-          "cooldown" : 5.0,
+          "cooldown" : 7.0,
           "parameters" : {
             "maximumRange" : 25,
             "windupState" : "chargewindup",
@@ -100,7 +100,28 @@
           }
         }
       ],
+      "damageTakenActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "maximumRange" : 15,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.3,
 
+            "chargeTime" : 0.4,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 1000,
+            "chargeState" : "charge",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.05,
+            "winddownStopForce" : 1200,
+            "winddownState" : "chargewinddown"
+          }
+        }      
+      ],
       "wanderActions" : [
         {
           "name" : "wander-walk",

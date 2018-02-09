@@ -85,13 +85,15 @@
             }
           },
           "fire" : {
-            "frames" : 4,
+            "frames" : 2,
             "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "idle",
             "properties" : {
               "particleEmittersOff" : [ "music" ],
-              "immediateSound" : "/sfx/npc/monsters/shadowtopsnarl2.ogg"
+              "immediateSound" : "/sfx/npc/monsters/shadowtopsnarl2.ogg"             
             }
-          },          
+          },                   
           "charge" : {
             "frames" : 4,
             "cycle" : 0.3,
@@ -198,7 +200,7 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:charge.<frame>"
+                "image" : "<partImage>:fire.<frame>"
               }
             },            
             "charge" : {
