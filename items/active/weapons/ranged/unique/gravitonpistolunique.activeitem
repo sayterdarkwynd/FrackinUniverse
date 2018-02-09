@@ -11,7 +11,7 @@
   "level" : 5,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "energy","upgradeableWeapon"],
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gunkevin",
   "twoHanded" : false,
   "weaponType" : "Energy",
   "learnBlueprintsOnPickup" : [ "gravitongun" ],
@@ -48,8 +48,9 @@
     "projectileCount" : 1,
     "projectileType" : "electricblast",
     "projectileParameters" : {
-      "speed" : 45,
-      "knockback" : 32,
+      "speed" : 35,
+      "damageKind" : "cosmic",
+      "knockback" : 30,
           "emitters" : [ "electricplasmapurple" ],
 	  "periodicActions" : [
 	    {
@@ -57,7 +58,7 @@
 	      "loop" : true,
 	      "action" : "projectile",
 	      "type" : "icegas",
-	      "inheritDamageFactor" :0.25,
+	      "inheritDamageFactor" :0.05,
 	      "fuzzAngle" : 360,
 	      "projectileParameters" : { "damageKind" : "cosmic" }
 	   }
@@ -65,7 +66,7 @@
 	  "actionOnReap" : [
 	    {
 	      "action" : "config",
-	      "file" : "/projectiles/explosions/fuwavebeamexplosion/fuwavebeamexp.config"
+	      "file" : "/projectiles/explosions/fuwavebeamexplosion/fuwavebeamexp2.config"
 	    },    
 	    {
 	      "action" : "sound",
