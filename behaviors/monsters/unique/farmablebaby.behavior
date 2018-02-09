@@ -1,0 +1,347 @@
+{
+  "name": "farmablebaby",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/monsters/farmable.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/world.lua"
+  ],
+  "parameters": {
+    "idleTime": [2, 8],
+    "wanderTime": [1, 3]
+  },
+  "root": {
+    "title": "dynamic",
+    "type": "composite",
+    "name": "dynamic",
+    "parameters": {},
+    "children": [
+      {
+        "title": "evolveFluffalo",
+        "type": "action",
+        "name": "evolveFluffalo",
+        "parameters": {}
+      },
+      {
+        "title": "sequence",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "inverter",
+            "type": "decorator",
+            "name": "inverter",
+            "parameters": {},
+            "child": {
+              "title": "onGround",
+              "type": "action",
+              "name": "onGround",
+              "parameters": {}
+            }
+          },
+          {
+            "title": "parallel",
+            "type": "composite",
+            "name": "parallel",
+            "parameters": {
+              "fail": {"value": 1},
+              "success": {"value": -1}
+            },
+            "children": [
+              {
+                "title": "inverter",
+                "type": "decorator",
+                "name": "inverter",
+                "parameters": {},
+                "child": {
+                  "title": "onGround",
+                  "type": "action",
+                  "name": "onGround",
+                  "parameters": {}
+                }
+              },
+              {
+                "title": "setAnimationState",
+                "type": "action",
+                "name": "setAnimationState",
+                "parameters": {
+                  "state": {"value": "fall"},
+                  "type": {"value": "body"}
+                }
+              },
+              {
+                "title": "runner",
+                "type": "action",
+                "name": "runner",
+                "parameters": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "cooldown",
+        "type": "decorator",
+        "name": "cooldown",
+        "parameters": {
+          "cooldown": {"key": "<idleTime>"},
+          "onFail": {"value": false},
+          "onSuccess": {"value": true}
+        },
+        "child": {
+          "title": "sequence",
+          "type": "composite",
+          "name": "sequence",
+          "parameters": {},
+          "children": [
+            {
+              "title": "cooldown",
+              "type": "decorator",
+              "name": "cooldown",
+              "parameters": {
+                "cooldown": {"value": 2},
+                "onFail": {"value": true},
+                "onSuccess": {"value": true}
+              },
+              "child": {
+                "title": "chance",
+                "type": "action",
+                "name": "chance",
+                "parameters": {
+                  "chance": {"value": 0.25}
+                }
+              }
+            },
+            {
+              "title": "setDirection",
+              "type": "action",
+              "name": "setDirection",
+              "parameters": {},
+              "output": {
+                "direction": "move"
+              }
+            },
+            {
+              "title": "parallel",
+              "type": "composite",
+              "name": "parallel",
+              "parameters": {
+                "fail": {"value": 1},
+                "success": {"value": 1}
+              },
+              "children": [
+                {
+                  "title": "move",
+                  "type": "action",
+                  "name": "move",
+                  "parameters": {
+                    "direction": {"key": "move"},
+                    "run": {"value": false}
+                  }
+                },
+                {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "setAnimationState",
+                      "type": "action",
+                      "name": "setAnimationState",
+                      "parameters": {
+                        "state": {"value": "walk"},
+                        "type": {"value": "body"}
+                      }
+                    },
+                    {
+                      "title": "timer",
+                      "type": "action",
+                      "name": "timer",
+                      "parameters": {
+                        "time": {"value": "<wanderTime>"}
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "setAnimationState",
+                "type": "action",
+                "name": "setAnimationState",
+                "parameters": {
+                  "state": {"value": "idle"},
+                  "type": {"value": "body"}
+                }
+              },
+              {
+                "title": "runner",
+                "type": "action",
+                "name": "runner",
+                "parameters": {}
+              }
+            ]
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "removeFood",
+                "type": "action",
+                "name": "removeFood",
+                "parameters": {}
+              },
+              {
+                "title": "happinessCalculation",
+                "type": "action",
+                "name": "happinessCalculation",
+                "parameters": {}
+              },
+              {
+                "title": "getFood",
+                "type": "action",
+                "name": "getFood",
+                "parameters": {},
+                "output": {
+                  "food": "food"
+                }
+              },
+              {
+                "title": "gte",
+                "type": "action",
+                "name": "gte",
+                "parameters": {
+                  "first": {"value": 25},
+                  "second": {"key": "food"}
+                }
+              },
+              {
+                "title": "offsetPosition",
+                "type": "action",
+                "name": "offsetPosition",
+                "parameters": {
+                  "offset": {"value": [0, 0]}
+                },
+                "output": {
+                  "position": "pos"
+                }
+              },
+              {
+                "title": "findTrough",
+                "type": "action",
+                "name": "findTrough",
+                "parameters": {
+                  "position": {"key": "pos"}
+                },
+                "output": {
+                  "entity": "entityid"
+                }
+              },
+              {
+                "title": "entityPosition",
+                "type": "action",
+                "name": "entityPosition",
+                "parameters": {
+                  "entity": {"key": "entityid"}
+                },
+                "output": {
+                  "position": "objpos"
+                }
+              },
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "inRange",
+                    "type": "action",
+                    "name": "inRange",
+                    "parameters": {
+                      "position": {"key": "pos"},
+                      "target": {"key": "objpos"},
+                      "range": {"value": 5}
+                    }
+                  },
+                  {
+                    "title": "parallel",
+                    "type": "composite",
+                    "name": "parallel",
+                    "parameters": {
+                      "fail": {"value": 1},
+                      "success": {"value": 2}
+                    },
+                    "children": [
+                      {
+                        "title": "moveToPosition",
+                        "type": "action",
+                        "name": "moveToPosition",
+                        "parameters": {
+                          "position": {"key": "objpos"}
+                        }
+                      },
+                      {
+                        "title": "setAnimationState",
+                        "type": "action",
+                        "name": "setAnimationState",
+                        "parameters": {
+                          "state": {"value": "walk"},
+                          "type": {"value": "body"}
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "setAnimationState",
+                "type": "action",
+                "name": "setAnimationState",
+                "parameters": {
+                  "state": {"value": "idle"},
+                  "type": {"value": "body"}
+                }
+              },
+              {
+                "title": "eatFood",
+                "type": "action",
+                "name": "eatFood",
+                "parameters": {
+                  "entity": {"key": "entityid"}
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

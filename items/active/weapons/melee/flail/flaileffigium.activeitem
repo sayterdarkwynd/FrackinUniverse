@@ -1,0 +1,149 @@
+{
+  "itemName" : "flaileffigium",
+  "level" : 5,
+  "price" : 420,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Emits dense shadow matter.
+^cyan;Breaks blocks^reset;",
+  "shortdescription" : "Effigium Striker",
+  "tooltipKind" : "gun2",
+  "category" : "Striker",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","flail","upgradeableWeapon"],
+
+  "inventoryIcon" : "effigiumflail.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "effigiumflail.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : ["/sfx/weapons/harpoongun.ogg"],
+      "fire" : [ "/sfx/weapons/laserblast.ogg","/sfx/weapons/protopistol.ogg" ],
+      "altFire" : [ "/sfx/weapons/harpoongun.ogg" ]
+    }
+  },
+  "baseOffset" : [0.8, 0.2],
+  "muzzleOffset" : [-0.1, 0],
+
+  "handGrip" : "wrap",
+  "critChance" : 1,
+  "critBonus" : 10,
+  "stunChance" : 10,
+  
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementType" : "shadow",
+  "primaryAbilityType" : "tentaclegun",
+  "primaryAbility" : {
+    "chain" : {
+      "arcRadiusRatio" : [8, 8],    
+      "taper" : 0.0, 
+      "segmentImage" : "/projectiles/extraessence/extraessence.png?scale=0.2",
+      "endSegmentImage" : "/projectiles/extraessence/extraessence.png?scale=0.2",
+      "segmentSize" : 0.2
+    },
+
+    "guideProjectiles" : true,
+    "maxLength" : 3,
+
+    "baseDps" : 7,
+    "chainDps" : 4.5,
+    "fireTime" : 0.75,
+    "maxProjectiles" : 2,
+    "energyUsage" : 10,
+    "inaccuracy" : 0.2,
+    "projectileCount" : 2,
+    
+    "projectileType" : "invisibletentaclefistshadow",
+    "projectileParameters" : {
+      "controlForce":270,
+      "targetTrackingForce":0,
+      "processing":"?hueshift=45",
+      
+      "knockback" : 10,
+      "piercing":true,
+      "speed" : 70,
+      "bounces":-1, 
+      "timeToLive" : 2, 
+      "damageSourceKind" : "shadowplasma",
+      
+      
+      "statusEffects" : [ "shadowgasfx" ],
+      
+      "periodicActions" : [
+
+      {
+        "time":0.0,
+        "action":"projectile",
+        "type":"shadoworb",
+        "angleAdjust":20,
+        "config":{
+          "power":0,
+          "knockback":0,
+          "damageType":"nodamage",
+          "damageSourceKind" : "shadowplasma",
+          "speed":0,
+          "processing":"?scalenearest=0.35",
+          "timeToLive":0,
+            "actionOnReap":[
+              {
+                "action":"particle",
+                "rotate":false,
+                "specification":{
+                  "type":"textured",
+                  "image":"/projectiles/extraessence/extraessence.png?scale=0.8",
+                  "fullbright":true,
+                  "timeToLive":0,
+                  "destructionTime":0.01,
+                  "size":1.0,
+                  "destructionAction":"shrink",
+                  "position":[0.0,0.0]
+                }
+              }
+            ]
+          }
+        }      
+      ],
+      "actionOnCollide":[
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/shadowexplosionknockbackstatus.config"
+    },
+    {
+      "action" : "light",
+      "color" : "green"
+    },    
+      {
+        "time":0.01, 
+        "action":"explosion", 
+        "foregroundRadius":2, 
+        "backgroundRadius":0, 
+        "explosiveDamageAmount":5.2, 
+        "delaySteps":2, 
+        "harvestLevel":1
+      },      
+        {
+          "action":"sound","options":["/sfx/weapons/disruptor.ogg"], 
+          "time":0.05, 
+          "repeat":false
+        }
+      ],      
+      "actionOnReap" : [
+        {
+          "action":"sound",
+          "options":["/sfx/weapons/wave.ogg"], 
+          "time":0.05, 
+          "repeat":false
+        }
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

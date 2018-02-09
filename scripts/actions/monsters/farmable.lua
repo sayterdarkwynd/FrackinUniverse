@@ -5,7 +5,7 @@ require "/scripts/util.lua"
 -- param entity
 function evolveFluffalo()
   local evolveTime = config.getParameter("evolveTime")
-  if storage.spawnTime + evolveTime < world.time() then
+  if storage.spawnTime + evolveTime - (storage.evolveOffset or 0) < world.time() then
     local evolveType = config.getParameter("evolveType")
     local spawnPosition = vec2.add(mcontroller.position(), vec2.mul(config.getParameter("spawnOffset"), {mcontroller.facingDirection(), 1}))
     if not world.polyCollision(poly.translate(config.getParameter("spawnPoly"), spawnPosition)) then
@@ -101,6 +101,7 @@ function eatFood(args)
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
 		  if world.containerConsumeAt(args.entity,pos-1,consume) then
 		    storage.food = storage.food + consume * itemConfig.foodValue
+			storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
 		    eaten = true
 		    break
 		  end
@@ -111,6 +112,7 @@ function eatFood(args)
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
 		  if world.containerConsumeAt(args.entity,pos-1,consume) then
 		    storage.food = storage.food + consume * itemConfig.foodValue
+			storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
 		    eaten = true
 		    break
 		  end
@@ -122,6 +124,7 @@ function eatFood(args)
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
 		  if world.containerConsumeAt(args.entity,pos-1,consume) then
 		    storage.food = storage.food + consume * itemConfig.foodValue
+			storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
 		    eaten = true
 		    break
 		  end
@@ -132,6 +135,7 @@ function eatFood(args)
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
 		  if world.containerConsumeAt(args.entity,pos-1,consume) then
 		    storage.food = storage.food + consume * itemConfig.foodValue
+			storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
 		    eaten = true
 		    break
 		  end
@@ -143,6 +147,7 @@ function eatFood(args)
 	      local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
 		  if world.containerConsumeAt(args.entity,pos-1,consume) then
 		    storage.food = storage.food + consume * itemConfig.foodValue
+			storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
 		    eaten = true
 		    break
 		  end
@@ -151,7 +156,7 @@ function eatFood(args)
 	end   
   	
 	displayHappiness()
-        if storage.food >= 100 then      
+    if storage.food >= 100 then      
 	  break
 	end
   end  
