@@ -5,13 +5,13 @@
     "maxStack" : 1,
     "rarity" : "essential",
   "description" : "A famous modified Graviton pistol thought lost forever.
-^yellow;Heavily modified^reset;
-^green;+ Greg^reset;",
-  "shortdescription" : "^#ffdb31;Kevin^reset;",
+^yellow;Causes Freeze^reset;
+^green;Powerful knockback^reset;",
+  "shortdescription" : "^#ffdb31;Susan^reset;",
   "level" : 5,
-  "category" : "machinePistol",
-  "itemTags" : ["weapon","ranged","machinepistol", "energy","upgradeableWeapon"],
-  "tooltipKind" : "gunkevin",
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "energy","upgradeableWeapon"],
+  "tooltipKind" : "gununique",
   "twoHanded" : false,
   "weaponType" : "Energy",
   "learnBlueprintsOnPickup" : [ "gravitongun" ],
@@ -60,7 +60,10 @@
 	      "type" : "icegas",
 	      "inheritDamageFactor" :0.05,
 	      "fuzzAngle" : 360,
-	      "projectileParameters" : { "damageKind" : "cosmic" }
+	      "config" : {
+	        "damageSourceKind" : "ice",
+	        "timeToLive" : 2
+	      }
 	   }
 	  ],
 	  "actionOnReap" : [
