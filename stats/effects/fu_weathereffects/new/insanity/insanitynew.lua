@@ -196,7 +196,7 @@ function messageCheck()
 	    end	   
 		   self.timerRadioMessage = 60  
 		   self.usedLeap = 1
-    end		   
+	   
   end 
 
 
