@@ -43,7 +43,7 @@ function update(args)
       if args.moves["up"] then direction[2] = direction[2] + 1 end
       if args.moves["down"] then direction[2] = direction[2] - 1 end
 
-      if vec2.eq(direction, {0, 0}) then direction = {0, 1} end    
+      if vec2.eq(direction, {0, 0}) then direction = {0, 0} end    
       boost(direction)
     end
   elseif self.state == "boost" then
