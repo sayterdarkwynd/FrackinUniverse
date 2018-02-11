@@ -55,12 +55,12 @@ function update(args)
         self.bombTimer = math.max(0, self.bombTimer - args.dt)
       end
     if self.pressDown and self.bombTimer == 0 and status.overConsumeResource("energy", self.energyCost) then 
-      self.bombTimer = 1
-      local configBombDrop = { power = 5 }
+      self.bombTimer = 1.5
+      local configBombDrop = { power = status.stat("maxEnergy")/3.5 }
       local configBombDrop2 = { power = 0 }
       animator.playSound("bombdrop")
       world.spawnProjectile("shieldBashStunProjectile", mcontroller.position(), entity.id(), {0, 1}, false, configBombDrop2)
-      world.spawnProjectile("ngravityexplosion", mcontroller.position(), entity.id(), {0, 1}, false, configBombDrop)
+      world.spawnProjectile("fungravityexplosionprecursor", mcontroller.position(), entity.id(), {0, 1}, false, configBombDrop)
     end
     
     local groundDirection
@@ -126,7 +126,7 @@ function update(args)
     end
 
     mcontroller.controlParameters(self.transformedMovementParameters)
-    status.setResourcePercentage("energyRegenBlock", 1.0)
+   -- status.setResourcePercentage("energyRegenBlock", 1.0)
 
     updateRotationFrame(args.dt)
 

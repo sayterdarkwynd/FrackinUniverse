@@ -1,8 +1,8 @@
 {
   "objectName" : "precursorchest2",
   "colonyTags" : [ "precursor", "outpost", "tech"],
-  "printable" : false,
-  "rarity" : "Common",
+  "printable" : true,
+  "rarity" : "legendary",
   "objectType" : "container",
   "tooltipKind" : "container",
   "category" : "storage",
@@ -15,13 +15,24 @@
   "inventoryIcon" : "precursorchesticon.png",
   "orientations" : [
     {
-      "dualImage" : "precursorchest2.png:<color>.<key>",
+      "imageLayers" : [ { "image" : "precursorchest2.png:<color>.<key>", "fullbright" : true }, { "image" : "precursorchest2fullbright.png:<color>.<key>" } ],
       "imagePosition" : [-12, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "precursorchest2.png:<color>.<key>", "fullbright" : true }, { "image" : "precursorchest2fullbright.png:<color>.<key>" } ],
+      "imagePosition" : [-12, 0],
+
+      "direction" : "right",
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
-
   ],
 
   "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],

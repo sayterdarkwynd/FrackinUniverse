@@ -47,11 +47,12 @@ end
 
 --Updates the state of the object.
 function update(dt)
-
 	-- Updates container status (for ITD management)
 	if timer >= 1 then
 		timer = 0
 		transferUtil.loadSelfContainer()
+		-- Also update description.
+		object.setConfigParameter('description', isn_makeGrowingTrayDescription())
 	end
 	timer = timer + dt
 
@@ -70,6 +71,23 @@ function update(dt)
 	storage.activeConsumption = true
 
 	updateState()
+end
+
+-- Generates a modified description string for use on inspection.
+function isn_makeGrowingTrayDescription()
+	local fert = world.containerItems(entity.id())[fertslot]
+	fert = fert and self.fertInputs[fert.name] or nil
+	local water = world.containerItems(entity.id())[waterslot]
+	water = water and self.liquidInputs[water.name] or nil
+	local desc = root.itemConfig(object.name())
+	desc = desc and desc.config and desc.config.description or ''
+	desc = desc .. (desc ~= '' and "\n" or '') .. '^green;'
+		.. ' Seeds Used: ' .. getFertSum('seedUse', fert, water) .. "\n"
+		.. 'Yield Count: ' .. getFertSum('yield', fert, water) .. "\n"
+		.. 'Growth Rate: ' .. getFertSum('growthRate', fert, water) .. "\n"
+		.. '  Water Use: ' .. getFertSum('fluidUse', fert, water) .. "\n"
+		.. '^blue;Water Value: ' .. (water and water.value or '0')
+	return desc
 end
 
 --Returns active seed when tray is removed from world
@@ -165,8 +183,10 @@ function growPlant(growthmod, dt)
 end
 
 -- Gets the current effective value of a fertilizer-affected modifier.
-function getFertSum(name)
-	local bonus = (storage.fert[name] or 0) + (storage.water[name] or 0)
+function getFertSum(name, fert, water)
+	fert = fert or storage.fert
+	water = water or storage.water
+	local bonus = (fert[name] or 0) + (water[name] or 0)
 	if multipliers[name] then
 		return defaults[name] * (bonus <= 0 and 1 or bonus)
 	end
