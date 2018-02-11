@@ -1,3 +1,5 @@
+require "/scripts/kheAA/transferUtil.lua"
+
 local recipes =
 {
 
@@ -29,6 +31,7 @@ function init()
     self.mintick = 1
     self.crafting = false
     self.output = {}
+	transferUtil.init()
 end
 
 function getInputContents()
@@ -106,6 +109,12 @@ end
 
 
 function update(dt)
+	if not deltaTime or (deltaTime > 1) then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
     self.timer = self.timer - dt
     if self.timer <= 0 then
         if self.crafting then
