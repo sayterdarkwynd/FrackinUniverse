@@ -168,31 +168,31 @@ function messageCheck()
 
       
   if (self.liquidPercent) >= 0.5 and self.timerRadioMessage < 1 and not self.usedLiq then
-		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 60.0) 
+		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 1.0) 
 		   self.timerRadioMessage = 60 
 		   self.usedLiq = 1
   end  
 
   self.velocityVal = mcontroller.xVelocity()
   if (self.velocityVal) >= 10 and self.timerRadioMessage < 1 and not self.usedVel then
-		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectfast", 60.0) 
+		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectfast", 1.0) 
 		   self.timerRadioMessage = 60  
 		   self.usedVel = 1
   end  
 
   if mcontroller.zeroG() and self.timerRadioMessage < 1 and not self.usedZero then
-		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectgrav", 60.0) 
+		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectgrav", 1.0) 
 		   self.timerRadioMessage = 60  
 		   self.usedZero = 1
   end    
 
   if not mcontroller.onGround() and self.timerRadioMessage < 1 and not self.usedLeap then
 	    if (self.randyrandy3) == 0 then 
-			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair", 60.0) 
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair", 1.0) 
 	    elseif (self.randyrandy3) == 1 then 		   
-			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair2", 60.0)
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair2", 1.0)
 	    elseif (self.randyrandy3) == 2 then 		   
-			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair3", 60.0)
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair3", 1.0)
 	    end	   
 		   self.timerRadioMessage = 60  
 		   self.usedLeap = 1
@@ -201,35 +201,35 @@ function messageCheck()
 
 
   if (self.windLevel >= 5) and self.timerRadioMessage < 1 then  
-    if (self.randyrandy) == 0 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectkyle", 12.0)
-    elseif (self.randyrandy) == 1 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmike", 12.0)
-    elseif (self.randyrandy) == 2 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmusic", 12.0)
-    elseif (self.randyrandy) == 3 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwee", 12.0)
-    elseif (self.randyrandy) == 4 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectneat", 12.0)
-    elseif (self.randyrandy) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 12.0)
-    elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 12.0) 
-    elseif (self.randyrandy) == 7 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 12.0)
-    elseif (self.randyrandy) == 8 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo1", 12.0)
-    elseif (self.randyrandy) == 9 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo2", 12.0)
-    elseif (self.randyrandy) == 10 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo3", 12.0)
-    elseif (self.randyrandy) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 12.0)
+    if (self.randyrandy) == 0 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectkyle", 1.0)
+    elseif (self.randyrandy) == 1 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmike", 1.0)
+    elseif (self.randyrandy) == 2 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectmusic", 1.0)
+    elseif (self.randyrandy) == 3 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwee", 1.0)
+    elseif (self.randyrandy) == 4 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectneat", 1.0)
+    elseif (self.randyrandy) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 1.0)
+    elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
+    elseif (self.randyrandy) == 7 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 1.0)
+    elseif (self.randyrandy) == 8 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo1", 1.0)
+    elseif (self.randyrandy) == 9 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo2", 1.0)
+    elseif (self.randyrandy) == 10 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo3", 1.0)
+    elseif (self.randyrandy) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 1.0)
     end
     self.timerRadioMessage = 60
   end
 
   if status.resource("health") <= status.stat("maxHealth") and self.timerRadioMessage < 1 then
-    if (self.randyrandy2) == 0 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying", 12.0)
-    elseif (self.randyrandy2) == 1 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying2", 12.0)
-    elseif (self.randyrandy2) == 2 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying3", 12.0)
-    elseif (self.randyrandy2) == 3 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying4", 12.0)
-    elseif (self.randyrandy2) == 4 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying5", 12.0)
-    elseif (self.randyrandy2) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 12.0)
-    elseif (self.randyrandy2) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 12.0) 
-    elseif (self.randyrandy2) == 7 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 12.0)
-    elseif (self.randyrandy2) == 8 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo1", 12.0)
-    elseif (self.randyrandy2) == 9 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo2", 12.0)
-    elseif (self.randyrandy2) == 10 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo3", 12.0)
-    elseif (self.randyrandy2) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 12.0)    
+    if (self.randyrandy2) == 0 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying", 1.0)
+    elseif (self.randyrandy2) == 1 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying2", 1.0)
+    elseif (self.randyrandy2) == 2 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying3", 1.0)
+    elseif (self.randyrandy2) == 3 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying4", 1.0)
+    elseif (self.randyrandy2) == 4 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectdying5", 1.0)
+    elseif (self.randyrandy2) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 1.0)
+    elseif (self.randyrandy2) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
+    elseif (self.randyrandy2) == 7 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 1.0)
+    elseif (self.randyrandy2) == 8 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo1", 1.0)
+    elseif (self.randyrandy2) == 9 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo2", 1.0)
+    elseif (self.randyrandy2) == 10 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo3", 1.0)
+    elseif (self.randyrandy2) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 1.0)    
     end   
     self.timerRadioMessage = 60    
   end           
