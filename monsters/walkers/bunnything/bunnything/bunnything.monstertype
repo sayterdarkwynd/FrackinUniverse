@@ -31,7 +31,28 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [          
+      "hostileActions" : [     
+        {
+          "name" : "action-fire",
+          "cooldown" : 7,
+          "parameters" : {
+            "maximumRange" : 12,
+            "minimumRange" : 6,
+            "windupState" : "fire",
+            "windupTime" : 0.45,
+            "projectileType" : "energyzone",
+            "fireOffset" : [0, 0.75],
+
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "inaccuracy" : 0,
+            "aimDirection" : [0,0],
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+            "winddownState" : ""
+          }
+        },       
         {
           "name" : "action-fire",
           "cooldown" : 7,
