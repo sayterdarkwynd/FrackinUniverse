@@ -405,6 +405,7 @@ function deciding()
 	end
 end
 
+
 function miteInfection()   
     local vmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})     ---see if the container has room for more mites
     
@@ -424,17 +425,21 @@ function miteInfection()
 
     sb.logInfo("totalMites before anything ="..self.totalMites)
 
-    local baseMiteChance = 99
+    local baseMiteChance = 6 + (self.totalMites/4) or 100
+    if baseMiteChance > 100 then baseMiteChance == 100 end
+    
     local baseMiteReproduce = 2 + (self.totalMites /10)
     local baseMiteKill = 2 * (self.totalFrames /24)
-   
+    
+   sb.logInfo("roll = "..baseMiteChance)
     if self.antimite then --Infection stops spreading if the frame is an anti-mite frame or magma frame.    
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
     elseif self.totalMites > 60 then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
-        self.beePower = self.beePower * (self.totalMites /100)	      
+        self.beePower = self.beePower * (1 + self.totalMites /100)	      
     elseif math.random(100) < baseMiteChance and vmiteFitCheck > 0 then
       world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
+      self.beePower = self.beePower * (1 + self.totalMites /100)
     end
 
 end
