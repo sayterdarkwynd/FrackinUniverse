@@ -428,18 +428,22 @@ function miteInfection()
     
     local baseMiteReproduce = 2 + (self.totalMites /10)
     local baseMiteKill = 2 * (self.totalFrames /24)
-
+    
     if self.antimite then --Infection stops spreading if the frame is an anti-mite frame or magma frame.    
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
-        if math.random(100) < baseMiteChance then
+        
+        if math.random(100) < 5 and self.totalMites > 0 then -- chance for dead mites to become bug shell
           world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
         end
+        
     elseif self.totalMites > 60 then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
-        self.beePower = self.beePower * (1 + self.totalMites /100)	      
+        self.beePower = self.beePower * (1 + self.totalMites /100)
+        
     elseif math.random(100) < baseMiteChance and vmiteFitCheck > 0 then
       world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
       self.beePower = self.beePower * (1 + self.totalMites /100)
+      
     end
 
 end
