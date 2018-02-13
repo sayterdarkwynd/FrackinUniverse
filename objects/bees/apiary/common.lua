@@ -422,25 +422,28 @@ function miteInfection()
 	  self.totalFrames= self.totalFrames + item.count
 	end
     end      
-
-    local baseMiteChance = 5 + (self.totalMites/4)
-    if baseMiteChance > 100 then baseMiteChance = 100 end
     
+    -- mite settings
+    local baseMiteChance = math.random(1,6) + (self.totalMites/4) 
+    if baseMiteChance > 100 then baseMiteChance = 100 end
     local baseMiteReproduce = 1 + (self.totalMites /10)
     local baseMiteKill = 2 * (self.totalFrames /24)
     if baseMiteKill < 1 then baseMiteKill = 1 end
+    
     if self.antimite then --Infection stops spreading if the frame is an anti-mite frame or magma frame.    
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
         
-        if math.random(100) < 5 and self.totalMites > 12 then -- chance for dead mites to become bug shell
+        -- chance for dead mites to become bug shell if there are enough mites
+        if math.random(100) < 5 and self.totalMites > 12 then 
           world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
         end
     elseif self.totalMites > 2 then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
         self.beePower = self.beePower - (1 + self.totalMites/20)
     elseif math.random(100) < baseMiteChance and vmiteFitCheck > 0 then
-      world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
-      self.beePower = self.beePower - (1 + self.totalMites/20)
+        world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
+        self.beePower = self.beePower - (1 + self.totalMites/20)
+        animator.playSound("addMite") 
     end
 end
 
