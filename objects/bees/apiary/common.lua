@@ -431,7 +431,7 @@ function miteInfection()
     local baseMiteChance = math.random(1,4) + (self.totalMites/4) 
     if baseMiteChance > 100 then baseMiteChance = 100 end
 
-    local baseMiteReproduce = 1 + (self.totalMites /10)
+    local baseMiteReproduce = 1 + (self.totalMites /40)
     local baseMiteKill = 2 * (self.totalFrames /24)
     if baseMiteKill < 1 then baseMiteKill = 1 end
     
