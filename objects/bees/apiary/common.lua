@@ -406,9 +406,11 @@ function deciding()
 end
 
 
-function miteInfection()   
+function miteInfection() 
     local vmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})     ---see if the container has room for more mites
     
+    
+    -- first we calculate how many mites are infesting the apiary
     self.totalMites = 0 
     for _,item in pairs(world.containerItems(entity.id())) do
 	if item.name=="vmite" then 
@@ -416,6 +418,8 @@ function miteInfection()
 	end
     end  
 
+
+    -- then we check how many mite-killing frames are present
     self.totalFrames = 0  
     for _,item in pairs(world.containerItems(entity.id())) do
 	if item.name == "amite" or 
@@ -427,17 +431,17 @@ function miteInfection()
 	end
     end      
     
-    -- mite settings
+    -- mite settings get applied
     local baseMiteChance = math.random(1,6) + (self.totalMites/4) 
     if baseMiteChance > 100 then baseMiteChance = 100 end
     local baseMiteReproduce = 1 + (self.totalMites /10)
     local baseMiteKill = 2 * (self.totalFrames /24)
     if baseMiteKill < 1 then baseMiteKill = 1 end
     
-    if self.antimite then --Infection stops spreading if the frame is an anti-mite frame or magma frame.    
+     --Infection stops spreading if the frame is an anti-mite frame present. It this is the case, we also roll to see if we get a bugshell when we kill the mite. 
+     -- Otherwise, we add more mites, and reduce beePower. If there are more than 2 mites, the breeding rate increases rapidly, exponentially the longer things are left alone
+    if self.antimite then  
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
-        
-        -- chance for dead mites to become bug shell if there are enough mites
         if math.random(100) < 5 and self.totalMites > 12 then 
           world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
         end
