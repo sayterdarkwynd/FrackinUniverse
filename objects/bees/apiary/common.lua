@@ -418,10 +418,10 @@ function miteInfection()
 
     self.totalFrames = 0  
     for _,item in pairs(world.containerItems(entity.id())) do
-	if item.name=="amite" or 
-	   item.name=="magmaframe" or 
+	if item.name == "amite" or 
+	   item.name == "magmaframe" or 
 	   item.name == "uraniumframe" or 
-	   item.name =="plutoniumframe" or 
+	   item.name == "plutoniumframe" or 
 	   item.name == "godlyframe" then 
 	  self.totalFrames= self.totalFrames + item.count
 	end
