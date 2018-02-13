@@ -434,6 +434,9 @@ function miteInfection()
    --sb.logInfo("roll = "..baseMiteChance)
     if self.antimite then --Infection stops spreading if the frame is an anti-mite frame or magma frame.    
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
+        if math.random(100) == 1 then
+          world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
+        end
     elseif self.totalMites > 60 then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
         self.beePower = self.beePower * (1 + self.totalMites /100)	      
