@@ -426,7 +426,7 @@ function miteInfection()
     --sb.logInfo("totalMites before anything ="..self.totalMites)
 
     local baseMiteChance = 6 + (self.totalMites/4) or 100
-    if baseMiteChance > 100 then baseMiteChance == 100 end
+    if baseMiteChance > 100 then baseMiteChance = 100 end
     
     local baseMiteReproduce = 2 + (self.totalMites /10)
     local baseMiteKill = 2 * (self.totalFrames /24)
