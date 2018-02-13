@@ -44,20 +44,25 @@
       ],
       
       "hostileActions" : [
+
         {
-          "name" : "action-hop",
+          "name" : "action-landing-projectile-hop",
           "cooldown" : 3.0,
           "parameters" : {
             "verticalSpeed" : 20,
             "horizontalSpeed" : 15,
             "hopSequence" : 2,
+            "windupTime" : 0.05,
+            "landTime" : 0.2,
             "timeBetweenHops" : 0.58,
-            "windupTime" : 0.15,
-            "landTime" : 0.15,
             "hopAwayFromWall" : false,
-            "wallVerticalSpeed" : 15
+            "wallVerticalSpeed" : 15,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
           }
-        }       
+        }      
       ],
       
       "damageTakenActions" : [
@@ -73,9 +78,7 @@
 
             "projectileType" : "magnorbatropus2",
             "projectileParameters" : {
-              "power" : 5,
-              "knockback" : 0,
-              "speed" : 35
+              "speed" : 0             
             },
             "fireOffset" : [0.0, 0.0],
             "aimAtTarget" : false,
@@ -166,15 +169,21 @@
       ],      
       "periodicActions" : [
         {
-          "name" : "action-hop",
-          "cooldown" : 10.0,
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 3.0,
           "parameters" : {
-            "verticalSpeed" : 15,
-            "horizontalSpeed" : 12,
-            "hopSequence" : 8,
-            "timeBetweenHops" : 0.05,
-            "hopAwayFromWall" : true,
-            "wallVerticalSpeed" : 35
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 15,
+            "hopSequence" : 2,
+            "windupTime" : 0.05,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.58,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 15,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
           }
         }
       ]
@@ -205,10 +214,11 @@
       "airBuoyancy" : 0.6,
       "airFriction" : 0.5,
 
-      "liquidForce" : 420,
-      "liquidFriction" : 0.25,
-      "minimumLiquidPercentage" : 0.5,
-      "liquidImpedance" : 0.25      
+      "liquidForce" : 600,
+      "liquidFriction" : 0.5,
+      "minimumLiquidPercentage" : 0.0,
+      "liquidBuoyancy" : 4,
+      "liquidImpedance" : 0.01      
     },
 
     "aggressive" : false,

@@ -1,13 +1,13 @@
 {
-  "type" : "bunnything",
-  "shortdescription" : "Hopper",
-  "description" : "Wants to do nothing but giggle, sing and hug. All the time.",
+  "type" : "bunnythingmeat",
+  "shortdescription" : "Meat Bunny",
+  "description" : "Wants to do nothing but giggle, spew gore, and devour flesh.",
 
-  "categories" : [ "bunnything" ],
+  "categories" : [ "bunnythingmeat" ],
   "parts" : [ "body" ],
   "reversed" : true,
   
-  "animation" : "bunnything.animation",
+  "animation" : "bunnythingmeat.animation",
 
   "dropPools" : [ { "default" : "poptopTreasure", "bow" : "hunting" } ],
 
@@ -31,41 +31,41 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [          
+      "hostileActions" : [ 
         {
           "name" : "action-fire",
-          "cooldown" : 7,
+          "cooldown" : 1,
           "parameters" : {
-            "maximumRange" : 12,
-            "minimumRange" : 6,
-            "windupState" : "fire",
-            "windupTime" : 0.45,
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupTime" : 0.5,
 
-            "projectileType" : "bubbles",
-            "fireOffset" : [0, 0.75],
-
+            "projectileType" : "magnorbatropus2",
+            "fireOffset" : [0.875, 0.625],
             "aimAtTarget" : true,
-            "projectileCount" : 1,
-            "projectileInterval" : 0.15,
-            "inaccuracy" : 0,
-            "aimDirection" : [0,1],
-            "power" : 1,
-            "fireSound" : "fire",
             "fireState" : "fire",
+            "fireDelay" : 0.2,
+            "fireSound" : "fire",
+            "power" : 15,
+            "fireArc": true,
+            "projectileSpeed": 50,
+            "gravityMultiplier": 0.6,
 
-            "winddownState" : ""
+            "winddownState" : "",
+            "winddownTime" : 0.2
           }
-        },   
+        },  
         {
           "name" : "action-leap", 
-          "cooldown" : 3,
+          "cooldown" : 5,
           "parameters" : {
-            "minimumRange" : 3,
-            "maximumRange" : 12,
+            "minimumRange" : 5,
+            "maximumRange" : 30,
             "windupTime" : 0.25,
             "windupState" : "idle",
 
-            "leapVelocity" : 45,
+            "leapVelocity" : 25,
             "collisionCheck" : true,
             "highArc" : true,
             "leapState" : "jump",
@@ -77,16 +77,16 @@
         }, 
         {
           "name" : "action-charge",
-          "cooldown" : 3,
+          "cooldown" : 4,
           "parameters" : {
-            "maximumRange" : 8,
+            "maximumRange" : 15,
             "windupTime" : 0.5,
 
             "aimAtTarget" : false,
             "aimDirection" : [1, 0.5],
             "chargeTime" : [0.3, 0.5],
             "chargeSpeed" : 40,
-            "chargeControlForce" : 300,
+            "chargeControlForce" : 500,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
@@ -96,6 +96,7 @@
       ],
 
       "periodicActions" : [ ],
+      
       "damageTakenActions" : [
         {
           "name" : "action-invulnerable",
@@ -105,7 +106,7 @@
             "windupState" : "invulnerablewindup",
             "winddownTime" : 0.4,
             "winddownState" : "invulnerablewinddown",
-            "invulnerableTime" : 6
+            "invulnerableTime" : 2
           }
         }
       ],
@@ -169,12 +170,12 @@
 
     "touchDamage" : {
       "poly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.55],  [-0.8125, -1.55], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
-      "damage" : 9,
+      "damage" : 12,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "puseffect" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -227,20 +228,47 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 60
+          "baseValue" : 120
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "healthRegen" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.005
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
         "wetImmunity" : {
           "baseValue" : 1
-        }         
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "pusStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1
+        },
+        "darknessImmunity" : {
+          "baseValue" : 1
+        },
+        "gasImmunity" : {
+          "baseValue" : 1
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 1
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.75
+        },
+        "electricResistance" : {
+          "baseValue" : 0.75
+        },
+        "poisonResistance" : {
+          "baseValue" : 1
+        }                     
       },
 
       "resources" : {
@@ -258,9 +286,7 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "bunnything" }
+    "capturable" : false,
+    "nametagColor" : [64, 200, 255]
   }
 }

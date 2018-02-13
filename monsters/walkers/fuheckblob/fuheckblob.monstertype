@@ -30,36 +30,67 @@
 
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
-      "hostileActions" : [
+      "hostileActions" : [     
         {
-          "name" : "action-hop",
+          "name" : "action-landing-projectile-hop",
           "cooldown" : 0.0,
           "parameters" : {
             "verticalSpeed" : 20,
-            "horizontalSpeed" : 10,
-            "hopSequence" : 3,
-            "timeBetweenHops" : 0.0,
-            "windupTime" : 0.1,
+            "horizontalSpeed" : 15,
+            "hopSequence" : 4,
+            "windupTime" : 0.05,
             "landTime" : 0.1,
-            "hopAwayFromWall" : true,
-            "wallVerticalSpeed" : 35
+            "timeBetweenHops" : 0.38,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 15,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 8,
+            "fireOffset" : [0,0]
           }
-        }
+        }        
       ],
-
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 25,
+            "hopSequence" : 1,
+            "windupTime" : 0.1,
+            "landTime" : 0.3,
+            "timeBetweenHops" : 0.28,
+            "hopAwayFromWall" : true,
+            "wallVerticalSpeed" : 15,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 8,
+            "fireOffset" : [0,0]
+          }
+        }       
+      ],
+      
       "periodicActions" : [
         {
-          "name" : "action-hop",
+          "name" : "action-landing-projectile-hop",
           "cooldown" : 0.0,
           "parameters" : {
-            "verticalSpeed" : 25,
-            "horizontalSpeed" : 10,
-            "hopSequence" : 3,
-            "timeBetweenHops" : 0.1,
-            "landTime" : 0.1,
-            "hopAwayFromWall" : false
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 15,
+            "hopSequence" : 4,
+            "windupTime" : 0.05,
+            "landTime" : 0.3,
+            "timeBetweenHops" : 0.58,
+            "hopAwayFromWall" : true,
+            "wallVerticalSpeed" : 15,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 8,
+            "fireOffset" : [0,0]
           }
-        }
+        } 
       ],
 
       "followActions" : [
