@@ -422,8 +422,13 @@ function miteInfection()
     -- then we check how many mite-killing frames are present
     self.totalFrames = 0  
     for _,item in pairs(world.containerItems(entity.id())) do
-	if item.name == self.config.acceptedAntimite[item.name] then 
+	if item.name == "amite" or
+	item.name == "magmaframe" or
+	item.name == "godlyframe" or
+	item.name == "uraniumframe" or
+	item.name == "plutoniumframe" then 
 	  self.totalFrames= self.totalFrames + item.count
+	  
 	end
     end      
     
