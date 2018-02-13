@@ -422,18 +422,15 @@ function miteInfection()
     -- then we check how many mite-killing frames are present
     self.totalFrames = 0  
     for _,item in pairs(world.containerItems(entity.id())) do
-	if item.name == "amite" or 
-	   item.name == "magmaframe" or 
-	   item.name == "uraniumframe" or 
-	   item.name == "plutoniumframe" or 
-	   item.name == "godlyframe" then 
+	if item.name == self.config.acceptedAntimite[item.name] then 
 	  self.totalFrames= self.totalFrames + item.count
 	end
     end      
     
     -- mite settings get applied
-    local baseMiteChance = math.random(1,6) + (self.totalMites/4) 
+    local baseMiteChance = math.random(1,4) + (self.totalMites/4) 
     if baseMiteChance > 100 then baseMiteChance = 100 end
+
     local baseMiteReproduce = 1 + (self.totalMites /10)
     local baseMiteKill = 2 * (self.totalFrames /24)
     if baseMiteKill < 1 then baseMiteKill = 1 end
