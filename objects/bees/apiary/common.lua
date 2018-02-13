@@ -423,7 +423,7 @@ function miteInfection()
 	end
     end      
 
-    sb.logInfo("totalMites before anything ="..self.totalMites)
+    --sb.logInfo("totalMites before anything ="..self.totalMites)
 
     local baseMiteChance = 6 + (self.totalMites/4) or 100
     if baseMiteChance > 100 then baseMiteChance == 100 end
@@ -431,7 +431,7 @@ function miteInfection()
     local baseMiteReproduce = 2 + (self.totalMites /10)
     local baseMiteKill = 2 * (self.totalFrames /24)
     
-   sb.logInfo("roll = "..baseMiteChance)
+   --sb.logInfo("roll = "..baseMiteChance)
     if self.antimite then --Infection stops spreading if the frame is an anti-mite frame or magma frame.    
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
     elseif self.totalMites > 60 then
