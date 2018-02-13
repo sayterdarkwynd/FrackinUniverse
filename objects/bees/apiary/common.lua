@@ -432,7 +432,7 @@ function miteInfection()
     if self.antimite then --Infection stops spreading if the frame is an anti-mite frame or magma frame.    
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
         
-        if math.random(100) < 5 and self.totalMites > 0 then -- chance for dead mites to become bug shell
+        if math.random(100) < 5 and self.totalMites > 60 then -- chance for dead mites to become bug shell
           world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
         end
         
