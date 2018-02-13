@@ -442,10 +442,10 @@ function miteInfection()
         if math.random(100) < 5 and self.totalMites > 12 then 
           world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
         end
-    elseif self.totalMites > 2 then
+    elseif self.totalMites > 60 then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
         self.beePower = self.beePower - (1 + self.totalMites/20)
-    elseif math.random(100) < baseMiteChance and vmiteFitCheck > 0 then
+    elseif math.random(200) < baseMiteChance and vmiteFitCheck > 0 then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
         self.beePower = self.beePower - (1 + self.totalMites/20)
         animator.playSound("addMite") 
