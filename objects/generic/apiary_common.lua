@@ -458,9 +458,11 @@ function miteInfection()
     elseif (self.totalMites >= 10) and (baseSmallDiceRoll < baseMiteChance *4) and (vmiteFitCheck > 0) then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
         self.beePower = self.beePower - (1 + self.totalMites/20)
+		transferUtil.unloadSelfContainer()
     elseif (baseDiceRoll < baseMiteChance) and (vmiteFitCheck > 0) then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
         self.beePower = self.beePower - (1 + self.totalMites/20)
+		transferUtil.unloadSelfContainer()
     end
 end
 
