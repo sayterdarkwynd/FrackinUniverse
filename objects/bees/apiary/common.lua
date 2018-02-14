@@ -440,18 +440,21 @@ function miteInfection()
     local baseMiteKill = 2 * (self.totalFrames /24)
     if baseMiteKill < 1 then baseMiteKill = 1 end
     
+    local baseDiceRoll = math.random(200)
+    local baseSmallDiceRoll = math.random(100)
+    
      --Infection stops spreading if the frame is an anti-mite frame present. It this is the case, we also roll to see if we get a bugshell when we kill the mite. 
      -- Otherwise, we add more mites, and reduce beePower. If there are more than 2 mites, the breeding rate increases rapidly, exponentially the longer things are left alone
     if self.antimite then  
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
-        if math.random(100) < 5 and self.totalMites > 12 then 
+        if baseSmallDiceRoll < 5 and self.totalMites > 12 then 
           world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
         end
-    elseif self.totalMites > 60 and math.random(100) < baseMiteChance and vmiteFitCheck > 0 then
+    elseif self.totalMites > 60 and baseSmallDiceRoll < baseMiteChance and vmiteFitCheck > 0 then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
         self.beePower = self.beePower - (1 + self.totalMites/20)
         animator.playSound("addMite") 
-    elseif math.random(200) < baseMiteChance and vmiteFitCheck > 0 then
+    elseif baseDiceRoll < baseMiteChance and vmiteFitCheck > 0 then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
         self.beePower = self.beePower - (1 + self.totalMites/20)
         animator.playSound("addMite") 
