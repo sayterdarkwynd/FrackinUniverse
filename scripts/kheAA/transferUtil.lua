@@ -375,10 +375,14 @@ end
 
 function transferUtil.loadSelfContainer()
 	storage.containerId=entity.id()
-	storage.inContainers={}
-	storage.outContainers={}
+	transferUtil.unloadSelfContainer()
 	storage.inContainers[storage.containerId]=storage.position
 	storage.outContainers[storage.containerId]=storage.position
+end
+
+function transferUtil.unloadSelfContainer()
+	storage.inContainers={}
+	storage.outContainers={}
 end
 
 function transferUtil.getAbsPos(position,pos)
