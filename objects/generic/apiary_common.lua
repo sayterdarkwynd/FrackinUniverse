@@ -433,7 +433,7 @@ function miteInfection()
     end      
     
     -- mite settings get applied
-    local baseMiteChance = math.random(1,4) + (self.totalMites/4) 
+    local baseMiteChance = 0.4 + math.random(2) + (self.totalMites/10) 
     if baseMiteChance > 100 then baseMiteChance = 100 end
 
     local baseMiteReproduce = 1 + (self.totalMites /40)
@@ -442,6 +442,7 @@ function miteInfection()
     
     local baseDiceRoll = math.random(200)
     local baseSmallDiceRoll = math.random(100)
+    local baseLargeDiceRoll = math.random(1000)
     
      --Infection stops spreading if the frame is an anti-mite frame present. It this is the case, we also roll to see if we get a bugshell when we kill the mite. 
      -- Otherwise, we add more mites, and reduce beePower. If there are more than 2 mites, the breeding rate increases rapidly, exponentially the longer things are left alone
@@ -450,11 +451,11 @@ function miteInfection()
         if baseSmallDiceRoll < 5 and self.totalMites > 12 then 
           world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
         end
-    elseif self.totalMites > 60 and baseSmallDiceRoll < baseMiteChance and vmiteFitCheck > 0 then
+    elseif (self.totalMites >= 10) and (baseSmallDiceRoll < baseMiteChance *4) and (vmiteFitCheck > 0) then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
         self.beePower = self.beePower - (1 + self.totalMites/20)
         animator.playSound("addMite") 
-    elseif baseDiceRoll < baseMiteChance and vmiteFitCheck > 0 then
+    elseif (baseDiceRoll < baseMiteChance) and (vmiteFitCheck > 0) then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
         self.beePower = self.beePower - (1 + self.totalMites/20)
         animator.playSound("addMite") 
@@ -462,7 +463,7 @@ function miteInfection()
 end
 
 function daytimeCheck()
-	daytime = world.timeOfDay() < 0.5 or world.type() == 'playerstation' 
+	daytime = world.timeOfDay() < 0.45 or world.type() == 'playerstation' --we made day earlier
 end
 
 
