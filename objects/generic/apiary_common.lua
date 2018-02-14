@@ -1,7 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 
 local contents
-local deltaTime=0
 DEFAULT_HONEY_CHANCE = 0.6
 DEFAULT_OFFSPRING_CHANCE = 0.4
 
@@ -432,6 +431,10 @@ function miteInfection()
 	end
     end      
     
+    --queenName
+    --droneName
+    
+    
     -- mite settings get applied
     local baseMiteChance = 0.4 + math.random(2) + (self.totalMites/10) 
     if baseMiteChance > 100 then baseMiteChance = 100 end
@@ -455,6 +458,13 @@ function miteInfection()
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
         self.beePower = self.beePower - (1 + self.totalMites/20)
         animator.playSound("addMite") 
+        getEquippedBees()
+        if math.random(100) == 1 then
+        world.containerConsume(entity.id(), { name= queenName, count = 1), data={}})
+        else
+        world.containerConsume(entity.id(), { name= droneName, count = 1), data={}})
+        end
+        
     elseif (baseDiceRoll < baseMiteChance) and (vmiteFitCheck > 0) then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
         self.beePower = self.beePower - (1 + self.totalMites/20)
@@ -481,12 +491,17 @@ end
 
 
 function update(dt)
-	if deltaTime > 1 then
-		deltaTime=0
-		transferUtil.loadSelfContainer()
-	else
-		deltaTime=deltaTime+dt
-	end
+
+    if not deltaTime or (deltaTime > 1) then
+        deltaTime=0
+		if self.totalMites and self.totalMites>0 then
+			transferUtil.unloadSelfContainer()
+		else
+			transferUtil.loadSelfContainer()
+		end
+    else
+        deltaTime=deltaTime+dt
+    end
 	contents = world.containerItems(entity.id())
 	daytimeCheck()
 
