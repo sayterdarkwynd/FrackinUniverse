@@ -447,9 +447,12 @@ function miteInfection()
      -- Otherwise, we add more mites, and reduce beePower. If there are more than 2 mites, the breeding rate increases rapidly, exponentially the longer things are left alone
     if self.antimite then  
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
-        if baseSmallDiceRoll < 5 and self.totalMites > 12 then 
-          world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
+        
+        --chance to spawn bugshell when killing mites
+        if baseSmallDiceRoll < 10 and self.totalMites > 12 then 
+          world.containerAddItems(entity.id(), { name="bugshell", count = baseMiteKill/2, data={}})
         end
+        
     elseif (self.totalMites >= 120) and (baseDiceRoll < baseMiteChance) then
         animator.playSound("addMite")         
     elseif (self.totalMites >= 10) and (baseSmallDiceRoll < baseMiteChance *4) and (vmiteFitCheck > 0) then
