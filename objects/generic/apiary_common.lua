@@ -431,10 +431,6 @@ function miteInfection()
 	end
     end      
     
-    --queenName
-    --droneName
-    
-    
     -- mite settings get applied
     local baseMiteChance = 0.4 + math.random(2) + (self.totalMites/10) 
     if baseMiteChance > 100 then baseMiteChance = 100 end
@@ -454,22 +450,24 @@ function miteInfection()
         if baseSmallDiceRoll < 5 and self.totalMites > 12 then 
           world.containerAddItems(entity.id(), { name="bugshell", count = 1, data={}})
         end
+    elseif (self.totalMites >= 120) and (baseDiceRoll < baseMiteChance) then
+        animator.playSound("addMite")         
     elseif (self.totalMites >= 10) and (baseSmallDiceRoll < baseMiteChance *4) and (vmiteFitCheck > 0) then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
         self.beePower = self.beePower - (1 + self.totalMites/20)
-        animator.playSound("addMite") 
-        getEquippedBees()
-        if math.random(100) == 1 then
-        world.containerConsume(entity.id(), { name= queenName, count = 1), data={}})
-        else
-        world.containerConsume(entity.id(), { name= droneName, count = 1), data={}})
-        end
-        
     elseif (baseDiceRoll < baseMiteChance) and (vmiteFitCheck > 0) then
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
         self.beePower = self.beePower - (1 + self.totalMites/20)
-        animator.playSound("addMite") 
     end
+end
+
+function miteKillsBee()
+        local queen, drone = getEquippedBees()
+        if baseSmallDiceRoll == 0 then
+          world.containerConsume(entity.id(), { name= queen, count = 1, data={}})
+        elseif baseSmallDiceRoll < 10 then
+          world.containerConsume(entity.id(), { name= drone, count = baseMiteReproduce, data={}})
+        end
 end
 
 function daytimeCheck()
@@ -585,7 +583,7 @@ function chooseMinerOffspring(config)
 		return nil
 	end
 	
---	sb.logInfo('may spawn radioactive bees')
+--	sb.logInfo('may spawn strange bees')
                 local threat = world.threatLevel() or 1
                 local chance = config.chance or DEFAULT_HONEY_CHANCE
 		if (math.random(100) <= 20 * (chance + self.mutationIncrease)) then
