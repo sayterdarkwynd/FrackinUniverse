@@ -1,0 +1,81 @@
+{
+  "itemName" : "manstoppersmg",
+  "price" : 500,
+  "inventoryIcon" : "manstoppersmg_bunny.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Styled after the classics but updated with smart ammo.
+^cyan;Homing bullets^reset;",
+  "shortdescription" : "BK12 Manstopper",
+  "level" : 4,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon", "ranged", "machinePistol", "upgradeableWeapon"],
+  "tooltipKind" : "gun",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "manstoppersmg_bunny.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/revolver2.ogg" ] }  
+  },
+
+  "baseOffset" : [0.5, 0.14],
+  "muzzleOffset" : [1.4, 0.3],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.35,
+    "baseDps" : 5,
+    "energyUsage" : 33,
+    "fireType" : "burst",
+    "burstCount" : 5,
+    "burstTime" : 0.075,
+    "inaccuracy" : 0.03,
+    "projectileCount" : 1,
+    "projectileType" : "homingbullet",
+    "projectileParameters" : {
+      "speed" : 65,
+      "knockback" : 15
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
