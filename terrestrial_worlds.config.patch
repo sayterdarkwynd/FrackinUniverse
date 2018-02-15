@@ -241,7 +241,8 @@
 
   {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/0","value": 3},
   {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/1","value": 3},
-  {"op": "add","path": "/planetTypes/garden/layers/surface/dungeons/0","value": [1,"medic1"]},
+  //{"op": "add","path": "/planetTypes/garden/layers/surface/dungeons/0","value": [1,"medic1"]},
+  {"op": "replace", "path": "/planetTypes/garden/layers/surface/dungeons/1/1","value": "medic1"},    
 {"op" : "add", "path" : "/planetTypes/garden/layers/subsurface/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground1/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground2/dungeons", "value" : [] },
@@ -1890,7 +1891,7 @@
       },
         "surface" : {
           "primaryRegion" : [ "atropus" ],
-          "secondaryRegions" : [ "futentacle", "wartfield", "midnight", "corruptmoon", "corruptedforest", "goreforest", "cellfield", "reddesert", "bloodgulch", "hellhive", "elder" ],
+          "secondaryRegions" : [ "futentacle", "wartfield", "midnight", "corruptmoon", "corruptedforest", "goreforest", "cellfield", "hellhive", "elder" ],
           "dungeons" : [ 
           [1.0, "elderruins"], 
           [1.0, "ship1"], 
@@ -1945,7 +1946,7 @@
       },
         "surface" : {
           "primaryRegion" : [ "atropusdark" ],
-          "secondaryRegions" : [ "futentacle", "wartfield", "midnight", "corruptmoon", "goreforest", "cellfield", "reddesert", "bloodgulch", "hellhive", "elder", "corruptedforest" ],
+          "secondaryRegions" : [ "futentacle", "wartfield", "midnight", "corruptmoon", "goreforest", "cellfield", "hellhive", "elder", "corruptedforest" ],
          
           "dungeons" : [ 
           [1.0, "elderruins"], 
@@ -4551,6 +4552,17 @@
      }
    },
    
+  
+  
+  // terrain change for Lush
+  {
+    "op": "replace",
+    "path": "/regionTypes/garden/blockSelector/0",
+    "value": "remixedFlatsSurface"
+  },
+  
+  
+  
 
   {"op" : "add", 
   "path" : "/regionTypes/desertwastes",

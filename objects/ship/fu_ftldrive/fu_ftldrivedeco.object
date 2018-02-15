@@ -11,8 +11,8 @@
   "inventoryIcon" : "fu_ftldriveicon.png",
   "orientations" : [
     {
-      "dualImage" : "fu_ftldrive_base.png",
-      "imagePosition" : [0, 0],
+      "dualImage" : "fu_ftldrive.png",
+      "imagePosition" : [-44, 0],
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
@@ -20,9 +20,11 @@
 
   "animation" : "fu_ftldrive.animation",
   "animationParts" : {
-    "screen" : "fu_ftldrive_screen.png",
-    "fans" : "fu_ftldrive_fans.png",
-    "base" : "fu_ftldrive_base.png"
+    "base" : "fu_ftldrive.png",
+	"fullbright" : "fu_ftldrivefullbright.png"
   },
-  "animationPosition" : [0, 0]
+  "animationPosition" : [-44, 0],
+  
+  "scripts" : [ "/objects/ship/fu_ftldriveanimation.lua" ],
+  "scriptDelta" : 60
 }

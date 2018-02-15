@@ -2,10 +2,10 @@
   "id" : "create_matterassembler",
   "prerequisites" : [ ],
   "title" : "Meet Vinalisj",
-  "text" : "Greetings, traveller. I am Vinalisj, the Director of the Corvex Research team. I'm on vacation, but I know talent when I see it. I can offer you a position on my staff if you can prove your worth. Make a ^orange;Machining Table^white;. ^green;Build one on your default crafting menu [C]^reset; and bring it here.",
-  "completionText" : "I have a useful ^orange;Personal Tricorder^reset; here for you! Use each button to access its functions: ^green;Status Tracking^reset; and ^green;Quest Tracking^reset;. ^orange;Shift-Click^reset; to adjust your tool slots. When you can, check out the ^green;Science Outpost^reset; too!",
+  "text" : "I'll lend a hand getting you off this world, but you'll need to get your hands dirty! Start by ^orange;building a Machining Table^reset; in your ^green;[C]rafting menu^reset;.",
+  "completionText" : "That's great workmanship, actually. I sense a keen mind in you. Your ship will be ^orange;space-worthy^reset; in no time at all! Let's move on to your next task!",
   "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "sciencebrochure", 1 ], [ "statustablet", 1 ], [ "glass", 2 ] ] ],
+  "rewards" : [ [ [ "glass", 2 ] ] ],
   "speaker" : "questGiver",
   
   "updateDelta" : 10,
@@ -21,11 +21,11 @@
   "scriptConfig" : {
 
     "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
+      "default" : "player"
     },
-
-    "requireTurnIn" : true,
+    "canBeAbandoned" : false,
+    "followUp" : "create_matterassembler2",
+    "requireTurnIn" : false,
 
     "turnInDescription" : "Bring the ^green;Machining Table^reset; to ^orange;Vinalisj^reset;.",
 

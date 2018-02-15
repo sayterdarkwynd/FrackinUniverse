@@ -1,0 +1,32 @@
+{
+  "projectileName" : "fugoreexplosionfast",
+  "image" : "fugoreexplosion.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 9,
+  "speed" : 0,
+  "damagePoly" : [ [-3,3], [-3,-3], [2,-2], [2,3] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "timeToLive" : 0.25,
+  "universalDamage" : true,
+  "damageKind" : "shadow",
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ 
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg"    
+      ]
+    },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "bloodstonegrass",
+      "radius" : 6
+    }  
+  ],
+  "power" : 6,
+  "emmiters" : [ "blood" ],
+  "statusEffects" : [ "insanity" ] 
+}

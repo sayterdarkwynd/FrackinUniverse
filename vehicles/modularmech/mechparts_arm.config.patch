@@ -1677,6 +1677,54 @@
             }
         }, {
             "op": "add",
+            "path": "/exitusblaster",
+            "value": {
+                "stats": {
+                    "power": 4,
+                    "energy": 5,
+                    "rapidFire": 3,
+                    "mechMass" : 5
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [4.65, 0.25],
+                    "extendTime": 0.65,
+                    "fireTime": 0.092,
+                    "projectileType": "brainbullet2",
+                    "projectileCount": 1,
+                    "projectileInaccuracy": 0.024,
+                    "projectileParameters": {
+                        "power": 2.5
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/Burstrifle.png",
+                    "<armName>Fullbright": "arm/Burstrifle_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "fffa70",
+                    "e9d31b",
+                    "d1b412",
+                    "927c03"
+                ],
+                "defaultSecondaryColors": [
+                    "6a6a6a",
+                    "555555",
+                    "2b2b2b",
+                    "202020"
+                ],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/gun/pulsecannon_blast1.ogg"
+                        ]
+                    }
+                }
+            }
+        }, {
+            "op": "add",
             "path": "/fuultracannon",
             "value": 
 	  {

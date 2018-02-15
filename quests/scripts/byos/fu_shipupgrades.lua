@@ -3,16 +3,34 @@ require "/quests/scripts/questutil.lua"
 require "/quests/scripts/portraits.lua"
 
 function init()
-	if player.worldId() == player.ownShipWorldId() then
-		upgradeConfig = root.assetJson("/quests/scripts/byos/fu_shipupgrades.config")
-		maxFuelShipOld = 0
-		fuelEfficiencyShipOld = 0
-		shipSpeedShipOld = 0
-	end
+	upgradeConfig = root.assetJson("/quests/scripts/byos/fu_shipupgrades.config")
+	maxFuelShipOld = 0
+	fuelEfficiencyShipOld = 0
+	shipSpeedShipOld = 0
 end
 
 function update(dt)
+	if world.type() == "unknown" then
+		shipLevel = world.getProperty("ship.level")
+		if shipLevel == 0 then
+			if not world.tileIsOccupied(mcontroller.position(), false) then
+				lifeSupport(false)
+			else
+				lifeSupport(true)
+			end
+		else
+			lifeSupport(true)
+		end
+	end
 	if player.worldId() == player.ownShipWorldId() then
+		if not initFinished then
+			initFinished = true
+			if player.hasCompletedQuest("fu_byos") then
+				for _, recipe in pairs (root.assetJson(config.getParameter("byosRecipes"))) do
+					player.giveBlueprint(recipe)
+				end
+			end
+		end
 		crewSizeShip = world.getProperty("fu_byos.crewSize")
 		shipMaxFuel = world.getProperty("ship.maxFuel")
 		maxFuelShip = world.getProperty("fu_byos.maxFuel")
@@ -79,6 +97,30 @@ function update(dt)
 		if maxFuelNew and world.getProperty("ship.fuel") > maxFuelNew then
 			world.setProperty("ship.fuel", maxFuelNew)
 		end
+	end
+end
+
+function uninit()
+	lifeSupport(true)
+end
+
+function lifeSupport(isOn)
+	if isOn then
+		mcontroller.clearControls()
+		status.removeEphemeralEffect("fu_nooxygen")
+		lifeSupportInit = false
+	else
+		if status.statusProperty("fu_byosgravgenfield", 0) > 0 then
+			mcontroller.clearControls()
+			lifeSupportInit = false
+		else
+			mcontroller.controlParameters({gravityEnabled = false})
+			if not lifeSupportInit then
+				mcontroller.setVelocity({0, 0})
+				lifeSupportInit = true
+			end
+		end
+		status.addEphemeralEffect("fu_nooxygen", 3)
 	end
 end
 

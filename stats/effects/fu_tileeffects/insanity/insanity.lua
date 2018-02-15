@@ -33,7 +33,6 @@ function update(dt)
 	if world.entityType(entity.id()) == "player" then
 		status.addEphemeralEffect( "insanityblurstat")	
 	end	
-
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime

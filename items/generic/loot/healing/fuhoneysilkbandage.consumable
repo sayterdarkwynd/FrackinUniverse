@@ -1,22 +1,52 @@
 {
   "itemName" : "fuhoneysilkbandage",
-  "rarity" : "Common",
+  "rarity" : "uncommon",
   "price" : 155,
   "category" : "medicine",
   "inventoryIcon" : "fuhoneysilkbandage.png",
-  "description" : "A honeysilk bandage for healing wounds.",
+  "description" : "Heals 120 hp over 20 seconds and removes most elemental statuses.",
   "shortdescription" : "Honeysilk Bandage",
   "effects" : [ [
-      "honeysilkheal"
+      "honeysilkheal",
+      {
+        "effect" : "fireblock",
+        "duration" : 2
+      },
+      {
+        "effect" : "iceblock",
+        "duration" : 2
+      },
+      {
+        "effect" : "electricblock",
+        "duration" : 2
+      },
+      {
+        "effect" : "poisonblock",
+        "duration" : 2
+      }
     ] ],
   "emote" : "",
   "emitters" : [ "bandageuse" ],
    "blockingEffects" : [
+    "heal_tier0",
+    "heal_tier1",
+    "heal_tier2",
+    "heal_tier4",
+    "heal_tier5",
+    "heal_tier6",
+    "honeyheal1",
+    "honeyheal2",
+    "honeyheal3",
+    "honeyheal4",
+    "heal_long",
+    "heal_long2",
+    "heal_long3",
+    "heal_long4",   
     "salveheal",
     "bandageheal",
     "medkitheal",
     "mutaviskbandage",
     "nanowrapheal",
-	"honeysilkheal"
+    "honeysilkheal"
   ]
 }

@@ -1,263 +1,105 @@
 {
-  "objectName" : "isn_hydroponicstray",
-  "printable" : false,
+    "objectName" : "isn_hydroponicstray",
+    "printable" : false,
     "colonyTags" : [ "science" ],
-  "rarity" : "rare",
-  "description" : "An advanced, powered growing tray. Can also grow saplings. ^cyan;Requires ^orange;2W ^cyan;power^reset;",
-  "shortdescription" : "^cyan;Hydroponics Tray^reset;",
-  "race" : "generic",
-  "category" : "wire",
-  "objectType" : "container",
-  "price" : 1000,
+    "rarity" : "rare",
+    "description" : "An hydroponic powered growing tray. ^cyan;Requires ^orange;2W ^cyan;power^reset;, seeds and water.",
+    "shortdescription" : "^cyan;Hydro Tray^reset;",
+    "race" : "generic",
+    "category" : "wire",
+    "objectType" : "container",
+    "price" : 1000,
 
-  "apexDescription" : "Machines like these could help end famines.",
-  "avianDescription" : "Most Avians prefer to farm the old fashioned way.",
-  "floranDescription" : "Machine makesss plant? Floran... kinda ssskeeved out a bit.",
-  "glitchDescription" : "Daydreaming. I'd love to grow a nice crop of diodia.",
-  "humanDescription" : "Oh jeez, this isn't one of those grow houses is it?",
-  "hylotlDescription" : "A noble endeavour to be sure, but.. such sterile form.",
+    "inventoryIcon" : "isn_hydroponicstray_inv.png",
+    "orientations" : [
+        {
+            "dualImage" : "isn_hydroponicstray_base.png",
+            "imagePosition" : [0, 0],
+            "spaceScan" : 0.1,
+            "anchors" : [ "bottom" ]
+        }
+    ],
 
-  "inventoryIcon" : "isn_hydroponicstray_inv.png",
-  "orientations" : [
-    {
-      "dualImage" : "isn_hydroponicstray_base.png",
-      "imagePosition" : [0, 0],
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-    }
-  ],
+    "slotCount" : 11,
+    "uiConfig" : "/objects/power/isn_hydroponicstray/isn_hydroponicstray.config",
     
-  "slotCount" : 11,
-  "uiConfig" : "/objects/power/isn_hydroponicstray/isn_hydroponicstray.config",
-  "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600,
-  
-  "scripts" : [ "/scripts/power.lua","/objects/power/isn_hydroponicstray/isn_hydroponicstray.lua","/objects/isn_sharedobjectscripts.lua" ],
-  "scriptDelta" : 60,
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
 
-  "animation" : "isn_hydroponicstray.animation",
-  "animationParts" : {
-    "growth" : "isn_hydroponicstray_growth.png",
-    "powlight" : "isn_hydroponicstray_powlight.png",
-    "base" : "isn_hydroponicstray_base.png"
-  },
-  "animationPosition" : [0, 0],
+    "scripts" : [ "/scripts/power.lua","/objects/isn_unifiedgrowingtray.lua","/objects/isn_sharedobjectscripts.lua" ],
+    "scriptDelta" : 60,
 
-  "inputNodes" : [ [1, 1] ],
-  "outputNodes" : [ [1, 0] ],
-  "powertype" : "input",
-  "isn_requiredPower" : 2,
-  
-  "isn_growthCap" : 100,
+    "animation" : "isn_hydroponicstray.animation",
+    "animationParts" : {
+        "growth" : "isn_hydroponicstray_growth.png",
+        "powlight" : "isn_hydroponicstray_powlight.png",
+        "base" : "isn_hydroponicstray_base.png"
+    },
+    "animationPosition" : [0, 0],
 
+    "inputNodes" : [ [1, 1] ],
+    "outputNodes" : [ [1, 0] ],
+    "powertype" : "input",
+    "isn_requiredPower" : 2,
 
-  "isn_waterInputs" : {
-    "waterbucket" : 6,
-    "liquidwater" : 6,
-    "swampwater" : 7,
-    "liquidblood" : 7,
-    "pus" : 8,
-    "liquidalienjuice" : 9,
-    "liquidorganicsoup" : 10,
-    "liquidaether" : 12,
-    "liquidhealing" : 15
-  },
+    //Amount of growth per second for this table.
+    "baseGrowthPerSecond" : 6,
 
-  "isn_fertInputs" : {
-  
+    //Rate (as in multiplier) applied to growth when the tray is unpowered.
+	//Should be roughly fu_growingtray.baseGrowthPerSecond / isn_hydroponicstray.baseGrowthPerSecond
+	//Should err on being worse than the growing tray but not by much.
+    "unpoweredGrowthRate" : 0.166666666,
+
+    "defaultWaterUse" : 2,
+    "defaultseedMod" : 3,
+    "baseYields" : 2,
+
+    // Dictates that this table can grow saplings (trees) besides the usual seed types.
+    "growSaplings" : true,
+
+    "waterInputs" : {
+        "waterbucket" : { "value" : 1 },
+        "liquidwater" : { "value" : 1 },
+        "swampwater" : { "value" : 1 },
+        "liquidblood" : { "value" : 2 },
+        "pus" : { "value" : 2 },
+        "liquidalienjuice" : { "value" : 3 },
+        "liquidorganicsoup" : { "value" : 4, "growthRate" : 1.375 },
+        "liquidaether" : { "value" : 5 },
+        "liquidhealing" : { "value" : 6, "growthRate" : 1.225 }
+    },
+
+    "fertInputs" : {
         //+1 fertilization speed, requires 2 liquid
-        "rottenfood" : 1,
-        "fu_mulch" : 1,
+        "rottenfood" : { "growthRate" : 1.25},
+        "fu_mulch" : { "growthRate" : 1.25 },
+           
+        //+1 fertilization yield, requires 2 liquid
+        "poop" : { "yield" : 1},
+        "agaranichor" : { "yield" : 1},
 
-	//+1 fertilization yield, requires 2 liquid
-	"poop" : 2,
-        "agaranichor" : 2,
+        //+2 fertilization yield, +1 speed, requires 2 liquid
+        "liquidelderfluid" : { "growthRate" : 1.5, "yield" : 2 },
+        "liquidorganicsoup" : { "growthRate" : 1.5, "yield" : 2},
+
+        //+2 fertilization speed, +1 yield, requires 2 liquid
+        "ff_fertilizer" : { "growthRate" : 2, "yield" : 1},
+        "liquidbeer" : { "growthRate" : 2, "yield" : 1},
+
+        //+2.5 fertilization speed, +2 yield, requires 2 liquid, -1 seed
+        "ff_fertilizer2" : { "growthRate" : 2.5, "yield" : 2, "seedUse" : -1 },
+        "liquidcrystal" : { "growthRate" : 2.5, "yield" : 2, "seedUse" : -1 },
         
-	//+2 fertilization yield, +1 speed, requires 2 liquid
-	"liquidelderfluid" : 3,
-	
-	//+2 fertilization speed, +1 yield, requires 2 liquid
-	"ff_fertilizer2" : 4,
-	
-	//+3 fertilization speed, +2 yield, requires 2 liquid
-	"ff_fertilizer" : 5,
-	
-	//+2 fertilization speed, +3 yield, requires 2 liquid
-	"ff_fertilizer3" : 6,
-	
-	//+1 fertilization speed, +1 yield, requires 1 liquid
-	"gene_reproductive" : 7
-  },
+        // + 3 growth, +2 yield, -1 seed but +2 water
+        "pesticide" : { "growthRate" : 3, "yield" : 2, "seedUse" : -1,"fluidUse" : 2 },
+        
+        //+2 fertilization speed, +3 yield, requires 0.75 liquid, -2 seed
+        "ff_fertilizer3" : { "growthRate" : 2, "yield" : 3, "fluidUse" : -0.25, "seedUse" : -2 },
 
-  "isn_seedOutputs" : {
-    "automatoseed" : "automato",
-    "avesmingoseed" : "avesmingo",
-    "bananaseed" : "banana",
-    "beakseedseed" : "beakseed",
-    "boltbulbseed" : "boltbulb",
-    "bonebooseed" : "boneboo",
-    "carrotseed" : "carrot",
-    "chiliseed" : "chili",
-    "cocoaseed" : "cocoa",
-    "coffeeseed" : "coffeebeans",
-    "coralcreepseed" : "coralcreep",
-    "cornseed" : "corn",
-    "crystalplantseed" : "crystalplantedible",
-    "currentcornseed" : "currentcorn",
-    "diodiaseed" : "diodia",
-    "dirturchinseed" : "dirturchin",
-    "eggshootseed" : "eggshoot",
-    "feathercrownseed" : "feathercrown",
-    "grapesseed" : "grapes",
-    "kiwiseed" : "kiwi",
-    "neonmelonseed" : "neonmelon",
-    "oculemonseed" : "oculemon",
-    "pearlpeaseed" : "pearlpea",
-    "pineappleseed" : "pineapple",
-    "potatoseed" : "potato",
-    "pussplumseed" : "pussplum",
-    "reefpodseed" : "reefpod",
-    "riceseed" : "rice",
-    "sugarcaneseed" : "sugar",
-    "thornplant" : "thornfruit",
-    "tomatoseed" : "tomato",
-    "toxictopseed" : "toxictop",
-    "wartweedseed" : "wartweed",
-    "wheatseed" : "wheat",
-    "mushroomseed" : "shroom",
-    "flowerred" : "petalred",
-    "floweryellow" : "petalyellow",
-    "flowerblue" : "petalblue",
-    "flowerspring" : "petalblue",
-    // FU plants
-    "aenemaflower" : "aenemapetal",
-    "arkaentree" : "arkaendart",
-    "batterystem" : "batterystemcharge",
-    "bellamorte" : "bellamortecore",
-    "bladetree" : "bladetreeblade",
-    "crystallite" : "crystalliteshard",
-    "darklightflower" : "darklightblossom",
-    "fletchweed" : "fletchweedstem",
-    "garikleaf" : "garikleafblossom",
-    "herrodbush" : "herrodbushgem",
-    "kramil" : "kramilspine",
-    "poetree" : "ff_silicon",
-    "quellstem" : "quellstembud",
-    "tinselbush" : "tinselbushsprout",
-    "victorleaf" : "victorleafbud",
-    "whitespine" : "whitespineshell",
-    "genesiberryseed" : "genesiberry",
-    "onionseed" : "onion",
-    "naileryseed" : "nailery",
-    "teratomatoseed" : "teratomato",
-    "bloodrootseed" : "bloodroot",
-    "bluemelonseed" : "bluemelon",
-    "dragonsbeardseed" : "dragonsbeard",
-    "fayshroomseed" : "fayshroom",
-    "ghostmushroomseed" : "ghostmushroom",
-    "ginsengseed" : "ginseng",
-    "goldenrootseed" : "goldenroot",
-    "goldshroomseed" : "goldshroom",
-    "greenleafseed" : "greenleaf",
-    "guamseed" : "guam",
-    "jillyrootseed" : "jillyroot",
-    "lactariusindigoseed" : "lactariusindigo",
-    "littlerascalseed" : "littlerascal",
-    "vanusflowerseed" : "vanusflower",
-    "mintseed" : "mint",
-    "petrifiedrootseed" : "petrifiedroot",
-    "pinkloomseed" : "pinkloom",
-    "silverleafseed" : "silverleaf",
-    "yellowfootseed" : "yellowfoot",
-    "cellpodsplant" : "cellpods",
-    "goldenseaspongeplant" : "goldenseasponge",
-    "kamaranpodsplant" : "kamaranpods",
-    "algaeseed" : "algaegreen",
-    "aquapodseed" : "aquapod",
-    "avikancactusseed" : "kadavancactus",
-    "avikanspiceplantseed" : "avikanspices",
-    "bambooseed" : "ff_bambooshoot",
-    "beetlesproutseed" : "beetlesproutflower",
-    "biscornseed" : "biscorn",
-    "blexplantseed" : "blexsap",
-    "blisterbushplantseed" : "blisterbushplantfood",
-    "blizzberryseed" : "blizzberry",
-    "brackentreeseed" : "silkfibre",
-    "caprioleplantseed" : "capriole",
-    "cinnamonseed" : "cinnamon",
-    "corvexseed" : "corvex",
-    "deathblossomseed" : "deathblossom",
-    "diodiahybridseed" : "diodiahybrid",
-    "energiflowerseed" : "energiflower",
-    "erithianalgaeseed" : "erithianalgae",
-    "floralytplantseed" : "floralytcandy",
-    "gazelemonseed" : "gazelemon",
-    "glarestalkseed" : "glarestalkeye",
-    "goldenglowseed" : "goldenglowleaf",
-    "haleflowerseed" : "haleflowerpetal",
-    "hellfireplantseed" : "magmabomb",
-    "hopsseed" : "hops",
-    "ighantseed" : "ighantbulb",
-    "ignuschiliseed" : "ignuschili",
-    "ignuschili2seed" : "ignuschili2",
-    "itaseed" : "itahead",
-    "lasherplantseed" : "lasherstem",
-    "leafshellseed" : "leafshell",
-    "littlegoodberryseed" : "littlegoodberry",
-    "melodistarseed" : "melodistar",
-    "minkocoapodseed" : "minkocoapod",
-    "miraclegrassseed" : "miraclegrass",
-    "mireurchinseed" : "mireurchin",
-    "mutaviskseed" : "mutavisksilk",
-    "neuropodseed" : "neuropod",
-    "nissseed" : "nisscap",
-    "oonfortaseed" : "oonfortaglobule",
-    "pasakavineseed" : "pasaka",
-    "pekkitseed" : "pekkit",
-    "porphisplantseed" : "porphisblossom",
-    "rockrootseed" : "rockroot",
-    "shinyacornseed" : "shinyacorn",
-    "shockshroomseed" : "shockshroom",
-    "slimeplantseed" : "slimeleaf",
-    "fusnowberryseed" : "fusnowberry",
-    "fuspongeweedseed" : "fuspongeweed",
-    "springvaultseed" : "springvaultcoil",
-    "stranglevineseed" : "stranglevineroot",
-    "talonseedseed" : "talonseed",
-    "tentacleplant" : "tentacleproduce",
-    "tetherhookseed" : "tetherhookwheel",
-    "thornitoxseed" : "thornitox",
-    "tyvokkseed" : "tyvokkhook",
-    "varanberryseed" : "varanberry",
-    "vashtaplantseed" : "vashtaclaw",
-    "vextongueseed" : "vextonguestamen",
-    "voritseed" : "voritcap",
-    "wretchelseed" : "wretchel",
-    "wubstemseed" : "wubstem",
-    "xaxseed" : "xaxwing",
-    "zathiseed" : "zathitails",
-    "cottonseed" : "cotton",
-    "reedseed" : "reed",
-    "nakatiseed" : "nakatibark",
-    "kirifruitseed" : "kirifruit",
-    "piruseed" : "pirufrond",
-    "garpberryseed" : "garpberry",
-    "gemglowseed" : "gemglow",
-    "isn_meatplant" : "fleshstrand",
-    "sweetscoopseed" : "sweetscoop",
-    "shadowrootseed" : "shadowroot",
-    "dunestalkseed" : "dunestalk",
-    "bolbohnseed" : "bolbohn",
-
-    //added by cari
-	
-	"whiteflowerseed" : "flowerwhite",
-	"flowerblackseed" : "flowerblack",
-	"flowerbrownseed" : "flowerbrown",
-	"flowergreenseed" : "flowergreen",
-	"flowergreyseed" : "flowergrey",
-	"flowerorangeseed" : "flowerorange",
-	"flowerpinkseed" : "flowerpink",
-	"flowerpurpleseed" : "flowerpurple"	
-  }
+        //+1 fertilization speed, +1 yield, requires 0.5 liquid, -1 seed
+        "gene_reproductive" : { "growthRate" : 1, "yield" : 1, "fluidUse" : -0.5, "seedUse" : -1 },
+        "liquidaether" : { "growthRate" : 1, "yield" : 1, "fluidUse" : -0.5, "seedUse" : -1 },
+        
+        "algaegreen" : { "growthRate" : 1.25, "yield" : 1, "fluidUse" : -0.5, "seedUse" : -1 }
+    }
 }

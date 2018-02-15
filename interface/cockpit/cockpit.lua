@@ -436,6 +436,12 @@ end
 function disabledState()
   View:reset()
   widget.setVisible("disabledLabel", true)
+  
+  if player.hasCompletedQuest("human_mission1") then
+    widget.setText("disabledLabel", "FTL DRIVE NOT INSTALLED")
+  else
+    widget.setText("disabledLabel", "NAVIGATION OFFLINE")
+  end
 
   local flickerTime = config.getParameter("disabledFlickerTime")
   local flicker = config.getParameter("disabledFlicker")

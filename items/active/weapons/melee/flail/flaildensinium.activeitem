@@ -1,0 +1,139 @@
+{
+  "itemName" : "flaildensinium",
+  "level" : 6,
+  "price" : 600,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Heavy, cumbersome and awesome.
+^cyan;Breaks blocks^reset;
+^yellow;Stuns enemies^reset;",
+  "shortdescription" : "Densinium Striker",
+  "tooltipKind" : "gun2",
+  "category" : "Striker",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","flail","upgradeableWeapon"],
+
+  "inventoryIcon" : "densiniumflail.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "densiniumflail.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : ["/sfx/tools/axe_chop_heavy.ogg"],
+      "fire" : [ "/sfx/melee/whip_swing1.ogg","/sfx/melee/whip_swing2.ogg","/sfx/melee/whip_swing3.ogg" ],
+      "altFire" : [ "/sfx/gun/wormgun_burst.ogg" ]
+    }
+  },
+  "baseOffset" : [0.8, 0.2],
+  "muzzleOffset" : [-0.1, 0],
+
+  "handGrip" : "wrap",
+  "critChance" : 1,
+  "critBonus" : 20,
+  "stunChance" : 10,
+  
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementType" : "electric",
+  "primaryAbilityType" : "tentaclegun",
+  "primaryAbility" : {
+    "chain" : {
+      "arcRadiusRatio" : [8, 8],    
+      "taper" : 0.0, 
+      "segmentImage" : "/items/active/weapons/melee/flail/flailchaindensinium.png?scale=1",
+      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballdensinium.png",
+      "segmentSize" : 0.70
+    },
+
+    "guideProjectiles" : true,
+    "maxLength" : 3,
+
+    "baseDps" : 11,
+    "chainDps" : 8,
+    "fireTime" : 0.6,
+    "maxProjectiles" : 1,
+    "energyUsage" : 20,
+    "inaccuracy" : 0,
+
+    "projectileType" : "invisibletentaclefist",
+    "projectileParameters" : {
+      "controlForce":330,
+      "targetTrackingForce":0,
+      "processing":"?hueshift=15",
+      
+      "knockback" : 30,
+      "piercing":false,
+      "speed" : 80,
+      "bounces":-1, 
+      "timeToLive" : 1, 
+      "damageSourceKind" : "electric",
+      
+      "statusEffects" : [ "stun" ],
+      
+      "periodicActions" : [
+
+      {
+        "time":0.0,
+        "action":"projectile",
+        "type":"standardbullet",
+        "angleAdjust":20,
+        "config":{
+          "power":0,
+          "knockback":0,
+          "damageType":"nodamage",
+          "speed":0,
+          "processing":"?scalenearest=0.2",
+          "timeToLive":0,
+            "actionOnReap":[
+              {
+                "action":"particle",
+                "rotate":false,
+                "specification":{
+                  "type":"textured",
+                  "image":"/items/active/weapons/melee/flail/flailblank.png",
+                  "fullbright":true,
+                  "timeToLive":0,
+                  "destructionTime":0.01,
+                  "size":1.0,
+                  "destructionAction":"shrink",
+                  "position":[-0.85,0.0]
+                }
+              }
+            ]
+          }
+        }      
+      ],
+      "actionOnCollide":[
+      {
+        "time":0.01, 
+        "action":"explosion", 
+        "foregroundRadius":2.5, 
+        "backgroundRadius":0, 
+        "explosiveDamageAmount":7, 
+        "delaySteps":2, 
+        "harvestLevel":1
+      },      
+        {
+          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"], 
+          "time":0.05, 
+          "repeat":false
+        }
+      ],      
+      "actionOnReap" : [
+        {
+          "action":"sound",
+          "options":["/sfx/tools/axe_chop_heavy.ogg", "/sfx/tools/axe_chop_flesh3.ogg", "/sfx/tools/axe_chop_normal.ogg"], 
+          "time":0.05, 
+          "repeat":false
+        }
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

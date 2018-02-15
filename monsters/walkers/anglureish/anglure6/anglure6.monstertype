@@ -31,25 +31,7 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [
-        {
-          "name" : "action-charge",
-          "cooldown" : 3,
-          "parameters" : {
-            "maximumRange" : 12,
-            "windupTime" : 0.6,
-            "windupFrame" : "chargewindup",
-            "aimAtTarget" : false,
-            "aimDirection" : [1, 0.5],
-            "chargeTime" : [0.3, 0.5],
-            "chargeSpeed" : 26,
-            "chargeControlForce" : 1500,
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
-
-            "winddownTime" : 0.5
-          }
-        },      
+      "hostileActions" : [      
         {
           "name" : "action-fire",
           "cooldown" : 5.0,
@@ -67,8 +49,8 @@
             "fireOffset" : [0.25, 0.0],
             "projectileCount" : 1,
             "projectileParameters" : {
-              "speed": 45,
-              "timeToLive" : 0.7
+              "speed": 25,
+              "timeToLive" : 0.25
             },
             "fireState" : "fire",
             "fireSound" : "fire",
@@ -79,6 +61,26 @@
         }
       ],
 
+      "damageTakenActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "maximumRange" : 12,
+            "windupTime" : 0.6,
+            "windupFrame" : "chargewindup",
+            "aimAtTarget" : false,
+            "aimDirection" : [1, 0.5],
+            "chargeTime" : [0.3, 0.5],
+            "chargeSpeed" : 26,
+            "chargeControlForce" : 1500,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.5
+          }
+        }      
+      ],
       "periodicActions" : [],
 
       "approachActions" : [

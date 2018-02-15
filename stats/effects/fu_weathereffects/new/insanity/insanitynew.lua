@@ -28,6 +28,8 @@ function init()
   self.multiply = config.getParameter("multiplyColor")
   self.saturation = 0
   
+  self.madnessTotal = config.getParameter("madnessTotal",0)
+  
   checkEffectValid()
 
   script.setUpdateDelta(5)
@@ -157,11 +159,14 @@ function deactivateVisualEffects()
 end
 
 function messageCheck()
-  self.randyrandy= math.random(7)
-  self.randyrandy2= math.random(7)
+  self.randyrandy= math.random(11)
+  self.randyrandy2= math.random(11)
+  self.randyrandy3= math.random(2)
   self.hungerLevel = hungerLevel()
   self.liquidPercent = mcontroller.liquidPercentage()
 
+
+      
   if (self.liquidPercent) >= 0.5 and self.timerRadioMessage < 1 and not self.usedLiq then
 		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectliquid", 1.0) 
 		   self.timerRadioMessage = 60 
@@ -182,9 +187,16 @@ function messageCheck()
   end    
 
   if not mcontroller.onGround() and self.timerRadioMessage < 1 and not self.usedLeap then
-		   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair", 1.0) 
+	    if (self.randyrandy3) == 0 then 
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair", 1.0) 
+	    elseif (self.randyrandy3) == 1 then 		   
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair2", 1.0)
+	    elseif (self.randyrandy3) == 2 then 		   
+			   world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectair3", 1.0)
+	    end	   
 		   self.timerRadioMessage = 60  
 		   self.usedLeap = 1
+	   
   end 
 
 
@@ -197,8 +209,12 @@ function messageCheck()
     elseif (self.randyrandy) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 1.0)
     elseif (self.randyrandy) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
     elseif (self.randyrandy) == 7 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 1.0)
+    elseif (self.randyrandy) == 8 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo1", 1.0)
+    elseif (self.randyrandy) == 9 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo2", 1.0)
+    elseif (self.randyrandy) == 10 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo3", 1.0)
+    elseif (self.randyrandy) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 1.0)
     end
-    self.timerRadioMessage = 30
+    self.timerRadioMessage = 60
   end
 
   if status.resource("health") <= status.stat("maxHealth") and self.timerRadioMessage < 1 then
@@ -210,8 +226,12 @@ function messageCheck()
     elseif (self.randyrandy2) == 5 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectskin", 1.0)
     elseif (self.randyrandy2) == 6 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectwindy", 1.0) 
     elseif (self.randyrandy2) == 7 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectducts", 1.0)
+    elseif (self.randyrandy2) == 8 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo1", 1.0)
+    elseif (self.randyrandy2) == 9 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo2", 1.0)
+    elseif (self.randyrandy2) == 10 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo3", 1.0)
+    elseif (self.randyrandy2) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 1.0)    
     end   
-    self.timerRadioMessage = 20    
+    self.timerRadioMessage = 60    
   end           
 end
 
@@ -223,6 +243,7 @@ end
 
 
 function update(dt)
+
 checkEffectValid()
 self.biomeTimer = self.biomeTimer - dt
 self.biomeTimer2 = self.biomeTimer2 - dt
@@ -247,13 +268,11 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
   underground = undergroundCheck()
   local lightLevel = getLight()
       if (self.resistTotal) < (self.effectCutoffValue) then
-             --mcontroller.controlModifiers({
-	     --    speedModifier = (-self.resistTotal)-0.2
-             --})
              activateVisualEffects()
       end
 
       if (self.biomeTimer <= 0) and (self.resistTotal) < (self.effectCutoffValue) then
+
 	status.modifyResource("health", -self.damageApply * dt)
 	status.modifyResource("food", -self.damageApply * dt)
 
@@ -292,6 +311,12 @@ self.timerRadioMessage2 = self.timerRadioMessage2 - dt
   
   
       if (self.biomeTimer2) <= 0 and (self.resistTotal) < 1.0 then
+      
+
+
+        effect.addStatModifierGroup({
+          {stat = "darknessImmunity", amount = 1}
+        })
             effect.addStatModifierGroup({
               {stat = "protection", amount = -self.baseDebuff  },
               {stat = "maxEnergy", amount = -(self.baseDebuff*2)  }

@@ -15,10 +15,10 @@
 	"path":"/bughouseHarvest",
 	"value":[[0,{
 			"pool":[
-			{"weight":0.33, "item":"bugshell"},
-			{"weight":0.33, "item":"larva"},
-			{"weight":0.03,"item":"venomsample"},
-			{"weight":0.04,"item":"hardenedcarapace"}
+			{"weight":0.60, "item":"bugshell"},
+			{"weight":0.25, "item":"larva"},
+			{"weight":0.05,"item":"venomsample"},
+			{"weight":0.05,"item":"hardenedcarapace"}
 			],
 			"poolRounds":[[0.7,2],[0.3,3]]}]]
 },
@@ -27,16 +27,16 @@
 	"path":"/fusoulleafHarvest",
 	"value":[[0,{
 			"pool":[
-			{"weight":0.30, "item":[ "essence", 1] },
-			{"weight":0.25, "item":[ "essence", 2] },
-			{"weight":0.13, "item":[ "essence", 3] },
-			{"weight":0.09, "item":[ "essence", 6] },
-			{"weight":0.07, "item":[ "essence", 9] },
-			{"weight":0.06, "item":[ "essence", 12] },
-			{"weight":0.04, "item":[ "essence", 20] },
-			{"weight":0.03, "item":[ "essence", 40] },
-			{"weight":0.02, "item":[ "essence", 50] },
-			{"weight":0.01, "item":[ "essence", 60] },
+			{"weight":0.23, "item":[ "essence", 1] },
+			{"weight":0.15, "item":[ "essence", 2] },
+			{"weight":0.14, "item":[ "essence", 4] },
+			{"weight":0.12, "item":[ "essence", 8] },
+			{"weight":0.11, "item":[ "essence", 16] },
+			{"weight":0.10, "item":[ "essence", 24] },
+			{"weight":0.07, "item":[ "essence", 36] },
+			{"weight":0.05, "item":[ "essence", 48] },
+			{"weight":0.03, "item":[ "essence", 64] },
+			{"weight":0.01, "item":[ "essence", 72] },
 			{"weight":0.1, "item":[ "fusoulleafseed", 1] }
 			],
 			"poolRounds":[[1,1]]}]]
@@ -154,9 +154,12 @@
 {"op":"add",
 	"path":"/isn_meatplant",
 	"value":[[0, {
+      "fill" : [
+        {"item" : [ "alienmeat", 1]}
+        ],	
 	"pool":[ 
 	{"weight" : 0.5, "item" : "isn_meatplant"},
-        {"weight" : 0.3, "item" : "fleshstrand"},
+        {"weight" : 0.2, "item" : "fleshstrand"},
         {"weight" : 0.3, "item" : "alienmeat"}
 	],
 	"poolRounds":[
@@ -251,8 +254,8 @@
 	"value":[[0, {
 	"fill":[ {"item":"aquapod"}],
 	"pool":[
-		{"weight":0.45, "item":"aquapodseed"},
-		{"weight":0.2, "item":"plantfibre"}],
+		{"weight":0.65, "item":"aquapodseed"},
+		{"weight":0.35, "item":"fu_nodule"}],
 	"poolRounds":[[0.5,0],[0.5,1]]}
 	]]
 },
@@ -462,7 +465,7 @@
 	"path":"/lasherHarvest",
 	"value":[[0, {
 	"fill":[{"item":"lasherstem"}],
-	"pool":[ {"weight":0.5, "item":"lasherplantseed"} ],
+	"pool":[ {"weight":0.5, "item":"lasherplantseed"}, {"weight":0.5, "item":"fu_nodule"} ],
 	"poolRounds":[[0.5,0],[0.5,1]]}
 		]]
 }, 
@@ -817,7 +820,7 @@
 }, 
  {"op":"add",
  	"path":"/bellamorte", 
- 	"value":[[0, {"fill":[{"item":"bellamortecore"},{"item":"bellamortecore"},
+ 	"value":[[0, {"fill":[{"item":"bellamortecore"},
  		{"item":"plantfibre"}],
  	"pool":[ {"weight":0.5, "item":"bellamorte"},{"weight":0.5, "item":"bellamortecore"} ],
  	"poolRounds":[[0.5,0],[0.5,1]]}
@@ -834,7 +837,7 @@
 
  {"op":"add",
  	"path":"/crystallite", 
- 	"value":[[0, {"fill":[{"item":"crystalliteshard"}, {"item":"crystalliteshard"},
+ 	"value":[[0, {"fill":[{"item":"crystalliteshard"}, 
  		{"item":"plantfibre"}],
  	"pool":[ {"weight":0.5, "item":"crystallite"},{"weight":0.5, "item":"crystalliteshard"} ],
  	"poolRounds":[[0.5,0],[0.5,1]]}
@@ -842,7 +845,7 @@
 },
  {"op":"add",
  	"path":"/bladetree", 
- 	"value":[[0, {"fill":[{"item":"bladetreeblade"},{"item":"bladetreeblade"},
+ 	"value":[[0, {"fill":[{"item":"bladetreeblade"},
  		{"item":"plantfibre"}],
  	"pool":[ {"weight":0.5, "item":"bladetree"},{"weight":0.5, "item":"bladetreeblade"} ],
  	"poolRounds":[[0.5,0],[0.5,1]]}
@@ -898,7 +901,7 @@
 },
  {"op":"add",
  	"path":"/tinselbush", 
- 	"value":[[0, {"fill":[{"item":"tinselbushsprout"}, {"item":"tinselbushsprout"},
+ 	"value":[[0, {"fill":[{"item":"tinselbushsprout"},
  		{"item":"plantfibre"}],
  	"pool":[ {"weight":0.5, "item":"tinselbush"},{"weight":0.5, "item":"tinselbushsprout"} ],
  	"poolRounds":[[0.5,0],[0.5,1]]}
@@ -934,10 +937,13 @@
 		"path" : "/avikancactusHarvest",
 		"value" : [
 			[0, {
+			  "fill":[
+			    {"item":"kadavancactus"}
+			  ],
+			  
 			  "pool" : [
-				{"weight" : 0.89, "item" : "kadavancactus"},
-				{"weight" : 0.01, "item" : "avikancactusseed"},
-				{"weight" : 0.1, "item" : "plantfibre"}
+				{"weight" : 0.45, "item" : "avikancactusseed"},
+				{"weight" : 0.4, "item" : "plantfibre"}
 			  ],
 			  "poolRounds" : [
 				[0.6, 1],
@@ -950,10 +956,12 @@
 		"path" : "/avikanspiceplantHarvest",
 		"value" : [
 			[0, {
+			  "fill":[
+			    {"item":"avikanspices"}
+			  ],			
 			  "pool" : [
-				{"weight" : 0.89, "item" : "avikanspices"},
-				{"weight" : 0.01, "item" : "avikanspiceplantseed"},
-				{"weight" : 0.1, "item" : "plantfibre"}
+				{"weight" : 0.45, "item" : "avikanspiceplantseed"},
+				{"weight" : 0.4, "item" : "plantfibre"}
 			  ],
 			  "poolRounds" : [
 				[0.6, 1],
@@ -966,10 +974,12 @@
 		"path" : "/bolbohnHarvest",
 		"value" : [
 			[0, {
+			  "fill":[
+			    {"item":"bolbohn"}
+			  ],			
 			  "pool" : [
-				{"weight" : 0.89, "item" : "bolbohn"},
-				{"weight" : 0.5, "item" : "bolbohnseed"},
-				{"weight" : 0.1, "item" : "plantfibre"}
+				{"weight" : 0.45, "item" : "bolbohnseed"},
+				{"weight" : 0.4, "item" : "plantfibre"}				
 			  ],
 			  "poolRounds" : [
 				[0.6, 1],
@@ -982,10 +992,12 @@
 		"path" : "/dunestalkHarvest",
 		"value" : [
 			[0, {
+			  "fill":[
+			    {"item":"dunestalk"}
+			  ],			
 			  "pool" : [
-				{"weight" : 0.89, "item" : "dunestalk"},
-				{"weight" : 0.5, "item" : "dunestalkseed"},
-				{"weight" : 0.1, "item" : "plantfibre"}
+				{"weight" : 0.45, "item" : "dunestalkseed"},
+				{"weight" : 0.4, "item" : "plantfibre"}	
 			  ],
 			  "poolRounds" : [
 				[0.6, 1],

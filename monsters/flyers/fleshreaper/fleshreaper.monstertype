@@ -37,37 +37,11 @@
           "cooldown" : 10,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 12,
-            "minimumRange" : 5,
-            "windupStopForce" : 50,
-            "windupState" : "ranged",
-            "windupTime" : 0.4,
-
-            "projectileType" : "largeshadowcloud",
-            "projectileParameters" : {
-              "speed" : 30
-            },
-            "power" : 12,
-            "fireOffset" : [2, -1],
-            "aimAtTarget" : true,
-            "onGround" : false,
-            "fireState" : "",
-            "fireSound" : "fire",
-
-            "winddownState" : "",
-            "winddownTime" : 0.5
-          }
-        }, 
-       {
-          "name" : "action-fire",
-          "cooldown" : 7.5,
-          "parameters" : {
-            "requireLineOfSight" : true,
             "maximumRange" : 22,
-            "minimumRange" : 3,
+            "minimumRange" : 10,
             "windupStopForce" : 10,
             "windupState" : "melee",
-            "windupTime" : 0.2,
+            "windupTime" : 0.0,
 
             "projectileType" : "multibone",
             "projectileParameters" : {
@@ -78,22 +52,22 @@
             "aimAtTarget" : true,
             "onGround" : false,
             "fireState" : "",
+            "fireDelay" : 0.3,
             "fireSound" : "ranged",
-
             "winddownState" : "",
             "winddownTime" : 0.5
           }
-        },         
+        },       
        {
           "name" : "action-fire",
-          "cooldown" : 5,
+          "cooldown" : 4.5,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 25,
-            "minimumRange" : 5,
+            "maximumRange" : 12,
+            "minimumRange" : 3,
             "windupStopForce" : 3,
             "windupState" : "melee",
-            "windupTime" : 0.2,
+            "windupTime" : 0.0,
 
             "projectileType" : "magnorbatropus2",
             "projectileParameters" : {
@@ -104,8 +78,8 @@
             "aimAtTarget" : true,
             "onGround" : false,
             "fireState" : "",
+            "fireDelay" : 0.3,
             "fireSound" : "swipe",
-
             "winddownState" : "",
             "winddownTime" : 0.5
           }
@@ -114,13 +88,13 @@
           "name" : "action-swoop",
           "cooldown" : 1,
           "parameters" : {
-            "minimumRange" : 4,
-            "maximumRange" : 15,
+            "minimumRange" : 0,
+            "maximumRange" : 20,
             "onGround" : false,
             "windupTime" : 0.5,
 
             "gravityMultiplier" : -0.5,
-            "swoopVelocity" : 55,
+            "swoopVelocity" : 60,
             "collisionCheck" : true,
             "highArc" : false,
             "swoopTime" : 0.5,
@@ -207,36 +181,35 @@
       "concurrentActions" : [],
 
       "concurrentHostileActions" : [
-	{
-	  "name":"action-projectile", 
-	  "cooldown":20.0, 
-	  "parameters":{
-	    "skillName":"glitterBurst", 
-	    "projectileCount":1, 
-	    "projectileType":"invisibleprojectile", 
-	    "projectileParameters":{
-	      "power" : 0,
-	      "statusEffects":[
-	        {"effect":"camouflage99", "duration":10}
-	      ]
-	    }
-	  }
-	}, 
-	{
-	  "name":"action-projectile", 
-	  "cooldown":20.0, 
-	  "parameters":{
-	    "skillName":"glitterBurst", 
-	    "projectileCount":1, 
-	    "projectileType":"invisibleprojectile", 
-	    "projectileParameters":{
-	      "power" : 0,
-	      "statusEffects":[
-	        {"effect":"damagebonus2", "duration":10}
-	      ]
-	    }
-	  }
-	},	
+       {
+          "name" : "action-fire",
+          "cooldown" : 10,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 12,
+            "minimumRange" : 5,
+            "windupStopForce" : 50,
+            "windupState" : "ranged",
+            "windupTime" : 1,
+
+            "projectileType" : "largeshadowcloud",
+            "projectileParameters" : {
+              "speed" : 15
+            },
+            "power" : 12,
+            "fireOffset" : [2, -1],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        }   
+      ],
+      
+      "damageTakenActions" : [	
        {
           "name" : "action-fire",
           "cooldown" : 4,
@@ -274,7 +247,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "insanitynew" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],

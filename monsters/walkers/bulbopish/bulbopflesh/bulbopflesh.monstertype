@@ -1,0 +1,315 @@
+{
+  "type" : "bulbopflesh",
+  "shortdescription" : "Meatbag",
+  "description" : "Ew.",
+
+  "categories" : [ "bulbopflesh" ],
+  "parts" : [ "body" ],
+
+  "animation" : "bulbopflesh.animation",
+
+  "dropPools" : [ { "default" : "meatlumpLoot", "bow" : "meatlumpLoot" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "deathActions" : [
+
+        {
+         "name":"action-projectile",
+         "parameters" : {
+          "projectileType" : "magnorbatropus2",
+          "aimDirection" : [0,0],
+          "aimAtTarget" : false,
+          "projectileParameters" : { "timeToLive" : 0.01,"speed" : 0 }
+         }
+        }
+
+      ],
+      
+      "hostileActions" : [
+
+        {
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 15,
+            "hopSequence" : 2,
+            "windupTime" : 0.05,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.58,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 15,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
+          }
+        }      
+      ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 0.1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 0,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "projectileType" : "magnorbatropus2",
+            "projectileParameters" : {
+              "speed" : 0             
+            },
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : false,
+            "aimDirection" : [0, 1],
+            "inaccuracy" : 0.5,
+            "projectileCount" : 1,
+            "fireState" : "fire",
+            "fireDelay" : 0.0,
+            "fireSound" : "fire",
+            "gravityMultiplier": 0.1,
+
+
+            "winddownState" : "",
+            "winddownTime" : 0.0
+          }
+        }      
+      ],
+      
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "approachTime" : 8.0,
+            "groundDistance" : 4
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 4,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 8,
+            "flyControlForce" : 20,
+            "idleTime" : [1,4],
+            "landState" : "idle"
+          }
+        }
+      ],
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "approachTime" : 8.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 4,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "land-fly",
+          "cooldown" : 7,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [2,4],
+            "landState" : "idle"
+          }
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [40,50],
+            "groundDistance" : 4,
+            "ceilingDistance" : 2,
+            "xVelocity" : 4,
+            "yVelocity" : 4
+          }
+        }
+      ],      
+      "periodicActions" : [
+        {
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 15,
+            "hopSequence" : 2,
+            "windupTime" : 0.05,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.58,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 15,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.6875, -0.775], [-0.4375, -1.025], [0.4375, -1.025], [0.6875, -0.775], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+      "damage" : 11,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.6875, -0.775], [-0.4375, -1.025], [0.4375, -1.025], [0.6875, -0.775], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+
+      "mass" : 0.85,
+      "walkSpeed" : 8,
+      "runSpeed" : 8,
+      "jumpSpeed" : 8,
+      "flySpeed" : 10,
+      "airForce" : 60,
+      "airBuoyancy" : 0.6,
+      "airFriction" : 0.5,
+
+      "liquidForce" : 600,
+      "liquidFriction" : 0.5,
+      "minimumLiquidPercentage" : 0.0,
+      "liquidBuoyancy" : 4,
+      "liquidImpedance" : 0.01      
+    },
+
+    "aggressive" : false,
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 50
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

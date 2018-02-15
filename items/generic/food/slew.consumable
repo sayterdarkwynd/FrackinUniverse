@@ -1,0 +1,27 @@
+{
+  "itemName" : "slew",
+  "rarity" : "common",
+  "price" : 2,
+  "category" : "preparedFood",
+  "inventoryIcon" : "slew.png",
+  "description" : "A food that carnivores just love. Not for sapient ingestion. You'll get sick.",
+  "shortdescription" : "Carnivore Slew",
+  "learnBlueprintsOnPickup" : [ "cattlefeed2","slew","slew2" ],
+  "effects" : [ [
+    {
+        "effect" : "negativehealth5",
+        "duration" : 10
+    },
+    {
+        "effect" : "weakpoison",
+        "duration" : 30
+    }    
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+
+  "maxStack" : 1000,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

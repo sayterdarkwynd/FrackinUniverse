@@ -1,0 +1,27 @@
+{
+  "itemName" : "cattlefeed2",
+  "rarity" : "uncommon",
+  "price" : 4,
+  "category" : "preparedFood",
+  "inventoryIcon" : "cattlefeed2.png",
+  "description" : "Improved feed for cattle. Not for sapient ingestion. You'll get sick.",
+  "learnBlueprintsOnPickup" : [ "cattlefeed3","slew3" ],
+  "shortdescription" : "Improved Feed",
+  "effects" : [ [
+    {
+        "effect" : "negativehealth5",
+        "duration" : 10
+    },
+    {
+        "effect" : "weakpoison",
+        "duration" : 30
+    }    
+  ] ],
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+
+  "maxStack" : 1000,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

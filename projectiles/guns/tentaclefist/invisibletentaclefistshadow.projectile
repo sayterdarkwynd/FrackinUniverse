@@ -1,0 +1,49 @@
+{
+  "projectileName" : "invisibletentaclefistshadow",
+  "image" : "invisibletentaclefist.png",
+  "animationCycle" : 0.1,
+  "animationLoops" : false,
+  "frameNumber" : 1,
+  "flippable" : true,
+  "renderLayer" : "Player+1",
+  "damageKindImage" : "icon.png",
+  "emitters" : [ "shadowsmoke" ],
+  "damageKind" : "shadow",
+  "damagePoly" : [ [-1.0, -1.0], [-1.0, 1.0], [1.0, 1.0], [1.0, -1.0] ],
+
+  "physics" : "laser",
+  "bounces" : -1,
+  "piercing" : true,
+  "timeToLive" : 5,
+
+  "speed" : 25,
+  "power" : 0,
+  "knockback" : 20,
+  "ignoreTerrain" : false,
+  "controlForce" : 20,
+  "targetTrackingForce" : 60,
+  "pickupDistance" : 1.0,
+  "snapDistance" : 4.0,
+  "minVelocity" : 1,
+
+  "scripts" : [
+    "/scripts/projectiles/boomerangprojectile.lua",
+    "tentaclefist.lua"
+  ],
+
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/gnome_impact1.ogg",
+        "/sfx/projectiles/gnome_impact2.ogg",
+        "/sfx/projectiles/gnome_impact3.ogg",
+        "/sfx/projectiles/gnome_impact4.ogg",
+        "/sfx/projectiles/gnome_impact5.ogg",
+        "/sfx/projectiles/gnome_impact6.ogg"
+      ]
+    }
+  ],
+
+  "persistentAudio" : "/sfx/projectiles/tentacle_loop.ogg"
+}

@@ -57,33 +57,34 @@
             "winddownState" : "firewinddown",
             "winddownTime" : 0.3
           }
-        },      
-        {
-          "name" : "action-fire",
-          "cooldown" : 24.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 4,
-            "maxYRange" : 4,
-            "windupTime" : 0.6,
-
-            "aimAtTarget" : true,
-            "projectileType" : "ffpetal",
-            "power" : 7,
-            "aimDirection" : [0.7, 0.4],
-            "fireOffset" : [0.25, 0.0],
-            "projectileCount" : 4,
-            "projectileInterval" : 0.3,
-            "fireState" : "fire",
-            "fireSound" : "fire",
-
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.3
-          }
         }
       ],
+	"damageTakenActions" : [     
+		{
+		  "name" : "action-fire",
+		  "cooldown" : 4.0,
+		  "parameters" : {
+		    "requireLineOfSight" : true,
+		    "maximumRange" : 15,
+		    "minimumRange" : 4,
+		    "maxYRange" : 4,
+		    "windupTime" : 0.6,
 
+		    "aimAtTarget" : true,
+		    "projectileType" : "ffpetal",
+		    "power" : 7,
+		    "aimDirection" : [0.7, 0.4],
+		    "fireOffset" : [0.25, 0.0],
+		    "projectileCount" : 4,
+		    "projectileInterval" : 0.42,
+		    "fireState" : "fire",
+		    "fireSound" : "fire",
+
+		    "winddownState" : "firewinddown",
+		    "winddownTime" : 0.3
+		  }
+		}
+	],
       "periodicActions" : [],
 
       "approachActions" : [

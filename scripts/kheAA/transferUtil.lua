@@ -6,7 +6,7 @@ transferUtil.itemTypes = nil
 
 --[[
 function update(dt)
-	if deltaTime > 1 then
+	if not deltaTime or (deltaTime > 1) then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
 	else
@@ -36,154 +36,6 @@ end
 function transferUtil.initTypes()
 	transferUtil.itemTypes = root.assetJson("/scripts/kheAA/transferconfig.config").categories
 end
-
-
-function transferUtil.routeItems()
-	if storage.disabled then return end
-	if util.tableSize(storage.inContainers) == 0 then return end
-
-	local outputSizeG = util.tableSize(storage.outContainers)
-	if outputSizeG == 0 then return end
-
-	for sourceContainer,sourcePos in pairs(storage.inContainers) do
-		local outputSize = outputSizeG
-		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
-		if ping1 ~= nil then
-			sourceContainer=ping1
-		end
-		for targetContainer,targetPos in pairs(storage.outContainers) do
-			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
-			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
-			if ping2 ~= nil then
-				targetContainer=ping2
-			end
-			if targetAwake == true and sourceAwake == true then
-				local sourceItems=world.containerItems(sourceContainer)
-				if sourceItems then
-					for indexIn,item in pairs(sourceItems) do
-						local pass,mod = transferUtil.checkFilter(item)
-						if pass then
-							if transferUtil.validInputSlot(indexIn) then
-								if storage.roundRobin then
-									-- Maximum amount per container
-									storage.RRPKT = math.floor((item.count / outputSize) % mod)
-									storage.RRPKT = math.floor(item.count / outputSize - storage.RRPKT)
-
-									-- Amount left in the round-robin
-									storage.RRAMT = item.count
-									item.count = storage.RRPKT
-								end
-								item.count = item.count - (item.count % mod)
-								local outputSlotCount = (storage.invertSlots[2] and (world.containerSize(targetContainer) - util.tableSize(storage.outputSlots))) or util.tableSize(storage.outputSlots)
-								if outputSlotCount > 0 then
-									if storage.roundRobinSlots then
-										-- Maximum amount per slot
-										storage.RRSPKT = math.floor((item.count / outputSlotCount) % mod)
-										storage.RRSPKT = math.floor(item.count / outputSlotCount - storage.RRSPKT)
-
-										-- Amount left in the round-robin
-										storage.RRSAMT = item.count
-										item.count = storage.RRSPKT
-									end
-									for indexOut=1,world.containerSize(targetContainer) do
-										if transferUtil.validOutputSlot(indexOut) then
-											local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
-											if leftOverItems then
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-												item = leftOverItems
-											else
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-												if not storage.roundRobinSlots then
-													break
-												end
-											end
-										end
-										if storage.roundRobinSlots then
-											if storage.RRSAMT < storage.RRSPKT then break end
-											storage.RRSAMT = storage.RRSAMT - storage.RRSPKT
-											item.count = storage.RRSPKT
-										end
-										-- Count down on those output slots!
-										outputSlotCount = outputSlotCount - 1
-									end
-									storage.RRSPKT = nil
-									storage.RRSAMT = nil
-								else
-									--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
-									local leftOverItems=world.containerAddItems(targetContainer,item)
-									if leftOverItems then
-										local tempQuantity=item.count-leftOverItems.count
-										if tempQuantity > 0 then
-											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
-											--break
-										end
-									else
-										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-									end
-								end
-								if storage.roundRobin then
-									storage.RRAMT = storage.RRAMT - storage.RRPKT
-									item.count = storage.RRAMT
-									storage.RRAMT = nil
-									storage.RRPKT = nil
-								end
-							end
-						end
-					end
-				end
-			else
-				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
-			end
-			if storage.roundRobin then
-				-- Count down on those outputs!
-				outputSize = outputSize - 1
-			end
-		end
-	end
-end
-
-
-
-function transferUtil.routeMoney()
-	if storage.disabled then return end
-	if util.tableSize(storage.inContainers) == 0 then return end
-	if util.tableSize(storage.outContainers) == 0 then return end
-
-	for sourceContainer,sourcePos in pairs(storage.inContainers) do
-		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
-		if ping1 ~= nil then
-			sourceContainer=ping1
-		end
-		for targetContainer,targetPos in pairs(storage.outContainers) do
-			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
-			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
-			if ping2 ~= nil then
-				targetContainer=ping2
-			end
-			if targetAwake == true and sourceAwake == true then
-				local sourceItems=world.containerItems(sourceContainer)
-				for indexIn,item in pairs(sourceItems or {}) do
-					--local conf = root.itemConfig(item.name)
-					--sb.logInfo("%s",conf)
-					--if conf.config.currency then
-					if transferUtil.getType(item) == "currency" then
-						local leftOverItems = world.containerAddItems(targetContainer,item)
-						if leftOverItems then
-							world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-							item=leftOverItems
-						else
-							world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-							break
-						end
-					end
-				end
-			else
-				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
-			end
-		end
-	end
-end
-
 
 function transferUtil.containerAwake(targetContainer,targetPos)
 	if type(targetPos) ~= "table" then
@@ -523,10 +375,14 @@ end
 
 function transferUtil.loadSelfContainer()
 	storage.containerId=entity.id()
-	storage.inContainers={}
-	storage.outContainers={}
+	transferUtil.unloadSelfContainer()
 	storage.inContainers[storage.containerId]=storage.position
 	storage.outContainers[storage.containerId]=storage.position
+end
+
+function transferUtil.unloadSelfContainer()
+	storage.inContainers={}
+	storage.outContainers={}
 end
 
 function transferUtil.getAbsPos(position,pos)

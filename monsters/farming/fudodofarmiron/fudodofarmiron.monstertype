@@ -1,0 +1,105 @@
+{
+  "type" : "fudodofarmiron",
+  "shortdescription" : "Ironbeak",
+  "description" : "A handy farm animal, since they digest their food into iron pellets. Carnivore.",
+  "categories" : [ "fudodofarmiron" ],
+  "parts" : [ "body", "spawn" ],
+
+  "animation" : "fudodofarmiron.animation",
+  "reversed" : false,
+
+  "dropPools" : [ { "default" : "huntingflying" } ],
+  
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+    
+  "eggType" : "ironbeakegg",
+  "mateTime" : 65,    
+  "diet" : "carnivore",
+  "hungerTime" : 22,
+  
+    "persistent" : true,
+
+    "behavior" : "farmable",
+
+    "harvestTime" : [100, 300],
+    "harvestSpawnOffset" : [0, 0],
+    "harvestPool" : "dodoHarvestIron",
+
+    "metaBoundBox" : [-4.0, -4.0, 4.0, 4.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.25, 0.75], [0.75, 0.25], [0.75, -0.25], [0.25, -0.75], [-0.25, -0.75], [-0.75, -0.25], [-0.75, 0.25], [-0.25, 0.75] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+    "deathParticles" : "deathPoof",
+
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 250
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 4.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [4, 0],
+    "feetOffset" : [0, -6],
+    "capturable" : true,
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

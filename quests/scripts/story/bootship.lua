@@ -1,6 +1,7 @@
 require "/scripts/util.lua"
 require "/quests/scripts/questutil.lua"
 require "/quests/scripts/portraits.lua"
+require "/scripts/messageutil.lua"
 
 function init()
   storage.complete = storage.complete or false
@@ -32,8 +33,10 @@ end
 
 function update(dt)
   self.state:update(dt)
-
+  
   self.interactTimer = math.max(self.interactTimer - dt, 0)
+  
+  promises:update()
 end
 
 function wakeSail()
@@ -66,13 +69,17 @@ function wakeSail()
 
     local shipUpgrades = player.shipUpgrades()
     if shipUpgrades.shipLevel > 0 or player.hasQuest("fu_byos") then
-      quest.complete()
+        --promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
+        --  quest.complete()
+	--  end, function()
+	--end)   
+	  quest.complete()
+	  world.sendEntityMessage(self.techstationUid, "activateShip")
     end
     coroutine.yield()
   end
 end
 
 function questComplete()
-  world.sendEntityMessage(self.techstationUid, "activateShip")
   questutil.questCompleteActions()
 end

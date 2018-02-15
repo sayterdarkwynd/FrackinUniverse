@@ -1,0 +1,66 @@
+{
+  "objectName" : "bughouse",
+  "colonyTags" : ["outdoor","light"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 110,
+  "description" : "Attracts insects! All sorts of creepy crawlies can live in here.",
+  "shortdescription" : "Bug House",
+  "race" : "generic",
+
+  "inventoryIcon" : "bughouseicon.png",
+  "orientations" : [
+    {
+      "image" : "bughouse.png:1",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "bughouse.png:1",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "bughouse.animation",
+  "animationParts" : {
+    "light" : "bughouselit.png",
+    "post" : "bughouse.png"
+  },
+
+  "scripts" : [ "/objects/scripts/harvestable.lua" ],
+  "scriptDelta" : 60,
+
+  "activeTimeRange" : [0.7, 1.0],
+  "activeAnimationStates" : {
+    "light" : "on"
+  },
+  "inactiveAnimationStates" : {
+    "light" : "off"
+  },
+
+  "itemDropOffset" : [0.5, 2.5],
+  "stages" : [
+    {
+      "duration" : [105, 125]
+    },
+    {
+      "duration" : [105, 125]
+    },
+    {
+      "harvestPool" : "bughouseHarvest"
+    }
+  ]
+}

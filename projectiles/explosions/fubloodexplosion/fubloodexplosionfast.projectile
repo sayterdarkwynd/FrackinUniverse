@@ -1,0 +1,33 @@
+{
+  "projectileName" : "fubloodexplosionfast",
+  "image" : "fubloodexplosion.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 9,
+  "speed" : 0,
+  "damagePoly" : [ [-3,3], [-3,-3], [2,-2], [2,3] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "universalDamage" : true,
+  "damageKind" : "default",
+  "actionOnReap" : [
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "bloodstonegrass",
+      "radius" : 2
+    },  
+    {
+      "action" : "sound",
+      "options" : [ 
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg",
+        "/sfx/projectiles/bonebounce1.ogg",
+        "/sfx/projectiles/bonebounce3.ogg",
+        "/sfx/projectiles/bonebounce5.ogg"      
+      ]
+    }
+  ],
+  "emmiters" : [ "blood" ],
+  "statusEffects" : [ "insanity" ]
+}
