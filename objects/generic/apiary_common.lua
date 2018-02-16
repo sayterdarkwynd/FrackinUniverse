@@ -40,6 +40,12 @@ function init()
 		self.droneModifier = 0		--
 		self.mutationIncrease = 0   --
                 self.honeyAmount = 0 --
+                
+                -- new FU properties for apiaries
+                self.miteReduction = config.getParameter("miteReduction",0)
+                self.mitePenalty = config.getParameter("mitePenalty",0)
+                self.mutationMultiplier = config.getParameter("mutationMultiplier",0)
+                
 		self.config = root.assetJson('/objects/bees/apiaries.config')	-- common apiaries configuration
 		self.functions = { chooseMinerHoney = chooseMinerHoney, chooseMinerOffspring = chooseMinerOffspring }
 
@@ -405,19 +411,7 @@ function deciding()
 end
 
 
-function miteInfection() 
-    local vmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})     ---see if the container has room for more mites
-    
-    
-    -- first we calculate how many mites are infesting the apiary
-    self.totalMites = 0 
-    for _,item in pairs(world.containerItems(entity.id())) do
-	if item.name=="vmite" then 
-	  self.totalMites= self.totalMites + item.count
-	end
-    end  
-
-
+function checkAntimiteFrames ()
     -- then we check how many mite-killing frames are present
     self.totalFrames = 0  
     for _,item in pairs(world.containerItems(entity.id())) do
@@ -427,15 +421,29 @@ function miteInfection()
 	item.name == "uraniumframe" or
 	item.name == "plutoniumframe" then 
 	  self.totalFrames= self.totalFrames + item.count
-	  
 	end
-    end      
+    end  
+end
+
+function miteInfection() 
+    local vmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})   --see if the container has room for more mites
+    local fmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "firemite", count = 1, data={}})
+
+    checkAntimiteFrames () 
     
+    -- first we calculate how many mites are infesting the apiary
+    self.totalMites = 0 
+    for _,item in pairs(world.containerItems(entity.id())) do
+	if item.name=="vmite" then 
+	  self.totalMites= (self.totalMites + item.count) - self.miteReduction + self.mitePenalty
+	end	
+    end  
+
     -- mite settings get applied
     local baseMiteChance = 0.4 + math.random(2) + (self.totalMites/10) 
     if baseMiteChance > 100 then baseMiteChance = 100 end
 
-    local baseMiteReproduce = 1 + (self.totalMites /40)
+    local baseMiteReproduce = (1 + (self.totalMites /40))
     local baseMiteKill = 2 * (self.totalFrames /24)
     if baseMiteKill < 1 then baseMiteKill = 1 end
     
@@ -444,15 +452,11 @@ function miteInfection()
     local baseLargeDiceRoll = math.random(1000)
     
      --Infection stops spreading if the frame is an anti-mite frame present. It this is the case, we also roll to see if we get a bugshell when we kill the mite. 
-     -- Otherwise, we add more mites, and reduce beePower. If there are more than 2 mites, the breeding rate increases rapidly, exponentially the longer things are left alone
     if self.antimite then  
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
-        
-        --chance to spawn bugshell when killing mites
-        if baseSmallDiceRoll < 10 and self.totalMites > 12 then 
+        if baseSmallDiceRoll < 10 and self.totalMites > 12 then   --chance to spawn bugshell when killing mites
           world.containerAddItems(entity.id(), { name="bugshell", count = baseMiteKill/2, data={}})
         end
-        
     elseif (self.totalMites >= 120) and (baseDiceRoll < baseMiteChance) then
         animator.playSound("addMite")         
     elseif (self.totalMites >= 10) and (baseSmallDiceRoll < baseMiteChance *4) and (vmiteFitCheck > 0) then
@@ -685,7 +689,9 @@ function breedingBees()
 			return true
 		end
 	end
-
+	
+        miteInfection() -- additional chance for infection when breeding
+        
 	beeActiveWhen = "unknown"
 	self.beePower = -1
 	return false

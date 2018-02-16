@@ -1,0 +1,42 @@
+{
+  "objectName" : "flagthelusian",
+  "colonyTags" : ["kirhos"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 70,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+
+  "description" : "A flag used to identify radical Thelusian movements. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Thelusian Flag",
+  "race" : "kirhos",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "flagthelusianicon.png",
+  "orientations" : [
+    {
+      "image" : "flagthelusian.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "flagthelusian.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

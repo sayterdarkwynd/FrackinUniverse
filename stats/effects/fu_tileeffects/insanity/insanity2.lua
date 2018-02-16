@@ -54,9 +54,10 @@ function update(dt)
   	if ( status.stat("shadowResistance",0)  >= 0.80 ) and ( status.stat("cosmicResistance",0)  >= 0.60 ) then
 	  effect.expire() 
 	end  
+	
 	if world.entityType(entity.id()) ~= "player" then
 		status.removeEphemeralEffect("insanityblurstat")
-		status.addEphemeralEffect( "insanityblurstat")	
+		status.addEphemeralEffect( "insanityblurstat")		
 	end
   local erchiusCount = 0
   erchiusCount = erchiusCount + (self.maxHealth or 0)

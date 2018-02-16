@@ -1,0 +1,56 @@
+{
+  "objectName" : "kirhosshipdoor",
+  "colonyTags" : ["apex","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 625,
+  "description" : "A door. Possibly suitable for a spaceship.",
+  "shortdescription" : "Kirhos Ship Door",
+  "race" : "kirhos",
+
+  "apexDescription" : "We use these doors on our ships.",
+  "avianDescription" : "A door.",
+  "floranDescription" : "Door!",
+  "glitchDescription" : "Statement. A door.",
+  "humanDescription" : "Cool door.",
+  "hylotlDescription" : "A basic door.",
+  "novakidDescription" : "A door.",
+  "kirhosDescription" : "Radicool!  A state-of-the-art dual-sliding door!",
+
+  "inventoryIcon" : "kirhosshipdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "kirhosshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+	  "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "kirhosshipdoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}
