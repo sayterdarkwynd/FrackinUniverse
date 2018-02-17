@@ -49,10 +49,20 @@ function init()
 		self.config = root.assetJson('/objects/bees/apiaries.config')	-- common apiaries configuration
 		self.functions = { chooseMinerHoney = chooseMinerHoney, chooseMinerOffspring = chooseMinerOffspring }
 
+		initAntimiteFrames()
 		reset()
 		return true
 	end
 	return false
+end
+
+function initAntimiteFrames()
+	self.antimiteFrames = {}
+	for frame, mods in pairs(self.config.modifiers) do
+		if mods.antimite then
+			self.antimiteFrames[frame] = true
+		end
+	end
 end
 
 
@@ -412,32 +422,32 @@ end
 
 
 function checkAntimiteFrames ()
-    -- then we check how many mite-killing frames are present
-    self.totalFrames = 0  
-    for _,item in pairs(world.containerItems(entity.id())) do
-	if item.name == "amite" or
-	item.name == "magmaframe" or
-	item.name == "godlyframe" or
-	item.name == "uraniumframe" or
-	item.name == "plutoniumframe" then 
-	  self.totalFrames= self.totalFrames + item.count
+	-- then we check how many mite-killing frames are present
+	self.totalFrames = 0
+	for _,item in pairs(world.containerItems(entity.id())) do
+		if self.antimiteFrames[item.name] then
+			self.totalFrames= self.totalFrames + item.count
+		end
 	end
-    end  
+end
+
+function updateTotalMites()
+    self.totalMites = 0
+    contents = world.containerItems(entity.id())
+    if not contents then return end
+
+    for _,item in pairs(contents) do
+        if item.name=="vmite" then
+            self.totalMites= (self.totalMites + item.count) - self.miteReduction + self.mitePenalty
+        end
+    end
 end
 
 function miteInfection() 
     local vmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})   --see if the container has room for more mites
     local fmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "firemite", count = 1, data={}})
 
-    checkAntimiteFrames () 
-    
-    -- first we calculate how many mites are infesting the apiary
-    self.totalMites = 0 
-    for _,item in pairs(world.containerItems(entity.id())) do
-	if item.name=="vmite" then 
-	  self.totalMites= (self.totalMites + item.count) - self.miteReduction + self.mitePenalty
-	end	
-    end  
+    checkAntimiteFrames()
 
     -- mite settings get applied
     local baseMiteChance = 0.4 + math.random(2) + (self.totalMites/10) 
@@ -460,13 +470,15 @@ function miteInfection()
     elseif (self.totalMites >= 120) and (baseDiceRoll < baseMiteChance) then
         animator.playSound("addMite")         
     elseif (self.totalMites >= 10) and (baseSmallDiceRoll < baseMiteChance *4) and (vmiteFitCheck > 0) then
+        transferUtil.unloadSelfContainer()
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
+        self.totalMites = self.totalMites + baseMiteReproduce
         self.beePower = self.beePower - (1 + self.totalMites/20)
-		transferUtil.unloadSelfContainer()
     elseif (baseDiceRoll < baseMiteChance) and (vmiteFitCheck > 0) then
+        transferUtil.unloadSelfContainer()
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
+        self.totalMites = self.totalMites + baseMiteReproduce
         self.beePower = self.beePower - (1 + self.totalMites/20)
-		transferUtil.unloadSelfContainer()
     end
 end
 
@@ -498,6 +510,7 @@ end
 
 
 function update(dt)
+	updateTotalMites()
 
     if not deltaTime or (deltaTime > 1) then
         deltaTime=0
