@@ -159,8 +159,8 @@ function deactivateVisualEffects()
 end
 
 function messageCheck()
-  self.randyrandy= math.random(11)
-  self.randyrandy2= math.random(11)
+  self.randyrandy= math.random(14)
+  self.randyrandy2= math.random(14)
   self.randyrandy3= math.random(2)
   self.hungerLevel = hungerLevel()
   self.liquidPercent = mcontroller.liquidPercentage()
@@ -213,6 +213,10 @@ function messageCheck()
     elseif (self.randyrandy) == 9 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo2", 1.0)
     elseif (self.randyrandy) == 10 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo3", 1.0)
     elseif (self.randyrandy) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 1.0)
+    
+    elseif (self.randyrandy) == 12 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "fu_kevin_insanity6", 1.0)
+    elseif (self.randyrandy) == 13 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "fu_kevin_insanity2", 1.0)
+    elseif (self.randyrandy) == 14 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "fu_kevin_insanity4", 1.0)
     end
     self.timerRadioMessage = 60
   end
@@ -229,7 +233,11 @@ function messageCheck()
     elseif (self.randyrandy2) == 8 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo1", 1.0)
     elseif (self.randyrandy2) == 9 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo2", 1.0)
     elseif (self.randyrandy2) == 10 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo3", 1.0)
-    elseif (self.randyrandy2) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 1.0)    
+    elseif (self.randyrandy2) == 11 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffectweirdo4", 1.0) 
+    
+    elseif (self.randyrandy2) == 12 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "fu_kevin_insanity3", 1.0)
+    elseif (self.randyrandy2) == 13 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "fu_kevin_insanity5", 1.0)
+    elseif (self.randyrandy2) == 14 then world.sendEntityMessage(entity.id(), "queueRadioMessage", "fu_kevin_insanity1", 1.0)    
     end   
     self.timerRadioMessage = 60    
   end           

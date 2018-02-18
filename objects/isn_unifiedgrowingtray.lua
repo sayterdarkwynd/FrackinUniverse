@@ -59,14 +59,19 @@ function update(dt)
 	-- Check tray inputs/update description
 	checkTrayInputs()
 
-	if self.requiredPower then power.update(dt) end
-
 	storage.activeConsumption = false
 
 	--Try to start growing if data indicates we aren't.
 	if not storage.currentseed then
-		if not doSeedIntake() then return end
+		if not doSeedIntake() then
+			-- Player feedback, when not growing, turn off the lights.
+			if self.requiredPower then animator.setAnimationState("powlight", "off") end
+			return
+		end
 	end
+	
+	--Only consume power when ACTUALLY growing.
+	if self.requiredPower then power.update(dt) end
 
 	local growthmod = consumePower(dt) and 1 or self.unpoweredGrowthRate
 	growPlant(growthmod, dt)
