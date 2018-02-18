@@ -38,34 +38,47 @@ timer = 0
 vfx = {}
 
 funcs = {
-	bees = function(params)
-		if self.random == 1 then
-		  --bees
-		  world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
-		  -- Can return a table that can override the title, the subtitle, the image displayed after opening a box, the text color, and the flash color
-		  return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
-		elseif self.random == 2 then
-		  -- poptops
-		  world.spawnProjectile("fu_poptopsack", world.entityPosition(player.id()))
-		  return {title = "Poptops!", subtitle = "Adorable Rabid Poptops!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFCCAA", flashColor = "#FFCCAA" }
-		elseif self.random == 3 then
-		  -- chicks
-		  world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
-		  return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }
-		elseif self.random == 4 then
-		  -- wolves
-		  world.spawnProjectile("fuwolfcase2", world.entityPosition(player.id()))
-		  return {title = "Wolves!", subtitle = "Rabid Angry Carnivores!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }		
+	--	Functions here can return a table to override some parameters. Example table:
+	--	{title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
+	--	'itemLevelMod' field can be used to modify item level
+	spawnMonsters = function(params)
+		local r = math.random(5)
+		if r == 1 then
+			--bees
+			world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
+			return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
+			
+		elseif r == 2 then
+			-- poptops
+			world.spawnProjectile("fu_poptopsack", world.entityPosition(player.id()))
+			return {title = "Poptops!", subtitle = "Adorable Rabid Poptops!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFCCAA", flashColor = "#FFCCAA" }
+		
+		elseif r == 3 then
+			-- chicks
+			world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
+			return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }
+		
+		
+		elseif r == 4 then
+			-- wolves
+			world.spawnProjectile("fuwolfcase2", world.entityPosition(player.id()))
+			return {title = "Wolves!", subtitle = "Rabid Angry Carnivores!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }		
+		
+		
 		else
-		  -- chicks
-		  world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
-		  return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }		
+			-- chicks
+			world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
+			return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }		
 		end
-        end	
+	end,
+	
+	levelMod = function(params)
+		return {itemLevelMod = pramas.itemLevelMod}
+	end
 }
 
 function init()
-        self.random = math.random(10)
+	self.random = math.random(10)
 	canvas = widget.bindCanvas("canvas")
 	data = root.assetJson("/interface/scripted/fu_lootbox/lootboxData.config")
 	vfx = data.vfx
@@ -341,15 +354,33 @@ end
 function doneOpening()
 	isOpening = false
 	
-	local lootbox = player.consumeItem({name = "fu_lootbox", count = 1}, true)
-	if lootbox then
+	-- local lootbox = player.consumeItem({name = "fu_lootbox"}, true)
+	local hasLootbox = false
+	local itemLevel = 0
+	
+	for i = 0, 10 do
+		if player.consumeItem({name = "fu_lootbox", parameters = {level = i}}, true, true) then
+			hasLootbox = true
+			itemLevel = i
+			break
+		end
+	end
+	
+	if not hasLootbox then
+		if player.consumeItem({name = "fu_lootbox"}, true) then
+			hasLootbox = true
+			itemLevel = roundNum(world.threatLevel())
+		end
+	end
+	
+	if hasLootbox then
 		local rolled = rollDice(data.loot.dice, data.loot.diceSides)
 		local requirement = 0
 		local subtitle = nil
 		local title = nil
 		local item = nil
-		local flashColor = "#FFFFFF"
-		local textColor = "#FFFFFF"
+		local flashColor = nil
+		local textColor = nil
 		
 		lootPool = data.boxes[vfx.boxes.instances[1].index].pool
 		if not lootPool or not data.loot.pools[lootPool] then
@@ -387,77 +418,9 @@ function doneOpening()
 		
 		lootData = data.loot.pools[lootPool][rarity][math.random(1, #data.loot.pools[lootPool][rarity])]
 		
-		if (lootData.treasurePool and root.isTreasurePool(lootData.treasurePool)) or lootData.item then
-			local cfg = nil
-			local item = nil
-			
-			if lootData.treasurePool and root.isTreasurePool(lootData.treasurePool) then
-				local treasure = root.createTreasure(lootData.treasurePool, lootData.level or 1)
-				cfg = root.itemConfig(treasure[1].name)
-				item = root.createItem(treasure[1].name, lootData.level, lootData.seed)
-				item.shortdescription = cfg.config.shortdescription
-				item.count = treasure[1].count or 1
-			else
-				cfg = root.itemConfig(lootData.item)
-				item = root.createItem(lootData.item, lootData.level, lootData.seed)
-				item.shortdescription = cfg.config.shortdescription
-				item.count = lootData.amount or 1
-			end
-			
-			if item then
-				if not item.name then
-					item.name = cfg.config.itemName
-				end
-				
-				world.spawnItem(item, world.entityPosition(player.id()))
-				
-				if not title then
-					title = item.shortdescription
-					if title then
-						if item.count and item.count > 1 then
-							title = title.." x"..item.count
-						end
-						
-						if lootData.level then
-							title = "Tier "..lootData.level.." "..title
-						end
-					else
-						title = item.name
-						if title then
-							if item.count and item.count > 1 then
-								title = title.." x"..item.count
-							end
-							
-							if lootData.level then
-								title = "Tier "..lootData.level.." "..title
-							end
-						else
-							title = "No title. Report this."
-						end
-					end
-				end
-				
-				if not subtitle then
-					subtitle = data.loot.poolData[rarity].name
-				end
-				
-				vfx.flash.targetColor = data.loot.poolData[rarity].color
-				textColor = data.loot.poolData[rarity].color
-				
-				widget.setPosition("itemBG", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
-				widget.setPosition("item", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
-				widget.setItemSlotItem("item", item)
-				widget.setVisible("itemBG", true)
-				widget.setVisible("item", true)
-			end
-		end
-		
-		local funcData = nil
 		if lootData.func then
-			funcData = funcs[lootData.func](lootData.params)
-		end
-		
-		if funcData then
+			local funcData = funcs[lootData.func](lootData.params)
+			
 			if funcData.title then
 				title = funcData.title end
 			
@@ -481,9 +444,89 @@ function doneOpening()
 			end
 			
 			if funcData.flashColor then
-				vfx.flash.targetColor = funcData.textColor
+				flashColor = funcData.flashColor
+			end
+			
+			if funcData.itemLevelMod then
+				itemLevel = math.max(itemLevel + funcData.itemLevelMod, 0)
 			end
 		end
+		
+		if (lootData.treasurePool and root.isTreasurePool(lootData.treasurePool)) or lootData.item then
+			local cfg = nil
+			local item = nil
+			
+			if lootData.treasurePool and root.isTreasurePool(lootData.treasurePool) then
+				local treasure = root.createTreasure(lootData.treasurePool, lootData.level or itemLevel or 1)
+				cfg = root.itemConfig(treasure[1].name)
+				item = root.createItem(treasure[1].name, lootData.level or itemLevel, lootData.seed)
+				item.shortdescription = cfg.config.shortdescription
+				item.count = treasure[1].count or 1
+			else
+				cfg = root.itemConfig(lootData.item)
+				item = root.createItem(lootData.item, lootData.level or itemLevel, lootData.seed)
+				item.shortdescription = cfg.config.shortdescription
+				item.count = lootData.amount or 1
+			end
+			
+			if item then
+				if not item.name then
+					item.name = cfg.config.itemName
+				end
+				
+				world.spawnItem(item, world.entityPosition(player.id()))
+				
+				if not title then
+					title = item.shortdescription
+					if title then
+						if item.count and item.count > 1 then
+							title = title.." x"..item.count
+						end
+						
+						if root.itemHasTag(item.name, "weapon") then
+							if lootData.level or itemLevel then
+								title = "Tier "..(lootData.level or itemLevel).." "..title
+							end
+						end
+					else
+						title = item.name
+						if title then
+							if item.count and item.count > 1 then
+								title = title.." x"..item.count
+							end
+							
+							if root.itemHasTag(item.name, "weapon") then
+								if lootData.level or itemLevel then
+									title = "Tier "..(lootData.level or itemLevel).." "..title
+								end
+							end
+						else
+							title = "No title. Report this."
+						end
+					end
+				end
+				
+				if not subtitle then
+					subtitle = data.loot.poolData[rarity].name
+				end
+				
+				if not flashColor then
+					flashColor = data.loot.poolData[rarity].color
+				end
+				
+				if not textColor then
+					textColor = data.loot.poolData[rarity].color
+				end
+				
+				widget.setPosition("itemBG", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
+				widget.setPosition("item", {vfx.confetti.striveTo[1]-9+6, vfx.confetti.striveTo[2]-9+6})
+				widget.setItemSlotItem("item", item)
+				widget.setVisible("itemBG", true)
+				widget.setVisible("item", true)
+			end
+		end
+		
+		vfx.flash.targetColor = flashColor or "#FFFFFF"
 		
 		vfx.title.text = title or "ERROR - Report what you got"
 		vfx.title.color = textColor or "#FFFFFF"
