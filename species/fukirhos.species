@@ -4,15 +4,16 @@
     "charCreationTooltip" : {
     "title" : "Kirhos",
     "subTitle" : "Ne",
-    "description" : "An all-female hybrid race, this rodentlike species exhausted their homeworld's natural resources. Most now live in corporate-run city-buildings called arcologies."
+    "description" : "This rodentlike species exhausted their homeworld's natural resources. Most now live in corporate-run city-buildings called arcologies."
     },
 
-  "nameGen" : [ "/species/thelusiannamegen.config:names", "/species/thelusiannamegen.config:names" ],
+  "nameGen" : [ "/species/kirhosnamegen.config:names", "/species/kirhosnamegen.config:names" ],
   "ouchNoises" : [ "/sfx/humanoid/humanhurt_male1.ogg", "/sfx/humanoid/humanhurt_female1.ogg" ],
-  "charGenTextLabels" : [ "SKIN COLOR", "HAIR STYLE", "SHIRT", "PANTS", "EAR SHAPE", "HAIR COLOR", "SHIRT COLOR", "PANTS COLOR", "KIRHOS", "PERSONALITY" ],
+  "charGenTextLabels" : [ "Skin Color", "Hairstyle", "Shirt", "Pants", "Ears", "Hair Color", "Shirt Color", "Pants Color", "KIRHOS", "Personality" ],
   "skull" : "/humanoid/kirhos/dead.png",
   "defaultBlueprints" : {
     "tier1" : [
+      { "item" : "flagkirhos" },
       { "item" : "humantier1hammer" },
       { "item" : "humantier1shortsword" },
       { "item" : "humantier1broadsword" },
@@ -33,7 +34,7 @@
 
       { "item" : "humanstoragelocker" },
 
-      { "item" : "flaghuman" },
+      
 
       // { "item" : "humantier2head" },
       // { "item" : "humantier2chest" },
@@ -104,18 +105,20 @@
       { "item" : "humantier10dagger" }
     ]
   },
-  "altOptionAsUndyColor" : true,
+  
   "headOptionAsHairColor" : true,
-  "altOptionAsHairColor" : true,
+  "altOptionAsFacialMask" : true,
   "hairColorAsBodySubColor" : true,
+  "bodyColorAsFacialMaskSubColor" : true,
+  
   "genders" : [
     {
       "name" : "male",
-      "image" : "/interface/title/male.png",
-      "characterImage" : "/interface/title/humanmale.png",
+      "image" : "/interface/title/kmatrix.png",
+      "characterImage" : "/interface/title/kirhosmale.png",
       "hair" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" ],
-      "shirt" : [ "workoutchest", "coolchest", "conceptchest", "sweatervestchest" ],
-      "pants" : [ "workoutlegs", "coollegs", "conceptlegs", "sweatervestlegs" ],
+      "shirt" : [ "fumantizimerchchest", "zaibatsuchest", "glitterfolkchest", "gutterpunkchest" ],
+      "pants" : [ "fumantizimerchlegs", "zaibatsulegs", "glitterfolklegs", "gutterpunklegs" ],
       "facialHairGroup" : "marking",
       "facialHair" : [ "1" ],
       "facialMaskGroup" : "ears",
@@ -126,11 +129,11 @@
     },
     {
       "name" : "female",
-      "image" : "/interface/title/female.png",
-      "characterImage" : "/interface/title/humanfemale.png",
+      "image" : "/interface/title/kring.png",
+      "characterImage" : "/interface/title/kirhosfemale.png",
       "hair" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" ],
-      "shirt" : [ "workoutchest", "coolchest", "conceptchest", "sweatervestchest" ],
-      "pants" : [ "workoutlegs", "coollegs", "conceptlegs", "sweatervestlegs" ],
+      "shirt" : [ "fumantizimerchchest", "zaibatsuchest", "glitterfolkchest", "gutterpunkchest" ],
+      "pants" : [ "fumantizimerchlegs", "zaibatsulegs", "glitterfolklegs", "gutterpunklegs" ],
       "facialHairGroup" : "marking",
       "facialHair" : [ "1" ],
       "facialMaskGroup" : "ears",

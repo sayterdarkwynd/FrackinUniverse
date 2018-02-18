@@ -4,12 +4,12 @@
     "charCreationTooltip" : {
       "title" : "Thelusian",
       "subTitle" : "Warrior race from the Kortakk nebula",
-      "description" : "Ruthless and cunning."
+      "description" : "Ruthless and dangerous warriors who dedicate essentially their entire existince to combat, protection or other grunt-work. Incredibly unintelligent."
     },
 
   "nameGen" : [ "/species/thelusiannamegen.config:names", "/species/thelusiannamegen.config:names" ],
   "ouchNoises" : [ "/sfx/humanoid/humanhurt_male1.ogg", "/sfx/humanoid/humanhurt_female1.ogg" ],
-  "charGenTextLabels" : [ "SKIN COLOR", "HAIR STYLE", "SHIRT", "PANTS", "UNDY COLOR", "HAIR COLOR", "", "Brand","SHIRT COLOR", "PANTS COLOR", "HUMAN", "PERSONALITY" ],
+  "charGenTextLabels" : [ "Skin colour", "Appearance", "Shirt", "Legwear", "Marking colour", "Carapace colour", "Shirt colour", "Legwear colour", "THELUSIAN", "Personality" ],
   "skull" : "/humanoid/human/dead.png",
   "defaultBlueprints" : {
     "tier1" : [
@@ -33,7 +33,7 @@
 
       { "item" : "humanstoragelocker" },
 
-      { "item" : "flaghuman" },
+      { "item" : "flagthelusian" },
 
       // { "item" : "humantier2head" },
       // { "item" : "humantier2chest" },
@@ -108,28 +108,29 @@
   "headOptionAsHairColor" : true,
   "altOptionAsHairColor" : true,
   "hairColorAsBodySubColor" : true,
+  
   "genders" : [
     {
       "name" : "male",
       "image" : "/interface/title/male.png",
-      "characterImage" : "/interface/title/humanmale.png",
-      "hair" : [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" ], //  "hair2cut" "hair9cut"
-      "shirt" : [ "workoutchest", "coolchest", "conceptchest", "sweatervestchest" ],
-      "pants" : [ "workoutlegs", "coollegs", "conceptlegs", "sweatervestlegs" ],
+      "characterImage" : "/interface/title/thelusianmale.png",
+      "hair" : [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ], //  "hair2cut" "hair9cut"
+      "shirt" : [ "novakidsuspenders", "novakidjacket", "novakidwaistcoat", "novakidfancychest", "celestaruniform1chest", "celestaruniform2chest", "celestaruniform3chest", "celestaruniform4chest" ],
+      "pants" : [ "novakidsuspenderspants", "novakidjacketpants", "novakidblackpants", "novakidfancypants", "celestaruniform1pants", "celestaruniform2pants", "celestaruniform3pants", "celestaruniform4pants" ],
       "facialHairGroup" : "marking",
-      "facialHair" : [ "1" ],
+      "facialHair" : [ "1", "2", "3", "4" ],
       "facialMaskGroup" : "",
       "facialMask" : [ ]
     },
     {
       "name" : "female",
       "image" : "/interface/title/female.png",
-      "characterImage" : "/interface/title/humanfemale.png",
-      "hair" : [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" ], //  "hair2cut" "hair9cut"
-      "shirt" : [ "workoutchest", "coolchest", "conceptchest", "sweatervestchest" ],
-      "pants" : [ "workoutlegs", "coollegs", "conceptlegs", "sweatervestlegs" ],
+      "characterImage" : "/interface/title/thelusianfemale.png",
+      "hair" : [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" ], //  "hair2cut" "hair9cut"
+      "shirt" : [ "novakidsuspenders", "novakidjacket", "novakidwaistcoat", "novakidfancychest", "celestaruniform1chest", "celestaruniform2chest", "celestaruniform3chest", "celestaruniform4chest" ],
+      "pants" : [ "novakidsuspenderspants", "novakidjacketpants", "novakidblackpants", "novakidfancypants", "celestaruniform1pants", "celestaruniform2pants", "celestaruniform3pants", "celestaruniform4pants" ],
       "facialHairGroup" : "marking",
-      "facialHair" : [ "1" ],
+      "facialHair" : [ "1", "2", "3", "4" ],
       "facialMaskGroup" : "",
       "facialMask" : [ ]
     }

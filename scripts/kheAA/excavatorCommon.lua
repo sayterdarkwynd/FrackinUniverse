@@ -131,8 +131,10 @@ function states.start(dt)
 end
 
 function states.vacuum(dt)
-	excavatorCommon.grab(entity.position())
-	storage.state="start"
+	if transferUtil.powerLevel(storage.logicNode) then
+		excavatorCommon.grab(entity.position())
+		storage.state="start"
+	end
 end
 
 function states.moveDrillBar(dt)

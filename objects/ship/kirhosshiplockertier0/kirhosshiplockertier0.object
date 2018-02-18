@@ -1,0 +1,61 @@
+{
+  "objectName" : "kirhosshiplockerTier0",
+  "tags" : ["kirhos","storage"],
+  "printable" : false,
+  "rarity" : "Common",
+  
+  "category" : "decorative",
+  "description" : "Store some stuff, why don't you?",
+  "shortdescription" : "Shiplocker",
+  "race" : "kirhos",
+  
+  "lightColor" : [61, 88, 102],
+
+  "apexDescription" : "The ship's storage system. It's not currently functional.",
+  "avianDescription" : "A device that holds many items. It appears to function differently from our own. This one is not on.",
+  "floranDescription" : "Sssstorage. It'sss not on.",
+  "glitchDescription" : "Stating the obvious. A Kirhosi storage system. It is not on.",
+  "humanDescription" : "A storage device, seems to function a lot like my own. This one isn't on.",
+  "hylotlDescription" : "An elegant storage solution. It's not currently powered.",
+  "kirhosDescription" : "A slick storage rig with an ICE-3 encrypted lock.  No way I can hack this.  Maybe I can reset it?",
+
+  "particleEmitter" : {
+    "emissionRate" : 1,
+    "pixelOrigin" : [164, 27],
+
+    "particle" : {
+      "type" : "textured",
+      "image" : "/objects/ship/emid.png",
+      "size" : 1,
+      "color" : [255, 255, 255, 255],
+      "fade" : 0.0,
+      "initialVelocity" : [0.0, 0],
+      "finalVelocity" : [0.0, 0],
+      "approach" : [0, 0],
+      "timeToLive" : 0.5,
+      "layer" : "front",
+      "fullbright" : true
+    }
+  },
+
+  "inventoryIcon" : "shiplockericonTier0.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "kirhosshiplockertier0.png:<color>.<frame>", "fullbright" : true }, { "image" : "kirhosshiplockerlittier0.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua"
+  ],
+  
+  "sounds" : [ "/sfx/interface/ship_error1.ogg" ]
+  
+}

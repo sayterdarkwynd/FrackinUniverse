@@ -1,0 +1,51 @@
+{
+  "objectName" : "flagkirhos",
+  "colonyTags" : ["kirhos"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 70,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+
+  "description" : "A flag used to identify radical Kirhosi movements. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Kirhosi Flag",
+  "race" : "fukirhos",
+
+  "apexDescription" : "The Kirhosi flag.  Since it marks a rebel presence, it should have a module on it for waymarking teleportation.",
+  "avianDescription" : "A Kirhosi flag. I wonder what the brackets in the corner mean? I should be able to use it as a teleportation waypoint.",
+  "floranDescription" : "Kirhosss!  Floran can teleport to thiss!",
+  "glitchDescription" : "Statement. A Kirhosi flag. I understand this identifies rebels and should have teleportation capabilities.",
+  "humanDescription" : "A Kirhosi flag. It's pretty abstract. I can use it as a teleportation waypoint.",
+  "hylotlDescription" : "The Kirhosi flag. Their cities are splendid, but the commonfolk are restless and entitled. Still, their flags are teleport-compatible.",
+  "novakidDescription" : "What a right pretty flag! I sure can use this for teleportin'.",
+  "kirhosDescription" : "Red for the blood spilled to satiate the rich.  Black for the shadows in which we operate.  The matrix in the corner for the power of cyberspace.  Down with the Zaibatsu!",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "flagkirhosicon.png",
+  "orientations" : [
+    {
+      "image" : "flagkirhos.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "flagkirhos.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}
