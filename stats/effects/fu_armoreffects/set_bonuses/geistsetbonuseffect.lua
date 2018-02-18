@@ -1,7 +1,7 @@
 setName="fu_geistset"
 
 weaponBonus={
-	{stat = "critChance", amount = 9}
+	{stat = "critChance", amount = 1.5}
 }
 
 armorEffect={

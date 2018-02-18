@@ -4,7 +4,7 @@ setName="fu_championset"
 
 weaponBonus={
   {stat = "powerMultiplier", amount = 0.30},
-  {stat = "critChance", amount = 15}
+  {stat = "critChance", amount = 3}
 }
 
 armorBonus={
