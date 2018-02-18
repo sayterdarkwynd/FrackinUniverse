@@ -29,7 +29,7 @@ end
 
 function 
 	checkWeapons()
-	local weapons=weaponCheck({"axe","hammer"})
+	local weapons=weaponCheck({"axe","hammer","scythe"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
