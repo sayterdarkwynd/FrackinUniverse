@@ -2,7 +2,7 @@ setName="fu_x10set"
 
 weaponBonus={
   {stat = "powerMultiplier", baseMultiplier = 1.20},
-  {stat = "critChance", amount = 5}
+  {stat = "critChance", amount = 2}
 }
 
 armorBonus={

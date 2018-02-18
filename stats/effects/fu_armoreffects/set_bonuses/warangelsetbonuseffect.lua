@@ -1,7 +1,7 @@
 setName="fu_warangelset"
 
 weaponBonus={
-	{stat = "critChance", amount = 12},
+	{stat = "critChance", amount = 2},
 	{stat = "powerMultiplier", baseMultiplier = 2.5 }
 }
 
