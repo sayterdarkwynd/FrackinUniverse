@@ -119,7 +119,7 @@ function populateQueslineList()
 										player.giveItem({ name = rewardTbl[1], count = maxStack})
 									end
 									
-									if i == iterations then
+									if i == iterations and overflow > 0 then
 										if rewardTbl[3] then
 											player.giveItem({ name = rewardTbl[1], count = overflow, parameters = rewardTbl[3]})
 										else
@@ -211,8 +211,29 @@ function questlineSelected()
 						end
 						
 						if self.QD.lines[loc].rewards then
+							local rewards = {}
 							path = ""
-							for count, reward in ipairs(self.QD.lines[loc].rewards) do
+							
+							for _, rewardTbl in ipairs(self.QD.lines[loc].rewards) do
+								local item = root.itemConfig(rewardTbl[1])
+								local maxStack = item.config.maxStack or self.defaultMaxStack
+								
+								if rewardTbl[2] <= maxStack then
+									table.insert(rewards, rewardTbl)
+								else
+									local overflow = rewardTbl[2] % maxStack
+									local iterations = math.floor(rewardTbl[2] / maxStack)
+									for i = 1, iterations do
+										table.insert(rewards, {rewardTbl[1], maxStack, rewardTbl[3]})
+										
+										if i == iterations and overflow > 0 then
+											table.insert(rewards, {rewardTbl[1], overflow, rewardTbl[3]})
+										end
+									end
+								end
+							end
+							
+							for count, reward in ipairs(rewards) do
 								if count % self.GD.rewardItemSlotCount == 1 then
 									path = "textScrollArea.rewardList."..widget.addListItem("textScrollArea.rewardList")
 									widget.setVisible(path..".reward1", true)
