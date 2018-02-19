@@ -139,7 +139,7 @@ function populateQueslineList()
 		end
 	end
 	
-	-- status.setStatusProperty("fuQuestlinesComplete", questlineStatuses)
+	status.setStatusProperty("fuQuestlinesComplete", questlineStatuses)
 end
 
 function questlineSelected()
