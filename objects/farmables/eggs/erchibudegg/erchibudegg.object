@@ -1,0 +1,40 @@
+{
+  "objectName" : "erchibudegg",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "farmBeastEgg",
+  "price" : 620,
+
+  "description" : "Hatches into a tiny erchibud, a bouncing lunar creature.",
+  "shortdescription" : "Erchibud Egg",
+  "race" : "generic",
+
+  "inventoryIcon" : "erchibudegg.png:idle.1",
+  "orientations" : [
+    {
+      "image" : "erchibudegg.png:idle.1",
+      "imagePosition" : [-7, -3],
+
+      "spaces" : [ [-1, 0], [-1, 1], [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/farmables/eggs/farmableegg.animation",
+  "animationPosition" : [-7, -3],
+  "animationParts" : {
+    "egg" : "erchibudegg.png"
+  },
+
+  "scripts" : ["/objects/farmables/eggs/farmableegg.lua"],
+  "scriptDelta" : 60,
+
+  "hatchTime" : 1000,
+  "forceHatchTime" : 1000,
+
+  "spawnMonster" : "erchibudbaby",
+  "spawnOffset" : [0.5, 0.5]
+}
