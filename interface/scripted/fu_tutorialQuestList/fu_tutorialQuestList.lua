@@ -1,6 +1,11 @@
+
+
 function init()
 	self.GD = root.assetJson("/interface/scripted/fu_tutorialQuestList/fu_tutorialQuestList.config")
 	self.QD = root.assetJson("/interface/scripted/fu_tutorialQuestList/questData.config")
+	
+	local defaultItemParams = root.assetJson("/items/defaultParameters.config")
+	self.defaultMaxStack = defaultItemParams.defaultMaxStack
 	
 	questlineButton()
 	widget.setText("questTitle",	self.QD.strings.instructions.title )
@@ -89,13 +94,40 @@ function populateQueslineList()
 						if type(tbl.moneyRange) == "table" then
 							player.addCurrency("money", math.random(tbl.moneyRange[1], tbl.moneyRange[2]))
 						else
-							player.addCurrency("money", math.random(tbl.moneyRange[1], tbl.moneyRange[2]))
+							player.addCurrency("money", tbl.moneyRange)
 						end
 					end
 					
 					if tbl.rewards then
 						for _, rewardTbl in ipairs(tbl.rewards) do
-							player.giveItem({ name = rewardTbl[1], count = rewardTbl[2] })
+							local item = root.itemConfig(rewardTbl[1])
+							local maxStack = item.config.maxStack or self.defaultMaxStack
+							
+							if rewardTbl[2] <= maxStack then
+								if rewardTbl[3] then
+									player.giveItem({ name = rewardTbl[1], count = rewardTbl[2], parameters = rewardTbl[3]})
+								else
+									player.giveItem({ name = rewardTbl[1], count = rewardTbl[2]})
+								end
+							else
+								local overflow = rewardTbl[2] % maxStack
+								local iterations = math.floor(rewardTbl[2] / maxStack)
+								for i = 1, iterations do
+									if rewardTbl[3] then
+										player.giveItem({ name = rewardTbl[1], count = maxStack, parameters = rewardTbl[3]})
+									else
+										player.giveItem({ name = rewardTbl[1], count = maxStack})
+									end
+									
+									if i == iterations then
+										if rewardTbl[3] then
+											player.giveItem({ name = rewardTbl[1], count = overflow, parameters = rewardTbl[3]})
+										else
+											player.giveItem({ name = rewardTbl[1], count = overflow})
+										end
+									end
+								end
+							end
 						end
 					end
 				end
@@ -107,7 +139,7 @@ function populateQueslineList()
 		end
 	end
 	
-	status.setStatusProperty("fuQuestlinesComplete", questlineStatuses)
+	-- status.setStatusProperty("fuQuestlinesComplete", questlineStatuses)
 end
 
 function questlineSelected()
