@@ -19,6 +19,7 @@ function init()
 	objectData = nil
 	objectID = nil
 	stationType = ""
+	defaultMaxStack = 0
 	
 	-- Find closest object and use it
 	-- There should only be one object in the stations world anyways
@@ -66,6 +67,10 @@ function init()
 	else
 		widget.setText("text", "ERROR - No station object found")
 	end
+	
+	-- Get default max size for use in shop
+	local defaultItemParams = root.assetJson("/items/defaultParameters.config")
+	defaultMaxStack = defaultItemParams.defaultMaxStack
 end
 
 function firstTimeInit()
@@ -872,7 +877,7 @@ function populateShopList()
 				local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
 				local isWeapon = false
 				local basePrice = math.max(config.config.price or 1, 1)
-				local maxStack = config.config.maxStack or 1000
+				local maxStack = config.config.maxStack or defaultMaxStack
 				
 				local price = calculateShopPrice(basePrice, true)
 				
