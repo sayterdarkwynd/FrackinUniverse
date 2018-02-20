@@ -61,6 +61,8 @@ function update(dt)
 
 	storage.activeConsumption = false
 
+	if self.requiredPower then power.update(dt) end
+
 	--Try to start growing if data indicates we aren't.
 	if not storage.currentseed then
 		if not doSeedIntake() then
@@ -69,11 +71,9 @@ function update(dt)
 			return
 		end
 	end
-	
-	--Only consume power when ACTUALLY growing.
-	if self.requiredPower then power.update(dt) end
 
-	local growthmod = consumePower(dt) and 1 or self.unpoweredGrowthRate
+	--growthmod should be nil if we aren't a power consumer
+	local growthmod = self.requiredPower and (consumePower(dt) and 1 or self.unpoweredGrowthRate)
 	growPlant(growthmod, dt)
 
 	storage.activeConsumption = true
@@ -330,7 +330,7 @@ function doSeedIntake()
 
 	--Generate growth data.
 	genGrowthData()
-	
+
 	--All state tests passed and we are ready to grow, consume some items.
 
 	--Consume a unit of fertilizer.
