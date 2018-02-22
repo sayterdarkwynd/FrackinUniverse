@@ -12,6 +12,7 @@ end
 function update(dt)
 	transferUtil.loadSelfContainer()
 	excavatorCommon.grab(entity.position())
+	sb.logInfo("%s",storage)
 	world.breakObject(entity.id(), true)
 end
 
