@@ -6,6 +6,8 @@ end
 
 function update(dt)
 	if not world.isTileProtected(entity.position()) then
-	world.placeObject("fu_pickuprangetemp", world.entityPosition(entity.id()), 1, {kheAA_range = self.range})
+		if world.objectAt(entity.position()) == nil then
+			dummy=world.placeObject("fu_pickuprangetemp", world.entityPosition(entity.id()), 1, {kheAA_vacuumRange = self.range})
+		end
 	end
 end
