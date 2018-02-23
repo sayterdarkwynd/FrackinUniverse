@@ -263,7 +263,16 @@ function checkPoop() -- poop to fertilize trays , pee to water soil, etc
 		    world.spawnItem("ff_spareparts", mcontroller.position(), 1) 
 		  elseif self.randPoop >=950 then
 		    animator.playSound("deathPuff")
-		    world.spawnLiquid(mcontroller.position(), 5, 1) --water urination to water soil
+		    world.spawnLiquid(mcontroller.position(), 5, 1) --water urination to water soil. I know they produce oil. this does not look like oil.
+		  end   
+	 elseif storage.canPoop == 3 then -- is lunar
+	   self.randPoop = math.random(1120) - self.foodMod
+		  if self.randPoop <= 1 then
+		    animator.playSound("deathPuff")
+		    world.spawnItem("supermatter", mcontroller.position(), 1) 
+		  elseif self.randPoop >=950 then
+		    animator.playSound("deathPuff")
+		    world.spawnLiquid("liquidfuel", mcontroller.position(), 5, 1) --water urination to water soil, would like this to be liquidfuel??
 		  end   
 	 else
 	   self.randPoop = math.random(920) - self.foodMod
@@ -272,7 +281,7 @@ function checkPoop() -- poop to fertilize trays , pee to water soil, etc
 		    world.spawnItem("poop", mcontroller.position(), 1)   
 		  elseif self.randPoop <= 1 then 
 		    animator.playSound("deathPuff")
-		    world.spawnItem("ff_spareparts", mcontroller.position(), 1)   
+		    world.spawnItem("ff_spareparts", mcontroller.position(), 1)   --why is spare parts down here?
 		  end 	 
 	 end
 end
