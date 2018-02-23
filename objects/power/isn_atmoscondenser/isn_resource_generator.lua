@@ -6,6 +6,10 @@ require "/scripts/power.lua"
 -- The time between outputs and power consumption is determined by
 -- the object's "scriptDelta".
 
+-- Added in the deltaTime variable as it's common in any lua code which
+-- interacts with Item Transference Device (transferUtil) code.
+local deltaTime	-- Making it local is faster than leaving it global.
+
 function init()
     transferUtil.init()
     object.setInteractive(true)
@@ -30,6 +34,14 @@ end
 
 function update(dt)
     power.update(dt)
+	
+	-- Notify ITD but no faster than once per second.
+	if not deltaTime or (deltaTime > 1) then
+		deltaTime = 0
+		transferUtil.loadSelfContainer()
+		deltaTime = deltaTime + dt
+	end
+
     local output = nil
     local rarityroll = math.random(1, self.maxWeight)
 
