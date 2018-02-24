@@ -1,0 +1,48 @@
+{
+  "objectName" : "radienshop",
+  "colonyTags" : [ "crafting", "radien" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/radienshop.config",
+    "filter" : [ "radienshop" ]
+  },
+  "printable" : false,
+  "description" : "This might come in handy.",
+  "shortdescription" : "^orange;Silenes' Minerals^white;",
+  "race" : "radien",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "silene_shopicon.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "silene_shop.png:<color>.<frame>"} ],
+      "imagePosition" : [-28, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 36,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "silene_shop.png:<color>.<frame>"} ],
+      "imagePosition" : [-28, 0],
+
+      "direction" : "right",
+
+      "frames" : 36,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg"
+
+}
