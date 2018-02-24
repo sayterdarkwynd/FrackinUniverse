@@ -208,6 +208,8 @@ function displayFoodType()
 		  world.spawnProjectile("fu_omnivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
 	  elseif diet == 'herbivore' then
 		  world.spawnProjectile("fu_herbivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
+	  elseif diet == 'lunar' then
+		  world.spawnProjectile("fu_lunar", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
 	  end
 	  self.timer2 = 180
   end	  
