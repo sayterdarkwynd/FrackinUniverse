@@ -65,7 +65,6 @@ function updateStage(dt)
       setStage(4)
     end
   elseif self.missionStage == 4 then
-    player.giveItem("sciencebrochure")
     player.giveItem("statustablet")
      quest.complete()     
   end
