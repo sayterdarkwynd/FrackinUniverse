@@ -62,14 +62,9 @@ function updateStage(dt)
   elseif self.missionStage == 3 then
     if hasElectromagnet() then
       player.consumeItem("electromagnet")
-      player.giveItem("statustablet")
       setStage(4)
     end
   elseif self.missionStage == 4 then
-	  local associatedMission = config.getParameter("associatedMission")
-	  if associatedMission then
-	    player.enableMission(associatedMission)
-	  end
      quest.complete()     
   end
 end

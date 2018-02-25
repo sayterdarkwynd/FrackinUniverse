@@ -57,7 +57,7 @@ end
 function findGateType()
   if player.hasItem({name = "statustablet", count = 1}) then 
     self.gateUid = "ancientgate2" 
-  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 4 then
+  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage > 3 then
     self.gateUid = "ancientgate2" 
   else
     self.gateUid = "ancientgate"
@@ -67,17 +67,14 @@ end
 
 function update(dt)
   self.state:update(dt)
-
-  vinjGreeting()
-
   findGateType()
-
-
   -- Skip ahead if the gate is already active 
   if storage.stage < 5 and gateActive() and player.hasItem({name = "statustablet", count = 1}) then
     storage.stage = 5
     self.gateUid = "ancientgate2" 
     self.state:set(gateRepaired)
+  elseif player.hasItem({name = "statustablet", count = 1}) then
+    self.gateUid = "ancientgate2" 
   elseif storage.stage < 5 and gateActive() and not player.hasItem({name = "statustablet", count = 1}) then
     player.radioMessage("fu_start_needstricorder2")
   end
@@ -86,12 +83,6 @@ function update(dt)
     quest.setCanTurnIn(true)
   end
 end
-
-
-function vinjGreeting()
- 
-end
-
 
 function gateActive()
   if storage.gateActive then return true end
