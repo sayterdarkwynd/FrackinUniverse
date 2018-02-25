@@ -89,11 +89,7 @@ end
 
 
 function vinjGreeting()
-  if storage.exploreTimer >= 60 then
-    player.radioMessage("fu_start_greetings0")
-    player.radioMessage("fu_start_greetings1")
-    player.radioMessage("fu_start_greetings2")
-  end    
+ 
 end
 
 
