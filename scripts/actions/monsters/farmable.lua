@@ -265,7 +265,7 @@ function checkPoop() -- poop to fertilize trays , pee to water soil, etc
 		    world.spawnItem("ff_spareparts", mcontroller.position(), 1) 
 		  elseif self.randPoop >=950 then
 		    animator.playSound("deathPuff")
-		    world.spawnLiquid(mcontroller.position(), 5, 1) --water urination to water soil. I know they produce oil. this does not look like oil.
+		    world.spawnLiquid(mcontroller.position(), 5, 1) --oil urination (5)
 		  end   
 	 elseif storage.canPoop == 3 then -- is lunar
 	   self.randPoop = math.random(1120) - self.foodMod
@@ -274,7 +274,7 @@ function checkPoop() -- poop to fertilize trays , pee to water soil, etc
 		    world.spawnItem("supermatter", mcontroller.position(), 1) 
 		  elseif self.randPoop >=950 then
 		    animator.playSound("deathPuff")
-		    world.spawnLiquid("liquidfuel", mcontroller.position(), 5, 1) --water urination to water soil, would like this to be liquidfuel??
+		    world.spawnLiquid(mcontroller.position(), 11, 1) --liquidfuel urination (11)
 		  end   
 	 else
 	   self.randPoop = math.random(920) - self.foodMod
