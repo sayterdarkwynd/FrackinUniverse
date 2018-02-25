@@ -57,7 +57,7 @@ end
 function findGateType()
   if player.hasItem({name = "statustablet", count = 1}) then 
     self.gateUid = "ancientgate2" 
-  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 then
+  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 4 then
     self.gateUid = "ancientgate2" 
   else
     self.gateUid = "ancientgate"

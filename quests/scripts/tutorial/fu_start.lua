@@ -36,10 +36,12 @@ function setStage(newStage)
       quest.setObjectiveList({{config.getParameter("descriptions.makeWire"), false}})
     elseif newStage == 3 then
       player.radioMessage("fu_start_makeWire", 1)
+      quest.setObjectiveList({{config.getParameter("descriptions.makeElectromagnet"), false}})
     elseif newStage == 4 then
       player.radioMessage("fu_start_makeElectromagnet", 1)
       player.radioMessage("fu_start_Complete", 1)  
-      player.radioMessage("fu_start_Complete2", 1)  
+      player.radioMessage("fu_start_Complete2", 1) 
+      quest.setObjectiveList({{config.getParameter("descriptions.cavern"), false}})
     end
     self.missionStage = newStage
   end
@@ -52,6 +54,7 @@ function updateStage(dt)
     end
   elseif self.missionStage == 2 then
     if hasWire() then
+      player.consumeItem("wire")
       player.giveItem("glass")
       player.giveItem("glass")      
       setStage(3)
