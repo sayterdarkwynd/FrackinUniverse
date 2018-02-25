@@ -58,11 +58,15 @@ function updateStage(dt)
     end
   elseif self.missionStage == 3 then
     if hasElectromagnet() then
+      player.consumeItem("electromagnet")
       player.giveItem("statustablet")
       setStage(4)
     end
   elseif self.missionStage == 4 then
-     player.enableMission("scienceoutpost")
+	  local associatedMission = config.getParameter("associatedMission")
+	  if associatedMission then
+	    player.enableMission(associatedMission)
+	  end
      quest.complete()     
   end
 end
@@ -76,7 +80,6 @@ function hasElectromagnet()
 end
 
 function hasWire()
-  pparams = { amount = 9 }
-  return player.hasItem("wire",pparams)
+  return player.hasItem("wire")
 end
 
