@@ -53,19 +53,9 @@ function questStart()
   self.gateUid = "ancientgate"
 end
 
-
-function findGateType()
-  if player.hasItem("statustablet") then
-    self.gateUid = "ancientgate2" 
-  else
-    self.gateUid = "ancientgate"
-  end  
-end
-
-
 function update(dt)
   self.state:update(dt)
-  findGateType()
+  checkGate()
 
   -- Skip ahead if the gate is already active 
   if storage.stage < 5 and gateActive() then
@@ -144,10 +134,11 @@ function findGate()
   -- Wait until the player is no longer on the ship
   -- it is hard-set to ancientgate rather than self.gateUid to make sure the initial pointer goes to the right place.
   local findGate = util.uniqueEntityTracker("ancientgate", self.compassUpdate)
+  
   while true do   
     local result = findGate()
     questutil.pointCompassAt(result)
-    if result and world.magnitude(mcontroller.position(), result) < 100 then
+    if result and world.magnitude(mcontroller.position(), result) < 75 then
       self.state:set(gateFound)
     end
     coroutine.yield()
@@ -177,10 +168,10 @@ function collectRepairItem()
   
   quest.setCompassDirection(nil)
 
-  quest.setParameter("ancientgate", {type = "entity", uniqueId = self.gateUid})
+  quest.setParameter("ancientgate", {type = "entity", uniqueId = "ancientgate2"aa})
   quest.setIndicators({"ancientgate"})
   
-  local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
+  local findGate = util.uniqueEntityTracker("ancientgate2", self.compassUpdate)
   while storage.stage == 3 do
 
     if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
@@ -190,9 +181,6 @@ function collectRepairItem()
     elseif not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
       quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
       quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)    
-    else
-      quest.setObjectiveList({{self.descriptions.makeTable, false}})    
-      player.radioMessage("fu_start_needstricorder")
     end
        local result = findGate()
        questutil.pointCompassAt(result)   
