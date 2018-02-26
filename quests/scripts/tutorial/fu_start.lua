@@ -6,6 +6,24 @@ function init()
   setStage(1)
 end
 
+
+
+
+--//more stages
+--//
+--// player.shipUpgrades() 
+--// player.setUniverseFlag("name")
+--// player.blueprintKnown(`ItemDecriptor` item)
+--// player.equippedTech(`String` slot)
+--// player.currency(`String` currencyName)
+--// player.hasItem(`ItemDescriptor` item, [`bool` exactMatch])
+--// player.hasCountOfItem(`ItemDescriptor` item, [`bool` exactMatch])
+--// player.itemsWithTag(`String` tag)
+--// player.consumeTaggedItem(`String` tag, `unsigned` count)
+--// player.primaryHandItem()
+
+
+
 function questStart()
 
 end
