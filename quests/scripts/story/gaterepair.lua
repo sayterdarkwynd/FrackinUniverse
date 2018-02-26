@@ -168,7 +168,7 @@ function collectRepairItem()
   
   quest.setCompassDirection(nil)
 
-  quest.setParameter("ancientgate", {type = "entity", uniqueId = "ancientgate2"aa})
+  quest.setParameter("ancientgate", {type = "entity", uniqueId = "ancientgate2"})
   quest.setIndicators({"ancientgate"})
   
   local findGate = util.uniqueEntityTracker("ancientgate2", self.compassUpdate)
