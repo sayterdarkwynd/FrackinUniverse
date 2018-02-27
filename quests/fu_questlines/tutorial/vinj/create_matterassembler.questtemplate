@@ -1,46 +1,31 @@
 {
   "id" : "create_matterassembler",
-  "prerequisites" : [ ],
-  "title" : "Meet Vinalisj",
-  "text" : "I'll lend a hand getting you off this world, but you'll need to get your hands dirty! Start by ^orange;building a Machining Table^reset; in your ^green;[C]rafting menu^reset;.",
-  "completionText" : "That's great workmanship, actually. I sense a keen mind in you. Your ship will be ^orange;space-worthy^reset; in no time at all! Let's move on to your next task!",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "glass", 2 ] ] ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  
+  "mainQuest" : true,
+  "title" : "Ship Repairs",
+  "text" : "Perhaps this friendly creature can help us repair our ship and get off of this world.",
+  "completionText" : "Thanks to ^green;Vinalisj^reset;, you've managed your first steps towards escaping this planet. He's given you a super-useful ^orange;Personal Tricorder^reset;!",
+  "moneyRange" : [50, 50],
+  "canBeAbandoned" : false,
+  "invisible" : false,
+  "logOnly" : false,
   "parameters" : {
     "questGiver" : {
       "type" : "entity",
       "indicator" : "/interface/quests/questreceiver.animation"
     }  
   },
+  "associatedMission" : "scienceoutpostfu",
   
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/tutorial/fu_start.lua",
   "scriptConfig" : {
+    "portraits" : { "default" : "player" },
 
-    "portraits" : {
-      "default" : "player"
-    },
-    "canBeAbandoned" : false,
-    "followUp" : "create_matterassembler2",
-    "requireTurnIn" : false,
-
-    "turnInDescription" : "Bring the ^green;Machining Table^reset; to ^orange;Vinalisj^reset;.",
-
-    "initialCompassTarget" : {
-      "targetType" : "parameter",
-      "target" : "questGiver"
-    },
-    
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "prototyper",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
+    "descriptions" : {
+      "makeTable" : "Create a ^orange;Machining Table^reset; in your ^green;[C]rafting menu^reset;",
+      "makeWire" : "Use the ^green;Machining Table^reset; to create ^orange;Wire^reset;",
+      "makeElectromagnet" : "Use the ^green;Machining Table^reset; to create an ^orange;Electromagnet^reset;",
+      "cavern" : "Find the cavern aand investigate the ^orange;Energy Source^reset;"
+    }
   }
 }
