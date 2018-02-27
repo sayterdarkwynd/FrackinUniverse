@@ -1,0 +1,66 @@
+{
+  "itemName" : "ancientspear",
+  "price" : 4000,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Great for stabby times. Really old.",
+  "shortdescription" : "Ancient Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","quietus", "upgradeableWeapon"],
+  
+  "emitters" : [ "ancientenergytrail", "barrierelectric" ],
+  
+  "inventoryIcon" : "ancientspear.png",
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ancientspear.png",
+    "bladefullbright" : "ancientspearfullbright.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.9,
+    "baseDps" : 12.84,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicplasma",
+      "statusEffects" : [ "defenseboostneg20" ],
+      "knockback" : 20
+    }
+  },
+  "altAbilityType" : "rocketspear",
+  "altAbility" : { 
+    "name" : "Cosmic Blast",
+    "statusEffects" : [ "bleedinglong", "defenseboostneg20" ],
+    "baseDps" : 12,
+    "cooldownTime" : 0.2,
+    "energyUsage" : 75,
+    "fireTime" : 1,
+    "inaccuracy" : 0,
+    "boostSpeed" : 120,
+    "boostForce" : 50   
+  },
+
+  "critChance" : 3,
+  "critBonus" : 12,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
