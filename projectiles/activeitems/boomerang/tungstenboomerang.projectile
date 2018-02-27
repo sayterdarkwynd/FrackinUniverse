@@ -1,0 +1,34 @@
+{
+  "projectileName" : "tungstenboomerang",
+  "image" : "tungstenboomerang.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 8,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "flippable" : false,
+  "orientationLocked" : true,
+  "actionOnReap" : [ ],
+  "statusEffects" : [ ],
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "power" : 5.0,
+  "speed" : 55,
+  "damageKind" : "hammer",
+  "physics" : "laser",
+  "bounces" : -1,
+  "piercing" : false,
+  "timeToLive" : 5,
+
+  "persistentAudio" : "/sfx/projectiles/boomerang2.ogg",
+
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 5,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  } 
+}

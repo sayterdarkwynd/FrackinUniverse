@@ -1,39 +1,45 @@
 {
-  "itemName" : "bonespur",
-  "price" : 10,
+  "itemName" : "burrowerrang",
+  "level" : 2,
+  "price" : 1500,
   "maxStack" : 1,
-  "rarity" : "common",
+  "rarity" : "Legendary",
+  "description" : "Ew! Throw it at someone!",
+  "shortdescription" : "Burrower",
+  "tooltipKind" : "base",
   "category" : "boomerang",
-  "description" : "A cheery little maiming device. Keep out of children.",
-  "shortdescription" : "Bone Spur",
-  "tooltipKind" : "boomerang",
   "twoHanded" : false,
-  "itemTags" : ["weapon","boomerang", "upgradeableWeapon"],
-  "collectablesOnPickup" : { "fu_weaponbomerang" : "bonespur" },
-  "inventoryIcon" : "bonespur.png",
+  "itemTags" : ["weapon","upgradeableWeapon"],
+
+  "inventoryIcon" : "burrowerrang.png",
   "animation" : "boomerang.animation",
   "animationParts" : {
-    "boomerang" : "bonespur.png"
+    "boomerang" : "burrowerrang.png"
   },
-  "animationCustom" : { },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "boomerang" : { "properties" : {
+      "offset" : [0.5, 0]
+    }}}}
+  },
   "scripts" : ["boomerang.lua"],
   "fireOffset" : [1.25, 0.5],
-  "fireAngleOffset" : 5,
 
-  "critChance" : 5,
-  "critBonus" : 6, 
-  
-  "projectileType" : "bonespur",
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "burrowerranghead",
   "projectileParameters" : {
-    "power" : 5,
-    "knockback" : 12,
+    "power" : 3,
+    "knockback" : 5,
+    "statusEffects" : [ "weakpoison" ],
 
     "ignoreTerrain" : false,
-    "controlForce" : 110,
-    "pickupDistance" : 0.6,
-    "snapDistance" : 2.3
+    "controlForce" : 20,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 3.0,
+
+    "wobbleRate" : 3.0,
+    "wobbleIntensity" : 6.0
   },
-  "level" : 1,
 
   "stances" : {
     "idle" : {
@@ -48,7 +54,7 @@
       "duration" : 0.1,
       "transition" : "throw",
       "transitionFunction" : "fire",
-      "armRotation" : 70,
+      "armRotation" : 50,
       "animationState" : {
         "weapon" : "visible"
       },
@@ -66,13 +72,21 @@
     "catch" : {
       "duration" : 0.2,
       "transition" : "idle",
-      "armRotation" : 60,
+      "armRotation" : 30,
       "animationState" : {
         "weapon" : "visible"
       },
       "allowRotate" : false,
       "allowFlip" : true
     }
-  }, 
-  "builder" : "/items/buildscripts/buildboomerang.lua"
+  },
+
+  "upgradeParameters" : {
+    "inventoryIcon" : "wormerang_l6.png",
+    "projectileType" : "wormerang_l6",
+    "animationParts" : {
+      "boomerang" : "wormerang_l6.png"
+    },
+    "shortdescription" : "Giant Worm ^yellow;^reset;"
+  }
 }

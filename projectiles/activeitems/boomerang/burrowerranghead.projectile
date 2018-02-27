@@ -1,0 +1,47 @@
+{
+  "projectileName" : "burrowerranghead",
+  "image" : "burrowerranghead.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "flippable" : false,
+  "actionOnReap" : [ ],
+  "statusEffects" : [ ],
+  "periodicActions" : [
+    {
+      "time" : 0.1,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "burrowerrang",
+      "fuzzAngle" : 0,
+      "config" : {
+        "periodicActions" : [
+	    {
+	      "time" : 0.1,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "burrowerrangtail",
+	      "fuzzAngle" : 0
+	   }        
+        ]
+      }
+   }
+  ],
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "power" : 5.42,
+  "speed" : 30,
+  "damageKind" : "poison",
+  "physics" : "laser",
+  "bounces" : -1,
+  "piercing" : true,
+  "timeToLive" : 8,
+  "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
+    "wobbleRate" : 3.0,
+    "wobbleIntensity" : 6.0,
+    "ignoreTerrain" : false,
+    "controlForce" : 20,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 3.0, 
+  "scripts" : [ "boomerangprojectile.lua", "wormerangprojectile.lua" ]
+}

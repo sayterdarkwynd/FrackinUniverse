@@ -1,39 +1,37 @@
 {
-  "itemName" : "bonespur",
-  "price" : 10,
+  "itemName" : "precursorboomerang",
+  "level" : 5,
+  "price" : 810,
   "maxStack" : 1,
-  "rarity" : "common",
+  "rarity" : "legendary",
   "category" : "boomerang",
-  "description" : "A cheery little maiming device. Keep out of children.",
-  "shortdescription" : "Bone Spur",
+  "description" : "Neato.",
+  "shortdescription" : "Precursor Boomerang",
   "tooltipKind" : "boomerang",
   "twoHanded" : false,
-  "itemTags" : ["weapon","boomerang", "upgradeableWeapon"],
-  "collectablesOnPickup" : { "fu_weaponbomerang" : "bonespur" },
-  "inventoryIcon" : "bonespur.png",
+  "itemTags" : ["weapon","boomerang","precursor","upgradeableWeapon"],
+
+  "inventoryIcon" : "quietusboomerang_dubShoe.png",
   "animation" : "boomerang.animation",
   "animationParts" : {
-    "boomerang" : "bonespur.png"
+    "boomerang" : "quietusboomerang_dubShoe.png"
   },
   "animationCustom" : { },
   "scripts" : ["boomerang.lua"],
   "fireOffset" : [1.25, 0.5],
-  "fireAngleOffset" : 5,
 
-  "critChance" : 5,
-  "critBonus" : 6, 
-  
-  "projectileType" : "bonespur",
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "precursorboomerang",
   "projectileParameters" : {
     "power" : 5,
-    "knockback" : 12,
+    "knockback" : 20,
 
     "ignoreTerrain" : false,
-    "controlForce" : 110,
-    "pickupDistance" : 0.6,
-    "snapDistance" : 2.3
+    "controlForce" : 45,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 5.0
   },
-  "level" : 1,
 
   "stances" : {
     "idle" : {
@@ -73,6 +71,9 @@
       "allowRotate" : false,
       "allowFlip" : true
     }
-  }, 
+  },
+  "critChance" : 4,
+  "critBonus" : 10,
+
   "builder" : "/items/buildscripts/buildboomerang.lua"
 }
