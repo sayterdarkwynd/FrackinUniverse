@@ -1,0 +1,41 @@
+{
+  "objectName" : "buglike10",
+  "colonyTags" : ["hive"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "breakable",
+
+  "description" : "A strange formation of organic chitin.",
+  "shortdescription" : "Hive Bush",
+  "race" : "generic",
+
+
+  "inventoryIcon" : "buglike10.png",
+  "orientations" : [
+    {
+      "image" : "buglike10.png:<color>",
+      "imagePosition" : [-8, -28],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "buglike10.png:<color>",
+      "imagePosition" : [-8, -28],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+  
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/capsule_break1.ogg", "/sfx/objects/capsule_break2.ogg", "/sfx/objects/capsule_break3.ogg" ],
+  "smashDropOptions" : [
+    [ [ "bugshell", 1, { } ] ]
+  ]
+}
