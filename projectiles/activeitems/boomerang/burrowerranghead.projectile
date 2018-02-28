@@ -7,8 +7,17 @@
   "pointLight" : false,
   "flippable" : false,
   "actionOnReap" : [ ],
+  
   "statusEffects" : [ "weakpoison"],
   "periodicActions" : [
+    {
+      "time" : 0.1,
+      "action" : "explosion",
+      "foregroundRadius" : 2,
+      "backgroundRadius" : 2,
+      "explosiveDamageAmount" : 2,
+      "delaySteps" : 2
+    },  
     {
       "time" : 0.1,
       "loop" : true,
@@ -31,8 +40,8 @@
   "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
   "power" : 5.15,
   "speed" : 30,
-  "damageKind" : "poison",
-  "physics" : "laser",
+  "damageKind" : "lash",
+  "physics" : "illusion",
   "bounces" : -1,
   "piercing" : true,
   "timeToLive" : 8,
