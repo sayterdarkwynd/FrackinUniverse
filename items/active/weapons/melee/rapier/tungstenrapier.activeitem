@@ -1,0 +1,34 @@
+{
+  "itemName" : "tungstenrapier",
+  "price" : 60,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Reliable, sturdy and stabby.",
+  "shortdescription" : "Tungsten Rapier",
+  "tooltipKind" : "sword",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon"],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "tungstenrapier.png",
+  "animation" : "piercecombo.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "tungstenrapier.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 1, 
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 5.74
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
