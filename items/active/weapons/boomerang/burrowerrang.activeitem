@@ -1,0 +1,92 @@
+{
+  "itemName" : "burrowerrang",
+  "level" : 2,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Ew! Throw it at someone!",
+  "shortdescription" : "Burrower",
+  "tooltipKind" : "base",
+  "category" : "boomerang",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","upgradeableWeapon"],
+
+  "inventoryIcon" : "burrowerrang.png",
+  "animation" : "boomerang.animation",
+  "animationParts" : {
+    "boomerang" : "burrowerrang.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "boomerang" : { "properties" : {
+      "offset" : [0.5, 0]
+    }}}}
+  },
+  "scripts" : ["boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "burrowerranghead",
+  "projectileParameters" : {
+    "power" : 3,
+    "knockback" : 5,
+    "statusEffects" : [ "weakpoison" ],
+
+    "ignoreTerrain" : false,
+    "controlForce" : 20,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 3.0,
+
+    "wobbleRate" : 3.0,
+    "wobbleIntensity" : 6.0
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 50,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 30,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "upgradeParameters" : {
+    "inventoryIcon" : "wormerang_l6.png",
+    "projectileType" : "wormerang_l6",
+    "animationParts" : {
+      "boomerang" : "wormerang_l6.png"
+    },
+    "shortdescription" : "Giant Worm ^yellow;^reset;"
+  }
+}

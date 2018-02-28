@@ -1,0 +1,41 @@
+{
+  "objectName" : "buglike3",
+  "colonyTags" : ["hive"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "breakable",
+
+  "description" : "I would wager that this is excreted by something large and insectoid.",
+  "shortdescription" : "Hive Bush",
+  "race" : "generic",
+
+
+  "inventoryIcon" : "buglike3.png",
+  "orientations" : [
+    {
+      "image" : "buglike3.png:<color>",
+      "imagePosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "buglike3.png:<color>",
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/capsule_break1.ogg", "/sfx/objects/capsule_break2.ogg", "/sfx/objects/capsule_break3.ogg" ],
+  "smashDropOptions" : [
+    [ [ "bugshell", 1, { } ] ]
+  ]
+}

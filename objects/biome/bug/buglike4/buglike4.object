@@ -1,0 +1,41 @@
+{
+  "objectName" : "buglike4",
+  "colonyTags" : ["hive"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "breakable",
+
+  "description" : "I'd hate to run into whatever spewed this out.",
+  "shortdescription" : "Hive Bush",
+  "race" : "generic",
+
+
+  "inventoryIcon" : "buglike4.png",
+  "orientations" : [
+    {
+      "image" : "buglike4.png:<color>",
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "buglike4.png:<color>",
+      "imagePosition" : [-18, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/capsule_break1.ogg", "/sfx/objects/capsule_break2.ogg", "/sfx/objects/capsule_break3.ogg" ],
+  "smashDropOptions" : [
+    [ [ "bugshell", 1, { } ] ]
+  ]
+}
