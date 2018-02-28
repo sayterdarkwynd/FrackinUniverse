@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Powerful and multi-faceted
-^yellow;Multi-Bomb Spread^reset;",
+^yellow;Multi-Effect Spread^reset;",
   "shortdescription" : "Vindicator",
   "category" : "grenadeLauncher",
   "level" : 7,
@@ -28,37 +28,28 @@
     }
   },
 
-  "baseOffset" : [1.5, 0.32],
-  "muzzleOffset" : [3, 0.125],
+  
+  "baseOffset" : [1.9, 0.32],
+  "muzzleOffset" : [1.25, 0.125],
 
   "scripts" : ["/items/active/scripts/modifiablegun.lua", "/items/active/scripts/windupweaponhealth.lua" ],
 
   "elementalType" : "shadow",
 
   "primaryAbility" : {
-        "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1.2,
     "baseDps" : 7.0,
-    "energyUsage" : 70,
-    "inaccuracy" : 0.5,
-    "projectileCount" : 8,
+    "energyUsage" : 28,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "poisonguardianpellet",
+    "projectileType" : "eldergrenade",
 	  "projectileParameters" : {
 	      "knockback" : 20,
-	      "damageSourceKind" : "shadow",
-		  "actionOnReap" : [
-		    {
-		      "action" : "explosion",
-		      "foregroundRadius" : 4,
-		      "backgroundRadius" : 2,
-		      "explosiveDamageAmount" : 6,
-		      "delaySteps" : 2,
-		      "harvestLevel":99
-		    }		  
-		  ],
+	      "damageSourceKind" : "shadow"
 	  },
 	  "stances" : {
 	    "idle" : {

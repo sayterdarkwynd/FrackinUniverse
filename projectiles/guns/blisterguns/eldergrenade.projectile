@@ -1,0 +1,102 @@
+{
+  "projectileName" : "eldergrenade",
+  "image" : "eldergrenade.png",
+  "animationCycle" : 0.4,
+  "level" : 1,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "physics" : "eldergrenade",
+  "pointLight" : false,
+  "timeToLive" : 2,
+  "fullbright" : true,
+  "piercing" : true,
+  "bounces" : 1,
+  "lightColor" : [20, 190, 70],
+  "emitters" : [ "cosmicdust", "radioactiveplasma", "shadowdrip" ],
+  "periodicActions" : [
+    {
+      "time" : 0.5,
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/charging.wav", "/sfx/weapons/chargeprecursorloop.ogg" ]
+    },  
+    {
+      "time" : 0.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fuhgravityexplosion"
+    },     
+    {
+      "time" : 0.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "electricguardianpellet",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 5,"timeToLive" : 0.2}
+   },  
+    {
+      "time" : 0.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "iceguardianpellet",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 5,"timeToLive" : 0.2}
+   },   
+    {
+      "time" : 0.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireguardianpellet",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 5,"timeToLive" : 0.2}
+   }, 
+    {
+      "time" : 0.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "poisonguardianpellet",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 5,"timeToLive" : 0.2}
+   }   
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 0,
+      "type" : "fungravityexplosion"
+    },  
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 0.5,
+      "type" : "spatialcollapse2"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/spatialcollapse.ogg" ]
+    },
+    {
+      "action" : "light",
+      "color" : "green"
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 5,
+      "backgroundRadius" : 3,
+      "explosiveDamageAmount" : 10,
+      "delaySteps" : 2,
+      "harvestLevel" : 99
+    }	  
+  ],
+  
+  "statusEffects" : [ "darkwaterpoison","stun" ],
+    
+  "damageType" : "IgnoresDef",
+  "damageKind" : "shadowplasma"
+}
+
+
+
+
