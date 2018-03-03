@@ -1,0 +1,38 @@
+{
+  "objectName" : "precursordatabox",
+  "colonyTags" : [ "precursor", "ancient", "storage", "bookcase", "furniture" ],
+  "rarity" : "rare",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "This seems to provide a way to access precursor data.",
+  "shortdescription" : "Precursor Data Box",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 1100,
+  "printable" : true,
+  "health" : 12.5,
+
+  "inventoryIcon" : "precursor.png",
+  "orientations" : [
+    {
+      "dualImage" : "elderbookcase.png:<color>",
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/bookcase_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/bookcase_close.ogg" ],
+  "slotCount" : 64,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}
