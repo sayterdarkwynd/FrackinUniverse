@@ -79,31 +79,19 @@
   
   
   "upgradeParameters" : {
-    "scripts" : [ "/items/active/weapons/ranged/gun.lua", "/items/active/scripts/heavyweapon2.lua" ],
-    "shortdescription" : "^cyan;Ultrum Boomerang^reset; ^yellow;^reset;",
-  "description" : "Perfection.
-^cyan;+1 projectiles^reset;", 
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "aetheriumboomerang8.png",
-    "middlefullbright" : "aetheriumboomerang8.png",
-    "barrel" : "",
-    "muzzleFlash" : ""
-    },
-    "inventoryIcon" : [
-    { "image" : "aetheriumboomerang8.png" }
-    ],
+	    "shortdescription" : "^cyan;Ultrum Boomerang^reset; ^yellow;^reset;",
+	  "description" : "Perfection.", 
+	  "animationParts" : { "boomerang" : "aetheriumboomerang8.png"},
+	  "inventoryIcon" : "aetheriumboomerang8.png",
+	  "projectileType" : "aetheriumboomerang8",
+	  "projectileParameters" : {
+		    "power" : 6.5,
+		    "knockback" : 20,
 
-    "projectileType" : "aetheriumboomerang8",
-    "projectileParameters" : {
-	    "power" : 6.5,
-	    "knockback" : 20,
-
-	    "ignoreTerrain" : false,
-	    "controlForce" : 55,
-	    "pickupDistance" : 1.0,
-	    "snapDistance" : 1.5
-    },
-    "projectileCount" : 2
-  }
+		    "ignoreTerrain" : false,
+		    "controlForce" : 55,
+		    "pickupDistance" : 1.0,
+		    "snapDistance" : 1.5
+	  }
+    }
 }
