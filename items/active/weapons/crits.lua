@@ -50,7 +50,7 @@ function Crits:setCritDamage(damage)
                     params = { speed=30, power = 1, damageKind = "default"}
                     world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
                 end
-                if stunChance >= 99 and (root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "flail") or root.itemHasTag(heldItem, "mace")) then -- Stun!!!!
+                if stunChance >= 99 and (root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace")) then -- Stun!!!!
                     params = { speed=35, power = 1, damageKind = "default"}
                     world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
                 end

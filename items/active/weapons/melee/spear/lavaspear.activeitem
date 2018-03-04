@@ -1,0 +1,57 @@
+{
+  "itemName" : "lavaspear",
+  "price" : 100,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Searing heat, and puncture-fresh lethality.",
+  "shortdescription" : "Core Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","quietus", "upgradeableWeapon"],
+  
+  "inventoryIcon" : "lavaspear.png",
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "lavaspear.png",
+    "bladefullbright" : "lavaspearfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.9,
+    "baseDps" : 10.84,
+    "damageConfig" : {
+      "damageSourceKind" : "fireplasma",
+      "statusEffects" : [ "burning" ],
+      "knockback" : 10
+    }
+  },
+  "altAbilityType" : "rocketspear",
+  "altAbility" : { 
+    "name" : "Flame Blast",
+    "statusEffects" : [ "burning" ],
+    "baseDps" : 8,
+    "cooldownTime" : 0.1,
+    "energyUsage" : 75,
+    "fireTime" : 0.05,
+    "inaccuracy" : 0,
+    "boostSpeed" : 120,
+    "boostForce" : 50   
+  },
+
+  "critChance" : 3,
+  "critBonus" : 12,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
