@@ -1,0 +1,41 @@
+{
+  "objectName" : "buglike7",
+  "colonyTags" : ["hive"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "breakable",
+
+  "description" : "This is rather unusual. I wonder what built this?",
+  "shortdescription" : "Hive Bush",
+  "race" : "generic",
+
+
+  "inventoryIcon" : "buglike7.png",
+  "orientations" : [
+    {
+      "image" : "buglike7.png:<color>",
+      "imagePosition" : [-8, -12],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "buglike7.png:<color>",
+      "imagePosition" : [-8, -12],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+  
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/capsule_break1.ogg", "/sfx/objects/capsule_break2.ogg", "/sfx/objects/capsule_break3.ogg" ],
+  "smashDropOptions" : [
+    [ [ "bugshell", 1, { } ] ]
+  ]
+}

@@ -53,49 +53,19 @@ function questStart()
   self.gateUid = "ancientgate"
 end
 
-
-function findGateType()
-  if player.hasItem({name = "statustablet", count = 1}) then 
-    self.gateUid = "ancientgate2" 
-  elseif player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) or storage.stage >= 3 then
-    self.gateUid = "ancientgate2" 
-  else
-    self.gateUid = "ancientgate"
-  end  
-end
-
-
 function update(dt)
   self.state:update(dt)
+  checkGate()
 
-  vinjGreeting()
-
-  findGateType()
-
-
-  -- Skip ahead if the gate is already active 
-  if storage.stage < 5 and gateActive() and player.hasItem({name = "statustablet", count = 1}) then
+  if storage.stage < 5 and gateActive() then
     storage.stage = 5
-    self.gateUid = "ancientgate2" 
     self.state:set(gateRepaired)
-  elseif storage.stage < 5 and gateActive() and not player.hasItem({name = "statustablet", count = 1}) then
-    player.radioMessage("fu_start_needstricorder2")
   end
 
   if storage.complete then
     quest.setCanTurnIn(true)
   end
 end
-
-
-function vinjGreeting()
-  if storage.exploreTimer >= 60 then
-    player.radioMessage("fu_start_greetings0")
-    player.radioMessage("fu_start_greetings1")
-    player.radioMessage("fu_start_greetings2")
-  end    
-end
-
 
 function gateActive()
   if storage.gateActive then return true end
@@ -148,17 +118,25 @@ function explore()
 end
 
 
+function checkGate()
+  if player.hasItem({name = "statustablet", count = 1}) then
+    self.gateUid = "ancientgate2"
+  else
+    self.gateUid = "ancientgate"
+  end
+end
+
 function findGate()
   quest.setProgress(nil)
   quest.setObjectiveList({{self.descriptions.findGate, false}})
 
   -- Wait until the player is no longer on the ship
-  -- it is hard-set to ancientgate rather than self.gateUid to make sure the initial pointer goes to the right place.
-  local findGate = util.uniqueEntityTracker("ancientgate", self.compassUpdate)
-  while true do
+  local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
+  
+  while true do   
     local result = findGate()
     questutil.pointCompassAt(result)
-    if result and world.magnitude(mcontroller.position(), result) < 100 then
+    if result and world.magnitude(mcontroller.position(), result) < 75 then
       self.state:set(gateFound)
     end
     coroutine.yield()
@@ -170,50 +148,50 @@ end
 function gateFound()
   quest.setProgress(nil)
   quest.setCompassDirection(nil)
+  
+  quest.setParameter("ancientgate", {type = "entity", uniqueId = self.gateUid})
+  quest.setIndicators({"ancientgate"})
+  
   player.radioMessage("gaterepair-gateFound1")
-  --player.radioMessage("gaterepair-gateFound1b")
   player.radioMessage("gaterepair-gateFound2")
   storage.stage = 3
-  self.gateUid = "ancientgate"
+	    
   util.wait(14)
 
   self.state:set(self.stages[storage.stage])
 end
 
 function collectRepairItem()
+  checkGate()
+  
   quest.setCompassDirection(nil)
 
   quest.setParameter("ancientgate", {type = "entity", uniqueId = self.gateUid})
   quest.setIndicators({"ancientgate"})
   
-  local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
+  local findGate = util.uniqueEntityTracker("ancientgate2", self.compassUpdate)
   while storage.stage == 3 do
 
     if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
       quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
-      quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)    
-      self.gateUid = "ancientgate2"       
+      quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)       
       storage.stage = 4
     elseif not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
       quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
       quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)    
-      self.gateUid = "ancientgate2"         
-    else
-      quest.setObjectiveList({{self.descriptions.makeTable, false}})    
-      self.gateUid = "ancientgate"
-      player.radioMessage("fu_start_needstricorder")
     end
        local result = findGate()
        questutil.pointCompassAt(result)   
        coroutine.yield()   
   end
 
-
   quest.setObjectiveList({})
   self.state:set(self.stages[storage.stage])
 end
 
 function repairGate()
+  checkGate()
+  
   quest.setCompassDirection(nil)
   quest.setProgress(nil)
 
@@ -231,15 +209,11 @@ function repairGate()
     -- Go back to last stage if player loses core fragments
     if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
       storage.stage = 3
-      self.gateUid = "ancientgate2"
-      questutil.pointCompassAt(findGate())
       self.state:set(self.stages[storage.stage])
     elseif not player.hasItem({name = "statustablet", count = 1}) then
       storage.stage = 3
       quest.setObjectiveList({{self.descriptions.makeTable, false}})    
-      self.gateUid = "ancientgate"
       player.radioMessage("fu_start_needstricorder")
-      questutil.pointCompassAt(findGate())
       self.state:set(self.stages[storage.stage])
     end
 
@@ -260,7 +234,7 @@ function gateRepaired()
 
   player.radioMessage("gaterepair-gateOpened1")
   player.radioMessage("gaterepair-gateOpened2")
-  
+  player.giveItem("sciencebrochure")
   player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
   player.radioMessage("fu_outpost1")  
   player.radioMessage("fu_outpost2")  

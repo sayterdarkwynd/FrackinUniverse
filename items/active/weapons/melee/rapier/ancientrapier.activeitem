@@ -1,0 +1,38 @@
+{
+  "itemName" : "ancientrapier",
+  "price" : 3200,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A testament to the unusual craftsmanship of the Ancients.",
+  "shortdescription" : "Ancient Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon" ],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "ancientrapier.png",
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "ancientrapier.png",
+    "bladefullbright" : "ancientrapierfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.41,
+    "baseDps" : 6.1,
+    "damageConfig" : {
+      "damageSourceKind":"cosmicbroadsword",
+      "statusEffects":["defenseboostneg20"]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

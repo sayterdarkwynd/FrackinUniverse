@@ -1,0 +1,41 @@
+{
+  "objectName" : "buglike9",
+  "colonyTags" : ["hive"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "breakable",
+
+  "description" : "Insectoid-like structure.",
+  "shortdescription" : "Hive Bush",
+  "race" : "generic",
+
+
+  "inventoryIcon" : "buglike9.png",
+  "orientations" : [
+    {
+      "image" : "buglike9.png:<color>",
+      "imagePosition" : [-24, -16],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "buglike9.png:<color>",
+      "imagePosition" : [-24, -16],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+  
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/capsule_break1.ogg", "/sfx/objects/capsule_break2.ogg", "/sfx/objects/capsule_break3.ogg" ],
+  "smashDropOptions" : [
+    [ [ "bugshell", 1, { } ] ]
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "projectileName" : "xithriciteboomerang",
+  "image" : "xithriciteboomerang.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 8,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "flippable" : false,
+  "orientationLocked" : true,
+  "actionOnReap" : [ ],
+  "statusEffects" : [ "defenseboostneg20" ],
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "power" : 4.2,
+  "speed" : 60,
+  "damageKind" : "cosmicplasma",
+  "physics" : "laser",
+  "bounces" : -1,
+  "piercing" : false,
+  "fullbright" : true,
+  "timeToLive" : 5,
+  //"emitters" : [ "acidsquirt" ],
+  "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
+
+  "scripts" : [ "boomerangprojectile.lua" ],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 5,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  } 
+}
