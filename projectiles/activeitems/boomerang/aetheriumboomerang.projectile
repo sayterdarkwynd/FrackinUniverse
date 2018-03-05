@@ -7,17 +7,18 @@
   "pointLight" : false,
   "flippable" : false,
   "orientationLocked" : true,
-  "actionOnReap" : [ ],
+
   "statusEffects" : [ "defenseboostneg20" ],
   "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
   "power" : 5.0,
-  "speed" : 55,
-  "damageKind" : "hammer",
+  "speed" : 75,
+  "damageKind" : "cosmic",
   "physics" : "laser",
   "bounces" : -1,
   "piercing" : true,
   "timeToLive" : 5,
   "fullbright" : true,
+  "emitters" : [ "cosmicdust" ],
   
   "persistentAudio" : "/sfx/projectiles/boomerang2.ogg",
 
@@ -31,5 +32,12 @@
       "controlForce" : 1500,
       "categoryWhitelist" : ["itemdrop"]
     }
-  } 
+  },
+  
+  "actionOnCollide" : [
+    {
+          "action" : "config",
+          "file" : "/projectiles/explosions/cellexplosion/cellexplosion.config"
+    }
+  ]
 }
