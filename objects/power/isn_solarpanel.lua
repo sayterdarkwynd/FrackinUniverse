@@ -57,7 +57,7 @@ function getLight(location)
 	local light = world.callScriptedEntity(objects[i],'object.getLightColor')
 	if light and (light[1] > 0 or light[2] > 0 or light[3] > 0) then
 	  lights[objects[i]] = light
-	  world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/5,light[2]/5,light[3]/5})
+	  world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/3,light[2]/3,light[3]/3})
 	end
   end
   local light = world.lightLevel(location)
