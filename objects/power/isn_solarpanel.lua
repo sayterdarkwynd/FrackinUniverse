@@ -1,6 +1,13 @@
 require '/scripts/power.lua'
 
+function daytimeCheck()
+	return world.timeOfDay() < 0.55 -- true if daytime
+end
+
 function update(dt)
+  daytime = daytimeCheck()  
+
+  if daytime then -- adds daytime check to Solar Panels. This means they will NO LONGER care about light sources unless it is daytime. People cant stop exploiting. So fuck it.
 	storage.checkticks = (storage.checkticks or 0) + dt
 	if storage.checkticks >= 10 then
 	  storage.checkticks = storage.checkticks - 10
@@ -38,7 +45,9 @@ function update(dt)
 	        power.setPower(generated)
 	  end
 	end
-	power.update(dt)
+	
+  end
+  power.update(dt)
 end
 
 function getLight(location)
@@ -48,7 +57,7 @@ function getLight(location)
 	local light = world.callScriptedEntity(objects[i],'object.getLightColor')
 	if light and (light[1] > 0 or light[2] > 0 or light[3] > 0) then
 	  lights[objects[i]] = light
-	  world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/3,light[2]/3,light[3]/3})
+	  world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/5,light[2]/5,light[3]/5})
 	end
   end
   local light = world.lightLevel(location)
