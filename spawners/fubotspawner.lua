@@ -1,51 +1,92 @@
-require "/scripts/util.lua"
-require "/scripts/companions/util.lua"
-require "/scripts/messageutil.lua"
+item =
+{
+	parameters= {
+		tooltipFields= {
+			subtitle= "",
+			objectImage= {
+			}
+		},
+		podUuid=nil,
+		description="",
+		podItemHasPriority= false,
+		pets=
+		{
+			{
+				description="",
+				collisionPoly= {
+					{-1.75, 2.55},
+					{-2.25, 2.05},
+					{-2.75, -3.55},
+					{-2.25, -3.95},
+					{2.25, -3.95},
+					{2.75, -3.55},
+					{2.25, 2.05},
+					{1.75, 2.55}
+				},
+				name= "",
+				portrait= {
+				},
+				config= {
+					parameters= {
+						aggressive= true,
+						level= 1,
+						familyIndex= 0,
+						seed= "0"
+					},
+					type= ""
+				}
+			}
+		}
+	},
+	name= "botpod",
+	count= 1
+}
 
-function setInteractive(state)
-  if entity.setInteractive then entity.setInteractive(state)
-  else object.setInteractive(state) end
+function loadMonster()
+
+	local botspawner=config.getParameter("botspawner")
+	if not botspawner then return false end
+	if not botspawner.type then return false end
+	
+	local name=config.getParameter("shortdescription") or "Broken Bot"
+	local desc=config.getParameter("description") or "Yup, you broke it."
+	
+	local imgData=botspawner.monsterImage or root.monsterPortrait(botspawner.type)
+	local monsterData=root.monsterParameters(botspawner.type)
+	
+	item.parameters.tooltipFields.subtitle=name
+	item.parameters.description=desc
+	item.parameters.tooltipFields.objectImage=imgData
+
+	local buffer={}
+	for _,pet in pairs(item.parameters.pets) do
+		pet.description=desc
+		pet.name=name
+
+		pet.portrait=imgData
+		pet.collisionPoly=monsterData.movementSettings.collisionPoly
+		
+		pet.config.type=botspawner.type
+		table.insert(buffer,pet)
+	end
+	item.parameters.pets=buffer
+	return true
 end
 
-function configParameter(name,default)
-  if entity.configParameter then
-    return entity.configParameter(name,default)
-  else
-    return config.getParameter(name,default)
-  end
+function printMonster()
+	item.parameters.podUuid=sb.makeUuid()
+	if world.spawnItem(item,entity.position()) then
+		object.setInteractive(false)
+		object.smash(true)
+	end
 end
 
 function init()
-  if true then
---  printTable(0,_ENV)
-    setInteractive(true)
-  end
+    object.setInteractive(true)
 end
 
-function onInteraction(args)
-  if args ~= nil and args.sourceId ~= nil then
-    local p = entity.position()
-    local parameters = {}
-    local type = configParameter("botspawner.type")
-    sb.logInfo("Spawning a servitor. Type is %s",type)
-    parameters.persistent = true
-    parameters.damageTeamType = "friendly"
-    parameters.aggressive = true
-    parameters.damageTeam = 0
-    parameters.ownerUuid = world.entityUniqueId(args.sourceId) or args.sourceId
-    parameters.selfUuid = sb.makeUuid()
-    parameters.level = getLevel()
-    local spawnPoint = {p[1], p[2] +1} -- object Y is off by 1 ?
-    sb.logInfo("Parameters for spawn are: %s",parameters)
-    world.spawnMonster(type, spawnPoint, parameters)
---    entity.smash()
-
-    world.breakObject(entity.id(),true)
-  end
-end
-
-function getLevel()
-  if world.getProperty("ship.fuel") ~= nil then return 1 end
-  if world.threatLevel then return world.threatLevel() end
-  return 1
+function onInteraction()
+	if loadMonster() then
+		printMonster()
+	end
 end

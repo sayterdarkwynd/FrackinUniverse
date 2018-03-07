@@ -70,6 +70,7 @@ function loadMonster(invItem)
 	local desc=data.description or "Yup, you broke it."
 	local myType=data.botspawner.type
 	local imgData=root.monsterPortrait(myType)
+	local monsterData=root.monsterParameters(myType)
 	
 	item.parameters.tooltipFields.subtitle=name
 	item.parameters.description=desc
@@ -81,6 +82,7 @@ function loadMonster(invItem)
 		pet.name=name
 
 		pet.portrait=imgData
+		pet.collisionPoly=monsterData.movementSettings.collisionPoly
 		
 		pet.config.type=myType
 		table.insert(buffer,pet)
