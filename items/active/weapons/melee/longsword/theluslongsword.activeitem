@@ -1,0 +1,46 @@
+{
+  "itemName" : "telebriumlongsword",
+  "price" : 200,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Pure honed Telebrium. Ribbed for her pleasure.
+^cyan;Counts as Hunting weapon^reset;",
+  "shortdescription" : "Telebrium Longsword",
+  "tooltipKind" : "sword",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword", "upgradeableWeapon"],
+  "inventoryIcon" : "telebriumlongsword.png",
+
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "telebriumlongsword.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.70,
+    "baseDps" : 10,
+    "damageConfig" : {
+      "damageSourceKind" : "bow"
+    }
+  },
+
+  "critChance" : 2, 
+  "critBonus" : 3, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
