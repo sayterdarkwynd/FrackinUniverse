@@ -4,25 +4,25 @@ local recipes =
 {
 
 --liquids
-{inputs = { solidfuel=50 }, outputs = { bagoffarts=1 }, time = 1.0},
-{inputs = { liquidfuel=50 }, outputs = { bagoffarts=1 }, time = 1.0},
-{inputs = { toxicwaste=25 }, outputs = { bagoffarts=1 }, time = 1.0},
+{inputs = { solidfuel=100 }, outputs = { bagoffarts=1 }, time = 1.0},
+{inputs = { liquidfuel=200 }, outputs = { bagoffarts=1 }, time = 1.0},
+{inputs = { toxicwaste=100 }, outputs = { bagoffarts=1 }, time = 1.0},
 {inputs = { irradiumore=25 }, outputs = { bagoffarts=1 }, time = 1.0},
 {inputs = { irradiumbar=10 }, outputs = { bagoffarts=1 }, time = 1.0},
 {inputs = { supermatter=50 }, outputs = { bagoffarts=2 }, time = 2.0},
 {inputs = { uraniumrod=1 }, outputs = { bagoffarts=2 }, time = 2.0},
 {inputs = { plutoniumrod=1 }, outputs = { bagoffarts=3 }, time = 3.0},
-{inputs = { neptuniumrod=1 }, outputs = { bagoffarts=4 }, time = 4.0},
-{inputs = { thoriumrod=1 }, outputs = { bagoffarts=5 }, time = 5.0},
-{inputs = { solariumstar=6 }, outputs = { bagoffarts=6 }, time = 6.0},
-{inputs = { enricheduranium=1 }, outputs = { bagoffarts=20 }, time = 6.0},
-{inputs = { enrichedplutonium=1}, outputs = { bagoffarts=30 }, time = 6.0},
-{inputs = { ultronium=1 }, outputs = { bagoffarts=50 }, time = 6.0},
-{inputs = { precursorfluid=50 }, outputs = { bagoffarts=400 }, time = 7.0},
-{inputs = { techcard=1 }, outputs = { bagoffarts=4 }, time = 1.0},
-{inputs = { upgrademodule=1 }, outputs = { bagoffarts=4 }, time = 1.0},
-{inputs = { manipulatormodule=1 }, outputs = { bagoffarts=3 }, time = 1.0},
-{inputs = { bagoffarts=1 }, outputs = { crunchychick=20 }, time = 1.0}
+{inputs = { neptuniumrod=1 }, outputs = { bagoffarts=3 }, time = 4.0},
+{inputs = { thoriumrod=1 }, outputs = { bagoffarts=3 }, time = 5.0},
+{inputs = { solariumstar=6 }, outputs = { bagoffarts=4 }, time = 6.0},
+{inputs = { enricheduranium=1 }, outputs = { bagoffarts=4 }, time = 6.0},
+{inputs = { enrichedplutonium=1}, outputs = { bagoffarts=4 }, time = 6.0},
+{inputs = { ultronium=1 }, outputs = { bagoffarts=4 }, time = 6.0},
+{inputs = { precursorfluid=50 }, outputs = { bagoffarts=4 }, time = 7.0},
+{inputs = { techcard=1 }, outputs = { bagoffarts=1 }, time = 1.0},
+{inputs = { upgrademodule=1 }, outputs = { bagoffarts=1 }, time = 1.0},
+{inputs = { manipulatormodule=1 }, outputs = { bagoffarts=1 }, time = 1.0},
+{inputs = { bagoffarts=1 }, outputs = { crunchychick=1 }, time = 1.0}
 -- should have precursor resources crafted here, too
 }
 
