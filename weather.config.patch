@@ -176,7 +176,7 @@
 "value" : [     
    [0.5, "clear"],
    [0.1, "fuearthquake"],
-   [0.1, "windstorm"],
+   [0.1, "fu_smog"],
    [0.1, "fulightningstorm"],
    [0.05, "ember"],
    [0.05, "heatwave"],
@@ -185,7 +185,28 @@
    ]
 },
 
-
+  {
+    "op": "add",
+    "path": "/magma/-",
+    "value": [
+      0.2,
+      "fu_smog"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/volcanic/0/0",
+    "value": 0.82
+  },
+  {
+    "op": "add",
+    "path": "/volcanic/-",
+    "value": [
+      0.03,
+      "fu_smog"
+    ]
+  },
+  
 {
 "op" : "add",
 "path" : "/fungal",
