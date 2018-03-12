@@ -51,7 +51,7 @@ function loadMonster()
 	local name=config.getParameter("shortdescription") or "Broken Bot"
 	local desc=config.getParameter("description") or "Yup, you broke it."
 	
-	local imgData=botspawner.monsterImage or root.monsterPortrait(botspawner.type)
+	local imgData=root.monsterPortrait(botspawner.type)
 	local monsterData=root.monsterParameters(botspawner.type)
 	
 	item.parameters.tooltipFields.subtitle=name
