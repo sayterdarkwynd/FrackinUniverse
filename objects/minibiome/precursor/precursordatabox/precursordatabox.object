@@ -6,30 +6,54 @@
   "tooltipKind" : "container",
   "description" : "This seems to provide a way to access precursor data.",
   "shortdescription" : "Precursor Data Box",
+  
+  "apexDescription" : "This appears to provide access to precursor data.",
+  "avianDescription" : "Data access box. Symbols are unrecognizable, but worth investigating to find knowledge.",
+  "floranDescription" : "Paper booksss are bad enough!! What doess Floran want with digital booksss?",
+  "glitchDescription" : "Surprise. I can plug right into this to learn ancient precursor secrets.",
+  "humanDescription" : "Wow. This thing is ancient. It may contain long-forgotten knowledge.",
+  "hylotlDescription" : "While I'm sure the precursor information is very interesting, these moving squiggles are giving me a headache.",
+  "novakidDescription" : "Whoo! This here should have some interesting ol' precursor secrets in it!",
+  "radienDescription" : "The information displayed here feels otherworldly from a glance. I'm getting a nostalgic feeling for some reason.",
+  "thelusianDescription" : "I don't even know. I should take the information here back to my hive to find out what it means.",
+  "kirhosDescription" : "Ooh goody! Ancient technology with precursor files!",
+  
   "race" : "generic",
   "category" : "storage",
   "price" : 1100,
   "printable" : true,
   "health" : 12.5,
+  "lightColor" : [169, 131, 0],
+  "lightPosition" : [-1, 0],
 
-  "inventoryIcon" : "precursor.png",
+  "inventoryIcon" : "precursordataboxicon.png",
   "orientations" : [
-    {
-      "dualImage" : "precursordatabox.png:<color>",
-
+	{
+      "direction" : "left",
+	  "flipImages" : true,
+      "imageLayers" : [ { "image" : "precursordataboxlights.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursordatabox.png:<color>.<frame>" } ],
       "imagePosition" : [-8, 0],
-      "frames" : 1,
+      "frames" : 7,
+      "animationCycle" : 1.0,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "direction" : "right",
+      "imageLayers" : [ { "image" : "precursordataboxlights.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursordatabox.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 7,
       "animationCycle" : 1.0,
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ],
       "collision" : "platform"
-
-    }
+    } 
   ],
 
-  "openSounds" : [ "/sfx/objects/bookcase_open.ogg" ],
-  "closeSounds" : [ "/sfx/objects/bookcase_close.ogg" ],
+  "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
   "slotCount" : 64,
   "uiConfig" : "/interface/chests/chest<slots>.config",
   "frameCooldown" : 5,
