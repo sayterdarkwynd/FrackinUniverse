@@ -1,0 +1,72 @@
+{
+  "itemName" : "thelusaxe",
+  "price" : 64,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Amber and chitin grant bonus Fun Points.
+^cyan;Counts as Hunting weapon^reset;",
+  "shortdescription" : "Thelusian Axe",
+  "tooltipKind" : "sword",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+  "level" : 2,
+  "inventoryIcon" : "thelusaxe.png",
+  "animation" : "axe.animation",
+  "animationParts" : {
+    "blade" : "thelusaxe.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-1.0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "baseDps" : 7,
+    "damageConfig" : {
+      "damageSourceKind" : "bow",
+      "knockback" : 25
+    },
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0.25, 1.5]
+      },
+      "windup" : {
+        "duration" : 0.7,
+        "weaponOffset" : [0.25, 1.5],
+
+        "minWindup" : 0.6,
+
+        "weaponAngle" : [
+          [0.7, "linear", -20, 0],
+          [0.85, "linear", 0, 50],
+          [0.925, "sin", 50, 45],
+          [1.0, "cos", 50, 45]
+        ],
+
+        "armAngle" : [
+          [1.0, "sin", -90, 50]
+        ]
+      },
+      "fire" : {
+        "weaponOffset" : [0.25, 1.5]
+      }
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 2, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
