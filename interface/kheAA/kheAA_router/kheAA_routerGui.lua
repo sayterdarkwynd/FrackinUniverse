@@ -81,7 +81,8 @@ end
 
 function addListSlot(label, list, slots, notify)
 	local text = widget.getText(label)
-	if text ~= "" and tonumber(text) >= 0 then
+	sb.logInfo("%s",{label,list,slots,notify,text})
+	if text ~= "" then --regex will handle any input that's not a positive integer.
 		local slot = tonumber(text);
 		widget.setText(label, slot + 1);
 		for _,v in pairs(slots) do
@@ -92,7 +93,7 @@ function addListSlot(label, list, slots, notify)
 		local item = widget.addListItem(list);
 		widget.setText(list .. "." .. item .. ".slotNr", slot .. "");
 		table.insert(slots, {slot, item})
-		syncListSlots(slots, notify)
+		syncListSlots(slots, notify
 	end
 end
 
