@@ -81,7 +81,7 @@ end
 
 function addListSlot(label, list, slots, notify)
 	local text = widget.getText(label)
-	if text ~= "" and tonumber(text) >= 0 then
+	if text ~= "" then
 		local slot = tonumber(text);
 		widget.setText(label, slot + 1);
 		for _,v in pairs(slots) do
