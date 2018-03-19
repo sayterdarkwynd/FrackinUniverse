@@ -21,6 +21,7 @@ node list:
 ]]
 
 function excavatorCommon.init()
+	local buffer=""
 	transferUtil.init()
 	if storage.disabled then
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
@@ -30,13 +31,14 @@ function excavatorCommon.init()
 	storage.isDrill=config.getParameter("kheAA_isDrill",false)
 	storage.isPump=config.getParameter("kheAA_isPump",false)
 	storage.isVacuum=config.getParameter("kheAA_isVacuum",false)
-	--storage.logicNode=config.getParameter("kheAA_logicNode");
-	--storage.inDataNode=config.getParameter("kheAA_inDataNode");
-	--storage.outDataNode=config.getParameter("kheAA_outDataNode");
+	
+	buffer=config.getParameter("kheAA_excavatorRate")
+	storage.excavatorRate=((type(buffer)=="number" and buffer > 0.0) and buffer) or 1.0
+	
 	step=(step or -0.2)
 
 	if storage.isDrill == true or storage.isPump == true then
-		storage.maxDepth=config.getParameter("kheAA_maxDepth",20);
+		storage.maxDepth=config.getParameter("kheAA_maxDepth",8);
 	end
 	
 	if storage.isPump then
@@ -48,9 +50,9 @@ function excavatorCommon.init()
 	end
 	
 	if storage.isDrill then
-		storage.drillPower=config.getParameter("kheAA_drillPower",10);
+		storage.drillPower=config.getParameter("kheAA_drillPower",8);
 		storage.drillHPNode=config.getParameter("kheAA_powerMineNode");
-		storage.maxWidth = config.getParameter("kheAA_maxWidth",20);
+		storage.maxWidth = config.getParameter("kheAA_maxWidth",8);
 		storage.width=0
 	end
 	
@@ -61,7 +63,7 @@ function excavatorCommon.init()
 		else
 			storage.vacuumRange=config.getParameter("kheAA_vacuumRange")
 		end]]
-		storage.vacuumRange=config.getParameter("kheAA_vacuumRange")
+		storage.vacuumRange=config.getParameter("kheAA_vacuumRange",4)
 	end
 	
 	if storage.isDrill or storage.isPump or storage.isVacuum then
@@ -138,7 +140,7 @@ function states.vacuum(dt)
 end
 
 function states.moveDrillBar(dt)
-	if deltatime >= 0.2 then
+	if (deltatime * storage.excavatorRate) >= 0.2 then
 		step = step + 0.2;
 		deltatime=0
 	end
@@ -175,7 +177,7 @@ function states.moveDrill(dt)
 		storage.drillPos[2] = storage.drillPos[2] + drillDir[2];
 		renderDrill({storage.drillPos[1], storage.drillPos[2]})
 	end
-	if deltatime >= 0.05 then
+	if (deltatime * storage.excavatorRate) >= 0.05 then
 		step = step + 0.1;
 		deltatime = 0;
 		renderDrill({storage.drillPos[1] + drillDir[1] * step, storage.drillPos[2] + drillDir[2] * step})
@@ -192,7 +194,7 @@ end
 
 
 function states.movePump(dt)
-	if deltatime >= 0.2 then
+	if (deltatime * storage.excavatorRate) >= 0.2 then
 		step = step + 0.2;
 	end
 	if step >= 1 then
@@ -201,7 +203,7 @@ function states.movePump(dt)
 		storage.state = "pump";
 		renderPump(step)
 	end
-	if deltatime >= 0.1 then
+	if (deltatime * storage.excavatorRate) >= 0.1 then
 		step = step + 0.1;
 		deltatime = 0;
 		renderPump(step)
@@ -231,7 +233,7 @@ end
 
 
 function states.mine(dt)
-	if deltatime < 0.1 then
+	if (deltatime * storage.excavatorRate) < 0.1 then
 		return;
 	end
 	deltatime = 0;
@@ -334,7 +336,7 @@ function states.mine(dt)
 end
 
 function states.pump(dt)
-	if deltatime < 0.2 then
+	if (deltatime * storage.excavatorRate) < 0.2 then
 		return;
 	end
 	deltatime = 0;
