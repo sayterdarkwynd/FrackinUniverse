@@ -281,7 +281,7 @@ function doUpgrade()
 		end
 		
 		if self.isUpgradeKit then
-			player.consumeItem({name = "fu_upgradekit", count = 1})
+			player.consumeItem({name = "cuddlehorse", count = 1})
 			pane.dismiss()
 		else
 			populateItemList(true)
