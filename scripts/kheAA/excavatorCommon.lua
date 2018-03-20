@@ -23,6 +23,7 @@ node list:
 function excavatorCommon.init()
 	local buffer=""
 	transferUtil.init()
+	transferUtil.loadSelfContainer()
 	if storage.disabled then
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
 		return
@@ -76,9 +77,7 @@ end
 
 function excavatorCommon.cycle(dt)
 	if storage.disabled then return end
-	if not delta2 then
-		delta2=100
-	elseif delta2 > 1 then
+	if not delta2 or delta2 > 1.0 then
 		transferUtil.loadSelfContainer()
 		if storage.isPump then
 			liquidLib.update(dt)
