@@ -19,6 +19,21 @@ end
 
 function update(dt)
 	populateItemList()
+	
+	if self.isUpgradeKit then
+		if (player.hasCountOfItem({name = "fu_upgradekit", count = 1}) or 0) > 0 then
+			widget.setText("essenceCost", "^green;FREE FROM UPGRADE KIT")
+			
+			if self.selectedItem then
+				widget.setButtonEnabled("btnUpgrade", true)
+			else
+				widget.setButtonEnabled("btnUpgrade", false)
+			end
+		else
+			widget.setText("essenceCost", "^red;MISSING UPGRADE KIT")
+			widget.setButtonEnabled("btnUpgrade", false)
+		end
+	end
 end
 
 function upgradeCost(itemConfig)
@@ -50,7 +65,7 @@ function populateItemList(forceRepop)
 			
 			if (config.parameters.level or config.config.level or 1) < self.upgradeLevel then
 				local listItem = string.format("%s.%s", self.itemList, widget.addListItem(self.itemList))
-				local name = config.config.shortdescription
+				local name = config.parameters.shortdescription or config.config.shortdescription
 				
 				widget.setText(string.format("%s.itemName", listItem), name)
 				widget.setItemSlotItem(string.format("%s.itemIcon", listItem), item)
@@ -71,16 +86,14 @@ function showWeapon(item, price)
 	local playerEssence = player.currency("essence")
 	local enableButton = false
 	
-	if item then
-		enableButton = playerEssence >= price
-		local directive = enableButton and "^green;" or "^red;"
-		widget.setText("essenceCost", string.format("%s%s / %s", directive, playerEssence, price))
-	else
-		widget.setText("essenceCost", string.format("%s / --", playerEssence))
-	end
-	
-	if self.isUpgradeKit then
-		widget.setText("essenceCost", "^green;FREE FROM UPGRADE KIT")
+	if not self.isUpgradeKit then
+		if item then
+			enableButton = playerEssence >= price
+			local directive = enableButton and "^green;" or "^red;"
+			widget.setText("essenceCost", string.format("%s%s / %s", directive, playerEssence, price))
+		else
+			widget.setText("essenceCost", string.format("%s / --", playerEssence))
+		end
 	end
 	
 	widget.setButtonEnabled("btnUpgrade", enableButton)
@@ -106,6 +119,12 @@ end
 
 function doUpgrade()
 	if self.selectedItem then
+		if self.isUpgradeKit and not player.consumeItem({name = "fu_upgradekit", count = 1}, true) then
+			widget.setButtonEnabled("btnUpgrade", false)
+			return
+		end
+		
+		
 		local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
 		local upgradeItem = self.upgradeableWeaponItems[selectedData.index]
 		
@@ -281,7 +300,6 @@ function doUpgrade()
 		end
 		
 		if self.isUpgradeKit then
-			player.consumeItem({name = "cuddlehorse", count = 1})
 			pane.dismiss()
 		else
 			populateItemList(true)
