@@ -126,8 +126,17 @@ function liquidLib.die()
 	if storage.liquids then
 		for id,count in pairs(storage.liquids) do
 			local liquid=liquidLib.liquidToItem(id,count)
+			
 			if liquid then
-				world.spawnItem(liquid,entity.position())
+				local buffer=liquid.count
+				liquid.count=math.floor(liquid.count)
+				buffer=buffer-liquid.count
+				if liquid.count > 0 then
+					world.spawnItem(liquid,entity.position())
+				end
+				if buffer > 0.0 then
+					world.spawnLiquid(entity.position(),id,buffer)
+				end
 			else
 				world.spawnLiquid(entity.position(),id,count)
 			end

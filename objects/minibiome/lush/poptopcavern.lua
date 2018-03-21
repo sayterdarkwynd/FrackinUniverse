@@ -17,16 +17,10 @@ function init()
 end
 
 function update(dt)
-
   local players = world.entityQuery(self.detectArea[1], self.detectArea[2], {
       includedTypes = {"player"},
       boundMode = "CollisionArea"
     })
-	
-if storage.vanishTime and world.time() > storage.vanishTime then
-    object.smash()
-  end
-
 end
 
 function onInteraction(args)
