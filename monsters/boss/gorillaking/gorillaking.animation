@@ -11,10 +11,10 @@
           },
           "walk" : {
             "frames" : 6,
-            "cycle" : 1,
+            "cycle" : 0.6,
             "mode" : "loop",
             "properties" : {
-            "particleEmittersOff" : [ "spindust", "burndust" ]
+            "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }
           },
           "invulnerablewindup" : {
@@ -22,7 +22,7 @@
             "cycle" : 0.6,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }            
           },   
           "invulnerablewindup2" : {
@@ -31,7 +31,7 @@
             "mode" : "loop",
             "properties" : {
               "persistentSound" : "/sfx/npc/monsters/gorillaking_notice.ogg",
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }            
           },          
           "invulnerablewinddown" : {
@@ -39,7 +39,7 @@
             "cycle" : 0.3,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }            
           },           
           "invulnerable" : {
@@ -49,7 +49,7 @@
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/gorillaking_roar.ogg",
               "persistentSound" : "/sfx/tech/forcefield_loop.ogg",
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }            
           },           
           "grin" : {
@@ -57,7 +57,7 @@
             "cycle" : 0.3,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }  
           }, 
           "grin2" : {
@@ -76,7 +76,7 @@
             "cycle" : 0.5,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }  
           },
           "fall" : {
@@ -84,7 +84,7 @@
             "cycle" : 0.5,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }  
           },
           "chargewindup" : {
@@ -92,7 +92,7 @@
             "cycle" : 0.7,
             "properties" : {
               "persistentSound" : "/sfx/npc/boss/apeboss_stage1_attack1.ogg",
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }
           },
           "chargewinddown" : {
@@ -100,7 +100,7 @@
             "cycle" : 0.1,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "burndust" ]
+              "particleEmittersOff" : [ "burndust", "powerdust" ]
             }  
           },        
           "charge" : {
@@ -109,14 +109,14 @@
             "mode" : "transition",
             "transition" : "chargewinddown",
             "properties" : {
-              "particleEmittersOff" : [ "burndust" ]
+              "particleEmittersOff" : [ "burndust", "powerdust" ]
             }   
           },
            "hurt" : {
             "frames" : 1,
             "cycle" : 0.2,
             "properties" : {
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }
           },           
            "fire" : {
@@ -124,7 +124,7 @@
             "cycle" : 0.3,
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/gorillaking_attack1.ogg",
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }
           }, 
            "fire2" : {
@@ -132,7 +132,7 @@
             "cycle" : 0.6,
             "properties" : {
               "immediateSound" : "/sfx/npc/boss/apeboss_stage1_attack2.ogg",
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }
           },        
            "fire3" : {
@@ -140,15 +140,16 @@
             "cycle" : 1.0,
             "properties" : {
               "immediateSound" : "/sfx/npc/boss/apeboss_stage1_attack1.ogg",
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }
           },           
           "firewindup" : {
             "frames" : 6,
-            "cycle" : 0.6,
+            "cycle" : 1.2,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust" ],
+              "particleEmittersOn" : [ "powerdust" ]
             }
           },
           "firewinddown" : {
@@ -156,7 +157,7 @@
             "cycle" : 0.3,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "spindust", "burndust" ]
+              "particleEmittersOff" : [ "spindust", "burndust", "powerdust" ]
             }  
           },           
           "roar" : {
@@ -365,6 +366,17 @@
   },
 
   "particleEmitters" : {
+    "powerdust" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, 1.0, 2.0, 2.0 ],
+      "particles" : [
+        { "particle" : "druidstaff" },
+        { "particle" : "fastrisinghaste" },
+        { "particle" : "druidstaff" },
+        { "particle" : "fastrisinghaste" },
+        { "particle" : "druidstaff" }
+      ]
+    },    
     "burndust" : {
       "emissionRate" : 15,
       "offsetRegion" : [ 1.0, 1.0, 2.0, 2.0 ],

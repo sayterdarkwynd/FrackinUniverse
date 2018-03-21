@@ -1,61 +1,62 @@
 {
-	"objectName" : "network_quarrydensinium",
-	"colonyTags" : ["wired"],
-	"printable" : false,
-	"rarity" : "uncommon",
-	"description" : "Mines blocks automatically.
-^blue;Input^white;1^blue;: ^white;power switch
-^blue;Input^white;2^blue;: ^white;high-power
-^red;Output: ^white;item network^reset;",
-	"shortdescription" : "Densinium Quarry",
-	"objectType" : "container",
-	"tooltipKind" : "container",
-	"race" : "generic",
+	"objectName": "network_quarrydensinium",
+	"colonyTags": ["wired"],
+	"printable": false,
+	"rarity": "uncommon",
+	"description": "Mines blocks automatically.\n^blue;Input^white;1^blue;: ^white;power switch\n^blue;Input^white;2^blue;: ^white;high-power\n^red;Output: ^white;item network^reset;",
+	"shortdescription": "Densinium Quarry",
+	"objectType": "container",
+	"tooltipKind": "container",
+	"race": "generic",
 
-	"category" : "wire",
-	"price" : 1500,
+	"category": "wire",
+	"price": 1500,
 
-	"inventoryIcon" : "/objects/kheAA/kheAA_quarry/densiniumquarryicon.png",
-	"orientations" : [
-		{
-			"image" : "densiniumquarry.png:<color>.off",
-			"imagePosition" : [0, 0],
+	"inventoryIcon": "/objects/kheAA/kheAA_quarry/densiniumquarryicon.png",
+	"orientations": [{
+		"image": "densiniumquarry.png:<color>.off",
+		"imagePosition": [0, 0],
 
-			"spaceScan" : 0.1,
-			"anchors" : [ "bottom" ],
-			"direction" : "right"
-		}
-	],
+		"spaceScan": 0.1,
+		"anchors": ["bottom"],
+		"direction": "right"
+	}],
 
-	"scripts" : [ "/objects/kheAA/kheAA_quarry/kheAA_quarrywide.lua"],
-	"scriptDelta" : 1,
+	"scripts": ["/objects/kheAA/kheAA_quarry/kheAA_quarrywide.lua"],
+	"scriptDelta": 1,
 
-	"animation" : "/objects/kheAA/kheAA_quarry/kheAA_quarry.animation",
+	"animation": "/objects/kheAA/kheAA_quarry/kheAA_quarry.animation",
 
-	"animationParts" : {
-		"quarry" : "densiniumquarry.png",
-		"drill" : "kheAA_drill_densinium.png",
-		"verPipe" : "kheAA_ver_pipedensinium.png",
-		"horPipe" : "kheAA_hor_pipedensinium.png",
-		"connector" : "kheAA_connectordensinium.png"
+	"animationParts": {
+		"quarry": "densiniumquarry.png",
+		"drill": "kheAA_drill_densinium.png",
+		"verPipe": "kheAA_ver_pipedensinium.png",
+		"horPipe": "kheAA_hor_pipedensinium.png",
+		"connector": "kheAA_connectordensinium.png"
 	},
-	"animationPosition" : [0, 0],
-	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
-	"closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
-	"slotCount" : 16,
-	"uiConfig" : "/interface/kheAA/kheAA_quarry/kheAA_quarryGui.config",
-	"frameCooldown" : 5,
-	"autoCloseCooldown" : 3600,
-	"kheAA_maxWidth":50,
-	"kheAA_maxDepth":350,
-	"kheAA_drillPower": 20,
-	"inputNodes" : [ [0, 0], [1,0]],
-	"outputNodes" : [ [0, 1]],
-	"kheAA_logicNode":0,
-	"kheAA_outDataNode":0,
-	"kheAA_isDrill":true,
-	"kheAA_isVacuum":true,
-	"kheAA_vacuumRange":18,
-	"kheAA_powerDrillNode":1,
-	"lockedSlots" : [16]
+	"animationPosition": [0, 0],
+	"openSounds": ["/sfx/objects/woodenbox_open.ogg"],
+	"closeSounds": ["/sfx/objects/woodenbox_close.ogg"],
+	"slotCount": 16,
+	"lockedSlots": [16],
+	"uiConfig": "/interface/kheAA/kheAA_quarry/kheAA_quarryGui.config",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"inputNodes": [
+		[0, 0],
+		[1, 0]
+	],
+	"outputNodes": [
+		[0, 1]
+	],
+	"kheAA_logicNode": 0,
+	"kheAA_outDataNode": 0,
+	"kheAA_powerDrillNode": 1,
+	"kheAA_isDrill": true,
+	"kheAA_isVacuum": true,
+	"kheAA_excavatorRate": 2.5,
+	"kheAA_maxWidth": 32,
+	"kheAA_maxDepth": 128,
+	"kheAA_drillPower": 32,
+	"kheAA_vacuumRange": 16
 }

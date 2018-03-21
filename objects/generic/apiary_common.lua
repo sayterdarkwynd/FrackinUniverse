@@ -159,7 +159,8 @@ function getEquippedBees()
 		end
 
 		if count then
-			self.beePower = math.ceil(math.sqrt(count) + 10)  ---Beepower = cooldown reduction rate. At 500ms scriptDelta, and with 20 beePower, it takes 5 seconds to reduce a 200 cooldown to 0.
+		--Beepower = cooldown reduction rate. At 500ms scriptDelta, and with 20 beePower, it takes 5 seconds to reduce a 200 cooldown to 0.
+			self.beePower = math.ceil(math.sqrt(count) + 10)  
 			return queenName, droneName
 		end
 	end
@@ -272,7 +273,6 @@ function expelQueens(type)   ---Checks how many queens are in the apiary, either
 	if slot and contents[slot].count > 1 then								---how many queens, exactly?
 		local queenname = contents[slot].name								---sets the variable queenname to be use for queen removal
 		local queenremoval = (contents[slot].count - 1) 						---How many queens are we removing?
-		--world.containerConsume(entity.id(), {name = queenname, count = queenremoval, data={}})  	---PEACE OUT, YA QUEENS --could take from storage, not just the queen slot
 		world.containerConsumeAt(entity.id(), slot - 1, queenremoval)  					---PEACE OUT, YA QUEENS -- slot-1 because of indexing differences (Lua's from 1 v. Starbound internal from 0)
 		world.spawnItem(queenname, object.toAbsolutePosition({ 1, 2 }), queenremoval)			--- Oh, hi. Why are you on the ground? SHE THREW YOU OUT? THAT BITCH!
 	end
@@ -535,8 +535,8 @@ function update(dt)
 		end
 	end
 
-	frame() 							---Checks to see if a frame in installed.
-	flowerCheck()    						--- checks flowers
+	frame() 	--Checks to see if a frame in installed.
+	flowerCheck()   -- checks flowers
 	deciding()
 
 	if not self.doBees and not self.doItems and not self.doHoney and not self.doDrones then
@@ -549,7 +549,7 @@ function update(dt)
 		end
 	end
 
-	miteInfection()		--- Try to spawn mites.
+	miteInfection()	-- Try to spawn mites.
 
 	if not workingBees() then
 		-- If bees aren't a match, check to see if the bee types are meant for breeding.
@@ -601,20 +601,21 @@ function chooseMinerOffspring(config)
 	end
 	
 	if math.random() > self.mutationIncrease then
---		sb.logInfo('may spawn miner bees')
+	--sb.logInfo('may spawn miner bees')
 		return nil
 	end
 	
---	sb.logInfo('may spawn strange bees')
-                local threat = world.threatLevel() or 1
-                local chance = config.chance or DEFAULT_HONEY_CHANCE
-		if (math.random(100) <= 20 * (chance + self.mutationIncrease)) then
-		  world.spawnMonster("fuevilbee", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
-		elseif (math.random(100) <= 10 * (chance + self.mutationIncrease)) then
-		  world.spawnMonster("elderbee", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
-		elseif (math.random(100) <= 5 * (chance + self.mutationIncrease)) then
-		  world.spawnMonster("fearmoth", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
-		end
+	--sb.logInfo('may spawn strange bees')
+	local threat = world.threatLevel() or 1
+	local chance = config.chance or DEFAULT_HONEY_CHANCE
+	if (math.random(100) <= 10 * (chance + self.mutationIncrease)) then
+	  world.spawnMonster("fuevilbee", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
+	elseif (math.random(100) <= 5 * (chance + self.mutationIncrease)) then
+	  world.spawnMonster("elderbee", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
+	elseif (math.random(100) <= 2 * (chance + self.mutationIncrease)) then
+	  world.spawnMonster("fearmoth", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
+	end
+	
 	return { type = 'radioactive', chance = config.chance, bee = (config.bee or 1) * 1.1, drone = (config.drone or 1) * 0.9 } -- tip a little more in favour of world over hive
 	
 end
