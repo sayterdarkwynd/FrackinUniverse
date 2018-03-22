@@ -30,6 +30,11 @@ function init()
 		return false
 	end)
 	
+	if not player.hasQuest("fu_scaninteraction") then
+		sb.logInfo("Readded 'fu_scaninteraction' quest")
+		player.startQuest("fu_scaninteraction")
+	end
+	
 	--[[
 	local goods = {"foodgoods", "medicalgoods", "electronicgoods", "militarygoods"}
 	for _, g in ipairs(goods) do
@@ -55,4 +60,6 @@ function uninit()
 			player.giveItem({name = "fu_lootbox", parameters = {level = threatLevel}})
 		end
 	end
+	
+	origUninit()
 end

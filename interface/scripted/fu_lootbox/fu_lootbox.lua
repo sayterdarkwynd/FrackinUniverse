@@ -73,7 +73,7 @@ funcs = {
 	end,
 	
 	levelMod = function(params)
-		return {itemLevelMod = pramas.itemLevelMod}
+		return {itemLevelMod = params.itemLevelMod}
 	end
 }
 
