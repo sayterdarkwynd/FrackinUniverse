@@ -11,6 +11,13 @@ function init()
 		self.isUpgradeKit = false
 	end
 	
+	if self.isUpgradeKit then
+		local upgradeAnvil = world.objectQuery(world.entityPosition(player.id()), 5, { name = "extraweaponupgradeanvil" })
+		if upgradeAnvil and #upgradeAnvil > 0 then
+			self.isUpgradeKit = false
+		end
+	end
+	
 	self.upgradeLevel = 8
 	self.upgradeableWeaponItems = {}
 	self.selectedItem = nil

@@ -156,6 +156,10 @@ function getBYOSParameters(BYOSItemType, pet, treasure)
 	if itemType then
 		info = raceInfo[count]
 		value = info[itemType]
+		if not value then
+			count = 1
+			return getBYOSParameters(BYOSItemType, pet, treasure)
+		end
 		if root.itemConfig(value.name) then
 			itemNew = value
 		end
