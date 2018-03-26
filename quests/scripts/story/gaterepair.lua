@@ -172,13 +172,10 @@ function collectRepairItem()
   local findGate = util.uniqueEntityTracker("ancientgate2", self.compassUpdate)
   while storage.stage == 3 do
 
-    if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
+    if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
       quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)       
-      storage.stage = 4
-    elseif not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
-      quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
-      quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)    
+      storage.stage = 4 
     end
        local result = findGate()
        questutil.pointCompassAt(result)   
@@ -206,14 +203,8 @@ function repairGate()
   while storage.stage == 4 do
     questutil.pointCompassAt(findGate())
 
-    -- Go back to last stage if player loses core fragments
-    if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
+    if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       storage.stage = 3
-      self.state:set(self.stages[storage.stage])
-    elseif not player.hasItem({name = "statustablet", count = 1}) then
-      storage.stage = 3
-      quest.setObjectiveList({{self.descriptions.makeTable, false}})    
-      player.radioMessage("fu_start_needstricorder")
       self.state:set(self.stages[storage.stage])
     end
 
