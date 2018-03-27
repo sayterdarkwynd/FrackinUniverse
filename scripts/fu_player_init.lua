@@ -27,6 +27,13 @@ function init()
 		if player.hasItem(requiredItem) then
 			return true
 		end
+		local essentialSlots = {"beamaxe", "wiretool", "painttool", "inspectiontool"}
+		for _,slot in pairs (essentialSlots) do
+			local essentialItem = player.essentialItem(slot)
+			if essentialItem and essentialItem.name == requiredItem then
+				return true
+			end
+		end
 		return false
 	end)
 	
