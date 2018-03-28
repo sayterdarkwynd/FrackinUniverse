@@ -28,7 +28,7 @@ function update(dt)
 	populateItemList()
 	
 	if self.isUpgradeKit then
-		if (player.hasCountOfItem({name = "fu_upgradekit", count = 1}) or 0) > 0 then
+		if (player.hasCountOfItem({name = "cuddlehorse", count = 1}) or 0) > 0 then
 			widget.setText("essenceCost", "^green;FREE FROM UPGRADE KIT")
 			
 			if self.selectedItem then

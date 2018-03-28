@@ -4,6 +4,9 @@ require("/quests/scripts/questutil.lua")
 function init()
   setPortraits()
   setStage(1)
+  message.setHandler("fu_completeTutorial", function()
+	setStage(4)
+  end)
 end
 
 
@@ -29,8 +32,15 @@ function questStart()
 end
 
 function questComplete()
-  player.radioMessage("vinjComplete2", 1)
   player.setIntroComplete(true)
+  local messagePlayers = world.playerQuery(entity.position(player.id()), config.getParameter("completionRange"))
+  if messagePlayers then
+    for _, playerId in pairs (messagePlayers) do
+	  if playerId ~= player.id() then
+        world.sendEntityMessage(playerId, "fu_completeTutorial")
+	  end
+	end
+  end
   questutil.questCompleteActions()
 end
 

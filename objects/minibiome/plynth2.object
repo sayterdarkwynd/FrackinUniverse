@@ -11,23 +11,32 @@
   "inventoryIcon" : "plynth2.png",
   "orientations" : [
     {
-      "image" : "plynth2.png:<color>",
+      "imageLayers" : [ { "image" : "plynth2.png:<color>", "fullbright" : true }, { "image" : "plynth2fullbright.png:<color>" } ],
       "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+
+      "direction" : "left",
+      "flipImages" : true,
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "plynth2.png:<color>", "fullbright" : true }, { "image" : "plynth2fullbright.png:<color>" } ],
+      "imagePosition" : [0, 0],
 
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
     }
   ],
   "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
   "smashDropOptions" : [
-    [ [ "obsidian", 5, { } ], [ "protociteore", 4, { } ] ]
+    [ [ "plynth2", 1, { } ]]
   ],
 
   "breakDropOptions" : [
-    [ [ "obsidian", 5, { } ], [ "protociteore", 4, { } ] ]
+    [ [ "plynth2", 1, { } ] ]
   ],
   "biomePlaced" : true
 }
