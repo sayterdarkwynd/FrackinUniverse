@@ -126,7 +126,7 @@ end
 
 function doUpgrade()
 	if self.selectedItem then
-		if self.isUpgradeKit and not player.consumeItem({name = "fu_upgradekit", count = 1}, true) then
+		if self.isUpgradeKit and not player.consumeItem({name = "cuddlehorse", count = 1}, true) then
 			widget.setButtonEnabled("btnUpgrade", false)
 			return
 		end
