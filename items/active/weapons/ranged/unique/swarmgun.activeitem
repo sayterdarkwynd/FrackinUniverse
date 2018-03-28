@@ -4,7 +4,8 @@
   "inventoryIcon" : "swarmgun.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Horrify the enemy with clouds of stinging, angry bugs.",
+  "description" : "Horrify the enemy with clouds of stinging, angry bugs.
+^cyan;Causes stings, weakening and poison^reset;",
   "shortdescription" : "Swarm Gun",
   "category" : "upgradeable",
   "level" : 3,
@@ -37,19 +38,44 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 2.5,
-    "baseDps" : 4.5,
+    "baseDps" : 1.5,
     "energyUsage" : 35.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "insectswarm",
+    "projectileType" : "hiveswarm2",
     "projectileParameters" : {
       "speed" : 32,
-      "knockback" : 1
+      "knockback" : 1,
+      "damageSourceKind" : "poison",
+	  "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/beeboom/beeboom.config"
+	    },  
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/hivebomb_impact.ogg" ]
+	    }  
+	  ],
+	  "periodicActions" : [
+	    {
+	      "time" : 0.05,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "hiveswarm3",
+	      "config" : {
+	        "statusEffects" : [ "weakpoison" ]
+	      },
+	      "inheritDamageFactor" : 0.01,
+	      "fuzzAngle" : 360
+	   }  
+	  ]
     },
-    "statusEffects" : [ "weakenweather2" ],
+    
+    
   "stances" : {
     "idle" : {
       "armRotation" : 0,

@@ -4,7 +4,8 @@
   "inventoryIcon" : "swarmgun2.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Thrice as many bugs. The enemy will just love it!",
+  "description" : "Thrice as many bugs. The enemy will just love it!
+^cyan;Causes stings and poison^reset;",
   "shortdescription" : "Swarm Gun MKII",
   "category" : "bioweapon",
   "level" : 3,
@@ -37,7 +38,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 2.5,
-    "baseDps" : 5.1,
+    "baseDps" : 2.5,
     "energyUsage" : 35.0,
     "inaccuracy" : 0,
 
@@ -47,9 +48,33 @@
     "projectileType" : "fuhivebugx",
     "projectileParameters" : {
       "speed" : 32,
-      "knockback" : 1
+      "knockback" : 1,
+      "damageSourceKind" : "poison",
+	  "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/beeboom/beeboom.config"
+	    },  
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/hivebomb_impact.ogg" ]
+	    }  
+	  ],
+	  "periodicActions" : [
+	    {
+	      "time" : 0.05,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "hiveswarm3",
+	      "config" : {
+	        "statusEffects" : [ "weakpoison" ]
+	      },	      
+	      "inheritDamageFactor" : 0.05,
+	      "fuzzAngle" : 360
+	   }  
+	  ]
     },
-    "statusEffects" : [ "weakenweather2" ],
+
   "stances" : {
     "idle" : {
       "armRotation" : 0,
