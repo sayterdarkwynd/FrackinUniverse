@@ -1,9 +1,14 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
+require "/scripts/epoch.lua"
 
 gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
 
 function init()
+	local timeData=epoch.currentToTable()
+	if timeData.month == 4 and timeData.day==1 then
+		fool=true
+	end
 	projectileData=config.getParameter("projectileData")--{primary={common={},rare={}},alt={common={},rare={}}}
 	totalProjectileTypes={}
 	for k,v in pairs(projectileData) do--k=primary,alt
@@ -24,6 +29,11 @@ function init()
 	activeItem.setCursor("/cursors/reticle0.cursor")
 
 	setToolTipValues(config.getParameter("primaryAbility"))
+	if fool then
+		local color={math.floor(math.random(1,255)),math.floor(math.random(1,255)),math.floor(math.random(1,255))}
+		messageParticle(firePosition(),"Matt Damon.",color,0.6,nil,4,nil)
+		status.addEphemeralEffect("nude",5)
+	end
 end
 
 function setToolTipValues(ability)
@@ -37,12 +47,25 @@ function setToolTipValues(ability)
 end
 
 function update(dt, fireMode, shiftHeld)
+	if sayter then
+		if sayter < 0.0 then
+			status.addEphemeralEffect("l6doomed",666)
+			sayter=nil
+		else
+			sayter=sayter-dt
+		end
+	end
 	updateAim()
 	
 	--sb.logInfo("%s",{fireMode=fireMode,shiftHeld=shiftHeld})
 	storage.fireTimer = math.max(storage.fireTimer - dt, 0)
 	self.recoilTimer = math.max(self.recoilTimer - dt, 0)
-	
+	if fool then
+		foolDelta=(foolDelta or 0)+dt
+		if foolDelta >=4 then
+			status.addEphemeralEffect("nude",5)
+		end
+	end
 	if fireMode=="none" or not fireMode then return end
 	
 	local abilString = fireMode.."Ability"
@@ -61,6 +84,7 @@ function update(dt, fireMode, shiftHeld)
 	end
 
 	activeItem.setRecoil(self.recoilTimer > 0)
+
 end
 
 --[[function doRecoil(ability,aimVec,count)
@@ -71,56 +95,105 @@ end]]
 
 function fire(ability,fireMode,throttle)
 	--sb.logInfo("%s",ability)
+	local special=math.floor(math.random(1,1000))
 	local projectileCount = throttle and 1 or math.floor(math.random(1,totalProjectileTypes[fireMode]))
-	local params = {
-		power = damagePerShot(ability,projectileCount),
-		powerMultiplier = activeItem.ownerPowerMultiplier()
-	}
+	local params = {power = damagePerShot(ability,projectileCount), powerMultiplier = activeItem.ownerPowerMultiplier()}
+	
 	if fireMode=="alt" then
 		params.controlForce=140
 		params.ignoreTerrain=false
 		params.pickupDistance=1.5
 		params.snapDistance=4
 	end
-	for i = 1, projectileCount do
-		local buffer={}
-		local buffer2={}
-		local aimVec=aimVector(ability)
-		
-		local projectileType=""
-		if math.random(1,100) >= 99.0 then
-			buffer=projectileData[fireMode]["rare"]
-			projectileType=buffer[math.floor(math.random(1,#buffer))]
-		else
-			buffer=projectileData[fireMode]["common"]
-			projectileType=buffer[math.floor(math.random(1,#buffer))]
-		end
-		
-		local element=""
-		if math.random(1,100) >= 90.0 then
-			buffer2=elementData[fireMode]["rare"]
-			element=buffer2[math.floor(math.random(1,#buffer2))]
-		else
-			buffer2=elementData[fireMode]["common"]
-			element=buffer2[math.floor(math.random(1,#buffer2))]
-		end
-		
-		projectileType=string.gsub(projectileType,"<element>",element)
-		--sb.logInfo("aimVec: %s",aimVec)
-		local projectileId = world.spawnProjectile(
-			projectileType,
-			firePosition(),
-			activeItem.ownerEntityId(),
-			aimVec,
-			false,
-			params
-		)
-		--doRecoil(ability,aimVec,projectileCount)
-	end
 	
-	--if not throttle then
-	spaz(projectileCount,firePosition(),ability.fireTime,throttle)
-	--end
+	if special == 1 then
+		--someone just drew the unluckiest card in the deck.
+		local message="Sayter."
+		local color={0,0,0}
+		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		sayter=4.0
+	elseif special < 10 then
+		local aimVec=aimVector(ability)
+		local projectileType=""
+		local doProjectile=false
+		local message=""
+		local color={}
+		
+		if fireMode=="alt" then
+			if shift then
+				doProjectile=true
+				projectileType="phoenix"
+				message="#$?#$%?@ Greg."
+				color={255,0,0}
+			else
+				status.addEphemeralEffect("timefreeze",4)
+				message="Banana? Heh. Rainbow."
+				color={238,130,238}
+			end
+		else
+			if shift then
+				status.addEphemeralEffect("cultistshield",4)
+				color={255,20,147}
+				message="Kevin."
+			else
+				color={255,255,0}
+				message="BANANA! BANANA! BANANA!"
+			end
+		end
+		
+		if doProjectile then
+			world.spawnProjectile(
+				projectileType,
+				firePosition(),
+				activeItem.ownerEntityId(),
+				aimVec,
+				false,
+				params
+			)
+		end
+		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		
+	else
+		for i = 1, projectileCount do
+			local buffer={}
+			local buffer2={}
+			local aimVec=aimVector(ability)
+			
+			local projectileType=""
+			if math.random(1,100) >= 99.0 then
+				buffer=projectileData[fireMode]["rare"]
+				projectileType=buffer[math.floor(math.random(1,#buffer))]
+			else
+				buffer=projectileData[fireMode]["common"]
+				projectileType=buffer[math.floor(math.random(1,#buffer))]
+			end
+			
+			local element=""
+			if math.random(1,100) >= 90.0 then
+				buffer2=elementData[fireMode]["rare"]
+				element=buffer2[math.floor(math.random(1,#buffer2))]
+			else
+				buffer2=elementData[fireMode]["common"]
+				element=buffer2[math.floor(math.random(1,#buffer2))]
+			end
+			
+			projectileType=string.gsub(projectileType,"<element>",element)
+			--sb.logInfo("aimVec: %s",aimVec)
+			local projectileId = world.spawnProjectile(
+				projectileType,
+				firePosition(),
+				activeItem.ownerEntityId(),
+				aimVec,
+				false,
+				params
+			)
+			--doRecoil(ability,aimVec,projectileCount)
+		end
+		
+		--if not throttle then
+		spaz(projectileCount,firePosition(),ability.fireTime,throttle)
+		--end
+	end
 	animator.burstParticleEmitter("fireParticles")
 	animator.playSound("fire")
 	self.recoilTimer = ability.recoilTime or 0.12
@@ -237,4 +310,10 @@ world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false,  {
         }
     }
     )
+end
+
+function uninit()
+	if fool then 
+		status.removeEphemeralEffect("nude")
+	end
 end
